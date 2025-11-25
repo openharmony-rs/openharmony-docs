@@ -673,3 +673,20 @@
 **起始版本**：20
 
 **变更信息**：在API20，该权限面向系统应用开放；从API 21开始，面向MDM应用开放。
+
+## ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
+
+允许应用管理其他设备管理应用。
+
+获取该权限后，超级设备管理应用可管理其他设备管理应用。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：23

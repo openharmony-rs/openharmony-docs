@@ -3,8 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--SE: @junjie_shi-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @junjie_shi-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
 
 The **hiAppEvent** module provides the application event logging functions, such as writing application events to the event file and managing the event logging configuration.
 
@@ -171,10 +172,10 @@ Provides the configuration items for application event logging.
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
-| Name      | Type   | Mandatory| Description                                                        |
-| ---------- | ------- | ---- | ------------------------------------------------------------ |
-| disable    | boolean | No  | Application event logging switch. The value **true** means to disable the application event logging function, and the value **false** means the opposite.|
-| maxStorage | string  | No  | Maximum size of the event file storage directory. The default value is **10M**. If the specified size is exceeded, the oldest event logging files in the directory will be deleted to free up space.|
+| Name      | Type   | Read-Only| Optional| Description                                                        |
+| ---------- | ------- | ---- | ---- | ------------------------------------------------------------ |
+| disable    | boolean | No| Yes| Application event logging switch. The value **true** means to disable the application event logging function, and the value **false** means the opposite.|
+| maxStorage | string  | No| Yes| Maximum size of the event file storage directory. The default value is **10M**. If the specified size is exceeded, the oldest event logging files in the directory will be deleted to free up space.|
 
 
 ## EventType

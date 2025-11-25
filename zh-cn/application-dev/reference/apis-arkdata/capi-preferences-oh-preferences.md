@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Preferences OH_Preferences
+```
+
 ## 概述
 
 定义Preferences对象类型。

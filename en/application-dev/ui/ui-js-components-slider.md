@@ -1,10 +1,10 @@
-# &lt;slider&gt; Development
+# slider Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The **&lt;slider&gt;** component is used to quickly adjust settings, such as the volume and brightness. For details, see [slider](../reference/apis-arkui/arkui-js/js-components-basic-slider.md).

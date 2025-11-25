@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct Camera_Point {...} Camera_Point
+```
+
 ## Overview
 
 The struct describes the parameters related to a point.

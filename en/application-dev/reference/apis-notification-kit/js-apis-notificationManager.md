@@ -341,7 +341,7 @@ Cancels all notifications of this application. This API uses a promise to return
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -589,11 +589,11 @@ Obtains all notification slots of this application. This API uses a promise to r
 
 | Type                                                       | Description                                                        |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<Array\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\>\> | Promise used to return the **NotificationSlot** array.|
+| Promise\<Array\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\>\> | Promise used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -756,7 +756,7 @@ Removes all notification slots for this application. This API uses a promise to 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -788,7 +788,7 @@ Checks whether notification is enabled for the specified application. This API u
 
 | Name    | Type                 | Mandatory| Description                    |
 | -------- | --------------------- | ---- | ------------------------ |
-| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** means that the notification can be published; **false** means the opposite. If the call fails, an error object is returned.|
+| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** means that the notification can be published; **false** means the opposite. If this API call fails, an error object is returned.|
 
 **Error codes**
 
@@ -1039,7 +1039,7 @@ Obtains the number of active notifications of this application. This API uses a 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1115,7 +1115,7 @@ Obtains the active notifications of this application. This API uses a promise to
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1505,7 +1505,7 @@ Requests notification to be enabled for this application. This API uses a promis
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1541,7 +1541,7 @@ Checks whether the device supports cross-device notifications. This API uses an 
 
 | Name  | Type                    | Mandatory| Description                      |
 | -------- | ------------------------ | ---- | -------------------------- |
-| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** means that the cross-device notification is supported; **false** means the opposite. If the call fails, an error object is returned.|
+| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** means that the cross-device notification is supported; **false** means the opposite. If this API call fails, an error object is returned.|
 
 **Error codes**
 
@@ -1588,7 +1588,7 @@ Checks whether the device supports cross-device notifications. This API uses a p
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |

@@ -16,8 +16,9 @@
 
 默认路径在应用沙箱的web目录内，用户无法查看。如果希望用户能够查看，需要将下载路径修改到有访问权限的目录，比如Download目录，请参考[使用Web组件发起一个下载任务](#使用web组件发起一个下载任务)。
 
-```ts
-// xxx.ets
+<!-- @[download_delegate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/ListenForPageDown.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -26,37 +27,41 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
+  @State myText: string = 'download';
 
   build() {
     Column() {
+      Text(this.myText)
       Button('setDownloadDelegate')
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download.");
+              console.info('will start a download.');
               // 传入一个下载路径，并开始下载。
               // 如果传入一个不存在的路径，则会下载到默认/data/storage/el2/base/cache/web/目录。
-              webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
+              webDownloadItem.start('/data/storage/el2/base/cache/web/' + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
               // 下载任务的唯一标识。
-              console.info("download update guid: " + webDownloadItem.getGuid());
+              console.info('download update guid: ' + webDownloadItem.getGuid());
               // 下载的进度。
-              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info('download update percent complete: ' + webDownloadItem.getPercentComplete());
               // 当前的下载速度。
-              console.info("download update speed: " + webDownloadItem.getCurrentSpeed())
+              console.info('download update speed: ' + webDownloadItem.getCurrentSpeed());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.error("download failed guid: " + webDownloadItem.getGuid());
+              console.error('download failed guid: ' + webDownloadItem.getGuid());
               // 下载任务失败的错误码。
-              console.error("download failed last error code: " + webDownloadItem.getLastErrorCode());
+              console.error('download failed last error code: ' + webDownloadItem.getLastErrorCode());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download finish guid: " + webDownloadItem.getGuid());
+              console.info('download finish guid: ' + webDownloadItem.getGuid());
+              this.myText = 'download finish';
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
@@ -100,8 +105,9 @@ Web组件发起的下载会根据当前显示的url以及Web组件默认的Refer
   在下面的示例中，先点击setDownloadDelegate按钮向Web注册一个监听类，然后点击startDownload主动发起了一个下载，
   该下载任务也会通过设置的DownloadDelegate来通知app下载的进度。
 
-```ts
-// xxx.ets
+<!-- @[init_download_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/InitiatingADownloadTask.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -110,30 +116,34 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
+  @State myText: string = 'download';
 
   build() {
     Column() {
+      Text(this.myText)
       Button('setDownloadDelegate')
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download.");
+              console.info('will start a download.');
               // 传入一个下载路径，并开始下载。
               // 如果传入一个不存在的路径，则会下载到默认/data/storage/el2/base/cache/web/目录。
-              webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
+              webDownloadItem.start('/data/storage/el2/base/cache/web/' + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download update guid: " + webDownloadItem.getGuid());
+              console.info('download update guid: ' + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.error("download failed guid: " + webDownloadItem.getGuid());
+              console.error('download failed guid: ' + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download finish guid: " + webDownloadItem.getGuid());
+              console.info('download finish guid: ' + webDownloadItem.getGuid());
+              this.myText = 'download finish';
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Button('startDownload')
@@ -143,7 +153,8 @@ struct WebComponent {
             // 开发者需要替换为自己想要下载的内容的地址。
             this.controller.startDownload('https://www.example.com/');
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -244,11 +255,13 @@ function getDownloadPathFromPicker(): Promise<string> {
 在Web组件启动时，可通过[resumeDownload()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadManager.md#resumedownload11)接口恢复未完成的下载任务。
 
 在以下示例中，通过“record”按钮将当前下载任务保存至持久化文件中，应用重启后，可借助“recovery”按钮恢复持久化的下载任务。示例代码实现了将当前下载任务持久化保存至文件的功能，若需保存多个下载任务，应用可根据需求调整持久化的时机与方式。
-```ts
-// xxx.ets
+
+<!-- @[recovery_download_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/ResumeDownload.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { downloadUtil, fileName, filePath } from './downloadUtil'; // downloadUtil.ets 见下文
+import { DownloadUtil, fileName, filePath } from './downloadUtil'; // downloadUtil.ets 见下文
 
 @Entry
 @Component
@@ -260,7 +273,7 @@ struct WebComponent {
   failedData: Uint8Array = new Uint8Array();
 
   aboutToAppear(): void {
-    downloadUtil.init(this.getUIContext());
+    DownloadUtil.init(this.getUIContext());
   }
 
   build() {
@@ -269,27 +282,28 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download.");
+              console.info('will start a download.');
               // 传入一个下载路径，并开始下载。
               // 如果传入一个不存在的路径，则会下载到默认/data/storage/el2/base/cache/web/目录。
-              webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
+              webDownloadItem.start('/data/storage/el2/base/cache/web/' + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info('download update percent complete: ' + webDownloadItem.getPercentComplete());
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.error("download failed guid: " + webDownloadItem.getGuid());
+              console.error('download failed guid: ' + webDownloadItem.getGuid());
               // 序列化失败的下载任务到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download finish guid: " + webDownloadItem.getGuid());
+              console.info('download finish guid: ' + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
             webview.WebDownloadManager.setDownloadDelegate(this.delegate);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Button('startDownload')
@@ -299,7 +313,8 @@ struct WebComponent {
             // 开发者需要替换为自己想要下载的内容的地址。
             this.controller.startDownload('https://www.example.com/');
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       // 将当前的下载任务信息序列化保存，用于后续恢复下载任务。
@@ -308,9 +323,10 @@ struct WebComponent {
         .onClick(() => {
           try {
             // 保存当前下载数据到持久化文档中。
-            downloadUtil.saveDownloadInfo(downloadUtil.uint8ArrayToStr(this.download.serialize()));
+            DownloadUtil.saveDownloadInfo(DownloadUtil.uint8ArrayToStr(this.download.serialize()));
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       // 从序列化的下载任务信息中，恢复下载任务。
@@ -320,10 +336,12 @@ struct WebComponent {
           try {
             // 当前默认持久化文件存在，用户根据实际情况增加判断。
             let webDownloadItem =
-              webview.WebDownloadItem.deserialize(downloadUtil.strToUint8Array(downloadUtil.readFileSync(filePath, fileName)));
+              webview.WebDownloadItem.deserialize(
+                DownloadUtil.strToUint8Array(DownloadUtil.readFileSync(filePath, fileName)));
             webview.WebDownloadManager.resumeDownload(webDownloadItem);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
 
@@ -334,8 +352,9 @@ struct WebComponent {
 ```
 
 下载任务信息持久化工具类文件。
-```ts
-// downloadUtil.ets
+<!-- @[task_info_persistence_util](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/downloadUtil.ets) -->
+
+``` TypeScript
 import { util } from '@kit.ArkTS';
 import fileStream from '@ohos.file.fs';
 
@@ -343,7 +362,7 @@ const helper = new util.Base64Helper();
 
 export let filePath : string;
 export const fileName = 'demoFile.txt';
-export namespace  downloadUtil {
+export namespace  DownloadUtil {
   
   export function init(context: UIContext): void {
     filePath = context.getHostContext()!.filesDir;

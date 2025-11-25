@@ -6,7 +6,7 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
-JavaScript virtual machine (JSVM) is a standard JavaScript (JS) code execution engine that strictly complies with the ECMAScript specification.
+JavaScript virtual machine (JSVM) is a standard JavaScript (JS) code execution engine that strictly complies with the ECMAScript specification. For details, see [JSVM](../reference/common/capi-jsvm.md).
 The JSVM-based code debugging and tuning capabilities include Debugger, CPU Profiler, Heap Snapshot, and Heap Statistics. The following APIs are involved:
 | API |  Description|
 |---|---|

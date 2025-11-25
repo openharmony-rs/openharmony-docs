@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+struct OhosImageSourceDelayTimeList {...}
+```
+
 ## Overview
 
 The struct describes the delay time list of an image source. The delay time list is obtained by calling [OH_ImageSource_GetDelayTime](capi-image-source-mdk-h.md#oh_imagesource_getdelaytime).

@@ -34,7 +34,7 @@ Currently, the system provides the default style and custom style for the **AVCa
                 try {
                   let context = this.getUIContext().getHostContext() as Context;
                 // Create an AVSession of the voice_call type.
-                let session: AVSessionManager.AVSession = await AVSessionManager.createAVSession(context, 'voiptest', 'voice_call');
+                let session: avSession.AVSession = await avSession.createAVSession(context, 'voiptest', 'voice_call');
                 } catch (err) {
                   console.error(`AVSession create :  Error: Code: ${err.code}, message: ${err.message}`);
                 }
@@ -254,37 +254,41 @@ You can customize a style by setting the **customPicker** parameter of the [AVIn
    ```ts
    import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';
 
-   @State pickerImage: ResourceStr = $r('app.media.earpiece'); // Custom resources.
+   @Entry
+   @Component
+   struct CastPicker {
+     @State pickerImage: ResourceStr = $r('app.media.startIcon'); // Custom resources.
 
-   // (Optional) Callback for the device list state change.
-   private onStateChange(state: AVCastPickerState) {
-     if (state === AVCastPickerState.STATE_APPEARING) {
-       console.info('The picker starts showing.');
-     } else if (state === AVCastPickerState.STATE_DISAPPEARING) {
-       console.info('The picker finishes presenting.');
-     }
-   }
-
-   build() {
-     Row() {
-       Column() {
-         AVInputCastPicker(
-           {
-             customPicker: (): void => this.ImageBuilder(), // Add a custom parameter.
-             onStateChange: this.onStateChange
-           }
-         ).size({ height: 45, width:45 })
+     // (Optional) Callback for the device list state change.
+     private onStateChange(state: AVCastPickerState) {
+        if (state === AVCastPickerState.STATE_APPEARING) {
+         console.info('The picker starts showing.');
+       } else if (state === AVCastPickerState.STATE_DISAPPEARING) {
+         console.info('The picker finishes presenting.');
        }
      }
-   }
+ 
+     build() {
+       Row() {
+         Column() {
+           AVInputCastPicker(
+             {
+               customPicker: this.ImageBuilder.bind(this), // Add a custom parameter.
+               onStateChange: this.onStateChange
+             }
+           ).size({ height: 45, width: 45 })
+         }
+       }
+     }
 
-   // Custom content.
-   @Builder
-   ImageBuilder() {
-     Image(this.pickerImage)
-       .size({ width: '100%', height: '100%' })
-       .backgroundColor('#00000000')
-       .fillColor(Color.Black)
+     // Custom content.
+     @Builder
+     ImageBuilder() {
+       Image(this.pickerImage)
+         .size({ width: '100%', height: '100%' })
+         .backgroundColor('#00000000')
+         .fillColor(Color.Black)
+     }
    }
    ```
 

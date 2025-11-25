@@ -42,8 +42,8 @@ The file declares the camera input concepts.
 | [Camera_ErrorCode OH_CameraInput_OpenConcurrentCameras(Camera_Input* cameraInput, Camera_ConcurrentType type)](#oh_camerainput_openconcurrentcameras) | - | Opens the camera based on the specified concurrency type.|
 | [Camera_ErrorCode OH_CameraInput_Close(Camera_Input* cameraInput)](#oh_camerainput_close) | - | Closes a camera.|
 | [Camera_ErrorCode OH_CameraInput_Release(Camera_Input* cameraInput)](#oh_camerainput_release) | - | Releases a Camera_Input instance.<br> Either this function or [OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close) needs to be called.|
-| [Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input* cameraInput, bool* isVariable)](#oh_camerainput_isphysicalcameraorientationvariable) | - | Checks whether the physical camera orientation is adjustable in different fold states.|
-| [Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* cameraInput, uint32_t* orientation)](#oh_camerainput_getphysicalcameraorientation) | - | Obtains the physical camera orientation in the current fold state.|
+| [Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input* cameraInput, bool* isVariable)](#oh_camerainput_isphysicalcameraorientationvariable) | - | Checks whether the physical camera orientation is adjustable in different fold states of the device.|
+| [Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* cameraInput, uint32_t* orientation)](#oh_camerainput_getphysicalcameraorientation) | - | Obtains the physical camera orientation in the current fold state of the device.|
 | [Camera_ErrorCode OH_CameraInput_UsePhysicalCameraOrientation(Camera_Input* cameraInput, bool isUsed)](#oh_camerainput_usephysicalcameraorientation) | - | Enables or disables the use of the physical camera orientation.|
 
 ## Function Description
@@ -268,9 +268,9 @@ Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input
 
 **Description**
 
-Checks whether the physical camera orientation is adjustable in different fold states.
+Checks whether the physical camera orientation is adjustable in different fold states of the device.
 
-**Since**: 21
+**Since**: 22
 
 
 **Parameters**
@@ -294,9 +294,9 @@ Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* camer
 
 **Description**
 
-Obtains the physical camera orientation in the current fold state.
+Obtains the physical camera orientation in the current fold state of the device.
 
-**Since**: 21
+**Since**: 22
 
 
 **Parameters**
@@ -322,7 +322,7 @@ Camera_ErrorCode OH_CameraInput_UsePhysicalCameraOrientation(Camera_Input* camer
 
 Enables or disables the use of the physical camera orientation.
 
-**Since**: 21
+**Since**: 22
 
 
 **Parameters**

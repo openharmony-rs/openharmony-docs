@@ -15,7 +15,7 @@
 
 | 属性 | 含义 | 数据类型 | 取值范围 |
 | -------- | -------- | -------- | -------- |
-| name | 需要使用的权限名称。 | 字符串 | **必填**，需为系统已定义的权限，取值范围请参考[应用权限列表](app-permissions.md)。
+| name | 需要使用的权限名称。 | 字符串 | **必填**，需为系统已定义的权限，取值范围请参考[应用权限列表](app-permissions.md)。 |
 | reason | 申请权限的原因。 | 字符串 | **可选填写**，该字段用于应用上架校验，申请user_grant权限时必填并需多语种适配。<br>格式为$string: \*\*\*。string资源引用需要在string.json文件配置标签"name": "reason"，配置样例可参考[资源文件示例](../../quick-start/resource-categories-and-access.md#资源文件示例)。<br/>reason填写内容可参考[权限使用理由的文案内容规范](#权限使用理由的文案内容规范)。 |
 | usedScene | 权限使用的场景，该字段用于应用上架校验。包括abilities和when两个子项。<br/>- abilities：使用权限的UIAbility或者ExtensionAbility组件的名称。<br/>- when：调用时机。 | 对象 | **申请user_grant权限时，usedScene必填，其他情况下选填。<br>**<br/>- abilities：**可选填写**，可以配置为多个UIAbility或者ExtensionAbility名称的字符串数组。<br/>- when：**可选填写**，但如果配置此字段，只能填入固定值inuse（使用时）或always（始终），不能为空。<br/>当申请的权限为user_grant权限时建议填写。 |
 
@@ -27,14 +27,16 @@
 
 > **说明：**
 >
-> 以下"ohos.permission.APPROXIMATELY_LOCATION"、"ohos.permission.LOCATION"仅为样例示意。请开发者根据实际需要，参照上表要求填写对应属性。
+> 下述"name"中填入的权限仅为样例示意。请开发者根据实际需要，参照上表要求填写对应属性。
 
 <!-- @[request_permission_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/module.json5) -->
 
 ``` JSON5
 {
   "module": {
-	// ···
+    // ···
+    // 1.ohos.permission.APPROXIMATELY_LOCATION与ohos.permission.LOCATION为user_grant权限，reason和usedScene为必填字段。
+    // 2.ohos.permission.USE_BLUETOOTH为system_grant权限，reason和usedScene为选填字段。
     "requestPermissions": [
       {
         "name": "ohos.permission.APPROXIMATELY_LOCATION",
@@ -54,7 +56,10 @@
             "FormAbility"
           ],
           "when": "inuse"
-        },
+        }
+      },
+      {
+        "name": "ohos.permission.USE_BLUETOOTH"
       }
     ]
   }

@@ -561,9 +561,9 @@ Stage模型完善了以下特性：
 
 1. 注册码云gitee帐号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
+2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
 
-3. 安装[git客户端](https://gitee.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://gitcode.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
    ```
    git config --global user.name "yourname"
    git config --global user.email "your-email-address"
@@ -572,7 +572,7 @@ Stage模型完善了以下特性：
 
 4. 安装码云repo工具，可以执行如下命令。
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -581,18 +581,18 @@ Stage模型完善了以下特性：
 
 **方式一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-4.0-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-4.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v4.0-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v4.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -603,14 +603,14 @@ Stage模型完善了以下特性：
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-4.0-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-4.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v4.0-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v4.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -639,15 +639,15 @@ Stage模型完善了以下特性：
 
 ### API变更
 
-- OpenHarmony 4.0 Release相比4.0 Beta2的API差异请[点击这里查看](https://gitee.com/openharmony/docs/blob/OpenHarmony-4.0-Release/zh-cn/release-notes/api-diff/v4.0-Release-vs-v4.0-beta2/Readme-CN.md)。
-- OpenHarmony 4.0 Release相比3.2 Release的API差异请[点击这里查看](https://gitee.com/openharmony/docs/blob/OpenHarmony-4.0-Release/zh-cn/release-notes/api-diff/v4.0-Release-vs-v3.2-Release/Readme-CN.md)。
+- OpenHarmony 4.0 Release相比4.0 Beta2的API差异请[点击这里查看](https://gitcode.com/openharmony/docs/blob/OpenHarmony-4.0-Release/zh-cn/release-notes/api-diff/v4.0-Release-vs-v4.0-beta2/Readme-CN.md)。
+- OpenHarmony 4.0 Release相比3.2 Release的API差异请[点击这里查看](https://gitcode.com/openharmony/docs/blob/OpenHarmony-4.0-Release/zh-cn/release-notes/api-diff/v4.0-Release-vs-v3.2-Release/Readme-CN.md)。
 
-此外，从4.0 Beta2至今，有少量接口变更可能影响此前应用工程的兼容性或需要您关注，详细的变更说明请[点击这里查看](https://gitee.com/openharmony/docs/blob/OpenHarmony-4.0-Release/zh-cn/release-notes/changelogs/v4.0-Release/Readme-CN.md)
+此外，从4.0 Beta2至今，有少量接口变更可能影响此前应用工程的兼容性或需要您关注，详细的变更说明请[点击这里查看](https://gitcode.com/openharmony/docs/blob/OpenHarmony-4.0-Release/zh-cn/release-notes/changelogs/v4.0-Release/Readme-CN.md)
 
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 
 ### Samples
@@ -656,12 +656,12 @@ Stage模型完善了以下特性：
 
 | 特性 | 名称 | 简介 | 开发语言 |
 | -------- | -------- | -------- | -------- |
-| 文件管理 | [选择并查看文档与媒体文件](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/BasicFeature/FileManagement/FileShare/Picker)（APL等级需为system_basic） | 本示例展示了应用使用\@ohos.file.picker、\@ohos.multimedia.mediaLibrary、\@ohos.file.fs 等接口，实现了picker拉起文档编辑保存、拉起系统相册图片查看、拉起视频并播放的功能。 | ArkTS |
-| 一次开发，多端部署 | [一多导航栏](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/SuperFeature/MultiDeviceAppDev/MultiNavBar) | 本示例展示了导航组件在不同设备形态下的样式。<br/>在小型/轻量级设备上，以tabs形式展示，内容、导航为上下样式布局，通过点击底部tabs切换内容；<br/>在标准设备上，以SideBarContainer形式展示，内容、导航为左右布局，通过点击侧边一二级菜单进行内容切换。<br/>本示例使用一次开发多端部署 中介绍的自适应布局能力和响应式布局能力进行多设备（或多窗口尺寸）适配，主要通过组件提供窗口断点事件，保证应用在不同设备或不同窗口尺寸下可以正常显示。 | ArkTS |
-| 卡片 | [应用主动添加数据代理卡片到桌面](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/SuperFeature/Widget/RequestAddForm)（Full SDK） | 本示例主要展示了使用\@ohos.app.form.formBindingData、\@ohos.app.form.formProvider等接口，实现了在com.ohos.hag.famanager应用上，主动添加数据代理卡片到桌面的功能。 | ArkTS |
-| 安全 | [安全控件类型的UI控件](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/SystemFeature/Security/AuthorizedButton)（Full SDK） | 本示例提供了安全控件类型的UI控件，支撑应用开发者集成安全控件做临时授权场景，当用户实际点击了某种类型的安全控件时，会对应用进行相应的临时授权，减少权限弹窗对用户的干扰，同时提供更小的授权范围。 | ArkTS |
+| 文件管理 | [选择并查看文档与媒体文件](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/BasicFeature/FileManagement/FileShare/Picker)（APL等级需为system_basic） | 本示例展示了应用使用\@ohos.file.picker、\@ohos.multimedia.mediaLibrary、\@ohos.file.fs 等接口，实现了picker拉起文档编辑保存、拉起系统相册图片查看、拉起视频并播放的功能。 | ArkTS |
+| 一次开发，多端部署 | [一多导航栏](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/SuperFeature/MultiDeviceAppDev/MultiNavBar) | 本示例展示了导航组件在不同设备形态下的样式。<br/>在小型/轻量级设备上，以tabs形式展示，内容、导航为上下样式布局，通过点击底部tabs切换内容；<br/>在标准设备上，以SideBarContainer形式展示，内容、导航为左右布局，通过点击侧边一二级菜单进行内容切换。<br/>本示例使用一次开发多端部署 中介绍的自适应布局能力和响应式布局能力进行多设备（或多窗口尺寸）适配，主要通过组件提供窗口断点事件，保证应用在不同设备或不同窗口尺寸下可以正常显示。 | ArkTS |
+| 卡片 | [应用主动添加数据代理卡片到桌面](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/SuperFeature/Widget/RequestAddForm)（Full SDK） | 本示例主要展示了使用\@ohos.app.form.formBindingData、\@ohos.app.form.formProvider等接口，实现了在com.ohos.hag.famanager应用上，主动添加数据代理卡片到桌面的功能。 | ArkTS |
+| 安全 | [安全控件类型的UI控件](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/SystemFeature/Security/AuthorizedButton)（Full SDK） | 本示例提供了安全控件类型的UI控件，支撑应用开发者集成安全控件做临时授权场景，当用户实际点击了某种类型的安全控件时，会对应用进行相应的临时授权，减少权限弹窗对用户的干扰，同时提供更小的授权范围。 | ArkTS |
 
-请访问[Samples](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/)仓了解更多信息。
+请访问[Samples](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/)仓了解更多信息。
 
 
 ## 修复缺陷列表

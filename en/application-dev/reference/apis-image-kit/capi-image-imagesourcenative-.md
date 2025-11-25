@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct ImageSourceNative_ ImageSourceNative
+```
+
 ## Overview
 
 The struct describes an image source object at the native layer.

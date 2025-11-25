@@ -1071,11 +1071,11 @@ Enumerates SIM card types and states.
 
 **System capability**: SystemCapability.Telephony.StateRegistry
 
-|     Name           |                 Type               | Mandatory| Description                                                     |
-| ------------------- | ----------------------------------- | ---- | --------------------------------------------------------  |
-| type                | [CardType](js-apis-sim.md#cardtype7) | Yes  | SIM card type.|
-| state               | [SimState](js-apis-sim.md#simstate) | Yes  | SIM card state.|
-| reason<sup>8+</sup> | [LockReason](#lockreason8)          | Yes  | SIM card lock type.                                            |
+|     Name           |                 Type               | Read-Only|Optional| Description  |
+| ------------------- | -----------------------------------|---- | ---- | --------------------------------------------------------  |
+| type                | [CardType](js-apis-sim.md#cardtype7) | No |No| SIM card type.|
+| state               | [SimState](js-apis-sim.md#simstate) | No|  No| SIM card state.|
+| reason<sup>8+</sup> | [LockReason](#lockreason8)          | No | No| SIM card lock type.                                            |
 
 
 ## CallStateInfo<sup>11+</sup>

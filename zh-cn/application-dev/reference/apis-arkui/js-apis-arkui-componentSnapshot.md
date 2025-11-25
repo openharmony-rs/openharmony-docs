@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供获取组件截图的能力，包括已加载的组件的截图和没有加载的组件的截图。组件截图只能够截取组件大小的区域，如果组件的绘制超出了它的区域，或子组件的绘制超出了父组件的区域，这些在组件区域外绘制的内容不会在截图中呈现。兄弟节点堆叠在组件区域内，截图不会显示兄弟组件。
 
@@ -84,8 +84,14 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.img')).autoResize(true).width(200).height(200).margin(5).id("root")
+        Image($r('app.media.img'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id("root")
       }
+
       Button("click to generate UI snapshot")
         .onClick(() => {
           // 建议使用this.getUIContext().getComponentSnapshot().get()
@@ -95,7 +101,7 @@ struct SnapshotExample {
               return;
             }
             this.pixmap = pixmap
-          }, {scale : 2, waitUntilRenderFinished : true})
+          }, { scale: 2, waitUntilRenderFinished: true })
         }).margin(10)
     }
     .width('100%')
@@ -166,15 +172,21 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.img')).autoResize(true).width(200).height(200).margin(5).id("root")
+        Image($r('app.media.img'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id("root")
       }
+
       Button("click to generate UI snapshot")
         .onClick(() => {
           // 建议使用this.getUIContext().getComponentSnapshot().get()
-          componentSnapshot.get("root", {scale : 2, waitUntilRenderFinished : true})
+          componentSnapshot.get("root", { scale: 2, waitUntilRenderFinished: true })
             .then((pixmap: image.PixelMap) => {
               this.pixmap = pixmap
-            }).catch((err:Error) => {
+            }).catch((err: Error) => {
             console.error("error: " + err)
           })
         }).margin(10)
@@ -269,9 +281,11 @@ struct OffscreenSnapshotExample {
       Button("click to generate offscreen UI snapshot")
         .onClick(() => {
           // 建议使用this.getUIContext().getComponentSnapshot().createFromBuilder()
-          componentSnapshot.createFromBuilder(()=>{this.RandomBuilder()},
+          componentSnapshot.createFromBuilder(() => {
+            this.RandomBuilder()
+          },
             (error: Error, pixmap: image.PixelMap) => {
-              if(error){
+              if (error) {
                 console.error("error: " + JSON.stringify(error))
                 return;
               }
@@ -280,8 +294,9 @@ struct OffscreenSnapshotExample {
               // ....
               // 获取组件大小和位置
               let info = this.getUIContext().getComponentUtils().getRectangleById("builder")
-              console.info(info.size.width + ' ' + info.size.height + ' ' + info.localOffset.x + ' ' + info.localOffset.y + ' ' + info.windowOffset.x + ' ' + info.windowOffset.y)
-            }, 320, true, {scale : 2, waitUntilRenderFinished : true})
+              console.info(info.size.width + ' ' + info.size.height + ' ' + info.localOffset.x + ' ' +
+              info.localOffset.y + ' ' + info.windowOffset.x + ' ' + info.windowOffset.y)
+            }, 320, true, { scale: 2, waitUntilRenderFinished: true })
         })
       Image(this.pixmap)
         .margin(10)
@@ -380,15 +395,18 @@ struct OffscreenSnapshotExample {
       Button("click to generate offscreen UI snapshot")
         .onClick(() => {
           // 建议使用this.getUIContext().getComponentSnapshot().createFromBuilder()
-          componentSnapshot.createFromBuilder(()=>{this.RandomBuilder()}, 320, true, {scale : 2, waitUntilRenderFinished : true})
+          componentSnapshot.createFromBuilder(() => {
+            this.RandomBuilder()
+          }, 320, true, { scale: 2, waitUntilRenderFinished: true })
             .then((pixmap: image.PixelMap) => {
               this.pixmap = pixmap
               // 保存pixmap到文件中
               // ....
               // 获取组件大小和位置
               let info = this.getUIContext().getComponentUtils().getRectangleById("builder")
-              console.info(info.size.width + ' ' + info.size.height + ' ' + info.localOffset.x + ' ' + info.localOffset.y + ' ' + info.windowOffset.x + ' ' + info.windowOffset.y)
-            }).catch((err:Error) => {
+              console.info(info.size.width + ' ' + info.size.height + ' ' + info.localOffset.x + ' ' +
+              info.localOffset.y + ' ' + info.windowOffset.x + ' ' + info.windowOffset.y)
+            }).catch((err: Error) => {
             console.error("error: " + err)
           })
         })
@@ -460,13 +478,19 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.img')).autoResize(true).width(200).height(200).margin(5).id("root")
+        Image($r('app.media.img'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id("root")
       }
+
       Button("click to generate UI snapshot")
         .onClick(() => {
           try {
-          // 建议使用this.getUIContext().getComponentSnapshot().getSync()
-            let pixelmap = componentSnapshot.getSync("root", {scale : 2, waitUntilRenderFinished : true})
+            // 建议使用this.getUIContext().getComponentSnapshot().getSync()
+            let pixelmap = componentSnapshot.getSync("root", { scale: 2, waitUntilRenderFinished: true })
             this.pixmap = pixelmap
           } catch (error) {
             console.error("getSync errorCode: " + error.code + " message: " + error.message)
@@ -545,14 +569,16 @@ type SnapshotRegionType =  SnapshotRegion | LocalizedSnapshotRegion
 
 ```ts
 import { image } from '@kit.ImageKit';
+
 @Entry
 @Component
 struct SnapshotExample {
   @State pixmap: image.PixelMap | undefined = undefined
+
   build() {
     Column() {
       Row() {
-        Column(){
+        Column() {
           TextClock()
           Button("Button ABCDE").type(ButtonType.Normal)
           Row() {
@@ -562,6 +588,7 @@ struct SnapshotExample {
             Checkbox()
             Text("×")
           }.align(Alignment.Start)
+
           TextInput()
         }
         .align(Alignment.Start)
@@ -573,11 +600,21 @@ struct SnapshotExample {
         .borderColor(Color.Green)
 
       }
+
       Button("get capture")
-      .onClick(() => {
+        .onClick(() => {
           try {
             let pixelmap = this.getUIContext().getComponentSnapshot().getSync("component1",
-              {scale : 2, waitUntilRenderFinished : true,region: {start:20,top:20, end:200,bottom:240}})
+              {
+                scale: 2,
+                waitUntilRenderFinished: true,
+                region: {
+                  start: 20,
+                  top: 20,
+                  end: 200,
+                  bottom: 240
+                }
+              })
             this.pixmap = pixelmap
           } catch (error) {
             console.error("getSync errorCode: " + error.code + " message: " + error.message)

@@ -7,6 +7,11 @@
 <!--Adviser: @HelloShuo-->
 
 
+```
+typedef struct ArkWeb_WebMessage* ArkWeb_WebMessagePtr
+```
+
+
 ## 概述
 
 Post Message数据结构体指针。

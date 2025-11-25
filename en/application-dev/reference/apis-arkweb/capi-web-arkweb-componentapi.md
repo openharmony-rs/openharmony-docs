@@ -4,7 +4,11 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
+
+```
+typedef struct {...} ArkWeb_ComponentAPI
+```
 
 ## Overview
 

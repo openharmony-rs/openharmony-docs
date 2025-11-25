@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```
+typedef struct {...} ArkWeb_WebMessageAPI
+```
+
 
 ## 概述
 

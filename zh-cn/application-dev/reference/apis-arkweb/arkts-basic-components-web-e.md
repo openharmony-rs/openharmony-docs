@@ -133,6 +133,8 @@ Web屏幕捕获模式。
 | THREAT_FRAUD    | 1 | 欺诈网站。              |
 | THREAT_RISK     | 2 | 存在安全风险的网站。      |
 | THREAT_WARNING  | 3 | 涉嫌包含不健康内容的网站。 |
+| THREAT_NONE<sup>21+</sup>      | 4 | 安全检查通过，未发现任何风险。 |
+| THREAT_UNPROCESSED<sup>21+</sup>  | 5 | 未进行安全检查。 |
 
 ## RenderExitReason<sup>9+</sup>
 
@@ -348,7 +350,7 @@ Web布局模式的配置。
 | RESIZE_VISUAL      | 0 | 软键盘避让时，仅调整可视视口大小，不调整布局视口大小。   |
 | RESIZE_CONTENT     | 1 | 默认值，软键盘避让时，同时调整可视视口和布局视口的大小。 |
 | OVERLAYS_CONTENT   | 2 | 不调整任何视口大小，不会触发软键盘避让。   |
-| RETURN_TO_UICONTEXT<sup>22+</sup> | 2 | Web组件的软键盘避让行为将跟随UIcontext设置的[KeyboardAvoidMode](../apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11)模式，Web组件不再处理组件的避让。 |
+| RETURN_TO_UICONTEXT<sup>22+</sup> | 3 | Web组件的软键盘避让行为将跟随UIcontext设置的[KeyboardAvoidMode](../apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11)模式，Web组件不再处理组件的避让。 |
 
 ## WebElementType<sup>13+</sup>
 
@@ -400,7 +402,7 @@ Web布局模式的配置。
 | DEFAULT                    | 0 | 默认值，Web会在触摸按下屏幕时申请获焦，包括点击、长按、滑动、缩放等任何触摸屏幕的手势行为。 |
 | GESTURE_TAP_AND_LONG_PRESS | 1 | Web只会在点击和长按手势事件生成时申请获焦，点击和长按在触摸抬起之后生成，滑动和缩放等手势行为不会获焦。 |
 
-## WebRotateEffect<sup>21+</sup>
+## WebRotateEffect<sup>22+</sup>
 
 组件旋转时，宽高动画过程中组件内容如何填充以适应新尺寸的方式。
 
@@ -457,3 +459,25 @@ Web布局模式的配置。
 | ----------- | -- | ------------------ |
 | DETECTION_CONTENTFUL_NODES_SEVENTEEN        | 0 | 以17点检测法进行页面检测。当检测点命中已经渲染了且有意义的节点，则认为有命中。有意义的节点指的是图片，视频和文字节点。<br>当无命中，或少于用户设置阈值命中时，则认为是白屏或者近似白屏。<br>其中，检测的17个点位包括：<br>中心点 (1个)： 位于页面的几何中心。<br>内部网格交点 (16个)：在页面区域内定义一个5×5 的均匀网格，这16个点即为页面内4条垂直等分线和4条水平等分线的交点。         |
 
+## CredentialType<sup>22+</sup>
+
+凭证类型。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称          | 值 | 说明                 |
+| ----------- | -- | ------------------ |
+| CREDENTIAL_USER        | 2 | 用户凭证。         |
+| CREDENTIAL_APP        | 3 | 应用凭证。         |
+| CREDENTIAL_UKEY        | 4 | ukey凭证。         |
+
+## PinVerifyResult<sup>22+</sup>
+
+PIN码认证结果。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称          | 值 | 说明                 |
+| ----------- | -- | ------------------ |
+| PIN_VERIFICATION_SUCCESS        | 0 | 成功。         |
+| PIN_VERIFICATION_FAILED        | 1 | 失败。         |

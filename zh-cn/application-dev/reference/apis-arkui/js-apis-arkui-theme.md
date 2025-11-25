@@ -4,7 +4,7 @@
 <!--Owner: @lushi871202-->
 <!--Designer: @lushi871202-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 支持自定义主题风格，实现App组件风格跟随Theme切换。
 

@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+union Rdb_KeyData { ... }
+```
+
 ## 概述
 
 存放变化的具体数据。

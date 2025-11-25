@@ -5,7 +5,7 @@
 <!--Owner: @zcdqs; @fangyuhao-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 网格容器，由“行”和“列”分割的单元格所组成，通过指定“项目”所在的单元格做出各种各样的布局。
 
@@ -736,7 +736,7 @@ onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number, 
 | event       | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。 |
 | itemIndex   | number                                | 是   | 拖拽起始位置。 |
 | insertIndex | number                                | 是   | 拖拽插入位置。 |
-| isSuccess   | boolean                               | 是   | 是否成功释放   |
+| isSuccess   | boolean                               | 是   | 拖拽释放位置是否在设置了onItemDrop的网格元素之内。<br/>true：表示拖拽释放位置在设置了onItemDrop的网格元素之内；false：表示拖拽释放位置在设置了onItemDrop的网格元素之外。  |
 
 ### onScrollBarUpdate<sup>10+</sup>
 
@@ -2937,11 +2937,15 @@ struct GridExample {
     Column({ space: 5 }) {
       Text('可滚动Grid和LazyForEach')
       Row() {
+        // 点击按钮来调用contentSize函数获取内容尺寸
         Button('GetContentSize')
           .onClick(() => {
+            // 通过调用contentSize函数获取内容尺寸的宽度值
             this.contentWidth = this.scroller.contentSize().width;
+            // 通过调用contentSize函数获取内容尺寸的高度值
             this.contentHeight = this.scroller.contentSize().height;
           })
+        // 将获取到的内容尺寸信息通过文本进行呈现
         Text('Width：' + this.contentWidth + '，Height：' + this.contentHeight)
           .fontColor(Color.Red)
           .height(50)

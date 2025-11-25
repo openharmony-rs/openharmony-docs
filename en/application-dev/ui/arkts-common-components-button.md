@@ -1,4 +1,10 @@
 # Button
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyi0309-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The **Button** component is usually activated by user clicks to perform a specific action. It comes in four types: capsule, circle, normal, and rounded rectangle. When used as a container, the **Button** component accepts child components such as text and images. For details, see [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md).
@@ -28,7 +34,7 @@ You can create a button using the following methods:
   ![en-us_image_0000001562820757](figures/en-us_image_0000001562820757.png)
 
 
-- Creating a button with child components using ButtonOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttonoptions)<br> For example, using **type** and **stateEffect** in **ButtonOptions**:
+- Creating a button with child components using [ButtonOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttonoptions)<br> For example, using **type** and **stateEffect** in **ButtonOptions**:
 
   ```ts
   Button(options?: {type?: ButtonType, stateEffect?: boolean})
@@ -174,9 +180,9 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
 
 ## Example
 
-- Using the button for startup
+- Using the button for triggering actions
 
-  You can use the button for any UI element that involves the startup operation. The button triggers the predefined event based on the user's operation. For example, you can use a button in the **List** container to redirect the user to another page.
+  You can use the button for any UI element that requires user-initiated actions. The button triggers the predefined event based on user interactions. For example, you can use a button in the **List** container to navigate to another page.
 
   ```ts
   // xxx.ets

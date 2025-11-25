@@ -3,8 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--SE: @junjie_shi-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @junjie_shi-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
 
 ## Overview
 
@@ -24,8 +25,8 @@ Defines the names of all predefined event parameters. In addition to custom even
 
 ### Macros
 
-| Name                                                                                              | Description        |
-|--------------------------------------------------------------------------------------------------|------------|
+| Name| Description|
+| -- | -- |
 | [PARAM_USER_ID](#param_user_id) "user_id"                                                        | User ID.<br>**Since**: 8 |
 | [PARAM_DISTRIBUTED_SERVICE_NAME](#param_distributed_service_name) "ds_name"                      | Distributed service name.<br>**Since**: 8  |
 | [PARAM_DISTRIBUTED_SERVICE_INSTANCE_ID](#param_distributed_service_instance_id) "ds_instance_id" | Distributed service instance ID.<br>**Since**: 8|

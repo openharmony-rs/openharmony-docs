@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_Point OH_Drawing_Point
+```
+
 ## 概述
 
 定义一个点，用于描述坐标点。

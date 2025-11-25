@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 You can call [runJavaScript()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascript) and [runJavaScriptExt()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10) from the application side to invoke JavaScript functions of frontend pages.
 
@@ -47,20 +47,21 @@ In the following example, when a user clicks the **runJavaScript** button on the
 
 - Application code:
 
-  ```ts
-  // xxx.ets
+  <!-- @[interact_with_web_pages_through_button_click_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct WebComponent {
     webviewController: webview.WebviewController = new webview.WebviewController();
-
+  
     aboutToAppear() {
       // Enable web frontend page debugging.
       webview.WebviewController.setWebDebuggingAccess(true);
     }
-
+  
     build() {
       Column() {
         Button('runJavaScriptParam')
@@ -76,7 +77,8 @@ In the following example, when a user clicks the **runJavaScript** button on the
         Button('runJavaScriptCodePassed')
           .onClick(() => {
             // Pass in code for runJavaScript.
-            this.webviewController.runJavaScript(`function changeColor(){document.getElementById('text').style.color = 'red'}`);
+            this.webviewController.runJavaScript(
+              `function changeColor(){document.getElementById('text').style.color = 'red'}`);
           })
         Web({ src: $rawfile('index.html'), controller: this.webviewController })
       }

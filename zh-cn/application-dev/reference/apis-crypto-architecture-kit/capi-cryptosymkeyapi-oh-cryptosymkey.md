@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoSymKey OH_CryptoSymKey
+```
+
 ## 概述
 
 定义对称密钥生成器结构体。

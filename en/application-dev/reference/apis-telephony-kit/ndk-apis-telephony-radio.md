@@ -17,7 +17,7 @@ Provides C APIs for the radio module.
 ## Summary
 
 
-### File
+### Files
 
 | Name| Description|
 | -------- | -------- |

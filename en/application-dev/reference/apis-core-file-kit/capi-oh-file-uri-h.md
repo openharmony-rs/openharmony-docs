@@ -10,7 +10,7 @@
 
 FileUri provides APIs for URI operations, including performing URI-path conversion, obtaining directory URIs, and verifying URIs.
 
-**File to include**: <filemanagement/fileuri/oh_file_uri.h>
+**File to include**: <filemanagement/file_uri/oh_file_uri.h>
 
 **Library**: libohfileuri.so
 

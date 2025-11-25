@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 拖拽事件是指在用户界面中，当用户拖动某个对象（如文件、控件或元素）时触发的一系列事件。这些事件允许开发者自定义拖拽行为，实现诸如拖放、调整位置等功能。
 
@@ -38,6 +38,10 @@ onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | D
 - 如果开发者设置了拖拽数据，则不再使用系统默认填充的拖拽数据。
 
 文本类组件[Text](ts-basic-components-text.md)、[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)、[RichEditor](ts-basic-components-richeditor.md)对选中的文本内容进行拖拽时，不支持自定义预览图。当onDragStart与菜单预览一起使用或使用了默认支持拖拽能力的组件时，预览及菜单项上的自定义内容不支持拖拽。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -196,6 +200,10 @@ onPreDrag(callback: Callback\<PreDragStatus>): T
 
 绑定此事件的组件，当处于手势拖拽发起前的不同阶段时，触发回调。此接口不支持在鼠标拖拽中触发。
 
+> **说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -211,9 +219,6 @@ onPreDrag(callback: Callback\<PreDragStatus>): T
 | 类型 | 说明 |
 | -------- | -------- |
 | T | 返回当前组件。 |
-
-> **说明：**
->- 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 ## onDragSpringLoading<sup>20+</sup>
 
@@ -733,8 +738,8 @@ getGlobalDisplayY(): number
 
 | 名称 | 值 | 说明 |
 | ----- | -- | ----------------- |
-| COPY | - |指定对数据的处理方式为复制。|
-| MOVE| - |指定对数据的处理方式为剪切。|
+| COPY | 0 |指定对数据的处理方式为复制。|
+| MOVE| 1 |指定对数据的处理方式为剪切。|
 
 ## PreDragStatus<sup>12+</sup>枚举说明
 

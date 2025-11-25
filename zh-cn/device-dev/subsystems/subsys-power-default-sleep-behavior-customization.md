@@ -9,7 +9,7 @@
 ### 约束与限制
 
 配置策略：
-产品定制的配置路径，需要根据[配置策略](https://gitee.com/openharmony/customization_config_policy)决定。本开发指导中的定制路径以`/vendor`进行举例，请开发者根据具体的产品配置策略，修改定制路径。
+产品定制的配置路径，需要根据[配置策略](https://gitcode.com/openharmony/customization_config_policy)决定。本开发指导中的定制路径以`/vendor`进行举例，请开发者根据具体的产品配置策略，修改定制路径。
 
 ## 开发指导
 
@@ -25,11 +25,11 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 ### 开发步骤 
 
-本文以[DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568)为例介绍电源默认休眠行为的定制方法。
+本文以[DAYU200](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568)为例介绍电源默认休眠行为的定制方法。
 
 1. 在产品目录`/vendor/hihope/rk3568`下创建power_manager文件夹。
 
-2. 参考电源管理服务组件中的[电源默认休眠行为配置文件夹](https://gitee.com/openharmony/powermgr_power_manager/tree/master/services/native/profile)创建目标文件夹，并安装到`/vendor/hihope/rk3568/power_manager`目录下，文件格式如下：
+2. 参考电源管理服务组件中的[电源默认休眠行为配置文件夹](https://gitcode.com/openharmony/powermgr_power_manager/tree/master/services/native/profile)创建目标文件夹，并安装到`/vendor/hihope/rk3568/power_manager`目录下，文件格式如下：
 
     ```text
     profile
@@ -91,7 +91,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     | ACTION_HIBERNATE | 3 | 进入休眠 |
     | ACTION_SHUTDOWN | 4 | 关机 |
 
-4. 参考[电源默认休眠行为的配置文件夹中的BUILD.gn](https://gitee.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/BUILD.gn)编写BUILD.gn文件，将power_suspend.json打包到`/vendor/etc/power_config`目录下，配置如下：
+4. 参考[电源默认休眠行为的配置文件夹中的BUILD.gn](https://gitcode.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/BUILD.gn)编写BUILD.gn文件，将power_suspend.json打包到`/vendor/etc/power_config`目录下，配置如下：
 
     ```shell
     import("//build/ohos.gni")               #引用build/ohos.gni
@@ -104,7 +104,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     }
     ```
 
-5. 将编译目标添加到`/vendor/hihope/rk3568`目录下[ohos.build](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build)的"module_list"中，例如：
+5. 将编译目标添加到`/vendor/hihope/rk3568`目录下[ohos.build](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build)的"module_list"中，例如：
 
     ```json
     {

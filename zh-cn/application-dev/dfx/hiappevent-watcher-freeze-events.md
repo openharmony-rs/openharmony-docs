@@ -8,7 +8,7 @@
 
 ## 简介
 
-用户在使用应用时，如果出现点击无反应或应用无响应等情况，并且持续时间超过一定限制，就会被定义为应用冻屏，也被称为应用无响应或应用卡死。为了应对应用冻屏问题，系统会提供应用冻屏检测、维测日志抓取、日志上报的能力，为开发者提供详细的维测日志以辅助故障定位。
+用户在使用应用时，如果出现点击无反应或应用无响应等情况，并且持续时间超过一定限制，就会被定义为应用冻屏，也被称为应用无响应。为了应对应用冻屏问题，系统会提供应用冻屏检测、维测日志抓取、日志上报的能力，为开发者提供详细的维测日志以辅助故障定位。
 
 ## 检测原理
 
@@ -32,6 +32,8 @@
 | -------- | -------- | -------- |
 | time | number | 事件触发时间，单位为ms。 |
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台；false表示应用处于后台。 |
+| release_type | string | 标识应用打包时使用的SDK的发布类型。具体说明详见[ApplicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中的releaseType。<br>**说明**：从API version 23开始支持 |
+| cpu_abi | string | 二进制接口类型。<br>**说明**：从API version 23开始支持。 |
 | bundle_version | string | 应用版本。 |
 | bundle_name | string | 应用名称。 |
 | process_name | string | 应用的进程名称。 |
@@ -39,14 +41,14 @@
 | uid | number | 应用的用户ID。 |
 | uuid | string | 根据故障信息生成的故障特征码，用于标识特征相同的崩溃故障。 |
 | exception | object | 异常信息，详见exception属性。 |
-| hilog | string[] | 日志信息。 |
+| hilog | string[] | 日志信息。当生成应用无响应事件日志时，从hilog缓冲区中获取最多100行故障进程日志信息。 |
 | event_handler | string[] | 主线程未处理消息。 |
 | event_handler_size_3s | string | [THREAD_BLOCK_6S事件](appfreeze-guidelines.md#thread_block_6s-应用主线程卡死超时)（仅在应用无响应事件生效）中3s时任务栈中任务数量。 |
 | event_handler_size_6s | string | [THREAD_BLOCK_6S事件](appfreeze-guidelines.md#thread_block_6s-应用主线程卡死超时)（仅在应用无响应事件生效）中6s时任务栈中任务数量。 |
 | peer_binder | string[] | binder调用信息。 |
 | threads | object[] | 全量线程调用栈，详见thread属性。 |
 | memory | object | 内存信息，详见memory属性。 |
-| external_log<sup>12+</sup> | string[] | 故障日志文件路径。**为避免目录空间超限（限制参考log_over_limit），导致新生成的日志文件写入失败，日志文件处理完后请及时删除。** |
+| external_log<sup>12+</sup> | string[] | 故障日志文件路径。**为避免目录空间超限（参考log_over_limit），导致新生成的日志文件写入失败，日志文件处理完后请及时删除。** |
 | log_over_limit<sup>12+</sup> | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过5M上限。true表示超过上限，日志写入失败；false表示未超过上限。 |
 | process_life_time | number | 故障进程存活时间。<br>**说明**：从API 22开始支持。 |
 
@@ -67,17 +69,19 @@
 
 ### frame字段说明
 
-Native帧frame字段说明
+**Native帧frame字段说明**
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
 | symbol | string | 函数名称。**名称长度超过256字节时将被删除，防止超长字符串引起未知问题。** |
 | file | string | 文件名。 |
-| buildId | string | 文件唯一标识。**文件可能没有buildId，请参考[日志规格](cppcrash-guidelines.md#一般故障场景日志规格)**。 |
+| buildId | string | 文件唯一标识。**文件可能没有buildId**。 |
 | pc | string | 程序执行的指令在文件内的偏移十六进制字节数。 |
 | offset | number | 程序执行的指令在函数内偏移字节数。 |
 
-Js帧frame字段说明
+详细说明请参见[调用栈帧内容说明](cppcrash-guidelines.md#一般故障场景日志规格)。
+
+**Js帧frame字段说明**
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
@@ -86,6 +90,8 @@ Js帧frame字段说明
 | symbol | string | 函数名称 |
 | line | number | 代码行号 |
 | column | number | 代码列号 |
+
+详细说明请参见[JS混合栈帧内容说明](cppcrash-guidelines.md#一般故障场景日志规格)。
 
 ### memory字段说明
 

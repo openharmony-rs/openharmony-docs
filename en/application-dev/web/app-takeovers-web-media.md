@@ -4,7 +4,7 @@
 <!--Owner: @zhangyao75477-->
 <!--Designer: @qiu-gongkai-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The **Web** component provides the capability for applications to take over media playback on web pages, which improves media playback qualities on the web page.
 
@@ -81,8 +81,8 @@ The application needs to register a callback for creating a native media player 
 
 The callback function determines whether to create a native media player to take over the web page media resources based on the media information.
 
-  * If the application does not take over the web page media resource, **null** is returned in the callback.
-  * If the application takes over the web page media resource, a native media player instance is returned in the callback.
+  * If the application does not take over the web page media resource, **null** is returned by the callback.
+  * If the application takes over the web page media resource, a native media player instance is returned by the callback.
 
 The native media player needs to implement the [NativeMediaPlayerBridge](../reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerBridge.md) API so that the ArkWeb kernel can control the playback on the native media player.
 
@@ -148,32 +148,31 @@ This process is the same as that of [same-layer rendering](web-same-layer.md)
 
 1. In the application startup phase, the application should save **UIContext** to use it in subsequent rendering and drawing processes at the same layer.
 
-   ```ts
-   // xxxAbility.ets
-
-   import { UIAbility } from '@kit.AbilityKit';
-   import { window } from '@kit.ArkUI';
-
-   export default class EntryAbility extends UIAbility {
-     onWindowStageCreate(windowStage: window.WindowStage): void {
-       windowStage.loadContent('pages/Index', (err, data) => {
-         if (err && err.code) {
-           return;
-         }
-
-         let mainWindow = windowStage.getMainWindowSync();
-         if (mainWindow) {
-           // Save UIContext, which will be used in subsequent rendering and drawing at the same layer.
-           AppStorage.setOrCreate<UIContext>("UIContext", mainWindow.getUIContext());
-         } else {
-           console.error("Failed to get the main window");
-         }
-       });
-     }
-
-     // ...Other APIs that need to be overridden...
-   }
-   ```
+  <!-- @[allow_subsequent_rendering_to_use_ui](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
+  
+  ``` TypeScript
+  import { window } from '@kit.ArkUI';
+  
+  export default class Entry2Ability extends UIAbility {
+  // ···
+    onWindowStageCreate(windowStage: window.WindowStage): void {
+      windowStage.loadContent('pages/Index', (err, data) => {
+        if (err && err.code) {
+          return;
+        }
+        
+        let mainWindow = windowStage.getMainWindowSync();
+        if (mainWindow) {
+          // Save UIContext, which will be used in subsequent rendering and drawing at the same layer.
+          AppStorage.setOrCreate<UIContext>('UIContext', mainWindow.getUIContext());
+        } else {
+          console.error('Failed to get the main window');
+        }
+      });
+    }
+  // ···
+  }
+  ```
 
 2. The application uses the surface created by the ArkWeb kernel for rendering and drawing at the same layer.
 
@@ -276,7 +275,7 @@ To facilitate the control over native media player by the ArkWeb kernel, the app
     }
 
     play() {
-      // Starts the native media player for playback.
+      // Start the native media player for playback.
     }
 
     pause() {

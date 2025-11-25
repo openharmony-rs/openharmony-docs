@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+struct OhosImageSize {...}
+```
+
 ## Overview
 
 The struct describes the image size. It is a member variable of [OhosImageDecodingOps](capi-image-ohosimagedecodingops.md).

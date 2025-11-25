@@ -1,5 +1,4 @@
 # camera.h
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
@@ -39,7 +38,7 @@ The file declares the basic concepts of the camera.
 | [Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md) | Camera_PhotoCaptureSetting | Describes the parameters related to photo capture.|
 | [Camera_FrameShutterInfo](capi-oh-camera-camera-frameshutterinfo.md) | Camera_FrameShutterInfo | Describes the frame shutter information.|
 | [Camera_CaptureEndInfo](capi-oh-camera-camera-captureendinfo.md) | Camera_CaptureEndInfo | Describes the capture end information.|
-| [Camera_Rect](capi-oh-camera-camera-rect.md) | Camera_Rect | Defines the rectangle.|
+| [Camera_Rect](capi-oh-camera-camera-rect.md) | Camera_Rect | Defines the rectangle.<br> The detection point must be in the coordinate system (0-1), where the top-left corner is (0, 0) and the bottom-right corner is (1, 1).<br> The coordinate system is based on the horizontal device direction with the device's charging port on the right.<br> If the layout of the preview screen of an application is based on the vertical direction with the charging port on the lower side, the layout width and height are {w, h}, and the returned point is {x, y}, then the coordinate point after conversion is (1-y, x).|
 | [Camera_MetadataObject](capi-oh-camera-camera-metadataobject.md) | Camera_MetadataObject | Describes the camera metadata.|
 | [Camera_TorchStatusInfo](capi-oh-camera-camera-torchstatusinfo.md) | Camera_TorchStatusInfo | Describes the flashlight status information.|
 | [Camera_SmoothZoomInfo](capi-oh-camera-camera-smoothzoominfo.md) | Camera_SmoothZoomInfo | Describes the smooth zoom information.|
@@ -340,10 +339,14 @@ Enumerates the image rotation angles.
 
 | Enum Item| Description|
 | -- | -- |
-| IAMGE_ROTATION_0 = 0 | The image rotates 0 degrees.|
-| IAMGE_ROTATION_90 = 90 | The image rotates 90 degrees.|
-| IAMGE_ROTATION_180 = 180 | The image rotates 180 degrees.|
-| IAMGE_ROTATION_270 = 270 | The image rotates 270 degrees.|
+| IAMGE_ROTATION_0 = 0 | The image rotates 0 degrees.<br> Starting from API version 21, the enumerated value [CAMERA_IMAGE_ROTATION_0](#camera_imagerotation) is recommended.|
+| CAMERA_IMAGE_ROTATION_0 = 0 | The image rotates 0 degrees.<br>**Since**: 21|
+| IAMGE_ROTATION_90 = 90 | The image rotates 90 degrees.<br> Starting from API version 21, the enumerated value [CAMERA_IMAGE_ROTATION_90](#camera_imagerotation) is recommended.|
+| CAMERA_IMAGE_ROTATION_90 = 90 | The image rotates 90 degrees.<br>**Since**: 21|
+| IAMGE_ROTATION_180 = 180 | The image rotates 180 degrees.<br> Starting from API version 21, the enumerated value [CAMERA_IMAGE_ROTATION_180](#camera_imagerotation) is recommended.|
+| CAMERA_IMAGE_ROTATION_180 = 180 | The image rotates 180 degrees.<br>**Since**: 21|
+| IAMGE_ROTATION_270 = 270 | The image rotates 270 degrees.<br> Starting from API version 21, the enumerated value [CAMERA_IMAGE_ROTATION_270](#camera_imagerotation) is recommended.|
+| CAMERA_IMAGE_ROTATION_270 = 270 | The image rotates 270 degrees.<br>**Since**: 21|
 
 ### Camera_QualityLevel
 
@@ -393,9 +396,12 @@ Enumerates the flashlight modes.
 
 | Enum Item| Description|
 | -- | -- |
-| OFF = 0 | The flashlight is always off.|
-| ON = 1 | The flashlight is always on.|
-| AUTO = 2 | The flashlight will be turned on automatically based on the ambient lighting level.|
+| OFF = 0 | The flashlight is always off.<br> Starting from API version 21, the enumerated value [CAMERA_TORCH_MODE_OFF](#camera_torchmode) is recommended.|
+| CAMERA_TORCH_MODE_OFF = 0 | The flashlight is always off.<br>**Since**: 21|
+| ON = 1 | The flashlight is always on.<br> Starting from API version 21, the enumerated value [CAMERA_TORCH_MODE_ON](#camera_torchmode) is recommended.|
+| CAMERA_TORCH_MODE_ON = 1 | The flashlight is always on.<br>**Since**: 21|
+| AUTO = 2 | The flashlight will be turned on automatically based on the ambient lighting level.<br> Starting from API version 21, the enumerated value [CAMERA_TORCH_MODE_AUTO](#camera_torchmode) is recommended.|
+| CAMERA_TORCH_MODE_AUTO = 2 | The flashlight will be turned on automatically based on the ambient lighting level.<br>**Since**: 21|
 
 ### Camera_SmoothZoomMode
 
@@ -411,7 +417,8 @@ Enumerates the smooth zoom modes.
 
 | Enum Item| Description|
 | -- | -- |
-| NORMAL = 0 | Bessel curve mode.|
+| NORMAL = 0 | Bessel curve mode.<br> Starting from API version 21, the enumerated value [CAMERA_SMOOTH_ZOOM_MODE_NORMAL](#camera_smoothzoommode) is recommended.|
+| CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0 | Bessel curve mode.<br>**Since**: 21|
 
 ### Camera_SystemPressureLevel
 
@@ -502,9 +509,12 @@ Enumerates the fold statuses.
 
 | Enum Item| Description|
 | -- | -- |
-| NON_FOLDABLE = 0 | Unfoldable.|
-| EXPANDED = 1 | Unfolded.|
-| FOLDED = 2 | Folded.|
+| NON_FOLDABLE = 0 | Unfoldable.<br> Starting from API version 21, the enumerated value [CAMERA_FOLD_STATUS_NON_FOLDABLE](#camera_foldstatus) is recommended.|
+| CAMERA_FOLD_STATUS_NON_FOLDABLE = 0 | Unfoldable.<br>**Since**: 21|
+| EXPANDED = 1 | Unfolded.<br> Starting from API version 21, the enumerated value [CAMERA_FOLD_STATUS_EXPANDED](#camera_foldstatus) is recommended.|
+| CAMERA_FOLD_STATUS_EXPANDED = 1 | Unfolded.<br>**Since**: 21|
+| FOLDED = 2 | Folded.<br> Starting from API version 21, the enumerated value [CAMERA_FOLD_STATUS_FOLDED](#camera_foldstatus) is recommended.|
+| CAMERA_FOLD_STATUS_FOLDED = 2 | Folded.<br>**Since**: 21|
 
 ### Camera_QualityPrioritization
 
@@ -611,7 +621,6 @@ Obtains a Camera_Manager instance.
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -635,7 +644,6 @@ Camera_ErrorCode OH_Camera_DeleteCameraManager(Camera_Manager* cameraManager)
 Deletes a Camera_Manager instance.
 
 **Since**: 11
-
 
 **Parameters**
 

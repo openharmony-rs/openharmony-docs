@@ -10,7 +10,7 @@
 
 You can set different vibration effects as needed, for example, customizing the vibration intensity, frequency, and duration for button touches, alarm clocks, and incoming calls.
 
-For details about the APIs, see [Vibrator API Reference](../../reference/apis-sensor-service-kit/vibrator_8h.md).
+For details about the APIs, see [Vibrator](../../reference/apis-sensor-service-kit/capi-vibrator.md).
 
 
 ## Function Description

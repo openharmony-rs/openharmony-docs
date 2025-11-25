@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+struct OhosImageSize {...}
+```
+
 ## 概述
 
 定义图像大小。是[OhosImageDecodingOps](capi-image-ohosimagedecodingops.md)的成员变量。

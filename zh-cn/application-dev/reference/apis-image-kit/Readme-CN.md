@@ -1,4 +1,10 @@
 # Image Kit（图片处理服务）
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 - ArkTS API<!--image-arkts-->
   - @ohos.multimedia.image (图片处理)<!--js-apis-image-->
@@ -109,6 +115,8 @@
     - [ImageEffect_Size](capi-imageeffect-imageeffect-size.md)
     - [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md)
     - [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)
+    - [Image_PositionArea](capi-image-nativemodule-image-positionarea.md)
+    - [Image_Scale](capi-image-nativemodule-image-scale.md)
 - 错误码<!--image-arkts-errcode-->
   - [Image错误码](errorcode-image.md)
   - [视频处理引擎错误码](errorcode-videoprocessingengine.md)

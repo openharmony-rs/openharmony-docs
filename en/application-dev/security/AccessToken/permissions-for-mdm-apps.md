@@ -673,3 +673,20 @@ Allows MDM applications to generate and decrypt DLP files, and query DLP file po
 **Valid since**: 20
 
 **Changelog**: This permission is available only to system applications in API version 20. From API version 21, it's also available to MDM applications.
+
+## ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
+
+Allows an application to manage other device administrator applications.
+
+With this permission, the super device administrator application can manage other device administrator applications.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 23

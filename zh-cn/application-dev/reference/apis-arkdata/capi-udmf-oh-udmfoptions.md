@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdmfOptions OH_UdmfOptions
+```
+
 ## 概述
 
 数据操作选项，定义数据操作的可选参数。

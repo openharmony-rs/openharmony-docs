@@ -21,7 +21,7 @@ V2的提出不仅解决了V1对嵌套类观测的不足，还增强了部分装�
 > **说明：**
 >
 > 状态管理V2从API version 12开始支持。
-> 该文档介绍的混用规则仅适用于API version 18及以前。从API version 19开始，为支持应用更便捷地从V1向V2迁移，状态管理提供了新的接口[enableV2Compatibility](../../reference/apis-arkui/js-apis-StateManagement.md#enablev2compatibility19)和[makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)来帮助开发者解决在V1向V2迁移过程中遇到的混用问题，详见[状态管理V1V2混用文档](./arkts-v1-v2-mixusage.md)。
+> 该文档介绍的混用规则仅适用于API version 18及以前。从API version 19开始，为支持应用更便捷地从V1向V2迁移，状态管理提供了新的接口[enableV2Compatibility](../../reference/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19)和[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)来帮助开发者解决在V1向V2迁移过程中遇到的混用问题，详见[状态管理V1V2混用文档](./arkts-v1-v2-mixusage.md)。
 
 ## 概述
 
@@ -390,10 +390,12 @@ struct Index {
 
 **1.V1中使用V2的自定义组件** 
 
-```typescript
+<!-- @[v1_use_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2InV1.ets) -->
+
+``` TypeScript
 @ComponentV2
-struct Child {
-  @Local message: string = "hello";
+struct Child6 {
+  @Local message: string = 'hello';
 
   build() {
     Column() {
@@ -409,7 +411,7 @@ struct Child {
 
 @Entry
 @Component
-struct Index {
+struct Index6 {
   @State message: string = 'Hello World';
 
   build() {
@@ -422,7 +424,7 @@ struct Index {
         })
       Divider()
         .color(Color.Blue)
-      Child()
+      Child6()
     }
     .height('100%')
     .width('100%')
@@ -434,10 +436,12 @@ struct Index {
 
 **2.V2中使用V1的自定义组件**
 
-```typescript
+<!-- @[v2_use_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1InV2.ets) -->
+
+``` TypeScript
 @Component
-struct Child {
-  @State message: string = "hello";
+struct Child3 {
+  @State message: string = 'hello';
 
   build() {
     Column() {
@@ -453,7 +457,7 @@ struct Child {
 
 @Entry
 @ComponentV2
-struct Index {
+struct Index3 {
   @Local message: string = 'Hello World';
 
   build() {
@@ -466,7 +470,7 @@ struct Index {
         })
       Divider()
         .color(Color.Blue)
-      Child()
+      Child3()
     }
     .height('100%')
     .width('100%')
@@ -480,10 +484,12 @@ struct Index {
 
 **1.V1->V2：V1的普通变量传递给V2的自定义组件**
 
-```typescript
-class Info {
-  myId: number;
-  name: string;
+<!-- @[v1_to_v2_common_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1CommonVariablesToV2CustomComponent.ets) -->
+
+``` TypeScript
+class Info2 {
+  public myId: number;
+  public name: string;
 
   constructor(myId?: number, name?: string) {
     this.myId = myId || 0;
@@ -492,13 +498,13 @@ class Info {
 }
 
 @ComponentV2
-struct Child {  
+struct Child2 {
   // V2对数据输入有严格的管理，从父组件接受数据时，必须@Param装饰器进行数据接收
-  @Param @Once message: string = "hello";	              // 可以观测到变化，同步回父组件依赖@Event，使用了@Once可以修改@Param装饰的变量
+  @Param @Once message: string = 'hello';                  // 可以观测到变化，同步回父组件依赖@Event，使用了@Once可以修改@Param装饰的变量
   @Param @Once undefinedVal: string | undefined = undefined;  // 使用了@Once可以修改@Param装饰的变量
-  @Param info: Info = new Info();		                 // 观测不到类属性变化
+  @Param info: Info2 = new Info2();                         // 观测不到类属性变化
   @Require @Param set: Set<number>;
-  
+
   build() {
     Column() {
       Text(`child message:${this.message}`) // 显示 string
@@ -514,7 +520,7 @@ struct Child {
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.undefinedVal = "change to define";
+          this.undefinedVal = 'change to define';
         })
       Divider()
         .color(Color.Blue)
@@ -537,10 +543,10 @@ struct Child {
 
 @Entry
 @Component
-struct Index {
+struct Index2 {
   message: string = 'Hello World';       // 简单数据
   undefinedVal: undefined = undefined;    // 简单类型，undefined
-  info: Info = new Info();               // Class类型
+  info: Info2 = new Info2();               // Class类型
   set: Set<number> = new Set([10, 20]);  // 内置 类型
 
   build() {
@@ -553,7 +559,7 @@ struct Index {
         })
       Divider()
         .color(Color.Blue)
-      Child({
+      Child2({
         message: this.message,
         undefinedVal: this.undefinedVal,
         info: this.info,
@@ -573,10 +579,12 @@ struct Index {
 
 **2.V1->V2：V1的状态变量传递给V2的自定义组件**
 
-```typescript
-class Info {
-  myId: number;
-  name: string;
+<!-- @[v1_to_v2_state_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1StateVariablesToV2CustomComponent.ets) -->
+
+``` TypeScript
+class Info4 {
+  public myId: number;
+  public name: string;
 
   constructor(myId?: number, name?: string) {
     this.myId = myId || 0;
@@ -585,11 +593,11 @@ class Info {
 }
 
 @ComponentV2
-struct Child {  
+struct Child4 {
   // V2对数据输入有严格的管理，从父组件接受数据时，必须@Param装饰器进行数据接收
-  @Param @Once message: string = "hello";
+  @Param @Once message: string = 'hello';
   @Param @Once undefinedVal: string | undefined = undefined;  // 使用了@Once可以修改@Param装饰的变量
-  @Param info: Info = new Info();
+  @Param info: Info4 = new Info4();
   @Require @Param set: Set<number>;
   build() {
     Column() {
@@ -605,7 +613,7 @@ struct Child {
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.undefinedVal = "change to define";
+          this.undefinedVal = 'change to define';
         })
       Divider()
         .color(Color.Blue)
@@ -628,10 +636,10 @@ struct Child {
 
 @Entry
 @Component
-struct Index {
+struct Index4 {
   @State message: string = 'Hello World';       // 简单类型数据，支持
   @State undefinedVal: undefined = undefined;    // 简单类型数据，undefined，支持
-  @State info: Info = new Info();               // Class类型，不支持传递，编译器报错；消除编译错误请去掉@State
+  @State info: Info4 = new Info4();               // Class类型，不支持传递，编译器报错；消除编译错误请去掉@State
   @State set: Set<number> = new Set([10, 20]);  // 内置类型，不支持传递，编译器报错；消除编译错误请去掉@State
 
   build() {
@@ -644,7 +652,7 @@ struct Index {
         })
       Divider()
         .color(Color.Blue)
-      Child({
+      Child4({
         message: this.message,
         undefinedVal: this.undefinedVal,
         info: this.info,
@@ -665,10 +673,12 @@ struct Index {
 
 **3.V2->V1：V2的普通变量传递给V1的自定义组件**
 
-```typescript
-class Info {
-  myId: number;
-  name: string;
+<!-- @[v2_to_v1_common_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2CommonVariablesToV1CustomComponent.ets) -->
+
+``` TypeScript
+class Info5 {
+  public myId: number;
+  public name: string;
 
   constructor(myId?: number, name?: string) {
     this.myId = myId || 0;
@@ -677,15 +687,15 @@ class Info {
 }
 
 @Component
-struct Child {  
+struct Child5 {
   // V1从V2接收的状态变量，若使用装饰器，仅可使用@State、@Prop、@Provide接收
-  @State  message: string = "hello";	         // 可以观测到变化
-  @State info: Info = new Info();		      	// 可以观测一层类属性变化
+  @State  message: string = 'hello';             // 可以观测到变化
+  @State info: Info5 = new Info5();                  // 可以观测一层类属性变化
   @Prop undefinedVal: undefined | string = undefined;
   @Provide setMap: Set<number> = new Set();
   build() {
     Column() {
-      Text(`child message:${this.message}`) 	// 显示string
+      Text(`child message:${this.message}`)     // 显示string
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
@@ -693,15 +703,15 @@ struct Child {
         })
       Divider()
         .color(Color.Blue)
-      Text(`undefinedVal:${this.undefinedVal}`) 	// 显示undefinedVal
+      Text(`undefinedVal:${this.undefinedVal}`)     // 显示undefinedVal
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.undefinedVal = "change to define";
+          this.undefinedVal = 'change to define';
         })
       Divider()
         .color(Color.Blue)
-      Text(`info id:${this.info.myId}`)		 	// 显示info:myId
+      Text(`info id:${this.info.myId}`)             // 显示info:myId
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
@@ -720,10 +730,10 @@ struct Child {
 
 @Entry
 @ComponentV2
-struct Index {
+struct Index5 {
   message: string = 'Hello World';       // 简单数据类型
   undefinedVal: undefined = undefined;    // 简单数据类型，undefined
-  info: Info = new Info();               // Class类型
+  info: Info5 = new Info5();               // Class类型
   set: Set<number> = new Set([10, 20]);  // 内置 类型
 
   build() {
@@ -736,7 +746,7 @@ struct Index {
         })
       Divider()
         .color(Color.Blue)
-      Child({
+      Child5({
         message: this.message,
         undefinedVal: this.undefinedVal,
         info: this.info,
@@ -757,10 +767,12 @@ struct Index {
 
 **4.V2->V1：V2的状态变量传递给V1的自定义组件**
 
-```typescript
-class Info {
-  myId: number;
-  name: string;
+<!-- @[v2_to_v1_state_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2StateVariablesToV1CustomComponent.ets) -->
+
+``` TypeScript
+class Info7 {
+  public myId: number;
+  public name: string;
 
   constructor(myId?: number, name?: string) {
     this.myId = myId || 0;
@@ -769,15 +781,15 @@ class Info {
 }
 
 @Component
-struct Child {  
+struct Child7 {
   // V1从V2接收的状态变量，仅可使用@State、@Prop、@Provide接收
-  @State  message: string = "hello";	        // 可以观测到变化
-  @State info: Info = new Info();		        // 可以观测一层类属性变化
+  @State  message: string = 'hello';            // 可以观测到变化
+  @State info: Info7 = new Info7();                // 可以观测一层类属性变化
   @Prop undefinedVal: undefined | string = undefined;
   @Provide set: Set<number> = new Set();
   build() {
     Column() {
-      Text(`child message:${this.message}`) 	// 显示 string
+      Text(`child message:${this.message}`)     // 显示 string
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
@@ -785,15 +797,15 @@ struct Child {
         })
       Divider()
         .color(Color.Blue)
-      Text(`undefinedVal:${this.undefinedVal}`) 	// 显示 undefinedVal
+      Text(`undefinedVal:${this.undefinedVal}`)     // 显示 undefinedVal
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.undefinedVal = "change to define";
+          this.undefinedVal = 'change to define';
         })
       Divider()
         .color(Color.Blue)
-      Text(`info id:${this.info.myId}`) 	// 显示 info:myId
+      Text(`info id:${this.info.myId}`)     // 显示 info:myId
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
@@ -813,11 +825,11 @@ struct Child {
 
 @Entry
 @ComponentV2
-struct Index {
-  @Local message: string = 'Hello World';       	// 简单数据类型，支持传递
+struct Index7 {
+  @Local message: string = 'Hello World';           // 简单数据类型，支持传递
   @Provider() undefinedVal: undefined = undefined;   // 简单数据类型，undefined，支持传递
-  @Consumer() info: Info = new Info();          	// Class类型，支持传递
-  @Param set: Set<number> = new Set([10, 20]);  	// 内置类型，不支持传递；消除编译错误请去掉@Param
+  @Consumer() info: Info7 = new Info7();              // Class类型，支持传递
+  @Param set: Set<number> = new Set([10, 20]);      // 内置类型，不支持传递；消除编译错误请去掉@Param
 
   build() {
     Column() {
@@ -830,7 +842,7 @@ struct Index {
 
       Divider()
         .color(Color.Blue)
-      Child({
+      Child7({
         message: this.message,
         undefinedVal: this.undefinedVal,
         info: this.info,
@@ -865,11 +877,13 @@ V2的状态变量传递给V1的自定义组件，存在以下限制：
 
 ### 使用\@Observed+\@ObjectLink观测嵌套类
 
-```typescript
+<!-- @[obseved_object_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/ObserveNestedClasses_ObservedAndObjectLink.ets) -->
+
+``` TypeScript
 @Observed
-class Info {
-  myId: number;
-  name: string;
+class Info1 {
+  public myId: number;
+  public name: string;
 
   constructor(myId?: number, name?: string) {
     this.myId = myId || 0;
@@ -878,43 +892,43 @@ class Info {
 }
 
 @Observed
-class MessageInfo { 		// 一层嵌套
-  @Track info: Info;        // 防止messageId改变导致info的连带刷新
-  @Track messageId: number; // 防止messageId改变导致info的连带刷新
+class MessageInfo1 {         // 一层嵌套
+  @Track public info: Info1;        // 防止messageId改变导致info的连带刷新
+  @Track public messageId: number; // 防止messageId改变导致info的连带刷新
 
-  constructor(info?: Info, messageId?: number) {
-    this.info = info || new Info();   
+  constructor(info?: Info1, messageId?: number) {
+    this.info = info || new Info1();
     this.messageId = messageId || 0;
   }
 }
 
 @Observed
-class MessageInfoNested {	 // 二层嵌套
-  messageInfo: MessageInfo;
+class MessageInfoNested1 {     // 二层嵌套
+  public messageInfo: MessageInfo1;
 
-  constructor(messageInfo?: MessageInfo) {
-    this.messageInfo = messageInfo || new MessageInfo();
+  constructor(messageInfo?: MessageInfo1) {
+    this.messageInfo = messageInfo || new MessageInfo1();
   }
 }
 
 @Component
-struct GrandSon {
-  @ObjectLink info: Info;
+struct GrandSon1 {
+  @ObjectLink info1: Info1;
 
   build() {
     Column() {
-      Text(`ObjectLink info info.myId:${this.info.myId}`)  // 经过@ObjectLink拆解两次之后，观测到变化
+      Text(`ObjectLink info info.myId:${this.info1.myId}`)  // 经过@ObjectLink拆解两次之后，观测到变化
         .fontSize(30)
         .onClick(() => {
-          this.info.myId++;
+          this.info1.myId++;
         })
     }
   }
 }
 
 @Component
-struct Child {
-  @ObjectLink messageInfo: MessageInfo;
+struct Child1 {
+  @ObjectLink messageInfo: MessageInfo1;
 
   build() {
     Column() {
@@ -930,17 +944,15 @@ struct Child {
         .onClick(() => {
           this.messageInfo.info.myId++;
         })
-      GrandSon({info: this.messageInfo.info});				// 继续拆解一层子组件
+      GrandSon1({info1: this.messageInfo.info});                // 继续拆解一层子组件
     }
   }
 }
 
-
-
 @Entry
 @Component
-struct Index {
-  @State messageInfoNested: MessageInfoNested = new MessageInfoNested();  // 三层嵌套的数据，需要对所有数据进行观测。
+struct Index1 {
+  @State messageInfoNested: MessageInfoNested1 = new MessageInfoNested1();  // 三层嵌套的数据，需要对所有数据进行观测。
 
   build() {
     Column() {
@@ -953,7 +965,7 @@ struct Index {
       Divider()
         .color(Color.Blue)
       // 通过@ObjectLink嵌套观察 messageInfoId
-      Child({messageInfo: this.messageInfoNested.messageInfo})      // 经过拆分后，使用@ObjectLink拆分可以观察到深一层的变化
+      Child1({messageInfo: this.messageInfoNested.messageInfo})      // 经过拆分后，使用@ObjectLink拆分可以观察到深一层的变化
       Divider()
         .color(Color.Blue)
     }
@@ -972,11 +984,13 @@ struct Index {
 
 ### 使用@ObsevedV2+@Trace观测嵌套类
 
-```typescript
+<!-- @[obseved_trace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/ObserveNestedClasses_ObsevedV2AndTrace.ets) -->
+
+``` TypeScript
 @ObservedV2
 class Info {
-  @Trace myId: number;
-  name: string;
+  @Trace public myId: number;
+  public name: string;
 
   constructor(myId?: number, name?: string) {
     this.myId = myId || 0;
@@ -986,8 +1000,8 @@ class Info {
 
 @Observed
 class MessageInfo { // 一层嵌套
-  @Track info: Info;        // 防止messageId改变导致info的连带刷新
-  @Track messageId: number; // 防止messageId改变导致info的连带刷新
+  @Track public info: Info;        // 防止messageId改变导致info的连带刷新
+  @Track public messageId: number; // 防止messageId改变导致info的连带刷新
 
   constructor(info?: Info, messageId?: number) {
     this.info = info || new Info();   // 使用传入的info或创建一个新的Info
@@ -997,7 +1011,7 @@ class MessageInfo { // 一层嵌套
 
 @Observed
 class MessageInfoNested { // 二层嵌套，MessageInfoNested如果是被@ObservedV2装饰，则不可以被V1的状态变量更新相关的装饰器装饰，如@State
-  messageInfo: MessageInfo;
+  public messageInfo: MessageInfo;
 
   constructor(messageInfo?: MessageInfo) {
     this.messageInfo = messageInfo || new MessageInfo();

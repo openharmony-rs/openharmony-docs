@@ -171,7 +171,6 @@ let readDataCallback: Callback<ArrayBuffer>;
 
 async function initArguments(context: common.UIAbilityContext) {
   let path = context.cacheDir;
-  // Ensure that the resource exists in the sandbox path.
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   readDataCallback = (buffer: ArrayBuffer) => {

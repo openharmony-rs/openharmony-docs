@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 There may be times when you want to implement nested scrolling for the **Web** component. A typical use case is a page that contains multiple scrollable areas including the **Web** component, whose scrolling is intrinsically linked with the scroll positions in other areas. To implement nested scrolling between **Web** components and ArkUI scrollable containers ([Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md), [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md), [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md), [Refresh](../reference/apis-arkui/arkui-ts/ts-container-refresh.md) and [bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)), you should set the ArkUI [NestedScrollMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10) attribute for the **Web** components after receiving the scrolling gesture events.
 
@@ -19,78 +19,89 @@ The following provides two solutions for implementing nested scrolling of **Web*
 Call the [nestedScroll](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#nestedscroll11) attribute of the **Web** component to set the nested scrolling mode in the up, down, left, and right directions or in the forward and backward directions to implement the scrolling association with the parent component. This attribute also allows the nested scrolling mode to be dynamically changed during the process.
 
 **Complete Code**
-```ts
-// xxx.ets
+
+<!-- @[nested_scrolling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/ImpNestedScroll.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
 @ComponentV2
 struct NestedScroll {
-  private scrollerForScroll: Scroller = new Scroller()
-  private listScroller: Scroller = new Scroller()
+  private scrollerForScroll: Scroller = new Scroller();
+  private listScroller: Scroller = new Scroller();
   controller: webview.WebviewController = new webview.WebviewController();
-  @Local arr: Array<number> = []
+  @Local arr: Array<number> = [];
 
   aboutToAppear(): void {
     for (let i = 0; i < 10; i++) {
-      this.arr.push(i)
-    }
+    this.arr.push(i);
   }
+}
 
-  build() {
-    Scroll(this.scrollerForScroll) {
-      Column() {
-        Web({ src: $rawfile("index.html"), controller: this.controller })
-          .nestedScroll({
-            scrollUp: NestedScrollMode.PARENT_FIRST,//Scroll up the parent component first.
-            scrollDown: NestedScrollMode.SELF_FIRST,//Scroll down the child component first.
-          }).height("100%")
-        Repeat<number>(this.arr)
-          .each((item: RepeatItem<number>) => {
-            Text("Scroll Area")
-              .width("100%")
-              .height("40%")
-              .backgroundColor(0X330000FF)
-              .fontSize(16)
-              .textAlign(TextAlign.Center)
-          })
-      }
+build() {
+  Scroll(this.scrollerForScroll) {
+    Column() {
+      Web({ src: $rawfile('scroll.html'), controller: this.controller })
+        .nestedScroll({
+          scrollUp: NestedScrollMode.PARENT_FIRST,//Scroll up the parent component first.
+          scrollDown: NestedScrollMode.SELF_FIRST,//Scroll down the child component first.
+        }).height('100%')
+      Repeat<number>(this.arr)
+        .each((item: RepeatItem<number>) => {
+          Text('Scroll Area')
+            .width('100%')
+            .height('40%')
+            .backgroundColor(0X330000FF)
+            .fontSize(16)
+            .textAlign(TextAlign.Center)
+        })
     }
   }
 }
+}
 ```
+
 HTML file to be loaded:
 
 ```html
-<!-- index.html -->
+<!-- scroll.html -->
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         .blue {
-          background-color: lightblue;
+            background-color: lightblue;
         }
+
         .green {
-          background-color: lightgreen;
+            background-color: lightgreen;
         }
-        .blue, .green {
-         font-size:16px;
-         height:200px;
-         text-align: center;       /* Horizontally centered */
-         line-height: 200px;       /* Vertically centered (the height matches the container height) */
+
+        .blue,
+        .green {
+            font-size: 16px;
+            height: 200px;
+            text-align: center;
+            /* Horizontally centered */
+            line-height: 200px;
+            /* Vertically centered (the height matches the container height) */
         }
     </style>
 </head>
+
 <body>
-<div class="blue" >webArea</div>
-<div class="green">webArea</div>
-<div class="blue">webArea</div>
-<div class="green">webArea</div>
-<div class="blue">webArea</div>
-<div class="green">webArea</div>
-<div class="blue">webArea</div>
+    <div class="blue">webArea</div>
+    <div class="green">webArea</div>
+    <div class="blue">webArea</div>
+    <div class="green">webArea</div>
+    <div class="blue">webArea</div>
+    <div class="green">webArea</div>
+    <div class="blue">webArea</div>
 </body>
+
 </html>
 ```
 ![web-nested-scrolling](figures/web-nested-scrolling2.gif)
@@ -171,18 +182,20 @@ HTML file to be loaded:
     ```
 
 **Complete Code**
-```ts
-// xxx.ets
+
+<!-- @[nested_scrolling2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/WebNestedScroll.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
 @ComponentV2
 struct Index {
-  private scroller:Scroller = new Scroller()
-  private listScroller:Scroller = new Scroller()
+  private scroller: Scroller = new Scroller()
+  private listScroller: Scroller = new Scroller()
   private webController: webview.WebviewController = new webview.WebviewController()
-  private isWebAtEnd:boolean = false
-  private webHeight:number = 0
+  private isWebAtEnd: boolean = false
+  private webHeight: number = 0
   @Local arr: Array<number> = []
 
   aboutToAppear(): void {
@@ -207,26 +220,27 @@ struct Index {
   }
 
   checkScrollBottom() {
-  	this.isWebAtEnd = false;
-  	if (this.webController.getPageOffset().y + this.webHeight >= this.webController.getPageHeight()) {
-  	  this.isWebAtEnd = true;
-  	}
+    this.isWebAtEnd = false;
+    if (this.webController.getPageOffset().y + this.webHeight >= this.webController.getPageHeight()) {
+      this.isWebAtEnd = true;
+    }
   }
 
   build() {
     Scroll(this.scroller) {
       Column() {
         Web({
-          src: $rawfile("index.html"),
+          src: $rawfile('scroll.html'),
           controller: this.webController,
-        }).height("100%")
+        }).height('100%')
           .bypassVsyncCondition(WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET)
           .onPageEnd(() => {
             this.webController.setScrollable(false, webview.ScrollType.EVENT);
             this.getWebHeight();
           })
-            // When the recognizer is about to succeed, set whether to enable the recognizer based on the current component status.
-          .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer, others: Array<GestureRecognizer>) => {
+          // When the recognizer is about to succeed, set whether to enable the recognizer based on the current component status.
+          .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+            others: Array<GestureRecognizer>) => {
             if (current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
               return GestureJudgeResult.REJECT;
             }
@@ -236,47 +250,48 @@ struct Index {
           Repeat<number>(this.arr)
             .each((item: RepeatItem<number>) => {
               ListItem() {
-                Text("Scroll Area")
-                  .width("100%")
-                  .height("40%")
+                Text('Scroll Area')
+                  .width('100%')
+                  .height('40%')
                   .backgroundColor(0X330000FF)
                   .fontSize(16)
                   .textAlign(TextAlign.Center)
               }
             })
-        }.height("100%")
+        }.height('100%')
         .maintainVisibleContentPosition(true)
         .enableScrollInteraction(false)
       }
     }
-    .onScrollFrameBegin((offset: number, state: ScrollState)=>{
+    .onScrollFrameBegin((offset: number, state: ScrollState) => {
       this.checkScrollBottom();
       if (offset > 0) {
         if (!this.isWebAtEnd) {
           this.webController.scrollBy(0, offset)
-          return {offsetRemain:0}
+          return { offsetRemain: 0 }
         } else if (this.scroller.isAtEnd()) {
           this.listScroller.scrollBy(0, offset)
-          return {offsetRemain:0}
+          return { offsetRemain: 0 }
         }
       } else if (offset < 0) {
         if (this.listScroller.currentOffset().yOffset > 0) {
           this.listScroller.scrollBy(0, offset)
-          return {offsetRemain:0}
+          return { offsetRemain: 0 }
         } else if (this.scroller.currentOffset().yOffset <= 0) {
           this.webController.scrollBy(0, offset)
-          return {offsetRemain:0}
+          return { offsetRemain: 0 }
         }
       }
-      return {offsetRemain:offset}
+      return { offsetRemain: offset }
     })
   }
 }
 ```
+
 HTML file to be loaded:
 
 ```html
-<!-- index.html -->
+<!-- scroll.html -->
 <!DOCTYPE html>
 <html>
 <head>

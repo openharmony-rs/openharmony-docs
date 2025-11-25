@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callbacks
+```
+
 ## 概述
 
 声明输入音频流的回调函数指针。

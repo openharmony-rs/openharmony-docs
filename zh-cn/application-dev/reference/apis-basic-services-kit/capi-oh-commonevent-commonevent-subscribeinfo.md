@@ -7,6 +7,10 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct CommonEvent_SubscribeInfo CommonEvent_SubscribeInfo
+```
+
 ## 概述
 
 提供CommonEvent_SubscribeInfo订阅者信息结构体声明。

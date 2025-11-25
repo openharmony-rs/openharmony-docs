@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVScreenCapture OH_AVScreenCapture
+```
+
 ## 概述
 
 通过OH_AVScreenCapture可以获取视频与音频的原始码流。

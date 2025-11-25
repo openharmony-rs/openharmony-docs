@@ -7,6 +7,10 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef void *OH_AI_DeviceInfoHandle
+```
+
 ## 概述
 
 MindSpore的运行设备信息的指针。

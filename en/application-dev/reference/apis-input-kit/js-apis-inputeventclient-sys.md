@@ -43,6 +43,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
+| 201  | Permission denied.  |
+| 202  | Permission denied, non-system app called system api.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -116,6 +118,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
+| 201  | Permission denied.  |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -452,9 +455,9 @@ Defines the key event to inject.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-| Name       | Type  | Mandatory  | Description     |
-| --------- | ------ | ---- |  ------- |
-| keyEvent | [KeyEvent](#keyevent) | Yes   | Key event to inject.  |
+| Name       | Type  | Read-Only  | Optional  | Description     |
+| --------- | ------ | ---- | ---- | ------- |
+| keyEvent       | [KeyEvent](#keyevent) | No   |  No| Key event to inject.  |
 
 ## MouseEventData<sup>11+</sup>
 

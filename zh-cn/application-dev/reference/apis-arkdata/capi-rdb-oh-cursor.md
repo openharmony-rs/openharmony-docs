@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_Cursor
+```
+
 ## 概述
 
 表示结果集。提供通过查询数据库生成的数据库结果集的访问方法。

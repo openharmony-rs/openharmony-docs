@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 通过[toolbar](ts-universal-attributes-toolbar.md#toolbar)通用属性为窗口标题栏添加工具栏项。
 

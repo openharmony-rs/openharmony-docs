@@ -7,7 +7,7 @@
 <!--Tester: @alien0208-->
 <!--Adviser: @w_Machine_cc-->
 
-该模块主要提供RunningLock锁相关操作的接口，包括创建、查询、持锁、释放锁等操作。
+该模块为RunningLock锁相关操作的接口，RunningLock锁提供使能接近光亮灭屏或者设备熄屏后阻止进入睡眠的能力，包括创建、查询、持锁、释放锁等操作，RunningLock锁的类型详情见[RunningLockType](#runninglocktype)。
 
 > **说明：**
 >
@@ -27,7 +27,7 @@ isSupported(type: RunningLockType): boolean
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
-**参数说明：**
+**参数：**
 
 | 参数名 | 类型                                | 必填 | 说明                 |
 | ------ | ----------------------------------- | ---- | -------------------- |
@@ -68,7 +68,7 @@ create(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLo
 
 **需要权限：** ohos.permission.RUNNING_LOCK
 
-**参数说明：**
+**参数：**
 
 | 参数名   | 类型                                       | 必填 | 说明                                                         |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -108,7 +108,7 @@ create(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
 **需要权限：** ohos.permission.RUNNING_LOCK
 
-**参数说明：**
+**参数：**
 
 | 参数名 | 类型                                | 必填 | 说明               |
 | ------ | ----------------------------------- | ---- | ------------------ |
@@ -153,7 +153,7 @@ isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback&lt;boo
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
-**参数说明：**
+**参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                                                         |
 | -------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
@@ -167,7 +167,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (
     if (typeof err === 'undefined') {
         console.info('BACKGROUND lock support status: ' + data);
     } else {
-        console.log('check BACKGROUND lock support status failed, err: ' + err);
+        console.error('check BACKGROUND lock support status failed, err: ' + err);
     }
 });
 ```
@@ -182,7 +182,7 @@ isRunningLockTypeSupported(type: RunningLockType): Promise&lt;boolean>
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
-**参数说明：**
+**参数：**
 
 | 参数名 | 类型                                | 必填 | 说明                 |
 | ------ | ----------------------------------- | ---- | -------------------- |
@@ -202,7 +202,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)
     console.info('BACKGROUND lock support status: ' + data);
 })
 .catch((err: Error) => {
-    console.log('check BACKGROUND lock support status failed, err: ' + err);
+    console.error('check BACKGROUND lock support status failed, err: ' + err);
 });
 ```
 
@@ -218,7 +218,7 @@ createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback&l
 
 **需要权限：** ohos.permission.RUNNING_LOCK
 
-**参数说明：**
+**参数：**
 
 | 参数名   | 类型                                       | 必填 | 说明                                                         |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -250,7 +250,7 @@ createRunningLock(name: string, type: RunningLockType): Promise&lt;RunningLock&g
 
 **需要权限：** ohos.permission.RUNNING_LOCK
 
-**参数说明：**
+**参数：**
 
 | 参数名 | 类型                                | 必填 | 说明               |
 | ------ | ----------------------------------- | ---- | ------------------ |
@@ -271,13 +271,13 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
     console.info('created running lock: ' + lock);
 })
 .catch((err: Error) => {
-    console.log('create running lock failed, err: ' + err);
+    console.error('create running lock failed, err: ' + err);
 });
 ```
 
 ## RunningLock
 
-阻止系统休眠的锁。
+阻止系统睡眠的锁。
 
 ### hold<sup>9+</sup>
 
@@ -289,7 +289,7 @@ hold(timeout: number): void
 
 **需要权限：** ohos.permission.RUNNING_LOCK
 
-**参数说明：**
+**参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                      |
 | ------- | ------ | ---- | ----------------------------------------- |
@@ -345,8 +345,6 @@ unhold(): void
 
 **需要权限：** ohos.permission.RUNNING_LOCK
 
-**参数说明：** 该方法无参数。
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
@@ -395,8 +393,6 @@ isHolding(): boolean
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
-**参数说明：** 该方法无参数。
-
 **返回值：**
 
 | 类型    | 说明                                                         |
@@ -442,7 +438,7 @@ lock(timeout: number): void
 
 **需要权限：** ohos.permission.RUNNING_LOCK
 
-**参数说明：**
+**参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                      |
 | ------- | ------ | ---- | ----------------------------------------- |
@@ -471,8 +467,6 @@ unlock(): void
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
-**参数说明：** 该方法无参数。
-
 **需要权限：** ohos.permission.RUNNING_LOCK
 
 **示例：**
@@ -497,8 +491,6 @@ isUsed(): boolean
 **方法介绍：** 查询当前RunningLock是持有状态还是释放状态。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
-
-**参数说明：** 该方法无参数。
 
 **返回值：**
 | 类型    | 说明                                                         |
@@ -526,5 +518,5 @@ RunningLock锁的类型。
 
 | 名称                              | 值   | 说明                                                         |
 | --------------------------------- | ---- | ------------------------------------------------------------ |
-| BACKGROUND<sup>(deprecated)</sup> | 1    | 阻止系统休眠的锁。<br>**说明：** 从API version 7开始支持，从API version 10开始废弃。 |
+| BACKGROUND<sup>(deprecated)</sup> | 1    | 阻止系统睡眠的锁。<br>**说明：** 从API version 7开始支持，从API version 10开始废弃。 |
 | PROXIMITY_SCREEN_CONTROL          | 2    | 接近光锁，使能接近光传感器，并根据传感器与障碍物的距离远近发起亮灭屏流程。  |

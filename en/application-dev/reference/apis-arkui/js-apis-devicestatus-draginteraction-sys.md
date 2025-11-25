@@ -43,10 +43,10 @@ Defines the data summary of the dragged object.
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Drag
 
-| Name      | Type    | Mandatory| Description              |
-| ---------- | -------- | ---- | ------------------ |
-| dataType   | string   | Yes  | Type of the dragged object.    |
-| dataSize   | number   | Yes  | Data length of the dragged object.|
+| Name          | Type           | Read-Only| 	Optional| Description                          |
+| ---------      | -------------- | ---- | ---- | ------------------------     |
+| dataType     | string          | No  | No  | Type of the dragged object.|
+| dataSize       | number         | No  | No  | Data length of the dragged object.|
 
 ## dragInteraction.on('drag')
 
@@ -71,7 +71,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
@@ -109,7 +109,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
@@ -164,7 +164,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
@@ -195,7 +195,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
@@ -226,7 +226,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**

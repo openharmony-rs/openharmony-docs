@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 传统曲线基于数学公式，创造形状符合开发者预期的动画曲线。以三阶贝塞尔曲线为代表，通过调整曲线控制点，可以改变曲线形状，从而带来缓入、缓出等动画效果。对于同一条传统曲线，由于不具备物理含义，其形状不会因为用户行为发生任何改变，缺少物理动画的自然感和生动感。建议优先采用物理曲线创建动画，将传统曲线作为辅助用于极少数必要场景中。
 
@@ -16,8 +16,10 @@ ArkUI提供了贝塞尔曲线、阶梯曲线等传统曲线接口，开发者可
 
 
 
-```ts
-class MyCurve {
+<!-- @[traditional_curve](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/traditionalCurve/template1/CurveDemo.ets) -->
+
+``` TypeScript
+class TraditionalCurve {
   public title: string;
   public curve: Curve;
   public color: Color | string;
@@ -29,13 +31,13 @@ class MyCurve {
   }
 }
 
-const myCurves: MyCurve[] = [
-  new MyCurve(' Linear', Curve.Linear, '#317AF7'),
-  new MyCurve(' Ease', Curve.Ease, '#D94838'),
-  new MyCurve(' EaseIn', Curve.EaseIn, '#DB6B42'),
-  new MyCurve(' EaseOut', Curve.EaseOut, '#5BA854'),
-  new MyCurve(' EaseInOut', Curve.EaseInOut, '#317AF7'),
-  new MyCurve(' FastOutSlowIn', Curve.FastOutSlowIn, '#D94838')
+const traditionalCurves: TraditionalCurve[] = [
+  new TraditionalCurve(' Linear', Curve.Linear, '#317AF7'),
+  new TraditionalCurve(' Ease', Curve.Ease, '#D94838'),
+  new TraditionalCurve(' EaseIn', Curve.EaseIn, '#DB6B42'),
+  new TraditionalCurve(' EaseOut', Curve.EaseOut, '#5BA854'),
+  new TraditionalCurve(' EaseInOut', Curve.EaseInOut, '#317AF7'),
+  new TraditionalCurve(' FastOutSlowIn', Curve.FastOutSlowIn, '#D94838')
 ]
 
 @Entry
@@ -47,7 +49,7 @@ struct CurveDemo {
     Column() {
       // 曲线图例
       Grid() {
-        ForEach(myCurves, (item: MyCurve) => {
+        ForEach(traditionalCurves, (item: TraditionalCurve) => {
           GridItem() {
             Column() {
               Row()
@@ -81,7 +83,7 @@ struct CurveDemo {
             radius: 145
           })
 
-        ForEach(myCurves, (item: MyCurve) => {
+        ForEach(traditionalCurves, (item: TraditionalCurve) => {
           // 小球
           Column() {
             Row()

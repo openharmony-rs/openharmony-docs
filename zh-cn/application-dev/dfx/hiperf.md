@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @leiguangyu-->
-<!--Designer: @Maplestroy-->
+<!--Designer: @Maplestroy91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
@@ -264,7 +264,7 @@ Supported events for hardware:
 
 ## record命令
 
-采集指定进程或指定应用的性能数据，包括CPU周期、指令数、函数调用等信息，并且将采样数据保存到指定的文件中。
+采集指定进程或指定应用的性能数据，包括CPU周期、指令数、函数调用等信息，并且将采样数据保存到指定的文件中（默认路径以设备上运行 hiperf record -h/--help 时显示的 -o 参数说明为准）。
 
 **record命令参数说明**
 
@@ -299,7 +299,7 @@ Supported events for hardware:
 | --app | 采集的应用程序名，以逗号隔开。应用程序必须是启动状态，应用程序未启动时会等待20s，20s内应用程序未启动，命令会自动结束。该参数不能和-a一起使用。 | 
 | --chkms | 设置查询的间隔时间，单位为ms。取值范围：1 - 200，默认10。 | 
 | --data-limit | 输出数据达到指定大小停止采集，默认无限制。 | 
-| -o | 设置输出文件路径，默认路径以设备上运行 hiperf record -h/--help 时显示的 -o 参数说明为准，并允许用户自定义文件名称。 | 
+| -o | 设置输出文件路径，并允许用户自定义文件名称。 | 
 | -z | 以.gz的压缩文件形式输出。 | 
 | --restart | 收集应用启动的性能指标信息，如果进程在30秒内未启动，采集操作将结束。 | 
 | --verbose | 输出更详细的报告。 | 
@@ -313,6 +313,8 @@ Supported events for hardware:
 | -a | 采集整机的性能数据。 | 
 | --exclude-hiperf | 不采集hiperf进程自身的性能数据，该可选参数必须和-a一起使用。 | 
 | --exclude-process | 不采集的进程名，该参数必须和-a一起使用。 |
+| --pipe_input | 该参数用于客户端进程调用hiperf时建立命令输入通道，开发者可参考[hiperf_client接口](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。在应用开发中，此参数无实际作用，开发者可以忽略。 |
+| --pipe_output | 该参数用于客户端进程调用hiperf时建立响应输出通道，开发者可参考[hiperf_client接口](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。在应用开发中，此参数无实际作用，开发者可以忽略。 |
 <!--RP1End-->
 
 **命令行示例**：
@@ -354,7 +356,7 @@ $ hiperf record -p 267 -d 10 -s dwarf
 | --verbose | 输出详细的信息。 | 
 | --dumpoptions | 展示当前列表里所有选项的详细信息。 | 
 | --control [command] | 采集操作启停控制参数。命令包括prepare/start/stop。该参数不能和-d一起使用。<br/>**说明**：从API version 20开始，支持该参数。 | 
-| -o | 设置输出文件路径，默认路径以设备上运行 hiperf stat -h/--help 时显示的 -o 参数说明为准，并允许用户自定义文件名称。该参数必须和--control prepare一起使用，不能和--control一起使用。<br/>**说明**：从API version 20开始，支持该参数。 | 
+| -o | 设置输出文件路径，并允许用户自定义文件名称。<br>默认路径以设备上运行 hiperf stat -h/--help 时显示的 -o 参数说明为准。<br>该参数必须和--control prepare一起使用，不能和--control一起使用。<br/>**说明**：从API version 20开始，支持该参数。 | 
 | -a | 统计整机的性能数据。 |
 
 **命令行示例**：

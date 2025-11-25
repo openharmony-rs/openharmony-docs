@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_NativeColorSpaceManager OH_NativeColorSpaceManager
+```
+
 ## 概述
 
 NativeColorSpaceManager结构体类型，用于执行NativeColorSpaceManager相关操作。

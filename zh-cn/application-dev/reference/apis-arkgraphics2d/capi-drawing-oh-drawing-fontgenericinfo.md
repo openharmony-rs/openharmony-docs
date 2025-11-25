@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct {...} OH_Drawing_FontGenericInfo
+```
+
 ## 概述
 
 系统所支持的通用字体集信息结构体。

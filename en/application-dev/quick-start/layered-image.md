@@ -50,51 +50,49 @@ The display effects are as follows.
   This configuration takes effect only when the **module.json5** configuration file does not contain any UIAbility or **icon** and **label** under the **abilities** tag of the UIAbility are not set. (You can manually delete the icon and label configurations).
 
   <!-- @[layered_image_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/AppScope/app.json5) -->
-
-``` JSON5
-{
-  "app": {
-	// ···
-    "icon": "$media:app_icon",
-    "label": "$string:app_name" // Configure the resource whose name is app_name in AppScope/resources/base/element/string.json. If the resource already exists, skip this step.
+  
+  ``` JSON5
+  {
+    "app": {
+      // ...
+      "icon": "$media:app_icon",
+      "label": "$string:app_name" // Configure the resource whose name is app_name in AppScope/resources/base/element/string.json. If the resource already exists, skip this step.
+    }
   }
-}
-```
-
+  ```
 
 - **Method 2: Configuring module.json5**
 
   In addition to configuring the **icon** and **label** fields, you need to add **entity.system.home** under **entities** and **ohos.want.action.home** under **actions**.
 
   <!-- @[layered_image_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-	// ···
-    "abilities": [
-      {
-		// ···
-        "icon": "$media:icon",
-        // Configure the resource whose name is EntryAbility_label in entry/src/main/resources/base/element/string.json. If the resource already exists, skip this step.
-        "label": "$string:EntryAbility_label",
-        "skills": [
-          {
-            "entities": [
-              "entity.system.home"
-            ],
-            "actions": [
-              "ohos.want.action.home"
-            ]
-          }
-        ]
-      }
-    ],
-	// ···
+  
+  ``` JSON5
+  {
+    "module": {
+      // ...
+      "abilities": [
+        {
+          // ...
+          "icon": "$media:icon",
+          // Configure the resource whose name is EntryAbility_label in entry/src/main/resources/base/element/string.json. If the resource already exists, skip this step.
+          "label": "$string:EntryAbility_label",
+          "skills": [
+            {
+              "entities": [
+                "entity.system.home"
+              ],
+              "actions": [
+                "ohos.want.action.home"
+              ]
+            }
+          ]
+        }
+      ],
+      // ...
+    }
   }
-}
-```
-
+  ```
 
 ## Configuring a Layered Icon and Label
 
@@ -118,18 +116,18 @@ The display effects are as follows.
       }
       ```
   3. Reference the layered icon resource file in the [app.json5](app-configuration-file.md) file. Example:
+
       <!-- @[layered_image_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/AppScope/app.json5) -->
-
-``` JSON5
-{
-  "app": {
-	// ···
-    "icon": "$media:layered_image",
-    "label": "$string:app_name" // Configure the resource whose name is app_name in AppScope/resources/base/element/string.json. If the resource already exists, skip this step.
-  }
-}
-```
-
+      
+      ``` JSON5
+      {
+        "app": {
+          // ...
+          "icon": "$media:layered_image",
+          "label": "$string:app_name" // Configure the resource whose name is app_name in AppScope/resources/base/element/string.json. If the resource already exists, skip this step.
+        }
+      }
+      ```
 
 - **Method 2: Configuring module.json5**
 
@@ -151,37 +149,35 @@ The display effects are as follows.
 
   3. To display a UIAbility icon on the home screen, you must configure the **icon** and **label** fields, and under the **skills** tag, add **entity.system.home** to **entities** and **ohos.want.action.home** to **actions**.
 
-      <!-- @[layered_image_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-	// ···
-    "abilities": [
+      <!-- @[layered_image_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/entry/src/main/module.json5)  -->
+      
+      ``` JSON5
       {
-		// ···
-        // Set icon to the index of the layered icon resource file.
-        "icon": "$media:layered_image",
-        // Configure the resource whose name is EntryAbility_label in entry/src/main/resources/base/element/string.json. If the resource already exists, skip this step.
-        "label": "$string:EntryAbility_label",
-        "skills": [
-          {
-            "entities": [
-              "entity.system.home"
-            ],
-            "actions": [
-              "ohos.want.action.home"
-            ]
-          }
-        ]
+        "module": {
+          // ...
+          "abilities": [
+            {
+              // ...
+              // Set icon to the index of the layered icon resource file.
+              "icon": "$media:layered_image",
+              // Configure the resource whose name is EntryAbility_label in entry/src/main/resources/base/element/string.json. If the resource already exists, skip this step.
+              "label": "$string:EntryAbility_label",
+              "skills": [
+                {
+                  "entities": [
+                    "entity.system.home"
+                  ],
+                  "actions": [
+                    "ohos.want.action.home"
+                  ]
+                }
+              ]
+            }
+          ],
+          // ...
+        }
       }
-    ],
-	// ···
-  }
-}
-```
-
-
+      ```
 
 >
 > **NOTE**

@@ -12,7 +12,7 @@ Native内存使用拷贝方式（递归遍历）传输时，传输后两个线�
 
 ![copy_transfer](figures/copy_transfer.png)
 
-Native内存使用转移方式传输时，传输后原线程将无法使用此ArrayBuffer对象。跨线程时只需重建JS壳，Native内存无需拷贝，从而提高效率。通信过程如下图所示
+Native内存使用转移方式传输时，传输后原线程将无法使用此ArrayBuffer对象。跨线程时只需重建JS壳，Native内存无需拷贝，从而提高效率。通信过程如下图所示：
 
 ![transfer](figures/transfer.png)
 

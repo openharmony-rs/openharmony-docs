@@ -67,6 +67,7 @@ Enumerates database encryption algorithms.
 | ------------------- | ----------------------------------- |
 | RDB_AES_256_GCM = 0 | RDB_AES_256_GCM.|
 | RDB_AES_256_CBC     | RDB_AES_256_CBC.|
+| RDB_PLAIN_TEXT | No encryption is required.<br>**Since**: 22|
 
 ### Rdb_HmacAlgo
 
@@ -121,9 +122,9 @@ Creates an [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) instance.
 
 **Returns**
 
-| Type                                                 | Description                                                  |
-| ---------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) | Returns a pointer to the [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) instance if the operation is successful; returns **nullptr** otherwise. Use [OH_Rdb_DestroyCryptoParam](capi-oh-rdb-crypto-param-h.md#oh_rdb_destroycryptoparam) to release the memory in time. |
+| Type                                            | Description                                                        |
+| ------------------------------------------------ | ------------------------------------------------------------ |
+| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) | Returns a pointer to the [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) instance if the operation is successful; returns **nullptr** otherwise. Use [OH_Rdb_DestroyCryptoParam](capi-oh-rdb-crypto-param-h.md#oh_rdb_destroycryptoparam) to release the memory in time.|
 
 ### OH_Rdb_DestroyCryptoParam()
 

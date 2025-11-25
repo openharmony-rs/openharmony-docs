@@ -4,7 +4,7 @@
 <!--Owner: @hddgzw-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **font** module provides APIs for registering custom fonts.
 
@@ -32,9 +32,9 @@ This API is asynchronous and does not support concurrent calls.
 
 > **NOTE**
 >
-> - This API is deprecated since API version 18. You are advised to use [getFont](arkts-apis-uicontext-uicontext.md#getfont) in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) instance and then call [registerFont](arkts-apis-uicontext-font.md#registerfont) through the instance.
+> - This API is deprecated since API version 18. You are advised to use [registerFont](arkts-apis-uicontext-font.md#registerfont) instead on the obtained [Font](arkts-apis-uicontext-font.md) object.
 >
-> - From API version 10, you can obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context by using the [getFont](arkts-apis-uicontext-uicontext.md#getfont) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - Since API version 10, you can use the [getFont](arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -57,7 +57,7 @@ Information about the custom font to register.
 | Name        | Type    | Read-Only| Optional  | Description          |
 | ---------- | ------ | ---- | ---- | ------------ |
 | familyName | string \| [Resource](arkui-ts/ts-types.md#resource)<sup>10+</sup> | No | No | Name of the custom font to register.  |
-| familySrc  | string \| [Resource](arkui-ts/ts-types.md#resource)<sup>10+</sup> | No | No | Path of the custom font to register.<br>**NOTE**<br>When reading resources in the system sandbox path, you are advised to use a character string prefixed with file://. Ensure that the file in the sandbox directory exists and you have the read permission on the file.|
+| familySrc  | string \| [Resource](arkui-ts/ts-types.md#resource)<sup>10+</sup> | No | No | Path of the custom font file to register.<br>**NOTE**<br>If the font file to specify is a resource located within the system sandbox directory, you are advised to use a string with the **file://** path prefix. Ensure the target file exists in the sandbox path and has read permissions granted.|
 
 > **NOTE**
 >
@@ -80,7 +80,7 @@ struct FontExample {
     // Both familyName and familySrc support the Resource type.
     this.uiContext.getFont().registerFont({
       // You are advised to use this.getUIContext().getFont().registerFont().
-      //app.string.font_name and app.string.font_src are for reference only. Replace them with the actual resource strings.
+      // Replace 'app.string.font_name' and 'app.string.font_src' with the actual resource strings.
       familyName: $r('app.string.font_name'),
       familySrc: $r('app.string.font_src')
     })
@@ -88,7 +88,7 @@ struct FontExample {
     // familySrc supports the RawFile type.
     this.uiContext.getFont().registerFont({
       familyName: 'mediumRawFile',
-      familySrc: $rawfile('font/medium.ttf')//font/medium.ttf is for reference only. Replace it with the actual resource font file.
+      familySrc: $rawfile('font/medium.ttf')// 'font/medium.ttf' is used only as an example. Replace it with the font resource file you use.
     })
 
     // Register iconFont.
@@ -142,9 +142,9 @@ You are advised to use the [getSystemFontFullNamesByType](../apis-arkgraphics2d/
 
 > **NOTE**
 >
-> This method is supported since API version 10 and deprecated since API version 18. You are advised to use [getFont](arkts-apis-uicontext-uicontext.md#getfont) in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) instance, and then call the replacement method [getSystemFontList](arkts-apis-uicontext-font.md#getsystemfontlist) through the instance.
+> This API is supported since API version 10 and deprecated since API version 18. You are advised to use [getSystemFontList](arkts-apis-uicontext-font.md#getsystemfontlist) instead on the obtained [Font](arkts-apis-uicontext-font.md) object.
 >
-> Since API version 10, you can use the [getFont](arkts-apis-uicontext-uicontext.md#getfont) method in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context.
+> Since API version 10, you can use the [getFont](arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -194,9 +194,9 @@ Obtains information about a system font based on the font name.
 
 > **NOTE**
 >
-> This API is supported since API version 10 and deprecated since API version 18. You are advised to use [getFont](arkts-apis-uicontext-uicontext.md#getfont) in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) instance, and then call the replacement method [getFontByName](arkts-apis-uicontext-font.md#getfontbyname) through the instance.
+> This API is supported since API version 10 and deprecated since API version 18. You are advised to use [getFontByName](arkts-apis-uicontext-font.md#getfontbyname) instead on the obtained [Font](arkts-apis-uicontext-font.md) object.
 >
-> Since API version 10, you can use the [getFont](arkts-apis-uicontext-uicontext.md#getfont) method in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context.
+> Since API version 10, you can use the [getFont](arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -229,17 +229,17 @@ Information about the system font.
 | fullName       | string  | No| No| Name of the system font.          |
 | family         | string  | No| No| Family of the system font.      |
 | subfamily      | string  | No| No| Subfamily of the system font.     |
-| weight         | number  | No| No| Weight of the system font.<br>The value range is [100,900], and the value interval is 100. The values correspond to the values in the [FontWeight](../apis-arkgraphics2d/js-apis-graphics-text.md#fontweight) enumeration.<br>Default value: **100**       |
+| weight         | number  | No| No| Weight of the system font.<br>Value range: [100, 900], with intervals of 100, corresponding to the values in the [FontWeight](../apis-arkgraphics2d/js-apis-graphics-text.md#fontweight) enum<br>Default value: **100**       |
 | width          | number  | No| No| Width of the system font.<br>Value range: [1, 9], with intervals of 1, corresponding to the values in the [FontWidth](../apis-arkgraphics2d/js-apis-graphics-text.md#fontwidth) enum   |
-| italic         | boolean | No| No| Whether the system font is italic.<br>Default value: **false**<br>**true**: The system font is italic.<br>**false**: The system font is not italic.         |
-| monoSpace      | boolean | No| No| Whether the system font is monospaced.<br>Default value: **false**<br>**true**: The system font is monospaced.<br>**false**: The system font is not monospaced.        |
-| symbolic       | boolean | No| No| Whether the system font supports symbols.<br>Default value: **false**<br>**true**: The system font supports symbols.<br>**false**: The system font does not support symbols. |
+| italic         | boolean | No| No| Whether the system font is italic.<br>Default value: **false**<br>**true**: The system font is italic. **false**: The system font is not italic.         |
+| monoSpace      | boolean | No| No| Whether the system font is monospaced.<br>Default value: **false**<br>**true**: The system font is monospaced. **false**: The system font is not monospaced.        |
+| symbolic       | boolean | No| No| Whether the system font supports symbols.<br>Default value: **false**<br>**true**: The system font supports symbols. **false**: The system font does not support symbols. |
 
 **Example**
 
 > **NOTE**
 >
-> The font may be used directly, which may cause the instance to be unclear. You are advised to use the [getFont](./arkts-apis-uicontext-uicontext.md#getfont) method in [UIContext](./arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context.
+> Directly using **font** can lead to the issue of ambiguous UI context. To avoid this, obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context by using the [getFont](./arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](./arkts-apis-uicontext-uicontext.md).
 
 ```ts
 // xxx.ets
@@ -299,11 +299,11 @@ UI font configuration of the system.
 | -------------- | ------- | ------------------------- | ------- | ------------------------- |
 | fontDir        | Array\<string>  | No| No| Path to the system font file.     |
 | generic | Array\<[UIFontGenericInfo](#uifontgenericinfo11)>  | No| No| List of supported generic font families.|
-| fallbackGroups       | Array\<[UIFontFallbackGroupInfo](#uifontfallbackgroupinfo11)>  | No| No| List of alternate generic font families.          |
+| fallbackGroups       | Array\<[UIFontFallbackGroupInfo](#uifontfallbackgroupinfo11)>  | No| No| List of fallback generic font families.          |
 
 ## UIFontGenericInfo<sup>11+</sup>
 
-List of supported generic font families.
+Defines a list of supported generic font families.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -311,24 +311,24 @@ List of supported generic font families.
 | Name           | Type   | Read-Only| Optional | Description                      |
 | -------------- | ------- | ------------------------- | ------------------------- | ------------------------- |
 | family        | string | No| No| Font family name, which is the value of **family** specified in the font file.     |
-| alias        | Array\<[UIFontAliasInfo](#uifontaliasinfo11)>  | No| No| Alias list.|
+| alias        | Array\<[UIFontAliasInfo](#uifontaliasinfo11)>  | No| No| Font alias configuration information.|
 | adjust       | Array\<[UIFontAdjustInfo](#uifontadjustinfo11)>  | No| No| Weight of the font when displayed, which corresponds to the original weight.|
 
 ## UIFontFallbackGroupInfo<sup>11+</sup>
 
-List of alternate generic font families.
+Defines a list of fallback generic font families.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 | Name           | Type   | Read-Only| Optional | Description                      |
 | -------------- | ------- | ------------------------- | ------------------------- | ------------------------- |
-| fontSetName  | string | No| No| Name of the font family corresponding to the alternate fonts.     |
-| fallback        | Array\<[UIFontFallbackInfo](#uifontfallbackinfo11)>  | No| No| Alternate fonts for the font family. If **fontSetName** is **""**, it indicates that the fonts can be used as alternate fonts for all font families.|
+| fontSetName  | string | No| No| Name of the font family corresponding to the fallback fonts.     |
+| fallback        | Array\<[UIFontFallbackInfo](#uifontfallbackinfo11)>  | No| No| Fallback fonts for the font family. If **fontSetName** is **""**, it indicates that the fonts can be used as fallback fonts for all font families.|
 
 ## UIFontAliasInfo<sup>11+</sup>
 
-Alias list.
+Defines font alias configuration information.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

@@ -6,6 +6,10 @@
 <!--Tester: @Q-haosu-->	
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct {...} Scan_PictureScanProgress
+```
+
 ## Overview
 
 Defines the progress of scanning a picture by the scanner.

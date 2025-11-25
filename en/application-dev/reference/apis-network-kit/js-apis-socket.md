@@ -79,7 +79,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
 let bindAddr: socket.NetAddress = {
-  address: '192.168.xx.xxx',
+  address: '192.168.xx.xxx', // Local IP address
   port: 1234
 }
 udp.bind(bindAddr, (err: BusinessError) => {
@@ -130,7 +130,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
 let bindAddr: socket.NetAddress = {
-  address: '192.168.xx.xxx',
+  address: '192.168.xx.xxx', // Local IP address
   port: 8080
 }
 udp.bind(bindAddr).then(() => {
@@ -1506,7 +1506,7 @@ multicast.setLoopbackMode(false, (err: Object) => {
 
 setLoopbackMode(flag: boolean): Promise\<void\>
 
-Sets the loopback mode flag for multicast communication. This API uses an asynchronous callback to return the result.
+Sets the loopback mode flag for multicast communication. This API uses a promise to return the result.
 
 > **NOTE**
 > Use this API to enable or disable the loopback mode. By default, the loopback mode is enabled.
@@ -1553,7 +1553,7 @@ multicast.setLoopbackMode(false).then(() => {
 
 getLoopbackMode(callback: AsyncCallback\<boolean\>): void
 
-Obtains the loopback mode flag for multicast communication. This API uses a promise to return the result.
+Obtains the loopback mode flag for multicast communication. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > Use this API to check whether the loopback mode is enabled.
@@ -4950,7 +4950,7 @@ client.on('close', callback);
 
 off(type: 'close', callback?: Callback\<void\>): void
 
-Subscribes to **close** events of the **LocalSocket** object. This API uses an asynchronous callback to return the result.
+Unsubscribes from **close** events of the **LocalSocket** object. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 

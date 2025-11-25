@@ -66,31 +66,39 @@ For details about how to add an asset to a group, see [Adding an Asset to a Grou
    target_link_libraries(entry PUBLIC libasset_ndk.z.so)
    ```
 
-2. Add an asset.
-   ```c
-   #include <string.h>
+2. Include header files.
+   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
-   #include "asset/asset_api.h"
+``` C++
+#include "napi/native_api.h"
+#include <string.h>
+#include "asset/asset_api.h"
+```
 
-   static napi_value AddAsset(napi_env env, napi_callback_info info)
-   {
-       static const char *SECRET = "demo_pwd";
-       static const char *ALIAS = "demo_alias";
-       static const char *LABEL = "demo_label";
 
-       Asset_Blob secret = {(uint32_t)(strlen(SECRET)), (uint8_t *)SECRET};
-       Asset_Blob alias = {(uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS};
-       Asset_Blob label = {(uint32_t)(strlen(LABEL)), (uint8_t *)LABEL};
-       Asset_Attr attr[] = {
-           {.tag = ASSET_TAG_ACCESSIBILITY, .value.u32 = ASSET_ACCESSIBILITY_DEVICE_FIRST_UNLOCKED},
-           {.tag = ASSET_TAG_SECRET, .value.blob = secret},
-           {.tag = ASSET_TAG_ALIAS, .value.blob = alias},
-           {.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = label},
-       };
+3. Add an asset.
+   <!-- @[add_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
-       int32_t addResult = OH_Asset_Add(attr, sizeof(attr) / sizeof(attr[0]));
-       napi_value ret;
-       napi_create_int32(env, addResult, &ret);
-       return ret;
-   }
-   ```
+``` C++
+static napi_value AddAsset(napi_env env, napi_callback_info info)
+{
+    const char *secretStr = "demo_pwd";
+    const char *aliasStr = "demo_alias";
+    const char *labelStr = "demo_label";
+
+    Asset_Blob secret = {(uint32_t)(strlen(secretStr)), (uint8_t *)secretStr};
+    Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
+    Asset_Blob label = {(uint32_t)(strlen(labelStr)), (uint8_t *)labelStr};
+    Asset_Attr attr[] = {
+        {.tag = ASSET_TAG_ACCESSIBILITY, .value.u32 = ASSET_ACCESSIBILITY_DEVICE_FIRST_UNLOCKED},
+        {.tag = ASSET_TAG_SECRET, .value.blob = secret},
+        {.tag = ASSET_TAG_ALIAS, .value.blob = alias},
+        {.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = label},
+    };
+
+    int32_t addResult = OH_Asset_Add(attr, sizeof(attr) / sizeof(attr[0]));
+    napi_value ret;
+    napi_create_int32(env, addResult, &ret);
+    return ret;
+}
+```

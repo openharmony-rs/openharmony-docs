@@ -16,7 +16,7 @@ The **certificateManagerDialog** module provides APIs for opening the certificat
 ## Modules to Import
 
 ```ts
-import certificateManagerDialog from '@ohos.security.certManagerDialog';
+import certificateManagerDialog from '@kit.DeviceCertificateKit';
 ```
 
 ## CertificateDialogPageType
@@ -360,6 +360,8 @@ Opens the authorization page of the certificate management dialog box to grant a
 **System capability**: SystemCapability.Security.CertificateManagerDialog
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
 
 | Name    | Type                                                                | Mandatory| Description         |
 |---------|--------------------------------------------------------------------|----|-------------|

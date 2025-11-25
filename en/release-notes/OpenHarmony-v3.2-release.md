@@ -92,7 +92,7 @@ Users can hold an application icon (currently **Camera** and **Gallery**) on the
 - The service widget and browsing capabilities are provided for **Albums**.
 
 - Users can edit images, such as cropping and rotating.
-  For details, see [Application Photos](https://gitee.com/openharmony/applications_photos).
+  For details, see [Application Photos](https://gitcode.com/openharmony/applications_photos).
 
 
  **FilePicker** 
@@ -102,7 +102,7 @@ The FilePicker capability is added. FilePicker is a unified entry for users to s
 
  **Browser**
 
-No built-in browser application is available. You can develop a browser application by following the instructions provided in [Browser Application](https://gitee.com/openharmony/applications_app_samples/tree/samples_3.2_Release/code/BasicFeature/Web/Browser).
+No built-in browser application is available. You can develop a browser application by following the instructions provided in [Browser Application](https://gitcode.com/openharmony/applications_app_samples/tree/samples_3.2_Release/code/BasicFeature/Web/Browser).
 
 ### Distributed Technology
 
@@ -468,21 +468,21 @@ For details, see [DevEco Studio Version Change History](https://developer.harmon
 
 ### Testing
 
-- The capability of filtering and executing test cases is added. Specified fields such as the case type and level can be configured in test cases. Filtered test cases can be executed using commands. For details, see [How to Use](https://gitee.com/openharmony/testfwk_arkxtest/blob/master/README_en.md#basic-process-support).
+- The capability of filtering and executing test cases is added. Specified fields such as the case type and level can be configured in test cases. Filtered test cases can be executed using commands. For details, see [How to Use](https://gitcode.com/openharmony/testfwk_arkxtest/blob/master/README_en.md#basic-process-support).
 
-- The test case-driven execution capability is added. Different input and output data with similar test logic can be configured in auxiliary files, helping you reduce the amount of test code. For details, see [Data Driving](https://gitee.com/openharmony/testfwk_arkxtest/blob/master/README_en.md#data-driving).
+- The test case-driven execution capability is added. Different input and output data with similar test logic can be configured in auxiliary files, helping you reduce the amount of test code. For details, see [Data Driving](https://gitcode.com/openharmony/testfwk_arkxtest/blob/master/README_en.md#data-driving).
 
 - UI scenario simulation capabilities are added, such as multi-window, pinch, and fling. For details, see [API Reference](../application-dev/reference/apis/js-apis-uitest.md).
 
 - The compatibility test specifications are added, covering six aspects of application quality requirements: UX, performance, power consumption, stability, compatibility, and security.
 
-- The [SmartPerf-Host](https://gitee.com/openharmony-sig/smartperf/tree/master) tool provides a performance optimization platform, which provides GUI operations for detailed data analysis.  
+- The [SmartPerf-Host](https://gitcode.com/openharmony-sig/smartperf/tree/master) tool provides a performance optimization platform, which provides GUI operations for detailed data analysis.  
   - Power consumption analysis is provided, which can be used to display the power consumption proportion by application subcategory, resource request and usage records, power consumption exception events, and association between power consumption and system status.
   - Traces can be captured on the web side.
   - SQL query and metrics description are supported.
   - Kernel memory event analysis is supported.
 
-- The [wukong](https://gitee.com/openharmony/ostest_wukong) tool is enhanced as follows:
+- The [wukong](https://gitcode.com/openharmony/ostest_wukong) tool is enhanced as follows:
   - Sliding, mouse, character, system key, and control events can be injected to simulate diversified user operations.
   - Users can set the total running duration and application trustlist/blocklist.
   - Components can be traversed in sequence. Screenshots can be taken during the test. You can perform sleep and wake-up tests.
@@ -507,7 +507,7 @@ For details, see [DevEco Studio Version Change History](https://developer.harmon
 
 2. Register an SSH public key for access to Gitee.
 
-3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
+3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
   
    ```
    git config --global user.name "yourname"
@@ -518,7 +518,7 @@ For details, see [DevEco Studio Version Change History](https://developer.harmon
 4. Run the following commands to install the **repo** tool:
   
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -531,14 +531,14 @@ Use the **repo** tool to download the source code over SSH. (You must have an SS
 
 - Obtain the source code from the version branch. You can obtain the latest source code of the version branch, which includes the code that has been incorporated into the branch up until the time you run the following commands:
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-3.2-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-3.2-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - Obtain the source code from the version tag, which is the same as that released with the version.
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -549,14 +549,14 @@ Use the **repo** tool to download the source code over HTTPS.
 
 - Obtain the source code from the version branch. You can obtain the latest source code of the version branch, which includes the code that has been incorporated into the branch up until the time you run the following commands:
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-3.2-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-3.2-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - Obtain the source code from the version tag, which is the same as that released with the version.
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -589,7 +589,7 @@ For details about the API changes, see the following:
 
 ### Chip and Development Board Adaptation
 
-For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
+For details about the adaptation status, see [SIG_DevBoard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
 
 ### Samples
 
@@ -597,12 +597,12 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Subsystem| Name| Introduction| Programming Language|
 | -------- | -------- | -------- | -------- |
-| Accessibility| [AccessibilityExtensionAbility](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/ApplicationModels/AccessibilityExtAbility)| This sample demonstrates an application developed using the AccessibilityExtensionAbility component. It uses multiple APIs to implement quick interaction.| ArkTS |
-| Enterprise management| [Enterprise Device Management ExtensionAbility](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/ApplicationModels/EnterpriseAdminExtensionAbility)| EnterpriseAdminExtensionAbility is a mandatory component for Mobile Device Management (MDM) applications. When developing MDM applications for enterprises, you need to inherit EnterpriseAdminExtensionAbility and implement MDM service logic in the EnterpriseAdminExtensionAbility instance. EnterpriseAdminExtensionAbility implements notifications of system management status changes and defines the callbacks that are triggered when a device administrator application is enabled or disabled or an application is installed or uninstalled.| ArkTS |
-| Mission management| [WorkScheduler](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/WorkScheduler)| This sample uses the APIs **\@ohos.WorkSchedulerExtensionAbility**, **\@ohos.net.http**, **\@ohos.notification**, **\@ohos.bundle**, and **\@ohos.fileio** to implement the functionalities of setting background tasks, downloading, saving, and installing update packages, and sending notifications.| ArkTS |
+| Accessibility| [AccessibilityExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/ApplicationModels/AccessibilityExtAbility)| This sample demonstrates an application developed using the AccessibilityExtensionAbility component. It uses multiple APIs to implement quick interaction.| ArkTS |
+| Enterprise management| [Enterprise Device Management ExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/ApplicationModels/EnterpriseAdminExtensionAbility)| EnterpriseAdminExtensionAbility is a mandatory component for Mobile Device Management (MDM) applications. When developing MDM applications for enterprises, you need to inherit EnterpriseAdminExtensionAbility and implement MDM service logic in the EnterpriseAdminExtensionAbility instance. EnterpriseAdminExtensionAbility implements notifications of system management status changes and defines the callbacks that are triggered when a device administrator application is enabled or disabled or an application is installed or uninstalled.| ArkTS |
+| Mission management| [WorkScheduler](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/WorkScheduler)| This sample uses the APIs **\@ohos.WorkSchedulerExtensionAbility**, **\@ohos.net.http**, **\@ohos.notification**, **\@ohos.bundle**, and **\@ohos.fileio** to implement the functionalities of setting background tasks, downloading, saving, and installing update packages, and sending notifications.| ArkTS |
 
 
-For more information, visit [Samples](https://gitee.com/openharmony/applications_app_samples).
+For more information, visit [Samples](https://gitcode.com/openharmony/applications_app_samples).
 
 
 ## Resolved Issues
@@ -635,3 +635,4 @@ For more information, visit [Samples](https://gitee.com/openharmony/applications
 | I6B4U3 | During the pressure test, app freezing occurs on the com.ohos.launcher process.| When a large number of applications are installed (more than 40 applications in the test scenario) and the memory is small, there is a low probability that app freezing occurs. However, the home screen functions are normal and the overall functions and usage are not affected.| 2023-05-30|
 | I64726 <br>I641A2 | When the **bluetooth.pairDevice** API is called, no prompt indicating successful pairing is displayed. The device is paired in silent mode, and the device can be controlled using the Bluetooth keyboard and mouse.| No prompt is displayed, but the pairing is successful. This does not affect the pairing networking of DSoftBus.| 2023-06-30|
 | I6U1H9 | The **gridColOffset** attribute of **GridCol** is not included in the previewer.| The attribute display of the preview inspector is affected, but the overall effect of the previewer is not affected.| 2023-04-30|
+<!--no_check-->

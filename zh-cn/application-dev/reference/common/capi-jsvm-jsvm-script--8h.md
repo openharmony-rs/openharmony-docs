@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct JSVM_Script__* JSVM_Script
+```
+
 ## 概述
 
 表示一段JavaScript代码。

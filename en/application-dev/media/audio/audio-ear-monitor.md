@@ -54,7 +54,7 @@ To implement real-time audio monitoring, create a shared buffer to store the cap
 ### Defining the Shared Buffer and Recording/Playback Functions
 
 ```cpp
-// Create a shared buffer to store captured data and retrieve playback data in a timely manner.
+// Create a shared buffer to store captured data and retrieve playback data.
 
 // Customize a function to read captured data.
     int32_t MyOnReadData(

@@ -6,6 +6,10 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct CloudDisk_SyncFolder {...} CloudDisk_SyncFolder
+```
+
 ## 概述
 
 同步根属性信息。

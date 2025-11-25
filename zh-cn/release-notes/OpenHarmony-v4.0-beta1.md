@@ -304,9 +304,9 @@ OpenHarmony 4.0 Beta1版本开始提供首批API Level 10接口。
 
 1. 注册码云gitee帐号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
+2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
 
-3. 安装[git客户端](https://gitee.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://gitcode.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
   
    ```
    git config --global user.name "yourname"
@@ -317,7 +317,7 @@ OpenHarmony 4.0 Beta1版本开始提供首批API Level 10接口。
 4. 安装码云repo工具，可以执行如下命令。
   
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -326,18 +326,18 @@ OpenHarmony 4.0 Beta1版本开始提供首批API Level 10接口。
 
 **方式一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-4.0-Beta1 --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-4.0-Beta1 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v4.0-Beta1 --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v4.0-Beta1 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -348,14 +348,14 @@ OpenHarmony 4.0 Beta1版本开始提供首批API Level 10接口。
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-4.0-Beta1 --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-4.0-Beta1 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v4.0-Beta1 --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v4.0-Beta1 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -382,7 +382,7 @@ OpenHarmony 4.0 Beta1版本开始提供首批API Level 10接口。
 
 ### API 
 
-OpenHarmony 4.0 Beta1的API范围相比3.2 Release，API变更的清单请参见“[API差异报告](https://gitee.com/openharmony/docs/blob/OpenHarmony-4.0-Beta1/zh-cn/release-notes/api-diff/v4.0-beta1/Readme-CN.md)”。极少量接口的变更可能影响到已开发的应用（使用API 9或更早版本API开发的应用），变更影响的说明和接口的适配指导请参见“[changelogs](https://gitee.com/openharmony/docs/blob/OpenHarmony-4.0-Beta1/zh-cn/release-notes/changelogs/v4.0-beta1/Readme-CN.md)”。
+OpenHarmony 4.0 Beta1的API范围相比3.2 Release，API变更的清单请参见“[API差异报告](https://gitcode.com/openharmony/docs/blob/OpenHarmony-4.0-Beta1/zh-cn/release-notes/api-diff/v4.0-beta1/Readme-CN.md)”。极少量接口的变更可能影响到已开发的应用（使用API 9或更早版本API开发的应用），变更影响的说明和接口的适配指导请参见“[changelogs](https://gitcode.com/openharmony/docs/blob/OpenHarmony-4.0-Beta1/zh-cn/release-notes/changelogs/v4.0-beta1/Readme-CN.md)”。
 
 
 ### 特性变更
@@ -391,7 +391,7 @@ OpenHarmony 4.0 Beta1的API范围相比3.2 Release，API变更的清单请参见
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 
 ### Samples
@@ -400,11 +400,11 @@ OpenHarmony 4.0 Beta1的API范围相比3.2 Release，API变更的清单请参见
 
 | 子系统 | 名称 | 简介 | 开发语言 |
 | -------- | -------- | -------- | -------- |
-| 媒体 | [媒体会话——控制方](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta1/code/BasicFeature/Media/AVSession/MediaController)（仅对系统应用开放） | 本示例主要展示了媒体会话（媒体控制方，MediaController）的相关功能，使用\@ohos.multimedia.avsession等接口实现媒体提供方与媒体控制方自定义信息的交互功能。 | ArkTS |
-| 媒体 | [媒体会话——提供方](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta1/code/BasicFeature/Media/AVSession/MediaProvider) | 本示例主要展示了媒体会话（媒体提供方，MediaProvider）的相关功能，使用\@ohos.multimedia.avsession等接口实现媒体提供方与媒体控制方自定义信息的交互功能。 | ArkTS |
-| 媒体 | [音频管理](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta1/code/BasicFeature/Media/Audio) | 本示例主要展示了音频的相关功能，使用\@ohos.multimedia.audio等接口实现音频的发声设备的切换与查询和音频焦点功能。 | ArkTS |
+| 媒体 | [媒体会话——控制方](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta1/code/BasicFeature/Media/AVSession/MediaController)（仅对系统应用开放） | 本示例主要展示了媒体会话（媒体控制方，MediaController）的相关功能，使用\@ohos.multimedia.avsession等接口实现媒体提供方与媒体控制方自定义信息的交互功能。 | ArkTS |
+| 媒体 | [媒体会话——提供方](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta1/code/BasicFeature/Media/AVSession/MediaProvider) | 本示例主要展示了媒体会话（媒体提供方，MediaProvider）的相关功能，使用\@ohos.multimedia.avsession等接口实现媒体提供方与媒体控制方自定义信息的交互功能。 | ArkTS |
+| 媒体 | [音频管理](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta1/code/BasicFeature/Media/Audio) | 本示例主要展示了音频的相关功能，使用\@ohos.multimedia.audio等接口实现音频的发声设备的切换与查询和音频焦点功能。 | ArkTS |
 
-请访问[Samples](https://gitee.com/openharmony/applications_app_samples)仓了解更多信息。
+请访问[Samples](https://gitcode.com/openharmony/applications_app_samples)仓了解更多信息。
 
 
 ## 修复缺陷列表

@@ -30,7 +30,6 @@
     - 本地化名称<!--i18n-name-localization-->
         - [概述](i18n-display-overview.md)
         - [本地化语言与地区名称](i18n-language-region-display.md)
-        - [本地化时区名称](i18n-time-zone-display.md)
 - 应用本地化<!--l10n-->
     - [提供多语言资源](l10n-multilingual-resources.md)
     - 提升可翻译性<!--l10n-translation-->

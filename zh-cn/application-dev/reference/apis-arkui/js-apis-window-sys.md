@@ -289,7 +289,7 @@ try {
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number): Promise&lt;void&gt;
 
-最小化指定ID的屏幕中的所有主窗口。
+最小化指定ID的屏幕中的所有主窗口，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -384,7 +384,7 @@ window.toggleShownStateForAllAppWindows((err: BusinessError) => {
 ## window.toggleShownStateForAllAppWindows<sup>9+</sup>
 toggleShownStateForAllAppWindows(): Promise&lt;void&gt;
 
-多窗口快速切换时隐藏或者恢复应用窗口。
+多窗口快速切换时隐藏或者恢复应用窗口，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -422,7 +422,7 @@ promise.then(() => {
 ## window.setWindowLayoutMode<sup>9+</sup>
 setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback&lt;void&gt;): void
 
-设置窗口布局模式。
+设置窗口布局模式，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -467,7 +467,7 @@ try {
 ## window.setWindowLayoutMode<sup>9+</sup>
 setWindowLayoutMode(mode: WindowLayoutMode): Promise&lt;void&gt;
 
-设置窗口布局模式。
+设置窗口布局模式，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1011,6 +1011,7 @@ getSnapshot(windowId: number): Promise<image.PixelMap>
 | 1300004  | This operation is not accessible.             |
 
 **示例：**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -2859,7 +2860,7 @@ export default class EntryAbility extends UIAbility {
 
 raiseMainWindowAboveTarget(windowId: number): Promise&lt;void&gt;
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，用于将主窗口的层级调整至同应用下的另一个主窗口之上，子窗口的层级会跟随所属主窗口变动。使用Promise异步回调。
+将主窗口的层级调整至同应用下的另一个主窗口之上，子窗口的层级会跟随所属主窗口变动。使用Promise异步回调。
 
 仅支持系统应用主窗口调用。
 
@@ -2873,7 +2874,7 @@ raiseMainWindowAboveTarget(windowId: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -3086,6 +3087,75 @@ export default class EntryAbility extends UIAbility {
         } catch (err) {
           console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
         }
+      });
+    });
+  }
+}
+```
+
+### setMainWindowRaiseByClickEnabled<sup>23+</sup>
+
+setMainWindowRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
+
+禁止/使能主窗口点击抬升功能。使用Promise异步回调。
+
+点击主窗口时，默认会抬升主窗口及其子窗口。调用此接口禁止主窗口点击抬升后（即传入false），点击主窗口时不会将其及子窗口进行抬升，保持原有状态不变；点击子窗口时，主窗口会连同子窗口一起被抬升。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| enable   | boolean                   | 是   | 设置主窗口点击抬升功能是否使能，true表示使能，false表示禁止。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.getMainWindow().then((window: window.Window) => {
+      // 加载主窗口对应的页面
+      windowStage.loadContent('pages/Index', (err) => {
+        if (err.code) {
+          console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in loading the content.');
+        try {
+          let raiseEnabled: boolean = false;
+          let promise = window.setMainWindowRaiseByClickEnabled(raiseEnabled);
+          promise.then(() => {
+            console.info('Succeeded in disabling the raise-by-click function.');
+          })
+        } catch(err) {
+          console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+        };
       });
     });
   }
@@ -3617,7 +3687,7 @@ try {
 
 setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, isSplitVisible: boolean): void
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，用于设置主窗标题栏上的最大化、最小化、分屏按钮是否可见。
+设置主窗标题栏上的最大化、最小化、分屏按钮是否可见。
 
 仅对在当前场景下可见的标题栏按钮（最大化、最小化、分屏）生效。
 
@@ -3625,7 +3695,7 @@ setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, is
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 

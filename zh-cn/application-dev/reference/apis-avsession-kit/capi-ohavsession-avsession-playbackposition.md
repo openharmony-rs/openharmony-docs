@@ -6,6 +6,10 @@
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct AVSession_PlaybackPosition {...} AVSession_PlaybackPosition
+```
+
 ## 概述
 
 媒体播放位置的相关属性。

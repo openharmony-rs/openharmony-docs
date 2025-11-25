@@ -27,7 +27,7 @@ OpenHarmony提供定制电池服务振动的能力，产品定制开发者可根
 
 本文以RK3568开发板为例，说明如何实现插入充电器振动的定制方法。
 
-1. 修改[base\powermgr\battery_manager\services\native\profile](https://gitee.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile)路径下的电池服务振动配置文件battery_vibrator.json。
+1. 修改[base\powermgr\battery_manager\services\native\profile](https://gitcode.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile)路径下的电池服务振动配置文件battery_vibrator.json。
 
     ```text
     profile
@@ -69,4 +69,4 @@ OpenHarmony提供定制电池服务振动的能力，产品定制开发者可根
 
 开发过程中可参考的配置文件路径：
 
-[系统默认插入充电器振动配置源码路径](https://gitee.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile)
+[系统默认插入充电器振动配置源码路径](https://gitcode.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile)

@@ -403,6 +403,17 @@ Web同层渲染的配置。
 | keyTypes | Array<string\>                           | 否 | 否 | 可接受的非对称秘钥类型。    |
 | issuers  | Array<string\>                           | 否 | 否 | 与私钥匹配的证书可接受颁发者。 |
 
+
+## VerifyPinEvent<sup>22+</sup>
+定义当需要用户进行PIN码认证时触发回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ------------|---------------------------- |
+| handler  | [VerifyPinHandler](./arkts-basic-components-web-VerifyPinHandler.md) | 否 | 否 | 通知Web组件用户操作行为。  |
+| identity     | string                                   | 否 | 否 | 用于认证的证书凭据标识。    |
+
 ## OnWindowNewEvent<sup>12+</sup>
 
 定义网页要求用户创建窗口时触发的回调。

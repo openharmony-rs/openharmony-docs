@@ -86,6 +86,20 @@ Codec MIME类型枚举。
 | AUDIO_AMR_NB<sup>18+</sup>   | 'audio/3gpp'     | 表示音频/amr-nb类型。 |
 | AUDIO_AMR_WB<sup>18+</sup>   | 'audio/amr-wb'     | 表示音频/amr-wb类型。 |
 
+## AacProfile<sup>22+</sup>
+
+高级音频编码（AAC）类型枚举。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+| 名称         | 值                    | 说明                        |
+| ------------ | --------------------- | --------------------------- |
+| AAC_LC       |     0                 | 表示 AAC Low-Complexity 类型。        |
+| AAC_HE       |     1                 | 表示 AAC Hight-Efficiency 类型。        |
+| AAC_HE_V2    |     2                 | 表示 AAC Hight-Efficiency version 2 类型。     |
+
 ## MediaDescriptionKey<sup>8+</sup>
 
 媒体信息描述枚举。
@@ -98,7 +112,7 @@ Codec MIME类型枚举。
 | MD_KEY_TRACK_TYPE        | 'track_type'    | 表示轨道类型，其对应键值类型为number，参考[MediaType](#mediatype8)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | MD_KEY_CODEC_MIME        | 'codec_mime'    | 表示codec_mime类型，其对应键值类型为string。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | MD_KEY_DURATION          | 'duration'      | 表示媒体时长，其对应键值类型为number，单位为毫秒（ms）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| MD_KEY_BITRATE           | 'bitrate'       | 表示比特率，其对应键值类型为number，单位为比特率（bps）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| MD_KEY_BITRATE           | 'bitrate'       | 表示比特率，其对应键值类型为number，单位为比特率（bps），值为undefined或0表示异常。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | MD_KEY_WIDTH             | 'width'         | 表示视频宽度，其对应键值类型为number，单位为像素（px）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | MD_KEY_HEIGHT            | 'height'        | 表示视频高度，其对应键值类型为number，单位为像素（px）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | MD_KEY_FRAME_RATE        | 'frame_rate'    | 表示视频帧率，其对应键值类型为number，单位为每100秒的帧数。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -362,6 +376,18 @@ Codec MIME类型枚举。
 | --------------------------------- | ---- | -------------------------------------------- |
 | PRESERVE_ASPECT_RATIO | 0    | 保持与原始图像相同的宽高比例，即与物理屏幕宽高比例一致。 |
 | SCALE_TO_FILL | 1    | 进行图像拉伸填充，适配设置的宽度和高度。 |
+
+## PickerMode<sup>22+</sup>
+
+表示屏幕录制Picker模式的枚举。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+| 名称                              | 值   | 说明                                         |
+| --------------------------------- | ---- | -------------------------------------------- |
+| WINDOW_ONLY | 0    | 仅显示窗口列表。 |
+| SCREEN_ONLY | 1    | 仅显示屏幕列表。 |
+| SCREEN_AND_WINDOW | 2    | 同时显示屏幕列表和窗口列表。 |
 
 ## AudioEncoder<sup>(deprecated)</sup>
 

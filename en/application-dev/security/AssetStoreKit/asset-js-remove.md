@@ -50,7 +50,9 @@ The following table describes the attributes of **AssetMap** for removing an ass
 
 Remove asset **demo_alias**.
 
-```typescript
+<!-- @[remove_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove.ets) -->
+
+``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -60,15 +62,23 @@ function stringToArray(str: string): Uint8Array {
   return textEncoder.encodeInto(str);
 }
 
-let query: asset.AssetMap = new Map();
-query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the asset alias to remove a single asset. To remove all assets, leave the alias unspecified.
-try {
-  asset.remove(query).then(() => {
-    console.info(`Succeeded in removing Asset.`);
-  }).catch((err: BusinessError) => {
+export async function removeAsset(): Promise<string> {
+  let result: string = '';
+  let query: asset.AssetMap = new Map();
+  query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the asset alias to remove a single asset. To remove all assets, leave the alias unspecified.
+  try {
+    await asset.remove(query).then(() => {
+      console.info(`Succeeded in removing Asset.`);
+      result = 'Succeeded in removing Asset';
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
+      result = 'Failed to remove Asset';
+    });
+  } catch (error) {
+    let err = error as BusinessError;
     console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
-  });
-} catch (err) {
-  console.error(`Failed to remove Asset. Code is ${err?.code}, message is ${err?.message}`);
+    result = 'Failed to remove Asset';
+  }
+  return result;
 }
 ```

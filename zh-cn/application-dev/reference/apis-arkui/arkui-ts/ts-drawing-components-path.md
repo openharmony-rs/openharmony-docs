@@ -4,7 +4,7 @@
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 路径绘制组件，根据绘制路径生成封闭的自定义形状。
 

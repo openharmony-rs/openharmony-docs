@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 使用OffscreenCanvasRenderingContext2D在Canvas上进行离屏绘制，绘制对象可以是矩形、文本、图片等。离屏绘制是指将需要绘制的内容先绘制在缓存区，然后将其转换成图片，一次性绘制到Canvas上。离屏绘制使用CPU进行绘制，绘制速度较慢，对绘制速度有要求的场景应避免使用离屏绘制。
 
@@ -72,7 +72,7 @@ constructor(width: number, height: number, settings?: RenderingContextSettings, 
 | [lineJoin](#linejoin) | [CanvasLineJoin](ts-canvasrenderingcontext2d.md#canvaslinejoin类型说明) | 否 | 否 | 指定线段间相交的交点样式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>可选值为：<br/>-&nbsp;'round'：在线段相连处绘制一个扇形，扇形的圆角半径是线段的宽度。<br/>-&nbsp;'bevel'：在线段相连处使用三角形为底填充，&nbsp;每个部分矩形拐角独立。<br/>-&nbsp;'miter'：在相连部分的外边缘处进行延伸，使其相交于一点，形成一个菱形区域，该属性可以通过设置miterLimit属性展现效果。<br/>默认值：'miter'<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | [miterLimit](#miterlimit) | number | 否 | 否 | 设置斜接面限制值，该值指定了线条相交处内角和外角的距离，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>默认值：10px<br/>单位：px。 <br/>miterLimit取值不支持0和负数，0、负数和NaN按默认值处理，Infinity会导致和miterLimit属性相关的接口无法绘制。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | [font](#font) | string | 否 | 否 | 设置文本绘制中的字体样式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>语法：ctx.font&nbsp;=&nbsp;'font-style&nbsp;font-weight&nbsp;font-size&nbsp;font-family'<br/>-&nbsp;font-style(可选)，用于指定字体样式，支持如下几种样式：'normal','italic'。<br/>-&nbsp;font-weight(可选)，用于指定字体的粗细，支持如下几种类型：'normal',&nbsp;'bold',&nbsp;'bolder',&nbsp;'lighter',&nbsp;100,&nbsp;200,&nbsp;300,&nbsp;400,&nbsp;500,&nbsp;600,&nbsp;700,&nbsp;800,&nbsp;900。<br/>-&nbsp;font-size(可选)，指定字号和行高，单位支持px、vp。使用时需要添加单位。<br/>-&nbsp;font-family(可选)，指定字体系列，支持如下几种类型：'sans-serif',&nbsp;'serif',&nbsp;'monospace'。API version 20及以后支持注册过的自定义字体（只能在主线程使用，不支持在worker线程中使用；DevEco Studio的预览器不支持显示自定义字体），具体使用方法参考自定义字体[font](#font)示例。<br/>默认值：'normal normal 14px sans-serif'<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [textAlign](#textalign) | [CanvasTextAlign](ts-canvasrenderingcontext2d.md#canvastextalign类型说明) | 否 | 否 | 设置文本绘制中的文本对齐方式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>可选值为：<br/>-&nbsp;'left'：文本左对齐。<br/>-&nbsp;'right'：文本右对齐。<br/>-&nbsp;'center'：文本居中对齐。<br/>-&nbsp;'start'：文本对齐界线开始的地方。<br/>-&nbsp;'end'：文本对齐界线结束的地方。<br/>> **说明：**<br/>>&nbsp;ltr布局模式下'start'和'left'一致，rtl布局模式下'start'和'right'一致。<br/>默认值：'left'<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| [textAlign](#textalign) | [CanvasTextAlign](ts-canvasrenderingcontext2d.md#canvastextalign类型说明) | 否 | 否 | 设置文本绘制中的文本对齐方式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>可选值为：<br/>-&nbsp;'left'：文本左对齐。<br/>-&nbsp;'right'：文本右对齐。<br/>-&nbsp;'center'：文本居中对齐。<br/>-&nbsp;'start'：文本对齐界线开始的地方。<br/>-&nbsp;'end'：文本对齐界线结束的地方。<br/> **说明：**<br/>&nbsp;ltr布局模式下'start'和'left'一致，rtl布局模式下'start'和'right'一致。<br/>默认值：'left'<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | [textBaseline](#textbaseline)            | [CanvasTextBaseline](ts-canvasrenderingcontext2d.md#canvastextbaseline类型说明) | 否 | 否 | 设置文本绘制中的水平对齐方式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>可选值为：<br/>-&nbsp;'alphabetic'：文本基线是标准的字母基线。<br/>-&nbsp;'top'：文本基线在文本块的顶部。<br/>-&nbsp;'hanging'：文本基线是悬挂基线。<br/>-&nbsp;'middle'：文本基线在文本块的中间。<br/>-&nbsp;'ideographic'：文字基线是表意字基线；如果字符本身超出了alphabetic基线，那么ideographic基线位置在字符本身的底部。<br/>-&nbsp;'bottom'：文本基线在文本块的底部。&nbsp;与ideographic基线的区别在于ideographic基线不需要考虑下行字母。<br/>默认值：'alphabetic'<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | [globalAlpha](#globalalpha) | number | 否 | 否 | 设置透明度，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>范围为[0.0, 1.0]，0.0为完全透明，1.0为完全不透明。若给定值小于0.0，则取值0.0；若给定值大于1.0，则取值1.0。<br>API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制。API version 18及以后，设置NaN或Infinity时当前接口不生效，其他传入有效参数的绘制方法正常绘制。<br/>默认值：1.0<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | [lineDashOffset](#linedashoffset) | number | 否 | 否 | 设置画布的虚线偏移量，精度为float，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>默认值：0.0<br/>单位：vp。<br/>异常值NaN和Infinity按默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -84,7 +84,7 @@ constructor(width: number, height: number, settings?: RenderingContextSettings, 
 | [imageSmoothingEnabled](#imagesmoothingenabled) | boolean | 否 | 否 | 用于设置绘制图片时是否进行图像平滑度调整，true为启用，false为不启用，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>默认值：true<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | [imageSmoothingQuality](#imagesmoothingquality) | [ImageSmoothingQuality](ts-canvasrenderingcontext2d.md#imagesmoothingquality类型说明) | 否 | 否 | imageSmoothingEnabled为true时，用于设置图像平滑度，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>可选值为：<br/>- 'low'：低画质<br/>- 'medium'：中画质<br/>- 'high'：高画质。<br/>默认值："low"<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | [direction](#direction)                  | [CanvasDirection](ts-canvasrenderingcontext2d.md#canvasdirection类型说明) | 否 | 否 | 用于设置绘制文字时使用的文字方向，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>可选值为：<br/>- 'inherit'：使用系统默认布局方向<br/>- 'ltr'：从左往右<br/>- 'rtl'：从右往左。<br/>默认值："inherit"<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [filter](#filter)                        | string | 否 | 否 | 用于设置图像的滤镜，可以组合任意数量的滤镜，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>支持的滤镜效果如下：<br/>- 'none': 无滤镜效果。<br/>- 'blur(\<length>)'：给图像设置高斯模糊，取值范围≥0，支持单位px、vp、rem，默认单位：vp，默认值：blur(0px)。<br/>- 'brightness([\<number>\|\<percentage>])'：给图片应用一种线性乘法，使其看起来更亮或更暗，支持数字和百分比参数，取值范围≥0，默认值：brightness(1)。<br/>- 'contrast([\<number>\|\<percentage>])'：调整图像的对比度，支持数字和百分比参数，取值范围≥0，默认值：contrast(1)。<br/>- 'grayscale([\<number>\|\<percentage>])'：将图像转换为灰度图像，支持数字和百分比参数，取值范围[0, 1]，默认值：grayscale(0)。<br/>- 'hue-rotate(\<angle>)'：给图像应用色相旋转，取值范围0deg-360deg，默认值：hue-rotate(0deg)。<br/>- 'invert([\<number>\|\<percentage>])'：反转输入图像，支持数字和百分比参数，取值范围[0, 1]，默认值：invert(0)。<br/>- 'opacity([\<number>\|\<percentage>])'：转化图像的透明程度，支持数字和百分比参数，取值范围[0, 1]，默认值：opacity(1)。<br/>- 'saturate([\<number>\|\<percentage>])'：转换图像饱和度，支持数字和百分比参数，取值范围≥0，默认值：saturate(1)。<br/>- 'sepia([\<number>\|\<percentage>])'：将图像转换为深褐色，支持数字和百分比参数，取值范围[0, 1]，默认值：sepia(0)。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| [filter](#filter)                        | string | 否 | 否 | 用于设置图像的滤镜，可以组合任意数量的滤镜，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>支持的滤镜效果如下：<br/>- 'none': 无滤镜效果。<br/>- 'blur(\<length>)'：给图像设置高斯模糊，取值范围≥0，支持单位px、vp、rem，默认值：blur(0px)。<br/>- 'brightness([\<number>\|\<percentage>])'：给图片应用一种线性乘法，使其看起来更亮或更暗，支持数字和百分比参数，取值范围≥0，默认值：brightness(1)。<br/>- 'contrast([\<number>\|\<percentage>])'：调整图像的对比度，支持数字和百分比参数，取值范围≥0，默认值：contrast(1)。<br/>- 'grayscale([\<number>\|\<percentage>])'：将图像转换为灰度图像，支持数字和百分比参数，取值范围[0, 1]，默认值：grayscale(0)。<br/>- 'hue-rotate(\<angle>)'：给图像应用色相旋转，取值范围0deg-360deg，默认值：hue-rotate(0deg)。<br/>- 'invert([\<number>\|\<percentage>])'：反转输入图像，支持数字和百分比参数，取值范围[0, 1]，默认值：invert(0)。<br/>- 'opacity([\<number>\|\<percentage>])'：转化图像的透明程度，支持数字和百分比参数，取值范围[0, 1]，默认值：opacity(1)。<br/>- 'saturate([\<number>\|\<percentage>])'：转换图像饱和度，支持数字和百分比参数，取值范围≥0，默认值：saturate(1)。<br/>- 'sepia([\<number>\|\<percentage>])'：将图像转换为深褐色，支持数字和百分比参数，取值范围[0, 1]，默认值：sepia(0)。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | [letterSpacing<sup>18+</sup>](#letterspacing18)                  | string&nbsp;\| [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 否 | 用于指定绘制文本时字母之间的间距，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>当使用LengthMetrics时：<br/>字间距按照指定的单位设置；<br/>不支持FP、PERCENT和LPX（按无效值处理）；<br/>支持负数和小数，设为小数时字间距不四舍五入。<br/>当使用string时：<br/>不支持设置百分比（按无效值处理）；<br/>支持负数和小数，设为小数时字间距不四舍五入；<br/>若letterSpacing的赋值未指定单位（例如：letterSpacing='10'），且未指定LengthMetricsUnit时，默认单位设置为vp；<br/>指定LengthMetricsUnit为px时，默认单位设置为px；<br/>当letterSpacing的赋值指定单位时（例如：letterSpacing='10vp'），字间距按照指定的单位设置。<br/>默认值：0（输入无效值时，字间距设为默认值）<br/>注：推荐使用LengthMetrics，性能更好。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 > **说明：**
@@ -3111,8 +3111,8 @@ drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh:
 | image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 图片资源，请参考ImageBitmap或PixelMap。<br>异常值undefined或null按无效值处理，不进行绘制。 |
 | dx    | number | 是  | 绘制区域左上角在x轴的位置。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 | dy    | number | 是  | 绘制区域左上角在y轴的位置。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
-| dw    | number | 是  | 绘制区域的宽度。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
-| dh    | number | 是  | 绘制区域的高度。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| dw    | number | 是  | 绘制区域的宽度。<br>负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| dh    | number | 是  | 绘制区域的高度。<br>负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 
  **示例：**
 
@@ -3167,12 +3167,12 @@ drawImage(image: ImageBitmap | PixelMap, sx: number, sy: number, sw: number, sh:
 | image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 图片资源，请参考ImageBitmap或PixelMap。<br>异常值undefined或null按无效值处理，不进行绘制。 |
 | sx    | number | 是  | 裁切源图像时距离源图像左上角的x坐标值。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>image类型为ImageBitmap时，默认单位：vp<br>image类型为PixelMap时，API version 18前，默认单位：px；API version 18及以后，默认单位：vp |
 | sy    | number | 是  | 裁切源图像时距离源图像左上角的y坐标值。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>image类型为ImageBitmap时，默认单位：vp<br>image类型为PixelMap时，API version 18前，默认单位：px；API version 18及以后，默认单位：vp |
-| sw    | number | 是  | 裁切源图像时需要裁切的宽度。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>image类型为ImageBitmap时，默认单位：vp<br>image类型为PixelMap时，API version 18前，默认单位：px；API version 18及以后，默认单位：vp |
-| sh    | number | 是  | 裁切源图像时需要裁切的高度。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>image类型为ImageBitmap时，默认单位：vp<br>image类型为PixelMap时，API version 18前，默认单位：px；API version 18及以后，默认单位：vp |
+| sw    | number | 是  | 裁切源图像时需要裁切的宽度。<br>负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>image类型为ImageBitmap时，默认单位：vp<br>image类型为PixelMap时，API version 18前，默认单位：px；API version 18及以后，默认单位：vp |
+| sh    | number | 是  | 裁切源图像时需要裁切的高度。<br>负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>image类型为ImageBitmap时，默认单位：vp<br>image类型为PixelMap时，API version 18前，默认单位：px；API version 18及以后，默认单位：vp |
 | dx    | number | 是  | 绘制区域左上角在x轴的位置。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 | dy    | number | 是  | 绘制区域左上角在y轴的位置。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
-| dw    | number | 是  | 绘制区域的宽度。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
-| dh    | number | 是  | 绘制区域的高度。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| dw    | number | 是  | 绘制区域的宽度。<br>负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| dh    | number | 是  | 绘制区域的高度。<br>负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 
  **示例：**
 
@@ -3543,27 +3543,28 @@ setLineDash(segments: number[]): void
 **示例：** 
 
   ```ts
+  // xxx.ets
   @Entry
   @Component
   struct SetLineDash {
     private settings: RenderingContextSettings = new RenderingContextSettings(true);
     private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
     private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
-    
+
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Canvas(this.context)
           .width('100%')
           .height('100%')
-          .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .backgroundColor('#D5D5D5')
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.arc(100, 75, 50, 0, 6.28)
-            offContext.setLineDash([10,20])
+            offContext.setLineDash([10, 20])
             offContext.stroke()
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
-        })
+          })
       }
       .width('100%')
       .height('100%')
@@ -3600,28 +3601,24 @@ getLineDash(): number[]
     private settings: RenderingContextSettings = new RenderingContextSettings(true);
     private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
     private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+
     build() {
       Row() {
         Column() {
           Text(this.message)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
-            .onClick(()=>{
-              console.error('before getlinedash clicked')
-              let offContext = this.offCanvas.getContext("2d", this.settings)
-              let res = offContext.getLineDash()
-              console.error(JSON.stringify(res))
-            })
           Canvas(this.context)
             .width('100%')
             .height('100%')
-            .backgroundColor('#ffff00')
+            .backgroundColor('#D5D5D5')
             .onReady(() => {
               let offContext = this.offCanvas.getContext("2d", this.settings)
               offContext.arc(100, 75, 50, 0, 6.28)
-              offContext.setLineDash([10,20])
+              offContext.setLineDash([10, 20])
               offContext.stroke()
               let res = offContext.getLineDash()
+              this.message = JSON.stringify(res)
               let image = this.offCanvas.transferToImageBitmap()
               this.context.transferFromImageBitmap(image)
             })

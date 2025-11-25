@@ -102,6 +102,8 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | time | number | 事件触发时间，单位为ms。 |
 | crash_type | string | 崩溃类型，支持NativeCrash（native代码异常）和JsError（js代码异常）两种类型。检测方法请参见[CppCrash（NativeCrash）检测](cppcrash-guidelines.md)和[Js Crash（JsError）检测](jscrash-guidelines.md)。 |
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台状态；false表示应用处于后台状态。 |
+| release_type | string | 标识应用打包时使用的SDK的发布类型。具体说明详见[ApplicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中的releaseType。<br>**说明**：从API version 23开始支持。 |
+| cpu_abi | string | 二进制接口类型。<br>**说明**：从API version 23开始支持。 |
 | bundle_version | string | 应用版本。 |
 | bundle_name | string | 应用名称。 |
 | pid | number | 应用的进程ID。 |
@@ -163,9 +165,11 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | -------- | -------- | -------- |
 | file | string | 文件名称。 |
 | symbol | string | 函数名称。symbol为空可能是由于以下两种原因：<br/>**1. 二进制文件中没有保存该函数名信息。**<br/>**2. 函数名称长度超过256字节时将被全部删除，以防止超长字符串引起未知问题。** |
-| buildId | string | 文件唯一标识。**文件可能没有buildId，请参考[CppCrash（NativeCrash）日志规格](cppcrash-guidelines.md#一般故障场景日志规格)**。 |
+| buildId | string | 文件唯一标识。**文件可能没有buildId**。|
 | pc | string | 程序执行的指令在文件内的偏移十六进制字节数。 |
 | offset | number | 程序执行的指令在函数内偏移字节数。 |
+
+详细说明请参见[调用栈帧内容说明](cppcrash-guidelines.md#一般故障场景日志规格)。
 
 **Js frame字段说明**
 
@@ -176,6 +180,8 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | symbol | string | 函数名称。 |
 | line | number | 代码行号。 |
 | column | number | 代码列号。 |
+
+详细说明请参见[JS混合栈帧内容说明](cppcrash-guidelines.md#一般故障场景日志规格)。
 
 ### memory字段说明
 

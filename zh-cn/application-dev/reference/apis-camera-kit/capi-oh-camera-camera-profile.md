@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_Profile {...} Camera_Profile
+```
+
 ## 概述
 
 相机流的配置文件。

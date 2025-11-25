@@ -42,7 +42,7 @@ import { pointer } from '@kit.InputKit';
 <!-- @[pointer_visible](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/ArkTsPointer/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-        Text("Click to hide the cursor")
+        Text("Click to hide pointer")
           .onClick(() => {
             // 1.应用切换到全屏播放
             // 2.调用鼠标光标隐藏接口隐藏光标
@@ -91,7 +91,7 @@ import { pointer } from '@kit.InputKit';
 ### 开发步骤
 
 1. 开发者使能取色功能。
-2. 调用窗口实例获取对应的窗口id。
+2. 调用窗口实例获取对应的窗口ID。
 3. 设置鼠标光标样式为取色器样式。
 4. 取色结束。
 5. 设置鼠标光标样式为默认样式。
@@ -99,10 +99,10 @@ import { pointer } from '@kit.InputKit';
 <!-- @[pointer_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/ArkTsPointer/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-        Text("Click to set the mouse pointer style to the color picker style")
+        Text(`Click to set the mouse pointer style to the color picker style`)
           .onClick(() => {
             // 1.开发者使能取色功能
-            // 2.调用窗口实例获取对应的窗口id
+            // 2.调用窗口实例获取对应的窗口ID
             window.getLastWindow(this.getUIContext().getHostContext(),
               (error: BusinessError, windowClass: window.Window) => {
                 if (error.code) {
@@ -129,7 +129,7 @@ import { pointer } from '@kit.InputKit';
 		// ···
 
 
-        Text("Click to set the mouse pointer style to default style")
+        Text(`Click to set the mouse pointer style to default style`)
           .onClick(() => {
             // 4.取色结束
             window.getLastWindow(this.getUIContext().getHostContext(),

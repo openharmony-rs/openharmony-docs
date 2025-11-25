@@ -7,6 +7,10 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+```c
+struct OH_Huks_KeyMaterialRsa {...}
+```
+
 ## 概述
 
 定义Rsa密钥的结构体类型。

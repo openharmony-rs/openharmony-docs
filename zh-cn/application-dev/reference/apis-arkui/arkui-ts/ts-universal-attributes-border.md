@@ -4,7 +4,7 @@
 <!--Owner: @zju_ljz-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 设置组件边框样式。
 
@@ -130,7 +130,7 @@ borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| value  | [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](./ts-types.md#borderradiuses9)<sup>9+</sup>&nbsp;\|&nbsp;[LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12)<sup>12+</sup> | 是   | 设置元素的边框圆角半径，支持百分比，百分比依据组件宽度，最大值为组件宽或高的一半。设置圆角后，可搭配[.clip属性](./ts-universal-attributes-sharp-clipping.md#clip12)进行裁剪，避免子组件超出组件自身。|
+| value  | [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](./ts-types.md#borderradiuses9)<sup>9+</sup>&nbsp;\|&nbsp;[LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12)<sup>12+</sup> | 是   | 设置元素的边框圆角半径，支持百分比，百分比依据组件宽度，最大值为组件宽或高的一半。设置圆角后，可搭配[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性进行裁剪，避免子组件超出组件自身。|
 
 **返回值：**
 
@@ -138,6 +138,30 @@ borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T
 | --- | --- |
 |  T | 返回当前组件。 |
 
+## borderRadius<sup>22+</sup>
+
+borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses, type?: RenderStrategy): T
+
+设置边框的圆角半径和绘制圆角的模式。圆角大小受组件尺寸限制，最大值为组件宽或高的一半。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明                                   |
+| ------ | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| value  | [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](./ts-types.md#borderradiuses9)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12) | 是   | 设置元素的边框圆角半径，支持百分比，百分比依据组件宽度。设置圆角后，可搭配[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性进行裁剪，避免子组件超出组件自身。|
+| type  | [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | 否   |设置组件绘制圆角的模式。<br/>默认值：RenderStrategy.FAST|
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+|  T | 返回当前组件。 |
 
 ## 示例
 
@@ -147,51 +171,6 @@ borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T
 
 ```ts
 // xxx.ets
-@Entry
-@Component
-struct BorderExample {
-  build() {
-    Column() {
-      Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        // 线段
-        Text('dashed')
-          .borderStyle(BorderStyle.Dashed).borderWidth(5).borderColor(0xAFEEEE).borderRadius(10)
-          .width(120).height(120).textAlign(TextAlign.Center).fontSize(16)
-        // 点线
-        Text('dotted')
-          .border({ width: 5, color: 0x317AF7, radius: 10, style: BorderStyle.Dotted })
-          .width(120).height(120).textAlign(TextAlign.Center).fontSize(16)
-      }.width('100%').height(150)
-
-      Text('.border')
-        .fontSize(50)
-        .width(300)
-        .height(300)
-        .border({
-          width: { left: 3, right: 6, top: 10, bottom: 15 },
-          color: { left: '#e3bbbb', right: Color.Blue, top: Color.Red, bottom: Color.Green },
-          radius: { topLeft: 10, topRight: 20, bottomLeft: 40, bottomRight: 80 },
-          style: {
-            left: BorderStyle.Dotted,
-            right: BorderStyle.Dotted,
-            top: BorderStyle.Solid,
-            bottom: BorderStyle.Dashed
-          }
-        }).textAlign(TextAlign.Center)
-    }
-  }
-}
-```
-
-![zh-cn_image_0000001219982705](figures/zh-cn_image_0000001219982705.gif)
-
-### 示例2（边框宽度类型和边框颜色）
-
-border属性的width、radius、color属性值使用LocalizedEdgeWidths类型和LocalizedEdgeColors类型。
-
-```ts
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI';
 @Entry
 @Component
 struct BorderExample {
@@ -210,7 +189,88 @@ struct BorderExample {
           .fontSize(16)
         // 点线
         Text('dotted')
-          .border({ width: 5, color: 0x317AF7, radius: 10, style: BorderStyle.Dotted })
+          .border({
+            width: 5,
+            color: 0x317AF7,
+            radius: 10,
+            style: BorderStyle.Dotted
+          })
+          .width(120)
+          .height(120)
+          .textAlign(TextAlign.Center)
+          .fontSize(16)
+      }.width('100%').height(150)
+
+      Text('.border')
+        .fontSize(50)
+        .width(300)
+        .height(300)
+        .border({
+          width: {
+            left: 3,
+            right: 6,
+            top: 10,
+            bottom: 15
+          },
+          color: {
+            left: '#e3bbbb',
+            right: Color.Blue,
+            top: Color.Red,
+            bottom: Color.Green
+          },
+          radius: {
+            topLeft: 10,
+            topRight: 20,
+            bottomLeft: 40,
+            bottomRight: 80
+          },
+          style: {
+            left: BorderStyle.Dotted,
+            right: BorderStyle.Dotted,
+            top: BorderStyle.Solid,
+            bottom: BorderStyle.Dashed
+          }
+        })
+        .textAlign(TextAlign.Center)
+    }
+  }
+}
+```
+
+![zh-cn_image_0000001219982705](figures/zh-cn_image_0000001219982705.gif)
+
+### 示例2（边框宽度类型和边框颜色）
+
+border属性的width、radius、color属性值使用LocalizedEdgeWidths类型和LocalizedEdgeColors类型。
+
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct BorderExample {
+  build() {
+    Column() {
+      Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
+        // 线段
+        Text('dashed')
+          .borderStyle(BorderStyle.Dashed)
+          .borderWidth(5)
+          .borderColor(0xAFEEEE)
+          .borderRadius(10)
+          .width(120)
+          .height(120)
+          .textAlign(TextAlign.Center)
+          .fontSize(16)
+        // 点线
+        Text('dotted')
+          .border({
+            width: 5,
+            color: 0x317AF7,
+            radius: 10,
+            style: BorderStyle.Dotted
+          })
           .width(120)
           .height(120)
           .textAlign(TextAlign.Center)
@@ -228,7 +288,12 @@ struct BorderExample {
             top: LengthMetrics.vp(10),
             bottom: LengthMetrics.vp(15)
           },
-          color: { start: '#e3bbbb', end: Color.Blue, top: Color.Red, bottom: Color.Green },
+          color: {
+            start: '#e3bbbb',
+            end: Color.Blue,
+            top: Color.Red,
+            bottom: Color.Green
+          },
           radius: {
             topStart: LengthMetrics.vp(10),
             topEnd: LengthMetrics.vp(20),
@@ -255,3 +320,82 @@ struct BorderExample {
 从右至左显示语言示例图
 
 ![zh-cm_image_border_rtl](figures/zh-cn_image_border_rtl.png)
+
+### 示例3（设置离屏圆角）
+
+从API version 22开始，该示例支持设置组件绘制圆角的模式。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct RenderStrategyExample {
+  build() {
+    NavDestination() {
+      Column({ space: 20 }) {
+        Stack() {
+          Column()
+            .width(320)
+            .height(320)
+            .backgroundColor(Color.Black)
+
+          Stack() {
+            Stack() {
+              Scroll(new Scroller()) {
+                Image($r('app.media.startIcon'))
+                  .width('100%')
+                  .height('200%')
+              }
+
+              Column()
+                .blur(50)
+                .width(300)
+                .height(100)
+                .position({ x: 0, y: 0 })
+            }
+          }
+          .width(300)
+          .height(300)
+          .backgroundColor(Color.Pink)
+          .borderRadius(50, RenderStrategy.FAST)
+          .clip(true)
+        }
+
+        Stack() {
+          Column()
+            .width(320)
+            .height(320)
+            .backgroundColor(Color.Black)
+
+          Stack() {
+            Stack() {
+              Scroll(new Scroller()) {
+                Image($r('app.media.startIcon'))
+                  .width('100%')
+                  .height('200%')
+              }
+
+              Column()
+                .blur(50)
+                .width(300)
+                .height(100)
+                .position({ x: 0, y: 0 })
+            }
+          }
+          .width(300)
+          .height(300)
+          .backgroundColor(Color.Pink)
+          .borderRadius(50, RenderStrategy.OFFSCREEN)
+          .clip(true)
+        }
+      }
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+设置在线绘制模式（上方）以及离屏绘制模式（下方）的示例图如下：
+
+![离屏绘制](figures/renderStrategy.jpg)

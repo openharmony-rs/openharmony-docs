@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct Camera_PreviewOutput Camera_PreviewOutput
+```
+
 ## Overview
 
 The struct describes the preview output object.

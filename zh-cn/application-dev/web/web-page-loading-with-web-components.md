@@ -27,10 +27,9 @@
 
 在下面的示例中，在Web组件加载完“www\.example.com”页面后，开发者可通过loadUrl接口将此Web组件显示页面变更为“www\.example1.com”。
 
+<!-- @[use_load_interface_to_show_web_changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingWebPages.ets) -->
 
-
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -51,7 +50,7 @@ struct WebComponent {
           }
         })
       // 组件创建时，加载www.example.com
-      Web({ src: 'www.example.com', controller: this.controller })
+      Web({ src: 'www.example.com', controller: this.controller });
     }
   }
 }
@@ -81,30 +80,30 @@ struct WebComponent {
 
 
 - 应用侧代码。
-
-  ```ts
-  // xxx.ets
+  <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingLocalPages.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Button('loadUrl')
           .onClick(() => {
             try {
               // 点击按钮时，通过loadUrl，跳转到local1.html
-              this.controller.loadUrl($rawfile("local1.html"));
+              this.controller.loadUrl($rawfile('local1.html'));
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         // 组件创建时，通过$rawfile加载本地文件local.html
-        Web({ src: $rawfile("local.html"), controller: this.controller })
+        Web({ src: $rawfile('local.html'), controller: this.controller });
       }
     }
   }
@@ -138,48 +137,51 @@ struct WebComponent {
 加载沙箱路径下的本地页面文件。
 
 1. 通过构造的单例对象GlobalContext获取沙箱路径。需要开启应用中文件系统的访问[fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess)权限。
-
-   ```ts
-   // GlobalContext.ets
+   <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/GlobalContext.ets) -->
+   
+   ``` TypeScript
    export class GlobalContext {
      private constructor() {}
      private static instance: GlobalContext;
      private _objects = new Map<string, Object>();
-
+   
      public static getContext(): GlobalContext {
        if (!GlobalContext.instance) {
          GlobalContext.instance = new GlobalContext();
        }
        return GlobalContext.instance;
      }
-
+   
      getObject(value: string): Object | undefined {
        return this._objects.get(value);
      }
-
+   
      setObject(key: string, objectClass: Object): void {
        this._objects.set(key, objectClass);
      }
    }
    ```
-
-   ```ts
-   // xxx.ets
+   <!-- -->
+   
+   <!-- @[load_local_page_file_in_sandbox_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadLocalPageFileInSandboxPath_one.ets) -->
+   
+   ``` TypeScript
    import { webview } from '@kit.ArkWeb';
-   import { GlobalContext } from '../GlobalContext';
-
-   let url = 'file://' + GlobalContext.getContext().getObject("filesDir") + '/index.html';
-
+   import { GlobalContext } from './GlobalContext';
+   
+   let url = 'file://' + GlobalContext.getContext().getObject('filesDir') + '/index.html';
+   
    @Entry
    @Component
    struct WebComponent {
      controller: webview.WebviewController = new webview.WebviewController();
-
+   
      build() {
        Column() {
+       // ···
          // 加载沙箱路径文件。
          Web({ src: url, controller: this.controller })
-         .fileAccess(true)
+         .fileAccess(true);
        }
      }
    }
@@ -220,9 +222,9 @@ struct WebComponent {
 ## 加载HTML格式的文本数据
 
 Web组件可以通过[loadData()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loaddata)接口实现加载HTML格式的文本数据。当开发者不需要加载整个页面，只需要显示一些页面片段时，可通过此功能来快速加载页面，当加载大量html文件时，需设置第四个参数baseUrl为"data"。
+<!-- @[devs_load_page_fragments_for_quick_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingHTMLRichTextData.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -238,9 +240,9 @@ struct WebComponent {
           try {
             // 点击按钮时，通过loadData，加载HTML格式的文本数据
             this.controller.loadData(
-              "<html><body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
-              "text/html",
-              "UTF-8"
+              '<html><body bgcolor=\'white\'>Source:<pre>source</pre></body></html>',
+              'text/html',
+              'UTF-8'
             );
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -254,9 +256,9 @@ struct WebComponent {
 ```
 
 Web组件可以通过data url方式直接加载HTML字符串。
+<!-- @[web_components_load_html_strings_by_data_url](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadLocalPageFileInSandboxPath_two.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -264,12 +266,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-  htmlStr: string = "data:text/html, <html><body bgcolor=\"white\">Source:<pre>source</pre></body></html>";
+  htmlStr: string = 'data:text/html, <html><body bgcolor=\'white\'>Source:<pre>source</pre></body></html>';
 
   build() {
     Column() {
       // 组件创建时，加载htmlStr
-      Web({ src: this.htmlStr, controller: this.controller })
+      Web({ src: this.htmlStr, controller: this.controller });
     }
   }
 }
@@ -278,8 +280,9 @@ struct WebComponent {
 ## resource协议加载本地资源
 
 resource协议允许访问应用资源目录中的文件。
+<!-- @[resource_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/ResourceLoadPage.ets) -->
 
-```ts
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -289,19 +292,18 @@ struct ResourceWebComponent {
 
   build() {
     Column() {
-      Button('加载Resource资源')
+      Button('LoadResource')
         .onClick(() => {
           try {
-            // 通过resource加载resources/rawfile目录下的index1.html文件
+            // 通过resource加载resources/rawfile目录下的index1.html文件。
             this.controller.loadUrl('resource://rawfile/index1.html');
           } catch (error) {
             console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
           }
         })
 
-      // 组件创建时直接使用resource协议加载资源
-      Web({
-        src: 'resource://rawfile/index.html', controller: this.controller})
+      // 组件创建时直接使用resource协议加载资源。
+      Web({ src: 'resource://rawfile/index.html', controller: this.controller });
     }
   }
 }

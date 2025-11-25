@@ -48,7 +48,7 @@ Disallows a feature.
 |bluetooth|Bluetooth capability of the device. If a Bluetooth device blocklist or trustlist has been set via the [addDisallowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageradddisallowedbluetoothdevices20) API or [addAllowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageraddallowedbluetoothdevices) API, disabling the device's Bluetooth capability through this API will take priority. The blocklist or trustlist will only take effect after the device's Bluetooth capability is re-enabled.|
 |modifyDateTime|Device capability to modify system time.|
 |printer|Device printing capability, currently only supported on PC/2-in-1 devices. If printing is disabled via this API, it remains disabled for specific users even if the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14) API is used to enable it for those users.|
-|hdc|OpenHarmony Device Connector (HDC) capability.|
+|hdc|Capability of connecting to and debugging the device through hdc. After the capability is disabled, other devices cannot connect to or debug the device through hdc.|
 |microphone|Microphone capability of the device.|
 |fingerprint|Fingerprint authentication capability of the device. If this capability has been disabled for a user using [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14), a policy conflict will be reported when **setDisallowedPolicy** is invoked.|
 |usb|USB capability of the device. After this capability is disabled, the external USB device cannot be used. This means that the current device in host mode cannot connect to other external devices.<br>A policy conflict will be reported if **setDisallowedPolicy** is called in the following three scenarios:<br>1. A list of allowed USB devices has been configured via the [addAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageraddallowedusbdevices) API.<br>2. USB storage device access policy has been set to read-only or disabled via the [setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy) API.<br>3. Specific USB device types have been blocked via the [addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14) API.<br>4. USB storage write access has been disabled for specific users via the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14) API.|
@@ -75,6 +75,7 @@ Disallows a feature.
 |externalStorageCard<sup>21+</sup> |External storage capability. When this feature is disabled, the device cannot use external storage, and the currently connected external storage will be unmounted. If files are in use during unmounting, unmounting may fail with error code 9200013.<br>After external storage is disabled and then enabled again, you need to manually reconnect the external storage.|
 |randomMac<sup>21+</sup>|Random MAC address capability for Wi-Fi connections. When this feature is disabled, only the device's physical MAC address can be used for Wi-Fi connections.|
 |unmuteDevice<sup>22+</sup>|Audio playback capability of the device. When this feature is disabled, media playback will be muted, while [cellular calls](../../media/audio/audio-call-overview.md) remain unaffected.|
+|hdcRemote<sup>22+</sup>|Capability of the device to debug other devices through hdc. Currently, this feature can be set only for PCs/2-in-1 devices. After this capability is disabled, devices such as smartphones, tablets, PCs, and smart watches cannot be debugged through hdc.|
 <!--RP1--><!--RP1End-->
 
 **Error codes**
@@ -97,7 +98,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -134,7 +135,7 @@ Queries whether a feature is disabled.
 |bluetooth|Bluetooth capability of the device.|
 |modifyDateTime|Device capability to modify system time.|
 |printer|Device printing capability, currently only supported on PC/2-in-1 devices.|
-|hdc|OpenHarmony Device Connector (HDC) capability.|
+|hdc|Capability of connecting and debugging the device through hdc.|
 |microphone|Microphone capability of the device.|
 |fingerprint|Fingerprint authentication capability of the device.|
 |usb|USB capability of the device. After this capability is disabled, the external USB device cannot be used. This means that the current device in host mode cannot connect to other external devices.|
@@ -161,6 +162,7 @@ Queries whether a feature is disabled.
 |externalStorageCard<sup>21+</sup> |External storage capability.|
 |randomMac<sup>21+</sup>|Random MAC address capability for Wi-Fi connections.|
 |unmuteDevice<sup>22+</sup>|Audio playback capability of the device. When this feature is disabled, media playback will be muted, while [cellular calls](../../media/audio/audio-call-overview.md) remain unaffected.|
+|hdcRemote<sup>22+</sup>|Capability of the device to debug other devices through hdc. Currently, this feature can be set only for PCs/2-in-1 devices.|
 <!--RP2--><!--RP2End-->
 
 **Return value**
@@ -188,7 +190,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -241,7 +243,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -298,7 +300,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -351,7 +353,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace with actual values.
 let valueList:Array<string> = ["com.xx.aa.", "com.xx.bb"];
@@ -405,7 +407,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace with actual values.
 let valueList:Array<string> = ["com.xx.aa.", "com.xx.bb"];
@@ -464,7 +466,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -515,7 +517,7 @@ import { restrictions } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -571,7 +573,7 @@ import { restrictions } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {

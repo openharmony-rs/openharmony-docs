@@ -78,7 +78,7 @@ HDMI具有体积小，传输速率高，传输带宽宽，兼容性好，能同�
 
 ### 接口说明
 
-HDMI模块提供的主要接口如下所示，具体API[详见](https://gitee.com/openharmony/drivers_hdf_core/blob/master/framework/include/platform/hdmi_if.h)。
+HDMI模块提供的主要接口如下所示，具体API[详见](https://gitcode.com/openharmony/drivers_hdf_core/blob/master/framework/include/platform/hdmi_if.h)。
 
 **表 1** HDMI驱动API接口功能介绍
 

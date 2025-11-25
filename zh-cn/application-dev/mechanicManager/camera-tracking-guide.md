@@ -86,7 +86,7 @@
         handleDeviceAttached(info.mechInfo);
     } else if (info.state === mechanicManager.AttachState.DETACHED) {
         console.info('Device detached:', info.mechInfo);
-        // 执行设备断开的相关操作开逻辑
+        // 执行设备断开的相关操作
         handleDeviceDetached(info.mechInfo);
     }
     };

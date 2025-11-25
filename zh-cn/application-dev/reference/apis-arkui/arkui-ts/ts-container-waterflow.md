@@ -5,7 +5,7 @@
 <!--Owner: @fangyuhao-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 瀑布流容器，由“行”和“列”分割的单元格所组成，通过容器自身的排列规则，将不同大小的“项目”自上而下，如瀑布般紧密布局。
 
@@ -580,6 +580,10 @@ onScrollIndex(event: (first: number, last: number) => void)
 
 瀑布流显示区域上第一个子组件/最后一个组件的索引值有变化就会触发。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1050,7 +1054,7 @@ struct WaterFlowDemo {
 
 ### 示例3（使用分组）
 该示例展示了分组的初始化以及splice、push、update、values、length等接口的不同效果。
-如果配合状态管理V2使用，详情见：[WaterFlow与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md#滑动组件)。
+如果配合状态管理V2使用，详情见：[WaterFlow与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md#滚动组件)。
 
 WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
 
@@ -1370,7 +1374,7 @@ struct WaterFlowDemo {
 
   // 组件生命周期：初始化数据和恢复上次的列数设置
   aboutToAppear() {
-    // 读取上次最后切换到到列数
+    // 读取上次最后切换到的列数
     let lastCount = AppStorage.get<number>('columnsCount');
     if (typeof lastCount != 'undefined') {
       this.columns = lastCount;
@@ -1992,11 +1996,15 @@ struct WaterFlowContentSizeDemo {
 
   build() {
     Column({ space: 2 }) {
+      // 点击按钮来调用contentSize函数获取内容尺寸
       Button('GetContentSize')
         .onClick(() => {
+          // 通过调用contentSize函数获取内容尺寸的宽度值
           this.contentWidth = this.scroller.contentSize().width;
+          // 通过调用contentSize函数获取内容尺寸的高度值
           this.contentHeight = this.scroller.contentSize().height;
         }).margin(5)
+      // 将获取到的内容尺寸信息通过文本进行呈现
       Text('Width:' + this.contentWidth)
         .fontColor(Color.Red)
         .height(30)

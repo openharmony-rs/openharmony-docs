@@ -1,5 +1,12 @@
 # Scrollable Component Error Codes
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong; @zcdqs-->
+<!--Designer: @yylong; @zcdqs-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @Brilliantry_Rui-->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -17,3 +24,7 @@ This error code is reported when an API is called through a controller but no co
 **Possible Causes**
 
 The API called requires a controller, but the component is not bound to one.
+
+**Solution**
+
+Verify that the controller is properly bound to a component and that the component has not been released.

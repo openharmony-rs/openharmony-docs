@@ -873,7 +873,7 @@ Allows an application to read notifications published by the system or installed
 
 ## ohos.permission.CUSTOM_SCREEN_RECORDING
 
-Allows an application to record the screen without displaying a privacy pop-up.
+Allows an application to record the screen without displaying any pop-up.
 
 With this permission, the application can record the screen without showing a privacy pop-up each time recording is initiated.
 
@@ -891,7 +891,7 @@ With this permission, the application can record the screen without showing a pr
 
 Allows an application to use external native programs.
 
-With this permission, the application can load external dynamic link libraries(.so), binary files(.bin), etc
+With this permission, the application can load external dynamic link libraries (.so), binary files (.bin), etc.
 
 <!--RP57--><!--RP57End-->
 
@@ -899,6 +899,22 @@ With this permission, the application can load external dynamic link libraries(.
 
 **Authorization mode**: system_grant
 
-**Device**: PCs/2-in-1 devices
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 22
+
+## ohos.permission.GET_IP_MAC_INFO
+
+Allows an application to obtain the IP address and MAC address of a network device.
+
+<!--RP58--><!--RP58End-->
+
+This permission is applicable only to network connection or identification, not to device location.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Device**: general devices
 
 **Since**: 22

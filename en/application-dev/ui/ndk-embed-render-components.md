@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 Since API version 20, the ArkUI development framework provides NDK APIs for directly building rendering nodes. These capabilities include rendering node tree operations, attribute configuration, and custom drawing with animations. By leveraging rendering node capabilities, you can bypass the measurement and layout processes associated with [registerNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomevent), directly draw nodes, and adjust their sizes and positions.
@@ -237,7 +237,7 @@ The following example demonstrates how to create a rendering node, implement cus
                float height = 0;
                uint32_t color = 0;
                ArkUI_Vector2AnimatablePropertyHandle v2 = data->v2;
-               // The property parameter is used to pass values. x and y are used to replace width. You can customize the required parameters using property.
+               // Obtain the animatable property (x and y values used as the width and height here). Custom properties can be defined to pass required parameters.
                OH_ArkUI_RenderNodeUtils_GetVector2AnimatablePropertyValue(v2, &width, &height);
                ArkUI_ColorAnimatablePropertyHandle cp = data->color;
                OH_ArkUI_RenderNodeUtils_GetColorAnimatablePropertyValue(cp, &color);
@@ -314,7 +314,7 @@ The following example demonstrates how to create a rendering node, implement cus
            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
        if (nodeAPI != nullptr) {
             ArkUI_NodeHandle testNode;
-            // Obtain the context passed from the ets side.
+            // Obtain the context passed from the ETS side.
             ArkUI_ContextHandle context = nullptr;
             // Use code to check whether the context is successfully obtained.
             auto code = OH_ArkUI_GetContextFromNapiValue(env, args[1], &context);

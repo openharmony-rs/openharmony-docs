@@ -6,7 +6,7 @@
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
-本模块，提供对用户行为、动作的感知能力，包括用户的手势、动作等。
+本模块提供对用户动作的感知能力，包括用户的手势、动作等。
 
 > **说明：**
 >
@@ -51,7 +51,7 @@ on(type: 'operatingHandChanged', callback: Callback&lt;OperatingHandStatus&gt;):
 
 订阅触控操作手感知事件。
 
-此功能如果设备不支持，将返回801错误码。
+如果设备不支持此功能，将返回801错误码。
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
 

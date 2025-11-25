@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct DDK_Ashmem {...} DDK_Ashmem
+```
+
 ## 概述
 
 定义通过接口<b>OH_DDK_CreateAshmem</b>创建的共享内存，共享内存的缓冲区提供更好的性能。

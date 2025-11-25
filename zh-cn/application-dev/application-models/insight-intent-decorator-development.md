@@ -3,7 +3,7 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
-<!--Designer: @zhangyafei-echo-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -47,13 +47,16 @@
 
 2. 实现意图执行器。
     开发标准意图无需开发者自行定义意图的大语言模型描述、意图参数定义和意图执行结果定义，根据"schema"字段和"intentVersion"字段匹配[附录：标准意图接入规范](insight-intent-access-specifications.md)中的标准意图。意图执行器需要从InsightIntentEntryExector\<T>类继承，实现onExecute()方法。
-    ```ts
+
+    <!-- @[insight_intent_view_logistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/ViewLogisticsImpl.ets) -->
+    
+    ``` TypeScript
     import { InsightIntentEntryExecutor, insightIntent, InsightIntentEntry } from '@kit.AbilityKit';
-
+    
     class ViewLogisticsResultDef {
-      msg?: string = '';
+      public msg?: string = '';
     }
-
+    
     @InsightIntentEntry({
       intentName: 'ViewLogistics',
       domain: 'LocalDomain',
@@ -63,12 +66,12 @@
       schema: 'ViewLogistics',
       icon: $r('app.media.viewLogistics'), // $r表示本地图标，需要在资源目录中定义
       abilityName: 'EntryAbility',
-      executeMode: [insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND],
+      executeMode: [insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND]
     })
     export default class ViewLogisticsImpl extends InsightIntentEntryExecutor<ViewLogisticsResultDef> {
-      trackingNo?: string = '';
-      entityId?: string = '';
-
+      public trackingNo?: string = '';
+      public entityId?: string = '';
+    
       onExecute(): Promise<insightIntent.IntentResult<ViewLogisticsResultDef>> {
         // 执行查询快递逻辑
         let result: insightIntent.IntentResult<ViewLogisticsResultDef> = {
@@ -76,9 +79,9 @@
           result: {
             msg: 'the logistics is being delivered'
           }
-        }
+        };
         return Promise.resolve(result);
-      }
+      };
     }
     ```
 
@@ -106,15 +109,17 @@
 2. 实现意图执行器。
     开发自定义意图需要开发者定义意图的大语言模型描述、意图搜索关键字、意图参数定义和意图执行结果定义。意图执行器需要从InsightIntentEntryExector\<T>类继承，实现onExecute()方法。
 
-    ```ts
+    <!-- @[insight_intent_play_music](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicImpl.ets) -->
+    
+    ``` TypeScript
     // `insight_intent.json`文件的"insightIntentsSrcEntry"字段的实现
-    import { InsightIntentEntryExecutor, insightIntent, InsightIntentEntity, InsightIntentEntry } from '@kit.AbilityKit';
-
+    import { InsightIntentEntryExecutor, insightIntent, InsightIntentEntry } from '@kit.AbilityKit';
+    
     // 意图执行返回值数据格式定义
     class PlayMusicResultDef {
-      msg?: string = '';
+      public msg?: string = '';
     }
-
+    
     // 意图定义
     @InsightIntentEntry({
       intentName: 'PlayMusic',
@@ -128,27 +133,27 @@
       abilityName: 'EntryAbility',
       executeMode: [insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND],
       parameters: {
-        "type": "object",
-        "description": "A schema for describing songs and their artists",
-        "properties": {
-          "songName": {
-            "type": "string",
-            "description": "The name of the song",
-            "minLength": 1
+        'type': 'object',
+        'description': 'A schema for describing songs and their artists',
+        'properties': {
+          'songName': {
+            'type': 'string',
+            'description': 'The name of the song',
+            'minLength': 1
           },
-          "singer": {
-            "type": "string",
-            "description": "The name of the singer",
-            "minLength": 1
+          'singer': {
+            'type': 'string',
+            'description': 'The name of the singer',
+            'minLength': 1
           }
         },
-        "required": ["songName"]
+        'required': ['songName']
       }
     })
-    export class PlayMusicImpl extends InsightIntentEntryExecutor<PlayMusicResultDef> {
-      songName: string = '';
-      singer?: string = '';
-
+    export default class PlayMusicImpl extends InsightIntentEntryExecutor<PlayMusicResultDef> {
+      public songName: string = '';
+      public singer?: string = '';
+    
       onExecute(): Promise<insightIntent.IntentResult<PlayMusicResultDef>> {
         // 执行音乐播放逻辑
         let result: insightIntent.IntentResult<PlayMusicResultDef> = {
@@ -156,9 +161,9 @@
           result: {
             msg: 'play music succeed'
           }
-        }
+        };
         return Promise.resolve(result);
-      }
+      };
     }
     ```
 
@@ -179,9 +184,11 @@
 
     开发者将歌手信息（包括名称、国家、城市）定义为类，并使用@InsightIntentEntity装饰器将该类定义为意图实体。装饰器的parameters属性列出了类的数据成员、数据格式及每个成员的必选性。
 
-    ```ts
+    <!-- @[insight_intent_artist_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/ArtistClassDef.ets) -->
+    
+    ``` TypeScript
     import { insightIntent, InsightIntentEntity } from '@kit.AbilityKit';
-
+    
     @InsightIntentEntity({
       entityCategory: 'artist entity category',
       parameters: {
@@ -209,32 +216,35 @@
       }
     })
     export class ArtistClassDef implements insightIntent.IntentEntity {
-      entityId: string = '0x11';
-      country?: string = '';
-      city?: string = '';
-      name: string = '';
+      public entityId: string = '0x11';
+      public country?: string = '';
+      public city?: string = '';
+      public name: string = '';
     }
     ```
 
+
 2. 使用意图实体。添加[@InsightIntentEntry](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)装饰器的意图使用音乐名称和歌手信息（ArtistClassDef意图实体）作为播放音乐的入参。
 
-    ```ts
+    <!-- @[insight_intent_use_intent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/feature/src/main/ets/insightintents/PlayMusicDemo.ets) -->
+    
+    ``` TypeScript
     import { insightIntent, InsightIntentEntry, InsightIntentEntryExecutor, InsightIntentEntity } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
+    
     const LOG_TAG: string = 'testTag-EntryIntent';
-
+    
     @InsightIntentEntity({
       entityCategory: 'artist entity category',
       // @InsightIntentEntry装饰器中parameters中已描述ArtistClassDef意图实体信息，此处parameters可不写
     })
     export class ArtistClassDef implements insightIntent.IntentEntity {
-      entityId: string = '0x11';
-      country?: string = '';
-      city?: string = '';
-      name: string = '';
+      public entityId: string = '0x11';
+      public country?: string = '';
+      public city?: string = '';
+      public name: string = '';
     }
-
+    
     // 使用@InsightIntentEntry装饰器定义意图
     @InsightIntentEntry({
       intentName: 'PlayMusic',
@@ -284,10 +294,10 @@
       }
     })
     export default class PlayMusicDemo extends InsightIntentEntryExecutor<string> {
-      songName: string = '';
+      public songName: string = '';
       // 使用意图实体
-      artist?: ArtistClassDef;
-
+      public artist?: ArtistClassDef;
+    
       onExecute(): Promise<insightIntent.IntentResult<string>> {
         hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo executeMode %{public}s', JSON.stringify(this.executeMode));
         hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo artist %{public}s', JSON.stringify(this.artist));

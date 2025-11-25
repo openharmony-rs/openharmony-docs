@@ -1,10 +1,10 @@
-# 兼容JS的类Web开发范式（ArkUI.Lite）
+# 兼容JS的类Web开发范式（ArkUI.Lite）<!--arkui-js-lite-comp-->
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 - 框架说明<!--js-lite-framework-overview-->
   - [文件组织](js-lite-framework-file.md)

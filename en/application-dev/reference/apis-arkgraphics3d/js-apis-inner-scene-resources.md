@@ -97,6 +97,7 @@ Enumerates the material types in a scene. The material type defines how material
 | ---- | ---- | ---- |
 | SHADER | 1 | Shader-defined.|
 | METALLIC_ROUGHNESS<sup>20+</sup> | 2 | Metallic-Roughness model based on Physically Based Rendering (PBR), simulating realistic material lighting effects through metallicity and roughness parameters.|
+| UNLIT<sup>22+</sup> | 3 | Material that is not affected by lighting.|
 
 ## CullMode<sup>20+</sup>
 Enumerates the culling modes of PBR materials. You can improve rendering performance and visual quality by determining whether the front or back faces of objects are culled.
@@ -128,6 +129,17 @@ Describes the order in which materials are rendered, controlling the sequence of
 | renderSortLayer | number | No| Yes| Rendering layer ID. A smaller value indicates an earlier rendering order. The value range is [0, 63]. The default layer ID is 32.|
 | renderSortLayerOrder | number | No| Yes| Rendering order of different objects within the same rendering layer. A smaller value indicates an earlier rendering order. The value range is [0, 255]. The default value is **0**.|
 
+## PolygonMode<sup>22+</sup>
+Enumerates the polygon drawing mode.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+| Name| Value| Description|
+| ---- | ---- | ---- |
+| FILL | 0 | Draws each face of the polygon.|
+| LINE | 1 | Draws only the wireframe of the polygon.|
+| POINT | 2 | Draws only the vertices of the polygon.|
+
 ## Material
 Material resource, which inherits from [SceneResource](#sceneresource-1).
 
@@ -141,7 +153,7 @@ Material resource, which inherits from [SceneResource](#sceneresource-1).
 | blend<sup>20+</sup> | [Blend](#blend20) | No| Yes| Whether the material is transparent. The default value is **false**.|
 | alphaCutoff<sup>20+</sup> | number | No| Yes| Threshold of the alpha channel. If the alpha of a pixel is greater than or equal to this threshold, the pixel is rendered; otherwise, the pixel is not rendered. Setting a value less than **1** enables this mode. The value range is [0, 1]. The default value is **1**.|
 | renderSort<sup>20+</sup> | [RenderSort](#rendersort20) | No| Yes| Rendering order, which determines the rendering sequence of materials in the rendering pipeline. The default layer ID is 32, and the default order within the layer is 0.|
-
+| polygonMode<sup>22+</sup> | [PolygonMode](#polygonmode22) | No| Yes| Polygon drawing mode of the model. The default value is **FILL**.|
 ## MaterialProperty<sup>20+</sup>
 Defines the textures, property factors, and texture samplers used by a material.
 
@@ -179,6 +191,16 @@ Shader material, which inherits from [Material](#material).
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | colorShader | [Shader](#shader) | No| Yes| Shader. The default value is undefined.|
+
+## UnlitMaterial<sup>22+</sup>
+
+Material that is not affected by lighting. The shading value of the material is related only to the base color and is irrelevant to lighting conditions. It inherits from [Material](#material).
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+| Name| Type| Read Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| baseColor | [MaterialProperty](#materialproperty20) | No| No| Base color property, which defines the base color information of the material.|
 
 ## SamplerFilter<sup>20+</sup>
 Enumerates the filtering modes of a sampler. The filtering mode determines the interpolation method used when sampling textures, controlling how final pixel colors are calculated during texture scaling or deformation.
@@ -504,6 +526,7 @@ Environment resource, which inherits from [SceneResource](#sceneresource-1).
 | environmentImage | [Image](#image) \| null | No| Yes| Environment image. The default value is undefined.|
 | radianceImage | [Image](#image) \| null | No| Yes| Radiance image. The default value is undefined.|
 | irradianceCoefficients | [Vec3](js-apis-inner-scene-types.md#vec3)[] | No| Yes| Irradiance coefficients. The default value is undefined.|
+| environmentRotation<sup>22+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | No| Yes| Rotation of the ambient light. The default value is undefined. The parameter must be a normalized quaternion.|
 
 ## Image
 Image resource, which inherits from [SceneResource](#sceneresource-1).
@@ -523,5 +546,5 @@ Effect resource, which inherits from [SceneResource](#sceneresource-1).
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| enable | boolean | No| No| Enabled status of the effect. **true** if enabled, **false** otherwise.|
+| enabled | boolean | No| No| Enabled status of the effect. **true** if enabled, **false** otherwise.|
 | effectId | string  | Yes| No| Effect ID, which is in the format of 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', for example, **'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'**. It is used to create an effect.|

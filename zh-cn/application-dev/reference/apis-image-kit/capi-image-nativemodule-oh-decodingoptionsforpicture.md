@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+struct OH_DecodingOptionsForPicture
+```
+
 ## 概述
 
 Picture解码参数结构体。通过[OH_DecodingOptionsForPicture_Create](capi-image-source-native-h.md#oh_decodingoptionsforpicture_create)获取。

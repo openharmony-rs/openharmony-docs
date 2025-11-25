@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_StatusInfo {...} Camera_StatusInfo
+```
+
 ## 概述
 
 相机状态信息。

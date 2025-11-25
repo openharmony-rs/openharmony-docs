@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_Path OH_Drawing_Path
+```
+
 ## 概述
 
 定义为路径，路径用于自定义各种形状。

@@ -61,7 +61,6 @@ struct OH_Huks_Result OH_Huks_GetSdkVersion(struct OH_Huks_Blob *sdkVersion)
 
 **起始版本：** 9
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -77,7 +76,7 @@ struct OH_Huks_Result OH_Huks_GetSdkVersion(struct OH_Huks_Blob *sdkVersion)
 ### OH_Huks_GenerateKeyItem()
 
 ```
-struct OH_Huks_Result OH_Huks_GenerateKeyItem(const struct OH_Huks_Blob *keyAlias,const struct OH_Huks_ParamSet *paramSetIn, struct OH_Huks_ParamSet *paramSetOut)
+struct OH_Huks_Result OH_Huks_GenerateKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSetIn, struct OH_Huks_ParamSet *paramSetOut)
 ```
 
 **描述**
@@ -85,7 +84,6 @@ struct OH_Huks_Result OH_Huks_GenerateKeyItem(const struct OH_Huks_Blob *keyAlia
 生成密钥。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -104,7 +102,7 @@ struct OH_Huks_Result OH_Huks_GenerateKeyItem(const struct OH_Huks_Blob *keyAlia
 ### OH_Huks_ImportKeyItem()
 
 ```
-struct OH_Huks_Result OH_Huks_ImportKeyItem(const struct OH_Huks_Blob *keyAlias,const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *key)
+struct OH_Huks_Result OH_Huks_ImportKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *key)
 ```
 
 **描述**
@@ -112,7 +110,6 @@ struct OH_Huks_Result OH_Huks_ImportKeyItem(const struct OH_Huks_Blob *keyAlias,
 导入明文密钥。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -131,7 +128,7 @@ struct OH_Huks_Result OH_Huks_ImportKeyItem(const struct OH_Huks_Blob *keyAlias,
 ### OH_Huks_ImportWrappedKeyItem()
 
 ```
-struct OH_Huks_Result OH_Huks_ImportWrappedKeyItem(const struct OH_Huks_Blob *keyAlias,const struct OH_Huks_Blob *wrappingKeyAlias, const struct OH_Huks_ParamSet *paramSet,const struct OH_Huks_Blob *wrappedKeyData)
+struct OH_Huks_Result OH_Huks_ImportWrappedKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_Blob *wrappingKeyAlias, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *wrappedKeyData)
 ```
 
 **描述**
@@ -139,7 +136,6 @@ struct OH_Huks_Result OH_Huks_ImportWrappedKeyItem(const struct OH_Huks_Blob *ke
 导入密文密钥。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -159,7 +155,7 @@ struct OH_Huks_Result OH_Huks_ImportWrappedKeyItem(const struct OH_Huks_Blob *ke
 ### OH_Huks_ExportPublicKeyItem()
 
 ```
-struct OH_Huks_Result OH_Huks_ExportPublicKeyItem(const struct OH_Huks_Blob *keyAlias,const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_Blob *key)
+struct OH_Huks_Result OH_Huks_ExportPublicKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_Blob *key)
 ```
 
 **描述**
@@ -167,7 +163,6 @@ struct OH_Huks_Result OH_Huks_ExportPublicKeyItem(const struct OH_Huks_Blob *key
 导出公钥。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -186,7 +181,7 @@ struct OH_Huks_Result OH_Huks_ExportPublicKeyItem(const struct OH_Huks_Blob *key
 ### OH_Huks_DeleteKeyItem()
 
 ```
-struct OH_Huks_Result OH_Huks_DeleteKeyItem(const struct OH_Huks_Blob *keyAlias,const struct OH_Huks_ParamSet *paramSet)
+struct OH_Huks_Result OH_Huks_DeleteKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet)
 ```
 
 **描述**
@@ -194,7 +189,6 @@ struct OH_Huks_Result OH_Huks_DeleteKeyItem(const struct OH_Huks_Blob *keyAlias,
 删除密钥。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -212,7 +206,7 @@ struct OH_Huks_Result OH_Huks_DeleteKeyItem(const struct OH_Huks_Blob *keyAlias,
 ### OH_Huks_GetKeyItemParamSet()
 
 ```
-struct OH_Huks_Result OH_Huks_GetKeyItemParamSet(const struct OH_Huks_Blob *keyAlias,const struct OH_Huks_ParamSet *paramSetIn, struct OH_Huks_ParamSet *paramSetOut)
+struct OH_Huks_Result OH_Huks_GetKeyItemParamSet(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSetIn, struct OH_Huks_ParamSet *paramSetOut)
 ```
 
 **描述**
@@ -220,7 +214,6 @@ struct OH_Huks_Result OH_Huks_GetKeyItemParamSet(const struct OH_Huks_Blob *keyA
 获取密钥的属性集。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -239,7 +232,7 @@ struct OH_Huks_Result OH_Huks_GetKeyItemParamSet(const struct OH_Huks_Blob *keyA
 ### OH_Huks_IsKeyItemExist()
 
 ```
-struct OH_Huks_Result OH_Huks_IsKeyItemExist(const struct OH_Huks_Blob *keyAlias,const struct OH_Huks_ParamSet *paramSet)
+struct OH_Huks_Result OH_Huks_IsKeyItemExist(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet)
 ```
 
 **描述**
@@ -247,7 +240,6 @@ struct OH_Huks_Result OH_Huks_IsKeyItemExist(const struct OH_Huks_Blob *keyAlias
 判断密钥是否存在。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -265,7 +257,7 @@ struct OH_Huks_Result OH_Huks_IsKeyItemExist(const struct OH_Huks_Blob *keyAlias
 ### OH_Huks_AttestKeyItem()
 
 ```
-struct OH_Huks_Result OH_Huks_AttestKeyItem(const struct OH_Huks_Blob *keyAlias,const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_CertChain *certChain)
+struct OH_Huks_Result OH_Huks_AttestKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_CertChain *certChain)
 ```
 
 **描述**
@@ -275,7 +267,6 @@ struct OH_Huks_Result OH_Huks_AttestKeyItem(const struct OH_Huks_Blob *keyAlias,
 **需要权限：** ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -294,7 +285,7 @@ struct OH_Huks_Result OH_Huks_AttestKeyItem(const struct OH_Huks_Blob *keyAlias,
 ### OH_Huks_AnonAttestKeyItem()
 
 ```
-struct OH_Huks_Result OH_Huks_AnonAttestKeyItem(const struct OH_Huks_Blob *keyAlias,const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_CertChain *certChain)
+struct OH_Huks_Result OH_Huks_AnonAttestKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_CertChain *certChain)
 ```
 
 **描述**
@@ -302,7 +293,6 @@ struct OH_Huks_Result OH_Huks_AnonAttestKeyItem(const struct OH_Huks_Blob *keyAl
 获取密钥证书链。<br> 这是一个涉及网络的耗时接口，调用方可以通过异步线程获取证书链。
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -321,7 +311,7 @@ struct OH_Huks_Result OH_Huks_AnonAttestKeyItem(const struct OH_Huks_Blob *keyAl
 ### OH_Huks_InitSession()
 
 ```
-struct OH_Huks_Result OH_Huks_InitSession(const struct OH_Huks_Blob *keyAlias,const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_Blob *handle, struct OH_Huks_Blob *token)
+struct OH_Huks_Result OH_Huks_InitSession(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_Blob *handle, struct OH_Huks_Blob *token)
 ```
 
 **描述**
@@ -329,7 +319,6 @@ struct OH_Huks_Result OH_Huks_InitSession(const struct OH_Huks_Blob *keyAlias,co
 初始化密钥会话接口，并获取一个句柄（必选）和挑战值（可选）。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -344,7 +333,7 @@ struct OH_Huks_Result OH_Huks_InitSession(const struct OH_Huks_Blob *keyAlias,co
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401 ：参数 keyAlias、paramSet、handle、token有一个无效。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR = 12000012 ：发生系统错误。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003 ：密钥参数无效。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011 ：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002 ：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005 ：IPC通信失败。<br>         OH_HUKS_ERR_CODE_SESSION_LIMIT = 12000010 ：已达最大会话限制。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL = 12000006 ：加密引擎失败。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 ：内存不足。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001 ：暂不支持该功能。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401 ：参数 keyAlias、paramSet、handle、token有一个无效。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR = 12000012 ：发生系统错误。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003 ：密钥参数无效。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011 ：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002 ：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005 ：IPC通信失败。<br>         OH_HUKS_ERR_CODE_SESSION_LIMIT = 12000010 ：已达最大会话限制。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL = 12000006 ：加密引擎失败。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 ：内存不足。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001 ：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018：（API 22新增）参数集不合法。 |
 
 **参考：**
 
@@ -358,7 +347,7 @@ struct OH_Huks_Result OH_Huks_InitSession(const struct OH_Huks_Blob *keyAlias,co
 ### OH_Huks_UpdateSession()
 
 ```
-struct OH_Huks_Result OH_Huks_UpdateSession(const struct OH_Huks_Blob *handle,const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *outData)
+struct OH_Huks_Result OH_Huks_UpdateSession(const struct OH_Huks_Blob *handle, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *outData)
 ```
 
 **描述**
@@ -366,7 +355,6 @@ struct OH_Huks_Result OH_Huks_UpdateSession(const struct OH_Huks_Blob *handle,co
 分段添加密钥操作的数据并进行相应的密钥操作，输出处理数据。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -395,7 +383,7 @@ struct OH_Huks_Result OH_Huks_UpdateSession(const struct OH_Huks_Blob *handle,co
 ### OH_Huks_FinishSession()
 
 ```
-struct OH_Huks_Result OH_Huks_FinishSession(const struct OH_Huks_Blob *handle,const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *outData)
+struct OH_Huks_Result OH_Huks_FinishSession(const struct OH_Huks_Blob *handle, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *outData)
 ```
 
 **描述**
@@ -403,7 +391,6 @@ struct OH_Huks_Result OH_Huks_FinishSession(const struct OH_Huks_Blob *handle,co
 结束密钥会话并进行相应的密钥操作，输出处理数据。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -432,7 +419,7 @@ struct OH_Huks_Result OH_Huks_FinishSession(const struct OH_Huks_Blob *handle,co
 ### OH_Huks_AbortSession()
 
 ```
-struct OH_Huks_Result OH_Huks_AbortSession(const struct OH_Huks_Blob *handle,const struct OH_Huks_ParamSet *paramSet)
+struct OH_Huks_Result OH_Huks_AbortSession(const struct OH_Huks_Blob *handle, const struct OH_Huks_ParamSet *paramSet)
 ```
 
 **描述**
@@ -440,7 +427,6 @@ struct OH_Huks_Result OH_Huks_AbortSession(const struct OH_Huks_Blob *handle,con
 取消密钥会话。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -458,16 +444,14 @@ struct OH_Huks_Result OH_Huks_AbortSession(const struct OH_Huks_Blob *handle,con
 **参考：**
 
 [OH_Huks_InitSession](#oh_huks_initsession)
-
 [OH_Huks_UpdateSession](#oh_huks_updatesession)
-
 [OH_Huks_FinishSession](#oh_huks_finishsession)
 
 
 ### OH_Huks_ListAliases()
 
 ```
-struct OH_Huks_Result OH_Huks_ListAliases(const struct OH_Huks_ParamSet *paramSet,struct OH_Huks_KeyAliasSet **outData)
+struct OH_Huks_Result OH_Huks_ListAliases(const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_KeyAliasSet **outData)
 ```
 
 **描述**
@@ -475,7 +459,6 @@ struct OH_Huks_Result OH_Huks_ListAliases(const struct OH_Huks_ParamSet *paramSe
 获取密钥别名集。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -493,7 +476,7 @@ struct OH_Huks_Result OH_Huks_ListAliases(const struct OH_Huks_ParamSet *paramSe
 ### OH_Huks_WrapKey()
 
 ```
-struct OH_Huks_Result OH_Huks_WrapKey(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet,struct OH_Huks_Blob *wrappedKey)
+struct OH_Huks_Result OH_Huks_WrapKey(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_Blob *wrappedKey)
 ```
 
 **描述**
@@ -501,7 +484,6 @@ struct OH_Huks_Result OH_Huks_WrapKey(const struct OH_Huks_Blob *keyAlias, const
 导出由特定密钥加密的封装密钥。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -520,7 +502,7 @@ struct OH_Huks_Result OH_Huks_WrapKey(const struct OH_Huks_Blob *keyAlias, const
 ### OH_Huks_UnwrapKey()
 
 ```
-struct OH_Huks_Result OH_Huks_UnwrapKey(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet,struct OH_Huks_Blob *wrappedKey)
+struct OH_Huks_Result OH_Huks_UnwrapKey(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_Blob *wrappedKey)
 ```
 
 **描述**
@@ -528,7 +510,6 @@ struct OH_Huks_Result OH_Huks_UnwrapKey(const struct OH_Huks_Blob *keyAlias, con
 导入由特定密钥加密的封装密钥。
 
 **起始版本：** 20
-
 
 **参数：**
 

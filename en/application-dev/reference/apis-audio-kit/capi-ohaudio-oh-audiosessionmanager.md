@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioSessionManager OH_AudioSessionManager
+```
+
 ## Overview
 
 The struct describes an audio session manager, which is used to manage audio sessions.

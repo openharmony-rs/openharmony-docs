@@ -3,7 +3,7 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
-<!--Designer: @zhangyafei-echo-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -49,13 +49,16 @@ The following uses the standard intent [ViewLogistics](./insight-intent-access-s
 2. Implement the intent executor.
 
     When developing a standard intent, you do not need to define the large language model description, intent parameters, or intent execution results. Standard intents are matched from the [Appendix: Standard Intent Access Specifications](insight-intent-access-specifications.md) based on the **schema** and **intentVersion** fields. The intent executor must inherit from the **InsightIntentEntryExector\<T>** class and implement the **onExecute()** API.
-    ```ts
+
+    <!-- @[insight_intent_view_logistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/ViewLogisticsImpl.ets) -->
+    
+    ``` TypeScript
     import { InsightIntentEntryExecutor, insightIntent, InsightIntentEntry } from '@kit.AbilityKit';
-
+    
     class ViewLogisticsResultDef {
-      msg?: string = '';
+      public msg?: string = '';
     }
-
+    
     @InsightIntentEntry({
       intentName: 'ViewLogistics',
       domain: 'LocalDomain',
@@ -65,12 +68,12 @@ The following uses the standard intent [ViewLogistics](./insight-intent-access-s
       schema: 'ViewLogistics',
       icon: $r('app.media.viewLogistics'), // $r indicates a local icon, which must be defined in the resource catalog.
       abilityName: 'EntryAbility',
-      executeMode: [insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND],
+      executeMode: [insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND]
     })
     export default class ViewLogisticsImpl extends InsightIntentEntryExecutor<ViewLogisticsResultDef> {
-      trackingNo?: string = '';
-      entityId?: string = '';
-
+      public trackingNo?: string = '';
+      public entityId?: string = '';
+    
       onExecute(): Promise<insightIntent.IntentResult<ViewLogisticsResultDef>> {
         // Execute logistics query logic.
         let result: insightIntent.IntentResult<ViewLogisticsResultDef> = {
@@ -78,9 +81,9 @@ The following uses the standard intent [ViewLogistics](./insight-intent-access-s
           result: {
             msg: 'the logistics is being delivered'
           }
-        }
+        };
         return Promise.resolve(result);
-      }
+      };
     }
     ```
 
@@ -109,15 +112,17 @@ The following uses the development of a custom intent "Play Music" as an example
 
     When developing custom intents, you are required to define the large language model description, intent search keywords, intent parameters, and intent execution results. The intent executor must inherit from the **InsightIntentEntryExector\<T>** class and implement the **onExecute()** API.
 
-    ```ts
+    <!-- @[insight_intent_play_music](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicImpl.ets) -->
+    
+    ``` TypeScript
     // Implementation of the insightIntentsSrcEntry field in the insight_intent.json file.
-    import { InsightIntentEntryExecutor, insightIntent, InsightIntentEntity, InsightIntentEntry } from '@kit.AbilityKit';
-
+    import { InsightIntentEntryExecutor, insightIntent, InsightIntentEntry } from '@kit.AbilityKit';
+    
     // Data format definition of the intent execution result.
     class PlayMusicResultDef {
-      msg?: string = '';
+      public msg?: string = '';
     }
-
+    
     // Intent definition.
     @InsightIntentEntry({
       intentName: 'PlayMusic',
@@ -131,27 +136,27 @@ The following uses the development of a custom intent "Play Music" as an example
       abilityName: 'EntryAbility',
       executeMode: [insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND],
       parameters: {
-        "type": "object",
-        "description": "A schema for describing songs and their artists",
-        "properties": {
-          "songName": {
-            "type": "string",
-            "description": "The name of the song",
-            "minLength": 1
+        'type': 'object',
+        'description': 'A schema for describing songs and their artists',
+        'properties': {
+          'songName': {
+            'type': 'string',
+            'description': 'The name of the song',
+            'minLength': 1
           },
-          "singer": {
-            "type": "string",
-            "description": "The name of the singer",
-            "minLength": 1
+          'singer': {
+            'type': 'string',
+            'description': 'The name of the singer',
+            'minLength': 1
           }
         },
-        "required": ["songName"]
+        'required': ['songName']
       }
     })
-    export class PlayMusicImpl extends InsightIntentEntryExecutor<PlayMusicResultDef> {
-      songName: string = '';
-      singer?: string = '';
-
+    export default class PlayMusicImpl extends InsightIntentEntryExecutor<PlayMusicResultDef> {
+      public songName: string = '';
+      public singer?: string = '';
+    
       onExecute(): Promise<insightIntent.IntentResult<PlayMusicResultDef>> {
         // Execute the music playback logic.
         let result: insightIntent.IntentResult<PlayMusicResultDef> = {
@@ -159,9 +164,9 @@ The following uses the development of a custom intent "Play Music" as an example
           result: {
             msg: 'play music succeed'
           }
-        }
+        };
         return Promise.resolve(result);
-      }
+      };
     }
     ```
 
@@ -182,9 +187,11 @@ To implement this, you can define singer information as an intent entity and dev
 
     Define singer information (including name, country, city, and more) as a class and use the @InsightIntentEntity decorator to define this class as an intent entity. The **parameters** property of the decorator lists the class's data members, data formats, and the required status of each member.
 
-    ```ts
+    <!-- @[insight_intent_artist_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/ArtistClassDef.ets) -->
+    
+    ``` TypeScript
     import { insightIntent, InsightIntentEntity } from '@kit.AbilityKit';
-
+    
     @InsightIntentEntity({
       entityCategory: 'artist entity category',
       parameters: {
@@ -212,32 +219,35 @@ To implement this, you can define singer information as an intent entity and dev
       }
     })
     export class ArtistClassDef implements insightIntent.IntentEntity {
-      entityId: string = '0x11';
-      country?: string = '';
-      city?: string = '';
-      name: string = '';
+      public entityId: string = '0x11';
+      public country?: string = '';
+      public city?: string = '';
+      public name: string = '';
     }
     ```
 
+
 2. Use the intent entity. Add an intent decorated with [@InsightIntentEntry](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry) that uses the song name and singer information (the **ArtistClassDef** intent entity) as input parameters for music playback.
 
-    ```ts
+    <!-- @[insight_intent_use_intent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/feature/src/main/ets/insightintents/PlayMusicDemo.ets) -->
+    
+    ``` TypeScript
     import { insightIntent, InsightIntentEntry, InsightIntentEntryExecutor, InsightIntentEntity } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
+    
     const LOG_TAG: string = 'testTag-EntryIntent';
-
+    
     @InsightIntentEntity({
       entityCategory: 'artist entity category',
       // The ArtistClassDef intent entity information has been described in parameters of the @InsightIntentEntry decorator. Therefore, parameters can be left unspecified.
     })
     export class ArtistClassDef implements insightIntent.IntentEntity {
-      entityId: string = '0x11';
-      country?: string = '';
-      city?: string = '';
-      name: string = '';
+      public entityId: string = '0x11';
+      public country?: string = '';
+      public city?: string = '';
+      public name: string = '';
     }
-
+    
     // Use the @InsightIntentEntry decorator to define an intent.
     @InsightIntentEntry({
       intentName: 'PlayMusic',
@@ -287,10 +297,10 @@ To implement this, you can define singer information as an intent entity and dev
       }
     })
     export default class PlayMusicDemo extends InsightIntentEntryExecutor<string> {
-      songName: string = '';
+      public songName: string = '';
       // Use the intent entity.
-      artist?: ArtistClassDef;
-
+      public artist?: ArtistClassDef;
+    
       onExecute(): Promise<insightIntent.IntentResult<string>> {
         hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo executeMode %{public}s', JSON.stringify(this.executeMode));
         hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo artist %{public}s', JSON.stringify(this.artist));

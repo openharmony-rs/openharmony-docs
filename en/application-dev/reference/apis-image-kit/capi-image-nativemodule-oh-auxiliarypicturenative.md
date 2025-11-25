@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AuxiliaryPictureNative OH_AuxiliaryPictureNative
+```
+
 ## Overview
 
 The struct describes the auxiliary picture, which is used to perform operations related to the auxiliary picture.

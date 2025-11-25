@@ -80,6 +80,7 @@
 | [int32_t OH_NativeWindow_SetMetadataValue(OHNativeWindow *window, OH_NativeBuffer_MetadataKey metadataKey,int32_t size, uint8_t *metadata)](#oh_nativewindow_setmetadatavalue) | 为OHNativeWindow设置元数据属性值。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeWindow_GetMetadataValue(OHNativeWindow *window, OH_NativeBuffer_MetadataKey metadataKey,int32_t *size, uint8_t **metadata)](#oh_nativewindow_getmetadatavalue) | 获取OHNativeWindow元数据属性值。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeWindow_CleanCache(OHNativeWindow *window)](#oh_nativewindow_cleancache) | 清理OHNativeWindow中的OHNativeWindowBuffer缓存。<br>使用该接口清理缓存前，需确保已通过[OH_NativeWindow_NativeWindowRequestBuffer](#oh_nativewindow_nativewindowrequestbuffer)接口成功申请OHNativeWindowBuffer。<br>本接口为非线程安全类型接口。 |
+| [int32_t OH_NativeWindow_PreAllocBuffers(OHNativeWindow *window, uint32_t allocBufferCnt)](#oh_nativewindow_preallocbuffers) | 通过OHNativeWindow对象提前申请多块OHNativeWindowBuffer，用以内容生产。<br>在调用本接口前，需要通过[OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt)对OHNativeWindow设置宽高。<br>本接口为非线程安全类型接口。 |
 
 ## 枚举类型说明
 
@@ -99,8 +100,8 @@ OH_NativeWindow_NativeWindowHandleOpt函数中的操作码。
 | -- | -- |
 | SET_BUFFER_GEOMETRY | 设置本地窗口缓冲区几何图形，函数中的可变参数是[输入] int32_t width，[输入] int32_t height。 |
 | GET_BUFFER_GEOMETRY | 获取本地窗口缓冲区几何图形，函数中的可变参数是[输出] int32_t height，[输出] int32_t width。 |
-| GET_FORMAT | 获取本地窗口缓冲区格式，函数中的可变参数是[输出] int32_tformat，取值具体可见[OH_NativeBuffer_Format](capi-native-buffer-h.md#oh_nativebuffer_format)枚举值。 |
-| SET_FORMAT | 设置本地窗口缓冲区格式，函数中的可变参数是[输入] int32_t format，取值具体可见[OH_NativeBuffer_Format](capi-native-buffer-h.md#oh_nativebuffer_format)枚举值。 |
+| GET_FORMAT | 获取本地窗口缓冲区格式，函数中的可变参数是[输出] int32_tformat，取值具体可见[OH_NativeBuffer_Format](capi-buffer-common-h.md#oh_nativebuffer_format)枚举值。 |
+| SET_FORMAT | 设置本地窗口缓冲区格式，函数中的可变参数是[输入] int32_t format，取值具体可见[OH_NativeBuffer_Format](capi-buffer-common-h.md#oh_nativebuffer_format)枚举值。 |
 | GET_USAGE | 获取本地窗口读写方式，函数中的可变参数是[输出] uint64_tusage，取值具体可见[OH_NativeBuffer_Usage](capi-native-buffer-h.md#oh_nativebuffer_usage)枚举值。 |
 | SET_USAGE | 设置本地窗口缓冲区读写方式，函数中的可变参数是[输入] uint64_t usage，取值具体可见[OH_NativeBuffer_Usage](capi-native-buffer-h.md#oh_nativebuffer_usage)枚举值。 |
 | SET_STRIDE | 设置本地窗口缓冲区步幅，函数中的可变参数是[输入] int32_t stride。<br/>**废弃版本：** 16 |
@@ -111,8 +112,8 @@ OH_NativeWindow_NativeWindowHandleOpt函数中的操作码。
 | GET_TIMEOUT | 获取请求本地窗口请求缓冲区的超时等待时间，未手动设置时默认值为3000毫秒，函数中的可变参数是[输出] int32_t timeout，单位为毫秒。 |
 | SET_COLOR_GAMUT | 设置本地窗口缓冲区色彩空间，函数中的可变参数是[输入] int32_t colorGamut，取值具体可见[OH_NativeBuffer_ColorGamut](capi-native-buffer-h.md#oh_nativebuffer_colorgamut)枚举值。 |
 | GET_COLOR_GAMUT | 获取本地窗口缓冲区色彩空间，函数中的可变参数是[输出] int32_tcolorGamut，取值具体可见[OH_NativeBuffer_ColorGamut](capi-native-buffer-h.md#oh_nativebuffer_colorgamut)枚举值。 |
-| SET_TRANSFORM | 设置本地窗口缓冲区变换，函数中的可变参数是[输入] int32_t transform，取值具体可见[OH_NativeBuffer_TransformType](capi-native-buffer-h.md#oh_nativebuffer_transformtype)枚举值。 |
-| GET_TRANSFORM | 获取本地窗口缓冲区变换，函数中的可变参数是[输出] int32_t transform，取值具体可见[OH_NativeBuffer_TransformType](capi-native-buffer-h.md#oh_nativebuffer_transformtype)枚举值。 |
+| SET_TRANSFORM | 设置本地窗口缓冲区变换，函数中的可变参数是[输入] int32_t transform，取值具体可见[OH_NativeBuffer_TransformType](capi-buffer-common-h.md#oh_nativebuffer_transformtype)枚举值。 |
+| GET_TRANSFORM | 获取本地窗口缓冲区变换，函数中的可变参数是[输出] int32_t transform，取值具体可见[OH_NativeBuffer_TransformType](capi-buffer-common-h.md#oh_nativebuffer_transformtype)枚举值。 |
 | SET_UI_TIMESTAMP | 设置本地窗口缓冲区UI时间戳，函数中的可变参数是[输入] uint64_t uiTimestamp。 |
 | GET_BUFFERQUEUE_SIZE | 获取内存队列大小，函数中的可变参数是[输出] int32_t \*size。<br/>**起始版本：** 12 |
 | SET_SOURCE_TYPE | 设置本地窗口内容来源，函数中的可变参数是[输入] int32_t sourceType，取值具体可见[OHSurfaceSource](#ohsurfacesource)枚举值。<br/>**起始版本：** 12 |
@@ -1131,3 +1132,33 @@ int32_t OH_NativeWindow_CleanCache(OHNativeWindow *window)
 | int32_t | 返回值为0表示执行成功，其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 
+### OH_NativeWindow_PreAllocBuffers()
+
+```
+int32_t OH_NativeWindow_PreAllocBuffers(OHNativeWindow *window, uint32_t allocBufferCnt)
+```
+
+**描述**
+
+通过OHNativeWindow对象提前申请多块OHNativeWindowBuffer，用以内容生产。
+
+在调用本接口前，需要通过[OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt)对OHNativeWindow设置宽高。
+
+本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | 一个指向OHNativeWindow的结构体实例的指针。 |
+| uint32_t allocBufferCnt | 提前申请buffer的数量。当allocBufferCnt大于bufferQueueSize时，只能提前申请bufferQueueSize数量的buffer。bufferQueueSize可以通过[OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt)获取。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回值为0表示执行成功，其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |

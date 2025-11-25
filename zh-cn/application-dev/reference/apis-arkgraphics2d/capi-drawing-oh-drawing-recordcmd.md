@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_RecordCmd OH_Drawing_RecordCmd
+```
+
 ## 概述
 
 定义录制指令类, 用于存储录制指令的集合。

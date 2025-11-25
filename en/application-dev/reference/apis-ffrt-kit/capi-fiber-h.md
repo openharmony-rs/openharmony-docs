@@ -11,6 +11,8 @@
 
 A fiber is a lightweight user mode thread that enables efficient task scheduling and context switching within the user space. The **fiber.h** file declares the related APIs in C.
 
+**File to include**: <ffrt/fiber.h>
+
 **Library**: libffrt.z.so
 
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
@@ -57,7 +59,7 @@ Initializes a fiber. The initialized fiber instance can store contexts.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int (ffrt_fiber_t* fiber, void(*func) | If the initialization is successful, **ffrt_success** is returned. Otherwise, **ffrt_error** is returned.|
+| FFRT_C_API int | If the initialization is successful, **ffrt_success** is returned. Otherwise, **ffrt_error** is returned.|
 
 ### ffrt_fiber_switch()
 

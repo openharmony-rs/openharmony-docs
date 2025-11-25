@@ -52,28 +52,30 @@ EmbeddedUIExtensionAbility通过[UIExtensionContext](../reference/apis-ability-k
 
 3. 打开EmbeddedUIExtAbility.ets文件，导入EmbeddedUIExtensionAbility的依赖包，自定义类继承EmbeddedUIExtensionAbility并实现onCreate、onSessionCreate、onSessionDestroy、onForeground、onBackground和onDestroy生命周期回调。
 
-    ```ts
+    <!-- @[embeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/embeddeduiextability/EmbeddedUIExtAbility.ets) -->
+    
+    ``` TypeScript
     import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
-
-    const TAG: string = '[ExampleEmbeddedAbility]';
-
-    export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
+    
+    const TAG: string = '[EmbeddedUIExtAbility]';
+    
+    export default class EmbeddedUIExtAbility extends EmbeddedUIExtensionAbility {
       onCreate() {
         console.info(TAG, `onCreate`);
       }
-
+    
       onForeground() {
         console.info(TAG, `onForeground`);
       }
-
+    
       onBackground() {
         console.info(TAG, `onBackground`);
       }
-
+    
       onDestroy() {
         console.info(TAG, `onDestroy`);
       }
-
+    
       onSessionCreate(want: Want, session: UIExtensionContentSession) {
         console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
         let param: Record<string, UIExtensionContentSession> = {
@@ -82,16 +84,19 @@ EmbeddedUIExtensionAbility通过[UIExtensionContext](../reference/apis-ability-k
         let storage: LocalStorage = new LocalStorage(param);
         session.loadContent('pages/extension', storage);
       }
-
+    
       onSessionDestroy(session: UIExtensionContentSession) {
         console.info(TAG, `onSessionDestroy`);
       }
     }
     ```
 
+
 4. EmbeddedUIExtensionAbility的onSessionCreate中加载了入口页面文件pages/extension.ets内容如下：
 
-    ```ts
+    <!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/pages/Extension.ets) -->
+
+    ``` TypeScript
     import { UIExtensionContentSession } from '@kit.AbilityKit';
 
     @Entry()
@@ -110,7 +115,7 @@ EmbeddedUIExtensionAbility通过[UIExtensionContext](../reference/apis-ability-k
             this.session?.terminateSelfWithResult({
               resultCode: 1,
               want: {
-                bundleName: 'com.example.embeddeddemo',
+                bundleName: 'com.samples.embeddeduiextensionability',
                 abilityName: 'ExampleEmbeddedAbility'
               }});
           })
@@ -121,17 +126,21 @@ EmbeddedUIExtensionAbility通过[UIExtensionContext](../reference/apis-ability-k
 
 5. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册EmbeddedUIExtensionAbility，type标签需要设置为“embeddedUI”，srcEntry标签表示当前EmbeddedUIExtensionAbility组件所对应的代码路径。
 
-    ```json
+    <!-- @[embeddedModule_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/module.json5) -->
+
+    ``` JSON5
     {
       "module": {
+        // ···
         "extensionAbilities": [
+        // ···
           {
             "name": "EmbeddedUIExtAbility",
-            "icon": "$media:icon",
+            "icon": "$media:startIcon",
             "description": "EmbeddedUIExtAbility",
             "type": "embeddedUI",
-            "srcEntry": "./ets/EmbeddedUIExtAbility/EmbeddedUIExtAbility.ets"
-          },
+            "srcEntry": "./ets/embeddeduiextability/EmbeddedUIExtAbility.ets"
+          }
         ]
       }
     }
@@ -147,21 +156,24 @@ EmbeddedUIExtensionAbility通过[UIExtensionContext](../reference/apis-ability-k
 
 ohos.extension.processMode.hostSpecified和ohos.extension.processMode.hostInstance同时配置时，hostSpecified优先，会运行在指定的进程中。
 如在首页文件：pages/Index.ets中添加如下内容：
-```ts
+
+<!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/pages/BasicClass.ets) -->
+
+``` TypeScript
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct Index {
-  @State message: string = 'Message: '
+struct BasicClass {
+  @State message: string = 'Message: ';
   private want: Want = {
-    bundleName: 'com.example.embeddeddemo',
+    bundleName: 'com.samples.embeddeduiextensionability',
     abilityName: 'EmbeddedUIExtAbility',
     parameters: {
       'ohos.extension.processMode.hostInstance': 'true'
     }
-  }
+  };
 
   build() {
     Row() {
@@ -183,3 +195,4 @@ struct Index {
   }
 }
 ```
+

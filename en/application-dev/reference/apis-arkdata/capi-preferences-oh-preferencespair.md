@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_PreferencesPair OH_PreferencesPair
+```
+
 ## Overview
 
 Defines a struct for the **Preferences** data in KV format.

@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ImagePacker_Native_ ImagePacker_Native
+```
+
 ## 概述
 
 为编码器方法定义native层编码器对象。

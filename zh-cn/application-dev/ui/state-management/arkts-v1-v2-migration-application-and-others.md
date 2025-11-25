@@ -15,7 +15,7 @@
 | [Environment](./arkts-environment.md)       | 调用Ability接口获取系统环境变量   |
 | [PersistentStorage](./arkts-persiststorage.md)     | [PersistenceV2](./arkts-new-persistencev2.md)   |
 | 存量迁移场景      | \@ObservedV2、\@Trace、[\@Monitor](./arkts-new-monitor.md) |
-| 滑动组件场景      | [makeObserved](./arkts-new-makeObserved.md)|
+| 滚动组件场景      | [makeObserved](./arkts-new-makeObserved.md)|
 | [Modifier](../arkts-user-defined-modifier.md)      |[makeObserved](./arkts-new-makeObserved.md)、\@ObservedV2、\@Trace|
 
 
@@ -34,14 +34,15 @@ LocalStorage的目的是实现页面间的状态变量共享。由于V1状态变
 V1:
 
 通过windowStage.[loadContent](../../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)和this.getUIContext().[getSharedLocalStorage](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)接口实现页面间的状态变量共享。
-```ts
-// EntryAbility.ets
+<!-- @[Internal_@ObservedV2_@Trace_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV1/EntryAbility.ets) -->
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
-  para: Record<string, number> = { 'count': 47 };
-  storage: LocalStorage = new LocalStorage(this.para);
+  public para: Record<string, number> = { 'count': 47 };
+  public storage: LocalStorage = new LocalStorage(this.para);
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/Page1', this.storage);
@@ -50,7 +51,9 @@ export default class EntryAbility extends UIAbility {
 ```
 在下面的示例中，使用\@LocalStorageLink，可以将开发者本地的修改同步回LocalStorage中。
 
-```ts
+<!-- @[Internal_@ObservedV2_@Trace_V1_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV1/pages/Page1.ets) -->
+
+``` TypeScript
 // Page1.ets
 // 预览器上不支持获取页面共享的LocalStorage实例。
 @Entry({ useSharedStorage: true })
@@ -77,7 +80,9 @@ struct Page1 {
 }
 ```
 
-```ts
+<!-- @[Internal_@ObservedV2_@Trace_V1_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV1/pages/Page2.ets) -->
+
+``` TypeScript
 // Page2.ets
 @Builder
 export function Page2Builder() {
@@ -133,12 +138,12 @@ V2:
 
 - 声明\@ObservedV2装饰的MyStorage类，并import到需要使用的页面中。
 - 声明被\@Trace的属性作为页面间共享的可观察的数据。
+<!-- @[Internal_@ObservedV2_@Trace_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/storage.ets) -->
 
-```ts
-// storage.ets
+``` TypeScript
 @ObservedV2
 export class MyStorage {
-  static singleton_: MyStorage;
+  public static singleton_: MyStorage;
 
   static instance() {
     if (!MyStorage.singleton_) {
@@ -146,12 +151,13 @@ export class MyStorage {
     }
     return MyStorage.singleton_;
   }
-
-  @Trace count: number = 47;
+  @Trace public count: number = 47;
 }
 ```
 
-```ts
+<!-- @[Internal_@ObservedV2_@Trace_V2_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/Page1.ets) -->
+
+``` TypeScript
 // Page1.ets
 import { MyStorage } from './storage';
 
@@ -179,7 +185,9 @@ struct Page1 {
 }
 ```
 
-```ts
+<!-- @[Internal_@ObservedV2_@Trace_V2_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/Page2.ets) -->
+
+``` TypeScript
 // Page2.ets
 import { MyStorage } from './storage';
 
@@ -209,6 +217,7 @@ struct Page2 {
   }
 }
 ```
+
 使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为Page2页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
 ```json
 {
@@ -229,8 +238,9 @@ struct Page2 {
 - 在`Page1`中改变`count`值，由于count被\@LocalStorageProp装饰的，因此其更改仅在本地生效，不会同步到LocalStorage。
 - 点击`push to Page2`，跳转到`Page2`。由于在`Page1`中改变`count`值不会同步到LocalStorage，因此`Page2`中的Text组件仍显示初始值47。
 - 点击`change Storage Count`，调用LocalStorage的setOrCreate，改变`count`对应的值，并通知所有绑定该key的变量。
+<!-- @[Internal_@Trace_setOrCreate_V1_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV1/Page1.ets) -->
 
-```ts
+``` TypeScript
 // Page1.ets
 export let storage: LocalStorage = new LocalStorage();
 
@@ -264,7 +274,9 @@ struct Page1 {
 }
 ```
 
-```ts
+<!-- @[Internal_@Trace_setOrCreate_V1_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV1/Page2.ets) -->
+
+``` TypeScript
 // Page2.ets
 import { storage } from './Page1'
 
@@ -299,13 +311,18 @@ struct Page2 {
   }
 }
 ```
+
 在V2中，可以借助\@Local和\@Monitor实现类似的效果。
 - \@Local装饰的`count`变量为组件本地的值，其改变不会同步回`storage`。
 - \@Monitor监听`storage.count`的变化，当`storage.count`改变时，在\@Monitor的回调里改变本地\@Local的值。
+<!-- @[Internal_@ObservedV2_@Trace_V2_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV2/Page1.ets) -->
 
-```ts
+``` TypeScript
 // Page1.ets
 import { MyStorage } from './storage';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 @Entry
 @ComponentV2
@@ -316,7 +333,7 @@ struct Page1 {
 
   @Monitor('storage.count')
   onCountChange(mon: IMonitor) {
-    console.info(`Page1 ${mon.value()?.before} to ${mon.value()?.now}`);
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `Page1 ${mon.value()?.before} to ${mon.value()?.now}`);
     this.count = this.storage.count;
   }
 
@@ -342,9 +359,14 @@ struct Page1 {
 }
 ```
 
-```ts
+<!-- @[Internal_@ObservedV2_@Trace_V2_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV2/Page2.ets) -->
+
+``` TypeScript
 // Page2.ets
 import { MyStorage } from './storage';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 @Builder
 export function Page2Builder() {
@@ -359,7 +381,7 @@ struct Page2 {
 
   @Monitor('storage.count')
   onCountChange(mon: IMonitor) {
-    console.info(`Page2 ${mon.value()?.before} to ${mon.value()?.now}`);
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `Page2 ${mon.value()?.before} to ${mon.value()?.now}`);
     this.count = this.storage.count;
   }
 
@@ -391,15 +413,17 @@ struct Page2 {
 
 V1:
 
-```ts
+<!-- @[Internal_Trace_customize_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/InternalTraceCustomizeV1.ets) -->
+
+``` TypeScript
 let localStorageA: LocalStorage = new LocalStorage();
-localStorageA.setOrCreate('PropA', 'PropA');
+localStorageA.setOrCreate('propA', 'propA');
 
 let localStorageB: LocalStorage = new LocalStorage();
-localStorageB.setOrCreate('PropB', 'PropB');
+localStorageB.setOrCreate('propB', 'propB');
 
 let localStorageC: LocalStorage = new LocalStorage();
-localStorageC.setOrCreate('PropC', 'PropC');
+localStorageC.setOrCreate('propC', 'propC');
 
 @Entry
 @Component
@@ -441,15 +465,15 @@ struct MyNavigationTestStack {
 @Component
 struct PageOneStack {
   @Consume('pageInfo') pageInfo: NavPathStack;
-  @LocalStorageLink('PropA') PropA: string = 'Hello World';
+  @LocalStorageLink('propA') propA: string = 'Hello World';
 
   build() {
     NavDestination() {
       Column() {
-        // 显示'PropA'
+        // 显示'propA'
         NavigationContentMsgStack()
-        // 显示'PropA'
-        Text(`${this.PropA}`)
+        // 显示'propA'
+        Text(`${this.propA}`)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
@@ -469,15 +493,15 @@ struct PageOneStack {
 @Component
 struct PageTwoStack {
   @Consume('pageInfo') pageInfo: NavPathStack;
-  @LocalStorageLink('PropB') PropB: string = 'Hello World';
+  @LocalStorageLink('propB') propB: string = 'Hello World';
 
   build() {
     NavDestination() {
       Column() {
-        // 显示'Hello'，当前LocalStorage实例localStorageB没有PropA对应的值，使用本地默认值'Hello'
+        // 显示'Hello'，当前LocalStorage实例localStorageB没有propA对应的值，使用本地默认值'Hello'
         NavigationContentMsgStack()
-        // 显示'PropB'
-        Text(`${this.PropB}`)
+        // 显示'propB'
+        Text(`${this.propB}`)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
@@ -498,15 +522,15 @@ struct PageTwoStack {
 @Component
 struct PageThreeStack {
   @Consume('pageInfo') pageInfo: NavPathStack;
-  @LocalStorageLink('PropC') PropC: string = 'pageThreeStack';
+  @LocalStorageLink('propC') propC: string = 'pageThreeStack';
 
   build() {
     NavDestination() {
       Column() {
-        // 显示'Hello'，当前LocalStorage实例localStorageC没有PropA对应的值，使用本地默认值'Hello'
+        // 显示'Hello'，当前LocalStorage实例localStorageC没有propA对应的值，使用本地默认值'Hello'
         NavigationContentMsgStack()
-        // 显示'PropC'
-        Text(`${this.PropC}`)
+        // 显示'propC'
+        Text(`${this.propC}`)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
@@ -526,11 +550,11 @@ struct PageThreeStack {
 
 @Component
 struct NavigationContentMsgStack {
-  @LocalStorageLink('PropA') PropA: string = 'Hello';
+  @LocalStorageLink('propA') propA: string = 'Hello';
 
   build() {
     Column() {
-      Text(`${this.PropA}`)
+      Text(`${this.propA}`)
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
     }
@@ -540,11 +564,12 @@ struct NavigationContentMsgStack {
 V2：
 
 声明\@ObservedV2装饰的class代替LocalStorage。其中LocalStorage的key可以用\@Trace装饰的属性代替。
-```ts
-// storage.ets
+<!-- @[Internal_Trace_customize_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/storage.ets) -->
+
+``` TypeScript
 @ObservedV2
 export class MyStorageA {
-  @Trace propA: string = 'Hello';
+  @Trace public propA: string = 'Hello';
 
   constructor(propA?: string) {
     this.propA = propA ? propA : this.propA;
@@ -553,7 +578,7 @@ export class MyStorageA {
 
 @ObservedV2
 export class MyStorageB extends MyStorageA {
-  @Trace propB: string = 'Hello';
+  @Trace public propB: string = 'Hello';
 
   constructor(propB: string) {
     super();
@@ -563,7 +588,7 @@ export class MyStorageB extends MyStorageA {
 
 @ObservedV2
 export class MyStorageC extends MyStorageA {
-  @Trace propC: string = 'Hello';
+  @Trace public propC: string = 'Hello';
 
   constructor(propC: string) {
     super();
@@ -572,9 +597,11 @@ export class MyStorageC extends MyStorageA {
 }
 ```
 
-在`pageOneStack`、`pageTwoStack`和`pageThreeStack`组件内分别创建`MyStorageA`、`MyStorageB`、`MyStorageC`的实例，并通过\@Param传递给其子组件`NavigationContentMsgStack`，从而实现类似LocalStorage实例在子组件树上共享的能力。
+在`PageOneStack`、`PageTwoStack`和`PageThreeStack`组件内分别创建`MyStorageA`、`MyStorageB`、`MyStorageC`的实例，并通过\@Param传递给其子组件`NavigationContentMsgStack`，从而实现类似LocalStorage实例在子组件树上共享的能力。
 
-```ts
+<!-- @[Internal_Trace_Customize_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/Index.ets) -->
+
+``` TypeScript
 // Index.ets
 import { MyStorageA, MyStorageB, MyStorageC } from './storage';
 
@@ -586,11 +613,11 @@ struct MyNavigationTestStack {
   @Builder
   PageMap(name: string) {
     if (name === 'pageOne') {
-      pageOneStack()
+      PageOneStack()
     } else if (name === 'pageTwo') {
-      pageTwoStack()
+      PageTwoStack()
     } else if (name === 'pageThree') {
-      pageThreeStack()
+      PageThreeStack()
     }
   }
 
@@ -615,7 +642,7 @@ struct MyNavigationTestStack {
 }
 
 @ComponentV2
-struct pageOneStack {
+struct PageOneStack {
   pageInfo: NavPathStack = new NavPathStack();
   @Local storageA: MyStorageA = new MyStorageA('PropA');
 
@@ -646,7 +673,7 @@ struct pageOneStack {
 }
 
 @ComponentV2
-struct pageTwoStack {
+struct PageTwoStack {
   pageInfo: NavPathStack = new NavPathStack();
   @Local storageB: MyStorageB = new MyStorageB('PropB');
 
@@ -678,7 +705,7 @@ struct pageTwoStack {
 }
 
 @ComponentV2
-struct pageThreeStack {
+struct PageThreeStack {
   pageInfo: NavPathStack = new NavPathStack();
   @Local storageC: MyStorageC = new MyStorageC('PropC');
 
@@ -728,10 +755,12 @@ struct NavigationContentMsgStack {
 
 V1:
 
-AppStorage与应用进程绑定，支持跨Ability数据共享。
+AppStorage与应用进程绑定，支持跨[Ability](../../reference/apis-ability-kit/js-apis-app-ability-ability.md)数据共享。
 在下面的示例中，使用\@StorageLink，可以使得开发者本地的修改同步回AppStorage中。
 
-```ts
+<!-- @[Internal_AppStorage_V1_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAppStorageV1one.ets) -->
+
+``` TypeScript
 // EntryAbility Index.ets
 import { common, Want } from '@kit.AbilityKit';
 
@@ -760,7 +789,9 @@ struct Index {
 }
 ```
 
-```ts
+<!-- @[Internal_AppStorage_V1_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAppStorageV1two.ets) -->
+
+``` TypeScript
 // EntryAbility1 Index1.ets
 import { common, Want } from '@kit.AbilityKit';
 
@@ -793,13 +824,15 @@ V2:
 可以使用AppStorageV2实现跨Ability共享。
 如下面示例：
 
-```ts
+<!-- @[Internal_AppStorage_V2_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAppStorageV2one.ets) -->
+
+``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { AppStorageV2 } from '@kit.ArkUI';
 
 @ObservedV2
 export class MyStorage {
-  @Trace count: number = 0
+  @Trace public count: number = 0;
 }
 
 @Entry
@@ -825,16 +858,17 @@ struct Index {
     }
   }
 }
-
 ```
 
-```ts
+<!-- @[Internal_AppStorage_V2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAppStorageV2two.ets) -->
+
+``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { AppStorageV2 } from '@kit.ArkUI';
 
 @ObservedV2
 export class MyStorage {
-  @Trace count: number = 0
+  @Trace public count: number = 0;
 }
 
 @Entry
@@ -843,22 +877,22 @@ struct Index1 {
   @Local storage: MyStorage = AppStorageV2.connect(MyStorage, 'storage', () => new MyStorage())!;
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-    build() {
-      Column() {
-        Text(`EntryAbility1 count: ${this.storage.count}`)
-          .fontSize(50)
-          .onClick(() => {
-            this.storage.count++;
-          })
-        Button('Jump to EntryAbility').onClick(() => {
-          let wantInfo: Want = {
-            bundleName: 'com.example.myapplication', // 替换成AppScope/app.json5里的bundleName
-            abilityName: 'EntryAbility'
-          };
-          this.context.startAbility(wantInfo);
+  build() {
+    Column() {
+      Text(`EntryAbility1 count: ${this.storage.count}`)
+        .fontSize(50)
+        .onClick(() => {
+          this.storage.count++;
         })
-      }
+      Button('Jump to EntryAbility').onClick(() => {
+        let wantInfo: Want = {
+          bundleName: 'com.example.myapplication', // 替换成AppScope/app.json5里的bundleName
+          abilityName: 'EntryAbility'
+        };
+        this.context.startAbility(wantInfo);
+      })
     }
+  }
 }
 ```
 
@@ -866,7 +900,9 @@ struct Index1 {
 
 V1：
 
-```ts
+<!-- @[Internal_StorageProp_V1_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalStoragePropV1one.ets) -->
+
+``` TypeScript
 // EntryAbility Index.ets
 import { common, Want } from '@kit.AbilityKit';
 
@@ -899,7 +935,9 @@ struct Index {
 }
 ```
 
-```ts
+<!-- @[Internal_StorageProp_V1_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalStoragePropV1two.ets) -->
+
+``` TypeScript
 // EntryAbility1 Index1.ets
 import { common, Want } from '@kit.AbilityKit';
 
@@ -936,13 +974,18 @@ V2:
 
 开发者可以使用\@Monitor和\@Local实现类似效果，示例如下。
 
-```ts
+<!-- @[Internal_StorageProp_V2_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalStoragePropV2one.ets) -->
+
+``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { AppStorageV2 } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 @ObservedV2
 export class MyStorage {
-  @Trace count: number = 0;
+  @Trace public count: number = 0;
 }
 
 @Entry
@@ -954,7 +997,7 @@ struct Index {
 
   @Monitor('storage.count')
   onCountChange(mon: IMonitor) {
-    console.info(`Index1 ${mon.value()?.before} to ${mon.value()?.now}`);
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `Index1 ${mon.value()?.before} to ${mon.value()?.now}`);
     this.count = this.storage.count;
   }
 
@@ -981,13 +1024,18 @@ struct Index {
 }
 ```
 
-```ts
+<!-- @[Internal_StorageProp_V2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalStoragePropV2two.ets) -->
+
+``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { AppStorageV2 } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 @ObservedV2
 export class MyStorage {
-  @Trace count: number = 0;
+  @Trace public count: number = 0;
 }
 
 @Entry
@@ -999,7 +1047,7 @@ struct Index1 {
 
   @Monitor('storage.count')
   onCountChange(mon: IMonitor) {
-    console.info(`Index1 ${mon.value()?.before} to ${mon.value()?.now}`);
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `Index1 ${mon.value()?.before} to ${mon.value()?.now}`);
     this.count = this.storage.count;
   }
 
@@ -1033,7 +1081,9 @@ V1中，开发者可以通过Environment来获取环境变量，但Environment�
 V1:
 
 以`languageCode`为例。
-```ts
+<!-- @[Internal_Environment_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV1.ets) -->
+
+``` TypeScript
 // 将设备languageCode存入AppStorage中
 Environment.envProp('languageCode', 'en');
 
@@ -1057,22 +1107,27 @@ V2:
 
 封装Env类型来传递多个系统环境变量。
 
-```ts
+<!-- @[Internal_Environment_V2_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/pages/Env.ets) -->
+
+``` TypeScript
 // Env.ets
 import { ConfigurationConstant } from '@kit.AbilityKit';
 
 export class Env {
-  language: string | undefined;
-  colorMode: ConfigurationConstant.ColorMode | undefined;
-  fontSizeScale: number | undefined;
-  fontWeightScale: number | undefined;
+  public language: string | undefined;
+  public colorMode: ConfigurationConstant.ColorMode | undefined;
+  // 字体大小缩放的倍数
+  public fontSizeScale: number | undefined;
+  // 字体粗细缩放的倍数
+  public fontWeightScale: number | undefined;
 }
 
 export let env: Env = new Env();
 ```
 在`onCreate`里获取需要的系统环境变量：
-```ts
-// EntryAbility.ets
+<!-- @[Internal_Environment_V2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV2/EntryAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { env } from '../pages/Env';
@@ -1089,10 +1144,11 @@ export default class EntryAbility extends UIAbility {
     windowStage.loadContent('pages/Index');
   }
 }
-
 ```
 在页面中获取当前Env的值。
-```ts
+<!-- @[Internal_Environment_V2_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV2/Index.ets) -->
+
+``` TypeScript
 // Index.ets
 import { env } from '../pages/Env';
 
@@ -1120,24 +1176,26 @@ V1中PersistentStorage提供了持久化UI数据的能力，而V2则提供了更
 
 对于PersistenceV2：
 - 与PersistenceV2关联的\@ObservedV2对象，其\@Trace属性的变化，会触发整个关联对象的自动持久化。
-- 开发者也可以调用[PersistenceV2.save](../../reference/apis-arkui/js-apis-StateManagement.md#save)和[PersistenceV2.globalConnect](./arkts-new-persistencev2.md#使用globalconnect存储数据)接口来手动触发持久化写入和读取。
+- 开发者也可以调用[PersistenceV2.save](../../reference/apis-arkui/js-apis-stateManagement.md#save)和[PersistenceV2.globalConnect](./arkts-new-persistencev2.md#使用globalconnect存储数据)接口来手动触发持久化写入和读取。
 
 V1:
 
-```ts
-class data {
-  name: string = 'ZhangSan';
-  id: number = 0;
+<!-- @[Internal_Persistent_Storage_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalPersistentStorageV1.ets) -->
+
+``` TypeScript
+class Data {
+  public name: string = 'ZhangSan';
+  public id: number = 0;
 }
 
 PersistentStorage.persistProp('numProp', 47);
-PersistentStorage.persistProp('dataProp', new data());
+PersistentStorage.persistProp('dataProp', new Data());
 
 @Entry
 @Component
 struct Index {
   @StorageLink('numProp') numProp: number = 48;
-  @StorageLink('dataProp') dataProp: data = new data();
+  @StorageLink('dataProp') dataProp: Data = new Data();
 
   build() {
     Column() {
@@ -1172,56 +1230,64 @@ V2:
 下面的案例展示了：
 - 将`PersistentStorage`的持久化数据迁移到V2的PersistenceV2中。V2对被\@Trace标记的数据可以自动持久化，对于非\@Trace数据，需要手动调用save进行持久化。
 - 示例中的move函数和需要显示的组件放在了一个ets中，开发者可以定义自己的move函数，并放入合适的位置进行统一迁移操作。
-```ts
+<!-- @[Internal_Persistent_Storage_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalPersistentStorageV2.ets) -->
+
+``` TypeScript
 // 迁移到globalConnect
 import { PersistenceV2, Type } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
+const DOMAIN = 0x0000;
 // 接受序列化失败的回调
 PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
-  console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
+  hilog.error(DOMAIN, 'testTag', '%{public}s', `error key: ${key}, reason: ${reason}, message: ${msg}`);
 });
 
 class Data {
-  name: string = 'ZhangSan';
-  id: number = 0;
+  public name: string = 'ZhangSan';
+  public id: number = 0;
 }
 
 @ObservedV2
 class V2Data {
-  @Trace name: string = '';
-  @Trace Id: number = 1;
+  @Trace public name: string = '';
+  @Trace public id: number = 1;
 }
 
 @ObservedV2
 export class Sample {
   // 对于复杂对象需要@Type修饰，确保序列化成功
   @Type(V2Data)
-  @Trace num: number = 1;
-  @Trace V2: V2Data = new V2Data();
+  @Trace public num: number = 1;
+  @Trace public V2: V2Data = new V2Data();
 }
 
 // 用于判断是否完成数据迁移的辅助数据
 @ObservedV2
 class StorageState {
-  @Trace isCompleteMoving: boolean = false;
+  @Trace public isCompleteMoving: boolean = false;
 }
 
 function move() {
-  let movingState = PersistenceV2.globalConnect({type: StorageState, defaultCreator: () => new StorageState()})!;
+  let movingState = PersistenceV2.globalConnect({ type: StorageState, defaultCreator: () => new StorageState() })!;
   if (!movingState.isCompleteMoving) {
     PersistentStorage.persistProp('numProp', 47);
     PersistentStorage.persistProp('dataProp', new Data());
     let num = AppStorage.get<number>('numProp')!;
-    let V1Data = AppStorage.get<Data>('dataProp')!;
+    let v1Data = AppStorage.get<Data>('dataProp')!;
     PersistentStorage.deleteProp('numProp');
     PersistentStorage.deleteProp('dataProp');
 
     // V2创建对应数据
-    let migrate = PersistenceV2.globalConnect({type: Sample, key: 'connect2', defaultCreator: () => new Sample()})!;  // 使用默认构造函数也可以
-    // 赋值数据，@Trace修饰的会自动保存，对于非@Trace对象，也可以调用save保存，如：PersistenceV2.save('connect2'); 
+    let migrate = PersistenceV2.globalConnect({
+      type: Sample,
+      key: 'connect2',
+      defaultCreator: () => new Sample()
+    })!; // 使用默认构造函数也可以
+    // 赋值数据，@Trace修饰的会自动保存，对于非@Trace对象，也可以调用save保存，如：PersistenceV2.save('connect2');
     migrate.num = num;
-    migrate.V2.name = V1Data.name;
-    migrate.V2.Id = V1Data.id;
+    migrate.V2.name = v1Data.name;
+    migrate.V2.id = v1Data.id;
 
     // 将迁移标志设置为true
     movingState.isCompleteMoving = true;
@@ -1235,10 +1301,11 @@ move();
 struct Page1 {
   @Local refresh: number = 0;
   // 使用key:connect2存入数据
-  @Local p: Sample = PersistenceV2.globalConnect({type: Sample, key:'connect2', defaultCreator:() => new Sample()})!;
+  @Local p: Sample =
+    PersistenceV2.globalConnect({ type: Sample, key: 'connect2', defaultCreator: () => new Sample() })!;
 
   build() {
-    Column({space: 5}) {
+    Column({ space: 5 }) {
       // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
       Text(`numProp: ${this.p.num}`)
         .onClick(() => {
@@ -1253,9 +1320,9 @@ struct Page1 {
         })
         .fontSize(30)
       // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
-      Text(`dataProp.id: ${this.p.V2.Id}`)
+      Text(`dataProp.id: ${this.p.V2.id}`)
         .onClick(() => {
-          this.p.V2.Id += 1;
+          this.p.V2.id += 1;
         })
         .fontSize(30)
     }
@@ -1280,17 +1347,23 @@ struct Page1 {
     - V2->V1的数据同步，可通过在\@ObservedV2装饰的class里声明Monitor，通过LocalStorage的API反向通知给V1状态变量。
 
 具体示例如下：
-```ts
+<!-- @[Internal_Gradual_Migration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalGradualMigration.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 let storage: LocalStorage = new LocalStorage();
 
 @ObservedV2
 class V1StorageData {
-  @Trace title: string = 'V1OldComponent'
+  @Trace public title: string = 'V1OldComponent';
 
   @Monitor('title')
   onStrChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
-      console.info(`${path} changed from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`)
+      hilog.info(DOMAIN, 'testTag', '%{public}s',
+        `${path} changed from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
       if (path === 'title') {
         storage.setOrCreate('title', this.title);
       }
@@ -1348,7 +1421,7 @@ struct NewV2Component {
 
 ## 其他迁移场景
 
-### 滑动组件
+### 滚动组件
 
 **List**
 
@@ -1359,8 +1432,9 @@ V1：
 在状态管理V1中，可以通过[\@State](./arkts-state.md)装饰观察其api调用。
 
 具体示例如下：
+<!-- @[Internal_Other_Migrations_List_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsListV1.ets) -->
 
-```ts
+``` TypeScript
 @Entry
 @Component
 struct ListExample {
@@ -1398,11 +1472,12 @@ struct ListExample {
 
 V2：
 
-在状态管理V2中，[\@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，而由于ChildrenMainSize定义在框架中，开发者无法使用[\@Trace](./arkts-new-observedV2-and-trace.md)来标注ChildrenMainSize的属性。可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
+在状态管理V2中，[\@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，而由于ChildrenMainSize定义在框架中，开发者无法使用[\@Trace](./arkts-new-observedV2-and-trace.md)来标注ChildrenMainSize的属性。可以使用[makeObserved](./arkts-new-makeObserved.md)替代。从API version 22开始，可以无需使用makeObserved，直接使用@Local标注的ChildrenMainSize设置List的子组件在主轴方向的大小信息。
 
 具体示例如下：
+<!-- @[Internal_Other_Migrations_List_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsListV2.ets) -->
 
-```ts
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @Entry
@@ -1455,7 +1530,9 @@ V1：
 
 具体示例如下：
 
-```ts
+<!-- @[Internal_Other_Migrations_WaterFlow_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsWaterFlowV1.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct WaterFlowSample {
@@ -1532,11 +1609,13 @@ struct WaterFlowSample {
 
 V2：
 
-在状态管理V2中，[\@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，由于WaterFlowSections定义在框架中，开发者无法使用[\@Trace](./arkts-new-observedV2-and-trace.md)标注其属性，此时可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
+在状态管理V2中，[\@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，由于WaterFlowSections定义在框架中，开发者无法使用[\@Trace](./arkts-new-observedV2-and-trace.md)标注其属性，此时可以使用[makeObserved](./arkts-new-makeObserved.md)替代。从API version 22开始，可以无需使用makeObserved，直接使用@Local标注的WaterFlowSections设置WaterFlow瀑布流分组信息。
 
 具体示例如下：
 
-```ts
+<!-- @[Internal_Other_Migrations_WaterFlow_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsWaterFlowV2.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @Entry
@@ -1626,9 +1705,11 @@ V1：
 
 具体示例如下：
 
-```ts
+<!-- @[Internal_attribute_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalattributeModifierV1.ets) -->
+
+``` TypeScript
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
-  isDark: boolean = false;
+  public isDark: boolean = false;
 
   applyNormalAttribute(instance: ButtonAttribute): void {
     if (this.isDark) {
@@ -1666,11 +1747,13 @@ V2：
 
 具体示例如下：
 
-```ts
+<!-- @[Internal_attribute_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalattributeModifierV2.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
-  isDark: boolean = false;
+  public isDark: boolean = false;
 
   applyNormalAttribute(instance: ButtonAttribute): void {
     if (this.isDark) {
@@ -1712,9 +1795,13 @@ V1：
 在状态管理V1中，可以通过[\@State](./arkts-state.md)装饰观察其变化。
 
 具体实例如下：
+<!-- @[Internal_Common_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalCommonModifierV1.ets) -->
 
-```ts
+``` TypeScript
 import { CommonModifier } from '@ohos.arkui.modifier';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 class MyModifier extends CommonModifier {
   applyNormalAttribute(instance: CommonAttribute): void {
@@ -1754,14 +1841,14 @@ struct Index {
       Button($r('app.string.EntryAbility_label'))
         .margin(10)
         .onClick(() => {
-          console.info('Modifier', 'onClick');
+          hilog.info(DOMAIN, 'testTag', 'Modifier', 'onClick');
           this.index++;
           if (this.index % 2 === 1) {
             (this.myModifier as MyModifier).setGroup1();
-            console.info('Modifier', 'setGroup1');
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup1');
           } else {
             (this.myModifier as MyModifier).setGroup2();
-            console.info('Modifier', 'setGroup2');
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup2');
           }
         })
 
@@ -1778,9 +1865,14 @@ V2：
 
 具体示例如下：
 
-```ts
+<!-- @[Internal_Common_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalCommonModifierV2.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 import { CommonModifier } from '@ohos.arkui.modifier';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 class MyModifier extends CommonModifier {
   applyNormalAttribute(instance: CommonAttribute): void {
@@ -1821,14 +1913,14 @@ struct Index {
       Button($r('app.string.EntryAbility_label'))
         .margin(10)
         .onClick(() => {
-          console.info('Modifier', 'onClick');
+          hilog.info(DOMAIN, 'testTag', 'Modifier', 'onClick');
           this.index++;
           if (this.index % 2 === 1) {
             (this.myModifier as MyModifier).setGroup1();
-            console.info('Modifier', 'setGroup1');
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup1');
           } else {
             (this.myModifier as MyModifier).setGroup2();
-            console.info('Modifier', 'setGroup2');
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup2');
           }
         })
 
@@ -1849,8 +1941,13 @@ V1：
 
 具体示例如下：
 
-```ts
+<!-- @[Internal_Module_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV1.ets) -->
+
+``` TypeScript
 import { TextModifier } from '@ohos.arkui.modifier';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 class MyModifier extends TextModifier {
   applyNormalAttribute(instance: TextModifier): void {
@@ -1881,14 +1978,14 @@ struct MyImage1 {
       Button($r('app.string.EntryAbility_label'))
         .margin(10)
         .onClick(() => {
-          console.info('Modifier', 'onClick');
+          hilog.info(DOMAIN, 'testTag', 'Modifier', 'onClick');
           this.index++;
           if (this.index % 2 === 1) {
             (this.modifier as MyModifier).setGroup1();
-            console.info('Modifier', 'setGroup1');
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup1');
           } else {
             (this.modifier as MyModifier).setGroup2();
-            console.info('Modifier', 'setGroup2');
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup2');
           }
         })
     }
@@ -1922,9 +2019,14 @@ V2：
 
 具体示例如下：
 
-```ts
+<!-- @[Internal_Module_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV2.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 import { TextModifier } from '@ohos.arkui.modifier';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 class MyModifier extends TextModifier {
   applyNormalAttribute(instance: TextModifier): void {
@@ -1955,14 +2057,14 @@ struct MyImage1 {
       Button($r('app.string.EntryAbility_label'))
         .margin(10)
         .onClick(() => {
-          console.info('Modifier', 'onClick');
+          hilog.info(DOMAIN, 'testTag', 'Modifier', 'onClick');
           this.index++;
           if (this.index % 2 === 1) {
             (this.modifier as MyModifier).setGroup1();
-            console.info('Modifier', 'setGroup1');
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup1');
           } else {
             (this.modifier as MyModifier).setGroup2();
-            console.info('Modifier', 'setGroup2');
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup2');
           }
         })
     }
@@ -1998,12 +2100,14 @@ V1：
 
 在状态管理V1中，开发者希望通过修改`MyButtonModifier`的`flag`来改变绑定在Button上的属性。由于状态管理V1的\@State装饰器支持自身及第一层对象属性的观察能力，因此只需用\@State装饰`AttributeUpdater`，即可监听其变化并触发属性更新。
 
-```ts
+<!-- @[Internal_Attribute_Updater_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAttributeUpdaterV1.ets) -->
+
+``` TypeScript
 // xxx.ets
 import { AttributeUpdater } from '@kit.ArkUI';
 
 class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
-  flag: boolean = false;
+  public flag: boolean = false;
 
   initializeModifier(instance: ButtonAttribute): void {
     instance.backgroundColor('#ff2787d9')
@@ -2046,13 +2150,15 @@ V2：
 
 与状态管理V1不同，状态管理V2的\@Local仅观察自身变化，因此`MyButtonModifier`需添加\@ObservedV2装饰器，`flag`需要被\@Trace装饰，并且需要在组件创建过程中读取`flag`以建立其与Button组件的联系。在`AttributeUpdater`场景中，需在`initializeModifier`中读取`flag`（如示例所示），否则无法建立关联。
 
-```ts
+<!-- @[Internal_Attribute_Updater_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAttributeUpdaterV2.ets) -->
+
+``` TypeScript
 // xxx.ets
 import { AttributeUpdater } from '@kit.ArkUI';
 
 @ObservedV2
 class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
-  @Trace flag: boolean = false;
+  @Trace public flag: boolean = false;
 
   initializeModifier(instance: ButtonAttribute): void {
     // initializeModifier会在组件初始化阶段回调，需要在这个地方触发下flag的读，使其建立Button组件的关联。

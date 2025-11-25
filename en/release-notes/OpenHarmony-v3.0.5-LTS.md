@@ -30,7 +30,7 @@ The DFX subsystem supports native crash information collection and device restar
 
 2. Register an SSH public key for access to Gitee.
 
-3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
+3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
    
    ```
    git config --global user.name "yourname"
@@ -41,7 +41,7 @@ The DFX subsystem supports native crash information collection and device restar
 4. Run the following commands to install the **repo** tool:
    
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -52,7 +52,7 @@ The DFX subsystem supports native crash information collection and device restar
 
 
 ```
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.5-LTS --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.5-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -61,7 +61,7 @@ repo forall -c 'git lfs pull'
 
 
 ```
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.5-LTS --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.5-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -100,7 +100,7 @@ This version does not involve API updates.
 
 ### Chip and Development Board Adaptation
 
-For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
+For details about the adaptation status, see [SIG_DevBoard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
 
 
 ## Resolved Issues
@@ -109,16 +109,16 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Issue No.| Description|
 | -------- | -------- |
-| [I4YBB0](https://gitee.com/openharmony/multimedia_camera_lite/issues/I4YBB0) | No image is generated and the recorded video cannot be played when the system camera is used to take a photo and record a video. This issue occurs only for the Hi3516D V300 development board running on a small-system device (Linux).|
-| [I4YB87](https://gitee.com/openharmony/multimedia_camera_lite/issues/I4YB87) | No image is generated when the system camera is used to take a photo. This issue occurs only for the Hi3516D V300 development board running on a small-system device (Linux).|
-| [I4YAGS](https://gitee.com/openharmony/multimedia_camera_lite/issues/I4YAGS?from=project-issue) | A blue screen is displayed when the system camera is accessed. This issue occurs only for the Hi3516D V300 development board running on a small-system device (Linux).|
-| [I59FZ7](https://gitee.com/openharmony/telephony_core_service/issues/I59FZ7) | Test cases of the telephony subsystem fail to run on standard-system devices.|
+| [I4YBB0](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I4YBB0) | No image is generated and the recorded video cannot be played when the system camera is used to take a photo and record a video. This issue occurs only for the Hi3516D V300 development board running on a small-system device (Linux).|
+| [I4YB87](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I4YB87) | No image is generated when the system camera is used to take a photo. This issue occurs only for the Hi3516D V300 development board running on a small-system device (Linux).|
+| [I4YAGS](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I4YAGS?from=project-issue) | A blue screen is displayed when the system camera is accessed. This issue occurs only for the Hi3516D V300 development board running on a small-system device (Linux).|
+| [I59FZ7](https://gitcode.com/openharmony/telephony_core_service/issues/I59FZ7) | Test cases of the telephony subsystem fail to run on standard-system devices.|
 | [I4Z2MI](https://gitcode.com/openharmony/xts_acts/issues/I4Z2MI) | All test cases of the actsWifiJSApiTest, ActsHotSpotJSApiTest, and ActsP2PJSApiTest modules fail to run on standard-system devices.|
 
 
 ## Fixed Security Vulnerabilities
 
-The following vulnerabilities are reported by the project teams. For details about the affected versions and patches released to fix the vulnerabilities, see [Security Vulnerability Disclosure](https://gitee.com/openharmony/security/tree/master/en/security-disclosure/2022).
+The following vulnerabilities are reported by the project teams. For details about the affected versions and patches released to fix the vulnerabilities, see [Security Vulnerability Disclosure](https://gitcode.com/openharmony/security/tree/master/en/security-disclosure/2022).
 
   Table 5 Fixed security vulnerabilities
 

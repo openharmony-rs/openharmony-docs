@@ -4,7 +4,7 @@
 <!--Owner: @Armstrong15-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 在页面范围内关闭通过[bindContextMenu](./ts-universal-attributes-menu.md#bindcontextmenu12)属性绑定的菜单。
 

@@ -7,6 +7,10 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct RawFile64 RawFile64
+```
+
 ## 概述
 
 提供对较大rawfile的访问功能。

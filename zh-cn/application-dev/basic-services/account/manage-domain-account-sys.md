@@ -90,17 +90,17 @@ let osAccountMgr = osAccount.getAccountManager();
     try {
       osAccountMgr.createOsAccountForDomain(osAccount.OsAccountType.NORMAL, domainInfo,
         (err: BusinessError, osAccountInfo: osAccount.OsAccountInfo)=>{
-          console.error(`createOsAccountForDomain exception: code is ${err.code}, message is ${err.message}`);
-          console.info('createOsAccountForDomain osAccountInfo:' + JSON.stringify(osAccountInfo));
-		// ···
+          if (err) {
+            console.error(`createOsAccountForDomain exception: code is ${err.code}, message is ${err.message}`);
+          } else {
+            console.info('createOsAccountForDomain osAccountInfo:' + JSON.stringify(osAccountInfo));
+          }
         });
     } catch (e) {
       const err = e as BusinessError;
-      console.error(`createOsAccountForDomain exception: code is ${e.code}, message is ${e.message}`);
-	// ···
+      console.error(`createOsAccountForDomain exception: code is ${err.code}, message is ${err.message}`);
     }
 ```
-
 
 ## 删除域账号
 

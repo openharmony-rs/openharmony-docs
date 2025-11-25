@@ -61,6 +61,10 @@
     - [使用SM4对称密钥（GCM模式）加解密(C/C++)](crypto-sm4-sym-encrypt-decrypt-gcm-ndk.md)
     - [使用SM4对称密钥（GCM模式）分段加解密(ArkTS)](crypto-sm4-sym-encrypt-decrypt-gcm-by-segment.md)
     - [使用SM4对称密钥（GCM模式）分段加解密(C/C++)](crypto-sm4-sym-encrypt-decrypt-gcm-by-segment-ndk.md)
+    - [使用ChaCha20对称密钥加解密(ArkTS)](crypto-chacha20-encrypt-decrypt.md)
+    - [使用ChaCha20对称密钥加解密(C/C++)](crypto-chacha20-encrypt-decrypt-ndk.md)
+    - [使用ChaCha20对称密钥（Poly1305模式）加解密(ArkTS)](crypto-chacha20-encrypt-decrypt-poly1305.md)
+    - [使用ChaCha20对称密钥（Poly1305模式）加解密(C/C++)](crypto-chacha20-encrypt-decrypt-poly1305-ndk.md)
     - [使用RSA非对称密钥（PKCS1模式）加解密(ArkTS)](crypto-rsa-asym-encrypt-decrypt-pkcs1.md)
     - [使用RSA非对称密钥（PKCS1模式）加解密(C/C++)](crypto-rsa-asym-encrypt-decrypt-pkcs1-ndk.md)
     - [使用RSA非对称密钥分段加解密(ArkTS)](crypto-rsa-asym-encrypt-decrypt-by-segment.md)
@@ -127,4 +131,4 @@
   - [使用SCRYPT进行密钥派生(ArkTS)](crypto-key-derivation-using-scrypt.md)
   - [使用SCRYPT进行密钥派生(C/C++)](crypto-key-derivation-using-scrypt-ndk.md)
   - [使用X963KDF进行密钥派生(ArkTS)](crypto-key-derivation-using-x963kdf.md)
-  - [使用X963KDF进行密钥派生(C/C++)](crypto-key-derivation-using-x963kdf-ndk.md)
+  - [使用X963KDF进行密钥派生(C/C++)](crypto-key-derivation-using-x963kdf-ndk.md)<!--RP1--><!--RP1End-->

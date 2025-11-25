@@ -421,11 +421,11 @@ The application does not implement the NotificationSubscriberExtensionAbility.
 
 **可能原因**
 
-应用未设置或未正确设置[NotificationSubscriberExtensionAbility](../apis-ability-kit/js-apis-application-NotificationSubscriberExtensionAbility.md)。
+应用未设置或未正确设置[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)。
 
 **处理步骤**
 
-应用需创建NotificationSubscriberExtensionAbility，具体配置方法参考[ExtensionAbility组件](../../application-models/extensionability-overview.md)中的[NotificationSubscriberExtensionAbility](../apis-ability-kit/js-apis-application-NotificationSubscriberExtensionAbility.md)。
+应用需创建NotificationSubscriberExtensionAbility，具体配置方法参考[ExtensionAbility组件](../../application-models/extensionability-overview.md)中的[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)。
 
 ## 1600024 未配置自定义铃声
 

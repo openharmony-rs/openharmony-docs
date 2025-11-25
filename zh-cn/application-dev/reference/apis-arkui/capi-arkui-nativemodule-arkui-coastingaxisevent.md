@@ -1,10 +1,14 @@
 # ArkUI_CoastingAxisEvent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_CoastingAxisEvent ArkUI_CoastingAxisEvent
+```
 
 ## 概述
 

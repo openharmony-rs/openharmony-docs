@@ -128,8 +128,8 @@
 | [void OH_Input_CancelInjection()](#oh_input_cancelinjection) | - | 取消事件注入并撤销授权。 |
 | [Input_Result OH_Input_RequestInjection(Input_InjectAuthorizeCallback callback)](#oh_input_requestinjection) | - | 当前应用申请注入权限，包括申请注入按键事件[OH_Input_InjectKeyEvent](capi-oh-input-manager-h.md#oh_input_injectkeyevent)、注入触屏输入事件[OH_Input_InjectTouchEvent](capi-oh-input-manager-h.md#oh_input_injecttouchevent)、注入鼠标事件[OH_Input_InjectMouseEvent](capi-oh-input-manager-h.md#oh_input_injectmouseevent)等注入操作的权限。 |
 | [Input_Result OH_Input_QueryAuthorizedStatus(Input_InjectionStatus* status)](#oh_input_queryauthorizedstatus) | - | 查询当前应用注入的权限状态。 |
-| [Input_AxisEvent* OH_Input_CreateAxisEvent(void)](#oh_input_createaxisevent) | - | 创建轴事件对象实例。 |
-| [Input_Result OH_Input_DestroyAxisEvent(Input_AxisEvent** axisEvent)](#oh_input_destroyaxisevent) | - | 销毁轴事件对象实例。 |
+| [Input_AxisEvent* OH_Input_CreateAxisEvent(void)](#oh_input_createaxisevent) | - | 创建轴事件对象。 |
+| [Input_Result OH_Input_DestroyAxisEvent(Input_AxisEvent** axisEvent)](#oh_input_destroyaxisevent) | - | 销毁轴事件对象。 |
 | [Input_Result OH_Input_SetAxisEventAction(Input_AxisEvent* axisEvent, InputEvent_AxisAction action)](#oh_input_setaxiseventaction) | - | 设置轴事件的动作。 |
 | [Input_Result OH_Input_GetAxisEventAction(const Input_AxisEvent* axisEvent, InputEvent_AxisAction *action)](#oh_input_getaxiseventaction) | - | 获取轴事件的动作。 |
 | [Input_Result OH_Input_SetAxisEventDisplayX(Input_AxisEvent* axisEvent, float displayX)](#oh_input_setaxiseventdisplayx) | - | 设置轴事件以指定屏幕左上角为原点的相对坐标系的X坐标。 |
@@ -163,8 +163,8 @@
 | [Input_Result OH_Input_RemoveKeyEventInterceptor(void)](#oh_input_removekeyeventinterceptor) | - | 移除按键事件拦截。 |
 | [Input_Result OH_Input_RemoveInputEventInterceptor(void)](#oh_input_removeinputeventinterceptor) | - | 移除输入事件拦截，包括鼠标、触屏和轴事件。 |
 | [Input_Result OH_Input_GetIntervalSinceLastInput(int64_t *timeInterval)](#oh_input_getintervalsincelastinput) | - | 获取距离上次系统输入事件的时间间隔。 |
-| [Input_Hotkey *OH_Input_CreateHotkey(void)](#oh_input_createhotkey) | - | 创建快捷键对象的实例。 |
-| [void OH_Input_DestroyHotkey(Input_Hotkey **hotkey)](#oh_input_destroyhotkey) | - | 销毁快捷键对象的实例。 |
+| [Input_Hotkey *OH_Input_CreateHotkey(void)](#oh_input_createhotkey) | - | 创建快捷键对象。 |
+| [void OH_Input_DestroyHotkey(Input_Hotkey **hotkey)](#oh_input_destroyhotkey) | - | 销毁快捷键对象。 |
 | [void OH_Input_SetPreKeys(Input_Hotkey *hotkey, int32_t *preKeys, int32_t size)](#oh_input_setprekeys) | - | 设置修饰键。 |
 | [Input_Result OH_Input_GetPreKeys(const Input_Hotkey *hotkey, int32_t **preKeys, int32_t *preKeyCount)](#oh_input_getprekeys) | - | 获取修饰键。 |
 | [void OH_Input_SetFinalKey(Input_Hotkey* hotkey, int32_t finalKey)](#oh_input_setfinalkey) | - | 设置被修饰键。 |
@@ -441,7 +441,7 @@ enum Input_Result
 | INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008 |  其它应用已经授权。<br>**起始版本：** 20。 |
 | INPUT_APP_NOT_FOCUSED = 3900009 |  当前应用不是焦点应用。<br>**起始版本：** 20。 |
 | INPUT_DEVICE_NO_POINTER = 3900010 |  无鼠标类输入外设。<br>**起始版本：** 20。 |
-
+| INPUT_INVALID_WINDOWID = 26500001 |  无效的窗口ID。<br>**起始版本：** 22。 |
 
 ## 函数说明
 
@@ -550,7 +550,7 @@ typedef void (*Input_DeviceAddedCallback)(int32_t deviceId)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t deviceId | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备id可能会发生变化。 |
+| int32_t deviceId | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
 
 ### Input_DeviceRemovedCallback()
 
@@ -569,7 +569,7 @@ typedef void (*Input_DeviceRemovedCallback)(int32_t deviceId)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t deviceId | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备id可能会发生变化。 |
+| int32_t deviceId | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
 
 ### Input_InjectAuthorizeCallback()
 
@@ -1689,7 +1689,7 @@ void OH_Input_SetTouchEventFingerId(struct Input_TouchEvent* touchEvent, int32_t
 | 参数项 | 描述 |
 | -- | -- |
 | struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
-| int32_t id | 触屏的手指ID。第一个手指碰到屏幕，id就是0，第二个手指碰到屏幕，id就是1，依次累加。 |
+| int32_t id | 触屏的手指ID。第一个手指碰到屏幕，ID就是0，第二个手指碰到屏幕，ID就是1，依次累加。 |
 
 ### OH_Input_GetTouchEventFingerId()
 
@@ -1716,7 +1716,7 @@ int32_t OH_Input_GetTouchEventFingerId(const struct Input_TouchEvent* touchEvent
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 触屏的手指ID。第一个手指碰到屏幕，id就是0，第二个手指碰到屏幕，id就是1，依次累加。 |
+| int32_t | 触屏的手指ID。第一个手指碰到屏幕，ID就是0，第二个手指碰到屏幕，ID就是1，依次累加。 |
 
 ### OH_Input_SetTouchEventDisplayX()
 
@@ -2039,7 +2039,7 @@ Input_AxisEvent* OH_Input_CreateAxisEvent(void)
 
 **描述**
 
-创建轴事件对象实例。
+创建轴事件对象。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -2059,7 +2059,7 @@ Input_Result OH_Input_DestroyAxisEvent(Input_AxisEvent** axisEvent)
 
 **描述**
 
-销毁轴事件对象实例。
+销毁轴事件对象。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -2623,6 +2623,8 @@ Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback)
 
 添加鼠标事件监听,包含鼠标点击，移动，不包含滚轮事件，滚轮事件归属于轴事件。
 
+该接口处于录屏场景时才允许调用，否则调用该接口不生效。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 **需要权限：** ohos.permission.INPUT_MONITORING
@@ -3015,7 +3017,7 @@ Input_Hotkey *OH_Input_CreateHotkey(void)
 
 **描述**
 
-创建快捷键对象的实例。
+创建快捷键对象。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -3035,7 +3037,7 @@ void OH_Input_DestroyHotkey(Input_Hotkey **hotkey)
 
 **描述**
 
-销毁快捷键对象的实例。
+销毁快捷键对象。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -3269,7 +3271,7 @@ Input_Result OH_Input_GetRepeat(const Input_Hotkey* hotkey, bool *isRepeat)
 | 参数项 | 描述 |
 | -- | -- |
 | const [Input_Hotkey](capi-input-input-hotkey.md)* hotkey | 快捷键对象的实例。 |
-| bool *isRepeat | isRepeat 返回Key事件是否重复。 |
+| bool *isRepeat | isRepeat 返回Key事件是否重复。true表示重复，false表示不重复。 |
 
 **返回：**
 
@@ -3455,7 +3457,7 @@ Input_Result OH_Input_GetDevice(int32_t deviceId, Input_DeviceInfo **deviceInfo)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t deviceId | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备id可能会发生变化。 |
+| int32_t deviceId | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
 | [Input_DeviceInfo](capi-input-input-deviceinfo.md) **deviceInfo | deviceInfo 指向输入设备信息[Input_DeviceInfo](capi-input-input-deviceinfo.md)的指针。 |
 
 **返回：**
@@ -3524,7 +3526,7 @@ Input_Result OH_Input_GetKeyboardType(int32_t deviceId, int32_t *keyboardType)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t deviceId | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备id可能会发生变化。 |
+| int32_t deviceId | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
 | int32_t *keyboardType | keyboardType 指向输入设备的键盘指针。 |
 
 **返回：**
@@ -3746,7 +3748,7 @@ Input_Result OH_Input_GetFunctionKeyState(int32_t keyCode, int32_t *state)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t keyCode | 功能键值。支持的功能键包含CapsLock键。 |
+| int32_t keyCode | 功能键值。目前仅支持CapsLock键，键值为1。 |
 | int32_t *state | state 功能键状态。0表示功能键关闭，1表示功能键打开。 |
 
 **返回：**
@@ -4588,6 +4590,7 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 **描述**
 
 设置自定义鼠标光标样式。
+应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
 
 **起始版本：** 22
 
@@ -4595,7 +4598,7 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t windowId | 窗口Id。取值范围为大于等于0的整数，仅支持传入当前窗口的光标样式，传入其他窗口id本接口可以运行成功但设置不生效。|
+| int32_t windowId | 窗口ID。取值范围为大于等于0的整数，仅支持传入当前窗口的光标样式。|
 | Input_CustomCursor* customCursor | 自定义鼠标光标资源[Input_CustomCursor](./capi-input-input-customcursor.md)。 |
 | Input_CursorConfig* cursorConfig | 自定义鼠标光标配置[Input_CursorConfig](./capi-input-input-cursorconfig.md)。 |
 
@@ -4603,7 +4606,7 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_SetCustomCursor的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br>   [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示设备不支持。<br> [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
+| [Input_Result](#input_result) | OH_Input_SetCustomCursor的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br> [INPUT_INVALID_WINDOWID](#input_result) 表示窗口ID无效。<br>   [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示设备不支持。<br> [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
 
 ### OH_Input_CursorInfo_Create()
 

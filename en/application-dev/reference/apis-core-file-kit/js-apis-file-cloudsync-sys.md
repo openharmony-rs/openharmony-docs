@@ -83,7 +83,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
-Unregisters all listeners for the device-cloud sync progress.
+Removes the specified callback from the device-cloud sync progress.
 
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC
 
@@ -127,7 +127,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 off(evt: 'progress'): void
 
-Unregisters all listeners for the device-cloud sync progress.
+Removes all callbacks from the device-cloud sync progress.
 
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC
 
@@ -414,7 +414,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
-Unregisters all listeners for the download progress event of a cloud file.
+Removes the specified callback from the device-cloud download progress.
 
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC
 
@@ -458,7 +458,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 off(evt: 'progress'): void
 
-Unregisters all listeners for the download progress event of a cloud file.
+Removes all callbacks from the device-cloud download progress.
 
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC
 

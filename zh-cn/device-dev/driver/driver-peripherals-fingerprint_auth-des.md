@@ -57,11 +57,11 @@
 
 - IDL接口
 
-  接口定义语言（Interface Definition Language）通过IDL编译器编译后，能够生成与编程语言相关的文件：客户端桩文件，服务器框架文件。本文主要是通过IDL接口生成的客户端和服务端来实现Fingerprint_auth服务和驱动的通信，详细使用方法可参考[IDL简介](https://gitee.com/openharmony/ability_idl_tool/blob/master/README.md)。
+  接口定义语言（Interface Definition Language）通过IDL编译器编译后，能够生成与编程语言相关的文件：客户端桩文件，服务器框架文件。本文主要是通过IDL接口生成的客户端和服务端来实现Fingerprint_auth服务和驱动的通信，详细使用方法可参考[IDL简介](https://gitcode.com/openharmony/ability_idl_tool/blob/master/README.md)。
 
 - IPC通信
 
-  IPC（Inter Process Communication），进程间通信是指两个进程的数据之间产生交互，详细原理可参考[IPC通信简介](https://gitee.com/openharmony/communication_ipc/blob/master/README_zh.md)。
+  IPC（Inter Process Communication），进程间通信是指两个进程的数据之间产生交互，详细原理可参考[IPC通信简介](https://gitcode.com/openharmony/communication_ipc/blob/master/README_zh.md)。
 
 - HDI
 
@@ -135,7 +135,7 @@ Fingerprint_auth驱动的主要工作是为上层用户认证框架和Fingerprin
 
 下面结合DEMO实例介绍驱动开发的具体步骤。
 
-1. Fingerprint_auth驱动是基于HDF驱动框架设计，所以开发者需要按照驱动Driver Entry程序，完成Fingerprint_auth驱动框架开发，主要由Bind、Init、Release、Dispatch函数接口实现。关键代码如下，详细代码请参见[fingerprint_auth_interface_driver.cpp](https://gitee.com/openharmony/drivers_peripheral/blob/master/fingerprint_auth/hdi_service/src/fingerprint_auth_interface_driver.cpp)文件。
+1. Fingerprint_auth驱动是基于HDF驱动框架设计，所以开发者需要按照驱动Driver Entry程序，完成Fingerprint_auth驱动框架开发，主要由Bind、Init、Release、Dispatch函数接口实现。关键代码如下，详细代码请参见[fingerprint_auth_interface_driver.cpp](https://gitcode.com/openharmony/drivers_peripheral/blob/master/fingerprint_auth/hdi_service/src/fingerprint_auth_interface_driver.cpp)文件。
 
    ```c++
    // 通过自定义的HdfFingerprintAuthInterfaceHost对象包含ioService对象和真正的HDI Service实现IRemoteObject对象
@@ -232,7 +232,7 @@ Fingerprint_auth驱动的主要工作是为上层用户认证框架和Fingerprin
    HDF_INIT(g_fingerprintAuthInterfaceDriverEntry);
    ```
 
-2. Fingerprint_auth驱动框架开发完成后，Fingerprint_auth驱动需要向Fingerprint_auth服务和统一身份认证注册执行器，所以需要实现获取执行器列表接口。关键代码如下，详细代码请参见[fingerprint_auth_interface_service.cpp](https://gitee.com/openharmony/drivers_peripheral/blob/master/fingerprint_auth/hdi_service/src/fingerprint_auth_interface_service.cpp)文件。
+2. Fingerprint_auth驱动框架开发完成后，Fingerprint_auth驱动需要向Fingerprint_auth服务和统一身份认证注册执行器，所以需要实现获取执行器列表接口。关键代码如下，详细代码请参见[fingerprint_auth_interface_service.cpp](https://gitcode.com/openharmony/drivers_peripheral/blob/master/fingerprint_auth/hdi_service/src/fingerprint_auth_interface_service.cpp)文件。
 
    ```c++
    // 执行器实现类
@@ -272,7 +272,7 @@ Fingerprint_auth驱动的主要工作是为上层用户认证框架和Fingerprin
    }
    ```
 
-3. 步骤1、2完成后基本实现了Fingerprint_auth驱动和Fingerprint_auth服务对接。接下来需实现执行器每个功能接口，来完成指纹认证基础能力。关键代码如下，详细代码请参见[all_in_one_executor_impl.cpp](https://gitee.com/openharmony/drivers_peripheral/blob/master/fingerprint_auth/hdi_service/src/all_in_one_executor_impl.cpp)文件。
+3. 步骤1、2完成后基本实现了Fingerprint_auth驱动和Fingerprint_auth服务对接。接下来需实现执行器每个功能接口，来完成指纹认证基础能力。关键代码如下，详细代码请参见[all_in_one_executor_impl.cpp](https://gitcode.com/openharmony/drivers_peripheral/blob/master/fingerprint_auth/hdi_service/src/all_in_one_executor_impl.cpp)文件。
 
    ```c++
    // 实现获取执行器信息接口

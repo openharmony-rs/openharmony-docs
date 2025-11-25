@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 <!--RP1-->
 User-Agent (UA) is a special string that contains key information such as the device type, operating system, and version. In web development, UA is used by the server to identify the source device of the request and its features, so that the server can provide custom content and services. If UAs cannot be correctly identified on a page, multiple exceptions may occur. For example, a page layout optimized for a mobile device may be displayed in disorder on a desktop device, and vice versa. In addition, some browser functionalities or CSS attributes are supported only in specific browser versions. If a page cannot successfully identify the UA, rendering problems or logic errors may occur.
 
@@ -48,9 +48,9 @@ User-Agent (UA) is a special string that contains key information such as the de
 ## Custom User-Agent Structure
 
 In the following example, [getUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getuseragent) is used to obtain the default **User-Agent** string, which you can modify or extend as needed.
+<!-- @[get_the_current_default_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_one.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -65,9 +65,10 @@ struct WebComponent {
         .onClick(() => {
           try {
             let userAgent = this.controller.getUserAgent();
-            console.log("userAgent: " + userAgent);
+            console.info('userAgent: ' + userAgent);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -81,9 +82,9 @@ In the following example, [setCustomUserAgent()](../reference/apis-arkweb/arkts-
 When **src** of the **Web** component is set to a URL, set **User-Agent** in **onControllerAttached**. For details, see the following example. Avoid setting the user agent in **onLoadIntercept**. Otherwise, the setting may fail occasionally. If **User-Agent** is not set in **onControllerAttached**, calling **setCustomUserAgent** may cause mismatches between the loaded page and the intended user agent.
 
 When **src** of the **Web** component is set to an empty string, call **setCustomUserAgent** to set **User-Agent** and then use **loadUrl** to load a specific page.
+<!-- @[set_up_a_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_two.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -97,15 +98,16 @@ struct WebComponent {
   build() {
     Column() {
       Web({ src: 'www.example.com', controller: this.controller })
-      .onControllerAttached(() => {
-        console.log("onControllerAttached");
-        try {
-          let userAgent = this.controller.getUserAgent() + this.customUserAgent;
-          this.controller.setCustomUserAgent(userAgent);
-        } catch (error) {
-          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-        }
-      })
+        .onControllerAttached(() => {
+          console.info('onControllerAttached');
+          try {
+            let userAgent = this.controller.getUserAgent() + this.customUserAgent;
+            this.controller.setCustomUserAgent(userAgent);
+          } catch (error) {
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
     }
   }
 }
@@ -114,47 +116,47 @@ struct WebComponent {
 Since API version 20, you can use the [setAppCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setappcustomuseragent20) API to set an application-level custom user agent or use the [setUserAgentForHosts()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setuseragentforhosts20) API to set an application-level custom user agent for a specific website. The custom user agent overwrites the system user agent and takes effect for all **Web** components in the application.
 
 It is recommended that you call the static API [getDefaultUserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getdefaultuseragent14) to obtain the default **User-Agent** string, then call **setAppCustomUserAgent** and **setUserAgentForHosts** to set the **User-Agent**, and then create a **Web** component with the specified **src** or load a specific page using **loadUrl**.
+<!-- @[set_app_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_four.ets) -->
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
+``` TypeScript
+import { webview } from '@kit.ArkWeb';    
+import { BusinessError } from '@kit.BasicServicesKit';    
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+@Entry    
+@Component    
+struct WebComponent {    
+  controller: webview.WebviewController = new webview.WebviewController();    
 
-  aboutToAppear(): void {
-    try {
-      webview.WebviewController.initializeWebEngine();
-      let defaultUserAgent = webview.WebviewController.getDefaultUserAgent();
-      let appUA = defaultUserAgent + " appUA";
-      webview.WebviewController.setAppCustomUserAgent(appUA);
-      webview.WebviewController.setUserAgentForHosts(
-        appUA,
-        [
-          "www.example.com",
-          "www.baidu.com"
-        ]
-      );
-    } catch (error) {
-      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-    }
-  }
+  aboutToAppear(): void {    
+    try {    
+      webview.WebviewController.initializeWebEngine();    
+      let defaultUserAgent = webview.WebviewController.getDefaultUserAgent();    
+      let appUA = defaultUserAgent + ' appUA';    
+      webview.WebviewController.setAppCustomUserAgent(appUA);    
+      webview.WebviewController.setUserAgentForHosts(    
+        appUA,    
+        [    
+          'www.example.com',    
+          'www.baidu.com'    
+        ]    
+      );    
+    } catch (error) {    
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);    
+    }    
+  }    
 
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
+  build() {    
+    Column() {    
+      Web({ src: 'www.example.com', controller: this.controller })    
+    }    
+  }    
 }
 ```
 
 In the following example, [getCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getcustomuseragent10) is used to obtain the custom user agent. 
+<!-- @[get_a_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_three.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -170,9 +172,10 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.userAgent = this.controller.getCustomUserAgent();
-            console.log("userAgent: " + this.userAgent);
+            console.info('userAgent: ' + this.userAgent);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -234,5 +237,5 @@ In Windows, macOS, and Linux, you can use the **User-Agent** rewriting capabilit
 
 ### How do I customize the User-Agent in OpenHarmony to implement HTML5 compatibility?
 
-OpenHarmony provides the [setCustomUserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10) API to customize the **User-Agent**. To adapt to the UA identifier detection (such as Mobile and Android) that mobile HTML5 pages usually depend on and ensure that the default UA information is not overwritten, you are advised to perform the following operations: First, obtain the default **User-Agent** string through the [setCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10) API. Then, append the custom identifier field required for HTML5 compatibility to the end of the string. Finally, call the **setCustomUserAgent** API to set the complete UA string.
+OpenHarmony provides the [setCustomUserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10) API to customize the **User-Agent**. To adapt to the UA identifier detection (such as Mobile and Android) that mobile HTML5 pages usually depend on and ensure that the default UA information is not overwritten, you are advised to perform the following operations: First, obtain the default **User-Agent** string through the [getDefaultUserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getdefaultuseragent14) API. Then, append the custom identifier field required for HTML5 compatibility to the end of the string. Finally, call the **setCustomUserAgent** API to set the complete UA string.
 <!--RP1End-->

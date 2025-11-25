@@ -22,39 +22,39 @@
 
 ## cl.bundlemanager.3 包管理ApplicationInfo结构体中删除split字段。
 
-包管理[ApplicationInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts)结构体中删除split字段。
+包管理[ApplicationInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts)结构体中删除split字段。
 
 **变更影响**<br>
 使用之前已发布的API 9各beta版本且使用到了split的，会编译失败。
 
 **关键的接口/组件变更**<br>
-包管理[ApplicationInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts)结构体中删除split字段。
+包管理[ApplicationInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts)结构体中删除split字段。
 
 **适配指导**<br>
 删除ApplicationInfo结构体中的split字段。目前元服务中stage模型强制分包，不支持不分包。
 
 ## cl.bundlemanager.4 包管理HapModuleInfo结构体中删除atomicServiceModuleType字段。
 
-包管理[HapModuleInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)结构体中删除atomicServiceModuleType字段。
+包管理[HapModuleInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)结构体中删除atomicServiceModuleType字段。
 
 **变更影响**<br>
 使用之前已发布的API 9各beta版本且使用到了atomicServiceModuleType的，会编译失败。
 
 **关键的接口/组件变更**<br>
-包管理[HapModuleInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)结构体中删除atomicServiceModuleType字段。
+包管理[HapModuleInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)结构体中删除atomicServiceModuleType字段。
 
 **适配指导**<br>
-删除[HapModuleInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)结构体中的atomicServiceModuleType字段。判断atomicServiceModuleType字段的部分，用[HapModuleInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)结构体中的moduleType代替。
+删除[HapModuleInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)结构体中的atomicServiceModuleType字段。判断atomicServiceModuleType字段的部分，用[HapModuleInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)结构体中的moduleType代替。
 
 ## cl.bundlemanager.5 包管理删除AtomicServiceModuleType枚举值。
 
-包管理[HapModuleInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)结构体中删除atomicServiceModuleType字段。
+包管理[HapModuleInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)结构体中删除atomicServiceModuleType字段。
 
 **变更影响**<br>
 使用之前已发布的API 9各beta版本且使用到了atomicServiceModuleType的，会编译失败。
 
 **关键的接口/组件变更**<br>
-包管理[HapModuleInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)结构体中删除atomicServiceModuleType字段。
+包管理[HapModuleInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)结构体中删除atomicServiceModuleType字段。
 
 **适配指导**<br>
-删除[HapModuleInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)结构体中的atomicServiceModuleType字段。判断atomicServiceModuleType字段的部分，用[HapModuleInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)结构体中的moduleType代替。
+删除[HapModuleInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)结构体中的atomicServiceModuleType字段。判断atomicServiceModuleType字段的部分，用[HapModuleInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)结构体中的moduleType代替。

@@ -1531,7 +1531,7 @@ Enumerates the response headers sent by the server.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-|  [k:string]  | string \| string[] \| undefined | Yes  | Key-value pairs. The key can be any character string and the value can be any character string, character array, or **undefined**.|
+|  [k:string]  | string \| string[] \| undefined | No  | Key-value pairs. The key can be any character string and the value can be any character string, character array, or **undefined**.|
 
 ## Result Codes for Connection Closing
 

@@ -13,6 +13,7 @@
   - [@ohos.enterprise.bluetoothManager (Bluetooth Management)](js-apis-enterprise-bluetoothManager.md)
   - [@ohos.enterprise.browser (Browser Management)](js-apis-enterprise-browser.md)
   - [@ohos.enterprise.bundleManager (Bundle Management)](js-apis-enterprise-bundleManager.md)
+  - [@ohos.enterprise.common (Common Module)](js-apis-enterprise-common.md)
   - [@ohos.enterprise.deviceControl (Device Control Management)](js-apis-enterprise-deviceControl.md)
   - [@ohos.enterprise.deviceInfo (Device Information Management)](js-apis-enterprise-deviceInfo.md)
   - [@ohos.enterprise.deviceSettings (Device Settings Management)](js-apis-enterprise-deviceSettings.md)

@@ -63,6 +63,8 @@
 > 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见[API文档](../../reference/apis-asset-store-kit/js-apis-asset.md)。
 >
 > 在指定群组中更新一条关键资产的使用示例详见[更新群组关键资产](asset-js-group-access-control.md#更新群组关键资产)。
+>
+> 在更新前，需确保已有关键资产，可参考[指南文档](asset-js-add.md)新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
 
 更新别名是demo_alias的关键资产，将关键资产明文更新为demo_pwd_new，附属属性更新成demo_label_new。
 

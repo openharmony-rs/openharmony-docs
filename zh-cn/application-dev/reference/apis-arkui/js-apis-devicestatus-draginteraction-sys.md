@@ -71,7 +71,7 @@ on(type: 'drag', callback: Callback\<DragState>): void
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **示例：**
@@ -109,7 +109,7 @@ off(type: 'drag', callback?: Callback\<DragState>): void
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **示例：**
@@ -164,7 +164,7 @@ getDataSummary(): Array\<Summary>
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -195,7 +195,7 @@ setDragSwitchState(enabled: boolean): void
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -226,7 +226,7 @@ setAppDragSwitchState(enabled: boolean, bundleName: string): void
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **示例：**

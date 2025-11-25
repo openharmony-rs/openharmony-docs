@@ -48,6 +48,7 @@ The **params** attribute in the event information is described as follows.
 | memory | object | Memory information. For details, see **memory**.|
 | external_log<sup>12+</sup> | string[] | Path of the error log file. If the directory files exceed the threshold (for details, see **log_over_limit**), new log files may fail to be written. Therefore, delete the log files immediately after they are processed.|
 | log_over_limit<sup>12+</sup> | boolean | Whether the size of generated fault log files and existing log files exceeds the upper limit (5 MB). The value **true** indicates that the upper limit is exceeded and logs fail to be written. The value **false** indicates that the upper limit is not exceeded.|
+| process_life_time | number | Lifetime of the faulty process.<br>**Note**: This parameter is supported since API version 22.|
 
 ### exception
 
@@ -72,9 +73,11 @@ Native frame
 | -------- | -------- | -------- |
 | symbol | string | Function name. If the name length exceeds 256 bytes, the name is deleted to prevent unknown issues.|
 | file | string | File name.|
-| buildId | string | Unique file ID. The file may not contain **buildId**. For details, see [Log Specifications](cppcrash-guidelines.md#common-faults).|
+| buildId | string | Unique file ID. The file may not contain **buildId**.|
 | pc | string | Hexadecimal byte offset of the executed instruction within the file.|
 | offset | number | Byte offset of the executed instruction within the function.|
+
+For details, see [Call stack frame](cppcrash-guidelines.md#common-faults).
 
 JS frame
 
@@ -84,7 +87,9 @@ JS frame
 | packageName | string | Package name of the module.|
 | symbol | string | Function name.|
 | line | number | Code line number.|
-| column | number | Code line number.|
+| column | number | Code column number.|
+
+For details, see [JS hybrid stack frame](cppcrash-guidelines.md#common-faults).
 
 ### memory
 
@@ -96,6 +101,8 @@ JS frame
 | sys_free_mem | number | Size of free memory, in KB.|
 | sys_avail_mem | number | Size of available memory, in KB.|
 | sys_total_mem | number | Total memory size, in KB.|
+| vm_heap_total_size | number | Total heap memory size of the main VM, in KB.<br>**Note**: This parameter is supported since API version 22.|
+| vm_heap_used_size | number | Size of the live objects in the main VM during its lifecycle, in KB.<br>**Note**: This parameter is supported since API version 22.|
 
 ## Customizing Parameters for Application Freeze Events
 

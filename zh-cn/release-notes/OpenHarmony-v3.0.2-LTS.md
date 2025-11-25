@@ -23,11 +23,11 @@
 
 ### 通过repo获取
 
-**方式一（推荐）**：通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+**方式一（推荐）**：通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 
 ```
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.2-LTS --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.2-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -36,7 +36,7 @@ repo forall -c 'git lfs pull'
 
 
 ```
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.2-LTS --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.2-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -72,7 +72,7 @@ repo forall -c 'git lfs pull'
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 
 ## 修复缺陷列表
@@ -84,30 +84,30 @@ repo forall -c 'git lfs pull'
 | [I4UZ7U](https://gitcode.com/openharmony/xts_acts/issues/I4UZ7U?from=project-issue) | 小型系统执行XTS测试时概率有35条失败项 |
 | [I4V2DN](https://gitcode.com/openharmony/xts_acts/issues/I4V2DN?from=project-issue) | ActsLwipTest模块测试中存在两条用例执行超时的失败 |
 | [I4V3KC](https://gitcode.com/openharmony/xts_acts/issues/I4V3KC?from=project-issue) | 分布式调度子系统testPublish0010测试用例执行失败 |
-| [I4URGA](https://gitee.com/openharmony/applications_sample_camera/issues/I4URGA?from=project-issue) | 设置界面搜WLAN信号时概率出现蓝屏 |
+| [I4URGA](https://gitcode.com/openharmony/applications_sample_camera/issues/I4URGA?from=project-issue) | 设置界面搜WLAN信号时概率出现蓝屏 |
 | I4SDCK | 小型系统HI&nbsp;3516&nbsp;GetSrcPath&nbsp;/GetDataPath&nbsp;获取路径为空或者乱码 |
-| [I4T6KZ](https://gitee.com/openharmony/communication_dsoftbus/issues/I4T6KZ) | 测试传输相关用例时在&nbsp;SendMessage&nbsp;SendData4Data处失败 |
+| [I4T6KZ](https://gitcode.com/openharmony/communication_dsoftbus/issues/I4T6KZ) | 测试传输相关用例时在&nbsp;SendMessage&nbsp;SendData4Data处失败 |
 | I4UOUS | Hi3516小型系统&nbsp;串口界面的回显日志打印了明文密码 |
-| [I4OWZO](https://gitee.com/openharmony/third_party_toybox/issues/I4OWZO) | toybox&nbsp;mv命令移动nfs路径下的文件出现异常提示 |
-| [I4NCSF](https://gitee.com/openharmony/graphic_ui/issues/I4NCSF) | 图形子系统UI模块，直线型指针无法实时刷新 |
-| [I4NU92](https://gitee.com/openharmony/communication_wifi/issues/I4NU92) | Hi3516&nbsp;Linux&nbsp;ActsLwipTest.bin测试套测试存在一条失败项 |
-| [I4NVCK](https://gitee.com/openharmony/applications_sample_camera/issues/I4NVCK) | audio&nbsp;capture无法正常运行 |
-| [I4NESQ](https://gitee.com/openharmony/kernel_liteos_a/issues/I4NESQ) | los_disk_cache_clear有条件编译错误 |
-| [I4O67U](https://gitee.com/openharmony/kernel_liteos_a/issues/I4O67U) | 修复Ctrl+C会终止所有进程的问题 |
-| [I4R4D3](https://gitee.com/openharmony/kernel_liteos_m/issues/I4R4D3) | pthread_create创建的线程未设置detach属性，主动退出后，OsGetAllTskInfo调用后，相关的任务名为乱码 |
-| [I4R4A5](https://gitee.com/openharmony/kernel_liteos_m/issues/I4R4A5) | pthread_cond_timedwait接口实现存在计算溢出的问题 |
-| [I4QJT4](https://gitee.com/openharmony/drivers_adapter_khdf_linux/issues/I4QJT4) | 修复UartRead&nbsp;test&nbsp;case&nbsp;失败问题 |
+| [I4OWZO](https://gitcode.com/openharmony/third_party_toybox/issues/I4OWZO) | toybox&nbsp;mv命令移动nfs路径下的文件出现异常提示 |
+| [I4NCSF](https://gitcode.com/openharmony/graphic_ui/issues/I4NCSF) | 图形子系统UI模块，直线型指针无法实时刷新 |
+| [I4NU92](https://gitcode.com/openharmony/communication_wifi/issues/I4NU92) | Hi3516&nbsp;Linux&nbsp;ActsLwipTest.bin测试套测试存在一条失败项 |
+| [I4NVCK](https://gitcode.com/openharmony/applications_sample_camera/issues/I4NVCK) | audio&nbsp;capture无法正常运行 |
+| [I4NESQ](https://gitcode.com/openharmony/kernel_liteos_a/issues/I4NESQ) | los_disk_cache_clear有条件编译错误 |
+| [I4O67U](https://gitcode.com/openharmony/kernel_liteos_a/issues/I4O67U) | 修复Ctrl+C会终止所有进程的问题 |
+| [I4R4D3](https://gitcode.com/openharmony/kernel_liteos_m/issues/I4R4D3) | pthread_create创建的线程未设置detach属性，主动退出后，OsGetAllTskInfo调用后，相关的任务名为乱码 |
+| [I4R4A5](https://gitcode.com/openharmony/kernel_liteos_m/issues/I4R4A5) | pthread_cond_timedwait接口实现存在计算溢出的问题 |
+| [I4QJT4](https://gitcode.com/openharmony/drivers_adapter_khdf_linux/issues/I4QJT4) | 修复UartRead&nbsp;test&nbsp;case&nbsp;失败问题 |
 | I4U1DM | samgr&nbsp;的&nbsp;QUEUE_Pop&nbsp;函数在调用&nbsp;LFQUE_Pop&nbsp;函数时未加锁，存在潜在的数据竞争 |
 
   **表4** 标准系统解决的缺陷ISSUE列表
 
 | ISSUE单号 | 问题描述 |
 | -------- | -------- |
-| [I4UJNU](https://gitee.com/openharmony/applications_settings/issues/I4UJNU) | 通过设置连接WLAN时，WLAN密码在hilog日志中明文打印 |
+| [I4UJNU](https://gitcode.com/openharmony/applications_settings/issues/I4UJNU) | 通过设置连接WLAN时，WLAN密码在hilog日志中明文打印 |
 | [I4MSWM](https://gitcode.com/openharmony/xts_acts/issues/I4MSWM?from=project-issue) | XT测试执行测试ActsFaultLoggerTest模块faultloggertest用例时有1条失败项 |
 | [I4MSVV](https://gitcode.com/openharmony/xts_acts/issues/I4MSVV?from=project-issue) | XTS测试执行测试ActsHiCollieCppTest模块HiCollieCppTest用例时有3条失败项 |
 | I4PPXV | 打开应用后再退出到桌面，桌面应用图标丢失 |
-| [I4OF9A](https://gitee.com/openharmony/distributeddatamgr_file/issues/I4OF9A?from=project-issue) | file.readText接口读取的text值不稳定 |
+| [I4OF9A](https://gitcode.com/openharmony/distributeddatamgr_file/issues/I4OF9A?from=project-issue) | file.readText接口读取的text值不稳定 |
 | [I4OWWM](https://gitcode.com/openharmony/xts_acts/issues/I4OWWM) | WeekPluralNumbertest模块对应json文件配置问题，执行用例时报"required&nbsp;device&nbsp;does&nbsp;not&nbsp;exist"导致此测试套无法执行 |
 | [I4OUVQ](https://gitcode.com/openharmony/xts_tools/issues/I4OUVQ?from=project-issue) | XTS&nbsp;JS用例反复压力测试过程中系统卡死，无法进行测试 |
 | [I4NMXQ](https://gitcode.com/openharmony/xts_acts/issues/I4NMXQ?from=project-issue) | XTS执行storagefileioperformancejstest和storagefilestabilityjstest测试套无法执行起来 |

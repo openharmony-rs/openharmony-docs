@@ -4,10 +4,10 @@
 <!--Owner: @fengluochenai-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
-子标题，用于列表项顶部，将该组列表划分为一个区块，子标题名称用来概括该区块内容。也可以用于内容项顶部，子标题名称用来概括该区块内容。
+子标题，用于列表项或内容项顶部，将该列表或内容划分为一个区块，子标题名称用来概括该区块内容。
 
 该组件基于[状态管理V2](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理V1](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理V2增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理V2，开发者可以通过该组件更灵活地控制子标题的数据和状态，实现更高效的用户界面刷新。
 
@@ -17,6 +17,7 @@
 >
 > - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 如果SubHeaderV2设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SubHeaderV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SubHeaderV2设置通用属性和通用事件。
 
 
 ## 导入模块
@@ -29,10 +30,6 @@ import { SubHeaderV2 } from '@kit.ArkUI';
 ## 子组件
 
 无
-
-## 属性
-
-不支持[通用属性](ts-component-general-attributes.md)。
 
 ## SubHeaderV2
 
@@ -57,10 +54,10 @@ titleBuild?: SubHeaderV2TitleBuilder;
 
 | 名称 | 类型                                                      | 必填 | 装饰器类型 | 说明                                     |
 | -------- |---------------------------------------------------------| -------- | -------- |----------------------------------------|
-| icon| [SubHeaderV2IconType](#subheaderv2icontype)             | 否 | @Param | 图标设置项。<br />默认值：undefined              |
+| icon| [SubHeaderV2IconType](#subheaderv2icontype)             | 否 | @Param | 图标设置项。<br />默认值：undefined<br/>当title使用secondaryTitle属性时，设置icon属性才会生效。              |
 | title| [SubHeaderV2Title](#subheaderv2title)                   | 否 | @Param| 标题设置项。<br />默认值：undefined              |
 | select| [SubHeaderV2Select](#subheaderv2select)                 | 否 | @Param | select内容以及事件。<br />默认值：undefined       |
-| operationType | [SubHeaderV2OperationType](#subheaderv2operationtype)   | 否 | @Param| 操作区元素样式。<br />默认值：OperationType.BUTTON |
+| operationType | [SubHeaderV2OperationType](#subheaderv2operationtype)   | 否 | @Param| 操作区元素样式。<br />默认值：SubHeaderV2OperationType.BUTTON |
 | operationItems | [SubHeaderV2OperationItem](#subheaderv2operationitem)[] | 否 | @Param| 操作区的设置项。<br />默认值：undefined            |
 | titleBuilder | [SubHeaderV2TitleBuilder](#subheaderv2titlebuilder)                            | 否 | @BuilderParam | 自定义标题区内容。<br />默认值：() => void          |
 
@@ -82,7 +79,7 @@ type SubHeaderV2IconType = ResourceStr | SymbolGlyphModifier
 | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | Symbol类型，用于定义Symbol图标。 |
 
 ## SubHeaderV2Title
-标题设置项
+标题设置项。
 
 **装饰器类型：** @ObservedV2
 
@@ -96,7 +93,7 @@ type SubHeaderV2IconType = ResourceStr | SymbolGlyphModifier
 
 | 名称 | 类型 | 只读 | 可选 | 说明                           |
 | -------- | -------- |---|----|------------------------------|
-| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 标题内容。<br />默认值：undefined<br/>装饰器类型：@Trace                        |
+| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 标题内容。<br />当[SubHeaderV2](#subheaderv2-1)中同时使用primaryTitle、secondaryTitle、icon属性时，设置primaryTitle属性不生效。<br />默认值：undefined<br/>装饰器类型：@Trace                       |
 | secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 副标题内容。<br />默认值：undefined<br/>装饰器类型：@Trace                       |
 | primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否 | 是  | 设置标题文本属性，如设置标题颜色、字体大小、字重等。<br />默认值：undefined<br/>装饰器类型：@Trace |
 | secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否 | 是  | 设置副标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined<br/>装饰器类型：@Trace |
@@ -266,7 +263,7 @@ type SubHeaderV2OperationItemType = ResourceStr | SymbolGlyphModifier
 | content |  [SubHeaderV2OperationItemType](#subheaderv2operationitemtype)  | 否 | 否 | 操作区元素内容。<br/>装饰器类型：@Trace                                                                                                                                                                                                                                        |
 | action | [SubHeaderV2OperationItemAction](#subheaderv2operationitemaction)| 否 | 是 | 操作区事件。默认值：() => void。<br/>装饰器类型：@Trace                                                                                                                                                                                                                           |
 | accessibilityText |[ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题右侧icon图标无障碍描述。 <br />默认值：undefined<br/>装饰器类型：@Trace                                                                                                                                                                                                           |
-| accessibilityLevel | string | 否 | 是 | 子标题右侧icon图标无障碍重要性。<br/>支持的值为：<br/>"auto"：当前子标题右侧icon图标由无障碍分组服务和ArkUl进行综合判断是否可被无障碍辅助服务所识别。<br/>"yes"：当前子标题右侧icon图标可被无障碍辅助服务所识别。<br/>"no"：当前子标题右侧icon图标不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前子标题右侧icon图标及其所有子组件不可被无障碍辅助服务所识别。<br>默认值: “yes”。<br/>装饰器类型：@Trace | 
+| accessibilityLevel | string | 否 | 是 | 子标题右侧icon图标无障碍重要性。<br/>支持的值为：<br/>"auto"：当前子标题右侧icon图标由无障碍分组服务和ArkUI进行综合判断是否可被无障碍辅助服务所识别。<br/>"yes"：当前子标题右侧icon图标可被无障碍辅助服务所识别。<br/>"no"：当前子标题右侧icon图标不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前子标题右侧icon图标及其所有子组件不可被无障碍辅助服务所识别。<br>默认值: “yes”。<br/>装饰器类型：@Trace | 
 | accessibilityDescription|[ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题右侧icon图标无障碍说明，用于为用户进一步说明当前组件。<br>默认值：“单指双击即可执行”。<br/>装饰器类型：@Trace                                                                                                                                                                                             |
 | defaultFocus | boolean | 否 | 是 | 子标题右侧按钮是否为默认焦点。<br/>true：子标题右侧按钮是默认焦点。<br/>false：子标题右侧按钮不是默认焦点。<br />默认值：false<br/>装饰器类型：@Trace                                                                                                                                                                  |
 
@@ -316,7 +313,7 @@ type SubHeaderV2OperationItemAction = () => void
 | content                  | [SubHeaderV2OperationItemType](#subheaderv2operationitemtype) | 否 | 否 | 文本内容。                                                                                                                                                                                                                                           |
 | action                   | [SubHeaderV2OperationItemAction](#subheaderv2operationitemaction)         | 否 | 是 | 选项操作事件。默认值：() => void。                                                                                                                                                                                                                          |
 | accessibilityText        | [ResourceStr](ts-types.md#resourcestr)      | 否 | 是 | 子标题右侧icon图标无障碍描述。<br />默认值：undefined                                                                                                                                                                                                            |
-| accessibilityLevel       | string | 否 | 是 | 子标题右侧icon图标无障碍重要性。<br/>支持的值为：<br/>"auto"：当前子标题右侧icon图标由无障碍分组服务和ArkUl进行综合判断是否可被无障碍辅助服务所识别。<br/>"yes"：当前子标题右侧icon图标可被无障碍辅助服务所识别。<br/>"no"：当前子标题右侧icon图标不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前子标题右侧icon图标及其所有子组件不可被无障碍辅助服务所识别。<br>默认值: “yes”。 | 
+| accessibilityLevel       | string | 否 | 是 | 子标题右侧icon图标无障碍重要性。<br/>支持的值为：<br/>"auto"：当前子标题右侧icon图标由无障碍分组服务和ArkUI进行综合判断是否可被无障碍辅助服务所识别。<br/>"yes"：当前子标题右侧icon图标可被无障碍辅助服务所识别。<br/>"no"：当前子标题右侧icon图标不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前子标题右侧icon图标及其所有子组件不可被无障碍辅助服务所识别。<br>默认值: “yes”。 | 
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)      | 否 | 是 | 子标题右侧icon图标无障碍说明，用于为用户进一步说明当前组件。<br>默认值：“单指双击即可执行”。                                                                                                                                                                                             |
 | defaultFocus | boolean | 否 | 是 | 子标题右侧按钮是否为默认焦点。<br/>true：子标题右侧按钮是默认焦点。<br/>false：子标题右侧按钮不是默认焦点。<br />默认值：false                                                                                                                                                                  |
 

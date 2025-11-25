@@ -58,8 +58,9 @@ Obtains the **ResourceManager** object of this application. This API uses an asy
 **Example**
 <!--code_no_check_fa-->
   ```js
-import  resourceManager  from '@ohos.resourceManager';
+import resourceManager from '@ohos.resourceManager';
 // Use this method to import the module in the FA model.
+
 export default {
     onCreate() {
         resourceManager.getResourceManager((error, mgr) => {
@@ -101,11 +102,12 @@ Obtains the **ResourceManager** object of the specified application. This API us
 **Example**
 <!--code_no_check_fa-->
   ```js
-import  resourceManager  from '@ohos.resourceManager';
+import resourceManager from '@ohos.resourceManager';
 // Use this method to import the module in the FA model.
 
 // Replace 'com.example.testapp' with the actual application package name.
 const BUNDLE_NAME = 'com.example.testapp';
+
 export default {
     onCreate() {
         resourceManager.getResourceManager(BUNDLE_NAME, (error, mgr) => {
@@ -147,6 +149,7 @@ Obtains the **ResourceManager** object of this application. This API uses a prom
   ```js
 import resourceManager from '@ohos.resourceManager';
 // Use this method to import the module in the FA model.
+
 export default {
     onCreate() {
         resourceManager.getResourceManager().then(resMgr => {
@@ -3078,6 +3081,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3169,6 +3173,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3246,6 +3251,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3311,6 +3317,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3370,6 +3377,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // Replace 'app.color.test' with the actual resource.
@@ -3433,6 +3441,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // Replace 'app.color.test' with the actual resource.
@@ -3492,6 +3501,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // Replace "test" with the actual resource.
@@ -3555,6 +3565,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // Replace "test" with the actual resource.
@@ -3605,6 +3616,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3649,6 +3661,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3704,6 +3717,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3761,6 +3775,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3812,6 +3827,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // Passing "" means to obtain the list of files in the root directory (that is, /rawfile). Assume that the test.txt file exists in the root directory.
@@ -3867,6 +3883,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // Passing "" means to obtain the list of files in the root directory (that is, /rawfile). Assume that the test.txt file exists in the root directory.
@@ -3922,6 +3939,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3971,6 +3989,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -4033,6 +4052,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -4131,6 +4151,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
@@ -4188,6 +4209,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
@@ -4224,6 +4246,7 @@ Obtains the device configuration. This API returns the result synchronously.
 **Example**
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {

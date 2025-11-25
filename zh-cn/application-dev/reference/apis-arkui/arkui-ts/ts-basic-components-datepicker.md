@@ -4,7 +4,7 @@
 <!--Owner: @luoying_ace_admin-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 滑动选择日期的组件。
 
@@ -343,6 +343,10 @@ onDateChange(callback: Callback\<Date>)
 onDateChange(callback: Optional\<Callback\<Date>>)
 
 滑动DatePicker文本内容后，选项完全归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。与[onDateChange<sup>10+</sup>](#ondatechange10)相比，callback参数新增了对undefined类型的支持。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 

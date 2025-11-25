@@ -30,7 +30,7 @@ ImageSpan(value: ResourceStr | PixelMap)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)  | Yes| Image source. Both local and online images are supported.<br>When using an image referenced using a relative path, for example, **ImageSpan("common/test.jpg")**, the **ImageSpan** component cannot be called across bundles or modules. Therefore, you are advised to use **\$r** to reference image resources that need to be used globally.<br>\- The supported formats include PNG, JPG, BMP, SVG, GIF, and HEIF.<br>\- Base64 strings are supported. The value format is data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], where *[base64 data]* is a Base64 string.<br>\- Character string prefixed with file://data/storage, which is used to read image resources in the file folder in the application installation directory. Ensure that the application has the read permission to the files in the specified path.|
+| value | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)  | Yes| Image source. Both local and network images are supported.<br>When using an image referenced using a relative path, for example, **ImageSpan("common/test.jpg")**, the **ImageSpan** component cannot be called across bundles or modules. Therefore, you are advised to use **\$r** to reference image resources that need to be used globally.<br>\- The supported formats include PNG, JPG, BMP, SVG, GIF, and HEIF.<br>\- Base64 strings are supported. The value format is data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], where *[base64 data]* is a Base64 string.<br>\- Character string prefixed with file://data/storage, which is used to read image resources in the file folder in the application installation directory. Ensure that the application has the read permission to the files in the specified path.|
 
 
 ## Attributes
@@ -105,7 +105,7 @@ Sets the color filter for the image.
 
 supportSvg2(enable: Optional\<boolean>)
 
-Enables or disables the new SVG parsing capability (ts-image-svg2-capabilities.md). After this function is enabled, the display effect of related SVG images changes.
+Sets whether to enable [enhanced SVG parsing](ts-image-svg2-capabilities.md). When this feature is enabled, SVG image rendering behavior changes accordingly.
 
 After the **ImageSpan** component is created, the value of this attribute cannot be dynamically changed.
 
@@ -117,7 +117,7 @@ After the **ImageSpan** component is created, the value of this attribute cannot
 
 | Name| Type                                                    | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enable  | Optional\<boolean> | Yes  | Controls whether to enable the new SVG parsing capability (ts-image-svg2-capabilities.md).<br>true: The new SVG parsing capability is supported. false: The original SVG parsing capability is retained.<br>Default value: **false**.|
+| enable  | Optional\<boolean> | Yes  | Whether to enable [enhanced SVG parsing](ts-image-svg2-capabilities.md).<br>**true**: Enable enhanced SVG parsing. **false**: Use original SVG parsing.<br>Default value: **false**.|
 
 ## Events
 
@@ -173,7 +173,7 @@ Defines the callback triggered when the image is successfully loaded or decoded.
 
 ## ImageLoadResult<sup>12+</sup>
 
-Object returned after the callback is triggered when an image is successfully loaded or decoded.
+Describes the object returned after the callback is triggered when an image is successfully loaded or decoded.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -351,7 +351,7 @@ struct SpanExample {
 
 ### Example 5: Setting a Placeholder Image
 
-From API version 12 onwards, the [alt](#alt12) attribute in this sample shows the effect of setting the placeholder image when an image is loaded from the network.
+This example demonstrates how to use the [alt](#alt12) attribute to display a placeholder image in the ImageSpan component while loading a network image, available since API version 12.
 
 ```ts
 // xxx.ets
@@ -396,7 +396,7 @@ struct SpanExample {
 
   build() {
     Column() {
-      Button("Get Online Image")
+      Button("Get Network Image")
         .onClick(() => {
           this.httpRequest();
         })

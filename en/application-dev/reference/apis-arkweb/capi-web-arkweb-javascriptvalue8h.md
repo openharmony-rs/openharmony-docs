@@ -4,7 +4,11 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
+
+```
+typedef struct ArkWeb_JavaScriptValue* ArkWeb_JavaScriptValuePtr
+```
 
 ## Overview
 

@@ -400,7 +400,7 @@ Describes whether the video is in full-screen playback mode.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type   | Read Only| Optional| Description                        |
+| Name      | Type   | Read-Only| Optional| Description                        |
 | ----------- | ------- | ---- | ----  | ---------------------------- |
 | fullscreen<sup>10+</sup>  | boolean | No| No | Callback that indicates whether the video playback is in full-screen mode.<br>**true**: The video playback is in full-screen mode.<br>**false**: The video playback is not in full-screen mode.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
 
@@ -416,7 +416,7 @@ Describes the duration of the video.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type   | Read Only| Optional| Description                        |
+| Name      | Type   | Read-Only| Optional| Description                        |
 | ----------- | ------- | ---- | ----  | ---------------------------- |
 | duration<sup>10+</sup> | number  | No| No | Duration of the video.<br>Unit: second<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
@@ -432,7 +432,7 @@ Describes the current progress of video playback.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type   | Read Only| Optional| Description                        |
+| Name      | Type   | Read-Only| Optional| Description                        |
 | ----------- | ------- | ---- | ---- | ---------------------------- |
 | time<sup>10+</sup> | number  | No| No | Callback that provides the current playback progress.<br>Unit: second<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
@@ -442,7 +442,7 @@ Defines display options for the first frame of the video.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type   | Read Only| Optional| Description                        |
+| Name      | Type   | Read-Only| Optional| Description                        |
 | ----------- | ------- | ---- | ---- | ---------------------------- |
 | showFirstFrame   | boolean | No| Yes| Whether the first frame display is enabled for the current video. If first frame display is enabled, the previewUri field in the [VideoOptions](#videooptions) does not take effect.<br>**true**: Enable first frame display.<br>**false**: Disable first frame display.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.     |
 | contentTransitionEffect<sup>21+</sup>   | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | No| Yes| Transition effect when the preview image of the current video changes. This field does not take effect if showFirstFrame is set to true (that is, the first frame display is enabled) or previewUri of the valid [VideoOptions](#videooptions) object is not set.<br>Default value: **ContentTransitionEffect.IDENTITY**.<br>If this parameter is set to undefined or null, the value is ContentTransitionEffect.IDENTITY.<br>**Atomic service API**: This API can be used in atomic services since API version 21.     |

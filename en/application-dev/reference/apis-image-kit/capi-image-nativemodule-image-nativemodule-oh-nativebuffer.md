@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+struct OH_NativeBuffer
+```
+
 ## Overview
 
 The struct describes the native buffer, which is used to perform operations related to the native buffer.

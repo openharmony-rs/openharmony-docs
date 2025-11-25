@@ -21,7 +21,7 @@
 ## 开发步骤
 
 ### 添加事件观察者
-1. 参考[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)README中**Using JsonCpp in your project**介绍的使用方法获取到jsoncpp.cpp、json.h和json-forwards.h三个文件。
+1. 获取该示例工程依赖的jsoncpp文件，从[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)下载源码的压缩包，并按照README的**Amalgamated source**中介绍的操作步骤得到jsoncpp.cpp、json.h和json-forwards.h三个文件。
 
 2. 新建Native C++工程，并将上述文件导入到新建工程内，目录结构如下。
 
@@ -127,7 +127,7 @@
           const char *names[] = {EVENT_MAIN_THREAD_JANK};
           // 开发者订阅感兴趣的事件，此处订阅了系统事件。
           OH_HiAppEvent_SetAppEventFilter(systemEventWatcher, DOMAIN_OS, 0, names, 1);
-          // 开发者设置已实现的回调函数，观察者接收到事件后回立即触发OnReceive回调。
+          // 开发者设置已实现的回调函数，观察者接收到事件后会立即触发OnReceive回调。
           OH_HiAppEvent_SetWatcherOnReceive(systemEventWatcher, OnReceive);
           // 使观察者开始监听订阅的事件。
           OH_HiAppEvent_AddWatcher(systemEventWatcher);

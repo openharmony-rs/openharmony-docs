@@ -4,7 +4,7 @@
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Rect** component is used to draw a rectangle.
 
@@ -132,7 +132,7 @@ Sets the radius of a rounded corner. The value is greater than or equal to 0. Th
 
 | Name| Type                                                        | Mandatory| Description                        |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------- |
-| value  | [Length](ts-types.md#length) \| Array&lt;any&gt; | Yes  | Radius of the rounded corner. You can set separate radiuses for the four rounded corners.<br>Default value: **0**<br>Default unit: vp<br>Abnormal values undefined and null are processed as invalid values.|
+| value  | [Length](ts-types.md#length) \| Array&lt;any&gt; | Yes  | Radius of the rounded corner. You can set separate radii for the four rounded corners.<br>Default value: **0**<br>Default unit: vp<br>Abnormal values undefined and null are processed as invalid values.|
 
 ### fill
 
@@ -204,7 +204,7 @@ Sets the stroke dashes. This attribute can be dynamically set using [attributeMo
 
 | Name| Type            | Mandatory| Description                     |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | Yes  | Stroke dashes.<br>The default value is an empty array.<br>Default unit: vp<br>The abnormal values undefined and null are processed based on the default values.|
+| value  | Array&lt;any&gt; | Yes  | Array defining the dash pattern for the rectangular outline. Elements alternate between dash length and gap length.<br>The default value is an empty array.<br>Default unit: vp<br>The abnormal values undefined and null are processed based on the default values.<br>**NOTE**<br>Empty array: solid line<br>Even-numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ...|
 
 ### strokeDashOffset
 
@@ -314,7 +314,7 @@ Sets the stroke width. This attribute can be dynamically set using [attributeMod
 
 | Name| Type                        | Mandatory| Description                    |
 | ------ | ---------------------------- | ---- | ------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Stroke width. The value must be greater than or equal to 0.<br>Default value: **1**<br>Default unit: vp<br>Default unit: vp<br>For abnormal values undefined, null, and NaN, the default value is used. For Infinity, the value 0 is used.|
+| value  | [Length](ts-types.md#length) | Yes  | Stroke width. The value must be greater than or equal to 0.<br>Default value: **1**<br>Default unit: vp<br>For abnormal values undefined, null, and NaN, the default value is used. For Infinity, the value 0 is used.|
 
 ### antiAlias
 

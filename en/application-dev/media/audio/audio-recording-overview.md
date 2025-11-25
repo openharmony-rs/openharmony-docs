@@ -22,10 +22,11 @@ In addition to the preceding classes, you can also use **AVRecorder** in Media K
 
 ## Precautions for Developing Audio Recording Applications
 
-The application must request the ohos.permission.MICROPHONE permission from the user before invoking the microphone to record audio. For details, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
+- The application must request the ohos.permission.MICROPHONE permission from the user before invoking the microphone to record audio. For details, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
   
-For details about how to use and manage microphones, see [Microphone Management](mic-management.md).
+  For details about how to use and manage microphones, see [Microphone Management](mic-management.md).
 
 - If continuous recording or background recording is required, the application must request a continuous task to prevent it from being suspended. For details, see [Continuous Task](../../task-management/continuous-task.md).
 - The application must start recording when it runs in the foreground. It can switch to the background after the recording is started. Recording cannot be started in the background.
 - To record audio, the application must use an appropriate recording stream type. For details, see [Selecting the Appropriate Audio Stream Types](using-right-streamusage-and-sourcetype.md).
+- If the application is required to record the screen, refer to [Using AVScreenCaptureRecorder to Record Screens and Write Them to Files (ArkTS)](../media/using-avscreencapture-ArkTs.md) and [Using AVScreenCapture to Capture Screens and Write Them to Files (C/C++)](../media/using-avscreencapture-for-file.md).

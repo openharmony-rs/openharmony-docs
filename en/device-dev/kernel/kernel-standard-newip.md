@@ -254,7 +254,7 @@ Only the OpenHarmony Linux-5.10 kernel supports New IP kernel protocol stack. Yo
 
 ![](figures/newip-development.png)
 
-For details about the address and route configuration, see [examples](https://gitee.com/openharmony/kernel_linux_common_modules/tree/master/newip/examples). Modify the CC definition in Makefile based on the CPU you use, compile the CC definition into a binary file, and push the file to the development board. Refer to the figure above to configure the address and route data for New IP.
+For details about the address and route configuration, see [examples](https://gitcode.com/openharmony/kernel_linux_common_modules/tree/master/newip/examples). Modify the CC definition in Makefile based on the CPU you use, compile the CC definition into a binary file, and push the file to the development board. Refer to the figure above to configure the address and route data for New IP.
 
 | File            | Description                                                    |
 | ------------------ | -------------------------------------------------------- |
@@ -284,7 +284,7 @@ Check the New IP address and route information on device 2.
 
 ## Sample Code for Receiving and Sending New IP Packets
 
-The following table lists the related sample code. For details about how to use the user-mode APIs of the New IP stack, see [examples](https://gitee.com/openharmony/kernel_linux_common_modules/tree/master/newip/examples). Fixed addresses and routes are configured in the demo code. You do not need to manually specify the addresses and routes when executing the binary program.
+The following table lists the related sample code. For details about how to use the user-mode APIs of the New IP stack, see [examples](https://gitcode.com/openharmony/kernel_linux_common_modules/tree/master/newip/examples). Fixed addresses and routes are configured in the demo code. You do not need to manually specify the addresses and routes when executing the binary program.
 
 | File               | Description                          |
 | --------------------- | ------------------------------ |
@@ -383,7 +383,7 @@ allowxperm thread_xxx thread_xxx:socket ioctl { 0x8933 0x8916 0x890B };
 
 ## WireShark Packet Parsing Template
 
-The default packet parsing rules of Wireshark cannot parse New IP packets. You can add a New IP packet parsing template to Wireshark to parse New IP packets. For details about the template, see [New IP packet parsing template](https://gitee.com/openharmony/kernel_linux_common_modules/blob/master/newip/tools/wireshark_cfg_for_newip.lua).
+The default packet parsing rules of Wireshark cannot parse New IP packets. You can add a New IP packet parsing template to Wireshark to parse New IP packets. For details about the template, see [New IP packet parsing template](https://gitcode.com/openharmony/kernel_linux_common_modules/blob/master/newip/tools/wireshark_cfg_for_newip.lua).
 
 The procedure is as follows:
 

@@ -452,9 +452,9 @@ async function ModifyImageProperties(imageSourceObj : image.ImageSource) {
 
 ## modifyImagePropertiesEnhanced<sup>22+</sup>
 
-modifyImagePropertiesEnhanced(records: Record\<PropertyKey, string | null\>): Promise\<void\>
+modifyImagePropertiesEnhanced(records: Record\<string, string | null\>): Promise\<void\>
 
-Modifies image properties in batches.
+Modifies image properties in batches. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -468,7 +468,7 @@ Modifies image properties in batches.
 
 | Name | Type  | Mandatory| Description        |
 | ------- | ------ | ---- | ------------ |
-| records | Record<[PropertyKey](arkts-apis-image-e.md#propertykey7), string \| null>|Yes| Key-value pairs of image property names and property values.|
+| records | Record\<string, string \| null>|Yes| Key-value pairs of image property names and property values.|
 
 **Return value**
 
@@ -492,9 +492,9 @@ import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ModifyImagePropertiesEnhanced(imageSourceObj : image.ImageSource) {
-  let keyValues: Record<PropertyKey, string|null> = {
-    [image.PropertyKey.IMAGE_WIDTH] : "1024",
-    [image.PropertyKey.IMAGE_LENGTH] : "1024"
+  let keyValues: Record<string, string|null> = {
+    "ImageWidth" : "1024",
+    "ImageLength" : "1024"
   };
   let checkKey = [image.PropertyKey.IMAGE_WIDTH, image.PropertyKey.IMAGE_LENGTH];
   imageSourceObj.modifyImagePropertiesEnhanced(keyValues).then(() => {

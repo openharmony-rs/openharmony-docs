@@ -88,7 +88,7 @@ Describes the properties related to the media metadata in the playlist.
 | mediaType     | string                  | No  | Yes  | Type of the media asset in the playlist.<br>**System capability**: SystemCapability.Multimedia.AVSession.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | mediaSize     | number                  | No  | Yes  | Size of the media asset in the playlist.<br>**System capability**: SystemCapability.Multimedia.AVSession.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | albumTitle     | string                  | No  | Yes  | Album name of the media asset in the playlist.<br>**System capability**: SystemCapability.Multimedia.AVSession.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| albumCoverUri     | string                  | No  | Yes  | URI of the album title of the media asset in the playlist.<br>**System capability**: SystemCapability.Multimedia.AVSession.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| albumCoverUri     | string                  | No  | Yes  | URI of the album cover of the media asset in the playlist.<br>**System capability**: SystemCapability.Multimedia.AVSession.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | lyricContent     | string                  | No  | Yes  | Lyric content of the media asset in the playlist.<br>**System capability**: SystemCapability.Multimedia.AVSession.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | lyricUri     | string                  | No  | Yes  | Lyric URI of the media asset in the playlist.<br>**System capability**: SystemCapability.Multimedia.AVSession.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | artist     | string                  | No  | Yes  | Author of the lyric of the media asset in the playlist.<br>**System capability**: SystemCapability.Multimedia.AVSession.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -216,10 +216,10 @@ Describes the command that can be sent to the session.
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
-| Name     | Type                                             | Mandatory| Description          |
-| --------- | ------------------------------------------------- | ---- | -------------- |
-| command   | [AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)     | Yes  | Command. The parameters carried in each command are different. For details, see [AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10).      |
-| parameter | [LoopMode](arkts-apis-avsession-e.md#loopmode10) &#124; string &#124; number | No  | Parameters carried in the command.|
+| Name     | Type                                             | Read-Only| Optional| Description          |
+| --------- | ------------------------------------------------- | ---- | ---- | -------------- |
+| command   | [AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)     | No| No  | Command. (Different commands correspond to different parameters.)    |
+| parameter | [LoopMode](arkts-apis-avsession-e.md#loopmode10) \| string \|  number | No| Yes  | Parameters carried in the command.|
 
 ## AVCastPickerOptions<sup>14+</sup>
 

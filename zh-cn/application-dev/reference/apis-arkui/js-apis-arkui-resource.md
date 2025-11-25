@@ -4,7 +4,7 @@
 <!--Owner: @fangzhiyuan1-->
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供获取应用资源或系统资源信息的接口。应用资源及系统资源的介绍及使用方法可参考[资源分类与访问](../../quick-start/resource-categories-and-access.md)。
 

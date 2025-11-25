@@ -75,7 +75,7 @@ target_link_libraries(sample PUBLIC libohfileshare.so)
     OH_FileShare_ReleasePolicyErrorResult(result, resultNum);
 ```
 
-2. 调用OH_FileShare_ActivatePermission接口，激活启用已授权过的uri，接口入参policyNum最大上限为500。
+2. 调用OH_FileShare_ActivatePermission接口，激活已授权过的uri，接口入参policyNum最大上限为500。
 <!-- @[activate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++

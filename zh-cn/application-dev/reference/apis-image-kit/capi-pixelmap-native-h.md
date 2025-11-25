@@ -26,15 +26,15 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) | OH_PixelmapNative | OH_PixelmapNative结构体是native层封装的图像解码后无压缩的位图格式结构体。 |
-| [OH_NativeBuffer](capi-image-nativemodule-image-nativemodule-oh-nativebuffer.md) | OH_NativeBuffer | NativeBuffer结构体类型，用于执行NativeBuffer相关操作。 |
 | [OH_Pixelmap_HdrStaticMetadata](capi-image-nativemodule-oh-pixelmap-hdrstaticmetadata.md) | OH_Pixelmap_HdrStaticMetadata | HDR_STATIC_METADATA关键字对应的静态元数据值。 |
-| [OH_NativeColorSpaceManager](capi-image-nativemodule-oh-nativecolorspacemanager.md) | OH_NativeColorSpaceManager | NativeColorSpaceManager结构体类型，用于执行NativeColorSpaceManager相关操作。 |
 | [OH_Pixelmap_HdrDynamicMetadata](capi-image-nativemodule-oh-pixelmap-hdrdynamicmetadata.md) | OH_Pixelmap_HdrDynamicMetadata | DR_DYNAMIC_METADATA关键字对应的动态元数据值。 |
 | [OH_Pixelmap_HdrGainmapMetadata](capi-image-nativemodule-oh-pixelmap-hdrgainmapmetadata.md) | OH_Pixelmap_HdrGainmapMetadata | HDR_GAINMAP_METADATA关键字对应的gainmap相关元数据值，参考ISO 21496-1。 |
-| [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) | OH_Pixelmap_HdrMetadataValue | Pixelmap使用的HDR元数据值，和OH_Pixelmap_HdrMetadataKey关键字相对应。 |
-| [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) | OH_Pixelmap_InitializationOptions | OH_Pixelmap_InitializationOptions是native层封装的初始化参数结构体，用于设置Pixelmap的初始化参数。 |
-| [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) | OH_Pixelmap_ImageInfo | OH_Pixelmap_ImageInfo是native层封装的图像像素信息结构体，保存图像像素的宽高、行跨距、像素格式、是否是HDR。 |
+| [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) | OH_Pixelmap_HdrMetadataValue | Pixelmap使用的HDR元数据值，和OH_Pixelmap_HdrMetadataKey关键字相对应。用于[OH_PixelmapNative_SetMetadata](#oh_pixelmapnative_setmetadata)及[OH_PixelmapNative_GetMetadata](#oh_pixelmapnative_getmetadata)，有相应[OH_Pixelmap_HdrMetadataKey](#oh_pixelmap_hdrmetadatakey)关键字作为入参时，设置或获取到本结构体中相对应的元数据类型的值。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) | - | OH_PixelmapNative结构体是native层封装的图像解码后无压缩的位图格式结构体。<br> 函数创建OH_PixelmapNative使用[OH_PixelmapNative_CreatePixelmap](#oh_pixelmapnative_createpixelmap)函数，默认采用BGRA_8888格式处理数据。<br> 释放OH_PixelmapNative对象使用[OH_PixelmapNative_Release](#oh_pixelmapnative_release)函数。 |
+| [OH_NativeBuffer](capi-image-nativemodule-image-nativemodule-oh-nativebuffer.md) | - | NativeBuffer结构体类型，用于执行NativeBuffer相关操作。 |
+| [OH_NativeColorSpaceManager](capi-image-nativemodule-oh-nativecolorspacemanager.md) | OH_NativeColorSpaceManager | NativeColorSpaceManager结构体类型，用于执行NativeColorSpaceManager相关操作。 |
+| [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) | - | OH_Pixelmap_InitializationOptions是native层封装的初始化参数结构体，用于设置Pixelmap的初始化参数。<br> 创建OH_Pixelmap_InitializationOptions对象使用[OH_PixelmapInitializationOptions_Create](#oh_pixelmapinitializationoptions_create)函数。<br> 释放OH_Pixelmap_InitializationOptions对象使用[OH_PixelmapInitializationOptions_Release](#oh_pixelmapinitializationoptions_release)函数。 |
+| [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) | - | 图像像素信息结构体。 |
 
 ### 枚举
 
@@ -72,7 +72,7 @@
 | [Image_ErrorCode OH_PixelmapImageInfo_GetAlphaMode(OH_Pixelmap_ImageInfo *info, int32_t *AlphaMode)](#oh_pixelmapimageinfo_getalphamode) | 获取图片透明通道类型。 |
 | [Image_ErrorCode OH_PixelmapImageInfo_GetRowStride(OH_Pixelmap_ImageInfo *info, uint32_t *rowStride)](#oh_pixelmapimageinfo_getrowstride) | 获取行跨距。 |
 | [Image_ErrorCode OH_PixelmapImageInfo_GetPixelFormat(OH_Pixelmap_ImageInfo *info, int32_t *pixelFormat)](#oh_pixelmapimageinfo_getpixelformat) | 获取像素格式。 |
-| [Image_ErrorCode OH_PixelmapImageInfo_GetAlphaType(OH_Pixelmap_ImageInfo *info, int32_t *alphaType)](#oh_pixelmapimageinfo_getalphatype) | 获取预乘格式图片的透明度类型。其余图片格式，推荐使用[OH_PixelmapImageInfo_GetAlphaMode](#oh_pixelmapimageinfo_getalphamode)。|
+| [Image_ErrorCode OH_PixelmapImageInfo_GetAlphaType(OH_Pixelmap_ImageInfo *info, int32_t *alphaType)](#oh_pixelmapimageinfo_getalphatype) | 获取预乘格式图片的透明度类型。其余图片格式，推荐使用[OH_PixelmapImageInfo_GetAlphaMode](#oh_pixelmapimageinfo_getalphamode)。 |
 | [Image_ErrorCode OH_PixelmapImageInfo_GetDynamicRange(OH_Pixelmap_ImageInfo *info, bool *isHdr)](#oh_pixelmapimageinfo_getdynamicrange) | 获取Pixelmap是否为高动态范围的信息。 |
 | [Image_ErrorCode OH_PixelmapImageInfo_Release(OH_Pixelmap_ImageInfo *info)](#oh_pixelmapimageinfo_release) | 释放OH_Pixelmap_ImageInfo指针。 |
 | [Image_ErrorCode OH_PixelmapNative_CreatePixelmap(uint8_t *data, size_t dataLength, OH_Pixelmap_InitializationOptions *options, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmap) | 通过属性创建PixelMap，默认采用BGRA_8888格式处理数据，其他格式请参考[OH_PixelmapInitializationOptions_SetSrcPixelFormat](#oh_pixelmapinitializationoptions_setsrcpixelformat)。 |
@@ -81,6 +81,8 @@
 | [Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeFromNapi(napi_env env, napi_value pixelmapNapi, OH_PixelmapNative **pixelmapNative)](#oh_pixelmapnative_convertpixelmapnativefromnapi) | 将PixelMapnapi对象转换为nativePixelMap对象。 |
 | [Image_ErrorCode OH_PixelmapNative_ReadPixels(OH_PixelmapNative *pixelmap, uint8_t *destination, size_t *bufferSize)](#oh_pixelmapnative_readpixels) | 读取图像像素数据，并按照PixelMap的像素格式写入缓冲区中。 |
 | [Image_ErrorCode OH_PixelmapNative_WritePixels(OH_PixelmapNative *pixelmap, uint8_t *source, size_t bufferSize)](#oh_pixelmapnative_writepixels) | 读取缓冲区中的图像像素数据，并按照PixelMap的像素格式将结果写入PixelMap。 |
+| [Image_ErrorCode OH_PixelmapNative_ReadPixelsFromArea(OH_PixelmapNative *pixelmap, Image_PositionArea *area)](#oh_pixelmapnative_readpixelsfromarea) | 从PixelMap的指定区域中读取像素数据并存入缓冲区。读取出来的数据为BGRA_8888格式。 |
+| [Image_ErrorCode OH_PixelmapNative_WritePixelsToArea(OH_PixelmapNative *pixelmap, Image_PositionArea *area)](#oh_pixelmapnative_writepixelstoarea) | 将缓冲区中的像素数据写入PixelMap的指定区域。数据源应为BGRA_8888格式。 |
 | [Image_ErrorCode OH_PixelmapNative_GetArgbPixels(OH_PixelmapNative *pixelmap, uint8_t *destination, size_t *bufferSize)](#oh_pixelmapnative_getargbpixels) | 从PixelMap中读取ARGB格式的数据。 |
 | [Image_ErrorCode OH_PixelmapNative_ToSdr(OH_PixelmapNative *pixelmap)](#oh_pixelmapnative_tosdr) | 将HDR的图像内容转换为SDR的图像内容。 |
 | [Image_ErrorCode OH_PixelmapNative_GetImageInfo(OH_PixelmapNative *pixelmap, OH_Pixelmap_ImageInfo *imageInfo)](#oh_pixelmapnative_getimageinfo) | 获取图像像素信息。 |
@@ -89,6 +91,9 @@
 | [Image_ErrorCode OH_PixelmapNative_ScaleWithAntiAliasing(OH_PixelmapNative *pixelmap, float scaleX, float scaleY, OH_PixelmapNative_AntiAliasingLevel level)](#oh_pixelmapnative_scalewithantialiasing) | 根据指定的缩放算法和输入的宽高对图片进行缩放。 |
 | [Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMap(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap, float scaleX, float scaleY)](#oh_pixelmapnative_createscaledpixelmap) | 根据输入的宽高的缩放比例，创建一个新的缩放后的图片。 |
 | [Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMapWithAntiAliasing(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap, float scaleX, float scaleY, OH_PixelmapNative_AntiAliasingLevel level)](#oh_pixelmapnative_createscaledpixelmapwithantialiasing) | 根据指定的缩放算法和输入的宽高的缩放比例，创建一个新的缩放后的图片。 |
+| [Image_ErrorCode OH_PixelmapNative_CreateAlphaPixelmap(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap)](#oh_pixelmapnative_createalphapixelmap) | 从源PixelMap创建一个仅含有Alpha通道的PixelMap。 |
+| [Image_ErrorCode OH_PixelmapNative_Clone(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap)](#oh_pixelmapnative_clone) | 从源PixelMap复制出一个新的PixelMap。 |
+| [Image_ErrorCode OH_PixelmapNative_CreateCroppedAndScaledPixelMap(OH_PixelmapNative *srcPixelmap, Image_Region *region, Image_Scale *scale, OH_PixelmapNative_AntiAliasingLevel level, OH_PixelmapNative **dstPixelmap)](#oh_pixelmapnative_createcroppedandscaledpixelmap) | 基于源PixelMap创建一个裁剪并缩放的新PixelMap。 |
 | [Image_ErrorCode OH_PixelmapNative_Translate(OH_PixelmapNative *pixelmap, float x, float y)](#oh_pixelmapnative_translate) | 根据输入的坐标对图片进行位置变换。 |
 | [Image_ErrorCode OH_PixelmapNative_Rotate(OH_PixelmapNative *pixelmap, float angle)](#oh_pixelmapnative_rotate) | 根据输入的角度对图片进行旋转。 |
 | [Image_ErrorCode OH_PixelmapNative_Flip(OH_PixelmapNative *pixelmap, bool shouldFilpHorizontally, bool shouldFilpVertically)](#oh_pixelmapnative_flip) | 根据输入的条件对图片进行翻转。 |
@@ -98,6 +103,8 @@
 | [Image_ErrorCode OH_PixelmapNative_ConvertAlphaFormat(OH_PixelmapNative* srcpixelmap, OH_PixelmapNative* dstpixelmap, const bool isPremul)](#oh_pixelmapnative_convertalphaformat) | 将pixelmap的像素数据做预乘和非预乘之间的转换。 |
 | [Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmap(OH_Pixelmap_InitializationOptions *options, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createemptypixelmap) | 利用OH_Pixelmap_InitializationOptions创建空的pixelmap对象，内存数据为0。 |
 | [Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator(OH_Pixelmap_InitializationOptions *options, IMAGE_ALLOCATOR_MODE allocator, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createemptypixelmapusingallocator) | 根据入参options创建空的pixelmap，pixelmap使用的内存类型可以通过allocator指定。默认情况下，系统会根据图像类型、图像大小、平台能力等选择内存类型。在处理此接口返回的像素图时，需要考虑步长影响。 |
+| [Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromSurface(const char *surfaceId, size_t length, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapfromsurface) | 通过Surface的Surface ID创建一个PixelMap。 |
+| [Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer *nativeBuffer, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapfromnativebuffer) | 通过NativeBuffer创建一个PixelMap。如果NativeBuffer的用途未配置CPU访问权限，则不支持创建。<br> 支持创建的像素格式为RGBA_8888、NV21、NV12、YCBCR_P010、YCRCB_P010。 |
 | [Image_ErrorCode OH_PixelmapNative_GetNativeBuffer(OH_PixelmapNative *pixelmap, OH_NativeBuffer **nativeBuffer)](#oh_pixelmapnative_getnativebuffer) | 从DMA内存的PixelMap中，获取NativeBuffer对象。 |
 | [Image_ErrorCode OH_PixelmapNative_GetMetadata(OH_PixelmapNative *pixelmap, OH_Pixelmap_HdrMetadataKey key, OH_Pixelmap_HdrMetadataValue **value)](#oh_pixelmapnative_getmetadata) | 获取元数据。 |
 | [Image_ErrorCode OH_PixelmapNative_SetMetadata(OH_PixelmapNative *pixelmap, OH_Pixelmap_HdrMetadataKey key, OH_Pixelmap_HdrMetadataValue *value)](#oh_pixelmapnative_setmetadata) | 设置元数据。 |
@@ -108,6 +115,8 @@
 | [Image_ErrorCode OH_PixelmapNative_GetAllocationByteCount(OH_PixelmapNative *pixelmap, uint32_t *allocationByteCount)](#oh_pixelmapnative_getallocationbytecount) | 获取Pixelmap用于储存像素数据的内存字节数。 |
 | [Image_ErrorCode OH_PixelmapNative_AccessPixels(OH_PixelmapNative *pixelmap, void **addr)](#oh_pixelmapnative_accesspixels) | 获取Pixelmap像素数据的内存地址，并锁定这块内存。<br>当该内存被锁定时，任何修改或释放该Pixelmap的像素数据的操作均会失败或无效。 |
 | [Image_ErrorCode OH_PixelmapNative_UnaccessPixels(OH_PixelmapNative *pixelmap)](#oh_pixelmapnative_unaccesspixels) | 释放Pixelmap像素数据的内存锁。<br>该函数需要与[OH_PixelmapNative_AccessPixels](#oh_pixelmapnative_accesspixels)匹配使用。 |
+| [Image_ErrorCode OH_PixelmapNative_GetUniqueId(OH_PixelmapNative *pixelmap, uint32_t *uniqueId)](#oh_pixelmapnative_getuniqueid) | 获取PixelMap的唯一ID。 |
+| [Image_ErrorCode OH_PixelmapNative_IsReleased(OH_PixelmapNative *pixelmap, bool *released)](#oh_pixelmapnative_isreleased) | 检测PixelMap是否已被释放。如果已被释放，则任何访问该对象内部数据的方法调用将会失效。 |
 
 ## 枚举类型说明
 
@@ -229,7 +238,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_Create(OH_Pixelmap_Initializati
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -245,7 +253,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_Create(OH_Pixelmap_Initializati
 ### OH_PixelmapInitializationOptions_GetWidth()
 
 ```
-Image_ErrorCode OH_PixelmapInitializationOptions_GetWidth(OH_Pixelmap_InitializationOptions *options,uint32_t *width)
+Image_ErrorCode OH_PixelmapInitializationOptions_GetWidth(OH_Pixelmap_InitializationOptions *options, uint32_t *width)
 ```
 
 **描述**
@@ -253,7 +261,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetWidth(OH_Pixelmap_Initializa
 获取图片宽。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -271,7 +278,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetWidth(OH_Pixelmap_Initializa
 ### OH_PixelmapInitializationOptions_SetWidth()
 
 ```
-Image_ErrorCode OH_PixelmapInitializationOptions_SetWidth(OH_Pixelmap_InitializationOptions *options,uint32_t width)
+Image_ErrorCode OH_PixelmapInitializationOptions_SetWidth(OH_Pixelmap_InitializationOptions *options, uint32_t width)
 ```
 
 **描述**
@@ -279,7 +286,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetWidth(OH_Pixelmap_Initializa
 设置图片宽。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -297,7 +303,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetWidth(OH_Pixelmap_Initializa
 ### OH_PixelmapInitializationOptions_GetHeight()
 
 ```
-Image_ErrorCode OH_PixelmapInitializationOptions_GetHeight(OH_Pixelmap_InitializationOptions *options,uint32_t *height)
+Image_ErrorCode OH_PixelmapInitializationOptions_GetHeight(OH_Pixelmap_InitializationOptions *options, uint32_t *height)
 ```
 
 **描述**
@@ -305,7 +311,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetHeight(OH_Pixelmap_Initializ
 获取图片高。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -323,7 +328,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetHeight(OH_Pixelmap_Initializ
 ### OH_PixelmapInitializationOptions_SetHeight()
 
 ```
-Image_ErrorCode OH_PixelmapInitializationOptions_SetHeight(OH_Pixelmap_InitializationOptions *options,uint32_t height)
+Image_ErrorCode OH_PixelmapInitializationOptions_SetHeight(OH_Pixelmap_InitializationOptions *options, uint32_t height)
 ```
 
 **描述**
@@ -331,7 +336,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetHeight(OH_Pixelmap_Initializ
 设置图片高。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -349,7 +353,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetHeight(OH_Pixelmap_Initializ
 ### OH_PixelmapInitializationOptions_GetPixelFormat()
 
 ```
-Image_ErrorCode OH_PixelmapInitializationOptions_GetPixelFormat(OH_Pixelmap_InitializationOptions *options,int32_t *pixelFormat)
+Image_ErrorCode OH_PixelmapInitializationOptions_GetPixelFormat(OH_Pixelmap_InitializationOptions *options, int32_t *pixelFormat)
 ```
 
 **描述**
@@ -357,7 +361,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetPixelFormat(OH_Pixelmap_Init
 获取像素格式。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -375,7 +378,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetPixelFormat(OH_Pixelmap_Init
 ### OH_PixelmapInitializationOptions_SetPixelFormat()
 
 ```
-Image_ErrorCode OH_PixelmapInitializationOptions_SetPixelFormat(OH_Pixelmap_InitializationOptions *options,int32_t pixelFormat)
+Image_ErrorCode OH_PixelmapInitializationOptions_SetPixelFormat(OH_Pixelmap_InitializationOptions *options, int32_t pixelFormat)
 ```
 
 **描述**
@@ -383,7 +386,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetPixelFormat(OH_Pixelmap_Init
 设置像素格式。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -401,7 +403,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetPixelFormat(OH_Pixelmap_Init
 ### OH_PixelmapInitializationOptions_GetSrcPixelFormat()
 
 ```
-Image_ErrorCode OH_PixelmapInitializationOptions_GetSrcPixelFormat(OH_Pixelmap_InitializationOptions *options,int32_t *srcpixelFormat)
+Image_ErrorCode OH_PixelmapInitializationOptions_GetSrcPixelFormat(OH_Pixelmap_InitializationOptions *options, int32_t *srcpixelFormat)
 ```
 
 **描述**
@@ -409,7 +411,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetSrcPixelFormat(OH_Pixelmap_I
 获取源像素格式。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -427,7 +428,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetSrcPixelFormat(OH_Pixelmap_I
 ### OH_PixelmapInitializationOptions_SetSrcPixelFormat()
 
 ```
-Image_ErrorCode OH_PixelmapInitializationOptions_SetSrcPixelFormat(OH_Pixelmap_InitializationOptions *options,int32_t srcpixelFormat)
+Image_ErrorCode OH_PixelmapInitializationOptions_SetSrcPixelFormat(OH_Pixelmap_InitializationOptions *options, int32_t srcpixelFormat)
 ```
 
 **描述**
@@ -435,7 +436,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetSrcPixelFormat(OH_Pixelmap_I
 设置源像素格式。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -453,7 +453,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetSrcPixelFormat(OH_Pixelmap_I
 ### OH_PixelmapInitializationOptions_GetRowStride()
 
 ```
-Image_ErrorCode OH_PixelmapInitializationOptions_GetRowStride(OH_Pixelmap_InitializationOptions *options,int32_t *rowStride)
+Image_ErrorCode OH_PixelmapInitializationOptions_GetRowStride(OH_Pixelmap_InitializationOptions *options, int32_t *rowStride)
 ```
 
 **描述**
@@ -461,7 +461,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetRowStride(OH_Pixelmap_Initia
 获取行跨距。<br> 跨距，图像每行占用的真实内存大小，单位为字节。跨距 = width \* 单位像素字节数 + padding，padding为每行为内存对齐做的填充区域。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -479,7 +478,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetRowStride(OH_Pixelmap_Initia
 ### OH_PixelmapInitializationOptions_SetRowStride()
 
 ```
-Image_ErrorCode OH_PixelmapInitializationOptions_SetRowStride(OH_Pixelmap_InitializationOptions *options,int32_t rowStride)
+Image_ErrorCode OH_PixelmapInitializationOptions_SetRowStride(OH_Pixelmap_InitializationOptions *options, int32_t rowStride)
 ```
 
 **描述**
@@ -487,7 +486,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetRowStride(OH_Pixelmap_Initia
 设置图像跨距。<br>跨距，图像每行占用的真实内存大小，单位为字节。跨距 = width \* 单位像素字节数 + padding，padding为每行为内存对齐做的填充区域。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -505,7 +503,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetRowStride(OH_Pixelmap_Initia
 ### OH_PixelmapInitializationOptions_GetAlphaType()
 
 ```
-Image_ErrorCode OH_PixelmapInitializationOptions_GetAlphaType(OH_Pixelmap_InitializationOptions *options,int32_t *alphaType)
+Image_ErrorCode OH_PixelmapInitializationOptions_GetAlphaType(OH_Pixelmap_InitializationOptions *options, int32_t *alphaType)
 ```
 
 **描述**
@@ -513,7 +511,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetAlphaType(OH_Pixelmap_Initia
 获取透明度类型。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -531,7 +528,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetAlphaType(OH_Pixelmap_Initia
 ### OH_PixelmapInitializationOptions_SetAlphaType()
 
 ```
-Image_ErrorCode OH_PixelmapInitializationOptions_SetAlphaType(OH_Pixelmap_InitializationOptions *options,int32_t alphaType)
+Image_ErrorCode OH_PixelmapInitializationOptions_SetAlphaType(OH_Pixelmap_InitializationOptions *options, int32_t alphaType)
 ```
 
 **描述**
@@ -539,7 +536,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetAlphaType(OH_Pixelmap_Initia
 设置透明度类型。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -557,7 +553,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetAlphaType(OH_Pixelmap_Initia
 ### OH_PixelmapInitializationOptions_GetEditable()
 
 ```
-Image_ErrorCode OH_PixelmapInitializationOptions_GetEditable(OH_Pixelmap_InitializationOptions *options,bool *editable)
+Image_ErrorCode OH_PixelmapInitializationOptions_GetEditable(OH_Pixelmap_InitializationOptions *options, bool *editable)
 ```
 
 **描述**
@@ -565,7 +561,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetEditable(OH_Pixelmap_Initial
 获取可编辑标志。
 
 **起始版本：** 18
-
 
 **参数：**
 
@@ -583,7 +578,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetEditable(OH_Pixelmap_Initial
 ### OH_PixelmapInitializationOptions_SetEditable()
 
 ```
-Image_ErrorCode OH_PixelmapInitializationOptions_SetEditable(OH_Pixelmap_InitializationOptions *options,bool editable)
+Image_ErrorCode OH_PixelmapInitializationOptions_SetEditable(OH_Pixelmap_InitializationOptions *options, bool editable)
 ```
 
 **描述**
@@ -591,7 +586,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetEditable(OH_Pixelmap_Initial
 设置可编辑标志。
 
 **起始版本：** 18
-
 
 **参数：**
 
@@ -618,7 +612,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_Release(OH_Pixelmap_Initializat
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -643,7 +636,6 @@ Image_ErrorCode OH_PixelmapImageInfo_Create(OH_Pixelmap_ImageInfo **info)
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -667,7 +659,6 @@ Image_ErrorCode OH_PixelmapImageInfo_GetWidth(OH_Pixelmap_ImageInfo *info, uint3
 获取图片宽。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -694,7 +685,6 @@ Image_ErrorCode OH_PixelmapImageInfo_GetHeight(OH_Pixelmap_ImageInfo *info, uint
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -719,7 +709,6 @@ Image_ErrorCode OH_PixelmapImageInfo_GetAlphaMode(OH_Pixelmap_ImageInfo *info, i
 获取图片透明通道类型。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -746,7 +735,6 @@ Image_ErrorCode OH_PixelmapImageInfo_GetRowStride(OH_Pixelmap_ImageInfo *info, u
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -771,7 +759,6 @@ Image_ErrorCode OH_PixelmapImageInfo_GetPixelFormat(OH_Pixelmap_ImageInfo *info,
 获取像素格式。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -798,7 +785,6 @@ Image_ErrorCode OH_PixelmapImageInfo_GetAlphaType(OH_Pixelmap_ImageInfo *info, i
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -823,7 +809,6 @@ Image_ErrorCode OH_PixelmapImageInfo_GetDynamicRange(OH_Pixelmap_ImageInfo *info
 获取Pixelmap是否为高动态范围的信息。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -850,7 +835,6 @@ Image_ErrorCode OH_PixelmapImageInfo_Release(OH_Pixelmap_ImageInfo *info)
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -866,7 +850,7 @@ Image_ErrorCode OH_PixelmapImageInfo_Release(OH_Pixelmap_ImageInfo *info)
 ### OH_PixelmapNative_CreatePixelmap()
 
 ```
-Image_ErrorCode OH_PixelmapNative_CreatePixelmap(uint8_t *data, size_t dataLength,OH_Pixelmap_InitializationOptions *options, OH_PixelmapNative **pixelmap)
+Image_ErrorCode OH_PixelmapNative_CreatePixelmap(uint8_t *data, size_t dataLength, OH_Pixelmap_InitializationOptions *options, OH_PixelmapNative **pixelmap)
 ```
 
 **描述**
@@ -874,7 +858,6 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmap(uint8_t *data, size_t dataLengt
 通过属性创建PixelMap，默认采用BGRA_8888格式处理数据，其他格式请参考[OH_PixelmapInitializationOptions_SetSrcPixelFormat](#oh_pixelmapinitializationoptions_setsrcpixelformat)。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -894,7 +877,7 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmap(uint8_t *data, size_t dataLengt
 ### OH_PixelmapNative_CreatePixelmapUsingAllocator()
 
 ```
-Image_ErrorCode OH_PixelmapNative_CreatePixelmapUsingAllocator(uint8_t *data, size_t dataLength,OH_Pixelmap_InitializationOptions *options, IMAGE_ALLOCATOR_MODE allocator, OH_PixelmapNative **pixelmap)
+Image_ErrorCode OH_PixelmapNative_CreatePixelmapUsingAllocator(uint8_t *data, size_t dataLength, OH_Pixelmap_InitializationOptions *options, IMAGE_ALLOCATOR_MODE allocator, OH_PixelmapNative **pixelmap)
 ```
 
 **描述**
@@ -902,7 +885,6 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapUsingAllocator(uint8_t *data, si
 根据入参options创建pixelmap，pixelmap使用的内存类型可以通过allocator指定。默认情况下，系统会根据图像类型、图像大小、平台能力等选择内存类型。在处理此接口返回的像素图时，需要考虑步长影响。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -923,7 +905,7 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapUsingAllocator(uint8_t *data, si
 ### OH_PixelmapNative_ConvertPixelmapNativeToNapi()
 
 ```
-Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeToNapi(napi_env env, OH_PixelmapNative *pixelmapNative,napi_value *pixelmapNapi)
+Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeToNapi(napi_env env, OH_PixelmapNative *pixelmapNative, napi_value *pixelmapNapi)
 ```
 
 **描述**
@@ -931,7 +913,6 @@ Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeToNapi(napi_env env, OH_P
 将nativePixelMap对象转换为PixelMapnapi对象。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -950,7 +931,7 @@ Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeToNapi(napi_env env, OH_P
 ### OH_PixelmapNative_ConvertPixelmapNativeFromNapi()
 
 ```
-Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeFromNapi(napi_env env, napi_value pixelmapNapi,OH_PixelmapNative **pixelmapNative)
+Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeFromNapi(napi_env env, napi_value pixelmapNapi, OH_PixelmapNative **pixelmapNative)
 ```
 
 **描述**
@@ -958,7 +939,6 @@ Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeFromNapi(napi_env env, na
 将PixelMapnapi对象转换为nativePixelMap对象。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -986,7 +966,6 @@ Image_ErrorCode OH_PixelmapNative_ReadPixels(OH_PixelmapNative *pixelmap, uint8_
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -1013,7 +992,6 @@ Image_ErrorCode OH_PixelmapNative_WritePixels(OH_PixelmapNative *pixelmap, uint8
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -1028,6 +1006,56 @@ Image_ErrorCode OH_PixelmapNative_WritePixels(OH_PixelmapNative *pixelmap, uint8
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_BAD_PARAMETER：参数错误。<br>         IMAGE_UNSUPPORTED_OPERATION：操作不支持。<br>         IMAGE_UNKNOWN_ERROR：未知错误。 |
 
+### OH_PixelmapNative_ReadPixelsFromArea()
+
+```
+Image_ErrorCode OH_PixelmapNative_ReadPixelsFromArea(OH_PixelmapNative *pixelmap, Image_PositionArea *area)
+```
+
+**描述**
+
+从PixelMap的指定区域中读取像素数据并存入缓冲区。读取出来的数据为BGRA_8888格式。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被读取的PixelMap。 |
+| [Image_PositionArea](capi-image-nativemodule-image-positionarea.md) *area | 读取数据的PixelMap指定区域。数据会被读取并拷贝至area->pixels。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_BAD_PARAMETER：参数无效，例如：pixelmap或area有误。<br>         IMAGE_UNKNOWN_ERROR：未知的内部错误，例如：不支持的像素格式。 |
+
+### OH_PixelmapNative_WritePixelsToArea()
+
+```
+Image_ErrorCode OH_PixelmapNative_WritePixelsToArea(OH_PixelmapNative *pixelmap, Image_PositionArea *area)
+```
+
+**描述**
+
+将缓冲区中的像素数据写入PixelMap的指定区域。数据源应为BGRA_8888格式。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被写入的PixelMap。 |
+| [Image_PositionArea](capi-image-nativemodule-image-positionarea.md) *area | 写入数据的PixelMap指定区域。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_BAD_PARAMETER：参数无效，例如：pixelmap或area有误。<br>         IMAGE_UNSUPPORTED_OPERATION：PixelMap不可编辑。<br>         IMAGE_UNKNOWN_ERROR：未知的内部错误，例如：不支持的像素格式。 |
+
 ### OH_PixelmapNative_GetArgbPixels()
 
 ```
@@ -1039,7 +1067,6 @@ Image_ErrorCode OH_PixelmapNative_GetArgbPixels(OH_PixelmapNative *pixelmap, uin
 从PixelMap中读取ARGB格式的数据。
 
 **起始版本：** 13
-
 
 **参数：**
 
@@ -1067,7 +1094,6 @@ Image_ErrorCode OH_PixelmapNative_ToSdr(OH_PixelmapNative *pixelmap)
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -1091,7 +1117,6 @@ Image_ErrorCode OH_PixelmapNative_GetImageInfo(OH_PixelmapNative *pixelmap, OH_P
 获取图像像素信息。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -1118,7 +1143,6 @@ Image_ErrorCode OH_PixelmapNative_Opacity(OH_PixelmapNative *pixelmap, float rat
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -1144,7 +1168,6 @@ Image_ErrorCode OH_PixelmapNative_Scale(OH_PixelmapNative *pixelmap, float scale
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -1162,7 +1185,7 @@ Image_ErrorCode OH_PixelmapNative_Scale(OH_PixelmapNative *pixelmap, float scale
 ### OH_PixelmapNative_ScaleWithAntiAliasing()
 
 ```
-Image_ErrorCode OH_PixelmapNative_ScaleWithAntiAliasing(OH_PixelmapNative *pixelmap, float scaleX, float scaleY,OH_PixelmapNative_AntiAliasingLevel level)
+Image_ErrorCode OH_PixelmapNative_ScaleWithAntiAliasing(OH_PixelmapNative *pixelmap, float scaleX, float scaleY, OH_PixelmapNative_AntiAliasingLevel level)
 ```
 
 **描述**
@@ -1170,7 +1193,6 @@ Image_ErrorCode OH_PixelmapNative_ScaleWithAntiAliasing(OH_PixelmapNative *pixel
 根据指定的缩放算法和输入的宽高对图片进行缩放。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -1190,7 +1212,7 @@ Image_ErrorCode OH_PixelmapNative_ScaleWithAntiAliasing(OH_PixelmapNative *pixel
 ### OH_PixelmapNative_CreateScaledPixelMap()
 
 ```
-Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMap(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap,float scaleX, float scaleY)
+Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMap(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap, float scaleX, float scaleY)
 ```
 
 **描述**
@@ -1198,7 +1220,6 @@ Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMap(OH_PixelmapNative *srcPix
 根据输入的宽高的缩放比例，创建一个新的缩放后的图片。
 
 **起始版本：** 18
-
 
 **参数：**
 
@@ -1218,7 +1239,7 @@ Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMap(OH_PixelmapNative *srcPix
 ### OH_PixelmapNative_CreateScaledPixelMapWithAntiAliasing()
 
 ```
-Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMapWithAntiAliasing(OH_PixelmapNative *srcPixelmap,OH_PixelmapNative **dstPixelmap, float scaleX, float scaleY, OH_PixelmapNative_AntiAliasingLevel level)
+Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMapWithAntiAliasing(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap, float scaleX, float scaleY, OH_PixelmapNative_AntiAliasingLevel level)
 ```
 
 **描述**
@@ -1226,7 +1247,6 @@ Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMapWithAntiAliasing(OH_Pixelm
 根据指定的缩放算法和输入的宽高的缩放比例，创建一个新的缩放后的图片。
 
 **起始版本：** 18
-
 
 **参数：**
 
@@ -1244,6 +1264,84 @@ Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMapWithAntiAliasing(OH_Pixelm
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_BAD_PARAMETER：参数错误。<br>         IMAGE_TOO_LARGE：图片过大。<br>         IMAGE_ALLOC_FAILED：内存申请失败。 |
 
+### OH_PixelmapNative_CreateAlphaPixelmap()
+
+```
+Image_ErrorCode OH_PixelmapNative_CreateAlphaPixelmap(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap)
+```
+
+**描述**
+
+从源PixelMap创建一个仅含有Alpha通道的PixelMap。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *srcPixelmap | 提供Alpha通道数据的源PixelMap。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **dstPixelmap | 被创建的目标PixelMap。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_BAD_PARAMETER：参数无效，例如：srcPixelmap或dstPixelmap有误。 |
+
+### OH_PixelmapNative_Clone()
+
+```
+Image_ErrorCode OH_PixelmapNative_Clone(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap)
+```
+
+**描述**
+
+从源PixelMap复制出一个新的PixelMap。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *srcPixelmap | 被复制的源PixelMap。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **dstPixelmap | 被创建的目标PixelMap。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_BAD_PARAMETER：参数无效，例如：srcPixelmap或dstPixelmap有误。<br>         IMAGE_UNSUPPORTED_DATA_FORMAT：像素格式不支持。<br>         IMAGE_TOO_LARGE：源PixelMap的尺寸过大。<br>         IMAGE_INIT_FAILED：目标PixelMap初始化失败。<br>         IMAGE_ALLOC_FAILED：内存申请或数据复制失败。 |
+
+### OH_PixelmapNative_CreateCroppedAndScaledPixelMap()
+
+```
+Image_ErrorCode OH_PixelmapNative_CreateCroppedAndScaledPixelMap(OH_PixelmapNative *srcPixelmap, Image_Region *region, Image_Scale *scale, OH_PixelmapNative_AntiAliasingLevel level, OH_PixelmapNative **dstPixelmap)
+```
+
+**描述**
+
+基于源PixelMap创建一个裁剪并缩放的新PixelMap。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *srcPixelmap | 源PixelMap。 |
+| [Image_Region](capi-image-nativemodule-image-region.md) *region | 裁剪区域。 |
+| [Image_Scale](capi-image-nativemodule-image-scale.md) *scale | 宽和高的缩放倍数。不能为0。 |
+| [OH_PixelmapNative_AntiAliasingLevel](#oh_pixelmapnative_antialiasinglevel) level | 要使用的缩放插值算法。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **dstPixelmap | 被创建的目标PixelMap。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_BAD_PARAMETER：参数无效，例如：srcPixelmap、region、scale或dstPixelmap有误。<br>         IMAGE_UNSUPPORTED_DATA_FORMAT：像素格式不支持。<br>         IMAGE_TOO_LARGE：源PixelMap的尺寸过大。<br>         IMAGE_INIT_FAILED：目标PixelMap初始化失败。<br>         IMAGE_ALLOC_FAILED：内存申请或数据复制失败。 |
+
 ### OH_PixelmapNative_Translate()
 
 ```
@@ -1255,7 +1353,6 @@ Image_ErrorCode OH_PixelmapNative_Translate(OH_PixelmapNative *pixelmap, float x
 根据输入的坐标对图片进行位置变换。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -1283,7 +1380,6 @@ Image_ErrorCode OH_PixelmapNative_Rotate(OH_PixelmapNative *pixelmap, float angl
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -1308,7 +1404,6 @@ Image_ErrorCode OH_PixelmapNative_Flip(OH_PixelmapNative *pixelmap, bool shouldF
 根据输入的条件对图片进行翻转。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -1336,7 +1431,6 @@ Image_ErrorCode OH_PixelmapNative_Crop(OH_PixelmapNative *pixelmap, Image_Region
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -1362,7 +1456,6 @@ Image_ErrorCode OH_PixelmapNative_Release(OH_PixelmapNative *pixelmap)
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -1387,7 +1480,6 @@ Image_ErrorCode OH_PixelmapNative_Destroy(OH_PixelmapNative **pixelmap)
 
 **起始版本：** 18
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -1403,7 +1495,7 @@ Image_ErrorCode OH_PixelmapNative_Destroy(OH_PixelmapNative **pixelmap)
 ### OH_PixelmapNative_ConvertAlphaFormat()
 
 ```
-Image_ErrorCode OH_PixelmapNative_ConvertAlphaFormat(OH_PixelmapNative* srcpixelmap,OH_PixelmapNative* dstpixelmap, const bool isPremul)
+Image_ErrorCode OH_PixelmapNative_ConvertAlphaFormat(OH_PixelmapNative* srcpixelmap, OH_PixelmapNative* dstpixelmap, const bool isPremul)
 ```
 
 **描述**
@@ -1411,7 +1503,6 @@ Image_ErrorCode OH_PixelmapNative_ConvertAlphaFormat(OH_PixelmapNative* srcpixel
 将pixelmap的像素数据做预乘和非预乘之间的转换。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -1430,7 +1521,7 @@ Image_ErrorCode OH_PixelmapNative_ConvertAlphaFormat(OH_PixelmapNative* srcpixel
 ### OH_PixelmapNative_CreateEmptyPixelmap()
 
 ```
-Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmap(OH_Pixelmap_InitializationOptions *options,OH_PixelmapNative **pixelmap)
+Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmap(OH_Pixelmap_InitializationOptions *options, OH_PixelmapNative **pixelmap)
 ```
 
 **描述**
@@ -1438,7 +1529,6 @@ Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmap(OH_Pixelmap_Initialization
 利用OH_Pixelmap_InitializationOptions创建空的pixelmap对象，内存数据为0。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -1465,7 +1555,6 @@ Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator(OH_Pixelmap_
 
 **起始版本：** 20
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -1480,6 +1569,57 @@ Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator(OH_Pixelmap_
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_BAD_PARAMETER：参数错误。<br>         IMAGE_UNSUPPORTED_OPERATION：操作不支持。<br>         IMAGE_TOO_LARGE：图像过大，无法分配内存。<br>         IMAGE_DMA_OPERATION_FAILED：DMA内存操作失败。<br>         IMAGE_ALLOCATOR_MODE_UNSUPPORTED：不支持分配当前内存类型。例如，使用共享内存创建HDR图。 |
 
+### OH_PixelmapNative_CreatePixelmapFromSurface()
+
+```
+Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromSurface(const char *surfaceId, size_t length, OH_PixelmapNative **pixelmap)
+```
+
+**描述**
+
+通过Surface的Surface ID创建一个PixelMap。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const char *surfaceId | Surface ID字符串。 |
+| size_t length | Surface ID字符串的长度。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmap | 被创建的PixelMap。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_BAD_PARAMETER：参数无效，例如：surfaceId或pixelmap有误。<br>         IMAGE_CREATE_PIXELMAP_FAILED：PixelMap创建失败。 |
+
+### OH_PixelmapNative_CreatePixelmapFromNativeBuffer()
+
+```
+Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer *nativeBuffer, OH_PixelmapNative **pixelmap)
+```
+
+**描述**
+
+通过NativeBuffer创建一个PixelMap。如果NativeBuffer的用途未配置CPU访问权限，则不支持创建。<br> 支持创建的像素格式为RGBA_8888、NV21、NV12、YCBCR_P010、YCRCB_P010。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_NativeBuffer](capi-image-nativemodule-image-nativemodule-oh-nativebuffer.md) *nativeBuffer | 含有PixelMap数据的NativeBuffer对象。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmap | 被创建的PixelMap。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_BAD_PARAMETER：参数无效，例如：nativeBuffer或pixelmap有误，像素格式不支持，或未配置CPU访问权限。<br>         IMAGE_CREATE_PIXELMAP_FAILED：PixelMap创建失败。 |
+
 ### OH_PixelmapNative_GetNativeBuffer()
 
 ```
@@ -1491,7 +1631,6 @@ Image_ErrorCode OH_PixelmapNative_GetNativeBuffer(OH_PixelmapNative *pixelmap, O
 从DMA内存的PixelMap中，获取NativeBuffer对象。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -1509,7 +1648,7 @@ Image_ErrorCode OH_PixelmapNative_GetNativeBuffer(OH_PixelmapNative *pixelmap, O
 ### OH_PixelmapNative_GetMetadata()
 
 ```
-Image_ErrorCode OH_PixelmapNative_GetMetadata(OH_PixelmapNative *pixelmap, OH_Pixelmap_HdrMetadataKey key,OH_Pixelmap_HdrMetadataValue **value)
+Image_ErrorCode OH_PixelmapNative_GetMetadata(OH_PixelmapNative *pixelmap, OH_Pixelmap_HdrMetadataKey key, OH_Pixelmap_HdrMetadataValue **value)
 ```
 
 **描述**
@@ -1517,7 +1656,6 @@ Image_ErrorCode OH_PixelmapNative_GetMetadata(OH_PixelmapNative *pixelmap, OH_Pi
 获取元数据。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -1536,7 +1674,7 @@ Image_ErrorCode OH_PixelmapNative_GetMetadata(OH_PixelmapNative *pixelmap, OH_Pi
 ### OH_PixelmapNative_SetMetadata()
 
 ```
-Image_ErrorCode OH_PixelmapNative_SetMetadata(OH_PixelmapNative *pixelmap, OH_Pixelmap_HdrMetadataKey key,OH_Pixelmap_HdrMetadataValue *value)
+Image_ErrorCode OH_PixelmapNative_SetMetadata(OH_PixelmapNative *pixelmap, OH_Pixelmap_HdrMetadataKey key, OH_Pixelmap_HdrMetadataValue *value)
 ```
 
 **描述**
@@ -1544,7 +1682,6 @@ Image_ErrorCode OH_PixelmapNative_SetMetadata(OH_PixelmapNative *pixelmap, OH_Pi
 设置元数据。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -1563,7 +1700,7 @@ Image_ErrorCode OH_PixelmapNative_SetMetadata(OH_PixelmapNative *pixelmap, OH_Pi
 ### OH_PixelmapNative_SetColorSpaceNative()
 
 ```
-Image_ErrorCode OH_PixelmapNative_SetColorSpaceNative(OH_PixelmapNative *pixelmap,OH_NativeColorSpaceManager *colorSpaceNative)
+Image_ErrorCode OH_PixelmapNative_SetColorSpaceNative(OH_PixelmapNative *pixelmap, OH_NativeColorSpaceManager *colorSpaceNative)
 ```
 
 **描述**
@@ -1571,7 +1708,6 @@ Image_ErrorCode OH_PixelmapNative_SetColorSpaceNative(OH_PixelmapNative *pixelma
 设置NativeColorSpaceManager对象。
 
 **起始版本：** 13
-
 
 **参数：**
 
@@ -1589,7 +1725,7 @@ Image_ErrorCode OH_PixelmapNative_SetColorSpaceNative(OH_PixelmapNative *pixelma
 ### OH_PixelmapNative_GetColorSpaceNative()
 
 ```
-Image_ErrorCode OH_PixelmapNative_GetColorSpaceNative(OH_PixelmapNative *pixelmap,OH_NativeColorSpaceManager **colorSpaceNative)
+Image_ErrorCode OH_PixelmapNative_GetColorSpaceNative(OH_PixelmapNative *pixelmap, OH_NativeColorSpaceManager **colorSpaceNative)
 ```
 
 **描述**
@@ -1597,7 +1733,6 @@ Image_ErrorCode OH_PixelmapNative_GetColorSpaceNative(OH_PixelmapNative *pixelma
 获取NativeColorSpaceManager对象。
 
 **起始版本：** 13
-
 
 **参数：**
 
@@ -1623,7 +1758,6 @@ Image_ErrorCode OH_PixelmapNative_SetMemoryName(OH_PixelmapNative *pixelmap, cha
 设置pixelMap内存名字。
 
 **起始版本：** 13
-
 
 **参数：**
 
@@ -1651,7 +1785,6 @@ Image_ErrorCode OH_PixelmapNative_GetByteCount(OH_PixelmapNative *pixelmap, uint
 
 **起始版本：** 18
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -1677,7 +1810,6 @@ Image_ErrorCode OH_PixelmapNative_GetAllocationByteCount(OH_PixelmapNative *pixe
 
 **起始版本：** 18
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -1699,10 +1831,9 @@ Image_ErrorCode OH_PixelmapNative_AccessPixels(OH_PixelmapNative *pixelmap, void
 
 **描述**
 
-获取Pixelmap像素数据的内存地址，并锁定这块内存。<br>当该内存被锁定时，任何修改或释放该Pixelmap的像素数据的操作均会失败或无效。
+获取Pixelmap像素数据的内存地址，并锁定这块内存。<br> 当该内存被锁定时，任何修改或释放该Pixelmap的像素数据的操作均会失败或无效。
 
 **起始版本：** 15
-
 
 **参数：**
 
@@ -1725,10 +1856,9 @@ Image_ErrorCode OH_PixelmapNative_UnaccessPixels(OH_PixelmapNative *pixelmap)
 
 **描述**
 
-释放Pixelmap像素数据的内存锁。<br>该函数需要与[OH_PixelmapNative_AccessPixels](#oh_pixelmapnative_accesspixels)匹配使用。
+释放Pixelmap像素数据的内存锁。<br> 该函数需要与[OH_PixelmapNative_AccessPixels](#oh_pixelmapnative_accesspixels)匹配使用。
 
 **起始版本：** 15
-
 
 **参数：**
 
@@ -1741,5 +1871,55 @@ Image_ErrorCode OH_PixelmapNative_UnaccessPixels(OH_PixelmapNative *pixelmap)
 | 类型 | 说明 |
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_BAD_PARAMETER：pixelmap参数无效。<br>         IMAGE_LOCK_UNLOCK_FAILED：内存解锁失败。 |
+
+### OH_PixelmapNative_GetUniqueId()
+
+```
+Image_ErrorCode OH_PixelmapNative_GetUniqueId(OH_PixelmapNative *pixelmap, uint32_t *uniqueId)
+```
+
+**描述**
+
+获取PixelMap的唯一ID。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 获取唯一ID的PixelMap。 |
+| uint32_t *uniqueId | 获取的唯一ID。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_BAD_PARAMETER：参数无效，例如：pixelmap或uniqueId有误。 |
+
+### OH_PixelmapNative_IsReleased()
+
+```
+Image_ErrorCode OH_PixelmapNative_IsReleased(OH_PixelmapNative *pixelmap, bool *released)
+```
+
+**描述**
+
+检测PixelMap是否已被释放。如果已被释放，则任何访问该对象内部数据的方法调用将会失效。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被检测的PixelMap。 |
+| bool *released | PixelMap是否已被释放。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_BAD_PARAMETER：参数无效，例如：pixelmap或released有误。 |
 
 

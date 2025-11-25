@@ -14,7 +14,7 @@
 
 1. Check whether the identified exception is caused by an incorrect access path of the application source code. You can check the correctness of an access path against [Sandbox File Access Specifications](#sandbox-file-access-specifications).
 2. If the application source code accesses an incorrect path, change the path access policy. Specifically, use the **Context** API rather than the absolute path to access the **/data** directory. For details about the **Context** API, see the following documents:
-   https://gitee.com/openharmony/docs/blob/master/en/application-dev/application-models/application-context-stage.md
+   https://gitcode.com/openharmony/docs/blob/master/en/application-dev/application-models/application-context-stage.md
 3. If the exception is caused by a third-party module invoked by the application and the application source code does not use an absolute path to access files, proceed as follows:
    - Request the third-party module to access the file path through the **Context** API instead of using the absolute path.
    - If the third-party module is a common module used by both appspawn incubated processes and native processes, abstract the third-party module as a service and access the service in IPC mode.
@@ -85,7 +85,7 @@ For a specific application, its physical data directory and sandbox data directo
 > \<PACKAGENAME\> indicates the name of the current application package.
 
 For more information about the mapping between physical paths and sandbox paths, see the following:
-https://gitee.com/OpenHarmony/startup_appspawn/blob/master/appdata-sandbox64.json
+https://gitcode.com/OpenHarmony/startup_appspawn/blob/master/appdata-sandbox64.json
 
 ## Case: No Audio in the Contacts.hap Dialing Scenario
 
@@ -104,8 +104,8 @@ The new code is as follows:
 If an application exception persists after the preceding adaptation process, you can disable the application sandbox.
 
 1. Open the source code of the OpenHarmony startup_appspawn repository, and find the application sandbox configuration file based on the build type.
-   For a 32-bit system, modify the file **https://gitee.com/OpenHarmony/startup_appspawn/blob/master/appdata-sandbox.json**.
-   For a 64-bit system, modify the file **https://gitee.com/OpenHarmony/startup_appspawn/blob/master/appdata-sandbox.json**.
+   For a 32-bit system, modify the file **https://gitcode.com/OpenHarmony/startup_appspawn/blob/master/appdata-sandbox.json**.
+   For a 64-bit system, modify the file **https://gitcode.com/OpenHarmony/startup_appspawn/blob/master/appdata-sandbox.json**.
 
 2. Find the camera configuration in the .json file, and copy it to create your own application configuration record. In this new record, change the bundle name to your actual application name, and retain the other settings. The value **OFF** indicates that the application sandbox is disabled.
 

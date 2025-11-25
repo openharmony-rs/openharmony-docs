@@ -357,7 +357,7 @@ async function CreatePixelMapFromParcel() {
     data.readParcelable(ret);
 
     // Obtain the PixelMap object.
-    let unmarshPixelmap = ret.pixel_map;
+    let newPixelmap = ret.pixel_map;
   }
 }
 ```

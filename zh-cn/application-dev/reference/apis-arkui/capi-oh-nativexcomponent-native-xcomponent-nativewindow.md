@@ -4,7 +4,11 @@
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct NativeWindow OHNativeWindow
+```
 
 ## 概述
 
