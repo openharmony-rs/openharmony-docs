@@ -67,15 +67,15 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
    module.json5示例代码如下。
 
     <!-- @[startup_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/module.json5) -->
-
+    
     ``` JSON5
     {
       "module": {
         "name": "entry",
         "type": "entry",
-        // ···
+        // ...
         "appStartup": "$profile:startup_config", // 启动框架的配置文件
-        // ···
+        // ...
       }
     }
     ```
@@ -419,40 +419,40 @@ export default class StartupTask_001 extends StartupTask {
         hsp1、hsp2以及har1的module.json5示例代码如下。
 
         <!-- @[startup_hsp1module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/hsp1/src/main/module.json5) -->
-
+        
         ``` JSON5
         {
           "module": {
             "name": "hsp1",
             "type": "shared",
-            // ···
+            // ...
             "appStartup": "$profile:startup_config", // 启动框架的配置文件
-            // ···
+            // ...
           }
         }
         ```
         <!-- @[startup_hsp2module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/hsp2/src/main/module.json5) -->
-
+        
         ``` JSON5
         {
           "module": {
             "name": "hsp2",
             "type": "shared",
-            // ···
+            // ...
             "appStartup": "$profile:startup_config", // 启动框架的配置文件
-            // ···
+            // ...
           }
         }
         ```
         <!-- @[startup_harmodule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/har1/src/main/module.json5) -->
-
+        
         ``` JSON5
         {
           "module": {
             "name": "har1",
             "type": "har",
-            // ···
-            "appStartup": "$profile:startup_config", // 启动框架的配置文件
+            // ...
+            "appStartup": "$profile:startup_config" // 启动框架的配置文件
           }
         }
         ```

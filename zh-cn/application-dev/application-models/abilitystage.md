@@ -61,14 +61,14 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
 4. 在[module.json5配置文件](../quick-start/module-configuration-file.md)中，通过配置 `srcEntry` 参数来指定模块对应的代码路径，以作为HAP加载的入口。
 
     <!-- @[abilityModule_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/module.json5) -->
-
+    
     ``` JSON5
     {
       "module": {
         "name": "entry",
         "type": "entry",
         "srcEntry": "./ets/myabilitystage/MyAbilityStage.ets",
-        // ···
+        // ...
       }
     }
     ```
