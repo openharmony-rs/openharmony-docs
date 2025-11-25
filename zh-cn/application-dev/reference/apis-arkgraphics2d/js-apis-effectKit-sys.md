@@ -233,9 +233,9 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ### getAlphaZeroTransparentProportion<sup>23+</sup>
 
-getAlphaZeroTransparentProportion(): double
+getAlphaZeroTransparentProportion(): number
 
-获取图像中alpha=0的像素占比。
+获取图像中透明度为0的像素占比。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -247,7 +247,7 @@ getAlphaZeroTransparentProportion(): double
 
 | 类型                                     | 说明                                            |
 | :--------------------------------------- | :---------------------------------------------- |
-| double | alpha=0像素占比 |
+| number | 透明度为0的像素占比 |
 
 **错误码：**
 
@@ -278,7 +278,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.error('Failed to create color picker.');
     } else {
       console.info('Succeeded in creating color picker.');
-        let percentage: double = colorPicker.getAlphaZeroTransparentProportion();
+        let percentage: number = colorPicker.getAlphaZeroTransparentProportion();
       console.info('Get proportion of fully transparent pixels: ' + percentage);
     }
   })
