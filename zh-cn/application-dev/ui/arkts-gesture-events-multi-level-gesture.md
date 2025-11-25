@@ -97,7 +97,7 @@ Column()
 
 ### responseRegion对手势和事件的控制
 
-responseRegion属性可以实现组件的响应区域范围的变化。响应区域范围可以超出或者小于组件的布局范围。
+[responseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion)属性可以实现组件的响应区域范围的变化。响应区域范围可以超出或者小于组件的布局范围。
 
 <!-- @[response_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
 
@@ -124,7 +124,7 @@ Column() {
 
 ### hitTestBehavior对手势和事件的控制
 
-hitTestBehavior属性可以实现在复杂的多层级场景下，一些组件能够响应手势和事件，而一些组件不能响应手势和事件。
+[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)属性可以实现在复杂的多层级场景下，一些组件能够响应手势和事件，而一些组件不能响应手势和事件。
 
 <!-- @[hittestbehavior_first](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
 
@@ -294,7 +294,7 @@ Column() {
 .id('ComponentA')
 .priorityGesture(TapGesture({count: 1}))
 ```
-当父组件以.priorityGesture的形式绑定手势时，父组件所绑定的手势优先级高于子组件。
+当父组件以.[priorityGesture](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#prioritygesture)的形式绑定手势时，父组件所绑定的手势优先级高于子组件。
 此时，单击组件B区域范围，组件A的点击手势会触发，组件B的点击手势不会触发。
 
 如果需要父子组件所绑定的手势不发生冲突，均可响应，则可以使用并行的方式在父组件绑定手势。
@@ -310,11 +310,11 @@ Column() {
 .id('ComponentA')
 .parallelGesture(TapGesture({count: 1}))
 ```
-当父组件以.parallelGesture的形式绑定手势时，父组件和子组件所绑定的手势均可触发。
+当父组件以.[parallelGesture](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#parallelgesture)的形式绑定手势时，父组件和子组件所绑定的手势均可触发。
 此时，单击组件B区域范围，组件A和组件B的点击手势均会触发。
 
 ### OverlayManager的事件透传
-OverlayManager事件机制，默认优先被WrappedBuilder内组件先接收，不会向下传递。
+OverlayManager事件机制，默认优先被[WrappedBuilder](../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)内组件先接收，不会向下传递。
 
 若希望OverlayManager下方的页面也能感应到事件，可采用hitTestBehavior(HitTestMode.Transparent)来传递事件，参考以下伪代码。
 
