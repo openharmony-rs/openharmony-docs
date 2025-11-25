@@ -243,7 +243,7 @@ To enable NFC tags to be read without starting an application, declare NFC-relat
 >1. The **actions** field must contain **ohos.nfc.tag.action.TAG_FOUND** and cannot be changed.
 >2. The **type** field under **uris** must start with **tag-tech/**, followed by NfcA, NfcB, NfcF, NfcV, IsoDep, Ndef, MifareClassic, MifareUL, or NdefFormatable. If there are multiple types, enter them in different lines. Incorrect setting will cause a parsing failure.
 >3. The **name** field of **requestPermissions** is mandatory. It must be **ohos.permission.NFC_TAG** and cannot be changed.
->4. Wearable devices do not support reading cards in the background.
+>4. Wearable devices do not support reading NFC tags without starting an application.
 
 ```ts
     "abilities": [
