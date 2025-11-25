@@ -167,7 +167,7 @@ List组件创建时，显示区域中的ListItem会被创建与布局。预加�
 ### 使用Repeat创建ListItem
 **使用virtualScroll**
 
-List组件创建时，显示区域内的ListItem将被创建和布局。预加载范围内的ListItem在空闲时创建和布局，并且挂载至组件树上。预加载范围外的ListItem则不会被创建。
+List组件创建时，使用设置了[virtualScroll](../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscroll)的Repeat生成ListItem场景,显示区域内的ListItem将被创建和布局。预加载范围内的ListItem在渲染线程空闲时创建和布局，并且挂载至组件树上。预加载范围外的ListItem则不会被创建。
 
 当List组件滑动时，进入预加载及显示区域的ListItem，将从缓存池中获取ListItem并复用及布局，若缓存池中无ListItem，则会新创建并布局。滑出预加载及显示区域的ListItem将被回收至缓存池。
 

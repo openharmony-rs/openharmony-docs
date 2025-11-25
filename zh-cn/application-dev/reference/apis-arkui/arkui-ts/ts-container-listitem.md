@@ -445,7 +445,7 @@ struct ListItemExample3 {
 
 ### 示例4（通过ComponentContent设置划出组件）
 
-该示例通过[ComponentContent](../js-apis-arkui-ComponentContent.md)设置ListItem中的划出组件操作时显示的操作项。
+该示例通过[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)设置ListItem中的划出组件操作时显示的操作项。
 
 ```ts
 // xxx.ets

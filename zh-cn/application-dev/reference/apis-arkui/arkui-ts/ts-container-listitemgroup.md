@@ -352,7 +352,7 @@ interface ArrObject {
 
 ### 示例3（设置Header/Footer）
 
-该示例通过[ComponentContent](../js-apis-arkui-ComponentContent.md)设置Header/Footer。
+该示例通过[ComponentContent](../js-apis-arkui-ComponentContent.md#constructor-1)设置Header/Footer。
 
 ListDataSource说明及完整代码参考[示例1设置吸顶/吸底](#示例1设置吸顶吸底)。
 
