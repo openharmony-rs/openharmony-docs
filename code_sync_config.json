@@ -11242,7 +11242,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ChangingDataSubproperties.ets",
 				"functions":[
 					{
-						"end_line":145,
+						"end_line":84,
 						"name":"changing_data_sub_properties",
 						"start_line":16
 					},
@@ -11257,7 +11257,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ObservingNestedClassProperties.ets",
 				"functions":[
 					{
-						"end_line":154,
+						"end_line":95,
 						"name":"observing_nested_class_properties",
 						"start_line":16
 					}
@@ -11267,7 +11267,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ObservingComponentInternalState.ets",
 				"functions":[
 					{
-						"end_line":149,
+						"end_line":90,
 						"name":"observing_component_internal_state",
 						"start_line":16
 					}
@@ -11277,7 +11277,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ReceivingExternalInput.ets",
 				"functions":[
 					{
-						"end_line":141,
+						"end_line":82,
 						"name":"receiving_external_input",
 						"start_line":16
 					}
@@ -11307,7 +11307,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ImageFlickeringDuringRerenders.ets",
 				"functions":[
 					{
-						"end_line":156,
+						"end_line":96,
 						"name":"image_flickering_during_rerenders",
 						"start_line":16
 					}
@@ -11317,7 +11317,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/UINotRerenderedWhenObjectLinkIsChanged.ets",
 				"functions":[
 					{
-						"end_line":152,
+						"end_line":93,
 						"name":"ui_not_rerendered",
 						"start_line":16
 					}
