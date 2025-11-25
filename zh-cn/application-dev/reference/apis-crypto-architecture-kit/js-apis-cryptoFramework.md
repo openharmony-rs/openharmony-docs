@@ -7036,6 +7036,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. |
 | 17630001 | crypto operation error. |
 
 **示例：**
@@ -7114,6 +7115,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. |
 | 17630001 | crypto operation error. |
 
 **示例：**
@@ -7191,6 +7193,7 @@ generateSecretSync(params: KdfSpec): DataBlob
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.  |
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c. |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. |
 | 17630001 | crypto operation error. |
 
 **示例：**
