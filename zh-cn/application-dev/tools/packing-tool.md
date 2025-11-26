@@ -642,7 +642,7 @@ Check shared App mode invalid.
 
 1. 存在两个以上的[HSP包](../quick-start/in-app-hsp.md)。例如下图使用DevEco Studio构建App时，工程中包含了两个HSP包library和library1，此时打包APP包失败。
 
-![alt text](figures/zh_cn_packing_tool_image_10012017_01.png)
+    ![alt text](figures/zh_cn_packing_tool_image_10012017_01.png)
 
 2. HSP包在`module.json5`中配置了`dependencies`。
 
