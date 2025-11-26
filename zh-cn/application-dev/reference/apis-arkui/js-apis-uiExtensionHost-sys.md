@@ -162,6 +162,7 @@ onAvoidAreaChange(callback: Callback<uiExtension.AvoidAreaInfo>): void;
 **示例：**
 
 ```ts
+// ArkTS-Sta示例
 // ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
@@ -245,6 +246,7 @@ offAvoidAreaChange(callback?: Callback<uiExtension.AvoidAreaInfo>): void;
 **示例：**
 
 ```ts
+// ArkTS-Sta示例
 // ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession} from '@kit.AbilityKit';
 
@@ -328,6 +330,7 @@ onWindowSizeChange(callback: Callback<window.Size>): void;
 **示例：**
 
 ```ts
+// ArkTS-Sta示例
 // ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
@@ -411,6 +414,7 @@ offWindowSizeChange(callback?: Callback<window.Size>): void;
 **示例：**
 
 ```ts
+// ArkTS-Sta示例
 // ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
 

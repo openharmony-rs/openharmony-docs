@@ -180,6 +180,7 @@ onAvoidAreaChange(callback: Callback&lt;AvoidAreaInfo&gt;): void
 **示例：**
 
 ```ts
+// ArkTS-Sta示例
 // ExtensionProvider.ets
 import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
@@ -265,6 +266,7 @@ offAvoidAreaChange(callback?: Callback&lt;AvoidAreaInfo&gt;): void
 **示例：**
 
 ```ts
+// ArkTS-Sta示例
 // ExtensionProvider.ets
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
@@ -349,6 +351,7 @@ onWindowSizeChange(callback: Callback&lt;window.Size&gt;): void
 **示例：**
 
 ```ts
+// ArkTS-Sta示例
 // ExtensionProvider.ets
 import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
@@ -432,6 +435,7 @@ offWindowSizeChange(callback?: Callback<window.Size>): void
 **示例：**
 
 ```ts
+// ArkTS-Sta示例
 // ExtensionProvider.ets
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
@@ -532,6 +536,7 @@ onRectChange(reasons: int, callback: Callback&lt;RectChangeOptions&gt;): void
 **示例：**
 
 ```ts
+// ArkTS-Sta示例
 // ExtensionProvider.ets
 import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
@@ -630,6 +635,7 @@ offRectChange(callback?: Callback&lt;RectChangeOptions&gt;): void
 **示例：**
 
 ```ts
+// ArkTS-Sta示例
 // ExtensionProvider.ets
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
