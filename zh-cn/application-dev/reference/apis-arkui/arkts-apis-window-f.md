@@ -298,6 +298,7 @@ import { window } from '@kit.ArkUI';
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import common from '@ohos.app.ability.common';
+import { LocalStorage } from '@ohos.arkui.stateManagement'
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -305,23 +306,27 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     // 创建子窗
     windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
-      subWindow.showWindow().then(() => {
-        try{
-          window.getLastWindow(this.context as common.UIAbilityContext, (err: BusinessError<void>|null, topWindow: window.Window|undefined) => {
-            if (err?.code) {
-              console.error(`Failed to obtain the top window. Cause code: ${err?.code}, message: ${err?.message}`);
-            } else {
-              console.info(`Succeeded in obtaining the top window. Window id: ${topWindow?.getWindowProperties().id}`);
-            }
-          });
-        }catch(exception){
-          let err = exception as BusinessError;
-          console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
-        }
+      let storage: LocalStorage = new LocalStorage();
+      subWindow.loadContent('pages/Index', storage, (err: BusinessError): void => {
+        subWindow.showWindow().then(() => {
+          try{
+            window.getLastWindow(this.context as common.UIAbilityContext, (err: BusinessError<void>|null, topWindow: window.Window|undefined) => {
+              if (err?.code) {
+                console.error(`Failed to obtain the top window. Cause code: ${err?.code}, message: ${err?.message}`);
+              } else {
+                console.info(`Succeeded in obtaining the top window. Window id: ${topWindow?.getWindowProperties().id}`);
+              }
+            });
+          }catch(exception){
+            let err = exception as BusinessError;
+            console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
+          }
+        });
       });
     });
   }
 }
+
 ```
 
 ## window.getLastWindow<sup>9+</sup>
@@ -413,6 +418,7 @@ import { window } from '@kit.ArkUI';
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import common from '@ohos.app.ability.common';
+import { LocalStorage } from '@ohos.arkui.stateManagement'
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -420,19 +426,22 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     // 创建子窗
     windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
-      subWindow.showWindow().then(() => {
-        try {
-          window.getLastWindow(this.context as common.UIAbilityContext ).then((topWindow :window.Window | undefined ) => {
-            let windowClass = topWindow;
-            console.info(`Succeeded in obtaining the top window. Window id: ${topWindow?.getWindowProperties().id}`);
-          }).catch((Err: Error) => {
-            let err = Err as BusinessError;
-            console.error(`Failed to obtain the top window. Cause code: ${err?.code}, message: ${err?.message}`);
-          });
-        } catch (exception) {
-          let err = exception as BusinessError;
-          console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
-        }
+      let storage: LocalStorage = new LocalStorage();
+      subWindow.loadContent('pages/Index', storage, (err: BusinessError): void => {
+        subWindow.showWindow().then(() => {
+          try {
+            window.getLastWindow(this.context as common.UIAbilityContext ).then((topWindow :window.Window | undefined ) => {
+              let windowClass = topWindow;
+              console.info(`Succeeded in obtaining the top window. Window id: ${topWindow?.getWindowProperties().id}`);
+            }).catch((Err: Error) => {
+              let err = Err as BusinessError;
+              console.error(`Failed to obtain the top window. Cause code: ${err?.code}, message: ${err?.message}`);
+            });
+          } catch (exception) {
+            let err = exception as BusinessError;
+            console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
+          }
+        });
       });
     });
   }
@@ -561,6 +570,7 @@ import { window } from '@kit.ArkUI';
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import common from '@ohos.app.ability.common';
+import { LocalStorage } from '@ohos.arkui.stateManagement'
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -568,15 +578,18 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     // 创建子窗
     windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
-      subWindow.showWindow().then(() => {
-        let mainWindow = windowStage.getMainWindowSync();
-        let mainWindowId = mainWindow.getWindowProperties().id;
-        let subWindowId = subWindow.getWindowProperties().id;
-        // 切换焦点
-        window.shiftAppWindowFocus(mainWindowId as int, subWindowId as int).then((): void => {
-          console.info('Succeeded in shifting app window focus');
-        }).catch((err: BusinessError): void => {
-          console.error(`Failed to shift app window focus. Cause code: ${err.code}, message: ${err.message}`);
+      let storage: LocalStorage = new LocalStorage();
+      subWindow.loadContent('pages/Index', storage, (err: BusinessError): void => {
+        subWindow.showWindow().then(() => {
+          let mainWindow = windowStage.getMainWindowSync();
+          let mainWindowId = mainWindow.getWindowProperties().id;
+          let subWindowId = subWindow.getWindowProperties().id;
+          // 切换焦点
+          window.shiftAppWindowFocus(subWindowId as int, mainWindowId as int).then((): void => {
+            console.info('Succeeded in shifting app window focus');
+          }).catch((err: BusinessError): void => {
+            console.error(`Failed to shift app window focus. Cause code: ${err.code}, message: ${err.message}`);
+          });
         });
       });
     });
