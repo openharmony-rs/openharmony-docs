@@ -1860,7 +1860,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":164,
+						"end_line":183,
 						"name":"pasteboard_permission",
 						"start_line":17
 					}
@@ -1875,12 +1875,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":47,
 						"name":"pasteboard_usedata",
 						"start_line":17
 					},
 					{
-						"end_line":89,
+						"end_line":84,
 						"name":"pasteboard_useudc",
 						"start_line":18
 					}
@@ -26518,14 +26518,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":296,
+						"end_line":286,
 						"name":"pasteboard_timelapse_Record7",
-						"start_line":291
+						"start_line":280
 					},
 					{
-						"end_line":205,
+						"end_line":202,
 						"name":"pasteboard_timelapse_Record4",
-						"start_line":179
+						"start_line":175
 					},
 					{
 						"end_line":289,
@@ -26533,14 +26533,14 @@
 						"start_line":278
 					},
 					{
-						"end_line":27,
+						"end_line":29,
 						"name":"pasteboard_timelapse_Record1",
-						"start_line":21
+						"start_line":20
 					},
 					{
-						"end_line":277,
+						"end_line":266,
 						"name":"pasteboard_timelapse_Record5",
-						"start_line":208
+						"start_line":203
 					}
 				]
 			},
@@ -26548,7 +26548,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets",
 				"functions":[
 					{
-						"end_line":24,
+						"end_line":25,
 						"name":"pasteboard_timelaps_PasteData1",
 						"start_line":16
 					},
@@ -27478,24 +27478,24 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":142,
+						"end_line":141,
 						"name":"pasteboard_native6",
-						"start_line":102
+						"start_line":98
 					},
 					{
-						"end_line":25,
+						"end_line":26,
 						"name":"pasteboard_native2",
-						"start_line":19
+						"start_line":18
 					},
 					{
-						"end_line":55,
+						"end_line":56,
 						"name":"pasteboard_native4",
-						"start_line":46
+						"start_line":44
 					},
 					{
-						"end_line":95,
+						"end_line":97,
 						"name":"pasteboard_native5",
-						"start_line":67
+						"start_line":57
 					}
 				]
 			}
