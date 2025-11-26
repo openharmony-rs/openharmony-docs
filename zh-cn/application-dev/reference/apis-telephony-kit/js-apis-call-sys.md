@@ -8747,3 +8747,60 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 | MARK_TYPE_OTHERS | 9 | 其他。 |
 | MARK_TYPE_YELLOW_PAGE | 10 | 黄页。 |
 | MARK_TYPE_ENTERPRISE<sup>14+</sup> | 11 | 企业联系人。 |
+
+## call.onCallDetailsChange
+function onCallDetailsChange(callback: Callback<CallAttributeOptions>): void;
+
+Subscribe to the callDetailsChange event
+**系统接口：**此接口为系统接口。
+
+**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+
+**相关接口：**该接口对应的ArkTS-Dyn接口
+
+**系统能力：**SystemCapability.Telephony.CallManager
+
+**ArkTs-Sta起始版本：**22
+
+**参数：**
+|参数名    |类型                                                       |必填 |说明                                               |
+|--------- |----------------------------------------------------------|----  |-------------------------------------------------- |
+| callback | Callback<[CallAttributeOptions](#callattributeoptions7)> | 是   | 以回调函数的方式返回订阅callDetailsChange事件的结果。|
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import { call } from '@kit.Telephony';
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('callDetailsChange');
+    }
+
+    aboutToAppear(): void {
+        call.onCallDetailsChange(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
