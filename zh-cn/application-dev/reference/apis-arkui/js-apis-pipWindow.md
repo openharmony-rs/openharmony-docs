@@ -71,7 +71,7 @@ create(config: PiPConfiguration): Promise&lt;PiPController&gt;
 
 | 错误码ID | 错误信息                                                                                                                                         |
 |-------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| 401   | Params error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401   | Params error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 801   | Capability not supported.Failed to call the API due to limited device capabilities.                                                       |
 
 **示例：**
@@ -206,7 +206,7 @@ create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise&lt;P
 
 | 错误码ID | 错误信息                                                                                                                                         |
 |-------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| 401   | Params error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401   | Params error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 801   | Capability not supported.Failed to call the API due to limited device capabilities.                                                       |
 
 **示例：**
@@ -698,7 +698,7 @@ updateContentSize(width: number, height: number): void
 
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
-| 401   | Params error. Possible causes: 1. Invalid args count, 2 args is needed. 2. Failed to convert parameter to int or width <= 0. 3. Controller is nullptr. |
+| 401   | Params error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Controller is nullptr. |
 
 **示例：**
 
@@ -730,7 +730,7 @@ updatePiPControlStatus(controlType: PiPControlType, status: PiPControlStatus): v
 
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
-| 401   | Params error. Possible causes: 1. Invalid args count, 2 args is needed. 2. Failed to convert parameter to int or controlType < 0. 3. Failed to convert parameter to int. 4. Controller is nullptr. |
+| 401   | Params error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Controller is nullptr. |
 
 **示例：**
 
@@ -808,7 +808,7 @@ setPiPControlEnabled(controlType: PiPControlType, enabled: boolean): void
 
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
-| 401   | Params error. Possible causes: 1. Invalid args count, 2 args is needed. 2. Failed to convert parameter to int. 3. Failed to convert parameter to bool. 4. Controller is nullptr. |
+| 401   | Params error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Controller is nullptr. |
 
 **示例：**
 
@@ -1135,7 +1135,7 @@ on(type: 'pipWindowSizeChange', callback: Callback&lt;PiPWindowSize&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     | Params error. Possible causes: 1. Invalid args count, count >= 2 is needed. 2. Failed to convert parameter to callbackType. 3. Callback is nullptr or not callable. 4. RegisterCallback failed. |
+| 401     | Params error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Callback is not callable. 4. RegisterCallback failed. |
 | 801   | Capability not supported.Failed to call the API due to limited device capabilities.                                                       |
 | 1300014    | PiP internal error.                                    |
 
@@ -1174,7 +1174,7 @@ off(type: 'pipWindowSizeChange', callback?: Callback&lt;PiPWindowSize&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     | Params error. Possible causes: 1. Invalid args count, 0 < count <= 2 is needed. 2. Failed to convert parameter to string. |
+| 401     | Params error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801   | Capability not supported.Failed to call the API due to limited device capabilities.                                                       |
 
 **示例：**
