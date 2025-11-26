@@ -9069,7 +9069,7 @@ static getCallingPid(): number
       }
       return true;
     }
- }
+  }
   ```
 
 ### getCallingUid
