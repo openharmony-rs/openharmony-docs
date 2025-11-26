@@ -5087,7 +5087,7 @@ struct WebComponent {
 
 setDownloadDelegate(delegate: WebDownloadDelegate): void
 
-为当前的Web组件设置一个WebDownloadDelegate，该delegate用来接收页面内触发的下载与下载的进展。
+为当前的Web组件设置一个WebDownloadDelegate，该delegate用来接收页面内触发的下载进度的委托。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -5095,7 +5095,7 @@ setDownloadDelegate(delegate: WebDownloadDelegate): void
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| delegate      | [WebDownloadDelegate](./arkts-apis-webview-WebDownloadDelegate.md)  | 是   | 用来接收下载进回调的委托。 |
+| delegate      | [WebDownloadDelegate](./arkts-apis-webview-WebDownloadDelegate.md)  | 是   | 用来接收下载进度的委托。 |
 
 **错误码：**
 
