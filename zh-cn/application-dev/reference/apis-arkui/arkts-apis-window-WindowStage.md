@@ -58,6 +58,8 @@ getMainWindow(callback: AsyncCallback&lt;Window&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -79,6 +81,38 @@ export default class EntryAbility extends UIAbility {
         const errCode: number = err.code;
         if (errCode) {
           console.error(`Failed to obtain the main window. Cause code: ${errCode}, message: ${err.message}`);
+          return;
+        }
+        windowClass = data;
+        console.info(`Succeeded in obtaining the main window. Data: ${JSON.stringify(data)}`);
+      });
+    });
+  }
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
+      if (err?.code) {
+        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      let windowClass: window.Window | undefined = undefined;
+      windowStage.getMainWindow((err: BusinessError<void> | null, data: window.Window | undefined):void => {
+        if (err?.code) {
+          console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
           return;
         }
         windowClass = data;
@@ -124,6 +158,8 @@ getMainWindow(): Promise&lt;Window&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -146,6 +182,37 @@ export default class EntryAbility extends UIAbility {
         windowClass = data;
         console.info('Succeeded in obtaining the main window.');
       }).catch((err: BusinessError) => {
+        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    });
+  }
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
+      if (err?.code) {
+        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      let windowClass: window.Window | undefined = undefined;
+      let promise = windowStage.getMainWindow();
+      promise.then((data: window.Window | undefined) => {
+        windowClass = data;
+        console.info('Succeeded in obtaining the main window.');
+      }).catch((err: Error) => {
         console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
       });
     });
@@ -187,6 +254,9 @@ getMainWindowSync(): Window
 | 1300005 | This window stage is abnormal. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 <!--code_no_check-->
 ```ts
 // EntryAbility.ets
@@ -207,6 +277,33 @@ export default class EntryAbility extends UIAbility {
         let windowClass = windowStage.getMainWindowSync();
       } catch (exception) {
         console.error(`Failed to obtain the main window. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
+      if (err?.code) {
+        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+      } catch (err: Error) {
+        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
       }
     });
   }
@@ -249,6 +346,8 @@ createSubWindow(name: string, callback: AsyncCallback&lt;Window&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -278,6 +377,40 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to create the subwindow. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    try {
+      windowStage.createSubWindow('mySubWindow', (err: BusinessError<void> | null, data: window.Window | undefined): void => {
+        if (err?.code) {
+          console.error(`Failed to create the subwindow. Cause code: ${err?.code}, message: ${err?.message}`);
+          return;
+        }
+        windowClass = data;
+        console.info(`Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
+        if (!windowClass) {
+          console.info('Failed to load the content. Cause: windowClass is null');
+        } else {
+          windowClass!.resize(500, 1000);
+        }
+      });
+    } catch (err: Error) {
+      console.error(`Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 };
@@ -324,6 +457,8 @@ createSubWindow(name: string): Promise&lt;Window&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -345,6 +480,34 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to create the subwindow. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    try {
+      let promise = windowStage.createSubWindow('mySubWindow');
+      promise.then((data: window.Window | undefined) => {
+        windowClass = data;
+        console.info(`Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
+      }).catch((err: Error) => {
+        console.error(`Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (err: Error) {
+      console.error(`Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 };
@@ -559,6 +722,8 @@ loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -583,6 +748,36 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to load the content. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  storage: LocalStorage = new LocalStorage();
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    this.storage.setOrCreate('storageSimpleProp', 121);
+    console.info('onWindowStageCreate');
+    try {
+      windowStage.loadContent('pages/page2', this.storage, (err: BusinessError<void> | null): void => {
+        if (err?.code) {
+          console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
+          return;
+        }
+        console.info('Succeeded in loading the content.');
+      });
+    } catch (err: Error) {
+      console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 };
@@ -628,6 +823,8 @@ loadContent(path: string, storage?: LocalStorage): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -652,6 +849,35 @@ export default class EntryAbility extends UIAbility {
       console.error(`Failed to load the content. Cause code: ${exception.code}, message: ${exception.message}`);
     }
     ;
+  }
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  storage: LocalStorage = new LocalStorage();
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    this.storage.setOrCreate('storageSimpleProp', 121);
+    console.info('onWindowStageCreate');
+    try {
+      let promise = windowStage.loadContent('pages/page2', this.storage);
+      promise.then(() => {
+        console.info('Succeeded in loading the content.');
+      }).catch((err: Error) => {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (err: Error) {
+      console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+    }
   }
 };
 ```
@@ -690,6 +916,8 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -711,6 +939,33 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to load the content. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    try {
+      windowStage.loadContent('pages/page2', (err: BusinessError<void> | null): void => {
+        if (err?.code) {
+          console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
+          return;
+        }
+        console.info('Succeeded in loading the content.');
+      });
+    } catch (err: Error) {
+      console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 };
@@ -751,6 +1006,8 @@ loadContentByName(name: string, storage: LocalStorage, callback: AsyncCallback&l
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 <!--code_no_check-->
 ```ts
 // EntryAbility.ets
@@ -782,6 +1039,58 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 <!--code_no_check-->
+```ts
+// ets/pages/Index.ets
+export const entryName : string = 'Index';
+@Entry({routeName: entryName, useSharedStorage: true})
+@Component
+export struct Index {
+  @State message: string = 'Hello World'
+  @LocalStorageLink('storageSimpleProp') storageSimpleProp: number = 1;
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import * as Index from '../pages/Index'; // 导入命名路由页面
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  storage: LocalStorage = new LocalStorage();
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    this.storage.setOrCreate('storageSimpleProp', 121);
+    try {
+      windowStage.loadContentByName(Index.entryName, this.storage, (err: BusinessError<void> | null): void => {
+        if (err?.code) {
+          console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
+          return;
+        }
+        console.info('Succeeded in loading the content.');
+      });
+    } catch (err: Error) {
+      console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+};
+```
 ```ts
 // ets/pages/Index.ets
 export const entryName : string = 'Index';
@@ -838,6 +1147,8 @@ loadContentByName(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 <!--code_no_check-->
 ```ts
 // EntryAbility.ets
@@ -866,6 +1177,54 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 <!--code_no_check-->
+```ts
+// ets/pages/Index.ets
+export const entryName : string = 'Index';
+@Entry({routeName: entryName})
+@Component
+export struct Index {
+  @State message: string = 'Hello World'
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import * as Index from '../pages/Index'; // 导入命名路由页面
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    try {
+      windowStage.loadContentByName(Index.entryName, (err: BusinessError<void> | null): void => {
+        if (err?.code) {
+          console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
+          return;
+        }
+        console.info('Succeeded in loading the content.');
+      });
+    } catch (err: Error) {
+      console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+};
+```
 ```ts
 // ets/pages/Index.ets
 export const entryName : string = 'Index';
@@ -927,6 +1286,8 @@ loadContentByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 <!--code_no_check-->
 ```ts
 // EntryAbility.ets
@@ -956,6 +1317,57 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 <!--code_no_check-->
+```ts
+// ets/pages/Index.ets
+export const entryName : string = 'Index';
+@Entry({routeName: entryName, useSharedStorage: true})
+@Component
+export struct Index {
+  @State message: string = 'Hello World'
+  @LocalStorageLink('storageSimpleProp') storageSimpleProp: number = 1;
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import * as Index from '../pages/Index'; // 导入命名路由页面
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  storage: LocalStorage = new LocalStorage();
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    this.storage.setOrCreate('storageSimpleProp', 121);
+    try {
+      let promise = windowStage.loadContentByName(Index.entryName, this.storage);
+      promise.then(() => {
+        console.info('Succeeded in loading the content.');
+      }).catch((err: Error) => {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (err: Error) {
+      console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+};
+```
 ```ts
 // ets/pages/Index.ets
 export const entryName : string = 'Index';
