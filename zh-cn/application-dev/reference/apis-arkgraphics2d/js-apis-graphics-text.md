@@ -935,9 +935,9 @@ struct RenderTest {
 }
 ```
 
-### loadFontSyncWithCheck
+### loadFontSyncWithCheck<sup>23+</sup>
 
-loadFontSyncWithCheck(name: string, path: string | Resource): void
+loadFontSyncWithCheck(name: string, path: string | Resource, index?: number): void
 
 同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf、ttc。
 
@@ -953,7 +953,7 @@ loadFontSyncWithCheck(name: string, path: string | Resource): void
 | ----- | ------------------ | ---- | --------------------------------------------------------------------------------- |
 | name  | string             | 是   | 加载成字体后，调用该字体所使用的名称。                                                |
 | path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是   | 需要导入的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 "rawfile/目录or文件名"。 |
-|   index  | int | 否   | 字体文件格式为ttc时，指定加载的字体索引。 |
+|   index  | number | 否   | 字体文件格式为ttc时，指定加载的字体索引。 |
 
 **错误码：**
 
@@ -961,13 +961,14 @@ loadFontSyncWithCheck(name: string, path: string | Resource): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 25900001 | 参数错误。 |
-| 25900002 |  文件未找到。指定的文件不存在或路径不正确 |
-| 25900003 |  打开文件失败。由于权限或者 I/O 问题，无法打开文件。 |
-| 25900004 |  文件定位失败。系统无法重新定位文件读取指针。 |
-| 25900005 |  获取文件大小失败。系统无法获取文件大小信息。 |
-| 25900006 |  文件为空。指定的文件为空。 |
-| 25900007 |  文件损坏。文件内容无效或损坏，无法解析。 |
+| 25900001 | Parameter error. |
+| 25900002 | File not found. |
+| 25900003 | Failed to open the file. |
+| 25900004 | File seek failed. |
+| 25900005 | Failed to get the file size. |
+| 25900006 | Failed to read the file. |
+| 25900007 | Empty file. |
+| 25900008 | Corrupt file. |
 
 **示例：**
 
@@ -1007,11 +1008,11 @@ struct Index {
 }
 ```
 
-### loadFontWithCheck<sup>18+</sup>
+### loadFontWithCheck<sup>23+</sup>
 
-loadFontWithCheck(name: string, path: string | Resource): Promise\<void>
+loadFontWithCheck(name: string, path: string | Resource, index?: number): Promise\<void>
 
-异步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含：ttf、otf、ttc。
+加载自定义字体，使用Promise异步回调。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含：ttf、otf、ttc。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1025,12 +1026,12 @@ loadFontWithCheck(name: string, path: string | Resource): Promise\<void>
 |   -----  | ------------------ | ---- | --------------------------------------------------------------------------------- |
 |   name   | string             | 是   | 加载字体后，调用该字体所使用的别名，可填写任意字符串，可使用该别名指定并使用该字体。 |
 |   path   | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是   | 需要加载的字体文件的路径，支持两种格式： "file:// + 字体文件绝对路径" 或 "rawfile/目录or文件名"。 |
-|   index  | int | 否   | 字体文件格式为ttc时，指定加载的字体索引。 |
+|   index  | number | 否   | 字体文件格式为ttc时，指定加载的字体索引。 |
 **返回值：**
 
 | 类型           | 说明                          |
 | -------------- | ----------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1038,13 +1039,14 @@ loadFontWithCheck(name: string, path: string | Resource): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 25900001 | 参数错误。 |
-| 25900002 |  文件未找到。指定的文件不存在或路径不正确 |
-| 25900003 |  打开文件失败。由于权限或者 I/O 问题，无法打开文件。 |
-| 25900004 |  文件定位失败。系统无法重新定位文件读取指针。 |
-| 25900005 |  获取文件大小失败。系统无法获取文件大小信息。 |
-| 25900006 |  文件为空。指定的文件为空。 |
-| 25900007 |  文件损坏。文件内容无效或损坏，无法解析。 |
+| 25900001 | Parameter error. |
+| 25900002 | File not found. |
+| 25900003 | Failed to open the file. |
+| 25900004 | File seek failed. |
+| 25900005 | Failed to get the file size. |
+| 25900006 | Failed to read the file. |
+| 25900007 | Empty file. |
+| 25900008 | Corrupt file. |
 
 **示例：**
 
