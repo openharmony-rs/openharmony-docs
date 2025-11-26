@@ -7160,7 +7160,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 
 ## offWindowTitleButtonRectChange<sup>22+</sup>
 
-offWindowTitleButtonRectChange(callback: Callback&lt;TitleButtonRect&gt;): void
+offWindowTitleButtonRectChange(callback?: Callback&lt;TitleButtonRect&gt;): void
 
 关闭窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
