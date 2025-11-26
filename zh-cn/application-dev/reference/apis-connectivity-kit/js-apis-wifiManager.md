@@ -723,8 +723,8 @@ addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&g
 
 添加候选网络配置，使用callback异步回调。
 
-- 将指定的WLAN设备配置添加为候选网络，系统会在适当时候尝试连接（具体场景包括设备开机启动后扫描到网络、从无网络环境进入有网络环境、当前WLAN信号弱或断开时、用户手动触发网络重连、系统定期网络优化时）。
-- 添加的候选配置不会立即触发连接，而是由系统根据策略决定连接时机（信号质量策略、网络优先级策略、能耗优化策略、安全评估策略等）；。
+- 将指定的WLAN设备配置添加为候选网络，添加后的网络在没有连接记录的情况下无法触发自动回连，可以通过 connectToCandidateConfig 或 connectToCandidateConfigWithUserAction 方法实现候选网络连接，页面确认连接成功后，可实现自动回连。
+- 候选网络属于应用维度添加的网络配置，和系统网络配置是相互隔离的，在系统WLAN页面不可见。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -1023,7 +1023,7 @@ connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
 
 - 调用此接口时，系统将提示用户确认是否信任并连接到指定的候选网络，通过Promise机制异步返回用户响应结果，确保操作的非阻塞性。
 - 用户确认是连接过程中的必要步骤，未获得用户信任确认前，连接操作不会执行。
-- 该接口适用于需要用户主动参与的网络连接场景，以增强安全性。
+- 建议在发起连接前先通过 startScan 接口触发一次 WLAN 扫描，通过 on("wifiScanStateChange") 方法监听到扫描结果刷新后再连接，以提高连接成功率。
 
 > **说明：**
 > 调用[wifiManager.connectToCandidateConfig](#wifimanagerconnecttocandidateconfig9)连接候选网络时，不会返回用户响应结果。
@@ -2916,7 +2916,7 @@ off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
 on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
-注册WIFI接收信号强度(RSSI)变化事件，在业务退出时，要调用off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册WLAN接收信号强度(RSSI)变化事件，在业务退出时，要调用off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2944,7 +2944,7 @@ on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
-取消注册Wi-Fi接收信号强度(RSSI)变化事件。使用callback异步回调。
+取消注册WLAN接收信号强度(RSSI)变化事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 

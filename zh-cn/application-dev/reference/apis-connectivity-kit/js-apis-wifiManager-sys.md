@@ -341,7 +341,7 @@ getSupportedFeatures(): number
 | 0x0004 | GAS/ANQP特性。 |
 | 0x0008 | Wifi-Direct特性。 |
 | 0x0010 | Soft&nbsp;AP特性。 |
-| 0x0040 | WLAN&nbsp;AWare组网特性。 |
+| 0x0040 | Wi-Fi&nbsp;AWare组网特性。 |
 | 0x8000 | AP&nbsp;STA共存特性。 |
 | 0x8000000 | WPA3-Personal&nbsp;SAE特性。 |
 | 0x10000000 | WPA3-Enterprise&nbsp;Suite-B。|
@@ -455,7 +455,7 @@ reassociate(): void
 | 202 | System API is not allowed called by Non-system application. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | WLAN STA disabled.|
+| 2501001  | Wi-Fi STA disabled.|
 
 **示例：**
 ```ts
@@ -490,7 +490,7 @@ reconnect(): void
 | 202 | System API is not allowed called by Non-system application. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | WLAN STA disabled.|
+| 2501001  | Wi-Fi STA disabled.|
 
 **示例：**
 ```ts
@@ -538,7 +538,7 @@ updateNetwork(config: WifiDeviceConfig): number
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | WLAN STA disabled. |
+| 2501001  | Wi-Fi STA disabled. |
 
 **示例：**
 ```ts
@@ -586,7 +586,7 @@ disableNetwork(netId: number): void
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | WLAN STA disabled. |
+| 2501001  | Wi-Fi STA disabled. |
 
 **示例：**
 ```ts
@@ -629,7 +629,7 @@ disableNetwork(netId: int, blockDuration: int): void
 | 202 | System API is not allowed called by Non-system application. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | WLAN STA disabled. |
+| 2501001  | Wi-Fi STA disabled. |
 
 **示例：**
 ```ts
@@ -666,7 +666,7 @@ removeAllNetwork(): void
 | 202 | System API is not allowed called by Non-system application. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | WLAN STA disabled. |
+| 2501001  | Wi-Fi STA disabled. |
 
 **示例：**
 ```ts
@@ -795,7 +795,7 @@ startPortalCertification(): void
 | 202 | System API is not allowed called by Non-system application. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | WLAN STA disabled. |
+| 2501001  | Wi-Fi STA disabled. |
 
 **示例：**
 
@@ -840,7 +840,7 @@ enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDevice
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | WLAN STA disabled. |
+| 2501001  | Wi-Fi STA disabled. |
 
 **示例：**
 
@@ -1385,7 +1385,7 @@ deletePersistentGroup(netId: number): void
 | 401 | Invalid parameters. Possible causes: 1.Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
-| 2801001  | WLAN STA disabled. |
+| 2801001  | Wi-Fi STA disabled. |
 
 **示例：**
 ```ts
@@ -1483,7 +1483,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 | 202 | System API is not allowed called by Non-system application. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
-| 2801001  | WLAN STA disabled. |
+| 2801001  | Wi-Fi STA disabled. |
 
 ## wifiManager.setDeviceName<sup>9+</sup>
 
@@ -1514,7 +1514,7 @@ setDeviceName(devName: string): void
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
-| 2801001  | WLAN STA disabled. |
+| 2801001  | Wi-Fi STA disabled. |
 
 **示例：**
 ```ts
@@ -1533,7 +1533,7 @@ try {
 
 on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 
-注册WIFI流变更事件，在业务退出时，要调用off(type: 'streamChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册WLAN流变更事件，在业务退出时，要调用off(type: 'streamChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1611,7 +1611,7 @@ wifiManager.off("streamChange", recvStreamChangeFunc);
 
 on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
-注册WIFI设备配置更改事件，在业务退出时，要调用off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册Wi-Fi设备配置更改事件，在业务退出时，要调用off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1642,7 +1642,7 @@ on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;): void
 
-取消注册WIFI设备配置更改事件。使用callback异步回调。
+取消注册WLAN设备配置更改事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
