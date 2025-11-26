@@ -1996,7 +1996,7 @@ setTitleAndDockHoverShown(isTitleHoverShown?: boolean, isDockHoverShown?: boolea
 
 **示例：**
 
-ArkTS-Dyn示例
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -2034,7 +2034,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-ArkTS-Sta示例
+ArkTS-Sta示例：
 
 ```ts
 // EntryAbility.ets
@@ -2379,7 +2379,7 @@ setWindowDelayRaiseOnDrag(isEnabled: boolean): void
 
 **示例：**
 
-ArkTS-Dyn示例
+ArkTS-Dyn示例：
 
 ```ts
 try {
@@ -2389,7 +2389,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例
+ArkTS-Sta示例：
 
 ```ts
 try {
@@ -11158,7 +11158,7 @@ keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
 
 **示例：**
 
-ArkTS-Dyn示例
+ArkTS-Dyn示例：
 
 ```ts
 try {
@@ -11168,7 +11168,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例
+ArkTS-Sta示例：
 
 ```ts
 try {
@@ -11213,7 +11213,7 @@ setWindowDecorVisible(isVisible: boolean): void
 
 **示例：**
 
-ArkTS-Dyn示例
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -11236,7 +11236,7 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
 });
 ```
 
-ArkTS-Sta示例
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -11300,7 +11300,7 @@ getWindowDecorVisible(): boolean
 
 **示例：**
 
-ArkTS-Dyn示例
+ArkTS-Dyn示例：
 
 ```ts
 let isVisible: boolean | undefined = undefined;
@@ -11313,7 +11313,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 })
 ```
 
-ArkTS-Sta示例
+ArkTS-Sta示例：
 
 ```ts
 let isVisible: boolean | undefined = undefined;
@@ -11368,7 +11368,7 @@ setWindowTitle(titleName: string): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -11385,14 +11385,14 @@ try {
 }
 ```
 
-ArkTS-Sta示例
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let title = "title";
-  mainWindow!.setWindowTitle(title).then(() => {
+  windowClass.setWindowTitle(title).then(() => {
     console.info('Succeeded in setting the window title.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to set the window title. Cause code: ${err.code}, message: ${err.message}`);
@@ -11439,7 +11439,7 @@ setWindowTitleMoveEnabled(enabled: boolean): void
 
 **示例：**
 
-ArkTS-Dyn示例
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -11461,7 +11461,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-ArkTS-Sta示例
+ArkTS-Sta示例：
 
 ```ts
 onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -11748,7 +11748,7 @@ ArkTS-Sta: setWindowDecorHeight(height: int): void
 
 **示例：**
 
-ArkTS-Dyn示例
+ArkTS-Dyn示例：
 
 ```ts
 windowClass.setUIContent('pages/WindowPage').then(() => {
@@ -11762,7 +11762,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 })
 ```
 
-ArkTS-Sta示例
+ArkTS-Sta示例：
 
 ```ts
 windowClass.setUIContent('pages/Index').then(() => {
@@ -11815,7 +11815,7 @@ API version 18之前，该接口在2in1设备中可正常调用，在其他设�
 
 **示例：**
 
-ArkTS-Dyn示例
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -11846,7 +11846,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-ArkTS-Sta示例
+ArkTS-Sta示例：
 
 ```ts
 // EntryAbility.ets
@@ -11916,7 +11916,7 @@ API version 18之前，该接口在2in1设备中可正常调用，在其他设�
 
 **示例：**
 
-ArkTS-Dyn示例
+ArkTS-Dyn示例：
 
 ```ts
 try {
@@ -11927,7 +11927,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例
+ArkTS-Sta示例：
 
 ```ts
 try {
@@ -11974,7 +11974,7 @@ ArkTS-Sta: getWindowDecorHeight(): int
 
 **示例：**
 
-ArkTS-Dyn示例
+ArkTS-Dyn示例：
 
 ```ts
 windowClass.setUIContent('pages/WindowPage').then(() => {
@@ -11987,7 +11987,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 })
 ```
 
-ArkTS-Sta示例
+ArkTS-Sta示例：
 
 ```ts
 windowClass.setUIContent('pages/Index').then(() => {
@@ -12032,7 +12032,7 @@ getTitleButtonRect(): TitleButtonRect
 
 **示例：**
 
-ArkTS-Dyn示例
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -12062,7 +12062,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-ArkTS-Sta示例
+ArkTS-Sta示例：
 
 ```ts
 // EntryAbility.ets
@@ -12437,7 +12437,7 @@ setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVi
 
 **示例：**
 
-ArkTS-Dyn示例
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -12472,7 +12472,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-ArkTS-Sta示例
+ArkTS-Sta示例：
 
 ```ts
 // EntryAbility.ets

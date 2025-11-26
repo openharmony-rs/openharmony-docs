@@ -3739,38 +3739,19 @@ try {
 ArkTS-Sta示例
 
 ```ts
-onWindowStageCreate(windowStage: window.WindowStage): void {
-  // 加载主窗口对应的页面。
-  windowStage.loadContent('pages/Index', (err: BusinessError | null) => {
-    let mainWindow: window.Window | undefined = undefined;
-    // 获取应用主窗口。
-    windowStage.getMainWindow().then(
-      data => {
-        if (!data) {
-          console.error('Failed to get main window. Cause: The data is undefined.');
-          return null;
-        }
-        mainWindow = data;
-        console.info(`Succeeded in obtaining the main window.`);
-        try {
-          let enable = true;
-          let promise = mainWindow!.setHandwritingFlag(enable);
-          promise.then(() => {
-            console.info('Succeeded in setting handwriting flag of window.');
-          }).catch((err: Error) => {
-            console.error(`Failed to set handwriting flag of window. Cause code: ${err.code}, message: ${err.message}`);
-          });
-        } catch (exception) {
-          let err = exception as BusinessError;
-          console.error(`Failed to set handwriting flag of window. Cause code: ${err.code}, message: ${err.message}`);
-        }
-      }
-    ).catch((err: Error) => {
-      if(err.code){
-        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
-      }
-    });
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let enable = true;
+  let promise = windowClass.setHandwritingFlag(enable);
+  promise.then(() => {
+    console.info('Succeeded in setting handwriting flag of window.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set handwriting flag of window. Cause code: ${err.code}, message: ${err.message}`);
   });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set handwriting flag of window. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 

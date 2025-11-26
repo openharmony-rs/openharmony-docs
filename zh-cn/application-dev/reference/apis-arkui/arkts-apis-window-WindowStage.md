@@ -1966,7 +1966,7 @@ setWindowRectAutoSave(enabled: boolean): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -1991,7 +1991,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-ArkTS-Sta示例
+ArkTS-Sta示例：
 
 ```ts
 // EntryAbility.ets
@@ -2075,7 +2075,7 @@ setWindowRectAutoSave(enabled: boolean, isSaveBySpecifiedFlag: boolean): Promise
 
 **示例：**
 
-ArkTS-Dyn示例
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -2100,7 +2100,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-ArkTS-Sta示例
+ArkTS-Sta示例：
 
 ```ts
 // EntryAbility.ets
@@ -2162,7 +2162,7 @@ isWindowRectAutoSave(): Promise&lt;boolean&gt;
 
 **示例：**
 
-ArkTS-Dyn示例
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -2187,7 +2187,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-ArkTS-Sta示例
+ArkTS-Sta示例：
 
 ```ts
 // EntryAbility.ets
