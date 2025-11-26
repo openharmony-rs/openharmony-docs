@@ -20,7 +20,7 @@
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**相关示例：** <!--RP1--><!--RP1End-->
+ <!--RP1--><!--RP1End-->
 
 ## 汇总
 
