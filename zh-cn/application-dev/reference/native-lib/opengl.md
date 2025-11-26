@@ -50,7 +50,7 @@ libEGL.so
 ```
 **修改app.json5配置文件**
 ```c++
-“appEnvironments”: [
+"appEnvironments": [
  {
    "name":"NEED_OPENGL",
    "value": "1"
