@@ -209,7 +209,7 @@ console.info("Worker priority: " + priority);
 ## quit
 quit(): void
 
-等待当前所有的任务完成后，停止EAWorker实例，销毁当前实例的任务循环。（注：主线程禁止调用）
+等待当前所有的任务完成后，停止EAWorker实例，销毁当前实例的任务循环。（注：主线程禁止调用）。[join()](#join)和`quit()`的区别在于：前者立即返回Job对象，后者会阻塞等待worker完全停止。
 
 **ArkTS版本：** 本接口仅支持ArkTS1.2。
 
