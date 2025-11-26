@@ -440,7 +440,10 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ## window.shiftAppWindowFocus<sup>11+</sup>
-shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
+
+ArkTS-Dyn: shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: shiftAppWindowFocus(sourceWindowId: int, targetWindowId: int): Promise&lt;void&gt;
 
 在同应用内将窗口焦点从源窗口转移到目标窗口，仅支持应用主窗、子窗范围内的焦点转移。使用Promise异步回调。
 
