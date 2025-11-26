@@ -471,15 +471,15 @@ if (surface == EGL_NO_SURFACE) {
 ```
 在使用XComponent获取nativeWindow的过程中，通常涉及以下步骤：
 1. 首先需要在ArkTS 中定义XComponent并设置 XComponentController。XComponent组件用于在UI中嵌入渲染内容如OpenGL或Vulkan。
-```typescript
-Column() {
-    XComponent({
-        id: 'myXComponent',
-        type: XComponentType.SURFACE,
-        controller: this.xComponentController
-    })
-}
-```
+   ```typescript
+   Column() {
+       XComponent({
+           id: 'myXComponent',
+           type: XComponentType.SURFACE,
+           controller: this.xComponentController
+       })
+   }
+   ```
 2. 创建 XComponentController子类，实现回调方法：
 ```typescript
 class MyXComponentController extends XComponentController {
