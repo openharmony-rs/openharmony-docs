@@ -155,7 +155,7 @@ DLP_ErrCode OH_DLP_IsInSandbox(bool *isInSandbox)
 
 | 参数项 | 描述 |
 | -- | -- |
-| bool *isInSandbox | 当前应用是否运行在DLP沙箱环境。 |
+| bool *isInSandbox | true表示当前应用运行在DLP沙箱环境，false表示当前应用不是运行在DLP沙箱环境。 |
 
 **返回：**
 
