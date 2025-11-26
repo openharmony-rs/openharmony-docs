@@ -29,7 +29,7 @@ publish(event: string, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -101,7 +101,7 @@ publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -199,12 +199,12 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallbac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[事件错误码](./errorcode-CommonEventService.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.    |
-| 1500001 | The action field in the want parameter is null.    | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
+| 1500001 | The action field in the want parameter is null. | 
 
 **示例：**
 
@@ -304,7 +304,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise\<CommonEventS
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. | 
 
 **示例：**
 
@@ -379,7 +379,7 @@ createSubscriber的同步接口。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. | 
 
 **示例：**
 
@@ -413,7 +413,7 @@ subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback\<CommonEven
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -428,7 +428,7 @@ subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback\<CommonEven
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 801  | capability not supported.               |
+| 801  | capability not supported. |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 | 1500010  | The count of subscriber exceed system specification. |
@@ -494,6 +494,7 @@ try {
       commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined | null) => {
       if (!err) {
         console.info(`Succeeded in creating subscriber.`);
+        subscriber = commonEventSubscriber as commonEventManager.CommonEventSubscriber;
         // 订阅公共事件
         try {
           commonEventManager.subscribe(subscriber,
@@ -530,7 +531,7 @@ unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>):
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -545,8 +546,8 @@ unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>):
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
-| 801  | capability not supported.               |
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. | 
+| 801  | capability not supported. |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 
@@ -631,7 +632,7 @@ try {
       commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined | null) => {
       if (!err && commonEventSubscriber) {
         console.info(`Succeeded in creating subscriber.`);
-
+        subscriber = commonEventSubscriber as commonEventManager.CommonEventSubscriber;
         // 订阅公共事件 - 使用确定的非空对象
         try {
           commonEventManager.subscribe(
@@ -701,7 +702,7 @@ subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback\<CommonEv
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -721,7 +722,7 @@ subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback\<CommonEv
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 801  | Capability not supported.               |
+| 801  | Capability not supported. |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 | 1500010  | The count of subscriber exceed system specification. |
@@ -834,7 +835,7 @@ type CommonEventData = _CommonEventData
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 类型 | 说明 |
 | --- | --- |
@@ -852,7 +853,7 @@ type CommonEventSubscriber = _CommonEventSubscriber
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 类型 | 说明 |
 | --- | --- |
@@ -870,7 +871,7 @@ type CommonEventSubscribeInfo = _CommonEventSubscribeInfo
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 类型 | 说明 |
 | --- | --- |
@@ -888,7 +889,7 @@ type CommonEventPublishData = _CommonEventPublishData
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 类型 | 说明 |
 | --- | --- |

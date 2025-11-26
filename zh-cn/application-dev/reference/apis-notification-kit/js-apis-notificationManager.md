@@ -25,7 +25,7 @@ publish(request: NotificationRequest, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -123,7 +123,7 @@ publish(request: NotificationRequest): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -220,7 +220,7 @@ ArkTS-Sta: cancel(id: int, label: string, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -286,7 +286,7 @@ ArkTS-Sta: cancel(id: int, label?: string): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -349,7 +349,7 @@ ArkTS-Sta: cancel(id: int, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -411,7 +411,7 @@ cancelAll(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -472,7 +472,7 @@ cancelAll(): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **返回值：**
 
@@ -482,7 +482,7 @@ cancelAll(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -524,7 +524,7 @@ addSlot(type: SlotType, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -587,7 +587,7 @@ addSlot(type: SlotType): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -649,7 +649,7 @@ ArkTS-Sta: getSlot(slotType: SlotType, callback: AsyncCallback\<NotificationSlot
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -719,7 +719,7 @@ ArkTS-Sta: getSlot(slotType: SlotType): Promise\<NotificationSlot|null\>;
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -780,7 +780,7 @@ getSlots(callback: AsyncCallback\<Array\<NotificationSlot>>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -842,7 +842,7 @@ getSlots(): Promise\<Array\<NotificationSlot>>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **返回值：**
 
@@ -852,7 +852,7 @@ getSlots(): Promise\<Array\<NotificationSlot>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -894,7 +894,7 @@ removeSlot(slotType: SlotType, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -958,7 +958,7 @@ removeSlot(slotType: SlotType): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1019,7 +1019,7 @@ removeAllSlots(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1078,7 +1078,7 @@ removeAllSlots(): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **返回值：**
 
@@ -1088,7 +1088,7 @@ removeAllSlots(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1130,7 +1130,7 @@ isNotificationEnabled(callback: AsyncCallback\<boolean\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1193,7 +1193,7 @@ isNotificationEnabled(): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **返回值：**
 
@@ -1203,7 +1203,7 @@ isNotificationEnabled(): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1247,7 +1247,7 @@ isNotificationEnabledSync(): boolean
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **返回值：**
 
@@ -1288,7 +1288,7 @@ ArkTS-Sta: setBadgeNumber(badgeNumber: int): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1355,7 +1355,7 @@ ArkTS-Sta: setBadgeNumber(badgeNumber: int, callback: AsyncCallback\<void\>): vo
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1421,7 +1421,7 @@ ArkTS-Sta: getActiveNotificationCount(callback: AsyncCallback\<long\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1484,7 +1484,7 @@ ArkTS-Sta: getActiveNotificationCount(): Promise\<long\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **返回值：**
 
@@ -1494,7 +1494,7 @@ ArkTS-Sta: getActiveNotificationCount(): Promise\<long\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1536,7 +1536,7 @@ getActiveNotifications(callback: AsyncCallback\<Array\<NotificationRequest>>): v
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1595,7 +1595,7 @@ getActiveNotifications(): Promise\<Array\<NotificationRequest\>\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **返回值：**
 
@@ -1605,7 +1605,7 @@ getActiveNotifications(): Promise\<Array\<NotificationRequest\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1647,7 +1647,7 @@ cancelGroup(groupName: string, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1709,7 +1709,7 @@ cancelGroup(groupName: string): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1770,7 +1770,7 @@ isSupportTemplate(templateName: string, callback: AsyncCallback\<boolean\>): voi
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1832,7 +1832,7 @@ isSupportTemplate(templateName: string): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1900,7 +1900,7 @@ requestEnableNotification(context: UIAbilityContext, callback: AsyncCallback\<vo
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1957,7 +1957,6 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { AppStorage } from '@ohos.arkui.stateManagement'
 import common from '@ohos.app.ability.common';
@@ -1990,7 +1989,7 @@ requestEnableNotification(context: UIAbilityContext): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -2049,8 +2048,9 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import common from '@ohos.app.ability.common';
+import { AppStorage } from '@ohos.arkui.stateManagement'
 
 let testAbilityContext: common.UIAbilityContext = AppStorage.get<common.UIAbilityContext>("UIAbilityContext") as common.UIAbilityContext
     await notificationManager.requestEnableNotification(testAbilityContext).then(() => {
@@ -2134,7 +2134,7 @@ requestEnableNotification(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -2166,7 +2166,7 @@ isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -2226,7 +2226,7 @@ isDistributedEnabled(): Promise\<boolean>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **返回值：**
 
@@ -2236,7 +2236,7 @@ isDistributedEnabled(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -2283,7 +2283,7 @@ openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：13
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -2340,7 +2340,6 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class MyAbility extends UIAbility {
@@ -2372,7 +2371,7 @@ getNotificationSetting(): Promise\<NotificationSetting\>
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **返回值：**
 
@@ -2440,7 +2439,7 @@ notificationManager.getNotificationSetting().then((data: notificationManager.Not
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 名称                              | 值          | 说明               |
 | --------------------------------- | ----------- | ------------------ |
@@ -2461,13 +2460,13 @@ notificationManager.getNotificationSetting().then((data: notificationManager.Not
 
 | 名称                 | 值       | 说明       |
 | -------------------- | -------- | ---------- |
-| UNKNOWN_TYPE         | 0 | 未知类型。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
-| SOCIAL_COMMUNICATION | 1 | 社交通信。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20|
-| SERVICE_INFORMATION  | 2 | 服务提醒。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20|
-| CONTENT_INFORMATION  | 3 | 内容资讯。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。 <br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20|
-| LIVE_VIEW<sup>11+</sup>            | 4 | 实况窗。不支持三方应用直接创建该渠道类型通知，可以由系统代理创建后，三方应用发布同ID的通知来更新指定内容。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20 |
-| CUSTOMER_SERVICE<sup>11+</sup>     | 5 | 客服消息。该类型用于用户与商家之间的客服消息，需由用户主动发起。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20 |
-| OTHER_TYPES          | 0xFFFF | 其他。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
+| UNKNOWN_TYPE         | 0 | 未知类型。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22 |
+| SOCIAL_COMMUNICATION | 1 | 社交通信。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22|
+| SERVICE_INFORMATION  | 2 | 服务提醒。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22|
+| CONTENT_INFORMATION  | 3 | 内容资讯。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。 <br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22|
+| LIVE_VIEW<sup>11+</sup>            | 4 | 实况窗。不支持三方应用直接创建该渠道类型通知，可以由系统代理创建后，三方应用发布同ID的通知来更新指定内容。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22 |
+| CUSTOMER_SERVICE<sup>11+</sup>     | 5 | 客服消息。该类型用于用户与商家之间的客服消息，需由用户主动发起。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22 |
+| OTHER_TYPES          | 0xFFFF | 其他。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22 |
 
 ## NotificationSetting<sup>20+</sup>
 
@@ -2477,7 +2476,7 @@ notificationManager.getNotificationSetting().then((data: notificationManager.Not
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 名称             | 类型     | 只读 | 可选 | 说明                                         |
 | ---------------- | ------- | ---- | ---- | ------------------------------------------- |
