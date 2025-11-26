@@ -974,33 +974,35 @@ loadFontSyncWithCheck(name: string, path: string | Resource): void
 ```ts
 import { text } from '@kit.ArkGraphics2D'
 
-let fontCollection: text.FontCollection = new text.FontCollection();
+let fc: text.FontCollection = text.FontCollection.getGlobalInstance();
 
 @Entry
 @Component
-struct RenderTest {
-  LoadFontSyncTest() {
-    fontCollection.loadFontSyncWithCheck('Clock_01', 'file:///system/fonts/HarmonyClock_01.ttf')
-    let fontFamilies: Array<string> = ["Clock_01"]
-    let myTextStyle: text.TextStyle = {
-      fontFamilies: fontFamilies
-    };
-    let myParagraphStyle: text.ParagraphStyle = {
-      textStyle: myTextStyle,
-    }
-    let paragraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-
-    let textData = "测试 loadFontSyncWithCheck 加载字体HarmonyClock_01.ttf";
-    paragraphBuilder.addText(textData);
-    let paragraph: text.Paragraph = paragraphBuilder.build();
-    paragraph.layoutSync(600);
-  }
-
-  aboutToAppear() {
-    this.LoadFontSyncTest();
-  }
+struct Index {
+  message: string = 'Hello World';
+  fontFamily: string = 'family';
 
   build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontFamily(this.fontFamily)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          fc.loadFontSyncWithCheck(this.fontFamily, 'file:///system/fonts/NotoSansCJK-Regular.ttc', 1);
+          try {
+            fc.loadFontSyncWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1);
+          } catch (e) {
+            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(e)} message: ${e.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
   }
 }
 ```
@@ -1049,24 +1051,39 @@ loadFontWithCheck(name: string, path: string | Resource): Promise\<void>
 ```ts
 import { text } from '@kit.ArkGraphics2D'
 
-let fontCollection: text.FontCollection = new text.FontCollection();
+let fc: text.FontCollection = text.FontCollection.getGlobalInstance();
 
 @Entry
 @Component
-struct RenderTest {
-  async loadFontPromise() {
-    fontCollection.loadFontWithCheck('testName', 'file:///system/fonts/a.ttf').then((data) => {
-      console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
-    }).catch((error: Error) => {
-      console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
-    });
-  }
-
-  aboutToAppear() {
-    this.loadFontPromise();
-  }
+struct Index {
+  message: string = 'Hello World';
+  fontFamily: string = 'family';
 
   build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontFamily(this.fontFamily)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          fc.loadFontWithCheck(this.fontFamily, 'file:///system/fonts/NotoSansCJK-Regular.ttc', 1).then((data) => {
+            console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
+          }).catch((error: Error) => {
+            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
+          });
+          fc.loadFontWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1).then((data) => {
+            console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
+          }).catch((error: Error) => {
+            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
   }
 }
 ```
