@@ -27,7 +27,7 @@
 <!--Del-->
 - [Account Manager](acm-tool.md)
 <!--DelEnd-->
-- Command Line Utilities
+- Command Line Utilities<!--command-line-utilities-->
   - [Toybox](toybox.md)
   - [mediatool](mediatool.md)
   - [devicedebug](devicedebug-tool.md)
