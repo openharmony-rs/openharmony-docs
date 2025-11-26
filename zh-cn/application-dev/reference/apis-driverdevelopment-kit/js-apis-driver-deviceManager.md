@@ -32,8 +32,7 @@ ArkTS-Sta: queryDevices(busType?: int): Array&lt;Readonly&lt;Device&gt;&gt;
 
 | 参数名  | 类型   | 必填 | 说明                                 |
 | ------- | ------ | ---- | ------------------------------------ |
-| busType | number | 否   | 设备总线类型，不填则查找所有类型设备。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| busType | int | 否   | 设备总线类型，不填则查找所有类型设备。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| busType | ArkTs-Dyn: number<br> ArkTs-Sta: int | 否   | 设备总线类型，不填则查找所有类型设备。|
 
 **返回值：**
 
@@ -45,8 +44,8 @@ ArkTS-Sta: queryDevices(busType?: int): Array&lt;Readonly&lt;Device&gt;&gt;
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | The permission check failed. <br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20|
-| 22900001 | ExternalDeviceManager service exception or busType parameter error.<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20|
+| 201      | The permission check failed.|
+| 22900001 | ExternalDeviceManager service exception or busType parameter error.|
 
 **示例：**
 
@@ -411,8 +410,7 @@ ArkTS-Sta: bindDriverWithDeviceId(deviceId: long, onDisconnect: AsyncCallback&lt
 
 | 参数名       | 类型                        | 必填 | 说明                         |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-| deviceId     | number                     | 是   | 设备ID，通过queryDevices获得。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| deviceId     | long                     | 是   | 设备ID，通过queryDevices获得。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| deviceId     | ArkTs-Dyn: number<br> ArkTs-Sta: int | 是   | 设备ID，通过queryDevices获得。|
 | onDisconnect | AsyncCallback&lt;long&gt; | 是   | 绑定设备断开的回调。           |
 
 **返回值：**
@@ -425,9 +423,9 @@ ArkTS-Sta: bindDriverWithDeviceId(deviceId: long, onDisconnect: AsyncCallback&lt
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | The permission check failed. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 26300001  | ExternalDeviceManager service exception.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 26300002  | The driver service does not allow any client to bind.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 201      | The permission check failed. |
+| 26300001  | ExternalDeviceManager service exception.|
+| 26300002  | The driver service does not allow any client to bind.|
 
 **示例：**
 
@@ -470,15 +468,13 @@ ArkTS-Sta: unbindDriverWithDeviceId(deviceId: long): Promise&lt;int&gt;
 
 | 参数名   | 类型   | 必填 | 说明                           |
 | -------- | ------ | ---- | ------------------------------ |
-| deviceId | number | 是   | 设备ID，通过queryDevices获得。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| deviceId | long | 是   | 设备ID，通过queryDevices获得。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| deviceId | ArkTs-Dyn: number<br> ArkTs-Sta: long | 是   | 设备ID，通过queryDevices获得。|
 
 **返回值：**
 
 | 类型                  | 说明                      |
 | --------------------- | ------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回设备ID。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
-| Promise&lt;int&gt; | Promise对象，返回设备ID。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+| ArkTs-Dyn: Promise&lt;number&gt;<br> ArkTs-Sta: Promise&lt;int&gt;  | Promise对象，返回设备ID。|
 
 **错误码：**
 
@@ -519,8 +515,7 @@ try {
 | 名称        | 类型                | 必填 | 说明       |
 | ----------- | ------------------- | ---- | ---------- |
 | busType     | [BusType](#bustype) | 是   | 总线类型。 |
-| deviceId    | number             | 是   | 设备ID。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| deviceId    | long             | 是   | 设备ID。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| deviceId    | ArkTs-Dyn: number<br> ArkTs-Sta: long  | 是   | 设备ID。|
 | description | string              | 是   | 设备描述。 |
 
 ## USBDevice
@@ -535,10 +530,8 @@ USB设备信息，继承自[Device](#device)。
 
 | 名称      | 类型   | 必填 | 说明                |
 | --------- | ------ | ---- | ------------------- |
-| vendorId  | number | 是   | USB设备Vendor ID。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| productId |number | 是   | USB设备Product ID。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
-| vendorId  | int | 是   | USB设备Vendor ID。  |
-| productId |int | 是   | USB设备Product ID。 |
+| vendorId  | ArkTs-Dyn: number<br> ArkTs-Sta: int | 是   | USB设备Vendor ID。|
+| productId |ArkTs-Dyn: number<br> ArkTs-Sta: int | 是   | USB设备Product ID。|
 
 ## BusType
 
@@ -562,6 +555,5 @@ USB设备信息，继承自[Device](#device)。
 
 | 名称      | 类型   | 必填 | 说明                |
 | --------- | ------ | ---- | ------------------- |
-| deviceId<sup>11+</sup>  | number | 是   | 设备ID。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| deviceId<sup>11+</sup>  | long | 是   | 设备ID。  <br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| deviceId<sup>11+</sup>  | ArkTs-Dyn: number<br> ArkTs-Sta: long | 是   | 设备ID。|
 | remote<sup>11+</sup> | [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | 是   | 远程驱动程序对象。 |
