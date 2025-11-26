@@ -464,14 +464,11 @@ callbackfn函数参数说明：
       this.base = base;
     }
   }
-
-  function main() {
-    let o = new C(2n);
-    let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-    arr.forEach((element: bigint, index: int, array: BigInt64Array) => {
-        console.info(element, index);
-    });
-  }
+  let o = new C(2n);
+  let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
+  arr.forEach((element: bigint, index: int, array: BigInt64Array) => {
+      console.info(element, index);
+  });
   ```
 
 - 适配建议：
@@ -734,15 +731,12 @@ mapfn函数返回值说明：
       this.offset = offset;
     }
   }
-
-  function main() {
-    const origArr: Array<number> = new Array<number>(1,2,3);
-    let o = new C(2);
-    const newArr: BigInt64Array = BigInt64Array.from<number>(origArr, (v: number, k: number) => {
-        return new BigInt(v + o.offset);
-    }); // [3,4,5]
-    console.info(newArr);
-  }
+  const origArr: Array<number> = new Array<number>(1,2,3);
+  let o = new C(2);
+  const newArr: BigInt64Array = BigInt64Array.from<number>(origArr, (v: number, k: number) => {
+      return new BigInt(v + o.offset);
+  }); // [3,4,5]
+  console.info(newArr);
   ```
 
 - 适配建议：

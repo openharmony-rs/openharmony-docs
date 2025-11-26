@@ -134,13 +134,11 @@ predicate函数返回值说明：
           return arr.every((value: number, index: int, arr: Float64Array)=>{return value < this.base})
       }
   }
-  function main() {
-    let arr: Float64Array = new Float64Array([1, 2, 3]);
-    let a = new C(2)
-    let b = new C(4)
-    a.callEvery(arr) // false
-    b.callEvery(arr) // true
-  }
+  let arr: Float64Array = new Float64Array([1, 2, 3]);
+  let a = new C(2)
+  let b = new C(4)
+  a.callEvery(arr) // false
+  b.callEvery(arr) // true
   ```
 
 **适配建议：** 
@@ -578,13 +576,11 @@ callbackfn函数返回值说明：
           return arr.map((value: number, index: int, arr: Float64Array)=>{return value + this.base})
       }
   }
-  function main() {
-    let arr: Float64Array = new Float64Array([1, 2, 3]);
-    let a = new C(2)
-    let b = new C(3)
-    a.call(arr)
-    b.call(arr)
-  }
+  let arr: Float64Array = new Float64Array([1, 2, 3]);
+  let a = new C(2)
+  let b = new C(3)
+  a.call(arr)
+  b.call(arr)
   ```
 
 **适配建议：** 
@@ -672,13 +668,11 @@ predicate函数返回值说明：
           return arr.some((value: number, index: int, arr: Float64Array)=>{return value > this.base})
       }
   }
-  function main() {
-    let arr: Float64Array = new Float64Array([1, 2, 3]);
-    let a = new C(2)
-    let b = new C(3)
-    a.call(arr)
-    b.call(arr)
-  }
+  let arr: Float64Array = new Float64Array([1, 2, 3]);
+  let a = new C(2)
+  let b = new C(3)
+  a.call(arr)
+  b.call(arr)
   ```
 
 **适配建议：** 
@@ -770,13 +764,11 @@ mapfn函数返回值说明：
           return Array.from(arr, (value: number, index: number)=>{return value + this.base})
       }
   }
-  function main() {
-    let arr: Float64Array = new Float64Array([1, 2, 3]);
-    let a = new C(2)
-    let b = new C(3)
-    a.call(arr)
-    b.call(arr)
-  }
+  let arr: Float64Array = new Float64Array([1, 2, 3]);
+  let a = new C(2)
+  let b = new C(3)
+  a.call(arr)
+  b.call(arr)
   ```
 
 **适配建议：** 
@@ -868,13 +860,11 @@ mapfn函数返回值说明：
         return Array.from(arr, (value: number, index: number)=>{return value + this.base})
     }
   }
-  function main() {
-    let arr: Float64Array = new Float64Array([1, 2, 3]);
-    let a = new C(2)
-    let b = new C(3)
-    a.call(arr)
-    b.call(arr)
-  }
+  let arr: Float64Array = new Float64Array([1, 2, 3]);
+  let a = new C(2)
+  let b = new C(3)
+  a.call(arr)
+  b.call(arr)
   ```
 
 **适配建议：** 
