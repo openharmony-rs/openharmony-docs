@@ -355,7 +355,7 @@ updatePickerOptions(updateConfig: UpdatablePickerConfigs): Promise\<void>
 
 | 参数名         | 类型                                                             | 必填  | 说明                |
 |-------------|----------------------------------------------------------------| ----- |-------------------|
-| updateConfig | [UpdatablePickerConfigs](#updatablepickerconfigs22) | 是 | 支持更新的PhotoPickerComponent属性，为[PickerOptions](#pickeroptions)的子集 |
+| updateConfig | [UpdatablePickerConfigs](#updatablepickerconfigs22) | 是 | 支持更新的PhotoPickerComponent属性，为[PickerOptions](#pickeroptions)的子集。 |
 
 **返回值：**
 
@@ -482,7 +482,7 @@ updatePickerOptions(updateConfig: UpdatablePickerConfigs): Promise\<void>
 | 名称                            | 类型                                             | 只读 | 可选 | 说明  |
 | ------------------------------- | ----------------------------------------------- | ---- | ---- | ---- |
 | mimeType                        | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes)            | 否 | 是   | 可选择的媒体文件类型。<br>若无此参数，则默认为图片和视频类型。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。|
-| mimeTypeFilter                  | [photoAccessHelper.MimeTypeFilter](arkts-apis-photoAccessHelper-class.md#mimetypefilter19)  | 否   | 是 | 文件类型的过滤配置，支持指定多个类型过滤。<br>- 当配置mimeTypeFilter参数时，MIMEType的配置自动失效。<br>- 当配置该参数时，仅显示配置过滤类型对应的媒体文件，建议提示用户仅支持选择指定类型的图片/视频。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| mimeTypeFilter                  | [photoAccessHelper.MimeTypeFilter](arkts-apis-photoAccessHelper-class.md#mimetypefilter19)  | 否   | 是 | 文件类型的过滤配置，支持指定多个类型过滤。<br>- 当配置mimeTypeFilter参数时，mimeType的配置自动失效。<br>- 当配置该参数时，仅显示配置过滤类型对应的媒体文件，建议提示用户仅支持选择指定类型的图片/视频。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | maxSelectNumber                 | number                          | 否   | 是 | 选择媒体文件数量的最大值（单位：个）。<br>最大可设置为500，若不设置则默认为50。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | maxPhotoSelectNumber            | number                          | 否  | 是 | 图片最大的选择数量（单位：个）。<br>最大值为500，受到最大选择总数的限制。默认为500。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。                                     |
 | maxVideoSelectNumber            | number                          | 否  | 是 | 视频最大的选择数量（单位：个）。<br>最大值为500，受到系统中所有媒体文件最大选择总数的限制。默认为500。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。                                      |
