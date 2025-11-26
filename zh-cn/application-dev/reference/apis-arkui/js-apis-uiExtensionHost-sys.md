@@ -468,6 +468,7 @@ hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+**ArkTS-Dyn示例:**
 ```ts
 // ExtensionProvider.ets
 
@@ -495,6 +496,36 @@ export default class EntryAbility extends UIExtensionAbility {
   }
 }
 ```
+
+**ArkTS-Sta示例:**
+```ts
+// ExtensionProvider.ets
+
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 隐藏非安全窗口
+    extensionHostWindow.hideNonSecureWindows(true).then(()=> {
+      console.info(`Succeeded in hiding the non-secure windows.`);
+    }).catch((err)=> {
+      console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
+    })
+  }
+  onSessionDestroy(session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 取消隐藏非安全窗口
+    extensionHostWindow.hideNonSecureWindows(false).then(()=> {
+      console.info(`Succeeded in showing the non-secure windows.`);
+    }).catch((err)=> {
+      console.error(`Failed to show the non-secure windows. Cause:${JSON.stringify(err)}`);
+    })
+  }
+}
+```
+
 
 ### createSubWindowWithOptions<sup>12+</sup>
 
@@ -537,6 +568,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 **示例：**
 
+**ArkTS-Dyn示例:**
 ```ts
 // ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -576,6 +608,52 @@ export default class EntryAbility extends UIExtensionAbility {
           });
         });
       }).catch((error: BusinessError) => {
+        console.error(`Create subwindow failed: ${JSON.stringify(error)}`);
+      })
+  }
+}
+```
+
+**ArkTS-Sta示例:**
+```ts
+// ExtensionProvider.ets
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    const subWindowOpts: window.SubWindowOptions = {
+      title: 'This is a subwindow',
+      decorEnabled: true
+    };
+    // 创建子窗口
+    extensionHostWindow.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
+      .then((subWindow: window.Window) => {
+        subWindow.setUIContent('pages/Index', (err, data) =>{
+          if (err && err.code != 0) {
+            return;
+          }
+          subWindow?.resize(300, 300, (err, data)=>{
+            if (err && err.code != 0) {
+              return;
+            }
+            subWindow?.moveWindowTo(100, 100, (err, data)=>{
+              if (err && err.code != 0) {
+                return;
+              }
+              subWindow?.showWindow((err, data) => {
+                if (err && err.code == 0) {
+                  console.info(`The subwindow has been shown!`);
+                } else {
+                  console.error(`Failed to show the subwindow!`);
+                }
+              });
+            });
+          });
+        });
+      }).catch((error) => {
         console.error(`Create subwindow failed: ${JSON.stringify(error)}`);
       })
   }
@@ -622,6 +700,7 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+**ArkTS-Dyn示例:**
 ```ts
 // ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -648,6 +727,35 @@ export default class EntryAbility extends UIExtensionAbility {
   }
 }
 ```
+
+**ArkTS-Sta示例:**
+```ts
+// ExtensionProvider.ets
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 添加安全水印标志
+    extensionHostWindow.setWaterMarkFlag(true).then(() => {
+      console.info(`Succeeded in setting water mark flag of window.`);
+    }).catch((err) => {
+      console.error(`Failed to setting water mark flag of window. Cause:${JSON.stringify(err)}`);
+    })
+  }
+  onSessionDestroy(session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 删除安全水印标志
+    extensionHostWindow.setWaterMarkFlag(false).then(() => {
+      console.info(`Succeeded in deleting water mark flag of window.`);
+    }).catch((err) => {
+      console.error(`Failed to deleting water mark flag of window. Cause:${JSON.stringify(err)}`);
+    })
+  }
+}
+```
+
 ### hidePrivacyContentForHost<sup>13+</sup>
 
 hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
@@ -691,6 +799,7 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+**ArkTS-Dyn示例:**
 ```ts
 // ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -703,6 +812,25 @@ export default class EntryAbility extends UIExtensionAbility {
     extensionHostWindow.hidePrivacyContentForHost(true).then(() => {
       console.info(`Successfully enabled privacy protection for non-system screenshots.`);
     }).catch((err: BusinessError) => {
+      console.error(`Failed enabled privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
+    })
+  }
+}
+```
+
+**ArkTS-Sta示例:**
+```ts
+// ExtensionProvider.ets
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 开启截图隐私内容保护
+    extensionHostWindow.hidePrivacyContentForHost(true).then(() => {
+      console.info(`Successfully enabled privacy protection for non-system screenshots.`);
+    }).catch((err) => {
       console.error(`Failed enabled privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
     })
   }
@@ -730,7 +858,7 @@ export default class EntryAbility extends UIExtensionAbility {
 本示例展示文档中所有API在UIExtensionAbility中的基础使用方式，示例应用需采用系统签名，且`bundleName`为"com.example.uiextensiondemo", 被拉起的`UIExtensionAbility`为"ExampleUIExtensionAbility"。
 
 - 示例应用中的EntryAbility(UIAbility)加载首页文件：`pages/Index.ets`，其中内容如下：
-
+  **ArkTS-Dyn示例:**
   ```ts
   // pages/Index.ets -- UIAbility启动时加载此页面
   import { Want } from '@kit.AbilityKit';
@@ -762,8 +890,44 @@ export default class EntryAbility extends UIExtensionAbility {
   }
   ```
 
+  **ArkTS-Sta示例:**
+  ```ts
+  // pages/Index.ets -- UIAbility启动时加载此页面
+  import { Entry, Component, Column, Row, Text, UIExtensionComponent} from '@ohos.arkui.component';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { Want } from '@kit.AbilityKit';
+  import { RecordData } from '@kit.BasicServicesKit';
+
+  @Entry
+  @Component
+  struct Index {
+    @State message: string = 'Message: ';
+    private want: Want = {
+      bundleName: "com.example.uiextensiondemo",
+      abilityName: "ExampleUIExtensionAbility",
+      parameters: {
+        "ability.want.params.uiExtensionType": "sys/commonUI"
+      } as Record<String, RecordData>
+    } as Want;
+
+    build() {
+      Row() {
+        Column() {
+          Text(this.message).fontSize(30)
+          UIExtensionComponent(this.want)
+            .width('100%')
+            .height('90%')
+        }
+        .width('100%')
+      }
+      .height('100%')
+    }
+  }
+  ```
+
 - UIExtensionComponent拉起的UIExtensionAbility在`ets/extensionAbility/ExampleUIExtensionAbility`文件中实现，内容如下：
 
+  **ArkTS-Dyn示例:**
   ```ts
   import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
@@ -796,8 +960,43 @@ export default class EntryAbility extends UIExtensionAbility {
   }
   ```
 
+  **ArkTS-Sta示例:**
+  ```ts
+  import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+  import { LocalStorage } from '@ohos.arkui.stateManagement';
+
+  const TAG: string = '[ExampleUIExtensionAbility]';
+  export default class ExampleUIExtensionAbility extends UIExtensionAbility {
+    onCreate() {
+      console.info(TAG, `onCreate`);
+    }
+
+    onForeground() {
+      console.info(TAG, `onForeground`);
+    }
+
+    onBackground() {
+      console.info(TAG, `onBackground`);
+    }
+
+    async onDestroy() {
+      console.info(TAG, `onDestroy`);
+    }
+
+    onSessionCreate(want: Want, session: UIExtensionContentSession) {
+      console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+      let param: Record<string, UIExtensionContentSession> = {
+        'session': session
+      };
+      let storage: LocalStorage = new LocalStorage(param);
+      session.loadContent('pages/extension', storage);
+    }
+  }
+  ```
+
 - UIExtensionAbility的入口页面文件`pages/extension.ets`内容如下：
 
+  **ArkTS-Dyn示例:**
   ```ts
   import { UIExtensionContentSession } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -887,6 +1086,106 @@ export default class EntryAbility extends UIExtensionAbility {
                 });
               });
             }).catch((error: BusinessError) => {
+              console.error(`Create subwindow failed: ${JSON.stringify(error)}`);
+            })
+        })
+      }.width('100%').height('100%')
+    }
+  }
+  ```
+
+  **ArkTS-Sta示例:**
+  ```ts
+  import { UIExtensionContentSession } from '@kit.AbilityKit';
+  import { Entry, Component, Column, Row, Text, Button, Margin, FontWeight} from '@ohos.arkui.component';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { uiExtensionHost, window } from '@kit.ArkUI';
+
+  @Entry()
+  @Component
+  struct Extension {
+    @State message: string = 'UIExtensionAbility Index';
+    private storage: LocalStorage | undefined = this.getUIContext()?.getSharedLocalStorage();
+    private session: UIExtensionContentSession | undefined = this.storage?.get<UIExtensionContentSession>('session');
+    private extensionHostWindow: uiExtensionHost.UIExtensionHostWindowProxy | undefined = this.session?.getUIExtensionHostWindowProxy();
+    private subWindow: window.Window | undefined = undefined;
+
+    aboutToAppear(): void {
+      this.extensionHostWindow?.onWindowSizeChange((size) => {
+          console.info(`size = ${JSON.stringify(size)}`);
+      });
+      this.extensionHostWindow?.onAvoidAreaChange((info) => {
+          console.info(`type = ${JSON.stringify(info.type)}, area = ${JSON.stringify(info.area)}`);
+      });
+      let promise = this.extensionHostWindow?.hideNonSecureWindows(true);
+      promise?.then(()=> {
+        console.info(`Succeeded in hiding the non-secure windows.`);
+      }).catch((err)=> {
+        console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
+      })
+      this.extensionHostWindow?.hidePrivacyContentForHost(true)?.then(() => {
+        console.info(`Successfully enabled privacy protection for non-system screenshots.`);
+      }).catch((err) => {
+        console.error(`Failed enabled privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
+      })
+    }
+
+    aboutToDisappear(): void {
+      this.extensionHostWindow?.offWindowSizeChange();
+      this.extensionHostWindow?.offAvoidAreaChange();
+      let promise = this.extensionHostWindow?.hideNonSecureWindows(false);
+      promise?.then(()=> {
+        console.info(`Succeeded in showing the non-secure windows.`);
+      }).catch((err)=> {
+        console.error(`Failed to show the non-secure windows. Cause:${JSON.stringify(err)}`);
+      })
+    }
+
+    build() {
+      Column() {
+        Text(this.message)
+          .fontSize(20)
+          .fontWeight(FontWeight.Bold)
+        Button("获取组件大小").width('90%').margin({top: 5, bottom: 5} as Margin).fontSize(16).onClick(() => {
+          let rect = this.extensionHostWindow?.properties.uiExtensionHostWindowProxyRect;
+          console.info(`UIExtensionComponent的宽高和位置信息: ${JSON.stringify(rect)}`);
+        })
+        Button("获取系统规避区信息").width('90%').margin({top: 5, bottom: 5} as Margin).fontSize(16).onClick(() => {
+          let avoidArea: window.AvoidArea | undefined = this.extensionHostWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
+          console.info(`系统规避区: ${JSON.stringify(avoidArea)}`);
+        })
+        Button("创建子窗口").width('90%').margin({top: 5, bottom: 5} as Margin).fontSize(16).onClick(() => {
+          let subWindowOpts: window.SubWindowOptions = {
+            'title': 'This is a subwindow',
+            decorEnabled: true
+          };
+          this.extensionHostWindow?.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
+            .then((subWindow: window.Window) => {
+              this.subWindow = subWindow;
+              this.subWindow?.setUIContent('pages/Index', (err, data) =>{
+                if (err && err.code != 0) {
+                  return;
+                }
+                this.subWindow?.resize(300, 300, (err, data)=>{
+                  if (err && err.code != 0) {
+                    return;
+                  }
+                  this.subWindow?.moveWindowTo(100, 100, (err, data)=>{
+                    if (err && err.code != 0) {
+                      return;
+                    }
+                    this.subWindow?.showWindow((err, data) => {
+                      if (err && err.code == 0) {
+                        console.info(`The subwindow has been shown!`);
+                      } else {
+                        console.error(`Failed to show the subwindow!`);
+                      }
+                    });
+                  });
+                });
+              });
+            }).catch((error) => {
               console.error(`Create subwindow failed: ${JSON.stringify(error)}`);
             })
         })

@@ -75,7 +75,7 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 
 **示例：**
 
-**ArkTS-Dyn:**
+**ArkTS-Dyn示例:**
 ```ts
 // ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -91,10 +91,9 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
-**ArkTS-Sta:**
+**ArkTS-Sta示例:**
 ```ts
 // ExtensionProvider.ets
-'use static'
 import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
 import { window } from '@kit.ArkUI';
@@ -182,7 +181,6 @@ onAvoidAreaChange(callback: Callback&lt;AvoidAreaInfo&gt;): void
 
 ```ts
 // ExtensionProvider.ets
-'use static'
 import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
 import uiExtension from '@ohos.arkui.uiExtension';
@@ -268,7 +266,6 @@ offAvoidAreaChange(callback?: Callback&lt;AvoidAreaInfo&gt;): void
 
 ```ts
 // ExtensionProvider.ets
-'use static'
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
 import uiExtension from '@ohos.arkui.uiExtension';
@@ -353,7 +350,6 @@ onWindowSizeChange(callback: Callback&lt;window.Size&gt;): void
 
 ```ts
 // ExtensionProvider.ets
-'use static'
 import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
 import { window } from '@kit.ArkUI';
@@ -437,7 +433,6 @@ offWindowSizeChange(callback?: Callback<window.Size>): void
 
 ```ts
 // ExtensionProvider.ets
-'use static'
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
 
@@ -538,7 +533,6 @@ onRectChange(reasons: int, callback: Callback&lt;RectChangeOptions&gt;): void
 
 ```ts
 // ExtensionProvider.ets
-'use static'
 import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
 import uiExtension from '@ohos.arkui.uiExtension';
@@ -637,7 +631,6 @@ offRectChange(callback?: Callback&lt;RectChangeOptions&gt;): void
 
 ```ts
 // ExtensionProvider.ets
-'use static'
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
 
@@ -691,7 +684,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 **示例：**
 
-**ArkTS-Dyn:**
+**ArkTS-Dyn示例:**
 ```ts
 // ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -737,10 +730,9 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
-**ArkTS-Sta:**
+**ArkTS-Sta示例:**
 ```ts
 // ExtensionProvider.ets
-'use static'
 import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
 import { window } from '@kit.ArkUI';
@@ -826,7 +818,7 @@ ArkTS-Sta: occupyEvents(eventFlags: int): Promise&lt;void&gt;
 
 **示例：**
 
-**ArkTS-Dyn:**
+**ArkTS-Dyn示例:**
 ```ts
 // ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -853,10 +845,9 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
-**ArkTS-Sta:**
+**ArkTS-Sta示例:**
 ```ts
 // ExtensionProvider.ets
-'use static'
 import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
 import uiExtension from '@ohos.arkui.uiExtension';
@@ -977,7 +968,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 - 示例应用中的EntryAbility(UIAbility)加载首页文件：`pages/Index.ets`，其中内容如下：
 
-  **ArkTS-Dyn:**
+  **ArkTS-Dyn示例:**
   ```ts
   // pages/Index.ets -- UIAbility启动时加载此页面
   import { Want } from '@kit.AbilityKit';
@@ -1012,10 +1003,9 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
   }
   ```
 
-  **ArkTS-Sta:**
+  **ArkTS-Sta示例:**
     ```ts
   // pages/Index.ets -- UIAbility启动时加载此页面
-  'use static'
   import { Entry, Component, Column, Row, Text, EmbeddedComponent, EmbeddedType} from '@ohos.arkui.component';
   import { State } from '@ohos.arkui.stateManagement';
   import { Want } from '@kit.AbilityKit';
@@ -1052,7 +1042,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 - EmbeddedComponent拉起的EmbeddedUIExtensionAbility在`ets/extensionAbility/ExampleEmbeddedAbility`文件中实现，内容如下：
 
-  **ArkTS-Dyn:**
+  **ArkTS-Dyn示例:**
   ```ts
   import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
@@ -1086,9 +1076,8 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
   }
   ```
 
-  **ArkTS-Sta:**
+  **ArkTS-Sta示例:**
   ```ts
-  'use static'
   import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
   import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
   import { LocalStorage } from '@ohos.arkui.stateManagement';
@@ -1125,7 +1114,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 - EmbeddedUIExtensionAbility的入口页面文件`pages/extension.ets`内容如下：
 
-  **ArkTS-Dyn:**
+  **ArkTS-Dyn示例:**
   ```ts
   import { UIExtensionContentSession } from '@kit.AbilityKit';
   import { uiExtension, window } from '@kit.ArkUI';
@@ -1209,10 +1198,9 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
     }
   }
   ```
-  **ArkTS-Sta:**
 
+  **ArkTS-Sta示例:**
   ```ts
-  'use static'
   import { UIExtensionContentSession } from '@kit.AbilityKit';
   import { Entry, Component, Column, Row, Text, Button, Margin} from '@ohos.arkui.component';
   import { State } from '@ohos.arkui.stateManagement';

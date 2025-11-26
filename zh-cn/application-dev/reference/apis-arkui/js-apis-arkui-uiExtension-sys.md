@@ -57,7 +57,7 @@ hideNonSecureWindows(shouldHide: boolean): Promise\<void>
 
 **示例**
 
-**ArkTS-Dyn:**
+**ArkTS-Dyn示例:**
 ```ts
 // ExtensionProvider.ts
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -85,10 +85,9 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-**ArkTS-Sta:**
+**ArkTS-Sta示例:**
 ```ts
 // ExtensionProvider.ets
-'use static'
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -148,7 +147,7 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 **示例** 
 
-**ArkTS-Dyn:**
+**ArkTS-Dyn示例:**
 ```ts
 // ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -176,10 +175,9 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-**ArkTS-Sta:**
+**ArkTS-Sta示例:**
 ```ts
 // ExtensionProvider.ets
-'use static'
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
