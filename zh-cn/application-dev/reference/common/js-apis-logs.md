@@ -6,7 +6,7 @@
 >
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 
-> 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## console.debug
 
@@ -18,7 +18,7 @@ debug(message: string, ...arguments: any[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 3
+**ArkTS-Dyn起始版本：** 7
 
 **ArkTS-Sta起始版本：** 22
 
@@ -51,7 +51,7 @@ log(message: string, ...arguments: any[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 3
+**ArkTS-Dyn起始版本：** 7
 
 **ArkTS-Sta起始版本：** 22
 
@@ -84,7 +84,7 @@ info(message: string, ...arguments: any[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 3
+**ArkTS-Dyn起始版本：** 7
 
 **ArkTS-Sta起始版本：** 22
 
@@ -117,7 +117,7 @@ warn(message: string, ...arguments: any[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 3
+**ArkTS-Dyn起始版本：** 7
 
 **ArkTS-Sta起始版本：** 22
 
@@ -150,7 +150,7 @@ error(message: string, ...arguments: any[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 3
+**ArkTS-Dyn起始版本：** 7
 
 **ArkTS-Sta起始版本：** 22
 
