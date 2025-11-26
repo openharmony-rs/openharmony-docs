@@ -11044,6 +11044,16 @@ async function example(context: Context) {
 | SCREENSHOT |  1 |  截屏录屏文件类型。<br>**系统接口**：此接口为系统接口。 |
 | SPATIAL_3DGS<sup>22+</sup> |  7 |  3DGS（3D高斯点渲染）视频文件类型。<br>**系统接口**：此接口为系统接口。 |
 
+## NotifyChangeType<sup>20+</sup>
+
+枚举，媒体资产（图片/视频）或相册变更事件的通知类型。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                      | 值   | 说明                             |
+| ------------------------- | ---- | -------------------------------- |
+| NOTIFY_CHANGE_YUV_READY<sup>23+</sup>         | 3    | 分段式拍照场景下高质量图已准备完成。<br>图像的清晰度、色彩准确度等质量指标可在请求图像的回调中判断：[OnDataPrepared](arkts-apis-photoAccessHelper-QuickImageDataHandler.md#ondataprepared13)。<br>**系统接口**：此接口为系统接口。 |
+
 ## AlbumType
 
 枚举，相册类型，表示是用户相册还是系统预置相册。
