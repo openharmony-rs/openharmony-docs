@@ -28355,5 +28355,60 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/napi/use-napi-life-cycle.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":61,
+						"name":"napi_open_close_handle_scope",
+						"start_line":19
+					},
+					{
+						"end_line":88,
+						"name":"napi_open_close_escapable_handle_scope",
+						"start_line":63
+					},
+					{
+						"end_line":222,
+						"name":"napi_create_delete_reference",
+						"start_line":90
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts",
+				"functions":[
+					{
+						"end_line":20,
+						"name":"napi_open_close_handle_scope_api",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"ark_napi_open_close_handle_scope",
+						"start_line":51
+					},
+					{
+						"end_line":87,
+						"name":"ark_napi_open_close_escapable_handle_scope",
+						"start_line":70
+					},
+					{
+						"end_line":111,
+						"name":"ark_napi_create_delete_reference",
+						"start_line":89
+					}
+				]
+			}
+		]
 	}
 ]
