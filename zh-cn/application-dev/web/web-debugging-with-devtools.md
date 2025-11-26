@@ -191,7 +191,7 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
 ### 便捷脚本
 **Windows平台** <br>
 请复制以下信息创建bat文件，开启调试应用后执行。
-   ```
+   ```bat
    @echo off
    setlocal enabledelayedexpansion
 
@@ -267,7 +267,7 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
 **Linux或Mac平台** <br>
 请复制以下信息创建sh文件，注意chmod以及格式转换，开启调试应用后执行。
 本脚本会先删除所有的端口转发，如果有其他的工具(如：DevEco Studio)也在使用端口转发功能，会受到影响。
-   ```
+   ```bat
    #!/bin/bash
 
    # Get current fport rule list

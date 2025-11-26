@@ -1634,7 +1634,7 @@ javaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -1660,7 +1660,7 @@ struct Index {
     }
   }
 }
-  ```
+```
 
 ```html
 <!--index.html-->
@@ -1782,7 +1782,7 @@ runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -1808,7 +1808,7 @@ struct Index {
     }
   }
 }
-  ```
+```
 
 ```html
 <!--index.html-->
@@ -1846,7 +1846,7 @@ runJavaScriptOnHeadEnd(scripts: Array\<ScriptItem>)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -1872,7 +1872,7 @@ struct Index {
     }
   }
 }
-  ```
+```
 
 ```html
 <!--index.html-->
