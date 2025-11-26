@@ -515,3 +515,15 @@ PIN码认证结果。
 | NONE   | 0    | 摄像头未工作。 |
 | PAUSED | 1    | 摄像头暂停中。 |
 | ACTIVE | 2    | 摄像头捕获中。 |
+
+## MicrophoneCaptureState<sup>23+</sup>
+
+定义麦克风使用状态的值。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称   | 值   | 说明         |
+| ------ | ---- | ------------ |
+| NONE   | 0    | 麦克风未工作。 |
+| PAUSED | 1    | 麦克风暂停中。 |
+| ACTIVE | 2    | 麦克风捕获中。 |
