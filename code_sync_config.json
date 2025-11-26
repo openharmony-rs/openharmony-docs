@@ -18081,14 +18081,14 @@
 						"start_line":21
 					},
 					{
-						"end_line":51,
+						"end_line":52,
 						"name":"dialog_my_component",
-						"start_line":34
+						"start_line":36
 					},
 					{
 						"end_line":73,
 						"name":"build_text",
-						"start_line":53
+						"start_line":54
 					},
 					{
 						"end_line":200,
@@ -18096,9 +18096,9 @@
 						"start_line":190
 					},
 					{
-						"end_line":135,
+						"end_line":141,
 						"name":"dialog_component",
-						"start_line":115
+						"start_line":122
 					},
 					{
 						"end_line":212,
@@ -18106,9 +18106,9 @@
 						"start_line":205
 					},
 					{
-						"end_line":160,
+						"end_line":168,
 						"name":"dialog_component_id",
-						"start_line":137
+						"start_line":143
 					},
 					{
 						"end_line":224,
@@ -18116,22 +18116,22 @@
 						"start_line":217
 					},
 					{
-						"end_line":100,
+						"end_line":98,
 						"name":"custom_dialog_example",
 						"start_line":75
 					},
 					{
-						"end_line":234,
+						"end_line":254,
 						"name":"custom_dialog_example_click",
-						"start_line":229
+						"start_line":245
 					},
 					{
-						"end_line":182,
+						"end_line":193,
 						"name":"dialog_component_get_state",
-						"start_line":162
+						"start_line":170
 					},
 					{
-						"end_line":241,
+						"end_line":261,
 						"name":"dialog_example_controller",
 						"start_line":16
 					}
