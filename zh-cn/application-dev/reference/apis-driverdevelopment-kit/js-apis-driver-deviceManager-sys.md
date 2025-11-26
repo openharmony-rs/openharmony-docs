@@ -212,7 +212,5 @@ USB设备驱动详细信息，继承自[DriverInfo](#driverinfo)。
 
 | 名称            | 类型                  | 必填  | 说明                      |
 |---------------|---------------------|-----|-------------------------|
-| productIdList | Array&lt;number&gt; | 是   | 驱动支持的USB设备product ID列表。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| vendorIdList  | Array&lt;number&gt; | 是   | 驱动支持的USB设备vendor ID列表。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| productIdList | Array&lt;int&gt; | 是   | 驱动支持的USB设备product ID列表。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
-| vendorIdList  | Array&lt;int&gt; | 是   | 驱动支持的USB设备vendor ID列表。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| productIdList | ArkTs-Dyn:Array&lt;number&gt;<br> ArkTs-Sta:  Array&lt;int&gt; | 是   | 驱动支持的USB设备product ID列表。|
+| vendorIdList  |ArkTs-Dyn:Array&lt;number&gt;<br> ArkTs-Sta:  Array&lt;int&gt; | 是   | 驱动支持的USB设备vendor ID列表。|
