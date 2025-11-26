@@ -4967,7 +4967,7 @@ struct WebComponent {
 
 setDownloadDelegate(delegate: WebDownloadDelegate): void
 
-为当前的Web组件设置一个WebDownloadDelegate，该delegate用来接收页面内触发的下载与下载的进展。
+为当前的Web组件设置一个WebDownloadDelegate，该delegate用来接收页面内触发的下载进度的委托。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
