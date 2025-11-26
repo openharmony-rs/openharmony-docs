@@ -46,11 +46,13 @@ Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程
 
 ### napi_open_handle_scope、napi_close_handle_scope
 
-通过接口napi_open_handle_scope创建一个上下文环境，并使用napi_close_handle_scope进行关闭。这组接口用于管理ArkTS对象的生命周期，确保在Node-API模块代码处理ArkTS对象时能够正确地管理其句柄，以避免出现对象错误回收的问题。
-需要注意的是合理使用napi_open_handle_scope和napi_close_handle_scope管理napi_value的生命周期，做到生命周期最小化，避免发生内存泄漏问题。
+通过接口napi_open_handle_scope创建一个上下文环境，并使用napi_close_handle_scope进行关闭。这组接口用于管理ArkTS对象的生命周期，确保在Node-API模块代码处理ArkTS对象时能够正确地管理其句柄，以避免出现对象错误回收的问题。  
+需要注意的是，接口仅支持单层嵌套的scope结构。在任何时刻，只有一个scope处于活动状态，所有新创建的handles都将与该scope相关联。scope必须按照与打开顺序相反的顺序关闭。此外，在native方法中创建的所有scope必须在该方法返回之前被关闭。
 
-代码部分也可参考下面链接：
-[生命周期管理](napi-guidelines.md#生命周期管理)
+关于生命周期管理的代码部分也可参考下面链接：
+[生命周期管理](napi-guidelines.md#生命周期管理)  
+关于典型错误使用方法的代码部分也可参考下面链接: 
+[典型错误场景](napi-faq-about-stability.md#napi_open_handle_scope与napi_close_handle_scope进行生命周期相关开发典型错误场景)
 
 cpp部分代码
 

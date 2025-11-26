@@ -54,7 +54,7 @@ deactivateUserKey(userId: number):void
 
   ```ts
   import { keyManager } from "@kit.CoreFileKit";
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let userId: number = 100;
   try {
     keyManager.deactivateUserKey(userId);

@@ -318,63 +318,63 @@ export { SubPage } from './src/main/ets/components/mainpage/SubPage'; // 非冷�
 
 以下为示例代码：
 1. 将HAR包的导出文件Index.ets进行拆分，IndexAppStart.ets文件仅导出首页相关文件，IndexOthers.ets文件导出非首页相关文件。
-```ts
-// library/IndexAppStart.ets
-export { MainPage } from './src/main/ets/components/mainpage/MainPage';
-// library/IndexOthers.ets
-export { SubPage } from './src/main/ets/components/mainpage/SubPage';
-```
+    ```ts
+    // library/IndexAppStart.ets
+    export { MainPage } from './src/main/ets/components/mainpage/MainPage';
+    // library/IndexOthers.ets
+    export { SubPage } from './src/main/ets/components/mainpage/SubPage';
+    ```
 2. 首页Index从IndexAppStart.ets导入MainPage。
-```ts
-// Index.ets
-import { MainPage } from 'library/IndexAppStart';
+    ```ts
+    // Index.ets
+    import { MainPage } from 'library/IndexAppStart';
 
-@Entry
-@Component
-struct Index {
-  @Provide pathStack: NavPathStack = new NavPathStack();
+    @Entry
+    @Component
+    struct Index {
+      @Provide pathStack: NavPathStack = new NavPathStack();
 
-  build() {
-    Navigation(this.pathStack) {
-      Row() {
-        // 引用HAR的自定义组件
-        MainPage()
+      build() {
+        Navigation(this.pathStack) {
+          Row() {
+            // 引用HAR的自定义组件
+            MainPage()
+          }
+        }
+        .height('100%')
+        .width('100%')
       }
     }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
+    ```
 3. 跳转后的页面SecondPage从IndexOthers.ets导入SubPage。
-```ts
-// SecondPage.ets
-import { SubPage } from 'library/IndexOthers';
+    ```ts
+    // SecondPage.ets
+    import { SubPage } from 'library/IndexOthers';
 
-@Builder
-export function SecondPageBuilder() {
-  SecondPage()
-}
-
-@Entry
-@Component
-struct SecondPage {
-  pathStack: NavPathStack = new NavPathStack();
-
-  build() {
-    NavDestination() {
-      Row() {
-        // 引用HAR的自定义组件
-        SubPage()
-      }
-      .height('100%')
+    @Builder
+    export function SecondPageBuilder() {
+      SecondPage()
     }
-    .onReady((context: NavDestinationContext) => {
-      this.pathStack = context.pathStack;
-    })
-  }
-}
-```
+
+    @Entry
+    @Component
+    struct SecondPage {
+      pathStack: NavPathStack = new NavPathStack();
+
+      build() {
+        NavDestination() {
+          Row() {
+            // 引用HAR的自定义组件
+            SubPage()
+          }
+          .height('100%')
+        }
+        .onReady((context: NavDestinationContext) => {
+          this.pathStack = context.pathStack;
+        })
+      }
+    }
+    ```
 **【优化方案二】**  
 在首页的**Index.ets**文件中导入**MainPage.ets**时使用全路径展开。  
 **优点**：不需要新增文件来汇总导出所有冷启阶段文件。  
@@ -462,18 +462,18 @@ struct Index {
 
 以下为示例代码：
 1. 在被引用HAR_COMMON包中写入功能示例。
-```ts
-// har_common/src/main/ets/utils/Utils.ets
-const LARGE_NUMBER = 100000000;
-function func(): number {
-  let count = 0;
-  while (count < LARGE_NUMBER) {
-    count++;
-  }
-  return count;
-}
-export let funcResult = func();
-```
+    ```ts
+    // har_common/src/main/ets/utils/Utils.ets
+    const LARGE_NUMBER = 100000000;
+    function func(): number {
+      let count = 0;
+      while (count < LARGE_NUMBER) {
+        count++;
+      }
+      return count;
+    }
+    export let funcResult = func();
+    ```
 2. 分别通过使用HSP包和HAR包来引用该HAR_COMMON包中的功能进行性能对比实验。  
 - 使用HAP包和HSP包引用该HAR_COMMON包中的功能。  
   HAP包引用HAR_COMMON包中的功能。
@@ -569,7 +569,7 @@ export default class MyAbilityStage extends AbilityStage {
 
 对比数据如下：
 
-|                        | 阶段开始(秒)   | 阶段结束(秒)   | 阶段时长(秒) |
+|   方案                 | 阶段开始(秒)   | 阶段结束(秒)   | 阶段时长(秒) |
 | ---------------------- | -------------- | -------------- | ------------ |
 | 优化前同步执行耗时操作 | 2124.915558194 | 2127.041354575 | 2.125796381  |
 | 优化后异步执行耗时操作 | 4186.436835246 | 4186.908777335 | 0.471942089  |
@@ -833,95 +833,95 @@ export let number = computeTask();
 
 【优化后】
 1. 在NetRequest.ets中进行Http请求以及数据处理。
-```ts
-// NetRequest.ets
-import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
-import { http } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
-// 通过http的request方法从网络下载图片资源
-export function httpRequest() {
-  hiTraceMeter.startTrace('Http Request', 1);
-  http.createHttp()
-    // 实际开发需要将"https://www.example1.com/POST?e=f&g=h"替换成为真实要访问的网站地址
-    .request('https://www.example1.com/POST?e=f&g=h',
-      (error: BusinessError, data: http.HttpResponse) => {
-        if (error) {
-          // 下载失败时不执行后续逻辑
-          return;
-        }
-        // 处理网络请求返回的数据
-        transcodePixelMap(data);
-      }
-    )
-}
-
-// 使用createPixelMap将ArrayBuffer类型的图片装换为PixelMap类型
-function transcodePixelMap(data: http.HttpResponse) {
-  if (http.ResponseCode.OK === data.responseCode) {
-    const imageData: ArrayBuffer = data.result as ArrayBuffer;
-    // 通过ArrayBuffer创建图片源实例
-    const imageSource: image.ImageSource = image.createImageSource(imageData);
-    const options: image.InitializationOptions = {
-      'alphaType': 0, // 透明度
-      'editable': false, // 是否可编辑
-      'pixelFormat': 3, // 像素格式
-      'scaleMode': 1, // 缩略值
-      'size': { height: 100, width: 100 }
-    }; // 创建图片大小
-    // 通过属性创建PixelMap
-    imageSource.createPixelMap(options).then((pixelMap: PixelMap) => {
-      AppStorage.set('netData', pixelMap);
-      hiTraceMeter.finishTrace('Http Request', 1);
-    });
-  }
-}
-```
-2. 在AbilityStage的onCreate()生命周期回调中发起网络请求。
-```ts
-// MyAbilityStage.ets
-import { AbilityStage, Want } from '@kit.AbilityKit';
-import { httpRequest } from '../utils/NetRequest';
-export default class MyAbilityStage extends AbilityStage {
-  onCreate(): void {
-    // 发送网络请求
-    httpRequest();
-  }
-
-  onAcceptWant(want: Want): string {
-    // 仅specified模式下触发
-    return 'MyAbilityStage';
-  }
-}
-```
-3. 在首页Index.ets中展示请求获取的图片。
-```ts
-// Index.ets
-import { number } from '../utils/Calculator';
-
-AppStorage.link('netData');
-PersistentStorage.persistProp('netData', undefined);
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World' + number; // 为了体现性能收益，引用耗时函数的执行结果number
-  @StorageLink('netData') netData: PixelMap | undefined = undefined;
-  build() {
-    Row() {
-      Image(this.netData)
-        .objectFit(ImageFit.Contain)
-        .width('50%')
-        .height('50%')
+    ```ts
+    // NetRequest.ets
+    import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
+    import { http } from '@kit.NetworkKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { image } from '@kit.ImageKit';
+    // 通过http的request方法从网络下载图片资源
+    export function httpRequest() {
+      hiTraceMeter.startTrace('Http Request', 1);
+      http.createHttp()
+        // 实际开发需要将"https://www.example1.com/POST?e=f&g=h"替换成为真实要访问的网站地址
+        .request('https://www.example1.com/POST?e=f&g=h',
+          (error: BusinessError, data: http.HttpResponse) => {
+            if (error) {
+              // 下载失败时不执行后续逻辑
+              return;
+            }
+            // 处理网络请求返回的数据
+            transcodePixelMap(data);
+          }
+        )
     }
-    .onDisAppear(() => {
-      AppStorage.set('netData', undefined);
-    })
-    .height('100%')
-    .width('100%')
-  }
-}
-```
+
+    // 使用createPixelMap将ArrayBuffer类型的图片装换为PixelMap类型
+    function transcodePixelMap(data: http.HttpResponse) {
+      if (http.ResponseCode.OK === data.responseCode) {
+        const imageData: ArrayBuffer = data.result as ArrayBuffer;
+        // 通过ArrayBuffer创建图片源实例
+        const imageSource: image.ImageSource = image.createImageSource(imageData);
+        const options: image.InitializationOptions = {
+          'alphaType': 0, // 透明度
+          'editable': false, // 是否可编辑
+          'pixelFormat': 3, // 像素格式
+          'scaleMode': 1, // 缩略值
+          'size': { height: 100, width: 100 }
+        }; // 创建图片大小
+        // 通过属性创建PixelMap
+        imageSource.createPixelMap(options).then((pixelMap: PixelMap) => {
+          AppStorage.set('netData', pixelMap);
+          hiTraceMeter.finishTrace('Http Request', 1);
+        });
+      }
+    }
+    ```
+2. 在AbilityStage的onCreate()生命周期回调中发起网络请求。
+    ```ts
+    // MyAbilityStage.ets
+    import { AbilityStage, Want } from '@kit.AbilityKit';
+    import { httpRequest } from '../utils/NetRequest';
+    export default class MyAbilityStage extends AbilityStage {
+      onCreate(): void {
+        // 发送网络请求
+        httpRequest();
+      }
+
+      onAcceptWant(want: Want): string {
+        // 仅specified模式下触发
+        return 'MyAbilityStage';
+      }
+    }
+    ```
+3. 在首页Index.ets中展示请求获取的图片。
+    ```ts
+    // Index.ets
+    import { number } from '../utils/Calculator';
+
+    AppStorage.link('netData');
+    PersistentStorage.persistProp('netData', undefined);
+
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'Hello World' + number; // 为了体现性能收益，引用耗时函数的执行结果number
+      @StorageLink('netData') netData: PixelMap | undefined = undefined;
+      build() {
+        Row() {
+          Image(this.netData)
+            .objectFit(ImageFit.Contain)
+            .width('50%')
+            .height('50%')
+        }
+        .onDisAppear(() => {
+          AppStorage.set('netData', undefined);
+        })
+        .height('100%')
+        .width('100%')
+      }
+    }
+    ```
 
 下面对优化前后启动性能进行对比分析，分析阶段的起点为启动Ability（即`H:void OHOS::AppExecFwk::MainThread::HandleLaunchAbility`的开始点），阶段终点为应用接收到网络数据返回后的首帧刷新（即`H:ReceiveVsync dataCount:24Bytes now:timestamp expectedEnd:timestamp vsyncId:int`的开始点）。  
 

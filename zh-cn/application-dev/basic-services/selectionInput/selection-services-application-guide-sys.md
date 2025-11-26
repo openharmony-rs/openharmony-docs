@@ -79,6 +79,7 @@
     ```
 
 4. 在划词扩展被拉起时，使用划词Ability接口创建划词窗口。
+    <!--code_no_check-->
     ```ts
     let panelInfo: PanelInfo = {
       panelType: PanelType.MENU_PANEL,

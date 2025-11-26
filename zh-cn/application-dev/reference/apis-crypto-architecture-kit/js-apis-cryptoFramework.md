@@ -5143,7 +5143,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | ------------- | -------------------- | ---- | ---------- |
 | data          | [DataBlob](#datablob) \| null<sup>10+</sup>             | 是   | 传入的消息。API 10之前只支持DataBlob， API 10之后增加支持null。 |
 | signatureData | [DataBlob](#datablob)              | 是   | 签名数据。  |
-| callback      | AsyncCallback\<boolean> | 是   | 回调函数，用于获取以boolean值表示的验签结果。 |
+| callback      | AsyncCallback\<boolean> | 是   | 回调函数，用于获取以boolean值表示的验签结果。返回true表示验签通过；返回false表示验签不通过。 |
 
 **错误码：**
 

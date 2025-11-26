@@ -133,7 +133,7 @@ Button('click for Menu')
 - 确认菜单的弹出方式，并使用bindContextMenu属性绑定组件。示例中为右键弹出菜单。
   
   ```ts
-  Button('click for Menu')
+  Button('Right-click for Menu')
     .bindContextMenu(this.MyMenu, ResponseType.RightClick)
   ```
 
@@ -154,7 +154,7 @@ Button('click for Menu')
 
 ```ts
   Button('click for Menu')
-    .bindContextMenu(this.MyMenu, ResponseType.RightClick, { hapticFeedbackMode: HapticFeedbackMode.ENABLED })
+    .bindMenu(this.MyMenu, { hapticFeedbackMode: HapticFeedbackMode.ENABLED })
 ```
 
 ## 菜单支持避让中轴

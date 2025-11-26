@@ -267,6 +267,10 @@ backgroundColor(backgroundColor: ColorMetrics): ToolBarV2Modifier
 
 自定义绘制工具栏背景色的接口，若重载该方法则可进行工具栏背景色的自定义绘制。
 
+> **说明：**
+>
+> 通过该接口设置后，如果系统切换深浅色模式，工具栏背景色不支持自动切换。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
