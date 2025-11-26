@@ -294,29 +294,33 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
-import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import common from '@ohos.app.ability.common';
 
 export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
-    try {
-      window.getLastWindow(this.context, (err: BusinessError, topWindow) => {
-        const errCode: number = err.code;
-        if (errCode) {
+    // 创建子窗
+    windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
+      subWindow.showWindow().then(() => {
+        try{
+          window.getLastWindow(this.context as common.UIAbilityContext, (err: BusinessError<void>|null, topWindow: window.Window|undefined) => {
+            if (err?.code) {
+              console.error(`Failed to obtain the top window. Cause code: ${err?.code}, message: ${err?.message}`);
+            } else {
+              console.info(`Succeeded in obtaining the top window. Window id: ${topWindow?.getWindowProperties().id}`);
+            }
+          });
+        }catch(exception){
+          let err = exception as BusinessError;
           console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
-          return;
         }
-        console.info(`Succeeded in obtaining the top window. Window id: ${topWindow.getWindowProperties().id}`);
       });
-    } catch (exception) {
-      let err = exception as BusinessError;
-      console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
-    }
+    });
   }
-  //...
 }
 ```
 
@@ -405,29 +409,33 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import common from '@ohos.app.ability.common';
 
 export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
-    let windowClass: window.Window | undefined = undefined;
-    try {
-      window.getLastWindow(this.context).then((topWindow: window.Window) => {
-        windowClass = topWindow;
-        console.info(`Succeeded in obtaining the top window. Window id: ${topWindow.getWindowProperties().id}`);
-      }).catch((err: BusinessError) => {
-        console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
+    // 创建子窗
+    windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
+      subWindow.showWindow().then(() => {
+        try {
+          window.getLastWindow(this.context as common.UIAbilityContext ).then((topWindow :window.Window | undefined ) => {
+            let windowClass = topWindow;
+            console.info(`Succeeded in obtaining the top window. Window id: ${topWindow?.getWindowProperties().id}`);
+          }).catch((Err: Error) => {
+            let err = Err as BusinessError;
+            console.error(`Failed to obtain the top window. Cause code: ${err?.code}, message: ${err?.message}`);
+          });
+        } catch (exception) {
+          let err = exception as BusinessError;
+          console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
+        }
       });
-    } catch (exception) {
-      let err = exception as BusinessError;
-      console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
-    }
+    });
   }
-  //...
 }
 ```
 
@@ -546,67 +554,29 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 ```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import common from '@ohos.app.ability.common';
 
 export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    // ...
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
-    let mainWindow: window.Window | undefined = undefined;
-    let subWindow: window.Window | undefined = undefined;
-    let mainWindowId: number = -1;
-    let subWindowId: number = -1;
-
-    try {
-      windowStage.loadContent('pages/Index', (err: BusinessError | null) => {
-        if (err?.code) {
-          console.error(`Failed to load content for main window. Cause code: ${err.code}, message: ${err.message}`);
-        }
-        // 获取应用主窗及ID
-        windowStage.getMainWindow().then((data: window.Window | null) => {
-          if (data == null) {
-            console.error('Failed to obtain the main window. Cause: The data is empty');
-            return;
-          }
-          mainWindow = data;
-          mainWindowId = mainWindow.getWindowProperties().id;
-          console.info('Succeeded in obtaining the main window');
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
-        });
-
-        // 创建或获取子窗及ID，此时子窗口获焦
-        windowStage.createSubWindow('testSubWindow').then((data: window.Window | null) => {
-          if (data == null) {
-            console.error('Failed to obtain the sub window. Cause: The data is empty');
-            return;
-          }
-          subWindow = data;
-          subWindowId = subWindow.getWindowProperties().id;
-          subWindow.resize(500, 500);
-          subWindow.setUIContent('pages/Index');
-          subWindow.showWindow();
-
-          // 监听Window状态，确保已经就绪
-          subWindow.on("windowEvent", (windowEvent: window.WindowEventType) => {
-            if (windowEvent == window.WindowEventType.WINDOW_ACTIVE) {
-              // 切换焦点
-              window.shiftAppWindowFocus(subWindowId, mainWindowId).then(() => {
-                console.info('Succeeded in shifting app window focus');
-              }).catch((err: BusinessError) => {
-                console.error(`Failed to shift app window focus. Cause code: ${err.code}, message: ${err.message}`);
-              });
-            }
-          });
+    // 创建子窗
+    windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
+      subWindow.showWindow().then(() => {
+        let mainWindow = windowStage.getMainWindowSync();
+        let mainWindowId = mainWindow.getWindowProperties().id;
+        let subWindowId = subWindow.getWindowProperties().id;
+        // 切换焦点
+        window.shiftAppWindowFocus(mainWindowId as int, subWindowId as int).then((): void => {
+          console.info('Succeeded in shifting app window focus');
+        }).catch((err: BusinessError): void => {
+          console.error(`Failed to shift app window focus. Cause code: ${err.code}, message: ${err.message}`);
         });
       });
-    } catch (exception) {
-      let err = exception as BusinessError;
-      console.error(`Failed to shift app focus. Cause code: ${err.code}, message: ${err.message}`);
-    }
+    });
   }
 }
 ```
