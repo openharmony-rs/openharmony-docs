@@ -916,10 +916,11 @@ onCollaborate(wantParam: Record&lt;string, Object&gt;): AbilityConstant.Collabor
 
 UIAbility生命周期回调，在多设备协同场景下，协同方应用在被拉起的过程中返回是否接受协同。
 
- **说明：**
-- 该生命周期回调不支持[specified启动模式](../../application-models/uiability-launch-type.md#specified启动模式)。
-- 通过[startAbility](./js-apis-inner-application-uiAbilityContext.md#startability)等方法拉起协同方应用时，需要在Want对象中设置协同标记[Flags](js-apis-app-ability-wantConstant.md#flags)为FLAG_ABILITY_ON_COLLABORATE。
-- [冷启动](../../application-models/uiability-intra-device-interaction.md#目标uiability冷启动)时，该回调在[onForeground](#onforeground)前或[onBackground](#onbackground)后调用；[热启动](../../application-models/uiability-intra-device-interaction.md#目标uiability热启动)时，该回调在[onNewWant](#onnewwant)前调用。
+> **说明：**
+>
+> - 该生命周期回调不支持[specified启动模式](../../application-models/uiability-launch-type.md#specified启动模式)。
+> - 通过[startAbility](./js-apis-inner-application-uiAbilityContext.md#startability)等方法拉起协同方应用时，需要在Want对象中设置协同标记[Flags](js-apis-app-ability-wantConstant.md#flags)为FLAG_ABILITY_ON_COLLABORATE。
+> - [冷启动](../../application-models/uiability-intra-device-interaction.md#目标uiability冷启动)时，该回调在[onForeground](#onforeground)前或[onBackground](#onbackground)后调用；[热启动](../../application-models/uiability-intra-device-interaction.md#目标uiability热启动)时，该回调在[onNewWant](#onnewwant)前调用。
 
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
