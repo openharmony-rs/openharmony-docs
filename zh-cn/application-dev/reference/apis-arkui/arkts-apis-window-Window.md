@@ -9374,13 +9374,13 @@ setWindowCornerRadius(cornerRadius: number): Promise&lt;void&gt;
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
-| 错误码ID   | 错误信息                                                                                                                                                      |
-|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 401     | Parameter error. Possible cause: 1. MExactly one parameter is required; 2. Failed to convert parameter to radius; 3. The corner radius is less than zero. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities.                                                                      |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal napi error.                                         |
-| 1300003 | This window manager service works abnormally.                                                                                                             |
-| 1300004 | Unauthorized operation.                                                                                                                                   |
+| 错误码ID   | 错误信息                                                                                                                                                     |
+|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 401     | Parameter error. Possible cause: 1. Exactly one parameter is required; 2. Failed to convert parameter to radius; 3. The corner radius is less than zero. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.                                                                     |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal napi error.                                        |
+| 1300003 | This window manager service works abnormally.                                                                                                            |
+| 1300004 | Unauthorized operation.                                                                                                                                  |
 
 **示例：**
 
