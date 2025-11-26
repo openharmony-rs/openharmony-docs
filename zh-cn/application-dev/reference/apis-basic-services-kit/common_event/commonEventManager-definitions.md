@@ -1278,9 +1278,9 @@ AppGallery Kit面向应用发布如下系统公共事件。
 ## Multimodalinput Kit
 Multimodalinput Kit面向应用发布如下系统公共事件。
 
-### COMMON_EVENT_TABLET_MODE_CHANGED 
-表示具有开合支架的平板电脑的支架状态发生改变时。
-将会触发事件通知服务发布该系统公共事件。
+### COMMON_EVENT_TABLET_MODE_CHANGED
+表示具有可感知支架开合的设备，例如具有支架的平板电脑，
+其支架开合状态变化时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1292,9 +1292,9 @@ Multimodalinput Kit面向应用发布如下系统公共事件。
 ## Multimodalinput Kit
 Multimodalinput Kit面向应用发布如下系统公共事件。
 
-### COMMON_EVENT_LID_STATE_CHANGED 
-表示PC合盖状态发生改变时。
-将会触发事件通知服务发布该系统公共事件。
+### COMMON_EVENT_LID_STATE_CHANGED
+表示具有可感知开合盖子的设备，例如具有开合盖子的笔记本电脑，
+其开合盖状态变化时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
