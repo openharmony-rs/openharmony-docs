@@ -6150,7 +6150,7 @@ async function demo() {
   let observer: UIEventObserver = driver.createUIEventObserver();
   let options: WindowChangeOptions = {
     timeout: 20000,
-    bundleName: "com.example.myapplication"  // 请开发者替换为实际包名
+    bundleName: 'com.example.myapplication'  // 请开发者替换为实际包名
   }
   let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
