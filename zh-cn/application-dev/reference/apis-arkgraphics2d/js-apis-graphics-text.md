@@ -955,6 +955,20 @@ loadFontSyncWithCheck(name: string, path: string | Resource): void
 | path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是   | 需要导入的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 "rawfile/目录or文件名"。 |
 |   index  | int | 否   | 字体文件格式为ttc时，指定加载的字体索引。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | 参数错误。 |
+| 25900002 |  文件未找到。指定的文件不存在或路径不正确 |
+| 25900003 |  打开文件失败。由于权限或者 I/O 问题，无法打开文件。 |
+| 25900004 |  文件定位失败。系统无法重新定位文件读取指针。 |
+| 25900005 |  获取文件大小失败。系统无法获取文件大小信息。 |
+| 25900006 |  文件为空。指定的文件为空。 |
+| 25900007 |  文件损坏。文件内容无效或损坏，无法解析。 |
+
 **示例：**
 
 ```ts
@@ -1018,11 +1032,17 @@ loadFontWithCheck(name: string, path: string | Resource): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
+| 25900001 | 参数错误。 |
+| 25900002 |  文件未找到。指定的文件不存在或路径不正确 |
+| 25900003 |  打开文件失败。由于权限或者 I/O 问题，无法打开文件。 |
+| 25900004 |  文件定位失败。系统无法重新定位文件读取指针。 |
+| 25900005 |  获取文件大小失败。系统无法获取文件大小信息。 |
+| 25900006 |  文件为空。指定的文件为空。 |
+| 25900007 |  文件损坏。文件内容无效或损坏，无法解析。 |
 
 **示例：**
 
