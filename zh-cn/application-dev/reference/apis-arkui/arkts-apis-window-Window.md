@@ -11317,7 +11317,7 @@ ArkTS-Sta示例
 
 ```ts
 let isVisible: boolean | undefined = undefined;
-windowClass!.setUIContent('pages/Index').then(() => {
+windowClass.setUIContent('pages/Index').then(() => {
   try {
     isVisible = windowClass?.getWindowDecorVisible();
     console.info(`Succeeded in getting the window decor visible: ${isVisible}`);
@@ -11710,7 +11710,9 @@ export default class EntryAbility extends UIAbility {
 
 ## setWindowDecorHeight<sup>11+</sup>
 
-setWindowDecorHeight(height: number): void
+ArkTS-Dyn: setWindowDecorHeight(height: number): void
+
+ArkTS-Sta: setWindowDecorHeight(height: int): void
 
 设置窗口的标题栏高度，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
@@ -11939,7 +11941,9 @@ try {
 
 ## getWindowDecorHeight<sup>11+</sup>
 
-getWindowDecorHeight(): number
+ArkTS-Dyn: getWindowDecorHeight(): number
+
+ArkTS-Sta: getWindowDecorHeight(): int
 
 对存在标题栏和三键区的窗口形态生效，用于获取窗口的标题栏高度。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
