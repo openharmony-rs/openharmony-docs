@@ -451,12 +451,10 @@ callbackfn函数参数说明：
 
 **示例：**  
   ```typescript
-  function main() {
-    let arr: BigUint64Array = new BigUint64Array([1n, 2n, 3n]);
-    arr.forEach((element: bigint, index: int, array: BigUint64Array) => {
-        console.info(element, index);
-    })
-  }
+  let arr: BigUint64Array = new BigUint64Array([1n, 2n, 3n]);
+  arr.forEach((element: bigint, index: int, array: BigUint64Array) => {
+      console.info(element, index);
+  })
   // 1 0
   // 2 1
   // 3 2
@@ -711,15 +709,12 @@ mapfn函数返回值说明：
       this.offset = offset;
     }
   }
-  
-  function main() {
-    const origArr: Array<number> = new Array<number>(1, 2, 3);
-    let o = new C(2);
-    const newArr = BigUint64Array.from<number>(origArr, (v: number, k: number) => {
-      return new BigInt(v + o.offset);
-    });
-    console.info(newArr.toString());  // 3,4,5
-  }
+  const origArr: Array<number> = new Array<number>(1, 2, 3);
+  let o = new C(2);
+  const newArr = BigUint64Array.from<number>(origArr, (v: number, k: number) => {
+    return new BigInt(v + o.offset);
+  });
+  console.info(newArr.toString());  // 3,4,5
   ```
 
 - 适配建议：

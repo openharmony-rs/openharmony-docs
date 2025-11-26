@@ -93,8 +93,16 @@
 
 **示例：**  
   ```typescript
+  // 使用迭代器的方式
   let a: Array<number> = new Array<number>(1, 2, 3);
-  // 不建议使用$_iterator()方法，应使用for...of替代
+  const iterator  = a.$_iterator();
+  let result = iterator.next();
+  while (!result.done) {
+      console.info(result.value);
+      result = iterator.next();
+  }
+  // 现阶段不建议使用$_iterator()方法，可使用for...of替代
+  let a: Array<number> = new Array<number>(1, 2, 3);
   for (let iter of a) {
     console.info(iter);
   } // 1 2 3 
@@ -128,7 +136,18 @@
   ```
 
 **ArkTS-Sta版本签名：**  
-  不支持。
+`concat(...items: FixedArray\<ConcatArray\<T>>): Array\<T>`
+  - 现参数只支持传入数组。
+
+**参数：**
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | items | FixedArray\<ConcatArray\<T>>[] | 是 | 要连接的数组。 |
+
+**返回值：**
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Array\<T> | 连接后的新数组。 |
 
 - 适配建议：
   将单个成员改成数组再使用concat。
@@ -226,14 +245,11 @@ predicate函数参数说明：
         return arr.every((value: number, index: int, arr: Array<number>)=>{return value < this.base});
     }
   }
-  
-  function main() {
-    let arr: Array<number> = new Array<number>(1, 2, 3);
-    let a = new C(2);
-    let b = new C(4);
-    a.callEvery(arr); // false
-    b.callEvery(arr); // true
-  }
+  let arr: Array<number> = new Array<number>(1, 2, 3);
+  let a = new C(2);
+  let b = new C(4);
+  a.callEvery(arr); // false
+  b.callEvery(arr); // true
   ```
 
 - 适配建议：
@@ -322,14 +338,11 @@ fn函数参数说明：
         return arr.filter((value: number, index: int, arr: Array<number>)=>{return value < this.base});
     }
   }
-  
-  function main() {
-    let arr: Array<number> = new Array<number>(1, 2, 3);
-    let a = new C(2);
-    let b = new C(3);
-    a.call(arr); // [1]
-    b.call(arr); // [1, 2]
-  }
+  let arr: Array<number> = new Array<number>(1, 2, 3);
+  let a = new C(2);
+  let b = new C(3);
+  a.call(arr); // [1]
+  b.call(arr); // [1, 2]
   ```
 
 - 适配建议：
@@ -421,17 +434,14 @@ predicate函数返回值说明：
         return arr.find((value: number, index: int, arr: Array<number>)=>{return value >= this.base});
     }
   }
-  
-  function main() {
   let arr: Array<number> = new Array<number>(1, 2, 3);
-    let a = new C(2);
-    let b = new C(3);
-    a.call(arr); // 2
-    b.call(arr); // 3
+  let a = new C(2);
+  let b = new C(3);
+  a.call(arr); // 2
+  b.call(arr); // 3
     
-    console.info(a.call(arr));
-    console.info(b.call(arr));
-  }
+  console.info(a.call(arr));
+  console.info(b.call(arr));
   ```
 
 - 适配建议：
@@ -522,14 +532,11 @@ predicate函数返回值说明：
         return arr.findIndex((value: number, index: int, arr: Array<number>)=>{return value >= this.base});
     }
   }
-  
-  function main() {
-    let arr: Array<number> = new Array<number>(1, 2, 3);
-    let a = new C(2);
-    let b = new C(3);
-    a.call(arr); // 1
-    b.call(arr); // 2
-  }
+  let arr: Array<number> = new Array<number>(1, 2, 3);
+  let a = new C(2);
+  let b = new C(3);
+  a.call(arr); // 1
+  b.call(arr); // 2
   ```
 
 - 适配建议：
@@ -560,10 +567,27 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  不支持。
+  `flat\<U>(depth: number): Array\<U>`
+
+**参数：**
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | depth | number | 否 | 指定要提取嵌套数组的结构深度，默认值为1。 |
+
+**返回值：**
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Array\<U> | 包含所有子数组元素的新数组。 |
+
+**示例：**  
+  ```typescript
+  const nested = new Array<Any>(1, new Array<Any>(2, new Array<Any>(3)));
+  const flatArr = nested.flat(2);
+  console.info(flatArr.length); // 3
+  ```
 
 - 适配建议：
-  不使用flat，对于有明确返回值类型的具体的场景自己实现算法。
+  不建议使用flat，对于有明确返回值类型的具体的场景需要开发者实现算法。
 
 ### flatMap方法移除
 
@@ -678,14 +702,11 @@ callbackfn函数参数说明：
         return arr.forEach((value: number, index: int, arr: Array<number>)=>{console.info(value + this.base)});
     }
   }
-  
-  function main() {
-    let arr: Array<number> = new Array<number>(1, 2, 3);
-    let a = new C(2);
-    let b = new C(3);
-    a.call(arr);
-    b.call(arr);
-  }
+  let arr: Array<number> = new Array<number>(1, 2, 3);
+  let a = new C(2);
+  let b = new C(3);
+  a.call(arr);
+  b.call(arr);
   ```
 
 - 适配建议：
@@ -776,14 +797,11 @@ callbackfn函数返回值说明：
         return arr.map((value: number, index: int, arr: Array<number>)=>{return value + this.base});
     }
   }
-  
-  function main() {
-    let arr: Array<number> = new Array<number>(1, 2, 3);
-    let a = new C(2);
-    let b = new C(3);
-    a.call(arr); // [3, 4, 5]
-    b.call(arr); // [4, 5, 6]
-  }
+  let arr: Array<number> = new Array<number>(1, 2, 3);
+  let a = new C(2);
+  let b = new C(3);
+  a.call(arr); // [3, 4, 5]
+  b.call(arr); // [4, 5, 6]
   ```
 
 - 适配建议：
@@ -876,14 +894,11 @@ mapfn函数返回值说明：
         return Array.from(arr, (value: number, index: number)=>{return value + this.base});
     }
   }
-  
-  function main() {
-    let arr: Array<number> = new Array<number>(1, 2, 3);
+  let arr: Array<number> = new Array<number>(1, 2, 3);
     let a = new C(2);
     let b = new C(3);
     a.call(arr); // [3, 4, 5]
     b.call(arr); // [4, 5, 6]
-  }
   ```
 
 - 适配建议：
@@ -1087,7 +1102,7 @@ predicate函数返回值说明：
 
 **示例：**  
   ```typescript
-  let a = Array<number>(10)
+  let a = Array<number>(10); // 自动调用invoke方法
   function f(a:ArrayConstructor) {
       a(10);
   }
@@ -1108,7 +1123,7 @@ predicate函数返回值说明：
 
 **示例：**  
   ```typescript
-  let a = Array<number>(10);
+  let a = Array<number>(10); // 自动调用invoke方法
   function f() {
      Array<number>(10);
   }
@@ -1137,7 +1152,7 @@ predicate函数返回值说明：
 **示例：**  
   ```typescript
   function createArray(ctor: ArrayConstructor) {
-      return ctor<number>(1, 2, 3);
+      return ctor<number>(1, 2, 3); // 自动调用invoke方法
   }
   const num = createArray(Array);
   console.info("Array :"+ JSON.stringify(num)); // "Array :[1,2,3]" 
@@ -1159,7 +1174,7 @@ predicate函数返回值说明：
 **示例：**  
   ```typescript
   function createArrayDirect() {
-      return Array<number>(1, 2, 3);
+      return Array<number>(1, 2, 3); // 自动调用invoke方法
   }
   const num = createArrayDirect();
   console.info("Array :"+ JSON.stringify(num)); // "Array :[1,2,3]" 

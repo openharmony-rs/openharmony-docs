@@ -65,10 +65,7 @@
   function creatBigInt() {
     return new BigInt(1)
   }
-  
-  function main() {
-      console.info(creatBigInt());
-  }
+  console.info(creatBigInt());
   ```
 
 - 适配建议：
