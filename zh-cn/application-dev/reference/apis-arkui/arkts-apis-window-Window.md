@@ -9379,7 +9379,6 @@ setWindowCornerRadius(cornerRadius: number): Promise&lt;void&gt;
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 401     | Parameter error. Possible cause: 1. MExactly one parameter is required; 2. Failed to convert parameter to radius; 3. The corner radius is less than zero. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities.                                                                      |
-| 1001    | Native window is nullptr.                                                                                                                                 |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal napi error.                                         |
 | 1300003 | This window manager service works abnormally.                                                                                                             |
 | 1300004 | Unauthorized operation.                                                                                                                                   |
