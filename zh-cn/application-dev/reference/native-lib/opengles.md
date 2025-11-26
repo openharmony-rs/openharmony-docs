@@ -174,7 +174,7 @@ glLinkProgram(mProgramHandle);
 glUseProgram(mProgramHandle);
 ```
 
-该示例使用了EGL初始化一个四面体渲染表面，下面详细地解释下每个步骤。
+该示例通过EGL创建和设置整个OpenGL ES渲染环境，下面详细地解释下每个步骤。
 
 ### 使用eglGetDisplay连接渲染目标设备
 ```cpp
