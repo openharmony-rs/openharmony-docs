@@ -24,7 +24,7 @@ import { ParallelOption, ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 | 名称      | 类型     | 只读 | 可选 | 说明                |
 | -------- | -------- | --- |-----|--------------------- |
-| enable   | boolean  | 否   | 是| 是否开启UI创建并行化。<br/>true：开启并行化创建；false：不开启并行化创建。<br/>默认值：true  |
+| enable   | boolean  | 否   | 是| 是否开启UI创建并行化。<br/>true：开启并行化创建；false：不开启并行化创建。<br/>默认值：true。<br/>undefined：表现为默认值，开启并行化创建  |
 
 
 
@@ -43,7 +43,7 @@ ParallelizeUI(options: ParallelOption | undefined, content_: () => void)
 
 | 参数名  | 类型     | 必填 | 说明                                                           |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数。|
+| options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数，当options参数为undefined时，默认开启并行化创建。 |
 | content_  | () => void | 是   | 定义要创建的UI内容，通过尾随闭包"{...}"的形式传入。 |
 
 > **说明：**
@@ -179,7 +179,7 @@ ParallelizeUI\<T\>(options: ParallelOption | undefined, param: () => T, content_
 
 | 参数名  | 类型     | 必填 | 说明                                                           |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数。|
+| options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数，当options参数为undefined时，默认开启并行化创建。|
 | param  | () => T | 是   | 参数生成函数，用于生成content_调用时的参数。该函数会在UI线程调用，开发者可将并行创建需要用到的数据在此处进行拷贝。避免数据多线程读写引发的安全性问题。 |
 | content_  | (param: T) => void | 是   | 定义要创建的UI内容。|
 
@@ -267,7 +267,7 @@ ParallelizeUI<V, T>(
 
 | 参数名  | 类型     | 必填 | 说明                                                           |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数。|
+| options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数，当options参数为undefined时，默认开启并行化创建。|
 | arr  | Array\<V\> | 是   | 数据源，为Array类型的数组。 |
 | param  | (item: V, index: int) => T | 是   | 参数生成函数，用于生成content_调用时的参数。该函数会在UI线程调用，开发者可将并行创建需要用到的数据在此处进行拷贝。避免数据多线程读写引发的安全性问题。<br/>说明：<br/>- item是当前数据项，index是数据项索引值。 |
 | content_  | (param: T) => void | 是   | 定义要创建的UI内容。- param参数（必选）：param函数调用后返回的对象。 |

@@ -1088,3 +1088,9 @@ struct Index {
   }
 }
 ```
+
+## 为什么使用分帧方案帧间插入大任务时，页面的完成时间会延后
+
+List/Grid并行加载子节点时，是一个基于分帧的方案，如果此时主线程有一个长时任务占用的话，item显示出来的时间会延后。
+
+![ui_parallel](figures/zh-cn_ParallelizeUI.png)
