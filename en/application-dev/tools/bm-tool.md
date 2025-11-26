@@ -1339,7 +1339,7 @@ When you start debugging or run an application, the error message "error: instal
 
 error: verify signature failed.
 
-![Example](figures/en-us_image_155401.png)
+![Example](figures/en_image_155401.png)
 
 **Symptom**
 
