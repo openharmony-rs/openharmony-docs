@@ -1464,11 +1464,12 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('onWindowStageCreate');
-    try {
-      windowStage.onWindowStageClose(() => {
+    const callback = () => {
         console.info('Succeeded in enabling the listener for window stage close event.');
         return false;
-      });
+    }
+    try {
+      windowStage.onWindowStageClose(callback);
       console.info('Succeeded in onWindowStageClose');
     } catch (exception) {
       let err = exception as BusinessError;
