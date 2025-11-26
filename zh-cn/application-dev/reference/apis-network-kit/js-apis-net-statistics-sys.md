@@ -567,9 +567,10 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称        | 类型                                            | 必填 | 说明           |
-|-----------|-----------------------------------------------|----|--------------|
-| undefined | [uid:number]: [NetStatsInfo](#netstatsinfo10) | 是  |否 |所有应用的历史流量信息。 |
+| 名称        | 类型                                            | 只读 |可选| 说明           |	
+
+|-----------|-----------------------------------------------|----|---|--------------|	
+| undefined | [uid:number]: [NetStatsInfo](#netstatsinfo10) | 否  |否 |所有应用的历史流量信息。 |
 
 ## NetStatsInfoSequence<sup>12+</sup>
 
@@ -579,8 +580,8 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称        | 类型                              | 必填 |说明           |
-|-----------|---------------------------------|----|-----------------|
-| startTime | number                          | 是  | 开始时间戳(单位:秒)。 |
-| endTime   | number                          | 是  |结束时间戳(单位:秒)。 |
-| info      | [NetStatsInfo](#netstatsinfo10) | 是  |获取的应用历史流量信息。 |
+| 名称        | 类型                              | 只读 | 可选|说明           |	
+|-----------|---------------------------------|----|---|--------------|	
+| startTime | number                          | 否  |否 |开始时间戳(单位:秒)。 |	
+| endTime   | number                          | 否  |否 |结束时间戳(单位:秒)。 |	
+| info      | [NetStatsInfo](#netstatsinfo10) | 否  |否 |获取的应用历史流量信息。 |
