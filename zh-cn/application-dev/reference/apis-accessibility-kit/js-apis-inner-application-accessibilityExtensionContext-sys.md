@@ -88,14 +88,16 @@ type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' | 'checkSelf' | 'checkSe
 
 表示查找可聚焦节点时，如何判断起始节点及其子节点的聚焦能力。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型            | 说明          |
 | -------- | ------- |
-| 'bypassSelf'       | 跳过对起始节点的检查，只检查其子节点。|
-| 'bypassSelfDescendants'     | 跳过对起始节点及其所有子节点的检查。|
-| 'checkSelf'     | 先检查起始节点是否可以聚焦，如果可以则直接使用；如果不能聚焦，则继续检查其子节点。|
-| 'checkSelfBypassDescendants' | 先检查起始节点是否可以聚焦，如果可以则使用；如果不能聚焦，则跳过所有子节点的检查。|
+| 'bypassSelf'       | 表示跳过对起始节点的检查，只检查其子节点。值固定为'bypassSelf'字符串。|
+| 'bypassSelfDescendants'     | 表示跳过对起始节点及其所有子节点的检查。值固定为'bypassSelfDescendants'字符串。|
+| 'checkSelf'     | 表示先检查起始节点是否可以聚焦，如果可以则直接使用；如果不能聚焦，则继续检查其子节点。值固定为'checkSelf'字符串。|
+| 'checkSelfBypassDescendants' | 表示先检查起始节点是否可以聚焦，如果可以则使用；如果不能聚焦，则跳过所有子节点的检查。值固定为'checkSelfBypassDescendants'字符串。|
 
 ## FocusCondition<sup>23+</sup>
 
@@ -103,20 +105,24 @@ type FocusCondition = 'forward' | 'backward' | 'findLast' | 'getForwardScrollAnc
 
 表示查询可聚焦节点方式。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型       | 说明      |
 | -------- | ------- |
-| 'forward'       | 当前节点下一个可聚焦节点。|
-| 'backward'     | 当前节点上一个可聚焦节点。|
-| 'findLast'     | 查找起始节点的子节点中的最后一个节点。|
-| 'getForwardScrollAncestor' | 查找支持前向滚动父组件。|
-| 'getBackwardScrollAncestor'| 查找支持后向滚动父组件。|
-| 'getScrollableAncestor' | 查找支持任意滚动父组件。|
+| 'forward'       | 表示当前节点下一个可聚焦节点，值固定为'forward' 字符串。|
+| 'backward'     | 表示当前节点上一个可聚焦节点，值固定为'backward'字符串。|
+| 'findLast'     | 表示查找起始节点的子节点中的最后一个节点，值固定为'findLast'字符串。|
+| 'getForwardScrollAncestor' | 表示查找支持前向滚动父组件，值固定为'getForwardScrollAncestor'字符串。|
+| 'getBackwardScrollAncestor'| 表示查找支持后向滚动父组件，值固定为'getBackwardScrollAncestor'字符串。|
+| 'getScrollableAncestor' | 表示查找支持任意滚动父组件，值固定为'getScrollableAncestor'字符串。|
 
 ## FocusMoveResult<sup>23+</sup>
 
 查询无障碍节点返回值类型。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1712,7 +1718,7 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise\<Fo
 
 **系统接口**：此接口为系统接口。
 
-**需要权限**： ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
