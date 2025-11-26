@@ -1,4 +1,4 @@
-# Introduction
+# Introduction to ArkTS
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

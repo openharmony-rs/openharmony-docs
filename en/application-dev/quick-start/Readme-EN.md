@@ -8,7 +8,7 @@
 
 <!--Del-->
 - Getting Started<!--quick-start-->
-  - [Before You Start](start-overview.md)
+  - [Preparations for Development](start-overview.md)
   - [Building the First ArkTS Application in Stage Model](start-with-ets-stage.md)
 <!--DelEnd-->
 - Development Fundamentals<!--development-fundamentals-->
