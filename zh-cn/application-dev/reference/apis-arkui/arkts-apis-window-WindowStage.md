@@ -1641,8 +1641,8 @@ setWindowRectAutoSave(enabled: boolean): Promise&lt;void&gt;
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Incorrect number of parameters. Expected 2; 2. Failed to convert parameter to enabled. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1001     | Window is nullptr. |
-| 1300002  | This window state is abnormal. Possible causes: 1. Window is nullptr; 2. WindowScene is null; 3. Send event failed. |
+| 1001     | The window is not created or destroyed. |
+| 1300002  | This window state is abnormal. Possible causes: 1. The window is not created or destroyed; 2. Internal napi error. |
 | 1300003  | This window manager service works abnormally. |
 
 **示例：**
@@ -1719,8 +1719,8 @@ setWindowRectAutoSave(enabled: boolean, isSaveBySpecifiedFlag: boolean): Promise
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Incorrect number of parameters. Expected 2; 2. Failed to convert parameter to enabled. |
 | 801      | Capability not supported. Function setWindowRectAutoSave can not work correctly due to limited device capabilities. |
-| 1001     | Window is nullptr. |
-| 1300002  | This window state is abnormal. Possible causes: 1. Window is nullptr; 2. WindowScene is null; 3. Send event failed. |
+| 1001     | The window is not created or destroyed. |
+| 1300002  | This window state is abnormal. Possible causes: 1. The window is not created or destroyed; 2. Internal napi error. |
 | 1300003  | This window manager service works abnormally. |
 
 **示例：**
@@ -1775,7 +1775,7 @@ isWindowRectAutoSave(): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. Window is nullptr; 2. WindowScene is null; 3. Send event failed. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal napi error. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
