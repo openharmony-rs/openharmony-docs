@@ -61,6 +61,8 @@ createWindow(config: Configuration, callback: AsyncCallback&lt;Window&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
@@ -87,6 +89,38 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let windowClass: window.Window | undefined = undefined;
+    let config: window.Configuration = {
+      name: "test",
+      windowType: window.WindowType.TYPE_DIALOG,
+      ctx: this.context
+    };
+    try {
+      window.createWindow(config, (err: BusinessError<void> | null, data: window.Window | undefined): void => {
+        if (err?.code) {
+          console.error(`Failed to create the window. Cause code: ${err?.code}, message: ${err?.message}`);
+          return;
+        }
+        windowClass = data;
+        console.info('Succeeded in creating the window. Data: ' + JSON.stringify(data));
+        windowClass!.resize(500, 1000);
+      });
+    } catch (err: Error) {
+      console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -141,6 +175,8 @@ createWindow(config: Configuration): Promise&lt;Window&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
@@ -162,6 +198,34 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let config: window.Configuration = {
+      name: "test",
+      windowType: window.WindowType.TYPE_DIALOG,
+      ctx: this.context
+    };
+    try {
+      window.createWindow(config).then((value:window.Window) => {
+        console.info('Succeeded in creating the window. Data: ' + JSON.stringify(value));
+        value.resize(500, 1000);
+      }).catch((err: Error)=> {
+        console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (err: Error) {
+      console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -204,12 +268,25 @@ findWindow(name: string): Window
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let windowClass: window.Window | undefined = undefined;
 try {
   windowClass = window.findWindow('test');
 } catch (exception) {
   console.error(`Failed to find the Window. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+let windowClass: window.Window | undefined = undefined;
+try {
+  windowClass = window.findWindow('test');
+} catch (err: Error) {
+  console.error(`Failed to find the Window. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
