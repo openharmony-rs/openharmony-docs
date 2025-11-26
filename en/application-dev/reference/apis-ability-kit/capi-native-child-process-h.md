@@ -190,7 +190,7 @@ Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUi
 
 Sets whether the child process uses an independent UID. For example, in browser security hardening scenarios, you can isolate the UIDs of the main process and its child processes.
 
-This setting takes effect only when **NativeChildProcess_IsolationMode** is set to **NCP_ISOLATION_MODE_ISOLATED**. If this function is not called to set **isolationUid**, the default value is **false**, meaning the child process will share the same UID as the main process.
+This setting takes effect only when [NativeChildProcess_IsolationMode](capi-native-child-process-h.md#nativechildprocess_isolationmode) is set to **NCP_ISOLATION_MODE_ISOLATED**. If this function is not called to set **isolationUid**, the default value is **false**, meaning the child process will share the same UID as the main process.
 
 **Since**: 21
 
