@@ -15,7 +15,7 @@ import { deviceManager } from '@kit.DriverDevelopmentKit';
 
 ## deviceManager.queryDeviceInfo
 
-queryDeviceInfo(deviceId?: longr): Array&lt;Readonly&lt;DeviceInfo&gt;&gt;
+queryDeviceInfo(deviceId?: long): Array&lt;Readonly&lt;DeviceInfo&gt;&gt;
 
 查询扩展外设详细信息列表。如果没有设备接入，那么将会返回一个空的列表。
 
