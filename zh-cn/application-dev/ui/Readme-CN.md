@@ -310,6 +310,7 @@
       - [在ArkTS-Sta中使用ArkTS-Dyn的组件导航（Navigation）](arkts-sta-interop-dyn-navigation.md)
       - [在ArkTS-Sta中使用ArkTS-Dyn的自定义节点对象](arkts-sta-interop-dyn-node.md)
       - [在ArkTS-Sta中使用ArkTS-Dyn的帧动画（Animator）](arkts-sta-interop-dyn-animator.md)
+      - [在ArkTS-Sta中使用ArkTS-Dyn的矩阵变换（matrix4）](arkts-sta-interop-dyn-matrix4.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的自定义组件](arkts-dyn-interop-sta-component.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的自定义构建函数（@Builder）](arkts-dyn-interop-sta-builder.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的wrapBuilder（封装全局@Builder）](arkts-dyn-interop-sta-wrappedbuilder.md)
@@ -317,6 +318,7 @@
       - [在ArkTS-Dyn中使用ArkTS-Sta的组件导航（Navigation）](arkts-dyn-interop-sta-navigation.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的自定义节点对象](arkts-dyn-interop-sta-node.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的帧动画（Animator）](arkts-dyn-interop-sta-animator.md)
+      - [在ArkTS-Dyn中使用ArkTS-Sta的矩阵变换（matrix4）](arkts-dyn-interop-sta-matrix4.md)
     - 状态管理（V1）互操作<!--ui-arkts-sta-interop-dyn-state-management-->
       - [在ArkTS-Sta中使用ArkTS-Dyn管理组件拥有的状态](arkts-sta-interop-dyn-statemanager-v1.md)
       - [在ArkTS-Sta中使用ArkTS-Dyn的@Observed和@ObjectLink（嵌套类对象属性变化）](arkts-sta-interop-dyn-observed.md)
