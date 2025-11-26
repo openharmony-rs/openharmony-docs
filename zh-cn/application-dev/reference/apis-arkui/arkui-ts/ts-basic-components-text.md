@@ -1397,6 +1397,29 @@ ArkTS-Sta: optimizeTrailingSpace(optimize: boolean | undefined)
 | ---------------- | ------- | ---- | ----------------------------------------------- |
 | optimize         | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否优化每行末尾的空格。<br/>true表示优化末尾空格；false表示不优化末尾空格。<br>值为undefined时，不优化末尾空格。 |
 
+### orphanCharOptimization
+
+ArkTS-Dyn: orphanCharOptimization(enabled: Optional\<boolean>)
+
+ArkTS-Sta: orphanCharOptimization(enabled: boolean | undefined)
+
+设置文本排版时是否使能孤字优化。不通过该接口设置，默认不使能孤字优化。
+
+孤字优化通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。使能后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[wordBreak](#wordbreak11)为非BREAK_ALL并且待排版文本首个[TextStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)的[locale](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)为“zh-Hans”或“zh-Hant”时生效。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名           | 类型             | 必填 | 说明                                            |
+| ---------------- | ------- | ---- | ----------------------------------------------- |
+| enabled         |  ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br> ArkTS-Sta: boolean \| undefined | 是 | 段落最后一行是否使能孤字优化。<br/>true表示使能孤字优化，false表示不使能孤字优化。<br/>值为undefined或null时，不使能孤字优化。 |
 
 ### caretColor<sup>14+</sup>
 
@@ -4180,3 +4203,75 @@ struct TextExample10 {
 ```
 
 ![textRangePosition](figures/textRange_Position.gif)
+
+### 示例28（设置文本排版时是否使能孤字优化）
+
+该示例通过[orphanCharOptimization](#orphancharoptimization)接口设置使能孤字优化，确保段落最后一行不出现孤字。
+
+从API版本26.0.0开始，新增orphanCharOptimization接口。
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TextExample {
+  @State text: string = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa文本aaaaaaaaaaaaa';
+
+  build() {
+    Column({ space: 3 }) {
+      Text('Text不使能孤字优化')
+        .fontSize(12).width('90%').margin(5)
+      Text(this.text)
+        .fontSize(20)
+        .width('456')
+        .borderWidth(1)
+      Text('Text使能孤字优化')
+        .fontSize(12).width('90%').margin(5)
+      Text(this.text)
+        .fontSize(20)
+        .width('456')
+        .borderWidth(1)
+        .orphanCharOptimization(true)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Column, ColumnOptions, Text, Component, Flex, FlexDirection, ItemAlign, FlexAlign, State } from '@kit.ArkUI';
+
+// xxx.ets
+@Entry
+@Component
+struct TextExample {
+  @State text: string = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa文本aaaaaaaaaaaaa';
+
+  build() {
+    Column({ space: 3 } as ColumnOptions) {
+      Text('Text不使能孤字优化')
+        .fontSize(12).width('90%').margin(5)
+      Text(this.text)
+        .fontSize(20)
+        .width('456')
+        .borderWidth(1)
+      Text('Text使能孤字优化')
+        .fontSize(12).width('90%').margin(5)
+      Text(this.text)
+        .fontSize(20)
+        .width('456')
+        .borderWidth(1)
+        .orphanCharOptimization(true)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![textOrphanCharOptimization](figures/textOrphanCharOptimization.png)
