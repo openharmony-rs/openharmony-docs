@@ -1415,7 +1415,7 @@ export default class EntryAbility extends UIAbility {
 
 ## onWindowStageClose<sup>22+</sup>
 
-onWindowStageClose(callback: Callback&lt;void, boolean&gt;): void;
+onWindowStageClose(callback: Callback&lt;void, boolean&gt;): void
 
 开启点击主窗三键区的关闭按钮监听事件。点击主窗口的三键区域的关闭键时触发该回调函数，将不执行注册的[UIAbility.onPrepareToTerminate](../apis-ability-kit/js-apis-app-ability-uiAbility.md#onpreparetoterminate10)生命周期回调函数。
 
@@ -1441,7 +1441,6 @@ onWindowStageClose(callback: Callback&lt;void, boolean&gt;): void;
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| eventType  | string                                                       | 是   | 监听事件，固定为'windowStageClose'，即开启主窗三键区的关闭按钮监听。|
 | callback | Callback&lt;void&gt; | 是   | 回调函数。当点击主窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有boolean类型的返回值，该返回值决定当前主窗是否继续关闭，true表示不关闭，false表示关闭。|
 
 **错误码：**
@@ -1545,7 +1544,7 @@ export default class EntryAbility extends UIAbility {
 
 ## offWindowStageClose<sup>22+</sup>
 
-onWindowStageClose(callback?: Callback&lt;void, boolean&gt;): void;
+offWindowStageClose(callback?: Callback&lt;void, boolean&gt;): void
 
 关闭主窗口关闭事件的监听。
 
@@ -1565,7 +1564,6 @@ onWindowStageClose(callback?: Callback&lt;void, boolean&gt;): void;
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| eventType  | string                                                       | 是   | 监听事件，固定为'windowStageClose'，即关闭主窗口关闭事件的监听。 |
 | callback | Callback&lt;void&gt; | 否   | 回调函数。当点击主窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有boolean类型的返回值，该返回值决定当前主窗是否继续关闭，true表示不关闭，false表示关闭。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有主窗口关闭的监听。 |
 
 **错误码：**
