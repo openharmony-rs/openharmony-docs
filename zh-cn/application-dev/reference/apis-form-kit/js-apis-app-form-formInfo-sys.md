@@ -300,6 +300,8 @@ type GetFormRectInfoCallback = (formId: string) => Promise&lt;formInfo.Rect&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formInfo } from '@kit.FormKit';
 
@@ -312,4 +314,21 @@ let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
       resolve(formRect);
     })
   };
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { formInfo } from '@kit.FormKit';
+
+// 卡片使用方需要对查询请求进行处理，计算并返回卡片尺寸、位置信息
+let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
+  (formId: string): Promise<formInfo.Rect> => {
+    return new Promise<formInfo.Rect>((
+      resolve: (rect: formInfo.Rect) => void, reject: (rect: formInfo.Rect) => void): void => {
+      let formRect: formInfo.Rect = {left: 1.0, top: 1.0, width: 1.0, height: 1.0
+      }
+      resolve(formRect);
+    });
+  }
 ```
