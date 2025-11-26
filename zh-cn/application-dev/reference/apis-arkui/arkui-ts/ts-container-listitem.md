@@ -13,7 +13,7 @@
 >
 > - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > - 该组件的父组件只能是[List](ts-container-list.md)或者[ListItemGroup](ts-container-listitemgroup.md)。
-> - 当ListItem配合LazyForEach使用时，ListItem子组件在ListItem创建时创建。配合if/else、ForEach使用时，或父组件为List/ListItemGroup时，ListItem子组件在ListItem布局时创建。
+> - 当ListItem配合[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)使用时，ListItem子组件在ListItem创建时创建。配合[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)使用时，或父组件为List/ListItemGroup时，ListItem子组件在ListItem布局时创建。
 
 ## 子组件
 
@@ -37,7 +37,7 @@ ListItem(value?: ListItemOptions)
 
 | 参数名 | 类型                                      | 必填 | 说明                                                     |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ListItemOptions](#listitemoptions10对象说明) | 否   | 为ListItem提供可选参数，该对象内含有ListItemStyle枚举类型的style参数。<br/>默认值：{ style: ListItemStyle.NONE } |
+| value  | [ListItemOptions](#listitemoptions10对象说明) | 否   | 为ListItem提供可选参数，该对象内含有[ListItemStyle](#listitemstyle10枚举说明)枚举类型的style参数。<br/>默认值：{ style: ListItemStyle.NONE } |
 
 ### ListItem<sup>(deprecated)</sup>
 
@@ -445,7 +445,7 @@ struct ListItemExample3 {
 
 ### 示例4（通过ComponentContent设置划出组件）
 
-该示例通过ComponentContent设置ListItem中的划出组件操作时显示的操作项。
+该示例通过[ComponentContent](../js-apis-arkui-ComponentContent.md)设置ListItem中的划出组件操作时显示的操作项。
 
 ```ts
 // xxx.ets
