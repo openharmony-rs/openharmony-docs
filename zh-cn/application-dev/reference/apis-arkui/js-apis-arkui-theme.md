@@ -208,3 +208,7 @@ struct Index {
   }
 }
 ```
+
+![zh-cn_image_setDefaultTheme_light](figures/zh-cn_image_setDefaultTheme_light.png)
+
+![zh-cn_image_setDefaultTheme_night](figures/zh-cn_image_setDefaultTheme_night.png)
