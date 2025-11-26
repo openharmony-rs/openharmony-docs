@@ -9424,7 +9424,6 @@ getWindowCornerRadius(): number
 
 | 错误码ID   | 错误信息                                                                                                              |
 |---------|-------------------------------------------------------------------------------------------------------------------|
-| 401     | Parameter error. Possible cause: Unexpected parameters.                                                           |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities.                              |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal napi error. |
 | 1300004 | Unauthorized operation.                                                                                           |
@@ -9786,7 +9785,6 @@ setWindowTransitionAnimation(transitionType: WindowTransitionType, animation: Tr
 
 | 错误码ID   | 错误信息                                                                                                                              |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------|
-| 401     | Parameter error. Possible cause: Incorrect number of parameters. Expected 2;                                                      |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities.                                              |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal napi error.                 |
 | 1300003 | This window manager service works abnormally.                                                                                     |
@@ -9870,7 +9868,6 @@ getWindowTransitionAnimation(transitionType: WindowTransitionType): TransitionAn
 
 | 错误码ID   | 错误信息                                                                                                                                                     |
 |---------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 401     | Parameter error. Possible cause: 1. Exactly one parameter is required; 2. Failed to convert parameter to type.                                           |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities.                                                                     |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal napi error; 3. Transition animation is not enable. |
 | 1300003 | This window manager service works abnormally.                                                                                                            |
