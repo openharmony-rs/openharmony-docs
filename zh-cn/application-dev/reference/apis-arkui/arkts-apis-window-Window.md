@@ -2443,7 +2443,6 @@ getPreferredOrientation(): Orientation
 
 | 错误码ID   | 错误信息                                                                                   |
 |---------|----------------------------------------------------------------------------------------|
-| 401     | Parameter error. Possible cause: Unexpected parameters.                                |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
