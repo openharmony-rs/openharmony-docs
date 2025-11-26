@@ -163,8 +163,8 @@ setDefaultTheme(theme: [CustomTheme](#customtheme)): void
 import { CustomTheme, CustomColors, ThemeControl } from '@kit.ArkUI';
 // 自定义主题颜色
 class BlueColors implements CustomColors {
-  fontPrimary = Color.Red;
-  backgroundPrimary = Color.Blue;
+  fontPrimary = "#FFA10A21";
+  backgroundPrimary = "#FF2787D9";
   brand = "#FFEEAAFF"; // 品牌色
 }
 
