@@ -7080,29 +7080,17 @@ onWindowTitleButtonRectChange(callback: Callback&lt;TitleButtonRect&gt;): void
 **示例：**
 
 ```ts
-onWindowStageCreate(windowStage: window.WindowStage): void {
-  console.info('onWindowStageCreate');
-  let windowClass: window.Window | undefined = undefined;
-  windowStage.getMainWindow((err: BusinessError | null, data: window.Window | undefined) => {
-    const errCode = err?.code;
-    if (errCode) {
-      console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
-      return;
-    }
-    windowClass = data;
-    windowClass!.setUIContent('pages/Index').then(() => {
-      try {
-        windowClass?.onWindowTitleButtonRectChange((titleButtonRect: window.TitleButtonRect) => {
-          console.info('Succeeded in enabling the listener for window title buttons area changes. Data: ' + JSON.stringify(titleButtonRect));
-        });
-        console.info('Succeeded in enabling the listener for window title buttons area changes');
-      } catch (exception) {
-        let err = exception as BusinessError;
-        console.error(`Failed to enable the listener for window title buttons area changes. Cause code: ${err.code}, message: ${err.message}`);
-      }
-    })
-  });
-}
+windowClass.setUIContent('pages/WindowPage').then(() => {
+  try {
+    windowClass?.onWindowTitleButtonRectChange((titleButtonRect: window.TitleButtonRect) => {
+      console.info('Succeeded in enabling the listener for window title buttons area changes. Data: ' + JSON.stringify(titleButtonRect));
+    });
+    console.info('Succeeded in enabling the listener for window title buttons area changes');
+  } catch (exception) {
+    let err = exception as BusinessError;
+    console.error(`Failed to enable the listener for window title buttons area changes. Cause code: ${err.code}, message: ${err.message}`);
+  }
+})
 ```
 
 ## off('windowTitleButtonRectChange')<sup>11+</sup>
@@ -7190,35 +7178,23 @@ offWindowTitleButtonRectChange(callback?: Callback&lt;TitleButtonRect&gt;): void
 **示例：**
 
 ```ts
-onWindowStageCreate(windowStage: window.WindowStage): void {
-  console.info('onWindowStageCreate');
-  let windowClass: window.Window | undefined = undefined;
-  windowStage.getMainWindow((err: BusinessError | null, data: window.Window | undefined) => {
-    const errCode = err?.code;
-    if (errCode) {
-      console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
-      return;
-    }
-    windowClass = data;
-    windowClass!.setUIContent('pages/Index').then(() => {
-      const callback = (titleButtonRect: window.TitleButtonRect) => {
-        // ...
-      }
-      try {
-        // 通过on接口开启监听
-        windowClass?.onWindowTitleButtonRectChange(callback);
-        // 关闭指定callback的监听
-        windowClass?.offWindowTitleButtonRectChange(callback);
-        // 如果通过on开启多个callback进行监听，同时关闭所有监听：
-        windowClass?.offWindowTitleButtonRectChange();
-        console.info('Succeeded in disabling the listener for window title buttons area changes');
-      } catch (exception) {
-        let err = exception as BusinessError;
-        console.error(`Failed to disable the listener for window title buttons area changes. Cause code: ${err.code}, message: ${err.message}`);
-      }
-    })
-  });
-}
+windowClass!.setUIContent('pages/WindowPage').then(() => {
+  const callback = (titleButtonRect: window.TitleButtonRect) => {
+    // ...
+  }
+  try {
+    // 通过on接口开启监听
+    windowClass?.onWindowTitleButtonRectChange(callback);
+    // 关闭指定callback的监听
+    windowClass?.offWindowTitleButtonRectChange(callback);
+    // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+    windowClass?.offWindowTitleButtonRectChange();
+    console.info('Succeeded in disabling the listener for window title buttons area changes');
+  } catch (exception) {
+    let err = exception as BusinessError;
+    console.error(`Failed to disable the listener for window title buttons area changes. Cause code: ${err.code}, message: ${err.message}`);
+  }
+})
 ```
 
 ## on('windowRectChange')<sup>12+</sup>
@@ -7798,38 +7774,28 @@ onWindowWillClose(callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
-    let windowClass: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err: BusinessError | null, data: window.Window | undefined) => {
-      const errCode = err?.code;
-      if (errCode) {
-        console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
-        return;
-      }
-      windowClass = data;
-      windowClass!.setUIContent('pages/Index').then(() => {
-        try {
-          const callback = () => {
-            // ...
-            return new Promise<boolean>((resolve, reject) => {
-              // 是否关闭该窗口
-              let result: boolean = true;
-              resolve(result);
-            });
-          }
-          let windowClass = windowStage.getMainWindowSync();
-          windowClass.onWindowWillClose(callback);
-          console.info(`Succeeded in on the window will close`);
-        } catch (exception) {
-          let err = exception as BusinessError;
-          console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
-        }
-      })
-    });
+    const callback = () => {
+      // ...
+      return new Promise<boolean>((resolve, reject) => {
+        // 是否关闭该窗口
+        let result: boolean = true;
+        resolve(result);
+      });
+    }
+    try {
+      let windowClass = windowStage.getMainWindowSync();
+      windowClass.onWindowWillClose(callback);
+      console.info('Succeeded in on the window will close');
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+    }
   }
 }
 ```
@@ -7940,41 +7906,31 @@ offWindowWillClose(callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): voi
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
-    let windowClass: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err: BusinessError | null, data) => {
-      const errCode = err?.code;
-      if (errCode) {
-        console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
-        return;
+      const callback = () => {
+        // ...
+        return new Promise<boolean>((resolve, reject) => {
+          // 是否关闭该窗口
+          let result: boolean = true;
+          resolve(result);
+        });
       }
-      windowClass = data;
-      windowClass!.setUIContent('pages/Index').then(() => {
-        try {
-          const callback = () => {
-            // ...
-            return new Promise<boolean>((resolve, reject) => {
-              // 是否关闭该窗口
-              let result: boolean = true;
-              resolve(result);
-            });
-          }
-          let windowClass = windowStage.getMainWindowSync();
-          windowClass.onWindowWillClose(callback);
-          windowClass.offWindowWillClose(callback);
-          // 如果通过on开启多个callback进行监听，同时关闭所有监听：
-          windowClass.offWindowWillClose();
-          console.info(`Succeeded in off the window will close`);
-        } catch (exception) {
-          let err = exception as BusinessError;
-          console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
-        }
-      })
-    });
+    try {
+      let windowClass = windowStage.getMainWindowSync();
+      windowClass.onWindowWillClose(callback);
+      windowClass.offWindowWillClose(callback);
+      // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+      windowClass.offWindowWillClose();
+      console.info('Succeeded in off the window will close');
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+    }
   }
 }
 ```
