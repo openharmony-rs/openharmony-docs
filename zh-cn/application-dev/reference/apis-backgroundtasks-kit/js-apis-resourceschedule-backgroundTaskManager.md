@@ -1654,7 +1654,7 @@ export default class EntryAbility extends UIAbility {
 
 ### requestAuthFromUser<sup>22+</sup>
 
-requestAuthFromUser(callback: Callback&lt;UserAuthResult&gt;): void
+requestAuthFromUser(context: Context, callback: Callback&lt;UserAuthResult&gt;): void
 
 请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功会发送横幅通知，有提示音。仅适用于[特殊场景类型长时任务](#backgroundtaskmode21)。
 
@@ -1666,6 +1666,7 @@ requestAuthFromUser(callback: Callback&lt;UserAuthResult&gt;): void
 
 | 参数名      | 类型                                                  | 必填   | 说明           |
 | -------- |-----------------------------------------------------| ---- |--------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。 |
 | callback | Callback&lt;[UserAuthResult](#userauthresult22)&gt; | 是    | 用户操作后，返回授权结果。 |
 
 **错误码：**
@@ -1705,13 +1706,19 @@ export default class EntryAbility extends UIAbility {
 
 ### checkSpecialScenarioAuth<sup>22+</sup>
 
-checkSpecialScenarioAuth(): Promise&lt;UserAuthResult&gt;
+checkSpecialScenarioAuth(context: Context): Promise&lt;UserAuthResult&gt;
 
 查询用户是否授权能在后台长时间运行。使用Promise异步回调。
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**参数：**
+
+| 参数名      | 类型                                                  | 必填   | 说明           |
+| -------- |-----------------------------------------------------| ---- |--------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。 |
 
 **返回值：**
 
