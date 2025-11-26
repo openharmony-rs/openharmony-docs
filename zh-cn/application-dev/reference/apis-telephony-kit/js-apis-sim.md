@@ -1586,10 +1586,10 @@ getSimLabelSync(slotId: number): SimLabel
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-let simState: sim.SimLabel = sim.getSimLabelSync(0);
+
+let simLabel: sim.SimLabel = sim.getSimLabelSync(0);
 console.info(`The sim state is:` + simLabel);
 ```
 
