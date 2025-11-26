@@ -49,7 +49,7 @@ Websocket URL错误。
 
 1.检查URL是否为空或者未包含正确的协议（ws://或wss://)。
 
-2.检查URL长度是否超过2048。
+2.检查URL长度是否超过2048个字符。
 
 ## 2302002 Websocket 证书不存在
 
@@ -88,7 +88,7 @@ Websocket 连接已经建立。
 
 **处理步骤**
 
-已建立websocket连接，无需重复调用WebSocket.connect进行建连。
+已建立websocket连接，无需重复调用WebSocket.connect进行建连，无其他处理步骤。
 
 ## 2302004 WebsocketServer 无法在指定的NIC（网络接口）上进行网络监听
 
