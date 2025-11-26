@@ -55,6 +55,8 @@ showWindow(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -103,6 +105,51 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
+      if (err?.code) {
+        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      try {
+        // 创建子窗
+        windowStage.createSubWindow("testSubWindow").then((subWindow: window.Window | undefined) => {
+          subWindow!.setUIContent('pages/Index', (err: BusinessError<void> | null): void => {
+            if (err?.code) {
+              console.error('Failed to load the subWindow content. Cause: %{public}s', JSON.stringify(err));
+              return;
+            }
+            console.info('Succeeded in loading the subWindow content.');
+            try {
+              subWindow!.showWindow((err: BusinessError<void> | null): void => {
+                if (err?.code) {
+                  console.error(`Failed to show the window. Error code: ${err?.code}, message: ${err?.message}`);
+                  return;
+                }
+                console.info('Succeeded in showing the window.');
+              });
+            } catch (err: Error) {
+              console.error(`Failed to show the window. Cause code: ${err.code}, message: ${err.message}`);
+            }
+          })
+        });
+      } catch (err: Error) {
+        console.error(`Failed to create the sub window. Cause code: ${err.code}, message: ${err.message}`);
+      }
+  });
+  }
+}
+```
+
 ## showWindow<sup>9+</sup>
 
 showWindow(): Promise&lt;void&gt;
@@ -136,6 +183,8 @@ showWindow(): Promise&lt;void&gt;
 | 1300002 | This window state is abnormal. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -182,6 +231,50 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
+      if (err?.code) {
+        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      try {
+        // 创建子窗
+        windowStage.createSubWindow("testSubWindow").then((subWindow: window.Window | undefined) => {
+          subWindow!.setUIContent('pages/Index', (err: BusinessError<void> | null): void => {
+            if (err?.code) {
+              console.error('Failed to load the subWindow content. Cause: %{public}s', JSON.stringify(err));
+              return;
+            }
+            console.info('Succeeded in loading the subWindow content.');
+            try {
+              let promise = subWindow!.showWindow();
+              promise.then(() => {
+                console.info('Succeeded in showing the window.');
+              }).catch((err: Error) => {
+                console.error(`Failed to show the window. Error code: ${err.code}, message: ${err.message}`);
+              });
+            } catch (err: Error) {
+              console.error(`Failed to show window. Cause code: ${err.code}, message: ${err.message}`);
+            }
+          });
+        });
+      } catch (err: Error) {
+        console.error(`Failed to create the sub window. Cause code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  }
+}
+```       
 
 ## showWindow<sup>20+</sup>
 
@@ -302,6 +395,8 @@ destroyWindow(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -309,6 +404,20 @@ windowClass.destroyWindow((err) => {
   const errCode: number = err.code;
   if (errCode) {
     console.error(`Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in destroying the window.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+windowClass.destroyWindow((err: BusinessError<void> | null): void => {
+  if (err?.code) {
+    console.error(`Failed to destroy the window. Cause code: ${err?.code}, message: ${err?.message}`);
     return;
   }
   console.info('Succeeded in destroying the window.');
@@ -345,6 +454,8 @@ destroyWindow(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -356,6 +467,19 @@ promise.then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let promise = windowClass.destroyWindow();
+promise.then(() => {
+  console.info('Succeeded in destroying the window.');
+}).catch((err: Error) => {
+  console.error(`Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+   
 ## moveWindowTo<sup>9+</sup>
 
 ArkTS-Dyn: moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
@@ -3397,6 +3521,8 @@ getUIContext(): UIContext
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -3426,6 +3552,41 @@ export default class EntryAbility extends UIAbility {
         // 获取UIContext实例。
         let uiContext: UIContext | null = null;
         uiContext = windowClass.getUIContext();
+      });
+    });
+  }
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window, UIContext } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // 为主窗口加载对应的目标页面。
+    windowStage.loadContent("pages/page2", (err: BusinessError<void> | null): void => {
+      if (err?.code) {
+        console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      // 获取应用主窗口。
+      let windowClass: window.Window | undefined = undefined;
+      windowStage.getMainWindow((err: BusinessError<void> | null, data: window.Window | undefined) => {
+        if (err?.code) {
+          console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
+          return;
+        }
+        windowClass = data;
+        console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+        // 获取UIContext实例。
+        let uiContext: UIContext | null = null;
+        uiContext = windowClass!.getUIContext();
       });
     });
   }
@@ -3464,6 +3625,8 @@ setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3478,6 +3641,24 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to load the content. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  windowClass.setUIContent('pages/page2/page3', (err: BusinessError<void> | null): void => {
+    if (err?.code) {
+      console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
+      return;
+    }
+    console.info('Succeeded in loading the content.');
+  });
+} catch (err: Error) {
+  console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -3518,6 +3699,8 @@ setUIContent(path: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3530,6 +3713,23 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to load the content. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let promise = windowClass.setUIContent('pages/page2/page3');
+  promise.then(() => {
+    console.info('Succeeded in loading the content.');
+  }).catch((err: Error) => {
+    console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err: Error) {
+  console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -3568,6 +3768,8 @@ loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3577,6 +3779,22 @@ windowClass.loadContent('pages/page2', storage, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
     console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in loading the content.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let storage: LocalStorage = new LocalStorage();
+storage.setOrCreate('storageSimpleProp', 121);
+windowClass.loadContent('pages/page2', storage, (err: BusinessError<void> | null): void => {
+  if (err?.code) {
+    console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
     return;
   }
   console.info('Succeeded in loading the content.');
@@ -3623,6 +3841,8 @@ loadContent(path: string, storage: LocalStorage): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3632,6 +3852,21 @@ let promise = windowClass.loadContent('pages/page2', storage);
 promise.then(() => {
   console.info('Succeeded in loading the content.');
 }).catch((err: BusinessError) => {
+  console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let storage: LocalStorage = new LocalStorage();
+storage.setOrCreate('storageSimpleProp', 121);
+let promise = windowClass.loadContent('pages/page2', storage);
+promise.then(() => {
+  console.info('Succeeded in loading the content.');
+}).catch((err: Error) => {
   console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -3899,11 +4134,24 @@ isWindowShowing(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 try {
   let data = windowClass.isWindowShowing();
   console.info('Succeeded in checking whether the window is showing. Data: ' + JSON.stringify(data));
 } catch (exception) {
+  console.error(`Failed to check whether the window is showing. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+try {
+  let data = windowClass.isWindowShowing();
+  console.info('Succeeded in checking whether the window is showing. Data: ' + JSON.stringify(data));
+} catch (err: Error) {
   console.error(`Failed to check whether the window is showing. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
@@ -10382,6 +10630,8 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -10389,6 +10639,20 @@ windowClass.minimize((err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
     console.error(`Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in minimizing the window.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+windowClass.minimize((err: BusinessError<void> | null): void => {
+  if (err?.code) {
+    console.error(`Failed to minimize the window. Cause code: ${err?.code}, message: ${err?.message}`);
     return;
   }
   console.info('Succeeded in minimizing the window.');
@@ -10433,6 +10697,8 @@ minimize(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -10440,6 +10706,19 @@ let promise = windowClass.minimize();
 promise.then(() => {
   console.info('Succeeded in minimizing the window.');
 }).catch((err: BusinessError) => {
+  console.error(`Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let promise = windowClass.minimize();
+promise.then(() => {
+  console.info('Succeeded in minimizing the window.');
+}).catch((err: Error) => {
   console.error(`Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
