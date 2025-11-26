@@ -481,45 +481,44 @@ if (surface == EGL_NO_SURFACE) {
    }
    ```
 2. 创建 XComponentController子类，实现回调方法：
-```typescript
-class MyXComponentController extends XComponentController {
-    onSurfaceCreated(surfaceId: string): void {
-        console.info(`onSurfaceCreated surfaceId: ${surfaceId}`);
-        nativeRender.SetSurfaceId(BigInt(surfaceId));
-        // 之后会使用 surfaceId 关联 native window
-    }
+   ```typescript
+   class MyXComponentController extends XComponentController {
+       onSurfaceCreated(surfaceId: string): void {
+           console.info(`onSurfaceCreated surfaceId: ${surfaceId}`);
+           nativeRender.SetSurfaceId(BigInt(surfaceId));
+           // 之后会使用 surfaceId 关联 native window
+       }
 
-    onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
-        console.info(`onSurfaceChanged surfaceId: ${surfaceId}`);
-    }
-    
-    onSurfaceDestroyed(surfaceId: string): void {
-        console.info(`onSurfaceDestroyed surfaceId: ${surfaceId}`);
-    }
-}
-```
-3. 使用surfaceId获取NativeWindow：
-surfaceId是在XComponent创建过程中生成的。在onSurfaceCreated 回调中，可以使用OH_NativeWindow_CreateNativeWindowFromSurfaceId函数通过surfaceId获取nativeWindow。
-```cpp
-napi_value PluginManager::SetSurfaceId(napi_env env, napi_callback_info info)
-{
-    int64_t surfaceId = ParseId(env, info);
-    OHNativeWindow *nativeWindow;
-    PluginRender *pluginRender;
-    if (windowMap_.find(surfaceId) == windowMap_.end()) {
-        OH_NativeWindow_CreateNativeWindowFromSurfaceId(surfaceId, &nativeWindow);
-        windowMap_[surfaceId] = nativeWindow;
-    } else {
-        return nullptr;
-    }
-    if (pluginRenderMap_.find(surfaceId) == pluginRenderMap_.end()) {
-        pluginRender = new PluginRender(surfaceId);
-        pluginRenderMap_[surfaceId] = pluginRender;
-    }
-    pluginRender->InitNativeWindow(nativeWindow);
-    return nullptr;
-}
-```
+       onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
+           console.info(`onSurfaceChanged surfaceId: ${surfaceId}`);
+       }
+
+       onSurfaceDestroyed(surfaceId: string): void {
+           console.info(`onSurfaceDestroyed surfaceId: ${surfaceId}`);
+       }
+   }
+   ```
+3. 使用surfaceId获取NativeWindow：surfaceId是在XComponent创建过程中生成的。在onSurfaceCreated 回调中，可以使用OH_NativeWindow_CreateNativeWindowFromSurfaceId函数通过surfaceId获取nativeWindow。
+   ```cpp
+   napi_value PluginManager::SetSurfaceId(napi_env env, napi_callback_info info)
+   {
+       int64_t surfaceId = ParseId(env, info);
+       OHNativeWindow *nativeWindow;
+       PluginRender *pluginRender;
+       if (windowMap_.find(surfaceId) == windowMap_.end()) {
+           OH_NativeWindow_CreateNativeWindowFromSurfaceId(surfaceId, &nativeWindow);
+           windowMap_[surfaceId] = nativeWindow;
+       } else {
+           return nullptr;
+       }
+       if (pluginRenderMap_.find(surfaceId) == pluginRenderMap_.end()) {
+           pluginRender = new PluginRender(surfaceId);
+           pluginRenderMap_[surfaceId] = pluginRender;
+       }
+       pluginRender->InitNativeWindow(nativeWindow);
+       return nullptr;
+   }
+   ```
 <!--Del-->
 有关ArkTS XComponent 组件的使用，请参考：[ArkTS XComponent组件使用示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/XComponent/README_zh.md#)。
 <!--DelEnd-->
