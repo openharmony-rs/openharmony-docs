@@ -4648,7 +4648,7 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 @Entry
@@ -4673,7 +4673,7 @@ struct WebComponent {
     }
   }
 }
-  ```
+```
 
 ## onSslErrorReceive<sup>(deprecated)</sup>
 
