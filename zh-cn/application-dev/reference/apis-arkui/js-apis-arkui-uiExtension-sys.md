@@ -57,9 +57,9 @@ hideNonSecureWindows(shouldHide: boolean): Promise\<void>
 
 **示例**
 
+**ArkTS-Dyn:**
 ```ts
 // ExtensionProvider.ts
-
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -79,6 +79,34 @@ export default class EntryAbility extends UIExtensionAbility {
     extensionHostWindow.hideNonSecureWindows(false).then(()=> {
       console.info(`Succeeded in showing the non-secure windows.`);
     }).catch((err: BusinessError)=> {
+      console.error(`Failed to show the non-secure windows. Cause:${JSON.stringify(err)}`);
+    })
+  }
+}
+```
+
+**ArkTS-Sta:**
+```ts
+// ExtensionProvider.ets
+'use static'
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 隐藏非安全窗口
+    extensionHostWindow.hideNonSecureWindows(true).then(()=> {
+      console.info(`Succeeded in hiding the non-secure windows.`);
+    }).catch((err)=> {
+      console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
+    })
+  }
+  onSessionDestroy(session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 取消隐藏非安全窗口
+    extensionHostWindow.hideNonSecureWindows(false).then(()=> {
+      console.info(`Succeeded in showing the non-secure windows.`);
+    }).catch((err)=> {
       console.error(`Failed to show the non-secure windows. Cause:${JSON.stringify(err)}`);
     })
   }
@@ -120,8 +148,9 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 **示例** 
 
+**ArkTS-Dyn:**
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -141,6 +170,34 @@ export default class EntryAbility extends UIExtensionAbility {
     extensionHostWindow.setWaterMarkFlag(false).then(() => {
       console.info(`Succeeded in deleting water mark flag of window.`);
     }).catch((err: BusinessError) => {
+      console.error(`Failed to deleting water mark flag of window. Cause:${JSON.stringify(err)}`);
+    })
+  }
+}
+```
+
+**ArkTS-Sta:**
+```ts
+// ExtensionProvider.ets
+'use static'
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 添加安全水印标志
+    extensionHostWindow.setWaterMarkFlag(true).then(() => {
+      console.info(`Succeeded in setting water mark flag of window.`);
+    }).catch((err) => {
+      console.error(`Failed to setting water mark flag of window. Cause:${JSON.stringify(err)}`);
+    })
+  }
+  onSessionDestroy(session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 删除安全水印标志
+    extensionHostWindow.setWaterMarkFlag(false).then(() => {
+      console.info(`Succeeded in deleting water mark flag of window.`);
+    }).catch((err) => {
       console.error(`Failed to deleting water mark flag of window. Cause:${JSON.stringify(err)}`);
     })
   }

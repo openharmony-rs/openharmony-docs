@@ -75,9 +75,28 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 
 **示例：**
 
+**ArkTS-Dyn:**
 ```ts
 // ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends EmbeddedUIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionWindow = session.getUIExtensionWindowProxy();
+    // 获取宿主应用窗口的避让信息
+    let avoidArea: window.AvoidArea | undefined = extensionWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
+    console.info(`avoidArea: ${JSON.stringify(avoidArea)}`);
+  }
+}
+```
+
+**ArkTS-Sta:**
+```ts
+// ExtensionProvider.ets
+'use static'
+import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
 import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
@@ -163,8 +182,10 @@ onAvoidAreaChange(callback: Callback&lt;AvoidAreaInfo&gt;): void
 
 ```ts
 // ExtensionProvider.ets
-import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
-import { uiExtension } from '@kit.ArkUI';
+'use static'
+import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
+import uiExtension from '@ohos.arkui.uiExtension';
 
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
@@ -247,8 +268,10 @@ offAvoidAreaChange(callback?: Callback&lt;AvoidAreaInfo&gt;): void
 
 ```ts
 // ExtensionProvider.ets
-import { EmbeddedUIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
-import { uiExtension } from '@kit.ArkUI';
+'use static'
+import { UIExtensionContentSession } from '@kit.AbilityKit';
+import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
+import uiExtension from '@ohos.arkui.uiExtension';
 
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
   onSessionDestroy(session: UIExtensionContentSession) {
@@ -330,7 +353,9 @@ onWindowSizeChange(callback: Callback&lt;window.Size&gt;): void
 
 ```ts
 // ExtensionProvider.ets
-import { EmbeddedUIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
+'use static'
+import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
 import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
@@ -412,7 +437,9 @@ offWindowSizeChange(callback?: Callback<window.Size>): void
 
 ```ts
 // ExtensionProvider.ets
-import { EmbeddedUIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
+'use static'
+import { UIExtensionContentSession } from '@kit.AbilityKit';
+import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
 
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
   onSessionDestroy(session: UIExtensionContentSession) {
@@ -511,8 +538,10 @@ onRectChange(reasons: int, callback: Callback&lt;RectChangeOptions&gt;): void
 
 ```ts
 // ExtensionProvider.ets
-import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
-import { uiExtension } from '@kit.ArkUI';
+'use static'
+import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
+import uiExtension from '@ohos.arkui.uiExtension';
 
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
@@ -608,7 +637,9 @@ offRectChange(callback?: Callback&lt;RectChangeOptions&gt;): void
 
 ```ts
 // ExtensionProvider.ets
-import { EmbeddedUIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
+'use static'
+import { UIExtensionContentSession } from '@kit.AbilityKit';
+import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
 
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
   onSessionDestroy(session: UIExtensionContentSession) {
@@ -660,6 +691,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 **示例：**
 
+**ArkTS-Dyn:**
 ```ts
 // ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -699,6 +731,55 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
           });
         });
       }).catch((error: BusinessError) => {
+        console.error(`Create subwindow failed. Cause code: ${error.code}, message: ${error.message}`);
+      })
+  }
+}
+```
+
+**ArkTS-Sta:**
+```ts
+// ExtensionProvider.ets
+'use static'
+import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends EmbeddedUIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionWindow = session.getUIExtensionWindowProxy();
+    const subWindowOpts: window.SubWindowOptions = {
+      title: 'This is a subwindow',
+      decorEnabled: true
+    };
+    // 创建子窗口
+    extensionWindow.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
+      .then((subWindow: window.Window) => {
+        subWindow.setUIContent('pages/Index', (err, data) =>{
+          if (err && err.code != 0) {
+            return;
+          }
+          subWindow?.resize(300, 300, (err, data)=>{
+            if (err && err.code != 0) {
+              return;
+            }
+            subWindow?.moveWindowTo(100, 100, (err, data)=>{
+              if (err && err.code != 0) {
+                return;
+              }
+              subWindow?.showWindow((err, data) => {
+                if (err && err.code == 0) {
+                  console.info(`The subwindow has been shown!`);
+                } else {
+                  console.error(`Failed to show the subwindow!`);
+                }
+              });
+            });
+          });
+        });
+      }).catch((err) => {
+        let error = err as BusinessError;
         console.error(`Create subwindow failed. Cause code: ${error.code}, message: ${error.message}`);
       })
   }
@@ -745,6 +826,7 @@ ArkTS-Sta: occupyEvents(eventFlags: int): Promise&lt;void&gt;
 
 **示例：**
 
+**ArkTS-Dyn:**
 ```ts
 // ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -765,6 +847,36 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
         });
       } catch (e) {
         console.error(`Occupy events got exception code: ${e.code}, message: ${e.message}`);
+      }
+    }, 500);
+  }
+}
+```
+
+**ArkTS-Sta:**
+```ts
+// ExtensionProvider.ets
+'use static'
+import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
+import uiExtension from '@ohos.arkui.uiExtension';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends EmbeddedUIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionWindow = session.getUIExtensionWindowProxy();
+    // 占用事件
+    setTimeout(() => {
+      try {
+        let promise = extensionWindow.occupyEvents(uiExtension.EventFlag.EVENT_CLICK | uiExtension.EventFlag.EVENT_LONG_PRESS);
+        promise.then(() => {
+          console.info(`Successed in occupy events`);
+        }).catch((err) => {
+          let error = err as BusinessError;
+          console.error(`Failed to occupy events. Cause code: ${error.code}, message: ${error.message}`);
+        });
+      } catch (e) {
+        console.error('Occupy events got exception:' + JSON.stringify(e));
       }
     }, 500);
   }
@@ -865,6 +977,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 - 示例应用中的EntryAbility(UIAbility)加载首页文件：`pages/Index.ets`，其中内容如下：
 
+  **ArkTS-Dyn:**
   ```ts
   // pages/Index.ets -- UIAbility启动时加载此页面
   import { Want } from '@kit.AbilityKit';
@@ -899,8 +1012,47 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
   }
   ```
 
+  **ArkTS-Sta:**
+    ```ts
+  // pages/Index.ets -- UIAbility启动时加载此页面
+  'use static'
+  import { Entry, Component, Column, Row, Text, EmbeddedComponent, EmbeddedType} from '@ohos.arkui.component';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { Want } from '@kit.AbilityKit';
+
+  @Entry
+  @Component
+  struct Index {
+    @State message: string = 'Message: ';
+    private want: Want = {
+      bundleName: "com.example.embeddeddemo",
+      abilityName: "ExampleEmbeddedAbility",
+    } as Want;
+
+    build() {
+      Row() {
+        Column() {
+          Text(this.message).fontSize(30)
+          EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
+            .width('100%')
+            .height('90%')
+            .onTerminated((info)=>{
+              this.message = 'Termination: code = ' + info.code + ', want = ' + JSON.stringify(info.want);
+            })
+            .onError((error)=>{
+              this.message = 'Error: code = ' + error.code;
+            })
+        }
+        .width('100%')
+      }
+      .height('100%')
+    }
+  }
+  ```
+
 - EmbeddedComponent拉起的EmbeddedUIExtensionAbility在`ets/extensionAbility/ExampleEmbeddedAbility`文件中实现，内容如下：
 
+  **ArkTS-Dyn:**
   ```ts
   import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
@@ -934,8 +1086,46 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
   }
   ```
 
+  **ArkTS-Sta:**
+  ```ts
+  'use static'
+  import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
+  import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
+  import { LocalStorage } from '@ohos.arkui.stateManagement';
+
+  const TAG: string = '[ExampleEmbeddedAbility]';
+  export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
+    
+    onCreate() {
+      console.info(TAG, `onCreate`);
+    }
+
+    onForeground() {
+      console.info(TAG, `onForeground`);
+    }
+
+    onBackground() {
+      console.info(TAG, `onBackground`);
+    }
+
+    async onDestroy() {
+      console.info(TAG, `onDestroy`);
+    }
+
+    onSessionCreate(want: Want, session: UIExtensionContentSession) {
+      console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+      let param: Record<string, UIExtensionContentSession> = {
+        'session': session
+      };
+      let storage: LocalStorage = new LocalStorage(param);
+      session.loadContent('pages/extension', storage);
+    }
+  }
+  ```
+
 - EmbeddedUIExtensionAbility的入口页面文件`pages/extension.ets`内容如下：
 
+  **ArkTS-Dyn:**
   ```ts
   import { UIExtensionContentSession } from '@kit.AbilityKit';
   import { uiExtension, window } from '@kit.ArkUI';
@@ -1012,6 +1202,95 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
                       });
                   });
               }).catch((error: BusinessError) => {
+                  console.error(`Create subwindow failed. Cause code: ${error.code}, message: ${error.message}`);
+              })
+        })
+      }.width('100%').height('100%')
+    }
+  }
+  ```
+  **ArkTS-Sta:**
+
+  ```ts
+  'use static'
+  import { UIExtensionContentSession } from '@kit.AbilityKit';
+  import { Entry, Component, Column, Row, Text, Button, Margin} from '@ohos.arkui.component';
+  import { State } from '@ohos.arkui.stateManagement';
+  import uiExtension from '@ohos.arkui.uiExtension';
+  import { window } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  @Entry()
+  @Component
+  struct Extension {
+    @State message: string = 'EmbeddedUIExtensionAbility Index';
+    private storage: LocalStorage | undefined = this.getUIContext()?.getSharedLocalStorage();
+    private session: UIExtensionContentSession | undefined = this.storage?.get<UIExtensionContentSession>('session');
+    private extensionWindow: uiExtension.WindowProxy | undefined = this.session?.getUIExtensionWindowProxy();
+    private subWindow: window.Window | undefined = undefined;
+
+    aboutToAppear(): void {
+      this.extensionWindow?.onWindowSizeChange((size: window.Size) => {
+          console.info(`size = ${JSON.stringify(size)}`);
+      });
+      this.extensionWindow?.onRectChange(uiExtension.RectChangeReason.HOST_WINDOW_RECT_CHANGE, (data: uiExtension.RectChangeOptions) => {
+          console.info('Succeeded window rect changes. Data: ' + JSON.stringify(data));
+      });
+      this.extensionWindow?.onAvoidAreaChange((info: uiExtension.AvoidAreaInfo) => {
+          console.info(`type = ${JSON.stringify(info.type)}, area = ${JSON.stringify(info.area)}`);
+      });
+    }
+
+    aboutToDisappear(): void {
+      this.extensionWindow?.offWindowSizeChange();
+      this.extensionWindow?.offRectChange();
+      this.extensionWindow?.offAvoidAreaChange();
+    }
+
+    build() {
+      Column() {
+        Text(this.message)
+          .fontSize(20)
+        Button("获取组件大小").width('90%').margin({top: 5, bottom: 5} as Margin).fontSize(16).onClick(() => {
+          let rect = this.extensionWindow?.properties.uiExtensionHostWindowProxyRect;
+          console.info(`EmbeddedComponent的位置和尺寸信息: ${JSON.stringify(rect)}`);
+        })
+        Button("获取系统规避区信息").width('90%').margin({top: 5, bottom: 5} as Margin).fontSize(16).onClick(() => {
+          let avoidArea: window.AvoidArea | undefined = this.extensionWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
+          console.info(`系统规避区: ${JSON.stringify(avoidArea)}`);
+        })
+        Button("创建子窗口").width('90%').margin({top: 5, bottom: 5} as Margin).fontSize(16).onClick(() => {
+          let subWindowOpts: window.SubWindowOptions = {
+              'title': 'This is a subwindow',
+              decorEnabled: true
+          };
+          this.extensionWindow?.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
+              .then((subWindow: window.Window) => {
+                  this.subWindow = subWindow;
+                  this.subWindow?.setUIContent('pages/Index', (err, data) =>{
+                      if (err && err.code != 0) {
+                          return;
+                      }
+                      this.subWindow?.resize(300, 300, (err, data)=>{
+                          if (err && err.code != 0) {
+                              return;
+                          }
+                          this.subWindow?.moveWindowTo(100, 100, (err, data)=>{
+                              if (err && err.code != 0) {
+                                  return;
+                              }
+                              this.subWindow?.showWindow((err, data) => {
+                                  if (err && err.code == 0) {
+                                      console.info(`The subwindow has been shown!`);
+                                  } else {
+                                      console.error(`Failed to show the subwindow!`);
+                                  }
+                              });
+                          });
+                      });
+                  });
+              }).catch((err) => {
+                  let error = err as BusinessError;
                   console.error(`Create subwindow failed. Cause code: ${error.code}, message: ${error.message}`);
               })
         })
