@@ -7080,7 +7080,7 @@ onWindowTitleButtonRectChange(callback: Callback&lt;TitleButtonRect&gt;): void
 **示例：**
 
 ```ts
-windowClass.setUIContent('pages/WindowPage').then(() => {
+windowClass?.setUIContent('pages/WindowPage').then(() => {
   try {
     windowClass?.onWindowTitleButtonRectChange((titleButtonRect: window.TitleButtonRect) => {
       console.info('Succeeded in enabling the listener for window title buttons area changes. Data: ' + JSON.stringify(titleButtonRect));
@@ -7178,7 +7178,7 @@ offWindowTitleButtonRectChange(callback?: Callback&lt;TitleButtonRect&gt;): void
 **示例：**
 
 ```ts
-windowClass!.setUIContent('pages/WindowPage').then(() => {
+windowClass?.setUIContent('pages/WindowPage').then(() => {
   const callback = (titleButtonRect: window.TitleButtonRect) => {
     // ...
   }
