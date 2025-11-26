@@ -3,8 +3,10 @@
 DataUriUtils模块提供用于处理uri对象的能力，包括获取、绑定、删除和更新指定uri对象的路径末尾的ID。
 
 > **说明：**
-> 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -14,11 +16,17 @@ import { dataUriUtils } from '@kit.AbilityKit';
 
 ## dataUriUtils.getId
 
-getId(uri: string): number
+ArkTS-Dyn: getId(uri: string): number
+
+ArkTS-Sta: getId(uri: string): double
 
 获取指定uri路径末尾的ID。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -30,7 +38,7 @@ getId(uri: string): number
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| number | 返回uri路径末尾的ID。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 返回uri路径末尾的ID。 |
 
 **错误码**：
 
@@ -57,18 +65,24 @@ try {
 
 ## dataUriUtils.attachId
 
-attachId(uri: string, id: number): string
+ArkTS-Dyn: attachId(uri: string, id: number): string
+
+ArkTS-Sta: attachId(uri: string, id: double): string
 
 将ID附加到uri的路径末尾。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                        |
 | ---- | ------ | ---- | --------------------------- |
 | uri  | string | 是   | 表示uri对象。 |
-| id   | number | 是   | 表示要附加的ID。            |
+| id   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示要附加的ID。            |
 
 **返回值：**
 
@@ -98,7 +112,7 @@ try {
   );
   console.info(`attachId the uri is: ${uri}`);
 } catch (err) {
-  console.error(`get id err, code: ${JSON.stringify((err as BusinessError).code)}, msg: ${JSON.stringify((err as BusinessError).message)}`);
+  console.error(`get id err, code: ${(err as BusinessError).code}, msg: ${(err as BusinessError).message}`);
 }
 ```
 
@@ -111,6 +125,10 @@ deleteId(uri: string): string
 删除指定uri路径末尾的ID。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -142,7 +160,7 @@ try {
   let uri = dataUriUtils.deleteId('com.example.dataUriUtils/1221');
   console.info(`delete id with the uri is: ${uri}`);
 } catch(err) {
-  console.error(`delete id err, code: ${JSON.stringify((err as BusinessError).code)}, msg: ${JSON.stringify((err as BusinessError).message)}`);
+  console.error(`delete id err, code: ${(err as BusinessError).code}, msg: ${(err as BusinessError).message}`);
 }
 ```
 
@@ -150,18 +168,24 @@ try {
 
 ## dataUriUtils.updateId
 
-updateId(uri: string, id: number): string
+ArkTS-Dyn: updateId(uri: string, id: number): string
+
+ArkTS-Sta: updateId(uri: string, id: double): string
 
 更新指定uri中的ID。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                |
 | ---- | ------ | ---- | ------------------- |
-| uri  | string | 是   | 表示uri对象 |
-| id   | number | 是   | 表示要更新的ID            |
+| uri  | string | 是   | 表示uri对象。 |
+| id   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示要更新的ID。           |
 
 **返回值：**
 
@@ -190,7 +214,7 @@ try {
     id
   );
 } catch (err) {
-  console.error(`update id err, code: ${JSON.stringify((err as BusinessError).code)}, msg: ${JSON.stringify((err as BusinessError).message)}`);
+  console.error(`update id err, code: ${(err as BusinessError).code}, msg: ${(err as BusinessError).message}`);
 }
 ```
 
