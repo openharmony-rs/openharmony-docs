@@ -7,6 +7,10 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
+```
+typedef struct AbilityBase_Want AbilityBase_Want
+```
+
 ## Overview
 
 The struct describes the Want.
