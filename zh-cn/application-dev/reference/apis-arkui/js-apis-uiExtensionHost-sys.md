@@ -1,10 +1,4 @@
 # @ohos.uiExtensionHost (系统接口)
-<!--Kit: ArkUI-->
-<!--Subsystem: Window-->
-<!--Owner: @chbchb12-->
-<!--Designer: @stupidb-->
-<!--Tester: @qinliwen0417-->
-<!--Adviser: @ge-yafang-->
 
 仅用于在有进程隔离诉求的UIExtensionComponent组件中为提供方应用提供宿主应用的窗口信息和组件本身的信息。
 
@@ -30,15 +24,11 @@ import { uiExtensionHost } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 22
-
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| properties          | [UIExtensionHostWindowProxyProperties](#uiextensionhostwindowproxyproperties) |  否  |  否  | UIExtensionComponent组件以及宿主窗口的信息。<br/>**约束：** 由于架构约束，不建议在[onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)阶段同步获取该值，建议在收到[on('windowSizeChange')](../apis-arkui/js-apis-uiExtensionHost-sys.md#onwindowsizechange)回调之后获取。 |
+| properties          | [UIExtensionHostWindowProxyProperties](#uiextensionhostwindowproxyproperties) |  否  |  否  | UIExtensionComponent组件以及宿主窗口的信息。<br/>**约束：** 由于架构约束，不建议在[onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)阶段同步获取该值，建议在收到[on('windowSizeChange')](../apis-arkui/js-apis-uiExtensionHost-sys.md#onwindowsizechange)回调之后获取。<br/>**ArkTS-Dyn起始版本：**11 <br/> **ArkTS-Sta起始版本：**22|
 
 ### getWindowAvoidArea
 
@@ -138,7 +128,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ### onAvoidAreaChange<sup>22+</sup>
 
-onAvoidAreaChange(callback: Callback<uiExtension.AvoidAreaInfo>): void;
+onAvoidAreaChange(callback: Callback<uiExtension.AvoidAreaInfo>): void
 
 注册系统规避区变化的监听。
 
@@ -223,7 +213,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ### offAvoidAreaChange<sup>22+</sup>
 
-offAvoidAreaChange(callback?: Callback<uiExtension.AvoidAreaInfo>): void;
+offAvoidAreaChange(callback?: Callback<uiExtension.AvoidAreaInfo>): void
 
 注销系统规避区变化的监听。
 
@@ -401,7 +391,7 @@ offWindowSizeChange(callback?: Callback<window.Size>): void;
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Sta起始版本：** 22
 
 **系统接口**：此接口为系统接口。
 
@@ -472,7 +462,7 @@ hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 
 **示例：**
 
-**ArkTS-Dyn示例:**
+ArkTS-Dyn示例：
 ```ts
 // ExtensionProvider.ets
 
@@ -501,7 +491,7 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-**ArkTS-Sta示例:**
+ArkTS-Sta示例：
 ```ts
 // ExtensionProvider.ets
 
@@ -545,7 +535,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 **系统接口：** 此接口为系统接口。
 
-**模型约束：** StageModelOnly
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -572,7 +562,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 **示例：**
 
-**ArkTS-Dyn示例:**
+ArkTS-Dyn示例：
 ```ts
 // ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -618,7 +608,7 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-**ArkTS-Sta示例:**
+ArkTS-Sta示例：
 ```ts
 // ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -704,7 +694,7 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
-**ArkTS-Dyn示例:**
+ArkTS-Dyn示例：
 ```ts
 // ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -732,7 +722,7 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-**ArkTS-Sta示例:**
+ArkTS-Sta示例：
 ```ts
 // ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -803,7 +793,7 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 
 **示例：**
 
-**ArkTS-Dyn示例:**
+ArkTS-Dyn示例：
 ```ts
 // ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -822,7 +812,7 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-**ArkTS-Sta示例:**
+ArkTS-Sta示例：
 ```ts
 // ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -862,7 +852,8 @@ export default class EntryAbility extends UIExtensionAbility {
 本示例展示文档中所有API在UIExtensionAbility中的基础使用方式，示例应用需采用系统签名，且`bundleName`为"com.example.uiextensiondemo", 被拉起的`UIExtensionAbility`为"ExampleUIExtensionAbility"。
 
 - 示例应用中的EntryAbility(UIAbility)加载首页文件：`pages/Index.ets`，其中内容如下：
-  **ArkTS-Dyn示例:**
+
+  ArkTS-Dyn示例：
   ```ts
   // pages/Index.ets -- UIAbility启动时加载此页面
   import { Want } from '@kit.AbilityKit';
@@ -894,7 +885,7 @@ export default class EntryAbility extends UIExtensionAbility {
   }
   ```
 
-  **ArkTS-Sta示例:**
+  ArkTS-Sta示例：
   ```ts
   // pages/Index.ets -- UIAbility启动时加载此页面
   import { Entry, Component, Column, Row, Text, UIExtensionComponent} from '@ohos.arkui.component';
@@ -931,7 +922,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 - UIExtensionComponent拉起的UIExtensionAbility在`ets/extensionAbility/ExampleUIExtensionAbility`文件中实现，内容如下：
 
-  **ArkTS-Dyn示例:**
+  ArkTS-Dyn示例：
   ```ts
   import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
@@ -964,7 +955,7 @@ export default class EntryAbility extends UIExtensionAbility {
   }
   ```
 
-  **ArkTS-Sta示例:**
+  ArkTS-Sta示例：
   ```ts
   import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
   import { LocalStorage } from '@ohos.arkui.stateManagement';
@@ -1000,7 +991,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 - UIExtensionAbility的入口页面文件`pages/extension.ets`内容如下：
 
-  **ArkTS-Dyn示例:**
+  ArkTS-Dyn示例：
   ```ts
   import { UIExtensionContentSession } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1098,7 +1089,7 @@ export default class EntryAbility extends UIExtensionAbility {
   }
   ```
 
-  **ArkTS-Sta示例:**
+  ArkTS-Sta示例：
   ```ts
   import { UIExtensionContentSession } from '@kit.AbilityKit';
   import { Entry, Component, Column, Row, Text, Button, Margin, FontWeight} from '@ohos.arkui.component';

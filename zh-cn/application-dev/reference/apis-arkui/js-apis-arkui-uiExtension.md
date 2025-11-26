@@ -1,10 +1,4 @@
 # @ohos.arkui.uiExtension (uiExtension)
-<!--Kit: ArkUI-->
-<!--Subsystem: Window-->
-<!--Owner: @chbchb12-->
-<!--Designer: @stupidb-->
-<!--Tester: @qinliwen0417-->
-<!--Adviser: @ge-yafang-->
 
 用于EmbeddedUIExtensionAbility（或UIExtensionAbility）中获取宿主应用的窗口信息或对应的EmbeddedComponent<!--Del-->（或UIExtensionComponent）<!--DelEnd-->组件的信息。
 
@@ -29,15 +23,11 @@ UIExtension宿主窗代理。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 14
-
-**ArkTS-Sta起始版本：** 22
-
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用
 
 | 名称                                 | 类型                  | 只读 | 可选 | 说明                                                                                                     |
 | ------------------------------------| -------------------------------------------------- | ---- | ---- | ------------------------------------------------------------------------------------------------------ |
-| properties<sup>14+</sup>            | [WindowProxyProperties](#windowproxyproperties14) |  否  |  否  | 组件（EmbeddedComponent或UIExtensionComponent）的信息。<br/>**约束：** 由于架构约束，不建议在[onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)阶段同步获取该值，建议在收到[on('windowSizeChange')](../apis-arkui/js-apis-arkui-uiExtension.md#onwindowsizechange)回调之后获取。                                                                            |
+| properties                          | [WindowProxyProperties](#windowproxyproperties14) |  否  |  否  | 组件（EmbeddedComponent或UIExtensionComponent）的信息。<br/>**约束：** 由于架构约束，不建议在[onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)阶段同步获取该值，建议在收到[on('windowSizeChange')](../apis-arkui/js-apis-arkui-uiExtension.md#onwindowsizechange)回调之后获取。<br/>**ArkTS-Dyn起始版本：**14 <br/> **ArkTS-Sta起始版本：**22                                                                            |
 
 ### getWindowAvoidArea
 
@@ -75,7 +65,7 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 
 **示例：**
 
-**ArkTS-Dyn示例:**
+ArkTS-Dyn示例：
 ```ts
 // ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -91,7 +81,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
-**ArkTS-Sta示例:**
+ArkTS-Sta示例：
 ```ts
 // ExtensionProvider.ets
 import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -690,7 +680,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 **示例：**
 
-**ArkTS-Dyn示例:**
+ArkTS-Dyn示例：
 ```ts
 // ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -736,7 +726,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
-**ArkTS-Sta示例:**
+ArkTS-Sta示例：
 ```ts
 // ExtensionProvider.ets
 import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -824,7 +814,7 @@ ArkTS-Sta: occupyEvents(eventFlags: int): Promise&lt;void&gt;
 
 **示例：**
 
-**ArkTS-Dyn示例:**
+ArkTS-Dyn示例：
 ```ts
 // ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -851,7 +841,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
-**ArkTS-Sta示例:**
+ArkTS-Sta示例：
 ```ts
 // ExtensionProvider.ets
 import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -974,7 +964,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 - 示例应用中的EntryAbility(UIAbility)加载首页文件：`pages/Index.ets`，其中内容如下：
 
-  **ArkTS-Dyn示例:**
+  ArkTS-Dyn示例：
   ```ts
   // pages/Index.ets -- UIAbility启动时加载此页面
   import { Want } from '@kit.AbilityKit';
@@ -1009,7 +999,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
   }
   ```
 
-  **ArkTS-Sta示例:**
+  ArkTS-Sta示例：
     ```ts
   // pages/Index.ets -- UIAbility启动时加载此页面
   import { Entry, Component, Column, Row, Text, EmbeddedComponent, EmbeddedType} from '@ohos.arkui.component';
@@ -1048,7 +1038,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 - EmbeddedComponent拉起的EmbeddedUIExtensionAbility在`ets/extensionAbility/ExampleEmbeddedAbility`文件中实现，内容如下：
 
-  **ArkTS-Dyn示例:**
+  ArkTS-Dyn示例：
   ```ts
   import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
@@ -1082,7 +1072,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
   }
   ```
 
-  **ArkTS-Sta示例:**
+  ArkTS-Sta示例：
   ```ts
   import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
   import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
@@ -1120,7 +1110,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 - EmbeddedUIExtensionAbility的入口页面文件`pages/extension.ets`内容如下：
 
-  **ArkTS-Dyn示例:**
+  ArkTS-Dyn示例：
   ```ts
   import { UIExtensionContentSession } from '@kit.AbilityKit';
   import { uiExtension, window } from '@kit.ArkUI';
@@ -1205,7 +1195,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
   }
   ```
 
-  **ArkTS-Sta示例:**
+  ArkTS-Sta示例：
   ```ts
   import { UIExtensionContentSession } from '@kit.AbilityKit';
   import { Entry, Component, Column, Row, Text, Button, Margin} from '@ohos.arkui.component';
