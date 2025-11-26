@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can control the display style of the mouse cursor.
 
@@ -29,7 +29,7 @@ Sets the current mouse cursor style. This API can be used globally in method sta
 
 | Name| Type| Mandatory| Description|
 | ----- | ------ | ---- | ---- |
-| value | [PointerStyle](#pointerstyle11) | All consistent  | Cursor style.|
+| value | [PointerStyle](#pointerstyle) | All consistent  | Cursor style.|
 
 
 ### restoreDefault
@@ -42,11 +42,11 @@ restoreDefault(): void
 
 Restores the mouse cursor to the default arrow style. This API can be used globally in method statements.
 
-## PointerStyle<sup>11+</sup>
+## PointerStyle
 
 type PointerStyle = pointer.PointerStyle
 
-Pointer style.
+Defines the pointer style.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -76,7 +76,11 @@ struct CursorControlExample {
 
   build() {
     Column() {
-      Row().height(200).width(200).backgroundColor(Color.Green).position({x: 150 ,y:70})
+      Row()
+        .height(200)
+        .width(200)
+        .backgroundColor(Color.Green)
+        .position({ x: 150, y: 70 })
         .onHover((flag) => {
           if (flag) {
             // You are advised to use this.getUIContext().getCursorController().setCursor().
@@ -86,7 +90,11 @@ struct CursorControlExample {
             cursorControl.restoreDefault()
           }
         })
-      Row().height(200).width(200).backgroundColor(Color.Blue).position({x: 220 ,y:120})
+      Row()
+        .height(200)
+        .width(200)
+        .backgroundColor(Color.Blue)
+        .position({ x: 220, y: 120 })
         .onHover((flag) => {
           if (flag) {
             // You are advised to use this.getUIContext().getCursorController().setCursor().

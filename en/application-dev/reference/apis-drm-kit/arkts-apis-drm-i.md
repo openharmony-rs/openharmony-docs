@@ -11,7 +11,7 @@
 
 ## ProvisionRequest
 
-Describes a provision request, which is used to request a DRM certificate from a provisioning server.
+Defines a device certificate provisioning request.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -19,12 +19,12 @@ Describes a provision request, which is used to request a DRM certificate from a
 
 | Name     | Type                       | Read-Only| Optional| Description        |
 | -------- | ------------------------|----|----| ------------- |
-| data   | Uint8Array| No | No | Data carried in the provision request.     |
-| defaultURL     | string         | No | No | URL of the provisioning server (which provisions DRM certificates).      |
+| data   | Uint8Array| No | No | Binary data of the provisioning request.     |
+| defaultURL     | string         | No | No | URL of the device certificate provisioning server.      |
 
 ## OptionsData
 
-Describes the optional data carried in a media key request.
+Defines optional parameters for a device certificate request.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -32,12 +32,12 @@ Describes the optional data carried in a media key request.
 
 | Name     | Type                       | Read-Only| Optional| Description        |
 | -------- | --------------------------|----|----| ------------- |
-| name   | string | No | No | Name of the optional data.     |
-| value     | string             | No | No | Value of the optional data.|
+| name   | string | No | No | Name of the optional parameter.     |
+| value     | string             | No | No | Value of the optional parameter.|
 
 ## MediaKeyRequest
 
-Describes a media key request.
+Defines a media key request.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -46,12 +46,12 @@ Describes a media key request.
 | Name     | Type                      | Read-Only| Optional| Description        |
 | -------- | --------------------------|----|----| ------------- |
 | mediaKeyRequestType   | [MediaKeyRequestType](arkts-apis-drm-e.md#mediakeyrequesttype)| No | No | Type of the media key request.     |
-| data     | Uint8Array               |  No | No | Data carried in the media key request.      |
-| defaultURL     | string              |  No | No | URL of the license server (which provisions media keys).      |
+| data     | Uint8Array               |  No | No | Binary data of the media key request.      |
+| defaultURL     | string              |  No | No | URL of the license server.      |
 
 ## EventInfo
 
-Describes the event information.
+Defines the DRM event information.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -59,12 +59,12 @@ Describes the event information.
 
 | Name     | Type                        | Read-Only| Optional   | Description        |
 | -------- | --------------------------|----|-------| ------------- |
-| info   | Uint8Array |   No| No     | Event information.     |
-| extraInfo     | string             |   No| No | Extended event information.|
+| info   | Uint8Array |   No| No     | Event payload data.     |
+| extraInfo     | string             |   No| No | Additional event context.|
 
 ## StatisticKeyValue
 
-Describes the statistical information.
+Defines a key-value pair for DRM metrics.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -72,12 +72,12 @@ Describes the statistical information.
 
 | Name     | Type                      | Read-Only| Optional  | Description        |
 | -------- | -------------------------|----|------| ------------- |
-| name   | string | No | No    | Name of the statistical item.     |
-| value     | string              | No  | No  | Value of the statistical item.|
+| name   | string | No | No    | Name of the metric.     |
+| value     | string              | No  | No  | Value of the metric.|
 
 ## MediaKeyStatus
 
-Describes the media key status.
+Defines a status attribute for a media key.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -85,12 +85,12 @@ Describes the media key status.
 
 | Name     | Type                       | Read-Only| Optional     | Description        |
 | -------- | -------------------------|----|---------| ------------- |
-| name   | string | No |  No      | Name of the media key status (such as the media key expiration time and content protection level).     |
-| value     | string            | No  | No | Value of the media key status.|
+| name   | string | No |  No      | Name of the media key status attribute, for example, expiration time or content protection level.     |
+| value     | string            | No  | No | Value of the media key status attribute.|
 
 ## KeysInfo
 
-Describes the information about media keys.
+Defines the status information of a media key.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -103,7 +103,7 @@ Describes the information about media keys.
 
 ## MediaKeySystemInfo
 
-Describes the DRM information, which is used to encrypt content.
+Defines the DRM information for encrypted content.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -111,12 +111,12 @@ Describes the DRM information, which is used to encrypt content.
 
 | Name     | Type                     | Read-Only| Optional| Description        |
 | -------- | ------------------------|----|--| ------------- |
-| uuid   | string |  No | No| UUID of the DRM content protection system.     |
-| pssh     | Uint8Array              |  No | No| Protection System Specific Header (PSSH) in the DRM information.|
+| uuid   | string |  No | No| UUID of the DRM system.     |
+| pssh     | Uint8Array              |  No | No| Protection System Specific Header (PSSH) data.|
 
 ## MediaKeySystemDescription<sup>12+</sup>
 
-Describes the plugin information.
+Defines the DRM plugin information.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -124,5 +124,5 @@ Describes the plugin information.
 
 | Name     | Type                       | Read-Only| Optional| Description        |
 | -------- | --------------------------|----|--| ------------- |
-| name   | string | No | No| Name of the plugin.     |
-| uuid   | string | No | No| UUID of the plugin.|
+| name   | string | No | No| Plugin name.     |
+| uuid   | string | No | No| Unique identifier of the plugin.|

@@ -19,7 +19,7 @@
 ## 导入模块
 
 ```ts
-import { InnerFullScreenLaunchComponent, LauncherController } from '@kit.ArkUI';
+import { InnerFullScreenLaunchComponent, LaunchController } from '@kit.ArkUI';
 ```
 
 
