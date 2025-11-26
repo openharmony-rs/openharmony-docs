@@ -170,3 +170,4 @@ The client process fails to obtain the application group information.
 **Solution**
 
 Check whether the bundle name is valid and whether the application exists.
+
