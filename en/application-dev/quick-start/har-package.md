@@ -50,15 +50,12 @@ The **Index.ets** file acts as the entry of the HAR export declaration file and 
 <!-- @[har_package_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/oh-package.json5) -->
 
 ``` JSON5
-// [Start har_package_008]
 {
-// ···
+  // ...
   "main": "Index.ets",
-// ···
+  // ...
 }
-// [End har_package_008]
 ```
-
 
 > **NOTE**
 >
@@ -186,17 +183,14 @@ Specifically, DevEco Studio collects resource files from the HAP module and its 
 
 ``` JSON5
 {
-  // [StartExclude har_package_001]
-// ···
+  // ...
   "dependencies": {
-	// ···
+    // ...
     "dayjs": "file:../dayjs",
     "lottie": "file:../lottie",
   },
-  // [EndExclude har_package_001]
 }
 ```
-
 
 ## Using a HAR
 
@@ -236,8 +230,7 @@ Use **import** to reference the classes and methods exported from the HAR. The c
 ``` TypeScript
 // entry/src/main/ets/pages/Index.ets
 import { Log, func } from 'library';
-// ···
-// [EndExclude har_package_011]
+// ...
 @Entry
 @Component
 struct Index {
@@ -250,8 +243,6 @@ struct Index {
         .fontWeight(FontWeight.Bold)
         .fontSize(32)
 
-      // [StartExclude har_package_011]
-      // [StartExclude har_package_012]
       // Reference ETS classes and methods.
       Button($r('app.string.button'))
         .id('button')
@@ -264,24 +255,17 @@ struct Index {
           Log.info('har msg');
           this.message = 'func return: ' + func();
         })
-      // [EndExclude har_package_011]
-      // [EndExclude har_package_012]
 
-	// ···
-      // [EndExclude har_package_012]
+      // ...
 
-	// ···
-      // [EndExclude har_package_011]
+      // ...
     }
     .width('100%')
     .backgroundColor($r('app.color.page_background'))
     .height('100%')
   }
 }
-// [End har_package_012]
-// [End har_package_011]
 ```
-
 
 ### Referencing Native Methods
 Use **import** to reference the native methods exported from the HAR. The code snippet is as follows:
@@ -291,7 +275,7 @@ Use **import** to reference the native methods exported from the HAR. The code s
 ``` TypeScript
 // entry/src/main/ets/pages/Index.ets
 import { nativeAdd } from 'library';
-// ···
+// ...
 @Entry
 @Component
 struct Index {
@@ -304,11 +288,8 @@ struct Index {
         .fontWeight(FontWeight.Bold)
         .fontSize(32)
 
-	// ···
-      // [EndExclude har_package_012]
+      // ...
 
-      // [StartExclude har_package_010]
-      // [StartExclude har_package_012]
       // Reference the native method in the HAR.
       Button($r('app.string.native_add'))
         .id('nativeAdd')
@@ -319,20 +300,15 @@ struct Index {
         .onClick(() => {
           this.message = 'result: ' + nativeAdd(1, 2);
         })
-      // [EndExclude har_package_010]
-      // [EndExclude har_package_012]
 
-      // [StartExclude har_package_010]
-	// ···
+      // ...
     }
     .width('100%')
     .backgroundColor($r('app.color.page_background'))
     .height('100%')
   }
 }
-// [End har_package_012]
 ```
-
 
 ### Referencing Resources
 Use **$r** to reference resources in the HAR. For example, add the **name: hello_har** string (defined in the **string.json** file) and **icon_har.png** image to the **src/main/resources** directory of the HAR module, and then reference the string and image in the entry module. The code snippet is as follows:
@@ -341,8 +317,6 @@ Use **$r** to reference resources in the HAR. For example, add the **name: hello
 
 ``` TypeScript
 // entry/src/main/ets/pages/Index.ets
-// [EndExclude har_package_010]
-// [EndExclude har_package_011]
 @Entry
 @Component
 struct Index {
@@ -355,14 +329,10 @@ struct Index {
         .fontWeight(FontWeight.Bold)
         .fontSize(32)
 
-      // [StartExclude har_package_011]
-	// ···
+      // ...
 
-      // [StartExclude har_package_010]
-	// ···
+      // ...
 
-      // [StartExclude har_package_010]
-      // [StartExclude har_package_011]
       // Reference the string in the HAR.
       Text($r('app.string.hello_har'))
         .id('stringHar')
@@ -383,8 +353,6 @@ struct Index {
         .width('312px')
       }
       .alignListItem(ListItemAlign.Center)
-      // [EndExclude har_package_010]
-      // [EndExclude har_package_011]
     }
     .width('100%')
     .backgroundColor($r('app.color.page_background'))
@@ -392,7 +360,6 @@ struct Index {
   }
 }
 ```
-
 
 ## Building a HAR
 
@@ -404,40 +371,39 @@ The obfuscation capability is enabled by default for the HAR module. When the co
 
   <!-- @[har_package_013](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/build-profile.json5) -->
 
-``` JSON5
-{
-  "apiType": "stageMode",
-  "buildOption": {
-	// ···
-  },
-  "buildOptionSet": [
-    {
-      "name": "release",
-      "arkOptions": {
-        "obfuscation": {
-          "ruleOptions": {
-            "enable": true,
-            "files": [
-              "./obfuscation-rules.txt"
+  ``` JSON5
+  {
+    "apiType": "stageMode",
+    "buildOption": {
+      // ...
+    },
+    "buildOptionSet": [
+      {
+        "name": "release",
+        "arkOptions": {
+          "obfuscation": {
+            "ruleOptions": {
+              "enable": true,
+              "files": [
+                "./obfuscation-rules.txt"
+              ]
+            },
+            "consumerFiles": [
+              "./consumer-rules.txt"
             ]
-          },
-          "consumerFiles": [
-            "./consumer-rules.txt"
-          ]
-        }
+          }
+        },
+        // ...
       },
-	// ···
-    },
-  ],
-  "targets": [
-    {
-      "name": "default"
-    },
-	// ···
-  ]
-}
-```
-
+    ],
+    "targets": [
+      {
+        "name": "default"
+      },
+      // ...
+    ]
+  }
+  ```
 
 ### Building TS Files
 
@@ -459,26 +425,24 @@ After the ArkTS file in the HAR module is built, the product is a JS file by def
 
   <!-- @[har_package_014](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/module.json5) -->
 
-``` JSON5
-{
-  "module": {
-    "name": "library",
-    "type": "har",
-    "deviceTypes": [
-      "tablet",
-      "2in1"
-    ],
-    "metadata": [
-      {
-        "name": "UseTsHar",
-        "value": "true"
-      }
-    ]
+  ``` JSON5
+  {
+    "module": {
+      "name": "library",
+      "type": "har",
+      "deviceTypes": [
+        "tablet",
+        "2in1"
+      ],
+      "metadata": [
+        {
+          "name": "UseTsHar",
+          "value": "true"
+        }
+      ]
+    }
   }
-}
-```
-
-
+  ```
 
 ## Publishing a HAR
 
