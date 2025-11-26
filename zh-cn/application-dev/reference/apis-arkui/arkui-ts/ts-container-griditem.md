@@ -116,22 +116,22 @@ columnEnd(value: number)
 >
 > * 在设置columnsTemplate和rowsTemplate的Grid中，单独设置行号rowStart/rowEnd或列号columnStart/columnEnd的GridItem会按照一行一列进行布局。
 >
->  * 在只设置columnsTemplate的Grid中设置列号columnStart/columnEnd的GridItem按照列数布局。在该区域位置存在GridItem布局，则直接换行进行放置。
+> * 在只设置columnsTemplate的Grid中设置列号columnStart/columnEnd的GridItem按照列数布局。在该区域位置存在GridItem布局，则直接换行进行放置。
 >
 > * 在只设置rowsTemplate的Grid中设置行号rowStart/rowEnd的GridItem按照行数布局。在该区域位置存在GridItem布局，则直接换列进行放置。
 >
 > * columnsTemplate和rowsTemplate都不设置的Grid中GridItem的行列号属性无效。
 >  
->  以下是GridItem行列号异常值的处理规则：
+> 以下是GridItem行列号异常值的处理规则：
 >
->  | 属性设置情况  |‌异常类型| ‌修正后布局规则  |
->  | ----- |----| ------------------------ |
->  | 仅设置columnsTemplate  |  任意行列异常 | 按一行一列布局。                 |
->  | 仅设置rowsTemplate |  任意行列异常 | 按一行一列布局。 |
->  | 同时设置rows/columnsTemplate |  rowStart < rowEnd | 行跨度 = min(rowEnd-rowStart+1, 总行数)。 |
->  | 同时设置rows/columnsTemplate |  rowStart > rowEnd | 按一行一列布局。 |
->  | 同时设置rows/columnsTemplate |  columnStart < columnEnd | 列跨度 = min(columnEnd-columnStart+1, 总列数)。 |
->  | 同时设置rows/columnsTemplate |  columnStart > columnEnd | 按一行一列布局。 |
+> | 属性设置情况  | 异常类型 | ‌修正后布局规则  |
+> | ----- |----| ------------------------ |
+> | 仅设置columnsTemplate  |  任意行列异常 | 按一行一列布局。 |
+> | 仅设置rowsTemplate |  任意行列异常 | 按一行一列布局。 |
+> | 同时设置rows/columnsTemplate |  rowStart < rowEnd | 行跨度 = min(rowEnd-rowStart+1, 总行数)。 |
+> | 同时设置rows/columnsTemplate |  rowStart > rowEnd | 按一行一列布局。 |
+> | 同时设置rows/columnsTemplate |  columnStart < columnEnd | 列跨度 = min(columnEnd-columnStart+1, 总列数)。 |
+> | 同时设置rows/columnsTemplate |  columnStart > columnEnd | 按一行一列布局。 |
 
 ### forceRebuild<sup>(deprecated)</sup>
 
