@@ -155,7 +155,7 @@ USB设备详细信息，继承自[DeviceInfo](#deviceinfo)。
 | 名称                | 类型                                                                 | 必填  | 说明               |
 |-------------------|--------------------------------------------------------------------|-----|------------------|
 | vendorId          | ArkTs-Dyn: number<br> ArkTs-Sta: int     | 是   | USB设备Vendor ID。| 
-| productId         |  ArkTs-Dyn: number<br> ArkTs-Sta: int     | 是   | USB设备Product  ID。|                                               
+| productId         |  ArkTs-Dyn: number<br> ArkTs-Sta: int     | 是   | USB设备Product ID。|                                               
 | interfaceDescList | Array&lt;Readonly&lt;[USBInterfaceDesc](#usbinterfacedesc)&gt;&gt; | 是   | USB设备接口描述符列表。    |
 
 ## USBInterfaceDesc
