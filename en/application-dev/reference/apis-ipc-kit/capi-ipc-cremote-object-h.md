@@ -39,7 +39,7 @@ Provides C APIs for creating and destroying a remote object, transferring data, 
 | ---- | ------------- | ---- |
 | [typedef int (\*OH_OnRemoteRequestCallback)(uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, void *userData)](#oh_onremoterequestcallback) | OH_OnRemoteRequestCallback | Called to process the peer request at the stub.|
 | [typedef void (\*OH_OnRemoteDestroyCallback)(void *userData)](#oh_onremotedestroycallback) | OH_OnRemoteDestroyCallback | Called when an observed object is destroyed.|
-| [OHIPCRemoteStub* OH_IPCRemoteStub_Create(const char *descriptor, OH_OnRemoteRequestCallback requestCallback, OH_OnRemoteDestroyCallbac destroyCallback, void *userData)](#oh_ipcremotestub_create) | - | Creates an **OHIPCRemoteStub** object.|
+| [OHIPCRemoteStub* OH_IPCRemoteStub_Create(const char *descriptor, OH_OnRemoteRequestCallback requestCallback, OH_OnRemoteDestroyCallback destroyCallback, void *userData)](#oh_ipcremotestub_create) | - | Creates an **OHIPCRemoteStub** object.|
 | [void OH_IPCRemoteStub_Destroy(OHIPCRemoteStub *stub)](#oh_ipcremotestub_destroy) | - | Destroys an **OHIPCRemoteStub** object.|
 | [void OH_IPCRemoteProxy_Destroy(OHIPCRemoteProxy *proxy)](#oh_ipcremoteproxy_destroy) | - | Destroys an **OHIPCRemoteProxy** object.|
 | [int OH_IPCRemoteProxy_SendRequest(const OHIPCRemoteProxy *proxy, uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, const OH_IPC_MessageOption *option)](#oh_ipcremoteproxy_sendrequest) | - | Sends an IPC message.|
@@ -253,7 +253,7 @@ Obtains the interface descriptor from the stub.
 ### OH_OnDeathRecipientCallback()
 
 ```C
-typedef void(*OH_OnDeathRecipientCallback)(void *userData)
+typedef void (*OH_OnDeathRecipientCallback)(void *userData)
 ```
 
 **Description**
@@ -273,7 +273,7 @@ Defines a callback to be invoked when the remote **OHIPCRemoteStub** object dies
 ### OH_OnDeathRecipientDestroyCallback()
 
 ```C
-typedef void(*OH_OnDeathRecipientDestroyCallback)(void *userData)
+typedef void (*OH_OnDeathRecipientDestroyCallback)(void *userData)
 ```
 
 **Description**
