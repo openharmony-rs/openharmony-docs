@@ -432,6 +432,7 @@ struct Page {
 [List&Grid并行化创建子组件](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_20250702/code/ArkTS1.2/ListAndGridParallelSample/README.md)
 
 ## 注意事项
-[List/Grid并行加载子节点的方案和注意事项](../faqs/faqs-arkui-component.md##List/Grid并行加载子节点的方案和注意事项(API 22))
+
+[List/Grid并行加载子节点的方案和注意事项](../faqs/faqs-arkui-component.md#listgrid并行加载子节点的方案和注意事项api-22)
 
 <!--DelEnd-->
