@@ -213,7 +213,7 @@ struct Page {
 
 ## List&Grid并行化创建子组件
 
-可以使用[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)来并行创建子节点。
+从API version 22开始，可以使用[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)的重载接口[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)并行创建子节点。
 
 如下示例演示了在不同场景中，如何使用[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)并行创建子节点。
 
@@ -415,6 +415,10 @@ struct Page {
 
   ![ui_parallel003](figures/ui_parallellist.jpg)
 
+### 注意事项
+
+[List/Grid并行化创建子组件的方案和注意事项](../faqs/faqs-arkui-component.md#listgrid并行化创建子组件的方案和注意事项api-22)
+
 ## UI并行化创建组件树DFX定位指导与性能调优
 参考[使用SmartPerf-Host分析应用性能](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/performance/performance-optimization-using-smartperf-host.md)文档，抓取Trace以对比并行创建与非并行创建组件时的性能。同时，也可以通过Trace观察BuilderNode是否在子线程中构建和更新。
 
@@ -430,9 +434,5 @@ struct Page {
 [使用声明式的并行化方法创建UI组件](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_20250702/code/ArkTS1.2/ParallelizeUI/README.md)
 
 [List&Grid并行化创建子组件](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_20250702/code/ArkTS1.2/ListAndGridParallelSample/README.md)
-
-## 注意事项
-
-[List/Grid并行化创建子组件的方案和注意事项](../faqs/faqs-arkui-component.md#listgrid并行化创建子组件的方案和注意事项api-22)
 
 <!--DelEnd-->

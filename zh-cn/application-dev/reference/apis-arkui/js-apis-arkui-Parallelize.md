@@ -24,7 +24,7 @@ import { ParallelOption, ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 | 名称      | 类型     | 只读 | 可选 | 说明                |
 | -------- | -------- | --- |-----|--------------------- |
-| enable   | boolean  | 否   | 是| 是否开启UI创建并行化。<br/>true：开启并行化创建；false：不开启并行化创建。<br/>默认值：true<br/>undefined：表现为默认值，开启并行化创建。  |
+| enable   | boolean  | 否   | 是| 是否开启UI创建并行化。<br/>true：开启并行化创建；false：不开启并行化创建。<br/>默认值：true<br/>取值为undefined时，按默认值true处理。  |
 
 
 ## ParallelizeUI
