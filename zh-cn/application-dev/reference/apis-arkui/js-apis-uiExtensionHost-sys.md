@@ -385,7 +385,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ### offWindowSizeChange<sup>22+</sup>
 
-offWindowSizeChange(callback?: Callback<window.Size>): void;
+offWindowSizeChange(callback?: Callback<window.Size>): void
 
 注销组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。
 
