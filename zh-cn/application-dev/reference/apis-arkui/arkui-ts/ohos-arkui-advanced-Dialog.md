@@ -137,7 +137,7 @@ LoadingDialog({controller: CustomDialogController, content?: ResourceStr, theme?
 
 | 名称                | 类型                                                                                               | 必填 | 说明                                                                                                    |
 | ------------------- |--------------------------------------------------------------------------------------------------| ---- |-------------------------------------------------------------------------------------------------------|
-| Controller         | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller)                 | 是 | 加载弹出框控制器。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| controller         | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller)                 | 是 | 加载弹出框控制器。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | content             | [ResourceStr](ts-types.md#resourcestr)                                                           | 否   | 加载弹出框内容。<br/> 默认不设置或设置为undefined，加载弹出框内容不显示。<br/> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                 |
 | theme<sup>12+</sup> | [Theme](../js-apis-arkui-theme.md#theme) \| [CustomTheme](../js-apis-arkui-theme.md#customtheme) | 否   | 主题信息，可以是CustomTheme或从onWillApplyTheme中获取的Theme实例。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | themeColorMode<sup>12+</sup> | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明)                                | 否 | 自定义弹出框深浅色模式。<br/>默认值：ThemeColorMode.SYSTEM<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。        |
