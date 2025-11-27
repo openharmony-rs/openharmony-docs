@@ -110,8 +110,9 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
       } catch (err) {
         hilog.error(DOMAIN_NUMBER, TAG, `[EntryFormAbility] failed to deleteFormInfo,
           err: ${JSON.stringify(err as BusinessError)}`);
-      };
+      }
     };
+    
     
     export default class JsCardFormAbility extends FormExtensionAbility {
       onAddForm(want: Want): formBindingData.FormBindingData {
@@ -132,12 +133,14 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
         let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
         return formData;
       }
+    
       onRemoveForm(formId: string): void {
         // 删除卡片实例数据
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
         // 删除之前持久化的卡片实例数据
         deleteFormInfo(formId, this.context);
       }
+    
       onUpdateForm(formId: string): void {
         // 若卡片支持定时更新/定点更新/卡片使用方主动请求更新功能，则卡片提供方需要重写该方法以支持数据更新
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
@@ -150,6 +153,7 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
           hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
         });
       }
+    
       onFormEvent(formId: string, message: string): void {
         // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onFormEvent');
@@ -160,7 +164,9 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
           hilog.info(DOMAIN_NUMBER, TAG, 'message info:' + msg.detail);
         }
       }
+    
     }
+    
     ```
 
 
