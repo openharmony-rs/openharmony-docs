@@ -67,7 +67,7 @@
    });
    ```
 
-3.（可选）拉起通知管理半模态弹窗，向用户再次申请通知授权。
+3. （可选）拉起通知管理半模态弹窗，向用户再次申请通知授权。
 
    <!-- @[reapply_notify_auth_halfmodal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/RequestEnableNotification.ets) -->
     
