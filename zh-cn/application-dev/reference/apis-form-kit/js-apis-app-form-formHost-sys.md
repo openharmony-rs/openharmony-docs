@@ -145,6 +145,10 @@ releaseForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
@@ -194,6 +198,10 @@ releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCallback&lt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -245,6 +253,10 @@ releaseForm(formId: string, isReleaseCache?: boolean): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -805,6 +817,10 @@ enableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
@@ -853,6 +869,10 @@ enableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -908,6 +928,10 @@ disableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
@@ -957,6 +981,10 @@ disableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1713,6 +1741,10 @@ on(type: 'formUninstall', callback: Callback&lt;string&gt;): void
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
@@ -1751,6 +1783,10 @@ off(type: 'formUninstall', callback?: Callback&lt;string&gt;): void
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
@@ -1786,6 +1822,10 @@ notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean, callback: A
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1836,6 +1876,10 @@ notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean): Promise&lt
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1892,6 +1936,10 @@ notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean, c
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
@@ -1941,6 +1989,10 @@ notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean): 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1996,6 +2048,10 @@ shareForm(formId: string, deviceId: string, callback: AsyncCallback&lt;void&gt;)
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
@@ -2046,6 +2102,10 @@ shareForm(formId: string, deviceId: string): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM 和 ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2103,6 +2163,10 @@ notifyFormsPrivacyProtected(formIds: Array\<string>, isProtected: boolean, callb
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
@@ -2151,6 +2215,10 @@ notifyFormsPrivacyProtected(formIds: Array\<string\>, isProtected: boolean): Pro
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2206,6 +2274,10 @@ acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
@@ -2257,6 +2329,10 @@ acquireFormData(formId: string): Promise\<Record\<string, Object>>
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2625,6 +2701,10 @@ setFormsRecyclable(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
@@ -2674,6 +2754,10 @@ setFormsRecyclable(formIds:Array&lt;string&gt;): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2900,6 +2984,10 @@ updateFormLocation(formId: string, location: formInfo.FormLocation): void;
 
 **系统能力**：SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
@@ -3002,6 +3090,10 @@ updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -3058,6 +3150,10 @@ on(type: 'formOverflow', callback: Callback&lt;formInfo.OverflowRequest&gt;): vo
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型       | 必填 | 说明 |
@@ -3097,6 +3193,10 @@ off(type: 'formOverflow', callback?: Callback&lt;formInfo.OverflowRequest&gt;): 
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3138,6 +3238,10 @@ on(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.ChangeScene
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                   |
@@ -3178,6 +3282,10 @@ off(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.changeScen
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
@@ -3217,6 +3325,10 @@ on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): void
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3262,6 +3374,10 @@ off(type: 'getFormRect', callback?: formInfo.GetFormRectInfoCallback): void
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
