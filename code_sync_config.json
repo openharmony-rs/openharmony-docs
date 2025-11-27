@@ -965,16 +965,6 @@
 						"start_line":25
 					},
 					{
-						"end_line":24,
-						"name":"in_app_hsp_004",
-						"start_line":19
-					},
-					{
-						"end_line":41,
-						"name":"in_app_hsp_006",
-						"start_line":37
-					},
-					{
 						"end_line":36,
 						"name":"in_app_hsp_009",
 						"start_line":31
@@ -983,6 +973,16 @@
 						"end_line":42,
 						"name":"in_app_hsp_010",
 						"start_line":16
+					},
+					{
+						"end_line":24,
+						"name":"in_app_hsp_004",
+						"start_line":19
+					},
+					{
+						"end_line":41,
+						"name":"in_app_hsp_006",
+						"start_line":37
 					}
 				]
 			},
@@ -28442,6 +28442,21 @@
 						"end_line":111,
 						"name":"ark_napi_create_delete_reference",
 						"start_line":89
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/quick-start/integrated-hsp.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/IntegratedHsp/build-profile.json5",
+				"functions":[
+					{
+						"end_line":78,
+						"name":"integrated_hsp_002",
+						"start_line":15
 					}
 				]
 			}
