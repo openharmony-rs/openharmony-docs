@@ -5189,6 +5189,8 @@ Allows an application to obtain background task status.
 
 **Authorization mode**: system_grant
 
+**Enable via ACL**: true
+
 **Device**: general devices
 
 **Since**: 23
@@ -5200,6 +5202,8 @@ Allows an application to obtain and set the user authorization status of special
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
+
+**Enable via ACL**: true
 
 **Device**: general devices
 
