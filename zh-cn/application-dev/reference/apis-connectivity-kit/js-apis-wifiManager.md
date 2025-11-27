@@ -663,7 +663,8 @@ addCandidateConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 添加候选网络配置，使用Promise异步回调，使用前先使能WLAN。
 
 - 通过传入[WifiDeviceConfig](#wifideviceconfig9)对象，配置WLAN网络的详细信息，如SSID、密码、安全类型等。
-- 返回一个Promise对象，解析后得到一个数字，表示配置的ID(用于区分、管理不同Wi-Fi配置，其他相关API操作，错误处理调试等)。
+- 返回一个Promise对象，解析后得到一个数字，表示配置的ID(用于区分、管理不同WLAN配置，其他相关API操作，错误处理调试等)。
+
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -1018,7 +1019,7 @@ connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
 
 - 调用此接口时，系统将提示用户确认是否信任并连接到指定的候选网络，通过Promise异步返回用户响应结果。
 - 用户确认是连接过程中的必要步骤，未获得用户信任确认前，连接操作不会执行。
-- 建议在发起连接前先通过startScan接口触发一次WLAN扫描，通过on("wifiScanStateChange")方法监听到扫描结果刷新后再连接，以提高连接成功率。
+- 建议在发起连接前先通过startScan接口触发一次WLAN扫描，通过[wifiManager.on('wifiScanStateChange')](#wifimanageronwifiscanstatechange9)方法监听到扫描结果刷新后再连接，以提高连接成功率。
 
 > **说明：**
 > 调用[wifiManager.connectToCandidateConfig](#wifimanagerconnecttocandidateconfig9)连接候选网络时，不会返回用户响应结果。
@@ -2599,7 +2600,7 @@ stopDiscoverDevices(): void
 
 getMultiLinkedInfo(): &nbsp;Array&lt;WifiLinkedInfo&gt;
 
-获取MLO(Multi-Link Operation，多链路操作) Wi-Fi连接信息。
+获取MLO(Multi-Link Operation，多链路操作)WLAN连接信息。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
