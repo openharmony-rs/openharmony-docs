@@ -12,7 +12,7 @@ This topic walks you through on how to use JSVM-API to convert data between nati
 
 ## Basic Concepts
 
-Strings are a common data type in programming. They are used to store and manipulate text data, and can be employed to build user interface (UI) elements such as tags, buttons, and text boxes, as well as to process user input and validate and format data. Different encodings support different character sets and languages. Major encoding schemes include the following:
+Strings are a common data type in programming. They are used to store and manipulate text data, build user interface (UI) elements such as tags, buttons, and text boxes, process user input, and validate and format data. Different encodings support different character sets and languages. Major encoding schemes include the following:
 
 - ASCII<br>ASCII is one of the earliest character encoding schemes. It uses 7 bits to represent English letters, digits, and some basic symbols. It serves as the foundation for encoding schemes.
 - UTF-8<br>UTF-8 is a variable-length encoding scheme that can represent any Unicode character. It uses 8 bits per character and uses byte sequences of different lengths depending on the range of the character. UTF-8 is widely used for web content.
@@ -112,7 +112,7 @@ CPP code:
 // Define OH_JSVM_CreateStringUtf8.
 static JSVM_Value CreateStringUtf8(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    const char *str = u8"Hello, World!, successes to create UTF-8 string!";
+    const char *str = u8"Hello, World!, succeed in creating UTF-8 string!";
     size_t length = strlen(str);
     JSVM_Value result = nullptr;
     JSVM_Status status = OH_JSVM_CreateStringUtf8(env, str, length, &result);
@@ -143,7 +143,7 @@ const char *srcCallNative = R"JS(
 
 Expected result:
 ```cpp
-JSVM CreateStringUtf8 success: Hello, World!, successes to create UTF-8 string!
+JSVM CreateStringUtf8 success: Hello, World!, succeed in creating UTF-8 string!
 ```
 ### OH_JSVM_GetValueStringUtf16
 
@@ -229,7 +229,7 @@ CPP code:
 // Define OH_JSVM_CreateStringUtf16.
 static JSVM_Value CreateStringUtf16(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    const char16_t *str = u"Hello, World!, successes to create UTF-16 string!";
+    const char16_t *str = u"Hello, World!, succeed in creating UTF-16 string!";
     std::u16string ustr(str);
     size_t length = ustr.length();
     JSVM_Value result = nullptr;
@@ -264,7 +264,7 @@ const char *srcCallNative = R"JS(
 
 Expected result:
 ```cpp
-JSVM CreateStringUtf16 success: Hello, World!, successes to create UTF-16 string!
+JSVM CreateStringUtf16 success: Hello, World!, succeed in creating UTF-16 string!
 ```
 ### OH_JSVM_GetValueStringLatin1
 
@@ -340,7 +340,7 @@ static const int MAX_BUFFER_SIZE = 128;
 // Define OH_JSVM_CreateStringLatin1.
 static JSVM_Value CreateStringLatin1(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    const char *str = "Hello, World! éçñ, successes to create Latin1 string!";
+    const char *str = "Hello, World! éçñ, succeed in creating Latin1 string!";
     size_t length = JSVM_AUTO_LENGTH;
     JSVM_Value result = nullptr;
     JSVM_Status status = OH_JSVM_CreateStringLatin1(env, str, length, &result);
@@ -372,5 +372,5 @@ const char *srcCallNative = R"JS(
 
 Expected result:
 ```cpp
-JSVM CreateStringLatin1 success: Hello, World! éçñ, successes to create Latin1 string!
+JSVM CreateStringLatin1 success: Hello, World! éçñ, succeed in creating Latin1 string!
 ```
