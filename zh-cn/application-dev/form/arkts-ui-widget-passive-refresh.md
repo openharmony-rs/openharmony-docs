@@ -63,7 +63,8 @@
       let formData = {};
       return formBindingData.createFormBindingData(formData);
     }
-  // ···
+  
+    // ...
     onFormEvent(formId: string, message: string): void {
       // 当卡片提供方的postCardAction接口的message事件被触发时调用
       hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${JSON.stringify(message)}`);
@@ -84,10 +85,12 @@
            message: ${(err as BusinessError).message}`);
       }
     }
+  
     onAcquireFormState(want: Want): formInfo.FormState {
       // 卡片使用方查询卡片状态时触发该回调，默认返回初始状态。
       return formInfo.FormState.READY;
     }
+  
   }
   ```
 
