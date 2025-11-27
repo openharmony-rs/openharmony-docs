@@ -15,13 +15,13 @@
 
 ## 触摸事件
 
-触摸事件可以通过通用属性onTouch在组件上接收，该回调响应遵循命中测试规则
+触摸事件可以通过通用属性[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)在组件上接收，该回调响应遵循命中测试规则
 
 触摸事件的上报频率会由系统降采样到与屏幕刷新率一致，详见[重采样与历史点](#重采样与历史点)章节。
 
-对于支持多点触控的输入设备，使用多根手指同时操作可以产生多个触点，全部的触点信息可以通过touches成员得到，而changedTouches会给出当前事件上报时，是哪些触点在产生变化。
+对于支持多点触控的输入设备，使用多根手指同时操作可以产生多个触点，全部的触点信息可以通过[TouchEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent对象说明)的touches成员得到，而changedTouches会给出当前事件上报时，是哪些触点在产生变化。
 
-其他更多的事件信息可以从TouchEvent的基类[BaseEvent](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#baseevent8)中获得。
+其他更多的事件信息可以从[TouchEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent对象说明)的基类[BaseEvent](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#baseevent8)中获得。
 
 
 ## 阻止冒泡

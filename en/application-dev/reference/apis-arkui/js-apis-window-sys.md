@@ -1015,6 +1015,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1300004  | This operation is not accessible.             |
 
 **Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -3092,6 +3093,75 @@ export default class EntryAbility extends UIAbility {
         } catch (err) {
           console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
         }
+      });
+    });
+  }
+}
+```
+
+### setMainWindowRaiseByClickEnabled<sup>23+</sup>
+
+setMainWindowRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
+
+Sets whether to enable the main window to raise itself by click. This API uses a promise to return the result.
+
+By default, clicking the main window raises both the main window and its associated child windows. Disabling this feature (by passing **false**) prevents the main window and its child windows from being raised when the main window is clicked, preserving their current state. However, clicking on a child window still raises both the child window and the main window together.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| enable   | boolean                   | Yes  | Whether to enable the main window to raise itself by click. **true** to enable, **false** otherwise.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | ------------------------------ |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. |
+
+**Example**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.getMainWindow().then((window: window.Window) => {
+      // Load the page corresponding to the main window.
+      windowStage.loadContent('pages/Index', (err) => {
+        if (err.code) {
+          console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in loading the content.');
+        try {
+          let raiseEnabled: boolean = false;
+          let promise = window.setMainWindowRaiseByClickEnabled(raiseEnabled);
+          promise.then(() => {
+            console.info('Succeeded in disabling the raise-by-click function.');
+          })
+        } catch(err) {
+          console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+        };
       });
     });
   }

@@ -776,7 +776,7 @@ scrollTo(options: ScrollOptions)
 
 | 参数名   | 类型 | 必填   | 说明      |
 | ----- | ---- | ---- | --------- |
-| options | [ScrollOptions](#scrolloptions18对象说明) | 是    | 滑动到指定位置的参数。 
+| options | [ScrollOptions](#scrolloptions18对象说明) | 是    | 滑动到指定位置的参数。 |
 
 >  **说明：**
 >

@@ -7,6 +7,10 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct TransientTask_DelaySuspendInfo {...} TransientTask_DelaySuspendInfo
+```
+
 ## Overview
 
 A struct that describes the returned information about a transient task.

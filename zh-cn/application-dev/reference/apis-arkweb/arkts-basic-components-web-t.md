@@ -322,3 +322,31 @@ type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => voi
 **示例：**
 
 完整示例代码参考[onDetectedBlankScreen](./arkts-basic-components-web-events.md#ondetectedblankscreen22)。
+
+## OnCameraCaptureStateChangeCallback<sup>23+</sup>
+
+type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) => void;
+
+当页面摄像头状态发生改变时触发此回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名               | 类型                                        | 必填   | 说明                         |
+| -------------------- | ----------------------------------------------- | ---- | -------------------------------- |
+| event | [CameraCaptureStateChangeInfo](./arkts-basic-components-web-i.md#cameracapturestatechangeinfo23) | 是    | 网页摄像头状态发生改变时，返回原来的状态和改变后的状态。 |
+
+## OnMicrophoneCaptureStateChangeCallback<sup>23+</sup>
+
+type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChangeInfo) => void;
+
+当页面麦克风状态发生改变时触发此回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名               | 类型                                        | 必填   | 说明                         |
+| -------------------- | ----------------------------------------------- | ---- | -------------------------------- |
+| event | [MicrophoneCaptureStateChangeInfo](./arkts-basic-components-web-i.md#microphonecapturestatechangeinfo23) | 是    | 网页麦克风状态发生改变时，返回原来的状态和改变后的状态。 |

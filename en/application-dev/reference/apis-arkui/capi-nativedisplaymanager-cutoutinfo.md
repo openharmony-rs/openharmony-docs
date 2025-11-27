@@ -6,6 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} NativeDisplayManager_CutoutInfo
+```
+
 ## Overview
 
 The struct describes the unusable area of a display, including punch hole, notch, and curved area of a waterfall display.

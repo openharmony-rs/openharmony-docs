@@ -1508,8 +1508,8 @@ struct WebComponent {
         .onClick(() => {
           webview.WebCookieManager.fetchAllCookies(false).then((cookies) => {
             for (let i = 0; i < cookies.length; i++) {
-              console.log('fetchAllCookies cookie[' + i + '].name = ' + cookies[i].name);
-              console.log('fetchAllCookies cookie[' + i + '].value = ' + cookies[i].value);
+              console.info('fetchAllCookies cookie[' + i + '].name = ' + cookies[i].name);
+              console.info('fetchAllCookies cookie[' + i + '].value = ' + cookies[i].value);
             }
           })
         })

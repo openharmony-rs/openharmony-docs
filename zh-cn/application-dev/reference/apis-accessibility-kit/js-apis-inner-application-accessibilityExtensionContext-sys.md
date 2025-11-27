@@ -82,6 +82,55 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 | accessibilityDescription          | string | 否  | 否|超链接文本的辅助功能描述。        |
 | accessibilityLevel          | string | 否  | 否|超链接文本的辅助功能级别。        |
 
+## FocusRule<sup>23+</sup>
+
+type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' | 'checkSelf' | 'checkSelfBypassDescendants'
+
+表示查找可聚焦节点时，如何判断起始节点及其子节点的聚焦能力。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+| 类型            | 说明          |
+| -------- | ------- |
+| 'bypassSelf'       | 表示跳过对起始节点的检查，只检查其子节点。值固定为'bypassSelf'字符串。|
+| 'bypassSelfDescendants'     | 表示跳过对起始节点及其所有子节点的检查。值固定为'bypassSelfDescendants'字符串。|
+| 'checkSelf'     | 表示先检查起始节点是否可以聚焦，如果可以则直接使用；如果不能聚焦，则继续检查其子节点。值固定为'checkSelf'字符串。|
+| 'checkSelfBypassDescendants' | 表示先检查起始节点是否可以聚焦，如果可以则使用；如果不能聚焦，则跳过所有子节点的检查。值固定为'checkSelfBypassDescendants'字符串。|
+
+## FocusCondition<sup>23+</sup>
+
+type FocusCondition = 'forward' | 'backward' | 'findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor'
+
+表示查询可聚焦节点方式。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+| 类型       | 说明      |
+| -------- | ------- |
+| 'forward'       | 表示当前节点下一个可聚焦节点，值固定为'forward' 字符串。|
+| 'backward'     | 表示当前节点上一个可聚焦节点，值固定为'backward'字符串。|
+| 'findLast'     | 表示查找起始节点的子节点中的最后一个节点，值固定为'findLast'字符串。|
+| 'getForwardScrollAncestor' | 表示查找支持前向滚动父组件，值固定为'getForwardScrollAncestor'字符串。|
+| 'getBackwardScrollAncestor'| 表示查找支持后向滚动父组件，值固定为'getBackwardScrollAncestor'字符串。|
+| 'getScrollableAncestor' | 表示查找支持任意滚动父组件，值固定为'getScrollableAncestor'字符串。|
+
+## FocusMoveResult<sup>23+</sup>
+
+查询无障碍节点返回值类型。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+| 名称                  | 类型     | 只读  |可选| 说明                                |
+| ------------------- | ------ | ---- | ----|--------------------------------- |
+| target | Array<[AccessibilityElement](#accessibilityelement12)> | 否 | 否 | 查询返回的无障碍节点。|
+| result | [FocusMoveResultCode](./js-apis-accessibility-sys.md#focusmoveresultcode23)  | 否 | 否 | 查询无障碍节点返回结果类型。|
+
 
 ## startAbility<sup>12+</sup>
 
@@ -1655,6 +1704,57 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
         console.info("findElementById componentId: " + element.componentId);
     }).catch((err: BusinessError) => {
         console.error(`findElementById failed, code: ${err.code}, message: ${err.message}`);
+    })
+}).catch((err: BusinessError) => {
+  console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
+})
+```
+
+### findElementsByCondition<sup>23+</sup>
+
+findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise\<FocusMoveResult>
+
+查询满足条件的可聚焦节点。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 名称 | 类型 | 必填 | 描述 |
+| -------- | ---- | -------- | ------------------------------------------------------------ |
+| rule | [FocusRule](#focusrule23) | 是| 检查当前节点及其子节点的规则。 |
+| condition | [FocusCondition](#focuscondition23) | 是| 表示查询可聚焦节点方式。 |
+
+**返回值：**
+
+| 类型                                      | 描述                   |
+| ---------------------------------------- | --------------------- |
+| Promise\<[FocusMoveResult](#focusmoveresult23)> | Promise对象，返回查询结果对象。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息                                    |
+| ------- | ---------------------------------------- |
+| 201 | Permission verification failed.The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+
+import { AccessibilityElement } from '@kit.AccessibilityKit';
+
+axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
+    focus.findElementsByCondition("bypassSelf", "forward").then((res: FocusMoveResult) => {
+        console.info("findElementsByCondition result: " + res.result);
+    }).catch((err: BusinessError) => {
+        console.error(`findElementsByCondition failed, code: ${err.code}, message: ${err.message}`);
     })
 }).catch((err: BusinessError) => {
   console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);

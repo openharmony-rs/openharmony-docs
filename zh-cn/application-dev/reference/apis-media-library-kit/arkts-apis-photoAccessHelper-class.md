@@ -43,6 +43,7 @@
 | videoDurationFilter<sup>19+</sup> | [VideoDurationFilter](#videodurationfilter19)  | 否   | 是 | 可选择媒体文件视频时长的过滤配置。<br>配置该参数时，仅显示配置视频时长范围的媒体文件，建议提示用户仅支持选择指定时长视频。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | combinedMediaTypeFilter<sup>20+</sup> | Array\<string\> | 否 | 是 | 将过滤条件配置为字符串数组，支持多种类型组合。<br>字符串格式如下：`photoType \| photoSubType1,photoSubType2, … \| mimeType1,mimeType2, …`。<br>- 第1段指定1个photoType，固定为image（图片）或video（视频）。<br>- 第2段指定1~N个photoSubType，多个photoSubType之间使用逗号隔开，之间为“或（OR）”的逻辑取并集；N目前支持最大为1；可选的PhotoSubType包括movingPhoto或“*”（忽略）。<br>- 第3段指定1~N个mimeType，多个mimeType之间使用逗号隔开，之间为“或（OR）”的逻辑取并集；N最大为10，格式类似于[MimeTypeFilter](#mimetypefilter19)。<br>三段过滤的组合取交集处理。<br>支持“非”的逻辑。对于需要排除的类型，进行加括号的方式进行标识；一个string最多可使用1个括号。<br>当应用配置的过滤条件string不满足上述规格时，过滤结果为空。<br>配置该参数时，仅取数组前三个参数进行处理，MIMEType、mimeTypeFilter参数自动失效。<br>**原子化服务API：** 从API version 20开始支持在原子化服务中使用。 |
 | photoViewMimeTypeFileSizeFilters<sup>20+</sup> | Array\<[PhotoViewMimeTypeFileSizeFilter](#photoviewmimetypefilesizefilter20)\>  | 否   | 是 | 指定媒体文件类型和文件大小进行过滤。<br>配置该参数时，仅取数组前三个参数进行处理，MIMETypes和fileSizeFilter自动失效。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| isMovingPhotoBadgeShown<sup>22+</sup> | boolean  | 否   | 是 | 是否在大图浏览模式下展示动态照片图标，true表示展示，false表示不展示，默认为false。<br>若设置为true，[Photoselectresult](#photoselectresult)返回movingPhotoBadgeStates数组，动态照片默认返回状态为MOVING_PHOTO_ENABLED。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 ## PhotoSelectOptions
 
@@ -70,6 +71,7 @@ PhotoSelectOptions extends BaseSelectOptions
 | photoUris       | Array&lt;string&gt; | 否   | 否 | 返回图库选择后的媒体文件的uri数组，此uri数组只能通过临时授权的方式调用[photoAccessHelper.getAssets接口](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
 | isOriginalPhoto       | boolean | 否   | 否 | 返回图库选择后的媒体文件是否为原图。true表示是原图，false表示不是原图，默认值是false。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
 | contextRecoveryInfo<sup>21+</sup>         | [ContextRecoveryInfo](#contextrecoveryinfo21)    | 否   | 否 | 当用户完成选择时返回的photoSelectResult将包含退出picker的上下文信息contextRecoveryInfo，支持应用下次启动PhotoPicker时设置给PhotoSelectOptions用于上次退出时现场的恢复。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| movingPhotoBadgeStates<sup>22+</sup>         | Array\<[MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)\>    | 否   | 否 | 返回图库选择的媒体文件动态照片状态数组。<br>当isMovingPhotoBadgeShown为true时，movingPhotoBadgeStates携带动态照片状态，反之为空。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 ## MimeTypeFilter<sup>19+</sup>
 

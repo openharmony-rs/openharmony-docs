@@ -7,6 +7,10 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
+```
+typedef struct {...} AbilityBase_Element
+```
+
 ## Overview
 
 The struct describes the Element in [Want](capi-want-h.md).

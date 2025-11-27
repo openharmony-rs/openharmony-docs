@@ -6,6 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} NativeDisplayManager_DisplayColorSpace
+```
+
 ## Overview
 
 The struct describes all the color spaces supported by a display.

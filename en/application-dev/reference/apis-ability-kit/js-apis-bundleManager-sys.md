@@ -127,6 +127,20 @@ Enumerates the application information flag, which describes the status between 
 | FLAG_PREINSTALLED_APP<sup>15+</sup>|  0x00000020 | The application is a preinstalled application.|
 | FLAG_PREINSTALLED_APP_UPDATE<sup>15+</sup>|  0x00000040 | The preinstalled application is updated.|
 
+## BundleInstallStatus<sup>23+</sup>
+
+Enumerates the application installation statuses.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
+
+| Name| Value| Description|
+|:----------------:|:---:|:---:|
+| BUNDLE_NOT_EXIST        | 1   | The application is not installed.|
+| BUNDLE_INSTALLING         | 2   | The application is being installed.|
+| BUNDLE_INSTALLED        | 3   | The application has been installed.|
+
 ## bundleManager.getBundleInfo<sup>14+</sup>
 
 getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback: AsyncCallback\<BundleInfo>): void
@@ -6298,6 +6312,59 @@ try {
 } catch (err) {
     let message = (err as BusinessError).message;
     hilog.error(0x0000, 'testTag', 'removeBackupBundleData failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.getBundleInstallStatus<sup>23+</sup>
+
+getBundleInstallStatus(bundleName: string): BundleInstallStatus
+
+Obtains the installation status of a specified application under a given user.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
+
+**Parameters**
+
+| Name    | Type  | Mandatory| Description                      |
+| ----------- | ------ | ---- | ---------------------------- |
+| bundleName  | string | Yes  | Bundle name.|
+
+**Return value**
+
+| Type                                                       | Description                       |
+| ----------------------------------------------------------- | --------------------------- |
+| [BundleInstallStatus](#bundleinstallstatus23) | Application installation status.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                           |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+
+
+**Example**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// Replace the bundle name with the actual one.
+let bundleName: string = 'com.ohos.demo';
+
+try {
+    let bundleInstallStatus = bundleManager.getBundleInstallStatus(bundleName);
+    hilog.info(0x0000, 'testTag', 'bundle install status:' + bundleInstallStatus);
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'getBundleInstallStatus failed. Cause: %{public}s', message);
 }
 ```
 

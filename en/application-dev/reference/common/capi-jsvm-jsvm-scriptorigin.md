@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} JSVM_ScriptOrigin
+```
+
 ## Overview
 
 Defines the original information about a JavaScript code segment, such as the source map path, source file name, and start line/column number in the source file.

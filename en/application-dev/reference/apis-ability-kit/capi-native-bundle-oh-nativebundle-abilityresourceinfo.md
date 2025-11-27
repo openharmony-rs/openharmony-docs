@@ -6,6 +6,10 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+struct OH_NativeBundle_AbilityResourceInfo
+```
+
 ## Overview
 
 The struct describes the ability resource information.
