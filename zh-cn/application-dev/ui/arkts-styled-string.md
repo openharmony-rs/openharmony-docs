@@ -799,7 +799,7 @@
     //Bold样式
     boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
     //创建含段落样式的对象paragraphStyledString1
-    //'app.string.StyledStringImageAttachment_Text_1'资源文件中的value值为"\n品牌相纸 高清冲印30张\n限时直降5.15元 限量增送"
+    //'app.string.StyledStringImageAttachment_Text_1'资源文件中的value值为"\n品牌相纸 高清冲印30张\n限时直降5.15元 限量赠送"
     paragraphStyledString1: MutableStyledString =
       new MutableStyledString(resource.resourceToString($r('app.string.StyledStringImageAttachment_Text_1')), [
       {
