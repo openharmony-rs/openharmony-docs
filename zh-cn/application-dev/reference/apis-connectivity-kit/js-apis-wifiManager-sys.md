@@ -1308,7 +1308,7 @@ try {
 } catch (error) {
 	console.error("failed:" + JSON.stringify(error));
 }
- ```
+```
 
 ## wifiManager.getHotspotBlockList<sup>11+</sup>
 
@@ -1564,7 +1564,7 @@ on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'streamChange', callback?: Callback&lt;number&gt;): void
 
-取消注册WIFI流变更事件。使用callback异步回调。
+取消注册WLAN流变更事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
