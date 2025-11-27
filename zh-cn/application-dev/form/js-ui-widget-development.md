@@ -680,12 +680,12 @@ export default class JsCardFormAbility extends FormExtensionAbility {
     ``` TypeScript
     // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
     const TAG: string = 'JsCardFormAbility';
-    // ···
+    // ...
     const DOMAIN_NUMBER: number = 0xFF00;
-    // ···
+    // ...
     
     export default class JsCardFormAbility extends FormExtensionAbility {
-    // ···
+      // ...
       onFormEvent(formId: string, message: string): void {
         // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onFormEvent');
@@ -696,6 +696,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
           hilog.info(DOMAIN_NUMBER, TAG, 'message info:' + msg.detail);
         }
       }
+    
     }
     ```
 
