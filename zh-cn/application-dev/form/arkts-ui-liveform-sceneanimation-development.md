@@ -263,7 +263,6 @@
               // $r('app.float.font_size')需开发者根据实际情况替换相应的资源或值
               .fontSize($r('app.float.font_size'))
               .fontWeight(FontWeight.Medium)
-              // $r('sys.color.font_primary')需开发者根据实际情况替换相应的资源或值
               .fontColor($r('sys.color.font_primary'))
           }
           .width('100%')
