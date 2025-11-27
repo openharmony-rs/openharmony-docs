@@ -7074,9 +7074,15 @@ on(type: 'windowTitleButtonRectChange', callback: Callback&lt;TitleButtonRect&gt
 
 开启窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
+**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowTitleButtonRectChange](#onwindowtitlebuttonrectchange22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -7109,15 +7115,66 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 })
 ```
 
+## onWindowTitleButtonRectChange<sup>22+</sup>
+
+onWindowTitleButtonRectChange(callback: Callback&lt;TitleButtonRect&gt;): void
+
+开启窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+
+**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowTitleButtonRectChange')](#onwindowtitlebuttonrectchange11)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                         |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[TitleButtonRect](arkts-apis-window-i.md#titlebuttonrect11)&gt; | 是   | 回调函数。返回当前标题栏上的最小化、最大化、关闭按钮矩形区域。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                       |
+| -------- | ------------------------------ |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002  | This window state is abnormal. |
+
+**示例：**
+
+```ts
+windowClass?.setUIContent('pages/WindowPage').then(() => {
+  try {
+    windowClass?.onWindowTitleButtonRectChange((titleButtonRect: window.TitleButtonRect) => {
+      console.info('Succeeded in enabling the listener for window title buttons area changes. Data: ' + JSON.stringify(titleButtonRect));
+    });
+    console.info('Succeeded in enabling the listener for window title buttons area changes');
+  } catch (exception) {
+    let err = exception as BusinessError;
+    console.error(`Failed to enable the listener for window title buttons area changes. Cause code: ${err.code}, message: ${err.message}`);
+  }
+})
+```
+
 ## off('windowTitleButtonRectChange')<sup>11+</sup>
 
 off(type: 'windowTitleButtonRectChange', callback?: Callback&lt;TitleButtonRect&gt;): void
 
 关闭窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
+**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowTitleButtonRectChange](#offwindowtitlebuttonrectchange22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -7152,6 +7209,57 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
     windowClass?.off('windowTitleButtonRectChange');
   } catch (exception) {
     console.error(`Failed to disable the listener for window title buttons area changes. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
+})
+```
+
+## offWindowTitleButtonRectChange<sup>22+</sup>
+
+offWindowTitleButtonRectChange(callback?: Callback&lt;TitleButtonRect&gt;): void
+
+关闭窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+
+**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowTitleButtonRectChange')](#offwindowtitlebuttonrectchange11)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                         |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[TitleButtonRect](arkts-apis-window-i.md#titlebuttonrect11)&gt; | 否   | 回调函数。返回当前标题栏上的最小化、最大化、关闭按钮矩形区域。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                       |
+| -------- | ------------------------------ |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002  | This window state is abnormal. |
+
+**示例：**
+
+```ts
+windowClass?.setUIContent('pages/WindowPage').then(() => {
+  const callback = (titleButtonRect: window.TitleButtonRect) => {
+    // ...
+  }
+  try {
+    // 通过on接口开启监听
+    windowClass?.onWindowTitleButtonRectChange(callback);
+    // 关闭指定callback的监听
+    windowClass?.offWindowTitleButtonRectChange(callback);
+    // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+    windowClass?.offWindowTitleButtonRectChange();
+    console.info('Succeeded in disabling the listener for window title buttons area changes');
+  } catch (exception) {
+    let err = exception as BusinessError;
+    console.error(`Failed to disable the listener for window title buttons area changes. Cause code: ${err.code}, message: ${err.message}`);
   }
 })
 ```
@@ -7634,11 +7742,17 @@ on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&g
 
 该接口触发的回调函数是异步执行。子窗口的同步关闭事件监听参考[on('subWindowClose')](#onsubwindowclose12)方法。主窗口的同步关闭事件监听参考[on('windowStageClose')](arkts-apis-window-WindowStage.md#onwindowstageclose14)方法。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowWillClose](#onwindowwillclose22)。
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -7687,17 +7801,89 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## onWindowWillClose<sup>22+</sup>
+
+onWindowWillClose(callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
+
+开启主窗口或子窗口关闭事件的监听。此监听仅能通过系统提供的窗口标题栏关闭按键触发，其余关闭窗口的方式不触发回调。
+
+该接口触发的回调函数是异步执行。子窗口的同步关闭事件监听参考[onSubWindowClose](#onsubwindowclose22)方法。主窗口的同步关闭事件监听参考[onWindowStageClose](arkts-apis-window-WindowStage.md#onwindowstageclose22)方法。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowWillClose')](#onwindowwillclose15)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 是   | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise&lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300004 | Unauthorized operation. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    const callback = () => {
+      // ...
+      return new Promise<boolean>((resolve, reject) => {
+        // 是否关闭该窗口
+        let result: boolean = true;
+        resolve(result);
+      });
+    }
+    try {
+      let windowClass = windowStage.getMainWindowSync();
+      windowClass.onWindowWillClose(callback);
+      console.info('Succeeded in on the window will close');
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
+```
+
 ## off('windowWillClose')<sup>15+</sup>
 
 off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
 
 用于关闭主窗口或子窗口关闭事件的监听。
 
+**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowWillClose](#offwindowwillclose22)。
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -7744,6 +7930,73 @@ export default class EntryAbility extends UIAbility {
       windowClass.off('windowWillClose');
     } catch (exception) {
       console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
+## offWindowWillClose<sup>22+</sup>
+
+offWindowWillClose(callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
+
+用于关闭主窗口或子窗口关闭事件的监听。
+
+**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowWillClose')](#offwindowwillclose15)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 否   | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise&lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300004 | Unauthorized operation. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+      const callback = () => {
+        // ...
+        return new Promise<boolean>((resolve, reject) => {
+          // 是否关闭该窗口
+          let result: boolean = true;
+          resolve(result);
+        });
+      }
+    try {
+      let windowClass = windowStage.getMainWindowSync();
+      windowClass.onWindowWillClose(callback);
+      windowClass.offWindowWillClose(callback);
+      // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+      windowClass.offWindowWillClose();
+      console.info('Succeeded in off the window will close');
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
