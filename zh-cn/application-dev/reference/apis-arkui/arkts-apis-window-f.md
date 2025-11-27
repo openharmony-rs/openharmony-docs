@@ -576,19 +576,21 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
-    // 创建子窗
-    windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
-      let storage: LocalStorage = new LocalStorage();
-      subWindow.loadContent('pages/Index', storage, (err: BusinessError): void => {
-        subWindow.showWindow().then(() => {
-          let mainWindow = windowStage.getMainWindowSync();
-          let mainWindowId = mainWindow.getWindowProperties().id;
-          let subWindowId = subWindow.getWindowProperties().id;
-          // 切换焦点
-          window.shiftAppWindowFocus(subWindowId as int, mainWindowId as int).then((): void => {
-            console.info('Succeeded in shifting app window focus');
-          }).catch((err: BusinessError): void => {
-            console.error(`Failed to shift app window focus. Cause code: ${err.code}, message: ${err.message}`);
+     windowStage.loadContent('pages/Index', (err) => {
+      // 创建子窗
+      windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
+        let storage: LocalStorage = new LocalStorage();
+        subWindow.loadContent('pages/Index', storage, (err: BusinessError): void => {
+          subWindow.showWindow().then(() => {
+            let mainWindow = windowStage.getMainWindowSync();
+            let mainWindowId = mainWindow.getWindowProperties().id;
+            let subWindowId = subWindow.getWindowProperties().id;
+            // 切换焦点
+            window.shiftAppWindowFocus(subWindowId as int, mainWindowId as int).then((): void => {
+              console.info('Succeeded in shifting app window focus');
+            }).catch((err: BusinessError): void => {
+              console.error(`Failed to shift app window focus. Cause code: ${err.code}, message: ${err.message}`);
+            });
           });
         });
       });
