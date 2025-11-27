@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >**NOTE**
 >
@@ -48,8 +48,8 @@ Defines the AI image analysis type. If it is not set, subject recognition and te
 | Name    | Value   | Description          |
 | -------- | ----- | -------- |
 | SUBJECT | 0  | Subject recognition.|
-| TEXT | -  | Text recognition.|
-| OBJECT_LOOKUP | -  | Object lookup.|
+| TEXT | 1  | Text recognition.|
+| OBJECT_LOOKUP | 2  | Object lookup.|
 
 ## ImageAIOptions<sup>12+</sup>
 
@@ -108,38 +108,13 @@ Obtains the analysis types supported by the corresponding component.
 
 Defines the content transition effect.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-### IDENTITY<sup>21+</sup>
-
-static get IDENTITY(): ContentTransitionEffect
-
-Applies no transition effect during content switching.
+### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Return value**
-
-| Type                                      | Description                                           |
-| ------------------------------------------ | ----------------------------------------------- |
-| [ContentTransitionEffect](#contenttransitioneffect21)   | Content transition effect. |
-
-### OPACITY<sup>21+</sup>
-
-static get OPACITY(): ContentTransitionEffect
-
-Applies a fade-in/fade-out transition animation during content switching.
-
-**Atomic service API**: This API can be used in atomic services since API version 21.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Return value**
-
-| Type                                      | Description                                           |
-| ------------------------------------------ | ----------------------------------------------- |
-| [ContentTransitionEffect](#contenttransitioneffect21)   | Content transition effect. |
+| Name| Type| Read-Only| Optional|Description|
+| -------- | ---------- | -------- | -------- | -------- | 
+| IDENTITY | [ContentTransitionEffect](#contenttransitioneffect21) | Yes| No| Applies no transition effect during content switching.|
+| OPACITY | [ContentTransitionEffect](#contenttransitioneffect21) | Yes| No| Applies a fade-in/fade-out transition animation during content switching.|

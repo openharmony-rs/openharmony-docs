@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **ImageAnimator** component enables images to be played a frame-by-frame basis. The list of images to be played as well as the duration of each image can be configured.
 
@@ -129,7 +129,9 @@ preDecode(value: number)
 
 Sets the number of images to be pre-decoded.
 
-This API is deprecated since API version 9.
+> **NOTE**
+> 
+> This API is supported since API version 7 and deprecated since API version 9. Currently, no substitute is available.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

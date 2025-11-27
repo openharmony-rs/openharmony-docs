@@ -4,7 +4,7 @@
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 <!--deprecated_code_no_check-->
 
 **AbilityComponent** is a container for independently displaying an ability.
@@ -19,7 +19,7 @@
 
 ## Constraints
 
-**AbilityComponent** is rendered independently and cannot be overlaid with other display content.
+**AbilityComponent** is rendered at an independent layer and cannot be overlaid by other display content.
 
 **AbilityComponent** cannot process input events. Events are directly distributed to the internal ability for processing without passing through the current ability.
 

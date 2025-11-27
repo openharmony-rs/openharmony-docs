@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can bind a full-screen modal to a component through the **bindContentCover** attribute. Better yet, with the **ModalTransition** parameter, you can apply a transition effect for when the component is inserted or deleted.
 
@@ -14,13 +14,17 @@ You can bind a full-screen modal to a component through the **bindContentCover**
 >
 >  Switching between landscape and portrait modes is not supported.
 >
->  Route hopping is not supported.
+>  Routing is not supported.
 
 ## bindContentCover
 
 bindContentCover(isShow: boolean, builder: CustomBuilder, type?: ModalTransition): T
 
 Binds a modal to the component, which can be displayed when the component is touched. The content of the modal is customizable. The transition type can be set to none, slide-up and slide-down animation, and opacity gradient animation.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -67,7 +71,7 @@ Binds a modal to the component, which can be displayed when the component is tou
 ## ContentCoverOptions
 Inherited from [BindOptions](ts-universal-attributes-sheet-transition.md#bindoptions).
 
-Full-screen modal page content options.
+Defines full-screen modal page content options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,7 +80,7 @@ Full-screen modal page content options.
 | modalTransition | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | No| Yes   | System transition mode of the modal.<br> Default value: **ModalTransition.DEFAULT**.<br>**NOTE**<br> This property has no effect when it is set together with **transition**.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
 | onWillDismiss<sup>12+</sup> | Callback&lt;[DismissContentCoverAction](#dismisscontentcoveraction12)&gt; | No| Yes  | Callback invoked to prevent a user attempt to dismiss the modal.<br>**NOTE**<br>After this callback is registered, touching the back button does not immediately dismiss the modal. You can use the **reason** parameter to determine the type of operation that triggers the dismiss and decide whether to dismiss the modal based on the reason. Nesting **onWillDismiss** callbacks is not allowed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10) | No| Yes  | Custom transition mode of the modal.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| enableSafeArea<sup>20+</sup> | boolean  | No| Yes | Indicates whether the modal page adapts to the safe area. The value true indicates that the modal page adapts to the safe area, and the content is limited in the safe area to avoid the navigation bar and status bar. The value false indicates that the modal page does not adapt to the safe area, and the style is the same as the previous style. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| enableSafeArea<sup>20+</sup> | boolean  | No| Yes | Whether the modal page adapts to the safe area. **true**: adapts to the safe area (content avoids navigation and status bars). **false**: no safe area adaptation (retains the legacy behavior). The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## DismissContentCoverAction<sup>12+</sup>
 
@@ -239,16 +243,16 @@ struct ModalTransitionExample {
         modalTransition: ModalTransition.NONE,
         backgroundColor: Color.Orange,
         onWillAppear: () => {
-          console.log("BindContentCover onWillAppear.");
+          console.info("BindContentCover onWillAppear.");
         },
         onAppear: () => {
-          console.log("BindContentCover onAppear.");
+          console.info("BindContentCover onAppear.");
         },
         onWillDisappear: () => {
-          console.log("BindContentCover onWillDisappear.");
+          console.info("BindContentCover onWillDisappear.");
         },
         onDisappear: () => {
-          console.log("BindContentCover onDisappear.");
+          console.info("BindContentCover onDisappear.");
         }
       })
 
@@ -278,16 +282,16 @@ struct ModalTransitionExample {
           modalTransition: ModalTransition.NONE,
           backgroundColor: Color.Pink,
           onWillAppear: () => {
-            console.log("BindContentCover onWillAppear.");
+            console.info("BindContentCover onWillAppear.");
           },
           onAppear: () => {
-            console.log("BindContentCover onAppear.");
+            console.info("BindContentCover onAppear.");
           },
           onWillDisappear: () => {
-            console.log("BindContentCover onWillDisappear.");
+            console.info("BindContentCover onWillDisappear.");
           },
           onDisappear: () => {
-            console.log("BindContentCover onDisappear.");
+            console.info("BindContentCover onDisappear.");
           }
         })
     }
@@ -341,16 +345,16 @@ struct ModalTransitionExample {
         modalTransition: ModalTransition.DEFAULT,
         backgroundColor: Color.Gray,
         onWillAppear: () => {
-          console.log("BindContentCover onWillAppear.");
+          console.info("BindContentCover onWillAppear.");
         },
         onAppear: () => {
-          console.log("BindContentCover onAppear.");
+          console.info("BindContentCover onAppear.");
         },
         onWillDisappear: () => {
-          console.log("BindContentCover onWillDisappear.");
+          console.info("BindContentCover onWillDisappear.");
         },
         onDisappear: () => {
-          console.log("BindContentCover onDisappear.");
+          console.info("BindContentCover onDisappear.");
         }
       })
 
@@ -378,16 +382,16 @@ struct ModalTransitionExample {
           modalTransition: ModalTransition.DEFAULT,
           backgroundColor: Color.Pink,
           onWillAppear: () => {
-            console.log("BindContentCover onWillAppear.");
+            console.info("BindContentCover onWillAppear.");
           },
           onAppear: () => {
-            console.log("BindContentCover onAppear.");
+            console.info("BindContentCover onAppear.");
           },
           onWillDisappear: () => {
-            console.log("BindContentCover onWillDisappear.");
+            console.info("BindContentCover onWillDisappear.");
           },
           onDisappear: () => {
-            console.log("BindContentCover onDisappear.");
+            console.info("BindContentCover onDisappear.");
           }
         })
     }
@@ -440,16 +444,16 @@ struct ModalTransitionExample {
         modalTransition: ModalTransition.ALPHA,
         backgroundColor: Color.Gray,
         onWillAppear: () => {
-          console.log("BindContentCover onWillAppear.");
+          console.info("BindContentCover onWillAppear.");
         },
         onAppear: () => {
-          console.log("BindContentCover onAppear.");
+          console.info("BindContentCover onAppear.");
         },
         onWillDisappear: () => {
-          console.log("BindContentCover onWillDisappear.");
+          console.info("BindContentCover onWillDisappear.");
         },
         onDisappear: () => {
-          console.log("BindContentCover onDisappear.");
+          console.info("BindContentCover onDisappear.");
         }
       })
 
@@ -477,16 +481,16 @@ struct ModalTransitionExample {
           modalTransition: ModalTransition.ALPHA,
           backgroundColor: Color.Pink,
           onWillAppear: () => {
-            console.log("BindContentCover onWillAppear.");
+            console.info("BindContentCover onWillAppear.");
           },
           onAppear: () => {
-            console.log("BindContentCover onAppear.");
+            console.info("BindContentCover onAppear.");
           },
           onWillDisappear: () => {
-            console.log("BindContentCover onWillDisappear.");
+            console.info("BindContentCover onWillDisappear.");
           },
           onDisappear: () => {
-            console.log("BindContentCover onDisappear.");
+            console.info("BindContentCover onDisappear.");
           }
         })
     }
@@ -545,7 +549,7 @@ struct ModalTransitionExample {
             transition: TransitionEffect.SLIDE.animation({ duration: 5000, curve: Curve.LinearOutSlowIn }),
             onWillDismiss: ((dismissContentCoverAction: DismissContentCoverAction) => {
               if (dismissContentCoverAction.reason == DismissReason.PRESS_BACK) {
-                console.log("BindContentCover dismiss reason is back pressed");
+                console.info("BindContentCover dismiss reason is back pressed");
               }
               dismissContentCoverAction.dismiss();
             }),
@@ -593,16 +597,16 @@ struct ModalTransitionExample {
             ),
             onWillDismiss: ((dismissContentCoverAction: DismissContentCoverAction) => {
               if (dismissContentCoverAction.reason == DismissReason.PRESS_BACK) {
-                console.log("back pressed");
+                console.info("back pressed");
               }
               dismissContentCoverAction.dismiss();
             }),
             onAppear: () => {
-              console.log("BindContentCover onAppear.");
+              console.info("BindContentCover onAppear.");
             },
             onDisappear: () => {
               this.isShow = false;
-              console.log("BindContentCover onDisappear.");
+              console.info("BindContentCover onDisappear.");
             }
           })
     }
@@ -618,7 +622,7 @@ struct ModalTransitionExample {
 
 ### Example 6: Setting the Safe Area for the Modal
 
-This example demonstrates the content effect after the modal mode is adapted to the safe area by setting enableSafeArea to true. The background color of the modal container is light blue, the content color is gray, and the content is laid out in the safe area.
+This example demonstrates the content layout after safe area adaptation is enabled for the modal by setting **enableSafeArea** to **true**, supported since API version 20. The modal container has a light blue background, with gray content laid out within the safe area.
 
 ```ts
 // xxx.ets

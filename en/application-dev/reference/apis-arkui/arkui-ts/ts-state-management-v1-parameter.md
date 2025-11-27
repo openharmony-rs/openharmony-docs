@@ -20,6 +20,6 @@
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description    |
-| ------ | ---- | ---- | ------------ |
-|allowOverride|string|No|Whether \@Provide can be overridden. By default, overriding is not supported.|
+| Name| Type| Read-Only| Optional  | Description  |
+| ------ | ---- | ---- | ------------ | ------------ |
+|allowOverride|string|No|Yes|Whether \@Provide can be overridden. By default, overriding is not supported.|
