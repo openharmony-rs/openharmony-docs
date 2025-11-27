@@ -1905,13 +1905,12 @@ SymbolSpan样式选项。
 
 设置builder的偏移位置和样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 类型      | 只读 | 可选   | 说明                                    |
 | ------ | ------ | ---- | ----------|--------------------------- |
-| offset | number | 否 | 是    | 添加builder的位置。省略或者为异常值时，添加到所有内容的最后。 |
+| offset | number | 否 | 是    | 添加builder的位置。省略或者为异常值时，添加到所有内容的最后。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| accessibilitySpanOptions<sup>23+</sup> | [AccessibilitySpanOptions](ts-text-common.md#accessibilityspanoptions23对象说明) | 否 | 是    | 无障碍朗读功能属性。缺省时，取[AccessibilitySpanOptions](ts-text-common.md#accessibilityspanoptions23对象说明)的默认值。  <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
 ## RichEditorSpan<sup>12+</sup>
 
@@ -3929,7 +3928,11 @@ struct Index {
 
         Button("add span")
           .onClick(() => {
-            let num = this.controller.addBuilderSpan(this.my_builder, { offset: this.my_offset });
+            let num = this.controller.addBuilderSpan(this.my_builder, 
+              { 
+                offset: this.my_offset, 
+                accessibilitySpanOptions: { accessibilityText:"hello", accessibilityDescription:"world", accessibilityLevel:"yes" } 
+              });
             console.info('addBuilderSpan return ' + num);
           })
         Button("add image")
