@@ -98,7 +98,7 @@ function exclusiveMutexLockTestWithEAWorker() {
   sharedJob.Await();
 
   for (let worker of workers) {
-    worker.quitSafely();
+    worker.quit();
   }
 
   console.info("Excepted count 10000, the real output is : " + count);
