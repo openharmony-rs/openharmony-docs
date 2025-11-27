@@ -449,9 +449,82 @@ struct Index {
 
 该示例通过配置symbolStartIcon、symbolEndIcon实现symbol类型图标的菜单。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 import { SymbolGlyphModifier } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State startIconModifier: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_mic')).fontSize('24vp');
+  @State endIconModifier: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_trash')).fontSize('24vp');
+  @State selectIconModifier: SymbolGlyphModifier =
+    new SymbolGlyphModifier($r('sys.symbol.checkmark')).fontSize('24vp');
+  @State select: boolean = true;
+
+  @Builder
+  SubMenu() {
+    Menu() {
+      MenuItem({ content: "复制", labelInfo: "Ctrl+C" })
+      MenuItem({ content: "粘贴", labelInfo: "Ctrl+V" })
+    }
+  }
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ symbolStartIcon: this.startIconModifier, content: "菜单选项" })
+      MenuItem({ symbolStartIcon: this.startIconModifier, content: "菜单选项" })
+        .enabled(false)
+      MenuItem({
+        symbolStartIcon: this.startIconModifier,
+        content: "菜单选项",
+        symbolEndIcon: this.endIconModifier,
+        builder: (): void => this.SubMenu()
+      })
+      MenuItemGroup({ header: '小标题' }) {
+        MenuItem({
+          symbolStartIcon: this.startIconModifier,
+          content: "菜单选项",
+          symbolEndIcon: this.endIconModifier,
+          builder: (): void => this.SubMenu()
+        })
+        MenuItem({
+          symbolStartIcon: this.startIconModifier,
+          content: "菜单选项",
+          symbolEndIcon: this.endIconModifier,
+          builder: (): void => this.SubMenu()
+        })
+      }
+      MenuItem({
+        content: "菜单选项",
+      }).selected(this.select).selectIcon(this.selectIconModifier)
+    }
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text('click to show menu')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .bindMenu(this.MyMenu)
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Text, Builder, Menu, MenuItem, $r, SymbolGlyphModifier, MenuItemGroup, Row, FontWeight }from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -523,8 +596,73 @@ struct Index {
 
 该示例通过配置subMenuExpandSymbol实现对Menu子菜单展开符号配置颜色。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State startIconModifier: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_star'))
+  @State endIconModifier: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_mic'))
+  @State expandSymbolModifier: SymbolGlyphModifier =
+    new SymbolGlyphModifier($r('sys.symbol.chevron_down')).fontColor([Color.Red]).fontSize('24vp')
+
+  @Builder
+  SubMenu() {
+    Menu() {
+      MenuItem({
+        symbolStartIcon: this.startIconModifier,
+        content: "图标"
+      })
+      MenuItem({
+        symbolStartIcon: this.startIconModifier,
+        content: "列表"
+      })
+    }.backgroundColor(Color.Grey)
+  }
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({
+        symbolStartIcon: this.startIconModifier,
+        symbolEndIcon: this.endIconModifier,
+        content: "新建文件夹",
+        builder: (): void => this.SubMenu(),
+      })
+      MenuItem({
+        symbolStartIcon: this.startIconModifier,
+        content: "排序方式",
+        builder: (): void => this.SubMenu(),
+      })
+        .borderRadius('300.00vp')
+      MenuItem({
+        symbolStartIcon: this.startIconModifier,
+        content: "查看方式",
+        builder: (): void => this.SubMenu(),
+      })
+    }
+    .subMenuExpandingMode(SubMenuExpandingMode.EMBEDDED_EXPAND)
+    .backgroundColor(Color.Grey)
+    .subMenuExpandSymbol(this.expandSymbolModifier)
+  }
+
+  build() {
+    Button('click to show menu')
+      .position({ top: 40, left: 40 })
+      .bindMenu(this.MyMenu)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Text, Builder, Color, Menu, MenuItem, $r, SubMenuExpandingMode, Button, SymbolGlyphModifier, MenuItemGroup, Row, FontWeight }from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component

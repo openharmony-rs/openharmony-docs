@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 接口
@@ -168,6 +170,10 @@ getState(): PromptActionCommonState
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -183,6 +189,10 @@ type PromptActionCommonState = promptAction.CommonState
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -619,6 +629,8 @@ struct CustomDialogUser {
 
 该示例实现了在CustomDialogController中调用getState获取弹窗当前状态。
 
+Ark-Dyn示例：
+
 ```ts
 // xxx.ets
 @CustomDialog
@@ -670,6 +682,80 @@ struct CustomDialogUser {
         }).backgroundColor(0x317aff)
     }.width('100%').margin({ top: 5 })
     .backgroundColor(this.bg)
+  }
+}
+```
+
+Ark-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, ClickEvent, BusinessError, Column, ColumnOptions, Button, Text, Color, Image, CustomDialog, wrapBuilder, CustomDialogController } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import hilog from '@ohos.hilog';
+
+@CustomDialog
+struct CustomDialogExample {
+  controller?: CustomDialogController
+
+  build() {
+    Column() {
+      Button("点我查询弹窗状态:通过自定义组件自带controller")
+        .onClick(() => {
+          let controller = this.getDialogController()
+          if (controller != undefined) {
+            console.info('state: ', controller.getState())
+          } else {
+            console.info('state: no exist')
+          }
+        }).margin(20)
+      Button('点我查询弹窗状态:通过CustomDialogController')
+        .onClick(() => {
+          let controller = this.controller
+          if (controller != undefined) {
+            console.info('state: ', controller.getState())
+          } else {
+            console.info('state: no exist')
+          }
+        }).margin(20)
+      Button('点我关闭弹窗')
+        .onClick(() => {
+          let controller = this.getDialogController()
+          if (controller != undefined) {
+            controller.close()
+          } else {
+            console.info('state: no exist')
+          }
+        }).margin(20)
+    }
+  }
+}
+
+@Entry
+@Component
+struct MyStateSample {
+  dialogController: CustomDialogController = new CustomDialogController({
+    builder: CustomDialogExample(),
+  }) as CustomDialogController
+
+  build() {
+    Column() {
+      Text(`CustomDialogController`)
+        .fontSize(15)
+        .backgroundColor(Color.Orange)
+        .margin(3)
+        .padding(3)
+        .borderWidth(1.0)
+        .onClick(() => {
+          setTimeout(() => {
+            this.dialogController.open()
+          });
+        })
+    }.borderWidth(1.0)
+    .padding(10)
+    .width("100%")
+    .backgroundColor(Color.Pink)
+
   }
 }
 ```
