@@ -4,7 +4,7 @@
 <!--Owner: @xiangyuan6-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 As a child component of the **Text** component, the **SymbolSpan** component is used to display small icons.
 
@@ -50,6 +50,10 @@ fontColor(value: Array&lt;ResourceColor&gt;)
 
 Sets the color of the symbol span.
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -67,6 +71,10 @@ Sets the color of the symbol span.
 fontSize(value: number | string | Resource)
 
 Sets the size of the symbol span. When using the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -88,6 +96,10 @@ Sets the weight of the symbol span. For the number type, the value ranges from 1
 
 The **sys.symbol.ohos_lungs** icon does not support font weight setting.
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -105,6 +117,10 @@ The **sys.symbol.ohos_lungs** icon does not support font weight setting.
 renderingStrategy(value: SymbolRenderingStrategy)
 
 Sets the rendering strategy of the symbol span.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -127,6 +143,10 @@ The figure below shows the effects of different rendering strategies.
 effectStrategy(value: SymbolEffectStrategy)
 
 Sets the symbol effect of the symbol span.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -285,6 +305,11 @@ struct Index {
         Text() {
           SymbolSpan(undefined).attributeModifier(this.modifier)
         }
+
+        Button('Change SymbolSpanModifier')
+          .onClick(() => {
+            this.modifier = new SymbolSpanModifier($r("sys.symbol.ohos_trash")).fontColor([Color.Red]).fontSize(100);
+          })
       }
       .width('100%')
     }
@@ -292,4 +317,4 @@ struct Index {
   }
 }
 ```
-![SymbolSpanModifier](figures/symbolSpanModifier.png)
+![SymbolSpanModifier](figures/symbolSpanModifier.gif)

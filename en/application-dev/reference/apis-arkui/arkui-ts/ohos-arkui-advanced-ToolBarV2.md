@@ -267,6 +267,10 @@ backgroundColor(backgroundColor: ColorMetrics): ToolBarV2Modifier
 
 Sets the background color of the toolbar. By overriding this API, you can implement custom drawing for the background color of the toolbar.
 
+> **NOTE**
+>
+> After this API is called, the toolbar background color does not automatically switch when the system changes between dark and light modes.
+
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full

@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can use the custom gesture judgment APIs to specify whether to respond to specific gestures when they are being recognized.
 
@@ -47,14 +47,14 @@ Basic event type.
 | target   | [EventTarget](ts-universal-events-click.md#eventtarget8) | No| No| Object that triggers the gesture event.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | timestamp| number | No| No| Timestamp of the event. It is the interval between the time when the event is triggered and the time when the system starts.<br>Unit: ns<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | source   | [SourceType](ts-gesture-settings.md#sourcetype8) | No| No| Type of the event input device.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| pressure<sup>9+</sup> | number | No| No| Press pressure.<br>Default value: **0**<br>Value range: [0, 1], typical value 0.913168, where higher values indicate greater pressure.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| pressure<sup>9+</sup> | number | No| No| Press pressure.<br>Default value: **0**<br>Value range: [0, 1], typical value 0.913168, where higher values indicate greater pressure. On some devices, the value may be greater than 1 due to different hardware parameter configurations.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
 | tiltX<sup>9+</sup> | number | No| No| Angle between the projection of the stylus on the device plane and the x-axis.<br>Default value: **0**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | tiltY<sup>9+</sup> | number | No| No|Angle between the projection of the stylus on the device plane and the y-axis.<br>Default value: **0**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | rollAngle<sup>17+</sup> | number | No| Yes| Angle between the stylus and the device's surface.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 17.<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
 | sourceTool<sup>9+</sup> | [SourceTool](ts-gesture-settings.md#sourcetool9) | No| No| Event input source type.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| axisHorizontal<sup>12+</sup> | number | No| Yes| Horizontal axis value.<br>Default value: **0**<br>**NOTE**<br>Currently, this event can be obtained only when the pan gesture is triggered by scrolling the mouse wheel or sliding two fingers on the touchpad, or the pinch gesture is triggered by pressing Ctrl and scrolling the mouse wheel.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| axisVertical<sup>12+</sup> | number | No| Yes| Vertical axis value.<br>Default value: **0**<br>**NOTE**<br>Currently, this event can be obtained only when the pan gesture is triggered by scrolling the mouse wheel or sliding two fingers on the touchpad, or the pinch gesture is triggered by pressing Ctrl and scrolling the mouse wheel.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| axisPinch<sup>21+</sup> | number | No| Yes|  Two-finger zoom ratio.<br>Default value: **0**<br>**NOTE**<br>This event can be obtained only when the pinch gesture is triggered by zooming in or out with two fingers on the touchpad or in the axis event.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 21.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
+| axisHorizontal<sup>12+</sup> | number | No| Yes| Horizontal axis value.<br>Default value: **0**<br>**NOTE**<br>This value is available only when the pan gesture is triggered by mouse wheel scrolling or two-finger touchpad sliding, or when the pinch gesture is triggered by Ctrl + mouse wheel scrolling.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| axisVertical<sup>12+</sup> | number | No| Yes| Vertical axis value.<br>Default value: **0**<br>**NOTE**<br>This value is available only when the pan gesture is triggered by mouse wheel scrolling or two-finger touchpad sliding, or when the pinch gesture is triggered by Ctrl + mouse wheel scrolling.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| axisPinch<sup>21+</sup> | number | No| Yes|  Two-finger pinch scaling ratio.<br>Default value: **0**<br>**NOTE**<br>This value is available only when a pinch gesture is triggered by a two-finger scaling operation on a touchpad or during axis events.<br>In other scenarios, the default value is returned. The scaling ratio represents the ratio of the current two-finger distance to the initial two-finger distance when first pressed during a pinch gesture.<br>Value range: [0, +∞).<br>**Widget capability**: This API can be used in ArkTS widgets since API version 21.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | deviceId<sup>12+</sup> | number | No| Yes| ID of the input device that triggers the event.<br>Default value: **0**<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | targetDisplayId<sup>15+</sup> | number | No| Yes| ID of the screen where the event occurs.<br>Default value: **0**<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 
@@ -147,6 +147,13 @@ struct Index {
           this.message = 'pan1'
         })
     )
+    .gesture(
+      PinchGesture()
+        .tag("pinch1")// Tag for the pinch gesture.
+        .onActionStart(() => {
+          this.message = 'pinch1'
+        })
+    )
     .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
       // If the gesture type is a long press gesture, convert the event to a long press gesture event.
       if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
@@ -162,6 +169,11 @@ struct Index {
       if (gestureInfo.type == GestureControl.GestureType.PAN_GESTURE) {
         let panEvent = event as PanGestureEvent;
         console.info("velocity " + panEvent.velocity)
+      }
+      // If the gesture type is a pinch gesture, convert the event to a pinch event.
+      if (gestureInfo.type == GestureControl.GestureType.PINCH_GESTURE) {
+        let pinchEvent = event as PinchGestureEvent;
+        console.info("axisPinch " + pinchEvent.axisPinch)
       }
       // Custom criteria
       if (gestureInfo.type == GestureControl.GestureType.DRAG) {

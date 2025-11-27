@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 When performing route switching using the [router](../js-apis-router.md), you can customize entrance and exit transition animations between pages by implementing the [pageTransition](ts-custom-component-lifecycle.md#pagetransition9) API. For details, see [Page Transition Animation](../../../ui/arkts-page-transition-animation.md).
 

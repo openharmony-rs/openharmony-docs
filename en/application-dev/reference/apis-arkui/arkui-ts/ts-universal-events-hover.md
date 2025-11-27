@@ -63,7 +63,7 @@ Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | --------------- | ---------- | ----- | ----- | -------------------- |
 | x<sup>15+</sup> |number|No|Yes|X-coordinate of the mouse cursor or stylus position relative to the upper left corner of the current component.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
 | y<sup>15+</sup> |number|No|Yes|Y-coordinate of the mouse cursor or stylus position relative to the upper left corner of the current component.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
