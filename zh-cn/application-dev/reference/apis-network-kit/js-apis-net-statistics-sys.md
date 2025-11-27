@@ -568,7 +568,6 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 | 名称        | 类型                                            | 只读 |可选| 说明           |	
-
 |-----------|-----------------------------------------------|----|---|--------------|	
 | undefined | [uid:number]: [NetStatsInfo](#netstatsinfo10) | 否  |否 |所有应用的历史流量信息。 |
 
