@@ -1869,7 +1869,7 @@ struct Index {
             ];
             // 调用证书管理，打开证书选择框
             certMgrDialog.openAuthorizeDialog(this.context, { certTypes: certTypes })
-              .then((data: certMgrDialog.CertIndex) => {
+              .then((data: certMgrDialog.CertReference) => {
                 console.info(`openAuthorizeDialog request cred auth success`)
                 // 通知web选择的为ukey证书
                 event.handler.confirm(data.index, CredentialType.CREDENTIAL_UKEY);
