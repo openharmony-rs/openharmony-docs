@@ -394,7 +394,7 @@
              .onError((error) => {
                hilog.error(DOMAIN_NUMBER, TAG, `onError: ${JSON.stringify(error)}`)
              })
-           // ···
+           // ...
            Button($r('app.string.button_update'))
              .onClick(() => {
                hilog.info(DOMAIN_NUMBER, TAG, `click to check requestForm, formId: ${this.formId}`);
