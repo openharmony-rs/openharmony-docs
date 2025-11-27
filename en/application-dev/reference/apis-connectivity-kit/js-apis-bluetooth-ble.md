@@ -159,8 +159,6 @@ Obtains the BLE devices that have been connected to the local device via GATT ac
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
-
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
 **Parameters**
@@ -4108,7 +4106,7 @@ try {
 
 stopScan(): Promise&lt;void&gt;
 
-Stops an ongoing BLE scan.<br>
+Stops an ongoing BLE scan. This API uses a promise to return the result.<br>
 - This API works for a scan initiated by calling [startScan](#startscan15).<br>
 - Call this API to stop the Bluetooth scan if device discovery is no longer needed.
 
@@ -4723,8 +4721,6 @@ Enumerates the reasons of GATT disconnection.
 ## BleProfile<sup>21+</sup>
 
 Enumerates the profile types of the local device.
-
-**Atomic service API**: This API can be used in atomic services since API version 21.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
