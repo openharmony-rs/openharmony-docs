@@ -209,7 +209,13 @@ console.info("Worker priority: " + priority);
 ## quit
 quit(): void
 
-立即停止EAWorker实例，清空当前队列中的任务并退出任务循环，主线程禁止调用退出。
+等待当前所有的任务完成后，停止EAWorker实例，销毁当前实例的任务循环。
+
+> **说明：**
+>
+> - 主线程禁止调用：主线程不能quit。
+> - 禁止重复调用：每个EAWorker实例只能退出一次。
+> - 启动前禁止调用：必须在调用start()方法启动EAWorker实例后才能执行quit()操作。
 
 **ArkTS版本：** 本接口仅支持ArkTS1.2。
 
@@ -217,19 +223,6 @@ quit(): void
 ```ts
 let worker = new EAWorker();
 worker.quit();
-```
-
-## quitSafely
-quitSafely(): void
-
-安全停止EAWorker实例，等待当前队列中任务完成后销毁当前实例的任务循环，主线程禁止退出。
-
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
-
-**示例：**
-```ts
-let worker = new EAWorker();
-worker.quitSafely();
 ```
 
 ## setUncaughtExceptionHandler
