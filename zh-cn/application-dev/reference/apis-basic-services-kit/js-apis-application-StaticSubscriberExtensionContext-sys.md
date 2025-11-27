@@ -64,7 +64,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void;
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 16000001 | The specified ability does not exist.                        |
 | 16000002 | Incorrect ability type.                                      |
-| 16000004 | Cannot start an invisible component.                           |
+| 16000004 | Cannot start an invisible component.                         |
 | 16000005 | The specified process does not have the permission.          |
 | 16000006 | Cross-user operations are not allowed.                       |
 | 16000008 | The crowdtesting application expires.                        |
@@ -127,6 +127,10 @@ startAbility(want: Want): Promise&lt;void&gt;;
 
 **系统应用**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：22
+
 **参数：**
 
 | 参数名 | 类型                                | 必填 | 说明                    |
@@ -148,7 +152,7 @@ startAbility(want: Want): Promise&lt;void&gt;;
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 16000001 | The specified ability does not exist.                        |
 | 16000002 | Incorrect ability type.                                      |
-| 16000004 | Cannot start an invisible component.                           |
+| 16000004 | Cannot start an invisible component.                         |
 | 16000005 | The specified process does not have the permission.          |
 | 16000006 | Cross-user operations are not allowed.                       |
 | 16000008 | The crowdtesting application expires.                        |
@@ -162,6 +166,7 @@ startAbility(want: Want): Promise&lt;void&gt;;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
 import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
@@ -192,4 +197,36 @@ class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbilit
     }
   }
 }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+
+let want: Want = {
+  bundleName: "com.example.myapp",
+  abilityName: "MyAbility"
+};
+
+class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
+  onReceiveEvent(event: commonEventManager.CommonEventData) {
+    console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
+    try {
+      this.context.startAbility(want)
+        .then(() => {
+          // 执行正常业务
+          console.info('startAbility succeed');
+        })
+        .catch((error) => {
+          // 处理业务逻辑错误
+          console.error(`startAbility failed, error.code: ${(error.code)}, error.message: ${(error.message)}.`);
+        });
+    } catch (paramError) {
+      // 处理入参错误异常
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+    }
+  }
   ```
