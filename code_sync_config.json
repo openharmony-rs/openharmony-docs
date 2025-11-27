@@ -28061,6 +28061,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/ManageNotificationBadges.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ManageNotificationBadges.ets",
 				"functions":[
 					{
 						"end_line":23,
@@ -28096,6 +28100,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/CancelNotification.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/CancelNotification.ets",
 				"functions":[
 					{
 						"end_line":23,
@@ -28116,6 +28124,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/ClearDuplicateNotifications.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ClearDuplicateNotifications.ets",
 				"functions":[
 					{
 						"end_line":19,
@@ -28136,6 +28148,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/RequestEnableNotification.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/RequestEnableNotification.ets",
 				"functions":[
 					{
 						"end_line":24,
@@ -28161,6 +28177,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/ManageNotificationWays.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ManageNotificationWays.ets",
 				"functions":[
 					{
 						"end_line":23,
@@ -28191,6 +28211,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/UpdateNotification.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/UpdateNotification.ets",
 				"functions":[
 					{
 						"end_line":23,
@@ -28216,6 +28240,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/AddWantAgent.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/AddWantAgent.ets",
 				"functions":[
 					{
 						"end_line":24,
@@ -28251,6 +28279,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/PublishNotification.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/PublishNotification.ets",
 				"functions":[
 					{
 						"end_line":23,
@@ -28276,6 +28308,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/PublishNotification.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/PublishNotification.ets",
 				"functions":[
 					{
 						"end_line":23,
