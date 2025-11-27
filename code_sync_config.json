@@ -1985,9 +1985,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":23,
+						"end_line":25,
 						"name":"vector_include",
-						"start_line":18
+						"start_line":19
 					},
 					{
 						"end_line":137,
@@ -2000,14 +2000,14 @@
 						"start_line":139
 					},
 					{
-						"end_line":104,
+						"end_line":182,
 						"name":"vector_OH_Rdb_ExecuteV2_insert",
-						"start_line":88
+						"start_line":165
 					},
 					{
-						"end_line":126,
+						"end_line":205,
 						"name":"vector_OH_Rdb_ExecuteV2_update_and_delete",
-						"start_line":106
+						"start_line":184
 					},
 					{
 						"end_line":83,
@@ -2015,14 +2015,14 @@
 						"start_line":27
 					},
 					{
-						"end_line":174,
+						"end_line":255,
 						"name":"vector_OH_Rdb_ExecuteV2_create_view",
-						"start_line":166
+						"start_line":247
 					},
 					{
-						"end_line":186,
+						"end_line":267,
 						"name":"vector_OH_Rdb_ExecuteV2_create_index",
-						"start_line":176
+						"start_line":257
 					},
 					{
 						"end_line":192,
@@ -3165,7 +3165,7 @@
 						"start_line":88
 					},
 					{
-						"end_line":83,
+						"end_line":84,
 						"name":"rdb_OH_Rdb_Delete",
 						"start_line":70
 					},
