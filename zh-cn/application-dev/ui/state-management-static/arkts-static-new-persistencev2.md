@@ -47,17 +47,17 @@ PersistenceV2支持应用的[主线程](../../application-models/thread-model-st
 
 ## 使用限制
 
-1、不支持非built-in类型，如PixelMap、NativePointer、ArrayList等Native类型。
+1、不支持非built-in类型，如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型，使用会编译报错。
 
 2、单个key支持数据大小约8k，过大会导致持久化失败。
 
-3、持久化的数据必须是class对象，不支持容器类型（如Array、Set、Map），不支持built-in的构造对象（如Date、Number），不支持持久化基本类型（如string、number、boolean）。如果需要持久化非class对象，建议使用[prefrence](../../database/preferences-guidelines.md)进行数据持久化。
+3、持久化的数据必须是class对象，不支持容器类型（如Array、Set、Map），不支持built-in的构造对象（如Date），不支持持久化基本类型（如string、number、boolean），使用会运行时报错。如果需要持久化非class对象，建议使用[prefrence](../../database/preferences-guidelines.md)进行数据持久化。
 
-4、不支持循环引用的对象。
+4、不支持循环引用的对象，使用会编译报错。
 
 5、不宜大量持久化数据，可能会导致页面卡顿。
 
-6、connect和globalConnect不建议混用，如果混用，key不能一样，否则应用crash。
+6、connect和globalConnect不建议混用，如果混用，key必须不一致，否则会运行时报错。
 
 7、PersistenceV2必须与UI实例关联，持久化操作需在UI实例初始化完成后调用（即[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)回调触发后）。
 
@@ -490,7 +490,7 @@ struct Index {
     areaMode: contextConstant.AreaMode.EL1 // EL1-EL5代表5种加密等级。
   }, toJsonPerson, fromJsonPerson)!;
   @Local refresh: number = 0;
-  // 在ArkTS-Sta中，写在全局的逻辑代码不会默认执行。开发者可将需要执行的逻辑代码移致static代码块中，以达到与ArkTs-Dyn一样的效果。
+  // 在ArkTS-Sta中，全局的逻辑代码不会默认执行。开发者可将需要执行的逻辑代码移至static代码块中，以达到与ArkTS-Dyn一样的效果。
   static {
     move();
   }

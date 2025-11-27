@@ -67,7 +67,7 @@ class SampleClass {
   @Trace p: number = 0;
 }
 
-const ISampleType = Type.of(new SampleClass());
+const ISampleType = Type.from<SampleClass>();
 
 // 将key为key_as1、value为new SampleClass()对象的键值对存储到内存中，并赋值给as1
 const as1: SampleClass = AppStorageV2.connect<SampleClass>(ISampleType, 'key_as1', () => new SampleClass())!;
@@ -84,7 +84,7 @@ static connect\<T extends object\>(
 
 >**说明：**
 >
->- ttype使用[Type](../apis-arkts/js-apis-util.md#type10).of(object)方法获得。
+>- ttype使用[Type](../apis-arkts/js-apis-util.md#type10).from\<classname\>()方法获得。
 >
 >- 未传入key时，默认使用ttype的name作为key。
 >
@@ -118,7 +118,7 @@ class SampleClass {
   @Trace p: number = 0;
 }
 
-const ISampleType = Type.of(new SampleClass());
+const ISampleType = Type.from<SampleClass>();
 
 // 将ttype为SampleClass的Type、value为new SampleClass()对象的键值对存储到内存中，并赋值给as2
 const as2: SampleClass | undefined = AppStorageV2.connect<SampleClass>(ISampleType, () => new SampleClass());
@@ -153,14 +153,14 @@ static remove(keyOrType: string | Type): void
 
 import { AppStorageV2 } from '@ohos.arkui.stateManagement';
 
-// 假设AppStorageV2中存在keyOrType为key_as2的键，从AppStorageV2中删除该键值对数据
-AppStorageV2.remove('key_as2');
+// 假设AppStorageV2中存在keyOrType为key_as1的键，从AppStorageV2中删除该键值对数据
+AppStorageV2.remove('key_as1');
 
 // 假设AppStorageV2中存在keyOrType为SampleClass的Type的键，从AppStorageV2中删除该键值对数据
-AppStorageV2.remove(Type.of(new SampleClass()));
+AppStorageV2.remove(Type.from<SampleClass>());
 
-// 假设AppStorageV2中不存在keyOrType为key_as1的键，报警告
-AppStorageV2.remove('key_as1');
+// 假设AppStorageV2中不存在keyOrType为key_as2的键，打印warn日志警告
+AppStorageV2.remove('key_as2');
 ```
 ### keys<sup>22+</sup>
 
@@ -227,7 +227,7 @@ static connect\<T extends object\>(
 > **说明：**
 >
 >
-> 1、ttype使用[Type](../apis-arkts/js-apis-util.md#type10).of(object)或Type.from\<classname\>()方法获得。
+> 1、ttype使用Type.from\<classname\>()方法获得。
 >
 > 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
 >
@@ -331,7 +331,7 @@ const p1: Person = PersistenceV2.connect<Person>(
 
 > **说明：**
 >
-> 1、ttype使用[Type](../apis-arkts/js-apis-util.md#type10).of(object)或Type.from\<classname\>()方法获得。
+> 1、ttype使用Type.from\<classname\>()方法获得。
 >
 > 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
 >
@@ -431,7 +431,7 @@ const p1: Person = PersistenceV2.connect<Person>(
 
 > **说明：**
 >
-> 1、ttype使用[Type](../apis-arkts/js-apis-util.md#type10).of(object)或Type.from\<classname\>()方法获得。
+> 1、ttype使用Type.from\<classname\>()方法获得。
 >
 > 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
 > 
@@ -519,7 +519,7 @@ const p1: Person = PersistenceV2.connect<Person>(
 
 > **说明：**
 >
-> 1、ttype使用[Type](../apis-arkts/js-apis-util.md#type10).of(object)或Type.from\<classname\>()方法获得。
+> 1、ttype使用Type.from\<classname\>()方法获得。
 >
 > 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
 >
@@ -617,7 +617,7 @@ static globalConnect\<T extends object\>(connectOptions: ConnectOptions\<T\>,
 >
 > 5、globalConnect使用同一个key但设置了不同的加密级别，数据为第一个使用globalConnect的加密级别，并且PersistenceV2中的数据也会存入最先使用key的加密级别。
 >
-> 6、connect和globalConnect不建议混用，因为数据副本路径不同，如果混用，则key不可以一样，否则会crash。
+> 6、connect和globalConnect不建议混用，因为数据副本路径不同，如果混用，则key必须不一致，否则会运行时报错。
 >
 > 7、EL5加密要想生效，需要开发者在module.json中配置字段ohos.permission.PROTECT_SCREEN_LOCK_DATA，使用说明见[声明权限](../../security/AccessToken/declare-permissions.md)。
 
@@ -724,7 +724,7 @@ static globalConnect\<T extends SerializableObject\>(connectOptions: ConnectOpti
 >
 > 5、globalConnect使用同一个key但设置了不同的加密级别，数据为第一个使用globalConnect的加密级别，并且PersistenceV2中的数据也会存入最先使用key的加密级别。
 >
-> 6、connect和globalConnect不建议混用，因为数据副本路径不同，如果混用，则key不可以一样，否则会crash。
+> 6、connect和globalConnect不建议混用，因为数据副本路径不同，如果混用，则key必须不一致，否则会运行时报错。
 >
 > 7、EL5加密要想生效，需要开发者在module.json中配置字段ohos.permission.PROTECT_SCREEN_LOCK_DATA，使用说明见[声明权限](../../security/AccessToken/declare-permissions.md)。
 
@@ -795,7 +795,7 @@ static remove(keyOrType: string | Type): void
 
 >**说明：**
 >
->删除PersistenceV2中不存在的key会报警告。
+>删除PersistenceV2中不存在的key会打印warn日志警告。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -813,14 +813,14 @@ static remove(keyOrType: string | Type): void
 
 import { PersistenceV2 } from '@ohos.arkui.stateManagement';
 
-// 假设PersistenceV2中存在keyOrType为key_as2的键，从PersistenceV2中删除该键值对数据
-PersistenceV2.remove('key_as2');
-
-// 假设PersistenceV2中存在keyOrType为SampleClass的Type的键，从PersistenceV2中删除该键值对数据
-PersistenceV2.remove(Type.of(new SampleClass()));
-
-// 假设PersistenceV2中不存在keyOrType为key_as1的键，报警告
+// 假设PersistenceV2中存在keyOrType为key_as1的键，从PersistenceV2中删除该键值对数据
 PersistenceV2.remove('key_as1');
+
+// 假设PersistenceV2中存在keyOrType为SampleClass的键，从PersistenceV2中删除该键值对数据
+PersistenceV2.remove(Type.from<SampleClass>());
+
+// 假设PersistenceV2中不存在keyOrType为key_as2的键，打印warn日志警告
+PersistenceV2.remove('key_as2');
 ```
 
 ### keys<sup>22+</sup>
@@ -870,7 +870,7 @@ static&nbsp;save\<T\>(keyOrType:&nbsp;string&nbsp;|&nbsp;Type\<T\>):&nbsp;void
 >
 >如果使用[PersistenceV2](../../ui/state-management-static/arkts-static-new-persistencev2.md)的connect或globalConnect接口存储数据时，没有设置enableAutoSave参数，或设置为true，则自动持久化存储数据；否则，需要调用该接口持久化对应key的数据。
 >
->手动持久化当前内存中不处于connect状态的key是无意义的。
+>手动持久化PersistenceV2中不存在的key会打印warn日志警告。
 
 **示例：**
 
@@ -882,14 +882,14 @@ class SampleClass {
   @Trace p: number = 0;
 }
 
-// 假设PersistenceV2中存在key为key_as2的键，持久化该键值对数据
-PersistenceV2.save('key_as2');
-
-// 假设PersistenceV2中存在key为SampleClass的键，持久化该键值对数据
-PersistenceV2.save(Type.of(new SampleClass()));
-
-// 假设PersistenceV2中不存在key为key_as1的键，无意义的操作
+// 假设PersistenceV2中存在keyOrType为key_as1的键，持久化该键值对数据
 PersistenceV2.save('key_as1');
+
+// 假设PersistenceV2中存在keyOrType为SampleClass的键，持久化该键值对数据
+PersistenceV2.save(Type.from<SampleClass>());
+
+// 假设PersistenceV2中不存在keyOrType为key_as2的键，打印warn日志警告
+PersistenceV2.save('key_as2');
 ```
 
 ### notifyOnError<sup>22+</sup>
