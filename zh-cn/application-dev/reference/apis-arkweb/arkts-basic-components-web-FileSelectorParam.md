@@ -93,3 +93,59 @@ getMimeTypes(): Array\<string\>
 | 类型              | 说明        |
 | --------------- | --------- |
 | Array\<string\> | 返回文件MIME类型。 |
+
+## getSuggestedName<sup>23+</sup>
+
+getSuggestedName(): string
+
+获取建议选择的文件名。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`suggestedName`。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型     | 说明         |
+| ------ | ---------- |
+| string | 返回建议文件名。 |
+
+## getDefaultPath<sup>23+</sup>
+
+getDefaultPath(): string
+
+获取文件选择器默认起始路径。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`startIn`。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型     | 说明         |
+| ------ | ---------- |
+| string | 返回默认路径。<br>当前端startIn设置为公共目录`downloads`、`pictures`时，要注意应分别转化为鸿蒙系统下的`download`和`images`。 |
+
+## getDescriptions<sup>23+</sup>
+
+getDescriptions(): Array\<string\>
+
+获取各组文件类型的描述。为允许的文件类型类别的可选描述。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`description`。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型              | 说明        |
+| --------------- | --------- |
+| Array\<string\> | 返回文件类型的描述数组。 |
+
+## isAcceptAllOptionExcluded<sup>23+</sup>
+
+isAcceptAllOptionExcluded(): boolean
+
+获取文件选择器是否支持选项（\*\/\*），即所有文件。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`excludeAcceptAllOption`。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型      | 说明           |
+| ------- | ------------ |
+| boolean | 返回是否包含一个不应用任何文件类型过滤器的选项。<br>true表示不包含，false表示包含，默认为false。 |
