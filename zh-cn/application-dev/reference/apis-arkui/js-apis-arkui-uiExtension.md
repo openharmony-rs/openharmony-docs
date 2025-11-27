@@ -338,7 +338,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ### createSubWindowWithOptions
 
-createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptions, isHideFollowUIExt: boolean): Promise&lt;window.Window&gt;
+createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptions): Promise&lt;window.Window&gt;
 
 创建该WindowProxy实例下的子窗口，使用Promise异步回调。
 
@@ -354,7 +354,6 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 | ------ | ------ | ---- | -------------- |
 | name   | string | 是   | 子窗口的名字。 |
 | subWindowOptions | [window.SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | 是   | 子窗口参数。  |
-| isHideFollowUIExt<sup>22+</sup> | boolean | 否   | 子窗是否在组件（EmbeddedComponent或UIExtensionComponent）隐藏时，进行退后台，true表示组件（EmbeddedComponent或UIExtensionComponent）隐藏时，子窗退后台，默认值为false |
 
 **返回值：**
 
@@ -389,6 +388,89 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
     };
     // 创建子窗口
     extensionWindow.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
+      .then((subWindow: window.Window) => {
+        subWindow.setUIContent('pages/Index', (err, data) =>{
+          if (err && err.code != 0) {
+            return;
+          }
+          subWindow?.resize(300, 300, (err, data)=>{
+            if (err && err.code != 0) {
+              return;
+            }
+            subWindow?.moveWindowTo(100, 100, (err, data)=>{
+              if (err && err.code != 0) {
+                return;
+              }
+              subWindow?.showWindow((err, data) => {
+                if (err && err.code == 0) {
+                  console.info(`The subwindow has been shown!`);
+                } else {
+                  console.error(`Failed to show the subwindow!`);
+                }
+              });
+            });
+          });
+        });
+      }).catch((error: BusinessError) => {
+        console.error(`Create subwindow failed. Cause code: ${error.code}, message: ${error.message}`);
+      })
+  }
+}
+```
+
+### createSubWindowWithOptions<sup>22+</sup>
+
+createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptions, isFollowCreatorLifecycle: boolean): Promise&lt;window.Window&gt;
+
+创建该WindowProxy实例下的子窗口，使用Promise异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明           |
+| ------ | ------ | ---- | -------------- |
+| name   | string | 是   | 子窗口的名字。 |
+| subWindowOptions | [window.SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | 是   | 子窗口参数。  |
+| isFollowCreatorLifecycle | boolean | 是   | 子窗生命周期是否跟组件（EmbeddedComponent或UIExtensionComponent）保持同步。true表示该组件隐藏时，子窗隐藏，该组件显示时子窗显示，false表示子窗的显隐不跟随该组件变化|
+
+**返回值：**
+
+| 类型                             | 说明                                             |
+| -------------------------------- | ------------------------------------------------ |
+| Promise&lt;[window.Window](arkts-apis-window-Window.md)&gt; | Promise对象。返回当前WindowProxy下创建的子窗口对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+
+**示例：**
+
+```ts
+// ExtensionProvider.ts
+import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends EmbeddedUIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionWindow = session.getUIExtensionWindowProxy();
+    const subWindowOpts: window.SubWindowOptions = {
+      title: 'This is a subwindow',
+      decorEnabled: true
+    };
+    // 创建子窗口
+    extensionWindow.createSubWindowWithOptions('subWindowForHost', subWindowOpts, false)
       .then((subWindow: window.Window) => {
         subWindow.setUIContent('pages/Index', (err, data) =>{
           if (err && err.code != 0) {
