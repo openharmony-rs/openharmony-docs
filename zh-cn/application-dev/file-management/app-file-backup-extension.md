@@ -216,9 +216,7 @@ class BackupExt extends BackupExtensionAbility {
 | fullBackupOnly       | 布尔值     | 否   | 是否使用应用默认恢复目录，默认值为false。当值为true时，恢复数据时会通过临时路径进行缓存，临时路径可通过[backupDir](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md#属性)获取。当值为false或者不配置该字段时，恢复数据会以'/'为根目录解压数据。 |
 | restoreDeps          | 字符串     | 否   | **不推荐使用**，应用恢复时依赖其他应用数据，默认值为""，需要配置依赖应用名称。当前仅支持最多一个依赖项。配置的依赖仅在一次恢复任务上下文生效，如果一次恢复任务中没有检测到依赖应用，则忽略该依赖描述继续执行恢复任务。**依赖应用未恢复或者恢复失败都会导致本应用恢复失败**。 |
 | extraInfo            | json串     | 否   | 额外信息可通过该字段传递。             |
-| compatibleDirMapping            | 对象数组     | 否   | 该字段可以实现备份时按A路径进行备份，恢复时按B路径进行恢复。数组子项为对象，包含2个key，backupDir（待备份路径）和restoreDir（待恢复路径）             |
-
-**说明：**
+| compatibleDirMapping            | 对象数组     | 否   | 该字段可以实现备份时按A路径进行备份，恢复时按B路径进行恢复。数组子项为对象，包含2个key，backupDir（待备份路径）和restoreDir（待恢复路径）。<br> **说明**：从API version 23开始，支持该字段。             |
 
 **1. 有关fullBackupOnly字段的说明**
 
@@ -227,24 +225,25 @@ class BackupExt extends BackupExtensionAbility {
 
 开发者可根据自身的业务场景，选择对应的恢复数据方式。
 
-示例：
-假设应用的数据备份路径为：**data/storage/el2/base/files/A/** 。那么在恢复时，如果配置了fullBackupOnly为false，数据会被直接解压到：**/data/storage/el2/base/files/A/** 目录下；如果配置了fullBackupOnly为true，数据则会被解压到：**临时路径[backupDir](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md) + /restore/data/storage/el2/base/files/A/** 目录下。
+**示例：**
+假设应用的数据备份路径为：**data/storage/el2/base/files/A/** 。那么在恢复时，如果配置了fullBackupOnly为false，数据会被直接解压到：**/data/storage/el2/base/files/A/** 目录下；如果配置了fullBackupOnly为true，数据则会被解压到：**临时路径backupDir + /restore/data/storage/el2/base/files/A/** 目录下。
 
 **2. 有关compatibleDirMapping字段的说明**  
-其内容的数组长度不能超过1000
-子项的restoreDir配置内容必须包含在includes的配置中，否则不生效，且该字段不支持通配符
-子项的backupDir和restoreDir不能包含||||字符串
+其内容的数组长度不能超过1000。  
+子项的restoreDir配置内容必须包含在includes的配置中，否则不生效，且该字段不支持通配符。  
+子项的backupDir和restoreDir不能包含\|\|\|\|字符串。
 
-**配置示例**：
+**字段配置示例**：  
 "compatibleDirMapping": [
     {"backupDir": "/data/storage/el2/base/files/nulldir", "restoreDir": "/data/storage/el2/base/files/restore/nulldir"},
     {"backupDir": "/data/storage/el2/base/files/zerofile", "restoreDir": "/data/storage/el2/base/files/restore/zerofile"}
-]
-另外增加这个配置项还无法生效，需要在onBackupEx的实现中以json字符串格式返回需要开启的路径列表，路径需要与backup_config中配置的restoreDir内容一致，但可以不用全部包含，可以为其子集，可以返回空表示不开启路径映射
-返回值内容由应用自行控制。
+]  
+另外增加这个配置项还无法生效，需要在onBackupEx的实现中以json字符串格式返回需要开启的路径列表。  
+路径列表内容需要与backup_config中compatibleDirMapping字段配置的restoreDir内容一致，不用全部包含，可以为其子集，也可以返回空表示不开启路径映射。
 
-**返回值示例**：
-{"compatibleDirMapping" ： ["/data/storage/el2/base/files/restore/nulldir", "/data/storage/el2/base/files/restore/zerofile"] }
+**onBackupEx返回值示例**：  
+{"compatibleDirMapping" ： ["/data/storage/el2/base/files/restore/nulldir", "/data/storage/el2/base/files/restore/zerofile"] }  
+
 
 **includes支持的路径清单列表如下：**
 
