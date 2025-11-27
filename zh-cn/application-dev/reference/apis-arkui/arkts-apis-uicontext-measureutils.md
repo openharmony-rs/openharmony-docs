@@ -145,7 +145,7 @@ struct TextDemo {
   @State numLenghth: number = 0;
   @State numUnocde: number = 0;
   private fullText: string =
-    '这是一个超长文本示例，当文本内容超过三行时，超出部😀😀分会显示省略号。点击省略号可展开全部内容。此处为测试文本，用于验证多行文本截断效果。';
+    '这是一个超长文本示例，当文本内容超过三行时，超出部分会显示省略号。点击省略号可展开全部内容。此处为测试文本，用于验证多行文本截断效果。';
   private maxLines: number = 3;
 
   aboutToAppear() {
