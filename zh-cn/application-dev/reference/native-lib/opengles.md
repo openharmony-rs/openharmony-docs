@@ -17,7 +17,7 @@ OpenGL ES 3.2
 
 ## 引入OpenGL能力
 
-如果开发者需要使用OpenGL的相关能力，需要添加相关动态链接库和头文件。
+如果开发者使用OpenGL的相关能力，需要添加相关动态链接库和头文件。
 
 **添加动态链接库**
 
@@ -296,7 +296,7 @@ void Update(float angleXOffset, float angleYOffset)
 EGLDisplay eglGetDisplay(EGLNativeDisplayType display_id);
 ```
 
-eglGetDisplay是EGL库中的一个函数，函数返回EGLDisplay对象，它代表了与渲染目标设备的连接，如果显示连接不可用，eglGetDisplay将返回 EGL_NO_DISPLAY，这个错误表示显示连接不可用。
+eglGetDisplay是EGL库中的函数，它返回EGLDisplay对象用于表示与渲染目标设备的连接。当显示连接不可用时，将返回EGL_NO_DISPLAY表示连接不可用。
 
 display_id 参数通常是一个表示显示设备的本地显示类型，EGLNativeDisplayType是为了匹配窗口显示类型，在各个平台有不同的定义。如果您只是希望使用默认的显示设备，那么您可以直接使用 EGL_DEFAULT_DISPLAY，而不需要显式地指定 display_id。
 
@@ -307,7 +307,7 @@ EGLBoolean eglInitialize(EGLDisplay display,    // 指定EGL显示连接
                          EGLint *majorVersion,  // 指定EGL实现返回的主版本号，可能为NULL
                          EGLint *minorVersion); // 指定EGL实现返回的次版本号，可能为NULL
 ```
-这个函数用于初始化EGL内部数据结构，将返回EGL的版本号，并将其保存在majorVersion、minorVersion。
+这个函数用于初始化EGL内部数据结构，将返回EGL的版本号，并将其保存在majorVersion和minorVersion中。
 如果初始化成功，则返回EGL_TRUE，否则返回EGL_FALSE。另外还可以通过EGLint eglGetError()，查询EGL的错误状态：
 
 - EGL_BAD_DISPLAY：表示没有指定有效的EGLDisplay。
@@ -317,7 +317,7 @@ EGLBoolean eglInitialize(EGLDisplay display,    // 指定EGL显示连接
 ### 使用eglChooseConfig确定渲染配置
 EGL初始化成功之后，需要确定可用渲染表面的类型和配置，目前支持两种方法：
 - 可以指定一组需要的配置，使用eglChooseConfig使EGL推荐最佳配置。
-一般情况下使用此种方法，因为这样更容易获得最佳配置。
+当没有特殊配置需求时建议使用此种方法，因为这样更容易获得最佳配置。
 
     ```cpp
     EGLBoolean eglChooseConfig(EGLDisplay dpy,     // EGL显示连接句柄，标识了要进行配置选择的显示连接。
@@ -338,7 +338,7 @@ EGL初始化成功之后，需要确定可用渲染表面的类型和配置，�
     };
     eglChooseConfig(mEGLDisplay, attribList, &mEGLConfig, 1, &configsNum);
     ```
-    在调用eglChooseConfig函数后，系统将根据指定的配置属性attribList返回满足需求的EGL配置，这些配置将存储在mEGLConfig参数中。示例代码中的configsNum参数传入值为1，表明mEGLConfig数组的大小为1，即仅能保存一组可用配置。尽管此设置限制了返回配置的数量，但在大多数应用场景下已能满足基本需求。同时，configsNum参数将实际保存满足指定属性的配置总数，为开发者提供完整的可选配置数量信息
+    在调用eglChooseConfig函数后，系统将根据指定的配置属性attribList返回满足需求的EGL配置，这些配置将存储在mEGLConfig参数中。示例代码中的configsNum参数传入值为1，表明mEGLConfig数组的大小为1，即仅能保存一组可用配置。尽管此设置限制了返回配置的数量，但在大多数应用场景下已能满足基本需求。同时，configsNum参数将实际保存满足指定属性的配置总数，为开发者提供完整的可选配置数量信息。
 
 - 也可以使用eglGetConfigs查询支持的所有配置，并使用eglGetConfigAttrib筛选需要的配置。
   以下提供使用此种方法得到满足需求的配置，具体可见示例：
@@ -407,7 +407,7 @@ EGL初始化成功之后，需要确定可用渲染表面的类型和配置，�
          }
   ```
   
-  如上所示遍历configs每个配置 ，使用eglGetConfigAttrib查询该配置下特定属性的值，将该值保存在第4个参数中，并判断值是否是自己需要的，如果需要则保存该配置，以待使用。调用成功则返EGL_TRUE，调用失败则返回EGL_FALSE。 如果返回EGL_FALSE，可以使用eglGetError查询失败的原因，如果返回EGL_BAD ATTRIBUTE则attribute不是有效的属性。
+  如上所示遍历configs每个配置，使用eglGetConfigAttrib查询该配置下特定属性的值，将该值保存在第4个参数中，并判断值是否是自己需要的，如果需要则保存该配置，以待使用。调用成功则返回EGL_TRUE，调用失败则返回EGL_FALSE。 如果返回EGL_FALSE，可以使用eglGetError查询失败的原因，如果返回EGL_BAD ATTRIBUTE则attribute不是有效的属性。
   
   ```cpp
   EGLBoolean eglGetConfigAttrib(EGLDisplay display,     //EGL 显示连接句柄，标识了要进行配置选择的显示连接
@@ -434,7 +434,7 @@ EGL_SINGLE_BUFFER // 表示渲染表面将只有一个渲染缓冲区，在绘�
 EGL_BACK_BUFFER   // 表示渲染表面将具有双缓冲区，即前缓冲区和后缓冲区。在绘制完成后，渲染缓冲区中的内容首先会绘制到后缓冲区，然后通过交换缓冲区的操作将后缓冲区的内容显示到屏幕上，这样可以避免闪烁和撕裂现象。
 // 默认情况下是EGL_BACK_BUFFER，当设置为null，则为默认属性。
 ```
-eglCreateWindowSurface创建窗口表面失败的可能如下：
+eglCreateWindowSurface创建窗口表面失败的可能原因如下：
 
 - EGL_BAD_MATCH：表示窗口属性与提供的 EGLConfig 不匹配。这可能是因为EGLConfig不支持渲染到窗口（即EGL_SURFACE_TYPE 属性没有设置为 EGL_WINDOW_BIT）。
 
@@ -470,7 +470,7 @@ if (surface == EGL_NO_SURFACE) {
 }
 ```
 在使用XComponent获取nativeWindow的过程中，通常涉及以下步骤：
-1. 首先需要在ArkTS 中定义XComponent并设置 XComponentController。XComponent组件用于在UI中嵌入渲染内容如OpenGL或Vulkan。
+1. 首先需要在ArkTS 中定义XComponent并设置 XComponentController。XComponent组件用于在UI中嵌入基于OpenGL或Vulkan等图形API实现的渲染内容。
    ```typescript
    Column() {
        XComponent({
@@ -541,7 +541,7 @@ EGLint attrib3_list[] = {
 };
 ```
 
-eglCreateContext 创建渲染上下文失败的可能为：EGL_BAD_CONFIG，即提供的EGLconfig无效。
+eglCreateContext 创建渲染上下文失败的原因为EGL_BAD_CONFIG，即提供的EGLConfig无效。
 
 ### 使用eglMakeCurrent将EGL上下文与绘图表面进行关联
 
@@ -731,7 +731,7 @@ glGetUniformLocation函数用于查询特定统一变量在程序对象中的位
 void glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
 ```
 
-glGetUniformLocation函数用于将4×4矩阵数据传递给着色器中的uniform变量。其中各个参数含义如下：
+glGetUniformLocation函数用于获取着色器中uniform变量的位置。其中各个参数含义如下：
 - location：要修改的uniform变量的位置。
 - count：要修改的矩阵的数量。如果目标uniform变量不是数组，则此值应为1；如果是数组，则应大于等于1。
 - transpose：是否转置矩阵。如果是GL_FALSE，则矩阵按列优先(column major)顺序传递；如果是GL_TRUE，则矩阵按行优先(row major)顺序传递。
