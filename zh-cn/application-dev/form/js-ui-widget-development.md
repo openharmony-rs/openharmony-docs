@@ -324,7 +324,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 const TAG: string = 'JsCardFormAbility';
 const DATA_STORAGE_PATH: string = '/data/storage/el2/base/haps/form_store';
 const DOMAIN_NUMBER: number = 0xFF00;
-// ···
+// ...
 let deleteFormInfo = async (formId: string, context: common.FormExtensionContext): Promise<void> => {
   try {
     const storage: preferences.Preferences = await preferences.getPreferences(context, DATA_STORAGE_PATH);
@@ -335,19 +335,22 @@ let deleteFormInfo = async (formId: string, context: common.FormExtensionContext
   } catch (err) {
     hilog.error(DOMAIN_NUMBER, TAG, `[EntryFormAbility] failed to deleteFormInfo,
       err: ${JSON.stringify(err as BusinessError)}`);
-  };
+  }
 };
 
+
 export default class JsCardFormAbility extends FormExtensionAbility {
-// ···
+  // ...
   onRemoveForm(formId: string): void {
     // 删除卡片实例数据
     hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
     // 删除之前持久化的卡片实例数据
     deleteFormInfo(formId, this.context);
   }
-// ···
+
+  // ...
 }
+
 ```
 
 
