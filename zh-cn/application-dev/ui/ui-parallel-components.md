@@ -433,6 +433,6 @@ struct Page {
 
 ## 注意事项
 
-[List/Grid并行加载子节点的方案和注意事项](../faqs/faqs-arkui-component.md#listgrid并行加载子节点的方案和注意事项api-22)
+[List/Grid并行化创建子组件的方案和注意事项](../faqs/faqs-arkui-component.md#listgrid并行化创建子组件的方案和注意事项api-22)
 
 <!--DelEnd-->
