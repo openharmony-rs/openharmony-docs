@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 [Audio stream](audio-kit-intro.md#introduction-to-audio-streams) types are crucial for determining the mode of audio playback and recording. For audio playback streams, the stream type is determined by [StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage). For audio recording streams, the stream type is determined by [SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8). These types pose a significant impact on volume control, audio focus management, and input/output device selection.
 
@@ -69,7 +69,7 @@ The audio stream type plays a key role in audio focus management. Different type
 
 When an application starts audio playback or recording, the system automatically applies for focus based on the audio stream type. This may interrupt or duck other audio streams. For details about the audio focus, see [Introduction to Audio Focus and Audio Session](audio-playback-concurrency.md).
 
-This section describes only how the typical audio stream types affect the audio focus.
+This section describes only how the typical audio stream types affect the audio focus. For details about other types, see [Default Focus Strategies](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-audio-focus-management#section17923135513547).
 
 - When a Navigation stream starts playing, the Music stream that is playing will be ducked. After the Navigation stream ends, the volume of the Music stream will be restored.
 
