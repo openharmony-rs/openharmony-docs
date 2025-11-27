@@ -413,7 +413,6 @@ struct Page {
 
   ![ui_parallel003](figures/ui_parallellist.jpg)
 
-
 ## UI并行化创建组件树DFX定位指导与性能调优
 参考[使用SmartPerf-Host分析应用性能](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/performance/performance-optimization-using-smartperf-host.md)文档，抓取Trace以对比并行创建与非并行创建组件时的性能。同时，也可以通过Trace观察BuilderNode是否在子线程中构建和更新。
 
