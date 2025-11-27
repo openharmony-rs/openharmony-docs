@@ -643,31 +643,31 @@ struct ListItemExample5 {
   build() {
     Flex({ wrap: FlexWrap.Wrap }) {
       Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.SpaceBetween }) {
-        Button("expand start")
+        Button('expand start')
           .onClick(() => {
             try {
               let node: FrameNode | null = this.getUIContext().getAttachedFrameNodeById('listItem');
               ListItemSwipeActionManager.expand(node, ListItemSwipeActionDirection.START)
             } catch (error) {
-              console.error("Error expand item:", (error as BusinessError).code, (error as BusinessError).message);
+              console.error('Error expand item:', (error as BusinessError).code, (error as BusinessError).message);
             }
           })
-        Button("expand end")
+        Button('expand end')
           .onClick(() => {
             try {
               let node: FrameNode | null = this.getUIContext().getAttachedFrameNodeById('listItem');
               ListItemSwipeActionManager.expand(node, ListItemSwipeActionDirection.END)
             } catch (error) {
-              console.error("Error expand item:", (error as BusinessError).code, (error as BusinessError).message);
+              console.error('Error expand item:', (error as BusinessError).code, (error as BusinessError).message);
             }
           })
-        Button("collapse")
+        Button('collapse')
           .onClick(() => {
             try {
               let node: FrameNode | null = this.getUIContext().getAttachedFrameNodeById('listItem');
               ListItemSwipeActionManager.collapse(node)
             } catch (error) {
-              console.error("Error collapse item:", (error as BusinessError).code, (error as BusinessError).message);
+              console.error('Error collapse item:', (error as BusinessError).code, (error as BusinessError).message);
             }
           })
       }
@@ -675,7 +675,7 @@ struct ListItemExample5 {
 
       List({ space: 10 }) {
         ListItem() {
-          Text("item")
+          Text('item')
             .width('100%')
             .height(100)
             .fontSize(16)
