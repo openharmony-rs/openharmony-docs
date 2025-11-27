@@ -253,7 +253,7 @@
 
 1. 导入pasteboard,unifiedDataChannel和uniformTypeDescriptor模块。
    
-   ```ts\
+   ```ts
    import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
