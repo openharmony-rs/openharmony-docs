@@ -4,7 +4,6 @@
 * 由于并行构建的部分不会在当前帧立即渲染，适用于处理屏幕外内容、可延迟显示的内容或可以先用占位替代需要显示的内容。
 
 ## 概述
-从API version 22开始，提供[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)的重载接口[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)用于UI并行化循环创建。
 
 传统单线程UI渲染方式已无法满足日益复杂UI和数据处理需求，UI卡顿、响应迟缓等问题严重影响用户体验。基于上述问题，ArkUI提出声明式下部分UI并行化创建方案。开发者可指定并行内容，减少组件创建时延，提升用户体验。
 
@@ -213,7 +212,7 @@ struct Page {
 
 ## List&Grid并行化创建子组件
 
-从API version 22开始，可以使用[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)的重载接口[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)并行创建子节点。
+从API version 22开始，提供[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)的重载接口[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)用于UI并行化循环创建。该方法的使用方案和注意事项请参考：[List/Grid并行化创建子组件的方案和注意事项](../faqs/faqs-arkui-component.md#listgrid并行化创建子组件的方案和注意事项api-22)。
 
 如下示例演示了在不同场景中，如何使用[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)并行创建子节点。
 
@@ -415,9 +414,6 @@ struct Page {
 
   ![ui_parallel003](figures/ui_parallellist.jpg)
 
-### 注意事项
-
-[List/Grid并行化创建子组件的方案和注意事项](../faqs/faqs-arkui-component.md#listgrid并行化创建子组件的方案和注意事项api-22)
 
 ## UI并行化创建组件树DFX定位指导与性能调优
 参考[使用SmartPerf-Host分析应用性能](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/performance/performance-optimization-using-smartperf-host.md)文档，抓取Trace以对比并行创建与非并行创建组件时的性能。同时，也可以通过Trace观察BuilderNode是否在子线程中构建和更新。
