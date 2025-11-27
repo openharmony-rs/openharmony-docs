@@ -375,12 +375,12 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 ``` TypeScript
 // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
 const TAG: string = 'JsCardFormAbility';
-// ···
+// ...
 const DOMAIN_NUMBER: number = 0xFF00;
-// ···
+// ...
 
 export default class JsCardFormAbility extends FormExtensionAbility {
-// ···
+  // ...
   onUpdateForm(formId: string): void {
     // 若卡片支持定时更新/定点更新/卡片使用方主动请求更新功能，则卡片提供方需要重写该方法以支持数据更新
     hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
@@ -393,8 +393,10 @@ export default class JsCardFormAbility extends FormExtensionAbility {
       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
     });
   }
-// ···
+
+  // ...
 }
+
 ```
 
 
