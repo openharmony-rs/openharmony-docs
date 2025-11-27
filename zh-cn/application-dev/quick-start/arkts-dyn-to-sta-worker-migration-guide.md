@@ -756,7 +756,7 @@ workerInstance.terminate();
 ```
 
 **ArkTS-Sta**
-`quit` 会停止接收新消息，并在处理完消息队列中的剩余任务后退出，销毁 EAWorker 线程。
+`quit` 会停止接收新消息，并在处理完消息队列中的剩余任务后退出，销毁EAWorker线程。
 
 ```ts
 const workerInstance = new EAWorker("worker");
