@@ -897,8 +897,9 @@ struct Index {
 
 使用ParallelizeUI执行并行构建的内容不会在当帧立即渲染，因此执行并行构建的内容一般为屏幕外的内容、可以延迟显示的内容或可以先用占位替代需要显示的内容。如下所示，推荐并行构建和串行构建结合使用。
 
-示例代码如下：
 ```ts
+// ArkTS-Sta示例
+import { Entry, Text, Column, Component } from '@ohos.arkui.component';
 import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 @Entry
@@ -906,7 +907,7 @@ import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 struct Index {
   build() {
     Column() {
-      ParallelizeUI() {
+      ParallelizeUI(undefined) {
         Text('Hello') // 并行构建内容通常为屏幕外的内容
       }
       Text('World') // 串行构建
@@ -928,6 +929,9 @@ ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于
 1. 需要依赖外部的状态变量更新UI，请使用[ParallelizeUI\<T\>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)通过状态变量或非状态变量来构造用于并行创建UI的参数。
 
     ```ts
+    // ArkTS-Sta示例
+    import { Entry, Text, Column, Component } from '@ohos.arkui.component';
+    import { State } from '@ohos.arkui.stateManagement';
     import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
     class Param {
@@ -951,13 +955,17 @@ ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于
           Text('World')
             .fontSize(50)
         }.height('100%')
-          .width('100%')
+        .width('100%')
       }
     }
     ```
 
 2. 普通变量可以在多线程中使用，但开发者需要确保变量在多线程中的读写安全。可以使用并发容器或者锁来保证多线程中的读写安全。例如[并发哈希表](../reference/native-lib/arkts1.2-concurrenthashmap.md)、[并发集合](../reference/native-lib/arkts1.2-concurrentset.md)、[异步锁](../reference/native-lib/arkts1.2-asynclock.md)和[阻塞队列](../reference/native-lib/arkts1.2-blockingqueue.md)等。如下示例展示了使用ConcurrentHashMap并发容器来确保多线程环境下的数据读写安全。
+
     ```ts
+    // ArkTS-Sta示例
+    import { Entry, Text, Column, Component } from '@ohos.arkui.component';
+    import { State } from '@ohos.arkui.stateManagement';
     import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
     @Entry
@@ -969,14 +977,14 @@ ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于
           let concurrentHashMap = new containers.ConcurrentHashMap<number, string>();
           concurrentHashMap.set(1, "one");
           concurrentHashMap.set(2, "two");
-          ParallelizeUI() {
+          ParallelizeUI(undefined) {
             let val_0 = concurrentHashMap.get(1); // "one"
             let val_1 = concurrentHashMap.get(2); // "two"
             Text(val_0)
-            .fontSize(50)
+              .fontSize(50)
           }
         }.height('100%')
-          .width('100%')
+        .width('100%')
       }
     }
     ```
@@ -1051,14 +1059,18 @@ ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于
 
 [ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)主要用于并行化循环创建UI节点，提升创建批量节点的性能。仅在List和Grid中可以实现按需加载，与[LazyForEach](../ui/state-management/arkts-rendering-control-lazyforeach.md)类似，但是可以并行创建子组件。在非List和Grid中会创建数组中定义的所有UI节点。
 
-示例代码如下：
 ```ts
+// ArkTS-Sta示例
+import { Entry, Text, Column, Component, List, ListItem } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 class Info {
   str1: string
-  constructor(str1: string) {
+  str2: string
+  constructor(str1: string, str2:string) {
     this.str1 = str1
+    this.str2 = str2
   }
 }
 
@@ -1066,7 +1078,7 @@ class Info {
 @Component
 struct Index {
   @State stateVar: string = 'state var';
-  @State arr:Array= [1,2,3,4,5,6,7,8,9,10] // 数据源
+  @State arr:Array<Int>= [1,2,3,4,5,6,7,8,9,10] // 数据源
 
   build() {
     Column(undefined) {
@@ -1074,12 +1086,12 @@ struct Index {
         // 仅按需并行创建当前可见的子组件
         ParallelizeUI<Int, Info>(undefined, this.arr,
           (item:Int, index: Int) => {
-            return new Info(${item}, this.stateVar)
+            return new Info(`${item}`, this.stateVar)
           },
           (param: Info) =>{
             ListItem() {
               Column() {
-                Text(${param.str1}).fontSize(20)
+                Text(`${param.str1}`).fontSize(20)
               }
             }.height('200').width('100%').borderWidth(2)
           })

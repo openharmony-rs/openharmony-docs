@@ -25,6 +25,9 @@
 如下示例演示了在[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)中使用外部定义的状态变量，从系统日志中可以观察到报错异常。
 
 ```ts
+// ArkTS-Sta示例
+import { Entry, Text, Column, Component } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 @Entry
@@ -33,14 +36,14 @@ struct Index {
   @State str: string = 'Hello';
   build() {
     Column() {
-      ParallelizeUI() {
+      ParallelizeUI(undefined) {
         Text(this.str) // ParallelizeUI内部不能使用外部定义的状态变量
-        .fontSize(50)
+          .fontSize(50)
       }
       Text('World')
         .fontSize(50)
     }.height('100%')
-      .width('100%')
+    .width('100%')
   }
 }
 ```
@@ -51,6 +54,9 @@ struct Index {
 如下示例演示了如何使用[ParallelizeUI\<T\>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)进行参数构造。
 
 ```ts
+// ArkTS-Sta示例
+import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 class Param {
@@ -78,7 +84,7 @@ struct Index {
           this.str = this.str.toUpperCase()
         })
     }.height('100%')
-      .width('100%')
+    .width('100%')
   }
 }
 ```
@@ -92,8 +98,8 @@ struct Index {
 该场景示例介绍了如何使用[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)并行创建多个组件。
 
 ```ts
-import { Entry, Text, Column, Component, Button, ClickEvent, FontWeight, Stack, Position,
-  TextAlign, Alignment, Margin, Row, GridItem, Image ,ImageFit, $r, Grid, ForEach } from '@ohos.arkui.component';
+// ArkTS-Sta示例
+import { Entry, Text, Column, Component, Button, ClickEvent, Margin, Row, GridItem, Image, ImageFit, $r, Grid, ForEach } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 import { ParallelOption, ParallelizeUI } from '@ohos.arkui.Parallelize';
 
@@ -175,7 +181,7 @@ struct Page {
             .width('100%')
             .height(100)
             .borderWidth(2).borderColor(0xAFEEEE)
-        })
+          })
         // 剩余3个GridItem使用串行创建
         ForEach(this.infos.slice(1), (item: WeatherInfo) => {
           GridItem() {
@@ -204,7 +210,6 @@ struct Page {
     }
   }
 }
-
 ```
 ![ui_parallel003](figures/ui_parallel004.gif)
 
@@ -215,10 +220,11 @@ struct Page {
 
 - 在非List和Grid中使用时，[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)会并行创建arr数组中定义的所有UI节点。适用于批量创建大量静态内容（例如图标、按钮、卡片等）。
 
-  ```ts
-  'use static'
+  
 
-  import { Entry, Column, Component, Image, Text, Stack, Row, $r, ImageFit, FontWeight, Margin } from '@ohos.arkui.component';
+  ```ts
+  // ArkTS-Sta示例
+  import { Entry, Column, Component, Image, Text, Stack, $r, ImageFit, FontWeight, Margin } from '@ohos.arkui.component';
   import { State } from '@ohos.arkui.stateManagement';
   import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
@@ -300,10 +306,10 @@ struct Page {
   ![ui_parallel003](figures/ui_parallelnolist.jpg)
 
 - 在List和Grid容器中使用时，[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)仅按需并行创建当前可见区域内的节点，并在节点滑出可见区域后自动释放。
-  ```ts
-  'use static'
 
-  import { Entry, Text, Column, Component, Button, ClickEvent, List, ListItem, Image, Row, Stack, ToggleType, $r, ImageFit, Alignment,FontWeight, TextOverflow  } from '@ohos.arkui.component';
+  ```ts
+  // ArkTS-Sta示例
+  import { Entry, Text, Column, Component, List, ListItem, Image, Row, Stack, $r, ImageFit, Alignment, FontWeight, TextOverflow  } from '@ohos.arkui.component';
   import { State } from '@ohos.arkui.stateManagement';
   import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
