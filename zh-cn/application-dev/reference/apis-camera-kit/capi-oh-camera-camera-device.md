@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_Device {...} Camera_Device
+```
+
 ## 概述
 
 相机设备对象。

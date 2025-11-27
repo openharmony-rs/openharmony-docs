@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_MetadataObject {...} Camera_MetadataObject
+```
+
 ## 概述
 
 元数据对象基础。

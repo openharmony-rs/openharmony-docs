@@ -93,7 +93,7 @@ export default function abilityTest() {
   })
 }
 ```
-### DevEco Stuido执行测试脚本
+### DevEco Studio执行测试脚本
 
 连接目标测试设备（如手机），在DevEco Studio页面点击对应按钮执行测试脚本，当前支持以下四种方式：
 

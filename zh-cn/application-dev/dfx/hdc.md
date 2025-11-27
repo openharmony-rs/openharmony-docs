@@ -131,7 +131,7 @@ hdc -t connect-key shell echo "Hello world"
 | [tmode port](#打开设备网络连接通道) | 打开设备网络连接通道。 |
 | [tmode port close](#关闭网络连接通道) | 关闭设备网络连接通道。 |
 | [tconn](#tcp连接设备) | 指定连接设备：通过“IP:port”来指定连接的设备。 |
-| [shell](#执行交互命令) | 在设备侧执行单次命令，例如hdc shell ls。无命令参数可进入设备侧终端执行命令。 |
+| [shell](#执行交互命令) | 在设备端执行单次命令，例如hdc shell ls。无命令参数可进入设备端终端执行命令。 |
 | [install](#安装应用文件) | 安装指定的应用文件。 |
 | [uninstall](#卸载应用) | 卸载指定的应用包。 |
 | [file send](#本地发送文件至远端设备) | 从本地发送文件至远端设备。 |
@@ -629,10 +629,10 @@ $ hdc shell -b com.example.myapplication ls data/storage/el2/base/
 
 ### 安装应用文件
 
-安装应用文件，命令格式如下：
+应用安装功能在设备端集成bm模块[安装命令（install）](../tools/bm-tool.md#安装命令install)，简化了安装流程，开发者可以在电脑端直接执行命令完成应用安装。命令格式如下：
 
 ```shell
-hdc install [-r|-s|-cwd path] src
+hdc install [-cwd path|-r|-s|-w waitingTime|-u userId] src
 ```
 
 **参数**：
@@ -640,9 +640,11 @@ hdc install [-r|-s|-cwd path] src
 | 参数名 | 说明 |
 | -------- | -------- |
 | src | 应用安装包的文件路径。支持安装[HAP](../quick-start/hap-package.md)、应用内[HSP](../quick-start/in-app-hsp.md)。从API version 22开始，支持安装[APP包](../quick-start/application-package-glossary.md#app)。 |
-| -r | 替换已存在的应用。 |
-| -s | 安装应用间HSP时为必选参数，其他场景为可选参数，指定待安装应用间HSP的路径。 |
-| -cwd path | 修改工作目录。<br>用于在应用安装时，切换src到指定path。例如，初始安装应用为test.hap，所在目录为/data，实际安装应用文件路径为/data/test.hap；如果使用-cwd "/user/"，实际安装应用文件路径为/user/test.hap。 |
+| -cwd | 修改工作目录。<br>用于在应用安装时，切换src到指定path。例如，初始安装应用为test.hap，所在目录为C:\\，实际安装应用文件路径为C:\\test.hap；如果使用-cwd "D:\\"，实际安装应用文件路径为D:\\test.hap。 |
+| -r | 可选参数，覆盖安装一个HAP/HSP。默认缺省，缺省时表示覆盖安装。 |
+| -s | 安装应用HSP时为必选参数，其他场景为可选参数。用于指定待安装应用间HSP的路径。指定目录的时候，每个路径目录下只能存在一个HSP。 |
+| -w | 可选参数，安装HAP时指定bm工具等待时间，最小的等待时长为180s，最大的等待时长为600s,&nbsp;默认缺省为180s。 |
+| -u | 可选参数，指定[用户](../tools/bm-tool.md#userid)，默认在当前活跃用户下安装应用。 |
 
 **返回信息**：
 
@@ -653,26 +655,48 @@ hdc install [-r|-s|-cwd path] src
 
 **使用方法**：
 
+> **注意：**
+>
+> 执行install命令使用bm模块命令参数，对-w和-u参数需参数值组合使用的情况，需将参数变量和参数值放在引号内使用，如"-w 180"，"-u 100"，防止参数解析异常导致命令执行失败。
+
 ```shell
-# 以安装example.hap包为例：
-$ hdc install E:\example.hap
+# 安装example.hap包示例
+$ hdc install D:\example.hap
+[Info]App install path:D:\example.hap msg:install bundle successfully.
 AppMod finish
 
-# 以安装example.app包为例：
-$ hdc install E:\example.app
+# 安装example.app包示例
+$ hdc install D:\example.app
+[Info]App install path:D:\example.app msg:install bundle successfully.
 AppMod finish
 
-# 以安装example.hsp包为例：
-$ hdc install -s E:\example.hsp
+# 安装example.hap包示例（-r为bm模块install命令支持参数，覆盖安装）
+$ hdc install -r D:\example.hap
+[Info]App install path:D:\example.hap msg:install bundle successfully.
+AppMod finish
+
+# 安装example.hsp包示例（-s为bm模块install命令支持参数，安装hsp必选参数）
+$ hdc install -s D:\example.hsp
+[Info]App install path:D:\example.hsp msg:install bundle successfully.
+AppMod finish
+
+# 安装example.hap包示例（-w为bm模块install命令支持参数，指定bm工具等待时间）
+$ hdc "-w 180" install D:\example.hap
+[Info]App install path:D:\example.hap msg:install bundle successfully.
+AppMod finish
+
+# 安装example.hap包示例（-u为bm模块install命令支持参数，指定用户id）
+$ hdc "-u 100" install D:\example.hap
+[Info]App install path:D:\example.hap msg:install bundle successfully.
 AppMod finish
 ```
 
 ### 卸载应用
 
-命令格式如下：
+应用卸载功能在设备端集成bm模块[卸载命令（uninstall）](../tools/bm-tool.md#卸载命令uninstall)，简化了卸载流程，开发者可以在电脑端直接执行命令完成应用卸载。命令格式如下：
 
 ```shell
-hdc uninstall [-k|-s] bundlename
+hdc uninstall [-n|-m|-k|-s|-v|-u] bundlename
 ```
 
 **参数**：
@@ -680,21 +704,60 @@ hdc uninstall [-k|-s] bundlename
 | 参数名 | 说明 |
 | -------- | -------- |
 | bundlename | 应用安装包。 |
-| -k | 卸载应用后，系统会保留/data和/cache目录。 |
-| -s | 卸载共享包。 |
+| -n | 可选参数，指定Bundle名称卸载应用。|
+| -m | 可选参数，应用模块名称，指定卸载应用的一个模块。默认卸载所有模块。 |
+| -k | 可选参数，卸载应用时保存应用数据。默认卸载应用时不保存应用数据。 |
+| -s | 根据场景判断，卸载应用间HSP时必选参数，其他场景为可选参数。卸载指定的共享库。|
+| -v | 可选参数，指定共享包的版本号。默认卸载同包名的所有共享包。 |
+| -u | 可选参数，指定[用户](../tools/bm-tool.md#userid)，默认在当前活跃用户下卸载应用。
 
 **返回信息**：
 
 | 返回信息 | 说明 |
 | -------- | -------- |
 | [Info]App uninstall path: msg:uninstall bundle successfully.<br/>AppMod finish. | 成功情况下返回卸载信息和AppMod finish完成的通知。 |
-| 具体卸载失败原因。 | 失败情况下返回卸载失败信息。 |
+| 具体卸载失败的原因。 | 失败时返回卸载失败的信息。 |
 
 **使用方法**：
 
+> **注意：**
+>
+> 执行uninstall命令使用bm模块命令参数，对-m，-v和-u参数需参数值组合使用的情况，需将参数变量和参数值放在引号内使用，如"-m entry"，"-v 100001"和"-u 100"，防止参数解析异常导致命令执行失败。
+
 ```shell
-# 以卸载com.example.hello包为例：
-$ hdc uninstall com.example.hello
+# 卸载com.ohos.example包示例
+$ hdc uninstall com.ohos.example
+[Info]App uninstall path: msg:uninstall bundle successfully.
+AppMod finish
+
+# 卸载com.ohos.example包示例（-n为bm模块uninstall命令支持参数，指定bundle名称）
+$ hdc uninstall -n com.ohos.example
+[Info]App uninstall path: msg:uninstall bundle successfully.
+AppMod finish
+
+# 卸载com.ohos.example包示例（-m为bm模块uninstall命令支持参数，指定卸载应用的一个模块）
+$ hdc uninstall -n "-m entry" com.ohos.example
+[Info]App uninstall path: msg:uninstall bundle successfully.
+AppMod finish
+
+# 卸载com.ohos.example包示例（-k为bm模块uninstall命令支持参数，卸载应用时保存应用数据）
+$ hdc uninstall -n -k com.ohos.example
+[Info]App uninstall path: msg:uninstall bundle successfully.
+AppMod finish
+
+# 卸载com.ohos.example包示例（-s为bm模块uninstall命令支持参数，卸载hsp时为必选参数）
+$ hdc uninstall -n -s com.ohos.example
+[Info]App uninstall path: msg:uninstall bundle successfully.
+AppMod finish
+
+# 卸载com.ohos.example包示例（-v为bm模块uninstall命令支持参数，指定共享包的版本号）
+$ hdc uninstall -n "-v 100001" com.ohos.example
+[Info]App uninstall path: msg:uninstall bundle successfully.
+AppMod finish
+
+# 卸载com.ohos.example包示例（-u为bm模块uninstall命令支持参数，指定用户id）
+$ hdc uninstall -n "-u 100" com.ohos.example
+[Info]App uninstall path: msg:uninstall bundle successfully.
 AppMod finish
 ```
 
@@ -723,7 +786,7 @@ hdc file send [-a|-sync|-z|-m|-cwd path|-b bundlename] SOURCE DEST
 | -sync | 只传输文件mtime有更新的文件。<br/>mtime（modified timestamp）：修改后的时间戳。 |
 | -z | 通过LZ4格式压缩传输，此功能未开放，请勿使用。 |
 | -m | 文件传输时同步文件DAC权限，uid，gid，MAC权限。<br/>DAC（Discretionary Access Control）：自主访问控制，<br/>uid（User identifier）：用户标识符（或用户ID），<br/>gid（Group identifier）：组标识符（或组ID），<br/>MAC（Mandatory Access Control）：强制访问控制（或非自主访问控制）。 |
-| -cwd path | 修改工作目录。<br>用于在文件传输时，切换SOURCE到指定path。例如，初始发送文件为test，所在目录为/data，实际发送文件路径为/data/test；如果使用-cwd "/user/"，实际发送文件路径为/user/test。 |
+| -cwd | 修改工作目录。<br>用于在文件传输时，切换SOURCE到指定path。例如，初始发送文件为test，所在目录为/data，实际发送文件路径为/data/test；如果使用-cwd "/user/"，实际发送文件路径为/user/test。 |
 | -b | 3.1.0e版本新增参数（低版本使用会提示[Fail]Unknown file option: -b），用于指定可调试应用包名。<br/>使用方法可参考[通过命令往应用沙箱目录中发送文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-device-file-explorer#section48216711204)。 |
 | bundlename | 指定可调试应用包名。 |
 
@@ -765,7 +828,7 @@ hdc file recv [-a|-sync|-z|-m|-cwd path|-b bundlename] DEST SOURCE
 | -sync | 只传输文件mtime有更新的文件。<br/>mtime（modified timestamp）：修改后的时间戳。 |
 | -z | 通过LZ4格式压缩传输，此功能未开放，请勿使用。 |
 | -m | 文件传输时同步文件DAC权限，uid，gid，MAC权限。<br/>DAC（Discretionary Access Control）：自主访问控制，<br/>uid（User identifier）：用户标识符（或用户ID），<br/>gid（Group identifier）：组标识符（或组ID），<br/>MAC（Mandatory Access Control）：强制访问控制（或非自主访问控制）。 |
-| -cwd path | 修改工作目录。<br>用于在文件传输时，切换SOURCE到指定path。例如，初始接收文件目录为/data/，如果使用-cwd "/user/"，实际接收文件目录为/user/。 |
+| -cwd | 修改工作目录。<br>用于在文件传输时，切换SOURCE到指定path。例如，初始接收文件目录为/data/，如果使用-cwd "/user/"，实际接收文件目录为/user/。 |
 | -b | 3.1.0e版本新增参数，用于传输指定的可调试应用进程应用数据目录下的文件。<br/>使用方法可参考[从沙箱目录中下载文件到本地计算机](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-device-file-explorer#section48216711204)。 |
 | bundlename | 可调试应用进程的包名。 |
 
@@ -1634,39 +1697,50 @@ MacOS环境：
 
 4. 刷新设备管理器，插拔USB接口，或重启计算机。
 
-### Linux系统非管理员权限运行hdc提示无法找到设备
+### Linux和MacOS系统非管理员权限运行hdc提示无法找到设备
 
 **现象描述**
 
-Linux非管理员角色运行hdc后，使用USB方式连接设备后执行hdc list targets命令无法找到设备。
+Linux和MacOS系统非管理员角色运行hdc后，使用USB方式连接设备后执行hdc list targets命令无法找到设备。
 
 **可能原因&amp;解决方法**
 
 非管理员角色默认无USB设备操作权限，如果需要开启该权限，可按以下方法操作：
 
-- （临时权限）设置USB设备操作权限最大化：
+1. MacOS系统：停止hdc服务，使用sudo命令重新启动hdc服务。
 
-```shell
-sudo chmod -R 777 /dev/bus/usb/
-```
+   ```shell
+   sudo hdc kill
+   sudo hdc start
+   ```
 
-- （永久权限）永久修改USB设备权限：
-  1. 使用lsusb命令查找USB设备的vendorID和productID；
-  2. 创建一个新的udev规则；
-      编辑udev加载规则，用设备的“idVendor”和“idProduct”来替换默认值。
+2. Linux系统：
 
-      MODE="0666"来表示USB设备的权限GROUP；GROUP代表用户组，要确保此时登录的系统用户在该用户组中：
+   - （临时权限）设置USB设备操作权限最大化：
 
-      ```shell
-      $ sudo vim /etc/udev/rules.d/90-myusb.rules
-        SUBSYSTEMS=="usb", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", GROUP="users", MODE="0666"
-      ```
+   ```shell
+   sudo chmod -R 777 /dev/bus/usb/
+   ```
 
-  3. 重启电脑或重新加载udev规则：
+   - （永久权限）永久修改USB设备权限：
 
-      ```shell
-      sudo udevadm control --reload
-      ```
+      - 使用lsusb命令查找USB设备的vendorID和productID；
+
+      - 创建一个新的udev规则；
+         编辑udev加载规则，用设备的“idVendor”和“idProduct”来替换默认值。
+
+         MODE="0666"来表示USB设备的权限GROUP；GROUP代表用户组，要确保此时登录的系统用户在该用户组中：
+
+         ```shell
+         $ sudo vim /etc/udev/rules.d/90-myusb.rules
+         SUBSYSTEMS=="usb", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", GROUP="users", MODE="0666"
+         ```
+
+      - 重启电脑或重新加载udev规则：
+
+         ```shell
+         sudo udevadm control --reload
+         ```
 
 > **注意：**
 >
@@ -1693,7 +1767,7 @@ sudo chmod -R 777 /dev/bus/usb/
 
 **现象描述**
 
-hdc文件传输命令执行出现乱码，如使用file recv从设备侧发送带有中文名称的文件到本地，报错提示[Fail]Error opening file: no such file or directory, path:XXXXX，其中path显示中文乱码。
+hdc文件传输命令执行出现乱码，如使用file recv从设备端发送带有中文名称的文件到本地，报错提示[Fail]Error opening file: no such file or directory, path:XXXXX，其中path显示中文乱码。
 
 ![File transfer garbled text ](figures/file_transfer_garbled_text.png)
 
@@ -1715,7 +1789,7 @@ hdc文件传输命令执行出现乱码，如使用file recv从设备侧发送�
 
 - 首次连接未授权：连接设备后解锁设备，屏幕显示“是否信任此设备？”窗口，点击“始终信任”或“信任”完成授权。
 
-- 授权窗口关闭或拒绝授权：设备侧授权窗口会在超时后关闭，或开发者在授权窗口点击“不信任”拒绝授权。需要再次授权可在设备侧 设置 > 系统 > 开发者选项 > USB调试/无线调试 中，关闭已开启的调试开关后再开启，或执行hdc kill -r重启服务进程。屏幕会再次显示“是否信任此设备？”窗口，点击“始终信任”或“信任”完成授权。
+- 授权窗口关闭或拒绝授权：设备端授权窗口会在超时后关闭，或开发者在授权窗口点击“不信任”拒绝授权。需要再次授权可在设备端 设置 > 系统 > 开发者选项 > USB调试/无线调试 中，关闭已开启的调试开关后再开启，或执行hdc kill -r重启服务进程。屏幕会再次显示“是否信任此设备？”窗口，点击“始终信任”或“信任”完成授权。
 
 ### 执行任意hdc命令报错：CryptAcquireContext second failed
 
@@ -1843,17 +1917,17 @@ Otherwise try 'hdc kill' if that seems wrong.
 
 **可能原因**
 
-- 场景一：首次连接设备未在设备侧授权调试计算机。
+- 场景一：首次连接设备未在设备端授权调试计算机。
 
 - 场景二：授权窗口弹出，如果开发者点击了“信任”而非“始终信任”，在断开设备后重新连接时需要再次授权。
 
 **处理步骤**
 
-- 场景一：设备侧弹出授权窗口，点击授权。具体操作为：连接设备后，系统会自动弹出授权弹窗。
+- 场景一：设备端弹出授权窗口，点击授权。具体操作为：连接设备后，系统会自动弹出授权弹窗。
 
-- 场景二：进入设备侧 设置 > 系统 > 开发者选项，关闭调试开关后重新打开，重新连接设备进行授权；或者执行命令hdc kill -r后重新启动hdc，再次触发授权弹窗，点击“始终信任”。
+- 场景二：进入设备端 设置 > 系统 > 开发者选项，关闭调试开关后重新打开，重新连接设备进行授权；或者执行命令hdc kill -r后重新启动hdc，再次触发授权弹窗，点击“始终信任”。
 
-### E000003 设备侧用户未授权
+### E000003 设备端用户未授权
 
 **错误信息**
 
@@ -1867,17 +1941,17 @@ then check for a confirmation dialog on your device.
 
 **错误描述**
 
-设备未授权。设备侧拒绝授权调试，请执行"hdc kill"命令后重新执行调试命令，并且检查设备侧授权窗口提醒。
+设备未授权。设备端拒绝授权调试，请执行"hdc kill"命令后重新执行调试命令，并且检查设备端授权窗口提醒。
 
 **可能原因**
 
-1. 设备侧授权窗口超时自动关闭，未确认授权。
+1. 设备端授权窗口超时自动关闭，未确认授权。
 
 2. 开发者点击“不信任”，拒绝授权。
 
 **处理步骤**
 
-进入设备侧 设置 > 系统 > 开发者选项，关闭调试开关后重新打开，重新连接设备进行授权；或执行命令hdc kill -r后重新启动hdc，再次触发授权弹窗，点击“始终信任”。
+进入设备端 设置 > 系统 > 开发者选项，关闭调试开关后重新打开，重新连接设备进行授权；或执行命令hdc kill -r后重新启动hdc，再次触发授权弹窗，点击“始终信任”。
 
 ### E000004 通信连接不稳定
 
@@ -2043,7 +2117,7 @@ Unsupport command.
 
 **可能原因**
 
-设备侧版本过低，不支持执行调试命令。
+设备端版本过低，不支持执行调试命令。
 
 **处理步骤**
 
@@ -2057,7 +2131,7 @@ Failed to communicate with daemon.
 
 **错误描述**
 
-服务器与设备侧守护程序通信异常。
+服务器与设备端守护程序通信异常。
 
 **可能原因**
 
@@ -2178,7 +2252,7 @@ Unsupport shell option: XXX.
 
 参考[执行交互命令](#执行交互命令)使用当前版本支持的命令行参数，如-b参数。
 
-### E003004 设备侧不支持当前使用的参数
+### E003004 设备端不支持当前使用的参数
 
 **错误信息**
 
@@ -2204,7 +2278,7 @@ The parameter is missing, correct your input by referring below: Usage...
 
 **错误描述**
 
-hdc shell xxx，设备侧命令不支持。
+hdc shell xxx，设备端命令不支持。
 
 **可能原因**
 
@@ -2268,7 +2342,7 @@ Error create directory: xxx, path: xxx.
 
 **可能原因**
 
-执行hdc file send命令发送文件，设备侧对应目录为无权限目录或只读系统目录。
+执行hdc file send命令发送文件，设备端对应目录为无权限目录或只读系统目录。
 
 **处理步骤**
 

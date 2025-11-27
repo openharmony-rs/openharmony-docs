@@ -10,6 +10,7 @@
 提供用户认证能力，应用于设备解锁、支付、应用登录等场景。
 
 > **说明：**
+>
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
@@ -281,7 +282,7 @@ onResult(result: UserAuthResult): void
 **示例1：**
 
 发起用户认证，采用认证可信等级≥ATL3的锁屏口令认证，获取认证结果。
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -331,7 +332,7 @@ try {
 **示例2：**
 
 发起用户认证，采用认证可信等级≥ATL3的锁屏口令+认证类型相关+复用设备解锁最大有效时长认证，获取认证结果。
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -385,7 +386,7 @@ try {
 **示例3：**
 
 发起用户认证，采用认证可信等级≥ATL3的锁屏口令+任意应用认证类型相关+复用任意应用最大有效时长认证，获取认证结果。
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -466,7 +467,7 @@ type AuthTipCallback = (authTipInfo: AuthTipInfo) => void
 | authTipInfo | [AuthTipInfo](#authtipinfo20)   | 是   | 认证中间状态。 |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -548,7 +549,7 @@ on(type: 'result', callback: IAuthCallback): void
 **示例1：**
 
 以模系统方式进行用户身份认证。
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -692,7 +693,7 @@ off(type: 'result', callback?: IAuthCallback): void
 | 12500002 | General operation error. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -742,6 +743,7 @@ start(): void
 开始认证。
 
 > **说明：**
+>
 > 每个UserAuthInstance只能进行一次认证，需要再次认证时，必须重新获取UserAuthInstance。
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC 或 ohos.permission.USER_AUTH_FROM_BACKGROUND（仅向系统应用开放）
@@ -770,7 +772,7 @@ start(): void
 | 12500013 | Operation failed because of PIN expired. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -834,7 +836,7 @@ cancel(): void
 | 12500002 | General operation error.        |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -905,7 +907,7 @@ on(type: 'authTip', callback: AuthTipCallback): void
 | 12500002 | General operation error. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -979,7 +981,7 @@ off(type: 'authTip', callback?: AuthTipCallback): void
 | 12500002 | General operation error. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -1027,6 +1029,7 @@ getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthIns
 获取[UserAuthInstance](#userauthinstance10)对象，执行用户身份认证，并支持使用统一用户身份认证控件。
 
 > **说明：**
+>
 > 每个UserAuthInstance只能进行一次认证，需要再次认证时，必须重新获取UserAuthInstance。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -1058,7 +1061,7 @@ getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthIns
 | 12500006 | The authentication trust level is not supported. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -1100,7 +1103,8 @@ try {
 表示认证结果信息，用于描述认证结果。
 
 > **说明：**
-> 从 API version 9 开始支持，从 API version 11 开始废弃。
+>
+> 从 API version 9 开始支持，从 API version 11 开始废弃，请使用[UserAuthResult](#userauthresult10)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -1116,7 +1120,8 @@ try {
 表示认证过程中的提示信息，用于提供认证过程的反馈。
 
 > **说明：**
-> 从 API version 9 开始支持，从 API version 11 开始废弃。
+>
+> 从 API version 9 开始支持，从 API version 11 开始废弃，请使用[AuthTipInfo](#authtipinfo20)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -1134,6 +1139,7 @@ type EventInfo = AuthResultInfo | TipInfo
 该类型为下表类型取值中的联合类型。
 
 > **说明：**
+>
 > 从 API version 9 开始支持，从 API version 11 开始废弃，请使用[UserAuthResult](#userauthresult10)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -1152,6 +1158,7 @@ type AuthEventKey = 'result' | 'tip'
 该类型为下表类型取值中的联合类型。
 
 > **说明：**
+>
 > 从 API version 9 开始支持，从 API version 11 开始废弃。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -1166,6 +1173,7 @@ type AuthEventKey = 'result' | 'tip'
 认证接口的异步回调对象。
 
 > **说明：**
+>
 > 从 API version 9 开始支持，从 API version 11 开始废弃，请使用[IAuthCallback](#iauthcallback10)替代。
 
 ### callback<sup>(deprecated)</sup>
@@ -1175,6 +1183,7 @@ callback(result : EventInfo) : void
 通过该回调获取认证结果信息或认证过程中的提示信息。
 
 > **说明：**
+>
 > 从 API version 9 开始支持，从 API version 11 开始废弃，请使用[onResult](#onresult10)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -1240,6 +1249,7 @@ try {
 执行用户认证的对象。
 
 > **说明：**
+>
 > 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[UserAuthInstance](#userauthinstance10)替代。
 
 ### on<sup>(deprecated)</sup>
@@ -1249,8 +1259,10 @@ on : (name : AuthEventKey, callback : AuthEvent) => void
 订阅指定类型的用户认证事件。
 
 > **说明：**
-> - 从 API version 9 开始支持，从 API version 10 开始废弃。
-> - 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行订阅。
+>
+> 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[on](#on10)替代。
+>
+> 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行订阅。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -1319,8 +1331,10 @@ off : (name : AuthEventKey) => void
 取消订阅特定类型的认证事件。
 
 > **说明：**
-> - 从 API version 9 开始支持，从 API version 10 开始废弃。
-> - 需要使用已经成功订阅事件的[AuthInstance](#authinstancedeprecated)对象调用该接口进行取消订阅。
+>
+> 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[off](#off10)替代。
+>
+> 需要使用已经成功订阅事件的[AuthInstance](#authinstancedeprecated)对象调用该接口进行取消订阅。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -1372,8 +1386,10 @@ start : () => void
 开始认证。
 
 > **说明：**
-> - 从 API version 9 开始支持，从 API version 10 开始废弃。
-> - 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行认证。
+>
+> 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[start](#start10)替代。
+>
+> 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行认证。
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
@@ -1423,8 +1439,9 @@ cancel : () => void
 
 > **说明：**
 >
-> - 从 API version 9 开始支持，从 API version 10 开始废弃。
-> - 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行取消认证，此[AuthInstance](#authinstancedeprecated)需要是正在进行认证的对象。
+> 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[cancel](#cancel10)替代。
+>
+> 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行取消认证，此[AuthInstance](#authinstancedeprecated)需要是正在进行认证的对象。
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
@@ -1466,8 +1483,9 @@ getAuthInstance(challenge : Uint8Array, authType : UserAuthType, authTrustLevel 
 
 > **说明：**
 >
-> - 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[getUserAuthInstance](#userauthgetuserauthinstance10)替代。
-> - 每个AuthInstance只能进行一次认证，若需要再次进行认证则需重新获取AuthInstance。
+> 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[getUserAuthInstance](#userauthgetuserauthinstance10)替代。
+>
+> 每个AuthInstance只能进行一次认证，若需要再次进行认证则需重新获取AuthInstance。
 
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -1535,13 +1553,17 @@ getAvailableStatus(authType : UserAuthType, authTrustLevel : AuthTrustLevel): vo
 
 > **错误码返回顺序说明：**
 >
-> - 如果未注册对应执行器，系统不支持该认证能力，需返回12500005。
-> - 如果已注册对应执行器，功能未禁用，但认证安全等级低于业务指定时，需返回12500006。
-> - 如果已注册对应执行器，功能未禁用，但用户未注册凭据时，需返回12500010。
-> - 如果已注册对应执行器，功能未禁用，但密码过期时，需返回12500013。
+> 如果未注册对应执行器，系统不支持该认证能力，需返回12500005。
+>
+> 如果已注册对应执行器，功能未禁用，但认证安全等级低于业务指定时，需返回12500006。
+>
+> 如果已注册对应执行器，功能未禁用，但用户未注册凭据时，需返回12500010。
+>
+> 如果已注册对应执行器，功能未禁用，但密码过期时，需返回12500013。
 
 > **注意：**
-> - 若用户注册的锁屏口令是4位PIN时，其认证可信等级为ATL3，调用该接口查询是否支持ATL4级别的密码认证时，需返回12500010。
+>
+> 若用户注册的锁屏口令是4位PIN时，其认证可信等级为ATL3，调用该接口查询是否支持ATL4级别的密码认证时，需返回12500010。
 
 **错误码：**
 
@@ -1603,6 +1625,7 @@ constructor()
 创建认证器对象。
 
 > **说明：**
+>
 > 从 API version 8 开始支持，从 API version 9 开始废弃，请使用[getAuthInstance](#userauthgetauthinstancedeprecated)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -1622,6 +1645,7 @@ getVersion() : number
 获取认证器的版本信息。
 
 > **说明：**
+>
 > 从 API version 8 开始支持，从 API version 9 开始废弃。
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
@@ -1651,6 +1675,7 @@ getAvailableStatus(authType : UserAuthType, authTrustLevel : AuthTrustLevel) : n
 查询指定类型和等级的认证能力是否支持。
 
 > **说明：**
+>
 > 从 API version 8 开始支持，从 API version 9 开始废弃，请使用[getAvailableStatus](#userauthgetavailablestatus9)替代。
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
@@ -1691,7 +1716,8 @@ auth(challenge: Uint8Array, authType: UserAuthType, authTrustLevel: AuthTrustLev
 执行用户认证，使用回调函数返回结果。
 
 > **说明：**
-> 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[start](#startdeprecated)代替。
+>
+> 从 API version 8 开始支持，从 API version 9 开始废弃，请使用[start](#startdeprecated)代替。
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
@@ -1743,7 +1769,8 @@ cancelAuth(contextID : Uint8Array) : number
 表示通过contextID取消本次认证。
 
 > **说明：**
-> 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[cancel](#canceldeprecated)代替。
+>
+> 从 API version 8 开始支持，从 API version 9 开始废弃，请使用[cancel](#canceldeprecated)代替。
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
@@ -1782,7 +1809,8 @@ if (cancelCode == userAuth.ResultCode.SUCCESS) {
 返回认证结果的回调对象。
 
 > **说明：**
-> 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[AuthEvent](#autheventdeprecated)代替。
+>
+> 从 API version 8 开始支持，从 API version 9 开始废弃，请使用[AuthEvent](#autheventdeprecated)代替。
 
 ### onResult<sup>(deprecated)</sup>
 
@@ -1791,7 +1819,8 @@ onResult: (result : number, extraInfo : AuthResult) => void
 回调函数，返回认证结果。
 
 > **说明：**
-> 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[callback](#callbackdeprecated)代替。
+>
+> 从 API version 8 开始支持，从 API version 9 开始废弃，请使用[callback](#callbackdeprecated)代替。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -1833,7 +1862,8 @@ onAcquireInfo ?: (module : number, acquire : number, extraInfo : any) => void
 回调函数，返回认证过程中的提示信息，非必须实现。
 
 > **说明：**
-> 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[callback](#callbackdeprecated)代替。
+>
+> 从 API version 8 开始支持，从 API version 9 开始废弃，请使用[callback](#callbackdeprecated)代替。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -1883,7 +1913,8 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 表示认证结果的对象。
 
 > **说明：**
-> 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[AuthResultInfo](#authresultinfodeprecated)代替。
+>
+> 从 API version 8 开始支持，从 API version 9 开始废弃，请使用[AuthResultInfo](#authresultinfodeprecated)代替。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -1898,7 +1929,8 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 表示返回码的枚举。
 
 > **说明：**
-> 从 API version 9 开始废弃，建议使用[UserAuthResultCode](#userauthresultcode9)代替。
+>
+> 从 API version 9 开始废弃，请使用[UserAuthResultCode](#userauthresultcode9)代替。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -1921,6 +1953,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 表示人脸认证过程中提示码的枚举。
 
 > **说明：**
+>
 > 从 API version 8 开始支持，从 API version 11 开始废弃。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -1945,6 +1978,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 表示指纹认证过程中提示码的枚举。
 
 > **说明：**
+>
 > 从 API version 8 开始支持，从 API version 11 开始废弃。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -1996,7 +2030,9 @@ type SecureLevel = string
 
 表示认证的安全级别。
 
-**原子化服务API：** 从 API version 6 开始支持，从 API version 8 开始废弃。
+> **说明：**
+>
+> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[AuthTrustLevel](#authtrustlevel8)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -2010,7 +2046,9 @@ type AuthType = string
 
 表示认证类型。
 
-**原子化服务API：** 从 API version 6 开始支持，从 API version 8 开始废弃。
+> **说明：**
+>
+> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[UserAuthType](#userauthtype8)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -2025,7 +2063,8 @@ getAuthenticator(): Authenticator
 获取Authenticator对象，用于执行用户身份认证。
 
 > **说明：**
-> 从 API version 8 开始废弃，建议使用[constructor](#constructordeprecated)替代。
+>
+> 从 API version 8 开始废弃，请使用[constructor](#constructordeprecated)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -2047,7 +2086,8 @@ getAuthenticator(): Authenticator
 认证器对象。
 
 > **说明：**
-> 从 API version 8 开始废弃，建议使用[UserAuth](#userauthdeprecated)替代。
+>
+> 从 API version 8 开始废弃，请使用[UserAuth](#userauthdeprecated)替代。
 
 ### execute<sup>(deprecated)</sup>
 
@@ -2056,7 +2096,8 @@ execute(type: AuthType, level: SecureLevel, callback: AsyncCallback&lt;number&gt
 执行用户认证，使用callback方式作为异步方法。
 
 > **说明：**
-> 从 API version 8 开始废弃，建议使用[auth](#authdeprecated)替代。
+>
+> 从 API version 8 开始废弃，请使用[auth](#authdeprecated)替代。
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
@@ -2093,7 +2134,8 @@ execute(type : AuthType, level : SecureLevel): Promise&lt;number&gt;
 执行用户认证，使用promise方式作为异步方法。
 
 > **说明：**
-> 从 API version 8 开始废弃，建议使用[auth](#authdeprecated)替代。
+>
+> 从 API version 8 开始废弃，请使用[auth](#authdeprecated)替代。
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
@@ -2132,7 +2174,8 @@ try {
 表示认证结果的枚举。
 
 > **说明：**
-> 从 API version 8 开始废弃，建议使用[ResultCode](#resultcodedeprecated)替代。
+>
+> 从 API version 8 开始废弃，请使用[ResultCode](#resultcodedeprecated)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 

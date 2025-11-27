@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_VObject
+```
+
 ## Overview
 
 Defines a struct for allowed data types.

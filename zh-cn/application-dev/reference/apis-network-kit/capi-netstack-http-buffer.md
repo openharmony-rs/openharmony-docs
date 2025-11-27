@@ -5,6 +5,10 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+```c
+typedef struct Http_Buffer {...} Http_Buffer
+```
+
 ## 概述
 
 HTTP缓存结构体。

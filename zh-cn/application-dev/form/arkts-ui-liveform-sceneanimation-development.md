@@ -4,7 +4,7 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 本文档提供了场景动效类型互动卡片的开发指导，包括卡片非激活态和激活态UI界面开发、卡片配置文件开发。
 
 ## 接口说明
@@ -91,7 +91,6 @@
     struct MyLiveFormPage {
       @State columnScale: number = 1.0;
       @State columnTranslate: number = 0.0;
-    
       private uiContext: UIContext | undefined = undefined;
       private storageForMyLiveFormPage: LocalStorage | undefined = undefined;
       private formId: string | undefined = undefined;
@@ -138,7 +137,8 @@
               hilog.info(DOMAIN, 'testTag', 'startAbilityByLiveForm succeed');
             })
             .catch((err: BusinessError) => {
-              hilog.error(DOMAIN, 'testTag', `startAbilityByLiveForm failed, code is ${err?.code}, message is ${err?.message}`);
+              hilog.error(DOMAIN, 'testTag',
+                `startAbilityByLiveForm failed, code is ${err?.code}, message is ${err?.message}`);
             });
         } catch (e) {
           hilog.error(DOMAIN, 'testTag', `startAbilityByLiveForm failed, code is ${e?.code}, message is ${e?.message}`);
@@ -146,14 +146,14 @@
       }
     
       build() {
-        Stack({alignContent: Alignment.TopStart}) {
+        Stack({ alignContent: Alignment.TopStart }) {
           // 背景组件和普通卡片一样大
           Column()
-            .width(this.formRect? this.formRect.width : 0)
-            .height(this.formRect? this.formRect.height : 0)
+            .width(this.formRect ? this.formRect.width : 0)
+            .height(this.formRect ? this.formRect.height : 0)
             .offset({
-              x: this.formRect? this.formRect.left : 0,
-              y: this.formRect? this.formRect.top : 0,
+              x: this.formRect ? this.formRect.left : 0,
+              y: this.formRect ? this.formRect.top : 0,
             })
             .borderRadius(this.formBorderRadius ? this.formBorderRadius : 0)
             .backgroundColor('#2875F5')
@@ -370,7 +370,12 @@
         try {
           formProvider.requestOverflow(formId, {
             // 动效申请范围
-            area: { left: left, top: top, width: width, height: height },
+            area: {
+              left: left,
+              top: top,
+              width: width,
+              height: height
+            },
             // 动效持续时间
             duration: duration,
             // 指定是否使用系统提供的默认切换动效
@@ -400,16 +405,12 @@
     export class Constants {
       // 互动卡片动效超范围，左侧偏移百分比 = 偏移值/卡片宽度
       public static readonly OVERFLOW_LEFT_RATIO: number = 0.1;
-    
       // 互动卡片动效超范围，上侧偏移百分比 = 偏移值/卡片高度
       public static readonly OVERFLOW_TOP_RATIO: number = 0.15;
-    
       // 互动卡片动效超范围，宽度放大百分比
       public static readonly OVERFLOW_WIDTH_RATIO: number = 1.2;
-    
       // 互动卡片动效超范围，高度放大百分比
       public static readonly OVERFLOW_HEIGHT_RATIO: number = 1.3;
-    
       // 互动卡片动效超范围，动效时长
       public static readonly OVERFLOW_DURATION: number = 3500;
     }

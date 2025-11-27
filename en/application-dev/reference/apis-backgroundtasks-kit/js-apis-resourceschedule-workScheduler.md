@@ -11,9 +11,9 @@ The **workScheduler** module provides the APIs for registering, canceling, and q
 
 >  **NOTE**
 >
->  The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>  - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  The APIs of this module can be used only in the stage model.
+>  - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -30,7 +30,6 @@ Requests a deferred task. Upon successful request, the deferred task is added to
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
 **Parameters**
-
 | Name | Type                   | Mandatory  | Description            |
 | ---- | --------------------- | ---- | -------------- |
 | work | [WorkInfo](#workinfo) | Yes   | Deferred task information, such as the task ID and trigger condition.|
@@ -221,9 +220,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ## workScheduler.obtainAllWorks<sup>(deprecated)<sup>
 
 obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
-> This API is deprecated since API version 10. You are advised to use [workScheduler.obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10) instead.
 
 Obtains all the deferred tasks. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is deprecated since API version 10. You are advised to use [workScheduler.obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10) instead.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -488,6 +490,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ## WorkInfo
 
 Represents the deferred task information, which is used to set the trigger condition.
+
+>  **NOTE**
+>
+>  The following rules apply when setting WorkInfo parameters:
+>
+>  - **workId**, **bundleName**, and **abilityName** are mandatory. **bundleName** must be set to the bundle name of the current application.
+>  - The carried parameters can be of the number, string, or boolean type.
+>  - At least one triggering condition must be set, including the network type, charging type, storage status, and battery status.
+>  - For a cyclic task, the task execution interval must be at least 2 hours. When **repeatCycleTime** is set, you must set **isRepeat** or **repeatCount**.
+>  - For optional parameters, if left default (not configured), it indicates that the triggering of the delayed task does not depend on the parameter's corresponding condition.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 

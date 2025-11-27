@@ -27,22 +27,22 @@ abstract class Content {
 
 | 接口名 | 描述 |
 | -------- | -------- |
-|OH_ArkUI_NodeContent_RegisterCallback(ArkUI_NodeContentHandle content, ArkUI_NodeContentCallback callback)|向管理器Content上注册事件。|
-|OH_ArkUI_NodeContentEvent_GetEventType(ArkUI_NodeContentEvent* event)|获取Content上触发的事件类型。|
-|OH_ArkUI_NodeContent_AddNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node)|在Content上添加子组件。|
-|OH_ArkUI_NodeContent_InsertNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node, int32_t position)|在Content上插入子组件。|
-|OH_ArkUI_NodeContent_RemoveNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node)|在Content上移除子组件。|
-|OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, ArkUI_NodeContentHandle* content)|在Native侧获取ArkTS侧Content指针。|
-|OH_ArkUI_NodeContentEvent_GetNodeContentHandle(ArkUI_NodeContentEvent* event)|获取触发上下树事件的Content对象。|
-|OH_ArkUI_NodeContent_SetUserData(ArkUI_NodeContentHandle content, void* userData)|在Content上设置用户自定义属性。|
-|OH_ArkUI_NodeContent_GetUserData(ArkUI_NodeContentHandle content)|在Content上获取用户自定义属性。|
-|typedef enum {<br>   NOTE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW = 0,<br>   NOTE_CONTENT_EVENT_ON_DETACH_FROM_WINDOW = 1,<br>} ArkUI_NodeContentEventType|Content上会触发的上树和下树事件类型。|
+|[OH_ArkUI_NodeContent_RegisterCallback(ArkUI_NodeContentHandle content, ArkUI_NodeContentCallback callback)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_registercallback)|向管理器Content上注册事件。|
+|[OH_ArkUI_NodeContentEvent_GetEventType(ArkUI_NodeContentEvent* event)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontentevent_geteventtype)|获取Content上触发的事件类型。|
+|[OH_ArkUI_NodeContent_AddNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_addnode)|在Content上添加子组件。|
+|[OH_ArkUI_NodeContent_InsertNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node, int32_t position)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_insertnode)|在Content上插入子组件。|
+|[OH_ArkUI_NodeContent_RemoveNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_removenode)|在Content上移除子组件。|
+|[OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, ArkUI_NodeContentHandle* content)](../../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodecontentfromnapivalue)|在Native侧获取ArkTS侧Content指针。|
+|[OH_ArkUI_NodeContentEvent_GetNodeContentHandle(ArkUI_NodeContentEvent* event)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontentevent_getnodecontenthandle)|获取触发上下树事件的Content对象。|
+|[OH_ArkUI_NodeContent_SetUserData(ArkUI_NodeContentHandle content, void* userData)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_setuserdata)|在Content上设置用户自定义属性。|
+|[OH_ArkUI_NodeContent_GetUserData(ArkUI_NodeContentHandle content)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_getuserdata)|在Content上获取用户自定义属性。|
+|[typedef enum {<br>   NODE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW = 0,<br>   NODE_CONTENT_EVENT_ON_DETACH_FROM_WINDOW = 1,<br>} ArkUI_NodeContentEventType](../../reference/apis-arkui/capi-native-node-h.md#arkui_nodecontenteventtype)|Content上会触发的上树和下树事件类型。|
 
 ## 开发实现
 
 ### ArkTS侧代码实现
 
-<!-- [contentslot_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[contentslot_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import nativeNode from 'libentry.so'; // 开发者自己实现的so
@@ -52,19 +52,19 @@ import { NodeContent } from '@kit.ArkUI';
 @Component
 struct Parent {
   private nodeContent: Content = new NodeContent();
-  // ···
+  // ...
 
   aboutToAppear() {
     // 通过C-API创建节点，并添加到管理器nodeContent上
     nativeNode.createNativeNode(this.nodeContent);
-    // ···
+    // ...
   }
 
   build() {
     Column() {
       // 显示nodeContent管理器里存放的Native侧的组件
       ContentSlot(this.nodeContent);
-    // ···
+      // ...
     }
   }
 }

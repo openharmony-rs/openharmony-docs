@@ -4392,8 +4392,6 @@ promise.then((data) => {
 
 选择联系人条件。
 
-**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Applications.Contacts
 
 |                名称               |                  类型                 | 只读  | 可选  |        说明      |
@@ -5008,26 +5006,42 @@ phoneNumber.phoneNumber = "138xxxxxxxx";
 
 联系人的头像类。
 
+> **说明：**
+>
+>  从API version 22开始，支持通过uri和[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)格式设置联系人头像资源(暂不支持通过[addContactViaUI](#contactaddcontactviaui15)、[saveToExistingContactViaUI](#contactsavetoexistingcontactviaui15)接口设置)。<br/>
+uri为可访问的联系人头像文件地址，[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)为通过联系人头像资源生成的[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)对象。<br/>
+>  读取联系人头像资源仅支持uri格式，该格式仅支持以[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)方式打开，无法直接在Image组件内显示，需读取后转换为[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)格式显示。
+
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Applications.ContactsData
 
 | 名称 |   类型   | 只读 | 可选 | 说明           |
 | ---- | -------- | ---- | ---- | -------------- |
-| uri  | string   | 否   | 否   | 联系人的头像。 |
+| uri  | string   | 否   | 否   | uri格式联系人头像。 |
+| photo<sup>22+</sup>  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)   | 否   | 是   | pixelMap格式的联系人头像。 |
 
 **对象创建示例：**
 
   使用JSON格式创建数据。
 
 ```js
-let portrait: contact.Portrait = {
-    uri: "uri"
-};
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+async function SetPortraitUri(uri: string) {
+  let portrait: contact.Portrait = {
+    uri: uri
+  };
+}
+
+async function SetPortraitPixelMap(photo: image.PixelMap) {
+  let portrait: contact.Portrait = {
+    uri: "",
+    photo: photo
+  };
+}
 ```
-> **说明：**
->
->  从API version 22开始，支持通过uri读取联系人头像资源，仅支持以[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)方式打开，且无法直接通过uri在Image组件内显示，需读取资源后按照[PixelMap格式](../../ui/arkts-graphics-display.md#多媒体像素图)显示。
 
 ## PostalAddress
 

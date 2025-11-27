@@ -197,8 +197,6 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 | COMPONENT_SCROLL_START | 3    | 控件滚动开始事件。 |
 | COMPONENT_SCROLL_END  | 4    | 控件滚动结束事件。   |
 | COMPONENT_TEXT_CHANGED | 5    | [输入框控件](../../ui/arkts-common-components-text-input.md)文本变化事件。 |
-| COMPONENT_HOVER_ENTER | 6    | 鼠标悬停进入控件事件。 |
-| COMPONENT_HOVER_EXIT | 7    | 鼠标悬停离开控件事件。 |
 
 
 ## WindowChangeOptions<sup>22+</sup>

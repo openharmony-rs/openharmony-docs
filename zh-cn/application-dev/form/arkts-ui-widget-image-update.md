@@ -4,7 +4,7 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 
 在卡片上通常需要展示本地图片或从网络上下载的图片，获取本地图片和网络图片需要通过FormExtensionAbility来实现，如下示例代码介绍了如何在卡片上显示本地图片和网络图片。
 
@@ -33,7 +33,7 @@
     // entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts
     const TAG: string = 'WgtImgUpdateEntryFormAbility';
     const DOMAIN_NUMBER: number = 0xFF00;
-    // ···
+    // ...
     
     export default class WgtImgUpdateEntryFormAbility extends FormExtensionAbility {
       // 在添加卡片时，打开一个本地图片并将图片内容传递给卡片页面显示
@@ -63,7 +63,7 @@
         // 将fd封装在formData中并返回至卡片页面
         return formBindingData.createFormBindingData(formData);
       }
-    // ···
+      // ...
     }
     ```
 
@@ -79,7 +79,7 @@
     const TEXT2: string = '刷新失败'
     
     export default class WgtImgUpdateEntryFormAbility extends FormExtensionAbility {
-    // ···
+      // ...
       async onFormEvent(formId: string, message: string): Promise<void> {
         let param: Record<string, string> = {
           'text': TEXT1

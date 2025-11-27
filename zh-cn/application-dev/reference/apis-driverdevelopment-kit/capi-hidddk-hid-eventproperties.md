@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Hid_EventProperties {...} Hid_EventProperties
+```
+
 ## 概述
 
 设备关注事件属性。

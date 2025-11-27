@@ -116,7 +116,7 @@ export default {
 
 ## 添加grid-col
 
-创建grid-container组件并添加grid-row，在grid-row组件内添加grid-col组件形成布局。
+创建grid-container组件并添加grid-row，在grid-row组件内添加[grid-col](../reference/apis-arkui/arkui-js/js-components-grid-col.md)组件形成布局。
 
 <!--code_no_check-->
 ```html

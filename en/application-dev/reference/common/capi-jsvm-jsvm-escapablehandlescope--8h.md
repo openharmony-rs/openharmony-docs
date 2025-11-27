@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct JSVM_EscapableHandleScope__* JSVM_EscapableHandleScope
+```
+
 ## Overview
 
 Defines a special type of handle scope, which is used to return the value created in a specific handle scope to the parent scope.

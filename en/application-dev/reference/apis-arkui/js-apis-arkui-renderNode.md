@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **RenderNode** module provides APIs for creating a RenderNode in custom drawing settings with C APIs.
 
@@ -87,6 +87,14 @@ Appends a child node to this RenderNode.
 | ------ | ------------------------- | ---- | ---------------------- |
 | node   | [RenderNode](#rendernode-1) | Yes  | Child node to append.|
 
+**Error codes**
+
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
+
+| ID| Error Message                        |
+| -------- | -------------------------------- |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: its corresponding FrameNode cannot be adopted." |
+
 **Example**
 
 ```ts
@@ -146,6 +154,14 @@ Inserts a child node after the specified child node of this RenderNode.
 | ------- | ------------------------------------------- | ---- | ---------------------------------------------------------------------------- |
 | child   | [RenderNode](#rendernode-1)                   | Yes  | Child node to add.                                                          |
 | sibling | [RenderNode](#rendernode-1) \| null | Yes  | Node after which the new child node will be inserted. If this parameter is left empty, the new node is inserted before the first subnode.|
+
+**Error codes**
+
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
+
+| ID| Error Message                        |
+| -------- | -------------------------------- |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: its corresponding FrameNode cannot be adopted." |
 
 **Example**
 
@@ -2530,7 +2546,7 @@ Obtains the clipping shape for this RenderNode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.clip
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
 
@@ -2830,7 +2846,7 @@ Obtains the metric unit used by attributes of this RenderNode.
 ```ts
 import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
-import { LengthMetricsUnit } from '@ohos.arkui.node';
+import { LengthMetricsUnit } from '@kit.ArkUI';
 
 // Extend RenderNode to configure the metric unit for node attributes.
 class BaseRenderNode extends RenderNode {

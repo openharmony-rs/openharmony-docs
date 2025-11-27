@@ -26,6 +26,6 @@ The struct describes the color space information of video processing.
 | -- | -- |
 | int32_t metadataType | Video metadata type. For details, see [OH_NativeBuffer_MetadataType](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_metadatatype).|
 | int32_t colorSpace | Video color space type. For details, see [OH_NativeBuffer_ColorSpace](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_colorspace).|
-| int32_t pixelFormat | Video pixel format. For details, see [OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_format).|
+| int32_t pixelFormat | Video pixel format. For details, see [OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format).|
 
- <!--no_check--> 
+<!--no_check-->

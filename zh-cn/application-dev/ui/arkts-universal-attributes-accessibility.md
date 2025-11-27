@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -229,9 +229,9 @@ export struct AccessibilityText {
   }
 
   build() {
-    // ···
+    // ...
       Row() {
-        // ···
+        // ...
         Column() {
           // $r('app.media.UniversalAttributesAccessibility_text5')需要替换为开发者所需的文本资源文件
           Text($r('app.string.UniversalAttributesAccessibility_text5'))
@@ -254,8 +254,7 @@ export struct AccessibilityText {
           .accessibilitySelected(undefined)
       }
       .height('100%')
-    }
-    // ···
+      // ...
   }
 }
 ```

@@ -26,45 +26,59 @@ A database backup can be used to quickly restore an RDB store in abnormal state.
 
 2. Include header files.
 
-    ```c
+    <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
     #include "database/rdb/relational_store.h"
-    #include "hilog/log.h"
     ```
+
 
 3. Call **OH_Rdb_Backup** to back up the database.
 
-    ```c
-    OH_Rdb_ConfigV2* config = OH_Rdb_CreateConfig();
+    <!-- @[BackupRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
     OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL2);
     OH_Rdb_SetStoreName(config, "RdbTest.db");
     OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
     OH_Rdb_SetBundleName(config, "com.example.nativedemo");
-    
     int errCode = 0;
     OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
-    
     // Back up a database.
     int result = OH_Rdb_Backup(store, "/data/storage/el2/database/RdbTest_bak.db");
     OH_Rdb_CloseStore(store);
+    store = nullptr;
+    OH_Rdb_DestroyConfig(config);
+    config = nullptr;
     ```
+
+
 
 4. Call **OH_Rdb_Restore** to restore the database.
 
-    ```c
-    OH_Rdb_ConfigV2* config2 = OH_Rdb_CreateConfig();
-    OH_Rdb_SetDatabaseDir(config2, "/data/storage/el2/database");
-    OH_Rdb_SetArea(config2, RDB_SECURITY_AREA_EL2);
-    OH_Rdb_SetStoreName(config2, "RdbRestoreTest.db");
-    OH_Rdb_SetSecurityLevel(config2, OH_Rdb_SecurityLevel::S3);
-    OH_Rdb_SetBundleName(config2, "com.example.nativedemo");
-    int errCode2 = 0;
-    OH_Rdb_Store *store2 = OH_Rdb_CreateOrOpen(config2, &errCode2);
+    <!-- @[rdb_OH_Rdb_Restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
     
+    ``` C++
+    OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
+    OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
+    OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL2);
+    OH_Rdb_SetStoreName(config, "RdbRestoreTest.db");
+    OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
+    OH_Rdb_SetBundleName(config, "com.example.nativedemo");
+    int errCode = 0;
+    OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
     // Restore the database.
-    int result2 = OH_Rdb_Restore(store2, "/data/storage/el2/database/RdbTest_bak.db");
-    OH_Rdb_CloseStore(store2);
+    int result2 =
+        OH_Rdb_Restore(store, "/data/storage/el2/database/RdbTest_bak.db");
+    OH_Rdb_CloseStore(store);
+    store = nullptr;
+    OH_Rdb_DestroyConfig(config);
+    config = nullptr;
     ```
+
+
 
 5. Call **OH_Rdb_RegisterCorruptedHandler** to register a handler for processing database exceptions.
 

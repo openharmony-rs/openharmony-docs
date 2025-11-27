@@ -16,6 +16,20 @@
 
 **全局接口：** ArkUI提供的一系列全局接口，这些接口在调用时无需显式指定UI实例或组件。它们会根据调用发生时所在的UI上下文，自动作用于相应的UI实例。
 
+**调用作用域：** 调用作用域是确保UI实例在异步任务执行过程中维持正确上下文关联的核心机制。该机制通过建立明确的上下文标识体系，保证异步操作能够准确关联到其归属的UI实例。其工作机制分为下面四步：
+
+- 标识注册：UI实例初始化时自动生成唯一标识符。
+
+- 上下文绑定：UI实例发起的任务自动携带实例标识。
+
+- 作用域保护：在异步边界（包括NAPI调用、Promise回调、Worker通信等）维持标识传递。
+
+- 上下文恢复：异步任务执行时恢复其关联的UI实例标识。
+
+**图1** 调用作用域原理图
+
+![calling_scope](figures/calling_scope.png)
+
 ## UI上下文不明确
 
 UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确指认UI实例的问题。
@@ -25,7 +39,7 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确指�
 
 为了保证全局接口的相关功能正常，开发者应当使用UIContext的接口替换全局接口。
 
-**图1** 多实例关系图
+**图2** 多实例关系图
 
 ![multi-instance](figures/multi-instance.png)
 
@@ -246,6 +260,187 @@ export default class EntryAbility extends UIAbility {
 }
 
 ```
+### 通过静态方法获取UIContext对象
+从API version 23开始，开发者可以通过UIContext类静态方法如[resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext23)获取UIContext对象。
+
+>**说明：**
+> - 优先通过自定义组件或者窗口对象获取UIContext，通过这两种方式获取不受调用作用域的影响，且获取到的是可预期的UIContext实例。
+> - 使用该方案替换全局接口可以保证在同一个调用点保持与原先全局接口行为一致，但是不能保证能够作用到期望的UI实例上。
+
+下面举例说明在不同时机使用静态方法替换全局接口的方法。
+
+使用全局接口：
+<!--deprecated_code_no_check-->
+
+``` TypeScript
+import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+
+const DOMAIN = 0x0000;
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    // 在loadContent前调用，此时无UI实例，vp2px会根据屏幕默认像素密度返回计算结果。
+    let pxValue = vp2px(20);
+    hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      // 在loadContent异步回调中调用，此时有UI实例，但上下文不明确，此时会根据主窗的像素密度返回计算结果。
+      let pxValue = vp2px(20);
+      hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+    });
+    // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
+    pxValue = vp2px(20);
+    hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+  }
+
+  // ...
+}
+```
+
+<!--deprecated_code_no_check-->
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text('Calculate 20vp to px')
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          // 在有UI实例且上下文明确时调用，此时会根据此时UI上下文对应的实例的像素密度返回计算结果。
+          let pxValue = vp2px(20);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+使用静态方法替换：
+
+<!-- @[Common_Entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+
+``` TypeScript
+import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window, UIContext } from '@kit.ArkUI';
+
+const DOMAIN = 0x0000;
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    // 在loadContent前调用，此时无UI实例，vp2px会根据屏幕默认像素密度返回计算结果。
+    let resolvedUIContext = UIContext.resolveUIContext();
+    let pxValue = resolvedUIContext.vp2px(20);
+    hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      // 在loadContent异步回调中调用，此时有UI实例，但上下文不明确，此时会根据主窗的像素密度返回计算结果。
+      let resolvedUIContext = UIContext.resolveUIContext();
+      let pxValue = resolvedUIContext.vp2px(20);
+      hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+    });
+    // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
+    pxValue = vp2px(20);
+    hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+  }
+
+  // ...
+}
+```
+
+<!-- @[Common_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext } from '@kit.ArkUI';
+
+const DOMAIN = 0x0000;
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text('Calculate 20vp to px')
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          // 在有UI实例且上下文明确时调用，此时会根据此时UI上下文对应的实例的像素密度返回计算结果。
+          let resolvedUIContext = UIContext.resolveUIContext();
+          let pxValue = resolvedUIContext.vp2px(20);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+[resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext23)接口获取UIContext的逻辑与下面示例通过基础查询接口组合使用的代码逻辑是等价的。
+
+<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/common/Utils.ets) -->
+
+``` TypeScript
+function GetUIContextByAtomicInterface(): UIContext {
+  let callingScopeUIContext = UIContext.getCallingScopeUIContext();
+  if (callingScopeUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of calling scope.`)
+    return callingScopeUIContext;
+  }
+  let allContexts = UIContext.getAllUIContexts();
+  let length = allContexts.length;
+  if (length === 1) {
+    hilog.info(0x00, 'testTag', `Get UIContext of unique UI instance.`)
+    return allContexts[0];
+  }
+  let lastFocusedUIContext = UIContext.getLastFocusedUIContext();
+  if (lastFocusedUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of last focused instance.`)
+    return lastFocusedUIContext;
+  }
+  let lastForegroundUIContext = UIContext.getLastForegroundUIContext();
+  if (lastForegroundUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of last foregrounded instance.`)
+    return lastForegroundUIContext;
+  }
+  if (length !== 0) {
+    hilog.info(0x00, 'testTag', `Get UIContext with maximum instanceId.`)
+    return allContexts[length - 1];
+  }
+  hilog.info(0x00, 'testTag', `Get UIContext of undefined calling scope.`)
+  return new UIContext();
+}
+```
+
+如果开发者希望自定义UIContext的获取策略，或者需要排除上述默认规则中的某些判断条件，建议直接使用上述代码中涉及的基础查询接口进行组合替换，以实现更符合业务场景的上下文获取逻辑。
 
 ### 在封装的接口中获取UI上下文
 

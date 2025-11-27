@@ -39,10 +39,7 @@ The following uses zoom as an example to describe the differences between the tw
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import hilog from '@ohos.hilog';
-const TAG = '[Sample_WebGestureInteraction]';
-const DOMAIN = 0xF811;
-const BUNDLE = 'WebGestureInteraction_';
+
 @Entry
 @Component
 struct Index {
@@ -60,18 +57,18 @@ struct Index {
           // Bind the pinch gesture triggered by three fingers to the component.
           PinchGesture({ fingers: 3 })
             .onActionStart((event: GestureEvent|undefined) => {
-              hilog.info(DOMAIN, TAG, BUNDLE, 'Pinch start');
+              console.info('Pinch start');
             })
             // Obtain the zoom ratio through the callback function when the pinch gesture is triggered, and then change the zoom ratio of the component.
             .onActionUpdate((event: GestureEvent|undefined) => {
               if(event){
                 this.scaleValue = this.pinchValue * event.scale;
-                hilog.info(DOMAIN, TAG, BUNDLE, `Pinch update: ${this.scaleValue}`);
+                console.info(`Pinch update: ${this.scaleValue}`);
               }
             })
             .onActionEnd(() => {
               this.pinchValue = this.scaleValue;
-              hilog.info(DOMAIN, TAG, BUNDLE, 'Pinch end');
+              console.info('Pinch end');
             })
         )
     }

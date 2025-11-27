@@ -800,6 +800,24 @@ onUnselected(event: Callback\<number>)
 >
 > onUnselected回调中不可通过TabsOptions的index设置当前显示页的索引，不可调用TabsController.changeIndex()方法。
 
+### onContentDidScroll<sup>23+</sup>
+
+onContentDidScroll(handler: OnTabsContentDidScrollCallback | undefined)
+
+监听Tabs页面滑动事件。
+
+在页面滑动过程中，会对视窗内所有页面逐帧触发[OnTabsContentDidScrollCallback](#ontabscontentdidscrollcallback23)回调。例如，当视窗内有下标为0、1的两个页面时，会每帧触发两次index值分别为0和1的回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| handler | [OnTabsContentDidScrollCallback](#ontabscontentdidscrollcallback23) \| undefined | 是 | Tabs滑动时触发的回调，undefined会解绑原有回调。 |
+
 ## OnTabsAnimationStartCallback<sup>18+</sup>
 
 type OnTabsAnimationStartCallback = (index: number, targetIndex: number, extraInfo: TabsAnimationEvent) => void
@@ -955,6 +973,31 @@ finishTransition(): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## OnTabsContentDidScrollCallback<sup>23+</sup>
+
+type OnTabsContentDidScrollCallback = (selectedIndex: number, index: number, position: number, mainAxisLength: number) => void
+
+Tabs滑动时触发的回调。
+
+>**说明：** 
+>
+>- 例如，当前选中的页签索引为0，从第0页切换到第1页的动画过程中，每帧都会对视窗内所有页面触发回调，当视窗内有第0页和第1页两页时，每帧会触发两次回调。其中，第一次回调的selectedIndex为0、index为0、position为当前帧第0页相对于动画开始前第0页的移动比例，mainAxisLength为主轴方向上第0页的长度。第二次回调的selectedIndex仍为0、index为1、position为当前帧第1页相对于动画开始前第0页的移动比例，mainAxisLength为主轴方向上第1页的长度。
+>
+>- 若动画曲线为弹簧插值曲线，从第0页切换到第1页的动画过程中，可能会因为离手时的位置和速度，先过滑到第2页，再回弹到第1页，该过程中每帧会对视窗内第1页和第2页触发回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| selectedIndex | number | 是 | 当前选中页面的索引。 |
+| index | number | 是 | 视窗内页面的索引。 |
+| position | number | 是 | index页面相对于Tabs主轴起始位置（selectedIndex对应页面的起始位置）的移动比例。 |
+| mainAxisLength | number | 是 | index对应页面在主轴方向上的长度，单位vp。 |
 
 ## TabsController
 
@@ -2926,3 +2969,102 @@ struct TabsExample {
 }
 ```
 ![tabs_curve](figures/tabs_curve.gif)
+
+### 示例22（Tabs滑动触发onContentDidScroll回调）
+
+从API version 23开始，该示例展示了如何通过[onContentDidScroll](#oncontentdidscroll23)接口设置Tabs滑动时的回调。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TabsDidScrollExample {
+  @State fontColor: string = '#182431';
+  @State selectedFontColor: string = '#007DFF';
+  @State currentIndex: number = 0;
+  @State selectedIndex: number = 0;
+  @State didScrollStr: string = '';
+  private controller: TabsController = new TabsController();
+
+  @Builder
+  tabBuilder(index: number, name: string) {
+    Column() {
+      Text(name)
+        .fontColor(this.selectedIndex === index ? this.selectedFontColor : this.fontColor)
+        .fontSize(16)
+        .fontWeight(this.selectedIndex === index ? 500 : 400)
+        .lineHeight(22)
+        .margin({ top: 17, bottom: 7 })
+      Divider()
+        .strokeWidth(2)
+        .color('#007DFF')
+        .opacity(this.selectedIndex === index ? 1 : 0)
+    }.width('100%')
+  }
+
+  build() {
+    Column() {
+      Text('滑动页面触发回调')
+        .width("80%")
+        .fontSize(20)
+        .margin(5)
+        .textAlign(TextAlign.Center)
+
+      Text(this.didScrollStr)
+        .width("80%")
+        .fontSize(20)
+        .margin(5)
+        .textAlign(TextAlign.Center)
+
+      Tabs({ barPosition: BarPosition.Start, index: this.currentIndex, controller: this.controller }) {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar(this.tabBuilder(0, 'green'))
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar(this.tabBuilder(1, 'blue'))
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar(this.tabBuilder(2, 'yellow'))
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar(this.tabBuilder(3, 'pink'))
+      }
+      .vertical(false)
+      .barMode(BarMode.Fixed)
+      .barWidth(360)
+      .barHeight(56)
+      .animationDuration(400)
+      .onChange((index: number) => {
+        // currentIndex控制TabContent显示页签
+        this.currentIndex = index;
+        this.selectedIndex = index;
+      })
+      .onAnimationStart((index: number, targetIndex: number, event: TabsAnimationEvent) => {
+        if (index === targetIndex) {
+          return;
+        }
+        // selectedIndex控制自定义TabBar内Image和Text颜色切换
+        this.selectedIndex = targetIndex;
+      })
+      .width(360)
+      .height(296)
+      .margin({ top: 15 })
+      .backgroundColor('#F1F3F5')
+      .onContentDidScroll((selectedIndex: number, index: number, position: number, mainAxisLength: number) => {
+        // 监听Tabs页面滑动事件，在该回调中可以实现自定义导航点切换动画等
+        console.info("onContentDidScroll selectedIndex: " + selectedIndex + ", index: " + index + ", position: " +
+          position + ", mainAxisLength: " + mainAxisLength);
+        this.didScrollStr =
+          "onContentDidScroll selectedIndex: " + selectedIndex + ", index: " + index + ", position: " +
+            position + ", mainAxisLength: " + mainAxisLength
+      })
+    }.width('100%')
+  }
+}
+```
+
+![tabs_didScroll](figures/tabs_didScroll.gif)

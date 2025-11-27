@@ -449,7 +449,7 @@ int32_t OH_NativeImage_AcquireNativeWindowBuffer(OH_NativeImage* image,OHNativeW
 
 **描述**
 
-通过消费端的OH_NativeImage获取一个OHNativeWindowBuffer。本接口不能与[OH_NativeImage_UpdateSurfaceImage](capi-native-image-h.md#oh_nativeimage_updatesurfaceimage)接口同时使用。<br>本接口将会创建一个OHNativeWindowBuffer。当使用OHNativeWindowBuffer<时，用户需要通过[OH_NativeWindow_NativeObjectReference](capi-external-window-h.md#oh_nativewindow_nativeobjectreference)接口将其引用计数加一。当OHNativeWindowBuffer使用完，用户需要通过[OH_NativeWindow_NativeObjectUnreference](capi-external-window-h.md#oh_nativewindow_nativeobjectunreference)接口将其引用计数减一。<br>本接口需要和[OH_NativeImage_ReleaseNativeWindowBuffer](capi-native-image-h.md#oh_nativeimage_releasenativewindowbuffer)接口配合使用，否则会存在内存泄露。<br>当fenceFd使用完，用户需要将其close。<br>本接口为非线程安全类型接口。
+通过消费端的OH_NativeImage获取一个OHNativeWindowBuffer。本接口不能与[OH_NativeImage_UpdateSurfaceImage](capi-native-image-h.md#oh_nativeimage_updatesurfaceimage)接口同时使用。<br>本接口将会创建一个OHNativeWindowBuffer。当使用OHNativeWindowBuffer时，用户需要通过[OH_NativeWindow_NativeObjectReference](capi-external-window-h.md#oh_nativewindow_nativeobjectreference)接口将其引用计数加一。当OHNativeWindowBuffer使用完，用户需要通过[OH_NativeWindow_NativeObjectUnreference](capi-external-window-h.md#oh_nativewindow_nativeobjectunreference)接口将其引用计数减一。<br>本接口需要和[OH_NativeImage_ReleaseNativeWindowBuffer](capi-native-image-h.md#oh_nativeimage_releasenativewindowbuffer)接口配合使用，否则会存在内存泄露。<br>当fenceFd使用完，用户需要将其close。<br>本接口为非线程安全类型接口。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 

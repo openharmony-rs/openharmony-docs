@@ -40,8 +40,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_QOS_GEWU_INVALID_SESSION_ID (static_cast<OH_QoS_GewuSession>(0xffffffffU)) | 无效会话句柄，用于错误返回。<br>**起始版本：** 20 |
-| OH_QOS_GEWU_INVALID_REQUEST_ID (static_cast<OH_QoS_GewuRequest>(0xffffffffU)) | 无效请求句柄，用于错误返回。<br>**起始版本：** 20 |
+| OH_QOS_GEWU_INVALID_SESSION_ID (static_cast\<OH_QoS_GewuSession\>(0xffffffffU)) | 无效会话句柄，用于错误返回。<br>**起始版本：** 20 |
+| OH_QOS_GEWU_INVALID_REQUEST_ID (static_cast\<OH_QoS_GewuRequest\>(0xffffffffU)) | 无效请求句柄，用于错误返回。<br>**起始版本：** 20 |
 
 ### 函数
 

@@ -216,8 +216,6 @@
 
 ### 移除事件观察者
 
-1. 移除事件观察者
-
 ```ts
 // 移除该应用事件观察者以取消订阅事件
 hiAppEvent.removeWatcher(watcher);

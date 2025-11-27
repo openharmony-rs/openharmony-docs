@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+struct Image_String {...}
+```
+
 ## Overview
 
 The struct describes an image string.

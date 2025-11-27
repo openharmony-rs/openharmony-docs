@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ImageNative_ ImageNative
+```
+
 ## 概述
 
 为图像接口定义native层图像对象。

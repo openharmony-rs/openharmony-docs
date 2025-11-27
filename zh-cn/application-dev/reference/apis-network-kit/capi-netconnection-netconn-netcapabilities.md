@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct NetConn_NetCapabilities {...} NetConn_NetCapabilities
+```
+
 ## 概述
 
 网络能力集。

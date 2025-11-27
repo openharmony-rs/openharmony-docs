@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_TextStyle OH_Drawing_TextStyle
+```
+
 ## Overview
 
 Defines a struct used to manage text colors and decorations.

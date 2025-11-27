@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct VideoProcessing_Callback VideoProcessing_Callback
+```
+
 ## 概述
 
 视频处理回调对象类型。

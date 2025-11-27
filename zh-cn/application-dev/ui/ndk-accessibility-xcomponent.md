@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -40,7 +40,6 @@
    #include "AccessibilityManager.h"
    
    // ···
-   // [StartExclude abilitycap_six_start]
    AccessibilityManager::AccessibilityManager()
    {
    //    多实例场景
@@ -356,7 +355,6 @@
        // 3. 调用接口发送事件给OH侧
        OH_ArkUI_SendAccessibilityAsyncEvent(g_provider, eventInfo, callback);
    }
-   // [EndExclude abilitycap_one_start]
    // ···
    
    int32_t AccessibilityManager::ExecuteAccessibilityAction(const char* instanceId, int64_t elementId,

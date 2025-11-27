@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_PackingOptionsForSequence OH_PackingOptionsForSequence
+```
+
 ## Overview
 
 The struct describes the image sequence encoding parameters.

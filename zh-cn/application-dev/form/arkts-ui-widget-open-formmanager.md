@@ -4,7 +4,7 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 
 从API version 18开始，Form Kit提供在应用内将ArkTS卡片添加到桌面的能力，以方便用户后续便捷查看信息或快速进入应用。
 
@@ -25,10 +25,10 @@
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
     const DOMAIN = 0x0000;
+    
     @Entry
     @Component
     struct Index {
-    
       build() {
         Row() {
           Column() {
@@ -48,7 +48,7 @@
                   // 点击按钮后调用openFormManager方法，拉起卡片管理页面
                   formProvider.openFormManager(want);
                 } catch (error) {
-                  promptAction.openToast({message: (error as BusinessError).message});
+                  promptAction.openToast({ message: (error as BusinessError).message });
                   hilog.info(DOMAIN, 'testTag', 'catch error ', 'code:', (error as BusinessError).code, 'message:',
                     (error as BusinessError).message);
                 }

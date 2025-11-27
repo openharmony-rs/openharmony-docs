@@ -918,3 +918,17 @@ This permission is applicable only to network connection or identification, not 
 **Device**: general devices
 
 **Since**: 22
+
+## ohos.permission.atomicService.MANAGE_AGING
+
+Allows an atomic service to request differentiated aging policies.
+
+<!--RP59--><!--RP59End-->
+
+**Permission level**：system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 23

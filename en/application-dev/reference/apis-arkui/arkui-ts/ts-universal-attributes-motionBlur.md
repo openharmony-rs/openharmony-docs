@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can apply a motion blur effect to a component being scaled or moved. This effect must be used together with the **onFinish** parameter of **AnimateParam**.
 
@@ -91,11 +91,11 @@ Defines motion blur options.
 | Name         | Type                                                       | Read-Only | Optional | Description                                                        |
 | ------------- | ----------------------------------------------------------- | ----- | ----- | ------------------------------------------------------------ |
 | radius | number      | No   | No   | Blur radius. The value range is [0.0, ∞). You are advised to set it to a value less than 1.0.|
-| anchor | [MotionBlurAnchor](#motionbluranchor) | No   | No   | Coordinates of the motion blur anchor point. They must be the same as those of the animation scaling anchor point.|
+| anchor | [MotionBlurAnchor](#motionbluranchor) | No   | No   | Coordinates of the motion blur anchor. They must be the same as those of the animation scaling anchor.|
 
 ## MotionBlurAnchor
 
-Coordinates of the motion blur anchor.
+Describes the coordinates of the motion blur anchor.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -103,8 +103,8 @@ Coordinates of the motion blur anchor.
 
 | Name         | Type                                                       | Read-Only | Optional | Description                                                        |
 | ------------- | ----------------------------------------------------------- | ----- | ----- | ------------------------------------------------------------ |
-| x | number      | No   | No   | X-coordinate of the anchor point. The value range is [0.0, 1.0].|
-| y | number      | No   | No   | Y-coordinate of the anchor point. The value range is [0.0, 1.0].|
+| x | number      | No   | No   | X-coordinate of the anchor. The value range is [0.0, 1.0].|
+| y | number      | No   | No   | Y-coordinate of the anchor. The value range is [0.0, 1.0].|
 
 ## Example
 

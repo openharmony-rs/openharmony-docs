@@ -23,5 +23,5 @@ Defines a struct for the application graphics memory usage details.
 
 | Name| Description|
 | -- | -- |
-| uint32_t gl | GL memory size (DMA memory usage of the process), in KB, including the DMA buffers obtained directly through the API and those obtained through **allocator_host**.|
-| uint32_t graph | Graph memory size (memory occupied by RenderService for loading required resources, such as images and textures), in KB.|
+| uint32_t gl | GL memory size (memory occupied by RenderService for loading required resources, such as images and textures), in KB.|
+| uint32_t graph | Graph memory size (DMA memory usage of the process), in KB, including the DMA buffers obtained directly through the API and those obtained through **allocator_host**.|

@@ -1970,3 +1970,17 @@ type NotificationProgress = _NotificationProgress
 | 类型 | 说明 |
 | --- | --- |
 | [_NotificationProgress](js-apis-inner-notification-notificationContent.md#notificationprogress11) | 描述通知进度。 |
+
+## PriorityNotificationType<sup>23+</sup>
+
+描述通知的优先级类型。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+| 名称                 | 值  | 说明                               |
+| --------------------| --- | --------------------------------- |
+| OTHER   | "OTHER"   | 表示通知优先级类型为默认。            |
+| PRIMARY_CONTACT    | "PRIMARY_CONTACT"   | 表示通知优先级类型为重要联系人。                 |
+| AT_ME  | "AT_ME"   | 表示通知优先级类型为@我。            |
+| URGENT_MESSAGE   | "URGENT_MESSAGE"   | 表示通知优先级类型为加急消息。                 |
+| SCHEDULE_REMINDER   | "SCHEDULE_REMINDER"   | 表示通知优先级类型为日程待办。                 |

@@ -22,7 +22,7 @@ Gestures can be used to zoom in or out only when both the **zoomAccess** and **v
 >
 > On a PC or 2-in-1 device, the **viewport** tag does not take effect. You can only set **zoomAccess** to **false** to disable gesture zoom.
 > 
-> The preceding tags can only be used to enable or disable the zoom functionality. If **minimum-scale** and **maximum-scale** are set in the **viewport** tag, the zoom range is also restricted by the two attributes. When the maximum and minimum values are the same, the web page cannot be zoomed in or out. Currently, ArkWeb does not provide the capability of forcibly zooming in or out a page.
+> The preceding tags can only be used to enable or disable the zoom functionality. If **minimum-scale** and **maximum-scale** are set in the **viewport** tag, the zoom range is also restricted by the two attributes. When the maximum and minimum values are the same, the web page cannot be zoomed in or out.
 >
 > In addition, the zoom-out scale is limited by the width of the web page.
 
@@ -45,9 +45,13 @@ struct WebComponent {
 }
 ```
 
+### Setting Forcible Gesture Zoom
+
+You can use the [forceEnableZoom](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#forceenablezoom21) attribute to set the forcible zoom functionality of a web page. When this attribute is set to **true**, the gesture zoom behavior is not restricted by **minimum-scale**, **maximum-scale**, and **user-scalable=no**.
+
 ### Setting Keyboard and Mouse Wheel Zoom
 
-By default, ArkWeb supports zooming by pressing the **Ctrl**+**'-'/'+'** keys or using the mouse wheel with the **Ctrl** key. An application can intercept keyboard events to disable keyboard zoom. Currently, the application cannot disable mouse wheel zoom.
+By default, ArkWeb supports zooming by pressing the **Ctrl**+**'-'/'+'** keys or using the mouse wheel with the **Ctrl** key. An application can intercept keyboard events to disable keyboard zoom.
 
 Example of intercepting keyboard events to disable keyboard zoom:
 
@@ -110,10 +114,7 @@ This API event corresponds to the gesture event (zoom with two fingers). **event
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import hilog from '@ohos.hilog';
-const TAG = '[Sample_WebManagementZooming]';
-const DOMAIN = 0xF811;
-const BUNDLE = 'WebManagementZooming_';
+
 @Entry
 @Component
 struct WebComponent {
@@ -123,7 +124,7 @@ struct WebComponent {
     Column() {
       Web({ src: 'www.example.com', controller: this.controller })
         .onScaleChange((event) => {
-          hilog.info(DOMAIN, TAG, BUNDLE, 'onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
+          console.info('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
         })
     }
   }
@@ -149,10 +150,7 @@ You can use **zoomIn** to zoom in the current web page by 25% or **zoomOut** to 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
-const TAG = '[Sample_WebManagementZooming]';
-const DOMAIN = 0xF811;
-const BUNDLE = 'WebManagementZooming_';
+
 @Entry
 @Component
 struct WebComponent {
@@ -164,7 +162,7 @@ struct WebComponent {
           try {
             this.controller.zoomIn();
           } catch (error) {
-            hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Button('zoomOut')
@@ -172,7 +170,7 @@ struct WebComponent {
           try {
             this.controller.zoomOut();
           } catch (error) {
-            hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -191,10 +189,7 @@ You can use **zoom** to zoom in or out on the current web page. When the input p
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
-const TAG = '[Sample_WebManagementZooming]';
-const DOMAIN = 0xF811;
-const BUNDLE = 'WebManagementZooming_';
+
 @Entry
 @Component
 struct WebComponent {
@@ -213,7 +208,7 @@ struct WebComponent {
           try {
             this.controller.zoom(this.factor);
           } catch (error) {
-            hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -237,10 +232,7 @@ factor = 100 * targetFactor / pageFactor
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
-const TAG = '[Sample_WebManagementZooming]';
-const DOMAIN = 0xF811;
-const BUNDLE = 'WebManagementZooming_';
+
 @Entry
 @Component
 struct WebComponent {
@@ -264,13 +256,13 @@ struct WebComponent {
             let factor = this.targetFactor * this.intNumber / this.pageFactor;
             this.controller.zoom(factor);
           } catch (error) {
-            hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
         .zoomAccess(true)
         .onScaleChange((event) => {
-          hilog.error(DOMAIN, TAG, BUNDLE, 'onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
+          console.error('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
           this.pageFactor = event.newScale;
         })
     }

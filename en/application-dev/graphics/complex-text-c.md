@@ -35,18 +35,20 @@ In the scenario where multi-language text is used, the **locale** field in the T
 
 For details about the canvas object, see [Obtaining the Canvas and Displaying the Drawing Result] (canvas-get-result-draw-c.md).
 
-```c++
+<!-- @[complex_text_c_multilingual_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+
+``` C++
 // Create a TypographyStyle, which is required when creating a TypographyCreate.
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // Set the text alignment mode to center.
 OH_Drawing_SetTypographyTextAlign(typoStyle, TEXT_ALIGN_CENTER);
-// Set locale to Chinese. 
-OH_Drawing_SetTypographyTextLocale(typoStyle, "zh-Hans");  
+// Set locale to Chinese.
+OH_Drawing_SetTypographyTextLocale(typoStyle, "zh-Hans");
 
 // Set the text color, size, and weight. If TextStyle is not set, the default TextStyle in TypographyStyle is used.
 OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
 OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-OH_Drawing_SetTextStyleFontSize(txtStyle, 100);
+OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TEN(width_));
 OH_Drawing_SetTextStyleFontWeight(txtStyle, FONT_WEIGHT_400);
 
 // Create a FontCollection object. FontCollection is used to manage the font matching logic.
@@ -58,17 +60,15 @@ OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoSt
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
 // Set the text content and add the text to the handler.
 const char *text = "Hello, Chinese\n";
-OH_Drawing_TypographyHandlerAddText(handler, text);  
+OH_Drawing_TypographyHandlerAddText(handler, text);
 
 // Use the handler to create Typography.
 OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-// Set the layout width.
-double layoutWidth = 1310;
-OH_Drawing_TypographyLayout(typography, layoutWidth);
-// Set the start position for drawing the text on the canvas.
-double position[2] = {0, 1140};
+// Set the maximum width.
+double maxWidth = width_;
+OH_Drawing_TypographyLayout(typography, maxWidth);
 // Draw the text on the canvas.
-OH_Drawing_TypographyPaint(typography, canvas, position[0], position[1]);
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
 
 // Release the memory.
 OH_Drawing_DestroyTypographyStyle(typoStyle);
@@ -77,7 +77,6 @@ OH_Drawing_DestroyFontCollection(fc);
 OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
-
 
 ### Effect
 
@@ -100,19 +99,19 @@ Multi-line text is more complex than single-line text. For multi-line text, you 
 
 ### How to Develop
 
-```c++
-// Set the typesetting width.
-double layoutWidth = 800;
-// Create a FontCollection. The FontCollection is used to manage the font matching logic.
+The following uses the BREAK_ALL policy as an example. The other policies are similar.
+
+<!-- @[complex_text_c_break_all_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+
+``` C++
+// Create a FontCollection object. FontCollection is used to manage the font matching logic.
 OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
 
 // Set the text color, size, and weight. If TextStyle is not set, the default TextStyle in TypographyStyle is used.
 OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
 OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
+OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TWENTY(width_));
 OH_Drawing_SetTextStyleFontWeight(txtStyle, FONT_WEIGHT_400);
-// When the word break strategy is WORD_BREAK_TYPE_BREAK_HYPHEN, you need to set the language preference for the paragraph. The paragraph will be displayed with different word break effects in different language preferences.
-// OH_Drawing_SetTextStyleLocale(txtStyle, "en-gb");
 
 // Set the text content.
 const char *text =
@@ -124,13 +123,12 @@ const char *text =
     "tempus. Nunc et enim interdum, commodo eros ac, pretium sapien. Pellentesque laoreet orci a nunc pharetra "
     "pharetra.";
 
-
 // Create a TypographyStyle object with the word break strategy set to BREAK_ALL.
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // Set the text alignment mode to center.
 OH_Drawing_SetTypographyTextAlign(typoStyle, TEXT_ALIGN_CENTER);
 // Set the word break strategy to WORD_BREAK_TYPE_BREAK_ALL.
-OH_Drawing_SetTypographyTextWordBreakType(typoStyle, WORD_BREAK_TYPE_BREAK_ALL);
+OH_Drawing_SetTypographyTextWordBreakType(typoStyle, OH_Drawing_WordBreakType::WORD_BREAK_TYPE_BREAK_ALL);
 // Set the maximum number of lines to 10. If the number of lines exceeds 10, the excess lines are not displayed.
 OH_Drawing_SetTypographyTextMaxLines(typoStyle, 10);
 
@@ -142,36 +140,11 @@ OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
 OH_Drawing_TypographyHandlerAddText(handler, text);
 
 OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-OH_Drawing_TypographyLayout(typography, layoutWidth);
-// Set the start position for drawing the text on the canvas.
-double positionBreakAll[2] = {0, 0};
+// Set the maximum width.
+double maxWidth = width_;
+OH_Drawing_TypographyLayout(typography, maxWidth);
 // Draw the text on the canvas.
-OH_Drawing_TypographyPaint(typography, canvas, positionBreakAll[0], positionBreakAll[1]);
-
-// Create a TypographyStyle object with the word break strategy set to BREAK_WORD.
-// OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
-// OH_Drawing_SetTypographyTextAlign(typoStyle, TEXT_ALIGN_CENTER);
-// OH_Drawing_SetTypographyTextWordBreakType(typoStyle, WORD_BREAK_TYPE_BREAK_WORD);
-// OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
-// OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-// OH_Drawing_TypographyHandlerAddText(handler, text);
-// OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-// OH_Drawing_TypographyLayout(typography, layoutWidth);
-// double positionBreakWord[2] = {0, 100};
-// OH_Drawing_TypographyPaint(typography, canvas, positionBreakWord[0], positionBreakWord[1]);
-
-// Create a TypographyStyle object with the word break strategy set to BREAK_HYPHEN.
-// OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
-// OH_Drawing_SetTypographyTextStyle(typoStyle, txtStyle);
-// OH_Drawing_SetTypographyTextAlign(typoStyle, TEXT_ALIGN_LEFT);
-// OH_Drawing_SetTypographyTextWordBreakType(typoStyle, WORD_BREAK_TYPE_BREAK_HYPHEN);
-// OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
-// OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-// OH_Drawing_TypographyHandlerAddText(handler, text);
-// OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-// OH_Drawing_TypographyLayout(typography, layoutWidth);
-// double positionBreakWord[2] = {0, 100};
-// OH_Drawing_TypographyPaint(typography, canvas, positionBreakWord[0], positionBreakWord[1]);
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
 
 // Release the memory.
 OH_Drawing_DestroyFontCollection(fc);
@@ -180,7 +153,6 @@ OH_Drawing_DestroyTypographyStyle(typoStyle);
 OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
-
 
 ### Effect
 
@@ -240,7 +212,9 @@ To use a decoration line, you need to initialize the decoration line style objec
 
 The following shows an example and the effect:
 
-```c++
+<!-- @[complex_text_c_decoration_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+
+``` C++
 // Create a TypographyStyle object. The object is required for creating Typography.
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // Set the text alignment mode to center.
@@ -251,7 +225,7 @@ const char *text = "Hello World Drawing\n";
 // Set the text color, size, and weight. If TextStyle is not set, the default TextStyle in TypographyStyle is used.
 OH_Drawing_TextStyle *txtStyleWithDeco = OH_Drawing_CreateTextStyle();
 OH_Drawing_SetTextStyleColor(txtStyleWithDeco, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-OH_Drawing_SetTextStyleFontSize(txtStyleWithDeco, 100);
+OH_Drawing_SetTextStyleFontSize(txtStyleWithDeco, DIV_TEN(width_));
 OH_Drawing_SetTextStyleFontWeight(txtStyleWithDeco, FONT_WEIGHT_400);
 // Set the decoration line to LINE_THROUGH.
 OH_Drawing_SetTextStyleDecoration(txtStyleWithDeco, TEXT_DECORATION_LINE_THROUGH);
@@ -264,7 +238,7 @@ OH_Drawing_SetTextStyleDecorationColor(txtStyleWithDeco, OH_Drawing_ColorSetArgb
 OH_Drawing_TextStyle *txtStyleNoDeco = OH_Drawing_CreateTextStyle();
 // Set the text color, size, and weight. If TextStyle is not set, the default TextStyle in TypographyStyle is used.
 OH_Drawing_SetTextStyleColor(txtStyleNoDeco, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-OH_Drawing_SetTextStyleFontSize(txtStyleNoDeco, 100);
+OH_Drawing_SetTextStyleFontSize(txtStyleNoDeco, DIV_TEN(width_));
 OH_Drawing_SetTextStyleFontWeight(txtStyleNoDeco, FONT_WEIGHT_400);
 
 // Create a FontCollection object to manage the font matching logic.
@@ -283,13 +257,11 @@ OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyleNoDeco);
 OH_Drawing_TypographyHandlerAddText(handler, text);
 
 OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-// Set the layout width.
-double layoutWidth = 1310;
-OH_Drawing_TypographyLayout(typography, layoutWidth);
-// Set the start position for drawing the text on the canvas.
-double position[2] = {0, 1140};
+// Set the maximum width.
+double maxWidth = width_;
+OH_Drawing_TypographyLayout(typography, maxWidth);
 // Draw the text on the canvas.
-OH_Drawing_TypographyPaint(typography, canvas, position[0], position[1]);
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
 
 // Release the memory.
 OH_Drawing_DestroyTypographyStyle(typoStyle);
@@ -299,7 +271,6 @@ OH_Drawing_DestroyFontCollection(fc);
 OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
-
 
 ![image_0000002211603604](figures/image_0000002211603604.png)
 
@@ -318,8 +289,9 @@ Common **font features** include liga, frac, and case, which require the corresp
 
 The following shows an example and the effect:
 
+<!-- @[complex_text_c_font_feature_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```c++
+``` C++
 // Create a TypographyStyle, which is required when creating a TypographyCreate.
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // Set the text alignment mode to center.
@@ -330,7 +302,7 @@ const char *text = "1/2 1/3 1/4\n";
 // Set the text color, size, and weight. If TextStyle is not set, the text cannot be drawn.
 OH_Drawing_TextStyle *txtStyleWithFeature = OH_Drawing_CreateTextStyle();
 OH_Drawing_SetTextStyleColor(txtStyleWithFeature, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-OH_Drawing_SetTextStyleFontSize(txtStyleWithFeature, 100);
+OH_Drawing_SetTextStyleFontSize(txtStyleWithFeature, DIV_TEN(width_));
 OH_Drawing_SetTextStyleFontWeight(txtStyleWithFeature, FONT_WEIGHT_900);
 // Enable the frac font feature. This feature replaces slashed numbers with ordinary (diagonal) fractions.
 OH_Drawing_TextStyleAddFontFeature(txtStyleWithFeature, "frac", 1);
@@ -339,7 +311,7 @@ OH_Drawing_TextStyleAddFontFeature(txtStyleWithFeature, "frac", 1);
 OH_Drawing_TextStyle *txtStyleNoFeature = OH_Drawing_CreateTextStyle();
 // Set the text color, size, and weight. If TextStyle is not set, the text cannot be drawn.
 OH_Drawing_SetTextStyleColor(txtStyleNoFeature, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-OH_Drawing_SetTextStyleFontSize(txtStyleNoFeature, 100);
+OH_Drawing_SetTextStyleFontSize(txtStyleNoFeature, DIV_TEN(width_));
 OH_Drawing_SetTextStyleFontWeight(txtStyleNoFeature, FONT_WEIGHT_900);
 
 // Create a FontCollection object to manage the font matching logic.
@@ -351,24 +323,22 @@ OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoSt
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyleWithFeature);
 // Add the text to the handler.
 OH_Drawing_TypographyHandlerAddText(handler, text);
-// Display the TextStyle object.
+// Destroy the created TextStyle object.
 OH_Drawing_TypographyHandlerPopTextStyle(handler);
 
 // Add a text style without font features.
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyleNoFeature);
 // Add the text to the handler.
 OH_Drawing_TypographyHandlerAddText(handler, text);
-// Display the TextStyle object.
+// Destroy the created TextStyle object.
 OH_Drawing_TypographyHandlerPopTextStyle(handler);
 
 OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-// Set the layout width.
-double layoutWidth = 1310;
-OH_Drawing_TypographyLayout(typography, layoutWidth);
-// Set the start position for drawing the text on the canvas.
-double position[2] = {0, 1140};
+// Set the maximum width.
+double maxWidth = width_;
+OH_Drawing_TypographyLayout(typography, maxWidth);
 // Draw the text on the canvas.
-OH_Drawing_TypographyPaint(typography, canvas, position[0], position[1]);
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
 
 // Release the memory.
 OH_Drawing_DestroyTypographyStyle(typoStyle);
@@ -378,7 +348,6 @@ OH_Drawing_DestroyFontCollection(fc);
 OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
-
 
 ![image_0000002246603641](figures/image_0000002246603641.png)
 
@@ -397,8 +366,9 @@ Unlike traditional font files (each variant requires an independent file), varia
 
 The following shows an example and the effect:
 
+<!-- @[complex_text_c_font_variation_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```c++
+``` C++
 // Create a TypographyStyle. The TypographyStyle is required for creating Typography.
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // Set the text alignment mode to center.
@@ -407,11 +377,11 @@ OH_Drawing_SetTypographyTextAlign(typoStyle, TEXT_ALIGN_CENTER);
 const char *text = "Hello World Drawing\n";
 
 OH_Drawing_TextStyle *txtStyleWithVar = OH_Drawing_CreateTextStyle();
-// Set the font weight of the variable font. If the font file supports the font weight, you can also set slnt and wdth.
+// Set the font weight to 800. If the font file supports, you can also set slnt and wdth.
 OH_Drawing_TextStyleAddFontVariation(txtStyleWithVar, "wght", 800);
 // Set the text color, size, and weight. If TextStyle is not set, the default TextStyle in TypographyStyle is used.
 OH_Drawing_SetTextStyleColor(txtStyleWithVar, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-OH_Drawing_SetTextStyleFontSize(txtStyleWithVar, 100);
+OH_Drawing_SetTextStyleFontSize(txtStyleWithVar, DIV_TEN(width_));
 // The font weight set here does not take effect and will be overwritten by the font weight of the variable font.
 OH_Drawing_SetTextStyleFontWeight(txtStyleWithVar, FONT_WEIGHT_400);
 
@@ -419,7 +389,7 @@ OH_Drawing_SetTextStyleFontWeight(txtStyleWithVar, FONT_WEIGHT_400);
 OH_Drawing_TextStyle *txtStyleNoVar = OH_Drawing_CreateTextStyle();
 // Set the text color, size, and weight. If TextStyle is not set, the default TextStyle in TypographyStyle is used.
 OH_Drawing_SetTextStyleColor(txtStyleNoVar, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-OH_Drawing_SetTextStyleFontSize(txtStyleNoVar, 100);
+OH_Drawing_SetTextStyleFontSize(txtStyleNoVar, DIV_TEN(width_));
 OH_Drawing_SetTextStyleFontWeight(txtStyleNoVar, FONT_WEIGHT_400);
 
 // Create a FontCollection. FontCollection is used to manage the font matching logic.
@@ -442,13 +412,11 @@ OH_Drawing_TypographyHandlerAddText(handler, text);
 OH_Drawing_TypographyHandlerPopTextStyle(handler);
 
 OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-// Set the layout width.
-double layoutWidth = 1310;
-OH_Drawing_TypographyLayout(typography, layoutWidth);
-// Set the start position for drawing the text on the canvas.
-double position[2] = {0, 1140};
+// Set the maximum width.
+double maxWidth = width_;
+OH_Drawing_TypographyLayout(typography, maxWidth);
 // Draw the text on the canvas.
-OH_Drawing_TypographyPaint(typography, canvas, position[0], position[1]);
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
 
 // Release the memory.
 OH_Drawing_DestroyTypographyStyle(typoStyle);
@@ -458,7 +426,6 @@ OH_Drawing_DestroyFontCollection(fc);
 OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
-
 
 ![image_0000002211443824](figures/image_0000002211443824.png)
 
@@ -483,8 +450,9 @@ You need to set the shadow effect array in the text style so that the shadow eff
 
 The following shows an example and the effect:
 
+<!-- @[complex_text_c_shadow_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```c++
+``` C++
 // Create a TypographyStyle. The TypographyStyle is required for creating Typography.
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // Set the text alignment mode to center.
@@ -495,13 +463,14 @@ const char *text = "Hello World Drawing\n";
 // Set the text color, size, and weight. If TextStyle is not set, the default TextStyle in TypographyStyle is used.
 OH_Drawing_TextStyle *txtStyleWithShadow = OH_Drawing_CreateTextStyle();
 OH_Drawing_SetTextStyleColor(txtStyleWithShadow, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-OH_Drawing_SetTextStyleFontSize(txtStyleWithShadow, 100);
+OH_Drawing_SetTextStyleFontSize(txtStyleWithShadow, DIV_TEN(width_));
 OH_Drawing_SetTextStyleFontWeight(txtStyleWithShadow, FONT_WEIGHT_400);
 // Set the shadow offset.
 OH_Drawing_Point *offset = OH_Drawing_PointCreate(1, 1);
 OH_Drawing_TextShadow *shadow = OH_Drawing_CreateTextShadow();
+double radius = 10.0;
 // Set the style for TextShadow.
-OH_Drawing_SetTextShadow(shadow, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00), offset, 10);
+OH_Drawing_SetTextShadow(shadow, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00), offset, radius);
 // Add TextShadow to TextStyle.
 OH_Drawing_TextStyleAddShadow(txtStyleWithShadow, shadow);
 
@@ -509,7 +478,7 @@ OH_Drawing_TextStyleAddShadow(txtStyleWithShadow, shadow);
 OH_Drawing_TextStyle *txtStyleNoShadow = OH_Drawing_CreateTextStyle();
 // Set the text color, size, and weight. If TextStyle is not set, the default TextStyle in TypographyStyle is used.
 OH_Drawing_SetTextStyleColor(txtStyleNoShadow, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-OH_Drawing_SetTextStyleFontSize(txtStyleNoShadow, 100);
+OH_Drawing_SetTextStyleFontSize(txtStyleNoShadow, DIV_TEN(width_));
 OH_Drawing_SetTextStyleFontWeight(txtStyleNoShadow, FONT_WEIGHT_400);
 
 // Create a FontCollection object to manage the font matching logic.
@@ -528,18 +497,16 @@ OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyleNoShadow);
 OH_Drawing_TypographyHandlerAddText(handler, text);
 
 OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-// Set the layout width.
-double layoutWidth = 1310;
-OH_Drawing_TypographyLayout(typography, layoutWidth);
-// Set the start position for drawing the text on the canvas.
-double position[2] = {0, 1140};
+// Set the maximum width.
+double maxWidth = width_;
+OH_Drawing_TypographyLayout(typography, maxWidth);
 // Draw the text on the canvas.
-OH_Drawing_TypographyPaint(typography, canvas, position[0], position[1]);
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
 
 // Release the memory.
 OH_Drawing_DestroyTypographyStyle(typoStyle);
 OH_Drawing_DestroyTextStyle(txtStyleWithShadow);
-OH_Drawing_DestroyPoint(offset);
+OH_Drawing_PointDestroy(offset);
 OH_Drawing_DestroyTextShadow(shadow);
 OH_Drawing_DestroyTextStyle(txtStyleNoShadow);
 OH_Drawing_DestroyFontCollection(fc);
@@ -565,17 +532,18 @@ Placeholders are key to implementing mixed layout of images and text. They are v
 
 The following shows an example and the effect:
 
+<!-- @[complex_text_c_placeholder_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```c++
-// Set the layout width.
-double layoutWidth = 1310;
+``` C++
+// Set the maximum width.
+double maxWidth = width_;
 // Create a FontCollection object. FontCollection is used to manage the font matching logic.
 OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
 
 // Set the text color, size, and weight. If TextStyle is not set, the default TextStyle in TypographyStyle is used.
 OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
 OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-OH_Drawing_SetTextStyleFontSize(txtStyle, 100);
+OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TEN(width_));
 OH_Drawing_SetTextStyleFontWeight(txtStyle, FONT_WEIGHT_400);
 
 // Set the text content.
@@ -590,10 +558,10 @@ OH_Drawing_SetTypographyTextAlign(typoStyle, TEXT_ALIGN_CENTER);
 OH_Drawing_TypographyCreate *handlerWithPlaceholder = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
 // Create a placeholder and initialize its member variables.
 OH_Drawing_PlaceholderSpan placeholder;
-placeholder.width = 200.0;
-placeholder.height = 200.0;
+placeholder.width = DIV_TEN(width_);
+placeholder.height = DIV_FIVE(width_);
 placeholder.alignment = ALIGNMENT_ABOVE_BASELINE; // Baseline alignment policy
-placeholder.baseline = TEXT_BASELINE_ALPHABETIC; // Text baseline type
+placeholder.baseline = TEXT_BASELINE_ALPHABETIC; // text baseline type.
 placeholder.baselineOffset = 0.0; // Offset of the text relative to the baseline. This parameter is valid only when the alignment policy is OFFSET_AT_BASELINE.
 
 // Place the placeholder at the beginning.
@@ -605,11 +573,9 @@ OH_Drawing_TypographyHandlerPushTextStyle(handlerWithPlaceholder, txtStyle);
 OH_Drawing_TypographyHandlerAddText(handlerWithPlaceholder, text);
 
 OH_Drawing_Typography *typographyWithPlaceholder = OH_Drawing_CreateTypography(handlerWithPlaceholder);
-OH_Drawing_TypographyLayout(typographyWithPlaceholder, layoutWidth);
-// Set the start position for drawing the text on the canvas.
-double positionBreakAll[2] = {0, 0};
+OH_Drawing_TypographyLayout(typographyWithPlaceholder, maxWidth);
 // Draw the text on the canvas.
-OH_Drawing_TypographyPaint(typographyWithPlaceholder, canvas, positionBreakAll[0], positionBreakAll[1]);
+OH_Drawing_TypographyPaint(typographyWithPlaceholder, cCanvas_, 0, DIV_TEN(width_));
 
 // Create OH_Drawing_TypographyCreate.
 OH_Drawing_TypographyCreate *handlerNoPlaceholder = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
@@ -619,11 +585,10 @@ OH_Drawing_TypographyHandlerPushTextStyle(handlerNoPlaceholder, txtStyle);
 OH_Drawing_TypographyHandlerAddText(handlerNoPlaceholder, text);
 
 OH_Drawing_Typography *typographyNoPlaceholder = OH_Drawing_CreateTypography(handlerNoPlaceholder);
-OH_Drawing_TypographyLayout(typographyNoPlaceholder, layoutWidth);
-// Set the start position for drawing the text on the canvas.
-double positionBreakWord[2] = {0, 1140};
+
+OH_Drawing_TypographyLayout(typographyNoPlaceholder, maxWidth);
 // Draw the text on the canvas.
-OH_Drawing_TypographyPaint(typographyNoPlaceholder, canvas, positionBreakWord[0], positionBreakWord[1]);
+OH_Drawing_TypographyPaint(typographyNoPlaceholder, cCanvas_, 0, DIV_TWO(width_));
 
 // Release the memory.
 OH_Drawing_DestroyFontCollection(fc);
@@ -651,19 +616,20 @@ If automatic spacing is enabled, the spacing between CJK (Chinese, Japanese, and
 
 The following shows an example and the effect:
 
+<!-- @[complex_text_c_auto_space_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```c++
+``` C++
 // Create a TypographyStyle object. The object is required for creating Typography.
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // Enable automatic spacing. The default value is false.
 OH_Drawing_SetTypographyTextAutoSpace(typoStyle, true);
 // Set the text content.
-const char *text = "test test©test© test.";
+const char *text = "test test © test © test.";
 
 OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
 // Set the text color, size, and weight. If TextStyle is not set, the default TextStyle in TypographyStyle is used.
 OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-OH_Drawing_SetTextStyleFontSize(txtStyle, 100);
+OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TEN(width_));
 
 // Create a FontCollection object. FontCollection is used to manage the font matching logic.
 OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
@@ -676,22 +642,40 @@ OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
 OH_Drawing_TypographyHandlerAddText(handler, text);
 // Create a paragraph.
 OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-// Set the layout width.
-double layoutWidth = 1310;
+// Set the maximum width.
+double maxWidth = width_;
 // Typeset the paragraph based on the typesetting width.
-OH_Drawing_TypographyLayout(typography, layoutWidth);
-// Set the start position for drawing the text on the canvas.
-double position[2] = {0, 1140};
+OH_Drawing_TypographyLayout(typography, maxWidth);
 // Draw the text on the canvas.
-OH_Drawing_TypographyPaint(typography, canvas, position[0], position[1]);
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
+
+// Enable automatic spacing for comparison.
+OH_Drawing_SetTypographyTextAutoSpace(typoStyle, false);
+
+// Use FontCollection and the created TypographyStyle to create TypographyCreate. TypographyCreate is used to create Typography.
+OH_Drawing_TypographyCreate *handlerWithoutAutoSpace = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+
+// Add the text style to handlerWithoutAutoSpace.
+OH_Drawing_TypographyHandlerPushTextStyle(handlerWithoutAutoSpace, txtStyle);
+// Add the text to handlerWithoutAutoSpace.
+OH_Drawing_TypographyHandlerAddText(handlerWithoutAutoSpace, text);
+// Create a paragraph.
+OH_Drawing_Typography *typographyWithoutAutoSpace = OH_Drawing_CreateTypography(handlerWithoutAutoSpace);
+// Typeset the paragraph based on the typesetting width.
+OH_Drawing_TypographyLayout(typographyWithoutAutoSpace, maxWidth);
+// Draw the text on the canvas.
+OH_Drawing_TypographyPaint(typographyWithoutAutoSpace, cCanvas_, 0, DIV_FOUR(width_));
 
 // Release the memory.
 OH_Drawing_DestroyTypographyStyle(typoStyle);
 OH_Drawing_DestroyTextStyle(txtStyle);
 OH_Drawing_DestroyFontCollection(fc);
 OH_Drawing_DestroyTypographyHandler(handler);
+OH_Drawing_DestroyTypographyHandler(handlerWithoutAutoSpace);
 OH_Drawing_DestroyTypography(typography);
+OH_Drawing_DestroyTypography(typographyWithoutAutoSpace);
 ```
+
 
 | Setting Paragraph Styles (Automatic Spacing)| Effect| 
 | -------- | -------- |
@@ -709,20 +693,25 @@ OH_Drawing_DestroyTypography(typography);
 
 
 The following shows an example and the effect.
-```c++
+
+<!-- @[complex_text_c_gradient_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+
+``` C++
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
 // Set the text size.
-OH_Drawing_SetTextStyleFontSize(txtStyle, 100);
+OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TEN(width_));
 // Create a shader object and set the color, start point, and end point.
 OH_Drawing_Point *startPt = OH_Drawing_PointCreate(0, 0);
+// The end point is (900, 900).
 OH_Drawing_Point *endPt = OH_Drawing_PointCreate(900, 900);
 uint32_t colors[] = {0xFFFFFF00, 0xFFFF0000, 0xFF0000FF};
 float pos[] = {0.0f, 0.5f, 1.0f};
+// The length of the pos array is 3.
 OH_Drawing_ShaderEffect *colorShaderEffect =
     OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, colors, pos, 3, OH_Drawing_TileMode::CLAMP);
 // Create a brush object and add the shader to the brush.
-OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 OH_Drawing_BrushSetShaderEffect(brush, colorShaderEffect);
 //Add the brush to the text style.
 OH_Drawing_SetTextStyleForegroundBrush(txtStyle, brush);
@@ -733,8 +722,11 @@ OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
 const char *text = "Hello World";
 OH_Drawing_TypographyHandlerAddText(handler, text);
 OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-OH_Drawing_TypographyLayout(typography, 1000);
-OH_Drawing_TypographyPaint(typography, canvas, 0, 0);
+// Set the maximum width.
+double maxWidth = width_;
+// Typeset the paragraph based on the typesetting width.
+OH_Drawing_TypographyLayout(typography, maxWidth);
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
 
 //Release the object.
 OH_Drawing_DestroyFontCollection(fc);
@@ -745,6 +737,7 @@ OH_Drawing_DestroyTypographyStyle(typoStyle);
 OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
+
 
 ![image_gradient_c](figures/image_gradient_c.png)
 
@@ -757,13 +750,17 @@ OH_Drawing_DestroyTypography(typography);
 | void OH_Drawing_SetTypographyVerticalAlignment(OH_Drawing_TypographyStyle* style, OH_Drawing_TextVerticalAlignment align) | Sets the vertical layout mode of text.| 
 
 The following shows an example and the effect:
-```c++
+
+<!-- @[complex_text_c_vertical_alignment_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+
+``` C++
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
 // Set the vertical alignment mode.
-OH_Drawing_SetTypographyVerticalAlignment(typoStyle, OH_Drawing_TextVerticalAlignment::TEXT_VERTICAL_ALIGNMENT_CENTER);
+OH_Drawing_SetTypographyVerticalAlignment(typoStyle,
+                                          OH_Drawing_TextVerticalAlignment::TEXT_VERTICAL_ALIGNMENT_CENTER);
 // Set the text size.
-OH_Drawing_SetTextStyleFontSize(txtStyle, 30);
+OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TEN(width_));
 // Set the text color.
 OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
 // Create a layout object and draw it.
@@ -773,8 +770,11 @@ OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
 const char *text = "VerticalAlignment-center";
 OH_Drawing_TypographyHandlerAddText(handler, text);
 OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-OH_Drawing_TypographyLayout(typography, 1000);
-OH_Drawing_TypographyPaint(typography, canvas, 0, 0);
+// Set the maximum width.
+double maxWidth = width_;
+// Typeset the paragraph based on the typesetting width.
+OH_Drawing_TypographyLayout(typography, maxWidth);
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
 
 //Release the object.
 OH_Drawing_DestroyFontCollection(fc);
@@ -796,13 +796,16 @@ The following figure shows the effect. (The black box is only used to display th
 | void OH_Drawing_SetTextStyleBadgeType(OH_Drawing_TextStyle* style, OH_Drawing_TextBadgeType textBadgeType) | Enables the superscript and subscript style.| 
 
 The following shows an example and the effect:
-```c++
+
+<!-- @[complex_text_c_badge_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+
+``` C++
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
 OH_Drawing_TextStyle *badgeTxtStyle = OH_Drawing_CreateTextStyle();
 // Set the text size.
-OH_Drawing_SetTextStyleFontSize(txtStyle, 30);
-OH_Drawing_SetTextStyleFontSize(badgeTxtStyle, 30);
+OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TWENTY(width_));
+OH_Drawing_SetTextStyleFontSize(badgeTxtStyle, DIV_TWENTY(width_));
 // Set the text color.
 OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
 OH_Drawing_SetTextStyleColor(badgeTxtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
@@ -818,8 +821,11 @@ OH_Drawing_TypographyHandlerPushTextStyle(handler, badgeTxtStyle);
 const char *badgeText = "2";
 OH_Drawing_TypographyHandlerAddText(handler, badgeText);
 OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-OH_Drawing_TypographyLayout(typography, 1000);
-OH_Drawing_TypographyPaint(typography, canvas, 0, 0);
+// Set the maximum width.
+double maxWidth = width_;
+// Typeset the paragraph based on the typesetting width.
+OH_Drawing_TypographyLayout(typography, maxWidth);
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
 
 //Release the object.
 OH_Drawing_DestroyFontCollection(fc);
@@ -829,6 +835,7 @@ OH_Drawing_DestroyTypographyStyle(typoStyle);
 OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
+
 
 ![image_complexArkTsDemo2_2](figures/en_image_superscript.jpg)
 
@@ -844,8 +851,9 @@ High contrast can change dark text to black and light text to white. You can ena
 
 The following shows an example and the effect:
 
+<!-- @[complex_text_c_high_contrast_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```c++
+``` C++
 // Enable the high contrast mode for text rendering of the app. The priority of this mode is higher than that of the high contrast text configuration in the system settings.
 OH_Drawing_SetTextHighContrast(TEXT_APP_ENABLE_HIGH_CONTRAST);
 // Create a TypographyStyle object. The TypographyStyle object is required when you create Typography.
@@ -854,9 +862,9 @@ OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // Set the text color and size. If TextStyle is not set, the default TextStyle in TypographyStyle is used.
 OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
 OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x6F, 0xFF, 0xFF));
-OH_Drawing_SetTextStyleFontSize(txtStyle, 100);
+OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TEN(width_));
 
-// Create a FontCollection object to manage the font matching logic.
+// Create a FontCollection object. FontCollection is used to manage the font matching logic.
 OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
 // Use the FontCollection object and the TypographyStyle object created earlier to create a TypographyCreate object.
 OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
@@ -865,12 +873,15 @@ OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoSt
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
 // Set the text content and add the text to the handler.
 const char *text = "Hello World Drawing\n";
-OH_Drawing_TypographyHandlerAddText(handler, text);  
+OH_Drawing_TypographyHandlerAddText(handler, text);
 
 OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-OH_Drawing_TypographyLayout(typography, 1250);
+// Set the maximum width.
+double maxWidth = width_;
+// Typeset the paragraph based on the typesetting width.
+OH_Drawing_TypographyLayout(typography, maxWidth);
 // Draw the text on the canvas.
-OH_Drawing_TypographyPaint(typography, canvas, 10, 800);
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
 
 // Release the memory.
 OH_Drawing_DestroyTypographyStyle(typoStyle);
@@ -901,35 +912,37 @@ From API version 21 onwards, the upper and lower limits of the row height can be
 | [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributedouble) | Pass the ID OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM to set the minimum line height.|
 
 The following shows an example and the effect.
-```c++
-OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
-OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
-// Set the text size.
-OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
-// Set the text color.
-OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-// Set the upper limit of the line height.
-OH_Drawing_SetTextStyleAttributeDouble(txtStyle, OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM, 65);
-// Set the minimum line height.
-OH_Drawing_SetTextStyleAttributeDouble(txtStyle, OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM, 65);
-//Create a layout object and draw the text.
-OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
-OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
-OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-const char *text = "Hello World!";
-OH_Drawing_TypographyHandlerAddText(handler, badgeText);
-OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-OH_Drawing_TypographyLayout(typography, 1000);
-OH_Drawing_TypographyPaint(typography, canvas, 0, 0);
-
-//Release the object.
-OH_Drawing_DestroyFontCollection(fc);
-OH_Drawing_DestroyTextStyle(txtStyle);
-OH_Drawing_DestroyTextStyle(badgeTxtStyle);
-OH_Drawing_DestroyTypographyStyle(typoStyle);
-OH_Drawing_DestroyTypographyHandler(handler);
-OH_Drawing_DestroyTypography(typography);
-```
+  <!-- @[complex_text_c_line_height_limit_one_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+  
+  ``` C++
+  OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+  OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+  // Set the text size to 50.
+  OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
+  // Set the text color.
+  OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+  OH_Drawing_SetTextStyleAttributeDouble(txtStyle,
+      OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM, 65); // Set the maximum line height to 65.
+  OH_Drawing_SetTextStyleAttributeDouble(txtStyle,
+      OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM, 65); // Set the minimum line height to 65.
+  //Create a layout object and draw the text.
+  OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+  OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+  OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+  const char *text = "Hello World!";
+  OH_Drawing_TypographyHandlerAddText(handler, text);
+  OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+  // The typesetting width is 1000.
+  OH_Drawing_TypographyLayout(typography, 1000);
+  OH_Drawing_TypographyPaint(typography, cCanvas_, 0, 0);
+  
+  //Release the object.
+  OH_Drawing_DestroyFontCollection(fc);
+  OH_Drawing_DestroyTextStyle(txtStyle);
+  OH_Drawing_DestroyTypographyStyle(typoStyle);
+  OH_Drawing_DestroyTypographyHandler(handler);
+  OH_Drawing_DestroyTypography(typography);
+  ```
 
 The effect is as follows:
 
@@ -948,35 +961,38 @@ Sets the scale factor of the line height.
 | [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributeint) | Pass the ID OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE to enable the line height scaling style.|
 
 The following shows an example and the effect.
-```c++
-OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
-OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
-// Set the text size.
-OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
-// Set the text color.
-OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-// Set the line height scaling coefficient.
-OH_Drawing_SetTextStyleFontHeight(txtStyle, 1.5);
-// Set the line height scaling style (1 indicates that the line height scaling uses the font height as the scaling base).
-OH_Drawing_SetTextStyleAttributeInt(txtStyle, OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE, 1);
-//Create a layout object and draw the text.
-OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
-OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
-OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-const char *text = "Hello World!";
-OH_Drawing_TypographyHandlerAddText(handler, badgeText);
-OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-OH_Drawing_TypographyLayout(typography, 1000);
-OH_Drawing_TypographyPaint(typography, canvas, 0, 0);
-
-//Release the object.
-OH_Drawing_DestroyFontCollection(fc);
-OH_Drawing_DestroyTextStyle(txtStyle);
-OH_Drawing_DestroyTextStyle(badgeTxtStyle);
-OH_Drawing_DestroyTypographyStyle(typoStyle);
-OH_Drawing_DestroyTypographyHandler(handler);
-OH_Drawing_DestroyTypography(typography);
-```
+  <!-- @[complex_text_c_line_height_limit_two_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+  
+  ``` C++
+  OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+  OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+  // Set the text size to 50.
+  OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
+  // Set the text color.
+  OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+  // Set the line height scale factor to 1.5.
+  OH_Drawing_SetTextStyleFontHeight(txtStyle, 1.5);
+  // Set the line height scaling style (1 indicates that the line height scaling uses the font height as the scaling base).
+  OH_Drawing_SetTextStyleAttributeInt(txtStyle,
+      OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE, 1);
+  //Create a layout object and draw the text.
+  OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+  OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+  OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+  const char *text = "Hello World!";
+  OH_Drawing_TypographyHandlerAddText(handler, text);
+  OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+  // Set the typesetting width to 1000.
+  OH_Drawing_TypographyLayout(typography, 1000);
+  OH_Drawing_TypographyPaint(typography, cCanvas_, 0, 0);
+  
+  //Release the object.
+  OH_Drawing_DestroyFontCollection(fc);
+  OH_Drawing_DestroyTextStyle(txtStyle);
+  OH_Drawing_DestroyTypographyStyle(typoStyle);
+  OH_Drawing_DestroyTypographyHandler(handler);
+  OH_Drawing_DestroyTypography(typography);
+  ```
 
 The effect is as follows:
 
@@ -995,35 +1011,35 @@ In API version 21 and later versions, you can set the line spacing to improve th
 | [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double value)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributedouble) | Pass the ID OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING to set the line spacing.|
 
 The following shows an example and the effect.
-```c++
-OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
-// Set the row spacing.
-OH_Drawing_SetTypographyStyleAttributeDouble(typoStyle, OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING, 100);
-// Disable the paragraph ascent and descent.
-OH_Drawing_TypographyTextSetHeightBehavior(typoStyle, OH_Drawing_TextHeightBehavior::TEXT_HEIGHT_DISABLE_ALL);
-OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
-// Set the text size.
-OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
-// Set the text color.
-OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-// Create a layout object and draw it.
-OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
-OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
-OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-const char *text = "Hello World!";
-OH_Drawing_TypographyHandlerAddText(handler, badgeText);
-OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-OH_Drawing_TypographyLayout(typography, 200);
-OH_Drawing_TypographyPaint(typography, canvas, 0, 0);
-
-//Release the object.
-OH_Drawing_DestroyFontCollection(fc);
-OH_Drawing_DestroyTextStyle(txtStyle);
-OH_Drawing_DestroyTextStyle(badgeTxtStyle);
-OH_Drawing_DestroyTypographyStyle(typoStyle);
-OH_Drawing_DestroyTypographyHandler(handler);
-OH_Drawing_DestroyTypography(typography);
-```
+  <!-- @[complex_text_c_line_spacing_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+  
+  ``` C++
+  OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+  OH_Drawing_SetTypographyStyleAttributeDouble(typoStyle,
+      OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING, 100); // Set the line spacing to 100.
+  OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+  // Set the text size to 50.
+  OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
+  // Set the text color.
+  OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+  // Create a layout object and draw it.
+  OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+  OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+  OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+  const char *text = "Hello World!";
+  OH_Drawing_TypographyHandlerAddText(handler, text);
+  OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+  // Set the width to 200.
+  OH_Drawing_TypographyLayout(typography, 200);
+  OH_Drawing_TypographyPaint(typography, cCanvas_, 0, 0);
+  
+  //Release the object.
+  OH_Drawing_DestroyFontCollection(fc);
+  OH_Drawing_DestroyTextStyle(txtStyle);
+  OH_Drawing_DestroyTypographyStyle(typoStyle);
+  OH_Drawing_DestroyTypographyHandler(handler);
+  OH_Drawing_DestroyTypography(typography);
+  ```
 
 The effect is as follows.
 
@@ -1044,7 +1060,9 @@ You can copy text styles, paragraph styles, and shadow styles to quickly apply t
 
 The following shows an example and the effect:
 
-```c++
+<!-- @[complex_text_c_style_copy_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+
+``` C++
 // Create a TypographyStyle. The following code is required for creating Typography:
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // Configure the paragraph style, including enabling automatic spacing, setting the maximum number of lines, ellipsis style, ellipsis text, and alignment mode.
@@ -1062,23 +1080,23 @@ OH_Drawing_SetTypographyTextAlign(typoStyle, TEXT_ALIGN_CENTER);
 OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
 // Set the text color, size, and weight. If TextStyle is not set, the default TextStyle in TypographyStyle is used.
 OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-OH_Drawing_SetTextStyleFontSize(txtStyle, 100);
+OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TEN(width_));
 // Set the text decoration line.
 // Add an underline.
 OH_Drawing_SetTextStyleDecoration(txtStyle, TEXT_DECORATION_UNDERLINE);
 // Set the decoration line style to wavy.
-OH_Drawing_SetTextStyleDecorationStyle(txtStyle, ARKUI_TEXT_DECORATION_STYLE_WAVY);
+OH_Drawing_SetTextStyleDecorationStyle(txtStyle, TEXT_DECORATION_STYLE_WAVY);
 // Set the underline width.
 OH_Drawing_SetTextStyleDecorationThicknessScale(txtStyle, 1);
 // Set the underline color to blue.
-OH_Drawing_SetTextStyleDecorationColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0xFF)); 
+OH_Drawing_SetTextStyleDecorationColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0xFF));
 
 // Set the shadow color, offset, and blur radius.
 // Create a shadow object.
 OH_Drawing_TextShadow *shadow = OH_Drawing_CreateTextShadow();
-// Set the shadow offset.
+// Set the shadow offset to (5, 5).
 OH_Drawing_Point *offset = OH_Drawing_PointCreate(5, 5);
-// Define the shadow blur radius.
+// Set the shadow blur radius to 4.
 double blurRadius = 4;
 OH_Drawing_SetTextShadow(shadow, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0xFF), offset, blurRadius);
 
@@ -1095,15 +1113,14 @@ OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoSt
 // Add the text style of paragraph 1 to the handler.
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
 // Add the text of paragraph 1 to the handler.
-const char *text = "The text style, paragraph style, and text shadow of the copied text will be exactly the same as those of the original text.";
+const char *text = "The text style, paragraph style, and text shadow of the copied text will be exactly the same "
+                   "as those of the original text.";
 OH_Drawing_TypographyHandlerAddText(handler, text);
 // Create paragraph 1 and format it according to the paragraph width.
 OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-double layoutWidth = 1200;
-OH_Drawing_TypographyLayout(typography, layoutWidth);
-// Draw the text of paragraph 1 on the canvas.
-double position[2] = {0, 500.0};
-OH_Drawing_TypographyPaint(typography, canvas, position[0], position[1]);
+double maxWidth = width_;
+OH_Drawing_TypographyLayout(typography, maxWidth);
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
 
 // Generate the text of paragraph 2. The text style and paragraph style are copied from paragraph 1.
 // Copy the text style.
@@ -1116,10 +1133,8 @@ OH_Drawing_TypographyCreate *handlerCopy = OH_Drawing_CreateTypographyHandler(ty
 OH_Drawing_TypographyHandlerPushTextStyle(handlerCopy, textStyleCopy);
 OH_Drawing_TypographyHandlerAddText(handlerCopy, text);
 OH_Drawing_Typography *typographyCopy = OH_Drawing_CreateTypography(handlerCopy);
-OH_Drawing_TypographyLayout(typographyCopy, layoutWidth);
-// Draw the text of paragraph 2 on the canvas.
-double positionCopy[2] = {0, 1200.0};
-OH_Drawing_TypographyPaint(typographyCopy, canvas, positionCopy[0], positionCopy[1]);
+OH_Drawing_TypographyLayout(typographyCopy, maxWidth);
+OH_Drawing_TypographyPaint(typographyCopy, cCanvas_, 0, DIV_TWO(width_));
 
 // Release the memory.
 OH_Drawing_DestroyFontCollection(fc);
@@ -1134,5 +1149,5 @@ OH_Drawing_DestroyTextStyle(textStyleCopy);
 OH_Drawing_DestroyTypographyHandler(handlerCopy);
 OH_Drawing_DestroyTypography(typographyCopy);
 ```
-	
+
 ![image_styleCopy_1](figures/image_styleCopy_1.png)

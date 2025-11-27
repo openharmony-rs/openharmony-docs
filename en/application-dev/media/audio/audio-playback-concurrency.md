@@ -289,11 +289,11 @@ During the use of an audio session, it is recommended that the application [list
 
 ### Audio Session Strategy
 
-When an application activates an audio session, it must specify an audio session strategy, which contains [AudioConcurrencyMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12) used to declare different audio concurrency modes.
+Before activating an audio session, an application must define its audio session strategy by setting an [audio concurrency mode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12).
 
 > **NOTE**
 > 
-> The priority order of audio strategies is STOP > PAUSE > DUCK > PLAYBOTH. If the priority of the specified [audio session strategy](#audio-session-strategy) is higher than that of the default strategy, the specified strategy does not take effect.
+> The priority order of audio concurrency strategies is **STOP** > **PAUSE** > **DUCK** > **PLAYBOTH**. A specified audio session strategy does not take effect if its priority is higher than that of the default concurrency strategy.
 
 The system presets the following four audio concurrency modes:
 
@@ -366,4 +366,4 @@ To maintain consistency between the application and system states and ensure a g
 > 2. If the focus of the audio session is paused, only the audio session will receive the focus resume event when it is resumed, and the audio renderer will not receive the focus resume event.
 
 ### Querying and Listening for Audio Output Devices Using AudioSession
-Applications using the player SDK to play audio streams do not hold an AudioRenderer object. As a result, they cannot flexibly control the selection of playback devices and listen for the device status. Starting from API version 20, AudioSession not only introduces focus management but also provides capabilities for managing audio output devices, including setting the default output device and listening for device changes. For details about the APIs, see [AudiSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md). For details about how to use the APIs, see [Querying and Listening for Audio Output Devices Using AudioSession](./audio-output-device-management.md#querying-and-listening-for-audio-output-devices-using-audiosession).
+Applications using the player SDK to play audio streams do not hold an AudioRenderer object. As a result, they cannot flexibly control the selection of playback devices and listen for the device status. Starting from API version 20, AudioSession not only introduces focus management but also provides capabilities for managing audio output devices, including setting the default output device and listening for device changes. For details about the APIs, see [AudioSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md). For details about how to use the APIs, see [Querying and Listening for Audio Output Devices Using AudioSession](./audio-output-device-management.md#querying-and-listening-for-audio-output-devices-using-audiosession).

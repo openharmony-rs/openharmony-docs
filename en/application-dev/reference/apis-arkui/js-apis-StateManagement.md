@@ -4,7 +4,7 @@
 <!--Owner: @jiyujia926; @liwenzhen3; @zzq212050299-->
 <!--Designer: @s10021109-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The state management module provides data storage, persistent data management, UIAbility data storage, and environment state and tools required by applications.
 
@@ -357,14 +357,18 @@ Obtains the original object from a proxy object wrapped by the state management 
 
 ```ts
 import { UIUtils } from '@kit.ArkUI';
+
 class NonObservedClass {
   name: string = 'Tom';
 }
+
 let nonObservedClass: NonObservedClass = new NonObservedClass();
+
 @Entry
 @Component
 struct Index {
   @State someClass: NonObservedClass = nonObservedClass;
+
   build() {
     Column() {
       Text(`this.someClass === nonObservedClass: ${this.someClass === nonObservedClass}`) // false
@@ -400,6 +404,7 @@ Converts ordinary unobservable data into observable data. For details, see [make
 
 ```ts
 import { UIUtils } from '@kit.ArkUI';
+
 class NonObservedClass {
   name: string = 'Tom';
 }
@@ -409,6 +414,7 @@ class NonObservedClass {
 struct Index {
   observedClass: NonObservedClass = UIUtils.makeObserved(new NonObservedClass());
   nonObservedClass: NonObservedClass = new NonObservedClass();
+
   build() {
     Column() {
       Text(`observedClass: ${this.observedClass.name}`)
@@ -588,7 +594,7 @@ function CustomButton(num1: Binding<number>) {
   Row() {
     Button(`Custom Button: ${num1.value}`)
       .onClick(() => {
-        // num1.value += 1; will report an error because Binding does not support modification.
+        // num1.value += 1; will throw an error because the Binding element does not support modification.
       })
   }
 }
@@ -635,7 +641,7 @@ Creates a mutable binding instance for building the actual parameter whose param
 
 | Name| Type| Mandatory| Description    |
 | ------ | ---- | ---- | ------------ |
-| getter | [GetterCallback\<T\>](#gettercallback20)    | Yes  | Callback function for obtaining the value. The function is executed each time when the value is accessed to obtain the latest value.|
+| getter | [GetterCallback\<T\>](#gettercallback20)    | Yes  | Callback function for obtaining the value. The function is executed each time the value is accessed to obtain the latest value.|
 | setter | [SetterCallback\<T\>](#settercallback20)    | Yes  | Defines how to update the value. This function is automatically called when .value is modified.|
 
 **Return value**
@@ -705,9 +711,9 @@ Adds a listener to a state variable of State Management 2.0. For details, see [a
 
 | Name| Type| Mandatory| Description    |
 | ------ | ---- | ---- | ------------ |
-| target | object | Yes  | Target object. Only [\@ComponentV2](../../ui/state-management/arkts-new-componentV2.md) and [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md) instances are supported.<br>If the type is not supported, a runtime error is thrown. For details about the error code, see the table.|
+| target | object | Yes  | Target object. Only [\@ComponentV2](../../ui/state-management/arkts-new-componentV2.md) and [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md) instances are supported.<br>If an unsupported type is provided, a runtime error is thrown. For error code details, see the table below.|
 | path | string \| string[]    | Yes  | Path of the variable to be listened to. You can specify a path or pass a string array to specify multiple variable paths to be listened to at a time.<br>Only strings and string arrays are supported. If the type is not supported, a runtime error is thrown. For details about the error code, see the table.|
-| monitorCallback | [MonitorCallback](#monitorcallback20)   | Yes  | Listening function registered for the corresponding state variable. That is, when the state variable corresponding to the path changes, the corresponding function is called back.<br>If the type is not supported, a runtime error is thrown. For details about the error code, see the table.|
+| monitorCallback | [MonitorCallback](#monitorcallback20)   | Yes  | Listening function registered for the corresponding state variable. That is, when the state variable corresponding to the path changes, the corresponding function is called back.<br>If an unsupported type is provided, a runtime error is thrown. For error code details, see the table below.|
 | options | [MonitorOptions](#monitoroptions20)   | No  | Configuration item of the listening function. For details, see [MonitorOptions](#monitoroptions20).|
 
 
@@ -743,7 +749,7 @@ class ObservedClass {
   }
 
   constructor() {
-    // Add the listening callback this.onChange of the name attribute to the instance this of ObservedClass. The listening callback is synchronous.
+    // Add the synchronous listener callback this.onChange for the name property to this ObservedClass instance.
     UIUtils.addMonitor(this, 'name', this.onChange, { isSynchronous: true });
   }
 }
@@ -779,9 +785,9 @@ Deletes the listener added to the state variable of the state management V2 by c
 
 | Name| Type| Mandatory| Description    |
 | ------ | ---- | ---- | ------------ |
-| target | object | Yes  | Target object. Only the [\@ComponentV2](../../ui/state-management/arkts-new-componentV2.md) and [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md) instances are supported.<br>If the type is not supported, a runtime error is thrown. For details about the error code, see the table below.|
+| target | object | Yes  | Target object. Only [\@ComponentV2](../../ui/state-management/arkts-new-componentV2.md) and [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md) instances are supported.<br>If an unsupported type is provided, a runtime error is thrown. For error code details, see the table below.|
 | path | string \| string[]   | Yes  | Name path of the variable whose listener is to be deleted. You can specify a path or pass a string array to delete the listener functions of multiple state variables at a time.<br>Only strings and arrays are supported. If the type is not supported, a runtime error is thrown. For details about the error code, see the table below.|
-| monitorCallback | [MonitorCallback](#monitorcallback20)   | No  | Listener function to be deleted.<br>If this parameter is not passed, all listener functions registered with the variable corresponding to path are deleted.<br>If the type is not supported, a runtime error is thrown. For details about the error code, see the table below.|
+| monitorCallback | [MonitorCallback](#monitorcallback20)   | No  | Listener function to be deleted.<br>If this parameter is not passed, all listener functions registered with the variable corresponding to path are deleted.<br>If an unsupported type is provided, a runtime error is thrown. For error code details, see the table below.|
 
 **Error codes**
 For details about the error codes, see [State Management Error Codes](./errorcode-stateManagement.md).
@@ -793,14 +799,14 @@ For details about the error codes, see [State Management Error Codes](./errorcod
 
 **Example**
 In the following example:
-1. Add the synchronous listening callback onChange of the age attribute to the constructor of ObservedClass.
-2. Click the Text component to trigger the age increment. The onChange listening callback function is triggered. The log information is as follows:
+1. The **onChange** synchronous listener callback for the **age** property is added in the **ObservedClass** constructor.
+2. Click the **Text** component to trigger **age** increment. The **onChange** listener callback is invoked. The log information is as follows:
 <!--code_no_check-->
 ```
 ObservedClass property age change from 10 to 11
 ```
-3. Click clear monitor to delete the onChange listening function of age.
-4. Click the Text component again to trigger the age increment. The onChange function is not triggered.
+3. Click **clear monitor** to remove the **onChange** callback for **age**.
+4. Click the **Text** component again to trigger **age** increment. The **onChange** callback is not invoked.
 
 ```ts
 import { UIUtils } from '@kit.ArkUI';
@@ -816,7 +822,7 @@ class ObservedClass {
   }
 
   constructor() {
-    //Add the listening callback this.onChange of the name attribute to the instance this of ObservedClass. The listening callback is synchronous.
+    // Add the synchronous listener callback this.onChange for the name property to this ObservedClass instance.
     UIUtils.addMonitor(this, 'age', this.onChange);
   }
 }
@@ -831,13 +837,13 @@ struct Index {
       Text(`age: ${this.observedClass.age}`)
         .fontSize(20)
         .onClick(() => {
-          //Click to trigger age++. The onChange callback is triggered.
+          // Click to trigger age++, which invokes the onChange callback.
           this.observedClass.age++;
         })
       Button('clear monitor')
         .onClick(() => {
-          //Click clearMonitor to delete the onChange listening function of age in this.observedClass.
-          // Click the button again to trigger age++. The onChange listener is not triggered.
+          // Click clearMonitor to remove the onChange callback of age in this.observedClass.
+          // Click the button again to trigger age++. The onChange callback is not triggered.
           UIUtils.clearMonitor(this.observedClass, 'age', this.observedClass.onChange);
         })
     }
@@ -855,7 +861,7 @@ Optional parameter of [addMonitor](#addmonitor20), which is used to configure th
 
 | Name| Type| Read-Only| Optional| Description    |
 | ------ | ---- | ---- | ---- | ------------ |
-|isSynchronous|boolean|No|Yes|Whether the current callback function is a synchronous callback. true: synchronous callback. The default value is false, indicating an asynchronous callback.|
+|isSynchronous|boolean|No|Yes|Whether the current callback function is a synchronous callback. **true**: synchronous callback. **false** (default): asynchronous callback.|
 
 ## MonitorCallback<sup>20+</sup>
 type MonitorCallback = (monitorValue: IMonitor) => void
@@ -1180,7 +1186,7 @@ function CustomButton(num1: Binding<number>) {
   Row() {
     Button(`Custom Button: ${num1.value}`)
       .onClick(() => {
-        // num1.value += 1; will report an error because the Binding type cannot be modified.
+        // num1.value += 1; will throw an error because the Binding element does not support modification.
       })
   }
 }

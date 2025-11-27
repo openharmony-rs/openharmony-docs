@@ -209,7 +209,7 @@ function sendNativeMessage() {
     import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import {buffer, util} from '@kit.ArkTS';
-    import fs from '@ohos.file.fs';
+    import { fileIo as fs } from '@kit.CoreFileKit';
 
     const TAG: string = '[MyWebNativeMessageExtAbility]';
     const DOMAIN_NUMBER: number = 0xFF00;
@@ -313,7 +313,7 @@ function sendNativeMessage() {
 
 1. 当接收到创建NativeMessaging连接时，先通过[应用间配置共享接口](../reference/apis-arkdata/js-apis-data-dataShare.md#get20)获取目标应用的extension配置。然后读取WebNativeMessagingExtensionAbility名称和允许访问的扩展列表。最后校验是否允许访问。
   ```ts
-    import dataShare from '@ohos.data.dataShare';
+    import { dataShare } from '@kit.ArkData';
 
     interface ExtensionConfig {
       abilityName:string;

@@ -264,5 +264,3 @@ Releases an [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) object.
 | Type| Description|
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
-
-<!--no_check-->

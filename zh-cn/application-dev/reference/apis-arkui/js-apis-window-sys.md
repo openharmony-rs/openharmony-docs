@@ -981,9 +981,7 @@ image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMa
 
 ## window.getSnapshot<sup>12+</sup>
 
-ArkTS-Dyn: getSnapshot(windowId: number): Promise<image.PixelMap>
-
-ArkTS-Sta: getSnapshot(windowId: int): Promise<image.PixelMap>
+getSnapshot(windowId: number): Promise<image.PixelMap>
 
 获取指定窗口相同尺寸截图，使用Promise异步回调。若当前窗口设置为隐私模式（可通过[setWindowPrivacyMode](arkts-apis-window-Window.md#setwindowprivacymode9)接口设置），截图结果为白屏。
 
@@ -991,14 +989,10 @@ ArkTS-Sta: getSnapshot(windowId: int): Promise<image.PixelMap>
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 22
-
 **参数：**
 | 参数名   | 类型   | 必填  | 说明         |
 | -------- | ------ | ----- | ------------ |
-| windowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 窗口Id。可通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到相关窗口属性，其中属性id即对应为窗口ID。 |
+| windowId | number | 是    | 窗口Id。可通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到相关窗口属性，其中属性id即对应为窗口ID。 |
 
 **返回值：**
 | 类型                    | 说明                            |
@@ -1018,8 +1012,6 @@ ArkTS-Sta: getSnapshot(windowId: int): Promise<image.PixelMap>
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -1036,28 +1028,6 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to get snapshot. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@ohos.base';
-import { image } from '@ohos.multimedia.image';
-
-try {
-  // 此处仅示意，请使用getWindowProperties获取对应窗口ID再进行使用
-  let windowId: int = 40;
-  let promise = window.getSnapshot(windowId);
-  promise.then((pixelMap: image.PixelMap) => {
-    console.info('Succeeded in getting snapshot window. Pixel bytes number:' + pixelMap.getPixelBytesNumber());
-    pixelMap.release();
-  }).catch((err: Error) =>{
-    console.error(`Failed to get snapshot. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  let error = exception as BusinessError;
-  console.error(`Failed to get snapshot. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -3123,6 +3093,75 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+### setMainWindowRaiseByClickEnabled<sup>23+</sup>
+
+setMainWindowRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
+
+禁止/使能主窗口点击抬升功能。使用Promise异步回调。
+
+点击主窗口时，默认会抬升主窗口及其子窗口。调用此接口禁止主窗口点击抬升后（即传入false），点击主窗口时不会将其及子窗口进行抬升，保持原有状态不变；点击子窗口时，主窗口会连同子窗口一起被抬升。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| enable   | boolean                   | 是   | 设置主窗口点击抬升功能是否使能，true表示使能，false表示禁止。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.getMainWindow().then((window: window.Window) => {
+      // 加载主窗口对应的页面
+      windowStage.loadContent('pages/Index', (err) => {
+        if (err.code) {
+          console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in loading the content.');
+        try {
+          let raiseEnabled: boolean = false;
+          let promise = window.setMainWindowRaiseByClickEnabled(raiseEnabled);
+          promise.then(() => {
+            console.info('Succeeded in disabling the raise-by-click function.');
+          })
+        } catch(err) {
+          console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+        };
+      });
+    });
+  }
+}
+```
+
 ### hideNonSystemFloatingWindows<sup>11+</sup>
 
 hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;void&gt;): void
@@ -3136,10 +3175,6 @@ hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;voi
 **系统能力：** SystemCapability.Window.SessionManager
 
 **设备行为差异：** 该接口在2in1设备中调用不生效也不报错，在其他设备中可正常调用。
-
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3162,8 +3197,6 @@ hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;voi
 | 1300004 | Unauthorized operation. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -3202,56 +3235,6 @@ export default class EntryAbility extends UIAbility {
         });
       } catch (exception) {
         console.error(`Failed to hide the non-system floating windows. Cause code: ${exception.code}, message: ${exception.message}`);
-      }
-    });
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-// EntryAbility.ets
-import { UIAbility } from '@ohos.app.ability.UIAbility';
-import { Want } from '@ohos.app.ability.Want';
-
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    // 加载主窗口对应的页面
-    windowStage.loadContent('pages/Index', (err: BusinessError<void> | null) => {
-      const errCode = err?.code;
-      if (errCode) {
-        console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
-        return;
-      }
-      console.info('Succeeded in loading the content.');
-    });
-
-    // 获取应用主窗口。
-    let mainWindow: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err: BusinessError<void> | null, data) => {
-      const errCode = err?.code;
-      if (errCode) {
-        console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
-        return;
-      }
-      mainWindow = data;
-      console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
-
-      let shouldHide = true;
-      try {
-        // 调用带callback参数的hideNonSystemFloatingWindows接口
-        mainWindow?.hideNonSystemFloatingWindows(shouldHide, (err: BusinessError<void> | null) => {
-          const errCode = err?.code;
-          if (errCode) {
-            console.error(`Failed to hide the non-system floating windows. Cause code: ${err?.code}, message: ${err?.message}`);
-            return;
-          }
-          console.info('Succeeded in hiding the non-system floating windows.');
-        });
-      } catch (exception) {
-        let error = exception as BusinessError;
-        console.error(`Failed to hide the non-system floating windows. Cause code: ${error.code}, message: ${error.message}`);
       }
     });
   }

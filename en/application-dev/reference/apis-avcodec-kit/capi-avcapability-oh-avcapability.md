@@ -7,6 +7,10 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVCapability OH_AVCapability
+```
+
 ## Overview
 
 The struct describes a native object for the OH_AVCapability interface.

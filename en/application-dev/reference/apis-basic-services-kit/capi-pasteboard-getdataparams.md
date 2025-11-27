@@ -6,6 +6,10 @@
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct Pasteboard_GetDataParams Pasteboard_GetDataParams
+```
+
 ## Overview
 
 Defines the parameters required for obtaining the pasteboard data and paste progress.

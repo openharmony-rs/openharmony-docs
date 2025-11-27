@@ -6,6 +6,10 @@
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct Pasteboard_ProgressInfo Pasteboard_ProgressInfo
+```
+
 ## Overview
 
 Defines a struct for the progress information.

@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```
+typedef struct ArkWeb_JavaScriptValue* ArkWeb_JavaScriptValuePtr
+```
+
 ## Overview
 
 Defines a pointer to the JavaScript data.

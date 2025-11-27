@@ -7,6 +7,10 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct CommonEvent_PublishInfo CommonEvent_PublishInfo
+```
+
 ## Overview
 
 Defines the property object used for publishing a common event.

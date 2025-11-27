@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoKeyAgreement OH_CryptoKeyAgreement
+```
+
 ## 概述
 
 定义密钥协商结构。

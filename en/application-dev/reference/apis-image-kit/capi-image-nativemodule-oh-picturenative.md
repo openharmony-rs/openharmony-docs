@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+struct OH_PictureNative
+```
+
 ## Overview
 
 The struct is used to perform operations related to the picture.

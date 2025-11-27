@@ -11,14 +11,14 @@
 
 ### Introduction
 
-If an application needs to execute a non-real-time task after switching to the background, for example, if the application wants to obtain emails irregularly when the network is available, the application can request deferred tasks. When the specified trigger conditions (including the network type, charging type, storage status, battery status, and timing status) are met, the system adds the task to the execution queue. Then the system starts the application to execute the task based on the memory, power consumption, device temperature, and user habits.
+If an application needs to execute a non-real-time task after switching to the background, for example, if the application wants to obtain emails irregularly when the network is available, the application can request deferred tasks. When the specified trigger conditions (including the network type, charging type, storage status, battery status, and timing status) are met, the system adds the task to the execution queue. Then the system starts the application to execute the deferred task based on the memory, power consumption, device temperature, and user habits.
 
 ### Working Principle
 
 **Figure 1** Working principle of deferred task scheduling 
 ![WorkScheduler](figures/WorkScheduler.png)
 
-An application calls the **WorkScheduler** APIs to add, delete, and query deferred tasks. Based on the task-specific conditions (specified by **WorkInfo**, including the network type, charging type, and storage status) and system status (including the memory, power consumption, device temperature, and user habits), the WorkSchedulerService determines the time to schedule the tasks.
+An application calls the deferred task API to add, delete, and query deferred tasks. The deferred task management module determines the scheduling time based on the task conditions (set by the [WorkInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workinfo) parameter, including the network type, charging type, and storage status) and system status (including the memory, power consumption, device temperature, and user habits).
 
 When the scheduling conditions are met or the task scheduling ends, the system calls back **onWorkStart()** or **onWorkStop()** in [WorkSchedulerExtensionAbility](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md). The system also creates an independent process for the **WorkSchedulerExtensionAbility** and provides a duration for the **WorkSchedulerExtensionAbility** to run. You can implement your own service logic in the callback functions.
 
@@ -64,53 +64,23 @@ When the scheduling conditions are met or the task scheduling ends, the system c
 The table below lists the APIs used for developing deferred tasks. For details about more APIs and their usage, see [@ohos.resourceschedule.workScheduler (Deferred Task Scheduling)](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md).
 | API| Description|
 | -------- | -------- |
-| startWork(work: WorkInfo): void; | Starts a deferred task.|
-| stopWork(work: WorkInfo, needCancel?: boolean): void; | Stops a deferred task.|
-| getWorkStatus(workId: number, callback: AsyncCallback&lt;WorkInfo&gt;): void; | Obtains the information about a deferred task. This API uses an asynchronous callback to return the result.|
-| getWorkStatus(workId: number): Promise&lt;WorkInfo&gt;; | Obtains the information about a deferred task. This API uses a promise to return the result.|
-| obtainAllWorks(callback: AsyncCallback\<Array\<WorkInfo>>): void; | Obtains all the deferred tasks. This API uses an asynchronous callback to return the result.|
-| obtainAllWorks(): Promise&lt;Array&lt;WorkInfo&gt;&gt;; | Obtains all the deferred tasks. This API uses a promise to return the result.|
-| stopAndClearWorks(): void; | Stops and clears all the deferred tasks.|
-| isLastWorkTimeOut(workId: number, callback: AsyncCallback\<boolean>): void; | Checks whether the last execution of a deferred task has timed out. This API uses an asynchronous callback to return the result. It is applicable to repeated tasks.|
-| isLastWorkTimeOut(workId: number): Promise&lt;boolean&gt;; | Checks whether the last execution of a deferred task has timed out. This API uses a promise to return the result. It is applicable to repeated tasks.|
+| [startWork(work: WorkInfo): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerstartwork) | Start a deferred task.|
+| [stopWork(work: WorkInfo, needCancel?: boolean): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerstopwork) | Cancel the deferred task.|
+| [getWorkStatus(workId: number, callback: AsyncCallback&lt;WorkInfo&gt;): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulergetworkstatus) | Obtains the information about a deferred task. This API uses an asynchronous callback to return the result.|
+| [getWorkStatus(workId: number): Promise&lt;WorkInfo&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulergetworkstatus-1) | Obtains the information about a deferred task. This API uses a promise to return the result.|
+| [obtainAllWorks(callback: AsyncCallback\<Array\<WorkInfo>>): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerobtainallworks10) | Obtains all the deferred tasks. This API uses an asynchronous callback to return the result.|
+| [obtainAllWorks(): Promise&lt;Array&lt;WorkInfo&gt;&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerobtainallworks)  | Obtains all the deferred tasks. This API uses a promise to return the result.|
+| [stopAndClearWorks(): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerstopandclearworks) | Stops and clears all the deferred tasks.|
+| [isLastWorkTimeOut(workId: number, callback: AsyncCallback\<boolean>): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerislastworktimeout10) | Checks whether the last execution of a deferred task has timed out. This API uses an asynchronous callback to return the result. It is applicable to repeated tasks.|
+| [isLastWorkTimeOut(workId: number): Promise&lt;boolean&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerislastworktimeout) | Checks whether the last execution of a deferred task has timed out. This API uses a promise to return the result. It is applicable to repeated tasks.|
 
-**Table 3** Options of WorkInfo
-| Name            | Type                               |  Read-Only  | Optional   | Description              |
-| --------------- | --------------------------------- | ---- | ---- | ---------------- |
-| workId          | number                            | No   | No   | ID of a deferred task.         |
-| bundleName      | string                            | No   | No   |  Bundle name of the application where the deferred task is located.          |
-| abilityName     | string                            | No   | No   | Ability name in the bundle.|
-| networkType     | [NetworkType](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#networktype)       | No   | Yes   | Network type.            |
-| isCharging      | boolean                           | No   | Yes   | Whether the device needs to enter the charging state to trigger deferred task scheduling.<br>- **true**: The device needs to enter the charging state to trigger deferred task scheduling.<br>- **false**: The device does not need to enter the charging state to trigger deferred task scheduling.|
-| chargerType     | [ChargingType](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#chargingtype)     | No   | Yes   | Charging type.            |
-| batteryLevel    | number                            | No   | Yes   | Battery level.             |
-| batteryStatus   | [BatteryStatus](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#batterystatus)   | No   | Yes   | Battery status.            |
-| storageRequest  | [StorageRequest](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#storagerequest) | No   | Yes   | Storage status.            |
-| isRepeat        | boolean                           | No   | Yes   | Whether the deferred task is repeated.<br>- **true**: The deferred task is repeated.<br>- **false**: The deferred task is not repeated.|
-| repeatCycleTime | number                            | No   | Yes   | Repeat interval, in milliseconds.            |
-| repeatCount     | number                            | No   | Yes   | Number of repeat times.            |
-| isPersisted     | boolean                           | No   | Yes   | Whether the registered deferred task can be saved in the system.<br>- **true**: The task can be saved. That is, the task can be restored after the system restarts.<br>- **false**: The task cannot be saved.|
-| isDeepIdle      | boolean                           | No   | Yes   | Whether the device needs to enter the idle state to trigger deferred task scheduling.<br>- **true**: The device needs to enter the idle state to trigger deferred task scheduling.<br>- **false**: The device does not need to enter the idle state to trigger deferred task scheduling.  |
-| idleWaitTime    | number                            | No   | Yes   | Time to wait in the idle state before triggering deferred task scheduling, in milliseconds.          |
-| parameters      | [key: string]: number \| string \| boolean  | No   | Yes   | Carried parameters.|
-
-The WorkInfo parameters are used to configure the trigger conditions for a deferred task. These parameters must adhere to the following requirements:
-
-- **workId**, **bundleName**, and **abilityName** are mandatory. **bundleName** must be set to the bundle name of the current application.
-
-- The carried parameters can be of the number, string, or boolean type.
-
-- At least one condition must be set, including the network type, charging type, storage status, battery status, and timing status.
-
-- For repeated tasks, **repeatCycleTime** must be at least 2 hours. When **isRepeat** is set, you must set **repeatCycleTime** or **repeatCount**.
-
-**Table 4** Deferred task scheduling callbacks
+**Table 3** Deferred task scheduling callbacks
 
 The table below lists the APIs used for developing deferred task scheduling callbacks. For details about more APIs and their usage, see [@ohos.WorkSchedulerExtensionAbility (Deferred Task Scheduling Callbacks)](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md).
 | API| Description|
 | -------- | -------- |
-| onWorkStart(work: workScheduler.WorkInfo): void | Called when the system starts scheduling the deferred task.|
-| onWorkStop(work: workScheduler.WorkInfo): void | Called when the system stops scheduling the deferred task.|
+| [onWorkStart(work: workScheduler.WorkInfo): void](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md#onworkstart) | Called when the system starts scheduling the deferred task.|
+| [onWorkStop(work: workScheduler.WorkInfo): void](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md#onworkstop) | Called when the system stops scheduling the deferred task.|
 
 
 ## How to Develop
@@ -134,14 +104,15 @@ The development of deferred task scheduling consists of two steps: implementing 
    ```
 
 3. Implement the lifecycle callbacks for the WorkSchedulerExtensionAbility.
+   <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
    
    ```ts
-   export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
+   export default class WorkSchedulerAbility extends WorkSchedulerExtensionAbility {
      // Callback invoked when the system starts scheduling the deferred task.
      onWorkStart(workInfo: workScheduler.WorkInfo) {
        console.info(`onWorkStart, workInfo = ${JSON.stringify(workInfo)}`);
        // Print the parameter, for example, key1, in parameters.
-       // console.info(`work info parameters: ${JSON.parse(workInfo.parameters?.toString()).key1}`)
+       console.info(`work info parameters: ${JSON.parse(workInfo.parameters?.toString()).key1}`);
      }
    
      // Callback invoked when the deferred task ends. This callback is triggered when the deferred task times out for 2 minutes or the stopWork API is called to cancel the task.
@@ -182,33 +153,36 @@ The development of deferred task scheduling consists of two steps: implementing 
    ```
 
 2. Start a deferred task.
+   <!-- @[startWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
    
-   ```ts
-   // Create workinfo.
-   const workInfo: workScheduler.WorkInfo = {
+   ``` TypeScript
+   let workInfo: workScheduler.WorkInfo = {
      workId: 1,
-     networkType: workScheduler.NetworkType.NETWORK_TYPE_WIFI,
-     bundleName: 'com.example.application',
-     abilityName: 'MyWorkSchedulerExtensionAbility'
+     networkType: workScheduler.NetworkType.NETWORK_TYPE_ANY,
+     bundleName: 'ohos.samples.workschedulerextensionability',
+     abilityName: 'WorkSchedulerAbility',
+     // ...
    }
    
    try {
      workScheduler.startWork(workInfo);
      console.info(`startWork success`);
-   } catch (error) {
+   }
+   catch (error) {
      console.error(`startWork failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
    }
    ```
 
 3. Cancel the deferred task.
-   
+   <!-- @[stopWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
+
    ```ts
    // Create workinfo.
-   const workInfo: workScheduler.WorkInfo = {
+   let workInfo: workScheduler.WorkInfo = {
      workId: 1,
      networkType: workScheduler.NetworkType.NETWORK_TYPE_WIFI,
-     bundleName: 'com.example.application', 
-     abilityName: 'MyWorkSchedulerExtensionAbility' 
+     bundleName: 'ohos.samples.workschedulerextensionability',
+     abilityName: 'WorkSchedulerAbility',
    }
    
    try {

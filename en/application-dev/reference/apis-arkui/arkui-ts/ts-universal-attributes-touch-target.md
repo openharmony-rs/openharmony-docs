@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can set the touch target for components. When handling a touch event, ArkUI performs a [hit test](../../../ui/arkts-interaction-basic-principles.md#hit-testing) on the touch point and the component area before the event is triggered to determine the components targeted by the event. Then ArkUI dispatches the event based on the test result. This affects the dispatch of [click](ts-universal-events-click.md), [touch](ts-universal-events-touch.md), [drag](ts-universal-events-drag-drop.md), [mouse](ts-universal-mouse-key.md), [axis](ts-universal-events-axis.md), [hover](ts-universal-events-hover.md), [accessibility hover](ts-universal-accessibility-hover-event.md), and [gesture](ts-gesture-settings.md) events.
 
@@ -41,7 +41,7 @@ Sets one or more touch targets.
 
 mouseResponseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 
-Sets one or more mouse touch hotspots.
+Sets one or more mouse response regions.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -51,7 +51,7 @@ Sets one or more mouse touch hotspots.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;[Rectangle](#rectangle)&gt; \| [Rectangle](#rectangle) | Yes  | Mouse touch hotspot, including the position and size.<br>The default touch target is the entire component. Default value:<br>{<br>x: 0,<br>y: 0,<br>width: '100%',<br>height: '100%'<br>} |
+| value  | Array&lt;[Rectangle](#rectangle)&gt; \| [Rectangle](#rectangle) | Yes  | Mouse response regions, defining the position and size.<br>The default touch target is the entire component. Default value:<br>{<br>x: 0,<br>y: 0,<br>width: '100%',<br>height: '100%'<br>} |
 
 **Return value**
 
@@ -82,9 +82,9 @@ Sets one or more mouse touch hotspots.
   >
   >  The percentage is measured relative to the component itself.
   >
-  >  When [clip](ts-universal-attributes-sharp-clipping.md#clip12)(true) is set for the parent component, the response of the child component is affected by the touch hotspot of the parent component. The child component that is not in the touch hotspot of the parent component cannot respond to gestures and events.
+  >  When the parent component has [clip](ts-universal-attributes-sharp-clipping.md#clip12)(true) set, child component interaction is affected by the parent component's response region. Children outside the parent component's response region won't respond to gestures or events.
   >
-  >  width and height do not support dynamic calculation of calc().
+  >  **width** and **height** do not support **calc()** dynamic calculations.
 
 ## Example
 

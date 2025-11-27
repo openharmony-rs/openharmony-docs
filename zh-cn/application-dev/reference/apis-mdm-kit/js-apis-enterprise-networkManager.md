@@ -1364,7 +1364,7 @@ try {
 
 | 名称       | 类型              | 只读 | 可选 | 说明                                                         |
 | ---------- | ----------------- | ---- | ---- | ------------------------------------------------------------ |
-| domainName | string            | 否   | 是 |域名。添加域名过滤规则时必填。支持域名分段匹配，例如，damainName传入"example.com"，那么"example.com"、"www.example.com"、"www.test.example.com"会被匹配，"linkexample.com"不会被匹配。                               |
+| domainName | string            | 否   | 是 |域名。添加域名过滤规则时必填。支持域名分段匹配，例如，domainName传入"example.com"，那么"example.com"、"www.example.com"、"www.test.example.com"会被匹配，"linkexample.com"不会被匹配。                               |
 | appUid     | string            | 否   | 是 |应用uid。                                                    |
 | action     | [Action](#action) | 否   | 是 |接收或者丢弃数据包。<br/>添加域名过滤规则时必填；<br/>移除域名过滤规则时非必填，当值为空时，表示清空所有的匹配[Action](#action)规则的链，且domainName，appUid也必须传入空值。 |
 | direction<sup>15+</sup> | [Direction](#direction) | 否 | 是 |规则链。<br/>添加域名过滤规则时非必填；当值设为输出链或输入链时，实际效果为输出链。设为转发链时，appUid需设置为空，否则会报401错误码。<br/>移除域名过滤规则时非必填，当值为空时，表示清空所有的[Direction](#direction)链，且domainName，appUid也必须传入空值。|

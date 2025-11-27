@@ -10,7 +10,7 @@
 
 >  **说明：**
 >
->  该组件从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 >  如果出现分割线粗细不一或者消失的问题，请参考[组件级像素取整常见问题](./ts-universal-attributes-pixelRoundForComponent.md#常见问题)。
 
@@ -112,7 +112,9 @@ lineCap(value: LineCapStyle)
 
 ## 示例
 
-定义了Divider的样式，如方向、颜色及宽度。
+### 示例1（定义Divider方向、颜色及宽度）
+
+该示例定义了Divider的样式，如方向、颜色及宽度。
 
 ```ts
 // xxx.ets
@@ -185,3 +187,42 @@ struct DividerExample {
 ```
 
 ![zh-cn_image_0000001174422926](figures/zh-cn_image_0000001174422926.png)
+
+### 示例2（定义Divider的lineCap样式）
+
+该示例定义了Divider的lineCap样式。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct DividerExample {
+  build() {
+    Column({space:30}) {
+      Text("LineCap:Butt")
+      Divider()
+        .strokeWidth(20)
+        .width("90%")
+        .color('#F1F3F5')
+        .lineCap(LineCapStyle.Butt)
+
+      Text("LineCap:Round")
+      Divider()
+        .strokeWidth(20)
+        .width("90%")
+        .color('#F1F3F5')
+        .lineCap(LineCapStyle.Round)
+
+      Text("LineCap:Square")
+      Divider()
+        .strokeWidth(20)
+        .width("90%")
+        .color('#F1F3F5')
+        .lineCap(LineCapStyle.Square)
+
+    }.width('100%').padding({ top: 24 })
+  }
+}
+```
+
+![dividerLineCap.png](figures/dividerLineCap.png)

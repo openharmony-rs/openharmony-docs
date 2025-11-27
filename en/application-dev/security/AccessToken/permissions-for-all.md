@@ -624,3 +624,31 @@ With this permission, the application can lock the mouse cursor within the windo
 **Supported devices**: general devices
 
 **Since**: 22
+
+## ohos.permission.kernel.EXEMPT_ANONYMOUS_EXECUTABLE_MEMORY
+
+Allows a program to declare anonymous executable memory.
+
+This permission applies only to binary programs.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 23
+
+## ohos.permission.INHERIT_PARENT_PERMISSION
+
+Allows a child process to inherit the permissions of its parent process.
+
+This permission applies only to binary programs.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 23

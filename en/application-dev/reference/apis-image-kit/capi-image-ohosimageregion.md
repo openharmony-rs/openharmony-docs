@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+struct OhosImageRegion {...}
+```
+
 ## Overview
 
 The struct describes the region of an image source to decode. It is a member variable of [OhosImageDecodingOps](capi-image-ohosimagedecodingops.md).

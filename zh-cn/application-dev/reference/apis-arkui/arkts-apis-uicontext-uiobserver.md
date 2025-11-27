@@ -2366,7 +2366,7 @@ import { common } from '@kit.AbilityKit';
 @Component
 struct Index {
   private changeOrientation(isLandscape: boolean) {
-    let context = getContext(this) as common.UIAbilityContext;
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     window.getLastWindow(context).then((lastWindow) => {
       lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT)
     });
