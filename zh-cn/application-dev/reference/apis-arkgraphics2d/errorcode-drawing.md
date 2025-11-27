@@ -45,8 +45,8 @@ File not found. The specified file does not exist or the path is incorrect.
 
 **处理步骤**
 
-1. 检查路径正确且文件存在。
-2. 确认文件路径大小写正确。
+1. 检查并确保路径正确且文件存在。
+2. 确保文件路径大小写正确。
 
 ## 25900003 打开文件失败
 
@@ -66,7 +66,7 @@ Failed to open file. The file cannot be opened due to permission or I/O issues.
 **处理步骤**
 
 1. 检查文件权限，确保可读。
-2. 确认文件未被其他进程占用。
+2. 确保文件未被其他进程占用。
 
 ## 25900004 文件定位失败
 
@@ -80,11 +80,11 @@ File seek failed. The system failed to reposition the file read pointer.
 
 **可能原因**
 
-文件类型不支持随机访问（如管道、套接字）。
+文件类型不支持随机访问（如pipe、socket）。
 
 **处理步骤**
 
-确认文件支持随机访问。
+确保文件支持随机访问。
 
 ## 25900005 获取文件大小失败
 
@@ -98,11 +98,11 @@ Failed to get the file size. The system was unable to obtain the file size infor
 
 **可能原因**
 
-文件类型不支持获取大小（如管道、套接字）。
+文件类型不支持获取大小（如pipe、socket）。
 
 **处理步骤**
 
-确认文件类型支持大小查询。
+确保文件类型支持大小查询。
 
 ## 25900006 读取文件失败
 
@@ -121,8 +121,8 @@ Failed to read file. The file could not be read completely or contains unreadabl
 
 **处理步骤**
 
-1. 确认磁盘或存储设备正常。
-2. 确认有足够内存进行读取。
+1. 确保磁盘或存储设备正常。
+2. 确保有足够内存进行读取。
 
 ## 25900007 文件为空
 
@@ -140,7 +140,7 @@ Empty file. The specified file is empty.
 
 **处理步骤**
 
-确认文件大小大于0字节。
+确保文件大小大于0字节。
 
 ## 25900008 文件损坏
 
@@ -155,11 +155,9 @@ Corrupted file. The file content is invalid or damaged and cannot be parsed.
 **可能原因**
 
 1. 文件格式不正确。
-2. 文件阶段或部分内容丢失。
-3. 文件编码或结构异常。
+2. 文件部分内容丢失。
 
 **处理步骤**
 
 1. 使用可靠工具验证文件格式。
-2. 确认文件完整性。
-3. 确认文件编码和结构正常。
+2. 确保文件完整性。
