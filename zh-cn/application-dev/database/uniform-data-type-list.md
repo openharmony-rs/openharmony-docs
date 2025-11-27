@@ -210,6 +210,7 @@
 | general.ebook                       | general.composite-object      |                  -                     |                                             -                                          | 所有电子书文件格式的基类型。                      |
 | general.epub                        | general.ebook                 | .epub                                  | application/epub+zip                                                                   | 电子出版物（EPUB）文件格式类型。                  |
 
+
 ## 系统关联类型
 系统定义数据类型与具体的平台/操作系统有较为深入的关联，支持系统/平台内的跨应用交互，标识UTD-ID为os-name.xxx。当前系统中预定义的系统关联类型列表如下：
 | **UTD-ID**                 | **BelongingTo类型**    | **后缀名**               | **MIMEType类型**                                                     | **说明**                           |
@@ -232,7 +233,7 @@
 | debian.deb                 | general.archive          | .deb,.udeb                            | application/x-debian-package,application/vnd.debian.binary-package  | Debian系统中的软件安装包类型。                |
 | com.android.apk            | general.archive          | .apk, .apks, .aab, .xapk, .apkm, .akp | application/vnd.android.package-archive                             | Android安装包文件类型。                   |
 | redhat.rpm-archive         | general.archive          | .rpm                                  | application/x-rpm                                                   | RedHat软件安装包类型。                    |
-| com.huawei.hmos.settings.wifi  | general.text         | .hmoswifi                             |                                                                     | HarmonyOS wifi分享配置文件类型。                    |
+| com.huawei.hmos.settings.wifi  | general.text         | .hmoswifi                             |-                                                                    | HarmonyOS wifi分享配置文件类型。                    |
 | openharmony.dlp            | general.composite-object | .dlp                                  |-                                                                    | OpenHarmony系统定义的基于账号身份加密的文件类型。     |
 
 ## 应用定义类型
