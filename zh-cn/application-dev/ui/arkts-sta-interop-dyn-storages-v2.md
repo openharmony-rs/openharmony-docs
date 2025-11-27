@@ -26,14 +26,14 @@
 
 ```text
 project/
-├── entry/                           # ArkTS-Sta主模块
+├── entry/                             # ArkTS-Sta主模块
 │   └── src/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets     # 使用ArkTS-Dyn自定义组件，操作AppStorageV2的数据
+│                   └── Index.ets      # 使用ArkTS-Dyn自定义组件，操作AppStorageV2的数据
 │
-├── dynamic_module/                   # ArkTS-Dyn子模块
+├── dynamic_module/                    # ArkTS-Dyn子模块
 │   └── src/
 │       └── main/
 │           └── ets/
@@ -57,17 +57,29 @@ project/
 
 // static_module/src/main/ets/components/MainPage.ets
 import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+import { enableCompatibleObservedV2ForDynamic } from '@ohos.arkui.component';
 
-// 数据
+export const STATIC_KEY = 'MessageStatic';
+export const DYNAMIC_KEY = 'MessageDynamic';
+export const FONT_SIZE: int = 20;
+export const MARGIN: int = 10;
+
+// AppStorageV2所存储的数据模型
 @ObservedV2
 export class MessageModel { // 定义MessageModel数据类
   @Trace messageId: number;
-  @Trace messageContent: string;
+  messageContent: string;
 
   constructor(messageId?: number, messageContent?: string) {
     this.messageId = messageId ?? 1;
     this.messageContent = messageContent ?? 'Hello';
   }
+}
+
+// 导出ArkTS-Sta中实现的enableCompatibleObservedV2ForDynamic方法
+export function setEnableCompatibleObservedV2ForDynamic(T: Object) {
+  // 调用enableCompatibleObservedV2ForDynamic方法，使ArkTS-Sta @Trace修饰的属性在ArkTS-Dyn中可观测
+  enableCompatibleObservedV2ForDynamic(T);
 }
 ```
 
@@ -77,7 +89,9 @@ export class MessageModel { // 定义MessageModel数据类
 'use static'
 
 // static_module/Index.ets
-export { MessageModel } from './src/main/ets/components/MainPage'; // 导出MessageModel数据类
+export {
+  STATIC_KEY, DYNAMIC_KEY, FONT_SIZE, MARGIN, MessageModel, setEnableCompatibleObservedV2ForDynamic
+} from './src/main/ets/components/MainPage'; // 导出MessageModel数据类
 ```
 
 - 在子模块的`dynamic_module/oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
@@ -97,19 +111,68 @@ export { MessageModel } from './src/main/ets/components/MainPage'; // 导出Mess
 // dynamic_module/src/main/ets/component/MainPage.ets
 
 import { AppStorageV2 } from '@kit.ArkUI';
-import { MessageModel } from 'static_module';
+import {
+  STATIC_KEY, DYNAMIC_KEY, FONT_SIZE, MARGIN, MessageModel, setEnableCompatibleObservedV2ForDynamic
+} from 'static_module';
 
 @ComponentV2
 export struct MainPage {
-  // 使用connect在AppStorageV2中创建一个key为MessageDynamic的MessageModel对象
+  // 使用connect在ArkTS-Dyn模块的AppStorageV2中创建一个key为MessageDynamic的MessageModel对象
+  // 修改connect的返回值即可同步回AppStorageV2
   @Local message: MessageModel = AppStorageV2.connect(
     MessageModel,
-    'MessageDynamic',
+    `${DYNAMIC_KEY}`,
     () => new MessageModel(11, 'this is dynamic message')
   )!;
 
+  aboutToAppear() {
+    // 调用setEnableCompatibleObservedV2ForDynamic方法，使ArkTS-Sta @Trace修饰的属性在ArkTS-Dyn中可观测
+    setEnableCompatibleObservedV2ForDynamic(this.message);
+  }
+
   build() {
-    Column() {}
+    Column() {
+      Divider()
+        .margin(`${MARGIN}`)
+
+      Text('------ ArkTS-Dyn ------')
+        .fontSize(`${FONT_SIZE}`)
+        .margin(`${MARGIN}`)
+
+      // 在ArkTS-Dyn模块调用connect函数, 会从ArkTS-Dyn模块的AppStorageV2中获取key为MessageDynamic的MessageModel的对象
+      // 在ArkTS-Sta模块中remove之后，回到ArkTS-Dyn模块重新connect添加，修改ArkTS-Sta模块的组件的messageId，可以发现在ArkTS-Dyn模块数据已经不同步，在ArkTS-Sta模块中重新connect之后，数据一致
+      // 在this.message被重新赋值时，需要调用setEnableCompatibleObservedV2ForDynamic方法，使ArkTS-Sta @Trace修饰的属性可以在ArkTS-Dyn中重新被观测
+      Button(`connect key: ${DYNAMIC_KEY}`)
+        .fontSize(`${FONT_SIZE}`)
+        .margin(`${MARGIN}`)
+        .onClick(() => {
+          const msg = AppStorageV2.connect(
+            MessageModel,
+            `${DYNAMIC_KEY}`,
+            () => new MessageModel(11, 'This is reconnected dynamic message')
+          )!;
+          if (this.message !== msg) {
+            this.message = msg;
+            setEnableCompatibleObservedV2ForDynamic(this.message);
+          }
+        })
+
+      // 修改@Trace装饰的类属性，UI能同步刷新
+      Text(`messageId: ${this.message.messageId}`)
+        .fontSize(`${FONT_SIZE}`)
+        .margin(`${MARGIN}`)
+        .onClick(() => {
+          this.message.messageId += 5;
+        })
+
+      // 修改非@Trace装饰的类属性，UI不会同步刷新，但修改的类属性已同步回AppStorageV2
+      Text(`messageContent: ${this.message.messageContent}`)
+        .fontSize(`${FONT_SIZE}`)
+        .margin(`${MARGIN}`)
+        .onClick(() => {
+          this.message.messageContent += ' plus';
+        })
+    }
   }
 }
 ```
@@ -144,55 +207,79 @@ import { Entry, Text, Column, Button, Divider, ComponentV2, Row } from '@ohos.ar
 import { AppStorageV2, Local } from '@ohos.arkui.stateManagement';
 
 import { MainPage } from 'dynamic_module'; // 导入ArkTS-Dyn自定义组件
-import { MessageModel } from 'static_module'; // 导入ArkTS-Sta数据类
+import { MessageModel, FONT_SIZE, STATIC_KEY, DYNAMIC_KEY, MARGIN } from 'static_module'; // 导入ArkTS-Sta数据类
 
 @Entry
 @ComponentV2
 struct Index {
-  // 使用connect在AppStorageV2中创建一个key为MessageStatic的MessageModel对象
-  @Local message: MessageModel = AppStorageV2.connect<MessageModel>(
-    Type.from<MessageModel>(),
-    'MessageStatic',
-    () => new MessageModel(12, 'This is static message')
-  )!;
+  // 声明一个MessageModel对象
+  @Local dynMessage: MessageModel = new MessageModel();
+  @Local keys: Array<string> = AppStorageV2.keys();
 
   build() {
     Row() {
       Column() {
-        Divider()
         Text('------ ArkTS-Sta ------')
-          .fontSize(30)
+          .fontSize(`${FONT_SIZE}`)
+          .margin(`${MARGIN}`)
 
-        Button('get value from dynamic')
+        // 使用connect在ArkTS-Sta模块的AppStorageV2中创建一个key为MessageStatic的MessageModel对象
+        Button(`connect key: ${STATIC_KEY}`)
+          .fontSize(`${FONT_SIZE}`)
+          .margin(`${MARGIN}`)
           .onClick(() => {
-            // 在ArkTS-Sta模块中，读取ArkTS-Dyn模块中存储的key为MessageDynamic的MessageModel对象
-            let message = AppStorageV2.connect<MessageModel>(
+            const message: MessageModel = AppStorageV2.connect<MessageModel>(
               Type.from<MessageModel>(),
-              'MessageDynamic',
-              () => new MessageModel()
-            );
-          })
-
-        Button(`get all keys`)
-          .onClick(() => {
-            // 在ArkTS-Sta模块中，获取ArkTS-Dyn模块和ArkTS-Sta模块中所存储的所有key
-            let keys = AppStorageV2.keys();
-          })
-
-        Button('remove dynamic obj with key: "MessageDynamic"')
-          .onClick(() => {
-            // 在ArkTS-Sta模块中，删除ArkTS-Dyn模块所存储的key
-            AppStorageV2.remove('MessageDynamic');
-          })
-
-        Button('reconnect key: MessageStatic')
-          .onClick(() => {
-            // 当ArkTS-Sta模块和ArkTS-Dyn模块中都没有存储key为MessageDynamic的对象时，会在ArkTS-Sta模块创建一个key为MessageDynamic的对象
-            this.message = AppStorageV2.connect<MessageModel>(
-              Type.from<MessageModel>(),
-              'MessageDynamic',
-              () => new MessageModel(1111, 'this is reconnect message')
+              `${STATIC_KEY}`,
+              () => new MessageModel(22, 'This is static message')
             )!;
+          })
+
+        // 在ArkTS-Sta模块调用connect函数, 会从ArkTS-Dyn模块的AppStorageV2中获取key为MessageDynamic的MessageModel的对象
+        // 修改connect的返回值即可同步回ArkTS-Dyn模块的AppStorageV2
+        // 如果ArkTS-Dyn模块的AppStorageV2中不存在key为MessageDynamic的MessageModel的对象，则会在ArkTS-Sta模块的AppStorageV2中创建一个key为MessageDynamic的MessageModel对象
+        Button(`connect key: ${DYNAMIC_KEY}`)
+          .fontSize(`${FONT_SIZE}`)
+          .margin(`${MARGIN}`)
+          .onClick(() => {
+             this.dynMessage = AppStorageV2.connect<MessageModel>(
+              Type.from<MessageModel>(),
+              `${DYNAMIC_KEY}`,
+              () => new MessageModel(11, 'This message is connected in Sta')
+            )!;
+          })
+
+        // 在ArkTS-Sta模块调用remove函数, 会从ArkTS-Sta模块和ArkTS-Dyn模块的AppStorageV2中删除key为MessageDynamic的MessageModel的对象
+        // remove之后，修改messageId，ArkTS-Sta模块和ArkTS-Dyn模块的组件能同步变化，因为remove只是从AppStorageV2删除，不会影响组件中已存在的数据
+        Button(`remove key: ${DYNAMIC_KEY}`)
+          .fontSize(`${FONT_SIZE}`)
+          .margin(`${MARGIN}`)
+          .onClick(() => {
+            AppStorageV2.remove(`${DYNAMIC_KEY}`);
+          })
+
+        // 修改@Trace装饰的类属性，UI能同步刷新
+        Text(`messageId: ${this.dynMessage.messageId}`)
+          .fontSize(`${FONT_SIZE}`)
+          .margin(`${MARGIN}`)
+          .onClick(() => {
+            this.dynMessage.messageId += 1;
+          })
+
+        // 修改非@Trace装饰的类属性，UI不会同步刷新，但修改的类属性已同步回AppStorageV2
+        Text(`messageContent: ${this.dynMessage.messageContent}`)
+          .fontSize(`${FONT_SIZE}`)
+          .margin(`${MARGIN}`)
+          .onClick(() => {
+            this.dynMessage.messageContent += ' plus';
+          })
+
+        // connect或者remove操作后，查看AppStorageV2存储的MessageModel对象的所有key
+        Text(`get all keys: ${this.keys}`)
+          .fontSize(`${FONT_SIZE}`)
+          .margin(`${MARGIN}`)
+          .onClick(() => {
+            this.keys = AppStorageV2.keys();
           })
 
         // 调用ArkTS-Dyn模块组件，初始化一个ArkTS-Dyn对象
@@ -202,6 +289,8 @@ struct Index {
   }
 }
 ```
+
+![appstoragev2_sta_to_dyn](figures/interop_appstoragev2_sta_to_dyn.gif)
 
 
 ### ArkTS-Sta和ArkTS-Dyn的PersistenceV2不支持互操作
@@ -234,38 +323,121 @@ project/
 ```TypeScript
 // dynamic_module/src/main/ets/component/MainPage.ets
 
-import { PersistenceV2 } from '@kit.ArkUI';
+import { PersistenceV2, Type } from '@kit.ArkUI';
 
 // 接受序列化失败的回调
 PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
   console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
 });
 
+// PersistenceV2存储的数据模型
 @ObservedV2
-class PersistenceModel {
-  @Trace year: number = 1;
-  @Trace day: number = 2;
+class DynDataModelChild {
+  @Trace canTraceProp: number = 0;
+  normalProp: number = 10;
 
-  constructor(year?: number, day?: number) {
-    this.year = year ?? 1;
-    this.day = day ?? 2;
+  constructor(canTraceProp?: number, normalProp?: number) {
+    this.canTraceProp = canTraceProp ?? 0;
+    this.normalProp = normalProp ?? 10;
   }
 }
 
-// 在ArkTS-Dyn模块声明并实现connect接口
-export function connectInDynamic(key: string): PersistenceModel | undefined {
-  let pModel = PersistenceV2.connect(PersistenceModel, key, () => new PersistenceModel())!;
-  return pModel;
+@ObservedV2
+export class DynDataModel {
+  // 对于复杂对象需要@Type修饰，确保序列化成功
+  @Type(DynDataModelChild)
+  @Trace dynDataModelChild: DynDataModelChild = new DynDataModelChild();
 }
 
-// 在ArkTS-Dyn模块声明并实现save接口
-export function saveInDynamic(key: string): void {
-  PersistenceV2.save(key);
+// 对外接口，对ArkTS-Dyn模块canTraceProp的值进行累加
+// 如果ArkTS-Dyn模块的PersistenceV2中无key为DynDataModel的DynDataModel对象，则创建该对象
+// 反之则获取该对象并与sample关联，返回sample的canTraceProp给调用者
+export function canTracePropPlusInDynamic(): number {
+  const sample = PersistenceV2.connect(DynDataModel, 'DynDataModel', () => new DynDataModel())!;
+  sample.dynDataModelChild.canTraceProp++;
+  return sample.dynDataModelChild.canTraceProp;
 }
 
-// 在ArkTS-Dyn模块声明并实现remove接口
-export function removeInDynamic(key: string): void {
-  PersistenceV2.remove(key);
+// 对外接口，对ArkTS-Dyn模块normalProp的值进行累加
+// 如果ArkTS-Dyn模块的PersistenceV2中无key为DynDataModel的DynDataModel对象，则创建该对象
+// 反之则获取该对象并与sample关联，返回sample的normalProp给调用者
+// ArkTS-Dyn模块页面不刷新，但是normalProp值改变了
+export function normalPropPlusInDynamic(): number {
+  const sample = PersistenceV2.connect(DynDataModel, 'DynDataModel', () => new DynDataModel())!;
+  sample.dynDataModelChild.normalProp++;
+  return sample.dynDataModelChild.normalProp;
+}
+
+// 对外接口，实现调用ArkTS-Dyn模块的PersistenceV2.connect接口
+export function connectInDynamic(): DynDataModel {
+  return PersistenceV2.connect(DynDataModel, 'DynDataModel', () => new DynDataModel())!;
+}
+
+// 对外接口，实现调用ArkTS-Dyn模块的PersistenceV2.save接口
+export function saveInDynamic(): void {
+  PersistenceV2.save(DynDataModel);
+}
+
+// 对外接口，实现调用ArkTS-Dyn模块的PersistenceV2.remove接口
+export function removeInDynamic(): void {
+  PersistenceV2.remove(DynDataModel);
+}
+
+// 对外接口，实现调用ArkTS-Dyn模块的PersistenceV2.keys接口
+export function keysInDynamic(): string[] {
+  const result = PersistenceV2.keys();
+  return result;
+}
+
+@ComponentV2
+export struct MainPage {
+  // 在PersistenceV2中创建一个key为DynDataModel的键值对（如果存在，则返回PersistenceV2中的数据），并且和localVar关联
+  // 对于需要换connect对象的localVar属性，需要加@Local修饰（不建议对属性换connect的对象）
+  @Local localVar: DynDataModel = PersistenceV2.connect(DynDataModel, () => new DynDataModel())!;
+  @Local keys: string[] = PersistenceV2.keys();
+
+  build() {
+    Column() {
+      Divider()
+        .margin(10)
+
+      Text('This is ArkTS-Dyn part')
+        .fontSize(20)
+        .margin(10)
+
+      // 在ArkTS-Sta模块调用connect接口重连后，重新与localVar关联，页面数据刷新
+      Button('refresh data')
+        .margin(10)
+        .onClick(() => {
+          this.localVar = connectInDynamic();
+        })
+
+      // 页面刷新，canTraceProp的值改变了
+      Text(`add 1 to canTraceProp: ${this.localVar.dynDataModelChild.canTraceProp}`)
+        .margin(10)
+        .fontSize(20)
+        .onClick(() => {
+          this.localVar.dynDataModelChild.canTraceProp++;
+        })
+
+      // 页面不刷新，但是normalProp的值改变了
+      Text(`add 1 to normalProp: ${this.localVar.dynDataModelChild.normalProp}`)
+        .margin(10)
+        .fontSize(20)
+        .onClick(() => {
+          this.localVar.dynDataModelChild.normalProp++;
+        })
+
+      // 获取当前PersistenceV2里面的所有key
+      Text(`get all keys: ${this.keys}`)
+        .margin(10)
+        .fontSize(20)
+        .onClick(() => {
+          // 刷新页面中的所有key
+          this.keys = PersistenceV2.keys();
+        })
+    }
+  }
 }
 ```
 
@@ -274,7 +446,10 @@ export function removeInDynamic(key: string): void {
 ```TypeScript
 // dynamic_module/Index.ets
 
-export { connectInDynamic, saveInDynamic, removeInDynamic } from './src/main/ets/components/MainPage';
+export {
+  MainPage, canTracePropPlusInDynamic, normalPropPlusInDynamic, connectInDynamic, saveInDynamic, removeInDynamic,
+  keysInDynamic, DynDataModel
+} from './src/main/ets/components/MainPage';
 ```
 
 - 在主模块的`entry/oh-package.json5`文件中配置子模块依赖。
@@ -292,40 +467,84 @@ export { connectInDynamic, saveInDynamic, removeInDynamic } from './src/main/ets
 
 ```TypeScript
 'use static'
-
 // entry/src/main/ets/pages/Index.ets
+
 import { Entry, Text, Column, ComponentV2, Button, Divider } from '@ohos.arkui.component';
-import { connectInDynamic, saveInDynamic, removeInDynamic } from 'dynamic_module'; // 导入ArkTS-Dyn方法
+import { Local } from '@ohos.arkui.stateManagement';
+import {
+  MainPage, canTracePropPlusInDynamic, normalPropPlusInDynamic, connectInDynamic, saveInDynamic, removeInDynamic,
+  keysInDynamic, DynDataModel
+} from 'dynamic_module';
 
 @Entry
 @ComponentV2
 struct Index {
+  // 承接ArkTS-Dyn模块的数据
+  @Local canTraceProp: number = 0;
+  @Local normalProp: number = 10;
+  @Local keys: Array<string> = [];
+
   build() {
     Column() {
-      Divider()
       Text('This is ArkTS-Sta part')
-        .fontSize(30)
+        .fontSize(20)
+        .margin(10)
 
-      Button('dynamic connect')
+      // 在ArkTS-Sta模块调用ArkTS-Dyn模块的connect接口，返回一个key为DynDataModel的DynDataModel对象
+      Button('connect key DynDataModel by Dyn')
+        .margin(10)
         .onClick(() => {
-          // 在ArkTS-Sta模块调用ArkTS-Dyn模块的自定义connect接口
-          let pModel = connectInDynamic('dynamic_key_persistence_dynamic');
+          const dynDataModel: DynDataModel = connectInDynamic();
+          this.canTraceProp = dynDataModel.dynDataModelChild.canTraceProp;
+          this.normalProp = dynDataModel.dynDataModelChild.normalProp;
         })
 
-      Button('dynamic save')
+      // 在ArkTS-Sta模块调用ArkTS-Dyn模块的remove接口
+      Button('remove key DynDataModel by Dyn')
+        .margin(10)
         .onClick(() => {
-          // 在ArkTS-Sta模块调用ArkTS-Dyn模块的自定义save接口
-          saveInDynamic('dynamic_key_persistence_dynamic');
+          removeInDynamic();
         })
 
-      Button('dynamic remove')
+      // 在ArkTS-Sta模块调用ArkTS-Dyn模块的save接口
+      Button('save key DynDataModel by Dyn')
+        .margin(10)
         .onClick(() => {
-          // 在ArkTS-Sta模块调用ArkTS-Dyn模块的自定义remove接口
-          removeInDynamic('dynamic_key_persistence_dynamic');
+          saveInDynamic();
         })
+
+      // 在ArkTS-Sta模块调用ArkTS-Dyn模块的canTraceProp累加接口
+      // this.canTraceProp被重新赋值，页面刷新
+      Text(`add 1 to canTraceProp by Dyn: ${this.canTraceProp}`)
+        .margin(10)
+        .fontSize(20)
+        .onClick(() => {
+          this.canTraceProp = canTracePropPlusInDynamic();
+        })
+
+      // 在ArkTS-Sta模块调用ArkTS-Dyn模块的normalProp累加接口
+      // this.normalProp被重新赋值，页面刷新
+      Text(`add 1 to normalProp by Dyn: ${this.normalProp}`)
+        .margin(10)
+        .fontSize(20)
+        .onClick(() => {
+          this.normalProp = normalPropPlusInDynamic();
+        })
+
+      Text(`get all keys by Dyn: ${this.keys}`)
+        .fontSize(20)
+        .margin(10)
+        .onClick(() => {
+          this.keys = keysInDynamic();
+        })
+
+      // 调用ArkTS-Dyn模块组件，初始化一个ArkTS-Dyn对象
+      MainPage()
     }
     .width('100%')
     .height('100%')
   }
 }
 ```
+
+![persistenceV2_sta_to_dyn](figures/interop_persistencev2_sta_to_dyn.gif)
