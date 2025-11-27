@@ -5178,3 +5178,60 @@ onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
    </body>
   </html>
   ```
+
+## onTextSelectionChange<sup>23+</sup>
+
+onTextSelectionChange(callback: TextSelectionChangeCallback)
+
+设置Web组件选区文本改变时的回调函数，使用callback异步回调。
+
+> **说明：**
+>
+> - 支持手势选中、鼠标选中以及JS选中选区。
+>
+> - 使用上述方式选中内容结束后触发回调。
+>
+> - 使用同样方式选中和上一次相同内容时，不触发回调；使用不同方式选中和上一次相同内容时，依然触发。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填   | 说明                                   |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| callback | [TextSelectionChangeCallback](./arkts-basic-components-web-t.md#textselectionchangecallback23) | 是    | 回调函数，所选区域文本内容改变时触发。 |
+
+**示例：**
+
+  ```ts
+  // onTextSelectionChange.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onTextSelectionChange((selectionText: string) => {
+            console.info(`Selected text is ${selectionText}.`);
+          })
+      }
+    }
+  }
+  ```
+  加载的html文件
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>示例页面</title>
+  </head>
+  <body>
+      示例文本
+  </body>
+  </html>
+  ```
