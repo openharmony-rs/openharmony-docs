@@ -29,9 +29,9 @@ deleteForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -85,9 +85,9 @@ deleteForm(formId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -302,9 +302,9 @@ requestForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -356,9 +356,9 @@ requestForm(formId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -415,9 +415,9 @@ requestFormWithParams(formId: string, wantParams?: Record<string, Object>): Prom
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -478,9 +478,9 @@ castToNormalForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -532,9 +532,9 @@ castToNormalForm(formId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -591,9 +591,9 @@ notifyVisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -696,9 +696,9 @@ notifyInvisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;vo
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -748,9 +748,9 @@ notifyInvisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1011,9 +1011,9 @@ isSystemReady(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1055,9 +1055,9 @@ isSystemReady(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1193,9 +1193,9 @@ getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.Fo
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1247,9 +1247,9 @@ getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1302,9 +1302,9 @@ getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formI
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1360,9 +1360,9 @@ getFormsInfo(filter: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.Form
 
 **系统能力**：SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1424,9 +1424,9 @@ ArkTS-Sta: deleteInvalidForms(formIds: Array<string>, callback: AsyncCallback<in
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1502,9 +1502,9 @@ ArkTS-Sta: deleteInvalidForms(formIds: Array&lt;string&gt;): Promise&lt;int&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1578,9 +1578,9 @@ acquireFormState(want: Want, callback: AsyncCallback&lt;formInfo.FormStateInfo&g
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1643,9 +1643,9 @@ acquireFormState(want: Want): Promise&lt;formInfo.FormStateInfo&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2320,9 +2320,9 @@ setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;, callba
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2416,9 +2416,9 @@ setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promi
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2513,9 +2513,9 @@ clearRouterProxy(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2566,9 +2566,9 @@ clearRouterProxy(formIds:Array&lt;string&gt;): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2729,9 +2729,9 @@ recoverForms(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): 
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2782,9 +2782,9 @@ recoverForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2841,9 +2841,9 @@ recycleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2948,9 +2948,9 @@ setPublishFormResult(formId: string, result: formInfo.PublishFormResult): void;
 
 **系统能力**：SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3318,7 +3318,7 @@ updateFormSize(formId: string, newDimension: formInfo.FormDimension, newRect: fo
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permissions denied. |
-| 202 | Permissions denied.Called by non-system application. |
+| 202 | Called by non-system application. |
 | 16501000 | An internal functional error occurred. |
 | 16501001 | The ID of the form to be operated does not exist. |
 | 16501012 | The dimension parameter is incorrect. |

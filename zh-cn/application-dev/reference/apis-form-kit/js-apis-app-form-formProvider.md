@@ -30,9 +30,9 @@ ArkTS-Sta: setFormNextRefreshTime(formId: string, minute: int, callback: AsyncCa
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -111,9 +111,9 @@ ArkTS-Sta: setFormNextRefreshTime(formId: string, minute: int): Promise&lt;void&
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -191,9 +191,9 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData,call
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -242,7 +242,7 @@ try {
 }
 ```
 
-## formProvider.updateForm<sup>11+</sup>
+## formProvider.updateForm
 
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 
@@ -252,9 +252,9 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Pr
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -306,7 +306,7 @@ try {
 }
 ```
 
-## formProvider.getFormsInfo<sup>11+</sup>
+## formProvider.getFormsInfo
 
 getFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -316,9 +316,9 @@ getFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): voi
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -355,7 +355,7 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
 }
 ```
-## formProvider.getFormsInfo<sup>11+</sup>
+## formProvider.getFormsInfo
 
 getFormsInfo(filter: formInfo.FormInfoFilter, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -365,9 +365,9 @@ getFormsInfo(filter: formInfo.FormInfoFilter, callback: AsyncCallback&lt;Array&l
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -410,7 +410,7 @@ try {
 }
 ```
 
-## formProvider.getFormsInfo<sup>11+</sup>
+## formProvider.getFormsInfo
 
 getFormsInfo(filter?: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -420,9 +420,9 @@ getFormsInfo(filter?: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.For
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -476,9 +476,9 @@ openFormEditAbility(abilityName: string, formId: string, isMainPage?: boolean): 
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -548,9 +548,9 @@ openFormManager(want: Want): void
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -602,9 +602,9 @@ getPublishedFormInfoById(formId: string): Promise&lt;formInfo.FormInfo&gt;
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 > **说明：**
 >
@@ -660,9 +660,9 @@ getPublishedFormInfos(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 > **说明：**
 >
@@ -889,9 +889,9 @@ getPublishedRunningFormInfoById(formId: string): Promise&lt;formInfo.RunningForm
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -947,9 +947,9 @@ getPublishedRunningFormInfos(): Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：**20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：**22
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
