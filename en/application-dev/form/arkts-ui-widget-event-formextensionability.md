@@ -7,7 +7,6 @@ On the widget page, you can trigger a message event via the [postCardAction](../
 > This topic describes development for dynamic widgets. For static widgets, see [FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md).
 
 - On the widget page, register the **onClick** event callback of the button and call the **postCardAction** API in the callback to trigger the message event to start the FormExtensionAbility. Use [LocalStorageProp](../ui/state-management/arkts-localstorage.md#localstorageprop) to decorate the widget data to be updated.
-  
   ```ts
   let storageUpdateByMsg = new LocalStorage();
   
