@@ -213,6 +213,10 @@ struct Page {
 
 ## List&Grid并行化创建子组件
 
+可以使用[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)来并行创建子节点。
+
+如下示例演示了在不同场景中，如何使用[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)并行创建子节点。
+
 - 在非List和Grid中使用时，[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)会并行创建arr数组中定义的所有UI节点。适用于批量创建大量静态内容（例如图标、按钮、卡片等）。
 
   ```ts
@@ -428,6 +432,6 @@ struct Page {
 [List&Grid并行化创建子组件](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_20250702/code/ArkTS1.2/ListAndGridParallelSample/README.md)
 
 ## 注意事项
-[为什么使用分帧方案帧间插入大任务时，页面的完成时间会延后](../faqs/faqs-arkui-component.md##为什么使用分帧方案帧间插入大任务时，页面的完成时间会延后)
+[List/Grid并行加载子节点的方案和注意事项](../faqs/faqs-arkui-component.md##List/Grid并行加载子节点的方案和注意事项(API 22))
 
 <!--DelEnd-->
