@@ -4,7 +4,8 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
+
 This document describes how to develop an ArkTS widget based on the declarative paradigm.
 
 ## Highlights
@@ -66,7 +67,7 @@ The **FormLink** component is provided for interactions between static widgets a
 See [FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md).
 
 ### Interactive Widget
-Interactive widgets provide overflow animations and implement human-machine interactions to improve information notifications, shallow interactions, and playability. For details, see [Overview of Interactive Widgets](arkts-ui-liveform-overview.md).
+Interactive widgets are supported since API version 20. They provide overflow animations and implement human-machine interactions to improve information notifications, shallow interactions, and playability. For details, see [Overview of Interactive Widgets](arkts-ui-liveform-overview.md).
 
 ## Constraints
 ArkTS widgets support running logic code within the UI. Compared to JS widgets, they offer more robust capabilities but also introduce an increased risk of malicious activities conducted through the widgets. The code (in **widget.abc**) that carries the ArkTS widget UI runs in the system public FRS process and is finally displayed in the widget host (generally the home screen application). To ensure the stability of the system rendering process, isolation security between widgets, and resource usage such as memory and power consumption, the following constraints are imposed on the capabilities available to the ArkTS widget UI:
@@ -79,7 +80,7 @@ ArkTS widgets support running logic code within the UI. Compared to JS widgets, 
 
 - The native programming language cannot be used for development, and the native .so file cannot be loaded.
 
-- For widget UI page development, ArkTS widgets support only some components, events, animations, data management, state management, and API capabilities of the [declarative paradigm](../ui/arkts-ui-development-overview.md). For APIs that can be used in ArkTS widgets, the following description will be added: "Widget capability: This API can be used in ArkTS widgets since API version *x*."
+- For widget UI page development, ArkTS widgets support only some components, events, animations, data management, state management, and API capabilities of the [declarative paradigm](../ui/arkts-ui-development-overview.md). For APIs that can be used in ArkTS widgets, a description (for example) will be added as follows: "Widget capability: This API can be used in ArkTS widgets since API version 12."
 
 - The event processing of widget content is independent of that of widget host. To prevent gesture conflicts, avoid using swipers in the widget when the widget host supports left and right swipes.
 
@@ -93,3 +94,4 @@ In addition, ArkTS widgets do not support the following features:
 
 - setTimeOut
 
+- For details about widget constraints in DevEco Studio, see [Constraints](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-service-widget#section1181172254318).

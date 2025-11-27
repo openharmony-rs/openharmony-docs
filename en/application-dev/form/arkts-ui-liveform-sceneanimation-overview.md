@@ -1,5 +1,10 @@
 # Overview of Scene-based Widgets
-
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @chenmingze-->
+<!--Adviser: @HelloShuo-->
 Scene-based widgets support special effects. For example, you can choose to extend the animation beyond the widget rendering area to create an "overflow" effect.
 
 ## Basic Concepts
@@ -16,7 +21,7 @@ A scene-based widget can be in either active state or inactive state. The widget
 
 **Figure 2** Process of triggering an interactive widget animation
 
-![live-form-judge.PNG](figures/live-form-judge.PNG)
+![live-form-judge.png](figures/live-form-judge.png)
 
 ## How to Implement
 
@@ -35,7 +40,7 @@ The following figure shows the timing diagram in interval-based and time-specifi
 ## Constraints
 
 ### Parameter Request
-1. The maximum valid duration of the overflow animation is 3500 ms. When the countdown ends, the widget switches back to the inactive state. <!--Del-->This applies only to third-party applications.<!--DelEnd-->
+1. The maximum valid duration of the animation is 3500 ms. When the countdown ends, the widget switches back to the inactive state. <!--Del-->System applications support long-time activated widgets, and the animation duration is not limited. For details, see [Developing a Scene-based Widget (for System Applications)](arkts-ui-liveform-sceneanimation-development-sys.md).<!--DelEnd-->
 2. A single widget's animation triggered by interval-based and time-specific updates can occur up to 50 times a day.
 3. As illustrated, rectangle ABCD denotes the widget's rendering area, whereas rectangle IJKL indicates the maximum animation area the widget can request. The centers of the two rectangles are aligned. The dimensions meet the requirements described in the following table.
 
@@ -67,10 +72,10 @@ For details, see [Developing a Scene-based Widget](arkts-ui-liveform-sceneanimat
 
 ### Power Consumption
 1. When a device enters the power-saving mode, interactive widgets do not respond to animation effect requests.
-2. When the device's thermal level reaches WARM, it no longer responds to animation requests triggered by non-tap operations; when the thermal level reaches OVERHEATED, it no longer responds to any animation requests. For details, see [ThermalLevel](../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel).
+2. When the device's thermal level reaches HOT, it no longer responds to animation requests triggered by non-tap operations; when the thermal level reaches OVERHEATED, it no longer responds to any animation requests. For details, see [ThermalLevel](../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel).
 
 ### Animation Request
-1. At a time, only one widget executes the scene animation.
+1. At a time, only one widget executes the interactive widget animation.
 2. When a user actively triggers an animation effect for an interactive widget (for example, via a tap), this request takes priority. At this point, the current widget switches to the active state and runs the animation, while other widgets switch to the inactive state.
 3. Other triggering modes, for example, triggering an animation via interval-based or time-specific update, are based on the first-come, first-served principle. The system processes only the first valid animation request. Other requests return failure and no cache is performed.
 4. Other valid operations (such as tapping an application or widget, swiping pages, pulling down to access full search, dual-center, dragging a widget, and long pressing a widget) on the home screen will interrupt the current animation, and the widget will become inactive again. <!--Del-->System applications can suspend some operations on the home screen by configuring the suspend gesture. For details, see [Developing a Scene-based Widget (for System Applications)](arkts-ui-liveform-sceneanimation-development-sys.md).<!--DelEnd-->
