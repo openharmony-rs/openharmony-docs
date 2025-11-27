@@ -7676,9 +7676,9 @@ setWindowTitle(titleName: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Exactly one parameter is required; 2. Failed to convert parameter to title. |
+| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal napi error. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
 **示例：**
 
@@ -7721,7 +7721,7 @@ setWindowTitleMoveEnabled(enabled: boolean): void
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Exactly one parameter is required; 2. Failed to convert parameter to enable. |
+| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300004  | Unauthorized operation.        |
@@ -7929,7 +7929,7 @@ setWindowDecorHeight(height: number): void
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Failed to convert parameter to height; 3. Height should greater than 37 or smaller than 112. |
+| 401      | Parameter error. Possible cause: Invalid parameter range. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
@@ -7974,10 +7974,10 @@ API version 18之前，该接口在2in1设备中可正常调用，在其他设�
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Exactly one parameter is required; 2. Parameter is invalid; 3. Out of range params. |
-| 801      | Capability not supported. Possible cause: Device not support. |
+| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| 1300004  | Unauthorized operation. Possible cause: Called by invalid window type. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type.Only main windows and sub windows are supported. |
 
 **示例：**
 
@@ -8037,9 +8037,9 @@ API version 18之前，该接口在2in1设备中可正常调用，在其他设�
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 801      | Capability not supported. Possible cause: Device not support. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| 1300003  | This window manager service works abnormally. Possible cause: DecorButtonStyle format failed. |
+| 1300003  | This window manager service works abnormally. |
 | 1300004  | Unauthorized operation. |
 
 **示例：**
@@ -8077,8 +8077,8 @@ getWindowDecorHeight(): number
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 801      | Capability not supported. Possible cause: Device not support. |
-| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Get window decor height failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
 **示例：**
 
@@ -8116,7 +8116,7 @@ getTitleButtonRect(): TitleButtonRect
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. TitleButtonRect convert Failed. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
 **示例：**
 
@@ -8411,7 +8411,7 @@ setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVi
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Failed to convert parameter to isMaximizeVisible; 3. Failed to convert parameter to isMinimizeVisible; 4. Failed to convert parameter to isCloseVisible. |
+| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300004  | Unauthorized operation. |
@@ -9761,9 +9761,9 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 | 错误码ID | 错误信息                                                                                                     |
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 801      | Capability not supported.Function setRelativePositionToParentWindowEnabled can not work correctly due to limited device capabilities.|
-| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal napi error.                    |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.                    |
 | 1300003  | This window manager service works abnormally.                                                                |
-| 1300004  | Unauthorized operation. Possible cause: Only sub window is valid.                                            |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type.Only sub windows are supported.                                            |
 
 **示例：**
 
