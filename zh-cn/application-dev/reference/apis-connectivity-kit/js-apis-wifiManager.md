@@ -1814,9 +1814,6 @@ getCountryCode(): string
 	}
 ```
 
-
-
-
 ## wifiManager.isBandTypeSupported<sup>10+</sup>
 
 isBandTypeSupported(bandType: WifiBandType): boolean
@@ -2029,7 +2026,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 | -------- | -------- | -------- | -------- | -------- |
 | connectState | [P2pConnectState](#p2pconnectstate9) | 否 | 否 | P2P连接状态。 |
 | isGroupOwner | boolean | 否 | 否 | true表示是群主，false表示不是群主。|
-| groupOwnerAddr | string | 否 | 否 | 群组IP地址。| 
+| groupOwnerAddr | string | 否 | 否 | 群组IP地址。|
 
 
 ## P2pConnectState<sup>9+</sup>
