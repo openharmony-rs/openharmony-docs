@@ -3688,6 +3688,10 @@ setHandwritingFlag(enable: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型     | 必填 | 说明                                            |
@@ -3714,6 +3718,8 @@ setHandwritingFlag(enable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3727,6 +3733,25 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to set handwriting flag of window. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let enable = true;
+  let promise = windowClass.setHandwritingFlag(enable);
+  promise.then(() => {
+    console.info('Succeeded in setting handwriting flag of window.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set handwriting flag of window. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set handwriting flag of window. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -5111,7 +5136,7 @@ export default class EntryAbility extends UIAbility {
           console.info('Succeeded in setTitleButtonVisible.');
         } catch (exception) {
           let err = exception as BusinessError;
-          console.error(Failed to setTitleButtonVisible. Cause code: ${err.code}, message: ${err.message});
+          console.error(`Failed to setTitleButtonVisible. Cause code: ${err.code}, message: ${err.message}`);
         }
       });
     });
