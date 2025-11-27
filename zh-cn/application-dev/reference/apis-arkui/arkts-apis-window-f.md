@@ -304,23 +304,28 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
-    // 创建子窗
-    windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
-      let storage: LocalStorage = new LocalStorage();
-      subWindow.loadContent('pages/Index', storage, (err: BusinessError): void => {
-        subWindow.showWindow().then(() => {
-          try{
-            window.getLastWindow(this.context as common.UIAbilityContext, (err: BusinessError<void>|null, topWindow: window.Window|undefined) => {
-              if (err?.code) {
-                console.error(`Failed to obtain the top window. Cause code: ${err?.code}, message: ${err?.message}`);
-              } else {
-                console.info(`Succeeded in obtaining the top window. Window id: ${topWindow?.getWindowProperties().id}`);
-              }
-            });
-          }catch(exception){
-            let err = exception as BusinessError;
-            console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
-          }
+    windowStage.loadContent('pages/Index', (err) => {
+        if (err?.code) {
+          console.error(`Failed to load content for main window. Cause code: ${err?.code}, message: ${err?.message}`);
+        }
+      // 创建子窗
+      windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
+        let storage: LocalStorage = new LocalStorage();
+        subWindow.loadContent('pages/Index', storage, (err: BusinessError): void => {
+          subWindow.showWindow().then(() => {
+            try{
+              window.getLastWindow(this.context as common.UIAbilityContext, (err: BusinessError<void>|null, topWindow: window.Window|undefined) => {
+                if (err?.code) {
+                  console.error(`Failed to obtain the top window. Cause code: ${err?.code}, message: ${err?.message}`);
+                } else {
+                  console.info(`Succeeded in obtaining the top window. Window id: ${topWindow?.getWindowProperties().id}`);
+                }
+              });
+            }catch(exception){
+              let err = exception as BusinessError;
+              console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
+            }
+          });
         });
       });
     });
@@ -424,23 +429,28 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
-    // 创建子窗
-    windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
-      let storage: LocalStorage = new LocalStorage();
-      subWindow.loadContent('pages/Index', storage, (err: BusinessError): void => {
-        subWindow.showWindow().then(() => {
-          try {
-            window.getLastWindow(this.context as common.UIAbilityContext ).then((topWindow :window.Window | undefined ) => {
-              let windowClass = topWindow;
-              console.info(`Succeeded in obtaining the top window. Window id: ${topWindow?.getWindowProperties().id}`);
-            }).catch((Err: Error) => {
-              let err = Err as BusinessError;
-              console.error(`Failed to obtain the top window. Cause code: ${err?.code}, message: ${err?.message}`);
-            });
-          } catch (exception) {
-            let err = exception as BusinessError;
-            console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
-          }
+    windowStage.loadContent('pages/Index', (err) => {
+        if (err?.code) {
+          console.error(`Failed to load content for main window. Cause code: ${err?.code}, message: ${err?.message}`);
+        }
+      // 创建子窗
+      windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
+        let storage: LocalStorage = new LocalStorage();
+        subWindow.loadContent('pages/Index', storage, (err: BusinessError): void => {
+          subWindow.showWindow().then(() => {
+            try {
+              window.getLastWindow(this.context as common.UIAbilityContext ).then((topWindow :window.Window | undefined ) => {
+                let windowClass = topWindow;
+                console.info(`Succeeded in obtaining the top window. Window id: ${topWindow?.getWindowProperties().id}`);
+              }).catch((Err: Error) => {
+                let err = Err as BusinessError;
+                console.error(`Failed to obtain the top window. Cause code: ${err?.code}, message: ${err?.message}`);
+              });
+            } catch (exception) {
+              let err = exception as BusinessError;
+              console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
+            }
+          });
         });
       });
     });
