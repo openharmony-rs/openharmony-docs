@@ -1862,7 +1862,7 @@ struct Index {
         })
         .onClientAuthenticationRequest((event) => {
           // 收到客户端证书请求事件
-          console.log(`onClientAuthenticationRequest`);
+          console.info(`onClientAuthenticationRequest`);
           try {
             let certTypes: Array<certMgrDialog.CertificateType> = [
               certMgrDialog.CertificateType.CREDENTIAL_UKEY
@@ -1883,16 +1883,16 @@ struct Index {
         })
         .onVerifyPin((event) => {
           // 收到PIN码认证请求事件
-          console.log(`onVerifyPin`);
+          console.info(`onVerifyPin`);
           // 调用证书管理，打开PIN码输入框
           certMgrDialog.openUkeyAuthDialog(this.context, {keyUri: event.identity})
             .then(() => {
               // 通知webPIN码认证成功
-              console.log(`onVerifyPin success`);
+              console.info(`onVerifyPin success`);
               event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_SUCCESS);
             }).catch((err: BusinessError) => {
             // 通知webPIN码认证失败
-            console.log(`onVerifyPin fail`);
+            console.info(`onVerifyPin fail`);
             event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_FAILED);
           })
         })
