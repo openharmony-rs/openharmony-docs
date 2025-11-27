@@ -90,11 +90,8 @@ export struct MyTitleBar {
 
 ``` TypeScript
 // library/index.ets
-// [EndExclude in_app_hsp_010]
 export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
-// [StartExclude in_app_hsp_010]
 ```
-
 
 
 ### 导出类和方法
@@ -121,13 +118,11 @@ export function minus(a: number, b: number): number {
 
 在入口文件 `index.ets` 中声明对外暴露的接口。
 
-<!-- @[in_app_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+<!-- @[in_app_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets)  -->
 
 ``` TypeScript
 // library/index.ets
-// [EndExclude in_app_hsp_010]
 export { Log, add, minus } from './src/main/ets/utils/test';
-// [StartExclude in_app_hsp_010]
 ```
 
 ### 导出native方法
@@ -148,15 +143,12 @@ export function nativeMulti(a: number, b: number): number {
 
 在入口文件 `index.ets` 中声明对外暴露的接口。
 
-<!-- @[in_app_hsp_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+<!-- @[in_app_hsp_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets)  -->
 
 ``` TypeScript
 // library/index.ets
-// [EndExclude in_app_hsp_010]
 export { nativeMulti } from './src/main/ets/utils/nativeTest';
 ```
-
-
 ### 通过$r访问HSP中的资源
 在组件中，经常需要使用字符串、图片等资源。HSP中的组件需要使用资源时，一般将其所用资源放在HSP包内，而非放在HSP的使用方处，以符合高内聚低耦合的原则。
 
@@ -211,12 +203,8 @@ export class ResManager{
 
 ``` TypeScript
 // library/index.ets
-// [EndExclude in_app_hsp_010]
 export { ResManager } from './src/main/ets/ResManager';
-// [StartExclude in_app_hsp_010]
 ```
-
-
 
 ## 使用
 
@@ -230,22 +218,22 @@ export { ResManager } from './src/main/ets/ResManager';
 
 ``` TypeScript
 // library/index.ets
-// ···
+// ...
 export { Log, add, minus } from './src/main/ets/utils/test';
-// ···
+// ...
 export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
-// ···
+// ...
 export { ResManager } from './src/main/ets/ResManager';
-// ···
+// ...
 export { nativeMulti } from './src/main/ets/utils/nativeTest';
-// [End in_app_hsp_006]
 ```
 
 在使用方的代码中，可以这样使用：
 
+<!--deprecated_code_no_check-->
+
 <!-- @[in_app_hsp_011](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/entry/src/main/ets/pages/Index.ets) -->
 
-<!--deprecated_code_no_check-->
 ``` TypeScript
 // entry/src/main/ets/pages/index.ets
 import { Log, add, MyTitleBar, ResManager, nativeMulti } from 'library';
