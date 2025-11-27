@@ -632,7 +632,7 @@ $ hdc shell -b com.example.myapplication ls data/storage/el2/base/
 应用安装功能在设备端集成bm模块[安装命令（install）](../tools/bm-tool.md#安装命令install)，简化了安装流程，开发者可以在电脑端直接执行命令完成应用安装。命令格式如下：
 
 ```shell
-hdc install [-cwd path|-r|-s|-w waitingTime|-u userId] src
+hdc install [-cwd path|-r|-s|-w waitingTime|-u userId|-p|-h] src
 ```
 
 **参数**：
@@ -645,6 +645,8 @@ hdc install [-cwd path|-r|-s|-w waitingTime|-u userId] src
 | -s | 安装应用HSP时为必选参数，其他场景为可选参数。用于指定待安装应用间HSP的路径。指定目录的时候，每个路径目录下只能存在一个HSP。 |
 | -w | 可选参数，安装HAP时指定bm工具等待时间，最小的等待时长为180s，最大的等待时长为600s,&nbsp;默认缺省为180s。 |
 | -u | 可选参数，指定[用户](../tools/bm-tool.md#userid)，默认在当前活跃用户下安装应用。 |
+| -p | 可选参数，指定待安装的HAP/HSP路径，多HAP/HSP应用可指定多HAP/HSP所在文件夹路径。从API version 22开始，支持指定待安装的APP路径，也可指定只存在一个APP的文件夹路径。 |
+| -h | 可选参数，显示bm模块[安装命令（install）](../tools/bm-tool.md#安装命令install)帮助信息。 |
 
 **返回信息**：
 
@@ -689,6 +691,11 @@ AppMod finish
 $ hdc "-u 100" install D:\example.hap
 [Info]App install path:D:\example.hap msg:install bundle successfully.
 AppMod finish
+
+# 安装D:\hap_dir下应用示例（-p为bm模块install命令支持参数，指定安装路径）
+$ hdc -p install D:\hap_dir
+[Info]App install path:D:\hap_dir msg:install bundle successfully.
+AppMod finish
 ```
 
 ### 卸载应用
@@ -696,7 +703,7 @@ AppMod finish
 应用卸载功能在设备端集成bm模块[卸载命令（uninstall）](../tools/bm-tool.md#卸载命令uninstall)，简化了卸载流程，开发者可以在电脑端直接执行命令完成应用卸载。命令格式如下：
 
 ```shell
-hdc uninstall [-n|-m|-k|-s|-v|-u] bundlename
+hdc uninstall [-n|-m|-k|-s|-v|-u|-h] bundlename
 ```
 
 **参数**：
@@ -709,7 +716,8 @@ hdc uninstall [-n|-m|-k|-s|-v|-u] bundlename
 | -k | 可选参数，卸载应用时保存应用数据。默认卸载应用时不保存应用数据。 |
 | -s | 根据场景判断，卸载应用间HSP时必选参数，其他场景为可选参数。卸载指定的共享库。|
 | -v | 可选参数，指定共享包的版本号。默认卸载同包名的所有共享包。 |
-| -u | 可选参数，指定[用户](../tools/bm-tool.md#userid)，默认在当前活跃用户下卸载应用。
+| -u | 可选参数，指定[用户](../tools/bm-tool.md#userid)，默认在当前活跃用户下卸载应用。 |
+| -h | 可选参数，bm模块[卸载命令（uninstall）](../tools/bm-tool.md#卸载命令uninstall)帮助信息。 |
 
 **返回信息**：
 
