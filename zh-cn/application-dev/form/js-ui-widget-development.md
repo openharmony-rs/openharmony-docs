@@ -184,7 +184,7 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
     ``` JSON5
     {
       "module": {
-        // ···
+        // ...
         "extensionAbilities": [
           {
             "name": "JsCardFormAbility",
