@@ -153,11 +153,12 @@ Represents the WLAN configuration.
 | randomMacAddr | string | No| Yes| MAC address.<br> **System API**: This is a system API.|
 | ipType | [IpType](#iptype9) | No| Yes| IP address type.<br> **System API**: This is a system API.|
 | staticIp | [IpConfig](#ipconfig9) | No| Yes| Static IP address information.<br> **System API**: This is a system API.|
+| startWifiDetection<sup>21+</sup> | void | No| Yes| Starts a Wi-Fi network detection.<br> **System API**: This is a system API.|
 | proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | No| Yes| Proxy configuration.<br> **System API**: This is a system API.|
 | configStatus<sup>12+</sup> | number | No| Yes| Status indicating whether the current network can be selected.<br>  **1**: network selection allowed<br>**2**: network selection forbidden<br> **3**: network selection permanently forbidden<br>4: unknown<br> **System API**: This is a system API.|
 | isAutoConnectAllowed<sup>17+</sup> | boolean | No| Yes| Whether automatic connection is allowed. The value **true** indicates that automatic connection is allowed, and the value **false** indicates the opposite.<br> **System API**: This is a system API.|
 | isSecureWifi<sup>20+</sup> | boolean | No| Yes| Whether Wi-Fi is secure. The value **true** indicates that Wi-Fi is secure, and the value **false** indicates the opposite.<br> **System API**: This is a system API.|
-
+| isRandomMacDisabled<sup>21+</sup> | boolean | No| Yes| Whether the random MAC address is disabled. The value **true** indicates that the random MAC address is disabled, and the value **false** indicatesthe opposite.<br> **System API**: This is a system API.|
 ## IpType<sup>9+</sup>
 
 Enumerates the IP address types.
@@ -255,19 +256,19 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let config:wifiManager.WifiDeviceConfig = {
-			ssid : "****",
-			preSharedKey : "****",
-			securityType : 3
-		}
-		wifiManager.connectToDevice(config);
-				
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
+try {
+	let config:wifiManager.WifiDeviceConfig = {
+		ssid : "****",
+		preSharedKey : "****",
+		securityType : 3
 	}
+	wifiManager.connectToDevice(config);
+				
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## WifiLinkedInfo<sup>9+</sup>
@@ -367,7 +368,6 @@ try {
 
 ```
 
-
 ## wifiManager.getWifiDetailState<sup>12+</sup>
 
 getWifiDetailState(): WifiDetailState
@@ -420,13 +420,13 @@ Enumerates Wi-Fi states.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| UNKNOWN | -1 | Unidentified.|
+| UNKNOWN | -1 | Unspecified.|
 | INACTIVE | 0 | Inactive.|
 | ACTIVATED | 1 | Activated.|
 | ACTIVATING | 2 | Activating.|
 | DEACTIVATING | 3 | Deactivating|
 | SEMI_ACTIVATING | 4 | Partially activating.|
-| SEMI_ACTIVE | 5 | partially activated.|
+| SEMI_ACTIVE | 5 | Partially activated.|
 
 
 ## wifiManager.reassociate<sup>9+</sup>
@@ -761,6 +761,41 @@ try {
 }
 ```
 
+## wifiManager.startWifiDetection<sup>21+</sup>
+
+startWifiDetection(): void
+
+Starts Wi-Fi network detection.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION (available only to system applications)
+
+**System capability**: SystemCapability.Communication.WiFi.STA
+
+**Error codes**
+
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID|Error Message|
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed. |
+| 2501001  | Wi-Fi STA disabled. |
+
+**Example**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+try {
+	wifiManager.startWifiDetection();
+}catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
+```
+
 ## wifiManager.enableHiLinkHandshake<sup>12+</sup>
 
 enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDeviceConfig): void
@@ -920,7 +955,7 @@ try {
 
 isHotspotDualBandSupported(): boolean
 
-Checks whether the hotspot supports dual band.
+Checks whether Wi-Fi hotspot operations are allowed under certain circumstances. When Airplane mode is enabled, if the system does not support the coexistence of SoftAP and STA or signal bridging, the hotspot switch cannot be operated.
 
 **System API**: This is a system API.
 
@@ -1260,7 +1295,7 @@ try {
 } catch (error) {
 	console.error("failed:" + JSON.stringify(error));
 }
- ```
+```
 
 ## wifiManager.getHotspotBlockList<sup>11+</sup>
 
@@ -1478,7 +1513,6 @@ try {
 }
 ```
 
-
 ## wifiManager.on('streamChange')<sup>9+</sup>
 
 on(type: 'streamChange', callback: Callback&lt;number&gt;): void
@@ -1543,20 +1577,19 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-import { wifi } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
 let recvStreamChangeFunc = (result:number) => {
     console.info("Receive stream change event: " + result);
 }
 
 // Register an event.
-wifi.on("streamChange", recvStreamChangeFunc);
+wifiManager.on("streamChange", recvStreamChangeFunc);
 
 // Unregister an event.
-wifi.off("streamChange", recvStreamChangeFunc);
+wifiManager.off("streamChange", recvStreamChangeFunc);
 
 ```
-
 ## wifiManager.on('deviceConfigChange')<sup>9+</sup>
 
 on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
@@ -1800,3 +1833,44 @@ Represents the WLAN connection information.
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | isHiLinkProNetwork<sup>20+</sup> | boolean | No| Yes| Whether the network is a HiLinkPro network. The value **true** indicates that the network is a HiLinkPro network, and the value **false** indicates the opposite.<br> **System API**: This is a system API.|
+
+## wifiManager.isRandomMacDisabled<sup>21+</sup>
+
+isRandomMacDisabled(): boolean
+
+Whether the random MAC address is disabled.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.GET_WIFI_CONFIG (available only to system applications)
+
+**System capability**: SystemCapability.Communication.WiFi.STA
+
+**Return value**
+
+  | **Type**| **Description**|
+  | -------- | -------- |
+  | boolean | The value **true** indicates that random MAC addresses are disabled, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+
+| **ID**| **Error Message**|
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed. |
+
+**Example**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+try {
+	let ret = wifiManager.isRandomMacDisabled();
+	console.info("result:" + ret);
+}catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
+```
