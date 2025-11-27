@@ -577,6 +577,9 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
      windowStage.loadContent('pages/Index', (err) => {
+        if (err?.code) {
+          console.error(`Failed to load content for main window. Cause code: ${err?.code}, message: ${err?.message}`);
+        }
       // 创建子窗
       windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
         let storage: LocalStorage = new LocalStorage();
