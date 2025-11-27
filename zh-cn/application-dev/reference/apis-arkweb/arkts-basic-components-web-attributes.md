@@ -3853,6 +3853,74 @@ blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig)
   }
   ```
 
+## enableImageAnalyzer<sup>23+</sup>
+
+enableImageAnalyzer(enable: boolean)
+
+设置是否启用网页图片AI分析，当前支持图片文字识别功能，该功能默认开启。
+
+> **说明：** 
+>
+> 长按或鼠标悬停在图片文字上时，触发图片AI分析，可以选中图片中的文字。能够触发分析的图片规格如下。
+>
+> - 图片的原始长宽均不小于100px。
+>
+> - 在[设备类型](../../quick-start/module-configuration-file.md#devicetypes标签)不为2in1的设备上，需要图片渲染宽度超过网页宽度的80%。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：** 
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| enable  | boolean | 是   | 是否启用网页图片AI分析，true表示启用，false表示不启用。<br>传入undefined或null时重置为true。|
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableImageAnalyzer(true) // 如果需要关闭图片分析能力，需要显式设置为false
+      }
+    }
+  }
+  ```
+
+  加载的html文件：
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .image-container {
+        width: 90%;
+      }
+      .image-container img {
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image-container">
+      <!--example.jpg为html同目录下图片-->
+      <img src="example.jpg" alt="待AI分析的图片">
+    </div>
+  </body>
+  </html>
+  ```
+
 ## password<sup>(deprecated)</sup>
 
 password(password: boolean)
