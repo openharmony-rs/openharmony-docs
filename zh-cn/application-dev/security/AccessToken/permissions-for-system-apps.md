@@ -5189,6 +5189,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**ACL使能**：true
+
 **支持设备**：General
 
 **起始版本**：23
@@ -5200,6 +5202,8 @@
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
 
 **支持设备**：General
 
