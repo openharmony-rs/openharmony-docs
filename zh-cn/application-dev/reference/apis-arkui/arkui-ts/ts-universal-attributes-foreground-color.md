@@ -103,7 +103,7 @@ struct ColoringStrategyExample {
 ```
 ![foregroundColor_circle](figures/ColoringStrategy_circle.png)
 
-### 示例3（前置景色未继承父组件）
+### 示例3（前景色未继承父组件）
 
 该示例主要演示组件同时设置前景色和背景色与只设置背景色的效果对比。
 
