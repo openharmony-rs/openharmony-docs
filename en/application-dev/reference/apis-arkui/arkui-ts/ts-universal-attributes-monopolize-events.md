@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Event monopolization determines whether a component exclusively handles events, including built-in events and custom click, touch, or gesture events.<br>
 When a component with event monopolization is the first to respond to an interaction, only the events defined on this component will be triggered, and other components within the same window will not respond to the interaction.
