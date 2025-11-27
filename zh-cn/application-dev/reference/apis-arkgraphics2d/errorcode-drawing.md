@@ -132,11 +132,11 @@ Empty file. The specified file is empty.
 
 **错误描述**
 
-指定字体文件为空。
+指定文件为空。
 
 **可能原因**
 
-文件字体大小为0字节。
+文件大小为0字节。
 
 **处理步骤**
 
@@ -155,9 +155,9 @@ Corrupted file. The file content is invalid or damaged and cannot be parsed.
 **可能原因**
 
 1. 文件格式不正确。
-2. 文件部分内容丢失。
+2. 文件内容损坏。
 
 **处理步骤**
 
 1. 使用可靠工具验证文件格式。
-2. 确保文件完整性。
+2. 确保文件内容正常。
