@@ -895,7 +895,7 @@ struct DragControllerPage {
 | 名称        | 类型                                                   | 只读  |  可选 | 说明                                     |
 | ----------- | ------------------------------------------------------ | ---- | ---- | ---------------------------------------- |
 | duration    | number                                                 | 否  |  是   | 动画持续时间，单位为毫秒。<br/>默认值：1000<br/>**说明：**<br/>-&nbsp;设置小于0的值时按0处理。<br/>-&nbsp;设置浮点型类型的值时，向下取整。例如，设置值为1.2，按照1处理。|
-| curve       |&nbsp;[Curve](arkui-ts/ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](js-apis-curve.md#icurve9) | 否  |  是  | 设置动画曲线。<br/>默认值：Curve.EaseInOut|                          |
+| curve       |&nbsp;[Curve](arkui-ts/ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](js-apis-curve.md#icurve9) | 否  |  是  | 设置动画曲线。<br/>默认值：Curve.EaseInOut|
 
 ## DragEventParam<sup>12+</sup>
 
@@ -987,145 +987,145 @@ animate(options: AnimationOptions, handler: () => void): void
 >
 > 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取当前UI上下文关联的DragController对象。
 
-1.在EntryAbility.ets中获取UI上下文并保存至LocalStorage中。
-  ```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window, UIContext } from '@kit.ArkUI';
+1. 在EntryAbility.ets中获取UI上下文并保存至LocalStorage中。
+   ```ts
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { window, UIContext } from '@kit.ArkUI';
 
-let uiContext: UIContext;
-let localStorage: LocalStorage = new LocalStorage('uiContext');
+   let uiContext: UIContext;
+   let localStorage: LocalStorage = new LocalStorage('uiContext');
 
-export default class EntryAbility extends UIAbility {
-  storage: LocalStorage = localStorage;
+   export default class EntryAbility extends UIAbility {
+     storage: LocalStorage = localStorage;
 
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-  }
+     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+     }
 
-  onDestroy(): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
-  }
+     onDestroy(): void {
+       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+     }
 
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+     onWindowStageCreate(windowStage: window.WindowStage): void {
+       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
-    windowStage.loadContent('pages/Index', this.storage, (err, data) => {
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', `Code is ${err.code}, message is ${err.message}`);
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',  `Code is ${err.code}, message is ${err.message}`);
-      windowStage.getMainWindow((err, data) => {
-        if (err.code) {
-          hilog.error(0x0000, `Failed to abtain the main window. Cause: ${err.message}`, '');
-          return;
-        }
-        uiContext = data.getUIContext();
-        this.storage.setOrCreate<UIContext>('uiContext', uiContext);
-      })
-    });
-  }
-}
-  ```
-2.在Index.ets中通过this.getUIContext().getSharedLocalStorage()获取UI上下文，进而获取DragController对象实施后续操作。
-  ```ts
+       windowStage.loadContent('pages/Index', this.storage, (err, data) => {
+         if (err.code) {
+           hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', `Code is ${err.code}, message is ${err.message}`);
+           return;
+         }
+         hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',  `Code is ${err.code}, message is ${err.message}`);
+         windowStage.getMainWindow((err, data) => {
+           if (err.code) {
+             hilog.error(0x0000, `Failed to abtain the main window. Cause: ${err.message}`, '');
+             return;
+           }
+           uiContext = data.getUIContext();
+           this.storage.setOrCreate<UIContext>('uiContext', uiContext);
+         })
+       });
+     }
+   }
+   ```
+2. 在Index.ets中通过this.getUIContext().getSharedLocalStorage()获取UI上下文，进而获取DragController对象实施后续操作。
+   ```ts
 
-import { unifiedDataChannel } from '@kit.ArkData';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { dragController, curves, promptAction, UIContext } from '@kit.ArkUI';
-import { image } from '@kit.ImageKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+   import { unifiedDataChannel } from '@kit.ArkData';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { dragController, curves, promptAction, UIContext } from '@kit.ArkUI';
+   import { image } from '@kit.ImageKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
 
-class DragInfo {
-  event: DragEvent | undefined = undefined;
-  extraParams: string = '';
-}
+   class DragInfo {
+     event: DragEvent | undefined = undefined;
+     extraParams: string = '';
+   }
 
-@Entry()
-@Component
-struct DragControllerPage {
-  @State pixmap: image.PixelMap|null = null;
-  storages = this.getUIContext().getSharedLocalStorage();
+   @Entry()
+   @Component
+   struct DragControllerPage {
+     @State pixmap: image.PixelMap|null = null;
+     storages = this.getUIContext().getSharedLocalStorage();
 
-  @Builder DraggingBuilder() {
-    Column() {
-      Text("DraggingBuilder")
-        .fontColor(Color.White)
-        .fontSize(12)
-    }
-    .width(100)
-    .height(100)
-    .backgroundColor(Color.Blue)
-  }
+     @Builder DraggingBuilder() {
+       Column() {
+         Text("DraggingBuilder")
+           .fontColor(Color.White)
+           .fontSize(12)
+       }
+       .width(100)
+       .height(100)
+       .backgroundColor(Color.Blue)
+     }
 
-  @Builder PixmapBuilder() {
-    Column() {
-      Text("PixmapBuilder")
-    }
-    .width(100)
-    .height(100)
-    .backgroundColor(Color.Blue)
-  }
+     @Builder PixmapBuilder() {
+       Column() {
+         Text("PixmapBuilder")
+       }
+       .width(100)
+       .height(100)
+       .backgroundColor(Color.Blue)
+     }
 
-  build() {
-    Column() {
-      Button('拖拽至此处')
-        .margin(10)
-        .onDragEnter(() => {
-        try {
-          let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
-          let previewObj: dragController.DragPreview = uiContext.getDragController().getDragPreview();
-          let foregroundColor: ResourceColor = Color.Green;
+     build() {
+       Column() {
+         Button('拖拽至此处')
+           .margin(10)
+           .onDragEnter(() => {
+           try {
+             let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
+             let previewObj: dragController.DragPreview = uiContext.getDragController().getDragPreview();
+             let foregroundColor: ResourceColor = Color.Green;
 
-          let previewAnimation: dragController.AnimationOptions = {
-            curve: curves.cubicBezierCurve(0.2,0,0,1),
-          }
-          previewObj.animate(previewAnimation, () => {
-            previewObj.setForegroundColor(foregroundColor);
-          });
-        } catch (error) {
-          let msg = (error as BusinessError).message;
-          let code = (error as BusinessError).code;
-          hilog.error(0x0000, `show error code is ${code}, message is ${msg}`, '');
-        }
-      })
-        .onDrop(() => {
-          this.getUIContext().getPromptAction().showToast({duration: 100, message: 'Drag Success', bottom: 400})
-        })
-      Button('拖起').onTouch((event?:TouchEvent) => {
-        if(event){
-          if (event.type == TouchType.Down) {
-            let text = new unifiedDataChannel.Text()
-            let unifiedData = new unifiedDataChannel.UnifiedData(text)
-            let dragInfo: dragController.DragInfo = {
-              pointerId: 0,
-              data: unifiedData,
-              extraParams: ''
-            }
-            let eve: DragInfo = new DragInfo();
-            this.getUIContext().getDragController().executeDrag(() => { // 建议使用 this.getUIContext().getDragController().executeDrag()接口
-              this.DraggingBuilder()
-            }, dragInfo, (err , eve) => {
-              hilog.info(0x0000, `${JSON.stringify(err)}`, '')
-              if (eve && eve.event) {
-                if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
-                  hilog.info(0x0000, 'success', '');
-                } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
-                  hilog.info(0x0000, 'failed', '');
-                }
-              }
-            })
-          }
-        }
-      }).margin({top:100})
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-  ```
-  ![zh-cn_executeDrag5](figures/executeDrag5.gif)
+             let previewAnimation: dragController.AnimationOptions = {
+               curve: curves.cubicBezierCurve(0.2,0,0,1),
+             }
+             previewObj.animate(previewAnimation, () => {
+               previewObj.setForegroundColor(foregroundColor);
+             });
+           } catch (error) {
+             let msg = (error as BusinessError).message;
+             let code = (error as BusinessError).code;
+             hilog.error(0x0000, `show error code is ${code}, message is ${msg}`, '');
+           }
+         })
+           .onDrop(() => {
+             this.getUIContext().getPromptAction().showToast({duration: 100, message: 'Drag Success', bottom: 400})
+           })
+         Button('拖起').onTouch((event?:TouchEvent) => {
+           if(event){
+             if (event.type == TouchType.Down) {
+               let text = new unifiedDataChannel.Text()
+               let unifiedData = new unifiedDataChannel.UnifiedData(text)
+               let dragInfo: dragController.DragInfo = {
+                 pointerId: 0,
+                 data: unifiedData,
+                 extraParams: ''
+               }
+               let eve: DragInfo = new DragInfo();
+               this.getUIContext().getDragController().executeDrag(() => { // 建议使用 this.getUIContext().getDragController().executeDrag()接口
+                 this.DraggingBuilder()
+               }, dragInfo, (err , eve) => {
+                 hilog.info(0x0000, `${JSON.stringify(err)}`, '')
+                 if (eve && eve.event) {
+                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
+                     hilog.info(0x0000, 'success', '');
+                   } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
+                     hilog.info(0x0000, 'failed', '');
+                   }
+                 }
+               })
+             }
+           }
+         }).margin({top:100})
+       }
+       .width('100%')
+       .height('100%')
+     }
+   }
+   ```
+   ![zh-cn_executeDrag5](figures/executeDrag5.gif)
 
 ## DragStartRequestStatus<sup>18+</sup>
 
