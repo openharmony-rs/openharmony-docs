@@ -447,7 +447,7 @@ occupyEvents(eventFlags: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.   |
-| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal napi error. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003  | This window manager service works abnormally. |
 
 **示例：**
