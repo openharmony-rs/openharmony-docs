@@ -9456,7 +9456,9 @@ getWindowCornerRadius(): number
 
 **系统能力**：SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 
+API version 23之前，该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+从API version 23开始，该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
