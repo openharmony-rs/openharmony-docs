@@ -68,13 +68,13 @@ API version 12及之后，系统为提升用户隐私安全保护能力，剪贴
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
 import { abilityAccessCtrl, common, Permissions } from '@kit.AbilityKit';
 import { preferences } from '@kit.ArkData';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const permissions: Permissions[] = ['ohos.permission.READ_PASTEBOARD'];
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 const patterns: pasteboard.Pattern[] = [pasteboard.Pattern.URL, pasteboard.Pattern.EMAIL_ADDRESS];
 let dataPreferences: preferences.Preferences | null = null;
-// ···
+// ...
 async function isNeedGetPermissionFromUser(): Promise<boolean> {
   try {
     let hasData: boolean = await systemPasteboard.hasData();
@@ -118,7 +118,18 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
   return true;
 }
 
-// ···
+@Entry
+@Component
+struct Index {
+  // ...
+
+  build() {
+    Row() {
+      Column() {
+        // ...
+        Button('粘贴')
+          // ...
+          .onClick(() => {
             const context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
             if (!isNeedGetPermissionFromUser()) {
               hilog.info(0xFF00, '[Sample_pasteboard]', 'No neded to bring up the permission pop-up window');
@@ -131,7 +142,7 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
               for (const status of grantStatus) {
                 if (status === 0) {
                   // 用户授权，使用get操作读取剪贴板内容。
-                // ···
+                  // ...
                   // 执行判断口令逻辑，如果是本应用口令，建议获取完数据后使用cleardata清除剪贴板口令内容
                   systemPasteboard.clearData().then((data: void) => {
                     hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in clearing the pasteboard.');
@@ -156,4 +167,12 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
             }).catch((err: BusinessError) => {
               hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to request permissions from user. ');
             })
+          })
+        // ...
+      }
+      // ...
+    }
+    // ...
+  }
+}
 ```
