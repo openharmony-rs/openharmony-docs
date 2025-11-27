@@ -286,7 +286,7 @@ let storeFormInfo =
       err: ${JSON.stringify(err as BusinessError)}`);
     }
   }
-// ···
+// ...
 
 export default class JsCardFormAbility extends FormExtensionAbility {
   onAddForm(want: Want): formBindingData.FormBindingData {
@@ -307,8 +307,10 @@ export default class JsCardFormAbility extends FormExtensionAbility {
     let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
     return formData;
   }
-// ···
+
+  // ...
 }
+
 ```
 
 
