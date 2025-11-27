@@ -1872,7 +1872,7 @@ struct Index {
               .then((data: certMgrDialog.CertReference) => {
                 console.info(`openAuthorizeDialog request cred auth success`)
                 // 通知web选择的为ukey证书
-                event.handler.confirm(data.index, CredentialType.CREDENTIAL_UKEY);
+                event.handler.confirm(data.keyUri, CredentialType.CREDENTIAL_UKEY);
               }).catch((err: BusinessError) => {
               console.error(`openAuthorizeDialog request cred auth failed, err: ${JSON.stringify(err)}`);
             })
@@ -1885,7 +1885,7 @@ struct Index {
           // 收到PIN码认证请求事件
           console.log(`onVerifyPin`);
           // 调用证书管理，打开PIN码输入框
-          certMgrDialog.openUkeyAuthDialog(this.context, {ukeyCertIndex: event.identity})
+          certMgrDialog.openUkeyAuthDialog(this.context, {keyUri: event.identity})
             .then(() => {
               // 通知webPIN码认证成功
               console.log(`onVerifyPin success`);
