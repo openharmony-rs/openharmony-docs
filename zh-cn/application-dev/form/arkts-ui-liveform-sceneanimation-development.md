@@ -216,9 +216,9 @@
     
     ``` JSON5
     // entry/src/main/module.json5
-    // ···
+    // ...
         "extensionAbilities": [
-        // ···
+          // ...
           {
             "name": "MyLiveFormExtensionAbility",
             "srcEntry": "./ets/myliveformextensionability/MyLiveFormExtensionAbility.ets",
@@ -226,7 +226,7 @@
             "type": "liveForm"
           }
         ],
-        // ···
+        // ...
     ```
 
     在main_pages.json文件中声明互动卡片页面。
