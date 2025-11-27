@@ -802,9 +802,10 @@ error: install parse profile prop check error.
         ![示例图](figures/zh-cn_image_0000001585521364.png)
 
         c. 使用keytool工具（在DevEco Studio安装目录下的jbr/bin文件夹内），执行如下命令，通过.cer文件获取证书指纹的SHA256值。
-          ```shell
-          keytool -printcert -file xxx.cer
-          ```
+
+            ```shell
+            keytool -printcert -file xxx.cer
+            ```
         d. 将证书指纹中SHA256的内容去掉冒号，即为最终要获得的签名指纹。
 
         如下图（仅作为格式示意，内容以实际为准）：
@@ -816,19 +817,22 @@ error: install parse profile prop check error.
     2. 获取设备的特权管控白名单文件install_list_capability.json。
 
         a. 连接设备，进入shell。
-        ```shell
-        hdc shell
-        ```
+
+            ```shell
+            hdc shell
+            ```
         b. 执行如下命令查看设备的特权管控白名单文件install_list_capability.json。
-        ```shell
-        // 设备中查询白名单文件的位置
-        find /system -name install_list_capability.json
-        ```
+
+            ```shell
+            // 设备中查询白名单文件的位置
+            find /system -name install_list_capability.json
+            ```
         c. 执行如下命令拉取install_list_capability.json。
-        ```shell
-        hdc target mount
-        hdc file recv /system/etc/app/install_list_capability.json
-        ```
+
+            ```shell
+            hdc target mount
+            hdc file recv /system/etc/app/install_list_capability.json
+            ```
 
     3. 将步骤1获取到的签名指纹配置到install_list_capability.json文件的app_signature中，注意要配置到对应的bundleName下。
     ![示例图](figures/zh-cn_image_0000001635641893.png)
