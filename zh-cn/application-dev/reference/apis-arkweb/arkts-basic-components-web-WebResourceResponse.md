@@ -2,6 +2,8 @@
 
 Web组件资源响应对象。示例代码参考[onHttpErrorReceive事件](./arkts-basic-components-web-events.md#onhttperrorreceive)。
 
+支持使用[@ohos.transfer](../apis-arkts/js-apis-transfer.md)系统对象转换工具进行动静态类型转换。
+
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
@@ -305,3 +307,123 @@ setResponseIsReady(IsReady: boolean): void
 | 参数名   | 类型    | 必填  | 说明          |
 | ------- | ------- | ---- | ------------- |
 | IsReady | boolean | 是   | 资源响应数据是否已经就绪。<br>true表示资源响应数据已经就绪，false表示资源响应数据未就绪。 |
+
+## 使用@ohos.transfer进行WebResourceResponse类型转换
+
+ArkTS-Dyn中使用ArkTS-Sta的WebResourceResponse对象。
+
+- 在ArkTS-Sta模块中将ArkTS-Sta WebResourceResponse转换成ArkTS-Dyn WebResourceResponse，传入到ArkTS-Dyn子模块`library`中。
+
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  'use static'
+  import { Entry, Column, Component, Web, Button, OnHttpErrorReceiveEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { transfer } from '@kit.ArkTS';
+  import { webResourceResponseStaticToDynamic } from 'library';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Button("Trigger onHttpErrorReceive")
+          .onClick(() => {
+            try {
+              this.controller.loadUrl('http://httpbin.org/post');
+            } catch (e: Error) {
+              console.error('transferDynamic catch error：-----------' + e.message);
+            }
+          })
+        Web({ src: "www.example.com", controller: this.controller })
+          .onHttpErrorReceive((parameter: OnHttpErrorReceiveEvent): void => {
+            console.info('onHttpErrorReceive invoked');
+            try {
+              let dynamicHandler = transfer.transferDynamic(parameter.response, 'ArkWeb.WebResourceResponse');
+              webResourceResponseStaticToDynamic(dynamicHandler);
+            } catch (e: Error) {
+              console.error('transferDynamic catch error：-----------' + e.message);
+            }
+          })
+      }
+    }
+  }
+  ```
+
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn WebResourceResponse的方法。
+
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+  export function webResourceResponseStaticToDynamic(handler_: any) {
+    try {
+      let response: WebResourceResponse = handler_ as WebResourceResponse;
+      let result: string = response.getResponseMimeType();
+      console.info('webResourceResponseStaticToDynamic result=' + result);
+    } catch (e) {
+      console.error('webResourceResponseStaticToDynamic catch Error: ' + e.toString());
+    }
+  }
+  ```
+
+ArkTS-Sta中使用ArkTS-Dyn的WebResourceResponse对象。
+
+- 在ArkTS-Dyn模块创建得到ArkTS-Dyn WebResourceResponse对象，传给ArkTS-Sta子模块`library`中。
+
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { webResourceResponseDynamicToStatic } from 'library';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Button("Trigger onHttpErrorReceive")
+          .onClick(() => {
+            try {
+              this.controller.loadUrl('http://httpbin.org/post');
+            } catch (error) {
+              console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+            }
+          })
+        Web({ src: "www.example.com", controller: this.controller })
+          .onHttpErrorReceive((parameter: OnHttpErrorReceiveEvent): void => {
+            if (parameter) {
+              console.info("onHttpErrorReceive start");
+              webResourceResponseDynamicToStatic(parameter.response);
+            }
+          })
+      }
+    }
+  }
+  ```
+
+- 创建ArkTS-Sta子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn WebResourceResponse的方法。
+
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+  'use static'
+  import { WebResourceResponse } from '@kit.ArkUI';
+  import { transfer } from '@kit.ArkTS';
+
+  export function webResourceResponseDynamicToStatic(dynObject: Object | undefined | null) {
+    try {
+        let response: WebResourceResponse = transfer.transferStatic(dynObject, 'ArkWeb.WebResourceResponse') as WebResourceResponse;
+        let result: string = response.getResponseMimeType();
+        console.info('webResourceResponseDynamicToStatic result=' + result);
+    } catch (e: Error) {
+        console.error('webResourceResponseDynamicToStatic catch error：-----------' + e.message);
+    }
+  }
+  ```

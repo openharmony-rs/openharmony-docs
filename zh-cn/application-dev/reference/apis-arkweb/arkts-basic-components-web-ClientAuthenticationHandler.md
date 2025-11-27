@@ -2,6 +2,8 @@
 
 Web组件返回的SSL客户端证书请求事件用户处理功能对象。示例代码参考[onClientAuthenticationRequest事件](./arkts-basic-components-web-events.md#onclientauthenticationrequest9)。
 
+支持使用[@ohos.transfer](../apis-arkts/js-apis-transfer.md)系统对象转换工具进行动静态类型转换。
+
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
@@ -86,3 +88,124 @@ ignore(): void
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 22
+
+## 使用@ohos.transfer进行ClientAuthenticationHandler类型转换
+
+ArkTS-Dyn中使用ArkTS-Sta的ClientAuthenticationHandler对象。
+
+- 在ArkTS-Sta模块中将ArkTS-Sta ClientAuthenticationHandler转换成ArkTS-Dyn ClientAuthenticationHandler，传入到ArkTS-Dyn子模块`library`中。
+
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  'use static'
+  import { Entry, Column, Component, Web, Button, OnClientAuthenticationEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { transfer } from '@kit.ArkTS';
+  import { clientAuthenticationHandlerStaticToDynamic } from 'library';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Button("Trigger onClientAuthenticationRequest")
+          .onClick(() => {
+            try {
+              this.controller.loadUrl('https://client.badssl.com/');
+            } catch (e: Error) {
+              console.error('transferDynamic catch error：-----------' + e.message);
+            }
+          })
+        Web({ src: "www.example.com", controller: this.controller })
+          .onClientAuthenticationRequest((event: OnClientAuthenticationEvent): void => {
+            console.info('onClientAuthenticationRequest invoked');
+            try {
+              let dynamicHandler = transfer.transferDynamic(event.handler, 'ArkWeb.ClientAuthenticationHandler');
+              clientAuthenticationHandlerStaticToDynamic(dynamicHandler);
+            } catch (e: Error) {
+              console.error('transferDynamic catch error：-----------' + e.message);
+            }
+          })
+      }
+    }
+  }
+  ```
+
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn ClientAuthenticationHandler的方法。
+
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+  export function clientAuthenticationHandlerStaticToDynamic(handler_: any) {
+    try {
+      let handler: ClientAuthenticationHandler = handler_ as ClientAuthenticationHandler;
+      handler.cancel();
+      console.info('clientAuthenticationHandlerStaticToDynamic done');
+    } catch (e) {
+      console.error('clientAuthenticationHandlerStaticToDynamic catch Error: ' + e.toString());
+    }
+  }
+  ```
+
+ArkTS-Sta中使用ArkTS-Dyn的ClientAuthenticationHandler对象。
+
+- 在ArkTS-Dyn模块创建得到ArkTS-Dyn ClientAuthenticationHandler对象，传给ArkTS-Sta子模块`library`中。
+
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { clientAuthenticationHandlerDynamicToStatic } from 'library';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Button("Trigger onClientAuthenticationRequest")
+          .onClick(() => {
+            try {
+              this.controller.loadUrl('https://client.badssl.com/');
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+        Web({ src: "www.example.com", controller: this.controller })
+          .onClientAuthenticationRequest((event: OnClientAuthenticationEvent): void => {
+            if (event) {
+              console.log("onClientAuthenticationRequest start");
+              clientAuthenticationHandlerDynamicToStatic(event.handler);
+            }
+          })
+      }
+    }
+  }
+  ```
+
+- 创建ArkTS-Sta子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn ClientAuthenticationHandler的方法。
+
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+  'use static'
+  import { ClientAuthenticationHandler } from '@kit.ArkUI';
+  import { transfer } from '@kit.ArkTS';
+
+  export function clientAuthenticationHandlerDynamicToStatic(dynObject: Object | undefined | null) {
+    try {
+        let handler: ClientAuthenticationHandler = transfer.transferStatic(dynObject, 'ArkWeb.ClientAuthenticationHandler') as ClientAuthenticationHandler;
+        handler.cancel();
+        console.info('clientAuthenticationHandlerDynamicToStatic done');
+    } catch (e: Error) {
+        console.error('clientAuthenticationHandlerDynamicToStatic catch error：-----------' + e.message);
+    }
+  }
+  ```
