@@ -297,7 +297,7 @@ try {
 |null|  
 |boolean|  
 |number|  
-|string  
+|string|
 |object|  
 |function|  
 |bigint|
