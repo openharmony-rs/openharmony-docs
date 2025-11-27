@@ -650,7 +650,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
     
     const TAG: string = 'EntryAbility';
     const DOMAIN_NUMBER: number = 0xFF00;
-    // ···
+    // ...
     export default class EntryAbility extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         if (want?.parameters?.params) {
@@ -667,7 +667,8 @@ export default class JsCardFormAbility extends FormExtensionAbility {
           }
         }
       }
-    // ···
+    
+      // ...
     }
     ```
 
