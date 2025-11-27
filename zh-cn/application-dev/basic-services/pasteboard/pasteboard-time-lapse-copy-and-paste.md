@@ -59,10 +59,13 @@
 1. 引用头文件。
    
    ```c
+   #include <cstring>
+   #include <hilog/log.h>
    #include <database/pasteboard/oh_pasteboard.h>
    #include <database/udmf/udmf.h>
    #include <database/udmf/uds.h>
    #include <database/udmf/udmf_meta.h>
+   #include <accesstoken/ability_access_control.h>
    ```
 
 2. 定义`OH_UdmfRecordProvider`的数据提供函数和实例注销回调函数。
@@ -107,31 +110,32 @@
 4. 在剪贴板中准备延迟复制数据。此步骤完成后纯文本类型数据与HTML类型数据并未真正写入剪贴板服务，只有当数据使用者从`OH_UdmfRecord`中获取`OH_UdsPlainText`或`OH_UdsHtml`时，才会触发上文定义的`GetDataCallback`数据提供函数，从中得到数据。
    
    ```c
-   // 4. 创建OH_UdmfRecord对象。
-   OH_UdmfRecord* record = OH_UdmfRecord_Create();
-   // 5. 创建OH_UdmfRecordProvider对象，并设置用于提供延迟数据、析构的两个回调函数。
-   OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
-   OH_UdmfRecordProvider_SetData(provider, (void *)record, GetDataCallback, ProviderFinalizeCallback);
-   
-   // 6. 将provider绑定到record，并设置支持的数据类型。
-   #define TYPE_COUNT 2
-   const char* types[TYPE_COUNT] = {UDMF_META_PLAIN_TEXT, UDMF_META_HTML};
-   OH_UdmfRecord_SetProvider(record, types, TYPE_COUNT, provider);
-   
-   // 7. 创建OH_UdmfData对象，并向OH_UdmfData中添加OH_UdmfRecord。
-   OH_UdmfData* setData = OH_UdmfData_Create();
-   if (setData != nullptr) {
-       OH_UdmfData_AddRecord(setData, record);
+   OH_Pasteboard* CreateAndSetPasteboardData()
+   {
+       // 4. 创建OH_UdmfRecord对象。
+       OH_UdmfRecord* record = OH_UdmfRecord_Create();
+       // 5. 创建OH_UdmfRecordProvider对象，并设置用于提供延迟数据、析构的两个回调函数。
+       OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
+       OH_UdmfRecordProvider_SetData(provider, (void *)record, GetDataCallback, ProviderFinalizeCallback);
+       // 6. 将provider绑定到record，并设置支持的数据类型。
+       #define TYPE_COUNT 2
+       const char* types[TYPE_COUNT] = {UDMF_META_PLAIN_TEXT, UDMF_META_HTML};
+       OH_UdmfRecord_SetProvider(record, types, TYPE_COUNT, provider);
+       // 7. 创建OH_UdmfData对象，并向OH_UdmfData中添加OH_UdmfRecord。
+       OH_UdmfData* setData = OH_UdmfData_Create();
+       if (setData != nullptr) {
+           OH_UdmfData_AddRecord(setData, record);
+       }
+       // 8. 创建OH_Pasteboard对象，将数据写入剪贴板中。
+       OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+       if (setData != nullptr) {
+           OH_Pasteboard_SetData(pasteboard, setData);
+       }
+       OH_UdmfRecordProvider_Destroy(provider);
+       OH_UdmfRecord_Destroy(record);
+       OH_UdmfData_Destroy(setData);
+       return pasteboard;
    }
-   
-   // 8. 创建OH_Pasteboard对象，将数据写入剪贴板中。
-   OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-   if (setData != nullptr) {
-       OH_Pasteboard_SetData(pasteboard, setData);
-   }
-   OH_UdmfRecordProvider_Destroy(provider);
-   OH_UdmfRecord_Destroy(record);
-   OH_UdmfData_Destroy(setData);
    ```
 
 5. 从剪贴板获取延迟复制数据。
@@ -166,14 +170,16 @@
        // 13. 查询OH_UdmfRecord中的数据类型。
        unsigned typeCount = 0;
        char** recordTypes = OH_UdmfRecord_GetTypes(record, &typeCount);
-   
        // 14. 遍历数据类型。
        for (unsigned int typeIndex = 0; typeIndex < typeCount; ++typeIndex) {
            const char* recordType = recordTypes[typeIndex];
            ProcessRecordType(record, recordType);
        }
    }
-   // ...
+   
+   static napi_value NAPI_Pasteboard_time(napi_env env, napi_callback_info info)
+   {
+       OH_Pasteboard* pasteboard = CreateAndSetPasteboardData();
        // 9. 记录当前的剪贴板数据变化次数。
        uint32_t changeCount = OH_Pasteboard_GetChangeCount(pasteboard);
    
@@ -220,10 +226,11 @@
 7. 使用完毕后需要及时释放相关对象的内存。
    
    ```c
-   OH_UdsPlainText_Destroy(udsText);
-   OH_UdsHtml_Destroy(udsHtml);
-   OH_UdmfData_Destroy(getData);
-   OH_Pasteboard_Destroy(pasteboard);
+       OH_UdsPlainText_Destroy(udsText);
+       OH_UdsHtml_Destroy(udsHtml);
+       OH_UdmfData_Destroy(getData);
+       OH_Pasteboard_Destroy(pasteboard);
+   }
    ```
 
 
@@ -246,10 +253,11 @@
 
 1. 导入pasteboard,unifiedDataChannel和uniformTypeDescriptor模块。
    
-   ```ts\
+   ```ts
    import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
-   import hilog from '@ohos.hilog';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
    import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
+   const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
    ```
 
 2. 构造一条PlainText数据,并书写获取延时数据的函数。
