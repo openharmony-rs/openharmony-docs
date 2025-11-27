@@ -79,6 +79,7 @@
     const TEXT1: string = '刷新中...'
     const TEXT2: string = '刷新失败'
     
+    
     export default class WgtImgUpdateEntryFormAbility extends FormExtensionAbility {
       // ...
       async onFormEvent(formId: string, message: string): Promise<void> {
@@ -150,7 +151,9 @@
         // 卡片使用方查询卡片状态时触发该回调，默认返回初始状态。
         return formInfo.FormState.READY;
       }
+    
     }
+    
     ```
 
 5. 在卡片页面通过backgroundImage属性展示EntryFormAbility传递过来的卡片内容。
