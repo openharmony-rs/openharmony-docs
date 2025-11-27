@@ -1,4 +1,10 @@
-# Updating Widget Content Through a Proxy
+# Updating Widget Content Through a Proxy (for System Applications Only)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @chenmingze-->
+<!--Adviser: @Brilliantry_Rui-->
 
 A widget can be updated through a proxy – a system application that has data sharing enabled – when the widget provider is not running.
 
@@ -33,7 +39,7 @@ Processing flow of the widget update proxy (indicated by the red arrows in the f
 1. The data provider uses the `key + subscriberId` combination as the data ID to store data to the database.
 2. The data management service detects the change in the database and publishes the new data to all currently registered subscription instances.
 3. The Widget Manager parses data from the subscription instance and sends the data to the widget rendering service.
-4. The widget rendering service runs the widget page code **widgets.abc**, which implements rendering based on the new data and sends the rendered data to the <!--Del-->[<!--DelEnd-->FormComponent<!--Del-->](../reference/apis-arkui/arkui-ts/ts-basic-components-formcomponent-sys.md)<!--DelEnd--> corresponding to the widget host.
+4. The widget rendering service runs the widget page code **widgets.abc** for rendering, and sends the rendered data to the corresponding <!--Del-->[<!--DelEnd-->FormComponent<!--Del-->](../reference/apis-arkui/arkui-ts/ts-basic-components-formcomponent-sys.md)<!--DelEnd--> on the widget host.
 
 There are two types of shared data provided by the data provider:
 
@@ -62,7 +68,6 @@ For details, see [Data Management](../database/share-data-by-silent-access-sys.m
           "designWidth": 720,
           "autoDesignWidth": true
         },
-        "colorMode": "auto",
         "isDefault": true,
         "updateEnabled": true,
         "scheduledUpdateTime": "10:30",
@@ -105,7 +110,7 @@ For details, see [Data Management](../database/share-data-by-silent-access-sys.m
   }
   ```
   
-- In the [widget page code file](arkts-ui-widget-creation.md), use the variable in LocalStorage to obtain the subscribed data. The variable in LocalStorage is bound to a string and updates the subscribed data in the key:value pair format. The key must be the same as that subscribed to by the widget provider. In this example, the subscribed data is obtained through **'city'** and displayed in the **\<Text>** component.
+- In the [widget page code file](arkts-ui-widget-creation.md), use the variable in LocalStorage to obtain the subscribed data. The variable in LocalStorage is bound to a string and updates the subscribed data in the key:value pair format. The key must be the same as that subscribed to by the widget provider. In this example, the subscribed data is obtained through **'city'** and displayed in the **Text** component.
   ```ts
   let storageProcess = new LocalStorage();
   
@@ -145,7 +150,6 @@ For details, see [Data Management](../database/share-data-by-silent-access-sys.m
           "designWidth": 720,
           "autoDesignWidth": true
         },
-        "colorMode": "auto",
         "isDefault": true,
         "updateEnabled": true,
         "scheduledUpdateTime": "10:30",
@@ -203,7 +207,7 @@ For details, see [Data Management](../database/share-data-by-silent-access-sys.m
   }
   ```
 
-- In the [widget page code file](arkts-ui-widget-creation.md), use the variable in LocalStorage to obtain the subscribed data. The variable in LocalStorage is bound to a string and updates the subscribed data in the key:value pair format. The key must be the same as that subscribed to by the widget provider. In the example, the subscribed data is obtained through **'list'**, and the value of the first element is displayed on the **\<Text>** component.
+- In the [widget page code file](arkts-ui-widget-creation.md), use the variable in LocalStorage to obtain the subscribed data. The variable in LocalStorage is bound to a string and updates the subscribed data in the key:value pair format. The key must be the same as that subscribed to by the widget provider. In the example, the subscribed data is obtained through **'list'**, and the value of the first element is displayed on the **Text** component.
   ```ts
   let storagePersis = new LocalStorage();
   
@@ -230,4 +234,5 @@ For details, see [Data Management](../database/share-data-by-silent-access-sys.m
     }
   }
   ```
-
+<!--Del-->
+<!--DelEnd-->
