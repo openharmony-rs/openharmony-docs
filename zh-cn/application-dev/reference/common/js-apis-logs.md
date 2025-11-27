@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## console.debug
 
@@ -18,7 +18,7 @@ debug(message: string, ...arguments: any[]): void
 
 以格式化输出方式打印调试信息。
 
-从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,7 +47,7 @@ log(message: string, ...arguments: any[]): void
 
 以格式化输出方式打印日志信息。
 
-从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,7 +76,7 @@ info(message: string, ...arguments: any[]): void
 
 以格式化输出方式打印日志信息。(console.log()的别名）。
 
-从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -105,7 +105,7 @@ warn(message: string, ...arguments: any[]): void
 
 以格式化输出方式打印警告信息。
 
-从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,7 +134,7 @@ error(message: string, ...arguments: any[]): void
 
 以格式化输出方式打印错误信息。
 
-从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
