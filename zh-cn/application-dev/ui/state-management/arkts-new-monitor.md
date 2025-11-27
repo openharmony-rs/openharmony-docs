@@ -1,4 +1,4 @@
-# \@Monitor装饰器：状态变量修改监听
+# \@Monitor装饰器：状态变量修改异步监听
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
