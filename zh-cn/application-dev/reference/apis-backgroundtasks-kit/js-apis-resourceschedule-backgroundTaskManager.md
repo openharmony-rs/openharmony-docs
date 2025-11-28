@@ -1685,7 +1685,7 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function callbackAuth(authResult: backgroundTaskManager.UserAuthResult) {
-    console.info("Operation requestAuthFromUser success. auth result: " + JSON.stringify(authResult));
+    console.info('Operation requestAuthFromUser success. auth result: ' + JSON.stringify(authResult));
 }
 
 export default class EntryAbility extends UIAbility {
@@ -1697,6 +1697,7 @@ export default class EntryAbility extends UIAbility {
     continuousTaskRequest.backgroundTaskSubmodes = subModeList;
     try {
       continuousTaskRequest.requestAuthFromUser(this.context, callbackAuth);
+      console.info('Operation requestAuthFromUser succeeded.');
     } catch (error) {
       console.error(`Operation requestAuthFromUser failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
@@ -1746,7 +1747,7 @@ export default class EntryAbility extends UIAbility {
     try {
       let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
       continuousTaskRequest.checkSpecialScenarioAuth(this.context).then((res: backgroundTaskManager.UserAuthResult) => {
-        console.info("Operation checkSpecialScenarioAuth succeeded. data: " + JSON.stringify(res));
+        console.info('Operation checkSpecialScenarioAuth succeeded. data: ' + JSON.stringify(res));
       }).catch((error: BusinessError) => {
         console.error(`Operation checkSpecialScenarioAuth failed. code is ${error.code} message is ${error.message}`);
       });
