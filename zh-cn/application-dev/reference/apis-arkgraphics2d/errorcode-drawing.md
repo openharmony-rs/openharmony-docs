@@ -45,7 +45,7 @@ File not found. The specified file does not exist or the path is incorrect.
 
 **处理步骤**
 
-1. 检查并确保路径正确且文件存在。
+1. 确保路径正确且文件存在。
 2. 确保文件路径大小写正确。
 
 ## 25900003 打开文件失败
@@ -84,7 +84,7 @@ File seek failed. The system failed to reposition the file read pointer.
 
 **处理步骤**
 
-确保文件支持随机访问。
+确保文件类型支持随机访问。
 
 ## 25900005 获取文件大小失败
 
@@ -116,7 +116,7 @@ Failed to read file. The file could not be read completely or contains unreadabl
 
 **可能原因**
 
-1. 文件I/O错误（磁盘异常、网络文件传输失败）。
+1. 文件I/O错误。
 2. 内存不足导致读取失败。
 
 **处理步骤**
@@ -159,5 +159,5 @@ Corrupted file. The file content is invalid or damaged and cannot be parsed.
 
 **处理步骤**
 
-1. 使用可靠工具验证文件格式。
+1. 确保文件格式符合预期。
 2. 确保文件内容正常。
