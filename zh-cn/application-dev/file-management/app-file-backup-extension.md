@@ -105,7 +105,7 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
     }
     ```
 
-    <!-- @[on_backup_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->
+   <!-- @[on_backup_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->    
 
 ``` TypeScript
 // [Start on_release]
@@ -160,7 +160,7 @@ class BackupExt extends BackupExtensionAbility {
 
    下面的示例展示了需要清理临时文件目录时`onRelease`的实现：
 
-    <!-- @[on_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->
+   <!-- @[on_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->    
 
 ``` TypeScript
 import { BackupExtensionAbility } from '@kit.CoreFileKit';
