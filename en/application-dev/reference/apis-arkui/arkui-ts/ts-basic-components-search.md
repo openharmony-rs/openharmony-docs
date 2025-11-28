@@ -4,7 +4,7 @@
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Search** component provides an area for users to enter search queries.
 
@@ -48,7 +48,7 @@ Describes the initialization options of the **Search** component.
 | ----------- | ------------- | ---- | ---- | ------------- |
 | value<sup>8+</sup>       | [ResourceStr](ts-types.md#resourcestr)   | No  | Yes| Sets the text input in the search text box.<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>Since API version 18, this parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>The Resource type is supported since API version 20.|
 | placeholder<sup>8+</sup> | [ResourceStr](ts-types.md#resourcestr) | No  | Yes| Text displayed when there is no input.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| icon<sup>8+</sup>        | string                                               | No  | Yes| Path to the search icon. By default, the system search icon is used.<br>**NOTE**<br>The icon data source can be a local or online image.<br>- The supported formats include PNG, JPG, BMP, SVG, GIF, pixelmap, and HEIF.<br>- The Base64 string is supported in the following format: data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], where *[base64 data]* is a Base64 string.<br>If this attribute and the **searchIcon** attribute are both set, the **searchIcon** attribute takes precedence.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| icon<sup>8+</sup>        | string                                               | No  | Yes| Path to the search icon. By default, the system search icon is used.<br>**NOTE**<br>The icon data source supports both [relative paths](./ts-basic-components-image.md#example-25-displaying-an-image-using-a-relative-path) and network images.<br>- The supported formats include PNG, JPG, BMP, SVG, GIF, pixelmap, and HEIF.<br>- The Base64 string is supported in the following format: data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], where *[base64 data]* is a Base64 string.<br>If this attribute and the **searchIcon** attribute are both set, the **searchIcon** attribute takes precedence.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | controller<sup>8+</sup>  | [SearchController](#searchcontroller) | No  | Yes| Controller of the **Search** component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
 
 ## Attributes
@@ -74,7 +74,7 @@ The default font size on wearable devices is 18 fp.
 | Name| Type                                                 | Mandatory| Description                        |
 | ------ | ----------------------------------------------------- | ---- | ---------------------------- |
 | value  | [ResourceStr](ts-types.md#resourcestr)                | Yes  | Text on the search button located next to the search text box.<br>The Resource type is supported since API version 20.|
-| option | [SearchButtonOptions](#searchbuttonoptions10) | No  | Font of the search text box.<br>Default value:<br>{<br>fontSize: '16fp',<br>fontColor: '#ff3f97e9'<br>}         |
+| option | [SearchButtonOptions](#searchbuttonoptions10) | No  | Text style of the search button located next to the search text box.<br>Default value:<br>{<br>fontSize: '16fp',<br>fontColor: '#ff3f97e9'<br>}         |
 
 ### placeholderColor
 
@@ -134,7 +134,7 @@ The default font size on wearable devices is 18 fp.
 
 textAlign(value: TextAlign)
 
-Sets the text alignment mode in the search text box. Currently, the following alignment modes are supported: **Start**, **Center**, and **End**.
+Sets the text alignment mode in the search text box. Currently, the following alignment modes are supported: **TextAlign.Start**, **TextAlign.Center**, and **TextAlign.End**. **TextAlign.JUSTIFY** behaves the same as **TextAlign.Start**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -275,7 +275,7 @@ Sets whether to hide the system text selection menu.
 
 ### customKeyboard<sup>10+</sup>
 
-customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: KeyboardOptions)
+customKeyboard(value: CustomBuilder, options?: KeyboardOptions)
 
 Sets the custom keyboard.
 
@@ -290,6 +290,10 @@ The custom keyboard cannot obtain the focus, but it blocks gesture events.
 By default, the custom keyboard is closed when the input component loses the focus. You can also use the [stopEditing](#stopediting10) API to close the keyboard.
 
 When setting a custom keyboard, you can bind the [onKeyPrelme](ts-universal-events-key.md#onkeypreime12) event to prevent input from the physical keyboard.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -307,6 +311,8 @@ When setting a custom keyboard, you can bind the [onKeyPrelme](ts-universal-even
 type(value: SearchType)
 
 Sets the text box type.
+
+Different **SearchType** values trigger corresponding keyboard types and enforce input restrictions.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -567,7 +573,7 @@ Sets the minimum font scale factor for text.
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | Yes  | Minimum font scale factor for text. The **undefined** type is supported.<br>Value range: [0, 1]<br>**NOTE**<br>A value less than 0 is handled as 0. A value greater than 1 is handled as 1. Abnormal values are ineffective by default.<br>Before using this function, you need to configure the configuration.json and app.json5 files in the project. For details, see [Example 19: Setting the Minimum and Maximum Font Scale Factors](#example-19-setting-the-minimum-and-maximum-font-scale-factors).|
+| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | Yes  | Minimum font scale factor for text. The **undefined** type is supported.<br>Value range: [0, 1]<br>**NOTE**<br>A value less than 0 is handled as 0. A value greater than 1 is handled as 1. Abnormal values are ineffective by default.<br>Before use, the **configuration.json** file and **app.json5** file must be configured in the project. For details, see [Example 19: Setting the Minimum and Maximum Font Scale Factors](#example-19-setting-the-minimum-and-maximum-font-scale-factors).|
 
 ### maxFontScale<sup>18+</sup>
 
@@ -672,7 +678,7 @@ Sets the auto-capitalization text mode. This API provides the capability, but ac
 
 keyboardAppearance(appearance: Optional\<KeyboardAppearance>)
 
-Sets the appearance of the keyboard when the text box is focused.
+Sets the keyboard appearance for the text box. This setting takes effect only after input method adaptation. For details, see [Immersive Mode of the Input Method Application](../../../inputmethod/inputmethod-immersive-mode-guide.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -1061,6 +1067,10 @@ Called when the search box is about to be bound to an input method.
 
 <!--Del-->
 Before the search box is bound to an input method, you can use the [setKeyboardAppearanceConfig](../js-apis-arkui-UIContext-sys.md#setkeyboardappearanceconfig20) system interface of UIContext to set the keyboard style.<!--DelEnd-->
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -1520,10 +1530,36 @@ struct SearchExample {
 
 ### Example 9: Setting Insert and Delete Callbacks
 
-In API version 12 and later versions, the [onWillInsert](#onwillinsert12), [onDidInsert](#ondidinsert12), [onWillDelete](#onwilldelete12) and [onDidDelete](#ondiddelete12) APIs are used to implement insertion and deletion.
+In API version 12 and later versions, the [onWillInsert](#onwillinsert12), [onDidInsert](#ondidinsert12), [onWillDelete](#onwilldelete12) and [onDidDelete](#ondiddelete12) APIs are used to implement insertion and deletion. Since API version 15, the [onWillChange](#onwillchange15) callback is used to display detailed information about the text content to be changed.
 
 ```ts
 // xxx.ets
+class ChangeState {
+  changeContent: string = "";
+  changePreviewOffset: number | undefined = 0;
+  changePreviewValue: string | undefined = "";
+  changeTextChangeRangeBeforeX: number | undefined = 0;
+  changeTextChangeRangeBeforeY: number | undefined = 0;
+  changeTextChangeRangeAfterX: number | undefined = 0;
+  changeTextChangeRangeAfterY: number | undefined = 0;
+  changeTextChangeOldContent: string | undefined = "";
+  changeTextChangechangePreviewOffset: number | undefined = 0;
+  changeTextChangechangePreviewValue: string | undefined = "";
+
+  SetInfo(info: EditableTextChangeValue) {
+    this.changeContent = info.content;
+    this.changePreviewOffset = info.previewText?.offset;
+    this.changePreviewValue = info.previewText?.value;
+    this.changeTextChangeRangeBeforeX = info.options?.rangeBefore.start;
+    this.changeTextChangeRangeBeforeY = info.options?.rangeBefore.end;
+    this.changeTextChangeRangeAfterX = info.options?.rangeAfter.start;
+    this.changeTextChangeRangeAfterY = info.options?.rangeAfter.end;
+    this.changeTextChangeOldContent = info.options?.oldContent;
+    this.changeTextChangechangePreviewOffset = info.options?.oldPreviewText.offset;
+    this.changeTextChangechangePreviewValue = info.options?.oldPreviewText.value;
+  }
+}
+
 @Entry
 @Component
 struct SearchExample {
@@ -1532,6 +1568,8 @@ struct SearchExample {
   @State insertOffset: number = 0;
   @State deleteOffset: number = 0;
   @State deleteDirection: number = 0;
+  @State changeState1: ChangeState = new ChangeState();
+  @State changeState2: ChangeState = new ChangeState();
 
   build() {
     Row() {
@@ -1542,11 +1580,28 @@ struct SearchExample {
             this.insertValue = info.insertValue;
             return true;
           })
+          .onWillChange((info: EditableTextChangeValue) => {
+            this.changeState1.SetInfo(info);
+            return true;
+          })
           .onDidInsert((info: InsertValue) => {
             this.insertOffset = info.insertOffset;
           })
 
-        Text("insertValue:" + this.insertValue + "  insertOffset:" + this.insertOffset).height(30)
+        Text("insertValue:" + this.insertValue + "  insertOffset:" + this.insertOffset).height(20)
+
+        Blank(30)
+
+        Text("context:" + this.changeState1.changeContent).height(20)
+        Text("previewText-offset:" + this.changeState1.changePreviewOffset).height(20)
+        Text("previewText-value:" + this.changeState1.changePreviewValue).height(20)
+        Text("options-rangeBefore-start:" + this.changeState1.changeTextChangeRangeBeforeX).height(20)
+        Text("options-rangeBefore-end:" + this.changeState1.changeTextChangeRangeBeforeY).height(20)
+        Text("options-rangeAfter-start:" + this.changeState1.changeTextChangeRangeAfterX).height(20)
+        Text("options-rangeAfter-end:" + this.changeState1.changeTextChangeRangeAfterY).height(20)
+        Text("options-oldContent:" + this.changeState1.changeTextChangeOldContent).height(20)
+        Text("options-oldPreviewText-offset:" + this.changeState1.changeTextChangechangePreviewOffset).height(20)
+        Text("options-oldPreviewText-value:" + this.changeState1.changeTextChangechangePreviewValue).height(20)
 
         Search({ value: "Delete callbacks are supported" })
           .height(60)
@@ -1555,13 +1610,30 @@ struct SearchExample {
             this.deleteDirection = info.direction;
             return true;
           })
+          .onWillChange((info: EditableTextChangeValue) => {
+            this.changeState2.SetInfo(info);
+            return true;
+          })
           .onDidDelete((info: DeleteValue) => {
             this.deleteOffset = info.deleteOffset;
             this.deleteDirection = info.direction;
           })
 
-        Text("deleteValue:" + this.deleteValue + "  deleteOffset:" + this.deleteOffset).height(30)
-        Text("deleteDirection:" + (this.deleteDirection == 0 ? "BACKWARD" : "FORWARD")).height(30)
+        Text("deleteValue:" + this.deleteValue + "  deleteOffset:" + this.deleteOffset).height(20)
+        Text("deleteDirection:" + (this.deleteDirection == 0 ? "BACKWARD" : "FORWARD")).height(20)
+
+        Blank(30)
+
+        Text("context:" + this.changeState2.changeContent).height(20)
+        Text("previewText-offset:" + this.changeState2.changePreviewOffset).height(20)
+        Text("previewText-value:" + this.changeState2.changePreviewValue).height(20)
+        Text("options-rangeBefore-start:" + this.changeState2.changeTextChangeRangeBeforeX).height(20)
+        Text("options-rangeBefore-end:" + this.changeState2.changeTextChangeRangeBeforeY).height(20)
+        Text("options-rangeAfter-start:" + this.changeState2.changeTextChangeRangeAfterX).height(20)
+        Text("options-rangeAfter-end:" + this.changeState2.changeTextChangeRangeAfterY).height(20)
+        Text("options-oldContent:" + this.changeState2.changeTextChangeOldContent).height(20)
+        Text("options-oldPreviewText-offset:" + this.changeState2.changeTextChangechangePreviewOffset).height(20)
+        Text("options-oldPreviewText-value:" + this.changeState2.changeTextChangechangePreviewValue).height(20)
 
       }.width('100%')
     }
@@ -1570,7 +1642,7 @@ struct SearchExample {
 }
 ```
 
-![SearchInsertAndDelete](figures/SearchInsertAndDelete.PNG)
+![SearchInsertAndDelete](figures/SearchInsertAndDelete-2.PNG)
 
 ### Example 10: Setting Custom Menu Extensions
 
@@ -1597,6 +1669,10 @@ struct SearchExample {
     };
     menuItems.push(item1);
     menuItems.unshift(item2);
+    let targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.AI_WRITER));
+    if (targetIndex !== -1) {
+      menuItems.splice(targetIndex, 1); // Delete an element at the target index.
+    }
     return menuItems;
   }
   onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
@@ -1649,8 +1725,9 @@ struct SearchExample {
   }
 }
 ```
-
-![searchEditMenuOptions](figures/searchEditMenuOptions.gif)
+<!--RP2-->
+![searchEditMenuOptions](figures/searchEditMenuOptions-2.png)
+<!--RP2End-->
 
 ### Example 11: Setting a Custom Symbol-Type Cancel Button
 
@@ -1951,7 +2028,7 @@ struct SearchExample {
 
 ### Example 19: Setting the Minimum and Maximum Font Scale Factors
 
-In API version 18 and later versions, you can set the minimum and maximum font scales by using the [minFontScale](#minfontscale18) and [maxFontScale](#maxfontscale18) parameters.
+In API version 18 and later versions, you can set the minimum and maximum font scales by using the [minFontScale](#minfontscale18) and [maxFontScale](#maxfontscale18) parameters. When the system font size is adjusted, the text font size remains within the range defined by [minFontScale](#minfontscale18) and [maxFontScale](#maxfontscale18). The following example demonstrates how the **Search** component scales its font size according to system font size changes, within different font size limits.
 
 ```json
 // Enable application font scaling to follow system settings.
@@ -1986,23 +2063,40 @@ In API version 18 and later versions, you can set the minimum and maximum font s
 @Entry
 @Component
 struct SearchExample {
-  @State minFontScale: number = 0.85;
-  @State maxFontScale: number = 2;
+  @State minFontScale: number = 1.0;
+  @State maxFontScale: number = 1.0;
+  @State minFontScale2: number = 0.5;
+  @State maxFontScale2: number = 2.0;
 
   build() {
     Column() {
-      Column({ space: 30 }) {
-        Text("System font size changes: small and large, small and large")
+      Column() {
+        Text("System font scales up and down: aaaaaaaAAAAAA")
+        Blank(30)
+        Text("minFontScale = " + this.minFontScale)
+        Text("maxFontScale = " + this.maxFontScale)
         Search({
           placeholder: 'The text area can hold an unlimited amount of text. input your word...',
         })
-          .minFontScale(this.minFontScale)// Set the minimum font scale factor. If the parameter is set to undefined, the default scale factor is used.
-          .maxFontScale(this.maxFontScale)// Set the maximum font scale. If the parameter is undefined, the font scale is zoomed in or out based on the default scale of the system.
+          .minFontScale(this.minFontScale) // Set the minimum font scale factor. If the parameter is set to undefined, the default scale factor is used.
+          .maxFontScale(this.maxFontScale) // Set the maximum font scale factor. If the parameter is set to undefined, the default scale factor is used.
+
+        Blank(30)
+
+        Text("minFontScale = " + this.minFontScale2)
+        Text("maxFontScale = " + this.maxFontScale2)
+        Search({
+          placeholder: 'The text area can hold an unlimited amount of text. input your word...',
+        })
+          .minFontScale(this.minFontScale2) // Set the minimum font scale factor. If the parameter is set to undefined, the default scale factor is used.
+          .maxFontScale(this.maxFontScale2) // Set the maximum font scale factor. If the parameter is set to undefined, the default scale factor is used.
       }.width('100%')
     }
   }
 }
 ```
+
+![](figures/big-FontScale.png) ![](figures/small-FontScale.png) 
 
 ### Example 20: Setting Text Stroke
 

@@ -65,7 +65,7 @@ In the sample code, [isAvailable](../reference/apis-arkui/arkts-apis-uicontext-u
 
 ## Replacing Global APIs with Common UIContext APIs
 
-The following uses the **Pixel unit** (in ./ui-js-custom-components.md) as an example to describe how to replace global APIs with common UIContext APIs.
+The following example demonstrates replacing global APIs with UIContext APIs, using the [pixel units](../reference/apis-arkui/arkui-ts/ts-pixel-units.md) API as an example.
 
 ### Obtaining UIContext Object Through a Custom Component
 

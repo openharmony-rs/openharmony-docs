@@ -5,7 +5,7 @@
 <!--Owner: @zcdqs; @fangyuhao-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Grid** component consists of cells formed by rows and columns. You can specify the cells where items are located to form various layouts.
 
@@ -512,7 +512,7 @@ Sets the alignment mode of grid items in the grid. For details about the usage, 
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
-| alignment | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[GridItemAlignment](#griditemalignment12) \>| Yes  | Alignment mode of grid items in the grid.<br>Default value: **GridItemAlignment.DEFAULT**|
+| alignment | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[GridItemAlignment](#griditemalignment12)\> | Yes  | Alignment mode of grid items in the grid.<br>Default value: **GridItemAlignment.DEFAULT**|
 
 ### focusWrapMode<sup>20+</sup>
 
@@ -698,7 +698,7 @@ Triggered when the dragged grid item is dropped on the drop target of the grid.
 | event       | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo) | Yes  | Information about the drag point.|
 | itemIndex   | number                                | Yes  | Initial position of the dragged item.|
 | insertIndex | number                                | Yes  | Index of the position to which the dragged item is dropped.|
-| isSuccess   | boolean                               | Yes  | Whether the dragged item is successfully dropped.  |
+| isSuccess   | boolean                               | Yes  | Whether the drop position is inside the grid element that has the onItemDrop attribute.<br>**true**: The drop position is within the grid element where onItemDrop is set. **false**: The drop position is outside the grid element where onItemDrop is set. |
 
 ### onScrollBarUpdate<sup>10+</sup>
 
@@ -838,7 +838,7 @@ This API is deprecated since API version 12. You are advised to use [onDidScroll
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ------ | ------|
-| scrollOffset | number | Yes| Scroll offset of each frame. The offset is positive when the grid is scrolled up and negative when the grid is scrolled down.<br>Unit: vp|
+| scrollOffset | number | Yes| Offset relative to the previous frame. The offset is positive when the component is scrolled up and negative when it is scrolled down.<br>Unit: vp|
 | scrollState | [ScrollState](ts-container-list.md#scrollstate) | Yes| Current scroll state.|
 
 ## ComputedBarAttribute<sup>10+</sup>
@@ -1933,7 +1933,7 @@ struct GridExample {
 
 ### Example 12: Wrap Focus by Arrow Keys
 
-This example demonstrates how to implement the wrap focus by arrow keys effect of the Grid component using the focusWrapMode API.
+This example demonstrates how to use the [focusWrapMode](#focuswrapmode20) API to implement focus wrapping when navigating the **Grid** component with arrow keys, available since API version 20.
 
 ```ts
 // xxx.ets
@@ -2736,7 +2736,7 @@ struct GridItemExample {
 
 ### Example 17: Dragging GridItem Components with Drag Events
 
-This example demonstrates dragging GridItem components to Grid edges to trigger automatic scrolling, implemented through [drag events](./ts-universal-events-drag-drop.md).
+This example demonstrates dragging **GridItem** components to **Grid** edges to trigger automatic scrolling, implemented through [drag events](./ts-universal-events-drag-drop.md).
 For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
 
 <!--code_no_check-->

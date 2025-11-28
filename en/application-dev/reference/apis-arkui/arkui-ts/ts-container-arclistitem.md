@@ -5,7 +5,7 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **ArcListItem** component is used to display individual child components in an [ArcList](ts-container-arclist.md) component and must be used in conjunction with **ArcList**.
 
