@@ -20,7 +20,7 @@ abstract enum let this as export native throw async extends new true await false
 ```
 预定义类型的名称和别名均属于硬关键字，不能用作标识符（包括变量名、函数名、类型名等）：
 ```
-Any bigint BigInt boolean Boolean byte Byte char Char double Double float Float int Int long Long number Number Object object short Short string String void Intl Global
+Any bigint BigInt boolean Boolean byte Byte char Char double Double float Float int Int long Long number Number Object object short Short string String void
 ```
 以下软关键字在特定上下文中具有特殊含义，但在其他情况下可作为有效标识符：
 ```
