@@ -28,9 +28,9 @@ Before working with JS objects using JSVM-API, you need to understand the follow
 | OH_JSVM_GetProperty        | Obtains a property from a JS object.|
 | OH_JSVM_HasProperty        | Checks whether a JS object has the specified property.|
 | OH_JSVM_DeleteProperty     | Deletes a property from a JS object.|
-| OH_JSVM_HasOwnProperty     | Checks whether an object has the own property specified by **key**.|
-| OH_JSVM_SetNamedProperty   | Sets a property with the given property name for a JS object. This API is equivalent to calling **OH_JSVM_SetNamedProperty** with a **JSVM_Value** created from the string passed in as **utf8Name**.|
-| OH_JSVM_GetNamedProperty   | Obtains a property from a JS object. This API is equivalent to calling **OH_JSVM_GetNamedProperty** with a **JSVM_Value** created from the string passed in as **utf8Name**.|
+| OH_JSVM_HasOwnProperty     | Checks whether an object has the own property with the specified name.|
+| OH_JSVM_SetNamedProperty   | Sets a property with the given property name for a JS object. This API is equivalent to calling **OH_JSVM_SetProperty** with a **JSVM_Value** created from the string passed in as **utf8Name**.|
+| OH_JSVM_GetNamedProperty   | Obtains a property from a JS object. This API is equivalent to calling **OH_JSVM_GetProperty** with a **JSVM_Value** created from the string passed in as **utf8Name**.|
 | OH_JSVM_HasNamedProperty   | Checks whether a JS object has the specified property. This API is equivalent to calling **OH_JSVM_HasProperty** with a **JSVM_Value** created from the string passed in as **utf8Name**.|
 | OH_JSVM_DefineProperties   | Defines multiple properties for a JS object.|
 | OH_JSVM_GetAllPropertyNames | Obtains the names of all available properties of a JS object as a JS array.|
