@@ -4,6 +4,8 @@
 
 > **说明**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > 本文仅介绍当前模块的系统接口，其他公开接口参见[@ohos.arkui.uiExtension (uiExtension)](js-apis-arkui-uiExtension.md)。
@@ -31,6 +33,10 @@ hideNonSecureWindows(shouldHide: boolean): Promise\<void>
 > 此接口在2in1设备上调用不生效。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **系统接口**：此接口为系统接口，三方应用不支持调用。
 
@@ -122,6 +128,10 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 > 添加安全水印标志后，窗口在前台时会将当前全屏幕覆盖水印。全屏、悬浮窗、分屏等场景下只要有添加了安全水印标志的窗口在前台，就会显示全屏水印。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **系统接口**：此接口为系统接口，三方应用不支持调用。
 
