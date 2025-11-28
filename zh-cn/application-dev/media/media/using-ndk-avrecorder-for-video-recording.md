@@ -168,7 +168,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    >
    > - 配置参数之前需要确保完成对应权限的申请，请参考[申请权限](#申请权限)。
    >
-   > - prepare接口的入参OH_AVRecorder_Config中设置音视频相关的配置参数，如示例代码所示。
+   > - prepare接口的入参OH_AVRecorder_Config中设置的音视频相关的配置参数，如示例代码所示。
    >
    > - 需要使用支持的[录制规格](media-kit-intro.md#支持的格式)，视频比特率、分辨率、帧率以实际硬件设备支持的范围为准。
    >
