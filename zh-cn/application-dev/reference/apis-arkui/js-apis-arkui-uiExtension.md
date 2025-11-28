@@ -265,6 +265,9 @@ import uiExtension from '@ohos.arkui.uiExtension';
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionWindow = session.getUIExtensionWindowProxy();
+    extensionWindow.onAvoidAreaChange((info: uiExtension.AvoidAreaInfo) => {
+      console.info(`The avoid area of the host window is: ${JSON.stringify(info.area)}.`);
+    });
     // 注销所有避让区变化的监听
     extensionWindow.offAvoidAreaChange();
   }
@@ -433,6 +436,9 @@ import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbi
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionWindow = session.getUIExtensionWindowProxy();
+    extensionWindow.onWindowSizeChange((size: window.Size) => {
+      console.info(`The size of the component is: ${JSON.stringify(size)}.`);
+    });
     // 注销组件（EmbeddedComponent或UIExtensionComponent）大小变化的监听
     extensionWindow.offWindowSizeChange();
   }
@@ -633,6 +639,9 @@ import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbi
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionWindow = session.getUIExtensionWindowProxy();
+    extensionWindow.onRectChange(uiExtension.RectChangeReason.HOST_WINDOW_RECT_CHANGE, (data: uiExtension.RectChangeOptions) => {
+        console.info('Succeeded window rect changes. Data: ' + JSON.stringify(data));
+    });
     // 注销组件（EmbeddedComponent或UIExtensionComponent）位置及尺寸变化的监听
     extensionWindow.offRectChange();
   }

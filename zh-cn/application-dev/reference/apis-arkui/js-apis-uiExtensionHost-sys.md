@@ -247,6 +247,9 @@ import { UIExtensionAbility, UIExtensionContentSession} from '@kit.AbilityKit';
 export default class EntryAbility extends UIExtensionAbility {
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    extensionHostWindow.onAvoidAreaChange((info) => {
+      console.info(`The avoid area of the host window is: ${JSON.stringify(info.area)}.`);
+    });
     // 注销所有避让区变化的监听
     extensionHostWindow.offAvoidAreaChange();
   }
@@ -416,6 +419,9 @@ export default class EntryAbility extends UIExtensionAbility {
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
     // 注销组件（EmbeddedComponent或UIExtensionComponent）大小变化的监听
+    extensionHostWindow.onWindowSizeChange((size) => {
+      console.info(`The size of the component is: ${JSON.stringify(size)}.`);
+    });
     extensionHostWindow.offWindowSizeChange();
   }
 }
