@@ -347,7 +347,7 @@ setStaticSubscriberState(enable: boolean, callback: AsyncCallback\<void>): void
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| enable  | boolean | 是   | 表示静态订阅事件使能状态。 true表示使能；false表示去使能。 |
+| enable  | boolean | 是   | 表示静态订阅事件使能状态。 true：表示使能；false：表示去使能。 |
 | callback  | AsyncCallback\<void> | 是   | 表示设置静态订阅事件使能状态的回调方法。 |
 
 **错误码：**
@@ -409,7 +409,7 @@ setStaticSubscriberState(enable: boolean): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| enable  | boolean | 是   | 表示静态订阅事件使能状态。 true表示使能；false表示去使能。 |
+| enable  | boolean | 是   | 表示静态订阅事件使能状态。 true：表示使能；false：表示去使能。 |
 
 **返回值：**
 
@@ -529,7 +529,7 @@ setStaticSubscriberState(enable: boolean, events: Array\<string>): Promise\<void
 
 | 参数名 | 类型          | 必填 | 说明                                                 |
 | ------ | ------------- | ---- | ---------------------------------------------------- |
-| enable | boolean       | 是   | 表示静态订阅事件使能状态。 true表示使能；false表示去使能。|
+| enable | boolean       | 是   | 表示静态订阅事件使能状态。 true：表示使能；false：表示去使能。|
 | events | Array\<string> | 是   | 表示记录事件名称。                                   |
 
 **返回值：**
