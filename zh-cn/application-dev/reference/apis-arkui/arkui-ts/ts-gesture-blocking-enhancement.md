@@ -510,8 +510,8 @@ struct Index {
 
 该示例通过配置onGestureRecognizerJudgeBegin判定手势，在父容器手势触发成功时，调用cancelTouch()强制取消子组件上的Touch事件，实现父子组件手势控制的精准切换。
 
- ```ts
- // xxx.ets
+```ts
+// xxx.ets
 @Entry
 @Component
 struct FatherControlChild {
