@@ -4057,7 +4057,7 @@ try {
 
 stopScan(): Promise&lt;void&gt;
 
-Stops an ongoing BLE scan.<br>
+Stops an ongoing BLE scan. This API uses a promise to return the result.<br>
 - This API works for a scan initiated by calling [startScan](#startscan15).<br>
 - Call this API to stop the Bluetooth scan if device discovery is no longer needed.
 

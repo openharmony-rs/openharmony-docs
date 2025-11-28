@@ -42,7 +42,8 @@ animation(value:AnimateParam): T
 | T | 返回当前组件。 |
 
 属性动画只对写在animation前面的属性生效，且对组件构造器的属性不生效。
-```
+
+```ts
 @Entry
 @Component
 struct AnimationExample {

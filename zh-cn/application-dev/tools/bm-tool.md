@@ -547,9 +547,9 @@ error: user not exist.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-hdc file recv /data/log/hilog/
-```
+    ```shell
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 304 当前系统账号没有安装HAP包
 **错误信息**
@@ -800,9 +800,10 @@ error: install parse profile prop check error.
         ![示例图](figures/zh-cn_image_0000001585521364.png)
 
         c. 使用keytool工具（在DevEco Studio安装目录下的jbr/bin文件夹内），执行如下命令，通过.cer文件获取证书指纹的SHA256值。
-          ```
-          keytool -printcert -file xxx.cer
-          ```
+
+            ```shell
+            keytool -printcert -file xxx.cer
+            ```
         d. 将证书指纹中SHA256的内容去掉冒号，即为最终要获得的签名指纹。
 
         如下图（仅作为格式示意，内容以实际为准）：
@@ -814,25 +815,28 @@ error: install parse profile prop check error.
     2. 获取设备的特权管控白名单文件install_list_capability.json。
 
         a. 连接设备，进入shell。
-        ```
-        hdc shell
-        ```
+
+            ```shell
+            hdc shell
+            ```
         b. 执行如下命令查看设备的特权管控白名单文件install_list_capability.json。
-        ```
-        // 设备中查询白名单文件的位置
-        find /system -name install_list_capability.json
-        ```
+
+            ```shell
+            // 设备中查询白名单文件的位置
+            find /system -name install_list_capability.json
+            ```
         c. 执行如下命令拉取install_list_capability.json。
-        ```
-        hdc target mount
-        hdc file recv /system/etc/app/install_list_capability.json
-        ```
+
+            ```shell
+            hdc target mount
+            hdc file recv /system/etc/app/install_list_capability.json
+            ```
 
     3. 将步骤1获取到的签名指纹配置到install_list_capability.json文件的app_signature中，注意要配置到对应的bundleName下。
     ![示例图](figures/zh-cn_image_0000001635641893.png)
     4. 将修改后的install_list_capability.json文件重新推到设备上，并重启设备。
 
-        ```
+        ```shell
         hdc target mount
         hdc file send install_list_capability.json /system/etc/app/install_list_capability.json
         hdc shell chmod 644 /system/etc/app/install_list_capability.json
@@ -895,7 +899,7 @@ error: install parse profile missing prop.
 * 方法2：通过hilog日志判断缺失字段。
 
     开启落盘命令：
-    ```
+    ```shell
     hilog -w start
     ```
 
@@ -1095,19 +1099,19 @@ error: signature verification failed due to not trusted app source.
 
     1. 获取当前设备的UDID。
 
-    ```
-      //UDID获取命令
-      hdc shell bm get -u
-    ```
+        ```shell
+          //UDID获取命令
+          hdc shell bm get -u
+        ```
 
     2. 打开DevEco Studio安装路径，在sdk目录下找到UnsgnedDebugProfileTemplate.json配置文件。
 
-    ```
-      DevEco Studio安装路径\sdk\版本号或者default\openharmony\toolchains\lib\
+        ```shell
+          DevEco Studio安装路径\sdk\版本号或者default\openharmony\toolchains\lib\
 
-      例如：xxxx\Huawei\DevEco Studio\sdk\HarmonyOS-NEXT-DB1\openharmony\toolchains\lib\
-      例如：xxxx\Huawei\DevEco Studio\sdk\default\openharmony\toolchains\lib\
-    ```
+          例如：xxxx\Huawei\DevEco Studio\sdk\HarmonyOS-NEXT-DB1\openharmony\toolchains\lib\
+          例如：xxxx\Huawei\DevEco Studio\sdk\default\openharmony\toolchains\lib\
+        ```
 
     3. 在UnsgnedDebugProfileTemplate.json文件的device-ids字段中，添加当前设备的UDID。
 
@@ -1201,9 +1205,9 @@ error: install failed due to update hap token failed.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-hdc file recv /data/log/hilog/
-```
+    ```shell
+    hdc file recv /data/log/hilog/
+    ```
 
 
 <!--Del-->
@@ -1263,7 +1267,7 @@ error: install failed due to older sdk version in the device.
 **处理步骤**
 
 * 场景一：设备上的镜像版本低于编译打包的SDK版本，请更新设备镜像版本。查询设备镜像版本命令：
-  ```
+  ```bash
   hdc shell param get const.ohos.apiversion
   ```
   如果镜像提供的api版本为10，且应用编译所使用的SDK版本也为10，仍出现该报错，可能是由于镜像版本较低，未兼容新版本SDK校验规则，请将镜像版本更新为最新版本。
@@ -1527,9 +1531,9 @@ UserID 0用户安装了非singleton权限的应用。
 **处理步骤**
 
 1. 应用是非singleton权限的，不需要指定用户，直接安装。
-	```bash
-	hdc shell bm install -p /data/hap名.hap
-	```
+    ```bash
+    hdc shell bm install -p /data/hap名.hap
+    ```
 
 
 ### 9568263 无法降级安装
@@ -1676,7 +1680,7 @@ error: shared bundle is not exist.
 **处理步骤**
 
 检查需要卸载的应用间HSP是否存在。
-```
+```bash
 hdc shell bm dump-shared -n com.xxx.xxx.demo
 ```
 
@@ -1717,14 +1721,14 @@ error: isolationMode does not match the system.
 **处理步骤**
 
 1. 按照设备的隔离模式配置HAP配置文件isolationMode属性。
-	```bash
-	# 查询设备persist.bms.supportIsolationMode值，若返回errNum is:106说明没配置
-	hdc shell
-	param get persist.bms.supportIsolationMode
-	# 配置设备persist.bms.supportIsolationMode值
-	hdc shell
-	param set persist.bms.supportIsolationMode [true|false]
-	```
+    ```bash
+    # 查询设备persist.bms.supportIsolationMode值，若返回errNum is:106说明没配置
+    hdc shell
+    param get persist.bms.supportIsolationMode
+    # 配置设备persist.bms.supportIsolationMode值
+    hdc shell
+    param set persist.bms.supportIsolationMode [true|false]
+    ```
 
 
 ### 9568310 兼容策略不同
@@ -1765,7 +1769,7 @@ error: bundle manager service is died.
 
 2. 重复上述步骤3到5次后依旧安装失败，请查询设备的/data/log/faultlog/faultlogger/目录下是否存在包含foundation字样的crash文件。
 
-    ```
+    ```bash
     hdc shell
     cd /data/log/faultlog/faultlogger/
     ls -ls
@@ -1773,7 +1777,7 @@ error: bundle manager service is died.
 
 3. 导出crash文件和日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-    ```
+    ```bash
     hdc file recv /data/log/faultlog/faultlogger/
     hdc file recv /data/log/hilog/
     ```
@@ -1813,9 +1817,9 @@ error: copy file failed.
 2. 源文件打开失败。
 3. 获取源文件状态失败。
 4. 源文件的大小无效。
-6. 源文件拷贝失败。
-7. 源文件没有访问权限。
-8. 更改文件权限失败。
+5. 源文件拷贝失败。
+6. 源文件没有访问权限。
+7. 更改文件权限失败。
 
 **处理步骤**
 
@@ -1823,9 +1827,9 @@ error: copy file failed.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568401 调试包仅支持运行在开发者模式设备
 **错误信息**
@@ -1871,9 +1875,9 @@ error: delivery sign profile failed.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568405 删除签名配置文件失败
 
@@ -1897,9 +1901,9 @@ error: remove sign profile failed.
 
 2. 重复上述步骤3到5次后依旧卸载失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568381 应用进程删除失败
 **错误信息**
@@ -1954,6 +1958,11 @@ bm工具进程异常或者权限丢失，导致卸载应用时无权限。
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
+    ```bash
+    # 导出日志文件
+    hdc file recv /data/log/hilog/
+    ```
+
 ### 9568385 卸载服务异常
 **错误信息**
 
@@ -1973,7 +1982,7 @@ error: uninstall bundle mgr service error.
 
 2. 重复上述步骤3到5次后依旧安装失败，请查询设备的/data/log/faultlog/faultlogger/目录下是否存在包含foundation字样的crash文件。
 
-    ```
+    ```bash
     hdc shell
     cd /data/log/faultlog/faultlogger/
     ls -ls
@@ -1981,7 +1990,7 @@ error: uninstall bundle mgr service error.
 
 3. 导出crash文件和日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-    ```
+    ```bash
     hdc file recv /data/log/faultlog/faultlogger/
     hdc file recv /data/log/hilog/
     ```
@@ -2038,6 +2047,11 @@ error: unknown.
 1. 重启手机后再次尝试安装应用。
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+
+    ```bash
+    # 导出日志文件
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568284 安装版本不匹配
 **错误信息**
@@ -2277,10 +2291,10 @@ error: installd param error.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-# 导出日志文件
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # 导出日志文件
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568351 创建文件目录异常导致安装失败
@@ -2302,10 +2316,10 @@ error: installd create dir failed.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-# 导出日志文件
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # 导出日志文件
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568354 删除文件目录异常导致安装失败
@@ -2327,10 +2341,10 @@ error: installd remove dir failed.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-# 导出日志文件
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # 导出日志文件
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568355 安装包中提取文件失败
@@ -2352,10 +2366,10 @@ error: installd extract files failed.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-# 导出日志文件
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # 导出日志文件
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568356 安装过程中重命名目录名失败
@@ -2377,10 +2391,10 @@ error: installd rename dir failed.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-# 导出日志文件
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # 导出日志文件
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568357 清理文件失败
 **错误信息**
@@ -2401,10 +2415,10 @@ error: installd clean dir failed.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-# 导出日志文件
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # 导出日志文件
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568359 安装设置selinux失败
@@ -2773,7 +2787,7 @@ error: Check pluginDistributionID between plugin and host application failed.
 **处理步骤**
 
 重新配置应用或者插件<!--RP5-->[签名证书profile文件](../security/app-provision-structure.md)<!--RP5End-->中的 pluginDistributionIDs。配置格式如下：
-```
+```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
         "pluginDistributionIDs":"value-1,value-2,···"
@@ -2968,7 +2982,7 @@ error: install parse native so failed.
 
 2. 在命令行执行如下[hdc命令](#环境要求hdc工具)，查询设备支持的Abi列表。
 
-    ```
+    ```bash
     hdc shell
     param get const.product.cpu.abilist
     ```
@@ -2976,7 +2990,7 @@ error: install parse native so failed.
 
     <!--Del-->
     * 若返回结果为default，请执行如下命令，查询是否存在lib64文件夹。
-      ```
+      ```bash
       cd /system/
       ls
       ```
@@ -3025,10 +3039,10 @@ error: Installd get proxy error.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-# 导出日志文件
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # 导出日志文件
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568434 设备不具备插件能力
 **错误信息**
@@ -3099,7 +3113,7 @@ error: Failed to install the plugin because the plugin id failed to be parsed.
 **处理步骤**
 
 参考如下格式，重新配置插件<!--RP5-->[签名证书profile文件](../security/app-provision-structure.md)<!--RP5End-->中的"app-services-capabilities"字段。
-```
+```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
         "pluginDistributionIDs":"value-1,value-2,···"

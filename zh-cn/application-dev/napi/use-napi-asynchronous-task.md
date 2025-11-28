@@ -129,12 +129,12 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
    接口对应的.d.ts描述
 
-    ```ts
+   ``` ts
    export const asyncWork: (data: number) => Promise<number>;
-    ```
+   ```
     ArkTS侧调用接口
 
-    ```ts
+   ``` ts
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import testNapi from 'libentry.so';
    testNapi.asyncWork(1024).then((result) => {

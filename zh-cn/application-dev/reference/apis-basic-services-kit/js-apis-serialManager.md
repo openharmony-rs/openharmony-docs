@@ -45,13 +45,15 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口设备清单 
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
+function getPortList() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (portList === undefined || portList.length === 0) {
+    console.info('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 }
-let portId: number = portList[0].portId;
 ```
 
 ## serialManager.hasSerialRight
@@ -97,19 +99,21 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('portList: ', JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
+function hasSerialRight() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('portList: ', JSON.stringify(portList));
+  if (portList === undefined || portList.length === 0) {
+    console.info('portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 
-// 检测设备是否可被应用访问
-if (serialManager.hasSerialRight(portId)) {
-  console.info('The serial port is accessible');
-} else {
-  console.info('No permission to access the serial port');
+  // 检测设备是否可被应用访问
+  if (serialManager.hasSerialRight(portId)) {
+    console.info('The serial port is accessible');
+  } else {
+    console.info('No permission to access the serial port');
+  }
 }
 ```
 
@@ -156,25 +160,27 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
+function requestSerialRight() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (portList === undefined || portList.length === 0) {
+    console.info('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 
-// 检测设备是否可被应用访问
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // 没有访问设备的权限且用户不授权则退出
-      console.info('user is not granted the operation permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
+  // 检测设备是否可被应用访问
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // 没有访问设备的权限且用户不授权则退出
+        console.info('user is not granted the operation permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
 }
 ```
 
@@ -216,33 +222,35 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
+function open() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (portList === undefined || portList.length === 0) {
+    console.info('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 
-// 检测设备是否可被应用访问
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // 没有访问设备的权限且用户不授权则退出
-      console.info('user is not granted the operation  permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
-}
+  // 检测设备是否可被应用访问
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // 没有访问设备的权限且用户不授权则退出
+        console.info('user is not granted the operation  permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
 
-// 打开设备
-try {
-  serialManager.open(portId)
-  console.info('open usbSerial success, portId: ' + portId);
-} catch (error) {
-  console.error('open usbSerial error, ' + JSON.stringify(error));
+  // 打开设备
+  try {
+    serialManager.open(portId)
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('open usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -289,46 +297,48 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
-
-// 检测设备是否可被应用访问
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // 没有访问设备的权限且用户不授权则退出
-      console.info('user is not granted the operation  permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
-}
-
-// 打开设备
-try {
-  serialManager.open(portId)
-  console.info('open usbSerial success, portId: ' + portId);
-} catch (error) {
-  console.error('open usbSerial error, ' + JSON.stringify(error));
-  return;
-}
-
-// 获取串口配置
-try {
-  let attribute: serialManager.SerialAttribute = serialManager.getAttribute(portId);
-  if (attribute === undefined) {
-    console.error('getAttribute usbSerial error, attribute is undefined');
-  } else {
-    console.info('getAttribute usbSerial success, attribute: ' + JSON.stringify(attribute));
+function getAttribute() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (portList === undefined || portList.length === 0) {
+    console.info('usbSerial portList is empty');
+    return;
   }
-} catch (error) {
-  console.error('getAttribute usbSerial error, ' + JSON.stringify(error));
+  let portId: number = portList[0].portId;
+
+  // 检测设备是否可被应用访问
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // 没有访问设备的权限且用户不授权则退出
+        console.info('user is not granted the operation  permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
+
+  // 打开设备
+  try {
+    serialManager.open(portId)
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('open usbSerial error, ' + JSON.stringify(error));
+    return;
+  }
+
+  // 获取串口配置
+  try {
+    let attribute: serialManager.SerialAttribute = serialManager.getAttribute(portId);
+    if (attribute === undefined) {
+      console.error('getAttribute usbSerial error, attribute is undefined');
+    } else {
+      console.info('getAttribute usbSerial success, attribute: ' + JSON.stringify(attribute));
+    }
+  } catch (error) {
+    console.error('getAttribute usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -370,48 +380,50 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
-
-// 检测设备是否可被应用访问
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // 没有访问设备的权限且用户不授权则退出
-      console.info('user is not granted the operation  permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
-}
-
-// 打开设备
-try {
-  serialManager.open(portId)
-  console.info('open usbSerial success, portId: ' + portId);
-} catch (error) {
-  console.error('open usbSerial error, ' + JSON.stringify(error));
-  return;
-}
-
-// 设置串口配置
-try {
-  let attribute: serialManager.SerialAttribute = {
-    baudRate: serialManager.BaudRates.BAUDRATE_9600,
-    dataBits: serialManager.DataBits.DATABIT_8,
-    parity: serialManager.Parity.PARITY_NONE,
-    stopBits: serialManager.StopBits.STOPBIT_1
+function setAttribute() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (portList === undefined || portList.length === 0) {
+    console.info('usbSerial portList is empty');
+    return;
   }
-  serialManager.setAttribute(portId, attribute);
-  console.info('setAttribute usbSerial success, attribute: ' + JSON.stringify(attribute));
-} catch (error) {
-  console.error('setAttribute usbSerial error, ' + JSON.stringify(error));
+  let portId: number = portList[0].portId;
+
+  // 检测设备是否可被应用访问
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // 没有访问设备的权限且用户不授权则退出
+        console.info('user is not granted the operation  permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
+
+  // 打开设备
+  try {
+    serialManager.open(portId)
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('open usbSerial error, ' + JSON.stringify(error));
+    return;
+  }
+
+  // 设置串口配置
+  try {
+    let attribute: serialManager.SerialAttribute = {
+      baudRate: serialManager.BaudRates.BAUDRATE_9600,
+      dataBits: serialManager.DataBits.DATABIT_8,
+      parity: serialManager.Parity.PARITY_NONE,
+      stopBits: serialManager.StopBits.STOPBIT_1
+    }
+    serialManager.setAttribute(portId, attribute);
+    console.info('setAttribute usbSerial success, attribute: ' + JSON.stringify(attribute));
+  } catch (error) {
+    console.error('setAttribute usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -462,42 +474,44 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
+function read() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (portList === undefined || portList.length === 0) {
+    console.info('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 
-// 检测设备是否可被应用访问
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // 没有访问设备的权限且用户不授权则退出
-      console.info('user is not granted the operation  permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
-}
+  // 检测设备是否可被应用访问
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // 没有访问设备的权限且用户不授权则退出
+        console.info('user is not granted the operation  permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
 
-// 打开设备
-try {
-  serialManager.open(portId)
-  console.info('open usbSerial success, portId: ' + portId);
-} catch (error) {
-  console.error('open usbSerial error, ' + JSON.stringify(error));
-}
+  // 打开设备
+  try {
+    serialManager.open(portId)
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('open usbSerial error, ' + JSON.stringify(error));
+  }
 
-// 异步读取
-let readBuffer: Uint8Array = new Uint8Array(64);
-serialManager.read(portId, readBuffer, 2000).then((size: number) => {
-  console.info('read usbSerial success, readBuffer: ' + readBuffer.toString());
-}).catch((error: Error) => {
-  console.error('read usbSerial error, ' + JSON.stringify(error));
-})
+  // 异步读取
+  let readBuffer: Uint8Array = new Uint8Array(64);
+  serialManager.read(portId, readBuffer, 2000).then((size: number) => {
+    console.info('read usbSerial success, readBuffer: ' + readBuffer.toString());
+  }).catch((error: Error) => {
+    console.error('read usbSerial error, ' + JSON.stringify(error));
+  })
+}
 ```
 
 ## serialManager.readSync
@@ -547,42 +561,44 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
+function readSync() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (portList === undefined || portList.length === 0) {
+    console.info('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 
-// 检测设备是否可被应用访问
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // 没有访问设备的权限且用户不授权则退出
-      console.info('user is not granted the operation  permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
-}
+  // 检测设备是否可被应用访问
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // 没有访问设备的权限且用户不授权则退出
+        console.info('user is not granted the operation  permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
 
-// 打开设备
-try {
-  serialManager.open(portId)
-  console.info('open usbSerial success, portId: ' + portId);
-} catch (error) {
-  console.error('open usbSerial error, ' + JSON.stringify(error));
-}
+  // 打开设备
+  try {
+    serialManager.open(portId)
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('open usbSerial error, ' + JSON.stringify(error));
+  }
 
-// 同步读取
-let readSyncBuffer: Uint8Array = new Uint8Array(64);
-try {
-  serialManager.readSync(portId, readSyncBuffer, 2000);
-  console.info('readSync usbSerial success, readSyncBuffer: ' + readSyncBuffer.toString());
-} catch (error) {
-  console.error('readSync usbSerial error, ' + JSON.stringify(error));
+  // 同步读取
+  let readSyncBuffer: Uint8Array = new Uint8Array(64);
+  try {
+    serialManager.readSync(portId, readSyncBuffer, 2000);
+    console.info('readSync usbSerial success, readSyncBuffer: ' + readSyncBuffer.toString());
+  } catch (error) {
+    console.error('readSync usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -630,45 +646,48 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
+import { buffer } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
+function write() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (portList === undefined || portList.length === 0) {
+    console.info('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 
-// 检测设备是否可被应用访问
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // 没有访问设备的权限且用户不授权则退出
-      console.info('user is not granted the operation  permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
-}
+  // 检测设备是否可被应用访问
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // 没有访问设备的权限且用户不授权则退出
+        console.info('user is not granted the operation  permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
 
-// 打开设备
-try {
-  serialManager.open(portId)
-  console.info('open usbSerial success, portId: ' + portId);
-} catch (error) {
-  console.error('open usbSerial error, ' + JSON.stringify(error));
-}
+  // 打开设备
+  try {
+    serialManager.open(portId)
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('open usbSerial error, ' + JSON.stringify(error));
+  }
 
-// 异步写入
-let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
-serialManager.write(portId, writeBuffer, 2000).then((size: number) => {
-  console.info('write usbSerial success, writeBuffer: ' + writeBuffer.toString());
-}).catch((error: Error) => {
-  console.error('write usbSerial error, ' + JSON.stringify(error));
-})
+  // 异步写入
+  let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
+  serialManager.write(portId, writeBuffer, 2000).then((size: number) => {
+    console.info('write usbSerial success, writeBuffer: ' + writeBuffer.toString());
+  }).catch((error: Error) => {
+    console.error('write usbSerial error, ' + JSON.stringify(error));
+  })
+}
 ```
 
 ## serialManager.writeSync
@@ -715,45 +734,48 @@ writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
+import { buffer } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
+function writeSync() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (portList === undefined || portList.length === 0) {
+    console.info('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 
-// 检测设备是否可被应用访问
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // 没有访问设备的权限且用户不授权则退出
-      console.info('user is not granted the operation  permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
-}
+  // 检测设备是否可被应用访问
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // 没有访问设备的权限且用户不授权则退出
+        console.info('user is not granted the operation  permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
 
-// 打开设备
-try {
-  serialManager.open(portId)
-  console.info('open usbSerial success, portId: ' + portId);
-} catch (error) {
-  console.error('open usbSerial error, ' + JSON.stringify(error));
-}
+  // 打开设备
+  try {
+    serialManager.open(portId)
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('open usbSerial error, ' + JSON.stringify(error));
+  }
 
-// 同步写入
-let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
-try {
-  serialManager.writeSync(portId, writeSyncBuffer, 2000);
-  console.info('writeSync usbSerial success, writeSyncBuffer: ' + writeSyncBuffer.toString());
-} catch (error) {
-  console.error('writeSync usbSerial error, ' + JSON.stringify(error));
+  // 同步写入
+  let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
+  try {
+    serialManager.writeSync(portId, writeSyncBuffer, 2000);
+    console.info('writeSync usbSerial success, writeSyncBuffer: ' + writeSyncBuffer.toString());
+  } catch (error) {
+    console.error('writeSync usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -794,42 +816,44 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
+function close() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (portList === undefined || portList.length === 0) {
+    console.info('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 
-// 检测设备是否可被应用访问
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // 没有访问设备的权限且用户不授权则退出
-      console.info('user is not granted the operation  permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
-}
+  // 检测设备是否可被应用访问
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // 没有访问设备的权限且用户不授权则退出
+        console.info('user is not granted the operation  permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
 
-// 打开设备
-try {
-  serialManager.open(portId)
-  console.info('open usbSerial success, portId: ' + portId);
-} catch (error) {
-  console.error('open usbSerial error, ' + JSON.stringify(error));
-  return;
-}
+  // 打开设备
+  try {
+    serialManager.open(portId)
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('open usbSerial error, ' + JSON.stringify(error));
+    return;
+  }
 
-// 关闭串口
-try {
-  serialManager.close(portId);
-  console.info('close usbSerial success, portId: ' + portId);
-} catch (error) {
-  console.error('close usbSerial error, ' + JSON.stringify(error));
+  // 关闭串口
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('close usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -871,33 +895,35 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
+function cancelSerialRight() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (portList === undefined || portList.length === 0) {
+    console.info('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 
-// 检测设备是否可被应用访问
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // 没有访问设备的权限且用户不授权则退出
-      console.info('user is not granted the operation  permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
-}
+  // 检测设备是否可被应用访问
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // 没有访问设备的权限且用户不授权则退出
+        console.info('user is not granted the operation  permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
 
-// 取消已经授予的权限
-try {
-  serialManager.cancelSerialRight(portId);
-  console.info('cancelSerialRight success, portId: ', portId);
-} catch (error) {
-  console.error('cancelSerialRight error, ', JSON.stringify(error));
+  // 取消已经授予的权限
+  try {
+    serialManager.cancelSerialRight(portId);
+    console.info('cancelSerialRight success, portId: ', portId);
+  } catch (error) {
+    console.error('cancelSerialRight error, ', JSON.stringify(error));
+  }
 }
 ```
 

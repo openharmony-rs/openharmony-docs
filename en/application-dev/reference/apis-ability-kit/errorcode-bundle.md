@@ -62,10 +62,12 @@ The specified ability name does not exist.
 **Possible Causes**<br>
 1. The ability name is misspelled.
 2. The application does not have the ability specified by **abilityName**.
+3. When [bundleManager.getProfileByAbility](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyability) or [bundleManager.getProfileByExtensionAbility](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyextensionability) is used for query based on a combination of ability name and module name, the application does not have the module specified by **moduleName** or the specified ability under that module.
 
 **Solution**<br>
 1. Check whether the spelling of the ability name is correct.
 2. Run the [dump command](../../tools/bm-tool.md#dump), and check whether **abilityInfos** under the **hapModuleInfos** field in the output contains an entry where the name equals this ability name. If no such entry is found, the ability name does not exist.
+3. Run the [dump command](../../tools/bm-tool.md#dump), and check the **hapModuleNames** field in the output. If the specified module name is not in the list, the application has not installed the module, and the ability under that module also does not exist.
 ```
 # Replace **com.xxx.demo** with the actual bundle name.
 hdc shell bm dump -n com.xxx.demo
@@ -933,7 +935,7 @@ An AppClone instance cannot be created for an application that is not in appClon
 The multi-app mode is set to another mode other than appClone.
 
 **Solution**<br>
-1. Check whether the application to update supports clones.
+1. Check whether the application to update supports clones.<!--DelEnd-->
 
 ## 17700070 Invalid Shortcut ID
 
@@ -949,6 +951,7 @@ A shortcut with the same bundle name, clone index, user ID, and shortcut ID alre
 **Solution**<br>
 1. Check whether the bundle name and shortcut ID are correct.
 
+<!--Del-->
 ## 17700071 Enterprise Applications Cannot Be Installed
 **Error Message**<br>
 It is not allowed to install the enterprise bundle.

@@ -21,7 +21,13 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 ### 开发步骤及注意事项
 
-1. 获取音振管理器实例，并注册音频及振动资源，资源支持情况可以查看[AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager)。应用可根据自身需求，选择使用[registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource)或[registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20)接口注册资源。
+1. 获取音振管理器实例，并注册音频及振动资源，资源支持情况可以查看[AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager)。
+
+   > **说明：**
+   >
+   > 开发者可通过如下两种方式注册资源：
+   > - 方式1：使用[registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource)接口，通过文件URI来注册资源。
+   > - 方式2（推荐）：从API version 20开始，支持使用[registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20)接口，通过文件描述符来注册资源，更便于开发者使用。
 
    ```ts
    import { audio, audioHaptic } from '@kit.AudioKit';
