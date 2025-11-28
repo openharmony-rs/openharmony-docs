@@ -301,9 +301,18 @@ The system presets the following four audio concurrency modes:
 
 - **CONCURRENCY_MIX_WITH_OTHERS**: concurrent playback with other audio streams.
 
+    **Typical scenarios**
+    - When an application plays music, it can be interrupted by other music or video. The application wants its audio stream to play concurrently with the interrupting music or video. (In this scenario, the application is required to activate AudioSession before starting the audio stream.)
+
+    - When an application records audio, it interrupts background music or video. The application wants its audio stream to play concurrently with the background music or video. (In this scenario, the application is required to activate AudioSession before starting the audio stream.)
+
 - **CONCURRENCY_DUCK_OTHERS**: concurrency with other audio streams and lowering their volume.
 
+    **Typical scenario**: When an application plays game sound effects, it plays concurrently with background music. The application wants its audio stream to play while lowering the volume of the background music. (In this scenario, the application is required to activate AudioSession before starting the audio stream.)
+
 - **CONCURRENCY_PAUSE_OTHERS**: pausing other audio streams and notifying them to resume after releasing focus.
+
+    **Typical scenario**: When an application plays a short-form video, it interrupts background music. The application wants the background music to automatically resume after its audio stream stops. (In this scenario, the application is required to activate AudioSession before starting the audio stream and deactivate AudioSession after stopping the audio stream).
 
 > **NOTE**
 >
@@ -333,7 +342,11 @@ For details, see [Using AudioSession to Manage Audio Focus (ArkTS)](audio-sessio
 
 
 ### Requesting Focus by Setting Audio Session Scene Parameters
-Starting from API 20, applications can request focus through AudioSession to enhance the continuity of multi-audio stream playback, while retaining existing features.
+
+**This feature is supported since API version 20.**
+
+Applications can request focus through AudioSession to enhance the continuity of multi-audio stream playback, while retaining existing features.
+
 Typical use cases include:
 - When multiple short videos are playing in succession, frequent requests and releases of focus by multiple audio streams can cause audio leakage. Using AudioSession to request focus once can avoid the need for multiple audio streams to frequently request and release focus, thereby preventing audio leakage.
 - In VoIP call scenarios, it may be necessary to start ringtone, recording, and playback streams, which have different focus priorities and may be interrupted by audio streams from other applications. To maintain a continuous user experience, you can use AudioSession to request focus and avoid interruptions to the audio streams.
@@ -355,6 +368,9 @@ The currently supported audio session scenes are as follows, and applications ca
 - The focus requested by the audio session is application-level. If an application contains different modules, coordination between modules is necessary to avoid unintended effects caused by one module using AudioSession to request focus while another module's audio stream is controlled by the audio session's focus.
 
 ### Listening for Audio Session Focus State Change events
+
+**This feature is supported since API version 20.**
+
 The focus requested by AudioSession is equal to that requested by AudioRenderer. If other application audio streams request focus, the system handles the focus according to the [focus strategy](#audio-focus-strategy). If the system determines that the focus of the current audio session has changed and needs to perform operations such as pausing, resuming, lowering volume, or restoring volume, the system automatically executes the necessary actions and notifies the application through [AudioSessionStateChangedEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiosessionstatechangedevent20).
 
 To maintain consistency between the application and system states and ensure a good user experience, applications should listen for the audio session focus state change events and respond as necessary when the focus changes.
@@ -366,4 +382,7 @@ To maintain consistency between the application and system states and ensure a g
 > 2. If the focus of the audio session is paused, only the audio session will receive the focus resume event when it is resumed, and the audio renderer will not receive the focus resume event.
 
 ### Querying and Listening for Audio Output Devices Using AudioSession
-Applications using the player SDK to play audio streams do not hold an AudioRenderer object. As a result, they cannot flexibly control the selection of playback devices and listen for the device status. Starting from API version 20, AudioSession not only introduces focus management but also provides capabilities for managing audio output devices, including setting the default output device and listening for device changes. For details about the APIs, see [AudioSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md). For details about how to use the APIs, see [Querying and Listening for Audio Output Devices Using AudioSession](./audio-output-device-management.md#querying-and-listening-for-audio-output-devices-using-audiosession).
+
+**This feature is supported since API version 20.**
+
+Applications using the player SDK to play audio streams do not hold an AudioRenderer object. As a result, they cannot flexibly control the selection of playback devices and listen for the device status. AudioSession not only introduces focus management but also provides capabilities for managing audio output devices, including setting the default output device and listening for device changes. For details about the APIs, see [AudioSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md). For details about how to use the APIs, see [Querying and Listening for Audio Output Devices Using AudioSession](./audio-output-device-management.md#querying-and-listening-for-audio-output-devices-using-audiosession).

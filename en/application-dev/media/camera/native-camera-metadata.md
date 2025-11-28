@@ -98,7 +98,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
         }
 
         // Add the camera input stream to the session.
-        Camera_ErrorCode ret = OH_CaptureSession_AddInput(captureSession, cameraInput);
+        ret = OH_CaptureSession_AddInput(captureSession, cameraInput);
         if (ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddInput failed.");
             return ret;
