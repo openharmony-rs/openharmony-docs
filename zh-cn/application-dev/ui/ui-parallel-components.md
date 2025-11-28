@@ -2,7 +2,8 @@
 从API version 20开始，UI可以并行创建组件树，从而降低组件创建时延并提升应用的流畅度。适用场景：
 * 适用于需要将大型、复杂页面拆分构建的场景。
 * 由于并行构建的部分不会在当前帧立即渲染，适用于处理屏幕外内容、可延迟显示的内容或可以先用占位替代需要显示的内容。
-* 从API version 22开始，在List&Grid中提供[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)的重载接口[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)用于UI  并行化循环创建。
+
+从API version 22开始，在List&Grid中提供[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)的重载接口[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)用于UI并行化循环创建。
 
 ## 概述
 传统单线程UI渲染方式已无法满足日益复杂UI和数据处理需求，UI卡顿、响应迟缓等问题严重影响用户体验。基于上述问题，ArkUI提出声明式下部分UI并行化创建方案。开发者可指定并行内容，减少组件创建时延，提升用户体验。
