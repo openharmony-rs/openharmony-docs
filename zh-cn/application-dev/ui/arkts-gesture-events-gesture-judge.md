@@ -497,14 +497,14 @@
 
 以下为完整示例代码：
 
-   <!-- @[gesture_recognition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventGestureRecognition.ets) -->
+<!-- @[gesture_recognition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventGestureRecognition.ets) -->
 
-   ``` TypeScript
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
-  @Local progress: number = 496000;  // 初始进度，秒
-  @Local total: number = 27490000;   // 总时长，秒
+  @Local progress: number = 496000; // 初始进度，秒
+  @Local total: number = 27490000; // 总时长，秒
   @Local currentWidth: string = '100%';
   @Local currentHeight: string = '100%';
   private currentPosX: number = 0;
@@ -539,204 +539,206 @@ struct Index {
 
   startFastForwardTimer(): void {
     if (this.fastForwardTimer != -1) {
-          this.stopFastForwardTimer();
-        };
-        this.fastForwardTimer = setInterval(() => {
-          this.progress = this.progress + 100000;
-        }, 100);
-      };
-    
-      stopFastForwardTimer(): void {
-        if (this.fastForwardTimer == -1) {
-          return;
-        };
-        clearInterval(this.fastForwardTimer);
-        this.fastForwardTimer = -1;
-      };
-    
-      showMessage(message: string): void {
-        this.getUIContext().getPromptAction().showToast({ message: message, alignment: Alignment.Center });
-      };
-    
-      resetPosInfo(): void {
-        this.currentPosX = 0;
-        this.currentPosY = 0;
-      };
-    
-      toggleFullScreenState(): void {
-        this.currentFullScreenState = !this.currentFullScreenState;
-        if (this.currentFullScreenState) {
-          this.currentWidth = '100%';
-          this.currentHeight = '100%';
-        } else {
-          this.currentWidth = '100%';
-          this.currentHeight = '50%';
-        };
-        //  $r('app.string.Play_full_screen') 需要替换为开发者所需的资源文件
-        //  $r('app.string.Exit_play_full_screen') 需要替换为开发者所需的资源文件
-        this.showMessage(this.currentFullScreenState
-          ? this.context!.resourceManager.getStringSync($r('app.string.Play_full_screen').id)
-          : this.context!.resourceManager.getStringSync($r('app.string.Exit_play_full_screen').id));
-      };
-    
-      togglePlayAndPause(): void {
-        this.isPlaying = !this.isPlaying;
-        if (!this.isPlaying) {
-          this.stopNormalPlayTimer();
-        } else {
-          // 重新启动
-          this.startNormalPlayTimer();
-        };
-        //  $r('app.string.stop_playing') 需要替换为开发者所需的资源文件
-        //  $r('app.string.Continue_playing') 需要替换为开发者所需的资源文件
-        this.showMessage(this.isPlaying
-          ? this.context!.resourceManager.getStringSync($r('app.string.stop_playing').id)
-          : this.context!.resourceManager.getStringSync($r('app.string.Continue_playing').id));
-      };
-    
-      doFastForward(start: boolean): void {
-        if (!start) { // 停止快进，恢复正常播放
-          this.stopFastForwardTimer();
-          this.startNormalPlayTimer();
-          //  $r('app.string.Cancel_FastForwarding') 需要替换为开发者所需的资源文件
-          this.showMessage(
-            this.context!.resourceManager.getStringSync($r('app.string.Cancel_FastForwarding').id));
-          return;
-        };
-    
-        this.stopNormalPlayTimer();
-        this.startFastForwardTimer();
-        //  $r('app.string.Start_FastForwarding') 需要替换为开发者所需的资源文件
-        this.showMessage(
-          this.context!.resourceManager.getStringSync($r('app.string.Start_FastForwarding').id));
-      };
-    
-      updateBrightness(start: boolean, event: BaseGestureEvent): void {
-        let newY = event.fingerList[0].localY;
-        if (start) {
-          this.currentPosY = newY;
-          //  $r('app.string.Start_adjusting_brightness') 需要替换为开发者所需的资源文件
-          this.showMessage(this.context!.resourceManager
-            .getStringSync($r('app.string.Start_adjusting_brightness').id));
-          return;
-        };
-        let offsetY = newY - this.currentPosY;
-        if (Math.abs(offsetY) > 10) {
-          //  $r('app.string.Reduce_brightness') 需要替换为开发者所需的资源文件
-          //  $r('app.string.Increase_brightness') 需要替换为开发者所需的资源文件
-          this.showMessage((offsetY > 0)
-            ? this.context!.resourceManager.getStringSync($r('app.string.Reduce_brightness').id)
-            : this.context!.resourceManager.getStringSync($r('app.string.Increase_brightness').id) )
-          this.currentPosY = newY;
-        };
-      };
-    
-      updateProgress(start: boolean, event: BaseGestureEvent): void {
-        let newX = event.fingerList[0].localX;
-        if (start) {
-          this.currentPosX = newX;
-          //  $r('app.string.Adjust_schedule') 需要替换为开发者所需的资源文件
-          this.showMessage(this.context!.resourceManager
-            .getStringSync($r('app.string.Adjust_schedule').id));
-          return;
-        };
-        let offsetX = newX - this.currentPosX;
-        this.progress = Math.floor(this.progress + offsetX * 10000);
-        this.currentPosX = newX;
-      };
-    
-      build() {
-        Stack({ alignContent: Alignment.Center }) {
-          Column() {
-            Column() {
-              //  $r('app.string.Playback_progress') 需要替换为开发者所需的资源文件
-              Text(this.context!.resourceManager.getStringSync($r('app.string.Playback_progress').id) + this.progress)
-            }
-            .width('100%').height('90%')
-            Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-              Slider({
-                value: this.progress,
-                min: 0,
-                max: this.total,
-                style: SliderStyle.OutSet
-              })
-                .onChange((value: number, mode: SliderChangeMode) => {
-                  this.progress = value;
-                })
-                .id('progress_layer')
-                .onTouchTestDone((event, allRecognizers: Array<GestureRecognizer>) => {
-                  for (let i = 0; i < allRecognizers.length; i++) {
-                    let recognizer = allRecognizers[i];
-                    let inspectorInfo = recognizer.getEventTargetInfo().getId();
-                    if (inspectorInfo !== 'progress_layer') {
-                      // 用户操作到进度条区域时，禁用掉所有非progress_layer上的手势
-                      recognizer.preventBegin();
-                    };
-                  };
-                })
-                .margin({ left: 5 })
-                .trackColor(Color.Red)
-                .blockColor(Color.Yellow)
-                .selectedColor(Color.Orange)
-                .trackThickness(2)
-                .flexShrink(1)
-                .flexGrow(1)
-            }
-            .flexGrow(1)
-            .flexShrink(1)
-            .id('id_progress_view')
-          }
+      this.stopFastForwardTimer();
+    };
+    this.fastForwardTimer = setInterval(() => {
+      this.progress = this.progress + 100000;
+    }, 100);
+  };
+
+  stopFastForwardTimer(): void {
+    if (this.fastForwardTimer == -1) {
+      return;
+    };
+    clearInterval(this.fastForwardTimer);
+    this.fastForwardTimer = -1;
+  };
+
+  showMessage(message: string): void {
+    this.getUIContext().getPromptAction().showToast({ message: message, alignment: Alignment.Center });
+  };
+
+  resetPosInfo(): void {
+    this.currentPosX = 0;
+    this.currentPosY = 0;
+  };
+
+  toggleFullScreenState(): void {
+    this.currentFullScreenState = !this.currentFullScreenState;
+    if (this.currentFullScreenState) {
+      this.currentWidth = '100%';
+      this.currentHeight = '100%';
+    } else {
+      this.currentWidth = '100%';
+      this.currentHeight = '50%';
+    };
+    //  $r('app.string.Play_full_screen') 需要替换为开发者所需的资源文件
+    //  $r('app.string.Exit_play_full_screen') 需要替换为开发者所需的资源文件
+    this.showMessage(this.currentFullScreenState
+      ? this.context!.resourceManager.getStringSync($r('app.string.Play_full_screen').id)
+      : this.context!.resourceManager.getStringSync($r('app.string.Exit_play_full_screen').id));
+  };
+
+  togglePlayAndPause(): void {
+    this.isPlaying = !this.isPlaying;
+    if (!this.isPlaying) {
+      this.stopNormalPlayTimer();
+    } else {
+      // 重新启动
+      this.startNormalPlayTimer();
+    };
+    //  $r('app.string.stop_playing') 需要替换为开发者所需的资源文件
+    //  $r('app.string.Continue_playing') 需要替换为开发者所需的资源文件
+    this.showMessage(this.isPlaying
+      ? this.context!.resourceManager.getStringSync($r('app.string.stop_playing').id)
+      : this.context!.resourceManager.getStringSync($r('app.string.Continue_playing').id));
+  };
+
+  doFastForward(start: boolean): void {
+    if (!start) { // 停止快进，恢复正常播放
+      this.stopFastForwardTimer();
+      this.startNormalPlayTimer();
+      //  $r('app.string.Cancel_FastForwarding') 需要替换为开发者所需的资源文件
+      this.showMessage(
+        this.context!.resourceManager.getStringSync($r('app.string.Cancel_FastForwarding').id));
+      return;
+    };
+
+    this.stopNormalPlayTimer();
+    this.startFastForwardTimer();
+    //  $r('app.string.Start_FastForwarding') 需要替换为开发者所需的资源文件
+    this.showMessage(
+      this.context!.resourceManager.getStringSync($r('app.string.Start_FastForwarding').id));
+  };
+
+  updateBrightness(start: boolean, event: BaseGestureEvent): void {
+    let newY = event.fingerList[0].localY;
+    if (start) {
+      this.currentPosY = newY;
+      //  $r('app.string.Start_adjusting_brightness') 需要替换为开发者所需的资源文件
+      this.showMessage(this.context!.resourceManager
+        .getStringSync($r('app.string.Start_adjusting_brightness').id));
+      return;
+    };
+    let offsetY = newY - this.currentPosY;
+    if (Math.abs(offsetY) > 10) {
+      //  $r('app.string.Reduce_brightness') 需要替换为开发者所需的资源文件
+      //  $r('app.string.Increase_brightness') 需要替换为开发者所需的资源文件
+      this.showMessage((offsetY > 0)
+        ? this.context!.resourceManager.getStringSync($r('app.string.Reduce_brightness').id)
+        : this.context!.resourceManager.getStringSync($r('app.string.Increase_brightness').id))
+      this.currentPosY = newY;
+    };
+  };
+
+  updateProgress(start: boolean, event: BaseGestureEvent): void {
+    let newX = event.fingerList[0].localX;
+    if (start) {
+      this.currentPosX = newX;
+      //  $r('app.string.Adjust_schedule') 需要替换为开发者所需的资源文件
+      this.showMessage(this.context!.resourceManager
+        .getStringSync($r('app.string.Adjust_schedule').id));
+      return;
+    };
+    let offsetX = newX - this.currentPosX;
+    this.progress = Math.floor(this.progress + offsetX * 10000);
+    this.currentPosX = newX;
+  };
+
+  build() {
+    Stack({ alignContent: Alignment.Center }) {
+      Column() {
+        Column() {
+          //  $r('app.string.Playback_progress') 需要替换为开发者所需的资源文件
+          Text(this.context!.resourceManager.getStringSync($r('app.string.Playback_progress').id) + this.progress)
         }
-        .id('video_layer')
-        .backgroundColor('#E0E0E0')
-        .gesture(
-          GestureGroup(GestureMode.Exclusive,
-            PanGesture({ direction: PanDirection.Vertical, distance: 10 })
-              .tag('pan_for_brightness_control')
-              .onActionStart((event) => {
-                this.updateBrightness(true, event);
-              })
-              .onActionUpdate((event) => {
-                this.updateBrightness(false, event);
-              }),
-            PanGesture({ direction: PanDirection.Horizontal, distance: 10 })
-              .tag('pan_for_play_progress_control')
-              .onActionStart((event) => {
-                this.updateProgress(true, event);
-              })
-              .onActionUpdate((event) => {
-                this.updateProgress(false, event);
-              }),
-    
-            LongPressGesture()
-              .tag('long_press_for_fast_forward_control')
-              .onAction(() => {
-                this.doFastForward(true); // 开始快进
-              })
-              .onActionEnd(() => {
-                this.doFastForward(false); // 停止快进
-              })
-              .onActionCancel(() => {
-                this.doFastForward(false);
-              }),
-    
-            TapGesture({ count: 2 })
-              .tag('double_tap_on_video')
-              .onAction(() => {
-                this.toggleFullScreenState();
-              }),
-    
-            TapGesture()
-              .tag('single_tap_on_video')
-              .onAction(() => {
-                this.togglePlayAndPause();
-              })
-          )
-        )
-        .width(this.currentWidth)
-        .height(this.currentHeight)
+        .width('100%').height('90%')
+
+        Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
+          Slider({
+            value: this.progress,
+            min: 0,
+            max: this.total,
+            style: SliderStyle.OutSet
+          })
+            .onChange((value: number, mode: SliderChangeMode) => {
+              this.progress = value;
+            })
+            .id('progress_layer')
+            .onTouchTestDone((event, allRecognizers: Array<GestureRecognizer>) => {
+              for (let i = 0; i < allRecognizers.length; i++) {
+                let recognizer = allRecognizers[i];
+                let inspectorInfo = recognizer.getEventTargetInfo().getId();
+                if (inspectorInfo !== 'progress_layer') {
+                  // 用户操作到进度条区域时，禁用掉所有非progress_layer上的手势
+                  recognizer.preventBegin();
+                };
+              };
+            })
+            .margin({ left: 5 })
+            .trackColor(Color.Blue)
+            .blockColor(Color.Gray)
+            .selectedColor(Color.White)
+            .trackThickness(2)
+            .flexShrink(1)
+            .flexGrow(1)
+        }
+        .flexGrow(1)
+        .flexShrink(1)
+        .id('id_progress_view')
       }
     }
-   ```
+    .id('video_layer')
+    .backgroundColor('#E0E0E0')
+    .gesture(
+      GestureGroup(GestureMode.Exclusive,
+        PanGesture({ direction: PanDirection.Vertical, distance: 10 })
+          .tag('pan_for_brightness_control')
+          .onActionStart((event) => {
+            this.updateBrightness(true, event);
+          })
+          .onActionUpdate((event) => {
+            this.updateBrightness(false, event);
+          }),
+        PanGesture({ direction: PanDirection.Horizontal, distance: 10 })
+          .tag('pan_for_play_progress_control')
+          .onActionStart((event) => {
+            this.updateProgress(true, event);
+          })
+          .onActionUpdate((event) => {
+            this.updateProgress(false, event);
+          }),
 
-   ![Gesure20251119002](figures/Gesure20251119002.gif)
+        LongPressGesture()
+          .tag('long_press_for_fast_forward_control')
+          .onAction(() => {
+            this.doFastForward(true); // 开始快进
+          })
+          .onActionEnd(() => {
+            this.doFastForward(false); // 停止快进
+          })
+          .onActionCancel(() => {
+            this.doFastForward(false);
+          }),
+
+        TapGesture({ count: 2 })
+          .tag('double_tap_on_video')
+          .onAction(() => {
+            this.toggleFullScreenState();
+          }),
+
+        TapGesture()
+          .tag('single_tap_on_video')
+          .onAction(() => {
+            this.togglePlayAndPause();
+          })
+      )
+    )
+    .width(this.currentWidth)
+    .height(this.currentHeight)
+  }
+}
+
+```
+
+![Gesure20251119002](figures/Gesure20251119002.gif)
