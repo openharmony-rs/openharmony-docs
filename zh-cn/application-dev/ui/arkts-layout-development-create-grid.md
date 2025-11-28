@@ -15,7 +15,7 @@ ArkUI提供了[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)容�
 
 > **说明：** 
 >
-> 本文仅展示关键代码片段。
+> 本文仅展示关键代码片段<!--RP2--><!--RP2End-->。
 
 ## 布局与约束
 
