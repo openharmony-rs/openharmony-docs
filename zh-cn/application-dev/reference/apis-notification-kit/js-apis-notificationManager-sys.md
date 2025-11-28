@@ -5876,7 +5876,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 
 | 名称    | 类型     | 只读 | 可选 | 说明                     |
 | ------- | ------- | ---- | ---- | ----------------------- |
-| ringtoneType | [ringtoneType](#ringtonetype21)  |  否  | 否   | 铃声的类型。|
+| ringtoneType | [RingtoneType](#ringtonetype21)  |  否  | 否   | 铃声的类型。|
 | ringtoneTitle | string  |  否  | 是   | 铃声的标题。  |
 | ringtoneFileName | string  |  否  | 是   | 铃声的文件名称。  |
 | ringtoneUri | string  |  否  | 是   | 铃声的URI。  |
