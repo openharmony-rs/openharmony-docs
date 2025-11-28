@@ -610,7 +610,7 @@ The property \'xxx\' must specify a type.
 
 ## 10903329 资源名称使用校验异常
 **错误信息**<br>
-Unknown resouce name \'xxx\'.
+Unknown resource name \'xxx\'.
 
 **错误描述**<br>
 资源名称校验失败。
