@@ -49,7 +49,7 @@
 
 1. 导入机械体设备管理模块。
 
-    <!-- @[import_mechanicManager](https://gitcode.com/dengxiaoyu6/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+    <!-- @[import_mechanicManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
     ```ts
     import { mechanicManager } from '@kit.MechanicKit';
@@ -57,7 +57,7 @@
 
 2. 获取已连接的机械体设备列表。
 
-    <!-- @[get_mechDevices](https://gitcode.com/dengxiaoyu6/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+    <!-- @[get_mechDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
     ```ts
     let savedMechanicIds: number[] = [];
@@ -88,7 +88,7 @@
 
 3. 监听设备的连接状态。
 
-    <!-- @[on_attachStateChange](https://gitcode.com/dengxiaoyu6/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
+    <!-- @[on_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
 
     ```ts
     const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
@@ -109,7 +109,7 @@
 
 4. 处理设备连接与断开的事件。
 
-    <!-- @[handle_device_attached_detached](https://gitcode.com/dengxiaoyu6/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
+    <!-- @[handle_device_attached_detached](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
 
     ```ts
     function handleDeviceAttached(mechInfo: mechanicManager.MechInfo) {
@@ -127,7 +127,7 @@
 
 5. 取消监听操作。
 
-    <!-- @[off_attachStateChange](https://gitcode.com/dengxiaoyu6/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
+    <!-- @[off_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
 
     ```ts
     // 取消特定回调的监听
@@ -140,7 +140,7 @@
 
 1. 查询设备当前状态及其限制条件。
 
-    <!-- @[get_devices_status_limits](https://gitcode.com/dengxiaoyu6/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+    <!-- @[get_devices_status_limits](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
     ```ts
     try {
@@ -185,14 +185,14 @@
 
 2. 执行相对角度的旋转控制，以调整设备的位置。
 
-    <!-- @[rotate_before_enabled_tracking](https://gitcode.com/dengxiaoyu6/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+    <!-- @[rotate_before_enabled_tracking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
     ```ts
     //在执行转动控制之前，需要先关闭跟踪拍摄功能。
     mechanicManager.setCameraTrackingEnabled(false);
     ```
 
-    <!-- @[rotate_relative_angles](https://gitcode.com/dengxiaoyu6/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+    <!-- @[rotate_relative_angles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
     ```ts
     //在执行转动控制之前，需要先关闭跟踪拍摄功能。
@@ -253,7 +253,7 @@
 
 3. 以指定速度持续转动，直至任务完成。
 
-    <!-- @[rotate_by_speed](https://gitcode.com/dengxiaoyu6/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+    <!-- @[rotate_by_speed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
     ```ts
     async function rotateBySpeed() {
@@ -290,7 +290,7 @@
 
 4. 监听旋转轴状态变化。
 
-    <!-- @[on_rotationAxesStatusChange](https://gitcode.com/dengxiaoyu6/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+    <!-- @[on_rotationAxesStatusChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
     ```ts
     const rotationAxesCallback = (info: mechanicManager.RotationAxesStateChangeInfo) => {
@@ -314,7 +314,7 @@
 
 5. 停止设备运动。
 
-    <!-- @[stop_device_moving](https://gitcode.com/dengxiaoyu6/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+    <!-- @[stop_device_moving](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
     ```ts
     async function stopDeviceMoving() {
