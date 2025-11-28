@@ -3759,7 +3759,7 @@ export default class EntryAbility extends UIAbility {
 
 setRotationLocked(locked: boolean): Promise&lt;void&gt;
 
-为当前窗口设置旋转锁定，锁定后禁用旋转，未锁定受主窗口显示方向、旋转锁定按钮、sensor旋转影响，仅支持[系统窗口](../../windowmanager/window-terminology.md#系统窗口)，非系统窗口调用返回1300029错误码。使用Promise异步回调。
+仅支持[系统窗口](../../windowmanager/window-terminology.md#系统窗口)设置旋转锁定，锁定后系统窗口显示方向不变，未锁定时系统窗口显示方向受主窗口显示方向、旋转锁定按钮、sensor旋转影响。非系统窗口调用返回1300029错误码。使用Promise异步回调。
 
 > **说明：**
 >
@@ -3770,8 +3770,6 @@ setRotationLocked(locked: boolean): Promise&lt;void&gt;
 > - 如果在锁定期间应用调用[setOrientation()](./js-apis-screen-sys.md#setorientation)设置屏幕方向，忽略该次屏幕方向设置。
 >
 > - 解除锁定时，根据主窗口的显示方向属性[setPreferredOrientation()](./arkts-apis-window-Window.md#setpreferredorientation9)、sensor方向等决定应用显示方向，具体见[窗口旋转简介](../../windowmanager/window-rotation.md#窗口旋转简介)。
->
-> - 不影响三折叠手机M态和G态之间切换，窗口orientation和屏幕rotation映射关系发生变化导致的旋转，具体见[窗口的orientation和屏幕rotation的关系](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section11774145414383)。
 >
 > - 不影响应用[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)orientation属性设置的启动方向。
 
@@ -3823,7 +3821,7 @@ promise.then(() => {
 
 getRotationLocked(): boolean
 
-获取当前窗口的旋转锁定状态，仅支持[系统窗口](../../windowmanager/window-terminology.md#系统窗口)，非系统窗口调用返回1300029错误码。
+仅支持[系统窗口](../../windowmanager/window-terminology.md#系统窗口)获取当前旋转锁定状态。非系统窗口调用返回1300029错误码。
 
 **系统接口：** 此接口为系统接口。
 
