@@ -32,7 +32,9 @@ A glTF model can contain key elements of a 3D scene, including the light, camera
 
   2. Load scene resources.
 
-     ArkGraphics 3D provides **Scene.load()** to load glTF model files. It supports .gltf and .glb formats, with .glb being a binary format that is content-equivalent to .gltf but more efficient for loading and usage. The **$rawfile()** function is used to read resource files from the **resources/rawfile/** directory of your application. Upon successful model loading, a scene instance is returned, allowing for the creation of components like cameras and lighting.
+     ArkGraphics 3D provides **Scene.load()** to load glTF model files. Upon successful model loading, a scene instance is returned, allowing for the creation of components like cameras and lighting. The API supports model files in .gltf and .glb formats, with .glb being a binary format that is content-equivalent to .gltf but more efficient for loading and usage. It provides two methods for loading models: relative path loading using $rawfile() to read built-in resource files from the **resources/rawfile/** directory of the application, and absolute path loading from the application sandbox directory. The API supports only accessing sandbox files created or written by the application itself. For specific examples, see [load()](../reference/apis-arkgraphics3d/js-apis-inner-scene.md#load).
+     
+     The following example demonstrates loading a .glb model using a relative path:
 
      <!-- @[model_load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
      

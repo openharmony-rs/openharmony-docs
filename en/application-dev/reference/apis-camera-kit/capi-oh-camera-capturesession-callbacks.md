@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct CaptureSession_Callbacks {...} CaptureSession_Callbacks
+```
+
 ## Overview
 
 The struct describes the callbacks related to a capture session.

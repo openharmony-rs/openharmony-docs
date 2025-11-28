@@ -34,7 +34,7 @@
   - [Pressure Management (ArkTS)](camera-system-pressure.md)
   - [Camera Controller (ArkTS)](camera-control-center.md)
   - [Macro Photography Settings (ArkTS)](camera-macro.md)
-  - [Multi-Camera Concurrent Mode (ArkTS)](camera-concurrent-open.md)
+  - [Multi-Camera Concurrent Mode (ArkTS)](camera-concurrent-open.md)<!--RP1--><!--RP1End-->
   <!--Del-->
   - [High-Performance Photo Capture (for System Applications Only) (ArkTS)](camera-deferred-photo-sys.md)
   - [Practices for High-Performance Photo Capture (for System Applications Only) (ArkTS)](camera-deferred-photo-case-sys.md)
@@ -57,4 +57,4 @@
   - [Using the Flashlight (C/C++)](native-camera-torch-use.md)
   - [Pressure Management (C/C++)](native-camera-system-pressure.md)
   - [Macro Photography Settings (C/C++)](native-camera-macro.md)
-  - [Multi-Camera Concurrent Mode (C/C++)](native-camera-concurrent-open.md)
+  - [Multi-Camera Concurrent Mode (C/C++)](native-camera-concurrent-open.md)<!--RP2--><!--RP2End-->

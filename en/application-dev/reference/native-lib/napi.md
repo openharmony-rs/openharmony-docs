@@ -181,6 +181,8 @@ The APIs exported from the native Node-API library feature usage and behaviors b
 |FUNC|node_api_get_module_file_name|Obtains the absolute path of the location, from which the addon is loaded.|11|
 |FUNC|napi_add_finalizer|Adds a **napi_finalize** callback, which will be called when the JS object in **js_Object** is garbage-collected.|11|
 |FUNC|napi_fatal_exception|Throws **UncaughtException** to JS.|12|
+|FUNC|napi_create_external_string_utf16 | Creates an ArkTS string from an external UTF-16 encoded string buffer, without performing memory copy operations.|22|
+|FUNC|napi_create_external_string_ascii | Creates an ArkTS string from an external ASCII encoded string buffer, without performing memory copy operations.|22|
 
 ## Differences Between the Exported Symbols and the Symbols in the Native Library
 
@@ -683,6 +685,18 @@ For ease of description, the symbol exported to OpenHarmony is referred to as "e
 
 - If **length** is too large, the native symbol throws an exception and interrupts the process. OpenHarmony attempts to allocate memory. If the memory allocation fails, an exception is thrown and **undefined** is returned.
 
+### napi_create_external_string_utf16
+
+**Parameters**
+
+- The standard library includes an additional parameter **copied** to specify whether the string content should be copied. However, this parameter is not supported in OpenHarmony, and the string content is never copied.
+
+### napi_create_external_string_ascii
+
+**Parameters**
+
+- The standard library includes an additional parameter **copied** to specify whether the string content should be copied. However, this parameter is not supported in OpenHarmony, and the string content is never copied.
+
 ## Symbols Not Exported from the Node-API Library
 
 |Symbol Type|Symbol|Description|
@@ -723,6 +737,9 @@ For ease of description, the symbol exported to OpenHarmony is referred to as "e
 |FUNC|napi_create_ark_context|Creates a new runtime context environment.|20|
 |FUNC|napi_switch_ark_context|Switches to the specified runtime context environment.|20|
 |FUNC|napi_destroy_ark_context|Destroys a context environment created by **napi_create_ark_context**.|20|
+|FUNC|napi_create_strong_sendable_reference|Creates a Sendable strong reference to a Sendable ArkTS object.|22|
+|FUNC|napi_delete_strong_sendable_reference|Deletes a Sendable strong reference.|22|
+|FUNC|napi_get_strong_sendable_reference_value|Obtains the ArkTS object value associated with a Sendable strong reference.|22|
 
 > **NOTE**
 >
@@ -1473,7 +1490,6 @@ napi_status napi_create_ark_context(napi_env env, napi_env* newEnv);
 Creates a new runtime context environment.
 
 Note the following when using this API:
-
 1. Only new context environments created through the initial context environment are supported. It is prohibited to create new context environments using the context environment created by this API.
 2. Currently, this API cannot be called on ArkTS threads that are not the main thread.
 3. Before calling this API, ensure that the current context environment is normal. Otherwise, the API call fails.
@@ -1500,7 +1516,6 @@ napi_status napi_switch_ark_context(napi_env env)
 **Description**
 
 Switches to the specified runtime context environment. Note the following when using this API:
-
 1. Currently, this API does not support calls in ArkTS threads that are not the main thread.
 2. Before calling this API, ensure that the current context environment is normal. Otherwise, the API call fails.
 
@@ -1521,7 +1536,6 @@ napi_status napi_destroy_ark_context(napi_env env)
 **Description**
 
 Destroys a context environment created by **napi_create_ark_context**. Note the following when using this API:
-
 1. Currently, this API does not support calls in ArkTS threads that are not the main thread.
 2. This API can only be used to destroy runtime context environments created by calling **napi_create_ark_context**.
 3. You cannot use this API to destroy a context environment that is currently in use.
@@ -1557,5 +1571,94 @@ Called when the lifecycle of a Node-API object ends.
 **Return value**
 
 - **void**: no return value.
+
+### **napi_finalize_callback** Description
+
+```cpp
+typedef void (*napi_finalize_callback)(void* finalize_data,
+                                       void* finalize_hint);
+```
+
+**Description**
+
+Called when the lifecycle of an ArkTS string object created by calling **napi_create_external_string_utf16** or **napi_create_external_string_ascii** ends.
+
+**Parameters**
+
+- **finalize_data**: pointer to the user data to be cleared.
+
+- **finalize_hint**: context hint, which is used to assist the clear process.
+
+**Return value**
+
+- **void**: no return value.
+
+### napi_create_strong_sendable_reference
+
+```cpp
+napi_status napi_create_strong_sendable_reference(napi_env env,
+                                                  napi_value value,
+                                                  napi_sendable_ref* result);
+```
+
+**Description**
+
+Creates a Sendable strong reference to a Sendable ArkTS object. Note the following when using this API:
+1. **napi_sendable_ref** can be created only for [Sendable objects](../../arkts-utils/arkts-sendable.md#sendable-data-types).
+2. **napi_sendable_ref** can be used across ArkTS threads. When performing multithreaded operations, the caller must manage the release timing to avoid issues related to using after release.
+3. Within the same process, a maximum of 51200 **napi_sendable_ref** instances can coexist.
+
+**Parameters**
+
+- **env**: environment, in which the API is invoked.
+- **value**: Sendable ArkTS object to be referenced.
+- **result**: created Sendable strong reference.
+
+**Return value**
+
+**napi_ok** if the operation is successful.
+
+### napi_delete_strong_sendable_reference
+
+```cpp
+napi_status napi_delete_strong_sendable_reference(napi_env env, napi_sendable_ref ref);
+```
+
+**Description**
+
+Deletes a Sendable strong reference. Note the following when using this API:
+1. Do not forcibly cast other reference types (such as **napi_ref** or **napi_strong_ref**) to **napi_sendable_ref** for use with this API. **napi_delete_strong_sendable_reference** accepts only **napi_sendable_ref** created by calling **napi_create_strong_sendable_reference**.
+
+**Parameters**
+
+- **env**: environment, in which the API is invoked.
+- **ref**: reference to be deleted.
+
+**Return value**
+
+**napi_ok** if the operation is successful.
+
+### napi_get_strong_sendable_reference_value
+
+```cpp
+napi_status napi_get_strong_sendable_reference_value(napi_env env,
+                                                     napi_sendable_ref ref,
+                                                     napi_value* result);
+```
+
+**Description**
+
+Obtains the ArkTS object value associated with a Sendable strong reference. Note the following when using this API:
+1. Do not forcibly cast other reference types (such as **napi_ref** or **napi_strong_ref**) to **napi_sendable_ref** for use with this API. **napi_get_strong_sendable_reference_value** accepts only **napi_sendable_ref** created by calling **napi_create_strong_sendable_reference**.
+
+**Parameters**
+
+- **env**: environment, in which the API is invoked.
+- **ref**: Sendable strong reference.
+- **result**: Sendable ArkTS object obtained from **ref**.
+
+**Return value**
+
+**napi_ok** if the operation is successful.
 
 <!--no_check-->
