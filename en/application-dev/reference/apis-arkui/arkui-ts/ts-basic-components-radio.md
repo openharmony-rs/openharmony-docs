@@ -4,7 +4,7 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Radio** component allows users to select from a set of mutually exclusive options.
 
@@ -78,6 +78,7 @@ checked(value: boolean)
 Sets whether the radio button is selected.
 
 Since API version 10, this attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).
+
 Since API version 18, this attribute supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
@@ -240,7 +241,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type   | Read Only| Optional |  Description             |
+| Name | Type   | Read-Only| Optional |  Description             |
 | ------ | ------ |-------------------------------- |-------------------------------- |-------------------------------- |
 | value | string | No| No|Current value of the radio button.|
 | checked | boolean| No| No| Whether the radio button is selected.<br>Default value: **false**<br>**true**: The radio button is selected. **false**: The radio button is not selected.|

@@ -63,7 +63,7 @@ Describes the error information.
 
 ## SoundPool
 
-Implements a sound pool that provides APIs for loading, unloading, playing, and stopping playing system sounds, setting the volume, and setting the number of loops. Before using these APIs, you must call [createSoundPool](arkts-apis-media-f.md#mediacreatesoundpool10) to create a SoundPool instance.
+Implements a sound pool that provides APIs for loading, unloading, playing, and stopping playing system sounds, setting the volume, and setting the number of loops. Before using these APIs, you must call [media.createSoundPool](arkts-apis-media-f.md#mediacreatesoundpool10) to create a SoundPool instance.
 
 > **NOTE**
 >
@@ -171,7 +171,7 @@ This API cannot be used to load resources in the **rawfile** directory. Instead,
 
 | Type          | Description                                      |
 | -------------- | ------------------------------------------ |
-| Promise\<number> | Promise used to return the sound ID. A valid value must be greater than 0.|
+| Promise\<number> | Promise used to return the sound ID. A valid value must be greater than 0|
 
 **Error codes**
 
@@ -362,7 +362,7 @@ Loads a sound. This API uses a promise to obtain the sound ID. The input paramet
 
 | Type            | Description                            |
 | ---------------- | -------------------------------- |
-| Promise\<number> | Promise used to return the sound ID. A valid value must be greater than 0.|
+| Promise\<number> | Promise used to return the sound ID. A valid value must be greater than 0|
 
 **Error codes**
 
@@ -596,7 +596,7 @@ Plays a sound and obtains the stream ID. This API uses a promise to return the r
 
 | Type            | Description                            |
 | ---------------- | -------------------------------- |
-| Promise\<number> | Promise used to return the audio stream ID. A valid value must be greater than 0.|
+| Promise\<number> | Promise used to return the audio stream ID. A valid value must be greater than 0|
 
 **Error codes**
 

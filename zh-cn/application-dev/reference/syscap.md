@@ -1,5 +1,12 @@
 # 系统能力SystemCapability使用指南
 
+<!--Kit: Common-->	
+<!--Subsystem: Common-->	
+<!--Owner: @RayShih-->	
+<!--Designer: @RayShih-->	
+<!--Tester: @RayShih-->	
+<!--Adviser: @RayShih-->
+
 ## 概述
 
 ### 系统能力与 API
@@ -117,7 +124,7 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
   - 方法2：开发者可通过import的方式将模块导入，若当前设备不支持该模块，import的结果为undefined，开发者在使用其API时，需要判断其是否存在。
 
 	```ts
-	import geolocationManager from '@ohos.geoLocationManager';
+	import { geoLocationManager } from '@kit.LocationKit';
 
 	try {
 	geolocationManager.getCurrentLocation((location) => {
@@ -152,7 +159,7 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
 以下示例通过人脸识别功能进行举例：
 
 ```ts
-import userAuth from '@ohos.userIAM.userAuth';
+import { userAuth } from '@kit.UserAuthenticationKit';
 
 const authParam : userAuth.AuthParam = {
   challenge: new Uint8Array(),

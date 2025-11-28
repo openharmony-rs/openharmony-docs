@@ -290,7 +290,7 @@ console.info("result:", result); // result: 5
 
 getIndexOf(element: T): number
 
-查找指定元素第一次出现的下标值，查找失败返回-1。
+查找指定元素第一次出现的位置，查找失败返回-1。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

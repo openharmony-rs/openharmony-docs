@@ -1,4 +1,10 @@
 # State Management with Application-level Variables (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zzq212050299-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The state management module provides data storage, persistent data management, UIAbility data storage, and environment state required by applications.
@@ -257,7 +263,7 @@ Notifies subscribers that the property value has changed.
 
 |Name  |Type  |Mandatory  |Description  |
 |---------|-----------|------------|--------------|
-|newValue   |T   |Yes  |New value of the property.    |
+|newValue   |T   |Yes  |Instance of the T type.    |
 
 ### get
 
@@ -271,7 +277,7 @@ Obtains the current value of the property.
 
 |Type  |Description    |
 |------|------------|
-|T   |Current value of the property.   |
+|T   |Instance of the T type.   |
 
 ### set
 
@@ -285,7 +291,7 @@ Sets a new value for the property.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|newValue   |T   |Yes  |New value to set for the property.   |
+|newValue   |T   |Yes  |Instance of the T type.   |
 
 ## SyncedPropertyOneWay\<T\>
 
@@ -305,7 +311,7 @@ Value used for one-way binding.
 
 private source_;
 
-Data source for the one-way synchronized property.
+Data source for the two-way synchronized property.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -323,7 +329,7 @@ Constructor.
 |---------|-----------|------------|--------------|
 |source   |[SubscribedAbstractProperty\<T\>](#subscribedabstractpropertyt)   |Yes  |Data source for the one-way synchronized property.   |
 |subscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |No  |Subscriber.  |
-|info  |string   |No  |Additional information of the subscriber.  |
+|info  |string   |No  |Additional information about the subscriber.  |
 
 ### aboutToBeDeleted
 
@@ -351,7 +357,7 @@ Notifies subscribers that the property value has changed.
 
 |Name  |Type  |Mandatory  |Description  |
 |---------|-----------|------------|--------------|
-|newValue   |T   |Yes  |New value of the property.    |
+|newValue   |T   |Yes  |Instance of the T type.    |
 
 ### get
 
@@ -365,7 +371,7 @@ Obtains the current value of the property.
 
 |Type  |Description    |
 |------|------------|
-|T   |Current value of the property.   |
+|T   |Instance of the T type.   |
 
 ### set
 
@@ -379,7 +385,7 @@ Sets a new value for the property.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|newValue   |T   |Yes  |New value to set for the property.   |
+|newValue   |T   |Yes  |Instance of the T type.   |
 
 ## ISinglePropertyChangeSubscriber\<T\>
 
@@ -399,7 +405,7 @@ Notifies subscribers that the property value has changed.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|newValue   |T   |Yes  |New value of the property.   |
+|newValue   |T   |Yes  |Instance of the T type.   |
 
 ## SubscribaleAbstract
 

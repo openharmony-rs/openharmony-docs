@@ -21,7 +21,7 @@
       // 自定义主题色
       brand: ResourceColor = '#FF75D9';
       // 使用$r，让一级警示色在深色和浅色模式下，设置为不同的颜色
-      warning: ResourceColor = $r('app.color.start_window_background');
+      warning: ResourceColor = $r('sys.color.ohos_id_color_warning');
     }
 
     export class AppTheme implements CustomTheme {
@@ -70,7 +70,7 @@
                       .checked(true)
                   }
                   .width('50%')
-
+    
                   Column() {
                     Text('Dark')
                       .fontSize('16fp')
@@ -135,18 +135,15 @@
                 Text('Warning')
                   .width('100%')
                   .margin({ top: '5vp', left: '14fp' })
-                Button() {
-                  Text('Text')
-                    .fontSize(30)
-                    .fontWeight(FontWeight.Bold)
-                }
-                .type(ButtonType.Capsule)
-                .role(ButtonRole.ERROR)
-                .width('40%')
+                Button('Text')
+                  .type(ButtonType.Capsule)
+                  .role(ButtonRole.ERROR)
+                  .width('40%')
               }
               .width('100%')
               .height('70vp')
               .borderRadius('10vp')
+              .backgroundColor(this.menuItemColor)
             }
           }
         }

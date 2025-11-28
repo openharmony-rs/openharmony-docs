@@ -4,7 +4,7 @@
 <!--Owner: @zzs_911-->
 <!--Designer: @stupig001-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Screen capture is mainly used to record the main screen.
 
@@ -309,7 +309,7 @@ static napi_value StopScreenCapture(napi_env env, napi_callback_info info) {
         int32_t retRelease = OH_AVScreenCapture_Release(capture);
         capture = nullptr;
     }
-
+    // Return the call result. In the example, only a random number is returned.
     napi_value sum;
     napi_create_double(env, 5, &sum);
 

@@ -7,13 +7,13 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
-You can call the ArkTS APIs of DRM Kit to implement digital copyright protection features such as DRM certificate management, DRM license management, DRM content authorization, and DRM content decryption.
+DRM Kit provides ArkTS APIs for comprehensive digital rights management, covering certificate management, license management, content authorization, and content decryption.
 
-DRM Kit provides MediaKeySystem to manage DRM certificates, DRM licenses, and MediaKeySession instances. MediaKeySession is responsible for authorizing DRM content and can work with Media Kit or AVCodec Kit to decrypt the DRM content, thereby enabling playback of DRM-protected content.
+Its implementation is built around two core classes: MediaKeySystem and MediaKeySession. MediaKeySystem handles system-level management of DRM certificates and licenses, as well as the lifecycle of MediaKeySession instances. MediaKeySession, in turn, is responsible for authorizing specific content and enabling its decryption through integration with Media Kit or AVCodec Kit for playback.
 
 ## How to Develop
 
-Read [DRM](../../reference/apis-drm-kit/arkts-apis-drm.md) for the API reference.
+For details on the APIs, see [DRM API](../../reference/apis-drm-kit/arkts-apis-drm.md).
 
 1. Import the DRM Kit module.
 
@@ -21,7 +21,7 @@ Read [DRM](../../reference/apis-drm-kit/arkts-apis-drm.md) for the API reference
    import { drm } from '@kit.DrmKit';
    ```
 
-2. Import the BusinessError module to capture error codes from the DRM Kit APIs.
+2. Import the BusinessError module to handle error codes from DRM Kit APIs.
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -33,15 +33,15 @@ Read [DRM](../../reference/apis-drm-kit/arkts-apis-drm.md) for the API reference
    let description: drm.MediaKeySystemDescription[] = drm.getMediaKeySystems();
    ```
 
-   If the returned array is empty, no DRM solution is supported by the device.
+   If the returned array is empty, no supported DRM solutions are available on the device.
 
-4. (Optional) Call [isMediaKeySystemSupported](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmismediakeysystemsupported) to check whether the device supports the specified DRM solution based on the name, MIME type, and content protection level.
+4. (Optional) Call [isMediaKeySystemSupported](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmismediakeysystemsupported) to check whether the device supports a specific DRM solution based on the name, MIME type, and content protection level.
 
    ```ts
    let isSupported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm", "video/mp4", drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
    ```
 
-   The value **false** means that the device does not support the specified DRM solution.
+   If the return value is **false**, the device does not support the specified DRM solution.
 
 5. Call [createMediaKeySystem](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmcreatemediakeysystem) to create a MediaKeySystem instance.
 
@@ -49,11 +49,11 @@ Read [DRM](../../reference/apis-drm-kit/arkts-apis-drm.md) for the API reference
    let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
    ```
 
-   If the creation fails, **undefined** is returned, indicating that the device does not support the DRM solution.
+   If the creation fails, **undefined** is returned, indicating that the device does not support this DRM solution.
 
 6. (Optional) Call [on('keySystemRequired')](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#onkeysystemrequired) to set a MediaKeySystem status listener.
 
-   Register the keySystemRequired callback to listen for DRM certificate request events. This event is triggered when the device needs a DRM certificate. You are advised to complete the certificate request and handling process at this point.
+   Register the **keySystemRequired** callback to listen for DRM certificate request events. This event is triggered when a DRM certificate is needed. Complete the certificate request and handling process at this point.
 
    ```ts
    mediaKeySystem.on('keySystemRequired', (eventInfo: drm.EventInfo) => {
@@ -70,7 +70,7 @@ Read [DRM](../../reference/apis-drm-kit/arkts-apis-drm.md) for the API reference
 
 8. (Optional) Call [generateKeySystemRequest](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#generatekeysystemrequest) and [processKeySystemResponse](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#processkeysystemresponse) to generate a DRM certificate request and process its response.
 
-   If the DRM certificate is not in the drm.CertificateStatus.CERT_STATUS_PROVISIONED state, generate a DRM certificate request and process its response.
+   If the DRM certificate status is not **drm.CertificateStatus.CERT_STATUS_PROVISIONED**, generate a DRM certificate request and process its response.
 
    ```ts
    if(certificateStatus != drm.CertificateStatus.CERT_STATUS_PROVISIONED) {
@@ -82,8 +82,8 @@ Read [DRM](../../reference/apis-drm-kit/arkts-apis-drm.md) for the API reference
    } else {
        console.info("The certificate already exists.");
    }
-   // Send drmRequest.data returned by the DRM certificate request to the DRM certificate service through a network request to obtain a response and process the response.
-   let provisionResponseByte = new Uint8Array([0x00, 0x00, 0x00, 0x00]); // Response to the DRM certificate request.
+   // Send drmRequest.data returned by the DRM certificate request to the DRM certificate service through a network request and process the response.
+   let provisionResponseByte = new Uint8Array([0x00, 0x00, 0x00, 0x00]); // Example response data.
    mediaKeySystem.processKeySystemResponse(provisionResponseByte).then(() => {
        console.info("processKeySystemResponse success");
    }).catch((err:BusinessError) =>{
@@ -99,11 +99,11 @@ Read [DRM](../../reference/apis-drm-kit/arkts-apis-drm.md) for the API reference
    let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
    ```
 
-10. (Optional) Set a MediaKeySession status listener.
+10. (Optional) Set MediaKeySession status listeners.
 
-    Listen for events of the MediaKeySession instance, including media key request events, media key expiration events, media key validity period update events, and media key change events.
+    Listen for MediaKeySession instance events, including media key request, expiration, validity period updates, and change events.
 
-    - Call [on('keyRequired')](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#onkeyrequired) to listen for media key request events. You are advised to complete the media key request and handling process at this point.
+    - Call [on('keyRequired')](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#onkeyrequired) to listen for media key request events. Complete the media key request and handling process at this point.
 
       ```ts
       mediaKeySession.on('keyRequired', (eventInfo: drm.EventInfo) => {
@@ -151,12 +151,12 @@ Read [DRM](../../reference/apis-drm-kit/arkts-apis-drm.md) for the API reference
 
 12. Call [generateMediaKeyRequest](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#generatemediakeyrequest) and [processMediaKeyResponse](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#processmediakeyresponse) to generate a media key request and process its response.
 
-    After obtaining the DRM information of the DRM content, generate a media key request and process its response to request a license for DRM content authorization.
+    When DRM information is obtained from protected content, generate a media key request and process its response to acquire a license for content authorization.
 
     ```ts
-    // Generate initData based on PSSH in the DRM information as required by the DRM solution.
+    // Use PSSH data from the DRM information to generate initData.
     let initData = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
-    // Set optional data based on the DRM solution.
+    // Set optional data.
     let optionalData:drm.OptionsData[] = [{
         name: "optionalDataName",
         value: "optionalDataValue"
@@ -164,8 +164,8 @@ Read [DRM](../../reference/apis-drm-kit/arkts-apis-drm.md) for the API reference
     // Request and response for an online media key.
     mediaKeySession.generateMediaKeyRequest("video/mp4", initData, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData).then(async (licenseRequest: drm.MediaKeyRequest) => {
        console.info("generateMediaKeyRequest success", licenseRequest.mediaKeyRequestType, licenseRequest.data, licenseRequest.defaultURL);
-       // Send licenseRequest.data returned by the media key request to the DRM service through a network request to obtain a media key response and process the response.
-       let licenseResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]); // Media key response.
+       // Send licenseRequest.data returned by the media key request to the DRM service through a network request and process the response.
+       let licenseResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]); // Example response data.
        mediaKeySession.processMediaKeyResponse(licenseResponse).then((mediaKeyId: Uint8Array) => {
          console.info("processMediaKeyResponse success");
        }).catch((err:BusinessError) =>{
@@ -178,8 +178,8 @@ Read [DRM](../../reference/apis-drm-kit/arkts-apis-drm.md) for the API reference
     let offlineMediaKeyId: Uint8Array;
     mediaKeySession.generateMediaKeyRequest("video/mp4", initData, drm.MediaKeyType.MEDIA_KEY_TYPE_OFFLINE, optionalData).then((licenseRequest: drm.MediaKeyRequest) => {
        console.info("generateMediaKeyRequest success", licenseRequest.mediaKeyRequestType, licenseRequest.data, licenseRequest.defaultURL);
-       // Send licenseRequest.data returned by the media key request to the DRM service through a network request to obtain a media key response and process the response.
-       let licenseResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]); // Media key response.
+       // Send licenseRequest.data returned by the media key request to the DRM service through a network request and process the response.
+       let licenseResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]); // Example response data.
        mediaKeySession.processMediaKeyResponse(licenseResponse).then((mediaKeyId: Uint8Array) => {
          offlineMediaKeyId = new Uint8Array(mediaKeyId);
          console.info("processMediaKeyResponse success");
@@ -213,7 +213,7 @@ Read [DRM](../../reference/apis-drm-kit/arkts-apis-drm.md) for the API reference
     }
     ```
 
-15. (Optional) Call [getOfflineMediaKeyIds](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#getofflinemediakeyids) to obtain the IDs of offline media keys, call [getOfflineMediaKeyStatus](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#getofflinemediakeystatus) to obtain their status, and call [clearOfflineMediaKeys](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#clearofflinemediakeys) to clear the keys.
+15. (Optional) Call [getOfflineMediaKeyIds](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#getofflinemediakeyids) to obtain the IDs of offline media keys, call [getOfflineMediaKeyStatus](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#getofflinemediakeystatus) to obtain their status, and call [clearOfflineMediaKeys](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#clearofflinemediakeys) to remove them.
 
     The media key ID is used for offline media key management.
 
@@ -235,7 +235,7 @@ Read [DRM](../../reference/apis-drm-kit/arkts-apis-drm.md) for the API reference
 
 16. Destroy the MediaKeySession instance.
 
-    Destroy the MediaKeySession instance when the encrypted content is decrypted and the instance is no longer needed.
+    Destroy the MediaKeySession instance when decryption is complete and the instance is no longer needed.
 
     ```ts
     // Release resources when the MediaKeySession instance is no longer needed.
@@ -244,7 +244,7 @@ Read [DRM](../../reference/apis-drm-kit/arkts-apis-drm.md) for the API reference
 
 17. Destroy the MediaKeySystem instance.
 
-    Destroy the MediaKeySystem instance when it is no longer needed.
+    Destroy the MediaKeySystem instance when DRM operations are complete and the instance is no longer needed.
 
     ```ts
     // Release resources when the MediaKeySystem instance is no longer needed.

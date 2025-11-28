@@ -35,6 +35,8 @@ class EntryAbility extends AccessibilityExtensionAbility {
 Sets the parameter for a specific operation when the accessibility node element executes this operation.
 For details, see [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction).
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 | Name                 | Type    | Read-Only |Optional| Description                               |
@@ -42,7 +44,7 @@ For details, see [AccessibilityAction](./js-apis-accessibility-sys.md#accessibil
 | setText             | string | No  |Yes|Text content of the component.                |
 | selectTextBegin     | string | No | Yes|Start coordinate of the selected text in the component, for example, **'2'**.       |
 | selectTextEnd       | string | No  | Yes|End coordinate of the selected text in the component, for example, **'8'**.     |
-| selectTextInForWard | bool   | No   | Yes|Whether to select the text within the component forward, for example, **true**.     |
+| selectTextInForWard | boolean   | No   | Yes|Whether to forward select the text within the component. The value **true** indicates to forward select the text, and the value **false** indicates the opposite.     |
 | offset              | string | No  | Yes|Cursor offset, for example, **'1'**.   |
 | spanId              | string | No  |Yes|ID of the hyperlink wrapped by the span tag.               |
 | scrollType          | string | No  | Yes|Scroll type of the component. The options are **'fullScreen'** and **'halfScreen'**.|
@@ -107,24 +109,56 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID  | Error Message                                    |
 | ------- | ---------------------------------------- |
-| 201 | Permission denied. Interface caller does not have permission. |
+| 201 | The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```ts
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import Want from '@kit.AbilityKit';
 
-let want: Want = {
-  bundleName: 'com.huawei.hmos.photos',
-  abilityName: 'com.huawei.hmos.photos.MainAbility'
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    let want: Want = {
+      bundleName: 'com.huawei.hmos.photos',
+      abilityName: 'com.huawei.hmos.photos.MainAbility'
+    }
+
+    this.context.startAbility(want).then(() => {
+      console.info(`startAbility Succeeded enable ability`);
+    }).catch((err: BusinessError) => {
+      console.error(`startAbility failed to enable ability, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
 }
-
-axContext.startAbility(want).then(() => {
-  console.info(`startAbility Succeeded enable ability`);
-}).catch((err: BusinessError) => {
-  console.error(`startAbility failed to enable ability, Code is ${err.code}, message is ${err.message}`);
-});
 ```
 
 ## AccessibilityExtensionContext.getElements<sup>18+</sup>
@@ -160,17 +194,48 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityElement } from '@kit.AccessibilityKit';
+import {
+  AccessibilityElement,
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let windowId: number = 10;
-let elementId: number = 10;
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
 
-axContext.getElements(windowId, elementId).then((data:AccessibilityElement[]) => {
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
-});
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    let windowId: number = 10;
+    let elementId: number = 10;
+
+    this.context.getElements(windowId, elementId).then((data:AccessibilityElement[]) => {
+      console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+    }).catch((err: BusinessError) => {
+      console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
 ```
 
 ## AccessibilityExtensionContext.getDefaultFocusedElementIds<sup>18+</sup>
@@ -205,16 +270,46 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityElement } from '@kit.AccessibilityKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let windowId: number = 10;
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
 
-axContext.getDefaultFocusedElementIds(windowId).then((data: number[]) => {
-  console.info(`Succeeded in get default focus, ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to get default focus, Code is ${err.code}, message is ${err.message}`);
-});
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    let windowId: number = 10;
+
+    this.context.getDefaultFocusedElementIds(windowId).then((data: number[]) => {
+      console.info(`Succeeded in get default focus, ${JSON.stringify(data)}`);
+    }).catch((err: BusinessError) => {
+      console.error(`failed to get default focus, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
 ```
 
 ## AccessibilityExtensionContext.holdRunningLockSync<sup>20+</sup>
@@ -239,13 +334,42 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-try {
-  axContext.holdRunningLockSync();
-} catch (err) {
-  console.error(`Failed to hold RunningLock, Code is ${err.code}, message is ${err.message}`);
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      this.context.holdRunningLockSync();
+    } catch (err) {
+      console.error(`Failed to hold RunningLock, Code is ${err.code}, message is ${err.message}`);
+    }
+  }
 }
 ```
 
@@ -271,13 +395,42 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-try {
-  axContext.unholdRunningLockSync();
-} catch (err) {
-  console.error(`Failed to unhold RunningLock, code is ${err.code}, message is ${err.message}`);
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      this.context.unholdRunningLockSync();
+    } catch (err) {
+      console.error(`Failed to hold RunningLock, Code is ${err.code}, message is ${err.message}`);
+    }
+  }
 }
 ```
 
@@ -312,15 +465,44 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-try {
-  axContext.on('preDisconnect', () => {
-    console.info(`To do something before accessibilityExtension disconnect.`);
-  });
-} catch (err) {
-  console.error(`Failed to register, code is ${err.code}, message is ${err.message}`);
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      this.context.on('preDisconnect', () => {
+        console.info(`To do something before accessibilityExtension disconnect.`);
+      });
+    } catch (err) {
+      console.error(`Failed to register, code is ${err.code}, message is ${err.message}`);
+    }
+  }
 }
 ```
 
@@ -353,15 +535,44 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-try {
-  axContext.off('preDisconnect', () => {
-    console.info(`To do something before accessibilityExtension disconnect.`);
-  });
-} catch (err) {
-  console.error(`Failed to unRegister, code is ${err.code}, message is ${err.message}`);
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      this.context.off('preDisconnect', () => {
+        console.info(`To do something before accessibilityExtension disconnect.`);
+      });
+    } catch (err) {
+      console.error(`Failed to unRegister, code is ${err.code}, message is ${err.message}`);
+    }
+  }
 }
 ```
 
@@ -389,13 +600,42 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-try {
-  axContext.notifyDisconnect();
-} catch (err) {
-  console.error(`Failed to notify accessibility, code is ${err.code}, message is ${err.message}`);
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      this.context.notifyDisconnect();
+    } catch (err) {
+      console.error(`Failed to notify accessibility, code is ${err.code}, message is ${err.message}`);
+    }
+  }
 }
 ```
 
@@ -427,14 +667,45 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityElement } from '@kit.AccessibilityKit';
+import {
+  AccessibilityElement,
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
-  console.info(`Succeeded in get accessibility focused element, ${element.bundleName}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to get accessibility focused element, Code is ${err.code}, message is ${err.message}`);
-});
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    this.context.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
+      console.info(`Succeeded in get accessibility focused element, ${element.bundleName}`);
+    }).catch((err: BusinessError) => {
+      console.error(`failed to get accessibility focused element, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
 ```
 
 ## getRootInActiveWindow<sup>20+</sup>
@@ -469,16 +740,47 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityElement } from '@kit.AccessibilityKit';
+import {
+  AccessibilityElement,
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let windowId: number = 0;
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
 
-axContext.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
-  console.info(`Succeeded in get root inactive window element, ${element.bundleName}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to get root inactive window element, Code is ${err.code}, message is ${err.message}`);
-});
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    let windowId: number = 0;
+
+    this.context.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
+      console.info(`Succeeded in get root inactive window element, ${element.bundleName}`);
+    }).catch((err: BusinessError) => {
+      console.error(`failed to get root inactive window element, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
 ```
 
 ## getAccessibilityWindowsSync<sup>20+</sup>
@@ -513,19 +815,48 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-try {
-  let displayId: number = 0;
-  let windowList = context?.getAccessibilityWindowsSync(displayId);
-  if (windowList) {
-    for (let window of windowList) {
-      console.info(`getAccessibilityWindowsSync: windowId: ${window.windowId}`);
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      let displayId: number = 0;
+      let windowList = this.context.getAccessibilityWindowsSync(displayId);
+      if (windowList) {
+        for (let window of windowList) {
+          console.info(`getAccessibilityWindowsSync: windowId: ${window.windowId}`);
+        }
+      }
+    } catch (err) {
+      console.error(`[FAILED] getAccessibilityWindowsSync: ${err.code} ${err.message}`)
     }
   }
-} catch (err) {
-  console.error(`[FAILED] getAccessibilityWindowsSync: ${err.code} ${err.message}`)
 }
 ```
 
@@ -544,7 +875,7 @@ Defines the accessibility node element. Before calling the APIs of **Accessibili
 | checkable<sup>20+</sup> | boolean | No| Yes| Whether the element can be checked. The value **true** indicates that the element can be checked, and **false** indicates the opposite.<br>Default value: **false**.|
 | checked<sup>20+</sup> | boolean | No| Yes| Whether the element is checked. The value **true** indicates that the element is checked, and **false** indicates the opposite.<br>Default value: **false**.|
 | clickable<sup>20+</sup> | boolean | No| Yes| Whether the element is clickable. The value **true** indicates that the element is clickable, and **false** indicates the opposite.<br>Default value: **false**.|
-| componentId<sup>20+</sup> | number | No| Yes| ID of the component to which the element belongs.<br>Default value: **1**.|
+| componentId<sup>20+</sup> | number | No| Yes| ID of the component to which the element belongs.<br>Default value: **-1**.|
 | componentType<sup>20+</sup> | string                                                             | No | Yes | Type of the component to which the element belongs.|
 | contents<sup>20+</sup> | Array&lt;string&gt;                                                | No | Yes | Content displayed in the element.|
 | currentIndex<sup>20+</sup> | number                                                             | No | Yes | Index of the current item.<br>Default value: **0**.|
@@ -566,7 +897,7 @@ Defines the accessibility node element. Before calling the APIs of **Accessibili
 | lastContent<sup>20+</sup> | string                                                             | No | Yes | Last item.|
 | layer<sup>20+</sup> | number                                                             | No | Yes | Display layer of the element.|
 | longClickable<sup>20+</sup> | boolean | No| Yes| Whether the element can be long-pressed. The value **true** indicates that the element can be long-pressed, and **false** indicates the opposite.<br>Default value: **false**.|
-| pageId<sup>20+</sup> | number | No| Yes| Page ID.<br>Default value: **1**.|
+| pageId<sup>20+</sup> | number | No| Yes| Page ID.<br>Default value: **-1**.|
 | pluralLineSupported<sup>20+</sup> | boolean | No| Yes| Whether the element supports multiple lines of text. The value **true** indicates that the element supports multiple lines of text, and **false** indicates the opposite.<br>Default value: **false**.|
 | rect<sup>20+</sup>                 | [Rect](js-apis-inner-application-accessibilityExtensionContext.md#rect)                                                      | No | Yes | Rectangular area for the element.|
 | resourceName<sup>20+</sup>         | string                                                             | No | Yes | Resource name of the element.|
@@ -582,14 +913,14 @@ Defines the accessibility node element. Before calling the APIs of **Accessibili
 | valueMax<sup>20+</sup>             | number                                                             | No | Yes | Maximum value.<br>Default value: **0**.|
 | valueMin<sup>20+</sup>             | number                                                             | No | Yes | Minimum value.<br>Default value: **0**.|
 | valueNow<sup>20+</sup>             | number                                                             | No | Yes | Current value.<br>Default value: **0**.|
-| windowId<sup>20+</sup>             | number                                                             | No | Yes | Window ID.<br>Default value: **1**.|
+| windowId<sup>20+</sup>             | number                                                             | No | Yes | Window ID.<br>Default value: **-1**.|
 | offset<sup>20+</sup>             | number              | No | Yes | Pixel offset of the content area from the top of a scrollable component (such as **List** and **Grid**).<br>Default value: **0**.|
 | textType<sup>20+</sup>             | string                                                             | No | Yes | Accessibility text type of an element, which is configured by the **accessibilityTextHint** attribute of the component.|
 | accessibilityText<sup>20+</sup> | string                                                  | No | Yes | Accessibility text information of an element.|
 | hotArea<sup>20+</sup>             | [Rect](js-apis-inner-application-accessibilityExtensionContext.md#rect)                                                              | No | Yes | Hot area of an element.|
 | customComponentType<sup>20+</sup>             | string                                                             | No | Yes | Custom component type.|
-| accessibilityNextFocusId<sup>20+</sup>             | number                | No | Yes | ID of the next component to obtain the focus.<br>Default value: **1**.|
-| accessibilityPreviousFocusId<sup>20+</sup>             | number                | No | Yes | ID of the previous component to obtain the focus.<br>Default value: **1**.|
+| accessibilityNextFocusId<sup>20+</sup>             | number                | No | Yes | ID of the next component to obtain the focus.<br>Default value: **-1**.|
+| accessibilityPreviousFocusId<sup>20+</sup>             | number                | No | Yes | ID of the previous component to obtain the focus.<br>Default value: **-1**.|
 | extraInfo<sup>20+</sup>             | string     | No | Yes | Additional information about an element. The value is a JSON string.|
 | accessibilityScrollable<sup>20+</sup>             | boolean                 | No | Yes | Whether the element can be scrolled for accessibility purposes. This attribute has a higher priority than **scrollable**.<br>The value **true** indicates that the element is scrollable, and **false** indicates the opposite.<br>Default value: **true**.|
 | supportedActionNames<sup>20+</sup> | Array&lt;string&gt;                                                | No | Yes | Supported action names.|
@@ -606,24 +937,54 @@ Defines the accessibility node element. Before calling the APIs of **Accessibili
 
 **Example**
 ```ts
-import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityElement,
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-let windowId: number = 10;
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
 
-axContext.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
-  console.info("AccessibilityElement.checkable: " + element.checkable)
-  console.info("AccessibilityElement.checked: " + element.checked)
-  console.info("AccessibilityElement.clickable: " + element.clickable)
-  console.info("AccessibilityElement.componentId: " + element.componentId)
-  console.info("AccessibilityElement.componentType: " + element.componentType)
-  console.info("AccessibilityElement.contents: " + element.contents)
-  console.info("AccessibilityElement.currentIndex: " + element.currentIndex)
-  console.info("AccessibilityElement.description: " + element.description)
-  // ....
-}).catch((err) => {
-  console.error(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
-})
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    let windowId: number = 10;
+
+    this.context.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
+      console.info("AccessibilityElement.checkable: " + element.checkable)
+      console.info("AccessibilityElement.checked: " + element.checked)
+      console.info("AccessibilityElement.clickable: " + element.clickable)
+      console.info("AccessibilityElement.componentId: " + element.componentId)
+      console.info("AccessibilityElement.componentType: " + element.componentType)
+      console.info("AccessibilityElement.contents: " + element.contents)
+      console.info("AccessibilityElement.currentIndex: " + element.currentIndex)
+      console.info("AccessibilityElement.description: " + element.description)
+      // ....
+    }).catch((err: BusinessError) => {
+      console.error(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
+    })
+  }
+}
 ```
 
 ### enableScreenCurtain<sup>12+</sup>
@@ -684,7 +1045,7 @@ export default class AccessibilityManager {
       console.error('context is not available!');
       return;
     }
-    this.context.getWindowRootElement().then((rootElement: AccessibilityElement) => {
+    this.context.getRootInActiveWindow().then((rootElement: AccessibilityElement) => {
       console.info(`Succeeded in get root element of the window, ${JSON.stringify(rootElement)}`);
       rootElement.enableScreenCurtain(true);
       console.info(`Succeeded in enableScreenCurtain`);
@@ -727,6 +1088,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // elementId is 10.
@@ -772,6 +1134,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // The content of condition must be the same as the type value in the accessibilityTextHint attribute of the target component.
@@ -878,8 +1241,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 ```ts
 // Example of an action without parameters:
-import { BusinessError } from '@kit.BasicServicesKit';
-import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
+import { AccessibilityAction } from '@kit.AccessibilityKit';
 
 // rootElement is an instance of AccessibilityElement.
 // An action that does not require any parameter setting is an action without parameters, as specified in the action description.
@@ -895,7 +1257,6 @@ try {
 
 ```ts
 // Example of an action with parameters:
-import { BusinessError } from '@kit.BasicServicesKit'; 
 import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
 
 try {
@@ -914,7 +1275,6 @@ try {
 
 ```ts
 // Example of an action with parameters:
-import { BusinessError } from '@kit.BasicServicesKit';
 import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
 
 try {
@@ -958,16 +1318,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
   console.info(`element parent id: ${element.parentId}`);
   element.getParent().then((parent: AccessibilityElement) => {
     console.info(`parent element's parent id: ${parent.parentId}`);
-  }).catch((err) => {
+  }).catch((err: BusinessError) => {
     console.error(`getParent failed, code: ${err.code}, message: ${err.message}`);
   })
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -1001,16 +1360,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
   console.info(`element childrenIds: ${element.childrenIds}`);
   element.getChildren().then((children: AccessibilityElement[]) => {
     console.info(`children element's size: ${children.length}`);
-  }).catch((err) => {
+  }).catch((err: BusinessError) => {
     console.error(`getChildren failed, code: ${err.code}, message: ${err.message}`);
   })
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -1044,14 +1402,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let windows: AccessibilityWindow[] = axContext.getAccessibilityWindowsSync()
 for (let window of windows) {
   console.info(`window id: ${window.windowId}`);
   window.getRoot().then((root: AccessibilityElement) => {
     console.info(`root element's componentId: ${root.componentId}`);
-  }).catch((err) => {
+  }).catch((err: BusinessError) => {
     console.error(`getRoot failed, code: ${err.code}, message: ${err.message}`);
   })
 }
@@ -1102,17 +1459,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let windowId: number = 10;
 
 axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
     root.findElementByContent('connect').then((elements: AccessibilityElement[]) => {
         console.info("findElementByContent size=" + elements.length)
-    }).catch((err) => {
+    }).catch((err: BusinessError) => {
         console.error(`findElementByContent failed, code: ${err.code}, message: ${err.message}`);
     })
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -1131,7 +1487,7 @@ Finds elements based on the focus direction. This API uses a promise to return t
 
 | Name| Type| Mandatory| Description|
 | -------- | ---- | -------- | ------------------------------------------------------------ |
-| condition | FocusDirection | Yes| Focus direction.|
+| condition | [FocusDirection](js-apis-inner-application-accessibilityExtensionContext.md#focusdirection) | Yes| Focus direction.|
 
 **Return value**
 
@@ -1167,15 +1523,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
     focus.findElementByFocusDirection('up').then((element: AccessibilityElement) => {
         console.info("findElementByFocusDirection UP componentId: " + element.componentId);
-    }).catch((err) => {
+    }).catch((err: BusinessError) => {
         console.error(`findElementByFocusDirection UP failed, code: ${err.code}, message: ${err.message}`);
     })
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -1230,17 +1585,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let windowId: number = 10;
 
 axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
     root.findElementsByAccessibilityHintText('location').then((elements: AccessibilityElement[]) => {
         console.info("findElementsByAccessibilityHintText size=" + elements.length)
-    }).catch((err) => {
+    }).catch((err: BusinessError) => {
         console.error(`findElementsByAccessibilityHintText failed, code: ${err.code}, message: ${err.message}`);
     })
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -1295,15 +1649,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
     focus.findElementById(0).then((element: AccessibilityElement) => {
         console.info("findElementById componentId: " + element.componentId);
-    }).catch((err) => {
+    }).catch((err: BusinessError) => {
         console.error(`findElementById failed, code: ${err.code}, message: ${err.message}`);
     })
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```

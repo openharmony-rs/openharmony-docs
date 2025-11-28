@@ -1,5 +1,12 @@
 # image_effect.h
 
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zyj208-->
+<!--Designer: @wangshoucheng-->
+<!--Tester: @gengfei-->
+<!--Adviser: @w_Machine_cc-->
+
 ## Overview
 
 The file declares the APIs related to an image effector.<br> You can use the APIs to add, delete, and query image effect filters. You can connect multiple filters in series to implement complex effect adjustment.<br> The effector supports multiple input types, such as PixelMap, URI, surface, and picture. Different input types are converted into buffer objects in the effector, and effect processing is implemented through the filters.

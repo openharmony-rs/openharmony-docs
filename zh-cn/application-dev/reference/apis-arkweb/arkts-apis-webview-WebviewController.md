@@ -4967,7 +4967,7 @@ struct WebComponent {
 
 setDownloadDelegate(delegate: WebDownloadDelegate): void
 
-为当前的Web组件设置一个WebDownloadDelegate，该delegate用来接收页面内触发的下载与下载的进展。
+为当前的Web组件设置一个WebDownloadDelegate，该delegate用来接收页面内触发的下载进度的委托。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -4975,7 +4975,7 @@ setDownloadDelegate(delegate: WebDownloadDelegate): void
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| delegate      | [WebDownloadDelegate](./arkts-apis-webview-WebDownloadDelegate.md)  | 是   | 用来接收下载进回调的委托。 |
+| delegate      | [WebDownloadDelegate](./arkts-apis-webview-WebDownloadDelegate.md)  | 是   | 用来接收下载进度的委托。 |
 
 **错误码：**
 
@@ -5725,6 +5725,10 @@ enableAdsBlock(enable: boolean): void
 
 启用广告过滤功能。
 
+> **说明：**
+>
+> - 广告过滤功能需要release包，使用debug包不生效。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -6261,7 +6265,7 @@ setScrollable(enable: boolean, type?: ScrollType): void
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
 | enable     | boolean   | 是   | 表示是否将网页设置为允许滚动。<br>true表示设置为允许滚动，false表示禁止滚动。<br>默认值：true。 |
-| type       | [ScrollType](./arkts-apis-webview-e.md#scrolltype12) |  否 | 网页可触发的滚动类型，支持缺省配置。<br/> - enable为false时，表示禁止ScrollType类型的滚动，当ScrollType缺省时表示禁止所有类型网页滚动。<br/> - enable为true时，ScrollType缺省与否，都表示允许所有类型的网页滚动。|
+| type       | [ScrollType](./arkts-apis-webview-e.md#scrolltype12) |  否 | 网页可触发的滚动类型，支持缺省配置。<br/> - enable为false时，表示禁止ScrollType类型的滚动，当ScrollType缺省时表示禁止所有类型网页滚动。<br/> - enable为true时，ScrollType缺省与否，都表示允许所有类型的网页滚动。<br/>**说明：**<br/>传入undefined会抛出异常错误码401。|
 
 **错误码：**
 

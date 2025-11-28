@@ -257,7 +257,11 @@ Describes the information about the automatic camera switch status.
 
 ## Rect
 
-Describes a rectangle. The coordinate system for the returned detection points is based on the landscape device orientation, with the charging port on the right. In this coordinate system, the top-left corner is (0, 0), and the bottom-right corner is (1, 1). Here, **topLeftX** and **topLeftY** represent the coordinates of the top-left corner of the rectangle, whereas **width** and **height** represent the width and height of the rectangle, respectively. When cropping or selecting a face region based on specific requirements, the x and y coordinates of the rectangle must be multiplied by the width and height of the actual camera output stream to obtain the cropped face region.
+Describes a rectangle. The coordinate system for the returned detection points is based on the landscape device orientation, with the charging port on the right. In this coordinate system, the top-left corner is (0, 0), and the bottom-right corner is (1, 1). Here, **topLeftX** and **topLeftY** represent the coordinates of the top-left corner of the rectangle, whereas **width** and **height** represent the width and height of the rectangle, respectively. When cropping or selecting a face region based on specific requirements, the x and y coordinates of the rectangle must be multiplied by the width and height of the actual camera preview output stream to obtain the cropped face region.
+
+The width and height of the actual preview stream refer to the resolution of the camera output stream. For details, see **size** in [profile](arkts-apis-camera-i.md#profile).
+
+For details about how to obtain the preview stream data, see [Dual-Channel Preview (ArkTS)](../../media/camera/camera-dual-channel-preview.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -265,10 +269,10 @@ Describes a rectangle. The coordinate system for the returned detection points i
 
 | Name     | Type  |  Read-only | Optional |           Description        |
 | -------- | ------ | ------ |-----| --------------------- |
-| topLeftX | number |   No  | No  | X-axis coordinate of the top-left corner of the rectangle.  |
-| topLeftY | number |   No  | No  | Y-axis coordinate of the top-left corner of the rectangle.  |
-| width    | number |   No  | No  | Width of the rectangle, which is a relative value. The value range is [0, 1]. |
-| height   | number |   No  | No  | Height of the rectangle, which is a relative value. The value range is [0, 1]. |
+| topLeftX | number |   No  | No  | X coordinate of the top-left corner of the rectangle, in the range of [0, 1].  |
+| topLeftY | number |   No  | No  | Y coordinate of the top-left corner of the rectangle, in the range of [0, 1].  |
+| width    | number |   No  | No  | Width of the rectangle, in the range of [0, 1]. |
+| height   | number |   No  | No  | Height of the rectangle, in the range of [0, 1]. |
 
 ## MetadataObject
 
@@ -281,7 +285,7 @@ Describes the camera metadata, which is the data source of [CameraInput](arkts-a
 | Name        | Type                                       | Read-only| Optional|Description               |
 | ----------- | ------------------------------------------- | ---- | ---- | ----------------- |
 | type        | [MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)   |  Yes |  No | Metadata object type.   |
-| timestamp   | number                                      |  Yes |  No | Current timestamp, in milliseconds.|
+| timestamp   | number                                      |  Yes |  No | Current timestamp, in nanoseconds (ns).|
 | boundingBox | [Rect](#rect)                               |  Yes |  No | Metadata rectangle. |
 
 ## SmoothZoomInfo<sup>11+</sup>

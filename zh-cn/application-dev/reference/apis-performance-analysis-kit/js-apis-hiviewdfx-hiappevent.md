@@ -343,6 +343,9 @@ hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err
 | onTrigger        | (curRow: number, curSize: number, holder: [AppEventPackageHolder](#appeventpackageholder)) => void |  否   | 是   | 订阅回调函数，需要与回调触发条件triggerCondition一同传入才会生效，函数入参说明如下：<br>curRow：在本次回调触发时的订阅事件总数量； <br>curSize：在本次回调触发时的订阅事件总大小，单位为byte；  <br/>holder：订阅数据持有者对象，可以通过其对订阅事件进行处理。 |
 | onReceive<sup>11+</sup>        | (domain: string, appEventGroups: Array<[AppEventGroup](#appeventgroup11)>) => void |  否   | 是 | 订阅实时回调函数，与回调函数onTrigger同时存在时，只触发此回调，函数入参说明如下：<br>domain：回调事件的领域名称； <br>appEventGroups：回调事件集合。 |
 
+> **说明：**
+>
+> 不建议在回调函数中执行[移除观察者](#hiappeventremovewatcher)的操作，watcher一旦被移除，则其原有的订阅回调功能也会随之失效，可能会造成某些事件发生后无订阅回调情况。
 
 ## TriggerCondition
 

@@ -323,7 +323,7 @@ try {
 
 addPersistentDeviceId(deviceId: string): Promise&lt;void&gt;
 
-Stores the virtual MAC address of a Bluetooth device persistently.
+Stores the virtual MAC address of a Bluetooth device persistently. This API uses a promise to return the result.
 - The device address (virtual MAC address) obtained through Bluetooth APIs, such as the scan API, is different from the actual device MAC address. The Bluetooth subsystem stores the mapping between the virtual MAC address and the actual device MAC address. If the application wants to perform operations on the Bluetooth device for a long time, you are advised to use this API to store the virtual MAC address of the device persistently. The address mapping will not change.
 - The virtual MAC address to be stored persistently must be valid. You can use [access.isValidRandomDeviceId](#accessisvalidrandomdeviceid16) to check whether its validity.
 - When using this API, ensure that the real address of the peer Bluetooth device corresponding to the virtual MAC address remains unchanged. If the real address of the peer device changes, the persistently stored address will become invalid and unusable.
@@ -377,7 +377,7 @@ try {
 
 deletePersistentDeviceId(deviceId: string): Promise&lt;void&gt;
 
-Deletes the persistently stored virtual MAC address of a Bluetooth device.
+Deletes the persistently stored virtual MAC address of a Bluetooth device. This API uses a promise to return the result.
 - The virtual MAC address is persistently stored through [access.addPersistentDeviceId](#accessaddpersistentdeviceid16).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC

@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 As another important function of the camera application, video recording is the process of cyclic frame capture. To smooth video recording, you can follow step 5 in [Photo Capture](native-camera-shooting.md) to set the resolution, flash, focal length, photo quality, and rotation angle.
 
@@ -114,7 +114,7 @@ During camera application development, you can listen for the status of the vide
   }
   ```
 
-- Register the **'error'** event to listen for video output errors. The callback function returns an error code when an API is incorrectly used. For details about the error code types, see [Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode).
+- Register the **'error'** event to listen for video output errors. The callback function returns an error code when a video output API is incorrectly used. For details about the error code types, see [Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode).
     
   ```c++
   void VideoOutputOnError(Camera_VideoOutput* videoOutput, Camera_ErrorCode errorCode)

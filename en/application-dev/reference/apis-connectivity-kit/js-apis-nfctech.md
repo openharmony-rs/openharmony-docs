@@ -337,7 +337,7 @@ console.info("isoDep hiLayerResponse: " + hiLayerResponse);
 
 isExtendedApduSupported(): Promise&lt;boolean&gt;
 
-Checks whether an extended APDU is supported. This API uses a promise to return the result.
+Checks whether extended APDUs are supported. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -349,7 +349,7 @@ Checks whether an extended APDU is supported. This API uses a promise to return 
 
 | **Type**| **Description**                            |
 | ------------------ | --------------------------|
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the extended APDU is supported, and the value **false** indicates the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that extended APDUs are supported, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -395,7 +395,7 @@ function nfcTechDemo() {
 
 isExtendedApduSupported(callback: AsyncCallback\<boolean>): void
 
-Checks whether an extended APDU is supported. This API uses an asynchronous callback to return the result.
+Checks whether extended APDUs are supported. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -407,7 +407,7 @@ Checks whether an extended APDU is supported. This API uses an asynchronous call
 
 | Name  | Type                   | Mandatory| Description                                  |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<boolean> | Yes  | Callback used to return the operation result. If the extended APDU is supported, **true** is returned; otherwise, **false** is returned.|
+| callback | AsyncCallback\<boolean> | Yes  | Callback used to return the operation result. The value **true** indicates that extended APDUs are supported, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1427,7 +1427,7 @@ function nfcTechDemo() {
 
 incrementBlock(blockIndex: number, value: number): Promise\<void>
 
-Increments a block with the specified value and saves the result in a buffer for internal transmission. This API uses a promise to return the result. This API uses a promise to return the result.
+Increments a block with the specified value and saves the result in a buffer for internal transmission. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -1494,7 +1494,7 @@ function nfcTechDemo() {
 
 incrementBlock(blockIndex: number, value: number, callback: AsyncCallback\<void>): void
 
-Increments a block with the specified value and saves the result in a buffer for internal transmission. This API uses an asynchronous callback to return the result. This API uses an asynchronous callback to return the result.
+Increments a block with the specified value and saves the result in a buffer for internal transmission. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -2161,7 +2161,7 @@ Obtains the index of the sector that holds the specified block.
 
 | **Type**| **Description**                            |
 | ------------------ | --------------------------|
-| number | Index of the sector obtained.|
+| number | Index of the sector obtained. The sector indexes start from **0**.|
 
 **Error codes**
 
