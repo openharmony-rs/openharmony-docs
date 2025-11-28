@@ -116,9 +116,11 @@ responseRegionList(regions: Array&lt;ResponseRegion&gt;): T
   >
   > - 当父组件设置[clip](ts-universal-attributes-sharp-clipping.md#clip12)为true时，子组件的响应会受到父组件触摸热区的影响，不在父组件触摸热区内的子组件无法响应手势和事件。
   >  
+  > - 对于未配置的输入工具类型，热区的位置和大小均采用默认值。
+  >  
   > - x和y的计算结果为正值时，分别代表向右偏移和向下偏移；当计算结果为负值时，分别代表向左偏移和向上偏移。
   >
-  > - width和height采用string类型时，支持calc()的动态计算；采用LengthMetrics类型且单位为PERCENT时，相对于组件自身宽高进行计算。当计算结果为负值时，采用默认值。
+  > - width和height采用string类型时，支持calc()的动态计算，限定calc()字符串格式为“calc(?% + ?px)”，采用小写字符，计算符号支持+和-，单位支持px和vp；采用LengthMetrics类型且单位为PERCENT时，相对于组件自身宽高进行计算，PERCENT(1)代表100%。当计算结果为负值时，采用默认值。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
