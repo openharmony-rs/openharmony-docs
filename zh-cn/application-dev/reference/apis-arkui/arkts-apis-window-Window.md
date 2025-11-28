@@ -1443,7 +1443,7 @@ isSystemAvoidAreaEnabled(): boolean
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Create js value failed. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only systemWindow are supported. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. |
 
 **示例：**
 
@@ -1657,8 +1657,8 @@ API version 14之前，该接口在所有设备中可正常调用。
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| 1300003 | This window manager service works abnormally. Possible cause: Internal IPC error or the window is destroyed. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only mainWindow and subWindow are supported. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal IPC error. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows and sub windows are supported. |
 
 **示例：**
 
@@ -1676,6 +1676,8 @@ try {
 getImmersiveModeEnabledState(): boolean
 
 查询当前窗口是否开启沉浸式布局。
+
+仅支持主窗和子窗调用。
 
 返回值与[setImmersiveModeEnabledState()](#setimmersivemodeenabledstate12)以及[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)设置结果一致，若未调用上述两个接口则默认返回false。
 
@@ -1699,7 +1701,7 @@ getImmersiveModeEnabledState(): boolean
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------------- |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only mainWindow and subWindow are supported. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and sub windows are supported. |
 
 **示例：**
 
@@ -2125,7 +2127,7 @@ getWindowSystemBarProperties(): SystemBarProperties
 | ------- | ------------------------------ |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. Possible cause: Create js object failed. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only mainWindow are supported. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 
 **示例：**
@@ -2254,7 +2256,7 @@ getStatusBarProperty(): StatusBarProperty
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only mainWindow are supported. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
 
@@ -5704,7 +5706,7 @@ Stage模型下，该接口需要在[loadContent()](#loadcontent9)或[setUIConten
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. The window is destroyed or parse color failed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -6180,7 +6182,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. Possible cause: Need PRIVACY_WINDOW permission. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. Possible cause: Need ohos.permission.PRIVACY_WINDOW permission. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
@@ -6238,7 +6240,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. Possible cause: Need PRIVACY_WINDOW permission. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. Possible cause: Need ohos.permission.PRIVACY_WINDOW permission. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
@@ -6501,7 +6503,7 @@ snapshotIgnorePrivacy(): Promise&lt;image.PixelMap&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Function snapshotIgnorePrivacy can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. The window is destroyed or get pixelMap failed; 3. Create pixelMap failed; 4. Internal task error. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Create pixelMap failed; 3. Internal task error. |
 
 **示例：**
 
@@ -7404,7 +7406,7 @@ setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003  | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subWindow and appFloatingWindow are supported. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only sub windows and float windows are supported. |
 
 **示例：**
 
@@ -9222,7 +9224,7 @@ isGestureBackEnabled(): boolean
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only mainWindow are supported. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
 
