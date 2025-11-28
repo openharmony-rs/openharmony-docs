@@ -3076,7 +3076,7 @@ try {
 }
 ```
 
-## updateFormLockedState<sup>18+</sup>
+## updateFormLockedState<sup>22+</sup>
 
 updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
@@ -3090,7 +3090,7 @@ updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 22
 
 **ArkTS-Sta起始版本：** 22
 

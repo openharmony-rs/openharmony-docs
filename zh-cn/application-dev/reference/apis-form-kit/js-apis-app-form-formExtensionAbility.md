@@ -290,6 +290,10 @@ onConfigurationUpdate(newConfig: Configuration): void
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -322,6 +326,10 @@ onAcquireFormState?(want: Want): formInfo.FormState
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
