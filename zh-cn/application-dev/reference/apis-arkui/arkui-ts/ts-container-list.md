@@ -355,7 +355,7 @@ lanes(value: number | LengthConstrain | ItemFillPolicy, gutter?: Dimension)
 | 参数名               | 类型                                                         | 必填 | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value                | number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) | 是   | 当前List组件布局列的数量。<br/> 设置为number类型时，根据number类型的数值确定列数，number类型取值范围：[1, +∞)。<br/>设置为LengthConstrain类型时，根据LengthConstrain中的最大最小值确定列数。<br/>设置为ItemFillPolicy类型时，根据List组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数，该类型只在List滚动方向为垂直方向时才生效。 |
-| gutter | [Dimension](ts-types.md#dimension10)                         | 否   | 列间距。<br />默认值：0 <br/>取值范围：[0, +∞)   
+| gutter | [Dimension](ts-types.md#dimension10)                         | 否   | 列间距。<br />默认值：0 <br/>取值范围：[0, +∞) |
 
 ### alignListItem<sup>9+</sup>
 

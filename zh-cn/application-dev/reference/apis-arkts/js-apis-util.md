@@ -236,7 +236,7 @@ cb('hello world', (err : Object, ret : string) => {
 
 promisify(original: (err: Object, value: Object) =&gt; void): Function
 
-处理异步函数并返回一个Promise函数。
+接收一个采用“错误优先”回调模式的函数，即以`(err, value) => callback`作为最后一个参数，并返回其Promise函数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -466,7 +466,7 @@ console.info("result = " + result);
 
 promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
-处理异步函数并返回promise函数。
+接收一个采用“错误优先”回调模式的函数，即以`(err, value) => callback`作为最后一个参数，并返回其Promise函数。
 
 > **说明：**
 >
@@ -2327,7 +2327,7 @@ console.info('result = ' + result);
 
 values(): V[]
 
-获取当前缓冲区中所有值，从最近访问到最近最少访问的顺序列表。
+获取当前缓冲区中所有值，从最近最少访问到最近访问的顺序列表。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2337,25 +2337,33 @@ values(): V[]
 
 | 类型      | 说明                                                         |
 | --------- | ------------------------------------------------------------ |
-| V[] | 按从最近访问到最近最少访问的顺序返回当前缓冲区中所有值的列表。 |
+| V[] | 返回当前缓冲区中所有值的列表，顺序为从最近最少访问（Least Recent）到最近访问（Most Recent）。 |
 
 **示例：**
 
 ```ts
-let pro = new util.LRUCache<number|string,number|string>();
-pro.put(2, 10);
-pro.put(2, "anhu");
-pro.put("afaf", "grfb");
+let pro = new util.LRUCache<number, string>();
+pro.put(1, 'A');
+pro.put(2, "B");
+pro.put(3, 'C');
+pro.put(4, 'D')
+pro.put(5, 'E')
+pro.put(6, 'F')
 let result = pro.values();
 console.info('result = ' + result);
-// 输出结果：result = anhu,grfb
+// 输出结果：result = A,B,C,D,E,F
+pro.get(1);
+pro.get(2);
+result = pro.values();
+console.info('result = ' + result);
+// 输出结果：result = C,D,E,F,A,B
 ```
 
 ### keys<sup>9+</sup>
 
 keys(): K[]
 
-获取当前缓冲区中所有键从最近访问到最近最少访问的升序列表。
+获取当前缓冲区中所有键，从最近最少访问到最近访问的顺序列表。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2365,17 +2373,26 @@ keys(): K[]
 
 | 类型      | 说明                                                         |
 | --------- | ------------------------------------------------------------ |
-| K&nbsp;[] | 按升序返回当前缓冲区中所有键的列表，从最近访问到最近最少访问。 |
+| K[] | 返回当前缓冲区中所有键的列表，顺序为从最近最少访问（Least Recent）到最近访问（Most Recent）。 |
 
 **示例：**
 
 ```ts
-let pro = new util.LRUCache<number, number>();
-pro.put(2, 10);
-pro.put(3, 1);
+let pro = new util.LRUCache<number, string>();
+pro.put(1, 'A');
+pro.put(2, "B");
+pro.put(3, 'C');
+pro.put(4, 'D')
+pro.put(5, 'E')
+pro.put(6, 'F')
 let result = pro.keys();
 console.info('result = ' + result);
-// 输出结果：result = 2,3
+// 输出结果：result = 1,2,3,4,5,6
+pro.get(5);
+pro.get(3);
+result = pro.keys();
+console.info('result = ' + result);
+// 输出结果：result = 1,2,4,6,5,3
 ```
 
 ### remove<sup>9+</sup>

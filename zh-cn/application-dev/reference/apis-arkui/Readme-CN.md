@@ -47,7 +47,7 @@
       - [Enums](arkts-apis-uicontext-e.md)
       - [Types](arkts-apis-uicontext-t.md)
     - [@ohos.arkui.uiExtension (uiExtension)](js-apis-arkui-uiExtension.md)
-    - [@ohos.arkui.StateManagement (状态管理)](js-apis-StateManagement.md)
+    - [@ohos.arkui.StateManagement (状态管理)](js-apis-stateManagement.md)
     - [@ohos.curves (插值计算)](js-apis-curve.md)
     - [@ohos.font (注册自定义字体)](js-apis-font.md)
     - [@ohos.matrix4 (矩阵变换)](js-apis-matrix4.md)
@@ -489,7 +489,7 @@
     <!--Del-->
     - [应用级变量的状态管理（系统接口）](arkui-ts/ts-state-management-sys.md)
     <!--DelEnd-->
-  - 响应式环境变量<!--arkts-env-system-property-->
+  - 响应式环境变量<!--responsive-env-system-property-->
     - [\@Env：环境变量](arkui-ts/ts-env-system-property.md)
   - 公共定义<!--common-definitions-->
     - [基础类型定义](arkui-ts/ts-types.md)

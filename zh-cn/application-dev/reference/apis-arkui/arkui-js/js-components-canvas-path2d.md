@@ -27,28 +27,28 @@ addPath(path: Object): void
 
 **示例：** 
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 500px; height: 500px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path1 = ctx.createPath2D("M250 150 L150 350 L350 350 Z");
-        var path2 = ctx.createPath2D();
-        path2.addPath(path1);
-        ctx.stroke(path2);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path1 = ctx.createPath2D("M250 150 L150 350 L350 350 Z");
+    var path2 = ctx.createPath2D();
+    path2.addPath(path1);
+    ctx.stroke(path2);
+  }
 }
-  ```
+```
 
-  ![zh-cn_image_0000001173164873](figures/zh-cn_image_0000001173164873.png)
+![zh-cn_image_0000001173164873](figures/zh-cn_image_0000001173164873.png)
 
 ## setTransform
 
@@ -69,27 +69,27 @@ setTransform(scaleX: number, skewX: number, skewY: number, scaleY: number, trans
 
 **示例：**  
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 300px; height: 250px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D("M250 150 L150 350 L350 350 Z");
-        path.setTransform(0.8, 0, 0, 0.4, 0, 0);
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D("M250 150 L150 350 L350 350 Z");
+    path.setTransform(0.8, 0, 0, 0.4, 0, 0);
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
-  ![zh-cn_image_0000001127125208](figures/zh-cn_image_0000001127125208.png)
+![zh-cn_image_0000001127125208](figures/zh-cn_image_0000001127125208.png)
 
 
 ## closePath
@@ -100,30 +100,30 @@ closePath(): void
 
 **示例：**  
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 500px; height: 500px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D();
-        path.moveTo(200, 100);
-        path.lineTo(300, 100);
-        path.lineTo(200, 200);
-        path.closePath();
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D();
+    path.moveTo(200, 100);
+    path.lineTo(300, 100);
+    path.lineTo(200, 200);
+    path.closePath();
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
-  ![zh-cn_image_0000001127125202](figures/zh-cn_image_0000001127125202.png)
+![zh-cn_image_0000001127125202](figures/zh-cn_image_0000001127125202.png)
 
 
 ## moveTo
@@ -141,30 +141,30 @@ moveTo(x: number, y: number): void
 
 **示例：**  
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 300px; height: 250px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D();
-        path.moveTo(50, 100);
-        path.lineTo(250, 100);
-        path.lineTo(150, 200);
-        path.closePath();
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D();
+    path.moveTo(50, 100);
+    path.lineTo(250, 100);
+    path.lineTo(150, 200);
+    path.closePath();
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
-  ![zh-cn_image_0000001173164869](figures/zh-cn_image_0000001173164869.png)
+![zh-cn_image_0000001173164869](figures/zh-cn_image_0000001173164869.png)
 
 
 ## lineTo
@@ -182,31 +182,31 @@ lineTo(x: number, y: number): void
 
 **示例：**
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 400px; height: 450px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D();
-        path.moveTo(100, 100);
-        path.lineTo(100, 200);
-        path.lineTo(200, 200);
-        path.lineTo(200, 100);
-        path.closePath();
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D();
+    path.moveTo(100, 100);
+    path.lineTo(100, 200);
+    path.lineTo(200, 200);
+    path.lineTo(200, 100);
+    path.closePath();
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
-  ![zh-cn_image_0000001127285024](figures/zh-cn_image_0000001127285024.png)
+![zh-cn_image_0000001127285024](figures/zh-cn_image_0000001127285024.png)
 
 
 ## bezierCurveTo
@@ -228,28 +228,28 @@ bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number,
 
 **示例：**  
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 300px; height: 250px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D();
-        path.moveTo(10, 10);
-        path.bezierCurveTo(20, 100, 200, 100, 200, 20);
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D();
+    path.moveTo(10, 10);
+    path.bezierCurveTo(20, 100, 200, 100, 200, 20);
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
-  ![zh-cn_image_0000001173324783](figures/zh-cn_image_0000001173324783.png)
+![zh-cn_image_0000001173324783](figures/zh-cn_image_0000001173324783.png)
 
 
 ## quadraticCurveTo
@@ -269,28 +269,28 @@ quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
 
 **示例：** 
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 300px; height: 250px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D();
-        path.moveTo(10, 10);
-        path.quadraticCurveTo(100, 100, 200, 20);
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D();
+    path.moveTo(10, 10);
+    path.quadraticCurveTo(100, 100, 200, 20);
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
-  ![zh-cn_image_0000001173164871](figures/zh-cn_image_0000001173164871.png)
+![zh-cn_image_0000001173164871](figures/zh-cn_image_0000001173164871.png)
 
 
 ## arc
@@ -312,27 +312,27 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
 
 **示例：**  
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 300px; height: 250px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D();
-        path.arc(100, 75, 50, 0, 6.28);
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D();
+    path.arc(100, 75, 50, 0, 6.28);
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
-  ![zh-cn_image_0000001173164867](figures/zh-cn_image_0000001173164867.png)
+![zh-cn_image_0000001173164867](figures/zh-cn_image_0000001173164867.png)
 
 
 ## arcTo
@@ -353,32 +353,32 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
 
 **示例：**  
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 300px; height: 250px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D();
-        path.arcTo(150, 20, 150, 70, 50);
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D();
+    path.arcTo(150, 20, 150, 70, 50);
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
-  ![zh-cn_image_0000001127125204](figures/zh-cn_image_0000001127125204.png)
+![zh-cn_image_0000001127125204](figures/zh-cn_image_0000001127125204.png)
 
 
 ## ellipse
 
-ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, counterclockwise: number): void
+ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, counterclockwise?: number): void
 
 在规定的矩形区域绘制一个椭圆。
 
@@ -397,27 +397,27 @@ ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number
 
 **示例：**  
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 500px; height: 450px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D();
-        path.ellipse(200, 200, 50, 100, Math.PI * 0.25, Math.PI * 0.5, Math.PI, 1);
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D();
+    path.ellipse(200, 200, 50, 100, Math.PI * 0.25, Math.PI * 0.5, Math.PI, 1);
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
-  ![zh-cn_image_0000001173324787](figures/zh-cn_image_0000001173324787.png)
+![zh-cn_image_0000001173324787](figures/zh-cn_image_0000001173324787.png)
 
 
 ## rect
@@ -437,24 +437,24 @@ rect(x: number, y: number, width: number, height: number): void
 
 **示例：**  
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 500px; height: 450px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D();
-        path.rect(20, 20, 100, 100);
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D();
+    path.rect(20, 20, 100, 100);
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
-  ![zh-cn_image_0000001127125212](figures/zh-cn_image_0000001127125212.png)
+![zh-cn_image_0000001127125212](figures/zh-cn_image_0000001127125212.png)

@@ -7,6 +7,10 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+```c
+struct OH_Huks_Param {...}
+```
+
 ## 概述
 
 定义参数集中的参数结构体类型。

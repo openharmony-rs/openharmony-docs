@@ -184,7 +184,7 @@ ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件
 
 ## 安全组件
 
-ArkUI包含的安全组件有：[使用粘贴组件](../security/AccessToken/pastebutton.md)、[使用保存组件](../security/AccessToken/savebutton.md)等。
+ArkUI包含的安全组件有：[使用粘贴控件](../security/AccessToken/pastebutton.md)、[使用保存控件](../security/AccessToken/savebutton.md)等。
 
 安全组件当前对触摸测试影响：如果有组件的[z序](../reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md)比安全组件的z序靠前，且遮盖安全组件，则安全组件事件直接返回到父节点继续触摸测试。
 
@@ -202,6 +202,6 @@ stopPropagation可终止冒泡。如下图所示，以Touch事件为例，当一
 
 ## Cancel事件
 
-当处理基础事件时，会发现存在多种具有Cancel类型的事件，如TouchType.Cancel、MouseAction.CANCEL等。系统在特定场景下发送此类事件，例如在拖拽操作中，当通过手指或鼠标拖动一个支持拖拽（onDragStart）的对象时，由于拖拽动作需达到一定位移阈值才能触发，因此在触发onDragStart之前，应用将正常接收到Touch或Mouse事件。一旦拖拽动作开始，系统将发送Cancel事件，告知应用普通基础事件已结束。
+当处理基础事件时，会发现存在多种具有Cancel类型的事件，如[TouchType](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#touchtype).Cancel、[MouseAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mouseaction8).CANCEL等。系统在特定场景下发送此类事件，例如在拖拽操作中，当通过手指或鼠标拖动一个支持拖拽（onDragStart）的对象时，由于拖拽动作需达到一定位移阈值才能触发，因此在触发[onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart)之前，应用将正常接收到Touch或Mouse事件。一旦拖拽动作开始，系统将发送Cancel事件，告知应用普通基础事件已结束。
 
 Cancel的含义与Up相同，均表示事件处理结束。若在处理Up/Release的场景中，亦应同时处理Cancel。

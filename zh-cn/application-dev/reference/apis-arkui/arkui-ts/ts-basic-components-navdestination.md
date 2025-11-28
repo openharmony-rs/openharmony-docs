@@ -538,7 +538,7 @@ NavDestination类型。
 | SLIDE_RIGHT<sup>15+</sup> | 6 | 右侧平移类型的系统转场动画。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | SLIDE_BOTTOM<sup>15+</sup> | 7 | 底部平移类型的系统转场动画。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 
-**说明：**
+> **说明：**
 >
 > 设置系统转场动画，支持分别设置系统标题栏动画和内容动画。
 > 
@@ -1137,6 +1137,16 @@ struct NavDest {
   stack: NavPathStack = new NavPathStack();
   @State translateY: string = '0';
 
+  @Builder
+  titleBuilder() {
+    Text(this.name)
+      .fontSize(20)
+      .height(55)
+      .fontWeight(FontWeight.Bold)
+      .width('100%')
+      .padding({ left: 16, right: 16 })
+  }
+
   build() {
     NavDestination() {
       Column() {
@@ -1150,7 +1160,7 @@ struct NavDest {
       }
       .size({ width: '100%', height: '100%' })
     }
-    .title(this.name)
+    .title(this.titleBuilder)
     .translate({ y: this.translateY })
     .onReady((context) => {
       this.name = context.pathInfo.name;

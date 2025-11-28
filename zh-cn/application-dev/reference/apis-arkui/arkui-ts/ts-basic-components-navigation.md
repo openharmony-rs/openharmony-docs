@@ -491,7 +491,7 @@ systemBarStyle(style: Optional&lt;SystemBarStyle&gt;)
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[SystemBarStyle](#systembarstyle12)&gt; | 是   | 系统状态栏样式。 |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)&gt; | 是   | 系统状态栏样式。 |
 
 >  **使用说明：**
 >
@@ -1938,7 +1938,7 @@ Navigation自定义标题。
 
 | 名称     | 类型            | 只读 | 可选 | 说明              |
 | ------ | ------------- | ---- | ---- | --------------- |
-| moreButtonOptions   | [MoreButtonOptions](#morebuttonoptions19)        | 否    | 是    | 更多图标的菜单选项。 
+| moreButtonOptions   | [MoreButtonOptions](#morebuttonoptions19)        | 否    | 是    | 更多图标的菜单选项。  |
 
 ## LaunchMode<sup>12+</sup>枚举说明
 

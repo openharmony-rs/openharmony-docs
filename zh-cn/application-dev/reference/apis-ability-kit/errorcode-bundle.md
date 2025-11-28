@@ -26,10 +26,10 @@ The specified bundle name is not found.
 **处理步骤**<br/>
 1. 检查bundleName拼写是否正确。
 2. 可以使用[查询应用信息命令（dump）](../../tools/bm-tool.md#查询应用信息命令dump)查看应用是否安装。查看输出的打印信息，应用未安装时，该命令执行会报错。
-```
-# 需要将com.xxx.demo替换为实际查询的bundleName
-hdc shell bm dump -n com.xxx.demo
-```
+    ```shell
+    # 需要将com.xxx.demo替换为实际查询的bundleName
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700002 指定的moduleName不存在
 
@@ -46,10 +46,10 @@ The specified module name is not found.
 **处理步骤**<br/>
 1. 检查moduleName拼写是否正确。
 2. 可以使用[查询应用信息命令（dump）](../../tools/bm-tool.md#查询应用信息命令dump)查看对应的模块是否安装。查看输出的打印信息中hapModuleNames字段对应的列表是否存在该moduleName，不存在则说明应用未安装该模块。
-```
-# 需要将com.xxx.demo替换为实际查询的bundleName
-hdc shell bm dump -n com.xxx.demo
-```
+    ```shell
+    # 需要将com.xxx.demo替换为实际查询的bundleName
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700003 指定的abilityName不存在
 
@@ -62,14 +62,16 @@ The specified ability name is not found.
 **可能原因**<br/>
 1. 输入的abilityName有误。
 2. 系统中对应的应用不存在该abilityName对应的ability。
+3. 调用[bundleManager.getProfileByAbility](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyability)、[bundleManager.getProfileByExtensionAbility](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyextensionability) 等通过abilityName、moduleName组合查询的接口时，对应的应用没有安装moduleName对应的模块，对应模块下的ability也不存在。
 
 **处理步骤**<br/>
 1. 检查abilityName拼写是否正确。
 2. 可以使用[查询应用信息命令（dump）](../../tools/bm-tool.md#查询应用信息命令dump)查看对应的应用是否存在这个abilityName。查看输出的打印信息中hapModuleInfos字段对应的abilityInfos下是否包含name等于该abilityName，不包含则说明该abilityName不存在。
-```
-# 需要将com.xxx.demo替换为实际查询的bundleName
-hdc shell bm dump -n com.xxx.demo
-```
+3. 可以使用[查询应用信息命令（dump）](../../tools/bm-tool.md#查询应用信息命令dump)查看输出的打印信息中hapModuleNames字段对应的列表是否存在对应的moduleName，不存在则说明应用未安装该模块，对应模块下的ability也不存在。
+    ```shell
+    # 需要将com.xxx.demo替换为实际查询的bundleName
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700004 指定的用户不存在
 
@@ -233,14 +235,14 @@ Failed to install the HAP since the version of the HAP to install is too early.
 确认新安装的应用版本号是否不低于已安装的同应用版本号。
 
 1. 已安装应用版本号查询，依赖[hdc工具](../../dfx/hdc.md#环境准备)。执行命令行后会输出已安装应用的版本号versionCode，如果输出多个versionCode，选择大于0的。如果该命令无打印值输出，表示应用未安装。
-```
-# 需要将com.xxx.demo替换为查询的bundleName
-hdc shell "bm dump -n com.xxx.demo |grep versionCode"
-```
+    ```shell
+    # 需要将com.xxx.demo替换为查询的bundleName
+    hdc shell "bm dump -n com.xxx.demo |grep versionCode"
+    ```
 
 2. 新安装的应用查看版本，HAP或者HSP用DevEco Studio打开，查看里面module.json文件中的versionCode字段配置。
 
-![示例图](figures/hap_verisonCode.PNG)
+    ![示例图](figures/hap_verisonCode.PNG)
 
 ## 17700018 安装失败，依赖的模块不存在
 
@@ -285,7 +287,7 @@ The specified uid is invalid.
 
 **处理步骤**<br/>
 检查系统中是否存在对应的应用uid值。可以使用[查询应用信息命令（dump）](../../tools/bm-tool.md#查询应用信息命令dump)查看已安装应用的uid。执行命令行后会输出对应已安装应用的uid，如果输出多个uid，选择大于0的。如果该命令无打印值输出，表示应用未安装。
-```
+```shell
 # 需要将com.xxx.demo替换为实际查询的bundleName
 hdc shell "bm dump -n com.xxx.demo |grep uid"
 ```
@@ -1204,7 +1206,7 @@ Failed to install the plugin because the plugin id fails to be parsed.
 
 **处理步骤**<br/>
 参考如下格式，重新配置插件[profile文件](../../security/app-provision-structure.md)中的"app-services-capabilities"字段。
-```
+```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
         "pluginDistributionIDs":"value-1,value-2,···"
@@ -1226,7 +1228,7 @@ Failed to install the plugin because the plugin id fails to be verified.
 
 **处理步骤**<br/>
 重新配置应用或者插件[profile文件](../../security/app-provision-structure.md)中的pluginDistributionIDs。配置格式如下：
-```
+```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
         "pluginDistributionIDs":"value-1,value-2,···"
@@ -1283,7 +1285,7 @@ Bundle manager service exception.
 
 2. 重复上述步骤3到5次后依旧请求失败，请查询设备的/data/log/faultlog/faultlogger/目录下是否存在包含foundation字样的crash文件。
 
-    ```
+    ```shell
     hdc shell
     cd /data/log/faultlog/faultlogger/
     ls -ls
@@ -1291,7 +1293,7 @@ Bundle manager service exception.
 
 3. 导出crash文件和日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-    ```
+    ```shell
     hdc file recv /data/log/faultlog/faultlogger/
     hdc file recv /data/log/hilog/
     ```

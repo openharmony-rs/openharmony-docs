@@ -330,3 +330,17 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | ALL | 0   | 所有来源的图片、视频。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | CAMERA | 1   | 仅相机拍摄的图片、视频。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | SCREENSHOT | 2   | 截屏图片或者录屏视频。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+
+## MovingPhotoBadgeStateType<sup>22+</sup>
+
+枚举，动态照片状态。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                | 值   | 说明             |
+|------------------- |--------|----------------------|
+| NOT_MOVING_PHOTO   | 0      | 非动态照片。 |
+| MOVING_PHOTO_ENABLED | 1    | 打开动态照片效果。 |
+| MOVING_PHOTO_DISABLED | 2   | 关闭动态照片效果。 |
