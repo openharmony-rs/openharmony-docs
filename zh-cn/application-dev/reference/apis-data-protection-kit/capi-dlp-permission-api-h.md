@@ -115,7 +115,7 @@ DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t 
 ### OH_DLP_GetOriginalFileName()
 
 ```
-DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char *originalFileName)
+DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFileName)
 ```
 
 **描述**
@@ -130,7 +130,7 @@ DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char *originalFileN
 | 参数项 | 描述 |
 | -- | -- |
 | const char *fileName | 指定要查询的文件名。 |
-| char *originalFileName | DLP文件的原始文件名。 |
+| char **originalFileName | DLP文件的原始文件名。 |
 
 **返回：**
 
@@ -191,7 +191,7 @@ DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo)
 ### OH_DLP_GetSandboxAppConfig()
 
 ```
-DLP_ErrCode OH_DLP_GetSandboxAppConfig(char *configInfo)
+DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)
 ```
 
 **描述**
@@ -205,7 +205,7 @@ DLP_ErrCode OH_DLP_GetSandboxAppConfig(char *configInfo)
 
 | 参数项 | 描述 |
 | -- | -- |
-| char *configInfo | 沙箱应用配置信息。 |
+| char **configInfo | 沙箱应用配置信息。 |
 
 **返回：**
 
