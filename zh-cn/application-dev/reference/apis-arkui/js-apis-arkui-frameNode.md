@@ -3604,7 +3604,7 @@ typeNode.createButtonNode(uiContext);
 
 ## CheckboxFrameNode<sup>22+</sup>
 
-CheckboxFrameNode[TypedFrameNode](#typedframenode20)，用于声明Checkbox类型的FrameNode。
+CheckboxFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Checkbox类型的FrameNode。
 
 **ArkTS版本：** 该接口仅适用于ArkTS-Sta。
 
@@ -3681,7 +3681,7 @@ typeNode.createCheckboxNode(uiContext);
 
 ## CheckboxGroupFrameNode<sup>22+</sup>
 
-CheckboxGroupFrameNode[TypedFrameNode](#typedframenode20)，用于声明CheckboxGroup类型的FrameNode。
+CheckboxGroupFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明CheckboxGroup类型的FrameNode。
 
 **ArkTS版本：** 该接口仅适用于ArkTS-Sta。
 
@@ -3758,7 +3758,7 @@ typeNode.createCheckboxGroupNode(uiContext);
 
 ## RadioFrameNode<sup>22+</sup>
 
-RadioFrameNode[TypedFrameNode](#typedframenode20)，用于声明Radio类型的FrameNode。
+RadioFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Radio类型的FrameNode。
 
 **ArkTS版本：** 该接口仅适用于ArkTS-Sta。
 
@@ -3835,7 +3835,7 @@ typeNode.createRadioNode(uiContext);
 
 ## RatingFrameNode<sup>22+</sup>
 
-RatingFrameNode[TypedFrameNode](#typedframenode20)，用于声明Rating类型的FrameNode。
+RatingFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Rating类型的FrameNode。
 
 **ArkTS版本：** 该接口仅适用于ArkTS-Sta。
 
@@ -3912,7 +3912,7 @@ typeNode.createRatingNode(uiContext);
 
 ## SelectFrameNode<sup>22+</sup>
 
-SelectFrameNode[TypedFrameNode](#typedframenode20)，用于声明Select类型的FrameNode。
+SelectFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Select类型的FrameNode。
 
 **ArkTS版本：** 该接口仅适用于ArkTS-Sta。
 
@@ -3989,7 +3989,7 @@ typeNode.createSelectNode(uiContext);
 
 ## SliderFrameNode<sup>22+</sup>
 
-SliderFrameNode[TypedFrameNode](#typedframenode20)，用于声明Slider类型的FrameNode。
+SliderFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Slider类型的FrameNode。
 
 **ArkTS版本：** 该接口仅适用于ArkTS-Sta。
 
@@ -4066,7 +4066,7 @@ typeNode.createSliderNode(uiContext);
 
 ## ToggleFrameNode<sup>22+</sup>
 
-ToggleFrameNode[TypedFrameNode](#typedframenode20)，用于声明Toggle类型的FrameNode。
+ToggleFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Toggle类型的FrameNode。
 
 **ArkTS版本：** 该接口仅适用于ArkTS-Sta。
 
