@@ -136,8 +136,6 @@ import { UIUtils } from '@kit.ArkUI';
   @Entry
   @ComponentV2
   struct Index {
-    @Local w: number = 50; // 宽度
-    @Local h: number = 50; // 高度
     @Local message: string = 'Hello';
 
     @Monitor('message')
@@ -149,35 +147,28 @@ import { UIUtils } from '@kit.ArkUI';
 
     build() {
       Column() {
+        Text(`message: ${this.message}`)
         Button('change size')
           .margin(20)
           .onClick(() => {
-            // 在执行动画前，存在额外的修改
-            this.w = 100;
-            this.h = 100;
+            // test1：调用applySync接口，日志打印两次
+            // UIUtils.applySync(() => {
+            //   this.message = 'Hello World';
+            // })
+            
+            // test2：调用flushUpdates接口，日志打印两次
+            // this.message = 'Hello World';
+            // UIUtils.flushUpdates();
+            
+            // test3：调用flushUIUpdates接口，日志打印一次
             this.message = 'Hello World';
             UIUtils.flushUIUpdates();
-
-            this.getUIContext().animateTo({
-              duration: 1000
-            }, () => {
-              this.w = 200;
-              this.h = 200;
-              this.message = 'Hello ArkUI';
-            });
+            this.message = 'Hello ArkUI';
           })
-        Column() {
-          Text(`${this.message}`)
-        }
-        .backgroundColor('#ff17a98d')
-        .width(this.w)
-        .height(this.h)
       }
     }
   }
   ```
-
-  ![applySync-flushUpdates-flushUIUpdates](./figures/applySync-flushUpdates-flushUIUpdates.gif)
 
 ## 限制条件
 
@@ -414,9 +405,15 @@ struct SharedTransitionExample {
   build() {
     Column() {
       // 此处'app.media.startIcon'仅做示例，请开发者自行替换
-      Image($r('app.media.startIcon')).width(50).height(50).margin({ left: 20, top: 20 })
+      Image($r('app.media.startIcon'))
+        .width(50)
+        .height(50)
+        .margin({ left: 20, top: 20 })
         .sharedTransition(this.info.name, { duration: 800, curve: Curve.Linear, delay: 100 })
-    }.width('100%').height('100%').alignItems(HorizontalAlign.Start)
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Start)
     .onClick(() => {
       UIUtils.applySync(() => {
         this.info.name = 'id1'; // 不匹配
@@ -439,7 +436,9 @@ struct PageBExample {
   build() {
     Stack() {
       // 此处'app.media.startIcon'仅做示例，请开发者自行替换
-      Image($r('app.media.startIcon')).width(150).height(150)
+      Image($r('app.media.startIcon'))
+        .width(150)
+        .height(150)
         .sharedTransition('sharedImage', { duration: 800, curve: Curve.Linear, delay: 100 })
         .onClick(() => {
           UIUtils.applySync(() => {
@@ -447,7 +446,9 @@ struct PageBExample {
           });
           this.getUIContext().getRouter().back();
         })
-    }.width('100%').height('100%')
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
