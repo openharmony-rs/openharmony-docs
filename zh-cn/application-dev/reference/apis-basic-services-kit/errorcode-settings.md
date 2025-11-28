@@ -42,6 +42,8 @@ Original service error.
 
 **处理步骤**
 
+切换当前上下文环境，使用UIAbility模型。
+
 ## 16900010 参数检查失败
 
 **错误信息**
