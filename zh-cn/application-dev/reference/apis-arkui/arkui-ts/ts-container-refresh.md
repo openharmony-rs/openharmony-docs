@@ -99,6 +99,22 @@ pullToRefresh(value: boolean)
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
 | value  | boolean |  是 | 当下拉距离超过[refreshOffset](#refreshoffset12)时是否能触发刷新。true表示能触发刷新，false表示不能触发刷新。<br/>默认值：true |
 
+### pullUpToCancelRefresh<sup>23+</sup>
+
+pullUpToCancelRefresh(enabled: boolean | undefined)
+
+设置刷新状态之后，上划是否取消刷新。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名  | 类型                 | 必填 | 说明                                                         |
+| ------- | -------------------- | ---- | ------------------------------------------------------------ |
+| enabled | boolean \| undefined | 是   | 刷新状态之后，上划是否取消刷新。<br/>true表示能取消刷新；false表示不能取消刷新。<br/>值为undefined时，上划能取消刷新。 |
+
 ### pullDownRatio<sup>12+</sup>
 
 pullDownRatio(ratio: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number>)
@@ -879,3 +895,105 @@ struct RefreshExample {
 ```
 
 ![refresh_list_edgeEffect](figures/refresh_alwaysEnabled.gif)
+
+### 示例10（上划不取消刷新）
+
+该示例通过[pullUpToCancelRefresh](#pulluptocancelrefresh23)接口设置上划不取消刷新。
+
+从API version 23开始，新增pullUpToCancelRefresh接口。
+
+```ts
+// xxx.ets
+import { ComponentContent } from '@kit.ArkUI';
+
+class Params {
+  refreshStatus: RefreshStatus = RefreshStatus.Inactive;
+
+  constructor(refreshStatus: RefreshStatus) {
+    this.refreshStatus = refreshStatus;
+  }
+}
+
+@Builder
+function customRefreshingContent(params: Params) {
+  Stack() {
+    Row() {
+      LoadingProgress().height(32)
+      Text("refreshStatus: " + params.refreshStatus).fontSize(16).margin({ left: 20 })
+    }
+    .alignItems(VerticalAlign.Center)
+  }
+  .align(Alignment.Center)
+  .clip(true)
+  .constraintSize({ minHeight: 32 })
+  .width("100%")
+}
+
+@Entry
+@Component
+struct RefreshExample {
+  @State isRefreshing: boolean = false;
+  @State arr: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']; // 改为原始类型string[]
+  @State refreshStatus: RefreshStatus = RefreshStatus.Inactive;
+  private contentNode?: ComponentContent<Object> = undefined;
+  private params: Params = new Params(RefreshStatus.Inactive);
+
+  aboutToAppear(): void {
+    let uiContext = this.getUIContext();
+    this.contentNode = new ComponentContent(uiContext, wrapBuilder(customRefreshingContent), this.params);
+  }
+
+  build() {
+    Column() {
+      Refresh({ refreshing: $$this.isRefreshing, refreshingContent: this.contentNode }) {
+        List() {
+          ForEach(this.arr, (item: string) => {
+            ListItem() {
+              Text('' + item)
+                .width('70%')
+                .height(80)
+                .fontSize(16)
+                .margin(10)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(0xFFFFFF)
+            }
+          }, (item: string) => item)
+        }
+        .onScrollIndex((first: number) => {
+          console.info(first.toString());
+        })
+        .width('100%')
+        .height('100%')
+        .alignListItem(ListItemAlign.Center)
+        .scrollBar(BarState.Off)
+      }
+      .backgroundColor(0x89CFF0)
+      .pullToRefresh(true)
+      .pullUpToCancelRefresh(false)
+      .refreshOffset(96)
+      .onStateChange((refreshStatus: RefreshStatus) => {
+        this.refreshStatus = refreshStatus;
+        this.params.refreshStatus = refreshStatus;
+        this.contentNode?.update(this.params);
+        console.info('Refresh onStatueChange state is ' + refreshStatus);
+      })
+      .onRefreshing(() => {
+        setTimeout(() => {
+          const newArr: string[] = [];
+          const lastNum = parseInt(this.arr[this.arr.length - 1]);
+          for (let i = 0; i < 11; i++) {
+            newArr.push((lastNum + 1 + i).toString());
+          }
+          this.arr = newArr;
+
+          this.isRefreshing = false;
+        }, 6000)
+        console.info('onRefreshing test');
+      })
+    }
+  }
+}
+```
+
+![refresh_pullUpToCancelRefresh](figures/refresh_pullUpToCancelRefresh.gif)
