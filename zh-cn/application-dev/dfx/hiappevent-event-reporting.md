@@ -41,56 +41,56 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 1. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中添加数据处理者。analytics_demo为预置在设备里面的数据处理者lib库<!--Del-->，具体实现可以参考[《HiAppEvent数据处理者lib库概述》](../../device-dev/subsystems/subsys-dfx-hiappevent-extend-so.md)<!--DelEnd-->。完整示例代码如下：
 
    <!-- @[EventEsc_Header_And_Add_Processor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->    
-
-``` TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
-
-@Entry
-@Component
-struct Index {
-  processorId: number = -1; // 初始化processorId为-1
-
-  build() {
-    Row() {
-      Column() {
-        Button('addProcessorTest')
-          .type(ButtonType.Capsule)
-          .margin({
-            top: 20
-          })
-          .backgroundColor('#0D9FFB')
-          .width('50%')
-          .height('5%')
-          .onClick(() => {
-            // 在按钮点击函数中进行数据处理者添加
-            let eventConfig: hiAppEvent.AppEventReportConfig = {
-              domain: 'button',
-              name: 'click',
-              isRealTime: true
-            };
-            let processor: hiAppEvent.Processor = {
-              name: 'analytics_demo',
-              debugMode: true,
-              routeInfo: 'CN',
-              onStartReport: true,
-              onBackgroundReport: true,
-              periodReport: 10,
-              batchReport: 5,
-              userIds: ['testUserIdName'],
-              userProperties: ['testUserPropertyName'],
-              eventConfigs: [eventConfig]
-            };
-            this.processorId = hiAppEvent.addProcessor(processor);
-          })
-		// ···
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+   
+   @Entry
+   @Component
+   struct Index {
+     processorId: number = -1; // 初始化processorId为-1
+   
+     build() {
+       Row() {
+         Column() {
+           Button('addProcessorTest')
+             .type(ButtonType.Capsule)
+             .margin({
+               top: 20
+             })
+             .backgroundColor('#0D9FFB')
+             .width('50%')
+             .height('5%')
+             .onClick(() => {
+               // 在按钮点击函数中进行数据处理者添加
+               let eventConfig: hiAppEvent.AppEventReportConfig = {
+                 domain: 'button',
+                 name: 'click',
+                 isRealTime: true
+               };
+               let processor: hiAppEvent.Processor = {
+                 name: 'analytics_demo',
+                 debugMode: true,
+                 routeInfo: 'CN',
+                 onStartReport: true,
+                 onBackgroundReport: true,
+                 periodReport: 10,
+                 batchReport: 5,
+                 userIds: ['testUserIdName'],
+                 userProperties: ['testUserPropertyName'],
+                 eventConfigs: [eventConfig]
+               };
+               this.processorId = hiAppEvent.addProcessor(processor);
+             })
+           // ...
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   ```
 
 2. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中添加并查看用户ID。完整示例代码如下：
 
