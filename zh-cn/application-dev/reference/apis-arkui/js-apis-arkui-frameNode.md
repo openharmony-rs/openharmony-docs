@@ -3543,7 +3543,7 @@ abstract initialize(label: ResourceStr, options?: ButtonOptions): ButtonAttribut
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
-| label  | [ResourceStr]((./ts-types.md#resourcestr)) | 是 | 设置按钮文本内容
+| label  | [ResourceStr](./arkui-ts/ts-types.md#resourcestr) | 是 | 设置按钮文本内容
 | options | [ButtonOptions](./arkui-ts/ts-basic-components-button.md#buttonoptions对象说明) | 否   | 设置Button组件参数。 |
 
 **返回值：**
