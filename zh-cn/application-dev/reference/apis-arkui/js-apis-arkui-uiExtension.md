@@ -432,6 +432,7 @@ offWindowSizeChange(callback?: Callback<window.Size>): void
 // ExtensionProvider.ets
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
   onSessionDestroy(session: UIExtensionContentSession) {
@@ -635,6 +636,7 @@ offRectChange(callback?: Callback&lt;RectChangeOptions&gt;): void
 // ExtensionProvider.ets
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
+import uiExtension from '@ohos.arkui.uiExtension';
 
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
   onSessionDestroy(session: UIExtensionContentSession) {

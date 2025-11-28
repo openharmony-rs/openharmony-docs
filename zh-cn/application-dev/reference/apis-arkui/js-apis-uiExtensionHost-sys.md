@@ -418,10 +418,10 @@ import { UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
 export default class EntryAbility extends UIExtensionAbility {
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
-    // 注销组件（EmbeddedComponent或UIExtensionComponent）大小变化的监听
     extensionHostWindow.onWindowSizeChange((size) => {
       console.info(`The size of the component is: ${JSON.stringify(size)}.`);
     });
+    // 注销组件（EmbeddedComponent或UIExtensionComponent）大小变化的监听
     extensionHostWindow.offWindowSizeChange();
   }
 }
