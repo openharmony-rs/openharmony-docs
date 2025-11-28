@@ -20,31 +20,14 @@ Exif信息的读取与编辑相关API的详细介绍请参见[API参考](../../r
 
 获取图片，创建ImageSource。读取、编辑Exif信息。示例代码如下：
 
-```ts
-// 导入相关模块包。
-import { image } from '@kit.ImageKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+1. 导入相关模块包。
 
-// 获取沙箱路径创建ImageSource。
-const fd : number = 0; // 获取需要被处理的图片的fd。
-const imageSourceApi : image.ImageSource = image.createImageSource(fd);
+   <!-- @[editExif_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ExifUtility.ets) -->   
 
-// 读取Exif信息，BitsPerSample为每个像素比特数。
-let options : image.ImagePropertyOptions = { index: 0, defaultValue: 'This key has no value!' };
-imageSourceApi.getImageProperty(image.PropertyKey.BITS_PER_SAMPLE, options).then((data : string) => {
-  console.info('Succeeded in getting the value of the specified attribute key of the image.');
-}).catch((error : BusinessError) => {
-  console.error(`Failed to get the value of the specified attribute key of the image, error.code: ${error.code}, error.message: ${error.message}`);
-})
+2. 获取指定key的Exif信息接口示例。
 
-// 编辑Exif信息。
-imageSourceApi.modifyImageProperty(image.PropertyKey.IMAGE_WIDTH, "120").then(() => {
-  imageSourceApi.getImageProperty(image.PropertyKey.IMAGE_WIDTH).then((width : string) => {
-    console.info('The new imageWidth is ' + width);
-  }).catch((error : BusinessError) => {
-    console.error(`Failed to get the Image Width, error.code: ${error.code}, error.message: ${error.message}`);
-  })
-}).catch((error : BusinessError) => {
-  console.error(`Failed to modify the Image Width, error.code: ${error.code}, error.message: ${error.message}`);
-})
-```
+   <!-- @[get_exif](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ExifUtility.ets) -->   
+
+3. 修改指定key的Exif信息的接口示例。
+
+   <!-- @[modify_exif](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ExifUtility.ets) -->   
