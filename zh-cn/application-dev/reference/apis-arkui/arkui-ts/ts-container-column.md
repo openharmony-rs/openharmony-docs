@@ -213,7 +213,7 @@ struct ColumnExample {
 
       // 通过资源引用方式设置子元素垂直方向间距
       Text('Resource space').width('90%')
-      Column({ space: $r("app.string.stringSpace") }) {
+      Column({ space: $r('app.string.stringSpace') }) {
         Column().width('100%').height(30).backgroundColor(0xAFEEEE)
         Column().width('100%').height(30).backgroundColor(0x00FFFF)
       }.width('90%').height(100).border({ width: 1 })
