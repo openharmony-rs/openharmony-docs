@@ -213,7 +213,7 @@ struct Page {
 
 ## List&Grid并行化创建子组件
 
-从API version 22开始，提供[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)的重载接口[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)用于UI并行化循环创建。<!--Del-->该方法的使用方案和注意事项请参考：[List/Grid并行化创建子组件在长时任务插入时可能会发生的问题及原因](../faqs/faqs-arkui-component.md#listgrid并行化创建子组件在长时任务插入时可能会发生的问题及原因api-22)。<!--DelEnd-->
+从API version 22开始，提供[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)的重载接口[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)用于UI并行化循环创建。<!--Del-->常见问题请参考[如何解决List&Grid并行创建子组件显示时间延后的问题？](../faqs/faqs-arkui-component.md#如何解决listgrid并行创建子组件显示时间延后的问题api-22)<!--DelEnd-->
 
 如下示例演示了在不同场景中，如何使用[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)并行创建子节点。
 
