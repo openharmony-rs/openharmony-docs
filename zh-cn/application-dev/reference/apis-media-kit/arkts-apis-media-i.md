@@ -239,28 +239,29 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- |------------------------------------------------------------ |
-| album     | string | 否 | 是 | 专辑的标题。当前版本AVRecorder不支持该属性的设置。     |
-| albumArtist | string | 否 | 是 | 专辑的艺术家。当前版本AVRecorder不支持该属性的设置。 |
-| artist | string | 否 | 是 | 媒体资源的艺术家。当前版本AVRecorder不支持该属性的设置。 |
-| author | string | 否 | 是 | 媒体资源的作者。当前版本AVRecorder不支持该属性的设置。 |
-| dateTime | string | 否 | 是 | 媒体资源的创建时间。当前版本AVRecorder不支持该属性的设置。 |
-| dateTimeFormat | string | 否 | 是 | 媒体资源的创建时间，按YYYY-MM-DD HH:mm:ss格式输出。当前版本AVRecorder不支持该属性的设置。 |
-| composer | string | 否 | 是 | 媒体资源的作曲家。当前版本AVRecorder不支持该属性的设置。 |
-| duration | string | 否 | 是 | 媒体资源的时长。当前版本AVRecorder不支持该属性的设置。 |
+| album     | string | 否 | 是 | 专辑的标题。不支持AVRecorder设置该属性。     |
+| albumArtist | string | 否 | 是 | 专辑的艺术家。不支持AVRecorder设置该属性。 |
+| artist | string | 否 | 是 | 媒体资源的艺术家。不支持AVRecorder设置该属性。 |
+| author | string | 否 | 是 | 媒体资源的作者。不支持AVRecorder设置该属性。 |
+| dateTime | string | 否 | 是 | 媒体资源的创建时间。不支持AVRecorder设置该属性。 |
+| dateTimeFormat | string | 否 | 是 | 媒体资源的创建时间，按YYYY-MM-DD HH:mm:ss格式输出。不支持AVRecorder设置该属性。 |
+| composer | string | 否 | 是 | 媒体资源的作曲家。不支持AVRecorder设置该属性。 |
+| duration | string | 否 | 是 | 媒体资源的时长。不支持AVRecorder设置该属性。 |
 | genre | string | 否 | 是 | 媒体资源的类型或体裁。|
-| hasAudio | string | 否 | 是 | 媒体资源是否包含音频。当前版本AVRecorder不支持该属性的设置。 |
-| hasVideo | string | 否 | 是 | 媒体资源是否包含视频。当前版本AVRecorder不支持该属性的设置。 |
-| mimeType | string | 否 | 是 | 媒体资源的mime类型。当前版本AVRecorder不支持该属性的设置。 |
-| trackCount | string | 否 | 是 | 媒体资源的轨道数量。当前版本AVRecorder不支持该属性的设置。 |
-| sampleRate | string | 否 | 是 | 音频的采样率，单位为赫兹（Hz）。当前版本AVRecorder不支持该属性的设置。 |
-| title | string | 否 | 是 | 媒体资源的标题。当前版本为只读参数。当前版本AVRecorder不支持该属性的设置。 |
-| videoHeight | string | 否 | 是 | 视频的高度，单位为像素（px）。当前版本AVRecorder不支持该属性的设置。 |
-| videoWidth | string | 否 | 是 | 视频的宽度，单位为像素（px）。当前版本AVRecorder不支持该属性的设置。 |
+| hasAudio | string | 否 | 是 | 媒体资源是否包含音频。不支持AVRecorder设置该属性。 |
+| hasVideo | string | 否 | 是 | 媒体资源是否包含视频。不支持AVRecorder设置该属性。 |
+| mimeType | string | 否 | 是 | 媒体资源的mime类型。不支持AVRecorder设置该属性。 |
+| trackCount | string | 否 | 是 | 媒体资源的轨道数量。不支持AVRecorder设置该属性。 |
+| sampleRate | string | 否 | 是 | 音频的采样率，单位为赫兹（Hz）。不支持AVRecorder设置该属性。 |
+| title | string | 否 | 是 | 媒体资源的标题。当前版本为只读参数。不支持AVRecorder设置该属性。 |
+| description<sup>23+</sup> | string | 否 | 是 | 媒体资源的描述信息。当前版本为只读参数。不支持AVRecorder设置该属性。 |
+| videoHeight | string | 否 | 是 | 视频的高度，单位为像素（px）。不支持AVRecorder设置该属性。 |
+| videoWidth | string | 否 | 是 | 视频的宽度，单位为像素（px）。不支持AVRecorder设置该属性。 |
 | videoOrientation | string | 否 | 是 | 视频的旋转方向，单位为度（°）。|
-| hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | 否 | 是 | 媒体资源的HDR类型。当前版本AVRecorder不支持该属性的设置。 |
+| hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | 否 | 是 | 媒体资源的HDR类型。不支持AVRecorder设置该属性。 |
 | location<sup>12+</sup> | [Location](#location) | 否 | 是 | 视频的地理位置信息。 |
 | customInfo<sup>12+</sup> | Record<string, string> | 否 | 是 | 从moov.meta.list 获取的自定义参数键值映射。|
-| tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | 否 | 是 | 媒体资源的轨道信息。当前版本AVRecorder不支持该属性的设置。|
+| tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | 否 | 是 | 媒体资源的轨道信息。不支持AVRecorder设置该属性。|
 
 ### AVMetadata.tracks支持的MediaDescriptionKey<sup>8+</sup>说明
 
