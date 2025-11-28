@@ -395,7 +395,7 @@ private scroller: Scroller = new Scroller();
 
 关于按需加载优化的具体实现可参考[数据懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)章节中的示例。
 
-当使用懒加载方式渲染网格时，为了更好的滚动体验，减少滑动时出现白块，Grid组件中也可通过[cachedCount](../reference/apis-arkui/arkui-ts/ts-container-grid.md#cachedcount)属性设置GridItem的预加载数量，只在[懒加载LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)中生效。
+当使用懒加载方式渲染网格时，为了更好的滚动体验，减少滑动时出现白块，Grid组件中也可通过[cachedCount](../reference/apis-arkui/arkui-ts/ts-container-grid.md#cachedcount)属性设置GridItem的预加载数量，只在懒加载[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)中生效。
 
   设置预加载数量后，会在Grid显示区域前后各缓存cachedCount\*列数个GridItem，超出显示和缓存范围的GridItem会被释放。
 
