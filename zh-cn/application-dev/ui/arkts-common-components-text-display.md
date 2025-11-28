@@ -11,6 +11,7 @@ Text是文本组件，用于展示用户视图，如显示文章的文字内容�
 
 具体用法请参考[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)和[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)组件的使用说明。
 
+常见问题请参考[文本显示（Text/Span）常见问题](./arkts-text-faq.md#文本显示textspan常见问题)。
 
 ## 创建文本
 
