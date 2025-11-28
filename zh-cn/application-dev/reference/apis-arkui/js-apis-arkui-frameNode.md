@@ -3842,7 +3842,7 @@ RatingFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Rating
 ### initialize<sup>22+</sup>
 abstract initialize(options?: RatingOptions): RatingAttribute
 
-该接口用于创建Radio类型组件的构造参数，用于设置或更新组件的初始值。
+该接口用于创建Rating类型组件的构造参数，用于设置或更新组件的初始值。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4073,7 +4073,7 @@ ToggleFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Toggle
 ### initialize<sup>22+</sup>
 abstract initialize(value: ToggleOptions): ToggleAttribute;
 
-该接口用于创建Slider类型组件的构造参数，用于设置或更新组件的初始值。
+该接口用于创建Toggle类型组件的构造参数，用于设置或更新组件的初始值。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
