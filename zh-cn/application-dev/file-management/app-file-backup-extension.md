@@ -227,7 +227,9 @@ class BackupExt extends BackupExtensionAbility {
     开发者可根据自身的业务场景，选择对应的恢复数据方式。
 
    **示例：**
-假设应用的数据备份路径为：**data/storage/el2/base/files/A/** 。那么在恢复时，如果配置了fullBackupOnly为false，数据会被直接解压到：**/data/storage/el2/base/files/A/** 目录下；如果配置了fullBackupOnly为true，数据则会被解压到：**临时路径backupDir + /restore/data/storage/el2/base/files/A/** 目录下。
+假设应用的数据备份路径为：**data/storage/el2/base/files/A/** 。那么在恢复时：
+    - 如果配置了fullBackupOnly为false，数据会被直接解压到：**/data/storage/el2/base/files/A/** 目录下；
+    - 如果-配置了fullBackupOnly为true，数据则会被解压到：**临时路径backupDir + /restore/data/storage/el2/base/files/A/** 目录下。
 
 2. **有关compatibleDirMapping字段的说明**  
     其内容的数组长度不能超过1000。  
