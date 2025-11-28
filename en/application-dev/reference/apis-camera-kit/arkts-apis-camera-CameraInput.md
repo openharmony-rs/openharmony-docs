@@ -6,13 +6,13 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-> **NOTE**
->
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
 CameraInput defines the camera input object.
 
 It provides camera device information used in [Session](arkts-apis-camera-Session.md).
+
+> **NOTE**
+>
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
