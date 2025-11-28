@@ -216,7 +216,8 @@ class BackupExt extends BackupExtensionAbility {
 | fullBackupOnly       | 布尔值     | 否   | 是否使用应用默认恢复目录，默认值为false。当值为true时，恢复数据时会通过临时路径进行缓存，临时路径可通过[backupDir](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md#属性)获取。当值为false或者不配置该字段时，恢复数据会以'/'为根目录解压数据。 |
 | restoreDeps          | 字符串     | 否   | **不推荐使用**，应用恢复时依赖其他应用数据，默认值为""，需要配置依赖应用名称。当前仅支持最多一个依赖项。配置的依赖仅在一次恢复任务上下文生效，如果一次恢复任务中没有检测到依赖应用，则忽略该依赖描述继续执行恢复任务。**依赖应用未恢复或者恢复失败都会导致本应用恢复失败**。 |
 | extraInfo            | json串     | 否   | 额外信息可通过该字段传递。             |
-| compatibleDirMapping            | 对象数组     | 否   | 该字段可以实现备份时按A路径进行备份，恢复时按B路径进行恢复。数组子项为对象，包含2个key，backupDir（待备份路径）和restoreDir（待恢复路径）。<br> **说明**：从API version 23开始，支持该字段。             |
+| compatibleDirMapping            | 对象数组     | 否   | 该字段可以实现备份时按A路径进行备份，恢复时按B路径进行恢复。数组子项为对象，包含2个key，backupDir（待备份路径）和restoreDir（待恢复路径）。<br> **说明**：从API version 23开始，支持该字段。             |  
+
 **字段说明：**
 1. **有关fullBackupOnly字段的说明**
 
