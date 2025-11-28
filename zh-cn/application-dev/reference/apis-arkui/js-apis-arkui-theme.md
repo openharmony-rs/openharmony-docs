@@ -163,7 +163,7 @@ setDefaultTheme(theme: [CustomTheme](#customtheme)): void
 import { CustomTheme, CustomColors, ThemeControl } from '@kit.ArkUI';
 // 自定义主题颜色
 class BlueColors implements CustomColors {
-  fontPrimary = "#FFA10A21";
+  fontPrimary = "#FF707070";
   backgroundPrimary = "#FF2787D9";
   brand = "#FFEEAAFF"; // 品牌色
 }
@@ -209,6 +209,6 @@ struct Index {
 }
 ```
 
-![zh-cn_image_setDefaultTheme_light](figures/zh-cn_image_setDefaultTheme_light.png)
+![zh-cn_image_setDefaultTheme_light](figures/zh-cn_image_setDefaultTheme_lights.png)
 
-![zh-cn_image_setDefaultTheme_night](figures/zh-cn_image_setDefaultTheme_night.png)
+![zh-cn_image_setDefaultTheme_night](figures/zh-cn_image_setDefaultTheme_nights.png)
