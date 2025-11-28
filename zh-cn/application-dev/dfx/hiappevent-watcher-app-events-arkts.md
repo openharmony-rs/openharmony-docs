@@ -159,36 +159,36 @@ import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
    在按钮点击的函数中进行事件打点。
 
    <!-- @[AppEvent_Click_ArkTS_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
-
-``` TypeScript
-        Button('writeEvent ArkTS')
-          .type(ButtonType.Capsule)
-          .margin({
-            top: 20
-          })
-          .backgroundColor('#0D9FFB')
-          .width('80%')
-          .height('5%')
-          .onClick(() => {
-            // 在按钮点击函数中进行事件打点，以记录按钮点击事件
-            let eventParams: Record<string, number> = {'clickTime': 100};
-            let eventInfo: hiAppEvent.AppEventInfo = {
-              // 事件领域定义
-              domain: 'button',
-              // 事件名称定义
-              name: 'click',
-              // 事件类型定义
-              eventType: hiAppEvent.EventType.BEHAVIOR,
-              // 事件参数定义
-              params: eventParams,
-            };
-            hiAppEvent.write(eventInfo).then(() => {
-              hilog.info(0x0000, 'testTag', `AppEvents writeEvent ArkTS success`);
-            }).catch((err: BusinessError) => {
-              hilog.error(0x0000, 'testTag', `AppEvents HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
-            });
-          })
-```
+   
+   ``` TypeScript
+   Button('writeEvent ArkTS')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       // 在按钮点击函数中进行事件打点，以记录按钮点击事件
+       let eventParams: Record<string, number> = {'clickTime': 100};
+       let eventInfo: hiAppEvent.AppEventInfo = {
+         // 事件领域定义
+         domain: 'button',
+         // 事件名称定义
+         name: 'click',
+         // 事件类型定义
+         eventType: hiAppEvent.EventType.BEHAVIOR,
+         // 事件参数定义
+         params: eventParams,
+       };
+       hiAppEvent.write(eventInfo).then(() => {
+         hilog.info(0x0000, 'testTag', `AppEvents writeEvent ArkTS success`);
+       }).catch((err: BusinessError) => {
+         hilog.error(0x0000, 'testTag', `AppEvents HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
+       });
+     })
+   ```
 
 ## 调测验证
 
