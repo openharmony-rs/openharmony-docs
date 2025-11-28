@@ -164,6 +164,68 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 | MOUSE_BUTTON_RIGHT  | 1    | 鼠标右键。   |
 | MOUSE_BUTTON_MIDDLE | 2    | 鼠标中间键。 |
 
+
+## WindowChangeType<sup>22+</sup>
+
+支持监听的窗口变化事件类型。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称                | 值   | 说明         |
+| ------------------- | ---- | ------------ |
+| WINDOW_UNDEFINED   | 0    | 非窗口变化事件。**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
+| WINDOW_ADDED  | 1    | 窗口出现事件。   |
+| WINDOW_REMOVED | 2    | 窗口消失事件。 |
+| WINDOW_BOUNDS_CHANGED | 3    | 窗口边框变化事件。 |
+
+
+## ComponentEventType<sup>22+</sup>
+
+支持监听的控件操作事件类型。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称                | 值   | 说明         |
+| ------------------- | ---- | ------------ |
+| COMPONENT_UNDEFINED   | 0    | 非控件操作事件。**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
+| COMPONENT_CLICKED  | 1    | 控件被点击事件。   |
+| COMPONENT_LONG_CLICKED | 2    | 控件被长按事件。 |
+| COMPONENT_SCROLL_START | 3    | 控件滚动开始事件。 |
+| COMPONENT_SCROLL_END  | 4    | 控件滚动结束事件。   |
+| COMPONENT_TEXT_CHANGED | 5    | [输入框控件](../../ui/arkts-common-components-text-input.md)文本变化事件。 |
+
+
+## WindowChangeOptions<sup>22+</sup>
+
+窗口变化事件监听的扩展配置，用于指定监听过程配置及事件筛选条件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称       | 类型   | 只读 | 可选 | 说明                  |
+| ---------- | ------ | ---- | ---- | --------------------- |
+| timeout | number | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
+| bundleName       | string | 否   | 是   | 监听窗口对应包名，默认监听所有窗口。       |
+
+
+## ComponentEventOptions<sup>22+</sup>
+
+控件操作事件监听的扩展配置，用于指定监听过程配置及事件筛选条件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称       | 类型   | 只读 | 可选 | 说明                  |
+| ---------- | ------ | ---- | ---- | --------------------- |
+| timeout | number | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
+| on       | [On](#on9) | 否   | 是   | 监听目标控件的属性要求，默认监听所有控件。<br> **说明：** 仅支持监听指定属性要求的控件，不支持监听指定On.isBefore、On.isAfter、On.within等相对位置的控件。       |
+
 ## UIElementInfo<sup>10+</sup>
 
 UI事件的相关信息。
@@ -175,6 +237,11 @@ UI事件的相关信息。
 | bundleName | string | 是   | 否   | 应用包名。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
 | type       | string | 是   | 否   | 控件/窗口类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
 | text       | string | 是   | 否   | 控件/窗口的文本信息。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| windowChangeType<sup>22+</sup>       | [WindowChangeType](#windowchangetype22) | 是   | 是   | 窗口变化事件类型，若非窗口变化事件返回WindowChangeType.WINDOW_UNDEFINED。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| componentEventType<sup>22+</sup>       | [ComponentEventType](#componenteventtype22) | 是   | 是   | 控件操作事件类型，若非控件操作事件返回ComponentEventType.COMPONENT_UNDEFINED。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| windowId<sup>22+</sup>       | number | 是   | 是   | 控件所属窗口id。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| componentId<sup>22+</sup>       | string | 是   | 是   | 控件id，若非控件操作事件返回空字符串。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| componentRect<sup>22+</sup>       | [Rect](#rect9) | 是   | 是   | 控件边框信息，若非控件操作事件则返回属性值均为0的Rect对象。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 
 ## TouchPadSwipeOptions<sup>18+</sup>
