@@ -3,6 +3,8 @@
 * 适用于需要将大型、复杂页面拆分构建的场景。
 * 由于并行构建的部分不会在当前帧立即渲染，适用于处理屏幕外内容、可延迟显示的内容或可以先用占位替代需要显示的内容。
 
+从API version 22开始，在List&Grid中提供[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)的重载接口[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)用于UI并行化循环创建。
+
 ## 概述
 传统单线程UI渲染方式已无法满足日益复杂UI和数据处理需求，UI卡顿、响应迟缓等问题严重影响用户体验。基于上述问题，ArkUI提出声明式下部分UI并行化创建方案。开发者可指定并行内容，减少组件创建时延，提升用户体验。
 
@@ -211,7 +213,9 @@ struct Page {
 
 ## List&Grid并行化创建子组件
 
-从API version 22开始，提供[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)的重载接口[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)用于UI并行化循环创建。
+从API version 22开始，提供[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)的重载接口[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)用于UI并行化循环创建。<!--Del-->常见问题请参考[如何解决List&Grid并行创建子组件显示时间延后的问题](../faqs/faqs-arkui-component.md#如何解决listgrid并行创建子组件显示时间延后的问题api-22)。<!--DelEnd-->
+
+如下示例演示了在不同场景中，如何使用[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)并行创建子节点。
 
 - 在非List和Grid中使用时，[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)会并行创建arr数组中定义的所有UI节点。适用于批量创建大量静态内容（例如图标、按钮、卡片等）。
 
