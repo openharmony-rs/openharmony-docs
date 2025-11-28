@@ -2695,7 +2695,9 @@ struct WebComponent {
 
 ## onClientAuthenticationRequest<sup>9+</sup>
 
-onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
+ArkTS-Dyn: onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
+
+ArkTS-Sta: onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\> | undefined)
 
 通知用户收到SSL客户端证书请求事件。
 
@@ -2705,11 +2707,13 @@ onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | Callback\<[OnClientAuthenticationEvent](./arkts-basic-components-web-i.md#onclientauthenticationevent12)\> | 是 | 当需要用户提供的SSL客户端证书时触发的回调。  |
+| callback  | ArkTS-Dyn: Callback\<[OnClientAuthenticationEvent](./arkts-basic-components-web-i.md#onclientauthenticationevent12)\> <br/>ArkTS-Sta: Callback\<[OnClientAuthenticationEvent](./arkts-basic-components-web-i.md#onclientauthenticationevent12)\> \|  undefined| 是 | 当需要用户提供的SSL客户端证书时触发的回调。  |
 
   **示例：**
 
   未对接证书管理的双向认证。
+
+  ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets API9
@@ -2750,9 +2754,56 @@ onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
   }
   ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets API version 22
+  import { webview } from '@kit.ArkWeb';
+  import { Entry, Component, Column, Web } from "@ohos.arkui.component"
+  import { UIContext } from '@ohos.arkui.UIContext';
+  import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onClientAuthenticationRequest((event) => {
+              const dialogOptions: AlertDialogParamWithButtons = {
+                title: 'onClientAuthenticationRequest',
+                message: 'text',
+                primaryButton: {
+                  value: 'confirm',
+                  action: () => {
+                    event.handler.confirm("/system/etc/user.pk8", "/system/etc/chain-user.pem");
+                  }
+                } as AlertDialogButtonBaseOptions,
+                secondaryButton: {
+                  value: 'cancel',
+                  action: () => {
+                    event.handler.cancel();
+                  }
+                } as AlertDialogButtonBaseOptions,
+                cancel: () => {
+                  event.handler.ignore();
+                }
+              };
+              this.uiContext.showAlertDialog(dialogOptions);
+          })
+      }
+    }
+  }
+  ```
+
   对接证书管理的双向认证。
 
   1. 构造单例对象GlobalContext。
+
+     ArkTS-Dyn示例：
 
      ```ts
      // GlobalContext.ets
@@ -2778,8 +2829,35 @@ onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
      }
      ```
 
+     ArkTS-Sta示例：
+
+     ```ts
+     // GlobalContext.ets
+     export class GlobalContext {
+       private constructor() {}
+       private static instance: GlobalContext = new GlobalContext();
+       private _objects = new Map<string, Object>();
+
+       public static getContext(): GlobalContext {
+         if (!GlobalContext.instance) {
+           GlobalContext.instance = new GlobalContext();
+         }
+         return GlobalContext.instance;
+       }
+
+       getObject(value: string): Object | undefined {
+         return this._objects.get(value);
+       }
+
+       setObject(key: string, objectClass: Object): void {
+         this._objects.set(key, objectClass);
+       }
+     }
+     ```
 
   2. 实现双向认证。
+
+     ArkTS-Dyn示例：
 
      ```ts
      // xxx.ets API10
@@ -2805,7 +2883,7 @@ onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
        async grantAppPm(callback: (message: string) => void) {
          let message = '';
          let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION;
-         // 注：com.example.myapplication需要写实际应用名称
+         // 注：com.example.myapplication需要写实际应用名称。
          try {
            bundleManager.getBundleInfoForSelf(bundleFlags).then((data) => {
              console.info('getBundleInfoForSelf successfully. Data: %{public}s', JSON.stringify(data));
@@ -2818,7 +2896,7 @@ onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
            console.error('getBundleInfoForSelf failed: %{public}s', message);
          }
 
-         // 注：需要在MainAbility.ts文件的onCreate函数里添加GlobalContext.getContext().setObject("AbilityContext", this.context)
+         // 注：需要在MainAbility.ts文件的onCreate函数里添加GlobalContext.getContext().setObject("AbilityContext", this.context)。
          let abilityContext = GlobalContext.getContext().getObject("AbilityContext") as common.UIAbilityContext
          await abilityContext.startAbilityForResult(
            {
@@ -2826,13 +2904,13 @@ onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
              abilityName: "MainAbility",
              uri: "requestAuthorize",
              parameters: {
-               appUid: this.appUid, // 传入申请应用的appUid
+               appUid: this.appUid, // 传入申请应用的appUid。
              }
            } as Want)
            .then((data: common.AbilityResult) => {
              if (!data.resultCode && data.want) {
                if (data.want.parameters) {
-                 this.authUri = data.want.parameters.authUri as string; // 授权成功后获取返回的authUri
+                 this.authUri = data.want.parameters.authUri as string; // 授权成功后获取返回的authUri。
                }
              }
            })
@@ -2846,7 +2924,7 @@ onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
      @Component
      struct WebComponent {
        controller: webview.WebviewController = new webview.WebviewController();
-       @State message: string = 'Hello World' // message主要是调试观察使用
+       @State message: string = 'Hello World' // message主要是调试观察使用。
        certManager = CertManagerService.getInstance();
        uiContext: UIContext = this.getUIContext();
 
@@ -2854,17 +2932,17 @@ onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
          Row() {
            Column() {
              Row() {
-               // 第一步：需要先进行授权，获取到uri
+               // 第一步：需要先进行授权，获取到uri。
                Button('GrantApp')
                  .onClick(() => {
                    this.certManager.grantAppPm((data) => {
                      this.message = data;
                    });
                  })
-               // 第二步：授权后，双向认证会通过onClientAuthenticationRequest回调将uri传给web进行认证
+               // 第二步：授权后，双向认证会通过onClientAuthenticationRequest回调将uri传给web进行认证。
                Button("ClientCertAuth")
                  .onClick(() => {
-                   this.controller.loadUrl('https://www.example2.com'); // 支持双向认证的服务器网站
+                   this.controller.loadUrl('https://www.example2.com'); // 支持双向认证的服务器网站。
                  })
              }
 
@@ -2873,7 +2951,6 @@ onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
                .javaScriptAccess(true)
                .domStorageAccess(true)
                .onlineImageAccess(true)
-
                .onClientAuthenticationRequest((event) => {
                  this.uiContext.showAlertDialog({
                    title: 'ClientAuth',
@@ -2889,6 +2966,124 @@ onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
                    }
                  })
                })
+           }
+         }
+         .width('100%')
+         .height('100%')
+       }
+     }
+     ```
+
+     ArkTS-Sta示例：
+
+     ```ts
+     import { Entry, Text, Column, Component, Button, Web,     AlertDialogParamWithConfirm, UIContext, State, Row } from '@kit.ArkUI'
+     import { common, Want, bundleManager} from '@kit.AbilityKit';
+     import { webview } from '@kit.ArkWeb';
+     import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+     import { GlobalContext } from './GlobalContext';
+
+     let uri = "";
+
+     export default class CertManagerService {
+       private static sInstance: CertManagerService = new CertManagerService();
+       private authUri = "";
+       private appUid = "";
+
+       public static getInstance(): CertManagerService {
+         if (CertManagerService.sInstance == null) {
+           CertManagerService.sInstance = new CertManagerService();
+         }
+         return CertManagerService.sInstance;
+       }
+
+       async grantAppPm(callback: (message: string) => void) {
+         let message = '';
+         let bundleFlags: int = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION;
+         // 注：com.example.myapplication需要写实际应用名称。
+         try {
+           await bundleManager.getBundleInfoForSelf(bundleFlags).then(async (data: bundleManager.BundleInfo) => {
+            console.info('getBundleInfoForSelf successfully. Data: %{public}s', JSON.stringify(data));
+            this.appUid = data?.appInfo?.uid?.toString() ?? '';
+           }).catch((err) => {
+             console.error('getBundleInfoForSelf failed. Cause: %{public}s', err.message);
+           });
+         } catch (err) {
+           let message = (err as BusinessError).message;
+           console.error('getBundleInfoForSelf failed: %{public}s', message);
+         }
+
+         // 注：需要在MainAbility.ts文件的onCreate函数里添加GlobalContext.getContext().setObject("AbilityContext", this.context)。
+         let abilityContext = GlobalContext.getContext().getObject("AbilityContext") as common.UIAbilityContext
+         let tempParameters: undefined|Record<String,undefined|null|Object> = {
+           'appUid': this.appUid
+         }
+         await abilityContext.startAbilityForResult(
+           {
+             bundleName: "com.ohos.certmanager",
+             abilityName: "MainAbility",
+             uri: "requestAuthorize",
+             parameters: tempParameters
+           } as Want)
+           .then((data: common.AbilityResult) => {
+             if (!data.resultCode && data.want) {
+               if (data?.want?.parameters) {
+                 this.authUri = data?.want?.parameters?.get("authUri") as string; // 授权成功后获取返回的authUri。
+               }
+             }
+           })
+         message += "after grantAppPm authUri: " + this.authUri;
+         uri = this.authUri;
+         callback(message)
+       }
+     }
+
+     @Entry
+     @Component
+     struct WebComponent {
+       controller: webview.WebviewController = new webview.WebviewController(undefined);
+       @State message: string = 'Hello World' // message主要是调试观察使用。
+       certManager: CertManagerService = CertManagerService.getInstance();
+       uiContext: UIContext = this.getUIContext();
+
+       build() {
+         Row() {
+           Column() {
+             Row() {
+               // 第一步：需要先进行授权，获取到uri。
+               Button('GrantApp')
+                 .onClick(() => {
+                   this.certManager.grantAppPm((data) => {
+                     this.message = data;
+                  });
+                 })
+               // 第二步：授权后，双向认证会通过onClientAuthenticationRequest回调将uri传给web进行认证。
+               Button("ClientCertAuth")
+                 .onClick(() => {
+                   this.controller.loadUrl('https://www.example2.com'); // 支持双向认证的服务器网站。
+                 })
+             }
+
+             Web({ src: 'https://www.example1.com', controller: this.controller })
+              .fileAccess(true)
+              .javaScriptAccess(true)
+              .domStorageAccess(true)
+              .onlineImageAccess(true)
+              .onClientAuthenticationRequest((event) => {
+                this.uiContext.showAlertDialog({
+                  title: 'ClientAuth',
+                  message: 'Text',
+                  confirm: {
+                    value: 'Confirm',
+                    action: () => {
+                      event.handler.confirm(uri);
+                    }
+                  },
+                  cancel: () => {
+                    event.handler.cancel();
+                  }
+                } as AlertDialogParamWithConfirm)
+              })
            }
          }
          .width('100%')
@@ -5603,7 +5798,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
 ```ts
 import { webview } from '@kit.ArkWeb';
-import { Button, Web, Column, Component, Entry, State, AppStorage } from '@kit.ArkUI';
+import { Web, Column, Component, Entry } from '@kit.ArkUI';
 
 @Entry
 @Component
