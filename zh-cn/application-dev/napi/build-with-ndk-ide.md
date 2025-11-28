@@ -1,4 +1,10 @@
 # 使用DevEco Studio模板构建NDK工程
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 
 NDK通过CMake和Ninja编译应用的C/C++代码，编译过程如下图所示。
