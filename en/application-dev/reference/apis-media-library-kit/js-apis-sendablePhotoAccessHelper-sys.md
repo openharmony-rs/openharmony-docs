@@ -355,7 +355,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 getAnalysisData(analysisType: AnalysisType): Promise\<string>
 
-Obtains analysis data. This API uses a promise to return the result.
+Obtains analysis data.
 
 **System API**: This is a system API.
 

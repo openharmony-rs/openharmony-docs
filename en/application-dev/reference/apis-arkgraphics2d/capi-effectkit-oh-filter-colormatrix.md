@@ -1,12 +1,5 @@
 # OH_Filter_ColorMatrix
 
-<!--Kit: ArkGraphics 2D-->
-<!--Subsystem: Multimedia-->
-<!--Owner: @hanamaru-->
-<!--Designer: @gaoweihua-->
-<!--Tester: @zhaoxiaoguang2-->
-<!--Adviser: @ge-yafang-->
-
 ## Overview
 
 Describes a matrix used to create an effect filter.

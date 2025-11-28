@@ -187,3 +187,7 @@ void TestInputEventInterceptor()
     ret = OH_Input_RemoveInputEventInterceptor();
 }
 ```
+
+## 完整示例
+
+- [输入事件拦截（C/C++）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/input/NDKInputEventInterceptor)

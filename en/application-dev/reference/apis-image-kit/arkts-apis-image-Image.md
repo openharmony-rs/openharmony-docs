@@ -160,5 +160,3 @@ async function Release(img : image.Image) {
   })
 }
 ```
-
-<!--no_check-->

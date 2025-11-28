@@ -1,5 +1,12 @@
 # DownloadFileButton
 
+<!--Kit: ArkUI-->	
+<!--Subsystem: ArkUI-->	
+<!--Owner: @yaoyao1798-->	
+<!--Designer: @yaoyao1798-->	
+<!--Tester: @yangjiayong2686-->	
+<!--Adviser: @yaoyao1798-->
+
 **DownloadFileButton** is a download button that, when clicked, allows you to obtain the storage location of the current application in the public **Download** directory.
 
 
@@ -46,10 +53,10 @@ Defines the content displayed in the download file button.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type                                                        | Mandatory| Description                                                        |
-| ---- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| icon | [DownloadIconStyle](#downloadiconstyle) | No  | Icon style of the download file button.<br>If this parameter is not specified, no icon is contained. Either **icon** or **text**, or both, must be set.|
-| text | [DownloadDescription](#downloaddescription) | No  | Text on the download file button.<br>If this parameter is not specified, no text is contained. Either **icon** or **text**, or both, must be set.|
+| Name| Type                                                        | Read-Only| Optional| Description                                                        |
+| ---- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| icon | [DownloadIconStyle](#downloadiconstyle) | No  | Yes  | Icon style of the download file button.<br>If this parameter is not specified, no icon is contained. Either **icon** or **text**, or both, must be set.|
+| text | [DownloadDescription](#downloaddescription) | No  | Yes  | Text on the download file button.<br>If this parameter is not specified, no text is contained. Either **icon** or **text**, or both, must be set.|
 
 ## DownloadStyleOptions
 
@@ -59,17 +66,17 @@ Defines the style of the icon and text in the download file button.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name           | Type                                                        | Mandatory| Description                                                        |
-| --------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| iconSize        | Dimension                                                    | No  | Icon size of the download file button. The value cannot be in percentage.<br>Default value: **16vp**                     |
-| layoutDirection | [DownloadLayoutDirection](#downloadlayoutdirection) | No  | Direction of the icon and text on the download file button.<br>Default value: **DownloadLayoutDirection.HORIZONTAL**|
-| fontSize        | Dimension                                                    | No  | Font size of the download file button. The value cannot be in percentage.<br>Default value: **16fp**                     |
-| fontStyle       | FontStyle                                                    | No  | Font style of the download file button.<br>Default value: **FontStyle.Normal**         |
-| fontWeight      | number \| FontWeight \| string                               | No  | Font weight of the download file button. For the number type, the value ranges from 100 to 900, at an interval of 100. The default value is **400**. A larger value indicates a heavier font weight. For the string type, only strings that represent a number, for example, **400**, and the following enumerated values of **FontWeight** are supported: **bold**, **bolder**, **lighter**, **regular**, and **medium**.<br>Default value: **FontWeight.Medium**          |
-| fontFamily      | string \| Resource                                           | No  | Font family of the download file button.<br>Default font: **'HarmonyOS Sans'**       |
-| fontColor       | ResourceColor                                                | No  | Font color of the download file button.<br>Default value: **#ffffffff**                |
-| iconColor       | ResourceColor                                                | No  | Icon color of the download file button.<br>Default value: **#ffffffff**                |
-| textIconSpace   | Dimension                                                    | No  | Space between the icon and text on the download file button.<br>Default value: **4vp**                |
+| Name           | Type                                                        | Read-Only| Optional| Description                                                        |
+| --------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| iconSize        | [Dimension](ts-types.md#dimension10)    | No  | Yes  | Icon size of the download file button. The value cannot be in percentage.<br>Default value: **16vp**           |
+| layoutDirection | [DownloadLayoutDirection](#downloadlayoutdirection) | No  | Yes  | Direction of the icon and text on the download file button.<br>Default value: **DownloadLayoutDirection.HORIZONTAL**|
+| fontSize        | [Dimension](ts-types.md#dimension10) | No  | Yes  | Font size of the download file button. The value cannot be in percentage.<br>Default value: **16fp**           |
+| fontStyle       | [FontStyle](ts-appendix-enums.md#fontstyle) | No  | Yes  | Font style of the download file button.<br>Default value: **FontStyle.Normal**             |
+| fontWeight      | number\|[FontWeight](ts-appendix-enums.md#fontweight)\|string | No  | Yes  | Font weight of the download file button. For the number type, the value ranges from 100 to 900, at an interval of 100. The default value is **400**. A larger value indicates a heavier font weight. For the string type, only strings that represent a number, for example, **400**, and the following enumerated values of **FontWeight** are supported: **bold**, **bolder**, **lighter**, **regular**, and **medium**.<br>Default value: **FontWeight.Medium**|
+| fontFamily      | string\|[Resource](ts-types.md#resource) | No  | Yes  | Font family of the download file button.<br> Default font: **'HarmonyOS Sans'**     |
+| fontColor       | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Font color of the download file button.<br>Default value: **#ffffffff**                    |
+| iconColor       | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Icon color of the download file button.<br>Default value: **#ffffffff**                    |
+| textIconSpace   | [Dimension](ts-types.md#dimension10) | No  | Yes  | Space between the icon and text on the download file button.<br> Default value: **4vp**                    |
 
 ## DownloadIconStyle
 
@@ -191,4 +198,4 @@ struct Index {
 }
 ```
 
-![en-us_image_0000001643320073](figures/en-us_image_0000001643320073.png)
+![en-us_image_0000001643320073](figures/en-us_image_0000001643329999.png)

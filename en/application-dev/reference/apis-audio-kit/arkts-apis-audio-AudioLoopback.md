@@ -6,11 +6,6 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-> **NOTE**
->
-> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The initial APIs of this interface are supported since API version 20.
-
 This interface provides APIs for audio monitoring.
 
 Before calling any API in AudioLoopback, you must use [audio.createAudioLoopback](arkts-apis-audio-f.md#audiocreateaudioloopback20) to create an AudioLoopback instance.
@@ -18,6 +13,11 @@ Before calling any API in AudioLoopback, you must use [audio.createAudioLoopback
 When audio loopback is enabled, the system creates a low-latency renderer and capturer to implement low-latency in-ear monitoring. The audio captured is routed back to the renderer through an internal path. The renderer follows the audio focus strategy for [STREAM_USAGE_MUSIC](arkts-apis-audio-e.md#streamusage), whereas the capturer follows the strategy for [SOURCE_TYPE_MIC](arkts-apis-audio-e.md#sourcetype8).
 
 The system automatically chooses the input and output devices. If these devices do not support low latency, audio loopback does not work. If another audio stream takes over the audio focus or if the input or output device changes to the one that does not support low latency, the system disables audio loopback automatically.
+
+> **NOTE**
+>
+> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this interface are supported since API version 20.
 
 ## Modules to Import
 

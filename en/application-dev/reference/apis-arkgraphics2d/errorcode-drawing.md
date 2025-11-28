@@ -1,10 +1,4 @@
 # Drawing and Display Error Codes
-<!--Kit: ArkGraphics 2D-->
-<!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
-<!--Tester: @nobuggers-->
-<!--Adviser: @ge-yafang-->
 
 > **NOTE**
 >

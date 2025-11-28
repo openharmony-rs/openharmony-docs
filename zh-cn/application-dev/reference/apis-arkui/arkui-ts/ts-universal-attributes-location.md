@@ -28,7 +28,7 @@ align(value: Alignment): T
 
 | 参数名 | 类型                                        | 必填 | 说明                                                         |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Alignment](ts-appendix-enums.md#alignment) | 是   | 设置容器元素绘制区域内的子元素的对齐方式。<br/>只在Stack、FolderStack、Shape、Button、Marquee、StepperItem、Text、TextArea、TextInput、[RichEditor](ts-basic-components-richeditor.md)、Hyperlink、SymbolGlyph、ListItem、GridItem、Scroll、FlowItem、ImageAnimator、LoadingProgress、PatternLock、Progress、QRCode、TextClock、TextTimer、MenuItem、Toggle、Checkbox、NodeContainer中生效，其中和文本相关的组件Marquee、Text、TextArea、TextInput、RichEditor、Hyperlink的align结果参考[textAlign](ts-basic-components-text.md#textalign)。<br/>不支持textAlign属性的组件则无法设置水平方向的文字对齐。<br/>默认值：Alignment.Center<br/>**说明：** <br/>该属性不支持镜像能力。<br/>在Stack中该属性与alignContent效果一致，只能设置子组件在容器内的对齐方式。 |
+| value  | [Alignment](ts-appendix-enums.md#alignment) | 是   | 设置容器元素绘制区域内的子元素的对齐方式。<br/>只在[Stack](ts-container-stack.md)、[FolderStack](ts-container-folderstack.md)、[Shape](ts-drawing-components-shape.md)、[Button](ts-basic-components-button.md)、[Marquee](ts-basic-components-marquee.md)、[StepperItem](ts-basic-components-stepperitem.md)、[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Hyperlink](ts-container-hyperlink.md)、[SymbolGlyph](ts-basic-components-symbolGlyph.md)、[ListItem](ts-container-listitem.md)、[GridItem](ts-container-griditem.md)、[Scroll](ts-container-scroll.md)、[FlowItem](ts-container-flowitem.md)、[ImageAnimator](ts-basic-components-imageanimator.md)、[LoadingProgress](ts-basic-components-loadingprogress.md)、[PatternLock](ts-basic-components-patternlock.md)、[Progress](ts-basic-components-progress.md)、[QRCode](ts-basic-components-qrcode.md)、[TextClock](ts-basic-components-textclock.md)、[TextTimer](ts-basic-components-texttimer.md)、[MenuItem](ts-basic-components-menuitem.md)、[Toggle](ts-basic-components-toggle.md)、[Checkbox](ts-basic-components-checkbox.md)、[NodeContainer](ts-basic-components-nodecontainer.md)中生效，其中和文本相关的组件Marquee、Text、TextArea、TextInput、RichEditor、Hyperlink的align结果参考[textAlign](ts-basic-components-text.md#textalign)。<br/>不支持textAlign属性的组件则无法设置水平方向的文字对齐。<br/>默认值：Alignment.Center<br/>**说明：** <br/>该属性不支持镜像能力。<br/>在Stack中该属性与alignContent效果一致，只能设置子组件在容器内的对齐方式。 |
 
 **返回值：**
 
@@ -88,7 +88,7 @@ direction(value: Direction): T
 
 position(value: Position | Edges | LocalizedEdges): T
 
-绝对定位，确定子组件相对父组件内容区的位置。父组件内容区的大小为父组件大小减去border、padding、safeAreaPadding提供给子组件可布局的内容区域大小。position对位置的影响作用在组件的尺寸测量完成之后，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+绝对定位，确定子组件相对父组件内容区的位置。父组件内容区的大小为父组件大小减去[border](ts-universal-attributes-border.md#border)、[padding](ts-universal-attributes-size.md#padding)、[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)提供给子组件可布局的内容区域大小。position对位置的影响作用在组件的尺寸测量完成之后，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -349,6 +349,10 @@ chainWeight(chainWeight: ChainWeightOptions): T
 | 类型 | 说明 |
 | --- | --- |
 |  T | 返回当前组件。 |
+
+**示例：**
+
+具体示例请参考[示例10（设置链中节点权重）](ts-container-relativecontainer.md#示例10设置链中节点权重)。
 
 ## 示例
 

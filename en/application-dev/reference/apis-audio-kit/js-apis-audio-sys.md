@@ -448,6 +448,44 @@ Enumerates the volume adjustment types.
 | VOLUME_UP              | 0      | Adjusts the volume upwards.|
 | VOLUME_DOWN            | 1      | Adjusts the volume downwards.|
 
+## DeviceType
+
+Enumerates the device types.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+| Name                        | Value    | Description                             |
+|----------------------------| ------ |---------------------------------|
+| ACCESSORY<sup>19+</sup> | 26 | Auxiliary device (for example, microphone on a remote control).|
+
+## AudioDevcieSelectStrategy<sup>21+</sup>
+
+Enumerates the device selection strategies.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+| Name                        | Value    | Description                             |
+|----------------------------| ------ |---------------------------------|
+| SELECT_STRATEGY_DEFAULT | 0 | Default device selection strategy.|
+| SELECT_STRATEGY_INDEPENDENT | 1 | Independent device selection strategy.| 
+
+## PolicyType<sup>12+</sup>
+
+Enumerates the types of mute policies.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Volume
+
+| Name                        | Value    | Description                             |
+|----------------------------| ------ |---------------------------------|
+| EDM | 0 | Mute policy issued by the device-manager.|
+| PRIVACY | 1 | Mute policy issued by the security and privacy module.| 
+
 ## AudioManager
 
 Implements audio volume and audio device management. Before calling any API in AudioManager, you must use [getAudioManager](arkts-apis-audio-f.md#audiogetaudiomanager) to create an AudioManager instance.
@@ -767,7 +805,7 @@ Sets the type of volume that the volume keys should control.
 
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| volumeType     | [AudioVolumeType](#audiovolumetype)                       | Yes  | Type of volume to control.|
+| volumeType     | [AudioVolumeType](#audiovolumetype)                       | Yes  | Type of audio volume to control.|
 | duration |number | Yes  | Duration that the volume keys will control this type of volume if no volume key events occur. When this time expires, the forced volume type setting is canceled. The maximum duration is 10 seconds. If the duration is set to **-1**, the setting is canceled.|
 
 **Error codes**
@@ -1187,7 +1225,7 @@ Subscribes to the active volume type change event. This API uses an asynchronous
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                 | Yes  | Event type. The event **'activeVolumeTypeChange'** is triggered when the active volume type changes.|
-| callback | Callback\<[AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)> | Yes  | Callback used to return the changed active volume type.|
+| callback | Callback\<[AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)> | Yes  | Callback used to return the changed active audio volume type.|
 
 **Error codes**
 
@@ -1221,7 +1259,7 @@ Unsubscribes from the active volume type change event. This API uses an asynchro
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                 | Yes  | Event type. The event **'activeVolumeTypeChange'** is triggered when the active volume type changes.|
-| callback | Callback\<[AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)> | No  | Callback used to return the changed active volume type.|
+| callback | Callback\<[AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)> | No  | Callback used to return the changed active audio volume type.|
 
 **Error codes**
 
@@ -1270,7 +1308,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 
 | Name    | Type                               | Mandatory| Description                                                    |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio stream type.                                            |
+| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                                            |
 | volume     | number                              | Yes  | Volume. The volume range can be obtained by calling [getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated) and [getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated).|
 | callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
@@ -1306,7 +1344,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 
 | Name    | Type                               | Mandatory| Description                                                    |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio stream type.                                            |
+| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                                            |
 | volume     | number                              | Yes  | Volume. The volume range can be obtained by calling [getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated) and [getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated).|
 
 **Return value**
@@ -1341,7 +1379,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 
 | Name    | Type                               | Mandatory| Description                                  |
 | ---------- | ----------------------------------- | ---- |--------------------------------------|
-| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio stream type.                              |
+| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                              |
 | volume     | number                              | Yes  | Volume. The volume range can be obtained by calling [getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated) and [getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated).|
 | flags      | number                              | Yes  | Whether to display the system volume bar. The value **0** means not to display the system volume bar, and **1** means the opposite.|
 
@@ -1368,6 +1406,46 @@ audioVolumeGroupManager.setVolumeWithFlag(audio.AudioVolumeType.MEDIA, 10, 1).th
 });
 ```
 
+### getActiveVolumeTypeSync<sup>13+</sup>
+
+getActiveVolumeTypeSync(uid: number): AudioVolumeType
+
+Obtains the active audio volume type of a specified application. If **uid** is set to **0**, the active audio volume type of all applications is retrieved.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Volume
+
+**Parameters**
+
+| Name    | Type                               | Mandatory| Description                                  |
+| ---------- | ----------------------------------- | ---- |--------------------------------------|
+| uid      | number                              | Yes  | Application ID.|
+
+**Return value**
+
+| Type               | Description                         |
+| ------------------- | ----------------------------- |
+| [AudioVolumeType](#audiovolumetype) | Audio volume type.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202     | Not system App.                             |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters unspecified. 2.Incorrect parameter types. |
+| 6800101 | Parameter verification failed. |
+
+**Example**
+
+```ts
+let uid: number = 20010041; // Application ID.
+
+let value = audioVolumeGroupManager.getActiveVolumeTypeSync(uid);
+```
+
 ### mute<sup>9+</sup>
 
 mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback&lt;void&gt;): void
@@ -1386,7 +1464,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 
 | Name    | Type                               | Mandatory| Description                                 |
 | ---------- | ----------------------------------- | ---- | ------------------------------------- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio stream type.                         |
+| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                         |
 | mute       | boolean                             | Yes  | Mute status to set. **true** to mute, **false** otherwise.|
 | callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
@@ -1422,7 +1500,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 
 | Name    | Type                               | Mandatory| Description                                 |
 | ---------- | ----------------------------------- | ---- | ------------------------------------- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio stream type.                         |
+| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                         |
 | mute       | boolean                             | Yes  | Mute status to set. **true** to mute, **false** otherwise.|
 
 **Return value**
@@ -1551,6 +1629,83 @@ audioVolumeGroupManager.setMicMute(true).then(() => {
 });
 ```
 
+### setMicMutePersistent<sup>12+</sup>
+
+setMicMutePersistent(mute: boolean, type: PolicyType): Promise&lt;void&gt;
+
+Mutes or unmutes the microphone permanently. This API uses a promise to return the result.
+
+**Required permission**: ohos.permission.MICROPHONE_CONTROL
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Volume
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                                         |
+| ------ | ------- | ---- | --------------------------------------------- |
+| mute   | boolean | Yes  | Mute status to set. **true** to mute, **false** otherwise.|
+| type   | [PolicyType](#policytype12) | Yes  | Type of the mute policy.|
+
+**Return value**
+
+| Type               | Description                           |
+| ------------------- | ------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 201     | Permission denied.                          |
+| 202     | Not system App.                             |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters missing. 2.Incorrect parameter types. |
+| 6800101 | Parameter verification failed. |
+
+**Example**
+
+```ts
+audioVolumeGroupManager.setMicMutePersistent(true, audio.PolicyType.PRIVACY).then(() => {
+  console.info('Succeeded in setting mic mute.');
+});
+```
+
+### isPersistentMicMute<sup>12+</sup>
+
+isPersistentMicMute(): boolean
+
+Checks whether the microphone is muted permanently. This API returns the result synchronously.
+
+**Required permission**: ohos.permission.MICROPHONE_CONTROL
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Volume
+
+**Return value**
+
+| Type               | Description                           |
+| ------------------- | ------------------------------- |
+| boolean | Check result for whether the microphone is muted. **true** if muted, **false** otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 201     | Permission denied.                          |
+| 202     | Not system App.                             |
+
+**Example**
+
+```ts
+let value: boolean = audioVolumeGroupManager.isPersistentMicMute();
+```
+
 ### adjustVolumeByStep<sup>10+</sup>
 
 adjustVolumeByStep(adjustType: VolumeAdjustType, callback: AsyncCallback&lt;void&gt;): void
@@ -1664,7 +1819,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 
 | Name    | Type                               | Mandatory| Description                                                    |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio stream type.                                            |
+| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                                            |
 | adjustType | [VolumeAdjustType](#volumeadjusttype10) | Yes  | Volume adjustment type.                                      |
 | callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
@@ -1710,7 +1865,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 
 | Name    | Type                               | Mandatory| Description                                                    |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio stream type.                                            |
+| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                                            |
 | adjustType | [VolumeAdjustType](#volumeadjusttype10) | Yes  | Volume adjustment type.                                            |
 
 **Return value**
@@ -2093,7 +2248,7 @@ Selects an audio output device based on the filter criteria. Currently, only one
 | Name                      | Type                                                        | Mandatory| Description                     |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | filter                      | [AudioRendererFilter](#audiorendererfilter9)                 | Yes  | Filter criteria.              |
-| outputAudioDevices          | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | Output device.              |
+| outputAudioDevices          | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | Information about the output device.              |
 | callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
@@ -2150,7 +2305,7 @@ Selects an audio output device based on the filter criteria. Currently, only one
 | Name                | Type                                                        | Mandatory| Description                     |
 | ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
 | filter                | [AudioRendererFilter](#audiorendererfilter9)                 | Yes  | Filter criteria.              |
-| outputAudioDevices    | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | Output device.              |
+| outputAudioDevices    | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | Information about the output device.              |
 
 **Return value**
 
@@ -2195,6 +2350,76 @@ async function selectOutputDeviceByFilter(){
     console.error(`Result ERROR: ${err}`);
   })
 }
+```
+
+### selectOutputDeviceByFilter<sup>21+</sup>
+
+selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: AudioDeviceDescriptors, strategy: AudioDevcieSelectStrategy): Promise&lt;void&gt;
+
+Selects an audio output device based on the filter criteria and device selection strategy. Currently, only one output device can be selected. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Parameters**
+
+| Name                | Type                                                        | Mandatory| Description                     |
+| ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
+| filter                | [AudioRendererFilter](#audiorendererfilter9)                 | Yes  | Filter criteria.              |
+| outputAudioDevices    | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | Information about the output device.              |
+| strategy                | [AudioDevcieSelectStrategy](#audiodevcieselectstrategy21)                 | Yes  | Device selection strategy.              |
+
+**Return value**
+
+| Type                 | Description                        |
+| --------------------- | --------------------------- |
+| Promise&lt;void&gt;   | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+
+let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.SPEAKER,
+  id : 1,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, outputAudioDeviceDescriptor, audio.AudioDevcieSelectStrategy.SELECT_STRATEGY_INDEPENDENT).then(() => {
+  console.info('Succeeded in selecting output device by filter.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to select output device by filter. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### selectInputDeviceByFilter<sup>18+</sup>
@@ -2321,6 +2546,98 @@ async function selectOutputDeviceByFilter(){
     let desc : audio.AudioDeviceDescriptors = audioRoutingManager.getPreferredOutputDeviceByFilter(outputAudioRendererFilter);
     console.info(`device descriptor: ${desc}`);
 }
+```
+
+### on('preferredOutputDeviceChangeByFilter')<sup>21+</sup>
+
+on(type: 'preferredOutputDeviceChangeByFilter', filter: AudioRendererFilter, callback: Callback\<AudioDeviceDescriptors>): void
+
+Subscribes to changes in the highest-priority output device based on specified filter criteria. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Parameters**
+
+| Name  | Type                                  | Mandatory| Description                                                        |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string | Yes  | Event type. The event **'preferredOutputDeviceChangeByFilter'** is triggered when the output device with the highest priority is changed.|
+| filter | [AudioRendererFilter](#audiorendererfilter9)  | Yes  | Filter criteria.|
+| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | Yes  | Callback used to return the information about the output device with the highest priority.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**Example**
+
+```ts
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+audioRoutingManager.on('preferredOutputDeviceChangeByFilter', outputAudioRendererFilter, (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+  console.info(`Succeeded in using on function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+});
+```
+
+### off('preferredOutputDeviceChangeByFilter')<sup>21+</sup>
+
+off(type: 'preferredOutputDeviceChangeByFilter', callback?: Callback\<AudioDeviceDescriptors>): void
+
+Unsubscribes from changes in the highest-priority output device based on specified filter criteria. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+| Name  | Type                                  | Mandatory| Description                                                        |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string | Yes  | Event type. The event **'preferredOutputDeviceChangeByFilter'** is triggered when the output device with the highest priority is changed.|
+| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | No| Callback used to return the information about the output device with the highest priority.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**Example**
+
+```ts
+// Cancel all subscriptions to the event.
+audioRoutingManager.off('preferredOutputDeviceChangeByFilter');
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let preferredOutputDeviceChangeByFilterCallback = (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+  console.info(`Succeeded in using on or off function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+};
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+
+audioRoutingManager.on('preferredOutputDeviceChangeByFilter', outputAudioRendererFilter, preferredOutputDeviceChangeByFilterCallback);
+
+audioRoutingManager.off('preferredOutputDeviceChangeByFilter', preferredOutputDeviceChangeByFilterCallback);
 ```
 
 ### getPreferredInputDeviceByFilter<sup>18+</sup>
@@ -2649,10 +2966,11 @@ Describes an audio device.
 | interruptGroupId<sup>9+</sup> | number                     | Yes  | No  | ID of the interruption group to which the device belongs.<br> **System capability**: SystemCapability.Multimedia.Audio.Device|
 | volumeGroupId<sup>9+</sup>    | number                     | Yes  | No  | ID of the volume group to which the device belongs.<br> **System capability**: SystemCapability.Multimedia.Audio.Device|
 | dmDeviceType<sup>18+</sup>    | number                     | Yes  | Yes| Subtype ID of the device.<br> **System capability**: SystemCapability.Multimedia.Audio.Core|
+| highQualityRecordingSupported<sup>21+</sup>    | boolean                     | Yes  | Yes| Whether high-quality recording is supported. **true** if supported, **false** otherwise.<br> **System capability**: SystemCapability.Multimedia.Audio.Core|
 
 ## AudioRendererFilter<sup>9+</sup>
 
-Implements filter criteria. Before calling **selectOutputDeviceByFilter**, you must obtain an AudioRendererFilter instance.
+Describes the audio renderer filter criteria.
 
 **System API**: This is a system API.
 

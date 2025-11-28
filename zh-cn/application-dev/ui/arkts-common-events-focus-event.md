@@ -515,6 +515,14 @@ focusable(value: boolean)
 
 - 无获焦能力的组件，通常是无任何交互行为的展示类组件，例如Blank、Circle组件，此类组件即使使用focusable属性也无法使其可获焦。
 
+设置容器组件可获焦：
+
+获焦的主要目的是为了响应用户交互，如果组件不具备交互能力，则其也不会具有可获焦能力。容器组件通常不具备交互能力，因此如果一个容器组件（如Stack、Column）作为叶子节点，即使通过.focusable(true)也无法使其具备可获焦能力。需要注意的是通过动态方式创建的[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)节点也受限于这个规则。
+如果想让作为叶子节点的容器组件可获焦，可通过以下任一方式实现：
+
+- 在其内添加一个具备获焦能力的叶子节点组件(如button)。
+
+- 为其配置onClick、Tap手势等使其能响应点击交互。
 
 ```ts
 enabled(value: boolean)
@@ -743,7 +751,7 @@ defaultFocus(value: boolean)
 // xxx.ets
 @Entry
 @Component
-struct morenjiaodian {
+struct DefaultFocus {
   @State oneButtonColor: Color = Color.Gray;
   @State twoButtonColor: Color = Color.Gray;
   @State threeButtonColor: Color = Color.Gray;

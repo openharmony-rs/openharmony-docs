@@ -30,6 +30,10 @@
 ## 与相关Kit的关系
 - 当到达设置的提醒时间点后，代理提醒使用Notification Kit发布通知，通知会显示在通知中心，通知样式请参考[Notification Kit通知样式](../notification/notification-overview.md#通知样式)中文本类型。
 
+## 模拟器支持情况
+
+从API version 20开始，本能力支持模拟器开发。
+
 ## 接口说明
 
 以下是代理提醒的相关接口，下表均以Promise形式为例，更多接口及使用方式请见[后台代理提醒](../reference/apis-backgroundtasks-kit/js-apis-reminderAgentManager.md)文档。

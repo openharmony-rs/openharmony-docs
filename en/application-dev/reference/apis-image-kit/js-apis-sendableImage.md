@@ -2307,5 +2307,3 @@ async function Demo() {
   })
 }
 ```
-
-<!--no_check-->

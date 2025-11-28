@@ -1156,7 +1156,7 @@ Sets the configuration name of the processor.
 | Name| Description|
 | -- | -- |
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)* processor | Pointer to the processor, that is, the pointer returned by **OH_HiAppEvent_CreateProcessor**.|
-| const char* configName |  <!--RP1-->Configuration name of the data processor. which can contain only letters, digits, underscores (_), and dollar signs ($). It cannot start with a digit and cannot exceed 256 characters.<!--RP1End--> |
+| const char* configName |  <!--RP1-->Configuration name of the data processor, which can contain only letters, digits, underscores (_), and dollar signs ($). It cannot start with a digit and cannot exceed 256 characters.<!--RP1End--> |
 
 **Returns**
 
@@ -1363,7 +1363,7 @@ Sets event configuration parameters.
 
 Configuration items vary depending on events. Currently, only the following events are supported:
 
-**MAIN_THREAD_JANK** (For details about the parameter configuration, see [Main Thread Jank Event Overview](../../dfx/hiappevent-watcher-mainthreadjank-events.md#custom-parameters).)
+**MAIN_THREAD_JANK** (For details about the parameter configuration, see [Main Thread Jank Event Overview](../../dfx/hiappevent-watcher-mainthreadjank-events.md#parameters-of-oh_hiappevent_seteventconfig).)
 
 **Since**: 15
 

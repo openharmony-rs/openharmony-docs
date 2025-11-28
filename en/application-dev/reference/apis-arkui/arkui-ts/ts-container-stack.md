@@ -4,7 +4,7 @@
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Stack** component provides a stack container where child components are successively stacked and the latter one overwrites the previous one.
 
@@ -61,7 +61,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 alignContent(value: Alignment)
 
-Alignment of child components in the container. When this attribute and [align](ts-universal-attributes-location.md#align) are set at the same time, the latter setting takes effect. When this attribute and the constructor input parameters of the API are set at the same time, the setting of the effective attribute takes effect.
+Alignment of child components in the container. When both this attribute and the [align](ts-universal-attributes-location.md#align) attribute are set, whichever is set last takes effect. When this attribute and the constructor input parameters are set simultaneously, the attribute setting prevails.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

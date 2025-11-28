@@ -892,7 +892,7 @@ Subscribes to continuous task cancellation events. This API uses an asynchronous
 
 | Name      | Type                                | Mandatory  | Description                                      |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
-| type   | string                            | Yes   | Cancels a continuous task. The value is fixed at **'continuousTaskCancel'**.|
+| type   | string                            | Yes   | Event type. The value is fixed at **'continuousTaskCancel'**, indicating that a continuous task is canceled.|
 | callback   | Callback\<[ContinuousTaskCancelInfo](#continuoustaskcancelinfo15)>       | Yes   | Callback used to return information such as the reason for canceling a continuous task.|
 
 **Error codes**
@@ -1224,7 +1224,7 @@ export default class EntryAbility extends UIAbility {
           abilityName: "EntryAbility"
         }
       ],
-      // Set the action type after the notification is tapped.
+      // Set the operation type after the notification is tapped.
       actionType: wantAgent.OperationType.START_ABILITY,
       // Custom request code, which is used to identify the operation to execute.
       requestCode: 0,
@@ -1314,7 +1314,7 @@ import { wantAgent, WantAgent } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   notificationId: number = 0; // Save the notification ID.
-  continuousTaskId: number | undefined = -1; // ID of the continuous task.
+  continuousTaskId: number | undefined = -1; // Continuous task ID.
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     let wantAgentInfo: wantAgent.WantAgentInfo = {
       // Add the bundleName and abilityName of the application to be started. Replace them with the actual ones.
@@ -1324,7 +1324,7 @@ export default class EntryAbility extends UIAbility {
           abilityName: "EntryAbility"
         }
       ],
-      // Set the action type after the notification is tapped.
+      // Set the operation type after the notification is tapped.
       actionType: wantAgent.OperationType.START_ABILITY,
       // Custom request code, which is used to identify the operation to execute.
       requestCode: 0,
@@ -1375,7 +1375,7 @@ Cancels a continuous task with the specified ID. This API uses a promise to retu
 | Name      | Type                                | Mandatory  | Description                                      |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.|
-| continuousTaskId   | number | Yes   | ID of a continuous task.<br>**Note**: You can obtain the ID of the current continuous task through the return value of the [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) API, or obtain information about all continuous tasks through the [getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1) API. |
+| continuousTaskId   | number | Yes   | Continuous task ID.<br>**Note**: You can obtain the ID of the current continuous task through the return value of the [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) API, or obtain information about all continuous tasks through the [getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1) API. |
 
 **Return value**
 
@@ -1442,7 +1442,7 @@ Describes all transient task information.
 
 ## BackgroundMode
 
-Type of the continuous task.
+Defines the type of a continuous task.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -1468,7 +1468,7 @@ Describes the information about a continuous-task notification.
 | slotType       | [notificationManager.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | No   | No   | Slot type of a continuous-task notification.<br>**Note**: After a continuous task is successfully requested or updated, no prompt tone is played.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | contentType | [notificationManager.ContentType](../apis-notification-kit/js-apis-notificationManager.md#contenttype) | No   | No   | Content type of a continuous-task notification.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | notificationId | number | No   | No   | ID of the continuous-task notification.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| continuousTaskId<sup>15+</sup> | number | No   | Yes   | ID of a continuous task|
+| continuousTaskId<sup>15+</sup> | number | No   | Yes   | ID of a continuous task.|
 
 ## ContinuousTaskCancelInfo<sup>15+</sup>
 
@@ -1503,7 +1503,7 @@ Describes the reason for canceling a continuous task.
 
 ## BackgroundSubMode<sup>16+</sup>
 
-Subtype of a continuous task.
+Defines the subtype of a continuous task.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -1513,7 +1513,7 @@ Subtype of a continuous task.
 
 ## BackgroundModeType<sup>16+</sup>
 
-Type of a continuous task.
+Defines the type of a continuous task.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -1576,10 +1576,10 @@ Describes the continuous task information.
 | [backgroundModes](#backgroundmode) | string[] | No   | No   | Type of the continuous task.              |
 | [backgroundSubModes](#backgroundsubmode16) | string[] | No   | No   | Subtype of a continuous task.             |
 | notificationId | number   | No   | No   | Notification ID.               |
-| continuousTaskId | number   | No   | No   | ID of a continuous task.             |
+| continuousTaskId | number   | No   | No   | Continuous task ID.             |
 | abilityId | number   | No   | No   | UIAbility ID.        |
-| wantAgentBundleName | string   | No   | No   |  Bundle name configured in [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md). a notification parameter used to specify the target page when a continuous task notification is tapped.       |
-| wantAgentAbilityName | string   | No   | No   |  Ability name configured in [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md). a notification parameter used to specify the target page when a continuous task notification is tapped.|
+| wantAgentBundleName | string   | No   | No   |  Bundle name configured in [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md). **WantAgent** is a notification parameter used to specify the target page when a continuous task notification is tapped.       |
+| wantAgentAbilityName | string   | No   | No   |  Ability name configured in [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md). **WantAgent** is a notification parameter used to specify the target page when a continuous task notification is tapped.|
 | suspendState | boolean   | No   | No   | Whether the requested continuous task is suspended. The value **true** indicates that the task is suspended, and the value **false** indicates that the task is activated.|
 
 ## ContinuousTaskRequest<sup>21+</sup>
@@ -1602,7 +1602,7 @@ Specifies details of the continuous task being requested or updated. It is typic
 | backgroundTaskSubmodes | [BackgroundTaskSubmode](#backgroundtasksubmode21)[] | No   | No   | Subtype of a continuous task.<br>**Note**: The main type must match the subtype.|
 | wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | No   | No   | Notification parameters, which are used to specify the target page that is redirected to when a continuous task notification is clicked.|
 | combinedTaskNotification | boolean   | No   | Yes   | Whether to combine notifications. The value **true** means to combine notifications, and the value **false** (default) means the opposite.<br>**Note**: This property does not take effect in [updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21) API. If notifications need to be combined for an existing task, request the task again and set the value to **true**.|
-| continuousTaskId | number   | No   | Yes   | Continuous task ID. The default value is **-1**.<br>**Note**: If **combinedTaskNotification** is set to **true**, this property is mandatory and the ID must exist.<br>This property is mandatory and the ID must exist if it is used as the input parameter of the [updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21) API.<br>You can call the [getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1) API to view information about all continuous tasks.  |
+| continuousTaskId | number   | No   | Yes   | Continuous task ID. The default value is **-1**.<br>**Note**: If **combinedTaskNotification** is set to true, this property is mandatory and the corresponding ID must exist.<br>Additionally, this property is mandatory (with the corresponding ID required) when used as an input parameter for the [updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21) API.<br>You can call the [getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1) API to view information about all continuous tasks.  |
 
 ### isModeSupported<sup>21+</sup>
 
@@ -1670,7 +1670,7 @@ Main type of a continuous task. It is usually used together with the subtype [Ba
 
 ## BackgroundTaskSubmode<sup>21+</sup>
 
-Subtype of a continuous task. It is usually used together with the main type [BackgroundTaskMode](#backgroundtaskmode21). For details, see the mapping table. The two types are newly added in API version 21 for requesting and updating continuous tasks.
+Defines the subtype of a continuous task. It is usually used together with the main type [BackgroundTaskMode](#backgroundtaskmode21). For details, see the mapping table. The two types are newly added in API version 21 for requesting and updating continuous tasks.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 

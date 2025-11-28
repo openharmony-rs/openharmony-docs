@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >**NOTE**
 >
@@ -48,8 +48,8 @@ Defines the AI image analysis type. If it is not set, subject recognition and te
 | Name    | Value   | Description          |
 | -------- | ----- | -------- |
 | SUBJECT | 0  | Subject recognition.|
-| TEXT | -  | Text recognition.|
-| OBJECT_LOOKUP | -  | Object lookup.|
+| TEXT | 1  | Text recognition.|
+| OBJECT_LOOKUP | 2  | Object lookup.|
 
 ## ImageAIOptions<sup>12+</sup>
 
@@ -103,3 +103,18 @@ Obtains the analysis types supported by the corresponding component.
 | Type    | Description                     |
 | ------ | ----------------------- |
 | [ImageAnalyzerType[]](#imageanalyzertype12) | Analysis type supported by the corresponding component.|
+
+## ContentTransitionEffect<sup>21+</sup>
+
+Defines the content transition effect.
+
+### Properties
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Type| Read-Only| Optional|Description|
+| -------- | ---------- | -------- | -------- | -------- | 
+| IDENTITY | [ContentTransitionEffect](#contenttransitioneffect21) | Yes| No| Applies no transition effect during content switching.|
+| OPACITY | [ContentTransitionEffect](#contenttransitioneffect21) | Yes| No| Applies a fade-in/fade-out transition animation during content switching.|
