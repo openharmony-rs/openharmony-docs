@@ -1696,7 +1696,7 @@ export default class EntryAbility extends UIAbility {
     let subModeList: Array<number> = [backgroundTaskManager.BackgroundTaskSubmode.SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION];
     continuousTaskRequest.backgroundTaskSubmodes = subModeList;
     try {
-      continuousTaskRequest.requestAuthFromUser(callbackAuth);
+      continuousTaskRequest.requestAuthFromUser(this.context, callbackAuth);
     } catch (error) {
       console.error(`Operation requestAuthFromUser failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
@@ -1745,7 +1745,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     try {
       let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
-      continuousTaskRequest.checkSpecialScenarioAuth().then((res: backgroundTaskManager.UserAuthResult) => {
+      continuousTaskRequest.checkSpecialScenarioAuth(this.context).then((res: backgroundTaskManager.UserAuthResult) => {
         console.info("Operation checkSpecialScenarioAuth succeeded. data: " + JSON.stringify(res));
       }).catch((error: BusinessError) => {
         console.error(`Operation checkSpecialScenarioAuth failed. code is ${error.code} message is ${error.message}`);
