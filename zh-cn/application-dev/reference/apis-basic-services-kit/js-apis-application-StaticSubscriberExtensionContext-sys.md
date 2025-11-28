@@ -111,7 +111,6 @@ class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbilit
 }
   ```
 
-
 ## StaticSubscriberExtensionContext.startAbility
 
 startAbility(want: Want): Promise&lt;void&gt;;
