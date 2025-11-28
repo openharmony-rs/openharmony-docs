@@ -38,7 +38,7 @@
 
 - 卡片页面：卡片具备不同的状态选择，在不同的状态下需要刷新不同的内容，因此在状态发生变化时通过postCardAction通知EntryFormAbility。
 
-    <!-- @[widget_update_by_status_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatebystatus/pages/WidgetUpdateByStatusCard.ets) -->
+    <!-- @[widget_update_by_status_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatebystatus/pages/WidgetUpdateByStatusCard.ets) --> 
     
     ``` TypeScript
     let storageUpdateByStatus = new LocalStorage();
@@ -46,6 +46,7 @@
     @Entry(storageUpdateByStatus)
     @Component
     struct WidgetUpdateByStatusCard {
+      // $r('app.string.to_be_refreshed')需要替换为开发者所需的资源文件
       @LocalStorageProp('textA') textA: Resource = $r('app.string.to_be_refreshed');
       @LocalStorageProp('textB') textB: Resource = $r('app.string.to_be_refreshed');
       @State selectA: boolean = false;
@@ -68,6 +69,7 @@
                     }
                   });
                 })
+              // $r('app.string.status_a')需要替换为开发者所需的资源文件
               Text($r('app.string.status_a'))
                 .fontColor('#000000')
                 .opacity(0.9)
@@ -92,6 +94,7 @@
                     }
                   });
                 })
+              // $r('app.string.status_b')需要替换为开发者所需的资源文件
               Text($r('app.string.status_b'))
                 .fontColor('#000000')
                 .opacity(0.9)
@@ -106,7 +109,8 @@
           .position({ y: 12 })
     
           Column() {
-            Row() { // 选中状态A才会进行刷新的内容
+            Row() {
+              // 选中状态A才会进行刷新的内容
               Text($r('app.string.status_a'))
                 .fontColor('#000000')
                 .opacity(0.4)
@@ -119,7 +123,8 @@
             }
             .margin({ top: '12px', left: 26, right: '26px' })
     
-            Row() { // 选中状态B才会进行刷新的内容
+            Row() {
+              // 选中状态B才会进行刷新的内容
               Text($r('app.string.status_b'))
                 .fontColor('#000000')
                 .opacity(0.4)
@@ -140,6 +145,7 @@
           .width('100%')
           .alignItems(HorizontalAlign.Start)
         }.width('100%').height('100%')
+        // $r('app.media.CardUpdateByStatus')需要替换为开发者所需的资源文件
         .backgroundImage($r('app.media.CardUpdateByStatus'))
         .backgroundImageSize(ImageSize.Cover)
       }
@@ -148,7 +154,7 @@
 
 - EntryFormAbility：将卡片的状态存储在本地数据库中，在刷新事件回调触发时，通过formId获取当前卡片的状态，然后根据卡片的状态选择不同的刷新内容。
 
-    <!-- @[update_by_status_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts) -->
+    <!-- @[update_by_status_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts) --> 
     
     ``` TypeScript
     import { Want } from '@kit.AbilityKit';
