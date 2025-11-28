@@ -453,7 +453,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.d
 
 getValueSync(context: Context, name: string, defValue: string): string
 
-Obtains the value of a data item. Unlike **getValue**, this API returns the result synchronously.
+Obtains the value of a data item in the **DEVICE_SHARED** domain of the database. Unlike **getValue**, this API returns the result synchronously.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -532,7 +532,7 @@ let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_ST
 
 setValueSync(context: Context, name: string, value: string): boolean
 
-Sets the value for a data item. Unlike **setValue**, this API returns the result synchronously.
+Sets the value for a data item in the **DEVICE_SHARED** domain of the database. Unlike **setValue**, this API returns the result synchronously.
 
 - If the specified data item exists in the database, the **setValueSync** method updates the value of the data item.
 - If the data item does not exist in the database, the **setValueSync** method inserts the data item into the database.

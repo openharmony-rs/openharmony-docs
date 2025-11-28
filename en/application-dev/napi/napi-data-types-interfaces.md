@@ -128,7 +128,7 @@ Data used to manage the lifecycle of ArkTS/JS objects. It allows ArkTS/JS object
 
 - It is used by **napi_escape_handle** to escape ArkTS/JS objects to a parent scope so that the objects are valid for the lifetime of the outer scope.
 
-**napi_ref **
+**napi_ref**
 
 Reference to **napi_value**, which allows you to manage the lifecycle of ArkTS/JS values.
 

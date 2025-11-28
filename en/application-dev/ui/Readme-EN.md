@@ -191,7 +191,7 @@
       - [Enter/Exit Transition](arkts-enter-exit-transition.md)
       - [Modal Transition](arkts-modal-transition.md)
       - [Shared Element Transition](arkts-shared-element-transition.md)
-      - [Rotation Transition Animation](arkts-rotation-transition-animation.md)   
+      - [Rotation Transition Animation](arkts-rotation-transition-animation.md)
       - [Page Transition Animation (Not Recommended)](arkts-page-transition-animation.md)
     - [Particle Animation](arkts-particle-animation.md)
     - [Component Animation](arkts-component-animation.md)
@@ -292,7 +292,7 @@
     - [Developing Animations](ui-js-building-ui-animation.md)
     - [Defining Gesture Events](ui-js-building-ui-event.md)
     - [Defining Page Routes](ui-js-building-ui-routes.md)
-  - Common Component Development Guidelines<!--ui-js-components-->
+  - Common Component Development<!--ui-js-components-->
     - Container Component Development<!--ui-js-container-components-->
       - [list Development](ui-js-components-list.md)
       - [dialog Development](ui-js-components-dialog.md)
@@ -302,7 +302,7 @@
       - [swiper Development](ui-js-components-swiper.md)
     - Basic Component Development<!--ui-js-basic-components-->
       - [text Development](ui-js-components-text.md)
-      - [Input Development](ui-js-components-input.md)
+      - [input Development](ui-js-components-input.md)
       - [button Development](ui-js-components-button.md)
       - [picker Development](ui-js-components-picker.md)
       - [image Development](ui-js-components-images.md)
@@ -315,13 +315,13 @@
       - [menu Development](ui-js-components-menu.md)
       - [marquee Development](ui-js-components-marquee.md)
       - [qrcode Development](ui-js-components-qrcode.md)
-      - [Search Development](ui-js-components-search.md)
+      - [search Development](ui-js-components-search.md)
     - Canvas Development<!--ui-js-canvas-->
       - [Canvas](ui-js-components-canvas.md)
       - [CanvasRenderingContext2D](ui-js-components-canvasrenderingcontext2d.md)
       - [Path2D](ui-js-components-path2d.md)
       - [OffscreenCanvasRenderingContext2D](ui-js-components-offscreencanvas.md)
-    - [Grid Container Development](ui-js-components-grid.md)
+    - [Grid Layout](ui-js-components-grid.md)
     - SVG Development<!--ui-js-svg-->
       - [Basics](ui-js-components-svg-overview.md)
       - [Graph Drawing](ui-js-components-svg-graphics.md)

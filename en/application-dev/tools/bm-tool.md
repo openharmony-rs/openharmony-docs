@@ -69,7 +69,7 @@ bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId]
 | -p | Used to specify the path of the HAP or HSP file. This parameter is optional. If multiple HAPs or HSPs are required, you can specify the folder paths of the HAPs or HSPs.|
 | -r | Used to overwrite an existing HAP or HSP file. This parameter is optional. By default, the HAP is installed in overwrite mode.|
 | -s |  Used to install an HSP. Each directory can have only one HSP with the same bundle name. This parameter is mandatory only for the HSP installation.|
-| -w | Used to wait for a specified time before installing a HAP. The minimum waiting time is 5s, and the maximum waiting time is 600s. The default waiting time is 180s. This parameter is optional.|
+| -w | Used to wait for a specified time before installing a HAP. The minimum waiting time is 180s, and the maximum waiting time is 600s. The default waiting time is 180s. This parameter is optional.|
 | -u | Used to specify the [user](#userid). By default, the bundle is installed for the current active user. This parameter is optional. The bundle can be installed only for the current active user or user 0.<br>**NOTE**<br> If the current active user is 100, the bundle is installed only for user 100 after the **bm install -p /data/local/tmp/ohos.app.hap -u 102** command is executed.|
 
 
@@ -144,7 +144,7 @@ bm dump [-h] [-a] [-g] [-n bundleName] [-s shortcutInfo] [-d deviceId] [-l label
 | -n | Used to display the details of a bundle. This parameter is optional.|
 | -s | Used to display the shortcut information of a bundle. This parameter is optional.|
 | -d | Used to display the bundle information on a given device, which is the current device by default. This parameter is optional.  |
-| -l | Used to display the label value (bundle name) of a bundle. This parameter is optional. It must be used together with the **-n** or **-a** parameter.<br>**Note**:<br>This command is supported since API version 20. If the command output on Windows contains special characters or garbled Chinese characters, run the **chcp 65001** command on the CLI to change the CLI code to UTF-8.|
+| -l | Used to display the label value (bundle name) of a bundle. This parameter is optional. It must be used together with the **-n** or **-a** parameter.<br>**NOTE**<br>This command is supported since API version 20. If the command output on Windows contains special characters or garbled Chinese characters, run the **chcp 65001** command on the CLI to change the CLI code to UTF-8.|
 | -u | Used to display bundle information of a specified [user](#userid). By default, bundle information of the current active user is displayed. This parameter is optional. The bundle can be queried only for the current active user or user 0.<br>**NOTE**<br> If the current active user is 100, the **bm dump -n com.ohos.app -u 102** command can be used to query only the bundle information of user 100.|
 
 
@@ -842,19 +842,26 @@ When an application or service is being debugged or is running, the error messag
 
 **Possible Causes**
 
-The SharedLibrary module on which the bundle depends is not installed.
+The HSP module on which the bundle depends is not installed.
 
 **Solution**
 
 Scenario 1: When the HSP and HAP are in the same project, perform the following steps:
-1. Install the dependent SharedLibrary module. On the **Run/Debug Configurations** page of DevEco Studio, select **Keep Bundle Data** on the **General** tab page, and click **OK** to save the configuration. Then run or debug the bundle again.
-![Example](figures/en-us_image_0000001560201786.png)
-2. On the **Run/Debug Configurations** page of DevEco Studio, click the **Deploy Multi Hap** tab, select **Deploy Multi Hap Packages**, select the dependent module SharedLibrary, and click **OK** to save the configuration. Then run or debug the bundle again.
-![Example](figures/en-us_image_0000001610761941.png)
-3. Choose **Run** > **Edit Configurations**. On the **General** tab page, select **Auto Dependencies**. Click **OK** to save the configuration, and then run or debug the project.
-![Example](figures/en-us_image_9568305.png)
+
+* Method 1: Run the [bm install -p](#install) command to install the dependent HSP module. On the **Run/Debug Configurations** page of DevEco Studio, select **Keep Application Data** on the **General** tab page, and click **OK** to save the configuration. Then run or debug the bundle again.
+
+  ![Example](figures/en-us_image_0000001560201786.png)
+
+* Method 2: On the **Run/Debug Configurations** page of DevEco Studio, click the **Deploy Multi Hap** tab, select **Deploy Multi Hap Packages**, select the dependent module SharedLibrary, and click **OK** to save the configuration. Then run or debug the bundle again.
+
+  ![Example](figures/en-us_image_0000001610761941.png)
+
+* Method 3: Click **Run** > **Edit** Configurations and select **Auto Dependencies** on the **General** tab. Click **OK** to save the configuration, and then run or debug the project.
+
+  ![Example](figures/en-us_image_9568305.png)
 
 Scenario 2: When the HSP and HAP are not in the same project, perform the following operations:
+
 Before installing the HAP, run the [bm install](#install) command to install the dependent HSP.
   
 ### 9568259 Some Fields Are Missing in the Configuration File
@@ -1087,12 +1094,15 @@ When an application or service is being debugged or running, an error occurs dur
 
 **Possible Causes**
 
-The bundle uses the default Ability Privilege Level (APL), which is normal, and requires the system_basic or system_core permission.
+The APL of the application is **normal**. However, it uses a **system_basic** or **system_core** permission. For details, see [Basic Concepts in the Permission Mechanism](../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism).
 
 **Solution**
 
-Apply for ACL permissions for the bundle by referring to [Requesting ACL Permissions and Signing Your App/Atomic Service](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section26216104250).
+Check whether the permission exists in the [application permissions](../security/AccessToken/app-permissions.md) based on the permission name in the error description.
 
+* If not, check the description of the API that requires the permission to ensure that the permission can be applied for. For example, among the permissions required by the [setDevicePairingConfirmation](../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionsetdevicepairingconfirmation) API, **ohos.permission.MANAGE_BLUETOOTH** can be applied for only by system applications. In this case, replace it with **ohos.permission.ACCESS_BLUETOOTH**.
+
+* If yes, check the requirements in the corresponding permission document and check whether the permission can be applied for. For example, to check [restricted permissions](../security/AccessToken/restricted-permissions.md), see <!--RP2-->[Requesting Restricted Permissions](../security/AccessToken/declare-permissions-in-acl.md)<!--RP2End-->. [Available permissions for enterprise applications](../security/AccessToken/permissions-for-enterprise-apps.md) can be applied for only by enterprise applications. Third-party applications do not support these permissions.
 
 ### 9568290 Installation Failure Due to HAP Token Update Failure
 **Error Message**
@@ -2217,7 +2227,7 @@ The current device prohibits the installation of enterprise MDM bundles or stand
 **Possible Causes**
 
 The following two types of bundles in <!--RP5-->[the profile](../security/app-provision-structure.md)<!--RP5End--> cannot be installed on the current device: **enterprise_mdm** (enterprise MDM bundle) and **enterprise_normal** (standard enterprise bundle).
-For details about the distribution types, see [BundleInfo.appDistributionType](../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#bundleinfo-1).
+For details about the distribution types, see [ApplicationInfo.appDistributionType](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).
 
 **Solution**
 
@@ -2396,8 +2406,8 @@ The [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-sign
 
 **Solution**
 
-1. Re-sign the bundle to ensure that either the [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) in the bundle signature information or <!--RP7-->the **app-identifier** in the bundle [profile](../security/app-provision-structure.md)<!--RP7End--> is the same as that of the pre-installed bundle.
-2. Modify the [bundleName](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) of the new bundle to ensure it is different from the pre-installed bundle's bundle name.
+Method 1: Re-sign the bundle to ensure that either the [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) in the bundle signature information or <!--RP7-->the **app-identifier** in the bundle [profile](../security/app-provision-structure.md)<!--RP7End--> is the same as that of the pre-installed bundle.
+Method 2: Modify the [bundleName](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) of the new bundle to ensure it is different from the pre-installed bundle's bundle name.
 
 ### 9568418 Failed to Uninstall a Bundle Configured with an Uninstallation Disposed Rule
 **Error Message**
@@ -2694,7 +2704,7 @@ The installation fails because the configuration file contains strings or arrays
 
 **Possible Causes**
 
-Configuration files such as [module.json](../quick-start/module-configuration-file.md) and [pack.info](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-compile-build#section43931054115513) contain strings or arrays that exceed the allowed length or size.
+Configuration files such as [module.json](../quick-start/module-configuration-file.md) and [pack.info](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-compile-build#section43931054115513) contain strings or arrays that exceed the allowed length or size.
 
 **Solution**
 

@@ -674,7 +674,7 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
 ```ts
 // Index.ets
 import { UIExtensionContentSession } from '@kit.AbilityKit';
-import uiExtension from '@ohos.arkui.uiExtension';
+import { uiExtension } from '@kit.ArkUI';
 
 @Entry()
 @Component

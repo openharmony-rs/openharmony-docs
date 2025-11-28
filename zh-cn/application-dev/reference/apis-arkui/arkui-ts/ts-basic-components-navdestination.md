@@ -1636,14 +1636,18 @@ struct NavDest {
     .onActive((reason: NavDestinationActiveReason) => {
       let onActiveMsg: string = `[activeTest] ${this.name} onActive, reason: ${reason}`;
       console.info(onActiveMsg);
-      // API version 17之后，使用promptAction.openToast接口代替promptAction.showToast。
-      promptAction.showToast({ message: onActiveMsg });
+      // API version 17版本，请替换为promptAction.showToast接口。从API version 18开始，请使用示例中的promptAction.openToast接口。
+      promptAction.openToast({ message: onActiveMsg }).catch(() => {
+        console.info('open toast failed');
+      });
     })
     .onInactive((reason: NavDestinationActiveReason) => {
       let onInActiveMsg: string = `[activeTest] ${this.name} onInactive, reason: ${reason}`;
       console.info(onInActiveMsg);
-      // API version 17之后，使用promptAction.openToast接口代替promptAction.showToast。
-      promptAction.showToast({ message: onInActiveMsg });
+      // API version 17版本，请替换为promptAction.showToast接口。从API version 18开始，请使用示例中的promptAction.openToast接口。
+      promptAction.openToast({ message: onInActiveMsg }).catch(() => {
+        console.info('open toast failed');
+      });
     })
     .onBackPressed(() => {
       if (overlayShownTag) {

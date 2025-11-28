@@ -36,7 +36,7 @@ Obtains the cookie value of the specified URL.
 > 
 > To obtain the cookie value that can be used, pass a complete link to **fetchCookieSync()**.
 > 
-> **fetchCookieSync()** is used to obtain all cookie values. Cookie values are separated by semicolons (;). However, a specific cookie value cannot be obtained separately.
+> **fetchCookieSync()** is used to obtain all cookie values. Cookie values are separated by semicolons. However, a specific cookie value cannot be obtained separately.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -290,15 +290,15 @@ Sets a cookie for the specified URL.
 >
 > It is recommended that cookie syncing be completed before the **Web** component is loaded.
 >
-> If **configCookieSync()** is used to set cookies for two or more times, the cookies set each time are separated by semicolons (;).
+> If **configCookieSync()** is used to set cookies for two or more times, the cookies set each time are separated by semicolons.
 >
-> Cookies are periodically saved to the disk every 30 seconds. You can also use the [saveCookieAsync](#savecookieasync) API to forcibly save cookies to the disk.
+> Cookies are periodically saved to the disk every 30s. You can also use the [saveCookieAsync](#savecookieasync) API to forcibly save cookies to the disk.
 > 
-> If a cookie with the same host, path, and name exists, it will be replaced by the new cookie. If the cookie to be set has expired, the cookie will not be stored. To set multiple cookies, call this method for multiple times.
+> If a cookie with the same host, path, and name exists, it will be replaced by the new cookie. If the cookie has expired, it will not be stored. To set multiple cookies, call this method multiple times.
 >
-> The value parameter must comply with the format of the Set-Cookie HTTP response header. The value is a key-value pair in the format of "key=value", followed by a list of cookie attributes separated by semicolons (;), for example, "key=value;Max-Age=100".
+> The **value** parameter must comply with the format of the Set-Cookie HTTP response header. The value is in the format of "key=value", followed by a list of cookie attributes separated by semicolons, for example, **"key=value;Max-Age=100"**.
 >
-> If the specified value contains the Secure attribute, the URL must use the https:// protocol.
+> If the specified value contains the **Secure** attribute, the URL must use the **https://** protocol.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -361,15 +361,15 @@ Sets a cookie value for a specified URL.
 >
 > It is recommended that cookie syncing be completed before the **Web** component is loaded.
 >
-> If **configCookieSync()** is used to set cookies for two or more times, the cookies set each time are separated by semicolons (;).
+> If **configCookieSync()** is used to set cookies for two or more times, the cookies set each time are separated by semicolons.
 >
-> Cookies are periodically saved to the disk every 30 seconds. You can also use the [saveCookieAsync](#savecookieasync) API to forcibly save cookies to the disk.
+> Cookies are periodically saved to the disk every 30s. You can also use the [saveCookieAsync](#savecookieasync) API to forcibly save cookies to the disk.
 > 
-> If a cookie with the same host, path, and name exists, it will be replaced by the new cookie. If the cookie has expired, it will not be stored. If you need to set multiple cookies, call this method for multiple times.
+> If a cookie with the same host, path, and name exists, it will be replaced by the new cookie. If the cookie has expired, it will not be stored. To set multiple cookies, call this method multiple times.
 >
-> The value parameter must comply with the format of the Set-Cookie HTTP response header. The value is a key-value pair in the format of "key=value", followed by a list of cookie attributes separated by semicolons (;), for example, "key=value;Max-Age=100".
+> The **value** parameter must comply with the format of the Set-Cookie HTTP response header. The value is in the format of "key=value", followed by a list of cookie attributes separated by semicolons, for example, **"key=value;Max-Age=100"**.
 >
-> If the specified value contains the Secure attribute, the URL must use the https:// protocol.
+> If the specified value contains the **Secure** attribute, the URL must use the **https://** protocol.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -433,7 +433,7 @@ Sets the value of a single cookie for a specified URL. This API uses an asynchro
 
 | Name| Type  | Mandatory| Description                     |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | Yes  | URL of the cookie to set. A complete URL is recommended.|
+| url    | string | Yes  | URL of the cookie to obtain. A complete URL is recommended.|
 | value  | string | Yes  | Cookie value to set.     |
 | callback | AsyncCallback\<void> | Yes| Callback used to return the result.|
 
@@ -491,7 +491,7 @@ Sets the value of a single cookie for a specified URL. This API uses a promise t
 
 | Name| Type  | Mandatory| Description                     |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | Yes  | URL of the cookie to set. A complete URL is recommended.|
+| url    | string | Yes  | URL of the cookie to obtain. A complete URL is recommended.|
 | value  | string | Yes  | Cookie value to set.     |
 
 **Return value**
@@ -556,7 +556,7 @@ Sets the value of a single cookie for a specified URL. This API uses a promise t
 
 | Name| Type  | Mandatory| Description                     |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | Yes  | URL of the cookie to set. A complete URL is recommended.|
+| url    | string | Yes  | URL of the cookie to obtain. A complete URL is recommended.|
 | value  | string | Yes  | Cookie value to set.     |
 | incognito    | boolean | Yes  | Whether to set the cookies in incognito mode. The value **true** means to set the cookies in incognito mode, and **false** means the opposite.|
 | includeHttpOnly    | boolean | Yes  | Whether to overwrite cookies containing **HttpOnly**. The value **true** means to overwrite cookies containing **HttpOnly**, and **false** means the opposite.|
@@ -615,7 +615,7 @@ struct WebComponent {
 
 static saveCookieSync(): void
 
-Synchronously saves all cookies that can be obtained by using fetchCookie to the disk.
+Synchronously saves all cookies (that can be obtained through **fetchCookie** and need to be persisted) to the disk.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -623,7 +623,7 @@ Synchronously saves all cookies that can be obtained by using fetchCookie to the
 >
 > **saveCookieSync** is used to forcibly write cookies that need to be persisted to disks. Session cookies are not persisted on PCs, 2-in-1 devices, or tablets, even if **saveCookieSync** is invoked.
 >
-> saveCookieSync blocks the caller until the operation is complete. During this period, I/O operations may be performed.
+> **saveCookieSync** blocks the caller until the operation is complete. During this period, I/O operations may be performed.
 
 **Example**
 
@@ -657,7 +657,7 @@ struct WebComponent {
 
 static saveCookieAsync(callback: AsyncCallback\<void>): void
 
-Asynchronously saves all cookies that can be obtained by fetchCookie to the disk.
+Asynchronously saves all cookies (that can be obtained through **fetchCookie** and need to be persisted) to the disk.
 
 > **NOTE**
 >
@@ -715,7 +715,7 @@ struct WebComponent {
 
 static saveCookieAsync(): Promise\<void>
 
-Asynchronously saves all cookies that can be obtained by calling fetchCookie to the disk in promise mode.
+Saves all cookies (that can be obtained through **fetchCookie** and need to be persisted) to the disk using a promise.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -955,7 +955,7 @@ Checks whether cookies exist.
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | :----------------------------------------- |
-| incognito<sup>11+</sup>    | boolean | No  | Whether to check for cookies in incognito mode. The value **true** means to check for cookies in incognito mode, and **false** means the opposite.<br>The default value is **false**.<br>If undefined or null is passed, undefined is returned.|
+| incognito<sup>11+</sup>    | boolean | No  | Whether to check for cookies in incognito mode. The value **true** means to check for cookies in incognito mode, and **false** means the opposite.<br>The default value is **false**.<br>If **undefined** or **null** is passed, **undefined** is returned.|
 
 **Return value**
 
@@ -999,7 +999,7 @@ Deletes all cookies.
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | :----------------------------------------- |
-| incognito    | boolean | No  | Whether to clear all cookies in incognito mode. The value **true** means to clear all cookies in incognito mode, and **false** means the opposite.<br>The default value is **false**.<br>If undefined or null is passed, cookies are not cleared.|
+| incognito    | boolean | No  | Whether to clear all cookies in incognito mode. The value **true** means to clear all cookies in incognito mode, and **false** means the opposite.<br>The default value is **false**.<br>If **undefined** or **null** is passed, cookies are not cleared.|
 
 **Example**
 

@@ -8,15 +8,15 @@
 
 ## Overview
 
-Out-of-bounds address access refers to the access to an invalid address. As a result, the program runs abnormally and the application may crash. Common causes include use after free, double-free, stack-overflow, and heap-overflow. As application crash logs are limited and not the first crash site, it is difficult to locate out-of-bounds address access issues. Typically, you can use detection tools such as ASan, HWASan, and GWP-ASan to obtain more memory operation information. Since API 13, you are advised to use [HWASan](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-hwasan-detection) to analyze out-of-bounds address access issues.
+Out-of-bounds address access refers to the access to an invalid address. As a result, the program runs abnormally and the application may crash. Common causes include use after free, double-free, stack-overflow, and heap-overflow. As application crash logs are limited and not the first crash site, it is difficult to locate out-of-bounds address access issues. Typically, you can use detection tools such as ASan, HWASan, and GWP-ASan to obtain more memory operation information. Since API 13, you are advised to use HWASan to analyze out-of-bounds address access issues.
 
 ## Common Out-of-bounds Types and Impacts
 
-For details, see [Typical Types of Out-of-bounds Address Access](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-address-sanitizer-catagory).
+For details, see Typical Types of Out-of-bounds Address Access.
 
 ## Principle of Address Sanitizer Detection
 
-For details, see [Address Sanitizer Detection](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-ram-detection).
+For details, see Address Sanitizer Detection.
 
 ## How to Obtain Logs
 

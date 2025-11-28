@@ -1,4 +1,4 @@
-# &lt;list&gt; Development
+# list Development
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->

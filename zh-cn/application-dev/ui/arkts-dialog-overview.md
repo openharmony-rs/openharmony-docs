@@ -11,6 +11,40 @@
 
 ![image](figures/dialogLevelorder.png)
 
+对于一个多页面应用，基本树结构如下所示。多个Page页面之间使用[Router](../reference/apis-arkui/js-apis-router.md)的接口进行跳转。[NavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12)和[Navdestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)组成的页面可以通过[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)接口进行跳转。
+
+![pageLevelMode1](figures/pageLevelMode1.png)
+
+而[Dialog](arkts-base-dialog-overview.md)、[Popup](arkts-popup-overview.md)、[Menu](arkts-menu-overview.md)、[OverlayManager](arkts-create-overlaymanager.md)、[Toast](arkts-create-toast.md)、[bindSheet](arkts-sheet-page.md)以及[bindContentCover](arkts-contentcover-page.md)的组件在结合路由、导航使用时存在如下几种显示模式。
+
+ - 弹窗显示在当前应用窗口最上层，层级高于应用主窗内所有页面（默认行为）。
+
+   如下图所示，触发弹窗显示时，弹窗层级要高于Page页面和Navigation页面，即如果弹窗组件没有被关闭的话，页面切换前后，弹窗组件都会显示在页面上方，而不会出现新的路由/导航页面覆盖在弹窗之上的情况。
+
+   ![pageLevelMode2](figures/pageLevelMode2.png)
+
+   > **说明：** 
+   >
+   > 如果Popup或Menu等存在绑定组件的弹窗组件，在页面跳转后因为所绑定的组件不在新页面显示，系统内部会自动关闭对应弹窗组件。但因为弹窗组件显示同时受开发者配置的参数控制，例如当[Popup](arkts-popup-overview.md)的show参数设置为显示时，弹窗组件会覆盖在下一个页面上显示。
+
+ - 弹窗显示在当前页面内，层级低于下一跳页面。
+
+   当开发者期望弹窗是一个页面内的弹窗，即当路由/导航切换页面时，弹窗会被跳转的页面覆盖，随着页面切回原页面，弹窗仍然正常显示。此时弹窗层级如下图所示：
+
+   ![pageLevelMode4](figures/pageLevelMode4.png)
+
+   页面级弹窗功能需要结合弹窗组件的页面级能力使用，当前支持页面级能力的有[Dialog](arkts-base-dialog-overview.md)和[bindSheet](arkts-sheet-page.md)。
+
+ - 弹窗显示在独立窗口内，窗口层级高于应用所在窗口。
+
+   在PC/2in1等设备上，开发者常期望弹窗的显示在应用窗口之外，此时需要借助子窗的能力。例如自定义弹窗可以通过[CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)中的showInSubwindow属性控制是否使用子窗功能。基于子窗显示的弹窗效果如下图所示。
+
+   ![pageLevelMode3](figures/pageLevelMode3.png)
+
+   此时弹窗组件的显示层级受窗口的层级管理控制，会高于当前应用所在的窗口，低于系统窗口（如系统输入法、系统弹窗等）。
+
+
+
 ## 弹窗的种类
 
 根据用户交互操作场景，弹窗可分为**模态弹窗**和**非模态弹窗**两种类型，其区别在于用户是否必须对其做出响应。

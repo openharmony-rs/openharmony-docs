@@ -41,10 +41,10 @@ AlbumPickerComponent({
 
 **参数：**
 
-| 名称                 | 类型                                                  | 必填  | 说明                              |	
-|--------------------|-----------------------------------------------------|-----|---------------------------------|	
-| albumPickerOptions | [AlbumPickerOptions](#albumpickeroptions)           | 否   | AlbumPicker的配置信息。<br> **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。              |	
-| onAlbumClick       | (albumInfo: [AlbumInfo](#albuminfo)) => boolean     | 否   | 用户选择某个相册时产生的回调事件，将相册uri给到应用。<br> **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。    |	
+| 名称                 | 类型                                                  | 必填  | 说明                              |
+|--------------------|-----------------------------------------------------|-----|---------------------------------|
+| albumPickerOptions | [AlbumPickerOptions](#albumpickeroptions)           | 否   | AlbumPicker的配置信息。<br> **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。              |
+| onAlbumClick       | (albumInfo: [AlbumInfo](#albuminfo)) => boolean     | 否   | 用户选择某个相册时产生的回调事件，将相册uri给到应用。不对返回值做特殊处理。<br> **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。    |
 | onEmptyAreaClick<sup>13+</sup>   | [EmptyAreaClickCallback](#emptyareaclickcallback13) | 否   | 点击相册组件空白区域时产生的回调事件，将该次点击通知给应用。<br> **原子化服务API**：从API version 13开始，该接口支持在原子化服务中使用。 |	
 | albumPickerController<sup>20+</sup>   | [AlbumPickerController](#albumpickercontroller20) | 否   | 应用可通过AlbumPickerController向组件发送数据。<br> **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
 

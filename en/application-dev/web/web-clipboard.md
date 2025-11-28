@@ -251,7 +251,7 @@ Loaded HTML:
     const inputArea = document.getElementById('inputArea');
     const resultText = document.getElementById('resultText');
 
-    // Listen to the copy event.
+    // Listen for the copy event.
     inputArea.addEventListener('copy', (event) => {
         const selection = document.getSelection();
         const copiedText = selection.toString() + "(Copied from ArkWeb)

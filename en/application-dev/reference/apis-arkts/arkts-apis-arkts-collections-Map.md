@@ -7,9 +7,9 @@
 <!--Adviser: @ge-yafang-->
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This module can be imported only to ArkTS files (with the file name extension .ets).
+> - This module can be imported only to ArkTS files (with the file name extension .ets).
 
 A non-linear data structure.
 
@@ -93,6 +93,44 @@ const myMap1: collections.Map<number, SharedClass> = new collections.Map<number,
 let obj = new Object();
 const myMap2: collections.Map<number, Object> = new collections.Map<number, Object>([[1, obj]]);
 ```
+
+## constructor
+
+constructor(iterable: Iterable\<readonly \[K, V]>)
+
+A constructor used to create an ArkTS map.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name| Type| Mandatory| Description                             |
+| ------ | ---- | ---- | ------------------------------- |
+| iterable | Iterable\<readonly \[K, V]> | Yes| Object used to construct the ArkTS map.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+
+| ID| Error Message                                               |
+| -------- | ------------------------------------------------------- |
+| 401      | Parameter error.                                        |
+| 10200012 | The ArkTS Map's constructor cannot be directly invoked. |
+
+**Example**
+
+```ts
+const mapper = new Map([
+  ['1', 'a'],
+  ['2', 'b'],
+]);
+let newMap = new collections.Map<string, string>(mapper.entries());
+console.info(newMap.get('1')); // Expected output: a
+console.info(newMap.get('2')); // Expected output: b
+```
+
 
 ## entries
 entries(): IterableIterator<[K, V]>

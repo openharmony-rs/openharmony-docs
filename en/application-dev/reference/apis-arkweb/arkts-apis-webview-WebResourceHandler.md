@@ -200,7 +200,7 @@ struct WebComponent {
                 resourceHandler.didFail(WebNetErrorList.ERR_FAILED, true);
               } catch (error) {
               	// When error.code is 17100101(The errorCode is either ARKWEB_NET_OK or outside the range of error codes in WebNetErrorList)
-                // If the code value of didFail(code: WebNetErrorList, completeIfNoResponse: boolean) is not null, the interface is still called.
+                // and the code value of didFail(code: WebNetErrorList, completeIfNoResponse: boolean) is not null, the API is still called.
                 console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               return true;

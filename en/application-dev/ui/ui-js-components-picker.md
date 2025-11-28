@@ -1,4 +1,4 @@
-# \<picker> Development
+# picker Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @luoying_ace_admin-->

@@ -1141,6 +1141,17 @@ pop(result: Object, animated?: boolean): NavPathInfo | undefined
 
 弹出路由栈栈顶元素，并触发onPop回调传入页面处理结果。
 
+>  **说明：**
+>   
+>  连续调用多个导航控制器方法时，若中间存在被pop的页面，会在单次操作中被缓存，后续存在push同名页面时，优先被复用，不会走新的页面创建流程。<br/>
+> 例如：<br/>
+> // 初始页面栈为：[A] <br/>
+> pathStack.pop() <br/>
+> pathStack.pushPath(A) <br/>
+> pathStack.pushPath(B) <br/>
+> // 操作后页面栈为：[A B] <br/>
+> 此时A页面会被复用，不会走新的创建流程。<br/>
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

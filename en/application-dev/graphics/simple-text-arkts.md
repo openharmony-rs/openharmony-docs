@@ -79,10 +79,7 @@ The following table describes the text style properties involved in this scenari
 ```ts
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
 import { UIContext } from '@kit.ArkUI'
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
-import { common2D } from '@kit.ArkGraphics2D'
 
 // Create a MyRenderNode class and draw the text.
 class MyRenderNode extends RenderNode {

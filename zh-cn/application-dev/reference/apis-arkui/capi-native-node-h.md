@@ -571,7 +571,7 @@ enum ArkUI_NodeAttributeType
 | NODE_SCROLL_CONTENT_START_OFFSET | 设置List组件内容起始端偏移量。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32： 内容起始端偏移量，单位vp；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32： 内容起始端偏移量，单位vp；<br>**起始版本：** 15  |
 | NODE_SCROLL_CONTENT_END_OFFSET | 设置List组件内容末尾端偏移量。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32： 内容末尾端偏移量，单位vp；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32： 内容末尾端偏移量，单位vp；<br>**起始版本：** 15   |
 | NODE_SCROLL_FLING_SPEED_LIMIT = 1002019 | 限制跟手滑动结束后，Fling动效开始时的最大初始速度。支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：Fling动效开始时的最大初始速度，单位：vp/s。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：Fling动效开始时的最大初始速度。 <br>**起始版本：** 18  |
-| NODE_SCROLL_CLIP_CONTENT = 1002020 | 设置滚动容器的内容层裁剪区域。支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：内容裁剪模式，参数类型[ArkUI_ContentClipMode](capi-native-type-h.md#arkui_contentclipmode)。Grid、Scroll组件默认值为ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO，List、WaterFlow组件默认值为ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：内容裁剪模式，参数类型[ArkUI_ContentClipMode](capi-native-type-h.md#arkui_contentclipmode)。 <br>**起始版本：** 18  |
+| NODE_SCROLL_CLIP_CONTENT = 1002020 | 设置滚动容器的内容层裁剪区域。支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：内容裁剪模式，参数类型[ArkUI_ContentClipMode](capi-native-type-h.md#arkui_contentclipmode)。Grid、Scroll组件默认值为ARKUI_CONTENT_CLIP_MODE_BOUNDARY，List、WaterFlow组件默认值为ARKUI_CONTENT_CLIP_MODE_CONTENT_ONLY。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：内容裁剪模式，参数类型[ArkUI_ContentClipMode](capi-native-type-h.md#arkui_contentclipmode)。 <br>**起始版本：** 18  |
 | NODE_SCROLL_BACK_TO_TOP = 1002021 | 设置滚动容器是否在点击状态栏时回到顶部。支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：是否回到顶部，1表示回到顶部，0表示保持当前位置不变，默认值：API version 18之前：0。API version 18及以后：滚动方向是水平方向时为0，是垂直方向时为1。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：是否回到顶部。 <br>**起始版本：** 15 |
 | NODE_SCROLL_BAR_MARGIN = 1002022 | 设置滚动条的边距，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：设置滚动条起始边距，默认值为0，单位：vp。 <br> .value[1].f32：设置滚动条末尾边距，默认值为0，单位：vp。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：滚动条起始边距，单位：vp。 <br> .value[1].f32：滚动条末尾边距，单位：vp。 <br>**起始版本：** 20  |
 | NODE_SCROLL_MAX_ZOOM_SCALE = 1002023 | 设置滚动内容最大缩放比例。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：设置内容最大缩放比例。默认值：1<br>取值范围：(0, +∞)，小于或等于0时按默认值1处理。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：获取内容最大缩放比例。 <br>**起始版本：** 20  |
@@ -1002,7 +1002,7 @@ ArkUI_UIInputEvent* OH_ArkUI_NodeEvent_GetInputEvent(ArkUI_NodeEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_UIInputEvent* | ArkUI_UIInputEvent 输入事件数据指针。 |
+| [ArkUI_UIInputEvent*](capi-arkui-eventmodule-arkui-uiinputevent.md) | ArkUI_UIInputEvent 输入事件数据指针。 |
 
 ### OH_ArkUI_NodeEvent_GetNodeComponentEvent()
 
@@ -1028,7 +1028,7 @@ ArkUI_NodeComponentEvent* OH_ArkUI_NodeEvent_GetNodeComponentEvent(ArkUI_NodeEve
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_NodeComponentEvent* | ArkUI_NodeComponentEvent 数字类型数据指针。 |
+| [ArkUI_NodeComponentEvent*](capi-arkui-nativemodule-arkui-nodecomponentevent.md) | ArkUI_NodeComponentEvent 数字类型数据指针。 |
 
 ### OH_ArkUI_NodeEvent_GetStringAsyncEvent()
 
@@ -1054,7 +1054,7 @@ ArkUI_StringAsyncEvent* OH_ArkUI_NodeEvent_GetStringAsyncEvent(ArkUI_NodeEvent* 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_StringAsyncEvent* | ArkUI_StringAsyncEvent 字符串数据指针。 |
+| [ArkUI_StringAsyncEvent*](capi-arkui-nativemodule-arkui-stringasyncevent.md) | ArkUI_StringAsyncEvent 字符串数据指针。 |
 
 ### OH_ArkUI_NodeEvent_GetTextChangeEvent()
 
@@ -1080,7 +1080,7 @@ ArkUI_TextChangeEvent* OH_ArkUI_NodeEvent_GetTextChangeEvent(ArkUI_NodeEvent* ev
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_TextChangeEvent* | 返回ArkUI_TextChangeEvent对象的指针。 |
+| [ArkUI_TextChangeEvent*](capi-arkui-nativemodule-arkui-textchangeevent.md) | 返回ArkUI_TextChangeEvent对象的指针。 |
 
 ### OH_ArkUI_NodeEvent_GetUserData()
 
@@ -1304,7 +1304,7 @@ ArkUI_NodeAdapterHandle handle, void* userData, void (*receiver)(ArkUI_NodeAdapt
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_NodeAdapterHandle handle | 组件适配器对象。 |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | 组件适配器对象。 |
 | void* userData | 自定义数据。 |
 | receiver | 事件接收回调。 |
 
@@ -1763,7 +1763,7 @@ ArkUI_DrawContext* OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(ArkUI_NodeCusto
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_DrawContext* | 绘制上下文。 |
+| [ArkUI_DrawContext*](capi-arkui-nativemodule-arkui-drawcontext.md) | 绘制上下文。 |
 
 ### OH_ArkUI_NodeCustomEvent_GetEventTargetId()
 
@@ -3323,8 +3323,8 @@ int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDar
 
 | 参数项 | 描述 |
 | -- | -- |
-| uiContext | UI实例对象指针。<br>  如果该值为null，则该功能适用于整个应用进程。|
-| forceDark | 是否使用反色能力。取值为true：组件使用反色能力，取值为false：组件不使用反色能力。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | UI实例对象指针。<br>  如果该值为null，则该功能适用于整个应用进程。|
+| bool forceDark | 是否使用反色能力。取值为true：组件使用反色能力，取值为false：组件不使用反色能力。 |
 | [ArkUI_NodeType](#arkui_nodetype) | 指定使能反色能力生效组件的类型范围。<br>   ARKUI_NODE_UNDEFINED代表对所有组件类型生效。 |
 | colorInvertFunc | 开发者自定义反色算法函数。 |
 

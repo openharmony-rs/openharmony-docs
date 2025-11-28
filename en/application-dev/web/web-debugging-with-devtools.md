@@ -20,42 +20,42 @@ If the web debugging function is not enabled, DevTools cannot detect the web pag
    1. To enable the web debugging feature in application code, call the [setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20) API to set the TCP socket port and enable the web debugging feature.
    ```ts
    // xxx.ets
-   import { webview } from '@kit.ArkWeb';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   @Entry
-   @Component
-   struct WebComponent {
-     controller: webview.WebviewController = new webview.WebviewController();
-
-     aboutToAppear(): void {
-       try {
-         // Enable wireless web debugging and specify the TCP socket port.
+        import { webview } from '@kit.ArkWeb';
+        import { BusinessError } from '@kit.BasicServicesKit';
+        
+        @Entry
+        @Component
+        struct WebComponent {
+          controller: webview.WebviewController = new webview.WebviewController();
+        
+          aboutToAppear(): void {
+            try {
+              // Enable wireless web debugging and specify the TCP socket port.
          webview.WebviewController.setWebDebuggingAccess(true, 8888);
-       } catch (error) {
+            } catch (error) {
          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-       }
-     }
-
-     build() {
-       Column() {
-         Web({ src: 'www.example.com', controller: this.controller })
-       }
-     }
-   }
-   ```
-   > **NOTE**
-   >
-   >  Port 8888 used in the sample code is for reference only. You must ensure that the port number can be used by applications in practice. If the port cannot be used because the port is occupied or the application does not have the permission to use the port, the API throws an exception or the ArkWeb cannot enable the debugging mode.
+            }
+          }
+        
+          build() {
+            Column() {
+              Web({ src: 'www.example.com', controller: this.controller })
+            }
+          }
+        }
+        ```
+       > **NOTE**
+       >
+       >  Port 8888 used in the sample code is for reference only. You must ensure that the port number can be used by applications in practice. If the port cannot be used because the port is occupied or the application does not have the permission to use the port, the API throws an exception or the ArkWeb cannot enable the debugging mode.
    2. To enable the debugging feature, you need to add the following permission to the **module.json5** file of the application's HAP in DevEco Studio. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
    ```
-   "requestPermissions":[
-      {
-        "name" : "ohos.permission.INTERNET"
-      }
-    ]
-   ```
+        "requestPermissions":[
+          {
+            "name" : "ohos.permission.INTERNET"
+          }
+        ]
+        ```
 
 ### Opening the Debugging Tool Page in Chrome
 
@@ -89,34 +89,34 @@ If the web debugging function is not enabled, DevTools cannot detect the web pag
 
    ```ts
    // xxx.ets
-   import { webview } from '@kit.ArkWeb';
-
-   @Entry
-   @Component
-   struct WebComponent {
-     controller: webview.WebviewController = new webview.WebviewController();
-
-     aboutToAppear() {
-       // Enable web frontend page debugging.
-       webview.WebviewController.setWebDebuggingAccess(true);
-     }
-
-     build() {
-       Column() {
-         Web({ src: 'www.example.com', controller: this.controller })
-       }
-     }
-   }
-   ```
+    import { webview } from '@kit.ArkWeb';
+    
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: webview.WebviewController = new webview.WebviewController();
+    
+      aboutToAppear() {
+        // Enable web frontend page debugging.
+        webview.WebviewController.setWebDebuggingAccess(true);
+      }
+    
+      build() {
+        Column() {
+          Web({ src: 'www.example.com', controller: this.controller })
+        }
+      }
+    }
+    ```
 2. To enable the debugging feature, you need to add the following permission to the **module.json5** file of the application's HAP in DevEco Studio. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
    ```
-   "requestPermissions":[
+    "requestPermissions":[
       {
         "name" : "ohos.permission.INTERNET"
       }
     ]
-   ```
+    ```
 
 ### Connecting the Device to a PC
 
@@ -148,9 +148,9 @@ Connect the device to a PC and enable Developer mode for subsequent port forward
 After the application code calls the **setWebDebuggingAccess** API to enable web debugging, the ArkWeb kernel starts a domain socket listener to enable DevTools to debug web pages. 
 However, Chrome cannot directly access the domain socket on the device. Therefore, the domain socket on the device needs to be forwarded to the PC.
 
-**Use the automatic mapping WebView debugging link (https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-run-debug-configurations#section48387420516).**
+You are advised to [automatically map WebView debugging links](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-debug-configurations#section48387420516).
 
-If the DevEco version is earlier than the required version, perform the following steps:
+If the DevEco Studio version is earlier than the required version, perform the following steps:
 1. Run the following command in hdc shell to obtain the domain socket created by ArkWeb on the device. 
    ```shell
    cat /proc/net/unix | grep devtools
@@ -189,8 +189,8 @@ If the DevEco version is earlier than the required version, perform the followin
    ![hdc_fport_ls_empty](figures/devtools_resources_hdc_fport_ls_empty.jpg)
 
 ### Script
-**Windows**<br>
-Copy the following information to create a .bat file. After the debugging application is enabled, execute the file.
+**On Windows**<br>
+Copy the following information to create a .bat file, enable application debugging, and run the file.
    ```
    @echo off
    setlocal enabledelayedexpansion
@@ -264,8 +264,8 @@ Copy the following information to create a .bat file. After the debugging applic
 
    endlocal
    ```
-**Linux or macOS**<br>
-Copy the following information to create a .sh file. Note the chmod and format conversion. Execute the following information after enabling the debugging application.
+**On Linux or macOS**<br>
+Copy the following information to create an .sh file. Note that you need to run the **chmod** command and convert the file format. Enable the application debugging and run the file.
 This script will delete all port forwarding. If other tools (such as DevEco Studio) are using port forwarding, they will be affected.
    ```
    #!/bin/bash
@@ -469,3 +469,18 @@ The port forwarding may be invalid due to the following reasons:
 
 **Solution**
 * In this case, stop the ADB process and ensure that DevTools establishes a WebSocket connection with the device.
+
+### What should I do if error 404 is reported when DevTools is used for debugging?
+**Symptom**
+
+  When a web page is debugged in the Chrome browser on the computer, the error message "HTTP/1.1 404 Not Found" is displayed.
+
+**Possible Causes**
+
+* The Chrome browser version is too early to support DevTools debugging.
+
+**Solution**
+* Solution 1: Upgrade the Chrome browser to the latest version.
+* Solution 2: If you do not want to upgrade the browser, manually combine the URL. The complete URL is **devtools://devtools/bundled/inspector.html?ws=localhost:9222/devtools/page/xxx**.
+  - The URL consists of two parts. The first part **devtools://devtools/bundled/inspector.html** is fixed. The second part **?ws=localhost:9222/devtools/page/xxx** needs to be modified based on the actual configuration.
+  - After the port forwarding is successful, use Chrome to open the **http://localhost:9222/json** page. Replace **9222** in the URL with the actual TCP port number. Then, obtain the value **?ws** and the following part of **devtoolsFrontendUrl**.

@@ -70,7 +70,7 @@ constructor(width: number, height: number, data?: Uint8ClampedArray, unit?: Leng
 
 >  **说明：**
 >
->  可使用[px2vp](ts-pixel-units.md#像素单位转换)接口进行单位转换。
+>  可使用[px2vp](ts-pixel-units.md#px2vpdeprecated)接口进行单位转换。
 
 ## 示例
 

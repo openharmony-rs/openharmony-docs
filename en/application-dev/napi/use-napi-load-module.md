@@ -96,7 +96,7 @@ You are advised to use [napi_load_module_with_info](use-napi-load-module-with-in
     ```
     <!-- @[napi_load_module_napi_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPILoadModule/entry/src/main/ets/Test.ets) -->
 
-1. Configure the **build-profile.json5** file of the project.
+1. Add the following to the **build-profile.json5** file of the module.
 
     ```json
     {

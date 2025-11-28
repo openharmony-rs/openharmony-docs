@@ -81,8 +81,8 @@ The application needs to register a callback for creating a native media player 
 
 The callback function determines whether to create a native media player to take over the web page media resources based on the media information.
 
-  * If the application does not take over the web page media resource, **null** is returned in the callback.
-  * If the application takes over the web page media resource, a native media player instance is returned in the callback.
+  * If the application does not take over the web page media resource, **null** is returned by the callback.
+  * If the application takes over the web page media resource, a native media player instance is returned by the callback.
 
 The native media player needs to implement the [NativeMediaPlayerBridge](../reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerBridge.md) API so that the ArkWeb kernel can control the playback on the native media player.
 
@@ -276,7 +276,7 @@ To facilitate the control over native media player by the ArkWeb kernel, the app
     }
 
     play() {
-      // Starts the native media player for playback.
+      // Start the native media player for playback.
     }
 
     pause() {
@@ -510,7 +510,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
   }
   ```
 
-- Example of web media playback takeover: Hosts the playback of web media using [AVPlayer](../media/media/media-kit-intro.md#avplayer).
+- Example of taking over the web media playback through [AVPlayer](../media/media/media-kit-intro.md#avplayer):
 
   ```ts
   // Index.ets
@@ -1223,7 +1223,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
   }
   ```
 
-- Example of a frontend page: [AVPlayer](../media/media/media-kit-intro.md#avplayer) is used to host web media playback. For details about the supported media resources, see [Supported Formats and Protocols](../media/media/media-kit-intro.md#supported-formats-and-protocols).
+- The following is a frontend page example of taking over the web media playback through [AVPlayer](../media/media/media-kit-intro.md#avplayer). For details about the supported media resources, see [Supported Formats and Protocols](../media/media/media-kit-intro.md#supported-formats-and-protocols).
 
   ```html
   <!-- main.html -->

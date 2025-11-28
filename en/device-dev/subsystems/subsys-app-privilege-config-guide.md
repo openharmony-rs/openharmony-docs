@@ -29,7 +29,7 @@ General application privileges are privileges available to applications on all t
 2. Use the hapsigner tool to sign the [**HarmonyAppProvision** file](../../application-dev/security/app-provision-structure.md) to generate a .p7b file.
 3. Use the .p7b file to sign the HAP.
 
-Reference: [hapsigner](https://gitee.com/openharmony/developtools_hapsigner#README.md)
+Reference: [hapsigner](https://gitcode.com/openharmony/developtools_hapsigner#README.md)
 
 ### Example
 
@@ -72,7 +72,7 @@ In addition to general application privileges, device vendors can define device-
 
 ### How to Configure
 
-Configure the required privileges in the [configuration file](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568/preinstall-config).
+Configure the required privileges in the [configuration file](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568/preinstall-config).
 
 ### Example
 
