@@ -854,6 +854,7 @@ reminderAgentManager.updateReminder(reminderId, timer).then(() => {
 | -------- | -------- | -------- |
 | RING_CHANNEL_ALARM | 0 | 闹钟通道。 |
 | RING_CHANNEL_MEDIA | 1 | 媒体通道。 |
+| RING_CHANNEL_NOTIFICATION<sup>23+</sup> | 2 | 通知通道。 |
 
 
 ## ActionButton
