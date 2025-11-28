@@ -70,7 +70,6 @@ UIExtension为了实现跨应用的能力共享，存在较开放的灵活性，
 | [拖拽控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md) | 不支持   | 设置组件是否可以响应拖拽事件。                               | —                                                            |
 | [全屏模态转场](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md) | 部分支持 | 通过bindContentCover属性为组件绑定全屏模态页面，在组件插入和删除时可通过设置转场参数ModalTransition显示过渡动效。 | 在UIExtension内的提供方产生的页面无法超出UIExtension组件的范围，不能像其他组件一样直接达到效果，需要应用开发者设置UIExtension的全屏模式。 |
 | [半模态专场](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md) | 部分支持 | 通过bindSheet属性为组件绑定半模态页面，在组件插入时可通过设置自定义或默认的内置高度确定半模态大小。 | 在UIExtension内的提供方产生的页面无法超出UIExtension组件的范围，不能像其他组件一样直接达到效果，需要应用开发者设置UIExtension的全屏模式。 |
-|                                                              |          |                                                              |                                                              |
 
 **组件**
 
