@@ -2423,7 +2423,7 @@ struct GridExample {
                 .textAlign(TextAlign.Center)
               if (this.canSlideSelect) {
                 // $r('app.media.gouxuan')和$r('app.media.weigouxuan')需要替换为开发者所需的图像资源文件。
-                Image(this.selectedIndexes.includes(day) ? $r('app.media.gouxuan') :$r('app.media.weigouxuan'))
+                Image(this.selectedIndexes.includes(day) ? $r('app.media.gouxuan') :$r('app.media.weigouxuan'));
                   .width(30)
                   .height(30)
                   .position({right:5,top:5})
