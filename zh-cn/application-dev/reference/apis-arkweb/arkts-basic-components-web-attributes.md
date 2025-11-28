@@ -1715,10 +1715,10 @@ runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
           "   localStorage.setItem('color', 'Red');" +
           "}";
       private localStorage2: string =
-          "console.info('runJavaScriptOnDocumentStart regexRules Matching succeeded.')";
+          "console.info('runJavaScriptOnDocumentStart urlRegexRules Matching succeeded.')";
       @State scripts: Array<ScriptItem> = [
           { script: this.localStorage, scriptRules: ["*"] },
-          { script: this.localStorage2, scriptRules: [], regexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
+          { script: this.localStorage2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
       ];
 
       build() {
@@ -1795,10 +1795,10 @@ struct Index {
   controller: webview.WebviewController = new webview.WebviewController();
   private jsStr: string =
     "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnDocumentEnd'";
-  private jsStr2: string = "console.info('runJavaScriptOnDocumentEnd regexRules Matching succeeded.')";
+  private jsStr2: string = "console.info('runJavaScriptOnDocumentEnd urlRegexRules Matching succeeded.')";
   @State scripts: Array<ScriptItem> = [
     { script: this.jsStr, scriptRules: ["*"] },
-    { script: this.jsStr2, scriptRules: [], regexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
+    { script: this.jsStr2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
   ];
 
   build() {
@@ -1861,10 +1861,10 @@ struct Index {
   controller: webview.WebviewController = new webview.WebviewController();
   private jsStr: string =
     "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnHeadEnd'";
-  private jsStr2: string = "console.info('runJavaScriptOnHeadEnd regexRules Matching succeeded.')";
+  private jsStr2: string = "console.info('runJavaScriptOnHeadEnd urlRegexRules Matching succeeded.')";
   @State scripts: Array<ScriptItem> = [
     { script: this.jsStr, scriptRules: ["*"] },
-    { script: this.jsStr2, scriptRules: [], regexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
+    { script: this.jsStr2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
   ];
 
   build() {
