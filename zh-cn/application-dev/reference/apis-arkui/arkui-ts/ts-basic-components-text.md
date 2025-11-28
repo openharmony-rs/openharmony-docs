@@ -1282,7 +1282,7 @@ textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
 设置文字阴影效果。
 
-不支持fill字段和智能取色模式。
+不支持ShadowOptions对象中的type、fill字段和color字段的智能取色模式。
 
 从API version 11开始，该接口支持以数组形式入参，实现多重文字阴影。
 
