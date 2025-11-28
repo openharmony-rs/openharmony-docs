@@ -3455,7 +3455,7 @@ off\(type: 'callDisconnectedCause', callback?: Callback\<DisconnectedDetails\>\)
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 20
 
@@ -6961,9 +6961,9 @@ ArkTS-Sta: sendCallUiEvent\(callId: int, eventName: string\): Promise\<void\>
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -7048,7 +7048,7 @@ call.sendCallUiEvent(callId, 'eventName').then(() => {
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 20
 
 |        名称              | 类型                               | 只读 | 可选 | 说明                                         |
 | ------------------------ | ---------------------------------- | ---- | ------------------------------------------- |
@@ -8163,7 +8163,7 @@ on\(type: 'imsCallModeChange', callback: Callback\<ImsCallModeInfo\>\): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -8222,7 +8222,7 @@ off\(type: 'imsCallModeChange', callback?: Callback\<ImsCallModeInfo\>\): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -8280,7 +8280,7 @@ on\(type: 'callSessionEvent', callback: Callback\<CallSessionEvent\>\): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -8338,7 +8338,7 @@ off\(type: 'callSessionEvent', callback?: Callback\<CallSessionEvent\>\): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -8397,7 +8397,7 @@ on\(type: 'peerDimensionsChange', callback: Callback\<PeerDimensionsDetail\>\): 
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -8444,7 +8444,7 @@ off\(type: 'peerDimensionsChange', callback?: Callback\<PeerDimensionsDetail\>\)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -8491,7 +8491,7 @@ on\(type: 'cameraCapabilitiesChange', callback: Callback\<CameraCapabilities\>\)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -8536,7 +8536,7 @@ off\(type: 'cameraCapabilitiesChange', callback?: Callback\<CameraCapabilities\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -8748,7 +8748,7 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 | MARK_TYPE_YELLOW_PAGE | 10 | 黄页。 |
 | MARK_TYPE_ENTERPRISE<sup>14+</sup> | 11 | 企业联系人。 |
 
-## call.onCallDetailsChange
+## call.onCallDetailsChange<sup>22+</sup>
 
 订阅CallDetailsChange事件
 
@@ -8806,7 +8806,7 @@ struct Index {
 
 ```
 
-## call.offCallDetailsChange
+## call.offCallDetailsChange<sup>22+</sup>
 
 取消订阅CallDetailsChange事件
 
@@ -8865,7 +8865,7 @@ struct Index {
 ```
 
 
-## call.onCallEventChange
+## call.onCallEventChange<sup>22+</sup>
 
 订阅CallEventChange事件
 
@@ -8923,7 +8923,7 @@ struct Index {
 
 ```
 
-## call.offCallEventChange
+## call.offCallEventChange<sup>22+</sup>
 
 取消订阅CallEventChange事件
 
@@ -8981,7 +8981,7 @@ struct Index {
 
 ```
 
-## call.onCallDisconnectedCause
+## call.onCallDisconnectedCause<sup>22+</sup>
 
 订阅CallDisconnectedCause事件
 
@@ -9039,7 +9039,7 @@ struct Index {
 
 ```
 
-## call.offCallDisconnectedCause
+## call.offCallDisconnectedCause<sup>22+</sup>
 
 取消订阅CallDisconnectedCause事件
 
@@ -9097,7 +9097,7 @@ struct Index {
 
 ```
 
-## call.onMmiCodeResult
+## call.onMmiCodeResult<sup>22+</sup>
 
 订阅MmiCodeResult事件
 
@@ -9155,7 +9155,7 @@ struct Index {
 
 ```
 
-## call.offMmiCodeResult
+## call.offMmiCodeResult<sup>22+</sup>
 
 取消订阅MmiCodeResult事件
 
@@ -9213,7 +9213,7 @@ struct Index {
 
 ```
 
-## call.onAudioDeviceChange
+## call.onAudioDeviceChange<sup>22+</sup>
 
 订阅AudioDeviceChange事件
 
@@ -9271,7 +9271,7 @@ struct Index {
 
 ```
 
-## call.offAudioDeviceChange
+## call.offAudioDeviceChange<sup>22+</sup>
 
 取消订阅AudioDeviceChange事件
 
@@ -9330,7 +9330,7 @@ struct Index {
 ```
 
 
-## call.onPostDialDelay
+## call.onPostDialDelay<sup>22+</sup>
 
 订阅PostDialDelay事件
 
@@ -9388,7 +9388,7 @@ struct Index {
 
 ```
 
-## call.offPostDialDelay
+## call.offPostDialDelay<sup>22+</sup>
 
 取消订阅PostDialDelay事件
 
@@ -9446,7 +9446,7 @@ struct Index {
 
 ```
 
-## call.onImsCallModeChange
+## call.onImsCallModeChange<sup>22+</sup>
 
 订阅ImsCallModeChange事件
 
@@ -9503,7 +9503,7 @@ struct Index {
 
 ```
 
-## call.offImsCallModeChange
+## call.offImsCallModeChange<sup>22+</sup>
 
 取消订阅ImsCallModeChange事件
 
@@ -9560,7 +9560,7 @@ struct Index {
 
 ```
 
-## call.onCallSessionEvent
+## call.onCallSessionEvent<sup>22+</sup>
 
 订阅CallSessionEvent事件
 
@@ -9617,7 +9617,7 @@ struct Index {
 
 ```
 
-## call.offCallSessionEvent
+## call.offCallSessionEvent<sup>22+</sup>
 
 取消订阅CallSessionEvent事件
 
@@ -9675,7 +9675,7 @@ struct Index {
 ```
 
 
-## call.onPeerDimensionsChange
+## call.onPeerDimensionsChange<sup>22+</sup>
 
 订阅PeerDimensionsChange事件
 
@@ -9732,7 +9732,7 @@ struct Index {
 
 ```
 
-## call.offPeerDimensionsChange
+## call.offPeerDimensionsChange<sup>22+</sup>
 
 取消订阅PeerDimensionsChange事件
 
@@ -9789,7 +9789,7 @@ struct Index {
 
 ```
 
-## call.onCameraCapabilitiesChange
+## call.onCameraCapabilitiesChange<sup>22+</sup>
 
 订阅CameraCapabilitiesChange事件
 
@@ -9846,7 +9846,7 @@ struct Index {
 
 ```
 
-## call.offCameraCapabilitiesChange
+## call.offCameraCapabilitiesChange<sup>22+</sup>
 
 取消订阅CameraCapabilitiesChange事件
 
