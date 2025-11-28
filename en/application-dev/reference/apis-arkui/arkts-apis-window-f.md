@@ -488,7 +488,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                     |
 | ------- | --------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Failed to convert parameter to sourceWindowId; 3. Failed to convert parameter to targetWindowId; 4. Invalid sourceWindowId or targetWindowId. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal.                |
 | 1300003 | This window manager service works abnormally. |
