@@ -136,6 +136,8 @@ type AccessibilityActionInterceptCallback = (action: AccessibilityAction) => Acc
 
 ## 示例
 
+### 示例1（设置onAccessibilityActionIntercept拦截点击事件）
+
 该示例主要演示通过使用onAccessibilityActionIntercept事件实现Toggle组件在无障碍模式下于点击事件发生之前拦截点击事件并确认是否拦截该点击事件的操作。
 
 ```ts
@@ -183,3 +185,31 @@ struct SwitchBootcamp {
   }
 }
 ```
+
+### 示例2（设置onAccessibilityFocus回调函数）
+
+从API version 18开始，当获焦、失焦状态发生变化时，触发该回调函数。本示例展示了[onAccessibilityFocus](ts-universal-accessibility-event.md#onaccessibilityfocus)的基本用法。当聚焦到onAccessibilityFocusTest2时，会打印出“[testingTag] isFocus current is true”，聚焦到除了onAccessibilityFocusTest2以外的地方都会打印“[testingTag] isFocus current is false”。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct index {
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text("onAccessibilityFocusTest1")
+        Text("onAccessibilityFocusTest2")
+        .onAccessibilityFocus((isFocus)=>{
+          console.info('[testingTag] isFocus current is ${isFocus}')
+          })
+      }
+      .padding(24)
+      .width('100%')
+    }
+  }
+}
+```
+
+![onAccessibilityFocus](figures/onAccessibilityFocus.png)
