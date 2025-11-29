@@ -18,7 +18,7 @@ Declares the common sensor attributes.
 
 **Since**: 11
 
-**Related Module**: [Sensor](capi-sensor.md)
+**Related module**: [Sensor](capi-sensor.md)
 
 ## Summary
 
