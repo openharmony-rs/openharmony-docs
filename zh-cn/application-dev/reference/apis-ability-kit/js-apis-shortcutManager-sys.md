@@ -258,7 +258,7 @@ struct ShortcutExample {
 
 addDynamicShortcutInfos(shortcutInfo: Array\<ShortcutInfo>, userId: number): Promise\<void>
 
-根据userId参数添加对应用户的动态快捷方式。
+添加指定用户的动态快捷方式。
 
 **需要权限：** ohos.permission.MANAGE_SHORTCUTS 或 (ohos.permission.MANAGE_SHORTCUTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 
