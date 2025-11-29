@@ -310,8 +310,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const bundleName = "com.example.dynamic";
 let moduleName = 'entry';
 const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
-  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2, },
-  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2, }
+  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 }
 ]
 
 try {
