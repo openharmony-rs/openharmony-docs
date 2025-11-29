@@ -1444,6 +1444,9 @@ getLocationName(phoneNumber: string, locale: string): string
 
 获取电话号码归属地。
 
+> **说明**
+> 从API version 23开始，支持对拨号中的电话号码实时获取归属地。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
@@ -1465,9 +1468,20 @@ getLocationName(phoneNumber: string, locale: string): string
   ```ts
   import { i18n } from '@kit.LocalizationKit';
 
+  // 完整电话号码的归属地获取
   let phonenumberFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN');
   let locationName: string = phonenumberFormat.getLocationName('158****2345', 'zh-CN'); // locationName = '广东省湛江市'
   let locName: string = phonenumberFormat.getLocationName('0039312****789', 'zh-CN'); // locName = '意大利'
+
+  // 拨号中的电话号码归属地获取
+  let option: i18n.PhoneNumberFormatOptions = { type: 'TYPING' };
+  let typingFormatter: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN', option);
+  let formatResult = typingFormatter.getLocationName('1', 'en'); // formatResult = ''
+  formatResult = typingFormatter.getLocationName('13', 'en'); // formatResult = 'China'
+  formatResult = typingFormatter.getLocationName('133', 'en'); // formatResult = 'China'
+  formatResult = typingFormatter.getLocationName('1334', 'en'); // formatResult = 'China'
+  formatResult = typingFormatter.getLocationName('13342', 'en'); // formatResult = 'China'
+  formatResult = typingFormatter.getLocationName('133426', 'en'); // formatResult = 'Dongguan, Guangdong'
   ```
 
 
@@ -1481,7 +1495,7 @@ getLocationName(phoneNumber: string, locale: string): string
 
 | 名称   | 类型     | 只读   | 可选   | 说明                                       |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| type | string | 否    | 是    | 表示对电话号码格式化的类型，取值包括：'E164',&nbsp;'INTERNATIONAL',&nbsp;'NATIONAL',&nbsp;'RFC3966',&nbsp;'TYPING'。<br>-在API version 8版本，type为必填项。 <br>-API version 9版本开始，type为选填项。<br>-API version 12版本开始支持TYPING，表示对拨号中的电话号码实时格式化。|
+| type | string | 否    | 是    | 表示对电话号码格式化的类型，取值包括：'E164',&nbsp;'INTERNATIONAL',&nbsp;'NATIONAL',&nbsp;'RFC3966',&nbsp;'TYPING'。<br>-在API version 8版本，type为必填项。 <br>-API version 9版本开始，type为选填项。<br>-API version 12版本开始支持TYPING，表示对拨号中的电话号码实时格式化。<br>-API version 23版本开始，TYPING支持实时获取拨号中的电话号码的归属地。|
 
 
 ## UnitInfo<sup>8+</sup>
