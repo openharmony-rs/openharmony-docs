@@ -463,9 +463,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 deleteAlbums(albums: Array&lt;Album&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Deletes albums. This API uses an asynchronous callback to return the result.
-
-Ensure that the albums to be deleted exist. Only user albums can be deleted.
+Deletes user albums. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -531,9 +529,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 deleteAlbums(albums: Array&lt;Album&gt;): Promise&lt;void&gt;
 
-Deletes albums. This API uses a promise to return the result.
-
-Ensure that the albums to be deleted exist. Only user albums can be deleted.
+Deletes user albums. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -856,7 +852,7 @@ async function getHiddenAlbumsView(phAccessHelper: photoAccessHelper.PhotoAccess
 
 deleteAssets(uriList: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Deletes media assets. This API uses an asynchronous callback to return the result. The deleted assets are moved to the trash.
+Deletes media assets. The deleted assets are moved to the trash. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -928,7 +924,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 deleteAssets(uriList: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Deletes media assets. This API uses a promise to return the result. The deleted assets are moved to the trash.
+Deletes media assets. The deleted assets are moved to the trash. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1822,7 +1818,7 @@ Obtains the asset analysis progress. This API uses a promise to return the resul
 
 | Name | Type            | Mandatory  | Description   |
 | ---- | -------------- | ---- | ----- |
-| analysisType | [AnalysisType](#analysistype11) | Yes   | Analysis type. The default value is null.<br>This parameter is mandatory in API versions 12 to 21 and optional from API version 22 onwards.|
+| analysisType | [AnalysisType](#analysistype11) | Yes   | Analysis type. |
 
 **Return value**
 
@@ -3533,7 +3529,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 setFavorite(favoriteState: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Favorites or unfavorites this file. This API uses an asynchronous callback to return the result.
+Favorites or unfavorites this file asset. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -3667,7 +3663,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 setHidden(hiddenState: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Sets this file to hidden state. This API uses an asynchronous callback to return the result.
+Sets this file asset to the hidden state. This API uses an asynchronous callback to return the result.
 
 Private files are stored in the private album. After obtaining private files from the private album, users can set **hiddenState** to **false** to remove them from the private album.
 
@@ -3732,7 +3728,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 setHidden(hiddenState: boolean): Promise&lt;void&gt;
 
-Sets this file asset to hidden state. This API uses a promise to return the result.
+Sets this file asset to the hidden state. This API uses a promise to return the result.
 
 Private files are stored in the private album. After obtaining private files from the private album, users can set **hiddenState** to **false** to remove them from the private album.
 
@@ -3804,7 +3800,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getExif(): Promise&lt;string&gt;
 
-Obtains the exchangeable image file format (EXIF) data from a JPG image. This API uses a promise to return the result.
+Obtains the EXIF data from a JPG image and returns a JSON string. This API uses a promise to return the result.
 
 The EXIF information obtained are provided by the [image](../apis-image-kit/arkts-apis-image.md) module. For details about the EXIF information, see [image.PropertyKey](../apis-image-kit/arkts-apis-image-e.md#propertykey7).
 
@@ -3868,7 +3864,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getExif(callback: AsyncCallback&lt;string&gt;): void
 
-Obtains the exchangeable image file format (EXIF) data from a JPG image. This API uses an asynchronous callback to return the result.
+Obtains the EXIF data from a JPG image and returns a JSON string. This API uses an asynchronous callback to return the result.
 
 The EXIF information obtained are provided by the [image](../apis-image-kit/arkts-apis-image.md) module. For details about the EXIF information, see [image.PropertyKey](../apis-image-kit/arkts-apis-image-e.md#propertykey7).
 
@@ -4548,7 +4544,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 requestSource(callback: AsyncCallback&lt;number&gt;): void
 
-Opens the source file to obtain the FD. This API uses an asynchronous callback to return the result.
+Opens the source file and returns the FD. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -4607,7 +4603,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 requestSource(): Promise&lt;number&gt;
 
-Opens the source file to obtain the FD. This API uses a promise to return the result.
+Opens the source file and returns the FD. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -6962,9 +6958,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAlbums(context: Context, albums: Array&lt;Album&gt;): Promise&lt;void&gt;
 
-Deletes albums. This API uses a promise to return the result.
-
-Ensure that the albums to be deleted exist. Only user albums can be deleted.
+Deletes user albums. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -7314,7 +7308,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 recoverAssets(assets: Array&lt;PhotoAsset&gt;): void
 
-Recovers assets from the trash.
+Restores the assets corresponding to the specified PhotoAsset object array from the trash.
 
 **System API**: This is a system API.
 
@@ -7371,7 +7365,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 recoverAssetsWithUri(assetUris: Array&lt;String&gt;): void
 
-Recovers assets from the trash.
+Restores the assets corresponding to the specified URI string array from the trash.
 
 **System API**: This is a system API.
 
@@ -7892,7 +7886,7 @@ A constructor used to create a **Highlights** album instance.
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| album | [Album](#album) | Yes  | **Highlights** album to create.|
+| album | [Album](#album) | Yes  | **Highlights** album.|
 
 **Error codes**
 
@@ -8847,7 +8841,7 @@ async function example(context: Context) {
 
 submitCloudEnhancementTasks(photoAssets: Array&lt;PhotoAsset&gt;, hasCloudWatermark: boolean): Promise&lt;void&gt;
 
-Submits cloud enhancement tasks.
+Submits cloud enhancement tasks. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -8911,7 +8905,7 @@ async function example(context: Context) {
 
 submitCloudEnhancementTasks(photoAssets: Array&lt;PhotoAsset&gt;, hasCloudWatermark: boolean, triggerMode?: number): Promise&lt;void&gt;
 
-Submits cloud enhancement tasks.
+Submits cloud enhancement tasks. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -10933,7 +10927,7 @@ For the same media asset and application, the persistent read permission overwri
 
 ## HideSensitiveType<sup>12+</sup>
 
-Enumerates the types of media resource information to be hidden from an application.
+Enumerates the types of data masking applied to media resources when accessed by an application.
 
 **System API**: This is a system API.
 
@@ -10941,10 +10935,10 @@ Enumerates the types of media resource information to be hidden from an applicat
 
 | Name |  Value|  Description|
 | ----- |  ---- |  ---- |
-| HIDE_LOCATION_AND_SHOOTING_PARAM |  0 |  Geographical location and shooting parameters.|
-| HIDE_LOCATION_ONLY |  1 |  Geographical location information.|
-| HIDE_SHOOTING_PARAM_ONLY |  2 |  Shooting parameters.|
-| NO_HIDE_SENSITIVE_TYPE |  3 |  Do not hide any information.|
+| HIDE_LOCATION_AND_SHOOTING_PARAM |  0 |  Masks geographic location and capture parameters.|
+| HIDE_LOCATION_ONLY |  1 |  Masks geographic location information only.|
+| HIDE_SHOOTING_PARAM_ONLY |  2 |  Masks capture parameters only.|
+| NO_HIDE_SENSITIVE_TYPE |  3 |  No data masking is applied.|
 
 ## CloudEnhancementTaskStage<sup>13+</sup>
 
