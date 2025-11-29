@@ -1442,7 +1442,7 @@ shortcutInfo列表中，存在bundleName和appIndex的组合与其他不一致�
 
 **可能原因**<br/>
 shortcutInfo列表中，存在bundleName和appIndex的组合与其他不一致。
-例如在调用[hortcutManager.addDynamicShortcutInfos](js-apis-shortcutManager-sys.md#adddynamicshortcutinfos)接口时传入了如下列表:
+例如在调用[shortcutManager.addDynamicShortcutInfos](js-apis-shortcutManager-sys.md#adddynamicshortcutinfos)接口时传入了如下列表:
 ```ts
 const bundleName = "com.example.dynamic";
 const bundleName1 = "com.example.dynamic1";
