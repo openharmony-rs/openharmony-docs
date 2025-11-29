@@ -610,9 +610,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 deleteAlbums(albums: Array&lt;Album&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Deletes albums. This API uses an asynchronous callback to return the result.
-
-Ensure that the albums to be deleted exist. Only user albums can be deleted.
+Deletes user albums. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -658,9 +656,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 deleteAlbums(albums: Array&lt;Album&gt;): Promise&lt;void&gt;
 
-Deletes albums. This API uses a promise to return the result.
-
-Ensure that the albums to be deleted exist. Only user albums can be deleted.
+Deletes user albums. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -727,7 +723,7 @@ Before the operation, ensure that the albums to obtain exist.
 | -------- | ------------------------ | ---- | ------------------------- |
 | type  | [AlbumType](#albumtype10)         | Yes  | Type of the album to obtain.             |
 | subType  | [AlbumSubType](#albumsubtype10)         | Yes  | Subtype of the album.             |
-| options  | [FetchOptions](#fetchoptions)         | Yes  |  Options for fetching the albums.             |
+| options  | [FetchOptions](#fetchoptions)         | Yes  |  Retrieval options.             |
 | callback |  AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[Album](#album)&gt;&gt; | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -1117,7 +1113,7 @@ Obtains audio assets. This API uses an asynchronous callback to return the resul
 
 | Name  | Type                    | Mandatory| Description                     |
 | -------- | ------------------------ | ---- | ------------------------- |
-| options  | [FetchOptions](#fetchoptions)        | Yes  | Options for fetching audio assets.             |
+| options  | [FetchOptions](#fetchoptions)        | Yes  | Retrieval options.             |
 | callback |  AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | Yes  | Callback used to return the audio assets obtained.|
 
 **Error codes**
@@ -1172,7 +1168,7 @@ Obtains audio assets. This API uses a promise to return the result.
 
 | Name  | Type                    | Mandatory| Description                     |
 | -------- | ------------------------ | ---- | ------------------------- |
-| options  | [FetchOptions](#fetchoptions)        | Yes  | Options for fetching audio assets.             |
+| options  | [FetchOptions](#fetchoptions)        | Yes  | Retrieval options.             |
 
 **Return value**
 
@@ -1221,7 +1217,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 delete(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-Deletes a media file. This API uses an asynchronous callback to return the result. The deleted file is moved to the recycle bin.
+Deletes a media file. This API uses an asynchronous callback to return the result. The deleted file is moved to the recycle bin. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO, ohos.permission.WRITE_IMAGEVIDEO or ohos.permission.READ_AUDIO, and ohos.permission.WRITE_AUDIO
 
@@ -1498,7 +1494,7 @@ Obtains the index of an image or video in an album. This API uses an asynchronou
 | -------- | ------------------------- | ---- | ---------- |
 | photoUri | string | Yes  | URI of the media asset whose index is to be obtained.|
 | albumUri | string | Yes  | Album URI, which can be an empty string. If it is an empty string, all the media assets in the Gallery are obtained by default.  |
-| options  | [FetchOptions](#fetchoptions)       | Yes  |  Fetch options. Only one search condition or sorting mode must be set in **predicates**. If no value is set or multiple search criteria or sorting modes are set, the API cannot be called successfully.     |
+| options  | [FetchOptions](#fetchoptions)       | Yes  |  Retrieval options. Only one search condition or sorting mode must be set in **predicates**. If no value is set or multiple search criteria or sorting modes are set, the API cannot be called successfully.     |
 | callback | AsyncCallback&lt;number&gt;| Yes  | Callback used to return the index obtained.|
 
 **Error codes**
@@ -1568,7 +1564,7 @@ Obtains the index of an image or video in an album. This API uses a promise to r
 | -------- | ------------------------- | ---- | ---------- |
 | photoUri | string | Yes  | URI of the media asset whose index is to be obtained.|
 | albumUri | string | Yes  | Album URI, which can be an empty string. If it is an empty string, all the media assets in the Gallery are obtained by default.  |
-| options  | [FetchOptions](#fetchoptions)       | Yes  |  Fetch options. Only one search condition or sorting mode must be set in **predicates**. If no value is set or multiple search criteria or sorting modes are set, the API cannot be called successfully.     |
+| options  | [FetchOptions](#fetchoptions)       | Yes  |  Retrieval options. Only one search condition or sorting mode must be set in **predicates**. If no value is set or multiple search criteria or sorting modes are set, the API cannot be called successfully.     |
 
 **Return value**
 
@@ -3500,7 +3496,7 @@ Obtains image and video assets. This API uses an asynchronous callback to return
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| options | [FetchOptions](#fetchoptions) | Yes  | Options for fetching image and video assets.|
+| options | [FetchOptions](#fetchoptions) | Yes  | Retrieval options.|
 | callback | AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | Yes  | Callback used to return the image and video assets obtained.|
 
 **Error codes**
@@ -3555,7 +3551,7 @@ Obtains image and video assets. This API uses a promise to return the result.
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| options | [FetchOptions](#fetchoptions) | Yes  | Options for fetching image and video assets.|
+| options | [FetchOptions](#fetchoptions) | Yes  | Retrieval options.|
 
 **Return value**
 
@@ -4197,7 +4193,7 @@ This API will be deprecated. Use [Album.getPhotoAssets](#getphotoassets-2) inste
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| options | [FetchOptions](#fetchoptions) | Yes  | Options for fetching image and video assets.|
+| options | [FetchOptions](#fetchoptions) | Yes  | Retrieval options.|
 | callback | AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | Yes  | Callback used to return the image and video assets obtained.|
 
 **Error codes**
@@ -4256,7 +4252,7 @@ This API will be deprecated. Use [Album.getPhotoAssets](#getphotoassets-3) inste
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| options | [FetchOptions](#fetchoptions) | Yes  | Options for fetching image and video assets.|
+| options | [FetchOptions](#fetchoptions) | Yes  | Retrieval options.|
 
 **Return value**
 
@@ -4298,7 +4294,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 delete(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-Deletes a file from the system album. Only the files in the trash can be deleted.
+Deletes a file from the system album. Only the files in the trash can be deleted. This API uses an asynchronous callback to return the result.
 
 This API will be deprecated. Use [Album.deletePhotoAssets](#deletephotoassets10) instead.
 
@@ -4346,7 +4342,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 delete(uri: string): Promise&lt;void&gt;
 
-Deletes a file from the system album. Only the files in the trash can be deleted.
+Deletes a file from the system album. Only the files in the trash can be deleted. This API uses a promise to return the result.
 
 This API will be deprecated. Use [Album.deletePhotoAssets](#deletephotoassets10) instead.
 
@@ -4398,7 +4394,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 recover(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-Recovers a file in the system album. Only the files in the trash can be recovered.
+Recovers a file in the system album. Only the files in the trash can be recovered. This API uses an asynchronous callback to return the result.
 
 This API will be deprecated. Use [Album.recoverPhotoAssets](#recoverphotoassets10) instead.
 
@@ -4454,7 +4450,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 recover(uri: string): Promise&lt;void&gt;
 
-Recovers a file in the system album. Only the files in the trash can be recovered.
+Recovers a file in the system album. Only the files in the trash can be recovered. This API uses a promise to return the result.
 
 This API will be deprecated. Use [Album.recoverPhotoAssets](#recoverphotoassets10) instead.
 

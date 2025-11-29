@@ -6,6 +6,10 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct CloudDisk_ChangeData  {...} CloudDisk_ChangeData
+```
+
 ## Overview
 
 A struct that encapsulates the event data generated when a single file under the sync root path is changed. It includes the file's unique ID, the parent directory's unique ID, relative path, change type, file size, and timestamp.

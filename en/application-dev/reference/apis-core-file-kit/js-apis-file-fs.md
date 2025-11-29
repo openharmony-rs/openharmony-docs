@@ -5541,11 +5541,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   fs.closeSync(file);
   ```
 
-  ## fs.DfsListeners<sup>12+</sup>
-
-interface DfsListeners {
-  onStatus(networkId: string, status: number): void
-}
+## fs.DfsListeners<sup>12+</sup>
 
 Provides APIs for listening for the distributed file system status.
 
@@ -6162,7 +6158,7 @@ The data obtained by **ReadStream** is a decoded string. Currently, only the UTF
 | bytesRead    | number | Yes   | No   | Number of bytes read by the readable stream.|
 | path    | string | Yes   | No   | Path of the file corresponding to the readable stream.|
 
-### Seek<sup>12+</sup>
+### seek<sup>12+</sup>
 
 seek(offset: number, whence?: WhenceType): number
 

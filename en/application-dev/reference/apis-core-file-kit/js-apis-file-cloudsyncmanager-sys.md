@@ -57,6 +57,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let bundleName: string = "com.example.bundle";
   cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true).then(() => {
@@ -99,6 +100,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let bundleName: string = "com.example.bundle";
   cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: BusinessError) => {
@@ -147,6 +149,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let bundleName: string = "com.example.bundle";
   cloudSyncManager.notifyDataChange(accountId, bundleName).then(() => {
@@ -188,6 +191,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let bundleName: string = "com.example.bundle";
   cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) => {
@@ -252,6 +256,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userId: number = 100;
   let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
   cloudSyncManager.notifyDataChange(userId, extraData).then(() => {
@@ -296,6 +301,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userId: number = 100;
   let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
   cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError) => {
@@ -346,6 +352,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let switches: Record<string, boolean> = {
     'com.example.bundleName1': true,
@@ -392,6 +399,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let switches: Record<string, boolean> = {
     'com.example.bundleName1': true,
@@ -444,6 +452,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   cloudSyncManager.disableCloud(accountId).then(() => {
     console.info("disableCloud successfully");
@@ -485,6 +494,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   cloudSyncManager.disableCloud(accountId, (err: BusinessError) => {
     if (err) {
@@ -547,6 +557,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let appActions: Record<string, cloudSyncManager.Action> = {
     'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,
@@ -593,6 +604,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
     let appActions: Record<string, cloudSyncManager.Action> = {
     'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,

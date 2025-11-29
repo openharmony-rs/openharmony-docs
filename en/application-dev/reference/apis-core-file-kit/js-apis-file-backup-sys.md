@@ -849,7 +849,7 @@ A constructor used to create a **SessionBackup** instance.
 
 | Name  | Type                                 | Mandatory| Description                |
 | -------- | ------------------------------------- | ---- | -------------------- |
-| callback | [GeneralCallbacks](#generalcallbacks) | Yes  | Callbacks to be invoked during the backup process.|
+| callbacks | [GeneralCallbacks](#generalcallbacks) | Yes  | Callbacks to be invoked during the backup process.|
 
 **Example**
 
@@ -1834,7 +1834,7 @@ A constructor used to create a **SessionRestore** instance.
 
 | Name  | Type                                 | Mandatory| Description                |
 | -------- | ------------------------------------- | ---- | -------------------- |
-| callback | [GeneralCallbacks](#generalcallbacks) | Yes  | Callbacks to be invoked during the data restore process.|
+| callbacks | [GeneralCallbacks](#generalcallbacks) | Yes  | Callbacks to be invoked during the data restore process.|
 
 **Example**
 
@@ -3146,7 +3146,7 @@ A constructor used to create an **IncrementalBackupSession** instance.
 
 | Name  | Type                                 | Mandatory| Description                    |
 | -------- | ------------------------------------- | ---- | ------------------------ |
-| callback | [GeneralCallbacks](#generalcallbacks) | Yes  | Callbacks to be invoked during the incremental backup process.|
+| callbacks | [GeneralCallbacks](#generalcallbacks) | Yes  | Callbacks to be invoked during the incremental backup process.|
 
 **Error codes**
 
