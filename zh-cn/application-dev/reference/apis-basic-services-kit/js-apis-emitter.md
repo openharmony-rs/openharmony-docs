@@ -861,7 +861,7 @@ ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn口是[emit(eventId: string, data?: EventData)](#emitteremit11)或[emit<T\>(eventId: string, data?: GenericEventData<T\>)](#emitteremit12)
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[emit(eventId: string, data?: EventData)](#emitteremit11)或[emit<T\>(eventId: string, data?: GenericEventData<T\>)](#emitteremit12)
 
 **ArkTS-Sta起始版本**：22
 
