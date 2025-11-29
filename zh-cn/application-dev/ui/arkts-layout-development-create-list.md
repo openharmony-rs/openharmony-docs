@@ -353,7 +353,7 @@ export struct ListIteration {
 
 ### 设置内容间距
 
-在初始化列表时，如需在列表项之间添加间距，可以使用space参数。例如，在每个列表项之间沿主轴方向添加10vp的间距。
+在初始化列表时，如需在列表项之间添加间距，可以使用[ListOptions](../reference/apis-arkui/arkui-ts/ts-container-list.md#listoptions18对象说明)的space参数。例如，在每个列表项之间沿主轴方向添加10vp的间距。
 
 
 <!-- @[set_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
