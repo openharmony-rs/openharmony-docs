@@ -79,7 +79,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
    #include "hiappevent/hiappevent_event.h"
    
    #undef LOG_TAG
-   #define LOG_TAG "testTag"```
+   #define LOG_TAG "testTag"
 ### 步骤二：订阅事件
 
 1. 订阅事件。分别使用OnReceive类型观察者、OnTrigger类型观察者的订阅方式。
