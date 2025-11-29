@@ -136,14 +136,16 @@ onError(callback: ErrorCallback)
   struct Index {
     @State message: string = 'Message: ';
     private want: Want = {
-      bundleName: "com.example.embeddeddemo",
+      bundleName: "com.example.embeddedComponent",
       abilityName: "ExampleEmbeddedAbility",
     };
 
     build() {
       Row() {
         Column() {
-          Text(this.message).fontSize(30)
+          Text(this.message)
+            .fontSize(20)
+            .fontWeight(FontWeight.Bold)
           EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
             .width('100%')
             .height('90%')
@@ -208,13 +210,12 @@ onError(callback: ErrorCallback)
   ```ts
   import { UIExtensionContentSession } from '@kit.AbilityKit';
 
-  let storage = new LocalStorage();
-
-  @Entry(storage)
+  @Entry
   @Component
   struct Extension {
     @State message: string = 'EmbeddedUIExtensionAbility Index';
-    private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
+    private storage: LocalStorage | undefined = this.getUIContext()?.getSharedLocalStorage();
+    private session: UIExtensionContentSession | undefined = this.storage?.get<UIExtensionContentSession>('session');
 
     build() {
       Column() {
@@ -226,7 +227,7 @@ onError(callback: ErrorCallback)
           this.session?.terminateSelfWithResult({
             resultCode: 1,
             want: {
-              bundleName: "com.example.embeddeddemo",
+              bundleName: "com.example.embeddedComponent",
               abilityName: "ExampleEmbeddedAbility",
             }
           });
@@ -244,3 +245,24 @@ onError(callback: ErrorCallback)
     "type": "embeddedUI"
   }
   ```
+- 文件目录结构如下：
+
+  ```shell
+  .
+  └── main
+      ├── ets
+      │   ├── extensionAbility
+      │   │   └── ExampleEmbeddedAbility.ets
+      │   └── pages
+      |       ├── extension.ets
+      │       └── Index.ets  
+      ├── resources
+      |   └── base
+      |       └── profile
+      |           └── main_pages.json
+      └── module.json5
+  ```
+
+- 示例图如下：
+
+  ![EmbeddedComponent](figures/embeddedComponent.png)
