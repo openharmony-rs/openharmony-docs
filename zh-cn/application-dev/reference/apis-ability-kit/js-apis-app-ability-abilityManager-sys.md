@@ -60,7 +60,7 @@ updateConfiguration(config: Configuration, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -125,7 +125,7 @@ updateConfiguration(config: Configuration): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
