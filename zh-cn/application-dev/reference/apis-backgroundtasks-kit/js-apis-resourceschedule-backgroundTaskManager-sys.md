@@ -206,7 +206,7 @@ try {
 
 ## backgroundTaskManager.getBackgroundTaskState<sup>22+</sup>
 
-getBackgroundTaskState(stateInfo: [BackgroundTaskStateInfo](#backgroundtaskstateinfo22)): [UserAuthResult](#userauthresult22)
+getBackgroundTaskState(stateInfo: [BackgroundTaskStateInfo](#backgroundtaskstateinfo22)): [UserAuthResult](../js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22)
 
 获取长时任务授权信息。
 
@@ -254,7 +254,7 @@ try {
 
 ## backgroundTaskManager.obtainAllContinuousTasks<sup>23+</sup>
 
-obtainAllContinuousTasks(): Promise&lt;ContinuousTaskInfo[]&gt;
+obtainAllContinuousTasks(): Promise&lt;[ContinuousTaskInfo](../js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20)[]&gt;
 
 获取所有长时任务信息，如长时任务ID、长时任务类型等。可选择是否获取暂停的长时任务信息，使用Promise异步回调。
 
@@ -268,7 +268,7 @@ obtainAllContinuousTasks(): Promise&lt;ContinuousTaskInfo[]&gt;
 
 | 类型                                            | 说明          |
 |-----------------------------------------------|-------------|
-|  Promise&lt;[ContinuousTaskInfo](#continuoustaskinfo20)[]&gt; | Promise对象，返回所有长时任务信息。 |
+|  Promise&lt;[ContinuousTaskInfo](../js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20)[]&gt; | Promise对象，返回所有长时任务信息。 |
 
 **错误码**：
 
@@ -301,7 +301,7 @@ try {
 
 ## backgroundTaskManager.subscribeContinuousTaskState<sup>23+</sup>
 
-subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void;
+subscribeContinuousTaskState(subscriber: [BackgroundTaskSubscriber](#backgroundtasksubscriber23)): void;
 
 注册长时任务变化回调。
 
@@ -350,7 +350,7 @@ try {
 
 ## backgroundTaskManager.unsubscribeContinuousTaskState<sup>23+</sup>
 
-unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void;
+unsubscribeContinuousTaskState(subscriber: [BackgroundTaskSubscriber](#backgroundtasksubscriber23)): void;
 
 解注册长时任务变化回调。
 
@@ -487,7 +487,7 @@ try {
 | userId | number                              | 否    | 否  | 用户ID。   |
 | bundleName | string                              | 否    | 否  | 应用包名。   |
 | appIndex | number                              | 否    | 否  | 应用分身ID。 |
-| authResult | [UserAuthResult](#userauthresult22) | 否    | 是  | 授权结果。   |
+| authResult | [UserAuthResult](../js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | 否    | 是  | 授权结果。   |
 
 ## BackgroundTaskSubscriber<sup>23+</sup>
 
@@ -495,7 +495,7 @@ try {
 
 ### onContinuousTaskStart<sup>23+</sup>
 
-onContinuousTaskStart(info: [ContinuousTaskInfo](#continuoustaskinfo20)): void;
+onContinuousTaskStart(info: [ContinuousTaskInfo](../js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20)): void;
 
 长时任务开始回调接口
 
@@ -507,7 +507,7 @@ onContinuousTaskStart(info: [ContinuousTaskInfo](#continuoustaskinfo20)): void;
 
 | 参数名  | 类型      | 必填   | 说明                |
 |------| ------- | ---- |-------------------|
-| info | [ContinuousTaskInfo](#continuoustaskinfo20) | 是    | 长时任务回调信息，长时任务ID、长时任务类型等。 |
+| info | [ContinuousTaskInfo](../js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20) | 是    | 长时任务回调信息，长时任务ID、长时任务类型等。 |
 
 **示例**：
 
@@ -529,7 +529,7 @@ private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscribe
 
 ### onContinuousTaskUpdate<sup>23+</sup>
 
-onContinuousTaskUpdate(info: [ContinuousTaskInfo](#continuoustaskinfo20)): void;
+onContinuousTaskUpdate(info: [ContinuousTaskInfo](../js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20)): void;
 
 长时任务更新回调接口
 
@@ -541,7 +541,7 @@ onContinuousTaskUpdate(info: [ContinuousTaskInfo](#continuoustaskinfo20)): void;
 
 | 参数名  | 类型      | 必填   | 说明                |
 |------| ------- | ---- |-------------------|
-| info | [ContinuousTaskInfo](#continuoustaskinfo20) | 是    | 长时任务回调信息，长时任务ID、长时任务类型等。 |
+| info | [ContinuousTaskInfo](../js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20) | 是    | 长时任务回调信息，长时任务ID、长时任务类型等。 |
 
 **示例**：
 
@@ -563,7 +563,7 @@ private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscribe
 
 ### onContinuousTaskStop<sup>23+</sup>
 
-onContinuousTaskStop(info: [ContinuousTaskInfo](#continuoustaskinfo20)): void;
+onContinuousTaskStop(info: [ContinuousTaskInfo](../js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20)): void;
 
 长时任务结束回调接口
 
@@ -575,7 +575,7 @@ onContinuousTaskStop(info: [ContinuousTaskInfo](#continuoustaskinfo20)): void;
 
 | 参数名  | 类型      | 必填   | 说明                |
 |------| ------- | ---- |-------------------|
-| info | [ContinuousTaskInfo](#continuoustaskinfo20) | 是    | 长时任务回调信息，长时任务ID、长时任务类型等。 |
+| info | [ContinuousTaskInfo](../js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20) | 是    | 长时任务回调信息，长时任务ID、长时任务类型等。 |
 
 **示例**：
 
