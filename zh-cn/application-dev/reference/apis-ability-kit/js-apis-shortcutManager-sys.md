@@ -260,7 +260,7 @@ addDynamicShortcutInfos(shortcutInfo: Array\<ShortcutInfo>, userId: number): Pro
 
 根据userId参数添加对应用户的动态快捷方式。
 
-**需要权限：** ohos.permission.MANAGE_SHORTCUTS or (ohos.permission.MANAGE_SHORTCUTS and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
+**需要权限：** ohos.permission.MANAGE_SHORTCUTS 或 (ohos.permission.MANAGE_SHORTCUTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 
  - 添加应用程序所属用户下的动态快捷方式时，需要ohos.permission.MANAGE_SHORTCUTS权限。
 
