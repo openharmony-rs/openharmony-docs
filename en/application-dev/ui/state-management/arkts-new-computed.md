@@ -47,7 +47,7 @@ get varName(): T {
 | ------------------ | ----------------------------------------------------- |
 | Supported type          | Getter accessor.|
 | Initialization from the parent component    | Forbidden.|
-| Child component initialization    | \@Param. |
+| Child component initialization    | [\@Param](./arkts-new-param.md). |
 | Execution time      | In \@ComponentV2, \@Computed is initialized when the custom component is created, triggering computation.<br>In @ObservedV2 decorated classes, \@Computed is initialized asynchronously after the class instance is created, triggering computation.<br>Recomputation occurs when state variables used in the \@Computed calculation are modified.|
 | Value assignment allowed      | No. @Computed decorated properties are read-only. For details, see [Constraints](#constraints).|
 
@@ -296,7 +296,7 @@ struct MyView {
 
   @Monitor('kelvin')
   onKelvinMonitor(mon: IMonitor) {
-    console.log('kelvin changed from ' + mon.value()?.before + ' to ' + mon.value()?.now);
+    console.info('kelvin changed from ' + mon.value()?.before + ' to ' + mon.value()?.now);
   }
 
   build() {

@@ -80,7 +80,7 @@ Each branch of the **if** statement includes a build function. Each of such buil
 
 In this example, when **count** increases from 0 to 1, the condition **if (this.count > 0)** becomes true, executing the branch's build function to create and add a **Text** component to the parent **Column**. If **count** changes back to 0 later, then the **Text** component will be removed from the **Column** component. Since there is no **else** branch, no new build function will be executed.
 
-### if/else with Child Component State Management
+### if/else Statements and Child Component States
 
 This example demonstrates **if/else** statements with child components containing [\@State](../state-management/arkts-state.md) decorated variables.
 

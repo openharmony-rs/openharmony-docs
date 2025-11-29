@@ -11,7 +11,7 @@ The lifecycle of a custom component is decorated with [@Component](arkts-create-
 
 - [aboutToAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear): Invoked when the custom component is about to appear. Specifically, it is invoked after a new instance of the custom component is created and before its **build** function is executed.
 
-- [onDidBuild](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#ondidbuild12): This API is called back after the build function triggered by the first rendering of the component is executed. This API is not called back when the component is re-rendered. You can report tracing data and implement other functions that do not affect the actual UI in this phase. Do not change state variables or use functions (such as **animateTo**) in **onDidBuild**. Otherwise, unstable UI performance may result.
+- [onDidBuild](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#ondidbuild12): Invoked after the component's build function completes during initial render. This callback is not invoked during component re-renders. Use this phase for operations that do not affect UI rendering, such as event data reporting.
 
 - [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear): Invoked when the custom component is about to be destroyed. Do not change state variables in the aboutToDisappear function. Modifying the @Link variable may lead to unstable application behavior.
 
