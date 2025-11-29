@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 支持MediaKeySystem实例管理、设备证书申请与处理、会话创建、离线媒体密钥管理、获取DRM度量记录、设备属性等。在调用MediaKeySystem方法之前，必须使用[createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem)创建一个MediaKeySystem实例。
 
@@ -21,6 +22,10 @@ setConfigurationString(configName: string, value: string): void
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -63,6 +68,10 @@ getConfigurationString(configName: string): string
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -111,6 +120,10 @@ setConfigurationByteArray(configName: string, value: Uint8Array): void
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                             | 必填 | 说明                           |
@@ -155,6 +168,10 @@ getConfigurationByteArray(configName: string): Uint8Array
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -203,6 +220,10 @@ getStatistics(): StatisticKeyValue[]
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                             | 说明                           |
@@ -242,6 +263,10 @@ getMaxContentProtectionLevel(): ContentProtectionLevel
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -283,6 +308,10 @@ generateKeySystemRequest(): Promise<ProvisionRequest\>
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                             | 说明                           |
@@ -300,6 +329,8 @@ generateKeySystemRequest(): Promise<ProvisionRequest\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drm } from '@kit.DrmKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -308,6 +339,21 @@ let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay
 // 设备上已有设备证书的情况下不需要调用。
 mediaKeySystem.generateKeySystemRequest().then((ProvisionRequest: drm.ProvisionRequest) => {
   console.log("generateKeySystemRequest");
+}).catch((err: BusinessError) => {
+  console.error(`generateKeySystemRequest: ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { drm } from '@kit.DrmKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+// 设备上已有设备证书的情况下不需要调用。
+mediaKeySystem.generateKeySystemRequest().then((ProvisionRequest: drm.ProvisionRequest) => {
+  console.info("generateKeySystemRequest");
 }).catch((err: BusinessError) => {
   console.error(`generateKeySystemRequest: ERROR: ${err}`);
 });
@@ -322,6 +368,10 @@ processKeySystemResponse(response: Uint8Array): Promise<void\>
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -347,15 +397,33 @@ processKeySystemResponse(response: Uint8Array): Promise<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drm } from '@kit.DrmKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-// keySystemResponse是从DRM服务获取的设备证书响应，请按实际值传入；
+// keySystemResponse是从DRM服务获取的设备证书响应，请按实际值传入。
 let keySystemResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySystem.processKeySystemResponse(keySystemResponse).then(() => {
   console.log("processKeySystemResponse");
+}).catch((err: BusinessError) => {
+  console.error(`processKeySystemResponse: ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { drm } from '@kit.DrmKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+// keySystemResponse是从DRM服务获取的设备证书响应，请按实际值传入。
+let keySystemResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
+mediaKeySystem.processKeySystemResponse(keySystemResponse).then(() => {
+  console.info("processKeySystemResponse");
 }).catch((err: BusinessError) => {
   console.error(`processKeySystemResponse: ERROR: ${err}`);
 });
@@ -370,6 +438,10 @@ getCertificateStatus():CertificateStatus
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -411,6 +483,10 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
@@ -429,6 +505,8 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drm } from '@kit.DrmKit';
 
@@ -438,6 +516,16 @@ mediaKeySystem.on('keySystemRequired', (eventInfo: drm.EventInfo) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drm } from '@kit.DrmKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+mediaKeySystem.on('keySystemRequired', (eventInfo: drm.EventInfo) => {
+  console.info('keySystemRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
+});
+```
 ## off('keySystemRequired')
 
 off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
@@ -447,6 +535,10 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -479,7 +571,11 @@ createMediaKeySession(level: ContentProtectionLevel): MediaKeySession
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -491,7 +587,7 @@ createMediaKeySession(level: ContentProtectionLevel): MediaKeySession
 
 | 类型                                             | 说明                           |
 | ----------------------------------------------- | ---------------------------- |
-| [MediaKeySession](arkts-apis-drm-MediaKeySession.md)          | MediaKeySession实例。                   |
+| [MediaKeySession](arkts-apis-drm-MediaKeySession.md) | MediaKeySession实例。                   |
 
 **错误码：**
 
@@ -519,6 +615,58 @@ try {
 }
 ```
 
+## createMediaKeySession<sup>23+<sup>
+
+createMediaKeySession(level: ContentProtectionLevel): MediaKeySession | undefined
+
+创建指定内容保护级别的MediaKeySession实例。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型                                             | 必填 | 说明                           |
+| -------- | ----------------------------------------------- | ---- | ---------------------------- |
+| level  | [ContentProtectionLevel](arkts-apis-drm-e.md#contentprotectionlevel)     | 是   | 内容保护级别。                   |
+
+**返回值：**
+
+| 类型                                             | 说明                           |
+| ----------------------------------------------- | ---------------------------- |
+| [MediaKeySession](arkts-apis-drm-MediaKeySession.md) \| undefined | MediaKeySession实例。                   |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)和[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.The param level exceeds reasonable range, please use value in ContentProtectionLevel.          |
+| 24700101                 |  All unknown errors.                  |
+| 24700104                 |  Meet max MediaKeySession num limit.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { drm } from '@kit.DrmKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+try {
+  let mediaKeySession: drm.MediaKeySession | undefined = mediaKeySystem.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`createMediaKeySession ERROR: ${error}`);
+}
+```
+
 ## createMediaKeySession
 
 createMediaKeySession(): MediaKeySession
@@ -527,13 +675,17 @@ createMediaKeySession(): MediaKeySession
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **返回值：**
 
 | 类型                                             | 说明                           |
 | ----------------------------------------------- | ---------------------------- |
-| [MediaKeySession](arkts-apis-drm-MediaKeySession.md)          | MediaKeySession实例。                   |
+| [MediaKeySession](arkts-apis-drm-MediaKeySession.md)| MediaKeySession实例。                   |
 
 **错误码：**
 
@@ -560,6 +712,49 @@ try {
 }
 ```
 
+## createMediaKeySession<sup>23+<sup>
+
+createMediaKeySession(): MediaKeySession | undefined
+
+创建DRM解决方案默认内容保护级别的MediaKeySession实例。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型                                             | 说明                           |
+| ----------------------------------------------- | ---------------------------- |
+| [MediaKeySession](arkts-apis-drm-MediaKeySession.md) \| undefined          | MediaKeySession实例。                   |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 24700101                |  All unknown errors.                  |
+| 24700104                 |  Meet max MediaKeySession num limit.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
+
+**示例：**
+
+```ts
+import { drm } from '@kit.DrmKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+try {
+  let mediaKeySession: drm.MediaKeySession | undefined = mediaKeySystem.createMediaKeySession();
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`createMediaKeySession ERROR: ${error}`);
+}
+```
+
 ## getOfflineMediaKeyIds
 
 getOfflineMediaKeyIds(): Uint8Array[]
@@ -569,6 +764,10 @@ getOfflineMediaKeyIds(): Uint8Array[]
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -609,6 +808,10 @@ getOfflineMediaKeyStatus(mediaKeyId: Uint8Array): OfflineMediaKeyStatus
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -659,6 +862,10 @@ clearOfflineMediaKeys(mediaKeyId: Uint8Array): void
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                             | 必填 | 说明                           |
@@ -701,6 +908,10 @@ destroy(): void
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 

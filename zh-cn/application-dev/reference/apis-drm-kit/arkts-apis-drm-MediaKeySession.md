@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 支持媒体密钥管理。在调用MediaKeySession方法之前，必须使用[createMediaKeySession](arkts-apis-drm-MediaKeySystem.md#createmediakeysession)获取一个MediaKeySession实例。
 
@@ -14,7 +15,9 @@ import { drm } from '@kit.DrmKit';
 
 ## generateMediaKeyRequest
 
-generateMediaKeyRequest(mimeType: string, initData: Uint8Array, mediaKeyType: number, options?: OptionsData[]): Promise<MediaKeyRequest\>
+ArkTS-Dyn: generateMediaKeyRequest(mimeType: string, initData: Uint8Array, mediaKeyType: number, options?: OptionsData[]): Promise<MediaKeyRequest\>
+
+ArkTS-Sta: generateMediaKeyRequest(mimeType: string, initData: Uint8Array, mediaKeyType: int, options?: OptionsData[]): Promise<MediaKeyRequest\>
 
 生成媒体密钥请求。
 
@@ -22,13 +25,17 @@ generateMediaKeyRequest(mimeType: string, initData: Uint8Array, mediaKeyType: nu
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                             | 必填 | 说明                           |
 | -------- | ----------------------------------------------- | ---- | ---------------------------- |
 | mimeType  | string     | 是   | 媒体类型，由DRM解决方案决定具体的支持类型。                   |
 | initData  | Uint8Array     | 是   | 初始数据。                   |
-| mediaKeyType| number     | 是   | 媒体密钥类型。0表示在线，1表示离线。 |
+| mediaKeyType| ArkTS-Dyn: number<br>ArkTS-Sta: int     | 是   | 媒体密钥类型。0表示在线，1表示离线。 |
 | options  | [OptionsData[]](arkts-apis-drm-i.md#optionsdata)     | 否   | 可选数据。                   |
 
 **返回值：**
@@ -49,6 +56,8 @@ generateMediaKeyRequest(mimeType: string, initData: Uint8Array, mediaKeyType: nu
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drm } from '@kit.DrmKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -64,6 +73,23 @@ mediaKeySession.generateMediaKeyRequest("video/avc", uint8pssh, drm.MediaKeyType
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drm } from '@kit.DrmKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
+// pssh数据为版权保护系统描述头，封装在加密码流中，mp4文件中位于pssh box、dash码流中位于mpd及mp4的pssh box、hls+ts的码流位于m3u8及每个ts片段中，请按实际值传入。
+let uint8pssh = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
+mediaKeySession.generateMediaKeyRequest("video/avc", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE).then((mediaKeyRequest: drm.MediaKeyRequest) =>{
+  console.info('generateMediaKeyRequest' + mediaKeyRequest);
+}).catch(async (err: BusinessError) => {
+  console.error(`generateMediaKeyRequest: ERROR: ${err}`);
+});
+```
+
 ## processMediaKeyResponse
 
 processMediaKeyResponse(response: Uint8Array): Promise<Uint8Array\>
@@ -73,6 +99,10 @@ processMediaKeyResponse(response: Uint8Array): Promise<Uint8Array\>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -98,6 +128,8 @@ processMediaKeyResponse(response: Uint8Array): Promise<Uint8Array\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drm } from '@kit.DrmKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -113,6 +145,23 @@ mediaKeySession.processMediaKeyResponse(mediaKeyResponse).then((mediaKeyId: Uint
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drm } from '@kit.DrmKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
+// mediaKeyResponse是从DRM服务获取的媒体密钥响应，按实际值填入。
+let mediaKeyResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
+mediaKeySession.processMediaKeyResponse(mediaKeyResponse).then((mediaKeyId: Uint8Array) => {
+  console.info('processMediaKeyResponse:' + mediaKeyId);
+}).catch(async (err: BusinessError) => {
+  console.error(`processMediaKeyResponse: ERROR: ${err}`);
+});
+```
+
 ## checkMediaKeyStatus
 
  checkMediaKeyStatus(): MediaKeyStatus[]
@@ -122,6 +171,10 @@ mediaKeySession.processMediaKeyResponse(mediaKeyResponse).then((mediaKeyId: Uint
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -164,6 +217,10 @@ clearMediaKeys(): void
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **错误码：**
 
 以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
@@ -174,6 +231,8 @@ clearMediaKeys(): void
 | 24700201                |  Fatal service error, for example, service died                  |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drm } from '@kit.DrmKit';
@@ -195,6 +254,28 @@ try {
   console.error(`clearMediaKeys ERROR: ${error}`);
 }
 ```
+ArkTS-Sta示例：
+
+```ts
+import { drm } from '@kit.DrmKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
+// mediaKeyResponse是从DRM服务获取的媒体密钥响应，按实际值填入。
+let mediaKeyResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
+mediaKeySession.processMediaKeyResponse(mediaKeyResponse).then((mediaKeyId: Uint8Array) => {
+  console.info('processMediaKeyResponse:' + mediaKeyId);
+}).catch(async (err: BusinessError) => {
+  console.error(`processMediaKeyResponse: ERROR: ${err}`);
+});
+try {
+  mediaKeySession.clearMediaKeys();
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`clearMediaKeys ERROR: ${error}`);
+}
+```
 
 ## generateOfflineReleaseRequest
 
@@ -205,6 +286,10 @@ generateOfflineReleaseRequest(mediaKeyId: Uint8Array): Promise<Uint8Array\>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -230,6 +315,8 @@ generateOfflineReleaseRequest(mediaKeyId: Uint8Array): Promise<Uint8Array\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drm } from '@kit.DrmKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -245,6 +332,23 @@ mediaKeySession.generateOfflineReleaseRequest(mediaKeyId).then((offlineReleaseRe
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drm } from '@kit.DrmKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
+// mediaKeyId是processMediaKeyResponse或getOfflineMediaKeyIds接口返回的媒体密钥标识，请按实际值传入。
+let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
+mediaKeySession.generateOfflineReleaseRequest(mediaKeyId).then((offlineReleaseRequest: Uint8Array) => {
+  console.info('generateOfflineReleaseRequest:' + offlineReleaseRequest);
+}).catch(async (err: BusinessError) => {
+  console.error(`generateOfflineReleaseRequest: ERROR: ${err}`);
+});
+```
+
 ## processOfflineReleaseResponse
 
 processOfflineReleaseResponse(mediaKeyId: Uint8Array, response: Uint8Array): Promise<void\>
@@ -254,6 +358,10 @@ processOfflineReleaseResponse(mediaKeyId: Uint8Array, response: Uint8Array): Pro
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -280,6 +388,8 @@ processOfflineReleaseResponse(mediaKeyId: Uint8Array, response: Uint8Array): Pro
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drm } from '@kit.DrmKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -302,6 +412,30 @@ mediaKeySession.processOfflineReleaseResponse(mediaKeyId, offlineReleaseResponse
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drm } from '@kit.DrmKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
+// mediaKeyId是processMediaKeyResponse或getOfflineMediaKeyIds接口返回的媒体密钥标识，请按实际长度申请内存。
+let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
+mediaKeySession.generateOfflineReleaseRequest(mediaKeyId).then((offlineReleaseRequest: Uint8Array) => {
+  console.info('generateOfflineReleaseRequest:' + offlineReleaseRequest);
+}).catch(async (err: BusinessError) => {
+  console.error(`generateOfflineReleaseRequest: ERROR: ${err}`);
+});
+// offlineReleaseResponse是从DRM服务获取的离线媒体密钥释放响应，请按实际长度申请内存。
+let offlineReleaseResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
+mediaKeySession.processOfflineReleaseResponse(mediaKeyId, offlineReleaseResponse).then(() => {
+  console.info('processOfflineReleaseResponse');
+}).catch(async (err: BusinessError) => {
+  console.error(`processOfflineReleaseResponse: ERROR: ${err}`);
+});
+```
+
 ## restoreOfflineMediaKeys
 
 restoreOfflineMediaKeys(mediaKeyId: Uint8Array): Promise<void\>
@@ -311,6 +445,10 @@ restoreOfflineMediaKeys(mediaKeyId: Uint8Array): Promise<void\>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -336,6 +474,8 @@ restoreOfflineMediaKeys(mediaKeyId: Uint8Array): Promise<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drm } from '@kit.DrmKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -351,6 +491,23 @@ mediaKeySession.restoreOfflineMediaKeys(mediaKeyId).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drm } from '@kit.DrmKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
+// mediaKeyId是processMediaKeyResponse或getOfflineMediaKeyIds接口返回的媒体密钥标识，请按实际数据传入。
+let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
+mediaKeySession.restoreOfflineMediaKeys(mediaKeyId).then(() => {
+  console.info("restoreOfflineMediaKeys");
+}).catch(async (err: BusinessError) => {
+  console.error(`restoreOfflineMediaKeys: ERROR: ${err}`);
+});
+```
+
 ## getContentProtectionLevel
 
 getContentProtectionLevel(): ContentProtectionLevel
@@ -360,6 +517,10 @@ getContentProtectionLevel(): ContentProtectionLevel
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -401,6 +562,10 @@ requireSecureDecoderModule(mimeType: string): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -450,6 +615,10 @@ on(type: 'keyRequired', callback: (eventInfo: EventInfo) => void): void
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
@@ -488,6 +657,10 @@ off(type: 'keyRequired', callback?: (eventInfo: EventInfo) => void): void
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
@@ -523,6 +696,10 @@ on(type: 'keyExpired', callback: (eventInfo: EventInfo) => void): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -562,6 +739,10 @@ off(type: 'keyExpired', callback?: (eventInfo: EventInfo) => void): void
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
@@ -597,6 +778,10 @@ on(type: 'vendorDefined', callback: (eventInfo: EventInfo) => void): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -636,6 +821,10 @@ off(type: 'vendorDefined', callback?: (eventInfo: EventInfo) => void): void
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
@@ -672,6 +861,10 @@ on(type: 'expirationUpdate', callback: (eventInfo: EventInfo) => void): void
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
@@ -690,6 +883,8 @@ on(type: 'expirationUpdate', callback: (eventInfo: EventInfo) => void): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drm } from '@kit.DrmKit';
 
@@ -697,6 +892,18 @@ let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.on('expirationUpdate', (eventInfo: drm.EventInfo) => {
   console.log('expirationUpdate ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { drm } from '@kit.DrmKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
+mediaKeySession.on('expirationUpdate', (eventInfo: drm.EventInfo) => {
+  console.info('expirationUpdate ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
 });
 ```
 
@@ -709,6 +916,10 @@ off(type: 'expirationUpdate', callback?: (eventInfo: EventInfo) => void): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -746,6 +957,10 @@ on(type: 'keysChange', callback: (keyInfo: KeysInfo[], newKeyAvailable: boolean)
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                  |
@@ -764,6 +979,8 @@ on(type: 'keysChange', callback: (keyInfo: KeysInfo[], newKeyAvailable: boolean)
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drm } from '@kit.DrmKit';
 
@@ -772,6 +989,20 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 mediaKeySession.on('keysChange', (keyInfo: drm.KeysInfo[], newKeyAvailable: boolean) => {
   for (let i = 0; i < keyInfo.length; i++) {
     console.log('keysChange' + 'keyId:' + keyInfo[i].keyId + ' data:' + keyInfo[i].value);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { drm } from '@kit.DrmKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
+mediaKeySession.on('keysChange', (keyInfo: drm.KeysInfo[], newKeyAvailable: boolean) => {
+  for (let i = 0; i < keyInfo.length; i++) {
+    console.info('keysChange' + 'keyId:' + keyInfo[i].keyId + ' data:' + keyInfo[i].value);
   }
 });
 ```
@@ -785,6 +1016,10 @@ off(type: 'keysChange', callback?: (keyInfo: KeysInfo[], newKeyAvailable: boolea
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -821,6 +1056,10 @@ destroy(): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 

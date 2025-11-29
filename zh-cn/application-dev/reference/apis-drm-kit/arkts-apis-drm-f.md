@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -18,7 +19,11 @@ createMediaKeySystem(name: string): MediaKeySystem
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -30,7 +35,7 @@ createMediaKeySystem(name: string): MediaKeySystem
 
 | 类型                                             | 说明                           |
 | ----------------------------------------------- | ---------------------------- |
-| [MediaKeySystem](arkts-apis-drm-MediaKeySystem.md)           | MediaKeySystem实例。                   |
+| [MediaKeySystem](arkts-apis-drm-MediaKeySystem.md) | MediaKeySystem实例。                   |
 
 **错误码：**
 
@@ -56,6 +61,53 @@ try {
 }
 ```
 
+## drm.createMediaKeySystem<sup>23+</sup>
+
+createMediaKeySystem(name: string): MediaKeySystem | undefined
+
+创建MediaKeySystem实例。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型                                             | 必填 | 说明                           |
+| -------- | ----------------------------------------------- | ---- | ---------------------------- |
+| name  | string     | 是   | DRM解决方案名称，如"com.clearplay.drm"。                   |
+
+**返回值：**
+
+| 类型                                             | 说明                           |
+| ----------------------------------------------- | ---------------------------- |
+| [MediaKeySystem](arkts-apis-drm-MediaKeySystem.md ) \| undefined           | MediaKeySystem实例。                   |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)和[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.               |
+| 24700101                |  All unknown errors.                  |
+| 24700103                |  Meet max MediaKeySystem num limit.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@ohos.base';
+try {
+  let mediaKeySystem: drm.MediaKeySystem | undefined = drm.createMediaKeySystem("com.clearplay.drm");
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`createMediaKeySystem ERROR: ${error}`);
+}
+```
+
 ## drm.isMediaKeySystemSupported
 
 isMediaKeySystemSupported(name: string): boolean
@@ -65,6 +117,10 @@ isMediaKeySystemSupported(name: string): boolean
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -90,6 +146,8 @@ isMediaKeySystemSupported(name: string): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drm } from '@kit.DrmKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -97,6 +155,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let supported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm");
   console.log("isMediaKeySystemSupported: ", supported);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`isMediaKeySystemSupported ERROR: ${error}`);
+}
+```
+
+ArkTS-STa示例：
+
+```ts
+import { drm } from '@kit.DrmKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let supported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm");
+  console.info("isMediaKeySystemSupported: ", supported);
 } catch (err) {
   let error = err as BusinessError;
   console.error(`isMediaKeySystemSupported ERROR: ${error}`);
@@ -112,6 +185,10 @@ isMediaKeySystemSupported(name: string, mimeType: string): boolean
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -138,6 +215,8 @@ isMediaKeySystemSupported(name: string, mimeType: string): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drm } from '@kit.DrmKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -145,6 +224,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let supported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm", "video/avc");
   console.log("isMediaKeySystemSupported: ", supported);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`isMediaKeySystemSupported ERROR: ${error}`);
+}
+```
+
+ArkTS-Dyn示例：
+
+```ts
+import { drm } from '@kit.DrmKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let supported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm", "video/avc");
+  console.info("isMediaKeySystemSupported: ", supported);
 } catch (err) {
   let error = err as BusinessError;
   console.error(`isMediaKeySystemSupported ERROR: ${error}`);
@@ -160,6 +254,10 @@ isMediaKeySystemSupported(name: string, mimeType: string, level: ContentProtecti
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -187,6 +285,8 @@ isMediaKeySystemSupported(name: string, mimeType: string, level: ContentProtecti
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drm } from '@kit.DrmKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -194,6 +294,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let supported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm", "video/avc", drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
   console.log("isMediaKeySystemSupported: ", supported);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`isMediaKeySystemSupported ERROR: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { drm } from '@kit.DrmKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let supported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm", "video/avc", drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
+  console.info("isMediaKeySystemSupported: ", supported);
 } catch (err) {
   let error = err as BusinessError;
   console.error(`isMediaKeySystemSupported ERROR: ${error}`);
@@ -209,6 +324,10 @@ getMediaKeySystemUuid(name: string): string;
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -234,12 +353,28 @@ getMediaKeySystemUuid(name: string): string;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drm } from '@kit.DrmKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let uuid: String = drm.getMediaKeySystemUuid("com.clearplay.drm");
   console.log("getMediaKeySystemUuid: ", uuid);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`getMediaKeySystemUuid ERROR: ${error}`);  
+}
+```
+
+ArkTS-STa示例：
+
+```ts
+import { drm } from '@kit.DrmKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let uuid: String = drm.getMediaKeySystemUuid("com.clearplay.drm");
+  console.info("getMediaKeySystemUuid: ", uuid);
 } catch (err) {
   let error = err as BusinessError;
   console.error(`getMediaKeySystemUuid ERROR: ${error}`);  
@@ -255,6 +390,10 @@ getMediaKeySystems(): MediaKeySystemDescription[]
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
