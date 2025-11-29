@@ -41,7 +41,7 @@ on(event: InnerEvent, callback: Callback\<EventData\>): void
 
 | 参数名   | 类型                                | 必填 | 说明                                                         |
 | -------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| event    | [InnerEvent](#innerevent)           | 是   | 持续订阅的事件，其中[EventPriority](#eventpriority)，在订阅事件时无需指定，也不生效。 |
+| event    | [InnerEvent](#innerevent)           | 是   | 持续订阅的事件，其中[EventPriority](#eventpriority)在订阅事件时无需指定，也不生效。 |
 | callback | Callback\<[EventData](#eventdata)\> | 是   | 回调函数，返回[EventData](#eventdata)。                       |
 
 **示例：**
@@ -168,7 +168,7 @@ on<T\>(eventId: string, callback:  Callback\<GenericEventData<T\>\>): void
 | 参数名   | 类型                                | 必填 | 说明                                   |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
 | eventId    | string                              | 是   | 持续订阅的事件。取值为长度不超过10240字节的自定义字符串，且不可为空字符。|
-| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | 是   | 接收到该事件时需要执行的回调处理函数。 |
+| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | 是   | 回调函数，返回[GenericEventData<T\>](#genericeventdatat12)。 |
 
 **示例：**
 
@@ -260,7 +260,7 @@ once(event: InnerEvent, callback: Callback\<EventData\>): void
 
 | 参数名   | 类型                                | 必填 | 说明                                                         |
 | -------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| event    | [InnerEvent](#innerevent)           | 是   | 单次订阅的事件，其中[EventPriority](#eventpriority)，在订阅事件时无需指定，也不生效。 |
+| event    | [InnerEvent](#innerevent)           | 是   | 单次订阅的事件，其中[EventPriority](#eventpriority)在订阅事件时无需指定，也不生效。 |
 | callback | Callback\<[EventData](#eventdata)\> | 是   | 回调函数，返回[EventData](#eventdata)。|
 
 **示例：**
@@ -384,7 +384,7 @@ once<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 | 参数名   | 类型                                | 必填 | 说明                                   |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
 | eventId    | string                              | 是   | 单次订阅的事件。取值为长度不超过10240字节的自定义字符串，且不可为空字符。|
-| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | 是   | 接收到该事件时需要执行的回调处理函数。 |
+| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | 是   | 回调函数，返回[GenericEventData<T\>](#genericeventdatat12)。 |
 
 **示例：**
 
@@ -667,7 +667,7 @@ off<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 | 参数名   | 类型                                | 必填 | 说明                       |
 | -------- | ----------------------------------- | ---- | -------------------------- |
 | eventId  | string                              | 是   | 事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。|
-| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | 是   | 事件的回调处理函数。 |
+| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | 是   | 回调函数，返回[GenericEventData<T\>](#genericeventdatat12)。 |
 
 **示例：**
 
@@ -861,7 +861,7 @@ ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn口是[emit(eventId: string, data?: EventData)](#emitteremit11)或[emit<T\>(eventId: string, data?: GenericEventData<T\>)](#emitteremit12)
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[emit(eventId: string, data?: EventData)](#emitteremit11)或[emit<T\>(eventId: string, data?: GenericEventData<T\>)](#emitteremit12)
 
 **ArkTS-Sta起始版本**：22
 
@@ -901,7 +901,7 @@ ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线
 | 参数名  | 类型                    | 必填 | 说明             |
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。|
-| data    | [EventData](#eventdata) | ArkTS-Dyn:否<br/>ArkTS-Sta:是  | 事件携带的数据。|
+| data    | [EventData](#eventdata) | 是  | 事件携带的数据。|
 
 **示例：**
 
@@ -1125,11 +1125,13 @@ ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线
 **示例：**
 
 ```ts
+let record: Record<string, RecordData> = {
+  "content": "content",
+  "id": 1,
+};
+
 let eventData: emitter.EventData = {
-  data: {
-    "content": "content",
-    "id": 1,
-  }
+  data: record // 现在类型兼容
 };
 
 let options: emitter.Options = {
@@ -1165,7 +1167,7 @@ ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
 | options | [Options](#options11)   | 是   | 事件优先级。 |
-| data    | [GenericEventData<T\>](#genericeventdatat12) | 是   | 事件携带的数据。 |
+| data    | [GenericEventData<T\>](#genericeventdatat12) | ArkTS-Dyn：否<br/>ArkTS-Sta：是   | 事件携带的数据。 |
 
 **示例：**
 

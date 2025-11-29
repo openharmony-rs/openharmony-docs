@@ -92,7 +92,7 @@ class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbilit
     console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
 
     try {
-      this.context.startAbility(want, (error: BusinessError) => {
+      this.context.startAbility(want, (error: BusinessError): void=> {
         if (error) {
           // 处理业务逻辑错误
           console.error(`startAbility failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}.`);
@@ -229,4 +229,5 @@ class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbilit
       console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
     }
   }
+}
   ```
