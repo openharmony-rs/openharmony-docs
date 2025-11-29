@@ -42,15 +42,13 @@ VPN 即虚拟专网（VPN-Virtual Private Network）在公用网络上建立专�
 主要功能：实现业务逻辑，如：创建隧道、建立 VPN 网络、保护 VPN 网络、销毁 VPN 网络。
 
 ```js
-import Want from '@ohos.app.ability.Want';
-import VpnExtensionAbility from '@ohos.app.ability.VpnExtensionAbility';
-import vpnExt from '@ohos.net.vpnExtension';
-import hilog from '@ohos.hilog';
-import common from '@ohos.app.ability.common';
+import { Want } from '@kit.AbilityKit';
+import { VpnExtensionAbility } from '@kit.NetworkKit';
+import { vpnExtension } from '@kit.NetworkKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // vpn_client是一个C语言便携的so，比如import vpn_client from 'libvpn_client.so';
 
-import socket from '@ohos.net.socket';
 
 const TAG: string = "[MyVpnExtAbility]";
 let g_tunFd = -1;

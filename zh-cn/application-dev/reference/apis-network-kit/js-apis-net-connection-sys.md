@@ -411,7 +411,7 @@ connection.factoryReset().then(() => {
 
 setProxyMode(mode: ProxyMode): Promise\<void\>
 
-设置代理模式。
+设置代理模式。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
