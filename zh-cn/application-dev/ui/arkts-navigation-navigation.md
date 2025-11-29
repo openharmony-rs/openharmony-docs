@@ -1052,12 +1052,12 @@ export struct pageOneTmp {
 @Entry
 @Component
 struct NavigationDemo {
-  @Provide('pathInfos') pathInfos: NavPathStack = new NavPathStack();
+  @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
   private listArray: Array<string> = ['WLAN', 'Bluetooth', 'Personal Hotspot', 'Connect & Share'];
 
   build() {
     Column() {
-      Navigation(this.pathInfos) {
+      Navigation(this.navPathStack) {
         TextInput({ placeholder: '输入关键字搜索' })
           .width('90%')
           .height(40)
@@ -1109,7 +1109,7 @@ struct NavigationDemo {
             }
             .width('100%')
             .onClick(() => {
-              this.pathInfos.pushPathByName(`${item}`, '详情页面参数'); // 将name指定的NaviDestination页面信息入栈,传递的参数为param
+              this.navPathStack.pushPathByName(`${item}`, '详情页面参数'); // 将name指定的NaviDestination页面信息入栈,传递的参数为param
             })
           }, (item: string): string => item)
         }
@@ -1147,7 +1147,7 @@ export function PageOneBuilder(name: string, param: string) {
 
 @Component
 export struct PageOne {
-  pathInfos: NavPathStack = new NavPathStack();
+  navPathStack: NavPathStack = new NavPathStack();
   name: string = '';
   @State value: string = '';
 
@@ -1178,14 +1178,14 @@ export struct PageOne {
           .margin({ top: 50 })
           .onClick(() => {
             //弹出路由栈栈顶元素，返回上个页面
-            this.pathInfos.pop();
+            this.navPathStack.pop();
           })
       }
       .size({ width: '100%', height: '100%' })
     }.title(`${this.name}`)
     .onReady((ctx: NavDestinationContext) => {
       // NavDestinationContext获取当前所在的导航控制器
-      this.pathInfos = ctx.pathStack;
+      this.navPathStack = ctx.pathStack;
     })
   }
 }
@@ -1206,7 +1206,7 @@ export function PageTwoBuilder(name: string) {
 
 @Component
 export struct PageTwo {
-  pathInfos: NavPathStack = new NavPathStack();
+  navPathStack: NavPathStack = new NavPathStack();
   name: string = '';
   private listArray: Array<string> = ['Projection', 'Print', 'VPN', 'Private DNS', 'NFC'];
 
@@ -1258,7 +1258,7 @@ export struct PageTwo {
             }
             .width('100%')
             .onClick(() => {
-              this.pathInfos.pushPathByName(`${item}`, '页面设置参数');
+              this.navPathStack.pushPathByName(`${item}`, '页面设置参数');
             })
           }, (item: string): string => item)
         }
@@ -1271,7 +1271,7 @@ export struct PageTwo {
     }.title(`${this.name}`)
     .onReady((ctx: NavDestinationContext) => {
       // NavDestinationContext获取当前所在的导航控制器
-      this.pathInfos = ctx.pathStack;
+      this.navPathStack = ctx.pathStack;
     })
   }
 }
