@@ -57,7 +57,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function GetProperties(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains EXIF metadata.
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -116,7 +116,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function SetProperties(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains EXIF metadata.
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -164,7 +164,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function GetAllProperties(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains EXIF metadata.
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -208,7 +208,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function Clone(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains EXIF metadata.
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
