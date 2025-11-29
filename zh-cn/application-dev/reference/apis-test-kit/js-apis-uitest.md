@@ -164,6 +164,8 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 | MOUSE_BUTTON_RIGHT  | 1    | 鼠标右键。   |
 | MOUSE_BUTTON_MIDDLE | 2    | 鼠标中间键。 |
 
+## UIElementInfo<sup>10+</sup>
+
 UI事件的相关信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
