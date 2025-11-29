@@ -14,7 +14,7 @@
 
 当前保存文件时，请使用只写方式打开文件uri：
 
-```
+```ts
 fs.openSync(uri, fs.OpenMode.WRITE_ONLY)
 ```
 
@@ -51,7 +51,7 @@ fs.openSync(uri, fs.OpenMode.WRITE_ONLY)
 
 读取文件内容的buffer数据后，通过\@ohos.util的TextDecoder对文件内容进行解码。
 
-```
+```ts
 let filePath = getContext(this).filesDir + "/test0.txt";
 let stream = fs.createStreamSync(filePath, "r+");
 let buffer = new ArrayBuffer(4096)
@@ -68,7 +68,7 @@ console.log("读取的文件内容：" + readString);
 
 copyfile不支持uri，可以先使用open接口打开datashare uri后，拿到fd后再调用copyfile接口。
 
-```
+```ts
 let file = fs.openSync("datashare://...")
 fs.copyFile(file.fd, 'dstPath', 0).then(() => {
   console.info('copyFile success')
@@ -86,7 +86,7 @@ fs.copyFile(file.fd, 'dstPath', 0).then(() => {
 
 1. 使用fs.openSyn获取json文件的fd。
 
-   ```
+   ```ts
    import fs from '@ohos.file.fs';
    let sanFile = fs.open(basePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
    let fd = sanFile.fd;
@@ -94,7 +94,7 @@ fs.copyFile(file.fd, 'dstPath', 0).then(() => {
 
 2. 通过fs.readSync读取json文件内容。
 
-   ```
+   ```ts
    // 4096为缓存区大小，可根据读取文件大小自定义
    let buf = new ArrayBuffer(4096);
    fs.readSync(sanFile.fd, buf);
@@ -102,13 +102,13 @@ fs.copyFile(file.fd, 'dstPath', 0).then(() => {
 
 3. 修改内容。
 
-   ```
+   ```ts
    obj.name = 'new name';
    ```
 
 4. 重新写入json文件。
 
-   ```
+   ```ts
    fs.writeSync(file.fd, JSON.stringify(obj));
    ```
 
