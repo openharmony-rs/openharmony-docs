@@ -3512,7 +3512,7 @@ abstract initialize(): ButtonAttribute
 ### initialize<sup>22+</sup>
 abstract initialize(value: ButtonOptions): ButtonAttribute
 
-该接口用于创建可以包含单个子组件的按钮，用于设置组件的初始值。
+该接口用于创建可以包含单个子组件的按钮的构造参数，用于设置组件的初始值。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3524,7 +3524,7 @@ abstract initialize(value: ButtonOptions): ButtonAttribute
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
-| value | [ButtonOptions](./arkui-ts/ts-basic-components-button.md#buttonoptions对象说明) | 是   | 设置Button组件参数。 |
+| value | [ButtonOptions](./arkui-ts/ts-basic-components-button.md#buttonoptions对象说明) | 是   | Button组件参数。 |
 
 **返回值：**
 
@@ -3535,7 +3535,7 @@ abstract initialize(value: ButtonOptions): ButtonAttribute
 ### initialize<sup>22+</sup>
 abstract initialize(label: ResourceStr, options?: ButtonOptions): ButtonAttribute
 
-该接口用于使用文本内容创建相应的按钮组件，此时Button无法包含子组件，用于设置组件的初始值。
+该接口用于使用文本内容创建相应的按钮组件的构造参数，用于设置组件的初始值。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3547,8 +3547,8 @@ abstract initialize(label: ResourceStr, options?: ButtonOptions): ButtonAttribut
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
-| label  | [ResourceStr](./arkui-ts/ts-types.md#resourcestr) | 是 | 设置按钮文本内容。|
-| options | [ButtonOptions](./arkui-ts/ts-basic-components-button.md#buttonoptions对象说明) | 否   | 设置Button组件参数。 |
+| label  | [ResourceStr](./arkui-ts/ts-types.md#resourcestr) | 是 | 按钮文本内容。|
+| options | [ButtonOptions](./arkui-ts/ts-basic-components-button.md#buttonoptions对象说明) | 否   | Button组件参数。 |
 
 **返回值：**
 
@@ -3559,7 +3559,7 @@ abstract initialize(label: ResourceStr, options?: ButtonOptions): ButtonAttribut
 ### Button<sup>22+</sup>
 type Button = ButtonFrameNode
 
-Button类型的FrameNode节点类型。以子组件模式创建允许添加一个子组件。以label模式创建不可以添加子组件。
+Button类型的FrameNode节点。以子组件模式创建时允许添加一个子组件，以label模式创建不可以添加子组件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3625,7 +3625,7 @@ abstract initialize(options?: CheckboxOptions): CheckboxAttribute
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
-| options | [CheckboxOptions](./arkui-ts/ts-basic-components-checkbox.md#checkboxoptions对象说明) | 否   | 设置组件参数。 |
+| options | [CheckboxOptions](./arkui-ts/ts-basic-components-checkbox.md#checkboxoptions对象说明) | 否   | 组件参数。 |
 
 **返回值：**
 
@@ -3636,7 +3636,7 @@ abstract initialize(options?: CheckboxOptions): CheckboxAttribute
 ### Checkbox<sup>22+</sup>
 type Checkbox = CheckboxFrameNode
 
-Checkbox类型的FrameNode节点类型。
+Checkbox类型的FrameNode节点。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3702,7 +3702,7 @@ abstract initialize(options?: CheckboxGroupOptions): CheckboxGroupAttribute
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
-| options | [CheckboxGroupOptions](./arkui-ts/ts-basic-components-checkboxgroup.md#checkboxgroupoptions对象说明) | 否   | 设置组件参数。 |
+| options | [CheckboxGroupOptions](./arkui-ts/ts-basic-components-checkboxgroup.md#checkboxgroupoptions对象说明) | 否   | 组件参数。 |
 
 **返回值：**
 
@@ -3713,7 +3713,7 @@ abstract initialize(options?: CheckboxGroupOptions): CheckboxGroupAttribute
 ### CheckboxGroup<sup>22+</sup>
 type CheckboxGroup = CheckboxGroupFrameNode
 
-CheckboxGroup类型的FrameNode节点类型。
+CheckboxGroup类型的FrameNode节点。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3779,7 +3779,7 @@ abstract initialize(value: RadioOptions): RadioAttribute
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
-| value | [RadioOptions](./arkui-ts/ts-basic-components-radio.md#radiooptions对象说明) | 是   | 设置组件参数。 |
+| value | [RadioOptions](./arkui-ts/ts-basic-components-radio.md#radiooptions对象说明) | 是   | 组件参数。 |
 
 **返回值：**
 
@@ -3790,7 +3790,7 @@ abstract initialize(value: RadioOptions): RadioAttribute
 ### Radio<sup>22+</sup>
 type Radio = RadioFrameNode
 
-Radio类型的FrameNode节点类型。
+Radio类型的FrameNode节点。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3856,7 +3856,7 @@ abstract initialize(options?: RatingOptions): RatingAttribute
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
-| options | [RatingOptions](./arkui-ts/ts-basic-components-rating.md#ratingoptions18对象说明) | 否   | 设置组件参数。 |
+| options | [RatingOptions](./arkui-ts/ts-basic-components-rating.md#ratingoptions18对象说明) | 否   | 组件参数。 |
 
 **返回值：**
 
@@ -3867,7 +3867,7 @@ abstract initialize(options?: RatingOptions): RatingAttribute
 ### Rating<sup>22+</sup>
 type Rating = RatingFrameNode
 
-Rating类型的FrameNode节点类型。
+Rating类型的FrameNode节点。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3933,7 +3933,7 @@ abstract initialize(value: Array<SelectOption>): SelectAttribute
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
-| value | Array<[SelectOption](./arkui-ts/ts-basic-components-select.md#selectoption对象说明)> | 是   | 设置组件参数。 |
+| value | Array<[SelectOption](./arkui-ts/ts-basic-components-select.md#selectoption对象说明)> | 是   | 组件参数。 |
 
 **返回值：**
 
@@ -3944,7 +3944,7 @@ abstract initialize(value: Array<SelectOption>): SelectAttribute
 ### Select<sup>22+</sup>
 type Select = SelectFrameNode
 
-Select类型的FrameNode节点类型。
+Select类型的FrameNode节点。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -4010,7 +4010,7 @@ abstract initialize(options?: SliderOptions): SliderAttribute;
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
-| options | [SliderOptions](./arkui-ts/ts-basic-components-slider.md#slideroptions对象说明) | 否   | 设置组件参数。 |
+| options | [SliderOptions](./arkui-ts/ts-basic-components-slider.md#slideroptions对象说明) | 否   | 组件参数。 |
 
 **返回值：**
 
@@ -4021,7 +4021,7 @@ abstract initialize(options?: SliderOptions): SliderAttribute;
 ### Slider<sup>22+</sup>
 type Slider = SliderFrameNode
 
-Slider类型的FrameNode节点类型。
+Slider类型的FrameNode节点。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -4087,7 +4087,7 @@ abstract initialize(value: ToggleOptions): ToggleAttribute;
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
-| value | [ToggleOptions](./arkui-ts/ts-basic-components-toggle.md#toggleoptions18对象说明) | 是   | 设置组件参数。 |
+| value | [ToggleOptions](./arkui-ts/ts-basic-components-toggle.md#toggleoptions18对象说明) | 是   | 组件参数。 |
 
 **返回值：**
 
@@ -4098,7 +4098,7 @@ abstract initialize(value: ToggleOptions): ToggleAttribute;
 ### Toggle<sup>22+</sup>
 type Toggle = ToggleFrameNode
 
-Toggle类型的FrameNode节点类型。
+Toggle类型的FrameNode节点。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
