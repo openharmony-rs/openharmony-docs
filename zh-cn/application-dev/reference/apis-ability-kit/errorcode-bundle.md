@@ -1433,15 +1433,16 @@ Invalid fileTypes.
 请检查文件类型数组是否错误，阅读参数规格约束，按照可能原因进行排查。
 <!--DelEnd-->
 
-## 18100001 ShortcutInfo列表中，存在bundleName和appIndex的组合与其他不一致
+## 18100001 ShortcutInfo列表中bundleName和appIndex不一一对应
 **错误信息**<br/>
 A combination of bundleName and appIndex in the shutcutInfo list is different from the others.
 
 **错误描述**<br/>
-shortcutInfo 列表中，存在bundleName和appIndex的组合与其他不一致。
+shortcutInfo列表中，存在bundleName和appIndex的组合与其他不一致。
 
 **可能原因**<br/>
-shortcutInfo 列表中，存在bundleName和appIndex的组合与其他不一致，例如：
+shortcutInfo列表中，存在bundleName和appIndex的组合与其他不一致。
+例如在调用[hortcutManager.addDynamicShortcutInfos](js-apis-shortcutManager-sys.md#adddynamicshortcutinfos)接口时传入了如下列表:
 ```ts
 const bundleName = "com.example.dynamic";
 const bundleName1 = "com.example.dynamic1";
@@ -1450,7 +1451,7 @@ const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
   { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2, },
   { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2, },
     // 校验失败，因为bundleName和appIndex与其他shortcutInfo不一样
-  { id: "3", bundleName: bundleName1, moduleName: moduleName, appIndex: 0, sourceType: 2, },
+  { id: "3", bundleName: bundleName1, moduleName: moduleName, appIndex: 0, sourceType: 2, }
 ]
 ```
 或者：
@@ -1461,9 +1462,9 @@ const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
   { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2, },
   { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2, },
   // 校验失败，因为bundleName和appIndex与其他shortcutInfo不一样
-  { id: "3", bundleName: bundleName, moduleName: moduleName, appIndex: 1, sourceType: 2, },
+  { id: "3", bundleName: bundleName, moduleName: moduleName, appIndex: 1, sourceType: 2, }
 ]
 ```
 
 **处理步骤**<br/>
-请检查shortcutInfo 列表中，是否有不一致的bundleName和appInndex组合。
+请检查shortcutInfo 列表中，是否有不同的bundleName和appInndex组合。

@@ -275,7 +275,7 @@ addDynamicShortcutInfos(shortcutInfo: Array\<ShortcutInfo>, userId: number): Pro
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 |  shortcutInfo   |   Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>    |   是  |  待添加的动态快捷方式信息。通过本接口提交时，会做如下校验：</br> 1.ShortcutInfo中的sourceType字段会被设置为2。</br> 2.ShortcutInfo中的moduleName字段在对应的应用中不存在时，会抛出17700002错误码。</br> 3.ShortcutInfo中的hostAbility字段被设置为非空的字符串时，会校验对应的ability是否存在，不存在时，会抛出17700003错误码。  |
-| userId     | number | 是   | 动态快捷方式所属的用户id。可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
+| userId     | number | 是   | 动态快捷方式所属的用户id。可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户，取值范围：大于等于0。|
 
 **返回值：**
 
@@ -306,7 +306,7 @@ addDynamicShortcutInfos(shortcutInfo: Array\<ShortcutInfo>, userId: number): Pro
 import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 代码中使用的id、bundleName、moduleName、userId需为实际快捷方式id、包名、模块名、用户ID。
+// 请开发者替换为实际的快捷方式id、bundleName、moduleName、userId。
 const bundleName = "com.example.dynamic";
 let moduleName = 'entry';
 const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
@@ -330,9 +330,9 @@ try {
 
 deleteDynamicShortcutInfos(bundleName: string, appIndex: number, userId: number, ids?: Array\<string>): Promise\<void>
 
-删除与bundleName、appIndex和userId参数匹配的动态快捷方式。
+删除指定的动态快捷方式。
 
-**需要权限：** ohos.permission.MANAGE_SHORTCUTS or (ohos.permission.MANAGE_SHORTCUTS and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
+**需要权限：** ohos.permission.MANAGE_SHORTCUTS 或 (ohos.permission.MANAGE_SHORTCUTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 
  - 删除应用程序所属用户下的动态快捷方式，需要ohos.permission.MANAGE_SHORTCUTS权限。
 
@@ -347,9 +347,9 @@ deleteDynamicShortcutInfos(bundleName: string, appIndex: number, userId: number,
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName   |   string    |   是  |   要删除的动态快捷方式所属的包名。    |
-| appIndex     | number | 是   | 要删除的动态快捷方式所属的分身索引。取值范围 0 ~ 5 |
-| userId     | number | 是   | 要删除的动态快捷方式所属的用户id。可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
-| ids     |  Array<string> | 否   | 要删除的动态快捷方式id列表。不传或列表为空时，表示删除所有符合条件的动态快捷方式。|
+| appIndex     | number | 是   | 要删除的动态快捷方式所属的分身索引。支持取值为：1、2、3、4、5。 |
+| userId     | number | 是   | 要删除的动态快捷方式所属的用户id。可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户，取值范围：大于等于0。|
+| ids     |  Array\<string> | 否   | 要删除的动态快捷方式id列表。缺省或传入列表为空时，表示删除所有符合条件的动态快捷方式。|
 
 **返回值：**
 
@@ -377,7 +377,7 @@ deleteDynamicShortcutInfos(bundleName: string, appIndex: number, userId: number,
 import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 代码中使用的bundleName、appIndex、userId、id需为实际包名、索引、用户ID、快捷方式id。
+// 请开发者替换为实际的快捷方式id、bundleName、moduleName、userId。
 const bundleName = "com.example.dynamic";
 
 try {
