@@ -101,6 +101,7 @@
 | [OH_Drawing_ErrorCode OH_Drawing_CanvasQuickRejectRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* rect,bool* quickReject)](#oh_drawing_canvasquickrejectrect) | 判断矩形和画布区域是否不相交。画布区域包含边界。<br> |
 | [OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapRectConstraint(OH_Drawing_Canvas* canvas,OH_Drawing_PixelMap* pixelMap, const OH_Drawing_Rect* src, const OH_Drawing_Rect* dst,const OH_Drawing_SamplingOptions* samplingOptions, OH_Drawing_SrcRectConstraint constraint)](#oh_drawing_canvasdrawpixelmaprectconstraint) | 用于将像素图的指定区域绘制到画布的指定区域。 |
 | [OH_Drawing_ErrorCode OH_Drawing_CanvasDrawSingleCharacterWithFeatures(OH_Drawing_Canvas* canvas, const char* str,const OH_Drawing_Font* font, float x, float y, OH_Drawing_FontFeatures* fontFeatures)](#oh_drawing_canvasdrawsinglecharacterwithfeatures) | 绘制单个字符，字符带有字体特征。当前字型中的字体不支持待绘制字符时，退化到使用系统字体绘制字符。 |
+| [OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapMesh(OH_Drawing_Canvas* cCanvas, OH_Drawing_PixelMap* pixelMap, uint32_t meshWidth, uint32_t meshHeight, const float* vertices, uint32_t verticesSize, uint32_t vertOffset, const uint32_t* colors, uint32_t colorsSize, uint32_t colorOffset)](#oh_drawing_canvasdrawpixelmapmesh) | 在网格上绘制像素图，网格均匀分布在像素图上。（只支持brush，使用pen没有绘制效果。） |
 
 ## 枚举类型说明
 
@@ -1776,3 +1777,37 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasQuickRejectRect(OH_Drawing_Canvas* canvas,
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br> 返回OH_DRAWING_SUCCESS，表示执行成功。<br> 返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数canvas、rect或者quickReject为空。 |
 
 
+### OH_Drawing_CanvasDrawPixelMapMesh()
+
+```
+OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapMesh(OH_Drawing_Canvas* cCanvas, OH_Drawing_PixelMap* pixelMap, uint32_t meshWidth, uint32_t meshHeight, const float* vertices, uint32_t verticesSize, uint32_t vertOffset, const uint32_t* colors, uint32_t colorsSize, uint32_t colorOffset)
+```
+
+**描述**
+
+在网格上绘制像素图，网格均匀分布在像素图上。（只支持brush，使用pen没有绘制效果。）
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* cCanvas | 指向画布对象[OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)的指针。 |
+| [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)* pixelMap | 指向像素图[OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)的指针。 |
+| uint32_t meshWidth | 网格的列数，取值为大于0的整数。 |
+| uint32_t meshHeight | 网格的行数，取值为大于0的整数。 |
+| const float* vertices | 指向网格顶点数组的指针。 |
+| uint32_t verticesSize | 网格顶点数组的大小，大小必须为((meshWidth + 1) * (meshHeight + 1) + vertoffset) * 2。 |
+| uint32_t vertOffset | 在绘图前需要跳过的顶点数，取值为大于等于0的整数。 |
+| const uint32_t* colors | 指向网格颜色数组的指针，可为nullptr。 |
+| uint32_t colorsSize | 网格颜色数组的大小，若存在则大小必须为(meshWidth + 1) * (meshHeight + 1) + colorOffset。 |
+| uint32_t colorOffset | 在绘图前需要跳过的颜色数，取值为大于等于0的整数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示出现cCanvas、pixelMap、vertices等参数为空或传参不符合取值规则的情况。 |
