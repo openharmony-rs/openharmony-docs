@@ -170,6 +170,8 @@ UI事件的相关信息。
 
 **系统能力**：SystemCapability.Test.UiTest
 
+| 名称       | 类型   | 只读 | 可选 | 说明                  |
+| ---------- | ------ | ---- | ---- | --------------------- |
 | bundleName | string | 是   | 否   | 应用包名。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
 | type       | string | 是   | 否   | 控件/窗口类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
 | text       | string | 是   | 否   | 控件/窗口的文本信息。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
