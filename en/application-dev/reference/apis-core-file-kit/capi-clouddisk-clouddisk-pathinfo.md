@@ -24,3 +24,5 @@ A struct that encapsulates the file path information.
 | -- | -- |
 | char *value | Pointer to the file path, which ends with '\0'.|
 | size_t length | Length of the file path, excluding the '\0' character at the end.|
+
+

@@ -144,7 +144,7 @@ Revokes the permissions from files or directories.
 
 | Type| Description|
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).<br>         ERR_INVALID_PARAMETER 401 - The input parameter is invalid. Possible causes:<br>1. The **policies**, **result**, or **resultNum** parameter is a null pointer.<br>             2. The value of **policyNum** is **0** or exceeds the maximum length (500).<br>3. The value of **uri** in the **policies** parameter is empty, the value of **length** is **0**, or the value of **uri** is different from the value of **length**.<br>         ERR_DEVICE_NOT_SUPPORTED 801 - The device does not support this API.<br>         ERR_PERMISSION_ERROR 201 - The permission verification fails.<br>         ERR_ENOMEM 13900011 - The memory allocation or copy fails.<br>         ERR_EPERM 13900001 - The operation is not allowed.<br>         ERR_OK 0 - The API is called successfully.|
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).<br>         ERR_INVALID_PARAMETER 401 - The input parameter is invalid. Possible causes:<br>1. The **policies**, **result**, or **resultNum** parameter is a null pointer.<br>             2. The value of **policyNum** is **0** or exceeds the maximum length (500).<br>3. The value of **uri** in the **policies** parameter is empty, the value of **length** is **0**, or the value of **uri** is different from the value of **length**.<br>         ERR_DEVICE_NOT_SUPPORTED 801 - The device does not support this API.<br>         E_PERMISSION 201 - The permission verification fails.<br>         ERR_ENOMEM 13900011 - The memory allocation or copy fails.<br>         ERR_EPERM 13900001 - The operation is not allowed.<br>         ERR_OK - The API is called successfully.|
 
 ### OH_FileShare_ActivatePermission()
 
@@ -202,7 +202,7 @@ Deactivates the persistent permissions on files or directories.
 
 | Type| Description|
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).<br>         ERR_INVALID_PARAMETER 401 - The input parameter is invalid. Possible causes:<br>             1. The **policies**, **result**, or **resultNum** parameter is a null pointer.<br>             2. The value of **policyNum** is **0** or exceeds the maximum length (500).<br>             3. The value of **uri** in the **policies** parameter is empty, the value of **length** is **0**, or the value of **uri** is different from the value of **length**.<br>         ERR_DEVICE_NOT_SUPPORTED 801 - The device does not support this API.<br>         ERR_PERMISSION_ERROR 201 - The permission verification fails.<br>         ERR_ENOMEM 13900011 - The memory allocation or copy fails.<br>         ERR_EPERM 13900001 - The operation is not allowed.<br>         ERR_OK - The API is called successfully.|
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).<br>         ERR_INVALID_PARAMETER 401 - The input parameter is invalid. Possible causes:<br>             1. The **policies**, **result**, or **resultNum** parameter is a null pointer.<br>             2. The value of **policyNum** is **0** or exceeds the maximum length (500).<br>             3. The value of **uri** in the **policies** parameter is empty, the value of **length** is **0**, or the value of **uri** is different from the value of **length**.<br>         ERR_DEVICE_NOT_SUPPORTED 801 - The device does not support this API.<br>         ERR_PERMISSION_ERROR 201 - The permission verification fails.<br>         ERR_ENOMEM 13900011 - The memory allocation or copy fails.<br>         ERR_EPERM 13900001 - The operation is not allowed.<br>         ERR_OK 0 - The API is called successfully.|
 
 ### OH_FileShare_CheckPersistentPermission()
 
@@ -224,7 +224,7 @@ Checks the persistent permissions on files or directories.
 | -- | -- |
 | [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | Pointer to a **FileShare_PolicyInfo** instance.|
 | unsigned int policyNum | Number of policies in the **FileShare_PolicyInfo** array.|
-| bool **result | Double pointer to the check result obtained. You also need to include **malloc.h** and use **free()** to release the memory allocated.|
+| bool **result | Double pointer to the check result obtained. The value **true** means the permission is persistent; the value **false** means the opposite. You also need to include **malloc.h** and use **free()** to release the memory allocated.|
 | unsigned int *resultNum | Pointer to the size of the check result array.|
 
 **Returns**

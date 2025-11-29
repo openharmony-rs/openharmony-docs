@@ -8,7 +8,7 @@
 <!--Adviser: @foryourself-->
 
 - ArkTS APIs<!--core-file-arkts-->
-  - [@ohos.application.BackupExtensionAbility (Backup ExtensionAbility)](js-apis-application-backupExtensionAbility.md)
+  - [@ohos.application.BackupExtensionAbility (Backup and Restore Extension Capability)](js-apis-application-backupExtensionAbility.md)
   - [@ohos.file.cloudSync (Device-Cloud Sync)](js-apis-file-cloudsync.md)
   - [@ohos.file.cloudSyncManager (Device-Cloud Sync Management)](js-apis-file-cloudsyncmanager.md)
   - [@ohos.file.environment (Directory Environment Capability)](js-apis-file-environment.md)
@@ -33,7 +33,7 @@
   - [@ohos.file.keyManager (User Key Management) (System API)](js-apis-file-keymanager-sys.md)
   - [@ohos.file.recent (Latest Access List) (System API)](js-apis-file-recent-sys.md)
   - [@ohos.file.picker (Picker) (System API)](js-apis-file-picker-sys.md)
-  - [@ohos.file.storageStatistics (Application Space Statistics) (System API)](js-apis-file-storage-statistics-sys.md)
+  - [@ohos.file.storageStatistics (Application Storage Statistics) (System API)](js-apis-file-storage-statistics-sys.md)
   - [@ohos.file.trash (Trash) (System API)](js-apis-file-trash-sys.md)
   - [@ohos.file.volumeManager (Volume Management) (System API)](js-apis-file-volumemanager-sys.md)
   - [@ohos.filemanagement.userFileManager (User Data Management) (System API)](js-apis-userFileManager-sys.md)
