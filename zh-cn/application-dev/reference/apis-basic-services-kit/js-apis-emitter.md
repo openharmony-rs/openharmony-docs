@@ -41,7 +41,7 @@ on(event: InnerEvent, callback: Callback\<EventData\>): void
 
 | 参数名   | 类型                                | 必填 | 说明                                                         |
 | -------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| event    | [InnerEvent](#innerevent)           | 是   | 持续订阅的事件，其中[EventPriority](#eventpriority)，在订阅事件时无需指定，也不生效。 |
+| event    | [InnerEvent](#innerevent)           | 是   | 持续订阅的事件，其中[EventPriority](#eventpriority)在订阅事件时无需指定，也不生效。 |
 | callback | Callback\<[EventData](#eventdata)\> | 是   | 回调函数，返回[EventData](#eventdata)。                       |
 
 **示例：**
@@ -260,7 +260,7 @@ once(event: InnerEvent, callback: Callback\<EventData\>): void
 
 | 参数名   | 类型                                | 必填 | 说明                                                         |
 | -------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| event    | [InnerEvent](#innerevent)           | 是   | 单次订阅的事件，其中[EventPriority](#eventpriority)，在订阅事件时无需指定，也不生效。 |
+| event    | [InnerEvent](#innerevent)           | 是   | 单次订阅的事件，其中[EventPriority](#eventpriority)在订阅事件时无需指定，也不生效。 |
 | callback | Callback\<[EventData](#eventdata)\> | 是   | 回调函数，返回[EventData](#eventdata)。|
 
 **示例：**
