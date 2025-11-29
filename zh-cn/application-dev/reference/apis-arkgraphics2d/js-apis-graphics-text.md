@@ -935,6 +935,162 @@ struct RenderTest {
 }
 ```
 
+### loadFontSyncWithCheck<sup>23+</sup>
+
+loadFontSyncWithCheck(name: string, path: string | Resource, index?: number): void
+
+同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf、ttc。
+
+**卡片能力：** 该接口支持在ArkTS卡片中使用。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名 | 类型               | 必填 | 说明                              |
+| ----- | ------------------ | ---- | --------------------------------------------------------------------------------- |
+| name  | string             | 是   | 加载字体成功后，该字体对应的名称，可填写任意字符串，可使用该名称指定并使用该字体。 |
+| path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是   | 需要加载的字体文件的路径，支持两种格式： "file:// + 字体文件绝对路径" 或 $rawfile("字体文件路径")。 |
+|   index  | number | 否   | 字体文件格式为ttc时，指定加载的字体索引。默认为0：表示加载ttc的第一个字体。<br>非ttc格式文件索引值无意义，若指定索引，只能为0。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. |
+| 25900002 | File not found. |
+| 25900003 | Failed to open the file. |
+| 25900004 | File seek failed. |
+| 25900005 | Failed to get the file size. |
+| 25900006 | Failed to read the file. |
+| 25900007 | Empty file. |
+| 25900008 | Corrupt file. |
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+let fc: text.FontCollection = text.FontCollection.getGlobalInstance();
+
+@Entry
+@Component
+struct Index {
+  message: string = 'Hello World';
+  fontFamily: string = 'family';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontFamily(this.fontFamily)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          fc.loadFontSyncWithCheck(this.fontFamily, 'file:///system/fonts/NotoSansCJK-Regular.ttc', 1);
+          try {
+            fc.loadFontSyncWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1);
+          } catch (e) {
+            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(e)} message: ${e.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### loadFontWithCheck<sup>23+</sup>
+
+loadFontWithCheck(name: string, path: string | Resource, index?: number): Promise\<void>
+
+加载自定义字体，使用Promise异步回调。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含：ttf、otf、ttc。
+
+**卡片能力：** 该接口支持在ArkTS卡片中使用。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：该接口支持在原子化服务中使用。
+
+**参数：**
+
+|   参数名 | 类型               | 必填 | 说明                              |
+|   -----  | ------------------ | ---- | --------------------------------------------------------------------------------- |
+|   name   | string             | 是   | 加载字体成功后，该字体对应的名称，可填写任意字符串，可使用该名称指定并使用该字体。 |
+|   path   | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是   | 需要加载的字体文件的路径，支持两种格式： "file:// + 字体文件绝对路径" 或 $rawfile("字体文件路径")。 |
+|   index  | number | 否   | 字体文件格式为ttc时，指定加载的字体索引。默认为0：表示加载ttc的第一个字体。<br>非ttc格式文件索引值无意义，若指定索引，只能为0。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. |
+| 25900002 | File not found. |
+| 25900003 | Failed to open the file. |
+| 25900004 | File seek failed. |
+| 25900005 | Failed to get the file size. |
+| 25900006 | Failed to read the file. |
+| 25900007 | Empty file. |
+| 25900008 | Corrupt file. |
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+let fc: text.FontCollection = text.FontCollection.getGlobalInstance();
+
+@Entry
+@Component
+struct Index {
+  message: string = 'Hello World';
+  fontFamily: string = 'family';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontFamily(this.fontFamily)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          fc.loadFontWithCheck(this.fontFamily, 'file:///system/fonts/NotoSansCJK-Regular.ttc', 1).then((data) => {
+            console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
+          }).catch((error: Error) => {
+            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
+          });
+          fc.loadFontWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1).then((data) => {
+            console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
+          }).catch((error: Error) => {
+            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ### unloadFontSync<sup>20+</sup>
 unloadFontSync(name: string): void
 
