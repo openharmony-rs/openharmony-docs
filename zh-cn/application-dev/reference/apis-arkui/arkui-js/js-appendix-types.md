@@ -36,7 +36,7 @@
 | blue                 | \#0000ff | ![zh-cn_image_0000001127125194](figures/zh-cn_image_0000001127125194.png) |
 | blueviolet           | \#8a2be2 | ![zh-cn_image_0000001127285046](figures/zh-cn_image_0000001127285046.png) |
 | brown                | \#a52a2a | ![zh-cn_image_0000001173324833](figures/zh-cn_image_0000001173324833.png) |
-| burlywood            | \#deB887 | ![zh-cn_image_0000001127285026](figures/zh-cn_image_0000001127285026.png) |
+| burlywood            | \#deb887 | ![zh-cn_image_0000001127285026](figures/zh-cn_image_0000001127285026.png) |
 | cadetblue            | \#5f9ea0 | ![zh-cn_image_0000001127125210](figures/zh-cn_image_0000001127125210.png) |
 | chartreuse           | \#7fff00 | ![zh-cn_image_0000001173324811](figures/zh-cn_image_0000001173324811.png) |
 | chocolate            | \#d2691e | ![zh-cn_image_0000001127125256](figures/zh-cn_image_0000001127125256.png) |
@@ -162,7 +162,7 @@
 | steelblue            | \#4682b4 | ![zh-cn_image_0000001127125240](figures/zh-cn_image_0000001127125240.png) |
 | tan                  | \#d2b48c | ![zh-cn_image_0000001173324747](figures/zh-cn_image_0000001173324747.png) |
 | teal                 | \#008080 | ![zh-cn_image_0000001173324741](figures/zh-cn_image_0000001173324741.png) |
-| thistle              | \#d8Bfd8 | ![zh-cn_image_0000001173164913](figures/zh-cn_image_0000001173164913.png) |
+| thistle              | \#d8bfd8 | ![zh-cn_image_0000001173164913](figures/zh-cn_image_0000001173164913.png) |
 | tomato               | \#ff6347 | ![zh-cn_image_0000001173164909](figures/zh-cn_image_0000001173164909.png) |
 | turquoise            | \#40e0d0 | ![zh-cn_image_0000001173164837](figures/zh-cn_image_0000001173164837.png) |
 | violet               | \#ee82ee | ![zh-cn_image_0000001127125258](figures/zh-cn_image_0000001127125258.png) |

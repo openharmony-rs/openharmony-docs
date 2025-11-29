@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_RecorderInfo {...} OH_RecorderInfo
+```
+
 ## 概述
 
 录制文件信息。

@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} JSVM_InitOptions
+```
+
 ## 概述
 
 初始化选项，用于初始化JavaScript虚拟机。

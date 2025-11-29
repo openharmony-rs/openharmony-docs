@@ -967,7 +967,7 @@ struct MenuExample {
 
 该示例为bindContextMenu通过配置preview中hoverScale实现一镜到底过渡动效的基础上, 再配置hoverScaleInterruption（从API version 20开始）控制是否允许长按抬手取消菜单弹出。
 
- ```ts
+```ts
  // xxx.ets
 @Entry
 @Component
@@ -1017,7 +1017,7 @@ struct Index {
     }
   }
 }
- ```
+```
 
 ![hoverScaleInterruption](figures/hoverScaleInterruption.gif)
 

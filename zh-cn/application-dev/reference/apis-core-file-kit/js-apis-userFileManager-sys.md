@@ -69,7 +69,7 @@ struct Index {
 
 getPhotoAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;FileAsset&gt;&gt;): void
 
-获取图片和视频资源，使用callback方式返回结果。
+获取图片和视频资源。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -123,7 +123,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getPhotoAssets(options: FetchOptions): Promise&lt;FetchResult&lt;FileAsset&gt;&gt;
 
-获取图片和视频资源，使用Promise方式返回结果。
+获取图片和视频资源。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -610,9 +610,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 deleteAlbums(albums: Array&lt;Album&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-删除相册，使用callback方式返回结果。
-
-删除相册前需先确保相册存在，只能删除用户相册。
+删除存在的用户相册。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -658,9 +656,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 deleteAlbums(albums: Array&lt;Album&gt;): Promise&lt;void&gt;
 
-删除相册，使用Promise方式返回结果。
-
-删除相册前需先确保相册存在，只能删除用户相册。
+删除存在的用户相册。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1221,7 +1217,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 delete(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-删除媒体文件，删除的文件进入到回收站。
+删除媒体文件，删除的文件进入到回收站。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.READ_AUDIO 和 ohos.permission.WRITE_AUDIO
 
@@ -1484,7 +1480,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions, callback: AsyncCallback&lt;number&gt;): void
 
-获取相册中图片或视频的位置，使用callback方式返回结果。
+获取相册中图片或视频的位置。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1554,7 +1550,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions): Promise&lt;number&gt;
 
-获取相册中图片或视频的位置，使用Promise方式返回结果。
+获取相册中图片或视频的位置。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -2027,7 +2023,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 commitModify(callback: AsyncCallback&lt;void&gt;): void
 
-修改文件的元数据，使用callback方式返回异步结果。
+修改文件的元数据。使用callback异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.WRITE_AUDIO
 
@@ -2076,7 +2072,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 commitModify(): Promise&lt;void&gt;
 
-修改文件的元数据，使用promise方式返回异步结果。
+修改文件的元数据。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.WRITE_AUDIO
 
@@ -2304,7 +2300,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getThumbnail(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
-获取文件的缩略图，使用callback方式返回异步结果。
+获取文件的缩略图。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO 或 ohos.permission.READ_AUDIO
 
@@ -2347,7 +2343,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getThumbnail(size: image.Size, callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
-获取文件的缩略图，传入缩略图尺寸，使用callback方式返回异步结果。
+获取文件的缩略图，传入缩略图尺寸。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO 或 ohos.permission.READ_AUDIO
 
@@ -2393,7 +2389,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 
-获取文件的缩略图，传入缩略图尺寸，使用promise方式返回异步结果。
+获取文件的缩略图，传入缩略图尺寸。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO 或 ohos.permission.READ_AUDIO
 
@@ -3072,7 +3068,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getFirstObject(callback: AsyncCallback&lt;T&gt;): void
 
-获取文件检索结果中的第一个文件资产。此方法使用callback形式返回结果。
+获取文件检索结果中的第一个文件资产。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3111,7 +3107,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getFirstObject(): Promise&lt;T&gt;
 
-获取文件检索结果中的第一个文件资产。此方法使用promise方式来异步返回。
+获取文件检索结果中的第一个文件资产。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3145,7 +3141,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getNextObject(callback: AsyncCallback&lt;T&gt;): void
 
-获取文件检索结果中的下一个文件资产。此方法使用callback形式返回结果。
+获取文件检索结果中的下一个文件资产。使用callback异步回调。
 在调用此方法之前，必须使用[isAfterLast()](#isafterlast)来检查当前位置是否为最后一行。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
@@ -3188,7 +3184,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getNextObject(): Promise&lt;T&gt;
 
-获取文件检索结果中的下一个文件资产。此方法使用promise方式来异步返回。
+获取文件检索结果中的下一个文件资产。使用Promise异步回调。
 在调用此方法之前，必须使用[isAfterLast()](#isafterlast)来检查当前位置是否为最后一行。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
@@ -3226,7 +3222,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getLastObject(callback: AsyncCallback&lt;T&gt;): void
 
-获取文件检索结果中的最后一个文件资产。此方法使用callback回调来返回。
+获取文件检索结果中的最后一个文件资产。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3265,7 +3261,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getLastObject(): Promise&lt;T&gt;
 
-获取文件检索结果中的最后一个文件资产。此方法使用Promise方式来返回。
+获取文件检索结果中的最后一个文件资产。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3299,7 +3295,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getPositionObject(index: number, callback: AsyncCallback&lt;T&gt;): void
 
-获取文件检索结果中具有指定索引的文件资产。此方法使用callback来返回。
+获取文件检索结果中具有指定索引的文件资产。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3347,7 +3343,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getPositionObject(index: number): Promise&lt;T&gt;
 
-获取文件检索结果中具有指定索引的文件资产。此方法使用Promise形式返回文件Asset。
+获取文件检索结果中具有指定索引的文件资产。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3399,7 +3395,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getAllObject(callback: AsyncCallback&lt;Array&lt;T&gt;&gt;): void
 
-获取文件检索结果中的所有文件资产。此方法使用callback形式返回结果。
+获取文件检索结果中的所有文件资产。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3438,7 +3434,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getAllObject(): Promise&lt;Array&lt;T&gt;&gt;
 
-获取文件检索结果中的所有文件资产。此方法使用promise方式来异步返回。
+获取文件检索结果中的所有文件资产。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3490,7 +3486,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getPhotoAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;FileAsset&gt;&gt;): void
 
-获取相册中的文件。该方法使用callback形式来返回文件。
+获取相册中的文件。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -3545,7 +3541,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getPhotoAssets(options: FetchOptions): Promise&lt;FetchResult&lt;FileAsset&gt;&gt;
 
-获取相册中的文件。该方法使用Promise来返回文件。
+获取相册中的文件。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -3604,7 +3600,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 commitModify(callback: AsyncCallback&lt;void&gt;): void
 
-更新相册属性修改到数据库中。该方法使用callback形式来返回结果。
+更新相册属性修改到数据库中。使用callback异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -3646,7 +3642,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 commitModify(): Promise&lt;void&gt;
 
-更新相册属性修改到数据库中。该方法使用Promise来返回结果。
+更新相册属性修改到数据库中。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -4298,7 +4294,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 delete(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-删除系统相册中的文件，仅支持删除回收站相册中文件。
+删除系统相册中的文件，仅支持删除回收站相册中文件。使用callback异步回调。
 
 此接口即将废弃，请使用[Album.deletePhotoAssets](#deletephotoassets10)接口替代。
 
@@ -4346,7 +4342,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 delete(uri: string): Promise&lt;void&gt;
 
-删除系统相册中的文件，仅支持删除回收站相册中文件。
+删除系统相册中的文件，仅支持删除回收站相册中文件。使用Promise异步回调。
 
 此接口即将废弃，请使用[Album.deletePhotoAssets](#deletephotoassets10)接口替代。
 
@@ -4398,7 +4394,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 recover(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-恢复系统相册中的文件，仅支持恢复回收站相册中文件。
+恢复系统相册中的文件，仅支持恢复回收站相册中文件。使用callback异步回调。
 
 此接口即将废弃，请使用[Album.recoverPhotoAssets](#recoverphotoassets10)接口替代。
 
@@ -4454,7 +4450,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 recover(uri: string): Promise&lt;void&gt;
 
-恢复系统相册中的文件，仅支持恢复回收站相册中文件。
+恢复系统相册中的文件，仅支持恢复回收站相册中文件。使用Promise异步回调。
 
 此接口即将废弃，请使用[Album.recoverPhotoAssets](#recoverphotoassets10)接口替代。
 

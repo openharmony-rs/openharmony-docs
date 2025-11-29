@@ -368,7 +368,7 @@ if (bird instanceof Animal) {
 
 ### 语句
 
-**`If`语句**
+**`if`语句**
 
 `if`语句用于需要根据逻辑条件执行不同语句的场景。当逻辑条件为真时，执行对应的一组语句，否则执行另一组语句（如果有的话）。
 `else`部分也可以包含`if`语句。
@@ -399,7 +399,7 @@ if (s2.length != 0) {
 }
 ```
 
-**`Switch`语句**
+**`switch`语句**
 
 使用`switch`语句执行与`switch`表达式值匹配的代码块。
 
@@ -462,7 +462,7 @@ let message = Math.random() > 0.5 ? 'Valid' : 'Failed';
     console.info(undefined ? 'true' : 'false'); // false
 ```
 
-**`For`语句**
+**`for`语句**
 
 `for`语句会被重复执行，直到循环退出语句值为`false`。
 
@@ -491,7 +491,7 @@ for (let i = 0; i < 10; i += 2) {
 }
 ```
 
-**`For-of`语句**
+**`for-of`语句**
 
 使用`for-of`语句可遍历数组、Set、Map、字符串等可迭代的类型。示例如下：
 
@@ -509,7 +509,7 @@ for (let ch of 'a string object') {
 }
 ```
 
-**`While`语句**
+**`while`语句**
 
 只要`condition`为真值（转换后为`true`的值），`while`语句就会执行`statements`语句。示例如下：
 
@@ -530,7 +530,7 @@ while (n < 3) {
 }
 ```
 
-**`Do-while`语句**
+**`do-while`语句**
 
 如果`condition`的值为真值（转换后为`true`的值），那么`statements`语句会重复执行。示例如下：
 
@@ -549,7 +549,7 @@ do {
 } while (i < 10)
 ```
 
-**`Break`语句**
+**`break`语句**
 
 使用`break`语句可以终止循环语句或`switch`。
 
@@ -580,7 +580,7 @@ label: while (true) {
 }
 ```
 
-**`Continue`语句**
+**`continue`语句**
 
 `continue`语句会停止当前循环迭代的执行，并将控制传递给下一次迭代。
 
@@ -596,7 +596,7 @@ for (let x = 0; x < 100; x++) {
 }
 ```
 
-**`Throw`和`Try`语句**
+**`throw`和`try`语句**
 
 `throw`语句用于抛出异常或错误：
 
@@ -706,9 +706,9 @@ multiply(2);  // 返回2*2
 multiply(2, 3); // 返回2*3
 ```
 
-### Rest参数
+### rest参数
 
-函数的最后一个参数可以是rest参数，格式为`...restArgs`。rest参数允许函数接收一个由剩余实参组成的数组，类型为任意指定类型，用于处理不定数量的参数输入。
+函数的最后一个参数可以是rest参数，格式为`...restName: Type[]`。rest参数允许函数接收一个不定长数组，用于处理不定数量的参数输入。
 
 ```typescript
 function sum(...numbers: number[]): number {
@@ -1136,7 +1136,7 @@ class MyDate implements DateInterface {
 
 **父类访问**
 
-关键字`super`可用于访问父类的实例字段、实例方法和构造函数。在实现子类功能时，可以通过该关键字从父类中获取所需接口：
+关键字`super`可用于访问父类的方法和构造函数。在实现子类功能时，可以通过该关键字从父类中获取所需接口：
 
 ```typescript
 class RectangleSize {
@@ -1161,7 +1161,6 @@ class FilledRectangle extends RectangleSize {
 
   draw() {
     super.draw(); // 父类方法的调用
-    // super.height -可在此处使用
     /* 填充矩形 */
   }
 }

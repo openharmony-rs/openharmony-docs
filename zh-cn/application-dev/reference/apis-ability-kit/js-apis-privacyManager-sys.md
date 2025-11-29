@@ -952,11 +952,11 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
 
 | 名称       | 类型             | 只读 | 可选 | 说明                                       |
 | -------- | -------------- | ---- | ---- | ---------------------------------------- |
-| status  | number         | 否    | 否    | 访问状态。                                 |
-| lockScreenStatus<sup>11+</sup>  | number         | 否    | 是    | 访问时的锁屏状态。<br> - 1，表示非锁屏场景使用权限。<br> - 2，表示锁屏场景使用权限。                                 |
+| status  | number         | 否    | 否    | 访问状态。 |
+| lockScreenStatus<sup>11+</sup>  | number         | 否    | 是    | 访问时的锁屏状态。<br> - 1，表示非锁屏场景使用权限。<br> - 2，表示锁屏场景使用权限。 |
 | timestamp | number         | 否    | 否    | 访问时的时间戳，单位：ms。 |
-| accessDuration  | number         | 否    | 否    | 访问时长，单位：ms。                                 |
-| count<sup>11+</sup> | number | 否 | 是    | 成功或失败次数。
+| accessDuration  | number         | 否    | 否    | 访问时长，单位：ms。 |
+| count<sup>11+</sup> | number | 否 | 是    | 成功或失败次数。 |
 | usedType<sup>12+</sup> | [PermissionUsedType](#permissionusedtype12) | 否 | 是    | 敏感权限访问方式。 |
 
 ## PermissionActiveStatus

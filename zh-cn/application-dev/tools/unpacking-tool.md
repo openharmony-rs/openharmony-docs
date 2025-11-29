@@ -251,7 +251,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | defPermissionsGroups | List\<DefPermissionsGroups> | 标识HAP包DefPermissionsGroups 信息。  | NA                             |
 | distro               | Distro结构体                 | 标识HAP包的distro信息。               | NA                      |
 | reqCapabilities      | List\<String>               | 标识HAP包reqCapabilities信息。        | NA                           |
-| deviceType           | List\<String>               | 标识HAP可以运行在哪类设备上。   对应stage模型中的deviceTypes。       |
+| deviceType           | List\<String>               | 标识HAP可以运行在哪类设备上。   对应stage模型中的deviceTypes。       |  NA |
 | metaData             | MetaData结构体（见下述metaData）| 标识HAP的自定义元信息。                | NA           |
 | dependencies         | List\<DependencyItem>       | 标识HAP包DependencyItem信息。         | NA                   |
 | isJs                 | boolean                     | 标识该应用是否是js应用。true表示是js应用，false表示不是js应用。              | FA模型特有。            |
