@@ -18,7 +18,7 @@ Defines APIs for a random number generator.
 
 **Since**: 20
 
-**Related Module**: [CryptoRandApi](capi-cryptorandapi.md)
+**Related module**: [CryptoRandApi](capi-cryptorandapi.md)
 
 ## Summary
 

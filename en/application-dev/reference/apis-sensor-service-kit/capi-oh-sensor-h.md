@@ -16,7 +16,7 @@ The **oh_sensor.h** file declares the APIs for operating sensors, including obta
 
 **Since**: 11
 
-**Related Module**: [Sensor](capi-sensor.md)
+**Related module**: [Sensor](capi-sensor.md)
 
 ## Summary
 
