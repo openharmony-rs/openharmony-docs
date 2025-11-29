@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AudioInfo {...} OH_AudioInfo
+```
+
 ## Overview
 
 The struct describes the audio information.

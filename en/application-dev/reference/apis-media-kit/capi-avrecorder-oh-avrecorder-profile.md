@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVRecorder_Profile {...} OH_AVRecorder_Profile
+```
+
 ## Overview
 
 The struct describes the parameters used for audio and video recording.

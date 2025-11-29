@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct VideoProcessing_Callback VideoProcessing_Callback
+```
+
 ## Overview
 
 The struct describes a callback object for handling video processing events.

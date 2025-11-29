@@ -24,7 +24,7 @@ import { image } from '@kit.ImageKit';
 
 | Name            | Type          | Read Only| Optional| Description                                                        |
 | ---------------- | -------------- | ---- | ---- | ------------------------------------------------------------ |
-| supportedFormats | Array\<string> | Yes  | No  | Supported formats, including .png, .jpeg, .bmp, .gif, .webp, .dng., and .heic<sup>12+</sup> (depending on the hardware).|
+| supportedFormats | Array\<string> | Yes  | No  | Supported formats, including .png, .jpeg, .bmp, .gif, .webp, .dng., .heic<sup>12+</sup>, and wbmp<sup>23+</sup>. (The supported formats may vary depending on the hardware.)|
 
 ## getImageInfo
 
@@ -178,7 +178,7 @@ getImageProperty(key:PropertyKey, options?: ImagePropertyOptions): Promise\<stri
 
 Obtains the value of a property with the specified index in this image. This API uses a promise to return the result.
 
-This API applies only to images that are in JPEG, PNG, or HEIF<sup>12+</sup> (depending on the hardware) format and contain the EXIF information. You can use the **supportedFormats** property to check whether the EXIF read/write operation for images in HEIF format is supported.
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
@@ -207,7 +207,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 | 62980110 | The image source data is incorrect.      |
 | 62980111 | The image source data is incomplete. |
 | 62980112 | The image format does not match.       |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980115 | Invalid image parameter.      |
 | 62980118 | Failed to create the image plugin.   |
 | 62980122 | Failed to decode the image header.   |
@@ -236,7 +236,7 @@ getImageProperties(key: Array&#60;PropertyKey&#62;): Promise<Record<PropertyKey,
 
 Obtains the values of properties with the given names in this image. This API uses a promise to return the result.
 
-This API applies only to images that are in JPEG, PNG, or HEIF (depending on the hardware) format and contain the EXIF information. You can use the **supportedFormats** property to check whether the EXIF read/write operation for images in HEIF format is supported.
+This API applies only to images that are in JPEG, PNG, HEIF, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
@@ -261,7 +261,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 | 401  | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed;     |
 | 62980096| The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.             |
 | 62980110| The image source data is incorrect.            |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980116| Failed to decode the image.            |
 
 **Example**
@@ -283,13 +283,13 @@ async function GetImageProperties(imageSourceObj : image.ImageSource) {
 
 getImagePropertySync(key:PropertyKey): string
 
-Obtains the value of a specified EXIF property. This API returns the result synchronously.
+Obtains the value of a specified Exif property. This API returns the result synchronously.
 
 >**NOTE**
 >
-> This API applies only to images that are in JPEG, PNG, or HEIF (depending on the hardware) format and contain the EXIF information.
+> This API applies only to images that are in JPEG, PNG, HEIF, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 >
-> EXIF information is metadata of the image, including shooting time, camera model, aperture, focal length, and ISO.
+> Exif information is metadata of the image, including shooting time, camera model, aperture, focal length, and ISO.
 
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
@@ -304,7 +304,7 @@ Obtains the value of a specified EXIF property. This API returns the result sync
 
 | Type            | Description                                                             |
 | ---------------- | ----------------------------------------------------------------- |
-| string | Value of the specified EXIF property. If retrieval fails, the default value of the property is returned. For details about the meaning of each data value, see [PropertyKey](arkts-apis-image-e.md#propertykey7).|
+| string | Value of the specified Exif property. If retrieval fails, the default value of the property is returned. For details about the meaning of each data value, see [PropertyKey](arkts-apis-image-e.md#propertykey7).|
 
 **Error codes**
 
@@ -338,7 +338,7 @@ modifyImageProperty(key: PropertyKey, value: string): Promise\<void>
 
 Modifies the value of a property in this image. This API uses a promise to return the result.
 
-This API applies only to images that are in JPEG, PNG, or HEIF<sup>12+</sup> (depending on the hardware) format and contain the EXIF information. You can use the **supportedFormats** property to check whether the EXIF read/write operation for images in HEIF format is supported.
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE**
 >
@@ -395,7 +395,7 @@ modifyImageProperties(records: Record<PropertyKey, string|null>): Promise\<void>
 
 Modifies the values of properties in this image. This API uses a promise to return the result.
 
-This API applies only to images that are in JPEG, PNG, or HEIF (depending on the hardware) format and contain the EXIF information. You can use the **supportedFormats** property to check whether the EXIF read/write operation for images in HEIF format is supported.
+This API applies only to images that are in JPEG, PNG, HEIF, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE**
 >
@@ -460,7 +460,7 @@ Modifies image properties in batches. This API uses a promise to return the resu
 >
 > - Calling this API to modify properties alters the property byte length. You are advised to create an [ImageSource](arkts-apis-image-f.md#imagecreateimagesource7) instance by passing a file descriptor or an [ImageSource](arkts-apis-image-f.md#imagecreateimagesource) instance by passing a URI.
 > - This API modifies batch data in memory and writes the data to the file in a single operation. It is more efficient than [modifyImageProperties](#modifyimageproperties12).
-> - This API applies only to images that are in JPEG, PNG, or HEIF format and contain EXIF information. Before modifying properties, use the **supportedFormats** property to check whether the device supports EXIF information read/write in HEIF format.
+> - This API applies only to images that are in JPEG, PNG, HEIF, or WEBP format and contain the Exif information.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
@@ -1271,7 +1271,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 | 62980096| The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.             |
 | 62980111| The image source data is incomplete. |
 | 62980112| The image format does not match. |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980115| Invalid image parameter. |
 | 62980116| Failed to decode the image. |
 | 62980118| Failed to create the image plugin. |
@@ -1317,7 +1317,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 | 62980096 | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.             |
 | 62980111 | The image source data is incomplete. |
 | 62980112 | The image format does not match.        |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980115 | Invalid image parameter.      |
 | 62980116 | Failed to decode the image.          |
 | 62980118 | Failed to create the image plugin.   |
@@ -1445,7 +1445,7 @@ getImageProperty(key:string, options?: GetImagePropertyOptions): Promise\<string
 
 Obtains the value of a property with the specified index in this image. This API uses a promise to return the result.
 
-This API applies only to images that are in JPEG, PNG, or HEIF<sup>12+</sup> (depending on the hardware) format and contain the EXIF information. You can use the **supportedFormats** property to check whether the EXIF read/write operation for images in HEIF format is supported.
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE**
 >
@@ -1487,7 +1487,7 @@ getImageProperty(key:string, callback: AsyncCallback\<string>): void
 
 Obtains the value of a property with the specified index in this image. This API uses an asynchronous callback to return the result.
 
-This API applies only to images that are in JPEG, PNG, or HEIF<sup>12+</sup> (depending on the hardware) format and contain the EXIF information. You can use the **supportedFormats** property to check whether the EXIF read/write operation for images in HEIF format is supported.
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE**
 >
@@ -1524,7 +1524,7 @@ getImageProperty(key:string, options: GetImagePropertyOptions, callback: AsyncCa
 
 Obtains the value of a property in this image. This API uses an asynchronous callback to return the result.
 
-This API applies only to images that are in JPEG, PNG, or HEIF<sup>12+</sup> (depending on the hardware) format and contain the EXIF information. You can use the **supportedFormats** property to check whether the EXIF read/write operation for images in HEIF format is supported.
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE**
 >
@@ -1563,7 +1563,7 @@ modifyImageProperty(key: string, value: string): Promise\<void>
 
 Modifies the value of a property in this image. This API uses a promise to return the result.
 
-This API applies only to images that are in JPEG, PNG, or HEIF<sup>12+</sup> (depending on the hardware) format and contain the EXIF information. You can use the **supportedFormats** property to check whether the EXIF read/write operation for images in HEIF format is supported.
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE**
 >
@@ -1610,7 +1610,7 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback\<void>):
 
 Modifies the value of a property in this image. This API uses an asynchronous callback to return the result.
 
-This API applies only to images that are in JPEG, PNG, or HEIF<sup>12+</sup> (depending on the hardware) format and contain the EXIF information. You can use the **supportedFormats** property to check whether the EXIF read/write operation for images in HEIF format is supported.
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE**
 >

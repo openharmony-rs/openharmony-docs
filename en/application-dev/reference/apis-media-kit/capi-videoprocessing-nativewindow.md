@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct NativeWindow OHNativeWindow
+```
+
 ## Overview
 
 The struct describes the NativeWindow object.

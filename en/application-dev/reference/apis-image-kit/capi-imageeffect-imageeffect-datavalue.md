@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef union ImageEffect_DataValue {...} ImageEffect_DataValue
 ```
 
