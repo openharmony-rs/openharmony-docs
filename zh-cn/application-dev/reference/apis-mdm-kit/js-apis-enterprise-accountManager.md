@@ -137,7 +137,10 @@ try {
 
 addOsAccountAsync(admin: Want, name: string, type: osAccount.OsAccountType): Promise&lt;osAccount.OsAccountInfo&gt;
 
-后台添加账号。使用promise异步回调。注意：该接口可能会比较耗时，当调用此接口后，后续调用其他接口需要等待该接口异步返回。
+后台添加账号。使用promise异步回调。
+> **说明：**
+> 
+> 该接口比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
