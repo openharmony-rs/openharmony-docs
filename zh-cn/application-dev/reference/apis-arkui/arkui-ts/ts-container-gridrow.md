@@ -115,12 +115,12 @@ GridRow(option?: GridRowOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| xs  | [Length](ts-types.md#length) | 否  | 是   | 在最小宽度类型设备上，栅格子组件的间距。    |
-| sm  | [Length](ts-types.md#length) | 否  | 是   | 在小宽度类型设备上，栅格子组件的间距。      |
-| md  | [Length](ts-types.md#length) | 否  | 是   | 在中等宽度类型设备上，栅格子组件的间距。    |
-| lg  | [Length](ts-types.md#length) | 否  | 是   | 在大宽度类型设备上，栅格子组件的间距。      |
-| xl  | [Length](ts-types.md#length) | 否  | 是   | 在特大宽度类型设备上，栅格子组件的间距。    |
-| xxl | [Length](ts-types.md#length) | 否  | 是   | 在超大宽度类型设备上，栅格子组件的间距。    |
+| xs  | [Length](ts-types.md#length) | 否  | 是   | 在最小宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp    |
+| sm  | [Length](ts-types.md#length) | 否  | 是   | 在小宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp      |
+| md  | [Length](ts-types.md#length) | 否  | 是   | 在中等宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp    |
+| lg  | [Length](ts-types.md#length) | 否  | 是   | 在大宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp      |
+| xl  | [Length](ts-types.md#length) | 否  | 是   | 在特大宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp    |
+| xxl | [Length](ts-types.md#length) | 否  | 是   | 在超大宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp    |
 
 ## BreakPoints
 
@@ -139,11 +139,11 @@ GridRow(option?: GridRowOptions)
 <!--code_no_check-->
 ```ts
   // 启用xs、sm、md共3个断点
-  breakpoints: {value: ["100vp", "200vp"]}
+  breakpoints: {value: ['100vp', '200vp']}
   // 启用xs、sm、md、lg共4个断点，断点范围值必须单调递增
-  breakpoints: {value: ["320vp", "600vp", "840vp"]}
+  breakpoints: {value: ['320vp', '600vp', '840vp']}
   // 启用xs、sm、md、lg、xl共5个断点，断点范围数量不可超过断点可取值数量-1
-  breakpoints: {value: ["320vp", "600vp", "840vp", "1080vp"]}
+  breakpoints: {value: ['320vp', '600vp', '840vp', '1080vp']}
 ```
 
 ## BreakpointsReference枚举说明
@@ -251,16 +251,16 @@ struct GridRowExample {
       GridRow({
         columns: 5,
         gutter: { x: 5, y: 10 },
-        breakpoints: { value: ["400vp", "600vp", "800vp"],
+        breakpoints: { value: ['400vp', '600vp', '800vp'],
           reference: BreakpointsReference.WindowSize },
         direction: GridRowDirection.Row
       }) {
         ForEach(this.bgColors, (color: Color) => {
           GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 }, offset: 0, order: 0 }) {
-            Row().width("100%").height("20vp")
+            Row().width('100%').height('20vp')
           }.borderColor(color).borderWidth(2)
         })
-      }.width("100%").height("100%")
+      }.width('100%').height('100%')
       .onBreakpointChange((breakpoint) => {
         this.currentBp = breakpoint
       })

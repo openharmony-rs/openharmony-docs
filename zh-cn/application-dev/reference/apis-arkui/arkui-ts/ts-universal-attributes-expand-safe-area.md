@@ -46,7 +46,7 @@ expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&
 
 >  **说明：**
 >
->  设置expandSafeArea属性进行组件绘制扩展时，建议组件尺寸不要设置固定宽高（百分比除外），当设置固定宽高（包括设置"auto"）时，扩展安全区域的方向只支持[SafeAreaEdge.TOP, SafeAreaEdge.START]，扩展后的组件尺寸保持不变。
+>  设置expandSafeArea属性进行组件绘制扩展时，建议组件尺寸不要设置固定宽高（百分比除外），当设置固定宽高（包括设置'auto'）时，扩展安全区域的方向只支持[SafeAreaEdge.TOP, SafeAreaEdge.START]，扩展后的组件尺寸保持不变。
 >
 >  安全区域不会限制内部组件的布局和大小，不会裁剪内部组件。
 >
@@ -111,7 +111,7 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [KeyboardAvoidMode](../arkts-apis-uicontext-e.md#keyboardavoidmode11) | 是   | 配置虚拟键盘抬起时页面的避让模式。<br />默认值：KeyboardAvoidMode.OFFSET，键盘抬起时默认避让模式为上抬。 |
+| value  | [KeyboardAvoidMode](../arkts-apis-uicontext-e.md#keyboardavoidmode11) | 是   | 配置虚拟键盘抬起时页面的避让模式。<br />默认值：KeyboardAvoidMode.OFFSET，键盘抬起时默认避让模式为上抬。<br />setKeyboardAvoidMode为异常值时，该属性设置不生效。 |
 
 >  **说明：**
 >
@@ -214,10 +214,13 @@ struct SafeAreaExample1 {
 
   build() {
     Row() {
-        Column()
-          .height('100%').width('100%')
-          .backgroundImage($r('app.media.bg')).backgroundImageSize(ImageSize.Cover)
-          .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+      Column()
+        .width('100%')
+        .height('100%')
+        // $r('app.media.bg')需要替换为开发者所需的图像资源文件
+        .backgroundImage($r('app.media.bg'))
+        .backgroundImageSize(ImageSize.Cover)
+        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
     }.height('100%')
   }
 }
@@ -274,8 +277,11 @@ struct SafeAreaExample3 {
     Row() {
       Stack() {
         Column()
-          .height('100%').width('100%')
-          .backgroundImage($r('app.media.bg')).backgroundImageSize(ImageSize.Cover)
+          .width('100%')
+          .height('100%')
+          // $r('app.media.bg')需要替换为开发者所需的图像资源文件
+          .backgroundImage($r('app.media.bg'))
+          .backgroundImageSize(ImageSize.Cover)
           .expandSafeArea([SafeAreaType.KEYBOARD, SafeAreaType.SYSTEM])
         Column() {
           Button('Set caretPosition 1')
@@ -284,8 +290,11 @@ struct SafeAreaExample3 {
             })
           TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
             .placeholderFont({ size: 14, weight: 400 })
-            .width(320).height(40).offset({y: 120})
-            .fontSize(14).fontColor(Color.Black)
+            .width(320)
+            .height(40)
+            .offset({ y: 120 })
+            .fontSize(14)
+            .fontColor(Color.Black)
             .backgroundColor(Color.White)
         }.width('100%').alignItems(HorizontalAlign.Center)
       }
@@ -330,10 +339,21 @@ export default class EntryAbility extends UIAbility{
 struct KeyboardAvoidExample1 {
   build() {
     Column() {
-      Row().height("30%").width("100%").backgroundColor(Color.Gray)
-      TextArea().width("100%").borderWidth(1)
-      Text("I can see the bottom of the page").width("100%").textAlign(TextAlign.Center).backgroundColor('rgb(179,217,235)').layoutWeight(1)
-    }.width('100%').height("100%")
+      Row()
+        .width('100%')
+        .height('30%')
+        .backgroundColor(Color.Gray)
+      TextArea()
+        .width('100%')
+        .borderWidth(1)
+      Text('I can see the bottom of the page')
+        .width('100%')
+        .textAlign(TextAlign.Center)
+        .backgroundColor('rgb(179,217,235)')
+        .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -374,10 +394,21 @@ export default class EntryAbility extends UIAbility{
 struct KeyboardAvoidExample2 {
   build() {
     Column() {
-      Row().height("30%").width("100%").backgroundColor(Color.Gray)
-      TextArea().width("100%").borderWidth(1)
-      Text("I can see the bottom of the page").width("100%").textAlign(TextAlign.Center).backgroundColor('rgb(179,217,235)').layoutWeight(1)
-    }.width('100%').height("100%")
+      Row()
+        .width('100%')
+        .height('30%')
+        .backgroundColor(Color.Gray)
+      TextArea()
+        .width('100%')
+        .borderWidth(1)
+      Text('I can see the bottom of the page')
+        .width('100%')
+        .textAlign(TextAlign.Center)
+        .backgroundColor('rgb(179,217,235)')
+        .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -417,26 +448,26 @@ struct KeyboardAvoidExample3 {
           })
           .layoutWeight(1)
       }
-      .height("30%")
-      .width("100%")
+      .height('30%')
+      .width('100%')
       .backgroundColor(Color.Gray)
 
       TextArea()
-        .width("100%")
+        .width('100%')
         .borderWidth(1)
       
-      Text("I can see the bottom of the page")
-        .width("100%")
+      Text('I can see the bottom of the page')
+        .width('100%')
         .textAlign(TextAlign.Center)
         .backgroundColor('rgb(179,217,235)')
         .layoutWeight(1)
       
       TextArea()
-        .width("100%")
+        .width('100%')
         .borderWidth(1)
     }
     .width('100%')
-    .height("100%")
+    .height('100%')
   }
 }
 ```
@@ -494,14 +525,14 @@ struct ExpandSafeAreaTest {
         .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
         .clip(false)
         Column(){
-          Text("Tab页Content").fontSize(50)
-        }.width("100%").height(1000)
+          Text('Tab页Content').fontSize(50)
+        }.width('100%').height(1000)
         .backgroundColor(Color.Grey)
       }.expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
     }
     .clip(false)
     .edgeEffect(EdgeEffect.None)
-    .width("100%").height("100%")
+    .width('100%').height('100%')
   }
 }
 ```
@@ -541,7 +572,7 @@ struct IgnoreLayoutSafeAreaTest1 {
       })
       .safeAreaPadding(LengthMetrics.vp(10))  // 设置10vp安全区内边距（即组件级安全区）
     }
-    .width("100%")
+    .width('100%')
   }
 }
 ```
@@ -579,7 +610,7 @@ struct IgnoreLayoutSafeAreaTest2 {
       .padding(10) // 设置10vp普通内边距
       .safeAreaPadding(LengthMetrics.vp(10))  // 设置10vp安全区内边距（即组件级安全区）
     }
-    .width("100%")
+    .width('100%')
   }
 }
 ```
@@ -611,7 +642,7 @@ struct IgnoreLayoutSafeAreaTest3 {
         .backgroundColor('rgb(39, 135, 217)')
         .align(Alignment.TopStart)
 
-        Text("基准效果").fontColor(Color.White)
+        Text('基准效果').fontColor(Color.White)
       }
 
       Column(){
@@ -629,7 +660,7 @@ struct IgnoreLayoutSafeAreaTest3 {
         .align(Alignment.TopStart)
         .expandSafeArea()  // 设置绘制区域延伸，自身绘制区域上抬，子组件相对屏幕位置不变
 
-        Text("expandSafeArea").fontColor(Color.White)
+        Text('expandSafeArea').fontColor(Color.White)
       }
 
       Column(){
@@ -647,10 +678,10 @@ struct IgnoreLayoutSafeAreaTest3 {
         .align(Alignment.TopStart)
         .ignoreLayoutSafeArea()  // 设置布局区域延伸，自身布局区域上抬，子组件相对容器位置不变
 
-        Text("ignoreLayoutSafeArea").fontColor(Color.White)
+        Text('ignoreLayoutSafeArea').fontColor(Color.White)
       }
     }
-    .width("100%")
+    .width('100%')
     .backgroundColor(Color.Gray)
     .justifyContent(FlexAlign.SpaceEvenly)
   }
