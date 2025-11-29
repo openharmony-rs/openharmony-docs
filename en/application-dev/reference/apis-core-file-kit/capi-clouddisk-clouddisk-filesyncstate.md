@@ -6,6 +6,10 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct CloudDisk_FileSyncState {...} CloudDisk_FileSyncState
+```
+
 ## Overview
 
 A struct that encapsulates the file sync state.

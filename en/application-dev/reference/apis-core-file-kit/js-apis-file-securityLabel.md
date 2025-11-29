@@ -47,11 +47,11 @@ Represents the data security level.
 
 | Type| Description|
 | --- | ---------------- |
-| s0 | Level S0|
-| s1 | Level S1|
-| s2 | Level S2|
-| s3 | Level S3|
-| s4 | Level S4|
+| 's0' | Level S0|
+| 's1' | Level S1|
+| 's2' | Level S2|
+| 's3' | Level S3|
+| 's4' | Level S4|
 
 For details, see [Data Security Labels](../../database/access-control-by-device-and-data-level.md#data-security-labels).
 
