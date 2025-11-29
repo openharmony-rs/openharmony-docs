@@ -2677,7 +2677,7 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 | 201      | The application does not have permission to call the interface.      |
 | 202      | The application is not system-app, can not use system-api.           |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801      | The Ability is not supported.                       |
+| 801      | Capability not supported.                       |
 | 16000001 | The specified ability does not exist.               |
 | 16000002 | Incorrect ability type.                             |
 | 16000004 | Cannot start an invisible component.              |
@@ -2694,7 +2694,7 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
 
 export default class MyServiceExtensionAbility extends ServiceExtensionAbility {
