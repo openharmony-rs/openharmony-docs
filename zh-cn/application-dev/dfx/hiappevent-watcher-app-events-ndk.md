@@ -251,14 +251,14 @@ import testNapi from 'libentry.so';
 ```
    
    <!-- @[AppEvent_Call_Capi_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
-
-``` TypeScript
-    // 在onCreate()函数中添加C API接口调用
-    // 启动时，注册崩溃事件观察者
-    testNapi.registerWatcherCrash();
-    // 启动时，注册按钮点击事件观察者
-    testNapi.registerWatcherClick();
-```
+   
+   ``` TypeScript
+   // 在onCreate()函数中添加C API接口调用
+   // 启动时，注册崩溃事件观察者
+   testNapi.registerWatcherCrash();
+   // 启动时，注册按钮点击事件观察者
+   testNapi.registerWatcherClick();
+   ```
 
 ### 步骤三：触发事件
 
