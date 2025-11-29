@@ -1199,12 +1199,12 @@ export struct pageOneTmp {
 @Entry
 @Component
 struct NavigationDemo {
-  @Provide('pathInfos') pathInfos: NavPathStack = new NavPathStack();
+  @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
   private listArray: Array<string> = ['WLAN', 'Bluetooth', 'Personal Hotspot', 'Connect & Share'];
   context = this.getUIContext().getHostContext();
   build() {
     Column() {
-      Navigation(this.pathInfos) {
+      Navigation(this.navPathStack) {
         // $r('app.string.enterKeyWordsToSearch')需要替换为开发者所需的字符串资源文件
         TextInput({ placeholder: $r('app.string.enterKeyWordsToSearch') })
           .width('90%')
@@ -1258,7 +1258,7 @@ struct NavigationDemo {
             .width('100%')
             .onClick(() => {
               // $r('app.string.detailsPageParameters')需要替换为开发者所需的字符串资源文件
-              this.pathInfos.pushPathByName(`${item}`,
+              this.navPathStack.pushPathByName(`${item}`,
                 // 将name指定的NaviDestination页面信息入栈,传递的参数为param
                 this.context!.resourceManager.getStringSync($r('app.string.detailsPageParameters').id));
             })
@@ -1301,7 +1301,7 @@ export function PageOneBuilder(name: string, param: string) {
 
 @Component
 export struct PageOne {
-  pathInfos: NavPathStack = new NavPathStack();
+  navPathStack: NavPathStack = new NavPathStack();
   name: string = '';
   @State value: string = '';
   context = this.getUIContext().getHostContext();
@@ -1335,14 +1335,14 @@ export struct PageOne {
           .margin({ top: 50 })
           .onClick(() => {
             //弹出路由栈栈顶元素，返回上个页面
-            this.pathInfos.pop();
+            this.navPathStack.pop();
           })
       }
       .size({ width: '100%', height: '100%' })
     }.title(`${this.name}`)
     .onReady((ctx: NavDestinationContext) => {
       // NavDestinationContext获取当前所在的导航控制器
-      this.pathInfos = ctx.pathStack;
+      this.navPathStack = ctx.pathStack;
     })
   }
 }
@@ -1366,7 +1366,7 @@ export function PageTwoBuilder(name: string) {
 
 @Component
 export struct PageTwo {
-  pathInfos: NavPathStack = new NavPathStack();
+  navPathStack: NavPathStack = new NavPathStack();
   name: string = '';
   private listArray: Array<string> = ['Projection', 'Print', 'VPN', 'Private DNS', 'NFC'];
   context = this.getUIContext().getHostContext();
@@ -1418,7 +1418,7 @@ export struct PageTwo {
             }
             .width('100%')
             .onClick(() => {
-              this.pathInfos.pushPathByName(`${item}`,
+              this.navPathStack.pushPathByName(`${item}`,
                 this.context!.resourceManager.getStringSync($r('app.string.pageSettingParam').id));
             })
           }, (item: string): string => item)
@@ -1432,7 +1432,7 @@ export struct PageTwo {
     }.title(`${this.name}`)
     .onReady((ctx: NavDestinationContext) => {
       // NavDestinationContext获取当前所在的导航控制器
-      this.pathInfos = ctx.pathStack;
+      this.navPathStack = ctx.pathStack;
     })
   }
 }
