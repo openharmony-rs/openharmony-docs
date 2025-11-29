@@ -163,7 +163,7 @@ isBackgroundAllowed(): Promise\<boolean>
 
 | 类型              | 说明                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------ |
-| Promise\<boolean> | 以 Promise 形式返回设定结果。 返回 true 代表后台策略为允许，失败返回错误码错误信息。 |
+| Promise\<boolean> |  Promise 对象。 返回 true 表示后台策略为允许，返回false表示后台策略不允许。 |
 
 **错误码：**
 
@@ -739,7 +739,7 @@ isUidNetAllowed(uid: number, isMetered: boolean): Promise\<boolean>
 
 | 类型              | 说明                          |
 | ----------------- | ----------------------------- |
-| Promise\<boolean> | 以 Promise 形式返回设定结果。 |
+| Promise\<boolean> | Promise 对象。 返回 true 表示这个uid可以访问计量或非计量网络，返回false表示这个uid不可以访问计量或非计量网络。 |
 
 **错误码：**
 
@@ -832,7 +832,7 @@ isUidNetAllowed(uid: number, iface: string): Promise\<boolean>
 
 | 类型              | 说明                                                    |
 | ----------------- | ------------------------------------------------------- |
-| Promise\<boolean> | 以 Promise 形式返回当前 uid 能否访问对应 iface 的网络。 |
+| Promise\<boolean> | Promise 对象。 返回 true 表示对应 uid 能访问指定的 iface 的网络，返回false则表示不能访问。 |
 
 **错误码：**
 
@@ -2324,8 +2324,8 @@ try {
 
 | 名称              | 类型       | 只读 | 可选|说明                          |
 | ----------------- | --------- | ---- | ------|----------------------- |
-| allowWiFi         | boolean   | 否   |否 |是否允许应用访问wifi网络。true表示允许，false表示不允许。 |
-| allowCellular     | boolean   | 否  |否 |是否允许应用访问蜂窝网络。true表示允许，false表示不允许。 |
+| allowWiFi         | boolean   | 否   |是 |是否允许应用访问wifi网络。true表示允许，false表示不允许。 |
+| allowCellular     | boolean   | 否  |是 |是否允许应用访问蜂窝网络。true表示允许，false表示不允许。 |
 | alwaysAllowWiFi<sup>18+</sup>    | boolean   | 否  |是 |是否允许应用一直访问wifi网络。true表示允许，false表示不允许。 |
 | alwaysAllowCellular<sup>18+</sup>  | boolean   | 否  |是 |是否允许应用一直访问蜂窝网络。true表示允许，false表示不允许。 |
 
@@ -2339,4 +2339,4 @@ try {
 
 | 名称       | 类型                                                         | 只读 |可选|说明                 |
 | --------- | -----------------------------------------------------------  | ---- | ---|---------------- |
-| undefined | [uid: string]: [NetworkAccessPolicy](#networkaccesspolicy12) | 否   |是 |数据类型为键值对。      |
+| undefined | [uid: string]: [NetworkAccessPolicy](#networkaccesspolicy12) | 否   |否 |数据类型为键值对。      |
