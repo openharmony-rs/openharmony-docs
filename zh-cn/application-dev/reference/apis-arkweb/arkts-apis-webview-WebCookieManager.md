@@ -1523,7 +1523,7 @@ struct WebComponent {
 
 ## setLazyInitializeWebEngine<sup>23+</sup>
 
-static setLazyInitializeWebEngine(lazy: boolean): void;
+static setLazyInitializeWebEngine(lazy: boolean): void
 
 设置是否延迟初始化Web内核。
 
