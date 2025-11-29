@@ -119,7 +119,7 @@ try {
   ```
 
 
-## uiAppearance.setFontScale<sup>12+<sup>
+## uiAppearance.setFontScale<sup>12+</sup>
 
 setFontScale(fontScale: number): Promise\<void>
 
@@ -179,7 +179,7 @@ try {
   ```
 
 
-## uiAppearance.setFontWeightScale<sup>12+<sup>
+## uiAppearance.setFontWeightScale<sup>12+</sup>
 
 setFontWeightScale(fontWeightScale: number): Promise\<void>
 
