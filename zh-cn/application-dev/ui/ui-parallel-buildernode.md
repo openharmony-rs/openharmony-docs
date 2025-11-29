@@ -46,47 +46,36 @@
 
   如果该[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)在创建时使用了并行方式构建，则在调用update时，只要该节点尚未挂载（即未显示到UI上），更新操作会以并行方式执行。
 
-
 - 以下为使用[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)进行并行化创建节点树的示例。
 
   ```ts
+  // ArkTS-Sta示例
   import { State } from '@ohos.arkui.stateManagement';
   import {
     Builder,
     Button,
-    ButtonAttribute,
     ClickEvent,
     Column,
     Component,
-    ContentSlot,
     Entry,
-    LazyForEach,
-    ListItem,
     NodeContainer,
-    Position,
     Repeat,
-    RepeatItem,
-    Row,
-    Stack,
     Text,
-    TextAttribute,
     UIContext,
     wrapBuilder,
     FontWeight,
-    Margin
+    Margin,
+    Color
   } from '@ohos.arkui.component';
   import hilog from '@ohos.hilog';
   import {
     BuilderNode,
     ComponentContent,
-    DrawContext,
     FrameNode,
-    NodeContent,
     NodeController,
     NodeRenderType,
     RenderOptions,
     Size,
-    LayoutConstraint,
   } from '@ohos.arkui.node';
 
   // 自定义参数

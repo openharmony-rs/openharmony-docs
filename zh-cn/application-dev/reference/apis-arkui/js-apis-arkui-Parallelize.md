@@ -52,12 +52,13 @@ ParallelizeUI(options: ParallelOption | undefined, content_: () => void)
 
 **示例：**
 
-ArkTS-Sta示例：
-
 如下示例展示了ParallelizeUI并行创建组件的能力、多种组件的组合使用和不同的并行化配置方式。
 
 ```ts
-import { ParallelOption, ParallelizeUI } from '@ohos.arkui.Parallelize';
+// ArkTS-Sta示例
+import { Entry, Text, Column, Component, Button, List, ListItem, Row, Stack, ForEach, Grid, GridItem, Image, FontWeight, ButtonType, TextAlign, $r} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 @Entry
 @Component
@@ -186,7 +187,10 @@ ParallelizeUI\<T\>(options: ParallelOption | undefined, param: () => T, content_
 **示例：**
 
 ```ts
-import { ParallelOption, ParallelizeUI } from '@ohos.arkui.Parallelize';
+// ArkTS-Sta示例
+import { Entry, Text, Column, Component, Button } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 // 封装参数
 class Param {
@@ -275,9 +279,9 @@ ParallelizeUI<V, T>(
 **示例：**
 
 ```ts
+// ArkTS-Sta示例
 import { Entry, Text, Column, Component, Button, ClickEvent, List, ListItem } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
-import hilog from '@ohos.hilog';
 import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 class Info {
@@ -294,7 +298,7 @@ class Info {
 struct Index {
   @State stateVar: string = 'state var';
   message: string = 'Modify State';
-  @State arr:Array= [1,2,3,4,5,6,7,8,9,10,11,12,13,14] // 数据源
+  @State arr:Array<Int>= [1,2,3,4,5,6,7,8,9,10,11,12,13,14] // 数据源
   changeValue() {
     this.stateVar += '~'
   }
@@ -312,12 +316,12 @@ struct Index {
         ParallelizeUI<Int, Info>(undefined, this.arr,
           // item是当前数据项，index是数据项索引值。
           (item:Int, index: Int) => {
-            return new Info(${item}, this.stateVar)
+            return new Info(`${item}`, this.stateVar)
           },
           (param: Info) =>{
             ListItem() {
               Column() {
-                Text(${param.str1}_${param.str2}).fontSize(20) // 状态变量刷新
+                Text(`${param.str1}_${param.str2}`).fontSize(20) // 状态变量刷新
               }
             }.height('200').width('100%').borderWidth(2)
           })
