@@ -36,6 +36,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | issuer              | string | 是   | 否   | 配置文件中的发行者名称。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22 |
 |appIdentifier<sup>11+</sup>| string | 是   | 否   | 应用的唯一标识，是AppGallery Connect创建应用时分配的[APP ID](https://developer.huawei.com/consumer/cn/doc/app/agc-help-createharmonyapp-0000001945392297)，为云端统一分配的随机字符串。该ID在应用全生命周期中不会发生变化，包括版本升级、证书变更、开发者公私钥变更、应用转移等。当需要进行跨设备调试、跨应用交互调试等场景，必须使用手动签名，签名方式的选择具体请参考[使用场景说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section54361623194519)。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
 | organization<sup>12+</sup> | string | 是   | 否   | 应用的组织信息。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| bundleName<sup>23+</sup> | string | 是   | 是   | 应用的包名。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 
 ## Validity
 
