@@ -239,12 +239,12 @@ static napi_value RegisterWatcherClick(napi_env env, napi_callback_info info)
 4. 编辑“index.d.ts”文件，定义ArkTS接口：
 
    <!-- @[AppEvent_C++_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->    
-
-``` TypeScript
-export const registerWatcherCrash: () => void;
-export const registerWatcherClick: () => void;
-export const writeAppEvent: () => void;
-```
+   
+   ``` TypeScript
+   export const registerWatcherCrash: () => void;
+   export const registerWatcherClick: () => void;
+   export const writeAppEvent: () => void;
+   ```
 
 5. 编辑“EntryAbility.ets”文件，在onCreate()函数中添加接口调用：
 
