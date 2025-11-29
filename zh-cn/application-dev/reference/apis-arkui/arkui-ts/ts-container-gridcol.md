@@ -49,7 +49,7 @@ GridCol(option?: GridColOptions)
 | order  | number \| [GridColColumnOption](#gridcolcolumnoption) | 否 | 是   | 元素的序号，根据栅格子组件的序号，从小到大对栅格子组件做排序。<br/>取值为非负整数，默认值为0。<br />非法值：按默认值处理。<br/>**说明：**<br/>当子组件不设置order或者设置相同的order，子组件按照代码顺序展示。<br/>当子组件部分设置order，部分不设置order时，未设置order的子组件依次排序靠前，设置了order的子组件按照数值从小到大排列。|
 
 `span`、`offset`、`order`属性按照`xs`、`sm`、`md`、`lg`、`xl`、`xxl`的顺序具有“继承性”，未设置值的断点将会从前一个断点取值。
-API version 20之后，`span`的继承规则见[gridcolcolumnoption](#gridcolcolumnoption)。
+API version 20之后，`span`的继承规则见[GridColColumnOption](#gridcolcolumnoption)。
 
 ## 属性
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
@@ -163,7 +163,7 @@ struct GridColExample {
         columns: 5,
         gutter: { x: 5, y: 10 },
         breakpoints: {
-          value: ["400vp", "600vp", "800vp"],
+          value: ['400vp', '600vp', '800vp'],
           reference: BreakpointsReference.WindowSize
         },
         direction: GridRowDirection.Row
@@ -174,10 +174,10 @@ struct GridColExample {
             offset: 0,
             order: 0
           }) {
-            Row().width("100%").height("20vp")
+            Row().width('100%').height('20vp')
           }.borderColor(color).borderWidth(2)
         })
-      }.width("100%").height("100%")
+      }.width('100%').height('100%')
       .onBreakpointChange((breakpoint) => {
         this.currentBp = breakpoint
       })
