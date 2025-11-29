@@ -1448,10 +1448,10 @@ const bundleName = "com.example.dynamic";
 const bundleName1 = "com.example.dynamic1";
 let moduleName = 'entry';
 const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
-  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2, },
-  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2, },
+  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
     // 校验失败，因为bundleName和appIndex与其他shortcutInfo不一样
-  { id: "3", bundleName: bundleName1, moduleName: moduleName, appIndex: 0, sourceType: 2, }
+  { id: "3", bundleName: bundleName1, moduleName: moduleName, appIndex: 0, sourceType: 2 }
 ]
 ```
 或者：
@@ -1459,10 +1459,10 @@ const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
 const bundleName = "com.example.dynamic";
 let moduleName = 'entry';
 const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
-  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2, },
-  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2, },
+  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
   // 校验失败，因为bundleName和appIndex与其他shortcutInfo不一样
-  { id: "3", bundleName: bundleName, moduleName: moduleName, appIndex: 1, sourceType: 2, }
+  { id: "3", bundleName: bundleName, moduleName: moduleName, appIndex: 1, sourceType: 2 }
 ]
 ```
 
