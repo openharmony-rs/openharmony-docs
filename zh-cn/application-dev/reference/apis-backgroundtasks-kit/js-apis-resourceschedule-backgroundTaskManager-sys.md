@@ -206,7 +206,7 @@ try {
 
 ## backgroundTaskManager.getBackgroundTaskState<sup>22+</sup>
 
-getBackgroundTaskState(stateInfo: [BackgroundTaskStateInfo](#backgroundtaskstateinfo22)): [UserAuthResult](../js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22)
+getBackgroundTaskState(stateInfo: [BackgroundTaskStateInfo](#backgroundtaskstateinfo22)): [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22)
 
 获取长时任务授权信息。
 
