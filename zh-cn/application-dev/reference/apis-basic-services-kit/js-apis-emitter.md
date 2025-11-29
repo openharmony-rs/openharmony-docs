@@ -1167,7 +1167,7 @@ ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
 | options | [Options](#options11)   | 是   | 事件优先级。 |
-| data    | [GenericEventData<T\>](#genericeventdatat12) | ArkTS-Dyn:否<br/>ArkTS-Sta:是   | 事件携带的数据。 |
+| data    | [GenericEventData<T\>](#genericeventdatat12) | ArkTS-Dyn：否<br/>ArkTS-Sta：是   | 事件携带的数据。 |
 
 **示例：**
 
