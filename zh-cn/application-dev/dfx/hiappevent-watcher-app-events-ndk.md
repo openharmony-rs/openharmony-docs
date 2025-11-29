@@ -70,16 +70,17 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
 3. 编辑“napi_init.cpp”文件，导入依赖的文件并定义LOG_TAG：
 
    <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
-
-``` C++
-#include "napi/native_api.h"
-#include "json/json.h"
-#include "hilog/log.h"
-#include "hiappevent/hiappevent.h"
-#include "hiappevent/hiappevent_event.h"
-
-#undef LOG_TAG
-#define LOG_TAG "testTag"
+   
+   ``` C++
+   #include "napi/native_api.h"
+   #include "json/json.h"
+   #include "hilog/log.h"
+   #include "hiappevent/hiappevent.h"
+   #include "hiappevent/hiappevent_event.h"
+   
+   #undef LOG_TAG
+   #define LOG_TAG "testTag"
+   ```
 ```
 
 ### 步骤二：订阅事件
