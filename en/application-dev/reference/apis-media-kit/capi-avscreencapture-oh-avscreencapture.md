@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVScreenCapture OH_AVScreenCapture
+```
+
 ## Overview
 
 The OH_AVScreenCapture struct allows you to obtain original video and audio streams.

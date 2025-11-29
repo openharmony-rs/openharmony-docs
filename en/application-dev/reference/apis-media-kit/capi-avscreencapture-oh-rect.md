@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_Rect {...} OH_Rect
+```
+
 ## Overview
 
 The struct describes the width, height, and image information of the rectangle used for screen capture.
