@@ -1,5 +1,10 @@
 # Managing ArkTS Widget Lifecycle
-
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @chenmingze-->
+<!--Adviser: @Brilliantry_Rui-->
 
 When creating an ArkTS widget, you need to implement the [FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md) lifecycle APIs.
 
@@ -32,11 +37,7 @@ When creating an ArkTS widget, you need to implement the [FormExtensionAbility](
         }
     
         onCastToNormalForm(formId: string): void {
-          // Called when the widget host converts a temporary widget into a normal one. The widget provider should respond to the conversion.
-          // 1. Temporary widgets and normal widgets are defined from the viewpoint of the widget host.
-          // 2. Temporary widgets have a brief existence, appearing following particular events or user interactions and vanishing automatically upon task completion.
-          // 3. Normal widgets maintain a lasting presence, continuing to exist unless explicitly removed or altered by the user. Function widgets developed in normal cases are normal widgets.
-          // 4. Currently, temporary widgets are not used on mobile phones.
+          // This callback function is not required for the widget host.
           hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onCastToNormalForm');
         }
     

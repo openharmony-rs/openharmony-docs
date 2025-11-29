@@ -633,7 +633,7 @@ fontWeight(weight: number | FontWeight | ResourceStr, options?: FontSettingOptio
 
 设置文本字重，支持设置字体配置项。
 
-仅Text组件生效，其子组件不生效。
+仅Text组件生效，其子组件不生效。<!--RP4--><!--RP4End-->
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -646,7 +646,7 @@ fontWeight(weight: number | FontWeight | ResourceStr, options?: FontSettingOptio
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
 | weight | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是  | 设置文本字重。number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。 <br>从API version 20开始，支持Resource类型。|
-| options | [FontSettingOptions](ts-text-common.md#fontsettingoptions12对象说明) | 否  | 设置字体配置项。 |
+| options | [FontSettingOptions](ts-text-common.md#fontsettingoptions12对象说明) | 否  | 设置字体配置项。<br/>当options的参数enableVariableFontWeight取值false时，禁用可变字重调节，weight取值为[100, 900]范围内的整百数值时，字重取值为weight。weight是非整百数值时，字重取默认值400。<br/>当options的参数enableVariableFontWeight取值true时，启用可变字重调节，weight取值为[100, 900]范围内任意整数时，字重取值为weight。 |
 
 ### halfLeading<sup>12+</sup>
 
@@ -1173,7 +1173,7 @@ textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
 设置文字阴影效果。
 
-不支持fill字段和智能取色模式。
+不支持ShadowOptions对象中的type、fill字段和color字段的智能取色模式。
 
 从API version 11开始，该接口支持以数组形式入参，实现多重文字阴影。
 
@@ -1856,34 +1856,35 @@ struct TextExample5 {
   @State end: number = 20;
 
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.Start }) {
-      Text(this.text)
-        .fontSize(12)
-        .border({ width: 1 })
-        .lineHeight(20)
-        .margin(30)
-        .copyOption(CopyOptions.InApp)
-        .selection(this.start, this.end)
-        .onCopy((value: string) => {
-          this.onCopy = value;
-        })
-        .draggable(true)
-        .caretColor(Color.Red)
-        .selectedBackgroundColor(Color.Grey)
-        .enableHapticFeedback(true)
-      Button('Set text selection')
-        .margin({ left: 20 })
-        .onClick(() => {
-          // 变更文本选中起始点、终点
-          this.start = 10;
-          this.end = 30;
-        })
-      Text(this.onCopy).fontSize(12).margin(10).key('copy')
-    }.height(600).width(335).padding({ left: 35, right: 35, top: 35 })
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Start }) {
+        Text(this.text)
+          .fontSize(12)
+          .border({ width: 1 })
+          .lineHeight(20)
+          .margin(30)
+          .copyOption(CopyOptions.InApp)
+          .selection(this.start, this.end)
+          .onCopy((value: string) => {
+            this.onCopy = value;
+          })
+          .draggable(true)
+          .caretColor(Color.Red)
+          .selectedBackgroundColor(Color.Grey)
+          .enableHapticFeedback(true)
+        Button('Set text selection')
+          .onClick(() => {
+            // 变更文本选中起始点、终点
+            this.start = 10;
+            this.end = 30;
+          })
+        Text(this.onCopy).fontSize(12).margin(10).key('copy')
+      }.height(600).width(335).padding({ left: 35, right: 35, top: 35 })
+    }.width('100%')
   }
 }
 ```
-![](figures/setTextSelection.png)
+![](figures/setTextSelection.gif)
 
 ### 示例6（设置文本自适应和缩放倍数限制范围）
 

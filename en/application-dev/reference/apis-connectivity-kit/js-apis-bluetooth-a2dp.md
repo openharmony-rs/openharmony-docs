@@ -244,6 +244,8 @@ Enumerates the bit rates of the Bluetooth media audio codec. A bit rate indicate
 | CODEC_BIT_RATE_640000  | 6 | 640kbps |
 | CODEC_BIT_RATE_960000  | 7 | 960kbps |
 | CODEC_BIT_RATE_ABR  | 8 | Adaptive bit rate (automatic adjustment of the bit rate based on network conditions).|
+| CODEC_BIT_RATE_1500000<sup>21+</sup>  | 9 | 1500kbps |
+| CODEC_BIT_RATE_2300000<sup>21+</sup>  | 10 | 2300kbps |
 
 ## CodecFrameLength<sup>19+</sup>
 

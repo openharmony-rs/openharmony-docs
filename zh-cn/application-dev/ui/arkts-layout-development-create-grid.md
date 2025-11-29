@@ -15,7 +15,7 @@ ArkUI提供了[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)容�
 
 > **说明：** 
 >
-> 本文仅展示关键代码片段，可运行的完整代码请参考<!--RP2-->[创建网格代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ScrollableComponent)<!--RP2End-->。
+> 本文仅展示关键代码片段<!--RP2--><!--RP2End-->。
 
 ## 布局与约束
 

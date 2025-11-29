@@ -15,3 +15,4 @@ Defines a kernel request. You can use **OH_ArkWeb_ResourceRequest** to obtain th
 **Related module**: [Web](capi-web.md)
 
 **Header file**: [arkweb_scheme_handler.h](capi-arkweb-scheme-handler-h.md)
+

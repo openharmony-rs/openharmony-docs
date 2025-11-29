@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Transformation attributes allow you to rotate, translate, scale, or transform a component.
 
@@ -64,7 +64,7 @@ Rotates the component. Compared with [rotate](#rotate), this API supports the **
 
 rotate(options: Optional<RotateOptions | RotateAngleOptions>): T
 
-Sets the component rotation effect. Compared with [rotate]rotate18), the options parameter supports the RotateAngleOptions type.
+Sets the component rotation effect. Compared with [rotate](#rotate18), this API supports the **RotateAngleOptions** type for the **options** parameter.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 20.
 
@@ -206,7 +206,7 @@ Displays the matrix transformation when 2D transformation is performed. If 3D tr
 
 transform(transform: Optional\<object>): T
 
-Displays the matrix transformation when 2D transformation is performed. If 3D transformation is included, the [transform3D](#transform3d20) API is required. Compared with [transform](#transform), the transform<sup>18+</sup> parameter supports the undefined type.
+Displays the matrix transformation when 2D transformation is performed. If 3D transformation is included, the [transform3D](#transform3d20) API is required. Compared with [transform] (#transform), the transform<sup>18+</sup> parameter supports the undefined type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -504,7 +504,7 @@ struct MatrixExample {
 
 ### Example 4: Implementing Graphical Transformation Through transform3D
 
-This example demonstrates how to implement image transformation through transform3D.
+This example demonstrates how to implement image transformation by setting [transform3D](#transform3d20). This functionality is supported since API version 20.
 
 ```ts
 import { matrix4 } from '@kit.ArkUI';
@@ -541,14 +541,13 @@ struct Tests {
 
 ### Example 5: Rotating an Image Based on Angles of Each Axis
 
-This example demonstrates how to rotate an image using the [RotateAngleOptions](#rotateangleoptions20) parameter of rotate.
+This example demonstrates how to implement rotation by setting the [RotateAngleOptions](#rotateangleoptions20) parameter of **rotate**. This functionality is supported since API version 20.
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct Index {
-
   build() {
     Row() {
       Column() {
@@ -564,7 +563,13 @@ struct Index {
         Image($r("app.media.startIcon"))
           .width(200)
           .height(200)
-          .rotate({ angleX: 60, angleY: -125, angleZ: 75, centerX: 100, centerZ: 20})
+          .rotate({
+            angleX: 60,
+            angleY: -125,
+            angleZ: 75,
+            centerX: 100,
+            centerZ: 20
+          })
       }
       .width('100%')
     }

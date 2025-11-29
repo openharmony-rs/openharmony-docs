@@ -1,93 +1,93 @@
 # Introduction to DRM Kit
 
-Digital Rights Management Kit (DRM Kit) is a digital rights protection service that supports authorization and decryption of DRM-encrypted content. It provides features such as DRM plugin management, DRM certificate management, DRM license management, DRM content authorization, and DRM content decryption. It enables the integration of DRM solutions, certificate provisioning for DRM solutions, content authorization, and content decryption.
+Digital Rights Management (DRM) Kit provides digital rights protection services, offering capabilities for authorizing and decrypting DRM-encrypted content. It includes features such as DRM plugin management, certificate management, license management, content authorization, and content decryption, enabling the integration of DRM solutions, certificate provisioning, and content authorization and decryption.
 
-## Available Capabilities
+## Capabilities
 
-With DRM Kit, DRM solution integrators can seamlessly integrate DRM solutions into their systems. Application developers can leverage these integrations to authorize and decrypt DRM-encrypted content, thereby enabling the playback of DRM-protected content.
+Through DRM Kit, DRM solution integrators can implement DRM solution integration, whereas application developers can call the corresponding DRM solutions to authorize and decrypt DRM-encrypted content, enabling playback of DRM-protected media.
 
-- DRM plugin management: By implementing the DRM HDI provided by DRM Kit, you can support various DRM solutions. This is typically handled by DRM solution integrators.
+- DRM plugin management: By implementing the DRM HDI interfaces provided by DRM Kit, support for different DRM solutions can be achieved. This is typically implemented by DRM solution integrators.
 
-- DRM certificate management: supports the request and processing of device certificates for DRM solutions, and enables certificate provisioning for the corresponding DRM solutions.
+- DRM certificate management: supports requesting and processing device certificates for DRM solutions, enabling certificate provisioning for the corresponding DRM solutions.
 
-- DRM license management: supports the request, processing, and deletion of offline licenses.
+- DRM license management: supports requesting, processing, and deleting offline licenses.
 
-- DRM content authorization: includes online license requests and processing, loading of offline licenses, querying the status of media keys, and authorizing DRM content based on the permissions specified in the DRM license.
+- DRM content authorization: supports online license requests and processing, loading offline licenses, querying media key status, and authorizing DRM content according to the permissions specified in the DRM license.
 
-- DRM content decryption: Supported media protocols include HLS and DASH; container formats include MP4 and TS; video encoding format is H.264<!--RP2--><!--RP2End-->; audio encoding format is AAC.
+- DRM content decryption: supports HLS and DASH media protocols; MP4 and TS container formats; H.264<!--RP2--><!--RP2End--> video encoding format; AAC audio encoding format.
 
 > **NOTE**
 >
-> DRM certificate management, DRM license management, DRM content authorization, and DRM content decryption all depend on the implementation of the corresponding DRM solutions. You can independently extend the supported media protocols, container formats, and audio/video encoding formats.
+> DRM certificate management, license management, content authorization, and content decryption depend on the implementation of the corresponding DRM solutions. Application developers can extend support for additional media protocols, container formats, and audio/video encoding formats.
 
 
 ## Features
 
 - **License and decryption session management**
 
-  DRM Kit supports multiple MediaKeySession instances, allowing for license requests and settings within sessions. Decryption sessions can be bound to licenses.
+  Supports multiple MediaKeySession instances, allowing licenses to be requested and configured within sessions, and binding decryption sessions to licenses.
 
-- **Secure video channels**
+- **Secure video path**
 
-  DRM Kit supports secure video channels, ensuring secure decryption, decoding, rendering, and output. However, the kit only provides the APIs for secure decryption. The actual secure decryption, decoding, rendering, and output rely on the implementation of the DRM solution and the operating system.
+  Supports a secure video path to enable secure decryption, decoding, rendering, and output. DRM Kit provides only APIs for secure decryption. The actual secure decryption, decoding, rendering, and output depend on the DRM solution and operating system implementation.
 
 ## Basic Concepts
 
-Be familiar with the following basic concepts before development:
+Before you start, understand the following key concepts:
 
 - DRM plugin
 
-  A DRM solution driver integrated into the system, implementing the DRM HDI and providing DRM-related features.
+  A DRM solution driver integrated into the system. It implements the DRM HDI interfaces to provide DRM-related functionality.
   
 <!--RP1--><!--RP1End-->
 
 - MediaKeySystem
 
-  Used to manage DRM certificates and MediaKeySession lifecycle.
+  Used for DRM certificate management and MediaKeySession lifecycle management.
 
 - MediaKeySession
 
-  Used to manage licenses and decrypt media content. Its lifecycle is managed by MediaKeySystem.
+  Used for license management and media content decryption. Its lifecycle is managed by MediaKeySystem.
 
 - DRM information (MediaKeySystemInfo)
   
-  Descriptive information for DRM content encryption, such as the DRM solution UUID and PSSH data.
+  Descriptive information about DRM content encryption, including the DRM solution UUID and Protection System Specific Header (PSSH) data.
 
 - PSSH
 
-  Protection System Specific Header Box, which contains data used by the DRM solution to describe how DRM content is encrypted.
+  Data used by the DRM solution to describe how DRM content is encrypted.
 
 - DRM certificate
 
-  A certificate required by DRM solutions for normal operation. Different DRM solutions have different DRM certificates.
+  A certificate required for the DRM solution to function properly. Different DRM solutions use different certificates.
 
 - DRM certificate provisioning
   
-  A process used by DRM solutions to provision certificates. The process varies among different DRM solutions. For specific requirements, refer to the implementation guidelines of the DRM solution.
+  The process used by a DRM solution to download certificates. The process varies by solution. For specific requirements, refer to the implementation guidelines of the DRM solution.
 
 - License
   
-  Used by DRM solutions to implement DRM authorization for devices. Common permission control policies include security levels, output control, start playback time, and end playback time. Different DRM solutions may use different license formats and support different permission control policies.
+  Used by the DRM solution to authorize devices. Typical license control policies include security level, output control, playback start time, and playback end time. Different DRM solutions may use different license formats and support different control policies.
 
 - Audio/Video Data Frame Encryption Information (cencInfo)
   
-  Descriptive information for encryption of audio/video data frames, such as encryption algorithms and modes, KeyId, IV, and subsample information.
+  Descriptive information about audio/video data frame encryption, including the encryption algorithm and mode, KeyId, IV, and subsample information.
 
 ## Workflow
 
 DRM plugin management is typically implemented by DRM solution integrators.<!--Del--> For details, see[DRM Solution Development](drm-solution-dev-guide.md).<!--DelEnd-->
 
-The following figure shows the process of integrating DRM Kit into your application.
+The following figure illustrates the workflow for integrating DRM Kit into an application.
 ![Drm Development Model](figures/drm-development-model.png)
 
-The working process includes:
+The workflow includes:
 
-1. Creation of MediaKeySystem and MediaKeySession instances: The application obtains the DRM information of the content and creates MediaKeySystem and MediaKeySession instances based on the solution UUID in the DRM information. This can be done using service-provided DRM descriptions or through the mediaKeySystemInfoUpdate event or MediaKeySystemInfo callback from Media Kit or AVCodec Kit.
+1. Creating MediaKeySystem and MediaKeySession instances: The application obtains the DRM information of the content and creates MediaKeySystem and MediaKeySession instances based on the solution UUID in the DRM information. The DRM information can be obtained from service-provided DRM descriptions, or from the **mediaKeySystemInfoUpdate** event or **MediaKeySystemInfo** callback provided by Media Kit or AVCodec Kit.
 
-2. Certificate provisioning: When a MediaKeySession instance is created, if there is no DRM certificate or if the certificate is invalid, DRM Kit will trigger an event requiring DRM certificate provisioning (keySystemRequired). At this point, the certificate provisioning API of MediaKeySystem is called to complete the provisioning. Alternatively, based on the DRM solution's requirements, the DRM certificate status can be checked. If there is no valid certificate, the certificate provisioning API of MediaKeySystem can be proactively invoked. If the certificate is valid or if no provisioning is required, this step can be skipped.
+2. Certificate provisioning: During the creation of a MediaKeySession instance, if no DRM certificate is available or the certificate is invalid, DRM Kit triggers an event requiring certificate provisioning (**keySystemRequired**). The application can then call certificate provisioning APIs of MediaKeySystem to complete the process. Alternatively, the application can check the DRM certificate status according to the DRM solution's requirements and proactively call the provisioning APIs if no valid certificate is available. This step can be skipped if the DRM solution has a valid certificate or does not require provisioning.
 
-3. License retrieval: The application calls the license-related API of MediaKeySession based on the PSSH data in the DRM event to request and process the DRM license.
+3. License acquisition: The application calls license-related APIs of MediaKeySession using the PSSH data from DRM events to request and process DRM licenses.
 
-4. DRM content decryption: The application sets MediaKeySession to Media Kit or AVCodec Kit to support DRM content decryption. When AVCodec Kit is used, the cencInfo of the audio/video data frames can be set and placed into the AVBuffer, enabling decryption and decoding of the audio/video data frames during the PushInputBuffer call.
+4. DRM content decryption: The application sets the MediaKeySession in Media Kit or AVCodec Kit to support DRM content decryption. When using AVCodec Kit, the application can set the cencInfo for audio/video data frames in AVBuffer, enabling decryption and decoding when calling **PushInputBuffer**.
 
-5. License update or expiration: During content playback, if a license update is required, MediaKeySession will trigger a license update event (keyRequired), prompting a re-request for the DRM license. If MediaKeySession triggers a license expiration event (keyExpired), DRM content playback should be stopped.
+5. License update or expiration: During playback, if a license needs updating, MediaKeySession triggers a license update event (**keyRequired**), requiring the application to request a new DRM license. If MediaKeySession triggers a license expiration event (**keyExpired**), DRM content playback must be stopped.

@@ -1048,8 +1048,8 @@ int OH_HiAppEvent_SetReportPolicy(HiAppEvent_Processor* processor, int periodRep
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)* processor | 指向处理者的指针（即OH_HiAppEvent_CreateProcessor接口返回的指针）。 |
 | int periodReport | 事件定时上报周期，单位为秒。 |
 | int batchReport | 事件上报阈值，当事件条数达到阈值时上报事件。 |
-| bool onStartReport | 数据处理者在启动时是否上报事件，默认值为false。 |
-| bool onBackgroundReport | 应用程序进入后台时，是否上报事件，默认值为false。 |
+| bool onStartReport | 数据处理者在启动时是否上报事件。配置值为true表示上报事件，false表示不上报事件。 |
+| bool onBackgroundReport | 应用程序进入后台时是否上报事件。配置值为true表示上报事件，false表示不上报事件。 |
 
 **返回：**
 
@@ -1077,7 +1077,7 @@ int OH_HiAppEvent_SetReportEvent(HiAppEvent_Processor* processor, const char* do
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)* processor | 指向处理者的指针（即OH_HiAppEvent_CreateProcessor接口返回的指针）。 |
 | const char* domain | 上报事件的领域。 |
 | const char* name | 上报事件的名称。 |
-| bool isRealTime | 是否实时上报。 |
+| bool isRealTime | 是否实时上报。配置为true表示实时上报，false表示不实时上报 |
 
 **返回：**
 

@@ -51,10 +51,10 @@ When a promise is used, the return value can also be processed in the promise. F
 
 ### Result Codes for Unregistering an Observer
 
-| Result Code| Description|
+| Result Code| Cause|
 | -------- | -------- |
 | 0 | Normal.|
-| -1 | Input **number** not exist.|
+| -1 | Passed-in **number** not exist.|
 | -2 | Invalid parameter.|
 
 ## How to Develop
@@ -65,246 +65,251 @@ When a promise is used, the return value can also be processed in the promise. F
 
 ### Listening for a Single Thread
 
- Import the header files.
-<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+```ts
+import { AbilityConstant, errorManager, UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { process } from '@kit.ArkTS';
 
-``` TypeScript
-import { errorManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
-
- Add an observer.
-<!-- @[error_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-let observer: errorManager.ErrorObserver = {
-  onUnhandledException(errorMsg) {
-    hilog.info(0x0000, 'testTag','onUnhandledException, errorMsg: ', errorMsg);
-  },
-  onException(errorObj) {
-    hilog.info(0x0000, 'testTag','onException, name: ', errorObj.name);
-    hilog.info(0x0000, 'testTag','onException, message: ', errorObj.message);
-    if (typeof(errorObj.stack) === 'string') {
-      hilog.info(0x0000, 'testTag','onException, stack: ', errorObj.stack);
+let registerId = -1;
+let callback: errorManager.ErrorObserver = {
+    onUnhandledException: (errMsg) => {
+        console.info(errMsg);
+    },
+    onException: (errorObj) => {
+        console.info('onException, name: ', errorObj.name);
+        console.info('onException, message: ', errorObj.message);
+        if (typeof(errorObj.stack) == 'string') {
+            console.info('onException, stack: ', errorObj.stack);
+        }
+        // After the callback is executed, exit the process synchronously to avoid multiple exceptions.
+        let pro = new process.ProcessManager();
+        pro.exit(0);
     }
-  }
+}
+
+let abilityWant: Want;
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+        console.info("[Demo] EntryAbility onCreate");
+        registerId = errorManager.on("error", callback);
+        abilityWant = want;
+    }
+
+    onDestroy() {
+        console.info("[Demo] EntryAbility onDestroy");
+        errorManager.off("error", registerId, (result) => {
+            console.info("[Demo] result " + result.code + ";" + result.message);
+        });
+    }
+
+    onWindowStageCreate(windowStage: window.WindowStage) {
+        // Set the main page for the created main window.
+        console.info("[Demo] EntryAbility onWindowStageCreate");
+
+        windowStage.loadContent("pages/index", (err) => {
+            if (err.code) {
+                console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+                return;
+            }
+        });
+    }
+
+    onWindowStageDestroy() {
+        // Destroy the main window and release related UI resources.
+        console.info("[Demo] EntryAbility onWindowStageDestroy");
+    }
+
+    onForeground() {
+        // Switch to the foreground.
+        console.info("[Demo] EntryAbility onForeground");
+    }
+
+    onBackground() {
+        // Switch to the background.
+        console.info("[Demo] EntryAbility onBackground");
+    }
 };
 ```
-
- Add a trigger button.
-<!-- @[onclick_error_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-Button('Listening for a single thread').onClick(()=>{
-  let observerId = -1;
-  try {
-    observerId = errorManager.on('error', observer);
-  } catch (paramError) {
-    let code = (paramError as BusinessError).code;
-    let message = (paramError as BusinessError).message;
-    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
-  }
-}).position({x:50, y:50});
-```
-
 
 ### Listening for Process Exceptions
 
- Import the header files.
-<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+```ts
+import { AbilityConstant, errorManager, UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { process } from '@kit.ArkTS';
 
-``` TypeScript
-import { errorManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
-
- Add an observer.
-<!-- @[error_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
 function errorFunc(observer: errorManager.GlobalError) {
-  hilog.info(0x0000, 'testTag','result name :' + observer.name);
-  hilog.info(0x0000, 'testTag','result message :' + observer.message);
-  hilog.info(0x0000, 'testTag','result stack :' + observer.stack);
-  hilog.info(0x0000, 'testTag','result instanceName :' + observer.instanceName);
-  hilog.info(0x0000, 'testTag','result instanceType :' + observer.instanceType);
+    console.info("[Demo] result name :" + observer.name);
+    console.info("[Demo] result message :" + observer.message);
+    console.info("[Demo] result stack :" + observer.stack);
+    console.info("[Demo] result instanceName :" + observer.instanceName);
+    console.info("[Demo] result instanceType :" + observer.instanceType);
+    // After the callback is executed, exit the process synchronously to avoid multiple exceptions.
+    let pro = new process.ProcessManager();
+    pro.exit(0);
+}
+
+let abilityWant: Want;
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+        console.info("[Demo] EntryAbility onCreate");
+        errorManager.on("globalErrorOccurred", errorFunc);
+        abilityWant = want;
+    }
+
+    onDestroy() {
+        console.info("[Demo] EntryAbility onDestroy");
+        errorManager.off("globalErrorOccurred", errorFunc);
+    }
+
+    onWindowStageCreate(windowStage: window.WindowStage) {
+        // Set the main page for the created main window.
+        console.info("[Demo] EntryAbility onWindowStageCreate");
+
+        windowStage.loadContent("pages/index", (err) => {
+            if (err.code) {
+                console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+                return;
+            }
+        });
+    }
+
+    onWindowStageDestroy() {
+        // Destroy the main window and release related UI resources.
+        console.info("[Demo] EntryAbility onWindowStageDestroy");
+    }
+
+    onForeground() {
+        // Switch to the foreground.
+        console.info("[Demo] EntryAbility onForeground");
+    }
+
+    onBackground() {
+        // Switch to the background.
+        console.info("[Demo] EntryAbility onBackground");
+    }
 };
-```
-
- Add a trigger button.
-<!-- @[onclick_error_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-Button ('Listening for process exceptions').onClick(()=>{
-  try {
-    errorManager.on('globalErrorOccurred', errorFunc);
-  } catch (paramError) {
-    let code = (paramError as BusinessError).code;
-    let message = (paramError as BusinessError).message;
-    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
-  }
-}).position({x:50, y:100});
 ```
 
 ### Listening for Process Promise Exceptions
 
- Import the header files.
-<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+```ts
+import { AbilityConstant, errorManager, UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { process } from '@kit.ArkTS';
 
-``` TypeScript
-import { errorManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
-
- Add an observer.
-<!-- @[promise_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
 function promiseFunc(observer: errorManager.GlobalError) {
-  hilog.info(0x0000, 'testTag','result name :' + observer.name);
-  hilog.info(0x0000, 'testTag','result message :' + observer.message);
-  hilog.info(0x0000, 'testTag','result stack :' + observer.stack);
-  hilog.info(0x0000, 'testTag','result instanceName :' + observer.instanceName);
-  hilog.info(0x0000, 'testTag','result instanceType :' + observer.instanceType);
+    console.info("[Demo] result name :" + observer.name);
+    console.info("[Demo] result message :" + observer.message);
+    console.info("[Demo] result stack :" + observer.stack);
+    console.info("[Demo] result instanceName :" + observer.instanceName);
+    console.info("[Demo] result instanceType :" + observer.instanceType);
+    // After the callback is executed, exit the process synchronously to avoid multiple exceptions.
+    let pro = new process.ProcessManager();
+    pro.exit(0);
 }
-```
 
- Add a trigger button.
-<!-- @[onclick_promise_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript
-Button ('Listening for process promise exceptions').onClick(()=>{
-  try {
-    errorManager.on('globalUnhandledRejectionDetected', promiseFunc);
-  } catch (paramError) {
-    let code = (paramError as BusinessError).code;
-    let message = (paramError as BusinessError).message;
-    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
-  }
-}).position({x:50, y:200});
+let abilityWant: Want;
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+        console.info("[Demo] EntryAbility onCreate");
+        errorManager.on("globalUnhandledRejectionDetected", promiseFunc);
+        abilityWant = want;
+    }
+
+    onDestroy() {
+        console.info("[Demo] EntryAbility onDestroy");
+        errorManager.off("globalUnhandledRejectionDetected", promiseFunc);
+    }
+
+    onWindowStageCreate(windowStage: window.WindowStage) {
+        // Set the main page for the created main window.
+        console.info("[Demo] EntryAbility onWindowStageCreate");
+
+        windowStage.loadContent("pages/index", (err) => {
+            if (err.code) {
+                console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+                return;
+            }
+        });
+    }
+
+    onWindowStageDestroy() {
+        // Destroy the main window and release related UI resources.
+        console.info("[Demo] EntryAbility onWindowStageDestroy");
+    }
+
+    onForeground() {
+        // Switch to the foreground.
+        console.info("[Demo] EntryAbility onForeground");
+    }
+
+    onBackground() {
+        // Switch to the background.
+        console.info("[Demo] EntryAbility onBackground");
+    }
+};
 ```
 
 ### Listening for Main Thread Freeze Exceptions
 
- Import the header files.
-<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+```ts
+import { AbilityConstant, errorManager, UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { process } from '@kit.ArkTS';
 
-``` TypeScript
-import { errorManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
-
- Add an observer.
-<!-- @[freeze_call_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
+// Define freezeCallback
 function freezeCallback() {
-  hilog.info(0x0000, 'testTag','freezecallback');
+    console.info("freezecallback");
 }
-```
 
- Add a trigger button.
-<!-- @[onclick_freeze_call_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript
-Button('Listening for main thread freeze exceptions').onClick(()=>{
-  try {
-    errorManager.on('freeze', freezeCallback);
-  } catch (paramError) {
-    let code = (paramError as BusinessError).code;
-    let message = (paramError as BusinessError).message;
-    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
-  }
-}).position({x:50, y:300});
-```
+let abilityWant: Want;
 
-### Listening for Main Thread Timeouts
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+        console.info("[Demo] EntryAbility onCreate");
+        errorManager.on("freeze", freezeCallback);
+        abilityWant = want;
+    }
 
- Import the header files.
-<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+    onDestroy() {
+        console.info("[Demo] EntryAbility onDestroy");
+        errorManager.off("freeze", freezeCallback);
+    }
 
-``` TypeScript
-import { errorManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+    onWindowStageCreate(windowStage: window.WindowStage) {
+        // Set the main page for the created main window.
+        console.info("[Demo] EntryAbility onWindowStageCreate");
 
- Add an observer.
-<!-- @[loop_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+        windowStage.loadContent("pages/index", (err) => {
+            if (err.code) {
+                console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+                return;
+            }
+        });
+    }
 
-``` TypeScript
-let loopObserver: errorManager.LoopObserver = {
-  onLoopTimeOut(timeout: number) {
-    hilog.info(0x0000, 'testTag','Duration timeout: ' + timeout);
-  }
+    onWindowStageDestroy() {
+        // Destroy the main window and release related UI resources.
+        console.info("[Demo] EntryAbility onWindowStageDestroy");
+    }
+
+    onForeground() {
+        // Switch to the foreground.
+        console.info("[Demo] EntryAbility onForeground");
+    }
+
+    onBackground() {
+        // Switch to the background.
+        console.info("[Demo] EntryAbility onBackground");
+    }
 };
 ```
-
- Add a trigger button.
-<!-- @[onclick_loop_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-Button ('Listening for main thread timeouts').onClick(()=>{
-  try {
-    errorManager.on('loopObserver', 1, loopObserver);
-  } catch (paramError) {
-    let code = (paramError as BusinessError).code;
-    let message = (paramError as BusinessError).message;
-    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
-  }
-}).position({x:50, y:150});
-```
-
-### Listening for Process Promise Exceptions
-
- Import the header files.
-<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import { errorManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
-
- Add an observer.
-<!-- @[unhandled_rejection_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-let promise1 = new Promise<void>(() => {}).then(() => {
-  throw new Error('uncaught error');
-});
-
-let unhandledrejectionObserver: errorManager.UnhandledRejectionObserver = (reason: Error, promise: Promise<void>) => {
-  if (promise === promise1) {
-    hilog.info(0x0000, 'testTag','promise1 is rejected');
-  }
-  hilog.info(0x0000, 'testTag','reason.name: ', reason.name);
-  hilog.info(0x0000, 'testTag','reason.message: ', reason.message);
-  if (reason.stack) {
-    hilog.info(0x0000, 'testTag','reason.stack: ', reason.stack);
-  }
-};
-```
-
- Add a trigger button.
-<!-- @[onclick_unhandled_rejection_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-Button('Listening for process promise exceptions').onClick(()=>{
-  try {
-    errorManager.on('unhandledRejection', unhandledrejectionObserver);
-  } catch (paramError) {
-    let code = (paramError as BusinessError).code;
-    let message = (paramError as BusinessError).message;
-    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
-  }
-}).position({x:50, y:250});
-```
-
 ### Chaining Error Handlers
 
 The following sample files are stored in the same directory.

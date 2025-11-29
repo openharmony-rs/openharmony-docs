@@ -26,6 +26,8 @@ The following describes how to subscribe to the application freeze event trigger
 
 1. Obtain the **jsoncpp** file on which the sample project depends. Specifically, download the source code package from [JsonCpp](https://github.com/open-source-parsers/jsoncpp) and obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by following the procedure described in **Amalgamated source**.
 
+2. Create a native C++ project and import the **jsoncpp** file to the project. The directory structure is as follows:
+
    ```yml
    entry:
      src:
@@ -47,7 +49,7 @@ The following describes how to subscribe to the application freeze event trigger
              - Index.ets
    ```
 
-2. In the **CMakeLists.txt** file, add the source file and dynamic libraries.
+3. In the **CMakeLists.txt** file, add the source file and dynamic libraries.
 
    ```cmake
    # Add the jsoncpp.cpp file, which is used to parse the JSON strings in the subscription events.
@@ -56,7 +58,7 @@ The following describes how to subscribe to the application freeze event trigger
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
    ```
 
-3. Import the dependencies to the **napi_init.cpp** file, and define **LOG_TAG**.
+4. Import the dependencies to the **napi_init.cpp** file, and define **LOG_TAG**.
 
    ```c++
    #include "napi/native_api.h"
@@ -68,7 +70,7 @@ The following describes how to subscribe to the application freeze event trigger
    #define LOG_TAG "testTag"
    ```
 
-4. Subscribe to system events.
+5. Subscribe to system events.
 
    - Watcher of the **onReceive** type.
 

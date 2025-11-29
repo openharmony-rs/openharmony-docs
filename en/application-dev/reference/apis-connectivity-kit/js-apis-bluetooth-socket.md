@@ -260,7 +260,7 @@ Obtains the Bluetooth address of the peer end in the socket connection. This API
 
 | Type                                      | Description                        |
 | ---------------------------------------- | -------------------------- |
-| string | IP address of the peer end.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual address of a paired Bluetooth device will not change.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.|
+| string | IP address of the peer device.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual address of a paired Bluetooth device will not change.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.|
 
 **Error codes**
 
@@ -442,7 +442,7 @@ Subscribes to socket read request events. This API can be used on both the clien
 
 | Name         | Type                         | Mandatory  | Description                        |
 | ------------ | --------------------------- | ---- | -------------------------- |
-| type         | string                      | Yes   | Event type. The value **sppRead** indicates the SPP read request event.<br>This event is triggered when data sent by the peer end is received.|
+| type         | string                      | Yes   | Event type. The value **sppRead** indicates the SPP read request event.<br>This event is triggered when data sent by the peer device is received.|
 | clientSocket | number                      | Yes   | ID of the client socket.<br>You can obtain the value from the asynchronous callback returned after [socket.sppAccept](#socketsppaccept) or [socket.sppConnect](#socketsppconnect) is called.             |
 | callback     | Callback&lt;ArrayBuffer&gt; | Yes   | Callback used to return the read data.      |
 
@@ -518,7 +518,7 @@ try {
 
 sppWriteAsync(clientSocket: number, data: ArrayBuffer): Promise&lt;void&gt;
 
-Sends data to the peer end. This API can be used on both the client and server. If the connection is disconnected, this API will throw and return an error code.
+Sends data to the peer end. This API can be used on both the client and server. This API uses a promise to return the result. If the connection is disconnected, this API will throw and return an error code.
 - This API is valid only after the connection between the client and server is successfully established.
 - To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
 - To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
@@ -571,7 +571,7 @@ try {
 
 sppReadAsync(clientSocket: number): Promise&lt;ArrayBuffer&gt;
 
-Reads data sent by the peer end. This API can be used on both the client and server. If the connection is disconnected, this API will throw and return an error code.
+Reads data sent by the peer end. This API can be used on both the client and server. This API uses a promise to return the result. If the connection is disconnected, this API will throw and return an error code.
 
 - To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
 - To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.

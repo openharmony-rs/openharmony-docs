@@ -335,7 +335,7 @@ triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Context): Prom
 
 | 错误码ID    | 错误信息            |
 |-----------|--------------------|
-| 201       | Permission verification failed. The application does not have the permission required to call the API. |
+| 201       | The application does not have permission to call the interface. |
 | 202       | The application is not system-app, can not use system-api. |
 | 16000020   | The context is not ability context. |
 | 16000151   | Invalid wantAgent object.|

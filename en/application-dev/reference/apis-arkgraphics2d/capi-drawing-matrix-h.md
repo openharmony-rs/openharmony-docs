@@ -784,3 +784,4 @@ Destroys an **OH_Drawing_Matrix** object and reclaims the memory occupied by the
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | Pointer to an **OH_Drawing_Font** object.|
+

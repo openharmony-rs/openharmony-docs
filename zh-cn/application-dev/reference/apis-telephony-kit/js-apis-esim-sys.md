@@ -19,7 +19,7 @@
 import { eSIM } from '@kit.TelephonyKit';
 ```
 
-## eSIM.getEid<sup>18+</sup>
+## eSIM.getEid
 
 getEid\(slotId: number\): Promise\<string\>
 
@@ -69,7 +69,7 @@ try {
 }
 ```
 
-## eSIM.getOsuStatus<sup>18+</sup>
+## eSIM.getOsuStatus
 
 getOsuStatus\(slotId: number\): Promise\<OsuStatus\>
 
@@ -91,7 +91,7 @@ getOsuStatus\(slotId: number\): Promise\<OsuStatus\>
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[OsuStatus](#osustatus18)\> |  Promise对象，返回操作系统升级的状态。<br/> 1. 正在升级。 <br/>   2. 升级失败。<br/>  3. 升级成功。<br/>  4. 当前版本是最新版本。<br/> 5. 升级服务不可用。 |
+| Promise\<[OsuStatus](#osustatus)\> |  Promise对象，返回操作系统升级的状态。<br/> 1. 正在升级。 <br/>   2. 升级失败。<br/>  3. 升级成功。<br/>  4. 当前版本是最新版本。<br/> 5. 升级服务不可用。 |
 
 **错误码：**
 
@@ -119,7 +119,7 @@ eSIM.getOsuStatus(1).then(() => {
 });
 ```
 
-## eSIM.startOsu<sup>18+</sup>
+## eSIM.startOsu
 
 startOsu\(slotId: number\): Promise\<OsuStatus\>
 
@@ -141,7 +141,7 @@ startOsu\(slotId: number\): Promise\<OsuStatus\>
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[OsuStatus](#osustatus18)\> |  Promise对象，返回操作系统升级的状态。<br/> 1. 正在升级。 <br/>   2. 升级失败。<br/>  3. 升级成功。<br/>  4. 当前版本是最新版本。<br/> 5. 升级服务不可用。 |
+| Promise\<[OsuStatus](#osustatus)\> |  Promise对象，返回操作系统升级的状态。<br/> 1. 正在升级。 <br/>   2. 升级失败。<br/>  3. 升级成功。<br/>  4. 当前版本是最新版本。<br/> 5. 升级服务不可用。 |
 
 **错误码：**
 
@@ -169,7 +169,7 @@ eSIM.startOsu(1).then(() => {
 });
 ```
 
-## eSIM.getDownloadableProfileMetadata<sup>18+</sup>
+## eSIM.getDownloadableProfileMetadata
 
 getDownloadableProfileMetadata\(slotId: number, portIndex: number, profile: DownloadableProfile, forceDisableProfile: boolean\): Promise\<GetDownloadableProfileMetadataResult\>
 
@@ -187,14 +187,14 @@ getDownloadableProfileMetadata\(slotId: number, portIndex: number, profile: Down
 | ------ | ------ | ----- |------------------------------------------------------------------------------------------------------|
 | slotId              | number                                        | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                                                                      |
 | portIndex           | number                                        | 是 | 插槽的端口索引。                                                                                             |
-| profile             | [DownloadableProfile](./js-apis-esim.md#downloadableprofile18) | 是 | 可下载的配置文件信息。                                                                                          |
+| profile             | [DownloadableProfile](./js-apis-esim.md#downloadableprofile) | 是 | 可下载的配置文件信息。                                                                                          |
 | forceDisableProfile | boolean | 是 | 是否可直接去激活配置文件。true表示切换配置文件时，如果需要去激活当前的配置文件，则可以直接操作。false表示如果需要去激活当前的配置文件，则会返回错误，并得到用户授权后再继续调用该接口，执行切换配置文件操作。 |
 
 **返回值：**
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[GetDownloadableProfileMetadataResult](#getdownloadableprofilemetadataresult18)\> | Promise对象，返回填充可下载配置文件的元数据。 |
+| Promise\<[GetDownloadableProfileMetadataResult](#getdownloadableprofilemetadataresult)\> | Promise对象，返回填充可下载配置文件的元数据。 |
 
 **错误码：**
 
@@ -233,7 +233,7 @@ eSIM.getDownloadableProfileMetadata(1, 0, profile, true).then((data: eSIM.GetDow
 });
 ```
 
-## eSIM.getDownloadableProfiles<sup>18+</sup>
+## eSIM.getDownloadableProfiles
 
 getDownloadableProfiles\(slotId: number, portIndex: number,
 forceDisableProfile: boolean\): Promise\<GetDownloadableProfilesResult\>
@@ -258,7 +258,7 @@ forceDisableProfile: boolean\): Promise\<GetDownloadableProfilesResult\>
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[GetDownloadableProfilesResult](#getdownloadableprofilesresult18)\> | Promise对象，返回可下载配置文件列表。 |
+| Promise\<[GetDownloadableProfilesResult](#getdownloadableprofilesresult)\> | Promise对象，返回可下载配置文件列表。 |
 
 **错误码：**
 
@@ -286,7 +286,7 @@ eSIM.getDownloadableProfiles(1, 0, true).then((data: eSIM.GetDownloadableProfile
 });
 ```
 
-## eSIM.downloadProfile<sup>18+</sup>
+## eSIM.downloadProfile
 
 downloadProfile\(slotId: number, portIndex: number, profile: DownloadableProfile,
 configuration: DownloadConfiguration\): Promise\<DownloadProfileResult\>
@@ -305,14 +305,14 @@ configuration: DownloadConfiguration\): Promise\<DownloadProfileResult\>
 | ------ | ------ | ----- | ----- |
 | slotId        | number                                            | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | portIndex     | number                                            | 是 | 插槽的端口索引。 |
-| profile       | [DownloadableProfile](./js-apis-esim.md#downloadableprofile18)     | 是 | 可下载的配置文件信息。 |
-| configuration | [DownloadConfiguration](#downloadconfiguration18) | 是 | 下载的配置信息。 |
+| profile       | [DownloadableProfile](./js-apis-esim.md#downloadableprofile)     | 是 | 可下载的配置文件信息。 |
+| configuration | [DownloadConfiguration](#downloadconfiguration) | 是 | 下载的配置信息。 |
 
 **返回值：**
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[DownloadProfileResult](#downloadprofileresult18)\> | Promise对象，返回下载配置文件的结果。 |
+| Promise\<[DownloadProfileResult](#downloadprofileresult)\> | Promise对象，返回下载配置文件的结果。 |
 
 **错误码：**
 
@@ -357,7 +357,7 @@ eSIM.downloadProfile(1, 0, profile, configuration).then((data: eSIM.DownloadProf
 });
 ```
 
-## eSIM.getEuiccProfileInfoList<sup>18+</sup>
+## eSIM.getEuiccProfileInfoList
 
 getEuiccProfileInfoList\(slotId: number\): Promise\<GetEuiccProfileInfoListResult\>
 
@@ -379,7 +379,7 @@ getEuiccProfileInfoList\(slotId: number\): Promise\<GetEuiccProfileInfoListResul
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[GetEuiccProfileInfoListResult](#geteuiccprofileinfolistresult18)\> | Promise对象，返回配置文件信息列表。 |
+| Promise\<[GetEuiccProfileInfoListResult](#geteuiccprofileinfolistresult)\> | Promise对象，返回配置文件信息列表。 |
 
 **错误码：**
 
@@ -407,7 +407,7 @@ eSIM.getEuiccProfileInfoList(1).then((data: eSIM.GetEuiccProfileInfoListResult) 
 });
 ```
 
-## eSIM.getEuiccInfo<sup>18+</sup>
+## eSIM.getEuiccInfo
 
 getEuiccInfo\(slotId: number\): Promise\<EuiccInfo\>
 
@@ -429,7 +429,7 @@ getEuiccInfo\(slotId: number\): Promise\<EuiccInfo\>
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[EuiccInfo](#euiccinfo18)\> | Promise对象，返回eUicc信息。 |
+| Promise\<[EuiccInfo](#euiccinfo)\> | Promise对象，返回eUicc信息。 |
 
 **错误码：**
 
@@ -457,7 +457,7 @@ eSIM.getEuiccInfo(1).then((data: eSIM.EuiccInfo) => {
 });
 ```
 
-## eSIM.deleteProfile<sup>18+</sup>
+## eSIM.deleteProfile
 
 deleteProfile\(slotId: number, iccid: string\): Promise\<ResultCode\>
 
@@ -480,7 +480,7 @@ deleteProfile\(slotId: number, iccid: string\): Promise\<ResultCode\>
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[ResultCode](#resultcode18)\> | Promise对象，返回删除配置文件的结果码。 |
+| Promise\<[ResultCode](#resultcode)\> | Promise对象，返回删除配置文件的结果码。 |
 
 **错误码：**
 
@@ -508,7 +508,7 @@ eSIM.deleteProfile(1, 'testId').then(() => {
 });
 ```
 
-## eSIM.switchToProfile<sup>18+</sup>
+## eSIM.switchToProfile
 
 switchToProfile\(slotId: number, portIndex: number, iccid: string,
 forceDisableProfile: boolean\): Promise\<ResultCode\>
@@ -534,7 +534,7 @@ forceDisableProfile: boolean\): Promise\<ResultCode\>
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[ResultCode](#resultcode18)\> | Promise对象，返回切换配置文件的结果码。 |
+| Promise\<[ResultCode](#resultcode)\> | Promise对象，返回切换配置文件的结果码。 |
 
 **错误码：**
 
@@ -562,7 +562,7 @@ eSIM.switchToProfile(1, 0, 'testId', true).then(() => {
 });
 ```
 
-## eSIM.setProfileNickname<sup>18+</sup>
+## eSIM.setProfileNickname
 
 setProfileNickname\(slotId: number, iccid: string, nickname: string\): Promise\<ResultCode\>
 
@@ -586,7 +586,7 @@ setProfileNickname\(slotId: number, iccid: string, nickname: string\): Promise\<
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[ResultCode](#resultcode18)\> | Promise对象，返回设置昵称的结果码。 |
+| Promise\<[ResultCode](#resultcode)\> | Promise对象，返回设置昵称的结果码。 |
 
 **错误码：**
 
@@ -614,7 +614,7 @@ eSIM.setProfileNickname(1, 'testId', 'testName').then(() => {
 });
 ```
 
-## eSIM.resetMemory<sup>18+</sup>
+## eSIM.resetMemory
 
 resetMemory\(slotId: number, options?: ResetOption\): Promise\<ResultCode\>
 
@@ -631,13 +631,13 @@ resetMemory\(slotId: number, options?: ResetOption\): Promise\<ResultCode\>
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
 | slotId  | number                        | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| options | [ResetOption](#resetoption18) | 否 | 重置状态。 |
+| options | [ResetOption](#resetoption) | 否 | 重置状态。 |
 
 **返回值：**
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[ResultCode](#resultcode18)\> | Promise对象，返回重置的结果码。 |
+| Promise\<[ResultCode](#resultcode)\> | Promise对象，返回重置的结果码。 |
 
 **错误码：**
 
@@ -665,7 +665,7 @@ eSIM.resetMemory(1).then(() => {
 });
 ```
 
-## eSIM.reserveProfilesForFactoryRestore<sup>18+</sup>
+## eSIM.reserveProfilesForFactoryRestore
 
 reserveProfilesForFactoryRestore\(slotId: number\): Promise\<ResultCode\>
 
@@ -687,7 +687,7 @@ reserveProfilesForFactoryRestore\(slotId: number\): Promise\<ResultCode\>
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[ResultCode](#resultcode18)\> | Promise对象，返回恢复出厂设置的结果码。 |
+| Promise\<[ResultCode](#resultcode)\> | Promise对象，返回恢复出厂设置的结果码。 |
 
 **错误码：**
 
@@ -715,7 +715,7 @@ eSIM.reserveProfilesForFactoryRestore(1).then(() => {
 });
 ```
 
-## eSIM.setDefaultSmdpAddress<sup>18+</sup>
+## eSIM.setDefaultSmdpAddress
 
 setDefaultSmdpAddress\(slotId: number, address: string\): Promise\<ResultCode\>
 
@@ -738,7 +738,7 @@ setDefaultSmdpAddress\(slotId: number, address: string\): Promise\<ResultCode\>
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[ResultCode](#resultcode18)\> | Promise对象，返回设置默认SM-DP+地址的结果码。 |
+| Promise\<[ResultCode](#resultcode)\> | Promise对象，返回设置默认SM-DP+地址的结果码。 |
 
 **错误码：**
 
@@ -766,7 +766,7 @@ eSIM.setDefaultSmdpAddress(1, 'testAddress').then(() => {
 });
 ```
 
-## eSIM.getDefaultSmdpAddress<sup>18+</sup>
+## eSIM.getDefaultSmdpAddress
 
 getDefaultSmdpAddress\(slotId: number\): Promise\<string\>
 
@@ -816,7 +816,7 @@ eSIM.getDefaultSmdpAddress(1).then((data: string) => {
 });
 ```
 
-## eSIM.cancelSession<sup>18+</sup>
+## eSIM.cancelSession
 
 cancelSession\(slotId: number, transactionId: string, cancelReason: CancelReason\): Promise\<ResultCode\>
 
@@ -834,13 +834,13 @@ cancelSession\(slotId: number, transactionId: string, cancelReason: CancelReason
 | ------ | ------ | ----- | ----- |
 | slotId        | number                          | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | transactionId | string                          | 是 | 业务ID。|
-| cancelReason  | [CancelReason](#cancelreason18) | 是 | 取消会话的原因。|
+| cancelReason  | [CancelReason](#cancelreason) | 是 | 取消会话的原因。|
 
 **返回值：**
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[ResultCode](#resultcode18)\> | Promise对象，返回取消会话的结果码。 |
+| Promise\<[ResultCode](#resultcode)\> | Promise对象，返回取消会话的结果码。 |
 
 **错误码：**
 
@@ -871,7 +871,7 @@ eSIM.cancelSession(1, transactionId, eSIM.CancelReason.CANCEL_REASON_END_USER_RE
   });
 ```
 
-## GetDownloadableProfileMetadataResult<sup>18+</sup>
+## GetDownloadableProfileMetadataResult
 
 获取可下载配置文件的元数据。
 
@@ -881,17 +881,17 @@ eSIM.cancelSession(1, transactionId, eSIM.CancelReason.CANCEL_REASON_END_USER_RE
 
 | 名称 | 类型                                        | 只读 | 可选 | 说明 |
 | ----- |-------------------------------------------|---| ---- | -----|
-| downloadableProfile | [DownloadableProfile](./js-apis-esim.md#downloadableprofile18) | 否 | 否 | 可下载的配置文件信息。   |
+| downloadableProfile | [DownloadableProfile](./js-apis-esim.md#downloadableprofile) | 否 | 否 | 可下载的配置文件信息。   |
 | pprType             | number                     | 否 | 否 | 配置文件策略规则类型。 |
 | pprFlag             | boolean                    | 否 | 否 | 配置文件是否有策略规则。true表示有策略规则，false表示无策略规则。|
 | iccid               | string                     | 否 | 否 | 配置文件的iccId。    |
 | serviceProviderName | string                     | 否 | 否 | 配置文件的服务提供商名称。 |
 | profileName         | string                     | 否 | 否 | 配置文件名称。 |
-| profileClass        | [ProfileClass](#profileclass18)        | 否 | 否 | 配置文件类。  |
-| solvableErrors      | [SolvableErrors](#solvableerrors18)      | 否 | 否 | 可解决的错误。 |
-| responseResult      | [ResultCode](#resultcode18)         | 否 | 否 | 操作结果码。  |
+| profileClass        | [ProfileClass](#profileclass)        | 否 | 否 | 配置文件类。  |
+| solvableErrors      | [SolvableErrors](#solvableerrors)      | 否 | 否 | 可解决的错误。 |
+| responseResult      | [ResultCode](#resultcode)         | 否 | 否 | 操作结果码。  |
 
-## GetDownloadableProfilesResult<sup>18+</sup>
+## GetDownloadableProfilesResult
 
 获取默认可下载配置文件的列表。
 
@@ -901,10 +901,10 @@ eSIM.cancelSession(1, transactionId, eSIM.CancelReason.CANCEL_REASON_END_USER_RE
 
 | 名称 | 类型                                                | 只读 | 可选 | 说明 |
 | ----- |---------------------------------------------------|---| ----- | -----|
-| responseResult       | [ResultCode](#resultcode18)                   | 否 | 否 | 返回操作结果码。     |
-| downloadableProfiles | Array\<[DownloadableProfile](./js-apis-esim.md#downloadableprofile18)\> | 否 | 否 | 可下载配置文件数组。 |
+| responseResult       | [ResultCode](#resultcode)                   | 否 | 否 | 返回操作结果码。     |
+| downloadableProfiles | Array\<[DownloadableProfile](./js-apis-esim.md#downloadableprofile)\> | 否 | 否 | 可下载配置文件数组。 |
 
-## DownloadProfileResult<sup>18+</sup>
+## DownloadProfileResult
 
 下载配置文件的结果。
 
@@ -914,11 +914,11 @@ eSIM.cancelSession(1, transactionId, eSIM.CancelReason.CANCEL_REASON_END_USER_RE
 
 | 名称 | 类型                                  | 只读 | 可选 | 说明 |
 | ----- |-------------------------------------|----|---| -----|
-| responseResult | [ResultCode](#resultcode18)         | 否  | 否 | 操作结果码。 |
-| solvableErrors | [SolvableErrors](#solvableerrors18) | 否  | 否 | 可解决错误。 |
+| responseResult | [ResultCode](#resultcode)         | 否  | 否 | 操作结果码。 |
+| solvableErrors | [SolvableErrors](#solvableerrors) | 否  | 否 | 可解决错误。 |
 | cardId         | number                | 否  | 否 | 获取卡ID。 |
 
-## GetEuiccProfileInfoListResult<sup>18+</sup>
+## GetEuiccProfileInfoListResult
 
 获取配置文件信息列表。
 
@@ -928,11 +928,11 @@ eSIM.cancelSession(1, transactionId, eSIM.CancelReason.CANCEL_REASON_END_USER_RE
 
 | 名称 | 类型                                     | 只读 | 可选 | 说明   |
 | ----- |----------------------------------------|---| ---- |------|
-| responseResult  | [ResultCode](#resultcode18)            | 否 | 否 | 返回操作结果码。    |
-| profiles        | Array\<[EuiccProfile](#euiccprofile18)\> | 否 | 否 | 配置文件数组。     |
+| responseResult  | [ResultCode](#resultcode)            | 否 | 否 | 返回操作结果码。    |
+| profiles        | Array\<[EuiccProfile](#euiccprofile)\> | 否 | 否 | 配置文件数组。     |
 | isRemovable     | boolean                      | 否 | 否 | eUICC是否可移除。true表示可移除，false表示不可移除。|
 
-## OperatorId<sup>18+</sup>
+## OperatorId
 
 获取eUICC芯片/设备的相关信息。
 
@@ -947,7 +947,7 @@ eSIM.cancelSession(1, transactionId, eSIM.CancelReason.CANCEL_REASON_END_USER_RE
 | gid1 | string | 否 | 否 | 组ID级别1。  |
 | gid2 | string | 否 | 否 | 组ID级别2。  |
 
-## EuiccProfile<sup>18+</sup>
+## EuiccProfile
 
 配置文件信息。
 
@@ -961,13 +961,13 @@ eSIM.cancelSession(1, transactionId, eSIM.CancelReason.CANCEL_REASON_END_USER_RE
 | nickName            | string                                                | 否 | 否 | 昵称。 |
 | serviceProviderName | string                                                | 否 | 否 | 配置文件的服务提供商名称。 |
 | profileName         | string                                                | 否 | 否 | 配置文件名称。   |
-| state               | [ProfileState](#profilestate18)                       | 否 | 否 | 配置文件的状态。 |
-| profileClass        | [ProfileClass](#profileclass18)                       | 否 | 否 | 配置文件类。     |
-| operatorId          | [OperatorId](#operatorid18)                           | 否 | 否 | 配置文件的操作ID。|
-| policyRules         | [PolicyRules](#policyrules18)                         | 否 | 否 | 配置文件策略。   |
+| state               | [ProfileState](#profilestate)                       | 否 | 否 | 配置文件的状态。 |
+| profileClass        | [ProfileClass](#profileclass)                       | 否 | 否 | 配置文件类。     |
+| operatorId          | [OperatorId](#operatorid)                           | 否 | 否 | 配置文件的操作ID。|
+| policyRules         | [PolicyRules](#policyrules)                         | 否 | 否 | 配置文件策略。   |
 | accessRules         | Array\<[AccessRule](./js-apis-esim.md#accessrule20)\> | 否 | 否 | 配置文件规则。   |
 
-## EuiccInfo<sup>18+</sup>
+## EuiccInfo
 
 euicc信息。
 
@@ -979,7 +979,7 @@ euicc信息。
 | ----- | ----- |----|----| -----|
 | osVersion | string | 否  | 否  | 系统版本。 |
 
-## ResetOption<sup>18+</sup>
+## ResetOption
 
 重置状态。
 
@@ -993,7 +993,7 @@ euicc信息。
 |DELETE_FIELD_LOADED_TEST_PROFILES | 1 << 1 | 删除所有字段加载的测试配置文件。 |
 |RESET_DEFAULT_SMDP_ADDRESS        | 1 << 2 | 重置默认SM-DP+地址。 |
 
-## OsuStatus<sup>18+</sup>
+## OsuStatus
 
 操作系统升级状态。
 
@@ -1009,7 +1009,7 @@ euicc信息。
 |EUICC_UPGRADE_ALREADY_LATEST      | 4 | 当前为最新版本，无需升级 。|
 |EUICC_UPGRADE_SERVICE_UNAVAILABLE | 5 | 升级服务不可用。 |
 
-## ResultCode<sup>18+</sup>
+## ResultCode
 
 结果码。
 
@@ -1057,7 +1057,7 @@ euicc信息。
 | RESULT_DOWNLOAD_TIMEOUT                                  | 287 | 下载超时。                   |
 | RESULT_SGP_22_OTHER                                      | 400 | SGP.22中定义的其他错误。      |
 
-## CancelReason<sup>18+</sup>
+## CancelReason
 
 取消会话的原因。
 
@@ -1072,7 +1072,7 @@ euicc信息。
 |CANCEL_REASON_TIMEOUT            | 2 | 下载已超时，稍后可以重新启动。 |
 |CANCEL_REASON_PPR_NOT_ALLOWED    | 3 | 由于eUICC上的授权表或其他已安装的配置文件不允许其策略规则，因此无法安装。 |
 
-## ProfileState<sup>18+</sup>
+## ProfileState
 
 配置文件状态。
 
@@ -1086,7 +1086,7 @@ euicc信息。
 |PROFILE_STATE_DISABLED    | 0  | 禁用配置文件。   |
 |PROFILE_STATE_ENABLED     | 1  | 已启用配置文件。 |
 
-## ProfileClass<sup>18+</sup>
+## ProfileClass
 
 配置文件类。
 
@@ -1101,7 +1101,7 @@ euicc信息。
 |PROFILE_CLASS_PROVISIONING | 1  | 预加载在eUICC上的配置文件。   |
 |PROFILE_CLASS_OPERATIONAL  | 2  | 可预加载或下载的操作配置文件。 |
 
-## PolicyRules<sup>18+</sup>
+## PolicyRules
 
 配置文件的策略规则。
 
@@ -1115,7 +1115,7 @@ euicc信息。
 |POLICY_RULE_DELETE_NOT_ALLOWED  | 1 << 1 | 无法删除此配置文件。          |
 |POLICY_RULE_DISABLE_AND_DELETE  | 1 << 2 | 禁用后应删除此配置文件。      |
 
-## SolvableErrors<sup>18+</sup>
+## SolvableErrors
 
 可解决错误码。
 
@@ -1128,7 +1128,7 @@ euicc信息。
 |SOLVABLE_ERROR_NEED_CONFIRMATION_CODE | 1 << 0 | 下载过程需要用户输入确认码。                |
 |SOLVABLE_ERROR_NEED_POLICY_RULE       | 1 << 1 | 下载过程需要用户同意才能允许配置文件策略规则。|
 
-## DownloadConfiguration<sup>18+</sup>
+## DownloadConfiguration
 
 下载过程中的属性配置。
 

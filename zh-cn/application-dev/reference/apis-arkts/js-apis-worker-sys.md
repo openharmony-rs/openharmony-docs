@@ -37,8 +37,6 @@ constructor(scriptURL: string, options?: WorkerOptions)
 
 RestrictedWorker构造函数。使用以下方法前，均需先构造RestrictedWorker实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Utils.Lang

@@ -4,7 +4,7 @@
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Provides capabilities for [TextInput](ts-basic-components-textinput.md) and [TextArea](ts-basic-components-textarea.md) components to obtain text and cursor information, insert and delete text, set character counters, and configure text decoration lines.
 Provides capabilities for the [Search](ts-basic-components-search.md) component to obtain text and cursor information, insert and delete text, and configure text decoration lines.
@@ -65,6 +65,8 @@ Obtains the number of lines of the edited text.
 getCaretOffset(): CaretOffset
 
 Obtains the position information of the caret.
+
+If the caret position cannot be obtained (for example, when the [TextInputController](./ts-basic-components-textinput.md#textinputcontroller8) is not bound to the [TextInput](./ts-basic-components-textinput.md) component), **null** is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -237,7 +239,7 @@ Defines custom icon symbol configurations.
 
 ## TextContentControllerOptions<sup>15+</sup>
 
-Provides Configuration options for text insertion operations in a text box.
+Provides configuration options for text insertion operations in text input components.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -245,4 +247,4 @@ Provides Configuration options for text insertion operations in a text box.
 
 | Name     | Type  | Read-Only| Optional| Description      |
 | --------- | ------ | ---- | ---- | ---------- |
-| offset | number | No  | Yes  | Position where the text will be inserted.|
+| offset | number | No  | Yes  | Insertion position for the text.|

@@ -715,7 +715,7 @@
     // Bold样式
     boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
     // 创建含段落样式的对象paragraphStyledString1
-    paragraphStyledString1: MutableStyledString = new MutableStyledString("\n品牌相纸 高清冲印30张\n限时直降5.15元 限量增送", [
+    paragraphStyledString1: MutableStyledString = new MutableStyledString("\n品牌相纸 高清冲印30张\n限时直降5.15元 限量赠送", [
       {
         start: 0,
         length: 28,

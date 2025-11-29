@@ -4,7 +4,7 @@
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Slider** component is used to quickly adjust settings, such as the volume and brightness.
 
@@ -44,9 +44,9 @@ Provides information about the slider.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| value | number | No| Yes| Current progress.<br>Default value: same as the value of min.<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>This parameter supports two-way binding through the [!! syntax](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).<br>Value range: [min, max]<br>Values less than the value of **min** are adjusted to the value of **min**, and values greater than the value of **max** are capped at the value of **max**.<br>The $$ operator provides a reference to the TS variable for system components, so that the TS variable and the value of the slider component are synchronized. For details, see [Example 7: Setting Two-Way Binding for the Slider](#example-7-setting-two-way-binding-for-the-slider).|
+| value | number | No| Yes| Current progress.<br>Default value: same as the value of min.<br>Since API version 10, this attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>This parameter supports two-way binding through the [!! syntax](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).<br>Value range: [min, max]<br>Values less than the value of **min** are adjusted to the value of **min**, and values greater than the value of **max** are capped at the value of **max**.<br>The $$ operator provides a reference to the TS variable for system components, so that the TS variable and the value of the slider component are synchronized. For details, see [Example 7: Setting Two-Way Binding for the Slider](#example-7-setting-two-way-binding-for-the-slider).|
 | min | number | No| Yes| Minimum value.<br>Default value: **0**|
 | max | number | No| Yes| Maximum value.<br>Default value: **100**<br>**NOTE**<br>If the value of **min** is greater than or equal to the value of **max**, the **min** value defaults to **0**, and the **max** value defaults to **100**.<br>If the value is not within the [min, max] range, the value of **min** or **max** is used, whichever is closer.|
 | step | number | No| Yes| Step of the slider.<br>Default value: **1**<br>Value range: [0.01, max - min]<br>**NOTE**<br>If this parameter is set to a value less than 0 or greater than the value of **max**, the default value is used.|
@@ -56,7 +56,7 @@ Provides information about the slider.
 
 ## SliderStyle
 
-Enumerates the display styles of the slider thumb relative to the track.
+Enumerates the display styles of the slider thumb relative to the track. For details, see [How Are the Slider Thumb and Track of the Slider Component Aligned?](../../../ui/arkts-select-component-faq.md#how-are-the-slider-thumb-and-track-of-the-slider-component-aligned).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -196,7 +196,7 @@ Sets whether to display the step markers along the slider track.
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | ------------------------------------------ |
-| value  | boolean | Yes  | Whether to display the step markers along the slider track.<br>true: The scale value is displayed. false: The scale value is not displayed.<br>Default value: **false**.|
+| value  | boolean | Yes  | Whether to display the step markers along the slider track.<br>**true**: Display the step markers. **false**: Do not display the step markers.<br>Default value: **false**.|
 
 ### showTips
 
@@ -218,7 +218,7 @@ The drawing area of the tooltip is the overlay of the slider.
 
 | Name               | Type                                  | Mandatory| Description                                      |
 | --------------------- | -------------------------------------- | ---- | ------------------------------------------ |
-| value                 | boolean                                | Yes  | Whether to display a tooltip when the user drags the slider.<br>true: Display the bubble. false: Do not display the bubble.<br>Default value: **false**.|
+| value                 | boolean                                | Yes  | Whether to display a tooltip when the user drags the slider.<br>**true**: Display a tooltip. **false**: Do not display a tooltip.<br>Default value: **false**.|
 | content<sup>10+</sup> | [ResourceStr](ts-types.md#resourcestr) | No  | Content of the tooltip. By default, the tooltip shows the current percentage value.  |
 
 ### trackThickness<sup>8+</sup>
@@ -321,7 +321,7 @@ Sets the radius of the rounded corner of the track.
 
 | Name| Type                        | Mandatory| Description                            |
 | ------ | ---------------------------- | ---- | -------------------------------- |
-| value  | [Length](ts-types.md#length) | Yes  | Radius of the rounded corner of the track.<br>Default value:<br>**'2vp'** when **style** is **SliderStyle.OutSet**<br>**'10vp'** when **style** is **SliderStyle.InSet**<br>**NOTE**<br>For the string type, percentage values are not supported. If the value is less than 0, the default value is used.|
+| value  | [Length](ts-types.md#length) | Yes  | Radius of the rounded corner of the track.<br>Default value:<br>**'2vp'** when **style** is **SliderStyle.OutSet**<br>**'10vp'** when **style** is **SliderStyle.InSet**<br>**NOTE**<br>If the value is less than 0, the default value is used.|
 
 ### selectedBorderRadius<sup>12+</sup>
 
@@ -393,38 +393,6 @@ Sets the step size (diameter). If the value is 0, the step size is not displayed
 | ------ | ---------------------------- | ---- | ------------------------------------- |
 | value  | [Length](ts-types.md#length) | Yes  | Step size (diameter).<br>Default value: **'4vp'**<br>Value range: [0, [trackThickness](#trackthickness8))|
 
-### minLabel<sup>(deprecated)</sup>
-
-minLabel(value: string)
-
-Sets the minimum value.
-
-This API is deprecated since API version 9. You are advised to use **min** instead.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type  | Mandatory| Description    |
-| ------ | ------ | ---- | -------- |
-| value  | string | Yes  | Minimum value.|
-
-### maxLabel<sup>(deprecated)</sup>
-
-maxLabel(value: string)
-
-Sets the maximum value.
-
-This API is deprecated since API version 9. You are advised to use **max** instead.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type  | Mandatory| Description    |
-| ------ | ------ | ---- | -------- |
-| value  | string | Yes  | Maximum value.|
-
 ### sliderInteractionMode<sup>12+</sup>
 
 sliderInteractionMode(value: SliderInteraction)
@@ -461,7 +429,7 @@ Sets the minimum distance required for the slider to respond.
 
 contentModifier(modifier: ContentModifier\<SliderConfiguration>)
 
-Creates a content modifier.
+Creates a content modifier for the **Slider** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -518,13 +486,17 @@ To enable touch feedback, you need to configure the requestPermissions field in 
 
 | Name| Type                                         | Mandatory | Description                                                                                 |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enabled  | boolean | Yes  | Whether to enable haptic feedback.<br>true: Touch feedback is enabled. false: Touch feedback is disabled.<br>Default value: **true**.|
+| enabled  | boolean | Yes  | Whether to enable haptic feedback.<br>**true**: Enable haptic feedback. **false**: Disable haptic feedback.<br>Default value: **true**.|
 
 ### digitalCrownSensitivity<sup>18+</sup>
 
 digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
 
 Sets the sensitivity to the digital crown rotation.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -590,8 +562,44 @@ The accessibility text settings take effect only when the step markers are displ
 
 | Name     | Type                                                        | Mandatory| Description                                                   |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| value | boolean | Yes| Whether to display the step markers along the slider track.<br>true: The scale value is displayed. false: The scale value is not displayed.<br>Default value: **false**.|
+| value | boolean | Yes| Whether to display the step markers along the slider track.<br>**true**: Display the step markers. **false**: Do not display the step markers.<br>Default value: **false**.|
 | options | [SliderShowStepOptions](#slidershowstepoptions20) | No| Accessibility configuration of step markers.<br>Default value: **null**.|
+
+### minLabel<sup>(deprecated)</sup>
+
+minLabel(value: string)
+
+Sets the minimum value.
+
+> **NOTE**
+>
+> This attribute is deprecated since API version 9. Use the **min** property in [SliderOptions](#slideroptions) instead.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description    |
+| ------ | ------ | ---- | -------- |
+| value  | string | Yes  | Minimum value.|
+
+### maxLabel<sup>(deprecated)</sup>
+
+maxLabel(value: string)
+
+Sets the maximum value.
+
+> **NOTE**
+>
+> This attribute is deprecated since API version 9. Use the **max** property in [SliderOptions](#slideroptions) instead.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description    |
+| ------ | ------ | ---- | -------- |
+| value  | string | Yes  | Maximum value.|
 
 ## SliderCustomContentOptions<sup>20+</sup>
 
@@ -601,12 +609,12 @@ Provides accessibility configuration of the slider prefix and suffix.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                    | Type       | Read Only| Optional| Description                                                        |
+| Name                    | Type       | Read-Only| Optional| Description                                                        |
 | ------------------------ | ----------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | accessibilityText        | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Text for assistive technologies (for example, screen readers).<br>Default value: **""**.|
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Detailed functional description for assistive technologies.<br>Default value: **"Double-tap to activate"**.|
 | accessibilityLevel       | string      | No  | Yes | Whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.|
-| accessibilityGroup       | boolean     | No  | Yes | Whether to enable accessibility grouping.<br>true: The component and all its child components are a whole component that can be selected. The accessibility service does not pay attention to the content of its child components. false: Accessibility grouping is disabled.<br>Default value: **false**.|
+| accessibilityGroup       | boolean     | No  | Yes | Whether to enable accessibility grouping.<br>The value **true** means to enable accessibility grouping, and **false** means the opposite. When accessibility grouping is enabled, the component and all its children are treated as a single selectable unit, and the accessibility service will no longer focus on the individual child components.<br>Default value: **false**.|
 
 ## SliderPrefixOptions<sup>20+</sup>
 
@@ -767,7 +775,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type   | Read Only | Optional | Description             |
+| Name | Type   | Read-Only | Optional | Description             |
 | ------ | ------ | ---------------- | ---------------- | ---------------- |
 | value | number | No| No| Current progress.|
 | min | number | No| No| Minimum value.|

@@ -4,19 +4,19 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 With the attribute modifier, you can dynamically set component attributes, complete with the **if/else** syntax and polymorphic style.
 
 > **NOTE**
 >
-> This feature is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - This feature is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> Ensure that the attributes set in **attributeModifier** are different from those set in other methods. Otherwise, **attributeModifier** does not take effect when the page is refreshed.
+> - Ensure that the attributes set in **attributeModifier** are different from those set in other methods. Otherwise, **attributeModifier** does not take effect when the page is refreshed.
 >
-> For simple scenarios requiring conditional assignment of a single component attribute, [ternary operators](../../../ui/state-management/arkts-declarative-ui-description.md#configuring-attributes) provide a concise alternative. Example: **.width(isFullScreen ? 200 : 100)**.
+> - For simple scenarios requiring conditional assignment of a single component attribute, [ternary operators](../../../ui/state-management/arkts-declarative-ui-description.md#configuring-attributes) provide a concise alternative. Example: **.width(isFullScreen ? 200 : 100)**.
 >
-> **attributeModifier** supports custom components since API version 20.
+> - **attributeModifier** supports custom components since API version 20.
 
 ## attributeModifier
 
@@ -144,7 +144,7 @@ In the preceding APIs, **instance** indicates the component type. You can custom
 <!--Del-->
 7. Built-in component attributes are not supported.<!--DelEnd-->
 
-When unsupported or unimplemented attributes are used, exceptions such as "Method not implemented.", "is not callable", or "Builder is not supported." are thrown. The specific scope of supported attributes is the same as the base class attribute API. For details, see [Supported Scope of Attributes](#supported-scope-of-attributes).
+When unsupported or unimplemented attributes are used, exceptions such as "Method not implemented.", "is not callable", or "Builder is not supported." are thrown. For details about the supported modifiers, see [attributeModifier Support for Attributes and Events](../../../ui/arkts-user-defined-extension-attributeModifier.md#attributemodifier-support-for-attributes-and-events).
 
 ## Custom Modifier
 Custom modifiers can be used in building components and configuring attributes since API version 12. Through the custom modifiers, you can call the attribute and style APIs of encapsulated components.
@@ -297,7 +297,7 @@ struct Index {
 
 ### Example 4: Combining Modifier and Custom Modifier Attributes
 
-In this example, the width and height are set by using a custom Modifier. When the button is clicked, [borderStyle](ts-appendix-enums.md#borderstyle) and [borderWidth](ts-universal-attributes-border.md#borderwidth) are set, and the four attributes take effect at the same time.
+This example demonstrates how to set **width** and **height** through a custom modifier. When the button is clicked, [borderStyle](ts-appendix-enums.md#borderstyle) and [borderWidth](ts-universal-attributes-border.md#borderwidth) are configured, with all four attributes taking effect simultaneously.
 
 ```ts
 import { CommonModifier } from "@kit.ArkUI";
@@ -499,7 +499,7 @@ class CustomModifier implements AttributeModifier<CommonAttribute> {
   }
 
   applyPressedAttribute(instance: CommonAttribute): void {
-    instance.backgroundColor(Color.Red)
+    instance.backgroundColor(Color.Gray)
   }
 }
 
@@ -524,53 +524,10 @@ struct attributePressedDemo {
 @Component
 struct ChildComponent {
   build() {
-    Text("common").fontColor(Color.Green).fontSize(28).textAlign(TextAlign.Center)
+    Text("common").fontColor(Color.White).fontSize(28).textAlign(TextAlign.Center)
       .width('35%')
       .height('10%')
   }
 }
 ```
 ![attributeModifier_common](figures/attributeModifier_common.gif)
-
-## Supported Scope of Attributes
-
-Attributes not listed in the table below are supported by default.
-
-**Table 1** Unsupported attributes in the CommonAttribute API
-
-| Attribute                    | Supported/Unsupported| Error Message                 | Remarks                                     |
-| ------------------------ | -------- | ------------------------- | ----------------------------------------- |
-| [accessibilityChecked](ts-universal-attributes-accessibility.md#accessibilitychecked13)     | Not supported  | is not callable           | -                                         |
-| [accessibilitySelected](ts-universal-attributes-accessibility.md#accessibilityselected13)    | Not supported  | is not callable           | -                                         |
-| [accessibilityTextHint](ts-universal-attributes-accessibility.md#accessibilitytexthint12)    | Not supported  | is not callable           | -                                         |
-| [accessibilityVirtualNode](ts-universal-attributes-accessibility.md#accessibilityvirtualnode11)  | Not supported  | is not callable           | Attributes that accept a CustomBuilder are not supported.              |
-| [animation](ts-animatorproperty.md#animation)                | Not supported  | Method not implemented.   | Animation-related attributes are not supported.                |
-| [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)        | Not supported  | -                         | **attributeModifier** does not take effect when nested.|
-| [background](ts-universal-attributes-background.md#background10)                 | Not supported  | Method not implemented.   | Attributes that accept a CustomBuilder are not supported.              |
-| [backgroundFilter](ts-universal-attributes-filter-effect.md#backgroundfilter)         | Not supported  | is not callable           | -                                         |
-| [bindContentCover](ts-universal-attributes-modal-transition.md#bindcontentcover)           | Not supported  | Method not implemented.   | Attributes that accept a CustomBuilder are not supported.              |
-| [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu12)          | Not supported  | Method not implemented.   | Attributes that accept a CustomBuilder are not supported.              |
-| [bindPopup](ts-universal-attributes-popup.md#bindpopup)               | Not supported  | Method not implemented.   | Attributes that accept a CustomBuilder are not supported.              |
-| [bindSheet](ts-universal-attributes-sheet-transition.md#bindsheet)                | Not supported  | Method not implemented.   | Attributes that accept a CustomBuilder are not supported.              |
-| [chainWeight](ts-universal-attributes-location.md#chainweight14)              | Not supported  | is not callable           | -                                         |
-| [compositingFilter](ts-universal-attributes-filter-effect.md#compositingfilter)        | Not supported  | is not callable           | -                                         |
-| [drawModifier](ts-universal-attributes-draw-modifier.md#drawmodifier)             | Not supported  | is not callable           | Modifier-related attributes are not supported.               |
-| [foregroundFilter](ts-universal-attributes-filter-effect.md#foregroundfilter)         | Not supported  | is not callable           | -                                         |
-| [freeze](ts-universal-attributes-image-effect.md#freeze18)                   | Not supported  | is not callable           | -                                         |
-| [gesture](ts-gesture-settings.md#gesture)                   | Not supported  | Method not implemented.   | Gesture-related attributes are not supported.                |
-| [gestureModifier](ts-universal-attributes-gesture-modifier.md#gesturemodifier)          | Not supported  | is not callable           | Modifier-related attributes are not supported.               |
-| [onAccessibilityHover](ts-universal-accessibility-hover-event.md#onaccessibilityhover)      | Not supported  | is not callable           | -                                         |
-| [onDigitalCrown](ts-universal-events-crown.md#ondigitalcrown)            | Not supported  | is not callable.          | -                                       |
-| [onDragStart](ts-universal-events-drag-drop.md#ondragstart)              | Not supported  | Method not implemented.   | Attributes that return a CustomBuilder are not supported.            |
-| [parallelGesture](ts-gesture-settings.md#parallelgesture)          | Not supported  | Method not implemented.   | Gesture-related attributes are not supported.                |
-| [priorityGesture](ts-gesture-settings.md#prioritygesture)          | Not supported  | Method not implemented.   | Gesture-related attributes are not supported.                |
-| [reuseId](ts-universal-attributes-reuse-id.md#reuseid)                  | Not supported  | Method not implemented.   | -                                         |
-| [stateStyles](ts-universal-attributes-polymorphic-style.md#statestyles)              | Not supported  | Method not implemented.   | **stateStyles**-related attributes are not supported.            |
-| useSizeType<sup>deprecated</sup>             | Not supported  | Method not implemented.   | Deprecated attributes are not supported.                       |
-| [visualEffect](ts-universal-attributes-filter-effect.md#visualeffect)             | Not supported  | is not callable           | -                                         |
-| [bindMenu](ts-universal-attributes-menu.md#bindmenu11)                 | Partially supported| -                         | Attributes that accept a CustomBuilder are not supported.              |
-| [dragPreview](ts-universal-attributes-drag-drop.md#dragpreview15)              | Partially supported| Builder is not supported. | Attributes that accept a CustomBuilder are not supported.              |
-| [onVisibleAreaChange](ts-universal-component-visible-area-change-event.md#onvisibleareachange)              | Partially supported| Method not implemented. | Supported since API version 20.             |
-| [onTouchIntercept](ts-universal-attributes-on-touch-intercept.md#ontouchintercept)              | Partially supported| is not callable. | Supported since API version 20.             |
-| [onPreDrag](ts-universal-events-drag-drop.md#onpredrag12)              | Partially supported| Method not implemented. | Supported since API version 20.             |
-| [onChildTouchTest](ts-universal-attributes-on-child-touch-test.md#onchildtouchtest11)              | Partially supported| is not callable. | Supported since API version 20.             |

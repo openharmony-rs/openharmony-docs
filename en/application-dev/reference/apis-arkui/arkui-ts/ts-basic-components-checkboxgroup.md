@@ -4,7 +4,7 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **CheckboxGroup** component is used to select or deselect all check boxes in a group.
 
@@ -22,7 +22,7 @@ CheckboxGroup(options?: CheckboxGroupOptions)
 
 Creates a check box group for controlling the select-all or deselect-all state of check boxes within the group. Check boxes and check box groups with the same **group** value belong to the same group.
 
-When this API is used with components that come with a pre-loading mechanism, such as the **List** component, those check boxes that have not been created yet need to be manually selected or unselected. For details, see [Example 4](#example-4-implementing-the-select-all-functionality).
+When this API is used with components that come with a pre-loading mechanism, such as the [List](ts-container-list.md) component, those check boxes that have not been created yet need to be manually selected or unselected. For details, see [Example 4](#example-4-implementing-the-select-all-functionality).
 
 **Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
 
@@ -81,9 +81,9 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 
 selectAll(isAllSelected: Optional\<boolean>)
 
-Sets whether to select all. If the **select** attribute is set for a [Checkbox](ts-basic-components-checkbox.md) component in the same group, the setting of the **Checkbox** has a higher priority. Compared to [selectAll](#selectall), the **isAllSelected** parameter supports the **undefined** type.
+Sets whether to select all. If the **select** attribute is set for a [Checkbox](ts-basic-components-checkbox.md) component in the same group, the setting of the **Checkbox** has a higher priority. Compared with [selectAll](#selectall), this API supports the **undefined** type for the **isAllSelected** parameter.
 
-When used with components that have caching functionality (such as [List](ts-container-list.md)), theaselection state of uncreated check boxes must be controlled by the developer.
+When used with components that have caching functionality (such as [List](ts-container-list.md)), the selection state of uncreated check boxes must be controlled by the developer.
 
 This attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md) and [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).
 
@@ -241,6 +241,10 @@ contentModifier(modifier: Optional<ContentModifier\<CheckBoxGroupConfiguration>>
 
 Customize the CheckboxGroup content area. When this attribute is set, the settings of other attributes become invalid.
 
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -319,7 +323,7 @@ Name and status of a check box group.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type  | Read Only| Optional| Description     |
+| Name   | Type  | Read-Only| Optional| Description     |
 | ------ | ------ | ------- | ------- | ------- |
 | name   | Array&lt;string&gt; | No| No| Names of all the selected check boxes in the group.|
 | status | [SelectStatus](#selectstatus) | No| No| Selected status.|
@@ -348,7 +352,7 @@ You must customize this class to implement the ContentModifier interface. For de
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type   |    Read Only   |    Optional     |  Description             |
+| Name| Type   |    Read-Only   |    Optional     |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | name | string | No| No|Name of the check box group.|
 | status | [SelectStatus](#selectstatus) | No| No| Selected status of the check box group.|
@@ -514,7 +518,7 @@ class MyCheckboxGroupStyle implements ContentModifier<CheckBoxGroupConfiguration
     return wrapBuilder(buildCheckboxgroup);
   }
 }
-let statusString: string[] = ["selected", "partially selected", "unselected"];
+let statusString: string[] = ['selected', 'partially selected', 'unselected'];
 @Builder
 function buildCheckboxgroup(config: CheckBoxGroupConfiguration) {
   Column({ space: 10 }) {
@@ -528,13 +532,13 @@ function buildCheckboxgroup(config: CheckBoxGroupConfiguration) {
         .fillOpacity(0)
         .strokeWidth(3)
         .onClick(() => {
-          console.log("checkboxgroup status ", statusString[config.status])
+          console.info('checkboxgroup status ', statusString[config.status])
           if (config.status === SelectStatus.All ||  config.status === SelectStatus.Part) {
             config.triggerChange(false);
-            console.log("checkboxgroup not selected")
+            console.info('checkboxgroup not selected')
           } else {
             config.triggerChange(true);
-            console.log("checkboxgroup selected")
+            console.info('checkboxgroup selected')
           }
         })
         .opacity(config.enabled ? 1 : 0.1)
@@ -597,17 +601,17 @@ struct Index {
       Row() {
         Checkbox({ name: 'Check box 1', group: 'checkboxGroup' })
           .onChange((value: boolean) => {
-            console.info('Check box 1 change to ' value);
+            console.info('Check box 1 change to ' + value);
           })
-        Text('Checkbox 1').fontSize(20)
+        Text('Check box 1').fontSize(20)
       }
         .position({ x: 50, y: 230 })
       Row() {
         Checkbox({ name: 'Check box 2', group: 'checkboxGroup' })
           .onChange((value: boolean) => {
-            console.info('Check box 2 change to ' value);
+            console.info('Check box 2 change to ' + value);
           })
-        Text('Check box 2').fontSize (20)
+        Text('Check box 2').fontSize(20)
       }
       .position({ x: 50, y: 260 })
     }.margin({ top: 30 })

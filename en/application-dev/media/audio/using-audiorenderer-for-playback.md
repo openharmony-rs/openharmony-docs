@@ -94,7 +94,7 @@ During application development, you are advised to use [on('stateChange')](../..
      // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
      let path = context.cacheDir;
-     // Ensure that the resource exists in the path.
+     // This is just an example. Replace the file with the PCM file to be played by the application.
      let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
      let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
 
@@ -145,7 +145,7 @@ During application development, you are advised to use [on('stateChange')](../..
      // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
      let path = context.cacheDir;
-     // Ensure that the resource exists in the path.
+     // This is just an example. Replace the file with the PCM file to be played by the application.
      let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
      let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
      let writeDataCallback = (buffer: ArrayBuffer) => {
@@ -245,7 +245,6 @@ class Options {
   length?: number;
 }
 
-let bufferSize: number = 0;
 let audioRenderer: audio.AudioRenderer | undefined = undefined;
 let audioStreamInfo: audio.AudioStreamInfo = {
   samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
@@ -265,8 +264,9 @@ let file: fs.File;
 let writeDataCallback: audio.AudioRendererWriteDataCallback;
 
 async function initArguments(context: common.UIAbilityContext) {
+  let bufferSize: number = 0;
   let path = context.cacheDir;
-  // Ensure that the resource exists in the path.
+  // This is just an example. Replace the file with the PCM file to be played by the application.
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
   writeDataCallback = (buffer: ArrayBuffer) => {
@@ -363,7 +363,6 @@ async function stop() {
       if (err) {
         console.error('Renderer stop failed.');
       } else {
-        fs.close(file);
         console.info('Renderer stop success.');
       }
     });
@@ -383,6 +382,7 @@ async function release() {
       if (err) {
         console.error('Renderer release failed.');
       } else {
+        fs.closeSync(file);
         console.info('Renderer release success.');
       }
     });

@@ -100,7 +100,7 @@ childrenMainSize(value: ChildrenMainSize)
 
 设置ListItemGroup组件的子组件在主轴方向的大小信息。
 
-**说明：**
+> **说明：**
 >
 > - 必须同时给所在的List组件设置childrenMainSize属性才可以正常生效。
 

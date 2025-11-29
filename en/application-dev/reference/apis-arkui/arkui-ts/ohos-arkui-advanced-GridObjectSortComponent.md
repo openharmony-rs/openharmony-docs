@@ -4,7 +4,7 @@
 <!--Owner: @fengluochenai-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 **GridObjectSortComponent** is a grid object organizer that you can use to edit, drag to sort, add, and delete grid objects.
@@ -12,8 +12,9 @@
 
 >  **NOTE**
 >
->  This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+>  - This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
 >
+> - If the **GridObjectSortComponent** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **GridObjectSortComponent** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **GridObjectSortComponent** component.
 
 
 ## Modules to Import
@@ -26,17 +27,13 @@ import { GridObjectSortComponent, GridObjectSortComponentItem, GridObjectSortCom
 
 Not supported
 
-## Attributes
-
-The [universal attributes](ts-component-general-attributes.md) are not supported.
-
 ## GridObjectSortComponent
 
 GridObjectSortComponent({options: GridObjectSortComponentOptions, dataList: Array\<GridObjectSortComponentItem>, onSave: (select: Array\<GridObjectSortComponentItem>, unselect: Array\<GridObjectSortComponentItem>) => void, onCancel: () => void })
 
 Creates a **GridObjectSortComponent** component.
 
-**Decorator**: @Component
+**Decorator**: \@Component
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -180,4 +177,4 @@ struct Index {
 }
 ```
 
-![GridObjectSortComponent](figures/GridObjectSortComponent.gif)
+

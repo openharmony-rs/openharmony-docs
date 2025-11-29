@@ -735,6 +735,7 @@ setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleTyp
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let portId: number = 1;
 usbManager.setPortRoleTypes(portId, usbManager.PowerRoleType.SOURCE, usbManager.DataRoleType.HOST).then(() => {
   console.info('usb setPortRoleTypes successfully.');
