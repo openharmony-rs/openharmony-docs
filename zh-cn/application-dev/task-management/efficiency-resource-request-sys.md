@@ -45,6 +45,7 @@
 | isPersist | boolean | 否 | 是否为永久持有资源，默认为false<br/>- true表示永久持有<br/>- false表示有限时间内持有 |
 | isProcess | boolean | 否 | 进程或应用申请，默认为false<br/>- true表示进程申请<br/>- false表示应用申请 |
 | reason | string | 是 | 申请资源原因 |
+| cpuLevel<sup>23+</sup> | number | 否 | 指定cpu资源，系统在空闲负载时会给应用分配指定的cpu资源<br/>- 0表示运行在小核<br/>- 1表示最高可运行在中核<br/>- 2表示最高运行在大核  |
 
 **表3** 能效资源类型
 | 参数名 | 值 | 描述 |
@@ -58,6 +59,13 @@
 | AUDIO | 64 | 音频资源，有音频播放时对应的应用进程不被挂起 |
 | RUNNING_LOCK<sup>10+</sup> | 128 | RUNNING_LOCK资源，申请后挂起状态不会临时释放RUNNING_BACKGROUND锁 |
 | SENSOR<sup>10+</sup> | 256 | SENSOR资源，申请后挂起状态不拦截Sensor回调 |
+
+**表4** 能效资源CPU类型<sup>23+</sup>
+| 参数名 | 值 | 描述 |
+| -------- | -------- | -------- |
+| SMALL_CPU | 0 | 运行在小核 |
+| MEDIUM_CPU | 1 | 最高可运行在中核 |
+| LARGE_CPU | 2 | 最高运行在大核 |
 
 ## 开发步骤
 
@@ -79,6 +87,7 @@
      reason: "apply", // 申请原因
      isPersist: true, // 永久持有资源
      isProcess: false, // 在应用级别申请
+     cpuLevel: backgroundTaskManager.EfficiencyResourcesCpuLevel.SMALL_CPU, // 运行在小核
    };
    try {
      backgroundTaskManager.applyEfficiencyResources(request);
@@ -106,6 +115,7 @@
      reason: "apply",
      isPersist: true,
      isProcess: false, // 在应用级别释放资源
+     cpuLevel: backgroundTaskManager.EfficiencyResourcesCpuLevel.SMALL_CPU,
    };
    try {
      backgroundTaskManager.applyEfficiencyResources(request);
