@@ -147,7 +147,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 
 isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback&lt;boolean&gt;): void
 
-> **说明：**<br>从API version 9开始不再维护，建议使用[runningLock.isSupported](#runninglockissupported9)替代。
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[runningLock.isSupported](#runninglockissupported9)替代。
 
 **方法介绍：** 查询系统是否支持该类型的锁。使用callback异步回调。
 
@@ -176,7 +176,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (
 
 isRunningLockTypeSupported(type: RunningLockType): Promise&lt;boolean>
 
-> **说明：**<br>从API version 9开始不再维护，建议使用[runningLock.isSupported](#runninglockissupported9)替代。
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[runningLock.isSupported](#runninglockissupported9)替代。
 
 **方法介绍：** 查询系统是否支持该类型的锁。使用Promise异步回调。
 
@@ -210,7 +210,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)
 
 createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLock&gt;): void
 
-> **说明：**<br>从API version 9开始不再维护，建议使用[runningLock.create](#runninglockcreate9)替代。
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[runningLock.create](#runninglockcreate9)替代。
 
 **方法介绍：** 创建RunningLock锁。使用callback异步回调。
 
@@ -242,7 +242,7 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 createRunningLock(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
-> **说明：**<br>从API version 9开始不再维护，建议使用[runningLock.create](#runninglockcreate9)替代。
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[runningLock.create](#runninglockcreate9)替代。
 
 **方法介绍：** 创建RunningLock锁。使用Promise异步回调。
 
@@ -430,7 +430,7 @@ class RunningLockTest {
 
 lock(timeout: number): void
 
-> **说明：**<br>从API version 9开始不再维护，建议使用[RunningLock.hold](#hold9)替代。
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[RunningLock.hold](#hold9)替代。
 
 **方法介绍：** 锁定和持有RunningLock。
 
@@ -461,7 +461,7 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 unlock(): void
 
-> **说明：**<br>从API version 9开始不再维护，建议使用[RunningLock.unhold](#unhold9)替代。
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[RunningLock.unhold](#unhold9)替代。
 
 **方法介绍：** 释放RunningLock锁。
 
@@ -486,7 +486,7 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 isUsed(): boolean
 
-> **说明：**<br>从API version 9开始不再维护，建议使用[RunningLock.isHolding](#isholding9)替代。
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[RunningLock.isHolding](#isholding9)替代。
 
 **方法介绍：** 查询当前RunningLock是持有状态还是释放状态。
 
