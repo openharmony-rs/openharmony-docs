@@ -4743,6 +4743,10 @@ on(type: 'keyboardWillShow', callback: Callback&lt;KeyboardInfo&gt;): void
 
 改变软键盘为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardWillShow](#onKeyboardWillShow22)。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -4779,11 +4783,60 @@ try {
 }
 ```
 
+## onKeyboardWillShow<sup>22+</sup>
+
+onKeyboardWillShow(callback: Callback&lt;KeyboardInfo&gt;): void
+
+开启固定态软键盘即将开始显示的监听。此监听在固定态软键盘即将开始显示或软键盘由悬浮态切换为固定态时触发。
+
+改变软键盘为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyboardWillShow')](#onKeyboardWillShow20)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                                        |
+| -------- | ------------------- | ---- |-------------------------------------------|
+| callback | Callback&lt;[KeyboardInfo](arkts-apis-window-i.md#keyboardinfo18)&gt; | 是   | 回调函数。返回软键盘窗口信息。                    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function keyboardWillShow can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const callback = (keyboardInfo: window.KeyboardInfo) => {
+  console.info(`Keyboard will show animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
+}
+try {
+  windowClass.onKeyboardWillShow(callback);
+  console.info(`Register keyboard will show animation success`);
+} catch (exception) {
+  console.error(`Failed to register or unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## off('keyboardWillShow')<sup>20+</sup>
 
 off(type: 'keyboardWillShow', callback?: Callback&lt;KeyboardInfo&gt;): void
 
 关闭固定态软键盘即将开始显示的监听。改变输入法窗口为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+
+**ArkTS卡片模式：** 该接口仅适用于ArkTS卡片（ArkTS-Dyn）。
+
+**相关接口：** 该接口对应的ArkTS应用（ArkTS-Sta）接口是[offKeyboardWillShow](#offkeyboardwillshow22)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4794,7 +4847,7 @@ off(type: 'keyboardWillShow', callback?: Callback&lt;KeyboardInfo&gt;): void
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                 | 是   | 监听事件，固定为'keyboardWillShow'，即固定态软键盘即将开始显示的事件。 |
-| callback | Callback&lt;[KeyboardInfo](arkts-apis-window-i.md#keyboardinfo18)&gt; | 否   |  回调函数。返回软键盘窗口信息。若传入参数，则关闭该监听。如果未传入参数，则关闭所有固定态软键盘即将开始显示的监听。                               |
+| callback | Callback&lt;[KeyboardInfo](arkts-apis-window-i.md#keyboardinfo18)&gt; | 否   | 回调函数。返回软键盘窗口信息。若传入参数，则关闭该监听。如果未传入参数，则关闭所有固定态软键盘即将开始显示的监听。 |
 
 **错误码：**
 
@@ -4824,6 +4877,52 @@ try {
 }
 ```
 
+## offKeyboardWillShow<sup>22+</sup>
+
+offKeyboardWillShow(callback?: Callback&lt;KeyboardInfo&gt;): void
+
+关闭固定态软键盘即将开始显示的监听。改变输入法窗口为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+
+**ArkTS应用模式：** 该接口仅适用于ArkTS应用（ArkTS-Sta）。
+
+**相关接口：** 该接口对应的ArkTS卡片（ArkTS-Dyn）接口是[off('keyboardWillShow')](#offkeyboardwillshow20)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                                         |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[KeyboardInfo](arkts-apis-window-i.md#keyboardinfo18)&gt; | 否   | 回调函数。返回软键盘窗口信息。若传入参数，则关闭该监听。如果未传入参数，则关闭所有固定态软键盘即将开始显示的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function keyboardWillShow can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const callback = (keyboardInfo: window.KeyboardInfo) => {
+  console.info(`Keyboard will show animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
+}
+try {
+  windowClass.onKeyboardWillShow(callback);
+  windowClass.offKeyboardWillShow(callback);
+  // 如果通过onKeyboardWillShow开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offKeyboardWillShow();
+  console.info(`Unregister keyboard will show animation success`);
+} catch (exception) {
+  console.error(`Failed to register or unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## on('keyboardWillHide')<sup>20+</sup>
 
 on(type: 'keyboardWillHide', callback: Callback&lt;KeyboardInfo&gt;): void
@@ -4832,7 +4931,9 @@ on(type: 'keyboardWillHide', callback: Callback&lt;KeyboardInfo&gt;): void
 
 改变软键盘为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**ArkTS卡片模式：** 该接口仅适用于ArkTS卡片（ArkTS-Dyn）。
+
+**相关接口：** 该接口对应的ArkTS应用（ArkTS-Sta）接口是[onKeyboardWillHide](#onkeyboardwillhide22)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -4868,13 +4969,60 @@ try {
 }
 ```
 
+## onKeyboardWillHide<sup>22+</sup>
+
+onKeyboardWillHide(callback: Callback&lt;KeyboardInfo&gt;): void
+
+开启固定态软键盘即将开始隐藏的监听。此监听在固定态软键盘即将开始隐藏或软键盘由固定态切换为悬浮态时触发。
+
+改变软键盘为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+
+**ArkTS应用模式：** 该接口仅适用于ArkTS应用（ArkTS-Sta）。
+
+**相关接口：** 该接口对应的ArkTS卡片（ArkTS-Dyn）接口是[on('keyboardWillHide')](#onkeyboardwillhide20)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                                        |
+| -------- | ------------------- | ---- |-------------------------------------------|
+| callback | Callback&lt;[KeyboardInfo](arkts-apis-window-i.md#keyboardinfo18)&gt; | 是   | 回调函数。返回软键盘窗口信息。                    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function keyboardWillHide can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const callback = (keyboardInfo: window.KeyboardInfo) => {
+  console.info(`Keyboard will hide animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
+}
+try {
+  windowClass.onKeyboardWillHide(callback);
+  console.info(`Register keyboard will hide animation success`);
+} catch (exception) {
+  console.error(`Failed to register or unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## off('keyboardWillHide')<sup>20+</sup>
 
 off(type: 'keyboardWillHide', callback?: Callback&lt;KeyboardInfo&gt;): void
 
 关闭固定态软键盘即将开始隐藏的监听。改变输入法窗口为固定态切换至悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**ArkTS卡片模式：** 该接口仅适用于ArkTS卡片（ArkTS-Dyn）。
+
+**相关接口：** 该接口对应的ArkTS应用（ArkTS-Sta）接口是[offKeyboardWillHide](#offkeyboardwillhide22)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -4883,7 +5031,7 @@ off(type: 'keyboardWillHide', callback?: Callback&lt;KeyboardInfo&gt;): void
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                 | 是   | 监听事件，固定为'keyboardWillHide'，即固定态软键盘即将开始隐藏的事件。 |
-| callback | Callback&lt;[KeyboardInfo](arkts-apis-window-i.md#keyboardinfo18)&gt; | 否   |  回调函数。返回软键盘窗口信息。若传入参数，则关闭该监听。如果未传入参数，则关闭所有固定态软键盘即将开始隐藏的监听。                               |
+| callback | Callback&lt;[KeyboardInfo](arkts-apis-window-i.md#keyboardinfo18)&gt; | 否   | 回调函数。返回软键盘窗口信息。若传入参数，则关闭该监听。如果未传入参数，则关闭所有固定态软键盘即将开始隐藏的监听。 |
 
 **错误码：**
 
@@ -4907,6 +5055,52 @@ try {
   windowClass.off('keyboardWillHide', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
   windowClass.off('keyboardWillHide');
+  console.info(`Unregister keyboard will hide animation success`);
+} catch (exception) {
+  console.error(`Failed to register or unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offKeyboardWillHide<sup>22+</sup>
+
+offKeyboardWillHide(callback?: Callback&lt;KeyboardInfo&gt;): void
+
+关闭固定态软键盘即将开始隐藏的监听。改变输入法窗口为固定态切换至悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+
+**ArkTS应用模式：** 该接口仅适用于ArkTS应用（ArkTS-Sta）。
+
+**相关接口：** 该接口对应的ArkTS卡片（ArkTS-Dyn）接口是[off('keyboardWillHide')](#offkeyboardwillhide20)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                                         |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[KeyboardInfo](arkts-apis-window-i.md#keyboardinfo18)&gt; | 否   | 回调函数。返回软键盘窗口信息。若传入参数，则关闭该监听。如果未传入参数，则关闭所有固定态软键盘即将开始隐藏的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function keyboardWillHide can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const callback = (keyboardInfo: window.KeyboardInfo) => {
+  console.info(`Keyboard will hide animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
+}
+try {
+  windowClass.onKeyboardWillHide(callback);
+  windowClass.offKeyboardWillHide(callback);
+  // 如果通过onKeyboardWillHide开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offKeyboardWillHide();
   console.info(`Unregister keyboard will hide animation success`);
 } catch (exception) {
   console.error(`Failed to register or unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
