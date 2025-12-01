@@ -498,7 +498,7 @@
 
 以下为完整示例代码：
 
-   <!-- @[gesture_recognition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventGestureRecognition.ets) -->
+<!-- @[gesture_recognition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventGestureRecognition.ets) -->
 
 ``` TypeScript
 @Entry
@@ -739,6 +739,7 @@ struct Index {
     .height(this.currentHeight)
   }
 }
+
 ```
 
 ![Gesure20251119002](figures/Gesure20251119002.gif)
