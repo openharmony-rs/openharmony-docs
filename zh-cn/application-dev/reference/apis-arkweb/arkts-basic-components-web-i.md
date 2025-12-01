@@ -53,7 +53,7 @@ Web媒体策略的配置。
 
 ## UrlRegexRule<sup>23+</sup>
 
-定义Url正则表达式规则
+定义Url正则表达式规则。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
