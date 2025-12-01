@@ -738,7 +738,6 @@ struct Index {
     .height(this.currentHeight)
   }
 }
-
 ```
 
 ![Gesure20251119002](figures/Gesure20251119002.gif)
