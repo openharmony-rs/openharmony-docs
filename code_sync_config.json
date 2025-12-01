@@ -28745,5 +28745,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/dfx/hitracechain-guidelines-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS_Sample_A/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":132,
+						"name":"hitracechain_arkts_sample_code_a",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS_Sample_B/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":109,
+						"name":"hitracechain_arkts_sample_code_b",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
