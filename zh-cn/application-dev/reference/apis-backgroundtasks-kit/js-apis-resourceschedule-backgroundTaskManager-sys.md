@@ -223,7 +223,6 @@ try {
 | pid                            | number  | 否    | 否    | 应用进程的PID。   |
 | cpuLevel<sup>23+</sup>         | [EfficiencyResourcesCpuLevel](#efficiencyresourcescpulevel23)  | 否    | 是    |  指定CPU资源，系统在空闲负载时会给应用分配指定的CPU资源。<br/>- 0表示运行在小核。<br/>- 1表示最高可运行在中核。<br/>- 2表示最高运行在大核。 |
 
-
 ## EfficiencyResourcesCpuLevel<sup>23+</sup>
 
 能效资源CPU类型。
