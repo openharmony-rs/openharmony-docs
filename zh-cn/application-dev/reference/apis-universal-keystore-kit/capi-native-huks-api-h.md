@@ -51,7 +51,7 @@
 
 ### OH_Huks_GetSdkVersion()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_GetSdkVersion(struct OH_Huks_Blob *sdkVersion)
 ```
 
@@ -75,7 +75,7 @@ struct OH_Huks_Result OH_Huks_GetSdkVersion(struct OH_Huks_Blob *sdkVersion)
 
 ### OH_Huks_GenerateKeyItem()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_GenerateKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSetIn, struct OH_Huks_ParamSet *paramSetOut)
 ```
 
@@ -101,7 +101,7 @@ struct OH_Huks_Result OH_Huks_GenerateKeyItem(const struct OH_Huks_Blob *keyAlia
 
 ### OH_Huks_ImportKeyItem()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_ImportKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *key)
 ```
 
@@ -127,7 +127,7 @@ struct OH_Huks_Result OH_Huks_ImportKeyItem(const struct OH_Huks_Blob *keyAlias,
 
 ### OH_Huks_ImportWrappedKeyItem()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_ImportWrappedKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_Blob *wrappingKeyAlias, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *wrappedKeyData)
 ```
 
@@ -154,7 +154,7 @@ struct OH_Huks_Result OH_Huks_ImportWrappedKeyItem(const struct OH_Huks_Blob *ke
 
 ### OH_Huks_ExportPublicKeyItem()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_ExportPublicKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_Blob *key)
 ```
 
@@ -180,7 +180,7 @@ struct OH_Huks_Result OH_Huks_ExportPublicKeyItem(const struct OH_Huks_Blob *key
 
 ### OH_Huks_DeleteKeyItem()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_DeleteKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet)
 ```
 
@@ -205,7 +205,7 @@ struct OH_Huks_Result OH_Huks_DeleteKeyItem(const struct OH_Huks_Blob *keyAlias,
 
 ### OH_Huks_GetKeyItemParamSet()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_GetKeyItemParamSet(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSetIn, struct OH_Huks_ParamSet *paramSetOut)
 ```
 
@@ -231,7 +231,7 @@ struct OH_Huks_Result OH_Huks_GetKeyItemParamSet(const struct OH_Huks_Blob *keyA
 
 ### OH_Huks_IsKeyItemExist()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_IsKeyItemExist(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet)
 ```
 
@@ -256,7 +256,7 @@ struct OH_Huks_Result OH_Huks_IsKeyItemExist(const struct OH_Huks_Blob *keyAlias
 
 ### OH_Huks_AttestKeyItem()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_AttestKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_CertChain *certChain)
 ```
 
@@ -284,7 +284,7 @@ struct OH_Huks_Result OH_Huks_AttestKeyItem(const struct OH_Huks_Blob *keyAlias,
 
 ### OH_Huks_AnonAttestKeyItem()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_AnonAttestKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_CertChain *certChain)
 ```
 
@@ -310,7 +310,7 @@ struct OH_Huks_Result OH_Huks_AnonAttestKeyItem(const struct OH_Huks_Blob *keyAl
 
 ### OH_Huks_InitSession()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_InitSession(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_Blob *handle, struct OH_Huks_Blob *token)
 ```
 
@@ -346,7 +346,7 @@ struct OH_Huks_Result OH_Huks_InitSession(const struct OH_Huks_Blob *keyAlias, c
 
 ### OH_Huks_UpdateSession()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_UpdateSession(const struct OH_Huks_Blob *handle, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *outData)
 ```
 
@@ -382,7 +382,7 @@ struct OH_Huks_Result OH_Huks_UpdateSession(const struct OH_Huks_Blob *handle, c
 
 ### OH_Huks_FinishSession()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_FinishSession(const struct OH_Huks_Blob *handle, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *outData)
 ```
 
@@ -418,7 +418,7 @@ struct OH_Huks_Result OH_Huks_FinishSession(const struct OH_Huks_Blob *handle, c
 
 ### OH_Huks_AbortSession()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_AbortSession(const struct OH_Huks_Blob *handle, const struct OH_Huks_ParamSet *paramSet)
 ```
 
@@ -450,7 +450,7 @@ struct OH_Huks_Result OH_Huks_AbortSession(const struct OH_Huks_Blob *handle, co
 
 ### OH_Huks_ListAliases()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_ListAliases(const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_KeyAliasSet **outData)
 ```
 
@@ -475,7 +475,7 @@ struct OH_Huks_Result OH_Huks_ListAliases(const struct OH_Huks_ParamSet *paramSe
 
 ### OH_Huks_WrapKey()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_WrapKey(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_Blob *wrappedKey)
 ```
 
@@ -501,7 +501,7 @@ struct OH_Huks_Result OH_Huks_WrapKey(const struct OH_Huks_Blob *keyAlias, const
 
 ### OH_Huks_UnwrapKey()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_UnwrapKey(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_Blob *wrappedKey)
 ```
 
