@@ -60,13 +60,6 @@
 | RUNNING_LOCK<sup>10+</sup> | 128 | RUNNING_LOCK资源，申请后挂起状态不会临时释放RUNNING_BACKGROUND锁 |
 | SENSOR<sup>10+</sup> | 256 | SENSOR资源，申请后挂起状态不拦截Sensor回调 |
 
-**表4** 能效资源CPU类型<sup>23+</sup>
-| 名称 | 值 | 说明 |
-| -------- | -------- | -------- |
-| SMALL_CPU | 0 | 运行在小核。 |
-| MEDIUM_CPU | 1 | 最高可运行在中核。 |
-| LARGE_CPU | 2 | 最高运行在大核。 |
-
 ## 开发步骤
 
 1. 导入模块。
