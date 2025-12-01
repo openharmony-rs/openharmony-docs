@@ -115,9 +115,15 @@ struct MyLiveFormPage {
   }
 
   build() {
+    // 请开发者替换为实际的页面
     Stack() {
-      // 请开发者替换为实际的页面
+      Column()
+        .width('80%')
+        .height('80%')
+        .backgroundColor('#2875F5')
     }
+    .width('100%')
+    .height('100%')
     .onClick(() => {
       // 3.在点击事件回调中直接使用该接口
       console.info('MyLiveFormPage click to start ability');
