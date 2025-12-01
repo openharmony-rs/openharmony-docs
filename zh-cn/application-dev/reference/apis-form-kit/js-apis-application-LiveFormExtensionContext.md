@@ -118,8 +118,8 @@ struct MyLiveFormPage {
     // 请开发者替换为实际的页面
     Stack() {
       Column()
-        .width('80%')
-        .height('80%')
+        .width('50%')
+        .height('50%')
         .backgroundColor('#2875F5')
     }
     .width('100%')
