@@ -129,7 +129,7 @@
       }).catch((err: BusinessError) => {
         console.error(`Invoke audioViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
       });
-     ```
+    ```
 
 
    > **注意**：
