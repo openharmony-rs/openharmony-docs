@@ -601,99 +601,99 @@ struct MoveTo {
 3. 在`nai_init.cpp`中，挂载Native节点。
 
    <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-#include "Attribute_util.h"
-#include "napi/native_api.h"
-#include <arkui/native_interface.h>
-#include <arkui/native_node.h>
-#include <arkui/native_node_napi.h>
-#include <hilog/log.h>
-#include <js_native_api.h>
-#include <js_native_api_types.h>
-// ···
-const unsigned int NUMBER_2 = 2;
-const unsigned int NUMBER_WIDTH = 100;
-const unsigned int NUMBER_HEIGHT = 100;
-
-static napi_value Add(napi_env env, napi_callback_info info)
-{
-    size_t argc = NUMBER_2;
-    napi_value args[NUMBER_2] = {nullptr};
-
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    napi_valuetype valuetype0;
-    napi_typeof(env, args[0], &valuetype0);
-
-    napi_valuetype valuetype1;
-    napi_typeof(env, args[1], &valuetype1);
-
-    double value0;
-    napi_get_value_double(env, args[0], &value0);
-
-    double value1;
-    napi_get_value_double(env, args[1], &value1);
-
-    napi_value sum;
-    napi_create_double(env, value0 + value1, &sum);
-
-    return sum;
-}
-
-static ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
-
-static napi_value NAPI_Global_createNativeNode(napi_env env, napi_callback_info info)
-{
-    size_t argc = 1;
-    napi_value args[1] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    ArkUI_NodeContentHandle contentHandle;
-    OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
-    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
-    // 创建Image组件
-    auto imageNode = nodeAPI->createNode(ARKUI_NODE_IMAGE);
-    AttributeUtil imageNodeAttr(imageNode, nodeAPI);
-    // 设置image组件属性
-    imageNodeAttr.ImageSrc("resources/base/media/startIcon.png");
-    imageNodeAttr.ImageSyncLoad();
-    imageNodeAttr.Width(NUMBER_WIDTH);
-    imageNodeAttr.Height(NUMBER_HEIGHT);
-    // 在当前即时帧触发节点属性更新
-    OH_ArkUI_NativeModule_InvalidateAttributes(imageNode);
-    // 挂载image组件到组件树
-    OH_ArkUI_NodeContent_AddNode(contentHandle, imageNode);
-    return nullptr;
-}
-
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports)
-{
-    napi_property_descriptor desc[] = {
-        {"add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"createNativeNode", nullptr, NAPI_Global_createNativeNode, nullptr, nullptr, nullptr, napi_default, nullptr},
-        // ···
-    };
-    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-    return exports;
-}
-EXTERN_C_END
-
-static napi_module demoModule = {
-    .nm_version = 1,
-    .nm_flags = 0,
-    .nm_filename = nullptr,
-    .nm_register_func = Init,
-    .nm_modname = "entry",
-    .nm_priv = ((void*)0),
-    .reserved = { 0 },
-};
-
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-{
-    napi_module_register(&demoModule);
-}
-```
+   
+   ``` C++
+   #include "Attribute_util.h"
+   #include "napi/native_api.h"
+   #include <arkui/native_interface.h>
+   #include <arkui/native_node.h>
+   #include <arkui/native_node_napi.h>
+   #include <hilog/log.h>
+   #include <js_native_api.h>
+   #include <js_native_api_types.h>
+   // ...
+   const unsigned int NUMBER_2 = 2;
+   const unsigned int NUMBER_WIDTH = 100;
+   const unsigned int NUMBER_HEIGHT = 100;
+   
+   static napi_value Add(napi_env env, napi_callback_info info)
+   {
+       size_t argc = NUMBER_2;
+       napi_value args[NUMBER_2] = {nullptr};
+   
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       napi_valuetype valuetype0;
+       napi_typeof(env, args[0], &valuetype0);
+   
+       napi_valuetype valuetype1;
+       napi_typeof(env, args[1], &valuetype1);
+   
+       double value0;
+       napi_get_value_double(env, args[0], &value0);
+   
+       double value1;
+       napi_get_value_double(env, args[1], &value1);
+   
+       napi_value sum;
+       napi_create_double(env, value0 + value1, &sum);
+   
+       return sum;
+   }
+   
+   static ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
+   
+   static napi_value NAPI_Global_createNativeNode(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+       ArkUI_NodeContentHandle contentHandle;
+       OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+       OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
+       // 创建Image组件
+       auto imageNode = nodeAPI->createNode(ARKUI_NODE_IMAGE);
+       AttributeUtil imageNodeAttr(imageNode, nodeAPI);
+       // 设置image组件属性
+       imageNodeAttr.ImageSrc("resources/base/media/startIcon.png");
+       imageNodeAttr.ImageSyncLoad();
+       imageNodeAttr.Width(NUMBER_WIDTH);
+       imageNodeAttr.Height(NUMBER_HEIGHT);
+       // 在当前即时帧触发节点属性更新
+       OH_ArkUI_NativeModule_InvalidateAttributes(imageNode);
+       // 挂载image组件到组件树
+       OH_ArkUI_NodeContent_AddNode(contentHandle, imageNode);
+       return nullptr;
+   }
+   
+   EXTERN_C_START
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       napi_property_descriptor desc[] = {
+           {"add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr},
+           {"createNativeNode", nullptr, NAPI_Global_createNativeNode, nullptr, nullptr, nullptr, napi_default, nullptr},
+           // ...
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   EXTERN_C_END
+   
+   static napi_module demoModule = {
+       .nm_version = 1,
+       .nm_flags = 0,
+       .nm_filename = nullptr,
+       .nm_register_func = Init,
+       .nm_modname = "entry",
+       .nm_priv = ((void*)0),
+       .reserved = { 0 },
+   };
+   
+   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+   {
+       napi_module_register(&demoModule);
+   }
+   ```
 
 4. 运行程序，点击按钮，切换图片正常展示。
 
