@@ -220,6 +220,10 @@
 | [ArkUI_TextResponseType](#arkui_textresponsetype) | ArkUI_TextResponseType | 自定义文本选择菜单的响应类型枚举。 |
 | [ArkUI_HoverEffect](#arkui_hovereffect) | ArkUI_HoverEffect | 组件被悬停时的效果。 |
 | [ArkUI_FocusPriority](#arkui_focuspriority) | ArkUI_FocusPriority | 应用程序内焦点管理的优先级级别。确定UI组件在交互期间接收焦点的顺序。 |
+| [ArkUI_LayoutSafeAreaType](#arkui_layoutsafeareatype)               | ArkUI_LayoutSafeAreaType         | 定义扩展安全区域的枚举值。                         |
+| [ArkUI_LayoutSafeAreaEdge](#arkui_layoutsafeareaedge)               | ArkUI_LayoutSafeAreaEdge         | 定义扩展安全区域的方向的枚举值。                         |
+| [ArkUI_LocalizedAlignment](#arkui_localizedalignment)               | ArkUI_LocalizedAlignment         | 定义Stack容器中子组件的对齐规则。                         |
+| [ArkUI_RenderStrategy](#arkui_renderstrategy)                       | ArkUI_RenderStrategy             | 定义组件绘制圆角的模式。                |
 
 ### 函数
 
@@ -3288,6 +3292,90 @@ enum ArkUI_TextResponseType
 | ARKUI_TEXT_RESPONSE_TYPE_LONG_PRESS = 1 | 通过长按触发菜单弹出。 |
 | ARKUI_TEXT_RESPONSE_TYPE_SELECT = 2 | 通过鼠标选中触发菜单弹出。 |
 | ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3 | 如果设置为此类型且设置了其他类型时，触发其他类型的操作会显示对应类型的菜单。如果设置为此类型但其他类型未设置时，触发其他类型的操作会显示此类型对应的菜单。例如，同时设置了响应类型为ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK、ARKUI_TEXT_RESPONSE_TYPE_DEFAULT的两个菜单，此时通过鼠标右键会触发ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK对应的菜单弹出，长按则会触发ARKUI_TEXT_RESPONSE_TYPE_DEFAULT对应的菜单弹出。 |
+
+### ArkUI_LayoutSafeAreaType
+
+```c
+enum ArkUI_LayoutSafeAreaType
+```
+
+**描述：**
+
+
+定义扩展安全区域的枚举值。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_LAYOUT_SAFE_AREA_TYPE_SYSTEM = 1 | 系统默认非安全区域，包括状态栏、导航栏。 |
+
+### ArkUI_LayoutSafeAreaEdge
+
+```c
+enum ArkUI_LayoutSafeAreaEdge
+```
+
+**描述：**
+
+
+定义扩展安全区域的方向的枚举值。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP = 1 | 上方区域。 |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM = 1 << 1 | 下方区域。 |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_START = 1 << 2 | 前部区域。 |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_END = 1 << 3 | 尾部区域。 |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_VERTICAL = ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP \| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM = 3 | 垂直区域。 |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_HORIZONTAL = ARKUI_LAYOUT_SAFE_AREA_EDGE_START \| ARKUI_LAYOUT_SAFE_AREA_EDGE_END = 12 | 水平区域。 |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_ALL = ARKUI_LAYOUT_SAFE_AREA_EDGE_VERTICAL \| ARKUI_LAYOUT_SAFE_AREA_EDGE_HORIZONTAL = 15 | 全部区域。 |
+
+### ArkUI_LocalizedAlignment
+
+```c
+enum ArkUI_LocalizedAlignment
+```
+
+**描述：**
+
+
+定义Stack容器中子组件的对齐规则。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_LOCALIZED_ALIGNMENT_TOP_START = 0 | 顶部起始。 |
+| ARKUI_LOCALIZED_ALIGNMENT_TOP = 1 | 顶部居中。 |
+| ARKUI_LOCALIZED_ALIGNMENT_TOP_END = 2 | 顶部尾端。 |
+| ARKUI_LOCALIZED_ALIGNMENT_START = 3 | 起始端纵向居中。 |
+| ARKUI_LOCALIZED_ALIGNMENT_CENTER = 4 | 横向和纵向居中。 |
+| ARKUI_LOCALIZED_ALIGNMENT_END= = 5 | 尾端纵向居中。 |
+| ARKUI_LOCALIZED_ALIGNMENT_BOTTOM_START = 6 | 底部起始端。 |
+| ARKUI_LOCALIZED_ALIGNMENT_BOTTOM = 7 | 底部横向居中。 |
+| ARKUI_LOCALIZED_ALIGNMENT_BOTTOM_END = 8 | 底部尾端。 |
+
+### ArkUI_RenderStrategy
+
+```c
+enum ArkUI_RenderStrategy
+```
+
+**描述：**
+
+
+定义组件绘制圆角的模式。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_RENDERSTRATEGY_FAST  = 0 | 	在线绘制模式。 |
+| ARKUI_RENDERSTRATEGY_OFFSCREEN = 1 | 离屏绘制模式。 |
+
 
 ## 函数说明
 
