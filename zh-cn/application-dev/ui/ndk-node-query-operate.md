@@ -60,32 +60,32 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
 1. ArkTS侧接入Native组件。
 
    <!-- @[ndknodequeryoperate2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/GetNodeById.ets) -->
-
-``` TypeScript
-import nativeNode from 'libentry.so';
-import { NodeContent } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct GetNodeById {
-  private rootSlot = new NodeContent();
-
-  aboutToAppear(): void {
-    nativeNode.createUserIdNode(this.rootSlot);
-  }
-
-  build() {
-    Scroll() {
-      Column({ space: 15 }) {
-        Column() {
-          ContentSlot(this.rootSlot)
-        }
-      }
-      .width('100%')
-    }.scrollBarColor(Color.Transparent)
-  }
-}
-```
+   
+   ``` TypeScript
+   import nativeNode from 'libentry.so';
+   import { NodeContent } from '@kit.ArkUI';
+   
+   @Entry
+   @Component
+   struct GetNodeById {
+     private rootSlot = new NodeContent();
+   
+     aboutToAppear(): void {
+       nativeNode.createUserIdNode(this.rootSlot);
+     }
+   
+     build() {
+       Scroll() {
+         Column({ space: 15 }) {
+           Column() {
+             ContentSlot(this.rootSlot)
+           }
+         }
+         .width('100%')
+       }.scrollBarColor(Color.Transparent)
+     }
+   }
+   ```
 
 2. 新建`GetNodeByIdExample.h`文件，在其中创建Text节点并设置id属性，通过OH_ArkUI_NodeUtils_GetAttachedNodeHandleById接口拿到节点。
 
