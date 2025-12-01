@@ -1,4 +1,10 @@
 # @ohos.app.form.formProvider (formProvider)(系统接口)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 
 formProvider模块提供了获取卡片信息、更新卡片、设置卡片更新时间、请求发布卡片等能力。
 
@@ -23,6 +29,10 @@ requestPublishForm(want: Want, formBindingData: formBindingData.FormBindingData,
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**22
 
 **参数：**
 
@@ -70,7 +80,7 @@ try {
       console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
       return;
     }
-    console.log(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+    console.info(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -86,6 +96,10 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**22
 
 **参数：**
 
@@ -127,7 +141,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.log(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+    console.info(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -143,6 +157,10 @@ requestPublishForm(want: Want, formBindingData?: formBindingData.FormBindingData
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**22
 
 **参数：**
 
@@ -186,7 +204,7 @@ let want: Want = {
 };
 try {
   formProvider.requestPublishForm(want).then((data: string) => {
-    console.log(`formProvider requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
+    console.info(`formProvider requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -204,6 +222,10 @@ isRequestPublishFormSupported(callback: AsyncCallback&lt;boolean&gt;): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**22
 
 **参数：**
 
@@ -249,7 +271,7 @@ try {
               console.error(`callback error, code: ${error.code}, message: ${error.message})`);
               return;
             }
-            console.log(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+            console.info(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
           });
         } catch (error) {
           console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -271,6 +293,10 @@ isRequestPublishFormSupported(): Promise&lt;boolean&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**22
 
 **返回值：**
 
@@ -308,7 +334,7 @@ try {
       };
       try {
         formProvider.requestPublishForm(want).then((data: string) => {
-          console.log(`formProvider requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
+          console.info(`formProvider requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
         }).catch((error: BusinessError) => {
           console.error(`promise error, code: ${error.code}, message: ${error.message})`);
         });
