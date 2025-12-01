@@ -78,7 +78,7 @@ import { Want } from '@kit.AbilityKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onAddForm(want: Want) {
-    console.log(`FormExtensionAbility onAddForm, want: ${want.abilityName}`);
+    console.info(`FormExtensionAbility onAddForm, want: ${want.abilityName}`);
     let dataObj1: Record<string, string> = {
       'temperature': '11c',
       'time': '11:00'
@@ -393,6 +393,10 @@ onFormLocationChanged(formId: string, newFormLocation: formInfo.FormLocation): v
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
+**ArkTS-Dyn起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -430,6 +434,10 @@ onSizeChanged(formId: string, newDimension: formInfo.FormDimension, newRect: for
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
   
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 

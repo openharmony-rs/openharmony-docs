@@ -1444,7 +1444,7 @@ try {
 
 ArkTS-Dyn: deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;number&gt;): void
 
-ArkTS-Sta: deleteInvalidForms(formIds: Array<string>, callback: AsyncCallback<int>): void;
+ArkTS-Sta: deleteInvalidForms(formIds: Array\<string>, callback: AsyncCallback\<int>): void
 
 根据列表删除应用程序的无效卡片。使用callback异步回调。
 
