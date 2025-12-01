@@ -59,7 +59,7 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
 
 1. ArkTS侧接入Native组件。
 
-<!-- @[ndknodequeryoperate2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/GetNodeById.ets) -->
+   <!-- @[ndknodequeryoperate2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/GetNodeById.ets) -->
 
 ``` TypeScript
 import nativeNode from 'libentry.so';
@@ -89,7 +89,7 @@ struct GetNodeById {
 
 2. 新建`GetNodeByIdExample.h`文件，在其中创建Text节点并设置id属性，通过OH_ArkUI_NodeUtils_GetAttachedNodeHandleById接口拿到节点。
 
-<!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/GetNodeByIdExample.h) -->
+   <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/GetNodeByIdExample.h) -->
 
 ``` C
 // GetNodeByIdExample.h
@@ -202,7 +202,7 @@ std::shared_ptr<ArkUIBaseNode> CreateGetNodeByIdExample()
 
 3. 在`NativeEntry.cpp`中，挂载Native节点。
 
-<!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/NativeEntry.cpp) -->
+   <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/NativeEntry.cpp) -->
 
 ``` C++
 // NativeEntry.cpp
@@ -263,7 +263,7 @@ napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
 
 1. ArkTS侧接入Native组件。
 
-<!-- @[ndknodequeryoperate4_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/MoveTo.ets) -->
+   <!-- @[ndknodequeryoperate4_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/MoveTo.ets) -->
 
 ``` TypeScript
 // MoveTo.ets
@@ -294,7 +294,7 @@ struct MoveTo {
 
 2. 新建`MoveTo.h`文件，在其中创建Stack节点，通过OH_ArkUI_NodeUtils_MoveTo接口移动Stack节点。
 
-<!-- @[ndknodequeryoperate5_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/MoveToExample.h) -->
+   <!-- @[ndknodequeryoperate5_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/MoveToExample.h) -->
 
 ``` C
 // MoveToExample.h
@@ -444,7 +444,7 @@ std::shared_ptr<ArkUIBaseNode> CreateMoveToExample()
 
 3. 在`NativeEntry.cpp`中，挂载Native节点。
 
-<!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/NativeEntry.cpp) -->
+   <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/NativeEntry.cpp) -->
 
 ``` C++
 // NativeEntry.cpp
@@ -495,7 +495,7 @@ napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
 
 4. 运行程序，点击按钮，Stack节点会移动到目标位置。
 
-![moveToNativeDemo](figures/moveToNativeDemo.gif)
+   ![moveToNativeDemo](figures/moveToNativeDemo.gif)
 
 ## 在当前即时帧触发节点属性更新
 
@@ -503,7 +503,7 @@ napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
 
 1. ArkTS侧接入Native组件。
 
-<!-- @[ndknodequeryoperate6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/Attribute.ets) -->
+   <!-- @[ndknodequeryoperate6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/Attribute.ets) -->
 
 ``` TypeScript
 
@@ -553,7 +553,7 @@ struct Index {
 
 2. 新建`Attribute_util .h`用于设置组件属性。
 
-<!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/Attribute_util.h) -->
+   <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/Attribute_util.h) -->
 
 ``` C
 #ifndef MYAPPLICATION_ATTRIBUTE_UTIL_H
@@ -600,7 +600,7 @@ public:
 
 3. 在`nai_init.cpp`中，挂载Native节点。
 
-<!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 #include "Attribute_util.h"
@@ -697,7 +697,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 
 4. 运行程序，点击按钮，切换图片正常展示。
 
-![moveToNativeDemo](figures/OH_ArkUI_NativeModule_InvalidateAttributes_test.png)
+   ![moveToNativeDemo](figures/OH_ArkUI_NativeModule_InvalidateAttributes_test.png)
 
 ## 用不同的展开模式获取对应下标的子节点
 
@@ -975,7 +975,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
   
 2. NDK侧通过[OH_ArkUI_NodeUtils_GetAttachedNodeHandleById](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getattachednodehandlebyid)接口获取ArkTS组件，并通过懒展开模式获取对应的子组件信息。
 
-<!-- @[ndknodequeryoperate9_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/ShowSubcomponentInfo.h) -->
+   <!-- @[ndknodequeryoperate9_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/ShowSubcomponentInfo.h) -->
 
 ``` C
 ArkUI_NodeHandle childNode = nullptr;
@@ -1175,5 +1175,5 @@ OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "Manager",
 
 4. 运行程序，点击change text visibility后打印text是否在渲染树上。
 
-![isInRenderState](figures/isInRenderState_c.png)
+   ![isInRenderState](figures/isInRenderState_c.png)
 
