@@ -504,52 +504,52 @@ struct MoveTo {
 1. ArkTS侧接入Native组件。
 
    <!-- @[ndknodequeryoperate6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/Attribute.ets) -->
-
-``` TypeScript
-
-import testNapi from 'libentry.so';
-import { NodeContent } from '@kit.ArkUI';
-
-@Component
-struct ImageContent {
-  private nodeContent: NodeContent = new NodeContent();
-
-  aboutToAppear() {
-    // 通过C-API创建节点，并添加到管理器nodeContent上
-    testNapi.createNativeNode(this.nodeContent);
-  }
-  build() {
-    Column() {
-      // 显示nodeContent管理器里存放的Native侧的组件
-      ContentSlot(this.nodeContent)
-    }
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-  @State showParent: boolean = true;
-  build() {
-    Row() {
-      Column() {
-        // $r('app.string.Switch')需要替换为开发者所需的资源文件。
-        Button($r('app.string.Switch')).onClick(()=>{
-          this.showParent = !this.showParent;
-        }).margin(20)
-        if(this.showParent) {
-          ImageContent()
-        } else {
-          ImageContent()
-        }
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+   
+   ``` TypeScript
+   
+   import testNapi from 'libentry.so';
+   import { NodeContent } from '@kit.ArkUI';
+   
+   @Component
+   struct ImageContent {
+     private nodeContent: NodeContent = new NodeContent();
+   
+     aboutToAppear() {
+       // 通过C-API创建节点，并添加到管理器nodeContent上
+       testNapi.createNativeNode(this.nodeContent);
+     }
+     build() {
+       Column() {
+         // 显示nodeContent管理器里存放的Native侧的组件
+         ContentSlot(this.nodeContent)
+       }
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+     @State showParent: boolean = true;
+     build() {
+       Row() {
+         Column() {
+           // $r('app.string.Switch')需要替换为开发者所需的资源文件。
+           Button($r('app.string.Switch')).onClick(()=>{
+             this.showParent = !this.showParent;
+           }).margin(20)
+           if(this.showParent) {
+             ImageContent()
+           } else {
+             ImageContent()
+           }
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   ```
 
 2. 新建`Attribute_util .h`用于设置组件属性。
 
