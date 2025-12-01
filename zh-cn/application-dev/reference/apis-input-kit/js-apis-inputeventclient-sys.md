@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口为系统接口。
@@ -14,7 +16,7 @@
 import { inputEventClient } from '@kit.InputKit';
 ```
 
-## inputEventClient.injectEvent
+## <span id = "injectevent8">inputEventClient.injectEvent</span>
 
 injectEvent({KeyEvent: KeyEvent}): void
 
@@ -24,11 +26,96 @@ injectEvent({KeyEvent: KeyEvent}): void
 
 **需要权限：** ohos.permission.INJECT_INPUT_EVENT
 
+**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+
+**相关接口**: 该接口对应的ArkTS-Sta接口是[injectEvent](#injectEvent_keyeventinfo)
+
+**ArkTS-Dyn起始版本**：8
+
 **参数：**
 
 | 参数名       | 类型                    | 必填   | 说明        |
 | -------- | --------------------- | ---- | --------- |
 | KeyEvent | [KeyEvent](#keyevent) | 是    | 按键注入描述信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputEventClient } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let backKeyDown: inputEventClient.KeyEvent = {
+              isPressed: true,
+              keyCode: 2,
+              keyDownDuration: 0,
+              isIntercepted: false
+            }
+
+            class EventDown {
+              KeyEvent: inputEventClient.KeyEvent | null = null
+            }
+
+            let eventDown: EventDown = { KeyEvent: backKeyDown }
+            inputEventClient.injectEvent(eventDown);
+
+            let backKeyUp: inputEventClient.KeyEvent = {
+              isPressed: false,
+              keyCode: 2,
+              keyDownDuration: 0,
+              isIntercepted: false
+            };
+
+            class EventUp {
+              KeyEvent: inputEventClient.KeyEvent | null = null
+            }
+
+            let eventUp: EventUp = { KeyEvent: backKeyUp }
+            inputEventClient.injectEvent(eventUp);
+          } catch (error) {
+            console.error(`Failed to inject KeyEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## <span id = "injectEvent_keyeventinfo">inputEventClient.injectEvent</span>
+
+injectEvent(keyEvent: KeyEventInfo): void
+
+按键(包括单个按键和组合键)注入。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+
+**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+
+**相关接口**: 对应最初版本[injectEvent](#injectevent8)
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Dyn起始版本**：22
+
+**参数：**
+
+| 参数名       | 类型                    | 必填   | 说明        |
+| -------- | --------------------- | ---- | --------- |
+| keyEvent | [KeyEventInfo](#keyeventinfo20) | 是    | 按键注入描述信息。 |
 
 **错误码**：
 
@@ -96,6 +183,10 @@ injectKeyEvent(keyEvent: KeyEventData): void
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **需要权限：** ohos.permission.INJECT_INPUT_EVENT
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -169,6 +260,10 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **需要权限：** ohos.permission.INJECT_INPUT_EVENT
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -283,6 +378,10 @@ injectTouchEvent(touchEvent: TouchEventData): void
 
 **需要权限：** ohos.permission.INJECT_INPUT_EVENT
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：22
+
 **参数：**
 
 | 参数名       | 类型                    | 必填   | 说明        |
@@ -385,6 +484,10 @@ permitInjection(result: boolean): void
 
 **需要权限：** ohos.permission.INJECT_INPUT_EVENT
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：22
+
 **参数：**
 
 | 参数名    | 类型    | 必填   | 说明        |
@@ -429,11 +532,15 @@ struct Index {
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
+**ArkTS-Dyn起始版本**: 8
+
+**ArkTS-Sta起始版本**：22
+
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
 | isPressed       | boolean | 否    |  否 | 按键是否按下。<br>true表示按键按下，false表示按键抬起。   |
-| keyCode         | number  | 否    |  否 | 按键键码值。当前仅支持返回键/KEYCODE_BACK键。 |
-| keyDownDuration | number  | 否    |  否 | 按键按下持续时间，单位为微秒（μs）。           |
+| keyCode         | ArkTS-Dyn: number<br>ArkTS-Dyn: int| 否    |  否 | 按键键码值。当前仅支持返回键/KEYCODE_BACK键。 |
+| keyDownDuration | ArkTS-Dyn: number<br>ArkTS-Dyn: int| 否    |  否 | 按键按下持续时间，单位为微秒（μs）。           |
 | isIntercepted   | boolean | 否    |  否 | 按键是否可以被拦截。<br>true表示可以被拦截，false表示不可被拦截。 |
 
 ## KeyEventData<sup>11+</sup>
@@ -441,6 +548,10 @@ struct Index {
 按键注入描述信息。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+
+**ArkTS-Dyn起始版本**: 11
+
+**ArkTS-Sta起始版本**：22
 
 | 名称        | 类型   | 必填   | 说明      |
 | --------- | ------ | ---- |  ------- |
@@ -452,6 +563,10 @@ struct Index {
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
+**ArkTS-Dyn起始版本**: 11
+
+**ArkTS-Sta起始版本**：22
+
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
 | mouseEvent | [MouseEvent](js-apis-mouseevent.md#mouseevent) | 否    |  否 | 鼠标注入描述信息。   |
@@ -462,6 +577,24 @@ struct Index {
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
+**ArkTS-Dyn起始版本**: 11
+
+**ArkTS-Sta起始版本**：22
+
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
 | touchEvent | [TouchEvent](js-apis-touchevent.md#touchevent) | 否    |  否 | 触摸屏注入描述信息。   |
+
+## KeyEventInfo<sup>20+<sup>
+
+按键注入描述信息。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：22
+
+| 名称        | 类型   | 必填   | 说明      |
+| --------- | ------ | ---- |  ------- |
+| KeyEvent | [KeyEvent](#keyevent) | 是    | 按键注入描述信息。   |

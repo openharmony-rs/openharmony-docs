@@ -4,6 +4,8 @@
 
 > **说明**：
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 
@@ -15,7 +17,9 @@ import { infraredEmitter } from '@kit.InputKit';
 
 ## infraredEmitter.transmitInfrared<sup>15+</sup>
 
-transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
+ArkTS-Dyn： transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
+
+ArkTS-Sta: transmitInfrared(infraredFrequency: long, pattern: Array&lt;long&gt;): void
 
 产生特定频率和特定电平大小的红外信号。
 
@@ -23,12 +27,16 @@ transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input. InfraredEmitter
 
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：22
+
 **参数**：
 
 | 参数名       | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
-| infraredFrequency | number             | 是    | 红外频率，单位Hz。 |
-| pattern | Array&lt;number&gt; | 是    | 红外电平信号，单位是us，电平信号的数量取值范围[0,1024]，电平信号数量需为偶数。<br/>比如[100,200,300,400]该电平信号数组，其中表示100us为高电平信号、200us为低电平信号、300us为高电平信号、400us为低电平信号。 |
+| infraredFrequency | ArkTS-Dyn: number<br/>ArkTS-Sta: long             | 是    | 红外频率，单位Hz。 |
+| pattern | ArkTS-Dyn: Array&lt;number&gt;<br/>ArkTS-Sta: Array&lt;long&gt;| 是    | 红外电平信号，单位是us，电平信号的数量取值范围[0,1024]，电平信号数量需为偶数。<br/>比如[100,200,300,400]该电平信号数组，其中表示100us为高电平信号、200us为低电平信号、300us为高电平信号、400us为低电平信号。 |
 
 **错误码：**
 
@@ -40,6 +48,8 @@ transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { infraredEmitter } from '@kit.InputKit';
@@ -72,6 +82,10 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InfraredEmitter
 
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：22
+
 **返回值**：
 
 | 参数                  | 说明                  |
@@ -88,7 +102,33 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```js
+import { infraredEmitter } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let frequencies = infraredEmitter.getInfraredFrequencies();
+            console.log(`frequencies: ${JSON.stringify(frequencies)}`);
+          } catch (error) {
+            console.error(`Get infrared frequencies failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
 import { infraredEmitter } from '@kit.InputKit';
 
 @Entry
@@ -116,7 +156,11 @@ struct Index {
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InfraredEmitter
 
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：22
+
 | 名称                               | 类型 | 必填   | 说明  |
 | -------------------------------- | ---- | ------ | ------ |
-| max                       | number | 是 | 最大支持频率，单位：Hz。 |
-| min                          | number | 是  | 最小支持频率，单位：Hz。 |
+| max                       | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是 | 最大支持频率，单位：Hz。 |
+| min                          | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是  | 最小支持频率，单位：Hz。 |
