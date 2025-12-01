@@ -264,33 +264,33 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
 1. ArkTS侧接入Native组件。
 
    <!-- @[ndknodequeryoperate4_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/MoveTo.ets) -->
-
-``` TypeScript
-// MoveTo.ets
-import nativeNode from 'libentry.so';
-import { NodeContent } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct MoveTo {
-  private rootSlot = new NodeContent();
-
-  aboutToAppear(): void {
-    nativeNode.createMoveToNode(this.rootSlot);
-  }
-
-  build() {
-    Scroll() {
-      Column({ space: 15 }) {
-        Column() {
-          ContentSlot(this.rootSlot)
-        }
-      }
-      .width('100%')
-    }.scrollBarColor(Color.Transparent)
-  }
-}
-```
+   
+   ``` TypeScript
+   // MoveTo.ets
+   import nativeNode from 'libentry.so';
+   import { NodeContent } from '@kit.ArkUI';
+   
+   @Entry
+   @Component
+   struct MoveTo {
+     private rootSlot = new NodeContent();
+   
+     aboutToAppear(): void {
+       nativeNode.createMoveToNode(this.rootSlot);
+     }
+   
+     build() {
+       Scroll() {
+         Column({ space: 15 }) {
+           Column() {
+             ContentSlot(this.rootSlot)
+           }
+         }
+         .width('100%')
+       }.scrollBarColor(Color.Transparent)
+     }
+   }
+   ```
 
 2. 新建`MoveTo.h`文件，在其中创建Stack节点，通过OH_ArkUI_NodeUtils_MoveTo接口移动Stack节点。
 
