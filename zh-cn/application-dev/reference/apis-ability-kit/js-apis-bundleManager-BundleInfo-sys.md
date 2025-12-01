@@ -42,13 +42,12 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 20
-
 **系统接口：** 此接口为系统接口。
 
 | 名称      | 类型           | 只读 | 可选 | 说明                |
 | --------- | -------------- | ---- | ---- | ------------------- |
-| userId    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 用户ID。默认为当前调用方所在的用户。             |
-| appIndex  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 应用分身ID。默认为0，表示主应用。    |
+| userId    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 用户ID。默认为当前调用方所在的用户。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22            |
+| appIndex  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 应用分身ID。默认为0，表示主应用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22    |
+| bundleName<sup>23+</sup> | string         | 否   | 是   | 应用包名。默认值为空字符串。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23    |
+| moduleName<sup>23+</sup> | string         | 否   | 是   | Ability所属的模块名称。默认值为空字符串。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23     |
+| abilityName<sup>23+</sup> | string         | 否   | 是   | Ability名称。默认值为空字符串。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23     |
