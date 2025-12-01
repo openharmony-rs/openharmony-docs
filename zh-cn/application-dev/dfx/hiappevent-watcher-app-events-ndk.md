@@ -199,107 +199,111 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
 
 2. 编辑“napi_init.cpp”文件，添加按钮点击事件的打点接口：
 
-   <!-- @[AppEvent_Click_C++_WriteAppEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_value WriteAppEvent(napi_env env, napi_callback_info info)
-{
-    auto params = OH_HiAppEvent_CreateParamList();
-    OH_HiAppEvent_AddInt64Param(params, "clickTime", time(nullptr));
-    OH_HiAppEvent_Write("button", "click", EventType::BEHAVIOR, params);
-    OH_HiAppEvent_DestroyParamList(params);
-    OH_LOG_INFO(LogType::LOG_APP, "writeEvent C++ success");
-    return {};
-}
-```
+   <!-- @[AppEvent_Click_C++_WriteAppEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   static napi_value WriteAppEvent(napi_env env, napi_callback_info info)
+   {
+       auto params = OH_HiAppEvent_CreateParamList();
+       OH_HiAppEvent_AddInt64Param(params, "clickTime", time(nullptr));
+       OH_HiAppEvent_Write("button", "click", EventType::BEHAVIOR, params);
+       OH_HiAppEvent_DestroyParamList(params);
+       OH_LOG_INFO(LogType::LOG_APP, "writeEvent C++ success");
+       return {};
+   }
+   ```
 
 3. 编辑“napi_init.cpp”文件，注册RegisterWatcherCrash()(订阅崩溃事件)、RegisterWatcherClick()（订阅按钮点击事件）、WriteAppEvent()(按钮点击事件打点接口)为ArkTS接口：
 
-   <!-- @[AppEvent_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_value Init(napi_env env, napi_value exports)
-{
-    napi_property_descriptor desc[] = {
-		// ···
-        { "registerWatcherCrash", nullptr, RegisterWatcherCrash, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "registerWatcherClick", nullptr, RegisterWatcherClick, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "writeAppEvent", nullptr, WriteAppEvent, nullptr, nullptr, nullptr, napi_default, nullptr }
-    };
-    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-    return exports;
-}
-```
+   <!-- @[AppEvent_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   
+   // ...
+   
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       napi_property_descriptor desc[] = {
+           // ...
+           { "registerWatcherCrash", nullptr, RegisterWatcherCrash, nullptr, nullptr, nullptr, napi_default, nullptr },
+           { "registerWatcherClick", nullptr, RegisterWatcherClick, nullptr, nullptr, nullptr, napi_default, nullptr },
+           { "writeAppEvent", nullptr, WriteAppEvent, nullptr, nullptr, nullptr, napi_default, nullptr },
+           // ...
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   ```
 
 4. 编辑“index.d.ts”文件，定义ArkTS接口：
 
-   <!-- @[AppEvent_C++_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
-``` TypeScript
-export const registerWatcherCrash: () => void;
-export const registerWatcherClick: () => void;
-export const writeAppEvent: () => void;
-```
+   <!-- @[AppEvent_C++_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->    
+   
+   ``` TypeScript
+   export const registerWatcherCrash: () => void;
+   export const registerWatcherClick: () => void;
+   export const writeAppEvent: () => void;
+   ```
 
 5. 编辑“EntryAbility.ets”文件，在onCreate()函数中添加接口调用：
 
-   <!-- @[EventSub_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-``` TypeScript
-import testNapi from 'libentry.so';
-```
+   <!-- @[EventSub_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
    
-   <!-- @[AppEvent_Call_Capi_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-``` TypeScript
-    // 在onCreate()函数中添加C API接口调用
-    // 启动时，注册崩溃事件观察者
-    testNapi.registerWatcherCrash();
-    // 启动时，注册按钮点击事件观察者
-    testNapi.registerWatcherClick();
-```
+   ``` TypeScript
+   import testNapi from 'libentry.so';
+   ```
+   
+   <!-- @[AppEvent_Call_Capi_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
+   
+   ``` TypeScript
+   // 在onCreate()函数中添加C API接口调用
+   // 启动时，注册崩溃事件观察者
+   testNapi.registerWatcherCrash();
+   // 启动时，注册按钮点击事件观察者
+   testNapi.registerWatcherClick();
+   ```
 
 ### 步骤三：触发事件
 
 编辑“Index.ets”文件，新增“WatchAppCrash ArkTS&C++”按钮以触发崩溃事件；新增“writeEvent C++”按钮，在按钮点击函数中进行事件打点。示例代码如下：
 
-<!-- @[EventSub_Index_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[EventSub_Index_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 import testNapi from 'libentry.so';
 ```
 
-<!-- @[AppEvent_Crash_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[AppEvent_Crash_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
-        Button('WatchAppCrash ArkTS&C++')
-          .type(ButtonType.Capsule)
-          .margin({
-            top: 20
-          })
-          .backgroundColor('#0D9FFB')
-          .width('80%')
-          .height('5%')
-          .onClick(() => {
-            // 在按钮点击函数中构造一个crash场景，触发崩溃事件
-            let result: object = JSON.parse('');
-          })
+Button('WatchAppCrash ArkTS&C++')
+  .type(ButtonType.Capsule)
+  .margin({
+    top: 20
+  })
+  .backgroundColor('#0D9FFB')
+  .width('80%')
+  .height('5%')
+  .onClick(() => {
+    // 在按钮点击函数中构造一个crash场景，触发崩溃事件
+    let result: object = JSON.parse('');
+  })
 ```
 
-<!-- @[AppEvent_CPP_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[AppEvent_CPP_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
-        Button('writeEvent C++')
-          .type(ButtonType.Capsule)
-          .margin({
-            top: 20
-          })
-          .backgroundColor('#0D9FFB')
-          .width('80%')
-          .height('5%')
-          .onClick(() => {
-            testNapi.writeAppEvent();
-          })
+Button('writeEvent C++')
+  .type(ButtonType.Capsule)
+  .margin({
+    top: 20
+  })
+  .backgroundColor('#0D9FFB')
+  .width('80%')
+  .height('5%')
+  .onClick(() => {
+    testNapi.writeAppEvent();
+  })
 ```
 
 ## 调测验证
@@ -331,32 +335,34 @@ import testNapi from 'libentry.so';
 
 4. 移除应用的事件观察者：
 
-   <!-- @[AppEvent_C++_RemoveWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_value RemoveWatcher(napi_env env, napi_callback_info info)
-{
-    // 使观察者停止监听事件
-	// ···
-    OH_HiAppEvent_RemoveWatcher(eventWatcherT1);
-    OH_HiAppEvent_RemoveWatcher(eventWatcherR1);
-    return {};
-}
-```
+   <!-- @[AppEvent_C++_RemoveWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   static napi_value RemoveWatcher(napi_env env, napi_callback_info info)
+   {
+       // 使观察者停止监听事件
+       // ...
+       OH_HiAppEvent_RemoveWatcher(eventWatcherT1);
+       OH_HiAppEvent_RemoveWatcher(eventWatcherR1);
+       // ...
+       return {};
+   }
+   ```
 
 5. 销毁应用的事件观察者：
 
-   <!-- @[AppEvent_C++_DestroyWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_value DestroyWatcher(napi_env env, napi_callback_info info)
-{
-    // 销毁创建的观察者，并置eventWatcher为nullptr。
-	// ···
-    OH_HiAppEvent_DestroyWatcher(eventWatcherT1);
-    OH_HiAppEvent_DestroyWatcher(eventWatcherR1);
-    eventWatcherT1 = nullptr;
-    eventWatcherR1 = nullptr;
-    return {};
-}
-```
+   <!-- @[AppEvent_C++_DestroyWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   static napi_value DestroyWatcher(napi_env env, napi_callback_info info)
+   {
+       // 销毁创建的观察者，并置eventWatcher为nullptr。
+       // ...
+       OH_HiAppEvent_DestroyWatcher(eventWatcherT1);
+       OH_HiAppEvent_DestroyWatcher(eventWatcherR1);
+       eventWatcherT1 = nullptr;
+       eventWatcherR1 = nullptr;
+       // ...
+       return {};
+   }
+   ```
