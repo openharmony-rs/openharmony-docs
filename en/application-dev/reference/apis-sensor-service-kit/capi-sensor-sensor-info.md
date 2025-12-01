@@ -6,6 +6,10 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @hu-zhiqiong-->
 
+```c
+typedef struct Sensor_Info Sensor_Info
+```
+
 ## Overview
 
 Defines a struct for the sensor information.
