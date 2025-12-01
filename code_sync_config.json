@@ -15216,7 +15216,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Modifier/entry/src/main/ets/pages/MyCheckboxStyle.ets",
 				"functions":[
 					{
-						"end_line":95,
+						"end_line":101,
 						"name":"checkbox_demo",
 						"start_line":16
 					}
