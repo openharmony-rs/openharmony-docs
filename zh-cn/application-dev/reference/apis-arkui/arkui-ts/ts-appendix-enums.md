@@ -26,23 +26,25 @@
 
 ## Alignment
 
+定义容器元素绘制区域内的子元素的对齐方式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 说明       |
-| ----------- | -------- |
-| TopStart    | 顶部起始端。   |
-| Top         | 顶部横向居中。  |
-| TopEnd      | 顶部尾端。    |
-| Start       | 起始端纵向居中。 |
-| Center      | 横向和纵向居中。 |
-| End         | 尾端纵向居中。  |
-| BottomStart | 底部起始端。   |
-| Bottom      | 底部横向居中。  |
-| BottomEnd   | 底部尾端。    |
+| 名称        | 值 | 说明       |
+| ----------- | - | -------- |
+| TopStart    | 0 | 顶部起始端。   |
+| Top         | 1 | 顶部横向居中。  |
+| TopEnd      | 2 | 顶部尾端。    |
+| Start       | 3 | 起始端纵向居中。 |
+| Center      | 4 | 横向和纵向居中。 |
+| End         | 5 | 尾端纵向居中。  |
+| BottomStart | 6 | 底部起始端。   |
+| Bottom      | 7 |底部横向居中。  |
+| BottomEnd   | 8 | 底部尾端。    |
 
 ## AnimationPropertyType<sup>20+</sup>
 
@@ -76,6 +78,8 @@
 
 ## AppRotation<sup>12+</sup>
 
+定义应用方向旋转角度。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -100,6 +104,8 @@
 | END | 'End' | 水平方向：位于父组件最右侧；垂直方向：位于父组件最下侧。 |
 
 ## Axis
+
+定义轴的方向。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -177,17 +183,19 @@
 
 ## BorderStyle
 
+定义元素的边框线条样式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明                            |
-| ------ | ----------------------------- |
-| Dotted | 显示为一系列圆点，圆点半径为borderWidth的一半。 |
-| Dashed | 显示为一系列短的方形虚线。                 |
-| Solid  | 显示为一条实线。                      |
+| 名称   | 值 | 说明                            |
+| ------ | --- | ----------------------------- |
+| Dotted | 0 | 显示为一系列圆点，圆点半径为borderWidth的一半。 |
+| Dashed | 1 | 显示为一系列短的方形虚线。                 |
+| Solid  | 2 |显示为一条实线。                      |
 
 ## ClickEffectLevel<sup>10+</sup>
 
@@ -342,17 +350,19 @@
 
 ## Direction
 
+定义元素水平布局的方向。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 说明          |
-| ---- | ----------- |
-| Ltr  | 元素从左到右布局。   |
-| Rtl  | 元素从右到左布局。   |
-| Auto | 使用系统默认布局方向。 |
+| 名称  | 值   | 说明          |
+| ---- | ---- | ----------- |
+| Ltr  | 0 | 元素从左到右布局。   |
+| Rtl  | 1 |元素从右到左布局。   |
+| Auto | 2 |使用系统默认布局方向。 |
 
 ## DividerMode<sup>19+</sup>枚举说明
 
@@ -371,15 +381,15 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                             | 说明                                                         |
-| -------------------------------- | ------------------------------------------------------------ |
-| Top                              | 竖直方向上边缘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Center<sup>(deprecated) </sup>   | 竖直方向居中位置。<br/> 从API version 9开始废弃。            |
-| Bottom                           | 竖直方向下边缘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Baseline<sup>(deprecated) </sup> | 交叉轴方向文本基线位置。<br/> 从API version 9开始废弃。      |
-| Start                            | 水平方向起始位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Middle<sup>(deprecated) </sup>   | 水平方向居中位置。<br/> 从API version 9开始废弃。            |
-| End                              | 水平方向末尾位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| 名称                             | 值   | 说明                                                         |
+| -------------------------------- | ---- | ------------------------------------------------------------ |
+| Top                              | 0 | 竖直方向上边缘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Center<sup>(deprecated) </sup>   | 1 | 竖直方向居中位置。<br/> 从API version 9开始废弃。            |
+| Bottom                           | 2 | 竖直方向下边缘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Baseline<sup>(deprecated) </sup> | 3 | 交叉轴方向文本基线位置。<br/> 从API version 9开始废弃。      |
+| Start                            | 4 | 水平方向起始位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Middle<sup>(deprecated) </sup>   | 5 | 水平方向居中位置。<br/> 从API version 9开始废弃。            |
+| End                              | 6 | 水平方向末尾位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## EdgeEffect
 
@@ -474,6 +484,8 @@
 
 ## FlexAlign
 
+定义元素在容器主轴上的对齐格式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -491,6 +503,8 @@
 
 ## FlexDirection
 
+定义子组件在Flex容器上排列的方向，即主轴的方向。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -505,6 +519,8 @@
 | ColumnReverse | 与Column相反方向进行布局。 |
 
 ## FlexWrap
+
+定义Flex容器是单行/列还是多行/列排列。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -560,6 +576,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | Bolder  | 900 |'bolder' |
 
 ## FoldStatus<sup>11+</sup>
+
+定义设备的折叠状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -621,6 +639,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | None        | 无。    |
 
 ## HorizontalAlign
+
+定义子组件在水平方向上的对齐方式。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -700,6 +720,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | MATRIX<sup>15+</sup>| 16  | 配合[imageMatrix](ts-basic-components-image.md#imagematrix15)使用，使图像在Image组件自定义位置显示，且保持原有尺寸。不支持svg图源。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 
 ## ItemAlign
+
+定义元素在容器中交叉轴的对齐方式。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -1052,14 +1074,16 @@ type Nullable\<T> = T | undefined
 
 ## RelateType
 
+定义子组件的填充方式。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 说明             |
-| ---- | -------------- |
-| FILL | 缩放当前子组件以填充满父组件。 |
-| FIT  | 缩放当前子组件以自适应父组件。 |
+| 名称   | 值   | 说明             |
+| ---- | ---- | -------------- |
+| FILL | 0 | 缩放当前子组件以填充满父组件。 |
+| FIT  | 1 | 缩放当前子组件以自适应父组件。 |
 
 ## ResponseType<sup>8+</sup>
 
@@ -1310,6 +1334,8 @@ type Nullable\<T> = T | undefined
 | CURSOR | Tips跟随鼠标。 |
 
 ## VerticalAlign
+
+定义子组件在垂直方向上的对齐格式。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
