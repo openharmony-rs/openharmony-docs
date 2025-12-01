@@ -161,49 +161,42 @@ class BackupExt extends BackupExtensionAbility {
    下面的示例展示了需要清理临时文件目录时`onRelease`的实现：
 
    <!-- @[on_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->    
-
-``` TypeScript
-import { BackupExtensionAbility } from '@kit.CoreFileKit';
-// ···
-// [StartExclude on_backup_restore]
-import { fileIo } from '@kit.CoreFileKit';
-// [EndExclude on_backup_restore]
-
-// ···
-
-// [StartExclude on_backup_restore]
-const SCENARIO_BACKUP: number = 1;
-const SCENARIO_RESTORE: number = 2;
-// 需要清理的临时目录
-let filePath: string = '/data/storage/el2/base/.temp/';
-// [EndExclude on_backup_restore]
-
-class BackupExt extends BackupExtensionAbility {
-// ···
-  // [StartExclude on_backup_restore]
-  // onRelease
-  async onRelease(scenario: number): Promise<void> {
-    try {
-      if (scenario == SCENARIO_BACKUP) {
-        // 备份场景，应用自行实现处理，以清理备份产生的临时文件为例
-        console.info(`onRelease begin`);
-        await fileIo.rmdir(filePath);
-        console.info(`onRelease end, rmdir succeed`);
-      }
-      if (scenario == SCENARIO_RESTORE) {
-        // 恢复场景，应用自行实现处理，以清理恢复产生的临时文件为例
-        console.info(`onRelease begin`);
-        await fileIo.rmdir(filePath);
-        console.info(`onRelease end, rmdir succeed`);
-      }
-    } catch (error) {
-      console.error(`onRelease failed with error. Code: ${error.code}, message: ${error.message}`);
-    }
-  }
-  // [EndExclude on_backup_restore]
-}
-// [End on_backup_restore]
-```
+   
+   ``` TypeScript
+   import { BackupExtensionAbility } from '@kit.CoreFileKit';
+   // ...
+   import { fileIo } from '@kit.CoreFileKit';
+   
+   // ...
+   
+   const SCENARIO_BACKUP: number = 1;
+   const SCENARIO_RESTORE: number = 2;
+   // 需要清理的临时目录
+   let filePath: string = '/data/storage/el2/base/.temp/';
+   
+   class BackupExt extends BackupExtensionAbility {
+     // ...
+     // onRelease
+     async onRelease(scenario: number): Promise<void> {
+       try {
+         if (scenario == SCENARIO_BACKUP) {
+           // 备份场景，应用自行实现处理，以清理备份产生的临时文件为例
+           console.info(`onRelease begin`);
+           await fileIo.rmdir(filePath);
+           console.info(`onRelease end, rmdir succeed`);
+         }
+         if (scenario == SCENARIO_RESTORE) {
+           // 恢复场景，应用自行实现处理，以清理恢复产生的临时文件为例
+           console.info(`onRelease begin`);
+           await fileIo.rmdir(filePath);
+           console.info(`onRelease end, rmdir succeed`);
+         }
+       } catch (error) {
+         console.error(`onRelease failed with error. Code: ${error.code}, message: ${error.message}`);
+       }
+     }
+   }
+   ```
 
 
 ### 元数据资源配置文件说明
