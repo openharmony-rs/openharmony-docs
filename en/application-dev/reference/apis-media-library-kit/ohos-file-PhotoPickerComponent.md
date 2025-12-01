@@ -27,9 +27,9 @@ import {
 } from '@ohos.file.PhotoPickerComponent';
 ```
 
-## Properties
+## Attributes
 
-The [universal properties](../apis-arkui/arkui-ts/ts-component-general-attributes.md) are supported.
+The [universal attributes](../apis-arkui/arkui-ts/ts-component-general-attributes.md) are supported.
 
 ## PhotoPickerComponent
 
@@ -79,7 +79,7 @@ Allows the application to access images or videos in the user directory without 
 
 ## PickerOptions
 
-Describes the configuration of a Picker. It inherits from [BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions10).
+Describes the configuration of a Picker. It inherits from [photoAccessHelper.BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions10).
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -100,7 +100,7 @@ Describes the configuration of a Picker. It inherits from [BaseSelectOptions](ar
 | gridMargin<sup>14+</sup>        | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | No | Yes| Margin of the component on a grid page.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | photoBrowserMargin<sup>14+</sup>    | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | No | Yes| Margin of the component on a photo browser page.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | singleLineConfig<sup>20+</sup>             | [SingleLineConfig](#singlelineconfig20)                                                | No | Yes| Single-line display mode of a grid page. In single-line mode, the component does not provide functions for viewing a larger image. The component does not support callbacks related to large images, and the PickerController does not support APIs related to large images, making API calls ineffective.<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |  
-| uiComponentColorMode<sup>20+</sup>             | [PickerColorMode](#pickercolormode)                                                | No | Yes| Picker color mode. Dark/Light color mode (excluding the background color) of other components on the Picker grid page, including the search box, camera entry, safety tips for using Gallery, and recommendation bubble. This property is usually used together with **backgroundColor**. The default value is **PickerColorMode.AUTO**, which follows the system's dark/light color mode.<br>When setting this property, avoid using **PickerColorMode.LIGHT** with a dark backgroundColor, as it may make components or text hard to see. Avoid using **PickerColorMode.DARK** with a light backgroundColor for the same reason.<br>**Atomic service API**: This API can be used in atomic services since API version 20. |
+| uiComponentColorMode<sup>20+</sup>             | [PickerColorMode](#pickercolormode)                                                | No | Yes| Picker color mode. Dark/Light color mode (excluding the background color) of other components on the Picker grid page, including the search box, camera entry, safety tips for using Gallery, and recommendation bubble. This attribute is usually used together with **backgroundColor**. The default value is **PickerColorMode.AUTO**, which follows the system's dark/light color mode.<br>When setting this attribute, avoid using **PickerColorMode.LIGHT** with a dark backgroundColor, as it may make components or text hard to see. Avoid using **PickerColorMode.DARK** with a light backgroundColor for the same reason.<br>**Atomic service API**: This API can be used in atomic services since API version 20. |
 | gridStartOffset<sup>20+</sup>    | number                              | No | Yes | Space between the top of the component and the first row of the grid thumbnail. The default value is **0**, in vp.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | gridEndOffset<sup>20+</sup>    | number                              | No | Yes| Space between the bottom of the component and the last row of the grid thumbnail. The default value is **0**, in vp.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
@@ -296,16 +296,16 @@ Represents basic image and video information.
 
 | Name    | Type   | Read-Only| Optional | Description                                               |
 |----------|--------|-----|-----|---------------------------------------------------|
-| uri      | string                | No| Yes  | Image or video URI. This parameter is mandatory when [ItemType](#itemtype) is **THUMBNAIL**. Otherwise, it is left empty.           |
-| mimeType | string                | No| Yes  | MIME type of the image or video. This parameter is mandatory when [ItemType](#itemtype) is **THUMBNAIL**. Otherwise, it is left empty.      |
-| width    | number                | No| Yes  | Width of the image or video, in pixels. This parameter is mandatory when [ItemType](#itemtype) is **THUMBNAIL**. Otherwise, it is left empty.      |
-| height   | number                | No| Yes  | Height of the image or video, in pixels. This parameter is mandatory when [ItemType](#itemtype) is **THUMBNAIL**. Otherwise, it is left empty.      |
-| size     | number                | No| Yes  | Size of the image or video, in bytes. This parameter is mandatory when [ItemType](#itemtype) is **THUMBNAIL**. Otherwise, it is left empty.    |
-| duration   | number                | No| Yes  | Video duration, in ms. This parameter is mandatory when [ItemType](#itemtype) is **THUMBNAIL**. Otherwise, it is left empty.<br>The value -1 indicates an image or moving photo.|
+| uri      | string                | No| Yes  | URI of the image or video.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.           |
+| mimeType | string                | No| Yes  | MIME type of the image or video.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.      |
+| width    | number                | No| Yes  | Width of the image or video, in px.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.      |
+| height   | number                | No| Yes  | Height of the image or video, in px.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.      |
+| size     | number                | No| Yes  | Size of the image or video, in bytes.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.    |
+| duration   | number                | No| Yes  | Video duration, in milliseconds. For an image or a moving photo, the value **-1** is returned.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.|
 
 ## ItemInfo
 
-Represents image and video information. It inherits from [BaseItemInfo](#baseiteminfo), adding the parameter **itemType**.
+Represents the image and video information. It inherits from [BaseItemInfo](#baseiteminfo), adding the parameter **itemType**.
  
 
 **Atomic service API**: This API can be used in atomic services since API version 12.

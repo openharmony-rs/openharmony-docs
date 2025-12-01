@@ -2611,7 +2611,7 @@ This key is used to set the display height of a video frame when **Configure** i
 
 You can call [OH_AVCapability_GetVideoHeightRange](_a_v_capability.md#oh_avcapability_getvideoheightrange) to obtain the value range.
 
-For details about the development guide, see step 5 in [surface mode](../../media/avcodec/video-encoding.md#surface-mode) (see../../media/avcodec/video-encoding.md#surface) or step 4 in [buffer mode](../../media/avcodec/video-encoding.md#buffer-mode) of video encoding.
+For details about the development guide, see step 5 in [surface mode](../../media/avcodec/video-encoding.md#surface-mode) or step 4 in [buffer mode](../../media/avcodec/video-encoding.md#buffer-mode) of video encoding.
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
