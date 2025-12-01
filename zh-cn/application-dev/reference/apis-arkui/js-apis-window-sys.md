@@ -1191,7 +1191,8 @@ try {
 
 ## window.setSpecificSystemWindowZIndex<sup>23+</sup>
 setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: number): Promise&lt;void&gt;
-设置某种类型系统窗口的窗口层级。使用Promise异步回调。
+
+设置系统窗口的窗口层级。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1201,14 +1202,14 @@ setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: number): Promise&l
 
 | 参数名          | 类型   | 必填  | 说明                    |
 | -------------- | ------ | ----- | ----------------------- |
-| windowType | WindowType | 是    | 窗口类型。支持TYPE_WALLET_SWIPE_CARD、TYPE_VOICE_INTERACTION、TYPE_SCREENSHOT、TYPE_SCREEN_CONTROL、TYPE_FLOAT_NAVIGATION、TYPE_MUTISCREEN_COLLABORATION |
+| windowType | [WindowType](arkts-apis-window-e.md#windowtype7) | 是    | 窗口类型。支持TYPE_WALLET_SWIPE_CARD、TYPE_VOICE_INTERACTION、TYPE_SCREENSHOT、TYPE_SCREEN_CONTROL、TYPE_FLOAT_NAVIGATION、TYPE_MUTISCREEN_COLLABORATION |
 | zIndex | number | 是    | 系统窗口的层级。该参数仅支持整数输入，浮点数输入将向下取整。|
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
