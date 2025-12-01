@@ -1189,7 +1189,6 @@ try {
 }
 ```
 
-
 ## window.setSpecificSystemWindowZIndex<sup>23+</sup>
 setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: int): Promise&lt;void&gt;
 设置某种类型系统窗口的窗口层级。使用Promise异步回调。
