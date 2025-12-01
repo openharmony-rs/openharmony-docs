@@ -430,3 +430,77 @@ try {
     console.error('setPowerKeyFilteringStrategy failed, err: ' + err);
 }
 ```
+
+## power.registerShutdownCallback<sup>23+</sup>
+
+registerShutdownCallback(callback: Callback&lt;boolean&gt;): void
+
+**方法介绍：** 订阅电源关机或重启的回调提醒。使用callback回调。
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**参数：**
+
+| 参数名   | 类型                         | 必填 | 说明                           |
+| -------- | ---------------------------- | ---- | ------------------------------ |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数，返回关机或重启；该参数是一个函数类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息    |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+
+**示例：**
+
+```js
+try {
+    power.registerShutdownCallback((isReboot: boolean) => {
+        console.info('device shutdown is: ' + isReboot);
+    });
+    console.info('register shutdown callback success.');
+} catch(err) {
+    console.error('register shutdown callback failed, err: ' + err);
+}
+```
+
+## power.unregisterShutdownCallback<sup>23+</sup>
+
+unregisterShutdownCallback(callback?: Callback\<void>): void
+
+**方法介绍：** 取消订阅电源关机或重启的回调提醒。使用callback回调。
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明                                           |
+| -------- | -------------------- | ---- | ---------------------------------------------- |
+| callback | Callback&lt;void&gt; | 否   | 可选参数，回调函数，无返回值。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息    |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+
+**示例：**
+
+```js
+try {
+    power.unregisterShutdownCallback(() => {
+        console.info('unsubscribe shutdown success.');
+    });
+    console.info('unregister shutdown callback success.');
+} catch(err) {
+    console.error('unregister shutdown callback failed, err: ' + err);
+}
+```
