@@ -40,11 +40,7 @@ void OnLayoutCompleted(void *userData)
 // 绘制送显完成的回调方法
 void OnDrawCompleted(void *userData)
 {
-    ArkUI_NodeHandle node = (ArkUI_NodeHandle)userData;
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Callback", "the text_node is draw completed");
-    ArkUI_NativeNodeAPI_1 *nativeModule = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
-    ArkUI_AttributeItem item = {nullptr, 0, "draw callback"};
-    nativeModule->setAttribute(node, NODE_TEXT_CONTENT, &item);
 }
 // ...
 class ArkUITextNode : public ArkUINode {
