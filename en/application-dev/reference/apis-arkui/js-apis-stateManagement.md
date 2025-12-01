@@ -156,7 +156,7 @@ const keys: Array<string> = AppStorageV2.keys();
 
 ## PersistenceV2
 
-Inherits from [AppStorageV2](#appstoragev2). For details, see [PersistenceV2: Persisting Application State](../../ui/state-management/arkts-new-persistencev2.md).
+Inherits from [AppStorageV2](#appstoragev2). For details, see [PersistenceV2: Persisting UI State](../../ui/state-management/arkts-new-persistencev2.md).
 
 ### globalConnect<sup>18+</sup>
 

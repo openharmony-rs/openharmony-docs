@@ -41,7 +41,7 @@
         - [Application State Management Overview](state-management/arkts-application-state-management-overview.md)
         - [LocalStorage: Storing Page-Level UI State](state-management/arkts-localstorage.md)
         - [AppStorage: Storing Application-wide UI State](state-management/arkts-appstorage.md)
-        - [PersistentStorage: Persisting Application State](state-management/arkts-persiststorage.md)
+        - [PersistentStorage: Persisting UI State](state-management/arkts-persiststorage.md)
         - [Environment: Querying the Device Environment](state-management/arkts-environment.md)
       - Other State Management Features<!--arkts-other-state-mgmt-functions-->
         - [Overview of Other State Management Features](state-management/arkts-other-state-mgmt-functions-overview.md)
@@ -60,20 +60,20 @@
         - [\@Param Decorator: Inputting External Parameters to Components](state-management/arkts-new-param.md)
         - [\@Once: Implementing Initialization Once](state-management/arkts-new-once.md)
         - [\@Event Decorator: Standardizing Component Output](state-management/arkts-new-event.md)
-        - [\@Provider and \@Consumer Decorators: Synchronizing Across Component Levels in a Two-Way Manner](state-management/arkts-new-Provider-and-Consumer.md)
+        - [\@Provider and \@Consumer Decorators: Synchronizing Across Component Levels in a Two-Way Manner](state-management/arkts-new-provider-and-consumer.md)
         - [\@Monitor Decorator: Listening for Value Changes of the State Variables](state-management/arkts-new-monitor.md)
-        - [\@Computed Decorator: Declaring Computed Properties](state-management/arkts-new-Computed.md)
+        - [\@Computed Decorator: Declaring Computed Properties](state-management/arkts-new-computed.md)
         - [\@Type Decorator: Marking the Types of the Class Property](state-management/arkts-new-type.md)
         - [\@ReusableV2 Decorator: Reusing Components](state-management/arkts-new-reusableV2.md)
       - Other State Management Features<!--arkts-new-other-state-mgmt-->
         - [AppStorageV2: Storing Application-wide UI State](state-management/arkts-new-appstoragev2.md)
-        - [PersistenceV2: Persisting Application State](state-management/arkts-new-persistencev2.md)
+        - [PersistenceV2: Persisting UI State](state-management/arkts-new-persistencev2.md)
         - [!! Syntax: Enabling Two-Way Binding](state-management/arkts-new-binding.md)
         - [Freezing a Custom Component](state-management/arkts-custom-components-freezeV2.md)
         - [getTarget API: Obtaining Original Objects](state-management/arkts-new-getTarget.md)
         - [makeObserved API: Changing Unobservable Data to Observable Data](state-management/arkts-new-makeObserved.md)
         - [addMonitor and clearMonitor APIs: Dynamically Adding and Removing Listeners](state-management/arkts-new-addMonitor-clearMonitor.md)
-      - [MVVM (V2)](state-management/arkts-mvvm-V2.md)
+      - [MVVM (V2)](state-management/arkts-mvvm-v2.md)
     - Mixing Use of V1 and V2<!--v1v2-mixing-->
       - [Mixing Use of Custom Components](state-management/arkts-custom-component-mixed-scenarios.md)
       - [Mixing Use of State Management V1 and V2](state-management/arkts-v1-v2-mixusage.md)
@@ -353,5 +353,6 @@
   - UI Development FAQs<!--ui-development-faq-->
     - [FAQs About Custom Nodes](arkts-user-defined-node-faq.md)
     - [FAQs About Buttons and Selection Components](arkts-select-component-faq.md)
+    - [FAQs About Text Components](arkts-text-faq.md)
 - [Window Manager](../windowmanager/Readme-EN.md)<!--window-manager-->
 - [Display Management](../displaymanager/Readme-EN.md)<!--display-manager-->

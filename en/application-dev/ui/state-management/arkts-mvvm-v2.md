@@ -16,7 +16,7 @@ During application development, UI updates need to be synchronized in real time 
 
 ## Implementing ViewModel Through V2
 
-In the MVVM mode, ViewModel manages data state and automatically updates views when data changes. The state management of V2 (referred to as V2) in ArkUI provides various decorators and tools to help you share data between custom components and ensure that data changes are automatically synchronized to the UI. Common state management decorators include \@Local, \@Param, \@Event, \@ObservedV2, and \@Trace. In addition, V2 provides **AppStorageV2** and **PersistenceV2** as global state storage tools for state sharing between applications and persistent storage.
+In the MVVM mode, ViewModel manages data state and automatically updates views when data changes. The state management of V2 (referred to as V2) in ArkUI provides various decorators and tools to help you share data between custom components and ensure that data changes are automatically synchronized to the UI. Common state management decorators include [\@Local](./arkts-new-local.md), [\@Param](./arkts-new-param.md), [\@Event](./arkts-new-event.md), [\@ObservedV2](./arkts-new-observedV2-and-trace.md), and [\@Trace](./arkts-new-observedV2-and-trace.md). In addition, V2 provides [AppStorageV2](./arkts-new-appstoragev2.md) and [PersistenceV2](./arkts-new-persistencev2.md) as global state storage tools for state sharing and persistent storage between applications.
 
 This section uses a simple to-do list as an example to introduce the decorators and tools of V2 and gradually extend functions based on a basic static to-do list. With step-by-step extension, you can gradually understand and grasp the usage of each decorator.
 
@@ -81,7 +81,7 @@ struct TodoList {
 ```
 
 ### Implementing Component Input with \@Param
-After implementing local task status switching, you can enhance the to-do list's flexibility by dynamically setting each task's name (instead of hardcoding it). The \@Param decorator enables this purpose: Variables decorated with @Param in a child component can receive values passed from the parent component, implementing one-way data synchronization. By default, \@Param is read-only. To locally update the input value in the child component, combine \@Param with \@Once.
+After implementing local task status switching, you can enhance the to-do list's flexibility by dynamically setting each task's name (instead of hardcoding it). The \@Param decorator enables this purpose: Variables decorated with @Param in a child component can receive values passed from the parent component, implementing one-way data synchronization. By default, \@Param is read-only. To locally update the input value in the child component, combine \@Param with [\@Once](./arkts-new-once.md).
 
 In Example 3, each to-do item is abstracted into a **TaskItem** component. The \@Param decorated **taskName** attribute receives the task name from the parent **TodoList** component. This makes the **TaskItem** component flexible and reusable, as it can accept and render different task names. In addition, the **isFinish** property, decorated with both \@Param and \@Once, can be updated locally in the child component after receiving its initial value.
 
@@ -190,7 +190,7 @@ struct TodoList {
 
 ### Implementing Component Reuse with Repeat
 
-After the task creation and deletion functionality is added, you may want to efficiently render multiple identical child components as the task list grows. This is where **Repeat** comes in handy.
+After the task creation and deletion functionality is added, you may want to efficiently render multiple identical child components as the task list grows. This is where [Repeat](../rendering-control/arkts-new-rendering-control-repeat.md) comes in handy.
 
 **Repeat** provides optimized list rendering with two distinct modes:
 - Lazy loading mode: suitable for large datasets. It loads components on demand within scrollable containers, significantly reducing memory usage and improving rendering efficiency.
@@ -350,7 +350,7 @@ struct TodoList {
 
 ### Implementing State Listening and Computed Properties with \@Monitor and \@Computed
 
-Building on the current task list functionality, you can enhance the user experience with additional features, such as listening for task status changes and dynamically calculating the number of unfinished tasks. This is where the \@Monitor and \@Computed decorators prove useful: \@Monitor is used to listen for deep changes in state variables, triggering custom callback methods when properties are modified. \@Computed decorates getter methods to detect changes in computed properties. It recalculates the value only once when dependencies change, reducing the overhead of redundant computations.
+Building on the current task list functionality, you can enhance the user experience with additional features, such as listening for task status changes and dynamically calculating the number of unfinished tasks. This is where the [\@Monitor](./arkts-new-monitor.md) and [\@Computed](./arkts-new-computed.md) decorators prove useful: \@Monitor is used to listen for deep changes in state variables, triggering custom callback methods when properties are modified. \@Computed decorates getter methods to detect changes in computed properties. It recalculates the value only once when dependencies change, reducing the overhead of redundant computations.
 
 In Example 7, \@Monitor is applied to listen for deep changes in the **isFinish** property of the **task** object within **TaskItem**. When the task status changes, the **onTasksFinished** callback is invoked to log the update. In addition, the number of unfinished tasks in **TodoList** is recorded using \@Computed to decorate **tasksUnfinished**, whose value automatically recalculates whenever task statuses change. Together, these two decorators enable deep listening of state variables and efficient computation of derived properties.
 
@@ -376,7 +376,7 @@ struct TaskItem {
   @Event deleteTask: () => void = () => {};
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
-    console.log('The status of' + this.task.taskName + 'has changed from' + mon.value()?.before + 'to' + mon.value()?.now);
+    console.info('The status of' + this.task.taskName + 'has changed from' + mon.value()?.before + 'to' + mon.value()?.now);
   }
 
   build() {
@@ -453,7 +453,7 @@ struct TodoList {
 
 As the to-do list functionality continues to expand, an application may involve multiple pages or functional modules that require access to shared global state. For example, a to-do list application might include a settings page linked to the home page, which requires cross-page state sharing. To address this, use AppStorageV2, which stores and shares an application's global state across multiple UIAbility instances.
 
-In Example 8, a **SettingAbility** is added to load **SettingPage**, which contains a **Setting** class. This class includes a **showCompletedTask** property that controls whether finished tasks are displayed, with a switch allowing users to modify the setting. The two abilities share data through AppStorageV2 using the key **Setting**, where the corresponding data is an instance of the **Setting** class. When AppStorageV2 first connects to **Setting**, if no stored data exists, it creates a **Setting** instance by default, with **showCompletedTask** set to **true**. After users adjust settings on **SettingPage**, the task list on the home page updates accordingly. With **AppStorageV2**, data can be shared across abilities and pages.
+In this example, a **SettingAbility** is added to load **SettingPage**, which contains a **Setting** class. This class includes a **showCompletedTask** property that controls whether finished tasks are displayed, with a switch allowing users to modify the setting. The two abilities share data through AppStorageV2 using the key **Setting**, where the corresponding data is an instance of the **Setting** class. When AppStorageV2 first connects to **Setting**, if no stored data exists, it creates a **Setting** instance, with **showCompletedTask** set to **true** by default. After users adjust settings on **SettingPage**, the task list on the home page updates accordingly. With **AppStorageV2**, data can be shared across abilities and pages.
 
 **Example 8**
 
@@ -481,7 +481,7 @@ struct TaskItem {
   @Event deleteTask: () => void = () => {};
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
-    console.log('The status of' + this.task.taskName + 'has changed from' + mon.value()?.before + 'to' + mon.value()?.now);
+    console.info('The status of' + this.task.taskName + 'has changed from' + mon.value()?.before + 'to' + mon.value()?.now);
   }
 
   build() {
@@ -604,7 +604,7 @@ struct SettingPage {
 
 ### Implementing Persistent UI State with PersistenceV2
 
-To ensure users can view their previous task states after restarting the application, a persistent storage solution is needed. PersistenceV2 enables data to be stored persistently on the device's disk. Unlike AppStorageV2, which uses runtime memory, PersistenceV2 ensures data remains intact even after the application is restarted.
+To preserve task status when users reopen the application, use PersistenceV2 for persistent data storage. PersistenceV2 stores data on device disk, ensuring data persistence across application restarts, unlike the runtime memory of AppStorageV2.
 
 In Example 9, a **TaskList** class is created to store all task information persistently through PersistenceV2, using the key **TaskList** (with the corresponding data being an instance of the **TaskList** class). When PersistenceV2 connects to **TaskList** for the first time, if no existing data is found, it initializes a **TaskList** instance with an empty tasks array by default. In the **aboutToAppear** lifecycle function, if **TaskList** connected to PersistenceV2 contains no task data, tasks are loaded from the local file **defaultTasks.json** and stored in PersistenceV2. Subsequent changes to each task's completion status are synchronized to PersistenceV2. This ensures all task data remains unchanged even after the application is restarted, achieving persistent storage of the application's state.
 
@@ -616,7 +616,7 @@ In Example 9, a **TaskList** class is created to store all task information pers
 import { AppStorageV2, PersistenceV2, Type } from '@kit.ArkUI';
 import { common, Want } from '@kit.AbilityKit';
 import { Setting } from './SettingPage';
-import util from '@ohos.util';
+import { util } from '@kit.ArkTS';
 
 @ObservedV2
 class Task {
@@ -655,7 +655,7 @@ struct TaskItem {
   @Event deleteTask: () => void = () => {};
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
-    console.log('The status of' + this.task.taskName + 'has changed from' + mon.value()?.before + 'to' + mon.value()?.now);
+    console.info('The status of' + this.task.taskName + 'has changed from' + mon.value()?.before + 'to' + mon.value()?.now);
   }
 
   build() {
@@ -676,7 +676,7 @@ struct TaskItem {
 @Entry
 @ComponentV2
 struct TodoList {
-  @Local taskList: TaskList = PersistenceV2.connect(TaskList, 'TaskList', () => new TaskList([]))!;
+  @Local taskList: TaskList = new TaskList([]);
   @Local newTaskName: string = '';
   @Local setting: Setting = AppStorageV2.connect(Setting, 'Setting', () => new Setting())!;
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -757,7 +757,7 @@ The **defaultTasks.json** file is stored in **src/main/resources/rawfile** direc
 
 ### Implementing Custom UI Components with \@Builder
 
-As application features expand, repeated UI elements in the code can increase volume and complicate maintenance. To address this, you can use the \@Builder decorator to abstract repetitive UI components into independent builder methods, facilitating reuse and code modularization.
+As application features expand, repeated UI elements in the code can increase volume and complicate maintenance. To address this, you are advised to use the \@Builder decorator to abstract repetitive UI components into independent builder methods, facilitating reuse and code modularization.
 
 In Example 10, \@Builder is used to define an **ActionButton** API that unifies the management of text, styles, and touch events for various buttons. This simplifies the code and enhances maintainability. In addition, \@Builder enables adjustments to component layouts and styles, such as spacing, colors, and sizes, making the to-do list UI more visually appealing. The result is a fully functional to-do list application with a user-friendly UI.
 
@@ -769,7 +769,7 @@ In Example 10, \@Builder is used to define an **ActionButton** API that unifies 
 import { AppStorageV2, PersistenceV2, Type } from '@kit.ArkUI';
 import { common, Want } from '@kit.AbilityKit';
 import { Setting } from './SettingPage';
-import util from '@ohos.util';
+import { util } from '@kit.ArkTS';
 
 @ObservedV2
 class Task {
@@ -814,7 +814,7 @@ struct TaskItem {
   @Event deleteTask: () => void = () => {};
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
-    console.log('The status of' + this.task.taskName + 'has changed from' + mon.value()?.before + 'to' + mon.value()?.now);
+    console.info('The status of' + this.task.taskName + 'has changed from' + mon.value()?.before + 'to' + mon.value()?.now);
   }
 
   build() {
@@ -846,7 +846,6 @@ struct TodoList {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   async aboutToAppear() {
-    this.taskList = PersistenceV2.connect(TaskList, 'TaskList', () => new TaskList([]))!;
     if (this.taskList.tasks.length === 0) {
       await this.taskList.loadTasks(this.context);
     }
@@ -961,7 +960,7 @@ export default class TaskModel {
 // src/main/ets/model/TaskListModel.ets
 
 import { common } from '@kit.AbilityKit';
-import util from '@ohos.util';
+import { util } from '@kit.ArkTS';
 import TaskModel from'./TaskModel';
 
 export default class TaskListModel {
@@ -1095,7 +1094,7 @@ struct TaskItem {
   @Event deleteTask: () => void = () => {};
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
-    console.log('The status of' + this.task.taskName + 'has changed from' + mon.value()?.before + 'to' + mon.value()?.now);
+    console.info('The status of' + this.task.taskName + 'has changed from' + mon.value()?.before + 'to' + mon.value()?.now);
   }
 
   build() {

@@ -12,7 +12,7 @@ To enhance the state management framework's capability of persistently storing U
 
 **PersistenceV2** provides the state variable persistence capability. You can bind the same key through **connect** or **globalConnect** to implement the persistence capability during state variable change and application cold start.
 
-Before reading this topic, you are advised to read [\@ComponentV2](./arkts-new-componentV2.md), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and API reference of [PersistentV2](../../reference/apis-arkui/js-apis-StateManagement.md#persistencev2).
+Before reading this topic, you are advised to read [\@ComponentV2](./arkts-new-componentV2.md), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and [PersistentV2 API reference](../../reference/apis-arkui/js-apis-stateManagement.md#persistencev2).
 
 >**NOTE**
 >
@@ -41,7 +41,7 @@ For a [\@ObservedV2](./arkts-new-observedV2-and-trace.md) object associated with
 >
 >2. The data storage path is at the module level. That is, the data copy is stored in the persistent file of the corresponding module when the module calls the **connect** function. If multiple modules use the same key, the data of the module that uses the **connect** function first is used, and the data in **PersistenceV2** is also stored in the module that uses the **connect** function first.
 >
->3. The storage path, determined when the first ability of the application is started, is the module to which the ability belongs. If an ability calls the **connect** function and can be started by different modules, the number of data copies is the same as the number of startup modes of the ability.
+>3. The storage path, determined when the first ability of the application is started, is the module to which the ability belongs. If an ability calls **connect** and can be started by different modules, the number of data copies is the same as the number of startup modes of the ability.
 
 - globalConnect: creates or obtains the stored data.
 - remove: deletes the stored data of a specified key. If a key that does not exist in **PersistenceV2** is deleted, a warning is reported.
@@ -49,7 +49,7 @@ For a [\@ObservedV2](./arkts-new-observedV2-and-trace.md) object associated with
 - save: Persisting Stored Data Manually
 - **notifyOnError**: Callback for Responding to a Serialization or Deserialization Failure When data is stored to disks, the data needs to be serialized. If a key fails to be serialized, the error is unpredictable. As a result, this API can be called to capture exceptions.
 
-For details about the preceding APIs, see [State Management API Guide](../../reference/apis-arkui/js-apis-StateManagement.md).
+For details about the preceding APIs, see [@ohos.arkui.StateManagement (State Management)](../../reference/apis-arkui/js-apis-stateManagement.md).
 
 ## Constraints
 
@@ -382,7 +382,7 @@ struct Page1 {
         .fontSize(25)
       Text('save key Sample: ' + this.p.father.groupId.toString() + ' refresh: ' + this.refresh)
         .onClick(() => {
-          // Objects that are not saved by @Trace cannot be automatically stored. You need to call the key for storage.
+          // Objects that are not saved by @Trace cannot be automatically stored. You need to call save for storage.
           this.p.father.groupId += 1;
           PersistenceV2.save(Sample);
           this.refresh += 1;
@@ -592,7 +592,7 @@ struct Page1 {
       // Non-state variables can be refreshed only by using the state variable refresh.
       Text('save key Sample: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
-          // Objects that are not saved by @Trace cannot be automatically stored. You need to call the key for storage.
+          // Objects that are not saved by @Trace cannot be automatically stored. You need to call save for storage.
           this.p.father.groupId += 1;
           PersistenceV2.save('connect2');
           this.refresh += 1;
@@ -668,7 +668,7 @@ struct Page1 {
       // Non-state variables can be refreshed only by using the state variable refresh.
       Text('save key connect2: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
-          // Objects that are not saved by @Trace cannot be automatically stored. You need to call the key for storage.
+          // Objects that are not saved by @Trace cannot be automatically stored. You need to call save for storage.
           this.p.father.groupId += 1;
           PersistenceV2.save('connect2');
           this.refresh += 1;

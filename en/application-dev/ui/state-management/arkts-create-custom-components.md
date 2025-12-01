@@ -102,9 +102,9 @@ The \@Component decorator can decorate only the structs declared by the **struct
  **freezeWhenInactive<sup>11+</sup>**
   Describes the [custom component freezing](arkts-custom-components-freeze.md) option.
 
-  | Name  | Type  | Mandatory| Description                                                        |
-  | ------ | ------ | ---- | ------------------------------------------------------------ |
-  | freezeWhenInactive | boolean | No| Whether to enable component freezing. The default value is **false**. **true** means to enable component freezing, and **false** means the opposite.|
+  | Name  | Type  | Read-Only| Optional| Description                                                        |
+  | ------ | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+  | freezeWhenInactive | boolean | No| No| Whether to enable component freezing. The default value is **false**. **true** means to enable component freezing, and **false** means the opposite.|
 
   ```ts
   @Component({ freezeWhenInactive: true })
@@ -147,11 +147,11 @@ The @Entry decorator marks a custom component as the entry point of a page. A si
 
   Describes the named route options.
 
-  | Name  | Type  | Mandatory| Description                                                        |
-  | ------ | ------ | ---- | ------------------------------------------------------------ |
-  | routeName | string | No| Name of the target named route.|
-  | storage | [LocalStorage](arkts-localstorage.md) | No| Storage of the page-level UI state. If no value is passed, the framework creates a new LocalStorage instance as the default value.|
-  | useSharedStorage<sup>12+</sup> | boolean | No| Whether to use the LocalStorage instance passed by [LocalContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9). The default value is **false**. **true**: Use the shared [LocalStorage](arkts-localstorage.md) instance. **false**: Do not use the shared [LocalStorage](arkts-localstorage.md) instance.|
+  | Name  | Type  | Read-Only| Optional| Description                                                        |
+  | ------ | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+  | routeName | string | No| Yes| Name of the target named route.|
+  | storage | [LocalStorage](arkts-localstorage.md) | No| Yes| Storage of the page-level UI state. If no value is passed, the framework creates a new LocalStorage instance as the default value.|
+  | useSharedStorage<sup>12+</sup> | boolean | No| Yes| Whether to use the LocalStorage instance passed by [loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9). The default value is **false**. **true**: Use the shared [LocalStorage](arkts-localstorage.md) instance. **false**: Do not use the shared [LocalStorage](arkts-localstorage.md) instance.|
 
   > **NOTE**
   >
@@ -344,7 +344,8 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
   }
   ```
 
-- The **switch** syntax is not allowed. If conditional judgment is required, use the [if](./arkts-rendering-control-ifelse.md) statement. Refer to the code snippet below.
+
+- The **switch** syntax is not allowed. If conditional judgment is required, use the [if](../rendering-control/arkts-rendering-control-ifelse.md) statement. Refer to the code snippet below.
 
   ```ts
   build() {
@@ -422,10 +423,10 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
 
   ![en-us_image_0000001651365257](figures/en-us_image_0000001651365257.png)
 
-  Therefore, do not change any state variable in the **build()** or \@Builder decorated method of a custom component. Otherwise, loop rendering may result. Depending on the update mode (full update or minimum update), **Text('${this.count++}')** imposes different effects:
+  Therefore, do not change any state variable in the **build()** or \@Builder decorated method of a custom component. Otherwise, loop rendering may result. The impact of **Text('${this.count++}')** varies depending on the update mode:
 
-  - Full update (API version 8 or before): ArkUI may fall into an infinite re-rendering loop because each rendering of the **Text** component changes the application state and causes a new round of re-renders. When **this.columnColor** is changed, the entire **build** function is executed. As a result, the text bound to **Text(${this.count++})** is also changed. Each time **Text(${this.count++})** is re-rendered, the **this.count** state variable is updated, and a new round of **build** execution follows, resulting in an infinite loop.
-  - Minimized update (API version 9 or later): Changing **this.columnColor** updates the **Column** component, but not the **Text** component. The entire **Text** component is updated only when **this.textColor** changes. During the update, all of the component's attribute functions are executed. As a result, the value of **Text(${this.count++})** is incremented. Currently, the UI is updated by component. If an attribute of a component changes, the entire component is updated. Therefore, the overall update link is as follows: **this.textColor** = **Color.Pink** -> **Text** re-render -> **this.count++** -> **Text** re-render. It should be noted that this way of writing causes the **Text** component to be rendered twice during the initial render, which affects the performance.
+  - Full update (API version 8 and earlier): ArkUI may enter an infinite re-rendering loop because each render of the **Text** component modifies the application state, triggering another render cycle. When **this.columnColor** changes, the entire **build** function is executed. As a result, the text bound to Text(`${this.count++}`) also changes. Each time Text(`${this.count++}`) is re-rendered, the **this.count** state variable is updated, initiating another **build** execution and resulting in an infinite loop.
+  - Minimal update (API version 9 and later): Changing **this.columnColor** updates only the **Column** component, not the **Text** component. The entire **Text** component is updated only when **this.textColor** changes. During the update, all attribute functions of the component are executed, causing the value of Text(`${this.count++}`) to increment. Currently, UI updates occur at the component level. If any attribute of a component changes, the entire component is updated. Therefore, the update chain follows this pattern: **this.textColor** = **Color.Pink** -> **Text** re-render -> **this.count++** -> **Text** re-render. Note that this implementation causes the **Text** component to render twice during initial rendering, which negatively affects performance.
 
   The behavior of changing the application state in the **build** function may be more covert than that in the preceding example. The following are some examples:
 
