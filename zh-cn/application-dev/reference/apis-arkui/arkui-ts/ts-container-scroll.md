@@ -13,7 +13,7 @@
 >  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >  - 该组件嵌套List子组件滚动时，若List不设置宽高，则默认全部加载，在对性能有要求的场景下建议指定List的宽高，最佳实践请参考[懒加载优化性能-Scroll嵌套List导致按需加载失效](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-lazyforeach-optimization#section6296154115367)。
 >  - 该组件滚动的前提是主轴方向大小小于内容大小。
->  - Scroll组件[通用属性clip](ts-universal-attributes-sharp-clipping.md)的默认值为true。
+>  - Scroll组件[通用属性clip](ts-universal-attributes-sharp-clipping.md#clip12)的默认值为true。
 >  - Scroll组件的高度超出屏幕显示范围时，可以通过设置通用属性[layoutWeight](ts-universal-attributes-size.md#layoutweight)让Scroll高度适应主轴的剩余空间。
 >  - 手指触摸屏幕时，会停止当前触摸范围内所有滚动组件的滚动动画（[scrollTo](#scrollto)和[scrollToIndex](#scrolltoindex)接口触发的滚动动画除外），包括边缘回弹动画。
 >  - 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](ts-gesture-blocking-enhancement.md)进行处理。
@@ -93,7 +93,23 @@ scrollBarColor(color: Color | number | string)
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string | 是   | 滚动条的颜色。<br/>默认值：'\#66182431'<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。   |
+| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string | 是   | 滚动条的颜色。<br/>默认值：'\#66182431'<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。<br/>string为rgb或者argb格式颜色，示例：'#ffffff'。   |
+
+### scrollBarColor<sup>22+</sup>
+
+scrollBarColor(color: Color | number | string | Resource)
+
+设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor)相比，color参数开始支持Resource类型。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明           |
+| ------ | ------------------------------------------------------------ | ---- | -------------- |
+| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 滚动条的颜色。<br/>默认值：'\#66182431'<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。   |
 
 ### scrollBarWidth
 
@@ -117,7 +133,7 @@ scrollSnap(value: ScrollSnapOptions)
 
 设置Scroll组件的限位滚动模式。
 
-限位动画期间onWillScroll事件上报的滚动操作来源类型为ScrollSource.FLING。
+限位动画期间[onWillScroll](#onwillscroll12)事件上报的滚动操作来源类型为ScrollSource.FLING。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -361,9 +377,9 @@ onScrollFrameBegin(event: OnScrollFrameBeginCallback)
 
 该接口回调时，事件参数传入即将发生的滚动量，事件处理函数中可根据应用场景计算实际需要的滚动量并作为事件处理函数的返回值返回，Scroll将按照返回值的实际滚动量进行滚动。
 
-支持offsetRemain为负值。
+支持[offsetRemain](#onscrollframebeginhandlerresult18对象说明)为负值。
 
-若通过onScrollFrameBegin事件和scrollBy方法实现容器嵌套滚动，需设置子滚动节点的EdgeEffect为None。如Scroll嵌套List滚动时，List组件的edgeEffect属性需设置为EdgeEffect.None，否则抛滑List，会触发List的边缘回弹动画，导致嵌套滚动失效。
+若通过onScrollFrameBegin事件和[scrollBy](#scrollby9)方法实现容器嵌套滚动，需设置子滚动节点的[EdgeEffect](#edgeeffect)为None。如Scroll嵌套List滚动时，List组件的[edgeEffect](ts-container-list.md#edgeeffect)属性需设置为EdgeEffect.None，否则抛滑List，会触发List的边缘回弹动画，导致嵌套滚动失效。
 
 满足以下任一条件时触发该事件：
 
@@ -618,7 +634,7 @@ Scroll滚动时触发的回调。
 
 >  **说明：**
 >
->  若通过onScrollFrameBegin事件和scrollBy方法实现容器嵌套滚动，需设置子滚动节点的EdgeEffect为None。如Scroll嵌套List滚动时，List组件的edgeEffect属性需设置为EdgeEffect.None。
+>  若通过[onScrollFrameBegin](#onscrollframebegin9)事件和[scrollBy](#scrollby9)方法实现容器嵌套滚动，需设置子滚动节点的EdgeEffect为None。如Scroll嵌套List滚动时，List组件的[edgeEffect](ts-container-list.md#edgeeffect)属性需设置为EdgeEffect.None。
 
 ## ScrollOnWillScrollCallback<sup>12+</sup>
 
@@ -690,7 +706,7 @@ Scroll每帧滚动前触发的回调。
 
 > **说明：**
 >
-> 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
+> 为规范匿名对象的定义，API version 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -871,7 +887,16 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 >
 > 1.仅支持ArcList、Grid、List、WaterFlow组件。
 >
-> 2.在LazyForEach、ForEach、Repeat刷新数据源时，需确保在数据刷新完成之后再调用此接口。
+> 2.在[LazyForEach](ts-rendering-control-lazyforeach.md)、[ForEach](ts-rendering-control-foreach.md)、[Repeat](ts-rendering-control-repeat.md)刷新数据源时，需确保在数据刷新完成之后再调用此接口。
+>
+> 3.从API version 11开始，在List中支持[contentStartOffset](ts-container-list.md#contentstartoffset11)和[contentEndOffset](ts-container-list.md#contentendoffset11)。从API version 22开始，在Grid和Waterflow组件中支持设置[contentStartOffset](ts-container-scrollable-common.md#contentstartoffset22)和[contentEndOffset](ts-container-scrollable-common.md#contentendoffset22)。
+>
+> - 当滚动容器组件设置contentStartOffset时，如果ScrollAlign设置为START，滚动结束时，指定item首部会与滚动容器组件contentStartOffset处对齐。
+> 
+> - 当滚动容器组件设置contentEndOffset时，如果ScrollAlign设置为END，滚动结束时，指定item尾部会与滚动容器组件contentEndOffset处对齐。
+> 
+> - 当滚动容器组件设置contentStartOffset或contentEndOffset时，如果ScrollAlign设置为AUTO，且指定item完全处于显示区内，不做调整；否则依照滚动距离最短的原则，将指定item首部与滚动组件contentStartOffset处对齐，或指定item尾部与滚动组件contentEndOffset处对齐，使指定item完全显示。
+> 
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1334,7 +1359,7 @@ struct NestedScroll {
 ![NestedScroll](figures/NestedScroll.gif)
 
 ### 示例3（嵌套滚动实现方式二）
-该示例使用nestedScroll属性实现了内层List组件和外层Scroll组件的嵌套滚动。
+该示例使用[nestedScroll](#nestedscroll10)属性实现了内层List组件和外层Scroll组件的嵌套滚动。
 ```ts
 @Entry
 @Component
@@ -1398,7 +1423,7 @@ struct StickyNestedScroll {
 ```
 ![NestedScroll2](figures/NestedScroll2.gif)
 ### 示例4（嵌套滚动父组件向子组件传递滚动）
-该示例使用enableScrollInteraction属性和onScrollFrameBegin事件实现了父组件向子组件传递滚动。
+该示例使用[enableScrollInteraction](#enablescrollinteraction10)属性和[onScrollFrameBegin](#onscrollframebegin9)事件实现了父组件向子组件传递滚动。
 ```ts
 @Entry
 @Component
@@ -1631,7 +1656,7 @@ struct ScrollExample {
 
 ### 示例8（单边边缘效果）
 
-该示例通过edgeEffect接口，实现了Scroll组件设置单边边缘效果。
+该示例通过[edgeEffect](#edgeeffect)接口，实现了Scroll组件设置单边边缘效果。
 
 ```ts
 // xxx.ets
@@ -1667,7 +1692,7 @@ struct ScrollExample {
 
 ### 示例9（划动翻页效果）
 
-该示例通过enablePaging接口，实现了Scroll组件滑动翻页效果。
+该示例通过[enablePaging](#enablepaging11)接口，实现了Scroll组件滑动翻页效果。
 
 ```ts
 // xxx.ets
@@ -1701,7 +1726,7 @@ struct EnablePagingExample {
 
 ### 示例10（设置过界停留）
 
-该示例通过scrollTo接口，实现了Scroll组件设置过界停留效果。
+该示例通过[scrollTo](#scrollto)接口，实现了Scroll组件设置过界停留效果。
 
 ```ts
 // xxx.ets
