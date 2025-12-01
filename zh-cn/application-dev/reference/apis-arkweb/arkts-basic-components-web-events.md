@@ -4912,7 +4912,7 @@ onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| OnCameraCaptureStateChangeCallback  | [CameraCaptureStateInfo](arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) | 是   | 回调函数。当摄像头捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
+| Callback  | [OnCameraCaptureStateChangeCallback](arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) | 是   | 回调函数。当摄像头捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
 
 > **说明：** 
 > 
@@ -4995,7 +4995,7 @@ onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
             }
           })
          .onCameraCaptureStateChange((event:CameraCaptureStateInfo)=>{
-            console.log("CameraCapture from ", info.originalState, " to ", info.newState);
+            console.info("CameraCapture from ", event.originalState, " to ", event.newState);
         })
       }
     }
@@ -5049,7 +5049,7 @@ onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| OnMicrophoneCaptureStateChangeCallback  | [MicrophoneCaptureStateInfo](./arkts-basic-components-web-t.md#onmicrophonecapturestatechangecallback23) | 是   | 回调函数。当麦克风捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
+| Callback  | [OnMicrophoneCaptureStateChangeCallback](./arkts-basic-components-web-t.md#onmicrophonecapturestatechangecallback23) | 是   | 回调函数。当麦克风捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
 
 > **说明：** 
 > 
@@ -5139,7 +5139,7 @@ onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
             }
           })
           .onMicrophoneCaptureStateChange((event:MicrophoneCaptureStateInfo)=>{
-            console.info("MicrophoneCapture from ", info.originalState, " to ", info.newState);
+            console.info("MicrophoneCapture from ", event.originalState, " to ", event.newState);
         })
       }
     }
