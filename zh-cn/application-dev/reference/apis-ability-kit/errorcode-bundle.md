@@ -1431,7 +1431,6 @@ Invalid fileTypes.
 
 **处理步骤**<br/>
 请检查文件类型数组是否错误，阅读参数规格约束，按照可能原因进行排查。
-<!--DelEnd-->
 
 ## 18100001 ShortcutInfo列表中bundleName和appIndex不一一对应
 **错误信息**<br/>
@@ -1467,4 +1466,6 @@ const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
 ```
 
 **处理步骤**<br/>
-请检查shortcutInfo 列表中，是否有不同的bundleName和appInndex组合。
+请检查shortcutInfo列表中，是否有不同的bundleName和appInndex组合。
+
+<!--DelEnd-->

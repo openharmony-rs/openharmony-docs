@@ -377,7 +377,7 @@ deleteDynamicShortcutInfos(bundleName: string, appIndex: number, userId: number,
 import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 请开发者替换为实际的快捷方式id、bundleName、moduleName、userId。
+// 请开发者替换为实际的快捷方式id、bundleName、userId。
 const bundleName = "com.example.dynamic";
 
 try {
