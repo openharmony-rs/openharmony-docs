@@ -776,6 +776,26 @@
 						"start_line":127
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":25,
+						"name":"EventSub_napi_Header",
+						"start_line":16
+					},
+					{
+						"end_line":385,
+						"name":"AppEvent_Crash_C++_Add_Watcher",
+						"start_line":334
+					},
+					{
+						"end_line":436,
+						"name":"AppEvent_Click_C++_Add_Watcher",
+						"start_line":386
+					}
+				]
 			}
 		]
 	},
@@ -28496,6 +28516,41 @@
 						"end_line":47,
 						"name":"Text_Long_Tow",
 						"start_line":17
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/dfx/hiappevent-event-reporting.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":144,
+						"name":"EventEsc_Header_And_Add_Processor",
+						"start_line":16
+					},
+					{
+						"end_line":75,
+						"name":"Button_Add_ID",
+						"start_line":58
+					},
+					{
+						"end_line":93,
+						"name":"Button_Add_Property",
+						"start_line":76
+					},
+					{
+						"end_line":122,
+						"name":"Button_Add_Event",
+						"start_line":94
+					},
+					{
+						"end_line":136,
+						"name":"Button_Remove_Processor",
+						"start_line":123
 					}
 				]
 			}
