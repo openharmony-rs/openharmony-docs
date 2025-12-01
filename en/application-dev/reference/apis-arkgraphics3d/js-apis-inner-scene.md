@@ -9,6 +9,7 @@
 The module is the basic module of ArkGraphics 3D and provides common data types such as **SceneResourceParameters** and **SceneNodeParameters**. It also provides basic methods such as glTF model loading, scene creation, and resource creation.
 
 > **NOTE**
+>
 > - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - For details about the .shader file format, see [Requirements on the .shader File Format](../../graphics3d/arkgraphics3D-shader-resource.md).
 
@@ -22,6 +23,7 @@ import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastPar
 Describes the scene resource parameters (**name** and **uri**), which are used to provide the name of a scene resource and the path of the resource file required in the 3D scene.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
+
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | name | string | No| No| Name of the scene resource. It is customizable.|
@@ -88,6 +90,7 @@ function createNodePromise() : Promise<Node> {
 Describes a result object from raycasting, containing details about the 3D object hit by the ray.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
+
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | No| No| 3D scene node hit by the ray. You can use this node to manipulate the target object (for example, moving, rotating, or hiding the object).|
@@ -343,6 +346,7 @@ function createScenePromise(fromFile: boolean = false): Promise<Scene> {
 ```
 
 ## SceneResourceFactory
+
 Provides APIs for creating resources, such as cameras and light sources, used in 3D scenes. This class inherits from [RenderResourceFactory](#renderresourcefactory20).
 
 ### createCamera
@@ -353,6 +357,7 @@ Creates a camera based on scene node parameters. This API uses a promise to retu
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
+
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | params | [SceneNodeParameters](#scenenodeparameters) | Yes| Scene node parameters.|
@@ -437,6 +442,7 @@ Creates a node. This API uses a promise to return the result.
 | params | [SceneNodeParameters](#scenenodeparameters) | Yes| Scene node parameters.|
 
 **Return value**
+
 | Type| Description|
 | ---- | ---- |
 | Promise\<[Node](js-apis-inner-scene-nodes.md#node)> | Promise used to return the Node object.|
@@ -563,6 +569,7 @@ Creates a geometry object based on the scene node parameters and mesh data. This
 | Promise\<[Geometry](js-apis-inner-scene-nodes.md#geometry)> | Promise used to return the Geometry object created.|
 
 **Example**
+
 ```ts
 import { SceneResourceFactory, Scene, Geometry, CubeGeometry } from '@kit.ArkGraphics3D';
 
@@ -589,6 +596,7 @@ function createGeometryPromise() : Promise<Geometry> {
 ```
 
 ## SceneComponent<sup>20+</sup>
+
 Represents a basic scene component, which is used to describe the component information of a scene node, including the component name and its properties.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -742,6 +750,8 @@ Loads a resource by path. This API uses a promise to return the result.
 | Promise\<[Scene](#scene-1)> | Promise used to return the Scene object created.|
 
 **Example**
+
+Example 1: Load resources via rawfile (a relative path).
 ```ts
 import { Scene } from '@kit.ArkGraphics3D';
 
@@ -749,6 +759,38 @@ function loadModel(): void {
   // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
   let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {});
+}
+```
+
+Example 2: Load via an absolute path (from /data/storage/el2/base/files in the application sandbox directory).
+```ts
+import { common } from '@kit.AbilityKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { Scene } from '@kit.ArkGraphics3D';
+
+async loadModelFromAbsolutePath(): Promise<void> {
+  // Obtain the application sandbox directory. (Scene.load can read only files written by the application itself, not files written by hdc/adb push.)
+  const uiCtx = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  const appCtx = uiCtx.getApplicationContext();
+  const filesDir = appCtx.filesDir; // /data/storage/el2/base/files
+
+  // Read the model content from rawfile. (In practice, you can replace rawfile with data from other sources.)
+  // Use a .glb file for easier copying and loading. If the file is in.gltf format, copy its .bin file and texture files to the same directory.
+  const src = 'gltf/CubeWithFloor/glTF/AnimatedCube.glb';
+  const load_uri = `${filesDir}/AnimatedCube.glb`;
+
+  // Write the model file to the application sandbox directory to create a file accessible by Scene.load (absolute path).
+  const rawData = await uiCtx.resourceManager.getRawFileContent(src);
+  const file = fileIo.openSync(load_uri, fileIo.OpenMode.CREATE | fileIo.OpenMode.TRUNC | fileIo.OpenMode.WRITE_ONLY);
+  fileIo.writeSync(file.fd, rawData.buffer.slice(rawData.byteOffset, rawData.byteOffset + rawData.byteLength));
+  fileIo.closeSync(file);
+
+  // Load the model using the absolute path.
+  Scene.load(load_uri).then((scene: Scene) => {
+    // Handle the loaded scene.
+  }).catch((error: string) => {
+    console.error('Scene load failed: ' + error);
+  });
 }
 ```
 

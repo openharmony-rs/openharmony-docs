@@ -1,10 +1,4 @@
 # @ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object) (System API)
-<!--Kit: Media Library Kit-->
-<!--Subsystem: Multimedia-->
-<!--Owner: @yixiaoff-->
-<!--Designer: @liweilu1-->
-<!--Tester: @xchaosioda-->
-<!--Adviser: @w_Machine_cc-->
 
 The module provides APIs for album management, including creating an album and accessing and modifying media data in an album, based on a [Sendable](../../arkts-utils/arkts-sendable.md) object.
 
@@ -297,7 +291,7 @@ Provides APIs for encapsulating file asset attributes.
 
 requestSource(): Promise&lt;number&gt;
 
-Opens the source file to obtain the file descriptor (FD). This API uses a promise to return the result.
+Opens the source file and returns the FD. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 

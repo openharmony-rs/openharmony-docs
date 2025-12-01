@@ -733,6 +733,7 @@
         - UI开发常见问题<!--ui-development-faq-->
           - [自定义节点常见问题](ui/arkts-user-defined-node-faq.md)
           - [按钮与选择组件常见问题](ui/arkts-select-component-faq.md)
+          - [使用文本常见问题](ui/arkts-text-faq.md)
       - 窗口管理<!--window-manager-->
         - [窗口开发概述](windowmanager/window-overview.md)
         - [管理应用窗口（Stage模型）](windowmanager/application-window-stage.md)
@@ -2006,6 +2007,8 @@
           - [使用Node-API接口进行模块加载](napi/use-napi-load-module-with-info.md)
           - [使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式的的任务](napi/use-call-threadsafe-function-with-priority.md)
           - [使用扩展的Node-API接口在当前线程中创建、切换和销毁上下文环境](napi/use-napi-about-context.md)
+          - [使用扩展的Node-API接口创建对ArkTS对象的强引用](napi/use-napi-about-strong-reference.md)
+          - [使用扩展的Node-API接口创建和销毁临界区作用域及访问字符串内容](napi/use-napi-about-critical.md)
           - [使用Node-API接口产生的异常日志/崩溃分析](napi/use-napi-about-crash.md)
           - [使用Node-API调用返回值为promise的ArkTS方法](napi/use-napi-method-promise.md)
         - Node-API常见问题汇总<!--napi-questions-->

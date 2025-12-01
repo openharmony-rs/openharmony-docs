@@ -36,7 +36,7 @@ UserStatus（用户状态感知）模块提供用户感知能力，可以感知�
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. 定义回调，函数接受年龄群组检测结果。
+2. 定义回调函数，监听年龄群组检测结果变化。
 
    ```
    let callback : Callback<userStatus.UserClassification> = (data : userStatus.UserClassification) => {

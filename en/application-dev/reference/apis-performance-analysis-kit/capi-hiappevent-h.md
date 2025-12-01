@@ -19,7 +19,7 @@ Defines the application event logging functions of the HiAppEvent module. Before
 
 **Since**: 8
 
-**Related Module**: [HiAppEvent](capi-hiappevent.md)
+**Related module**: [HiAppEvent](capi-hiappevent.md)
 
 ## Summary
 

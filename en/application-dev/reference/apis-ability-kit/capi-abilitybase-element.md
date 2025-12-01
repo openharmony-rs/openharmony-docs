@@ -9,7 +9,7 @@ The struct describes the Element in [Want](capi-want-h.md).
 
 **Related module**: [AbilityBase](capi-abilitybase.md)
 
-**Header File**: [want.h](capi-want-h.md)
+**Header file**: [want.h](capi-want-h.md)
 
 ## Summary
 

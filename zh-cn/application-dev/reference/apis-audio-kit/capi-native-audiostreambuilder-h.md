@@ -551,7 +551,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetFrameSizeInCallback(OH_AudioStrea
 
 **描述**
 
-用于播放时设置每次回调的帧长，帧长至少为音频硬件一次处理的数据大小，并且小于内部缓冲容量的一半。<br>低时延播放：frameSize可设置为5ms、10ms、15ms、20ms音频数据对应的帧长。<br>普通通路播放：frameSize可设置为20ms-100ms音频数据对应的帧长。
+用于播放时设置每次回调的帧长，帧长至少为音频硬件一次处理的数据大小，并且小于内部缓冲容量的一半。<br>低时延播放：frameSize可设置为5ms、10ms、15ms、20ms音频数据对应的帧长。<br>普通通路播放：frameSize可设置为20ms-100ms音频数据对应的帧长。例如，当采样率48000Hz时，20ms音频数据对应的帧长计算方式为：frameSize = 48000 * 0.02，即960个采样点数。
 
 **起始版本：** 11
 

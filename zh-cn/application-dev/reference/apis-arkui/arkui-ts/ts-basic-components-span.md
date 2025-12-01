@@ -203,7 +203,7 @@ fontFamily(value: string | Resource)
 
 lineHeight(value: Length)
 
-设置文本行高。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
+设置文本行高。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -213,7 +213,7 @@ lineHeight(value: Length)
 
 | 参数名 | 类型    | 必填 | 说明  |
 | ------ | ------ | ---- | ---- |
-| value  | [Length](ts-types.md#length) | 是   | 文本行高。 |
+| value  | [Length](ts-types.md#length) | 是   | 文本行高。 <br/> number类型时单位为fp。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。|
 
 ### font<sup>10+</sup>
 

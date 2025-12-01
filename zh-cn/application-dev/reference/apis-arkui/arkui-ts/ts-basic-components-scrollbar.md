@@ -60,9 +60,9 @@ enableNestedScroll(enabled: Optional\<boolean>)
 >
 > 滚动条使能嵌套滚动时，滚动条的滚动偏移量会先发给绑定的内层滚动组件，内层滚动组件再根据设置的嵌套滚动优先级依次传递给外层父滚动组件。
 >
-> WaterFlow组件的布局模式为移动窗口式（SLIDING_WINDOW）时，不支持嵌套滚动。
+> WaterFlow组件的布局模式为移动窗口式（[WaterFlowLayoutMode.SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)）时，不支持嵌套滚动。
 >
-> 设置嵌套滚动模式为PARALLEL时，父子组件同时滚动，需要开发者在onScrollFrameBegin中按照所需逻辑，自行设置父子组件滚动顺序。
+> 设置嵌套滚动模式为PARALLEL时，父子组件同时滚动，需要开发者在[onScrollFrameBegin](ts-container-scroll.md#onscrollframebegin9)中按照所需逻辑，自行设置父子组件滚动顺序。
 
 ### scrollBarColor<sup>20+</sup>
 

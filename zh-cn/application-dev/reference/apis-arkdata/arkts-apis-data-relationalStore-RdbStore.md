@@ -597,6 +597,8 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCal
 
 向目标表中插入一组数据，使用callback异步回调。
 
+接口报错，表示插入数据失败；接口没有报错但返回值为-1时，也表示插入数据失败。
+
 从API version 20开始，支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -674,7 +676,7 @@ const valueBucket3: relationalStore.ValuesBucket = {
 let valueBuckets = new Array(valueBucket1, valueBucket2, valueBucket3);
 if (store != undefined) {
   (store as relationalStore.RdbStore).batchInsert("EMPLOYEE", valueBuckets, (err, insertNum) => {
-    if (err) {
+    if (err || insertNum == -1) {
       console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
       return;
     }
@@ -688,6 +690,8 @@ if (store != undefined) {
 batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&gt;
 
 向目标表中插入一组数据，使用Promise异步回调。
+
+接口报错，表示插入数据失败；接口没有报错但返回值为-1时，也表示插入数据失败。
 
 从API version 20开始，该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
 
@@ -775,6 +779,10 @@ const valueBucket3: relationalStore.ValuesBucket = {
 let valueBuckets = new Array(valueBucket1, valueBucket2, valueBucket3);
 if (store != undefined) {
   (store as relationalStore.RdbStore).batchInsert("EMPLOYEE", valueBuckets).then((insertNum: number) => {
+    if (insertNum == -1) {
+      console.error(`batchInsert is failed`);
+      return;
+    }
     console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
   }).catch((err: BusinessError) => {
     console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
@@ -804,6 +812,8 @@ await store!.batchInsert("test", valueBucketArray); // 执行批量写入
 batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;):number
 
 向目标表中插入一组数据。
+
+接口报错，表示插入数据失败；接口没有报错但返回值为-1时，也表示插入数据失败。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -886,6 +896,10 @@ let valueBuckets = new Array(valueBucket1, valueBucket2, valueBucket3);
 if (store != undefined) {
   try {
     let insertNum: number = (store as relationalStore.RdbStore).batchInsertSync("EMPLOYEE", valueBuckets);
+    if (insertNum == -1) {
+      console.error(`batchInsertSync is failed`);
+      return;
+    }
     console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
   } catch (err) {
     console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
@@ -897,7 +911,13 @@ if (store != undefined) {
 
 batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): Promise&lt;number&gt;
 
-向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式。使用Promise异步回调。
+向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)。使用Promise异步回调。
+
+单次插入参数的最大数量限制为32766，超出上限会返回14800000错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。
+
+例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。
+
+请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -994,6 +1014,12 @@ if (store != undefined) {
 batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): number
 
 向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)。
+
+单次插入参数的最大数量限制为32766，超出上限会返回14800000错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。
+
+例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。
+
+请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

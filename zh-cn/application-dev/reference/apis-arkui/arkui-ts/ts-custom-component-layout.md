@@ -56,7 +56,7 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 
 | 参数名            | 类型                                                         |必填| 说明               |
 |----------------|------------------------------------------------------------|---|------------------|
-| selfLayoutInfo | [GeometryInfo](#geometryinfo10)                            |是 |计算父组件（自定义组件）后的自身布局信息。         |
+| selfLayoutInfo | [GeometryInfo](#geometryinfo10)                            |是 |计算自定义组件大小后的自身布局信息。         |
 | children       | Array&lt;[Layoutable](#layoutable10)&gt;                   |是 |计算子组件大小后的子组件布局信息。         |
 | constraint     | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) |是 |自定义组件的布局约束信息。 |
 
@@ -257,6 +257,14 @@ getBorderWidth(): DirectionalEdgesT\<number\>
 
 组件尺寸信息。
 
+> **说明：**
+>
+>- 自定义布局暂不支持LazyForEach写法。
+>- 使用builder形式的自定义布局创建，自定义组件的build()方法内只允许存在this.builder()，即示例的推荐用法。
+>- 父容器（自定义组件）上设置的尺寸信息，除aspectRatio之外，优先级小于onMeasureSize设置的尺寸信息。
+>- 子组件设置的位置信息，offset、position、markAnchor优先级大于onPlaceChildren设置的位置信息，其他位置设置属性不生效。
+>- 使用自定义布局方法时，需要同时调用onMeasureSize和onPlaceChildren方法，否则可能出现布局异常。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -265,14 +273,6 @@ getBorderWidth(): DirectionalEdgesT\<number\>
 |--------|--------|------|------|-------|
 | width  | number | 否|否|测量后的宽。<br>单位：vp。 |
 | height | number | 否|否|测量后的高。<br>单位：vp。 |
-
-> **说明：**
->
->- 自定义布局暂不支持LazyForEach写法。
->- 使用builder形式的自定义布局创建，自定义组件的build()方法内只允许存在this.builder()，即示例的推荐用法。
->- 父容器（自定义组件）上设置的尺寸信息，除aspectRatio之外，优先级小于onMeasureSize设置的尺寸信息。
->- 子组件设置的位置信息，offset、position、markAnchor优先级大于onPlaceChildren设置的位置信息，其他位置设置属性不生效。
->- 使用自定义布局方法时，需要同时调用onMeasureSize和onPlaceChildren方法，否则可能出现布局异常。
 
 ## onLayout<sup>(deprecated)</sup>
 
@@ -466,9 +466,13 @@ struct CustomLayout {
   onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
     let size = 100;
     children.forEach((child) => {
-      let result: MeasureResult = child.measure({ minHeight: size, minWidth: size, maxWidth: size, maxHeight: size })
-      size += result.width / 2
-      ;
+      let result: MeasureResult = child.measure({
+        minHeight: size,
+        minWidth: size,
+        maxWidth: size,
+        maxHeight: size
+      })
+      size += result.width / 2;
     })
     this.result.width = 100;
     this.result.height = 400;
@@ -495,8 +499,8 @@ struct Index {
       CustomLayout({ builder: ColumnChildren })
     }
     .justifyContent(FlexAlign.Center)
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
   }
 }
 
@@ -633,7 +637,7 @@ struct CustomLayout {
   onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
     let size = 100;
     children.forEach((child) => {
-      console.info("child uniqueId: ", child.uniqueId)
+      console.info('child uniqueId: ', child.uniqueId)
       const uiContext = this.getUIContext()
       if (uiContext) {
         let node: FrameNode | null = uiContext.getFrameNodeByUniqueId(child.uniqueId) // 获取NodeContainer组件的FrameNode。
@@ -665,9 +669,9 @@ struct CustomLayout {
 struct Index {
   @Builder
   ColumnChildrenText() {
-    Text("=====Text=====Text=====Text=====Text=====Text=====Text=====Text=====Text" )
+    Text('=====Text=====Text=====Text=====Text=====Text=====Text=====Text=====Text' )
       .fontSize(16).fontColor(Color.Black)
-      .borderWidth(2).backgroundColor("#fff8dc")
+      .borderWidth(2).backgroundColor('#fff8dc')
       .width(LayoutPolicy.fixAtIdealSize) // 设置子组件宽度不受到父组件限制。
       .height(LayoutPolicy.fixAtIdealSize)  // 设置子组件高度不受到父组件限制。
   }
@@ -676,7 +680,7 @@ struct Index {
     Column() {
       Column() {
         CustomLayoutText({ builder: this.ColumnChildrenText })
-          .backgroundColor("#f0ffff").borderRadius(20).margin(10)
+          .backgroundColor('#f0ffff').borderRadius(20).margin(10)
       }
       .width(300)
       .height(150)
@@ -748,7 +752,6 @@ struct Index {
     }
   }
 }
-
 
 @Component
 struct CustomLayout {
