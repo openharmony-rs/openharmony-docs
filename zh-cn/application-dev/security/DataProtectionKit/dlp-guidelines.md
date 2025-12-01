@@ -89,8 +89,8 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
       let context = getContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
     
       try {
-        console.log('openDLPFile:' + JSON.stringify(want));
-        console.log('openDLPFile: delegator:' + JSON.stringify(context));
+        console.info('openDLPFile:' + JSON.stringify(want));
+        console.info('openDLPFile: delegator:' + JSON.stringify(context));
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'openDLPFile:' + JSON.stringify(want));
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'openDLPFile: delegator:' + JSON.stringify(context));
         context.startAbility(want);
@@ -176,7 +176,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     isInSandbox() {
       dlpPermission.isInSandbox().then((data) => {
         this.result = 'isInSandbox result: ' + JSON.stringify(data);
-        console.log('isInSandbox result: ' + JSON.stringify(data));
+        console.info('isInSandbox result: ' + JSON.stringify(data));
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'isInSandbox result: ' + JSON.stringify(data));
       }).catch((err:BusinessError) => {
         this.result = 'isInSandbox error: ' + JSON.stringify(err);
@@ -195,7 +195,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     getDLPPermissionInfo() {
       dlpPermission.getDLPPermissionInfo().then((data) => {
         this.result = 'getDLPPermissionInfo result: ' + JSON.stringify(data);
-        console.log('getDLPPermissionInfo, result: ' + JSON.stringify(data));
+        console.info('getDLPPermissionInfo, result: ' + JSON.stringify(data));
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPPermissionInfo result: ' + JSON.stringify(data));
       }).catch((err:BusinessError) => {
         this.result = 'getDLPPermissionInfo error: ' + JSON.stringify(err);
@@ -212,8 +212,8 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     ``` TypeScript
     getDLPSupportedFileTypes() {
       dlpPermission.getDLPSupportedFileTypes((err, result) => {
-        console.log('getDLPSupportedFileTypes: ' + JSON.stringify(err));
-        console.log('getDLPSupportedFileTypes: ' + JSON.stringify(result));
+        console.info('getDLPSupportedFileTypes: ' + JSON.stringify(err));
+        console.info('getDLPSupportedFileTypes: ' + JSON.stringify(result));
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(err));
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(result));
         this.result = 'getDLPSupportedFileTypes result: ' + JSON.stringify(result);
