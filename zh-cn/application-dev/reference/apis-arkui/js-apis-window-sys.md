@@ -1202,7 +1202,7 @@ setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: number): Promise&l
 
 | 参数名          | 类型   | 必填  | 说明                    |
 | -------------- | ------ | ----- | ----------------------- |
-| windowType | [WindowType](arkts-apis-window-e.md#windowtype7) | 是    | 窗口类型。支持TYPE_WALLET_SWIPE_CARD、TYPE_VOICE_INTERACTION、TYPE_SCREENSHOT、TYPE_SCREEN_CONTROL、TYPE_FLOAT_NAVIGATION、TYPE_MUTISCREEN_COLLABORATION |
+| windowType | [WindowType](arkts-apis-window-e.md#windowtype7) | 是    | 窗口类型。支持TYPE_WALLET_SWIPE_CARD、TYPE_VOICE_INTERACTION、TYPE_SCREENSHOT、TYPE_SCREEN_CONTROL、TYPE_FLOAT_NAVIGATION、TYPE_MUTISCREEN_COLLABORATION。 |
 | zIndex | number | 是    | 系统窗口的层级。该参数仅支持整数输入，浮点数输入将向下取整。|
 
 **返回值：**
@@ -1229,7 +1229,7 @@ import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
   window.setSpecificSystemWindowZIndex(window.WindowType.TYPE_WALLET_SWIPE_CARD, 200).then(() => {
-    console.info('Succeeded in set zIndex');
+    console.info('Succeeded in setting zIndex');
   }).catch((err: BusinessError) => {
     console.error(`Failed to set zIndex. Cause code: ${err.code}, message: ${err.message}`);
   });
