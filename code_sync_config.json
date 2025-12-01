@@ -28640,5 +28640,25 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/file-management/select-user-file.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":150,
+						"name":"picker_select",
+						"start_line":135
+					},
+					{
+						"end_line":203,
+						"name":"audio_select_picker",
+						"start_line":187
+					}
+				]
+			}
+		]
 	}
 ]
