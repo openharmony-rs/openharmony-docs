@@ -1268,7 +1268,7 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<voi
 
 | 参数名         | 类型                                     | 必填   | 说明                                                       |
 | ----------- | ---------------------------------------- | ---- |----------------------------------------------------------|
-| action    | [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction)| 是    | 无障碍节点可执行的操作。
+| action    | [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction)| 是    | 无障碍节点可执行的操作。|
 | parameters | [Parameter](#parameter20) | 否    | 执行操作时设置的参数值，默认为空。                            |
 
 **返回值：**
