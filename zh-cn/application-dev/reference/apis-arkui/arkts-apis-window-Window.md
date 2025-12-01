@@ -8635,12 +8635,15 @@ onWindowHighlightChange(callback: Callback&lt;boolean&gt;): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   windowClass.onWindowHighlightChange((data: boolean) => {
     console.info(`Window highlight Change: ${data}`);
   });
 } catch (exception) {
-  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+  let err = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
