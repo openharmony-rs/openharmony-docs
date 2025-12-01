@@ -63,7 +63,7 @@ LazyForEach为开发者提供了基于数据源渲染出一系列子组件的能
 
 对于预加载区域内的节点，若创建耗时较长，框架会分帧执行创建任务。
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 <!-- @[initial_rendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/InitialRendering.ets) -->
 
@@ -131,7 +131,7 @@ struct InitialRendering {
 
 当不同数据项生成的键值相同时，框架的行为是不可预测的。例如，在以下代码中，`LazyForEach`渲染的数据项键值均相同，在滑动过程中，`LazyForEach`会预加载划入划出当前页面的子组件，而新建的子组件和销毁的旧子组件具有相同的键值，框架可能取用错误的缓存，导致子组件渲染出现问题。
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 ```ts
 /** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
@@ -215,7 +215,7 @@ LazyForEach(this.data, (item: string) => {
 
 **添加数据**
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 <!-- @[add_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/AddingData.ets) -->
 
@@ -283,7 +283,7 @@ struct AddingData {
 
 **删除数据**
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 <!-- @[delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/DataDeletion.ets) -->
 
@@ -361,7 +361,7 @@ struct DataDeletion {
 
 **交换数据**
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 <!-- @[swap_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/SwappingData.ets) -->
 
@@ -446,7 +446,7 @@ struct SwappingData {
 
 **改变单个数据**
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 <!-- @[change_individual_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ModifyingIndividualDataItems.ets) -->
 
@@ -519,7 +519,7 @@ struct ModifyingIndividualDataItems {
 
 **改变多个数据**
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 <!-- @[change_multiple_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ModifyingMultipleDataItems.ets) -->
 
@@ -598,7 +598,7 @@ struct ModifyingMultipleDataItems {
 
 **精准批量修改数据**
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 <!-- @[precisely_modifying_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/PreciselyModifyingData.ets) -->
 
@@ -687,7 +687,7 @@ onDatasetChange接口允许开发者一次性通知LazyForEach进行数据添加
 
 第二个例子，直接给数组赋值，不涉及 splice 操作。operations直接从比较原数组和新数组得到。
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 <!-- @[precisely_modifying_data_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/PreciselyModifyingData2.ets) -->
 
@@ -1128,7 +1128,7 @@ struct ReceivingExternalInputChildComponent {
 ### 拖拽排序
 当LazyForEach在List组件下使用，并且设置了[onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove)事件，可以使能拖拽排序。拖拽排序释放后，如果数据位置发生变化，将触发onMove事件，上报原始索引号和目标索引号。在onMove事件中，根据上报的索引号修改数据源。修改数据源时，无需调用DataChangeListener接口通知数据源变化。
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 <!-- @[drag_sorting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/DragandDropSorting.ets) -->
 
@@ -1201,7 +1201,7 @@ struct DragandDropSorting {
 
 ### 渲染结果非预期
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 ```ts
 /** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
@@ -1268,7 +1268,7 @@ struct MyComponent {
 
 修复代码如下。
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 <!-- @[unexpected_rendering_results](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/UnexpectedRenderingResults.ets) -->
 
@@ -1347,7 +1347,7 @@ struct UnexpectedRenderingResults {
 
 ### 重渲染时图片闪烁
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 ```ts
 /** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
@@ -1519,7 +1519,7 @@ struct ImageFlickeringChildComponent {
 
 ### @ObjectLink属性变化UI未更新
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 ```ts
 /** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
@@ -1697,7 +1697,7 @@ struct UINotRerenderedChildComponent {
 ### 在List内使用屏幕闪烁
 在List的onScrollIndex方法中调用onDataReloaded可能会导致屏幕闪烁。
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 ```ts
 /** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
@@ -1772,7 +1772,7 @@ struct MyComponent {
 
 使用`onDatasetChange`代替`onDataReloaded`，不仅可以修复闪屏问题，还能提升加载性能。
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 <!-- @[screen_flickering_in_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ScreenFlickeringInList.ets) -->
 
@@ -1855,7 +1855,7 @@ struct ScreenFlickeringInList {
 
 `@Reusable装饰器`与[\@ComponentV2装饰器](../state-management/arkts-create-custom-components.md#componentv2)混用会导致组件渲染异常。
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 ```ts
 /** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
@@ -1947,7 +1947,7 @@ struct ChildComponent {
 
 开发者需要定义合适的键值生成函数，返回与目标数据相关联的键值。目标数据发生改变时，LazyForEach识别到键值改变才会刷新对应组件。
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 ```ts
 /** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
@@ -2026,7 +2026,7 @@ LazyForEach(this.data, (item: string) => {
 
 支持数据懒加载的父组件基于自身和子组件的高度或宽度计算可视范围内应布局的子节点数量，高度或宽度的缺失会导致部分场景懒加载失效。如下示例，在纵向布局中，首次渲染时子组件的高度缺失，所有数据项对应组件都会被创建。
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [String类型数组的BasicDataSource代码](#basicdatasource示例代码)。
+BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 ```ts
 /** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
@@ -2187,30 +2187,31 @@ export class BasicDataSource implements IDataSource {
 
 ### 泛型数组的BasicDataSource代码
 
-GenericBasicDataSource.ets:
-
 <!-- @[generic_basic_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/GenericBasicDataSource.ets) -->
 
-
 ``` TypeScript
-class BasicDataSource implements IDataSource {
+// GenericBasicDataSource.ets
+// GenericBasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新
+export class GenericBasicDataSource<T> implements IDataSource {
   private listeners: DataChangeListener[] = [];
-  private originDataArray: StringData[] = [];
+  private originDataArray: T[] = [];
 
   public totalCount(): number {
     return this.originDataArray.length;
   }
 
-  public getData(index: number): StringData {
+  public getData(index: number): T {
     return this.originDataArray[index];
   }
 
+  // 该方法为框架侧调用，为LazyForEach组件向其数据源处添加listener监听
   registerDataChangeListener(listener: DataChangeListener): void {
     if (this.listeners.indexOf(listener) < 0) {
       this.listeners.push(listener);
     }
   }
 
+  // 该方法为框架侧调用，为对应的LazyForEach组件在数据源处去除listener监听
   unregisterDataChangeListener(listener: DataChangeListener): void {
     const pos = this.listeners.indexOf(listener);
     if (pos >= 0) {
@@ -2218,30 +2219,35 @@ class BasicDataSource implements IDataSource {
     }
   }
 
+  // 通知LazyForEach组件需要重载所有子组件
   notifyDataReload(): void {
     this.listeners.forEach(listener => {
       listener.onDataReloaded();
     });
   }
 
+  // 通知LazyForEach组件需要在index对应索引处添加子组件
   notifyDataAdd(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataAdd(index);
     });
   }
 
+  // 通知LazyForEach组件在index对应索引处数据有变化，需要重建该子组件
   notifyDataChange(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataChange(index);
     });
   }
 
+  // 通知LazyForEach组件需要在index对应索引处删除该子组件
   notifyDataDelete(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataDelete(index);
     });
   }
 
+  // 通知LazyForEach组件将from索引和to索引处的子组件进行交换
   notifyDataMove(from: number, to: number): void {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);
