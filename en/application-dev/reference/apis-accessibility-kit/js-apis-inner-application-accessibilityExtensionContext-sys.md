@@ -120,7 +120,7 @@ import {
   AccessibilityExtensionContext
 } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import Want from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 
 export default class AccessibilityManager {
   private static instance: AccessibilityManager;
@@ -872,7 +872,7 @@ Defines the accessibility node element. Before calling the APIs of **Accessibili
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
 | accessibilityFocused<sup>20+</sup> | boolean | No| Yes| Whether the element is focused for accessibility purposes. The value **true** indicates that the element is focused, and **false** indicates the opposite.<br>Default value: **false**.|
 | bundleName<sup>20+</sup> | string                                                             | No | Yes | Bundle name.|
-| checkable<sup>20+</sup> | boolean | No| Yes| Whether the element can be checked. The value **true** indicates that the element can be checked, and **false** indicates the opposite.<br>Default value: **false**.|
+| checkable<sup>20+</sup> | boolean | No| Yes| Whether the element is checkable. The value **true** indicates that the element is checkable, and **false** indicates the opposite.<br>Default value: **false**.|
 | checked<sup>20+</sup> | boolean | No| Yes| Whether the element is checked. The value **true** indicates that the element is checked, and **false** indicates the opposite.<br>Default value: **false**.|
 | clickable<sup>20+</sup> | boolean | No| Yes| Whether the element is clickable. The value **true** indicates that the element is clickable, and **false** indicates the opposite.<br>Default value: **false**.|
 | componentId<sup>20+</sup> | number | No| Yes| ID of the component to which the element belongs.<br>Default value: **-1**.|
@@ -883,7 +883,7 @@ Defines the accessibility node element. Before calling the APIs of **Accessibili
 | editable<sup>20+</sup> | boolean | No| Yes| Whether the element is editable. The value **true** indicates that the element is editable, and **false** indicates the opposite.<br>Default value: **false**.|
 | endIndex<sup>20+</sup> | number                                                             | No | Yes | Index of the last list item displayed on the screen.<br>Default value: **0**.|
 | error<sup>20+</sup> | string                                                             | No | Yes | Error status of the element.|
-| focusable<sup>20+</sup> | boolean | No| Yes| Whether the element can be focused. The value **true** indicates that the element can be focused, and **false** indicates the opposite.<br>Default value: **false**.|
+| focusable<sup>20+</sup> | boolean | No| Yes| Whether the element is focusable. The value **true** indicates that the element is focusable, and **false** indicates the opposite.<br>Default value: **false**.|
 | hintText<sup>20+</sup> | string                                                             | No | Yes | Hint text.|
 | inputType<sup>20+</sup> | number                                                             | No | Yes | Type of the input text.<br>Default value: **0**.|
 | inspectorKey<sup>20+</sup> | string                                                             | No | Yes | Inspector key.|
