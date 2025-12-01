@@ -816,7 +816,7 @@ export class ECStoreManager {
 
 模拟在应用启动期间，注册对COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED公共事件的监听，并配置相应的数据库信息、密钥状态信息等。
 
-<!-- @[rdb_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/EntryAbility.ets) -->
+<!-- @[rdb_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ```ts
 import { AbilityConstant, contextConstant, UIAbility, Want, application } from '@kit.AbilityKit';
