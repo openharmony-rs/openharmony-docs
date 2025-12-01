@@ -9457,6 +9457,7 @@ getWindowCornerRadius(): number
 **系统能力**：SystemCapability.Window.SessionManager
 
 **设备行为差异：** 
+  
 API version 23之前，该接口在支持并处于自由窗口状态的设备上可正常调用，在其他设备中返回801错误码。
 
 从API version 23开始，该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备中返回801错误码。
