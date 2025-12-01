@@ -3159,7 +3159,7 @@ on\(type: 'callDetailsChange', callback: Callback\<CallAttributeOptions\>\): voi
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3213,7 +3213,7 @@ on\(type: 'callEventChange', callback: Callback\<CallEventOptions\>\): void
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3265,6 +3265,10 @@ on\(type: 'callDisconnectedCause', callback: Callback\<DisconnectedDetails\>\): 
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                                   | 必填 | 说明                       |
@@ -3305,6 +3309,10 @@ on\(type: 'mmiCodeResult', callback: Callback\<MmiCodeResults\>\): void
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3349,7 +3357,7 @@ off\(type: 'callDetailsChange', callback?: Callback\<CallAttributeOptions\>\): v
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3403,7 +3411,7 @@ off\(type: 'callEventChange', callback?: Callback\<CallEventOptions\>\): void
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3457,7 +3465,7 @@ off\(type: 'callDisconnectedCause', callback?: Callback\<DisconnectedDetails\>\)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3512,7 +3520,7 @@ off\(type: 'mmiCodeResult', callback?: Callback\<MmiCodeResults\>\): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3567,7 +3575,7 @@ on\(type: 'audioDeviceChange', callback: Callback\<AudioDeviceCallbackInfo\>\): 
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3621,7 +3629,7 @@ off\(type: 'audioDeviceChange', callback?: Callback\<AudioDeviceCallbackInfo\>\)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3675,7 +3683,7 @@ on\(type: 'postDialDelay', callback: Callback\<string\>\): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3727,7 +3735,7 @@ off\(type: 'postDialDelay', callback?: Callback\<string\>\): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8750,7 +8758,9 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 
 ## call.onCallDetailsChange<sup>22+</sup>
 
-订阅CallDetailsChange事件
+onCallDetailsChange(callback: Callback<CallAttributeOptions>): void;
+
+订阅CallDetailsChange事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -8765,9 +8775,9 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 **ArkTs-Sta起始版本：**22
 
 **参数：**
-|参数名    |类型                                                       |必填 |说明                                               |
+|参数名    |类型                                                       |必填 |说明                                                |
 |--------- |----------------------------------------------------------|----  |-------------------------------------------------- |
-| callback | Callback<[CallAttributeOptions](#callattributeoptions7)> | 是   | 以回调函数的方式返回订阅callDetailsChange事件的结果。|
+| callback | Callback\<[CallAttributeOptions](#callattributeoptions7)> | 是   | 以回调函数的方式返回订阅callDetailsChange事件的结果。|
 
 **错误码：**
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
@@ -8808,7 +8818,9 @@ struct Index {
 
 ## call.offCallDetailsChange<sup>22+</sup>
 
-取消订阅CallDetailsChange事件
+offCallDetailsChange(callback?: Callback<CallAttributeOptions>): void;
+
+取消订阅CallDetailsChange事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -8825,7 +8837,7 @@ struct Index {
 **参数：**
 |参数名    |类型                                                       |必填 |说明                                           |
 |--------- |----------------------------------------------------------|----  |---------------------------------------------|
-| callback | Callback<[CallAttributeOptions](#callattributeoptions7)> | 否   |回调函数。不填该参数将不会收到取消订阅的处理结果。|
+| callback | Callback\<[CallAttributeOptions](#callattributeoptions7)> | 否   |回调函数。不填该参数将不会收到取消订阅的处理结果。|
 
 **错误码：**
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
@@ -8867,7 +8879,9 @@ struct Index {
 
 ## call.onCallEventChange<sup>22+</sup>
 
-订阅CallEventChange事件
+onCallEventChange(callback: Callback<CallEventOptions>): void;
+
+订阅CallEventChange事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -8884,7 +8898,7 @@ struct Index {
 **参数：**
 |参数名    |类型                                                       |必填 |说明                                               |
 |--------- |----------------------------------------------------------|----  |-------------------------------------------------- |
-| callback | Callback<[CallEventOptions](#calleventoptions8)>         | 是   | 以回调函数的方式返回订阅callEventChange事件的结果。     |
+| callback | Callback\<[CallEventOptions](#calleventoptions8)>         | 是   | 以回调函数的方式返回订阅callEventChange事件的结果。     |
 
 **错误码：**
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
@@ -8925,7 +8939,9 @@ struct Index {
 
 ## call.offCallEventChange<sup>22+</sup>
 
-取消订阅CallEventChange事件
+off(type: 'callEventChange', callback?: Callback<CallEventOptions>): void;
+
+取消订阅CallEventChange事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -8942,7 +8958,7 @@ struct Index {
 **参数：**
 |参数名    |类型                                               |必填 |说明                                            |
 |--------- |--------------------------------------------------|----  |--------------------------------------------- |
-| callback | Callback<[CallEventOptions](#calleventoptions8)> | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。|
+| callback | Callback\<[CallEventOptions](#calleventoptions8)> | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。|
 
 **错误码：**
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
@@ -8983,7 +8999,9 @@ struct Index {
 
 ## call.onCallDisconnectedCause<sup>22+</sup>
 
-订阅CallDisconnectedCause事件
+onCallDisconnectedCause(callback: Callback<DisconnectedDetails>): void;
+
+订阅CallDisconnectedCause事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -9000,7 +9018,7 @@ struct Index {
 **参数：**
 |参数名    |类型                                                       |必填 |说明                                               |
 |--------- |----------------------------------------------------------|---- |---------------------------------------------------- |
-| callback | Callback<[DisconnectedDetails](#disconnecteddetails9)> | 是   | 以回调函数的方式返回订阅callDisconnectedCause事件的结果。|
+| callback | Callback\<[DisconnectedDetails](#disconnecteddetails9)> | 是   | 以回调函数的方式返回订阅callDisconnectedCause事件的结果。|
 
 **错误码：**
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
@@ -9041,7 +9059,9 @@ struct Index {
 
 ## call.offCallDisconnectedCause<sup>22+</sup>
 
-取消订阅CallDisconnectedCause事件
+offCallDisconnectedCause(callback?: Callback<DisconnectedDetails>): void;
+
+取消订阅CallDisconnectedCause事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -9058,7 +9078,7 @@ struct Index {
 **参数：**
 |参数名    |类型                                                       |必填 |说明                                           |
 |--------- |----------------------------------------------------------|----  |---------------------------------------------|
-| callback | Callback<[CallAttributeOptions](#CallDisconnectedCause9)> | 否   |回调函数。不填该参数将不会收到取消订阅的处理结果。|
+| callback | Callback\<[CallAttributeOptions](#CallDisconnectedCause9)> | 否   |回调函数。不填该参数将不会收到取消订阅的处理结果。|
 
 **错误码：**
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
@@ -9099,7 +9119,9 @@ struct Index {
 
 ## call.onMmiCodeResult<sup>22+</sup>
 
-订阅MmiCodeResult事件
+onMmiCodeResult(callback: Callback<MmiCodeResults>): void;
+
+订阅MmiCodeResult事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -9116,7 +9138,7 @@ struct Index {
 **参数：**
 |参数名    |类型                                           |必填 |说明                                            |
 |--------- |----------------------------------------------|---- |------------------------------------------------|
-| callback | Callback<[MmiCodeResults](#mmicoderesults9)> | 是   | 以回调函数的方式返回订阅mmiCodeResult事件的结果。|
+| callback | Callback\<[MmiCodeResults](#mmicoderesults9)> | 是   | 以回调函数的方式返回订阅mmiCodeResult事件的结果。|
 
 **错误码：**
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
@@ -9157,7 +9179,9 @@ struct Index {
 
 ## call.offMmiCodeResult<sup>22+</sup>
 
-取消订阅MmiCodeResult事件
+offMmiCodeResult(callback?: Callback<MmiCodeResults>): void;
+
+取消订阅MmiCodeResult事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -9174,7 +9198,7 @@ struct Index {
 **参数：**
 |参数名    |类型                                               |必填 |说明                                           |
 |--------- |--------------------------------------------------|----  |--------------------------------------------- |
-| callback | Callback<[MmiCodeResults](#mmicoderesults9)>     | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。|
+| callback | Callback\<[MmiCodeResults](#mmicoderesults9)>     | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。|
 
 **错误码：**
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
@@ -9215,7 +9239,9 @@ struct Index {
 
 ## call.onAudioDeviceChange<sup>22+</sup>
 
-订阅AudioDeviceChange事件
+onAudioDeviceChange(callback: Callback<AudioDeviceCallbackInfo>): void;
+
+订阅AudioDeviceChange事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -9232,7 +9258,7 @@ struct Index {
 **参数：**
 |参数名    |类型                                                              |必填 |说明                                             |
 |--------- |-----------------------------------------------------------------|---- |------------------------------------------------ |
-| callback | Callback<[AudioDeviceCallbackInfo](#audiodevicecallbackinfo10)> | 是   | 以回调函数的方式返回订阅通话音频设备切换事件的结果。|
+| callback | Callback\<[AudioDeviceCallbackInfo](#audiodevicecallbackinfo10)> | 是   | 以回调函数的方式返回订阅通话音频设备切换事件的结果。|
 
 **错误码：**
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
@@ -9273,7 +9299,9 @@ struct Index {
 
 ## call.offAudioDeviceChange<sup>22+</sup>
 
-取消订阅AudioDeviceChange事件
+offAudioDeviceChange(callback?: Callback<AudioDeviceCallbackInfo>): void;
+
+取消订阅AudioDeviceChange事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -9290,7 +9318,7 @@ struct Index {
 **参数：**
 |参数名    |类型                                                               |必填 |说明                                           |
 |--------- |------------------------------------------------------------------|----  |--------------------------------------------- |
-| callback | Callback<[AudioDeviceCallbackInfo](#audiodevicecallbackinfo10)>  | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。|
+| callback | Callback\<[AudioDeviceCallbackInfo](#audiodevicecallbackinfo10)>  | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。|
 
 **错误码：**
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
@@ -9332,7 +9360,9 @@ struct Index {
 
 ## call.onPostDialDelay<sup>22+</sup>
 
-订阅PostDialDelay事件
+onPostDialDelay(callback: Callback<string>): void;
+
+订阅PostDialDelay事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -9390,7 +9420,9 @@ struct Index {
 
 ## call.offPostDialDelay<sup>22+</sup>
 
-取消订阅PostDialDelay事件
+offPostDialDelay(callback?: Callback<string>): void;
+
+取消订阅PostDialDelay事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -9448,7 +9480,9 @@ struct Index {
 
 ## call.onImsCallModeChange<sup>22+</sup>
 
-订阅ImsCallModeChange事件
+onCallEventChange(callback: Callback<CallEventOptions>): void;
+
+订阅ImsCallModeChange事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -9465,7 +9499,7 @@ struct Index {
 **参数：**
 |参数名    |类型                                         |必填 |说明                                                |
 |--------- |--------------------------------------------|---- |---------------------------------------------------|
-| callback | Callback<[ImsCallModeInfo](#imscallmode8)> | 是  | 以回调函数的方式返回订阅imsCallModeChange事件的结果。 |
+| callback | Callback\<[ImsCallModeInfo](#imscallmode8)> | 是  | 以回调函数的方式返回订阅imsCallModeChange事件的结果。 |
 
 **错误码：**
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
@@ -9505,7 +9539,9 @@ struct Index {
 
 ## call.offImsCallModeChange<sup>22+</sup>
 
-取消订阅ImsCallModeChange事件
+offCallEventChange(callback?: Callback<CallEventOptions>): void;
+
+取消订阅ImsCallModeChange事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -9522,7 +9558,7 @@ struct Index {
 **参数：**
 |参数名    |类型                                         |必填 |说明                                           |
 |--------- |--------------------------------------------|----  |--------------------------------------------- |
-| callback | Callback<[ImsCallModeInfo](#imscallmode8)> | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。|
+| callback | Callback\<[ImsCallModeInfo](#imscallmode8)> | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。|
 
 **错误码：**
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
@@ -9562,7 +9598,9 @@ struct Index {
 
 ## call.onCallSessionEvent<sup>22+</sup>
 
-订阅CallSessionEvent事件
+onCallSessionEvent(callback: Callback<CallSessionEvent>): void;
+
+订阅CallSessionEvent事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -9579,7 +9617,7 @@ struct Index {
 **参数：**
 |参数名    |类型                                                |必填 |说明                                                |
 |--------- |---------------------------------------------------|---- |--------------------------------------------------- |
-| callback | Callback<[CallSessionEvent](#callsessionevent11)> | 是  | 以回调函数的方式返回订阅callSessionEvent事件的结果。  |
+| callback | Callback\<[CallSessionEvent](#callsessionevent11)> | 是  | 以回调函数的方式返回订阅callSessionEvent事件的结果。  |
 
 **错误码：**
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
@@ -9619,7 +9657,9 @@ struct Index {
 
 ## call.offCallSessionEvent<sup>22+</sup>
 
-取消订阅CallSessionEvent事件
+offCallSessionEvent(callback?: Callback<CallSessionEvent>): void;
+
+取消订阅CallSessionEvent事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -9636,7 +9676,7 @@ struct Index {
 **参数：**
 |参数名    |类型                                                |必填 |说明                                            |
 |--------- |---------------------------------------------------|----  |--------------------------------------------- |
-| callback | Callback<[CallSessionEvent](#callsessionevent11)> | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。|
+| callback | Callback\<[CallSessionEvent](#callsessionevent11)> | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。|
 
 **错误码：**
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
@@ -9677,7 +9717,9 @@ struct Index {
 
 ## call.onPeerDimensionsChange<sup>22+</sup>
 
-订阅PeerDimensionsChange事件
+onPeerDimensionsChange(callback: Callback<PeerDimensionsDetail>): void;
+
+订阅PeerDimensionsChange事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -9694,7 +9736,7 @@ struct Index {
 **参数：**
 |参数名    |类型                                                        |必填 |说明                                                   |
 |--------- |-----------------------------------------------------------|---- |-------------------------------------------------------|
-| callback | Callback<[PeerDimensionsDetail](#peerdimensionsdetail11)> | 是   | 以回调函数的方式返回订阅peerDimensionsChange事件的结果。| 
+| callback | Callback\<[PeerDimensionsDetail](#peerdimensionsdetail11)> | 是   | 以回调函数的方式返回订阅peerDimensionsChange事件的结果。| 
 
 **错误码：**
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
@@ -9734,7 +9776,9 @@ struct Index {
 
 ## call.offPeerDimensionsChange<sup>22+</sup>
 
-取消订阅PeerDimensionsChange事件
+offPeerDimensionsChange(callback?: Callback<PeerDimensionsDetail>): void;
+
+取消订阅PeerDimensionsChange事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -9751,7 +9795,7 @@ struct Index {
 **参数：**
 |参数名    |类型                                                        |必填 |说明                                            |
 |--------- |-----------------------------------------------------------|----  |-----------------------------------------------|
-| callback | Callback<[PeerDimensionsDetail](#peerdimensionsdetail11)> | 否   |  回调函数。不填该参数将不会收到取消订阅的处理结果。|
+| callback | Callback\<[PeerDimensionsDetail](#peerdimensionsdetail11)> | 否   |  回调函数。不填该参数将不会收到取消订阅的处理结果。|
 
 **错误码：**
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
@@ -9791,7 +9835,9 @@ struct Index {
 
 ## call.onCameraCapabilitiesChange<sup>22+</sup>
 
-订阅CameraCapabilitiesChange事件
+onCameraCapabilitiesChange(callback: Callback<CameraCapabilities>): void;
+
+订阅CameraCapabilitiesChange事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -9808,7 +9854,7 @@ struct Index {
 **参数：**
 |参数名    |类型                                                    |必填 |说明                                                   |
 |--------- |-------------------------------------------------------|---- |-------------------------------------------------------|
-| callback | Callback<[CameraCapabilities](#cameracapabilities11)> | 是  | 以回调函数的方式返回订阅cameraCapabilitiesChange事件的结果。|
+| callback | Callback\<[CameraCapabilities](#cameracapabilities11)> | 是  | 以回调函数的方式返回订阅cameraCapabilitiesChange事件的结果。|
 
 **错误码：**
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
@@ -9848,7 +9894,9 @@ struct Index {
 
 ## call.offCameraCapabilitiesChange<sup>22+</sup>
 
-取消订阅CameraCapabilitiesChange事件
+offCameraCapabilitiesChange(callback?: Callback<CameraCapabilities>): void;
+
+取消订阅CameraCapabilitiesChange事件。使用callback异步回调。
 
 **系统接口：**此接口为系统接口。
 
@@ -9865,7 +9913,7 @@ struct Index {
 **参数：**
 |参数名    |类型                                                        |必填 |说明                                            |
 |--------- |-----------------------------------------------------------|----  |-----------------------------------------------|
-| callback | Callback<[CameraCapabilities](#cameracapabilities11)> | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。 |
+| callback | Callback\<[CameraCapabilities](#cameracapabilities11)> | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。 |
 
 **错误码：**
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
