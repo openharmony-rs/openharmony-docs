@@ -46,7 +46,25 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 | displayId<sup>12+</sup> | number | 否 | 是 | 意图调用时指定的物理屏幕id，该参数应为整数，仅在executeMode为UI_ABILITY_FOREGROUND时生效。 |
 | uris<sup>18+</sup> | Array&lt;string&gt; | 否 | 是 | 意图调用时，意图调用方给意图执行方授权的URI列表。 如果通过[@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段必选，仅读取数组第一个元素作为[openLink](js-apis-inner-application-uiAbilityContext.md#openlink12)的URI。 |
 | flags<sup>18+</sup> | number | 否 | 是 | 意图调用时，意图调用方给意图执行方授权的uris的[flags](js-apis-app-ability-wantConstant.md#flags)。 <br/>**说明：**<br/>该参数仅支持FLAG_AUTH_READ_URI_PERMISSION、FLAG_AUTH_WRITE_URI_PERMISSION、FLAG_AUTH_READ_URI_PERMISSION\|FLAG_AUTH_WRITE_URI_PERMISSION。|
+| userId<sup>23+</sup> | number | 否 | 是 | 目标意图所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。
 
+## InsightIntentInfoFilter<sup>23+<sup>
+
+意图筛选器，描述目标意图的筛选条件，用于筛选设备上符合条件的意图。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称        | 类型   | 只读 | 可选 | 说明                                                         |
+| ----------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| intentFlags | number | 否   | 否   | 意图信息（[InsightIntentInfo](#insightintentinfo20)）的标识，用于表示查询全量意图信息或者简要意图信息，取值可参考[GetInsightIntentFlag](#getinsightintentflag20)。 |
+| bundleName  | string | 否   | 是   | 目标意图所属的应用包名称。                                                 |
+| moduleName  | string | 否   | 是   | 目标意图所属的模块名称。                                                   |
+| intentName  | string | 否   | 是   | 目标意图名称。                                                   |
+| userId      | number | 否   | 是   | 目标意图所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。
 ## InsightIntentType<sup>20+<sup>
 
 表示通过意图装饰器定义的意图类型，可通过[getAllInsightIntentInfo](#insightintentdrivergetallinsightintentinfo20)等方法返回的[LinkIntentInfo](#linkintentinfo20)获取。
@@ -550,4 +568,69 @@ getInsightIntentInfoByIntentName(bundleName: string, moduleName: string, intentN
       hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByIntentName error caught %{public}s', JSON.stringify(error));
     }
   }
+```
+
+## insightIntentDriver.getInsightIntentInfoByFilter<sup>23+<sup>
+
+getInsightIntentInfoByFilter(filter: InsightIntentInfoFilter): Promise<Array\<InsightIntentInfo>>
+
+根据[InsightIntentInfoFilter](#insightintentinfofilter23)查询当前设备上的意图信息。使用Promise异步回调。<br/>如果调用方应用的用户ID与目标用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名                  | 类型                                                  | 必填 | 说明                     |
+| ----------------------- | ----------------------------------------------------- | ---- | ------------------------ |
+| filter | [InsightIntentInfoFilter](#insightintentinfofilter23) | 是   | 意图筛选器，描述目标意图的筛选条件，用于筛选设备上符合条件的意图。 |
+
+**返回值：**
+
+| 类型                                                       | 说明                                |
+| ---------------------------------------------------------- | ----------------------------------- |
+| Promise<Array\<[InsightIntentInfo](#insightintentinfo20)>> | Promise对象，返回意图信息对象数组。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Not system application.                                      |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module.|
+
+**示例：**
+
+```ts
+import { insightIntentDriver } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+function getInfoByFilter() {
+  let filter: insightIntentDriver.InsightIntentInfoFilter = {
+    intentFlags: insightIntentDriver.GetInsightIntentFlag.GET_FULL_INSIGHT_INTENT | insightIntentDriver.GetInsightIntentFlag.GET_ENTITY_INFO,
+    bundleName: 'com.example.intent', // 开发者需自行修改为实际包名
+    moduleName: 'entry', // 开发者需自行修改为实际模块名
+    intentName: 'play', // 开发者需自行修改为实际意图名
+    userId: 100, // 开发者需自行修改为实际userId
+  };
+
+  try {
+    insightIntentDriver.getInsightIntentInfoByFilter(filter).then((data) => {
+      hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByFilter return %{public}s', JSON.stringify(data));
+    }).catch((err: BusinessError) => {
+      hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByFilter errCode: %{public}d', err.code);
+      hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByFilter errMessage: %{public}s', err.message);
+    });
+  } catch (error) {
+    hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByFilter error caught %{public}s', JSON.stringify(error));
+  }
+}
 ```
