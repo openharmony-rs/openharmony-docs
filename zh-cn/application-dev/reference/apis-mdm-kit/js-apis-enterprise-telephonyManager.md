@@ -76,7 +76,7 @@ try {
 
 setSimEnabled(admin: Want, slotId: number): void
 
-解除指定卡槽的SIM卡禁用。使用setSimDisabled禁用SIM卡后，再用setSimEnabled启用SIM卡，需要到设置-移动网络-SIM卡管理界面手动打开。
+解除指定卡槽的SIM卡禁用。使用setSimDisabled禁用SIM卡后，再用setSimEnabled启用SIM卡，需要到设置-移动网络-SIM卡管理界面手动打开SIM卡开关。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 

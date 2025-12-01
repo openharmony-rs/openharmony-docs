@@ -152,7 +152,7 @@ console.info(result); // <d/>
 
 setDeclaration(): void
 
-添加文件声明。
+设置带有编码信息的文件声明。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -535,7 +535,7 @@ setAttributes(name: string, value: string): void
 
 | 参数名 | 类型   | 必填 | 说明            |
 | ------ | ------ | ---- | --------------- |
-| name   | string | 是   | 属性。所组成的XML长度不能超过100000。|
+| name   | string | 是   | 属性。所组成的XML长度不能超过100000，不可为空字符。|
 | value  | string | 是   | 属性值。所组成的XML长度不能超过100000。|
 
 **错误码：**
@@ -739,8 +739,8 @@ setNamespace(prefix: string, namespace: string): void
 
 | 参数名    | 类型   | 必填 | 说明                           |
 | --------- | ------ | ---- | ------------------------------ |
-| prefix    | string | 是   | 当前元素及其子元素的前缀。所组成的XML长度不能超过100000。|
-| namespace | string | 是   | 当前元素及其子元素的命名空间。所组成的XML长度不能超过100000。|
+| prefix    | string | 是   | 当前元素及其子元素的前缀。所组成的XML长度不能超过100000，不可为空字符。|
+| namespace | string | 是   | 当前元素及其子元素的命名空间。所组成的XML长度不能超过100000，不可为空字符。|
 
 **错误码：**
 

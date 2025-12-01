@@ -6,14 +6,15 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+This interface implements volume management for an audio group.
+
+Before calling any API in AudioVolumeGroupManager, you must use [getVolumeGroupManager](arkts-apis-audio-AudioVolumeManager.md#getvolumegroupmanager9) to obtain an AudioVolumeGroupManager instance.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 9.
 
-This interface implements volume management for an audio group.
-
-Before calling any API in AudioVolumeGroupManager, you must use [getVolumeGroupManager](arkts-apis-audio-AudioVolumeManager.md#getvolumegroupmanager9) to obtain an AudioVolumeGroupManager instance.
 
 ## Modules to Import
 

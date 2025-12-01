@@ -27,7 +27,7 @@ If the application frequently crashes when the Node-API is used, and the crash s
 - You can refer to the following troubleshooting methods:  
 1. Check whether there are multi-thread safety issues, which are likely to occur.  
 DevEco Studio provides a switch for checking multi-thread safety issues. After the switch is enabled, recompile, package, and run the code to check whether the crash stack complies with the description in the following topic. If yes, multi-thread safety problems occur when Node-API is used.  
-  
+
 Multi Thread Check in DevEco Studio:  
 ![Multi-thread check switch in DevEco Studio](figures/en_us_image_20-25-06-40-15-09.png)  
 2. Check whether the input parameter of the Node-API is invalid.  
@@ -41,8 +41,11 @@ The following shows an example stack structure.
 ```
 - If the input parameter is incorrect, the .so file usually appears high on the crash stack (it will not be far away from the stack top, such as #10). However, you can also refer to the following troubleshooting methods. 
 - Troubleshooting methods: 
-a. Check whether the **napi_value** is not initialized (the value is not assigned successfully, but is passed to the API as an invalid input parameter). 
-b. Check whether the error-prone API can be found by referring to the following topic.  
+a. Check whether the **napi_value** is not initialized (the value is not assigned successfully, but is passed to the API as an invalid input parameter).
+b. Check whether the error-prone API can be found by referring to the following topic.
+
+  References: 
+  
 
 ## How to handle thread safety issues when the ArkTS method is concurrently called in the thread pool
 
@@ -64,9 +67,9 @@ In addition, you can enable the Ark multi-thread check during development to int
 
 - Answer: 
 1. Check whether **napi_value** is used out of the scope. 
-References:  
-  
-2. You are advised to use **napi_ref** instead of **napi_value**. 
+References: 
+
+2. You are advised to use **napi_ref** instead of **napi_value**.
 
 ## Is there a method to obtain the latest napi_env
 
@@ -78,24 +81,21 @@ References:
 ...
 ```
 - Answer: 
-1.   
-To save **napi_env**, you can only pass it by calling functions layer by layer because Node-API does not provide the capability of directly obtaining **napi_env**. You are not advised to save **napi_env** due to the following reasons: 
-1. If the **napi_env**'s exit is not perceived, the **use-after-free** issue may occur. 
-2. **napi_env** is strongly bound to the ArkTS thread. If **napi_env** is used by other ArkTS threads, multi-thread safety issues may occur. 
-References: 
-[Why cannot napi_env be cached?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-ndk-73) 
+1. To save **napi_env**, you can only pass it by calling functions layer by layer because Node-API does not provide the capability of directly obtaining **napi_env**. You are not advised to save **napi_env** due to the following reasons: 
+   - If the **napi_env**'s exit is not perceived, the **use-after-free** issue may occur. 
+   - **napi_env** is strongly bound to the ArkTS thread. If **napi_env** is used by other ArkTS threads, multi-thread safety issues may occur. 
+     References: 
+     [Why cannot napi_env be cached?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-ndk-73) 
 
 2. The key to this issue is as follows: 
-To forcibly save the **env**, you can use the callback of **napi_add_env_cleanup_hook** to check whether the **env** exits. In addition, enable **Multi Thread Check** during development to avoid multi-thread safety issues.
-   
+  To forcibly save the **env**, you can use the callback of **napi_add_env_cleanup_hook** to check whether the **env** exits. In addition, enable **Multi Thread Check** during development to avoid multi-thread safety issues.
 
 3. The crash may occur because the input parameter **func** is invalid when **napi_call_function** is called. You can check whether **napi_value** is cached. The possible cause is that **napi_value** exceeds the **napi_handle_scope** after being cached. 
-To use similar logic, use **napi_ref** for storage can prolong the lifecycle. 
+  To use similar logic, use **napi_ref** for storage can prolong the lifecycle. 
 
 - References: 
-[napi_create_reference, napi_delete_reference](use-napi-life-cycle.md)
-
-    
+  [napi_create_reference, napi_delete_reference](use-napi-life-cycle.md) 
+  
 
 ## What should I do if napi_add_env_cleanup_hook is called incorrectly
 
@@ -132,4 +132,4 @@ static napi_value Test(napi_env env, napi_callback_info info)
 
 References:
 [Working with Cleanup Hooks Using Node-API](use-napi-about-cleanuphook.md)
- 
+

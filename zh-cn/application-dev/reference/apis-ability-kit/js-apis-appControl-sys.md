@@ -556,7 +556,6 @@ getDisposedRule(appId: string, appIndex:? number): DisposedRule
 ```ts
 import { appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
 

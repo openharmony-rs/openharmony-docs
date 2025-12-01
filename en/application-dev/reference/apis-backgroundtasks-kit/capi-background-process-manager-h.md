@@ -120,3 +120,5 @@ Unsuppresses the child process. In this case, the child process follows the sche
 | Type| Description|
 | -- | -- |
 | int | [ERR_BACKGROUND_PROCESS_MANAGER_SUCCESS](capi-background-process-manager-h.md#backgroundprocessmanager_errorcode) is returned if the suppression parameter is sent successfully.|
+
+

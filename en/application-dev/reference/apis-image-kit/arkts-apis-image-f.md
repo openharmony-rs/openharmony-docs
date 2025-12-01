@@ -259,11 +259,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function CreatePixelMapUseAllocator() {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96 is the size of the pixel buffer to create. The value is calculated as follows: height * width *4.
-  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+  let opts: image.InitializationOptions = { editable: true, srcPixelFormat: image.PixelMapFormat.RGBA_8888, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
   image.createPixelMapUsingAllocator(color, opts, image.AllocatorType.AUTO).then((pixelMap: image.PixelMap) => {
     console.info('Succeeded in creating pixelmap.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+    console.error("Failed to create pixelmap. code is ", error.code);
   })
 }
 ```
@@ -654,7 +654,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 ```ts
 function CreatePixelMapSync() {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96 is the size of the pixel buffer to create. The value is calculated as follows: height * width *4.
-  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+  let opts: image.InitializationOptions = { editable: true, srcPixelFormat: image.PixelMapFormat.RGBA_8888, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
   let pixelMap : image.PixelMap = image.createPixelMapUsingAllocatorSync(color, opts, image.AllocatorType.AUTO);
   return pixelMap;
 }
@@ -1183,7 +1183,7 @@ async function CreateImageSource(context : Context) {
 
 CreateIncrementalSource(buf: ArrayBuffer): ImageSource
 
-Creates an ImageSource instance in incremental mode based on buffers. Such an instance does not support reading or writing of EXIF information.
+Creates an ImageSource instance in incremental mode based on buffers. Such an instance does not support reading or writing of Exif information.
 
 The ImageSource instance created in incremental mode supports the following capabilities (applicable to synchronous, callback, and promise modes):
 
@@ -1237,7 +1237,7 @@ async function CreateIncrementalImageSource(context : Context) {
 
 CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
 
-Creates an ImageSource instance in incremental mode based on buffers. Such an instance does not support reading or writing of EXIF information.
+Creates an ImageSource instance in incremental mode based on buffers. Such an instance does not support reading or writing of Exif information.
 
 The capabilities supported by the ImageSource instance created by this API are the same as those supported by the instance created by [CreateIncrementalSource(buf: ArrayBuffer): ImageSource](#imagecreateincrementalsource9).
 

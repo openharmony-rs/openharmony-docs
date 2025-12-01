@@ -951,6 +951,7 @@ A shortcut with the same bundle name, clone index, user ID, and shortcut ID alre
 **Solution**<br>
 1. Check whether the bundle name and shortcut ID are correct.
 
+<!--Del-->
 ## 17700071 Enterprise Applications Cannot Be Installed
 **Error Message**<br>
 It is not allowed to install the enterprise bundle.

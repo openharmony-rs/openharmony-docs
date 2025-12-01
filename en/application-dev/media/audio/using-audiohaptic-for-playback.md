@@ -21,7 +21,13 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
 
 ### How to Develop
 
-1. Obtain an AudioHapticManager instance, and register the audio and haptic sources. For details about the sources supported, see [AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager). Both [registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource) and [registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20) can be used to register sources.
+1. Obtain an AudioHapticManager instance, and register the audio and haptic sources. For details about the sources supported, see [AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager).
+
+   > **NOTE**
+   >
+   > You can register resources using one of the following methods:
+   > - Method 1: Use the [registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource) API to register resources through file URIs.
+   > - Method 2 (recommended): Use [registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20) to register resources through file descriptors. This API is available from API version 20,
 
    ```ts
    import { audio, audioHaptic } from '@kit.AudioKit';
