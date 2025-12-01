@@ -1,4 +1,4 @@
-# @ohos.enterprise.deviceControl (Device Control) (System API)
+# @ohos.enterprise.deviceControl (Device Control Management) (System API)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
