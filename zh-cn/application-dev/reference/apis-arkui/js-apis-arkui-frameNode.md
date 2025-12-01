@@ -4119,9 +4119,9 @@ typeNode.createRatingNode(uiContext);
 SelectFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Select类型的FrameNode。
 
 ### initialize<sup>22+</sup>
-abstract initialize(value: Array<SelectOption>): SelectAttribute
+abstract initialize(value: Array&lt;SelectOption&gt;): SelectAttribute
 
-设置或更新Array<SelectOption>初始值。
+设置或更新Array&lt;SelectOption&gt;初始值。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
