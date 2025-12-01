@@ -64,7 +64,7 @@
       }).catch((err: BusinessError) => {
         console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
       });
-   ```
+    ```
 
 
    > **注意**：
