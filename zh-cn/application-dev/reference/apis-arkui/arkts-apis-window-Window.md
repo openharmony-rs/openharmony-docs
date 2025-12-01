@@ -9458,7 +9458,7 @@ getWindowCornerRadius(): number
 
 **设备行为差异：** 
   
-API version 23之前，该接口在支持并处于自由窗口状态的设备上可正常调用，在其他设备中返回801错误码。
+API version 23之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 从API version 23开始，该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
