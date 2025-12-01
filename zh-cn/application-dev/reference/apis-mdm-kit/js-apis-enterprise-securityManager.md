@@ -785,7 +785,7 @@ setPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance,
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。      |
 | applicationInstance    | [ApplicationInstance](#applicationinstance20)  | 是 | 指定应用实例。 |
-| permissions | Array&lt;string&gt;  | 是 | 需要管理的权限名称列表，权限名称列表以[应用权限组](../../security/AccessToken/app-permission-group-list.md)为单位。传入列表中的每个权限，都必须包含其所属权限组的全部权限（例如，申请 ohos.permission.READ_CONTACTS 时，必须同时包含 ohos.permission.WRITE_CONTACTS）。且每个权限都必须已在应用的[模块级配置文件](.......)中使用requestPermissions声明。 |
+| permissions | Array&lt;string&gt;  | 是 | 需要管理的权限名称列表，权限名称列表以[应用权限组](../../security/AccessToken/app-permission-group-list.md)为单位。传入列表中的每个权限，都必须包含其所属权限组的全部权限（例如，申请 ohos.permission.READ_CONTACTS 时，必须同时包含 ohos.permission.WRITE_CONTACTS）。且每个权限都必须已在应用的[module.json5](../../quick-start/module-configuration-file.md)中使用requestPermissions声明。 |
 | managedState | [PermissionManagedState](#permissionmanagedstate20) | 是 | 应用权限的管理策略。 |
 
 **错误码**：
