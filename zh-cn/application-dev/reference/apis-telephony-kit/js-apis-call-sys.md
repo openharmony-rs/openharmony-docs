@@ -6971,7 +6971,7 @@ ArkTS-Sta: sendCallUiEvent\(callId: int, eventName: string\): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8758,11 +8758,11 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 
 ## call.onCallDetailsChange<sup>22+</sup>
 
-onCallDetailsChange(callback: Callback<CallAttributeOptions>): void;
+onCallDetailsChange(callback: Callback<CallAttributeOptions>): void
 
 订阅CallDetailsChange事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -8818,11 +8818,11 @@ struct Index {
 
 ## call.offCallDetailsChange<sup>22+</sup>
 
-offCallDetailsChange(callback?: Callback<CallAttributeOptions>): void;
+offCallDetailsChange(callback?: Callback<CallAttributeOptions>): void
 
 取消订阅CallDetailsChange事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -8879,11 +8879,11 @@ struct Index {
 
 ## call.onCallEventChange<sup>22+</sup>
 
-onCallEventChange(callback: Callback<CallEventOptions>): void;
+onCallEventChange(callback: Callback<CallEventOptions>): void
 
 订阅CallEventChange事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -8939,11 +8939,11 @@ struct Index {
 
 ## call.offCallEventChange<sup>22+</sup>
 
-off(type: 'callEventChange', callback?: Callback<CallEventOptions>): void;
+off(type: 'callEventChange', callback?: Callback<CallEventOptions>): void
 
 取消订阅CallEventChange事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -8999,11 +8999,11 @@ struct Index {
 
 ## call.onCallDisconnectedCause<sup>22+</sup>
 
-onCallDisconnectedCause(callback: Callback<DisconnectedDetails>): void;
+onCallDisconnectedCause(callback: Callback<DisconnectedDetails>): void
 
 订阅CallDisconnectedCause事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -9059,11 +9059,11 @@ struct Index {
 
 ## call.offCallDisconnectedCause<sup>22+</sup>
 
-offCallDisconnectedCause(callback?: Callback<DisconnectedDetails>): void;
+offCallDisconnectedCause(callback?: Callback<DisconnectedDetails>): void
 
 取消订阅CallDisconnectedCause事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -9119,11 +9119,11 @@ struct Index {
 
 ## call.onMmiCodeResult<sup>22+</sup>
 
-onMmiCodeResult(callback: Callback<MmiCodeResults>): void;
+onMmiCodeResult(callback: Callback<MmiCodeResults>): void
 
 订阅MmiCodeResult事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -9179,11 +9179,11 @@ struct Index {
 
 ## call.offMmiCodeResult<sup>22+</sup>
 
-offMmiCodeResult(callback?: Callback<MmiCodeResults>): void;
+offMmiCodeResult(callback?: Callback<MmiCodeResults>): void
 
 取消订阅MmiCodeResult事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -9239,11 +9239,11 @@ struct Index {
 
 ## call.onAudioDeviceChange<sup>22+</sup>
 
-onAudioDeviceChange(callback: Callback<AudioDeviceCallbackInfo>): void;
+onAudioDeviceChange(callback: Callback<AudioDeviceCallbackInfo>): void
 
 订阅AudioDeviceChange事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -9299,11 +9299,11 @@ struct Index {
 
 ## call.offAudioDeviceChange<sup>22+</sup>
 
-offAudioDeviceChange(callback?: Callback<AudioDeviceCallbackInfo>): void;
+offAudioDeviceChange(callback?: Callback<AudioDeviceCallbackInfo>): void
 
 取消订阅AudioDeviceChange事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -9360,11 +9360,11 @@ struct Index {
 
 ## call.onPostDialDelay<sup>22+</sup>
 
-onPostDialDelay(callback: Callback<string>): void;
+onPostDialDelay(callback: Callback<string>): void
 
 订阅PostDialDelay事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -9420,11 +9420,11 @@ struct Index {
 
 ## call.offPostDialDelay<sup>22+</sup>
 
-offPostDialDelay(callback?: Callback<string>): void;
+offPostDialDelay(callback?: Callback<string>): void
 
 取消订阅PostDialDelay事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -9480,11 +9480,11 @@ struct Index {
 
 ## call.onImsCallModeChange<sup>22+</sup>
 
-onCallEventChange(callback: Callback<CallEventOptions>): void;
+onCallEventChange(callback: Callback<CallEventOptions>): void
 
 订阅ImsCallModeChange事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -9539,11 +9539,11 @@ struct Index {
 
 ## call.offImsCallModeChange<sup>22+</sup>
 
-offCallEventChange(callback?: Callback<CallEventOptions>): void;
+offCallEventChange(callback?: Callback<CallEventOptions>): void
 
 取消订阅ImsCallModeChange事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -9598,11 +9598,11 @@ struct Index {
 
 ## call.onCallSessionEvent<sup>22+</sup>
 
-onCallSessionEvent(callback: Callback<CallSessionEvent>): void;
+onCallSessionEvent(callback: Callback<CallSessionEvent>): void
 
 订阅CallSessionEvent事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -9657,11 +9657,11 @@ struct Index {
 
 ## call.offCallSessionEvent<sup>22+</sup>
 
-offCallSessionEvent(callback?: Callback<CallSessionEvent>): void;
+offCallSessionEvent(callback?: Callback<CallSessionEvent>): void
 
 取消订阅CallSessionEvent事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -9717,11 +9717,11 @@ struct Index {
 
 ## call.onPeerDimensionsChange<sup>22+</sup>
 
-onPeerDimensionsChange(callback: Callback<PeerDimensionsDetail>): void;
+onPeerDimensionsChange(callback: Callback<PeerDimensionsDetail>): void
 
 订阅PeerDimensionsChange事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -9776,11 +9776,11 @@ struct Index {
 
 ## call.offPeerDimensionsChange<sup>22+</sup>
 
-offPeerDimensionsChange(callback?: Callback<PeerDimensionsDetail>): void;
+offPeerDimensionsChange(callback?: Callback<PeerDimensionsDetail>): void
 
 取消订阅PeerDimensionsChange事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -9835,11 +9835,11 @@ struct Index {
 
 ## call.onCameraCapabilitiesChange<sup>22+</sup>
 
-onCameraCapabilitiesChange(callback: Callback<CameraCapabilities>): void;
+onCameraCapabilitiesChange(callback: Callback<CameraCapabilities>): void
 
 订阅CameraCapabilitiesChange事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
@@ -9894,11 +9894,11 @@ struct Index {
 
 ## call.offCameraCapabilitiesChange<sup>22+</sup>
 
-offCameraCapabilitiesChange(callback?: Callback<CameraCapabilities>): void;
+offCameraCapabilitiesChange(callback?: Callback<CameraCapabilities>): void
 
 取消订阅CameraCapabilitiesChange事件。使用callback异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：**ohos.permission.GET_TELEPHONY_STATE
 
