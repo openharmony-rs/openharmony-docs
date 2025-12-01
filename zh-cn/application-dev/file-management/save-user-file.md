@@ -54,16 +54,16 @@
    <!--@[save_file_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
 
     ``` TypeScript
-      let uris: string[] = [];
-      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      const documentViewPicker = new picker.DocumentViewPicker(context);
-      documentViewPicker.save(documentSaveOptions).then((documentSaveResult: string[]) => {
-        uris = documentSaveResult;
-        console.info('documentViewPicker.save to file succeed and uris are:' + uris);
-		// ···
-      }).catch((err: BusinessError) => {
-        console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
-      });
+    let uris: string[] = [];
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    const documentViewPicker = new picker.DocumentViewPicker(context);
+    documentViewPicker.save(documentSaveOptions).then((documentSaveResult: string[]) => {
+      uris = documentSaveResult;
+      console.info('documentViewPicker.save to file succeed and uris are:' + uris);
+      // ···
+    }).catch((err: BusinessError) => {
+      console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
+    });
     ```
 
 
@@ -119,16 +119,16 @@
    <!--@[audio_save_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
 
     ``` TypeScript
-      let uris: string[] = [];
-      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      const audioViewPicker = new picker.AudioViewPicker(context);
-      audioViewPicker.save(audioSaveOptions).then((audioSelectResult: string[]) => {
-        uris = audioSelectResult;
-        console.info('audioViewPicker.save to file succeed and uri is:' + uris);
-		// ···
-      }).catch((err: BusinessError) => {
-        console.error(`Invoke audioViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
-      });
+    let uris: string[] = [];
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    const audioViewPicker = new picker.AudioViewPicker(context);
+    audioViewPicker.save(audioSaveOptions).then((audioSelectResult: string[]) => {
+      uris = audioSelectResult;
+      console.info('audioViewPicker.save to file succeed and uri is:' + uris);
+      // ···
+    }).catch((err: BusinessError) => {
+      console.error(`Invoke audioViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
+    });
     ```
 
 
