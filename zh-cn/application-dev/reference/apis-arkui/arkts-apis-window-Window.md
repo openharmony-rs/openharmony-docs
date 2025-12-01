@@ -4824,7 +4824,8 @@ try {
   windowClass.onKeyboardWillShow(callback);
   console.info(`Register keyboard will show animation success`);
 } catch (exception) {
-  console.error(`Failed to register or unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+  let err = exception as BusinessError;
+  console.error(`Failed to register or unregister callback. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -4919,7 +4920,8 @@ try {
   windowClass.offKeyboardWillShow();
   console.info(`Unregister keyboard will show animation success`);
 } catch (exception) {
-  console.error(`Failed to register or unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+  let err = exception as BusinessError;
+  console.error(`Failed to register or unregister callback. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -5012,7 +5014,8 @@ try {
   windowClass.onKeyboardWillHide(callback);
   console.info(`Register keyboard will hide animation success`);
 } catch (exception) {
-  console.error(`Failed to register or unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+  let err = exception as BusinessError;
+  console.error(`Failed to register or unregister callback. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -5107,7 +5110,8 @@ try {
   windowClass.offKeyboardWillHide();
   console.info(`Unregister keyboard will hide animation success`);
 } catch (exception) {
-  console.error(`Failed to register or unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+    let err = exception as BusinessError;
+  console.error(`Failed to register or unregister callback. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -8743,7 +8747,8 @@ try {
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
   windowClass.offWindowHighlightChange();
 } catch (exception) {
-  console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+  let err = exception as BusinessError;
+  console.error(`Failed to unregister callback. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
