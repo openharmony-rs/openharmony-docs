@@ -1,10 +1,5 @@
 # 模块描述
-<!--Kit: Drm Kit-->
-<!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
-<!--Designer: @chris2981-->
-<!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+
 DRM（Digital Rights Management）框架组件支持音视频媒体业务数字版权管理功能的开发。开发者可以调用系统提供的DRM插件，完成以下功能：
 
 - DRM证书管理：生成证书请求、设置证书响应，实现对证书Provision（下载）功能。
