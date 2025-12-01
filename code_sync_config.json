@@ -28660,5 +28660,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/graphics/theme-font-c.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp",
+				"functions":[
+					{
+						"end_line":20,
+						"name":"theme_font_c_header",
+						"start_line":16
+					},
+					{
+						"end_line":389,
+						"name":"theme_font_c_draw_text_step1",
+						"start_line":387
+					},
+					{
+						"end_line":395,
+						"name":"theme_font_c_draw_text_step2",
+						"start_line":390
+					},
+					{
+						"end_line":414,
+						"name":"theme_font_c_draw_text_step3",
+						"start_line":397
+					}
+				]
+			}
+		]
 	}
 ]
