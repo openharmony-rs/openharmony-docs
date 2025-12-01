@@ -873,15 +873,6 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 > 1.仅支持ArcList、Grid、List、WaterFlow组件。
 >
 > 2.在LazyForEach、ForEach、Repeat刷新数据源时，需确保在数据刷新完成之后再调用此接口。
->
-> 3.从API version 11开始，在List中支持[contentStartOffset](ts-container-list.md#contentstartoffset11)和[contentEndOffset](ts-container-list.md#contentendoffset11)。从API version 22开始，在Grid和Waterflow组件中支持设置contentStartOffset和contentEndOffset。
->
-> - 当滚动容器组件设置contentStartOffset时，如果ScrollAlign设置为START，滚动结束时，指定item首部会与滚动容器组件contentStartOffset处对齐。
-> 
-> - 当滚动容器组件设置contentEndOffset时，如果ScrollAlign设置为END，滚动结束时，指定item尾部会与滚动容器组件contentEndOffset处对齐。
-> 
-> - 当滚动容器组件设置contentStartOffset或contentEndOffset时，如果ScrollAlign设置为AUTO，且指定item完全处于显示区内，不做调整；否则依照滚动距离最短的原则，将指定item首部与滚动组件contentStartOffset处对齐，或指定item尾部与滚动组件contentEndOffset处对齐，使指定item完全显示。
-> 
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
