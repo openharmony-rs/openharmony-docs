@@ -53,7 +53,7 @@
 
    <!--@[save_file_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
 
-	  ``` TypeScript
+    ``` TypeScript
       let uris: string[] = [];
       let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       const documentViewPicker = new picker.DocumentViewPicker(context);
@@ -64,7 +64,7 @@
       }).catch((err: BusinessError) => {
         console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
       });
-	  ```
+   ```
 
 
    > **注意**：
@@ -118,7 +118,7 @@
 
    <!--@[audio_save_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
 
-	  ``` TypeScript
+    ``` TypeScript
       let uris: string[] = [];
       let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       const audioViewPicker = new picker.AudioViewPicker(context);
@@ -129,7 +129,7 @@
       }).catch((err: BusinessError) => {
         console.error(`Invoke audioViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
       });
-	  ```
+     ```
 
 
    > **注意**：
