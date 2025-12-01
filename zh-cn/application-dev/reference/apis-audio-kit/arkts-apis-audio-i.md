@@ -32,7 +32,7 @@
 | ------------- | --------------------------- | ---- |---| --------------- |
 | content       | [ContentType](arkts-apis-audio-e.md#contenttypedeprecated) | 否 | 是 | 音频内容类型。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core <br>API version 8、9为必填参数，从API version 10开始为可选参数，默认值为CONTENT_TYPE_UNKNOWN。<br>从API version 7开始支持，从API version 10开始废弃，建议使用[StreamUsage](arkts-apis-audio-e.md#streamusage)替代。 |
 | usage         | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 否 | 否 | 音频流使用类型。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| rendererFlags | number                      | 否 | 否 | 音频渲染器标志。<br>0代表音频渲染器。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| rendererFlags | number                      | 否 | 否 | 播放流行为标志。<br>设置为0即可。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | volumeMode<sup>19+</sup> | [AudioVolumeMode](arkts-apis-audio-e.md#audiovolumemode19) | 否 | 是 | 音频的音量模式。默认值为SYSTEM_GLOBAL。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Volume|
 
 ## AudioRendererOptions<sup>8+</sup>
@@ -247,7 +247,7 @@
 | 名称          | 类型                      | 只读 | 可选 | 说明             |
 | :------------ | :------------------------ | :--- |---| :--------------- |
 | source        | [SourceType](arkts-apis-audio-e.md#sourcetype8) | 否 | 否 | 音源类型。       |
-| capturerFlags | number                    | 否 | 否 | 音频采集器标志。<br>0代表音频采集器。 |
+| capturerFlags | number                    | 否 | 否 | 录制流行为标志。<br>设置为0即可。 |
 
 ## AudioCapturerOptions<sup>8+</sup>
 
