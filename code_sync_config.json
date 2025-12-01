@@ -28730,5 +28730,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/dfx/hitracemeter-guidelines-ndk.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_NDK/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":127,
+						"name":"hitracemeter_ndk_native_code",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
