@@ -11,7 +11,7 @@
 
 >**说明：**
 >
->[组件导航 (Navigation)](./arkts-navigation-navigation.md)具有更强的功能和自定义能力，推荐使用该组件作为应用的路由框架。Navigation和Router的差异可参考[Router切换Navigation](./arkts-router-to-navigation.md)指导。
+>[组件导航 (Navigation)](./arkts-navigation-architecture.md)具有更强的功能和自定义能力，推荐使用该组件作为应用的路由框架。Navigation和Router的差异可参考[Router切换Navigation](./arkts-router-to-navigation.md)指导。
 
 ## 页面跳转
 

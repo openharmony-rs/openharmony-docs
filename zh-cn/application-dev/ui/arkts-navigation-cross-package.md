@@ -1,6 +1,12 @@
 # Navigation跨包路由
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @mayaolll-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
-系统提供[系统路由表](#系统路由表)和[自定义路由表](#自定义路由表)两种实现方式。
+Navigation提供[系统路由表](#系统路由表)和[自定义路由表](#自定义路由表)两种实现方式，通过路由表的配置可以完成本包和跨包的页面跳转。
 
 - 系统路由表相对自定义路由表，使用更简单，只需要添加对应页面跳转配置项，即可实现页面跳转。
 
@@ -19,7 +25,7 @@
 
 ## 系统路由表
 
-系统路由表是动态路由的一种实现方式。从API version 12开始，Navigation支持使用系统路由表的方式进行动态路由。各业务模块（[HSP](../quick-start/in-app-hsp.md)/[HAR](../quick-start/har-package.md)）中需要独立配置router_map.json文件，在触发路由跳转时，应用只需要通过NavPathStack提供的路由方法，传入需要路由的页面配置名称，此时系统会自动完成路由模块的动态加载、页面组件构建，并完成路由跳转，从而实现了开发层面的模块解耦。系统路由表支持模拟器但不支持预览器。其主要步骤如下：
+系统路由表是动态路由的一种实现方式。从API version 12开始，Navigation支持使用系统路由表的方式进行动态路由。各业务模块（[HSP](../quick-start/in-app-hsp.md)、[HAR](../quick-start/har-package.md)）中需要独立配置router_map.json文件，在触发路由跳转时，应用只需要通过NavPathStack提供的路由方法，传入需要路由的页面配置名称，此时系统会自动完成路由模块的动态加载、页面组件构建，并完成路由跳转，从而实现了开发层面的模块解耦。系统路由表支持模拟器但不支持预览器。其主要步骤如下：
 
 1. 在跳转目标模块的配置文件[module.json5](../quick-start/module-configuration-file.md)添加路由表配置：
 
@@ -28,15 +34,15 @@
     ``` JSON5
     {
       "module": {
-        // ···
+        // ...
         "routerMap": "$profile:router_map",
-        // ···
+        // ...
       }
     }
     ```
 
 2. 添加完路由配置文件地址后，需要在工程resources/base/profile中创建router_map.json文件。添加如下配置信息：
-   
+
      ```json
      {
        "routerMap": [
@@ -143,11 +149,12 @@
 <!-- @[CustomRoutingTable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/CustomRoutingTable.ets) -->
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0000;
 @Entry
 @Component
 struct NavigationExample {
-  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
+  @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
   private arr: number[] = [1, 2];
 
   @Builder
@@ -161,7 +168,7 @@ struct NavigationExample {
 
   build() {
     Column() {
-      Navigation(this.pageInfos) {
+      Navigation(this.navPathStack) {
         TextInput({ placeholder: 'search...' })
           .width('90%')
           .height(40)
@@ -177,7 +184,7 @@ struct NavigationExample {
                 .fontWeight(500)
                 .textAlign(TextAlign.Center)
                 .onClick(() => {
-                  this.pageInfos.pushPath({ name: 'NavDestinationTitle' + item });
+                  this.navPathStack.pushPath({ name: 'NavDestinationTitle' + item });
                 })
             }
           }, (item: number) => item.toString())
@@ -185,7 +192,7 @@ struct NavigationExample {
         .width('90%')
         .margin({ top: 12 })
       }
-      // $r('app.string.mainTitle')需要替换为开发者所需的字符串资源文件
+      // $r('app.string.mainTitle')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“主标题”
       .title($r('app.string.mainTitle'))
       .navDestination(this.pageMap)
       .mode(NavigationMode.Split)
@@ -197,7 +204,7 @@ struct NavigationExample {
 
 @Component
 export struct pageTwoTmp {
-  @Consume('pageInfos') pageInfos: NavPathStack;
+  @Consume('navPathStack') navPathStack: NavPathStack;
   context = this.getUIContext().getHostContext();
   build() {
     NavDestination() {
@@ -206,8 +213,8 @@ export struct pageTwoTmp {
       }.width('100%').height('100%')
     }.title('NavDestinationTitle2')
     .onBackPressed(() => {
-      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈的栈顶元素
-      // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+      const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈的栈顶元素
+      // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“返回值”
       hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
         JSON.stringify(popDestinationInfo));
       return true;
@@ -217,7 +224,7 @@ export struct pageTwoTmp {
 
 @Component
 export struct pageOneTmp {
-  @Consume('pageInfos') pageInfos: NavPathStack;
+  @Consume('navPathStack') navPathStack: NavPathStack;
   context = this.getUIContext().getHostContext();
   build() {
     NavDestination() {
@@ -226,8 +233,8 @@ export struct pageOneTmp {
       }.width('100%').height('100%')
     }.title('NavDestinationTitle1')
     .onBackPressed(() => {
-      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈的栈顶元素
-      // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+      const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈的栈顶元素
+      // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“返回值”
       hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
         JSON.stringify(popDestinationInfo));
       return true;
@@ -242,11 +249,11 @@ export struct pageOneTmp {
 
 ### 1 路由表配置
 
-参考[系统路由表](## 系统路由表)在每个[HAP](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/hap-package)、[HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/har-package)、[HSP](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/in-app-hsp)模块中配置各自的系统路由表，每个模块的`src/main/resources/base/profile/`目录都需要创建一个router_map.json文件。
+参考[系统路由表](#系统路由表)在每个[HAP](../quick-start/hap-package.md)、[HAR](../quick-start/har-package.md)、[HSP](../quick-start/in-app-hsp.md)模块中配置各自的系统路由表，每个模块的`src/main/resources/base/profile/`目录都需要创建一个router_map.json文件。
 
 在router_map.json文件中填写具体的路由表信息（下面仅以Hap模块中的配置为例），示例如下：
 
-```typescript
+``` TypeScript
 {
   "routerMap": [
     {
@@ -276,9 +283,9 @@ export struct pageOneTmp {
 ``` JSON5
 {
   "module": {
-    // ···
+    // ...
     "routerMap": "$profile:router_map",
-    // ···
+    // ...
   }
 }
 ```
@@ -287,8 +294,12 @@ export struct pageOneTmp {
 
 以Hap包中的HapPageA为例：
 
-```typescript
+<!-- @[CrossPackagePageA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/HapPageA.ets) -->
+
+``` TypeScript
+// 仅作为示例写法，其余页面、模块需自行创建
 import { ControlPanel } from './Common';
+
 @Component
 export struct HapPageA {
   build() {
@@ -299,7 +310,7 @@ export struct HapPageA {
     }.title('HapPageA')
     .onReady((ctx: NavDestinationContext) => {
       let config = ctx.getConfigInRouteMap();
-      console.log(`testTag HapPageA config.data: ${JSON.stringify(config?.data)}`)
+      console.log(`testTag HapPageA config.data: ${JSON.stringify(config?.data)}`);
     })
   }
 }
@@ -307,40 +318,43 @@ export struct HapPageA {
 // 页面的buildFunction，用于构造页面
 @Builder
 export function HapPageABuilder(): void {
-  HapPageA()
+  HapPageA();
 }
-
 ```
 
 其中Common是为了方便演示页面间跳转抽出来的一个控制面板组件，示例如下：
 
-```typescript
+<!-- @[CrossPackageCommon](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/Common.ets) -->
+
+``` TypeScript
 @Component
 export struct ControlPanel {
   private stack: NavPathStack | undefined = undefined;
+
   aboutToAppear(): void {
     let info = this.queryNavigationInfo();
     this.stack = info?.pathStack;
   }
+
   build() {
-    Column() {
+    Column({ space: 20 }) {
       Button('push HapPageA').onClick(() => {
-        this.stack?.pushPath({ name: 'HapPageA' })
+        this.stack?.pushPath({ name: 'HapPageA' });
       })
       Button('push HapPageB').onClick(() => {
-        this.stack?.pushPath({ name: 'HapPageB' })
+        this.stack?.pushPath({ name: 'HapPageB' });
       })
       Button('push HarPageA').onClick(() => {
-        this.stack?.pushPath({ name: 'HarPageA' })
+        this.stack?.pushPath({ name: 'HarPageA' });
       })
       Button('push HarPageB').onClick(() => {
-        this.stack?.pushPath({ name: 'HarPageB' })
+        this.stack?.pushPath({ name: 'HarPageB' });
       })
       Button('push HspPageA').onClick(() => {
-        this.stack?.pushPath({ name: 'HspPageA' })
+        this.stack?.pushPath({ name: 'HspPageA' });
       })
       Button('push HspPageB').onClick(() => {
-        this.stack?.pushPath({ name: 'HspPageB' })
+        this.stack?.pushPath({ name: 'HspPageB' });
       })
     }
   }
@@ -355,7 +369,7 @@ export struct ControlPanel {
 
 ![img](figures/NavigationBuildHARandHSP.png)
 
-在HAP的[oh-package.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-oh-package-json5)配置文件中配置对HAR与HSP的依赖。
+在HAP的oh-package.json5配置文件中配置对HAR与HSP的依赖。
 
 ```json
 {

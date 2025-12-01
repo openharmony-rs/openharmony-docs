@@ -481,10 +481,10 @@
           - [\@Env：环境变量](ui/arkts-env-system-property.md)
         - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
           - [组件导航和页面路由概述](ui/arkts-navigation-introduction.md)
-          - 组件导航(Navigation) (推荐)<!--arkts-navigation-navigation>
+          - 组件导航(Navigation) (推荐)<!--arkts-navigation-navigation-->
             - [Navigation基础架构介绍](ui/arkts-navigation-architecture.md)
             - [Navigation子页面](ui/arkts-navigation-navdestination.md)
-            - [Navigation页面跳转](ui/arkts-navigation-jump.md)
+            - [Navigation页面路由](ui/arkts-navigation-jump.md)
             - [Navigation转场动画](ui/arkts-navigation-animation.md)
             - [Navigation跨包路由](ui/arkts-navigation-cross-package.md)
             - [Navigation分栏开发](ui/arkts-navigation-split-mode.md)
@@ -748,6 +748,7 @@
         - [UI调优](ui/ui-inspector-profiler.md)
         - [UI高性能开发](ui/ui-performance-overview.md)
         - UI开发常见问题<!--ui-development-faq-->
+          - [Navigation动画常见问题](ui/arkts-navigation-animation-faq.md)
           - [自定义节点常见问题](ui/arkts-user-defined-node-faq.md)
           - [按钮与选择组件常见问题](ui/arkts-select-component-faq.md)
       - 窗口管理<!--window-manager-->

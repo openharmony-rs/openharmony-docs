@@ -1,16 +1,24 @@
 # Navigation子页面
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @mayaolll-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
-[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)是Navigation子页面的根容器，用于承载子页面的一些特殊属性以及生命周期等。NavDestination可以设置独立的标题栏和菜单栏等属性，使用方法与Navigation相同。NavDestination也可以通过mode属性设置不同的显示类型，用于满足不同页面的诉求。
+[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)是Navigation子页面的根容器，用于承载子页面的特殊属性和生命周期。NavDestination可以配置独立的标题栏和菜单栏等属性，使用方法与Navigation一致。NavDestination还支持通过mode属性设置不同的显示模式，以适应不同页面的需求。
 
 ## 页面显示类型
 
-- 标准类型
+NavDestination提供了两种类型。
 
-  NavDestination组件默认为标准类型，此时mode属性为NavDestinationMode.STANDARD。标准类型的NavDestination的生命周期跟随其在NavPathStack路由栈中的位置变化而改变。
+- 标准类型：
 
-- 弹窗类型
+  NavDestination页面默认为标准类型，此时mode属性为NavDestinationMode.STANDARD。Navigation中只能显示一个标准类型的NavDestination页面。
+
+- 弹窗类型：
   
-  NavDestination设置mode为NavDestinationMode.DIALOG弹窗类型，此时整个NavDestination默认透明显示。弹窗类型的NavDestination显示和消失时不会影响下层标准类型的NavDestination的显示和生命周期，两者可以同时显示。
+  NavDestination设置mode为NavDestinationMode.DIALOG弹窗类型，此时整个NavDestination默认透明显示。Navigation中可以显示多个弹窗类型的NavDestination，且必须在标准类型的NavDestination之上显示。
 
   <!-- @[PageDisplayType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayType.ets) -->
   
@@ -72,13 +80,13 @@
   }
   ```
 
-  ![dialog_navdestination](figures/dialog_navdestination.png)
+  ![dialog_navdestination](figures/DialogNavDestinationExample.gif)
 
 ## 页面生命周期
 
-Navigation作为路由容器，其生命周期承载在NavDestination组件上，以组件事件的形式开放。
+Navigation作为路由容器，其生命周期承载在NavDestination组件上，以[NavDestination组件事件](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#事件)的形式开放。
 
-其生命周期大致可分为三类，自定义组件生命周期、通用组件生命周期和自有生命周期。其中，[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)和[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)是自定义组件的生命周期(NavDestination外层包含的自定义组件)，[OnAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)和[OnDisappear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear)是组件的通用生命周期。剩下的生命周期为NavDestination独有。
+其生命周期大致可分为三类，自定义组件生命周期、通用组件生命周期和自有生命周期。其中，[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)和[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)是自定义组件的生命周期（NavDestination外层包含的自定义组件），[OnAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)和[OnDisappear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear)是组件的通用生命周期。剩下的生命周期为NavDestination独有。
 
 生命周期时序如下图所示：
 
@@ -97,11 +105,16 @@ Navigation作为路由容器，其生命周期承载在NavDestination组件上�
 - **onDisappear**：通用生命周期事件，NavDestination组件从组件树上卸载销毁时执行。
 - **aboutToDisappear**：自定义组件析构销毁之前执行，不允许在该方法中改变状态变量。
 
+此外还有两个特殊生命周期：
+
+- **onResult**：从其他NavDestination页面通过pop或者侧滑返回时，将触发当前NavDestination页面的onResult回调。
+- **onNewParam**：当之前存在于栈中的NavDestination页面通过[launchMode.MOVE_TO_TOP_SINGLETON](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#launchmode12枚举说明)或[launchMode.POP_TO_SINGLETON](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#launchmode12枚举说明)移动到栈顶时，触发该回调。
+
 ## 页面监听和查询
 
 为了方便组件跟页面解耦，在NavDestination子页面内部的自定义组件可以通过全局方法监听或查询到页面的一些状态信息。
 
-- 页面信息查询
+- 页面信息查询：
 
   自定义组件提供[queryNavDestinationInfo](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavdestinationinfo)方法，可以在NavDestination内部查询到当前所属页面的信息，返回值为[NavDestinationInfo](../reference/apis-arkui/js-apis-arkui-observer.md#navdestinationinfo)，若查询不到则返回undefined。
 
@@ -121,20 +134,19 @@ Navigation作为路由容器，其生命周期承载在NavDestination组件上�
     }
   
     build() {
-      // ···
+      // ...
         Column() {
-          // $r('app.string.onPageName')需要替换为开发者所需的字符串资源文件
+          // $r('app.string.onPageName')资源文件中的value值为“所属页面Name:”
           Text(this.context!.resourceManager.getStringSync($r('app.string.onPageName').id) + `${this.navDesInfo?.name}`)
         }.width('100%').height('100%')
-      // ···
+        // ...
     }
   }
   ```
 
-- 页面状态监听
+- 页面状态监听：
   
   通过[observer.on('navDestinationUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronnavdestinationupdate)提供的注册接口可以注册NavDestination生命周期变化的监听。
   
-  
-  也可以通过[observer.on('navDestinationSwitch')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronnavdestinationswitch)注册页面切换的状态回调，能在页面发生路由切换的时候拿到对应的页面信息[NavDestinationSwitchInfo](..//reference/apis-arkui/js-apis-arkui-observer.md#navdestinationswitchinfo12)，并且提供了UIAbilityContext和UIContext不同范围的监听。
+  也可以通过[observer.on('navDestinationSwitch')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronnavdestinationswitch12)注册页面切换的状态回调，能在页面发生路由切换的时候拿到对应的页面信息[NavDestinationSwitchInfo](..//reference/apis-arkui/js-apis-arkui-observer.md#navdestinationswitchinfo12)，并且提供了UIAbilityContext和UIContext不同范围的监听。
   

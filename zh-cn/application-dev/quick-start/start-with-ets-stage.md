@@ -1,4 +1,10 @@
 # 构建第一个ArkTS应用（Stage模型）
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @ge-yafang-->
+<!--Designer: @ge-yafang-->
+<!--Tester: @ge-yafang-->
+<!--Adviser: @ge-yafang-->
 
 ## 创建ArkTS工程
 
@@ -210,7 +216,7 @@
 
 页面间的导航可以通过[页面路由router](../reference/apis-arkui/js-apis-router.md)来实现。页面路由router根据页面url找到目标页面，从而实现跳转。使用页面路由请导入router模块。
 
-如果需要实现更好的转场动效等，推荐使用[Navigation](../ui/arkts-navigation-navigation.md)。
+如果需要实现更好的转场动效等，推荐使用[Navigation转场动画](../ui/arkts-navigation-animation.md)。
 
 1. 第一个页面跳转到第二个页面。
 
