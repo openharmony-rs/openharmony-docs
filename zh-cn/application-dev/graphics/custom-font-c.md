@@ -40,6 +40,11 @@
 
    <!-- @[theme_font_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
+   ```C++
+   #include <native_drawing/drawing_font_collection.h>
+   #include <native_drawing/drawing_text_typography.h>
+   #include <native_drawing/drawing_register_font.h>
+   ```
 
 3. 创建字体管理器，建议优先使用OH_Drawing_CreateSharedFontCollection()创建可共享的字体集对象。
 
@@ -49,6 +54,9 @@
 
    <!-- @[custom_font_c_custom_font_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
+   ```C++
+   OH_Drawing_FontCollection *fontCollection = OH_Drawing_CreateSharedFontCollection();
+   ```
 
 4. 设置自定义字体的字体家族名和字体文件所在的沙箱路径。
 
@@ -58,6 +66,12 @@
 
    <!-- @[custom_font_c_custom_font_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
+   ```C++
+   // 后续使用自定义字体时，需使用到该字体家族名
+   const char* fontFamily = "myFamilyName"; 
+   // 该路径是待注册的自定义字体文件在应用设备下的路径，确保该自定义字体文件已正确放置在该路径下
+   const char* fontPath = "/system/fonts/NotoSerifTamil[wdth,wght].ttf"; 
+   ```
 
 5. 在字体管理器中使用OH_Drawing_RegisterFont()注册自定义字体。
 
@@ -69,11 +83,21 @@
 
    <!-- @[custom_font_c_custom_font_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
+   ```C++
+   // 返回0为成功，1为文件不存在，2为打开文件失败，3为读取文件失败，4为寻找文件失败，5为获取大小失败，9文件损坏
+   int errorCode = OH_Drawing_RegisterFont(fontCollection, fontFamily, fontPath);
+   ```
 
 6. 确保自定义字体注册成功后，使用OH_Drawing_CreateTextStyle()接口创建文本样式对象，并使用OH_Drawing_SetTextStyleFontFamilies()接口加入自定义字体。
 
    <!-- @[custom_font_c_custom_font_text_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
+   ```C++
+   // 如果已经注册成功自定义字体，填入自定义字体的字体家族名
+   const char* myFontFamilies[] = {"myFamilyName"}; 
+   // 加入可使用的自定义字体
+   OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
+   ```
 
 7. 生成最终段落文本，使用自定义字体，以便实现最终的文本绘制和显示。
 
@@ -107,3 +131,18 @@
 
    <!-- @[custom_font_c_custom_font_text_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
+   ```C++
+   // 注销对应的自定义字体
+   OH_Drawing_UnregisterFont(fontCollection, fontFamily);
+   OH_Drawing_TypographyCreate* handler1 = OH_Drawing_CreateTypographyHandler(typographyStyle, fontCollection);
+   // 在段落生成器中设置文本样式
+   OH_Drawing_TypographyHandlerPushTextStyle(handler1, textStyle);
+   // 在段落生成器中设置文本内容
+   const char* text1 = "hello, 这段文本的自定义字体被注销了";
+   OH_Drawing_TypographyHandlerAddText(handler1, text1);
+   // 通过段落生成器生成段落
+   OH_Drawing_Typography* typography1 = OH_Drawing_CreateTypography(handler1);
+   OH_Drawing_TypographyLayout(typography1, maxWidth);
+   // 将文本绘制到画布(0,300)上
+   OH_Drawing_TypographyPaint(typography1, cCanvas_, 0, 300);
+   ```
