@@ -6,6 +6,10 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @hu-zhiqiong-->
 
+```c
+typedef struct Sensor_Subscriber Sensor_Subscriber
+```
+
 ## Overview
 
 Defines a struct the sensor subscriber information.

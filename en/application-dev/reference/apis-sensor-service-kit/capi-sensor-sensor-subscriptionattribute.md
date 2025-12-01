@@ -6,6 +6,10 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @hu-zhiqiong-->
 
+```c
+typedef struct Sensor_SubscriptionAttribute Sensor_SubscriptionAttribute
+```
+
 ## Overview
 
 Defines a struct for the sensor subscription attribute.
