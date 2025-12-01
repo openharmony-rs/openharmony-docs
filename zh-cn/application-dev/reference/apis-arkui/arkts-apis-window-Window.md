@@ -4935,6 +4935,8 @@ on(type: 'keyboardWillHide', callback: Callback&lt;KeyboardInfo&gt;): void
 
 **相关接口：** 该接口对应的ArkTS应用（ArkTS-Sta）接口是[onKeyboardWillHide](#onkeyboardwillhide22)。
 
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -5023,6 +5025,8 @@ off(type: 'keyboardWillHide', callback?: Callback&lt;KeyboardInfo&gt;): void
 **ArkTS卡片模式：** 该接口仅适用于ArkTS卡片（ArkTS-Dyn）。
 
 **相关接口：** 该接口对应的ArkTS应用（ArkTS-Sta）接口是[offKeyboardWillHide](#offkeyboardwillhide22)。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
