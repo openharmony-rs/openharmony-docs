@@ -976,21 +976,21 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
 2. NDK侧通过[OH_ArkUI_NodeUtils_GetAttachedNodeHandleById](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getattachednodehandlebyid)接口获取ArkTS组件，并通过懒展开模式获取对应的子组件信息。
 
    <!-- @[ndknodequeryoperate9_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/ShowSubcomponentInfo.h) -->
-
-``` C
-ArkUI_NodeHandle childNode = nullptr;
-OH_ArkUI_NodeUtils_GetAttachedNodeHandleById("N3", &childNode);
-    
-uint32_t index = 0;
-OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand(childNode, &index);
-uint32_t index1 = 0;
-OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand(childNode, &index1);
-ArkUI_NodeHandle child = nullptr;
-auto result = OH_ArkUI_NodeUtils_GetChildWithExpandMode(childNode, 3, &child, 0);
-OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "Manager", 
-    "firstChildIndex - lastChildIndex == %{d -- %{public}d, -- getResult = %{public}d",
-    index, index1, result);
-```
+   
+   ``` C
+   ArkUI_NodeHandle childNode = nullptr;
+   OH_ArkUI_NodeUtils_GetAttachedNodeHandleById("N3", &childNode);
+       
+   uint32_t index = 0;
+   OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand(childNode, &index);
+   uint32_t index1 = 0;
+   OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand(childNode, &index1);
+   ArkUI_NodeHandle child = nullptr;
+   auto result = OH_ArkUI_NodeUtils_GetChildWithExpandMode(childNode, 3, &child, 0);
+   OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "Manager", 
+       "firstChildIndex - lastChildIndex == %{d -- %{public}d, -- getResult = %{public}d",
+       index, index1, result);
+   ```
 
 3. 查看日志打印的对应错误码返回是否正确，以此判断是否成功获取到对应子节点。
 
