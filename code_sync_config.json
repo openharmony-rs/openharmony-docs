@@ -28705,5 +28705,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/dfx/hitracechain-guidelines-ndk.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":124,
+						"name":"hitracechain_ndk_native_code",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":48,
+						"name":"hitracechain_ndk_page_code",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
