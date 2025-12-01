@@ -57,7 +57,7 @@
 
 1. 导入模块。
 
-<!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 导入usbManager模块
@@ -70,7 +70,7 @@ import { JSON } from '@kit.ArkTS';
 
 2. 获取设备列表。
 
-<!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     // 获取设备列表。
@@ -139,7 +139,7 @@ import { JSON } from '@kit.ArkTS';
 
 3. 获取设备操作权限。
 
-<!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
@@ -162,7 +162,7 @@ import { JSON } from '@kit.ArkTS';
 
 4. 获取通过实时传输读取数据的端点。
 
-<!-- @[isochronousTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[isochronousTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
@@ -206,7 +206,7 @@ import { JSON } from '@kit.ArkTS';
    
 5. 连接设备，注册通信接口。
 
-<!-- @[isochronousTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[isochronousTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
@@ -231,7 +231,7 @@ import { JSON } from '@kit.ArkTS';
 
 6. 传输数据。
 
-<!-- @[isochronousTransfer_isochronousTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[isochronousTransfer_isochronousTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     let transferParams: usbManager.UsbDataTransferParams | undefined = undefined;
@@ -269,7 +269,7 @@ import { JSON } from '@kit.ArkTS';
 
 7. 取消传输，释放接口，关闭设备消息控制通道。
 
-<!-- @[isochronousTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[isochronousTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     try {

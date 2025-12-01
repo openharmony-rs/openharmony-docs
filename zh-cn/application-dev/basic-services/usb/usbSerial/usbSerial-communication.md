@@ -42,7 +42,7 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
 
 1. 导入模块。
 
-<!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 导入usbManager模块
@@ -56,7 +56,7 @@ import { JSON } from '@kit.ArkTS';
 
 2. 获取设备列表。
 
-<!-- @[getPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[getPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     // 获取连接主设备的USB设备列表
@@ -74,7 +74,7 @@ import { JSON } from '@kit.ArkTS';
 
 3. 获取设备操作权限。
 
-<!-- @[requestSerialRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[requestSerialRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     if (this.portList_ === undefined || this.portList_.length === 0) {
@@ -102,7 +102,7 @@ import { JSON } from '@kit.ArkTS';
 
 4. 根据串口打开设备。
 
-<!-- @[openSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[openSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     let portId: number = this.portId_;
@@ -119,7 +119,7 @@ import { JSON } from '@kit.ArkTS';
 
 5. 通过串口读取数据。
 
-<!-- @[serialRead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[serialRead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     let portId: number = this.portId_;
@@ -148,7 +148,7 @@ import { JSON } from '@kit.ArkTS';
 
 6. 通过串口写入数据。
 
-<!-- @[serialWrite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[serialWrite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     let portId: number = this.portId_;
@@ -177,7 +177,7 @@ import { JSON } from '@kit.ArkTS';
    
 7. 关闭串口设备。
 
-<!-- @[closeSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[closeSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     let portId: number = this.portId_;
