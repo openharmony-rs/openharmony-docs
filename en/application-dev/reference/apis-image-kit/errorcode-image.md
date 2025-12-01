@@ -2,8 +2,9 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--SE: @liyang_bryan-->
-<!--TSE: @xchaosioda-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 
 > **NOTE**
@@ -431,7 +432,7 @@ Failed to decode the image header.
 
 Correct the image data or use another image.
 
-## 62980123 EXIF Decoding Not Supported
+## 62980123 Exif Decoding Not Supported
 
 **Error Message**
 
@@ -439,7 +440,7 @@ The image does not support EXIF decoding.
 
 **Possible Cause**
 
-The image does not support EXIF decoding.
+The image does not support Exif decoding.
 
 **Solution**
 
@@ -794,6 +795,34 @@ The metadata read/write operation is not supported. For example, the Exif field 
 
 Check whether the auxiliary picture type corresponds to the metadata type, and then perform the read and write operations.
 
+## 7600204 Invalid Region
+
+**Error Message**
+
+Invalid region.
+
+**Possible Cause**
+
+The area to crop (its position, width, or height) falls outside the dimensions of the original image.
+
+**Solution**
+
+Adjust the **Region** parameters so that the entire crop area falls within the dimensions of the original image.
+
+## 7600205 Unsupported Format
+
+**Error Message**
+
+Unsupported memory format or pixel format.
+
+**Possible Cause**
+
+The API does not support the memory format or pixel format of the PixelMap.
+
+**Solution**
+
+Check the API specifications for the list of supported formats, and convert the PixelMap to a compatible format before passing it to this API.
+
 ## 7600301 Memory Allocation Failure
 
 **Error Message**
@@ -894,6 +923,21 @@ No memory allocation type is specified, or an incorrect memory allocation type i
 
 Use a correct memory allocation type.
 
+## 7700202 Unsupported Metadata
+
+**Error Message**
+
+Unsupported metadata. For example, the property key is not supported, or the property value is invalid.
+
+**Possible Cause**
+
+1. An unsupported metadata field is entered.
+2. The value of the metadata field is invalid.
+
+**Solution**
+
+Check whether the metadata field is supported or whether the metadata value is valid.
+
 ## 7700203 Unsupported Options
 
 **Error Message**
@@ -938,6 +982,21 @@ Memory allocation failed.
 **Solution**
 
 Check the device memory or input data.
+
+## 7700304 Failed to Write Image Information to the File
+
+**Error Message**
+
+Failed to write image properties to the file.
+
+**Possible Cause**
+
+1. The image data is incorrect.
+2. You do not have the necessary permissions to modify the image file.
+
+**Solution**
+
+Check the image data and confirm that you have the required permissions for the image file.
 
 ## 7800201 Unsupported Options
 

@@ -638,6 +638,65 @@ setSimpleKeyboardEnabled(enable: boolean): void
   inputMethod.setSimpleKeyboardEnabled(enable);
 ```
 
+## inputMethod.onAttachmentDidFail<sup>23+</sup>
+
+onAttachmentDidFail(callback: Callback&lt;AttachFailureReason&gt;): void
+
+订阅绑定失败事件。使用callback异步回调。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[AttachFailureReason](#attachfailurereason23)&gt; | 是 | 回调函数，返回绑定失败的原因，仅当注册者进程触发的绑定失败时，调用该回调函数。|
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
+  (reason: inputMethod.AttachFailureReason): void => {
+    console.info(`Attachment failed with reason: ${reason}.`);
+	if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
+	  console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+	}
+  };
+inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
+```
+
+## inputMethod.offAttachmentDidFail<sup>23+</sup>
+
+offAttachmentDidFail(callback?:  Callback&lt;AttachFailureReason&gt;): void
+
+取消订阅绑定失败事件。使用callback异步回调。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[AttachFailureReason](#attachfailurereason23)&gt; | 否 | 取消订阅的回调函数，需要与订阅接口传入的保持一致。参数不填写时，取消订阅该事件的所有回调函数。|
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
+  (reason: inputMethod.AttachFailureReason): void => {
+    console.info(`Attachment failed with reason: ${reason}.`);
+	if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
+	  console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+	}
+  };
+inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
+inputMethod.offAttachmentDidFail(attachmentDidFailCallback);
+```
+
 ## TextInputType<sup>10+</sup>
 
 文本输入类型。
@@ -818,7 +877,7 @@ Enter键的功能类型。
 
 ## RequestKeyboardReason<sup>15+</sup>
 
-请求键盘输入原因。
+请求键盘输入的原因。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -922,6 +981,18 @@ type SetPreviewTextCallback = (text: string, range: Range) => void
 | ------- | ----------------- | ---- | ----------------------------- |
 | text    | string            | 是   | 预览文本内容。                 |
 | range   | [Range](#range10) | 是   | 文本的选中范围。 |
+
+## AttachFailureReason<sup>23+</sup>
+
+枚举，绑定失败的原因。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+| 名称 | 值 |说明 |
+| -------- | -------- |-------- |
+| CALLER_NOT_FOCUSED    | 0 |表示调用者非焦点窗口所属应用导致的失败。 |
+| IME_ABNORMAL  | 1 |表示输入法应用异常导致的失败。 |
+| SERVICE_ABNORMAL  | 2 |表示输入法框架服务异常导致的失败。 |
 
 ## InputMethodController
 
@@ -1052,7 +1123,7 @@ attach(showKeyboard: boolean, textConfig: TextConfig, requestKeyboardReason: Req
 | -------- | -------- | -------- | -------- |
 | showKeyboard | boolean | 是 | 绑定输入法成功后，是否拉起输入法键盘。<br>- true表示拉起。<br>- false表示不拉起。|
 | textConfig | [TextConfig](#textconfig10) | 是 | 编辑框的配置信息。 |
-| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason15) | 是 | 请求键盘输入原因。 |
+| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason15) | 是 | 请求键盘输入的原因。 |
 
 **返回值：**
 
@@ -1227,7 +1298,7 @@ showTextInput(requestKeyboardReason: RequestKeyboardReason): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason15) | 是 | 请求键盘输入原因。 |
+| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason15) | 是 | 请求键盘输入的原因。 |
 
 **返回值：**
 

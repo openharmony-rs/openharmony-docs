@@ -5,7 +5,7 @@
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You can call native APIs to perform audio encoding, which compresses audio PCM data into a desired format.
 
@@ -23,11 +23,12 @@ For details about the supported encoding capabilities, see [AVCodec Supported Fo
   Export edited PCM data, encode it into the corresponding audio format, and then [multiplex](audio-video-muxer.md) it into a file.
 > **NOTE**
 >
-> AAC encoders adopt the VBR mode by default. This may result in differences from the configured parameters.
+> - AAC encoders adopt the VBR mode by default. This may result in differences from the configured parameters.
+> - By default, AAC encoders include an ADTS header in its output, which occupies the first 7 bytes of each frame.
 
 ## Development Guidelines
 
-Read [AudioCodec](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md) for the API reference.
+Read the [API reference](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md).
 
 Refer to the code snippet below to complete the entire audio encoding process, including creating an encoder, setting encoding parameters (such as the sample rate, bit rate, and audio channel count), and starting, refreshing, resetting, and destroying the encoder.
 
@@ -65,7 +66,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     #include <multimedia/player_framework/native_avbuffer.h>
     ```
 
-2. Create an encoder instance. In the code snippet below, **OH_AVCodec *** is the pointer to the encoder instance created.
+2. Create an encoder instance. In the code snippet below, OH_AVCodec * is the pointer to the encoder instance created.
 
    You can create an encoder by MIME type or codec name.
 
@@ -179,26 +180,14 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    Key values of configuration options are described as follows:
 
    <!--RP2-->
-   |             key               |       Description      |  AAC  |  FLAC| MPEG (MP3) | G711mu |
-   | ----------------------------- | :--------------: | :---: | :---: | :------: | :---: |
-   | OH_MD_KEY_AUD_SAMPLE_RATE     |      Sample rate.     |  Mandatory |  Mandatory|   Mandatory  |  Mandatory |
-   | OH_MD_KEY_AUD_CHANNEL_COUNT   |      Audio channel count.     |  Mandatory |  Mandatory|   Mandatory  |  Mandatory |
-   | OH_MD_KEY_AUDIO_SAMPLE_FORMAT |  Output audio stream format.  |  Mandatory |  Mandatory|   Mandatory  |  Mandatory |
-   | OH_MD_KEY_BITRATE             |       Bit rate.      |  Optional |  Mandatory|   Mandatory  |   -   |
-   | OH_MD_KEY_CHANNEL_LAYOUT      |     Audio channel layout.    |  Optional |  Mandatory|    -     |   -   |
-   | OH_MD_KEY_MAX_INPUT_SIZE      |   Maximum input size.   |  Optional |  Optional|   Optional  |  Optional |
-   | OH_MD_KEY_AAC_IS_ADTS         |     ADTS or not.    |  Optional |   -   |    -    |   -    |
-   | OH_MD_KEY_COMPLIANCE_LEVEL    |    Compatibility level.    |  -    |  Optional|    -     |   -    |
+   ![Audio encoder key configuration](figures/encoder_key.png)
    <!--RP2End-->
 
    The sample below lists the value range of each audio encoding type.
-   | Audio Encoding Type| Sample Rate (Hz)                                                                      |       Audio Channel Count      |
-   | ----------- | ------------------------------------------------------------------------------- | :----------------: |
-   | <!--DelRow-->AAC         | 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000| 1, 2, 3, 4, 5, 6, and 8|
-   | FLAC       | 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000|        1–8        |
-   | MP3         | 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000                    |        1–2        |
-   | G711mu      | 8000                                                                            |         1          |
-   <!--RP3--><!--RP3End-->
+
+   <!--RP3-->
+   ![Audio encoder format range description](figures/encoder_format.png)
+   <!--RP3End-->
 
    The code snippet below shows the API call process, where AAC encoding at the bit rate of 32000 bit/s is carried out on the PCM audio with the 44100 Hz sample rate, 2-channel stereo, and SAMPLE_S16LE sample format.
     <!--RP4-->
@@ -359,13 +348,13 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    ```
    In the preceding example, **attr.flags** indicates the type of the buffer flag.
 
-   To indicate the End of Stream (EOS), pass in the **AVCODEC_BUFFER_FLAGS_EOS** flag.
+   When finished, set the flags to **AVCODEC_BUFFER_FLAGS_EOS**.
 
-   | Value| Description|
+   | Value| Description| 
    | -------- | -------- |
-   | AVCODEC_BUFFER_FLAGS_NONE | Common frame.|
-   | AVCODEC_BUFFER_FLAGS_EOS | The buffer is an end-of-stream frame.|
-   | AVCODEC_BUFFER_FLAGS_CODEC_DATA | The buffer contains codec-specific data.|
+   | AVCODEC_BUFFER_FLAGS_NONE | Common frame.| 
+   | AVCODEC_BUFFER_FLAGS_EOS | The buffer is an end-of-stream frame.| 
+   | AVCODEC_BUFFER_FLAGS_CODEC_DATA | The buffer contains codec-specific data.| 
 
 8. Call **OH_AudioCodec_FreeOutputBuffer()** to release the encoded data.
 

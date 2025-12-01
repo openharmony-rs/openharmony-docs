@@ -8,61 +8,14 @@
 <!--Adviser: @zhang_yixin13-->
 
 本模块主要用于操作及管理NFC Tag，提供后台读卡和前台应用优先分发两种读卡模式。
-后台读卡是指不需要打开应用程序，电子设备通过NFC读取标签卡片后，根据标签卡片的类型匹配到一个或多个应用程序。如果仅匹配到一个，则直接拉起应用程序的读卡页面；如果是多个则弹出应用选择器，让用户选择指定的读卡应用。
+后台读卡是指不需要打开应用程序，电子设备通过NFC读取标签卡片后，根据标签卡片的类型匹配到一个或多个应用程序。如果仅匹配到一个，则直接拉起应用程序的读卡页面；如果是多个则弹出应用选择器，让用户选择指定的读卡应用。后台读卡不涉及tag相关接口，示例参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag-access-guide.md#后台读取标签)。
 前台读卡是指提前打开应用程序，并进入对应的NFC读卡页面后读卡，只会把读到的标签卡片信息分发给前台应用程序。
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
-## 后台读卡方式的声明
-
-应用程序需要支持后台读卡时，需要在应用的属性配置文件中，声明与NFC相关的属性值。比如，在module.json5文件中，声明下面属性值：
-```json
-{
-    "module": {
-        //其他已声明的属性
-
-        "abilities": [
-            {
-                "skills": [
-                    {
-                        "actions": [
-                            // 其它已经声明的actions
-
-                            // 添加nfc tag的 action
-                            "ohos.nfc.tag.action.TAG_FOUND"
-                        ],
-                        "uris": [
-                            {
-                                "type":"tag-tech/NfcA"
-                            },
-                            {
-                                "type":"tag-tech/IsoDep"
-                            }
-                            // 有必要可添加其他技术
-                            // 比如: NfcB/NfcF/NfcV/Ndef/MifareClassic/MifareUL/NdefFormatable
-                        ]
-                    }
-                ]
-            }
-        ],
-        "requestPermissions": [
-            {
-                "name": "ohos.permission.NFC_TAG",
-                "reason": "$string:app_name"
-            }
-        ]
-    }
-}
-```
-> **注意：**
->
->1. 声明"actions"字段的内容填写，必须包含"ohos.nfc.tag.action.TAG_FOUND"，不能更改。
->2. 声明技术时"uris"中"type"字段的内容填写，前缀必须是"tag-tech/"，后面接着NfcA/NfcB/NfcF/NfcV/IsoDep/Ndef/MifareClassic/MifareUL/NdefFormatable"中的一个。如果存在多个"type"时，需要分行填写。填写错误会造成解析失败。
->3. 声明权限时"requestPermissions"中的"name"字段的内容填写，必须是"ohos.permission.NFC_TAG"，不能更改。
->4. 调用本模块接口和常量时请使用canIUse("SystemCapability.Communication.NFC.Tag")判断设备是否支持NFC能力，否则可能导致应用运行稳定性问题，参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag-access-guide.md)。
->5. 导入tag模块编辑器报错，在某个具体设备型号上能力可能超出工程默认设备定义的能力集范围，如需要使用此部分能力需额外配置自定义syscap，参考[syscap开发指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/syscap#syscap开发指导)。
+>1. 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>2. 调用本模块接口和常量时请使用canIUse("SystemCapability.Communication.NFC.Tag")判断设备是否支持NFC能力，否则可能导致应用运行稳定性问题，参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag-access-guide.md)。
+>3. 导入tag模块编辑器报错，在某个具体设备型号上能力可能超出工程默认设备定义的能力集范围，如需要使用此部分能力需额外配置自定义syscap，参考[syscap开发指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/syscap#syscap开发指导)。
 
 ## **导入模块**
 
@@ -582,7 +535,7 @@ getTagInfo(want: [Want](../apis-ability-kit/js-apis-app-ability-want.md#want)): 
 
 registerForegroundDispatch(elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md), discTech: number[], callback: AsyncCallback&lt;[TagInfo](#taginfo)&gt;): void
 
-注册对NFC Tag读卡事件的监听，实现前台应用优先分发的目的。通过discTech设置支持的读卡技术类型，通过Callback方式获取读取到Tag的[TagInfo](#taginfo)信息。应用必须在前台才能调用。需要与取消监听接口[tag.unregisterForegroundDispatch](#tagunregisterforegrounddispatch10)成对使用。如果已注册事件监听，需要在页面退出前台或页面销毁前调用取消注册。
+注册对NFC Tag读卡事件的监听，实现前台应用优先分发的目的。通过discTech设置支持的读卡技术类型，通过callback方式获取读取到Tag的[TagInfo](#taginfo)信息。应用必须在前台才能调用。需要与取消监听接口[tag.unregisterForegroundDispatch](#tagunregisterforegrounddispatch10)成对使用。如果已注册事件监听，需要在页面退出前台或页面销毁前调用取消注册。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -655,7 +608,7 @@ let discTech : number[] = [tag.NFC_A, tag.NFC_B]; // 用前台ability时所需�
 let elementName : bundleManager.ElementName;
 function foregroundCb(err : BusinessError, tagInfo : tag.TagInfo) {
     if (!err) {
-        console.log("foreground callback: tag found tagInfo = ", JSON.stringify(tagInfo));
+        console.info("foreground callback: tag found tagInfo = ", JSON.stringify(tagInfo));
     } else {
         console.error("foreground callback err: " + err.message);
         return;
@@ -665,7 +618,7 @@ function foregroundCb(err : BusinessError, tagInfo : tag.TagInfo) {
 
 export default class MainAbility extends UIAbility {
     OnCreate(want : Want, launchParam : AbilityConstant.LaunchParam) {
-        console.log("OnCreate");
+        console.info("OnCreate");
         elementName = {
             bundleName: want.bundleName as string,
             abilityName: want.abilityName as string,
@@ -674,7 +627,7 @@ export default class MainAbility extends UIAbility {
     }
 
     onForeground() {
-        console.log("onForeground");
+        console.info("onForeground");
         try {
             tag.registerForegroundDispatch(elementName, discTech, foregroundCb);
         } catch (e) {
@@ -683,7 +636,7 @@ export default class MainAbility extends UIAbility {
     }
 
     onBackground() {
-        console.log("onBackground");
+        console.info("onBackground");
         try {
             tag.unregisterForegroundDispatch(elementName);
         } catch (e) {
@@ -692,7 +645,7 @@ export default class MainAbility extends UIAbility {
     }
 
     onWindowStageDestroy() {
-        console.log("onWindowStageDestroy");
+        console.info("onWindowStageDestroy");
         try {
             tag.unregisterForegroundDispatch(elementName);
         } catch (e) {
@@ -708,7 +661,7 @@ export default class MainAbility extends UIAbility {
 
 on(type: 'readerMode', elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md), discTech: number[], callback: AsyncCallback&lt;[TagInfo](#taginfo)&gt;): void
 
-订阅NFC Tag读卡事件，实现前台应用优先分发。设备会进入读卡器模式，同时关闭卡模拟。通过discTech设置支持的读卡技术类型，通过Callback方式获取到Tag的[TagInfo](#taginfo)信息。需要与取消读卡器模式的[tag.off](#tagoff11)成对使用，如果已通过on进行设置，需要在页面退出前台或页面销毁时调用[tag.off](#tagoff11)。
+订阅NFC Tag读卡事件，实现前台应用优先分发。设备会进入读卡器模式，同时关闭卡模拟。通过discTech设置支持的读卡技术类型，通过callback方式获取到Tag的[TagInfo](#taginfo)信息。需要与取消读卡器模式的[tag.off](#tagoff11)成对使用，如果已通过on进行设置，需要在页面退出前台或页面销毁时调用[tag.off](#tagoff11)。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -785,7 +738,7 @@ let elementName : bundleManager.ElementName;
 
 function readerModeCb(err : BusinessError, tagInfo : tag.TagInfo) {
     if (!err) {
-        console.log("offCallback: tag found tagInfo = ", JSON.stringify(tagInfo));
+        console.info("offCallback: tag found tagInfo = ", JSON.stringify(tagInfo));
     } else {
         console.error("offCallback err: " + err.message);
         return;
@@ -795,7 +748,7 @@ function readerModeCb(err : BusinessError, tagInfo : tag.TagInfo) {
 
 export default class MainAbility extends UIAbility {
     OnCreate(want : Want, launchParam : AbilityConstant.LaunchParam) {
-        console.log("OnCreate");
+        console.info("OnCreate");
         elementName = {
             bundleName: want.bundleName as string,
             abilityName: want.abilityName as string,
@@ -804,7 +757,7 @@ export default class MainAbility extends UIAbility {
     }
 
     onForeground() {
-        console.log("on start");
+        console.info("on start");
         try {
             tag.on('readerMode', elementName, discTech, readerModeCb);
         } catch (e) {
@@ -813,7 +766,7 @@ export default class MainAbility extends UIAbility {
     }
 
     onBackground() {
-        console.log("onBackground");
+        console.info("onBackground");
         try {
             tag.off('readerMode', elementName, readerModeCb);
         } catch (e) {
@@ -822,7 +775,7 @@ export default class MainAbility extends UIAbility {
     }
 
     onWindowStageDestroy() {
-        console.log("onWindowStageDestroy");
+        console.info("onWindowStageDestroy");
         try {
             tag.off('readerMode', elementName, readerModeCb);
         } catch (e) {
@@ -873,10 +826,10 @@ try {
     let uri = "https://www.example.com"; // 修改为正确可用的uri
     let ndefRecord : tag.NdefRecord = tag.ndef.makeUriRecord(uri);
     if (ndefRecord != undefined) {
-        console.log("ndefMessage makeUriRecord rtdType: " + ndefRecord.rtdType);
-        console.log("ndefMessage makeUriRecord payload: " + ndefRecord.payload);
+        console.info("ndefMessage makeUriRecord rtdType: " + ndefRecord.rtdType);
+        console.info("ndefMessage makeUriRecord payload: " + ndefRecord.payload);
     } else {
-        console.log("ndefMessage makeUriRecord ndefRecord: " + ndefRecord);
+        console.error("ndefMessage makeUriRecord ndefRecord: " + ndefRecord);
     }
 } catch (businessError) {
     console.error("ndefMessage makeUriRecord catch businessError: " + businessError);
@@ -924,10 +877,10 @@ try {
     let locale = "en"; // 修改为预期的编码格式
     let ndefRecord : tag.NdefRecord = tag.ndef.makeTextRecord(text, locale);
     if (ndefRecord != undefined) {
-        console.log("ndefMessage makeTextRecord rtdType: " + ndefRecord.rtdType);
-        console.log("ndefMessage makeTextRecord payload: " + ndefRecord.payload);
+        console.info("ndefMessage makeTextRecord rtdType: " + ndefRecord.rtdType);
+        console.info("ndefMessage makeTextRecord payload: " + ndefRecord.payload);
     } else {
-        console.log("ndefMessage makeTextRecord ndefRecord: " + ndefRecord);
+        console.error("ndefMessage makeTextRecord ndefRecord: " + ndefRecord);
     }
 } catch (businessError) {
     console.error("ndefMessage makeTextRecord catch businessError: " + businessError);
@@ -973,10 +926,10 @@ try {
     let bundleName: string = 'com.demo.test';
     let ndefRecord : tag.NdefRecord = tag.ndef.makeApplicationRecord(bundleName);
     if (ndefRecord != undefined) {
-        console.log("ndefMessage makeApplicationRecord rtdType: " + ndefRecord.rtdType);
-        console.log("ndefMessage makeApplicationRecord payload: " + ndefRecord.payload);
+        console.info("ndefMessage makeApplicationRecord rtdType: " + ndefRecord.rtdType);
+        console.info("ndefMessage makeApplicationRecord payload: " + ndefRecord.payload);
     } else {
-        console.log("ndefMessage makeApplicationRecord ndefRecord: " + ndefRecord);
+        console.error("ndefMessage makeApplicationRecord ndefRecord: " + ndefRecord);
     }
 } catch (businessError) {
     console.error("ndefMessage makeApplicationRecord catch businessError: " + businessError);
@@ -1024,10 +977,10 @@ try {
     let mimeData = [0x01, 0x02, 0x03, 0x04]; // 修改为预期的符合格式的数据
     let ndefRecord : tag.NdefRecord = tag.ndef.makeMimeRecord(mimeType, mimeData);
     if (ndefRecord != undefined) {
-        console.log("ndefMessage makeMimeRecord rtdType: " + ndefRecord.rtdType);
-        console.log("ndefMessage makeMimeRecord payload: " + ndefRecord.payload);
+        console.info("ndefMessage makeMimeRecord rtdType: " + ndefRecord.rtdType);
+        console.info("ndefMessage makeMimeRecord payload: " + ndefRecord.payload);
     } else {
-        console.log("ndefMessage makeMimeRecord ndefRecord: " + ndefRecord);
+        console.error("ndefMessage makeMimeRecord ndefRecord: " + ndefRecord);
     }
 } catch (businessError) {
     console.error("ndefMessage makeMimeRecord catch businessError: " + businessError);
@@ -1076,10 +1029,10 @@ try {
     let externalData = [0x01, 0x02, 0x03, 0x04]; // 修改为正确的外部数据内容
     let ndefRecord : tag.NdefRecord = tag.ndef.makeExternalRecord(domainName, type, externalData);
     if (ndefRecord != undefined) {
-        console.log("ndefMessage makeExternalRecord rtdType: " + ndefRecord.rtdType);
-        console.log("ndefMessage makeExternalRecord payload: " + ndefRecord.payload);
+        console.info("ndefMessage makeExternalRecord rtdType: " + ndefRecord.rtdType);
+        console.info("ndefMessage makeExternalRecord payload: " + ndefRecord.payload);
     } else {
-        console.log("ndefMessage makeExternalRecord ndefRecord: " + ndefRecord);
+        console.error("ndefMessage makeExternalRecord ndefRecord: " + ndefRecord);
     }
 } catch (businessError) {
     console.error("ndefMessage makeExternalRecord catch businessError: " + businessError);
@@ -1124,9 +1077,9 @@ import { tag } from '@kit.ConnectivityKit';
 let rawData = [0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]; // 必须符合NDEF格式的数据
 try {
     let ndefMessage : tag.NdefMessage = tag.ndef.createNdefMessage(rawData);
-    console.log("ndef createNdefMessage, ndefMessage: " + ndefMessage);
+    console.info("ndef createNdefMessage, ndefMessage: " + ndefMessage);
     let rawData2 : number[] = tag.ndef.messageToBytes(ndefMessage);
-    console.log("ndefMessage messageToBytes rawData2: " + rawData2);
+    console.info("ndefMessage messageToBytes rawData2: " + rawData2);
 } catch (businessError) {
     console.error("ndef createNdefMessage businessError: " + businessError);
 }
@@ -1168,7 +1121,7 @@ import { tag } from '@kit.ConnectivityKit';
 let rawData = [0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43];  //必须是可以被解析的NDEF记录
 try {
     let ndefMessage : tag.NdefMessage = tag.ndef.createNdefMessage(rawData);
-    console.log("ndef createNdefMessage, ndefMessage: " + ndefMessage);
+    console.info("ndef createNdefMessage, ndefMessage: " + ndefMessage);
 } catch (businessError) {
     console.error("ndef createNdefMessage businessError: " + businessError);
 }
@@ -1214,7 +1167,7 @@ let textRecord : tag.NdefRecord = tag.ndef.makeTextRecord("Hello World", "en");
 let ndefRecords : tag.NdefRecord[] = [uriRecord, textRecord];
 try {
     let ndefMessage : tag.NdefMessage = tag.ndef.createNdefMessage(ndefRecords);
-    console.log("ndef createNdefMessage ndefMessage: " + ndefMessage);
+    console.info("ndef createNdefMessage ndefMessage: " + ndefMessage);
 } catch (businessError) {
     console.error("ndef createNdefMessage businessError: " + businessError);
 }
@@ -1222,7 +1175,7 @@ try {
 
 ## TagInfo
 
-NFC服务在读取到标签时给出的对象，通过改对象属性，应用知道该标签支持哪些技术类型，并使用匹配的技术类型来调用相关接口。
+NFC服务在读取到标签时给出的对象，通过该对象属性，应用知道该标签支持哪些技术类型，并使用匹配的技术类型来调用相关接口。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
@@ -1230,9 +1183,9 @@ NFC服务在读取到标签时给出的对象，通过改对象属性，应用�
 
 | **名称**                      | **类型**                                                      | **只读** | **可选** | **说明**                                                                                     |
 | ----------------------------- | ------------------------------------------------------------- | -------- | -------- | -------------------------------------------------------------------------------------------- |
-| uid<sup>9+</sup>              | number[]                                                      | 是       | 否       | 标签的uid，每个number值是十六进制表示，范围是0x00~0xFF。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                     |
-| technology<sup>9+</sup>       | number[]                                                      | 是       | 否       | 支持的技术类型，每个number值表示所支持技术类型的常量值。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                     |
-| supportedProfiles             | number[]                                                      | 是       | 否       | 支持的技术类型，从API9开始不支持，使用[tag.TagInfo#technology](#taginfo)替代。            |
+| uid<sup>9+</sup>              | number[]                                                      | 否       | 否       | 标签的uid，每个number值是十六进制表示，范围是0x00~0xFF。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                     |
+| technology<sup>9+</sup>       | number[]                                                      | 否       | 否       | 支持的技术类型，每个number值表示所支持技术类型的常量值。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                     |
+| supportedProfiles             | number[]                                                      | 否       | 否       | 支持的技术类型，从API9开始不支持，使用[tag.TagInfo#technology](#taginfo)替代。            |
 
 ## NdefRecord<sup>9+</sup>
 NDEF标签Record属性的定义，参考NDEF标签技术规范《NFCForum-TS-NDEF_1.0》的定义细节。
@@ -1243,10 +1196,10 @@ NDEF标签Record属性的定义，参考NDEF标签技术规范《NFCForum-TS-NDE
 
 | **名称** | **类型** | **只读** | **可选** | **说明**                                                                                  |
 | -------- | -------- | -------- | -------- | ----------------------------------------------------------------------------------------- |
-| tnf      | number   | 是       | 否       | NDEF Record的TNF(Type Name Field)。                                                       |
-| rtdType  | number[] | 是       | 否       | NDEF Record的RTD(Record Type Definition)类型值，每个number十六进制表示，范围是0x00~0xFF。 |
-| id       | number[] | 是       | 否       | NDEF Record的ID，每个number十六进制表示，范围是0x00~0xFF。                                |
-| payload  | number[] | 是       | 否       | NDEF Record的PAYLOAD，每个number十六进制表示，范围是0x00~0xFF。                           |
+| tnf      | number   | 否       | 否       | NDEF Record的TNF(Type Name Field)。                                                       |
+| rtdType  | number[] | 否       | 否       | NDEF Record的RTD(Record Type Definition)类型值，每个number十六进制表示，范围是0x00~0xFF。 |
+| id       | number[] | 否       | 否       | NDEF Record的ID，每个number十六进制表示，范围是0x00~0xFF。                                |
+| payload  | number[] | 否       | 否       | NDEF Record的PAYLOAD，每个number十六进制表示，范围是0x00~0xFF。                           |
 
 ## 常量
 NFC Tag有多种不同的技术类型，定义常量描述不同的技术类型。

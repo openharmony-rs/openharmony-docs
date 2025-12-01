@@ -8,7 +8,7 @@
 <!--Adviser: @huipeizi-->
 
 
-##  ArkTS 应用运行时出现模块化加载相关的异常报错提示，可能导致报错原因以及解决方法
+##  ArkTS 应用运行时出现模块化加载相关的异常报错提示，可能的报错原因以及解决方法
 ### "Cannot find dynamic-import module 'xxxx'"
 
 报错表示当前加载的模块未被编译到当前应用包内
@@ -170,7 +170,7 @@ export function A() {
 import { a } from './A'
 export class Animal {
   static {
-    console.log("this is in class");
+    console.info("this is in class");
     let str = a; // 报错信息：a is not initialized
   }
 }
@@ -182,7 +182,7 @@ export class Animal {
 import { a } from './A'
 export class Animal {
   static {
-    console.log("this is in class");
+    console.info("this is in class");
   }
   str = a;  // 修改点
 }
@@ -199,8 +199,8 @@ ArkTS语言规范是基于ECMAScript规范的子集，根据语言规范，当�
 ### const/let声明前访问
 
 ``` typescript
-console.log(a); // 报错信息：Variable 'a' is used before being assigned.
-console.log(b); // 报错信息：Variable 'b' is used before being assigned.
+console.info(a); // 报错信息：Variable 'a' is used before being assigned.
+console.info(b); // 报错信息：Variable 'b' is used before being assigned.
 
 let a = '1';
 const b = '2';
@@ -211,8 +211,8 @@ const b = '2';
 let a = '1';
 const b = '2';
 
-console.log(a);
-console.log(b);
+console.info(a);
+console.info(b);
 ```
 
 

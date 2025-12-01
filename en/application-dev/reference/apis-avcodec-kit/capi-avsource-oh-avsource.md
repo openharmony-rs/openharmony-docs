@@ -1,5 +1,16 @@
 # OH_AVSource
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct OH_AVSource OH_AVSource
+```
+
 ## Overview
 
 The struct describes a native object for the media resource interface.

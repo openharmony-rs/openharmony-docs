@@ -240,6 +240,7 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
     windowStage.loadContent('pages/Index', (err: BusinessError) => {
       if (err.code) {
         console.error(`Failed to load content for main window. Cause code: ${err.code}, message: ${err.message}`);
@@ -252,13 +253,14 @@ export default class EntryAbility extends UIAbility {
           }
           subWindow.showWindow().then(() => {
             try {
-              window.getLastWindow(this.context, (err: BusinessError, topWindow) => {
+              window.getLastWindow(this.context, (err: BusinessError, data) => {
                 const errCode: number = err.code;
                 if (errCode) {
                   console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
                   return;
                 }
-                console.info(`Succeeded in obtaining the top window. Window id: ${topWindow.getWindowProperties().id}`);
+                windowClass = data;
+                console.info(`Succeeded in obtaining the top window. Window id: ${windowClass.getWindowProperties().id}`);
               });
             } catch (exception) {
               console.error(`Failed to obtain the top window. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -318,6 +320,7 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
     windowStage.loadContent('pages/Index', (err: BusinessError) => {
       if (err.code) {
         console.error(`Failed to load content for main window. Cause code: ${err.code}, message: ${err.message}`);
@@ -331,6 +334,7 @@ export default class EntryAbility extends UIAbility {
           subWindow.showWindow().then(() => {
             try {
               window.getLastWindow(this.context).then((topWindow) => {
+                windowClass = topWindow;
                 console.info(`Succeeded in obtaining the top window. Window id: ${topWindow.getWindowProperties().id}`);
               }).catch((err: BusinessError) => {
                 console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
@@ -350,7 +354,7 @@ export default class EntryAbility extends UIAbility {
 ## window.shiftAppWindowFocus<sup>11+</sup>
 shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
 
-在同应用内将窗口焦点从源窗口转移到目标窗口，仅支持应用主窗、子窗范围内的焦点转移。
+在同应用内将窗口焦点从源窗口转移到目标窗口，仅支持应用主窗、子窗范围内的焦点转移。使用Promise异步回调。
 
 目标窗口需确保具有获得焦点的能力（可通过[setWindowFocusable()](arkts-apis-window-Window.md#setwindowfocusable9)设置），并确保调用[showWindow()](arkts-apis-window-Window.md#showwindow9)成功且执行完毕。
 
@@ -432,8 +436,8 @@ export default class EntryAbility extends UIAbility {
           subWindow = data;
           subWindowId = subWindow.getWindowProperties().id;
           subWindow.resize(500, 500);
-          subWindow.showWindow();
           subWindow.setUIContent('pages/Index');
+          subWindow.showWindow();
 
           // 监听Window状态，确保已经就绪
           subWindow.on("windowEvent", (windowEvent) => {
@@ -458,7 +462,7 @@ export default class EntryAbility extends UIAbility {
 ## window.shiftAppWindowPointerEvent<sup>15+</sup>
 shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，主窗口和子窗口可正常调用，用于将鼠标输入事件从源窗口转移到目标窗口。使用Promise异步回调。
+主窗口和子窗口可正常调用，用于将鼠标输入事件从源窗口转移到目标窗口。使用Promise异步回调。
 
 源窗口仅在[onTouch](arkui-ts/ts-universal-events-touch.md#ontouch)事件（事件类型必须为TouchType.Down）的回调方法中调用此接口才会有鼠标输入事件转移效果，成功调用此接口后，系统会向源窗口补发鼠标按键抬起（TouchType.Up）事件，并且向目标窗口补发鼠标按键按下（TouchType.Down）事件。
 
@@ -466,7 +470,7 @@ shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Prom
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -532,13 +536,13 @@ struct Index {
 ## window.shiftAppWindowTouchEvent<sup>20+</sup>
 shiftAppWindowTouchEvent(sourceWindowId: number, targetWindowId: number, fingerId: number): Promise&lt;void&gt;
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，主窗口和子窗口可正常调用，用于将触屏输入事件从源窗口转移到目标窗口。使用Promise异步回调。
+主窗口和子窗口可正常调用，用于将触屏输入事件从源窗口转移到目标窗口。使用Promise异步回调。
 
 源窗口仅在[onTouch](arkui-ts/ts-universal-events-touch.md#ontouch)事件（事件类型必须为TouchType.Down）的回调方法中调用此接口才会有触屏输入事件转移效果，成功调用此接口后，系统会向源窗口补发触屏抬起（TouchType.Up）事件，并且向目标窗口补发触屏按下（TouchType.Down）事件。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其它设备中返回801错误码。 
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -844,7 +848,7 @@ setWatermarkImageForAppWindows(pixelMap: image.PixelMap | undefined): Promise&lt
 
 | 错误码 ID | 错误信息                                                                                                                  |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- |
-| 801       | Capability not supported. Function setWatermarkImageForAppWindows can not work correctly due to limited device capabilities. |
+| 801       | Capability not supported. Function setWatermarkImageForAppWindows can not to work correctly due to limited device capabilities. |
 | 1300003   | This window manager service works abnormally.                                                                             |
 | 1300016   | Parameter error. Possible cause: 1. Invalid parameter range.                                                              |
 
@@ -884,7 +888,7 @@ image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMa
 
 setStartWindowBackgroundColor(moduleName: string, abilityName: string, color: ColorMetrics): Promise&lt;void&gt;
 
-设置同一应用包名下指定mouduleName、abilityName对应UIAbility的启动页背景色，使用Promise异步回调。
+设置同一应用包名下指定moduleName、abilityName对应UIAbility的启动页背景色，使用Promise异步回调。
 
 该接口对同一应用包名下的所有进程生效，例如多实例或应用分身场景。
 
@@ -925,12 +929,190 @@ import { ColorMetrics, window } from '@kit.ArkUI';
 try {
   let promise = window.setStartWindowBackgroundColor("entry", "EntryAbility", ColorMetrics.numeric(0xff000000));
   promise.then(() => {
-    console.log('Succeeded in setting the starting window color.');
+    console.info('Succeeded in setting the starting window color.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to set the starting window color. Cause code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
   console.error(`Failed to set the starting window color. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## window.getAllMainWindowInfo<sup>21+</sup>
+
+getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
+
+获取全部主窗口信息，使用Promise异步回调。
+
+**需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------------------- | ------------------------ |
+| Promise&lt;Array&lt;[MainWindowInfo](arkts-apis-window-i.md#mainwindowinfo21)&gt;&gt; | Promise对象。返回主窗口信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                       |
+| -------- | ------------------------------ |
+| 201      | Permission verification failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300003  | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, UIAbility, common, Permissions } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
+      }
+      reqPermissionsFromUser(permissions, this.context);
+      console.info('Succeeded in loading the content');
+    });
+    try {
+      let windowInfoPromise = window.getAllMainWindowInfo();
+      windowInfoPromise.then((list: Array<window.MainWindowInfo>) => {
+        console.info('Get all main window info success.');
+      }).catch((err: BusinessError) => {
+        console.error(`Get all main window info failed. Error info: ${JSON.stringify(err)}`);
+      });
+    } catch (err) {
+      console.error(`Get all main window info failed. Cause info: ${JSON.stringify(err)}`);
+    }
+  }
+}
+
+const permissions: Array<Permissions> = ['ohos.permission.CUSTOM_SCREEN_CAPTURE'];
+function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  atManager.requestPermissionsFromUser(context, permissions).then((data) => {
+    console.info('requestPermissionsFromUser');
+    let grantStatus: Array<number> = data.authResults;
+    let length: number = grantStatus.length;
+    for (let i = 0; i < length; i++) {
+      if (grantStatus[i] === 0) {
+        // 用户授权
+      } else {
+        // 用户拒绝授权
+        return;
+      }
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request permission from user. Code is ${err.code}, message is ${err.message}`);
+  })
+}
+```
+
+## window.getMainWindowSnapshot<sup>21+</sup>
+
+getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfiguration): Promise&lt;Array&lt;image.PixelMap | undefined&gt;&gt;
+
+获取一个或多个指定windowId的主窗口截图，使用Promise异步回调。
+
+**需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名    | 类型    | 必填 | 说明                                          |
+| --------- | ------- | ---- | --------------------------------------------- |
+| windowId | Array&lt;number&gt; | 是   | 需要获取截图的主窗口ID列表。可通过[window.getAllMainWindowInfo()](#windowgetallmainwindowinfo21)获取到主窗口windowId。当windowId为null、undefined、小于0、存在重复值或数量超过512个时，返回错误码401；当windowId大于0但不存在对应窗口时，返回undefined。|
+| config | [WindowSnapshotConfiguration](arkts-apis-window-i.md#windowsnapshotconfiguration21) | 是 | 获取窗口截图时的配置信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------------------- | ------------------------ |
+| Promise&lt;Array&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined&gt;&gt; | Promise对象。截图的PixelMap列表，按传入的窗口ID数组的顺序排列。当窗口ID合法但无法找到对应的主窗口时，返回undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                       |
+| -------- | ------------------------------ |
+| 201      | Permission verification failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300003  | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, UIAbility, common, Permissions } from '@kit.AbilityKit';
+import { image } from '@kit.ImageKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause: JSON.stringify(err)`);
+      }
+      reqPermissionsFromUser(permissions, this.context);
+      console.info('Success in loading the content');
+    });
+    try {
+      let windowIds: number[] = [];
+      let configs: window.WindowSnapshotConfiguration = {
+        useCache: false
+      }
+      let windowInfoPromise = window.getAllMainWindowInfo();
+      windowInfoPromise.then((mainWindowInfoList: Array<window.MainWindowInfo>) => {
+        for (let i = 0; i < mainWindowInfoList.length; i++) {
+          windowIds[i] = mainWindowInfoList[i].windowId;
+        }
+        let promise = window.getMainWindowSnapshot(windowIds, configs);
+        promise.then((list: Array<image.PixelMap | undefined>) => {
+          for (let i = 0; i < list.length; i++) {
+            console.info(`Get main window snapshot, getBytesNumberPerRow: ${list[i]?.getBytesNumberPerRow()}`);
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`Get main window snapshot failed. Error info: ${JSON.stringify(err)}`);
+        });
+      }).catch((err: BusinessError) => {
+        console.error(`Get all main window info failed. Error info: ${JSON.stringify(err)}`);
+      });
+    } catch (err) {
+      console.error(`Get all main window info failed. Cause info: ${JSON.stringify(err)}`);
+    }
+  }
+}
+
+const permissions: Array<Permissions> = ['ohos.permission.CUSTOM_SCREEN_CAPTURE'];
+function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  atManager.requestPermissionsFromUser(context, permissions).then((data) => {
+    console.info('requestPermissionsFromUser');
+    let grantStatus: Array<number> = data.authResults;
+    let length: number = grantStatus.length;
+    for (let i = 0; i < length; i++) {
+      if (grantStatus[i] === 0) {
+        // 用户授权
+      } else {
+        // 用户拒绝授权
+        return;
+      }
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request permission from user. Code is ${err.code}, message is ${err.message}`);
+  })
 }
 ```
 

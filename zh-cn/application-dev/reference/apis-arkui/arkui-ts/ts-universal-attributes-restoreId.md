@@ -1,4 +1,10 @@
 # 分布式迁移标识
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 组件的分布式迁移标识，指明了该组件在分布式迁移场景下可以将特定状态恢复到对端设备。
 
@@ -32,10 +38,10 @@ restoreId(value: number): T
 
 | 组件名称      | 起始版本 | 迁移状态                                     |
 | --------- | ---- | ---------------------------------------- |
-| List      | 8    | 迁移当前设备显示在顶部ListItem的索引值，迁移后在对端设备上，将迁移索引值对应的ListItem在List中完整地置顶显示。 |
-| Grid      | 9    | 迁移当前设备显示在顶部GridItem的索引值，迁移后在对端设备上，将迁移索引值对应的GridItem在Grid中完整地置顶显示。ScrollBar位置无法迁移。 |
-| Scroll    | 9    | 迁移距顶部滚动的绝对距离。两端设备显示规格不同等原因导致布局不一致，会影响迁移效果。 |
-| WaterFlow | 11   | 迁移当前设备显示在顶部FlowItem的索引值，迁移后在对端设备上，将迁移索引值对应的FlowItem在WaterFlow顶部显示。同时迁移顶部FlowItem相对WaterFlow的主轴偏移值（vp单位）。 |
+| [List](./ts-container-list.md)      | 8    | 迁移当前设备显示在顶部ListItem的索引值，迁移后在对端设备上，将迁移索引值对应的ListItem在List中完整地置顶显示。 |
+| [Grid](./ts-container-grid.md)      | 9    | 迁移当前设备显示在顶部GridItem的索引值，迁移后在对端设备上，将迁移索引值对应的GridItem在Grid中完整地置顶显示。ScrollBar位置无法迁移。 |
+| [Scroll](./ts-container-scroll.md)    | 9    | 迁移距顶部滚动的绝对距离。两端设备显示规格不同等原因导致布局不一致，会影响迁移效果。 |
+| [WaterFlow](./ts-container-waterflow.md) | 11   | 迁移当前设备显示在顶部FlowItem的索引值，迁移后在对端设备上，将迁移索引值对应的FlowItem在WaterFlow顶部显示。同时迁移顶部FlowItem相对WaterFlow的主轴偏移值（vp单位）。 |
 
 ## 示例
 

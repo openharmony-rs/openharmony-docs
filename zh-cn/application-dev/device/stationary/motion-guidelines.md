@@ -48,6 +48,8 @@
  - 窗口旋转场景，多指同时操作场景不支持。
 
  - 能力有效范围：不包含距离屏幕边缘8mm内区域。
+ 
+ - 结果上报条件：首次订阅或切换操作手后，连续点数次触发。
 
 ### 开发步骤
 
@@ -57,6 +59,7 @@
    import { motion } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
+   <!-- @[import_the_motion_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 2. 定义回调函数接收操作手结果
 
@@ -65,6 +68,7 @@
      console.info('callback succeeded' + data);
    };
    ```
+   <!-- @[motion_subscribe_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 3. 订阅操作手感知
 
@@ -77,6 +81,7 @@
       console.error("Failed on and err code is " + error.code);
    }
    ```
+   <!-- @[motion_subscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 4. 取消订阅操作手感知
 
@@ -89,6 +94,7 @@
       console.error("Failed off and err code is " + error.code);
    }
    ```
+   <!-- @[motion_unsubscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 5. 获取最新操作手状态
 
@@ -101,6 +107,7 @@
       console.error("Failed get and err code is " + error.code);
    }
    ```
+   <!-- @[motion_get_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 
 ## 获取握持手状态开发指导
@@ -146,6 +153,7 @@
    import { motion } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
+   <!-- @[import_the_motion_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 2. 定义回调函数接收握持手结果
 
@@ -154,6 +162,7 @@
      console.info('callback succeeded' + data);
    };
    ```
+   <!-- @[motion_subscribe_holding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 3. 订阅握持手感知
 
@@ -166,6 +175,7 @@
       console.error("Failed on and err code is " + error.code);
    }
    ```
+   <!-- @[motion_subscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 4. 取消订阅握持手感知
 
@@ -178,3 +188,4 @@
       console.error("Failed off and err code is " + error.code);
    }
    ```
+   <!-- @[motion_unsubscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->

@@ -18,6 +18,9 @@ Third-party applications can use the metadata binding function to map the App Li
 
 ## Available APIs
 
+  - The initial APIs of this module are supported since API version 18. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+  - This module supports the metadata binding function.
+
 | Name                                                      | Description                                  |
 | ------------------------------------------------------------ | -------------------------------------- |
 | [submitMetadata](../../reference/apis-multimodalawareness-kit/js-apis-awareness-metadataBinding.md#metadatabindingsubmitmetadata)(metadata: string): void; | Passes the App Linking link mapped to the encoded metadata to Multimodal Awareness Kit, which then forwards the link to the system application that calls the encoding API at an appropriate time.|
@@ -35,48 +38,53 @@ Third-party applications can use the metadata binding function to map the App Li
    ```ts
    import { metadataBinding } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { Callback } from '@ohos.base';
+   import { Callback } from '@kit.BasicServicesKit';
    ```
+   <!-- @[import_the_metadata_binding_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
 
-2. Define the callback used to return the encoded metadata.
+2. Define the callback used to return the encoded metadata and the bundle name.  
 
    ```
    let callback : Callback<number> = (event: number) => {};
+   let bundleName: string = '';
    ```
+   <!-- @[metadata_binding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
 
 3. Subscribe to system events that are used to obtain the encoded metadata.
 
    ```
-   let bundleName: string = '';
    try {
-      metadataBinding.on('operationSubmitMetadata', bundleName, this.callback);  
+      metadataBinding.on('operationSubmitMetadata', bundleName, callback);  
       console.info("on succeeded");
    } catch (err) {
       let error = err as BusinessError;
       console.error("Register event error and err code is " + error.code);
    }
    ```
+   <!-- @[metadata_binding_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
 
 4. Configure the App Linking link.
 
    ```
-    let metadata: string = "";
-    try {
-        metadataBinding.submitMetadata(metadata);
-    } catch (err) {
-        let error = err as BusinessError;
-        console.error("Submit metadata error and err code is " + error.code);
-    }
+   let metadata: string = "";
+   try {
+      metadataBinding.submitMetadata(metadata);
+   } catch (err) {
+      let error = err as BusinessError;
+      console.error("Submit metadata error and err code is " + error.code);
+   }
    ```
+   <!-- @[metadata_binding_submit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
 
 5. Unsubscribe from system events that are used to obtain the encoded metadata.
 
    ```
    try {
-      metadataBinding.off('operationSubmitMetadata', bundleName, this.callback);
-      console.info("off succeeded");
+     metadataBinding.off('operationSubmitMetadata', bundleName, callback);
+     console.info("off succeeded");
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Unregister event error and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error("Unregister event error and err code is " + error.code);
    }
    ```
+   <!-- @[metadata_binding_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->

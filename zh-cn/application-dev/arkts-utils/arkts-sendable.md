@@ -40,7 +40,7 @@ Sendable协议定义了ArkTS的可共享对象体系及其规格约束。符合S
 
 Sendable class需同时满足以下两个规则：
 
-1. 当且仅当被标注了[@Sendable装饰器](#sendable装饰器)。
+1. 针对API version 22以前的工程，当且仅当被标注了[@Sendable装饰器](#sendable装饰器)。从API version 22开始，Sendable class除了必须标注@Sendable装饰器之外，开发者可根据需要在Sendable class上叠加使用其他自定义装饰器，具体操作可参考[在Sendable class上叠加其他自定义装饰器](sendable-constraints.md#支持在sendable-class上叠加自定义装饰器)。
 
 2. 需满足Sendable约束，详情可查[Sendable使用规则](sendable-constraints.md)。
 
@@ -72,11 +72,15 @@ Sendable interface需同时满足以下两个规则：
 
 - ArkTS基本数据类型：boolean、number、string、bigint、null、undefined。
 
+- ArkTS数据类型：const enum（常量枚举）。
+
 - ArkTS语言标准库中定义的[容器类型数据](arkts-collections-introduction.md)（须显式引入[@arkts.collections](../reference/apis-arkts/arkts-apis-arkts-collections.md)）。
 
 - ArkTS语言标准库中定义的[异步锁对象](arkts-async-lock-introduction.md)（须显式引入[@arkts.utils](../reference/apis-arkts/arkts-apis-arkts-utils.md)）。
 
 - ArkTS语言标准库中定义的[异步等待对象](arkts-condition-variable-introduction.md)（须显式引入[@arkts.utils](../reference/apis-arkts/arkts-apis-arkts-utils.md)）。
+
+- ArkTS语言标准库中定义的[SendableLruCache对象](../reference/apis-arkts/arkts-apis-arkts-utils-SendableLruCache.md)（须显式引入[@arkts.utils](../reference/apis-arkts/arkts-apis-arkts-utils.md)）。
 
 - 继承了[ISendable](#isendable)的interface。
 
@@ -101,6 +105,68 @@ Sendable interface需同时满足以下两个规则：
 >
 > - 对象字面量和数组字面量在并发实例间传递时遵循结构化克隆算法，跨线程行为是拷贝传递。因此，对象字面量和数组字面量不是Sendable类型。
 
+**Sendable支持const enum类型使用示例：**
+
+```ts
+// Test.ets
+export const enum ModelState {
+  ACTIVE,
+  INACTIVE
+}
+```
+
+```ts
+// Index.ets
+import { taskpool } from "@kit.ArkTS";
+import { ModelState } from "./Test";
+
+@Sendable
+class Model {
+  state: ModelState = ModelState.ACTIVE;
+
+  getState() {
+    console.info("model state is " + this.state);
+  }
+
+  setState(state: ModelState) {
+    this.state = state;
+  }
+}
+
+@Concurrent
+function setModelState(model: Model) {
+  model.setState(ModelState.INACTIVE);
+  model.getState();
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  @State num: number = 0;
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(async () => {
+          let model = new Model();
+          model.getState();
+          let task = new taskpool.Task(setModelState, model);
+          await taskpool.execute(task);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 ## Sendable的实现原理
 

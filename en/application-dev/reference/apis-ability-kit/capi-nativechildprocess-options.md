@@ -1,5 +1,16 @@
 # NativeChildProcess_Options
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @SKY2001-->
+<!--Designer: @yzkp-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+```
+typedef struct {...} NativeChildProcess_Options
+```
+
 ## Overview
 
 The struct describes the options used for starting a child process.

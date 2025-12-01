@@ -1,4 +1,14 @@
 # OH_ArkUI_SurfaceHolder
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct OH_ArkUI_SurfaceHolder OH_ArkUI_SurfaceHolder
+```
 
 ## 概述
 

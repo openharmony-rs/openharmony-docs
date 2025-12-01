@@ -342,6 +342,17 @@ Web组件的销毁模式，当Web组件销毁时，销毁模式会影响Web内�
 | NORMAL_MODE | 0 | 普通模式，由系统决定Web组件资源的销毁时机。 |
 | FAST_MODE   | 1 | 快速模式，当Web组件触发销毁时，立即销毁相关的内部资源。 |
 
+## ScrollbarMode<sup>23+</sup>
+
+Web页面场景下，全局滚动条模式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 值 | 说明 |
+| ------------------------------- | - | ---------- |
+| OVERLAY_LAYOUT_SCROLLBAR  | 0 | 非常驻滚动条。 |
+| FORCE_DISPLAY_SCROLLBAR    | 1 | 常驻滚动条。 |
+
 ## WebBlanklessErrorCode<sup>20+</sup>
 
 无白屏加载的异常错误码。
@@ -368,7 +379,6 @@ ArkWeb内核版本，请参考[M114内核在OpenHarmony6.0系统上的适配指�
 | SYSTEM_DEFAULT   | 0     | 系统默认内核，OpenHarmony 6.0版本默认为M132。|
 | M114             | 1     | OpenHarmony 6.0版本的遗留内核。开发者可选择此遗留内核，若系统版本上不存在此内核则设置无效。|
 | M132             | 2     | OpenHarmony 6.0版本的常青内核，M132为此版本的默认内核。若系统版本上不存在此内核则设置无效。|
-| ARKWEB_EVERGREEN<sup>21+</sup> | 99999 | 常青内核，系统的最新内核。开发者可选择在每个系统版本上都使用最新的内核，OpenHarmony 6.0及之后所有系统版本都生效。 |
 
 >**表1** 常青内核与遗留内核含义说明
 >| **内核类型** | **英文** | **说明** |
@@ -387,3 +397,27 @@ ArkWeb内核版本，请参考[M114内核在OpenHarmony6.0系统上的适配指�
 | ------------------------------- | - | ---------- |
 | PARTIAL | 0 | 部分站点隔离，即在同一个Render进程内加载新站点。 |
 | STRICT  | 1 | 严格站点隔离，跨站点的Iframe将切换到新的渲染进程。 |
+
+
+## WebSoftKeyboardBehaviorMode<sup>22+</sup>
+
+Web软键盘自动控制模式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 值 | 说明 |
+| ------------------------------- | - | ---------- |
+| DEFAULT | 0 | 当Web组件失去焦点或获得焦点、状态切换为inactive或active时，系统均会尝试触发软键盘自动隐藏或拉起（默认值）。 |
+| DISABLE_AUTO_KEYBOARD_ON_ACTIVE | 1 | Web组件在inactive或active状态切换时，系统不再尝试触发软键盘自动隐藏或拉起。 |
+
+## WebHttpCookieSameSitePolicy<sup>23+</sup>
+
+控制cookie在跨站请求中的发送行为。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 值 | 说明 |
+| ---- | -- |----------------------------------------- |
+| NONE | 0 | 允许在跨站请求中携带cookie，但必须同时设置secure属性。 |
+| LAX | 1 | 允许特定的跨站请求携带cookie，如某些get请求的导航场景。 |
+| STRICT | 2 | 禁止在跨站请求中携带cookie。 |

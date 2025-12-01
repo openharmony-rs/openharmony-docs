@@ -1,4 +1,10 @@
 # Stepper
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @mayaolll-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 The **Stepper** component provides a step navigator, suitable for guiding users through a step-by-step task completion process.
 
@@ -16,6 +22,8 @@ Only the child component [StepperItem](ts-basic-components-stepperitem.md) is su
 ## APIs
 
 Stepper(value?: { index?: number })
+
+Creates a **Stepper** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -44,6 +52,12 @@ Invoked when the **nextLabel** of the last **StepperItem** in the **Stepper** is
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
+| Name  | Type                | Mandatory| Description                                      |
+| -------- | -------------------  | ---- | ------------------------------------------ |
+| callback   |   () =&gt; void   | Yes  | Invoked when the **nextLabel** of the last **StepperItem** in the **Stepper** is clicked and the **ItemState** attribute is set to **Normal**.|
+
 ### onSkip
 
 onSkip(callback: () =&gt; void)
@@ -53,6 +67,12 @@ Invoked when the current **StepperItem** is **ItemState.Skip** and the **nextLab
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                | Mandatory| Description                                      |
+| -------- | -------------------  | ---- | ------------------------------------------ |
+| callback   |   () =&gt; void   | Yes  | Invoked when the current **StepperItem** is **ItemState.Skip** and the **nextLabel** is clicked.|
 
 ### onChange
 
@@ -68,8 +88,8 @@ Invoked when the **prevLabel** of the current **StepperItem** is clicked to swit
 
 | Name   | Type  | Mandatory| Description                                      |
 | --------- | ------ | ---- | ------------------------------------------ |
-| prevIndex | number | Yes  | Index of the step page before the switching.<br>Value range: [0, +∞)|
-| index     | number | Yes  | Index of the step page after the switching, that is, index of the previous or next page.<br>Value range: [0, +∞)|
+| prevIndex | number | Yes  | Index of the step page before the switching.<br>Value range: [0, +∞).|
+| index     | number | Yes  | Index of the step page after the switching, that is, index of the previous or next page.<br>Value range: [0, +∞).|
 
 ### onNext
 
@@ -131,10 +151,10 @@ This example demonstrates how to use the **Stepper** component.
 @Entry
 @Component
 struct StepperExample {
-  @State currentIndex: number = 0
-  @State firstState: ItemState = ItemState.Normal
-  @State secondState: ItemState = ItemState.Normal
-  @State thirdState: ItemState = ItemState.Normal
+  @State currentIndex: number = 0;
+  @State firstState: ItemState = ItemState.Normal;
+  @State secondState: ItemState = ItemState.Normal;
+  @State thirdState: ItemState = ItemState.Normal;
 
   build() {
     Stepper({
@@ -148,7 +168,7 @@ struct StepperExample {
           Button('change status:' + this.firstState)
             .backgroundColor('#007dFF')
             .onClick(() => {
-              this.firstState = this.firstState === ItemState.Skip ? ItemState.Normal : ItemState.Skip
+              this.firstState = this.firstState === ItemState.Skip ? ItemState.Normal : ItemState.Skip;
             })
         }.itemStyle()
       }
@@ -162,7 +182,7 @@ struct StepperExample {
           Button('change status:' + this.secondState)
             .backgroundColor('#007dFF')
             .onClick(() => {
-              this.secondState = this.secondState === ItemState.Disabled ? ItemState.Normal : ItemState.Disabled
+              this.secondState = this.secondState === ItemState.Disabled ? ItemState.Normal : ItemState.Disabled;
             })
         }.itemStyle()
       }
@@ -177,7 +197,7 @@ struct StepperExample {
           Button('change status:' + this.thirdState)
             .backgroundColor('#007dFF')
             .onClick(() => {
-              this.thirdState = this.thirdState === ItemState.Waiting ? ItemState.Normal : ItemState.Waiting
+              this.thirdState = this.thirdState === ItemState.Waiting ? ItemState.Normal : ItemState.Waiting;
             })
         }.itemStyle()
       }
@@ -193,15 +213,15 @@ struct StepperExample {
     .backgroundColor('#F1F3F5')
     .onFinish(() => {
       // Define the processing logic for when Finish on the last page is clicked, for example, redirection.
-      console.info('onFinish')
+      console.info('onFinish');
     })
     .onSkip(() => {
       // Define the processing logic for when Skip on the page is clicked, for example, dynamically changing the index of the <Stepper> to redirect to a specific step.
-      console.info('onSkip')
+      console.info('onSkip');
     })
     .onChange((prevIndex?: number, index?: number) => {
       if(index){
-        this.currentIndex = index
+        this.currentIndex = index;
       }
     })
   }

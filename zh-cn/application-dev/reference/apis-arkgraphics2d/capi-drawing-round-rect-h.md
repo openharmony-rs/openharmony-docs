@@ -1,4 +1,10 @@
 # drawing_round_rect.h
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -203,8 +209,8 @@ OH_Drawing_ErrorCode OH_Drawing_RoundRectOffset(OH_Drawing_RoundRect* roundRect,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md)* roundRect | 指向圆角矩形对象[OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)的指针。 |
-| float dx | 轴方向偏移量。 |
-| float dy | 轴方向偏移量。 |
+| float dx | x轴方向偏移量。 |
+| float dy | y轴方向偏移量。 |
 
 **返回：**
 

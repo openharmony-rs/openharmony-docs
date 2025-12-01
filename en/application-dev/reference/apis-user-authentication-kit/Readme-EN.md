@@ -1,6 +1,12 @@
 # User Authentication Kit (User Authentication Service)
+<!--Kit: User Authentication Kit-->
+<!--Subsystem: UserIAM-->
+<!--Owner: @WALL_EYE-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
 
-- ArkTS API<!--user-authentication-arkts-->
+- ArkTS APIs<!--user-authentication-arkts-->
   - [@ohos.userIAM.userAuth (User Authentication)](js-apis-useriam-userauth.md)
   <!--Del-->
   - [@ohos.userIAM.faceAuth (Facial Authentication) (System API)](js-apis-useriam-faceauth-sys.md)

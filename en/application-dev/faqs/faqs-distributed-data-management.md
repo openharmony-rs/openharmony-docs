@@ -9,10 +9,10 @@ To encrypt an RDB store, set **encrypt** in **StoreConfig** to **true** when cre
 
 **Reference**
 
-[RDB Store](../reference/apis-arkdata/js-apis-data-relationalStore.md#storeconfig)
+[RDB Store](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)
 
 
-## What should I do if the table data in an RDB store cannot be cleared by using **TRUNCATE TABLE**? (API version 9)
+## What should I do if the table data in an RDB store cannot be cleared by using TRUNCATE TABLE? (API version 9)
 
 **Symptom**
 
@@ -25,7 +25,7 @@ The RDB store uses SQLite, which does not support the **TRUNCATE TABLE** stateme
 
 ## What data types are supported by an RDB store? (API version 9)
 
-Applicable to: stage model
+Applicable to the stage model.
 
 **Solution**
 
@@ -62,7 +62,7 @@ struct Index {
 
 **Reference**
 
-[ PersistentStorage: Application State Persistence](../ui/state-management/arkts-persiststorage.md)
+[PersistentStorage: Persisting Application State](../ui/state-management/arkts-persiststorage.md)
 
 
 ## How do I save pixel map data to a database? (API version 9)
@@ -73,7 +73,7 @@ Convert the pixel map data into an **ArrayBuffer** and save the **ArrayBuffer** 
 
 **Reference**
 
-[readPixelsToBuffer](../reference/apis-image-kit/js-apis-image.md#readpixelstobuffer7-1)
+[readPixelsToBuffer](../reference/apis-image-kit/arkts-apis-image-PixelMap.md#readpixelstobuffer7-1)
 
 
 ## How do I obtain RDB store files? (API version 9)
@@ -97,7 +97,7 @@ Example:
 
 **Symptom**
 
-I do not know whether I need to design a lock mechanism for databases in development.   
+I do not know whether I need to design a lock mechanism for databases in development.
 
 **Solution**
 
@@ -138,7 +138,7 @@ Data is successfully saved using **Preferences.put()**, but fails to be obtained
 
 1. After **put()** is performed, use **flush()** to persist the data.
 
-2. Call **get()**.
+2. Call **get()** after **flush()** is complete.
 
 
 ## Can I specify the in-memory database mode when using an RDB store? (API version 9)
@@ -152,7 +152,9 @@ RDB stores use SQLite. The default in-memory database mode is file, which cannot
 
 **Solution**
 
-You can use [execute](../reference/apis-arkdata/js-apis-data-relationalStore.md#execute12) to obtain the size of an RDB store, for example, SELECT page_count * page_size AS size FROM pragma_page_count(), pragma_page_size().
+You can use [execute](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12) to obtain the size of an RDB store, for example, **SELECT page_count * page_size AS size FROM pragma_page_count(), pragma_page_size()**.
+The RDB store uses the WAL mode. Before querying the database size, you can execute an SQL statement to trigger a checkpoint to update the database file size, for example, **PRAGMA wal_checkpoint**.
+
 
 ## How do I obtain the path of an RDB store?
 

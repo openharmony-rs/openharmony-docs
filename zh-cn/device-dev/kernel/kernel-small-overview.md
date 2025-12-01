@@ -167,28 +167,28 @@ OpenHarmony 轻量级内核是基于IoT领域轻量级物联网操作系统Huawe
 
 ## 使用说明<a name="section741617511812"></a>
 
-OpenHarmony LiteOS-A内核支持[Hi3516DV300](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-appendix-hi3516.md)单板。开发者可基于此单板开发运行自己的应用程序。
+OpenHarmony LiteOS-A内核支持[Hi3516DV300](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-appendix-hi3516.md)单板。开发者可基于此单板开发运行自己的应用程序。
 
 ### 准备<a name="section1579912573329"></a>
 
-开发者需要在Linux上[搭建编译环境](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-pkg-prepare.md)。
+开发者需要在Linux上[搭建编译环境](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-pkg-prepare.md)。
 
 
 ### 获取源码<a name="section11443189655"></a>
 
-在Linux服务器上下载并解压一套源代码，源码获取方式参考[源码获取](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/sourcecode-acquire.md)。
+在Linux服务器上下载并解压一套源代码，源码获取方式参考[源码获取](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/sourcecode-acquire.md)。
 
 ### 编译构建<a name="section2081013992812"></a>
 
 如果这是您的首次应用程序开发，可参考：
 
--   [helloworld for Hi3516DV300](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-pkg-3516-running.md)。
+-   [helloworld for Hi3516DV300](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-pkg-3516-running.md)。
 
 ## 相关仓<a name="section1371113476307"></a>
 
-[内核子系统](https://gitee.com/openharmony/docs/blob/master/zh-cn/readme/%E5%86%85%E6%A0%B8%E5%AD%90%E7%B3%BB%E7%BB%9F.md)
+[内核子系统](https://gitcode.com/openharmony/docs/blob/master/zh-cn/readme/%E5%86%85%E6%A0%B8%E5%AD%90%E7%B3%BB%E7%BB%9F.md)
 
-[drivers\_liteos](https://gitee.com/openharmony/drivers_liteos/blob/master/README_zh.md)
+[drivers\_liteos](https://gitcode.com/openharmony/drivers_liteos/blob/master/README_zh.md)
 
-[kernel\_liteos\_a](https://gitee.com/openharmony/kernel_liteos_a/blob/master/README_zh.md)
+[kernel\_liteos\_a](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/README_zh.md)
 

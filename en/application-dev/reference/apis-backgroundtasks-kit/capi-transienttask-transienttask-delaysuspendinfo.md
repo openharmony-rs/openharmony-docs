@@ -1,5 +1,16 @@
 # TransientTask_DelaySuspendInfo
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @leetestnady-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct TransientTask_DelaySuspendInfo {...} TransientTask_DelaySuspendInfo
+```
+
 ## Overview
 
 A struct that describes the returned information about a transient task.

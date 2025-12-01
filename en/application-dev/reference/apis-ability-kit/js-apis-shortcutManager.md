@@ -1,4 +1,4 @@
-# @ohos.bundle.shortcutManager (shortcutManager)
+# @ohos.bundle.shortcutManager (shortcutManager Module)
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->

@@ -26,8 +26,9 @@ disableAdmin(admin: Want, userId?: number): Promise\<void>
 
 解除激活指定用户的设备管理应用。使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN（仅系统应用支持申请） 或 ohos.permission.START_PROVISIONING_MESSAGE
-<br/>- 从API version 20 开始，支持申请ohos.permission.START_PROVISIONING_MESSAGE权限。仅当解除激活BYOD设备管理应用时，可以申请该权限。
+**需要权限：** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN（仅系统应用支持申请）或ohos.permission.START_PROVISIONING_MESSAGE或ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
+<br/>- 从API version 23开始，支持申请ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN权限。仅当SDA或DA设备管理应用解除激活自身时，可以申请该权限。
+<br/>- 从API version 20开始，支持申请ohos.permission.START_PROVISIONING_MESSAGE权限。仅当BYOD设备管理应用解除激活自身时，可以申请该权限。
 <br/>- API 19及之前的版本，需要申请ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN（仅系统应用支持申请）。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -66,7 +67,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 adminManager.disableAdmin(wantTemp, 100).catch((err: BusinessError) => {
@@ -118,7 +119,7 @@ import { adminManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 请根据实际情况替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -168,7 +169,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
@@ -219,7 +220,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
@@ -272,7 +273,7 @@ import { Want } from '@kit.AbilityKit';
 let admin: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let policies: Array<string> = ["disabled_hdc"];
@@ -332,7 +333,7 @@ import { Want } from '@kit.AbilityKit';
 let admin: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -390,7 +391,7 @@ import { Want } from '@kit.AbilityKit';
 let admin: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -442,7 +443,7 @@ import { common, Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let recordParameters: Record<string, string> = {
   // 需根据实际情况进行替换
@@ -458,6 +459,119 @@ try {
 } catch (error) {
   console.error('startAdminProvision::errorCode: ' + error.code + ' errorMessage: ' + error.message);
 }
+```
+
+## adminManager.enableDeviceAdmin<sup>23+</sup>
+
+enableDeviceAdmin(admin: Want): Promise&lt;void&gt;
+
+[超级设备管理应用](../../mdm/mdm-kit-term.md#sda)通过该接口可以激活其他[普通设备管理应用](../../mdm/mdm-kit-term.md#da)，使用Promise异步回调。该接口仅支持超级设备管理应用调用。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+
+**返回值：**
+
+| 类型           | 说明                                                         |
+| -------------- | ------------------------------------------------------------ |
+| Promise\<void> | 无返回结果的Promise对象。当激活设备管理应用失败时，会抛出错误对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200003  | The administrator ability component is invalid.              |
+| 9200004  | Failed to activate the administrator application of the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { adminManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+adminManager.enableDeviceAdmin(wantTemp).catch((err: BusinessError) => {
+  console.error(`Failed to enable device admin. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## adminManager.disableDeviceAdmin<sup>23+</sup>
+
+disableDeviceAdmin(admin: Want): Promise&lt;void&gt;
+
+[超级设备管理应用](../../mdm/mdm-kit-term.md#sda)通过该接口可以解除激活其他[普通设备管理应用](../../mdm/mdm-kit-term.md#da)，使用Promise异步回调。该接口仅支持超级设备管理应用调用。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+
+**返回值：**
+
+| 类型           | 说明                                                         |
+| -------------- | ------------------------------------------------------------ |
+| Promise\<void> | 无返回结果的Promise对象。当解除激活设备管理应用失败时，会抛出错误对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200005  | Failed to deactivate the administrator application of the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { adminManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+adminManager.disableDeviceAdmin(wantTemp).catch((err: BusinessError) => {
+  console.error(`Failed to disable device admin. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## ManagedEvent
@@ -522,7 +636,7 @@ try {
 |disabled_bluetooth|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|feature传入bluetooth，禁用/启用蓝牙能力。<br>feature传入bluetooth，查询是否禁用蓝牙能力。|
 |disallow_modify_datetime|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|feature传入modifyDateTime，禁用/启用设置系统时间能力。<br>feature传入modifyDateTime，查询是否禁用修改系统时间能力。|
 |disabled_printer|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|feature传入printer，禁用/启用打印能力。<br>feature传入printer，查询是否禁用打印能力。|
-|disabled_hdc|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|feature传入hdc，禁用/启用HDC能力。<br>feature传入hdc，查询是否禁用HDC能力。|
+|disabled_hdc|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|feature传入hdc，禁用/启用被其他设备通过hdc连接、调试的能力。<br>feature传入hdc，查询是否禁用被其他设备通过hdc连接、调试的能力。|
 |disable_microphone|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|feature传入microphone，禁用/启用麦克风能力。<br>feature传入microphone，查询是否禁用麦克风能力。|
 |fingerprint_auth|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)<br>[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)<br>[restrictions.getDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicyforaccount14)|feature传入fingerprint，禁用/启用指纹认证能力。<br>feature传入fingerprint，查询是否禁用指纹认证能力。<br>feature传入fingerprint，禁用/启用指定用户的指纹认证能力。<br>feature传入fingerprint，查询是否禁用指定用户的指纹认证能力。|
 |disable_usb|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|feature传入usb，禁用/启用USB能力。<br>feature传入usb，查询是否禁用USB能力。|
@@ -544,4 +658,5 @@ try {
 |disable_backup_and_restore|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|feature传入backupAndRestore，禁用/启用备份和恢复能力，当前仅支持手机、平板使用。<br>feature传入backupAndRestore，查询是否禁用备份和恢复能力，当前仅支持手机、平板使用。|
 |installed_bundle_info_list|[bundleManager.getInstalledBundleList](js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20)|获取设备指定用户下已安装应用列表。|
 |clear_up_application_data|[applicationManager.clearUpApplicationData](js-apis-enterprise-applicationManager.md#applicationmanagerclearupapplicationdata20)|清除应用产生的所有数据。|
-
+|disallow_unmute_device|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|feature传入unmuteDevice，禁用/启用设备媒体播放声音能力。<br>feature传入unmuteDevice，查询是否禁用设备媒体播放声音能力。|
+|disabled_hdc_remote|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|feature传入hdcRemote，禁用/启用设备通过hdc调试其他设备的能力。<br>feature传入hdcRemote，查询是否禁用设备通过hdc调试其他设备的能力。|

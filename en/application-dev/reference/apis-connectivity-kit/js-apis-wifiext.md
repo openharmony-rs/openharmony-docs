@@ -1,5 +1,11 @@
 # @ohos.wifiext (WLAN Extension)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @qq_43802146-->
+<!--Designer: @qq_43802146-->
+<!--Tester: @furryfurry123-->
+<!--Adviser: @zhang_yixin13-->
 This **wifiext** module provides WLAN extension interfaces for non-universal products.
 
 > **NOTE**
@@ -92,7 +98,7 @@ Obtains the supported power models. This API uses an asynchronous callback to re
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;Array&lt;[PowerModel](#powermodel)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is 0 and **data** is the power models obtained. If **err** is not **0**, an error has occurred.|
+  | callback | AsyncCallback&lt;Array&lt;[PowerModel](#powermodel)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is 0 and **data** is the power models obtained. If the operation fails, **err** is not **0**.|
 
 
 ## wifiext.getPowerModel

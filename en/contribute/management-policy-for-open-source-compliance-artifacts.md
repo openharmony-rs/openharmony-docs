@@ -1,9 +1,11 @@
 # Management Policy for Open-Source Compliance Artifacts
 
 ## Overview
+
 When introducing, using, and redistributing third-party open-source software, you must fulfill open-source obligations in the software license. Common open-source obligations are classified into obligations to declare the use of open-source software, obligations to declare the code open-source, and obligations to declare modifications to the code. Deliverables required for fulfilling open-source obligations are collectively referred to as open-source compliance artifacts. This document focuses on the specifications for these artifacts in the OpenHarmony community.
 
 ## Managing Artifacts for Declaring the Use of Software
+
 The common method in the industry for declaring the use of a piece of open-source software is to provide a **NOTICE** file with the version release. The **NOTICE** file specifies the name, copyright, and license information of the open-source software used, as well as a disclaimer.
 
 ### Usage Scenarios of NOTICE
@@ -23,13 +25,14 @@ See [Automatic Generation and Collection Policy of OpenHarmony Open-Source Softw
 #### For OS Device Images
 
 - The **NOTICE** file is stored as **NOTICE.txt** under **system.img > system/etc** in the standard device OS image package ( .tar file).
-
 - The **NOTICE** file is stored as **NOTICE.txt** under **/system/etc** in the system.
 
 #### For Applications
+
 The **NOTICE** file is usually stored in the top directory of the release folder or compressed package. For a .jar file, the **NOTICE** is generally stored in the **META-INF** directory.
 
 ### Lifecycle of NOTICE
+
 The lifecycle of the **NOTICE** file is the same as that of the binary file. According to the [OpenHarmony Version Lifecycle Rules](https://gitee.com/openharmony/release-management/blob/master/openHarmony-version-lifecycle-management.md), the lifecycle of the **NOTICE** file matches that of the LTS and Release versions.
 
 ### NOTICE Template
@@ -39,7 +42,7 @@ A complete **NOTICE** file should contain the following content:
 ```
 OPEN SOURCE SOFTWARE NOTICE
 
-Please note we provide an open source software notice for the third party open source software along with this software and/or this software component (in the following just "this SOFTWARE"). The open source software licenses are granted by the respective right holders.
+Please note we provide an open-source software notice for the third-party open-source software along with this software and/or this software component (in the following just "this SOFTWARE"). The open-source software licenses are granted by the respective right holders.
 
 Warranty Disclaimer
 THE OPEN SOURCE SOFTWARE IN THIS PRODUCT IS DISTRIBUTED IN THE HOPE THAT IT WILL BE USEFUL, BUT WITHOUT ANY WARRANTY, WITHOUT EVEN THE IMPLIED WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. SEE THE APPLICABLE LICENSES FOR MORE DETAILS.
@@ -233,13 +236,11 @@ License: Apache License 2.0
 
 ```
 
-
 ## Managing Artifacts for Declaring Code Open-Source
 
 The code released in the OpenHarmony community is automatically open-sourced, and therefore no additional open-source software package is required. The tool described in [Generating an Open-Source Software Package](https://gitee.com/openharmony/build/blob/master/docs/%E7%94%9F%E6%88%90%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E5%8C%85.md) enables automatic generation of the open-source software packages involved in OpenHarmony during the integration of downstream products. It also provides the reference implementation. The OpenHarmony community is not responsible for the fulfillment of open-source obligations of downstream products.
 
 The obligations specified in the license clauses must be fulfilled. For example, the open-source code can be compiled, and the compilation result is consistent with the open-source part in the distributed software artifact; a build guide is included in the open-source software package to describe the build environment, tools, and operation procedures.
-
 
 ## Managing Artifacts for Declaring Modifications to Software
 

@@ -55,19 +55,19 @@ Web组件可以通过W3C标准协议接口拉起摄像头和麦克风，通过[o
 在下面的示例中，点击前端页面中的开启摄像头按钮再点击onConfirm，打开摄像头和麦克风。
 
 - 应用侧代码。
-
-  ```ts
-  // xxx.ets
+  <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { abilityAccessCtrl } from '@kit.AbilityKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
     uiContext: UIContext = this.getUIContext();
-
+  
     aboutToAppear() {
       // 配置Web开启调试模式
       webview.WebviewController.setWebDebuggingAccess(true);
@@ -82,7 +82,7 @@ Web组件可以通过W3C标准协议接口拉起摄像头和麦克风，通过[o
         console.error(`Failed to request permissions from user. Code is ${error.code}, message is ${error.message}`);
       })
     }
-
+  
     build() {
       Column() {
         Web({ src: $rawfile('index.html'), controller: this.controller })

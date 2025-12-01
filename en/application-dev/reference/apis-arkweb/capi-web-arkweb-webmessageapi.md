@@ -4,7 +4,11 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
+
+```
+typedef struct {...} ArkWeb_WebMessageAPI
+```
 
 
 ## Overview
@@ -35,7 +39,7 @@ Defines a native API for the post message. Before calling this API, you are advi
 | [void (\*setType)(ArkWeb_WebMessagePtr webMessage, ArkWeb_WebMessageType type)](#settype)    | Sets the message type.                    |
 | [ArkWeb_WebMessageType (\*getType)(ArkWeb_WebMessagePtr webMessage)](#gettype)               | Obtains the message type.                        |
 | [void (\*setData)(ArkWeb_WebMessagePtr webMessage, void* data, size_t dataLength)](#setdata) | Sets data.|
-| [void* (*getData)(ArkWeb_WebMessagePtr webMessage, size_t* dataLength)](#getdata)            | Obtains data.                                                                 |
+| [void* (\*getData)(ArkWeb_WebMessagePtr webMessage, size_t* dataLength)](#getdata)           | Obtains data.                        |
 
 ## Member Function Description
 

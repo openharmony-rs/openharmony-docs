@@ -1,4 +1,12 @@
 # 附录：标准意图接入规范
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 ## 影音垂域（MediaDomain）
 ### 播放视频  
 播放视频操作，支持指定视频实体、分集信息等参数，并返回播放结果状态。
@@ -107,7 +115,7 @@
 | entityId    | string | 否   | 意图实体ID，长度不超过64字符。                                                                  | "12949589" |
 | srcLocation | object | 否   | 出发地信息，包含字段：<br>- locationSystem：指定坐标系（默认使用GCJ-02坐标系）。<br>- poiId：poi的唯一标识。<br>- locationName：地点名称。<br>- longitude：经度。<br>- latitude：纬度。<br>- address：详细地址信息。      | {<br>  "locationSystem": "GCJ02",<br>  "poiId": "1236",<br>  "locationName": "北京站",<br>  "latitude": "39.902895",<br>  "longitude": "116.427915",<br>  "address": "北京市东城区北京站"<br>} |
 | dstLocation | object | 否   | 目的地的信息，包含字段：<br>- locationSystem：指定坐标系（默认使用GCJ-02坐标系）。<br>- poiId：poi的唯一标识。<br>- locationName：地点名称。<br>- longitude：经度。<br>- latitude：纬度。<br>- address：详细地址信息。     | {<br>  "locationSystem": "GCJ02",<br>  "poiId": "1248",<br>  "locationName": "北京西站",<br>  "latitude": "39.89534",<br>  "longitude": "116.32128",<br>  "address": "北京市丰台区北京西站"<br>} |
-| wayPoints   | array | 否   | 途经点Array：语音入口调用时必填Array\<PoiLocation>，途径点包含字段与srcLocation中的字段一致，最多传5个。                                      | [{<br>  "locationSystem": "GCJ02",<br>  "poiId": "1445",<br>  "locationName": "前门东大街社区",<br>  "latitude": "39.89995",<br>  "longitude": "116.35628",<br>  "address": "北京市东城区前门街道"<br>}] |
+| wayPoints   | array | 否   | 途经点Array：语音入口调用时必填Array\<PoiLocation>，途径点包含字段与srcLocation中的字段一致。                                      | [{<br>  "locationSystem": "GCJ02",<br>  "poiId": "1445",<br>  "locationName": "前门东大街社区",<br>  "latitude": "39.89995",<br>  "longitude": "116.35628",<br>  "address": "北京市东城区前门街道"<br>}] |
 | dstLocationType | string | 否   | 目的地类型，比如"家"、"公司"等。                                                               | "家" |
 | trafficType | string | 否   | 交通方式。<br>- Drive：驾车（默认值）。<br>- Walk：步行。<br>- Cycle：骑行。<br>- Bus：公交。<br>- Subway：地铁。 | "Cycle" |
 

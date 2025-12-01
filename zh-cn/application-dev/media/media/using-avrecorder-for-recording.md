@@ -4,7 +4,7 @@
 <!--Owner: @shiwei75-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 使用[AVRecorder](media-kit-intro.md#avrecorder)可以实现音频录制功能，本开发指导将以“开始录制-暂停录制-恢复录制-停止录制”的一次流程为示例，向开发者讲解AVRecorder音频录制相关功能。
 
@@ -98,9 +98,10 @@
    let avProfile: media.AVRecorderProfile = {
      audioBitrate: 112000, // 音频比特率。
      audioChannels: 2, // 音频声道数。
-     audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式，当前支持AAC，MP3，G711MU。
+     audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式，当前支持AAC、MP3和G711MU。
+     aacProfile: media.AacProfile.AAC_HE, // 音频编码扩展格式，从API version 22开始支持AAC_HE和AAC_HE_V2。
      audioSampleRate: 48000, // 音频采样率。
-     fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // 封装格式，当前支持MP4，M4A，MP3，WAV，AMR，AAC。
+     fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // 封装格式，当前支持MP4、M4A、MP3、WAV、AMR和AAC。
    };
    
    const context: Context = this.getUIContext().getHostContext()!; // 参考应用文件访问与管理。
@@ -169,6 +170,8 @@
 
   参考以下示例，完成“开始录制-暂停录制-恢复录制-停止录制”的完整流程。
 
+  使用当前示例代码时，需要申请**ohos.permission.MICROPHONE**麦克风权限。申请方式请参考：[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+
 ```ts
 import { common } from '@kit.AbilityKit';
 import { media } from '@kit.MediaKit';
@@ -204,9 +207,10 @@ async function audioRecording(context: common.Context): Promise<void> {
   let avProfile: media.AVRecorderProfile = {
     audioBitrate: 112000, // 音频比特率。
     audioChannels: 2, // 音频声道数。
-    audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式，当前支持AAC，MP3，G711MU。
+    audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式，当前支持AAC、MP3和G711MU。
+    aacProfile: media.AacProfile.AAC_HE, // 音频编码扩展格式，从API version 22开始支持AAC_HE和AAC_HE_V2。
     audioSampleRate: 48000, // 音频采样率。
-    fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // 封装格式，当前支持MP4，M4A，MP3，WAV，AMR，AAC。
+    fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // 封装格式，当前支持MP4、M4A、MP3、WAV、AMR和AAC。
   };
   let avConfig: media.AVRecorderConfig = {
     audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC, // 音频输入源，这里设置为麦克风。

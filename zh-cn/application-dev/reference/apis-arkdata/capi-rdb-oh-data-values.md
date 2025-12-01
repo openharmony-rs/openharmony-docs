@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Data_Values OH_Data_Values
+```
+
 ## 概述
 
 OH_Data_Values结构类型，用于储存多条数据值。

@@ -58,7 +58,7 @@ screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
     return;
   }
   console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
-  if(data.length > 0 ）{
+  if (data.length > 0) {
     screenClass = data[0];
   }
 });
@@ -191,8 +191,8 @@ makeMirror(mainScreen:number, mirrorScreen:Array&lt;number&gt;, callback: AsyncC
 
 | 参数名       | 类型                        | 必填 | 说明                 |
 | ------------ | --------------------------- | ---- |--------------------|
-| mainScreen   | number                      | 是   | 主屏幕id，该参数仅支持整数输入。  |
-| mirrorScreen | Array&lt;number&gt;         | 是   | 镜像屏幕id集合，其中id应为整数。 |
+| mainScreen   | number                      | 是   | 主屏幕ID，该参数仅支持整数输入。  |
+| mirrorScreen | Array&lt;number&gt;         | 是   | 镜像屏幕ID集合，其中ID应为整数。 |
 | callback     | AsyncCallback&lt;number&gt; | 是   | 回调函数。返回镜像屏幕的群组id，其中id为整数。  |
 
 **错误码：**
@@ -236,8 +236,8 @@ makeMirror(mainScreen:number, mirrorScreen:Array&lt;number&gt;): Promise&lt;numb
 
 | 参数名       | 类型                | 必填 | 说明                 |
 | ------------ | ------------------- | ---- |--------------------|
-| mainScreen   | number              | 是   | 主屏幕id，该参数仅支持整数输入。  |
-| mirrorScreen | Array&lt;number&gt; | 是   | 镜像屏幕id集合。其中id应为整数。 |
+| mainScreen   | number              | 是   | 主屏幕ID，该参数仅支持整数输入。  |
+| mirrorScreen | Array&lt;number&gt; | 是   | 镜像屏幕ID集合。其中ID应为整数。 |
 
 **返回值：**
 
@@ -283,7 +283,7 @@ stopMirror(mirrorScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                                      |
 | ------------ | --------------------------- | --- |-----------------------------------------|
-| mirrorScreen | Array&lt;number&gt;         | 是   | 镜像屏幕id集合，其中id应为整数。 mirrorScreen数组大小不应超过1000。 |
+| mirrorScreen | Array&lt;number&gt;         | 是   | 镜像屏幕ID集合，其中ID应为整数。 mirrorScreen数组大小不应超过1000。 |
 | callback     | AsyncCallback&lt;void&gt; | 是   | 回调函数。当停止屏幕镜像模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -326,7 +326,7 @@ stopMirror(mirrorScreen:Array&lt;number&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                 |
 | ------------ | ------------------- | --- |--------------------|
-| mirrorScreen | Array&lt;number&gt; | 是   | 镜像屏幕id集合，其中id应为整数。mirrorScreen数组大小不应超过1000。 |
+| mirrorScreen | Array&lt;number&gt; | 是   | 镜像屏幕ID集合，其中ID应为整数。mirrorScreen数组大小不应超过1000。 |
 
 **返回值：**
 
@@ -371,7 +371,7 @@ makeUnique(uniqueScreen: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt
 
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
-| uniqueScreen  | Array&lt;number&gt; | 是   | 异源屏幕id集合。其中id应为大于0的整数，否则返回401错误码。 |
+| uniqueScreen  | Array&lt;number&gt; | 是   | 异源屏幕ID集合。其中ID应为大于0的整数，否则返回401错误码。 |
 
 **返回值：**
 
@@ -446,6 +446,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = { 
@@ -453,7 +454,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 screen.createVirtualScreen(option, (err: BusinessError, data: screen.Screen) => {
   const errCode: number = err.code;
@@ -513,6 +515,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = { 
@@ -520,7 +523,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -803,7 +807,7 @@ isScreenRotationLocked(): Promise&lt;boolean&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 screen.isScreenRotationLocked().then((isLocked: boolean) => {
-  console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${islocked}`);
+  console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${isLocked}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to get the screen rotation lock status. Code:${err.code}, message is ${err.message}`);
 });
@@ -839,12 +843,12 @@ isScreenRotationLocked(callback: AsyncCallback&lt;boolean&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 screen.isScreenRotationLocked((err: BusinessError, isLocked: boolean) => {
-const errCode: number = err.code;
-if (errCode) {
-  console.error(`Failed to get the screen rotation lock status. Code:${err.code}, message is ${err.message}`);
-  return;
-}
-console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${islocked}`);
+  const errCode: number = err.code;
+  if (errCode) {
+    console.error(`Failed to get the screen rotation lock status. Code:${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${isLocked}`);
 });
 ```
 
@@ -1058,8 +1062,8 @@ makeMirrorWithRegion(mainScreen:number, mirrorScreen:Array&lt;number&gt;, mainSc
 
 | 参数名       | 类型                | 必填 | 说明                 |
 | ------------ | ------------------- | ---- |--------------------|
-| mainScreen   | number              | 是   | 主屏幕id，该参数仅支持正整数输入。  |
-| mirrorScreen | Array&lt;number&gt; | 是   | 镜像屏幕id集合。其中id应为正整数。  |
+| mainScreen   | number              | 是   | 主屏幕ID，该参数仅支持正整数输入。  |
+| mirrorScreen | Array&lt;number&gt; | 是   | 镜像屏幕ID集合。其中ID应为正整数。  |
 | mainScreenRegion | [Rect](#rect19) | 是   | 主屏创建镜像的矩形区域。         |
 
 **返回值：**
@@ -1228,7 +1232,7 @@ stopExpand(expandScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                                      |
 | ------------ | --------------------------- | --- |-----------------------------------------|
-| expandScreen | Array&lt;number&gt;         | 是   | 扩展屏幕id集合，其中id为整数。 expandScreen数组大小不应超过1000。  |
+| expandScreen | Array&lt;number&gt;         | 是   | 扩展屏幕ID集合，其中ID为整数。 expandScreen数组大小不应超过1000。  |
 | callback     | AsyncCallback&lt;void&gt; | 是   | 回调函数。当停止屏幕扩展模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1275,7 +1279,7 @@ stopExpand(expandScreen:Array&lt;number&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                 |
 | ------------ | ------------------- | --- |--------------------|
-| expandScreen | Array&lt;number&gt; | 是   | 扩展屏幕id集合，其中id为整数。expandScreen数组大小不应超过1000。 |
+| expandScreen | Array&lt;number&gt; | 是   | 扩展屏幕ID集合，其中ID为整数。expandScreen数组大小不应超过1000。 |
 
 **返回值：**
 
@@ -1343,7 +1347,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 | 名称    | 类型     | 只读 | 可选  | 说明                |
 | -------- | -------- | ---- | ---- | ------------------- |
-| id       | number   | 否   | 否   | 屏幕的id，该参数应为正整数，非正整数会作为非法参数报错。|
+| id       | number   | 否   | 否   | 屏幕的ID，该参数应为正整数，非正整数会作为非法参数报错。|
 | startX   | number   | 否   | 否   | 屏幕的起始X轴坐标。以两块屏幕外接矩形的左上顶点为原点，向右为正方向。该参数应为正整数，非正整数会作为非法参数报错。 |
 | startY   | number   | 否   | 否   | 屏幕的起始Y轴坐标。以两块屏幕外接矩形的左上顶点为原点，向下为正方向。该参数应为正整数，非正整数会作为非法参数报错。 |
 
@@ -1362,6 +1366,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 | height    | number   | 否   | 否   | 指定虚拟屏幕的高度，单位为px，该参数应为整数。 |
 | density   | number   | 否   | 否   | 指定虚拟屏幕的密度，单位为px，该参数为浮点数。 |
 | surfaceId | string   | 否   | 否   | 指定虚拟屏幕的surfaceId。        |
+| supportsFocus<sup>22+</sup> | boolean | 否 | 是  | 指定虚拟屏幕是否可获得焦点。true表示可获焦，false表示不可获焦，默认值为true。 |
 
 ## Screen
 
@@ -1378,7 +1383,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 | 名称              | 类型                                       | 只读 | 可选 | 说明                                                          |
 | ----------------- | ---------------------------------------------- | ---- | ---- |-------------------------------------------------------------|
-| id                | number                                         | 是   | 否   | 屏幕的id，该参数为整数。                           |
+| id                | number                                         | 是   | 否   | 屏幕的ID，该参数为整数。                           |
 | rsId<sup>21+</sup> |number | 是 | 否 | 屏幕端口的id，该参数为整数。|
 | parent            | number                                         | 是   | 否   | 屏幕所属群组的id，该参数为整数。             |
 | supportedModeInfo | Array&lt;[ScreenModeInfo](#screenmodeinfo)&gt; | 是   | 否   | 屏幕支持的模式集合。   |
@@ -1425,6 +1430,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1432,7 +1438,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1494,6 +1501,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1501,7 +1509,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1556,6 +1565,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1563,7 +1573,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1626,6 +1637,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1633,7 +1645,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1690,6 +1703,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1697,7 +1711,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1760,6 +1775,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1767,7 +1783,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1824,7 +1841,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 | 名称        | 类型 | 只读 | 可选 | 说明                                               |
 | ----------- | -------- | ---- | ---- | -------------------------------------------------- |
-| id          | number   | 否   | 否   | 模式id，所支持的模式由具体设备分辨率和刷新率决定，该参数为整数。 | 
+| id          | number   | 否   | 否   | 模式ID，所支持的模式由具体设备分辨率和刷新率决定，该参数为整数。 | 
 | width       | number   | 否   | 否   | 屏幕的宽度，单位为px，该参数为整数。                                |
 | height      | number   | 否   | 否   | 屏幕的高度，单位为px，该参数为整数。                                |
 | refreshRate | number   | 否   | 否   | 屏幕的刷新率，单位为hz，该参数为整数。                                     |

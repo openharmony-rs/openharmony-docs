@@ -28,7 +28,7 @@ For details about the requirements on the Linux environment, see [Quick Start](.
 
 The following uses the DAYU200 development board as an example to illustrate power-off vibration customization.
 
-1. Write the custom `power_vibrator.json` file by referring to the [power_vibrator.json](https://gitee.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/power_vibrator.json) file in the default folder of battery vibrator configuration. For example:
+1. Write the custom `power_vibrator.json` file by referring to the [power_vibrator.json](https://gitcode.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/power_vibrator.json) file in the default folder of battery vibrator configuration. For example:
 
     ```json
     {
@@ -58,4 +58,4 @@ Press and hold the power button. The power-off dialog is displayed, and the devi
 
 ## Reference
 
-[Default Power-off Vibration Configuration](https://gitee.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/power_vibrator.json)
+[Default Power-off Vibration Configuration](https://gitcode.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/power_vibrator.json)

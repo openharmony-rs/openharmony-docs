@@ -104,7 +104,7 @@ Sets the Y coordinate in [InputMethod_TextAvoidInfo](capi-inputmethod-inputmetho
 | Name| Description|
 | -- | -- |
 | [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) *info | Pointer to the [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) instance whose value is to be set.|
-| double positionY | Absolute value of the distance between the text box's top vertex and the top edge of the physical screen.|
+| double positionY | Absolute value of the distance between the text box's top vertex and the top edge of the physical screen, in px.|
 
 **Returns**
 
@@ -156,7 +156,7 @@ Obtains the Y coordinate from [InputMethod_TextAvoidInfo](capi-inputmethod-input
 | Name| Description|
 | -- | -- |
 | [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) *info | Pointer to the [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) instance whose value is to be obtained.|
-| double *positionY | Absolute value of the distance between the text box's top vertex and the top edge of the physical screen.|
+| double *positionY | Absolute value of the distance between the text box's top vertex and the top edge of the physical screen, in px.|
 
 **Returns**
 

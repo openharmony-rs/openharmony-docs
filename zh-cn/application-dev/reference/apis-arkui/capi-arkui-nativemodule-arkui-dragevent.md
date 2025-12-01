@@ -1,4 +1,14 @@
 # ArkUI_DragEvent
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_DragEvent ArkUI_DragEvent
+```
 
 ## 概述
 

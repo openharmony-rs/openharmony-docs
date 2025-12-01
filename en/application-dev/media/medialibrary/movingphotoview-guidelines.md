@@ -4,7 +4,7 @@
 <!--Owner: @tangye123456-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @tinygreyy-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The system provides the **MovingPhotoView** component, which can be used to play moving photos in social networking and gallery applications.
 
@@ -20,10 +20,23 @@ The restrictions on using the **MovingPhotoView** component are as follows:
 ## How to Develop
 
 1. Import modules.
- 
-   ```ts
-   import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
-   ```
+
+    **NOTE**
+   
+    - **MovingPhotoViewAttribute** is essential for configuring the **MovingPhotoView** component. In API version 21 and earlier, you must manually import **MovingPhotoViewAttribute** after importing the **MovingPhotoView** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **MovingPhotoViewAttribute** when it detects the **MovingPhotoView** component, so manual import is no longer necessary.
+    - If you manually import **MovingPhotoViewAttribute**, DevEco Studio shows it as disabled (grayed out). In API version 21 and earlier, removing this import causes a compilation error. But from API version 22 onward, removing it does not affect the functionality.
+
+    API version 21 and earlier:
+
+     ```ts
+     import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+     ```
+
+    API version 22 and later:
+
+     ```ts
+     import { MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
+     ```
 
 2. Obtain a [MovingPhoto](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MovingPhoto.md) object.
 
@@ -46,7 +59,9 @@ The restrictions on using the **MovingPhotoView** component are as follows:
    The values in the following sample code are only examples. For details about the value range of each parameter, see [@ohos.multimedia.movingphotoview](../../reference/apis-media-library-kit/ohos-multimedia-movingphotoview.md).
 
    ```ts
-    import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+    // For API version 21 and earlier, use the following: import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+    // For API version 22 and later, use the following:
+    import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
 
     @Entry
     @Component
@@ -66,19 +81,19 @@ The restrictions on using the **MovingPhotoView** component are as follows:
             .objectFit(ImageFit.Cover)
             // Triggered when the playback starts.
             .onStart(() => {
-              console.log('onStart');
+              console.info('onStart');
             })
             // Triggered when the playback ends.
             .onFinish(() => {
-              console.log('onFinish');
+              console.info('onFinish');
             })
             // Triggered when the playback stops.
             .onStop(() => {
-              console.log('onStop')
+              console.info('onStop')
             })
             // Triggered when an error occurs.
             .onError(() => {
-              console.log('onError');
+              console.error('onError');
             })
     
           Row() {

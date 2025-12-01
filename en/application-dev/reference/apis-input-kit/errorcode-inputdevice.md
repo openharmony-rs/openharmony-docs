@@ -1,5 +1,12 @@
 # Input Device Error Codes
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -51,11 +58,11 @@ It is prohibited for non-input applications.
 
 **Description**
 
-Non-input applications are not allowed to call this API.
+This error code is reported if the API is called by a non-input application.
 
 **Possible Causes**
 
-This API is not supported for a third-party application or a non-input system application.
+Non-input applications call this API.
 
 **Procedure**
 

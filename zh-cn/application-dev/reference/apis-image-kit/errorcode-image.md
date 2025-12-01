@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 
 > **说明：**
@@ -795,6 +795,34 @@ Unsupported metadata. Possible causes: Unsupported metadata type.
 
 重新确定辅助图类型和元数据类型是否对应，再进行读写操作。
 
+## 7600204 无效的区域
+
+**错误信息**
+
+Invalid region.
+
+**可能原因**
+
+Region中设置的顶点位置、宽度或高度超出图片尺寸范围。
+
+**处理步骤**
+
+检查Region中设置的顶点位置、宽度或高度，确保在图片尺寸范围之内。
+
+## 7600205 不支持的内存格式或像素格式
+
+**错误信息**
+
+Unsupported memory format or pixel format.
+
+**可能原因**
+
+接口不支持当前PixelMap的内存格式或像素格式。
+
+**处理步骤**
+
+查看接口的规格限制，并检查PixelMap的内存格式或像素格式，使用格式支持的PixelMap调用接口。
+
 ## 7600301 申请内存失败
 
 **错误信息**
@@ -847,7 +875,7 @@ Bad source.
 
 1. 设备不支持该图片类型。
 2. 没有按指示操作进行图片解码。
-3. 图源数据不完整。从API 17开始，系统底层经过优化，当遇到不完整数据时，系统将尝试部分解码，尽可能输出已解析的有效像素数据。但是如果图源数据文件头信息（如图像尺寸、颜色配置等）不完整，或图片像素数据块缺失严重，则仍会导致系统无法正常解码，最终返回解码失败。当前仅支持jpeg、png、bmp格式图片的不完整解码。
+3. 图源数据不完整。从API version 17开始，系统底层经过优化，当遇到不完整数据时，系统将尝试部分解码，尽可能输出已解析的有效像素数据。但是如果图源数据文件头信息（如图像尺寸、颜色配置等）不完整，或图片像素数据块缺失严重，则仍会导致系统无法正常解码，最终返回解码失败。当前仅支持jpeg、png、bmp格式图片的不完整解码。
 
 **处理步骤**
 
@@ -895,6 +923,21 @@ Unsupported allocator type, e.g., use share memory to decode a HDR image as only
 
 使用正确的内存分配类型。
 
+## 7700202 不支持的元数据
+
+**错误信息**
+
+Unsupported metadata. For example, the property key is not supported, or the property value is invalid.
+
+**可能原因**
+
+1. 输入了不支持的元数据字段。
+2. 元数据字段对应的值非法。
+
+**处理步骤**
+
+检查元数据字段是否支持或检查元数据值是否合法。
+
 ## 7700203 不支持的选项
 
 **错误信息**
@@ -939,6 +982,21 @@ Memory allocation failed.
 **处理步骤**
 
 检查设备内存或检查传入数据。
+
+## 7700304 图片信息写入文件失败
+
+**错误信息**
+
+Failed to write image properties to the file.
+
+**可能原因**
+
+1. 图片数据错误。
+2. 没有修改图片文件的权限。
+
+**处理步骤**
+
+检查图片数据或检查图片文件权限。
 
 ## 7800201 不支持的选项
 

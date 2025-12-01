@@ -17,57 +17,63 @@
 
 - [javaScriptProxy()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)接口使用示例如下。
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
+<!-- @[functions_that_trigger_a_run_on_the_front_end_page_are_registered_in_the_front_end_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/JavaScriptProxy.ets) -->
 
-  class TestClass {
-    constructor() {
-    }
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-    test(): string {
-      return 'ArkTS Hello World!';
-    }
+class TestClass {
+  constructor() {
   }
 
-  @Entry
-  @Component
-  struct WebComponent {
-    webviewController: webview.WebviewController = new webview.WebviewController();
-    // 声明需要注册的对象
-    @State testObj: TestClass = new TestClass();
+  test(): string {
+    return 'ArkTS Hello World!';
+  }
+}
 
-    build() {
-      Column() {
-        Button('deleteJavaScriptRegister')
-          .onClick(() => {
-            try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        // Web组件加载本地index.html页面
-        Web({ src: $rawfile('index.html'), controller: this.webviewController})
-          // 将对象注入到web端
-          .javaScriptProxy({
-            object: this.testObj,
-            name: "testObjName",
-            methodList: ["test"],
-            controller: this.webviewController,
-            // 可选参数
-            asyncMethodList: [],
-            permission: '{"javascriptProxyPermission":{"urlPermissionList":[{"scheme":"resource","host":"rawfile","port":"","path":""},' +
-                        '{"scheme":"e","host":"f","port":"g","path":"h"}],"methodList":[{"methodName":"test","urlPermissionList":' +
-                        '[{"scheme":"https","host":"xxx.com","port":"","path":""},{"scheme":"resource","host":"rawfile","port":"","path":""}]},' +
-                        '{"methodName":"test11","urlPermissionList":[{"scheme":"q","host":"r","port":"","path":"t"},' +
-                        '{"scheme":"u","host":"v","port":"","path":""}]}]}}'
-          })
-      }
+@Entry
+@Component
+struct WebComponent {
+  webviewController: webview.WebviewController = new webview.WebviewController();
+  // 声明需要注册的对象
+  @State testObj: TestClass = new TestClass();
+
+  build() {
+    Column() {
+      Button('deleteJavaScriptRegister')
+        .onClick(() => {
+          try {
+            this.webviewController.deleteJavaScriptRegister('testObjName');
+          } catch (error) {
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      // Web组件加载本地index.html页面
+      Web({ src: $rawfile('index1.html'), controller: this.webviewController})
+        // 将对象注入到web端
+        .javaScriptProxy({
+          object: this.testObj,
+          name: 'testObjName',
+          methodList: ['test'],
+          controller: this.webviewController,
+          // 可选参数
+          asyncMethodList: [],
+          permission: '{"javascriptProxyPermission":{"urlPermissionList":' +
+            '[{"scheme":"resource","host":"rawfile","port":"","path":""},' +
+            '{"scheme":"e","host":"f","port":"g","path":"h"}],"methodList":' +
+            '[{"methodName":"test","urlPermissionList":' +
+            '[{"scheme":"https","host":"xxx.com","port":"","path":""},' +
+            '{"scheme":"resource","host":"rawfile","port":"","path":""}]},' +
+            '{"methodName":"test11","urlPermissionList":' +
+            '[{"scheme":"q","host":"r","port":"","path":"t"},' +
+            '{"scheme":"u","host":"v","port":"","path":""}]}]}}'
+        })
     }
   }
-  ```
+}
+```
 - 应用侧使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)接口注册示例如下。
 
   ```ts
@@ -84,7 +90,7 @@
     }
 
     toString(): void {
-      console.log('Web Component toString');
+      console.info('Web Component toString');
     }
   }
 
@@ -137,7 +143,7 @@
 
   > **说明：**
   >
-  > - 使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)方法注册时，注册后需调用[refresh()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#refresh)方法生效。
+  > - 使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)方法注册后在下次加载或者重新加载后生效。
 
 - 可选参数permission是一个json字符串，示例如下：
   ```json
@@ -235,7 +241,7 @@
     }
 
     toString(param: string): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -317,7 +323,7 @@
     }
 
     toString(param: ESObject): void {
-      console.log('Web Component toString' + param["name"]);
+      console.info('Web Component toString' + param["name"]);
     }
   }
 
@@ -391,7 +397,7 @@
     }
 
     toString(param: String): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -465,7 +471,7 @@
     }
 
     toString(param: string): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -579,7 +585,7 @@
     }
 
     toString(param: string): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -652,7 +658,7 @@
     test(): Promise<string> {
       let p: Promise<string> = new Promise((resolve, reject) => {
         setTimeout(() => {
-          console.log('执行完成');
+          console.info('执行完成');
           reject('fail');
         }, 10000);
       });
@@ -660,7 +666,7 @@
     }
 
     toString(param: string): void {
-      console.log(" " + param);
+      console.info(" " + param);
     }
   }
 
@@ -732,7 +738,7 @@
     }
 
     toString(param:string): void {
-      console.log(" " + param);
+      console.info(" " + param);
     }
   }
 

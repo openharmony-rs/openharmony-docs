@@ -6,12 +6,24 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
+应用级配置文件，包含应用的全局配置信息和特定设备类型的配置信息，用于向编译工具、操作系统和应用市场提供应用的基本信息。每个工程下必须包含一个app.json5配置文件，文件所在目录为`工程名称/AppScope/app.json5`。
+
+>
+> **说明：**
+>
+> 配置文件中的示例代码直接拷贝到工程中可能编译不通过，请开发者根据需求进行配置。例如：通过$符号引用的资源文件如果工程中不存在，需要开发者手动添加或替换为实际的资源文件。
+>
+> 配置文件中，字段可以重复，以最后一个配置为准。
+>
+
 ## 配置文件示例
 
 
-先通过一个示例，整体认识一下app.json5配置文件。
+先通过一个示例，了解app.json5配置文件的结构和内容。
 
-```json
+<!-- @[app_json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
+
+``` JSON5
 {
   "app": {
     "bundleName": "com.application.myapplication",
@@ -27,8 +39,6 @@
     "car": {
       "minAPIVersion": 8
     },
-    "targetBundleName": "com.application.test",
-    "targetPriority": 50,
     "appEnvironments": [
       {
         "name":"name1",
@@ -37,7 +47,7 @@
     ],
     "maxChildProcess": 5,
     "multiAppMode": {
-      "multiAppModeType": "multiInstance",
+      "multiAppModeType": "appClone",
       "maxCount": 5
     },
     "hwasanEnabled": false,
@@ -54,6 +64,7 @@
   }
 }
 ```
+
 ## 配置文件标签
 
 app.json5配置文件包含以下标签。
@@ -97,7 +108,7 @@ app.json5配置文件包含以下标签。
 | cloudStructuredDataSyncEnabled | 标识当前应用是否启用端云结构化数据同步能力。 <br/>-&nbsp;true：当前应用启用端云结构化数据同步能力。<br/>-&nbsp;false：当前应用不启用端云结构化数据同步能力。<br/>**说明：** <br/>从API version 20开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。  |
 | [configuration](#configuration标签) | 标识当前应用字体大小跟随系统配置的能力。<br/>该标签是一个profile文件资源，用于指定描述应用字体大小跟随系统变更的配置文件。| 字符串 | 该标签可缺省，缺省时configuration使用不跟随系统默认设定。 |
 | assetAccessGroups | 配置应用的Group ID，它和Developer ID一起组成群组信息。<br/>打包HAP时，DevEco使用开发者证书对群组信息签名，其中群组信息由Developer ID（由应用市场分配）+ Group ID（开发者配置）组成。<br/>**说明：** <br/>从API version 18开始，支持该标签。| 字符串数组 | 该标签可缺省，缺省值为空。 |
-| appPreloadPhase | 配置应用预加载到不同阶段。支持的取值如下：<br/>-processCreated：预加载到进程创建完成阶段。<br/>-abilityStageCreated：预加载到[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)创建完成阶段。<br/>-windowStageCreated：预加载到[WindowStage](../reference/apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。<br/>**说明：** <br/>从API version 20开始，支持该标签。<br>仅在应用的entry模块配置有效。| 字符串| 该标签可缺省，缺省时不进行预加载。 |
+| appPreloadPhase | 配置[应用预加载](../application-models/preload-application.md)到不同阶段。支持的取值如下：<br/>-processCreated：预加载到进程创建完成阶段。<br/>-abilityStageCreated：预加载到[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)创建完成阶段。<br/>-windowStageCreated：预加载到[WindowStage](../reference/apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。<br/>**说明：** <br/>从API version 20开始，支持该标签。<br>仅在PC/2in1设备上生效。<br>仅在应用的entry模块配置有效。<br>该标签仅表示应用自身是否为预加载到所配置阶段做好了准备，最终能否预加载还需要由系统根据用户习惯等信息来决策。| 字符串| 该标签可缺省，缺省时不进行预加载。 |
 | [startMode](../application-models/application-component-configuration-stage.md#应用启动模式配置) | 配置应用的启动模式，支持的取值如下：<br/>-&nbsp;mainTask：主任务模式，表示图标启动后打开主UIAbility。<br/>-&nbsp;recentTask：最近任务模式，表示图标启动后打开最近使用的UIAbility。<br/>**说明：**<br/>从API version 20开始，支持该标签。<br/>仅在launchType为[单实例模式](../application-models/uiability-launch-type.md#singleton启动模式)时生效。<br/>该标签仅支持phone和tablet设备(不包含自由多窗)。 | 字符串 | 该标签可缺省，缺省值为mainTask。 |
 
 ## appEnvironments标签
@@ -113,15 +124,19 @@ app.json5配置文件包含以下标签。
 
 appEnvironments标签示例：
 
-```json
+<!-- @[app_json5_appEnvironments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
+
+``` JSON5
 {
   "app": {
+    // ...
     "appEnvironments": [
       {
         "name":"name1",
         "value": "value1"
       }
-    ]
+    ],
+    // ...
   }
 }
 ```
@@ -139,13 +154,17 @@ appEnvironments标签示例：
 
 multiAppMode标签示例：
 
-```json
+<!-- @[app_json5_multiAppMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
+
+``` JSON5
 {
   "app": {
+    // ...
     "multiAppMode": {
       "multiAppModeType": "appClone",
       "maxCount": 5
-    }
+    },
+    // ...
   }
 }
 ```
@@ -156,10 +175,14 @@ multiAppMode标签示例：
 
 configuration标签示例：
 
-```json
+<!-- @[app_json5_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
+
+``` JSON5
 {
   "app": {
-    "configuration": "$profile:configuration"  
+    // ...
+    "configuration": "$profile:configuration",
+    // ...
   }
 }
 ```
@@ -171,7 +194,7 @@ configuration标签示例：
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | fontSizeScale | 应用字体大小是否跟随系统，支持的取值如下：<br/>-&nbsp;followSystem：跟随系统。<br/>-&nbsp;nonFollowSystem：不跟随系统。| 字符串 | 该标签可缺省，缺省值为nonFollowSystem。 |
-| fontSizeMaxScale | 应用字体大小选择跟随系统后，配置的应用字体最大放大倍数，支持的取值为：1、1.15、1.3、1.45、1.75、2、3.2。	 <br/> 例如配置应用字体最大放大倍数为1.75，系统字体标准大小为10fp。<br/>（1）如果设置中调整系统字体放大倍数为1.5倍，应用会跟随系统一起调整为15fp。<br/>（2）如果设置中调整系统字体放大倍数为2倍，此时系统的字体大小为20fp，但由于应用配置的最大放大倍数为1.75，所以此时应用的字体大小为17.5fp。 <br/> **说明**<br/> fontSizeScale为nonFollowSystem时，该项不生效。 | 字符串 | 该标签可缺省，缺省值为3.2。 |
+| fontSizeMaxScale | 应用字体大小选择跟随系统后，配置的应用字体最大放大倍数，支持的取值为：1、1.15、1.3、1.45、1.75、2、3.2。 <br/> 例如配置应用字体最大放大倍数为1.75，系统字体标准大小为10fp。<br/>（1）如果设置中调整系统字体放大倍数为1.5倍，应用会跟随系统一起调整为15fp。<br/>（2）如果设置中调整系统字体放大倍数为2倍，此时系统的字体大小为20fp，但由于应用配置的最大放大倍数为1.75，所以此时应用的字体大小为17.5fp。 <br/> **说明**<br/> fontSizeScale为nonFollowSystem时，该项不生效。 | 字符串 | 该标签可缺省，缺省值为3.2。 |
 
 configuration标签示例：
 

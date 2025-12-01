@@ -1,5 +1,16 @@
 # OH_AVDataSource
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @mr-chencxy-->
+<!--Designer: @dpy2650--->
+<!--Tester: @baotianhao-->
+<!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct OH_AVDataSource {...} OH_AVDataSource
+```
+
 ## 概述
 
 用户自定义数据源。
@@ -16,7 +27,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| int64_t size | 数据源的总大小。|
-| [OH_AVDataSourceReadAt](capi-native-avcodec-base-h.md#oh_avdatasourcereadat) readAt | 数据源的数据回调。|
+| int64_t size | 数据源的总大小。 |
+| [OH_AVDataSourceReadAt](capi-native-avcodec-base-h.md#oh_avdatasourcereadat) readAt | 数据源的数据回调。 |
 
 

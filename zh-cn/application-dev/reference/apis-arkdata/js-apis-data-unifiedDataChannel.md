@@ -110,11 +110,11 @@ type ValueType = number | string | boolean | image.PixelMap | Want | ArrayBuffer
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| extras<sup>12+</sup> | Record<string, object> | 否 | 是 | 是一个字典类型对象，用于设置其他附加属性数据。非必填字段，默认值为空字典对象。 |
-| tag<sup>12+</sup> | string | 否 | 是 | 用户自定义标签。非必填字段，默认值为空字符串。 |
-| timestamp<sup>12+</sup> | Date | 是 | 是 | [UnifiedData](#unifieddata)的生成时间戳。默认值为1970年1月1日（UTC）。 |
-| shareOptions<sup>12+</sup> | [ShareOptions](#shareoptions12) | 否 | 是 | 指示[UnifiedData](#unifieddata)支持的设备内使用范围，非必填字段，默认值为CROSS_APP。 |
-| getDelayData<sup>12+</sup> | [GetDelayData](#getdelaydata12) | 否 | 是 | 延迟获取数据回调。当前只支持同设备剪贴板场景，后续场景待开发。非必填字段，默认值为undefined。 |
+| extras | Record<string, object> | 否 | 是 | 是一个字典类型对象，用于设置其他附加属性数据。非必填字段，默认值为空字典对象。 |
+| tag | string | 否 | 是 | 用户自定义标签。非必填字段，默认值为空字符串。 |
+| timestamp | Date | 是 | 是 | [UnifiedData](#unifieddata)的生成时间戳。默认值为1970年1月1日（UTC）。 |
+| shareOptions | [ShareOptions](#shareoptions12) | 否 | 是 | 指示[UnifiedData](#unifieddata)支持的设备内使用范围，非必填字段，默认值为CROSS_APP。 |
+| getDelayData | [GetDelayData](#getdelaydata12) | 否 | 是 | 延迟获取数据回调。当前只支持同设备剪贴板场景，后续场景待开发。非必填字段，默认值为undefined。 |
 
 **示例：**
 
@@ -420,6 +420,7 @@ let types = unifiedData.getTypes();
 | -------- | -------- | -------- | -------- | -------- |
 | summary   | Record<string, number> | 否 | 否 | 是一个字典类型对象，key表示数据类型（见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)），value为统一数据对象中该类型记录大小总和（单位：Byte）。 |
 | totalSize | number | 否 | 否 | 统一数据对象内记录总大小（单位：Byte）。 |
+| overview<sup>22+</sup>   | Record<string, number> | 是 | 否 | 统一数据对象中所有类型与该类型数据记录大小的映射关系，其中数据大小单位为Byte。当获取到的统一数据对象为空时，此overview属性值为空。 |
 
 **示例：**
 
@@ -440,6 +441,8 @@ function parseSummary(summary : unifiedDataChannel.Summary) {
       let value : string = info[1];
     }
   }
+  let overviewRecord = summary.overview as Record<string, number>;
+  let totalSize = summary.totalSize;
 }
 ```
 
@@ -871,7 +874,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 ## PlainText
 
-纯文本类型数据，是[Text](#text)的子类，用于描述纯文本类数据。
+[Text](#text)的子类，用于描述纯文本类数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -892,7 +895,7 @@ text.abstract = 'This is abstract';
 
 ## Hyperlink
 
-超链接类型数据，是[Text](#text)的子类，用于描述超链接类型数据。
+[Text](#text)的子类，用于描述超链接类型数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

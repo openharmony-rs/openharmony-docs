@@ -1,5 +1,16 @@
 # OH_Drawing_BitmapFormat
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
+```
+typedef struct {...} OH_Drawing_BitmapFormat
+```
+
 ## 概述
 
 结构体用于描述位图像素的格式，包括颜色类型和透明度类型。

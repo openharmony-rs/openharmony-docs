@@ -16,7 +16,7 @@ Supported
 
 >  **NOTE**
 >
->  - Allowed child component types: built-in and custom components, including rendering control types ([if/else](../../../ui/state-management/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/state-management/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/state-management/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/state-management/arkts-new-rendering-control-repeat.md)). To maximize the benefits of lazy loading, avoid mixing lazy loading components (including **LazyForEach** and **Repeat**) and non-lazy loading components, and exercise caution when using multiple lazy loading components. Avoid modifying the data source while an animation is in progress, as doing so can lead to layout issues.
+>  - Allowed child component types: built-in and custom components, including rendering control types ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)). To maximize the benefits of lazy loading, avoid mixing lazy loading components (including **LazyForEach** and **Repeat**) and non-lazy loading components, and exercise caution when using multiple lazy loading components. Avoid modifying the data source while an animation is in progress, as doing so can lead to layout issues.
 >
 >  - If a child component has its [visibility](ts-universal-attributes-visibility.md#visibility) attribute set to **Visibility.None** and the **Swiper** component has its **displayCount** attribute set to **'auto'**, the child component does not take up space in the viewport, but does not affect the number of navigation points. If a child component has its **visibility** attribute set to **Visibility.None** or **Visibility.Hidden**, it takes up space in the viewport, but is not displayed.
 >
@@ -546,7 +546,7 @@ Sets the mode for flipping pages using the mouse wheel.
 
 maintainVisibleContentPosition(enabled: boolean)
 
-Sets whether to maintain the visible content position when data is inserted or deleted above or ahead of the viewport. This applies to **Swiper** components using a single [LazyForEach](../../../ui/state-management/arkts-rendering-control-lazyforeach.md) as the child node, where the data source is modified using **LazyForEach** API such as [onDateAdd](ts-rendering-control-lazyforeach.md#ondataadd8) or [onDataDelete](ts-rendering-control-lazyforeach.md#ondatadelete8).
+Sets whether to maintain the visible content position when data is inserted or deleted above or ahead of the viewport. This applies to **Swiper** components using a single [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) as the child node, where the data source is modified using **LazyForEach** API such as [onDateAdd](ts-rendering-control-lazyforeach.md#ondataadd8) or [onDataDelete](ts-rendering-control-lazyforeach.md#ondatadelete8).
 
 When **swipeByGroup** in [displayCount](#displaycount8) is set to **true**, the visible content position remains unchanged only if the inserted or deleted data quantity is a multiple of the group size. Otherwise, the visible content position may change during group recalculation.
 
@@ -718,7 +718,7 @@ Preloads child nodes. After this API is called, all specified child nodes will b
 
 If the **SwiperController** object is not bound to any **Swiper** component, any attempt to call APIs on it will result in a JavaScript exception, together with the error code 100004. Therefore, you are advised to use **try-catch** to handle potential exceptions when calling APIs on **SwiperController**.
 
-When combining **SwiperController** with [LazyForEach](../../../ui/state-management/arkts-rendering-control-lazyforeach.md) and custom components, be aware that **LazyForEach** only retains custom components within the cache range. Components outside this range are removed. Therefore, make sure the nodes to preload are within the cache range of **LazyForEach** to avoid issues.
+When combining **SwiperController** with [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) and custom components, be aware that **LazyForEach** only retains custom components within the cache range. Components outside this range are removed. Therefore, make sure the nodes to preload are within the cache range of **LazyForEach** to avoid issues.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -1707,7 +1707,7 @@ Describes the animation information of the **Swiper** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name           | Type      | Read Only| Optional| Description                                      |
+| Name           | Type      | Read-Only| Optional| Description                                      |
 | ------------- | ----------- | ---- | ---- |------------------------------- |
 | currentOffset | number | No| No| Offset of the currently displayed element relative to the start position of the **Swiper** along the main axis. Unit: vp<br>Default value: **0**|
 | targetOffset | number | No| No| Offset of the target element relative to the start position of the **Swiper** along the main axis. Unit: vp<br>Default value: **0**|
@@ -1736,7 +1736,7 @@ Implements the proxy object returned during the execution of the custom page tra
 
 ### Attributes
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | --- | ---- | --- |
 | selectedIndex | number | No| No| Index of the currently selected page.|
 | index | number | No| No| Index of a page in the viewport.|

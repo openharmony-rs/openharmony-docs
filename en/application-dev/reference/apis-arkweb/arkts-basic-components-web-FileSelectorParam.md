@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements the **FileSelectorParam** object to obtain files. For details about the sample code, see [onShowFileSelector](./arkts-basic-components-web-events.md#onshowfileselector9).
 

@@ -4,7 +4,7 @@
 <!--Owner: @tangye123456-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @tinygreyy-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 用于播放动态照片文件并控制其播放状态的组件。
 
@@ -15,12 +15,15 @@
 
 ## MovingPhotoViewOptions
 
+定义动态照片视图选项。
 
-| 参数名      | 参数类型                                                                                         | 必填 | 参数描述                                                                                                                                        |
-| ----------- | ------------------------------------------------------------------------------------------------ | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| movingPhotoFormat<sup>14+</sup>  | [PixelMapFormat](#pixelmapformat14)    | 否   | 设置动态照片组件封面图片的解码格式。                  |
-| dynamicRangeMode<sup>14+</sup>  | [DynamicRangeMode](#dynamicrangemode14) | 否   | 设置动态照片组件封面图片的RangeMode样式。 |
-| playWithMask<sup>19+</sup>  | boolean | 否   | 带有水印的动态照片播放时是否保留水印显示。<br/>默认值：false。<br/>false：播放时保持宽高比撑满组件，不展示水印信息。<br/>true：播放时不遮挡封面照片的水印，展示水印信息。||
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                      | 类型                     | 只读 | 可选 | 说明                                                   |
+| ------------------------- | ------------------------ | ---- | ---- | ------------------------------------------------------ |
+| movingPhotoFormat<sup>14+</sup>               | [PixelMapFormat](#pixelmapformat14)                   | 否   | 是   | 设置动态照片组件封面图片的解码格式。<br>**系统接口**：此接口为系统接口。          |
+| dynamicRangeMode<sup>14+</sup>               | [DynamicRangeMode](#dynamicrangemode14)                   | 否   | 是   | 设置动态照片组件封面图片的RangeMode样式。<br>**系统接口**：此接口为系统接口。           |
+| playWithMask<sup>19+</sup>               | boolean                   | 否   | 是   | 带有水印的动态照片播放时是否保留水印显示。<br/>默认值：false。<br/>false：播放时保持宽高比撑满组件，不展示水印信息。<br/>true：播放时不遮挡封面照片的水印，展示水印信息。<br>**系统接口**：此接口为系统接口。        |
 
 ## PixelMapFormat<sup>14+</sup>
 
@@ -53,11 +56,15 @@
 | CONSTRAINT         | 1      | 允许图像内容使用一些扩展范围。|
 | STANDARD            | 2      | 允许图像内容动态单位限制在标准范围内，显示SDR效果，需要使用的解码格式UNKNOWN或者RGBA_8888。|
 
-## 示例1：系统应用设置动态照片解码格式和rangemode格式
+**示例：**
+
+系统应用设置动态照片解码格式和HDR效果格式。
 
 ```ts
 // 该示例只展示参数用法，具体可以执行用例参考动态照片公开接口文档
-import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// API version 21及之前版本导入方式：import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// API version 22及之后版本导入方式如下：
+import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
 import { PixelMapFormat, DynamicRangeMode } from '@ohos.multimedia.movingphotoview';
 
 let data: photoAccessHelper.MovingPhoto

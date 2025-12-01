@@ -1,10 +1,10 @@
 # 焦点控制
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 自定义组件的走焦效果，可设置组件是否走焦和具体的走焦顺序，使用TAB键或方向键切换焦点。
 
@@ -56,10 +56,9 @@ tabIndex(index: number): T
 
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| index  | number | 是   | 自定义组件tab键走焦能力。若有配置了tabIndex大于0的组件，则tab键走焦只会在tabIndex大于0的组件内按照tabIndex的值从小到大并循环依次走焦。若没有配置tabIndex大于0的组件，则tabIndex等于0的组件按照组件预设的走焦规则走焦。<br />[UiExtension](../js-apis-arkui-uiExtension.md)组件未适配tabIndex，在含有[UiExtension](../js-apis-arkui-uiExtension.md)组件的[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)使用tabIndex会导致走焦错乱。<br />- tabIndex >= 0：表示元素是可聚焦的，并且可以通过tab键走焦来访问到该元素。<br />- tabIndex < 0（通常是tabIndex = -1）：表示元素是可聚焦的，但是不能通过tab键走焦来访问到该元素。<br/> **说明：**<br/> tabIndex与focusScopeId不能混用。
-|
+| 参数名 | 类型   | 必填 | 说明            |
+| ------ | ------ | ---- | ------------------------------------ |
+| index  | number | 是   | 自定义组件tab键走焦能力。若有配置了tabIndex大于0的组件，则tab键走焦只会在tabIndex大于0的组件内按照tabIndex的值从小到大并循环依次走焦。若没有配置tabIndex大于0的组件，则tabIndex等于0的组件按照组件预设的走焦规则走焦。<br />[UiExtension](../js-apis-arkui-uiExtension.md)组件未适配tabIndex，在含有[UiExtension](../js-apis-arkui-uiExtension.md)组件的[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)使用tabIndex会导致走焦错乱。<br />- tabIndex >= 0：表示元素是可聚焦的，并且可以通过tab键走焦来访问到该元素。<br />- tabIndex < 0（通常是tabIndex = -1）：表示元素是可聚焦的，但是不能通过tab键走焦来访问到该元素。<br/> **说明：**<br/> tabIndex与focusScopeId不能混用。|
 
 **返回值：**
 
@@ -200,11 +199,11 @@ requestFocus(value: string): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 参数类型 | 必填 | 描述 |
-| ---- | ---- | ---- | ---- |
-| margin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 焦点框相对组件边缘的距离。<br/>正数代表外侧，负数代表内侧。不支持百分比。 |
-| strokeColor  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 焦点框颜色。 |
-| strokeWidth | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 焦点框宽度。<br/>不支持负数与百分比。|
+| 名称 | 类型 |  只读 | 可选 | 说明  |
+| ---- | ---- | ---- |  ---- | ---- |
+| margin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 |焦点框相对组件边缘的距离。<br/>正数代表外侧，负数代表内侧。不支持百分比。 |
+| strokeColor  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 |焦点框颜色。 |
+| strokeWidth | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 |焦点框宽度。<br/>不支持负数与百分比。|
 
 ## focusScopePriority<sup>12+</sup>
 
@@ -281,7 +280,7 @@ focusScopeId(id: string, isGroup?: boolean): T
 
 focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean): T
 
-设置当前容器组件的id标识，以及是否为焦点组。
+设置当前容器组件的id标识，以及是否为焦点组。新增参数arrowStepOut，用于设置能否使用方向键走焦出当前焦点组。
 
 **原子化服务API：**  从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -368,11 +367,15 @@ nextFocus(nextStep: Optional\<FocusMovement>): T
 | left  | string | 否 | 是 | 通过方向键左键走焦到组件的id。<br/>默认值为重置left为空。 |
 | right  | string | 否 | 是 | 通过方向键右键走焦到组件的id。<br/>默认值为重置right为空。 |
 
+> **说明：**
+> 
+> 直接使用focusControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[getFocusController](../arkts-apis-uicontext-uicontext.md#getfocuscontroller12)获取绑定实例的focusControl。
+
 ## 示例
 
 ### 示例1（设置组件获焦和走焦的效果）
 
-该示例通过配置defaultFocus可以使绑定的组件成为[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)创建后首次获焦的焦点，配置groupDefaultFocus可以使绑定的组件成为tabIndex容器创建后首次获焦的焦点，配置focusOnTouch可以使绑定的组件点击后立即获焦。
+该示例通过配置[defaultFocus](#defaultfocus9)可以使绑定的组件成为[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)创建后首次获焦的焦点，配置[groupDefaultFocus](#groupdefaultfocus9)可以使绑定的组件成为tabIndex容器创建后首次获焦的焦点，配置[focusOnTouch](#focusontouch9)可以使绑定的组件点击后立即获焦。
 
 ```ts
 // focusTest.ets
@@ -523,11 +526,7 @@ struct FocusableExample {
 
 ### 示例2（设置指定组件获焦）
 
-该示例通过配置focusControl.requestFocus使指定组件获取焦点。
-
-> **说明：**
-> 
-> 直接使用focusControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[getFocusController](../arkts-apis-uicontext-uicontext.md#getfocuscontroller12)获取绑定实例的focusControl。
+该示例通过配置[focusControl.requestFocus](#requestfocus9)使指定组件获取焦点。
 
 ```ts
 // requestFocus.ets
@@ -610,7 +609,7 @@ struct RequestFocusExample {
 
 ### 示例3（设置焦点框样式）
 
-该示例通过配置focusBox修改组件的焦点框样式。
+该示例通过配置[focusBox](#focusbox12)修改组件的焦点框样式。
 
 ```ts
 import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
@@ -643,7 +642,7 @@ struct RequestFocusExample {
 
 ### 示例4（设置焦点组走焦）
 
-该示例通过配置focusScopePriority，可以使绑定的组件在所属容器首次获焦时成为焦点，配置focusScopeId，可以使绑定的容器组件成为焦点组。
+该示例通过配置[focusScopePriority](#focusscopeid12)，可以使绑定的组件在所属容器首次获焦时成为焦点，配置[focusScopeId](#focusscopeid12)，可以使绑定的容器组件成为焦点组。
 
 ```ts
 // focusTest.ets
@@ -791,7 +790,7 @@ struct FocusableExample {
 
 ### 示例5（设置tab走焦停留）
 
-该示例通过配置tabStop实现使用tab走焦停留在组件上。
+该示例通过配置[tabStop](#tabstop14)实现使用tab走焦停留在组件上。
 
 ```ts
 import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
@@ -878,8 +877,8 @@ struct TabStop {
 
 ### 示例6（设置自定义走焦）
 
-该示例通过配置nextFocus实现自定义走焦规则。
-如果不配置nextFocus，默认的点击tab的走焦顺序为：M->A->B->C；配置了nextFocus以后，走焦顺序变更为：M->D->F->B。
+从API version 18开始，该示例通过配置[nextFocus](#nextfocus18)实现自定义走焦规则。
+如果不配置[nextFocus](#nextfocus18)，默认的点击tab的走焦顺序为：M->A->B->C；配置了[nextFocus](#nextfocus18)以后，走焦顺序变更为：M->D->F->B。
 
 ```ts
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {

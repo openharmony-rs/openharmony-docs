@@ -4,13 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
-
-<!--Kit: Media Library Kit-->
-<!--Subsystem: Multimedia-->
-<!--Owner: @yixiaoff-->
-<!--Designer: @liweilu1-->
-<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -337,15 +331,16 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | CAMERA | 1   | 仅相机拍摄的图片、视频。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | SCREENSHOT | 2   | 截屏图片或者录屏视频。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
-## HdrMode<sup>21+</sup>
+## MovingPhotoBadgeStateType<sup>22+</sup>
 
-枚举，图片的HDR类型。
+枚举，动态照片状态。
 
-| 名称  |  值 |  说明 |
-| ----- |  ---- |  ---- |
-| DEFAULT |  0 |  默认类型。|
-| HDR_ISO_SINGLE |  1 |  单层HDR技术。  |
-| HDR_ISO_DUAL |  2 |  单层HDR技术。  |
-| HDR_CUVA |  3 |  中国超高清视频产业联盟HDR标准。  |
-| HDR_VIVID_SINGLE |  4 |  单层HDR VIVID技术。  |
-| HDR_VIVID_DUAL |  5 |  单层HDR VIVID技术。  |
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                | 值   | 说明             |
+|------------------- |--------|----------------------|
+| NOT_MOVING_PHOTO   | 0      | 非动态照片。 |
+| MOVING_PHOTO_ENABLED | 1    | 打开动态照片效果。 |
+| MOVING_PHOTO_DISABLED | 2   | 关闭动态照片效果。 |

@@ -1,5 +1,13 @@
 # OpenHarmony 6.0 Release
 
+## 版权和许可声明
+
+本项目贡献依据 **《开发者原创声明》（DCO）** 授权给开放原子开源基金会。本项目是由许多开源软件组件组成的汇编作品，该汇编作品的版权归开放原子开源基金会所有。开放原子开源基金会根据Apache 2.0开源许可协议（以下简称 **Apache 2.0** ）向您提供该汇编作品的授权。
+
+在遵守Apache 2.0，以及本项目包含的开源软件组件适用的对应开源许可协议的前提下，您方可使用本项目。您可以通过以下网址获取Apache 2.0副本：
+**[http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0#/session/_blank)**
+
+除非适用法律要求或书面约定，依据适用的开源许可协议分发的软件均按“原样”提供，且不附带任何（明示或默示）形式的保证或条件。有关适用的开源许可协议的具体授权和限制，请参见其原文。
 
 ## 版本概述
 
@@ -163,7 +171,7 @@ Wi-Fi新增支持连接候选网络时提示确认是否信任该网络，并提
 
 ### 升级
 
-支持流式物理AB升级，支持边下载边升级安装，减少用户设备存储空间的占用。（[说明文档](https://gitee.com/openharmony/update_updater/blob/master/README_zh.md)）
+支持流式物理AB升级，支持边下载边升级安装，减少用户设备存储空间的占用。（[说明文档](https://gitcode.com/openharmony/update_updater/blob/master/README_zh.md)）
 
 
 ### 媒体
@@ -257,9 +265,9 @@ Wi-Fi新增支持连接候选网络时提示确认是否信任该网络，并提
 
 1. 注册码云gitee帐号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
+2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
 
-3. 安装[git客户端](https://gitee.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://gitcode.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
    ```
    git config --global user.name "yourname"
    git config --global user.email "your-email-address"
@@ -268,7 +276,7 @@ Wi-Fi新增支持连接候选网络时提示确认是否信任该网络，并提
 
 4. 安装码云repo工具，可以执行如下命令。
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -277,18 +285,18 @@ Wi-Fi新增支持连接候选网络时提示确认是否信任该网络，并提
 
 **方式一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-6.0-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-6.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v6.0-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v6.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -299,14 +307,14 @@ Wi-Fi新增支持连接候选网络时提示确认是否信任该网络，并提
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-6.0-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-6.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v6.0-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v6.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -336,12 +344,12 @@ Wi-Fi新增支持连接候选网络时提示确认是否信任该网络，并提
 
 | ISSUE单 | 问题描述 | 
 | ------- | ------- |
-| ICAWPJ | 执行XTS测试时，在之前的case注册了on的callback（其中callback是一个case的局部函数），之后没有通过off解除注册，在后面的case也触发了此callback，但是因其引用的js函数已经析构，导致执行结果出现失败项。 |
-| ICD55I | 执行XTS测试时，ActsTelephonyContactTest测试套因RK3568开发板因联系人服务获取datashare超时限制过长导致执行结果出现失败项。 |
-| ICENKX | 执行XTS测试时，创建资产接口业务码未做区分导致执行结果出现失败项。 |
-| ICE0E0 | 进程com.ohos.systemui有较大概率出现因INPUT_EVENT_SOCKET_TIMEOUT导致的sysfreeze问题。 |
-| ICCUL7 | 进程/system/bin/bootanimation下的OS_IPC_1_743线程有一定概率出现因libaccessibilityconfig.z.so崩溃导致的cppcrash。 |
-| ICCXYS | 进程foundation下的OS_IPC_6_979线程小概率出现因libhilog.so崩溃导致的cppcrash。 | 系统异常，重启可恢复。 | 2025年7月30日 | 
+| [7475](https://gitcode.com/openharmony/multimedia_audio_framework/issues/7475) | 执行XTS测试时，在之前的case注册了on的callback（其中callback是一个case的局部函数），之后没有通过off解除注册，在后面的case也触发了此callback，但是因其引用的js函数已经析构，导致执行结果出现失败项。 |
+| [1523](https://gitcode.com/openharmony/telephony_call_manager/issues/1523) | 执行XTS测试时，ActsTelephonyContactTest测试套因RK3568开发板因联系人服务获取datashare超时限制过长导致执行结果出现失败项。 |
+| [5686](https://gitcode.com/openharmony/multimedia_media_library/issues/5686) | 执行XTS测试时，创建资产接口业务码未做区分导致执行结果出现失败项。 |
+| [569](https://gitcode.com/openharmony/applications_systemui/issues/569) | 进程com.ohos.systemui有较大概率出现因INPUT_EVENT_SOCKET_TIMEOUT导致的sysfreeze问题。 |
+| [1514](https://gitcode.com/openharmony/accessibility/issues/1514) | 进程/system/bin/bootanimation下的OS_IPC_1_743线程有一定概率出现因libaccessibilityconfig.z.so崩溃导致的cppcrash。 |
+| [513](https://gitcode.com/openharmony/hiviewdfx_hilog/issues/513) | 进程foundation下的OS_IPC_6_979线程小概率出现因libhilog.so崩溃导致的cppcrash。 | 系统异常，重启可恢复。 | 2025年7月30日 | 
 
 
 ## 遗留缺陷列表
@@ -350,10 +358,10 @@ Wi-Fi新增支持连接候选网络时提示确认是否信任该网络，并提
 
 | ISSUE | 问题描述 | 影响 | 计划解决日期 | 
 | -------- | -------- | -------- | -------- |
-| ICW13P | 仿抖音滑动评论区帧率43 FPS，不满足基线要求。 | 轻微影响使用体验。 | 2025年9月30日 |
-| ICW0P4 | 开机完成时延较前一版本稍有劣化。 | 轻微影响使用体验。 | 2025年9月30日 |
-| ICW129 | 联系人列表滑动帧率42 FPS，不满足基线要求。| 轻微影响使用体验。 | 2025年12月30日 |
-| ICV8O8 | 进程com.ohos.systemui在wukong压测下出现内存泄露。 | 系统异常，重启可恢复。 | 2025年9月30日 |
-| ICWA4N<br />ICWA56 | 进程com.ohos.mms小概率出现因anonymous或deleteAction导致的jscrash。 | 短信应用异常闪退，重启应用可恢复。 | 2025年9月30日 |
-| ICUCVF | 进程/system/bin/hilogd下的hilogd.server线程小概率出现cppcrash。 | 使用HiLog记录日志可能出现异常，重启可恢复。 | 2025年9月30日 |
-| ICW9XX | 进程com.ohos.contacts下的m.ohos.contacts线程小概率出现因libace_compatible.z.so导致的cppcrash。 | 联系人应用异常闪退，重启应用可恢复。 | 2025年9月30日 |
+| [19592](https://gitcode.com/openharmony/graphic_graphic_2d/issues/19592) | 仿抖音滑动评论区帧率43 FPS，不满足基线要求。 | 轻微影响使用体验。 | 2025年9月30日 |
+| [19617](https://gitcode.com/openharmony/graphic_graphic_2d/issues/19617) | 开机完成时延较前一版本稍有劣化。 | 轻微影响使用体验。 | 2025年9月30日 |
+| [329](https://gitcode.com/openharmony/applications_contacts/issues/329) | 联系人列表滑动帧率42 FPS，不满足基线要求。| 轻微影响使用体验。 | 2025年12月30日 |
+| [588](https://gitcode.com/openharmony/applications_systemui/issues/588) | 进程com.ohos.systemui在wukong压测下出现内存泄露。 | 系统异常，重启可恢复。 | 2025年9月30日 |
+| [296](https://gitcode.com/openharmony/applications_mms/issues/296)<br />[295](https://gitcode.com/openharmony/applications_mms/issues/295) | 进程com.ohos.mms小概率出现因anonymous或deleteAction导致的jscrash。 | 短信应用异常闪退，重启应用可恢复。 | 2025年9月30日 |
+| [527](https://gitcode.com/openharmony/hiviewdfx_hilog/issues/527) | 进程/system/bin/hilogd下的hilogd.server线程小概率出现cppcrash。 | 使用HiLog记录日志可能出现异常，重启可恢复。 | 2025年9月30日 |
+| [63972](https://gitcode.com/openharmony/arkui_ace_engine/issues/63972) | 进程com.ohos.contacts下的m.ohos.contacts线程小概率出现因libace_compatible.z.so导致的cppcrash。 | 联系人应用异常闪退，重启应用可恢复。 | 2025年9月30日 |

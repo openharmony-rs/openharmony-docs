@@ -1,5 +1,16 @@
 # OH_AVCodec
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @mr-chencxy-->
+<!--Designer: @dpy2650--->
+<!--Tester: @baotianhao-->
+<!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct OH_AVCodec OH_AVCodec
+```
+
 ## 概述
 
 为音视频编解码接口定义native层对象。

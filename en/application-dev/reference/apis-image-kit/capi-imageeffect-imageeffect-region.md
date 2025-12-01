@@ -1,8 +1,18 @@
 # ImageEffect_Region
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct ImageEffect_Region {...} ImageEffect_Region
+```
 
 ## Overview
 
-The ImageEffect_Region struct describes the image region.
+The struct describes the image region.
 
 **Since**: 12
 

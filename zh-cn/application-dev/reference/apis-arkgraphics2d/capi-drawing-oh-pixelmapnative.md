@@ -1,4 +1,14 @@
 # OH_PixelmapNative
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
+```
+typedef struct OH_PixelmapNative OH_PixelmapNative
+```
 
 ## 概述
 

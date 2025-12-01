@@ -1,4 +1,10 @@
 # Stationary Development
+<!--Kit: Multimodal Awareness Kit-->
+<!--Subsystem: MultimodalAwareness-->
+<!--Owner: @dilligencer-->
+<!--Designer: @zou_ye-->
+<!--Tester: @judan-->
+<!--Adviser: @hu-zhiqiong-->
 
 
 ## When to Use
@@ -39,7 +45,7 @@ For details about the APIs, see [Stationary](../../reference/apis-multimodalawar
 
 ## Constraints
 
-The device must support the acceleration sensor.
+The device is required to support the acceleration sensor.
 Currently, only the algorithm framework is provided. The API test framework returns the following result: data={"type":3,"value":-1}.
 If the relative stationary and absolute stationary capabilities are required, you must implement them in **device_status/libs/src/algorithm**. The following code snippet is for reference:
 
@@ -71,43 +77,55 @@ If the relative stationary and absolute stationary capabilities are required, yo
    ```ts
    import { stationary } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
+
    let reportLatencyNs = 1000000000;
    try {
       stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) => {
-         console.log('data='+ JSON.stringify(data));
+         console.info('data=' + JSON.stringify(data));
       })
    } catch (error) {
       let message = (error as BusinessError).message;
       console.error('stationary on failed:' + message);
    }
    ```
+   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
+
+   <!-- @[stationary_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
 
 2. Obtain the event indicating entering the absolute still state.
 
    ```ts
    import { stationary } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
+
    try {
       stationary.once('still', (data) => {
-         console.log('data='+ JSON.stringify(data));
+         console.info('data=' + JSON.stringify(data));
       })
    } catch (error) {
       let message = (error as BusinessError).message;
       console.error('stationary once failed:' + message);
    }
    ```
+   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
+
+   <!-- @[stationary_getStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
 
 3. Unsubscribe from the event indicating entering the absolute still state.
 
    ```ts
    import { stationary } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
+
    try {
       stationary.off('still', stationary.ActivityEvent.ENTER, (data) => {
-         console.log('data='+ JSON.stringify(data));
+         console.info('data=' + JSON.stringify(data));
       })
    } catch (error) {
       let message = (error as BusinessError).message;
       console.error('stationary off failed:' + message);
    }
    ```
+   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
+
+   <!-- @[stationary_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->

@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 进度条组件，用于显示内容加载或操作处理等进度。
 
@@ -136,6 +136,8 @@ color(value: ResourceColor | LinearGradient)
 
 从API version 10开始支持利用LinearGradient设置Ring样式的渐变色。Ring类型不建议设置透明度，如需设置透明度，建议使用[DataPanel](ts-basic-components-datapanel.md)。
 
+从API version 23开始支持利用LinearGradient设置Linear样式和Capsule样式的渐变色。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用，暂不支持LinearGradient。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -182,6 +184,10 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 设置隐私敏感。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -192,7 +198,7 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 | 参数名 | 类型                                                      | 必填 | 说明                                                  |
 | ------ | --------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| isPrivacySensitiveMode  | [Optional\<boolean\>] | 是   | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true表示打开隐私敏感，false表示关闭隐私敏感。<br/>**说明：** <br/>设置null表示不敏感。<!--Del--><br/>需要在卡片中使用Progress，并用[FormComponent](./ts-basic-components-formcomponent-sys.md)组件设置[隐私遮罩](./ts-universal-attributes-obscured.md)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
+| isPrivacySensitiveMode  | [Optional\<boolean\>] | 是   | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true表示打开隐私敏感，false表示关闭隐私敏感。<br/>**说明：** <br/>设置null表示不敏感。<br/> 默认值：false<!--Del--><br/>需要在卡片中使用Progress，并用[FormComponent](./ts-basic-components-formcomponent-sys.md)组件设置[隐私遮罩](./ts-universal-attributes-obscured.md)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
 
 ## ProgressConfiguration<sup>12+</sup>
 
@@ -264,7 +270,7 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 | borderColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 内描边颜色。<br/>默认值：<br/>API version 10：'\#33006cde'<br/>API version 11及以上：'\#33007dff' |
 | borderWidth | [Length](ts-types.md#length) | 否 | 是 | 内描边宽度（不支持百分比设置）。<br/>默认值：1vp |
 | content | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 文本内容，应用可自定义。<br>从API version 20开始，支持Resource类型。 |
-| font | [Font](ts-types.md#font) | 否 | 是 | 文本样式。<br/>默认值：<br/>- 文本大小（不支持百分比设置）：12fp <br/>其他文本参数跟随text组件的主题值。|
+| font | [Font](ts-types.md#font) | 否 | 是 | 文本样式。<br/>默认值：<br/>文本大小（不支持百分比设置）：12fp <br/>其他文本参数跟随[Text](ts-basic-components-text.md)组件的主题值。|
 | fontColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 文本颜色。<br/>默认值：'\#ff182431' |
 | showDefaultPercentage | boolean | 否 | 是 | 显示百分比文本的开关。开启后，进度条上显示当前进度的百分比。设置了content属性时该属性不生效。<br/>默认值：false，false表示不显示百分比文本，true表示显示百分比文本。 |
 | borderRadius<sup>18+</sup> |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | Capsule进度条圆角半径（不支持百分比设置）。<br/>取值范围：[0, height/2]。默认值：height / 2。<br/>设置非法数值时，按照默认值处理。 |
@@ -686,3 +692,34 @@ struct ProgressExample {
 
 ```
 ![capsuleProgressBorderRadius](figures/arkts-capsuleProgressBorderRadius.png)
+
+### 示例9（设置线性进度条和胶囊进度条属性）
+
+从API version 23开始，该示例通过[color](#color)属性中的LinearGradient，实现线性进度条和胶囊进度条渐变色的功能。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct ProgressExample {
+  private gradientColor: LinearGradient = new LinearGradient([{ color: "#87BDF9", offset: 0.5 },
+    { color: "#3662F0", offset: 1.0 }])
+  public gradientColor2: LinearGradient = new LinearGradient([{ color: "#A5A5AF", offset: 0.5 }, 
+    { color: "#67666C", offset: 1.0 }])
+
+  build() {
+    Column({ space: 15 }) {
+      Text('Linear：').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      Progress({ value: 70, total: 100, type: ProgressType.Linear })
+        .width(100).style({ strokeWidth: 20 })
+        .color(this.gradientColor)
+
+      Text('Capsule：').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      Progress({ value: 50, total: 100, type: ProgressType.Capsule })
+        .width(120).style({ strokeWidth: 40 })
+        .color(this.gradientColor2)
+    }.width('100%').padding({ top: 5 })
+  }
+}
+```
+![linearProgressGradient](figures/arkts-linearProgressGradient.png)

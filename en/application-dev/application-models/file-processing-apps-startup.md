@@ -1,5 +1,12 @@
 # Using startAbility to Start a File Application
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @liusu23-->
+<!--Designer: @xukeke-->
+<!--Tester: @lusq-->
+<!--Adviser: @huipeizi-->
+
 ## When to Use
 
 You can call [startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) to search for an installed application that meets the requirements to open a specific file. For example, when a browser downloads a PDF file, this API can be called to select a file application to open the PDF file. You must set the file URI (specified by [uri](#key-api-parameters)) and type (specified by [type](#key-api-parameters)) and other fields in the request so that the system can identify the file to open. Then the system directly starts an application to open the file or displays a dialog box for users to select an application to open the file.
@@ -20,7 +27,7 @@ You can call [startAbility](../reference/apis-ability-kit/js-apis-inner-applicat
 | type     | string | No      | Type of the file to open. [UTD](../database/uniform-data-type-descriptors.md) is recommended, for example, **'general.plain-text'** and **'general.image'**. The [MIME type](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com) is also supported, for example, **'text/xml'** and **'image/*'**.<br>**NOTE**<br>1. The **type** field is optional. If it is not passed, the system attempts to match the file type based on the URI suffix. If it is passed, ensure that it is the same as the file type specified in the URI. Otherwise, no proper application can be matched. For details about the mappings between file name extensions and file types, see [Prebuilt UTDs](../database/uniform-data-type-list.md).<br>2. **\*/\*** is not supported.
 | parameters | Record<string, Object>       | No        | Custom parameters that are defined by the system and assigned values by developers as required. For details, see Table 2.                                                                                                                                                                                      |
 | flags | number | No| Processing mode. For details, see Table 3.                                                                                                                                                                                      |
-
+| action | string | Yes| Operation to execute. For file opening scenarios, use the fixed value **'ohos.want.action.viewData'**, which indicates a view operation.                                                                                                                                                                                     |
 
 **Table 2** Description of [parameters](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#params)
 

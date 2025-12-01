@@ -1,9 +1,10 @@
 # \@Styles装饰器：定义组件重用样式
-<!--Kit: ArkUI--> 
-<!--Subsystem: ArkUI--> 
-<!--Owner: @BlYynNe--> 
-<!--SE: @lixingchi1--> 
-<!--TSE: @TerryTsao-->
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @BlYynNe-->
+<!--Designer: @VictorS67-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @BIYynNe-->
 
 如果每个组件的样式都需要单独设置，在开发过程中会出现大量代码在进行重复样式设置，虽然可以复制粘贴，但为了代码简洁性和后续方便维护，我们推出了可以提炼公共样式进行复用的装饰器\@Styles。
 
@@ -32,7 +33,9 @@
 
 定义在组件内的\@Styles可以通过this访问组件的常量和状态变量，并可以在\@Styles里通过事件来改变状态变量的值，示例如下：
 
-```ts
+<!-- @[inner_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator2.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct FancyUse {
@@ -62,13 +65,18 @@ struct FancyUse {
 
 - \@Styles方法不能有参数，编译期会报错，表明@Styles方法不支持参数。
 
-```ts
+``` TypeScript
 // 错误写法： @Styles不支持参数，编译期报错
 @Styles
 function globalFancy (value: number) {
   .width(value)
 }
 
+```
+
+<!-- @[style_not_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator2.ets) -->
+
+``` TypeScript
 // 正确写法
 @Styles
 function globalFancy () {
@@ -78,7 +86,7 @@ function globalFancy () {
 
 - 不支持在\@Styles方法内使用逻辑组件，逻辑组件内的属性不生效。
 
-```ts
+``` TypeScript
 // 错误写法
 @Styles
 function backgroundColorStyle() {
@@ -87,6 +95,11 @@ function backgroundColorStyle() {
   }
 }
 
+```
+
+<!-- @[style_not_if](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator2.ets) -->
+
+``` TypeScript
 // 正确写法
 @Styles
 function backgroundColorStyle() {
@@ -98,10 +111,12 @@ function backgroundColorStyle() {
 
 ### 组件内\@Styles和全局\@Styles的用法
 
-```ts
+<!-- @[global_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator1.ets) -->
+
+``` TypeScript
 // 定义在全局的@Styles封装的样式
 @Styles
-function globalFancy () {
+function globalFancy1 () {
   .width(150)
   .height(100)
   .backgroundColor(Color.Pink)
@@ -109,7 +124,7 @@ function globalFancy () {
 
 @Entry
 @Component
-struct FancyUse {
+struct GlobalFancy {
   @State heightValue: number = 100;
   // 定义在组件内的@Styles封装的样式
   @Styles fancy() {
@@ -125,7 +140,7 @@ struct FancyUse {
     Column({ space: 10 }) {
       // 使用全局的@Styles封装的样式
       Text('FancyA')
-        .globalFancy()
+        .globalFancy1()
         .fontSize(30)
       // 使用组件内的@Styles封装的样式
       Text('FancyB')

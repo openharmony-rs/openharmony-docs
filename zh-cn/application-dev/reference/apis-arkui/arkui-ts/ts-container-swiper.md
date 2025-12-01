@@ -4,7 +4,7 @@
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
  滑块视图容器，提供子组件滑动轮播显示的能力。 
 
@@ -384,13 +384,15 @@ displayCount(value: number | string | [SwiperAutoFill](#swiperautofill10), swipe
 
 > **说明：**
 >
->1.按组进行翻页时，判定翻页的拖拽距离阈值将调整为Swiper宽度的50%（若按子元素翻页，该阈值为子元素宽度的50%）。若最后一组的子元素数量少于displayCount，将利用占位子元素进行填充，占位子元素仅用于布局定位，不显示任何内容，其位置将直接显示Swiper的背景样式。
+> - 按组进行翻页时，判定翻页的拖拽距离阈值将调整为Swiper宽度的50%（若按子元素翻页，该阈值为子元素宽度的50%）。若最后一组的子元素数量少于displayCount，将利用占位子元素进行填充，占位子元素仅用于布局定位，不显示任何内容，其位置将直接显示Swiper的背景样式。
 >
->2.displayCount设置为'auto'，并且设置非循环时，选中导航点的位置与视窗内首个页面的位置保持一致。如果翻页完成后，视窗内首个页面仅部分显示在视窗内，选中导航点亦与页面的位置保持一致，位于两个未选中的导航点之间。在此情况下，建议开发者隐藏导航点。
+> - displayCount设置为'auto'，并且设置非循环时，选中导航点的位置与视窗内首个页面的位置保持一致。如果翻页完成后，视窗内首个页面仅部分显示在视窗内，选中导航点亦与页面的位置保持一致，位于两个未选中的导航点之间。在此情况下，建议开发者隐藏导航点。
 >
->3.导航点样式设定为圆形导航点，视窗内显示子元素数量等于1时（单页场景）或者 displayCount设置为'auto'时，显示导航点数量等于子元素数量。
+> - 导航点样式设定为圆形导航点，视窗内显示子元素数量等于1时（单页场景）或者 displayCount设置为'auto'时，显示导航点数量等于子元素数量。
 >
->4.displayCount设置为'auto'时，若设置swipeByGroup为true，则单个子元素按组翻页，一次只能翻一页。在此情况下，建议开发者不设置swipeByGroup或者设置swipeByGroup为false。
+> - displayCount设置为'auto'时，若设置swipeByGroup为true，则单个子元素按组翻页，一次只能翻一页。在此情况下，建议开发者不设置swipeByGroup或者设置swipeByGroup为false。
+>
+> - 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 当导航点样式设定为圆形导航点，视窗内显示子元素数量大于1（多页场景），显示导航点数量情况如下表：
 
@@ -409,20 +411,46 @@ displayCount(value: number | string | [SwiperAutoFill](#swiperautofill10), swipe
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名                     | 类型                                                         | 必填 | 说明                                                         |
 | -------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value                      | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[SwiperAutoFill](#swiperautofill10)<sup>10+</sup> | 是   | 视窗内显示的子元素个数。<br/> 默认值：1<br/>取值范围：(0, +∞)，设置小于等于0的值时，按照默认值处理。|
 | swipeByGroup<sup>11+</sup> | boolean                                                      | 否   | 是否按组进行翻页。如果设为true，在翻页时会按组进行翻页，每组内子元素的数量为displayCount value的值；如果为false，则为默认翻页行为，即按照子元素进行翻页。<br/> 默认值：false |
 
+### displayCount<sup>22+</sup>
+
+displayCount(value: number | string | SwiperAutoFill | ItemFillPolicy, swipeByGroup?: boolean)
+
+设置Swiper视窗内元素显示个数。
+
+使用number类型时，子元素主轴宽度会基于Swiper主轴宽度适应。子组件按照主轴均分Swiper宽度（减去displayCount-1个itemSpace）的方式进行主轴拉伸（收缩）布局，设置为小于等于0的值时，按默认值1显示。<br/>
+使用string类型时，根据子元素的主轴宽度线性布局，不再适应Swiper主轴宽度。此时value值仅支持设置为'auto'，设置[customContentTransition](#customcontenttransition12)和[onContentDidScroll](#oncontentdidscroll12)事件不生效。<br/>
+使用SwiperAutoFill类型时，子元素主轴宽度会基于Swiper主轴宽度适应。通过设置一个子组件最小宽度值minSize，会根据Swiper当前宽度和minSize值自动计算并更改一页内元素显示个数。当minSize为空或者小于等于0时，Swiper显示1列。
+使用ItemFillPolicy类型时，子元素主轴宽度会基于Swiper主轴宽度适应。将根据Swiper组件宽度对应断点类型确定显示个数。例如，设置断点类型为ItemFillPolicy.BREAKPOINT_DEFAULT时，在组件宽度相当于sm及更小断点区间时显示1列，相当于md断点区间时显示2列，相当于lg及更大断点区间时显示3列。
+
+参数说明参考[displayCount](#displaycount8)。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名                     | 类型                                                         | 必填 | 说明                                                         |
+| -------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value                      | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[SwiperAutoFill](#swiperautofill10)&nbsp;\|&nbsp;[ItemFillPolicy](./ts-types.md#itemfillpolicy22) | 是   | 视窗内显示的子元素个数。<br/> 取值范围：(0, +∞)，设置小于等于0的值时，按照1处理。|
+| swipeByGroup | boolean                                                      | 否   | 是否按组进行翻页。如果设为true，在翻页时会按组进行翻页，每组内子元素的数量为displayCount的值；如果为false，则为默认翻页行为，即按照子元素进行翻页。<br/> 默认值：false |
+
 > **说明：**
 >
 >  当Swiper子组件个数小于等于Swiper组件内容区内显示的节点总个数(totalDisplayCount = DisplayCount + prevMargin? (1 : 0) + nextMargin? (1 : 0))时，一般按照非循环模式布局处理，此时，前后边距对应子组件不显示，但依然会在视窗内占位。Swiper组件按照totalDisplayCount个数判断测算规格。例外情况如下：
->    
+>
 >  - 当Swiper子组件个数等于Swiper组件内容区内显示的节点总个数且prevMargin和nextMargin都生效时，设置loop为true支持循环。
 >
->  - 当Swiper子组件个数等于Swiper组件DisplayCount数 + 1，且prevMargin和nextMargin至少一个生效时，设置loop为true会生成截图占位组件(如果使用图片异步加载等显示耗时较长的组件可能不能正确生成截图，不建议在该场景开启循环)，支持循环。
+>  - 当Swiper子组件个数等于Swiper组件DisplayCount数 + 1，且prevMargin和nextMargin至少一个生效时，在非按组翻页模式下设置loop为true，会生成截图占位组件(如果使用图片异步加载等显示耗时较长的组件可能不能正确生成截图，不建议在该场景开启循环)，支持循环。
 >
 
 ### effectMode<sup>8+</sup>
@@ -476,6 +504,10 @@ nextMargin(value: Length, ignoreBlank?:boolean)
 
 使用nextMargin/prevMargin接口时，不要对子组件进行[尺寸范围限制](ts-universal-attributes-size.md#constraintsize)，否则子节点主轴将不会被拉伸到预期长度，边距失去效果。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -498,6 +530,10 @@ prevMargin(value: Length, ignoreBlank?:boolean)
 当主轴方向为纵向布局时，nextMargin/prevMargin中任意一个大于子组件测算的高度，nextMargin和prevMargin均不显示。
 
 使用nextMargin/prevMargin接口时，不要对子组件进行[尺寸范围限制](ts-universal-attributes-size.md#constraintsize)，否则子节点主轴将不会被拉伸到预期长度，边距失去效果。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -590,16 +626,16 @@ maintainVisibleContentPosition(enabled: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 类型                                       | 必填 | 说明                                                 |
-| ------------- | ------------------------------------------ | ---- | ---------------------------------------------------- |
-| left          | [Length](ts-types.md#length)               | 否   | 设置导航点左侧相对于Swiper的位置。<br/>未设置left和right时，进行自适应大小布局，按照指示器本身大小和Swiper的大小在主轴方向上进行居中对齐<br/>设置为0时：按照0位置布局计算<br/>优先级：高于right属性<br/>取值范围：[0,Swiper宽度-导航点区域宽度]，超出该范围时，取最近的边界值。                 |
-| top           | [Length](ts-types.md#length)               | 否   | 设置导航点顶部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致<br/>设置为0时：按照0位置布局计算<br/>优先级：高于bottom属性<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。                 |
-| right         | [Length](ts-types.md#length)               | 否   | 设置导航点右侧相对于Swiper的位置。<br/>未设置left和right时，进行自适应大小布局，按照指示器本身大小和Swiper的大小在主轴方向上进行居中对齐<br/>设置为0时：按照0位置布局计算<br/>优先级：低于left属性<br/>取值范围：[0,Swiper宽度-导航点区域宽度]，超出该范围时，取最近的边界值。                 |
-| bottom        | [Length](ts-types.md#length)               | 否   | 设置导航点底部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致<br/>设置为0时：按照0位置布局计算<br/>优先级：低于top属性<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。                 |
-| size          | [Length](ts-types.md#length)               | 否   | 设置导航点的直径，不支持设置百分比。<br/>默认值：6vp |
-| mask          | boolean                                    | 否   | 设置是否显示导航点蒙层样式。<br/>设置为true时显示导航点蒙层样式，为false时不显示。                         |
-| color         | [ResourceColor](ts-types.md#resourcecolor) | 否   | 设置导航点的颜色。                                   |
-| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否   | 设置选中的导航点的颜色。                             |
+| 名称          | 类型                                       | 只读 | 可选 | 说明                                                 |
+| ------------- | ------------------------------------------ | ---- | ---- | ---------------------------------------------------- |
+| left          | [Length](ts-types.md#length)               | 否   | 是   | 设置导航点左侧相对于Swiper的位置。<br/>未设置left和right时，进行自适应大小布局，按照指示器本身大小和Swiper的大小在主轴方向上进行居中对齐<br/>设置为0时：按照0位置布局计算<br/>优先级：高于right属性<br/>取值范围：[0,Swiper宽度-导航点区域宽度]，超出该范围时，取最近的边界值。                 |
+| top           | [Length](ts-types.md#length)               | 否   | 是   | 设置导航点顶部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致<br/>设置为0时：按照0位置布局计算<br/>优先级：高于bottom属性<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。                 |
+| right         | [Length](ts-types.md#length)               | 否   | 是   | 设置导航点右侧相对于Swiper的位置。<br/>未设置left和right时，进行自适应大小布局，按照指示器本身大小和Swiper的大小在主轴方向上进行居中对齐<br/>设置为0时：按照0位置布局计算<br/>优先级：低于left属性<br/>取值范围：[0,Swiper宽度-导航点区域宽度]，超出该范围时，取最近的边界值。                 |
+| bottom        | [Length](ts-types.md#length)               | 否   | 是   | 设置导航点底部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致<br/>设置为0时：按照0位置布局计算<br/>优先级：低于top属性<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。                 |
+| size          | [Length](ts-types.md#length)               | 否   | 是   | 设置导航点的直径，不支持设置百分比。<br/>默认值：6vp |
+| mask          | boolean                                    | 否   | 是   | 设置是否显示导航点蒙层样式。<br/>设置为true时显示导航点蒙层样式，为false时不显示。                         |
+| color         | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 设置导航点的颜色。                                   |
+| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 设置选中的导航点的颜色。                             |
 
 ## SwiperDisplayMode枚举说明
 
@@ -741,6 +777,10 @@ preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 如果SwiperController对象未绑定任何Swiper组件，直接调用该接口，会抛出JS异常，并返回错误码100004。因此使用该接口时，建议通过try-catch捕获异常。
 
 与[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和自定义组件结合使用时，由于[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)只会保留缓存范围内的自定义组件，在缓存范围外的会被删除，因此需要开发者保证通过该接口预加载的节点index在缓存范围内。
+
+> **说明：**
+>
+> Swiper的preloadItems需要在Swiper创建之后去调用，首次预加载推荐在Swiper的[onAppear](./ts-universal-events-show-hide.md#onappear)生命周期中去控制。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -1378,14 +1418,14 @@ DigitIndicator的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称              | 类型                                     | 必填  | 说明                                     |
-| ---------------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| showBackground   | boolean                                  | 否    | 设置箭头底板是否显示。为true时箭头底板显示，为false时箭头底板不显示。<br/>默认值：false                |
-| isSidebarMiddle  | boolean                                  | 否    | 设置箭头显示位置。为true时箭头居中显示在swiper组件两侧，为false时显示在导航点指示器两侧。<br/>默认值：false <br/>默认显示在导航点指示器两侧。 |
-| backgroundSize   | [Length](ts-types.md#length)             | 否    | 设置底板大小。<br/>在导航点两侧显示：<br/>默认值：24vp<br/>在组件两侧显示：<br/>默认值：32vp<br/>不支持设置百分比。 |
-| backgroundColor  | [ResourceColor](ts-types.md#resourcecolor) | 否    | 设置底板颜色。<br/>在导航点两侧显示：<br/>默认值：'\#00000000'<br/>在组件两侧显示：<br/>默认值：'\#19182431' |
-| arrowSize        | [Length](ts-types.md#length)             | 否    | 设置箭头大小。<br/>在导航点两侧显示时：<br/>默认值：18vp<br/>在组件两侧显示时：<br/>默认值：24vp<br/>**说明：**<br/>showBackground为true时，arrowSize为backgroundSize的3/4。<br/>不支持设置百分比。 |
-| arrowColor       | [ResourceColor](ts-types.md#resourcecolor) | 否    | 设置箭头颜色。<br/>默认值：'\#182431'                 |
+| 名称              | 类型                                     | 只读  | 可选  | 说明                                     |
+| ---------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
+| showBackground   | boolean                                  | 否    | 是   | 设置箭头底板是否显示。为true时箭头底板显示，为false时箭头底板不显示。<br/>默认值：false                |
+| isSidebarMiddle  | boolean                                  | 否    | 是   | 设置箭头显示位置。为true时箭头居中显示在swiper组件两侧，为false时显示在导航点指示器两侧。<br/>默认值：false <br/>默认显示在导航点指示器两侧。 |
+| backgroundSize   | [Length](ts-types.md#length)             | 否    | 是   | 设置底板大小。<br/>在导航点两侧显示：<br/>默认值：24vp<br/>在组件两侧显示：<br/>默认值：32vp<br/>不支持设置百分比。 |
+| backgroundColor  | [ResourceColor](ts-types.md#resourcecolor) | 否    | 是   | 设置底板颜色。<br/>在导航点两侧显示：<br/>默认值：'\#00000000'<br/>在组件两侧显示：<br/>默认值：'\#19182431' |
+| arrowSize        | [Length](ts-types.md#length)             | 否    | 是   | 设置箭头大小。<br/>在导航点两侧显示时：<br/>默认值：18vp<br/>在组件两侧显示时：<br/>默认值：24vp<br/>**说明：**<br/>showBackground为true时，arrowSize为backgroundSize的3/4。<br/>不支持设置百分比。 |
+| arrowColor       | [ResourceColor](ts-types.md#resourcecolor) | 否    | 是   | 设置箭头颜色。<br/>默认值：'\#182431'                 |
 
 ## SwiperAutoFill<sup>10+</sup>
 
@@ -1397,9 +1437,9 @@ DigitIndicator的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称  | 类型             | 必填 | 说明                             |
-| ------- | -------------------- | ------ | ------------------------------------ |
-| minSize | [VP](ts-types.md#vp10) | 是     | 设置元素显示最小宽度。<br/>默认值：0 |
+| 名称  | 类型             | 只读 | 可选 | 说明                             |
+| ------- | -------------------- | ------ | ------ | ------------------------------------ |
+| minSize | [VP](ts-types.md#vp10) | 否  | 否     | 设置元素显示最小宽度。<br/>默认值：0 |
 
 ## AutoPlayOptions<sup>18+</sup>对象说明
 
@@ -1411,9 +1451,9 @@ DigitIndicator的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称              | 类型                                     | 必填  | 说明                                     |
-| ---------------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| stopWhenTouched   | boolean                                  | 是    | 在按下事件中配置子组件是否立即停止播放。<br/>设置为true时，停止播放。设置为false时，自动播放不中断。<br/>默认值：true |
+| 名称              | 类型                                 | 只读   | 可选  | 说明                                     |
+| ---------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
+| stopWhenTouched   | boolean                              | 否   | 否    | 在按下事件中配置子组件是否立即停止播放。<br/>设置为true时，停止播放。设置为false时，自动播放不中断。<br/>默认值：true |
 
 ## 事件
 
@@ -1745,11 +1785,11 @@ Swiper即将滑动前触发的回调，返回值表示是否允许此次滑动�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| ------ | ---- | ---- | ---- |
-| currentIndex | number | 是 | 当前页面对应的index。在一次跟手滑动过程中，只要手指未离开屏幕，该值将保持不变，即使该页面已完全移出视窗，如在涉及多个页面的场景中。 |
-| comingIndex | number | 是 | 滑动方向上即将显示的页面index。 |
-| offset | number | 是 | 此次滑动的位移，带有符号，正负分别指示不同的翻页方向。正数表示从index=1向index=0翻页，负数表示从index=0向index=1翻页。<br>在手指滑动的场景中，该值为滑动事件中每帧传递下来的偏移量。在滚动鼠标滚轮和使用键盘方向键导航的场景中，该值代表即将翻页的距离。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ---- | ---- | ---- | ---- |
+| currentIndex | number | 否 | 否 | 当前页面对应的index。在一次跟手滑动过程中，只要手指未离开屏幕，该值将保持不变，即使该页面已完全移出视窗，如在涉及多个页面的场景中。 |
+| comingIndex | number | 否 | 否 | 滑动方向上即将显示的页面index。 |
+| offset | number | 否 | 否 | 此次滑动的位移，带有符号，正负分别指示不同的翻页方向。正数表示从index=1向index=0翻页，负数表示从index=0向index=1翻页。<br>在手指滑动的场景中，该值为滑动事件中每帧传递下来的偏移量。在滚动鼠标滚轮和使用键盘方向键导航的场景中，该值代表即将翻页的距离。 |
 
 ## SwiperAnimationEvent<sup>10+</sup>对象说明
 
@@ -1773,10 +1813,10 @@ Swiper自定义切换动画相关信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| ------ | ---- | ---- | ---- |
-| timeout | number | 否 | Swiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用[SwiperContentTransitionProxy](#swipercontenttransitionproxy12)的finishTransition接口通知Swiper组件此页面的自定义动画已结束，那么组件就会认为此页面的自定义动画已结束，立即将该页面节点下渲染树。单位ms，默认值为0。 |
-| transition | Callback<[SwiperContentTransitionProxy](#swipercontenttransitionproxy12)> | 是 | 自定义切换动画具体内容。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ---- | ---- | ---- | ---- |
+| timeout | number | 否 | 是 | Swiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用[SwiperContentTransitionProxy](#swipercontenttransitionproxy12)的finishTransition接口通知Swiper组件此页面的自定义动画已结束，那么组件就会认为此页面的自定义动画已结束，立即将该页面节点下渲染树。单位ms，默认值为0。 |
+| transition | Callback<[SwiperContentTransitionProxy](#swipercontenttransitionproxy12)> | 否 | 否 | 自定义切换动画具体内容。 |
 
 ## SwiperContentTransitionProxy<sup>12+</sup>
 

@@ -4,9 +4,9 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-模态页面是一种大面板大视图交互式的弹窗，和其他弹窗组件一样，通常用于在保持当前的上下文环境时，临时展示用户需关注的信息或待处理的操作。相比于其他弹窗组件，模态页面的内容都需要开发者通过自定义组件来填充实现，可展示的视图往往也很大。默认需要用户进行交互才能够退出模态页面。ArkUI当前提供了**半模态**和**全模态**两类模态页面组件。
+模态页面是一种大面板交互式的弹窗，和其他弹窗组件一样，通常用于在保持当前的上下文环境时，临时展示用户需关注的信息或待处理的操作。相比于其他弹窗组件，模态页面的内容都需要开发者通过自定义组件来填充实现，可展示的视图往往也很大。默认需要用户进行交互才能够退出模态页面。ArkUI当前提供了**半模态**和**全模态**两类模态页面组件。
 
 * **​半模态：​**开发者可以利用此模态页面实现多形态效果。支持不同宽度设备显示不同样式的半模态页面。允许用户通过侧滑，点击蒙层，点击关闭按钮，下拉关闭半模态页面。
 
@@ -26,5 +26,5 @@
 
 ## 规格约束
 
-* 建议<!--Del-->在除[ServiceExtensionAbility](../../application-dev/application-models/serviceextensionability.md)等无UI界面的场景外，均<!--DelEnd-->使用UIContext中的弹窗方法。其他规格约束可参考[openBindSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#openbindsheet12)、[updateBindSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#updatebindsheet12)、[closeBindSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#closebindsheet12)说明。
+* 建议<!--Del-->在除[ServiceExtensionAbility](../../application-dev/application-models/serviceextensionability-sys.md)等无UI界面的场景外，均<!--DelEnd-->使用UIContext中的弹窗方法。其他规格约束可参考[openBindSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#openbindsheet12)、[updateBindSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#updatebindsheet12)、[closeBindSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#closebindsheet12)说明。
 

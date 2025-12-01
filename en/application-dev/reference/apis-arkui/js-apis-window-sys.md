@@ -233,13 +233,13 @@ Describes the window parameters during application startup.
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
 
-Minimizes all windows on a display. This API uses an asynchronous callback to return the result.
+Minimizes all main windows on a display.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Device behavior differences**: When this API is called on phones, error code 801 is returned. However, it can be called properly on other devices.
+**Device behavior differences**: <!--RP1-->This API can be properly called on phones. If it is called on other device types, error code 801 is returned.<!--RP1End-->
 
 **Parameters**
 
@@ -289,13 +289,13 @@ try {
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number): Promise&lt;void&gt;
 
-Minimizes all windows on a display. This API uses a promise to return the result.
+Minimizes all main windows on a display. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Device behavior differences**: When this API is called on phones, error code 801 is returned. However, it can be called properly on other devices.
+**Device behavior differences**: <!--RP1-->This API can be properly called on phones. If it is called on other device types, error code 801 is returned.<!--RP1End-->
 
 **Parameters**
 
@@ -1015,6 +1015,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1300004  | This operation is not accessible.             |
 
 **Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -2066,7 +2067,7 @@ export default class EntryAbility extends UIAbility {
 
 opacity(opacity: number): void
 
-Sets the opacity for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the opacity for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
 
 **System API**: This is a system API.
 
@@ -2103,7 +2104,7 @@ try {
 
 scale(scaleOptions: ScaleOptions): void
 
-Sets the scale parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the scale parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
 
 **System API**: This is a system API.
 
@@ -2146,7 +2147,7 @@ try {
 
 rotate(rotateOptions: RotateOptions): void
 
-Sets the rotation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the rotation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
 
 **System API**: This is a system API.
 
@@ -2190,7 +2191,7 @@ try {
 
 translate(translateOptions: TranslateOptions): void
 
-Sets the translation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the translation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
 
 **System API**: This is a system API.
 
@@ -2865,7 +2866,7 @@ export default class EntryAbility extends UIAbility {
 
 raiseMainWindowAboveTarget(windowId: number): Promise&lt;void&gt;
 
-Moves the main window above another main window within the same application, with child windows following their parents' layer change. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode. This API uses a promise to return the result.
+Moves the main window above another main window within the same application, with child windows following their parents' layer change. This API uses a promise to return the result.
 
 This API can be called only by the main window of a system application.
 
@@ -2879,7 +2880,7 @@ You need to pass the ID of the target main window. Both the calling window and t
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -3092,6 +3093,75 @@ export default class EntryAbility extends UIAbility {
         } catch (err) {
           console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
         }
+      });
+    });
+  }
+}
+```
+
+### setMainWindowRaiseByClickEnabled<sup>23+</sup>
+
+setMainWindowRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
+
+Sets whether to enable the main window to raise itself by click. This API uses a promise to return the result.
+
+By default, clicking the main window raises both the main window and its associated child windows. Disabling this feature (by passing **false**) prevents the main window and its child windows from being raised when the main window is clicked, preserving their current state. However, clicking on a child window still raises both the child window and the main window together.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| enable   | boolean                   | Yes  | Whether to enable the main window to raise itself by click. **true** to enable, **false** otherwise.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | ------------------------------ |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. |
+
+**Example**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.getMainWindow().then((window: window.Window) => {
+      // Load the page corresponding to the main window.
+      windowStage.loadContent('pages/Index', (err) => {
+        if (err.code) {
+          console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in loading the content.');
+        try {
+          let raiseEnabled: boolean = false;
+          let promise = window.setMainWindowRaiseByClickEnabled(raiseEnabled);
+          promise.then(() => {
+            console.info('Succeeded in disabling the raise-by-click function.');
+          })
+        } catch(err) {
+          console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+        };
       });
     });
   }
@@ -3623,7 +3693,7 @@ try {
 
 setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, isSplitVisible: boolean): void
 
-Shows or hides the maximize, minimize, and split-screen buttons on the title bar of the main window. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Shows or hides the maximize, minimize, and split-screen buttons on the title bar of the main window.
 
 This API takes effect only for the title bar buttons (maximize, minimize, and split-screen) that are available in the current scenario.
 
@@ -3631,7 +3701,7 @@ This API takes effect only for the title bar buttons (maximize, minimize, and sp
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -3927,7 +3997,7 @@ export default class EntryAbility extends UIAbility {
 
 setImageForRecent(imgResourceId: number, value: ImageFit): Promise&lt;void&gt;
 
-Sets the image displayed in the multitasking window. This API uses a promise to return the result.
+Sets the image displayed in the multitasking view. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -3981,6 +4051,150 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to set image for recent.`);
+    }
+  }
+};
+```
+
+### setImageForRecent<sup>22+</sup>
+
+setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Promise&lt;void&gt;
+
+Sets the image displayed in the multitasking view. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> Before calling this API, you are advised to load the page by using [loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) or [setUIContent](arkts-apis-window-Window.md#setuicontent9-1). If this API is called before the application finishes loading the page, the intended functionality does not take effect. As a result, only the application's starting window is displayed in the multitasking view.
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name     | Type   | Mandatory| Description                                                        |
+| ----------- | ------- | ---- | ------------------------------------------------------------ |
+| imgResource | number \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | Custom image resource, which can be a resource ID or PixelMap.|
+| value | [ImageFit](arkui-ts/ts-appendix-enums.md#imagefit) | Yes| Fill mode of the custom image.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | ------------------------------ |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
+
+**Example**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      let color = new ArrayBuffer(512 * 512 * 4); // Create an ArrayBuffer object to store image pixels. The size of the object is (height * width * 4) bytes.
+      let pixelMap: image.PixelMap;
+      let bufferArr = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.length; i += 4) {
+        bufferArr[i] = 255;
+        bufferArr[i+1] = 0;
+        bufferArr[i+2] = 122;
+        bufferArr[i+3] = 255;
+      }
+      image.createPixelMap(color, {
+        editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 512, width: 512 }
+      }).then((data) => {
+        pixelMap = data;
+        console.info(`Succeeded in creating pixelMap`);
+        try {
+          let promise = windowStage.setImageForRecent(pixelMap, ImageFit.Fill);
+          promise.then(() => {
+            console.info(`Succeeded in setting image for recent`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        } catch (exception) {
+          console.error(`Failed to set image for recent.`);
+        }
+      })
+    });
+  }
+};
+```
+
+### removeImageForRecent<sup>22+</sup>
+
+removeImageForRecent(): Promise&lt;void&gt;
+
+Removes the image that the application has set to be displayed in the multitasking view. The change will be effective the next time you check the application widget in the multitasking view. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | ------------------------------ |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**Example**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    try {
+      let promise = windowStage.removeImageForRecent();
+      promise.then(() => {
+        console.info(`Succeeded in removing image for recent`);
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to remove image for recent. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to remove image for recent.`);
     }
   }
 };

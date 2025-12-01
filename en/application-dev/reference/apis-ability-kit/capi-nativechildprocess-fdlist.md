@@ -1,5 +1,16 @@
 # NativeChildProcess_FdList
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @SKY2001-->
+<!--Designer: @yzkp-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+```
+typedef struct {...} NativeChildProcess_FdList
+```
+
 ## Overview
 
 The struct describes a list of file descriptors passed to the child process. The list can contain a maximum of 16 entries.

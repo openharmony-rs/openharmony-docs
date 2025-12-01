@@ -17,7 +17,7 @@ Perf提供2种工作模式，计数模式和采样模式。
 
 ## 接口说明
 
-OpenHarmony LiteOS-A内核的Perf模块提供下面几种功能，接口详细信息可以查看[API](https://gitee.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_perf.h)参考。
+OpenHarmony LiteOS-A内核的Perf模块提供下面几种功能，接口详细信息可以查看[API](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_perf.h)参考。
 
   **表1** Perf模块接口说明
 
@@ -29,7 +29,7 @@ OpenHarmony LiteOS-A内核的Perf模块提供下面几种功能，接口详细�
 | 注册采样数据缓冲区的钩子函数 | LOS_PerfNotifyHookReg：注册缓冲区水线到达的处理钩子<br/>LOS_PerfFlushHookReg：注册缓冲区刷cache的钩子 |
 
 
-1. Perf采样事件的结构体为PerfConfigAttr，详细字段含义及取值详见 [kernel\include\los_perf.h](https://gitee.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_perf.h) 。
+1. Perf采样事件的结构体为PerfConfigAttr，详细字段含义及取值详见 [kernel\include\los_perf.h](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_perf.h) 。
 
 2. 采样数据缓冲区为环形buffer，buffer中读过的区域可以覆盖写，未被读过的区域不能被覆盖写。
 

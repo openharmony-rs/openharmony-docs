@@ -74,7 +74,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 加解密参数[ParamsSpec](#paramsspec)的子类，用于在对称加解密时作为[init()](#init-1)方法的参数。
 
-适用于CBC、CTR、OFB、CFB这些需要iv作为参数的加解密模式。
+适用于CBC、CTR、OFB、CFB、Poly1305这些需要iv作为参数的加解密模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -135,6 +135,28 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 > **说明：**
 >
 > 传入[init()](#init-1)方法前需要指定其algName属性（来源于父类[ParamsSpec](#paramsspec)）。
+
+## Poly1305ParamsSpec<sup>22+</sup>
+
+加解密参数[ParamsSpec](#paramsspec)的子类，用于在对称加解密时作为[init()](#init-1)方法的参数。
+
+适用于[ChaCha20算法](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#chacha20)Poly1305模式。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+| 名称    | 类型                  | 只读 | 可选 | 说明                                                         |
+| ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
+| iv      | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数iv，长度为12字节。                              |
+| aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad，长度为任意字节。                             |
+| authTag | [DataBlob](#datablob) | 否   | 否   | 指定加解密参数authTag，长度为16字节。 |
+
+> **说明：**
+>
+> 传入[init()](#init-1)方法前需要指定其algName属性（来源于父类[ParamsSpec](#paramsspec)）。
+>
+> 在Poly1305模式加密时，需从[doFinal()](#dofinal)或[doFinalSync()](#dofinalsync12)输出的[DataBlob](#datablob)末尾提取16字节，作为解密时[init()](#init-1)或[initSync()](#initsync12)方法的参数[Poly1305ParamsSpec](#poly1305paramsspec22)中的authTag。
 
 ## CryptoMode
 
@@ -735,6 +757,24 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 >
 > passphrase指的是原始密码，如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、base64等字符串类型，同时需要确保该字符串为utf-8编码，否则派生结果会有差异。
 
+## X963KdfSpec<sup>22+</sup>
+
+密钥派生函数参数[KdfSpec](#kdfspec11)的子类，作为X963KDF密钥派生函数进行密钥派生时的输入。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Kdf
+
+| 名称    | 类型   | 只读 | 可选 | 说明                                                         |
+| ------- | ------ | ---- | ---- | ------------ |
+| key | string \| Uint8Array | 否   | 否   | 密钥材料。|
+| info | Uint8Array | 否   | 否   | 附加信息。 |
+| keySize | int | 否   | 否   | 派生得到的密钥字节长度，需要为正整数。 |
+
+> **说明：**
+>
+> key指的是用户输入的最初的密钥材料。
+
 ## SM2CipherTextSpec<sup>12+</sup>
 
 SM2密文参数，使用SM2密文格式转换函数进行格式转换时，需要用到此对象。可以通过指定此参数，生成符合国密标准的ASN.1格式的SM2密文，反之，也可以从ASN.1格式的SM2密文中获取具体参数。
@@ -880,7 +920,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | [DataBlob](#datablob) | 用于查看密钥的具体内容。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -928,10 +969,10 @@ async function testGenerateAesKeyFun() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
   let key = await symKeyGenerator.generateSymKey();
   let encodedKey = key.getEncoded();
-  console.info('key blob: '+ encodedKey.data);    // Display key content.
+  console.info('key blob: '+ encodedKey.data);
   key.clearMem();
   encodedKey = key.getEncoded();
-  console.info('key blob：' + encodedKey.data);    // Display all 0s.
+  console.info('key blob：' + encodedKey.data);
 }
 ```
 
@@ -1006,7 +1047,7 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
 async function testgetAsyKeySpec() {
   let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
   let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
-  let keyPair = await generatorBySpec.generateKeyPair(); // Generates an ECC key pair.
+  let keyPair = await generatorBySpec.generateKeyPair();
   let key = keyPair.pubKey;
   let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
   console.info('ecc item --- p: ' + p.toString(16));
@@ -1150,7 +1191,7 @@ async function testClearMem() {
       let priKey = keyPair.priKey;
       let returnBlob = priKey.getEncodedDer('PKCS8');
       console.info('returnBlob data：' + returnBlob.data);
-      priKey.clearMem(); // For the asymmetric private key, clearMem() releases the internal key struct. After clearMem is executed, getEncoded() is not supported.
+      priKey.clearMem(); // 对于非对称私钥，clearMem()释放内部密钥结构。执行clearMem后，不支持getEncoded()。
     });
 }
 ```
@@ -1219,7 +1260,7 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
 async function testgetAsyKeySpec() {
   let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
   let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
-  let keyPair = await generatorBySpec.generateKeyPair(); // Generates an ECC key pair.
+  let keyPair = await generatorBySpec.generateKeyPair();
   let key = keyPair.priKey;
   let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
   console.info('ecc item --- p: ' + p.toString(16));
@@ -1302,7 +1343,8 @@ getEncodedPem(format: string): string
 | string | 用于获取指定密钥格式的具体内容。 |
 
 **错误码：**
-以下错误码的详细介绍请参见 [crypto framework 错误码](errorcode-crypto-framework.md)。
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1365,7 +1407,8 @@ getEncodedPem(format: string, config: KeyEncodingConfig): string
 | string | 用于获取指定密钥格式的具体内容。如果填了config参数，则获取编码后的内容。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1406,6 +1449,198 @@ function TestPriKeyPkcs1Encoded() {
   let priPemKey = keyPair.priKey;
   let priString = priPemKey.getEncodedPem('PKCS1', options);
   console.info("[sync]TestPriKeyPkcs1Encoded priString output is " + priString);
+}
+```
+
+### getPubKey<sup>23+</sup>
+
+getPubKey(): Promise\<PubKey>
+
+从私钥对象中获取公钥对象。使用Promise异步回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**返回值：**
+
+| 类型                        | 说明                              |
+| --------------------------- | --------------------------------- |
+| Promise\<[PubKey](#pubkey)> | Promise对象，返回公钥对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 17620001 | memory operation failed. |
+| 17620002 | failed to convert parameters between arkts and c. |
+| 17630001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+function compareUint8Array(a: Uint8Array, b: Uint8Array): boolean {
+  let buf1 = buffer.from(a);
+  let buf2 = buffer.from(b);
+  if (buf1.compare(buf2, 0, b.length, 0, a.length) == 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+async function generateAsyKey() {
+  let skData =
+    new Uint8Array([48, 130, 2, 119, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 97, 48,
+      130, 2, 93, 2, 1, 0, 2, 129, 129, 0, 199, 32, 218, 8, 4, 63, 103, 229, 64, 128, 83, 31, 23, 156, 30, 168, 101, 22,
+      80, 100, 197, 243, 217, 60, 127, 110, 127, 242, 8, 251, 87, 127, 235, 38, 226, 149, 149, 108, 54, 202, 53, 1, 21,
+      91, 118, 246, 97, 93, 147, 117, 162, 71, 215, 70, 9, 175, 205, 241, 230, 187, 64, 170, 154, 67, 67, 254, 71, 1,
+      114, 10, 91, 195, 34, 199, 85, 172, 255, 87, 95, 159, 43, 117, 73, 73, 199, 97, 198, 117, 217, 7, 188, 196, 30,
+      248, 9, 181, 150, 243, 41, 145, 91, 8, 226, 161, 251, 12, 120, 28, 36, 146, 3, 196, 48, 243, 136, 201, 207, 131,
+      171, 22, 15, 7, 12, 172, 135, 196, 30, 93, 2, 3, 1, 0, 1, 2, 129, 128, 109, 100, 83, 194, 225, 170, 127, 134, 6,
+      184, 56, 113, 181, 67, 179, 231, 232, 152, 168, 147, 163, 215, 193, 56, 165, 252, 235, 86, 232, 174, 67, 52, 103,
+      215, 149, 212, 125, 32, 212, 188, 162, 255, 180, 94, 233, 236, 146, 50, 153, 6, 159, 158, 253, 217, 97, 10, 238,
+      133, 124, 174, 211, 232, 165, 19, 100, 186, 218, 62, 46, 124, 30, 19, 251, 3, 206, 105, 255, 236, 224, 178, 148,
+      103, 44, 132, 71, 83, 28, 221, 27, 189, 72, 44, 59, 253, 139, 232, 234, 14, 112, 121, 43, 142, 193, 179, 140, 200,
+      97, 234, 110, 63, 205, 24, 88, 116, 86, 184, 8, 19, 254, 204, 77, 84, 66, 238, 240, 69, 72, 21, 2, 65, 0, 233,
+      103, 239, 11, 215, 10, 103, 66, 46, 155, 193, 79, 37, 64, 90, 12, 167, 189, 129, 8, 131, 94, 195, 8, 210, 236, 87,
+      158, 140, 2, 82, 105, 80, 253, 13, 26, 140, 202, 194, 117, 59, 57, 197, 108, 50, 20, 46, 89, 248, 132, 120, 30,
+      149, 180, 135, 134, 196, 156, 160, 123, 38, 253, 15, 7, 2, 65, 0, 218, 103, 122, 117, 154, 149, 213, 110, 24, 149,
+      175, 208, 136, 249, 88, 91, 89, 180, 30, 243, 69, 130, 97, 252, 177, 216, 55, 46, 67, 15, 124, 56, 113, 57, 242,
+      233, 185, 193, 254, 218, 76, 165, 184, 16, 109, 190, 93, 195, 227, 37, 58, 110, 243, 142, 152, 252, 226, 91, 59,
+      145, 218, 35, 106, 123, 2, 65, 0, 210, 131, 88, 58, 32, 144, 148, 131, 63, 144, 97, 112, 165, 211, 125, 164, 110,
+      97, 224, 16, 50, 148, 116, 105, 239, 251, 20, 39, 190, 117, 149, 168, 193, 80, 10, 210, 136, 107, 147, 169, 178,
+      106, 47, 162, 159, 36, 78, 141, 253, 52, 85, 54, 152, 165, 131, 154, 204, 151, 203, 178, 103, 126, 212, 95, 2, 65,
+      0, 193, 254, 80, 3, 205, 255, 112, 200, 142, 5, 199, 88, 207, 145, 203, 45, 185, 12, 8, 193, 196, 231, 254, 233,
+      89, 126, 215, 228, 187, 164, 49, 142, 96, 228, 60, 35, 230, 223, 173, 227, 113, 89, 113, 153, 6, 33, 165, 95, 173,
+      143, 15, 204, 37, 130, 111, 217, 143, 165, 193, 207, 215, 150, 197, 169, 2, 64, 7, 37, 152, 14, 232, 168, 102,
+      169, 167, 97, 161, 33, 86, 178, 77, 140, 12, 114, 78, 129, 47, 103, 87, 217, 177, 80, 156, 91, 240, 149, 254, 90,
+      69, 232, 10, 56, 232, 63, 59, 148, 254, 101, 63, 146, 66, 96, 25, 31, 37, 154, 77, 145, 201, 213, 122, 245, 90,
+      251, 219, 42, 131, 248, 148, 151
+  ])
+  let expectPkdata =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 199, 32, 218, 8, 4, 63, 103, 229, 64, 128, 83, 31, 23, 156, 30, 168, 101, 22, 80, 100, 197, 243,
+      217, 60, 127, 110, 127, 242, 8, 251, 87, 127, 235, 38, 226, 149, 149, 108, 54, 202, 53, 1, 21, 91, 118, 246, 97,
+      93, 147, 117, 162, 71, 215, 70, 9, 175, 205, 241, 230, 187, 64, 170, 154, 67, 67, 254, 71, 1, 114, 10, 91, 195,
+      34, 199, 85, 172, 255, 87, 95, 159, 43, 117, 73, 73, 199, 97, 198, 117, 217, 7, 188, 196, 30, 248, 9, 181, 150,
+      243, 41, 145, 91, 8, 226, 161, 251, 12, 120, 28, 36, 146, 3, 196, 48, 243, 136, 201, 207, 131, 171, 22, 15, 7, 12,
+      172, 135, 196, 30, 93, 2, 3, 1, 0, 1
+  ])
+  let skDataBlob: cryptoFramework.DataBlob = { data: skData };
+  let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+  try {
+    let keyPair = rsaGenerator.convertKeySync(null, skDataBlob);
+    let priKey = keyPair.priKey;
+    let pubkey = await priKey.getPubKey();
+    let pkBlob = pubkey.getEncoded();
+    console.info('pk1 bin data' + pkBlob.data);
+    let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
+    console.info('result is ' + ret);
+  } catch (e) {
+    console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
+  }
+}
+```
+
+### getPubKeySync<sup>23+</sup>
+
+getPubKeySync(): PubKey
+
+以同步方式，从私钥对象中获取公钥对象。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**返回值：**
+
+| 类型                        | 说明                              |
+| --------------------------- | --------------------------------- |
+| [PubKey](#pubkey) | 公钥对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 17620001 | memory operation failed. |
+| 17620002 | failed to convert parameters between arkts and c. |
+| 17630001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+function compareUint8Array(a: Uint8Array, b: Uint8Array): boolean {
+  let buf1 = buffer.from(a);
+  let buf2 = buffer.from(b);
+  if (buf1.compare(buf2, 0, b.length, 0, a.length) == 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function generateAsyKey() {
+  let skData =
+    new Uint8Array([48, 130, 2, 119, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 97, 48,
+      130, 2, 93, 2, 1, 0, 2, 129, 129, 0, 199, 32, 218, 8, 4, 63, 103, 229, 64, 128, 83, 31, 23, 156, 30, 168, 101, 22,
+      80, 100, 197, 243, 217, 60, 127, 110, 127, 242, 8, 251, 87, 127, 235, 38, 226, 149, 149, 108, 54, 202, 53, 1, 21,
+      91, 118, 246, 97, 93, 147, 117, 162, 71, 215, 70, 9, 175, 205, 241, 230, 187, 64, 170, 154, 67, 67, 254, 71, 1,
+      114, 10, 91, 195, 34, 199, 85, 172, 255, 87, 95, 159, 43, 117, 73, 73, 199, 97, 198, 117, 217, 7, 188, 196, 30,
+      248, 9, 181, 150, 243, 41, 145, 91, 8, 226, 161, 251, 12, 120, 28, 36, 146, 3, 196, 48, 243, 136, 201, 207, 131,
+      171, 22, 15, 7, 12, 172, 135, 196, 30, 93, 2, 3, 1, 0, 1, 2, 129, 128, 109, 100, 83, 194, 225, 170, 127, 134, 6,
+      184, 56, 113, 181, 67, 179, 231, 232, 152, 168, 147, 163, 215, 193, 56, 165, 252, 235, 86, 232, 174, 67, 52, 103,
+      215, 149, 212, 125, 32, 212, 188, 162, 255, 180, 94, 233, 236, 146, 50, 153, 6, 159, 158, 253, 217, 97, 10, 238,
+      133, 124, 174, 211, 232, 165, 19, 100, 186, 218, 62, 46, 124, 30, 19, 251, 3, 206, 105, 255, 236, 224, 178, 148,
+      103, 44, 132, 71, 83, 28, 221, 27, 189, 72, 44, 59, 253, 139, 232, 234, 14, 112, 121, 43, 142, 193, 179, 140, 200,
+      97, 234, 110, 63, 205, 24, 88, 116, 86, 184, 8, 19, 254, 204, 77, 84, 66, 238, 240, 69, 72, 21, 2, 65, 0, 233,
+      103, 239, 11, 215, 10, 103, 66, 46, 155, 193, 79, 37, 64, 90, 12, 167, 189, 129, 8, 131, 94, 195, 8, 210, 236, 87,
+      158, 140, 2, 82, 105, 80, 253, 13, 26, 140, 202, 194, 117, 59, 57, 197, 108, 50, 20, 46, 89, 248, 132, 120, 30,
+      149, 180, 135, 134, 196, 156, 160, 123, 38, 253, 15, 7, 2, 65, 0, 218, 103, 122, 117, 154, 149, 213, 110, 24, 149,
+      175, 208, 136, 249, 88, 91, 89, 180, 30, 243, 69, 130, 97, 252, 177, 216, 55, 46, 67, 15, 124, 56, 113, 57, 242,
+      233, 185, 193, 254, 218, 76, 165, 184, 16, 109, 190, 93, 195, 227, 37, 58, 110, 243, 142, 152, 252, 226, 91, 59,
+      145, 218, 35, 106, 123, 2, 65, 0, 210, 131, 88, 58, 32, 144, 148, 131, 63, 144, 97, 112, 165, 211, 125, 164, 110,
+      97, 224, 16, 50, 148, 116, 105, 239, 251, 20, 39, 190, 117, 149, 168, 193, 80, 10, 210, 136, 107, 147, 169, 178,
+      106, 47, 162, 159, 36, 78, 141, 253, 52, 85, 54, 152, 165, 131, 154, 204, 151, 203, 178, 103, 126, 212, 95, 2, 65,
+      0, 193, 254, 80, 3, 205, 255, 112, 200, 142, 5, 199, 88, 207, 145, 203, 45, 185, 12, 8, 193, 196, 231, 254, 233,
+      89, 126, 215, 228, 187, 164, 49, 142, 96, 228, 60, 35, 230, 223, 173, 227, 113, 89, 113, 153, 6, 33, 165, 95, 173,
+      143, 15, 204, 37, 130, 111, 217, 143, 165, 193, 207, 215, 150, 197, 169, 2, 64, 7, 37, 152, 14, 232, 168, 102,
+      169, 167, 97, 161, 33, 86, 178, 77, 140, 12, 114, 78, 129, 47, 103, 87, 217, 177, 80, 156, 91, 240, 149, 254, 90,
+      69, 232, 10, 56, 232, 63, 59, 148, 254, 101, 63, 146, 66, 96, 25, 31, 37, 154, 77, 145, 201, 213, 122, 245, 90,
+      251, 219, 42, 131, 248, 148, 151
+  ])
+  let expectPkdata =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 199, 32, 218, 8, 4, 63, 103, 229, 64, 128, 83, 31, 23, 156, 30, 168, 101, 22, 80, 100, 197, 243,
+      217, 60, 127, 110, 127, 242, 8, 251, 87, 127, 235, 38, 226, 149, 149, 108, 54, 202, 53, 1, 21, 91, 118, 246, 97,
+      93, 147, 117, 162, 71, 215, 70, 9, 175, 205, 241, 230, 187, 64, 170, 154, 67, 67, 254, 71, 1, 114, 10, 91, 195,
+      34, 199, 85, 172, 255, 87, 95, 159, 43, 117, 73, 73, 199, 97, 198, 117, 217, 7, 188, 196, 30, 248, 9, 181, 150,
+      243, 41, 145, 91, 8, 226, 161, 251, 12, 120, 28, 36, 146, 3, 196, 48, 243, 136, 201, 207, 131, 171, 22, 15, 7, 12,
+      172, 135, 196, 30, 93, 2, 3, 1, 0, 1
+  ])
+  let skDataBlob: cryptoFramework.DataBlob = { data: skData };
+  let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+  try {
+    let keyPair = rsaGenerator.convertKeySync(null, skDataBlob);
+    let priKey = keyPair.priKey;
+    let pubkey = priKey.getPubKeySync();
+    let pkBlob = pubkey.getEncoded();
+    console.info('pk1 bin data' + pkBlob.data);
+    let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
+    console.info('result is ' + ret);
+  } catch (e) {
+    console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -1461,7 +1696,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | [SymKeyGenerator](#symkeygenerator) | 返回对称密钥生成器的对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1521,6 +1757,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<[SymKey](#symkey)> | 是   | 回调函数。当生成对称密钥成功，err为undefined，data为获取到的SymKey；否则为错误对象。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息      |
@@ -1561,7 +1798,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<[SymKey](#symkey)> | Promise对象，返回对称密钥SymKey。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -1607,7 +1845,8 @@ generateSymKeySync(): SymKey
 | [SymKey](#symkey) | 返回对称密钥SymKey。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -1711,6 +1950,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<[SymKey](#symkey)> | Promise对象，返回对称密钥SymKey。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                          |
@@ -1774,7 +2014,8 @@ convertKeySync(key: DataBlob): SymKey
 | [SymKey](#symkey) | 对称密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | --------------------------------------------------- |
@@ -1827,7 +2068,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | [AsyKeyGenerator](#asykeygenerator) | 返回非对称密钥生成器。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1878,7 +2120,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<[KeyPair](#keypair)> | 是   | 回调函数，用于获取非对称密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见 [crypto framework错误码](errorcode-crypto-framework.md)。
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1920,7 +2163,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<[KeyPair](#keypair)> | 使用Promise的方式获取非对称密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework 错误码](errorcode-crypto-framework.md)。
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1960,7 +2204,8 @@ generateKeyPairSync(): KeyPair
 | [KeyPair](#keypair) | 非对称密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework 错误码](errorcode-crypto-framework.md)。
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2007,7 +2252,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<[KeyPair](#keypair)> | 是   | 回调函数，用于获取非对称密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2060,7 +2306,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<[KeyPair](#keypair)> | 使用Promise的方式获取非对称密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2111,7 +2358,8 @@ convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 | [KeyPair](#keypair) | 非对称密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2177,7 +2425,8 @@ convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 | Promise\<[KeyPair](#keypair)> | 使用Promise的方式获取非对称密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2228,7 +2477,7 @@ async function TestConvertPemKeyByPromise() {
 
 convertPemKey(pubKey: string | null, priKey: string | null, password: string): Promise\<KeyPair>
 
-异步获取指定数据生成非对称密钥，通过Promise获取结果。
+获取指定数据生成非对称密钥。支持加密的私钥，同步传入私钥口令解密私钥。使用Promise异步回调。
 
 > **说明：**
 > 1. 当调用convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，公钥应满足ASN.1语法、X.509规范、PEM编码格式，私钥应满足ASN.1语法、PKCS#8规范、PEM编码格式。
@@ -2255,7 +2504,8 @@ convertPemKey(pubKey: string | null, priKey: string | null, password: string): P
 | Promise\<[KeyPair](#keypair)> | 使用Promise的方式获取非对称密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2326,6 +2576,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 | [KeyPair](#keypair) | 非对称密钥。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
@@ -2380,7 +2631,7 @@ function TestConvertPemKeyBySync() {
 
 convertPemKeySync(pubKey: string | null, priKey: string | null, password: string): KeyPair
 
-同步获取指定数据，生成非对称密钥。
+获取指定数据生成非对称密钥。支持加密的私钥，同步传入私钥口令解密私钥。使用同步方法。
 
 > **说明：**
 > convertPemKeySync接口与convertPemKey接口注意事项相同，见[convertPemKey](#convertpemkey18)接口说明。
@@ -2404,6 +2655,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null, password: string
 | [KeyPair](#keypair) | 非对称密钥。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
@@ -2477,7 +2729,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | [AsyKeyGeneratorBySpec](#asykeygeneratorbyspec10) | 返回非对称密钥生成器实例。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2515,7 +2768,7 @@ function genDsa1024KeyPairSpecBigE() {
   return dsaKeyPairSpec;
 }
 
-let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
 let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
 ```
 
@@ -2556,7 +2809,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | callback | AsyncCallback\<[KeyPair](#keypair)> | 是   | 回调函数，用于获取非对称密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -2596,7 +2850,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGenerateKeyPair()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   asyKeyGeneratorBySpec.generateKeyPair((err, keyPair) => {
     if (err) {
@@ -2629,7 +2883,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | Promise\<[KeyPair](#keypair)> | 使用Promise的方式获取非对称密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2669,7 +2924,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGenerateKeyPair()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   let keyGenPromise = asyKeyGeneratorBySpec.generateKeyPair();
   keyGenPromise.then(keyPair => {
@@ -2699,7 +2954,8 @@ generateKeyPairSync(): KeyPair
 | [KeyPair](#keypair) | 非对称密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2740,7 +2996,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGenerateKeyPairSync()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   try {
     let keyPairData = asyKeyGeneratorBySpec.generateKeyPairSync();
@@ -2777,6 +3033,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | callback | AsyncCallback\<[PriKey](#prikey)> | 是   | 回调函数，用于获取非对称密钥。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
@@ -2817,7 +3074,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGeneratePriKey()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   asyKeyGeneratorBySpec.generatePriKey((err, prikey) => {
     if (err) {
@@ -2850,6 +3107,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | Promise\<[PriKey](#prikey)> | 使用Promise的方式获取非对称密钥。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
@@ -2891,7 +3149,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGeneratePriKey()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   let keyGenPromise = asyKeyGeneratorBySpec.generatePriKey();
   keyGenPromise.then(priKey => {
@@ -2921,7 +3179,8 @@ generatePriKeySync(): PriKey
 | [PriKey](#prikey) | 非对称密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2961,7 +3220,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGeneratePriKeySync()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   try {
     let priKeyData = asyKeyGeneratorBySpec.generatePriKeySync();
@@ -2997,6 +3256,7 @@ API version10-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<[PubKey](#pubkey)> | 是   | 回调函数，用于获取非对称密钥。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
@@ -3037,7 +3297,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGeneratePubKey()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   asyKeyGeneratorBySpec.generatePubKey((err, pubKey) => {
     if (err) {
@@ -3070,7 +3330,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | Promise\<[PubKey](#pubkey)> | 使用Promise的方式获取非对称密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3111,7 +3372,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGeneratePubKey()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   let keyGenPromise = asyKeyGeneratorBySpec.generatePubKey();
   keyGenPromise.then(pubKey => {
@@ -3141,7 +3402,8 @@ generatePubKeySync(): PubKey
 | [PubKey](#pubkey) | 非对称密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3181,7 +3443,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGeneratePubKeySync()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   try {
     let pubKeyData = asyKeyGeneratorBySpec.generatePubKeySync();
@@ -3225,7 +3487,8 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | [ECCCommonParamsSpec](#ecccommonparamsspec10) | 返回ECC公共密钥参数。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -3277,7 +3540,8 @@ static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 | [Point](#point10) | 返回ECC的Point对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3321,7 +3585,8 @@ static getEncodedPoint(curveName: string, point: Point, format: string): Uint8Ar
 | Uint8Array | 返回指定格式的点数据。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3381,7 +3646,8 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | [DHCommonParamsSpec](#dhcommonparamsspec11) | 返回DH公共密钥参数。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -3432,7 +3698,8 @@ static genCipherTextBySpec(spec: SM2CipherTextSpec, mode?: string): DataBlob
 | [DataBlob](#datablob) | 返回符合国密标准的ASN.1格式的SM2密文。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -3484,7 +3751,8 @@ static getCipherTextSpec(cipherText: DataBlob, mode?: string): SM2CipherTextSpec
 | [SM2CipherTextSpec](#sm2ciphertextspec12) | 返回SM2密文参数。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -3539,6 +3807,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | [Cipher](#cipher) | 返回加解密生成器的对象。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
@@ -3610,6 +3879,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<void>      | 是   | 回调函数。当加解密初始化成功，err为undefined，否则为错误对象。     |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                                 |
@@ -3648,7 +3918,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
@@ -3678,7 +3949,8 @@ initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void
 | params | [ParamsSpec](#paramsspec)  \| null| 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，可以传入null。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -3729,7 +4001,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数。更新加/解密数据成功时，err为undefined，data为DataBlob；否则为错误对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -3775,7 +4048,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<[DataBlob](#datablob)> | Promise对象，返回此次更新的加/解密结果DataBlob。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -3811,7 +4085,8 @@ updateSync(data: DataBlob): DataBlob
 | [DataBlob](#datablob) | 返回此次更新的加/解密结果DataBlob。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -4128,6 +4403,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | itemValue | Uint8Array | 是   | 用于指定加解密参数的具体值。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
@@ -4173,7 +4449,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | string \| Uint8Array | 获取的加解密参数的具体值。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -4295,7 +4572,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<void> | 是   | 回调函数。当签名初始化成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -4331,7 +4609,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -4359,7 +4638,8 @@ Sign类不支持重复调用initSync。
 | priKey | [PriKey](#prikey)  | 是   | 用于Sign的初始化。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -4398,6 +4678,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<void>  | 是   | 回调函数。当签名更新成功，err为undefined，否则为错误对象。|
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
@@ -4442,7 +4723,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见 [crypto framework 错误码](errorcode-crypto-framework.md)。
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -4484,7 +4766,8 @@ updateSync(data: DataBlob): void
 | void | 无返回结果。 |
 
 **错误码：**
-以下错误码的详细介绍请参见 [crypto framework 错误码](errorcode-crypto-framework.md)。
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -4513,6 +4796,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数，用于获取DataBlob数据。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
@@ -4547,7 +4831,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<[DataBlob](#datablob)> | 返回签名结果。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -4579,7 +4864,8 @@ signSync(data: DataBlob | null): DataBlob
 | [DataBlob](#datablob) | 返回签名结果。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -4704,7 +4990,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | itemValue | number \| Uint8Array<sup>11+</sup> | 是   | 用于指定签名参数的具体值。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -4750,7 +5037,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | string \| number | 获取的签名参数的具体值。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -4799,6 +5087,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Verify | 返回由输入算法指定生成的Verify对象。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
@@ -4865,7 +5154,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<void> | 是   | 回调函数。当验签初始化成功，err为undefined，否则为错误对象。  |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -4899,6 +5189,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
@@ -4931,6 +5222,7 @@ initSync(pubKey: PubKey): void
 | void | 无返回结果。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
@@ -4969,7 +5261,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<void>  | 是   | 回调函数。当验签更新成功，err为undefined，否则为错误对象。|
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5012,7 +5305,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5053,6 +5347,7 @@ updateSync(data: DataBlob): void
 | void | 无返回结果。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
@@ -5080,10 +5375,11 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | ------------- | -------------------- | ---- | ---------- |
 | data          | [DataBlob](#datablob) \| null<sup>10+</sup>             | 是   | 传入的消息。API 10之前只支持DataBlob， API 10之后增加支持null。 |
 | signatureData | [DataBlob](#datablob)              | 是   | 签名数据。  |
-| callback      | AsyncCallback\<boolean> | 是   | 回调函数，用于获取以boolean值表示的验签结果。 |
+| callback      | AsyncCallback\<boolean> | 是   | 回调函数，用于获取以boolean值表示的验签结果。返回true表示验签通过；返回false表示验签不通过。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5118,7 +5414,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<boolean> | 异步返回值，代表验签是否通过。true为通过，false为不通过。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5151,7 +5448,8 @@ verifySync(data: DataBlob | null, signatureData: DataBlob): boolean
 | boolean | 同步返回值，表示验签是否通过。true为通过，false为不通过。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5287,6 +5585,7 @@ recover(signatureData: DataBlob): Promise\<DataBlob | null>
 | Promise\<[DataBlob](#datablob)  \| null> | 验签恢复的数据。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
@@ -5361,7 +5660,8 @@ recoverSync(signatureData: DataBlob): DataBlob | null
 | [DataBlob](#datablob)  \| null | 验签恢复的数据。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5396,7 +5696,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | itemValue | number \| Uint8Array<sup>11+</sup> | 是   | 用于指定验签参数的具体值。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5493,7 +5794,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | KeyAgreement | 返回由输入算法指定生成的KeyAgreement对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5546,7 +5848,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 异步接受共享密钥的回调。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5581,7 +5884,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<[DataBlob](#datablob)> | 共享密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5702,6 +6006,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Md   | 返回由输入算法指定生成的[Md](#md)对象。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息           |
@@ -5766,7 +6071,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<void>  | 是   | 回调函数。当摘要更新成功，err为undefined，否则为错误对象。  |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5805,6 +6111,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
@@ -5834,6 +6141,7 @@ updateSync(input: DataBlob): void
 | input  | [DataBlob](#datablob) | 是   | 传入的消息。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
@@ -5863,6 +6171,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数，用于获取DataBlob数据。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 
@@ -5909,7 +6218,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<[DataBlob](#datablob)> | Promise对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5948,7 +6258,8 @@ digestSync(): DataBlob
 | [DataBlob](#datablob) | 表示生成的Md计算结果。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5991,7 +6302,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | number | 返回md计算结果的字节长度。 |
 
 **错误码：**
-以下错误码的详细介绍请参见 [crypto framework 错误码](errorcode-crypto-framework.md)。
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6035,7 +6347,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Mac  | 返回由输入算法指定生成的[Mac](#mac)对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
@@ -6082,7 +6395,8 @@ createMac(macSpec: MacSpec): Mac
 | Mac  | 返回由指定入参结构体生成的[Mac](#mac)对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
@@ -6150,7 +6464,8 @@ API version 9-11 系统能力为SystemCapability.Security.CryptoFramework；从A
 | callback | AsyncCallback\<void> | 是   | 回调函数。当HMAC初始化成功，err为undefined，否则为错误对象。  |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6183,7 +6498,8 @@ API version 9-11 系统能力为SystemCapability.Security.CryptoFramework；从A
 | Promise\<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6208,6 +6524,7 @@ initSync(key: SymKey): void
 | key    | [SymKey](#symkey) | 是   | 对称密钥。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
@@ -6240,6 +6557,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<void>  | 是   | 回调函数。当HMAC更新成功，err为undefined，否则为错误对象。|
 
 **错误码：**
+
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
@@ -6277,7 +6595,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework 错误码](errorcode-crypto-framework.md)。
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6307,7 +6626,8 @@ updateSync(input: DataBlob): void
 
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework 错误码](errorcode-crypto-framework.md)。
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6334,7 +6654,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数，用于获取DataBlob数据。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6385,7 +6706,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<[DataBlob](#datablob)> | Promise对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6430,7 +6752,8 @@ doFinalSync(): DataBlob
 | [DataBlob](#datablob) | 返回Mac的计算结果。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6479,7 +6802,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | number | 返回Mac计算结果的字节长度。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6539,7 +6863,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | [Random](#random) | 返回由输入算法指定生成的[Random](#random)对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息     |
 | -------- | ------------ |
@@ -6597,7 +6922,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数，用于获取DataBlob数据。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6647,7 +6973,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<[DataBlob](#datablob)> | Promise对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6695,7 +7022,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 |[DataBlob](#datablob) | 表示生成的随机数。 |
 
 **错误码：**
-以下错误码的详细介绍请参见 [crypto framework 错误码](errorcode-crypto-framework.md)。
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6723,6 +7051,50 @@ try {
 }
 ```
 
+### enableHardwareEntropy<sup>21+</sup>
+
+enableHardwareEntropy(): void
+
+开启硬件熵源。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+
+**错误码：**
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 801 | this operation is not supported.          |
+| 17620001 | memory operation failed.      |
+| 17620002 | failed to convert parameters between arkts and c. |
+| 17630001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let rand = cryptoFramework.createRandom();
+rand.enableHardwareEntropy();
+rand.generateRandom(12, (err, randData) => {
+  if (err) {
+    console.error("[Callback] err: " + err.code);
+  } else {
+    console.info('[Callback]: generate random result: ' + randData.data);
+    try {
+      rand.setSeed(randData);
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`sync error, ${e.code}, ${e.message}`);
+    }
+  }
+});
+```
+
 ### setSeed
 
 setSeed(seed: DataBlob): void
@@ -6742,7 +7114,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | seed   | [DataBlob](#datablob) | 是   | 设置的种子。 |
 
 **错误码：**
-以下错误码的详细介绍请参见 [crypto framework 错误码](errorcode-crypto-framework.md)。
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ----------------- |
@@ -6795,7 +7168,8 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | [Kdf](#kdf11) | 返回由输入算法指定生成的Kdf对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6847,12 +7221,14 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数，用于获取派生得到的密钥DataBlob数据。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码]。
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. |
 | 17630001 | crypto operation error. |
 
 **示例：**
@@ -6924,12 +7300,14 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | Promise\<[DataBlob](#datablob)> | 通过Promise形式返回派生得到的密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. |
 | 17630001 | crypto operation error. |
 
 **示例：**
@@ -6999,13 +7377,15 @@ generateSecretSync(params: KdfSpec): DataBlob
 | [DataBlob](#datablob) | 用于获取派生得到的密钥DataBlob数据。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.  |
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c. |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. |
 | 17630001 | crypto operation error. |
 
 **示例：**
@@ -7069,7 +7449,8 @@ static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec
 | [EccSignatureSpec](#eccsignaturespec20) | 包含r和s的数据结构体。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -7123,7 +7504,8 @@ static genEccSignature(spec: EccSignatureSpec): Uint8Array;
 | Uint8Array | ASN1 DER格式的签名数据。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |

@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```
+typedef struct ArkWeb_JavaScriptValue* ArkWeb_JavaScriptValuePtr
+```
+
 ## 概述
 
 JavaScript数据结构体指针。

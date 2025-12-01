@@ -65,7 +65,7 @@
 
 **表 1** 马达驱动模型对外API接口能力介绍
 
-注：以下接口列举的为C接口，接口声明见文件[/drivers/peripheral/vibrator/interfaces/include](https://gitee.com/openharmony/drivers_peripheral/tree/master/vibrator/interfaces/include)。
+注：以下接口列举的为C接口，接口声明见文件[/drivers/peripheral/vibrator/interfaces/include](https://gitcode.com/openharmony/drivers_peripheral/tree/master/vibrator/interfaces/include)。
 
 | 接口名                                  | 功能描述                                           |
 | -------------------------------------- | ------------------------------------------------ |

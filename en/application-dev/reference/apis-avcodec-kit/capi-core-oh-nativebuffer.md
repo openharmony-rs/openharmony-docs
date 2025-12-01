@@ -1,5 +1,16 @@
 # OH_NativeBuffer
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct OH_NativeBuffer OH_NativeBuffer
+```
+
 ## Overview
 
 The struct describes a native object for the graphics memory interface.

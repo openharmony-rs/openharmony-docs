@@ -1,4 +1,10 @@
 # Network Management Development
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
 
 
 ## What are the data formats supported by extraData in an HTTP request? (API 9)
@@ -231,7 +237,7 @@ If the C APIs are not provided, use the AKI mechanism to call ArkTS APIs.
   
 **References**
 
-https://gitee.com/openharmony/interface_sdk_c/tree/master/network
+https://gitcode.com/openharmony/interface_sdk_c/tree/master/network
 
 ## Will the default certificate on the device be used if TLSConnectOptions is not specified?(API 11)
 

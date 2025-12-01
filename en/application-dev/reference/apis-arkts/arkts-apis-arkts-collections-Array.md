@@ -7,9 +7,9 @@
 <!--Adviser: @ge-yafang-->
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This module can be imported only to ArkTS files (with the file name extension .ets).
+> - This module can be imported only to ArkTS files (with the file name extension .ets).
 
 A linear data structure that is implemented on arrays and can be passed between ArkTS concurrent instances.
 
@@ -1588,7 +1588,7 @@ let concatArray = array.concat(array1, array2); // The concatenated array is [1,
 
 splice(start: number): Array\<T>
 
-Removes elements from a specified position in an array.
+Removes elements from a specified position (start) and all elements after the specified position in an array.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

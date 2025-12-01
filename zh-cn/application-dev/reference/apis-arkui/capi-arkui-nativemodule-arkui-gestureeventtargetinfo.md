@@ -4,7 +4,11 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_GestureEventTargetInfo ArkUI_GestureEventTargetInfo
+```
 
 ## 概述
 

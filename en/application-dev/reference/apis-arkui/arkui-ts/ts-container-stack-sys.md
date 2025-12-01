@@ -1,4 +1,10 @@
 # Stack (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Stack** component provides a stack container where child components are successively stacked and the latter one overwrites the previous one.
 

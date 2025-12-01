@@ -26,10 +26,10 @@ import { huks } from '@kit.UniversalKeystoreKit';
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-| 名称 | 类型                                | 必填 | 说明         |
-| ------ | ----------------------------------- | ---- | ------------ |
-| tag    | [HuksTag](#hukstag)                 | 是   | 标签。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| value  | boolean\|number\|bigint\|Uint8Array | 是   | 标签对应值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| 名称 | 类型                                | 只读 | 可选 | 说明         |
+| ------ | ----------------------------------- | ---- | ---- | ------------ |
+| tag    | [HuksTag](#hukstag)                 | 否   | 否   | 标签。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
+| value  | boolean\|number\|bigint\|Uint8Array | 否   | 否   | 标签对应值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## HuksOptions
 
@@ -37,10 +37,10 @@ import { huks } from '@kit.UniversalKeystoreKit';
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-| 名称     | 类型              | 必填 | 说明                     |
-| ---------- | ----------------- | ---- | ------------------------ |
-| properties | Array\<[HuksParam](#huksparam)> | 否   | 属性，用于存HuksParam的数组。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| inData     | Uint8Array        | 否   | 输入数据。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。               |
+| 名称 | 类型                                | 只读 | 可选 | 说明         |
+| ------ | ----------------------------------- | ---- | ---- | ------------ |
+| properties | Array\<[HuksParam](#huksparam)> | 否   | 是   | 属性，用于存HuksParam的数组。默认为空。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| inData     | Uint8Array        | 否   | 是   | 输入数据。默认为空。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。               |
 
 ## HuksSessionHandle<sup>9+</sup>
 
@@ -48,10 +48,10 @@ huks Handle结构体。
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-| 名称    | 类型       | 必填 | 说明                                                 |
-| --------- | ---------- | ---- | ---------------------------------------------------- |
-| handle    | number     | 是   | 表示无符号整数类型的handle值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                       |
-| challenge | Uint8Array | 否   | 表示[initSession](#huksinitsession9)操作之后获取到的challenge信息。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| 名称 | 类型                                | 只读 | 可选 | 说明         |
+| ------ | ----------------------------------- | ---- | ---- | ------------ |
+| handle    | number     | 否   | 否   | 表示无符号整数类型的handle值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                       |
+| challenge | Uint8Array | 否   | 是   | 表示[initSession](#huksinitsession9)操作之后获取到的challenge信息。默认为空。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## HuksReturnResult<sup>9+</sup>
 
@@ -59,11 +59,11 @@ huks Handle结构体。
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-| 名称     | 类型                            | 必填 | 说明             |
-| ---------- | ------------------------------- | ---- | ---------------- |
-| outData    | Uint8Array                      | 否   | 表示输出数据。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| properties | Array\<[HuksParam](#huksparam)> | 否   | 表示属性信息。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| certChains | Array\<string>                  | 否   | 表示证书链数据。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| 名称 | 类型                                | 只读 | 可选 | 说明         |
+| ------ | ----------------------------------- | ---- | ---- | ------------ |
+| outData    | Uint8Array                      | 否   | 是   | 表示输出数据。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| properties | Array\<[HuksParam](#huksparam)> | 否   | 是   | 表示属性信息。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| certChains | Array\<string>                  | 否   | 是   | 表示证书链数据。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## HuksListAliasesReturnResult<sup>12+</sup>
 
@@ -73,9 +73,9 @@ huks Handle结构体。
 
 
 
-| 名称     | 类型                            | 必填 | 说明             |
-| ---------- | ------------------------------- | ---- | ---------------- |
-| keyAliases | Array\<string>                  | 是   | 表示密钥别名集。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| 名称 | 类型                                | 只读 | 可选 | 说明         |
+| ------ | ----------------------------------- | ---- | ---- | ------------ |
+| keyAliases | Array\<string>                  | 否   | 否   | 表示密钥别名集。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## huks.generateKeyItem<sup>9+</sup>
 
@@ -1602,7 +1602,9 @@ huks.getKeyItemProperties(keyAlias, emptyOptions)
 
 isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<boolean>) : void
 
-判断密钥是否存在，使用Callback回调异步返回结果。
+判断密钥是否存在，使用callback异步回调。
+
+若密钥不存在，则抛出错误码为12000011的异常。
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1656,7 +1658,9 @@ huks.isKeyItemExist(keyAlias, emptyOptions, (error, data) => {
 
 isKeyItemExist(keyAlias: string, options: HuksOptions) : Promise\<boolean>
 
-判断密钥是否存在，使用Promise回调异步返回结果。
+判断密钥是否存在，使用Promise异步回调。
+
+若密钥不存在，则抛出错误码为12000011的异常。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -1708,7 +1712,9 @@ huks.isKeyItemExist(keyAlias, emptyOptions).then((data) => {
 
 hasKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<boolean>) : void
 
-判断密钥是否存在，使用Callback回调异步返回结果。
+判断密钥是否存在，使用callback异步回调。
+
+若密钥不存在，则通过callback返回false。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1763,7 +1769,9 @@ huks.hasKeyItem(keyAlias, emptyOptions, (error, data) => {
 
 hasKeyItem(keyAlias: string, options: HuksOptions) : Promise\<boolean>
 
-判断密钥是否存在，使用Promise回调异步返回结果。
+判断密钥是否存在，使用Promise异步回调。
+
+若密钥不存在，则通过Promise返回false。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1852,6 +1860,7 @@ initSession操作密钥接口，使用Callback回调异步返回结果。huks.in
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
+| 12000018 | the input parameter is invalid. |
 
 ## huks.initSession<sup>9+</sup>
 
@@ -1894,12 +1903,15 @@ initSession操作密钥接口，使用Promise方式异步返回结果。huks.ini
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
+| 12000018 | the input parameter is invalid. |
 
 ## huks.updateSession<sup>9+</sup>
 
 updateSession(handle: number, options: HuksOptions, callback: AsyncCallback\<HuksReturnResult>) : void
 
-updateSession操作密钥接口，使用Callback回调异步返回结果。huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
+updateSession操作密钥接口，使用callback异步回调。
+
+huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1938,7 +1950,9 @@ updateSession操作密钥接口，使用Callback回调异步返回结果。huks.
 
 updateSession(handle: number, options: HuksOptions, token: Uint8Array, callback: AsyncCallback\<HuksReturnResult>) : void
 
-updateSession操作密钥接口，使用Callback回调异步返回结果。huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
+支持用户身份认证访问控制的updateSession操作密钥接口，使用callback异步回调。
+
+huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1978,7 +1992,9 @@ updateSession操作密钥接口，使用Callback回调异步返回结果。huks.
 
 updateSession(handle: number, options: HuksOptions, token?: Uint8Array) : Promise\<HuksReturnResult>
 
-updateSession操作密钥接口，使用Promise方式异步返回结果。huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
+updateSession操作密钥接口，使用Promise方式异步返回结果。
+
+huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2023,7 +2039,9 @@ updateSession操作密钥接口，使用Promise方式异步返回结果。huks.i
 
 finishSession(handle: number, options: HuksOptions, callback: AsyncCallback\<HuksReturnResult>) : void
 
-finishSession操作密钥接口，使用Callback回调异步返回结果。huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
+finishSession操作密钥接口，使用callback异步回调。
+
+huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2063,7 +2081,9 @@ finishSession操作密钥接口，使用Callback回调异步返回结果。huks.
 
 finishSession(handle: number, options: HuksOptions, token: Uint8Array, callback: AsyncCallback\<HuksReturnResult>) : void
 
-finishSession操作密钥接口，使用Callback回调异步返回结果。huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
+支持用户身份认证访问控制的finishSession操作密钥接口，使用callback异步回调。
+
+huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2104,7 +2124,9 @@ finishSession操作密钥接口，使用Callback回调异步返回结果。huks.
 
 finishSession(handle: number, options: HuksOptions, token?: Uint8Array) : Promise\<HuksReturnResult>
 
-finishSession操作密钥接口，使用Promise方式异步返回结果。huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
+finishSession操作密钥接口，使用Promise方式异步返回结果。
+
+huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2911,6 +2933,7 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 | HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO                      | HuksTagType.HUKS_TAG_TYPE_BYTES \| 514   | 表示attestation时的安全凭据。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_ATTESTATION_ID_VERSION_INFO                        | HuksTagType.HUKS_TAG_TYPE_BYTES \| 515   | 表示attestation时的版本号。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_KEY_OVERRIDE<sup>20+</sup>                         | HuksTagType.HUKS_TAG_TYPE_BOOL \| 520   | 表示是否覆写同名密钥。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_AE_TAG_LEN<sup>22+</sup>                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 521   | 表示指定的AEAD标签长度。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_IS_KEY_ALIAS                                       | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1001   | 表示是否使用生成key时传入的别名的Tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_KEY_STORAGE_FLAG                                   | HuksTagType.HUKS_TAG_TYPE_UINT \| 1002   | 表示密钥存储方式的Tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_IS_ALLOWED_WRAP                                    | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1003   | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
@@ -3159,7 +3182,7 @@ let emptyOptions: huks.HuksOptions = {
     properties: []
 };
 let result = huks.deleteKey(keyAlias, emptyOptions).then((data) => {
-    console.info('delete key seccuss');
+    console.info('delete key success');
 }).catch((err: BusinessError) => {
     console.error("密钥删除失败，错误码是： " + err.code + " 错误码信息： " + err.message)
 });
@@ -3529,7 +3552,7 @@ init操作密钥接口，使用Callback回调异步返回结果。huks.init, huk
 | -------- | ---------------------- | ---- | ------------------------------------- |
 | keyAlias | string                 | 是   | Init操作密钥的别名。 |
 | options  | [HuksOptions](#huksoptions) | 是   | Init操作的参数集合。 |
-| callback | AsyncCallback\<[HuksHandle](#hukshandledeprecated)> | 是   | 回调函数。将Init操作操作返回的handle添加到回调函数中。 |
+| callback | AsyncCallback\<[HuksHandle](#hukshandledeprecated)> | 是   | 回调函数。将Init操作返回的handle添加到回调函数中。 |
 
 ## huks.init<sup>(deprecated)</sup>
 
@@ -3902,11 +3925,11 @@ huks Handle结构体。
 >
 > 从API version 9开始废弃，建议使用[HuksSessionHandle<sup>9+</sup>](#hukssessionhandle9)替代。
 
-| 名称     | 类型             | 必填 | 说明     |
-| ---------- | ---------------- | ---- | -------- |
-| errorCode  | number           | 是   | 表示错误码。 |
-| handle    | number       | 是 | 表示无符号整数类型的handle值。 |
-| token | Uint8Array | 否 | 表示[init](#huksinitdeprecated)操作之后获取到的challenge信息。 |
+| 名称 | 类型                                | 只读 | 可选 | 说明         |
+| ------ | ----------------------------------- | ---- | ---- | ------------ |
+| errorCode  | number           | 否   | 否   | 表示错误码。 |
+| handle    | number       | 否   | 否 | 表示无符号整数类型的handle值。 |
+| token | Uint8Array | 否   | 是 | 表示[init](#huksinitdeprecated)操作之后获取到的challenge信息。默认为空。 |
 
 ## HuksResult<sup>(deprecated)</sup>
 
@@ -3919,12 +3942,12 @@ huks Handle结构体。
 > - 从API version 9开始废弃，建议使用[HuksReturnResult<sup>9+</sup>](#huksreturnresult9)替代。
 > - errorCode的具体信息，请参考[错误码文档](errorcode-huks.md)。
 
-| 名称     | 类型                            | 必填 | 说明             |
-| ---------- | ------------------------------- | ---- | ---------------- |
-| errorCode  | number                          | 是   | 表示错误码。     |
-| outData    | Uint8Array                      | 否   | 表示输出数据。   |
-| properties | Array\<[HuksParam](#huksparam)> | 否   | 表示属性信息。   |
-| certChains | Array\<string>                  | 否   | 表示证书链数据。 |
+| 名称 | 类型                                | 只读 | 可选 | 说明         |
+| ------ | ----------------------------------- | ---- | ---- | ------------ |
+| errorCode  | number                          | 否   | 否   | 表示错误码。     |
+| outData    | Uint8Array                      | 否   | 是   | 表示输出数据。默认为空。   |
+| properties | Array\<[HuksParam](#huksparam)> | 否   | 是   | 表示属性信息。默认为空。   |
+| certChains | Array\<string>                  | 否   | 是   | 表示证书链数据。默认为空。 |
 
 ## HuksErrorCode<sup>(deprecated)</sup>
 

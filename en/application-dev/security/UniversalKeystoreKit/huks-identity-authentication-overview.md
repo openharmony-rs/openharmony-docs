@@ -15,7 +15,7 @@ HUKS provides comprehensive access control capabilities to ensure authorized acc
 
 - The usage of keys is strictly restricted. For example, the AES keys can be used only for encryption and decryption, and the RSA keys can be used only for signing and signature verification.
 
-> **NOTE**<br>
+> **NOTE**
 > <!--RP3-->The mini-system devices<!--RP3End--> do not support the access control of keys based on user identity authentication.
 
 ## Application Scenarios and Development Process
@@ -36,7 +36,7 @@ In addition to user identity authentication, HUKS provides the following modes t
 
   After a key is generated or imported, the key becomes invalid permanently once the lock screen password is cleared. The key will not be invalidated if the lock screen password is modified.
 
-   Prerequisites: A lock screen password has been set.
+  Prerequisites: A lock screen password has been set.
 
   Application scenarios: user-related data protection or access based on the lock screen password.
 

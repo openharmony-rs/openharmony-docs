@@ -69,7 +69,13 @@ Obtains a **CalendarManager** object based on the context.
 // The file is auto-generated: entry/src/main/ets/entryability/EntryAbility.ets
 import {
   abilityAccessCtrl,
-  AbilityConstant, common, PermissionRequestResult, Permissions, UIAbility, Want } from '@kit.AbilityKit';
+  AbilityConstant, 
+  common, 
+  PermissionRequestResult, 
+  Permissions, 
+  UIAbility, 
+  Want 
+} from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { calendarManager } from '@kit.CalendarKit';
 import { window } from '@kit.ArkUI';
@@ -137,7 +143,8 @@ createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calend
 
 Creates a **Calendar** object based on the calendar account information. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR
+**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -189,7 +196,9 @@ createCalendar(calendarAccount: CalendarAccount): Promise\<Calendar>
 
 Creates a **Calendar** object based on the calendar account information. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR
+**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
+
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -241,7 +250,9 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback\<void>): void
 
 Deletes a specified **Calendar** object. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR
+**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
+
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -299,7 +310,9 @@ deleteCalendar(calendar: Calendar): Promise\<void>
 
 Deletes a specified **Calendar** object. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR
+**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
+
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -358,7 +371,9 @@ getCalendar(callback: AsyncCallback\<Calendar>): void
 
 Obtains the default **Calendar** object, which is created when the data storage runs for the first time. This API uses an asynchronous callback to return the result. You can call this API instead of [createCalendar()](#createcalendar) to use the default calendar for a new event.
 
-**Required permissions**: ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR
+**Required permissions**: ohos.permission.READ_CALENDAR for versions earlier than API version 21;
+ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
+
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -403,7 +418,9 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calendar>
 
 Obtains a specified **Calendar** object. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR
+**Required permissions**: ohos.permission.READ_CALENDAR for versions earlier than API version 21;
+ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
+
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -458,7 +475,9 @@ getCalendar(calendarAccount?: CalendarAccount): Promise\<Calendar>
 
 Obtains the default **Calendar** object or a specified **Calendar** object. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR
+**Required permissions**: ohos.permission.READ_CALENDAR for versions earlier than API version 21;
+ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
+
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -507,7 +526,9 @@ getAllCalendars(callback: AsyncCallback\<Calendar[]>): void
 
 Obtains the created and default **Calendar** objects of the current application. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR
+**Required permissions**: ohos.permission.READ_CALENDAR for versions earlier than API version 21;
+ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
+
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -552,7 +573,9 @@ getAllCalendars(): Promise\<Calendar[]>
 
 Obtains the created and default **Calendar** objects of the current application. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR
+**Required permissions**: ohos.permission.READ_CALENDAR for versions earlier than API version 21;
+ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
+
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -593,7 +616,7 @@ calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
 
 editEvent(event: Event): Promise\<number>
 
-Edits an event on the event creation page, with no event ID specified in **Event**. This API uses a promise to return the result. Events created using this API cannot be queried or modified by third-party applications, but only by the system calendar.
+Edits an event on the event creation page, with no event ID specified in **Event**. This API uses a promise to return the result. Events created using this API can be obtained and modified by the system calendar. Third-party applications can obtain and modify the events after they requested the READ_WHOLE_CALENDAR permission and the WRITE_WHOLE_CALENDAR permission, respectively.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -712,7 +735,7 @@ Adds an event, with no event ID, **instanceStartTime**, and **instanceEndTime** 
 
 | Type            | Description                      |
 | ---------------- |--------------------------|
-| Promise\<number> | Promise used to return the event ID. The ID is greater than 0. |
+| Promise\<number> | Promise used to return the event ID. The ID is greater than 0.|
 
 **Example**
 
@@ -855,6 +878,8 @@ deleteEvent(id: number, callback: AsyncCallback\<void>): void
 
 Deletes an event with the specified ID. This API uses an asynchronous callback to return the result.
 
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
 **System capability**: SystemCapability.Applications.CalendarData
 
 **Parameters**
@@ -961,6 +986,8 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 deleteEvents(ids: number[], callback: AsyncCallback\<void>): void
 
 Deletes a batch of events with the specified IDs. This API uses an asynchronous callback to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -1204,6 +1231,8 @@ getEvents(callback: AsyncCallback\<Event[]>): void
 
 Obtains all events in the current calendar. This API uses an asynchronous callback to return the result.
 
+For versions earlier than API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, and **reminderTime**. Since API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, **reminderTime**, and **identifier**.
+
 **System capability**: SystemCapability.Applications.CalendarData
 
 **Parameters**
@@ -1315,7 +1344,7 @@ If no input parameter is specified, all events under the specified calendar acco
 | Name     | Type                       | Mandatory| Description      |
 | ----------- | --------------------------- | ---- | ---------- |
 | eventFilter | [EventFilter](#eventfilter) | No  | Filter criteria.|
-| eventKey    | (keyof [Event](#event))[]   | No  | Filter field.|
+| eventKey    | (keyof [Event](#event))[]   | No  | Filter field. For versions earlier than API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, and **reminderTime** if this parameter is left empty. Since API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, **reminderTime**, and **identifier** if this parameter is left empty.|
 
 **Return value**
 
@@ -1531,7 +1560,7 @@ Queries the event instance with a specified event key in a calendar. This API us
 | start  | number | Yes   | Start time of an event. The value is a 13-digit timestamp.   |
 | end    | number | Yes   | End time of an event. The value is a 13-digit timestamp.   |
 | ids    | number[] | No   | Array of event IDs to be queried, which can be empty or undefined. Otherwise, the value of each ID must be greater than **0**.   |
-| eventKey    | (keyof [Event](#event))[]   | No   | Event key for querying events.|
+| eventKey    | (keyof [Event](#event))[]   | No   | Event key for querying events. If this parameter is left empty, the default fields for filtering are **id**, **title**, **startTime**, **endTime**, **instanceStartTime**, **instanceEndTime**, **isAllDay**, **description**, **timeZone**, **location**, and **service**.|
 
 **Return value**
 
@@ -1597,7 +1626,7 @@ Describes the calendar configuration information.
 | Name          | Type    | Read Only   | Optional| Description                                                        |
 | -------------- |--------|-------|----| ------------------------------------------------------------ |
 | enableReminder | boolean | No    | Yes | Whether to enable the reminder for events in the calendar. The value **true** means to enable the reminder for events in the calendar, and **false** means the opposite. The default value is **true**.|
-| color          | number \| string | No  | Yes | Calendar color. If the value is a number, the value ranges from 0x000000 to 0xFFFFFF or from 0x00000000 to 0xFFFFFFFF. If the value is a string, the value contains 7 or 9 characters, for example, **#FFFFFF** or **#FFFFFFFFF**. If this parameter is not specified or the input data is incorrect, the default value **#0A59F7** is used.|
+| color          | number \| string | No  | Yes | Calendar color. If the value is a number, the value ranges from 0x000000 to 0xFFFFFF or from 0x00000000 to 0xFFFFFFFF. If the value is a string, the value contains 7 or 9 characters, for example, **#FFFFFF** or **#FFFFFFFFF**. If this parameter is not set, the default value **0xFF0A59F7** is used. If **undefined** or an incorrect value is input, an exception is thrown.|
 
 ## Event
 
@@ -1611,10 +1640,10 @@ Describes an **Event** object, including the event title, start time, and end ti
 | type           | [EventType](#eventtype)           | No  | No | Event type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                            |
 | title          | string                            | No  | Yes | Event title, with a maximum of 5000 characters. If this parameter is not specified, the default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                  |
 | location       | [Location](#location)             | No  | Yes | Event location. If this parameter is not set, the default null value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                |
-| startTime      | number                            | No  | No | Start time of the event. The value is a 13-digit timestamp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                   |
-| endTime        | number                            | No  | No | End time of the event. The value is a 13-digit timestamp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                  |
+| startTime      | number                            | No  | No | Start time of an event. The value is a 13-digit timestamp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                   |
+| endTime        | number                            | No  | No | End time of an event. The value is a 13-digit timestamp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                  |
 | isAllDay       | boolean                           | No  | Yes | Whether the event is an all-day event. The value **true** means that the event is an all-day event, and **false** means the opposite. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                           |
-| attendee       | [Attendee](#attendee)[]           | No  | Yes | Attendees of a conference event. If this parameter is not set, the default null value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                              |
+| attendee       | [Attendee](#attendee)[]           | No  | Yes | Attendees in a meeting. If this parameter is not set, the default null value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                              |
 | timeZone       | string                            | No  | Yes | Time zone of the event, with a maximum of 5000 characters. If this parameter is not specified or set to an invalid value, the current time zone is used by default. If a different time zone is required, enter the corresponding time zone. You can call [systemDateTime.getTimezone()](../apis-basic-services-kit/js-apis-date-time.md#systemdatetimegettimezone) to obtain the current system time zone.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | reminderTime   | number[]                          | No  | Yes | Amount of time that the reminder occurs before the start of the event, in minutes. For example, if the value is 5, the reminder occurs 5 minutes before the event starts. If this parameter is not set, no reminder is set. A negative value indicates the delay time for sending a notification.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                        |
 | recurrenceRule | [RecurrenceRule](#recurrencerule) | No  | Yes | Recurrence rule of an event. If this parameter is not set, the value does not recur.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                               |
@@ -1622,8 +1651,8 @@ Describes an **Event** object, including the event title, start time, and end ti
 | service        | [EventService](#eventservice)     | No  | Yes | <!--RP1-->Event service. If this parameter is not set, no service is available. This function is not supported currently.<!--RP1End-->   <br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                |
 | identifier<sup>12+</sup>     | string                            | No  | Yes | Unique ID of an event, with a maximum of 5000 characters. If this parameter is not specified, the default value is **null**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                           |
 | isLunar<sup>12+</sup>     | boolean                            | No  | Yes | Whether it is a lunar calendar event. The value **true** means that the event is a lunar calendar event, and **false** means the opposite. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                           |
-| instanceStartTime<sup>18+</sup> | number                            | No  | Yes | Start time of the event. The value is a 13-digit timestamp. This parameter does not need to be set in [addEvent()](#addevent) or [addEvents()](#addevents).<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                |
-| instanceEndTime<sup>18+</sup>   | number                            | No  | Yes | End time of the event. The value is a 13-digit timestamp. This parameter does not need to be set in [addEvent()](#addevent) or [addEvents()](#addevents).<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                               |
+| instanceStartTime<sup>18+</sup> | number                            | No  | Yes | Start time of an event. The value is a 13-digit timestamp. This parameter does not need to be set in [addEvent()](#addevent) or [addEvents()](#addevents).<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                |
+| instanceEndTime<sup>18+</sup>   | number                            | No  | Yes | End time of an event. The value is a 13-digit timestamp. This parameter does not need to be set in [addEvent()](#addevent) or [addEvents()](#addevents).<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                               |
 
 ## CalendarType
 
@@ -1652,8 +1681,8 @@ Describes the event location.
 | Name     | Type  | Read Only| Optional| Description                    |
 | --------- | ------ | ---- |----| ------------------------ |
 | location  | string | No  | Yes | Location, with a maximum of 5000 characters. If this parameter is not specified, the default value is an empty string.|
-| longitude | number | No  | Yes | Longitude of the location. The value ranges from -180 to 180. The default value is **0**. |
-| latitude  | number | No  | Yes | Latitude of the location. The value ranges from -90 to 90. The default value is **0**. |
+| longitude | number | No  | Yes | Longitude of the location. The value ranges from –180 to 180. The default value is **0**.   |
+| latitude  | number | No  | Yes | Latitude of the location. The value ranges from –90 to 90. The default value is **0**.   |
 
 ## EventFilter
 
@@ -1876,7 +1905,7 @@ Describes the recurrence rule of an event.
 | interval<sup>12+</sup>            | number                                      | No  | Yes | Interval for a recurrent event. The value is a non-negative integer. If this parameter is not set, the default value **0** is used, indicating that the event is repeated based on the recurrence rule without intervals; if the value is negative, the effect is the same as that of **0**. If both **interval** and **expire** exist, **expire** is used.<br>This attribute is related to the **recurrenceFrequency** rule. The recurrence interval varies according to the recurrence rule. For example, if the **interval** value is **2**, the following situations occur:<br>Daily recurrence: The event repeats every two days.<br>Weekly recurrence: The event repeats every two weeks.<br>Monthly recurrence: The event repeats every two months.<br>Yearly recurrence: The event repeats every two years.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | excludedDates<sup>12+</sup>       | number[]                                    | No  | Yes | Excluded date of a recurrent event. The value is in the timestamp format. If this parameter is not set, the default value is empty, indicating that no date is excluded; if the value is **0** or a negative number, the effect is the same as that of the empty value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                |
 | daysOfWeek<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a week. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value ranges from 1 to 7, corresponding to Monday to Sunday. Other values are invalid and have the same effect as the empty value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                        |
-| daysOfMonth<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a month. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value ranges from 1 to 31, corresponding to the first to the last days of each month. Other values are invalid and have the same effect as **null**. The value **29**, **30**, or **31** is invalid if the corresponding date does not exist in the current month.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                |
+| daysOfMonth<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a month. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value ranges from 1 to 31, corresponding to the first to the last days of each month. Other values are invalid and have the same effect as **null**. The value **29**, **30**, or **31** is invalid if the corresponding date does not exist in the current month.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                  |
 | daysOfYear<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a year. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value ranges from 1 to 366, corresponding to the first to the last days of each year. Other values are invalid and have the same effect as the empty value. If this year only has 365 days, the value **366** is invalid.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                           |
 | weeksOfMonth<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by week of a month. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value ranges from 1 to 5, corresponding to the first to the last weeks of each month. Other values are invalid and have the same effect as the empty value. If this month only has four weeks, the value **5** is invalid.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                 |
 | weeksOfYear<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by week of a year. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value ranges from 1 to 53, corresponding to the first to the last weeks of each year. Other values are invalid and have the same effect as the empty value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                               |
@@ -1898,7 +1927,7 @@ Enumerates the types of the event recurrence rule.
 
 ## Attendee
 
-Describes the attendee information in a conference event.
+Describes the attendee information in a meeting.
 
 **System capability**: SystemCapability.Applications.CalendarData
 

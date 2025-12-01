@@ -4,7 +4,7 @@ OpenHarmony 3.2.8.1版本相较于OpenHarmony 3.2.beta3版本，request子系统
 
 ## cl.request.1 错误码定义及API部分接口名称变更
 
-- 新增上传下载接口的[错误码](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/errorcodes/errorcode-request.md)处理。
+- 新增上传下载接口的[错误码](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/errorcodes/errorcode-request.md)处理。
 - 错误信息通过AsyncCallback或Promise的error对象返回。其中，参数类型和数量错误信息，通过抛出异常的方式返回。
 - API部分接口需要用新的接口替换，参数不变。
 

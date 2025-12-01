@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >**说明：**
 >
@@ -332,6 +332,10 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 设置文本样式。
 
+> **说明：**
+>
+> 可以使用[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)注册自定义字体。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -340,7 +344,7 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 | ------ | ------------------------------------------------------------ | ---- | -------- | ------------------------------------------------------------ |
 | size   | [Length](#length)                                            | 否   |  是  | 设置文本尺寸，Length为number类型时，使用fp单位。不支持设置百分比字符串。<br>默认值：16.0 |
 | weight | [FontWeight](ts-appendix-enums.md#fontweight) \| number \| string | 否  |  是 | 设置文本的字体粗细，number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。<br>默认值：400 \| FontWeight.Normal |
-| family | string \| [Resource](#resource)                              | 否   |  是  | 设置文本的字体列表。使用多个字体，使用','进行分割，优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。当前支持'HarmonyOS Sans'字体和注册自定义字体[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)。 |
+| family | string \| [Resource](#resource)                              | 否   |  是  | 字体列表。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial,HarmonyOS Sans'。|
 | style  | [FontStyle](ts-appendix-enums.md#fontstyle)                  | 否   |  是  | 设置文本的字体样式。<br>默认值：FontStyle.Normal             |
 
 ## Area<sup>8+</sup>
@@ -589,6 +593,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 长度类型，用于描述尺寸单位。
 
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -729,10 +735,10 @@ Callback<T,V = void> = (data: T) => V;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数名   | 类型     | 描述             |
-| ----- | ------ | -------------- |
-| horizontal | number | 组件在竖直方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0  |
-| vertical     | number | 组件在水平方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0 |
+| 名称      | 类型   | 只读 | 可选 | 说明       |
+| --------- | ------ | ---- | ---- | ---------- |
+| horizontal | number | 否 | 是 | 组件在竖直方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0  |
+| vertical     | number | 否 | 是 | 组件在水平方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0 |
 
 ## Configuration
 
@@ -758,6 +764,10 @@ Callback<T,V = void> = (data: T) => V;
 | 名称                   | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | accessibilityPreferred | boolean | 否 | 是   | 若accessibilityPreferred设置为true，则深度遍历每个子节点时优先选择该子节点的无障碍文本accessibilityText。<br/>若无障碍文本为空则选择本身Text文本，最终将拼接完成的文本设置给accessibilityText与Text都为空的父节点。<br/>若accessibilityPreferred设置为false，表示不启用此功能。<br/>默认值：false |
+| stateControllerRoleType<sup>22+</sup> | [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明) | 否 | 是   | 指定特定类型的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，会将该特定类型的子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbededUiextension。<br/>默认值：无指定组件 |
+| stateControllerId<sup>22+</sup> | string | 否 | 是   | 指定特定[唯一标识ID](ts-universal-attributes-component-id.md#id)的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，会将该特定标识的子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>如果与stateControllerRoleType同时配置，则优先匹配ID一致的组件。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbededUiextension。<br/>默认值：无指定组件 |
+| actionControllerRoleType<sup>22+</sup> | [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明) | 否 | 是   | 指定特定类型的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定类型的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>当前只支持无障碍点击操作。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbededUiextension。<br/>默认值：无指定组件 |
+| actionControllerId<sup>22+</sup> | string | 否 | 是   |  指定特定[唯一标识ID](ts-universal-attributes-component-id.md#id)的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定标识的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>当前只支持无障碍点击操作。<br/>如果与actionControllerRoleType同时配置，则优先匹配ID一致的组件。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbededUiextension。<br/>默认值：无指定组件 |
 
 ## ScrollBarMargin<sup>20+</sup>对象说明
 
@@ -771,6 +781,34 @@ Callback<T,V = void> = (data: T) => V;
 | ----- | ------------------------------------------------------------ | ---- | -- | -------------------------------------- |
 | start | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是 | 滚动条起始边距。<br/>默认值：0，单位：vp |
 | end   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是 | 滚动条末尾边距。<br/>默认值：0，单位：vp |
+
+## ResponsiveFillType<sup>22+</sup>
+
+type ResponsiveFillType = PresetFillType
+
+响应式布局填充模式，用于WaterFlow、Grid、List和Swiper组件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+
+
+| 类型                    | 说明                        |
+| --------------------- | ------------------------- |
+| [PresetFillType](../arkui-ts/ts-appendix-enums.md#presetfilltype22)                | 为不同响应式断点规格指定列数。                    |
+
+## ItemFillPolicy<sup>22+</sup>
+
+定义一个适用于WaterFlow、Grid、List和Swiper组件的响应式布局策略。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称   | 类型 |只读|可选| 说明             |
+| ------ | ---- |------|------| ---------------- |
+| fillType     | [ResponsiveFillType](#responsivefilltype22) |否| 是   | 为不同的响应式断点指定列数。默认值为BREAKPOINT_DEFAULT。 |
 
 ## DirectionalEdgesT\<T><sup>12+</sup>
 
@@ -806,3 +844,16 @@ Callback<T,V = void> = (data: T) => V;
 | -------- | -------- | -------- | -------- | -------- |
 | horizontal  | number | &nbsp;否 |是 | 水平方向上的bias值。<br/>当子组件的width属性有正确值并且有2个水平方向的锚点时生效，设置的值必须大于等于0。<br/>默认值：&nbsp;0.5 |
 | vertical  | number | &nbsp;否 |是 | 垂直方向上的bias值。<br/>当子组件的height属性有正确值并且有2个垂直方向的锚点时生效，设置的值必须大于等于0。<br/>默认值：&nbsp;0.5 |
+
+## CacheCountInfo<sup>22+</sup>对象说明
+
+缓存数量信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 类型                                                         | 只读 | 可选 | 说明                                   |
+| ----- | ------------------------------------------------------------ | ---- | -- | -------------------------------------- |
+| minCount | number | 否   | 否 | 最小缓存数，当实际缓存数小于最小缓存数时，在滚动动画帧间空闲时隙加载缓存。<br/> 取值范围：[0, +∞)，小于0时按1处理。|
+| maxCount   | number | 否   | 否 | 最大缓存数，当实际缓存数大于最大缓存数时，缓存内容会回收或释放，当UI空闲时（无动画或用户操作），会加载缓存到最大缓存数。<br/> 取值范围：[minCount, +∞)，小于minCount时按minCount处理。 |

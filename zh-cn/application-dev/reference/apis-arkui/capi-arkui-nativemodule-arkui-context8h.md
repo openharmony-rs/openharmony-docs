@@ -1,4 +1,14 @@
 # ArkUI_Context*
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_Context* ArkUI_ContextHandle
+```
 
 ## 概述
 

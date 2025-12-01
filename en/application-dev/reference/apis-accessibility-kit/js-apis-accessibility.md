@@ -35,18 +35,20 @@ Enumerates the states of an accessibility application.
 
 ## AbilityType
 
+type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all'
+
 Enumerates the types of accessibility applications.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
-| Name              | Description       |
+| Type              | Description       |
 | ---------------- | --------- |
-| audible          | The accessibility application provides audible feedback.|
-| generic          | The accessibility application provides generic feedback.|
-| haptic           | The accessibility application provides haptic feedback.|
-| spoken           | The accessibility application provides spoken feedback.|
-| visual           | The accessibility application provides visual feedback.|
-| all<sup>9+</sup> | All the preceding types.|
+| 'audible'          | The accessibility application provides audible feedback.|
+| 'generic'          | The accessibility application provides generic feedback.|
+| 'haptic'           | The accessibility application provides haptic feedback.|
+| 'spoken'           | The accessibility application provides spoken feedback.|
+| 'visual'           | The accessibility application provides visual feedback.|
+| 'all'<sup>9+</sup> | All the preceding types.|
 
 ## AccessibilityAbilityInfo
 
@@ -961,7 +963,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
 
-// When one or more accessibility applications with touch guide mode (**touchGuide** is set in **Capability**) have been installed in the system:
+// When one or more accessibility applications with touch guide mode (touchGuide is set in Capability) have been installed in the system:
 // 1. After the first application is enabled, the callback returns true.
 // 2. If one or more applications have been enabled and the last enabled one is disabled, the callback returns false.
 accessibility.on('touchGuideStateChange', (data: boolean) => {

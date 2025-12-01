@@ -4,7 +4,11 @@
 <!--Owner: @shiwei75-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AVRecorder_Range {...} OH_AVRecorder_Range
+```
 
 ## 概述
 

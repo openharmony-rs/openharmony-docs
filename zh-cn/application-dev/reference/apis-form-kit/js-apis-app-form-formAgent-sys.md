@@ -1,4 +1,10 @@
 # @ohos.app.form.formAgent (FormAgent)(系统接口)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 
 FormAgent模块提供了卡片代理相关接口的能力，目前仅包括请求发布卡片。
 
@@ -67,7 +73,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.log(`formAgent requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+    console.info(`formAgent requestPublishForm, form ID is: ${JSON.stringify(data)}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -129,7 +135,7 @@ let want: Want = {
 };
 try {
   formAgent.requestPublishForm(want).then((data: string) => {
-    console.log(`formAgent requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
+    console.info(`formAgent requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });

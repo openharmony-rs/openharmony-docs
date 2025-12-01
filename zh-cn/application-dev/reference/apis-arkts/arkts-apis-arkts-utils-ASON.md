@@ -93,10 +93,10 @@ type Transformer = (this: ISendable, key: string, value: ISendable | undefined |
 
 **系统能力：** SystemCapability.Utils.Lang
 
-| 名称 | 类型| 必填 | 说明            |
-| ------ | ------ | ---- | --------------- |
-| bigIntMode   | [BigIntMode](#bigintmode) | 是 |定义处理BigInt的模式。|
-| parseReturnType   | [ParseReturnType](#parsereturntype) | 是 |定义解析结果的返回类型。|
+| 名称 | 类型| 只读 | 可选 | 说明            |
+| ------ | ------ | ---- | ---- |--------------- |
+| bigIntMode   | [BigIntMode](#bigintmode) | 否  | 否 |定义处理BigInt的模式。|
+| parseReturnType   | [ParseReturnType](#parsereturntype) | 否  | 否 |定义解析结果的返回类型。|
 
 ## parse
 
@@ -133,8 +133,7 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): ISendable | 
 **示例：**
 
 ```ts
-import { lang } from '@kit.ArkTS';
-import { collections } from '@kit.ArkTS';
+import { ArkTSUtils, collections, lang} from '@kit.ArkTS';
 
 type ISendable = lang.ISendable;
 let jsonText = '{"name": "John", "age": 30, "city": "ChongQing"}';

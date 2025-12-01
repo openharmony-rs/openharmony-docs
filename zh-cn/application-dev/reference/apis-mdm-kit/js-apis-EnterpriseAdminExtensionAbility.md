@@ -27,7 +27,7 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 
 onAdminEnabled(): void
 
-设备管理应用被激活事件回调。企业管理员或者员工部署设备管理应用，激活设备管理，系统通知设备管理应用已激活admin权限。设备管理应用可在此回调函数中进行初始化策略设置。
+当前设备管理应用被激活后，触发该回调。企业管理员或者员工部署并激活设备管理应用，系统通知设备管理应用已激活admin权限。设备管理应用可在此回调函数中进行初始化策略设置。无需注册，激活后默认触发该回调。
 
 **系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -49,7 +49,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 onAdminDisabled(): void
 
-设备管理应用被解除激活事件回调。企业管理员或者员工解除激活设备管理，系统通知设备管理应用已解除激活admin权限。设备管理应用可在此回调函数中通知企业管理员设备已脱管。
+当前设备管理应用被解除激活后，触发该回调。企业管理员或者员工解除激活设备管理，系统通知设备管理应用已解除激活admin权限。设备管理应用可在此回调函数中通知企业管理员设备已脱管。无需注册，解除激活后默认触发该回调。
 
 **系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -421,7 +421,7 @@ onKioskModeExiting(bundleName: string, accountId: number): void
 **系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-  
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
@@ -437,6 +437,89 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onKioskModeExiting(bundleName: string, accountId: number): void {
     console.info(`Succeeded in calling onKioskModeExiting callback, bundleName:${bundleName}, accountId:${accountId}`);
+  }
+};
+```
+
+## EnterpriseAdminExtensionAbility.onMarketAppInstallResult<sup>22+</sup>
+
+onMarketAppInstallResult(bundleName: string, result: common.InstallationResult): void
+
+安装应用市场应用接口[bundleManager.installMarketApps](./js-apis-enterprise-bundleManager.md#bundlemanagerinstallmarketapps22)安装结果回调，回调中包含应用包名和安装结果。
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+  
+**参数：**
+
+| 参数名   | 类型                                  | 必填   | 说明      |
+| ----- | ----------------------------------- | ---- | ------- |
+| bundleName | string | 是    | 应用市场应用包名。 |
+| result | [common.InstallationResult](./js-apis-enterprise-common.md#installationresult) | 是    | 安装结果。 |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility, common } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onMarketAppInstallResult(bundleName: string, result: common.InstallationResult): void {
+    console.info(`Succeeded in calling onMarketAppInstallResult callback, bundleName:${bundleName}, result:${result}`);
+  }
+};
+```
+
+## EnterpriseAdminExtensionAbility.onDeviceAdminEnabled<sup>23+</sup>
+
+onDeviceAdminEnabled(bundleName: string): void
+
+仅超级设备管理应用在普通设备管理应用被激活时会触发此回调。企业管理员或者员工部署并激活普通设备管理应用，系统通知超级设备管理应用已激活admin权限。超级设备管理应用可在此回调函数中进行初始化策略设置。不需要注册，激活后默认触发该回调。
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明               |
+| ---------- | ------ | ---- | ------------------ |
+| bundleName | string | 是   | 被激活应用的包名。 |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onDeviceAdminEnabled(bundleName: string) {
+  }
+};
+```
+
+## EnterpriseAdminExtensionAbility.onDeviceAdminDisabled<sup>23+</sup>
+
+onDeviceAdminDisabled(bundleName: string): void
+
+仅超级设备管理应用在普通设备管理应用被激活时会触发此回调。企业管理员或者员工解除激活普通设备管理应用，系统通知超级设备管理应用已解除激活admin权限。超级设备管理应用可在此回调函数中通知企业管理员设备已脱管。不需要注册，解除激活后默认触发该回调。
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                   |
+| ---------- | ------ | ---- | ---------------------- |
+| bundleName | string | 是   | 被解除激活应用的包名。 |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onDeviceAdminDisabled(bundleName: string) {
   }
 };
 ```

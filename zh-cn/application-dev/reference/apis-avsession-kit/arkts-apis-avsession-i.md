@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -18,10 +18,10 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-| 名称      | 类型                                              | 必填 | 说明           |
-| --------- | ------------------------------------------------- | ---- | -------------- |
-| command   | [AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)     | 是   | 命令。每种命令对应的参数不同，具体的对应关系可查阅[AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)里的详细介绍。 |
-| parameter | [media.PlaybackSpeed](../apis-media-kit/arkts-apis-media-e.md#playbackspeed8) &#124; number &#124; string &#124; [LoopMode](arkts-apis-avsession-e.md#loopmode10) | 否   | 命令对应的参数。 |
+| 名称      | 类型                                              | 只读 | 可选 | 说明           |
+| --------- | ------------------------------------------------- | ---- |---- | -------------- |
+| command   | [AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)     |否 | 否  | 命令。每种命令对应的参数不同，具体的对应关系可查阅[AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)。 |
+| parameter | [media.PlaybackSpeed](../apis-media-kit/arkts-apis-media-e.md#playbackspeed8) &#124; number &#124; string &#124; [LoopMode](arkts-apis-avsession-e.md#loopmode10) | 否 | 是   | 命令对应的参数。 |
 
 ## CastDisplayInfo<sup>12+</sup>
 
@@ -70,7 +70,7 @@
 | filter<sup>11+</sup>        | number         | 否   | 是   | 当前session支持的协议，默认为TYPE_CAST_PLUS_STREAM。具体取值参考[ProtocolType](arkts-apis-avsession-e.md#protocoltype11)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                   |
 | drmSchemes<sup>12+</sup>        | Array\<string>         | 否   | 是   | 当前session支持的DRM方案，取值为DRM方案uuid。|
 | skipIntervals<sup>11+</sup>  | [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)        | 否   | 是   | 快进快退支持的时间间隔。默认为SECONDS_15，即15秒。                            |
-|displayTags<sup>11+</sup>     | number                           | 否   | 是   | 媒体资源的金标类型，取值参考[DisplayTag](arkts-apis-avsession-e.md#displaytag11)。       |
+|displayTags<sup>11+</sup>     | number                           | 否   | 是   | 媒体资源的金标类型，取值参考[DisplayTag](arkts-apis-avsession-e.md#displaytag11)。      |
 
 ## AVMediaDescription<sup>10+</sup>
 
@@ -80,15 +80,15 @@
 | ------------ | ----------------------- | ---- | ---- | ----------------------- |
 | assetId      | string                  | 否   | 否   | 播放列表媒体ID。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | title        | string                  | 否   | 是   | 播放列表媒体标题。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| subtitle     | string                  | 否   | 是   | 播放列表媒体子标题。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| subtitle     | string                  | 否   | 是   | 播放列表媒体子标题。在使用了cast+协议的音频投播场景下，暂不支持使用该属性。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | description  | string                  | 否   | 是   | 播放列表媒体描述的文本。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| mediaImage | image.PixelMap \| string   | 否   | 是   | 播放列表媒体图片像素数据。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| mediaImage | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| string  | 否   | 是   | 播放列表媒体图片像素数据。在使用了cast+协议的音频投播场景下，暂不支持使用该属性。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | extras       | {[key: string]: Object}    | 否   | 是   | 播放列表媒体额外字段。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
 | mediaUri     | string                  | 否   | 是   | 播放列表媒体URI。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | mediaType     | string                  | 否   | 是   | 播放列表媒体类型。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | mediaSize     | number                  | 否   | 是   | 播放列表媒体的大小。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | albumTitle     | string                  | 否   | 是   | 播放列表媒体专辑标题。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| albumCoverUri     | string                  | 否   | 是   | 播放列表媒体专辑标题URI。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| albumCoverUri     | string                  | 否   | 是   | 播放列表媒体专辑封面URI。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | lyricContent     | string                  | 否   | 是   | 播放列表媒体歌词内容。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | lyricUri     | string                  | 否   | 是   | 播放列表媒体歌词URI。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | artist     | string                  | 否   | 是   | 播放列表媒体专辑作者。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -100,7 +100,7 @@
 | startPosition     | number                  | 否   | 是   | 播放列表媒体起始播放位置。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | creditsPosition     | number                  | 否   | 是   | 播放列表媒体的片尾播放位置。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | appName     | string                  | 否   | 是   | 播放列表提供的应用的名字。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-|displayTags<sup>11+</sup>     | number | 否   | 是   | 媒体资源的金标类型，取值参考[DisplayTag](arkts-apis-avsession-e.md#displaytag11)。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+|displayTags<sup>11+</sup>     | number | 否   | 是   | 媒体资源的金标类型，取值参考[DisplayTag](arkts-apis-avsession-e.md#displaytag11)。在使用了cast+协议的音频投播场景下，暂不支持使用该属性。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 |launchClientData<sup>20+</sup> | string | 否 | 是 | 投播过程中应用程序向接收方发送的自定义数据。<br/>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast  <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## AVQueueItem<sup>10+</sup>
@@ -111,10 +111,10 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-| 名称         | 类型                                        | 必填 | 说明                        |
-| ------------ | ------------------------------------------ | ---- | --------------------------- |
-| itemId       | number                                     | 是   | 播放列表中单项的ID。          |
-| description  | [AVMediaDescription](#avmediadescription10)  | 否   | 播放列表中单项的媒体元数据。   |
+| 名称         | 类型                                        | 只读 | 可选 | 说明                        |
+| ------------ | ------------------------------------------ | ---- | --- |--------------------------- |
+| itemId       | number                                     |  否 | 否 | 播放列表中单项的ID。          |
+| description  | [AVMediaDescription](#avmediadescription10)  | 否   | 是 | 播放列表中单项的媒体元数据。   |
 
 ## AVPlaybackState<sup>10+</sup>
 
@@ -122,22 +122,22 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-| 名称         | 类型                                  | 必填 | 说明     |
-| ------------ | ------------------------------------- | ---- | ------- |
-| state        | [PlaybackState](arkts-apis-avsession-e.md#playbackstate10)       | 否   | 播放状态。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| speed        | number                                | 否   | 播放倍速。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| position     | [PlaybackPosition](#playbackposition10) | 否   | 播放位置。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| bufferedTime | number                                | 否   | 缓冲时间。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| loopMode     | [LoopMode](arkts-apis-avsession-e.md#loopmode10)                 | 否   | 循环模式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| isFavorite   | boolean                               | 否   | 是否收藏，true表示收藏。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| activeItemId<sup>10+</sup> | number                  | 否   | 正在播放的媒体Id。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| volume<sup>10+</sup> | number                  | 否   | 正在播放的媒体音量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| maxVolume<sup>11+</sup> | number                    | 否   | 最大音量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| muted<sup>11+</sup>     | boolean                   | 否   | 当前静音状态，true表示静音。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| duration<sup>11+</sup>     | number                   | 否   | 当前媒体资源的时长。 |
-| videoWidth<sup>11+</sup>  | number                  | 否   | 媒体资源的视频宽度，单位为像素（px）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| videoHeight<sup>11+</sup> |  number                 | 否   | 媒体资源的视频高度，单位为像素（px）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| extras<sup>10+</sup> | {[key: string]: Object}       | 否   | 自定义媒体数据。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| 名称         | 类型                                  | 只读 | 可选 | 说明     |
+| ------------ | ------------------------------------- | ---- | ---- | ------- |
+| state        | [PlaybackState](arkts-apis-avsession-e.md#playbackstate10)       | 否 | 是  | 播放状态。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| speed        | number                                | 否 |是   | 播放倍速。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| position     | [PlaybackPosition](#playbackposition10) | 否 | 是   | 播放位置。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| bufferedTime | number                                | 否  | 是  | 缓冲时间。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| loopMode     | [LoopMode](arkts-apis-avsession-e.md#loopmode10)                 | 否  | 是 | 循环模式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| isFavorite   | boolean                               | 否 | 是  | 表示是否收藏。true表示收藏，false表示不收藏。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| activeItemId | number                  | 否 |  是 | 正在播放的媒体Id。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| volume | number                  | 否  |  是  | 正在播放的媒体音量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| maxVolume<sup>11+</sup> | number                    | 否  | 是 | 最大音量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| muted<sup>11+</sup>     | boolean                   | 否  | 是 | 当前是否是静音状态。true表示是，false表示不是。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| duration<sup>11+</sup>     | number                   | 否 | 是  | 当前媒体资源的时长。 |
+| videoWidth<sup>11+</sup>  | number                  | 否   | 是 | 媒体资源的视频宽度，单位为像素（px）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| videoHeight<sup>11+</sup> |  number                 | 否  |是  | 媒体资源的视频高度，单位为像素（px）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| extras | Record\<string, Object\>       | 否  | 是 | 自定义媒体数据。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## PlaybackPosition<sup>10+</sup>
 
@@ -147,10 +147,10 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-| 名称        | 类型   | 必填 | 说明               |
-| ----------- | ------ | ---- | ------------------ |
-| elapsedTime | number | 是   | 已用时间，单位毫秒（ms）。 |
-| updateTime  | number | 是   | 更新时间，单位毫秒（ms）。 |
+| 名称        | 类型   | 只读 | 可选 | 说明               |
+| ----------- | ------ | ---- |---- | ------------------ |
+| elapsedTime | number | 否 | 否   | 已用时间，单位毫秒（ms）。 |
+| updateTime  | number | 否 | 否   | 更新时间，单位毫秒（ms）。 |
 
 ## CallMetadata<sup>11+</sup>
 
@@ -160,11 +160,11 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-| 名称            | 类型                      | 必填 | 说明               |
-| --------------- |-------------------------| ---- |---------------------------------------------------------------------|
-| name            | string                  | 否    | 来电人姓名（别名）。    |
-| phoneNumber     | string                  | 否    | 来电电话号码。            |
-| avatar          | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)          | 否    | 来电人头像。            |
+| 名称            | 类型                      |只读 | 可选 | 说明               |
+| --------------- |-------------------------| ---- | ---- |---------------------------------------------------------------------|
+| name            | string                  | 否  | 是   | 来电人姓名（别名）。    |
+| phoneNumber     | string                  | 否  | 是  | 来电电话号码。            |
+| avatar          | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)          | 否 |是   | 来电人头像。            |
 
 ## AVCallState<sup>11+</sup>
 
@@ -174,10 +174,10 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-| 名称            | 类型                      | 必填 | 说明               |
-| --------------- |-------------------------  | ---- |---------------------------------------------------------------------|
-| state           | [CallState](arkts-apis-avsession-e.md#callstate11)                 | 是    | 当前通话状态。      |
-| muted           | boolean                   | 是    | 通话mic是否静音。 <br>true：静音。 <br>false：不是静音。|
+| 名称            | 类型                      |只读 | 可选 | 说明               |
+| --------------- |-------------------------  | ---- | ---- |---------------------------------------------------------------------|
+| state           | [CallState](arkts-apis-avsession-e.md#callstate11)                 | 否 | 否    | 当前通话状态。      |
+| muted           | boolean                   | 否 | 否    | 表示通话mic是否静音。 true表示是静音，false表示不是静音。|
 
 ## DeviceInfo<sup>10+</sup>
 
@@ -204,9 +204,9 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-| 名称       | 类型           | 必填 | 说明                   |
-| ---------- | -------------- | ---- | ---------------------- |
-| devices | Array\<DeviceInfo\> | 是   | 播放设备的集合。    |
+| 名称       | 类型           | 只读 | 可选 | 说明                   |
+| ---------- | -------------- | ---- | ---- | ---------------------- |
+| devices | Array\<[DeviceInfo](#deviceinfo10)\>|否 | 否  | 播放设备的集合。    |
 
 ## AVControlCommand<sup>10+</sup>
 
@@ -216,10 +216,10 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-| 名称      | 类型                                              | 必填 | 说明           |
-| --------- | ------------------------------------------------- | ---- | -------------- |
-| command   | [AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)     | 是   | 命令。每种命令对应的参数不同，具体的对应关系可查阅[AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)里的详细介绍。       |
-| parameter | [LoopMode](arkts-apis-avsession-e.md#loopmode10) &#124; string &#124; number | 否   | 命令对应的参数。 |
+| 名称      | 类型                                              | 只读| 可选 | 说明           |
+| --------- | ------------------------------------------------- | ---- | ---- | -------------- |
+| command   | [AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)     | 否 | 否   | 命令（不同命令对应不同参数）。     |
+| parameter | [LoopMode](arkts-apis-avsession-e.md#loopmode10) \| string \|  number | 否 | 是   | 命令对应的参数。 |
 
 ## AVCastPickerOptions<sup>14+</sup>
 
@@ -229,9 +229,9 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-| 名称            | 类型                      | 必填 | 说明               |
-| --------------- |-------------------------| ---- |---------------------------------------------------------------------|
-| sessionType         | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10)  | 否   | 会话类型，默认值为'audio'。<br>当前仅支持'audio'、'video'会话类型。如果传入'voice_call'、'video_call'，将按照传入默认值'audio'处理。            |
+| 名称            | 类型                      | 只读 | 可选 | 说明               |
+| --------------- |-------------------------| ---- |  ---- |---------------------------------------------------------------------|
+| sessionType         | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10)  | 否 | 是  | 会话类型，默认值为audio。<br>当前仅支持audio、video会话类型。如果传入voice_call、video_call，将按照传入默认值audio处理。            |
 
 ## AudioCapabilities<sup>20+</sup>
 

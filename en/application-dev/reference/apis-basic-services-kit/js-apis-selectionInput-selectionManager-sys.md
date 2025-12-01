@@ -1,5 +1,12 @@
 # @ohos.selectionInput.selectionManager (Word Selection Management) (System API)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: SelectionInput-->
+<!--Owner: @no86-->
+<!--Designer: @mmwwbb-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @fang-jinxu-->
+
 This module provides word selection management capabilities, including creating, displaying, moving, hiding, and destroying windows, listening for word selection events, and retrieving the selected text.
 
 > **NOTE**
@@ -13,7 +20,6 @@ This module provides word selection management capabilities, including creating,
 ```ts
 import { selectionManager } from '@kit.BasicServicesKit';
 ```
-
 
 ## on('selectionCompleted')
 
@@ -45,7 +51,7 @@ import { selectionManager } from '@kit.BasicServicesKit';
 
 try {
   selectionManager.on('selectionCompleted', (info: selectionManager.SelectionInfo) => {
-    console.info(`SelectionInfo text: ${info.text}`);
+    console.info(`SelectionInfo: ${JSON.stringify(info)}`);
   });
 } catch (err) {
   console.error(`Failed to register selectionCompleted callback: ${JSON.stringify(err)}`);
@@ -73,7 +79,7 @@ Unregisters the callback used to listen for the word selection completion event.
 import { selectionManager } from '@kit.BasicServicesKit';
 
 let selectionChangeCallback = (info: selectionManager.SelectionInfo) => {
-  console.info(`SelectionInfo text: ${info.text}`);
+  console.info(`SelectionInfo: ${JSON.stringify(info)}`);
 };
 
 selectionManager.on('selectionCompleted', selectionChangeCallback);
@@ -81,6 +87,45 @@ try {
   selectionManager.off('selectionCompleted', selectionChangeCallback);
 } catch (err) {
   console.error(`Failed to unregister selectionCompleted: ${JSON.stringify(err)}`);
+}
+```
+
+## getSelectionContent()<sup>22+</sup>
+
+getSelectionContent(): Promise\<string>
+
+Obtains this selected text content. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.SelectionInput.Selection
+
+**Return value**
+| Type  | Description                                                                |
+| ------- | ------------------------------------------------------------------ |
+| Promise\<string> | Promise used to return the content of the selected text. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Word Selection Service Error Codes](errorcode-selection.md).
+
+| ID  | Error Message                      |
+| ---------- | ----------------------------- |
+| 202 | Permission denied. Called by non-system application. |
+| 33600001   | Selection service exception. |
+| 33600004   | The interface is called too frequently. |
+| 33600005   | The interface is called at the wrong time. |
+| 33600006   | The current application is prohibited from accessing content. |
+| 33600007   | The length of selected content is out of range. |
+| 33600008   | Getting the selected content times out. |
+
+**Example**
+
+```ts
+import { selectionManager } from '@kit.BasicServicesKit';
+
+try {
+  let content = await selectionManager.getSelectionContent();
+} catch (err) {
+  console.error(`Failed to get selection content: ${JSON.stringify(err)}`);
 }
 ```
 
@@ -248,7 +293,6 @@ Defines the information of a word selection event.
 
 | Name     | Type| Read-Only| Optional| Description        |
 | --------- | -------- | ---- | ---- | ------------ |
-| text   	| string   | No  | No  | Selected text.|
 | selectionType	    | [SelectionType](#selectiontype)   | No  | No  | Operation for selecting words.|
 | startDisplayX   	| number   | No  | No  | X-coordinate of the screen where the word selection starts, in px.|
 | startDisplayY   	| number   | No  | No  | Y-coordinate of the screen where the word selection starts, in px.|

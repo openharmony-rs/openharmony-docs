@@ -1,4 +1,10 @@
 # Media Library Kit (Media File Management Service) 
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 - ArkTS APIs<!--media-library-arkts-->
   - @ohos.file.photoAccessHelper (Album Management)<!--js-apis-photoaccesshelper-->
@@ -52,4 +58,4 @@
     - [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)
     - [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md)
 - Error Codes<!--media-library-errcode-->
-  - [Media Library Error Codes](errcode-medialibrary.md)
+  - [Media Library Error Codes](errorcode-medialibrary.md)

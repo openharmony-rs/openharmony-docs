@@ -122,7 +122,7 @@ getConnectedBLEDevices(): Array&lt;string&gt;
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Array&lt;string&gt; | 返回和本机设备已建立GATT连接的BLE设备地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 取消配对该设备或蓝牙关闭后，若重新获取，该虚拟地址会变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法 |
+| Array&lt;string&gt; | 返回和本机设备已建立GATT连接的BLE设备地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 |
 
 **错误码**：
 
@@ -142,6 +142,55 @@ getConnectedBLEDevices(): Array&lt;string&gt;
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let result: Array<string> = ble.getConnectedBLEDevices();
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+## ble.getConnectedBLEDevices<sup>21+</sup>
+
+getConnectedBLEDevices(profile: BleProfile): Array&lt;string&gt;
+
+根据指定的本机设备Profile协议类型，获取和本机设备已连接GATT的BLE设备集合。
+- 若指定本机设备作为client端，则返回与本机设备连接的所有server端设备地址集合。
+- 若指定本机设备作为server端，则返回与本机设备连接的所有client端设备地址集合。
+- 若指定本机设备同时作为client端和server端，则返回与本机设备连接的所有client端和server端设备地址集合。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名     | 类型                                     | 必填   | 说明                                  |
+| ------- | -------------------------------------- | ---- | ----------------------------------- |
+| profile | [BleProfile](#bleprofile21) | 是    | 当前设备的Profile协议类型，表明该设备在GATT链路中的通信角色。<br>- GATT_CLIENT表示指定本机设备为client端角色，与其建立GATT连接的所有对端设备为server端角色。 |
+
+**返回值：**
+
+| 类型                  | 说明                  |
+| ------------------- | ------------------- |
+| Array&lt;string&gt; | 返回和本机设备已建立GATT连接的BLE设备地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 取消配对该设备或蓝牙关闭后，若重新获取，该虚拟地址会变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let result: Array<string> = ble.getConnectedBLEDevices(ble.BleProfile.GATT_CLIENT);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -1515,6 +1564,109 @@ try {
 ```
 
 
+### getService<sup>22+</sup>
+
+getService(serviceUuid: string): GattService
+
+获取指定的server端服务能力。
+
+- 该服务已经通过[addService](#addservice)方法添加后才能返回有效值。
+- 一个应用可以通过[ble.createGattServer](#blecreategattserver)方法创建多个[GattServer](#gattserver)实例。本方法仅支持获取当前实例添加过的服务，无法获取当前应用创建的其他实例或由其他应用创建的实例添加过的服务。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名         | 类型     | 必填   | 说明                                       |
+| ----------- | ------ | ---- | ---------------------------------------- |
+| serviceUuid | string | 是    | 需要获取的服务的UUID。例如：00001810-0000-1000-8000-00805F9B34FB。 |
+
+**返回值：**
+
+| 类型                              | 说明              |
+| --------------------------------- | ---------------- |
+| [GattService](#gattservice) | 指定的GATT服务。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+|2901008 | Gatt service is not found.                        |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+let server: ble.GattServer = ble.createGattServer();
+try {
+    // 调用getService接口前需要先使用addService添加该服务。
+    let service: ble.GattService = server.getService('00001810-0000-1000-8000-00805F9B34FB');
+    console.info('characteristics size is: ' + service.characteristics.length);
+    for (let i = 0; i < service.characteristics.length; i++) {
+        console.info('characterUuid is: ' + service.characteristics[i].characteristicUuid);
+    }
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+### getServices<sup>22+</sup>
+
+getServices(): GattService[]
+
+server端获取本端已添加的服务能力。
+
+- 一个应用可以通过[ble.createGattServer](#blecreategattserver)方法创建多个[GattServer](#gattserver)实例。本方法仅支持获取当前实例添加过的服务，无法获取当前应用创建的其他实例或由其他应用创建的实例添加过的服务。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**返回值：**
+
+| 类型                              | 说明              |
+| --------------------------------- | ---------------- |
+| [GattService](#gattservice)[] | server端已添加的服务能力。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+let server: ble.GattServer = ble.createGattServer();
+try {
+    let services: ble.GattService[] = server.getServices();
+    console.info('services size is: ' + services.length);
+    for (let i = 0; i < services.length; i++) {
+        console.info('serviceUuid is: ' + services[i].serviceUuid);
+    }
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
 ### close
 
 close(): void
@@ -2306,6 +2458,52 @@ try {
 }
 ```
 
+### getConnectedState<sup>22+</sup>
+
+getConnectedState(deviceId: string): ProfileConnectionState
+
+获取当前与client端设备的连接状态。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| deviceId     | string | 是    | 要查询连接状态的对端蓝牙设备地址。例如："XX:XX:XX:XX:XX:XX"。 |
+
+**返回值：**
+
+| 类型                  | 说明                  |
+| ------------------- | ------------------- |
+| [ProfileConnectionState](#profileconnectionstate10) | 蓝牙设备的profile连接状态。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.               |
+|2900003 | Bluetooth disabled.            |
+|2900099 | Operation failed.              |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+let gattServer: ble.GattServer = ble.createGattServer();
+let deviceId: string = 'XX:XX:XX:XX:XX:XX';
+try {
+    let result: ble.ProfileConnectionState = gattServer.getConnectedState(deviceId);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
 
 ## GattClientDevice
 
@@ -2673,7 +2871,7 @@ readCharacteristicValue(characteristic: BLECharacteristic, callback: AsyncCallba
 
 client端从指定的server端特征值读取数据。使用Callback异步回调。<br>
 - 需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参特征值UUID；否则会读取失败。<br>
-- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[getRssiValue](#getrssivalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。<br>
+- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。<br>
 - 读取特征值过程中，需确保[BLECharacteristic](#blecharacteristic)入参特征值的serviceUuid、characteristicUuid准确。characteristicValue表示的数据内容长度可由用户任意指定，不会影响实际读取到的特征值数据内容。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -2752,7 +2950,7 @@ readCharacteristicValue(characteristic: BLECharacteristic): Promise&lt;BLECharac
 
 client端从指定的server端特征值读取数据。使用Promise异步回调。<br>
 - 需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参特征值UUID；否则会读取失败。<br>
-- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[getRssiValue](#getrssivalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。<br>
+- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。<br>
 - 读取特征值过程中，需确保[BLECharacteristic](#blecharacteristic)入参特征值的serviceUuid、characteristicUuid准确。characteristicValue表示的数据内容长度可由用户任意指定，不会影响实际读取到的特征值数据内容。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -2827,7 +3025,7 @@ readDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback&lt;BLEDes
 
 client端从指定的server端描述符读取数据。使用Callback异步回调。<br>
 - 需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参描述符UUID；否则会读取失败。<br>
-- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[getRssiValue](#getrssivalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。
+- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。
 - 读取描述符过程中，需确保[BLEDescriptor](#bledescriptor)入参描述符的serviceUuid、characteristicUuid、descriptorUuid准确。descriptorValue表示的数据内容长度可由用户任意指定，不会影响实际读取到的描述符数据内容。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -2899,7 +3097,7 @@ readDescriptorValue(descriptor: BLEDescriptor): Promise&lt;BLEDescriptor&gt;
 
 client端从指定的server端描述符读取数据。使用Promise异步回调。<br>
 - 需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参描述符UUID；否则会读取失败。<br>
-- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[getRssiValue](#getrssivalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。<br>
+- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。<br>
 - 读取描述符过程中，需确保[BLEDescriptor](#bledescriptor)入参描述符的serviceUuid、characteristicUuid、descriptorUuid准确。descriptorValue表示的数据内容长度可由用户任意指定，不会影响实际读取到的描述符数据内容。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -2967,7 +3165,7 @@ writeCharacteristicValue(characteristic: BLECharacteristic, writeType: GattWrite
 
 client端向指定的server端特征值写入数据。使用Callback异步回调。<br>
 - 需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参特征值UUID；否则会写入失败。<br>
-- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[getRssiValue](#getrssivalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。<br>
+- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。<br>
 - 应用单次可写入的特征值数据长度默认限制为（MTU-3）字节，MTU大小可由[setBLEMtuSize](#setblemtusize)接口指定。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -3043,7 +3241,7 @@ writeCharacteristicValue(characteristic: BLECharacteristic, writeType: GattWrite
 
 client端向指定的server端特征值写入数据。使用Promise异步回调。<br>
 - 需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参特征值UUID；否则会写入失败。<br>
-- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[getRssiValue](#getrssivalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。<br>
+- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。<br>
 - 应用单次可写入的特征值数据长度默认限制为（MTU-3）字节，MTU大小可由[setBLEMtuSize](#setblemtusize)接口指定。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -3118,7 +3316,7 @@ writeDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback&lt;void&
 
 client端向指定的server端描述符写入数据。使用Callback异步回调。<br>
 - 需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参描述符UUID；否则会写入失败。<br>
-- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[getRssiValue](#getrssivalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。<br>
+- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。<br>
 - 应用单次可写入的描述符数据长度默认限制为（MTU-3）字节，MTU大小可由[setBLEMtuSize](#setblemtusize)接口指定。<br>
 - Client Characteristic Configuration描述符（UUID：00002902-0000-1000-8000-00805f9b34fb）和 Server Characteristic Configuration描述符（UUID：00002903-0000-1000-8000-00805f9b34fb）较为特殊，蓝牙标准协议规定内容长度为2字节，写入内容长度应设置为2字节。
 
@@ -3188,7 +3386,7 @@ writeDescriptorValue(descriptor: BLEDescriptor): Promise&lt;void&gt;
 
 client端向指定的server端描述符写入数据。使用Promise异步回调。<br>
 - 需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参描述符UUID；否则会写入失败。<br>
-- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[getRssiValue](#getrssivalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。<br>
+- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。<br>
 - 应用单次可写入的描述符数据长度默认限制为（MTU-3）字节，MTU大小可由[setBLEMtuSize](#setblemtusize)接口指定。<br>
 - Client Characteristic Configuration描述符（UUID：00002902-0000-1000-8000-00805f9b34fb）和 Server Characteristic Configuration描述符（UUID：00002903-0000-1000-8000-00805f9b34fb）较为特殊，蓝牙标准协议规定内容长度为2字节，写入内容长度应设置为2字节。
 
@@ -3259,7 +3457,6 @@ getRssiValue(callback: AsyncCallback&lt;number&gt;): void
 
 client端获取GATT连接链路信号强度 (Received Signal Strength Indication, RSSI)。使用Callback异步回调。<br>
 - 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
-- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[getRssiValue](#getrssivalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -3310,7 +3507,6 @@ getRssiValue(): Promise&lt;number&gt;
 
 client端获取GATT连接链路信号强度 (Received Signal Strength Indication, RSSI)。使用Promise异步回调。<br>
 - 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
-- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[getRssiValue](#getrssivalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -3410,7 +3606,7 @@ client端启用或者禁用接收server端特征值内容变更通知的能力�
 - 若禁用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，禁用server端的通知能力。<br>
 - 通过[on('BLECharacteristicChange')](#onblecharacteristicchange)接收server端特征值内容变更通知。<br>
 - 若client端收到server端特征值内容变更通知后，无需回复确认。
-- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[getRssiValue](#getrssivalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。
+- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -3483,7 +3679,7 @@ client端启用或者禁用接收server端特征值内容变更通知的能力�
 - 若禁用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，禁用server端的通知能力。<br>
 - 通过[on('BLECharacteristicChange')](#onblecharacteristicchange)接收server端特征值内容变更通知。<br>
 - 若client端收到server端特征值内容变更通知后，无需回复确认。
-- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[getRssiValue](#getrssivalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。
+- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -3555,7 +3751,7 @@ client端启用或者禁用接收server端特征值内容变更指示的能力�
 - 若禁用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，禁用server端的指示能力。<br>
 - 通过[on('BLECharacteristicChange')](#onblecharacteristicchange)接收server端特征值内容变更指示。<br>
 - 若client端收到server端特征值内容变更指示后，系统蓝牙服务会主动回复确认，应用无需关注。
-- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[getRssiValue](#getrssivalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。
+- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -3621,14 +3817,14 @@ try {
 
 setCharacteristicChangeIndication(characteristic: BLECharacteristic, enable: boolean): Promise&lt;void&gt;
 
-client端启用或者禁用接收server端特征值内容变更指示的能力。使用Callback异步回调。<br>
+client端启用或者禁用接收server端特征值内容变更指示的能力。使用Promise异步回调。<br>
 - 需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且需包含指定的入参特征值UUID。<br>
 - server端对应的特征值需包含标准协议定义的Client Characteristic Configuration描述符UUID（00002902-0000-1000-8000-00805f9b34fb），server端才能支持发送变更指示。<br>
 - 若启用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，启用server端的指示能力。<br>
 - 若禁用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，禁用server端的指示能力。<br>
 - 通过[on('BLECharacteristicChange')](#onblecharacteristicchange)接收server端特征值内容变更指示。<br>
 - 若client端收到server端特征值内容变更指示后，系统蓝牙服务会主动回复确认，应用无需关注。
-- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[getRssiValue](#getrssivalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。
+- 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -3647,7 +3843,7 @@ client端启用或者禁用接收server端特征值内容变更指示的能力�
 
 | 类型                                       | 说明                         |
 | ---------------------------------------- | -------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promis对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -3952,6 +4148,96 @@ try {
 }
 ```
 
+### getConnectedState<sup>22+</sup>
+
+getConnectedState(): ProfileConnectionState
+
+获取当前与server端设备的连接状态。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+
+**返回值：**
+
+| 类型                  | 说明                  |
+| ------------------- | ------------------- |
+| [ProfileConnectionState](#profileconnectionstate10) | 蓝牙设备的profile连接状态。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.               |
+|2900003 | Bluetooth disabled.            |
+|2900099 | Operation failed.              |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice("XX:XX:XX:XX:XX:XX");
+try {
+    let result: ble.ProfileConnectionState = gattServer.getConnectedState();
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+### updateConnectionParam<sup>22+</sup>
+
+updateConnectionParam(param: ConnectionParam): Promise&lt;void&gt;
+
+向对端设备发起连接参数更新请求，调用成功后可以切换与对端数据传输速度。
+- 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
+- 不调用该接口时，默认连接参数类型为[ble.ConnectionParam.BALANCED](#connectionparam22)。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| param     | [ConnectionParam](#connectionparam22) | 是    | 连接参数类型。 |
+
+**返回值：**
+
+| 类型                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.               |
+|2900003 | Bluetooth disabled.            |
+|2900099 | Operation failed.              |
+|2901003 | The connection is not established. |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice("11:22:33:44:55:66");
+try {
+    gattclient.updateConnectionParam(ble.ConnectionParam.LOW_POWER);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
 ## ble.createBleScanner<sup>15+</sup>
 
 createBleScanner(): BleScanner
@@ -4009,7 +4295,7 @@ startScan(filters: Array&lt;ScanFilter&gt;, options?: ScanOptions): Promise&lt;v
 
 | 类型                                       | 说明                         |
 | ---------------------------------------- | -------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promis对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -4059,7 +4345,7 @@ try {
 
 stopScan(): Promise&lt;void&gt;
 
-停止正在进行的BLE扫描。<br>
+停止正在进行的BLE扫描。使用Promise异步回调。<br>
 - 停止的扫描是由[startScan](#startscan15)触发的。<br>
 - 当应用不再需要扫描BLE设备时，需主动调用该方法停止扫描。
 
@@ -4073,7 +4359,7 @@ stopScan(): Promise&lt;void&gt;
 
 | 类型                                       | 说明                         |
 | ---------------------------------------- | -------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promis对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -4377,7 +4663,7 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 
 | 名称       | 类型        | 只读 | 可选   | 说明                                 |
 | -------- | ----------- | ---- | ---- | ---------------------------------- |
-| deviceId | string      | 否 | 否    | 扫描到的蓝牙设备地址。例如："XX:XX:XX:XX:XX:XX"。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 若取消配对该设备或蓝牙关闭后，再次重新发起扫描，该虚拟地址会变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 |
+| deviceId | string      | 否 | 否    | 扫描到的蓝牙设备地址。例如："XX:XX:XX:XX:XX:XX"。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 |
 | rssi     | number      | 否 | 否    | 扫描到的设备信号强度，单位：dBm。                    |
 | data     | ArrayBuffer | 否 | 否    | 扫描到的设备发送的广播报文内容。                    |
 | deviceName | string | 否 | 否    | 扫描到的设备名称。                    |
@@ -4671,6 +4957,18 @@ BLE扫描的配置参数。
 | CONN_TERMINATE_LOCAL_HOST   | 3    | 本端设备主动断开连接。    |
 | CONN_UNKNOWN   | 4    | 未知断连原因。    |
 
+## BleProfile<sup>21+</sup>
+
+枚举，指定当前设备的Profile协议类型。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+| 名称      | 值    | 说明                           |
+| --------  | ---- | ------------------------------ |
+| GATT   | 1    | 当前设备在GATT链路中同时作为client端和server端。       |
+| GATT_CLIENT   | 2    | 当前设备在GATT链路中作为client端。    |
+| GATT_SERVER   | 3    | 当前设备在GATT链路中作为server端。    |
+
 ## ScanReportMode<sup>15+</sup>
 
 枚举，扫描结果上报模式。
@@ -4683,3 +4981,15 @@ BLE扫描的配置参数。
 | BATCH<sup>19+</sup>  | 2    | 批量扫描上报模式。<br>- 该模式可通过降低蓝牙芯片上报扫描结果频率，使系统更长时间地保持在休眠状态，从而降低整机功耗。<br>- 该模式下，扫描到符合过滤条件的BLE广播报文后不会立刻上报，需要缓存一段时间（[ScanOptions](#scanoptions)中的interval字段）后上报。 <br>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。       |
 | FENCE_SENSITIVITY_LOW<sup>18+</sup>  | 10    | 低灵敏度围栏上报模式。<br>- 围栏模式表示只在广播进入或离开围栏时上报。<br>- 扫描到的广播信号强度高且广播数量多时，可进入低灵敏度围栏。<br>- 首次扫描到广播即进入围栏，触发一次上报。<br>- 一段时间内扫描不到广播即离开围栏，触发一次上报。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。    |
 | FENCE_SENSITIVITY_HIGH<sup>18+</sup>  | 11    | 高灵敏度围栏上报模式。<br>- 围栏模式表示只在广播进入或离开围栏时上报。<br>- 扫描到的广播信号强度低且广播数量少时，可进入高灵敏度围栏。<br>- 首次扫描到广播即进入围栏，触发一次上报。<br>- 一段时间内扫描不到广播即离开围栏，触发一次上报。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。    |
+
+## ConnectionParam<sup>22+</sup>
+
+枚举，连接参数类型。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+| 名称      | 值    | 说明                           |
+| --------  | ---- | ------------------------------ |
+| LOW_POWER  | 1    |  低功耗模式，传输数据速度慢，但功耗少。   |
+| BALANCED   | 2    |  均衡模式，平衡延迟和功耗，如果没有请求连接参数更新，这是默认值。 |
+| HIGH       | 3    |  高速率模式，传输数据速度快，但功耗多。<br>- 当需要快速传输大量数据时应采用该连接参数，传输完成后，应请求BALANCED连接参数，以减少功耗。  |

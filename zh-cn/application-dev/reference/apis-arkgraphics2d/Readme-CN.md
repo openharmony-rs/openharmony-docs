@@ -1,7 +1,17 @@
 # ArkGraphics 2D（方舟2D图形服务）
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphic-->
+<!--Owner: @hangmengxin; @oh_wangxk; @gmiao522-->
+<!--Designer: @wangyanglan; @liumingxiang-->
+<!--Tester: @nobuggers; @yhl0101-->
+<!--Adviser: @ge-yafang-->
+
 - ArkTS API<!--arkgraphics-arkts-->
   - [@ohos.effectKit (图像效果)](js-apis-effectKit.md)
+  <!--Del-->
+  - [@ohos.effectKit (图像效果)(系统接口)](js-apis-effectKit-sys.md)
+  <!--DelEnd-->
   - [@ohos.graphics.colorSpaceManager (色彩管理)](js-apis-colorSpaceManager.md)
   - [@ohos.graphics.sendableColorSpaceManager (可共享的色彩管理)](js-apis-sendableColorSpaceManager.md)
   - [@ohos.graphics.common2D (2D图形通用数据类型)](js-apis-graphics-common2D.md)
@@ -162,6 +172,7 @@
     - [OH_Drawing_TextTab](capi-drawing-oh-drawing-texttab.md)
     - [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md)
     - [OH_Drawing_Run](capi-drawing-oh-drawing-run.md)
+    - [OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)
     - [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)
     - [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)
     - [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)

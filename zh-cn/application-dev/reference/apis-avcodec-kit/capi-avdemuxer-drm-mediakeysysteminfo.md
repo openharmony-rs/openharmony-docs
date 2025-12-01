@@ -5,11 +5,15 @@
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct DRM_MediaKeySystemInfo DRM_MediaKeySystemInfo
+```
 
 ## 概述
 
-为DRM_MediaKeySystemInf接口定义native层对象。
+为DRM_MediaKeySystemInfo接口定义native层对象。
 
 **起始版本：** 11
 

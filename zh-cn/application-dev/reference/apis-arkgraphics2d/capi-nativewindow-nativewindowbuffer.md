@@ -1,10 +1,14 @@
 # NativeWindowBuffer
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @li_hui180; @dingpy-->
+<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct NativeWindowBuffer OHNativeWindowBuffer
+```
+
 ## 概述
 
 提供对OHNativeWindowBuffer的访问功能。

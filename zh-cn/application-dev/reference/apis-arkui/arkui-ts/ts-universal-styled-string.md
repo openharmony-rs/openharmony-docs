@@ -4,13 +4,15 @@
 <!--Owner: @hddgzw-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 方便灵活应用文本样式的对象，可通过TextController中的[setStyledString](./ts-basic-components-text.md#setstyledstring12)方法与Text组件绑定，可通过RichEditorStyledStringController中的[setStyledString](ts-basic-components-richeditor.md#setstyledstring12)方法与RichEditor组件绑定。
 
 >  **说明：**
 >
 >  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>  从API version 20开始，支持通过[getParagraphs](./../arkts-apis-uicontext-measureutils.md#getparagraphs20)获取属性字符串的文本布局信息。
 >
 >  属性字符串目前不支持在worker线程中使用。
 >
@@ -40,7 +42,7 @@ constructor(value: string | ImageAttachment | CustomSpan , styles?: Array\<Style
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | string \| [ImageAttachment](#imageattachment) \| [CustomSpan](#customspan) | 是 | 属性字符串文本内容。<br/>**说明：** <br/>当value值为ImageAttachment或CustomSpan时，styles参数不生效；<br/>需要设置styles时，通过[insertStyledString](#insertstyledstring)实现。 |
+| value | string \| [ImageAttachment](#imageattachment) \| [CustomSpan](#customspan) | 是 | 属性字符串文本内容。<br/>**说明：** <br/>当value的类型为ImageAttachment或CustomSpan时，styles参数不生效。<br/>需要设置styles时，通过[setStyle](#setstyle)等方法实现。 |
 | styles | Array<[StyleOptions](#styleoptions对象说明)> | 否 | 属性字符串初始化选项。<br/>**说明：** <br/>start为异常值时，按默认值0处理；<br/>当length为异常值时，length等于属性字符串在start后的实际长度；<br/>当StyledStringKey与StyledStringValue不匹配时，styles不生效。 |
 
 ### 属性
@@ -67,7 +69,7 @@ getString(): string
 
 | 类型              |说明       |
 | ------- | --------------------------------- | 
-| string | 属性字符串文本内容。<br/>**说明：** <br/>当属性字符串中包含图片时，其返回的结果用空格表示。 |
+| string | 属性字符串文本内容。<br/>**说明：** <br/>当属性字符串中包含图片或[CustomSpan](#customspan)时，其返回的结果用空格表示。 |
 
 ### equals
 
@@ -89,13 +91,13 @@ equals(other: StyledString): boolean
 
 | 类型              |       说明       |
 | ------- | --------------------------------- | 
-| boolean | 两个属性字符串是否相等。<br/>true表示相等，false表示不相等。<br/>**说明：** <br/>当属性字符串的文本及样式均一致，视为相等。<br/>不比较GestureStyle，当属性字符串配置了不同事件，文本和其他样式相同时，亦视为相等。<br/>当比较CustomSpan时，比较的是地址，地址相等，视为相等。 |
+| boolean | 两个属性字符串是否相等。<br/>true表示相等，false表示不相等。<br/>**说明：** <br/>当属性字符串的文本及样式均一致，视为相等。<br/>不比较GestureStyle，当属性字符串配置了不同事件，文本和其他样式相同时，亦视为相等。<br/>当比较CustomSpan或[LeadingMarginSpan](#leadingmarginspan22)时，比较的是地址，地址相等，视为相等。 |
 
 ### subStyledString
 
 subStyledString(start: number, length?: number): StyledString
 
-获取属性字符串的子字符串。不能超出属性字符串的长度。
+获取属性字符串的子属性字符串。不能超出属性字符串的长度。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -127,6 +129,8 @@ subStyledString(start: number, length?: number): StyledString
 getStyles(start: number , length: number , styledKey?: StyledStringKey): Array\<SpanStyle>
 
 获取指定范围属性字符串的样式集合。不能超出属性字符串的长度。
+
+该接口仅返回开发者设置的样式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -165,7 +169,7 @@ static fromHtml(html: string): Promise\<StyledString>
 | 标签名称 | 说明                   |
 |-------------|----------------------------|
 | \<p\>       | 段落，分隔文本段落         |
-| \<span\>    | 行内文本，支持样式设置     |
+| \<span\>    | 行内文本，支持样式设置。API version 17及之前，\<span\>设置的background-color属性转换不生效。     |
 | \<img\>     | 插入图片                   |
 | \<strong\>  | 加粗文本                   |
 | \<br\><sup>20+</sup>      | 换行                       |
@@ -304,7 +308,7 @@ removeString(start: number , length: number): void
 
 移除指定范围的字符串。
 
-当属性字符串中包含图片时，同样生效。
+当属性字符串中包含图片或[CustomSpan](#customspan)时，同样生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -363,7 +367,11 @@ setStyle(spanStyle: SpanStyle): void
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| spanStyle | [SpanStyle](#spanstyle对象说明) | 是   | 样式对象。<br/>**说明：** <br/>默认不清空原有样式，叠加新样式。若是已有样式，则更新。<br/>当SpanStyle的styledKey为IMAGE或CUSTOM_SPAN时，只有当start的位置当前是image或者CustomSpan且长度为1，才会生效，其余情况无效果。 |
+| spanStyle | [SpanStyle](#spanstyle对象说明) | 是   | 样式对象。<br/>默认不清空原有样式，叠加新样式。如果StyledStringValue类型相同，则新样式将覆盖旧样式。<br/>当SpanStyle的styledKey为IMAGE或CUSTOM_SPAN时，只有当start的位置当前是image或CustomSpan且长度为1，才会生效，其余情况无效果。 |
+
+> **说明：**
+>
+> 样式的最小颗粒度是StyledStringValue，如果设置了多个相同的StyledStringValue，只有最后一次设置会生效。如设置两个属性不同的TextStyle，则只有第二次设置的TextStyle生效。
 
 **错误码**：
 
@@ -893,13 +901,14 @@ ShadowOptions对象中不支持fill字段。
 
 | 名称           | 类型              | 只读   | 可选   | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
-| value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) |  是  |  否  | 获取属性字符串的图片数据源。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| size  | [SizeOptions](ts-types.md#sizeoptions) |  是  |  是  | 获取属性字符串的图片尺寸。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>返回number类型值的单位为`px`。 |
-| sizeInVp<sup>21+</sup>   | [SizeOptions](ts-types.md#sizeoptions) |  是  |  是  | 获取属性字符串的图片尺寸。**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。<br/>返回number类型值的单位为`vp`。 |
-| verticalAlign  | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) |  是  |  是  | 获取属性字符串的图片对齐方式。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| objectFit  | [ImageFit](ts-appendix-enums.md#imagefit) |  是  |  是  | 获取属性字符串的图片缩放类型。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| layoutStyle  | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) |  是  |  是  | 获取属性字符串的图片布局。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  是  |  是  | 获取属性字符串的图片颜色滤镜效果。**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) |  是  |  否  | 获取属性字符串的图片数据源。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| size  | [SizeOptions](ts-types.md#sizeoptions) |  是  |  是  | 获取属性字符串的图片尺寸。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>返回number类型值的单位为`px`。 |
+| sizeInVp<sup>21+</sup>   | [SizeOptions](ts-types.md#sizeoptions) |  是  |  是  | 获取属性字符串的图片尺寸。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。<br/>返回number类型值的单位为`vp`。<br/>当ImageAttachment尺寸设置为负数值或undefined时，返回为undefined。 |
+| verticalAlign  | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) |  是  |  是  | 获取属性字符串的图片对齐方式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| objectFit  | [ImageFit](ts-appendix-enums.md#imagefit) |  是  |  是  | 获取属性字符串的图片缩放类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| layoutStyle  | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) |  是  |  是  | 获取属性字符串的图片布局。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  是  |  是  | 获取属性字符串的图片颜色滤镜效果。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| supportSvg2<sup>22+</sup>  | boolean |  是  |  是  | 获取属性字符串是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 ### constructor
 
@@ -992,19 +1001,18 @@ type ColorFilterType = ColorFilter | DrawingColorFilter
 
 ResourceStr类型图片设置项。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 类型                              | 只读 | 可选 | 说明   |
 | ------- | --------------------------------- | ---- | ---- |--------------------------------- |
-| resourceValue | Optional<[ResourceStr](ts-types.md#resourcestr)> |  否  | 否 | 设置图片数据源。 |
-| size | [SizeOptions](ts-types.md#sizeoptions) | 否   | 是 | 设置图片大小。 |
-| verticalAlign | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) | 否   | 是 | 设置图片基于文本的对齐方式。<br/>默认值：ImageSpanAlignment.BOTTOM |
-| objectFit | [ImageFit](ts-appendix-enums.md#imagefit) | 否  | 是  | 设置图片的缩放类型，当前枚举类型不支持ImageFit.MATRIX。<br/>默认值：ImageFit.Cover |
-| layoutStyle | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) | 否  | 是  | 设置图片布局。 |
-| colorFilter  | [ColorFilterType](#colorfiltertype15) |  否  | 是 | 设置属性字符串的图片颜色滤镜效果。 |
-| syncLoad  | boolean |  否  | 是 | 是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br/>默认值：false |
+| resourceValue | Optional<[ResourceStr](ts-types.md#resourcestr)> |  否  | 否 | 设置图片数据源。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| size | [SizeOptions](ts-types.md#sizeoptions) | 否   | 是 | 设置图片大小。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| verticalAlign | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) | 否   | 是 | 设置图片基于文本的对齐方式。<br/>默认值：ImageSpanAlignment.BOTTOM<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| objectFit | [ImageFit](ts-appendix-enums.md#imagefit) | 否  | 是  | 设置图片的缩放类型，当前枚举类型不支持ImageFit.MATRIX。<br/>默认值：ImageFit.Cover<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| layoutStyle | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) | 否  | 是  | 设置图片布局。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| colorFilter  | [ColorFilterType](#colorfiltertype15) |  否  | 是 | 设置属性字符串的图片颜色滤镜效果。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| syncLoad  | boolean |  否  | 是 | 是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br>true：同步加载；false：异步加载。<br/>默认值：false<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| supportSvg2<sup>22+</sup>  | boolean |  否  |  是  | 控制是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 ## CustomSpan
 
@@ -1121,6 +1129,7 @@ invalidate(): void
 | leadingMargin   | number \| [LeadingMarginPlaceholder](ts-basic-components-richeditor.md#leadingmarginplaceholder11) | 是    | 是   | 获取属性字符串文本段落的缩进。<br/>返回为number类型时，单位为vp。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | paragraphSpacing<sup>19+</sup>  | number | 是    | 是   | 获取属性字符串文本段落的段落间距。<br/>单位：vp<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | textVerticalAlign<sup>20+</sup>  | [TextVerticalAlign](ts-text-common.md#textverticalalign20) | 是    | 是   | 获取属性字符串文本段落在垂直方向的对齐方式。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| leadingMarginSpan<sup>22+</sup>   | [LeadingMarginSpan](#leadingmarginspan22) | 是    | 是   | 获取属性字符串文本段落的自定义缩进信息。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 >  **说明：**
 >
@@ -1158,6 +1167,7 @@ constructor(value?: ParagraphStyleInterface)
 | leadingMargin   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| [LeadingMarginPlaceholder](ts-basic-components-richeditor.md#leadingmarginplaceholder11) | 否  | 是    | 设置文本段落的缩进。不支持百分比。<br/>默认值：0<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | paragraphSpacing<sup>19+</sup>   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是  | 设置文本段落的段落间距。<br/>段落间距默认大小为0。不支持百分比。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | textVerticalAlign<sup>20+</sup>   | [TextVerticalAlign](ts-text-common.md#textverticalalign20) |  否  | 是  | 设置文本段落在垂直方向的对齐方式。<br/>默认值：TextVerticalAlign.BASELINE<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| leadingMarginSpan<sup>22+</sup>   | [LeadingMarginSpan](#leadingmarginspan22) | 否  | 是    | 设置文本段落的自定义缩进。不支持百分比。<br/>默认值：0<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 ## UserDataSpan
 
@@ -1168,6 +1178,62 @@ constructor(value?: ParagraphStyleInterface)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## LeadingMarginSpan<sup>22+</sup>
+
+文本段落的自定义缩进，仅提供基类，具体实现由开发者定义。
+
+### onDraw<sup>22+</sup>
+
+abstract onDraw(context: DrawContext, drawInfo: LeadingMarginSpanDrawInfo): void
+
+绘制自定义图案。段落中的每一行文本都会触发一次onDraw。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                              | 必填 | 说明                                                         |
+| ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
+| context | [DrawContext](../js-apis-arkui-graphics.md#drawcontext) | 是   | 图形绘制上下文。<br/>DrawContext的canvas方法获取的是组件的画布，绘制时不会超出组件的范围。 |
+| drawInfo | [LeadingMarginSpanDrawInfo](#leadingmarginspandrawinfo22对象说明) | 是   | 自定义绘制信息。 |
+
+### getLeadingMargin<sup>22+</sup>
+
+abstract getLeadingMargin(): LengthMetrics
+
+返回文本段落的缩进距离。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型              |       说明       |
+| ------- | --------------------------------- | 
+| [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 文本段落的缩进。不支持百分比。<br/>默认值：0<br/> |
+
+## LeadingMarginSpanDrawInfo<sup>22+</sup>对象说明
+
+自定义绘制信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 类型                              | 只读 | 可选 | 说明   |
+| ------- | --------------------------------- | ---- | ---- |--------------------------------- |
+| x | number |  否  | 否 | 当前行相对于组件的水平偏移。direction为RTL时，返回当前行右侧与组件右边缘的距离。<br/>单位：[px](ts-pixel-units.md)<br/>取值范围：大于等于0。 |
+| top | number |  否  | 否  | 行顶与组件上边缘的距离。<br/>单位：[px](ts-pixel-units.md)<br/>取值范围：大于等于0。 |
+| bottom | number |  否  | 否  | 行底与组件上边缘的距离。<br/>单位：[px](ts-pixel-units.md)<br/>取值范围：大于等于0。 |
+| baseline | number |  否  | 否  | 当前行的基线与组件上边缘的距离。<br/>单位：[px](ts-pixel-units.md)<br/>取值范围：大于等于0。 |
+| direction | [TextDirection](ts-text-common.md#textdirection22) |  否  | 否  | 文本内容的方向。 |
+| start | number |  否  | 否  | 当前行的起始索引。<br/>取值范围：大于等于0。 |
+| end | number |  否  | 否  | 当前行的结束索引。<br/>取值范围：大于等于0。 |
+| first | boolean |  否  | 否  | 当前行是否是段落的首行。<br/>true：首行；false：非首行。 |
 
 ## StyledStringKey枚举说明
 
@@ -2011,7 +2077,7 @@ struct styled_string_set_lineheight_paragraphstyle_demo {
 
 ### 示例6（设置自定义绘制Span）
 
-从API version 12开始，该示例通过[CustomSpan](#customspan)接口实现属性字符串设置自定义绘制Span。
+从API version 12开始，该示例通过[CustomSpan](#customspan)接口和[measureTextSize](../arkts-apis-uicontext-measureutils.md#measuretextsize12)实现属性字符串设置自定义绘制Span。
 
 ```ts
 // xxx.ets
@@ -2029,7 +2095,14 @@ class MyCustomSpan extends CustomSpan {
   }
 
   onMeasure(measureInfo: CustomSpanMeasureInfo): CustomSpanMetrics {
-    return { width: this.width, height: this.height };
+    this.setPx(gUIContext.vp2px(2));
+    let textSize = gUIContext.getMeasureUtils().measureTextSize({ textContent: this.word, fontSize: this.wordFontSize })
+    this.width = textSize.width as number;
+    this.height = textSize.height as number;
+    return {
+      width: gUIContext.px2vp(this.width) + (this.paddingLeft + this.paddingRight) * 2,
+      height: gUIContext.px2vp(this.height) + this.paddingTop + this.paddingBottom
+    };
   }
 
   onDraw(context: DrawContext, options: CustomSpanDrawInfo) {
@@ -2043,14 +2116,15 @@ class MyCustomSpan extends CustomSpan {
       blue: 175
     });
     const font = new drawing.Font();
-    font.setSize(25);
+    font.setSize(gUIContext.vp2px(this.wordFontSize));
     const textBlob = drawing.TextBlob.makeFromString(this.word, font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
     canvas.attachBrush(brush);
     canvas.drawRect({
-      left: options.x + 10,
-      right: options.x + gUIContext.vp2px(this.width) - 10,
-      top: options.lineTop + 10,
-      bottom: options.lineBottom - 10
+      // 绘制的矩形在Span占位大小的范围里居中
+      left: options.x + gUIContext.vp2px(this.paddingLeft),
+      right: options.x + this.width + 2 * gUIContext.vp2px(this.paddingLeft) + gUIContext.vp2px(this.paddingRight),
+      top: options.lineTop,
+      bottom: options.baseline
     });
 
     brush.setColor({
@@ -2060,7 +2134,9 @@ class MyCustomSpan extends CustomSpan {
       blue: 141
     });
     canvas.attachBrush(brush);
-    canvas.drawTextBlob(textBlob, options.x + 20, options.lineBottom - 15);
+    // 文字在绘制的矩形里居中
+    canvas.drawTextBlob(textBlob, options.x + 2 * gUIContext.vp2px(this.paddingLeft),
+      options.baseline - gUIContext.vp2px(this.paddingBottom));
     canvas.detachBrush();
   }
 
@@ -2068,9 +2144,21 @@ class MyCustomSpan extends CustomSpan {
     this.word = word;
   }
 
+  setPx(px: number) {
+    this.paddingLeft = px;
+    this.paddingRight = px;
+    this.paddingTop = px;
+    this.paddingBottom = px;
+  }
+
   width: number = 160;
   word: string = "drawing";
   height: number = 10;
+  paddingLeft: number = 0;
+  paddingRight: number = 0;
+  paddingTop: number = 0;
+  paddingBottom: number = 0;
+  wordFontSize: number = 20;
 }
 
 @Entry
@@ -2139,7 +2227,7 @@ struct styled_string_set_customspan_demo {
 }
 ```
 
-![](figures/styledstring_6.gif)
+![](figures/CustomSpan-Hello-2.gif)
 
 ### 示例7（支持存储自定义扩展信息）
 
@@ -2227,7 +2315,7 @@ struct styled_string_set_urlstyle_demo {
 ![](figures/styledString_9.gif)
 
 
-### 示例9 (给图片设置colorFilter)
+### 示例9 （给图片设置colorFilter）
 
 从API version 15开始，该示例通过给[ImageAttachment](#imageattachmentinterface对象说明)设置colorFilter实现了给图像设置颜色滤镜效果。
 
@@ -2451,14 +2539,14 @@ struct styled_string_strokewidth_strokecolor_demo {
 
 ### 示例12（fromHtml和toHtml互相转换）
 
-该示例通过[fromHtml](#fromhtml)（从API version 12开始）、[toHtml](#tohtml14)（从API version 14开始）接口，将HTML中b、strong、em、i、u、del、s、a、sub、sup标签及其style属性中的background-color转换为属性字符串并转回HTML。
+该示例通过[fromHtml](#fromhtml)（从API version 12开始）、[toHtml](#tohtml14)（从API version 14开始）接口，将HTML中strong、b<sup>20+</sup>、em<sup>20+</sup>、i<sup>20+</sup>、u<sup>20+</sup>、del<sup>20+</sup>、s<sup>20+</sup>、a<sup>20+</sup>、sub<sup>20+</sup>、sup<sup>20+</sup>标签及其style属性中的background-color转换为属性字符串并转回HTML。
 
 ``` ts
 // xxx.ets
 @Entry
 @Component
 struct styled_string_html_convert_demo {
-  @State html: string = "<p>This is <b>b</b> <strong>strong</strong> <em>em</em> <i>i</i> <u>u</u> <del>del</del> <s>s</s> <span style = \"foreground-color:blue\"> <a href='https://www.example.com'>www.example</a> </span> <span style=\"background-color: red;\">red span</span> <sup>superscript</sup> and <sub>subscript</sub></p>";
+  @State html: string = "<p>This is <b>b</b> <strong>strong</strong> <em>em</em> <i>i</i> <u>u</u> <del>del</del> <s>s</s> <span style = \"foreground-color:blue\"> <a href='https://www.example.com'>www.example</a> </span> <span style=\"background-color: red;\">red span</span> <sup>superscript</sup> and <sub>subscript</sub></p>"; // 从API version 20开始支持b、em、i、u、del、s、a、sup、sub标签
   @State spanString: StyledString | undefined = undefined;
   @State resultText: string = ""; // 保存结果文本的状态
   controller: TextController = new TextController;
@@ -2632,12 +2720,9 @@ struct styled_string_demo4 {
   }
 
   private async getPixmapFromMedia(resource: Resource) {
-    let unit8Array = await getContext(this)?.resourceManager?.getMediaContent({
-      bundleName: resource.bundleName,
-      moduleName: resource.moduleName,
-      id: resource.id
-    });
-    let imageSource = image.createImageSource(unit8Array.buffer.slice(0, unit8Array.buffer.byteLength));
+    let unit8Array =
+      await this.getUIContext()?.getHostContext()?.resourceManager?.getMediaContent(resource.id);
+    let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
     let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
       desiredPixelFormat: image.PixelMapFormat.RGBA_8888
     });
@@ -2689,3 +2774,187 @@ struct styled_string_demo4 {
 }
 ```
 ![](figures/styledString_16.gif)
+
+### 示例15（设置段落自定义缩进）
+
+从API version 22开始，该示例通过[LeadingMarginSpan](#leadingmarginspan22)设置段落缩进，并且自定义缩进图案。
+
+```ts
+// xxx.ets
+import { drawing } from '@kit.ArkGraphics2D';
+import { LengthMetrics } from '@kit.ArkUI';
+
+/**
+ * 实现LeadingMarginSpan
+ */
+class MyLeadingMarginSpan extends LeadingMarginSpan {
+  text: string = ""
+
+  constructor(text: string) {
+    super()
+    this.text = text
+  }
+
+  getText() {
+    return this.text;
+  }
+
+  // 返回缩进距离
+  getLeadingMargin(): LengthMetrics {
+    console.info("getLeadingMargin")
+    return LengthMetrics.vp(10)
+  }
+
+  // 回调给开发者行信息，用于canvas绘制
+  onDraw(context: DrawContext, options: LeadingMarginSpanDrawInfo) {
+    console.info("x = " + options.x + options.direction + ", top = " + options.top
+      + ", bottom = " + options.bottom + ", baseline = " + options.baseline
+      + ", direction = " + ", start = " + options.start + ", end = " + options.end + ", first = " + options.first)
+    let canvas = context.canvas;
+    if (!options.first) {
+      return
+    }
+
+    // 绘制文本符号
+    const font = new drawing.Font();
+    font.setSize(20);
+    const textBlob = drawing.TextBlob.makeFromString(this.text, font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+    canvas.drawTextBlob(textBlob, options.x - 30, options.top + (options.bottom - options.top) / 2);
+  }
+}
+
+@Entry
+@Component
+struct leadingMarginSpanDemo {
+  controller: RichEditorStyledStringController = new RichEditorStyledStringController();
+  options: RichEditorStyledStringOptions = { controller: this.controller };
+  textController: TextController = new TextController();
+  leadingMarginSpan: LeadingMarginSpan = new MyLeadingMarginSpan("●");
+  paragraphStyleAttr2: ParagraphStyle =
+    new ParagraphStyle({ leadingMarginSpan: this.leadingMarginSpan });
+  style: StyledString = new StyledString("段落标题\n段落内容101234567890123456789012345678901234567890123456789",
+    [
+      {
+        start: 0,
+        length: 10,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: this.paragraphStyleAttr2
+      }
+    ]
+  );
+
+  build() {
+    Column() {
+      Text(undefined, { controller: this.textController })
+        .width("90%")
+        .height("20%")
+        .margin({ top: 10 })
+        .borderWidth(1)
+        .copyOption(CopyOptions.InApp)
+        .draggable(true)
+
+      RichEditor(this.options)
+        .width("90%")
+        .height("20%")
+        .margin({ top: 10 })
+        .borderWidth(1)
+      Column() {
+        Button('setStyledString')
+          .onClick(() => {
+            this.textController.setStyledString(this.style);
+            this.controller.setStyledString(this.style);
+          }).margin({ top: 10 })
+        // 查询段落样式
+        Button("getStyles")
+          .onClick(() => {
+            let styles = this.style.getStyles(0, this.style.length);
+            if (styles.length == 0) {
+              return
+            }
+            for (let i = 0; i < styles.length; i++) {
+              console.info('getStyles style object start:' + styles[i].start);
+              console.info('getStyles style object length:' + styles[i].length);
+              console.info('getStyles style object key:' + styles[i].styledKey);
+              if (styles[i].styledKey === 200) {
+                let paraAttr = styles[i].styledValue as ParagraphStyle;
+                console.info('getStyles leadingMarginSpan:' + paraAttr.leadingMarginSpan);
+                let leadingMarginSpanClass = paraAttr.leadingMarginSpan as MyLeadingMarginSpan
+                if (leadingMarginSpanClass != null) {
+                  console.info('getStyles leadingMarginSpan getText: ' + leadingMarginSpanClass.getText());
+                }
+              }
+            }
+          }).margin({ top: 10 })
+      }
+    }
+    .width('100%')
+  }
+}
+```
+![](figures/styledString_15.gif)
+
+### 示例16（使用supportSvg2属性时，SVG图片的显示效果）
+从API version 22开始，该示例通过给[ResourceImageAttachmentOptions](#resourceimageattachmentoptions15)设置supportSvg2属性，使[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md#svg易用性提升)的SVG易用性提升能力生效。
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+import { LengthMetrics } from '@kit.ArkUI';
+@Entry
+@Component
+struct styled_string_process_demo {
+  controller: TextController = new TextController();
+  controller1: TextController = new TextController();
+  imageAttachment: ImageAttachment = new ImageAttachment({
+    // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+    resourceValue: $r("app.media.ice"),
+    size: { width: 50, height: 50 },
+    layoutStyle: { borderRadius: LengthMetrics.vp(10) },
+    verticalAlign: ImageSpanAlignment.BASELINE,
+    objectFit: ImageFit.Contain,
+    syncLoad: true,
+    supportSvg2: true,
+    colorFilter: drawing.ColorFilter.createBlendModeColorFilter(
+      drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN)
+  })
+  imageAttachment1: ImageAttachment = new ImageAttachment({
+    // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+    resourceValue: $r("app.media.ice"),
+    size: { width: 50, height: 50 },
+    layoutStyle: { borderRadius: LengthMetrics.vp(10) },
+    verticalAlign: ImageSpanAlignment.BASELINE,
+    objectFit: ImageFit.Contain,
+    syncLoad: true,
+    supportSvg2: false,
+    colorFilter: drawing.ColorFilter.createBlendModeColorFilter(
+      drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN)
+  })
+  scroller: Scroller = new Scroller();
+  mutableStr: MutableStyledString = new MutableStyledString('');
+  mutableStr1: MutableStyledString = new MutableStyledString('');
+  aboutToAppear() {
+    this.mutableStr = new MutableStyledString(this.imageAttachment);
+    this.controller.setStyledString(this.mutableStr);
+    this.mutableStr1 = new MutableStyledString(this.imageAttachment1);
+    this.controller1.setStyledString(this.mutableStr1);
+  }
+
+  build() {
+    Column() {
+      Scroll(this.scroller) {
+        Column() {
+          Text('属性字符串不支持svg2')
+          Text(undefined, { controller: this.controller1 })
+            .draggable(true)
+            .fontSize(30)
+          Text('属性字符串支持svg2')
+          Text(undefined, { controller: this.controller })
+            .draggable(true)
+            .fontSize(30)
+        }.width('100%')
+      }
+    }
+    .width('100%')
+  }
+}
+```
+
+![styledString_17](figures/styledString_17.png)

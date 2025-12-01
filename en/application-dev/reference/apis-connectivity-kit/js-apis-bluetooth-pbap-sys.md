@@ -1,5 +1,12 @@
 # @ohos.bluetooth.pbap (Bluetooth PBAP Module) (System API)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
 The **pbap** module provides APIs for accessing the phone book of a device using the Bluetooth Phone Book Access Profile (PBAP).
 
 > **NOTE**
@@ -34,7 +41,7 @@ Disconnects the PBAP service for a device.
 
 | Name   | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
 
 **Error codes**
 
@@ -54,7 +61,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     pbapServerProfile.disconnect('XX:XX:XX:XX:XX:XX');
@@ -101,7 +108,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     pbapServerProfile.setShareType('XX:XX:XX:XX:XX:XX', 0, (err: BusinessError) => {
@@ -156,7 +163,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     pbapServerProfile.setShareType('XX:XX:XX:XX:XX:XX', 0).then(() => {
@@ -204,7 +211,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     pbapServerProfile.getShareType('XX:XX:XX:XX:XX:XX', (err, type) => {
@@ -257,7 +264,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     pbapServerProfile.getShareType('XX:XX:XX:XX:XX:XX').then((type) => {
@@ -285,7 +292,7 @@ Sets the phone book access authorization for a device. This API uses an asynchro
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| authorization | [AccessAuthorization](js-apis-bluetooth-constant-sys.md#AccessAuthorization) | Yes   | Phone book access authorization to set.|
+| authorization | [AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11) | Yes   | Phone book access authorization to set.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result.<br> If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
 **Error codes**
@@ -306,7 +313,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     pbapServerProfile.setPhoneBookAccessAuthorization('XX:XX:XX:XX:XX:XX', 0, (err: BusinessError) => {
@@ -335,7 +342,7 @@ Sets the phone book access authorization for a device. This API uses a promise t
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| authorization | [AccessAuthorization](js-apis-bluetooth-constant-sys.md#AccessAuthorization) | Yes   | Phone book access authorization to set.|
+| authorization | [AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11) | Yes   | Phone book access authorization to set.|
 
 **Return value**
 
@@ -361,7 +368,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     pbapServerProfile.setPhoneBookAccessAuthorization('XX:XX:XX:XX:XX:XX', 0).then(() => {
@@ -389,7 +396,7 @@ Obtains the phone book access authorization of a device. This API uses an asynch
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| callback | AsyncCallback&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#AccessAuthorization)&gt; | Yes   | Callback used to return the result.<br> If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
+| callback | AsyncCallback&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | Yes   | Callback used to return the result.<br> If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
 **Error codes**
 
@@ -409,7 +416,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     pbapServerProfile.getPhoneBookAccessAuthorization('XX:XX:XX:XX:XX:XX', (err, authorization) => {
@@ -442,7 +449,7 @@ Obtains the phone book access authorization of a device. This API uses a promise
 
 | Type                                             | Description               |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#AccessAuthorization)&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -462,7 +469,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     pbapServerProfile.getPhoneBookAccessAuthorization('XX:XX:XX:XX:XX:XX').then((authorization) => {

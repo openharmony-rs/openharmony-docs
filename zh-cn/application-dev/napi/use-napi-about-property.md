@@ -16,8 +16,8 @@
 
 - **对象（Object）**：在ArkTS中，对象是一种复合数据类型，它允许存储多个不同类型的值作为一个单独的实体。对象是属性和方法的集合。属性是与对象相关联的值，而方法则是对象可以执行的操作。
 - **属性（Property）**：在ArkTS中，属性是对象特征的键值对。每个属性都有一个名字（也称为键或标识符）和一个值。属性的值可以是任意数据类型，包括基本类型、对象和函数。
-- **可枚举属性（EnumerableProperty）**：在ArkTS中，对象的属性分为可枚举和不可枚举之分，它们是由属性的enumerable值决定的，即内部 “可枚举” 标志设置为true或false。可枚举性决定了这个属性能否被 `for...in` 查找遍历到。
-- **自有属性（OwnProperty）**：自有属性直接定义在对象上的属性，而不是从原型链上继承来的属性。
+- **可枚举属性（EnumerableProperty）**：在ArkTS中，对象的属性分为可枚举和不可枚举，它们是由属性的enumerable值决定的，即内部 “可枚举” 标志设置为true或false。可枚举性决定了这个属性能否被 `for...in` 查找遍历到。
+- **自有属性（OwnProperty）**：自有属性是直接定义在对象上的属性，而不是从原型链上继承来的属性。
 
 ## 场景和功能介绍
 
@@ -53,7 +53,7 @@ static napi_value GetPropertyNames(napi_env env, napi_callback_info info)
 {
     // 解析ArkTS的传参
     size_t argc = 1;
-    napi_value args[1] = {nullptr};
+    napi_value args[1] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // 以字符串数组的形式获取对象的可枚举属性的名称，以result传出
     napi_value result;
@@ -80,12 +80,13 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   let propertyNames = testNapi.getPropertyNames(obj);
   if (Array.isArray(propertyNames) && propertyNames.length > 0) {
     hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_property_names: %{public}s', propertyNames[0]);
@@ -112,7 +113,7 @@ static napi_value SetProperty(napi_env env, napi_callback_info info)
 {
     // 接收ArkTS侧传入的三个参数：第一个参数为想要设置的object，第二个参数为属性，第三个参数为属性对应的值
     size_t argc = 3;
-    napi_value args[3] = {nullptr};
+    napi_value args[3] = { nullptr };
     napi_status status = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     if (status != napi_ok) {
         napi_throw_error(env, nullptr, "Node-API napi_get_cb_info fail");
@@ -143,12 +144,13 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   let result = testNapi.setProperty(obj, "code", "hi");
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_set_property: %{public}s', JSON.stringify(result));
 } catch (error) {
@@ -170,7 +172,7 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
 {
     // 接收两个ArkTS传来的参数
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // 传入的第一个参数为要检测的object，第二个对象为要检测的属性，通过调用napi_get_property接口获取对应的值
     napi_value result;
@@ -197,12 +199,13 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_property: %{public}s', testNapi.getProperty(obj, "message"));
 } catch (error) {
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_property error: %{public}s', error.message);
@@ -223,7 +226,7 @@ static napi_value HasProperty(napi_env env, napi_callback_info info)
 {
     // 从ArkTS侧传入两个参数：第一个参数为要检验的对象，第二个参数为要检测是否存在对象的属性
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     // 将参数传入napi_has_property方法中，若接口调用成功则将结果转化为napi_value类型抛出，否则抛出错误
@@ -255,12 +258,13 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   let resultFalse = testNapi.hasProperty(obj, 0);
   let resultTrue = testNapi.hasProperty(obj, "data");
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_property: %{public}s', JSON.stringify(resultFalse));
@@ -286,7 +290,7 @@ static napi_value DeleteProperty(napi_env env, napi_callback_info info)
 {
     // 接收两个ArkTS传来的参数
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     napi_valuetype valueType;
@@ -323,10 +327,11 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 class Obj {
   first: number = 0;
 }
-let obj: Obj = { first: 1};
+let obj: Obj = { first: 1 };
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_delete_property first: %{public}s', testNapi.deleteProperty(obj, 'first'));
 // 设置新的属性为不可配置
 // 这里的Object.defineProperty方法在DevEco Studio 4.1.0.400及其以上版本不支持，需在ts使用
@@ -351,7 +356,7 @@ static napi_value NapiHasOwnProperty(napi_env env, napi_callback_info info)
 {
     // 接收两个ArkTS传来的参数
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // 检查第一个参数是否为对象
     napi_valuetype valueTypeObj;
@@ -482,7 +487,7 @@ static napi_value NapiGetNamedProperty(napi_env env, napi_callback_info info)
 {
     // 接收两个ArkTS传来的参数
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     const int32_t strLength = 32;
     char strKey[strLength] = "";
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -551,7 +556,7 @@ static napi_value NapiHasNamedProperty(napi_env env, napi_callback_info info)
 {
     // 接收两个ArkTS传来的参数
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     const int32_t strLength = 32;
     char strKey[strLength] = "";
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -586,6 +591,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 interface NestedObj {
   nestedStr: string;
   nestedNum: number;
@@ -638,7 +644,7 @@ static napi_value SetterCallback(napi_env env, napi_callback_info info)
 {
     // 获取传递给setter的参数
     size_t argc = 1;
-    napi_value argv[1] = {nullptr};
+    napi_value argv[1] = { nullptr };
     napi_value result;
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     size_t length = 0;
@@ -718,6 +724,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 // 定义method类型的属性
 hilog.info(0x0000, 'testTag', 'Test Node-API define_method_properties:%{public}d', testNapi.defineMethodProperties()
   .defineMethodPropertiesExample());
@@ -745,7 +752,7 @@ static napi_value GetAllPropertyNames(napi_env env, napi_callback_info info)
 {
     // 传入一个参数
     size_t argc = 1;
-    napi_value args[1] = {nullptr};
+    napi_value args[1] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     // 获取给定对象的所有属性名称
@@ -776,12 +783,13 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   let propertyNames = testNapi.getAllPropertyNames(obj);
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_all_property_names: %{public}s', JSON.stringify(propertyNames));
 } catch (error) {

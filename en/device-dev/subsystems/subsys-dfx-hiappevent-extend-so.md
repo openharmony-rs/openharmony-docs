@@ -146,4 +146,4 @@ The HiAppEvent data processor library provides the event processing capability f
 
 ## References
 
-For more information about the source code and usage of HiAppEvent, access the [HiAppEvent code repository](https://gitee.com/openharmony/hiviewdfx_hiappevent).
+For more information about the source code and usage of HiAppEvent, access the [HiAppEvent code repository](https://gitcode.com/openharmony/hiviewdfx_hiappevent).

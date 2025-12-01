@@ -13,19 +13,23 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 3. 在复杂布局场景中，排查渲染模式及组件约束条件的问题。
 4. 处理H5代码兼容性问题。
 5. 从日志中排查生命周期和网络加载相关关键字。
+6. 检查是否开启坚盾守护模式，坚盾守护模式开启后相关限制见：[坚盾守护模式](./web-secure-shield-mode.md#arkweb限制的html5特性)。
 
 ## 检查权限和网络状态
 如果应用未开启联网或文件访问权限或者设备网络状态不佳，将导致Web组件加载失败或页面元素缺失，进而引起白屏。
 * 验证设备的网络状态，包括是否已连接网络，设备自带的浏览器能否正常访问网页等（在线页面场景）。
 * 确保应用已添加网络权限：ohos.permission.INTERNET（在线页面必需）。
-  ```
-  // 在module.json5中添加相关权限
-  "requestPermissions":[
-     {
+
+    <!-- @[INTERNET](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/module.json5) -->
+
+    ``` JSON5
+    "requestPermissions":[
+      {
         "name" : "ohos.permission.INTERNET"
-     }
-  ]
-  ```
+      }
+    ],
+    ```
+
 * 开启相关权限：
     | 名称   | 说明  |                       
     | ----   | -------------------------------- |
@@ -35,57 +39,61 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
     | [onlineImageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#onlineimageaccess) | 设置是否允许从网络加载图片资源（通过HTTP和HTTPS访问的资源）。 |
     | [javaScriptAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptaccess) | 设置是否允许执行JavaScript脚本。 | 
 
+    <!-- @[OpenPermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/OpenPermissions.ets) -->
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-          .domStorageAccess(true)
-          .fileAccess(true)
-          .imageAccess(true)
-          .onlineImageAccess(true)
-          .javaScriptAccess(true)
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: webview.WebviewController = new webview.WebviewController();
+    
+      build() {
+        Column() {
+          Web({ src: 'www.example.com', controller: this.controller })
+            .domStorageAccess(true)
+            .fileAccess(true)
+            .imageAccess(true)
+            .onlineImageAccess(true)
+            .javaScriptAccess(true)
+        }
       }
     }
-  }
-  ```
+    ```
+
+
 * 修改[UserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)后再观察页面是否恢复正常。
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    @State customUserAgent: string = ' DemoApp';
-
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-        .onControllerAttached(() => {
-          console.info("onControllerAttached");
-          try {
-            let userAgent = this.controller.getUserAgent() + this.customUserAgent;
-            this.controller.setCustomUserAgent(userAgent);
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
+    <!-- @[ChangeUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/ChangeUserAgent.ets) -->
+    
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: webview.WebviewController = new webview.WebviewController();
+      @State customUserAgent: string = ' DemoApp';
+    
+      build() {
+        Column() {
+          Web({ src: 'www.example.com', controller: this.controller })
+            .onControllerAttached(() => {
+              console.info('onControllerAttached');
+              try {
+                let userAgent = this.controller.getUserAgent() + this.customUserAgent;
+                this.controller.setCustomUserAgent(userAgent);
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+            })
+        }
       }
     }
-  }
-  ```
+    ```
+
 ## 使用DevTools工具进行页面内容验证
 在确保网络与权限配置无误后，若仍出现白屏，则应利用DevTools工具调试前端页面以及监听Web相关错误上报接口，来定位具体报错类型。
 
@@ -213,28 +221,29 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 
     当路径列表中的任一路径不满足上述条件时，系统将抛出异常码401，并判定路径列表设置失败。如果路径列表设置为空，file协议的可访问范围将遵循[fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess)规则，具体示例如下。
 
-    ```ts
-    // main/ets/pages/Index.ets
+    <!-- @[SetPath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry2/src/main/ets/pages/SetPath.ets) -->
+    
+    ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import { BusinessError } from '@kit.BasicServicesKit';
-
+    
     @Entry
     @Component
     struct WebComponent {
       controller: WebviewController = new webview.WebviewController();
       uiContext: UIContext = this.getUIContext();
-
+    
       build() {
         Row() {
-          Web({ src: "", controller: this.controller })
+          Web({ src: '', controller: this.controller })
             .onControllerAttached(() => {
               try {
                 // 设置允许可以跨域访问的路径列表
                 this.controller.setPathAllowingUniversalAccess([
                   this.uiContext.getHostContext()!.resourceDir,
-                  this.uiContext.getHostContext()!.filesDir + "/example"
+                  this.uiContext.getHostContext()!.filesDir + '/example'
                 ])
-                this.controller.loadUrl("file://" + this.uiContext.getHostContext()!.resourceDir + "/index.html")
+                this.controller.loadUrl('file://' + this.uiContext.getHostContext()!.resourceDir + '/index.html')
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
               }
@@ -246,6 +255,8 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
       }
     }
     ```
+
+	HTML示例代码：
 
     ```html
     <!-- main/resources/resfile/index.html -->
@@ -398,3 +409,19 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 | event_message: content load finished | 页面解析完成。|
 | event_message: page load finished、<br> NWebHandlerDelegate::OnLoadEnd、<br> NWebHandlerDelegate::MainFrame OnLoadEnd、<br> NWebHandlerDelegate::OnFirstMeaningfulPaint | 页面以及子资源加载完成。|
 
+## 设备的WebView默认加载进程不一致导致加载H5页面白屏
+
+**问题：**
+
+用WebView加载H5在Phone上表现正常，但是在Table/PC/2in1上白屏。
+
+**原因：**
+
+Table/PC/2in1的WebView默认采用多进程加载，iframe默认使用子进程加载。主进程加载完成后，若子进程尚未加载完成，会导致白屏现象。
+
+**解决方案：**
+
+通过setRenderProcessMode()设置WebView渲染模式为单进程加载。
+   ```
+   webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.SINGLE);
+   ```

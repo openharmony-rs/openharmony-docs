@@ -83,7 +83,7 @@ The positioning result does not meet the precision requirement (maxAccuracy) in 
 
 **错误信息**
 
-The system does not have a cache locaiton.
+The system does not have a cache location.
 
 **错误描述**
 
@@ -281,7 +281,7 @@ Failed to start Wi-Fi or Bluetooth scanning.
 
 **错误信息**
 
-Failed to obtain the hotpot MAC address because the Wi-Fi is not connected.
+Failed to obtain the hotspot MAC address because the Wi-Fi is not connected.
 
 **错误描述**
 

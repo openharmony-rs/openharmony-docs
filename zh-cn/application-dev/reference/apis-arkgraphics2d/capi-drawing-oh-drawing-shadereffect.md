@@ -1,4 +1,14 @@
 # OH_Drawing_ShaderEffect
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
+```
+typedef struct OH_Drawing_ShaderEffect OH_Drawing_ShaderEffect
+```
 
 ## 概述
 

@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 To use the flashlight mode, you manipulate your device to turn on the flashlight, which then stays on persistently.
 
@@ -73,7 +73,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
 
 ## Status Listening
 
-During camera application development, you can listen for the flashlight status, including on, off, unavailable, and available.  
+During camera application development, you can listen for the flashlight status, including on, off, unavailable, and available.
 
 Register the **'torchStatusChange'** event and return the listening result through a callback, which carries the **TorchStatusInfo** parameter. For details about the parameter, see [TorchStatusInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#torchstatusinfo11).
 

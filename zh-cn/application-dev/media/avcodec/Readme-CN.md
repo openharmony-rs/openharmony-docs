@@ -5,7 +5,7 @@
 <!--Owner: @zhanghongran; @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee; @baotianhao-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 - [AVCodec Kit简介](avcodec-kit-intro.md)
 - [AVCodec支持的格式](avcodec-support-formats.md)
@@ -24,7 +24,7 @@
   - [视频解码](video-decoding.md)
   - [视频解码同步模式](synchronous-video-decoding.md)
   - [创建视频解码器和NativeWindow初始化并行](parallel-decoding-nativeWindow.md)
-  - [视频可变帧率](video-variable-refreshrate.md)
+  - [视频可变帧率](video-variable-refreshrate.md)<!--RP1--><!--RP1End-->
 - 媒体数据封装与解析<!--file-muxing-demuxing-->
   - [媒体数据封装](audio-video-muxer.md)
   - [媒体数据解析](audio-video-demuxer.md)

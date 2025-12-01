@@ -37,7 +37,6 @@ HiDebug可用于获取整机内存、应用进程内存占用、应用线程内�
 | hidebug.getAppNativeMemInfoWithCache | 获取应用进程内存信息（该接口存在缓存机制以提高接口性能）。<br/>**说明**：从API version 20开始，支持该接口。 |
 | hidebug.getSystemMemInfo | 获取系统内存信息。读取/proc/meminfo节点的数据。 |
 | hidebug.getAppMemoryLimit | 获取应用程序进程内存限制，其中rsslimit由getrlimit 接口获取到的RLIMIT_RSS资源值，vsslimit由getrlimit接口获取到的RLIMIT_AS资源值。 |
-| hidebug.setJsRawHeapTrimLevel | 设置当前进程转储虚拟机原始堆快照的裁剪级别。<br/>**说明**：从API version 20开始，支持该接口。 |
 
 ### 接口说明（C/C++）
 
@@ -179,9 +178,10 @@ HiDebug可用于获取VM内存数据、GC统计数据及VM堆转储。
 | hidebug.getVMRuntimeStats | 获取系统[GC](../arkts-utils/gc-introduction.md)统计信息。 |
 | hidebug.getVMRuntimeStat | 根据参数获取指定的系统[GC](../arkts-utils/gc-introduction.md)统计信息。 |
 | hidebug.dumpJsRawHeapData | 使用异步方式为当前线程转储虚拟机的原始堆快照，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。<br/>**说明**：从API version 18开始，支持该接口。 |
+| hidebug.setJsRawHeapTrimLevel | 设置当前进程转储虚拟机原始堆快照的裁剪级别。<br/>**说明**：从API version 20开始，支持该接口。 |
 | hidebug.dumpJsHeapData | 使用同步方式导出虚拟机堆，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。 |
 | hidebug.getAppMemoryLimit | 获取应用程序进程内存限制，其中vmHeapLimit为当前线程对应的虚拟机堆大小限制，vmTotalHeapSize为当前进程所有虚拟机堆总和大小的限制。 |
-| hidebug.getAppVMObjectUsed | 获取当前虚拟机中ArkTS对象所占用的内存大小。<br/>**说明**：从API version 21开始，支持该接口。 |
+| hidebug.getAppVMObjectUsedSize | 获取当前虚拟机中ArkTS对象所占用的内存大小。<br/>**说明**：从API version 21开始，支持该接口。 |
 
 ## 获取应用Trace记录信息
 
@@ -240,6 +240,76 @@ LR：保存函数返回的地址。
 | OH_HiDebug_BacktraceFromFp | 获取从给定的栈帧指针开始的回溯帧。<br/>**说明**：从API version 20开始，支持该接口。 |
 | OH_HiDebug_SymbolicAddress | 通过给定的程序计数器（PC）获取详细的符号信息。<br/>**说明**：从API version 20开始，支持该接口。 |
 
+## 线程栈Perf采集
+
+HiDebug提供了线程栈Perf采样功能。该接口通过周期性地采集线程的运行状态，以较低的性能开销，精准捕捉性能热点，与热点函数，并分析热点函数的调用链关系。
+
+### 采样栈规格
+
+Perf采样结果部分示例如下：
+
+   ```text
+Tid: 52129, ThreadName: xample.perftest, Cputime: 3160ms, Count: 42
+42 #00 pc 00000000001e01e4 /system/lib/ld-musl-aarch64.so.1(start+244)(de6b25d6d992bac030d72713568dfb59)
+  42 #01 pc 000000000003682c /system/lib64/module/libtaskpool.z.so(Commonlibrary::Concurrent::TaskPoolModule::TaskRunner::TaskInnerRunner::Run()+76)(40aaf52f6b737f011eed52936860111f)
+    42 #02 pc 000000000003b428 /system/lib64/module/libtaskpool.z.so(Commonlibrary::Concurrent::TaskPoolModule::Worker::ExecuteInThread(void const*)+460)(40aaf52f6b737f011eed52936860111f)
+      42 #03 pc 0000000000018794 /system/lib64/platformsdk/libuv.so(uv_run+420)(eed416babeadbcffb483fd111b5effe6)
+        42 #04 pc 0000000000029bec /system/lib64/platformsdk/libuv.so(uv__io_poll+1060)(eed416babeadbcffb483fd111b5effe6)
+          42 #05 pc 0000000000018180 /system/lib64/platformsdk/libuv.so(uv__async_io+364)(eed416babeadbcffb483fd111b5effe6)
+            42 #06 pc 000000000003c724 /system/lib64/module/libtaskpool.z.so(Commonlibrary::Concurrent::TaskPoolModule::Worker::PerformTask(uv_async_s const*)+1408)(40aaf52f6b737f011eed52936860111f)
+              42 #07 pc 00000000000540e0 /system/lib64/platformsdk/libace_napi.z.so(napi_call_function+184)(61530eabcb1b8bae5c105ebcb2151bc1)
+                42 #08 pc 000000000078fab8 /system/lib64/platformsdk/libark_jsruntime.so(panda::FunctionRef::CallForNapi(panda::ecmascript::EcmaVM const*, panda::JSValueRef*, panda::JSValueRef* const*, int)+940)(bc704f4139f03a59a1d34448f7b59fd0)
+                  42 #09 pc 00000000001e5170 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::InterpreterAssembly::Execute(panda::ecmascript::EcmaRuntimeCallInfo*)+268)(bc704f4139f03a59a1d34448f7b59fd0)
+                    42 #10 at AddThread (entry|entry|1.0.0|src/main/ets/pages/Index.ts:13:21)
+                      42 #11 pc 00000000004494b0 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallthis2Imm8V8V8V8StwCopy+396)
+                        42 #12 pc 0000000000de3efc /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
+                          42 #13 pc 000000000005ad2c /system/lib64/platformsdk/libace_napi.z.so(panda::JSValueRef ArkNativeFunctionCallBack<true>(panda::JsiRuntimeCallInfo*)+224)(61530eabcb1b8bae5c105ebcb2151bc1)
+                            42 #14 pc 000000000000a498 /data/storage/el1/bundle/libs/arm64/libentry.so(94ed3a52d7ef751a94358709d11c99545960cdd4)
+                              41 #15 pc 000000000000a228 /data/storage/el1/bundle/libs/arm64/libentry.so(TestMyFunc()+120)(94ed3a52d7ef751a94358709d11c99545960cdd4)
+                              1 #15 pc 000000000000a21c /data/storage/el1/bundle/libs/arm64/libentry.so(TestMyFunc()+108)(94ed3a52d7ef751a94358709d11c99545960cdd4)
+   ```
+其中首行内容为线程号、线程名称、接口调用过程中目标线程占用的CPU时间（由于接口本身存在性能消耗，该值会略大于实际采样期间的CPU占用时间），以及该线程采样次数。其中线程采样次数小于等于采样次数（采样频率HZ * 采样时间ms * 单位转换1s/1000ms）。
+
+除首行内容外每一行表示一个栈信息，每一行栈帧信息所表示的意义可以按如下方式解读：
+
+native帧格式如下：
+
+   ```text
+   41 #15 pc 000000000000a228 /data/storage/el1/bundle/libs/arm64/libentry.so(TestMyFunc()+120)(94ed3a52d7ef751a94358709d11c99545960cdd4)
+   ^   ^       ^                                                      ^              ^                   ^ 
+   1   2       3                                                      4              5                   6
+   
+   1 表示采样到此帧的次数，该值小于或等于线程采样次数。
+   2 表示帧的调用层级，行缩进大小与该层级对应，当前层级的采样次数为下一层级的采样次数之和。
+   3 为native帧PC值。
+   4 表示调用的文件路径。
+   5 调用的函数名及代码行偏移。
+   6 so文件md5值。
+   ```
+
+JS帧格式如下：
+
+   ```text
+   42 #10 at AddThread (entry|entry|1.0.0|src/main/ets/pages/Index.ts:13:21)
+   ^   ^         ^                                             ^
+   1   2         3                                             4
+   
+   1 表示采样到此帧的次数，与native帧意义相同。
+   2 表示帧的调用层级，与native帧意义相同。
+   3 表示调用函数名。
+   4 表示调用函数所在的路径，文件及行列号。
+   ```
+
+> **注意**：
+>
+> 在使用Perf进行内核栈回溯采样时，采样栈深度小于50，且需借助帧指针（frame-pointer）。若采集的调用栈在三方库中中断，请检查对应的三方库是否开启栈指针功能。
+
+### 接口说明（C/C++）
+
+| 接口名 | 描述       |
+| -------- |----------|
+| OH_HiDebug_RequestThreadLiteSampling | 申请线程栈采样。<br/>**说明**：从API version 22开始，支持该接口。 |
+
 ## 设置资源泄露检测阈值
 
 HiDebug提供设置系统资源泄露检测阈值的接口，开发者可根据业务需求自定义资源泄露事件触发的阈值。此接口主要用于辅助内存泄漏检测和功能开发，详情请参考[资源泄漏检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)。
@@ -279,7 +349,7 @@ HiDebug提供了获取应用调试状态和启动系统进程DUMP信息采集等
 
 接口返回的路径为设备内的真实物理路径，如需要在应用内访问，请参考[应用沙箱路径和真实物理路径的对应关系](../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)，需将真实物理路径转化为沙箱路径。
 
-例如：/data/app/el2/100/log/com.example.myapplication/trace/com.example.myapplication_20250604_173158.trace -> /data/storage/el2/base/trace/com.example.myapplication_20250604_173158.trace
+例如：/data/app/el2/100/log/com.example.myapplication/trace/com.example.myapplication_20250604_173158.trace -> /data/storage/el2/log/trace/com.example.myapplication_20250604_173158.trace
 
 **在使用OH_HiDebug_GetAppThreadCpuUsage与getAppThreadCpuUsage接口获取线程CPU使用率时，新创建线程的使用率为0**
 

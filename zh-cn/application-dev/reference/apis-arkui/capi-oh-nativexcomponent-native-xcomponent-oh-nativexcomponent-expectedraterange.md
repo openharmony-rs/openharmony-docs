@@ -1,4 +1,14 @@
 # OH_NativeXComponent_ExpectedRateRange
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct {...} OH_NativeXComponent_ExpectedRateRange
+```
 
 ## 概述
 

@@ -1,4 +1,10 @@
 # @ohos.application.formProvider (formProvider)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 
 FormProvider模块提供了卡片提供方相关接口的能力，开发者在开发卡片时，可通过该模块提供接口实现更新卡片，设置卡片更新时间，获取卡片信息，请求发布卡片等。
 
@@ -72,7 +78,7 @@ setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
 
   let formId: string = '12400633174999288';
   formProvider.setFormNextRefreshTime(formId, 5).then(() => {
-    console.log('formProvider setFormNextRefreshTime success');
+    console.info('formProvider setFormNextRefreshTime success');
   }).catch((error: Base.BusinessError) => {
     console.error(`formProvider setFormNextRefreshTime, error: ${JSON.stringify(error)}`);
   });
@@ -149,7 +155,7 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Pr
   }
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formProvider.updateForm(formId, obj).then(() => {
-    console.log('formProvider updateForm success');
+    console.info('formProvider updateForm success');
   }).catch((error: Base.BusinessError) => {
     console.error(`formProvider updateForm, error: ${JSON.stringify(error)}`);
   });

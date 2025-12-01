@@ -57,7 +57,7 @@ This tool can be used only in the eng version. If it is used in the user version
 ## setting
 
   ```bash
-  # Sets notification parameters.
+  # Set notification parameters.
   anm setting [<options>]
   ```
 

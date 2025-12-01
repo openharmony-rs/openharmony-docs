@@ -5,7 +5,7 @@
 <!--Owner: @shengu_lancer; @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 可滚动的容器组件，当子组件的布局尺寸超过父组件的尺寸时，内容可以滚动。
 
@@ -48,7 +48,7 @@ Scroll(scroller?: Scroller)
 
 scrollable(value: ScrollDirection)
 
-设置滚动方向。
+设置滚动方向。该值被修改后会重置滚动偏移量。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -100,7 +100,7 @@ scrollBarColor(color: Color | number | string)
 
 scrollBarColor(color: Color | number | string | Resource)
 
-设置滚动条的颜色。
+设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor)相比，color参数开始支持Resource类型。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -380,7 +380,7 @@ onScrollFrameBegin(event: OnScrollFrameBeginCallback)
 
 支持offsetRemain为负值。
 
-若通过onScrollFrameBegin事件和scrollBy方法实现容器嵌套滚动，需设置子滚动节点的EdgeEffect为None。如Scroll嵌套List滚动时，List组件的edgeEffect属性需设置为EdgeEffect.None。
+若通过onScrollFrameBegin事件和scrollBy方法实现容器嵌套滚动，需设置子滚动节点的EdgeEffect为None。如Scroll嵌套List滚动时，List组件的edgeEffect属性需设置为EdgeEffect.None，否则抛滑List，会触发List的边缘回弹动画，导致嵌套滚动失效。
 
 满足以下任一条件时触发该事件：
 
@@ -428,8 +428,8 @@ onScroll(event: (xOffset: number, yOffset: number) => void)
 
 | 参数名  | 类型                                                      | 必填 | 说明                   |
 | ------- | --------------------------------------------------------- | ---- | ---------------------- |
-| xOffset     | number                                                  | 是   | 每帧滚动时水平方向的偏移量，Scroll的内容向左滚动时偏移量为正，向右滚动时偏移量为负。<br/>单位vp。 |
-| yOffset     | number                                                  | 是   | 每帧滚动时竖直方向的偏移量，Scroll的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
+| xOffset     | number                                                  | 是   | 相对于上一帧水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。<br/>单位vp。 |
+| yOffset     | number                                                  | 是   | 相对于上一帧竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
 
 ### onWillScroll<sup>12+</sup>
 
@@ -507,7 +507,7 @@ onScrollEdge(event: OnScrollEdgeCallback)
 | ------ | --------------------------------- | ---- | ------------------ |
 | event   | [OnScrollEdgeCallback](#onscrolledgecallback18) | 是   | 滚动到的边缘位置。<br/>当Scroll设置为水平方向滚动时，上报[Edge.Center](ts-appendix-enums.md#edge)表示水平方向起始位置，上报[Edge.Baseline](ts-appendix-enums.md#edge)表示水平方向末尾位置。由于[Edge.Center](ts-appendix-enums.md#edge)和[Edge.Baseline](ts-appendix-enums.md#edge)枚举值已经废弃，推荐使用[onReachStart](ts-container-scrollable-common.md#onreachstart11)、[onReachEnd](ts-container-scrollable-common.md#onreachend11)事件监听是否滚动到边界。 |
 
-### onScrollEnd<sup>(deprecated) </sup>
+### onScrollEnd<sup>(deprecated)</sup>
 
 onScrollEnd(event: () => void)
 
@@ -629,8 +629,8 @@ Scroll滚动时触发的回调。
 
 | 参数名      | 类型                                                    | 必填 | 说明                                                         |
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| xOffset     | number                                                  | 是   | 每帧滚动时水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。<br/>单位vp。 |
-| yOffset     | number                                                  | 是   | 每帧滚动时竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
+| xOffset     | number                                                  | 是   | 相对于上一帧水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。<br/>单位vp。 |
+| yOffset     | number                                                  | 是   | 相对于上一帧竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
 | scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是  | 当前滚动状态。                                               |
 
 >  **说明：**
@@ -651,8 +651,8 @@ Scroll滚动前触发的回调。
 
 | 参数名      | 类型                                                    | 必填 | 说明                                                         |
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| xOffset     | number                                                  | 是   | 每帧滚动时水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。<br/>单位vp。 |
-| yOffset     | number                                                  | 是   | 每帧滚动时竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
+| xOffset     | number                                                  | 是   | 相对于上一帧水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。<br/>单位vp。 |
+| yOffset     | number                                                  | 是   | 相对于上一帧竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
 | scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是  | 当前滚动状态。                                               |
 | scrollSource | [ScrollSource](ts-appendix-enums.md#scrollsource12) | 是 | 当前滚动操作的来源。 |
 
@@ -703,7 +703,7 @@ Scroll每帧滚动前触发的回调。
 
 ## OnScrollFrameBeginHandlerResult<sup>18+</sup>对象说明
 
-[OnScrollFrameBeginCallback](#onscrollframebegincallback18)返回的实际滚动偏移量。
+[OnScrollFrameBeginCallback](#onscrollframebegincallback18)返回的实际相对上一帧滚动偏移量。
 
 > **说明：**
 >
@@ -715,7 +715,7 @@ Scroll每帧滚动前触发的回调。
 
 | 名称  | 类型  | 只读 | 可选 | 说明  |
 | ----- | ------ | ---- | -- | ----- |
-| offsetRemain<sup>9+</sup>     | number | 否   | 否 | 实际滚动偏移量。<br/>单位vp。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| offsetRemain<sup>9+</sup>     | number | 否   | 否 | 实际相对上一帧的滚动偏移量。<br/>单位vp。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## ScrollOnDidZoomCallback<sup>20+</sup>
 
@@ -776,7 +776,7 @@ scrollTo(options: ScrollOptions)
 
 | 参数名   | 类型 | 必填   | 说明      |
 | ----- | ---- | ---- | --------- |
-| options | [ScrollOptions](#scrolloptions18对象说明) | 是    | 滑动到指定位置的参数。 
+| options | [ScrollOptions](#scrolloptions18对象说明) | 是    | 滑动到指定位置的参数。 |
 
 >  **说明：**
 >
@@ -862,7 +862,8 @@ scrollPage(value: { next: boolean, direction?: Axis })
 
 currentOffset(): OffsetResult
 
-获取当前的滚动偏移量。
+获取当前的滚动总偏移量。
+Grid、List、WaterFlow组件有懒加载机制，组件内容没有加载并布局完成时，内容总偏移量通过估算得到，估算结果可能会有误差。其中List组件可以通过[childrenMainSize](./ts-container-list.md#childrenmainsize12)属性解决估算不准确的问题。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -872,7 +873,7 @@ currentOffset(): OffsetResult
 
 | 类型  | 说明 |
 | -------- | -------- |
-|  [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) | 返回当前的滚动偏移量。<br/>**说明：**<br/>当scroller控制器未绑定容器组件或者容器组件被异常释放时，currentOffset的返回值为空。|
+|  [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) | 返回当前的滚动总偏移量。<br/>**说明：**<br/>当scroller控制器未绑定容器组件或者容器组件被异常释放时，currentOffset的返回值为空。|
 
 ### scrollToIndex
 
@@ -888,6 +889,15 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 > 1.仅支持ArcList、Grid、List、WaterFlow组件。
 >
 > 2.在LazyForEach、ForEach、Repeat刷新数据源时，需确保在数据刷新完成之后再调用此接口。
+>
+> 3.从API version 11开始，在List中支持[contentStartOffset](ts-container-list.md#contentstartoffset11)和[contentEndOffset](ts-container-list.md#contentendoffset11)。从API version 22开始，在Grid和Waterflow组件中支持设置[contentStartOffset](ts-container-scrollable-common.md#contentstartoffset22)和[contentEndOffset](ts-container-scrollable-common.md#contentendoffset22)。
+>
+> - 当滚动容器组件设置contentStartOffset时，如果ScrollAlign设置为START，滚动结束时，指定item首部会与滚动容器组件contentStartOffset处对齐。
+> 
+> - 当滚动容器组件设置contentEndOffset时，如果ScrollAlign设置为END，滚动结束时，指定item尾部会与滚动容器组件contentEndOffset处对齐。
+> 
+> - 当滚动容器组件设置contentStartOffset或contentEndOffset时，如果ScrollAlign设置为AUTO，且指定item完全处于显示区内，不做调整；否则依照滚动距离最短的原则，将指定item首部与滚动组件contentStartOffset处对齐，或指定item尾部与滚动组件contentEndOffset处对齐，使指定item完全显示。
+> 
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1024,6 +1034,42 @@ getItemIndex(x: number, y: number): number
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100004   |The controller not bound to component.                              |
 
+### contentSize<sup>22+</sup>
+
+contentSize(): SizeResult
+
+获取滚动组件内容总大小。
+
+>  **说明：**
+>
+>  Grid、List、WaterFlow组件有懒加载机制，组件内容没有加载并布局完成时，内容总大小通过估算得到，估算结果可能会有误差。其中List组件可以通过childrenMainSize属性解决估算不准问题。
+>
+>  Grid、List、WaterFlow和Scroll组件主轴方向内容大小为所有子组件布局后的总大小，交叉轴方向内容大小为组件自身交叉轴方向大小减去padding和border后的大小。
+>
+>  当Scroll组件设置scrollable为ScrollDirection.FREE自由滚动模式时，获取到的内容总大小为子组件缩放后的总大小。
+>
+>  当Scroll组件设置scrollable为ScrollDirection.None不可滚动时，获取到的内容总大小为0。
+>
+>  当Grid组件同时设置columnsTemplate和rowsTemplate，或columnsTemplate和rowsTemplate都不设置时即为不可滚动场景，此时获取到的内容总大小高度为0，宽度为Grid组件内容区宽度。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                                                     | 说明                                               |
+| -------------------------------------------------------- | -------------------------------------------------- |
+| [SizeResult](ts-custom-component-layout.md#sizeresult10) | 滚动组件内容总大小，包括内容宽度和高度。<br/>单位：vp |
+
+**错误码**：
+
+以下错误码详细介绍请参考[滚动类组件错误码](../errorcode-scroll.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 100004   |The controller not bound to component.                              |
+
 ## OffsetResult<sup>11+</sup>对象说明
 
 滑动偏移量对象。
@@ -1130,8 +1176,8 @@ getItemIndex(x: number, y: number): number
 
 | 名称    | 类型                                                     | 只读 | 可选 | 说明                                                     |
 | --------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
-| xOffset<sup>10+</sup>   | number&nbsp;\|&nbsp;string                                   | 否   | 否 | 水平滚动偏移。<br/>**说明：** <br/>该参数值不支持设置百分比。<br/>仅滚动轴为x轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| yOffset<sup>10+</sup>   | number&nbsp;\|&nbsp;string                                   | 否   | 否 | 垂直滚动偏移。<br/>**说明：** <br/>该参数值不支持设置百分比。<br/>仅滚动轴为y轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| xOffset<sup>10+</sup>   | number&nbsp;\|&nbsp;string                                   | 否   | 否 | 水平滚动总偏移量。<br/>**说明：** <br/>该参数值不支持设置百分比。<br/>仅滚动轴为x轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| yOffset<sup>10+</sup>   | number&nbsp;\|&nbsp;string                                   | 否   | 否 | 垂直滚动总偏移量。<br/>**说明：** <br/>该参数值不支持设置百分比。<br/>仅滚动轴为y轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | animation<sup>10+</sup> | [ScrollAnimationOptions](#scrollanimationoptions12对象说明)&nbsp;\|&nbsp;boolean | 否   | 是 | 动画配置。<br/>- ScrollAnimationOptions:&nbsp; 自定义滚动动效。 <br/>- boolean:&nbsp;使能默认弹簧动效。<br/>默认值：<br/>ScrollAnimationOptions: { duration: 1000, curve: Curve.Ease, canOverScroll: false } <br/>boolean:&nbsp;false<br/>**说明：** <br/>当前List、Scroll、Grid、WaterFlow均支持boolean类型和ICurve曲线。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | canOverScroll<sup>20+</sup>   | boolean                                   | 否   | 是 | 滚动目标位置是否可以超出边界停留。仅当组件的edgeEffect设置为EdgeEffect.Spring时，滚动能够越界停留。<br/>设置为true时滚动可以在过界后停留，设置为false时滚动无法在过界后停留。<br/>默认值：false <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
@@ -1683,7 +1729,7 @@ struct ScrollExample {
 
 ### 示例9（划动翻页效果）
 
-该示例通过enablePaging接口，实现了Scroll组件划动翻页效果。
+该示例通过enablePaging接口，实现了Scroll组件滑动翻页效果。
 
 ```ts
 // xxx.ets
@@ -1781,7 +1827,7 @@ struct StickyNestedScroll {
 
 ### 示例11（自由滚动和缩放）
 
-该示例实现了Scroll组件自由滚动和缩放效果。
+从API version 20开始，该示例实现了Scroll组件自由滚动和缩放效果。
 ```ts
 @Entry
 @Component
@@ -1812,3 +1858,68 @@ struct ScrollZoomExample {
 }
 ```
 ![free_scroll_zoom](figures/free_scroll_zoom.gif)
+
+### 示例12（获取内容总大小）
+
+从API version 22 开始，该示例实现了获取内容总大小的功能。
+```ts
+@Entry
+@Component
+struct ScrollExample1 {
+  scroller: Scroller = new Scroller();
+  private arr: number[] = []
+
+  aboutToAppear() {
+    for (let j = 0; j < 10; j++) {
+      this.arr.push(j);
+    }
+  }
+
+  @State contentWidth: number = -1;
+  @State contentHeight: number = -1;
+
+  build() {
+    Column() {
+      Text('设置scroller控制器和ForEach')
+      Row() {
+        // 点击按钮来调用contentSize函数获取内容尺寸
+        Button('GetContentSize')
+          .onClick(() => {
+            // 通过调用contentSize函数获取内容尺寸的宽度值
+            this.contentWidth = this.scroller.contentSize().width;
+            // 通过调用contentSize函数获取内容尺寸的高度值
+            this.contentHeight = this.scroller.contentSize().height;
+          })
+        // 将获取到的内容尺寸信息通过文本进行呈现
+        Text('Width：' + this.contentWidth + '，Height：' + this.contentHeight)
+          .fontColor(Color.Red)
+          .height(50)
+      }
+
+      Stack({ alignContent: Alignment.TopStart }) {
+        Scroll(this.scroller) {
+          Column() {
+            ForEach(this.arr, (item: number) => {
+              Text(item.toString())
+                .width('90%')
+                .height(150)
+                .backgroundColor(0xFFFFFF)
+                .borderRadius(15)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .margin({ top: 10 })
+            }, (item: number) => item.toString())
+          }.width('100%')
+        }
+        .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
+        .scrollBar(BarState.On) // 滚动条常驻显示
+        .scrollBarColor(Color.Gray) // 滚动条颜色
+        .scrollBarWidth(10) // 滚动条宽度
+        .friction(0.6)
+        .edgeEffect(EdgeEffect.None)
+      }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+    }
+  }
+}
+```
+![scrollContentSize](figures/scrollContentSize.gif)

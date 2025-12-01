@@ -54,6 +54,8 @@ import { relationalStore } from '@kit.ArkData';
 
 **示例：**
 
+示例代码中this.context定义见Stage模型的应用[Context](../apis-ability-kit/js-apis-inner-application-context.md)。
+
 ```ts
 // 设置数据库版本
 import { UIAbility } from '@kit.AbilityKit';
@@ -93,7 +95,7 @@ class EntryAbility extends UIAbility {
 
 insert(table: string, values: ValuesBucket, callback: AsyncCallback&lt;number&gt;):void
 
-向目标表中插入一行数据，使用callback异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+向目标表中插入一行数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -175,7 +177,7 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket,  conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;):void
 
-向目标表中插入一行数据，使用callback异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -259,7 +261,7 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket):Promise&lt;number&gt;
 
-向目标表中插入一行数据，使用Promise异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+向目标表中插入一行数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -346,7 +348,7 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket,  conflict: ConflictResolution):Promise&lt;number&gt;
 
-向目标表中插入一行数据，使用Promise异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -434,7 +436,7 @@ if (store != undefined) {
 
 insertSync(table: string, values: ValuesBucket,  conflict?: ConflictResolution):number
 
-向目标表中插入一行数据。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+向目标表中插入一行数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -521,7 +523,7 @@ if (store != undefined) {
 
 insertSync(table: string, values: sendableRelationalStore.ValuesBucket, conflict?: ConflictResolution):number
 
-传入Sendable数据，向目标表中插入一行数据。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+传入Sendable数据，向目标表中插入一行数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -594,6 +596,8 @@ if (store != undefined) {
 batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;number&gt;):void
 
 向目标表中插入一组数据，使用callback异步回调。
+
+接口报错，表示插入数据失败；接口没有报错但返回值为-1时，也表示插入数据失败。
 
 从API version 20开始，支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)。
 
@@ -672,7 +676,7 @@ const valueBucket3: relationalStore.ValuesBucket = {
 let valueBuckets = new Array(valueBucket1, valueBucket2, valueBucket3);
 if (store != undefined) {
   (store as relationalStore.RdbStore).batchInsert("EMPLOYEE", valueBuckets, (err, insertNum) => {
-    if (err) {
+    if (err || insertNum == -1) {
       console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
       return;
     }
@@ -686,6 +690,8 @@ if (store != undefined) {
 batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&gt;
 
 向目标表中插入一组数据，使用Promise异步回调。
+
+接口报错，表示插入数据失败；接口没有报错但返回值为-1时，也表示插入数据失败。
 
 从API version 20开始，该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
 
@@ -773,6 +779,10 @@ const valueBucket3: relationalStore.ValuesBucket = {
 let valueBuckets = new Array(valueBucket1, valueBucket2, valueBucket3);
 if (store != undefined) {
   (store as relationalStore.RdbStore).batchInsert("EMPLOYEE", valueBuckets).then((insertNum: number) => {
+    if (insertNum == -1) {
+      console.error(`batchInsert is failed`);
+      return;
+    }
     console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
   }).catch((err: BusinessError) => {
     console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
@@ -802,6 +812,8 @@ await store!.batchInsert("test", valueBucketArray); // 执行批量写入
 batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;):number
 
 向目标表中插入一组数据。
+
+接口报错，表示插入数据失败；接口没有报错但返回值为-1时，也表示插入数据失败。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -884,6 +896,10 @@ let valueBuckets = new Array(valueBucket1, valueBucket2, valueBucket3);
 if (store != undefined) {
   try {
     let insertNum: number = (store as relationalStore.RdbStore).batchInsertSync("EMPLOYEE", valueBuckets);
+    if (insertNum == -1) {
+      console.error(`batchInsertSync is failed`);
+      return;
+    }
     console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
   } catch (err) {
     console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
@@ -895,7 +911,13 @@ if (store != undefined) {
 
 batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): Promise&lt;number&gt;
 
-向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式。使用Promise异步回调。
+向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)。使用Promise异步回调。
+
+单次插入参数的最大数量限制为32766，超出上限会返回14800000错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。
+
+例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。
+
+请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -991,7 +1013,13 @@ if (store != undefined) {
 
 batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): number
 
-向目标表中插入一组数据。
+向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)。
+
+单次插入参数的最大数量限制为32766，超出上限会返回14800000错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。
+
+例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。
+
+请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1086,7 +1114,7 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void
 
-根据RdbPredicates的指定实例对象更新数据库中的数据，使用callback异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据RdbPredicates的指定实例对象更新数据库中的数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1170,7 +1198,7 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;):void
 
-根据RdbPredicates的指定实例对象更新数据库中的数据，使用callback异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1255,7 +1283,7 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates):Promise&lt;number&gt;
 
-根据RdbPredicates的指定实例对象更新数据库中的数据，使用Promise异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据RdbPredicates的指定实例对象更新数据库中的数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1344,7 +1372,7 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution):Promise&lt;number&gt;
 
-根据RdbPredicates的指定实例对象更新数据库中的数据，使用Promise异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1434,7 +1462,7 @@ if (store != undefined) {
 
 updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictResolution):number
 
-根据RdbPredicates的指定实例对象更新数据库中的数据。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据RdbPredicates的指定实例对象更新数据库中的数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1706,7 +1734,7 @@ if (store != undefined) {
 
 query(predicates: RdbPredicates, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-根据指定条件查询数据库中的数据，使用callback异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据指定条件查询数据库中的数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1763,7 +1791,7 @@ if (store != undefined) {
 
 query(predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-根据指定条件查询数据库中的数据，使用callback异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据指定条件查询数据库中的数据，支持指定要查询的列，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1821,7 +1849,7 @@ if (store != undefined) {
 
 query(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise&lt;ResultSet&gt;
 
-根据指定条件查询数据库中的数据，使用Promise异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据指定条件查询数据库中的数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2110,7 +2138,7 @@ if (store != undefined && deviceId != undefined) {
 
 querySql(sql: string, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。
+根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用，当前支持的语法见[规格限制](../../database/data-persistence-by-vector-store.md#规格限制)。
 
@@ -2187,7 +2215,7 @@ let resultSet2 = await store.querySql(querySql2);
 
 querySql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。
+根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，支持传入SQL语句中参数的值，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用，当前支持的语法见[规格限制](../../database/data-persistence-by-vector-store.md#规格限制)。
 
@@ -2247,7 +2275,7 @@ if (store != undefined) {
 
 querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt;
 
-根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用Promise异步回调。
+根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用，当前支持的语法见[规格限制](../../database/data-persistence-by-vector-store.md#规格限制)。
 
@@ -2444,7 +2472,7 @@ if (store != undefined) {
 
 executeSql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&lt;void&gt;):void
 
-执行指定的SQL语句，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。
+执行指定的SQL语句，支持传入SQL语句中参数的值，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。
 
 此接口不支持执行查询、附加数据库和事务操作，可以使用[querySql](#querysql10)、[query](#query10)、[attach](#attach12)、[beginTransaction](#begintransaction)、[commit](#commit)等接口代替。
 
@@ -3226,7 +3254,7 @@ if (store != undefined) {
 
 commit(txId : number):Promise&lt;void&gt;
 
-提交已执行的SQL语句，跟[beginTrans](#begintrans12)配合使用。
+提交已执行的SQL语句，跟[beginTrans](#begintrans12)配合使用，使用Promise异步回调。
 
 该接口仅支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
 
@@ -3363,7 +3391,7 @@ if (store != undefined) {
 
 rollback(txId : number):Promise&lt;void&gt;
 
-回滚已经执行的SQL语句，跟[beginTrans](#begintrans12)配合使用。
+回滚已经执行的SQL语句，跟[beginTrans](#begintrans12)配合使用，使用Promise异步回调。
 
 该接口仅支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
 
@@ -3765,7 +3793,7 @@ if (store != undefined) {
 
 setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, callback: AsyncCallback&lt;void&gt;): void
 
-设置分布式数据库表，使用callback异步回调。
+设置分布式数据库表，支持指定表的分布式类型，使用callback异步回调。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3809,7 +3837,7 @@ if (store != undefined) {
 
 setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, config: DistributedConfig, callback: AsyncCallback&lt;void&gt;): void
 
-设置分布式数据库表，使用callback异步回调。
+设置分布式数据库表，支持指定表的分布式类型和表的分布式配置信息，使用callback异步回调。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3856,7 +3884,7 @@ if (store != undefined) {
 
  setDistributedTables(tables: Array&lt;string>, type?: DistributedType, config?: DistributedConfig): Promise&lt;void>
 
-设置分布式数据库表，使用Promise异步回调。
+设置分布式数据库表，支持指定表的分布式类型和表的分布式配置信息，使用Promise异步回调。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -5301,7 +5329,7 @@ if (store != undefined) {
 
 cleanDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
 
-清理云端删除的数据同步到本地后，未自动清理的，且数据的游标（cursor）小于指定游标的数据。若无cursor参数，将全部清理。
+清理云端删除的数据同步到本地后，未自动清理的，且数据的游标（cursor）小于指定游标的数据，使用Promise异步回调。若无cursor参数，将全部清理。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5363,7 +5391,7 @@ if (store != undefined) {
 
 attach(fullPath: string, attachName: string, waitTime?: number) : Promise&lt;number&gt;
 
-将一个数据库文件附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据。
+将一个数据库文件附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据，使用Promise异步回调。
 
 数据库文件来自文件，且此API不支持附加加密数据库。调用attach接口后，数据库切换为非WAL模式，性能会存在一定的劣化。
 
@@ -5435,7 +5463,7 @@ if (store != undefined) {
 
 attach(context: Context, config: StoreConfig, attachName: string, waitTime?: number) : Promise&lt;number&gt;
 
-将一个当前应用的数据库附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据。
+将一个当前应用的数据库附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据，使用Promise异步回调。
 
 此API不支持加密数据库附加非加密数据库。调用attach接口后，数据库切换为非WAL模式，性能会存在一定的劣化。
 
@@ -5449,7 +5477,7 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 
 | 参数名        | 类型     | 必填  | 说明           |
 | ----------- | ------ | --- | ------------ |
-| context | Context                          | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context | Context                          | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | 是   | 与此RDB存储相关的数据库配置。                                |
 | attachName | string | 是   | 表示附加后的数据库的别名。 |
 | waitTime | number | 否   | 表示附加数据库文件的等待时长。默认值2s，最小值1s，最大值300s。 |
@@ -5550,7 +5578,7 @@ relationalStore.getRdbStore(this.context, STORE_CONFIG2).then(async (rdbStore: r
 
 detach(attachName: string, waitTime?: number) : Promise&lt;number&gt;
 
-将附加的数据库从当前数据库中分离。
+将附加的数据库从当前数据库中分离，使用Promise异步回调。
 
 当所有的附加的数据库被分离后，数据库会重新切换为WAL模式。
 
@@ -5750,7 +5778,6 @@ if (store != undefined) {
 queryLockedRow(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise&lt;ResultSet&gt;
 
 根据指定条件查询数据库中锁定的数据，使用Promise异步回调。
-由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -5835,7 +5862,7 @@ close(): Promise&lt;void&gt;
 
 | 类型                | 说明          |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -5908,6 +5935,8 @@ rekey(cryptoParam?: CryptoParam): Promise\<void>
 | 14800029     | SQLite: The database is full.                                          |
 
 **示例：**
+
+示例代码中this.context定义见Stage模型的应用[Context](../apis-ability-kit/js-apis-inner-application-context.md)。
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -6046,5 +6075,357 @@ try {
   }
 } catch (err) {
   console.error(`SetLocale failed, code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## rekeyEx<sup>22+</sup>
+
+rekeyEx(cryptoParam: CryptoParam): Promise\<void>
+
+手动更新数据库的密钥或加密参数，使用Promise异步回调。
+
+不支持对非WAL模式的数据库进行密钥更新。
+
+手动更新时需要独占访问数据库，此时若存在任何未释放的结果集（ResultSet）、事务（Transaction）或其他进程打开的数据库均会导致更新失败。
+
+支持加密数据库的参数更新，以及加密数据库与非加密数据库之间的相互转换。
+
+数据库越大，执行更新所需的时间越长。
+
+> **说明：**
+>
+> 加密参数变更需谨慎，在完成rekeyEx操作后，getRdbStore时必须使用新的参数来打开数据库，否则可能会导致开库失败。
+> 
+> 如果rekey过程因设备断电等原因中断，操作可能成功也可能失败。因此，建议业务方做好兜底保障（使用RekeyEx前后的参数进行冗余重试），确保不会错误地判断数据库的状态，从而避免出现数据库无法打开的问题。
+> 
+> 如果有加密参数变更，不建议getRdbStore时使用AllowedRebuild参数，防止因为传入的错误加密参数导致数据库发生重建。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名       | 类型                                                               | 必填 | 说明                                       |
+| ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
+| cryptoParam  | [CryptoParam](arkts-apis-data-relationalStore-i.md#cryptoparam14) | 是   | 指定用户自定义的加密参数。|
+
+**返回值：**
+
+| 类型          | 说明                       |
+| -------------- | ------------------------ |
+| Promise\<void> | 无返回结果的Promise对象。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| 801          | Capability not supported.                                               |
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
+| 14800011     | Failed to open the database because it is corrupted.                    |
+| 14800014     | The RdbStore or ResultSet is already closed.                            |
+| 14800021     | SQLite: Generic error.                                                  |
+| 14800023     | SQLite: Access permission denied.                                       |
+| 14800024     | SQLite: The database file is locked.                                    |
+| 14800026     | SQLite: The database is out of memory.                                  |
+| 14800027     | SQLite: Attempt to write a readonly database.                           |
+| 14800028     | SQLite: Some kind of disk I/O error occurred.                           |
+| 14800029     | SQLite: The database is full.                                           |
+
+**示例1：原数据库为默认参数加密数据库，更换密钥和加密参数**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array(),
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC,
+        hmacAlgo: relationalStore.HmacAlgo.SHA256,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+        iterationCount: 1000,
+        cryptoPageSize: 2048,
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**示例2：原数据库为自定义参数加密数据库，更换自定义密钥和加密参数**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    let cryptoParam: relationalStore.CryptoParam = {
+      // 安全提醒：1.空数组encryptionKey表示使用系统生成的密钥（仅适用于部分场景）；2.生产环境应使用应用沙箱密钥或安全存储服务管理密钥，不要在代码中硬编码固定密钥
+      encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+      iterationCount: 1000,
+      encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+      hmacAlgo: relationalStore.HmacAlgo.SHA256,
+      kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+      cryptoPageSize: 1024
+    };
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true,
+      cryptoParam: cryptoParam
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam1: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array([6, 5, 4, 3, 2, 1]),
+        iterationCount: 5000,
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC,
+        hmacAlgo: relationalStore.HmacAlgo.SHA512,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA512,
+        cryptoPageSize: 2048
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam1);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**示例3：原数据库为默认参数加密库，更换自定义密钥和加密参数**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam: relationalStore.CryptoParam = {
+        // 安全提醒：1.空数组encryptionKey表示使用系统生成的密钥（仅适用于部分场景）；2.生产环境应使用应用沙箱密钥或安全存储服务管理密钥，不要在代码中硬编码固定密钥
+        encryptionKey: new Uint8Array([6, 5, 4, 3, 2, 1]),
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC,
+        hmacAlgo: relationalStore.HmacAlgo.SHA256,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+        iterationCount: 1000,
+        cryptoPageSize: 2048,
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**示例4：原数据库为自定义参数加密数据库，更换数据库生成密钥和自定义加密参数**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    let cryptoParam: relationalStore.CryptoParam = {
+      // 安全提醒：1.空数组encryptionKey表示使用系统生成的密钥（仅适用于部分场景）；2.生产环境应使用应用沙箱密钥或安全存储服务管理密钥，不要在代码中硬编码固定密钥
+      encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+      iterationCount: 1000,
+      encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+      hmacAlgo: relationalStore.HmacAlgo.SHA256,
+      kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+      cryptoPageSize: 1024
+    };
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore2.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true,
+      cryptoParam: cryptoParam
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam1: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array(),
+        iterationCount: 5000,
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC,
+        hmacAlgo: relationalStore.HmacAlgo.SHA512,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA512,
+        cryptoPageSize: 2048
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam1);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**示例5：原数据库为自定义参数加密数据库，更换为非加密数据库**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    let cryptoParam: relationalStore.CryptoParam = {
+      // 安全提醒：1.空数组encryptionKey表示使用系统生成的密钥（仅适用于部分场景）；2.生产环境应使用应用沙箱密钥或安全存储服务管理密钥，不要在代码中硬编码固定密钥
+      encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+      iterationCount: 1000,
+      encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+      hmacAlgo: relationalStore.HmacAlgo.SHA256,
+      kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+      cryptoPageSize: 1024
+    };
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true,
+      cryptoParam: cryptoParam
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam1: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array(),
+        encryptionAlgo: relationalStore.EncryptionAlgo.PLAIN_TEXT
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam1);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**示例6：原数据库为非加密数据库，更换为自定义参数加密数据库**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: false,
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam: relationalStore.CryptoParam = {
+        // 安全提醒：1.空数组encryptionKey表示使用系统生成的密钥（仅适用于部分场景）；2.生产环境应使用应用沙箱密钥或安全存储服务管理密钥，不要在代码中硬编码固定密钥
+        encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+        iterationCount: 1000,
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+        hmacAlgo: relationalStore.HmacAlgo.SHA256,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+        cryptoPageSize: 1024
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
 }
 ```

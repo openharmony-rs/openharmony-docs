@@ -11,7 +11,7 @@
 
 ## 拉起系统应用的方式
 
-拉起系统应用除了采用使用前面章节介绍的方式（比如使用openLink拉起指定应用、使用startAbilityByType指定类型的应用），还可以采用如下方式。
+拉起系统应用除了使用前面章节介绍的方式（比如使用openLink拉起指定应用、使用startAbilityByType指定类型的应用），还可以采用如下方式。
 
 - **使用系统Picker组件**
 
@@ -47,7 +47,7 @@
  
 
 - **通知管理：** 当应用通过[requestEnableNotification()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)接口拉起通知授权弹框时，如果用户拒绝授权，将无法使用该接口再次拉起弹框，需要调用[openNotificationSettings()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanageropennotificationsettings13)接口，支持拉起通知管理弹窗。
-
+- **网络管理：** 当应用需要通过WLAN连接网络时，可以通过[openNetworkManagerSettings()](../reference/apis-basic-services-kit/js-apis-settings.md#settingsopennetworkmanagersettings18)接口拉起WLAN设置弹窗。
 
 
 <!--RP1-->

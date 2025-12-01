@@ -5,7 +5,7 @@
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Starting from API version 20, audio decoding in synchronous mode is supported.
 
@@ -16,6 +16,7 @@ For details about the supported decoding capabilities, see [AVCodec Supported Fo
 **When to Use**
 
 Asynchronous mode is generally recommended for most use cases. For details, see [Audio Decoding](audio-decoding.md). Synchronous mode can be used if you need to actively request buffers for frame delivery.
+
 Decoding an audio/video file into a PCM stream typically involves the following steps: [media data demultiplexing](audio-video-demuxer.md) -> audio decoding.
 
 This guide outlines the audio decoding process: inputting audio frames and decoding them into PCM streams.
@@ -86,22 +87,22 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
     For details about DRM APIs, see [DRM](../../reference/apis-drm-kit/capi-drm.md).
 
-     Add the header files.
+    Add the header files.
 
     ```c++
-#include <multimedia/drm_framework/native_mediakeysystem.h>
+    #include <multimedia/drm_framework/native_mediakeysystem.h>
     #include <multimedia/drm_framework/native_mediakeysession.h>
     #include <multimedia/drm_framework/native_drm_err.h>
     #include <multimedia/drm_framework/native_drm_common.h>
     ```
     Link the dynamic libraries in the CMake script.
-    
+
     ``` cmake
-target_link_libraries(sample PUBLIC libnative_drm.so)
+    target_link_libraries(sample PUBLIC libnative_drm.so)
     ```
-    
+
     The sample code is as follows:
-```c++
+    ```c++
     // Create a media key system based on the media key system information. The following uses com.clearplay.drm as an example.
     MediaKeySystem *system = nullptr;
     int32_t ret = OH_MediaKeySystem_Create("com.clearplay.drm", &system);
@@ -109,9 +110,9 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
         printf("create media key system failed");
         return;
     }
-    
+
     // Create a media key session.
-MediaKeySession *session = nullptr;
+    MediaKeySession *session = nullptr;
     DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
     ret = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
     if (ret != DRM_OK) {
@@ -128,39 +129,28 @@ MediaKeySession *session = nullptr;
     bool secureAudio = false;
     ret = OH_AudioCodec_SetDecryptionConfig(audioDec_, session, secureAudio);
     ```
-    
+
 4. Call **OH_AudioCodec_Configure()** to configure the decoder.
 
    Key values of configuration options are described as follows:
 
-   |             Key             |       Description      |                AAC                 | FLAC|               Vorbis               | MPEG |       G711mu        |          AMR (AMR-NB and AMR-WB)        | APE |          G711a          |
-   | ---------------------------- | :--------------: | :--------------------------------: | :--: | :--------------------------------: | :--: | :-----------------: | :-------------------------------: | :--: | :----------------------: |
-   | OH_MD_KEY_ENABLE_SYNC_MODE   |   Synchronous mode. It must be set to **1** if synchronization mode is enabled.  | Mandatory for synchronous mode| Mandatory for synchronous mode| Mandatory for synchronous mode| Mandatory for synchronous mode| Mandatory for synchronous mode| Mandatory for synchronous mode| Mandatory for synchronous mode| Mandatory for synchronous mode|
-   | OH_MD_KEY_AUD_SAMPLE_RATE    |      Sample rate.     |                Mandatory               | Mandatory|                Mandatory                | Mandatory|        Mandatory         |                Mandatory               | Mandatory|           Mandatory          |
-   | OH_MD_KEY_AUD_CHANNEL_COUNT  |      Audio channel count.     |                Mandatory               | Mandatory|                Mandatory                | Mandatory|        Mandatory         |                Mandatory               | Mandatory|           Mandatory          |
-   | OH_MD_KEY_MAX_INPUT_SIZE     |    Maximum input size.  |                Optional               | Optional|                Optional                | Optional|        Optional          |               Optional               | Optional|          Optional           |
-   | OH_MD_KEY_AAC_IS_ADTS        |     ADTS or not.    |             Optional (defaults to **1**)            |  -   |                 -                  |  -   |         -             |               -                  |  -  |         -                |
-   | OH_MD_KEY_AUDIO_SAMPLE_FORMAT   |  Output audio stream format. | Optional (SAMPLE_S16LE, SAMPLE_F32LE)| Optional| Optional (SAMPLE_S16LE, SAMPLE_F32LE)|  Optional| Optional (default: SAMPLE_S16LE)| Optional (SAMPLE_S16LE, SAMPLE_F32LE)| Optional| Optional (default: SAMPLE_S16LE)|
-   | OH_MD_KEY_BITRATE               |       Bit rate.     |                Optional               | Optional|                Optional               | Optional|         Optional          |              Optional                | Optional|         Optional          |
-   | OH_MD_KEY_IDENTIFICATION_HEADER |    ID header.   |                 -                  |  -   |    Mandatory (Either this parameter or **MD_KEY_CODEC_CONFIG** must be set.)   |  -   |          -            |                -                  |  -  |           -            |
-   | OH_MD_KEY_SETUP_HEADER          |   Setup header. |                 -                  |  -   |    Mandatory (Either this parameter or **MD_KEY_CODEC_CONFIG** must be set.)   |  -   |          -            |                -                 |  -  |            -            |
-   | OH_MD_KEY_CODEC_CONFIG          | Codec-specific data.|                Optional                |  -   |   Mandatory (Either this parameter or the combination of **MD_KEY_IDENTIFICATION_HEADER** and **MD_KEY_SETUP_HEADER** must be selected.)   |  -   |           -            |                -                 | Optional|           -            |
-   
+   <!--RP1-->
+   ![Audio decoder key configuration](figures/decoder_key.png)
+   <!--RP1End-->
+
    The sample below lists the value range of each audio decoding type.
 
-   | Audio Decoding Type|                                          Sample Rate (Hz)                                             | Audio Channel Count|
-   | ----------- | ----------------------------------------------------------------------------------------------  | :----: |
-   | AAC         | 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000                |  1–8  |
-   | FLAC       | 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000, 192000        |  1–8  |
-   | Vorbis      | 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000, 176400, 192000|  1–8  |
-   | MPEG (MP3)   | 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000                                    |  1–2  |
-   | G711mu      | 8000                                                                                            |   1    |
-   | AMR (amrnb)  | 8000                                                                                            |   1    |
-   | AMR (amrwb)  | 16000                                                                                           |   1    |
-   | APE         | 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000, 176400, 192000|  1–2  |
-   | G711a       | 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000                                    |  1–6  |
-   <!--RP4-->
-   <!--RP4End-->
+   <!--RP2-->
+   ![Audio decoder format range description](figures/decoder_format.png)
+   <!--RP2End-->
+
+   Starting from API version 20, you can query the [sample rate range](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getaudiosupportedsamplerateranges). The following audio decoding types support decoding of any sample rate within their range:
+
+   | Audio Decoding Type|    Sample Rate (Hz)  |
+   | ----------- | --------------- |
+   | FLAC       | 8000 – 384000   |
+   | Vorbis      | 8000 – 192000   |
+   | APE         | 1 – 2147483647  |
 
    ```c++
    // (Mandatory) Configure the audio sample rate.

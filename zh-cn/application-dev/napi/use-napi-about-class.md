@@ -16,6 +16,7 @@
 
 - **类**：类是用于创建对象的模板。它提供了一种封装数据和行为的方式，以便于对数据进行处理和操作。类在ArkTS中是建立在原型（prototype）的基础上的，并且还引入了一些类独有的语法和语义。
 - **实例**：实例是通过类创建具体的对象。类定义了对象的结构和行为，而实例则是类的具体表现。通过实例化类，我们可以访问类中定义的属性和方法，并且每个实例都具有自己的属性值。
+- **原型**：ArkTS也采用Class的概念来实现类型之间的继承，早期EcmaScript规范定义了原型的概念，对象通过原型链的方式来实现继承的。原型的概念可以参考[EcmaScript的社区规范](https://262.ecma-international.org/#sec-terms-and-definitions-prototype)。
 
 ## 场景和功能介绍
 
@@ -44,6 +45,8 @@ Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程
 cpp部分代码
 
 ```cpp
+#include "napi/native_api.h"
+
 static napi_value NewInstance(napi_env env, napi_callback_info info)
 {
     // 传入并解析参数，第一个参数为传入的构造函数，第二个参数为需要传入构造函数的参数
@@ -71,6 +74,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 class Fruit {
   name: string;
   constructor(name: string) {
@@ -110,7 +114,7 @@ hilog.info(0x0000, 'Node-API', 'napi_new_instance %{public}s', JSON.stringify(ob
 
 ### napi_unwrap
 
-从一个被包装的对象中解除包装并获取与之关联的数据指针。
+从一个被包装的对象中获取与之关联的数据指针。
 
 > **说明：**
 >
@@ -219,6 +223,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
     class Obj {}
     let obj: Obj = {};

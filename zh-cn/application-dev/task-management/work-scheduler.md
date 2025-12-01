@@ -4,21 +4,21 @@
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
+<!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
 ### 功能介绍
 
-应用退至后台后，需要执行实时性要求不高的任务，例如有网络时不定期主动获取邮件等，可以使用延迟任务。当应用满足设定条件（包括网络类型、充电类型、存储状态、电池状态、定时状态等）时，将任务添加到执行队列，系统会根据内存、功耗、设备温度、用户使用习惯等统一调度拉起应用。
+应用退至后台后，需要执行实时性要求不高的任务，例如有网络时不定期主动获取邮件等，可以使用延迟任务。当应用满足设定的触发条件（包括网络类型、充电类型、存储状态、电池状态、定时状态等）时，将任务添加到执行队列，系统会根据内存、功耗、设备温度、用户使用习惯等统一调度拉起应用，执行相应的延迟任务。
 
 ### 运行原理
 
 **图1** 延迟任务实现原理  
 ![WorkScheduler](figures/WorkScheduler.png)
 
-应用调用延迟任务接口添加、删除、查询延迟任务，延迟任务管理模块会根据任务设置的条件（通过WorkInfo参数设置，包括网络类型、充电类型、存储状态等）和系统状态（包括内存、功耗、设备温度、用户使用习惯等）统一决策调度时机。
+应用调用延迟任务接口添加、删除、查询延迟任务，延迟任务管理模块会根据任务设置的条件（通过[WorkInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workinfo)参数设置，包括网络类型、充电类型、存储状态等）和系统状态（包括内存、功耗、设备温度、用户使用习惯等）统一决策调度时机。
 
 当满足调度条件或调度结束时，系统会回调应用[WorkSchedulerExtensionAbility](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md)中 onWorkStart() 或 onWorkStop() 的方法，同时会为应用单独创建一个Extension扩展进程用以承载[WorkSchedulerExtensionAbility](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md)，并给[WorkSchedulerExtensionAbility](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md)一定的活动周期，开发者可以在对应回调方法中实现自己的任务逻辑。
 
@@ -42,7 +42,7 @@
   
 - **超时**：WorkSchedulerExtensionAbility单次回调最长运行2分钟。如果超时不取消，系统会终止对应的Extension进程。<!--Del-->对于系统特权应用，可以通过能效资源接口申请WORK_SCHEDULER资源，扩展单次回调运行时长，扩展后在充电状态下为20分钟，非充电状态下为10分钟。<!--DelEnd-->
 
-- **调度延迟**：系统会根据内存、功耗、设备温度、用户使用习惯等统一调度，如当系统内存资源不足或温度达到一定挡位时，系统将延迟调度该任务。
+- **调度延迟**：系统会根据内存、功耗、设备温度、用户使用习惯等统一调度，如当系统内存资源不足或温度达到一定档位时，系统将延迟调度该任务。
 
 - **WorkSchedulerExtensionAbility接口调用限制**：为实现对WorkSchedulerExtensionAbility能力的管控，在WorkSchedulerExtensionAbility中限制以下接口的调用：
 
@@ -64,53 +64,23 @@
 以下是延迟任务开发使用的相关接口，更多接口及使用方式请见[延迟任务调度](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md)文档。
 | 接口名 | 接口描述 |
 | -------- | -------- |
-| startWork(work: WorkInfo): void; | 申请延迟任务 |
-| stopWork(work: WorkInfo, needCancel?: boolean): void; | 取消延迟任务 |
-| getWorkStatus(workId: number, callback: AsyncCallback&lt;WorkInfo&gt;): void; | 获取延迟任务状态（Callback形式） |
-| getWorkStatus(workId: number): Promise&lt;WorkInfo&gt;; | 获取延迟任务状态（Promise形式） |
-| obtainAllWorks(callback: AsyncCallback\<Array\<WorkInfo>>): void; | 获取所有延迟任务（Callback形式） |
-| obtainAllWorks(): Promise&lt;Array&lt;WorkInfo&gt;&gt;; | 获取所有延迟任务（Promise形式） |
-| stopAndClearWorks(): void; | 停止并清除任务 |
-| isLastWorkTimeOut(workId: number, callback: AsyncCallback\<boolean>): void; | 获取上次任务是否超时（针对RepeatWork，Callback形式） |
-| isLastWorkTimeOut(workId: number): Promise&lt;boolean&gt;; | 获取上次任务是否超时（针对RepeatWork，Promise形式） |
+| [startWork(work: WorkInfo): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerstartwork) | 申请延迟任务。 |
+| [stopWork(work: WorkInfo, needCancel?: boolean): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerstopwork) | 取消延迟任务。 |
+| [getWorkStatus(workId: number, callback: AsyncCallback&lt;WorkInfo&gt;): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulergetworkstatus) | 获取延迟任务状态（Callback形式）。 |
+| [getWorkStatus(workId: number): Promise&lt;WorkInfo&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulergetworkstatus-1) | 获取延迟任务状态（Promise形式）。 |
+| [obtainAllWorks(callback: AsyncCallback\<Array\<WorkInfo>>): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerobtainallworks10) | 获取所有延迟任务（Callback形式）。 |
+| [obtainAllWorks(): Promise&lt;Array&lt;WorkInfo&gt;&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerobtainallworks)  | 获取所有延迟任务（Promise形式）。 |
+| [stopAndClearWorks(): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerstopandclearworks) | 停止并清除任务。 |
+| [isLastWorkTimeOut(workId: number, callback: AsyncCallback\<boolean>): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerislastworktimeout10) | 获取上次任务是否超时（针对RepeatWork，Callback形式）。 |
+| [isLastWorkTimeOut(workId: number): Promise&lt;boolean&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerislastworktimeout) | 获取上次任务是否超时（针对RepeatWork，Promise形式）。 |
 
-**表3** WorkInfo参数
-| 名称             | 类型                                | 必填   | 说明               |
-| --------------- | --------------------------------- | ---- | ---------------- |
-| workId          | number                            | 是    | 延迟任务ID。          |
-| bundleName      | string                            | 是    | 延迟任务所在应用的包名。           |
-| abilityName     | string                            | 是    | 包内ability名称。 |
-| networkType     | [NetworkType](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#networktype)       | 否    | 网络类型。             |
-| isCharging      | boolean                           | 否    | 是否充电。<br>- true表示充电触发延迟回调。<br>- false表示不充电触发延迟回调。|
-| chargerType     | [ChargingType](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#chargingtype)     | 否    | 充电类型。             |
-| batteryLevel    | number                            | 否    | 电量。              |
-| batteryStatus   | [BatteryStatus](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#batterystatus)   | 否    | 电池状态。             |
-| storageRequest  | [StorageRequest](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#storagerequest) | 否    | 存储状态。             |
-| isRepeat        | boolean                           | 否    | 是否循环任务。<br>- true表示循环任务。<br>- false表示非循环任务。 |
-| repeatCycleTime | number                            | 否    | 循环间隔，单位为毫秒。             |
-| repeatCount     | number                            | 否    | 循环次数。             |
-| isPersisted     | boolean                           | 否    | 注册的延迟任务是否可保存在系统中。<br>- true表示可保存，即系统重启后，任务可恢复。<br>- false表示不可保存。|
-| isDeepIdle      | boolean                           | 否    | 是否要求设备进入空闲状态。<br>- true表示需要。<br>- false表示不需要。   |
-| idleWaitTime    | number                            | 否    | 空闲等待时间，单位为毫秒。           |
-| parameters      | [key: string]: number \| string \| boolean  | 否    | 携带参数信息。 |
-
-WorkInfo参数用于设置应用条件，参数设置时需遵循以下规则：
-
-- workId、bundleName、abilityName为必填项，bundleName需为本应用包名。
-
-- 携带参数信息仅支持number、string、boolean三种类型。
-
-- 至少设置一个满足的条件，包括网络类型、充电类型、存储状态、电池状态、定时状态等。
-
-- 对于重复任务，任务执行间隔至少2小时。设置重复任务时间间隔时，须同时设置是否循环或循环次数中的一个。
-
-**表4** 延迟任务回调接口
+**表3** 延迟任务回调接口
 
 以下是延迟任务回调开发使用的相关接口，更多接口及使用方式请见[延迟任务调度回调](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md)文档。
 | 接口名 | 接口描述 |
 | -------- | -------- |
-| onWorkStart(work: workScheduler.WorkInfo): void | 延迟调度任务开始的回调 |
-| onWorkStop(work: workScheduler.WorkInfo): void | 延迟调度任务结束的回调 |
+| [onWorkStart(work: workScheduler.WorkInfo): void](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md#onworkstart) | 延迟调度任务开始的回调。 |
+| [onWorkStop(work: workScheduler.WorkInfo): void](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md#onworkstop) | 延迟调度任务结束的回调。 |
 
 
 ## 开发步骤
@@ -134,14 +104,15 @@ WorkInfo参数用于设置应用条件，参数设置时需遵循以下规则：
    ```
 
 3. 实现WorkSchedulerExtension生命周期接口。
+   <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
    
    ```ts
-   export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
+   export default class WorkSchedulerAbility extends WorkSchedulerExtensionAbility {
      // 延迟任务开始回调
      onWorkStart(workInfo: workScheduler.WorkInfo) {
        console.info(`onWorkStart, workInfo = ${JSON.stringify(workInfo)}`);
        // 打印 parameters中的参数，如：参数key1
-       // console.info(`work info parameters: ${JSON.parse(workInfo.parameters?.toString()).key1}`)
+       console.info(`work info parameters: ${JSON.parse(workInfo.parameters?.toString()).key1}`);
      }
    
      // 延迟任务结束回调。当延迟任务2分钟超时或应用调用stopWork接口取消任务时，触发该回调。
@@ -182,33 +153,36 @@ WorkInfo参数用于设置应用条件，参数设置时需遵循以下规则：
    ```
 
 2. 申请延迟任务。
+   <!-- @[startWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
    
-   ```ts
-   // 创建workinfo
-   const workInfo: workScheduler.WorkInfo = {
+   ``` TypeScript
+   let workInfo: workScheduler.WorkInfo = {
      workId: 1,
-     networkType: workScheduler.NetworkType.NETWORK_TYPE_WIFI,
-     bundleName: 'com.example.application',
-     abilityName: 'MyWorkSchedulerExtensionAbility'
+     networkType: workScheduler.NetworkType.NETWORK_TYPE_ANY,
+     bundleName: 'ohos.samples.workschedulerextensionability',
+     abilityName: 'WorkSchedulerAbility',
+     // ...
    }
    
    try {
      workScheduler.startWork(workInfo);
      console.info(`startWork success`);
-   } catch (error) {
+   }
+   catch (error) {
      console.error(`startWork failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
    }
    ```
 
 3. 取消延迟任务。
-   
+   <!-- @[stopWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
+
    ```ts
    // 创建workinfo
-   const workInfo: workScheduler.WorkInfo = {
+   let workInfo: workScheduler.WorkInfo = {
      workId: 1,
      networkType: workScheduler.NetworkType.NETWORK_TYPE_WIFI,
-     bundleName: 'com.example.application', 
-     abilityName: 'MyWorkSchedulerExtensionAbility' 
+     bundleName: 'ohos.samples.workschedulerextensionability',
+     abilityName: 'WorkSchedulerAbility',
    }
    
    try {

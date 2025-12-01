@@ -1,5 +1,12 @@
 # @ohos.app.ability.wantConstant (wantConstant) (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The wantConstant module provides the actions, entities, and flags used in Want objects.
 
 > **NOTE**

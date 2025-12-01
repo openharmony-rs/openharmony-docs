@@ -19,12 +19,12 @@
 
 ## 接口说明
 
-这部分增强接口，在现有的功能接口的基础上，增加支持参数`userId`用于指定用户ID。
+这部分增强接口在现有功能接口的基础上增加了参数`userId`用于指定用户ID。
 
 指定用户的接口额外支持以下功能和使用条件：
 
 1. 使用方可以同时在options参数中传入[HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel)选项，以指定存储在指定用户的DE区、CE区或ECE区。
-2. 使用方在options参数中不额外传入[HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel)选项时，该接口默认行为为：使用指定userId对应CE存储区的密钥。即不传入[HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel)参数，等同于传入值为[HUKS_AUTH_STORAGE_LEVEL_CE](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel)的[HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel)参数。
+2. 使用方在options参数中不额外传入[HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel)选项时，该接口默认行为是：使用指定userId对应CE存储区的密钥。即不传入[HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel)参数，等同于传入值为[HUKS_AUTH_STORAGE_LEVEL_CE](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel)的[HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel)参数。
 
 除此之外指定用户的接口的用法和支持的算法规格，与不指定用户的对应接口一致。
 
@@ -38,5 +38,5 @@
 | [getKeyItemPropertiesAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksgetkeyitempropertiesasuser)    |  获取密钥属性。     |  [getKeyItemProperties](huks-obtain-key-properties-arkts.md)             |
 | [hasKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#hukshaskeyitemasuser)                        |  查询密钥是否存在。    |  [hasKeyItem](huks-check-key-arkts.md)               |
 | [initSessionAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksinitsessionasuser)                      |  初始化密钥会话。       |  initSession   [加密解密](huks-encryption-decryption-arkts.md) [签名验签](huks-signing-signature-verification-arkts.md) [密钥协商](huks-key-agreement-arkts.md) [密钥派生](huks-key-derivation-arkts.md)           |
-| [attestKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksattestkeyitemasuser)                  |  非匿名密钥证明。    |  [attestKeyItem](huks-key-attestation-arkts.md)                |
+| [attestKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksattestkeyitemasuser)                  |  非匿名密钥证明。    |  [attestKeyItem](huks-key-attestation-arkts-sys.md)                |
 | [anonAttestKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksanonattestkeyitemasuser)          | 匿名密钥证明。     |  [anonAttestKeyItem](huks-key-anon-attestation-arkts.md)                |

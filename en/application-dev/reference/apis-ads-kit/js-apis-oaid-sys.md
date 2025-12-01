@@ -1,11 +1,18 @@
 # @ohos.identifier.oaid (OAID) (System API)
 
-The **OAID** module provides APIs for obtaining and resetting Open Anonymous Device Identifiers (OAIDs).
+<!--Kit: Ads Kit-->
+<!--Subsystem: Advertising-->
+<!--Owner: @SukiEvas-->
+<!--Designer: @zhansf1988-->
+<!--Tester: @hongmei_may-->
+<!--Adviser: @RayShih-->
 
-> **NOTE**
-> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - To use the APIs for obtaining OAIDs, you must [request the ohos.permission.APP_TRACKING_CONSENT permission](../../security/AccessToken/request-user-authorization.md).
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.identifier.oaid (OAID)](js-apis-oaid.md).
+This module provides the capability of resetting open anonymous device identifiers (OAIDs).
+
+> **NOTE**<br>
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.<br>
+> - To use the OAID APIs, you must [request authorization from users](../../security/AccessToken/request-user-authorization.md): ohos .permission.APP_TRACKING_CONSENT.<br>
+> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.identifier.oaid (OAID)](js-apis-oaid.md).
 
 ## Modules to Import
 
@@ -17,7 +24,7 @@ import { identifier } from '@kit.AdsKit';
 
 resetOAID(): void
 
-Resets an OAID.
+Resets the OAID.
 
 **System API**: This is a system API.
 
@@ -25,7 +32,7 @@ Resets an OAID.
 
 **Error codes**
 
-For details about the following error codes, see [OAID Error Codes](errorcode-oaid.md).
+For details about the error codes, see [OAID Error Codes](errorcode-oaid.md).
 
 | ID| Error Message                                                                    |
 |----------|------------------------------------------------------------------------------|
@@ -37,11 +44,6 @@ For details about the following error codes, see [OAID Error Codes](errorcode-oa
 
 ```ts
 import { identifier } from '@kit.AdsKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-try {
-  identifier.resetOAID();
-} catch (err) {
-  hilog.error(0x0000, 'testTag', `Fail to reset OAID. Code is ${err.code}, message is ${err.message}`);
-}
+identifier.resetOAID();
 ```

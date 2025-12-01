@@ -1,5 +1,12 @@
 # MindSpore Lite Kit
 
+<!--Kit: MindSpore Lite Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @zhuguodong8-->
+<!--Designer: @zhuguodong8; @jjfeing-->
+<!--Tester: @principal87-->
+<!--Adviser: @ge-yafang-->
+
 - ArkTS APIs<!--mindspore-lite-arkts-->
   - [@ohos.ai.mindSporeLite (On-device AI Framework)](js-apis-mindSporeLite.md)
 - C APIs<!--mindspore-lite-c-->

@@ -4,16 +4,16 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+Zoom inherits from [ZoomQuery](arkts-apis-camera-ZoomQuery.md).
+
+It provides APIs related to zoom operations.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 11.
-
-Zoom inherits from [ZoomQuery](arkts-apis-camera-ZoomQuery.md).
-
-It provides APIs related to zoom operations.
 
 ## Modules to Import
 
@@ -129,8 +129,6 @@ Sets smooth zoom.
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function setSmoothZoom(sessionExtendsZoom: camera.Zoom, targetZoomRatio: number, mode: camera.SmoothZoomMode): void {
   sessionExtendsZoom.setSmoothZoom(targetZoomRatio, mode);
 }

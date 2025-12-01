@@ -69,7 +69,13 @@ getCalendarManager(context: Context): CalendarManager
 // 该文件为系统生成，目录：entry/src/main/ets/entryability/EntryAbility.ets
 import {
   abilityAccessCtrl,
-  AbilityConstant, common, PermissionRequestResult, Permissions, UIAbility, Want } from '@kit.AbilityKit';
+  AbilityConstant, 
+  common, 
+  PermissionRequestResult, 
+  Permissions, 
+  UIAbility, 
+  Want 
+} from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { calendarManager } from '@kit.CalendarKit';
 import { window } from '@kit.ArkUI';
@@ -137,7 +143,8 @@ createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calend
 
 根据日历账户信息，创建一个Calendar对象，使用callback异步回调。
 
-**需要权限**： ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+**需要权限**：API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -189,7 +196,9 @@ createCalendar(calendarAccount: CalendarAccount): Promise\<Calendar>
 
 根据日历账户信息，创建一个Calendar对象，使用Promise异步回调。
 
-**需要权限**： ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -241,7 +250,9 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback\<void>): void
 
 删除指定Calendar对象，使用callback异步回调。
 
-**需要权限**： ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -299,7 +310,9 @@ deleteCalendar(calendar: Calendar): Promise\<void>
 
 删除指定Calendar对象，使用Promise异步回调。
 
-**需要权限**： ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -358,7 +371,9 @@ getCalendar(callback: AsyncCallback\<Calendar>): void
 
 获取默认Calendar对象，默认Calendar是日历存储首次运行时创建的，若创建Event时不关注其Calendar归属，则无须通过[createCalendar()](#createcalendar)创建Calendar，直接使用默认Calendar，使用callback异步回调。
 
-**需要权限**：ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+**需要权限**：API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -403,7 +418,9 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calendar>
 
 获取指定Calendar对象，使用callback异步回调。
 
-**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -458,7 +475,9 @@ getCalendar(calendarAccount?: CalendarAccount): Promise\<Calendar>
 
 获取默认Calendar对象或者指定Calendar对象，使用Promise异步回调。
 
-**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -507,7 +526,9 @@ getAllCalendars(callback: AsyncCallback\<Calendar[]>): void
 
 获取当前应用所有创建的Calendar对象以及默认Calendar对象，使用callback异步回调。
 
-**需要权限**：ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+**需要权限**：API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -552,7 +573,9 @@ getAllCalendars(): Promise\<Calendar[]>
 
 获取当前应用所有创建的Calendar对象以及默认Calendar对象，使用Promise异步回调。
 
-**需要权限**： ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -593,7 +616,7 @@ calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
 
 editEvent(event: Event): Promise\<number>
 
-通过跳转到日程创建页面创建单个日程，入参Event不填日程id，使用Promise异步回调。使用该接口创建的日程，三方应用无法查询和修改，只能通过系统日历进行查询和修改。
+通过跳转到日程创建页面创建单个日程，入参Event不填日程id，使用Promise异步回调。使用该接口创建的日程，系统日历可以进行查询和修改，申请到READ_WHOLE_CALENDAR权限的三方应用可以查询，申请到WRITE_WHOLE_CALENDAR权限的三方应用可以修改。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -855,6 +878,8 @@ deleteEvent(id: number, callback: AsyncCallback\<void>): void
 
 删除指定id的日程，使用callback异步回调。
 
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
 **系统能力**： SystemCapability.Applications.CalendarData
 
 **参数**：
@@ -961,6 +986,8 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 deleteEvents(ids: number[], callback: AsyncCallback\<void>): void
 
 根据日程id，批量删除日程，使用callback异步回调。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1204,7 +1231,7 @@ getEvents(callback: AsyncCallback\<Event[]>): void
 
 查询当前日历下所有日程，使用callback异步回调。
 
-默认查询字段：id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime、identifier。
+API version 20之前，默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime。从API version 20开始，默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime、identifier。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1317,7 +1344,7 @@ getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise\<Event
 | 参数名      | 类型                        | 必填 | 说明       |
 | ----------- | --------------------------- | ---- | ---------- |
 | eventFilter | [EventFilter](#eventfilter) | 否   | 查询条件。 |
-| eventKey    | (keyof [Event](#event))[]   | 否   | 查询字段。不填时，默认查询字段为：id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime、identifier。|
+| eventKey    | (keyof [Event](#event))[]   | 否   | 查询字段。API version 20之前，不填时默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime；从API version 20开始，不填时默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime、identifier。|
 
 **返回值**：
 
@@ -1599,7 +1626,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 | 名称           | 类型     | 只读    | 可选 | 说明                                                         |
 | -------------- |--------|-------|----| ------------------------------------------------------------ |
 | enableReminder | boolean | 否     | 是  | 是否打开Calendar下所有Event提醒能力。当取值为true时，该Calendar下所有Event具备提醒能力；当取值为false时，不具备提醒能力，默认具备提醒能力。 |
-| color          | number \| string | 否   | 是  | 设置Calendar颜色。值为number时取值范围为0x000000至0xFFFFFF或0x00000000至0xFFFFFFFF，值为string时长度为7或9，如'#FFFFFF'，'#FFFFFFFFF'。不填时或输入错误数据时，默认值为'#0A59F7'。 |
+| color          | number \| string | 否   | 是  | 设置Calendar颜色。值为number时取值范围为0x000000至0xFFFFFF或0x00000000至0xFFFFFFFF，值为string时长度为7或9，如'#FFFFFF'，'#FFFFFFFFF'。不设置时默认值为0xFF0A59F7，输入undefined或错误值时抛异常。 |
 
 ## Event
 

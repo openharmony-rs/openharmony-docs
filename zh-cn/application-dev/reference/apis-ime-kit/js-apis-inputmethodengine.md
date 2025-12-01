@@ -796,7 +796,7 @@ createPanel(ctx: BaseContext, info: PanelInfo, callback: AsyncCallback\<Panel>):
 | 参数名   | 类型        | 必填 | 说明                     |
 | ------- | ----------- | ---- | ------------------------ |
 | ctx     | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前输入法应用上下文信息。 |
-| info    | [PanelInfo](#panelinfo10)   | 是   | 输入法应用信息。 |
+| info    | [PanelInfo](#panelinfo10)   | 是   | 输入法面板信息。 |
 | callback | AsyncCallback\<[Panel](#panel10)> | 是   | 回调函数。当输入法面板创建成功，返回当前创建的输入法面板对象。  |
 
 **错误码：**
@@ -1478,6 +1478,8 @@ resize(width: number, height: number, callback: AsyncCallback\<void>): void
 > **说明**
 >
 > 面板宽度不超出屏幕宽度，面板高度不高于屏幕高度的0.7倍。
+>
+> 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1520,6 +1522,8 @@ resize(width: number, height: number): Promise\<void>
 > **说明**
 >
 > 面板宽度不超出屏幕宽度，面板高度不高于屏幕高度的0.7倍。
+>
+> 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1809,6 +1813,14 @@ adjustPanelRect(flag: PanelFlag, rect: PanelRect): void
 
 预设置输入法应用横竖屏大小。接口调用完毕表示adjust请求已提交到输入法框架，不表示执行完毕。
 
+> **说明:**
+>
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。
+>
+> 此接口为同步接口，接口返回仅代表系统侧收到设置的请求，不代表已完成设置。
+>
+> 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
+
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **参数：**
@@ -1865,6 +1877,8 @@ adjustPanelRect(flag: PanelFlag, rect: EnhancedPanelRect): void
 > 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。此接口兼容[adjustPanelRect](#adjustpanelrect12)的调用方法，若入参rect仅填写属性landscapeRect和portraitRect，则默认调用[adjustPanelRect](#adjustpanelrect12)。
 >
 > 此接口为同步接口，接口返回仅代表系统侧收到设置的请求，不代表已完成设置。
+>
+> 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2139,7 +2153,7 @@ panel.off('sizeChange', (windowSize: window.Size) => {
 
 changeFlag(flag: PanelFlag): void
 
-将输入法应用的面板状态改变为固定态或者悬浮态，仅对[SOFT_KEYBOARD](#paneltype10)生效。
+将输入法应用的面板状态改变为其他[PanelFlag](#panelflag10)形态，仅对[SOFT_KEYBOARD](#paneltype10)生效。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2385,6 +2399,46 @@ inputMethodAbility.createPanel(this.context, panelConfig).then( (panel: inputMet
     })
   });
 })
+```
+
+### setSystemPanelButtonColor<sup>22+</sup>
+
+setSystemPanelButtonColor(fillColor: string | undefined, backgroundColor: string | undefined): Promise\<void>
+
+设置当前面板功能键颜色和功能键的背景颜色。使用Promise异步回调。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明     |
+| -------- | ---------------------- | ---- | -------- |
+| fillColor | string\|undefined | 是   | 功能键的颜色，取值范围为[#01000000, #FFFFFFFF] 或 [#000000, #FFFFFF]，不支持具有完全透明Alpha通道（#00xxxxxx）的值。 |
+| backgroundColor | string\|undefined | 是   | 功能键的背景颜色，取值范围为[#01000000, #FFFFFFFF] 或 [#000000, #FFFFFF]，不支持具有完全透明Alpha通道（#00xxxxxx）的值。 |
+
+**返回值：**
+
+| 类型   | 说明                             |
+| ------- | ------------------------------ |
+| Promise\<void> | Promise对象。无返回结果。  |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let fillColor = "#FFFF00";
+  let backgroundColor = "#0000FF";
+  this.panel.setSystemPanelButtonColor(fillColor, backgroundColor).then(() => {
+    console.info(`setSystemPanelButtonColor success.`);
+  }).catch((error: BusinessError) => {
+    console.error(`setSystemPanelButtonColor failed, code: ${error.code}, message: ${error.message}`);
+  })
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`setSystemPanelButtonColor failed, code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ## KeyboardController
@@ -4522,6 +4576,7 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 | abilityName<sup>20+</sup> | string | 是 | 是 | 编辑框设置的ability名称。|
 | capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | 是 | 是 | 编辑框设置大小写模式。如果没有设置或设置非法值，默认不进行任何首字母大写处理。|
 | gradientMode<sup>20+</sup> | [GradientMode](#gradientmode20) | 是 | 是 | 渐变模式。如果没有设置或设置非法值，默认不使用渐变模式。|
+| extraConfig<sup>22+</sup> | [InputMethodExtraConfig](./js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 是 | 是 | 输入法扩展信息。|
 
 ## KeyEvent
 
@@ -4589,9 +4644,9 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 | -------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | landscapeRect        | [window.Rect](../apis-arkui/arkts-apis-window-i.md#rect7)         | 否   | 是   | 横屏状态时输入法面板窗口的位置大小。<br/>- 当fullScreenMode不填写或值为false时，此属性为必选。 |
 | portraitRect         | [window.Rect](../apis-arkui/arkts-apis-window-i.md#rect7)         | 否   | 是   | 竖屏状态时，输入法面板窗口的位置大小。<br/>- 当fullScreenMode不填写或值为false时，此属性为必选。 |
-| landscapeAvoidY      | number                                                       | 否   | 是   | 横屏状态时，面板中的避让线距离面板顶部的距离。默认值为0。<br/>- 应用内其他系统组件会对避让线以下的输入法面板区域进行避让。<br/>- 面板为固定态时，避让线到屏幕底部的高度不能超过屏幕高度的70%。 |
+| landscapeAvoidY      | number                                                       | 否   | 是   | 横屏状态时，面板中的避让线距离面板顶部的距离，单位px。默认值为0。<br/>- 应用内其他系统组件会对避让线以下的输入法面板区域进行避让。<br/>- 面板为固定态时，避让线到屏幕底部的高度不能超过屏幕高度的70%。 |
 | landscapeInputRegion | Array&lt;[window.Rect](../apis-arkui/arkts-apis-window-i.md#rect7)&gt; | 否   | 是   | 横屏状态时，面板接收输入事件的区域。<br/>- 数组大小限制为[1, 4]。默认值为横屏时的面板大小。<br/>- 传入的热区位置是相对于输入法面板窗口左顶点的位置。 |
-| portraitAvoidY       | number                                                       | 否   | 是   | 竖屏状态时，面板中的避让线距离面板顶部的距离。默认值为0。<br/>- 应用内其他系统组件会对避让线以下的输入法面板区域进行避让。<br/>- 面板为固定态时，避让线到屏幕底部的高度不能超过屏幕高度的70%。 |
+| portraitAvoidY       | number                                                       | 否   | 是   | 竖屏状态时，面板中的避让线距离面板顶部的距离，单位px。默认值为0。<br/>- 应用内其他系统组件会对避让线以下的输入法面板区域进行避让。<br/>- 面板为固定态时，避让线到屏幕底部的高度不能超过屏幕高度的70%。 |
 | portraitInputRegion  | Array&lt;[window.Rect](../apis-arkui/arkts-apis-window-i.md#rect7)&gt; | 否   | 是   | 竖屏状态时，面板接收输入事件的区域。<br/>- 数组大小限制为[1, 4]。默认值为竖屏时的面板大小。<br/>- 传入的热区位置是相对于输入法面板窗口左顶点的位置。 |
 | fullScreenMode       | boolean                                                      | 否   | 是   | 是否开启全屏模式。默认值为false。<br/>- 值为true，landscapeRect和portraitRect可不填写。<br/>- 值为false，landscapeRect和portraitRect为必选属性。 |
 
@@ -4645,7 +4700,7 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 
 ## RequestKeyboardReason<sup>19+</sup>
 
-枚举，请求键盘输入原因。
+枚举，请求键盘输入的原因。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5131,7 +5186,7 @@ insertText(text:string): Promise&lt;boolean&gt;
 | -------- | -------- | -------- | -------- |
 | text | string | 是 | 文本。 |
 
-**返回值：**  
+**返回值：**
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |

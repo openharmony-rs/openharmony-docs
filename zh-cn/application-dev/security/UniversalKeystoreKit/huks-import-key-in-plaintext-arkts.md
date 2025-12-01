@@ -62,7 +62,7 @@ async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): P
         console.info(`promise: importKeyItem success`);
         ret = true;
       }).catch((error: BusinessError) => {
-        console.error(`promise: importKeyItem failedm errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: importKeyItem failed errCode : ${error.code}, errMsg : ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: importKeyItem input arg invalid`);
@@ -164,7 +164,7 @@ async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): P
         console.info(`promise: importKeyItem success`);
         ret = true;
       }).catch((error: BusinessError) => {
-        console.error(`promise: importKeyItem failedm errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: importKeyItem failed errCode : ${error.code}, errMsg : ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: importKeyItem input arg invalid`);
@@ -187,7 +187,7 @@ async function testImport() {
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from "@kit.BasicServicesKit";
 
-// X25519的公钥数据。X25519密钥对中的私钥和公钥都是32字节（256位），关于算法原理请自行参考相关密钥学资料。
+// X25519的公钥数据。X25519密钥对中的私钥和公钥都是32字节（256位），关于算法原理请自行参考相关密码学资料。
 let x25519KeyPubMaterial = new Uint8Array([
   0x30, 0x2A, 0x30, 0x05, 0x06, 0x03, 0x2B, 0x65, 0x6E, 0x03, 0x21, 0x00, 0xD2, 0x36, 0x9E, 0xCF,
   0xF0, 0x61, 0x5B, 0x73, 0xCE, 0x4F, 0xF0, 0x40, 0x2B, 0x89, 0x18, 0x3E, 0x06, 0x33, 0x60, 0xC6
@@ -228,7 +228,7 @@ async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): P
         console.info(`promise: importKeyItem success`);
         ret = true;
       }).catch((error: BusinessError) => {
-        console.error(`promise: importKeyItem failedm errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: importKeyItem failed errCode : ${error.code}, errMsg : ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: importKeyItem input arg invalid`);
@@ -284,9 +284,9 @@ async function isKeyItemExist(keyAlias: string, options: huks.HuksOptions): Prom
 async function testImportKeyExist() {
   let retExist = await isKeyItemExist(keyAlias, huksOptions);
   if (retExist == false) {
-    console.error(`testImportKeyExistd failed`);
+    console.error(`testImportKeyExist failed`);
     return;
   }
-  console.info(`testImportKeyExistd success`);
+  console.info(`testImportKeyExist success`);
 }
 ```

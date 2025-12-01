@@ -1,4 +1,14 @@
 # ArkUI_VisibleAreaEventOptions
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_VisibleAreaEventOptions ArkUI_VisibleAreaEventOptions
+```
 
 ## 概述
 

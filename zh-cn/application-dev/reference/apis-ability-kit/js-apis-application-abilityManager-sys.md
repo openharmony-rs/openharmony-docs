@@ -2,7 +2,7 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @duan-sizhao-->
+<!--Owner: @dsz2025-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
@@ -40,7 +40,7 @@ Ability的状态信息。
 
 updateConfiguration(config: Configuration, callback: AsyncCallback\<void>): void
 
-通过修改配置来更新配置。使用callback异步回调。
+通过传入要修改的配置项来更新配置。使用callback异步回调。
 
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
@@ -72,7 +72,7 @@ abilityManager.updateConfiguration(config, () => {
 
 updateConfiguration(config: Configuration): Promise\<void>
 
-通过修改配置来更新配置。使用Promise异步回调。
+通过传入要修改的配置项来更新配置。使用Promise异步回调。
 
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 

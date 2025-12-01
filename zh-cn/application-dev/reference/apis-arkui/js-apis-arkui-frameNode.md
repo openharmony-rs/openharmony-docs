@@ -1,10 +1,10 @@
 # FrameNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
-<!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeController.md)可通过[BuilderNode](./js-apis-arkui-builderNode.md)持有的FrameNode将其挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上，也可通过FrameNode获取[RenderNode](./js-apis-arkui-renderNode.md)，挂载到其他FrameNode上。最佳实践请参考[组件动态创建-组件动态添加、更新和删除](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012)。
 
@@ -32,9 +32,9 @@ import { FrameNode, LayoutConstraint, ExpandMode, typeNode, NodeAdapter } from "
 
 | 名称            |  类型  | 只读   | 可选   | 说明                                       |
 | -------------- | ------ | ----- | ----------|-------------------------------- |
-| maxSize           | [Size](./js-apis-arkui-graphics.md#size) |否| 是    | 最大尺寸。              |
-| minSize            | [Size](./js-apis-arkui-graphics.md#size) |否| 是    | 最小尺寸。                  |
-| percentReference      | [Size](./js-apis-arkui-graphics.md#size) |否| 是    | 子节点计算百分比时的尺寸基准。|
+| maxSize           | [Size](./js-apis-arkui-graphics.md#size) |否| 否    | 最大尺寸。              |
+| minSize            | [Size](./js-apis-arkui-graphics.md#size) |否| 否    | 最小尺寸。                  |
+| percentReference      | [Size](./js-apis-arkui-graphics.md#size) |否| 否    | 子节点计算百分比时的尺寸基准。|
 
 ## CrossLanguageOptions<sup>15+</sup>
 
@@ -64,7 +64,7 @@ import { FrameNode, LayoutConstraint, ExpandMode, typeNode, NodeAdapter } from "
 
 ## InteractionEventBindingInfo<sup>19+</sup>
 
-如果当前节点上绑定了所要查询的交互事件，则返回一个InteractionEventBindingInfo对象，指示事件绑定详细信息。
+组件的交互事件绑定状态信息。如果当前节点上绑定了所要查询的交互事件，调用查询接口时返回一个InteractionEventBindingInfo对象，指示事件绑定详细信息。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -97,7 +97,7 @@ import { FrameNode, LayoutConstraint, ExpandMode, typeNode, NodeAdapter } from "
 
 type UIStatesChangeHandler = (node: FrameNode, currentUIStates: number) => void
 
-当UI状态发生变化时触发的回调。
+当UI状态发生变化时触发的回调。接收回调触发时的[UIState](#uistate20)状态，该参数的取值为UIState状态枚举值或其运算结果。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -108,7 +108,7 @@ type UIStatesChangeHandler = (node: FrameNode, currentUIStates: number) => void
 | 参数名   | 类型                      | 必填 | 说明                                                     |
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
 | node    | [FrameNode](#framenode-1) | 是   | 触发UI状态变化的节点。                                            |
-| currentUIStates    | number         | 是   | 回调触发时当前的UI状态。<br>可以通过位与运算判断当前包含哪些[UIState](#uistate20)状态。<br>位与运算方法：if (currentState & UIState.PRESSED == UIState.PRESSED)。                                            |
+| currentUIStates    | number         | 是   | 回调触发时当前的UI状态。<br>可以通过位与运算判断当前包含哪些[UIState](#uistate20)状态。<br>位与运算方法：if (currentState & UIState.PRESSED == UIState.PRESSED)。<br>一般的UIState状态检查可以直接判断：if (currentState == UIState.PRESSED)。                                            |
 
 ## FrameNode
 
@@ -217,9 +217,12 @@ appendChild(node: FrameNode): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." |
 
 **示例：**
 
@@ -244,9 +247,12 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted." |
 
 **示例：**
 
@@ -517,9 +523,12 @@ moveTo(targetParent: FrameNode, index?: number): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
 | 错误码ID | 错误信息                          |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
+| 100027   | The current node has been adopted. |
 
 **示例：**
 
@@ -1521,6 +1530,13 @@ get commonAttribute(): CommonAttribute
 
 仅可以修改自定义节点的属性。
 
+> **说明：**
+>
+> FrameNode的效果参考对齐方式为顶部起始端的[Stack](./arkui-ts/ts-container-stack.md)容器组件。
+>
+> FrameNode的属性支持情况参考[属性或事件对attributemodifier的支持情况](./../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)。
+>
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1530,12 +1546,6 @@ get commonAttribute(): CommonAttribute
 | 类型                                                           | 说明                                                                                                             |
 | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | CommonAttribute | 获取FrameNode中持有的CommonAttribute接口，用于设置通用属性和通用事件。|
-
-> **说明：**
->
-> FrameNode的效果参考对齐方式为顶部起始端的[Stack](./arkui-ts/ts-container-stack.md)容器组件。
->
-> FrameNode的属性支持范围参考[CommonModifier](./arkui-ts/ts-universal-attributes-attribute-modifier.md#attribute支持范围)。
 
 **示例：**
 
@@ -1588,6 +1598,7 @@ get gestureEvent(): UIGestureEvent
 onDraw?(context: DrawContext): void
 
 FrameNode的自绘制方法，该方法会重写默认绘制方法，在FrameNode进行内容绘制时被调用。
+该接口的[DrawContext](./js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../ui/arkts-user-defined-arktsNode-frameNode.md#调整自定义绘制canvas的变换矩阵)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1749,7 +1760,7 @@ invalidate(): void
 
 ### addComponentContent<sup>12+</sup>
 
-addComponentContent\<T>(content: ComponentContent\<T>): void
+addComponentContent\<T>(content: ComponentContent\<T> | ReactiveComponentContent\<T>): void
 
 支持添加ComponentContent类型的组件内容。要求当前节点是一个可修改的节点，即[isModifiable](#ismodifiable12)的返回值为true，否则抛出异常信息。
 
@@ -1761,7 +1772,7 @@ addComponentContent\<T>(content: ComponentContent\<T>): void
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| content | [ComponentContent](./js-apis-arkui-ComponentContent.md)\<T> | 是   | FrameNode节点中显示的组件内容。 |
+| content | [ComponentContent](./js-apis-arkui-ComponentContent.md)\<T> \| [ReactiveComponentContent](./js-apis-arkui-ComponentContent.md#reactivecomponentcontent22)\<T><sup>22+</sup> | 是   | FrameNode节点中显示的组件内容。 |
 
 **错误码：**
 
@@ -2344,6 +2355,249 @@ struct ListNodeTest {
   }
 }
  ```
+
+### adoptChild<sup>23+</sup>
+
+adoptChild(child: FrameNode): void
+
+当前节点接纳目标节点为附属节点。被接纳的附属节点不能已有父节点。调用该接口实际上不会将其添加为子节点，而是仅允许其接收对应子节点的生命周期回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型 | 必填 | 说明                                                     |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| child | [FrameNode](#framenode-1) | 是   | 指定待被接纳的节点。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100021   | The FrameNode is not modifiable. |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be disposed." |
+| 100026   | The current FrameNode has been disposed. |
+
+**示例：**
+
+完整示例请参考[接纳为附属节点示例](#接纳为附属节点示例)。
+
+### removeAdoptedChild<sup>23+</sup>
+
+removeAdoptedChild(child: FrameNode): void
+
+移除被接纳的目标附属节点。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型 | 必填 | 说明                                                     |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| child | [FrameNode](#framenode-1) | 是   | 正在被接纳的节点。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100021   | The FrameNode is not modifiable. |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be null." |
+| 100026   | The current FrameNode has been disposed. |
+
+**示例：**
+
+完整示例请参考[接纳为附属节点示例](#接纳为附属节点示例)。
+ 	
+### convertPosition<sup>22+</sup>
+
+convertPosition(position: Position, targetNode: FrameNode): Position
+
+将点的坐标从当前节点的坐标系转换为目标节点的坐标系。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型 | 必填 | 说明                                                     |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| position | [Position](./js-apis-arkui-graphics.md#position) | 是   | 当前节点坐标系中的相对坐标。 |
+| targetNode  | [FrameNode](#framenode-1) | 是   | 本次坐标转换的目标节点，转换得到的点坐标就是该节点坐标系中的相对坐标。 |
+
+**返回值：**
+
+| 类型               | 说明               |
+| ------------------ | ------------------ |
+| [Position](./js-apis-arkui-graphics.md#position) | 目标节点局部坐标系中的转换坐标。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100024   | The current FrameNode and the target FrameNode do not have a common ancestor node. |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'targetNode' is invalid: it cannot be disposed." |
+
+**示例：**
+
+```ts
+
+@Entry
+@Component
+struct ConvertPositionTestOnly {
+  private uiContext: UIContext = this.getUIContext();
+  @State message: string = 'Hello World';
+  @State nodeAOk: boolean = false;
+  @State nodeBOK: boolean = false;
+
+  build() {
+    Column() {
+      Text(this.message)
+        .id('testNodeA')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .onAppear(()=>{this.nodeAOk = true})
+      Column() {
+        Text('testNodeB')
+          .id('testNodeB')
+          .fontSize($r('app.float.page_text_font_size'))
+          .fontWeight(FontWeight.Bold)
+          .onAppear(()=>{this.nodeBOK = true})
+
+      }
+      Button('运行convertPosition测试')
+        .onClick(() => {
+          this.runBasicTest();
+        })
+        .margin(20)
+
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  private runBasicTest() {
+    if(!this.nodeAOk||!this.nodeBOK) {
+      return
+    }
+
+    // 等待UI渲染完成
+    if (!this.uiContext) {
+      return
+    }
+    const nodeA = this.uiContext.getAttachedFrameNodeById('testNodeA');
+    const nodeB = this.uiContext.getAttachedFrameNodeById('testNodeB');
+
+    if (!nodeA || !nodeB) {
+      console.info('无法获取测试节点');
+      return;
+    }
+
+    const testPoint:Position = { x: 10, y: 10 };
+    const result: Position | undefined = nodeA.convertPosition({x:30,y:10}, nodeB); // 显式声明可能返回undefined
+    if (result === undefined) {
+      console.info("convertPosition 转换失败，返回 undefined");
+      return;
+    }
+    console.info(`输出: (${result.x}, ${result.y})`);
+
+  }
+}
+```
+
+ ### isInRenderState<sup>23+</sup>
+
+ isInRenderState(): boolean
+
+ 获取节点是否处于渲染状态，如果一个节点的对应RenderNode在渲染树上，则处于渲染状态。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                | 说明                                 |
+| ----------------- | ------------------------------------- |
+|    boolean          |   节点是否处于渲染状态。<br/>true：处于渲染状态；false：不处于渲染状态。|
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'is on render tree';
+  @State @Watch('change') isShow: boolean = true;
+  data: Array<string> = ['hello1', 'hello2', 'hello3', 'hello4', 'hello5', 'hello6', 'hello7', 'hello8'];
+
+  // 监听状态变化后打印是否处于渲染状态
+  change() {
+    let buttonNode = this.getUIContext().getFrameNodeById("testButton");
+    if (buttonNode == null) {
+      return;
+    }
+    let isOnRenderTree = buttonNode!.isInRenderState();
+    if (isOnRenderTree) {
+      hilog.info(1,'frameNode', 'is on render tree');
+    } else {
+      hilog.info(1,'frameNode', 'is not no render tree');
+    }
+  }
+
+  build() {
+    Column() {
+      Button('change button visibility').onClick(() => {
+        // 修改button的visibility状态
+        this.isShow = !this.isShow;
+      })
+        .margin({ top: 20 })
+      Button('test button')
+        .visibility(this.isShow ? Visibility.Visible : Visibility.Hidden)
+        .margin(20).id('testButton')
+
+      List() {
+        ForEach(this.data, (item: string, index: number) => {
+          ListItem() {
+            Text(item).id(item)
+          }.alignSelf(ItemAlign.Center).width('100%')
+        })
+      }
+      .width('30%')
+      .alignSelf(ItemAlign.Center)
+      .height("10%")
+      .onReachEnd(() => {
+        let textNode8 = this.getUIContext().getFrameNodeById("hello8");
+        if (textNode8 != null) {
+          let isOnRenderTree = textNode8!.isInRenderState();
+          hilog.info(1,'frameNode', 'is hello8 on RenderTree: %{public}s', isOnRenderTree);
+        }
+        let textNode1 = this.getUIContext().getFrameNodeById("hello1");
+        if (textNode1 != null) {
+          let isOnRenderTree = textNode1!.isInRenderState();
+          isOnRenderTree ? this.message = 'is on render tree' : 'is not no render tree'
+          hilog.info(1,'frameNode', 'is hello1 on RenderTree: %{public}s', isOnRenderTree);
+        }
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+```
 
 ## TypedFrameNode<sup>12+</sup>
 
@@ -4137,7 +4391,7 @@ createNode(context: UIContext, nodeType: 'Search'): Search
 **示例：**
 
 ```ts
-iimport { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
+import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
 
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
@@ -7145,7 +7399,7 @@ struct FrameNodeTypeTest {
 
 ## NodeAdapter<sup>12+</sup>
 
-NodeAdapter提供FrameNode的数据懒加载能力。
+NodeAdapter提供FrameNode的数据懒加载能力，通过[LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md)实现接口功能。
 
 > **说明：**
 >
@@ -7209,7 +7463,7 @@ get totalNodeCount(): number
 
 reloadAllItems(): void
 
-重新加载全部数据操作。
+重新加载全部数据操作。实际调用了LazyForEach中的[OnDataReloaded](./arkui-ts/ts-rendering-control-lazyforeach.md#ondatareloaded)接口通知组件重新加载所有数据。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7287,7 +7541,7 @@ moveItem(from: number, to: number): void
 
 getAllAvailableItems(): Array&lt;FrameNode&gt;
 
-获取所有有效数据。
+获取所有有效数据。有效节点数据包括显示在屏幕上的节点以及预加载的节点。其中预加载节点的数量可依照LazyForEach的[使用限制](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md#使用限制)，调整父容器的cachedCount属性进行设置。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7329,7 +7583,7 @@ onDetachFromNode?(): void
 
 onGetChildId?(index: number): number
 
-节点首次加载或新节点滑入时回调。用于生成自定义的Id，需要开发者自行保证Id的唯一性。
+节点首次加载或新节点滑入时回调。传入的index参数用于自定义生成Id，需要开发者自行保证根据不同index生成Id的唯一性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7351,7 +7605,7 @@ onGetChildId?(index: number): number
 
 onCreateChild?(index: number): FrameNode
 
-节点首次加载或新节点滑入时回调。建议开发者在添加子组件时，遵循声明式组件中子组件的约束。例如，WaterFlow支持添加FlowItem子节点。
+节点首次加载或新节点滑入时回调。建议开发者在添加子组件时，遵循声明式组件中子组件的约束。例如，WaterFlow支持添加FlowItem子节点。父节点根据子节点的索引与key值判断是否触发了节点首次加载或新节点滑入。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7373,7 +7627,7 @@ onCreateChild?(index: number): FrameNode
 
 onDisposeChild?(id: number, node: FrameNode): void
 
-子节点即将销毁时回调。
+子节点即将销毁时回调。既不显示在屏幕上，也不处于预加载范围内的节点都属于即将销毁的节点。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7390,7 +7644,7 @@ onDisposeChild?(id: number, node: FrameNode): void
 
 onUpdateChild?(id: number, node: FrameNode): void
 
-重新加载的数据节点被复用时回调。
+重新加载的数据节点被复用时回调。已缓存节点的key值与被复用节点一致时进行节点复用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -9318,14 +9572,16 @@ struct FrameNodeTypeTest {
 
 ``` ts
 import { FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
   private isRunning: boolean = false; // 表示节点上动画是否在运行
+
   private startInitAnimation() {
     if (this.rootNode) {
       let result: boolean = this.rootNode.createAnimation(AnimationPropertyType.ROTATION, [0, 0, 0], [0, 0, 360],
-        {duration: 3000, curve: Curve.Linear, iterations: -1});// 创建动画，第一次创建时显式指定初值，旋转角从[0,0,0]变成[0,0,360]，无限循环
+        { duration: 3000, curve: Curve.Linear, iterations: -1 }); // 创建动画，第一次创建时显式指定初值，旋转角从[0,0,0]变成[0,0,360]，无限循环
       if (result) {
         this.isRunning = true;
       } else {
@@ -9333,6 +9589,7 @@ class MyNodeController extends NodeController {
       }
     }
   }
+
   cancelAnimation(cnt: number) {
     if (this.rootNode && this.isRunning) {
       let result: boolean = this.rootNode.cancelAnimations([AnimationPropertyType.ROTATION]);
@@ -9349,20 +9606,25 @@ class MyNodeController extends NodeController {
       }
     }
   }
+
   continueAnimation() {
     if (this.rootNode && !this.isRunning) {
-      let currentProperty: number[] = this.rootNode.getNodePropertyValue(AnimationPropertyType.ROTATION);// 获取当前节点上的旋转属性终值
+      let currentProperty: number[] =
+        this.rootNode.getNodePropertyValue(AnimationPropertyType.ROTATION); // 获取当前节点上的旋转属性终值
       if (currentProperty.length == 3) { // 获取属性正常，旋转属性对应的数组长度为3，分别是x、y、z方向的旋转角
         let endValue: number[];
         let startValue: number[] | undefined = undefined;
         if (currentProperty[2] >= 360) {
-          startValue = [currentProperty[0], currentProperty[1], currentProperty[2] - 360]; // 当旋转属性过大时使z方向少转360度，避免z方向角度由于多次启停动画一直增加
+          startValue = [currentProperty[0], currentProperty[1],
+            currentProperty[2] - 360]; // 当旋转属性过大时使z方向少转360度，避免z方向角度由于多次启停动画一直增加
           endValue = [currentProperty[0], currentProperty[1], currentProperty[2]];
         } else {
           endValue = [currentProperty[0], currentProperty[1], currentProperty[2] + 360]; // 此时旋转属性小于360度，可以从上次旋转角再多旋转一圈
         }
-        let result: boolean = this.rootNode.createAnimation(AnimationPropertyType.ROTATION, startValue, endValue, {duration: 3000, curve: Curve.Linear, iterations: -1});
-        console.info(`create rotation animation from ${startValue? String(startValue[2]): "undefined"} to ${endValue[2]}`);
+        let result: boolean = this.rootNode.createAnimation(AnimationPropertyType.ROTATION, startValue, endValue,
+          { duration: 3000, curve: Curve.Linear, iterations: -1 });
+        console.info(`create rotation animation from ${startValue ? String(startValue[2]) :
+          "undefined"} to ${endValue[2]}`);
         if (result) {
           this.isRunning = true;
         } else {
@@ -9371,15 +9633,17 @@ class MyNodeController extends NodeController {
       }
     }
   }
-
+  
   makeNode(uiContext: UIContext): FrameNode | null {
     if (this.rootNode) {
       return this.rootNode;
     }
     this.rootNode = new FrameNode(uiContext);
-    this.rootNode.commonAttribute.width(100).height(100).backgroundColor(Color.Blue);//设置节点属性
+    this.rootNode.commonAttribute.width(100)
+      .height(100)
+      .backgroundColor(Color.Blue); // 设置节点属性
     this.startInitAnimation();
-    this.rootNode.commonEvent.setOnClick(()=>{
+    this.rootNode.commonEvent.setOnClick(() => {
       if (this.isRunning) {
         this.cancelAnimation(1);
       } else {
@@ -9389,6 +9653,7 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 }
+
 @Entry
 @Component
 struct CreateAnimationExample {
@@ -9397,7 +9662,7 @@ struct CreateAnimationExample {
   build() {
     Column() {
       NodeContainer(this.myNodeController)
-    }.width('100%').padding({top: 50})
+    }.width('100%').padding({ top: 50 })
   }
 }
 ```
@@ -9779,6 +10044,85 @@ struct Index {
     }
     .height('100%')
     .width('100%')
+  }
+}
+```
+
+## 接纳为附属节点示例
+
+从API version 23开始，该示例演示了如何通过FrameNode的[adoptChild](#adoptchild23)和[removeAdoptedChild](#removeadoptedchild23)接口进行接纳为附属节点的相关操作。
+
+```ts
+import {NodeController, FrameNode, UIContext} from '@kit.ArkUI';
+const TEST_TAG: string = "FrameNode "
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  public frameNode: FrameNode | null = null;
+  public rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.frameNode = new FrameNode(uiContext);
+    this.addCommonEvent(this.frameNode);
+    return this.rootNode;
+  }
+
+  addCommonEvent(frameNode: FrameNode) {
+    frameNode.commonEvent.setOnClick((event: ClickEvent) => {
+      console.info(`${TEST_TAG} Click FrameNode: ${JSON.stringify(event)}`);
+    })
+  }
+
+  adoptChild() {
+    try {
+      this.rootNode?.adoptChild(this.frameNode);
+      console.info(`${TEST_TAG} adoptChild success`);
+    } catch (e) {
+      console.info(`${TEST_TAG} adoptChild fail: ${JSON.stringify(e)}`);
+    }
+  }
+
+  removeAdoptedChild() {
+    try {
+      this.rootNode?.removeAdoptedChild(this.frameNode);
+      console.info(`${TEST_TAG} removeAdoptedChild success`);
+    } catch (e) {
+      console.info(`${TEST_TAG} removeAdoptedChild fail: ${JSON.stringify(e)}`);
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+  
+  build() {
+    Column({ space: 8 }) {
+      Column() {
+        Text(`This is a NodeContainer.`)
+          .textAlign(TextAlign.Center)
+          .borderRadius(10)
+          .backgroundColor(0xFFFFFF)
+          .width(`100%`)
+          .fontSize(16)
+        NodeContainer(this.myNodeController)
+          .borderWidth(1)
+          .width(300)
+          .height(100)
+      }
+      Button(`adoptChild`)
+        .width(300)
+        .onClick(() => {
+          this.myNodeController.adoptChild();
+        })
+      Button(`removeAdoptedChild`)
+        .width(300)
+        .onClick(() => {
+          this.myNodeController.removeAdoptedChild();
+        })
+    }
   }
 }
 ```

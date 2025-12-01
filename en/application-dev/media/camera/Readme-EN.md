@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 - [Introduction to Camera Kit](camera-overview.md)
 - [Requesting Camera Development Permissions](camera-preparation.md)
@@ -32,11 +32,14 @@
   - [Practices for Automatic Camera Switching (ArkTS)](camera-auto-switch.md)
   - [White Balance Settings (ArkTS)](camera-whitebalance.md)
   - [Pressure Management (ArkTS)](camera-system-pressure.md)
+  - [Camera Controller (ArkTS)](camera-control-center.md)
+  - [Macro Photography Settings (ArkTS)](camera-macro.md)
+  - [Multi-Camera Concurrent Mode (ArkTS)](camera-concurrent-open.md)<!--RP1--><!--RP1End-->
   <!--Del-->
-  - [High-Performance Photo Capture (for System Applications Only) (ArkTS)](camera-deferred-photo.md)
-  - [Practices for High-Performance Photo Capture (for System Applications Only) (ArkTS)](camera-deferred-photo-case.md)
-  - [Depth Data (for System Applications Only) (ArkTS)](camera-depth-data.md)
-  - [Performance Optimization Practices (for System Applications Only) (ArkTS)](camera-performance-improvement.md)
+  - [High-Performance Photo Capture (for System Applications Only) (ArkTS)](camera-deferred-photo-sys.md)
+  - [Practices for High-Performance Photo Capture (for System Applications Only) (ArkTS)](camera-deferred-photo-case-sys.md)
+  - [Depth Data (for System Applications Only) (ArkTS)](camera-depth-data-sys.md)
+  - [Performance Optimization Practices (for System Applications Only) (ArkTS)](camera-performance-improvement-sys.md)
   <!--DelEnd-->
 - Mandatory Capabilities for Camera Application Development (C/C++)<!--camera-dev-native-mandatory-->
   - [Camera Device Management (C/C++)](native-camera-device-management.md)
@@ -53,3 +56,5 @@
   - [Camera Metadata (C/C++)](native-camera-metadata.md)
   - [Using the Flashlight (C/C++)](native-camera-torch-use.md)
   - [Pressure Management (C/C++)](native-camera-system-pressure.md)
+  - [Macro Photography Settings (C/C++)](native-camera-macro.md)
+  - [Multi-Camera Concurrent Mode (C/C++)](native-camera-concurrent-open.md)<!--RP2--><!--RP2End-->

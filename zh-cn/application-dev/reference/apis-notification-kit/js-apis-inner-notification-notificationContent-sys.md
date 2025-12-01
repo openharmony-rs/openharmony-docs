@@ -22,6 +22,18 @@
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
 | liveView<sup>11+</sup>       | [NotificationLiveViewContent](#notificationliveviewcontent11)              | 否  | 是  | 普通实况窗类型通知内容。<br>**系统接口**：此接口为系统接口。|
 
+## NotificationBasicContent
+
+描述普通文本通知。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称           | 类型                                                                        | 只读 | 可选 | 说明               |
+| -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
+| structuredText<sup>21+</sup> | Map<string, string> |  否  |  是  | 通知结构化字段。当前仅支持服务提醒类短信在通知中心结构化展示。（key/value大小不超过512字节，超出部分会被截断，最多支持3对结构化数据，超出部分会被忽略。）   |
+
 ## NotificationLiveViewContent<sup>11+</sup>
 
 描述普通实况通知。
@@ -37,8 +49,21 @@
 | extraInfo      | Record<string, Object\>                                               | 否  | 是  | 实况通知附加内容。           |
 | pictureInfo    | Record<string, Array<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\>\> | 否  | 是  | 实况通知附加内容中的图片信息。|
 | isLocalUpdateOnly<sup>12+</sup> | boolean                                           | 否  | 是  | 实况窗是否只在本地更新。默认为false。<br> - true：是。<br> - false：否。     |
-| liveViewType<sup>18+</sup>  | [LiveViewTypes](#liveviewtypes18)  | 否 | 是  | 实况窗类型。  |
-| cardButtons<sup>18+</sup> | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  否  |  是  | 实况窗按钮（最多支持3个）。      |
+| extensionWantAgent<sup>20+</sup> | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)    |  否  |  是  | 点击辅助区的跳转动作。      |
+
+
+## NotificationSystemLiveViewContent<sup>18+</sup>
+
+描述系统实况窗通知内容。不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后，三方应用发布同ID的通知来更新指定内容。继承自[NotificationBasicContent](./js-apis-inner-notification-notificationContent.md#notificationbasiccontent)。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称                         | 类型                                             | 只读| 可选 | 说明                               |
+| ---------------------------- | ----------------------------------------------- | --- | --- | -----------------------------------|
+| liveViewType | [LiveViewTypes](#liveviewtypes18)  | 否 | 是  | 实况窗类型。  |
+| cardButtons | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  否  |  是  | 实况窗按钮（最多支持3个）。      |
 
 ## NotificationCapsule<sup>11+</sup>
 
@@ -117,4 +142,4 @@ type IconType = Resource | image.PixelMap
 
 | 名称           | 类型    | 只读 | 可选 | 说明                             |
 | -------------- | ------ | ---- | --- | -------------------------------- |
-| lineWantAgents<sup>20+</sup>       | Array<[wantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)> |  否  | 是  | 点击多行文本中某一行文本消息触发的wantAgent。不同行的文本分别对应于不同的wantAgent。该字段配置的行数不能大于[lines](./js-apis-inner-notification-notificationContent.md#notificationmultilinecontent)字段配置的行数。<br>**系统接口**：此接口为系统接口。<br>**需要权限**：ohos.permission.NOTIFICATION_AGENT_CONTROLLER |
+| lineWantAgents<sup>20+</sup>       | Array<[WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)> |  否  | 是  | 点击多行文本中某一行文本消息触发的wantAgent。不同行的文本分别对应于不同的wantAgent。该字段配置的行数不能大于[lines](./js-apis-inner-notification-notificationContent.md#notificationmultilinecontent)字段配置的行数。<br>**系统接口**：此接口为系统接口。<br>**需要权限**：ohos.permission.NOTIFICATION_AGENT_CONTROLLER |

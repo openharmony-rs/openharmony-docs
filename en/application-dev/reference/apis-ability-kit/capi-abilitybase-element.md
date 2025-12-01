@@ -1,5 +1,16 @@
 # AbilityBase_Element
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+```
+typedef struct {...} AbilityBase_Element
+```
+
 ## Overview
 
 The struct describes the Element in [Want](capi-want-h.md).
@@ -8,7 +19,7 @@ The struct describes the Element in [Want](capi-want-h.md).
 
 **Related module**: [AbilityBase](capi-abilitybase.md)
 
-**Header File**: [want.h](capi-want-h.md)
+**Header file**: [want.h](capi-want-h.md)
 
 ## Summary
 

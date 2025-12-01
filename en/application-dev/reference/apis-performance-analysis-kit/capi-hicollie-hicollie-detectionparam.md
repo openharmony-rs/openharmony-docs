@@ -1,5 +1,12 @@
 # HiCollie_DetectionParam
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @rr_cn-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 ## Overview
 
 Defines the parameters of the jank event detection. Note that this struct is supported since API 12.

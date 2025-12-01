@@ -4,7 +4,7 @@
 <!--Owner: @ZhangYu-Coder-->
 <!--Designer: @sunbees-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -19,6 +19,8 @@
 **起始版本：** 8
 
 **相关模块：** [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)
+
+**相关示例：** <!--RP1-->[NativeXComponentSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)<!--RP1End-->
 
 ## 汇总
 
@@ -39,6 +41,7 @@
 | [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) | OH_ArkUI_SurfaceHolder | 提供封装的OH_ArkUI_SurfaceHolder实例。 |
 | [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md) | OH_ArkUI_SurfaceCallback | 定义Surface生命周期回调函数。 |
 | [OHNativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md) | OHNativeWindow | 提供封装的NativeWindow实例。 |
+| [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md) | ArkUI_XComponentSurfaceConfig | 定义XComponent组件持有的Surface选项，用于设置XComponent组件持有的Surface在渲染时是否被视为不透明。 |
 
 ### 枚举
 
@@ -127,6 +130,10 @@
 | [void OH_ArkUI_AccessibilityProvider_Dispose(ArkUI_AccessibilityProvider* provider)](#oh_arkui_accessibilityprovider_dispose) | 销毁由Native接口[OH_ArkUI_AccessibilityProvider_Create](capi-native-interface-xcomponent-h.md#oh_arkui_accessibilityprovider_create)创建的[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)实例。 |
 | [void OH_ArkUI_SurfaceCallback_SetSurfaceShowEvent(OH_ArkUI_SurfaceCallback* callback, void (\*onSurfaceShow)(OH_ArkUI_SurfaceHolder* surfaceHolder))](#oh_arkui_surfacecallback_setsurfaceshowevent) | 为此[OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)实例设置Surface显示回调，该回调在应用窗口已经从后台回到前台时触发。 |
 | [void OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent(OH_ArkUI_SurfaceCallback* callback, void (\*onSurfaceHide)(OH_ArkUI_SurfaceHolder* surfaceHolder))](#oh_arkui_surfacecallback_setsurfacehideevent) | 为此[OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)实例设置Surface隐藏回调，该回调在应用窗口已经从前台进入后台时触发。 |
+| [ArkUI_XComponentSurfaceConfig* OH_ArkUI_XComponentSurfaceConfig_Create()](#oh_arkui_xcomponentsurfaceconfig_create) | 创建XComponent组件的[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)对象。 |
+| [void OH_ArkUI_XComponentSurfaceConfig_Dispose(ArkUI_XComponentSurfaceConfig* config)](#oh_arkui_xcomponentsurfaceconfig_dispose) | 销毁[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)对象。 |
+| [void OH_ArkUI_XComponentSurfaceConfig_SetIsOpaque(ArkUI_XComponentSurfaceConfig* config, bool isOpaque)](#oh_arkui_xcomponentsurfaceconfig_setisopaque) | 设置XComponent组件持有的Surface在渲染时是否被视为不透明，无论该Surface是否存在半透明像素。 |
+| [int32_t OH_ArkUI_SurfaceHolder_SetSurfaceConfig(OH_ArkUI_SurfaceHolder* surfaceHolder, ArkUI_XComponentSurfaceConfig *config)](#oh_arkui_surfaceholder_setsurfaceconfig) | 为[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例设置Surface选项。 |
 
 ### 变量
 
@@ -343,7 +350,7 @@ int32_t OH_NativeXComponent_GetXComponentId(OH_NativeXComponent* component, char
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetXComponentSize()
 
@@ -372,7 +379,7 @@ int32_t OH_NativeXComponent_GetXComponentSize(OH_NativeXComponent* component, co
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetXComponentOffset()
 
@@ -401,7 +408,7 @@ int32_t OH_NativeXComponent_GetXComponentOffset(OH_NativeXComponent* component, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetTouchEvent()
 
@@ -429,7 +436,7 @@ int32_t OH_NativeXComponent_GetTouchEvent(OH_NativeXComponent* component, const 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetTouchPointToolType()
 
@@ -457,7 +464,7 @@ int32_t OH_NativeXComponent_GetTouchPointToolType(OH_NativeXComponent* component
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetTouchPointTiltX()
 
@@ -485,7 +492,7 @@ int32_t OH_NativeXComponent_GetTouchPointTiltX(OH_NativeXComponent* component, u
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetTouchPointTiltY()
 
@@ -513,7 +520,7 @@ int32_t OH_NativeXComponent_GetTouchPointTiltY(OH_NativeXComponent* component, u
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetTouchPointWindowX()
 
@@ -654,7 +661,7 @@ int32_t OH_NativeXComponent_GetHistoricalPoints(OH_NativeXComponent* component, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetMouseEvent()
 
@@ -682,7 +689,7 @@ int32_t OH_NativeXComponent_GetMouseEvent(OH_NativeXComponent* component, const 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterCallback()
 
@@ -709,7 +716,7 @@ int32_t OH_NativeXComponent_RegisterCallback(OH_NativeXComponent* component, OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterMouseEventCallback()
 
@@ -736,7 +743,7 @@ int32_t OH_NativeXComponent_RegisterMouseEventCallback(OH_NativeXComponent* comp
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetExtraMouseEventInfo()
 
@@ -817,7 +824,7 @@ int32_t OH_NativeXComponent_RegisterFocusEventCallback(OH_NativeXComponent* comp
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterKeyEventCallback()
 
@@ -844,7 +851,7 @@ int32_t OH_NativeXComponent_RegisterKeyEventCallback(OH_NativeXComponent* compon
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterBlurEventCallback()
 
@@ -871,7 +878,7 @@ int32_t OH_NativeXComponent_RegisterBlurEventCallback(OH_NativeXComponent* compo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEvent()
 
@@ -898,7 +905,7 @@ int32_t OH_NativeXComponent_GetKeyEvent(OH_NativeXComponent* component, OH_Nativ
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventAction()
 
@@ -925,7 +932,7 @@ int32_t OH_NativeXComponent_GetKeyEventAction(OH_NativeXComponent_KeyEvent* keyE
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventCode()
 
@@ -952,7 +959,7 @@ int32_t OH_NativeXComponent_GetKeyEventCode(OH_NativeXComponent_KeyEvent* keyEve
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventSourceType()
 
@@ -979,7 +986,7 @@ int32_t OH_NativeXComponent_GetKeyEventSourceType(OH_NativeXComponent_KeyEvent* 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventDeviceId()
 
@@ -1006,7 +1013,7 @@ int32_t OH_NativeXComponent_GetKeyEventDeviceId(OH_NativeXComponent_KeyEvent* ke
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventTimestamp()
 
@@ -1033,7 +1040,7 @@ int32_t OH_NativeXComponent_GetKeyEventTimestamp(OH_NativeXComponent_KeyEvent* k
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventModifierKeyStates()
 
@@ -1081,7 +1088,7 @@ int32_t OH_NativeXComponent_GetKeyEventNumLockState(OH_NativeXComponent_KeyEvent
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)* keyEvent | 表示指向按键事件的指针。 |
-| bool* isNumLockOn | 表示用于接收NumLock（小键盘锁定）键状态的bool类型变量的地址。 |
+| bool* isNumLockOn | 表示用于接收NumLock（小键盘锁定）键状态的bool类型变量的地址。true表示小键盘锁定，false表示小键盘解锁。 |
 
 **返回：**
 
@@ -1108,7 +1115,7 @@ int32_t OH_NativeXComponent_GetKeyEventCapsLockState(OH_NativeXComponent_KeyEven
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)* keyEvent | 表示指向按键事件的指针。 |
-| bool* isCapsLockOn | 表示用于接收CapsLock（大写锁定）键状态的bool类型变量的地址。 |
+| bool* isCapsLockOn | 表示用于接收CapsLock（大写锁定）键状态的bool类型变量的地址。true表示大写处于锁定，false表示大写处于解锁。 |
 
 **返回：**
 
@@ -1135,7 +1142,7 @@ int32_t OH_NativeXComponent_GetKeyEventScrollLockState(OH_NativeXComponent_KeyEv
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)* keyEvent | 表示指向按键事件的指针。 |
-| bool* isScrollLockOn | 表示用于接收ScrollLock（滚动锁定）键状态的bool类型变量的地址。 |
+| bool* isScrollLockOn | 表示用于接收ScrollLock（滚动锁定）键状态的bool类型变量的地址。true表示滚动处于锁定，false表示滚动处于解锁。 |
 
 **返回：**
 
@@ -1168,7 +1175,7 @@ int32_t OH_NativeXComponent_SetExpectedFrameRateRange(OH_NativeXComponent* compo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterOnFrameCallback()
 
@@ -1195,7 +1202,7 @@ int32_t OH_NativeXComponent_RegisterOnFrameCallback(OH_NativeXComponent* compone
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_UnregisterOnFrameCallback()
 
@@ -1221,7 +1228,7 @@ int32_t OH_NativeXComponent_UnregisterOnFrameCallback(OH_NativeXComponent* compo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_AttachNativeRootNode()
 
@@ -1359,13 +1366,13 @@ int32_t OH_NativeXComponent_SetNeedSoftKeyboard(OH_NativeXComponent* component, 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
-| bool needSoftKeyboard | 表示此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例是否需要软键盘。默认值为false。 |
+| bool needSoftKeyboard | 表示此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例是否需要软键盘。需要时为true，不需要时为false，默认值为false。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterSurfaceShowCallback()
 
@@ -1392,7 +1399,7 @@ int32_t OH_NativeXComponent_RegisterSurfaceShowCallback(OH_NativeXComponent* com
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterSurfaceHideCallback()
 
@@ -1419,7 +1426,7 @@ int32_t OH_NativeXComponent_RegisterSurfaceHideCallback(OH_NativeXComponent* com
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetTouchEventSourceType()
 
@@ -1521,7 +1528,7 @@ int32_t OH_NativeXComponent_RegisterKeyEventCallbackWithResult(OH_NativeXCompone
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
-| bool (\*callback)(OH_NativeXComponent* component, void* window) | 表示指向按键事件回调的指针。- window: 表示NativeWindow句柄。 |
+| bool (\*callback)(OH_NativeXComponent* component, void* window) | 表示指向按键事件回调的指针。- window: 表示NativeWindow句柄。当回调返回值为true时，该事件将不会继续分发；当回调返回值为false时，该事件将按照事件处理流程继续分发。 |
 
 **返回：**
 
@@ -1883,7 +1890,7 @@ int32_t OH_ArkUI_XComponent_SetAutoInitialize(ArkUI_NodeHandle node, bool autoIn
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 表示指向XComponent组件实例的指针。 |
-| bool autoInitialize | 表示XComponent组件是否需要自动初始化Surface。如果autoInitialize值是true，OnSurfaceCreated回调会在挂树时被触发，OnSurfaceDestroyed回调会在下树时被触发。autoInitialize默认值是true。 |
+| bool autoInitialize | 表示XComponent组件是否需要自动初始化Surface。如果autoInitialize值是true，OnSurfaceCreated回调会在挂树时被触发，OnSurfaceDestroyed回调会在下树时被触发。false表示组件不需要自动初始化Surface。<br>autoInitialize默认值是true。 |
 
 **返回：**
 
@@ -1962,7 +1969,7 @@ int32_t OH_ArkUI_XComponent_IsInitialized(ArkUI_NodeHandle node, bool* isInitial
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 表示指向XComponent组件实例的指针。 |
-| bool* isInitialized | 表示XComponent组件是否已经初始化Surface。 |
+| bool* isInitialized | 表示XComponent组件是否已经初始化Surface。true表示组件已初始化Surface，false表示组件未初始化Surface。 |
 
 **返回：**
 
@@ -2069,7 +2076,7 @@ int32_t OH_ArkUI_XComponent_SetNeedSoftKeyboard(ArkUI_NodeHandle node, bool need
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 表示XComponent组件实例。 |
-| bool needSoftKeyboard | 表示是否需要软键盘。默认值为false。 |
+| bool needSoftKeyboard | 表示是否需要软键盘。需要时为true，不需要时为false，默认值为false。 |
 
 **返回：**
 
@@ -2165,4 +2172,90 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent(OH_ArkUI_SurfaceCallback* call
 | [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)* callback | 表示指向[OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)实例的指针。 |
 | onSurfaceHide | 表示Surface隐藏回调函数指针。- surfaceHolder: 表示指向[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例的指针。 |
 
+### OH_ArkUI_XComponentSurfaceConfig_Create()
 
+```
+ArkUI_XComponentSurfaceConfig* OH_ArkUI_XComponentSurfaceConfig_Create()
+```
+
+**描述：**
+
+
+创建XComponent组件的[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)对象。
+
+**起始版本：** 22
+
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)* | 返回创建的[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)对象的指针。 |
+
+### OH_ArkUI_XComponentSurfaceConfig_Dispose()
+
+```
+void OH_ArkUI_XComponentSurfaceConfig_Dispose(ArkUI_XComponentSurfaceConfig* config)
+```
+
+**描述：**
+
+
+销毁[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)对象。
+
+**起始版本：** 22
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)* config | 表示指向需要销毁的[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)对象的指针。 |
+
+### OH_ArkUI_XComponentSurfaceConfig_SetIsOpaque()
+
+```
+void OH_ArkUI_XComponentSurfaceConfig_SetIsOpaque(ArkUI_XComponentSurfaceConfig* config, bool isOpaque)
+```
+
+**描述：**
+
+
+设置XComponent组件持有的Surface在渲染时是否被视为不透明，无论该Surface是否存在半透明像素。
+
+**起始版本：** 22
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)* config | 表示指向[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)实例的指针。 |
+| bool isOpaque | 表示设置XComponent组件持有的Surface在渲染时是否需要被视为不透明。true表示需要被视为不透明，false表示不需要被视为不透明，默认值为false，即在渲染时会应用Surface中绘制内容像素的透明度。 |
+
+### OH_ArkUI_SurfaceHolder_SetSurfaceConfig()
+
+```
+int32_t OH_ArkUI_SurfaceHolder_SetSurfaceConfig(OH_ArkUI_SurfaceHolder* surfaceHolder, ArkUI_XComponentSurfaceConfig *config)
+```
+
+**描述：**
+
+
+为[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例设置Surface选项。
+
+**起始版本：** 22
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)* surfaceHolder | 表示指向[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例的指针。 |
+| [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md) *config | 表示指向[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)实例的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回执行结果。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |

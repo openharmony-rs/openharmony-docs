@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_Typography OH_Drawing_Typography
+```
+
 ## 概述
 
 用于管理排版的布局和显示等。

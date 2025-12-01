@@ -205,24 +205,24 @@ console.info(result);
 
 **系统能力：** SystemCapability.Utils.Lang
 
-| 名称              | 类型 | 必填 | 说明                                                        |
-| ----------------- | -------- | ---- | ----------------------------------------------------------- |
-| trim              | boolean  | 是   | 是否修剪位于文本前后的空白字符，true表示xml文本前后的空白字符将会被修剪，false则表示空白字符会被保留。   |
-| ignoreDeclaration | boolean  | 否   | 是否忽略xml写入声明指示，true表示忽略xml写入声明指示，false则相反，默认false。                        |
-| ignoreInstruction | boolean  | 否   | 是否忽略xml的写入处理指令，true表示忽略xml的写入处理指令，false则相反，默认false。                      |
-| ignoreAttributes  | boolean  | 否   | 是否忽略元素的属性信息，true表示忽略元素的属性信息，false则相反，默认false。                   |
-| ignoreComment     | boolean  | 否   | 是否忽略元素的注释信息，true表示忽略元素的注释信息，false则相反，默认false。                         |
-| ignoreCDATA       | boolean  | 否   | 是否忽略元素的CDATA信息，true表示忽略元素的CDATA信息，false则相反，默认false。                        |
-| ignoreDoctype     | boolean  | 否   | 是否忽略元素的Doctype信息，true表示忽略元素的Doctype信息，false则相反，默认false。                      |
-| ignoreText        | boolean  | 否   | 是否忽略元素的文本信息，true表示忽略元素的文本信息，false则相反，默认false。                         |
-| declarationKey    | string   | 是   | 用于输出对象中declaration的属性键的名称。 |
-| instructionKey    | string   | 是   | 用于输出对象中instruction的属性键的名称。 |
-| attributesKey     | string   | 是   | 用于输出对象中attributes的属性键的名称。   |
-| textKey           | string   | 是   | 用于输出对象中text的属性键的名称。               |
-| cdataKey          | string   | 是   | 用于输出对象中cdata的属性键的名称             |
-| doctypeKey        | string   | 是   | 用于输出对象中doctype的属性键的名称。         |
-| commentKey        | string   | 是   | 用于输出对象中comment的属性键的名称。         |
-| parentKey         | string   | 是   | 用于输出对象中parent的属性键的名称。           |
-| typeKey           | string   | 是   | 用于输出对象中type的属性键的名称。               |
-| nameKey           | string   | 是   | 用于输出对象中name的属性键的名称。               |
-| elementsKey       | string   | 是   | 用于输出对象中elements的属性键的名称。       |
+| 名称              | 类型 | 只读 | 可选 | 说明                                                        |
+| ----------------- | -------- | ---- | ---- | ----------------------------------------------------------- |
+| trim              | boolean  | 否   | 否   | 是否修剪位于文本前后的空白字符，true表示xml文本前后的空白字符将会被修剪，false则表示空白字符会被保留。   |
+| ignoreDeclaration | boolean  | 否   | 是   | 是否忽略xml写入声明指示，true表示忽略xml写入声明指示，false则相反，默认false。                        |
+| ignoreInstruction | boolean  | 否   | 是   | 是否忽略xml的写入处理指令，true表示忽略xml的写入处理指令，false则相反，默认false。                      |
+| ignoreAttributes  | boolean  | 否   | 是   | 是否忽略元素的属性信息，true表示忽略元素的属性信息，false则相反，默认false。                   |
+| ignoreComment     | boolean  | 否   | 是   | 是否忽略元素的注释信息，true表示忽略元素的注释信息，false则相反，默认false。                         |
+| ignoreCDATA       | boolean  | 否   | 是   | 是否忽略元素的CDATA信息，true表示忽略元素的CDATA信息，false则相反，默认false。                        |
+| ignoreDoctype     | boolean  | 否   | 是   | 是否忽略元素的Doctype信息，true表示忽略元素的Doctype信息，false则相反，默认false。                      |
+| ignoreText        | boolean  | 否   | 是   | 是否忽略元素的文本信息，true表示忽略元素的文本信息，false则相反，默认false。                         |
+| declarationKey    | string   | 否   | 否   | 用于输出对象中declaration的属性键的名称。 |
+| instructionKey    | string   | 否   | 否   | 用于输出对象中instruction的属性键的名称。 |
+| attributesKey     | string   | 否   | 否   | 用于输出对象中attributes的属性键的名称。   |
+| textKey           | string   | 否   | 否   | 用于输出对象中text的属性键的名称。               |
+| cdataKey          | string   | 否   | 否   | 用于输出对象中cdata的属性键的名称             |
+| doctypeKey        | string   | 否   | 否   | 用于输出对象中doctype的属性键的名称。         |
+| commentKey        | string   | 否   | 否   | 用于输出对象中comment的属性键的名称。         |
+| parentKey         | string   | 否   | 否   | 用于输出对象中parent的属性键的名称。           |
+| typeKey           | string   | 否   | 否   | 用于输出对象中type的属性键的名称。               |
+| nameKey           | string   | 否   | 否   | 用于输出对象中name的属性键的名称。               |
+| elementsKey       | string   | 否   | 否   | 用于输出对象中elements的属性键的名称。       |

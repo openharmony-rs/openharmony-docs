@@ -1,4 +1,4 @@
-# 系统能力SystemCapability列表
+# LiteWearable
 
 <!--Kit: Common-->
 <!--Subsystem: Common-->

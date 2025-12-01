@@ -6,15 +6,15 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-You can create a child process in either of the following ways:
-- [Creating a Child Process That Supports IPC Callback](#creating-a-child-process-that-supports-ipc-callback): Create a child process and establish an IPC channel between the parent and child processes. This method applies to scenarios where the parent and child processes require IPC. Its usage depends on [IPC Kit](../ipc/ipc-capi-development-guideline.md).
-- [Creating a Child Process That Supports Pass-by-Parameter](#creating-a-child-process-that-supports-pass-by-parameter): Create a child process and pass the string and FD handle parameters to the child process. This method applies to scenarios where parameters need to be passed to child processes.
+This topic provides two methods for creating [native child processes](../application-models/ability-terminology.md#native-child-process). You can choose the appropriate method based on your needs.
+- [Creating a Native Child Process That Supports IPC](#creating-a-native-child-process-that-supports-ipc): Create a child process and establish an IPC channel between the parent and child processes. This method applies to scenarios where the parent and child processes require IPC. Its usage depends on [IPC Kit](../ipc/ipc-capi-development-guideline.md).
+- [Creating a Native Child Process That Supports Pass-by-Parameter](#creating-a-native-child-process-that-supports-pass-by-parameter): Create a child process and pass the string and FD handle parameters to the child process. This method applies to scenarios where parameters need to be passed to child processes.
 
 > **NOTE**
 > 
 > The created child process will exit when the parent process exits and cannot run independently.
 
-## Creating a Child Process That Supports IPC Callback
+## Creating a Native Child Process That Supports IPC
 
 ### When to Use
 
@@ -24,7 +24,7 @@ This topic describes how to create a native child process in the main process an
 
 | Name                                                                                                                                                                                                                                                                                                                               | Description                                                                                   |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| int [OH_Ability_CreateNativeChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_createnativechildprocess) (const char *libName, [OH_Ability_OnNativeChildProcessStarted](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_onnativechildprocessstarted) onProcessStarted) | Creates a child process, loads a specified dynamic link library, and returns the startup result asynchronously through a callback parameter. An independent thread is used to execute the callback function. When implementing the callback function, pay attention to thread synchronization issues and avoid performing time-consuming operations to prevent extended blocking.|
+| int [OH_Ability_CreateNativeChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_createnativechildprocess) (const char *libName, [OH_Ability_OnNativeChildProcessStarted](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_onnativechildprocessstarted) onProcessStarted) | Creates a child process, loads a specified dynamic link library, and returns the startup result asynchronously through the **onProcessStarted** callback function in the parameter. The callback function runs on a separate thread. If access to shared resources is required, thread synchronization must be implemented. Due to system limitations on the number of callback threads for a single process, you are advised not to perform highly time-consuming operations within the callback function.|
 
 > **NOTE**
 >
@@ -45,30 +45,70 @@ libchild_process.so
 
 **Including Header Files**
 
-```c++
+<!-- @[child_process_head_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/ChildProcessSample.cpp) -->
+
+``` C++
 #include <IPCKit/ipc_kit.h>
 #include <AbilityKit/native_child_process.h>
 ```
 
 1. (Child process) Implement necessary export functions.
 
-    In the child process, implement and export the functions **NativeChildProcess_OnConnect** and **NativeChildProcess_MainProc**. (It is assumed that the code file is named **ChildProcessSample.cpp**.) The OHIPCRemoteStub object returned by **NativeChildProcess_OnConnect** is responsible for IPC of the main process. For details, see [IPC Development (C/C++)](../ipc/ipc-capi-development-guideline.md).
+    In the child process, implement and export the functions **NativeChildProcess_OnConnect** and **NativeChildProcess_MainProc**. (It is assumed that the code file is named **ChildProcessSample.cpp**.) The OHIPCRemoteStub object returned by **NativeChildProcess_OnConnect** is responsible for IPC with the main process. For details, see [IPC Development (C/C++)](../ipc/ipc-capi-development-guideline.md).
 
     After the child process is started, **NativeChildProcess_OnConnect** is invoked to obtain an IPC stub object, and then **NativeChildProcess_MainProc** is called to transfer the control right of the main thread. After the second function is returned, the child process exits.
-
-    ```c++
+    
+    <!-- @[child_process_must_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/ChildProcessSample.cpp) -->
+    
+    ``` C++
     #include <IPCKit/ipc_kit.h>
-
+    // ···
+    #include <IPCKit/ipc_cremote_object.h>
+    #include <IPCKit/ipc_cparcel.h>
+    #include <IPCKit/ipc_error_code.h>
+    
+    class IpcCapiStubTest {
+    public:
+        explicit IpcCapiStubTest();
+        ~IpcCapiStubTest();
+        OHIPCRemoteStub *GetRemoteStub();
+        static int OnRemoteRequest(uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, void *userData);
+    
+    private:
+        OHIPCRemoteStub *stub_{nullptr};
+    };
+    
+    IpcCapiStubTest::IpcCapiStubTest()
+    {
+        // Create a stub object.
+        stub_ = OH_IPCRemoteStub_Create("testIpc", &IpcCapiStubTest::OnRemoteRequest, nullptr, this);
+    }
+    
+    IpcCapiStubTest::~IpcCapiStubTest()
+    {
+        if (stub_ != nullptr) {
+            OH_IPCRemoteStub_Destroy(stub_);
+        }
+    }
+    
+    OHIPCRemoteStub *IpcCapiStubTest::GetRemoteStub() { return stub_; }
+    
+    int IpcCapiStubTest::OnRemoteRequest(uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, void *userData)
+    {
+        return OH_IPC_SUCCESS;
+    }
+    
+    IpcCapiStubTest g_ipcStubObj;
+    
     extern "C" {
-
-    OHIPCRemoteStub* NativeChildProcess_OnConnect()
+    OHIPCRemoteStub *NativeChildProcess_OnConnect()
     {
         // ipcRemoteStub points to the IPC stub object implemented by the child process. The object is used to receive and respond to IPC messages from the main process.
         // The child process controls its lifecycle according to the service logic.
-        return ipcRemoteStub;
+        return g_ipcStubObj.GetRemoteStub();
     }
-
-    void NativeChildProcess_MainProc()
+    
+    void NativeChildProcessMainProc()
     {
         // Equivalent to the Main function of the child process. It implements the service logic of the child process.
         // ...
@@ -77,6 +117,7 @@ libchild_process.so
     
     } // extern "C"
     ```
+
 
 2. (Child process) Compile a dynamic link library.
 
@@ -102,9 +143,12 @@ libchild_process.so
 
 3. (Main process) Implement the child process startup result callback.
 
-    ```c++
+    <!-- @[main_handle_child_start_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/MainProcessSample.cpp) -->
+    
+    ``` C++
     #include <IPCKit/ipc_kit.h>
-
+    #include <AbilityKit/native_child_process.h>
+    // ···
     static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remoteProxy)
     {
         if (errCode != NCP_NO_ERROR) {
@@ -112,11 +156,11 @@ libchild_process.so
             // ...
             return;
         }
-
+    
         // Save the remoteProxy object for IPC with the child process based on the APIs provided by IPC Kit.
         // You are advised to transfer time-consuming operations to an independent thread to avoid blocking the callback thread for a long time.
         // When the IPC object is no longer needed, call OH_IPCRemoteProxy_Destroy to release it.
-        // ...
+        // ···
     }
     ```
 
@@ -126,16 +170,39 @@ libchild_process.so
 
     Call the API to start the native child process. Note that the return value **NCP_NO_ERROR** only indicates that the native child process startup logic is successfully called. The actual startup result is asynchronously notified through the callback function specified in the second parameter. **A child process can be created only in the main process.**
 
-    ```c++
+    <!-- @[main_processIpc_launch_native_child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/MainProcessSample.cpp) -->
+    
+    ``` C++
+    #include <IPCKit/ipc_kit.h>
     #include <AbilityKit/native_child_process.h>
-
-    // The first parameter libchildprocesssample.so is the name of the dynamic link library that implements the necessary export functions of the child process.
-    int32_t ret = OH_Ability_CreateNativeChildProcess("libchildprocesssample.so", OnNativeChildProcessStarted);
-    if (ret != NCP_NO_ERROR) {
-        // Exception handling when the child process is not started normally.
+    // ···
+    static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remoteProxy)
+    {
+        if (errCode != NCP_NO_ERROR) {
+            // Exception handling when the child process is not started normally.
+            // ...
+            return;
+        }
+    
+        // Save the remoteProxy object for IPC with the child process based on the APIs provided by IPC Kit.
+        // You are advised to transfer time-consuming operations to an independent thread to avoid blocking the callback thread for a long time.
+        // When the IPC object is no longer needed, call OH_IPCRemoteProxy_Destroy to release it.
         // ...
+        // ···
+    }
+    
+    void CreateNativeChildProcess()
+    {
+        // The first parameter libchildprocesssample.so is the name of the dynamic link library that implements the necessary export functions of the child process.
+        int32_t ret = OH_Ability_CreateNativeChildProcess("libchildprocesssample.so", OnNativeChildProcessStarted);
+        if (ret != NCP_NO_ERROR) {
+            // Exception handling when the child process is not started normally.
+            // ...
+        }
+        g_result = ret;
     }
     ```
+
 
 5. (Main process) Add build dependencies.
 
@@ -152,7 +219,7 @@ libchild_process.so
     )
     ```
 
-## Creating a Child Process That Supports Pass-by-Parameter
+## Creating a Native Child Process That Supports Pass-by-Parameter
 
 ### When to Use
 
@@ -175,7 +242,9 @@ libchild_process.so
 
 **Including Header Files**
 
-```c++
+<!-- @[create_native_child_param_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildProcessFunc.cpp) -->
+
+``` C++
 #include <AbilityKit/native_child_process.h>
 ```
 
@@ -183,11 +252,11 @@ libchild_process.so
 
     In the child process, implement and export the entry function [NativeChildProcess_Args](../reference/apis-ability-kit/capi-nativechildprocess-args.md). (It is assumed that the code file is named **ChildProcessSample.cpp**.) After the child process is started, the entry function is invoked. After the second function is returned, the child process exits.
 
-    ```c++
+    <!-- @[child_process_necessary_export_impl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildProcessFunc.cpp) -->
+    
+    ``` C++
     #include <AbilityKit/native_child_process.h>
-
     extern "C" {
-
     /**
      * Entry function of a child process, which implements the service logic of the child process.
      * The function name can be customized and is specified when the main process calls the OH_Ability_StartNativeChildProcess method. In this example, the function name is Main.
@@ -203,11 +272,12 @@ libchild_process.so
             char *fdName = current->fdName;
             int32_t fd = current->fd;
             current = current->next;
-            // Service logic
+            // Implement the service logic.
         }
     }
     } // extern "C"
     ```
+
 
 2. (Child process) Compile a dynamic link library.
 
@@ -235,47 +305,59 @@ libchild_process.so
 
     Call the API to start the native child process. The return value **NCP_NO_ERROR** indicates that the native child process is successfully started.
 
-    ```c++
+    <!-- @[main_process_launch_native_child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/MainProcessFunc.cpp) -->
+    
+    ``` C++
     #include <AbilityKit/native_child_process.h>
-    #include <stdlib.h>
-    #include <string.h>
+    #include <cstdlib>
+    #include <cstring>
     #include <fcntl.h>
-
-    void startNativeChildProcess()
+    // ···
+    int32_t g_fdNameMaxLength = 4;
+    
+    void StartNativeChildProcess()
     {
         // ...
         NativeChildProcess_Args args;
         // Set entryParams. The maximum amount of data that can be passed is 150 KB.
-        args.entryParams = (char*)malloc(sizeof(char) * 10);
-        (void)strcpy(args.entryParams, "testParam");
-
+        const size_t testParamLen = sizeof("testParam") - 1;
+        const size_t entryParamsSize = 10;
+        args.entryParams = (char *)malloc(sizeof(char) * entryParamsSize);
+        if (args.entryParams != nullptr) {
+            (void)strlcpy(args.entryParams, "testParam", testParamLen);
+            args.entryParams[testParamLen] = '\0';
+        }
+    
         // Insert a node to the head node of the linked list.
-        args.fdList.head = (NativeChildProcess_Fd*)malloc(sizeof(NativeChildProcess_Fd));
+        args.fdList.head = (NativeChildProcess_Fd *)malloc(sizeof(NativeChildProcess_Fd));
         // FD keyword, which contains a maximum of 20 characters.
-        args.fdList.head->fdName = (char*)malloc(sizeof(char) * 4);
-        (void)strcpy(args.fdList.head->fdName, "fd1");
+        const size_t fd1Len = sizeof("fd1") - 1;
+        const size_t fdNameSize = 10;
+        args.fdList.head->fdName = (char *)malloc(sizeof(char) * g_fdNameMaxLength);
+        if (args.fdList.head->fdName != nullptr) {
+            (void)strlcpy(args.fdList.head->fdName, "fd1", fdNameSize);
+            args.fdList.head->fdName[fd1Len] = '\0';
+        }
         // Obtain the FD logic.
         int32_t fd = open("/data/storage/el2/base/haps/entry/files/test.txt", O_RDWR | O_CREAT, 0644);
         args.fdList.head->fd = fd;
         // Insert only one FD record. You can insert a maximum of 16 FD records to the linked list as required.
         args.fdList.head->next = NULL;
-        NativeChildProcess_Options options = {
-            .isolationMode = NCP_ISOLATION_MODE_ISOLATED
-        };
-
+        NativeChildProcess_Options options = {.isolationMode = NCP_ISOLATION_MODE_ISOLATED};
+    
         // The first parameter libchildprocesssample.so:Main indicates the name of the dynamic link library file that implements the Main method of the child process and the name of the entry method.
         int32_t pid = -1;
-        Ability_NativeChildProcess_ErrCode ret = OH_Ability_StartNativeChildProcess(
-            "libchildprocesssample.so:Main", args, options, &pid);
+        Ability_NativeChildProcess_ErrCode ret =
+            OH_Ability_StartNativeChildProcess("libchildprocesssample.so:Main", args, options, &pid);
         if (ret != NCP_NO_ERROR) {
             // Release the memory space in NativeChildProcess_Args to prevent memory leakage.
             // Exception handling when the child process is not started normally.
             // ...
         }
-
+    
         // Other logic
-        // ...
-
+    // ···
+    
         // Release the memory space in NativeChildProcess_Args to prevent memory leakage.
     }
     ```
@@ -317,7 +399,9 @@ libchild_process.so
 
 **Including Header Files**
 
-```c++
+<!-- @[child_get_start_params_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildGetStartParams.cpp) -->
+
+``` C++
 #include <AbilityKit/native_child_process.h>
 ```
 
@@ -325,12 +409,13 @@ libchild_process.so
 
 After a child process is created through [OH_Ability_StartNativeChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess), it can call [OH_Ability_GetCurrentChildProcessArgs](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_getcurrentchildprocessargs)() to obtain the startup parameters [NativeChildProcess_Args](../reference/apis-ability-kit/capi-nativechildprocess-args.md) from any .so file or child thread, facilitating operations on related file descriptors.
 
-```c++
+<!-- @[child_get_start_params_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildGetStartParams.cpp) -->
+
+``` C++
 #include <AbilityKit/native_child_process.h>
 #include <thread>
 
 extern "C" {
-
 void ThreadFunc()
 {
     // Obtain the startup parameters of the child process.
@@ -347,7 +432,7 @@ void ThreadFunc()
         char *fdName = current->fdName;
         int32_t fd = current->fd;
         current = current->next;
-        // Service logic
+        // Implement the service logic.
     }
 }
 
@@ -357,7 +442,7 @@ void ThreadFunc()
  */
 void Main(NativeChildProcess_Args args)
 {
-    // Service logic
+    // Implement the service logic.
 
     // Create a thread.
     std::thread tObj(ThreadFunc);

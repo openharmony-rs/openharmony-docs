@@ -341,7 +341,7 @@ cancelAll(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -593,7 +593,7 @@ getSlots(): Promise\<Array\<NotificationSlot>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -756,7 +756,7 @@ removeAllSlots(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -982,6 +982,42 @@ let badgeNumber: number = 10;
 notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
 ```
 
+## notificationManager.getBadgeNumber<sup>22+</sup>
+
+getBadgeNumber(): Promise\<long\>
+
+获取当前应用角标数量。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**返回值：**
+
+| 类型              | 说明                                        |
+| ----------------- | ------------------------------------------- |
+| Promise\<long\> | Promise对象，返回当前应用角标数量。（查询的角标数量与当前应用通知开关，桌面角标开关是否开启无关） |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getBadgeNumber().then((badgeNumber) => {
+  hilog.info(0x0000, 'testTag', `Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## notificationManager.getActiveNotificationCount
 
 getActiveNotificationCount(callback: AsyncCallback\<number\>): void
@@ -1039,7 +1075,7 @@ getActiveNotificationCount(): Promise\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1115,7 +1151,7 @@ getActiveNotifications(): Promise\<Array\<NotificationRequest\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1447,7 +1483,7 @@ requestEnableNotification(callback: AsyncCallback\<void\>): void
 
 > **说明：**
 >
-> 从API version 12开始不再维护，建议使用有context入参的[requestEnableNotification](#notificationmanagerrequestenablenotification10)代替。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用有context入参的[requestEnableNotification](#notificationmanagerrequestenablenotification10)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1493,7 +1529,7 @@ requestEnableNotification(): Promise\<void\>
 
 > **说明：**
 >
-> 从API version 12开始不再维护，建议使用有context入参的[requestEnableNotification](#notificationmanagerrequestenablenotification10-1)代替。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用有context入参的[requestEnableNotification](#notificationmanagerrequestenablenotification10-1)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1505,7 +1541,7 @@ requestEnableNotification(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1588,7 +1624,7 @@ isDistributedEnabled(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1970,3 +2006,17 @@ type NotificationProgress = _NotificationProgress
 | 类型 | 说明 |
 | --- | --- |
 | [_NotificationProgress](js-apis-inner-notification-notificationContent.md#notificationprogress11) | 描述通知进度。 |
+
+## PriorityNotificationType<sup>23+</sup>
+
+描述通知的优先级类型。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+| 名称                 | 值  | 说明                               |
+| --------------------| --- | --------------------------------- |
+| OTHER   | "OTHER"   | 表示通知优先级类型为默认。            |
+| PRIMARY_CONTACT    | "PRIMARY_CONTACT"   | 表示通知优先级类型为重要联系人。                 |
+| AT_ME  | "AT_ME"   | 表示通知优先级类型为@我。            |
+| URGENT_MESSAGE   | "URGENT_MESSAGE"   | 表示通知优先级类型为加急消息。                 |
+| SCHEDULE_REMINDER   | "SCHEDULE_REMINDER"   | 表示通知优先级类型为日程待办。                 |

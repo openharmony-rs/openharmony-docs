@@ -4,7 +4,11 @@
 <!--Owner: @yangxiaodong41-->
 <!--Designer: @guo867-->
 <!--Tester: @maxiaorong-->
-<!--Adviser: @fang-jinxue-->
+<!--Adviser: @fang-jinxu-->
+
+```
+typedef struct Pasteboard_ProgressInfo Pasteboard_ProgressInfo
+```
 
 ## 概述
 

@@ -4,13 +4,13 @@
 <!--Owner: @shiwei75-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 AVRecorder支持开发音视频录制，集成了音频捕获，音频编码，视频编码，音视频封装功能，适用于实现简单视频录制并直接得到本地媒体文件的场景。
 
 本开发指导将以“开始录制-暂停录制-恢复录制-停止录制”的一次流程为示例，向开发者讲解如何使用AVRecorder进行视频录制。
 
-在进行应用开发的过程中，开发者可以通过AVRecorder的state属性主动获取当前状态，或使用OH_AVRecorder_SetStateCallback方法注册回调监听状态变化。开发过程中应该严格遵循状态机要求，例如只能在started状态下调用pause()接口，只能在paused状态下调用resume()接口。
+在进行应用开发的过程中，开发者可以通过AVRecorder的state属性主动获取当前状态，或使用OH_AVRecorder_SetStateCallback方法注册回调监听状态变化。开发过程中应严格遵循状态机要求，例如只能在started状态下调用pause()接口，只能在paused状态下调用resume()接口。
 
 **图1** 录制状态变化示意图
 
@@ -168,7 +168,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    >
    > - 配置参数之前需要确保完成对应权限的申请，请参考[申请权限](#申请权限)。
    >
-   > - prepare接口的入参OH_AVRecorder_Config中设置音视频相关的配置参数，如示例代码所示。
+   > - prepare接口的入参OH_AVRecorder_Config中设置的音视频相关的配置参数，如示例代码所示。
    >
    > - 需要使用支持的[录制规格](media-kit-intro.md#支持的格式)，视频比特率、分辨率、帧率以实际硬件设备支持的范围为准。
    >

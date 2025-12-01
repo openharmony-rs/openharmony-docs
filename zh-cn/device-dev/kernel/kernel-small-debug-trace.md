@@ -165,7 +165,7 @@ LiteOS-A内核的Trace模块提供下面几种功能，接口详细信息可以�
 
 3. (可选)调用LOS_TraceStop停止Trace后，清除缓冲区LOS_TraceReset（系统默认已启动trace）。
 
-4. (可选)调用LOS_TraceEventMaskSet设置需要追踪的事件掩码（系统默认的事件掩码仅使能中断与任务事件），事件掩码参见 [los_trace.h](https://gitee.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h) 中的LOS_TRACE_MASK定义。
+4. (可选)调用LOS_TraceEventMaskSet设置需要追踪的事件掩码（系统默认的事件掩码仅使能中断与任务事件），事件掩码参见 [los_trace.h](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h) 中的LOS_TRACE_MASK定义。
 
 5. 在需要记录事件的代码起始点调用LOS_TraceStart。
 
@@ -278,13 +278,13 @@ Index   Time(cycles)      EventType      CurTask   Identity      params
 
 输出的事件信息包括：发生时间、事件类型、事件发生在哪个任务中、事件操作的主体对象、事件的其他参数。
 
-- EventType：表示的具体事件可查阅头文件 [los_trace.h](https://gitee.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h) 中的enum LOS_TRACE_TYPE。
+- EventType：表示的具体事件可查阅头文件 [los_trace.h](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h) 中的enum LOS_TRACE_TYPE。
 
 - CurrentTask：表示当前运行在哪个任务中，值为taskid。
 
-- Identity：表示事件操作的主体对象，可查阅头文件 [los_trace.h](https://gitee.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h) 中的\#TYPE\#_PARAMS。
+- Identity：表示事件操作的主体对象，可查阅头文件 [los_trace.h](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h) 中的\#TYPE\#_PARAMS。
 
-- params：表示的事件参数可查阅头文件 [los_trace.h](https://gitee.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h) 中的\#TYPE\#_PARAMS。
+- params：表示的事件参数可查阅头文件 [los_trace.h](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h) 中的\#TYPE\#_PARAMS。
 
 下面以序号为0的输出项为例，进行说明。
 

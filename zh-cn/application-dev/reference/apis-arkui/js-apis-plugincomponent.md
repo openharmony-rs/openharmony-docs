@@ -2,15 +2,15 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用于给插件组件的使用方请求组件与数据，使用方发送组件模板和数据。
 
 > **说明：**
 >
-> - 本模块首批接口从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -47,7 +47,7 @@ type KVObject = { [key: string]: number | string | boolean | [] | KVObject }
 
 | 名称    | 类型   | 必填 | 说明                        |
 | ------- | ------ | ---- | --------------------------- |
-|  [key: string]  | number \| string \| boolean \| [] \| [KVObject](#kvobject)  | 是   | 键值对形式存储。<br/>number：键值，表示值类型为数字。<br/> string：键值，表示值类型为字符串，可取空字符串。<br/> boolean：键值，表示值类型为布尔值。<br/> []：键值，可取值为[]。<br/>[KVObject](#kvobject)：键值，表示值类型为KVObject。            |
+|  [key: string]  | number \| string \| boolean \| [] \| [KVObject](#kvobject)  | 否   | 键值对形式存储。<br/>number：键值，表示值类型为数字。<br/> string：键值，表示值类型为字符串，可取空字符串。<br/> boolean：键值，表示值类型为布尔值。<br/> []：键值，可取值为[]。<br/>[KVObject](#kvobject)：键值，表示值类型为KVObject。            |
 
 
 ### PushParameters

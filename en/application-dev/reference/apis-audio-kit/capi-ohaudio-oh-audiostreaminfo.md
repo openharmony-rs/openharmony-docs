@@ -4,7 +4,11 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct OH_AudioStreamInfo {...} OH_AudioStreamInfo
+```
 
 ## Overview
 
@@ -23,6 +27,6 @@ The struct describes the audio stream information, which is used to describe the
 | Name| Description|
 | -- | -- |
 | int32_t samplingRate | Sampling rate.|
-| [OH_AudioChannelLayout](../apis-avcodec-kit/_core.md#oh_audiochannellayout-1) channelLayout | Audio channel layout.|
+| [OH_AudioChannelLayout](../apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout) channelLayout | Audio channel layout.|
 | [OH_AudioStream_EncodingType](capi-native-audiostream-base-h.md#oh_audiostream_encodingtype) encodingType | Encoding type.|
 | [OH_AudioStream_SampleFormat](capi-native-audiostream-base-h.md#oh_audiostream_sampleformat) sampleFormat | Sampling format.|

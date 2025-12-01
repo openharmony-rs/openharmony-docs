@@ -628,6 +628,8 @@ Since API version 10, error code 10200016 is not reported when this API is calle
 **Example of canceling an ongoing task**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function inspectStatus(arg: number): number {
   // Check whether the task has been canceled and respond accordingly.
@@ -657,6 +659,8 @@ function concurrentFunc() {
   let task6: taskpool.Task = new taskpool.Task(inspectStatus, 600); // 600: test number
   taskpool.execute(task1).then((res: Object) => {
     console.info("taskpool test result: " + res);
+  }).catch((err: BusinessError) => {
+    console.error("taskpool catch err: " + err.message);
   });
   taskpool.execute(task2);
   taskpool.execute(task3);
@@ -706,6 +710,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function printArgs(args: number): number {
   let t: number = Date.now();
@@ -726,6 +732,8 @@ function concurrentFunc() {
   });
   taskpool.execute(taskGroup2).then((res: Array<Object>) => {
     console.info("taskGroup2 res is:" + res);
+  }).catch((err: BusinessError) => {
+    console.error("taskGroup2 catch err: " + err.message);
   });
   setTimeout(() => {
     try {
@@ -769,6 +777,8 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function printArgs(args: number): number {
   let t: number = Date.now();
@@ -794,7 +804,9 @@ function cancelFunction(taskId: number) {
 
 function concurrentFunc() {
   let task = new taskpool.Task(printArgs, 100); // 100: test number
-  taskpool.execute(task);
+  taskpool.execute(task).catch((err: BusinessError) => {
+    console.error("taskpool catch err: " + err.message);
+  });
   setTimeout(() => {
     let cancelTask = new taskpool.Task(cancelFunction, task.taskId);
     taskpool.execute(cancelTask);
@@ -914,6 +926,73 @@ Obtains the thread information and task information of the task pool.
 let taskpoolInfo: taskpool.TaskPoolInfo = taskpool.getTaskPoolInfo();
 ```
 
+## taskpool.getTask<sup>22+</sup>
+
+getTask(taskId: number, taskName?: string): Task | undefined
+
+Obtains the corresponding task instance by task ID, or by task ID and task name.
+
+> **NOTE**
+>
+> - If no task instance is found based on the input task ID, **undefined** is returned.
+> - If the corresponding task instance can be queried based on the input task ID but the thread that calls the **getTask** method is different from the thread that creates the task instance, **undefined** is returned.
+> - If taskId and taskName are both passed, and the name of the task instance queried via task ID does not match the provided task name, **undefined** is returned.
+>
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**Parameters**
+
+| Name| Type         | Mandatory| Description                |
+| ------ | ------------- | ---- | -------------------- |
+| taskId   | number | Yes  | Task ID.|
+| taskName   | string | No  | Task name. The default value is **undefined**.|
+
+**Return value**
+
+| Type   | Description                                |
+| ------- | ------------------------------------ |
+| [Task](#task) \| undefined | Task instance. If an exception occurs, **undefined** is returned. For details, see the preceding description.|
+
+**Example**
+
+```ts
+import { taskpool } from '@kit.ArkTS';
+
+@Concurrent
+function addNum(num1: number, num2: number) {
+  return num1 + num2;
+}
+
+function checkTask() {
+  try {
+    taskpool.getTask(null);
+  } catch (e) {
+    console.error("error:" + e);
+    // error:BusinessError: Parameter error. The input parameters are invalid, the type of the first param must be number.
+  }
+
+  let task1:taskpool.Task = new taskpool.Task("addNum", addNum, 1, 2);
+  let task2:taskpool.Task | undefined = taskpool.getTask(task1.taskId, "addNum"); // task2 is not undefined
+  let task3:taskpool.Task | undefined = taskpool.getTask(task1.taskId, "add"); // task3 is undefined
+  let task4:taskpool.Task | undefined = taskpool.getTask(0); // task4 is undefined
+}
+
+function dealTask() {
+  let task1:taskpool.Task = new taskpool.Task(addNum, 1, 2);
+  let task2:taskpool.Task | undefined = taskpool.getTask(task1.taskId);
+  if (task2 === undefined) {
+    return;
+  }
+
+  taskpool.execute(task2).then((result) => {
+    console.info("task2 result: " + result); // task2 result: 3
+  })
+}
+```
+
 ## Priority
 
 Enumerates the priorities available for created tasks. The task priority applies during task execution. The worker thread priority is updated with the task priority. For details about the mappings, see [QoS Level](../../napi/qos-guidelines.md#qos-level).
@@ -975,11 +1054,11 @@ Enumerates tasks, which can be executed for multiple times, placed in a task gro
 | -------------------- | --------- | ---- | ---- | ------------------------------------------------------------ |
 | function             | Function  | No  | No  | Function to be passed in during task creation. For details about the supported return value types of the function, see [Sequenceable Data Types](#sequenceable-data-types).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | arguments            | Object[]  | No  | Yes  | Arguments of the function. For details about the supported parameter types, see [Sequenceable Data Types](#sequenceable-data-types).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| name<sup>11+</sup>   | string    | Yes  | No  | Name of the task specified when the task is created.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| taskId<sup>18+</sup>   | number    | Yes  | No  | Task ID.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| totalDuration<sup>11+</sup>  | number    | Yes  | No  | Total execution time of the task. in ms.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| ioDuration<sup>11+</sup>     | number    | Yes  | No  | Asynchronous I/O time of the task. in ms.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| cpuDuration<sup>11+</sup>    | number    | Yes  | No  | CPU time of the task. in ms.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| name<sup>11+</sup>   | string    | No  | No  | Name of the task specified when the task is created. You are advised not to change the value.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| taskId<sup>18+</sup>   | number    | No  | No  | Task ID, which is globally unique by default. You are advised not to change the value.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| totalDuration<sup>11+</sup>  | number    | No  | No  | Total execution time of the task. in ms. You are advised not to change the value.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| ioDuration<sup>11+</sup>     | number    | No  | No  | Asynchronous I/O time of the task. in ms. You are advised not to change the value.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| cpuDuration<sup>11+</sup>    | number    | No  | No  | CPU time of the task. in ms. You are advised not to change the value.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ### constructor
 
@@ -1423,7 +1502,7 @@ Registers a callback for a task to receive and process data from the worker thre
 
 > **NOTE**
 >
-> If multiple callbacks are registered for the same task, only the last registration takes effect.
+> Only one callback can be defined for a task. If multiple callbacks are registered, only the last registration takes effect.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -1871,11 +1950,13 @@ Describes a callback function with an error message.
 
 ## LongTask<sup>12+</sup>
 
-**System capability**: SystemCapability.Utils.Lang
-
 Describes a continuous task. **LongTask** inherits from [Task](#task).
 No upper limit is set for the execution time of a continuous task, and no timeout exception is thrown if a continuous task runs for a long period of time. However, a continuous task cannot be executed in a task group or executed for multiple times.
 The thread for executing a continuous task exists until [terminateTask](#taskpoolterminatetask12) is called after the execution is complete. The thread is reclaimed when it is idle.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **Example**
 
@@ -1892,10 +1973,10 @@ let task: taskpool.LongTask = new taskpool.LongTask(printArgs, "this is my first
 
 ## GenericsTask<sup>13+</sup>
 
-**System capability**: SystemCapability.Utils.Lang
-
 Implements a generic task. **GenericsTask** inherits from [Task](#task).
 During the creation of a generic task, the passed-in parameter types and return value types of concurrent functions are verified in the compilation phase. Other behaviors are the same as those during the creation of a task.
+
+**System capability**: SystemCapability.Utils.Lang
 
 ### constructor<sup>13+</sup>
 
@@ -2460,7 +2541,7 @@ Describes the internal information about a task.
 
 | Name    | Type               | Read-Only| Optional| Description                                                          |
 | -------- | ------------------ | ---- | ---- | ------------------------------------------------------------- |
-| name<sup>12+</sup> | string   | No  | No  | Task name.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                                                   |
+| name<sup>12+</sup> | string   | No  | No  | Task name. You are advised not to change the value.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                                                   |
 | taskId   | number             | No  | No  | Task ID, which is globally unique by default. You are advised not to change the value.<br> **Atomic service API**: This API can be used in atomic services since API version 11.                                                    |
 | state    | [State](#state10)  | No  | No  | Task state. You are advised not to change the value.<br> **Atomic service API**: This API can be used in atomic services since API version 11.                                                   |
 | duration | number             | No  | Yes  | Duration that the task has been executed, in ms. The default value is **0**. If the return value is **0**, the task is not running. If the return value is empty, no task is running. You are advised not to change the value.<br> **Atomic service API**: This API can be used in atomic services since API version 11. |
@@ -2599,7 +2680,7 @@ function runningCancelError() {
 ## Additional Information
 
 ### Sequenceable Data Types
-The following sequenceable data types are supported: [common object](../../arkts-utils/normal-object.md), [ArrayBuffer object](../../arkts-utils/arraybuffer-object.md), [SharedArrayBuffer object](../../arkts-utils/shared-arraybuffer-object.md), [Transferable object (NativeBinding object)](../../arkts-utils/transferabled-object.md), and [Sendable object](../../arkts-utils/arkts-sendable.md).
+For details about the supported serialization types, see [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md).
 
 ### Using the Task Pool in Simple Mode
 
@@ -2660,7 +2741,7 @@ taskpoolExecute();
 ```ts
 // The async functions are supported.
 @Concurrent
-async function delayExecute(): Promise<Object> {
+async function delayExecute(): Promise<Array<Object>> {
   let ret = await Promise.all<Object>([
     new Promise<Object>(resolve => setTimeout(resolve, 1000, "resolved"))
   ]);

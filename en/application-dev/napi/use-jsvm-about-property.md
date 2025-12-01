@@ -16,7 +16,7 @@ Before working with JS objects using JSVM-API, you need to understand the follow
 
 - Object: a composite data type that allows values of different types in an independent entity in JS. An object is a collection of properties and methods. A property is a value associated with the object, and a method is an operation that the object can perform.
 - Property: a feature, in the key-value format, of an object in JS. Each property has a name (key or identifier) and a value. The property value can be of any data type, including the basic type, object, and function.
-- Enumerable property: a property in JS with **enumerable** set to **true**. The enumerability determines whether an attribute can be traversed by `for...in`.
+- Enumerable property: a property in JS with **enumerable** set to **true**. An enumerable property can be traversed by **for...in**.
 - Own property: a property defined for an object rather than inherited from the prototype chain.
 
 ## Available APIs
@@ -28,16 +28,16 @@ Before working with JS objects using JSVM-API, you need to understand the follow
 | OH_JSVM_GetProperty        | Obtains a property from a JS object.|
 | OH_JSVM_HasProperty        | Checks whether a JS object has the specified property.|
 | OH_JSVM_DeleteProperty     | Deletes a property from a JS object.|
-| OH_JSVM_HasOwnProperty     | Checks whether an object has the own property specified by **key**.|
-| OH_JSVM_SetNamedProperty   | Sets a property with the given property name for a JS object. This API is equivalent to calling **OH_JSVM_SetNamedProperty** with a **JSVM_Value** created from the string passed in as **utf8Name**.|
-| OH_JSVM_GetNamedProperty   | Obtains a property from a JS object. This API is equivalent to calling **OH_JSVM_GetNamedProperty** with a **JSVM_Value** created from the string passed in as **utf8Name**.|
+| OH_JSVM_HasOwnProperty     | Checks whether an object has the own property with the specified name.|
+| OH_JSVM_SetNamedProperty   | Sets a property with the given property name for a JS object. This API is equivalent to calling **OH_JSVM_SetProperty** with a **JSVM_Value** created from the string passed in as **utf8Name**.|
+| OH_JSVM_GetNamedProperty   | Obtains a property from a JS object. This API is equivalent to calling **OH_JSVM_GetProperty** with a **JSVM_Value** created from the string passed in as **utf8Name**.|
 | OH_JSVM_HasNamedProperty   | Checks whether a JS object has the specified property. This API is equivalent to calling **OH_JSVM_HasProperty** with a **JSVM_Value** created from the string passed in as **utf8Name**.|
 | OH_JSVM_DefineProperties   | Defines multiple properties for a JS object.|
 | OH_JSVM_GetAllPropertyNames | Obtains the names of all available properties of a JS object as a JS array.|
 
 ## Example
 
-For details, see [Using JSVM APIs to Implement Interaction Between JS and C/C++](use-jsvm-process.md). This document describes only the C++ code corresponding to the APIs.
+If you are just starting out with JSVM-API, see [JSVM-API Development Process](use-jsvm-process.md). The following demonstrates only the C++ code involved in related APIs.
 
 ### OH_JSVM_GetPropertyNames
 
@@ -680,7 +680,7 @@ JSVM getterCallback success:Hello world!
 
 ### OH_JSVM_GetAllPropertyNames
 
-Obtains the names of all enumerable properties of a JS object as a JS array.
+Call **OH_JSVM_GetAllPropertyNames** to obtain the names of all enumerable properties of a JS object as a JS array.
 
 CPP code:
 

@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @pengzhiwen3-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 id为组件的唯一标识，在整个应用内唯一。本模块提供组件标识相关接口，可以获取指定id组件的属性，也提供向指定id组件发送事件的功能。
 
@@ -65,7 +65,7 @@ key(value: string): T
 
 ## 基于组件标识的拓展能力
 
-组件标识的拓展能力仅用于对应用的测试，以下各个接口示例，需要在应用工程的ohosTest/ets/test目录中调试，具体可以参考<!--RP1-->[自动化测试框架使用指导](../../../../application-dev/application-test/arkxtest-guidelines.md)<!--RP1-->。
+组件标识的拓展能力仅用于对应用的测试，以下各个接口示例，需要在应用工程的ohosTest/ets/test目录中调试，具体可以参考<!--RP1-->[单元测试框架使用指导](../../../../application-dev/application-test/unittest-guidelines.md)<!--RP1End-->。
 
 ### getInspectorByKey<sup>9+</sup>
 
@@ -242,7 +242,7 @@ sendKeyEvent(event: KeyEvent): boolean
 
 | 类型      | 说明                           |
 | ------- | ------------------------------|
-| boolean | 事件发送失败时时返回false，其余情况返回true。 |
+| boolean | 事件发送失败时返回false，其余情况返回true。 |
 
 ### sendMouseEvent<sup>9+</sup>
 

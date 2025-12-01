@@ -1,5 +1,16 @@
 # OH_AVDemuxer
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @mr-chencxy-->
+<!--Designer: @dpy2650--->
+<!--Tester: @baotianhao-->
+<!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct OH_AVDemuxer OH_AVDemuxer
+```
+
 ## Overview
 
 The struct describes a native object for the OH_AVDemuxer interface.

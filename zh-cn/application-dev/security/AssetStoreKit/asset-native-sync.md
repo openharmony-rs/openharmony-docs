@@ -14,24 +14,32 @@
 target_link_libraries(entry PUBLIC libasset_ndk.z.so)
 ```
 
+引用头文件。
+<!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+#include "napi/native_api.h"
+#include <string.h>
+#include "asset/asset_api.h"
+```
+
+
 ## 新增支持同步的关键资产
 
 新增密码demo_pwd（别名demo_alias），附属信息为demo_label，支持同步的关键资产。
 
-```c
-#include <string.h>
+<!-- @[add_sync_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
-#include "asset/asset_api.h"
-
-static napi_value AddAsset(napi_env env, napi_callback_info info)
+``` C++
+static napi_value AddSyncAsset(napi_env env, napi_callback_info info)
 {
-    static const char *SECRET = "demo_pwd2";
-    static const char *ALIAS = "demo_alias2";
-    static const char *LABEL = "demo_label2";
+    char *secretStr = "demo_pwd";
+    char *aliasStr = "demo_alias";
+    char *labelStr = "demo_label";
 
-    Asset_Blob secret = {(uint32_t)(strlen(SECRET)), (uint8_t *)SECRET};
-    Asset_Blob alias = {(uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS};
-    Asset_Blob label = {(uint32_t)(strlen(LABEL)), (uint8_t *)LABEL};
+    Asset_Blob secret = {(uint32_t)(strlen(secretStr)), (uint8_t *)secretStr};
+    Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
+    Asset_Blob label = {(uint32_t)(strlen(labelStr)), (uint8_t *)labelStr};
     Asset_Attr attr[] = {
         {.tag = ASSET_TAG_SECRET, .value.blob = secret},
         {.tag = ASSET_TAG_ALIAS, .value.blob = alias},
@@ -45,6 +53,7 @@ static napi_value AddAsset(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
+
 
 ## 接入备份恢复扩展能力
 
@@ -66,12 +75,10 @@ static napi_value AddAsset(napi_env env, napi_callback_info info)
 
 ### 代码示例
 
-```c
-#include <string.h>
+<!-- @[query_sync_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
-#include "asset/asset_api.h"
-
-static napi_value QuerySyncResults(napi_env env, napi_callback_info info)
+``` C++
+static napi_value QuerySyncResult(napi_env env, napi_callback_info info)
 {
     Asset_SyncResult syncResult = {0};
     int32_t queryResult = OH_Asset_QuerySyncResult(NULL, 0, &syncResult);
@@ -80,6 +87,7 @@ static napi_value QuerySyncResults(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
+
 
 ## 约束和限制
 

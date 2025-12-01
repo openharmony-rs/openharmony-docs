@@ -4,7 +4,11 @@
 <!--Owner: @yaozhupeng-->
 <!--Designer: @yaozhupeng-->
 <!--Tester: @zhaoxiaoguang2-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_Pixelmap_HdrMetadataValue {...} OH_Pixelmap_HdrMetadataValue
+```
 
 ## 概述
 

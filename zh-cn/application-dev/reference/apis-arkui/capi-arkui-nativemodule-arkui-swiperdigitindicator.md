@@ -1,4 +1,14 @@
 # ArkUI_SwiperDigitIndicator
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @mayaolll-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_SwiperDigitIndicator ArkUI_SwiperDigitIndicator
+```
 
 ## 概述
 

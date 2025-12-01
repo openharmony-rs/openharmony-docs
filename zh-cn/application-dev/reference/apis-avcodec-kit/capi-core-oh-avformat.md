@@ -5,7 +5,11 @@
 <!--Owner: @zhanghongran-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct OH_AVFormat OH_AVFormat
+```
 
 ## 概述
 

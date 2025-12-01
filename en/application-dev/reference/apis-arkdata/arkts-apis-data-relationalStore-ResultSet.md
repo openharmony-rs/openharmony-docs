@@ -12,6 +12,8 @@
 
 Provides APIs to access the result set obtained by querying the RDB store. returned by **query()**.
 
+The **ResultSet** instance is not refreshed in real time. After using the result set, if the data in the database is changed (by being added, deleted, or modified), you need to query the result set again to obtain the latest data.
+
 For the following APIs, you should use either [query](arkts-apis-data-relationalStore-RdbStore.md#query), [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql), [remoteQuery](arkts-apis-data-relationalStore-RdbStore.md#remotequery-1), or [queryLockedRow](arkts-apis-data-relationalStore-RdbStore.md#querylockedrow12) to obtain the **ResultSet** instance first, and then use this instance to call the corresponding method.
 
 ## Module to Import
@@ -24,17 +26,17 @@ import { relationalStore } from '@kit.ArkData';
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-| Name        | Type           | Mandatory| Description                            |
-| ------------ | ------------------- | ---- | -------------------------------- |
-| columnNames  | Array&lt;string&gt; | Yes  | Names of all columns in the result set.      |
-| columnCount  | number              | Yes  | Number of columns in the result set.            |
-| rowCount     | number              | Yes  | Number of rows in the result set.            |
-| rowIndex     | number              | Yes  | Index of the current row in the result set.<br>Default value: **-1**. The index position starts from **0**.|
-| isAtFirstRow | boolean             | Yes  | Whether the result set pointer is in the first row (the row index is **0**). The value **true** means the result set pointer is in the first row.|
-| isAtLastRow  | boolean             | Yes  | Whether the result set pointer is in the last row. The value **true** means the pointer is in the last row.|
-| isEnded      | boolean             | Yes  | Whether the result set pointer is after the last row. The value **true** means the pointer is after the last row.|
-| isStarted    | boolean             | Yes  | Whether the result set pointer is moved. The value **true** means the pointer is moved.            |
-| isClosed     | boolean             | Yes  | Whether the result set is closed. The value **true** means the result set is closed.        |
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| columnNames | Array&lt;string&gt; | Yes| No| Names of all columns in the result set.|
+| columnCount | number | Yes| No| Number of columns in the result set.|
+| rowCount | number | Yes| No| Number of rows in the result set.|
+| rowIndex | number | Yes| No| Index of the current row in the result set.<br>Default value: **-1**. The index position starts from **0**.|
+| isAtFirstRow | boolean | Yes| No| Whether the result set pointer is in the first row (the row index is **0**). The value **true** means the result set pointer is in the first row.|
+| isAtLastRow | boolean | Yes| No| Whether the result set pointer is in the last row. The value **true** means the pointer is in the last row.|
+| isEnded | boolean | Yes| No| Whether the result set pointer is after the last row. The value **true** means the pointer is after the last row.|
+| isStarted | boolean | Yes| No| Whether the result set pointer is moved. The value **true** means the pointer is moved.|
+| isClosed | boolean | Yes| No| Whether the result set is closed. The value **true** means the result set is closed.|
 
 ## getColumnIndex
 
@@ -50,7 +52,7 @@ Obtains the column index based on the column name.
 | ---------- | ------ | ---- | -------------------------- |
 | columnName | string | Yes  | Column name.|
 
-**Returns**:
+**Return value**
 
 | Type  | Description              |
 | ------ | ------------------ |
@@ -108,7 +110,7 @@ Obtains the column name based on the column index.
 | ----------- | ------ | ---- | -------------------------- |
 | columnIndex | number | Yes  | Column index.|
 
-**Returns**:
+**Return value**
 
 | Type  | Description              |
 | ------ | ------------------ |
@@ -155,7 +157,7 @@ if (resultSet != undefined) {
 
 getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
 
-Obtains the column data type based on the specified column index or column name. This API uses a promise to return the result.
+Obtains the column type based on the specified column index or column name. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -165,7 +167,7 @@ Obtains the column data type based on the specified column index or column name.
 | ---------------- | ---------------- | ---- | ------------------------------------------------------------ |
 | columnIdentifier | number \| string | Yes  | Index or name of column in a result set. The index must be a non-negative integer and cannot exceed the length of **columnNames**. The column name must be a name in **columnNames**.|
 
-**Returns**:
+**Return value**
 
 | Type                                | Description                               |
 | ------------------------------------ | ----------------------------------- |
@@ -219,7 +221,7 @@ if (resultSet != undefined) {
 
 getColumnTypeSync(columnIdentifier: number | string): ColumnType
 
-Obtains the column data type based on the specified column index or column name. This API returns the result synchronously.
+Obtains the column type based on the specified column index or column name. This API returns the result synchronously.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -229,7 +231,7 @@ Obtains the column data type based on the specified column index or column name.
 | ---------------- | ---------------- | ---- | ------------------------------------------------------------ |
 | columnIdentifier | number \| string | Yes  | Index or name of column in a result set. The index must be a non-negative integer and cannot exceed the length of **columnNames**. The column name must be a name in **columnNames**.|
 
-**Returns**:
+**Return value**
 
 | Type                       | Description                  |
 | --------------------------- | ---------------------- |
@@ -293,7 +295,7 @@ Moves the result set pointer based on the offset specified.
 | ------ | ------ | ---- | ---------------------------- |
 | offset | number | Yes  | Offset relative to the position of the current result set pointer. A positive value means to move the pointer backward, and a negative value means to move the pointer forward.|
 
-**Returns**:
+**Return value**
 
 | Type   | Description                                         |
 | ------- | --------------------------------------------- |
@@ -348,7 +350,7 @@ Moves to the specified row in the result set.
 | -------- | ------ | ---- | ------------------------ |
 | position | number | Yes  | Destination position to move to.|
 
-**Returns**:
+**Return value**
 
 | Type   | Description                                         |
 | ------- | --------------------------------------------- |
@@ -398,7 +400,7 @@ Moves to the first row of the result set.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Returns**:
+**Return value**
 
 | Type   | Description                                         |
 | ------- | --------------------------------------------- |
@@ -446,7 +448,7 @@ Moves to the last row of the result set.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Returns**:
+**Return value**
 
 | Type   | Description                                         |
 | ------- | --------------------------------------------- |
@@ -494,7 +496,7 @@ Moves to the next row in the result set.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Returns**:
+**Return value**
 
 | Type   | Description                                         |
 | ------- | --------------------------------------------- |
@@ -542,7 +544,7 @@ Moves to the previous row in the result set.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Returns**:
+**Return value**
 
 | Type   | Description                                         |
 | ------- | --------------------------------------------- |
@@ -596,7 +598,7 @@ Obtains the value from the specified column and current row. If the value type i
 | ----------- | ------ | ---- | ----------------------- |
 | columnIndex | number | Yes  | Index of the target column, starting from 0.|
 
-**Returns**:
+**Return value**
 
 | Type      | Description                            |
 | ---------- | -------------------------------- |
@@ -632,8 +634,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**:
 
 ```ts
-if (resultSet != undefined) {
-  const codes = (resultSet as relationalStore.ResultSet).getValue((resultSet as relationalStore.ResultSet).getColumnIndex("BIGINT_COLUMN"));
+if (resultSet !== undefined) {
+  while (resultSet.goToNextRow()) {
+    const colIndex = resultSet.getColumnIndex("NAME");
+    if (colIndex > -1) {
+      const name = resultSet.getValue(colIndex);
+      console.info(`Get value success, name is ${name}`);
+    }
+  }
 }
 ```
 
@@ -652,7 +660,7 @@ Obtains the value from the specified column and current row, and returns it in a
 | ----------- | ------ | ---- | ----------------------- |
 | columnIndex | number | Yes  | Index of the target column, starting from 0.|
 
-**Returns**:
+**Return value**
 
 | Type      | Description                            |
 | ---------- | -------------------------------- |
@@ -707,7 +715,7 @@ Obtains the value from the specified column and current row, and returns it in t
 | ----------- | ------ | ---- | ----------------------- |
 | columnIndex | number | Yes  | Index of the target column, starting from 0.|
 
-**Returns**:
+**Return value**
 
 | Type  | Description                        |
 | ------ | ---------------------------- |
@@ -762,7 +770,7 @@ Obtains the value from the specified column and current row, and returns a value
 | ----------- | ------ | ---- | ----------------------- |
 | columnIndex | number | Yes  | Index of the target column, starting from 0.|
 
-**Returns**:
+**Return value**
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
@@ -798,8 +806,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**:
 
 ```ts
-if (resultSet != undefined) {
-  const age = (resultSet as relationalStore.ResultSet).getLong((resultSet as relationalStore.ResultSet).getColumnIndex("AGE"));
+if (resultSet !== undefined) {
+  while (resultSet.goToNextRow()) {
+    const colIndex = resultSet.getColumnIndex("AGE");
+    if (colIndex > -1) {
+      const age = resultSet.getLong(colIndex);
+      console.info(`Get long success, age is ${age}`);
+    }
+  }
 }
 ```
 
@@ -817,7 +831,7 @@ Obtains the value from the specified column and current row, and returns a value
 | ----------- | ------ | ---- | ----------------------- |
 | columnIndex | number | Yes  | Index of the target column, starting from 0.|
 
-**Returns**:
+**Return value**
 
 | Type  | Description                        |
 | ------ | ---------------------------- |
@@ -853,8 +867,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**:
 
 ```ts
-if (resultSet != undefined) {
-  const salary = (resultSet as relationalStore.ResultSet).getDouble((resultSet as relationalStore.ResultSet).getColumnIndex("SALARY"));
+if (resultSet !== undefined) {
+  while (resultSet.goToNextRow()) {
+    const colIndex = resultSet.getColumnIndex("SALARY");
+    if (colIndex > -1) {
+      const salary = resultSet.getDouble(colIndex);
+      console.info(`Get double success, salary is ${salary}`);
+    }
+  }
 }
 ```
 
@@ -872,7 +892,7 @@ Obtains the value from the specified column and current row, and returns the val
 | ----------- | ------ | --- | ------------ |
 | columnIndex | number | Yes  | Index of the target column, starting from 0.|
 
-**Returns**:
+**Return value**
 
 | Type             | Description                        |
 | --------------- | -------------------------- |
@@ -927,7 +947,7 @@ Obtains the value from the specified column and current row, and returns the val
 | ----------- | ------ | --- | ------------ |
 | columnIndex | number | Yes  | Index of the target column, starting from 0.|
 
-**Returns**:
+**Return value**
 
 | Type             | Description                          |
 | ---------------- | ---------------------------- |
@@ -976,7 +996,7 @@ Obtains the current row.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Returns**:
+**Return value**
 
 | Type             | Description                          |
 | ---------------- | ---------------------------- |
@@ -1029,10 +1049,10 @@ Obtains a specified amount of data from the result set. This API uses a promise 
 | Name     | Type  | Mandatory| Description                   |
 | ----------- | ------ | ---- | ----------------------- |
 | maxCount | number | Yes  | Number of rows to obtain. The value is a positive integer. If the value is not a positive integer, error 401 will be thrown.|
-| position | number | No  | Start position for obtaining data from the result set. The value is a non-negative integer. If this parameter is not specified, data is obtained from the current row of the result set (by default, it is the first row of the result set when data is obtained for the first time). If it is not a non-negative integer, error code 401 will be thrown.|
+| position | number | No  | Start position for obtaining data from the result set. The value is a non-negative integer. If this parameter is not specified, data is obtained from the current row of the result set (by default, it is the first row of the result set when data is obtained for the first time). If the value is not a non-negative integer, error code 401 will be thrown.|
 
 
-**Returns**:
+**Return value**
 
 | Type             | Description                          |
 | ---------------- | ---------------------------- |
@@ -1099,7 +1119,7 @@ Obtains the sendable data from the current row. The sendable data can be passed 
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Returns**:
+**Return value**
 
 | Type                                                                                          | Description                                        |
 | ---------------------------------------------------------------------------------------------- | -------------------------------------------- |
@@ -1132,6 +1152,8 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 | 14800034     | SQLite: Library used incorrectly.             |
 
 **Example**:
+
+For details about the definition of **this.context** in the sample code, see the application [context](../apis-ability-kit/js-apis-inner-application-context.md) of the stage model.
 
 <!--code_no_check-->
 ```ts
@@ -1191,7 +1213,7 @@ Checks whether the value in the specified column is null.
 | ----------- | ------ | ---- | ----------------------- |
 | columnIndex | number | Yes  | Index of the target column, starting from 0.|
 
-**Returns**:
+**Return value**
 
 | Type   | Description                                                     |
 | ------- | --------------------------------------------------------- |
@@ -1227,8 +1249,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**:
 
 ```ts
-if (resultSet != undefined) {
-  const isColumnNull = (resultSet as relationalStore.ResultSet).isColumnNull((resultSet as relationalStore.ResultSet).getColumnIndex("CODES"));
+if (resultSet !== undefined) {
+  while (resultSet.goToNextRow()) {
+    const colIndex = resultSet.getColumnIndex("CODES");
+    if (colIndex > -1) {
+      const isColumnNull = resultSet.isColumnNull(colIndex);
+      console.info(`Column is null: ${isColumnNull}`);
+    }
+  }
 }
 ```
 

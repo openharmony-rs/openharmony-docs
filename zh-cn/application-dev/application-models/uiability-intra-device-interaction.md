@@ -2,8 +2,8 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @altay-->
-<!--Designer: @altay-->
+<!--Owner: @wendel-->
+<!--Designer: @wendel-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -30,38 +30,40 @@
 
 1. 在EntryAbility中，通过调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法启动UIAbility，[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)为UIAbility实例启动的入口参数，其中bundleName为待启动应用的Bundle名称，abilityName为待启动的Ability名称，moduleName在待启动的UIAbility属于不同的Module时添加，parameters为自定义信息参数。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
-    ```ts
+    <!-- @[FuncAbilityA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
+
+    ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
 
-    const TAG: string = '[Page_UIAbilityComponentsInteractive]';
+    const TAG: string = '[MainPage]';
     const DOMAIN_NUMBER: number = 0xFF00;
 
     @Entry
     @Component
-    struct Page_UIAbilityComponentsInteractive {
+    struct MainPage {
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
       build() {
         Column() {
-          //...
-          List({ initialIndex: 0 }) {
+          List({ initialIndex: 0, space: 8 }) {
             ListItem() {
               Row() {
-                //...
+                // ···
               }
               .onClick(() => {
                 // context为Ability对象的成员，在非Ability对象内部调用需要
                 // 将Context对象传递过去
                 let wantInfo: Want = {
                   deviceId: '', // deviceId为空表示本设备
-                  bundleName: 'com.samples.stagemodelabilitydevelop',
+                  bundleName: 'com.samples.uiabilityinteraction',
                   moduleName: 'entry', // moduleName非必选
                   abilityName: 'FuncAbilityA',
                   parameters: {
                     // 自定义信息
-                    info: '来自EntryAbility Page_UIAbilityComponentsInteractive页面'
+                    // app.string.main_page_return_info资源文件中的value值为'来自EntryAbility MainPage页面'
+                   info: $r('app.string.main_page_return_info')
                   },
                 };
                 // context为调用方UIAbility的UIAbilityContext
@@ -72,27 +74,32 @@
                 });
               })
             }
-            //...
+            // ···
           }
-          //...
+        // ···
         }
-        //...
+        // ···
       }
     }
     ```
 
 2. 在FuncAbility的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)或者[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)生命周期回调文件中接收EntryAbility传递过来的参数。
 
-    ```ts
+    <!-- @[Ability_FuncAbilityA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityA.ets) -->
+
+    ``` TypeScript
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+    // ···
 
     export default class FuncAbilityA extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 接收调用方UIAbility传过来的参数
         let funcAbilityWant = want;
         let info = funcAbilityWant?.parameters?.info;
+        // ···
       }
-      //...
+
+    // ···
     }
     ```
 
@@ -102,20 +109,23 @@
 
 3. 在FuncAbility业务完成之后，如需要停止当前[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例，在FuncAbility中通过调用[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)方法实现。
 
-    ```ts
+    <!-- @[FuncAbilityAPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityAPage.ets) -->
+    
+    ``` TypeScript
     import { common } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
-    const TAG: string = '[Page_FromStageModel]';
+    
+    const TAG: string = '[FuncAbilityAPage]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
-    struct Page_FromStageModel {
+    struct FuncAbilityAPage {
+    
       build() {
         Column() {
-          //...
-          Button('FuncAbilityB')
+          // app.string.Stop_AbilityA资源文件中的value值为'StopFuncAbilityA'
+          Button($r('app.string.Stop_AbilityA'))
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
               // context为需要停止的UIAbility实例的AbilityContext
@@ -126,8 +136,9 @@
                 }
               });
             })
+            // ···
         }
-        //...
+        // ···
       }
     }
     ```
@@ -145,36 +156,43 @@
 
 1. 在EntryAbility中，调用[startAbilityForResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult-2)接口启动FuncAbility，异步回调中的data用于接收FuncAbility停止自身后返回给EntryAbility的信息。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
-    ```ts
+    <!-- @[FuncAbilityA_Result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
+    
+    ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
-    const TAG: string = '[Page_UIAbilityComponentsInteractive]';
+    
+    const TAG: string = '[MainPage]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
-    struct Page_UIAbilityComponentsInteractive {
+    struct MainPage {
+      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    
       build() {
         Column() {
-          //...
-          List({ initialIndex: 0 }) {
+          List({ initialIndex: 0, space: 8 }) {
+    
+            // ···
+    
             ListItem() {
               Row() {
-                //...
+                // ···
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
                 const RESULT_CODE: number = 1001;
                 let want: Want = {
                   deviceId: '', // deviceId为空表示本设备
-                  bundleName: 'com.samples.stagemodelabilitydevelop',
+                  bundleName: 'com.samples.uiabilityinteraction',
                   moduleName: 'entry', // moduleName非必选
                   abilityName: 'FuncAbilityA',
                   parameters: {
                     // 自定义信息
-                    info: '来自EntryAbility UIAbilityComponentsInteractive页面'
+                    // app.string.main_page_return_info资源文件中的value值为'来自EntryAbility MainPage页面'
+                    info: $r('app.string.main_page_return_info')
                   }
                 };
                 context.startAbilityForResult(want).then((data) => {
@@ -194,46 +212,52 @@
                 });
               })
             }
-            //...
+    
+            // ···
           }
-          //...
+        // ···
         }
-        //...
+        // ···
       }
     }
     ```
 
 2. 在FuncAbility停止自身时，需要调用[terminateSelfWithResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)方法，入参[abilityResult](../reference/apis-ability-kit/js-apis-inner-ability-abilityResult.md)为FuncAbility需要返回给EntryAbility的信息。
 
-    ```ts
+    <!-- @[FuncAbilityB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityAPage.ets) -->
+    
+    ``` TypeScript
     import { common } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
-    const TAG: string = '[Page_FuncAbilityA]';
+    
+    const TAG: string = '[FuncAbilityAPage]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
-    struct Page_FuncAbilityA {
+    struct FuncAbilityAPage {
+    
       build() {
         Column() {
-          //...
+        // ···
+    
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                //...
+                // ···
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
-                const RESULT_CODE: number = 1001;
+                const RESULT_CODE: number = 1001; //FuncAbilityA返回的结果
                 let abilityResult: common.AbilityResult = {
                   resultCode: RESULT_CODE,
                   want: {
-                    bundleName: 'com.samples.stagemodelabilitydevelop',
+                    bundleName: 'com.samples.uiabilityinteraction',
                     moduleName: 'entry', // moduleName非必选
-                    abilityName: 'FuncAbilityB',
+                    abilityName: 'FuncAbilityA',
                     parameters: {
-                      info: '来自FuncAbility Index页面'
+                      // app.string.ability_return_info资源文件中的value值为'来自FuncAbility Index页面'
+                      info: $r('app.string.ability_return_info')
                     },
                   },
                 };
@@ -245,48 +269,53 @@
                 });
               })
             }
-            //...
           }
-          //...
+        // ···
         }
-        //...
+        // ···
       }
     }
     ```
 
 3. FuncAbility停止自身后，EntryAbility通过[startAbilityForResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult-2)方法回调接收被FuncAbility返回的信息，RESULT_CODE需要与前面的数值保持一致。
 
-    ```ts
+    <!-- @[FuncAbilityA_For_Result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
+    
+    ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
-    const TAG: string = '[Page_UIAbilityComponentsInteractive]';
+    
+    const TAG: string = '[MainPage]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
-    struct Page_UIAbilityComponentsInteractive {
+    struct MainPage {
+      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    
       build() {
         Column() {
-          //...
-          List({ initialIndex: 0 }) {
+          List({ initialIndex: 0, space: 8 }) {
+    
+            // ···
+    
             ListItem() {
               Row() {
-                //...
+                // ···
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
                 const RESULT_CODE: number = 1001;
-
                 let want: Want = {
                   deviceId: '', // deviceId为空表示本设备
-                  bundleName: 'com.samples.stagemodelabilitydevelop',
+                  bundleName: 'com.samples.uiabilityinteraction',
                   moduleName: 'entry', // moduleName非必选
                   abilityName: 'FuncAbilityA',
                   parameters: {
                     // 自定义信息
-                    info: '来自EntryAbility UIAbilityComponentsInteractive页面'
+                    // app.string.main_page_return_info资源文件中的value值为'来自EntryAbility MainPage页面'
+                    info: $r('app.string.main_page_return_info')
                   }
                 };
                 context.startAbilityForResult(want).then((data) => {
@@ -306,11 +335,12 @@
                 });
               })
             }
-            //...
+    
+            // ···
           }
-          //...
+        // ···
         }
-        //...
+        // ···
       }
     }
     ```
@@ -335,32 +365,38 @@ UIAbility的启动分为两种情况：UIAbility冷启动和UIAbility热启动�
 调用方[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)启动另外一个UIAbility时，通常需要跳转到指定的页面。例如FuncAbility包含两个页面（Index对应首页，Second对应功能A页面），此时需要在传入的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数中配置指定的页面路径信息，可以通过want中的parameters参数增加一个自定义参数传递页面跳转信息。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
 
-```ts
+<!-- @[FuncAbility_Cold](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
+
+``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const TAG: string = '[Page_UIAbilityComponentsInteractive]';
+const TAG: string = '[MainPage]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 @Entry
 @Component
-struct Page_UIAbilityComponentsInteractive {
+struct MainPage {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
   build() {
     Column() {
-      //...
-      List({ initialIndex: 0 }) {
+      List({ initialIndex: 0, space: 8 }) {
+
+        // ···
+
         ListItem() {
           Row() {
-            //...
+            // ···
           }
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
             let want: Want = {
               deviceId: '', // deviceId为空表示本设备
-              bundleName: 'com.samples.stagemodelabilityinteraction',
+              bundleName: 'com.samples.uiabilityinteraction',
               moduleName: 'entry', // moduleName非必选
-              abilityName: 'FuncAbility',
+              abilityName: 'ColdStartAbility',
               parameters: { // 自定义参数传递页面信息
                 router: 'funcA'
               }
@@ -373,11 +409,12 @@ struct Page_UIAbilityComponentsInteractive {
             });
           })
         }
-        //...
+
+        // ···
       }
-      //...
+    // ···
     }
-    //...
+    // ···
   }
 }
 ```
@@ -388,17 +425,19 @@ struct Page_UIAbilityComponentsInteractive {
 目标[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)冷启动时，在目标UIAbility的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期回调中，接收调用方传过来的参数。然后在目标UIAbility的[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期回调中，解析调用方传递过来的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数，获取到需要加载的页面信息url，传入[windowStage.loadContent()](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)方法。
 
 
-```ts
+<!-- @[ColdAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/ColdStartAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, Want, UIAbility } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window, UIContext } from '@kit.ArkUI';
 
 const DOMAIN_NUMBER: number = 0xFF00;
-const TAG: string = '[EntryAbility]';
+const TAG: string = '[ColdStartAbility]';
 
-export default class EntryAbility extends UIAbility {
-  funcAbilityWant: Want | undefined = undefined;
-  uiContext: UIContext | undefined = undefined;
+export default class ColdStartAbility extends UIAbility {
+  private funcAbilityWant: Want | undefined = undefined;
+  private uiContext: UIContext | undefined = undefined;
 
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     // 接收调用方UIAbility传过来的参数
@@ -411,10 +450,10 @@ export default class EntryAbility extends UIAbility {
     // Main window is created, set main page for this ability
     let url = 'pages/Index';
     if (this.funcAbilityWant?.parameters?.router && this.funcAbilityWant.parameters.router === 'funcA') {
-      url = 'pages/Page_ColdStartUp';
+      url = 'pages/ColdPage';
     }
     windowStage.loadContent(url, (err, data) => {
-      // ...
+    // ···
     });
   }
 }
@@ -439,33 +478,29 @@ export default class EntryAbility extends UIAbility {
 
 1. 冷启动短信应用的UIAbility实例时，在[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期回调中，通过调用[getUIContext()](../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)接口获取UI上下文实例[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)对象。
 
-    ```ts
+    <!-- @[HotAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/HotStartAbility.ets) -->
+    
+    ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { Want, UIAbility } from '@kit.AbilityKit';
     import { window, UIContext } from '@kit.ArkUI';
-
     const DOMAIN_NUMBER: number = 0xFF00;
-    const TAG: string = '[EntryAbility]';
-
-    export default class EntryAbility extends UIAbility {
-      funcAbilityWant: Want | undefined = undefined;
-      uiContext: UIContext | undefined = undefined;
-
-      // ...
-
+    const TAG: string = '[HotStartAbility]';
+    
+    export default class HotStartAbility extends UIAbility {
+      private funcAbilityWant: Want | undefined = undefined;
+      private uiContext: UIContext | undefined = undefined;
+     // ···
+     
       onWindowStageCreate(windowStage: window.WindowStage): void {
         // Main window is created, set main page for this ability
         hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onWindowStageCreate');
         let url = 'pages/Index';
-        if (this.funcAbilityWant?.parameters?.router && this.funcAbilityWant.parameters.router === 'funcA') {
-          url = 'pages/Page_ColdStartUp';
-        }
-
         windowStage.loadContent(url, (err, data) => {
           if (err.code) {
             return;
           }
-
+    
           let windowClass: window.Window;
           windowStage.getMainWindow((err, data) => {
             if (err.code) {
@@ -478,6 +513,8 @@ export default class EntryAbility extends UIAbility {
           hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
         });
       }
+    
+    // ···
     }
     ```
 
@@ -485,26 +522,30 @@ export default class EntryAbility extends UIAbility {
 
     1. 导入相关模块，并在onNewWant()生命周期回调中设置全局变量nameForNavi的值。
 
-        ```ts
-        import { AbilityConstant, Want, UIAbility } from '@kit.AbilityKit';
+        <!-- @[onNewWant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/HotStartAbility.ets) -->
+        
+        ``` TypeScript
         import { hilog } from '@kit.PerformanceAnalysisKit';
-
+        import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
+        // ···
         const DOMAIN_NUMBER: number = 0xFF00;
-        const TAG: string = '[EntryAbility]';
-
-        export default class EntryAbility extends UIAbility {
-          // ...
+        const TAG: string = '[HotStartAbility]';
+        
+        export default class HotStartAbility extends UIAbility {
+        // ···
+        
           onNewWant(want: Want, launchParam: AbilityConstant.   LaunchParam): void {
             hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'onNewWant');
-            AppStorage.setOrCreate<string>('nameForNavi', 'pageOne'); 
+            AppStorage.setOrCreate<string>('nameForNavi', 'pageOne');
           }
         }
         ```
 
     2. 在Index页面显示时触发onPageShow回调，获取全局变量nameForNavi的值，并进行执行页面的跳转。
 
-        ```ts
-        // Index.ets
+        <!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/Index.ets) -->
+
+        ``` TypeScript
         @Entry
         @Component
         struct Index {
@@ -533,14 +574,16 @@ export default class EntryAbility extends UIAbility {
             .mode(NavigationMode.Stack)
             .height('100%')
             .width('100%')
+            .margin({top:250})
           }
         }
         ```
 
     3. 实现Navigation子页面。
 
-        ```ts
-        // PageOne.ets
+        <!-- @[PageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/PageOne.ets) -->
+
+        ``` TypeScript
         @Builder
         export function PageOneBuilder() {
           PageOne();
@@ -567,6 +610,7 @@ export default class EntryAbility extends UIAbility {
             })
             .height('100%')
             .width('100%')
+            .margin({top:250})
           }
         }
         ```
@@ -591,12 +635,14 @@ export default class EntryAbility extends UIAbility {
 
     5. 在[module.json5配置文件](../quick-start/module-configuration-file.md#routermap标签)中配置routerMap路由映射。
 
-        ```ts
-        // module.json5
+        <!-- @[routerMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/module.json5) -->
+        
+        ``` JSON5
         {
-          "module":{
-            // ...
-            "routerMap": "$profile:route_map",
+          "module": {
+            // ···
+            "routerMap": "$profile:router_map",
+            // ···
           }
         }
         ```

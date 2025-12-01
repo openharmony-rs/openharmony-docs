@@ -7,9 +7,9 @@
 <!--Adviser: @ge-yafang-->
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This module can be imported only to ArkTS files (with the file name extension .ets).
+> - This module can be imported only to ArkTS files (with the file name extension .ets).
 
 A linear data structure that is implemented on [ArkTS ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md).
 
@@ -308,6 +308,12 @@ Creates an ArkTS Uint8ClampedArray from an iterator object.
 | arrayLike | Iterable\<number> | Yes| Iterator object used to construct the ArkTS Uint8ClampedArray.  |
 | mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<number, number> | No| Mapping function. If no value is passed in, no special processing is conducted on the elements.|
 
+**Return value**
+
+| Type        | Description     |
+| ------------ | --------- |
+| Uint8ClampedArray | New ArkTS Uint8ClampedArray generated.|
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -315,12 +321,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                                 |
 | -------- | -------------------------------------------------------  |
 | 401      | Parameter error.                                         |
-
-**Return value**
-
-| Type        | Description     |
-| ------------ | --------- |
-| Uint8ClampedArray | New ArkTS Uint8ClampedArray generated.|
 
 **Example**
 

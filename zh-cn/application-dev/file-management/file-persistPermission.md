@@ -32,39 +32,45 @@ ohos.permission.FILE_ACCESS_PERSIST，具体参考[访问控制-申请应用权�
 
 **示例：**
 
-```ts
+<!-- @[persist_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->
+
+``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { picker } from '@kit.CoreFileKit';
 import { fileShare } from '@kit.CoreFileKit';
 
-async function persistPermissionExample() {
-    try {
-        let DocumentSelectOptions = new picker.DocumentSelectOptions();
-        let documentPicker = new picker.DocumentViewPicker();
-        let uris = await documentPicker.select(DocumentSelectOptions);
-        let policyInfo: fileShare.PolicyInfo = {
-            uri: uris[0],
-            operationMode: fileShare.OperationMode.READ_MODE,
-        };
-        let policies: Array<fileShare.PolicyInfo> = [policyInfo];
-        fileShare.persistPermission(policies).then(() => {
-            console.info("persistPermission successfully");
-        }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-            console.error("persistPermission failed with error message: " + err.message + ", error code: " + err.code);
-            if (err.code == 13900001 && err.data) {
-                for (let i = 0; i < err.data.length; i++) {
-                    console.error("error code : " + JSON.stringify(err.data[i].code));
-                    console.error("error uri : " + JSON.stringify(err.data[i].uri));
-                    console.error("error reason : " + JSON.stringify(err.data[i].message));
-                }
-            }
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`persistPermission failed with err, Error code: ${err.code}, message: ${err.message}`);
-    }
+// [StartExclude activate_permission_example]
+// [StartExclude revoke_permission_example]
+export async function persistPermissionExample() {
+  try {
+	// ···
+    let documentSelectOptions = new picker.DocumentSelectOptions();
+    let documentPicker = new picker.DocumentViewPicker();
+    let uris = await documentPicker.select(documentSelectOptions);
+    let policyInfo: fileShare.PolicyInfo = {
+      uri: uris[0],
+      operationMode: fileShare.OperationMode.READ_MODE,
+    };
+    let policies: fileShare.PolicyInfo[] = [policyInfo];
+    fileShare.persistPermission(policies).then(() => {
+      console.info('persistPermission successfully');
+    }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
+      console.error('persistPermission failed with error message: ' + err.message + ', error code: ' + err.code);
+      if (err.code == 13900001 && err.data) {
+        for (let i = 0; i < err.data.length; i++) {
+          console.error('error code : ' + JSON.stringify(err.data[i].code));
+          console.error('error uri : ' + JSON.stringify(err.data[i].uri));
+          console.error('error reason : ' + JSON.stringify(err.data[i].message));
+        }
+      }
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`persistPermission failed with err, Error code: ${err.code}, message: ${err.message}`);
+  }
 }
 ```
+
 
 > **注意**
 >
@@ -82,37 +88,43 @@ ohos.permission.FILE_ACCESS_PERSIST，具体参考[访问控制-申请应用权�
 
 **示例：**
 
-```ts
+<!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->
+
+``` TypeScript
+// [Start persist_permission_example]
 import { BusinessError } from '@kit.BasicServicesKit';
 import { picker } from '@kit.CoreFileKit';
 import { fileShare } from '@kit.CoreFileKit';
 
-async function revokePermissionExample() {
-    try {
-        let uri = "file://docs/storage/Users/username/tmp.txt";
-        let policyInfo: fileShare.PolicyInfo = {
-            uri: uri,
-            operationMode: fileShare.OperationMode.READ_MODE,
-        };
-        let policies: Array<fileShare.PolicyInfo> = [policyInfo];
-        fileShare.revokePermission(policies).then(() => {
-            console.info("revokePermission successfully");
-        }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-            console.error("revokePermission failed with error message: " + err.message + ", error code: " + err.code);
-            if (err.code == 13900001 && err.data) {
-                for (let i = 0; i < err.data.length; i++) {
-                    console.error("error code : " + JSON.stringify(err.data[i].code));
-                    console.error("error uri : " + JSON.stringify(err.data[i].uri));
-                    console.error("error reason : " + JSON.stringify(err.data[i].message));
-                }
-            }
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`revokePermission failed with err, Error code: ${err.code}, message: ${err.message}`);
-    }
+// [StartExclude activate_permission_example]
+// ···
+export async function revokePermissionExample() {
+  try {
+    let uri = 'file://docs/storage/Users/username/tmp.txt';
+    let policyInfo: fileShare.PolicyInfo = {
+      uri: uri,
+      operationMode: fileShare.OperationMode.READ_MODE,
+    };
+    let policies: fileShare.PolicyInfo[] = [policyInfo];
+    fileShare.revokePermission(policies).then(() => {
+      console.info('revokePermission successfully');
+    }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
+      console.error('revokePermission failed with error message: ' + err.message + ', error code: ' + err.code);
+      if (err.code == 13900001 && err.data) {
+        for (let i = 0; i < err.data.length; i++) {
+          console.error('error code : ' + JSON.stringify(err.data[i].code));
+          console.error('error uri : ' + JSON.stringify(err.data[i].uri));
+          console.error('error reason : ' + JSON.stringify(err.data[i].message));
+        }
+      }
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`revokePermission failed with err, Error code: ${err.code}, message: ${err.message}`);
+  }
 }
 ```
+
 
 > **注意**
 >
@@ -131,46 +143,52 @@ ohos.permission.FILE_ACCESS_PERSIST，具体参考[访问控制-申请应用权�
 
 **示例：**
 
-```ts
+<!-- @[activate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->
+
+``` TypeScript
+// [Start revoke_permission_example]
+// [Start persist_permission_example]
 import { BusinessError } from '@kit.BasicServicesKit';
 import { picker } from '@kit.CoreFileKit';
 import { fileShare } from '@kit.CoreFileKit';
 
-async function activatePermissionExample() {
-    try {
-        let uri = "file://docs/storage/Users/username/tmp.txt";
-        let policyInfo: fileShare.PolicyInfo = {
-            uri: uri,
-            operationMode: fileShare.OperationMode.READ_MODE,
-        };
-        let policies: Array<fileShare.PolicyInfo> = [policyInfo];
-        fileShare.activatePermission(policies).then(() => {
-            console.info("activatePermission successfully");
-        }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-            console.error("activatePermission failed with error message: " + err.message + ", error code: " + err.code);
-            if (err.code == 13900001 && err.data) {
-                for (let i = 0; i < err.data.length; i++) {
-                    console.error("error code : " + JSON.stringify(err.data[i].code));
-                    console.error("error uri : " + JSON.stringify(err.data[i].uri));
-                    console.error("error reason : " + JSON.stringify(err.data[i].message));
-                    if (err.data[i].code == fileShare.PolicyErrorCode.PERMISSION_NOT_PERSISTED) {
-                        //可以选择进行持久化后再激活。
-                    }
-                }
-            }
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`activatePermission failed with err, Error code: ${err.code}, message: ${err.message}`);
-    }
+// ···
+export async function activatePermissionExample() {
+  try {
+    let uri = 'file://docs/storage/Users/username/tmp.txt';
+    let policyInfo: fileShare.PolicyInfo = {
+      uri: uri,
+      operationMode: fileShare.OperationMode.READ_MODE,
+    };
+    let policies: fileShare.PolicyInfo[] = [policyInfo];
+    fileShare.activatePermission(policies).then(() => {
+      console.info('activatePermission successfully');
+    }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
+      console.error('activatePermission failed with error message: ' + err.message + ', error code: ' + err.code);
+      if (err.code == 13900001 && err.data) {
+        for (let i = 0; i < err.data.length; i++) {
+          console.error('error code : ' + JSON.stringify(err.data[i].code));
+          console.error('error uri : ' + JSON.stringify(err.data[i].uri));
+          console.error('error reason : ' + JSON.stringify(err.data[i].message));
+          if (err.data[i].code == fileShare.PolicyErrorCode.PERMISSION_NOT_PERSISTED) {
+            //可以选择进行持久化后再激活。
+          }
+        }
+      }
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`activatePermission failed with err, Error code: ${err.code}, message: ${err.message}`);
+  }
 }
 ```
+
 
 > **注意**
 >
 > 1. 示例中的URI来源自应用存储的持久化数据中。
 > 2. 建议按照使用需求去激活对应的持久化权限，不要盲目的全量激活。
 > 3. 如果激活失败显示未持久化的权限可以按照示例进行持久化。
-> 4. 持久化权限接口(可以使用canIUse接口进行校验能力是否可用)，且需要申请对应的权限。
+> 4. 持久化权限接口可以使用canIUse接口进行校验能力是否可用，且需要申请对应的权限。
 
 **备注**：C/C++持久化授权激活接口说明及开发指南具体参考：[OH_FileShare_ActivatePermission持久化授权激活接口](native-fileshare-guidelines.md)。

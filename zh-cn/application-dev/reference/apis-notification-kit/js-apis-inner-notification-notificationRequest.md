@@ -20,7 +20,7 @@
 |-------------------------------| -------------------------------------------------------- | ----- | --- |-----------------------------------------------------------------------|
 | content                       | [NotificationContent](js-apis-inner-notification-notificationContent.md#notificationcontent-1)   |   否  | 否  | 通知内容。                                                                 |
 | id                            | number                                                   |   否  | 是  | 通知ID，默认为0。当相同通知ID存在时，将更新该通知的内容。                                                                 |
-| slotType<sup>(deprecated)</sup> | [notification.SlotType](./js-apis-notification.md#slottype)    |   否  | 是  | 通知渠道类型。<br>从API version 11开始不再维护，建议使用notificationSlotType代替。                        |
+| slotType<sup>(deprecated)</sup> | [notification.SlotType](./js-apis-notification.md#slottype)    |   否  | 是  | 通知渠道类型。<br>从API version 7开始支持，从API version 11开始废弃，建议使用notificationSlotType替代。                        |
 | notificationSlotType<sup>11+</sup> | [notificationManager.SlotType](js-apis-notificationManager.md#slottype) |   否  | 是  | 通知渠道类型，默认为OTHER_TYPES。                        |
 | isOngoing                     | boolean                                                  |   否  | 是  | 预留能力，暂未支持。  |
 | isUnremovable                 | boolean                                                  |   否  | 是  | 预留能力，暂未支持。  |
@@ -54,7 +54,8 @@
 | removalWantAgent<sup>9+</sup>  | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)            |   否  | 是  | 当移除通知时，通知将被重定向到的WantAgent实例。<br>当前不支持跳转UIAbility，只支持发布公共事件（即[WantAgentInfo](../apis-ability-kit/js-apis-inner-wantAgent-wantAgentInfo.md#wantagentinfo-1)的actionType字段取值为4）。                                          |
 | badgeNumber<sup>9+</sup>       | number                                                   |   否  | 是  | 应用程序图标上显示的通知数，该数量累计展示。<br>当`badgeNumber`取值小于或等于0时，将忽略本次角标设定。<br>当角标累加设定个数取值大于99时，通知角标将显示99+。<br>例如，应用发布3条通知，`badgeNumber`依次设置为2、0、3，应用将依次展示为2、2、5。|
 | appMessageId<sup>12+</sup>       | string                                                   |   否  | 是  | 应用发送通知携带的唯一标识字段, 用于通知去重。如果同一应用通过本地和云端等不同途径发布携带相同appMessageId的通知，设备只展示一条消息，之后收到的重复通知会被静默去重，不展示、不提醒。去重标识仅在通知发布的24小时内有效，超过24小时或者设备重启失效。
-| sound<sup>12+</sup>            | string                                                   |   否  | 是  | 应用通知自定义铃声文件名。该文件必须放在resources/rawfile目录下，支持m4a、aac、mp3、ogg、wav、flac、amr等格式。<!--RP1-->该字段需要由具有[ohos.permission.NOTIFICATION_AGENT_CONTROLLER](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionnotification_agent_controller)权限的系统应用调用接口[notificationManager.setAdditionalConfig](./js-apis-notificationManager-sys.md#notificationmanagersetadditionalconfig12)进行配置权益后，方可生效。<!--RP1End-->                                                        |
+| sound<sup>12+</sup>            | string                                                   |   否  | 是  | 应用通知自定义铃声文件名。该文件必须放在resources/rawfile目录下，支持m4a、aac、mp3、ogg、wav、flac、amr等格式。                                                        |
+| priorityNotificationType<sup>23+</sup>  | PriorityNotificationType | 否 | 是 | 通知优先级类型，用于判断是否高亮通知背景并置顶。 |
 
 ## DistributedOptions<sup>8+</sup>
 
@@ -64,6 +65,6 @@
 
 | 名称                   | 类型            | 只读 | 可选 | 说明                               |
 | -----------------------| -------------- | ---- | ---- | --------------------------------- |
-| isDistributed          | boolean        | 否   | 是   | 是否支持跨设备协同通知。<br/> - true：支持跨设备协同通知。<br/> - false：不支持跨设备协同通知。                  |
+| isDistributed          | boolean        | 否   | 是   | 是否支持跨设备协同通知。默认为true。<br/> - true：支持跨设备协同通知。<br/> - false：不支持跨设备协同通知。                  |
 | supportDisplayDevices  | Array\<string> | 否   | 是   | 可以同步通知到的设备列表。           |
 | supportOperateDevices  | Array\<string> | 否   | 是   | 可以打开通知的设备列表。             |

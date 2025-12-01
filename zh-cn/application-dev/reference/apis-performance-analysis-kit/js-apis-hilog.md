@@ -238,7 +238,11 @@ setMinLogLevel(level: LogLevel): void
 
 设置应用日志打印的最低日志级别，用于拦截低级别日志打印。
 
-需要注意：如果设置的日志级别低于[全局日志级别](../../dfx/hilog.md#查看和设置日志级别)，设置不生效。
+> **注意：**
+>
+> 如果设置的日志级别低于[全局日志级别](../../dfx/hilog.md#查看和设置日志级别)，设置不生效。
+>
+> debug版本应用下，此函数不生效。
 
 **原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -286,6 +290,10 @@ setLogLevel(level: LogLevel, prefer: PreferStrategy): void
 设置当前应用程序进程的最低日志级别。
 
 可通过prefer参数配置不同的偏好策略。如果选择策略PREFER_CLOSE_LOG，等同于调用setMinLogLevel函数。
+
+> **注意：**
+>
+> debug版本应用下，此函数不生效。
 
 **原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 

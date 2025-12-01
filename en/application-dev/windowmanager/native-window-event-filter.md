@@ -171,10 +171,10 @@ The following sample code describes how to inject a multimodal touch event into 
 #include "multimodalinput/oh_input_manager.h"
 
 static napi_value injectEvent(napi_env env, napi_callback_info info) {
-  size_t argc = 1;
+  size_t argc = 10;
   napi_value args[10] = {nullptr};
   napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-  
+
   int32_t windowId;
   napi_get_value_int32(env, args[0], &windowId);
 

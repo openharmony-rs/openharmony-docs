@@ -1,4 +1,10 @@
 # Click Feedback Effect
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can set the click feedback effect for a component to define its visual response when it is clicked.
 
@@ -52,12 +58,16 @@ Sets the click feedback effect of the component. Compared with [clickEffect](#cl
 
 ## ClickEffect
 
+Defines the click effect.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-| Name | Type                                                   | Mandatory| Description                                                        |
-| ----- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| level | [ClickEffectLevel](ts-appendix-enums.md#clickeffectlevel10) | Yes  | Click feedback effect of the component.<br>**NOTE**<br>When **level** is **undefined** or **null**, **ClickEffect** uses the effect corresponding to **ClickEffectLevel.LIGHT** with a scaling ratio as described below.|
-| scale | number                                                      | No  | Custom scaling ratio for fine-tuning the click feedback effect.<br>**NOTE**<br>The default value varies depending on the value of **level**:<br>**ClickEffectLevel.LIGHT**: **0.90**.<br>**ClickEffectLevel.MIDDLE** or **ClickEffectLevel.HEAVY**: **0.95**.<br>**undefined** or **null** (treated as **ClickEffectLevel.LIGHT**): **0.90**.<br>When **scale** is set to **undefined** or **null**, the default scaling ratio for the current **level** is used.|
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name | Type                                                 | Read-Only   | Optional  |  Description                                                        |
+| ----- | ----------------------------------------------------------- | ---- | --------- | --------------------------------------------------------- |
+| level | [ClickEffectLevel](ts-appendix-enums.md#clickeffectlevel10) | No  | No |Click feedback effect of the component.<br>**NOTE**<br>When **level** is **undefined** or **null**, **ClickEffect** uses the effect corresponding to **ClickEffectLevel.LIGHT** with a scaling ratio as described below.|
+| scale | number                                                      | No  | Yes |Custom scaling ratio for fine-tuning the click feedback effect.<br>**NOTE**<br>The default value varies depending on the value of **level**:<br>**ClickEffectLevel.LIGHT**: **0.90**.<br>**ClickEffectLevel.MIDDLE** or **ClickEffectLevel.HEAVY**: **0.95**.<br>**undefined** or **null** (treated as **ClickEffectLevel.LIGHT**): **0.90**.<br>When **scale** is set to **undefined** or **null**, the default scaling ratio for the current **level** is used.|
 
 ## Example
 
@@ -73,7 +83,7 @@ struct ToggleExample {
       Text('type: Switch').fontSize(12).fontColor(0xcccccc).width('90%')
       Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
         Toggle({ type: ToggleType.Switch, isOn: false })
-          .clickEffect({level:ClickEffectLevel.LIGHT})
+          .clickEffect({ level: ClickEffectLevel.LIGHT })
           .selectedColor('#007DFF')
           .switchPointColor('#FFFFFF')
           .onChange((isOn: boolean) => {
@@ -81,7 +91,7 @@ struct ToggleExample {
           })
 
         Toggle({ type: ToggleType.Switch, isOn: true })
-          .clickEffect({level:ClickEffectLevel.LIGHT, scale: 0.5})
+          .clickEffect({ level: ClickEffectLevel.LIGHT, scale: 0.5 })
           .selectedColor('#007DFF')
           .switchPointColor('#FFFFFF')
           .onChange((isOn: boolean) => {
@@ -92,7 +102,7 @@ struct ToggleExample {
       Text('type: Checkbox').fontSize(12).fontColor(0xcccccc).width('90%')
       Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
         Toggle({ type: ToggleType.Checkbox, isOn: false })
-          .clickEffect({level:ClickEffectLevel.MIDDLE})
+          .clickEffect({ level: ClickEffectLevel.MIDDLE })
           .size({ width: 20, height: 20 })
           .selectedColor('#007DFF')
           .onChange((isOn: boolean) => {
@@ -100,7 +110,7 @@ struct ToggleExample {
           })
 
         Toggle({ type: ToggleType.Checkbox, isOn: true })
-          .clickEffect({level:ClickEffectLevel.MIDDLE, scale: 0.5})
+          .clickEffect({ level: ClickEffectLevel.MIDDLE, scale: 0.5 })
           .size({ width: 20, height: 20 })
           .selectedColor('#007DFF')
           .onChange((isOn: boolean) => {
@@ -113,7 +123,7 @@ struct ToggleExample {
         Toggle({ type: ToggleType.Button, isOn: false }) {
           Text('status button').fontColor('#182431').fontSize(12)
         }.width(106)
-        .clickEffect({level:ClickEffectLevel.HEAVY})
+        .clickEffect({ level: ClickEffectLevel.HEAVY })
         .selectedColor('rgba(0,125,255,0.20)')
         .onChange((isOn: boolean) => {
           console.info('Component status:' + isOn);
@@ -122,7 +132,7 @@ struct ToggleExample {
         Toggle({ type: ToggleType.Button, isOn: true }) {
           Text('status button').fontColor('#182431').fontSize(12)
         }.width(106)
-        .clickEffect({level:ClickEffectLevel.HEAVY, scale: 0.5})
+        .clickEffect({ level: ClickEffectLevel.HEAVY, scale: 0.5 })
         .selectedColor('rgba(0,125,255,0.20)')
         .onChange((isOn: boolean) => {
           console.info('Component status:' + isOn);

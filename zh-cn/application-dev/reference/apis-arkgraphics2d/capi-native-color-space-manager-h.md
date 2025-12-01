@@ -1,4 +1,10 @@
 # native_color_space_manager.h
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @xubo233-->
+<!--Designer: @dizuo1-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -139,7 +145,7 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGam
 | 参数项 | 描述 |
 | -- | -- |
 | [ColorSpacePrimaries](capi-nativecolorspacemanager-colorspaceprimaries.md) primaries | 表示创建[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)的色彩原色。 |
-| float gamma | 表示创建[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)的伽马值，伽马值为一个浮点数，用于矫正亮度范围。<br>伽马值通常为正值，负值会使弱光区域更亮，强光区域变暗，伽马值为0表示线性色彩空间。 |
+| float gamma | 表示创建[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)的伽马值，伽马值为一个浮点数，用于校正亮度范围。<br>伽马值通常为正值，负值会使弱光区域更亮，强光区域变暗，伽马值为0表示线性色彩空间。 |
 
 **返回：**
 

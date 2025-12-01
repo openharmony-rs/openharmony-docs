@@ -1,4 +1,10 @@
 # Media Library Kit（媒体文件管理服务）
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 - ArkTS API<!--media-library-arkts-->
   - @ohos.file.photoAccessHelper (相册管理模块)<!--js-apis-photoaccesshelper-->
@@ -52,5 +58,5 @@
     - [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)
     - [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md)
 - 错误码<!--media-library-errcode-->
-  - [媒体库错误码](errcode-medialibrary.md)
+  - [媒体库错误码](errorcode-medialibrary.md)
 

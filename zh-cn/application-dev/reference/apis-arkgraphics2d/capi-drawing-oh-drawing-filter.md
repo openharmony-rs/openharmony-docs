@@ -1,4 +1,14 @@
 # OH_Drawing_Filter
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
+```
+typedef struct OH_Drawing_Filter OH_Drawing_Filter
+```
 
 ## 概述
 

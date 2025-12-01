@@ -50,9 +50,9 @@
 ## 使用示例
 
 以[TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)方法的text参数为例：
+<!-- @[sync_state_manager_$$](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExample.ets) -->
 
-
-```ts
+``` TypeScript
 // xxx.ets
 @Entry
 @Component
@@ -68,10 +68,12 @@ struct TextInputExample {
         .placeholderFont({ size: 14, weight: 400 })
         .caretColor(Color.Blue)
         .width(300)
-    }.width('100%').height('100%').justifyContent(FlexAlign.Center)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```
-
 
 ![TextInputDouble](figures/TextInputDouble.gif)

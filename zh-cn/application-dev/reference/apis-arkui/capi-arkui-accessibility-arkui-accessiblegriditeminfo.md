@@ -2,9 +2,13 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct {...} ArkUI_AccessibleGridItemInfo
+```
 
 ## 概述
 
@@ -22,7 +26,7 @@
 
 | 名称 | 描述     |
 | -- |--------|
-| bool heading | 是否是标题。truet表示是标题，false表示不是标题。 |
+| bool heading | 是否是标题。true表示是标题，false表示不是标题。 |
 | bool selected | 是否被选中。true表示被选中，false表示未被选中。 |
 | int32_t columnIndex | 列下标。   |
 | int32_t rowIndex | 行下标。   |

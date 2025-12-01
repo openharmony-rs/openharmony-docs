@@ -1,5 +1,11 @@
 # Connectivity Kit（短距通信服务）<!--connectivity-api-->
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @qq_43802146-->
+<!--Designer: @qq_43802146-->
+<!--Tester: @furryfurry123-->
+<!--Adviser: @zhang_yixin13-->
 - ArkTS API<!--connectivity-arkts-->
   - [@ohos.bluetooth.a2dp(蓝牙a2dp模块)(推荐)](js-apis-bluetooth-a2dp.md)
   - [@ohos.bluetooth.access(蓝牙access模块)(推荐)](js-apis-bluetooth-access.md)
@@ -7,6 +13,7 @@
   - [@ohos.bluetooth.ble(蓝牙ble模块)(推荐)](js-apis-bluetooth-ble.md)
   - [@ohos.bluetooth.connection(蓝牙connection模块)(推荐)](js-apis-bluetooth-connection.md)
   - [@ohos.bluetooth.constant(蓝牙constant模块)(推荐)](js-apis-bluetooth-constant.md)
+  - [@ohos.bluetooth.common(蓝牙common模块)(推荐)](js-apis-bluetooth-common.md)
   - [@ohos.bluetooth.hfp(蓝牙hfp模块)(推荐)](js-apis-bluetooth-hfp.md)
   - [@ohos.bluetooth.hid(蓝牙hid模块)(推荐)](js-apis-bluetooth-hid.md)
   - [@ohos.bluetooth.pan(蓝牙pan模块)(推荐)](js-apis-bluetooth-pan.md)

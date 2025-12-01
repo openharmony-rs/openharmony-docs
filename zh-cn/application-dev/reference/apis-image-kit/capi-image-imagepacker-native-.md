@@ -4,7 +4,11 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct ImagePacker_Native_ ImagePacker_Native
+```
 
 ## 概述
 

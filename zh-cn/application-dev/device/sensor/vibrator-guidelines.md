@@ -159,134 +159,158 @@ Json文件共包含3个属性。
 
 ## 开发步骤
 
-1. 控制设备上的振动器，需要申请权限ohos.permission.VIBRATE。具体配置方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
+1. 新建一个工程。
 
-2. 振动器查询。
+   ![输入图片说明](figures/008.png)
+
+2. 配置权限，具体配置方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
+
+   <!-- @[vibrator_js_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/module.json5) -->
+
+``` JSON5
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.VIBRATE"
+      }
+    ],
+```
+
+
+3. 导入模块。
+
+   <!-- @[vibrator_js_development_dependency_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { vibrator } from '@kit.SensorServiceKit';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
+```
+
+
+4. 定义常量。
+
+   <!-- @[vibrator_js_define_variables_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+const fileName: string = 'vibrator.json';
+let TAG = 'vibrator:';
+```
+
+
+5. 振动器查询。
 
   **情形一** 查询所有马达信息：
 
-  ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+  <!-- @[vibrator_js_get_vibrator_info_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
 
-  try {
-    const vibratorInfoList: vibrator.VibratorInfo[] = vibrator.getVibratorInfoSync();
-    console.info(`vibratorInfoList: ${JSON.stringify(vibratorInfoList)}`);
-  } catch (error) {
-    let e: BusinessError = error as BusinessError;
-    console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-  }
-  ```
+``` TypeScript
+              try {
+                const vibratorInfoList: vibrator.VibratorInfo[] = vibrator.getVibratorInfoSync();
+                console.info(`vibratorInfoList: ${JSON.stringify(vibratorInfoList)}`);
+				// ···
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
 
   **情形二** 查询指定设备的一个或多个马达信息：
 
-  ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+  <!-- @[vibrator_js_get_vibrator_info_sync_by_device_id_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
 
-  try {
-    const vibratorParam: vibrator.VibratorInfoParam = {
-      deviceId: 1    // deviceid 需要是查询出来真实存在的设备
-    }
-    const vibratorInfoList: vibrator.VibratorInfo[] = vibrator.getVibratorInfoSync(vibratorParam);
-    console.info(`vibratorInfoList: ${JSON.stringify(vibratorInfoList)}`);
-  } catch (error) {
-    let e: BusinessError = error as BusinessError;
-    console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-  }
-  ```
+``` TypeScript
+              try {
+                const vibratorParam: vibrator.VibratorInfoParam = {
+                  deviceId: -1    // deviceid 需要是查询出来真实存在的设备
+                }
+                const vibratorInfoList: vibrator.VibratorInfo[] = vibrator.getVibratorInfoSync(vibratorParam);
+                console.info(`vibratorInfoList: ${JSON.stringify(vibratorInfoList)}`);
+				// ···
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
 
-3. 根据指定振动效果和振动属性触发马达振动。
+
+6. 根据指定振动效果和振动属性触发马达振动。
 
    **情形一** 按照指定持续时间触发马达振动：
 
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   
-   try {
-     // 触发马达振动
-     vibrator.startVibration({
-       type: 'time',
-       duration: 1000,
-     }, {
-       id: 0,
-       usage: 'alarm'
-     }, (error: BusinessError) => {
-       if (error) {
-         console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
-         return;
-       }
-       console.info('Succeed in starting vibration');
-     });
-   } catch (err) {
-     let e: BusinessError = err as BusinessError;
-     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+   <!-- @[vibrator_js_vibrator_by_type_time_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              try {
+                // 触发马达振动
+                vibrator.startVibration({
+                  type: 'time',
+                  duration: 1000,
+                }, {
+                  id: 0,
+                  usage: 'alarm'
+                }, (error: BusinessError) => {
+                  if (error) {
+                    console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
+                    return;
+                  }
+                  console.info('Succeed in starting vibration');
+                });
+              } catch (err) {
+                let e: BusinessError = err as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
 
    **情形二** 按照预置振动效果触发马达振动，可先查询振动效果是否被支持，再调用振动接口：
 
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   
-   try {
-     // 查询是否支持'haptic.effect.soft'
-     vibrator.isSupportEffect('haptic.effect.soft', (err: BusinessError, state: boolean) => {
-       if (err) {
-         console.error(`Failed to query effect. Code: ${err.code}, message: ${err.message}`);
-         return;
-       }
-       console.info('Succeed in querying effect');
-       if (state) {
-         try {
-           // 触发马达振动
-           vibrator.startVibration({
-             type: 'preset',
-             effectId: 'haptic.effect.soft',
-             count: 1,
-             intensity: 50,
-           }, {
-             usage: 'unknown'
-           }, (error: BusinessError) => {
-             if (error) {
-               console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
-             } else {
-               console.info('Succeed in starting vibration');
-             }
-           });
-         } catch (error) {
-           let e: BusinessError = error as BusinessError;
-           console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-         }
-       }
-     })
-   } catch (error) {
-     let e: BusinessError = error as BusinessError;
-     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+   <!-- @[vibrator_js_vibrator_by_type_preset_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              try {
+                vibrator.isSupportEffect(this.realEffectId, (err: BusinessError, state: boolean) => {
+                  if (err) {
+                    console.error(`Failed to query effect. Code: ${err.code}, message: ${err.message}`);
+                    return;
+                  }
+                  console.info('Succeed in querying effect');
+                  if (state) {
+                    try {
+                      // 触发马达振动
+                      vibrator.startVibration({
+                        type: 'preset',
+                        effectId: this.realEffectId,
+                        count: 1,
+                        intensity: 50,
+                      }, {
+                        usage: 'unknown'
+                      }, (error: BusinessError) => {
+                        if (error) {
+                          console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
+                        } else {
+                          console.info('Succeed in starting vibration');
+                        }
+                      });
+                    } catch (error) {
+                      let e: BusinessError = error as BusinessError;
+                      console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+                    }
+                  }
+                })
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
 
    **情形三** 按照自定义振动配置文件触发马达振动：
 
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { resourceManager } from '@kit.LocalizationKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   
-   const fileName: string = 'xxx.json';
-   
-   @Entry
-   @Component
-   struct Index {
-     uiContext = this.getUIContext();
-   
-     build() {
-       Row() {
-         Column() {
-           Button('alarm-file')
-             .onClick(() => {
+   <!-- @[vibrator_js_vibrator_by_type_file_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
                // 获取文件资源描述符
                let rawFd: resourceManager.RawFileDescriptor | undefined = this.uiContext.getHostContext()?.resourceManager.getRawFdSync(fileName);
                if (rawFd != undefined) {
@@ -313,144 +337,280 @@ Json文件共包含3个属性。
                    this.uiContext.getHostContext()?.resourceManager.closeRawFdSync(fileName);
                  }
                }
-             })
-         }
-         .width('100%')
-       }
-       .height('100%')
-     }
-   }
-   ```
+```
 
-4. 停止马达的振动。
+
+   **情形四** Pattern类型的马达振动：
+
+   添加短振事件的方式获取Pattern，并触发振动：
+
+   <!-- @[vibrator_js_vibrator_by_type_pattern_use_transient_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              let builder: vibrator.VibratorPatternBuilder = new vibrator.VibratorPatternBuilder();
+              try {
+                let param: vibrator.TransientParam = {
+                  intensity: 80,
+                  frequency: 70,
+                  index: 0
+                }
+                builder.addTransientEvent(0, param);
+                console.info(`addTransientEvent builder is ${builder.build()}`);
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+              try {
+                vibrator.startVibration({
+                  type: "pattern",
+                  pattern: builder.build()
+                }, {
+                  id: 1,
+                  deviceId: -1,
+                  // 根据实际选择类型归属不同的开关管控
+                  usage: "alarm"
+                }, (error: BusinessError) => {
+                  if (error) {
+                    let e: BusinessError = error as BusinessError;
+                    console.error(`Vibrate fail. Code: ${e.code}, message: ${e.message}`);
+                  } else {
+                    console.info(`vibrate success`);
+                  }
+                });
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
+
+   添加长振事件的方式获取Pattern，并触发振动：
+
+   <!-- @[vibrator_js_vibrator_by_type_pattern_use_continuous_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              let builder: vibrator.VibratorPatternBuilder = new vibrator.VibratorPatternBuilder();
+              try {
+                // VibratorCurvePoint参数最少设置4个，最大设置16个
+                let pointsMe: vibrator.VibratorCurvePoint[] = [
+                  { time: 0, intensity: 0, frequency: -7 },
+                  { time: 42, intensity: 1, frequency: -6 },
+                  { time: 128, intensity: 0.94, frequency: -4 },
+                  { time: 217, intensity: 0.63, frequency: -14 },
+                  { time: 763, intensity: 0.48, frequency: -14 },
+                  { time: 1125, intensity: 0.53, frequency: -10 },
+                  { time: 1503, intensity: 0.42, frequency: -14 },
+                  { time: 1858, intensity: 0.39, frequency: -14 },
+                  { time: 2295, intensity: 0.34, frequency: -17 },
+                  { time: 2448, intensity: 0.21, frequency: -14 },
+                  { time: 2468, intensity: 0, frequency: -21 }
+                ]
+                let param: vibrator.ContinuousParam = {
+                  intensity: 97,
+                  frequency: 34,
+                  points: pointsMe,
+                  index: 0
+                }
+                builder.addContinuousEvent(0, 2468, param);
+                console.info(`addContinuousEvent builder is ${builder.build()}`);
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`Exception. Code ${e.code}`);
+              }
+              try {
+                vibrator.startVibration({
+                  type: 'pattern',
+                  pattern: builder.build()
+                }, {
+                  id: 1,
+                  deviceId: -1,
+                  usage:"alarm",
+                }, (error: BusinessError) => {
+                  if (error) {
+                    let e: BusinessError = error as BusinessError;
+                    console.error(`Vibrate fail. Code: ${e.code}, message: ${e.message}`);
+                  } else {
+                    console.info(`vibrate success`);
+                  }
+                });
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
+
+7. 停止马达的振动。
 
    **方式一** 按照指定模式停止对应的马达振动，自定义振动不支持此类停止方式：
 
    ​	停止固定时长振动：
 
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   
-   try {
-     // 按照VIBRATOR_STOP_MODE_TIME模式停止振动
-     vibrator.stopVibration(vibrator.VibratorStopMode.VIBRATOR_STOP_MODE_TIME, (error: BusinessError) => {
-       if (error) {
-         console.error(`Failed to stop vibration. Code: ${error.code}, message: ${error.message}`);
-         return;
-       }
-       console.info('Succeed in stopping vibration');
-     })
-   } catch (err) {
-     let e: BusinessError = err as BusinessError;
-     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+   <!-- @[vibrator_js_stop_vibrator_by_type_time_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              try {
+                // 按照VIBRATOR_STOP_MODE_TIME模式停止振动
+                vibrator.stopVibration(vibrator.VibratorStopMode.VIBRATOR_STOP_MODE_TIME, (error: BusinessError) => {
+                  if (error) {
+                    console.error(`Failed to stop vibration. Code: ${error.code}, message: ${error.message}`);
+                    return;
+                  }
+                  console.info('Succeed in stopping vibration');
+                })
+              } catch (err) {
+                let e: BusinessError = err as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
 
    ​	停止预置振动：
 
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   
-   try {
-     // 按照VIBRATOR_STOP_MODE_PRESET模式停止振动
-     vibrator.stopVibration(vibrator.VibratorStopMode.VIBRATOR_STOP_MODE_PRESET, (error: BusinessError) => {
-       if (error) {
-         console.error(`Failed to stop vibration. Code: ${error.code}, message: ${error.message}`);
-         return;
-       }
-       console.info('Succeed in stopping vibration');
-     })
-   } catch (err) {
-     let e: BusinessError = err as BusinessError;
-     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+   <!-- @[vibrator_js_stop_vibrator_by_type_preset_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              try {
+                // 按照VIBRATOR_STOP_MODE_PRESET模式停止振动
+                vibrator.stopVibration(vibrator.VibratorStopMode.VIBRATOR_STOP_MODE_PRESET, (error: BusinessError) => {
+                  if (error) {
+                    console.error(`Failed to stop vibration. Code: ${error.code}, message: ${error.message}`);
+                    return;
+                  }
+                  console.info('Succeed in stopping vibration');
+                })
+              } catch (err) {
+                let e: BusinessError = err as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
 
    **方式二** 停止所有模式的马达振动，包括自定义振动：
 
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   
-   try {
-     // 停止所有模式的马达振动
-     vibrator.stopVibration((error: BusinessError) => {
-       if (error) {
-         console.error(`Failed to stop vibration. Code: ${error.code}, message: ${error.message}`);
-         return;
-       }
-       console.info('Succeed in stopping vibration');
-     })
-   } catch (error) {
-     let e: BusinessError = error as BusinessError;
-     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+   <!-- @[vibrator_js_stop_vibrator_by_type_all_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              try {
+                // 停止所有模式的马达振动
+                vibrator.stopVibration((error: BusinessError) => {
+                  if (error) {
+                    console.error(`Failed to stop vibration. Code: ${error.code}, message: ${error.message}`);
+                    return;
+                  }
+                  console.info('Succeed in stopping vibration');
+                })
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
 
    **方式三** 停止指定设备的振动：
 
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-    
-   const vibratorInfoParam: vibrator.VibratorInfoParam = {
-     deviceId: 1   // deviceid 需要是查询出来真实存在的设备
-   }
-   try {
-     vibrator.stopVibration(vibratorInfoParam).then(() => {
-       console.info('Succeed in stopping vibration');
-     }, (error: BusinessError) => {
-       console.error(`Failed to stop vibration. Code: ${error.code}, message: ${error.message}`);
-     });
-   } catch (error) {
-     let e: BusinessError = error as BusinessError;
-     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+   <!-- @[vibrator_js_stop_vibrator_by_device_id_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              const vibratorInfoParam: vibrator.VibratorInfoParam = {
+                deviceId: -1   // deviceid 需要是查询出来真实存在的设备
+              }
+              try {
+                vibrator.stopVibration(vibratorInfoParam).then(() => {
+                  console.info('Succeed in stopping vibration');
+                }, (error: BusinessError) => {
+                  console.error(`Failed to stop vibration. Code: ${error.code}, message: ${error.message}`);
+                });
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
 
 
-5. 动态马达状态变化监听。
+
+8. 动态马达状态变化监听。
 
    注册监听。
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
 
-   // 回调函数 
-   const vibratorStateChangeCallback = (data: vibrator.VibratorStatusEvent) => {
-     console.info('vibrator state callback info:', JSON.stringify(data));
-   }
+   <!-- @[vibrator_js_vibrator_on_state_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
 
-   try {
-     // 订阅 vibratorStateChange事件
-     vibrator.on('vibratorStateChange', vibratorStateChangeCallback);
-   } catch (error) {
-     let e: BusinessError = error as BusinessError;
-     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+``` TypeScript
+  // 回调函数
+  vibratorStateChangeCallback = (data: vibrator.VibratorStatusEvent) => {
+    console.info('vibrator state callback info:', JSON.stringify(data));
+	// ···
+    // [EndExclude vibrator_js_vibrator_off_state_change_example]
+  }
+// ···
+              try {
+                // 订阅 vibratorStateChange事件
+                vibrator.on('vibratorStateChange', this.vibratorStateChangeCallback);
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
 
    取消监听,取消传入的callback需与注册的一致。
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
 
-   // 回调函数 
-   const vibratorStateChangeCallback = (data: vibrator.VibratorStatusEvent) => {
-     console.info('vibrator state callback info:', JSON.stringify(data));
-   }
-   try {
-     // 取消订阅 vibratorStateChange事件
-     vibrator.off('vibratorStateChange', vibratorStateChangeCallback);
-     // 取消订阅所有 vibratorStateChange事件
-     // vibrator.off('vibratorStateChange');
-   } catch (error) {
-     let e: BusinessError = error as BusinessError;
-     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+   <!-- @[vibrator_js_vibrator_off_state_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+  // [Start vibrator_js_vibrator_on_state_change_example]
+  // 回调函数
+  vibratorStateChangeCallback = (data: vibrator.VibratorStatusEvent) => {
+    console.info('vibrator state callback info:', JSON.stringify(data));
+    // [StartExclude vibrator_js_vibrator_on_state_change_example]
+	// ···
+  }
+  // [StartExclude vibrator_js_vibrator_on_state_change_example]
+// ···
+              try {
+                // 取消订阅 vibratorStateChange事件
+                vibrator.off('vibratorStateChange', this.vibratorStateChangeCallback);
+                // 取消订阅所有 vibratorStateChange事件
+                // vibrator.off('vibratorStateChange');
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
+
+9. 通过设备ID和马达ID获取预置振动效果信息。
+
+   <!-- @[vibrator_js_vibrator_get_effect_info_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              try {
+                const effectInfo: vibrator.EffectInfo = vibrator.getEffectInfoSync('haptic.clock.timer', { deviceId: -1, vibratorId: 1});
+                console.info(`isEffectSupported: ${effectInfo.isEffectSupported}`);
+				// ···
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
+
+10. 查询是否支持高清振动。
+
+   <!-- @[vibrator_js_vibrator_is_hd_haptic_supported_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              try {
+                // 查询是否支持高清振动
+                let ret = vibrator.isHdHapticSupported();
+                console.info(`The query result is ${ret}`);
+				// ···
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
 
 ## 相关实例
 

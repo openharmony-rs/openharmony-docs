@@ -1,4 +1,4 @@
-# 使用JSVM进行class相关开发
+# 使用JSVM-API接口进行class相关开发
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou; @string_sz-->

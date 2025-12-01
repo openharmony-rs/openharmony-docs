@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Image为图片组件，常用于在应用中显示图片。Image支持加载[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)、[ResourceStr](ts-types.md#resourcestr)和[DrawableDescriptor](#drawabledescriptor10)类型的数据源，支持png、jpg、jpeg、bmp、svg、webp、gif和heif类型的图片格式，不支持apng和svga格式。
 
@@ -128,6 +128,32 @@ alt(value:&nbsp;string&nbsp;|&nbsp;Resource &nbsp;|&nbsp;PixelMap)
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<sup>12+</sup> | 是   | 设置图片加载过程中显示的占位图，支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型图片，不支持网络图片。<br>- 支持`Base64`字符串。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br/>默认值：null<br/>由有效值（可正常解析并加载的图片资源）切换为无效值（无法解析或加载的图片路径）时，组件保持显示此前成功加载的图片内容，不进行清除或重置操作。 |
+
+### alt<sup>22+</sup>
+
+alt(src:&nbsp;ResourceStr&nbsp;|&nbsp;PixelMap &nbsp;|&nbsp;ImageAlt)
+
+设置图片加载过程中和加载失败时的占位图。
+
+> **说明：**
+>
+> 通过[ImageAlt](#imagealt22)配置占位图时，Image会根据用户配置的加载过程中和加载失败的占位图源生效，未配置时默认不显示。
+
+占位图支持使用[objectFit](#objectfit)设置填充效果，与图片的填充效果一致。
+
+当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                     | 必填 | 说明                                                         |
+| ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| src  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)\|&nbsp;[ImageAlt](#imagealt22) | 是   | 设置图片加载过程中和加载失败时的占位图，支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型图片，不支持网络图片。<br>- 支持`Base64`字符串。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。 |
 
 ### objectFit
 
@@ -393,7 +419,7 @@ syncLoad(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br/>默认值：false，false表示异步加载图片，true表示同步加载图片。 |
+| value  | boolean | 是   | 是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br/>默认值：false，false表示异步加载图片，true表示同步加载图片。<br/>阻塞主线程超过6s将导致AppFreeze，具体参考[AppFreeze（应用冻屏）检测](../../../dfx/appfreeze-guidelines.md)。|
 
 ### copyOption<sup>9+</sup>
 
@@ -435,7 +461,8 @@ colorFilter(value: ColorFilter | DrawingColorFilter)
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter<sup>12+</sup>](#drawingcolorfilter12) | 是   | 1. 给图像设置颜色滤镜效果，入参为一个的4x5的RGBA转换矩阵。<br/>2. 从API version12开始支持@ohos.graphics.drawing的ColorFilter类型作为入参。<br/>**说明：** <br/>API version 11及之前，SVG类型图源不支持该属性。<br/>从API version 12开始，该接口中的DrawingColorfilter类型支持在原子化服务中使用。其中，SVG类型的图源只有设置了stroke属性（无论是否有值）才会生效。<br/>从API version 21开始，当[supportSvg2](#supportsvg221)属性设置为true时，colorFilter属性对整个SVG图源起作用。|
 
-颜色滤镜通过一个4x5的矩阵来设置图像的颜色滤镜，矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵如下（其中矩阵值的范围[0, 1]）：<br/>![image-matrix-1](figures/image_matrix_1.png) <br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)
+颜色滤镜通过一个4x5的矩阵来设置图像的颜色滤镜，矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵如下（其中矩阵值的范围[0, 1]）：<br/>![image-matrix-1](figures/image_matrix_1.png) <br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>该属性的具体使用可以参考[示例9](#示例9为图像设置颜色滤镜效果)。
+
 ### draggable<sup>9+</sup>
 
 draggable(value: boolean)
@@ -470,7 +497,9 @@ enableAnalyzer(enable:&nbsp;boolean)
 
 > **说明：**
 >
-> 需要配置权限：ohos.permission.INTERNET。
+> - 需要配置权限：ohos.permission.INTERNET。
+>
+> - 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -493,6 +522,10 @@ resizable(value: ResizableOptions)
 当设置 top +bottom 大于原图的高或者 left + right 大于原图的宽时 [ResizableOptions](#resizableoptions11) 属性设置不生效。
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)和SVG时设置该属性不生效。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -546,6 +579,10 @@ orientation(orientation: ImageRotateOrientation)
 
 设置图像内容的显示方向。
 
+该属性对[alt](#alt)占位图不生效。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -554,7 +591,7 @@ orientation(orientation: ImageRotateOrientation)
 
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| orientation  | [ImageRotateOrientation](#imagerotateorientation14) | 是   | 图像内容的显示方向。<br/>不支持gif和svg类型的图片。<br/>如果需要显示携带旋转角度信息或翻转信息的图片，建议使用ImageRotateOrientation.AUTO进行设置。<br/>默认值：ImageRotateOrientation.UP<br/>设置为undefined或null时，取值为ImageRotateOrientation.AUTO。 |
+| orientation  | [ImageRotateOrientation](#imagerotateorientation14) | 是   | 图像内容的显示方向。<br/>仅支持静态位图的显示。<br/>如果需要显示携带旋转角度信息或翻转信息的图片，建议使用ImageRotateOrientation.AUTO进行设置。<br/>默认值：ImageRotateOrientation.UP<br/>设置为undefined或null时，取值为ImageRotateOrientation.AUTO。 |
 
 ### hdrBrightness<sup>19+</sup>
 
@@ -580,7 +617,7 @@ SVG类型图源不支持该属性。
 
 supportSvg2(enable: boolean)
 
-开启或关闭[SVG新增解析能力](ts-image-svg2-capabilities.md)，开启后相关SVG图片显示效果会有变化。
+开启或关闭[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)，开启后相关SVG图片显示效果会有变化。
 
 Image组件创建后，不支持动态修改该属性的值。
 
@@ -594,13 +631,13 @@ Image组件创建后，不支持动态修改该属性的值。
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enable | boolean | 是   | 控制是否开启SVG解析新能力。<br>默认值：false<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。 |
+| enable | boolean | 是   | 控制是否开启SVG标签解析能力增强功能。<br>默认值：false<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。 |
 
 ### contentTransition<sup>21+</sup>
 
 contentTransition(transition: ContentTransitionEffect)
 
-图片内容发生变化时，会触发过渡动效，OPACITY为淡入淡出效果，IDENTITY为无动画效果。
+图片内容发生变化时，触发过渡动效。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -610,7 +647,7 @@ contentTransition(transition: ContentTransitionEffect)
 
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| contentTransition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | 是   | 内容变换动效的类型。<br/>默认值：无动效，ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。 |
+| transition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21对象说明) | 是   | 过渡动效的类型。<br/>其中取值为ContentTransitionEffect.OPACITY表示淡入淡出效果，取值为ContentTransitionEffect.IDENTITY表示无动画效果。<br/>默认值：ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。<br/>**说明**：对动态图片资源不生效。 |
 
 ## ImageContent<sup>12+</sup>
 
@@ -674,6 +711,21 @@ contentTransition(transition: ContentTransitionEffect)
 **图1** 设置EdgeWidths效果图
 ![edgewidths](figures/edgewidths.png)
 
+## ImageAlt<sup>22+</sup>
+
+设置图片占位图。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 类型  | 只读  | 可选    | 说明           |
+| -------- | ---- | -----|-----|---- |
+| placeholder | [ResourceStr](ts-types.md#resourcestr)  \|  [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)  |  否   |    是  |  加载过程中的占位图。 |
+| error |   [ResourceStr](ts-types.md#resourcestr)  \|  [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)   |   否  |   是   |  加载失败的占位图。 |
+
 ## DynamicRangeMode<sup>12+</sup>枚举说明
 
 期望展示的图像动态范围。
@@ -691,6 +743,8 @@ contentTransition(transition: ContentTransitionEffect)
 ## ImageRotateOrientation<sup>14+</sup>
 
 期望的图像内容显示方向。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -815,15 +869,15 @@ onComplete(callback: (event?: { width: number, height: number, componentWidth: n
 
 | 参数名                       | 类型   | 必填 | 说明                                                         |
 | ---------------------------- | ------ | ---- | ------------------------------------------------------------ |
-| width                        | number | 是   | 图片的宽。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素                                    |
-| height                       | number | 是   | 图片的高。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素                                    |
-| componentWidth               | number | 是   | 组件的宽。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素                                    |
-| componentHeight              | number | 是   | 组件的高。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素                                    |
-| loadingStatus                | number | 是   | 图片加载成功的状态值。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**说明：**<br/>返回的状态值为0时，表示图片数据加载成功。返回的状态值为1时，表示图片解码成功。 |
-| contentWidth<sup>10+</sup>   | number | 是   | 图片实际绘制的宽度。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素<br>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentHeight<sup>10+</sup>  | number | 是   | 图片实际绘制的高度。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentOffsetX<sup>10+</sup> | number | 是   | 实际绘制内容相对于组件自身的x轴偏移。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentOffsetY<sup>10+</sup> | number | 是   | 实际绘制内容相对于组件自身的y轴偏移。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| width                        | number | 是   | 图片的宽。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。                                    |
+| height                       | number | 是   | 图片的高。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。                                    |
+| componentWidth               | number | 是   | 组件的宽。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。                                    |
+| componentHeight              | number | 是   | 组件的高。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。                                    |
+| loadingStatus                | number | 是   | 图片加载成功的状态值。<br/>**说明：**<br/>返回的状态值为0时，表示图片数据加载成功。返回的状态值为1时，表示图片解码成功。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| contentWidth<sup>10+</sup>   | number | 是   | 图片实际绘制的宽度。<br/>单位：px<br>**说明：**<br/>仅在loadingStatus返回1时有效。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
+| contentHeight<sup>10+</sup>  | number | 是   | 图片实际绘制的高度。<br/>单位：px<br/>**说明：**<br/>仅在loadingStatus返回1时有效。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
+| contentOffsetX<sup>10+</sup> | number | 是   | 实际绘制内容相对于组件自身的x轴偏移。<br/>单位：px<br/>**说明：**<br/>仅在loadingStatus返回1时有效。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
+| contentOffsetY<sup>10+</sup> | number | 是   | 实际绘制内容相对于组件自身的y轴偏移。<br/>单位：px<br/>**说明：**<br/>仅在loadingStatus返回1时有效。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
 
 ### onError<sup>9+</sup>
 
@@ -897,14 +951,14 @@ type ImageErrorCallback = (error: ImageError) => void
 
 | 名称          | 类型   | 只读 | 可选 | 说明                      |
 | --------------- | ------ | ---- | ------------------------- | ------------------------- |
-| componentWidth  | number | 否  | 否  | 组件的宽。<br/>单位：像素<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| componentHeight | number | 否  | 否  | 组件的高。<br/>单位：像素<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| componentWidth  | number | 否  | 否  | 组件的宽。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| componentHeight | number | 否  | 否  | 组件的高。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | message<sup>10+</sup>         | string | 否  | 否  | 报错信息。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | error<sup>20+</sup>         | [BusinessError\<void>](#businesserror20) | 否  | 是  | 图片加载异常返回的报错信息，其中code为错误码，message为错误信息。报错信息请参考以下错误信息的详细介绍。<br/>默认值：{ code : -1, message : "" }<br/>**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## BusinessError<sup>20+</sup>
 
-type BusinessError\<T> = BusinessError\<T>
+type BusinessError\<T = void> = BusinessError\<T>
 
 图片加载异常返回的错误信息。
 
@@ -1168,9 +1222,9 @@ struct ImageExample4 {
         .width(200)
         .height(200)
         .margin({bottom:10})
-      Button('getTypes')
-        .width(80)
-        .height(80)
+      Button('getTypes', { type: ButtonType.Circle, stateEffect: false })
+        .width(100)
+        .height(100)
         .onClick(() => {
           this.aiController.getImageAnalyzerSupportTypes();
         })
@@ -1515,8 +1569,8 @@ struct ImageContentExample {
       Image(this.imageSrcList[this.imageSrcIndex])
         .width(100)
         .height(100)
-      Button('点击切换Image的src')
-        .padding(20)
+      Button('点击切换Image的src', { type: ButtonType.Capsule, stateEffect: false })
+        .height(50)
         .onClick(() => {
           this.imageSrcIndex = (this.imageSrcIndex + 1) % this.imageSrcList.length;
         })
@@ -2268,7 +2322,7 @@ struct Index {
 
 ### 示例26（使用supportSvg2属性时，SVG图片的显示效果）
 
-该示例通过设置[supportSvg2](#supportsvg221)属性，使SVG新增解析能力生效。
+该示例通过设置[supportSvg2](#supportsvg221)属性，使SVG标签解析能力增强功能生效。
 
 ```ts
 @Entry
@@ -2278,6 +2332,7 @@ struct Index {
     Row() {
       Column() {
         Text('supportSvg2参数设置为true')
+        // $rawfile('image.svg')需要替换为开发者所需的图像资源文件。
         Image($rawfile('image.svg'))
           .width(200)
           .height(200)
@@ -2285,6 +2340,7 @@ struct Index {
           .supportSvg2(true)
           .margin({ bottom: 30 })
         Text('supportSvg2参数设置为false（默认值）')
+        // $rawfile('image.svg')需要替换为开发者所需的图像资源文件。
         Image($rawfile('image.svg'))
           .width(200)
           .height(200)
@@ -2301,7 +2357,7 @@ struct Index {
 
 ### 示例27（使用ContentTransition属性实现图片淡入淡出切换效果）
 
-该示例演示了在点击图片切换图源时，通过设置[contentTransition](#contenttransition21)属性为淡入淡出效果，实现图片的平滑过渡。
+从API version 21开始，该示例演示了在点击图片切换图源时，通过[contentTransition](#contenttransition21)属性实现淡入淡出效果，完成图片的平滑过渡。
 
 ```ts
 @Entry
@@ -2330,3 +2386,41 @@ struct ImageExample {
 }
 ```
 ![sandBox](figures/trans.gif)
+
+### 示例28（使用alt属性实现设置加载失败中图片和加载失败时图片）
+
+该示例演示了在图片加载过程中和加载失败时，通过设置[alt](#alt22)属性实现图片加载过程中和图片加载失败时显示指定图片。
+
+```ts
+@Entry
+@Component
+struct ImageExample {
+  build() {
+      Column() {
+      Text('同时设置placeholder属性和error属性')
+      // 设置一个错误网址来触发alt的placeholder属性和error属性。
+      Image("https://www.example.com/xxx.png")
+      // $r('app.media.startIcon')和$r('app.media.example')需要替换为开发者所需的图像资源文件。
+        .alt({ placeholder: $r('app.media.startIcon'), error: $r('app.media.example') })
+        .width(100)
+        .height(100)
+        .margin(20)
+      Text('只设置placeholder属性')
+      Image("https://www.example.com/xxx.png")
+        .alt({ placeholder: $r('app.media.startIcon')})
+        .width(100)
+        .height(100)
+        .margin(20)
+      Text('只设置error属性')
+      Image("https://www.example.com/xxx.png")
+        .alt({error: $r('app.media.example')})
+        .width(100)
+        .height(100)
+        .margin(20)
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+![sandBox](figures/imagealt.gif)

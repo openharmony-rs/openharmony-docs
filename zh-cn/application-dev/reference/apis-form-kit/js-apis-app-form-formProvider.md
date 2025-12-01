@@ -4,7 +4,7 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 
 formProvider模块提供了获取卡片信息、更新卡片、设置卡片更新时间等能力。
 
@@ -64,7 +64,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.log(`formProvider setFormNextRefreshTime success`);
+    console.info(`formProvider setFormNextRefreshTime success`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -118,7 +118,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formId: string = '12400633174999288';
 try {
   formProvider.setFormNextRefreshTime(formId, 5).then(() => {
-    console.log(`formProvider setFormNextRefreshTime success`);
+    console.info(`formProvider setFormNextRefreshTime success`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -177,7 +177,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.log(`formProvider updateForm success`);
+    console.info(`formProvider updateForm success`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -235,7 +235,7 @@ let param: Record<string, string> = {
 let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
 try {
   formProvider.updateForm(formId, obj).then(() => {
-    console.log(`formProvider updateForm success`);
+    console.info(`formProvider updateForm success`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
   });
@@ -283,7 +283,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.log(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -333,7 +333,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.log(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -385,7 +385,7 @@ const filter: formInfo.FormInfoFilter = {
 };
 try {
   formProvider.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
-    console.log(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -408,7 +408,7 @@ openFormEditAbility(abilityName: string, formId: string, isMainPage?: boolean): 
 | ------ | ------ |----|----------------------------------------------------|
 | abilityName | string | 是  | 编辑页的ability名称。                                     |
 | formId | string | 是  | 卡片标识。                                              |
-| isMainPage | boolean | 否  | 是否为主编辑页，true表示是主编辑页，false表示不是主编辑页。<br/>默认值：true。 |
+| isMainPage | boolean | 否  | 是否为主编辑页。<br/>-&nbsp;true：表示是主编辑页。<br/>-&nbsp;false：表示不是主编辑页。<br/>默认值：true。 |
 
 **错误码：**
 
@@ -436,7 +436,7 @@ struct Page {
   @State message: string = 'Hello World';
 
   aboutToAppear(): void {
-    console.log(`${TAG} aboutToAppear.....`);
+    console.info(`${TAG} aboutToAppear.....`);
   }
 
   build() {
@@ -450,7 +450,7 @@ struct Page {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          console.log(`${TAG} onClick.....`);
+          console.info(`${TAG} onClick.....`);
           formProvider.openFormEditAbility('ability://EntryFormEditAbility', '1386529921');
         })
     }
@@ -464,7 +464,7 @@ struct Page {
 
 openFormManager(want: Want): void
 
-打开卡片管理页面。
+打开当前应用的卡片管理页面。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -475,6 +475,9 @@ openFormManager(want: Want): void
 | 参数名  | 类型    | 必填 | 说明                                                                                                                                                                                                                                                                                                      |
 |------| ------ | ---- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 打开卡片管理页面的请求中的want参数，需包含以下字段。<br>bundleName: 卡片所属应用的包名。<br>abilityName: 卡片所属的ability名称。<br>parameters:<br>- ohos.extra.param.key.form_dimension: [卡片尺寸](js-apis-app-form-formInfo.md#formdimension)。<br>- ohos.extra.param.key.form_name: 卡片名称。<br>- ohos.extra.param.key.module_name: 卡片所属的模块名称。 |
+> **说明：**
+>
+> 如果parameters参数没有填完整或者指定的卡片不存在，就会默认展示[form_config.json](../../form/arkts-ui-widget-configuration.md#卡片配置)中配置的默认卡片。
 
 **错误码：**
 
@@ -554,7 +557,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const formId: string = '388344236';
 try {
   formProvider.getPublishedFormInfoById(formId).then((data: formInfo.FormInfo) => {
-    console.log(`formProvider getPublishedFormInfoById, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getPublishedFormInfoById, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -601,7 +604,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formProvider.getPublishedFormInfos().then((data: formInfo.FormInfo[]) => {
-    console.log(`formProvider getPublishedFormInfos, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getPublishedFormInfos, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -858,7 +861,7 @@ getPublishedRunningFormInfos(): Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)：
+以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -875,6 +878,114 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   formProvider.getPublishedRunningFormInfos().then((data: formInfo.RunningFormInfo[]) => {
     console.info(`formProvider getPublishedRunningFormInfos, data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+## formProvider.reloadForms<sup>22+</sup>
+
+reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, formName: string): Promise&lt;number&gt;
+
+对于当前应用程序相同moduleName、abilityName、formName的卡片，多次加桌后会每张卡片会有不同的卡片id。卡片提供方可以通过本接口批量更新不同的卡片id但moduleName、abilityName、formName相同的卡片。在应用主进程通过本接口通知FormExtension进程进行批量更新，仅支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)中调用，使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------  |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的上下文，做校验使用。     |
+| moduleName | string | 是   | 指定卡片的moduleName。   |
+| abilityName | string | 是 | 指定卡片的abilityName。  |
+| formName | string | 是 | 指定卡片在[form_config.json](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)中配置的卡片名称。 |
+
+**返回值：**
+
+| 类型          | 说明                                |
+| ------------ | ---------------------------------- |
+| Promise&lt;number&gt; | Promise对象。返回请求更新卡片的数量。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 16501000 | An internal functional error occurred. |
+
+**示例：**
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { formProvider } from '@kit.FormKit';
+
+try {
+  let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  //请开发者替换为实际请求更新的卡片信息
+  let moduleName: string = 'entry';
+  let abilityName: string = 'EntryFormAbility';
+  let formName: string = 'formName';
+  formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: number) => {
+    console.info(`reloadForms success, reload number: ${reloadNum}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+## formProvider.reloadAllForms<sup>22+</sup>
+
+reloadAllForms(context: UIAbilityContext): Promise&lt;number&gt;
+
+在应用主进程通过本接口可以通知FormExtension进程批量更新当前应用程序下已经加桌的所有卡片，仅支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)中调用，使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------  |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的上下文，做校验使用。     |
+
+**返回值：**
+
+| 类型          | 说明                                |
+| ------------ | ---------------------------------- |
+| Promise&lt;number&gt; | Promise对象。返回请求更新卡片的数量。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 16501000 | An internal functional error occurred. |
+
+**示例：**
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { formProvider } from '@kit.FormKit';
+
+try {
+  let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  formProvider.reloadAllForms(context).then((reloadNum: number) => {
+    console.info(`reloadAllForms success, reload number: ${reloadNum}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });

@@ -1,4 +1,14 @@
 # OH_NativeXComponent_KeyEvent
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct OH_NativeXComponent_KeyEvent OH_NativeXComponent_KeyEvent
+```
 
 ## 概述
 

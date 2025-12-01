@@ -1,11 +1,10 @@
 # avplayer.h
-
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @xushubo; @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -36,10 +35,11 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (\*Player_MediaKeySystemInfoCallback)(OH_AVPlayer \*player, DRM_MediaKeySystemInfo\* mediaKeySystemInfo)](#player_mediakeysysteminfocallback) | Player_MediaKeySystemInfoCallback | 播放器DRM信息更新时调用。 |
+| [typedef void (\*Player_MediaKeySystemInfoCallback)(OH_AVPlayer *player, DRM_MediaKeySystemInfo* mediaKeySystemInfo)](#player_mediakeysysteminfocallback) | Player_MediaKeySystemInfoCallback | 播放器DRM信息更新时调用。 |
 | [OH_AVPlayer *OH_AVPlayer_Create(void)](#oh_avplayer_create) | - | 创建播放器。<br> 推荐单个应用创建的音视频播放器实例（即音频、视频、音视频三类相加）不超过16个。<!--Del--><br> 可创建的音视频播放器实例数量依赖于设备芯片的支持情况，如芯片支持创建的数量少于上述情况，请以芯片规格为准。如RK3568推荐单个应用创建6个以内的音视频播放器实例。<!--DelEnd--> |
 | [OH_AVErrCode OH_AVPlayer_SetURLSource(OH_AVPlayer *player, const char *url)](#oh_avplayer_seturlsource) | - | 设置播放器的播放源。对应的源可以是http url。 |
 | [OH_AVErrCode OH_AVPlayer_SetFDSource(OH_AVPlayer *player, int32_t fd, int64_t offset, int64_t size)](#oh_avplayer_setfdsource) | - | 设置播放器的媒体文件描述符来源。 |
+| [OH_AVErrCode OH_AVPlayer_SetDataSource(OH_AVPlayer *player, OH_AVDataSourceExt* datasrc, void* userData)](#oh_avplayer_setdatasource) | - | 设置播放器的媒体源，该媒体源的数据由应用程序提供。 |
 | [OH_AVErrCode OH_AVPlayer_Prepare(OH_AVPlayer *player)](#oh_avplayer_prepare) | - | 准备播放环境，异步缓存媒体数据。<br> 此函数必须在SetSource之后调用。 |
 | [OH_AVErrCode OH_AVPlayer_Play(OH_AVPlayer *player)](#oh_avplayer_play) | - | 开始播放。<br> 此函数必须在[OH_AVPlayer_Prepare](#oh_avplayer_prepare)之后调用。<br> 如果播放器状态为\<Prepared>，调用此函数开始播放。 |
 | [OH_AVErrCode OH_AVPlayer_Pause(OH_AVPlayer *player)](#oh_avplayer_pause) | - | 暂停播放。 |
@@ -67,7 +67,7 @@
 | [bool OH_AVPlayer_IsPlaying(OH_AVPlayer *player)](#oh_avplayer_isplaying) | - | 判断播放器是否在播放。 |
 | [bool OH_AVPlayer_IsLooping(OH_AVPlayer *player)](#oh_avplayer_islooping) | - | 判断是否循环播放。 |
 | [OH_AVErrCode OH_AVPlayer_SetLooping(OH_AVPlayer *player, bool loop)](#oh_avplayer_setlooping) | - | 设置循环播放。 |
-| [OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback callback)](#oh_avplayer_setplayercallback) | - | 设置播放器回调函数。<br> 由于通过此方法设置的信息监听回调函数[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)和错误监听回调函数[OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror)可以传递的信息有限，也不便于应用区分多个播放器实例。<br> 从API 12开始，应使用[OH_AVPlayer_SetOnInfoCallback](#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback](#oh_avplayer_setonerrorcallback)接口分别设置信息监听回调函数[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)和错误监听回调函数[OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback)。 |
+| [OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback callback)](#oh_avplayer_setplayercallback) | - | 设置播放器回调函数。<br> 由于通过此方法设置的信息监听回调函数[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)和错误监听回调函数[OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror)可以传递的信息有限，也不便于应用区分多个播放器实例。<br> 从API version 12开始，应使用[OH_AVPlayer_SetOnInfoCallback](#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback](#oh_avplayer_setonerrorcallback)接口分别设置信息监听回调函数[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)和错误监听回调函数[OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback)。 |
 | [OH_AVErrCode OH_AVPlayer_SelectTrack(OH_AVPlayer *player, int32_t index)](#oh_avplayer_selecttrack) | - | 选择音频或字幕轨道。<br> 默认播放第一个带数据的音轨，不播放字幕轨迹。<br> 设置生效后，原音轨将失效。请设置字幕处于准备/播放/暂停/完成状态，并将音轨设置为准备状态。 |
 | [OH_AVErrCode OH_AVPlayer_DeselectTrack(OH_AVPlayer *player, int32_t index)](#oh_avplayer_deselecttrack) | - | 取消选择当前音频或字幕轨道。 |
 | [OH_AVErrCode OH_AVPlayer_GetCurrentTrack(OH_AVPlayer *player, int32_t trackType, int32_t *index)](#oh_avplayer_getcurrenttrack) | - | 获取当前有效的轨道索引。请将状态设置为准备/正在播放/暂停/完成。 |
@@ -76,6 +76,8 @@
 | [OH_AVErrCode OH_AVPlayer_SetDecryptionConfig(OH_AVPlayer *player, MediaKeySession *mediaKeySession, bool secureVideoPath)](#oh_avplayer_setdecryptionconfig) | - | 设置解密信息。 |
 | [OH_AVErrCode OH_AVPlayer_SetOnInfoCallback(OH_AVPlayer *player, OH_AVPlayerOnInfoCallback callback, void *userData)](#oh_avplayer_setoninfocallback) | - | 设置播放器消息回调监听函数。 |
 | [OH_AVErrCode OH_AVPlayer_SetOnErrorCallback(OH_AVPlayer *player, OH_AVPlayerOnErrorCallback callback, void *userData)](#oh_avplayer_setonerrorcallback) | - | 设置播放器错误回调监听函数。 |
+| [OH_AVFormat *OH_AVPlayer_GetMediaDescription(OH_AVPlayer *player)](#oh_avplayer_getmediadescription) | - | 获取播放器媒体源信息。设置完播放资源并且播放处于initialized/prepared/playing/paused/completed/stopped状态，可调用该接口。<br> 需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。 |
+| [OH_AVFormat *OH_AVPlayer_GetTrackDescription(OH_AVPlayer *player, uint32_t index)](#oh_avplayer_gettrackdescription) | - | 通过索引下标获取播放器媒体源轨道信息。设置完播放资源并且播放处于initialized/prepared/playing/paused/completed/stopped状态，可调用该接口。<br> 需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。 |
 
 ## 函数说明
 
@@ -90,7 +92,6 @@ typedef void (*Player_MediaKeySystemInfoCallback)(OH_AVPlayer *player, DRM_Media
 播放器DRM信息更新时调用。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -133,7 +134,6 @@ OH_AVErrCode OH_AVPlayer_SetURLSource(OH_AVPlayer *player, const char *url)
 
 **起始版本：** 11
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -161,7 +161,6 @@ OH_AVErrCode OH_AVPlayer_SetFDSource(OH_AVPlayer *player, int32_t fd, int64_t of
 
 **起始版本：** 11
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -177,6 +176,34 @@ OH_AVErrCode OH_AVPlayer_SetFDSource(OH_AVPlayer *player, int32_t fd, int64_t of
 | -- | -- |
 | [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：fd设置成功。<br>         AV_ERR_INVALID_VAL：输入player为空指针，或者player SetFdSource执行失败。 |
 
+### OH_AVPlayer_SetDataSource()
+
+```
+OH_AVErrCode OH_AVPlayer_SetDataSource(OH_AVPlayer *player, OH_AVDataSourceExt* datasrc, void* userData)
+```
+
+**描述**
+
+设置播放器的媒体源，该媒体源的数据由应用程序提供。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
+| OH_AVDataSourceExt* datasrc | 指向自定义媒体数据的指针。 |
+| void* userData | 用户传入的句柄，用于回调中传入。userData若为空，不支持AVPlayer的多实例播放。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| OH_AVErrCode | AV_ERR_OK：设置成功。<br>         AV_ERR_INVALID_VAL：输入player为空指针，或者输入datasrc为空指针。 |
+
 ### OH_AVPlayer_Prepare()
 
 ```
@@ -190,7 +217,6 @@ OH_AVErrCode OH_AVPlayer_Prepare(OH_AVPlayer *player)
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -218,7 +244,6 @@ OH_AVErrCode OH_AVPlayer_Play(OH_AVPlayer *player)
 
 **起始版本：** 11
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -244,7 +269,6 @@ OH_AVErrCode OH_AVPlayer_Pause(OH_AVPlayer *player)
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -272,7 +296,6 @@ OH_AVErrCode OH_AVPlayer_Stop(OH_AVPlayer *player)
 
 **起始版本：** 11
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -298,7 +321,6 @@ OH_AVErrCode OH_AVPlayer_Reset(OH_AVPlayer *player)
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -326,7 +348,6 @@ OH_AVErrCode OH_AVPlayer_Release(OH_AVPlayer *player)
 
 **起始版本：** 11
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -353,7 +374,6 @@ OH_AVErrCode OH_AVPlayer_ReleaseSync(OH_AVPlayer *player)
 
 **起始版本：** 11
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -379,7 +399,6 @@ OH_AVErrCode OH_AVPlayer_SetVolume(OH_AVPlayer *player, float leftVolume, float 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -409,7 +428,6 @@ OH_AVErrCode OH_AVPlayer_SetLoudnessGain(OH_AVPlayer *player, float loudnessGain
 
 **起始版本：** 21
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -421,7 +439,7 @@ OH_AVErrCode OH_AVPlayer_SetLoudnessGain(OH_AVPlayer *player, float loudnessGain
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置响度。<br>         AV_ERR_INVALID_VAL：输入player为空指针，或者输入的loudnessGain是无效参数。<br>         AV_ERR_INVALID_STATE：函数在不正常的状态下调用，或者audioRendererInfo的usage参数不是[StreamUsage](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).STREAM_USAGE_MUSIC，<br>              [StreamUsage](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)..STREAM_USAGE_MOVIE ，[StreamUsage](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)..STREAM_USAGE_AUDIOBOOK 之一。<br>         AV_ERR_SERVICE_DIED：系统错误。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置响度。<br>         AV_ERR_INVALID_VAL：输入player为空指针，或者输入的loudnessGain是无效参数。<br>         AV_ERR_INVALID_STATE：函数在不正常的状态下调用，或者audioRendererInfo的usage参数不是[StreamUsage](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).STREAM_USAGE_MUSIC，<br>              [StreamUsage](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).STREAM_USAGE_MOVIE ，[StreamUsage](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).STREAM_USAGE_AUDIOBOOK 之一。<br>         AV_ERR_SERVICE_DIED：系统错误。 |
 
 ### OH_AVPlayer_Seek()
 
@@ -436,7 +454,6 @@ OH_AVErrCode OH_AVPlayer_Seek(OH_AVPlayer *player, int32_t mSeconds, AVPlayerSee
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -466,7 +483,6 @@ OH_AVErrCode OH_AVPlayer_GetCurrentTime(OH_AVPlayer *player, int32_t *currentTim
 
 **起始版本：** 11
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -493,7 +509,6 @@ OH_AVErrCode OH_AVPlayer_GetVideoWidth(OH_AVPlayer *player, int32_t *videoWidth)
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -522,7 +537,6 @@ OH_AVErrCode OH_AVPlayer_GetVideoHeight(OH_AVPlayer *player, int32_t *videoHeigh
 
 **起始版本：** 11
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -549,7 +563,6 @@ OH_AVErrCode OH_AVPlayer_SetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed s
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -578,7 +591,6 @@ OH_AVErrCode OH_AVPlayer_SetPlaybackRate(OH_AVPlayer *player, float rate)
 
 **起始版本：** 20
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -605,7 +617,6 @@ OH_AVErrCode OH_AVPlayer_GetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed *
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -634,7 +645,6 @@ OH_AVErrCode OH_AVPlayer_SetAudioRendererInfo(OH_AVPlayer *player, OH_AudioStrea
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -661,7 +671,6 @@ OH_AVErrCode OH_AVPlayer_SetVolumeMode(OH_AVPlayer *player, OH_AudioStream_Volum
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 18
-
 
 **参数：**
 
@@ -690,7 +699,6 @@ OH_AVErrCode OH_AVPlayer_SetAudioInterruptMode(OH_AVPlayer *player, OH_AudioInte
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -717,7 +725,6 @@ OH_AVErrCode OH_AVPlayer_SetAudioEffectMode(OH_AVPlayer *player, OH_AudioStream_
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -746,7 +753,6 @@ OH_AVErrCode OH_AVPlayer_SelectBitRate(OH_AVPlayer *player, uint32_t bitRate)
 
 **起始版本：** 11
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -773,7 +779,6 @@ OH_AVErrCode OH_AVPlayer_SetVideoSurface(OH_AVPlayer *player, OHNativeWindow *wi
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -802,7 +807,6 @@ OH_AVErrCode OH_AVPlayer_GetDuration(OH_AVPlayer *player, int32_t *duration)
 
 **起始版本：** 11
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -829,7 +833,6 @@ OH_AVErrCode OH_AVPlayer_GetState(OH_AVPlayer *player, AVPlayerState *state)
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -858,7 +861,6 @@ bool OH_AVPlayer_IsPlaying(OH_AVPlayer *player)
 
 **起始版本：** 11
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -884,7 +886,6 @@ bool OH_AVPlayer_IsLooping(OH_AVPlayer *player)
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -912,13 +913,12 @@ OH_AVErrCode OH_AVPlayer_SetLooping(OH_AVPlayer *player, bool loop)
 
 **起始版本：** 11
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
-| bool loop | 循环播放开关。 |
+| bool loop | 循环播放开关。true表示开启循环播放，false表示关闭循环播放。  |
 
 **返回：**
 
@@ -934,12 +934,11 @@ OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback
 
 **描述**
 
-设置播放器回调函数。<br> 由于通过此方法设置的信息监听回调函数[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)和错误监听回调函数[OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror)可以传递的信息有限，也不便于应用区分多个播放器实例。<br> 从API 12开始，应使用[OH_AVPlayer_SetOnInfoCallback](#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback](#oh_avplayer_setonerrorcallback)接口分别设置信息监听回调函数[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)和错误监听回调函数[OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback)。
+设置播放器回调函数。<br> 由于通过此方法设置的信息监听回调函数[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)和错误监听回调函数[OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror)可以传递的信息有限，也不便于应用区分多个播放器实例。<br> 从API version 12开始，应使用[OH_AVPlayer_SetOnInfoCallback](#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback](#oh_avplayer_setonerrorcallback)接口分别设置信息监听回调函数[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)和错误监听回调函数[OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -962,14 +961,11 @@ OH_AVErrCode OH_AVPlayer_SelectTrack(OH_AVPlayer *player, int32_t index)
 
 **描述**
 
-选择音频或字幕轨道。<br>默认播放第一个带数据的音轨，不播放字幕轨迹。<br>设置生效后，原音轨将失效。请设置字幕处于准备/播放/暂停/完成状态，并将音轨设置为准备状态。
-
-该接口在当前版本暂不支持，将在后续版本开放能力。
+选择音频或字幕轨道。<br> 默认播放第一个带数据的音轨，不播放字幕轨迹。<br> 设置生效后，原音轨将失效。请设置字幕处于准备/播放/暂停/完成状态，并将音轨设置为准备状态。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -994,12 +990,9 @@ OH_AVErrCode OH_AVPlayer_DeselectTrack(OH_AVPlayer *player, int32_t index)
 
 取消选择当前音频或字幕轨道。
 
-该接口在当前版本暂不支持，将在后续版本开放能力。
-
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -1024,12 +1017,9 @@ OH_AVErrCode OH_AVPlayer_GetCurrentTrack(OH_AVPlayer *player, int32_t trackType,
 
 获取当前有效的轨道索引。请将状态设置为准备/正在播放/暂停/完成。
 
-该接口在当前版本暂不支持，将在后续版本开放能力。
-
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -1059,7 +1049,6 @@ OH_AVErrCode OH_AVPlayer_SetMediaKeySystemInfoCallback(OH_AVPlayer *player, Play
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -1086,7 +1075,6 @@ OH_AVErrCode OH_AVPlayer_GetMediaKeySystemInfo(OH_AVPlayer *player, DRM_MediaKey
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -1115,14 +1103,13 @@ OH_AVErrCode OH_AVPlayer_SetDecryptionConfig(OH_AVPlayer *player, MediaKeySessio
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
 | [MediaKeySession](capi-avplayer-mediakeysession.md) *mediaKeySession | 具有解密功能的媒体密钥会话实例。 |
-| bool secureVideoPath | 是否需要安全解码器。 |
+| bool secureVideoPath | 是否需要安全解码器。true表示需要安全解码器，false表示不需要安全解码器。 |
 
 **返回：**
 
@@ -1143,7 +1130,6 @@ OH_AVErrCode OH_AVPlayer_SetOnInfoCallback(OH_AVPlayer *player, OH_AVPlayerOnInf
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -1173,7 +1159,6 @@ OH_AVErrCode OH_AVPlayer_SetOnErrorCallback(OH_AVPlayer *player, OH_AVPlayerOnEr
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -1187,5 +1172,58 @@ OH_AVErrCode OH_AVPlayer_SetOnErrorCallback(OH_AVPlayer *player, OH_AVPlayerOnEr
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：内存分配失败。<br>         AV_ERR_INVALID_VAL： 输入player为空指针或者函数执行失败。 |
+
+### OH_AVPlayer_GetMediaDescription()
+
+```
+OH_AVFormat *OH_AVPlayer_GetMediaDescription(OH_AVPlayer *player)
+```
+
+**描述**
+
+获取播放器媒体源信息。设置完播放资源并且播放处于initialized/prepared/playing/paused/completed/stopped状态，可调用该接口。<br> 需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AVFormat](capi-videoprocessing-oh-avformat.md) * | 执行成功返回播放器媒体信息，否则返回nullptr。<br> 可能故障原因：<br>   1. 传入player指针不合法。<br>   2. 设置的播放资源不合法。 |
+
+### OH_AVPlayer_GetTrackDescription()
+
+```
+OH_AVFormat *OH_AVPlayer_GetTrackDescription(OH_AVPlayer *player, uint32_t index)
+```
+
+**描述**
+
+通过索引下标获取播放器媒体源轨道信息。设置完播放资源并且播放处于initialized/prepared/playing/paused/completed/stopped状态，可调用该接口。<br> 需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
+| uint32_t index | 轨道索引下标。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AVFormat](capi-videoprocessing-oh-avformat.md) * | 执行成功按索引下标返回轨道信息，否则返回nullptr。<br> 可能故障原因：<br>   1. 传入player指针不合法。<br>   2. 设置的播放资源不合法。<br>   3. 轨道索引下标超出播放源文件数组界限。 |
 
 

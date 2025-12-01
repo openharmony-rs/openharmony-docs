@@ -43,7 +43,7 @@ data.getDefaultCellularDataSlotId((err: BusinessError, contextData: number) => {
     if(err) {
         console.error(`getDefaultCellularDataSlotId fail. code: ${err.code}, message: ${err.message}, contextData: ${contextData}`);
     } else {
-        console.log(`getDefaultCellularDataSlotId success`);
+        console.info(`getDefaultCellularDataSlotId success`);
     }
 });
 ```
@@ -69,7 +69,7 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getDefaultCellularDataSlotId().then((contextData: number) => {
-    console.log(`getDefaultCellularDataSlotId success, contextData: ${contextData}`);
+    console.info(`getDefaultCellularDataSlotId success, contextData: ${contextData}`);
 }).catch((err: BusinessError) => {
     console.error(`getDefaultCellularDataSlotId fail. code: ${err.code}, message: ${err.message}`);
 });
@@ -94,7 +94,7 @@ getDefaultCellularDataSlotIdSync(): number
 ```ts
 import { data } from '@kit.TelephonyKit';
 
-console.log("Result: "+ data.getDefaultCellularDataSlotIdSync())
+console.info("Result: "+ data.getDefaultCellularDataSlotIdSync())
 ```
 
 
@@ -104,6 +104,8 @@ getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 
 获取蜂窝数据业务的上下行状态，使用callback方式作为异步方法。
 
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
 **系统能力**：SystemCapability.Telephony.CellularData
 
 **参数：**
@@ -111,6 +113,14 @@ getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 | 参数名   | 类型                                           | 必填 | 说明       |
 | -------- | ---------------------------------------------- | ---- | ---------- |
 | callback | AsyncCallback\<[DataFlowType](#dataflowtype)\> | 是   | 以callback形式异步返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 
 **示例：**
 
@@ -122,7 +132,7 @@ data.getCellularDataFlowType((err: BusinessError, contextData: data.DataFlowType
     if(err) {
         console.error(`getCellularDataFlowType fail. code: ${err.code}, message: ${err.message}, contextData: ${contextData}`);
     } else {
-        console.log(`getCellularDataFlowType success`);
+        console.info(`getCellularDataFlowType success`);
     }
 });
 ```
@@ -133,6 +143,8 @@ getCellularDataFlowType(): Promise\<DataFlowType\>
 
 获取蜂窝数据业务的上下行状态，使用Promise方式作为异步方法。
 
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
 **系统能力**：SystemCapability.Telephony.CellularData
 
 **返回值：**
@@ -141,6 +153,14 @@ getCellularDataFlowType(): Promise\<DataFlowType\>
 | ---------------------------------------- | ----------------------------------------------- |
 | Promise\<[DataFlowType](#dataflowtype)\> | 以Promise形式返回获取蜂窝数据业务的上下行状态。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+
 **示例：**
 
 ```ts
@@ -148,7 +168,7 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getCellularDataFlowType().then((contextData: data.DataFlowType) => {
-    console.log(`getCellularDataFlowType success, contextData: ${contextData}`);
+    console.info(`getCellularDataFlowType success, contextData: ${contextData}`);
 }).catch((err: BusinessError) => {
     console.error(`getCellularDataFlowType fail. code: ${err.code}, message: ${err.message}`);
 });
@@ -160,6 +180,8 @@ getCellularDataState(callback: AsyncCallback\<DataConnectState\>): void
 
 获取蜂窝数据业务的连接状态，使用callback方式作为异步方法。
 
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
 **系统能力**：SystemCapability.Telephony.CellularData
 
 **参数：**
@@ -167,6 +189,14 @@ getCellularDataState(callback: AsyncCallback\<DataConnectState\>): void
 | 参数名   | 类型                                                   | 必填 | 说明       |
 | -------- | ------------------------------------------------------ | ---- | ---------- |
 | callback | AsyncCallback\<[DataConnectState](#dataconnectstate)\> | 是   | 以callback形式异步返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 
 **示例：**
 
@@ -178,7 +208,7 @@ data.getCellularDataState((err: BusinessError, contextData: data.DataConnectStat
     if(err) {
         console.error(`getCellularDataState fail. code: ${err.code}, message: ${err.message}, contextData: ${contextData}`);
     } else {
-        console.log(`getCellularDataState success`);
+        console.info(`getCellularDataState success`);
     }
 });
 ```
@@ -189,6 +219,8 @@ getCellularDataState(): Promise\<DataConnectState\>
 
 获取蜂窝数据业务的连接状态，使用Promise方式作为异步方法。
 
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
 **系统能力**：SystemCapability.Telephony.CellularData
 
 **返回值：**
@@ -197,6 +229,14 @@ getCellularDataState(): Promise\<DataConnectState\>
 | ------------------------------------------------ | ------------------------------------- |
 | Promise\<[DataConnectState](#dataconnectstate)\> | 以Promise形式返回获取PS域的连接状态。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+
 **示例：**
 
 ```ts
@@ -204,7 +244,7 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getCellularDataState().then((contextData: data.DataConnectState) => {
-    console.log(`getCellularDataState success, contextData: ${contextData}`);
+    console.info(`getCellularDataState success, contextData: ${contextData}`);
 }).catch((err: BusinessError) => {
     console.error(`getCellularDataState fail. code: ${err.code}, message: ${err.message}`);
 });
@@ -228,7 +268,7 @@ isCellularDataEnabled(callback: AsyncCallback\<boolean\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -249,7 +289,7 @@ data.isCellularDataEnabled((err: BusinessError, contextData: boolean) => {
     if(err) {
         console.error(`isCellularDataEnabled fail. code: ${err.code}, message: ${err.message}, contextData: ${contextData}`);
     } else {
-        console.log(`isCellularDataEnabled success`);
+        console.info(`isCellularDataEnabled success`);
     }
 });
 ```
@@ -272,7 +312,7 @@ isCellularDataEnabled(): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -288,7 +328,7 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.isCellularDataEnabled().then((contextData: boolean) => {
-    console.log(`isCellularDataEnabled success, contextData: ${contextData}`);
+    console.info(`isCellularDataEnabled success, contextData: ${contextData}`);
 }).catch((err: BusinessError) => {
     console.error(`isCellularDataEnabled fail. code: ${err.code}, message: ${err.message}`);
 });
@@ -312,7 +352,7 @@ isCellularDataEnabledSync(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -330,7 +370,7 @@ import { data } from '@kit.TelephonyKit';
 
 try {
     let isEnabled: boolean = data.isCellularDataEnabledSync();
-    console.log(`isCellularDataEnabledSync success : ${isEnabled}`);
+    console.info(`isCellularDataEnabledSync success : ${isEnabled}`);
 } catch (error) {
     console.error(`isCellularDataEnabledSync fail. code: ${err.code}, message: ${err.message}`);  
 }
@@ -355,7 +395,7 @@ isCellularDataRoamingEnabled(slotId: number, callback: AsyncCallback\<boolean\>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -376,7 +416,7 @@ data.isCellularDataRoamingEnabled(0, (err: BusinessError, contextData: boolean) 
     if(err) {
         console.error(`isCellularDataRoamingEnabled fail. code: ${err.code}, message: ${err.message}, contextData: ${contextData}`);
     } else {
-        console.log(`isCellularDataRoamingEnabled success`);
+        console.info(`isCellularDataRoamingEnabled success`);
     }
 });
 ```
@@ -405,7 +445,7 @@ isCellularDataRoamingEnabled(slotId: number): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -423,7 +463,7 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.isCellularDataRoamingEnabled(0).then((contextData: boolean) => {
-    console.log(`isCellularDataRoamingEnabled success, contextData: ${contextData}`);
+    console.info(`isCellularDataRoamingEnabled success, contextData: ${contextData}`);
 }).catch((err: BusinessError) => {
     console.error(`isCellularDataRoamingEnabled fail. code: ${err.code}, message: ${err.message}`);
 });
@@ -453,7 +493,7 @@ isCellularDataRoamingEnabledSync(slotId: number): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -473,7 +513,7 @@ import { data } from '@kit.TelephonyKit';
 
 try {
     let isEnabled: boolean = data.isCellularDataRoamingEnabledSync(0);
-    console.log(`isCellularDataRoamingEnabledSync success : ${isEnabled}`);
+    console.info(`isCellularDataRoamingEnabledSync success : ${isEnabled}`);
 } catch (error) {
     console.error(`isCellularDataRoamingEnabledSync fail. code: ${err.code}, message: ${err.message}`);  
 }
@@ -498,7 +538,7 @@ getDefaultCellularDataSimId(): number
 ```ts
 import { data } from '@kit.TelephonyKit';
 
-console.log("Result: "+ data.getDefaultCellularDataSimId());
+console.info("Result: "+ data.getDefaultCellularDataSimId());
 ```
 
 ## data.queryAllApns<sup>16+</sup>
@@ -519,7 +559,7 @@ queryAllApns(): Promise\<Array\<ApnInfo\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -531,8 +571,8 @@ queryAllApns(): Promise\<Array\<ApnInfo\>\>
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-data.queryAllApns().then((data: Array<data.ApnInfo>) => {
-    console.info(`queryAllApns success, promise: data->${JSON.stringify(data)}`);
+data.queryAllApns().then((apnInfos: Array<data.ApnInfo>) => {
+    console.info(`queryAllApns success, promise: apnInfos->${JSON.stringify(apnInfos)}`);
 }).catch((err: BusinessError) => {
     console.error(`queryAllApns failed. code: ${err.code}, message: ${err.message}`);
 });
@@ -563,7 +603,7 @@ queryApnIds(apnInfo: ApnInfo): Promise\<Array\<number\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -583,8 +623,8 @@ apnInfo = {
   mnc: "07",
 };
 
-data.queryApnIds(apnInfo).then((data: Array<number>) => {
-    console.info(`queryApnIds success, data: ${data}`);
+data.queryApnIds(apnInfo).then((apnIds: Array<number>) => {
+    console.info(`queryApnIds success, apnIds: ${apnIds}`);
 }).catch((err: BusinessError) => {
     console.error(`queryApnIds failed. code: ${err.code}, message: ${err.message}`);
 });
@@ -618,7 +658,7 @@ setPreferredApn(apnId: number): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -631,8 +671,8 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let apnId: number = 0; // apnId为通过queryApnIds返回的有效值，setPreferredApn传入无效的apnId会切回运营商默认配置的优选APN。
-data.setPreferredApn(apnId).then((data: boolean) => {
-    console.info(`setPreferredApn success, data: ${data}`);
+data.setPreferredApn(apnId).then((result: boolean) => {
+    console.info(`setPreferredApn result: ${result}`);
 }).catch((err: BusinessError) => {
     console.error(`setPreferredApn failed. code: ${err.code}, message: ${err.message}`);
 });
@@ -656,7 +696,7 @@ getActiveApnName(): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -668,8 +708,8 @@ getActiveApnName(): Promise\<string\>
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-data.getActiveApnName().then((data: string) => {
-    console.info(`getActiveApnName success, data: ${data}`);
+data.getActiveApnName().then((apn: string) => {
+    console.info(`getActiveApnName success, apn: ${apn}`);
 }).catch((err: BusinessError) => {
     console.error(`getActiveApnName failed. code: ${err.code}, message: ${err.message}`);
 });

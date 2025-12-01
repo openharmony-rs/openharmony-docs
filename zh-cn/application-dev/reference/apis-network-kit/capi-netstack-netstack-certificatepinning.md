@@ -1,5 +1,16 @@
 # NetStack_CertificatePinning
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
+```c
+typedef struct NetStack_CertificatePinning {...} NetStack_CertificatePinning
+```
+
 ## 概述
 
 定义证书锁定信息。

@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct Data_Asset Data_Asset
+```
+
 ## Overview
 
 Defines a struct for a data asset, which provides information about a data asset.

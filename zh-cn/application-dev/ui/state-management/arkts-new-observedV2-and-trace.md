@@ -28,32 +28,35 @@
 - 在嵌套类中，嵌套类中的属性property被\@Trace装饰且嵌套类被\@ObservedV2装饰时，才具有触发UI刷新的能力。
 - 在继承类中，父类或子类中的属性property被\@Trace装饰且该property所在类被\@ObservedV2装饰时，才具有触发UI刷新的能力。
 - 未被\@Trace装饰的属性用在UI中无法感知到变化，也无法触发UI刷新。
-- \@ObservedV2的类实例目前不支持使用JSON.stringify进行序列化。
 - 使用\@ObservedV2与\@Trace装饰器的类，需通过new操作符实例化后，才具备被观测变化的能力。
 
 ## 状态管理V1版本对嵌套类对象属性变化直接观测的局限性
 
 现有状态管理V1版本无法实现对嵌套类对象属性变化的直接观测。
 
-```ts
+<!-- @[Observed_Limitations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/Limitations.ets) -->
+
+``` TypeScript
 @Observed
 class Father {
-  son: Son;
+  public son: Son;
 
   constructor(name: string, age: number) {
     this.son = new Son(name, age);
   }
 }
+
 @Observed
 class Son {
-  name: string;
-  age: number;
+  public name: string;
+  public age: number;
 
   constructor(name: string, age: number) {
     this.name = name;
     this.age = age;
   }
 }
+
 @Entry
 @Component
 struct Index {
@@ -76,27 +79,32 @@ struct Index {
 }
 ```
 
+
 在上述代码中，点击Text组件增加age的值时，不会触发UI刷新。原因在于现有的状态管理框架无法观测到嵌套类中属性age的值变化。V1版本的解决方案是使用[\@ObjectLink装饰器](arkts-observed-and-objectlink.md)与自定义组件来实现观测。
 
-```ts
+<!-- @[Realize_Observation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/RealizeObservation.ets) -->
+
+``` TypeScript
 @Observed
 class Father {
-  son: Son;
+  public son: Son;
 
   constructor(name: string, age: number) {
     this.son = new Son(name, age);
   }
 }
+
 @Observed
 class Son {
-  name: string;
-  age: number;
+  public name: string;
+  public age: number;
 
   constructor(name: string, age: number) {
     this.name = name;
     this.age = age;
   }
 }
+
 @Component
 struct Child {
   @ObjectLink son: Son;
@@ -116,6 +124,7 @@ struct Child {
     .height('100%')
   }
 }
+
 @Entry
 @Component
 struct Index {
@@ -123,11 +132,12 @@ struct Index {
 
   build() {
     Column() {
-      Child({son: this.father.son})
+      Child({ son: this.father.son })
     }
   }
 }
 ```
+
 
 通过这种方式虽然能够实现对嵌套类中属性变化的观测，但是当嵌套层级较深时，代码将会变得十分复杂，易用性差。因此推出类装饰器\@ObservedV2与成员变量装饰器\@Trace，增强对嵌套类中属性变化的观测能力。
 
@@ -141,7 +151,7 @@ struct Index {
 | \@Trace成员变量装饰器 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ |
 | 装饰器参数            | 无。                                                           |
-| 可装饰的变量          | class中成员属性。属性的类型可以为number、string、boolean、class、Array、Date、Map、Set等类型。 |
+| 可装饰的变量          | class中成员属性。属性的类型可以为number、string、boolean、class、[Array](#trace装饰基础类型的数组)、[Date](#trace装饰date类型)、[Map](#trace装饰map类型)、[Set](#trace装饰set类型)等类型。 |
 
 ## 观察变化
 
@@ -149,14 +159,18 @@ struct Index {
 
 - 在嵌套类中使用\@Trace装饰的属性具有被观测变化的能力。
 
-```ts
+<!-- @[Observe_Changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/ObserveChanges.ets) -->
+
+``` TypeScript
 @ObservedV2
 class Son {
-  @Trace age: number = 100;
+  @Trace public age: number = 100;
 }
+
 class Father {
-  son: Son = new Son();
+  public son: Son = new Son();
 }
+
 @Entry
 @ComponentV2
 struct Index {
@@ -172,18 +186,21 @@ struct Index {
     }
   }
 }
-
 ```
 
 - 在继承类中使用\@Trace装饰的属性具有被观测变化的能力。
 
-```ts
+<!-- @[Inherited_Changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/InheritedChanges.ets) -->
+
+``` TypeScript
 @ObservedV2
 class Father {
-  @Trace name: string = 'Tom';
+  @Trace public name: string = 'Tom';
 }
+
 class Son extends Father {
 }
+
 @Entry
 @ComponentV2
 struct Index {
@@ -203,11 +220,14 @@ struct Index {
 
 - 类中使用\@Trace装饰的静态属性具有被观测变化的能力。
 
-```ts
+<!-- @[Static_Attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/StaticAttribute.ets) -->
+
+``` TypeScript
 @ObservedV2
 class Manager {
-  @Trace static count: number = 1;
+  @Trace public static count: number = 1;
 }
+
 @Entry
 @ComponentV2
 struct Index {
@@ -238,12 +258,15 @@ struct Index {
 
 - 非\@Trace装饰的成员属性用在UI上无法触发UI刷新。
 
-```ts
+<!-- @[UiRefresh_CannotTriggered](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/UiRefreshCannotTriggered.ets) -->
+
+``` TypeScript
 @ObservedV2
 class Person {
-  id: number = 0;
-  @Trace age: number = 8;
+  public id: number = 0;
+  @Trace public age: number = 8;
 }
+
 @Entry
 @ComponentV2
 struct Index {
@@ -313,22 +336,27 @@ class Person {
 
 - 使用\@ObservedV2与\@Trace装饰的类不能和[\@State](arkts-state.md)等V1的装饰器混合使用，编译时报错。
 
-```ts
+<!-- @[Use_Mixture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/UseMixture.ets) -->
+
+``` TypeScript
 // 以@State装饰器为例
 @ObservedV2
 class Job {
-  @Trace jobName: string = 'Teacher';
+  @Trace public jobName: string = 'Teacher';
 }
+
 @ObservedV2
 class Info {
-  @Trace name: string = 'Tom';
-  @Trace age: number = 25;
-  job: Job = new Job();
+  @Trace public name: string = 'Tom';
+  @Trace public age: number = 25;
+  public job: Job = new Job();
 }
+
 @Entry
-@Component
+@ComponentV2
 struct Index {
-  @State info: Info = new Info(); // 无法混用，编译时报错
+  // @State info: Info = new Info(); 无法混用，编译时报错
+  @Local info: Info = new Info();
 
   build() {
     Column() {
@@ -350,27 +378,33 @@ struct Index {
 
 - 继承自\@ObservedV2的类无法和\@State等V1的装饰器混用，运行时报错。
 
-```ts
+<!-- @[Inheritance_Mixture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/InheritanceMixture.ets) -->   
+
+``` TypeScript
 // 以@State装饰器为例
 @ObservedV2
 class Job {
-  @Trace jobName: string = 'Teacher';
+  @Trace public jobName: string = 'Teacher';
 }
+
 @ObservedV2
 class Info {
-  @Trace name: string = 'Tom';
-  @Trace age: number = 25;
-  job: Job = new Job();
+  @Trace public name: string = 'Tom';
+  @Trace public age: number = 25;
+  public job: Job = new Job();
 }
+
 class Message extends Info {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 }
+
 @Entry
-@Component
+@ComponentV2
 struct Index {
-  @State message: Message = new Message(); // 无法混用，运行时报错
+  // @State message: Message = new Message();  无法混用，运行时报错
+  message: Message = new Message();
 
   build() {
     Column() {
@@ -390,8 +424,8 @@ struct Index {
 }
 ```
 
-- \@ObservedV2的类实例目前不支持使用JSON.stringify进行序列化。
 - 使用\@ObservedV2与\@Trace装饰器的类，需通过new操作符实例化后，才具备被观测变化的能力。
+- \@ObservedV2的类实例无法直接使用JSON.parse反序列化获得（直接使用JSON.parse反序列化获得的对象无法观察属性变化），可搭配三方库[class-transformer](https://gitcode.com/openharmony-tpc/openharmony_tpc_samples/tree/master/class-transformer)实现反序列化后可观察，示例请参考[\@ObservedV2装饰对象的序列化与反序列化](#observedv2装饰对象的序列化与反序列化)。
 
 ## 使用场景
 
@@ -405,20 +439,29 @@ struct Index {
 * 自定义组件Page中的son是常规变量，因此点击Button('assign Son')并不会观测到变化。
 * 当点击Button('assign Son')后，再点击Button('change length')并不会引起UI刷新。因为此时son的地址改变，其关联的UI组件并没有关联到最新的son。
 
-```ts
+<!-- @[Nested_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/NestedClass.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'ArktsObservedV2AndTrace';
+
 @ObservedV2
 class Pencil {
-  @Trace length: number = 21; // 当length变化时，会刷新关联的组件
+  @Trace public length: number = 21; // 当length变化时，会刷新关联的组件
 }
+
 class Bag {
-  width: number = 50;
-  height: number = 60;
-  pencil: Pencil = new Pencil();
+  public width: number = 50;
+  public height: number = 60;
+  public pencil: Pencil = new Pencil();
 }
+
 class Son {
-  age: number = 5;
-  school: string = 'some';
-  bag: Bag = new Bag();
+  public age: number = 5;
+  public school: string = 'some';
+  public bag: Bag = new Bag();
 }
 
 @Entry
@@ -426,16 +469,17 @@ class Son {
 struct Page {
   son: Son = new Son();
   renderTimes: number = 0;
+
   isRender(id: number): number {
-    console.info(`id: ${id} renderTimes: ${this.renderTimes}`);
+    hilog.info(DOMAIN, TAG, `id: ${id} renderTimes: ${this.renderTimes}`);
     this.renderTimes++;
     return 40;
   }
 
   build() {
     Column() {
-      Text('pencil length'+ this.son.bag.pencil.length)
-        .fontSize(this.isRender(1))   // UINode (1)
+      Text('pencil length' + this.son.bag.pencil.length)
+        .fontSize(this.isRender(1)) // UINode (1)
       Button('change length')
         .onClick(() => {
           // 点击更改length值，UINode（1）会刷新
@@ -462,35 +506,47 @@ struct Page {
 
 创建类Son和类Cousin的实例，点击Button('change Son age')和Button('change Cousin age')可以触发UI的刷新。
 
-```ts
+<!-- @[Inheritance_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/InheritanceClass.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'ArktsObservedV2AndTrace';
+
 @ObservedV2
 class GrandFather {
-  @Trace age: number = 0;
+  @Trace public age: number = 0;
 
   constructor(age: number) {
     this.age = age;
   }
 }
-class Father extends GrandFather{
+
+class Father extends GrandFather {
   constructor(father: number) {
     super(father);
   }
 }
+
 class Uncle extends GrandFather {
   constructor(uncle: number) {
     super(uncle);
   }
 }
+
 class Son extends Father {
   constructor(son: number) {
     super(son);
   }
 }
+
 class Cousin extends Uncle {
   constructor(cousin: number) {
     super(cousin);
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
@@ -499,7 +555,7 @@ struct Index {
   renderTimes: number = 0;
 
   isRender(id: number): number {
-    console.info(`id: ${id} renderTimes: ${this.renderTimes}`);
+    hilog.info(DOMAIN, TAG, `id: ${id} renderTimes: ${this.renderTimes}`);
     this.renderTimes++;
     return 40;
   }
@@ -529,18 +585,21 @@ struct Index {
 }
 ```
 
+
 ### \@Trace装饰基础类型的数组
 
 \@Trace装饰数组时，使用支持的API能够观测到变化。支持的API见[观察变化](#观察变化)。
 在下面的示例中\@ObservedV2装饰的Arr类中的属性numberArr是\@Trace装饰的数组，当使用数组API操作numberArr时，可以观测到对应的变化。注意使用数组长度进行判断以防越界访问。
 
-```ts
+<!-- @[Decoration_Foundation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationFoundation.ets) -->
+
+``` TypeScript
 let nextId: number = 0;
 
 @ObservedV2
 class Arr {
-  id: number = 0;
-  @Trace numberArr: number[] = [];
+  public id: number = 0;
+  @Trace public numberArr: number[] = [];
 
   constructor() {
     this.id = nextId++;
@@ -633,17 +692,20 @@ struct Index {
 }
 ```
 
+
 ### \@Trace装饰对象数组
 
 * \@Trace装饰对象数组personList以及Person类中的age属性，因此当personList、age改变时均可以观测到变化。
 * 点击Text组件更改age时，Text组件会刷新。
 
-```ts
+<!-- @[Decorative_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorativeObject.ets) -->
+
+``` TypeScript
 let nextId: number = 0;
 
 @ObservedV2
 class Person {
-  @Trace age: number = 0;
+  @Trace public age: number = 0;
 
   constructor(age: number) {
     this.age = age;
@@ -652,8 +714,8 @@ class Person {
 
 @ObservedV2
 class Info {
-  id: number = 0;
-  @Trace personList: Person[] = [];
+  public id: number = 0;
+  @Trace public personList: Person[] = [];
 
   constructor() {
     this.id = nextId++;
@@ -700,7 +762,6 @@ struct Index {
     }
   }
 }
-
 ```
 
 ### \@Trace装饰Map类型
@@ -708,10 +769,12 @@ struct Index {
 * 被\@Trace装饰的Map类型属性可以观测到调用API带来的变化，包括 set、clear、delete。
 * 因为Info类被\@ObservedV2装饰且属性memberMap被\@Trace装饰，点击Button('init map')对memberMap赋值也可以观测到变化。
 
-```ts
+<!-- @[Decoration_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationMap.ets) -->
+
+``` TypeScript
 @ObservedV2
 class Info {
-  @Trace memberMap: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
+  @Trace public memberMap: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
 }
 
 @Entry
@@ -759,13 +822,15 @@ struct MapSample {
 
 ### \@Trace装饰Set类型
 
-* 被\@Trace装饰的Set类型属性可以观测到调用API带来的变化，包括 add, clear, delete。
-* 因为Info类被\@ObservedV2装饰且属性memberSet被\@Trace装饰，点击Button('init set')对memberSet赋值也可以观察变化。
+* 被\@Trace装饰的Set类型属性可以观测到调用API带来的变化，包括 add、clear和delete。
+* 因为Info类被\@ObservedV2装饰且属性memberSet被\@Trace装饰，点击Button('init set')对memberSet赋值也可以观测到变化。
 
-```ts
+<!-- @[Decoration_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationSet.ets) -->
+
+``` TypeScript
 @ObservedV2
 class Info {
-  @Trace memberSet: Set<number> = new Set([0, 1, 2, 3, 4]);
+  @Trace public memberSet: Set<number> = new Set([0, 1, 2, 3, 4]);
 }
 
 @Entry
@@ -811,16 +876,18 @@ struct SetSample {
 * \@Trace装饰的Date类型属性可以观测调用API带来的变化，包括 setFullYear、setMonth、setDate、setHours、setMinutes、setSeconds、setMilliseconds、setTime、setUTCFullYear、setUTCMonth、setUTCDate、setUTCHours、setUTCMinutes、setUTCSeconds、setUTCMilliseconds。
 * 因为Info类被\@ObservedV2装饰且属性selectedDate被\@Trace装饰，点击Button('set selectedDate to 2023-07-08')对selectedDate赋值也可以观测到变化。
 
-```ts
+<!-- @[Decorate_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorateDate.ets) -->
+
+``` TypeScript
 @ObservedV2
 class Info {
-  @Trace selectedDate: Date = new Date('2021-08-08')
+  @Trace public selectedDate: Date = new Date('2021-08-08');
 }
 
 @Entry
 @ComponentV2
 struct DateSample {
-  info: Info = new Info()
+  info: Info = new Info();
 
   build() {
     Column() {
@@ -853,3 +920,329 @@ struct DateSample {
   }
 }
 ```
+
+## 常见问题
+
+### \@ObservedV2装饰对象的序列化与反序列化
+
+\@ObservedV2装饰的对象序列化后会为\@Trace装饰的属性添加`__ob_`前缀。
+
+```ts
+@ObservedV2
+class Info {
+  @Trace name: string = 'Tom';
+  @Trace age: number = 24;
+}
+
+let realInfo: Info = new Info();
+let jsonResult: string = JSON.stringify(realInfo); // '{"__ob_name":"Tom","__ob_age":24}'
+```
+
+将@ObservedV2装饰的对象通过JSON.stringify序列化后，再通过JSON.parse反序列化，将失去观察能力。
+
+```ts
+@ObservedV2
+class Info {
+  @Trace name: string = 'Tom';
+  @Trace age: number = 24;
+}
+
+let realInfo: Info = new Info();
+let jsonResult: string = JSON.stringify(realInfo); // '{"__ob_name":"Tom","__ob_age":24}'
+let parseInfo: Info = JSON.parse(jsonResult);
+
+// 与直接通过new操作符创建的对象不同，JSON.parse获得的对象实际并不是Info的实例，所以无属性观察能力
+let isInfoByNew: boolean = realInfo instanceof Info; // true
+let isInfoByParse: boolean = parseInfo instanceof Info; // false
+```
+
+可以配合三方库[class-transformer](https://gitcode.com/openharmony-tpc/openharmony_tpc_samples/tree/master/class-transformer)实现反序列化后可观察。
+
+class-transformer可以通过如下命令安装。
+
+```
+ohpm install class-transformer
+```
+
+```ts
+import { plainToInstance } from 'class-transformer'; // 导入三方库
+@ObservedV2
+class Info {
+  @Trace name: string = 'Tom';
+  @Trace age: number = 24;
+}
+let realInfo: Info = new Info();
+let jsonResult: string = JSON.stringify(realInfo); // '{"__ob_name":"Tom","__ob_age":24}'
+let parseInfo: Info = JSON.parse(jsonResult);
+
+let transformedInfo: Info = plainToInstance(Info, parseInfo);
+let isInfoByTransformed: boolean = transformedInfo instanceof Info; // true
+```
+
+若为多层对象嵌套场景，需要进行额外处理，包括：
+
+- 去除序列化结果中的`__ob_`前缀，否则内层对象无法被正确转换。
+- 使用class-transformer库中提供的@Type装饰器（为与状态管理V2的[@Type装饰器](arkts-new-type.md)区分，示例中重命名为`TypeFromLibrary`）标记里层对象的类型。
+
+使用三方库的@Type装饰器需要安装[reflect-metadata](https://gitcode.com/openharmony-tpc/openharmony_tpc_samples/tree/master/reflect-metadata)。
+
+reflect-metadata可以通过如下命令安装。
+
+```
+ohpm install reflect-metadata@0.2.1
+```
+
+```ts
+import { plainToInstance, Type as TypeFromLibrary} from 'class-transformer'; // 导入三方库
+import 'reflect-metadata'; // 三方库的@Type装饰器需要使用
+@ObservedV2
+class Info {
+  @Trace name: string = 'Tom';
+  @Trace age: number = 24;
+}
+@ObservedV2
+class InfoWrapper {
+  // 使用三方库的@Type装饰器（重命名为TypeFromLibrary）标记内层属性的类型
+  @TypeFromLibrary(() => Info)
+  @Trace info: Info = new Info();
+}
+let realWrapper: InfoWrapper = new InfoWrapper();
+let infoWrapperJson: string = JSON.stringify(realWrapper); // '{"__ob_info":{"__ob_name":"Tom","__ob_age":24}}'
+// 去除属性key的'__ob_'前缀，此处仅做演示，开发者需根据实际类型定义情况完成去除key中的'__ob_'前缀
+let jsonHandled = infoWrapperJson.replaceAll('__ob_', ''); // '{"info":{"name":"Tom","age":24}}'
+let wrapperHandled = plainToInstance(InfoWrapper, JSON.parse(jsonHandled));
+
+let isWrapper: boolean = wrapperHandled instanceof InfoWrapper; // true
+let isInfo: boolean = (wrapperHandled.info) instanceof Info; // true
+```
+
+在UI中使用的完整示例如下。
+
+<!-- @[Serialization_And_Deserialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/SerializationAndDeserialization.ets) -->
+
+``` TypeScript
+import { plainToInstance, Type as TypeFromLibrary } from 'class-transformer'; // 导入三方库
+import 'reflect-metadata'; // 三方库的@Type装饰器需要使用
+
+// 模拟json键值对对象
+let testJSON: Record<string, ESObject> = {
+  'id': 1,
+  'info': {
+    'name': 'Tom',
+    'age': 24
+  },
+  'friends': [
+    {
+      'name': 'John',
+      'age': 23
+    },
+    {
+      'name': 'Mary',
+      'age': 24
+    }
+  ]
+}
+
+@ObservedV2
+class Info {
+  @Trace public name?: string;
+  @Trace public age?: number;
+}
+
+@ObservedV2
+class Person {
+  public id?: number;
+  // 使用三方库的@Type装饰器（重命名为TypeFromLibrary）标记内层属性的类型
+  @TypeFromLibrary(() => Info)
+  @Trace public info?: Info;
+  // 使用三方库的@Type装饰器（重命名为TypeFromLibrary）标记内层属性的类型
+  @TypeFromLibrary(() => Info)
+  @Trace public friends?: Info[];
+}
+
+@Entry
+@ComponentV2
+struct SerializationAndDeserialization {
+  @Local person: Person | undefined = undefined;
+  aboutToAppear(): void {
+    this.person = plainToInstance(Person, testJSON); // 直接将对象通过plainToInstance转为Person实例
+  }
+
+  build() {
+    Column() {
+      Text(`name: ${this.person?.info?.name}, age: ${this.person?.info?.age}`)
+        .onClick(() => {
+          if (this.person?.info?.age) {
+            this.person!.info!.age++; // 修改可观察
+          }
+        })
+      ForEach(this.person?.friends, (item: Info) => {
+        Text(`friend name: ${item.name}, age: ${item.age}`)
+          .onClick(() => {
+            if (item.age) {
+              item.age++; // 修改可观察
+            }
+          })
+      })
+
+      Button('Refresh Info')
+        .onClick(() => {
+          let json: string =
+            `{
+              "id":12,
+                "__ob_info":
+                  {
+                    "__ob_name":"Jimmy",
+                    "__ob_age":35
+                   },
+              "__ob_friends":[
+                {
+                  "__ob_name":"Bob",
+                  "__ob_age":30
+                },
+                {
+                  "__ob_name":"Kevin",
+                  "__ob_age":33
+                }
+              ]
+            }`;
+          // 去除'__ob_'前缀后通过JSON.parse与plainToInstance将json字符串转化成Person对象
+          this.person = plainToInstance(Person, JSON.parse(json.replaceAll('__ob_', '')));
+        })
+    }
+  }
+}
+```
+
+### router传递的@ObservedV2类型显示异常
+
+用router传递的@ObservedV2类，由于经过序列化生成的属性名称与类中的原始属性名称不一致，不能直接通过as类型转换成@ObservedV2的实例，需要反序列化重新生成@ObservedV2实例。反序列化相关内容请参考[\@ObservedV2装饰对象的序列化与反序列化](#observedv2装饰对象的序列化与反序列化)。
+
+【反例】
+
+```ts
+// 文件pages/faqs/RouterIndex.ets内容
+
+@ObservedV2
+export class RouterModel {
+  @Trace id: number = -1;
+  @Trace info: string = 'default';
+}
+
+@Entry
+@ComponentV2
+struct RouterIndex {
+  @Local paramsInfo: RouterModel = new RouterModel();
+  onJumpClick(): void {
+    this.paramsInfo.id = 0;
+    this.paramsInfo.info = 'RouterModel';
+    this.getUIContext().getRouter().pushUrl({
+      url: 'pages/faqs/ChildPage',
+      params: this.paramsInfo // 传递@ObservedV2实例到子页面
+    }, (err) => {
+      if (err) {
+        console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
+        return;
+      }
+      console.info('Invoke pushUrl succeeded.');
+    })
+  }
+
+  build() {
+    Column() {
+      Text('Parent page')
+      Button('Jump')
+        .onClick(() => {
+          this.onJumpClick();
+        })
+    }
+  }
+}
+```
+
+```ts
+// 文件pages/faqs/ChildPage.ets内容
+
+import { RouterModel } from './RouterIndex';
+
+@Entry
+@ComponentV2
+struct Detail {
+  @Local params?: RouterModel
+  aboutToAppear(): void {
+    // 错误使用方式！@ObservedV2类型通过router传递无法直接类型转换
+    this.params = this.getUIContext().getRouter().getParams() as RouterModel;
+  }
+  build() {
+    Column() {
+      Text(`Detail Page: ${this.params?.id} ${this.params?.info}`) // 由于传递数据失败，这里会显示undefined
+    }
+  }
+}
+```
+
+【正例】
+
+<!-- @[Router_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/RouterIndex.ets) -->
+
+``` TypeScript
+@ObservedV2
+export class RouterModel {
+  @Trace public id: number = -1;
+  @Trace public info: string = 'default';
+}
+
+@Entry
+@ComponentV2
+struct RouterIndex {
+  @Local paramsInfo: RouterModel = new RouterModel();
+  onJumpClick(): void {
+    this.paramsInfo.id = 0;
+    this.paramsInfo.info = 'RouterModel';
+    this.getUIContext().getRouter().pushUrl({
+      url: 'pages/faqs/ChildPage',
+      params: this.paramsInfo // 传递@ObservedV2实例到子页面
+    }, (err) => {
+      if (err) {
+        console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
+        return;
+      }
+      console.info('Invoke pushUrl succeeded.');
+    })
+  }
+
+  build() {
+    Column() {
+      Text('Parent page')
+      Button('Jump')
+        .onClick(() => {
+          this.onJumpClick();
+        })
+    }
+  }
+}
+```
+
+<!-- @[Child_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/ChildPage.ets) -->
+
+``` TypeScript
+import { RouterModel } from './RouterIndex';
+import { plainToInstance } from 'class-transformer'; // 导入三方库
+
+@Entry
+@ComponentV2
+struct Detail {
+  @Local params?: RouterModel
+  aboutToAppear(): void {
+    this.params =
+      plainToInstance(RouterModel, JSON.parse(JSON.stringify(this.getUIContext().getRouter().getParams())));
+  }
+  build() {
+    Column() {
+      Text(`Detail Page: ${this.params?.id} ${this.params?.info}`)
+    }
+  }
+}
+```
+
+![observedv2_router_deserialize.gif](./figures/observedv2_router_deserialize.gif)

@@ -1,4 +1,14 @@
 # OH_Drawing_Point
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
+```
+typedef struct OH_Drawing_Point OH_Drawing_Point
+```
 
 ## 概述
 

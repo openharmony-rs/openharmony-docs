@@ -1,4 +1,14 @@
 # OH_Drawing_Image_Info
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
+```
+typedef struct {...} OH_Drawing_Image_Info
+```
 
 ## 概述
 

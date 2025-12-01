@@ -20,7 +20,7 @@ The following describes how to configure a static shortcut in a project.
     ```json
     {
       "string": [
-        // ···
+        // ...
         {
           "name": "share",
           "value": "Share"
@@ -77,24 +77,28 @@ The following describes how to configure a static shortcut in a project.
 
 3. Configure **metadata** in the **module.json5** file of the application, which points to the shortcut file.
 
-    ```json
+
+    <!-- @[typical_scenario_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/TypicalScenarioConfiguration/entry/src/main/module.json5) -->
+    
+    ``` JSON5
     {
       "module": {
-      // ...
+        // ...
         "abilities": [
           {
             "name": "EntryAbility",
             "srcEntry": "./ets/entryability/EntryAbility.ets",
-            // ...
             "metadata": [
               {
                 "name": "ohos.ability.shortcuts",  // Configure a shortcut. The value is fixed at ohos.ability.shortcuts.
                 "resource": "$profile:shortcuts_config"  // Specify the resources of the shortcuts.
               }
-            ]
+            ],
+            // ...
           }
-        ]
-      }
+        ],
+        // ...
+      },
     }
     ```
 

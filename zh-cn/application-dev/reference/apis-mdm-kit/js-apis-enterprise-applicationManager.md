@@ -27,7 +27,7 @@ import { applicationManager } from '@kit.MDMKit';
 
 addDisallowedRunningBundlesSync(admin: Want, appIds: Array\<string>, accountId?: number): void
 
-添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在当前/指定用户下运行。
+添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在当前/指定用户下运行。从API version 21开始，如果应用运行允许名单[addallowedRunningBundles](#applicationmanageraddallowedrunningbundles21)非空，就不能再通过本接口添加应用运行禁止名单，否则会报9200010冲突错误码。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -41,7 +41,7 @@ addDisallowedRunningBundlesSync(admin: Want, appIds: Array\<string>, accountId?:
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
-| appIds    | Array&lt;string&gt;                                     | 是   | 应用ID数组，指定具体应用。                                   |
+| appIds    | Array&lt;string&gt;                                     | 是   | 应用ID数组，指定具体应用。<br/>**说明：** 从API version 21版本开始，支持传入应用的[appId](../../quick-start/common_problem_of_application.md#什么是appid)和[appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)，推荐使用[appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)。API version 20及之前版本，仅支持[appId](../../quick-start/common_problem_of_application.md#什么是appid)。|
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
 **错误码**：
@@ -52,6 +52,7 @@ addDisallowedRunningBundlesSync(admin: Want, appIds: Array\<string>, accountId?:
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010  | A conflict policy has been configured. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -64,7 +65,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -95,7 +96,7 @@ removeDisallowedRunningBundlesSync(admin: Want, appIds:  Array\<string>, account
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
-| appIds    | Array&lt;string&gt;                                     | 是   | 应用ID数组，指定具体应用。                                   |
+| appIds    | Array&lt;string&gt;                                     | 是   | 应用ID数组，指定具体应用。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../quick-start/common_problem_of_application.md#什么是appid)和[appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)，仅移除传入的[appId](../../quick-start/common_problem_of_application.md#什么是appid)（或[appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)（或[appId](../../quick-start/common_problem_of_application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../quick-start/common_problem_of_application.md#什么是appid)。|
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
 **错误码**：
@@ -118,7 +119,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -155,7 +156,7 @@ getDisallowedRunningBundlesSync(admin: Want, accountId?: number): Array&lt;strin
 
 | 类型                | 说明                             |
 | ------------------- | -------------------------------- |
-| Array&lt;string&gt; | 返回当前/指定用户下的应用运行禁止名单。 |
+| Array&lt;string&gt; | 返回当前/指定用户下的应用运行禁止名单。<br/>**说明：** API version 20及之前版本，返回值为应用[appId](../../quick-start/common_problem_of_application.md#什么是appid)列表。从API version 21版本开始，返回值为应用[appId](../../quick-start/common_problem_of_application.md#什么是appid)或[appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)列表。|
 
 **错误码**：
 
@@ -177,7 +178,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -185,6 +186,176 @@ try {
   console.info(`Succeeded in getting disallowed running bundles, result : ${JSON.stringify(result)}`);
 } catch (err) {
   console.error(`Failed to get disallowed running bundles. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## applicationManager.addAllowedRunningBundles<sup>21+</sup>
+
+addAllowedRunningBundles(admin: Want, appIdentifiers: Array\<string>, accountId: number): void
+
+添加应用至应用运行允许名单，添加至允许名单的应用允许在指定用户下运行，不在允许名单的应用不允许在指定用户下运行。
+
+> **说明：** 
+>
+> 1. 由于MDM Kit下大多数接口仅对MDM应用开放，本接口使用时，请将MDM应用同时添加至应用运行允许名单，否则会导致MDM应用不允许运行，阻塞接口调用。接口是否仅对MDM应用开放请查看对应的模块说明。
+>
+> 2. 如果应用运行禁止名单非空，不支持再使用本接口添加应用运行允许名单，否则会报9200010冲突错误码。应用运行禁止名单相关接口包括[addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)<!--Del-->、[addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles)、[addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-1)、[addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-2)。
+>
+> 3. 本接口仅对三方应用生效，系统应用不受该名单管控，默认可以运行<!--DelEnd-->。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| appIdentifiers    | Array&lt;string&gt;                             | 是   | 应用[唯一标识符](../../quick-start/common_problem_of_application.md#什么是appidentifier)的数组，可以通过接口[bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20)获取bundleInfo.signatureInfo.appIdentifier。 <br>取值范围：<br> - 单个用户下该名单总数不能超过200。例如100用户下已经设置了50个、101用户未设置，则100用户还能再设置150个，101用户还能再设置200个。|
+| accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010  | A conflict policy has been configured. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 需根据实际情况进行替换
+let appIdentifiers: Array<string> = ['0123456789123456789'];
+
+try {
+  applicationManager.addAllowedRunningBundles(wantTemp, appIdentifiers, 100);
+  console.info('Succeeded in adding allowed running bundles.');
+} catch (err) {
+  console.error(`Failed to add allowed running bundles. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## applicationManager.removeAllowedRunningBundles<sup>21+</sup>
+
+removeAllowedRunningBundles(admin: Want, appIdentifiers: Array\<string>, accountId: number): void
+
+将应用从指定用户下的应用运行允许名单中移除。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| appIdentifiers    | Array&lt;string&gt;                             | 是   | 应用[唯一标识符](../../quick-start/common_problem_of_application.md#什么是appidentifier)的数组。可以通过接口[bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20)获取bundleInfo.signatureInfo.appIdentifier。取值范围：数组长度不能超过200。|
+| accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 需根据实际情况进行替换
+let appIdentifiers: Array<string> = ['0123456789123456789'];
+
+try {
+  applicationManager.removeAllowedRunningBundles(wantTemp, appIdentifiers, 100);
+  console.info('Succeeded in removing allowed running bundles.');
+} catch (err) {
+  console.error(`Failed to remove allowed running bundles. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## applicationManager.getAllowedRunningBundles<sup>21+</sup>
+
+getAllowedRunningBundles(admin: Want, accountId: number): Array&lt;string>
+
+获取指定用户下的应用运行允许名单。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+
+**返回值：**
+
+| 类型                | 说明                             |
+| ------------------- | -------------------------------- |
+| Array&lt;string&gt; | 返回指定用户下的应用运行允许名单。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let result: Array<string> = applicationManager.getAllowedRunningBundles(wantTemp, 100);
+  console.info(`Succeeded in getting allowed running bundles, result : ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get allowed running bundles. Code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -229,13 +400,13 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let autoStartApps: Array<Want> = [
   {
     // 需根据实际情况进行替换
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EntryAbility'
+    abilityName: 'EnterpriseAdminAbility'
   }
 ];
 
@@ -288,13 +459,13 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let autoStartApps: Array<Want> = [
   {
     // 需根据实际情况进行替换
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EntryAbility'
+    abilityName: 'EnterpriseAdminAbility'
   }
 ];
 
@@ -346,14 +517,14 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let autoStartApps: Array<Want> = [
   // 需根据实际情况进行替换
   {
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EntryAbility'
+    abilityName: 'EnterpriseAdminAbility'
   }
 ];
 
@@ -411,7 +582,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -464,14 +635,14 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let autoStartApps: Array<Want> = [
   // 需根据实际情况进行替换
   {
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EntryAbility'
+    abilityName: 'EnterpriseAdminAbility'
   }
 ];
 
@@ -529,7 +700,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -587,13 +758,13 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let autoStartApp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.autoStartApplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -649,7 +820,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let bundleNames: Array<string> = ['com.example.myapplication'];
@@ -707,7 +878,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // 需根据实际情况进行替换
@@ -764,7 +935,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let bundleNames: Array<string> = ['com.example.myapplication'];
@@ -825,7 +996,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -882,7 +1053,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // 需根据实际情况进行替换
@@ -937,7 +1108,7 @@ import { applicationManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let bundleName: string = 'com.example.exampleapplication';
@@ -991,7 +1162,7 @@ import { applicationManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
-  abilityName: 'com.example.edmtest.EnterpriseAdminAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -1047,7 +1218,7 @@ import { applicationManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
-  abilityName: 'com.example.edmtest.EnterpriseAdminAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -1133,7 +1304,7 @@ import { applicationManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let kioskFeatures: Array<applicationManager.KioskFeature> = [];
 kioskFeatures.push(applicationManager.KioskFeature.ALLOW_NOTIFICATION_CENTER);
@@ -1158,3 +1329,363 @@ Kiosk模式的特征。
 | ----------------------------| ----| ------------------------------- |
 | ALLOW_NOTIFICATION_CENTER   | 1   | 允许进入通知中心。 |
 | ALLOW_CONTROL_CENTER        | 2   | 允许进入控制中心。 |
+
+## applicationManager.addUserNonStopApps<sup>22+</sup>
+
+addUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
+
+为指定用户添加不可关停应用名单，仅可对已安装应用设置该策略。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。
+若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。
+<br>不可关停应用：用户不能在任务中心上划关闭应用；在设置-应用和元服务中点击应用名称进入详情页面后，页面中的强行停止按钮呈灰色不可用。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名        | 类型                                                         | 必填 | 说明                                   |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
+| applicationInstances | Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | 是   | 不可关停应用名单数组。不可关停应用名单最多支持包含10个应用，该数量限制不区分用户，即所有用户下添加应用的总和的最大限制为10个。例如：若当前名单中已有3个应用，则最多还能通过本接口为指定用户添加7个应用。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let applicationInstances: Array<common.ApplicationInstance> = [
+  // 需根据实际情况进行替换
+  {
+    appIdentifier: '0123456789123456789',
+    accountId: 100,
+    appIndex: 0
+  }
+];
+
+try {
+  applicationManager.addUserNonStopApps(wantTemp, applicationInstances);
+  console.info('Succeeded in adding UserNonStop applications.');
+} catch(err) {
+  console.error(`Failed to add UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.removeUserNonStopApps<sup>22+</sup>
+
+removeUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
+
+为指定用户删除不可关停应用名单。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执行；已安装的应用将被删除，未安装的应用不影响删除操作。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名        | 类型                                                         | 必填 | 说明                                   |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
+| applicationInstances | Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | 是   | 不可关停应用名单数组。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let applicationInstances: Array<common.ApplicationInstance> = [
+  // 需根据实际情况进行替换
+  {
+    appIdentifier: '0123456789123456789',
+    accountId: 100,
+    appIndex: 0
+  }
+];
+
+try {
+  applicationManager.removeUserNonStopApps(wantTemp, applicationInstances);
+  console.info('Succeeded in removing UserNonStop applications.');
+} catch(err) {
+  console.error(`Failed to remove UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.getUserNonStopApps<sup>22+</sup>
+
+getUserNonStopApps(admin: Want): Array&lt;common.ApplicationInstance&gt;
+
+获取当前设备下所有用户不可关停应用名单。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名        | 类型                                                         | 必填 | 说明                                   |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
+
+**返回值：**
+
+| 类型                                                         | 说明                 |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | 不可关停应用名单数组。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let result: Array<common.ApplicationInstance> = applicationManager.getUserNonStopApps(wantTemp);
+  console.info(`Succeeded in getting UserNonStop applications, result : ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.addFreezeExemptedApps<sup>22+</sup>
+
+addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
+
+为指定用户添加后台防冻结应用名单，仅可对已安装应用设置该策略。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。
+若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。
+<br>冻结操作：对目标应用的挂起、软件资源代理、硬件资源代理和高功耗管控等操作。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名        | 类型                                                         | 必填 | 说明                                   |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
+| applicationInstances | Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | 是   | 后台防冻结应用名单数组，后台防冻结应用名单最多支持包含10个应用，该数量限制不区分用户，即所有用户下添加应用的总和的最大限制为10个。例如：若当前名单中已有3个应用，则最多还能通过本接口为指定用户添加7个应用。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let applicationInstances: Array<common.ApplicationInstance> = [
+  // 需根据实际情况进行替换
+  {
+    appIdentifier: '0123456789123456789',
+    accountId: 100,
+    appIndex: 0
+  }
+];
+
+try {
+  applicationManager.addFreezeExemptedApps(wantTemp, applicationInstances);
+  console.info('Succeeded in adding FreezeExempted applications.');
+} catch(err) {
+  console.error(`Failed to add FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.removeFreezeExemptedApps<sup>22+</sup>
+
+removeFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
+
+为指定用户删除后台防冻结应用名单。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执行；已安装的应用将被删除，未安装的应用不影响删除操作。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名        | 类型                                                         | 必填 | 说明                                   |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
+| applicationInstances | Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | 是   | 后台防冻结应用名单数组。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let applicationInstances: Array<common.ApplicationInstance> = [
+  // 需根据实际情况进行替换
+  {
+    appIdentifier: '0123456789123456789',
+    accountId: 100,
+    appIndex: 0
+  }
+];
+
+try {
+  applicationManager.removeFreezeExemptedApps(wantTemp, applicationInstances);
+  console.info('Succeeded in removing FreezeExempted applications.');
+} catch(err) {
+  console.error(`Failed to remove FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.getFreezeExemptedApps<sup>22+</sup>
+
+getFreezeExemptedApps(admin: Want): Array&lt;common.ApplicationInstance&gt;
+
+获取当前设备下所有用户后台防冻结应用名单。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名        | 类型                                                         | 必填 | 说明                                   |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
+
+**返回值：**
+
+| 类型                                                         | 说明                 |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | 后台防冻结应用名单数组。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let result: Array<common.ApplicationInstance> = applicationManager.getFreezeExemptedApps(wantTemp);
+  console.info(`Succeeded in getting FreezeExempted applications, result : ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
+}
+```

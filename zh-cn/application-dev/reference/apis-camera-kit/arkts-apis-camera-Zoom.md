@@ -4,16 +4,16 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+Zoom 继承自 [ZoomQuery](arkts-apis-camera-ZoomQuery.md)。
+
+变焦类，对设备变焦操作。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 11开始支持。
-
-Zoom 继承自 [ZoomQuery](arkts-apis-camera-ZoomQuery.md)。
-
-变焦类，对设备变焦操作。
 
 ## 导入模块
 
@@ -129,8 +129,6 @@ setSmoothZoom(targetRatio: number, mode?: SmoothZoomMode): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function setSmoothZoom(sessionExtendsZoom: camera.Zoom, targetZoomRatio: number, mode: camera.SmoothZoomMode): void {
   sessionExtendsZoom.setSmoothZoom(targetZoomRatio, mode);
 }

@@ -1,4 +1,14 @@
 # ArkUI_NodeCustomEvent
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_NodeCustomEvent ArkUI_NodeCustomEvent
+```
 
 ## 概述
 

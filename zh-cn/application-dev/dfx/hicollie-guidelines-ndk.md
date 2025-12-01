@@ -74,7 +74,6 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    #include <thread>
    #include <string>
    #include <unistd.h>
-   #include <atomic>
    #include "napi/native_api.h"
    #include "hilog/log.h"
    #include "hicollie/hicollie.h"
@@ -174,6 +173,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    #include "napi/native_api.h"
    #include "hilog/log.h"
    #include "hicollie/hicollie.h"
+   #include <atomic>
    #include <thread>
    #include <string>
    #include <unistd.h>

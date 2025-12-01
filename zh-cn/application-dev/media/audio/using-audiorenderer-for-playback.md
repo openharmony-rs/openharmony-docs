@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音频数据，相比[AVPlayer](../media/using-avplayer-for-playback.md)而言，可以在输入前添加数据预处理，更适合有音频开发经验的开发者，以实现更灵活的播放功能。
 
@@ -94,7 +94,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
      let path = context.cacheDir;
-     // 确保该沙箱路径下存在该资源。
+     // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
      let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
      let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
 
@@ -145,7 +145,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
      let path = context.cacheDir;
-     // 确保该沙箱路径下存在该资源。
+     // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
      let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
      let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
      let writeDataCallback = (buffer: ArrayBuffer) => {
@@ -190,6 +190,8 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
     ```
 
 5. 调用release()方法销毁实例，释放资源。
+
+    应用需根据实际业务需求合理使用AudioRenderer实例，按需创建并及时释放，避免占用过多音频资源导致异常。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -243,7 +245,6 @@ class Options {
   length?: number;
 }
 
-let bufferSize: number = 0;
 let audioRenderer: audio.AudioRenderer | undefined = undefined;
 let audioStreamInfo: audio.AudioStreamInfo = {
   samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
@@ -263,8 +264,9 @@ let file: fs.File;
 let writeDataCallback: audio.AudioRendererWriteDataCallback;
 
 async function initArguments(context: common.UIAbilityContext) {
+  let bufferSize: number = 0;
   let path = context.cacheDir;
-  // 确保该沙箱路径下存在该资源。
+  // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
   writeDataCallback = (buffer: ArrayBuffer) => {
@@ -361,7 +363,6 @@ async function stop() {
       if (err) {
         console.error('Renderer stop failed.');
       } else {
-        fs.close(file);
         console.info('Renderer stop success.');
       }
     });
@@ -381,6 +382,7 @@ async function release() {
       if (err) {
         console.error('Renderer release failed.');
       } else {
+        fs.closeSync(file);
         console.info('Renderer release success.');
       }
     });

@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6; @zzs_911-->
 <!--Designer: @HmQQQ; @stupig001-->
 <!--Tester: @xchaosioda; @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 - ArkTS APIs<!--media-arkts-->
   - @ohos.multimedia.media (Media)<!--js-apis-media-->
@@ -98,6 +98,7 @@
     - [OH_AVScreenCapture_ContentFilter](capi-avscreencapture-oh-avscreencapture-contentfilter.md)
     - [OH_AVScreenCapture_CaptureStrategy](capi-avscreencapture-oh-avscreencapture-capturestrategy.md)
     - [OH_AVScreenCapture_UserSelectionInfo](capi-avscreencapture-oh-avscreencapture-userselectioninfo.md)
+    - [OH_AVScreenCaptureHighlightConfig](capi-avscreencapture-oh-avscreencapturehighlightconfig.md)
     - [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)
     - [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md)
     - [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)

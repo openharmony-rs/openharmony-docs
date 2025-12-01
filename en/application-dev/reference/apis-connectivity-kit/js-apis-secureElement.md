@@ -1,12 +1,19 @@
 # @ohos.secureElement (SE Management)
 
-The **secureElement** module provides APIs for managing secure elements (SEs). SEs include the Embedded SE (eSE) and SIM on a device. The SE service mentioned in this topic is an **SEService** instance. For details, see [newSEService](#omapinewseservice).
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @amunra03-->
+<!--Designer: @wenxiaolin-->
+<!--Tester: @zs_111-->
+<!--Adviser: @zhang_yixin13-->
+
+The **secureElement** module provides APIs for managing secure elements (SEs). SEs include the Embedded SE (eSE) and SIM on a device. The SE service mentioned in this topic is an **SEService** instance. For details, see [createService](#omapicreateservice12).
 
 The instances of the following types are mentioned in this topic:
 
 | Type   | Description                                          |
 | ------- | ---------------------------------------------- |
-| Reader  | SE supported by the device. If eSE and SIM are supported, two instances will be returned.|
+| Reader  | SE supported by the device. If eSE, SIM, and SIM2 are supported, three instances will be returned.|
 | Session | Session created on an SE **Reader** instance.|
 | Channel | Channel set up by a **Session** instance. The channel can be a basic channel or a logical channel.  |
 
@@ -31,7 +38,7 @@ Enumerates the SE service states.
 | DISCONNECTED | 0    | The SE service is disconnected.|
 | CONNECTED    | 1    | The SE service is connected.|
 
-## omapi.newSEService
+## omapi.newSEService<sup>(deprecated)</sup>
 
 newSEService(type: 'serviceState', callback: Callback\<ServiceState>): SEService
 
@@ -143,7 +150,7 @@ on(type: 'stateChanged', callback: Callback\<ServiceState>): void;
 
 Enables listening for service status change events.
 
-Call this API to register a callback after you use [omapi.newSEService](#omapinewseservice) or [omapi.createService](#omapicreateservice12) to create a service.
+Call this API to register a callback after you use [omapi.newSEService](#omapinewseservicedeprecated) or [omapi.createService](#omapicreateservice12) to create a service.
 
 **System capability**: SystemCapability.Communication.SecureElement
 
@@ -151,7 +158,7 @@ Call this API to register a callback after you use [omapi.newSEService](#omapine
 
 | **Name**| **Type**                                            | **Mandatory**| **Description**            |
 | ---------- | ---------------------------------------------------- | ------ | -------------------- |
-| type       | string                                               | Yes     | Event type. It has a fixed value of **serviceState**.     |
+| type       | string                                               | Yes     | Event type. It has a fixed value of **stateChanged**.     |
 | callback   | Callback<[ServiceState](#servicestate)> | Yes     | Callback used to return the SE service state.|
 
 **Error codes**
@@ -160,7 +167,6 @@ For details about error codes, see [SE Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
-| 401  | Invalid parameter.        |
 | 801  | Capability not supported. |
 
 **Example**
@@ -179,7 +185,7 @@ Disables listening for service status change events.
 
 | **Name**| **Type**                                            | **Mandatory**| **Description**            |
 | ---------- | ---------------------------------------------------- | ------ | -------------------- |
-| type       | string                                               | Yes     | Event type. It has a fixed value of **serviceState**.     |
+| type       | string                                               | Yes     | Event type. It has a fixed value of **stateChanged**.     |
 | callback   | Callback<[ServiceState](#servicestate)> | No     | Callback used to return the SE service state.|
 
 **Error codes**
@@ -188,7 +194,6 @@ For details about error codes, see [SE Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
-| 401  | Invalid parameter.        |
 | 801  | Capability not supported. |
 
 **Example**
@@ -281,6 +286,8 @@ function secureElementDemo() {
     }
     if (seReaders == undefined || seReaders.length == 0) {
         hilog.error(0x0000, 'testTag', 'no valid reader found.');
+        // Release the SE service resources.
+        seService.shutdown();
         return;
     }
 }
@@ -319,18 +326,16 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let seService : omapi.SEService;
 
 function secureElementDemo() {
-    // Obtain the service.
-    try {
-        seService = omapi.newSEService("serviceState", (state) => {
-        hilog.info(0x0000, 'testTag', 'se service state = %{public}s', JSON.stringify(state));
-        });
-    } catch (error) {
-        hilog.error(0x0000, 'testTag', 'newSEService error %{public}s', JSON.stringify(error));
-    }
-    if (seService == undefined || !seService.isConnected()) {
-        hilog.error(0x0000, 'testTag', 'secure element service disconnected.');
-        return;
-    }
+    omapi.createService().then((data) => {
+        seService = data;
+        if (seService == undefined || !seService.isConnected()) {
+            hilog.error(0x0000, 'testTag', 'seservice state disconnected');
+            return;
+        }
+        hilog.info(0x0000, 'testTag', 'seservice state connected');
+    }).catch((error : BusinessError)=> {
+        hilog.error(0x0000, 'testTag', 'createService error %{public}s', JSON.stringify(error));
+    });
 }
 ```
 
@@ -412,13 +417,13 @@ try {
 ```
 ## Reader
 
-A **Reader** instance indicates the SEs supported by a device. If eSE and SIM are supported, two instances will be returned. You can use [SEService.getReaders](#seservicegetreaders) to obtain a **Reader** instance.
+A Reader instance indicates the SEs supported by a device. If eSE, SIM, and SIM2 are supported, three instances will be returned. You can use [SEService.getReaders](#seservicegetreaders) to obtain a **Reader** instance.
 
 ### Reader.getName
 
 getName(): string
 
-Obtains the name of this reader. The name is **SIM** for a SIM reader and **eSE** for an eSE.
+Obtains the name of this reader. The name is **SIM** for a SIM reader, **SIM2** for a SIM2 reader, and **eSE** for an eSE.
 
 **System capability**: SystemCapability.Communication.SecureElement
 
@@ -448,7 +453,7 @@ let seReaders : omapi.Reader[];
 // Initialize seReaders before using it.
 
 try {
-    let reader = seReaders[0]; // Set the expected reader (ese or sim).
+    let reader = seReaders[0]; // Set the expected reader (eSE, SIM, or SIM2).
     let name = reader.getName();
     hilog.info(0x0000, 'testTag', 'name %{public}s', JSON.stringify(name));
 } catch (error) {
@@ -491,7 +496,7 @@ let seReaders : omapi.Reader[];
 // Initialize seReaders before using it.
 
 try {
-    let reader = seReaders[0]; // Set the expected reader (ese or sim).
+    let reader = seReaders[0]; // Set the expected reader (eSE, SIM, or SIM2).
     let isPresent = reader.isSecureElementPresent();
     hilog.info(0x0000, 'testTag', 'isPresent %{public}s', JSON.stringify(isPresent));
 } catch (error) {
@@ -536,7 +541,7 @@ let seSession : omapi.Session;
 // Initialize seReaders before using it.
 function secureElementDemo() {
     try {
-        let reader = seReaders[0]; // Set the expected reader (ese or sim).
+        let reader = seReaders[0]; // Set the expected reader (eSE, SIM, or SIM2).
         seSession = reader.openSession();
     } catch (error) {
         hilog.error(0x0000, 'testTag', 'openSession error %{public}s', JSON.stringify(error));
@@ -579,13 +584,15 @@ let reader : omapi.Reader;
 // Initialize seReaders before using it.
 function secureElementDemo() {
     try {
-        reader = seReaders[0]; // Set the expected reader (ese or sim).
+        reader = seReaders[0]; //  Set the expected reader (eSE, SIM, or SIM2).
         seSession = reader.openSession();
     } catch (error) {
         hilog.error(0x0000, 'testTag', 'openSession error %{public}s', JSON.stringify(error));
     }
     if (seSession == undefined) {
         hilog.error(0x0000, 'testTag', 'seSession invalid.');
+        // Release the SE service resources.
+        seService.shutdown();
         return;
     }
     try {
@@ -636,7 +643,7 @@ let reader : omapi.Reader;
 // Initialize seReaders before using it.
 function secureElementDemo() {
     try {
-        reader = seReaders[0]; // Set the expected reader (ese or sim).
+        reader = seReaders[0]; // Set the expected reader (eSE, SIM, or SIM2).
         seSession = reader.openSession();
     } catch (error) {
         hilog.error(0x0000, 'testTag', 'openSession error %{public}s', JSON.stringify(error));

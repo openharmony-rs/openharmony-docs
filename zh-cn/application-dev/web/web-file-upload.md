@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件支持前端页面选择文件上传功能，应用开发者可以使用[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口来处理前端页面文件上传的请求，如果应用开发者不做任何处理，Web会提供默认行为来处理前端页面文件上传的请求。
+Web组件支持前端页面选择文件上传功能，应用开发者可以使用[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口来处理前端页面文件上传的请求，如果应用开发者不做任何处理，Web会提供默认行为来处理前端页面文件上传的请求。应用开发者也可以通过获取到的前端数据，自定义拉起picker。
 
 ## 使用onShowFileSelector拉起文件管理器
 
@@ -14,42 +14,42 @@ Web组件支持前端页面选择文件上传功能，应用开发者可以使�
 
 
 - 应用侧代码。
-  
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { picker } from '@kit.CoreFileKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+<!-- @[web_file_upload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/UploadFiles.ets) -->
 
-    build() {
-      Column() {
-        Web({ src: $rawfile('local.html'), controller: this.controller })
-          .onShowFileSelector((event) => {
-            console.info('MyFileUploader onShowFileSelector invoked');
-            const documentSelectOptions = new picker.DocumentSelectOptions();
-            let uri: string | null = null;
-            const documentViewPicker = new picker.DocumentViewPicker();
-            documentViewPicker.select(documentSelectOptions).then((documentSelectResult) => {
-              uri = documentSelectResult[0];
-              console.info('documentViewPicker.select to file succeed and uri is:' + uri);
-              if (event) {
-                event.result.handleFileList([uri]);
-              }
-            }).catch((err: BusinessError) => {
-              console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
-            })
-            return true;
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { picker } from '@kit.CoreFileKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('local.html'), controller: this.controller })
+        .onShowFileSelector((event) => {
+          console.info('MyFileUploader onShowFileSelector invoked');
+          const documentSelectOptions = new picker.DocumentSelectOptions();
+          let uri: string | null = null;
+          const documentViewPicker = new picker.DocumentViewPicker();
+          documentViewPicker.select(documentSelectOptions).then((documentSelectResult) => {
+            uri = documentSelectResult[0];
+            console.info('documentViewPicker.select to file succeed and uri is:' + uri);
+            if (event) {
+              event.result.handleFileList([uri]);
+            }
+          }).catch((err: BusinessError) => {
+            console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
           })
-      }
+          return true;
+        })
     }
   }
-  ```
-
+}
+```
 
 - local.html页面代码。
   
@@ -320,6 +320,142 @@ struct Index {
 }
 ```
 ![web-default-camera](./figures/web-default-camera.gif)
+
+## 自定义处理js接口拉起的文件请求
+
+从API version 23开始，在OnShowFileSelectorEvent的FileSelectorParam中新增接口
+getSuggestedName()、getDefaultPath()、getDescriptions()、isAcceptAllOptionExcluded()。
+
+新增接口对上传保存文件能力进行了增强，以对标W3C能力，用于支持用户获取到HTML前端通过`showSaveFilePicker`、`showOpenFilePicker`、`showDirectoryPicker`等方法传递的option参数(参考下方加载的html文件)里的数据。
+
+API version 23 新增支持如下option中的成员：
+
+`suggestedName` 对应接口[getSuggestedName](../reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getsuggestedname23)。
+
+`description`对应接口[getDescriptions](../reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getdescriptions23)。
+
+`excludeAcceptAllOption`对应接口[isAcceptAllOptionExcluded](../reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#isacceptalloptionexcluded23)。
+
+`startIn`对应接口[getDefaultPath](../reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getdefaultpath23)。
+
+index.html代码。
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>文件保存测试</title>
+</head>
+<body>
+<button onclick="saveFile()">保存文件</button>
+<div id="result"></div>
+
+<script>
+    async function saveFile() {
+        const options = {
+            startIn: 'documents',
+            suggestedName: 'example',
+            types: [
+                {
+                    description: '文本文件',
+                    accept: {'text/plain': ['.txt']}
+                },
+                {
+                    description: '视频',
+                    accept: {'video/mp4': ['.mp4']}
+                }
+            ],
+            excludeAcceptAllOption: true
+        };
+
+        try {
+            const fileHandle = await window.showSaveFilePicker(options);
+        } catch (error) {
+            if (error.name !== 'AbortError') {
+                document.getElementById('result').innerHTML =
+                    `错误: ${error.message}`;
+            }
+        }
+    }
+</script>
+</body>
+</html>
+```
+
+应用侧代码。
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { picker } from '@kit.CoreFileKit';
+let defaultPublicPath = 'storage/Users/currentUser/';
+let defaultBasePath = 'file://docs/';
+let wellKnownDirectoryMap = new Map<string, string>([
+    ['desktop', defaultPublicPath + 'desktop'],
+    ['documents', defaultPublicPath + 'documents'],
+    ['downloads', defaultPublicPath + 'download'],
+    ['music', defaultPublicPath + 'music'],
+    ['pictures', defaultPublicPath + 'images'],
+    ['videos', defaultPublicPath + 'videos'],
+]);
+
+function getUri(path : string) {
+  let publicDir = wellKnownDirectoryMap.get(path);
+  if (publicDir !== undefined) {
+    path = publicDir;
+  }
+  return defaultBasePath + path;
+}
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .onShowFileSelector((event) => {
+          console.info('onShowFileSelector Suggested Name is ' + event.fileSelector.getSuggestedName());
+          console.info('onShowFileSelector Default Path is ' + event.fileSelector.getDefaultPath());
+          console.info('onShowFileSelector Descriptions are ' + event.fileSelector.getDescriptions());
+          console.info('onShowFileSelector AcceptAllOptionExcluded is ' + event.fileSelector.isAcceptAllOptionExcluded());
+          const documentSaveOptions = new picker.DocumentSaveOptions();
+          documentSaveOptions.newFileNames = new Array<string>();
+          documentSaveOptions.newFileName.push(event.fileSelector.getSuggestedName());
+          documentSaveOptions.defaultFilePathUri = getUri(event.fileSelector.getDefaultPath());
+          let descriptions : Array<string> = event.fileSelector.getDescriptions();
+          documentSaveOptions.fileSuffixChoices = new Array<string>();
+          for (let i = 0; i < descriptions.length; i++) {
+            documentSaveOptions.fileSuffixChoices.push(descriptions[i] + '(.mp3,.mp4)' + '|' + '.mp3,.mp4');
+          }
+          if (!event.fileSelector.isAcceptAllOptionExcluded()) {
+            documentSaveOptions.fileSuffixChoices.push('所有文件(*.*)' + '|' + '*.*');
+          }
+          let uri: string | null = null;
+          const documentViewPicker = new picker.DocumentViewPicker();
+          documentViewPicker.save(documentSaveOptions).then((documentSelectResult) => {
+            uri = documentSelectResult[0];
+            console.info('documentViewPicker.select to file succeed and uri is:' + uri);
+            if (event) {
+              event.result.handleFileList([uri]);
+            }
+          }).catch((err: BusinessError) => {
+            console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
+          })
+          return true;
+        })
+    }
+  }
+}
+```
+![web-custom-mode-file-picker.gif](./figures/web-custom-mode-file-picker.gif)
+
+样例以HTML中的`showSaveFilePicker()`配合ETS中`documentViewPicker.save()`方法为例。
+
+需注意：
+
+1.HTML中的`showOpenFilePicker`、`showDirectoryPicker`方法的入参option与`showSaveFilePicker`的入参option的成员存在差异。
+
+2.ETS中如调用`documentViewPicker.select()`方法需配合`picker.DocumentSelectOptions`对象为picker传参，而非`picker.DocumentSaveOptions`对象。
 
 ## 常见问题
 

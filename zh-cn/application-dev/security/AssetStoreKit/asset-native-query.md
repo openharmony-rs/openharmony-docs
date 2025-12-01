@@ -9,14 +9,14 @@
 
 ## 接口介绍
 
-可通过API文档查看查询关键资产的接口[OH_Asset_Query](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_query)
-的详细介绍。
+可通过API文档查看查询关键资产的接口[OH_Asset_Query](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_query)的详细介绍。
 
 在查询关键资产时，关键资产属性的内容参数如下表所示：
 
->**注意：**
+> **注意：**
 >
->下表中“ASSET_TAG_ALIAS”和名称包含“ASSET_TAG_DATA_LABEL”的关键资产属性，用于存储业务自定义信息，其内容不会被加密，请勿存放敏感个人数据。
+> 下表中“ASSET_TAG_ALIAS”和名称包含“ASSET_TAG_DATA_LABEL”的关键资产属性，用于存储业务自定义信息，其内容不会被加密，请勿存放敏感个人数据。
+> 查询关键资产明文ASSET_TAG_SECRET需要解密，查询时间较长，需要将Asset_ReturnType设置为ASSET_RETURN_ALL；只查询其他关键资产属性不需解密，查询时间较短，需要将Asset_ReturnType设置为ASSET_RETURN_ATTRIBUTES。
 
 | 属性名称（Asset_Tag）            | 属性内容（Asset_Value）                                       | 是否必选 | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
@@ -51,6 +51,10 @@
 
 ## 代码示例
 
+> **说明：**
+>
+> 在查询前，需确保已有关键资产，可参考[指南文档](./asset-native-add.md)新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
+
 ### 查询单条关键资产明文
 
 查询别名是demo_alias的关键资产明文。
@@ -62,21 +66,29 @@
    target_link_libraries(entry PUBLIC libasset_ndk.z.so)
    ```
 
-2. 参考如下示例代码，进行业务功能开发。
-   ```c
+2. 引用头文件。
+   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   #include "napi/native_api.h"
    #include <string.h>
-
    #include "asset/asset_api.h"
+   ```
 
-   static napi_value QueryAsset(napi_env env, napi_callback_info info) 
+3. 参考如下示例代码，进行业务功能开发。
+   <!-- @[query_single_plaintext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_value QueryAssetPlaintext(napi_env env, napi_callback_info info)
    {
-       static const char *ALIAS = "demo_alias";
-       Asset_Blob alias = {(uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS};
+       const char *aliasStr = "demo_alias";
+       
+       Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
        Asset_Attr attr[] = {
            {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // 指定了关键资产别名，最多查询到一条满足条件的关键资产。
-           {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ALL}, // 此处表示需要返回关键资产的所有信息，即属性+明文。
+           {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ALL}, // 此处表示需要返回关键资产的所有信息，即属性+明文。返回明文需要解密，查询时间较长。
        };
-
+   
        Asset_ResultSet resultSet = {0};
        int32_t queryResult = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
        if (queryResult == ASSET_SUCCESS) {
@@ -91,7 +103,7 @@
        napi_value ret;
        napi_create_int32(env, queryResult, &ret);
        return ret;
-    }
+   }
    ```
 
 ### 查询单条关键资产属性
@@ -105,21 +117,29 @@
    target_link_libraries(entry PUBLIC libasset_ndk.z.so)
    ```
 
-2. 参考如下示例代码，进行业务功能开发。
-   ```c
+2. 引用头文件。
+   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   #include "napi/native_api.h"
    #include <string.h>
-
    #include "asset/asset_api.h"
+   ```
 
-   static napi_value QueryAttributes(napi_env env, napi_callback_info info) 
+3. 参考如下示例代码，进行业务功能开发。
+   <!-- @[query_single_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_value QueryAssetAttribute(napi_env env, napi_callback_info info)
    {
-       static const char *ALIAS = "demo_alias";
-       Asset_Blob alias = { (uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS };
+       const char *aliasStr = "demo_alias";
+       
+       Asset_Blob alias = { (uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr };
        Asset_Attr attr[] = {
            {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // 指定了关键资产别名，最多查询到一条满足条件的关键资产。
-           {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ATTRIBUTES}, // 此处表示仅返回关键资产属性，不包含关键资产明文。
+           {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ATTRIBUTES}, // 此处表示仅返回关键资产属性。返回属性不需解密，查询时间较短。
        };
-
+   
        Asset_ResultSet resultSet = {0};
        int32_t queryResult = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
        if (queryResult == ASSET_SUCCESS) {
@@ -146,24 +166,31 @@
    target_link_libraries(entry PUBLIC libasset_ndk.z.so)
    ```
 
-2. 参考如下示例代码，进行业务功能开发。
-   ```c
+2. 引用头文件。
+   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   #include "napi/native_api.h"
    #include <string.h>
-
    #include "asset/asset_api.h"
+   ```
 
-   static napi_value BatchQuery(napi_env env, napi_callback_info info) 
+3. 参考如下示例代码，进行业务功能开发。
+   <!-- @[query_batch_attributes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_value QueryBatchAssetAttributes(napi_env env, napi_callback_info info)
    {
-       static const char *LABEL = "demo_label";
-       Asset_Blob label = {(uint32_t)(strlen(LABEL)), (uint8_t *)LABEL};
-
+       const char *labelStr = "demo_label";
+       
+       Asset_Blob label = {(uint32_t)(strlen(labelStr)), (uint8_t *)labelStr};
        Asset_Attr attr[] = {
            {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ATTRIBUTES},
            {.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = label},
            {.tag = ASSET_TAG_RETURN_LIMIT, .value.u32 = 10},
            {.tag = ASSET_TAG_RETURN_ORDERED_BY, .value.u32 = ASSET_TAG_DATA_LABEL_NORMAL_1},
        };
-
+   
        Asset_ResultSet resultSet = { 0 };
        int32_t queryResult = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
        if (queryResult == ASSET_SUCCESS) {

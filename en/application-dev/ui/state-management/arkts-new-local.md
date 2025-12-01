@@ -66,7 +66,7 @@ struct Index {
 }
 ```
 
-In the preceding code, the \@State decorated **componentInfo** variable in the **Child** component can be overridden during initialization through parameter passing by the parent component. However, the **Child** component remains unaware that its supposedly "internal" state has been modified externally�a scenario that complicates state management within components. This is where \@Local, a decorator that represents the internal state of components, comes into the picture.
+In the preceding code, the \@State decorated **componentInfo** variable in the **Child** component can be overridden during initialization through parameter passing by the parent component. However, the **Child** component remains unaware that its supposedly "internal" state has been modified externally—a scenario that complicates state management within components. This is where \@Local, a decorator that represents the internal state of components, comes into the picture.
 
 ## Decorator Description
 
@@ -448,10 +448,10 @@ struct MapSample {
         Button('clear').onClick(() => { // Button 3: clears the Map object.
           this.message.clear();
         })
-        Button('replace the first one').onClick(() => { // Button 4: updates or adds the element with key 0.
+        Button('replace key 0').onClick(() => { // Button 4: updates or adds the key-value pair with key 0.
           this.message.set(0, 'aa');
         })
-        Button('delete the first one').onClick(() => { // Button 5: deletes the element with key 0.
+        Button('delete key 0').onClick(() => { // Button 5: deletes the key-value pair whose key is 0.
           this.message.delete(0);
         })
       }
@@ -475,7 +475,7 @@ struct SetSample {
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, string]) => { // Iterate over the key-value pairs of the Set object and render the UI.
+        ForEach(Array.from(this.message.entries()), (item: [number, number]) => { // Iterate over the key-value pairs of the Set object and render the UI.
           Text(`${item[0]}`).fontSize(30)
           Divider()
         })
@@ -559,7 +559,7 @@ To avoid unnecessary assignments and re-renders, use [UIUtils.getTarget()](./ark
 Example of using **UIUtils.getTarget()**:
 
 ```ts
-import { UIUtils } from '@ohos.arkui.StateManagement';
+import { UIUtils } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -585,9 +585,9 @@ struct Index {
 }
 ```
 
-### Using animationTo Failed in State Management V2
+### Using animateTo Failed in State Management V2
 
-In the following scenario, [animateTo](../../reference/apis-arkui/arkui-ts/ts-explicit-animation.md) cannot be directly used in state management V2.
+In the following scenario, [animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) cannot be directly used in state management V2.
 
 ```ts
 @Entry
@@ -647,7 +647,7 @@ struct Index {
           // Values are changed additionally before the animation is executed.
           this.w = 100;
           this.h = 100;
-          this.message = 'Hello Word';
+          this.message = 'Hello World';
           animateToImmediately({
             duration: 0
           }, () => {

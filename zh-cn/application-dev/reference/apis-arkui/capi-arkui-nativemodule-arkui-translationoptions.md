@@ -1,4 +1,14 @@
 # ArkUI_TranslationOptions
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct {...} ArkUI_TranslationOptions
+```
 
 ## 概述
 

@@ -46,7 +46,7 @@ aboutToAppear函数在创建自定义组件的新实例后，在其build()函数
 
 onDidBuild?(): void
 
-onDidBuild函数在自定义组件的build()函数执行后调用，开发者可以在这个阶段进行埋点数据上报等不影响实际UI的功能。不建议在onDidBuild函数中更改状态变量、使用animateTo等功能，这可能会导致不稳定的UI表现。
+onDidBuild函数在自定义组件的build()函数执行后调用，开发者可以在这个阶段实现埋点数据上报等不影响实际UI的功能。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -72,7 +72,7 @@ aboutToDisappear函数在自定义组件析构销毁时执行。不允许在abou
 
 onPageShow?(): void
 
-router路由页面（仅[\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)装饰的自定义组件）每次显示时触发一次，包括路由跳转、应用进入前台等场景。
+router路由页面（即[\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)装饰的自定义组件）每次显示时触发一次，包括路由跳转、应用进入前台等场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -82,7 +82,7 @@ router路由页面（仅[\@Entry](../../../../application-dev/ui/state-managemen
 
 onPageHide?(): void
 
-router路由页面每次隐藏时触发一次，包括路由跳转、应用进入后台等场景。
+router路由页面（即[\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)装饰的自定义组件）每次隐藏时触发一次，包括路由跳转、应用进入后台等场景。
 
 > **说明：**
 >
@@ -96,7 +96,7 @@ router路由页面每次隐藏时触发一次，包括路由跳转、应用进�
 
 onBackPress?(): void | boolean
 
-当用户点击返回按钮时触发（仅router路由页面生效）。返回true表示页面自己处理返回逻辑，不进行页面路由；返回false表示使用默认的路由返回逻辑，不设置返回值按照false处理。
+在router路由页面（即[\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)装饰的自定义组件）生效，当用户点击返回按钮时触发。返回true表示页面自己处理返回逻辑，不进行页面路由；返回false表示使用默认的路由返回逻辑，不设置返回值按照false处理。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -174,11 +174,11 @@ export class routerParam {
 @Component
 struct Index {
   aboutToAppear(): void {
-    console.log('onNewParam', 'Index aboutToAppear');
+    console.info('onNewParam', 'Index aboutToAppear');
   }
 
   onNewParam(param: ESObject) {
-    console.log('onNewParam', 'Index onNewParam, param: ' + JSON.stringify(param));
+    console.info('onNewParam', 'Index onNewParam, param: ' + JSON.stringify(param));
   }
 
   build() {
@@ -215,11 +215,11 @@ import { routerParam } from './Index';
 @Component
 struct PageOne {
   aboutToAppear(): void {
-    console.log('onNewParam', 'PageOne aboutToAppear');
+    console.info('onNewParam', 'PageOne aboutToAppear');
   }
 
   onNewParam(param: ESObject) {
-    console.log('onNewParam', 'PageOne onNewParam, param: ' + JSON.stringify(param));
+    console.info('onNewParam', 'PageOne onNewParam, param: ' + JSON.stringify(param));
   }
 
   build() {
@@ -352,7 +352,7 @@ struct Index {
 struct ReusableV2Component {
   @Local message: string = 'Hello World';
   aboutToReuse() {
-    console.log('ReusableV2Component aboutToReuse'); // 复用时被调用
+    console.info('ReusableV2Component aboutToReuse'); // 复用时被调用
   }
   build() {
     Column() {

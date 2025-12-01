@@ -1,5 +1,11 @@
 # InnerFullScreenLaunchComponent (System API)
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @qq_36417014-->
+<!--Designer: @autojuan-->
+<!--Tester: @tinygreyy-->
+<!--Adviser: @zengyawen-->
 
 **InnerFullScreenLaunchComponent** is a component that allows the invoker to choose the timing for launching an atomic service. If the invoked application (the one being launched) grants the invoker the authorization to run the atomic service in an embedded manner, the invoker can operate the atomic service in full-screen embedded mode. If authorization is not provided, the invoker will launch the atomic service in a pop-up manner.
 
@@ -50,11 +56,15 @@ InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchCon
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| ---- | ---------- | ------ |------ |
-|launchAtomicService | [LaunchAtomicServiceCallback](#launchatomicservicecallback) | Yes| Launches an atomic service.|
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---------- | ------ |------ | -- |
+|launchAtomicService | [LaunchAtomicServiceCallback](#launchatomicservicecallback) | No| No| Launches an atomic service.|
 
 ## LaunchAtomicServiceCallback
+
+type LaunchAtomicServiceCallback = (appId: string, options?: AtomicServiceOptions) => void
+
+Represents the callback triggered when the user signs in to the atomic service.
 
 **System API**: This is a system API.
 
@@ -83,12 +93,12 @@ struct Index {
       Text('InnerFullScreenLaunchComponent').fontSize(16).margin({top: 100})
       Button('Start Sunrise/Sunset')
         .onClick(()=>{
-          let appId1: string = '5765880207854372375';
+          let appId1: string = '576****************';
           this.controller.launchAtomicService(appId1, {});
         }).height(30).width('50%').margin({top: 50})
       Button('Start Recharge')
         .onClick(()=>{
-          let appId2: string = '5765880207853275489';
+          let appId2: string = '576****************';
           this.controller.launchAtomicService(appId2, {});
         }).height(30).width('50%').margin({top: 50})
     }.backgroundColor(Color.Pink).height('100%').width('100%')

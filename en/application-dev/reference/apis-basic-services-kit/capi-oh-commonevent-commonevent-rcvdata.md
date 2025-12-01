@@ -5,7 +5,11 @@
 <!--Owner: @peixu-->
 <!--Designer: @dongqingran; @wulong158-->
 <!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @fang-jinxu-->
+
+```
+typedef struct CommonEvent_RcvData CommonEvent_RcvData
+```
 
 ## Overview
 

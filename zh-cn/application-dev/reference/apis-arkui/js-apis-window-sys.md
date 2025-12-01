@@ -233,13 +233,13 @@ import { window } from '@kit.ArkUI';
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
 
-最小化某显示设备下的所有窗口。
+最小化指定ID的屏幕中的所有主窗口。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**设备行为差异：** 该接口在Phone设备中调用返回801错误码，在其他设备中可正常调用。
+**设备行为差异：** <!--RP1-->该接口在Phone设备中可正常调用，在其他设备中返回801错误码。<!--RP1End-->
 
 **参数：**
 
@@ -289,13 +289,13 @@ try {
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number): Promise&lt;void&gt;
 
-最小化某显示设备下的所有窗口。
+最小化指定ID的屏幕中的所有主窗口，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**设备行为差异：** 该接口在Phone设备中调用返回801错误码，在其他设备中可正常调用。
+**设备行为差异：** <!--RP1-->该接口在Phone设备中可正常调用，在其他设备中返回801错误码。<!--RP1End-->
 
 **参数：**
 
@@ -384,7 +384,7 @@ window.toggleShownStateForAllAppWindows((err: BusinessError) => {
 ## window.toggleShownStateForAllAppWindows<sup>9+</sup>
 toggleShownStateForAllAppWindows(): Promise&lt;void&gt;
 
-多窗口快速切换时隐藏或者恢复应用窗口。
+多窗口快速切换时隐藏或者恢复应用窗口，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -422,7 +422,7 @@ promise.then(() => {
 ## window.setWindowLayoutMode<sup>9+</sup>
 setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback&lt;void&gt;): void
 
-设置窗口布局模式。
+设置窗口布局模式，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -467,7 +467,7 @@ try {
 ## window.setWindowLayoutMode<sup>9+</sup>
 setWindowLayoutMode(mode: WindowLayoutMode): Promise&lt;void&gt;
 
-设置窗口布局模式。
+设置窗口布局模式，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1011,6 +1011,7 @@ getSnapshot(windowId: number): Promise<image.PixelMap>
 | 1300004  | This operation is not accessible.             |
 
 **示例：**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -2062,7 +2063,7 @@ export default class EntryAbility extends UIAbility {
 
 opacity(opacity: number): void
 
-设置窗口不透明度。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口不透明度。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2099,7 +2100,7 @@ try {
 
 scale(scaleOptions: ScaleOptions): void
 
-设置窗口缩放参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口缩放参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2142,7 +2143,7 @@ try {
 
 rotate(rotateOptions: RotateOptions): void
 
-设置窗口旋转参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口旋转参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2186,7 +2187,7 @@ try {
 
 translate(translateOptions: TranslateOptions): void
 
-设置窗口平移参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口平移参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2859,7 +2860,7 @@ export default class EntryAbility extends UIAbility {
 
 raiseMainWindowAboveTarget(windowId: number): Promise&lt;void&gt;
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，用于将主窗口的层级调整至同应用下的另一个主窗口之上，子窗口的层级会跟随所属主窗口变动。使用Promise异步回调。
+将主窗口的层级调整至同应用下的另一个主窗口之上，子窗口的层级会跟随所属主窗口变动。使用Promise异步回调。
 
 仅支持系统应用主窗口调用。
 
@@ -2873,7 +2874,7 @@ raiseMainWindowAboveTarget(windowId: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -3086,6 +3087,75 @@ export default class EntryAbility extends UIAbility {
         } catch (err) {
           console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
         }
+      });
+    });
+  }
+}
+```
+
+### setMainWindowRaiseByClickEnabled<sup>23+</sup>
+
+setMainWindowRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
+
+禁止/使能主窗口点击抬升功能。使用Promise异步回调。
+
+点击主窗口时，默认会抬升主窗口及其子窗口。调用此接口禁止主窗口点击抬升后（即传入false），点击主窗口时不会将其及子窗口进行抬升，保持原有状态不变；点击子窗口时，主窗口会连同子窗口一起被抬升。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| enable   | boolean                   | 是   | 设置主窗口点击抬升功能是否使能，true表示使能，false表示禁止。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.getMainWindow().then((window: window.Window) => {
+      // 加载主窗口对应的页面
+      windowStage.loadContent('pages/Index', (err) => {
+        if (err.code) {
+          console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in loading the content.');
+        try {
+          let raiseEnabled: boolean = false;
+          let promise = window.setMainWindowRaiseByClickEnabled(raiseEnabled);
+          promise.then(() => {
+            console.info('Succeeded in disabling the raise-by-click function.');
+          })
+        } catch(err) {
+          console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+        };
       });
     });
   }
@@ -3617,7 +3687,7 @@ try {
 
 setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, isSplitVisible: boolean): void
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，用于设置主窗标题栏上的最大化、最小化、分屏按钮是否可见。
+设置主窗标题栏上的最大化、最小化、分屏按钮是否可见。
 
 仅对在当前场景下可见的标题栏按钮（最大化、最小化、分屏）生效。
 
@@ -3625,7 +3695,7 @@ setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, is
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -3683,6 +3753,109 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+```
+
+### setRotationLocked<sup>22+</sup>
+
+setRotationLocked(locked: boolean): Promise&lt;void&gt;
+
+仅支持[系统窗口](../../windowmanager/window-terminology.md#系统窗口)设置旋转锁定，锁定后系统窗口显示方向不变，未锁定时系统窗口显示方向受主窗口显示方向、旋转锁定按钮、sensor旋转影响。非系统窗口调用返回1300029错误码。使用Promise异步回调。
+
+> **说明：**
+>
+> - 如果在锁定期间主窗口通过[setPreferredOrientation()](./arkts-apis-window-Window.md#setpreferredorientation9)设置显示方向属性，则解除旋转锁定后该窗口在前台还原最后一次的方向请求。
+>
+> - 如果在锁定期间sensor方向发生了变化，则解除旋转锁定后还原到最后一次的sensor方向。
+>
+> - 如果在锁定期间应用调用[setOrientation()](./js-apis-screen-sys.md#setorientation)设置屏幕方向，忽略该次屏幕方向设置。
+>
+> - 解除锁定时，根据主窗口的显示方向属性[setPreferredOrientation()](./arkts-apis-window-Window.md#setpreferredorientation9)、sensor方向等决定应用显示方向，具体见[窗口旋转简介](../../windowmanager/window-rotation.md#窗口旋转简介)。
+>
+> - 不影响应用[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)orientation属性设置的启动方向。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在Phone设备、Tablet设备和2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| locked | boolean | 是   | 设置是否锁定旋转，true表示锁定旋转，false表示解除锁定。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 202     | Permission verification failed, non-system application uses system API. |
+| 801     | Capability not supported. Function setRotationLocked can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+| 1300029 | This window type is invalid. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let locked: boolean = true;
+let promise = windowClass.setRotationLocked(locked);
+promise.then(() => {
+  console.info('set rotation locked success.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set rotation locked. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### getRotationLocked<sup>22+</sup>
+
+getRotationLocked(): boolean
+
+仅支持[系统窗口](../../windowmanager/window-terminology.md#系统窗口)获取当前旋转锁定状态。非系统窗口调用返回1300029错误码。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在Phone设备、Tablet设备和2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| boolean | 当前系统窗是否设置旋转锁定。true表示当前系统窗已锁定旋转；false表示当前系统窗未锁定旋转。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 202     | Permission verification failed, non-system application uses system API. |
+| 801     | Capability not supported. Function setRotationLocked can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+| 1300029 | This window type is invalid. |
+
+**示例：**
+
+```ts
+try {
+  let locked = windowClass.getRotationLocked();
+  console.info('Succeeded in getting rotation locked.');
+} catch (exception) {
+  console.error(`Failed to get rotation locked. Cause code: ${exception.code}, message: ${exception.message}`);
+};
 ```
 
 ### setWindowType<sup>(deprecated)</sup>
@@ -3975,6 +4148,150 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to set image for recent.`);
+    }
+  }
+};
+```
+
+### setImageForRecent<sup>22+</sup>
+
+setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Promise&lt;void&gt;
+
+设置应用在多任务中显示的图片，使用Promise异步回调。
+
+> **说明：**
+>
+> 调用该接口前，建议先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用窗口未完成页面加载就直接调用该接口，功能将不会生效。此时多任务中只显示应用启动页。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名      | 类型    | 必填 | 说明                                                         |
+| ----------- | ------- | ---- | ------------------------------------------------------------ |
+| imgResource | number \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 应用自定义的图片资源，可传入资源id或PixelMap位图。|
+| value | [ImageFit](arkui-ts/ts-appendix-enums.md#imagefit) | 是 | 应用自定义图片的填充方式。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
+
+**示例：**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      let color = new ArrayBuffer(512 * 512 * 4); // 创建一个ArrayBuffer对象，用于存储图像像素。该对象的大小为（height * width * 4）字节。
+      let pixelMap: image.PixelMap;
+      let bufferArr = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.length; i += 4) {
+        bufferArr[i] = 255;
+        bufferArr[i+1] = 0;
+        bufferArr[i+2] = 122;
+        bufferArr[i+3] = 255;
+      }
+      image.createPixelMap(color, {
+        editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 512, width: 512 }
+      }).then((data) => {
+        pixelMap = data;
+        console.info(`Succeeded in creating pixelMap`);
+        try {
+          let promise = windowStage.setImageForRecent(pixelMap, ImageFit.Fill);
+          promise.then(() => {
+            console.info(`Succeeded in setting image for recent`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        } catch (exception) {
+          console.error(`Failed to set image for recent.`);
+        }
+      })
+    });
+  }
+};
+```
+
+### removeImageForRecent<sup>22+</sup>
+
+removeImageForRecent(): Promise&lt;void&gt;
+
+移除应用设置的在多任务中显示的图片，下次进多任务查看应用卡片时生效，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Window.SessionManager
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    try {
+      let promise = windowStage.removeImageForRecent();
+      promise.then(() => {
+        console.info(`Succeeded in removing image for recent`);
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to remove image for recent. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to remove image for recent.`);
     }
   }
 };

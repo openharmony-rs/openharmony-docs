@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct Data_Asset Data_Asset
+```
+
 ## 概述
 
 表示资产附件类型的数据。<br>提供资产附件的信息。

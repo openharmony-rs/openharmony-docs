@@ -82,7 +82,7 @@ onDisconnect(): void
 
 在执行完onDisconnect生命周期回调后，应用可能会退出，从而可能导致onDisconnect中的异步函数未能正确执行，比如异步写入数据库。推荐使用Promise异步回调，避免因应用退出导致onDisconnect中的异步函数（比如异步写入数据库）未能正确执行。
 
-仅当SelectionExtensionAbility正常退出时会触发该回调，异常退出场景（例如低内存查杀）不会触发该回调。
+仅当SelectionExtensionAbility正常退出时会触发该回调，异常退出场景（例如低内存终止进程）不会触发该回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 

@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The native **PostWebMessage** is provided to implement communication between the frontend page and the application, which reduces unnecessary switching to the ArkTS environment and allows messages and callbacks to be reported in non-UI threads to avoid UI blocking. Currently, only the string and buffer can be sent.
 
@@ -83,10 +83,10 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
       if (event.data == 'init_web_messageport') {
           const port = event.ports[0]; // 1. Save the port sent from the application.
           if (port) {
-              console.log("hwd In html got message");
+              console.info("hwd In html got message");
               h5Port = port;
               port.onmessage = function (event) {
-                  console.log("hwd In html got message");
+                  console.info("hwd In html got message");
                   // 2. Receive the message sent from the application.
                   var result = event.data;
                   var type_s = typeof (result)
@@ -106,7 +106,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
                       default:
                           break;
                   }
-                  console.log("H5 recv type: " + type_s + "\nH5 recv result: " + result)
+                  console.info("H5 recv type: " + type_s + "\nH5 recv result: " + result)
                   document.getElementById("msg").innerHTML = "recv type: " + type_s;
                   document.getElementById("msg2").innerHTML = "recv value: " + result;
               }
@@ -117,7 +117,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
       }
   })
   window.onerror = function(message, url, line, column, error) {
-    console.log("JavaScript Error: " + message + " on line " + line + " in " + url);
+    console.info("JavaScript Error: " + message + " on line " + line + " in " + url);
     document.getElementById("h1").innerHTML = "Failed to execute the function."
   };
 
@@ -172,12 +172,12 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
 
     myMethod() {
       // Instance method.
-      console.log(this.myProperty);
+      console.info(this.myProperty);
     }
 
     static myStaticMethod() {
       // Static method.
-      console.log('This is a static method.');
+      console.info('This is a static method.');
     }
   }
   function postObjectToApp() {
@@ -221,13 +221,13 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
       Scroll() {
         Column({ space: 10 }) {
           // Display the content received by the HTML5 page.
-          Text ("The message received by the HTML5 page from the application")
+          Text("The message received by the HTML5 page from the application")
           TextArea({text: this.h5Log})
             .id("log_area")
             .width("100%")
             .height(100)
             .border({ width: 1 })
-          Text ("Button on the application")
+          Text("Button on the application")
           Row() {
             Button('createNoControllerTagPort')
               .id("create_no_tag_btn")
@@ -353,7 +353,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
           .border({ width: 1 })
 
           Column({ space: 10 }) {
-            Text ("The Send button on the HTML5 page")
+            Text("The Send button on the HTML5 page")
             Row({ space: 10 }) {
               Button('H5String')
                 .id("h5_send_string_btn")
@@ -440,8 +440,9 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
 
 * ArkTS APIs exposed on the Node-API side
 
-  ```javascript
-  // entry/src/main/cpp/types/libentry/index.d.ts
+  <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry5/src/main/cpp/types/libentry5/Index.d.ts) -->
+  
+  ``` TypeScript
   export const nativeWebInit: (webName: string) => void;
   export const createWebMessagePorts: (webName: string) => void;
   export const postMessage: (webName: string) => void;

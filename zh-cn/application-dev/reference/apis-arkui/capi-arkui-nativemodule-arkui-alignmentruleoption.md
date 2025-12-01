@@ -1,4 +1,14 @@
 # ArkUI_AlignmentRuleOption
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_AlignmentRuleOption ArkUI_AlignmentRuleOption
+```
 
 ## 概述
 

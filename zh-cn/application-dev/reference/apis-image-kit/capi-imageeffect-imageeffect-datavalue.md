@@ -1,4 +1,14 @@
 # ImageEffect_DataValue
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef union ImageEffect_DataValue {...} ImageEffect_DataValue
+```
 
 ## 概述
 
@@ -16,7 +26,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t int32Value | 整形值，对应[EFFECT_DATA_TYPE_INT32](capi-image-effect-filter-h.md#imageeffect_datatype)。 |
+| int32_t int32Value | 整型值，对应[EFFECT_DATA_TYPE_INT32](capi-image-effect-filter-h.md#imageeffect_datatype)。 |
 | float floatValue | 单精度浮点值，对应[EFFECT_DATA_TYPE_FLOAT](capi-image-effect-filter-h.md#imageeffect_datatype)。 |
 | double doubleValue | 双精度浮点值，对应[EFFECT_DATA_TYPE_DOUBLE](capi-image-effect-filter-h.md#imageeffect_datatype)。 |
 | char charValue | 字节值，对应[EFFECT_DATA_TYPE_CHAR](capi-image-effect-filter-h.md#imageeffect_datatype)。 |

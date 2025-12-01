@@ -61,7 +61,7 @@ disconnect(deviceId: string): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     pbapServerProfile.disconnect('XX:XX:XX:XX:XX:XX');
@@ -108,7 +108,7 @@ setShareType(deviceId: string, type: ShareType, callback: AsyncCallback&lt;void&
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     pbapServerProfile.setShareType('XX:XX:XX:XX:XX:XX', 0, (err: BusinessError) => {
@@ -163,7 +163,7 @@ setShareType(deviceId: string, type: ShareType): Promise&lt;void&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     pbapServerProfile.setShareType('XX:XX:XX:XX:XX:XX', 0).then(() => {
@@ -211,7 +211,7 @@ getShareType(deviceId: string, callback: AsyncCallback&lt;ShareType&gt;): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     pbapServerProfile.getShareType('XX:XX:XX:XX:XX:XX', (err, type) => {
@@ -264,7 +264,7 @@ getShareType(deviceId: string): Promise&lt;ShareType&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     pbapServerProfile.getShareType('XX:XX:XX:XX:XX:XX').then((type) => {
@@ -313,7 +313,7 @@ setPhoneBookAccessAuthorization(deviceId: string, authorization: AccessAuthoriza
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     pbapServerProfile.setPhoneBookAccessAuthorization('XX:XX:XX:XX:XX:XX', 0, (err: BusinessError) => {
@@ -368,7 +368,7 @@ setPhoneBookAccessAuthorization(deviceId: string, authorization: AccessAuthoriza
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     pbapServerProfile.setPhoneBookAccessAuthorization('XX:XX:XX:XX:XX:XX', 0).then(() => {
@@ -416,7 +416,7 @@ getPhoneBookAccessAuthorization(deviceId: string, callback: AsyncCallback&lt;Acc
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     pbapServerProfile.getPhoneBookAccessAuthorization('XX:XX:XX:XX:XX:XX', (err, authorization) => {
@@ -469,7 +469,7 @@ getPhoneBookAccessAuthorization(deviceId: string): Promise&lt;AccessAuthorizatio
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     pbapServerProfile.getPhoneBookAccessAuthorization('XX:XX:XX:XX:XX:XX').then((authorization) => {

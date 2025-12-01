@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} Rdb_DataObserver
+```
+
 ## 概述
 
 表示数据观察者。

@@ -1,4 +1,14 @@
 # OH_NativeXComponent_MouseEvent_Callback
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct OH_NativeXComponent_MouseEvent_Callback {...} OH_NativeXComponent_MouseEvent_Callback
+```
 
 ## 概述
 
@@ -32,7 +42,7 @@ void (*DispatchMouseEvent)(OH_NativeXComponent* component, void* window)
 
 当鼠标事件被触发时调用。
 
-**起始版本：** 8
+**起始版本：** 9
 
 **参数：**
 
@@ -52,7 +62,7 @@ void (*DispatchHoverEvent)(OH_NativeXComponent* component, bool isHover)
 
 当悬停事件被触发时调用。
 
-**起始版本：** 8
+**起始版本：** 9
 
 **参数：**
 

@@ -1,4 +1,14 @@
 # OH_Drawing_Surface
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
+```
+typedef struct OH_Drawing_Surface OH_Drawing_Surface
+```
 
 ## 概述
 

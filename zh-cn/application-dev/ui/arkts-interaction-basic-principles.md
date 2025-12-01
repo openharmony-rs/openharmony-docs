@@ -1,12 +1,12 @@
 # 交互基础机制说明
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-对于指向性交互，交互框架基于坐标信息进行命中测试确定事件和手势的响应目标，即收集形成响应链，系统会根据触控事件的坐标、类型等信息，结合UI布局，将事件发送给对应UI组件。多个事件可以组合触发手势或其他功能，如长按、点击、拖拽。
+对于[触摸事件](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md)、[鼠标事件](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md)、[轴事件](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md)等指向性事件的交互，交互框架基于坐标信息进行命中测试确定事件和手势的响应目标，即收集形成响应链，系统会根据触控事件的坐标、类型等信息，结合UI布局，将事件发送给对应UI组件。多个事件可以组合触发手势或其他功能，如长按、点击、拖拽。
 
 ## 事件交互流程
 
@@ -102,13 +102,42 @@ ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件
    > 百分比相对于组件自身宽高进行计算。
 
    以下是一个绑定多个热区范围的示例：
-
-   ```ts
-   Button("按钮")
-     .responseRegion([
-        { x: 0, y: 0, width: '30%', height: '100%' },      // 第一个热区为按钮的左侧1/3区域
-        { x: '70%', y: 0, width: '30%', height: '100%' },  // 第二个热区为按钮的右侧1/3区域
-      ])
+   <!-- @[focus_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/FocusOnclickExample/FocusOnclickExample.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct FocusOnclickExample {
+     @State text: string = ''
+     @State number:number = 0
+   
+     build() {
+       Column() {
+         Text(this.text)
+           .margin({bottom:20})
+         Button($r('app.string.button'))
+           .responseRegion([
+             {
+               x: 0,
+               y: 0,
+               width: '30%',
+               height: '100%'
+             }, // 第一个热区为按钮的左侧1/3区域
+             {
+               x: '70%',
+               y: 0,
+               width: '30%',
+               height: '100%'
+             },// 第二个热区为按钮的右侧1/3区域
+           ])
+           .onClick(() => {
+             this.number++;
+             this.text = 'button' + this.number + 'clicked'
+           })
+           .width(200)
+       }.width('100%').justifyContent(FlexAlign.Center)
+     }
+   }
    ```
 
    上面的代码可以将按钮切分成了3部分，中间40%的区域不响应点击，而两侧的剩下部分可响应。
@@ -137,6 +166,14 @@ ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件
 
      ![hitTestModeTransparent](figures/hitTestModeTransparent.png)
 
+   - HitTestMode.BLOCK_HIERARCHY（从API version 20开始支持）: 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。
+
+     ![hitTestModeBLOCK_HIERARCHY.png](figures/hitTestModeBLOCK_HIERARCHY.png)
+
+   - HitTestMode.BLOCK_DESCENDANTS（从API version 20开始支持）: 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。
+
+     ![hitTestModeBLOCK_DESCENDANTS.png](figures/hitTestModeBLOCK_DESCENDANTS.png)
+
 3. 自定义事件拦截
 
    当用户执行按下操作时，将触发组件上绑定的[自定义事件拦截](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-touch-intercept.md)的回调。开发者可根据应用状态，动态调整组件的hitTestBehavior属性，进而影响触控测试的流程。
@@ -147,7 +184,7 @@ ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件
 
 ## 安全组件
 
-ArkUI包含的安全组件有：[使用粘贴组件](../security/AccessToken/pastebutton.md)、[使用保存组件](../security/AccessToken/savebutton.md)等。
+ArkUI包含的安全组件有：[使用粘贴控件](../security/AccessToken/pastebutton.md)、[使用保存控件](../security/AccessToken/savebutton.md)等。
 
 安全组件当前对触摸测试影响：如果有组件的[z序](../reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md)比安全组件的z序靠前，且遮盖安全组件，则安全组件事件直接返回到父节点继续触摸测试。
 
@@ -165,6 +202,6 @@ stopPropagation可终止冒泡。如下图所示，以Touch事件为例，当一
 
 ## Cancel事件
 
-当处理基础事件时，会发现存在多种具有Cancel类型的事件，如TouchType.Cancel、MouseAction.CANCEL等。系统在特定场景下发送此类事件，例如在拖拽操作中，当通过手指或鼠标拖动一个支持拖拽（onDragStart）的对象时，由于拖拽动作需达到一定位移阈值才能触发，因此在触发onDragStart之前，应用将正常接收到Touch或Mouse事件。一旦拖拽动作开始，系统将发送Cancel事件，告知应用普通基础事件已结束。
+当处理基础事件时，会发现存在多种具有Cancel类型的事件，如[TouchType](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#touchtype).Cancel、[MouseAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mouseaction8).CANCEL等。系统在特定场景下发送此类事件，例如在拖拽操作中，当通过手指或鼠标拖动一个支持拖拽（onDragStart）的对象时，由于拖拽动作需达到一定位移阈值才能触发，因此在触发[onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart)之前，应用将正常接收到Touch或Mouse事件。一旦拖拽动作开始，系统将发送Cancel事件，告知应用普通基础事件已结束。
 
 Cancel的含义与Up相同，均表示事件处理结束。若在处理Up/Release的场景中，亦应同时处理Cancel。

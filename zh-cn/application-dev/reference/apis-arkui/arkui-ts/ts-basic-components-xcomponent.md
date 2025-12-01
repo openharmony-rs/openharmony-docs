@@ -4,7 +4,7 @@
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供用于图形绘制和媒体数据写入的[Surface](../../../ui/napi-xcomponent-guidelines.md#概述)，XComponent负责将其嵌入到视图中，支持应用自定义Surface位置和大小。具体指南请参考[自定义渲染 (XComponent)文档](../../../ui/napi-xcomponent-guidelines.md)。
 
@@ -75,9 +75,9 @@ XComponent(value: {id: string, type: XComponentType, libraryname?: string, contr
 
 XComponent(value: {id: string, type: string, libraryname?: string, controller?: XComponentController})
 
-**说明：**
-
-从API version 12开始废弃，建议使用[XComponent(options: XComponentOptions)](#xcomponent12)替代。
+> **说明：**
+>
+> 从API version 12开始废弃，建议使用[XComponent(options: XComponentOptions)](#xcomponent12)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -605,6 +605,25 @@ unlockCanvasAndPost(canvas: DrawingCanvas): void
 >
 > 4. 此接口需要和[lockCanvas](#lockcanvas20)接口配对使用，具体参考[示例3使用画布对象在XComponent上绘制内容](#示例3使用画布对象在xcomponent上绘制内容)。
 
+### setXComponentSurfaceConfig<sup>22+</sup>
+
+setXComponentSurfaceConfig(config: SurfaceConfig): void
+
+设置XComponent创建的Surface的选项，用于设置XComponent持有的Surface在渲染时是否需要被视为不透明。
+
+> **说明：**
+>
+> 仅当XComponent组件类型为TEXTURE或SURFACE时，本接口生效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| config | [SurfaceConfig](#surfaceconfig22对象说明) | 是 | Surface选项。 |
+
 ## SurfaceRotationOptions<sup>12+</sup>对象说明
 
 用于描述XComponent持有Surface在屏幕旋转时是否锁定方向的设置。
@@ -639,6 +658,18 @@ unlockCanvasAndPost(canvas: DrawingCanvas): void
 > surfaceWidth和surfaceHeight属性的取值都不可超过8192px，否则会导致渲染异常。
 >
 > 沉浸式场景下，默认布局的SurfaceRect不包括安全区，需调用[setXComponentSurfaceRect](ts-basic-components-xcomponent.md#setxcomponentsurfacerect12)接口主动设置Surface显示区域达到沉浸式效果。
+
+## SurfaceConfig<sup>22+</sup>对象说明
+
+用于描述XComponent持有的Surface在渲染时是否需要被视为不透明。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称          | 类型   | 只读 | 可选 | 说明                                                         |
+| ------------- | ------ | ------ | ---- | ------------------------------------------------------------ |
+| isOpaque       | boolean | 否 | 是   | XComponent持有的Surface在渲染时是否需要被视为不透明，未设置时默认取值为false，即在渲染时会应用Surface中绘制内容像素的透明度。<br/>true表示需要被视为不透明，false表示不需要被视为不透明。<br/>默认值：false |
 
 ## 示例
 
@@ -888,3 +919,153 @@ struct Index {
 }
 ```
 ![DrawingCanvas示例图](./figures/DrawingCanvas.PNG)
+
+### 示例4（XComponent实现沉浸式效果）
+
+从API version 20开始，在示例3的基础上，调用setXComponentSurfaceRect接口主动设置Surface显示区域达到沉浸式效果。
+
+```ts
+// xxx.ets
+import { drawing } from '@kit.ArkGraphics2D';
+import { display } from '@kit.ArkUI'
+@Entry
+@Component
+struct Index {
+  private xcController: XComponentController = new XComponentController();
+  private mCanvas: DrawingCanvas | null = null;
+  @State screenWidth: number = 0;
+  @State screenHeight:number = 0;
+  aboutToAppear() {
+    try {
+      const displayClass = display.getDefaultDisplaySync();
+      this.screenWidth = displayClass.width;
+      this.screenHeight = displayClass.height;
+    } catch (error) {
+      console.error(`失败代码: ${error.code}，信息: ${error.message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      XComponent({ type: XComponentType.SURFACE, controller: this.xcController })
+        .width("100%")
+        .height("100%")
+        .onLoad(() => {
+          // 请在此处设置Surface大小，过大可能会导致绘制时间长
+          this.xcController.setXComponentSurfaceRect({surfaceWidth: this.screenWidth, surfaceHeight: this.screenHeight, offsetX: 0, offsetY: 0});
+          this.mCanvas = this.xcController.lockCanvas();
+          if (this.mCanvas) {
+            this.mCanvas.drawColor(255, 39, 135, 217); // 每次绘制前必须完全重绘整个XComponent区域，可以调用此方法实现
+            this.xcController.unlockCanvasAndPost(this.mCanvas);
+          }
+        })
+        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]);
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+![setXComponentSurfaceRect示例图](./figures/setXComponentSurfaceRect04.jpeg)
+
+### 示例5（设置XComponent持有Surface在渲染时是否需要被视为不透明）
+
+从API version 22开始，该示例通过调用[setXComponentSurfaceConfig](#setxcomponentsurfaceconfig22)接口设置XComponent持有的Surface在渲染时是否需要被视为不透明。
+
+> **说明：**
+>
+> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考<!--RP2-->[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/ArkTSXComponent)。<!--RP2End-->
+
+```ts
+// xxx.ets
+import nativeRender from 'libnativerender.so'; // 开发者自己实现的so，详见上述说明。
+
+// 重写XComponentController，设置生命周期回调
+class MyXComponentController extends XComponentController{
+  onSurfaceCreated(surfaceId: string): void {
+    console.info(`onSurfaceCreated surfaceId: ${surfaceId}`);
+    nativeRender.SetSurfaceId(BigInt(surfaceId));
+  }
+  onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
+    console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`);
+    // 在onSurfaceChanged中调用ChangeSurface绘制内容
+    nativeRender.ChangeSurface(BigInt(surfaceId), rect.surfaceWidth, rect.surfaceHeight);
+  }
+  onSurfaceDestroyed(surfaceId: string): void {
+    console.info(`onSurfaceDestroyed surfaceId: ${surfaceId}`);
+    nativeRender.DestroySurface(BigInt(surfaceId));
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State currentStatus: string = "index";
+  xComponentController: XComponentController = new MyXComponentController();
+
+  aboutToAppear(): void {
+    // 设置XComponent持有的Surface在渲染时被视为不透明
+    this.xComponentController.setXComponentSurfaceConfig({ isOpaque: true });
+  }
+
+  build() {
+    Column() {
+      Column({ space: 10 }) {
+        XComponent({
+          type: XComponentType.SURFACE,
+          controller: this.xComponentController
+        })
+          .backgroundColor(Color.Transparent)
+        Text(this.currentStatus)
+          .fontSize('24fp')
+          .fontWeight(500)
+      }
+      .onClick(() => {
+        let surfaceId = this.xComponentController.getXComponentSurfaceId();
+        nativeRender.ChangeColor(BigInt(surfaceId));
+        let hasChangeColor: boolean = false;
+        if (nativeRender.GetXComponentStatus(BigInt(surfaceId))) {
+          hasChangeColor = nativeRender.GetXComponentStatus(BigInt(surfaceId)).hasChangeColor;
+        }
+        if (hasChangeColor) {
+          this.currentStatus = "change color";
+        }
+      })
+      .margin({
+        top: 27,
+        left: 12,
+        right: 12
+      })
+      .height('40%')
+      .width('90%')
+      Row() {
+        Button('Draw Star')
+          .fontSize('16fp')
+          .fontWeight(500)
+          .margin({ bottom: 24 })
+          .onClick(() => {
+            let surfaceId = this.xComponentController.getXComponentSurfaceId();
+            nativeRender.DrawPattern(BigInt(surfaceId));
+            let hasDraw: boolean = false;
+            if (nativeRender.GetXComponentStatus(BigInt(surfaceId))) {
+              hasDraw = nativeRender.GetXComponentStatus(BigInt(surfaceId)).hasDraw;
+            }
+            if (hasDraw) {
+              this.currentStatus = "draw star";
+            }
+          })
+          .width('53.6%')
+          .height(40)
+      }
+      .width('100%')
+      .justifyContent(FlexAlign.Center)
+      .alignItems(VerticalAlign.Bottom)
+      .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![setXComponentSurfaceConfig示例图](./figures/surfaceConfig.jpeg)

@@ -4,7 +4,7 @@
 <!--Owner: @lushi871202-->
 <!--Designer: @lushi871202-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 WithTheme组件用于设置应用局部页面自定义主题风格，可设置子组件深浅色模式和自定义配色。
 
@@ -48,10 +48,10 @@ WithTheme(options: WithThemeOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        | 类型                               | 必填 | 说明                |
-|------------------------|---------------------------------------------------------| ---- |------------------------------------------------------------------|
-| theme     | [CustomTheme](#customtheme)    | 否   | 用于自定义WithTheme作用域内组件缺省配色。 <br/> 默认值：undefined，缺省样式跟随系统token默认样式。 |
-| colorMode | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明) | 否   | 用于指定WithTheme作用域内组件配色深浅色模式。<br/>默认值：ThemeColorMode.SYSTEM       |
+| 名称        | 类型                               | 只读  | 可选 | 说明                |
+|------------------------|---------------------------------------------------------| ---- | ---- |------------------------------------------------------------------|
+| theme     | [CustomTheme](#customtheme)    | 否 | 是  | 用于自定义WithTheme作用域内组件缺省配色。 <br/> 默认值：undefined，缺省样式跟随系统token默认样式。 |
+| colorMode | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明) | 否 | 是  | 用于指定WithTheme作用域内组件配色深浅色模式。<br/>默认值：ThemeColorMode.SYSTEM       |
 
 ## CustomTheme
 

@@ -18,9 +18,9 @@ Except for @since, document fields mapping to the following tags must be provide
 
 For a property or interface table, if a tag has the same value for all the items in the table, you can place the tag description above the table. Otherwise, place the tag under **NOTE** for each item.
 
-| .d.ets Tag                    | Description    | Document Field                                                    |
+| .d.ts Tag                    | Description    | Document Field                                                    |
 | ------------------------------ | -------- | ------------------------------------------------------------ |
-| @since                         | Version description| 1. Use the greater-than sign (>) followed by a space to indent the description about the initial version of the component. Unless otherwise marked, all APIs in the component have the same initial version.<br>2. When introducing an API to an existing component, use the `<sup>` tag to mark its initial version. The format is `<sup>versionNumber+</sup>`, for example, `<sup>7+</sup>`.  <br>When introducing a property to an existing component, suffix the `<sup>` tag to the new properties name, for example, `newProperty<sup>7+</sup>`.<br>When introducing a method to an existing component, suffix the `<sup>` tag to the method name, for example, `getSimIccId<sup>7+</sup>`. The same rule applies to new interfaces, classes, and enums.|
+| @since                         | Version description| 1. Use the greater-than sign (>) followed by a space to indent the description about the initial version of the module. Unless otherwise marked, all APIs in the module have the same initial version.<br>2. When introducing an API to an existing component, use the `<sup>` tag to mark its initial version. The format is `<sup>versionNumber+</sup>`, for example, `<sup>7+</sup>`.  <br> For example, <sup>7+</sup>.<br> When introducing a property to an existing component, suffix the `<sup>` tag to the new properties name, for example, `newProperty<sup>7+</sup>`.<br>When introducing a method to an existing component, suffix the `<sup>` tag to the method name, for example, `getSimIccId<sup>7+</sup>`. The same rule applies to new interfaces, classes, and enums.|
 | @deprecated                    | Deprecated description| Do not delete the deprecated content from the document. Instead, suffix `deprecated` as a superscript to the content, and use the greater-than sign (>) to introduce the initial version and deprecated version. If there is no substitute API, provide the substitute solution.<br>Example: abandonmentMethod<sup>(deprecated)</sup><br>> This API is supported since API version 4 and deprecated since API version 7. You are advised to use [newMethod]\(#newmethod) instead.|
 | @FAModelOnly / @StageModelOnly | Model restriction description| **Model restriction**: This API can be used only in the FA model. **Model restriction**: This API can be used only in the stage model.|
 | @form                          | Widget capability description| **Widget capability**: Since API version *x*, this feature is supported in ArkTS widgets.|
@@ -91,7 +91,7 @@ Universal events are not supported.
 
 > *Writing Instructions*
 >
-> - This section is optional. Delete it if there is no property. If there are multiple classes or interfaces, describe them in separate level-2 headings, prefixed with `##` followed by a space.
+> - This section is optional and can be omitted if not applicable. If multiple items need to be described, present each under its own level-2 headings, prefixed with `##` followed by a space.
 > - The writing requirements are the same as those provided in [Methods](js-template.md#methods).
 > - Use the actual struct name as the level-2 heading.
 > - If the struct or its parameters are modified by a decorator, specify the decorator type.
@@ -102,10 +102,6 @@ ComposeListItem({contentItem?: ContentItem, operateItem?: OperateItem})
 
 **Decorator**: \@Component
 
-
-**Parameters**
-
-
 | Name       | Type                       | Mandatory| Decorator| Description                  |
 | ----------- | --------------------------- | ---- | ---------- | ---------------------- |
 | contentItem | [ContentItem](#contentitem) | No  | \@Prop     | Defines the left and middle elements.|
@@ -115,7 +111,7 @@ ComposeListItem({contentItem?: ContentItem, operateItem?: OperateItem})
 
 > *Writing Instructions*
 >
-> - This section is optional. Delete it if there is no method. The writing requirements are the same as those provided in [Methods](js-template.md#methods).
+> - This section is optional and can be omitted if not applicable. The writing requirements are the same as those provided in [Methods](js-template.md#methods).
 > - No sample code is required.
 
 
@@ -123,7 +119,7 @@ ComposeListItem({contentItem?: ContentItem, operateItem?: OperateItem})
 
 > *Writing Instructions*
 >
-> - This section is optional. Delete it if there is no class. If there are multiple classes, describe them in separate level-2 headings, prefixed with `##` followed by a space.
+> - This section is optional and can be omitted if not applicable. If multiple items need to be described, present each under its own level-2 headings, prefixed with `##` followed by a space.
 > - Use the actual class or interface name as the level-2 heading.
 > - If the class or interface contains both properties and methods, write the properties above the methods. Write their actual names in separate level-3 headings. If the API contains only properties, you do not need to create a level-3 heading. Instead, use a table to display the properties.
 
@@ -131,25 +127,25 @@ ComposeListItem({contentItem?: ContentItem, operateItem?: OperateItem})
 
 > *Writing Instructions*
 >
-> This section is optional. Delete it if there is no property. The writing requirements are the same as those provided in [Properties](js-template.md#properties).
+> This section is optional and can be omitted if not applicable. The writing requirements are the same as those provided in [Properties](js-template.md#properties).
 
 ### Methods in Classes
 
 > *Writing Instructions*
 >
-> This section is optional. Delete it if there is no method in the class. The writing requirements are the same as those provided in [Methods](js-template.md#methods).
+> This section is optional and can be omitted if not applicable. The writing requirements are the same as those provided in [Methods](js-template.md#methods).
 
 ## Enums
 
 > *Writing Instructions*
 >
-> This section is optional. Delete it if there is no enum. The writing requirements are the same as those provided in [Enums](js-template.md#enums).
+> This section is optional and can be omitted if not applicable. The writing requirements are the same as those provided in [Enums](js-template.md#enums).
 
 ## Types
 
 > *Writing Instructions*
 >
-> This section is optional. Delete it if there is no type. The writing requirements are the same as those provided in [Types](js-template.md#types).
+> This section is optional and can be omitted if not applicable. The writing requirements are the same as those provided in [Types](js-template.md#types).
 
 ## Example
 

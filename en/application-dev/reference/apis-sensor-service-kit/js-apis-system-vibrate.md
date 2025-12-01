@@ -1,4 +1,10 @@
 # @system.vibrator (Vibrator)
+<!--Kit: Sensor Service Kit-->
+<!--Subsystem: Sensors-->
+<!--Owner: @dilligencer-->
+<!--Designer: @butterls-->
+<!--Tester: @murphy84-->
+<!--Adviser: @hu-zhiqiong-->
 
 The **Vibrator** module provides APIs for controlling LED lights and vibrators. You can use the APIs to query the LED light list, turn on and off the LED light, query the vibrator list, query the vibrator effect, and trigger and turn off the vibrator.
 
@@ -45,7 +51,7 @@ let vibrateOptions: VibrateOptions = {
     console.info('Succeed in vibrating');
   },
   fail: (data: string, code: number) => {
-    console.info(`Failed to vibrate. Data: ${data}, code: ${code}`);
+    console.error(`Failed to vibrate. Data: ${data}, code: ${code}`);
   },
   complete: () => {
     console.info('completed in vibrating');

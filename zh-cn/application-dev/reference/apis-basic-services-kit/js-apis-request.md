@@ -36,7 +36,7 @@ import { request } from '@kit.BasicServicesKit';
 >
 > **下载任务状态码**：下载相关[getTaskInfo](#gettaskinfo9)返回值的status字段取值。
 
-| 名称 | 参数类型 | 数值 | 说明 |
+| 名称 | 类型 | 值 | 说明 |
 | -------- | -------- | -------- | -------- |
 | EXCEPTION_PERMISSION<sup>9+</sup> | number |   201   | 通用错误码：权限校验失败。 |
 | EXCEPTION_PARAMCHECK<sup>9+</sup> | number |   401   | 通用错误码：参数检查失败。 |
@@ -767,27 +767,27 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力**：SystemCapability.MiscServices.Upload
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| url | string | 是 | 资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](../../basic-services/request/app-file-upload-download.md#http拦截)功能。 |
-| header | Object | 是 | 添加要包含在上传请求中的HTTP或HTTPS标志头。 |
-| method | string | 是 |  HTTP请求方法：POST、PUT，缺省为POST。使用POST新增资源，使用PUT修改资源。 |
-| index<sup>11+</sup> | number | 否 | 任务的路径索引，默认值为0。 |
-| begins<sup>11+</sup> | number | 否 | 上传任务开始时读取的文件起点。默认值为0，取值范围为闭区间，表示从头开始传输。|
-| ends<sup>11+</sup> | number | 否 | 上传任务结束时读取的文件终点。默认值为-1，取值范围为闭区间，表示传输到整个文件末尾结束。 |
-| files | Array&lt;[File](#file)&gt; | 是 | 要上传的文件列表。文件以HTTP的multipart/form-data格式提交。 |
-| data | Array&lt;[RequestData](#requestdata)&gt; | 是 | 请求的表单数据。 |
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| url | string | 否 | 否 | 资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](../../basic-services/request/app-file-upload-download.md#http拦截)功能。 |
+| header | Object | 否 | 否 | 添加要包含在上传请求中的HTTP或HTTPS标志头。 |
+| method | string | 否 | 否 |  HTTP请求方法：POST、PUT，缺省为POST。使用POST新增资源，使用PUT修改资源。 |
+| index<sup>11+</sup> | number | 否 | 是 | 任务的路径索引，默认值为0。 |
+| begins<sup>11+</sup> | number | 否 | 是 | 上传任务开始时读取的文件起点。默认值为0，取值范围为闭区间，表示从头开始传输。|
+| ends<sup>11+</sup> | number | 否 | 是 | 上传任务结束时读取的文件终点。默认值为-1，取值范围为闭区间，表示传输到整个文件末尾结束。 |
+| files | Array&lt;[File](#file)&gt; | 否 | 否 | 要上传的文件列表。文件以HTTP的multipart/form-data格式提交。 |
+| data | Array&lt;[RequestData](#requestdata)&gt; | 否 | 否 | 请求的表单数据。 |
 
 ## TaskState<sup>9+</sup>
 上传任务的任务信息，是[on('complete' | 'fail')](#oncomplete--fail9)和[off('complete' | 'fail')](#offcomplete--fail9)接口的回调参数。
 
 **系统能力**：SystemCapability.MiscServices.Upload
 
-| 名称 | 类型 | 必填 | 说明                                                                                                                                        |
-| -------- | -------- | -------- |-------------------------------------------------------------------------------------------------------------------------------------------|
-| path | string | 是 | 文件路径。                                         |
-| responseCode | number | 是 | 上传任务返回码。返回0表示上传任务成功，返回其它值表示上传任务失败，具体请参见message参数中的上传任务结果描述信息。<br/>此处推荐使用[request.agent.create](#requestagentcreate10-1)创建上传任务，并获取标准错误码处理异常分支。 |
-| message | string | 是 | 上传任务结果描述信息。                           |
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| path | string | 否 | 否 | 文件路径。                                         |
+| responseCode | number | 否 | 否 | 上传任务返回码。返回0表示上传任务成功，返回其它值表示上传任务失败，具体请参见message参数中的上传任务结果描述信息。<br/>此处推荐使用[request.agent.create](#requestagentcreate10-1)创建上传任务，并获取标准错误码处理异常分支。 |
+| message | string | 否 | 否 | 上传任务结果描述信息。                           |
 
 其中，responseCode包含的返回码值如下。
 
@@ -812,12 +812,12 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力**：SystemCapability.MiscServices.Download
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| filename | string | 是 | multipart提交时，请求头中的文件名。 |
-| name | string | 是 | multipart提交时，表单项目的名称，缺省为file。 |
-| uri | string | 是 | 文件的本地存储路径。<br/>仅支持"internal://cache/"，即调用方（传入的context）对应的缓存路径context.cacheDir。<br/>示例：internal://cache/path/to/file.txt |
-| type | string | 是 | 文件的内容类型，默认根据文件名或路径的后缀获取。 |
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| filename | string | 否 | 否 | multipart提交时，请求头中的文件名。 |
+| name | string | 否 | 否 | multipart提交时，表单项目的名称，缺省为file。 |
+| uri | string | 否 | 否 | 文件的本地存储路径。<br/>仅支持"internal://cache/"，即调用方（传入的context）对应的缓存路径context.cacheDir。<br/>示例：internal://cache/path/to/file.txt |
+| type | string | 否 | 否 | 文件的内容类型，默认根据文件名或路径的后缀获取。 |
 
 
 ## RequestData
@@ -825,10 +825,10 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力**：SystemCapability.MiscServices.Download
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| name | string | 是 | 表示表单元素的名称。 |
-| value | string | 是 | 表示表单元素的值。 |
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| name | string | 否 | 否 | 表示表单元素的名称。 |
+| value | string | 否 | 否 | 表示表单元素的值。 |
 
 ## request.downloadFile<sup>9+</sup>
 
@@ -2372,17 +2372,17 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MiscServices.Download
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| url | string | 是 | 资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](../../basic-services/request/app-file-upload-download.md#http拦截)功能。 |
-| header | Object | 否 | 添加要包含在下载请求中的HTTPS标志头。|
-| enableMetered | boolean | 否 | 表示设置是否允许在按流量计费的连接下下载任务的配置信息。true表示允许，false表示不允许。默认值为false。<br/>**说明：** Wi-Fi为非计费网络，数据流量为计费网络。 |
-| enableRoaming | boolean | 否 | 表示设置是否允许在漫游网络中下载任务的配置信息。true表示允许，false表示不允许。默认值为false。|
-| description | string | 否 | 设置下载会话的描述。默认值为空字符串。 |
-| filePath<sup>7+</sup> | string | 否 | 设置下载路径。默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。<br/>-&nbsp;FA模型下使用[context](../apis-ability-kit/js-apis-inner-app-context.md#contextgetcachedir)获取应用存储路径。<br/>-&nbsp;Stage模型下使用[AbilityContext](../apis-ability-kit/js-apis-inner-application-context.md)类获取文件路径。|
-| networkType | number | 否 | 设置允许下载的网络类型。默认值为NETWORK_MOBILE&NETWORK_WIFI。<br/>-&nbsp;NETWORK_MOBILE：0x00000001<br/>-&nbsp;NETWORK_WIFI：0x00010000|
-| title | string | 否 | 设置下载任务名称。 |
-| background<sup>9+</sup> | boolean | 否 | 后台任务通知开关，启用后可在通知中显示下载状态。true表示启用，false表示禁用。默认值为false。 |
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| url | string | 否 | 否 | 资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](../../basic-services/request/app-file-upload-download.md#http拦截)功能。 |
+| header | Object | 否 | 是 | 添加要包含在下载请求中的HTTPS标志头。|
+| enableMetered | boolean | 否 | 是 | 表示设置是否允许在按流量计费的连接下下载任务的配置信息。true表示允许，false表示不允许。默认值为false。<br/>**说明：** Wi-Fi为非计费网络，数据流量为计费网络。 |
+| enableRoaming | boolean | 否 | 是 | 表示设置是否允许在漫游网络中下载任务的配置信息。true表示允许，false表示不允许。默认值为false。|
+| description | string | 否 | 是 | 设置下载会话的描述。默认值为空字符串。 |
+| filePath<sup>7+</sup> | string | 否 | 是 | 设置下载路径。默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。<br/>-&nbsp;FA模型下使用[context](../apis-ability-kit/js-apis-inner-app-context.md#contextgetcachedir)获取应用存储路径。<br/>-&nbsp;Stage模型下使用[AbilityContext](../apis-ability-kit/js-apis-inner-application-context.md)类获取文件路径。|
+| networkType | number | 否 | 是 | 设置允许下载的网络类型。默认值为NETWORK_MOBILE&NETWORK_WIFI。<br/>-&nbsp;NETWORK_MOBILE：0x00000001<br/>-&nbsp;NETWORK_WIFI：0x00010000|
+| title | string | 否 | 是 | 设置下载任务名称。 |
+| background<sup>9+</sup> | boolean | 否 | 是 | 后台任务通知开关，启用后可在通知中显示下载状态。true表示启用，false表示禁用。默认值为false。 |
 
 
 ## DownloadInfo<sup>7+</sup>
@@ -2390,21 +2390,33 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MiscServices.Download
 
-| 名称 | 类型 |必填 |  说明 |
-| -------- | -------- | -------- | -------- |
-| downloadId | number |是 | 下载任务id。 |
-| failedReason | number|是 | 下载失败原因，可以是任何[下载任务的错误码](#常量)常量。 |
-| fileName | string |是| 下载的文件名。 |
-| filePath | string |是| 存储文件的URI。 |
-| pausedReason | number |是| 会话暂停的原因，可以是任何[下载任务暂停原因](#常量)常量。 |
-| status | number |是| 下载状态码，可以是任何[下载任务状态码](#常量)常量。 |
-| targetURI | string |是| 下载文件的URI。 |
-| downloadTitle | string |是| 下载任务名称。 |
-| downloadTotalBytes | number |是| 下载的文件的总大小，单位为字节（B）。 |
-| description | string |是| 待下载任务的描述信息。 |
-| downloadedBytes | number |是| 实时下载大小，单位为字节（B）。 |
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| downloadId | number | 否 | 否 | 下载任务id。 |
+| failedReason | number| 否 | 否 | 下载失败原因，可以是任何[下载任务的错误码](#常量)常量。 |
+| fileName | string | 否 | 否 | 下载的文件名。 |
+| filePath | string | 否 | 否 | 存储文件的URI。 |
+| pausedReason | number | 否 | 否 | 会话暂停的原因，可以是任何[下载任务暂停原因](#常量)常量。 |
+| status | number | 否 | 否 | 下载状态码，可以是任何[下载任务状态码](#常量)常量。 |
+| targetURI | string | 否 | 否 | 下载文件的URI。 |
+| downloadTitle | string | 否 | 否 | 下载任务名称。 |
+| downloadTotalBytes | number | 否 | 否 | 下载的文件的总大小，单位为字节（B）。 |
+| description | string | 否 | 否 | 待下载任务的描述信息。 |
+| downloadedBytes | number | 否 | 否 | 实时下载大小，单位为字节（B）。 |
 
-## Action<sup>10+</sup>  
+## request.agent
+
+### 常量
+
+**系统能力**：SystemCapability.Request.FileTransferAgent
+
+
+| 名称 | 类型 | 值 | 说明 |
+| -------- | -------- | -------- | -------- |
+| VISIBILITY_COMPLETION<sup>21+</sup> | number |   1   | [通知栏](#requestagentnotification15)展示类型：显示完成通知 |
+| VISIBILITY_PROGRESS<sup>21+</sup>   | number |   2   | [通知栏](#requestagentnotification15)展示类型：显示进度通知 |
+
+## request.agent.Action<sup>10+</sup>  
 
 定义操作选项。
 
@@ -2418,7 +2430,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | UPLOAD | 1 |表示上传任务。 |
 
 
-## Mode<sup>10+</sup>  
+## request.agent.Mode<sup>10+</sup>  
 定义模式选项。<br>
 当应用的前台任务切换到后台一段时间后会显示运行失败或暂停，而后台任务不受此操作影响。
 
@@ -2431,7 +2443,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | BACKGROUND | 0 |表示后台任务。 |
 | FOREGROUND | 1 |表示前台任务。 |
 
-## Network<sup>10+</sup>  
+## request.agent.Network<sup>10+</sup>  
 
 定义网络选项。<br>
 网络不满足设置条件时，未执行的任务会等待执行，执行中的任务将失败或暂停。
@@ -2446,7 +2458,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | WIFI | 1 |表示无线网络。 |
 | CELLULAR | 2 |表示蜂窝数据网络。 |
 
-## BroadcastEvent<sup>11+</sup>
+## request.agent.BroadcastEvent<sup>11+</sup>
 
 定义自定义系统事件。用户可以使用公共事件接口获取该事件。
 上传下载 SA 具有 'ohos.permission.SEND_TASK_COMPLETE_EVENT' 该权限，用户可以配置事件的metadata指向的二级配置文件来拦截其他事件发送者。
@@ -2454,7 +2466,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 调用CommonEventData类型传输公共事件相关数据，成员的内容填写和 [CommonEventData](js-apis-inner-commonEvent-commonEventData.md) 介绍的有所区别，其中CommonEventData.code表示任务的状态，目前为0x40 COMPLETE或0x41 FAILED；CommonEventData.data表示任务的taskId。
 
 <!--Del-->
-请参考[静态订阅公共事件](../../basic-services/common-event/common-event-static-subscription.md)以获取事件配置信息和二级配置文件的配置方式。<!--DelEnd-->
+请参考[静态订阅公共事件](../../basic-services/common-event/common-event-static-subscription-sys.md)以获取事件配置信息和二级配置文件的配置方式。<!--DelEnd-->
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -2462,70 +2474,70 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | -------- | ------- |-----------|
 | COMPLETE | ohos.request.event.COMPLETE | 表示自定义系统事件完成。在任务结束后会触发该事件，根据任务的成功或失败，事件的code返回0x40或者0x41。 |
 
-## FileSpec<sup>10+</sup> 
+## request.agent.FileSpec<sup>10+</sup> 
 表单项的文件信息。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| path | string | 是 | 文件路径。<br/>- 相对路径，位于调用方的缓存路径下。<br/>例如："./xxx/yyy/zzz.html"、"xxx/yyy/zzz.html"。<br/>- internal协议路径，支持"internal://"及其子路径。internal为调用方（即传入的context）对应路径，"internal://cache"对应context.cacheDir。<br/>例如："internal://cache/path/to/file.txt"。<br/>- 应用沙箱目录，只支持到base及其子目录下。<br/>例如："/data/storage/el1/base/path/to/file.txt"。<br/>- file协议路径，必须匹配应用包名，只支持到base及其子目录下。<br/>例如："file://com.example.test/data/storage/el2/base/file.txt"。<br/>- 用户公共文件，仅支持上传任务。<br/>例如："file://media/Photo/path/to/file.img"。仅支持前台任务。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| mimeType<sup>(deprecated)</sup> | string | 否 | 文件的mimeType，通过文件名获取，默认值为文件名后缀。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> 从 API version 18 开始废弃，建议使用contentType替代。 |
-| contentType<sup>18+</sup> | string | 否 | 文件内容类型，默认值为文件名后缀。该选项会被填写到HTTP表单指定的Content-Type字段中。 |
-| filename | string | 否 | 文件名，默认值通过路径获取。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| extras | object | 否 | 文件信息的附加内容，该参数不会体现在HTTP请求中。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| path | string | 否 | 否 | 文件路径。<br/>- 相对路径，位于调用方的缓存路径下。<br/>例如："./xxx/yyy/zzz.html"、"xxx/yyy/zzz.html"。<br/>- internal协议路径，支持"internal://"及其子路径。internal为调用方（即传入的context）对应路径，"internal://cache"对应context.cacheDir。<br/>例如："internal://cache/path/to/file.txt"。<br/>- 应用沙箱目录，只支持到base及其子目录下。<br/>例如："/data/storage/el1/base/path/to/file.txt"。<br/>- file协议路径，必须匹配应用包名，只支持到base及其子目录下。<br/>例如："file://com.example.test/data/storage/el2/base/file.txt"。<br/>- 用户公共文件，仅支持上传任务。<br/>例如："file://media/Photo/path/to/file.img"。仅支持前台任务。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| mimeType<sup>(deprecated)</sup> | string | 否 | 是 | 文件的mimeType，通过文件名获取，默认值为文件名后缀。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> 从 API version 18 开始废弃，建议使用contentType替代。 |
+| contentType<sup>18+</sup> | string | 否 | 是 | 文件内容类型，默认值为文件名后缀。该选项会被填写到HTTP表单指定的Content-Type字段中。 |
+| filename | string | 否 | 是 | 文件名，默认值通过路径获取。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| extras | object | 否 | 是 | 文件信息的附加内容，该参数不会体现在HTTP请求中。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 
-## FormItem<sup>10+</sup> 
+## request.agent.FormItem<sup>10+</sup> 
 任务的表单项信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| name | string | 是 | 表单参数名。 |
-| value | string \| [FileSpec](#filespec10) \| Array&lt;[FileSpec](#filespec10)&gt; | 是 | 表单参数值。 |
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| name | string | 否 | 否 | 表单参数名。 |
+| value | string \| [FileSpec](#requestagentfilespec10) \| Array&lt;[FileSpec](#requestagentfilespec10)&gt; | 否 | 否 | 表单参数值。 |
 
 
-## Config<sup>10+</sup> 
+## request.agent.Config<sup>10+</sup> 
 上传/下载任务的配置信息。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| action | [Action](#action10) | 是 | 任务操作选项。<br/>- UPLOAD表示上传任务。<br/>- DOWNLOAD表示下载任务。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| url | string | 是 | 资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](../../basic-services/request/app-file-upload-download.md#http拦截)功能。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| title | string | 否 | 任务标题，其最大长度为256个字符，默认值为小写的 upload 或 download，与上面的 action 保持一致。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| description | string | 否 | 任务的详细信息，其最大长度为1024个字符，默认值为空字符串。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| mode | [Mode](#mode10) | 否 | 任务模式，默认为后台任务。从API version 20开始，下载到用户文件场景必须为request.agent.Mode.FOREGROUND。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| overwrite | boolean | 否 | 下载过程中路径已存在时的解决方案选择，默认为false。<br/>- true，覆盖已存在的文件。<br/>- false，下载失败。<br/>从API version 20开始，下载到用户文件场景必须为true。<br/>设置为 `true` 时，不建议创建多个任务同时往同一个文件下载内容，会导致文件内容混乱。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| method | string | 否 | 上传或下载HTTP的标准方法，包括GET、POST和PUT，不区分大小写。<br/>- 上传时，使用PUT或POST，默认值为PUT。<br/>- 下载时，使用GET或POST，默认值为GET。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| headers | object | 否 | 添加要包含在任务中的HTTP协议标志头。<br/>- 上传请求，默认的Content-Type为"multipart/form-data"。<br/>- 下载请求，默认的Content-Type为"application/json"。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| data | string \| Array&lt;[FormItem](#formitem10)&gt; | 否 | - 下载时，data为字符串类型，通常情况下使用json格式（object将被转换为json文本），默认为空。<br/>- 上传时，data是表单项数组Array&lt;[FormItem](#formitem10)&gt;。从API version 15开始，创建单个任务可以上传最多100个文件。默认为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| saveas | string | 否 | 保存下载文件的路径，包括如下几种：<br/>- 相对路径，位于调用方的缓存路径下，如"./xxx/yyy/zzz.html"、"xxx/yyy/zzz.html"。<br/>- internal协议路径，支持"internal://"及其子路径，internal为调用方（传入的context）对应路径，"internal://cache"对应context.cacheDir。如"internal://cache/path/to/file.txt"。<br/>- 应用沙箱目录，只支持到base及其子目录下，如"/data/storage/el1/base/path/to/file.txt"。<br/>- file协议路径，支持应用文件和用户文件，应用文件必须匹配应用包名，只支持到base及其子目录下，如"file://com.example.test/data/storage/el2/base/file.txt"。用户文件必须为调用方创建好的用户文件uri。<br/>从API version 20开始，除[下载到用户文件](../../basic-services/request/app-file-upload-download.md#下载网络资源文件至用户文件)外，其他可默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| network | [Network](#network10) | 否 | 网络选项，当前支持无线网络WIFI和蜂窝数据网络CELLULAR，默认为ANY（WIFI或CELLULAR）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| metered | boolean | 否 | 是否允许在按流量计费的网络中工作，默认为false。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| roaming | boolean | 否 | 是否允许在漫游网络中工作，默认为true。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| retry | boolean | 否 | 是否为后台任务启用自动重试，仅应用于后台任务，默认为true。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| redirect | boolean | 否 | 是否允许重定向，默认为true。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| proxy<sup>12+</sup> | string | 否 | 设置代理地址，其最大长度为512个字符，默认为空。<br/>代理地址格式:"http://\<domain or address\>:\<port\>" |
-| index | number | 否 | 任务的路径索引，通常情况下用于任务断点续传，默认为0。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| begins | number | 否 | 文件起点，通常情况下用于断点续传。默认值为0，取值为闭区间，表示从头开始传输。<br/>- 下载时，请求读取服务器开始下载文件时的起点位置（HTTP协议中设置"Range"选项）。<br/>- 上传时，读取需上传的文件的起点位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| ends | number | 否 | 文件终点，通常情况下用于断点续传。默认值为-1，取值为闭区间，表示传输到整个文件末尾结束。<br/>- 下载时，请求读取服务器开始下载文件时的结束位置（HTTP协议中设置"Range"选项）。<br/>- 上传时，读取需上传的文件的结束位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| gauge | boolean | 否 | 后台任务的过程进度通知策略，仅应用于后台任务，默认值为false。<br/>- false：代表仅完成或失败的通知。<br/>- true：发出每个进度已完成或失败的通知。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| precise | boolean | 否 | - 如果设置为true，在上传/下载无法获取文件大小时任务失败。<br/>- 如果设置为false，将文件大小设置为-1时任务继续。<br/>默认值为false。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| token | string | 否 | 任务令牌。查询带有token的任务需提供token并通过[request.agent.touch](#requestagenttouch10)查询，否则无法查询到指定任务。其最小为8个字节，最大为2048个字节。默认为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| priority<sup>11+</sup> | number | 否 | 任务的优先级。前台任务的优先级比后台任务高。任务模式相同的情况下，该配置项的数字越小优先级越高，默认值为0。 |
-| extras | object | 否 | 配置的附加功能，默认为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| multipart<sup>15+</sup> | boolean | 否 | 是否使用单个请求进行上传，单个请求上传时必定使用multipart/form-data。<br/>- false：每个文件使用一个请求传输。 <br/>- true：使用多文件单请求上传。 <br/>默认值为false。 |
-| notification<sup>15+</sup> | [Notification](#notification15) | 否 | 通知栏自定义设置。默认值为`{}`。|
-| minSpeed<sup>20+</sup> | [MinSpeed](#minspeed20) | 否 | 最低限速自定义设置，默认不启用最低限速。|
-| timeout<sup>20+</sup> | [Timeout](#timeout20) | 否 | 超时时间自定义设置，连接超时时间默认60秒，总超时时间默认604800秒（1周）。当retry参数为true时，[timeout](#timeout20)事件会触发立即重试，导致[timeout](#timeout20)在外部观察中被重试动作所掩盖，但内部[timeout](#timeout20)条件已实际触发。若需显性观察[timeout](#timeout20)事件，需关闭retry参数。|
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| action | [Action](#requestagentaction10) | 否 | 否 | 任务操作选项。<br/>- UPLOAD表示上传任务。<br/>- DOWNLOAD表示下载任务。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| url | string | 否 | 否 | 资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](../../basic-services/request/app-file-upload-download.md#http拦截)功能。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| title | string | 否 | 是 | 任务标题，其最大长度为256个字符，默认值为小写的 upload 或 download，与上面的 action 保持一致。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| description | string | 否 | 是 | 任务的详细信息，其最大长度为1024个字符，默认值为空字符串。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| mode | [Mode](#requestagentmode10) | 否 | 是 | 任务模式，默认为后台任务。从API version 20开始，下载到用户文件场景必须为request.agent.Mode.FOREGROUND。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| overwrite | boolean | 否 | 是 | 下载过程中路径已存在时的解决方案选择，默认为false。<br/>- true，覆盖已存在的文件。<br/>- false，下载失败。<br/>从API version 20开始，下载到用户文件场景必须为true。<br/>设置为 `true` 时，不建议创建多个任务同时往同一个文件下载内容，会导致文件内容混乱。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| method | string | 否 | 是 | 上传或下载HTTP的标准方法，包括GET、POST和PUT，不区分大小写。<br/>- 上传时，使用PUT或POST，默认值为PUT。<br/>- 下载时，使用GET或POST，默认值为GET。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| headers | object | 否 | 是 | 添加要包含在任务中的HTTP协议标志头。<br/>- 上传请求，默认的Content-Type为"multipart/form-data"。<br/>- 下载请求，默认的Content-Type为"application/json"。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| data | string \| Array&lt;[FormItem](#requestagentformitem10)&gt; | 否 | 是 | - 下载时，data为字符串类型，通常情况下使用json格式（object将被转换为json文本），默认为空。<br/>- 上传时，data是表单项数组Array&lt;[FormItem](#requestagentformitem10)&gt;。从API version 15开始，创建单个任务可以上传最多100个文件。默认为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| saveas | string | 否 | 是 | 保存下载文件的路径，包括如下几种：<br/>- 相对路径，位于调用方的缓存路径下，如"./xxx/yyy/zzz.html"、"xxx/yyy/zzz.html"。<br/>- internal协议路径，支持"internal://"及其子路径，internal为调用方（传入的context）对应路径，"internal://cache"对应context.cacheDir。如"internal://cache/path/to/file.txt"。<br/>- 应用沙箱目录，只支持到base及其子目录下，如"/data/storage/el1/base/path/to/file.txt"。<br/>- file协议路径，支持应用文件和用户文件，应用文件必须匹配应用包名，只支持到base及其子目录下，如"file://com.example.test/data/storage/el2/base/file.txt"。用户文件必须为调用方创建好的用户文件uri。<br/>从API version 20开始，除[下载到用户文件](../../basic-services/request/app-file-upload-download.md#下载网络资源文件至用户文件)外，其他可默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| network | [Network](#requestagentnetwork10) | 否 | 是 | 网络选项，当前支持无线网络WIFI和蜂窝数据网络CELLULAR，默认为ANY（WIFI或CELLULAR）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| metered | boolean | 否 | 是 | 是否允许在按流量计费的网络中工作，默认为false。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| roaming | boolean | 否 | 是 | 是否允许在漫游网络中工作，默认为true。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| retry | boolean | 否 | 是 | 是否为后台任务启用自动重试，仅应用于后台任务，默认为true。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| redirect | boolean | 否 | 是 | 是否允许重定向，默认为true。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| proxy<sup>12+</sup> | string | 否 | 是 | 设置代理地址，其最大长度为512个字符，默认为空。<br/>代理地址格式:"http://\<domain or address\>:\<port\>" |
+| index | number | 否 | 是 | 任务的路径索引，通常情况下用于任务断点续传，默认为0。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| begins | number | 否 | 是 | 文件起点，通常情况下用于断点续传。默认值为0，取值为闭区间，表示从头开始传输。<br/>- 下载时，请求读取服务器开始下载文件时的起点位置（HTTP协议中设置"Range"选项）。<br/>- 上传时，读取需上传的文件的起点位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| ends | number | 否 | 是 | 文件终点，通常情况下用于断点续传。默认值为-1，取值为闭区间，表示传输到整个文件末尾结束。<br/>- 下载时，请求读取服务器开始下载文件时的结束位置（HTTP协议中设置"Range"选项）。<br/>- 上传时，读取需上传的文件的结束位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| gauge | boolean | 否 | 是 | 后台任务的过程进度通知策略，仅应用于后台任务，默认值为false。<br/>- false：代表仅完成或失败的通知。<br/>- true：发出每个进度已完成或失败的通知。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| precise | boolean | 否 | 是 | - 如果设置为true，在上传/下载无法获取文件大小时任务失败。<br/>- 如果设置为false，将文件大小设置为-1时任务继续。<br/>默认值为false。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| token | string | 否 | 是 | 任务令牌。查询带有token的任务需提供token并通过[request.agent.touch](#requestagenttouch10)查询，否则无法查询到指定任务。其最小为8个字节，最大为2048个字节。默认为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| priority<sup>11+</sup> | number | 否 | 是 | 任务的优先级。前台任务的优先级比后台任务高。任务模式相同的情况下，该配置项的数字越小优先级越高，默认值为0。 |
+| extras | object | 否 | 是 | 配置的附加功能，默认为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| multipart<sup>15+</sup> | boolean | 否 | 是 | 是否使用单个请求进行上传，单个请求上传时必定使用multipart/form-data。<br/>- false：每个文件使用一个请求传输。 <br/>- true：使用多文件单请求上传。 <br/>默认值为false。 |
+| notification<sup>15+</sup> | [Notification](#requestagentnotification15) | 否 | 是 | 通知栏自定义设置。默认值为`{}`。|
+| minSpeed<sup>20+</sup> | [MinSpeed](#requestagentminspeed20) | 否 | 是 | 最低限速自定义设置，默认不启用最低限速。|
+| timeout<sup>20+</sup> | [Timeout](#requestagenttimeout20) | 否 | 是 | 超时时间自定义设置，连接超时时间默认60秒，总超时时间默认604800秒（1周）。当retry参数为true时，[timeout](#requestagenttimeout20)事件会触发立即重试，导致[timeout](#requestagenttimeout20)在外部观察中被重试动作所掩盖，但内部[timeout](#requestagenttimeout20)条件已实际触发。若需显性观察[timeout](#requestagenttimeout20)事件，需关闭retry参数。|
 
-## State<sup>10+</sup>  
+## request.agent.State<sup>10+</sup>  
 
 定义任务当前的状态。
 
@@ -2535,7 +2547,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
-| INITIALIZED | 0x00 |表示通过配置信息（[Config](#config10)）创建的任务已初始化。 |
+| INITIALIZED | 0x00 |表示通过配置信息（[Config](#requestagentconfig10)）创建的任务已初始化。 |
 | WAITING | 0x10 |表示任务缺少运行或重试的资源，又或是网络状态不匹配。 |
 | RUNNING | 0x20 |表示任务正在运行中。 |
 | RETRYING | 0x21 |表示任务至少失败一次，现在正在再次处理中。 |
@@ -2546,23 +2558,23 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | REMOVED | 0x50 |表示任务移除。 |
 
 
-## Progress<sup>10+</sup> 
+## request.agent.Progress<sup>10+</sup> 
 任务进度的数据结构。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
-| 名称 | 类型 | 必填 | 说明                                                                  |
-| -------- | -------- | -------- |---------------------------------------------------------------------|
-| state | [State](#state10) | 是 | 任务当前的状态。                                                            |
-| index | number | 是 | 任务中当前正在处理的文件索引。                                                     |
-| processed | number | 是 | 任务中当前文件的已处理数据大小，单位为字节（B）。                                               |
-| sizes | Array&lt;number&gt; | 是 | 任务中文件的大小，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时，sizes为 -1。 |
-| extras | object | 否 | 交互的额外内容，例如：来自服务器的响应的header和body。                                     |
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| state | [State](#requestagentstate10) | 是 | 否 | 任务当前的状态。                                                            |
+| index | number | 是 | 否 | 任务中当前正在处理的文件索引。                                                     |
+| processed | number | 是 | 否 | 任务中当前文件的已处理数据大小，单位为字节（B）。                                               |
+| sizes | Array&lt;number&gt; | 是 | 否 | 任务中文件的大小，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时，sizes为 -1。 |
+| extras | object | 是 | 是 | 交互的额外内容，例如：来自服务器的响应的header和body。                                     |
 
 
-## Faults<sup>10+</sup>  
+## request.agent.Faults<sup>10+</sup>  
 
 定义任务失败的原因。
 
@@ -2586,83 +2598,139 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | REDIRECT<sup>12+</sup> | 0x80 | 表示重定向错误。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                    |
 | LOW_SPEED<sup>20+</sup>  | 0x90 | 表示任务速度过低。                    |
 
-## Filter<sup>10+</sup>
+## request.agent.Filter<sup>10+</sup>
 过滤条件。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| before | number | 否 | 结束的Unix时间戳（毫秒），默认为调用时刻。 |
-| after | number | 否 | 开始的Unix时间戳（毫秒），默认值为调用时刻减24小时。 |
-| state | [State](#state10) | 否 | 指定任务的状态。如果未填写，则查询所有任务。 |
-| action | [Action](#action10) | 否 | 任务操作选项。<br/>- UPLOAD表示上传任务。<br/>- DOWNLOAD表示下载任务。<br/>- 如果未填写，则查询所有任务。 |
-| mode | [Mode](#mode10) | 否 | 任务模式。<br/>- FOREGROUND表示前台任务。<br/>- BACKGROUND表示后台任务。<br/>- 如果未填写，则查询所有任务。 |
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| before | number | 否 | 是 | 结束的Unix时间戳（毫秒），默认为调用时刻。 |
+| after | number | 否 | 是 | 开始的Unix时间戳（毫秒），默认值为调用时刻减24小时。 |
+| state | [State](#requestagentstate10) | 否 | 是 | 指定任务的状态。如果未填写，则查询所有任务。 |
+| action | [Action](#requestagentaction10) | 否 | 是 | 任务操作选项。<br/>- UPLOAD表示上传任务。<br/>- DOWNLOAD表示下载任务。<br/>- 如果未填写，则查询所有任务。 |
+| mode | [Mode](#requestagentmode10) | 否 | 是 | 任务模式。<br/>- FOREGROUND表示前台任务。<br/>- BACKGROUND表示后台任务。<br/>- 如果未填写，则查询所有任务。 |
 
-## TaskInfo<sup>10+</sup> 
+## request.agent.TaskInfo<sup>10+</sup> 
 查询结果的任务信息数据结构，提供普通查询和系统查询，两种字段的可见范围不同。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| saveas | string | 否 | 保存下载文件的路径。 |
-| url | string | 否 | 任务的url。<br/>- 通过[request.agent.show](#requestagentshow10-1)、[request.agent.touch](#requestagenttouch10-1)进行查询。 |
-| data | string \| Array&lt;[FormItem](#formitem10)&gt; | 否 | 任务值。<br/>- 通过[request.agent.show](#requestagentshow10-1)、[request.agent.touch](#requestagenttouch10-1)进行查询。 |
-| tid | string | 是 | 任务id。 |
-| title | string | 是 | 任务标题。 |
-| description | string | 是 | 任务描述。 |
-| action | [Action](#action10) | 是 | 任务操作选项。<br/>- UPLOAD表示上传任务。<br/>- DOWNLOAD表示下载任务。 |
-| mode | [Mode](#mode10) | 是 | 任务模式。<br/>- FOREGROUND表示前台任务。<br/>- BACKGROUND表示后台任务。 |
-| priority<sup>11+</sup> | number | 是 | 任务配置中的优先级。前台任务的优先级比后台任务高。相同模式的任务，数字越小优先级越高。 |
-| mimeType | string | 是 | 任务配置中的mimetype。 |
-| progress | [Progress](#progress10) | 是 | 任务的过程进度。 |
-| gauge | boolean | 是 | 后台任务的进度通知策略。<br/>- false：代表仅完成或失败的通知。<br/>- true，发出每个进度已完成或失败的通知。 |
-| ctime | number | 是 | 创建任务的Unix时间戳（毫秒），由当前设备的系统生成。<br/>说明：使用[request.agent.search](#requestagentsearch10-1)进行查询时，该值需处于[after,before]区间内才可正常查询到任务id，before和after信息详见[Filter](#filter10)。|
-| mtime | number | 是 | 任务状态改变时的Unix时间戳（毫秒），由当前设备的系统生成。|
-| retry | boolean | 是 | 任务的重试开关，仅应用于后台任务。<br/>- true：是 <br/>- false：否 |
-| tries | number | 是 | 任务的尝试次数。 |
-| faults | [Faults](#faults10) | 是 | 任务的失败原因。|
-| reason | string | 是 | 等待/失败/停止/暂停任务的原因。|
-| extras | object | 否 | 任务的额外部分。|
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| saveas | string | 是 | 是 | 保存下载文件的路径。 |
+| url | string | 是 | 是 | 任务的url。<br/>- 通过[request.agent.show](#requestagentshow10-1)、[request.agent.touch](#requestagenttouch10-1)进行查询。 |
+| data | string \| Array&lt;[FormItem](#requestagentformitem10)&gt; | 是 | 是 | 任务值。<br/>- 通过[request.agent.show](#requestagentshow10-1)、[request.agent.touch](#requestagenttouch10-1)进行查询。 |
+| tid | string | 是 | 否 | 任务id。 |
+| title | string | 是 | 否 | 任务标题。 |
+| description | string | 是 | 否 | 任务描述。 |
+| action | [Action](#requestagentaction10) | 是 | 否 | 任务操作选项。<br/>- UPLOAD表示上传任务。<br/>- DOWNLOAD表示下载任务。 |
+| mode | [Mode](#requestagentmode10) | 是 | 否 | 任务模式。<br/>- FOREGROUND表示前台任务。<br/>- BACKGROUND表示后台任务。 |
+| priority<sup>11+</sup> | number | 是 | 否 | 任务配置中的优先级。前台任务的优先级比后台任务高。相同模式的任务，数字越小优先级越高。 |
+| mimeType | string | 是 | 否 | 任务配置中的mimetype。 |
+| progress | [Progress](#requestagentprogress10) | 是 | 否 | 任务的过程进度。 |
+| gauge | boolean | 是 | 否 | 后台任务的进度通知策略。<br/>- false：代表仅完成或失败的通知。<br/>- true，发出每个进度已完成或失败的通知。 |
+| ctime | number | 是 | 否 | 创建任务的Unix时间戳（毫秒），由当前设备的系统生成。<br/>说明：使用[request.agent.search](#requestagentsearch10-1)进行查询时，该值需处于[after,before]区间内才可正常查询到任务id，before和after信息详见[Filter](#requestagentfilter10)。|
+| mtime | number | 是 | 否 | 任务状态改变时的Unix时间戳（毫秒），由当前设备的系统生成。|
+| retry | boolean | 是 | 否 | 任务的重试开关，仅应用于后台任务。<br/>- true：是 <br/>- false：否 |
+| tries | number | 是 | 否 | 任务的尝试次数。 |
+| faults | [Faults](#requestagentfaults10) | 是 | 否 | 任务的失败原因。|
+| reason | string | 是 | 否 | 等待/失败/停止/暂停任务的原因。|
+| extras | object | 是 | 是 | 任务的额外部分。|
 
-## HttpResponse<sup>12+</sup> 
+## request.agent.HttpResponse<sup>12+</sup> 
 任务响应头的数据结构。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| version | string | 是 | Http版本。 |
-| statusCode | number | 是 | Http响应状态码。 |
-| reason | string | 是 | Http响应原因。|
-| headers | Map&lt;string, Array&lt;string&gt;&gt; | 是 | Http响应头部。 |
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| version | string | 是 | 否 | Http版本。 |
+| statusCode | number | 是 | 否 | Http响应状态码。 |
+| reason | string | 是 | 否 | Http响应原因。|
+| headers | Map&lt;string, Array&lt;string&gt;&gt; | 是 | 否 | Http响应头部。 |
 
-## Notification<sup>15+</sup>
+## request.agent.Notification<sup>15+</sup>
 
 通知栏自定义信息。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
-| 名称      | 类型     | 必填 | 说明                                      |
-|---------|--------|----|-----------------------------------------|
-| title   | string | 否  | 通知栏自定义标题。若不设置则使用默认显示方式。title长度上限为1024B。 |
-| text    | string | 否  | 通知栏自定义正文。若不设置则使用默认显示方式。text长度上限为3072B。  |
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| title   | string | 否 | 是 | 通知栏自定义标题。若不设置则使用默认显示方式。title长度上限为1024B。 |
+| text    | string | 否 | 是 | 通知栏自定义正文。若不设置则使用默认显示方式。text长度上限为3072B。  |
+| visibility<sup>21+</sup> | number | 否 | 是 | 设置任务的通知栏显示方式，通过[VISIBILITY常量](#常量-1)的位运算方式决定显示方式，任务通知的显示方式，包括如下几种：<br/>- 仅显示完成通知，参数为VISIBILITY_COMPLETION或1，任务完成/失败后展示对应通知。<br/>- 仅显示进度通知，参数为VISIBILITY_PROGRESS或2，任务在进行中显示进度通知，当任务下载成功/失败后会直接退出进度通知，不会显示完成通知。<br/>- 显示进度通知/完成通知，参数为VISIBILITY_COMPLETION \| VISIBILITY_PROGRESS或3，任务在进行中显示进度通知，当任务下载成功/失败后会退出进度通知，并显示完成通知。<br/>若不设置该参数，则根据gauge字段来判断；若无gauge字段，则仅显示完成通知。|
+| wantAgent<sup>22+</sup> | [WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) | 否 | 是 | 通知参数，用于实现点击任务通知后跳转的功能。|
 
-## GroupConfig<sup>15+</sup>
+
+**示例：**
+  <!--code_no_check-->
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { common } from '@kit.AbilityKit';
+  import wantAgent, { WantAgent } from '@ohos.app.ability.wantAgent';
+
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let wantAgentInfo: wantAgent.WantAgentInfo = {
+    wants: [
+      {
+        deviceId: '',
+        bundleName: 'com.example.request',
+        abilityName: 'EntryAbility',
+        action: '',
+        entities: [],
+        uri: '',
+        parameters: {}
+      }
+    ],
+    actionType: wantAgent.OperationType.START_ABILITY,
+    requestCode: 0,
+    wantAgentFlags:[wantAgent.WantAgentFlags.CONSTANT_FLAG]
+  };
+  let config: request.agent.Config = {
+    action: request.agent.Action.DOWNLOAD,
+    url: 'http://127.0.0.1', // 需要手动将url替换为真实服务器的HTTP协议地址
+    title: 'taskOnNotification',
+    description: 'Sample code for event listening',
+    mode: request.agent.Mode.BACKGROUND,
+    overwrite: true,
+    method: "PUT",
+    saveas: "./",
+    network: request.agent.Network.ANY,
+    gauge: true,
+    notification: {
+      visibility: request.agent.VISIBILITY_COMPLETION | request.agent.VISIBILITY_PROGRESS,
+      wantAgent: await wantAgent.getWantAgent(wantAgentInfo),
+    }
+  };
+  let createOnCallback = (progress: request.agent.Progress) => {
+    console.info('download task progress.');
+  };
+  request.agent.create(context, config).then((task: request.agent.Task) => {
+    task.on('progress', createOnCallback);
+    console.info(`Succeeded in creating a download task. result: ${task.tid}`);
+    task.start();
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to create a download task, Code: ${err.code}, message: ${err.message}`);
+  });
+  ```
+
+## request.agent.GroupConfig<sup>15+</sup>
 
 下载任务分组配置选项。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
-| 名称           | 类型                                            | 必填 | 说明                                                           |
-|--------------|-----------------------------------------------|----|--------------------------------------------------------------|
-| gauge        | boolean                                       | 否  | 后台任务的进度通知策略。 <br/>- true，显示进度、成功、失败通知。 <br/>- false，仅显示成功、失败通知。<br/>默认为false。 |
-| notification<sup>15+</sup> | [Notification](#notification15) | 是  | 通知栏自定义设置。默认值为`{}`                     |
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| gauge        | boolean                                       | 否 | 是  | 后台任务的进度通知策略。 <br/>- true，显示进度、成功、失败通知。 <br/>- false，仅显示成功、失败通知。<br/>默认为false。 |
+| notification<sup>15+</sup> | [Notification](#requestagentnotification15) | 否 | 否  | 通知栏自定义设置。默认值为`{}`                     |
 
-## WaitingReason<sup>20+</sup>
+## request.agent.WaitingReason<sup>20+</sup>
 
 枚举，定义任务等待的原因。
 
@@ -2675,9 +2743,9 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | APP_BACKGROUND | 0x02 | 表示任务因应用长时间处于后台而进入等待状态。   |
 | USER_INACTIVATED | 0x03 | 表示任务因所属用户处于非激活状态而进入等待状态。 |
 
-## MinSpeed<sup>20+</sup>
+## request.agent.MinSpeed<sup>20+</sup>
 
-任务的最低限速配置。若任务速度持续低于设定值并达到指定时长，则任务失败，失败原因为[LOW_SPEED](#faults10)。
+任务的最低限速配置。若任务速度持续低于设定值并达到指定时长，则任务失败，失败原因为[LOW_SPEED](#requestagentfaults10)。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -2686,9 +2754,9 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | speed   | number   | 否  | 否  | 任务最低速度，单位为字节每秒（B/s）。若任务速度持续低于该值达到指定时长，则任务失败。设置为0表示不启用最低速度限制。 |
 | duration    | number   | 否  | 否  | 允许低于最低速度的持续时间，单位为秒。若任务速度持续低于设定值达到该时长，则任务失败。设置为0表示不启用最低速度限制。  |
 
-## Timeout<sup>20+</sup>
+## request.agent.Timeout<sup>20+</sup>
 
-任务的超时配置。任务处于等待状态的时间不参与计算，上传下载任务会存在以下任务等待的原因:[WaitingReason<sup>20+</sup>](#waitingreason20)。
+任务的超时配置。任务处于等待状态的时间不参与计算，上传下载任务会存在以下任务等待的原因:[WaitingReason<sup>20+</sup>](#requestagentwaitingreason20)。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -2698,7 +2766,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | totalTimeout    | number | 否  | 是  |任务总超时时间，单位为秒。总超时包括建立连接、发送请求和接收响应的全部时间。未指定时使用默认值604800秒（1周）。允许设置的最小值为1秒，最大值为604800秒（1周）。  |
 
 
-## Task<sup>10+</sup> 
+## request.agent.Task<sup>10+</sup> 
 上传或下载任务。使用该方法前需要先获取Task对象，promise形式通过[request.agent.create](#requestagentcreate10-1)获取，callback形式通过[request.agent.create](#requestagentcreate10)获取。
 
 ### 属性
@@ -2712,14 +2780,14 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 >
 > Task对象及其挂载回调函数会在调用remove方法后释放并被系统自动回收。
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| tid | string | 是 | 任务id，由系统自动生成且唯一。 |
-| config | [Config](#config10) | 是 | 任务的配置信息。 |
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| tid | string | 是 | 否 | 任务id，由系统自动生成且唯一。 |
+| config | [Config](#requestagentconfig10) | 否 | 否 | 任务的配置信息。 |
 
 ### on('progress')<sup>10+</sup>
 
-on(event: 'progress', callback: (progress: [Progress](#progress10)) =&gt; void): void
+on(event: 'progress', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 订阅任务进度的事件，使用callback异步回调。
 
@@ -2742,7 +2810,7 @@ on(event: 'progress', callback: (progress: [Progress](#progress10)) =&gt; void):
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#progress10) | 是 | 表示任务的进度信息。 |
+  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
 
 **错误码：**
 
@@ -2803,7 +2871,7 @@ on(event: 'progress', callback: (progress: [Progress](#progress10)) =&gt; void):
 
 ### on('completed')<sup>10+</sup>
 
-on(event: 'completed', callback: (progress: [Progress](#progress10)) =&gt; void): void
+on(event: 'completed', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 订阅任务完成事件，使用callback异步回调。
 
@@ -2826,7 +2894,7 @@ on(event: 'completed', callback: (progress: [Progress](#progress10)) =&gt; void)
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#progress10) | 是 | 表示任务的进度信息。 |
+  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
 
 **错误码：**
 
@@ -2887,7 +2955,7 @@ on(event: 'completed', callback: (progress: [Progress](#progress10)) =&gt; void)
 
 ### on('failed')<sup>10+</sup>
 
-on(event: 'failed', callback: (progress: [Progress](#progress10)) =&gt; void): void
+on(event: 'failed', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 订阅任务失败事件，使用callback异步回调。可通过调用[request.agent.show](#requestagentshow10-1)查看错误原因。
 
@@ -2910,7 +2978,7 @@ on(event: 'failed', callback: (progress: [Progress](#progress10)) =&gt; void): v
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#progress10) | 是 | 表示任务的进度信息。 |
+  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
 
 **错误码：**
 
@@ -2971,7 +3039,7 @@ on(event: 'failed', callback: (progress: [Progress](#progress10)) =&gt; void): v
 
 ### on('pause')<sup>11+</sup>
 
-on(event: 'pause', callback: (progress: [Progress](#progress10)) =&gt; void): void
+on(event: 'pause', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 订阅任务暂停事件，使用callback异步回调。
 
@@ -2992,7 +3060,7 @@ on(event: 'pause', callback: (progress: [Progress](#progress10)) =&gt; void): vo
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#progress10) | 是 | 表示任务的进度信息。 |
+  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
 
 **错误码：**
 
@@ -3058,7 +3126,7 @@ on(event: 'pause', callback: (progress: [Progress](#progress10)) =&gt; void): vo
 
 ### on('resume')<sup>11+</sup>
 
-on(event: 'resume', callback: (progress: [Progress](#progress10)) =&gt; void): void
+on(event: 'resume', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 订阅任务恢复事件，使用callback异步回调。
 
@@ -3079,7 +3147,7 @@ on(event: 'resume', callback: (progress: [Progress](#progress10)) =&gt; void): v
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#progress10) | 是 | 表示任务的进度信息。 |
+  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
 
 **错误码：**
 
@@ -3150,7 +3218,7 @@ on(event: 'resume', callback: (progress: [Progress](#progress10)) =&gt; void): v
 
 ### on('remove')<sup>11+</sup>
 
-on(event: 'remove', callback: (progress: [Progress](#progress10)) =&gt; void): void
+on(event: 'remove', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 订阅任务移除事件，使用callback异步回调。
 
@@ -3171,7 +3239,7 @@ on(event: 'remove', callback: (progress: [Progress](#progress10)) =&gt; void): v
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#progress10) | 是 | 表示任务的进度信息。 |
+  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
 
 **错误码：**
 
@@ -3254,7 +3322,7 @@ on(event: 'response', callback: Callback&lt;HttpResponse&gt;): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 订阅的事件类型。<br>- 取值为'response'，表示任务响应，请求接收到响应时触发该事件。 |
-  | callback | Callback&lt;[HttpResponse](#httpresponse12)&gt; | 是 | 回调函数，发生相关的事件时触发该回调方法，返回任务响应头的数据结构。 |
+  | callback | Callback&lt;[HttpResponse](#requestagenthttpresponse12)&gt; | 是 | 回调函数，发生相关的事件时触发该回调方法，返回任务响应头的数据结构。 |
 
 **错误码：**
 
@@ -3330,7 +3398,7 @@ on(event: 'faultOccur', callback: Callback&lt;Faults&gt;): void
 | 参数名 | 类型                                  | 必填 | 说明                         |
 | -------- |-------------------------------------| -------- |----------------------------|
 | event | string                              | 是 | 订阅的事件类型。<br>- 取值为'faultOccur'，表示任务失败。 |
-| callback | Callback&lt;[Faults](#faults10)&gt; | 是 | 发生相关的事件时触发该回调方法，返回任务失败的原因。 |
+| callback | Callback&lt;[Faults](#requestagentfaults10)&gt; | 是 | 发生相关的事件时触发该回调方法，返回任务失败的原因。 |
 
 **错误码：**
 
@@ -3406,7 +3474,7 @@ on(event: 'wait', callback: Callback&lt;WaitingReason&gt;): void
 | 参数名 | 类型                                                | 必填 | 说明                              |
 | -------- |---------------------------------------------------| -------- |---------------------------------|
 | event | string                                            | 是 | 订阅的事件类型。<br>- 取值为'wait'，表示任务等待。 |
-| callback | Callback&lt;[WaitingReason](#waitingreason20)&gt; | 是 | 发生相关的事件时触发该回调方法，返回任务等待的原因。      |
+| callback | Callback&lt;[WaitingReason](#requestagentwaitingreason20)&gt; | 是 | 发生相关的事件时触发该回调方法，返回任务等待的原因。      |
 
 **错误码：**
 
@@ -3467,7 +3535,7 @@ on(event: 'wait', callback: Callback&lt;WaitingReason&gt;): void
 
 ### off('progress')<sup>10+</sup>
 
-off(event: 'progress', callback?: (progress: [Progress](#progress10)) =&gt; void): void
+off(event: 'progress', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 取消订阅任务进度事件。
 
@@ -3490,7 +3558,7 @@ off(event: 'progress', callback?: (progress: [Progress](#progress10)) =&gt; void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#progress10) | 是 | 表示任务的进度信息。 |
+  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
 
 
 **错误码：**
@@ -3560,7 +3628,7 @@ off(event: 'progress', callback?: (progress: [Progress](#progress10)) =&gt; void
 
 ### off('completed')<sup>10+</sup>
 
-off(event: 'completed', callback?: (progress: [Progress](#progress10)) =&gt; void): void
+off(event: 'completed', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 取消订阅任务完成事件。
 
@@ -3583,7 +3651,7 @@ off(event: 'completed', callback?: (progress: [Progress](#progress10)) =&gt; voi
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#progress10) | 是 | 表示任务的进度信息。 |
+  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
 
 
 **错误码：**
@@ -3653,7 +3721,7 @@ off(event: 'completed', callback?: (progress: [Progress](#progress10)) =&gt; voi
 
 ### off('failed')<sup>10+</sup>
 
-off(event: 'failed', callback?: (progress: [Progress](#progress10)) =&gt; void): void
+off(event: 'failed', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 取消订阅任务失败事件。
 
@@ -3676,7 +3744,7 @@ off(event: 'failed', callback?: (progress: [Progress](#progress10)) =&gt; void):
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#progress10) | 是 | 表示任务的进度信息 |
+  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息 |
 
 **错误码：**
 
@@ -3745,7 +3813,7 @@ off(event: 'failed', callback?: (progress: [Progress](#progress10)) =&gt; void):
 
 ### off('pause')<sup>11+</sup>
 
-off(event: 'pause', callback?: (progress: [Progress](#progress10)) =&gt; void): void
+off(event: 'pause', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 取消订阅任务暂停事件。
 
@@ -3766,7 +3834,7 @@ off(event: 'pause', callback?: (progress: [Progress](#progress10)) =&gt; void): 
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#progress10) | 是 | 表示任务的进度信息。 |
+  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
 
 **错误码：**
 
@@ -3835,7 +3903,7 @@ off(event: 'pause', callback?: (progress: [Progress](#progress10)) =&gt; void): 
 
 ### off('resume')<sup>11+</sup>
 
-off(event: 'resume', callback?: (progress: [Progress](#progress10)) =&gt; void): void
+off(event: 'resume', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 取消订阅任务恢复事件。
 
@@ -3856,7 +3924,7 @@ off(event: 'resume', callback?: (progress: [Progress](#progress10)) =&gt; void):
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#progress10) | 是 | 表示任务的进度信息。 |
+  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
 
 **错误码：**
 
@@ -3925,7 +3993,7 @@ off(event: 'resume', callback?: (progress: [Progress](#progress10)) =&gt; void):
 
 ### off('remove')<sup>11+</sup>
 
-off(event: 'remove', callback?: (progress: [Progress](#progress10)) =&gt; void): void
+off(event: 'remove', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 取消订阅任务移除事件。
 
@@ -3946,7 +4014,7 @@ off(event: 'remove', callback?: (progress: [Progress](#progress10)) =&gt; void):
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#progress10) | 是 | 表示任务的进度信息。 |
+  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
 
 **错误码：**
 
@@ -4032,7 +4100,7 @@ off(event: 'response', callback?: Callback&lt;HttpResponse&gt;): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'response'，表示任务响应。 |
-  | callback | Callback&lt;[HttpResponse](#httpresponse12)&gt; | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
+  | callback | Callback&lt;[HttpResponse](#requestagenthttpresponse12)&gt; | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -4103,7 +4171,7 @@ off(event: 'response', callback?: Callback&lt;HttpResponse&gt;): void
 
 off(event: 'faultOccur', callback?: Callback&lt;Faults&gt;): void
 
-取消订阅任务响应头。
+取消订阅任务失败原因相关的事件。
 
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
@@ -4117,7 +4185,7 @@ off(event: 'faultOccur', callback?: Callback&lt;Faults&gt;): void
 | 参数名 | 类型                         | 必填 | 说明                                    |
 | -------- |----------------------------| -------- |---------------------------------------|
 | event | string                     | 是 | 订阅的事件类型。<br>- 取值为'faultOccur'，表示任务失败。      |
-| callback | Callback&lt;[Faults](#faults10)&gt; | 否 | 需要取消订阅的回调函数。若无此参数，则默认取消订阅当前类型的所有回调函数。 |
+| callback | Callback&lt;[Faults](#requestagentfaults10)&gt; | 否 | 需要取消订阅的回调函数。若无此参数，则默认取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -4188,7 +4256,7 @@ off(event: 'faultOccur', callback?: Callback&lt;Faults&gt;): void
 
 off(event: 'wait', callback?: Callback&lt;WaitingReason&gt;): void
 
-取消订阅任务响应头。
+取消订阅任务等待原因相关的事件。
 
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
@@ -4202,7 +4270,7 @@ off(event: 'wait', callback?: Callback&lt;WaitingReason&gt;): void
 | 参数名 | 类型                                | 必填 | 说明                                    |
 | -------- |-----------------------------------| -------- |---------------------------------------|
 | event | string                            | 是 | 订阅的事件类型。<br>- 取值为'wait'，表示任务等待。       |
-| callback | Callback&lt;[WaitingReason](#waitingreason20)&gt; | 否 | 需要取消订阅的回调函数。若无此参数，则默认取消订阅当前类型的所有回调函数。 |
+| callback | Callback&lt;[WaitingReason](#requestagentwaitingreason20)&gt; | 否 | 需要取消订阅的回调函数。若无此参数，则默认取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -4884,7 +4952,7 @@ setMaxSpeed(speed: number): Promise\<void\>
 
 | 参数名   | 类型     | 必填 | 说明                                                                           |
 |-------|--------|----|------------------------------------------------------------------------------|
-| speed | number | 是  | 设置任务每秒能传输的字节数上限，单位为字节（B），最小值为16384字节，同时该值不得低于[MinSpeed](#minspeed20)设置的最低速度。 |
+| speed | number | 是  | 设置任务每秒能传输的字节数上限，单位为字节（B），最小值为16384字节，同时该值不得低于[MinSpeed](#requestagentminspeed20)设置的最低速度。 |
 
 **返回值：**
 
@@ -4948,8 +5016,8 @@ create(context: BaseContext, config: Config, callback: AsyncCallback&lt;Task&gt;
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是 | 基于应用程序的上下文。 |
-  | config | [Config](#config10) | 是 | 上传/下载任务的配置信息。 |
-  | callback | AsyncCallback&lt;[Task](#task10)&gt; | 是 | 回调函数。当创建上传或下载任务成功，err为undefined，data为获取到的Task对象；否则为错误对象。 |
+  | config | [Config](#requestagentconfig10) | 是 | 上传/下载任务的配置信息。 |
+  | callback | AsyncCallback&lt;[Task](#requestagenttask10)&gt; | 是 | 回调函数。当创建上传或下载任务成功，err为undefined，data为获取到的Task对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -5035,13 +5103,13 @@ create(context: BaseContext, config: Config): Promise&lt;Task&gt;
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是 | 基于应用程序的上下文。 |
-  | config | [Config](#config10) | 是 | 上传/下载任务的配置信息。 |
+  | config | [Config](#requestagentconfig10) | 是 | 上传/下载任务的配置信息。 |
 
 **返回值：** 
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;[Task](#task10)&gt; | Promise对象。返回任务配置信息的Promise对象。 |
+| Promise&lt;[Task](#requestagenttask10)&gt; | Promise对象。返回任务配置信息的Promise对象。 |
 
 **错误码：**
 
@@ -5123,7 +5191,7 @@ getTask(context: BaseContext, id: string, token?: string): Promise&lt;Task&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;[Task](#task10)&gt; | Promise对象。返回任务配置信息的Promise对象。 |
+| Promise&lt;[Task](#requestagenttask10)&gt; | Promise对象。返回任务配置信息的Promise对象。 |
 
 **错误码：**
 
@@ -5250,7 +5318,7 @@ show(id: string, callback: AsyncCallback&lt;TaskInfo&gt;): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | id | string | 是 | 任务id。 |
-  | callback | AsyncCallback&lt;[TaskInfo](#taskinfo10)&gt; | 是 | 回调函数。当查询任务操作成功，err为undefined，data为查询到的任务TaskInfo信息；否则为错误对象。 |
+  | callback | AsyncCallback&lt;[TaskInfo](#requestagenttaskinfo10)&gt; | 是 | 回调函数。当查询任务操作成功，err为undefined，data为查询到的任务TaskInfo信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -5295,7 +5363,7 @@ show(id: string): Promise&lt;TaskInfo&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;[TaskInfo](#taskinfo10)&gt; | Promise对象。返回任务详细信息TaskInfo的Promise对象。 |
+| Promise&lt;[TaskInfo](#requestagenttaskinfo10)&gt; | Promise对象。返回任务详细信息TaskInfo的Promise对象。 |
 
 **错误码：**
 
@@ -5334,7 +5402,7 @@ touch(id: string, token: string, callback: AsyncCallback&lt;TaskInfo&gt;): void
   | -------- | -------- | -------- | -------- |
   | id | string | 是 | 任务id。 |
   | token | string | 是 | 任务查询token。 |
-  | callback | AsyncCallback&lt;[TaskInfo](#taskinfo10)&gt; | 是 | 回调函数。当查询任务操作成功，err为undefined，data为查询到的任务TaskInfo信息；否则为错误对象。 |
+  | callback | AsyncCallback&lt;[TaskInfo](#requestagenttaskinfo10)&gt; | 是 | 回调函数。当查询任务操作成功，err为undefined，data为查询到的任务TaskInfo信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -5380,7 +5448,7 @@ touch(id: string, token: string): Promise&lt;TaskInfo&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;[TaskInfo](#taskinfo10)&gt; | Promise对象。返回任务详细信息TaskInfo的Promise对象。 |
+| Promise&lt;[TaskInfo](#requestagenttaskinfo10)&gt; | Promise对象。返回任务详细信息TaskInfo的Promise对象。 |
 
 **错误码：**
 
@@ -5408,7 +5476,7 @@ touch(id: string, token: string): Promise&lt;TaskInfo&gt;
 
 search(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-根据默认[Filter](#filter10)过滤条件查找任务id，即查询调用时刻至24小时前的所有任务的任务id。使用callback异步回调。
+根据默认[Filter](#requestagentfilter10)过滤条件查找任务id，即查询调用时刻至24小时前的所有任务的任务id。使用callback异步回调。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -5445,7 +5513,7 @@ search(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 search(filter: Filter, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-根据[Filter](#filter10)过滤条件查找任务id。使用callback异步回调。
+根据[Filter](#requestagentfilter10)过滤条件查找任务id。使用callback异步回调。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -5453,7 +5521,7 @@ search(filter: Filter, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | filter | [Filter](#filter10) | 是 | 过滤条件。 |
+  | filter | [Filter](#requestagentfilter10) | 是 | 过滤条件。 |
   | callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数。当根据过滤条件查找任务成功，err为undefined，data为满足条件的任务id；否则为错误对象。 |
 
 **错误码：**
@@ -5488,7 +5556,7 @@ search(filter: Filter, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 search(filter?: Filter): Promise&lt;Array&lt;string&gt;&gt;
 
-根据[Filter](#filter10)过滤条件查找任务id。使用Promise异步回调。
+根据[Filter](#requestagentfilter10)过滤条件查找任务id。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -5496,7 +5564,7 @@ search(filter?: Filter): Promise&lt;Array&lt;string&gt;&gt;
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | filter | [Filter](#filter10) | 否 | 过滤条件。 |
+  | filter | [Filter](#requestagentfilter10) | 否 | 过滤条件。 |
 
 **返回值：** 
 
@@ -5533,7 +5601,7 @@ search(filter?: Filter): Promise&lt;Array&lt;string&gt;&gt;
 
 createGroup(config: GroupConfig): Promise\<string\>
 
-根据[GroupConfig](#groupconfig15)分组条件创建分组，并返回分组id。使用Promise异步回调。
+根据[GroupConfig](#requestagentgroupconfig15)分组条件创建分组，并返回分组id。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -5541,7 +5609,7 @@ createGroup(config: GroupConfig): Promise\<string\>
 
 | 参数名    | 类型                                          | 必填 | 说明        |
 |--------|---------------------------------------------|----|-----------|
-| config | [GroupConfig<sup>15+</sup>](#groupconfig15) | 是  | 下载任务分组选项。 |
+| config | [GroupConfig<sup>15+</sup>](#requestagentgroupconfig15) | 是  | 下载任务分组选项。 |
 
 **返回值：**
 

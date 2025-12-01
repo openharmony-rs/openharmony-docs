@@ -1,5 +1,12 @@
 # @ohos.ai.intelligentVoice (智能语音)(系统接口)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @y00416036-->
+<!--Designer: @jinjunwen-->
+<!--Tester: @gx1016-->
+<!--Adviser: @fang-jinxu-->
+
 智能语音主要提供了语音注册及语音唤醒相关功能。<!--Del-->当前功能与芯片相关，在OpenHarmony暂不支持使用。<!--DelEnd-->
 
 该模块提供以下智能语音相关的常用功能：
@@ -719,11 +726,11 @@ if (wakeupManager != null) {
 
 **系统能力：** SystemCapability.AI.IntelligentVoice.Core
 
-| 名称   | 类型                            |     必填     | 说明       |
-| ------ | ----------------------------- | -------------- | ---------- |
-| type | [UploadFileType](#uploadfiletype12) |        是       | 文件类型。 |
-| filesDescription | string |        是       | 文件描述。 |
-| filesContent | Array\<ArrayBuffer\> |        是       | 文件内容。 |
+| 名称   | 类型                            | 只读 | 可选 | 说明       |
+| ------ | ----------------------------- |----|----| ---------- |
+| type | [UploadFileType](#uploadfiletype12) | 否  | 否  | 文件类型。 |
+| filesDescription | string | 否  | 否  | 文件描述。 |
+| filesContent | Array\<ArrayBuffer\> | 否 | 否  | 文件内容。 |
 
 ## WakeupSourceFile<sup>12+</sup>
 
@@ -731,10 +738,10 @@ if (wakeupManager != null) {
 
 **系统能力：** SystemCapability.AI.IntelligentVoice.Core
 
-| 名称   | 类型                            |     必填     | 说明       |
-| ------ | ----------------------------- | -------------- | ---------- |
-| filePath | string |        是       | 文件路径。 |
-| fileContent | ArrayBuffer |        是       | 文件内容。 |
+| 名称   | 类型                            | 只读 | 可选 | 说明       |
+| ------ | ----------------------------- |----|----| ---------- |
+| filePath | string | 否  | 否  | 文件路径。 |
+| fileContent | ArrayBuffer | 否  | 否  | 文件内容。 |
 
 ## EvaluationResultCode<sup>12+</sup>
 
@@ -765,10 +772,10 @@ if (wakeupManager != null) {
 
 **系统能力：** SystemCapability.AI.IntelligentVoice.Core
 
-| 名称   | 类型                            |     必填     | 说明       |
-| ------ | ----------------------------- | -------------- | ---------- |
-| score | number |        是       | 自定义唤醒词的评估得分，范围在0到5之间。 |
-| resultCode | [EvaluationResultCode](#evaluationresultcode12) |        是       | 评估结果错误码。 |
+| 名称   | 类型                            | 只读 | 可选 | 说明       |
+| ------ | ----------------------------- |----|----| ---------- |
+| score | number | 否  | 否  | 自定义唤醒词的评估得分，范围在0到5之间。 |
+| resultCode | [EvaluationResultCode](#evaluationresultcode12) | 否  | 否 | 评估结果错误码。 |
 
 ## ServiceChangeType
 
@@ -798,9 +805,9 @@ if (wakeupManager != null) {
 
 **系统能力：** SystemCapability.AI.IntelligentVoice.Core
 
-| 名称   | 类型                            |     必填     | 说明       |
-| ------ | ----------------------------- | -------------- | ---------- |
-| wakeupPhrase | string |        是       | 唤醒词。 |
+| 名称   | 类型                            | 只读 | 可选 | 说明       |
+| ------ | ----------------------------- |----|----| ---------- |
+| wakeupPhrase | string | 否  | 否  | 唤醒词。 |
 
 ## WakeupIntelligentVoiceEngineDescriptor
 
@@ -808,10 +815,10 @@ if (wakeupManager != null) {
 
 **系统能力：** SystemCapability.AI.IntelligentVoice.Core
 
-| 名称   | 类型                            |     必填     | 说明       |
-| ------ | ----------------------------- | -------------- | ---------- |
-| needReconfirm | boolean |        是       | 是否需要再次确认唤醒结果，true为需要，false为不需要。 |
-| wakeupPhrase | string |        是       | 唤醒词。 |
+| 名称   | 类型                            | 只读 | 可选 | 说明       |
+| ------ | ----------------------------- |----|----| ---------- |
+| needReconfirm | boolean | 否  | 否  | 是否需要再次确认唤醒结果，true为需要，false为不需要。 |
+| wakeupPhrase | string | 否  | 否  | 唤醒词。 |
 
 ## EnrollEngineConfig
 
@@ -819,10 +826,10 @@ if (wakeupManager != null) {
 
 **系统能力：** SystemCapability.AI.IntelligentVoice.Core
 
-| 名称   | 类型                            |     必填     | 说明       |
-| ------ | ----------------------------- | -------------- | ---------- |
-| language | string |        是       | 注册引擎支持的语言，当前仅支持中文，取值为'zh'。 |
-| region | string |        是       | 注册引擎支持的区域。当前仅支持中国，取值为'CN'。 |
+| 名称   | 类型                            | 只读 | 可选 | 说明       |
+| ------ | ----------------------------- |----|----| ---------- |
+| language | string | 否  | 否  | 注册引擎支持的语言，当前仅支持中文，取值为'zh'。 |
+| region | string | 否  | 否  | 注册引擎支持的区域。当前仅支持中国，取值为'CN'。 |
 
 ## SensibilityType
 
@@ -843,10 +850,10 @@ if (wakeupManager != null) {
 
 **系统能力：** SystemCapability.AI.IntelligentVoice.Core
 
-| 名称   | 类型                            |     必填     | 说明       |
-| ------ | ----------------------------- | -------------- | ---------- |
-| bundleName | string |        是       | 唤醒应用的bundleName。 |
-| abilityName | string |        是       | 唤醒应用的ailityName。 |
+| 名称   | 类型                            | 只读 | 可选 | 说明       |
+| ------ | ----------------------------- |----|----| ---------- |
+| bundleName | string | 否  | 否  | 唤醒应用的bundleName。 |
+| abilityName | string | 否  | 否  | 唤醒应用的ailityName。 |
 
 ## WakeupIntelligentVoiceEventType
 
@@ -912,10 +919,10 @@ if (wakeupManager != null) {
 
 **系统能力：** SystemCapability.AI.IntelligentVoice.Core
 
-| 名称   | 类型                            |     必填     | 说明       |
-| ------ | ----------------------------- | -------------- | ---------- |
-| result | [EnrollResult](#enrollresult) |        是       | 注册结果。 |
-| context | string |        是       | 描述注册事件上下文。 |
+| 名称   | 类型                            | 只读 | 可选 | 说明       |
+| ------ | ----------------------------- |----|----| ---------- |
+| result | [EnrollResult](#enrollresult) | 否  | 否  | 注册结果。 |
+| context | string | 否  | 否  | 描述注册事件上下文。 |
 
 ## WakeupIntelligentVoiceEngineCallbackInfo
 
@@ -923,11 +930,11 @@ if (wakeupManager != null) {
 
 **系统能力：** SystemCapability.AI.IntelligentVoice.Core
 
-| 名称   | 类型                            |     必填     | 说明       |
-| ------ | ----------------------------- | -------------- | ---------- |
-| eventId | [WakeupIntelligentVoiceEventType](#wakeupintelligentvoiceeventtype) |        是       | 唤醒智能语音事件类型。 |
-| isSuccess | boolean |        是       | 是否唤醒成功，false为唤醒失败，true为唤醒成功。 |
-| context | string |        是       | 描述唤醒事件上下文。 |
+| 名称   | 类型                            | 只读 | 可选 | 说明       |
+| ------ | ----------------------------- |----|----| ---------- |
+| eventId | [WakeupIntelligentVoiceEventType](#wakeupintelligentvoiceeventtype) | 否  | 否  | 唤醒智能语音事件类型。 |
+| isSuccess | boolean | 否  | 否  | 是否唤醒成功，true表示唤醒成功，false表示唤醒失败 |
+| context | string | 否  | 否  | 描述唤醒事件上下文。 |
 
 ## EnrollIntelligentVoiceEngine
 
@@ -964,6 +971,7 @@ getSupportedRegions(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let regions: Array<string> | null = null;
+
 if (enrollIntelligentVoiceEngine != null) {
   (enrollIntelligentVoiceEngine as intelligentVoice.EnrollIntelligentVoiceEngine).getSupportedRegions((err: BusinessError, data: Array<string>) => {
     if (err) {

@@ -1,4 +1,14 @@
 # ArkUI_CustomSpanMetrics
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiangyuan6-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_CustomSpanMetrics ArkUI_CustomSpanMetrics
+```
 
 ## 概述
 

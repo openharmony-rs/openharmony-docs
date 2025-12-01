@@ -1,4 +1,14 @@
 # ArkUI_Rect
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct {...} ArkUI_Rect
+```
 
 ## 概述
 

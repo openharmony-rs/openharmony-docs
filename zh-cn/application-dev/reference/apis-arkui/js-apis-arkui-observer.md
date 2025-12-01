@@ -2,18 +2,18 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @lushi871202; @CCFFWW-->
+<!--Designer: @piggyguy; @lushi871202; @CCFFWW-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供UI组件行为变化的无感监听能力。推荐使用[UIObserver](./arkts-apis-uicontext-uiobserver.md)进行组件监听。
 
 > **说明：**
 >
-> 从API Version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> UIObserver仅能监听到本进程内的相关信息，不支持获取<!--Del-->[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)等<!--DelEnd-->跨进程场景的信息。
+> - UIObserver仅能监听到本进程内的相关信息，不支持获取<!--Del-->[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)等<!--DelEnd-->跨进程场景的信息。
 
 
 ## 导入模块
@@ -57,7 +57,7 @@ NavDestination组件状态。
 
 ## RouterPageState
 
-routerPage生命周期触发时对应的状态。
+routerPage生命周期触发时对应的状态。RouterPageState用于[RouterPageInfo](#routerpageinfo)中，作为[routerPageUpdate](#uiobserveronrouterpageupdate11)无感监听的返回值。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -195,7 +195,187 @@ Navigation组件页面切换事件的监听选项。
 
 | 名称         | 类型                                          | 只读  | 可选 | 说明                                          |
 | ------------ | --------------------------------------------- | ----- | ---- | -------------------------------------------- |
-| navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 否 | 是   | 指定需要监听的Navigation的ID |
+| navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 否 | 否   | 指定需要监听的Navigation的ID。 |
+
+## TextChangeEventInfo<sup>22+</sup>
+输入框文本变化的信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称         | 类型                                         | 只读  | 可选 | 说明                                          |
+| ------------ | -------------------------------------------- | ---- | ---- | -------------------------------------------- |
+| id           | string                                       | 否   | 否   | 文本输入组件的ID。|
+| uniqueId     | number                                       | 否   | 否   | 文本输入组件的唯一标识符。|
+| content        | string                                       | 否   | 否   | 变化后的文本内容。|
+
+## uiObserver.on('textChange')<sup>22+</sup>
+
+on(type: 'textChange', callback: Callback\<TextChangeEventInfo\>): void
+
+全局监听输入框文本变化。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。|
+| callback | Callback\<[TextChangeEventInfo](#textchangeeventinfo22)\> | 是   | 回调函数，返回文本变化的信息。|
+
+**示例：**
+```ts
+import { UIObserver } from '@kit.ArkUI'
+
+@Entry
+@Component
+struct TextUiObserver {
+  observer: UIObserver = this.getUIContext().getUIObserver();
+  build() {
+    Column() {
+      TextArea({ text: "Hello World TextArea" })
+        .width(336)
+        .height(56)
+        .margin({bottom:5})
+        .backgroundColor('#FFFFFF')
+        .id("TestId1")
+      TextInput({ text: "Hello World TextInput" })
+        .width(336)
+        .height(56)
+        .margin({bottom:5})
+        .backgroundColor('#FFFFFF')
+        .id("TestId2")
+      Search({ value: "Hello World Search" })
+        .width(336)
+        .height(56)
+        .margin({bottom:5})
+        .backgroundColor('#FFFFFF')
+        .id("TestId3")
+      Row() {
+        // 开启全局监听
+        Button('UIObserver on')
+          .onClick(() => {
+            this.observer.on('textChange', (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+        // 关闭全局监听
+        Button('UIObserver off')
+          .onClick(() => {
+            this.observer.off('textChange');
+          })
+      }.margin({bottom:5})
+      // 开启和关闭指定ID的局部监听
+      Row() {
+        Button('UIObserver TestId1 on')
+          .onClick(() => {
+            this.observer.on('textChange', { id: "TestId1" }, (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+
+        Button('UIObserver TestId1 off')
+          .onClick(() => {
+            this.observer.off('textChange', { id: "TestId1" });
+          })
+      }.margin({bottom:5})
+      Row() {
+        Button('UIObserver TestId2 on')
+          .onClick(() => {
+            this.observer.on('textChange', { id: "TestId2" }, (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+
+        Button('UIObserver TestId2 off')
+          .onClick(() => {
+            this.observer.off('textChange', { id: "TestId2" });
+          })
+      }.margin({bottom:5})
+      Row() {
+        Button('UIObserver TestId3 on')
+          .onClick(() => {
+            this.observer.on('textChange', { id: "TestId3" }, (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+
+        Button('UIObserver TestId3 off')
+          .onClick(() => {
+            this.observer.off('textChange', { id: "TestId3" });
+          })
+      }.margin({bottom:5})
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+## uiObserver.off('textChange')<sup>22+</sup>
+
+off(type: 'textChange', callback?: Callback\<TextChangeEventInfo\>): void
+
+取消输入框文本变化的全局监听。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。|
+| callback | Callback\<[TextChangeEventInfo](#textchangeeventinfo22) | 否   | 需要被注销的回调函数。不传参数时，取消输入框文本变化的所有全局监听。|
+
+**示例：**
+参考[uiObserver.on('textChange')](#uiobserverontextchange22)示例。
+
+## uiObserver.on('textChange')<sup>22+</sup>
+
+on(type: 'textChange', identity: ObserverOptions, callback:Callback\<TextChangeEventInfo\>): void
+
+指定ID输入框文本变化的局部监听。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。 |
+| identity | [ObserverOptions](#observeroptions12) | 是   | 指定监听的文本输入组件的ID。                             |
+| callback | Callback\<[TextChangeEventInfo](#textchangeeventinfo22)\> | 是   | 回调函数。返回文本变化的信息。|
+
+**示例：**
+
+参考[uiObserver.on('textChange')](#uiobserverontextchange22)示例。
+
+## uiObserver.off('textChange')<sup>22+</sup>
+
+off(type: 'textChange', identity: ObserverOptions, callback?: Callback\<TextChangeEventInfo\>): void
+
+取消指定ID输入框文本变化的局部监听。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。|
+| identity | [ObserverOptions](#observeroptions12) | 是   | 指定监听的文本输入组件的ID。|
+| callback | Callback\<[TextChangeEventInfo](#textchangeeventinfo22)\> | 否   | 需要被注销的回调函数。不传参数时，取消指定ID输入框文本变化的所有局部监听。|
+
+**示例：**
+
+参考[uiObserver.on('textChange')](#uiobserverontextchange22)示例。
 
 ## TabContentInfo<sup>12+</sup>
 
@@ -213,6 +393,21 @@ TabContent页面的切换信息。
 | index        | number                                       | 否   | 否   | TabContent组件的下标索引。索引从0开始。        |
 | id           | string                                       | 否   | 否   | Tabs组件的id。                                |
 | uniqueId     | number                                       | 否   | 否   | Tabs组件的uniqueId。                          |
+| lastIndex<sup>22+</sup>    | number                                       | 否   | 是   | 最近一次聚焦的TabsContent组件的下标索引。索引从0开始。仅在[tabChange](#uiobserverontabchange22)的回调函数中存在。     |
+
+## WindowSizeLayoutBreakpointInfo<sup>22+</sup>
+
+窗口尺寸布局断点变化回调的信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                 | 类型                                                   | 只读   | 可选 | 说明                                           |
+| -------------------- | -------------------------------------------------------| ----- | ---- | ---------------------------------------------- |
+| widthBreakpoint      | [WidthBreakpoint](./arkui-ts/ts-appendix-enums.md#widthbreakpoint13)  | 否   | 否   | 窗口宽度所在的布局断点枚举。        |
+| heightBreakpoint     | [HeightBreakpoint](./arkui-ts/ts-appendix-enums.md#heightbreakpoint13)| 否   | 否   | 窗口高度所在的布局断点枚举。        |
+
 
 ## uiObserver.on('navDestinationUpdate')
 
@@ -1222,7 +1417,7 @@ off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observe
 
 on(type: 'tabContentUpdate', callback: Callback\<TabContentInfo\>): void
 
-监听TabContent页面的切换事件。
+监听TabContent页面的切换事件。相比[uiObserver.on('tabChange')](#uiobserverontabchange22)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1309,7 +1504,7 @@ off(type: 'tabContentUpdate', callback?: Callback\<TabContentInfo\>): void
 
 on(type: 'tabContentUpdate', options: ObserverOptions, callback: Callback\<TabContentInfo\>): void
 
-监听TabContent页面的切换事件。
+监听指定Tabs组件id的TabContent页面切换事件。相比[uiObserver.on('tabChange')](#uiobserverontabchange22-1)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1376,7 +1571,7 @@ struct TabsExample {
 
 off(type: 'tabContentUpdate', options: ObserverOptions, callback?: Callback\<TabContentInfo\>): void
 
-取消监听TabContent页面的切换事件。
+取消监听指定Tabs组件id的TabContent页面切换事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1393,3 +1588,236 @@ off(type: 'tabContentUpdate', options: ObserverOptions, callback?: Callback\<Tab
 **示例：**
 
 参考[uiObserver.on('tabContentUpdate')](#uiobserverontabcontentupdate12-1)接口示例。
+
+## uiObserver.on('tabChange')<sup>22+</sup>
+
+on(type: 'tabChange', callback: Callback\<TabContentInfo\>): void
+
+监听Tabs组件页签的切换事件，支持多个Tabs组件的监听。相比[uiObserver.on('tabContentUpdate')](#uiobserverontabcontentupdate12)，本接口支持监听Tabs组件初始化时，显示首个页签的事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即Tabs组件页签的切换事件。 |
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 是   | 回调函数。携带TabContentInfo，返回Tabs组件页签的切换事件的信息。 |
+
+**示例：**
+
+```ts
+// Index.ets
+// 演示监听Tabs组件页签的切换事件。
+// 此用例同时监听id为'tabsId1'、'tabsId2'的两个Tabs组件。
+// 两个Tabs组件初始化时，会监听到第0页页签的显示事件，页签对应id分别为'tabContentId0'、'tabContentId5'。
+// 在id为'tabsId1'的Tabs组件上滑动一下，会监听到第0页的页签隐藏、id为'tabContentId1'的第1页页签显示事件。
+import { uiObserver } from '@kit.ArkUI';
+
+// 定义监听回调函数
+function callbackFunc(info: uiObserver.TabContentInfo) {
+  console.info('tabChange', JSON.stringify(info));
+}
+
+@Entry
+@Component
+struct TabsExample {
+
+  aboutToAppear(): void {
+    // 添加监听
+    uiObserver.on('tabChange', callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    // 取消监听
+    uiObserver.off('tabChange', callbackFunc);
+  }
+
+  build() {
+    Column() {
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId0')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId1')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId2')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId3')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+      .id('tabsId1')
+
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId5')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId6')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId7')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId8')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+      .id('tabsId2')
+    }.width('100%')
+  }
+}
+```
+
+## uiObserver.off('tabChange')<sup>22+</sup>
+
+off(type: 'tabChange', callback?: Callback\<TabContentInfo\>): void
+
+取消监听所有的Tabs组件页签的切换事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即Tabs组件页签的切换事件。 |
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销所有通过[uiObserver.on('tabChange')](#uiobserverontabchange22)接口注册的回调函数。<br/>默认值：undefined |
+
+**示例：**
+
+参考[uiObserver.on('tabChange')](#uiobserverontabchange22)接口示例。
+
+## uiObserver.on('tabChange')<sup>22+</sup>
+
+on(type: 'tabChange', config: ObserverOptions, callback: Callback\<TabContentInfo\>): void
+
+监听指定Tabs组件的页签切换事件。相比[uiObserver.on('tabContentUpdate')](#uiobserverontabcontentupdate12-1)，本接口支持监听Tabs组件初始化时，显示首个页签的事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即Tabs组件页签的切换事件。 |
+| config  | [ObserverOptions](#observeroptions12)                        | 是   | 指定监听的Tabs组件的id。 |
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 是   | 回调函数。携带TabContentInfo，返回Tabs组件页签的切换事件的信息。 |
+
+**示例：**
+
+```ts
+// Index.ets
+// 演示监听id为'tabsId'的Tabs组件页签的切换事件。
+// Tabs组件页签初始化的时候，会监听到第0页页签的显示事件，页签对应id为'tabContentId0'；滑动一下，会监听到第0页的页签隐藏、id为'tabContentId1'的第1页页签显示事件。
+import { uiObserver } from '@kit.ArkUI';
+
+// 定义监听回调函数
+function callbackFunc(info: uiObserver.TabContentInfo) {
+  console.info('tabChange', JSON.stringify(info));
+}
+
+@Entry
+@Component
+struct TabsExample {
+
+  aboutToAppear(): void {
+    // 添加监听，指定Tabs的id
+    uiObserver.on('tabChange', { id: 'tabsId' }, callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    // 取消监听
+    uiObserver.off('tabChange', { id: 'tabsId' }, callbackFunc);
+  }
+
+  build() {
+    Column() {
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId0')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId1')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId2')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId3')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+      .id('tabsId')
+
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId5')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId6')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId7')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId8')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+    }.width('100%')
+  }
+}
+```
+
+## uiObserver.off('tabChange')<sup>22+</sup>
+
+off(type: 'tabChange', config: ObserverOptions, callback?: Callback\<TabContentInfo\>): void
+
+取消监听指定Tabs组件页签的切换事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即Tabs组件页签的切换事件。 |
+| config  | [ObserverOptions](#observeroptions12)                        | 是   | 指定监听的Tabs组件的id。 |
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销config指定的[Tabs](arkui-ts/ts-container-tabs.md)组件下注册的所有的回调函数。<br/>默认值：undefined |
+
+**示例：**
+
+参考[uiObserver.on('tabChange')](#uiobserverontabchange22-1)接口示例。

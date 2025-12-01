@@ -1,13 +1,13 @@
 # stateStyles：多态样式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @zhang_yixin13-->
 
 
-\@Styles仅仅应用于静态页面的样式复用，stateStyles可以依据组件的内部状态的不同，快速设置不同样式。这就是我们本章要介绍的内容stateStyles（又称为：多态样式）。
+\@Styles仅应用于静态页面的样式复用，stateStyles可以依据组件的内部状态的不同，快速设置不同样式。这就是我们本章要介绍的内容stateStyles（又称为：多态样式）。
 
 > **说明**：
 >
@@ -41,8 +41,9 @@ stateStyles是属性方法，可以根据UI内部状态来设置样式，类似�
 
 下面的示例展示了stateStyles最基本的使用场景。Button1处于第一个组件，Button2处于第二个组件。按压时显示为pressed态指定的黑色。使用Tab键走焦，Button1获焦并显示为focused态指定的粉色。当Button2获焦的时候，Button2显示为focused态指定的粉色，Button1失焦显示normal态指定的蓝色。
 
+<!-- @[state_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/StateStyle/StateStylesSample.ets) -->
 
-```ts
+``` TypeScript
 @Entry
 @Component
 struct StateStylesSample {
@@ -79,6 +80,7 @@ struct StateStylesSample {
 ```
 
 
+
   **图1** 获焦态和按压态  
 
 ![Video_2023-03-17_120758](figures/Video_2023-03-17_120758.gif)
@@ -89,8 +91,9 @@ struct StateStylesSample {
 以下示例通过\@Styles指定stateStyles的不同状态。
 
 
+<!-- @[normal_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/NormalStyle/MyComponent.ets) -->
 
-```ts
+``` TypeScript
 @Entry
 @Component
 struct MyComponent {
@@ -101,7 +104,6 @@ struct MyComponent {
   @Styles pressedStyle() {
     .backgroundColor(Color.Red)
   }
-
   build() {
     Column() {
       Text('Text1')
@@ -125,13 +127,14 @@ struct MyComponent {
 
 stateStyles可以通过this绑定组件内的常规变量和状态变量。
 
+<!-- @[focus_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/FocusStyle/CompWithInlineStateStyles.ets) -->
 
-```ts
+``` TypeScript
 @Entry
 @Component
 struct CompWithInlineStateStyles {
-  @State focusedColor: Color = Color.Red;
-  normalColor: Color = Color.Green;
+  @State focusedColor: Color = 0xD5D5D5;
+  normalColor: Color = 0x004AAF;
 
   build() {
     Column() {
@@ -147,7 +150,7 @@ struct CompWithInlineStateStyles {
           }
         })
         .onClick(() => {
-          this.focusedColor = Color.Pink;
+          this.focusedColor = 0x707070;
         })
         .margin('30%')
     }
@@ -155,8 +158,8 @@ struct CompWithInlineStateStyles {
 }
 ```
 
-Button默认normal态显示绿色，第一次按下Tab键让Button获焦显示为focus态的红色，点击事件触发后，再次按下Tab键让Button获焦，focus态变为粉色。
+Button默认normal态显示蓝色，第一次按下Tab键让Button获焦显示为focus态的浅灰色，点击事件触发后，再次按下Tab键让Button获焦，focus态变为深灰色。
 
   **图3** 点击改变获焦态样式  
 
-![Video_2023-03-17_144605](figures/Video_2023-03-17_144605.gif)
+![focus-stateStyles](figures/focus-stateStyles.gif)

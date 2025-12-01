@@ -4,7 +4,7 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 - [Form Kit简介](formkit-overview.md)
 - ArkTS卡片开发（推荐）<!--arkts-ui-->
   - [ArkTS卡片概述](arkts-form-overview.md)
@@ -18,12 +18,13 @@
       - [ArkTS卡片为组件添加动效](arkts-ui-widget-page-animation.md)
       - [ArkTS卡片使用画布组件绘制自定义图形](arkts-ui-widget-page-custom-drawing.md)
       - [ArkTS卡片界面适配深浅色模式](arkts-ui-widget-dark-light-color-adapt.md)
+      - [ArkTS卡片使用自定义字体](arkts-ui-widget-load-custom-font.md)
     - ArkTS卡片页面刷新<!--arkts-ui-widget-interaction-->
       - [ArkTS卡片页面刷新概述](arkts-ui-widget-interaction-overview.md)
       - [ArkTS卡片主动刷新](arkts-ui-widget-active-refresh.md)
       - [ArkTS卡片被动刷新](arkts-ui-widget-passive-refresh.md)
       <!--Del-->
-      - [卡片代理刷新](arkts-ui-widget-update-by-proxy.md)
+      - [卡片代理刷新（仅对系统应用开放）](arkts-ui-widget-update-by-proxy-sys.md)
       <!--DelEnd-->
       - [刷新本地图片和网络图片](arkts-ui-widget-image-update.md)
       - [根据卡片状态刷新不同内容](arkts-ui-widget-update-by-status.md)
@@ -38,8 +39,10 @@
       - [卡片编辑开发指导](arkts-ui-widget-event-formeditextensionability.md)
     - 应用内请求卡片加桌<!--arkts-ui-widget-add-->
       - [应用内拉起卡片管理加桌](arkts-ui-widget-open-formmanager.md)
+    <!--RP1--><!--RP1End-->
+    <!--RP2--><!--RP2End-->
   <!--Del--> 
-  - [ArkTS卡片使用方开发指导（仅对系统应用开放）](widget-host-development-guide.md)
+  - [ArkTS卡片使用方开发指导（仅对系统应用开放）](widget-host-development-guide-sys.md)
   <!--DelEnd-->
   - 互动卡片开发<!--arkts-ui-liveform-->
     - [互动卡片概述](arkts-ui-liveform-overview.md)
@@ -48,7 +51,7 @@
       - [场景动效类型互动卡片概述](arkts-ui-liveform-sceneanimation-overview.md)
       - [场景动效类型互动卡片开发指导](arkts-ui-liveform-sceneanimation-development.md)
       <!--Del-->
-      - [场景动效类型互动卡片开发指导（系统应用）](arkts-ui-liveform-sceneanimation-development-sys.md)
+      - [场景动效类型互动卡片开发指导（仅对系统应用开放）](arkts-ui-liveform-sceneanimation-development-sys.md)
       <!--DelEnd-->
 - JS卡片开发<!--form-js-ui-->
   - [JS卡片概述](js-ui-widget-overview.md)

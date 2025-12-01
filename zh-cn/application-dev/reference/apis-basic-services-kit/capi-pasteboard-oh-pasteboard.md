@@ -6,6 +6,10 @@
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct OH_Pasteboard OH_Pasteboard
+```
+
 ## 概述
 
 定义剪贴板对象，用以操作系统剪贴板。

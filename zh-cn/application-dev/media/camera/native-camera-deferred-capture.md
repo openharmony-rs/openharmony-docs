@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 分段式拍照是相机的最重要功能之一，相机输出低质量图用作快速显示，提升用户感知拍照速度，同时使用高质量图保证最后的成图质量达到系统相机的水平，既满足了后处理算法的需求，又不阻塞前台的拍照速度，构筑相机性能竞争力，提升了用户的体验。
 
@@ -50,7 +50,7 @@
 
 3. 相机初始化及拍照触发参考[拍照(C/C++)](./native-camera-shooting.md)。
 
-4. 注册分段式（PhotoAssetAvailable）拍照回调，对比单端式拍照，仅注册的拍照回调接口不同。
+4. 注册分段式（PhotoAssetAvailable）拍照回调，对比单段式拍照，仅注册的拍照回调接口不同。
 
    > **注意：**
    >

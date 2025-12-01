@@ -4,7 +4,11 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct OH_AVMetadataBuilderStruct OH_AVMetadataBuilder
+```
 
 ## Overview
 

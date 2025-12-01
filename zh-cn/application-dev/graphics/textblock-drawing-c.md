@@ -33,18 +33,20 @@
 
 简单示例和示意图如下所示：
 
-```c++
+<!-- @[ndk_graphics_draw_base_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 创建字体对象
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // 设置字体大小
-OH_Drawing_FontSetTextSize(font, 100);
+OH_Drawing_FontSetTextSize(font, value100_);
 // 需要绘制的文字
 const char *str = "Hello world";
 // 创建字块对象
 OH_Drawing_TextBlob *textBlob =
     OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
 // 绘制字块
-OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 200, 800); 
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 // 释放字块对象
 OH_Drawing_TextBlobDestroy(textBlob);
 // 释放字体对象
@@ -57,29 +59,35 @@ OH_Drawing_FontDestroy(font);
 
 基于基本的字块绘制，还可以通过画笔实现文字描边效果，描边效果的更多介绍请参考[描边效果](basic-drawing-effect-c.md#描边效果)。
 
-文字描边的简要示例和示意图如下：
+以下以英文文字描边和中文文字描边给出示例和指导。
 
-```c++
+### 英文文字描边
+
+英文文字描边的简要示例和示意图如下：
+
+<!-- @[ndk_graphics_draw_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 创建画笔
 OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
 // 设置抗锯齿
 OH_Drawing_PenSetAntiAlias(pen, true);
 // 设置描边颜色
-OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
-// 设置描边线宽
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+// 设置描边线宽为3
 OH_Drawing_PenSetWidth(pen, 3);
 // 设置画笔描边效果
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 创建字型对象
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // 设置字体大小
-OH_Drawing_FontSetTextSize(font, 150);
+OH_Drawing_FontSetTextSize(font, value150_);
 const char *str = "Hello world";
 // 创建字块对象
 OH_Drawing_TextBlob *textBlob =
     OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
 // 绘制字块
-OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 200, 800);
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 // 去除描边效果
 OH_Drawing_CanvasDetachPen(canvas);
 // 销毁各类对象
@@ -90,17 +98,69 @@ OH_Drawing_PenDestroy(pen);
 
 ![Screenshot_20241225171259621](figures/Screenshot_20241225171259621.jpg)
 
+### 中文文字描边
+
+首先需要通过画笔描边，然后需要调用画刷填充内部颜色，去除字体中间的杂质和重叠部分，实现中文文字描边效果。
+
+中文文字描边的简要示例和示意图如下：
+
+<!-- @[ndk_graphics_draw_chinese_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
+// 创建画刷
+OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+// 创建画笔
+OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
+// 设置画刷抗锯齿
+OH_Drawing_BrushSetAntiAlias(brush, true);
+// 设置画刷描边颜色
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, 0xFF));
+// 设置画笔抗锯齿
+OH_Drawing_PenSetAntiAlias(pen, true);
+// 设置描边线宽为3
+OH_Drawing_PenSetWidth(pen, 3);
+// 设置画笔描边颜色
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
+// 设置画笔描边效果
+OH_Drawing_CanvasAttachPen(canvas, pen);
+// 创建字型对象
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// 设置字体大小
+OH_Drawing_FontSetTextSize(font, value150_);
+const char *str = "你好";
+// 创建字块对象
+OH_Drawing_TextBlob *textBlob =
+    OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+// 绘制字块
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
+// 去除描边效果
+OH_Drawing_CanvasDetachPen(canvas);
+// 设置画刷描边效果
+OH_Drawing_CanvasAttachBrush(canvas, brush);
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
+
+// 销毁各类对象
+OH_Drawing_TextBlobDestroy(textBlob);
+OH_Drawing_FontDestroy(font);
+OH_Drawing_PenDestroy(pen);
+OH_Drawing_BrushDestroy(brush);
+```
+
+![chinese_stroke_text_c](figures/chinese_stroke_text_c.png)
+
 ## 文字渐变
 
 基于基本字块绘制，还可以通过着色器实现文字渐变的效果，着色器的更多介绍请参考[着色器效果](complex-drawing-effect-c.md#着色器效果)。
 
 以下为文字添加了线性渐变着色器效果的简要示例和示意图：
 
-```c++
+<!-- @[ndk_graphics_draw_gradient_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 开始点
-OH_Drawing_Point *startPt = OH_Drawing_PointCreate(100, 100);
+OH_Drawing_Point *startPt = OH_Drawing_PointCreate(value100_, value100_);
 // 结束点
-OH_Drawing_Point *endPt = OH_Drawing_PointCreate(900, 900);
+OH_Drawing_Point *endPt = OH_Drawing_PointCreate(value900_, value900_);
 // 颜色数组
 uint32_t colors[] = {0xFFFFFF00, 0xFFFF0000, 0xFF0000FF};
 // 相对位置数组
@@ -117,13 +177,13 @@ OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建字型对象
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // 设置字体大小
-OH_Drawing_FontSetTextSize(font, 150);
+OH_Drawing_FontSetTextSize(font, value150_);
 const char *str = "Hello world";
 // 创建字块对象
 OH_Drawing_TextBlob *textBlob =
     OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
 // 绘制字块
-OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 200, 800);
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 // 取消填充效果
 OH_Drawing_CanvasDetachBrush(canvas);
 // 销毁各类对象
@@ -140,11 +200,13 @@ OH_Drawing_BrushDestroy(brush);
 
 设置跟随主题字体的示例代码和效果图如下：
 
-```c++
+<!-- @[ndk_graphics_draw_theme_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 创建字型对象
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // 设置文字大小
-OH_Drawing_FontSetTextSize(font, 100);
+OH_Drawing_FontSetTextSize(font, value100_);
 // 设置跟随主题字体
 OH_Drawing_FontSetThemeFontFollowed(font, true);
 // 需要绘制的文字
@@ -153,7 +215,7 @@ const char *str = "Hello World";
 OH_Drawing_TextBlob *textBlob =
     OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
 // 绘制字块
-OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 200, 800);
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 // 释放字块对象
 OH_Drawing_TextBlobDestroy(textBlob);
 // 释放字型对象
@@ -175,15 +237,18 @@ OH_Drawing_FontDestroy(font);
 基础场景：绘制无字体特征的字符  
 对于无需字体特征的常规文本渲染场景，可以使用OH_Drawing_CanvasDrawSingleCharacter绘制单个字符，使用OH_Drawing_FontMeasureSingleCharacter测量单个字符的宽度，示例代码和效果图如下：
 
-```c++
+<!-- @[ndk_graphics_draw_single_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 创建字型对象
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // 设置文字大小
-OH_Drawing_FontSetTextSize(font, 100);
+OH_Drawing_FontSetTextSize(font, value100_);
 float startX = 100;
 float startY = 100;
+int strLen = 5;
 const char* str = "Hello";
-for (int i = 0; i < 5; ++i) {
+for (int i = 0; i < strLen; ++i) {
     // 单字绘制
     OH_Drawing_CanvasDrawSingleCharacter(canvas, &str[i], font, startX, startY);
     float textWidth = 0.f;
@@ -200,18 +265,21 @@ OH_Drawing_FontDestroy(font);
 进阶场景：绘制带字体特征的字符  
 对于需要字体特征的文本渲染场景，可以使用OH_Drawing_CanvasDrawSingleCharacterWithFeatures绘制单个字符，使用OH_Drawing_FontMeasureSingleCharacterWithFeatures测量单个字符的宽度，示例代码和效果图如下：
 
-```c++
+<!-- @[ndk_graphics_draw_feature_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 创建字型对象
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // 设置文字大小
-OH_Drawing_FontSetTextSize(font, 100);
+OH_Drawing_FontSetTextSize(font, value100_);
 // 创建字体特征对象
 OH_Drawing_FontFeatures* features = OH_Drawing_FontFeaturesCreate();
 OH_Drawing_FontFeaturesAddFeature(features, "frac", 1);
 float startX = 100;
 float startY = 100;
+int strLen = 5;
 const char* str = "a2+b2";
-for (int i = 0; i < 5; ++i) {
+for (int i = 0; i < strLen; ++i) {
     // 单字绘制
     OH_Drawing_CanvasDrawSingleCharacterWithFeatures(canvas, &str[i], font, startX, startY, features);
     float textWidth = 0.f;
@@ -236,5 +304,5 @@ OH_Drawing_FontDestroy(font);
 
 针对Drawing(C/C++)的开发，有以下相关实例可供参考：
 
-- [NDKGraphicsDraw (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKGraphicsDraw)
+- [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
 <!--RP1End-->

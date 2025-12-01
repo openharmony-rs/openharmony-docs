@@ -6,7 +6,7 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-This topic describes how to configure the application icon and label. Application icons are classified into single-layer icons and layered icons. A single-layer icon contains only one image, and a layered icon contains a foreground image and a background image. For details about the icon specifications and icon configuration rules, see <!--RP1-->[Icon Deliverables](https://gitcode.com/openharmony/docs/blob/master/en/design/ux-design/visual-app-icons.md#icon-deliverables)<!--RP1End--> and [Configuring Icons and Labels](../application-models/application-component-configuration-stage.md#configuring-icons-and-labels), respectively.
+This topic describes how to configure the application icon and label. Application icons are classified into single-layer icons and layered icons. A single-layer icon contains only one image, and a layered icon contains a foreground image and a background image. For details about the icon specifications and icon configuration rules, see <!--RP1-->[Icon Deliverables](https://gitcode.com/openharmony/docs/blob/master/en/design/ux-design/visual-app-icons.md#icon-deliverables)<!--RP1End--> and [Configuring the Application Icon and Label](../application-models/application-component-configuration-stage.md#configuring-the-application-icon-and-label), respectively.
 
 ## Use Scenarios
 
@@ -33,7 +33,7 @@ The display effects are as follows.
 >
 > **NOTE**
 > 
-> During compilation and build, resource files in the **AppScope** directory where the **app.json5** file is located are incorporated into the resource directory of the module. If resource files with the same name exist in these two directories, only the ones in the **AppScope** directory are retained after compilation and packaging.
+> The resource files in the **AppScope** directory are merged into the **resources** directory of the module. If files with the same name exist in these two directories, the ones in the **AppScope** directory will overwrite those in the module after build and packaging.
 >
 > For example, if the labels of the layered icon files configured in **app.json5** and **module.json5** are the same but the icons are different, the resource files in the **AppScope** directory overwrite those in the module. Finally, the icon configured in **app.json5** is used.
 > 
@@ -49,12 +49,14 @@ The display effects are as follows.
 
   This configuration takes effect only when the **module.json5** configuration file does not contain any UIAbility or **icon** and **label** under the **abilities** tag of the UIAbility are not set. (You can manually delete the icon and label configurations).
 
-  ```json
+  <!-- @[layered_image_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/AppScope/app.json5) -->
+  
+  ``` JSON5
   {
     "app": {
+      // ...
       "icon": "$media:app_icon",
       "label": "$string:app_name" // Configure the resource whose name is app_name in AppScope/resources/base/element/string.json. If the resource already exists, skip this step.
-      // ...
     }
   }
   ```
@@ -63,14 +65,18 @@ The display effects are as follows.
 
   In addition to configuring the **icon** and **label** fields, you need to add **entity.system.home** under **entities** and **ohos.want.action.home** under **actions**.
 
-  ```json
+  <!-- @[layered_image_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/entry/src/main/module.json5) -->
+  
+  ``` JSON5
   {
     "module": {
       // ...
       "abilities": [
         {
+          // ...
           "icon": "$media:icon",
-          "label": "$string:EntryAbility_label", // Configure the resource whose name is EntryAbility_label in entry/src/main/resources/base/element/string.json. If the resource already exists, skip this step.
+          // Configure the resource whose name is EntryAbility_label in entry/src/main/resources/base/element/string.json. If the resource already exists, skip this step.
+          "label": "$string:EntryAbility_label",
           "skills": [
             {
               "entities": [
@@ -80,14 +86,15 @@ The display effects are as follows.
                 "ohos.want.action.home"
               ]
             }
-          ],
+          ]
         }
-      ]
+      ],
+      // ...
     }
   }
   ```
 
-## Configuring the Layered Icon and Label
+## Configuring a Layered Icon and Label
 
 - **Method 1: Configuring app.json5**
 
@@ -109,14 +116,17 @@ The display effects are as follows.
       }
       ```
   3. Reference the layered icon resource file in the [app.json5](app-configuration-file.md) file. Example:
-      ```json
-          {
-            "app": {
-              "icon": "$media:app_layered_image",
-              "label": "$string:app_name" // Configure the resource whose name is app_name in AppScope/resources/base/element/string.json. If the resource already exists, skip this step.
-              // ...
-            }
-          }
+
+      <!-- @[layered_image_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/AppScope/app.json5) -->
+      
+      ``` JSON5
+      {
+        "app": {
+          // ...
+          "icon": "$media:layered_image",
+          "label": "$string:app_name" // Configure the resource whose name is app_name in AppScope/resources/base/element/string.json. If the resource already exists, skip this step.
+        }
+      }
       ```
 
 - **Method 2: Configuring module.json5**
@@ -139,15 +149,19 @@ The display effects are as follows.
 
   3. To display a UIAbility icon on the home screen, you must configure the **icon** and **label** fields, and under the **skills** tag, add **entity.system.home** to **entities** and **ohos.want.action.home** to **actions**.
 
-      ```json
+      <!-- @[layered_image_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/entry/src/main/module.json5)  -->
+      
+      ``` JSON5
       {
         "module": {
+          // ...
           "abilities": [
             {
-              "name": "EntryAbility",
               // ...
-              "icon": "$media:layered_image", // Set icon to the index of the layered icon resource file.
-              "label": "$string:EntryAbility_label", // Configure the resource whose name is EntryAbility_label in entry/src/main/resources/base/element/string.json. If the resource already exists, skip this step.
+              // Set icon to the index of the layered icon resource file.
+              "icon": "$media:layered_image",
+              // Configure the resource whose name is EntryAbility_label in entry/src/main/resources/base/element/string.json. If the resource already exists, skip this step.
+              "label": "$string:EntryAbility_label",
               "skills": [
                 {
                   "entities": [
@@ -157,10 +171,9 @@ The display effects are as follows.
                     "ohos.want.action.home"
                   ]
                 }
-              ],
-              // ...
+              ]
             }
-          ]
+          ],
           // ...
         }
       }
@@ -177,4 +190,4 @@ The display effects are as follows.
 
 The system strictly controls applications without icons to prevent malicious applications from deliberately displaying no icon on the home screen to block uninstall attempts. Therefore, home screen icons cannot be hidden for applications except pre-installed ones.
 
-If the pre-installed application indeed needs to hide the home screen icon, the **AllowAppDesktopIconHide** [application privilege](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#general-application-privileges) must be configured. For details about the configuration, see "Application Privilege Configuration." After this privilege is granted, the application icon will not be displayed on the home screen.<!--DelEnd-->
+If the pre-installed application indeed needs to hide the home screen icon, the application privilege **AllowAppDesktopIconHide** must be configured. For details about how to configure, see [Application Privilege Configuration](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#general-application-privileges). After this privilege is granted, the application icon will not be displayed on the home screen.<!--DelEnd-->

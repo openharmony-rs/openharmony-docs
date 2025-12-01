@@ -4,7 +4,7 @@
 <!--Owner: @carnivore233-->
 <!--Designer: @pssea-->
 <!--Tester: @mateng_Holtens-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 支持图文混排和文本交互式编辑的组件。
 
@@ -60,7 +60,7 @@ RichEditor(options: RichEditorStyledStringOptions)
 
 ### customKeyboard
 
-customKeyboard(value: CustomBuilder, options?: KeyboardOptions)
+customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: KeyboardOptions | undefined)
 
 设置自定义键盘。
 
@@ -72,7 +72,9 @@ customKeyboard(value: CustomBuilder, options?: KeyboardOptions)
 
 默认在输入控件失去焦点时，关闭自定义键盘。
 
-如果设备支持拍摄输入，设置自定义键盘后，该输入框会不支持拍摄输入。
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -82,8 +84,8 @@ customKeyboard(value: CustomBuilder, options?: KeyboardOptions)
 
 | 参数名                | 类型                                        | 必填 | 说明                             |
 | --------------------- | ------------------------------------------- | ---- | -------------------------------- |
-| value                 | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 自定义键盘。                     <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| options<sup>12+</sup> | [KeyboardOptions](#keyboardoptions12)       | 否   | 设置自定义键盘是否支持避让功能。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| value                 | [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>23+</sup> \| undefined<sup>23+</sup> | 是   | 自定义键盘。                     <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>传入undefined时默认使用系统键盘。|
+| options<sup>12+</sup> | [KeyboardOptions](#keyboardoptions12) \| undefined<sup>23+</sup>      | 否   | 设置自定义键盘是否支持避让功能。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>传入undefined时默认不支持避让。|
 
 ### bindSelectionMenu
 
@@ -191,11 +193,39 @@ dataDetectorConfig(config: TextDataDetectorConfig)
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | config | [TextDataDetectorConfig](ts-text-common.md#textdatadetectorconfig11对象说明) | 是   | 文本识别配置。|
 
+### enableSelectedDataDetector<sup>22+</sup>
+
+enableSelectedDataDetector(enable: boolean | undefined)
+
+设置是否启用文本选择的AI菜单功能。启用后可识别选区中的邮件、电话、网址、日期、地址等，并在文本选择菜单中展示对应的AI菜单项。默认启用AI菜单功能。
+
+AI菜单功能启用时，在组件中选中文本后，文本选择菜单能够展示对应的AI菜单项，包括[TextMenuItemId](ts-text-common.md#textmenuitemid12)中的url（打开连接）、email（新建邮件）、phoneNumber（呼叫）、address（导航前往）、dateTime（新建日程）。
+
+AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体，才能展示对应的选项。该菜单项与[TextMenuItemId](ts-text-common.md#textmenuitemid12)中的askAI菜单项不同时出现。
+
+本功能仅在[copyOptions](#copyoptions)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时生效。
+
+该接口依赖设备底层具有文本识别能力，否则设置不会生效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| enable  | boolean \| undefined | 是   | 是否启用选择文本识别，true表示启用，false表示不启用。<br>传入undefined或null时属性重置为默认值。 |
+
 ### enablePreviewText<sup>12+</sup>
 
 enablePreviewText(enable: boolean)
 
 设置是否开启预上屏功能。
+
+>**说明：**
+>
+> 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -224,6 +254,10 @@ enablePreviewText(enable: boolean)
 placeholder(value: ResourceStr, style?: PlaceholderStyle)
 
 设置无输入时的提示文本。
+
+>**说明：**
+>
+> 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -276,6 +310,10 @@ editMenuOptions(editMenu: EditMenuOptions)
 
 调用[disableMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)或[disableSystemServiceMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)接口屏蔽文本选择菜单内的系统服务菜单项时，editMenuOptions接口内回调方法[onCreateMenu](./ts-text-common.md#oncreatemenu12)的入参列表中不包含被屏蔽的菜单选项。
 
+>**说明：**
+>
+> 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -308,6 +346,9 @@ enableKeyboardOnFocus(isEnabled: boolean)
 
 设置RichEditor通过点击以外的方式获焦时，是否主动拉起软键盘。
 
+>**说明：**
+>
+> 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -324,6 +365,10 @@ enableKeyboardOnFocus(isEnabled: boolean)
 barState(state: BarState)
 
 设置RichEditor滚动条的显示模式。
+
+>**说明：**
+>
+> 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -365,13 +410,17 @@ maxLines(maxLines: Optional\<number\>)
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| maxLines  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | 是   | 设置富文本可显示的最大行数。maxLines为可显示行数，当设置maxLines时，超出内容可滚动显示。同时设置组件高度和最大行数，组件高度优先生效。<br/>默认值：Infinity，可以无限输入，支持undefined类型。 <br/>取值范围：(0, +∞) |
+| maxLines  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | 是   | 设置富文本可显示的最大行数。maxLines为可显示行数，当设置maxLines时，超出内容可滚动显示。同时设置组件高度和最大行数，组件高度优先生效。<br/>默认值：UINT32_MAX，可以无限输入，支持undefined类型。 <br/>取值范围：(0, UINT32_MAX] |
 
 ### enableHapticFeedback<sup>13+</sup>
 
 enableHapticFeedback(isEnabled: boolean)
 
 设置RichEditor是否支持触感反馈。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -413,7 +462,7 @@ stopBackPress(isStopped: Optional&lt;boolean&gt;)
 
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| isStopped  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | 是   | 是否阻止返回键。<br/>默认值：true，true表示阻止返回键，false表示不阻止返回键。<br/>**说明：** <br/>当不设置该属性或设置异常值时，取默认值。|
+| isStopped  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | 是   | 是否阻止返回键。<br/>true表示阻止，false表示不阻止。<br/>默认值：true。异常值取默认值。|
 
 ### undoStyle<sup>20+</sup>
 
@@ -463,7 +512,7 @@ scrollBarColor(color: Optional\<ColorMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                     |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| color  | [Optional\<ColorMetrics>](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 设置组件滚动条颜色。<br />默认值：'\#66182431'<br />**说明：** 设置异常值时按默认值处理。 |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)> | 是   | 设置组件滚动条颜色。<br />默认值：'#66182431'，显示为灰色。<br />**说明：** 设置异常值时按默认值处理。 |
 
 
 ## 事件
@@ -533,6 +582,10 @@ onDidIMEInput(callback:Callback\<TextRange>)
 输入法输入完成后，触发回调。
 
 使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构建的RichEditor组件不支持该回调。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -673,6 +726,10 @@ onWillChange(callback: Callback\<[RichEditorChangeValue](#richeditorchangevalue1
 
 使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构建的RichEditor组件不支持该回调。
 
+>**说明：**
+>
+> 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -690,6 +747,10 @@ onDidChange(callback: OnDidChangeCallback)
 在组件执行增删操作后，触发回调。如果文本实际未发生增删，则不触发该回调。
 
 使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构建的RichEditor组件不支持该回调。
+
+>**说明：**
+>
+> 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -736,6 +797,24 @@ onCopy(callback: Callback\<CopyEvent\>)
 | 参数名   | 类型                                    | 必填   | 说明        |
 | ----- | --------------------------------------- | ---- | ----------- |
 | callback |Callback\<[CopyEvent](#copyevent12)\> | 是    | 定义用户复制事件。 |
+
+### onWillAttachIME<sup>22+</sup>
+
+onWillAttachIME(callback: Callback\<IMEClient> \| undefined)
+
+在组件绑定输入法前，触发回调。
+
+开发者可以调用IMEClient中的setExtraConfig()方法，给输入法传递自定义消息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明               |
+| ------ | ------------------------------------------------------------ | ---- | ------------------ |
+| callback  | Callback\<[IMEClient](ts-text-common.md#imeclient20对象说明)> \| undefined | 是   | 在组件绑定输入法前触发的回调。<br>值为undefined时清除已绑定的回调事件。 |
 
 ## RichEditorInsertValue
 
@@ -1203,6 +1282,16 @@ getCaretRect(): RectResult | undefined
 | ------ | --------- |
 | [RectResult](ts-universal-attributes-on-child-touch-test.md#rectresult) \| undefined | 当前光标与RichEditor的相对位置。 |
 
+### deleteBackward<sup>23+</sup>
+
+deleteBackward(): void
+
+删除单个字符。预览态删除输入框尾部字符，编辑态删除光标前字符。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## RichEditorController
 
 RichEditor组件的控制器，继承自[RichEditorBaseController](#richeditorbasecontroller12)。
@@ -1280,7 +1369,7 @@ addBuilderSpan(value: CustomBuilder, options?: RichEditorBuilderSpanOptions): nu
 > - builder的手势相关事件机制与通用手势事件相同，如果builder中未设置透传，则仅有builder中的子组件响应。
 > - 如果组件光标闪烁，插入后光标位置更新为新插入builder的后面。
 
-通用属性仅支持[size](ts-universal-attributes-size.md#size)、[padding](ts-universal-attributes-size.md#padding)、[margin](ts-universal-attributes-size.md#margin)、[aspectRatio](ts-universal-attributes-layout-constraints.md#aspectratio)、[borderStyle](ts-universal-attributes-border.md#borderstyle)、[borderWidth](ts-universal-attributes-border.md#borderwidth)、[borderColor](ts-universal-attributes-border.md#bordercolor)、[borderRadius](ts-universal-attributes-border.md#borderradius)、[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)、[opacity](ts-universal-attributes-opacity.md)、[blur](ts-universal-attributes-image-effect.md#blur)、[backdropBlur](ts-universal-attributes-background.md#backdropblur)、[shadow](ts-universal-attributes-image-effect.md#shadow)、[grayscale](ts-universal-attributes-image-effect.md#grayscale)、[brightness](ts-universal-attributes-image-effect.md#brightness)、[saturate](ts-universal-attributes-image-effect.md#saturate)、[contrast](ts-universal-attributes-image-effect.md#contrast)、[invert](ts-universal-attributes-image-effect.md#invert)、[sepia](ts-universal-attributes-image-effect.md#sepia)、[hueRotate](ts-universal-attributes-image-effect.md#huerotate)、[colorBlend](ts-universal-attributes-image-effect.md#colorblend7)、[linearGradientBlur](ts-universal-attributes-image-effect.md#lineargradientblur12)、[clip](ts-universal-attributes-sharp-clipping.md#clip12)、[mask](ts-universal-attributes-sharp-clipping.md#mask12)、[foregroundBlurStyle](ts-universal-attributes-foreground-blur-style.md#foregroundblurstyle)、[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup)、[accessibilityText](ts-universal-attributes-accessibility.md#accessibilitytext)、[accessibilityDescription](ts-universal-attributes-accessibility.md#accessibilitydescription)、[accessibilityLevel](ts-universal-attributes-accessibility.md#accessibilitylevel)、[sphericalEffect](ts-universal-attributes-image-effect.md#sphericaleffect12)、[lightUpEffect](ts-universal-attributes-image-effect.md#lightupeffect12)、[pixelStretchEffect](ts-universal-attributes-image-effect.md#pixelstretcheffect12)。
+通用属性仅支持[size](ts-universal-attributes-size.md#size)、[padding](ts-universal-attributes-size.md#padding)、[margin](ts-universal-attributes-size.md#margin)、[aspectRatio](ts-universal-attributes-layout-constraints.md#aspectratio)、[borderStyle](ts-universal-attributes-border.md#borderstyle)、[borderWidth](ts-universal-attributes-border.md#borderwidth)、[borderColor](ts-universal-attributes-border.md#bordercolor)、[borderRadius](ts-universal-attributes-border.md#borderradius)、[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)、[opacity](ts-universal-attributes-opacity.md)、[blur](ts-universal-attributes-image-effect.md#blur)、[backdropBlur](ts-universal-attributes-background.md#backdropblur)、[shadow](ts-universal-attributes-image-effect.md#shadow)、[grayscale](ts-universal-attributes-image-effect.md#grayscale)、[brightness](ts-universal-attributes-image-effect.md#brightness)、[saturate](ts-universal-attributes-image-effect.md#saturate)、[contrast](ts-universal-attributes-image-effect.md#contrast)、[invert](ts-universal-attributes-image-effect.md#invert)、[sepia](ts-universal-attributes-image-effect.md#sepia)、[hueRotate](ts-universal-attributes-image-effect.md#huerotate)、[colorBlend](ts-universal-attributes-image-effect.md#colorblend)、[linearGradientBlur](ts-universal-attributes-image-effect.md#lineargradientblur12)、[clip](ts-universal-attributes-sharp-clipping.md#clip12)、[mask](ts-universal-attributes-sharp-clipping.md#mask12)、[foregroundBlurStyle](ts-universal-attributes-foreground-blur-style.md#foregroundblurstyle)、[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup)、[accessibilityText](ts-universal-attributes-accessibility.md#accessibilitytext)、[accessibilityDescription](ts-universal-attributes-accessibility.md#accessibilitydescription)、[accessibilityLevel](ts-universal-attributes-accessibility.md#accessibilitylevel)、[sphericalEffect](ts-universal-attributes-image-effect.md#sphericaleffect12)、[lightUpEffect](ts-universal-attributes-image-effect.md#lightupeffect12)、[pixelStretchEffect](ts-universal-attributes-image-effect.md#pixelstretcheffect12)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1816,13 +1905,12 @@ SymbolSpan样式选项。
 
 设置builder的偏移位置和样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 类型      | 只读 | 可选   | 说明                                    |
 | ------ | ------ | ---- | ----------|--------------------------- |
-| offset | number | 否 | 是    | 添加builder的位置。省略或者为异常值时，添加到所有内容的最后。 |
+| offset | number | 否 | 是    | 添加builder的位置。省略或者为异常值时，添加到所有内容的最后。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| accessibilitySpanOptions<sup>23+</sup> | [AccessibilitySpanOptions](ts-text-common.md#accessibilityspanoptions23对象说明) | 否 | 是    | 无障碍朗读功能属性。缺省时，取[AccessibilitySpanOptions](ts-text-common.md#accessibilityspanoptions23对象说明)的默认值。  <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
 ## RichEditorSpan<sup>12+</sup>
 
@@ -2850,7 +2938,8 @@ struct Index {
               start: this.start,
               textStyle:
               {
-                fontWeight: FontWeight.Bolder
+                fontWeight: FontWeight.Bolder,
+                fontSize:15
               },
               imageStyle: {
                 size: ["80px", "80px"],
@@ -2869,7 +2958,8 @@ struct Index {
               start: this.start,
               textStyle:
               {
-                fontWeight: FontWeight.Bolder
+                fontWeight: FontWeight.Bolder,
+                fontSize:15
               },
               imageStyle: {
                 size: ["70px", "70px"],
@@ -2888,7 +2978,8 @@ struct Index {
               start: this.start,
               textStyle:
               {
-                fontWeight: FontWeight.Bolder
+                fontWeight: FontWeight.Bolder,
+                fontSize:15
               },
               imageStyle: {
                 size: ["60px", "60px"],
@@ -3837,7 +3928,11 @@ struct Index {
 
         Button("add span")
           .onClick(() => {
-            let num = this.controller.addBuilderSpan(this.my_builder, { offset: this.my_offset });
+            let num = this.controller.addBuilderSpan(this.my_builder, 
+              { 
+                offset: this.my_offset, 
+                accessibilitySpanOptions: { accessibilityText:"hello", accessibilityDescription:"world", accessibilityLevel:"yes" } 
+              });
             console.info('addBuilderSpan return ' + num);
           })
         Button("add image")
@@ -5468,8 +5563,6 @@ struct RichEditorExample {
 struct RichEditorExample {
   controller: RichEditorController = new RichEditorController();
   options: RichEditorOptions = { controller: this.controller };
-  styledStringController: RichEditorStyledStringController = new RichEditorStyledStringController();
-  styledStringOptions: RichEditorStyledStringOptions = { controller: this.styledStringController };
 
   build() {
     Column() {
@@ -5493,16 +5586,11 @@ struct RichEditorExample {
           .height('35%')
           .border({ width: 1, color: Color.Blue })
       }
-
-      Row() {
-        RichEditor(this.styledStringOptions)
-          .height('35%')
-          .border({ width: 1, color: Color.Red })
-      }
     }
   }
 }
 ```
+![UrlStyle](figures/example_27.gif)
 
 ### 示例28（开启带样式的撤销还原能力）
 从API version 20开始，该示例对于不使用属性字符串的富文本组件，可以通过配置[undoStyle](#undostyle20)属性为UndoStyle.KEEP_STYLE，以支持撤销还原时保留原内容的样式。
@@ -5968,3 +6056,141 @@ struct AutoSpacing {
 }
 ```
 ![AutoSpacing](figures/richEditorAutoSpacing.gif)
+
+### 示例32（设置文本选择的AI菜单）
+从API version 22开始，该示例通过[enableSelectedDataDetector](#enableselecteddatadetector22)，配置文本选择AI菜单功能。
+
+```ts
+@Entry
+@Component
+struct Demo32 {
+  controller: RichEditorController = new RichEditorController();
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 20 } };
+  exampleText: string = '示例网址：www.example.com';
+
+  build() {
+    Column() {
+      Row() {
+        RichEditor({ controller: this.controller })
+          .onReady(() => {
+            this.controller.addTextSpan(this.exampleText, this.textSpanOptions)
+          })
+          .copyOptions(CopyOptions.LocalDevice)
+          .enableSelectedDataDetector(true)
+          .border({ width: 1, color: Color.Black })
+          .height(300)
+          .margin(10)
+      }
+    }
+  }
+}
+```
+<!--RP2--><!--RP2End-->
+
+### 示例33（设置监听输入法绑定事件）
+从API version 22开始，该示例通过[onWillAttachIME](#onwillattachime22)事件监听输入法绑定事件。
+
+```ts
+@Entry
+@Component
+struct SetOnWillAttachIME {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  @State message: string = "RichEditor未绑定输入法"
+
+  build() {
+    Column() {
+     Text(this.message)
+       .fontSize(24)
+       .width("100%")
+       .textAlign(TextAlign.Center)
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan("RichEditor组件",
+            {
+              style:
+              {
+                fontColor: Color.Orange,
+                fontSize: 30
+              }
+            })
+        })
+        .onWillAttachIME((value:IMEClient) => {
+          // 给输入法传递自定义消息
+          const inputConfig: InputMethodExtraConfig = {
+            customSettings: {
+              component: 'RichEditor',
+              id: 8 as number,
+              isEnable: true
+            }
+          };
+          value.setExtraConfig(inputConfig);
+          this.message = "RichEditor已绑定输入法"
+        })
+        .borderWidth(1)
+        .borderColor(Color.Green)
+        .width("100%")
+        .height("20%")
+    }
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+![OnWillAttachIME](figures/richEditorOnWillAttachIME.gif)
+
+### 示例34（删除输入框文本尾部字符）
+从API version 23开始，该示例通过[deleteBackward](#deletebackward23)事件在编辑态用自定义键盘删除光标前字符。
+
+```ts
+@Entry
+@Component
+struct RichEditorExample {
+  controller: RichEditorController = new RichEditorController();
+
+  // 自定义键盘删除键
+  @Builder
+  CustomKeyboardBuilder() {
+    Column() {
+      Button('DELETE')
+        .width(200)
+        .height(60)
+        .backgroundColor(Color.Blue)
+        .fontColor(Color.White)
+        .fontSize(16)
+        .onClick(() => {
+          // 调用deleteBackward接口删除字符
+          this.controller.deleteBackward()
+        })
+    }
+    .padding(10)
+    .backgroundColor(Color.Gray)
+  }
+
+  build() {
+    Column() {
+      Blank()
+        .height(400)
+      RichEditor({ controller: this.controller })
+        .customKeyboard(this.CustomKeyboardBuilder())
+        .margin(10)
+        .border({ width: 1 })
+        .height(150)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+        .width("100%")
+        .onReady(() => {
+          // 设置初始文本用于测试
+          this.controller.addTextSpan('点击DELETE键测试删除功能', {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 16
+            }
+          })
+        })
+    }.margin(90)
+  }
+}
+```
+
+![DeleteBackward](figures/richEditorDeleteBackward.gif)

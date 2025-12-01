@@ -106,7 +106,7 @@ TreeMap支持增、删、改、查操作，常用 API 如下：
 
 TreeSet根据泛型定义有序存储值，底层实现基于红黑树，支持快速插入和删除。value的类型符合ECMA标准。
 
-TreeSet基于[TreeMap](../reference/apis-arkts/js-apis-treemap.md)实现，仅处理value对象，用于存储值的集合，元素中value唯一，并支持按用户定义的排序函数排序。用于存储值的集合，元素中value唯一，并支持按用户定义的排序函数排序。
+TreeSet基于[TreeMap](../reference/apis-arkts/js-apis-treemap.md)实现，仅处理value对象，用于存储值的集合，元素中value唯一，并支持按用户定义的排序函数排序。
 
 TreeSet和[HashSet](../reference/apis-arkts/js-apis-hashset.md)相比，HashSet无序存放数据，TreeSet有序存放数据。两者元素均不允许重复，HashSet允许null值，但TreeSet不建议存放null值，可能影响排序。
 

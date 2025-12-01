@@ -1,5 +1,16 @@
 # NetConn_NetCapabilities
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
+```c
+typedef struct NetConn_NetCapabilities {...} NetConn_NetCapabilities
+```
+
 ## 概述
 
 网络能力集。

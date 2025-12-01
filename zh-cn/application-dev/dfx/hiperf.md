@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @leiguangyu-->
-<!--Designer: @Maplestroy-->
+<!--Designer: @Maplestroy91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
@@ -90,39 +90,39 @@ See 'hiperf help [command]' for more information on a specific command.
 1. 对进程ID为1234的进程采样10秒，设置回栈方式为fp（栈指针），采样频率1000次/秒，事件类型为hw-cpu-cycles和hw-instructions，采样文件保存至/data/local/tmp/perf.data。
 
 
-```shell
-$ hiperf record -p 1234 -s fp -f 1000 -d 10 -e hw-cpu-cycles,hw-instructions -o /data/local/tmp/perf.data
-Profiling duration is 10.000 seconds.
-Start Profiling...
-Timeout exit (total 10335 ms)
-Process and Saving data...
-Hiperf is not running as root mode. Do not need load kernel syms
-[ hiperf record: Captured 3.014 MB perf data. ]
-[ Sample records: 1293, Non sample records: 855 ]
-[ Sample lost: 0, Non sample lost: 0 ]
-```
+    ```shell
+    $ hiperf record -p 1234 -s fp -f 1000 -d 10 -e hw-cpu-cycles,hw-instructions -o /data/local/tmp/perf.data
+    Profiling duration is 10.000 seconds.
+    Start Profiling...
+    Timeout exit (total 10335 ms)
+    Process and Saving data...
+    Hiperf is not running as root mode. Do not need load kernel syms
+    [ hiperf record: Captured 3.014 MB perf data. ]
+    [ Sample records: 1293, Non sample records: 855 ]
+    [ Sample lost: 0, Non sample lost: 0 ]
+    ```
 
 
-采集的数据将保存为二进制格式的perf.data文件，包含性能分析所需的采样数据、进程信息、符号表及函数调用等内容。利用火焰图脚本可将采样数据转换为可视化火焰图，以此分析系统性能瓶颈、定位软件热点并优化代码效率。
+    采集的数据将保存为二进制格式的perf.data文件，包含性能分析所需的采样数据、进程信息、符号表及函数调用等内容。利用火焰图脚本可将采样数据转换为可视化火焰图，以此分析系统性能瓶颈、定位软件热点并优化代码效率。
 
 
 2. 对应用com.example.insight_test_stage进行采样，采样时长为10s，回栈方式设置为dwarf（调试信息表），采样周期为1000，事件类型为hw-cpu-cycles和hw-instructions，使用默认保存路径。
 
 
-```shell
-$ hiperf record --app com.example.insight_test_stage -d 10 -s dwarf --period 1000 -e hw-cpu-cycles,hw-instructions
-Profiling duration is 10.000 seconds.
-Start Profiling...
-Timeout exit (total 10000 ms)
-Process and Saving data...
-Hiperf is not running as root mode. Do not need load kernel syms
-[ hiperf record: Captured 0.296 MB perf data. ]
-[ Sample records: 0, Non sample records: 2640 ]
-[ Sample lost: 0, Non sample lost: 0 ]
-```
+    ```shell
+    $ hiperf record --app com.example.insight_test_stage -d 10 -s dwarf --period 1000 -e hw-cpu-cycles,hw-instructions
+    Profiling duration is 10.000 seconds.
+    Start Profiling...
+    Timeout exit (total 10000 ms)
+    Process and Saving data...
+    Hiperf is not running as root mode. Do not need load kernel syms
+    [ hiperf record: Captured 0.296 MB perf data. ]
+    [ Sample records: 0, Non sample records: 2640 ]
+    [ Sample lost: 0, Non sample lost: 0 ]
+    ```
 
 
-采集的数据会被保存至默认路径/data/local/tmp/perf.data中。
+    采集的数据会被保存至默认路径/data/local/tmp/perf.data中。
 
 
 ### 性能数据统计
@@ -131,70 +131,70 @@ Hiperf is not running as root mode. Do not need load kernel syms
 1. 对进程ID为1745，1910的进程进行计数，计数时长为10s。
 
 
-```
-$ hiperf stat -d 10 -p 1745,1910
-Profiling duration is 10.000 seconds.
-Start Profiling...
-Timeout exit (total 10000 ms)
-                    count  name                           | comment                          | coverage
-                  148,450  hw-branch-instructions         | 26.404 M/sec                     | (100%)
-                   49,833  hw-branch-misses               | 33.568878 miss rate              | (100%)
-                8,986,523  hw-cpu-cycles                  | 1.598409 GHz                     | (100%)
-                1,283,596  hw-instructions                | 7.001053 cycles per instruction  | (100%)
-                       63  sw-context-switches            | 11.206 K/sec                     | (100%)
-                        0  sw-page-faults                 | 0.000 /sec                       | (100%)
-                5,622,169  sw-task-clock                  | 0.000562 cpus used               | (100%)
-```
+    ```
+    $ hiperf stat -d 10 -p 1745,1910
+    Profiling duration is 10.000 seconds.
+    Start Profiling...
+    Timeout exit (total 10000 ms)
+                        count  name                           | comment                          | coverage
+                      148,450  hw-branch-instructions         | 26.404 M/sec                     | (100%)
+                      49,833  hw-branch-misses               | 33.568878 miss rate              | (100%)
+                    8,986,523  hw-cpu-cycles                  | 1.598409 GHz                     | (100%)
+                    1,283,596  hw-instructions                | 7.001053 cycles per instruction  | (100%)
+                          63  sw-context-switches            | 11.206 K/sec                     | (100%)
+                            0  sw-page-faults                 | 0.000 /sec                       | (100%)
+                    5,622,169  sw-task-clock                  | 0.000562 cpus used               | (100%)
+    ```
 
 
 2. 对进程ID为1745和1910的进程进行计数，计数时长为10秒，事件类型为hw-cpu-cycles、hw-instructions、sw-task-clock，指定打印信息的时间间隔为3000ms。
 
 
-```
-$ hiperf stat -d 10 -p 1745,1910 -e hw-cpu-cycles,hw-instructions,sw-task-clock -i 3000
-Profiling duration is 10.000 seconds.
-Start Profiling...
-Report at 3000 ms (6999 ms left):
-                    count  name                           | comment                          | coverage
-                2,534,675  hw-cpu-cycles                  | 1.717114 GHz                     | (100%)
-                  324,279  hw-instructions                | 7.816340 cycles per instruction  | (100%)
-                1,476,125  sw-task-clock                  | 0.000492 cpus used               | (100%)
-Report at 6000 ms (3999 ms left):
-                    count  name                           | comment                          | coverage
-                5,112,570  hw-cpu-cycles                  | 1.724259 GHz                     | (100%)
-                  648,303  hw-instructions                | 7.886081 cycles per instruction  | (100%)
-                2,965,083  sw-task-clock                  | 0.000494 cpus used               | (100%)
-Report at 9000 ms (999 ms left):
-                    count  name                           | comment                          | coverage
-                7,870,422  hw-cpu-cycles                  | 1.724897 GHz                     | (100%)
-                  994,407  hw-instructions                | 7.914689 cycles per instruction  | (100%)
-                4,562,835  sw-task-clock                  | 0.000507 cpus used               | (100%)
-Timeout exit (total 10000 ms)
-```
+    ```
+    $ hiperf stat -d 10 -p 1745,1910 -e hw-cpu-cycles,hw-instructions,sw-task-clock -i 3000
+    Profiling duration is 10.000 seconds.
+    Start Profiling...
+    Report at 3000 ms (6999 ms left):
+                        count  name                           | comment                          | coverage
+                    2,534,675  hw-cpu-cycles                  | 1.717114 GHz                     | (100%)
+                      324,279  hw-instructions                | 7.816340 cycles per instruction  | (100%)
+                    1,476,125  sw-task-clock                  | 0.000492 cpus used               | (100%)
+    Report at 6000 ms (3999 ms left):
+                        count  name                           | comment                          | coverage
+                    5,112,570  hw-cpu-cycles                  | 1.724259 GHz                     | (100%)
+                      648,303  hw-instructions                | 7.886081 cycles per instruction  | (100%)
+                    2,965,083  sw-task-clock                  | 0.000494 cpus used               | (100%)
+    Report at 9000 ms (999 ms left):
+                        count  name                           | comment                          | coverage
+                    7,870,422  hw-cpu-cycles                  | 1.724897 GHz                     | (100%)
+                      994,407  hw-instructions                | 7.914689 cycles per instruction  | (100%)
+                    4,562,835  sw-task-clock                  | 0.000507 cpus used               | (100%)
+    Timeout exit (total 10000 ms)
+    ```
 
 
-2.3 对进程ID为1910的进程进行计数，计数时长为3s，事件类型为hw-cpu-cycles，hw-instructions，并打印详细的信息。
+3. 对进程ID为1910的进程进行计数，计数时长为3s，事件类型为hw-cpu-cycles，hw-instructions，并打印详细的信息。
 
 
-```
-$ hiperf stat -d 3 -p 1910 -e hw-cpu-cycles,hw-instructions --verbose
-Profiling duration is 3.000 seconds.
-Start Profiling...
-Timeout exit (total 3000 ms)
-hw-cpu-cycles id:1342(c-1:p1910) timeEnabled:133583 timeRunning:133583 value:255740
-hw-cpu-cycles id:1343(c-1:p1988) timeEnabled:0 timeRunning:0 value:0
-hw-cpu-cycles id:1344(c-1:p1989) timeEnabled:0 timeRunning:0 value:0
-hw-cpu-cycles id:1345(c-1:p1990) timeEnabled:187833 timeRunning:187833 value:331425
-...
-hw-instructions id:1375(c-1:p1910) timeEnabled:133583 timeRunning:133583 value:36485
-hw-instructions id:1376(c-1:p1988) timeEnabled:0 timeRunning:0 value:0
-hw-instructions id:1377(c-1:p1989) timeEnabled:0 timeRunning:0 value:0
-hw-instructions id:1378(c-1:p1990) timeEnabled:187833 timeRunning:187833 value:47816
-...
-                    count  name                           | comment                          | coverage
-                  669,850  hw-cpu-cycles                  |                                  | (100%)
-                   94,903  hw-instructions                | 7.058259 cycles per instruction  | (100%)
-```
+    ```
+    $ hiperf stat -d 3 -p 1910 -e hw-cpu-cycles,hw-instructions --verbose
+    Profiling duration is 3.000 seconds.
+    Start Profiling...
+    Timeout exit (total 3000 ms)
+    hw-cpu-cycles id:1342(c-1:p1910) timeEnabled:133583 timeRunning:133583 value:255740
+    hw-cpu-cycles id:1343(c-1:p1988) timeEnabled:0 timeRunning:0 value:0
+    hw-cpu-cycles id:1344(c-1:p1989) timeEnabled:0 timeRunning:0 value:0
+    hw-cpu-cycles id:1345(c-1:p1990) timeEnabled:187833 timeRunning:187833 value:331425
+    ...
+    hw-instructions id:1375(c-1:p1910) timeEnabled:133583 timeRunning:133583 value:36485
+    hw-instructions id:1376(c-1:p1988) timeEnabled:0 timeRunning:0 value:0
+    hw-instructions id:1377(c-1:p1989) timeEnabled:0 timeRunning:0 value:0
+    hw-instructions id:1378(c-1:p1990) timeEnabled:187833 timeRunning:187833 value:47816
+    ...
+                        count  name                           | comment                          | coverage
+                      669,850  hw-cpu-cycles                  |                                  | (100%)
+                      94,903  hw-instructions                | 7.058259 cycles per instruction  | (100%)
+    ```
 
 
 ## debug应用
@@ -264,7 +264,7 @@ Supported events for hardware:
 
 ## record命令
 
-采集指定进程或指定应用的性能数据，包括CPU周期、指令数、函数调用等信息，并且将采样数据保存到指定的文件中。
+采集指定进程或指定应用的性能数据，包括CPU周期、指令数、函数调用等信息，并且将采样数据保存到指定的文件中（默认路径以设备上运行 hiperf record -h/--help 时显示的 -o 参数说明为准）。
 
 **record命令参数说明**
 
@@ -299,7 +299,7 @@ Supported events for hardware:
 | --app | 采集的应用程序名，以逗号隔开。应用程序必须是启动状态，应用程序未启动时会等待20s，20s内应用程序未启动，命令会自动结束。该参数不能和-a一起使用。 | 
 | --chkms | 设置查询的间隔时间，单位为ms。取值范围：1 - 200，默认10。 | 
 | --data-limit | 输出数据达到指定大小停止采集，默认无限制。 | 
-| -o | 设置输出文件路径，默认路径以设备上运行 hiperf record -h/--help 时显示的 -o 参数说明为准，并允许用户自定义文件名称。 | 
+| -o | 设置输出文件路径，并允许用户自定义文件名称。 | 
 | -z | 以.gz的压缩文件形式输出。 | 
 | --restart | 收集应用启动的性能指标信息，如果进程在30秒内未启动，采集操作将结束。 | 
 | --verbose | 输出更详细的报告。 | 
@@ -313,6 +313,8 @@ Supported events for hardware:
 | -a | 采集整机的性能数据。 | 
 | --exclude-hiperf | 不采集hiperf进程自身的性能数据，该可选参数必须和-a一起使用。 | 
 | --exclude-process | 不采集的进程名，该参数必须和-a一起使用。 |
+| --pipe_input | 该参数用于客户端进程调用hiperf时建立命令输入通道，开发者可参考[hiperf_client接口](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。在应用开发中，此参数无实际作用，开发者可以忽略。 |
+| --pipe_output | 该参数用于客户端进程调用hiperf时建立响应输出通道，开发者可参考[hiperf_client接口](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。在应用开发中，此参数无实际作用，开发者可以忽略。 |
 <!--RP1End-->
 
 **命令行示例**：
@@ -354,7 +356,7 @@ $ hiperf record -p 267 -d 10 -s dwarf
 | --verbose | 输出详细的信息。 | 
 | --dumpoptions | 展示当前列表里所有选项的详细信息。 | 
 | --control [command] | 采集操作启停控制参数。命令包括prepare/start/stop。该参数不能和-d一起使用。<br/>**说明**：从API version 20开始，支持该参数。 | 
-| -o | 设置输出文件路径，默认路径以设备上运行 hiperf stat -h/--help 时显示的 -o 参数说明为准，并允许用户自定义文件名称。该参数必须和--control prepare一起使用，不能和--control一起使用。<br/>**说明**：从API version 20开始，支持该参数。 | 
+| -o | 设置输出文件路径，并允许用户自定义文件名称。<br>默认路径以设备上运行 hiperf stat -h/--help 时显示的 -o 参数说明为准。<br>该参数必须和--control prepare一起使用，不能和--control一起使用。<br/>**说明**：从API version 20开始，支持该参数。 | 
 | -a | 统计整机的性能数据。 |
 
 **命令行示例**：

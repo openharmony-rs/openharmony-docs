@@ -5,7 +5,11 @@
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct OH_AVDemuxer OH_AVDemuxer
+```
 
 ## 概述
 

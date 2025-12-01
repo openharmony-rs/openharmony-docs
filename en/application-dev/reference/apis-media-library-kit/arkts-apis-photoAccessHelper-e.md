@@ -4,13 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
-
-<!--Kit: Media Library Kit-->
-<!--Subsystem: Multimedia-->
-<!--Owner: @yixiaoff-->
-<!--Designer: @liweilu1-->
-<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -333,6 +327,20 @@ Enumerates the sources of the image or video data.
 
 | Name               | Value  | Description                                                                                                                |
 |-------------------|-----|--------------------------------------------------------------------------------------------------------------------|
-| ALL | 0   | Image or video from all sources.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| ALL | 0   | Images and videos from all sources.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | CAMERA | 1   | Image or video taken by the camera.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | SCREENSHOT | 2   | Screenshot or screen capture video.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+
+## MovingPhotoBadgeStateType<sup>22+</sup>
+
+Enumerates the states of moving photo badges.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name               | Value  | Description            |
+|------------------- |--------|----------------------|
+| NOT_MOVING_PHOTO   | 0      | The media file is not a moving photo.|
+| MOVING_PHOTO_ENABLED | 1    | The moving photo effect is enabled.|
+| MOVING_PHOTO_DISABLED | 2   | The moving photo effect is disabled.|

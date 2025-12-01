@@ -5,7 +5,7 @@
 <!--Owner: @Saber_e-->
 <!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -28,7 +28,7 @@ The file declares the structs and enums of the LowPowerAudioSink.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md) | OH_LowPowerAudioSink | Describes the declaration for the LowPowerAudioSink.|
-| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md) | OH_LowPowerAudioSinkCallback | Contains a set of callback function pointers for the LowPowerAudioSink.<br>To ensure the normal running of the LowPowerAudioSink, you must register the instance of this struct with the [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md) instance and process the information reported by the callback functions.|
+| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md) | OH_LowPowerAudioSinkCallback | Contains a set of callback function pointers for the LowPowerAudioSink.<br> To ensure the normal running of the LowPowerAudioSink, you must register the instance of this struct with the [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md) instance and process the information reported by the callback functions.|
 
 ### Functions
 
@@ -61,7 +61,7 @@ Called when an error occurs in the LowPowerAudioSink.
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | Pointer to an OH_LowPowerAudioSink instance.|
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) errorCode | Error code reported when an error occurs.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) errorCode | Error code reported when an error occurs.|
 | const char* errorMsg | Pointer to an error message.|
 | void* userData | Pointer to user-defined data.|
 

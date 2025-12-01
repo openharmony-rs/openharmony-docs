@@ -4,9 +4,9 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
-音视频应用在实现音视频功能的同时，需要作为媒体会话提供方接入媒体会话，在媒体会话控制方（例如播控中心）中展示媒体相关信息，及响应媒体会话控制方下发的播控命令。
+音视频应用在实现音视频功能的同时，需要作为媒体会话提供方接入媒体会话，在媒体会话控制方（例如播控中心）中展示媒体相关信息，并响应媒体会话控制方下发的播控命令。
 
 ## 基本概念
 
@@ -48,14 +48,16 @@
    > 以下示例代码仅展示创建AVSession对象的接口调用，应用在真正使用时，需要确保AVSession对象实例在应用后台播放业务活动期间一直存在，避免被系统回收、释放，导致后台发声时被系统管控。
 
       ```ts
-      import { avSession as AVSessionManager } from '@kit.AVSessionKit';  
+      import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+
       @Entry
       @Component
       struct Index {
-          @State message: string = 'hello world';  
-          build() {
+        @State message: string = 'hello world';
+
+        build() {
           Column() {
-              Text(this.message)
+            Text(this.message)
               .onClick(async () => {
                 try {
                   // 开始创建并激活媒体会话。
@@ -74,7 +76,7 @@
           }
           .width('100%')
           .height('100%')
-          }
+        }
       }
       ```
 
@@ -170,6 +172,7 @@
         }
       }
       ```
+
 
 3. 设置用于被媒体会话控制方拉起的UIAbility。当用户操作媒体会话控制方的界面时，例如点击播控中心的卡片，可以拉起此处配置的UIAbility。
    设置UIAbility时通过WantAgent接口实现，更多关于WantAgent的信息请参考[WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md)。

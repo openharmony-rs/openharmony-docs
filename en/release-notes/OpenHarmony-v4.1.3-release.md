@@ -26,7 +26,7 @@ OpenHarmony 4.1.3 Release provides enhanced system security over OpenHarmony 4.1
 
 2. Register an SSH public key for access to Gitee.
 
-3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
+3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
    ```
    git config --global user.name "yourname"
    git config --global user.email "your-email-address"
@@ -35,7 +35,7 @@ OpenHarmony 4.1.3 Release provides enhanced system security over OpenHarmony 4.1
 
 4. Install the **repo** tool.
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and add that directory to environment variables. chmod a+x /usr/local/bin/repo
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and add that directory to environment variables. chmod a+x /usr/local/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -49,7 +49,7 @@ This method requires an SSH public key for access to Gitee.
 
 Obtain the source code from the specified version tag, which is the same as that released with the version.
 ```
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v4.1.3-Release --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v4.1.3-Release --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -60,7 +60,7 @@ Use the **repo** tool to download the source code over HTTPS.
 
 Obtain the source code from the specified version tag, which is the same as that released with the version.
 ```
-repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v4.1.3-Release --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v4.1.3-Release --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -93,70 +93,70 @@ repo forall -c 'git lfs pull'
 
 | Issue No.| Description|
 | -------- | -------- |
-| [IAOH0J](https://gitee.com/openharmony/useriam_user_auth_framework/issues/IAOH0J?from=project-issue) | [RK3568] The libuserauth_client.z.so process crashes due to the OS_IPC_2_834 thread in the foundation process.|
-| [IBE7FX](https://gitee.com/openharmony/third_party_musl/issues/IBE7FX?from=project-issue) | [RK3568] The cppcrash occurs in the OS_IPC_6_936 thread under the foundation process once. The crash stack is libdistributed_ability_manager_svr.z.so.|
-| [IB7TVH](https://gitee.com/openharmony/communication_netmanager_base/issues/IB7TVH?from=project-issue) | [RK3568] The OS_IPC_2_784 thread under the Process name:foundation process crashes twice. The crash stack is libnet_manager_common.z.so.|
-| [IBBNLR](https://gitee.com/openharmony/commonlibrary_ets_utils/issues/IBBNLR?from=project-issue) | [RK3568] Fixed the worker memory leak.                                |
-| [IAPG6G](https://gitee.com/openharmony/filemanagement_dfs_service/issues/IAPG6G?from=project-issue) | [RK3568] CloudFileService is a non-resident process and is started by the Wi-Fi scanning event loop.|
-| [IAAB5R](https://gitee.com/openharmony/arkui_ace_engine/issues/IAAB5R?from=project-issue) | [RK3568] [10/10] The editable component that is set to.enabled (false) is dragged to the text component area. The component center is 8 vp above the top.|
-| [I9BKLO](https://gitee.com/openharmony/applications_mms/issues/I9BKLO?from=project-issue) | [RK3568] jscrash is displayed under the com.ohos.mms process twice, and the stack name is nameClick.|
-| [IAVSNL](https://gitee.com/openharmony/web_webview/issues/IAVSNL?from=project-issue) | [RK3568] Verifying the UID when processing the edm event                        |
-| [IBH4N7](https://gitee.com/openharmony/distributedhardware_device_manager/issues/IBH4N7?from=project-issue) | [RK3568] UX modification of the 4.1 release branch                              |
-| [IBJL5T](https://gitee.com/openharmony/web_webview/issues/IBJL5T?from=project-issue) | [RK3568] The rendering function is unavailable when nodelesses.hap is installed for the same-layer rendering test.|
-| [IBJ6EC](https://gitee.com/openharmony/arkcompiler_ets_runtime/issues/IBJ6EC?from=project-issue) | [RK3568] Cherry-Pick 10577 to 4.1 Release                  |
-| [IBJ7R4](https://gitee.com/openharmony/arkcompiler_ets_runtime/issues/IBJ7R4?from=project-issue) | [RK3568] Cherry-Pick 10642 to 4.1 Release                  |
-| [IBKK6D](https://gitee.com/openharmony/arkcompiler_ets_runtime/issues/IBKK6D?from=project-issue) | [RK3568] Join Issue After Cherry-Picking PR 10501 to 4.1 Release     |
-| [IBJ90O](https://gitee.com/openharmony/arkcompiler_ets_runtime/issues/IBJ90O?from=project-issue) | [RK3568] Cherry-pick 10670 to 4.1Release                   |
-| [IBH1E9](https://gitee.com/openharmony/window_window_manager/issues/IBH1E9?from=project-issue) | [RK3568] A C++ crash occurs on libmodal_system_ui_extension_client.z.so due to an error of the OS_FFRT_2_0 thread of the foundation process. This issue occurs twice.|
-| [IBIZ14](https://gitee.com/openharmony/arkcompiler_ets_runtime/issues/IBIZ14?from=project-issue) | [RK3568] The vulnerability is incorporated into the OpenHarmony-4.1-Release branch.               |
-| [IBIWKU](https://gitee.com/openharmony/arkcompiler_ets_runtime/issues/IBIWKU?from=project-issue) | [RK3568] Cherry-Pick bug fix to 4.1                        |
-| [IBI74E](https://gitee.com/openharmony/communication_dsoftbus/issues/IBI74E?from=project-issue) | [RK3568] Fixed risky vulnerabilities.                                      |
-| [IBGUBD](https://gitee.com/openharmony/applications_app_samples/issues/IBGUBD?from=project-issue) | [RK3568] Deleted redundant binary files from WorkScheduler.                  |
-| [IBGHNE](https://gitee.com/openharmony/applications_app_samples/issues/IBGHNE?from=project-issue) | [RK3568] Upgrading the HapBuild Project, Deleting Redundant Files, and Replacing the Signing Tool|
-| [IBGJHO](https://gitee.com/openharmony/arkui_ace_engine/issues/IBGJHO?from=project-issue) | [RK3568] The editable component that is set to.enabled(false) is dragged to the text component area. The component is 8 vp from the top center of the component. |
+| [IAOH0J](https://gitcode.com/openharmony/useriam_user_auth_framework/issues/IAOH0J?from=project-issue) | [RK3568] The libuserauth_client.z.so process crashes due to the OS_IPC_2_834 thread in the foundation process.|
+| [IBE7FX](https://gitcode.com/openharmony/third_party_musl/issues/IBE7FX?from=project-issue) | [RK3568] The cppcrash occurs in the OS_IPC_6_936 thread under the foundation process once. The crash stack is libdistributed_ability_manager_svr.z.so.|
+| [IB7TVH](https://gitcode.com/openharmony/communication_netmanager_base/issues/IB7TVH?from=project-issue) | [RK3568] The OS_IPC_2_784 thread under the Process name:foundation process crashes twice. The crash stack is libnet_manager_common.z.so.|
+| [IBBNLR](https://gitcode.com/openharmony/commonlibrary_ets_utils/issues/IBBNLR?from=project-issue) | [RK3568] Fixed the worker memory leak.                                |
+| [IAPG6G](https://gitcode.com/openharmony/filemanagement_dfs_service/issues/IAPG6G?from=project-issue) | [RK3568] CloudFileService is a non-resident process and is started by the Wi-Fi scanning event loop.|
+| [IAAB5R](https://gitcode.com/openharmony/arkui_ace_engine/issues/IAAB5R?from=project-issue) | [RK3568] [10/10] The editable component that is set to.enabled (false) is dragged to the text component area. The component center is 8 vp above the top.|
+| [I9BKLO](https://gitcode.com/openharmony/applications_mms/issues/I9BKLO?from=project-issue) | [RK3568] jscrash is displayed under the com.ohos.mms process twice, and the stack name is nameClick.|
+| [IAVSNL](https://gitcode.com/openharmony/web_webview/issues/IAVSNL?from=project-issue) | [RK3568] Verifying the UID when processing the edm event                        |
+| [IBH4N7](https://gitcode.com/openharmony/distributedhardware_device_manager/issues/IBH4N7?from=project-issue) | [RK3568] UX modification of the 4.1 release branch                              |
+| [IBJL5T](https://gitcode.com/openharmony/web_webview/issues/IBJL5T?from=project-issue) | [RK3568] The rendering function is unavailable when nodelesses.hap is installed for the same-layer rendering test.|
+| [IBJ6EC](https://gitcode.com/openharmony/arkcompiler_ets_runtime/issues/IBJ6EC?from=project-issue) | [RK3568] Cherry-Pick 10577 to 4.1 Release                  |
+| [IBJ7R4](https://gitcode.com/openharmony/arkcompiler_ets_runtime/issues/IBJ7R4?from=project-issue) | [RK3568] Cherry-Pick 10642 to 4.1 Release                  |
+| [IBKK6D](https://gitcode.com/openharmony/arkcompiler_ets_runtime/issues/IBKK6D?from=project-issue) | [RK3568] Join Issue After Cherry-Picking PR 10501 to 4.1 Release     |
+| [IBJ90O](https://gitcode.com/openharmony/arkcompiler_ets_runtime/issues/IBJ90O?from=project-issue) | [RK3568] Cherry-pick 10670 to 4.1Release                   |
+| [IBH1E9](https://gitcode.com/openharmony/window_window_manager/issues/IBH1E9?from=project-issue) | [RK3568] A C++ crash occurs on libmodal_system_ui_extension_client.z.so due to an error of the OS_FFRT_2_0 thread of the foundation process. This issue occurs twice.|
+| [IBIZ14](https://gitcode.com/openharmony/arkcompiler_ets_runtime/issues/IBIZ14?from=project-issue) | [RK3568] The vulnerability is incorporated into the OpenHarmony-4.1-Release branch.               |
+| [IBIWKU](https://gitcode.com/openharmony/arkcompiler_ets_runtime/issues/IBIWKU?from=project-issue) | [RK3568] Cherry-Pick bug fix to 4.1                        |
+| [IBI74E](https://gitcode.com/openharmony/communication_dsoftbus/issues/IBI74E?from=project-issue) | [RK3568] Fixed risky vulnerabilities.                                      |
+| [IBGUBD](https://gitcode.com/openharmony/applications_app_samples/issues/IBGUBD?from=project-issue) | [RK3568] Deleted redundant binary files from WorkScheduler.                  |
+| [IBGHNE](https://gitcode.com/openharmony/applications_app_samples/issues/IBGHNE?from=project-issue) | [RK3568] Upgrading the HapBuild Project, Deleting Redundant Files, and Replacing the Signing Tool|
+| [IBGJHO](https://gitcode.com/openharmony/arkui_ace_engine/issues/IBGJHO?from=project-issue) | [RK3568] The editable component that is set to.enabled(false) is dragged to the text component area. The component is 8 vp from the top center of the component. |
 
 **Table 4** Fixed security vulnerabilities
 
 | Issue No.                                                     | Description                                                    |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
-| [IBHYAM](https://gitee.com/openharmony/arkcompiler_ets_runtime/issues/IBHYAM?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-871978016102682624|
-| [IBISRC](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBISRC?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56605 in the Linux kernel component|
-| [IBLGDX](https://gitee.com/openharmony/third_party_NuttX/issues/IBLGDX?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-884973832148881408 |
-| [IBISTN](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBISTN?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56647 in the Linux kernel component|
-| [IBISOU](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBISOU?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56583 in the Linux kernel component|
-| [IBISPT](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBISPT?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-53171 in the Linux kernel component|
-| [IBISSV](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBISSV?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56606 in the Linux kernel component|
-| [IBISUH](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBISUH?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56658 in the Linux kernel component|
-| [IBISV2](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBISV2?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56688 in the Linux kernel component|
-| [IBISWH](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBISWH?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56692 in the Linux kernel component|
-| [IBISXD](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBISXD?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56720 in the Linux kernel component|
-| [IBISYG](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBISYG?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56739 in the Linux kernel component|
-| [IBISZC](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBISZC?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56756 in the Linux kernel component|
-| [IBIT1N](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBIT1N?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56763 in the Linux kernel component|
-| [IBIT2H](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBIT2H?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56769 in the Linux kernel component|
-| [IBIT3K](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBIT3K?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56770 in the Linux kernel component|
-| [IBK84G](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBK84G?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE patches incorporated  |
-| [IBJSHR](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBJSHR?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-53173 in the Linux kernel component|
-| [IBJSIV](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBJSIV?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56369 in the Linux kernel component|
-| [IBKPCV](https://gitee.com/openharmony/kernel_liteos_a/issues/IBKPCV?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-887050703653048320 |
-| [IBINMH](https://gitee.com/openharmony/communication_dsoftbus/issues/IBINMH?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-871975948294033408 |
-| [IBINMC](https://gitee.com/openharmony/communication_dsoftbus/issues/IBINMC?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-871976081169584128 |
-| [IBG37W](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBG37W?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE patches incorporated             |
-| [IBIKDC](https://gitee.com/openharmony/kernel_liteos_a/issues/IBIKDC?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-879923376297086976  |
-| [IBI1JO](https://gitee.com/openharmony/communication_dsoftbus/issues/IBI1JO?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] RecvMessageDeinit in Disc_ble.c is not locked, and no upper limit is set in disc_manager.c, which poses security risks.|
-| [IBHTM4](https://gitee.com/openharmony/kernel_liteos_a/issues/IBHTM4?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-879883602844717056  |
-| [IBFEJ7](https://gitee.com/openharmony/applications_app_samples/issues/IBFEJ7?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] Problematic axios 1.6.2 referenced|
-| [IBFEWO](https://gitee.com/openharmony/applications_app_samples/issues/IBFEWO?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] Problematic body-parser 1.20.1 and 1.20.2 referenced|
-| [IBFF0F](https://gitee.com/openharmony/applications_app_samples/issues/IBFF0F?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] Problematic braces (dev) 3.0.2 referenced|
-| [IBGB67](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBGB67?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE patches incorporated                |
-| [IB8M92](https://gitee.com/openharmony/kernel_linux_5.10/issues/IB8M92?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-50256 in the Linux kernel component|
-| [IB8L2B](https://gitee.com/openharmony/kernel_linux_5.10/issues/IB8L2B?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-38594 in the Linux kernel component|
-| [IBE44O](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBE44O?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE patches incorporated             |
-| [IBERYF](https://gitee.com/openharmony/kernel_liteos_a/issues/IBERYF?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-873354661225041920 |
-| [IBEB48](https://gitee.com/openharmony/kernel_liteos_a/issues/IBEB48?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-872272903297568768 |
-| [IBDWNM](https://gitee.com/openharmony/kernel_liteos_a/issues/IBDWNM?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-871586908591886336 |
-| [IBJESO](https://gitee.com/openharmony/third_party_openssl/issues/IBJESO?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-13176          |
-| [IBFN54](https://gitee.com/openharmony-sig/chromium_src/issues/IBFN54?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2023-6112           |
+| [IBHYAM](https://gitcode.com/openharmony/arkcompiler_ets_runtime/issues/IBHYAM?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-871978016102682624|
+| [IBISRC](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBISRC?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56605 in the Linux kernel component|
+| [IBLGDX](https://gitcode.com/openharmony/third_party_NuttX/issues/IBLGDX?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-884973832148881408 |
+| [IBISTN](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBISTN?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56647 in the Linux kernel component|
+| [IBISOU](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBISOU?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56583 in the Linux kernel component|
+| [IBISPT](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBISPT?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-53171 in the Linux kernel component|
+| [IBISSV](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBISSV?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56606 in the Linux kernel component|
+| [IBISUH](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBISUH?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56658 in the Linux kernel component|
+| [IBISV2](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBISV2?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56688 in the Linux kernel component|
+| [IBISWH](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBISWH?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56692 in the Linux kernel component|
+| [IBISXD](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBISXD?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56720 in the Linux kernel component|
+| [IBISYG](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBISYG?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56739 in the Linux kernel component|
+| [IBISZC](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBISZC?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56756 in the Linux kernel component|
+| [IBIT1N](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBIT1N?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56763 in the Linux kernel component|
+| [IBIT2H](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBIT2H?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56769 in the Linux kernel component|
+| [IBIT3K](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBIT3K?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56770 in the Linux kernel component|
+| [IBK84G](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBK84G?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE patches incorporated  |
+| [IBJSHR](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBJSHR?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-53173 in the Linux kernel component|
+| [IBJSIV](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBJSIV?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-56369 in the Linux kernel component|
+| [IBKPCV](https://gitcode.com/openharmony/kernel_liteos_a/issues/IBKPCV?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-887050703653048320 |
+| [IBINMH](https://gitcode.com/openharmony/communication_dsoftbus/issues/IBINMH?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-871975948294033408 |
+| [IBINMC](https://gitcode.com/openharmony/communication_dsoftbus/issues/IBINMC?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-871976081169584128 |
+| [IBG37W](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBG37W?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE patches incorporated             |
+| [IBIKDC](https://gitcode.com/openharmony/kernel_liteos_a/issues/IBIKDC?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-879923376297086976  |
+| [IBI1JO](https://gitcode.com/openharmony/communication_dsoftbus/issues/IBI1JO?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] RecvMessageDeinit in Disc_ble.c is not locked, and no upper limit is set in disc_manager.c, which poses security risks.|
+| [IBHTM4](https://gitcode.com/openharmony/kernel_liteos_a/issues/IBHTM4?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-879883602844717056  |
+| [IBFEJ7](https://gitcode.com/openharmony/applications_app_samples/issues/IBFEJ7?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] Problematic axios 1.6.2 referenced|
+| [IBFEWO](https://gitcode.com/openharmony/applications_app_samples/issues/IBFEWO?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] Problematic body-parser 1.20.1 and 1.20.2 referenced|
+| [IBFF0F](https://gitcode.com/openharmony/applications_app_samples/issues/IBFF0F?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] Problematic braces (dev) 3.0.2 referenced|
+| [IBGB67](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBGB67?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE patches incorporated                |
+| [IB8M92](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IB8M92?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-50256 in the Linux kernel component|
+| [IB8L2B](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IB8L2B?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-38594 in the Linux kernel component|
+| [IBE44O](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBE44O?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE patches incorporated             |
+| [IBERYF](https://gitcode.com/openharmony/kernel_liteos_a/issues/IBERYF?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-873354661225041920 |
+| [IBEB48](https://gitcode.com/openharmony/kernel_liteos_a/issues/IBEB48?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-872272903297568768 |
+| [IBDWNM](https://gitcode.com/openharmony/kernel_liteos_a/issues/IBDWNM?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-871586908591886336 |
+| [IBJESO](https://gitcode.com/openharmony/third_party_openssl/issues/IBJESO?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2024-13176          |
+| [IBFN54](https://gitcode.com/openharmony-sig/chromium_src/issues/IBFN54?from=project-issue) | [Vulnerability] [OpenHarmony-4.1-Release] CVE-2023-6112           |
 
 ## Known Issues
 

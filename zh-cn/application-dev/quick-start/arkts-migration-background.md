@@ -152,7 +152,7 @@ ArkTS支持与TS/JS的高效互操作。在当前版本中，ArkTS运行时兼�
 ```typescript
 // lib.ts
 export class C {
-  v: string; // 编译期报错 Property 'v' has no initializer
+  v: string; // 在TS严格模式下，编译期报错 Property 'v' has no initializer
 }
 
 export let c = new C()

@@ -24,6 +24,8 @@ Before using the following APIs, you should obtain a **Transaction** instance by
 
 **Example**:
 
+For details about the definition of **this.context** in the sample code, see the application [context](../apis-ability-kit/js-apis-inner-application-context.md) of the stage model.
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -70,7 +72,7 @@ import { relationalStore } from '@kit.ArkData';
 
 commit(): Promise&lt;void&gt;
 
-Commits the executed SQL statements. When using asynchronous APIs to execute SQL statements, ensure that **commit()** is called after the asynchronous API execution is completed. Otherwise, the SQL operations may be lost. After **commit()** is called, the transaction object and the created **ResultSet** object will be closed.
+Commits this executed SQL statement. This API uses a promise to return the result. When using asynchronous APIs to execute SQL statements, ensure that **commit()** is called after the asynchronous API execution is completed. Otherwise, the SQL operations may be lost. After **commit()** is called, the transaction object and the created **ResultSet** object will be closed.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -121,7 +123,7 @@ if (store != undefined) {
 
 rollback(): Promise&lt;void&gt;
 
-Rolls back the SQL statements that have been executed. After **rollback()** is called, the transaction object and the created **ResultSet** object will be closed.
+Rolls back this executed SQL statement. This API uses a promise to return the result. After **rollback()** is called, the transaction object and the created **ResultSet** object will be closed.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -172,7 +174,7 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket, conflict?: ConflictResolution): Promise&lt;number&gt;
 
-Inserts a row of data into a table. This API uses a promise to return the result. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Inserts a row of data into a table. This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -245,7 +247,7 @@ if (store != undefined) {
 
 insertSync(table: string, values: ValuesBucket | sendableRelationalStore.ValuesBucket, conflict?: ConflictResolution): number
 
-Inserts a row of data into a table. This API returns the result synchronously. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Inserts a row of data into a table. This API returns the result synchronously. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -325,7 +327,7 @@ if (store != undefined) {
 
 batchInsert(table: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number&gt;
 
-Batch inserts data into a table. This API uses a promise to return the result.
+Inserts data into a table in batches. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -410,7 +412,7 @@ if (store != undefined) {
 
 batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;): number
 
-Batch inserts data into a table. This API returns the result synchronously.
+Inserts data into a table in batches. This API returns the result synchronously.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -495,7 +497,7 @@ if (store != undefined) {
 
 batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): Promise&lt;number&gt;
 
-Batch inserts data into a table with conflict resolutions. This API uses a promise to return the result.
+Inserts data into a table with conflict resolutions in batches. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -589,7 +591,7 @@ if (store != undefined) {
 
 batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): number
 
-Batch inserts data into a table with conflict resolutions. This API returns the result synchronously.
+Inserts data into a table with conflict resolutions in batches. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10).
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -682,7 +684,7 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictResolution): Promise&lt;number&gt;
 
-Updates data based on the specified **RdbPredicates** object. This API uses a promise to return the result. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Updates data based on the specified **RdbPredicates** object. This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -757,7 +759,7 @@ if (store != undefined) {
 
 updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictResolution): number
 
-Updates data in the RDB store based on the specified **RdbPredicates** object. This API returns the result synchronously. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Updates data in the RDB store based on the specified **RdbPredicates** object. This API returns the result synchronously. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -965,7 +967,7 @@ if (store != undefined) {
 
 query(predicates: RdbPredicates, columns?: Array&lt;string&gt;): Promise&lt;ResultSet&gt;
 
-Queries data from the RDB store based on specified conditions. This API uses a promise to return the result. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Queries data from the RDB store based on specified conditions. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 

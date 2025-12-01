@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoSm2CiphertextSpec OH_CryptoSm2CiphertextSpec
+```
+
 ## 概述
 
 定义SM2密文规格结构。

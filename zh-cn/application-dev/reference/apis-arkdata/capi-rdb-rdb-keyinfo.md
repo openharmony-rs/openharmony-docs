@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} Rdb_KeyInfo
+```
+
 ## 概述
 
 描述发生变化的行的主键或者行号。

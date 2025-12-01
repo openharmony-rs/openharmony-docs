@@ -1,5 +1,16 @@
 # DrmSubsample
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct DrmSubsample {...} DrmSubsample
+```
+
 ## Overview
 
 The struct describes the subsample type.

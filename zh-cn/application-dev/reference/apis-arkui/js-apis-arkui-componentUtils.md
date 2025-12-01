@@ -1,18 +1,18 @@
 # @ohos.arkui.componentUtils (componentUtils)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供获取组件绘制区域坐标和大小的能力。
 
 > **说明：**
 >
-> 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](./arkts-apis-uicontext-uicontext.md)说明。 
+> - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](./arkts-apis-uicontext-uicontext.md)说明。 
 
 ## 导入模块
 
@@ -27,9 +27,9 @@ getRectangleById(id: string): ComponentInfo
 
 > **说明：**
 >
-> 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils)获取[ComponentUtils](arkts-apis-uicontext-componentutils.md)实例，再通过此实例调用替代方法[getRectangleById](arkts-apis-uicontext-componentutils.md#getrectanglebyid)。
+> - 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils)获取[ComponentUtils](arkts-apis-uicontext-componentutils.md)实例，再通过此实例调用替代方法[getRectangleById](arkts-apis-uicontext-componentutils.md#getrectanglebyid)。
 >
-> 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils)方法获取当前UI上下文关联的[ComponentUtils](arkts-apis-uicontext-componentutils.md)对象。该接口需要在目标组件布局、完成以后获取目标组件区域大小信息，建议在[onAppear](./arkui-ts/ts-universal-events-show-hide.md#onappear)中使用该接口。
+> - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils)方法获取当前UI上下文关联的[ComponentUtils](arkts-apis-uicontext-componentutils.md)对象。在目标组件布局完成后，通过该接口能够获取组件坐标和尺寸信息。建议在[布局回调](./js-apis-arkui-inspector.md)中使用该接口。如果组件动态创建但未挂树，则无法通过该接口获取正常的组件信息。因为组件在未挂树的情况下，一般未经过UI框架正常的测量与布局，此时请确保组件正常挂树后再尝试获取组件信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -183,7 +183,7 @@ type Matrix4Result = [number,number,number,number,number,number,number,number,nu
 >
 > 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils)方法获取当前UI上下文关联的ComponentUtils对象。
 
-  ```ts
+```ts
 import { matrix4, componentUtils } from '@kit.ArkUI';
 
 @Entry
@@ -225,6 +225,6 @@ struct Utils {
     }.margin({left: 50})
   }
 }
-  ```
+```
 
-  ![componentget](figures/getRectangleById.gif) 
+![componentget](figures/getRectangleById.gif) 

@@ -1,8 +1,18 @@
 # ImageEffect_Any
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zyj208-->
+<!--Designer: @wangshoucheng-->
+<!--Tester: @gengfei-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct ImageEffect_Any {...} ImageEffect_Any
+```
 
 ## Overview
 
-The ImageEffect_Any struct describes the image effect parameters.
+The struct describes the image effect parameters.
 
 **Since**: 12
 
@@ -17,4 +27,4 @@ The ImageEffect_Any struct describes the image effect parameters.
 | Name| Description|
 | -- | -- |
 | [ImageEffect_DataType](capi-image-effect-filter-h.md#imageeffect_datatype) dataType = [ImageEffect_DataType](capi-image-effect-filter-h.md#imageeffect_datatype)::EFFECT_DATA_TYPE_UNKNOWN | Parameter type. The default value is **UNKNOWN**.|
-| [ImageEffect_DataType](capi-image-effect-filter-h.md#imageeffect_datatype) dataValue = { 0 } | Parameter value. The default value is null.|
+| [ImageEffect_DataValue](capi-imageeffect-imageeffect-datavalue.md) dataValue = { 0 } | Parameter value. The default value is null.|

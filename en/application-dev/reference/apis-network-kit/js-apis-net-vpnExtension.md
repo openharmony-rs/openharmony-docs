@@ -509,7 +509,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
     vpnConnection.destroy(vpnId).then(() => {
       console.info("destroy success");
     }).catch((error: BusinessError) => {
-      console.error(`destroy fail, Code is ${err.code}, message is ${err.message}`);
+      console.error(`destroy fail, Code is ${error.code}, message is ${error.message}`);
     });
   }
 }
@@ -554,8 +554,50 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
         console.info("generateVpnId success, vpnId = " + JSON.stringify(data));
       }
     }).catch((error: BusinessError) => {
-      console.error(`generateVpnId fail, Code is ${err.code}, message is ${err.message}`);
+      console.error(`generateVpnId fail, Code is ${error.code}, message is ${error.message}`);
     });
+  }
+}
+```
+### protectProcessNet<sup>22+</sup>
+
+protectProcessNet(): Promise\<void\>
+
+Protects application processes against a VPN connection. The data sent through the protected processes is transmitted over the physical network without traversing the VPN. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Communication.NetManager.Vpn
+
+**Return value**
+
+| Type           | Description                                                 |
+| --------------- | ----------------------------------------------------- |
+| Promise\<void\> | Promise that returns no value.|
+
+**Example**
+
+```js
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let g_tunnelFd = -1;
+export default class MyVpnExtAbility  extends VpnExtensionAbility {
+  onCreate() {
+    let vpnConnection = vpnExtension.createVpnConnection(this.context);
+    console.info("VPN createVpnConnection: " + JSON.stringify(vpnConnection));
+    this.ProtectNetByProcess();
+  }
+  CreateTunnel() {
+    g_tunnelFd = 8888;
+  }
+  ProtectNetByProcess() {
+    hilog.info(0x0000, 'developTag', '%{public}s', 'vpn ProtectNetByProcess');
+    let vpnConnection = vpnExtension.createVpnConnection(this.context);
+    vpnConnection.protectProcessNet().then(() => {
+      hilog.info(0x0000, 'developTag', '%{public}s', 'vpn ProtectNetByProcess Success');
+      this.CreateTunnel();
+    }).catch((err: Error) => {
+      hilog.error(0x0000, 'developTag', 'vpn ProtectNetByProcess Failed %{public}s', JSON.stringify(err) ?? '');
+    })
   }
 }
 ```

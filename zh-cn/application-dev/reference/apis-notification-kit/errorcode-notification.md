@@ -390,3 +390,57 @@ Distributed operation timed out.
 **处理步骤**
 
 检查设备间连接是否正常（例如手机与手表是否配对成功）。
+
+## 1600022 无效的包信息
+
+**错误信息**
+
+The specified bundle is invalid.
+
+**错误描述**
+
+无效的包信息，将返回该错误码。
+
+**可能原因**
+
+指定的应用包名不存在。
+
+**处理步骤**
+
+检查包信息是否正确。
+
+## 1600023 app NotificationSubscriberExtensionAbility未实现
+
+**错误信息**
+
+The application does not implement the NotificationSubscriberExtensionAbility.
+
+**错误描述**
+
+应用未实现NotificationSubscriberExtensionAbility。
+
+**可能原因**
+
+应用未设置或未正确设置[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)。
+
+**处理步骤**
+
+应用需创建NotificationSubscriberExtensionAbility，具体配置方法参考[ExtensionAbility组件](../../application-models/extensionability-overview.md)中的[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)。
+
+## 1600024 未配置自定义铃声
+
+**错误信息**
+
+The specified bundle has no custom ringtone information.
+
+**错误描述**
+
+指定的应用未配置自定义铃声信息，将返回该错误码。
+
+**可能原因**
+
+指定的应用未配置自定义铃声信息。
+
+**处理步骤**
+
+检查指定应用是否配置自定义铃声信息。

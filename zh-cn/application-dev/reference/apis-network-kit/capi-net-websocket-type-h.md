@@ -1,5 +1,12 @@
 # net_websocket_type.h
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 ## 概述
 
 定义websocket客户端模块的C接口需要的数据结构。

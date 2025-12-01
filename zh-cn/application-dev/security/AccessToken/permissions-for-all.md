@@ -136,9 +136,9 @@
 
 ## ohos.permission.GET_WIFI_INFO
 
-允许应用获取Wi-Fi信息。
+允许应用获取Wi-Fi信息和使用P2P能力。
 
-该权限允许应用获取Wi-Fi信息，包括Wi-Fi的开启状态、扫描结果、连接信息、连接状态、设备能力、P2P状态等信息。
+获取该权限后，应用可获取Wi-Fi信息，包括Wi-Fi的开启状态、扫描结果、连接信息、连接状态、设备能力、P2P状态等；同时，应用可使用P2P能力。
 
 **权限级别**：normal
 
@@ -492,6 +492,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：General
+
 **起始版本**：20
 
 ## ohos.permission.kernel.NET_RAW
@@ -594,3 +596,73 @@
 **支持设备**：PC/2in1
 
 **起始版本**：20
+
+## ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK
+
+允许应用使能超时息屏不锁屏功能。
+
+设备超时息屏后默认锁屏，获取该权限后，应用超时息屏后，不进入锁屏界面。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：22
+
+## ohos.permission.LOCK_WINDOW_CURSOR
+
+允许应用在窗口获焦时锁定鼠标光标。
+
+获取该权限后，应用可以在窗口获焦时锁定鼠标光标，控制鼠标光标不超过指定窗口区域，同时可控制光标是否跟随移动，失焦之后自动取消绑定。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**起始版本**：22
+
+## ohos.permission.CUSTOMIZE_MENU_ICON
+
+允许应用在“文件管理”的右键菜单中配置自定义图标。
+
+获取该权限后，应用可在右键菜单中配置自定义图标，帮助用户识别并拉起本应用。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：22
+
+## ohos.permission.kernel.EXEMPT_ANONYMOUS_EXECUTABLE_MEMORY
+
+允许声明匿名可执行内存。
+
+仅用于二进制程序声明匿名可执行内存。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：23
+
+## ohos.permission.INHERIT_PARENT_PERMISSION
+
+允许子进程继承父进程的权限。
+
+仅用于二进制程序继承父进程的权限。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：23

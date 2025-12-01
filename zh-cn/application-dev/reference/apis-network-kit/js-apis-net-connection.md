@@ -187,6 +187,10 @@ setAppHttpProxy(httpProxy: HttpProxy): void
 
 设置应用级Http代理配置信息。
 
+> **说明：**
+>
+> 若需使用本接口所配置的代理信息，则需在[HttpRequestOptions](js-apis-http.md#httprequestoptions)字段中将usingProxy设置为true以启用代理转发。本接口仅负责配置代理规则，不校验代理服务的有效性。
+
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **参数：**
@@ -209,6 +213,7 @@ setAppHttpProxy(httpProxy: HttpProxy): void
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { http } from '@kit.NetworkKit';
 
 let exclusionStr = "192.168,baidu.com";
 let exclusionArray = exclusionStr.split(',');
@@ -217,6 +222,22 @@ connection.setAppHttpProxy({
   port: 8080,
   exclusionList: exclusionArray
 } as connection.HttpProxy);
+let httpRequest = http.createHttp();
+let options: http.HttpRequestOptions = {
+  usingProxy: true, // 选择使用网络代理，从API 10开始支持该属性。
+};
+// 发起一个HTTP请求。
+httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse) => {
+  if (!err) {
+   console.info(`Result: ${data.result}`);
+   console.info(`code: ${data.responseCode}`);
+   console.info(`type: ${JSON.stringify(data.resultType)}`);
+   console.info(`header: ${JSON.stringify(data.header)}`);
+   console.info(`cookies: ${data.cookies}`); // 从API version 8开始支持cookie。
+  } else {
+   console.error(`error: ${JSON.stringify(err)}`);
+  }
+});
 ```
 
 ## connection.getDefaultHttpProxy<sup>10+</sup>
@@ -253,7 +274,7 @@ connection.getDefaultHttpProxy((error: BusinessError, data: connection.HttpProxy
     console.error(`Failed to get default http proxy. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.log("Succeeded to get data" + JSON.stringify(data));
+  console.info("Succeeded to get data" + JSON.stringify(data));
 });
 ```
 
@@ -496,7 +517,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   }
 
   connection.setAppNet(netHandle).then(() => {
-    console.log("success");
+    console.info("success");
   }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
   })
@@ -517,7 +538,7 @@ getAllNets(callback: AsyncCallback&lt;Array&lt;NetHandle&gt;&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;Array&lt;[NetHandle](#nethandle)&gt;&gt; | 是 | 回调函数。当成功获取所有处于连接状态的网络列表时，error为undefined，data为处于激活状态的数据网络列表；否则为错误对象。|
+| callback | AsyncCallback&lt;Array&lt;[NetHandle](#nethandle)&gt;&gt; | 是 | 回调函数。当成功获取所有处于连接状态的网络列表时，error为undefined，data为处于激活状态的数据网络列表；否则为错误对象。在Wi-Fi和蜂窝数据开关均开启的情况下，若无应用指定使用蜂窝网络，则仅激活Wi-Fi网络，因此仅返回Wi-Fi的NetHandle。除非有特定应用启动蜂窝网络，才能同时获取Wi-Fi和蜂窝数据的NetHandle。|
 
 **错误码：**
 
@@ -972,7 +993,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.isDefaultNetMetered((error: BusinessError, data: boolean) => {
   console.error(JSON.stringify(error));
-  console.log('data: ' + data);
+  console.info('data: ' + data);
 });
 ```
 
@@ -1008,7 +1029,7 @@ isDefaultNetMetered(): Promise\<boolean>
 import { connection } from '@kit.NetworkKit';
 
 connection.isDefaultNetMetered().then((data: boolean) => {
-  console.log('data: ' + data);
+  console.info('data: ' + data);
 });
 ```
 
@@ -1081,7 +1102,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.hasDefaultNet((error: BusinessError, data: boolean) => {
   console.error(JSON.stringify(error));
-  console.log('data: ' + data);
+  console.info('data: ' + data);
 });
 ```
 
@@ -1117,7 +1138,7 @@ hasDefaultNet(): Promise\<boolean>
 import { connection } from '@kit.NetworkKit';
 
 connection.hasDefaultNet().then((data: boolean) => {
-  console.log('data: ' + data);
+  console.info('data: ' + data);
 });
 ```
 
@@ -1238,7 +1259,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle).then(() => {
-    console.log(`report success`);
+    console.info(`report success`);
   });
 });
 ```
@@ -1333,7 +1354,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetDisconnected(netHandle).then( () => {
-    console.log(`report success`);
+    console.info(`report success`);
   });
 });
 ```
@@ -1612,7 +1633,7 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.removeCustomDnsRule("xxxx").then(() => {
-    console.log("success");
+    console.info("success");
 }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
 })
@@ -1695,7 +1716,7 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.clearCustomDnsRules().then(() => {
-    console.log("success");
+    console.info("success");
 }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
 })
@@ -1705,7 +1726,7 @@ connection.clearCustomDnsRules().then(() => {
 
 setPacFileUrl(pacFileUrl: string): void
 
-设置当前PAC脚本的URL地址。通过解析脚本地址可以获取代理信息。
+设置当前PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，比如：http://127.0.0.1:21998/PacProxyScript.pac。通过解析脚本地址可以获取代理信息。
 
 **需要权限**：ohos.permission.SET_PAC_URL
 
@@ -2062,6 +2083,55 @@ if (netHandle.netId != 0) {
 }
 ```
 
+## connection.getIpNeighTable<sup>22+</sup>
+
+getIpNeighTable(): Promise\<Array\<NetIpMacInfo>>
+
+获取本地设备IP邻居表条目信息，包括IPv4和IPv6，每个条目信息包括IP地址、MAC地址、网卡名。使用Promise异步回调。
+
+> **说明：**
+>
+> 当开发者需要排查网络异常、解析IP地址与MAC地址映射时，可使用此接口。
+
+**需要权限**：ohos.permission.GET_NETWORK_INFO 和 ohos.permission.GET_IP_MAC_INFO
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ----------------------- |
+| Promise\<Array\<[NetIpMacInfo](#netipmacinfo22)>> | Promise对象，返回ip邻居表条目信息。|
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                          |
+| ------- | --------------------------------- |
+| 201     | Permission denied.                |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error.            |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
+  if (data.length !== 0) {
+    console.info(`ipAddress:${data[0].ipAddress}`);
+    console.info(`ifaceName:${data[0].iface}`);
+    console.info(`macAddress:${data[0].macAddress}`);
+  }
+}).catch((error: BusinessError) => {
+  console.error("error fetching ip neigh table:", Code:JSON.stringify(error));
+  console.error(`error fetching ip neigh table. Code:${error.code}, message:${error.message}`);
+});
+```
+
 ## NetConnection
 
 网络连接的句柄。
@@ -2080,7 +2150,7 @@ if (netHandle.netId != 0) {
 
 register(callback: AsyncCallback\<void>): void
 
-订阅指定网络状态变化的通知。
+订阅指定网络状态变化的通知。如需监听特定事件，确保调用on监听事件后再调用register进行注册。
 
 **注意：** 使用完register接口后需要及时调用unregister取消注册。
 
@@ -2164,7 +2234,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netAvailable', callback: Callback\<NetHandle>): void
 
-订阅网络可用事件。此接口调用之前需要先调用register接口，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络可用事件。此接口需在调用register接口之前调用。若无需接收网络状态变化的回调通知，应使用unregister取消订阅默认的网络状态变化通知。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2186,14 +2256,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 创建NetConnection对象。
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// 先使用register接口注册网络状态变化事件。
-netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// 订阅网络可用事件。调用register后，才能接收到此事件通知。
+// 先使用on接口订阅网络可用事件。
 netCon.on('netAvailable', (data: connection.NetHandle) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
 });
 
 // 使用unregister接口取消订阅网络可用事件。
@@ -2206,7 +2276,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netBlockStatusChange', callback: Callback\<NetBlockStatusInfo>): void
 
-订阅网络阻塞状态事件。此接口调用之前需要先调用register接口，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络阻塞状态事件。此接口需要在调用register接口之前调用。若无需接收网络状态变化的回调通知，应使用unregister取消订阅默认的网络状态变化通知。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -2226,14 +2296,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 创建NetConnection对象。
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// 先使用register接口注册网络状态变化事件。
-netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// 订阅网络阻塞状态事件。调用register后，才能接收到此事件通知。
+// 先使用on接口订阅网络阻塞状态事件。
 netCon.on('netBlockStatusChange', (data: connection.NetBlockStatusInfo) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
 });
 
 // 使用unregister接口取消订阅网络阻塞状态事件。
@@ -2246,7 +2316,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 
-订阅网络能力变化事件。此接口调用之前需要先调用register接口，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络能力变化事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2268,14 +2338,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 创建NetConnection对象。
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// 先使用register接口注册网络状态变化事件。
-netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// 订阅网络能力变化事件。调用register后，才能接收到此事件通知。
+// 先使用on接口订阅网络能力变化事件。
 netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+//  注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
 });
 
 // 使用unregister接口取消订阅网络能力变化事件。
@@ -2288,7 +2358,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netConnectionPropertiesChange', callback: Callback\<NetConnectionPropertyInfo\>): void
 
-订阅网络连接信息变化事件。此接口调用之前需要先调用register接口，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络连接信息变化事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -2308,14 +2378,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 创建NetConnection对象。
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// 先使用register接口注册网络状态变化事件。
-netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// 订阅网络连接信息变化事件。调用register后，才能接收到此事件通知。
+// 先使用on接口订阅网络连接信息变化事件。
 netCon.on('netConnectionPropertiesChange', (data: connection.NetConnectionPropertyInfo) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
 });
 
 // 使用unregister接口取消订阅网络连接信息变化事件。
@@ -2328,7 +2398,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netLost', callback: Callback\<NetHandle>): void
 
-订阅网络丢失事件。此接口调用之前需要先调用register接口，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络丢失事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2350,14 +2420,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 创建NetConnection对象。
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// 先使用register接口注册网络状态变化事件。
-netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// 订阅网络丢失事件。调用register后，才能接收到此事件通知。
+// 先使用on接口订阅网络丢失事件。
 netCon.on('netLost', (data: connection.NetHandle) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
 });
 
 // 使用unregister接口取消订阅网络丢失事件。
@@ -2370,7 +2440,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netUnavailable', callback: Callback\<void>): void
 
-订阅网络不可用事件。此接口调用之前需要先调用register接口，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络不可用事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2392,14 +2462,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 创建NetConnection对象。
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// 先使用register接口注册网络状态变化事件。
-netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// 订阅网络不可用事件。调用register后，才能接收到此事件通知。
+// 先使用on接口订阅网络不可用事件。
 netCon.on('netUnavailable', () => {
   console.info("Succeeded to get unavailable net event");
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
 });
 
 // 使用unregister接口取消订阅网络不可用事件。
@@ -2418,9 +2488,9 @@ netCon.unregister((error: BusinessError) => {
 
 ### 属性
 
-| 名称    | 类型   | 必填 | 说明                      |
-| ------ | ------ | --- |------------------------- |
-| netId  | number | 是  |  网络ID，取值为0代表没有默认网络，其余取值必须大于等于100。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| netId  | number | 否 | 否  |  网络ID，取值为0代表没有默认网络，其余取值必须大于等于100。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ### bindSocket<sup>9+</sup>
 
@@ -2485,7 +2555,7 @@ interface Data {
     });
   } else {
     let callback: (value: Data) => void = (value: Data) => {
-      console.log("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
+      console.info("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
     };
     udp.bind({address:"192.168.xxx.xxx",
               port:8080,
@@ -2576,7 +2646,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     });
   } else {
     let callback: (value: Data) => void = (value: Data) => {
-      console.log("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
+      console.info("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
     }
     udp.bind({address:"192.168.xxx.xxx",
               port:8080,
@@ -2614,7 +2684,7 @@ getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>\>\)
 
 | 参数名   | 类型                                              | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| host     | string                                            | 是   | 需要解析的主机名。                                           |
+| host     | string                                            | 是   | 需要解析的主机名。例如："www.example.com"。                                           |
 | callback | AsyncCallback\<Array\<[NetAddress](#netaddress)>> | 是   | 回调函数。当使用对应网络解析主机名成功获取所有IP地址，error为undefined，data为获取到的所有IP地址；否则为错误对象。 |
 
 **错误码：**
@@ -2640,7 +2710,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressesByName(host, (error: BusinessError, data: connection.NetAddress[]) => {
     if (error) {
       console.error(`Failed to get addresses. Code:${error.code}, message:${error.message}`);
@@ -2667,7 +2737,7 @@ getAddressesByName(host: string): Promise\<Array\<NetAddress>>
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| host   | string | 是   | 需要解析的主机名。 |
+| host   | string | 是   | 需要解析的主机名。例如："www.example.com"。 |
 
 **返回值：**
 
@@ -2697,7 +2767,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressesByName(host).then((data: connection.NetAddress[]) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   });
@@ -2718,7 +2788,7 @@ getAddressByName(host: string, callback: AsyncCallback\<NetAddress>): void
 
 | 参数名   | 类型                                      | 必填 | 说明                                                         |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| host     | string                                    | 是   | 需要解析的主机名。                                           |
+| host     | string                                    | 是   | 需要解析的主机名。例如："www.example.com"。                                           |
 | callback | AsyncCallback\<[NetAddress](#netaddress)> | 是   | 回调函数。当使用对应网络解析主机名获取第一个IP地址成功，error为undefined，data为获取的第一个IP地址；否则为错误对象。 |
 
 **错误码：**
@@ -2744,7 +2814,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressByName(host, (error: BusinessError, data: connection.NetAddress) => {
     if (error) {
       console.error(`Failed to get address. Code:${error.code}, message:${error.message}`);
@@ -2769,7 +2839,7 @@ getAddressByName(host: string): Promise\<NetAddress>
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| host   | string | 是   | 需要解析的主机名。 |
+| host   | string | 是   | 需要解析的主机名。例如："www.example.com"。 |
 
 **返回值：**
 
@@ -2799,7 +2869,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   });
@@ -2847,8 +2917,8 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 | host  | string | 否  | 否 |代理服务器主机名。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | port  | number | 否  |否  |主机端口。取值范围[0,65535]。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | exclusionList  | Array\<string\> | 否  |否 |不使用代理的主机名列表，主机名支持域名、IP地址以及通配符形式，详细匹配规则如下：<br/>1、域名匹配规则：<br/>（1）完全匹配：代理服务器主机名只要与列表中的任意一个主机名完全相同，就可以匹配。<br/>（2）包含匹配：代理服务器主机名只要包含列表中的任意一个主机名，就可以匹配。<br/>例如，如果在主机名列表中设置了 “ample.com”，则  “ample.com”、“www.ample.com”、“ample.com:80”都会被匹配，而 “www.example.com”、“ample.com.org”则不会被匹配。<br/>2、IP地址匹配规则：代理服务器主机名只要与列表中的任意一个IP地址完全相同，就可以匹配。<br/>3、域名跟IP地址可以同时添加到列表中进行匹配。<br/>4、单个“\*”是唯一有效的通配符，当列表中只有通配符时，将与所有代理服务器主机名匹配，表示禁用代理。通配符只能单独添加，不可以与其他域名、IP地址一起添加到列表中，否则通配符将不生效。<br/>5、匹配规则不区分主机名大小写。<br/>6、匹配主机名时，不考虑http和https等协议前缀。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| username<sup>12+</sup>  | string | 否 |是  |使用代理的用户名。|
-| password<sup>12+</sup>  | string | 否 | 是| 使用代理的用户密码。|
+| username<sup>12+</sup>  | string | 否 |是  |使用代理的用户名。<br>**说明:** 需同时设置password参数才会生效。|
+| password<sup>12+</sup>  | string | 否 | 是| 使用代理的用户密码。<br>**说明:** 需同时设置username参数才会生效。|
 
 ## NetSpecifier
 
@@ -2858,10 +2928,10 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称                     | 类型                                | 必填  | 说明                                                         |
-| ----------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| netCapabilities         | [NetCapabilities](#netcapabilities) |  是  | 存储数据网络的传输能力和承载类型。                                |
-| bearerPrivateIdentifier | string                              |  否  |  网络标识符，蜂窝网络的标识符是"slot0"（对应SIM卡1）、"slot1"（对应SIM卡2）。从API12开始可以通过传递注册的WLAN热点信息表示应用希望激活的指定的WLAN网络。 |
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| netCapabilities         | [NetCapabilities](#netcapabilities) |  否 | 否  | 存储数据网络的传输能力和承载类型。                                |
+| bearerPrivateIdentifier | string                              |  否 | 是  |  网络标识符，蜂窝网络的标识符是"slot0"（对应SIM卡1）、"slot1"（对应SIM卡2）。从API12开始可以通过传递注册的WLAN热点信息表示应用希望激活的指定的WLAN网络。 |
 
 **示例：**
 
@@ -2897,10 +2967,10 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称                    | 类型                                 | 必填  | 说明                                                         |
-| ----------------------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| netHandle               | [NetHandle](#nethandle)              |  是  | 数据网络句柄。                                                |
-| netCap                  |  [NetCapabilities](#netcapabilities) |  是  |  存储数据网络的传输能力和承载类型。                            |
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| netHandle               | [NetHandle](#nethandle)              |  否 | 否  | 数据网络句柄。                                                |
+| netCap                  |  [NetCapabilities](#netcapabilities) |  否 | 否  |  存储数据网络的传输能力和承载类型。                            |
 
 ## NetCapabilities
 
@@ -2908,12 +2978,12 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称                  | 类型                                | 必填 | 说明                     |
-| --------------------- | ---------------------------------- | --- | ------------------------ |
-| linkUpBandwidthKbps   | number                             |  否 |  上行（设备到网络）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
-| linkDownBandwidthKbps | number                             |  否 |  下行（网络到设备）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
-| networkCap            | Array\<[NetCap](#netcap)>           |  否 |  网络具体能力。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。           |
-| bearerTypes           | Array\<[NetBearType](#netbeartype)> |  是 |  网络类型。数组里面只包含了一种网络类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| linkUpBandwidthKbps   | number                             |  否 | 是  |  上行（设备到网络）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
+| linkDownBandwidthKbps | number                             |  否 | 是 |  下行（网络到设备）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
+| networkCap            | Array\<[NetCap](#netcap)>           |  否 | 是 |  网络具体能力。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。           |
+| bearerTypes           | Array\<[NetBearType](#netbeartype)> |  否 | 否 |  网络类型。数组里面只包含了一种网络类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
 
 ## NetConnectionPropertyInfo<sup>11+</sup>
 
@@ -2923,10 +2993,10 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 ### 属性
 
-| 名称                 |                          类型                        | 必填 |         说明           |
-| -------------------- | --------------------------------------------------- | ---- |----------------------- |
-| netHandle            | [NetHandle](#nethandle)                             | 是   |数据网络句柄(netHandle)。|
-| connectionProperties | [ConnectionProperties](#connectionproperties)       | 是   |网络连接属性。           |
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| netHandle            | [NetHandle](#nethandle)                             | 否 | 否   |数据网络句柄(netHandle)。|
+| connectionProperties | [ConnectionProperties](#connectionproperties)       | 否 | 否   |网络连接属性。           |
 
 ## NetBlockStatusInfo<sup>11+</sup>
 
@@ -2936,10 +3006,10 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 ### 属性
 
-| 名称                 | 类型                                  | 必填 |            说明            |
-| -------------------- | ------------------------------------- | --- |--------------------------- |
-| netHandle            | [NetHandle](#nethandle)               | 是   |数据网络句柄(netHandle)。   |
-| blocked              | boolean                               | 是   |true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。 |
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| netHandle            | [NetHandle](#nethandle)               | 否 | 否   |数据网络句柄(netHandle)。   |
+| blocked              | boolean                               | 否 | 否   | 标识当前网络是否是堵塞状态。true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。 |
 
 ## ConnectionProperties
 
@@ -2947,14 +3017,14 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称          |                类型                 | 必填 |               说明                     |
-| ------------- | ----------------------------------- | ----|--------------------------------------- |
-| interfaceName | string                              | 是 |网卡名称。                                |
-| domains       | string                              | 是 |域名。                                    |
-| linkAddresses | Array\<[LinkAddress](#linkaddress)> | 是 |链路信息。                                |
-| routes        | Array\<[RouteInfo](#routeinfo)>     | 是 |路由信息。                                |
-| dnses         | Array\<[NetAddress](#netaddress)>   | 是 |网络地址，参考[NetAddress](#netaddress)。 |
-| mtu           | number                              | 是 |最大传输单元。                            |
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| interfaceName | string                              | 否 | 否 |网卡名称。                                |
+| domains       | string                              | 否 | 否 |域名。                                    |
+| linkAddresses | Array\<[LinkAddress](#linkaddress)> | 否 | 否 |链路信息。                                |
+| routes        | Array\<[RouteInfo](#routeinfo)>     | 否 | 否 |路由信息。                                |
+| dnses         | Array\<[NetAddress](#netaddress)>   | 否 | 否 |网络地址，参考[NetAddress](#netaddress)。 |
+| mtu           | number                              | 否 | 否 |最大传输单元。                            |
 
 ## RouteInfo
 
@@ -2962,14 +3032,14 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称           | 类型                        | 必填 |     说明      |
-| -------------- | --------------------------- | --- |-------------- |
-| interface      | string                      | 是 |网卡名称。       |
-| destination    | [LinkAddress](#linkaddress) | 是 |目的地址。       |
-| gateway        | [NetAddress](#netaddress)   | 是 |网关地址。       |
-| hasGateway     | boolean                     | 是 |true：有网关；false：无网关。     |
-| isDefaultRoute | boolean                     | 是 |true：默认路由；false：非默认路由。 |
-| isExcludedRoute<sup>20+</sup>| boolean                     | 否 |是否为排除路由。true表示排除路由，false表示非排除路由，默认值为false。|
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| interface      | string                      | 否 | 否 |网卡名称。       |
+| destination    | [LinkAddress](#linkaddress) | 否 | 否 |目的地址。       |
+| gateway        | [NetAddress](#netaddress)   | 否 | 否 |网关地址。       |
+| hasGateway     | boolean                     | 否 | 否 | 是否有网关。true：有网关；false：无网关。     |
+| isDefaultRoute | boolean                     | 否 | 否 | 是否为默认路由。true：默认路由；false：非默认路由。 |
+| isExcludedRoute<sup>20+</sup>| boolean                     | 否 | 是 |是否为排除路由。true表示排除路由，false表示非排除路由，默认值为false。|
 
 ## LinkAddress
 
@@ -2977,10 +3047,10 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称         |           类型            | 必填 |        说明         |
-| ------------ | ------------------------- |---- |-------------------- |
-| address      | [NetAddress](#netaddress) | 是  | 链路地址。           |
-| prefixLength | number                    | 是  |链路地址前缀的长度。  |
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| address      | [NetAddress](#netaddress) | 否 | 否  | 链路地址。           |
+| prefixLength | number                    | 否 | 否  |链路地址前缀的长度。  |
 
 ## NetAddress
 
@@ -2990,11 +3060,11 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-|  名称   | 类型   |必填|            说明              |
-| ------- | ------ | -- |---------------------------- |
-| address | string | 是 |地址。                       |
-| family  | number | 否 |IPv4 = 1，IPv6 = 2，默认IPv4。|
-| port    | number | 否 |端口，取值范围\[0, 65535]，默认值为0。  |
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| address | string | 否 | 否 |地址。                       |
+| family  | number | 否 | 是 |IPv4 = 1，IPv6 = 2，默认IPv4。|
+| port    | number | 否 | 是 |端口，取值范围\[0, 65535]，默认值为0。  |
 
 ## HttpRequest
 
@@ -3033,3 +3103,16 @@ type UDPSocket = socket.UDPSocket
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | socket.UDPSocket | 定义UDPSocket连接。     |
+
+
+## NetIpMacInfo<sup>22+</sup>
+
+IP邻居表条目信息。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| ipAddress | [NetAddress](#netaddress)     | 否 | 否 |IP地址相关信息。   |
+| iface       | string                              | 否 | 否 |网卡名。                                    |
+| macAddress | string | 否 | 否 |MAC地址。                                |

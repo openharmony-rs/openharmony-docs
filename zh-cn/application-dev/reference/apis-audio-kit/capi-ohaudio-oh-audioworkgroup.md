@@ -4,7 +4,11 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct OH_AudioWorkgroup OH_AudioWorkgroup
+```
 
 ## 概述
 

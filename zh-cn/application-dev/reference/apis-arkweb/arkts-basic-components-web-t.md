@@ -52,6 +52,20 @@ type OnSslErrorEventCallback = (sslErrorEvent: SslErrorEvent) => void
 | ------ | ------ | ---- | --------------------- |
 | sslErrorEvent | [SslErrorEvent](./arkts-basic-components-web-i.md#sslerrorevent12)  | 是 | 用户加载资源时发生SSL错误时触发的回调详情。 |
 
+## OnVerifyPinCallback<sup>22+</sup>
+
+type OnVerifyPinCallback = (verifyPinEvent: VerifyPinEvent) => void
+
+需要用户进行PIN码认证时触发的回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| verifyPinEvent | [VerifyPinEvent](./arkts-basic-components-web-i.md#verifypinevent22)  | 是 | 需要用户进行PIN码认证时触发的回调详情。 |
+
 ## OnContextMenuHideCallback<sup>11+</sup>
 
 type OnContextMenuHideCallback = () => void
@@ -290,3 +304,49 @@ type OnNativeEmbedObjectParamChangeCallback = (event: NativeEmbedParamDataInfo) 
 **示例：**
 
 完整示例代码参考[onNativeEmbedObjectParamChange](./arkts-basic-components-web-events.md#onnativeembedobjectparamchange21)。
+
+## OnDetectBlankScreenCallback<sup>22+<sup>
+
+type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => void
+
+检测到白屏时触发此回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------|------|------|
+| event | [BlankScreenDetectionEventInfo](./arkts-basic-components-web-i.md#blankscreendetectioneventinfo22) | 是 | 检测到白屏时的详细信息。 |
+
+**示例：**
+
+完整示例代码参考[onDetectedBlankScreen](./arkts-basic-components-web-events.md#ondetectedblankscreen22)。
+
+## OnCameraCaptureStateChangeCallback<sup>23+</sup>
+
+type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) => void;
+
+当页面摄像头状态发生改变时触发此回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名               | 类型                                        | 必填   | 说明                         |
+| -------------------- | ----------------------------------------------- | ---- | -------------------------------- |
+| event | [CameraCaptureStateChangeInfo](./arkts-basic-components-web-i.md#cameracapturestatechangeinfo23) | 是    | 网页摄像头状态发生改变时，返回原来的状态和改变后的状态。 |
+
+## OnMicrophoneCaptureStateChangeCallback<sup>23+</sup>
+
+type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChangeInfo) => void;
+
+当页面麦克风状态发生改变时触发此回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名               | 类型                                        | 必填   | 说明                         |
+| -------------------- | ----------------------------------------------- | ---- | -------------------------------- |
+| event | [MicrophoneCaptureStateChangeInfo](./arkts-basic-components-web-i.md#microphonecapturestatechangeinfo23) | 是    | 网页麦克风状态发生改变时，返回原来的状态和改变后的状态。 |

@@ -1,4 +1,10 @@
 # NotificationSubscriber (System API)
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 The **NotificationSubscriber** module provides callbacks for receiving or removing notifications and serves as the input parameter of [subscribe](./js-apis-notificationSubscribe-sys.md).
 
@@ -129,7 +135,7 @@ let subscribeCallback = (err: BusinessError) => {
 
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onUpdate: (map) => {
-    console.info('===> onUpdateCallback map:' + JSON.stringify(map));
+    console.info(`===> onUpdateCallback map: ${JSON.stringify(map)}`);
   }
 };
 
@@ -244,7 +250,7 @@ Called when the service is disconnected.
 
 | Name| Type| Mandatory| Description|
 | ------------ | ------------------------ | ---- | -------------------------- |
-| onDestroy | () => void | No| Callback used when the service is disconnected.|
+| onDestroy | () => void | No| Callback to be invoked when the service is disconnected.|
 
 **Example**
 
@@ -346,7 +352,7 @@ let subscribeCallback = (err: BusinessError) => {
 };
 
 let onDoNotDisturbChangedCallback = (mode: notificationManager.DoNotDisturbDate) => {
-  console.info('===> onDoNotDisturbChanged:' + JSON.stringify(mode));
+  console.info(`===> onDoNotDisturbChanged: ${JSON.stringify(mode)}`);
 }
 
 let subscriber: notificationSubscribe.NotificationSubscriber = {
@@ -468,7 +474,7 @@ let subscribeCallback = (err: BusinessError) => {
 };
 
 let BadgeEnabledChangedCallback = (data: notificationSubscribe.EnabledNotificationCallbackData) => {
-  console.info('onBadgeEnabledChanged, badge enabled state change to: ', JSON.stringify(data));
+  console.info(`onBadgeEnabledChanged, badge enabled state change to: ${JSON.stringify(data)}`);
 };
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onBadgeEnabledChanged: BadgeEnabledChangedCallback
@@ -564,10 +570,18 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 
 ## BadgeEnabledChangedCallback<sup>12+</sup>
 
+### (data: EnabledNotificationCallbackData)<sup>12+</sup>
+
+(data: EnabledNotificationCallbackData): void
+
+Defines a callback function to listen for the enabling status changes of the application badge.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **System API**: This is a system API.
 
-| Name       | Type  | Read Only| Optional| Description    |
-| ----------- | ------ | ---- | ---- |------------ |
-| data        | [EnabledNotificationCallbackData](#enablednotificationcallbackdata8) | Yes  | Yes   |   Callback used to return the listened badge enabling state.|
+**Parameters**
+
+| Name       | Type  | Mandatory| Description    |
+| --------- | ------ | ---- | ------------ |
+| data        | [EnabledNotificationCallbackData](#enablednotificationcallbackdata8) | Yes   |   Callback used to return the listened badge enabling state.|

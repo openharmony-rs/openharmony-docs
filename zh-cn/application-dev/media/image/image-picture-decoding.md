@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 将所支持格式的图片文件解码成[Picture](image-overview.md#基础概念)。当前支持的图片文件格式包括JPEG、HEIF。
 

@@ -4,7 +4,7 @@
 <!--Owner: @camlostshi-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本文介绍如何实现应用程序UI界面的国际化，包含资源配置和镜像布局，关于应用适配国际化的详细参考，请参考[Localization Kit（本地化开发服务）](../internationalization/i18n-l10n.md)。
 
@@ -62,28 +62,32 @@ ArkUI 如下能力已默认适配镜像：
 
 以position为例，需要把绝对方向x、y描述改为新入参类型start、end的描述，其他属性类似。
 
-```typeScript
-import { LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Index1 {
-  build() {
-    Stack({ alignContent: Alignment.TopStart }) {
+  <!-- @[Interface_Layout_Border_Settings](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/InterfaceLayoutBorderSettings.ets) -->
+  
+  ``` TypeScript
+  import { LengthMetrics } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct InterfaceLayoutBorderSettings {
+    build() {
       Stack({ alignContent: Alignment.TopStart }) {
-        Column()
-          .width(100)
-          .height(100)
-          .backgroundColor(Color.Red)
-          .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(200) })  //需要同时支持LTR和RTL时使用API12新增的LocalizedEdges入参类型,
-                                                                                   //仅支持LTR时等同于.position({ x: '200px', y: '200px' })
-
-      }.backgroundColor(Color.Blue)
-    }.width("100%").height("100%").border({ color: '#880606' })
+        Stack({ alignContent: Alignment.TopStart }) {
+          Column()
+            .width(100)
+            .height(100)
+            .backgroundColor(Color.Red)
+            .position({
+              start: LengthMetrics.px(200),
+              top: LengthMetrics.px(200)
+            }) //需要同时支持LTR和RTL时使用API12新增的LocalizedEdges入参类型,
+          //仅支持LTR时等同于.position({ x: '200px', y: '200px' })
+  
+        }.backgroundColor(Color.Blue)
+      }.width('100%').height('100%').border({ color: '#880606' })
+    }
   }
-}
-```
-
+  ```
 ### 自定义绘制Canvas组件
 
 Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canvas组件上的内容并不会跟随系统语言的切换自动做镜像效果。
@@ -94,70 +98,70 @@ Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canva
 2. Canvas组件本身不会自动跟随系统语言切换镜像效果，需要应用监听到系统语言切换后自行重新绘制。
 3. CanvasRenderingContext2D绘制文本时，只有符号等文本会对绘制方向生效，英文字母和数字不响应绘制方向的变化。
 
-```typeScript
-import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello world';
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-
-  aboutToAppear(): void {
-    // 监听系统语言切换
-    let subscriber: commonEventManager.CommonEventSubscriber | null = null;
-    let subscribeInfo2: commonEventManager.CommonEventSubscribeInfo = {
-      events: ["usual.event.LOCALE_CHANGED"],
-    }
-    commonEventManager.createSubscriber(subscribeInfo2, (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
-      if (err) {
-        console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
-        return;
+  <!-- @[Customize_Canvas_Component_Drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/CustomizeCanvasComponentDrawing.ets) -->
+  
+  ``` TypeScript
+  import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  struct CustomizeCanvasComponentDrawing {
+    @State message: string = 'Hello world';
+    private settings: RenderingContextSettings = new RenderingContextSettings(true)
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
+  
+    aboutToAppear(): void {
+      // 监听系统语言切换
+      let subscriber: commonEventManager.CommonEventSubscriber | null = null;
+      let subscribeInfo2: commonEventManager.CommonEventSubscribeInfo = {
+        events: ['usual.event.LOCALE_CHANGED'],
       }
-
-      subscriber = data;
-      if (subscriber !== null) {
-        commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+      commonEventManager.createSubscriber(subscribeInfo2,
+        (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
           if (err) {
-            console.error(`订阅语言地区状态变化公共事件失败. Code is ${err.code}, message is ${err.message}`);
+            console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
             return;
           }
-          console.info('成功订阅语言地区状态变化公共事件: data: ' + JSON.stringify(data))
-          // 监听到语言切换后，需要重新绘制Canvas内容
-          this.drawText();
+  
+          subscriber = data;
+          if (subscriber !== null) {
+            commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+              if (err) {
+                return;
+              }
+              // 监听到语言切换后，需要重新绘制Canvas内容
+              this.drawText();
+            })
+          } else {
+            console.error(`MayTest Need create subscriber`);
+          }
         })
-      } else {
-        console.error(`MayTest Need create subscriber`);
-      }
-    })
-  }
-
-  drawText(): void {
-    console.error("MayTest drawText")
-    this.context.reset()
-    this.context.direction = "inherit"
-    this.context.font = '30px sans-serif'
-    this.context.fillText("ab%123&*@", 50, 50)
-  }
-
-  build() {
-    Row() {
-      Canvas(this.context)
-        .direction(Direction.Auto)
-        .width("100%")
-        .height("100%")
-        .onReady(() =>{
-          this.drawText()
-        })
-        .backgroundColor(Color.Pink)
     }
-    .height('100%')
+  
+    drawText(): void {
+      console.error('MayTest drawText')
+      this.context.reset()
+      this.context.direction = 'inherit'
+      this.context.font = '30px sans-serif'
+      this.context.fillText('ab%123&*@', 50, 50)
+    }
+  
+    build() {
+      Row() {
+        Canvas(this.context)
+          .direction(Direction.Auto)
+          .width('100%')
+          .height('100%')
+          .onReady(() =>{
+            this.drawText()
+          })
+          .backgroundColor(Color.Pink)
+      }
+      .height('100%')
+    }
+  
   }
-
-}
-```
-
+  ```
 | 镜像前          | 镜像后                                  |
 | ----------- | ----------------------------------- |
 |![](figures/mirroring_2-0.jpg)|![](figures/mirroring_2-1.jpg)|

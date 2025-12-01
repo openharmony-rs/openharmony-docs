@@ -2,10 +2,13 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--SE: @liyang_bryan-->
-<!--TSE: @xchaosioda-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 This topic describes how to create an ImageSource object, obtain the width and height of the PixelMap, and release the ImageSource object.
+
+Starting from API version 22, thumbnail decoding is provided for images in various professional camera formats. The formats supported are CR2, CR3, ARW, NEF, RAF, NRW, ORF, RW2, PEF, and SRW.
 
 ## How to Develop
 
@@ -28,7 +31,6 @@ Create a native C++ application in DevEco Studio. The project created by default
 After creating an ImageSource instance, obtain and modify property values, create a PixelMap object by using decoding parameters, and obtain the number of image frames.
 
 ```c++
-#include <linux/kd.h>
 #include <string>
 #include <hilog/log.h>
 #include <multimedia/image_framework/image/image_common.h>
@@ -56,7 +58,7 @@ static napi_value sourceTest(napi_env env, napi_callback_info info)
     size_t argCount = NUM_1;
     if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1 ||
         argValue[NUM_0] == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "ImageSourceNativeCTest sourceTest napi_get_cb_info failed, argCount: %{public}d.", argCount);
+        OH_LOG_ERROR(LOG_APP, "ImageSourceNativeCTest sourceTest napi_get_cb_info failed, argCount: %{public}lu.", static_cast<int>(argCount));
         return getJsResult(env, IMAGE_BAD_PARAMETER);
     }
     char name[1024];
@@ -128,7 +130,7 @@ static napi_value sourceTest(napi_env env, napi_callback_info info)
     OH_DecodingOptions_SetDesiredDynamicRange(ops, IMAGE_DYNAMIC_RANGE_AUTO);
     OH_PixelmapNative *resPixMap = nullptr;
 
-    // A null pointer cannot be passed in to ops. If ops does not need to be set, you do not need to create a PixelMap object.
+    // nullptr cannot be passed in to ops. If ops does not need to be set, you do not need to create a PixelMap object.
     errCode = OH_ImageSourceNative_CreatePixelmap(source, ops, &resPixMap);
     OH_DecodingOptions_Release(ops);
     if (errCode != IMAGE_SUCCESS) {

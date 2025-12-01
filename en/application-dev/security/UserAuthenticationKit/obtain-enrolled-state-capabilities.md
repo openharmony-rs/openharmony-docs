@@ -3,8 +3,9 @@
 <!--Kit: User Authentication Kit-->
 <!--Subsystem: UserIAM-->
 <!--Owner: @WALL_EYE-->
-<!--SE: @lichangting518-->
-<!--TSE: @jane_lz-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
 
 Use **getEnrolledState()** to obtain the change in the credentials (face, fingerprint, and password) enrolled by a user.
 
@@ -24,15 +25,24 @@ For details about the parameters, return values, and error codes, see [getEnroll
 
 Example: Obtain information about the credentials enrolled for facial authentication.
 
-```ts
-import { BusinessError } from  '@kit.BasicServicesKit';
-import { userAuth } from '@kit.UserAuthenticationKit';
+<!-- @[obtain_enrolled_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
-try {
-  let enrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.FACE);
-  console.info(`get current enrolled state success, enrolledState: ${JSON.stringify(enrolledState)}`);
-} catch (error) {
-  const err: BusinessError = error as BusinessError;
-  console.error(`get current enrolled state failed, Code is ${err?.code}, message is ${err?.message}`);
-}
+``` TypeScript
+  obtainingEnrolledCredentialInformation() {
+    try {
+      let enrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.PIN);
+      Logger.info(`get current enrolled state success, enrolledState: ${JSON.stringify(enrolledState)}`);
+      return enrolledState.credentialDigest;
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      Logger.error(`get current enrolled state failed, Code is ${err?.code}, message is ${err?.message}`);
+      return false;
+    }
+  }
+
 ```
+
+
+## Sample Code
+
+  - [Querying the status of a user registration credential](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)

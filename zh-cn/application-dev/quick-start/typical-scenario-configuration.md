@@ -77,24 +77,28 @@
 
 3. 在应用的module.json5文件中配置metadata，指向快捷方式的配置文件。
 
-    ```json
+
+    <!-- @[typical_scenario_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/TypicalScenarioConfiguration/entry/src/main/module.json5) -->
+    
+    ``` JSON5
     {
       "module": {
-      // ...
+        // ...
         "abilities": [
           {
             "name": "EntryAbility",
             "srcEntry": "./ets/entryability/EntryAbility.ets",
-            // ...
             "metadata": [
               {
                 "name": "ohos.ability.shortcuts",  // 配置快捷方式，该值固定为ohos.ability.shortcuts
                 "resource": "$profile:shortcuts_config"  // 指定shortcuts信息的资源位置
               }
-            ]
+            ],
+            // ...
           }
-        ]
-      }
+        ],
+        // ...
+      },
     }
     ```
 

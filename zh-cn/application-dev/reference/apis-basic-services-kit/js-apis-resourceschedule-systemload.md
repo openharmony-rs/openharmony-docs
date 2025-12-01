@@ -3,7 +3,7 @@
 <!--Subsystem: Resourceschedule-->
 <!--Owner: @baiheng-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
+<!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
 系统根据当前温度、负载以及是否处于高负载场景等信息决策出系统负载融合档位，并在档位变化时通知已注册的应用。
@@ -47,12 +47,12 @@ on(type: 'systemLoadChange', callback: Callback\<SystemLoadLevel>): void
 import { systemLoad } from '@kit.BasicServicesKit';
 
 function onSystemLoadChange(res: systemLoad.SystemLoadLevel) {
-    console.log(`system load changed, current level ` + res);
+    console.info(`system load changed, current level ` + res);
 }
 
 try {
     systemLoad.on('systemLoadChange', onSystemLoadChange);
-    console.log(`register systemload callback succeeded. `);
+    console.info(`register systemload callback succeeded. `);
 } catch (err) {
     console.error(`register systemload callback failed: ` + JSON.stringify(err));
 }
@@ -87,12 +87,12 @@ off(type: 'systemLoadChange', callback?: Callback\<SystemLoadLevel>): void
 import { systemLoad } from '@kit.BasicServicesKit';
 
 function onSystemLoadChange(res: systemLoad.SystemLoadLevel) {
-    console.log(`system load changed, current level ` + res);
+    console.info(`system load changed, current level ` + res);
 }
 
 try {
     systemLoad.off('systemLoadChange', onSystemLoadChange);
-    console.log(`unregister systemload callback succeeded:. `);
+    console.info(`unregister systemload callback succeeded:. `);
 } catch (err) {
     console.error(`unregister systemload callback failed: ` + JSON.stringify(err));
 }
@@ -119,7 +119,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { systemLoad } from '@kit.BasicServicesKit';
 
 systemLoad.getLevel().then((res: systemLoad.SystemLoadLevel) => {
-    console.log(`getLevel promise succeeded. result: ` + JSON.stringify(res));
+    console.info(`getLevel promise succeeded. result: ` + JSON.stringify(res));
 }).catch((err: BusinessError) => {
     console.error(`getLevel promise failed. code is ${err.code} message is ${err.message}`);
 })

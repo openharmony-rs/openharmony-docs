@@ -1,4 +1,10 @@
 # 通用事件
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 <!--Del-->
 - [点击事件](ts-universal-events-click.md)
 - [触摸事件](ts-universal-events-touch.md)

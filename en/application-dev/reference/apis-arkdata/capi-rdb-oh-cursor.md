@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_Cursor
+```
+
 ## Overview
 
 Defines a struct for a result set. Provides APIs to access the result set obtained by querying the RDB store.

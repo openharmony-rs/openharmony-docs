@@ -96,7 +96,7 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
     ```
     <!-- @[napi_load_module_napi_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPILoadModule/entry/src/main/ets/Test.ets) -->
 
-1. 需要在工程的build-profile.json5文件中进行以下配置：
+1. 需要在模块的build-profile.json5文件中进行以下配置：
 
     ```json
     {

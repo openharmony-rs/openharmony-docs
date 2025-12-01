@@ -1,5 +1,11 @@
 # @system.bluetooth (Bluetooth)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
 
 > **NOTE**
 >
@@ -72,10 +78,10 @@ Stops scanning for BLE devices nearby. This API is used with [bluetooth.startBLE
       console.log('call bluetooth.stopBLEScan success.');
     },
     fail(data, code) {
-      console.log('call bluethooth.stopBLEScan fail, code:' + code + ', data:' + data);
+      console.log('call bluetooth.stopBLEScan fail, code:' + code + ', data:' + data);
     },
     complete() {
-      console.log('call bluethooth.stopBLEScan complete.');
+      console.log('call bluetooth.stopBLEScan complete.');
     }
   });
   ```
@@ -101,7 +107,7 @@ Subscribes to the newly detected BLE device. If this API is called multiple time
 | -------- | -------- | -------- |
 | devices | Array&lt;BluetoothDevice&gt; | List of the newly detected BLE devices.|
 
-**Table 5** BluethoothDevice
+**Table 5** BluetoothDevice
 
 | Name| Type| Description|
 | -------- | -------- | -------- |

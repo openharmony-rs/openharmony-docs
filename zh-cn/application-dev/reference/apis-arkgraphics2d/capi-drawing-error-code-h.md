@@ -56,6 +56,7 @@ enum OH_Drawing_ErrorCode
 | OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE = 26200001 | 输入参数不在有效的范围内。 |
 | OH_DRAWING_ERROR_ALLOCATION_FAILED = 26200002 |  内存分配失败。<br>**起始版本：** 13 |
 | OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH = 26200003 |  输入属性id无匹配的函数。<br>**起始版本：** 21 |
+| OH_DRAWING_ERROR_INCORRECT_PARAMETER = 26200004 |  输入参数不正确，例如入参的指针为空。<br>**起始版本：** 22 |
 
 ## 函数说明
 

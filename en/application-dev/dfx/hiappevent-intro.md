@@ -28,7 +28,7 @@ HiAppEvent is an event logging mechanism provided for recording faults, statisti
 
 - Event parameter: specifies the parameters of an event. Each event can contain a group of parameters. You are advised to set this parameter to an event attribute or event context to depict the event details.
 
-**Event subscription**: By calling the **addWatcher()** API of the HiAppEvent, you can register a watcher for system or application events as required. In this way, when the subscribed event occurs, you can receive and process the event callback information.
+**Event subscription**: You can use the [addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher) API of HiAppEvent to register a watcher for system events or application events that you concern. In this way, when the subscribed event occurs, you can receive and process the event callback information.
 
 ## Implementation Principles
 
@@ -36,20 +36,20 @@ HiAppEvent is an event logging mechanism provided for recording faults, statisti
 
 In the current system application sandbox mechanism, an application process can access only its own application sandbox directory. For details, see [Application Sandbox](../file-management/app-sandbox-directory.md). However, the system event information is not stored in the application sandbox directory. As a result, the information cannot be directly obtained.
 
-The application calls the **addWatcher()** API of HiAppEvent to subscribe to system events and create a shared directory. When the application process is faulty, the DFX system captures the related information, generates events and logs, and shares them to the shared directory. After detecting an event, HiAppEvent sends the event to the application.
+The application calls the **addWatcher** API of HiAppEvent to subscribe to system events and create a shared directory. When the application process is faulty, the DFX system captures the related information, generates events and logs, and shares them to the shared directory. After detecting an event, HiAppEvent sends the event to the application.
 
 ![hiappevent-watch-systemevents](figures/hiappevent-watch-systemevents.PNG)
 
 ### Application Event Subscription Mechanism
 
-After an application calls the **addWatcher()** API to subscribe to the application events, it must call the **write()** API to record the application events when they occur.
+After calling the addWatcher API to subscribe to the application event, the application must call the [write](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventwrite-1) API to log application events.
 
-HiAppEvent associates application events based on the event domain and event name, and sends the events to the application using the callback set through the **addWatcher()** API.
+HiAppEvent associates application events based on the event domain and event name, and sends the events to the application using the callback set through the **addWatcher** API.
 
 ![hiappevent-watch-appevents](figures/hiappevent-watch-appevents.PNG)
 
 ## Constraints
 
-- The **addWatcher()** API is a synchronous API and involves I/O operations. For modules that have high requirements on performance, you are advised to call the API on a non-main thread.
+- The **addWatcher** API is a synchronous API and involves I/O operations. For modules that have high requirements on performance, you are advised to call the API on a non-main thread.
 
-- The name passed to the **addWatcher()** API should be unique. If the same name is passed, the previous subscription will be overwritten.
+- The name passed to the **addWatcher** API should be unique. If the same name is passed, the previous subscription will be overwritten.

@@ -1,4 +1,10 @@
 # @ohos.arkui.UIContext (UIContext)(系统接口)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 在Stage模型中，WindowStage/Window可以通过loadContent接口加载页面并创建UI的实例，并将页面内容渲染到关联的窗口中，所以UI实例和窗口是一一关联的。一些全局的UI接口是和具体UI实例的执行上下文相关的，在当前接口调用时，通过追溯调用链跟踪到UI的上下文，来确定具体的UI实例。若在非UI页面中或者一些异步回调中调用这类接口，可能无法跟踪到当前UI的上下文，导致接口执行失败。
 
@@ -59,7 +65,7 @@ struct Index {
 
 ### animateToImmediately<sup>12+</sup>
 
-animateToImmediately(param: AnimateParam , event: () => void): void
+animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
 
 animateToImmediately接口允许用户通过UIContext对象，获取显式立即动画的能力。同时加载多个属性动画的情况下，使用该接口可以立即执行闭包代码中状态变化导致的过渡动效。
 
@@ -72,7 +78,7 @@ animateToImmediately接口允许用户通过UIContext对象，获取显式立即
 | 参数名   | 类型                                       | 必填   | 说明                                    |
 | ----- | ---------------------------------------- | ---- | ------------------------------------- |
 | param | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam对象说明) | 是    | 设置动画效果相关参数。                           |
-| event | () => void                               | 是    | 指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+| processor | Callback&lt;void&gt;                              | 是    | 指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
 
 **示例：**
 
@@ -454,6 +460,34 @@ struct IMEGradient {
 }
 ```
 
+### clearResourceCache<sup>12+</sup>
+
+clearResourceCache(): void
+
+清除跨模块（[HSP](../../quick-start/in-app-hsp.md)包）访问资源时生成的资源对象缓存。清除缓存后，下次访问该模块资源的加载时间会增加。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct MyStateSample {
+  build() {
+    Column() {
+      Button("clearResourceCache")
+        .onClick((event: ClickEvent) => {
+          this.getUIContext().clearResourceCache()
+        })
+        .width('100%')
+    }
+  }
+}
+```
+
 ## ComponentSnapshot<sup>12+</sup>
 
 以下API需先使用UIContext中的[getComponentSnapshot()](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。
@@ -490,12 +524,12 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, optio
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)错误码和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)错误码和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                |
 | ------ | ------- |
 | 202     | The caller is not a system application. |
-| 100001 | Invalid ID. |
+| 100001 | Invalid ID detected. |
 
 **示例：** 
 

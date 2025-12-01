@@ -1,4 +1,14 @@
 # OH_Drawing_Matrix
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
+```
+typedef struct OH_Drawing_Matrix OH_Drawing_Matrix
+```
 
 ## 概述
 

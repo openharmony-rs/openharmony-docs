@@ -1,5 +1,16 @@
 # NativeChildProcess_Fd
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @SKY2001-->
+<!--Designer: @yzkp-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+```
+typedef struct {...} NativeChildProcess_Fd
+```
+
 ## Overview
 
 The struct describes the information about the file descriptor passed to the child process.

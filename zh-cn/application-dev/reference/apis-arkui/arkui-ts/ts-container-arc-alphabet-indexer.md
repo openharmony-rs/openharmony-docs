@@ -1,4 +1,10 @@
 # ArcAlphabetIndexer
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 弧形索引条是一种弧形的、可按字母顺序排序进行快速定位的组件，可以与容器组件联动，按逻辑结构快速定位至容器显示区域。
 
@@ -9,8 +15,22 @@
 
 ## 导入模块
 
+> **说明：**
+>
+> - ArcAlphabetIndexerAttribute是用于配置ArcAlphabetIndexer组件属性的关键接口。API version 21及之前版本，导入ArcAlphabetIndexer组件后需要开发者手动导入ArcAlphabetIndexerAttribute，否则会编译报错。从API version 22开始，编译工具链识别到导入ArcAlphabetIndexer组件后，会自动导入ArcAlphabetIndexerAttribute，无需开发者手动导入ArcAlphabetIndexerAttribute。
+>
+> - 如果开发者手动导入ArcAlphabetIndexerAttribute，DevEco Studio会显示置灰，API version 21及之前版本删除会编译报错，API version 22开始，删除对功能无影响。
+
+API version 21及之前版本：
+
 ```
 import { ArcAlphabetIndexer, ArcAlphabetIndexerAttribute } from '@kit.ArkUI';
+```
+
+API version 22及之后版本：
+
+```
+import { ArcAlphabetIndexer } from '@kit.ArkUI';
 ```
 
 
@@ -285,12 +305,10 @@ onSelect(handler: Optional&lt;OnSelectCallback&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
-**参数：**
-
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| arrayValue | string[] | 是 | 字母索引字符串数组，不可设置为空。 |
-| selected   | number              | 是 | 初始选中项索引值，若超出索引值范围，则取默认值0。<br />该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。|
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | ---- | ---- | -------- |
+| arrayValue | string[] | 否 | 否 | 字母索引字符串数组，不可设置为空。 |
+| selected   | number              | 否 | 否 | 初始选中项索引值，若超出索引值范围，则取默认值0。<br />该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。|
 
 ## OnSelectCallback
 
@@ -325,6 +343,7 @@ import {
   ArcAlphabetIndexer,
   ArcAlphabetIndexerAttribute
 } from '@kit.ArkUI';
+// 从API Version 22开始，无需手动导入ArcListAttribute、ArcListItemAttribute、ArcAlphabetIndexerAttribute。具体请参考ArcList、ArcListItem、ArcAlphabetIndexer的导入模块说明。
 
 @Builder
 function buildText() {

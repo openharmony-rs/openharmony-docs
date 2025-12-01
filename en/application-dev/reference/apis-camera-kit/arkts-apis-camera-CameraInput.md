@@ -4,15 +4,15 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
-
-> **NOTE**
->
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+<!--Adviser: @w_Machine_cc-->
 
 CameraInput defines the camera input object.
 
 It provides camera device information used in [Session](arkts-apis-camera-Session.md).
+
+> **NOTE**
+>
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -336,13 +336,13 @@ function unregisterCameraInputError(cameraInput: camera.CameraInput, camera: cam
 }
 ```
 
-## isPhysicalCameraOrientationVariable<sup>21+</sup>
+## isPhysicalCameraOrientationVariable<sup>22+</sup>
 
 isPhysicalCameraOrientationVariable(): boolean
 
-Checks whether the physical camera orientation is adjustable in different fold states.
+Checks whether the physical camera orientation is adjustable in different fold states of the device.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -350,7 +350,7 @@ Checks whether the physical camera orientation is adjustable in different fold s
 
 | Type       | Description                                        |
 | ---------- | -------------------------------------------- |
-| boolean    | Check result for whether the physical camera orientation is adjustable. **true** if adjustable, **false** otherwise.|
+| boolean    | Check result for whether the physical camera orientation is adjustable. **true** if adjustable, **false** otherwise. If the API call fails, undefined is returned.|
 
 **Example**
 
@@ -361,13 +361,13 @@ function isPhysicalCameraOrientationVariable(cameraInput: camera.CameraInput): b
 }
 ```
 
-## getPhysicalCameraOrientation<sup>21+</sup>
+## getPhysicalCameraOrientation<sup>22+</sup>
 
 getPhysicalCameraOrientation(): number
 
-Obtains the physical camera orientation in the current fold state.
+Obtains the physical camera orientation in the current fold state of the device.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -386,13 +386,13 @@ function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): number {
 }
 ```
 
-## usePhysicalCameraOrientation<sup>21+</sup>
+## usePhysicalCameraOrientation<sup>22+</sup>
 
 usePhysicalCameraOrientation(isUsed: boolean): void
 
 Enables or disables the use of the physical camera orientation.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 

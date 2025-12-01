@@ -321,23 +321,29 @@ workerPort.onmessage = (e: MessageEvents): void => {
 首先，我们尝试使用强制转换的方式把Worker线程接收到数据强制转换成MyMath类型，示例代码如下：
 
 ```typescript
+import { MessageEvents, worker } from '@kit.ArkTS';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const workerPort = worker.workerPort;
 workerPort.onmessage = (e: MessageEvents): void => {
   let math = e.data as MyMath; // 方法一：强制转换
-  console.log('math compute:' + math.compute()); // 执行失败，不会打印此日志
+  hilog.info(0x0001, 'MultiThreadCapability', 'math compute:' + math.compute());// 执行失败，不会打印此日志
 }
 ```
 
 强制转换后执行方法失败，不会打印此日志。因为序列化传输普通对象时，仅支持传递属性，不支持传递其原型及方法。接下来我们尝试第二种方法，根据数据重新初始化一个MyMath对象，然后执行compute方法，示例代码如下：
 
 ```typescript
+import { MessageEvents, worker } from '@kit.ArkTS';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const workerPort = worker.workerPort;
 workerPort.onmessage = (e: MessageEvents): void => {
   // 重新构造原类型的对象
   let math = new MyMath(0, 0);
   math.a = e.data.a;
   math.b = e.data.b;
-  console.log('math compute:' + math.compute()); // 成功打印出结果：5
+  hilog.info(0x0001, 'MultiThreadCapability', 'math compute:' + math.compute());// 成功打印出结果：5
 }
 ```
 
@@ -359,7 +365,7 @@ class MyMath implements MyMathInterface {
   b: number = 1;
 
   constructor(a: number, b: number) {
-    console.log('MyMath constructor a:' + a + ' b:' + b);
+    hilog.info(0x0001, 'MultiThreadCapability', 'MyMath constructor a:' + a + ' b:' + b);
     this.a = a;
     this.b = b;
   }
@@ -388,7 +394,7 @@ const workerPort = worker.workerPort;
 workerPort.onmessage = (e: MessageEvents): void => {
   // 方法三：使用代理类构造对象
   let proxy = new MyMathProxy(e.data);
-  console.log('math compute:' + proxy.compute()); // 成功打印出结果：5
+  hilog.info(0x0001, "MultiThreadCapability", 'math compute:' + proxy.compute());// 成功打印出结果：5
 }
 ```
 

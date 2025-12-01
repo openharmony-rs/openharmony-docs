@@ -1,5 +1,16 @@
 # WebSocket_RequestOptions
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
+```c
+struct WebSocket_RequestOptions {...}
+```
+
 ## 概述
 
 webSocket客户端和服务端建立连接的参数。

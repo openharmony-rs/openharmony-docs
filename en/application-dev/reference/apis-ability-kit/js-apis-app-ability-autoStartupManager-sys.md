@@ -1,4 +1,4 @@
-# @ohos.app.ability.autoStartupManager (autoStartupManager) (System API)
+# @ohos.app.ability.autoStartupManager (Auto-Startup Management) (System API)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -49,7 +49,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
 | 202      | Permission denied, non-system app called system api. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-| 16000050 | Internal error. |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -99,7 +99,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
 | 202      | Permission denied, non-system app called system api. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-| 16000050 | Internal error. |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -134,6 +134,7 @@ Sets an application component to automatically start upon system boot. This API 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Device behavior differences**
+- Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, tablets, and wearables. If it is called on other device types, error code 16000050 is returned.
 - Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
 - For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
 
@@ -155,7 +156,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
-| 16000050 | Internal error.                              |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -192,6 +193,7 @@ Sets an application component to automatically start upon system boot. This API 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Device behavior differences**
+- Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, tablets, and wearables. If it is called on other device types, error code 16000050 is returned.
 - Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
 - For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
 
@@ -218,7 +220,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
-| 16000050 | Internal error.                              |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -253,6 +255,7 @@ Cancels the auto-startup setting for an application component. This API uses an 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Device behavior differences**
+- Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, tablets, and wearables. If it is called on other device types, error code 16000050 is returned.
 - Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
 - For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
 
@@ -274,7 +277,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
-| 16000050 | Internal error.                              |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -311,6 +314,7 @@ Cancels the auto-startup setting for an application component. This API uses a p
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Device behavior differences**
+- Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, tablets, and wearables. If it is called on other device types, error code 16000050 is returned.
 - Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
 - For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
 
@@ -337,7 +341,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
-| 16000050 | Internal error.                              |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -372,6 +376,7 @@ Obtains information about all auto-startup application components. This API uses
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Device behavior differences**
+- Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, tablets, and wearables. If it is called on other device types, error code 16000050 is returned.
 - Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
 - For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
 
@@ -390,7 +395,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
 | 202      | Permission denied, non-system app called system api. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-| 16000050 | Internal error. |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -399,7 +404,7 @@ import { autoStartupManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  autoStartupManager.queryAllAutoStartupApplications((err, data: common.AutoStartupInfo[]) => {
+  autoStartupManager.queryAllAutoStartupApplications((err: BusinessError, data: common.AutoStartupInfo[]) => {
     if (err) {
       console.error(`queryAllAutoStartupApplications failed, err code: ${err.code}, err msg: ${err.message}.`);
       return;
@@ -424,6 +429,7 @@ Obtains information about all auto-startup application components. This API uses
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Device behavior differences**
+- Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, tablets, and wearables. If it is called on other device types, error code 16000050 is returned.
 - Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
 - For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
 
@@ -442,7 +448,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
 | 202      | Permission denied, non-system app called system api. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-| 16000050 | Internal error. |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 

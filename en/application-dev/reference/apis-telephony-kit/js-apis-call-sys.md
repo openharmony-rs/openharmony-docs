@@ -1,4 +1,10 @@
 # @ohos.telephony.call (Call) (System API)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @shao-yikai-->
+<!--Designer: @wnazgul-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 The **call** module provides call management functions, including making calls, redirecting to the dial screen, obtaining the call status, and formatting phone numbers.
 
@@ -6232,5 +6238,3 @@ Enumerates number mark types.
 | MARK_TYPE_OTHERS | 9 | Other.|
 | MARK_TYPE_YELLOW_PAGE | 10 | Yellow page.|
 | MARK_TYPE_ENTERPRISE<sup>14+</sup> | 11 | Enterprise contact.|
-
-<!--no_check-->

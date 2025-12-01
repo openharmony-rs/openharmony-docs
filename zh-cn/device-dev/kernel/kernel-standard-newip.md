@@ -252,7 +252,7 @@ struct sockaddr_nin {
 
 ![zh-cn_image-20221009112548444](figures/zh-cn_image-20221009112548444.png)
 
-上图中New IP地址，路由配置程序可以参考[代码仓examples代码](https://gitee.com/openharmony/kernel_linux_common_modules/tree/master/newip/examples)，根据CPU硬件差异更改Makefile中CC定义编译成二级制文件后推送到开发板，参考上图命令给设备配置New IP地址和路由。
+上图中New IP地址，路由配置程序可以参考[代码仓examples代码](https://gitcode.com/openharmony/kernel_linux_common_modules/tree/master/newip/examples)，根据CPU硬件差异更改Makefile中CC定义编译成二级制文件后推送到开发板，参考上图命令给设备配置New IP地址和路由。
 
 | 文件名             | 功能                                                     |
 | ------------------ | -------------------------------------------------------- |
@@ -282,7 +282,7 @@ struct sockaddr_nin {
 
 ## New IP收发包代码示例
 
-New IP可变长地址配置，路由配置，UDP/TCP收发包demo代码链接如下，New IP协议栈用户态接口使用方法可以参考[代码仓examples代码](https://gitee.com/openharmony/kernel_linux_common_modules/tree/master/newip/examples)。demo代码内配置固定地址和路由，执行编译后二进制程序时不需要人工指定地址和路由。
+New IP可变长地址配置，路由配置，UDP/TCP收发包demo代码链接如下，New IP协议栈用户态接口使用方法可以参考[代码仓examples代码](https://gitcode.com/openharmony/kernel_linux_common_modules/tree/master/newip/examples)。demo代码内配置固定地址和路由，执行编译后二进制程序时不需要人工指定地址和路由。
 
 | 文件名                | 功能                           |
 | --------------------- | ------------------------------ |
@@ -381,7 +381,7 @@ allowxperm thread_xxx thread_xxx:socket ioctl { 0x8933 0x8916 0x890B };
 
 ## WireShark报文解析模板
 
-Wireshark默认报文解析规则无法解析New IP报文，在WireShark配置中添加New IP报文解析模板可以实现New IP报文解析，[New IP报文解析模板](https://gitee.com/openharmony/kernel_linux_common_modules/blob/master/newip/tools/wireshark_cfg_for_newip.lua)详见代码仓。
+Wireshark默认报文解析规则无法解析New IP报文，在WireShark配置中添加New IP报文解析模板可以实现New IP报文解析，[New IP报文解析模板](https://gitcode.com/openharmony/kernel_linux_common_modules/blob/master/newip/tools/wireshark_cfg_for_newip.lua)详见代码仓。
 
 报文解析模板配置文件的方法：
 

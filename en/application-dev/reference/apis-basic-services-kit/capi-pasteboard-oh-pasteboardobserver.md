@@ -3,8 +3,12 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
 <!--Designer: @guo867-->
-<!--Tester: @maxiaorong2-->
-<!--Adviser: @HelloCrease-->
+<!--Tester: @maxiaorong-->
+<!--Adviser: @fang-jinxu-->
+
+```
+typedef struct OH_PasteboardObserver OH_PasteboardObserver
+```
 
 ## Overview
 

@@ -1,4 +1,10 @@
 # Telephony Radio
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @Terence_Super-->
+<!--Designer: @Terence_Super-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 
 ## 概述
@@ -15,15 +21,15 @@
 
 | 名称 | 描述 |
 | -------- | -------- |
-| [telephony_radio.h](telephony__radio_8h.md) | 为SSL/TLS证书链校验模块定义C接口。<br>**引用文件：** \<telephony\/core_service\/telephony_radio.h\> |
-| [telephony_radio_type.h](telephony__radio__type_8h.md) | 定义SSL/TLS证书链校验模块的C接口需要的数据结构。<br>**引用文件：** \<telephony\/core_service\/telephony_radio_type.h\> |
+| [telephony_radio.h](capi-telephony-radio-h.md) | 为SSL/TLS证书链校验模块定义C接口。<br>**引用文件：** \<telephony\/core_service\/telephony_radio.h\> |
+| [telephony_radio_type.h](capi-telephony-radio-type-h.md) | 定义SSL/TLS证书链校验模块的C接口需要的数据结构。<br>**引用文件：** \<telephony\/core_service\/telephony_radio_type.h\> |
 
 
 ### 结构体
 
 | 名称 | 描述 |
 | -------- | -------- |
-| [Telephony_NetworkState](_telephony__network_state.md) | 网络状态结构体。 |
+| [Telephony_NetworkState](capi-telephony-telephony-networkstate.md) | 网络状态结构体。 |
 
 ### 宏定义
 

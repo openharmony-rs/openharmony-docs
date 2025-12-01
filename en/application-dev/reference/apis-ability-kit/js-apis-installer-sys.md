@@ -1,4 +1,4 @@
-# @ohos.bundle.installer (installer) (System API)
+# @ohos.bundle.installer (installer Module) (System API)
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
@@ -49,7 +49,7 @@ For details about the error codes, see [Bundle Error Codes](errorcode-bundle.md)
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     installer.getBundleInstaller((err: BusinessError, data: installer.BundleInstaller) => {
@@ -92,7 +92,7 @@ For details about the error codes, see [Bundle Error Codes](errorcode-bundle.md)
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
@@ -133,7 +133,7 @@ For details about the error codes, see [Bundle Error Codes](errorcode-bundle.md)
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     installer.getBundleInstallerSync();
@@ -215,7 +215,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 let installParam: installer.InstallParam = {
@@ -310,7 +310,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 
@@ -409,7 +409,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 let installParam: installer.InstallParam = {
@@ -477,7 +477,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 let installParam: installer.InstallParam = {
@@ -543,7 +543,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 
@@ -611,7 +611,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 let installParam: installer.InstallParam = {
@@ -675,7 +675,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 let installParam: installer.InstallParam = {
@@ -739,7 +739,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 
@@ -803,7 +803,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 let installParam: installer.InstallParam = {
@@ -865,7 +865,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let uninstallParam: installer.UninstallParam = {
     bundleName: "com.ohos.demo",
@@ -930,7 +930,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let uninstallParam: installer.UninstallParam = {
     bundleName: "com.ohos.demo",
@@ -977,7 +977,7 @@ Adds extended resources based on the specified bundle name and HSP file path. Th
 
 | Type         | Description                                  |
 | ------------- | -------------------------------------- |
-| Promise\<void> | that returns no value.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -995,8 +995,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import hilog from '@ohos.hilog';
-import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName : string = 'com.ohos.demo';
 let filePaths : Array<string> = ['/data/storage/el2/base/a.hsp'];
@@ -1020,7 +1020,7 @@ try {
 
 removeExtResource(bundleName: string, moduleNames: Array\<string>): Promise\<void>;
 
-Removes extended resources based on the specified bundle name and HSP file path. This API uses a promise to return the result.
+Removes extended resources based on the specified bundle name and module names. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1039,7 +1039,7 @@ Removes extended resources based on the specified bundle name and HSP file path.
 
 | Type         | Description                                  |
 | ------------- | -------------------------------------- |
-| Promise\<void> | that returns no value.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -1057,8 +1057,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import hilog from '@ohos.hilog';
-import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName : string = 'com.ohos.demo';
 let moduleNames : Array<string> = ['moduleTest'];
@@ -1082,7 +1082,7 @@ try {
 
 updateBundleForSelf(hapFilePaths: Array\<string\>, installParam: InstallParam, callback: AsyncCallback\<void\>): void
 
-Updates the current bundle. This API uses an asynchronous callback to return the result. It can be called only by enterprise MDM applications on enterprise devices, and the HAPs in **hapFilePaths** must belong to the current application.
+Updates the current bundle. This API can be called only by enterprise MDM applications on enterprise devices, and the HAPs in **hapFilePaths** must belong to the current application. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1130,7 +1130,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 let installParam: installer.InstallParam = {
@@ -1161,7 +1161,7 @@ try {
 
 updateBundleForSelf(hapFilePaths: Array\<string\>, callback: AsyncCallback\<void\>): void
 
-Updates the current bundle. This API uses an asynchronous callback to return the result. It can be called only by enterprise MDM applications on enterprise devices, and the HAPs in **hapFilePaths** must belong to the current application.
+Updates the current bundle. This API can be called only by enterprise MDM applications on enterprise devices, and the HAPs in **hapFilePaths** must belong to the current application. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1207,7 +1207,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 
@@ -1233,7 +1233,7 @@ try {
 
 updateBundleForSelf(hapFilePaths: Array\<string\>, installParam?: InstallParam): Promise\<void\>
 
-Updates the current bundle. This API uses a promise to return the result. It can be called only by enterprise MDM applications on enterprise devices, and the HAPs in **hapFilePaths** must belong to the current application.
+Updates the current bundle. This API can be called only by enterprise MDM applications on enterprise devices, and the HAPs in **hapFilePaths** must belong to the current application. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1286,7 +1286,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 let installParam: installer.InstallParam = {
@@ -1357,7 +1357,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let installParam: installer.InstallParam = {
@@ -1424,7 +1424,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let createAppCloneParam: installer.CreateAppCloneParam = {
@@ -1491,7 +1491,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let index = 1;
@@ -1557,7 +1557,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let index = 1;
@@ -1630,7 +1630,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let userId = 100;
@@ -1830,7 +1830,7 @@ Defines the parameters that need to be specified for bundle installation, uninst
 | additionalInfo<sup>10+</sup> | string | No| Yes|Additional information during application installation (usually an enterprise application). By default, no value is passed. The maximum length is 3,000 bytes. This field is usually specified by the application market of the operating system operator.|
 | verifyCodeParams<sup>deprecated<sup> | Array<[VerifyCodeParam](#verifycodeparamdeprecated)> | No| Yes| Information about the code signature file. The default value is null.        |
 | pgoParams<sup>11+</sup> | Array<[PGOParam](#pgoparam11)> | No| Yes| Parameters of the Profile-guided Optimization (PGO) configuration file. The default value is null.        |
-| parameters<sup>15+</sup> | Array<[Parameters](#parameters15)> | No| Yes| Extended parameters, represented as an array of the Parameters type. The default value is empty. The options of **Parameters.key** are as follows:<br> - **ohos.bms.param.renameInstall**: If the value is **true**, the installation package is moved from the application sandbox to the installation directory using a shared directory. Otherwise, it is copied from the application sandbox to the installation directory using a regular directory.<br> - **ohos.bms.param.enterpriseForAllUser**: If the value is **true**, the enterprise application is installed for all users.<br> - **ohos.bms.param.verifyUninstallRule**: If the value is **true**, an uninstallation handling rule is set to block application uninstallation.<br> - **ohos.bms.param.enterpriseManifest**: The value is the sandbox path of the JSON file used to store the application's manifest, including the bundle name. It is used in the scenario of cloning enterprise applications. If this JSON file exists during cloning, the application package from the old device is copied to the new device for installation.|
+| parameters<sup>15+</sup> | Array<[Parameters](#parameters15)> | No| Yes| Extended parameters, represented as an array of the Parameters type. The default value is empty. The options of **Parameters.key** are as follows:<br> - **ohos.bms.param.renameInstall**: If the value is **true**, the installation package is moved from the application sandbox to the installation directory using a shared directory. Otherwise, it is copied from the application sandbox to the installation directory using a regular directory.<br> - **ohos.bms.param.enterpriseForAllUser**: If the value is **true**, the enterprise application is installed for all users.<br> - **ohos.bms.param.verifyUninstallRule**: If the value is **true**, an uninstallation handling rule is set to block application uninstallation.<br> - **ohos.bms.param.enterpriseManifest**: The value is the sandbox path of the JSON file used to store the application's manifest, including the bundle name. It is used in the scenario of cloning enterprise applications. If this JSON file exists during cloning, the application package from the old device is copied to the new device for installation.<br> - **ohos.bms.param.installBundleName**: The value is the bundle name of the application. It is used in application installation scenarios and is supported since API version 23. If this field is passed during installation, the [getBundleInstallStatus](./js-apis-bundleManager-sys.md#bundlemanagergetbundleinstallstatus23) API can be called to obtain the installation status of the application.|
 ## UninstallParam<sup>10+</sup>
 
 Defines the parameters required for the uninstall of a shared bundle.
@@ -1909,7 +1909,7 @@ Describes the parameters used for destroying an application clone.
 | Name       | Type  | Read-Only |  Optional| Description                                                         |
 | ----------- | ------ | ----| ---- | ------------------------------------------------------------ |
 | userId      | number | No| Yes | ID of the user for whom the clone is to be destroyed. You can obtain the user ID by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller.            |
-| parameters  | Array<[Parameters](#parameters15)> | No| Yes  | Extended parameters for destroying the clone. The default value is null.           |
+| parameters  | Array<[Parameters](#parameters15)> | No| Yes  | Extended parameters for destroying the clone. The default value is null. The options of **Parameters.key** are as follows:<br> - "ohos.bms.param.clone.isKeepData": This parameter is supported since API version 21. If the value of this parameter is **true**, the user data of the clone will be retained when the clone is destroyed. Otherwise, the user data will not be retained.           |
 
 ## PluginParam<sup>19+</sup>
 

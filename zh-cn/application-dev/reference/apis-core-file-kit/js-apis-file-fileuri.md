@@ -6,7 +6,7 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
-该模块提供通过PATH获取文件统一资源标志符（Uniform Resource Identifier，URI），后续可通过使用[@ohos.file.fs](js-apis-file-fs.md)进行相关open、read、write等操作，实现文件分享。
+该模块提供通过PATH获取文件统一资源标识符（Uniform Resource Identifier，URI），后续可通过使用[@ohos.file.fs](js-apis-file-fs.md)进行相关open、read、write等操作，实现文件分享。
 
 > **说明：**
 >
@@ -138,7 +138,7 @@ getFullDirectoryUri(): string
     let path = pathDir + '/test.txt';
     let fileUriObject = new fileUri.FileUri(path);
     let directoryUri = fileUriObject.getFullDirectoryUri();
-    console.log(`success to getFullDirectoryUri: ${JSON.stringify(directoryUri)}`);
+    console.info(`success to getFullDirectoryUri: ${JSON.stringify(directoryUri)}`);
   } catch (error) {
     console.error(`failed to getFullDirectoryUri because: ${JSON.stringify(error)}`);
   }
@@ -177,7 +177,7 @@ isRemoteUri(): boolean
     let fileUriObject = new fileUri.FileUri(uri);
     let ret = fileUriObject.isRemoteUri();
     if (ret) {
-        console.log(`It is a remote uri.`);
+        console.info(`It is a remote uri.`);
     }
   }
   ```

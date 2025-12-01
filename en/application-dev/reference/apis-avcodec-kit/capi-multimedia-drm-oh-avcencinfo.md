@@ -1,5 +1,16 @@
 # OH_AVCencInfo
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct OH_AVCencInfo OH_AVCencInfo
+```
+
 ## Overview
 
 The struct describes the audio/video Common Encryption Scheme (CENC) information.

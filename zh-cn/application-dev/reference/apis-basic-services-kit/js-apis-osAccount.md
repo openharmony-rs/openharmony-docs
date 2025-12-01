@@ -82,13 +82,14 @@ checkMultiOsAccountEnabled(callback: AsyncCallback&lt;boolean&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.checkMultiOsAccountEnabled((err: BusinessError, isEnabled: boolean) => {
       if (err) {
         console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
       } else {
-      console.info('checkMultiOsAccountEnabled successfully, isEnabled: ' + isEnabled);
+        console.info('checkMultiOsAccountEnabled successfully, isEnabled: ' + isEnabled);
       }
     });
   } catch (e) {
@@ -123,6 +124,7 @@ checkMultiOsAccountEnabled(): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   try {
     let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
     accountManager.checkMultiOsAccountEnabled().then((isEnabled: boolean) => {
@@ -173,6 +175,7 @@ checkOsAccountActivated(localId: number, callback: AsyncCallback&lt;boolean&gt;)
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -231,6 +234,7 @@ checkOsAccountActivated(localId: number): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -278,6 +282,7 @@ isOsAccountConstraintEnabled(constraint: string): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let constraint: string = 'constraint.wifi';
   try {
@@ -330,6 +335,7 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string, callback: A
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
@@ -390,6 +396,7 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
@@ -432,6 +439,7 @@ checkOsAccountTestable(callback: AsyncCallback&lt;boolean&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.checkOsAccountTestable((err: BusinessError, isTestable: boolean) => {
@@ -473,6 +481,7 @@ checkOsAccountTestable(): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.checkOsAccountTestable().then((isTestable: boolean) => {
@@ -512,6 +521,7 @@ isOsAccountUnlocked(): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.isOsAccountUnlocked().then((isVerified: boolean) => {
@@ -555,6 +565,7 @@ checkOsAccountVerified(callback: AsyncCallback&lt;boolean&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.checkOsAccountVerified((err: BusinessError, isVerified: boolean) => {
@@ -600,6 +611,7 @@ checkOsAccountVerified(): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.checkOsAccountVerified().then((isVerified: boolean) => {
@@ -650,6 +662,7 @@ checkOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;):
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -708,6 +721,7 @@ checkOsAccountVerified(localId: number): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -752,6 +766,7 @@ getOsAccountCount(callback: AsyncCallback&lt;number&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountCount((err: BusinessError, count: number) => {
@@ -796,6 +811,7 @@ getOsAccountCount(): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountCount().then((count: number) => {
@@ -803,7 +819,8 @@ getOsAccountCount(): Promise&lt;number&gt;
     }).catch((err: BusinessError) => {
       console.error(`getOsAccountCount failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch(err) {
+  } catch (e) {
+    const err = e as BusinessError;
     console.error(`getOsAccountCount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
@@ -835,6 +852,7 @@ getOsAccountLocalId(callback: AsyncCallback&lt;number&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountLocalId((err: BusinessError, localId: number) => {
@@ -876,6 +894,7 @@ getOsAccountLocalId(): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountLocalId().then((localId: number) => {
@@ -918,6 +937,7 @@ getOsAccountLocalIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): v
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let uid: number = 12345678;
   try {
@@ -967,6 +987,7 @@ getOsAccountLocalIdForUid(uid: number): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let uid: number = 12345678;
   try {
@@ -1013,6 +1034,8 @@ getOsAccountLocalIdForUidSync(uid: number): number
 **示例：** 查询值为12345678的uid所属的系统账号ID
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let uid: number = 12345678;
   try {
@@ -1056,6 +1079,7 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallb
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainInfo: osAccount.DomainAccountInfo = {domain: 'testDomain', accountName: 'testAccountName'};
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
@@ -1109,6 +1133,7 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise&lt;number&g
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let domainInfo: osAccount.DomainAccountInfo = {domain: 'testDomain', accountName: 'testAccountName'};
   try {
@@ -1160,6 +1185,7 @@ getOsAccountConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;str
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -1218,6 +1244,7 @@ getOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -1259,6 +1286,7 @@ getActivatedOsAccountLocalIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getActivatedOsAccountLocalIds((err: BusinessError, idArray: number[])=>{
@@ -1303,6 +1331,7 @@ getActivatedOsAccountLocalIds(): Promise&lt;Array&lt;number&gt;&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getActivatedOsAccountLocalIds().then((idArray: number[]) => {
@@ -1350,6 +1379,7 @@ getCurrentOsAccount(callback: AsyncCallback&lt;OsAccountInfo&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getCurrentOsAccount((err: BusinessError, curAccountInfo: osAccount.OsAccountInfo)=>{
@@ -1398,6 +1428,7 @@ getCurrentOsAccount(): Promise&lt;OsAccountInfo&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getCurrentOsAccount().then((accountInfo: osAccount.OsAccountInfo) => {
@@ -1438,6 +1469,7 @@ getOsAccountType(callback: AsyncCallback&lt;OsAccountType&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountType((err: BusinessError, accountType: osAccount.OsAccountType) => {
@@ -1479,6 +1511,7 @@ getOsAccountType(): Promise&lt;OsAccountType&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountType().then((accountType: osAccount.OsAccountType) => {
@@ -1522,6 +1555,7 @@ queryDistributedVirtualDeviceId(callback: AsyncCallback&lt;string&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryDistributedVirtualDeviceId((err: BusinessError, virtualID: string) => {
@@ -1566,6 +1600,7 @@ queryDistributedVirtualDeviceId(): Promise&lt;string&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryDistributedVirtualDeviceId().then((virtualID: string) => {
@@ -1609,6 +1644,7 @@ getOsAccountLocalIdForSerialNumber(serialNumber: number, callback: AsyncCallback
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let serialNumber: number = 12345;
   try {
@@ -1660,6 +1696,7 @@ getOsAccountLocalIdForSerialNumber(serialNumber: number): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let serialNumber: number = 12345;
   try {
@@ -1704,6 +1741,7 @@ getSerialNumberForOsAccountLocalId(localId: number, callback: AsyncCallback&lt;n
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -1755,6 +1793,7 @@ getSerialNumberForOsAccountLocalId(localId: number): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -1791,12 +1830,13 @@ isMultiOsAccountEnable(callback: AsyncCallback&lt;boolean&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.isMultiOsAccountEnable((err: BusinessError, isEnabled: boolean) => {
     if (err) {
       console.error(`isMultiOsAccountEnable failed, code is ${err.code}, message is ${err.message}`);
     } else {
-    console.info('isMultiOsAccountEnable successfully, isEnabled: ' + isEnabled);
+      console.info('isMultiOsAccountEnable successfully, isEnabled: ' + isEnabled);
     }
   });
   ```
@@ -1823,6 +1863,7 @@ isMultiOsAccountEnable(): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.isMultiOsAccountEnable().then((isEnabled: boolean) => {
     console.info('isMultiOsAccountEnable successfully, isEnabled: ' + isEnabled);
@@ -1856,6 +1897,7 @@ isOsAccountActived(localId: number, callback: AsyncCallback&lt;boolean&gt;): voi
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.isOsAccountActived(localId, (err: BusinessError, isActived: boolean) => {
@@ -1897,6 +1939,7 @@ isOsAccountActived(localId: number): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.isOsAccountActived(localId).then((isActived: boolean) => {
@@ -1932,6 +1975,7 @@ isOsAccountConstraintEnable(localId: number, constraint: string, callback: Async
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
@@ -1975,6 +2019,7 @@ isOsAccountConstraintEnable(localId: number, constraint: string): Promise&lt;boo
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
@@ -2007,6 +2052,7 @@ isTestOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.isTestOsAccount((err: BusinessError, isTestable: boolean) => {
     if (err) {
@@ -2039,6 +2085,7 @@ isTestOsAccount(): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
     accountManager.isTestOsAccount().then((isTestable: boolean) => {
       console.info('isTestOsAccount successfully, isTestable: ' + isTestable);
@@ -2071,6 +2118,7 @@ isOsAccountVerified(callback: AsyncCallback&lt;boolean&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.isOsAccountVerified((err: BusinessError, isVerified: boolean) => {
     if (err) {
@@ -2106,6 +2154,7 @@ isOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;): vo
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.isOsAccountVerified(localId, (err: BusinessError, isVerified: boolean) => {
@@ -2147,6 +2196,7 @@ isOsAccountVerified(localId?: number): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.isOsAccountVerified().then((isVerified: boolean) => {
     console.info('isOsAccountVerified successfully, isVerified: ' + isVerified);
@@ -2179,6 +2229,7 @@ getCreatedOsAccountsCount(callback: AsyncCallback&lt;number&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getCreatedOsAccountsCount((err: BusinessError, count: number)=>{
     if (err) {
@@ -2213,6 +2264,7 @@ getCreatedOsAccountsCount(): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getCreatedOsAccountsCount().then((count: number) => {
     console.info('getCreatedOsAccountsCount successfully, count: ' + count);
@@ -2243,6 +2295,7 @@ getOsAccountLocalIdFromProcess(callback: AsyncCallback&lt;number&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getOsAccountLocalIdFromProcess((err: BusinessError, localId: number) => {
     if (err) {
@@ -2275,6 +2328,7 @@ getOsAccountLocalIdFromProcess(): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getOsAccountLocalIdFromProcess().then((localId: number) => {
     console.info('getOsAccountLocalIdFromProcess successfully, localId: ' + localId);
@@ -2306,6 +2360,7 @@ getOsAccountLocalIdFromUid(uid: number, callback: AsyncCallback&lt;number&gt;): 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let uid: number = 12345678;
   accountManager.getOsAccountLocalIdFromUid(uid, (err: BusinessError, localId: number) => {
@@ -2345,6 +2400,7 @@ getOsAccountLocalIdFromUid(uid: number): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let uid: number = 12345678;
   accountManager.getOsAccountLocalIdFromUid(uid).then((localId: number) => {
@@ -2379,6 +2435,7 @@ getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo, callback: AsyncCall
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainInfo: osAccount.DomainAccountInfo = {domain: 'testDomain', accountName: 'testAccountName'};
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getOsAccountLocalIdFromDomain(domainInfo, (err: BusinessError, localId: number) => {
@@ -2420,6 +2477,7 @@ getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo): Promise&lt;number&
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let domainInfo: osAccount.DomainAccountInfo = {domain: 'testDomain', accountName: 'testAccountName'};
   accountManager.getOsAccountLocalIdFromDomain(domainInfo).then((localId: number) => {
@@ -2454,6 +2512,7 @@ getOsAccountAllConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.getOsAccountAllConstraints(localId, (err: BusinessError, constraints: string[])=>{
@@ -2495,6 +2554,7 @@ getOsAccountAllConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.getOsAccountAllConstraints(localId).then((constraints: string[]) => {
@@ -2526,16 +2586,17 @@ queryActivatedOsAccountIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-  accountManager.queryActivatedOsAccountIds((err: BusinessError, idArray: number[])=>{
-      if (err) {
-        console.error(`queryActivatedOsAccountIds code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('queryActivatedOsAccountIds idArray length:' + idArray.length);
-        for(let i=0;i<idArray.length;i++) {
-          console.info('activated os account id: ' + idArray[i]);
-        }
+  accountManager.queryActivatedOsAccountIds((err: BusinessError, idArray: number[]) => {
+    if (err) {
+      console.error(`queryActivatedOsAccountIds code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info('queryActivatedOsAccountIds idArray length:' + idArray.length);
+      for (let i = 0; i < idArray.length; i++) {
+        console.info('activated os account id: ' + idArray[i]);
       }
+    }
   });
   ```
 
@@ -2561,6 +2622,7 @@ queryActivatedOsAccountIds(): Promise&lt;Array&lt;number&gt;&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.queryActivatedOsAccountIds().then((idArray: number[]) => {
     console.info('queryActivatedOsAccountIds, idArray: ' + idArray);
@@ -2593,6 +2655,7 @@ queryCurrentOsAccount(callback: AsyncCallback&lt;OsAccountInfo&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.queryCurrentOsAccount((err: BusinessError, curAccountInfo: osAccount.OsAccountInfo)=>{
     if (err) {
@@ -2627,6 +2690,7 @@ queryCurrentOsAccount(): Promise&lt;OsAccountInfo&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.queryCurrentOsAccount().then((accountInfo: osAccount.OsAccountInfo) => {
     console.info('queryCurrentOsAccount, accountInfo: ' + JSON.stringify(accountInfo));
@@ -2657,6 +2721,7 @@ getOsAccountTypeFromProcess(callback: AsyncCallback&lt;OsAccountType&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getOsAccountTypeFromProcess((err: BusinessError, accountType: osAccount.OsAccountType) => {
     if (err) {
@@ -2689,6 +2754,7 @@ getOsAccountTypeFromProcess(): Promise&lt;OsAccountType&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getOsAccountTypeFromProcess().then((accountType: osAccount.OsAccountType) => {
     console.info('getOsAccountTypeFromProcess, accountType: ' + accountType);
@@ -2721,6 +2787,7 @@ getDistributedVirtualDeviceId(callback: AsyncCallback&lt;string&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getDistributedVirtualDeviceId((err: BusinessError, virtualID: string) => {
     if (err) {
@@ -2755,6 +2822,7 @@ getDistributedVirtualDeviceId(): Promise&lt;string&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getDistributedVirtualDeviceId().then((virtualID: string) => {
     console.info('getDistributedVirtualDeviceId, virtualID: ' + virtualID);
@@ -2786,6 +2854,7 @@ getOsAccountLocalIdBySerialNumber(serialNumber: number, callback: AsyncCallback&
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let serialNumber: number = 12345;
   accountManager.getOsAccountLocalIdBySerialNumber(serialNumber, (err: BusinessError, localId: number)=>{
@@ -2825,6 +2894,7 @@ getOsAccountLocalIdBySerialNumber(serialNumber: number): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let serialNumber: number = 12345;
   accountManager.getOsAccountLocalIdBySerialNumber(serialNumber).then((localId: number) => {
@@ -2857,6 +2927,7 @@ getSerialNumberByOsAccountLocalId(localId: number, callback: AsyncCallback&lt;nu
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.getSerialNumberByOsAccountLocalId(localId, (err: BusinessError, serialNumber: number)=>{
@@ -2896,6 +2967,7 @@ getSerialNumberByOsAccountLocalId(localId: number): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.getSerialNumberByOsAccountLocalId(localId).then((serialNumber: number) => {
@@ -2928,8 +3000,10 @@ getOsAccountName(): Promise&lt;string&gt;
 | 12300001 | The system service works abnormally. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountName().then((name: string) => {
@@ -2969,6 +3043,7 @@ getForegroundOsAccountLocalId(): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getForegroundOsAccountLocalId().then((localId: number) => {
@@ -3019,6 +3094,7 @@ getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.getOsAccountDomainInfo(localId).then((domainAccountInfo: osAccount.DomainAccountInfo) => {
@@ -3074,8 +3150,10 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 | 12300004 | The new account already exists. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let oldDomainInfo: osAccount.DomainAccountInfo =
     {domain: 'testDomain', accountName: 'oldtestAccountName'};
   let newDomainInfo: osAccount.DomainAccountInfo =
@@ -3181,8 +3259,10 @@ static addServerConfig(parameters: Record&lt;string, Object&gt;): Promise&lt;Dom
 | 12300215 | The number of server config reaches the upper limit. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let configParams: Record<string, Object> = {
     'uri': 'test.example.com',
     'port': 100
@@ -3230,8 +3310,10 @@ static removeServerConfig(configId: string): Promise&lt;void&gt;
 | 12300214 | Server config has been associated with an account. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let configParams: Record<string, Object> = {
     'uri': 'test.example.com',
     'port': 100
@@ -3285,8 +3367,10 @@ static updateServerConfig(configId: string, parameters: Record&lt;string, Object
 | 12300214 | Server config has been associated with an account. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let configParams: Record<string, Object> = {
     'uri': 'test.example.com',
     'port': 100
@@ -3338,8 +3422,10 @@ static getServerConfig(configId: string): Promise&lt;DomainServerConfig&gt;
 | 12300212 | Server config not found. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let configParams: Record<string, Object> = {
     'uri': 'test.example.com',
     'port': 100
@@ -3384,8 +3470,10 @@ static getAllServerConfigs(): Promise&lt;Array&lt;DomainServerConfig&gt;&gt;
 | 12300001 | The system service works abnormally. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let configParams: Record<string, Object> = {
     'uri': 'test.example.com',
     'port': 100
@@ -3437,8 +3525,10 @@ static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise&lt;
 | 12300003 | Domain account not found. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountInfo: osAccount.DomainAccountInfo = {
     'accountName': 'demoName',
     'domain': 'demoDomain'

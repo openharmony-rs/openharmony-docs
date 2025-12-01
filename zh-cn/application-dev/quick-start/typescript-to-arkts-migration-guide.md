@@ -693,7 +693,7 @@ type YI<Item, T extends Array<Item>> = Item
 
 **错误码：10605025**
 
-ArkTS禁止在构造函数中声明类字段，所有字段都必须在`class`作用域内显示声明。
+ArkTS禁止在构造函数中声明类字段，所有字段都必须在`class`作用域内显式声明。
 
 **TypeScript**
 
@@ -1433,16 +1433,16 @@ class testShape {}
 class testCircle extends testShape { x: number = 5 }
 class testSquare extends testShape { y: string = 'a' }
 
-function createShape(): Shape {
-  return new Circle();
+function createShape(): testShape {
+  return new testCircle();
 }
 
-let c1 = <Circle> createShape();
+let c1 = <testCircle> createShape();
 
-let c2 = createShape() as Circle;
+let c2 = createShape() as testCircle;
 
 // 如果转换错误，不会产生编译时或运行时报错
-let c3 = createShape() as Square;
+let c3 = createShape() as testSquare;
 console.info(c3.y); // undefined
 
 // 在TS中，由于`as`关键字不会在运行时生效，所以`instanceof`的左操作数不会在运行时被装箱成引用类型
@@ -1459,13 +1459,13 @@ class testShape {}
 class testCircle extends testShape { x: number = 5 }
 
 function createShape(): testShape {
-  return new Circle();
+  return new testCircle();
 }
 
-let c2 = createShape() as testCircle;
+let c1 = createShape() as testCircle;
 
 // 创建Number对象，获得预期结果：
-let e2 = (new Number(5.0)) instanceof Number; // true
+let e1 = (new Number(5.0)) instanceof Number; // true
 ```
 
 ### 不支持JSX表达式
@@ -1486,7 +1486,7 @@ let e2 = (new Number(5.0)) instanceof Number; // true
 
 **错误码：10605055**
 
-ArkTS对一元运算符实施严格的类型检查，仅允许操作数值类型。与TypeScript不同，ArkTS禁止隐式的字符串转换到数值，开发者必须使用显示类型的转换方法。
+ArkTS对一元运算符实施严格的类型检查，仅允许操作数值类型。与TypeScript不同，ArkTS禁止隐式的字符串转换到数值，开发者必须使用显式类型的转换方法。
 
 **TypeScript**
 
@@ -3080,11 +3080,9 @@ ArkTS不允许使用TypeScript或JavaScript标准库中的某些接口。大部�
 
 ### 强制进行严格类型检查
 
-**规则：**`arkts-strict-typing`
-
 **级别：错误**
 
-**错误码：10605145**
+**错误码：10605999**
 
 在编译阶段，会进行TypeScript严格模式的类型检查，包括：
 `noImplicitReturns`, 

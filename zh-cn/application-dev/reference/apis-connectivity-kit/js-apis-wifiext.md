@@ -1,5 +1,11 @@
 # @ohos.wifiext (WLAN扩展接口)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @qq_43802146-->
+<!--Designer: @qq_43802146-->
+<!--Tester: @furryfurry123-->
+<!--Adviser: @zhang_yixin13-->
 该模块主要提供WLAN扩展接口，供非通用类型产品使用。
 
 > **说明：**
@@ -52,7 +58,7 @@ disableHotspot(): boolean;
 
 getSupportedPowerModel(): Promise&lt;Array&lt;PowerModel&gt;&gt;
 
-获取支持的功率模式，使用Promise异步回调。
+获取支持的功率模式。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -82,7 +88,7 @@ getSupportedPowerModel(): Promise&lt;Array&lt;PowerModel&gt;&gt;
 
 getSupportedPowerModel(callback: AsyncCallback&lt;Array&lt;PowerModel&gt;&gt;): void
 
-获取支持的功率模式，使用callback异步回调。
+获取支持的功率模式。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -116,7 +122,7 @@ getPowerModel(): Promise&lt;PowerModel&gt;
 
 getPowerModel(callback: AsyncCallback&lt;PowerModel&gt;): void
 
-获取功率模式，使用callback异步回调。
+获取功率模式。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 

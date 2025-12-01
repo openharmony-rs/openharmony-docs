@@ -11,15 +11,17 @@
   - [@ohos.InputMethodExtensionContext (InputMethodExtensionContext)](js-apis-inputmethod-extension-context.md)
   - [@ohos.inputMethod.Panel (Input Method Panel)](js-apis-inputmethod-panel.md)
   - [@ohos.InputMethodSubtype (Input Method Subtype)](js-apis-inputmethod-subtype.md)
+  <!--Del-->
   - [@ohos.inputMethod (Input Method Framework) (System API)](js-apis-inputmethod-sys.md)
+  <!--DelEnd-->
   - [@ohos.inputMethod (Input Method Framework)](js-apis-inputmethod.md)
   - [@ohos.inputMethodEngine (Input Method Service)](js-apis-inputmethodengine.md)
-  - [@ohos.inputMethodEngine (Input Method Service) (System API)](js-apis-inputmethodengine-sys.md)
   - [@ohos.inputMethodList (Input Method List)](js-apis-inputmethodlist.md)
-- C API<!--ime-c-->
-  - Modules
+  - [@ohos.inputMethod.ExtraConfig (Input Method Extension Information)](js-apis-inputmethod-extraconfig.md)
+- C APIs<!--ime-c-->
+  - Modules<!--ime-module-->
     - [InputMethod](capi-inputmethod.md)
-  - Header Files
+  - Header Files<!--ime-headerfile-->
     - [inputmethod_attach_options_capi.h](capi-inputmethod-attach-options-capi-h.md)
     - [inputmethod_controller_capi.h](capi-inputmethod-controller-capi-h.md)
     - [inputmethod_cursor_info_capi.h](capi-inputmethod-cursor-info-capi-h.md)
@@ -29,7 +31,7 @@
     - [inputmethod_text_config_capi.h](capi-inputmethod-text-config-capi-h.md)
     - [inputmethod_text_editor_proxy_capi.h](capi-inputmethod-text-editor-proxy-capi-h.md)
     - [inputmethod_types_capi.h](capi-inputmethod-types-capi-h.md)
-  - Structs
+  - Structs<!--ime-struct-->
     - [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)
     - [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)
     - [InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md)

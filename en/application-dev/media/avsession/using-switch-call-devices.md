@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Switching Call Output Devices
 
@@ -34,9 +34,9 @@ Currently, the system provides the default style and custom style for the **AVCa
                 try {
                   let context = this.getUIContext().getHostContext() as Context;
                 // Create an AVSession of the voice_call type.
-                let session: AVSessionManager.AVSession = await AVSessionManager.createAVSession(context, 'voiptest', 'voice_call');
+                let session: avSession.AVSession = await avSession.createAVSession(context, 'voiptest', 'voice_call');
                 } catch (err) {
-                  console.error(`avsession create :  Error: ${JSON.stringify(err)}`);
+                  console.error(`AVSession create :  Error: Code: ${err.code}, message: ${err.message}`);
                 }
               })
           }
@@ -68,38 +68,42 @@ Currently, the system provides the default style and custom style for the **AVCa
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
 
-   private audioRenderer: audio.AudioRenderer | undefined = undefined;
-   private audioStreamInfo: audio.AudioStreamInfo = {
-     // Set the parameters based on project requirements. The following parameters are for reference only.
-     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
-     channels: audio.AudioChannel.CHANNEL_2, // Channel.
-     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
-     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
-   }
-   private audioRendererInfo: audio.AudioRendererInfo = {
-     // Set the parameters related to the call scenario.
-     usage: audio.StreamUsage.STREAM_USAGE_VIDEO_COMMUNICATION, // Audio stream usage type: VoIP video call, speaker by default.
-     rendererFlags: 0 // AudioRenderer flag. The default value is 0.
-   }
-   private audioRendererOptions: audio.AudioRendererOptions = {
-     streamInfo: this.audioStreamInfo,
-     rendererInfo: this.audioRendererInfo
-   }
-
-   // Create an AudioRenderer instance, and set the events to listen for.
-   try {
-    this.audioRenderer = await audio.createAudioRenderer(this.audioRendererOptions);
-   } catch (err) {
-    console.error(`audioRender create :  Error: ${JSON.stringify(err)}`);
-   }
-
-   this.audioRenderer?.start((err: BusinessError) => {
-    if (err) {
-      console.error(`audioRenderer start failed -Code : ${err.code}, Message ${err.message}`);
-    } else {
-      console.info('audioRender start success');
+   export default class AudioRenderer {
+    private audioRenderer: audio.AudioRenderer | undefined = undefined;
+    private audioStreamInfo: audio.AudioStreamInfo = {
+      // Set the parameters based on project requirements. The following parameters are for reference only.
+      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
+      channels: audio.AudioChannel.CHANNEL_2, // Channel.
+      sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
+      encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
     }
-   });
+    private audioRendererInfo: audio.AudioRendererInfo = {
+      // Set the parameters related to the call scenario.
+      usage: audio.StreamUsage.STREAM_USAGE_VIDEO_COMMUNICATION, // Audio stream usage type: VoIP video call, speaker by default.
+      rendererFlags: 0 // AudioRenderer flag. The default value is 0.
+    }
+    private audioRendererOptions: audio.AudioRendererOptions = {
+      streamInfo: this.audioStreamInfo,
+      rendererInfo: this.audioRendererInfo
+    }
+
+    start() {
+      // Create an AudioRenderer instance, and set the events to listen for.
+      try {
+        this.audioRenderer = await audio.createAudioRenderer(this.audioRendererOptions);
+      } catch (err) {
+        console.error(`audioRender create :  Error: Code: ${err.code}, message: ${err.message}`);
+      }
+
+      this.audioRenderer?.start((err: BusinessError) => {
+        if (err) {
+          console.error(`audioRenderer start failed -Code : ${err.code}, Message ${err.message}`);
+        } else {
+          console.info('audioRender start success');
+        }
+      });
+    }
+   }
    ```
 
 4. (Optional) Subscribe to audio output device change events if you want to know the device change status.
@@ -158,7 +162,7 @@ The differences are as follows:
 
    // Custom content.
    @Builder
-   ImageBuilder(): void {
+   ImageBuilder() {
      Image(this.pickerImage)
        .size({ width: '100%', height: '100%' })
        .backgroundColor('#00000000')
@@ -250,37 +254,41 @@ You can customize a style by setting the **customPicker** parameter of the [AVIn
    ```ts
    import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';
 
-   @State pickerImage: ResourceStr = $r('app.media.earpiece'); // Custom resources.
+   @Entry
+   @Component
+   struct CastPicker {
+     @State pickerImage: ResourceStr = $r('app.media.startIcon'); // Custom resources.
 
-   // (Optional) Callback for the device list state change.
-   private onStateChange(state: AVCastPickerState) {
-     if (state === AVCastPickerState.STATE_APPEARING) {
-       console.info('The picker starts showing.');
-     } else if (state === AVCastPickerState.STATE_DISAPPEARING) {
-       console.info('The picker finishes presenting.');
-     }
-   }
-
-   build() {
-     Row() {
-       Column() {
-         AVInputCastPicker(
-           {
-             customPicker: (): void => this.ImageBuilder(), // Add a custom parameter.
-             onStateChange: this.onStateChange
-           }
-         ).size({ height: 45, width:45 })
+     // (Optional) Callback for the device list state change.
+     private onStateChange(state: AVCastPickerState) {
+        if (state === AVCastPickerState.STATE_APPEARING) {
+         console.info('The picker starts showing.');
+       } else if (state === AVCastPickerState.STATE_DISAPPEARING) {
+         console.info('The picker finishes presenting.');
        }
      }
-   }
+ 
+     build() {
+       Row() {
+         Column() {
+           AVInputCastPicker(
+             {
+               customPicker: this.ImageBuilder.bind(this), // Add a custom parameter.
+               onStateChange: this.onStateChange
+             }
+           ).size({ height: 45, width: 45 })
+         }
+       }
+     }
 
-   // Custom content.
-   @Builder
-   ImageBuilder(): void {
-     Image(this.pickerImage)
-       .size({ width: '100%', height: '100%' })
-       .backgroundColor('#00000000')
-       .fillColor(Color.Black)
+     // Custom content.
+     @Builder
+     ImageBuilder() {
+       Image(this.pickerImage)
+         .size({ width: '100%', height: '100%' })
+         .backgroundColor('#00000000')
+         .fillColor(Color.Black)
+     }
    }
    ```
 

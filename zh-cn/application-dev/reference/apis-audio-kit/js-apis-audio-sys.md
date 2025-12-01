@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 音频管理提供管理音频的一些基础能力，包括对音频音量、音频设备的管理，以及对音频数据的采集和渲染等。
 
@@ -114,7 +114,7 @@ async function createTonePlayerBefore(){
 
 createAsrProcessingController(audioCapturer: AudioCapturer): AsrProcessingController
 
-获取ASR处理控制器
+获取自动语音识别（ASR）处理控制器。
 
 **系统接口：** 该接口为系统接口。
 
@@ -141,7 +141,7 @@ createAsrProcessingController(audioCapturer: AudioCapturer): AsrProcessingContro
 | 202 | Caller is not a system application. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 6800101 | Parameter verification failed. |
-| 6800104 | Operation not allowed. |
+| 6800104 | Operation not allowed. e.g. the source type of the input audio capturer is not [SOURCE_TYPE_VOICE_RECOGNITION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) or [SOURCE_TYPE_WAKEUP](#sourcetype8),<br>or this audio capturer is already released.|
 
 **示例：**
 
@@ -288,7 +288,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 ## AsrNoiseSuppressionMode<sup>12+</sup>
 
-枚举，ASR 噪音抑制模式
+枚举，自动语音识别（ASR）的噪音抑制模式。
 
 **系统接口：** 该接口为系统接口。
 
@@ -303,7 +303,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 ## AsrAecMode<sup>12+</sup>
 
-枚举，ASR AEC 模式
+枚举，自动语音识别（ASR）的声学回声消除（AEC）模式。
 
 **系统接口：** 该接口为系统接口。
 
@@ -311,12 +311,12 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 | 名称|  值 | 说明 |
 |-------|-------|-------|
-| BYPASS | 0 |BYPASS AEC|
-| STANDARD | 1 |STANDARD AEC|
+| BYPASS | 0 |不使用AEC。|
+| STANDARD | 1 |使用标准AEC。|
 
 ## AsrWhisperDetectionMode<sup>12+</sup>
 
-枚举，ASR（Automatic Speech Recognition，自动语音识别）耳语检测模式。
+枚举，自动语音识别（ASR）的耳语检测模式。
 
 **系统接口：** 该接口为系统接口。
 
@@ -329,7 +329,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 ## AsrVoiceControlMode<sup>12+</sup>
 
-枚举，ASR音频通路模式。
+枚举，自动语音识别（ASR）的音频通路模式。
 
 **系统接口：** 该接口为系统接口。
 
@@ -344,7 +344,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 ## AsrVoiceMuteMode<sup>12+</sup>
 
-枚举，ASR静音模式。
+枚举，自动语音识别（ASR）的静音模式。
 
 **系统接口：** 该接口为系统接口。
 
@@ -447,6 +447,60 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | :--------------------- | :----- | :-------------------------------------------- |
 | VOLUME_UP              | 0      | 向上调节音量。 |
 | VOLUME_DOWN            | 1      | 向下调节音量。 |
+
+## DeviceType
+
+表示设备类型的枚举。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+| 名称                         | 值     | 说明                              |
+|----------------------------| ------ |---------------------------------|
+| ACCESSORY<sup>19+</sup> | 26 | 辅助设备（例如遥控器上的麦克风等）。 |
+| BLUETOOTH_SPP<sup>22+</sup> | 33 | 蓝牙设备SPP（Serial Port Profile）连接。 |
+| NEARLINK_PORT<sup>22+</sup> | 34 | 星闪设备PORT连接。                     |
+
+## AudioDevcieSelectStrategy<sup>21+</sup>
+
+表示设备选择策略的枚举。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+| 名称                         | 值     | 说明                              |
+|----------------------------| ------ |---------------------------------|
+| SELECT_STRATEGY_DEFAULT | 0 | 默认设备选择策略。 |
+| SELECT_STRATEGY_INDEPENDENT | 1 | 独立设备选择策略。 | 
+
+## PolicyType<sup>12+</sup>
+
+表示静音策略类型的枚举。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+| 名称                         | 值     | 说明                              |
+|----------------------------| ------ |---------------------------------|
+| EDM | 0 | 设备管理器下发的静音策略。 |
+| PRIVACY | 1 | 安全隐私模块下发的静音策略。 | 
+
+## AudioCapturerOptions<sup>8+</sup>
+
+音频采集器选项信息。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+| 名称                                | 类型                                                                   | 只读 | 可选 | 说明                                                                                                                                                                                                        |
+| ----------------------------------- |----------------------------------------------------------------------| ---- |---|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| preferredInputDevice<sup>22+</sup> | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 否 | 是 | 当前音频采集器的偏好输入设备。<br/>此设备必须为输入设备，并且capturerInfo的source type必须为[SOURCE_TYPE_VOICE_RECOGNITION](arkts-apis-audio-e.md#sourcetype8)或[SOURCE_TYPE_VOICE_TRANSCRIPTION](#sourcetype8)。否则，此参数将会被忽略。<br/>1. 当调用者未指定偏好设备时，系统会自动选择一个设备。<br/>2. 当调用者指定了偏好设备创建语音识别或者语音转写流时：<br/>（1）设备在线，当前audiocapturer会使用偏好设备；如果运行过程中，偏好设备下线，系统会自动选择一个录音设备。<br/>（2）设备不在线，当前audiocapturer会自动选择一个录音设备；如果运行过程中，偏好设备上线，系统会自动切换到偏好设备上。<br/>3. 调用者可以通过[getCurrentAudioCapturerChangeInfo](arkts-apis-audio-AudioCapturer.md#getcurrentaudiocapturerchangeinfo11)查询当前实际使用的录音设备。 |
+
+                                                                                                  
 
 ## AudioManager
 
@@ -765,7 +819,7 @@ forceVolumeKeyControlType(volumeType: AudioVolumeType, duration: number): void
 
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| volumeType     | [AudioVolumeType](#audiovolumetype)                       | 是   | 应用程序期望控制的音量类型。 |
+| volumeType     | [AudioVolumeType](#audiovolumetype)                       | 是   | 应用程序期望控制的音频音量类型。 |
 | duration |number | 是   | 无音量键事件时，控制音量类型的持续时间。当计时器到期时，强制音量类型设置将被取消，最大持续时间不得超过10秒。如果持续时间设置为-1，则取消该设置。 |
 
 **错误码：**
@@ -1056,7 +1110,7 @@ setAppVolumeMutedForUid(uid: number, muted: boolean\): Promise<void\>
 | 参数名     | 类型                                      | 必填 | 说明                             |
 | ---------- | ---------------------------------------- | ---- |--------------------------------|
 | uid    | number                                   | 是   | 表示应用ID。                         |
-| owned    | boolean                                   | 是   | 设置应用的静音状态。true设置为静音，false解除静音。 |
+| muted    | boolean                                   | 是   | 设置应用的静音状态。true设置为静音，false解除静音。 |
 
 **返回值：**
 
@@ -1185,7 +1239,7 @@ on(type: 'activeVolumeTypeChange', callback: Callback\<AudioVolumeType>): void
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                 | 是   | 事件回调类型，支持的事件为'activeVolumeTypeChange'，当活跃流发生变化时，触发该事件。 |
-| callback | Callback\<[AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)> | 是   | 回调函数，返回变化后的活跃流类型。 |
+| callback | Callback\<[AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)> | 是   | 回调函数，返回变化后的活跃音频音量类型。 |
 
 **错误码：**
 
@@ -1219,7 +1273,7 @@ off(type: 'activeVolumeTypeChange', callback?: Callback\<AudioVolumeType>): void
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                 | 是   | 事件回调类型，支持的事件为'activeVolumeTypeChange'，当取消监听当前活跃流变化事件时，触发该事件。 |
-| callback | Callback\<[AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)> | 否   | 回调函数，返回变化后的活跃流类型。 |
+| callback | Callback\<[AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)> | 否   | 回调函数，返回变化后的活跃音频音量类型。 |
 
 **错误码：**
 
@@ -1268,7 +1322,7 @@ setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback&l
 
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量流类型。                                             |
+| volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音频音量类型。                                             |
 | volume     | number                              | 是   | 音量等级，可设置范围通过[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated)和[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated)获取。 |
 | callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。当设置指定流的音量成功，err为undefined，否则为错误对象。 |
 
@@ -1304,7 +1358,7 @@ setVolume(volumeType: AudioVolumeType, volume: number): Promise&lt;void&gt;
 
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量流类型。                                             |
+| volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音频音量类型。                                             |
 | volume     | number                              | 是   | 音量等级，可设置范围通过[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated)和[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated)获取。 |
 
 **返回值：**
@@ -1339,7 +1393,7 @@ setVolumeWithFlag(volumeType: AudioVolumeType, volume: number, flags: number): P
 
 | 参数名     | 类型                                | 必填 | 说明                                   |
 | ---------- | ----------------------------------- | ---- |--------------------------------------|
-| volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量流类型。                               |
+| volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音频音量类型。                               |
 | volume     | number                              | 是   | 音量等级，可设置范围通过[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated)和[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated)获取。 |
 | flags      | number                              | 是   | 是否需要显示系统音量条，0为不需要显示，1为需要显示。 |
 
@@ -1366,6 +1420,46 @@ audioVolumeGroupManager.setVolumeWithFlag(audio.AudioVolumeType.MEDIA, 10, 1).th
 });
 ```
 
+### getActiveVolumeTypeSync<sup>13+</sup>
+
+getActiveVolumeTypeSync(uid: number): AudioVolumeType
+
+查询指定应用活跃的音频音量类型；如果将uid传入为0，则查询的是全局范围内活跃的音频音量类型。
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名     | 类型                                | 必填 | 说明                                   |
+| ---------- | ----------------------------------- | ---- |--------------------------------------|
+| uid      | number                              | 是   | 应用ID。 |
+
+**返回值：**
+
+| 类型                | 说明                          |
+| ------------------- | ----------------------------- |
+| [AudioVolumeType](#audiovolumetype) | 音频音量类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202     | Not system App.                             |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters unspecified. 2.Incorrect parameter types. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+let uid: number = 20010041; // 应用ID。
+
+let value = audioVolumeGroupManager.getActiveVolumeTypeSync(uid);
+```
+
 ### mute<sup>9+</sup>
 
 mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback&lt;void&gt;): void
@@ -1384,7 +1478,7 @@ mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback&lt;void
 
 | 参数名     | 类型                                | 必填 | 说明                                  |
 | ---------- | ----------------------------------- | ---- | ------------------------------------- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量流类型。                          |
+| volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音频音量类型。                          |
 | mute       | boolean                             | 是   | 静音状态，true为静音，false为非静音。 |
 | callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。当设置指定音量流静音成功，err为undefined，否则为错误对象。 |
 
@@ -1420,7 +1514,7 @@ mute(volumeType: AudioVolumeType, mute: boolean): Promise&lt;void&gt;
 
 | 参数名     | 类型                                | 必填 | 说明                                  |
 | ---------- | ----------------------------------- | ---- | ------------------------------------- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量流类型。                          |
+| volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音频音量类型。                          |
 | mute       | boolean                             | 是   | 静音状态，true为静音，false为非静音。 |
 
 **返回值：**
@@ -1549,6 +1643,83 @@ audioVolumeGroupManager.setMicMute(true).then(() => {
 });
 ```
 
+### setMicMutePersistent<sup>12+</sup>
+
+setMicMutePersistent(mute: boolean, type: PolicyType): Promise&lt;void&gt;
+
+设置麦克风持久化静音状态。使用Promise异步回调。
+
+**需要权限：** ohos.permission.MICROPHONE_CONTROL
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                          |
+| ------ | ------- | ---- | --------------------------------------------- |
+| mute   | boolean | 是   | 待设置的静音状态，true为静音，false为非静音。 |
+| type   | [PolicyType](#policytype12) | 是   | 静音策略类型。 |
+
+**返回值：**
+
+| 类型                | 说明                            |
+| ------------------- | ------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 201     | Permission denied.                          |
+| 202     | Not system App.                             |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters missing. 2.Incorrect parameter types. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioVolumeGroupManager.setMicMutePersistent(true, audio.PolicyType.PRIVACY).then(() => {
+  console.info('Succeeded in setting mic mute.');
+});
+```
+
+### isPersistentMicMute<sup>12+</sup>
+
+isPersistentMicMute(): boolean
+
+获取麦克风持久化静音状态。同步返回结果。
+
+**需要权限：** ohos.permission.MICROPHONE_CONTROL
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**返回值：**
+
+| 类型                | 说明                            |
+| ------------------- | ------------------------------- |
+| boolean | 麦克风是否处于静音状态。true表示处于静音状态，false表示处于未静音状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 201     | Permission denied.                          |
+| 202     | Not system App.                             |
+
+**示例：**
+
+```ts
+let value: boolean = audioVolumeGroupManager.isPersistentMicMute();
+```
+
 ### adjustVolumeByStep<sup>10+</sup>
 
 adjustVolumeByStep(adjustType: VolumeAdjustType, callback: AsyncCallback&lt;void&gt;): void
@@ -1662,7 +1833,7 @@ adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustTy
 
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量流类型。                                             |
+| volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音频音量类型。                                             |
 | adjustType | [VolumeAdjustType](#volumeadjusttype10) | 是   | 音量调节方向。                                       |
 | callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。当单步设置指定流的音量成功，err为undefined，否则为错误对象。 |
 
@@ -1708,7 +1879,7 @@ adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustTy
 
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量流类型。                                             |
+| volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音频音量类型。                                             |
 | adjustType | [VolumeAdjustType](#volumeadjusttype10) | 是   | 音量调节方向。                                             |
 
 **返回值：**
@@ -1770,7 +1941,7 @@ getSupportedAudioEffectProperty(): Array\<AudioEffectProperty>
 | ------- | --------------------------------------------|
 | 201 | Permission denied. |
 | 202 | Caller is not a system application. |
-| 6800301 | System error. Return by callback. |
+| 6800301 | System error. |
 
 **示例：**
 
@@ -1813,7 +1984,7 @@ getAudioEffectProperty(): Array\<AudioEffectProperty>
 | ------- | --------------------------------------------|
 | 201 | Permission denied. |
 | 202 | Caller is not a system application. |
-| 6800301 | System error. Return by callback. |
+| 6800301 | System error. |
 
 **示例：**
 
@@ -1855,8 +2026,8 @@ setAudioEffectProperty(propertyArray: Array\<AudioEffectProperty>): void
 | ------- | --------------------------------------------|
 | 201 | Permission denied. |
 | 202 | Caller is not a system application. |
-| 6800101 | Parameter verification failed. Possible causes: 1.more than one enhanceProps of the same enhanceClass in input Array; 2.input audioEnhanceProperties are not supported by current device. 3.names of enhanceProp or enhanceClass are incorrect.|
-| 6800301 | System error. Return by callback. |
+| 6800101 | Parameter verification failed. Possible causes: <br>1. More than one effect property name of the same effect property category are in the input array. <br>2. The input audioEffectProperties are not supported by the current device. <br>3. The name or catergory of the input audioEffectProperties is incorrect.|
+| 6800301 | System error. |
 
 **示例：**
 
@@ -2090,8 +2261,8 @@ selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: Audi
 
 | 参数名                       | 类型                                                         | 必填 | 说明                      |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
-| filter                      | [AudioRendererFilter](#audiorendererfilter9)                 | 是   | 过滤条件类。               |
-| outputAudioDevices          | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | 是   | 输出设备类。               |
+| filter                      | [AudioRendererFilter](#audiorendererfilter9)                 | 是   | 过滤条件。               |
+| outputAudioDevices          | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | 是   | 输出设备信息。               |
 | callback                    | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。当选择音频输出设备成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -2147,8 +2318,8 @@ selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: Audi
 
 | 参数名                 | 类型                                                         | 必填 | 说明                      |
 | ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
-| filter                | [AudioRendererFilter](#audiorendererfilter9)                 | 是   | 过滤条件类。               |
-| outputAudioDevices    | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | 是   | 输出设备类。               |
+| filter                | [AudioRendererFilter](#audiorendererfilter9)                 | 是   | 过滤条件。               |
+| outputAudioDevices    | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | 是   | 输出设备信息。               |
 
 **返回值：**
 
@@ -2193,6 +2364,76 @@ async function selectOutputDeviceByFilter(){
     console.error(`Result ERROR: ${err}`);
   })
 }
+```
+
+### selectOutputDeviceByFilter<sup>21+</sup>
+
+selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: AudioDeviceDescriptors, strategy: AudioDevcieSelectStrategy): Promise&lt;void&gt;
+
+根据过滤条件和设备强选策略，选择音频输出设备，当前只能选择一个输出设备。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**参数：**
+
+| 参数名                 | 类型                                                         | 必填 | 说明                      |
+| ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
+| filter                | [AudioRendererFilter](#audiorendererfilter9)                 | 是   | 过滤条件。               |
+| outputAudioDevices    | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | 是   | 输出设备信息。               |
+| strategy                | [AudioDevcieSelectStrategy](#audiodevcieselectstrategy21)                 | 是   | 设备选择策略。               |
+
+**返回值：**
+
+| 类型                  | 说明                         |
+| --------------------- | --------------------------- |
+| Promise&lt;void&gt;   | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+
+let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.SPEAKER,
+  id : 1,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, outputAudioDeviceDescriptor, audio.AudioDevcieSelectStrategy.SELECT_STRATEGY_INDEPENDENT).then(() => {
+  console.info('Succeeded in selecting output device by filter.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to select output device by filter. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### selectInputDeviceByFilter<sup>18+</sup>
@@ -2282,7 +2523,7 @@ getPreferredOutputDeviceByFilter(filter: AudioRendererFilter): AudioDeviceDescri
 
 | 参数名                       | 类型                                                         | 必填 | 说明                      |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
-| filter                      | [AudioRendererFilter](#audiorendererfilter9)                 | 是   | 过滤条件类。               |
+| filter                      | [AudioRendererFilter](#audiorendererfilter9)                 | 是   | 过滤条件。               |
 
 **返回值：**
 
@@ -2319,6 +2560,98 @@ async function selectOutputDeviceByFilter(){
     let desc : audio.AudioDeviceDescriptors = audioRoutingManager.getPreferredOutputDeviceByFilter(outputAudioRendererFilter);
     console.info(`device descriptor: ${desc}`);
 }
+```
+
+### on('preferredOutputDeviceChangeByFilter')<sup>21+</sup>
+
+on(type: 'preferredOutputDeviceChangeByFilter', filter: AudioRendererFilter, callback: Callback\<AudioDeviceDescriptors>): void
+
+监听指定过滤条件下最高优先级输出设备变化事件（当最高优先级输出设备发生变化时触发）。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string | 是   | 事件回调类型，支持的事件为'preferredOutputDeviceChangeByFilter'，当最高优先级输出设备发生变化时，触发该事件。 |
+| filter | [AudioRendererFilter](#audiorendererfilter9)  | 是   | 过滤条件。 |
+| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | 是   | 回调函数，返回优先级最高的输出设备信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**示例：**
+
+```ts
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+audioRoutingManager.on('preferredOutputDeviceChangeByFilter', outputAudioRendererFilter, (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+  console.info(`Succeeded in using on function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+});
+```
+
+### off('preferredOutputDeviceChangeByFilter')<sup>21+</sup>
+
+off(type: 'preferredOutputDeviceChangeByFilter', callback?: Callback\<AudioDeviceDescriptors>): void
+
+取消监听指定过滤条件下最高优先级输出设备变化事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string | 是   | 事件回调类型，支持的事件为'preferredOutputDeviceChangeByFilter'，当取消监听指定过滤条件下最高优先级输出设备变化事件时，触发该事件。 |
+| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | 否 | 回调函数，返回优先级最高的输出设备信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioRoutingManager.off('preferredOutputDeviceChangeByFilter');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let preferredOutputDeviceChangeByFilterCallback = (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+  console.info(`Succeeded in using on or off function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+};
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+
+audioRoutingManager.on('preferredOutputDeviceChangeByFilter', outputAudioRendererFilter, preferredOutputDeviceChangeByFilterCallback);
+
+audioRoutingManager.off('preferredOutputDeviceChangeByFilter', preferredOutputDeviceChangeByFilterCallback);
 ```
 
 ### getPreferredInputDeviceByFilter<sup>18+</sup>
@@ -2386,6 +2719,8 @@ excludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Promi
 
 **需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
 
+从API version 23开始，使用该功能时不需要申请ohos.permission.MANAGE_AUDIO_CONFIG权限，同时不会抛出错误码201。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
@@ -2409,8 +2744,8 @@ excludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Promi
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 201     | Permission denied. Return by callback.      |
-| 202     | Not system App.                             |
+| 201     | Permission denied.      |
+| 202     | Not system application.                             |
 | 6800101 | Parameter verification failed. |
 
 **示例：**
@@ -2453,6 +2788,8 @@ unexcludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Pro
 
 **需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
 
+从API version 23开始，使用该功能时不需要申请ohos.permission.MANAGE_AUDIO_CONFIG权限，同时不会抛出错误码201。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
@@ -2476,8 +2813,8 @@ unexcludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Pro
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 201     | Permission denied. Return by callback.      |
-| 202     | Not system App.                             |
+| 201     | Permission denied. |
+| 202     | Not system application. |
 | 6800101 | Parameter verification failed. |
 
 **示例：**
@@ -2520,6 +2857,8 @@ unexcludeOutputDevices(usage: DeviceUsage): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
 
+从API version 23开始，使用该功能时不需要申请ohos.permission.MANAGE_AUDIO_CONFIG权限，同时不会抛出错误码201。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
@@ -2542,8 +2881,8 @@ unexcludeOutputDevices(usage: DeviceUsage): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 201     | Permission denied. Return by callback.      |
-| 202     | Not system App.                             |
+| 201     | Permission denied. |
+| 202     | Not system application. |
 | 6800101 | Parameter verification failed. |
 
 **示例：**
@@ -2593,8 +2932,7 @@ getExcludedDevices(usage: DeviceUsage): AudioDeviceDescriptors
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 201     | Permission denied. Return by callback.      |
-| 202     | Not system App.                             |
+| 202     | Not system application. |
 | 6800101 | Parameter verification failed. |
 
 **示例：**
@@ -2648,12 +2986,13 @@ async function getExcludedDevices(){
 | interruptGroupId<sup>9+</sup> | number                     | 是   | 否   | 设备所处的焦点组ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
 | volumeGroupId<sup>9+</sup>    | number                     | 是   | 否   | 设备所处的音量组ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
 | dmDeviceType<sup>18+</sup>    | number                     | 是   | 是 | 设备的子类型ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
+| highQualityRecordingSupported<sup>21+</sup>    | boolean                     | 是   | 是 | 是否支持高品质录音。true表示支持，false表示不支持。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
 
 ## AudioRendererFilter<sup>9+</sup>
 
-过滤条件类。在调用selectOutputDeviceByFilter接口前，需要先创建AudioRendererFilter实例。
+音频渲染器过滤条件。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称          | 类型                                     | 只读 | 可选 | 说明          |
 | -------------| ---------------------------------------- | ---- |---| -------------- |
@@ -3328,7 +3667,7 @@ off(type: 'spatializationEnabledChangeForAnyDevice', callback?: Callback<AudioSp
 | 参数名   | 类型                                                 | 必填 | 说明                                           |
 | :------- | :--------------------------------------------------- | :--- |:---------------------------------------------|
 | type     | string | 是   | 事件回调类型，支持的事件为'spatializationEnabledChangeForAnyDevice'，当取消监听空间音频渲染开关状态变化事件时，触发该事件。 |
-| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | 是   | 回调函数，返回设备信息和空间音频渲染开关状态。 |
+| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | 否   | 回调函数，返回设备信息和空间音频渲染开关状态。 |
 
 **错误码：**
 
@@ -3476,7 +3815,6 @@ setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
 
 | 参数名                 | 类型                                                         | 必填 | 说明                      |
 | ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
-| deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)         | 是   | 指定设备的描述。     |
 | enable                | boolean                                                      | 是   | 表示开启/关闭头动跟踪。true为开启，false为关闭。  |
 
 **返回值：**
@@ -3770,7 +4108,7 @@ off(type: 'headTrackingEnabledChangeForAnyDevice', callback?: Callback<AudioSpat
 | 参数名   | 类型                                                | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
 | type     | string | 是   | 事件回调类型，支持的事件为'headTrackingEnabledChangeForAnyDevice'，当取消监听头动跟踪开关状态变化事件时，触发该事件。 |
-| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | 是   | 回调函数。返回true表示头动跟踪已打开；返回false表示头动跟踪已关闭。 |
+| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | 否   | 回调函数。返回true表示头动跟踪已打开；返回false表示头动跟踪已关闭。 |
 
 **错误码：**
 
@@ -4278,7 +4616,7 @@ tonePlayer.release().then(() => {
 
 ## AsrProcessingController<sup>12+</sup>
 
-ASR处理控制器
+自动语音识别（ASR）处理控制器。
 
 **系统接口：** 该接口为系统接口。
 
@@ -4288,7 +4626,7 @@ ASR处理控制器
 
 setAsrAecMode(mode: AsrAecMode): boolean
 
-设置ASR AEC模式，同步返回结果。
+设置自动语音识别（ASR）的声学回声消除（AEC）模式，同步返回结果。
 
 **系统接口：** 该接口为系统接口。
 
@@ -4298,13 +4636,13 @@ setAsrAecMode(mode: AsrAecMode): boolean
 
 | 参数名| 类型                         | 必填 | 说明 |
 |-------|----------------------------|-------|-------|
-| mode | [AsrAecMode](#asraecmode12) | 是 |ASR AEC 模式。 |
+| mode | [AsrAecMode](#asraecmode12) | 是 |AEC模式。 |
 
 **返回值：**
 
 | 类型 | 说明                                    |
 |-------|---------------------------------------|
-| boolean | 返回设置ASR AEC模式结果，true为设置成功，false为设置失败。 |
+| boolean | 返回设置AEC模式结果，true为设置成功，false为设置失败。 |
 
 **错误码：**
 
@@ -4327,7 +4665,7 @@ let flag = asrProcessingController.setAsrAecMode(audio.AsrAecMode.BYPASS);
 
 getAsrAecMode(): AsrAecMode
 
-获取ASR AEC模式，同步返回结果。
+获取自动语音识别（ASR）的声学回声消除（AEC）模式，同步返回结果。
 
 **系统接口：** 该接口为系统接口。
 
@@ -4337,7 +4675,7 @@ getAsrAecMode(): AsrAecMode
 
 | 类型 | 说明 |
 |-------|-------|
-| [AsrAecMode](#asraecmode12) |ASR AEC 模式 |
+| [AsrAecMode](#asraecmode12) |AEC模式。 |
 
 **错误码：**
 
@@ -4359,7 +4697,7 @@ let mode = asrProcessingController.getAsrAecMode();
 
 setAsrNoiseSuppressionMode(mode: AsrNoiseSuppressionMode): boolean
 
-设置ASR 噪音抑制模式，同步返回结果。
+设置自动语音识别（ASR）的噪音抑制模式，同步返回结果。
 
 **系统接口：** 该接口为系统接口。
 
@@ -4369,13 +4707,13 @@ setAsrNoiseSuppressionMode(mode: AsrNoiseSuppressionMode): boolean
 
 | 参数名| 类型                                                    | 必填 | 说明 |
 |-------|-------------------------------------------------------|-------|-------|
-| mode | [AsrNoiseSuppressionMode](#asrnoisesuppressionmode12) | 是 |ASR 噪音抑制模式。 |
+| mode | [AsrNoiseSuppressionMode](#asrnoisesuppressionmode12) | 是 |ASR噪音抑制模式。 |
 
 **返回值：**
 
 | 类型 | 说明                                     |
 |-------|----------------------------------------|
-| boolean | 返回设置ASR 噪音抑制模式结果，true为设置成功，false为设置失败。 |
+| boolean | 返回设置ASR噪音抑制模式结果，true为设置成功，false为设置失败。 |
 
 **错误码：**
 
@@ -4398,7 +4736,7 @@ let flag = asrProcessingController.setAsrNoiseSuppressionMode(audio.AsrNoiseSupp
 
 getAsrNoiseSuppressionMode(): AsrNoiseSuppressionMode
 
-获取ASR 噪音抑制模式，同步返回结果。
+获取自动语音识别（ASR）的噪音抑制模式，同步返回结果。
 
 **系统接口：** 该接口为系统接口。
 
@@ -4408,7 +4746,7 @@ getAsrNoiseSuppressionMode(): AsrNoiseSuppressionMode
 
 | 类型                      |说明 |
 |-------------------------|-------|
-| [AsrNoiseSuppressionMode](#asrnoisesuppressionmode12) |ASR 噪音抑制模式。 |
+| [AsrNoiseSuppressionMode](#asrnoisesuppressionmode12) |ASR噪音抑制模式。 |
 
 **错误码：**
 
@@ -4460,7 +4798,7 @@ let flag = asrProcessingController.isWhispering();
 
 setAsrWhisperDetectionMode(mode: AsrWhisperDetectionMode): boolean
 
-设置耳语检测模式。
+设置自动语音识别（ASR）的耳语检测模式。
 
 **系统接口：** 该接口为系统接口。
 
@@ -4470,13 +4808,13 @@ setAsrWhisperDetectionMode(mode: AsrWhisperDetectionMode): boolean
 
 | 参数名  | 类型                  | 必填 | 说明     |
 |------|---------------------|-------|--------|
-| mode | [AsrWhisperDetectionMode](#asrwhisperdetectionmode12) | 是 | 耳语检测模式。 |
+| mode | [AsrWhisperDetectionMode](#asrwhisperdetectionmode12) | 是 | ASR耳语检测模式。 |
 
 **返回值：**
 
 | 类型 | 说明                                     |
 |-------|----------------------------------------|
-| boolean | 返回设置耳语检测模式结果，true为设置成功，false为设置失败。 |
+| boolean | 返回设置ASR耳语检测模式结果，true为设置成功，false为设置失败。 |
 
 **错误码：**
 
@@ -4500,7 +4838,7 @@ let flag = asrProcessingController.setAsrWhisperDetectionMode(audio.AsrWhisperDe
 
 getAsrWhisperDetectionMode(): AsrWhisperDetectionMode
 
-获取耳语检测模式，同步返回结果。
+获取自动语音识别（ASR）的耳语检测模式，同步返回结果。
 
 **系统接口：** 该接口为系统接口。
 
@@ -4510,7 +4848,7 @@ getAsrWhisperDetectionMode(): AsrWhisperDetectionMode
 
 | 类型 | 说明     |
 |-------|--------|
-| [AsrWhisperDetectionMode](#asrwhisperdetectionmode12) | 耳语检测模式。 |
+| [AsrWhisperDetectionMode](#asrwhisperdetectionmode12) | ASR耳语检测模式。 |
 
 **错误码：**
 
@@ -4532,7 +4870,7 @@ let mode = asrProcessingController.getAsrWhisperDetectionMode();
 
 setAsrVoiceControlMode(mode: AsrVoiceControlMode, enable: boolean): boolean
 
-设置在系统通话中上报mode及通话录音的上行通路的ASR音频通路选择。
+设置在系统通话中上报mode及通话录音的上行通路的自动语音识别（ASR）音频通路选择。
 
 **系统接口：** 该接口为系统接口。
 
@@ -4542,7 +4880,7 @@ setAsrVoiceControlMode(mode: AsrVoiceControlMode, enable: boolean): boolean
 
 | 参数名  | 类型                  | 必填 | 说明     |
 |------|---------------------|-------|--------|
-| mode | [AsrVoiceControlMode](#asrvoicecontrolmode12) | 是 | 音频通路模式。 |
+| mode | [AsrVoiceControlMode](#asrvoicecontrolmode12) | 是 | ASR音频通路模式。 |
 | enable   | boolean             | 是 | 表示系统通话中上报mode及通话录音的上行通路的ASR音频通路选择开关状态。true表示打开，false表示关闭。   |
 
 **返回值：**
@@ -4572,7 +4910,7 @@ let flag = asrProcessingController.setAsrVoiceControlMode(audio.AsrVoiceControlM
 
 setAsrVoiceMuteMode(mode: AsrVoiceMuteMode, enable: boolean): boolean
 
-在系统通话中，对ASR音频通路进行静音控制。
+在系统通话中，对自动语音识别（ASR）的音频通路进行静音控制。
 
 **系统接口：** 该接口为系统接口。
 
@@ -4582,7 +4920,7 @@ setAsrVoiceMuteMode(mode: AsrVoiceMuteMode, enable: boolean): boolean
 
 | 参数名  | 类型                                    | 必填 | 说明       |
 |------|---------------------------------------|-------|----------|
-| mode | [AsrVoiceMuteMode](#asrvoicemutemode12) | 是 | 静音控制模式。 |
+| mode | [AsrVoiceMuteMode](#asrvoicemutemode12) | 是 | ASR静音控制模式。 |
 | enable   | boolean                               | 是 | 表示在系统通话中设置ASR音频通路静音状态。true表示静音，false表示非静音。 |
 
 **返回值：**
@@ -4606,4 +4944,178 @@ setAsrVoiceMuteMode(mode: AsrVoiceMuteMode, enable: boolean): boolean
 
 ```ts
 let flag = asrProcessingController.setAsrVoiceMuteMode(audio.AsrVoiceMuteMode.OUTPUT_MUTE, true);
+```
+
+## RenderTarget<sup>22+</sup>
+
+枚举，音频渲染器的渲染目标。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称                               |  值     | 说明                       |
+| ---------------------------------- | ------ | ------------------------- |
+| PLAYBACK                           | 0      | 播放模式（音频渲染器的默认模式）。<br>在此模式下，音频将通过音频渲染器正常播放。 |
+| INJECT_TO_VOICE_COMMUNICATION_CAPTURE | 1 | 注入模式。在此模式下，当录音流的source type为[SOURCE_TYPE_VOICE_COMMUNICATION](arkts-apis-audio-e.md#sourcetype8)，audio scene为[AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8)时，音频渲染器的输出将被注入到VOIP录音流上。 |
+
+### setTarget<sup>22+</sup>
+
+setTarget(target: RenderTarget): Promise&lt;void&gt;
+
+设置音频渲染器的渲染目标。使用Promise异步回调。
+
+> **说明：**
+>
+> - 此方法仅可在音频渲染器未处于运行或释放状态时调用，否则将返回错误。
+> - 将渲染目标更改为非[PLAYBACK](#rendertarget22)的模式后：
+>   - 该音频渲染器的音频路由与中断策略将无法使用[AudioSessionManager](arkts-apis-audio-AudioSessionManager.md)相关接口。
+>   - 该音频渲染器的device type为[SYSTEM_PRIVATE](arkts-apis-audio-e.md#devicetype)。
+>   - 调用[Start](arkts-apis-audio-AudioRenderer.md#start8)且audio scene不为[AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8)时，将返回错误码[6800301](errorcode-audio.md#6800301-系统处理异常)。
+>   - 调用[getAudioTime](arkts-apis-audio-AudioRenderer.md#getaudiotime8)或[getAudioTimeSync](arkts-apis-audio-AudioRenderer.md#getaudiotimesync10)时，将返回错误码[6800301](errorcode-audio.md#6800301-系统处理异常)。
+>   - 调用[getAudioTimestampInfo](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfo19)或[getAudioTimestampInfoSync](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfosync19)时，将返回错误码[6800301](errorcode-audio.md#6800301-系统处理异常)。
+>   - 调用[setDefaultOutputDevice](arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)时，将返回错误码[6800301](errorcode-audio.md#6800301-系统处理异常)。
+
+**需要权限：** ohos.permission.INJECT_PLAYBACK_TO_AUDIO_CAPTURE
+
+仅设置渲染目标为[INJECT_TO_VOICE_COMMUNICATION_CAPTURE](#rendertarget22)时需要该权限。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名                 | 类型                                                         | 必填 | 说明                      |
+| ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
+| target | [RenderTarget](#rendertarget22) | 是 | 设置音频渲染目标。 |
+
+**返回值：**
+
+| 类型                  | 说明                         |
+| --------------------- | --------------------------- |
+| Promise&lt;void&gt;   | Promise对象，无返回结果。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 201     | Permission denied.      |
+| 202     | Caller is not a system application. |
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permit at running and release state. |
+| 6800104 | Current renderer is not supported to set target. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example() {
+  let audioStreamInfo: audio.AudioStreamInfo = {
+    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+    channels: audio.AudioChannel.CHANNEL_2, // 通道。
+    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+  };
+
+  let audioRendererInfo: audio.AudioRendererInfo = {
+    usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+    rendererFlags: 0 // 音频渲染器标志。
+  };
+
+  let audioRendererOptions: audio.AudioRendererOptions = {
+    streamInfo: audioStreamInfo,
+    rendererInfo: audioRendererInfo
+  };
+
+  try {
+    const audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+    console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
+
+    // 设置为注入模式。
+    audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
+    console.info('setTarget INJECT_TO_VOICE_COMMUNICATION_CAPTURE');
+
+    // 设置为普通播放模式。
+    audioRenderer.setTarget(audio.RenderTarget.PLAYBACK);
+    console.info('setTarget PLAYBACK');
+
+  } catch (err) {
+    console.error(AudioFrameworkRenderLog: Error : ${err.message});
+  }
+}
+```
+
+### getTarget<sup>22+</sup>
+
+getTarget(): RenderTarget
+
+获取当前音频渲染器的渲染目标。
+
+> **说明：**
+>
+> - 若未更改过渲染目标，将返回默认值[PLAYBACK](#rendertarget22)。
+> - 若调用此接口前，已经调用过[SetTarget](#settarget22)，请确保[SetTarget](#settarget22)的Promise对象已成功解析，否则获取到的数值可能不准确。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**返回值：**
+
+| 类型                                           | 说明                          |
+|----------------------------------------------| ----------------------------- |
+| [RenderTarget](#rendertarget22) | 返回音频渲染器的渲染目标。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------ | -------------------------|
+| 202 | Caller is not a system application. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example() {
+  let audioStreamInfo: audio.AudioStreamInfo = {
+    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+    channels: audio.AudioChannel.CHANNEL_2, // 通道。
+    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+  };
+
+  let audioRendererInfo: audio.AudioRendererInfo = {
+    usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+    rendererFlags: 0 // 音频渲染器标志。
+  };
+
+  let audioRendererOptions: audio.AudioRendererOptions = {
+    streamInfo: audioStreamInfo,
+    rendererInfo: audioRendererInfo
+  };
+
+  try {
+    const audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+    console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
+
+    // 可选步骤：设置注入模式。
+    await audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
+    console.info('setTarget success');
+
+    // 获取音频渲染器的当前渲染目标。
+    let renderTarget = audioRenderer.getTarget();
+  } catch (err) {
+    console.error(AudioFrameworkRenderLog: Error : ${err.message});
+  }
+}
 ```

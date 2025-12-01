@@ -48,7 +48,7 @@ setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void
 |bluetooth|设备蓝牙能力。当已经通过[addDisallowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageradddisallowedbluetoothdevices20)接口或者[addAllowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageraddallowedbluetoothdevices)接口设置了蓝牙设备禁用名单或者允许名单，再通过本接口禁用设备蓝牙能力，会优先生效禁用设备蓝牙能力。直到设备蓝牙能力启用后，禁止或允许名单才会生效。|
 |modifyDateTime|设备修改系统时间能力。|
 |printer|设备打印能力，当前仅支持PC/2in1设备使用。本接口禁用了设备打印能力时，通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14)接口开启某用户的打印能力，该用户下的打印能力仍然被禁用。|
-|hdc|设备HDC能力。|
+|hdc|被其他设备通过hdc连接、调试的能力。设置禁用后，其他设备无法通过hdc连接、调试此设备。|
 |microphone|设备麦克风能力。|
 |fingerprint|设备指纹认证能力。当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14)设置了某用户禁用设备指纹认证能力时，再通过本接口启用设备指纹认证能力，会报策略冲突。|
 |usb|设备USB能力。禁用后外接的USB设备无法使用，即在当前设备为HOST模式时，无法外接其他DEVICE设备。<br/>以下四种情况再通过本接口禁用设备USB能力，会报策略冲突。<br/>1）通过[addAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageraddallowedusbdevices)接口添加了USB设备可用名单。<br/>2）通过[setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy)接口设置了USB存储设备访问策略为只读/禁用。<br/>3）通过[addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14)接口添加了禁止使用的USB设备类型。<br/>4）通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14)接口禁用了某用户USB存储设备写入能力。|
@@ -74,6 +74,9 @@ setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void
 |appClone<sup>21+</sup>|[应用分身能力](../../quick-start/app-clone.md)，禁用后无法创建应用分身。对已创建的应用分身无效。|
 |externalStorageCard<sup>21+</sup> |外置存储能力，禁用后设备无法使用外置存储，并且当前已连接的外置存储会被卸载。如果外置存储卸载时有文件正在被使用，可能会导致卸载失败，返回9200013错误码。<br/>外置存储禁用后重新启用，需要手动重新连接外置存储。|
 |randomMac<sup>21+</sup>|Wi-Fi连接时使用随机MAC能力，设置禁用后，连接Wi-Fi仅能使用设备物理MAC。|
+|unmuteDevice<sup>22+</sup>|设备媒体播放声音能力，设置禁用后，设备媒体播放将静音，[蜂窝通话](../../media/audio/audio-call-overview.md)能力不受影响。|
+|hdcRemote<sup>22+</sup>|设备通过hdc调试其他设备的能力，当前仅支持PC/2in1设备设置。设置禁用后，无法通过hdc调试手机、平板、PC、智能手表等设备。|
+|virtualService<sup>23+</sup>|设备虚拟化服务能力，即利用硬件资源的冗余，以虚拟化方式运行其他平台（如Linux、Windows）的能力。设置禁用设备虚拟化服务能力时，建议同时卸载与虚拟化服务相关的应用，并禁止其再次安装。|
 <!--RP1--><!--RP1End-->
 
 **错误码**：
@@ -96,7 +99,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -110,7 +113,7 @@ try {
 
 ## restrictions.getDisallowedPolicy
 
-getDisallowedPolicy(admin: Want, feature: string): boolean
+getDisallowedPolicy(admin: Want \| null, feature: string): boolean
 
 查询某特性是否被禁用。 
 
@@ -124,7 +127,7 @@ getDisallowedPolicy(admin: Want, feature: string): boolean
 
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                       |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。                                       |
 | feature | string                                                  | 是   | 支持查询的特性清单参考下表2。 <br/> **说明：** 从API version 15开始，应用申请权限ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并[激活为自带设备管理应用](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)，可以使用此接口获取以下特性状态：bluetooth、hdc、microphone、usb、wifi、tethering、camera<!--RP4--><!--RP4End-->。 |
 
 **表2 支持查询的特性清单：**
@@ -133,7 +136,7 @@ getDisallowedPolicy(admin: Want, feature: string): boolean
 |bluetooth|设备蓝牙能力。|
 |modifyDateTime|设备修改系统时间能力。|
 |printer|设备打印能力，当前仅支持PC/2in1设备使用。|
-|hdc|设备HDC能力。|
+|hdc|被其他设备通过hdc连接、调试的能力。|
 |microphone|设备麦克风能力。|
 |fingerprint|设备指纹认证能力。|
 |usb|设备USB能力。禁用后外接的USB设备无法使用，即在当前设备为HOST模式时，无法外接其他DEVICE设备。|
@@ -159,6 +162,9 @@ getDisallowedPolicy(admin: Want, feature: string): boolean
 |appClone<sup>21+</sup>|[应用分身能力](../../quick-start/app-clone.md)，禁用后无法创建应用分身。|
 |externalStorageCard<sup>21+</sup> |外置存储能力。|
 |randomMac<sup>21+</sup>|Wi-Fi连接时使用随机MAC能力。|
+|unmuteDevice<sup>22+</sup>|设备媒体播放声音能力，设置禁用后，设备媒体播放将静音，[蜂窝通话](../../media/audio/audio-call-overview.md)能力不受影响。|
+|hdcRemote<sup>22+</sup>|设备通过hdc调试其他设备的能力，当前仅支持PC/2in1设备设置。|
+|virtualService<sup>23+</sup>|设备虚拟化服务能力。|
 <!--RP2--><!--RP2End-->
 
 **返回值：**
@@ -186,7 +192,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -239,7 +245,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -296,7 +302,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -336,7 +342,7 @@ addDisallowedListForAccount(admin: Want, feature: string, list: Array\<string>, 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |                   |
+| 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -349,7 +355,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let valueList:Array<string> = ["com.xx.aa.", "com.xx.bb"];
@@ -390,7 +396,7 @@ removeDisallowedListForAccount(admin: Want, feature: string, list: Array\<string
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |                    |
+| 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -403,7 +409,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let valueList:Array<string> = ["com.xx.aa.", "com.xx.bb"];
@@ -462,7 +468,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -501,7 +507,7 @@ setUserRestriction(admin: Want, settingsItem: string, restricted: boolean): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |                    |
+| 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
@@ -513,7 +519,7 @@ import { restrictions } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -569,7 +575,7 @@ import { restrictions } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {

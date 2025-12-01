@@ -2,7 +2,7 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @duan-sizhao; @Luobniz21-->
+<!--Owner: @dsz2025; @Luobniz21-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
@@ -1258,6 +1258,42 @@ Want中传入了DLP文件。
 检查Want是否携带了DLP文件。
 <!--DelEnd-->
 
+## 16000130 UIAbility不属于调用方
+
+**错误信息**
+
+The UIAbility not belong to caller.
+
+**错误描述**
+
+目标UIAbility不属于调用方。
+
+**可能原因**
+
+启动了一个非自身应用的UIAbility。
+
+**处理步骤**
+
+检查目标UIAbility信息是否属于自身应用。
+
+## 16000131 UIAbility已启动
+
+**错误信息**
+
+The UIAbility is already exist, can not start again.
+
+**错误描述**
+
+UIAbility已启动，无法重新启动。
+
+**可能原因**
+
+startSelfUIAbilityInCurrentProcess用于冷启动一个新的UIAbility实例，如果拉起一个已经启动过的UIAbility实例，报该异常。
+
+**处理步骤**
+
+检查UIAbility是否已启动过。
+
 ## 16000135 UIAbility的主窗不存在
 
 **错误信息**
@@ -1891,23 +1927,26 @@ The target bundle is not in u1.
 将指定的应用安装在userId为1的用户下。
 <!--DelEnd-->
 
-## 16000115 当前进程未运行isolationProcess字段设为true的组件
+## 16000115 当前进程不支持设置为备选主控进程
 
 **错误信息**
 
-The current process is not running a component configured with "isolationProcess" and cannot be set as a candidate master process.
+The current process cannot be set as a candidate master process.
 
 **错误描述**
 
-当前进程未运行配置了"isolationProcess"的组件，不支持设置为备选主控进程。
+当前进程不支持设置为备选主控进程。
 
 **可能原因**
 
-当前进程没有运行配置了isolationProcess字段的组件，不支持声明为主控进程。
+当前进程不满足以下任一条件：
+
+1. 运行了isolationProcess字段设为true的组件。
+2. 曾经成为过主控进程。
 
 **处理步骤**
 
-不支持处理，当前进程未运行isolationProcess字段设为true的组件，无法将其设置为备选主控进程。
+不支持处理。当前进程只有运行了isolationProcess字段设为true的组件，或曾为主控进程，才可设置为备选主控进程。
 
 ## 16000116 当前进程已经是主控进程
 
@@ -1963,23 +2002,26 @@ Not a master process.
 
 不支持处理，当前进程不是主控进程，无法放弃其主控进程身份。
 
-## 16000119 存在未完成的onNewProcessRequest请求
+## 16000119 存在未完成的请求
 
 **错误信息**
 
-Cannot exit because there is an unfinished onNewProcessRequest.
+Cannot exit because there is an unfinished request.
 
 **错误描述**
 
-放弃当前进程的主控进程身份失败，因为有未完成的onNewProcessRequest请求。
+因为存在未完成的请求，放弃当前进程的主控进程身份失败。
 
 **可能原因**
 
-当前进程存在未完成的onNewProcessRequest请求。
+当前进程存在未完成的请求：
+
+1. 进程中存在未完成的[onNewProcessRequest](js-apis-app-ability-abilityStage.md#onnewprocessrequest11)请求。
+2. 当启动模式为[specified](../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility运行在独立进程时，当前进程中存在未完成的[onAcceptWant](js-apis-app-ability-abilityStage.md#onacceptwant)请求。
 
 **处理步骤**
 
-等待当前进程中的onNewProcessRequest请求完成，然后再放弃当前进程的主控进程身份。
+等待当前进程中的请求完成，然后再放弃当前进程的主控进程身份。
 
 ## 16000205 当前接口未在主线程中调用
 

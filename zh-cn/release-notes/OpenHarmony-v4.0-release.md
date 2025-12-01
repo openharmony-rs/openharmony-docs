@@ -561,9 +561,9 @@ Stage模型完善了以下特性：
 
 1. 注册码云gitee帐号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
+2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
 
-3. 安装[git客户端](https://gitee.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://gitcode.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
    ```
    git config --global user.name "yourname"
    git config --global user.email "your-email-address"
@@ -572,7 +572,7 @@ Stage模型完善了以下特性：
 
 4. 安装码云repo工具，可以执行如下命令。
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -581,18 +581,18 @@ Stage模型完善了以下特性：
 
 **方式一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-4.0-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-4.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v4.0-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v4.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -603,14 +603,14 @@ Stage模型完善了以下特性：
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-4.0-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-4.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v4.0-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v4.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -639,15 +639,15 @@ Stage模型完善了以下特性：
 
 ### API变更
 
-- OpenHarmony 4.0 Release相比4.0 Beta2的API差异请[点击这里查看](https://gitee.com/openharmony/docs/blob/OpenHarmony-4.0-Release/zh-cn/release-notes/api-diff/v4.0-Release-vs-v4.0-beta2/Readme-CN.md)。
-- OpenHarmony 4.0 Release相比3.2 Release的API差异请[点击这里查看](https://gitee.com/openharmony/docs/blob/OpenHarmony-4.0-Release/zh-cn/release-notes/api-diff/v4.0-Release-vs-v3.2-Release/Readme-CN.md)。
+- OpenHarmony 4.0 Release相比4.0 Beta2的API差异请[点击这里查看](https://gitcode.com/openharmony/docs/blob/OpenHarmony-4.0-Release/zh-cn/release-notes/api-diff/v4.0-Release-vs-v4.0-beta2/Readme-CN.md)。
+- OpenHarmony 4.0 Release相比3.2 Release的API差异请[点击这里查看](https://gitcode.com/openharmony/docs/blob/OpenHarmony-4.0-Release/zh-cn/release-notes/api-diff/v4.0-Release-vs-v3.2-Release/Readme-CN.md)。
 
-此外，从4.0 Beta2至今，有少量接口变更可能影响此前应用工程的兼容性或需要您关注，详细的变更说明请[点击这里查看](https://gitee.com/openharmony/docs/blob/OpenHarmony-4.0-Release/zh-cn/release-notes/changelogs/v4.0-Release/Readme-CN.md)
+此外，从4.0 Beta2至今，有少量接口变更可能影响此前应用工程的兼容性或需要您关注，详细的变更说明请[点击这里查看](https://gitcode.com/openharmony/docs/blob/OpenHarmony-4.0-Release/zh-cn/release-notes/changelogs/v4.0-Release/Readme-CN.md)
 
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 
 ### Samples
@@ -656,12 +656,12 @@ Stage模型完善了以下特性：
 
 | 特性 | 名称 | 简介 | 开发语言 |
 | -------- | -------- | -------- | -------- |
-| 文件管理 | [选择并查看文档与媒体文件](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/BasicFeature/FileManagement/FileShare/Picker)（APL等级需为system_basic） | 本示例展示了应用使用\@ohos.file.picker、\@ohos.multimedia.mediaLibrary、\@ohos.file.fs 等接口，实现了picker拉起文档编辑保存、拉起系统相册图片查看、拉起视频并播放的功能。 | ArkTS |
-| 一次开发，多端部署 | [一多导航栏](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/SuperFeature/MultiDeviceAppDev/MultiNavBar) | 本示例展示了导航组件在不同设备形态下的样式。<br/>在小型/轻量级设备上，以tabs形式展示，内容、导航为上下样式布局，通过点击底部tabs切换内容；<br/>在标准设备上，以SideBarContainer形式展示，内容、导航为左右布局，通过点击侧边一二级菜单进行内容切换。<br/>本示例使用一次开发多端部署 中介绍的自适应布局能力和响应式布局能力进行多设备（或多窗口尺寸）适配，主要通过组件提供窗口断点事件，保证应用在不同设备或不同窗口尺寸下可以正常显示。 | ArkTS |
-| 卡片 | [应用主动添加数据代理卡片到桌面](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/SuperFeature/Widget/RequestAddForm)（Full SDK） | 本示例主要展示了使用\@ohos.app.form.formBindingData、\@ohos.app.form.formProvider等接口，实现了在com.ohos.hag.famanager应用上，主动添加数据代理卡片到桌面的功能。 | ArkTS |
-| 安全 | [安全控件类型的UI控件](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/SystemFeature/Security/AuthorizedButton)（Full SDK） | 本示例提供了安全控件类型的UI控件，支撑应用开发者集成安全控件做临时授权场景，当用户实际点击了某种类型的安全控件时，会对应用进行相应的临时授权，减少权限弹窗对用户的干扰，同时提供更小的授权范围。 | ArkTS |
+| 文件管理 | [选择并查看文档与媒体文件](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/BasicFeature/FileManagement/FileShare/Picker)（APL等级需为system_basic） | 本示例展示了应用使用\@ohos.file.picker、\@ohos.multimedia.mediaLibrary、\@ohos.file.fs 等接口，实现了picker拉起文档编辑保存、拉起系统相册图片查看、拉起视频并播放的功能。 | ArkTS |
+| 一次开发，多端部署 | [一多导航栏](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/SuperFeature/MultiDeviceAppDev/MultiNavBar) | 本示例展示了导航组件在不同设备形态下的样式。<br/>在小型/轻量级设备上，以tabs形式展示，内容、导航为上下样式布局，通过点击底部tabs切换内容；<br/>在标准设备上，以SideBarContainer形式展示，内容、导航为左右布局，通过点击侧边一二级菜单进行内容切换。<br/>本示例使用一次开发多端部署 中介绍的自适应布局能力和响应式布局能力进行多设备（或多窗口尺寸）适配，主要通过组件提供窗口断点事件，保证应用在不同设备或不同窗口尺寸下可以正常显示。 | ArkTS |
+| 卡片 | [应用主动添加数据代理卡片到桌面](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/SuperFeature/Widget/RequestAddForm)（Full SDK） | 本示例主要展示了使用\@ohos.app.form.formBindingData、\@ohos.app.form.formProvider等接口，实现了在com.ohos.hag.famanager应用上，主动添加数据代理卡片到桌面的功能。 | ArkTS |
+| 安全 | [安全控件类型的UI控件](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/SystemFeature/Security/AuthorizedButton)（Full SDK） | 本示例提供了安全控件类型的UI控件，支撑应用开发者集成安全控件做临时授权场景，当用户实际点击了某种类型的安全控件时，会对应用进行相应的临时授权，减少权限弹窗对用户的干扰，同时提供更小的授权范围。 | ArkTS |
 
-请访问[Samples](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/)仓了解更多信息。
+请访问[Samples](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/)仓了解更多信息。
 
 
 ## 修复缺陷列表
@@ -670,11 +670,11 @@ Stage模型完善了以下特性：
 
 | ISSUE单 | 问题描述 |
 | -------- | -------- |
-| I7BF3M | 长时间运行测试，launcher进程概率性出现appfreeze，原因是STRINGID:APPLICATION_BLOCK_INPUT卡在libeventhandler.z.so。 |
-| I7M51R | 低概率出现进程com.ohos.systemui下的线程render_service出现cppcrash。 |
-| I78C9W | 反复进入大图浏览界面后返回，导致libace.z.so出现内存泄露。 |
-| I7NWF3 | 因兼容性问题，使用3.2.x版本的设备和4.0.x版本的设备通过Wi-Fi引导P2P连接时开启会话失败。 |
-| I7BOAO | 三方仓GLES3多个测试用例执行失败。 |
+| [267](https://gitcode.com/openharmony/applications_launcher/issues/267) | 长时间运行测试，launcher进程概率性出现appfreeze，原因是STRINGID:APPLICATION_BLOCK_INPUT卡在libeventhandler.z.so。 |
+| [9123](https://gitcode.com/openharmony/graphic_graphic_2d/issues/9123) | 低概率出现进程com.ohos.systemui下的线程render_service出现cppcrash。 |
+| [31597](https://gitcode.com/openharmony/arkui_ace_engine/issues/31597) | 反复进入大图浏览界面后返回，导致libace.z.so出现内存泄露。 |
+| [3871](https://gitcode.com/openharmony/communication_dsoftbus/issues/3871) | 因兼容性问题，使用3.2.x版本的设备和4.0.x版本的设备通过Wi-Fi引导P2P连接时开启会话失败。 |
+| [9502](https://gitcode.com/openharmony/graphic_graphic_2d/issues/9502) | 三方仓GLES3多个测试用例执行失败。 |
 
 
 ## 遗留缺陷列表
@@ -683,16 +683,16 @@ Stage模型完善了以下特性：
 
 | ISSUE | 问题描述 | 影响 | 计划解决日期 |
 | -------- | -------- | -------- | -------- |
-| I80TOB | 进程com.ohos.settings（所属应用：设置）有一定概率出现由于THREAD_BLOCK_6S卡在libbtframework.z.so而发生appfreeze。 | 概率问题，重新打开设置后可恢复正常，影响可控。 | 12月30日 |
-| I83D6I | 进入设置反复打开关闭蓝牙，有一定概率会导致设置出现appfreeze。 | 概率问题，出现设置无响应后可通过重启设备恢复正常，影响可控。 | 12月30日 |
-| I86YLD | 低概率出现进程com.ohos.contacts（所属应用：联系人）下的m.ohos.contacts线程导致libipc_core.z.so出现cppcrash。 | 小概率问题，重启联系人应用可恢复正常，影响可控。 | 12月30日 |
-| I88UKM | 进程ohos.samples.distributedmusicplayer（所属应用：音乐播放器）下的ffrtwk/CPU-2-3线程低概率出现cppcrash，导致该现象的崩溃栈为libuv.so。 | 小概率问题，重启音乐播放器可恢复正常，影响可控。 | 11月30日 |
-| I89CLG | 进程com.ohos.camera（所属应用：相机）下的com.ohos.camera线程小概率会导致libcamera_napi.z.so出现cppcrash。 | 小概率问题，重启相机可恢复正常，影响可控。 | 12月30日 |
-| I89F06 | 进程com.ohos.note（所属应用：备忘录）下的com.ohos.note线程低概率出现cppcrash，导致该现象的崩溃栈为libweb_engine.so。 | 小概率问题，重启备忘录可恢复正常，影响可控。 | 12月30日 |
-| I7SCU4 | 进程com.ohos.photos（所属应用：相册）有一定概率由于THREAD_BLOCK_6S卡在libark_jsruntime.so而发生appfreeze。 | 概率问题，重启相册可恢复正常，影响可控。 | 11月30日 |
-| I827LU | 进入设置反复打开关闭蓝牙开关会出现内存泄漏，经测试一个小时泄露15MB。 | 开关一次蓝牙系统内存泄露8.3KB，重启设备后可恢复，影响可控。<br />对于需要使用OpenHarmony进行商业开发的伙伴，建议使用芯片或硬件自带蓝牙模块的协议栈以规避此问题。 | 12月30日 |
-| I82V2W | 进入设置反复打开关闭蓝牙开关出现内存泄漏，经测试“设置”一个小时内存涨幅到180M。 | 开关一次蓝牙应用内存泄露0.2MB，重新打开“设置”卡恢复，影响可控。<br />对于需要使用OpenHarmony进行商业开发的伙伴，建议使用芯片或硬件自带蓝牙模块的协议栈以规避此问题。 | 12月30日 |
-| I86M99<br/>I88UV6<br/>I88UVQ | 长时间稳定性压力测试出现foundation内存泄漏，24小时泄露40MB。 | 重启设备可恢复。影响可控。 | 12月30日 |
-| I7TZ3V等31个内核问题 | 内核btrfs_free_tree_block函数kernel_bug等31个内核问题。 | linux原生问题且当前linux社区无补丁，跟随linux社区补丁节奏修复。不影响功能正常使用。 | 跟随linux社区修复 |
-| I86CNJ等38个开源组件漏洞 | lj-linux-131204684-0577967 等38个开源组件漏洞。 | 分析解决中，跟随社区漏洞管理流程SLA修复。不影响功能正常使用。 | 按漏洞SLA修复 |
-| I82NVZ | GPU驱动渲染出的图像与标准不符问题。 | 该问题为RK3568驱动特有问题，非系统兼容性问题，不影响其他产品和硬件的兼容性认证。 | 12月30日 |
+| [473](https://gitcode.com/openharmony/communication_bluetooth/issues/473) | 进程com.ohos.settings（所属应用：设置）有一定概率出现由于THREAD_BLOCK_6S卡在libbtframework.z.so而发生appfreeze。 | 概率问题，重新打开设置后可恢复正常，影响可控。 | 12月30日 |
+| [246](https://gitcode.com/openharmony/applications_settings/issues/246) | 进入设置反复打开关闭蓝牙，有一定概率会导致设置出现appfreeze。 | 概率问题，出现设置无响应后可通过重启设备恢复正常，影响可控。 | 12月30日 |
+| [115](https://gitcode.com/openharmony/applications_contacts/issues/115) | 低概率出现进程com.ohos.contacts（所属应用：联系人）下的m.ohos.contacts线程导致libipc_core.z.so出现cppcrash。 | 小概率问题，重启联系人应用可恢复正常，影响可控。 | 12月30日 |
+| [88](https://gitcode.com/openharmony/third_party_libuv/issues/88) | 进程ohos.samples.distributedmusicplayer（所属应用：音乐播放器）下的ffrtwk/CPU-2-3线程低概率出现cppcrash，导致该现象的崩溃栈为libuv.so。 | 小概率问题，重启音乐播放器可恢复正常，影响可控。 | 11月30日 |
+| [377](https://gitcode.com/openharmony/third_party_llvm-project/issues/377) | 进程com.ohos.camera（所属应用：相机）下的com.ohos.camera线程小概率会导致libcamera_napi.z.so出现cppcrash。 | 小概率问题，重启相机可恢复正常，影响可控。 | 12月30日 |
+| [2454](https://gitcode.com/openharmony/web_webview/issues/2454) | 进程com.ohos.note（所属应用：备忘录）下的com.ohos.note线程低概率出现cppcrash，导致该现象的崩溃栈为libweb_engine.so。 | 小概率问题，重启备忘录可恢复正常，影响可控。 | 12月30日 |
+| [223](https://gitcode.com/openharmony/applications_photos/issues/223) | 进程com.ohos.photos（所属应用：相册）有一定概率由于THREAD_BLOCK_6S卡在libark_jsruntime.so而发生appfreeze。 | 概率问题，重启相册可恢复正常，影响可控。 | 11月30日 |
+| [471](https://gitcode.com/openharmony/communication_bluetooth/issues/471) | 进入设置反复打开关闭蓝牙开关会出现内存泄漏，经测试一个小时泄露15MB。 | 开关一次蓝牙系统内存泄露8.3KB，重启设备后可恢复，影响可控。<br />对于需要使用OpenHarmony进行商业开发的伙伴，建议使用芯片或硬件自带蓝牙模块的协议栈以规避此问题。 | 12月30日 |
+| [251](https://gitcode.com/openharmony/applications_settings/issues/251) | 进入设置反复打开关闭蓝牙开关出现内存泄漏，经测试“设置”一个小时内存涨幅到180M。 | 开关一次蓝牙应用内存泄露0.2MB，重新打开“设置”卡恢复，影响可控。<br />对于需要使用OpenHarmony进行商业开发的伙伴，建议使用芯片或硬件自带蓝牙模块的协议栈以规避此问题。 | 12月30日 |
+| [110](https://gitcode.com/openharmony/powermgr_thermal_manager/issues/110)<br/>[4139](https://gitcode.com/openharmony/ability_ability_runtime/issues/4139)<br/>[5046](https://gitcode.com/openharmony/window_window_manager/issues/5046) | 长时间稳定性压力测试出现foundation内存泄漏，24小时泄露40MB。 | 重启设备可恢复。影响可控。 | 12月30日 |
+| [2461](https://gitcode.com/openharmony/kernel_linux_5.10/issues/2461)等31个内核问题 | 内核btrfs_free_tree_block函数kernel_bug等31个内核问题。 | linux原生问题且当前linux社区无补丁，跟随linux社区补丁节奏修复。不影响功能正常使用。 | 跟随linux社区修复 |
+| [126](https://gitcode.com/openharmony/third_party_chromium/issues/126)等38个开源组件漏洞 | lj-linux-131204684-0577967 等38个开源组件漏洞。 | 分析解决中，跟随社区漏洞管理流程SLA修复。不影响功能正常使用。 | 按漏洞SLA修复 |
+| [8322](https://gitcode.com/openharmony/graphic_graphic_2d/issues/8322) | GPU驱动渲染出的图像与标准不符问题。 | 该问题为RK3568驱动特有问题，非系统兼容性问题，不影响其他产品和硬件的兼容性认证。 | 12月30日 |

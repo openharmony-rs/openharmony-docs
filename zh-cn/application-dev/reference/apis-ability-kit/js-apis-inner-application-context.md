@@ -3,7 +3,7 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -22,7 +22,7 @@ Context是Stage模型的上下文基类，主要用于访问特定应用程序�
 - 不同类型Context的持有关系如下：
 
   ![context-holding](../../application-models/figures/context-holding.png)
-  
+
 > **说明**
 >
 > [UIContext](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)是指UI实例上下文，用于关联窗口与UI页面。与本文档中的应用上下文Context无直接关联，不存在继承或持有关系。
@@ -54,6 +54,7 @@ Context提供了ability或application的上下文的能力，包括访问特定�
 | bundleCodeDir       | string | 否    | 否    | 安装包目录。不能拼接路径访问资源文件，请使用[资源管理接口](../apis-localization-kit/js-apis-resource-manager.md)访问资源，详情参考[应用沙箱目录](../../file-management/app-sandbox-directory.md)。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | distributedFilesDir | string | 否    | 否    | 分布式文件目录，详情参考[应用沙箱目录](../../file-management/app-sandbox-directory.md)。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | cloudFileDir<sup>12+</sup>        | string | 否    | 否    | 云文件目录。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。    |
+| logFileDir<sup>22+</sup>        | string | 否    | 否    | 日志文件目录。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。    |
 | eventHub            | [EventHub](js-apis-inner-application-eventHub.md) | 否    | 否    | 事件中心，提供订阅、取消订阅、触发事件对象。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | area                | contextConstant.[AreaMode](js-apis-app-ability-contextConstant.md#areamode) | 否    | 否    | 文件分区信息，按加密等级[AreaMode](js-apis-app-ability-contextConstant.md#areamode) 进行分区。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | processName<sup>18+</sup> | string | 否   | 否 | 当前应用的进程名。<br/>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
@@ -69,6 +70,8 @@ createModuleContext(moduleName: string): Context
 > - 仅支持获取本应用中其他Module的Context和应用内HSP的Context，不支持获取其他应用的Context。
 >
 > - 从 API Version 12 开始废弃，建议使用[application.createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext12)替代，否则可能导致资源获取异常。
+>
+> - 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContext接口创建多个Context实例，以免影响用户体验。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -224,7 +227,7 @@ getGroupDir(dataGroupID: string, callback: AsyncCallback\<string>): void
 | 参数名       | 类型                     | 必填   | 说明            |
 | -------- | ---------------------- | ---- | ------------- |
 | [dataGroupID](../apis-arkdata/js-apis-data-preferences.md#options10) | string | 是    | 原子化服务类型的应用创建时，系统会指定分配唯一Group ID。 |
-| callback | AsyncCallback\<string> | 是    | 以callback方式返回对应的共享目录。如果不存在则返回为空，仅支持应用el2加密级别。|
+| callback | AsyncCallback\<string> | 是    | 回调函数。当获取共享目录成功，err为undefined，data为对应的共享目录，如果不存在则返回为空；否则为错误对象。<br>**说明**：仅支持应用el2加密级别。|
 
 **错误码：**
 

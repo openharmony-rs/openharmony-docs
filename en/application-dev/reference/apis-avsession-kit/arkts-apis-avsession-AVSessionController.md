@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -36,17 +36,38 @@ import { avSession } from '@kit.AVSessionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let AVSessionController: avSession.AVSessionController;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  AVSessionController = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
-}).catch((err: BusinessError) => {
-  console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
-});
+@Entry
+@Component
+struct Index {
+  private tag: string = "createNewSession";
+  private sessionId: string = "";
+  private AVSessionController?: avSession.AVSessionController;
+  private currentAVSession?: avSession.AVSession;
+  context = this.getUIContext();
+
+  aboutToAppear(): void {
+
+    avSession.createAVSession(this.getUIContext().getHostContext(), this.tag, "audio").then(async (data: avSession.AVSession) => {
+      this.currentAVSession = data;
+      this.sessionId = this.currentAVSession.sessionId;
+      this.AVSessionController = await this.currentAVSession.getController();
+      console.info('CreateAVSession :  SUCCESS :sessionId = ${this.sessionId}');
+    }).catch((err: BusinessError) => {
+      console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
+    });
+  }
+
+  build() {
+    Column() {
+      Text('AVSession Demo')
+        .fontSize(20)
+        .margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
 ```
 
 ## getAVPlaybackState<sup>10+</sup>
@@ -2023,9 +2044,9 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   currentAVSession = data;
   sessionId = currentAVSession.sessionId;
   controller = await currentAVSession.getController();
-  console.info('CreateAVSession : SUCCESS :sessionid = ${sessionid}');
+  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
 }).catch((err: BusinessError) => {
-  console.error('CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}')
+  console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
 });
 if (controller !== undefined) {
   (controller as avSession.AVSessionController).on('sessionEvent', (sessionEvent, args) => {
@@ -2313,7 +2334,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
-| 6600103  | The session controller does not exist.                       |
+| 6600103  | The session controller does not exist. |
 
 **Example**
 
@@ -2328,9 +2349,9 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   currentAVSession = data;
   sessionId = currentAVSession.sessionId;
   controller = await currentAVSession.getController();
-  console.info('CreateAVSession : SUCCESS :sessionid = ${sessionid}');
+  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
 }).catch((err: BusinessError) => {
-  console.error('CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}')
+  console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
 });
 if (controller !== undefined) {
   (controller as avSession.AVSessionController).on('customDataChange', (callback) => {
@@ -2363,7 +2384,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
-| 6600103  | The session controller does not exist.                       |
+| 6600103  | The session controller does not exist. |
 
 **Example**
 

@@ -1,4 +1,14 @@
 # OH_Pixelmap_ImageInfo
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+struct OH_Pixelmap_ImageInfo
+```
 
 ## 概述
 

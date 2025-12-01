@@ -1,5 +1,12 @@
 # Input Kit简介
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 功能介绍
 
 Input Kit（多模输入Kit）为多种输入设备提供服务，如触控板、触摸屏、鼠标、键盘等。通过对这些输入设备上报驱动事件的归一化处理，确保不同输入设备与用户交互体验统一和流畅。
@@ -21,6 +28,6 @@ Input Kit除了提供基础的输入事件服务之外，还提供了获取输�
   | setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void | 设置快捷键屏蔽类型。false为不屏蔽，true为屏蔽，默认为false。 |ohos.permission.INPUT_CONTROL_DISPATCHING|
   | getShieldStatus(shieldMode: ShieldMode): boolean | 获取快捷键屏蔽类型。false为不屏蔽，true为屏蔽，默认为false。 |ohos.permission.INPUT_CONTROL_DISPATCHING|
     
-2. [组合按键](inputconsumer-guidelines.md)、[事件注入](inputeventclient-guidelines.md)、[输入监听](inputmonitor-guidelines.md)、[快捷键](shortkey-guidelines.md)模块接口为系统接口，其中[输入监听](inputmonitor-guidelines.md)模块接口接口需要 ohos.permission.INPUT_MONITORING权限。
+2. [组合按键](inputconsumer-guidelines-sys.md)、[事件注入](inputeventclient-guidelines-sys.md)、[输入监听](inputmonitor-guidelines-sys.md)、[快捷键](shortkey-guidelines-sys.md)模块接口为系统接口，其中[输入监听](inputmonitor-guidelines-sys.md)模块接口需要ohos.permission.INPUT_MONITORING权限。
 
 <!--DelEnd-->

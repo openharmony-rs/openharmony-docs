@@ -4,7 +4,11 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_Vector2Property* ArkUI_Vector2PropertyHandle
+```
 
 ## 概述
 

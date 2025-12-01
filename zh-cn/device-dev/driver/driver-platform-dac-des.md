@@ -58,7 +58,7 @@ DAC模块的主要工作是以电流、电压或电荷的形式将数字信号�
 
 ### 接口说明
 
-DAC模块提供的主要接口如下所示，具体API[详见](https://gitee.com/openharmony/drivers_hdf_core/blob/master/framework/include/platform/dac_if.h)。
+DAC模块提供的主要接口如下所示，具体API[详见](https://gitcode.com/openharmony/drivers_hdf_core/blob/master/framework/include/platform/dac_if.h)。
 
 **表 1**  DAC驱动API接口功能介绍
 

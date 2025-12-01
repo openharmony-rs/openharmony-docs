@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -73,18 +73,32 @@ Codec MIME类型枚举。
 | 名称         | 值                    | 说明                     |
 | ------------ | --------------------- | ------------------------ |
 | VIDEO_H263   | 'video/h263'          | 表示视频/h263类型。      |
-| VIDEO_AVC    | 'video/avc'           | 表示视频/avc类型。       |
+| VIDEO_AVC    | 'video/avc'           | 表示视频/avc类型。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | VIDEO_MPEG2  | 'video/mpeg2'         | 表示视频/mpeg2类型。     |
 | VIDEO_MPEG4  | 'video/mp4v-es'         | 表示视频/mpeg4类型。     |
 | VIDEO_VP8    | 'video/x-vnd.on2.vp8' | 表示视频/vp8类型。       |
-| VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | 表示视频/H265类型。|
-| AUDIO_AAC    | 'audio/mp4a-latm'     | 表示音频/mp4a-latm类型。 <br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
+| VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | 表示视频/H265类型。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| AUDIO_AAC    | 'audio/mp4a-latm'     | 表示音频/mp4a-latm类型。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | AUDIO_VORBIS | 'audio/vorbis'        | 表示音频/vorbis类型。    |
 | AUDIO_FLAC   | 'audio/flac'          | 表示音频/flac类型。      |
 | AUDIO_MP3<sup>12+</sup>   | 'audio/mpeg'          | 表示音频/mpeg类型。      |
 | AUDIO_G711MU<sup>12+</sup>   | 'audio/g711mu'     | 表示音频/G711-mulaw类型。 |
 | AUDIO_AMR_NB<sup>18+</sup>   | 'audio/3gpp'     | 表示音频/amr-nb类型。 |
 | AUDIO_AMR_WB<sup>18+</sup>   | 'audio/amr-wb'     | 表示音频/amr-wb类型。 |
+
+## AacProfile<sup>22+</sup>
+
+高级音频编码（AAC）类型枚举。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+| 名称         | 值                    | 说明                        |
+| ------------ | --------------------- | --------------------------- |
+| AAC_LC       |     0                 | 表示 AAC Low-Complexity 类型。        |
+| AAC_HE       |     1                 | 表示 AAC Hight-Efficiency 类型。        |
+| AAC_HE_V2    |     2                 | 表示 AAC Hight-Efficiency version 2 类型。     |
 
 ## MediaDescriptionKey<sup>8+</sup>
 
@@ -98,7 +112,7 @@ Codec MIME类型枚举。
 | MD_KEY_TRACK_TYPE        | 'track_type'    | 表示轨道类型，其对应键值类型为number，参考[MediaType](#mediatype8)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | MD_KEY_CODEC_MIME        | 'codec_mime'    | 表示codec_mime类型，其对应键值类型为string。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | MD_KEY_DURATION          | 'duration'      | 表示媒体时长，其对应键值类型为number，单位为毫秒（ms）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| MD_KEY_BITRATE           | 'bitrate'       | 表示比特率，其对应键值类型为number，单位为比特率（bps）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| MD_KEY_BITRATE           | 'bitrate'       | 表示比特率，其对应键值类型为number，单位为比特率（bps），值为undefined或0表示异常。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | MD_KEY_WIDTH             | 'width'         | 表示视频宽度，其对应键值类型为number，单位为像素（px）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | MD_KEY_HEIGHT            | 'height'        | 表示视频高度，其对应键值类型为number，单位为像素（px）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | MD_KEY_FRAME_RATE        | 'frame_rate'    | 表示视频帧率，其对应键值类型为number，单位为每100秒的帧数。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -247,8 +261,8 @@ Codec MIME类型枚举。
 
 | 名称        | 值    | 说明                  |
 | ----------- | ----- | --------------------- |
-| CFT_MPEG_4  | 'mp4' | 视频的容器格式，MP4。 |
-| CFT_MPEG_4A | 'm4a' | 音频的容器格式，M4A。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
+| CFT_MPEG_4  | 'mp4' | 视频的容器格式，MP4。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| CFT_MPEG_4A | 'm4a' | 音频的容器格式，M4A。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | CFT_MP3<sup>12+</sup>  | 'mp3' | 音频的容器格式，MP3。 |
 | CFT_WAV<sup>12+</sup>  | 'wav' | 音频的容器格式，WAV。 |
 | CFT_AMR<sup>18+</sup>  | 'amr' | 音频的容器格式，AMR。 |
@@ -362,6 +376,18 @@ Codec MIME类型枚举。
 | --------------------------------- | ---- | -------------------------------------------- |
 | PRESERVE_ASPECT_RATIO | 0    | 保持与原始图像相同的宽高比例，即与物理屏幕宽高比例一致。 |
 | SCALE_TO_FILL | 1    | 进行图像拉伸填充，适配设置的宽度和高度。 |
+
+## PickerMode<sup>22+</sup>
+
+表示屏幕录制Picker模式的枚举。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+| 名称                              | 值   | 说明                                         |
+| --------------------------------- | ---- | -------------------------------------------- |
+| WINDOW_ONLY | 0    | 仅显示窗口列表。 |
+| SCREEN_ONLY | 1    | 仅显示屏幕列表。 |
+| SCREEN_AND_WINDOW | 2    | 同时显示屏幕列表和窗口列表。 |
 
 ## AudioEncoder<sup>(deprecated)</sup>
 

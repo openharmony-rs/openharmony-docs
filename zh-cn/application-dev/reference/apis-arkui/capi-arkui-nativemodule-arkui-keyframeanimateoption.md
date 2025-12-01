@@ -1,4 +1,14 @@
 # ArkUI_KeyframeAnimateOption
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_KeyframeAnimateOption ArkUI_KeyframeAnimateOption
+```
 
 ## 概述
 

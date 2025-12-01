@@ -1,4 +1,14 @@
 # OH_ArkUI_SurfaceCallback
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct OH_ArkUI_SurfaceCallback OH_ArkUI_SurfaceCallback
+```
 
 ## 概述
 

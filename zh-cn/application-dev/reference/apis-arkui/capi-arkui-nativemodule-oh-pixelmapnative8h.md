@@ -1,4 +1,14 @@
 # OH_PixelmapNative*
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct OH_PixelmapNative* OH_PixelmapNativeHandle
+```
 
 ## 概述
 

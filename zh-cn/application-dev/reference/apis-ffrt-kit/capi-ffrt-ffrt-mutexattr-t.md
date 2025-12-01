@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct {...} ffrt_mutexattr_t
+```
+
 ## 概述
 
 FFRT锁属性结构。

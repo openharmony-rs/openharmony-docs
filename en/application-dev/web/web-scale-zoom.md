@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 ArkWeb supports gesture zoom, mouse wheel zoom, and keyboard zoom, allowing users to adjust the display to a comfortable size. It also provides the capability of listening for and controlling the page zoom scale for applications to achieve personalized visual effects.
 
@@ -22,12 +22,13 @@ Gestures can be used to zoom in or out only when both the **zoomAccess** and **v
 >
 > On a PC or 2-in-1 device, the **viewport** tag does not take effect. You can only set **zoomAccess** to **false** to disable gesture zoom.
 > 
-> The preceding tags can only be used to enable or disable the zoom functionality. If **minimum-scale** and **maximum-scale** are set in the **viewport** tag, the zoom range is also restricted by the two attributes. When the maximum and minimum values are the same, the web page cannot be zoomed in or out. Currently, ArkWeb does not provide the capability of forcibly zooming in or out a page.
+> The preceding tags can only be used to enable or disable the zoom functionality. If **minimum-scale** and **maximum-scale** are set in the **viewport** tag, the zoom range is also restricted by the two attributes. When the maximum and minimum values are the same, the web page cannot be zoomed in or out.
 >
 > In addition, the zoom-out scale is limited by the width of the web page.
 
-```ts
-// xxx.ets
+<!-- @[ControlWebGestureZooming](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlWebGestureZooming.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -44,14 +45,19 @@ struct WebComponent {
 }
 ```
 
+### Setting Forcible Gesture Zoom
+
+You can use the [forceEnableZoom](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#forceenablezoom21) attribute to set the forcible zoom functionality of a web page. When this attribute is set to **true**, the gesture zoom behavior is not restricted by **minimum-scale**, **maximum-scale**, and **user-scalable=no**.
+
 ### Setting Keyboard and Mouse Wheel Zoom
 
-By default, ArkWeb supports zooming by pressing the **Ctrl**+**'-'/'+'** keys or using the mouse wheel with the **Ctrl** key. An application can intercept keyboard events to disable keyboard zoom. Currently, the application cannot disable mouse wheel zoom.
+By default, ArkWeb supports zooming by pressing the **Ctrl**+**'-'/'+'** keys or using the mouse wheel with the **Ctrl** key. An application can intercept keyboard events to disable keyboard zoom.
 
 Example of intercepting keyboard events to disable keyboard zoom:
 
-```ts
-// xxx.ets
+<!-- @[ControlMouseAndKeyBoardZooming](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlMouseAndKeyBoardZooming.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { KeyCode } from '@kit.InputKit';
 
@@ -65,15 +71,35 @@ struct WebComponent {
       Web({ src: 'www.example.com', controller: this.controller })
         .zoomAccess(true)
         .onKeyPreIme((event) => {
-          if (event.type == KeyType.Down &&
-              event.getModifierKeyState &&
-              event.getModifierKeyState(['Ctrl']) &&
-              (event.keyCode == KeyCode.KEYCODE_MINUS || event.keyCode == KeyCode.KEYCODE_EQUALS ||
-               event.keyCode == KeyCode.KEYCODE_NUMPAD_SUBTRACT || event.keyCode == KeyCode.KEYCODE_NUMPAD_ADD)) {
+          if (event.type === KeyType.Down &&
+          event.getModifierKeyState &&
+          event.getModifierKeyState(['Ctrl']) &&
+            (event.keyCode === KeyCode.KEYCODE_MINUS || event.keyCode === KeyCode.KEYCODE_EQUALS ||
+              event.keyCode === KeyCode.KEYCODE_NUMPAD_SUBTRACT || event.keyCode === KeyCode.KEYCODE_NUMPAD_ADD)) {
             return true;
           }
           return false;
         })
+    }
+  }
+}
+```
+
+You can also use the [zoomControlAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#zoomcontrolaccess22) attribute to set whether to allow zooming by using the combination keys (**Ctrl** + '**-**/**+**' or **Ctrl** + mouse wheel/touchpad).
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .zoomControlAccess(false)
     }
   }
 }
@@ -84,8 +110,9 @@ struct WebComponent {
 The application can listen for page zoom scale changes through the [onScaleChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onscalechange9) API.
 This API event corresponds to the gesture event (zoom with two fingers). **event.newScale** corresponds to the web page attribute **visualViewport.scale**.
 
-```ts
-// xxx.ets
+<!-- @[MonitorZoomRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/MonitorZoomRatio.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -118,8 +145,9 @@ You can call the [zoom](../reference/apis-arkweb/arkts-apis-webview-WebviewContr
 
 You can use **zoomIn** to zoom in the current web page by 25% or **zoomOut** to zoom out the current web page by 20%.
 
-```ts
-// xxx.ets
+<!-- @[ControlZoomByFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomByFixedRatio.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -156,8 +184,9 @@ struct WebComponent {
 
 You can use **zoom** to zoom in or out on the current web page. When the input parameter is set to **1**, the default page size is used. When the input parameter is set to a value less than 1, the page is zoomed out. When the input parameter is set to a value greater than 1, the page is zoomed in. The value must be greater than 0.
 
-```ts
-// xxx.ets
+<!-- @[ControlZoomByInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomByInput.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -172,7 +201,7 @@ struct WebComponent {
       TextInput()
         .type(InputType.NUMBER_DECIMAL)
         .onChange((value)=>{
-            this.factor = Number(value);
+          this.factor = Number(value);
         })
       Button('zoom')
         .onClick(() => {
@@ -198,8 +227,9 @@ You can call the **onScaleChange** API to obtain the current page zoom scale, an
 factor = 100 * targetFactor / pageFactor
 ```
 
-```ts
-// xxx.ets
+<!-- @[ControlZoomToFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomToFixedRatio.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -208,7 +238,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   @State targetFactor: number = 1;
+  // This represents the page zoom level
   @State pageFactor: number = 100;
+  // Represents the integer 100
+  intNumber: number = 100;
 
   build() {
     Column() {
@@ -220,7 +253,7 @@ struct WebComponent {
       Button('zoom')
         .onClick(() => {
           try {
-            let factor = this.targetFactor * 100 / this.pageFactor;
+            let factor = this.targetFactor * this.intNumber / this.pageFactor;
             this.controller.zoom(factor);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -229,7 +262,7 @@ struct WebComponent {
       Web({ src: 'www.example.com', controller: this.controller })
         .zoomAccess(true)
         .onScaleChange((event) => {
-          console.info('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
+          console.error('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
           this.pageFactor = event.newScale;
         })
     }

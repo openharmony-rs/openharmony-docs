@@ -42,8 +42,8 @@
   - [Overview of Cross-Application Data Sharing](data-share-overview.md)
   - One-to-Many Data Sharing<!--one-to-many-data-share-->
     <!--Del-->
-    - [Sharing Data Using DataShareExtensionAbility (ArkTS) (for System Applications Only)](share-data-by-datashareextensionability.md)
-    - [Silent Access via DatamgrService (ArkTS) (for System Applications Only)](share-data-by-silent-access.md)
+    - [Sharing Data Using DataShareExtensionAbility (ArkTS) (for System Applications Only)](share-data-by-datashareextensionability-sys.md)
+    - [Silent Access via DatamgrService (ArkTS) (for System Applications Only)](share-data-by-silent-access-sys.md)
     <!--DelEnd-->
     - [Sharing Configurations Between Applications (ArkTS)](share-config.md)
   - Many-to-Many Data Sharing<!--many-to-many-data-share-->

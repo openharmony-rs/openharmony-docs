@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -21,14 +21,13 @@ import { avSession } from '@kit.AVSessionKit';
 
 ## 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 | 名称      | 类型   | 只读 | 可选 | 说明                          |
 | :-------- | :----- | :--- | :--- | :---------------------------- |
-| sessionId<sup>10+</sup> | string | 是   | 否   | AVSession对象唯一的会话标识。 |
-| sessionType<sup>10+</sup> | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10) | 是   | 否   | AVSession会话类型。 |
+| sessionId<sup>10+</sup> | string | 是   | 否   | AVSession对象唯一的会话标识。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| sessionType<sup>10+</sup> | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10) | 是   | 否   | AVSession会话类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| sessionTag<sup>22+</sup> | string | 是   | 否   | AVSession会话的自定义标签信息。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -1265,8 +1264,8 @@ struct Index {
             let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
             let avSessionController: avSession.AVSessionController;
             currentAVSession.getController().then((avController: avSession.AVSessionController) => {
-              avsessionController = avController;
-              console.info(`GetController : SUCCESS : sessionid : ${avsessionController.sessionId}`);
+              avSessionController = avController;
+              console.info(`GetController : SUCCESS : sessionid : ${avSessionController.sessionId}`);
             }).catch((err: BusinessError) => {
               console.error(`GetController BusinessError: code: ${err.code}, message: ${err.message}`);
             });
@@ -1742,7 +1741,7 @@ on(type: 'play', callback: () => void): void
 | callback | () => void | 是   | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。                                        |
 
 **错误码：**
-
+  
 以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
@@ -3475,7 +3474,7 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it.   |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -3509,7 +3508,7 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it.  |
 | 6600102  | The session does not exist. |
 
 **示例：**

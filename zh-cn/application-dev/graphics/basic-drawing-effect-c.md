@@ -37,43 +37,62 @@
 
 1. 使用OH_Drawing_BrushCreate()接口创建画刷Brush对象。
 
-   ```c++
-   OH_Drawing_Brush* brush = OH_Drawing_BrushCreate(); 
+   <!-- @[ndk_graphics_draw_create_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 创建画刷
+   OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
    ```
 
 2. 使用画刷设置基础绘制效果（可选以下的一个或者多个效果）。
 
    - 可使用OH_Drawing_BrushSetColor()接口设置填充颜色。
 
-      ```c++
+      <!-- @[ndk_graphics_draw_brush_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
+      // 设置填充颜色为红色
       uint32_t color = 0xffff0000;
-      OH_Drawing_BrushSetColor(brush, color); 
+      OH_Drawing_BrushSetColor(brush, color);
       ```
 
       color是一个32位（ARGB）的变量，例如0xffff0000。
-
+   
    - 可使用OH_Drawing_BrushSetAntiAlias()接口开启抗锯齿效果，以使图形边缘更加平滑。
-      ```c++
+
+      <!-- @[ndk_graphics_draw_brush_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
+      // 开启抗锯齿效果
       OH_Drawing_BrushSetAntiAlias(brush, true);
       ```
 
 3. 使用OH_Drawing_CanvasAttachBrush()接口给Canvas画布设置画刷。接口接受两个参数，一个是画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)；另一个是要画设置的画刷对象。画布将会使用设置的画刷样式和颜色等填充图形。
 
-   ```c++
-   OH_Drawing_CanvasAttachBrush(canvas, brush); 
+   <!-- @[ndk_graphics_draw_canvas_attach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 设置画布的画刷
+   OH_Drawing_CanvasAttachBrush(canvas, brush);
    ```
 
 4. 按需绘制图元，具体可见[图元绘制](primitive-drawing-overview.md)一节。
 
 5. 当不需要填充效果时，可以使用OH_Drawing_CanvasDetachBrush()去除。入参为画布对象Canvas。
 
-   ```c++
+   <!-- @[ndk_graphics_draw_canvas_detach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 去除画布中的画刷
    OH_Drawing_CanvasDetachBrush(canvas);
    ```
 
 6. 当不再需要画刷进行效果填充时，请及时使用OH_Drawing_BrushDestroy()接口销毁Brush对象。
 
-   ```c++
+   <!-- @[ndk_graphics_draw_brush_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 销毁各类对象
    OH_Drawing_BrushDestroy(brush);
    ```
 
@@ -104,29 +123,43 @@
 
 1. 使用OH_Drawing_PenCreate()接口创建画笔Pen对象。
 
-   ```c++
-   OH_Drawing_Pen* pen = OH_Drawing_PenCreate(); 
+   <!-- @[ndk_graphics_draw_create_drawing_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 创建画笔
+   OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
    ```
 
 2. 使用OH_Drawing_CanvasAttachPen()接口给Canvas画布设置画笔。接口接受两个参数，一个是画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)；另一个是要设置的画笔对象。画布将会使用设置的画笔样式和颜色等绘制图形轮廓。
 
-   ```c++
-   OH_Drawing_CanvasAttachPen(canvas, pen); 
+   <!-- @[ndk_graphics_draw_canvas_attach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 设置画布的画笔
+   OH_Drawing_CanvasAttachPen(canvas, pen);
    ```
 
 3. 使用画笔设置具体的描边效果（可选以下的一个或者多个效果）。
 
    - 可使用OH_Drawing_PenSetColor()接口设置画笔颜色，对应为绘制图形轮廓时使用的颜色。
-      ```c++
+  
+      <!-- @[ndk_graphics_draw_pen_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
+      // 设置画笔颜色为红色
       uint32_t color = 0xffff0000;
-      OH_Drawing_PenSetColor(pen, color); 
+      OH_Drawing_PenSetColor(pen, color);
       ```
 
       color是一个32位（ARGB）的变量，例如0xffff0000。
 
    - 可使用OH_Drawing_PenSetWidth()接口设置画笔的线宽。
 
-      ```c++
+      <!-- @[ndk_graphics_draw_pen_set_stroke_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
+      // 设置画笔的线宽为50像素
+      float width = 50.0;
       OH_Drawing_PenSetWidth(pen, width);
       ```
 
@@ -134,14 +167,20 @@
 
    - 可使用OH_Drawing_PenSetAntiAlias()接口设置画笔抗锯齿，以使图形绘制边缘更平滑。
 
-      ```c++
+      <!-- @[ndk_graphics_draw_pen_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
+      // 设置画笔抗锯齿
       OH_Drawing_PenSetAntiAlias(pen, true);
       ```
 
    - 可使用OH_Drawing_PenSetCap()接口设置画笔线帽样式。
 
-      ```c++
-      OH_Drawing_PenSetCap(pen, LINE_FLAT_CAP);
+      <!-- @[ndk_graphics_draw_pen_set_cap_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
+      // 设置画笔线帽样式
+      OH_Drawing_PenSetCap(pen, OH_Drawing_PenLineCapStyle::LINE_ROUND_CAP);
       ```
 
       OH_Drawing_PenLineCapStyle线帽样式可选分类对应如下：
@@ -154,8 +193,11 @@
 
    - 可使用OH_Drawing_PenSetJoin()接口设置画笔转角样式。
 
-      ```c++
-      OH_Drawing_PenSetJoin(pen, LINE_MITER_JOIN);
+      <!-- @[ndk_graphics_draw_pen_set_join_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
+      // 设置画笔转角样式
+      OH_Drawing_PenSetJoin(pen, OH_Drawing_PenLineJoinStyle::LINE_BEVEL_JOIN);
       ```
 
       OH_Drawing_PenLineJoinStyle转角样式可选分类对应如下：
@@ -169,14 +211,20 @@
 
 5. 当不需要描边效果时，可以使用OH_Drawing_CanvasDetachPen()去除。入参为画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)。
 
-   ```c++
-   OH_Drawing_CanvasDetachPen(canvas); 
+   <!-- @[ndk_graphics_draw_canvas_detach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 去除掉画布中的画笔
+   OH_Drawing_CanvasDetachPen(canvas);
    ```
 
 6. 当不再需要画笔进行描边时，请及时使用OH_Drawing_PenDestroy()接口销毁Pen对象。
 
-   ```c++
-   OH_Drawing_PenDestroy(pen); 
+   <!-- @[ndk_graphics_draw_pen_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 销毁各类对象
+   OH_Drawing_PenDestroy(pen);
    ```
 
 <!--RP1-->
@@ -184,5 +232,5 @@
 
 针对Drawing(C/C++)的开发，有以下相关实例可供参考：
 
-- [NDKGraphicsDraw (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKGraphicsDraw)
+- [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
 <!--RP1End-->

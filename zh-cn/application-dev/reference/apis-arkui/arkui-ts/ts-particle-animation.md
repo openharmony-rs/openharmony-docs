@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 粒子动画是在一定范围内随机生成的大量粒子产生运动而组成的动画。动画元素是一个个粒子，这些粒子可以是圆点、图片。通过对粒子在颜色、透明度、大小、速度、加速度、自旋角度等维度变化做动画，来营造一种氛围感，比如下雪的动效，雪花飘舞就相当于一个个雪花粒子在做动画。
 
@@ -91,6 +91,36 @@ emitter(value: Array&lt;EmitterProperty&gt;)
 | 参数名 | 类型    | 必填 | 说明                         |
 | ------ | ------- | ---- | ---------------------------- |
 | value  | Array<[EmitterProperty](#emitterproperty12)> | 是   | 需要更新的emitter参数数组 |
+
+### rippleFields<sup>22+</sup>
+rippleFields(fields: Array&lt;RippleFieldOptions&gt;\|undefined)
+
+设置粒子波动场。波动场会对影响范围内的粒子施加按波形变化的力，产生类似波纹扩散的效果。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                         |
+| ------ | ------- | ---- | ---------------------------- |
+| fields  | Array<[RippleFieldOptions](#ripplefieldoptions22)>\|undefined | 是   | 粒子波动场数组。通过数组形式可以设置多个粒子波动场。当设置为undefined时，表示无波动场。 |
+
+### velocityFields<sup>22+</sup>
+velocityFields(fields: Array&lt;VelocityFieldOptions&gt;\|undefined)
+
+设置粒子速度场。速度场会对影响范围内的粒子施加一个力，使粒子在原有速度的基础上叠加速度场指定的速度。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                         |
+| ------ | ------- | ---- | ---------------------------- |
+| fields  | Array<[VelocityFieldOptions](#velocityfieldoptions22)>\|undefined | 是   | 粒子速度场数组。通过数组形式可设置多个粒子速度场。设置为undefined时表示无速度场。 |
 
 ## 事件
 支持[通用事件](ts-component-general-events.md)
@@ -628,14 +658,74 @@ interface ParticleColorUpdaterOptions<UPDATER extends ParticleUpdater> {
 
 ![](figures/annulus.png)
 
+## Vector2T\<T><sup>22+</sup>
+
+type Vector2T\<T> = Vector2T\<T>
+
+定义Vector2T类型。其中Vector2T类型包含x和y两个属性值。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型                         | 说明                                |
+| ---------------------------- | ----------------------------------- |
+| [Vector2T\<T>](../js-apis-arkui-graphics.md#vector2tt12) | 用于表示T类型的包含x和y两个值的向量。x表示向量x轴方向的值。y表示向量y轴方向的值。<br/>单位：vp |
+
+
+## FieldRegion<sup>22+</sup>
+
+用于设置粒子场的区域信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称   | 类型   | 只读 | 可选 | 说明 |
+| ------ | ------ | -- | -- | ---- |
+| shape      | [DisturbanceFieldShape](#disturbancefieldshape12) | 否 | 是  | 粒子场的区域形状。<br/>默认值：DisturbanceFieldShape.RECT  |
+| position      | [PositionT](../js-apis-arkui-graphics.md#positiont12)&lt;number&gt; | 否 | 是 | 粒子场的区域中心位置。坐标单位为vp。<br/>默认值：{x:0, y:0}  |
+| size  | [SizeT](../js-apis-arkui-graphics.md#sizett12)&lt;number&gt; | 否 | 是  | 粒子场的区域大小。值的单位为vp。<br/>默认值：{width:0, height:0}<br/>取值范围：<br/>width：[0, +∞)<br/>height：[0, +∞)<br/>当size的width（或height）设置为负值时取width（或height）的默认值。  |
+
+## RippleFieldOptions<sup>22+</sup>
+
+用于描述粒子波动场信息的参数。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称   | 类型   | 只读 | 可选 | 说明 |
+| ------ | ------ | -- | -- | ---- |
+| amplitude      | number | 否 | 是  | 描述粒子波动场波的幅值。幅值越大，波动场的力越大。<br/>取值范围：[0, +∞)<br/>默认值：0<br/>设置为负值时取默认值。  |
+| wavelength      | number | 否 | 是 | 描述粒子波动场的波长，即一个波周期的变化距离。波长越大，则随距离的变化，波的变化越慢，波动越不明显。<br/>取值范围：[0, +∞)<br/>默认值：0<br/>设置为负值时取默认值。  |
+| waveSpeed  | number | 否 | 是  | 描述粒子波动场的波速。波速越大，则随时间的变化，波的变化越快，波动越明显。<br/>取值范围：[0, +∞)<br/>默认值：0<br/>设置为负值时取默认值。  |
+| attenuation  | number | 否 | 是  | 描述粒子波动场波的衰减系数。衰减系数越大，则随时间的变化，波的衰减越快。<br/>取值范围：[0, 1]<br/>默认值：0.0<br/>设置的数值不在范围内时取默认值。  |
+| center  | [PositionT](../js-apis-arkui-graphics.md#positiont12)&lt;number&gt; | 否 | 是  | 粒子波动场产生力的中心位置。组件的左上角为坐标原点。坐标单位为vp。<br/>默认值：{x:0, y:0} |
+| region  | [FieldRegion](ts-particle-animation.md#fieldregion22) | 否 | 是  | 粒子波动场影响的区域信息，其中区域信息包括区域形状、区域大小以及区域中心位置。<br/>默认值：{shape:DisturbanceFieldShape.RECT, position:{x:0, y:0}, size:{width:0, height:0}}  |
+
+## VelocityFieldOptions<sup>22+</sup>
+
+用于描述粒子速度场信息的参数。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称   | 类型   | 只读 | 可选 | 说明 |
+| ------ | ------ | -- | -- | ---- |
+| velocity      | [Vector2T](#vector2tt22)<number, number> | 否 | 是  | 粒子速度场的各方向速度值。粒子只有在速度场作用范围内时获得该速度，离开速度场范围后不受该速度场影响，不获得该额外的速度。<br/>默认值：{x:0, y:0}  |
+| region  | [FieldRegion](ts-particle-animation.md#fieldregion22) | 否 | 是  | 粒子速度场影响的区域信息，其中区域信息包括区域形状、区域大小以及区域中心位置。<br/>默认值：{shape:DisturbanceFieldShape.RECT, position:{x:0, y:0}, size:{width:0, height:0}}  |
+
 ## 示例
 
 ### 示例1（圆形初始化粒子）
 
 描述粒子动画基础用法，通过圆形初始化粒子。
 
-```ts
-// xxx.ets
+<!-- @[particle_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template1/Index.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct ParticleExample {
@@ -662,6 +752,7 @@ struct ParticleExample {
             },
             color: {
               range: [Color.Red, Color.Yellow], //初始颜色范围
+              distributionType: DistributionType.GAUSSIAN, // 初始颜色随机值分布
               updater: {
                 type: ParticleUpdater.CURVE, //变化方式为曲线变化
                 config: [
@@ -743,7 +834,7 @@ struct ParticleExample {
           }
         ]
       }).width(300).height(300)
-    }.width("100%").height("100%").align(Alignment.Center)
+    }.width('100%').height('100%').align(Alignment.Center)
   }
 }
 ```
@@ -1147,10 +1238,12 @@ struct ParticleExample {
 
 该示例主要演示如何通过粒子扰动场的干扰下来实现运动轨迹发生变化的效果。
 
-```
+<!-- @[particle_example3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template3/Index.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct ParticleExample {
+struct ParticleExample3 {
   build() {
     Stack() {
       Text()
@@ -1263,19 +1356,20 @@ struct ParticleExample {
         noiseFrequency: 15,
         noiseAmplitude: 5
       }])
-    }.width("100%").height("100%").align(Alignment.Center)
+    }.width('100%').height('100%').align(Alignment.Center)
   }
 }
-
 ```
 ![particle](figures/disturbanceFields.gif)
 
 ### 示例4（调整粒子发射器位置）
 通过emitter()调整粒子发射器的位置。
-```ts
+<!-- @[particle_example4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template4/Index.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct ParticleExample {
+struct ParticleExample4 {
   @State emitterProperties: Array<EmitterProperty> = [
     {
       index: 0,
@@ -1283,7 +1377,7 @@ struct ParticleExample {
       position: { x: 60, y: 80 },
       size: { width: 200, height: 200 }
     }
-  ]
+  ];
 
   build() {
     Stack() {
@@ -1340,7 +1434,7 @@ struct ParticleExample {
         .width(300)
         .height(300)
         .emitter(this.emitterProperties)
-    }.width("100%").height("100%").align(Alignment.Center)
+    }.width('100%').height('100%').align(Alignment.Center)
   }
 }
 ```
@@ -1348,12 +1442,12 @@ struct ParticleExample {
 
 ### 示例5（环形发射器创建）
 描述粒子动画环形发射器创建的基础用法。
-```ts
-import { LengthMetrics } from '@kit.ArkUI';
+<!-- @[particle_example5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template5/Index.ets) -->
 
+``` TypeScript
 @Entry
 @Component
-struct ParticleExample {
+struct ParticleExample5 {
   build() {
     Stack() {
       Text()
@@ -1424,7 +1518,7 @@ struct ParticleExample {
           }
         ]
       }).width(300).height(300)
-    }.width("100%").height("100%").align(Alignment.Center)
+    }.width('100%').height('100%').align(Alignment.Center)
   }
 }
 ```
@@ -1432,25 +1526,24 @@ struct ParticleExample {
 
 ### 示例6（环形发射器更新）
 描述粒子动画环形发射器更新的基础用法。
-```ts
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI'
+<!-- @[particle_example6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template6/Index.ets) -->
 
+``` TypeScript
 @Entry
 @Component
-struct ParticleExample {
+struct ParticleExample6 {
 
-  @State radius: number = 1
-  @State shape: ParticleEmitterShape = ParticleEmitterShape.ANNULUS
-  @State emitRate: number = 200
-  @State count: number = 2000
-  private timerID: number = -1
-  private centerX: LengthMetrics = LengthMetrics.percent(0.5)
-  private centerY: LengthMetrics = LengthMetrics.percent(0.5)
-  private inRadius: LengthMetrics = LengthMetrics.vp(120)
-  private outRadius: LengthMetrics = LengthMetrics.vp(120)
-  private startAngle: number = 0
-  private endAngle: number = 90
+  @State radius: number = 1;
+  @State shape: ParticleEmitterShape = ParticleEmitterShape.ANNULUS;
+  @State emitRate: number = 200;
+  @State count: number = 2000;
+  private timerID: number = -1;
+  private centerX: LengthMetrics = LengthMetrics.percent(0.5);
+  private centerY: LengthMetrics = LengthMetrics.percent(0.5);
+  private inRadius: LengthMetrics = LengthMetrics.vp(120);
+  private outRadius: LengthMetrics = LengthMetrics.vp(120);
+  private startAngle: number = 0;
+  private endAngle: number = 90;
   @State emitterProperties: Array<EmitterProperty> = [
     {
       index: 0,
@@ -1506,8 +1599,8 @@ struct ParticleExample {
               },
             },
           ]
-        }).width("100%")
-          .height("100%")
+        }).width('100%')
+          .height('100%')
           .emitter(this.emitterProperties)
           .onClick(()=>{
             // 清除已有定时器
@@ -1536,18 +1629,144 @@ struct ParticleExample {
                 }
                 return;
               }
-              // 更新角度值（5度/秒）
+              // 更新角度值（30度/秒）
               this.startAngle += 30;
               this.endAngle += 30;
             }, 1000);
 
           })
       }
-      .width("100%")
-      .height("100%")
+      .width('100%')
+      .height('100%')
       .align(Alignment.Center)
     }
   }
 }
 ```
 ![](figures/annulusUpdate.gif)
+
+### 示例7（设置波动场和速度场）
+从API version 22开始，支持设置粒子波动场和速度场。该示例演示如何通过rippleFields接口设置粒子波动场，产生类似波纹扩散的效果。通过velocityFields接口设置粒子速度场，使粒子在原有速度的基础上叠加速度场指定的速度。
+```ts
+// xxx.ets
+@Entry
+@Component
+struct ParticleExample {
+  @State count: number = 1000
+  @State particle: EmitterParticleOptions<ParticleType> = {
+    type: ParticleType.POINT, // 粒子类型
+    config: {
+      radius: 1 // 圆点半径
+    },
+    count: this.count, // 粒子总数
+    lifetime: 9000, // 粒子生命周期，单位ms
+    lifetimeRange: 100 // 粒子生命周期取值范围，单位ms
+  }
+  build() {
+    Column() {
+      Text('波动场')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+      Stack() {
+        Text()
+          .width(300).height(300).backgroundColor(Color.Black)
+        Particle({
+          particles: [
+            {
+              emitter: {
+                particle: this.particle,
+                emitRate: 10000, // 每秒发射粒子数
+                position: [0, 0],
+                shape: ParticleEmitterShape.RECTANGLE // 发射器形状
+              },
+              color: {
+                range: [Color.White, Color.White], // 初始颜色范围
+              },
+              scale: {
+                range: [0.2, 1.5], // 初始大小范围
+              },
+              opacity	: {
+                range: [0.2, 0.8], // 初始透明度范围
+              }
+            }
+          ]
+        }).width(300).height(300)
+          .rippleFields([
+            {
+              amplitude: 120, // 波动场幅值
+              wavelength: 500, // 波动场的波长
+              waveSpeed: 220, // 波动场的波速
+              center: { x: 150, y: 150 }, // 波动场的力的中心
+              attenuation: 0, // 波动场随时间的衰减系数
+              region: {
+                // 波动场的影响区域
+                shape: DisturbanceFieldShape.RECT, // 波动场影响区域的形状
+                position: { x: 150, y: 150 }, // 波动场影响区域的区域中心
+                size: { width: 300, height: 300 } // 波动场影响区域的大小
+              }
+            }
+          ])
+      }.width("100%").height(300).align(Alignment.Center)
+      Text('速度场')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+      Stack() {
+        Text()
+          .width(300).height(300).backgroundColor(Color.Black)
+        Particle({
+          particles: [
+            {
+              emitter: {
+                particle: {
+                  type: ParticleType.POINT, // 粒子类型
+                  config: {
+                    radius: 2 // 圆点半径
+                  },
+                  count: 1000, // 粒子总数
+                  lifetime: 1000, // 粒子生命周期，单位ms
+                  lifetimeRange: 0 // 粒子生命周期取值范围，单位ms
+                },
+                emitRate: 120, // 每秒发射粒子数
+                position: [0, 0],
+                size: [300, 300],
+                shape: ParticleEmitterShape.RECTANGLE // 发射器形状
+              },
+              color: {
+                range: [Color.White, Color.White], // 初始颜色范围
+              },
+              opacity: {
+                range: [1.0, 1.0],
+                updater: {
+                  type: ParticleUpdater.CURVE, // 透明度按曲线变化
+                  config: [
+                    {
+                      from: 1.0,
+                      to: 0.0,
+                      startMillis: 0,
+                      endMillis: 1000,
+                      curve: Curve.EaseIn
+                    }
+                  ]
+                }
+              },
+            }
+          ]
+        }).width(300).height(300)
+          .margin({ top: 30 })
+          .velocityFields([
+            {
+              velocity: { x: 100, y: 0 }, // 速度场的速度值
+              region: {
+                // 速度场的影响区域
+                shape: DisturbanceFieldShape.RECT, // 速度场影响区域的形状
+                position: { x: 150, y: 150 }, // 速度场影响区域的区域中心
+                size: { width: 200, height: 200 } // 速度场影响区域的大小
+              }
+            }
+          ])
+      }.width("100%").height(300).align(Alignment.Center)
+    }
+  }
+}
+```
+![](figures/particleRipple.gif)

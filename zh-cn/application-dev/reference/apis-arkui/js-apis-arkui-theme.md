@@ -4,7 +4,7 @@
 <!--Owner: @lushi871202-->
 <!--Designer: @lushi871202-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 支持自定义主题风格，实现App组件风格跟随Theme切换。
 
@@ -163,8 +163,8 @@ setDefaultTheme(theme: [CustomTheme](#customtheme)): void
 import { CustomTheme, CustomColors, ThemeControl } from '@kit.ArkUI';
 // 自定义主题颜色
 class BlueColors implements CustomColors {
-  fontPrimary = Color.Red;
-  backgroundPrimary = Color.Blue;
+  fontPrimary = "#FF707070";
+  backgroundPrimary = "#FF2787D9";
   brand = "#FFEEAAFF"; // 品牌色
 }
 
@@ -208,3 +208,7 @@ struct Index {
   }
 }
 ```
+
+![zh-cn_image_setDefaultTheme_light](figures/zh-cn_image_setDefaultTheme_lights.png)
+
+![zh-cn_image_setDefaultTheme_night](figures/zh-cn_image_setDefaultTheme_nights.png)

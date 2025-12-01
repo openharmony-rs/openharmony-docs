@@ -1,5 +1,12 @@
 # Publishing a Text Notification
 
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 You can publish text notifications to send SMS messages, alert messages, and more. There are two types of text notifications: normal text and multi-line text.
 
 **Table 1** Basic notification content types

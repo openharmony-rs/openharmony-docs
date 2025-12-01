@@ -2,7 +2,7 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @duan-sizhao; @Luobniz21-->
+<!--Owner: @dsz2025; @Luobniz21-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
@@ -51,7 +51,7 @@ updateConfiguration(config: Configuration, callback: AsyncCallback\<void>): void
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | config    | [Configuration](js-apis-app-ability-configuration.md)   | 是    | 新的配置项，仅需配置需要更新的项。 |
-| callback  | AsyncCallback\<void>                   | 是    | 以回调方式返回接口运行结果，可进行错误处理或其他自定义处理。      |
+| callback  | AsyncCallback\<void>                   | 是    | 回调函数。当更新配置成功，err为undefined；否则为错误对象。可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -60,7 +60,7 @@ updateConfiguration(config: Configuration, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -125,7 +125,7 @@ updateConfiguration(config: Configuration): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -173,11 +173,15 @@ getAbilityRunningInfos(callback: AsyncCallback\<Array\<AbilityRunningInfo>>): vo
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| callback  | AsyncCallback\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>>  | 是    | 以回调方式返回接口运行结果及运行中的ability信息，可进行错误处理或其他自定义处理。      |
+| callback  | AsyncCallback\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>>  | 是    | 回调函数。当获取UIAbility运行相关信息成功，err为undefined，data为获取到的UIAbility运行相关信息；否则为错误对象。可进行错误处理或其他自定义处理。      |
 
 **错误码**：
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+> **说明：**
+>
+> 从API version 14开始，调用该接口将不会抛202错误码。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
@@ -223,7 +227,7 @@ getExtensionRunningInfos(upperLimit: number, callback: AsyncCallback\<Array\<Ext
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | upperLimit | number                                   | 是 | 获取消息数量的最大限制，最大为2<sup>31</sup>-1。 |
-| callback  | AsyncCallback\<Array\<[ExtensionRunningInfo](js-apis-inner-application-extensionRunningInfo-sys.md)>>  | 是    | 以回调方式返回接口运行结果及运行中的extension信息，可进行错误处理或其他自定义处理。      |
+| callback  | AsyncCallback\<Array\<[ExtensionRunningInfo](js-apis-inner-application-extensionRunningInfo-sys.md)>>  | 是    | 回调函数。当获取运行扩展能力的信息成功，err为undefined，data为获取到的运行扩展能力信息；否则为错误对象。可进行错误处理或其他自定义处理。      |
 
 **错误码**：
 
@@ -327,7 +331,7 @@ getTopAbility(callback: AsyncCallback\<ElementName>): void
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| callback  | AsyncCallback\<[ElementName](js-apis-bundleManager-elementName.md)>  | 是    | 以回调方式返回接口运行结果及应用名，可进行错误处理或其他自定义处理。      |
+| callback  | AsyncCallback\<[ElementName](js-apis-bundleManager-elementName.md)>  | 是    | 回调函数。当获取窗口焦点所在的Ability成功，err为undefined，data为获取到的应用名；否则为错误对象。可进行错误处理或其他自定义处理。      |
 
 **错误码**：
 
@@ -407,7 +411,7 @@ acquireShareData(missionId: number, callback: AsyncCallback\<Record\<string, Obj
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | missionId | number                                   | 是 | 目标应用的missionId，最大为2<sup>31</sup>-1。 |
-| callback  | AsyncCallback\<Record\<string, Object>>  | 是    | 以回调方式返回接口运行结果及分享得到的数据，可进行错误处理或其他自定义处理。      |
+| callback  | AsyncCallback\<Record\<string, Object>>  | 是    | 回调函数。当接口调用成功，err为undefined，data为获取到的分享数据；否则为错误对象。可进行错误处理或其他自定义处理。      |
 
 **错误码**：
 
@@ -736,7 +740,7 @@ try {
 
 getForegroundUIAbilities(callback: AsyncCallback\<Array\<AbilityStateData>>): void
 
-获取前台正在运行的应用Ability的信息。
+获取前台正在运行的应用Ability的信息。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -780,7 +784,7 @@ abilityManager.getForegroundUIAbilities((err: BusinessError, data: Array<ability
 
 getForegroundUIAbilities(): Promise\<Array\<AbilityStateData>>
 
-获取前台正在运行的应用Ability的信息。
+获取前台正在运行的应用Ability的信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -896,7 +900,7 @@ isEmbeddedOpenAllowed(context: Context, appId: string): Promise\<boolean>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<boolean> | Promise对象。返回true表示允许嵌入式启动，返回false表示不允许嵌入式启动。 |
+| Promise\<boolean> | Promise对象。返回true表示允许嵌入式启动；返回false表示不允许嵌入式启动。 |
 
 **错误码**：
 
@@ -945,7 +949,7 @@ setResidentProcessEnabled(bundleName: string, enable: boolean): Promise\<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 常驻进程的包名。 |
-| enable | boolean | 是 | 常驻进程的使能状态。 true：表示该进程为常驻进程。 false：表示该进程为普通进程，不会进行保活。|
+| enable | boolean | 是 | 常驻进程的使能状态。true表示该进程为常驻进程；false表示该进程为普通进程，不会进行保活。|
 
 **返回值：**
 
@@ -984,6 +988,372 @@ try {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
   console.error(`setResidentProcessEnabled failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.preloadUIExtensionAbility<sup>23+</sup>
+
+preloadUIExtensionAbility(want: Want): Promise\<number>
+
+预加载指定的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)并返回预加载UIExtensionAbility实例的ID。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<number> | Promise对象，返回预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)的ID，用于后续清除或管理操作。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. |
+| 16000004 | Cannot start an invisible component. |
+| 16000050 | Internal error. Possible causes: 1.Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module. 4.Preload UIExtensionAbility timeout. |
+
+**示例：**
+
+```ts
+import { abilityManager, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const preloadWant: Want = {
+    bundleName: 'com.example.application',
+    abilityName: 'EntryBackupAbility',
+    moduleName: 'entry',
+    parameters: {
+      'ability.want.params.uiExtensionType': 'sys/commonUI'
+    }
+  };
+
+  abilityManager.preloadUIExtensionAbility(preloadWant)
+    .then((preloadId: number) => {
+      console.info(`preloadUIExtensionAbility success, preloadId: ${preloadId}`);
+    })
+    .catch((err: BusinessError) => {
+      console.error(`preloadUIExtensionAbility fail, err: ${JSON.stringify(err)}`);
+    });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`preloadUIExtensionAbility failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.clearPreloadedUIExtensionAbility<sup>23+</sup>
+
+clearPreloadedUIExtensionAbility(preloadId: number): Promise\<void>
+
+清除指定的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | -------- | -------- | -------- |
+| preloadId | number | 是 | 预加载[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000003 | The specified ID does not exist. Possible causes: 1.The specified ID is incorrect; 2.The preloaded UIExtensionAbility has been loaded; 3.The preloaded UIExtensionAbility has been destroyed; |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2. Send restart message to system service failed; 3. System service failed to communicate with dependency module. |
+
+**示例：**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // 通过preloadUIExtensionAbility接口预加载后返回的ID
+  let preloadId: number = 1001;
+  abilityManager.clearPreloadUIExtensionAbility(preloadId)
+    .then(() => {
+      console.info('clearPreloadedUIExtensionAbility success.');
+    })
+    .catch((err: BusinessError) => {
+      console.error(`clearPreloadedUIExtensionAbility fail, err: ${JSON.stringify(err)}`);
+    });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`clearPreloadedUIExtensionAbility failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.clearPreloadedUIExtensionAbilities<sup>23+</sup>
+
+clearPreloadedUIExtensionAbilities(): Promise\<void>
+
+清除当前进程中所有已经预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2. Send restart message to system service failed; 3. System service failed to communicate with dependency module. |
+
+**示例：**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  abilityManager.clearPreloadedUIExtensionAbilities()
+    .then(() => {
+      console.info('clearPreloadedUIExtensionAbilities success.');
+    })
+    .catch((err: BusinessError) => {
+      console.error(`clearPreloadedUIExtensionAbilities fail, err: ${JSON.stringify(err)}`);
+    });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`clearPreloadedUIExtensionAbilities failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.onPreloadedUIExtensionAbilityLoaded<sup>23+</sup>
+
+onPreloadedUIExtensionAbilityLoaded(callback: PreloadedUIExtensionAbilityLoadedFn): void
+
+监听当前进程中预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的加载事件。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | -------- | -------- | -------- |
+| callback | [PreloadedUIExtensionAbilityLoadedFn](js-apis-app-ability-abilityManager-sys.md#preloadeduiextensionabilityloadedfn23) | 是 | 用于接收被加载的预加载[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例ID的回调函数。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: Memory operation error. |
+
+**示例：**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function onPreloadLoaded(preloadId: number) {
+  console.info(`Preloaded UIExtensionAbility loaded, preloadId: ${preloadId}`);
+}
+
+try {
+  abilityManager.onPreloadedUIExtensionAbilityLoaded(onPreloadLoaded);
+  console.info('onPreloadedUIExtensionAbilityLoaded success.');
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`onPreloadedUIExtensionAbilityLoaded failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.offPreloadedUIExtensionAbilityLoaded<sup>23+</sup>
+
+offPreloadedUIExtensionAbilityLoaded(callback?: PreloadedUIExtensionAbilityLoadedFn): void
+
+注销当前进程中预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的加载监听。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | -------- | -------- | -------- |
+| callback | [PreloadedUIExtensionAbilityLoadedFn](js-apis-app-ability-abilityManager-sys.md#preloadeduiextensionabilityloadedfn23) | 否 | 需要注销监听的回调函数。如果不传入任何回调函数，则会注销当前进程中所有该事件类型的监听。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: Memory operation error. |
+
+**示例：**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function offPreloadLoaded(preloadId: number) {
+  console.info(`Preloaded UIExtensionAbility loaded, preloadId: ${preloadId}`);
+}
+
+try {
+  abilityManager.offPreloadedUIExtensionAbilityLoaded(offPreloadLoaded);
+  console.info('offPreloadedUIExtensionAbilityLoaded success.');
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`offPreloadedUIExtensionAbilityLoaded failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.onPreloadedUIExtensionAbilityDestroyed<sup>23+</sup>
+
+onPreloadedUIExtensionAbilityDestroyed(callback: PreloadedUIExtensionAbilityDestroyedFn): void
+
+监听当前进程中预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的销毁事件。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | -------- | -------- | -------- |
+| callback | [PreloadedUIExtensionAbilityDestroyedFn](js-apis-app-ability-abilityManager-sys.md#preloadeduiextensionabilitydestroyedfn23) | 是 | 用于接收被销毁的预加载[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例ID的回调函数。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: Memory operation error. |
+
+**示例：**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function onPreloadDestroyed(preloadId: number) {
+  console.info(`Preloaded UIExtensionAbility destroyed, preloadId: ${preloadId}`);
+}
+
+try {
+  abilityManager.onPreloadedUIExtensionAbilityDestroyed(onPreloadDestroyed);
+  console.info('onPreloadedUIExtensionAbilityDestroyed success.');
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`onPreloadedUIExtensionAbilityDestroyed failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.offPreloadedUIExtensionAbilityDestroyed<sup>23+</sup>
+
+offPreloadedUIExtensionAbilityDestroyed(callback?: PreloadedUIExtensionAbilityDestroyedFn): void
+
+注销当前进程中预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的销毁监听。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | -------- | -------- | -------- |
+| callback | [PreloadedUIExtensionAbilityDestroyedFn](js-apis-app-ability-abilityManager-sys.md#preloadeduiextensionabilitydestroyedfn23) | 否 | 需要注销监听的回调函数。如果不传入任何回调函数，则会注销当前进程中所有该事件类型的监听。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: Memory operation error. |
+
+**示例：**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function offPreloadDestroyed(preloadId: number) {
+  console.info(`Preloaded UIExtensionAbility destroyed, preloadId: ${preloadId}`);
+}
+
+try {
+  abilityManager.offPreloadedUIExtensionAbilityDestroyed(offPreloadDestroyed);
+  console.info('offPreloadedUIExtensionAbilityDestroyed success.');
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`offPreloadedUIExtensionAbilityDestroyed failed, code is ${code}, message is ${message}`);
 }
 ```
 
@@ -1085,3 +1455,31 @@ AbilityForegroundStateObserver二级模块。
 | 类型 | 说明 |
 | --- | --- |
 | [_AbilityForegroundStateObserver.default](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | AbilityForegroundStateObserver二级模块，用于定义应用前后台状态监听。 |
+
+## PreloadedUIExtensionAbilityDestroyedFn<sup>23+</sup>
+
+type PreloadedUIExtensionAbilityDestroyedFn = (preloadId: number) => void
+
+预加载[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)被销毁时的回调函数类型。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 参数名    | 类型            | 必填 | 说明 |
+|--------|---------------|---| -------- |
+| preloadId | number | 是 | 预加载UIExtensionAbility实例的ID。 |
+
+## PreloadedUIExtensionAbilityLoadedFn<sup>23+</sup>
+
+type PreloadedUIExtensionAbilityLoadedFn = (preloadId: number) => void
+
+预加载[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)被加载时的回调函数类型。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 参数名    | 类型            | 必填 | 说明 |
+|--------|---------------|---| -------- |
+| preloadId | number | 是 | 预加载UIExtensionAbility实例的ID。 |

@@ -70,9 +70,9 @@ foundation/communication/
 ### Sharing a Network<a name="section2458213210369"></a>
 
 1. Import the **sharing** namespace from **@ohos.net.sharing**.
-2. Set the [network sharing type](../application-dev/network/net-sharing.md).
-3. [Start network sharing](../application-dev/network/net-sharing.md#enabling-network-sharing).
-4. [Stop network sharing](../application-dev/network/net-sharing.md#disabling-network-sharing).
+2. Set the [network sharing type](../application-dev/network/net-sharing-sys.md#basic-concepts).
+3. [Start network sharing](../application-dev/network/net-sharing-sys.md#enabling-network-sharing).
+4. [Stop network sharing](../application-dev/network/net-sharing-sys.md#disabling-network-sharing).
 ```
 // Import the http namespace.
 import sharing from '@ohos.net.sharing';
@@ -154,6 +154,4 @@ httpRequest.request(
 
 [communication_netmanager_base](https://gitee.com/openharmony/communication_netmanager_base/blob/master/README.md)
 [communication_netmanager_ext](https://gitee.com/openharmony/communication_netmanager_ext/blob/master/README.md)
-[communication_netstack](https://gitee.com/openharmony/communication_netstack/blob/master/READEME.md)
-
-<!--no_check-->
+[communication_netstack](https://gitee.com/openharmony/communication_netstack/blob/master/README.md)

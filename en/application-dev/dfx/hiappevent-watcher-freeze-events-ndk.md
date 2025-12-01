@@ -1,8 +1,15 @@
 # Subscribing to Application Freeze Events (C/C++)
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @rr_cn-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 ## Overview
 
-The following describes how to subscribe to application freeze events by using the C/C++ APIs provided by HiAppEvent. For details (such as parameter restrictions and value ranges), see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
+This topic describes how to subscribe to application freeze events by using the C/C++ APIs provided by HiAppEvent. For details (such as parameter restrictions and value ranges), see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
 
 ## Available APIs
 
@@ -17,7 +24,9 @@ The following describes how to subscribe to application freeze events by using t
 
 The following describes how to subscribe to the application freeze event triggered by button clicking.
 
-1. Create a native C++ project and import the **jsoncpp** file to the project. The directory structure is as follows:
+1. Obtain the **jsoncpp** file on which the sample project depends. Specifically, download the source code package from [JsonCpp](https://github.com/open-source-parsers/jsoncpp) and obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by following the procedure described in **Amalgamated source**.
+
+2. Create a native C++ project and import the **jsoncpp** file to the project. The directory structure is as follows:
 
    ```yml
    entry:
@@ -40,7 +49,7 @@ The following describes how to subscribe to the application freeze event trigger
              - Index.ets
    ```
 
-2. In the **CMakeLists.txt** file, add the source file and dynamic libraries.
+3. In the **CMakeLists.txt** file, add the source file and dynamic libraries.
 
    ```cmake
    # Add the jsoncpp.cpp file, which is used to parse the JSON strings in the subscription events.
@@ -49,7 +58,7 @@ The following describes how to subscribe to the application freeze event trigger
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
    ```
 
-3. Import the dependencies to the **napi_init.cpp** file, and define **LOG_TAG**.
+4. Import the dependencies to the **napi_init.cpp** file, and define **LOG_TAG**.
 
    ```c++
    #include "napi/native_api.h"
@@ -61,7 +70,7 @@ The following describes how to subscribe to the application freeze event trigger
    #define LOG_TAG "testTag"
    ```
 
-4. Subscribe to system events.
+5. Subscribe to system events.
 
    - Watcher of the **onReceive** type.
 
@@ -180,6 +189,7 @@ The following describes how to subscribe to the application freeze event trigger
                        auto memory =  writer.write(eventInfo["memory"]);
                       auto externalLog = writer.write(eventInfo["external_log"]);
                       auto logOverLimit = eventInfo["log_over_limit"].asBool();
+                      auto process_life_time = eventInfo["process_life_time"].asString();
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s", bundleVersion.c_str());
@@ -198,6 +208,7 @@ The following describes how to subscribe to the application freeze event trigger
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s", memory.c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_life_time=%{public}s", process_life_time.c_str());
                   }
               }
           }
@@ -226,7 +237,7 @@ The following describes how to subscribe to the application freeze event trigger
       }
       ```
 
-5. Register **RegisterWatcher** as an ArkTS API.
+6. Register **RegisterWatcher** as an ArkTS API.
 
    In the **napi_init.cpp** file, register **RegisterWatcher** as an ArkTS API.
 
@@ -247,7 +258,7 @@ The following describes how to subscribe to the application freeze event trigger
    export const registerWatcher: () => void;
    ```
 
-6. In the **EntryAbility.ets** file, add the following API to **onCreate()**.
+7. In the **EntryAbility.ets** file, add the following API to **onCreate()**.
 
    ```typescript
    // Import the dependent module.
@@ -258,7 +269,7 @@ The following describes how to subscribe to the application freeze event trigger
    testNapi.registerWatcher();
    ```
 
-7. In the **Index.ets** file, add a button to trigger the freeze event.
+8. In the **Index.ets** file, add a button to trigger the freeze event.
 
    ```typescript
    Button("appFreeze").onClick(() => {
@@ -268,7 +279,7 @@ The following describes how to subscribe to the application freeze event trigger
    })
    ```
 
-8. In DevEco Studio, click the **Run** button to run the project. Then, click the **appfreeze** button to trigger an application freeze event.
+9. In DevEco Studio, click the **Run** button to run the project. Then, click the **appfreeze** button to trigger an application freeze event.
 
 ### Verifying the Subscription
 
@@ -293,10 +304,13 @@ The following describes how to subscribe to the application freeze event trigger
    HiAppEvent eventInfo.params.event_handler_6s.size=16
    HiAppEvent eventInfo.params.peer_binder.size=0
    HiAppEvent eventInfo.params.threads.size=28
-   HiAppEvent eventInfo.params.memory={"pss":0,"rss":0,"sys_avail_mem":1326520,"sys_free_mem":940588,"sys_total_mem":1992340,"vss":0}
+   HiAppEvent eventInfo.params.memory={"pss":0,"rss":0,"sys_avail_mem":1326520,"sys_free_mem":940588,"sys_total_mem":1992340,"vm_heap_total_size":"9961472","vm_heap_used_size":"7596424","vss":0}
    HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_FREEZE_1502049185239_1587.log"]
    HiAppEvent eventInfo.params.log_over_limit=0
+   HiAppEvent eventInfo.params.process_life_time=18
    ```
+
+2. If the application fails to start or remains unstarted for a long time, you can delay the event notification by referring to [Using FaultLogExtensionAbility to Subscribe to Events](./fault-log-extension-app-events-arkts.md).
 
 ### Removing and Destroying an Event Watcher
 

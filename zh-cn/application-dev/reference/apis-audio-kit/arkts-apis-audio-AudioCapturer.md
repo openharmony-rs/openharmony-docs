@@ -4,16 +4,16 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+提供音频采集的相关接口。
+
+在使用AudioCapturer的接口之前，需先通过[createAudioCapturer](arkts-apis-audio-f.md#audiocreateaudiocapturer8)获取AudioCapturer实例。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 8开始支持。
-
-提供音频采集的相关接口。
-
-在使用AudioCapturer的接口之前，需先通过[createAudioCapturer](arkts-apis-audio-f.md#audiocreateaudiocapturer8)获取AudioCapturer实例。
 
 ## 导入模块
 
@@ -978,9 +978,7 @@ on(type: 'audioCapturerChange', callback: Callback\<AudioCapturerChangeInfo>): v
 
 ```ts
 audioCapturer.on('audioCapturerChange', (capturerChangeInfo: audio.AudioCapturerChangeInfo) => {
-  console.info(`audioCapturerChange id: ${capturerChangeInfo[0].id}`);
-  console.info(`audioCapturerChange deviceRole: ${capturerChangeInfo[0].deviceRole}`);
-  console.info(`audioCapturerChange deviceType: ${capturerChangeInfo[0].deviceType}`);
+  console.info(`Succeeded in using on function, AudioCapturerChangeInfo: ${capturerChangeInfo}.`);
 });
 ```
 
@@ -1016,9 +1014,7 @@ audioCapturer.off('audioCapturerChange');
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let audioCapturerChangeCallback = (capturerChangeInfo: audio.AudioCapturerChangeInfo) => {
-  console.info(`audioCapturerChange id: ${capturerChangeInfo[0].id}`);
-  console.info(`audioCapturerChange deviceRole: ${capturerChangeInfo[0].deviceRole}`);
-  console.info(`audioCapturerChange deviceType: ${capturerChangeInfo[0].deviceType}`);
+  console.info(`Succeeded in using on or off function, AudioCapturerChangeInfo: ${capturerChangeInfo}.`);
 };
 
 audioCapturer.on('audioCapturerChange', audioCapturerChangeCallback);
@@ -1262,9 +1258,8 @@ let bufferSize: number = 0;
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let path = context.cacheDir;
-// 确保该沙箱路径下存在该资源。
 let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
-let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 let readDataCallback = (buffer: ArrayBuffer) => {
   let options: Options = {
     offset: bufferSize,

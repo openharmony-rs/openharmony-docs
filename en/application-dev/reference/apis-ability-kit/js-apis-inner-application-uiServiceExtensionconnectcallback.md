@@ -1,5 +1,12 @@
 # UIServiceExtensionConnectCallback
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @xhz-sz-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 UIServiceExtensionConnectCallback provides callbacks for the connection to a UIServiceExtensionAbility.
 
 

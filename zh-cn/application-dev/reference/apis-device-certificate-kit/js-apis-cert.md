@@ -339,16 +339,17 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
  表示证书链在线校验证书吊销状态选项的枚举。
 
- **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
  **系统能力：** SystemCapability.Security.Cert
 
 | 名称                                  | 值   | 说明                          |
 | --------------------------------------| -------- | -----------------------------|
-| REVOCATION_CHECK_OPTION_PREFER_OCSP | 0 | 优先采用OCSP进行校验，默认采用CRL校验。 |
-| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | 支持通过访问网络获取CRL或OCSP响应进行吊销状态的校验，默认为关闭。必须声明ohos.permission.INTERNET权限。 |
-| REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | 当ACCESS_NETWORK选项打开时有效，如果优选的校验方法由于网络原因导致无法校验证书状态，则采用备选的方案进行校验。 |
-| REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | 当ACCESS_NETWORK选项打开时有效，如果在线获取CRL和OCSP响应都由于网络的原因导致无法校验证书状态，则采用本地设置的CRL和OCSP响应进行校验。 |
+| REVOCATION_CHECK_OPTION_PREFER_OCSP | 0 | 优先采用OCSP进行校验，默认采用CRL校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | 支持通过访问网络获取CRL或OCSP响应进行吊销状态的校验，默认为关闭。必须声明ohos.permission.INTERNET权限。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | 当ACCESS_NETWORK选项打开时有效，如果优选的校验方法由于网络原因导致无法校验证书状态，则采用备选的方案进行校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | 当ACCESS_NETWORK选项打开时有效，如果在线获取CRL和OCSP响应都由于网络的原因导致无法校验证书状态，则采用本地设置的CRL和OCSP响应进行校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | 当ACCESS_NETWORK选项打开时有效。如果开启了该能力，对终端实体证书OCSP或CRL校验失败，则会继续校验中间证书的吊销情况。默认关闭。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  |
+| REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | 如果开启了该能力，则会拿本地吊销列表校验终端实体证书的吊销情况。默认关闭。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  |
+
 
 ## ValidationPolicyType<sup>12+</sup>
 
@@ -411,7 +412,7 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
 | date         | string                                            | 否   | 是  |表示需要校验证书的有效期。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
 | trustAnchors | Array\<[X509TrustAnchor](#x509trustanchor11)>     | 否   | 否   |表示信任锚列表。  <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
-| trustSystemCa<sup>20+</sup>| boolean | 否   | 是  |表示需要使用系统预置CA证书校验证书链。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| trustSystemCa<sup>20+</sup>| boolean | 否   | 是  |表示是否使用系统预置CA证书校验证书链。true表示使用；false表示不使用。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | certCRLs     | Array\<[CertCRLCollection](#certcrlcollection11)> | 否   | 是  |表示需要校验证书是否在证书吊销列表中。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | revocationCheckParam<sup>12+</sup>      | [RevocationCheckParameter](#revocationcheckparameter12) | 否   | 是  |表示需要在线校验证证书吊销状态的参数对象。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | policy<sup>12+</sup>     | [ValidationPolicyType](#validationpolicytype12) | 否   | 是  |表示需要校验证书的策略类型。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -499,8 +500,8 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称         | 类型                                              |    只读   | 可选 | 说明                                   |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| saltLen      | int                                            | 否   | 是   |表示盐值长度。默认为16，最小值为8。 |
-| iterations | int                                          | 否   | 是   |表示迭代次数。默认为2048。                       |
+| saltLen      | number                                            | 否   | 是   |表示盐值长度。默认为16，最小值为8。 |
+| iterations | number                                          | 否   | 是   |表示迭代次数。默认为2048。                       |
 | encryptionAlgorithm    | [PbesEncryptionAlgorithm](#pbesencryptionalgorithm21)                 | 否   | 是   |表示PBES加密算法类型。默认为AES_256_CBC。        |
 
 ## Pkcs12MacDigestAlgorithm<sup>21+</sup>
@@ -531,21 +532,20 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | keyEncParams | [PbesParams](#pbesparams21)                       | 否   | 是   |表示私钥加密的算法参数。                       |
 | encryptCert  | boolean                                           | 否   | 是   |表示是否加密证书。默认为true。true为加密，false为不加密。 |
 | certEncParams | [PbesParams](#pbesparams21)                      | 否   | 是   |表示证书加密的算法参数。 |
-| macSaltLen   | int                                            | 否   | 是   |表示P12 MAC的盐值长度。最小值为8，默认为16。 |
-| macIterations | int                                           | 否   | 是   |表示P12 MAC的迭代次数。默认为2048。 |
+| macSaltLen   | number                                            | 否   | 是   |表示P12 MAC的盐值长度。最小值为8，默认为16。 |
+| macIterations | number                                           | 否   | 是   |表示P12 MAC的迭代次数。默认为2048。 |
 | macDigestAlgorithm | [Pkcs12MacDigestAlgorithm](#pkcs12macdigestalgorithm21) | 否   | 是   |表示P12 MAC的摘要算法。默认为SHA256。 |
 
 ## CmsContentType<sup>18+</sup>
 
 表示Cms内容类型的枚举。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Security.Cert
 
 | 名称                                  | 值   | 说明                          |
 | --------------------------------------| -------- | -----------------------------|
-| SIGNED_DATA | 0 | 签名数据。 |
+| SIGNED_DATA | 0 | 签名数据。<br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| ENVELOPED_DATA<sup>22+</sup>  | 1 | 封装数据。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 ## CmsContentDataFormat<sup>18+</sup>
 
@@ -573,6 +573,63 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | PEM  | 0   | 表示PEM格式。      |
 | DER  | 1   | 表示DER格式。      |
 
+## CmsRsaSignaturePadding<sup>22+</sup>
+
+表示RSA类型CMS签名填充方式的枚举。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称               | 值 | 说明                |
+|--------------------|----|---------------------|
+| PKCS1_PADDING      | 0  | PKCS1填充方式。     |
+| PKCS1_PSS_PADDING  | 1  | PKCS1 PSS填充方式。 |
+
+## CmsKeyAgreeRecipientDigestAlgorithm<sup>22+</sup>
+
+CMS KeyAgree类型接收者摘要算法的枚举。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称               | 值 | 说明                |
+|--------------------|----|---------------------|
+| SHA256      | 0  | SHA256 算法     |
+| SHA384      | 1  | SHA384 算法     |
+| SHA512      | 2  | SHA512 算法     |
+
+## CmsRecipientEncryptionAlgorithm<sup>22+</sup>
+
+CMS接收者对称算法的枚举。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称               | 值 | 说明                |
+|--------------------|----|---------------------|
+| AES_128_CBC      | 0  | AES_128_CBC 算法     |
+| AES_192_CBC      | 1  | AES_192_CBC 算法     |
+| AES_256_CBC      | 2  | AES_256_CBC 算法     |
+| AES_128_GCM      | 3  | AES_128_GCM 算法     |
+| AES_192_GCM      | 4  | AES_192_GCM 算法     |
+| AES_256_GCM      | 5  | AES_256_GCM 算法     |
+
+## CmsCertType<sup>22+</sup>
+
+从CMS中获取证书不同类型的枚举。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称               | 值 | 说明                |
+|--------------------|----|---------------------|
+| SIGNER_CERTS      | 0  | 签名者证书     |
+| ALL_CERTS         | 1  | 全部证书     |
+
 ## PrivateKeyInfo<sup>18+</sup>
 
 表示私钥信息。
@@ -590,16 +647,55 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 表示Cms签名者的配置选项。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Security.Cert
 
 | 名称         | 类型                                                  |  只读  |  可选  |说明                                   |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| mdName                | string             | 否  | 否  |消息摘要算法的名称，例如 "SHA384", 当前支持"SHA1"、"SHA256"、"SHA384"、"SHA512"。                 |
-| addCert               | boolean            | 否   | 是  |是否添加证书。默认为true。true为需要，false为不需要。                             |
-| addAttr               | boolean            | 否   | 是 |是否添加签名属性。默认为true。true为需要，false为不需要。           |
-| addSmimeCapAttr       | boolean            | 否   | 是  |是否将SMIME能力添加到Cms对象。默认为true。true为需要，false为不需要。            |
+| mdName                | string             | 否  | 否  |消息摘要算法的名称，例如 "SHA384", 当前支持"SHA1"、"SHA256"、"SHA384"、"SHA512"。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                |
+| rsaSignaturePadding<sup>22+</sup>                | [CmsRsaSignaturePadding](#cmsrsasignaturepadding22)             | 否  | 是  |RSA 签名填充方式。默认值为：PKCS1_PADDING。<br>当设置为 PKCS1_PSS_PADDING 时，mdName 必须为 "SHA256"、"SHA384" 或 "SHA512"。<br> **说明**：仅当签名者私钥类型为RSA时有效。  <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。             |
+| addCert               | boolean            | 否   | 是  |是否添加证书。默认为true。true为需要，false为不需要。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                            |
+| addAttr               | boolean            | 否   | 是 |是否添加签名属性。默认为true。true为需要，false为不需要。<br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。           |
+| addSmimeCapAttr       | boolean            | 否   | 是  |是否将SMIME能力添加到Cms对象。默认为true。true为需要，false为不需要。<br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。            |
+
+## CmsKeyTransRecipientInfo<sup>22+</sup>
+
+CMS封装数据的KeyTrans接收方信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称                  | 类型                          | 只读 | 可选 |说明          |
+| --------------------- | ----------------------------- | ---- | ---- |------------- |
+| cert     | [X509Cert](#x509cert)              | 否   | 否   |RSA证书。   |
+
+## CmsKeyAgreeRecipientInfo<sup>22+</sup>
+
+CMS封装数据的KeyAgree接收方信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称                  | 类型                          | 只读 | 可选 |说明             |
+| --------------------- | ----------------------------- | ---- | ---- |--------------- |
+| cert     | [X509Cert](#x509cert)               | 否   | 否   |EC证书。   |
+| digestAlgorithm             | [CmsKeyAgreeRecipientDigestAlgorithm](#cmskeyagreerecipientdigestalgorithm22)                          | 否   |是   | KDF摘要算法，默认为SHA256。         |
+
+## CmsRecipientInfo<sup>22+</sup>
+
+CMS封装数据的接收者信息。
+
+**说明**：至少需要设置一个接收者。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称                  | 类型                          | 只读 | 可选 |说明                                                   |
+| --------------------- | ----------------------------- | ---- | ---- |------------------------------------------------------ |
+| keyTransInfo     | [CmsKeyTransRecipientInfo](#cmskeytransrecipientinfo22)               | 否   | 是   |keyTrans接收者信息。   |
+| keyAgreeInfo             | [CmsKeyAgreeRecipientInfo](#cmskeyagreerecipientinfo22)                          | 否   |是   | keyAgree接收者信息。         |
 
 ## CmsGeneratorOptions<sup>18+</sup>
 
@@ -614,6 +710,36 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | contentDataFormat     | [CmsContentDataFormat](#cmscontentdataformat18)               | 否   | 是   |内容数据的格式。默认为CmsContentDataFormat.BINARY。   |
 | outFormat             | [CmsFormat](#cmsformat18)                          | 否   |是   | Cms最终数据的输出格式。默认为DER。         |
 | isDetached     | boolean                            | 否   |是   | Cms最终数据是否不包含原始数据。默认为false。true为包含，false为不包含。         |
+
+## CmsVerificationConfig<sup>22+</sup>
+
+CMS验证的配置。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称                  | 类型                          | 只读 | 可选 |说明                                                   |
+| --------------------- | ----------------------------- | ---- | ---- |------------------------------------------------------ |
+| trustCerts        |Array\<[X509Cert](#x509cert)>                        | 否   | 否   |信任证书。   |
+| signerCerts       |Array\<[X509Cert](#x509cert)>                        | 否   | 是   |签名证书。默认为空。         |
+| contentData       |Uint8Array                                           | 否   | 是   |内容数据，如果是detached模式，则需要指定明文数据。attached模式可以不传。   |
+| contentDataFormat | [CmsContentDataFormat](#cmscontentdataformat18)     | 否   | 是   |内容数据的格式。默认为CmsContentDataFormat.BINARY。   |
+
+## CmsEnvelopedDecryptionConfig<sup>22+</sup>
+
+CMS解封装的配置。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称                     | 类型                          | 只读 | 可选 |说明                                                   |
+| -----------------------  | ----------------------------- | ---- | ---- |------------------------------------------------------ |
+| keyInfo                  |[PrivateKeyInfo](#privatekeyinfo18)             | 否   | 是   |私钥参数。默认为空。   |
+| cert                     |[X509Cert](#x509cert)                           | 否   | 是   |公钥证书。默认为空。  |
+| encryptedContentData     |Uint8Array                                       | 否   | 是   |加密的内容数据，如果CMS不包含可以指定数据。默认为空。   |
+| contentDataFormat        |[CmsContentDataFormat](#cmscontentdataformat18)  | 否   | 是   |内容数据的格式。默认为CmsContentDataFormat.BINARY。   |
 
 ## cert.createX509Cert
 
@@ -678,7 +804,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
   }
 });
 ```
@@ -749,7 +875,7 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509Cert(encodingBlob).then(x509Cert => {
-  console.log('createX509Cert success');
+  console.info('createX509Cert success');
 }).catch((error: BusinessError) => {
   console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
 });
@@ -821,7 +947,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
 
     // 业务需通过上级X509Cert证书对象（或当前证书对象为自签名的证书）的getPublicKey获取PubKey。
     try {
@@ -832,7 +958,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
         if (err) {
           console.error('verify failed, errCode: ' + err.code + ', errMsg: ' + err.message);
         } else {
-          console.log('verify success');
+          console.info('verify success');
         }
       });
     } catch (error) {
@@ -907,13 +1033,13 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509Cert(encodingBlob).then(x509Cert => {
-  console.log('createX509Cert success');
+  console.info('createX509Cert success');
 
   try {
     // 业务需通过上级X509Cert证书对象（或当前证书对象为自签名的证书）的getPublicKey获取PubKey。
     let pubKey = x509Cert.getPublicKey();
     x509Cert.verify(pubKey).then(result => {
-      console.log('verify success');
+      console.info('verify success');
     }).catch((error: BusinessError) => {
       console.error('verify failed, errCode: ' + error.code + ', errMsg: ' + error.message);
     });
@@ -987,12 +1113,12 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     x509Cert.getEncoded((error, data) => {
       if (error) {
         console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
       } else {
-        console.log('getEncoded success');
+        console.info('getEncoded success');
       }
     });
   }
@@ -1059,9 +1185,9 @@ let encodingBlob: cert.EncodingBlob = {
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 cert.createX509Cert(encodingBlob).then(x509Cert => {
-  console.log('createX509Cert success');
+  console.info('createX509Cert success');
   x509Cert.getEncoded().then(result => {
-    console.log('getEncoded success');
+    console.info('getEncoded success');
   }).catch((error: BusinessError) => {
     console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   });
@@ -1131,7 +1257,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     try {
       let pubKey = x509Cert.getPublicKey();
     } catch (error) {
@@ -1206,7 +1332,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
 
     let date = '231001000001Z';
     // Verify the certificate validity period.
@@ -1270,7 +1396,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     let version = x509Cert.getVersion();
   }
 });
@@ -1329,7 +1455,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     let serialNumber = x509Cert.getSerialNumber();
   }
 });
@@ -1395,7 +1521,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     try {
       let serialNumber = x509Cert.getCertSerialNumber();
     } catch (err) {
@@ -1472,7 +1598,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     try {
       let issuerName = x509Cert.getIssuerName();
     } catch (err) {
@@ -1564,7 +1690,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     try {
       let issuerName = x509Cert.getIssuerName(cert.EncodingType.ENCODING_UTF8);
       console.info('issuerName output is ' + issuerName);
@@ -1649,7 +1775,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     try {
       let subjectName = x509Cert.getSubjectName();
     } catch (err) {
@@ -1728,7 +1854,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     try {
       let notBefore = x509Cert.getNotBeforeTime();
     } catch (err) {
@@ -1802,7 +1928,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     try {
       let notAfter = x509Cert.getNotAfterTime();
     } catch (err) {
@@ -1876,7 +2002,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     try {
       let signature = x509Cert.getSignature();
     } catch (err) {
@@ -1950,7 +2076,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     try {
       let sigAlgName = x509Cert.getSignatureAlgName();
     } catch (err) {
@@ -2023,7 +2149,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     try {
       let sigAlgOid = x509Cert.getSignatureAlgOid();
     } catch (err) {
@@ -2078,13 +2204,28 @@ function stringToUint8Array(str: string): Uint8Array {
 
 // 证书二进制数据，需业务自行赋值。
 let certData = '-----BEGIN CERTIFICATE-----\n' +
-  'MIIBHTCBwwICA+gwCgYIKoZIzj0EAwIwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290\n' +
-  'IENBMB4XDTIzMDkwNTAyNDgyMloXDTI2MDUzMTAyNDgyMlowGjEYMBYGA1UEAwwP\n' +
-  'RXhhbXBsZSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHjG74yMI\n' +
-  'ueO7z3T+dyuEIrhxTg2fqgeNB3SGfsIXlsiUfLTatUsU0i/sePnrKglj2H8Abbx9\n' +
-  'PK0tsW/VgqwDIDAKBggqhkjOPQQDAgNJADBGAiEApVZno/Z7WyDc/muRN1y57uaY\n' +
-  'Mjrgnvp/AMdE8qmFiDwCIQCrIYdHVO1awaPgcdALZY+uLQi6mEs/oMJLUcmaag3E\n' +
-  'Qw==\n' +
+  'MIIEETCCAs6gAwIBAgIUKRqK4hH6D1p3NSuChKOwHnIVx74wOAYJKoZIhvcNAQEK\n' +
+  'MCugDTALBglghkgBZQMEAgGhGjAYBgkqhkiG9w0BAQgwCwYJYIZIAWUDBAIBMG0x\n' +
+  'CzAJBgNVBAYTAkVOMQ0wCwYDVQQIDAR0ZXN0MQ0wCwYDVQQHDAR4aWFuMQ0wCwYD\n' +
+  'VQQKDAR0ZXN0MQ0wCwYDVQQLDAR0ZXN0MQ0wCwYDVQQDDAR0ZXN0MRMwEQYJKoZI\n' +
+  'hvcNAQkBFgR0ZXN0MB4XDTI1MTAzMDAxNDAzMVoXDTI2MTAzMDAxNDAzMVowbTEL\n' +
+  'MAkGA1UEBhMCRU4xDTALBgNVBAgMBHRlc3QxDTALBgNVBAcMBHhpYW4xDTALBgNV\n' +
+  'BAoMBHRlc3QxDTALBgNVBAsMBHRlc3QxDTALBgNVBAMMBHRlc3QxEzARBgkqhkiG\n' +
+  '9w0BCQEWBHRlc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDaHZMj\n' +
+  'UCQm53hgVYQq+kbmgKOH4e+vrsoAeOaX8KEgCbJfwLVpF7lj3Ld2c52X31JxziJx\n' +
+  'D6rmGIk0Tp13/rNA/AZrmhbO/+PKKQiWQJpUbNI4A4scxELn9emLk8B3x76k8KGh\n' +
+  'E7Re0XgKxfbZXU4AOZ0+9sXAZrSOPc8hYEfpwkGl09EojRuqQ4uSzjN3ikasfkZx\n' +
+  'xM4twRPXiumC34+ep8Z1uxZy6MUClT2plNM8fAdfUwRY0lnKh2RjAJcK1lQBlPlW\n' +
+  'Qc7S0/ifFXxgh+sBt+4dq+pphm5R/i6MIMWZ0JUg6tUlh1iY3nLVMVz0Z+LT7JUS\n' +
+  '5ILjwwybwhtatFh5AgMBAAGjUzBRMB0GA1UdDgQWBBQM3AOhyH6sHP7CJAB/Z5Xy\n' +
+  '4VQxJzAfBgNVHSMEGDAWgBQM3AOhyH6sHP7CJAB/Z5Xy4VQxJzAPBgNVHRMBAf8E\n' +
+  'BTADAQH/MDgGCSqGSIb3DQEBCjAroA0wCwYJYIZIAWUDBAIBoRowGAYJKoZIhvcN\n' +
+  'AQEIMAsGCWCGSAFlAwQCAQOCAQEAXhXExMyEnkBs9c6syxL4H98b9VtatezhKsMY\n' +
+  'c4vTxw5D5IoN+SM+YS6wNKN1fh0fO8nZm7kHmB/KyxtdKja5cwGfhqwsY2NHOkK7\n' +
+  'X5jWkbS0hbGPjj0UZkYRfC63d76lEPqz/bvf5Lgsv+W/J3ZFFBCV4tiBVr1ubpEy\n' +
+  '/n+C1r2NMxOKfGOEdE8tPa5LiR85/MYFaaAvzHVX4irXsQmzXPJMaMWt2DJAAze3\n' +
+  'ro0L1Hcd3VKyh5fYowA6nCDpNkKtQnVG/102SOM8HBH7wMSMHpsDzZbTuWRNJ35J\n' +
+  'ach83y13Yx4Td+DVsZgNjl/7yeA+XdusunygAnqHqx2brCTaNw==\n' +
   '-----END CERTIFICATE-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
@@ -2097,7 +2238,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     try {
       let sigAlgParams = x509Cert.getSignatureAlgParams();
     } catch (err) {
@@ -2150,14 +2291,24 @@ function stringToUint8Array(str: string): Uint8Array {
 
 // 证书二进制数据，需业务自行赋值。
 let certData = '-----BEGIN CERTIFICATE-----\n' +
-  'MIIBHTCBwwICA+gwCgYIKoZIzj0EAwIwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290\n' +
-  'IENBMB4XDTIzMDkwNTAyNDgyMloXDTI2MDUzMTAyNDgyMlowGjEYMBYGA1UEAwwP\n' +
-  'RXhhbXBsZSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHjG74yMI\n' +
-  'ueO7z3T+dyuEIrhxTg2fqgeNB3SGfsIXlsiUfLTatUsU0i/sePnrKglj2H8Abbx9\n' +
-  'PK0tsW/VgqwDIDAKBggqhkjOPQQDAgNJADBGAiEApVZno/Z7WyDc/muRN1y57uaY\n' +
-  'Mjrgnvp/AMdE8qmFiDwCIQCrIYdHVO1awaPgcdALZY+uLQi6mEs/oMJLUcmaag3E\n' +
-  'Qw==\n' +
-  '-----END CERTIFICATE-----\n';
+    'MIIDIjCCAgqgAwIBAgIUUb7sok900ODOxkyE1FzstJbKCSQwDQYJKoZIhvcNAQEL\n' +
+    'BQAwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMB4XDTI1MTAzMDAxNTQ0NFoX\n' +
+    'DTI2MTAzMDAxNTQ0NFowGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMIIBIjAN\n' +
+    'BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv3+V/0Nl4rytCHNcb7PMpRbsxvOX\n' +
+    '8zxwfb+5McmJ8ZZj59My3oqF7YgFM1VgZjjwaz8HljXvoaxrUJWQEu6AYjIa5ywN\n' +
+    'duySyyNNgfbqiwUOVdUICh3WsEjvvxK+8f55L3xU0LybZxyEf0+31pc15SzCvTvv\n' +
+    'E0OC8n3bYr2Nn0mvwtMHIl0Dr6AZbP10B/KKk68oX9UYOlsp4y0GTEXVDt/9bScx\n' +
+    'PV2WvaKPWcrQoJVz1ys2RtyUgcwPiWugQdx54xHG6zIAMYptKxDaHgsOEtUR4J1p\n' +
+    'xP1Ih7fY2wFZkeyRZG05ivYVqSHzHQV9Z42i+KjzfJUsMQt9TosuSsDi1wIDAQAB\n' +
+    'o2AwXjAdBgNVHQ4EFgQUKF6T271JCNpwjwyCSzTSN66T95EwHwYDVR0jBBgwFoAU\n' +
+    'KF6T271JCNpwjwyCSzTSN66T95EwDwYDVR0TAQH/BAUwAwEB/zALBgNVHQ8EBAMC\n' +
+    'BaAwDQYJKoZIhvcNAQELBQADggEBACa9A6d/cdFb7h8EMmjs0l+3aIAI10EskgRT\n' +
+    '+WHZ8zi+Q94/WEsOJW8CXIquJ2SxjXvl/A4UgrnfQyN+4kgEg7hLyuugg1QTk0so\n' +
+    'Kj6tlG82Oxr/gjzxf3MMFhkzLpi2nUYu66HnskzAfI1XLuLz995qY0hCj9r2gUiX\n' +
+    '6GR0H4p9pO5h9Fx7pbyosr2sn/JZbo9j6fWSuuvqoedjEuIb8aRmB6kbUkjhh/Iz\n' +
+    '5htY+aYZz0pRSm2F93WLy6HBhPNdAmWOCpNXrynsRXDgCPKqeIasba8MBjXTsqvI\n' +
+    'mgbc4MCLhLciWi34u9NpkAGbkwYVLE6URw/o373mD9fqe214Jdw=\n' +
+    '-----END CERTIFICATE-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
@@ -2169,7 +2320,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     try {
       let keyUsage = x509Cert.getKeyUsage();
     } catch (err) {
@@ -2223,14 +2374,25 @@ function stringToUint8Array(str: string): Uint8Array {
 
 // 证书二进制数据，需业务自行赋值。
 let certData = '-----BEGIN CERTIFICATE-----\n' +
-  'MIIBHTCBwwICA+gwCgYIKoZIzj0EAwIwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290\n' +
-  'IENBMB4XDTIzMDkwNTAyNDgyMloXDTI2MDUzMTAyNDgyMlowGjEYMBYGA1UEAwwP\n' +
-  'RXhhbXBsZSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHjG74yMI\n' +
-  'ueO7z3T+dyuEIrhxTg2fqgeNB3SGfsIXlsiUfLTatUsU0i/sePnrKglj2H8Abbx9\n' +
-  'PK0tsW/VgqwDIDAKBggqhkjOPQQDAgNJADBGAiEApVZno/Z7WyDc/muRN1y57uaY\n' +
-  'Mjrgnvp/AMdE8qmFiDwCIQCrIYdHVO1awaPgcdALZY+uLQi6mEs/oMJLUcmaag3E\n' +
-  'Qw==\n' +
-  '-----END CERTIFICATE-----\n';
+    'MIIDNDCCAhygAwIBAgIUJBLt/gmdgnDAq21wWU4R7rzgE5cwDQYJKoZIhvcNAQEL\n' +
+    'BQAwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMB4XDTI1MTAzMDAyMzMxOVoX\n' +
+    'DTI2MTAzMDAyMzMxOVowGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMIIBIjAN\n' +
+    'BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0p3wb2jK23w+mihsah0w4wRaJ1TC\n' +
+    'YC20ODjSHyyCL75XfR6n87DdXvb15a71hkD/1cdgDRxIO91hNu04Ru4MFL0CqgTM\n' +
+    'ERSwZZGVo9DzJSG5q22FgbIFPi+XpTPtKk7mOCggPsfIrV1G0OH9zTREWoZ2/fJD\n' +
+    'Pj0MiaPlYtS4Jolu0qDnRZjgP8yVdaV4Upvni1PNX60rZfhf5YC4yvkMmpnyoUOZ\n' +
+    'IS3I/QucXZaiwXAO4ziHjYXtlp2aeUnrWSoRs3sFrsIVGB9x0ZYjwCwiih9TqaBK\n' +
+    'SY1CKSQE5xjVP1uY5JwJ6A5N648J3JjGosYEsXT+WieJ4SGHafGa2DGd2wIDAQAB\n' +
+    'o3IwcDAdBgNVHQ4EFgQUDyuOK1aix/tBR3QViD7TYdrDUQEwHwYDVR0jBBgwFoAU\n' +
+    'DyuOK1aix/tBR3QViD7TYdrDUQEwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHSUEFjAU\n' +
+    'BggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAC0A7HqO/OL0\n' +
+    'Ve8HTUqM31hFxXYiqDum/gPiegXDA+9ixEP2Fjz8vmhe75FX5XOvCk0+FWRayoVw\n' +
+    'lc7TD7SfV/oHRZVY58H8+Qxe5Rf4xQfOBNpG81uz73gfq3zIbzfJXxWlUpnBs6Tf\n' +
+    'P44NZboLpgaA0eMI7NwZJyomZ98qOK3PmxBL9qATmDep2GM6VlOuapYh2fo8wFhY\n' +
+    'DSp2EmcbIN9F+RPNrP+BvM/x2ZBtBoSFLh8jQ+GnP6g26DL57JBuBemt00BuYLOg\n' +
+    'fF00YBUgwK9tIFfI5IAfrwEF8Y49XIzpXrHuMZZXbuESzQMBsAZAYqIgi2p5dAon\n' +
+    'gdg3C4I6QRY=\n' +
+    '-----END CERTIFICATE-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
@@ -2242,7 +2404,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     try {
       let extKeyUsage = x509Cert.getExtKeyUsage();
     } catch (err) {
@@ -2304,7 +2466,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     let basicConstraints = x509Cert.getBasicConstraints();
   }
 });
@@ -2357,14 +2519,25 @@ function stringToUint8Array(str: string): Uint8Array {
 
 // 证书二进制数据，需业务自行赋值。
 let certData = '-----BEGIN CERTIFICATE-----\n' +
-  'MIIBHTCBwwICA+gwCgYIKoZIzj0EAwIwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290\n' +
-  'IENBMB4XDTIzMDkwNTAyNDgyMloXDTI2MDUzMTAyNDgyMlowGjEYMBYGA1UEAwwP\n' +
-  'RXhhbXBsZSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHjG74yMI\n' +
-  'ueO7z3T+dyuEIrhxTg2fqgeNB3SGfsIXlsiUfLTatUsU0i/sePnrKglj2H8Abbx9\n' +
-  'PK0tsW/VgqwDIDAKBggqhkjOPQQDAgNJADBGAiEApVZno/Z7WyDc/muRN1y57uaY\n' +
-  'Mjrgnvp/AMdE8qmFiDwCIQCrIYdHVO1awaPgcdALZY+uLQi6mEs/oMJLUcmaag3E\n' +
-  'Qw==\n' +
-  '-----END CERTIFICATE-----\n';
+    'MIIDRjCCAi6gAwIBAgIUU3RfsnV6Ur2a514YvAygbMvcjaowDQYJKoZIhvcNAQEL\n' +
+    'BQAwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMB4XDTI1MTAzMDAyNDIyM1oX\n' +
+    'DTI2MTAzMDAyNDIyM1owGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMIIBIjAN\n' +
+    'BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5yQDXUKnsNTPkqwVzCjtaE+Q8Tla\n' +
+    'Qod6tb0fo044DLrYFvly6W10sqfvqZpuEfUuyzh/cs7279SoP8FYjnrykcE3yxqu\n' +
+    '3N6vNn6iXm3CQnjlqBVB7ChTcoXv8GEwHNXcjNTaX3FZQW62WAYLLER4I9/ZwE/N\n' +
+    'iqf+rJu5O2eRzZ4AFappCLquFSp6Yw5yyhenhNFd026dBf58ggpUs0H9DThxS3N3\n' +
+    'GFUs6JDiOJpxjbv+p7ns9MsryqewB8i5TCJjMJkcCg+2YyKFKYDv3mC4eoV71MU0\n' +
+    'DVoy7sBhs1naTV7joM+wGSOLcW3ee6K9qCp8zXmqN1tRJOYxm/JkVvi5oQIDAQAB\n' +
+    'o4GDMIGAMB0GA1UdDgQWBBTXIqHf66clGd8UhAr2SJSaukwphDAfBgNVHSMEGDAW\n' +
+    'gBTXIqHf66clGd8UhAr2SJSaukwphDAPBgNVHRMBAf8EBTADAQH/MC0GA1UdEQQm\n' +
+    'MCSCC2V4YW1wbGUuY29tgg93d3cuZXhhbXBsZS5jb22HBH8AAAEwDQYJKoZIhvcN\n' +
+    'AQELBQADggEBABI/bnHX9xqw/3RfvEqXp/ocmI0Dm7XwQZ6MS9XlTgYVp9rPYFbz\n' +
+    'eS79q47nV1SMKc6LDeLoDcHT04aYGsKrA0O/9VVFhb50S1JBoa3HrEe0Q5WD4k48\n' +
+    'GUJE2CaaO+MG3P9ZF4P3qxvPZ1PLoHr2B2YkaIMapjlNDUyTGLyWwPEuJSraBiXj\n' +
+    'hnl1C9D5Y7ss8zuh4zzJl8MtU36kk19BbBglZVE0H7KDGGhqqvEbIFBNZmqy2vb3\n' +
+    '7xSbXJL0/SQV+nr2Qvv8DU4XZJliJKVJHr3GkrqXRSFVVZ0ADNpEdLxFT0IF1X/T\n' +
+    'JiAZrIdZPozWsjUVtQ4KVMJj+D7canRVuCg=\n' +
+    '-----END CERTIFICATE-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
@@ -2376,7 +2549,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     try {
       let subjectAltNames = x509Cert.getSubjectAltNames();
     } catch (err) {
@@ -2434,14 +2607,23 @@ function stringToUint8Array(str: string): Uint8Array {
 
 // 证书二进制数据，需业务自行赋值。
 let certData = '-----BEGIN CERTIFICATE-----\n' +
-  'MIIBHTCBwwICA+gwCgYIKoZIzj0EAwIwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290\n' +
-  'IENBMB4XDTIzMDkwNTAyNDgyMloXDTI2MDUzMTAyNDgyMlowGjEYMBYGA1UEAwwP\n' +
-  'RXhhbXBsZSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHjG74yMI\n' +
-  'ueO7z3T+dyuEIrhxTg2fqgeNB3SGfsIXlsiUfLTatUsU0i/sePnrKglj2H8Abbx9\n' +
-  'PK0tsW/VgqwDIDAKBggqhkjOPQQDAgNJADBGAiEApVZno/Z7WyDc/muRN1y57uaY\n' +
-  'Mjrgnvp/AMdE8qmFiDwCIQCrIYdHVO1awaPgcdALZY+uLQi6mEs/oMJLUcmaag3E\n' +
-  'Qw==\n' +
-  '-----END CERTIFICATE-----\n';
+    'MIIC9zCCAd+gAwIBAgIUS3GIfzu10vWzw2RSLbxTxxMfz/wwDQYJKoZIhvcNAQEL\n' +
+    'BQAwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMB4XDTI1MTAzMDAyNDkzNFoX\n' +
+    'DTI2MTAzMDAyNDkzNFowGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMIIBIjAN\n' +
+    'BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvKGnKn9NZoFOzdffrCIE01dTCiIo\n' +
+    'XPweKanLs49ZaxpEJ48OCP4vs8qmedsW1pUMpe7kQQyRINZ5tvXyFbiBS1u4clN/\n' +
+    'nU+E8rhNMa+2LA2YOUH/fC1ikussXq+acqjEqRbM900QdkmPzJX3NcloGYwdVfAe\n' +
+    '3ENEXHaXvj1qrf6pF5mbdelnlp1TrjpnXT4sSQaKbFjZrNl+zTT4xbIxTHR0cB8S\n' +
+    'oOVc3jI57rtP6x0FcLWzE/LX1E8eUkCIHEapPjqsGzLNtJTJI8z9QLinFIRmjdSI\n' +
+    '0xS8Qj/QitrOswzjHie2fgaz1LZx76CZGExC5f6f3Em5hJx6rjYysmEZBQIDAQAB\n' +
+    'ozUwMzAxBgNVHRIEKjAogRJpc3N1ZXJAZXhhbXBsZS5jb22CEmlzc3Vlci5leGFt\n' +
+    'cGxlLmNvbTANBgkqhkiG9w0BAQsFAAOCAQEAI5UjPssP3VzV2m47ke2nytAsTt9Y\n' +
+    'DNYKhqM4qZVVaIj5BRmca1jJXnWAgV4uUbad92E7R8askfSuJkBVtLJD5kSMTQrK\n' +
+    '5vYPbZ/WSRKthSbMotcynz/vWjBh4XY7bmiZC71ZNBCq9ybWRNzv61D9N1CJOlr6\n' +
+    'W+1zCYq9dFDYf1nJ60qvkYHmzX3o0a1LHdiTHHvUZIIFXkJ50+NDIbruh8j8Lijk\n' +
+    'Eed63QMcrSfLuIIAgoPoWo8WK2+AmA3k3EoTRvci5Ck+HDlLULBhyCrp+QUvn6OR\n' +
+    'B7ZBoW+U/OIpNTI4rvsn3rcdkZAVcwRI0vV04IDB52jRzUArSi+08ggCiQ==\n' +
+    '-----END CERTIFICATE-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
@@ -2453,7 +2635,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     try {
       let issuerAltNames = x509Cert.getIssuerAltNames();
     } catch (err) {
@@ -2533,7 +2715,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
     console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     try {
       let tbs = x509Cert.getItem(cert.CertItemType.CERT_ITEM_TYPE_TBS);
       let pubKey = x509Cert.getItem(cert.CertItemType.CERT_ITEM_TYPE_PUBLIC_KEY);
@@ -2640,7 +2822,7 @@ async function matchX509Cert() {
       publicKeyAlgID: '1.2.840.113549.1.1.1'
     };
     const result = x509Cert.match(param);
-    console.log('call x509Cert match success');
+    console.info('call x509Cert match success');
   } catch (err) {
     console.error('call x509Cert match failed');
   }
@@ -2713,7 +2895,7 @@ async function certGetCRLDistributionPoint() {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     let point = x509Cert.getCRLDistributionPoint();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
@@ -2798,7 +2980,7 @@ async function certGetIssuerX500DistinguishedName() {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     let name = x509Cert.getIssuerX500DistinguishedName();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
@@ -2883,7 +3065,7 @@ async function certGetSubjectX500DistinguishedName() {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     let name = x509Cert.getSubjectX500DistinguishedName();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
@@ -2968,8 +3150,8 @@ async function certToString() {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
-    console.log('createX509Cert success');
-    console.info('certToString success: ' + JSON.stringify(x509Cert.toString()));
+    console.info('createX509Cert success');
+    console.info('certToString success: ' + x509Cert.toString());
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
@@ -3058,8 +3240,8 @@ async function certToString() {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
-    console.log('createX509Cert success');
-    console.info('certToString success: ' + JSON.stringify(x509Cert.toString(cert.EncodingType.ENCODING_UTF8)));
+    console.info('createX509Cert success');
+    console.info('certToString success: ' + x509Cert.toString(cert.EncodingType.ENCODING_UTF8));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
@@ -3143,8 +3325,8 @@ async function certHashCode() {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
-    console.log('createX509Cert success');
-    console.info('certHashCode success: ' + JSON.stringify(x509Cert.hashCode()));
+    console.info('createX509Cert success');
+    console.info('certHashCode success: ' + x509Cert.hashCode());
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
@@ -3228,7 +3410,7 @@ async function certGetExtensionsObject() {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
     let object = x509Cert.getExtensionsObject();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
@@ -3293,7 +3475,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
   if (error) {
     console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createCertExtension success');
+    console.info('createCertExtension success');
   }
 });
 ```
@@ -3357,7 +3539,7 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createCertExtension(encodingBlob).then(certExt => {
-  console.log('createCertExtension success');
+  console.info('createCertExtension success');
 }).catch((error: BusinessError) => {
   console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
 });
@@ -3422,7 +3604,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
   if (error) {
     console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createCertExtension success');
+    console.info('createCertExtension success');
     try {
       let extEncodedBlob = certExt.getEncoded();
     } catch (err) {
@@ -3495,7 +3677,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
   if (error) {
     console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createCertExtension success');
+    console.info('createCertExtension success');
     try {
       let oidList = certExt.getOidList(cert.ExtensionOidType.EXTENSION_OID_TYPE_ALL);
     } catch (err) {
@@ -3569,7 +3751,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
   if (error) {
     console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createCertExtension success');
+    console.info('createCertExtension success');
     let oid = new Uint8Array([0x32, 0x2e, 0x35, 0x2e, 0x32, 0x39, 0x2e, 0x31, 0x35]);
     let oidBlob: cert.DataBlob = {
       data: oid
@@ -3639,7 +3821,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
   if (error) {
     console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createCertExtension success');
+    console.info('createCertExtension success');
     try {
       let res = certExt.checkCA();
     } catch (err) {
@@ -3699,9 +3881,9 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createCertExtension(encodingBlob).then((extensionObj) => {
-  console.log('createCertExtension success!');
+  console.info('createCertExtension success!');
   const result = extensionObj.hasUnsupportedCriticalExtension()
-  console.log('has unsupported critical extension result is:' + result);
+  console.info('has unsupported critical extension result is:' + result);
 }).catch((err: BusinessError) => {
   console.error('createCertExtension failed');
 });
@@ -3770,7 +3952,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
     console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Crl success');
+    console.info('createX509Crl success');
   }
 });
 ```
@@ -3841,7 +4023,7 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509Crl(encodingBlob).then(x509Crl => {
-  console.log('createX509Crl success');
+  console.info('createX509Crl success');
 }).catch((error: BusinessError) => {
   console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
 });
@@ -3908,7 +4090,7 @@ cert.createX509CRL(encodingBlob, (error, X509CRL) => {
   if (error) {
     console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
   }
 });
 ```
@@ -3977,7 +4159,7 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509CRL(encodingBlob).then(X509CRL => {
-  console.log('createX509CRL success');
+  console.info('createX509CRL success');
 }).catch((error: BusinessError) => {
   console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
 });
@@ -4074,7 +4256,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
     console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Crl success');
+    console.info('createX509Crl success');
     // Create an X509Cert instance.
     cert.createX509Cert(certEncodingBlob, (error, x509Cert) => {
       if (error) {
@@ -4144,7 +4326,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
     console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Crl success');
+    console.info('createX509Crl success');
     let type = x509Crl.getType();
   }
 });
@@ -4213,12 +4395,12 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
     console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Crl success');
+    console.info('createX509Crl success');
     x509Crl.getEncoded((error, data) => {
       if (error) {
         console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
       } else {
-        console.log('getEncoded success');
+        console.info('getEncoded success');
       }
     });
   }
@@ -4286,9 +4468,9 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509Crl(encodingBlob).then(x509Crl => {
-  console.log('createX509Crl success');
+  console.info('createX509Crl success');
   x509Crl.getEncoded().then(result => {
-    console.log('getEncoded success');
+    console.info('getEncoded success');
   }).catch((error: BusinessError) => {
     console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   });
@@ -4418,11 +4600,11 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
     console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Crl success');
+    console.info('createX509Crl success');
     try {
       // Generate the public key by AsyKeyGenerator.
       let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
-      console.log('createAsyKeyGenerator success');
+      console.info('createAsyKeyGenerator success');
       let priEncodingBlob: cryptoFramework.DataBlob = {
         data: priKeyData,
       };
@@ -4433,12 +4615,12 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
         if (e) {
           console.error('convert key failed, message: ' + e.message + 'code: ' + e.code);
         } else {
-          console.log('convert key success');
+          console.info('convert key success');
           x509Crl.verify(keyPair.pubKey, (err, data) => {
             if (err) {
               console.error('verify failed, errCode: ' + err.code + ', errMsg: ' + err.message);
             } else  {
-              console.log('verify success');
+              console.info('verify success');
             }
           });
         }
@@ -4574,12 +4756,12 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509Crl(encodingBlob).then(x509Crl => {
-  console.log('createX509Crl success');
+  console.info('createX509Crl success');
 
   try {
     // 生成公钥对象。
     let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
-    console.log('createAsyKeyGenerator success');
+    console.info('createAsyKeyGenerator success');
     let priEncodingBlob: cryptoFramework.DataBlob = {
       data: priKeyData,
     };
@@ -4587,9 +4769,9 @@ cert.createX509Crl(encodingBlob).then(x509Crl => {
       data: pubKeyData,
     };
     keyGenerator.convertKey(pubEncodingBlob, priEncodingBlob).then((keyPair) => {
-      console.log('convert key success');
+      console.info('convert key success');
       x509Crl.verify(keyPair.pubKey).then(result => {
-        console.log('verify success');
+        console.info('verify success');
       }).catch((error: BusinessError) => {
         console.error('verify failed, errCode: ' + error.code + ', errMsg: ' + error.message);
       });
@@ -4657,7 +4839,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
     console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Crl success');
+    console.info('createX509Crl success');
     let version = x509Crl.getVersion();
   }
 });
@@ -4726,7 +4908,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
     console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Crl success');
+    console.info('createX509Crl success');
     try {
       let issuerName = x509Crl.getIssuerName();
     } catch (err) {
@@ -4800,7 +4982,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
     console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Crl success');
+    console.info('createX509Crl success');
     try {
       let lastUpdate = x509Crl.getLastUpdate();
     } catch (err) {
@@ -4874,7 +5056,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
     console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Crl success');
+    console.info('createX509Crl success');
     try {
       let nextUpdate = x509Crl.getNextUpdate();
     } catch (err) {
@@ -4954,7 +5136,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
     console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Crl success');
+    console.info('createX509Crl success');
     let serialNumber = 1000;
     try {
       let entry = x509Crl.getRevokedCert(serialNumber);
@@ -5066,12 +5248,12 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
     console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Crl success');
+    console.info('createX509Crl success');
     // 创建X509证书对象。
     cert.createX509Cert(certEncodingBlob).then((x509Cert) => {
       try {
         let entry = x509Crl.getRevokedCertWithCert(x509Cert);
-        console.log('getRevokedCertWithCert success');
+        console.info('getRevokedCertWithCert success');
       } catch (error) {
         let e: BusinessError = error as BusinessError;
         console.error('getRevokedCertWithCert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
@@ -5145,12 +5327,12 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
     console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Crl success');
+    console.info('createX509Crl success');
     x509Crl.getRevokedCerts((error, array) => {
       if (error) {
         console.error('getRevokedCerts failed, errCode: ' + error.code + ', errMsg: ' + error.message);
       } else {
-        console.log('getRevokedCerts success');
+        console.info('getRevokedCerts success');
       }
     });
   }
@@ -5217,9 +5399,9 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509Crl(encodingBlob).then(x509Crl => {
-  console.log('createX509Crl success');
+  console.info('createX509Crl success');
   x509Crl.getRevokedCerts().then(array => {
-    console.log('getRevokedCerts success');
+    console.info('getRevokedCerts success');
   }).catch((error: BusinessError) => {
     console.error('getRevokedCerts failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   });
@@ -5291,7 +5473,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
     console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Crl success');
+    console.info('createX509Crl success');
     try {
       let tbsInfo = x509Crl.getTbsInfo();
     } catch (error) {
@@ -5365,7 +5547,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
     console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Crl success');
+    console.info('createX509Crl success');
     try {
       let signature = x509Crl.getSignature();
     } catch (err) {
@@ -5439,7 +5621,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
     console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Crl success');
+    console.info('createX509Crl success');
     try {
       let sigAlgName = x509Crl.getSignatureAlgName();
     } catch (err) {
@@ -5513,7 +5695,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
     console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Crl success');
+    console.info('createX509Crl success');
     try {
       let sigAlgOid = x509Crl.getSignatureAlgOid();
     } catch (err) {
@@ -5588,7 +5770,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
     console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Crl success');
+    console.info('createX509Crl success');
     try {
       let sigAlgParams = x509Crl.getSignatureAlgParams();
     } catch (err) {
@@ -5683,7 +5865,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
     console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     // Create an X509Cert instance.
     cert.createX509Cert(certEncodingBlob, (error, x509Cert) => {
       if (error) {
@@ -5751,7 +5933,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
     console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     let type = x509CRL.getType();
   }
 });
@@ -5818,12 +6000,12 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
     console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     x509CRL.getEncoded((error, data) => {
       if (error) {
         console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
       } else {
-        console.log('getEncoded success');
+        console.info('getEncoded success');
       }
     });
   }
@@ -5889,9 +6071,9 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509CRL(encodingBlob).then(x509CRL => {
-  console.log('createX509CRL success');
+  console.info('createX509CRL success');
   x509CRL.getEncoded().then(result => {
-    console.log('getEncoded success');
+    console.info('getEncoded success');
   }).catch((error: BusinessError) => {
     console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   });
@@ -6019,11 +6201,11 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
     console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509Crl success');
+    console.info('createX509Crl success');
     try {
       // Generate the public key by AsyKeyGenerator.
       let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
-      console.log('createAsyKeyGenerator success');
+      console.info('createAsyKeyGenerator success');
       let priEncodingBlob: cryptoFramework.DataBlob = {
         data: priKeyData,
       };
@@ -6034,12 +6216,12 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
         if (e) {
           console.error('convert key failed, message: ' + e.message + 'code: ' + e.code);
         } else {
-          console.log('convert key success');
+          console.info('convert key success');
           x509CRL.verify(keyPair.pubKey, (err, data) => {
             if (err) {
               console.error('verify failed, errCode: ' + err.code + ', errMsg: ' + err.message);
             } else {
-              console.log('verify success');
+              console.info('verify success');
             }
           });
         }
@@ -6173,12 +6355,12 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509CRL(encodingBlob).then(x509CRL => {
-  console.log('createX509Crl success');
+  console.info('createX509Crl success');
 
   try {
     // 生成公钥对象。
     let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
-    console.log('createAsyKeyGenerator success');
+    console.info('createAsyKeyGenerator success');
     let priEncodingBlob: cryptoFramework.DataBlob = {
       data: priKeyData,
     };
@@ -6186,9 +6368,9 @@ cert.createX509CRL(encodingBlob).then(x509CRL => {
       data: pubKeyData,
     };
     keyGenerator.convertKey(pubEncodingBlob, priEncodingBlob).then((keyPair) => {
-      console.log('convert key success');
+      console.info('convert key success');
       x509CRL.verify(keyPair.pubKey).then(result => {
-        console.log('verify success');
+        console.info('verify success');
       }).catch((error: BusinessError) => {
         console.error('verify failed, errCode: ' + error.code + ', errMsg: ' + error.message);
       });
@@ -6254,7 +6436,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
     console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     let version = x509CRL.getVersion();
   }
 });
@@ -6325,7 +6507,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
     console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     try {
       let issuerName = x509CRL.getIssuerName();
     } catch (err) {
@@ -6407,7 +6589,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
     console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     try {
       let issuerName = x509CRL.getIssuerName(cert.EncodingType.ENCODING_UTF8);
       console.info('issuerName output is ' + issuerName);
@@ -6480,7 +6662,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
     console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     try {
       let lastUpdate  = x509CRL.getLastUpdate();
     } catch (err) {
@@ -6552,7 +6734,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
     console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     try {
       let nextUpdate = x509CRL.getNextUpdate();
     } catch (err) {
@@ -6630,7 +6812,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
     console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     let serialNumber = BigInt(1000);
     try {
       let entry = x509CRL.getRevokedCert(serialNumber);
@@ -6740,12 +6922,12 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
     console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     // 创建X509证书对象。
     cert.createX509Cert(certEncodingBlob).then((x509Cert) => {
       try {
         let entry = x509CRL.getRevokedCertWithCert(x509Cert);
-        console.log('getRevokedCertWithCert success');
+        console.info('getRevokedCertWithCert success');
       } catch (error) {
         let e: BusinessError = error as BusinessError;
         console.error('getRevokedCertWithCert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
@@ -6817,12 +6999,12 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
     console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     x509CRL.getRevokedCerts((error, array) => {
       if (error) {
         console.error('getRevokedCerts failed, errCode: ' + error.code + ', errMsg: ' + error.message);
       } else {
-        console.log('getRevokedCerts success');
+        console.info('getRevokedCerts success');
       }
     });
   }
@@ -6887,9 +7069,9 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509CRL(encodingBlob).then(x509CRL => {
-  console.log('createX509CRL success');
+  console.info('createX509CRL success');
   x509CRL.getRevokedCerts().then(array => {
-    console.log('getRevokedCerts success');
+    console.info('getRevokedCerts success');
   }).catch((error: BusinessError) => {
     console.error('getRevokedCerts failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   });
@@ -6959,7 +7141,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
     console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     try {
       let signature = x509CRL.getSignature();
     } catch (err) {
@@ -7031,7 +7213,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
     console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     try {
       let sigAlgName = x509CRL.getSignatureAlgName();
     } catch (err) {
@@ -7103,7 +7285,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
     console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     try {
       let sigAlgOid = x509CRL.getSignatureAlgOid();
     } catch (err) {
@@ -7176,7 +7358,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
     console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     try {
       let sigAlgParams = x509CRL.getSignatureAlgParams();
     } catch (err) {
@@ -7248,7 +7430,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
     console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     try {
       let tbsInfo = x509CRL.getTBSInfo();
     } catch (error) {
@@ -7323,7 +7505,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
     console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   } else {
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     try {
       let extensions = x509CRL.getExtensions();
     } catch (error) {
@@ -7424,7 +7606,7 @@ async function crlMatch() {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(certEncodingBlob);
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
   } catch (err) {
     console.error('createX509Cert failed');
   }
@@ -7433,7 +7615,7 @@ async function crlMatch() {
     if (error) {
       console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
     } else {
-      console.log('createX509CRL success');
+      console.info('createX509CRL success');
       try {
         const param: cert.X509CRLMatchParameters = {
           issuer: [new Uint8Array([0x30, 0x58, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x06, 0x13, 0x02, 0x43, 0x4E, 0x31, 0x10, 0x30, 0x0E, 0x06, 0x03, 0x55, 0x04, 0x08, 0x13, 0x07, 0x4A, 0x69, 0x61, 0x6E, 0x67, 0x73, 0x75, 0x31, 0x10, 0x30, 0x0E, 0x06, 0x03, 0x55, 0x04, 0x07, 0x13, 0x07, 0x4E, 0x61, 0x6E, 0x6A, 0x69, 0x6E, 0x67, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x0A, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x0B, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x03, 0x13, 0x02, 0x74, 0x73])],
@@ -7510,7 +7692,7 @@ async function crlGetIssuerX500DistinguishedName() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(crlEncodingBlob);
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     let name = x509Crl.getIssuerX500DistinguishedName();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
@@ -7580,8 +7762,8 @@ async function crlToString() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(crlEncodingBlob);
-    console.log('createX509CRL success');
-    console.info('crlToString success: ' + JSON.stringify(x509Crl.toString()));
+    console.info('createX509CRL success');
+    console.info('crlToString success: ' + x509Crl.toString());
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('createX509CRL failed, errCode: ' + e.code + ', errMsg: ' + e.message);
@@ -7660,8 +7842,8 @@ async function crlToString() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(crlEncodingBlob);
-    console.log('createX509CRL success');
-    console.info('crlToString success: ' + JSON.stringify(x509Crl.toString(cert.EncodingType.ENCODING_UTF8)));
+    console.info('createX509CRL success');
+    console.info('crlToString success: ' + x509Crl.toString(cert.EncodingType.ENCODING_UTF8));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('createX509CRL failed, errCode: ' + e.code + ', errMsg: ' + e.message);
@@ -7730,8 +7912,8 @@ async function crlHashCode() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(crlEncodingBlob);
-    console.log('createX509CRL success');
-    console.info('crlHashCode success: ' + JSON.stringify(x509Crl.hashCode()));
+    console.info('createX509CRL success');
+    console.info('crlHashCode success: ' + x509Crl.hashCode());
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('createX509CRL failed, errCode: ' + e.code + ', errMsg: ' + e.message);
@@ -7805,7 +7987,7 @@ async function crlHashCode() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(crlEncodingBlob);
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     let object = x509Crl.getExtensionsObject();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
@@ -7994,7 +8176,7 @@ try {
     if (error) {
       console.error('validate failed, errCode: ' + error.code + ', errMsg: ' + error.message);
     } else {
-      console.log('validate success');
+      console.info('validate success');
     }
   });
 } catch (error) {
@@ -8123,7 +8305,7 @@ let certChainData: cert.CertChainData = {
 try {
   let validator = cert.createCertChainValidator('PKIX');
   validator.validate(certChainData).then(result => {
-    console.log('validate success');
+    console.info('validate success');
   }).catch((error: BusinessError) => {
     console.error('validate failed, errCode: ' + error.code + ', errMsg: ' + error.message);
   });
@@ -8204,7 +8386,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
   if (err) {
     console.error('createX509Crl failed, errCode: ' + err.code + ', errMsg: ' + err.message);
   } else {
-    console.log('create x509 crl success');
+    console.info('create x509 crl success');
 
     try {
       let serialNumber = 1000;
@@ -8213,7 +8395,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
         if (error) {
           console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
         } else {
-          console.log('getEncoded success');
+          console.info('getEncoded success');
         }
       });
     } catch (error) {
@@ -8287,13 +8469,13 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
   if (err) {
     console.error('createX509Crl failed, errCode: ' + err.code + ', errMsg: ' + err.message);
   } else {
-    console.log('create x509 crl success');
+    console.info('create x509 crl success');
 
     try {
       let serialNumber = 1000;
       let crlEntry = x509Crl.getRevokedCert(serialNumber);
       crlEntry.getEncoded().then(result => {
-        console.log('getEncoded success');
+        console.info('getEncoded success');
       }).catch((error: BusinessError) => {
         console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
       });
@@ -8357,7 +8539,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
   if (err) {
     console.error('createX509Crl failed, errCode: ' + err.code + ', errMsg: ' + err.message);
   } else {
-    console.log('create x509 crl success');
+    console.info('create x509 crl success');
 
     try {
       let serialNumber = 1000;
@@ -8433,7 +8615,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
   if (err) {
     console.error('createX509Crl failed, errCode: ' + err.code + ', errMsg: ' + err.message);
   } else {
-    console.log('create x509 crl success');
+    console.info('create x509 crl success');
 
     try {
       let serialNumber = 1000;
@@ -8509,7 +8691,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
   if (err) {
     console.error('createX509Crl failed, errCode: ' + err.code + ', errMsg: ' + err.message);
   } else {
-    console.log('create x509 crl success');
+    console.info('create x509 crl success');
 
     try {
       let serialNumber = 1000;
@@ -8588,7 +8770,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
   if (err) {
     console.error('createX509CRL failed, errCode: ' + err.code + ', errMsg: ' + err.message);
   } else {
-    console.log('create x509 CRL success');
+    console.info('create x509 CRL success');
 
     try {
       let serialNumber = BigInt(1000);
@@ -8597,7 +8779,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
         if (error) {
           console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
         } else {
-          console.log('getEncoded success');
+          console.info('getEncoded success');
         }
       });
     } catch (error) {
@@ -8669,13 +8851,13 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
   if (err) {
     console.error('createX509CRL failed, errCode: ' + err.code + ', errMsg: ' + err.message);
   } else {
-    console.log('create x509 CRL success');
+    console.info('create x509 CRL success');
 
     try {
       let serialNumber = BigInt(1000);
       let crlEntry = x509CRL.getRevokedCert(serialNumber);
       crlEntry.getEncoded().then(result => {
-        console.log('getEncoded success');
+        console.info('getEncoded success');
       }).catch((error: BusinessError) => {
         console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
       });
@@ -8747,7 +8929,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
   if (err) {
     console.error('createX509Crl failed, errCode: ' + err.code + ', errMsg: ' + err.message);
   } else {
-    console.log('create x509 crl success');
+    console.info('create x509 crl success');
 
     try {
       let serialNumber = BigInt(1000);
@@ -8826,7 +9008,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
   if (err) {
     console.error('createX509CRL failed, errCode: ' + err.code + ', errMsg: ' + err.message);
   } else {
-    console.log('create x509 CRL success');
+    console.info('create x509 CRL success');
 
     try {
       let serialNumber = BigInt(1000);
@@ -8909,7 +9091,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
   if (err) {
     console.error('createX509CRL failed, errCode: ' + err.code + ', errMsg: ' + err.message);
   } else {
-    console.log('create x509 CRL success');
+    console.info('create x509 CRL success');
 
     try {
       let serialNumber = BigInt(1591942200000);
@@ -8984,7 +9166,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
   if (err) {
     console.error('createX509CRL failed, errCode: ' + err.code + ', errMsg: ' + err.message);
   } else {
-    console.log('create x509 CRL success');
+    console.info('create x509 CRL success');
 
     try {
       let serialNumber = BigInt(1000);
@@ -9061,7 +9243,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
   if (err) {
     console.error('createX509CRL failed, errCode: ' + err.code + ', errMsg: ' + err.message);
   } else {
-    console.log('create x509 CRL success');
+    console.info('create x509 CRL success');
 
     try {
       let serialNumber = BigInt(4);
@@ -9135,7 +9317,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
   if (err) {
     console.error('createX509CRL failed, errCode: ' + err.code + ', errMsg: ' + err.message);
   } else {
-    console.log('create x509 CRL success');
+    console.info('create x509 CRL success');
 
     try {
       let serialNumber = BigInt(1000);
@@ -9209,7 +9391,7 @@ async function certGetCertIssuerX500DistinguishedName() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(encodingBlob);
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     let name = x509Crl.getRevokedCert(BigInt(1000)).getCertIssuerX500DistinguishedName();
   } catch (error) {
     let e: BusinessError = error as BusinessError;
@@ -9278,8 +9460,8 @@ async function certToString() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(encodingBlob);
-    console.log('createX509CRL success');
-    console.info('toString success: ' + JSON.stringify(x509Crl.getRevokedCert(BigInt(1000)).toString()));
+    console.info('createX509CRL success');
+    console.info('toString success: ' + x509Crl.getRevokedCert(BigInt(1000)).toString());
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error('createX509CRL failed, errCode: ' + e.code + ', errMsg: ' + e.message);
@@ -9347,8 +9529,8 @@ async function certHashCode() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(encodingBlob);
-    console.log('createX509CRL success');
-    console.info('hashCode success: ' + JSON.stringify(x509Crl.getRevokedCert(BigInt(1000)).hashCode()));
+    console.info('createX509CRL success');
+    console.info('hashCode success: ' + x509Crl.getRevokedCert(BigInt(1000)).hashCode());
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error('createX509CRL failed, errCode: ' + e.code + ', errMsg: ' + e.message);
@@ -9483,7 +9665,7 @@ async function certGetExtensionsObject() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(encodingBlob);
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
     let object = x509Crl.getRevokedCert(BigInt('14091103387070223745671018446433705560')).getExtensionsObject();
   } catch (error) {
     let e: BusinessError = error as BusinessError;
@@ -9597,7 +9779,7 @@ async function createCollection() {
   const x509CRL = await createX509CRL();
   try {
     const collection: cert.CertCRLCollection = cert.createCertCRLCollection([x509Cert], [x509CRL]);
-    console.log('createCertCRLCollection success');
+    console.info('createCertCRLCollection success');
   } catch (err) {
     console.error('createCertCRLCollection failed');
   }
@@ -9695,7 +9877,7 @@ async function selectCerts() {
       publicKeyAlgID: '1.2.840.10045.2.1'
     };
     const certs = await collection.selectCerts(param);
-    console.log('call selectCerts success');
+    console.info('call selectCerts success');
   } catch (err) {
     console.error('call selectCerts failed');
   }
@@ -9786,7 +9968,7 @@ async function selectCerts() {
     if (err) {
       console.error('selectCerts failed, errCode: ' + err.code + ', errMsg: ' + err.message);
     } else {
-      console.log('selectCerts success');
+      console.info('selectCerts success');
     }
   });
 }
@@ -9892,7 +10074,7 @@ async function createX509Cert(): Promise<cert.X509Cert> {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(certEncodingBlob);
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
   } catch (err) {
     console.error('createX509Cert failed');
   }
@@ -9910,7 +10092,7 @@ async function selectCRLs() {
   }
   try {
     const crls = await collection.selectCRLs(param);
-    console.log('selectCRLs success');
+    console.info('selectCRLs success');
   } catch (err) {
     console.error('selectCRLs failed');
   }
@@ -10012,7 +10194,7 @@ async function createX509Cert(): Promise<cert.X509Cert> {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(certEncodingBlob);
-    console.log('createX509Cert success');
+    console.info('createX509Cert success');
   } catch (err) {
     console.error('createX509Cert failed');
   }
@@ -10032,7 +10214,7 @@ async function selectCRLs() {
     if (err) {
       console.error('selectCRLs failed, errCode: ' + err.code + ', errMsg: ' + err.message);
     } else {
-      console.log('selectCRLs success');
+      console.info('selectCRLs success');
     }
   });
 }
@@ -10267,7 +10449,7 @@ cert.createX509CertChain(encodingBlob, (err, certChain) => {
   if (err) {
     console.error('createX509CertChain failed, errCode: ' + err.code + ', errMsg: ' + err.message);
   } else {
-    console.log('createX509CertChain success');
+    console.info('createX509CertChain success');
   }
 });
 ```
@@ -10708,7 +10890,7 @@ function doTestParsePkcs12() {
       console.info("privateKey:" + p12.privateKey.toString())
     }
   } catch (error) {
-    console.error('parsePKCS12 failed:' + JSON.stringify(error));
+    console.error(`parsePKCS12 failed: errCode: ${error.code}, message: ${error.message}`);
   }
 }
 ```
@@ -11334,12 +11516,12 @@ try {
   cert.createTrustAnchorsWithKeyStore(
     new Uint8Array([0x30, 0x82, 0x07, 0x5C, 0x02, 0x01, 0x03, 0x30, 0x82, 0x07, 0x12, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x07, 0x01, 0xA0, 0x82, 0x07, 0x03, 0x04, 0x82, 0x06, 0xFF, 0x30, 0x82, 0x06, 0xFB, 0x30, 0x82, 0x05, 0xB2, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x07, 0x06, 0xA0, 0x82, 0x05, 0xA3, 0x30, 0x82, 0x05, 0x9F, 0x02, 0x01, 0x00, 0x30, 0x82, 0x05, 0x98, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x07, 0x01, 0x30, 0x57, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x05, 0x0D, 0x30, 0x4A, 0x30, 0x29, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x05, 0x0C, 0x30, 0x1C, 0x04, 0x08, 0xA9, 0x1C, 0x1B, 0x19, 0x36, 0xDE, 0xD4, 0x20, 0x02, 0x02, 0x08, 0x00, 0x30, 0x0C, 0x06, 0x08, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x02, 0x09, 0x05, 0x00, 0x30, 0x1D, 0x06, 0x09, 0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x01, 0x2A, 0x04, 0x10, 0x7D, 0xE5, 0x23, 0x96, 0x18, 0x8B, 0xF4, 0xBC, 0x9F, 0x4E, 0xE8, 0xE9, 0xAA, 0x52, 0x18, 0x39, 0x80, 0x82, 0x05, 0x30, 0x02, 0x2D, 0x59, 0xA9, 0x96, 0x5A, 0xFE, 0x20, 0x18, 0xB2, 0x25, 0xEA, 0xFC, 0x86, 0x0F, 0xA8, 0x3C, 0x2B, 0x26, 0x2F, 0x44, 0x6E, 0xF3, 0x15, 0xB7, 0x94, 0xE4, 0x43, 0xEE, 0xE6, 0xC3, 0xBB, 0x3C, 0x9E, 0x60, 0x08, 0xF8, 0x15, 0x61, 0x44, 0xD0, 0xEA, 0xD5, 0x6D, 0x1A, 0x3B, 0x9F, 0x4E, 0x2A, 0x1E, 0xBB, 0xB9, 0x4E, 0x15, 0x43, 0xB8, 0x68, 0xDB, 0x1A, 0x4E, 0x41, 0xBA, 0x29, 0x8E, 0x75, 0xEB, 0x12, 0xC1, 0xF0, 0x4B, 0x0D, 0x13, 0xB2, 0xC2, 0x48, 0x6F, 0xC4, 0xC4, 0x82, 0xF2, 0x26, 0xD4, 0x3D, 0x1F, 0x42, 0x7D, 0x67, 0xB0, 0x37, 0x55, 0x9E, 0xD9, 0x46, 0x99, 0x98, 0xB4, 0xE7, 0x4B, 0x07, 0x08, 0x3F, 0xD3, 0x96, 0x9A, 0xC5, 0xDA, 0x37, 0x74, 0x08, 0x5D, 0x3B, 0x06, 0x8A, 0x16, 0x6D, 0x81, 0x63, 0x01, 0x83, 0x94, 0xDA, 0x1B, 0x0E, 0x04, 0xCE, 0x18, 0xF0, 0x51, 0x22, 0xD8, 0x2D, 0xF1, 0x69, 0x0C, 0xCB, 0xC9, 0x51, 0x17, 0x07, 0x1F, 0x2B, 0xCF, 0x74, 0x26, 0xD7, 0x73, 0xB3, 0x2D, 0xF2, 0x82, 0xF0, 0x38, 0x5B, 0x8A, 0x8F, 0xCD, 0x84, 0x69, 0x40, 0x59, 0xCE, 0xB3, 0x39, 0xFE, 0xF6, 0xB7, 0x24, 0x89, 0x34, 0xFF, 0xF4, 0x40, 0x50, 0x06, 0x4D, 0xC6, 0x13, 0x82, 0xAF, 0x7F, 0x84, 0xB1, 0x67, 0x3C, 0x89, 0xBB, 0x5D, 0x32, 0xC3, 0xA6, 0xF1, 0x7D, 0xF5, 0x72, 0x68, 0x75, 0xCE, 0x69, 0xAB, 0x6C, 0x32, 0xDA, 0x16, 0x3B, 0xC4, 0xCA, 0x47, 0x45, 0xE9, 0x59, 0x1E, 0xB1, 0x70, 0xDA, 0x8A, 0x00, 0x69, 0x80, 0x40, 0xCA, 0x60, 0xE6, 0x07, 0x16, 0xF0, 0xA2, 0xF9, 0x12, 0x7D, 0x09, 0x43, 0x66, 0x46, 0x78, 0x35, 0xA6, 0x94, 0x35, 0x60, 0x82, 0xFC, 0xB8, 0x5E, 0x39, 0xE7, 0xA1, 0x22, 0xAD, 0xCC, 0x6F, 0x5E, 0xCE, 0x01, 0x6B, 0xA1, 0xDD, 0xE5, 0xDD, 0x79, 0x9B, 0xA1, 0x28, 0xC4, 0x03, 0x84, 0x8D, 0x6C, 0x07, 0xD4, 0xFE, 0x57, 0xFB, 0x89, 0x3F, 0x43, 0x44, 0x69, 0xF1, 0x9E, 0x53, 0x6C, 0x11, 0x11, 0x96, 0x79, 0xE4, 0xB8, 0x3B, 0x49, 0x2E, 0xF6, 0x3B, 0xC5, 0x6C, 0x76, 0x21, 0x22, 0x15, 0x85, 0x77, 0x8A, 0xDD, 0xD2, 0x43, 0x85, 0x73, 0x39, 0x77, 0x9F, 0xFA, 0x8F, 0xCF, 0xCB, 0xEA, 0x62, 0xBD, 0x5C, 0x66, 0x45, 0xCD, 0xB0, 0xCA, 0x42, 0xCC, 0xB9, 0xCF, 0xE3, 0x84, 0x63, 0x9F, 0x63, 0xCE, 0x49, 0xE9, 0x74, 0x26, 0xCC, 0x26, 0x78, 0xCE, 0x9F, 0x4E, 0x38, 0xA2, 0x9C, 0xEB, 0x75, 0xC5, 0x33, 0x6B, 0x00, 0x83, 0x85, 0xA3, 0x0F, 0xE7, 0xE1, 0x11, 0xA6, 0x48, 0xDC, 0xEF, 0x0C, 0x05, 0xB3, 0xDE, 0x94, 0xB9, 0x69, 0xCB, 0x27, 0x09, 0xAB, 0x27, 0xD8, 0x06, 0xED, 0x25, 0xBC, 0xA6, 0x2E, 0xB7, 0xF9, 0x2E, 0xAD, 0x84, 0x1D, 0xDD, 0x73, 0xD8, 0xC0, 0x46, 0x8A, 0xFE, 0x9A, 0xDF, 0x07, 0xE1, 0x33, 0xE2, 0x1C, 0x37, 0x6A, 0x8E, 0xA2, 0x91, 0x0B, 0xD7, 0x76, 0xEF, 0x3C, 0x87, 0x4A, 0x53, 0x84, 0xFA, 0xFA, 0xC5, 0x71, 0x76, 0xC0, 0x75, 0x70, 0x67, 0x67, 0x71, 0x9D, 0x8B, 0x81, 0x6F, 0x68, 0xC5, 0xB1, 0xFC, 0xA3, 0x59, 0xB5, 0xD0, 0x03, 0x56, 0xE7, 0x89, 0x03, 0xD7, 0x99, 0xDE, 0x66, 0x33, 0xFA, 0x53, 0x50, 0x5F, 0xB4, 0x9D, 0xB3, 0x90, 0x8F, 0x57, 0x20, 0xF0, 0x8B, 0xDB, 0x73, 0xCA, 0xA4, 0x71, 0x61, 0x67, 0x6A, 0x6D, 0xA5, 0xCA, 0x88, 0xD4, 0xCC, 0x82, 0x34, 0xC9, 0x3E, 0x10, 0x10, 0x57, 0xD1, 0x08, 0x96, 0x80, 0x09, 0xA8, 0xBB, 0x6F, 0x53, 0x8F, 0xFD, 0x87, 0xCF, 0x73, 0xFC, 0xE1, 0x3A, 0x92, 0x2E, 0x78, 0x66, 0xFB, 0x86, 0x5D, 0x62, 0xE0, 0xC4, 0x58, 0x55, 0x3F, 0xA4, 0xEA, 0xA1, 0xBE, 0x5B, 0x5E, 0x8E, 0x46, 0x50, 0x5E, 0x7C, 0x01, 0xD6, 0x63, 0xAA, 0x6F, 0xD5, 0xFD, 0xAF, 0xC5, 0x1D, 0xB3, 0x90, 0x9C, 0xD8, 0x5F, 0x8D, 0xF2, 0x81, 0xEB, 0xBF, 0xA1, 0xDE, 0xB7, 0x9D, 0xCD, 0x24, 0x82, 0x06, 0x0B, 0x63, 0xE6, 0xBF, 0x57, 0x51, 0xF0, 0xB6, 0xE9, 0x7F, 0xAA, 0x7B, 0x10, 0xBD, 0xCD, 0x85, 0x41, 0xE0, 0xD7, 0xF1, 0x53, 0xB7, 0xF8, 0x46, 0x91, 0x9E, 0x8D, 0x4B, 0xCB, 0x28, 0x35, 0x40, 0x37, 0x1E, 0x83, 0x64, 0x6A, 0x70, 0x01, 0x9D, 0xBF, 0xF1, 0x0E, 0xB6, 0x2E, 0x7A, 0xB7, 0x8F, 0x0F, 0x8C, 0x69, 0xD6, 0xF2, 0xD1, 0xF6, 0x1E, 0xCD, 0x08, 0xA8, 0xD4, 0x1B, 0xCB, 0x38, 0xEA, 0x26, 0x37, 0x5C, 0x60, 0x3A, 0x38, 0x5B, 0x12, 0x1D, 0x00, 0x7B, 0xEC, 0xCE, 0xFB, 0x89, 0x23, 0x8A, 0x11, 0xE1, 0x1B, 0xDE, 0x54, 0x91, 0x6A, 0x26, 0x22, 0xD0, 0x1C, 0x2E, 0xBA, 0xD0, 0x92, 0x87, 0xDA, 0xF0, 0x93, 0xBB, 0x3A, 0x2C, 0x52, 0xFB, 0xB2, 0xA9, 0xA8, 0x92, 0x19, 0xE3, 0x19, 0xDC, 0xB0, 0x0E, 0xC5, 0xE7, 0x9D, 0xFB, 0xF9, 0xA3, 0x23, 0x32, 0xD0, 0x4E, 0x2C, 0x05, 0x2D, 0x76, 0xDB, 0x93, 0x53, 0x5B, 0x0E, 0x2A, 0xA3, 0xDD, 0x5F, 0xD3, 0x1A, 0x3B, 0x1E, 0x1F, 0x26, 0x88, 0x43, 0xAD, 0x10, 0x1F, 0xA9, 0xC4, 0xF9, 0x1F, 0xCD, 0xA5, 0xD2, 0xDC, 0x24, 0x95, 0x1D, 0xE7, 0x57, 0xE1, 0x02, 0x0A, 0x20, 0xEA, 0x6A, 0x78, 0x4E, 0x96, 0xE2, 0xE5, 0x6D, 0x6F, 0xFD, 0x81, 0x7B, 0x61, 0x85, 0xA3, 0x3D, 0xC5, 0x7B, 0xEF, 0xAE, 0x58, 0xA2, 0xDB, 0x91, 0x73, 0xDB, 0x47, 0x8E, 0xD1, 0x7D, 0xD7, 0x8F, 0x56, 0x06, 0x28, 0x8C, 0x78, 0x73, 0x02, 0x65, 0xB0, 0x16, 0x4B, 0xE6, 0xA3, 0xD7, 0x06, 0x7C, 0xEA, 0x7D, 0xE2, 0xAE, 0xBB, 0xE5, 0xD2, 0xEB, 0xF0, 0x91, 0x71, 0x7C, 0xBC, 0xA6, 0x1A, 0xE8, 0x9F, 0xD3, 0xA9, 0x3C, 0x5D, 0x60, 0xCF, 0x59, 0x26, 0x46, 0x45, 0xF2, 0x7F, 0x85, 0x6B, 0xE7, 0xC2, 0x58, 0x52, 0x90, 0x12, 0x07, 0xBA, 0xE6, 0xB8, 0xE5, 0xD7, 0x24, 0x93, 0xD5, 0x6E, 0xB1, 0x74, 0x6C, 0xAA, 0xA0, 0x60, 0xBF, 0xF3, 0x32, 0x41, 0x0B, 0xA2, 0x01, 0x84, 0x0D, 0x83, 0xE4, 0x43, 0xD1, 0xBA, 0xC1, 0x92, 0x84, 0x26, 0xF8, 0xF2, 0x77, 0x20, 0x1B, 0xF2, 0x8F, 0x00, 0x69, 0x18, 0x2F, 0x6C, 0xA8, 0x58, 0xB5, 0x5D, 0xFA, 0x27, 0xD2, 0x38, 0xD2, 0x49, 0x6E, 0xDF, 0x55, 0x79, 0xAF, 0x1C, 0x44, 0xDA, 0x5A, 0xD7, 0x44, 0x53, 0x50, 0x8B, 0x77, 0x70, 0x4D, 0x91, 0xEC, 0x07, 0xA5, 0x64, 0x21, 0x3C, 0x31, 0x09, 0x68, 0x65, 0xB4, 0xFA, 0xBE, 0x23, 0xF9, 0xDF, 0x77, 0x46, 0xA2, 0x9A, 0x5D, 0xE3, 0xBE, 0x1E, 0xE3, 0x84, 0xEF, 0xAE, 0x7D, 0xF8, 0x1C, 0x54, 0xE8, 0x4E, 0xAE, 0xB5, 0xBB, 0xD6, 0xC3, 0x8D, 0x56, 0x79, 0xE8, 0x7C, 0x43, 0xDC, 0xF3, 0xB3, 0x7A, 0x30, 0x22, 0x09, 0xBC, 0x10, 0xD6, 0x84, 0xC4, 0x0F, 0x4C, 0x0B, 0xA2, 0xD1, 0xCB, 0xCD, 0x1F, 0x50, 0x3D, 0xF7, 0x23, 0x45, 0x55, 0x18, 0x21, 0x3D, 0x64, 0x05, 0x2E, 0x52, 0x3A, 0x73, 0xFD, 0xF2, 0xA9, 0xCA, 0x3F, 0xF6, 0x7F, 0x87, 0xE8, 0x56, 0x9B, 0x68, 0x6B, 0x20, 0xB0, 0x1D, 0x83, 0x04, 0x2F, 0x59, 0xFD, 0x84, 0x57, 0x7D, 0x82, 0x97, 0x96, 0xE8, 0xFB, 0xDF, 0x71, 0x8C, 0x26, 0x47, 0x85, 0xA5, 0xBE, 0xFB, 0xF5, 0x05, 0x4C, 0xD3, 0x3D, 0x73, 0xF4, 0xA5, 0xF1, 0xA3, 0x99, 0x98, 0x1B, 0x84, 0x8B, 0xB3, 0x53, 0xCE, 0x4D, 0xEA, 0x5A, 0x48, 0xD2, 0xB9, 0x7E, 0xB6, 0xEB, 0x9B, 0x94, 0x6F, 0xDD, 0x44, 0x80, 0x89, 0xD2, 0x78, 0x6D, 0xB9, 0xDA, 0x8B, 0x83, 0x49, 0xE0, 0x4D, 0x49, 0xDF, 0x6B, 0xFF, 0xF7, 0x04, 0x00, 0x32, 0xAA, 0x1D, 0x4F, 0x8D, 0x4B, 0xDE, 0xB8, 0x0D, 0xC6, 0x54, 0x1C, 0xB2, 0xCD, 0x60, 0x29, 0x72, 0x0A, 0x7E, 0xE7, 0xEB, 0x7A, 0xF6, 0x5B, 0x04, 0x3F, 0x5B, 0x93, 0x12, 0x0D, 0xD5, 0xFF, 0x7A, 0x41, 0x44, 0x0B, 0x37, 0x12, 0x82, 0x3D, 0xDD, 0x1E, 0x59, 0xB9, 0xBE, 0x0F, 0x9E, 0xD6, 0xD0, 0x68, 0x69, 0x74, 0xF9, 0xB1, 0x21, 0xA3, 0x70, 0x4F, 0xDA, 0xF8, 0x9F, 0xB9, 0x49, 0x3F, 0xC6, 0xB2, 0x69, 0xC8, 0xD8, 0x60, 0xF1, 0x6A, 0x52, 0x07, 0xFA, 0x42, 0xFD, 0xA9, 0x06, 0xCF, 0x97, 0x4A, 0x0E, 0xC5, 0xFC, 0x63, 0x27, 0x54, 0xC8, 0xBE, 0x8B, 0x4F, 0xB6, 0x42, 0xBC, 0xA2, 0xCC, 0x70, 0x4A, 0x6B, 0x24, 0x5B, 0x68, 0x28, 0x47, 0xFA, 0x6B, 0x89, 0x28, 0x07, 0x5D, 0xE0, 0x2C, 0x4A, 0xD9, 0x22, 0xE3, 0xB3, 0x2F, 0xAA, 0xC2, 0xA0, 0x7C, 0x0F, 0x92, 0xC5, 0xDD, 0xB6, 0x23, 0x8F, 0x73, 0x73, 0x0F, 0xD7, 0x73, 0x71, 0x2F, 0x0A, 0x78, 0xE8, 0x5B, 0xDB, 0xC2, 0xE0, 0xDB, 0xC9, 0x3E, 0xC3, 0x72, 0x9C, 0x14, 0xD7, 0xD1, 0x28, 0xFD, 0xF4, 0xEE, 0xBC, 0x0E, 0x13, 0x37, 0xCA, 0x85, 0x9F, 0xB9, 0xA2, 0x0E, 0xF6, 0xE7, 0x49, 0xD1, 0xD0, 0x11, 0x76, 0x53, 0xA3, 0x73, 0x95, 0x2A, 0x23, 0xC8, 0x0E, 0x97, 0x83, 0x07, 0x64, 0xB2, 0x51, 0xB7, 0xC8, 0x51, 0x9F, 0xA4, 0x3E, 0x7B, 0xA4, 0x18, 0x6D, 0x99, 0xF0, 0x6E, 0xC3, 0x97, 0xAE, 0xF4, 0xB7, 0x66, 0x37, 0xFA, 0x65, 0xFC, 0x5E, 0xE2, 0x57, 0xFA, 0x8B, 0x4C, 0x86, 0x10, 0xB4, 0x5C, 0xA4, 0xD2, 0x60, 0x83, 0x69, 0x1E, 0xFF, 0x36, 0x9B, 0xF9, 0x84, 0xFB, 0xB8, 0x83, 0x64, 0xF1, 0x41, 0xA5, 0x25, 0x56, 0x21, 0xBA, 0x13, 0x98, 0x0C, 0x3B, 0x04, 0xAA, 0x6C, 0x9A, 0xD4, 0xE3, 0x13, 0x15, 0x54, 0x05, 0x4C, 0x5C, 0xE1, 0x7A, 0x31, 0x5E, 0x90, 0xCF, 0x48, 0x4E, 0x83, 0xD7, 0x7F, 0xED, 0x93, 0x22, 0xAB, 0x67, 0xE7, 0x76, 0x32, 0x64, 0xBA, 0x5A, 0x21, 0x3E, 0x30, 0x82, 0x01, 0x41, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x07, 0x01, 0xA0, 0x82, 0x01, 0x32, 0x04, 0x82, 0x01, 0x2E, 0x30, 0x82, 0x01, 0x2A, 0x30, 0x82, 0x01, 0x26, 0x06, 0x0B, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x0C, 0x0A, 0x01, 0x02, 0xA0, 0x81, 0xEF, 0x30, 0x81, 0xEC, 0x30, 0x57, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x05, 0x0D, 0x30, 0x4A, 0x30, 0x29, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x05, 0x0C, 0x30, 0x1C, 0x04, 0x08, 0xED, 0x3E, 0xED, 0x07, 0x5C, 0x1F, 0x71, 0xAD, 0x02, 0x02, 0x08, 0x00, 0x30, 0x0C, 0x06, 0x08, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x02, 0x09, 0x05, 0x00, 0x30, 0x1D, 0x06, 0x09, 0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x01, 0x2A, 0x04, 0x10, 0xA7, 0x49, 0xA4, 0x6E, 0x00, 0x19, 0x75, 0x59, 0x75, 0x59, 0xBA, 0x4B, 0xC7, 0x24, 0x88, 0x34, 0x04, 0x81, 0x90, 0xCA, 0x23, 0x82, 0xAA, 0x16, 0x57, 0x99, 0xFA, 0x94, 0x9F, 0xAE, 0x32, 0x5C, 0x5B, 0xE7, 0x01, 0xD0, 0xED, 0xA7, 0x58, 0x57, 0x52, 0xBF, 0x57, 0x13, 0xD4, 0x15, 0xB0, 0x06, 0xF5, 0x38, 0xCC, 0x64, 0x23, 0x09, 0xD5, 0x8C, 0x0D, 0x64, 0x31, 0xFA, 0x74, 0xAA, 0x96, 0x7E, 0x9B, 0x16, 0xCA, 0x21, 0xFD, 0xC0, 0x54, 0x91, 0x40, 0x7F, 0xB3, 0xF2, 0xA3, 0xEC, 0xA1, 0x4A, 0x07, 0xF0, 0x87, 0x22, 0xDB, 0x8A, 0x49, 0x89, 0xF7, 0xF2, 0x6A, 0xFC, 0x8D, 0x03, 0x6E, 0x32, 0x4F, 0xD0, 0xD8, 0x93, 0x92, 0xA5, 0xF1, 0x41, 0xBD, 0xEA, 0xE1, 0x38, 0xA9, 0xD8, 0x9D, 0xAB, 0xB4, 0x8E, 0x4A, 0x40, 0x0E, 0xC7, 0xE3, 0xE9, 0xBF, 0x0E, 0xBA, 0x8D, 0xAA, 0x3E, 0x93, 0x53, 0x88, 0xEE, 0x0A, 0x2C, 0x71, 0xF1, 0x61, 0x44, 0xA5, 0xAD, 0xED, 0x3E, 0xAB, 0x32, 0x9A, 0x32, 0x85, 0x08, 0xF5, 0x8B, 0xCC, 0x15, 0x35, 0xEE, 0xFA, 0x17, 0x27, 0x97, 0x8D, 0xD9, 0x1C, 0x5E, 0x74, 0x9D, 0x7B, 0x31, 0x25, 0x30, 0x23, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x09, 0x15, 0x31, 0x16, 0x04, 0x14, 0x5F, 0x8E, 0xAB, 0x9C, 0x5F, 0xE2, 0x3B, 0xB1, 0x5C, 0x1A, 0x36, 0x1D, 0x7D, 0xCB, 0x90, 0x45, 0x20, 0x3C, 0x3B, 0xAC, 0x30, 0x41, 0x30, 0x31, 0x30, 0x0D, 0x06, 0x09, 0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x02, 0x01, 0x05, 0x00, 0x04, 0x20, 0x93, 0x25, 0xC4, 0x3E, 0x2A, 0x6D, 0x4C, 0x30, 0x87, 0x0F, 0xE3, 0x5A, 0x95, 0xB0, 0xF2, 0x6C, 0xBA, 0x07, 0x89, 0x7D, 0xFB, 0xCF, 0xCF, 0x1D, 0x54, 0xA3, 0x36, 0x24, 0x7B, 0x30, 0x97, 0xB5, 0x04, 0x08, 0xE7, 0x96, 0x59, 0xCC, 0x42, 0x9F, 0xEF, 0xFC, 0x02, 0x02, 0x08, 0x00]),
     '123456').then((data) => {
-      console.log('createTrustAnchorsWithKeyStore success, number of the result is: ' + JSON.stringify(data.length));
+      console.info('createTrustAnchorsWithKeyStore success, number of the result is: ' + data.length);
   }).catch((err : BusinessError) => {
-    console.error('createTrustAnchorsWithKeyStore failed:' + JSON.stringify(err));
+    console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
-  console.error('createTrustAnchorsWithKeyStore failed:' + JSON.stringify(error));
+  console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -11454,7 +11636,7 @@ cert.createX509CertChain(encodingBlob, (err, certChain) => {
   if (err) {
     console.error('createX509CertChain failed, errCode: ' + err.code + ', errMsg: ' + err.message);
   } else {
-    console.log('createX509CertChain success');
+    console.info('createX509CertChain success');
     try {
       let certList = certChain.getCertList();
     } catch (err) {
@@ -11604,7 +11786,7 @@ async function validate() {
   }
   try {
     const validationRes = await certChain.validate(param);
-    console.log('X509CertChain validate success');
+    console.info('X509CertChain validate success');
   }
   catch (err) {
     console.error('X509CertChain validate failed');
@@ -11737,12 +11919,12 @@ cert.createX509CertChain(encodingBlob, (err, certChain) => {
   if (err) {
     console.error('createX509CertChain failed, errCode: ' + err.code + ', errMsg: ' + err.message);
   } else {
-    console.log('createX509CertChain success');
+    console.info('createX509CertChain success');
     certChain.validate(param, (error, validationRes) => {
       if (error) {
         console.error('X509CertChain validate failed, errCode: ' + error.code + ', errMsg: ' + error.message);
       } else {
-        console.log('X509CertChain validate success');
+        console.info('X509CertChain validate success');
       }
     });
   }
@@ -11868,8 +12050,8 @@ async function certChainToString() {
   let x509CertChain: cert.X509CertChain = {} as cert.X509CertChain;
   try {
     x509CertChain = await cert.createX509CertChain(encodingBlob);
-    console.log('createX509CertChain success');
-    console.info('toString success: ' + JSON.stringify(x509CertChain.toString()));
+    console.info('createX509CertChain success');
+    console.info('toString success: ' + x509CertChain.toString());
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error('createX509CertChain failed, errCode: ' + e.code + ', errMsg: ' + e.message);
@@ -11995,8 +12177,8 @@ async function certChainHashCode() {
   let x509CertChain: cert.X509CertChain = {} as cert.X509CertChain;
   try {
     x509CertChain = await cert.createX509CertChain(encodingBlob);
-    console.log('createX509CertChain success');
-    console.info('hashCode success: ' + JSON.stringify(x509CertChain.hashCode()));
+    console.info('createX509CertChain success');
+    console.info('hashCode success: ' + x509CertChain.hashCode());
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error('createX509CertChain failed, errCode: ' + e.code + ', errMsg: ' + e.message);
@@ -12092,7 +12274,7 @@ async function createCsrTest() {
     }
     try {
       let csrStr = cert.generateCsr(priKeyInfo, conf)
-      console.log('generateCsr success return str is' + csrStr.toString())
+      console.info('generateCsr success return str is' + csrStr.toString())
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error('generateCsr failed, errCode: ' + e.code + ', errMsg: ' + e.message);
@@ -12163,7 +12345,7 @@ async function createX500DistinguishedName() {
   try {
     cert.createX500DistinguishedName(nameStr)
       .then((data) => {
-        console.log('createX500DistinguishedName success');
+        console.info('createX500DistinguishedName success');
       })
       .catch((err: BusinessError) => {
         console.error('createX500DistinguishedName catch, errCode: ' + err.code + ', errMsg: ' + err.message);
@@ -12225,7 +12407,7 @@ async function createX500DistinguishedName() {
   try {
     cert.createX500DistinguishedName(nameDer)
       .then((data) => {
-        console.log('createX500DistinguishedName success');
+        console.info('createX500DistinguishedName success');
       })
       .catch((err: BusinessError) => {
         console.error('createX500DistinguishedName catch, errCode: ' + err.code + ', errMsg: ' + err.message);
@@ -12277,8 +12459,8 @@ async function getName() {
   try {
     cert.createX500DistinguishedName(nameDer)
       .then((data) => {
-        console.log('createX500DistinguishedName success');
-        console.info('createX500DistinguishedName getName: ' + JSON.stringify(data.getName()))
+        console.info('createX500DistinguishedName success');
+        console.info('createX500DistinguishedName getName: ' + data.getName());
       })
       .catch((err: BusinessError) => {
         console.error('createX500DistinguishedName catch, errCode: ' + err.code + ', errMsg: ' + err.message);
@@ -12334,8 +12516,8 @@ async function getName() {
   try {
     cert.createX500DistinguishedName(nameStr)
       .then((data) => {
-        console.log('createX500DistinguishedName success');
-        console.info('createX500DistinguishedName getName: ' + JSON.stringify(data.getName("CN")))
+        console.info('createX500DistinguishedName success');
+        console.info('createX500DistinguishedName getName: ' + data.getName("CN"));
       })
       .catch((err: BusinessError) => {
         console.error('createX500DistinguishedName catch, errCode: ' + err.code + ', errMsg: ' + err.message);
@@ -12391,8 +12573,8 @@ async function getName() {
   try {
     cert.createX500DistinguishedName(nameStr)
       .then((data) => {
-        console.log('createX500DistinguishedName success');
-        console.info('createX500DistinguishedName getName: ' + JSON.stringify(data.getName(cert.EncodingType.ENCODING_UTF8)))
+        console.info('createX500DistinguishedName success');
+        console.info('createX500DistinguishedName getName: ' + data.getName(cert.EncodingType.ENCODING_UTF8));
       })
       .catch((err: BusinessError) => {
         console.error('createX500DistinguishedName catch, errCode: ' + err.code + ', errMsg: ' + err.message);
@@ -12441,7 +12623,7 @@ async function getEncoded() {
   try {
     cert.createX500DistinguishedName(nameStr)
       .then((data) => {
-        console.log('createX500DistinguishedName success');
+        console.info('createX500DistinguishedName success');
         let encodingBlobData = data.getEncoded();
       })
       .catch((err: BusinessError) => {
@@ -12554,7 +12736,11 @@ CmsGenerator对象用于生成CMS（Cryptographic Message Syntax）格式的消�
 
 addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void;
 
-用于添加签名者信息。
+用于为内容类型为SIGNED_DATA的CMS添加签名者信息。
+	
+> **说明：**
+>
+> 由于openssl不支持自签名证书的验签操作，因此自签名证书不能作为签名者。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -12670,7 +12856,9 @@ function testAddSigner() {
 
 addCert(cert: X509Cert): void
 
-用于添加证书，例如签名证书的颁发者证书。
+用于添加内容类型为SIGNED_DATA的CMS的证书，例如签名证书的颁发者证书。
+
+如果未调用addSigner接口，并且仅添加证书后，生成的CMS签名数据将只包含证书。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -12750,11 +12938,177 @@ function testAddCert() {
 }
 ```
 
+### setRecipientEncryptionAlgorithm<sup>22+</sup>
+
+setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): void
+
+为内容类型为ENVELOPED_DATA的CMS设置加密算法。
+
+该方法应在创建ENVELOPED_DATA类型的CmsGenerator后立即调用。如果未调用此方法，则默认使用AES_256_GCM作为加密算法。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+**参数：**
+
+| 参数名 | 类型      | 必填 | 说明                     |
+| ------ | --------- | ---- | ------------------------ |
+| algorithm   | [CmsRecipientEncryptionAlgorithm](#cmsrecipientencryptionalgorithm22)  | 是   | 用于CMS封装数据的加密算法。      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书错误码](errorcode-cert.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020003 | parameter check failed. Possible causes:<br>1. The type of algorithm is invalid or not supported. |
+| 19030001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+
+function testSetRecipientEncryptionAlgorithm() {
+  try {
+    let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
+    let cmsGenerator = cert.createCmsGenerator(cmsContentType);
+    console.info(`createCmsGenerator success.`);
+    let algorithm = cert.CmsRecipientEncryptionAlgorithm.AES_128_CBC;
+    cmsGenerator.setRecipientEncryptionAlgorithm(algorithm);
+    console.info(`setRecipientEncryptionAlgorithm success.`);
+  } catch (err) {
+    console.error(`testSetRecipientEncryptionAlgorithm failed: errCode: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+### addRecipientInfo<sup>22+</sup>
+
+addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise\<void>
+
+为内容类型为ENVELOPED_DATA的CMS添加接收者信息，使用Promise异步回调。
+
+该方法至少需要设置一个接收者。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+**参数：**
+
+| 参数名 | 类型      | 必填 | 说明                     |
+| ------ | --------- | ---- | ------------------------ |
+| recipientInfo   | [CmsRecipientInfo](#cmsrecipientinfo22)  | 是   | 接收者信息。      |
+
+**返回值**：
+
+| 类型           | 说明        |
+| -------------- | ----------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书错误码](errorcode-cert.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020003 | parameter check failed. Possible causes: <br>1. The type of recipient certificate is invalid or not supported;<br>2. The digestAlgorithm of CmsKeyAgreeRecipientInfo is invalid or not supported;<br>3. The recipientInfo does not have any recipient info. |
+| 19030001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+
+let eccCertData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIICOjCCAd+gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMHkxCzAJBgNVBAYTAmNo\n' +
+  'MQ8wDQYDVQQIDAZodWF3ZWkxDTALBgNVBAcMBHhpYW4xDzANBgNVBAoMBmh1YXdl\n' +
+  'aTENMAsGA1UECwwEdGVzdDENMAsGA1UEAwwEYW5uZTEbMBkGCSqGSIb3DQEJARYM\n' +
+  'dGVzdEAxMjMuY29tMB4XDTI0MTEyNzAzMjQ1MFoXDTM0MTEyNTAzMjQ1MFoweTEL\n' +
+  'MAkGA1UEBhMCY2gxDzANBgNVBAgMBmh1YXdlaTENMAsGA1UEBwwEeGlhbjEPMA0G\n' +
+  'A1UECgwGaHVhd2VpMQ0wCwYDVQQLDAR0ZXN0MQ0wCwYDVQQDDARhbm5lMRswGQYJ\n' +
+  'KoZIhvcNAQkBFgx0ZXN0QDEyMy5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC\n' +
+  'AARzg16D6tsNHZa7w0tLHFprXg5kUQgXv/vv3KIM21hY+WDYMz1OST4tmTeQWQF8\n' +
+  'kARtjjbHBxtOPufWxMfxf51Wo1MwUTAdBgNVHQ4EFgQUU/P31GCBwyrj3yXkoNaX\n' +
+  'xvPp8uIwHwYDVR0jBBgwFoAUU/P31GCBwyrj3yXkoNaXxvPp8uIwDwYDVR0TAQH/\n' +
+  'BAUwAwEB/zAKBggqhkjOPQQDAgNJADBGAiEA/wCfbTorAWEEZcgd0CgfXI+EzXu2\n' +
+  'Y88BmDD5LFlj3N0CIQDB34h77Li0CSpYpS4+7Mug237zbkFjHR3Q4/VWOT1G1A==\n' +
+  '-----END CERTIFICATE-----\n';
+
+let rsaCertData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIICXjCCAcegAwIBAgIGAXKnJjrAMA0GCSqGSIb3DQEBCwUAMEgxCzAJBgNVBAYT\n' +
+  'AkNOMQwwCgYDVQQIDANzaGExDTALBgNVBAcMBHhpYW4xDTALBgNVBAoMBHRlc3Qx\n' +
+  'DTALBgNVBAMMBHRlc3QwHhcNMjQxMTIyMDkwNTIyWhcNMzQxMTIwMDkwNTIyWjBI\n' +
+  'MQswCQYDVQQGEwJDTjEMMAoGA1UECAwDc2hhMQ0wCwYDVQQHDAR4aWFuMQ0wCwYD\n' +
+  'VQQKDAR0ZXN0MQ0wCwYDVQQDDAR0ZXN0MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCB\n' +
+  'iQKBgQC6nCZTM16Rk2c4P/hwfVm++jqe6GCA/PXXGe4YL218q1dTKMHBGEw8kXi0\n' +
+  'XLDcyyC2yUn8ywN2QSyly6ke9EE6PGfZywStLp4g2PTTWB04sS3aXT2y+fToiTXQ\n' +
+  '3AxfFYRpB+EgSdSCkJs6jKXVwbzu54kEtQTfs8UdBQ9nVKaJLwIDAQABo1MwUTAd\n' +
+  'BgNVHQ4EFgQU6QXnt1smb2HRSO/2zuRQnz/SDxowHwYDVR0jBBgwFoAU6QXnt1sm\n' +
+  'b2HRSO/2zuRQnz/SDxowDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOB\n' +
+  'gQBPR/+5xzFG1XlTdgwWVvqVxvhGUkbMTGW0IviJ+jbKsi57vnVsOtFzEA6y+bYx\n' +
+  'xG/kEOcwLtzeVHOQA+ZU5SVcc+qc0dfFiWjL2PSAG4bpqSTjujpuUk+g8ugixbG1\n' +
+  'a26pkDJhNeB/E3eBIbeydSY0A/dIGb6vbGo6BSq2KvnWAA==\n' +
+  '-----END CERTIFICATE-----\n';
+
+// string转Uint8Array。
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+async function testAddRecipientInfo() {
+  let ecccertEncodingBlob: cert.EncodingBlob = {
+    data: stringToUint8Array(eccCertData),
+    // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
+  };
+
+  let rsacertEncodingBlob: cert.EncodingBlob = {
+    data: stringToUint8Array(rsaCertData),
+    // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
+  };
+  try {
+    let eccx509Certcert = await cert.createX509Cert(ecccertEncodingBlob);
+    let rsax509Certcert = await cert.createX509Cert(rsacertEncodingBlob);
+    let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
+    let cmsGenerator = cert.createCmsGenerator(cmsContentType);
+    console.info(`createCmsGenerator success.`);
+
+    let eccCert : cert.CmsKeyAgreeRecipientInfo = {
+      cert : eccx509Certcert,
+      digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256,
+    };
+    let rsaCert : cert.CmsKeyTransRecipientInfo = {
+      cert : rsax509Certcert,
+    };
+    let recipientInfo: cert.CmsRecipientInfo = {
+      keyTransInfo : rsaCert,
+      keyAgreeInfo : eccCert,
+    };
+    await cmsGenerator.addRecipientInfo(recipientInfo);
+    console.info(`addRecipientInfo success.`);
+  } catch (err) {
+    console.error(`testAddRecipientInfo failed: errCode: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
 ### doFinal<sup>18+</sup>
 
 doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | string>
 
-用于获取Cms最终数据，例如Cms签名数据。
+用于获取CMS最终数据，例如CMS签名数据或CMS封装数据。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -12870,7 +13224,7 @@ async function testDoFinalByPromise() {
           isDetached : true
         };
         cmsGenerator.doFinal(content, optionsFinal).then(result => {
-          console.log('testDoFinalByPromise doFinal success, result = %s', result);
+          console.info('testDoFinalByPromise doFinal success, result = %s', result);
         }).catch((error: BusinessError) => {
           console.error('testDoFinalByPromise failed, errCode: ' + error.code + ', errMsg: ' + error.message);
         });
@@ -12887,7 +13241,7 @@ async function testDoFinalByPromise() {
 
 doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | string
 
-用于获取Cms最终数据，例如Cms签名数据（同步方法）。
+用于获取CMS最终数据，例如CMS签名数据或CMS封装数据。（同步方法）。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -13010,5 +13364,1134 @@ function testDoFinalSync() {
         }
     }
   });
+}
+```
+
+### getEncryptedContentData<sup>22+</sup>
+
+getEncryptedContentData(): Promise\<Uint8Array>
+
+用于获取内容类型为ENVELOPED_DATA的CMS的加密内容数据。使用Promise异步回调。
+
+如果创建了类型为ENVELOPED_DATA的CmsGenerator并使用了数据分离来生成CMS封装数据，使用此方法来获取加密的内容数据。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+**返回值：**
+
+| 类型                              | 说明                 |
+| --------------------------------- | -------------------- |
+| Promise\<Uint8Array> |Promise对象, 返回加密的数据内容。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书错误码](errorcode-cert.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19030001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+
+let eccCertData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIICOjCCAd+gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMHkxCzAJBgNVBAYTAmNo\n' +
+  'MQ8wDQYDVQQIDAZodWF3ZWkxDTALBgNVBAcMBHhpYW4xDzANBgNVBAoMBmh1YXdl\n' +
+  'aTENMAsGA1UECwwEdGVzdDENMAsGA1UEAwwEYW5uZTEbMBkGCSqGSIb3DQEJARYM\n' +
+  'dGVzdEAxMjMuY29tMB4XDTI0MTEyNzAzMjQ1MFoXDTM0MTEyNTAzMjQ1MFoweTEL\n' +
+  'MAkGA1UEBhMCY2gxDzANBgNVBAgMBmh1YXdlaTENMAsGA1UEBwwEeGlhbjEPMA0G\n' +
+  'A1UECgwGaHVhd2VpMQ0wCwYDVQQLDAR0ZXN0MQ0wCwYDVQQDDARhbm5lMRswGQYJ\n' +
+  'KoZIhvcNAQkBFgx0ZXN0QDEyMy5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC\n' +
+  'AARzg16D6tsNHZa7w0tLHFprXg5kUQgXv/vv3KIM21hY+WDYMz1OST4tmTeQWQF8\n' +
+  'kARtjjbHBxtOPufWxMfxf51Wo1MwUTAdBgNVHQ4EFgQUU/P31GCBwyrj3yXkoNaX\n' +
+  'xvPp8uIwHwYDVR0jBBgwFoAUU/P31GCBwyrj3yXkoNaXxvPp8uIwDwYDVR0TAQH/\n' +
+  'BAUwAwEB/zAKBggqhkjOPQQDAgNJADBGAiEA/wCfbTorAWEEZcgd0CgfXI+EzXu2\n' +
+  'Y88BmDD5LFlj3N0CIQDB34h77Li0CSpYpS4+7Mug237zbkFjHR3Q4/VWOT1G1A==\n' +
+  '-----END CERTIFICATE-----\n';
+
+let rsaCertData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIICXjCCAcegAwIBAgIGAXKnJjrAMA0GCSqGSIb3DQEBCwUAMEgxCzAJBgNVBAYT\n' +
+  'AkNOMQwwCgYDVQQIDANzaGExDTALBgNVBAcMBHhpYW4xDTALBgNVBAoMBHRlc3Qx\n' +
+  'DTALBgNVBAMMBHRlc3QwHhcNMjQxMTIyMDkwNTIyWhcNMzQxMTIwMDkwNTIyWjBI\n' +
+  'MQswCQYDVQQGEwJDTjEMMAoGA1UECAwDc2hhMQ0wCwYDVQQHDAR4aWFuMQ0wCwYD\n' +
+  'VQQKDAR0ZXN0MQ0wCwYDVQQDDAR0ZXN0MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCB\n' +
+  'iQKBgQC6nCZTM16Rk2c4P/hwfVm++jqe6GCA/PXXGe4YL218q1dTKMHBGEw8kXi0\n' +
+  'XLDcyyC2yUn8ywN2QSyly6ke9EE6PGfZywStLp4g2PTTWB04sS3aXT2y+fToiTXQ\n' +
+  '3AxfFYRpB+EgSdSCkJs6jKXVwbzu54kEtQTfs8UdBQ9nVKaJLwIDAQABo1MwUTAd\n' +
+  'BgNVHQ4EFgQU6QXnt1smb2HRSO/2zuRQnz/SDxowHwYDVR0jBBgwFoAU6QXnt1sm\n' +
+  'b2HRSO/2zuRQnz/SDxowDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOB\n' +
+  'gQBPR/+5xzFG1XlTdgwWVvqVxvhGUkbMTGW0IviJ+jbKsi57vnVsOtFzEA6y+bYx\n' +
+  'xG/kEOcwLtzeVHOQA+ZU5SVcc+qc0dfFiWjL2PSAG4bpqSTjujpuUk+g8ugixbG1\n' +
+  'a26pkDJhNeB/E3eBIbeydSY0A/dIGb6vbGo6BSq2KvnWAA==\n' +
+  '-----END CERTIFICATE-----\n';
+
+// string转Uint8Array。
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+async function testGetEncryptedContentData() {
+  try {
+    let ecccertEncodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(eccCertData),
+      // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    };
+
+    let rsacertEncodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(rsaCertData),
+      // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    };
+
+    let eccx509Certcert = await cert.createX509Cert(ecccertEncodingBlob);
+    let rsax509Certcert = await cert.createX509Cert(rsacertEncodingBlob);
+
+    let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
+    let cmsGenerator = cert.createCmsGenerator(cmsContentType);
+    console.info(`createCmsGenerator success.`);
+    let algorithm = cert.CmsRecipientEncryptionAlgorithm.AES_256_GCM;
+    cmsGenerator.setRecipientEncryptionAlgorithm(algorithm);
+    console.info(`setRecipientEncryptionAlgorithm success.`);
+    let eccCert : cert.CmsKeyAgreeRecipientInfo = {
+      cert : eccx509Certcert,
+      digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256,
+    };
+    let rsaCert : cert.CmsKeyTransRecipientInfo = {
+      cert : rsax509Certcert,
+    };
+    let recipientInfo: cert.CmsRecipientInfo = {
+      keyTransInfo : rsaCert,
+      keyAgreeInfo : eccCert,
+    };
+    await cmsGenerator.addRecipientInfo(recipientInfo);
+    console.info(`addRecipientInfo success.`);
+    let content = new Uint8Array([1,2,3,4]);
+    let optionsFinal: cert.CmsGeneratorOptions = {
+      contentDataFormat : cert.CmsContentDataFormat.BINARY,
+      outFormat : cert.CmsFormat.PEM,
+      isDetached : true
+    };
+    let cms = await cmsGenerator.doFinal(content, optionsFinal);
+    console.info(`doFinal success, cms = %s`, cms);
+    let data = await cmsGenerator.getEncryptedContentData();
+    console.info(`getEncryptedContentData success, data = %s`, data);
+  } catch (err) {
+    console.error(`testGetEncryptedContentData failed: errCode: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+## cert.createCmsParser<sup>22+</sup>
+
+createCmsParser(): CmsParser
+
+表示创建CmsParser对象。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+**返回值：**
+
+| 类型                            | 说明             |
+| ------------------------------- | ---------------- |
+| [CmsParser](#cmsparser22) | CmsParser对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书错误码](errorcode-cert.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19030001 | crypto operation error. |
+
+**示例：**
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ECC_256_PUB_ENTRY_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n"                                      +
+  "MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n" +
+  "Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n" +
+  "MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n" +
+  "CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n" +
+  "PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n" +
+  "1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n" +
+  "MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n" +
+  "bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n" +
+  "MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n" +
+  "X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n" +
+  "1Cyy/+qufhBUJw5om7E=\n"                                             +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_INTER_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n" +
+  "SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n" +
+  "hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n" +
+  "VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n" +
+  "GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n" +
+  "puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n" +
+  "ia4tt478nYeQgMChg+xtSw==\n" +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_ROOT_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n" +
+  "wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n" +
+  "50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n" +
+  "A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n" +
+  "HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n" +
+  "ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n" +
+  "wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n" +
+  "-----END CERTIFICATE-----";
+let ECC_256_PRI_ENTRY_KEY: string =
+  "-----BEGIN EC PRIVATE KEY-----\n"                                   +
+  "MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n" +
+  "AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n" +
+  "HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n"                             +
+  "-----END EC PRIVATE KEY-----";
+
+    // string转Uint8Array。
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+      arr.push(str.charCodeAt(i));
+  };
+  return new Uint8Array(arr);
+  }
+
+async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
+  let encodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(inStream),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+
+  };
+  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+  return x509Cert;
+  }
+
+async function testCmsVerifyTest() {
+  try {
+    let plainText: Uint8Array = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07]);
+    let x509CertEntry: cert.X509Cert = await createX509Cert(ECC_256_PUB_ENTRY_CERT);
+    let x509CertInter: cert.X509Cert = await createX509Cert(ECC_256_PUB_INTER_CERT);
+    let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
+    let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
+    let signerConfig: cert.CmsSignerConfig = {
+      mdName: "SHA256",
+    };
+    let keyInfo: cert.PrivateKeyInfo = {
+      key: ECC_256_PRI_ENTRY_KEY
+    };
+    let option: cert.CmsGeneratorOptions = {
+      outFormat: cert.CmsFormat.PEM
+    };
+    cms.addSigner(x509CertEntry, keyInfo, signerConfig);
+    let signData = cms.doFinalSync(plainText, option);
+    let config: cert.CmsVerificationConfig = {
+      trustCerts: [x509CertRoot, x509CertInter],
+    };
+    let verify: cert.CmsParser = cert.createCmsParser();
+    await verify.setRawData(signData, cert.CmsFormat.PEM);
+    await verify.verifySignedData(config);
+    console.info("verifySignedData success");
+  } catch (error) {
+    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+  }
+}
+```
+
+## CmsParser<sup>22+</sup>
+CmsParser对象用于对已签名跟封装的CMS（Cryptographic Message Syntax）格式的消息进行验签和解封装。
+
+> **说明：**
+>
+> PKCS#7是用于存储签名或加密数据的标准语法。注意CMS是PKCS#7的扩展，PKCS#7支持的数据类型包括数据、签名数据、信封数据、
+> 签名和信封数据、摘要数据、加密数据。常用于保护数据的完整性和机密性。
+
+### setRawData<sup>22+</sup>
+
+setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
+
+用于把CMS格式的数据转成CMS对象。使用Promise异步回调。
+	
+> **说明：**
+>
+> 支持PEM跟DER格式的CMS数据。string对应PEM格式；Uint8Array对应DER格式数据。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+**参数：**
+
+| 参数名       | 类型   | 必填 | 说明           |
+| ------------ | ------ | ---- | -------------- |
+| data |  Uint8Array \| string | 是 | CMS数据内容。|
+| cmsFormat | [CmsFormat](#cmsformat18) | 是 | 指定输入的CMS格式。|
+
+**返回值**：
+
+| 类型           | 说明        |
+| -------------- | ----------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书错误码](errorcode-cert.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020003 | parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The type of the cmsFormat is invalid or not supported. |
+| 19030001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ECC_256_PUB_ENTRY_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n"                                      +
+  "MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n" +
+  "Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n" +
+  "MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n" +
+  "CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n" +
+  "PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n" +
+  "1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n" +
+  "MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n" +
+  "bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n" +
+  "MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n" +
+  "X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n" +
+  "1Cyy/+qufhBUJw5om7E=\n"                                             +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_INTER_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n" +
+  "SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n" +
+  "hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n" +
+  "VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n" +
+  "GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n" +
+  "puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n" +
+  "ia4tt478nYeQgMChg+xtSw==\n" +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_ROOT_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n" +
+  "wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n" +
+  "50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n" +
+  "A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n" +
+  "HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n" +
+  "ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n" +
+  "wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n" +
+  "-----END CERTIFICATE-----";
+let ECC_256_PRI_ENTRY_KEY: string =
+  "-----BEGIN EC PRIVATE KEY-----\n"                                   +
+  "MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n" +
+  "AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n" +
+  "HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n"                             +
+  "-----END EC PRIVATE KEY-----";
+
+// string转Uint8Array。
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+      arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+  }
+
+async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
+  let encodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(inStream),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+
+  };
+  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+
+  return x509Cert;
+}
+
+async function testCmsVerifyTest() {
+  try {
+    let plainText: Uint8Array = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07]);
+    let x509CertEntry: cert.X509Cert = await createX509Cert(ECC_256_PUB_ENTRY_CERT);
+    let x509CertInter: cert.X509Cert = await createX509Cert(ECC_256_PUB_INTER_CERT);
+    let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
+    let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
+    let signerConfig: cert.CmsSignerConfig = {
+      mdName: "SHA256",
+    };
+    let keyInfo: cert.PrivateKeyInfo = {
+      key: ECC_256_PRI_ENTRY_KEY
+    };
+    let option: cert.CmsGeneratorOptions = {
+      outFormat: cert.CmsFormat.PEM
+    };
+    cms.addSigner(x509CertEntry, keyInfo, signerConfig);
+    let signData = cms.doFinalSync(plainText, option);
+    let config: cert.CmsVerificationConfig = {
+      trustCerts: [x509CertRoot, x509CertInter],
+    };
+    let verify: cert.CmsParser = cert.createCmsParser();
+    await verify.setRawData(signData, cert.CmsFormat.PEM);
+    await verify.verifySignedData(config);
+    console.info("verifySignedData success");
+  } catch (error) {
+    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+  }
+}
+```
+
+### getContentType<sup>22+</sup>
+
+getContentType(): CmsContentType
+
+用于获取CMS的数据类型。当前支持获取签名数据、解封装数据两种类型。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+**返回值：**
+
+| 类型                              | 说明                 |
+| --------------------------------- | -------------------- |
+| [CmsContentType](#cmscontenttype18) |返回CMS数据类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书错误码](errorcode-cert.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19030001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ECC_256_PUB_ENTRY_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n"                                      +
+  "MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n" +
+  "Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n" +
+  "MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n" +
+  "CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n" +
+  "PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n" +
+  "1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n" +
+  "MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n" +
+  "bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n" +
+  "MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n" +
+  "X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n" +
+  "1Cyy/+qufhBUJw5om7E=\n"                                             +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_INTER_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n" +
+  "SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n" +
+  "hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n" +
+  "VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n" +
+  "GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n" +
+  "puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n" +
+  "ia4tt478nYeQgMChg+xtSw==\n" +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_ROOT_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n" +
+  "wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n" +
+  "50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n" +
+  "A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n" +
+  "HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n" +
+  "ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n" +
+  "wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n" +
+  "-----END CERTIFICATE-----";
+let ECC_256_PRI_ENTRY_KEY: string =
+  "-----BEGIN EC PRIVATE KEY-----\n"                                   +
+  "MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n" +
+  "AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n" +
+  "HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n"                             +
+  "-----END EC PRIVATE KEY-----";
+
+    // string转Uint8Array。
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+      arr.push(str.charCodeAt(i));
+  };
+  return new Uint8Array(arr);
+}
+
+async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
+  let encodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(inStream),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+
+  };
+  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+
+  return x509Cert;
+}
+
+async function testCmsVerifyTest() {
+  try {
+    let plainText: Uint8Array = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07]);
+    let x509CertEntry: cert.X509Cert = await createX509Cert(ECC_256_PUB_ENTRY_CERT);
+    let x509CertInter: cert.X509Cert = await createX509Cert(ECC_256_PUB_INTER_CERT);
+    let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
+    let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
+    let signerConfig: cert.CmsSignerConfig = {
+      mdName: "SHA256",
+    };
+    let keyInfo: cert.PrivateKeyInfo = {
+      key: ECC_256_PRI_ENTRY_KEY
+    };
+    let option: cert.CmsGeneratorOptions = {
+      outFormat: cert.CmsFormat.PEM
+    };
+    cms.addSigner(x509CertEntry, keyInfo, signerConfig);
+    let signData = cms.doFinalSync(plainText, option);
+    let config: cert.CmsVerificationConfig = {
+      trustCerts: [x509CertRoot, x509CertInter],
+    };
+    let verify: cert.CmsParser = cert.createCmsParser();
+    await verify.setRawData(signData, cert.CmsFormat.PEM);
+    let contentType: cert.CmsContentType = verify.getContentType();
+    console.info("contentType is " + contentType);
+    await verify.verifySignedData(config);
+    console.info("verifySignedData success");
+  } catch (error) {
+    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+  }
+}
+```
+
+### verifySignedData<sup>22+</sup>
+
+verifySignedData(config: CmsVerificationConfig): Promise\<void>
+
+用于验证Signed_DATA内容类型的CMS。使用Promise异步回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+**参数：**
+
+| 参数名       | 类型   | 必填 | 说明           |
+| ------------ | ------ | ---- | -------------- |
+| config |  [CmsVerificationConfig](#cmsverificationconfig22) | 是 | CMS验签配置内容。|
+
+**返回值**：
+
+| 类型           | 说明        |
+| -------------- | ----------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书错误码](errorcode-cert.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020003 | parameter check failed. Possible causes: <br>1. The trustCerts of config is empty;<br>2. The length of the contentData of config is zero or too large;<br>3. The contentDataFormat of config is invalid or not supported. |
+| 19030001 | crypto operation error. |
+| 19030003 | the certificate has not taken effect. |
+| 19030004 | the certificate has expired. |
+| 19030005 | failed to obtain the certificate issuer. |
+
+**示例：**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ECC_256_PUB_ENTRY_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n"                                      +
+  "MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n" +
+  "Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n" +
+  "MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n" +
+  "CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n" +
+  "PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n" +
+  "1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n" +
+  "MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n" +
+  "bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n" +
+  "MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n" +
+  "X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n" +
+  "1Cyy/+qufhBUJw5om7E=\n"                                             +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_INTER_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n" +
+  "SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n" +
+  "hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n" +
+  "VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n" +
+  "GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n" +
+  "puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n" +
+  "ia4tt478nYeQgMChg+xtSw==\n" +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_ROOT_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n" +
+  "wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n" +
+  "50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n" +
+  "A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n" +
+  "HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n" +
+  "ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n" +
+  "wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n" +
+  "-----END CERTIFICATE-----";
+let ECC_256_PRI_ENTRY_KEY: string =
+  "-----BEGIN EC PRIVATE KEY-----\n"                                   +
+  "MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n" +
+  "AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n" +
+  "HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n"                             +
+  "-----END EC PRIVATE KEY-----";
+
+    // string转Uint8Array。
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+      arr.push(str.charCodeAt(i));
+  };
+  return new Uint8Array(arr);
+}
+
+async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
+  let encodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(inStream),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+
+  };
+  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+
+  return x509Cert;
+}
+
+async function testCmsVerifyTest() {
+  try {
+    let plainText: Uint8Array = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07]);
+    let x509CertEntry: cert.X509Cert = await createX509Cert(ECC_256_PUB_ENTRY_CERT);
+    let x509CertInter: cert.X509Cert = await createX509Cert(ECC_256_PUB_INTER_CERT);
+    let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
+    let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
+    let signerConfig: cert.CmsSignerConfig = {
+      mdName: "SHA256",
+    };
+    let keyInfo: cert.PrivateKeyInfo = {
+      key: ECC_256_PRI_ENTRY_KEY
+    };
+    let option: cert.CmsGeneratorOptions = {
+      outFormat: cert.CmsFormat.PEM
+    };
+    cms.addSigner(x509CertEntry, keyInfo, signerConfig);
+    let signData = cms.doFinalSync(plainText, option);
+    let config: cert.CmsVerificationConfig = {
+      trustCerts: [x509CertRoot, x509CertInter],
+    };
+    let verify: cert.CmsParser = cert.createCmsParser();
+    await verify.setRawData(signData, cert.CmsFormat.PEM);
+    await verify.verifySignedData(config);
+    console.info("verifySignedData success");
+  } catch (error) {
+    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+  }
+}
+```
+
+### getContentData<sup>22+</sup>
+
+getContentData(): Promise\<Uint8Array>
+
+用于从签名类型的CMS数据中获取明文数据。使用Promise异步回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+**返回值：**
+
+| 类型                              | 说明                 |
+| --------------------------------- | -------------------- |
+| Promise\<Uint8Array> |Promise对象，返回CMS原始数据。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书错误码](errorcode-cert.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19030001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ECC_256_PUB_ENTRY_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n"                                      +
+  "MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n" +
+  "Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n" +
+  "MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n" +
+  "CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n" +
+  "PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n" +
+  "1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n" +
+  "MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n" +
+  "bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n" +
+  "MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n" +
+  "X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n" +
+  "1Cyy/+qufhBUJw5om7E=\n"                                             +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_INTER_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n" +
+  "SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n" +
+  "hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n" +
+  "VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n" +
+  "GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n" +
+  "puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n" +
+  "ia4tt478nYeQgMChg+xtSw==\n" +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_ROOT_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n" +
+  "wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n" +
+  "50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n" +
+  "A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n" +
+  "HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n" +
+  "ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n" +
+  "wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n" +
+  "-----END CERTIFICATE-----";
+let ECC_256_PRI_ENTRY_KEY: string =
+  "-----BEGIN EC PRIVATE KEY-----\n"                                   +
+  "MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n" +
+  "AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n" +
+  "HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n"                             +
+  "-----END EC PRIVATE KEY-----";
+
+// string转Uint8Array。
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+      arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
+  let encodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(inStream),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+
+  };
+  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+
+  return x509Cert;
+}
+
+async function testCmsVerifyTest() {
+  try {
+    let plainText: Uint8Array = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07]);
+    let x509CertEntry: cert.X509Cert = await createX509Cert(ECC_256_PUB_ENTRY_CERT);
+    let x509CertInter: cert.X509Cert = await createX509Cert(ECC_256_PUB_INTER_CERT);
+    let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
+    let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
+    let signerConfig: cert.CmsSignerConfig = {
+      mdName: "SHA256",
+    };
+    let keyInfo: cert.PrivateKeyInfo = {
+      key: ECC_256_PRI_ENTRY_KEY
+    };
+    let option: cert.CmsGeneratorOptions = {
+      outFormat: cert.CmsFormat.PEM
+    };
+    cms.addSigner(x509CertEntry, keyInfo, signerConfig);
+    let signData = cms.doFinalSync(plainText, option);
+    let config: cert.CmsVerificationConfig = {
+      trustCerts: [x509CertRoot, x509CertInter],
+    };
+    let verify: cert.CmsParser = cert.createCmsParser();
+    await verify.setRawData(signData, cert.CmsFormat.PEM);
+    await verify.verifySignedData(config);
+    console.info("verifySignedData success");
+    let contentData = await verify.getContentData();
+    console.info("verifySignedData success, contentData is "+ contentData);
+  } catch (error) {
+    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+  }
+}
+```
+
+### getCerts<sup>22+</sup>
+
+getCerts(type: CmsCertType): Promise<Array\<[X509Cert](#x509cert)>>
+
+传入枚举值，用于从签名类型的CMS数据中获取证书。当前支持获取签名者证书或全部证书。使用Promise异步回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+**参数：**
+
+| 参数名       | 类型   | 必填 | 说明           |
+| ------------ | ------ | ---- | -------------- |
+| type |  [CmsCertType](#cmscerttype22) | 是 | 从cms中获取证书的类型。|
+
+**返回值：**
+
+| 类型                              | 说明                 |
+| --------------------------------- | -------------------- |
+| Promise<Array\<[X509Cert](#x509cert)>> |Promise对象，返回证书集合。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书错误码](errorcode-cert.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020003 | <br>1. The type of the cmsFormat is invalid or not supported. |
+| 19030001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ECC_256_PUB_ENTRY_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n"                                      +
+  "MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n" +
+  "Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n" +
+  "MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n" +
+  "CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n" +
+  "PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n" +
+  "1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n" +
+  "MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n" +
+  "bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n" +
+  "MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n" +
+  "X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n" +
+  "1Cyy/+qufhBUJw5om7E=\n"                                             +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_INTER_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n" +
+  "SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n" +
+  "hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n" +
+  "VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n" +
+  "GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n" +
+  "puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n" +
+  "ia4tt478nYeQgMChg+xtSw==\n" +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_ROOT_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n" +
+  "wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n" +
+  "50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n" +
+  "A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n" +
+  "HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n" +
+  "ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n" +
+  "wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n" +
+  "-----END CERTIFICATE-----";
+let ECC_256_PRI_ENTRY_KEY: string =
+  "-----BEGIN EC PRIVATE KEY-----\n"                                   +
+  "MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n" +
+  "AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n" +
+  "HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n"                             +
+  "-----END EC PRIVATE KEY-----";
+
+// string转Uint8Array。
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+      arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
+  let encodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(inStream),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+
+  };
+  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+
+  return x509Cert;
+}
+
+async function testCmsVerifyTest() {
+  try {
+    let plainText: Uint8Array = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07]);
+    let x509CertEntry: cert.X509Cert = await createX509Cert(ECC_256_PUB_ENTRY_CERT);
+    let x509CertInter: cert.X509Cert = await createX509Cert(ECC_256_PUB_INTER_CERT);
+    let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
+    let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
+    let signerConfig: cert.CmsSignerConfig = {
+      mdName: "SHA256",
+    };
+    let keyInfo: cert.PrivateKeyInfo = {
+      key: ECC_256_PRI_ENTRY_KEY
+    };
+    let option: cert.CmsGeneratorOptions = {
+      outFormat: cert.CmsFormat.PEM
+    };
+    cms.addSigner(x509CertEntry, keyInfo, signerConfig);
+    let signData = cms.doFinalSync(plainText, option);
+    let config: cert.CmsVerificationConfig = {
+      trustCerts: [x509CertRoot, x509CertInter],
+    };
+    let verify: cert.CmsParser = cert.createCmsParser();
+    await verify.setRawData(signData, cert.CmsFormat.PEM);
+    await verify.verifySignedData(config);
+    console.info("verifySignedData success");
+    let signerCerts: cert.X509Cert[] = await verify.getCerts(cert.CmsCertType.SIGNER_CERTS);
+    console.info("getCerts success, cert num is " + signerCerts.length);
+    await verify.getContentData();
+  } catch (error) {
+    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+  }
+}
+```
+
+### decryptEnvelopedData<sup>22+</sup>
+
+decryptEnvelopedData(config: CmsEnvelopedDecryptionConfig): Promise\<Uint8Array>
+
+用于验证Enveloped_DATA内容类型的CMS。使用Promise异步回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+**参数：**
+
+| 参数名       | 类型   | 必填 | 说明           |
+| ------------ | ------ | ---- | -------------- |
+| config |  [CmsEnvelopedDecryptionConfig](#cmsenvelopeddecryptionconfig22) | 是 | CMS解封装配置内容。|
+
+**返回值：**
+
+| 类型                              | 说明                 |
+| --------------------------------- | -------------------- |
+| Promise\<Uint8Array> |Promise对象，返回解封装结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书错误码](errorcode-cert.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020003 | parameter check failed. Possible causes: <br>1. The private key is invalid or not supported;<br>2. The recipient certificate is invalid or not supported. |
+| 19030001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+
+let ECC_256_PUBKEY: string =
+  "-----BEGIN CERTIFICATE-----\n"                                      +
+  "MIICGDCCAb6gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMFcxCzAJBgNVBAYTAkNO\n" +
+  "MQ8wDQYDVQQIDAbpmZXopb8xDzANBgNVBAcMBuilv+WuiTEPMA0GA1UECgwG5rWL\n" +
+  "6K+VMRUwEwYDVQQDDAzkuK3mlofmtYvor5UwHhcNMjUwOTE2MDY0MTMwWhcNMzUw\n" +
+  "OTE0MDY0MTMwWjBXMQswCQYDVQQGEwJDTjEPMA0GA1UECAwG6ZmV6KW/MQ8wDQYD\n" +
+  "VQQHDAbopb/lrokxDzANBgNVBAoMBua1i+ivlTEVMBMGA1UEAwwM5Lit5paH5rWL\n" +
+  "6K+VMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEB06h4SzOryi3d7PW9yN2wACC\n" +
+  "VxlduBQjVLWZlDKhFKkdZjve8mUyytSSbBj/rrzR2XmzUzofuNkUbAtje3DDJqN2\n" +
+  "MHQwHQYDVR0OBBYEFNtUldgBESf31bwTnYtApIctaSdtMB8GA1UdIwQYMBaAFNtU\n" +
+  "ldgBESf31bwTnYtApIctaSdtMAsGA1UdDwQEAwIBBjAJBgNVHREEAjAAMAkGA1Ud\n" +
+  "EgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNIADBFAiEAzxzaG2vR\n" +
+  "zUnFFL3X3lRQ0IOJrb6cvkSZuaFd4bW2lgUCIHW6QGGnECDFMbDNz7Og9kjkt+3k\n" +
+  "FmEJWqEMYudBH3Ul\n"                                                 +
+  "-----END CERTIFICATE-----";
+let ECC_256_PRIVATE: string =
+  "-----BEGIN PRIVATE KEY-----\n"                                      +
+  "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgOYwEyIw3ZNIAL4xO\n" +
+  "pP6eVcQYcrL2sfnt6vB0z9tKmMmhRANCAAQHTqHhLM6vKLd3s9b3I3bAAIJXGV24\n" +
+  "FCNUtZmUMqEUqR1mO97yZTLK1JJsGP+uvNHZebNTOh+42RRsC2N7cMMm\n"         +
+  "-----END PRIVATE KEY-----";
+
+// string转Uint8Array。
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+      arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
+  let encodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(inStream),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+  };
+  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+
+  return x509Cert;
+}
+
+async function testCmsDecryptTest() {
+  try {
+    let plainText: Uint8Array = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07]);
+    let x509CertEc: cert.X509Cert = await createX509Cert(ECC_256_PUBKEY);
+    let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.ENVELOPED_DATA);
+    let option: cert.CmsGeneratorOptions = {
+      outFormat: cert.CmsFormat.PEM
+    };
+    cms.setRecipientEncryptionAlgorithm(cert.CmsRecipientEncryptionAlgorithm.AES_128_GCM);
+    let recipientInfo: cert.CmsRecipientInfo = {
+      keyAgreeInfo: {
+          cert: x509CertEc,
+          digestAlgorithm: cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256
+      }
+    };
+    await cms.addRecipientInfo(recipientInfo);
+    console.info("add recipient success:" + recipientInfo.keyAgreeInfo?.digestAlgorithm);
+    let envelopeData = await cms.doFinal(plainText, option);
+    console.info("doFinal success:" + envelopeData);
+    let cipherText = await cms.getEncryptedContentData();
+    console.info("cipherText success:" + cipherText);
+    let config: cert.CmsEnvelopedDecryptionConfig = {
+      keyInfo: {
+          key: ECC_256_PRIVATE
+      },
+    };
+    let cmsDecrypt: cert.CmsParser = cert.createCmsParser();
+    await cmsDecrypt.setRawData(envelopeData, cert.CmsFormat.PEM);
+    let decPlainText: Uint8Array = await cmsDecrypt.decryptEnvelopedData(config);
+    console.info("[XTS] Decrypt success:" + decPlainText);
+    console.info("decryptEnvelopedData success");
+  } catch (error) {
+    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+  }
 }
 ```

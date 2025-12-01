@@ -1,4 +1,14 @@
 # ArkUI_SnapshotOptions
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_SnapshotOptions ArkUI_SnapshotOptions
+```
 
 ## 概述
 

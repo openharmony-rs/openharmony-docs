@@ -64,9 +64,9 @@ Represents data of the hyperlink type.
 | Name       | Type  | Read-Only| Optional| Description          |
 | ----------- | ------ | ---- | ---- |--------------|
 | uniformDataType | 'general.hyperlink'| Yes  | No  | Uniform data type, which has a fixed value of **general.hyperlink**. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype). |
-| url         | string | No  | No  | URL.  |
+| url         | string | No  | No  | URL.      |
 | description | string | No  | Yes  | Description of the linked content. This parameter is optional. By default, it is an empty string.|
-| details | Record<string, string> | No  | Yes | Object of the dictionary type used to describe the attributes of the hyperlink. Both the key and value of the object are of the string type. For example, the following is a **details** object used to describe the properties of a file:<br>{<br>"title":"Title of the file",<br>"content":"Content of the file"<br>}<br>By default, it is an empty dictionary object. |
+| details | Record<string, string> | No  | Yes | Object of the dictionary type used to describe the attributes of the hyperlink. Both the key and value of the object are of the string type. For example, the following is a **details** object used to describe the properties of a file:<br>{<br>"title":"Title of the file",<br>"content":"Content of the file"<br>}<br>By default, it is an empty dictionary object.|
 
 **Example**
 
@@ -97,7 +97,7 @@ Represents data of the HTML type.
 | uniformDataType | 'general.html'| Yes  | No  | Uniform data type, which has a fixed value of **general.html**. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype). |
 | htmlContent  | string | No  | No  | Content in HTML format.            |
 | plainContent | string | No  | Yes  | Plaintext without HTML tags. This parameter is optional. By default, it is an empty string.|
-| details | Record<string, string> | No  | Yes  | Object of the dictionary type used to describe the attributes of the HTML content. Both the key and value of the object are of the string type. For example, the following is a **details** object used to describe the properties of a file:<br>{<br>"title":"Title of the file",<br>"content":"Content of the file"<br>}<br> By default, it is an empty dictionary object.|
+| details | Record<string, string> | No  | Yes  | Object of the dictionary type used to describe the attributes of the HTML content. Both the key and value of the object are of the string type. For example, the following is a **details** object used to describe the properties of a file:<br>{<br>"title":"Title of the file",<br>"content":"Content of the file"<br>}<br>By default, it is an empty dictionary object.|
 
 **Example**
 
@@ -210,6 +210,7 @@ Represents data of the widget type defined by the system.
 | abilityName| string | No  | No | Ability name corresponding to the widget.|
 | module     | string | No  | No | Module to which the widget belongs.|
 | details | Record<string, number \| string \| Uint8Array> | No  | Yes  | Object of the dictionary type used to describe the icon. The key is of the string type, and the value can be a number, a string, or a Uint8Array. By default, it is an empty dictionary object.|
+
 
 **Example**
 

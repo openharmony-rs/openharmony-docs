@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} Rdb_TableDetails
+```
+
 ## Overview
 
 Defines a struct for statistics of device-cloud upload and download tasks of a database table.

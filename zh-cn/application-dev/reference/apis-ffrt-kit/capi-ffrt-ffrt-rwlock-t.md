@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct {...} ffrt_rwlock_t
+```
+
 ## 概述
 
 FFRT读写锁结构。
@@ -21,7 +25,7 @@ FFRT读写锁结构。
 
 ### 成员变量	
 
-| 名称 | 描述 |	
-| -- | -- |	
+| 名称 | 描述 |
+| -- | -- |
 | uint32_t storage[(ffrt_rwlock_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | FFRT读写锁所占空间 |
 

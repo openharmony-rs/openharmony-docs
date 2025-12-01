@@ -36,18 +36,22 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
 
-// 获取需要设备数据等级的文件沙箱路径，请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let pathDir = context.filesDir;
-let filePath = pathDir + '/test.txt';
+```
+<!--@[set_security_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
 
-//打开文件
-let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-// 设置文件的数据等级为s0
-securityLabel.setSecurityLabel(filePath, 's0').then(() => {
-  console.info('Succeeded in setSecurityLabeling.');
-  fs.closeSync(file);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to setSecurityLabel. Code: ${err.code}, message: ${err.message}`);
-});
+``` TypeScript
+            // 获取需要设备数据等级的文件沙箱路径，请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            let pathDir = context.filesDir;
+            let filePath = pathDir + '/test.txt';
+
+            //打开文件
+            let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+            // 设置文件的数据等级为s0
+            securityLabel.setSecurityLabel(filePath, 's0').then(() => {
+              console.info('Succeeded in setSecurityLabeling.');
+              fs.closeSync(file);
+            }).catch((err: BusinessError) => {
+              console.error(`Failed to setSecurityLabel. Code: ${err.code}, message: ${err.message}`);
+            });
 ```

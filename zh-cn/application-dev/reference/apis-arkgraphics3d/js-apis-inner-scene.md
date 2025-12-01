@@ -9,6 +9,7 @@
 本模块作为ArkGraphics 3D基础模块，提供SceneResourceParameters、SceneNodeParameters等通用数据类型。同时提供glTF模型加载，场景元素、资源创建等基础方法。
 
 > **说明：** 
+>
 > - 本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标标记接口的起始版本。
 > - 关于`.shader`资源文件，具体请见[.shader资源文件格式要求](../../graphics3d/arkgraphics3D-shader-resource.md)。
 
@@ -22,6 +23,7 @@ import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastPar
 场景资源参数对象，包含name和uri，用于提供场景资源的名称以及3D场景所需的资源文件路径。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | name | string | 否 | 否 | 要创建资源的名称，可由开发者自定填写，用于标识该场景资源。|
@@ -88,6 +90,7 @@ function createNodePromise() : Promise<Node> {
 射线检测命中结果对象，包含被射线击中的3D物体详细信息。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | 否 | 否 | 被射线击中的3D场景节点，可通过该节点操作目标物体（如移动、旋转、隐藏）。 |
@@ -342,7 +345,29 @@ function createScenePromise(fromFile: boolean = false): Promise<Scene> {
 }
 ```
 
+## CameraParameters<sup>21+</sup>
+
+相机创建参数配置，用于定义相机创建的额外选项。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| msaa<sup>22+</sup> | boolean | 否 | 是 | 相机是否使能MSAA，true表示使能MSAA，false表示不使能MSAA。默认值为false。 |
+| renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | 否   | 是   | 选择初始渲染管线类型，默认为轻量级前向渲染管线类型。 |
+
+## EffectParameters<sup>21+</sup>
+
+特效参数。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称     | 类型   | 只读 | 可选 | 说明                                                         |
+| ---- | ---- | ---- | ---- | ---- |
+| effectId | string | 否 | 否 | 用于创建特效的ID，固定格式为'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'，比如'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'。 |
+
 ## SceneResourceFactory
+
 用于创建3D场景中资源的接口，例如相机、光源等，继承自[RenderResourceFactory](#renderresourcefactory20)。
 
 ### createCamera
@@ -353,6 +378,7 @@ createCamera(params: SceneNodeParameters): Promise\<Camera>
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
+
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | params | [SceneNodeParameters](#scenenodeparameters) | 是 | 场景结点参数。 |
@@ -384,7 +410,52 @@ function createCameraPromise(): Promise<Camera> {
 }
 ```
 
+### createCamera<sup>21+</sup>
+
+createCamera(params: SceneNodeParameters, cameraParams: CameraParameters): Promise\<Camera>
+
+根据结点参数与相机参数创建相机，使用Promise异步回调。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| params | [SceneNodeParameters](#scenenodeparameters) | 是 | 场景结点参数。 |
+| cameraParams | [CameraParameters](#cameraparameters21) | 是 | 相机参数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise\<[Camera](js-apis-inner-scene-nodes.md#camera)> | Promise对象，返回相机对象。 |
+
+**示例：**
+```ts
+import { SceneNodeParameters, Camera, SceneResourceFactory, Scene, CameraParameters,
+  RenderingPipelineType } from '@kit.ArkGraphics3D';
+
+function createCameraPromise(): Promise<Camera> {
+  return new Promise((resolve, reject) => {
+    // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+    let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+    scene.then(async (result: Scene) => {
+      let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      let nodeParameter: SceneNodeParameters = { name: "camera1" };
+      let camParameter: CameraParameters = {renderingPipeline: RenderingPipelineType.FORWARD};
+      // 创建相机
+      let camera: Camera = await sceneFactory.createCamera(nodeParameter, camParameter);
+      resolve(camera);
+    }).catch((error: Error) => {
+      console.error('Scene load failed:', error);
+      reject(error);
+    });
+  });
+}
+```
+
 ### createLight
+
 createLight(params: SceneNodeParameters, lightType: LightType): Promise\<Light>
 
 根据结点参数和灯光类型创建灯光，使用Promise异步回调。
@@ -437,6 +508,7 @@ createNode(params: SceneNodeParameters): Promise\<Node>
 | params | [SceneNodeParameters](#scenenodeparameters) | 是 | 场景结点参数。 |
 
 **返回值：**
+
 | 类型 | 说明 |
 | ---- | ---- |
 | Promise\<[Node](js-apis-inner-scene-nodes.md#node)> | Promise对象，返回结点对象。 |
@@ -563,6 +635,7 @@ createGeometry(params: SceneNodeParameters, mesh:MeshResource): Promise\<Geometr
 | Promise\<[Geometry](js-apis-inner-scene-nodes.md#geometry)> | Promise对象，返回几何对象。 |
 
 **示例：**
+
 ```ts
 import { SceneResourceFactory, Scene, Geometry, CubeGeometry } from '@kit.ArkGraphics3D';
 
@@ -588,7 +661,52 @@ function createGeometryPromise() : Promise<Geometry> {
 }
 ```
 
+### createEffect<sup>21+</sup>
+
+createEffect(params: EffectParameters): Promise\<Effect>
+
+根据特效参数创建特效对象，使用Promise异步回调。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| params | [EffectParameters](#effectparameters21) | 是 | 特效参数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise\<[Effect](./js-apis-inner-scene-resources.md#effect21)> | Promise对象，返回特效对象。 |
+
+**示例：**
+```ts
+import { SceneResourceFactory, Scene, Effect, EffectParameters } from '@kit.ArkGraphics3D';
+
+function createEffect() : Promise<Effect> {
+  return new Promise((resolve, reject) => {
+    let scene: Promise<Scene> = Scene.load();
+    scene.then(async (result: Scene | undefined) => {
+      if (!result) {
+        return;
+      }
+      let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      // 特效ID，固定格式为'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'，比如'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'
+      let params: EffectParameters = {effectId: "e68a7f45-2d21-4a0d-9aef-7d9c825d3f12"}
+      let effect: Effect = await sceneFactory.createEffect(params);
+      resolve(effect);
+    }).catch((error: Error) => {
+      console.error('Scene load failed:', error);
+      reject(error);
+    });
+  });
+}
+```
+
+
 ## SceneComponent<sup>20+</sup>
+
 表示基础场景组件，用于描述场景节点的组件信息，包括组件名称及其对应的属性集合。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -742,6 +860,8 @@ static load(uri?: ResourceStr): Promise\<Scene>
 | Promise\<[Scene](#scene-1)> | Promise对象，返回场景对象。|
 
 **示例：**
+
+示例1：通过rawfile加载（相对路径）
 ```ts
 import { Scene } from '@kit.ArkGraphics3D';
 
@@ -749,6 +869,38 @@ function loadModel(): void {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
   let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {});
+}
+```
+
+示例2：通过绝对路径加载（从应用沙盒目录/data/storage/el2/base/files加载模型）
+```ts
+import { common } from '@kit.AbilityKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { Scene } from '@kit.ArkGraphics3D';
+
+async loadModelFromAbsolutePath(): Promise<void> {
+  // 获取应用沙盒目录（Scene.load仅能读取应用自身写入的文件，不能读取hdc/adb push写入的文件）
+  const uiCtx = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  const appCtx = uiCtx.getApplicationContext();
+  const filesDir = appCtx.filesDir; // /data/storage/el2/base/files
+
+  // 从rawfile读取模型内容（实际使用中也可以替换为其他来源的数据）
+  // 使用.glb文件更易于复制加载；若为.gltf，请将其.bin和贴图文件一并复制到同一目录
+  const src = 'gltf/CubeWithFloor/glTF/AnimatedCube.glb';
+  const load_uri = `${filesDir}/AnimatedCube.glb`;
+
+  // 写入模型文件到应用沙盒目录，生成可被Scene.load(绝对路径)访问的实际文件
+  const rawData = await uiCtx.resourceManager.getRawFileContent(src);
+  const file = fileIo.openSync(load_uri, fileIo.OpenMode.CREATE | fileIo.OpenMode.TRUNC | fileIo.OpenMode.WRITE_ONLY);
+  fileIo.writeSync(file.fd, rawData.buffer.slice(rawData.byteOffset, rawData.byteOffset + rawData.byteLength));
+  fileIo.closeSync(file);
+
+  // 使用绝对路径加载模型
+  Scene.load(load_uri).then((scene: Scene) => {
+    // 加载成功后的逻辑处理
+  }).catch((error: string) => {
+    console.error('Scene load failed: ' + error);
+  });
 }
 ```
 

@@ -7,16 +7,25 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 目前HAR的使用存在打包多份，包膨胀的问题，导致整体应用包的体积很大，HSP可以很好地解决该问题，本文介绍如何通过配置项的变更将HAR工程转换为HSP工程。
+
+>
+> **说明：**
+>
+> 部分组件和模块在HAP、HSP、HAR中集成使用时存在差异，例如[加载HAR中Worker线程文件相比HSP存在单独的使用约束](../arkts-utils/worker-introduction.md#文件路径注意事项)，因此按照如下步骤完成HAR转HSP后，请关注对应组件和模块介绍并进行适配。
+>
+
 ## HAR转HSP的操作步骤
 
 1. 修改HAR模块下的module.json5文件，将type字段设置为shared，并新增deliveryWithInstall和pages字段。
-    ```json
-    // MyApplication\library\src\main\module.json5
+    <!-- @[har_to_hsp_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/src/main/module.json5) -->
+    
+    ``` JSON5
     {
       "module": {
+        // ...
         "type": "shared",
         "deliveryWithInstall": true,
-        "pages": "$profile:main_pages"
+        "pages": "$profile:main_pages",
         // ...
       }
     }
@@ -33,13 +42,15 @@
     ```
 
 3. 在ets目录下新增pages目录，并在pages目录下新增PageIndex.ets文件，配置如下内容。
-    ```ts
-    // MyApplication\library\src\main\ets\pages\PageIndex.ets
+
+    <!-- @[har_to_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/src/main/ets/pages/PageIndex.ets) -->
+    
+    ``` TypeScript
     @Entry
     @Component
     struct PageIndex {
       @State message: string = 'hello world';
-
+    
       build() {
         Row() {
           Column() {
@@ -57,29 +68,37 @@
 4. 删除HAR模块的build-profile.json5文件中的consumerFiles字段配置。
 
 5. 修改HAR模块的hvigorfile.ts文件，将以下内容替换文件内容。
-    ```ts
-    // MyApplication\library\hvigorfile.ts
-    import { hspTasks } from '@ohos/hvigor-ohos-plugin';
 
+    <!-- @[har_to_hsp_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/hvigorfile.ts) -->
+    
+    ``` TypeScript
+    // library\hvigorfile.ts
+    import { hspTasks } from '@ohos/hvigor-ohos-plugin';
+    
     export default {
-      system: hspTasks,  /* Built-in plugin of Hvigor. It cannot be modified. */
-      plugins:[]         /* Custom plugin to extend the functionality of Hvigor. */
+      system: hspTasks,  // 编译修改成HSP的任务
+      plugins:[]
     }
     ```
 
 6. 修改oh-package.json5文件，新增packageType配置。
-    ```json
-    // MyApplication\library\oh-package.json5
+
+    <!-- @[har_to_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/oh-package.json5) -->
+    
+    ``` JSON5
     {
+      // ...
       "packageType": "InterfaceHar"
     }
     ```
 
 7. 修改项目根目录下的build-profile.json5文件，在modules标签下找到library的配置，新增targets标签。
 
-    ```json
-    // MyApplication\build-profile.json5
+    <!-- @[har_to_hsp_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/build-profile.json5) -->
+    
+    ``` JSON5
     "modules": [
+      // ...
       {
         "name": "library",
         "srcPath": "./library",
@@ -92,4 +111,5 @@
           }
         ]
       }
-    ]
+    ],
+    ```

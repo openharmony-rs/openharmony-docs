@@ -10,7 +10,7 @@ For applications developed based on earlier versions, pay attention to the chang
 
 **Key API/Component Changes**
 
-The APIs of **MediaLibrary**, located in **@ohos.multimedia.medialibrary**, are deprecated. The **FilePicker** class, located in [@ohos.file.picker](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.file.picker.d.ts) is used.
+The APIs of **MediaLibrary**, located in **@ohos.multimedia.medialibrary**, are deprecated. The **FilePicker** class, located in [@ohos.file.picker](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.file.picker.d.ts) is used.
 
 | Module                   | Method/Attribute/Enum/Constant                                         | Change Type|
 | ------------------------- | ------------------------------------------------------------ | -------- |

@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} Rdb_TableDetails
+```
+
 ## 概述
 
 描述数据库表执行端云同步任务上传和下载的统计信息。

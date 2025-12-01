@@ -4,7 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 该模块基于[Sendable](../../arkts-utils/arkts-sendable.md)对象，提供相册管理模块能力，包括创建相册以及访问、修改相册中的媒体数据信息等。
 
@@ -81,7 +81,7 @@ struct Index {
 
 createAsset(displayName: string): Promise&lt;PhotoAsset&gt;
 
-指定待创建的图片或者视频的文件名，创建图片或视频资源，使用Promise方式返回结果。
+指定待创建的图片或者视频的文件名，创建图片或视频资源。使用Promise异步回调。
 
 待创建的文件名参数规格为：
 - 应包含有效文件主名和图片或视频扩展名。
@@ -112,11 +112,9 @@ createAsset(displayName: string): Promise&lt;PhotoAsset&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 201      | Permission denied.                                           |
-| 13900020 | Invalid argument.                                            |
-| 14000001 | Invalid display name.                                        |
 | 14000011 | Internal system error                                        |
 
 **示例：**
@@ -139,9 +137,9 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 ### createAsset
 
-createAsset(displayName: string, options: PhotoCreateOptions): Promise&lt;PhotoAsset&gt;
+createAsset(displayName: string, options: photoAccessHelper.PhotoCreateOptions): Promise\<PhotoAsset\>
 
-指定待创建的图片或者视频的文件名和创建选项，创建图片或视频资源，使用Promise方式返回结果。
+指定待创建的图片或者视频的文件名和创建选项，创建图片或视频资源。使用Promise异步回调。
 
 待创建的文件名参数规格为：
 - 应包含有效文件主名和图片或视频扩展名。
@@ -159,7 +157,7 @@ createAsset(displayName: string, options: PhotoCreateOptions): Promise&lt;PhotoA
 | 参数名      | 类型                                                         | 必填 | 说明                       |
 | ----------- | ------------------------------------------------------------ | ---- | -------------------------- |
 | displayName | string                                                       | 是   | 创建的图片或者视频文件名。 |
-| options     | [PhotoCreateOptions](js-apis-photoAccessHelper-sys.md#photocreateoptions) | 是   | 图片或视频的创建选项。     |
+| options     | [photoAccessHelper.PhotoCreateOptions](js-apis-photoAccessHelper-sys.md#photocreateoptions) | 是   | 图片或视频的创建选项。     |
 
 **返回值：**
 
@@ -173,11 +171,9 @@ createAsset(displayName: string, options: PhotoCreateOptions): Promise&lt;PhotoA
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 201      | Permission denied.                                           |
-| 13900020 | Invalid argument.                                            |
-| 14000001 | Invalid display name.                                        |
 | 14000011 | Internal system error                                        |
 
 **示例：**
@@ -205,7 +201,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 getHiddenAlbums(mode: HiddenPhotosDisplayMode, options?: FetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
 
-根据隐藏文件显示模式和检索选项获取系统中的隐藏相册，使用Promise方式返回结果。
+根据隐藏文件显示模式和检索选项获取系统中的隐藏相册。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -301,7 +297,7 @@ async function getHiddenAlbumsView(phAccessHelper: sendablePhotoAccessHelper.Pho
 
 requestSource(): Promise&lt;number&gt;
 
-打开源文件并返回fd，该方法使用Promise形式来返回结果。
+打开源文件并返回fd（文件描述符）。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -323,7 +319,6 @@ requestSource(): Promise&lt;number&gt;
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000011 | Internal system error                                        |
 
 **示例：**
@@ -360,7 +355,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 getAnalysisData(analysisType: AnalysisType): Promise\<string>
 
-根据智慧分析类型获取指定分析结果数据。
+根据智慧分析类型获取指定分析结果数据。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -429,7 +424,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 getFaceId(): Promise\<string>
 
-获取人像相册或合影相册的封面人脸标识。
+获取人像相册或合影相册的封面人脸标识。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 

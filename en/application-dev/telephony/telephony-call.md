@@ -1,4 +1,10 @@
 # Call Service Development
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @shao-yikai-->
+<!--Designer: @wnazgul-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 ## Scenario Description
 
@@ -75,7 +81,7 @@ This permission is of the **system\_basic** level. Before applying for the permi
         }
         let slotId: SlotId = {slotId: 0}
         observer.on("callStateChange", slotId, (data: CallStateCallback) => {
-            console.log("call state change, data is:" + JSON.stringify(data));
+            console.info("call state change, data is:" + JSON.stringify(data));
         });
     }
    ```
@@ -99,7 +105,7 @@ This permission is of the **system\_basic** level. Before applying for the permi
         // The tel URI format is supported since API version 15, for example, tel:13xxxx.
         call.makeCall("13xxxx", (err: BusinessError) => {
             if (!err) {
-                console.log("make call success.");
+                console.info("make call success.");
             } else {
                 console.error("make call fail, err is:" + JSON.stringify(err));
             }
@@ -112,7 +118,7 @@ This permission is of the **system\_basic** level. Before applying for the permi
         }
         let slotId: SlotId = {slotId: 0}
         observer.on("callStateChange", slotId, (data: CallStateCallback) => {
-            console.log("call state change, data is:" + JSON.stringify(data));
+            console.info("call state change, data is:" + JSON.stringify(data));
         });
     }
    ```

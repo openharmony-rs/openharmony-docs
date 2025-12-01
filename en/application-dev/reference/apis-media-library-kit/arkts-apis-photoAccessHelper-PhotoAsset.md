@@ -4,7 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -22,7 +22,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                     | Type                    | Readable| Writable| Description                                                  |
+| Name                     | Type                    | Read-Only| Optional| Description                                                  |
 | ------------------------- | ------------------------ | ---- | ---- | ------------------------------------------------------ |
 | uri                       | string                   | Yes  | No  | Media asset URI, for example, **file://media/Photo/1/IMG_datetime_0001/displayName.jpg**. For details, see [Media File URI](../../file-management/user-file-uri-intro.md#media-file-uri).<br>**Atomic service API**: This API can be used in atomic services since API version 12.        |
 | photoType   | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | Yes  | No  | Type of the file.<br>**Atomic service API**: This API can be used in atomic services since API version 20.                                              |
@@ -250,6 +250,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
   let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+  if (photoAsset === undefined) {
+    console.error('commitModifyPromise photoAsset is undefined');
+    return;
+  }
   let title: string = photoAccessHelper.PhotoKeys.TITLE.toString();
   let photoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title);
   console.info('photoAsset get photoAssetTitle = ', photoAssetTitle);
@@ -392,9 +396,9 @@ getThumbnail(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 Obtains the thumbnail of this file. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -450,9 +454,9 @@ getThumbnail(size: image.Size, callback: AsyncCallback&lt;image.PixelMap&gt;): v
 
 Obtains the file thumbnail of the given size. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -492,16 +496,20 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     predicates: predicates
   };
   let size: image.Size = { width: 720, height: 720 };
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
-  let asset = await fetchResult.getFirstObject();
-  console.info('asset displayName = ', asset.displayName);
-  asset.getThumbnail(size, (err, pixelMap) => {
-    if (err === undefined) {
-      console.info('getThumbnail successful ' + pixelMap);
-    } else {
-      console.error(`getThumbnail fail with error: ${err.code}, ${err.message}`);
-    }
-  });
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let asset = await fetchResult.getFirstObject();
+    console.info('asset displayName = ', asset.displayName);
+    asset.getThumbnail(size, (err, pixelMap) => {
+      if (err === undefined) {
+        console.info('getThumbnail successful ' + pixelMap);
+      } else {
+        console.error(`getThumbnail fail with error: ${err.code}, ${err.message}`);
+      }
+    });
+  } catch (error) {
+    console.error(`Error fetching assets: ${error.message}`);
+  }
 }
 ```
 
@@ -511,9 +519,9 @@ getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 
 Obtains the file thumbnail of the given size. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -574,7 +582,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 clone(title: string): Promise&lt;PhotoAsset&gt;
 
-Clones a media asset. The file name can be set, but the file type cannot be changed.
+Clones a media asset. The file name can be set, but the file type cannot be changed. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE\_IMAGEVIDEO
 
@@ -744,6 +752,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     };
     let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('photoAsset is undefined');
+      return;
+    }
     let fd: number = await photoAsset.getReadOnlyFd();
     if (fd !== undefined) {
       console.info('File fd' + fd);

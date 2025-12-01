@@ -8,12 +8,12 @@ Linux内核移植主要涉及基于linux内核基线合入三方芯片补丁后�
 
 ### 基本信息
 
-当前Linux内核基线是基于Linux社区 5.10 LTS版本演进，合入CVE及bugfix补丁。具体信息参考[代码库](https://gitee.com/openharmony/kernel_linux_5.10)，对应repo工程代码路径为`kernel/linux-5.10`。
+当前Linux内核基线是基于Linux社区 5.10 LTS版本演进，合入CVE及bugfix补丁。具体信息参考[代码库](https://gitcode.com/openharmony/kernel_linux_5.10)，对应repo工程代码路径为`kernel/linux-5.10`。
 
 
 ### Bootloader
 
-可以使用芯片厂商自带的Bootloader，或者是开源Uboot等加载内核镜像。比如为支持Hi3516DV300开发板，OpenHarmony引入的开源[Uboot](https://gitee.com/openharmony/third_party_u-boot)。
+可以使用芯片厂商自带的Bootloader，或者是开源Uboot等加载内核镜像。比如为支持Hi3516DV300开发板，OpenHarmony引入的开源[Uboot](https://gitcode.com/openharmony/third_party_u-boot)。
 
 
 ## 适配编译和烧录启动

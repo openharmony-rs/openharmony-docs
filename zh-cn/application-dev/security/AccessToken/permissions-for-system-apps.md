@@ -365,6 +365,20 @@
 
 **起始版本**：8
 
+## ohos.permission.FORCE_FACTORY_RESET
+
+允许系统应用强制恢复设备至出厂设置，中途无法打断。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**ACL使能**：true
+
+**起始版本**：23
+
 ## ohos.permission.ASSIST_DEVICE_UPDATE
 
 允许拉起升级服务对其他设备做辅助、协同升级。
@@ -652,6 +666,22 @@
 **ACL使能**：true
 
 **起始版本**：7
+
+## ohos.permission.INSTALL_ALLOW_DOWNGRADE
+
+允许应用降级安装其他应用。
+
+获取该权限后，即使设备已安装较高版本的应用，也可以覆盖安装较低版本的应用。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**ACL使能**：true
+
+**起始版本**：23
 
 ## ohos.permission.MANAGE_SHORTCUTS
 
@@ -1730,18 +1760,6 @@
 **ACL使能**：true
 
 **起始版本**：10
-
-## ohos.permission.sec.ACCESS_UDID
-
-允许系统应用获取UDID。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**起始版本**：7
 
 ## ohos.permission.securityguard.REQUEST_SECURITY_MODEL_RESULT
 
@@ -4765,6 +4783,20 @@
 
 **起始版本**：20
 
+## ohos.permission.INJECT_PLAYBACK_TO_AUDIO_CAPTURE
+
+允许系统应用将播放音频注入到录制音频。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：22
+
 ## ohos.permission.kernel.ALLOW_APP_CODE_DECRYPT
 
 允许系统应用或系统服务调用内核接口进行代码解密。
@@ -5077,6 +5109,34 @@
 
 **起始版本**：20
 
+## ohos.permission.GET_SCREEN_CONTENT
+
+允许应用获取屏幕上的内容。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：20
+
+## ohos.permission.SIMULATE_USER_INPUT
+
+允许应用模拟用户操作。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：20
+
 ## ohos.permission.MANAGE_SELF_SKILLS
 
 允许应用管理本应用的skills配置。
@@ -5105,4 +5165,46 @@
 
 **支持设备**：PC/2in1 | Phone | Tablet | TV | Car
 
-**起始版本**：21
+**起始版本**：22
+
+## ohos.permission.CAPTURE_SCREEN_ALL
+
+允许应用截取屏幕图像，包括隐私窗口。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：13
+
+## ohos.permission.GET_BACKGROUND_TASK_INFO
+
+允许应用获取后台任务状态信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
+
+## ohos.permission.SET_BACKGROUND_TASK_STATE
+
+允许应用获取和设置特殊长时任务用户授权状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23

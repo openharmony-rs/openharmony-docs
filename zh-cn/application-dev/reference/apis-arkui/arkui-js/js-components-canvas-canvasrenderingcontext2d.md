@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
 >
@@ -72,17 +72,17 @@
 | [shadowColor](#shadowcolor)              | &lt;color&gt;                            | 设置绘制阴影时的阴影颜色。                            |
 | [shadowOffsetX](#shadowoffsetx)          | number                                   | 设置绘制阴影时和原有对象的水平偏移值。                      |
 | [shadowOffsetY](#shadowoffsety)          | number                                   | 设置绘制阴影时和原有对象的垂直偏移值。                      |
-| [imageSmoothingEnabled](#imagesmoothingenabled6)<sup>6+</sup> | boolean                                  | 用于设置绘制图片时是否进行图像平滑度调整，true为启用，false为不启用。<br>默认值：true |
+| [imageSmoothingEnabled](#imagesmoothingenabled) | boolean                                  | 用于设置绘制图片时是否进行图像平滑度调整，true为启用，false为不启用。<br>默认值：true |
 
 
 ### fillStyle
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
   <canvas ref="canvas" style="width: 200px; height: 150px; "></canvas>
 </div>
-  ```
+```
 
 ```js
 // xxx.js
@@ -411,7 +411,7 @@ export default {
 </div>
 ```
 
-  ```js
+```js
 // xxx.js
 export default {
   onShow() {
@@ -430,20 +430,20 @@ export default {
     ctx.fillRect(150, 50, 50, 50);
   }
 }
-  ```
+```
 
-  ![zh-cn_image_0000001213192781](figures/zh-cn_image_0000001213192781.png)
+![zh-cn_image_0000001213192781](figures/zh-cn_image_0000001213192781.png)
 
   示例中，新绘制内容是蓝色矩形，现有绘制内容是红色矩形。
 
 ### shadowBlur
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
   <canvas ref="canvas" style="width: 200px; height: 150px; "></canvas>
 </div>
-  ```
+```
 
 ```js
 // xxx.js
@@ -539,7 +539,7 @@ export default {
 
 ![zh-cn_image_0000001213193285](figures/zh-cn_image_0000001213193285.png)
 
-### imageSmoothingEnabled<sup>6+</sup>
+### imageSmoothingEnabled
 
 ```html
 <!-- xxx.hml -->
@@ -1040,7 +1040,7 @@ createPattern(image: Image, repetition: string): Object
 
 bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void
 
-创建三次贝赛尔曲线的路径。
+创建三次贝塞尔曲线的路径。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1083,7 +1083,7 @@ bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number,
 
 quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
 
-创建二次贝赛尔曲线的路径。
+创建二次贝塞尔曲线的路径。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1122,7 +1122,7 @@ quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
 
 
 ### arc
-arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void
+arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void
 
 绘制弧线路径。
 
@@ -1137,7 +1137,7 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
 | radius        | number  | 是 | 弧线的圆半径。    |
 | startAngle    | number  | 是 | 弧线的起始弧度。   |
 | endAngle      | number  | 是 | 弧线的终止弧度。   |
-| anticlockwise | boolean | 否 | 是否逆时针绘制圆弧，true为逆时针，false为顺时针。<br/>默认值：false  |
+| counterclockwise | boolean | 否 | 是否逆时针绘制圆弧，true为逆时针，false为顺时针。<br/>默认值：false  |
 
 **示例：** 
   ```html
@@ -1203,9 +1203,9 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
 
   ![zh-cn_image_0000001169143586](figures/zh-cn_image_0000001169143586.png)
 
-### ellipse<sup>6+</sup>
+### ellipse
 
-ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, anticlockwise?: number): void
+ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, counterclockwise?: number): void
 
 在规定的矩形区域绘制一个椭圆。
 
@@ -1222,7 +1222,7 @@ ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number
 | rotation      | number | 是 | 椭圆的旋转角度，单位为弧度。                       |
 | startAngle    | number | 是 | 椭圆绘制的起始点角度，以弧度表示。                    |
 | endAngle      | number | 是 | 椭圆绘制的结束点角度，以弧度表示。                    |
-| anticlockwise | number | 否 | 是否以逆时针方向绘制椭圆，0为顺时针，1为逆时针。其它数值均按默认值处理。<br/>默认值：0 |
+| counterclockwise | number | 否 | 是否以逆时针方向绘制椭圆，0为顺时针，1为逆时针。其它数值均按默认值处理。<br/>默认值：0 |
 
 **示例：** 
   ```html
@@ -1821,7 +1821,7 @@ createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number,
 
 createImageData(width: number, height: number): ImageData
 
-创建新的ImageData对象，请参考[ImageData对象](js-components-canvas-imagedata.md)。
+创建新的、空白的、指定大小的ImageData对象，请参考[ImageData对象](js-components-canvas-imagedata.md)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1861,7 +1861,7 @@ createImageData(width: number, height: number): ImageData
 
 createImageData(imageData: ImageData): ImageData
 
-创建新的ImageData对象，请参考[ImageData对象](js-components-canvas-imagedata.md)。
+根据一个现有的ImageData对象，重新创建一个宽、高相同但不会复制图像数据的ImageData对象，请参考[ImageData对象](js-components-canvas-imagedata.md)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1943,7 +1943,7 @@ getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
 
 putImageData(imageData: ImageData, dx: number, dy: number, dirtyX: number, dirtyY: number, dirtyWidth: number, dirtyHeight: number): void
 
-使用ImageData数据填充新的矩形区域。
+使用ImageData数据裁剪后填充至新的矩形区域。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

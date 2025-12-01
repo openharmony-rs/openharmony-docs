@@ -1,8 +1,17 @@
 # image_processing_types.h
 
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @xjtu_liushang-->
+<!--Designer: @yangwang01-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
 ## Overview
 
-The **image_processing_types.h** file declares the image processing types.
+The file declares the image processing types.
+
+**File to include**: <multimedia/video_processing_engine/image_processing_types.h>
 
 **Library**: libimage_processing.so
 
@@ -21,7 +30,7 @@ The **image_processing_types.h** file declares the image processing types.
 | [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md) | ImageProcessing_ColorSpaceInfo | Describes the color space information, which is used in Color Space Conversion (CSC) capability query.|
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md) | OH_ImageProcessing | Provides the declaration of the OH_ImageProcessing struct.<br>To use it, first declare a null pointer of OH_ImageProcessing, and then initialize it by calling [OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create). This function creates an image processing instance. Multiple instances can be created for different image processing tasks.|
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) | OH_PixelmapNative | Provides the declaration of the OH_PixelmapNative struct.|
-| [OH_AVFormat](../apis-avcodec-kit/_core.md#oh_avformat) | OH_AVFormat | Provides the declaration of the OH_AVFormat struct.|
+| [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md) | OH_AVFormat | Provides the declaration of the OH_AVFormat struct.|
 
 ### Enums
 
@@ -34,7 +43,7 @@ The **image_processing_types.h** file declares the image processing types.
 
 | Name| Description|
 | -- | -- |
-| const int32_t IMAGE_PROCESSING_TYPE_COLOR_SPACE_CONVERSION | Used to create an image processing instance for CSC.<br>CSC includes conversion from single-layer HDR images to SDR images, conversion between SDR images, and conversion from SDR images to single-layer HDR images. Some capabilities are supported by vendors. Use [OH_ImageProcessing_IsColorSpaceConversionSuported](capi-image-processing-h.md#oh_imageprocessing_iscolorspaceconversionsupported) to check whether a conversion can be performed between single-layer images.<br>**Since**: 13<br>**Reference**: [OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)|
+| const int32_t IMAGE_PROCESSING_TYPE_COLOR_SPACE_CONVERSION | Used to create an image processing instance for CSC.<br>CSC includes conversion from single-layer HDR images to SDR images, conversion between SDR images, and conversion from SDR images to single-layer HDR images. Some capabilities are supported by vendors. Use [OH_ImageProcessing_IsColorSpaceConversionSupported](capi-image-processing-h.md#oh_imageprocessing_iscolorspaceconversionsupported) to check whether a conversion can be performed between single-layer images.<br>**Since**: 13<br>**Reference**: [OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)|
 | const int32_t IMAGE_PROCESSING_TYPE_COMPOSITION | Used to create an image processing instance for converting a dual-layer HDR image into a single-layer HDR image.<br>The instance provides the capability of converting dual-layer HDR images into single-layer HDR images. Some capabilities are supported by vendors. Use [OH_ImageProcessing_IsCompositionSupported](capi-image-processing-h.md#oh_imageprocessing_iscompositionsupported) to check whether the conversion from a dual-layer HDR image into a single-layer HDR image is supported.<br>**Since**: 13<br>**Reference**: [OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)|
 | const int32_t IMAGE_PROCESSING_TYPE_DECOMPOSITION | Used to create an image processing instance for converting a single-layer HDR image into a dual-layer HDR image.<br>The instance provides the capability of converting single-layer HDR images into dual-layer HDR images. Some capabilities are supported by vendors. Use [OH_ImageProcessing_IsDecompositionSupported](capi-image-processing-h.md#oh_imageprocessing_isdecompositionsupported) to check whether the conversion from a single-layer HDR image into a dual-layer HDR image is supported.<br>**Since**: 13<br>**Reference**: [OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)|
 | const int32_t IMAGE_PROCESSING_TYPE_METADATA_GENERATION | Used to create an image processing instance for metadata generation.<br>This variable generates the HDR Vivid metadata of a single-layer HDR image. Some capabilities are supported by vendors. If the capability is not supported, [OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create) returns [IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING](capi-image-processing-types-h.md#imageprocessing_errorcode).<br>**Since**: 13<br>**Reference**: [OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)|

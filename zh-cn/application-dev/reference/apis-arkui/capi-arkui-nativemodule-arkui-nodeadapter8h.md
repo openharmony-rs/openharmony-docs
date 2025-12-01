@@ -1,4 +1,14 @@
 # ArkUI_NodeAdapter*
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_NodeAdapter* ArkUI_NodeAdapterHandle
+```
 
 ## 概述
 

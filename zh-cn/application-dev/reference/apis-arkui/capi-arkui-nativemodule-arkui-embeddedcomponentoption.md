@@ -1,4 +1,14 @@
 # ArkUI_EmbeddedComponentOption
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @dutie123-->
+<!--Designer: @dutie123-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_EmbeddedComponentOption ArkUI_EmbeddedComponentOption
+```
 
 ## 概述
 

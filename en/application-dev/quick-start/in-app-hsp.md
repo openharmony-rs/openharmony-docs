@@ -9,9 +9,12 @@
 A Harmony Shared Package (HSP) is a dynamic shared package that can contain code, C++ libraries, resource files, and configuration files (also called profiles) and allows for code and resource sharing. An HSP is released with the Application Package (App Pack) of the host application, shares a process with the host application, and has the same bundle name and lifecycle as the host application.
 > **NOTE**
 > 
-> In-app HSP: a type of HSP that is closely coupled with an application bundle name (**bundleName**) during compilation and can be used only by the specified application. This topic mainly describes in-app HSP.
+> * In-app HSP: a type of HSP that is closely coupled with an application bundle name (**bundleName**) during compilation and can be used only by the specified application.
 > 
-> [Integrated HSP](integrated-hsp.md): a type of HSP that is not coupled with specific application bundle names during building and publishing. The toolchain can automatically replace the bundle name of the integrated HSP with that of the host application and generate a new HSP as the installation package of the host application. The new HSP also belongs to the in-app HSP of the host application.
+> * [Integrated HSP](integrated-hsp.md): a type of HSP that is not coupled with specific application bundle names during building and publishing. The toolchain can automatically replace the bundle name of the integrated HSP with that of the host application and generate a new HSP as the installation package of the host application. The new HSP also belongs to the in-app HSP of the host application's HAP.
+>
+> * Unless otherwise specified, all HSPs in the guide and API reference documents are in-app HSPs by default.
+>
 
 ## Use Scenarios
 - By storing code and resource files shared by multiple HAPs/HSPs in one place, the HSP significantly improves the reusability and maintainability of the code and resource files. Better yet, because only one copy of the HSP code and resource files is retained during building and packaging, the size of the application package is effectively controlled.
@@ -22,7 +25,7 @@ A Harmony Shared Package (HSP) is a dynamic shared package that can contain code
 
 ## Constraints
 
-- An HSP must be installed and run with the HAP that depends on it. It cannot be installed or run independently on a device. Since API version 18, the HAP version must be later than or equal to the HSP version. For API version 17 and earlier versions, the HSP version must be the same as the HAP version.
+- An HSP must be installed and run with the HAP that depends on it. It cannot be installed or run independently on a device. During installation or update, a consistency verification is performed between modules. For details, see [Consistency Verification for Application Installation and Update](multi_module_installation_update_consistency_verification.md). During application packaging, validity verification is performed. For details, see [Packing Tool](../../application-dev/tools/packing-tool.md).
 - Since API version 14, HSP supports the declaration of the [UIAbility](../application-models/uiability-overview.md#declaration-configuration) component in the configuration file. However, UIAbility with entry capabilities (that is, **entity.system.home** and **ohos.want.action.home** are configured for the **skill** tag) is not supported. For details about how to configure a UIAbility, see [Adding a UIAbility to a Module](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-add-new-ability#section18658758104318). The method of starting a UIAbility in an HSP is the same as that described in [Starting UIAbility in the Same Application](../application-models/uiability-intra-device-interaction.md). For API version 13 and earlier versions, the [UIAbility](../application-models/uiability-overview.md#declaration-configuration) component cannot be declared in the configuration file.
 - Since API version 18, HSP supports the declaration of the [ExtensionAbility](../application-models/extensionability-overview.md) component in the configuration file. However, ExtensionAbility with entry capabilities (that is, **entity.system.home** and **ohos.want.action.home** are configured for the **skill** tag) is not supported. For details about how to configure an ExtensionAbility in an HSP, see [Adding an ExtensionAbility to a Module](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-add-new-ability#section18891639459). For API version 17 and earlier versions, the [ExtensionAbility](../application-models/extensionability-overview.md) component cannot be declared in the configuration file.
 - An HSP can depend on other HARs or HSPs, and can be depended on or integrated by HAPs or HSPs. However, cyclic dependency and dependency transfer are not supported.
@@ -62,7 +65,9 @@ You can export the ArkUI components, APIs, and other resources of an HSP for oth
 
 ### Exporting ArkUI Components
 Use **export** to export ArkUI components. The sample code is as follows:
-```ts
+<!-- @[in_app_hsp_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/components/MyTitleBar.ets) -->
+
+``` TypeScript
 // library/src/main/ets/components/MyTitleBar.ets
 @Component
 export struct MyTitleBar {
@@ -79,16 +84,25 @@ export struct MyTitleBar {
   }
 }
 ```
+
 Declare the APIs exposed to external systems in the entry file **index.ets**.
-```ts
+<!-- @[in_app_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+
+``` TypeScript
 // library/index.ets
+// [EndExclude in_app_hsp_010]
 export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
+// [StartExclude in_app_hsp_010]
 ```
+
 
 
 ### Exporting Classes and Methods
 Use **export** to export classes and methods. The sample code is as follows:
-```ts
+
+<!-- @[in_app_hsp_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/utils/test.ets) -->
+
+``` TypeScript
 // library/src/main/ets/utils/test.ets
 export class Log {
   static info(msg: string): void {
@@ -104,14 +118,24 @@ export function minus(a: number, b: number): number {
   return a - b;
 }
 ```
+
 Declare the APIs exposed to external systems in the entry file **index.ets**.
-```ts
+
+<!-- @[in_app_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+
+``` TypeScript
 // library/index.ets
+// [EndExclude in_app_hsp_010]
 export { Log, add, minus } from './src/main/ets/utils/test';
+// [StartExclude in_app_hsp_010]
 ```
+
 ### Exporting Native Methods
 The HSP can contain .so files compiled in C++. The HSP indirectly exports the native method in the .so file. In this example, the **multi** API in the **liblibrary.so** file is exported.
-```ts
+
+<!-- @[in_app_hsp_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/utils/nativeTest.ets) -->
+
+``` TypeScript
 // library/src/main/ets/utils/nativeTest.ets
 import native from 'liblibrary.so';
 
@@ -121,11 +145,17 @@ export function nativeMulti(a: number, b: number): number {
 }
 ```
 
+
 Declare the APIs exposed to external systems in the entry file **index.ets**.
-```ts
+
+<!-- @[in_app_hsp_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+
+``` TypeScript
 // library/index.ets
+// [EndExclude in_app_hsp_010]
 export { nativeMulti } from './src/main/ets/utils/nativeTest';
 ```
+
 
 ### Accessing Resources in an HSP Through $r
 More often than not, you may need to use resources, such as strings and images, in components. For components in an HSP, such resources are typically placed in the HSP package, rather than in the package where the HSP is invoked, for the purpose of complying with the principle of high cohesion and low coupling.
@@ -135,17 +165,21 @@ In a project, application resources are referenced in the $r/$rawfile format. Yo
 To avoid reference errors, do not use relative paths. For example,
 if you use **Image("../../resources/base/media/example.png")**, the image actually used will be the one in the directory of the module that invokes the HSP. That is, if the module that invokes the HSP is **entry**, then the image used will be **entry/src/main/resources/base/media/example.png**.
 
-```ts
-// library/src/main/ets/pages/Index.ets
-// Correct
-Image($r('app.media.example'))
-  .id('example')
-  .borderRadius('48px')
-// Incorrect
-Image("../../resources/base/media/example.png")
-  .id('example')
-  .borderRadius('48px')
+
+<!-- @[in_app_hsp_007](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+        // library/src/main/ets/pages/Index.ets
+        // Correct case
+        Image($r('app.media.example'))
+          .id('example')
+          .borderRadius('48px')
+        // // Incorrect case
+        Image("../../resources/base/media/example.png")
+          .id('example')
+          .borderRadius('48px')
 ```
+
 
 ### Exporting Resources from HSP
 When resources in an HSP need to be exported for cross-package access, it is recommended that a resource manager class be implemented to encapsulate the exported resources. In this way:
@@ -155,7 +189,10 @@ When resources in an HSP need to be exported for cross-package access, it is rec
 The implementation is as follows:
 
 Encapsulate the resources that need to be published into a resource management class.  
-```ts
+
+<!-- @[in_app_hsp_008](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/ResManager.ets) -->
+
+``` TypeScript
 // library/src/main/ets/ResManager.ets
 export class ResManager{
   static getPic(): Resource{
@@ -167,10 +204,16 @@ export class ResManager{
 }
 ```
 
+
 Declare the APIs exposed to external systems in the entry file **index.ets**.
-```ts
+
+<!-- @[in_app_hsp_009](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+
+``` TypeScript
 // library/index.ets
+// [EndExclude in_app_hsp_010]
 export { ResManager } from './src/main/ets/ResManager';
+// [StartExclude in_app_hsp_010]
 ```
 
 
@@ -183,15 +226,27 @@ You can reference APIs in an HSP and implement page redirection in the HSP throu
 To use APIs in the HSP, first configure the dependency on the HSP in the **oh-package.json5** file of the module that needs to call the APIs (called the invoking module). For details, see [Referencing a Shared Package](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-har-import).
 You can then call the external APIs of the HSP in the same way as calling the APIs in the HAR. In this example, the external APIs are the following ones exported from **library**:
 
-```ts
+<!-- @[in_app_hsp_010](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+
+``` TypeScript
 // library/index.ets
+// ···
 export { Log, add, minus } from './src/main/ets/utils/test';
+// ···
 export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
+// ···
 export { ResManager } from './src/main/ets/ResManager';
+// ···
 export { nativeMulti } from './src/main/ets/utils/nativeTest';
+// [End in_app_hsp_006]
 ```
+
 The APIs can be used as follows in the code of the invoking module:
-```ts
+
+<!-- @[in_app_hsp_011](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/entry/src/main/ets/pages/Index.ets) -->
+
+<!--deprecated_code_no_check-->
+``` TypeScript
 // entry/src/main/ets/pages/index.ets
 import { Log, add, MyTitleBar, ResManager, nativeMulti } from 'library';
 import { BusinessError } from "@kit.BasicServicesKit";
@@ -271,9 +326,9 @@ struct Index {
         .onClick(() => {
           // Obtain the context of the HSP module through application.createModuleContext and the resourceManager object of the HSP module, and call the API of resourceManager to obtain resources.
           application.createModuleContext(this.getUIContext()?.getHostContext(), "library").then((context:Context)=>{
-              context.resourceManager.getStringValue(ResManager.getDesc().id)
+            context.resourceManager.getStringValue(ResManager.getDesc().id)
               .then(value => {
-                console.log('getStringValue is ' + value);
+                console.info('getStringValue is ' + value);
                 this.message = 'getStringValue is ' + value;
               })
               .catch((err: BusinessError) => {
@@ -313,12 +368,14 @@ struct Index {
 }
 ```
 
+
 ### Page Redirection and Return
 
 To add a button in the **entry** module to jump to the menu page (**library/src/main/ets/pages/library_menu.ets**) in the **library** module, write the following code in the **entry/src/main/ets/pages/Index.ets** file of the **entry** module:
-```ts
-// entry/src/main/ets/pages/Index.ets
 
+<!-- @[in_app_hsp_012](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp2/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct Index {
@@ -358,15 +415,18 @@ struct Index {
       .width('100%')
       .backgroundColor($r('app.color.page_background'))
       .height('100%')
-    }.title("Navigation_index")
+    }.title("Navigation_Index")
     .mode(NavigationMode.Stack)
   }
 }
 ```
 
+
 Add a page file (**library/src/main/ets/pages/library_menu.ets**) to the **library** module. The **back_to_index** button on the page can be used to return to the previous page.
-```
-// library/src/main/ets/pages/library_menu.ets
+
+<!-- @[in_app_hsp_014](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp2/library/src/main/ets/pages/library_menu.ets) -->
+
+``` TypeScript
 @Builder
 export function PageOneBuilder() {
   Library_Menu()
@@ -388,7 +448,7 @@ export struct Library_Menu {
             .onClick(() => {
               this.message = 'Welcome';
             })
-          Button("back_to_index").fontSize(50).onClick(() => {
+          Button('back_to_index').fontSize(50).onClick(() => {
             this.pathStack.pop();
           })
         }
@@ -397,11 +457,12 @@ export struct Library_Menu {
       .height('100%')
     }.title('Library_Menu')
     .onReady((context: NavDestinationContext) => {
-      this.pathStack = context.pathStack
+      this.pathStack = context.pathStack;
     })
   }
 }
 ```
+
 
 Add the **route_map.json** file (**library/src/main/resources/base/profile/route_map.json**) to the **library** module.
 ```
@@ -420,22 +481,25 @@ Add the **route_map.json** file (**library/src/main/resources/base/profile/route
 ```
 
 Configure the **route_map.json** file in the **library/src/main/module.json5** file of the **library** module.
-```
+
+<!-- @[in_app_hsp_013](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp2/library/src/main/module.json5) -->
+
+``` JSON5
 {
   "module": {
     "name": "library",
     "type": "shared",
     "description": "$string:shared_desc",
     "deviceTypes": [
-      "phone",
       "tablet",
       "2in1"
     ],
     "deliveryWithInstall": true,
     "pages": "$profile:main_pages",
-    "routerMap": "$profile:route_map" // Added file.
+    "routerMap": "$profile:route_map" // Added configuration, which points to the route_map.json file.
   }
 }
 ```
+
 
 The navigation feature is used for page redirection and return. For details, see [Page Navigation](../ui/arkts-navigation-navigation.md#routing-operations).

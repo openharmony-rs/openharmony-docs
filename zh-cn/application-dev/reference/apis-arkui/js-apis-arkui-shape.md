@@ -4,16 +4,16 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 在 clipShape 和 maskShape 接口中可以传入对应的形状。
 
 
 > **说明：**
 >
-> 从API version 12开始支持。后续版本的新增形状，采用上角标单独标记形状的起始版本。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
 ## 导入模块
 
@@ -250,8 +250,8 @@ radius(radius: number | string | Array<number &nbsp;\|&nbsp; string>): RectShape
 
 | 名称         | 类型                                               | 只读                                             | 可选                                             | 说明                                         |
 | ----------- | -------------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| width | number &nbsp;\|&nbsp; string | 否 | 是 | 形状的宽度。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。 |<br/>单位：vp |
-| height | number &nbsp;\|&nbsp; string | 否 | 是 | 形状的高度。 <br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。 |<br/>单位：vp|
+| width | number &nbsp;\|&nbsp; string | 否 | 是 | 形状的宽度。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。 <br/>单位：vp |
+| height | number &nbsp;\|&nbsp; string | 否 | 是 | 形状的高度。 <br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。 <br/>单位：vp|
 
 ## PathShapeOptions
 

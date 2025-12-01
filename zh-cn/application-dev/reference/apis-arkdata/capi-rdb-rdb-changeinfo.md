@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} Rdb_ChangeInfo
+```
+
 ## 概述
 
 记录端云同步过程详情。

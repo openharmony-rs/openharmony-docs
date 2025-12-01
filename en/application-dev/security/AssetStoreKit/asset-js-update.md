@@ -1,5 +1,12 @@
 # Updating an Asset (ArkTS)
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 ## Available APIs
 
 You can use [update(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdate), an asynchronous API, or [updateSync(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdatesync12), a synchronous API, to update an asset.
@@ -8,7 +15,7 @@ The following table describes the attributes of **AssetMap** for updating an ass
 
 >**NOTE**
 >
->In the following table, the attributes starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put personal data in these attributes.
+>In the following table, the attributes **ALIAS** and those starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
 
 - Attributes of **AssetMap** in **query**:
 
@@ -59,7 +66,9 @@ The following table describes the attributes of **AssetMap** for updating an ass
 
 Update asset **demo_alias** as follows: change the asset plaintext to **demo_pwd_new** and additional attribute to **demo_label_new**.
 
-```typescript
+<!-- @[update_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/update.ets) -->
+
+``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -69,19 +78,26 @@ function stringToArray(str: string): Uint8Array {
   return textEncoder.encodeInto(str);
 }
 
-let query: asset.AssetMap = new Map();
-query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-let attrsToUpdate: asset.AssetMap = new Map();
-attrsToUpdate.set(asset.Tag.SECRET, stringToArray('demo_pwd_new'));
-attrsToUpdate.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label_new'));
-try {
-  asset.update(query, attrsToUpdate).then(() => {
-    console.info(`Asset updated successfully.`);
-  }).catch((err: BusinessError) => {
+export async function updateAsset(): Promise<string> {
+  let result: string = '';
+  let query: asset.AssetMap = new Map();
+  query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
+  let attrsToUpdate: asset.AssetMap = new Map();
+  attrsToUpdate.set(asset.Tag.SECRET, stringToArray('demo_pwd_new'));
+  attrsToUpdate.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label_new'));
+  try {
+    await asset.update(query, attrsToUpdate).then(() => {
+      console.info(`Succeeded in updating Asset.`);
+      result = 'Succeeded in updating Asset';
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
+      result = 'Failed to update Asset';
+    });
+  } catch (error) {
+    let err = error as BusinessError;
     console.error(`Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
-  });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
+    result = 'Failed to update Asset';
+  }
+  return result;
 }
 ```

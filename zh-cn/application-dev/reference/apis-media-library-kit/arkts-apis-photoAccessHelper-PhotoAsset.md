@@ -4,7 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -22,9 +22,9 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                      | 类型                     | 可读 | 可写 | 说明                                                   |
+| 名称                      | 类型                     | 只读 | 可选 | 说明                                                   |
 | ------------------------- | ------------------------ | ---- | ---- | ------------------------------------------------------ |
-| uri                       | string                   | 是   | 否   | 媒体文件资源uri（如：file://media/Photo/1/IMG_datetime_0001/displayName.jpg），详情参见用户文件uri介绍中的[媒体文件uri](../../file-management/user-file-uri-intro.md#媒体文件uri)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
+| uri                       | string                   | 是   | 否   | 媒体文件资源uri（如：file://media/Photo/1/IMG_datetime_0001/displayName.jpg），详情参见用户文件uri介绍中的[媒体文件uri](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
 | photoType   | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 是   | 否   | 媒体文件类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                               |
 | displayName               | string                   | 是   | 否   | 显示文件名，包含后缀名。字符串长度为1~255。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
 
@@ -224,7 +224,7 @@ commitModify(): Promise&lt;void&gt;
 
 错误码14000001，请参考 [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)获取有关文件名的格式和长度要求。
 
-在API 13及之前的版本，无相关权限返回错误码13900012；从API 14开始，无相关权限返回错误码201。
+在API version 13及之前的版本，无相关权限返回错误码13900012；从API version 14开始，无相关权限返回错误码201。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -398,6 +398,8 @@ getThumbnail(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：**
@@ -453,6 +455,8 @@ getThumbnail(size: image.Size, callback: AsyncCallback&lt;image.PixelMap&gt;): v
 获取文件的缩略图，传入缩略图尺寸，使用callback方式返回异步结果。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -517,6 +521,8 @@ getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：**
@@ -576,7 +582,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 clone(title: string): Promise&lt;PhotoAsset&gt;
 
-克隆资产。可设置文件名，但不支持修改文件类型。
+克隆资产，可设置文件名，但不支持修改文件类型。使用promise异步回调。
 
 **需要权限**：ohos.permission.WRITE\_IMAGEVIDEO
 
@@ -656,7 +662,7 @@ getReadOnlyFd(callback: AsyncCallback&lt;number&gt;): void
 
 接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
-在API 13及之前的版本，无相关权限返回错误码13900012；从API 14开始，无相关权限返回错误码201。
+在API version 13及之前的版本，无相关权限返回错误码13900012；从API version 14开始，无相关权限返回错误码201。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -719,7 +725,7 @@ getReadOnlyFd(): Promise&lt;number&gt;
 
 接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
-在API 13及之前的版本，无相关权限返回错误码13900012；从API 14开始，无相关权限返回错误码201。
+在API version 13及之前的版本，无相关权限返回错误码13900012；从API version 14开始，无相关权限返回错误码201。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |

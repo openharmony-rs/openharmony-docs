@@ -7,6 +7,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_Array OH_Drawing_Array
+```
+
 ## 概述
 
 定义数组对象, 用于存储多个同类型对象。

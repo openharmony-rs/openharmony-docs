@@ -67,25 +67,27 @@
     - [@ohos.application.StaticSubscriberExtensionAbility (StaticSubscriberExtensionAbility)(系统接口)](js-apis-application-staticSubscriberExtensionAbility-sys.md)
     - [@ohos.application.StaticSubscriberExtensionContext (StaticSubscriberExtensionContext)(系统接口)](js-apis-application-StaticSubscriberExtensionContext-sys.md)
     <!--DelEnd-->
-    - commonEvent
+    - commonEvent<!--commonevent-->
       - [CommonEventData](js-apis-inner-commonEvent-commonEventData.md)
       - [CommonEventPublishData](js-apis-inner-commonEvent-commonEventPublishData.md)
       - [CommonEventSubscriber](js-apis-inner-commonEvent-commonEventSubscriber.md)
       - [CommonEventSubscribeInfo](js-apis-inner-commonEvent-commonEventSubscribeInfo.md)
-  - 其他<!--others-->
+  - 其他<!--basic-services-others-->
     <!--Del-->
     - [@ohos.ai.intelligentVoice (智能语音)(系统接口)](js-apis-intelligentVoice-sys.md)
     <!--DelEnd-->
     - [@ohos.base (公共回调信息)](js-apis-base.md)
+    - [@ohos.annotation (系统注解)](js-apis-annotation.md)
     - [@ohos.customization.customConfig (定制配置)](js-apis-customization-customConfig.md)
     - [@ohos.settings (设置数据项名称)](js-apis-settings.md)
     - [@ohos.wallpaper (壁纸)](js-apis-wallpaper.md)
     - [@ohos.resourceschedule.systemload (性能功耗热融合档位)](js-apis-resourceschedule-systemload.md)
+    - [@ohos.systemDateTime (系统时间、时区)](js-apis-date-time.md)
     <!--Del-->
     - [@ohos.configPolicy (配置策略)(系统接口)](js-apis-configPolicy-sys.md)
     - [@ohos.settings (设置数据项名称)(系统接口)](js-apis-settings-sys.md)
-    - [@ohos.systemDateTime (系统时间、时区)(系统接口)](js-apis-system-date-time-sys.md)
-    - [@ohos.systemDateTime (系统时间、时区)](js-apis-date-time.md)
+    - [@ohos.systemDateTime (系统时间、时区)(系统接口)](js-apis-system-date-time-sys.md)<!--DelEnd-->
+     <!--Del-->
     - [@ohos.wallpaper (壁纸)(系统接口)](js-apis-wallpaper-sys.md)
     - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility)(系统接口)](js-apis-WallpaperExtensionAbility-sys.md)
     - [@ohos.systemTimer (系统定时器)(系统接口)](js-apis-system-timer-sys.md)
@@ -111,8 +113,8 @@
     - [DeviceInfo](capi-deviceinfo.md)
     - [OsAccount](capi-osaccount.md)
     - [OH_BatteryInfo](capi-oh-batteryinfo.md)
-    - [OH_Scan](c-apis-scan.md)
-    - [OH_Print](_o_h___print.md)
+    - [OH_Scan](capi-oh-scan.md)
+    - [OH_Print](capi-oh-print.md)
     - [Pasteboard](capi-pasteboard.md)
     - [TimeService](capi-timeservice.md)
   - 头文件<!--basic-services-headerfile-->
@@ -124,15 +126,10 @@
     - [oh_pasteboard_err_code.h](capi-oh-pasteboard-err-code-h.md)
     - [os_account.h](capi-os-account-h.md)
     - [os_account_common.h](capi-os-account-common-h.md)
-    - [ohprint.h](ohprint_8h.md)
-    - [ohscan.h](c-apis-scan.md)
+    - [ohprint.h](capi-ohprint-h.md)
+    - [ohscan.h](capi-ohscan-h.md)
     - [time_service.h](capi-time-service-h.md)
   - 结构体<!--basic-services-struct-->
-    - [Print_Margin](_print___margin.md)
-    - [Print_PageSize](_print___page_size.md)
-    - [Print_PrintAttributes](_print___print_attributes.md)
-    - [Print_PrintDocCallback](_print___print_doc_callback.md)
-    - [Print_Range](_print___range.md)
     - [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)
     - [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)
     - [CommonEvent_RcvData](capi-oh-commonevent-commonevent-rcvdata.md)
@@ -140,6 +137,14 @@
     - [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)
     - [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)
     - [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)
+    - [Print_Margin](capi-oh-print-print-margin.md)
+    - [Print_PageSize](capi-oh-print-print-pagesize.md)
+    - [Print_Range](capi-oh-print-print-range.md)
+    - [Print_PrintAttributes](capi-oh-print-print-printattributes.md)
+    - [Print_PrintDocCallback](capi-oh-print-print-printdoccallback.md)
+    - [Scan_ScannerDevice](capi-oh-scan-scan-scannerdevice.md)
+    - [Scan_PictureScanProgress](capi-oh-scan-scan-picturescanprogress.md)
+    - [Scan_ScannerOptions](capi-oh-scan-scan-scanneroptions.md)
 - 错误码<!--basic-services-arkts-errcode-->
   - [USB服务错误码](errorcode-usb.md)
   - [RunningLock锁错误码](errorcode-runninglock.md)
@@ -156,15 +161,19 @@
   - [上传下载错误码](errorcode-request.md)
   - [时间时区错误码](errorcode-time.md)
   - [事件错误码](errorcode-CommonEventService.md)
+  <!--Del-->
   - [系统参数错误码](errorcode-system-parameterV9.md)
+  <!--DelEnd-->
   - [系统电源管理错误码](errorcode-power.md)
   - [账号管理错误码](errorcode-account.md)
+  <!--Del-->
   - [升级错误码](errorcode-update.md)
+  <!--DelEnd-->
   - [打印服务错误码](errorcode-print.md)
+  - [设置数据项错误码](errorcode-settings.md)
   <!--Del-->
   - [锁屏服务错误码](errorcode-screenlock.md)
   - [设备证明错误码](errorcode-deviceAttest.md)
   - [智能语音错误码](errorcode-intelligentVoice.md)
-  - [设置数据项错误码](errorcode-settings.md)
   - [划词服务错误码](errorcode-selection.md)
   <!--DelEnd-->

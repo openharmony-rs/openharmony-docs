@@ -1,10 +1,10 @@
 # 拖拽事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 拖拽事件是指在用户界面中，当用户拖动某个对象（如文件、控件或元素）时触发的一系列事件。这些事件允许开发者自定义拖拽行为，实现诸如拖放、调整位置等功能。
 
@@ -20,7 +20,7 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 - 默认支持拖入能力的组件（目标组件可响应拖入数据）：[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)、[RichEditor](ts-basic-components-richeditor.md)，开发者可通过设置这些组件的[allowDrop](ts-universal-attributes-drag-drop.md#allowdrop)属性为null来禁用对默认拖入能力的支持。
 
-其他组件需要开发者将[draggable](ts-universal-attributes-drag-drop.md#draggable)属性设置为true，并在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)等接口中实现数据传输相关内容，才能正确处理拖拽能力。
+其他支持拖出能力的组件需要开发者将[draggable](ts-universal-attributes-drag-drop.md#draggable)属性设置为true，并在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)等接口中实现数据传输相关内容，才能正确处理拖拽能力。
 <!--RP1--><!--RP1End-->
 
 > **说明：**
@@ -38,6 +38,10 @@ onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | D
 - 如果开发者设置了拖拽数据，则不再使用系统默认填充的拖拽数据。
 
 文本类组件[Text](ts-basic-components-text.md)、[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)、[RichEditor](ts-basic-components-richeditor.md)对选中的文本内容进行拖拽时，不支持自定义预览图。当onDragStart与菜单预览一起使用或使用了默认支持拖拽能力的组件时，预览及菜单项上的自定义内容不支持拖拽。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -195,6 +199,10 @@ onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T
 onPreDrag(callback: Callback\<PreDragStatus>): T
 
 绑定此事件的组件，当处于手势拖拽发起前的不同阶段时，触发回调。此接口不支持在鼠标拖拽中触发。
+
+> **说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -515,6 +523,8 @@ getModifierKeyState?(keys: Array<string\>): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**参数：**
+
 | 参数名 | 类型                | 必填 | 说明                                                         |
 | ------ | ------------------- | ---- | ------------------------------------------------------------ |
 | keys   | Array&lt;string&gt; | 是   | 获取功能键按压状态。报错信息请参考以下错误码。支持功能键 'Ctrl'\| 'Alt' \| 'Shift'。<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。 |
@@ -720,7 +730,7 @@ getGlobalDisplayY(): number
 
 ## DragBehavior<sup>10+</sup>
 
-当设置[DragResult](#dragresult10枚举说明)为DROP_ENABLED后，可设置DragBehavior为复制（COPY）或剪切（MOVE）。当DragBehavior为复制（COPY）时，拖拽对象会显示加号角标；为剪切（MOVE）时，拖拽对象不会显示加号角标。DragBehavior用来向开发者描述数据的处理方式是复制（COPY）还是剪切（MOVE），但无法最终决定对数据的实际处理方式。DragBehavior会通过onDragEnd带回给数据拖出方，发起拖拽的一方可通过DragBehavior来区分做出的是复制（COPY）还是剪切（MOVE）数据的不同行为。
+当设置[DragResult](#dragresult10枚举说明)为DROP_ENABLED后，可设置DragBehavior为复制（COPY）或剪切（MOVE）。当DragBehavior为复制（COPY）时，拖拽对象的角标会显示加号；为剪切（MOVE）时，拖拽对象的角标不会显示加号。DragBehavior用来向开发者描述数据的处理方式是复制（COPY）还是剪切（MOVE），但无法最终决定对数据的实际处理方式。DragBehavior会通过onDragEnd带回给数据拖出方，发起拖拽的一方可通过DragBehavior来区分做出的是复制（COPY）还是剪切（MOVE）数据的不同行为。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -728,8 +738,8 @@ getGlobalDisplayY(): number
 
 | 名称 | 值 | 说明 |
 | ----- | -- | ----------------- |
-| COPY | - |指定对数据的处理方式为复制。|
-| MOVE| - |指定对数据的处理方式为剪切。|
+| COPY | 0 |指定对数据的处理方式为复制。|
+| MOVE| 1 |指定对数据的处理方式为剪切。|
 
 ## PreDragStatus<sup>12+</sup>枚举说明
 
@@ -812,6 +822,8 @@ type OnDragEventCallback = (event: DragEvent, extraParams?: string) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**参数：**
+
 | 参数名 | 类型 |必填 |说明 |
 | ----- | ----------------- | ----- | ----- |
 | event | [DragEvent](#dragevent7)| 是 |  event为拖拽事件信息，包括拖拽点坐标。|
@@ -827,7 +839,7 @@ type OnDragEventCallback = (event: DragEvent, extraParams?: string) => void
 
 | 名称     | 类型  | 只读 | 可选 | 说明           |
 | ------ | ------ | ---------------- | ------ | ------ |
-| disableDataPrefetch | boolean  | 否  | 否  | 设置拖拽是否提前获取数据。true表示不提前获取数据，false表示提前获取数据，默认值为false。<br/>**说明：**<br/> 当使用[startDataLoading](#startdataloading15)获取数据时需设置该参数为true，防止拖拽提前获取数据。 |
+| disableDataPrefetch | boolean  | 否  | 是  | 设置拖拽是否提前获取数据。true表示不提前获取数据，false表示提前获取数据，默认值为false。<br/>**说明：**<br/> 当使用[startDataLoading](#startdataloading15)获取数据时需设置该参数为true，防止拖拽提前获取数据。 |
 
 ## DragSpringLoadingConfiguration<sup>20+</sup>
 
@@ -1058,7 +1070,7 @@ struct Index {
 
 ### 示例2（自定义落位动效）
 
-示例2展示了通过自定义接口executeDropAnimation，实现落位动效。
+从API version 18开始，示例2展示了通过自定义接口[executeDropAnimation](#executedropanimation18)，实现落位动效。
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 
@@ -1145,7 +1157,7 @@ struct DropAnimationExample {
 
 ### 示例3（拖拽异步获取数据）
 
-示例3展示了通过startDataLoading实现拖拽异步获取数据。
+从API version 15开始，示例3展示了通过[startDataLoading](#startdataloading15)实现拖拽异步获取数据。
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
@@ -1262,7 +1274,7 @@ struct ImageExample {
 ```
 ### 示例4（获取当前拖拽的屏幕ID）
 
-示例4展示了通过onDragXXX（不支持onDragEnd）接口获取到拖拽事件，并调用拖拽事件里的getDisplayId接口获取屏幕ID。
+从API version 20开始，示例4展示了通过onDragXXX（不支持onDragEnd）接口获取到拖拽事件，并调用拖拽事件里的[getDisplayId](#getdisplayid20)接口获取屏幕ID。
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
@@ -1439,7 +1451,7 @@ struct Index {
 
 ### 示例5（获取包名和是否是跨设备）
 
-示例5展示了通过onDragXXX接口获取到拖拽事件，调用拖拽事件里的getDragSource接口获取包名，调用isRemote接口获取是否是跨设备。
+从API version 20开始，示例5展示了通过onDragXXX接口获取到拖拽事件，调用拖拽事件里的[getDragSource](#getdragsource20)接口获取包名，调用isRemote接口获取是否是跨设备。
 
 ```ts
 @Entry
@@ -1519,7 +1531,7 @@ struct Index {
 
 ### 示例6（拖拽支持悬停检测）
 
-示例6展示了通过onDragSpringLoading接口注册回调，并调用SpringLoadingContext接口获取上下文（当前状态、通知序列）。
+从API version 20开始，示例6展示了通过[onDragSpringLoading](#ondragspringloading20)接口注册回调，并调用[SpringLoadingContext](#springloadingcontext20)接口获取上下文（当前状态、通知序列）。
 
 ```ts
 // xxx.ets
@@ -1602,7 +1614,7 @@ struct Index {
 
 ### 示例7（拖起方延迟提供数据）
 
-示例7展示了在onDragStart中调用setDataLoadParams延迟提供数据接口，并在onDrop中调用startDataLoading异步获取数据接口。
+从API version 20开始，示例7展示了在[onDragStart](#ondragstart)中调用[setDataLoadParams](#setdataloadparams20)延迟提供数据接口，并在[onDrop](#ondrop)中调用[startDataLoading](#startdataloading15)异步获取数据接口。
 
 ```ts
 import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';

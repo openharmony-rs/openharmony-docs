@@ -2,15 +2,15 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @pengzhiwen3-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供注册组件布局和组件绘制送显完成回调通知的能力。
 
 > **说明：**
 >
-> 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -27,9 +27,9 @@ createComponentObserver(id: string): ComponentObserver
 
 > **说明：**
 > 
-> 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector)获取[UIInspector](arkts-apis-uicontext-uiinspector.md)实例，再通过此实例调用替代方法[createComponentObserver](arkts-apis-uicontext-uiinspector.md#createcomponentobserver)。
+> - 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector)方法获取[UIInspector](arkts-apis-uicontext-uiinspector.md)实例，再通过此实例调用替代方法[createComponentObserver](arkts-apis-uicontext-uiinspector.md#createcomponentobserver)。
 >
-> 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector)方法获取当前UI上下文关联的[UIInspector](arkts-apis-uicontext-uiinspector.md)对象。
+> - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector)方法获取当前UI上下文关联的[UIInspector](arkts-apis-uicontext-uiinspector.md)对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -146,7 +146,7 @@ on(type: 'drawChildren',  callback: Callback\<void\>): void
 
 off(type: 'drawChildren', callback?: Callback\<void\>): void
 
-通过句柄向对应的查询条件取消注册回调，当组件绘制送显完成时不再触发指定的回调。
+通过句柄向对应的查询条件取消注册回调，当组件的子组件绘制送显完成时不再触发指定的回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -179,11 +179,13 @@ struct ImageExample {
             .border({ width: 1 })
             .id('IMAGE_ID')
         }
+        .id('ROW_ID')
       }
     }.height(320).width(360).padding({ right: 10, top: 10 })
   }
 
-  listener: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
+  listenerForImage: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
+  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID')
 
   aboutToAppear() {
     let onLayoutComplete: () => void = (): void => {
@@ -203,14 +205,14 @@ struct ImageExample {
     let OffFuncDraw = onDrawComplete
     let OffFuncDrawChildren = onDrawChildrenComplete
 
-    this.listener.on('layout', FuncLayout)
-    this.listener.on('draw', FuncDraw)
-    this.listener.on('drawChildren', FuncDrawChildren)
+    this.listenerForImage.on('layout', FuncLayout)
+    this.listenerForImage.on('draw', FuncDraw)
+    this.listenerForRow.on('drawChildren', FuncDrawChildren)
 
     // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用
-    // this.listener.off('layout', OffFuncLayout)
-    // this.listener.off('draw', OffFuncDraw)
-    // this.listener.off('drawChildren', OffFuncDrawChildren)
+    // this.listenerForImage.off('layout', OffFuncLayout)
+    // this.listenerForImage.off('draw', OffFuncDraw)
+    // this.listenerForRow.off('drawChildren', OffFuncDrawChildren)
   }
 }
 ```

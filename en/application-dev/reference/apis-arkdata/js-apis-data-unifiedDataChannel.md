@@ -420,6 +420,7 @@ Summarizes the data information of the **unifiedData** object, including the dat
 | -------- | -------- | -------- | -------- | -------- |
 | summary   | Record<string, number> | No| No| Dictionary type object, where the key indicates the data type (see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)), and the value indicates the total size (in bytes) of this type of records in the unified data object.|
 | totalSize | number | No| No| Total size of all the records in the **UnifiedData** object, in bytes.|
+| overview<sup>22+</sup>   | Record<string, number> | Yes| No| Mapping between all types of unified data objects and the size of data records of the types (in bytes). If the obtained unified data object is empty, the **overview** property is empty.|
 
 **Example**
 
@@ -440,6 +441,8 @@ function parseSummary(summary : unifiedDataChannel.Summary) {
       let value : string = info[1];
     }
   }
+  let overviewRecord = summary.overview as Record<string, number>;
+  let totalSize = summary.totalSize;
 }
 ```
 
@@ -871,7 +874,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 ## PlainText
 
-Represents the plaintext data. It is a child class of [Text](#text) and is used to describe plaintext data.
+Represents the plain text data. It is a child class of [Text](#text).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -892,7 +895,7 @@ text.abstract = 'This is abstract';
 
 ## Hyperlink
 
-Represents hyperlink data. It is a child class of [Text](#text) and is used to describe data of the hyperlink type.
+Represents the hyperlink data. It is a child class of [Text](#text).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -913,7 +916,7 @@ link.description = 'This is description';
 
 ## HTML
 
-Represents the HTML data. It is a child class of [Text](#text) and is used to describe HTML data.
+Represents the HTML data. It is a child class of [Text](#text).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

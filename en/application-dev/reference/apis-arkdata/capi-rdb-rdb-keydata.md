@@ -6,9 +6,13 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+union Rdb_KeyData { ... }
+```
+
 ## Overview
 
-Holds the changed data.
+Stores the changed data.
 
 **Related module**: [RDB](capi-rdb.md)
 

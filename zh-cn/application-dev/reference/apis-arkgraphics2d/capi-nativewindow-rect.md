@@ -1,10 +1,14 @@
 # Rect
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @li_hui180; @dingpy-->
+<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```
+struct Rect { ... }
+```
+
 ## 概述
 
 如果rects是空指针nullptr，默认Buffer大小为脏区。

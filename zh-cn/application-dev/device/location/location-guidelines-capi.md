@@ -1,4 +1,10 @@
 # 获取设备的位置信息开发指导(C/C++)
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @liu-binjun-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @mhy123456789-->
+<!--Adviser: @RayShih-->
 
 
 ## 场景介绍
@@ -16,7 +22,7 @@
 | OH_LocationInfo_GetAdditionalInfo(Location_Info* location, char* additionalInfo, uint32_t length) | 从定位结果中获取附加信息。附加信息是一个JSON格式的字符串。 |
 | OH_Location_CreateRequestConfig(void) | 创建一个位置请求参数结构体实例。    |
 | OH_Location_DestroyRequestConfig(Location_RequestConfig* requestConfig) | 销毁位置请求参数实例并回收内存。  |
-| OH_LocationRequestConfig_SetUseScene(Location_RequestConfig* requestConfig, Location_UseScene useScene) | 设置发起定位时的用户活动场景。<br/>如果设置了useScene，则powerConsumptionScene无效。<br/>如果未设置useScene，且设置了powerConsumptionScene，则该参数生效。<br/>如果两个参数都不设置，则默认useScene为LOCATION_USE_SCENE_DAILY_LIFE_SERVICE,powerConsumptionCenario参数无效。     |
+| OH_LocationRequestConfig_SetUseScene(Location_RequestConfig* requestConfig, Location_UseScene useScene) | 设置发起定位时的用户活动场景。<br/>如果设置了useScene，则powerConsumptionScene无效。<br/>如果未设置useScene，且设置了powerConsumptionScene，则该参数生效。<br/>如果两个参数都不设置，则默认useScene为LOCATION_USE_SCENE_DAILY_LIFE_SERVICE,powerConsumptionScene参数无效。     |
 | OH_LocationRequestConfig_SetPowerConsumptionScene(Location_RequestConfig* requestConfig, Location_PowerConsumptionScene powerConsumptionScene) | 设置发起定位时的功耗场景。      |
 | OH_LocationRequestConfig_SetInterval(Location_RequestConfig* requestConfig, int interval) | 设置定位结果上报时间间隔。                               |
 | OH_LocationRequestConfig_SetCallback(Location_RequestConfig* requestConfig, Location_InfoCallback callback, void* userData) | 设置用于接收位置上报的回调函数。     |

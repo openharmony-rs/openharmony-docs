@@ -199,6 +199,38 @@ class A {
 }
 ```
 
+### 不支持使用类型别名
+
+Sendable类的成员变量不能使用类型别名（即使用`type`关键字定义的别名）。
+
+**正例：**
+
+```ts
+@Sendable
+class B {
+  num1: number = 1;
+  num2: number = 2;
+  add(): number {
+    return this.num1 + this.num2;
+  }
+}
+```
+
+**反例：**
+
+```ts
+type A = number;
+
+@Sendable
+class B {
+  num1: A = 1; // 运行报错，不支持使用类型别名
+  num2: A = 2; // 运行报错，不支持使用类型别名
+  add(): number {
+    return this.num1 + this.num2;
+  }
+}
+```
+
 ## 泛型规则
 
 ### 泛型类中的Sendable类、SendableLruCache、collections.Array、collections.Map和collections.Set的模板类型必须是Sendable类型
@@ -364,6 +396,33 @@ class C {
   num: number = 1;
 }
 ```
+
+### 支持在Sendable class上叠加自定义装饰器
+
+从API version 22开始，支持在Sendable class上叠加使用除@Sendable装饰器之外的其他自定义装饰器。 
+
+通过在[工程级build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)的"buildOption"字段下的"strictMode"中增加"disableSendableCheckRules"字段，配置该能力。
+"disableSendableCheckRules"字段及其具体取值示例如下： 
+
+```json5
+"buildOption": {
+  "strictMode": {
+    "caseSensitiveCheck": true,
+    "useNormalizedOHMUrl": true,
+    "disableSendableCheckRules": ["arkts-sendable-class-decorator"]
+  }
+}
+```
+
+> **说明：**
+>
+> - "disableSendableCheckRules"字段值为包含Sendable规则的数组。
+> 
+>   - 默认为空数组，即默认不支持在Sendable class上叠加使用除@Sendable之外的其他自定义装饰器。
+>   
+>   - 当数组中配置了"arkts-sendable-class-decorator"规则时，支持在Sendable class上叠加除@Sendable之外的其他自定义装饰器。
+>   
+> - @Sendable和其他自定义装饰器叠加使用可能造成运行时异常，需要开发者适配装饰器函数的实现。
 
 ## 初始化规则
 

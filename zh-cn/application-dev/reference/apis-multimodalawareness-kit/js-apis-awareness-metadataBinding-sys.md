@@ -6,7 +6,7 @@
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
-本模块提供记忆链接能力调用，用于在图片加入和解析相关信息，完成信息传递。
+本模块提供记忆链接能力调用，用于向图片加入和解析相关信息，从而实现信息传递。
 
 > **说明：**
 >
@@ -33,7 +33,7 @@ encodeImage(srcImage: image.PixelMap, metadata: string): Promise&lt;image.PixelM
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| srcImage     | PixelMap                           | 是   | 原始图片。 |
+| srcImage     | [PixelMap](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/arkts-apis-image-pixelmap)                        | 是   | 原始图片。 |
 | metadata     | string                             | 是   | 嵌入的信息。|
 
 **返回值：**
@@ -82,7 +82,7 @@ function decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| encodedImage     | PixelMap                           | 是   | 带有信息的图片。 |
+| encodedImage     | [PixelMap](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/arkts-apis-image-pixelmap)                           | 是   | 带有信息的图片。 |
 
 **返回值：**
 

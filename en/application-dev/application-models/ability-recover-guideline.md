@@ -2,8 +2,8 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @altay; @Luobniz21-->
-<!--Designer: @altay-->
+<!--Owner: @wendel; @Luobniz21-->
+<!--Designer: @wendel-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -35,7 +35,7 @@ The [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) 
 
 | API                                                      | Description                                                |
 | ------------------------------------------------------------ | ---------------------------------------------------- |
-| setRestoreEnabled(enabled: boolean): void | Sets whether to enable restore when the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) is switched back to the foreground from the background.|
+| setRestoreEnabled(enabled: boolean): void | Sets whether to enable backup and restore for the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md).|
 
 [setRestoreEnabled](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setrestoreenabled14) must be called during application initialization (before [onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onforeground) is invoked). For example, it can be called in the [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) callback of the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md).
 
@@ -44,36 +44,53 @@ The [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) 
 
 To enable [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) backup and restore during application module initialization, refer to the code snippet below.
 
-```ts
-import { UIAbility } from '@kit.AbilityKit';
+<!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// ···
+
+const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
-    onCreate() {
-        console.info("[Demo] EntryAbility onCreate");
-        this.context.setRestoreEnabled(true);
-    }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(DOMAIN, 'EntryAbility', '[Demo] EntryAbility onCreate');
+    this.context.setRestoreEnabled(true);
+    // ···
+  }
+
+// ···
 }
 ```
 
 To proactively save data and restore the data when the UIAbility is started, refer to the code snippet below.
 
-```ts
+<!-- @[onSaveState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// ···
+
+const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        console.info("[Demo] EntryAbility onCreate");
-        this.context.setRestoreEnabled(true);
-        if (want && want.parameters) {
-          let recoveryMyData = want.parameters["myData"];
-        }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(DOMAIN, 'EntryAbility', '[Demo] EntryAbility onCreate');
+    this.context.setRestoreEnabled(true);
+    if (want && want.parameters) {
+      let recoveryMyData = want.parameters['myData'];
     }
+  }
 
-    onSaveState(state:AbilityConstant.StateType, wantParams: Record<string, Object>) {
-        // Ability has called to save app data
-        console.log("[Demo] EntryAbility onSaveState");
-        wantParams["myData"] = "my1234567";
-        return AbilityConstant.OnSaveResult.ALL_AGREE;
-    }
+  onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>): AbilityConstant.OnSaveResult {
+    // Save the application data.
+    hilog.info(DOMAIN, 'EntryAbility', '[Demo] EntryAbility onSaveState');
+    wantParam['myData'] = 'my1234567';
+    return AbilityConstant.OnSaveResult.ALL_AGREE;
+  }
+
+// ···
 }
 ```
