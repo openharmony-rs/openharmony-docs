@@ -872,7 +872,7 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 >
 > 1.仅支持ArcList、Grid、List、WaterFlow组件。
 >
-> 2.在LazyForEach、ForEach、Repeat刷新数据源时，需确保在数据刷新完成之后再调用此接口。
+> 2.在[LazyForEach](ts-rendering-control-lazyforeach.md)、[ForEach](ts-rendering-control-foreach.md)、[Repeat](ts-rendering-control-repeat.md)刷新数据源时，需确保在数据刷新完成之后再调用此接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
