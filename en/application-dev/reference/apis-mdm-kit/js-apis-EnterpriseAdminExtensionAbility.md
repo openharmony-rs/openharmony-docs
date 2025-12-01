@@ -27,7 +27,7 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 
 onAdminEnabled(): void
 
-Called when the device administrator application is enabled by the enterprise administrator or employee. Upon receiving the event notification from the system, the device administrator application can set initialization policies in this callback.
+Called when the device administrator application is enabled. After an enterprise administrator or employee deploys and enables the device administrator application, the system notifies the device administrator application that the admin permission has been granted. The device administrator application can initialize policies within this callback.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -49,7 +49,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 onAdminDisabled(): void
 
-Called when the device administrator application is disabled by the enterprise administrator or employee. Upon receiving the event notification from the system, the device administrator application can use this callback to notify the enterprise administrator that the device is no longer under management.
+Called when the device administrator application is disabled. After an enterprise administrator or employee disables the device administrator application, the system notifies the application that the admin permission has been revoked. The device administrator application can use this callback to notify the enterprise administrator that the device is no longer under management.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
