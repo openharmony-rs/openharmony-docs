@@ -61,9 +61,20 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 | FUNCTION | @InsightIntentFunctionMethod | [@InsightIntentFunctionMethod](./js-apis-app-ability-InsightIntentDecorator.md#insightintentfunctionmethod)类型装饰器。 |
 | FORM | @InsightIntentForm | [@InsightIntentForm](./js-apis-app-ability-InsightIntentDecorator.md#insightintentform)类型装饰器。 |
 
+## ExecuteModeForConfiguration<sup>23+<sup>
+
+[使用配置文件开发的意图](../../application-models/insight-intent-config-development.md)支持的意图执行模式。例如，将[insight_intent.json配置文件](../../application-models/insight-intent-config-development.md#insight_intentjson配置文件说明)中的executeMode设置为"foreground"，表示支持与UIAbility组件绑定的意图在前台运行。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| FOREGROUND | 0 | 表示支持与UIAbility组件绑定的意图在前台运行。 |
+| BACKGROUND | 1 | 表示支持与UIAbility组件绑定的意图在后台运行。 |
+
 ## LinkIntentInfo<sup>20+<sup>
 
-LinkIntentInfo继承自[IntentDecoratorInfo](./js-apis-app-ability-InsightIntentDecorator.md#intentdecoratorinfo)，用于描述[@InsightIntentLink](./js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器支持的参数，例如应用间跳转需要的uri信息。
+LinkIntentInfo用于描述[@InsightIntentLink](./js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器支持的参数，例如应用间跳转需要的uri信息。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -77,7 +88,7 @@ LinkIntentInfo继承自[IntentDecoratorInfo](./js-apis-app-ability-InsightIntent
 
 ## PageIntentInfo<sup>20+<sup>
 
-PageIntentInfo继承自[IntentDecoratorInfo](./js-apis-app-ability-InsightIntentDecorator.md#intentdecoratorinfo)，用于描述[@InsightIntentPage](./js-apis-app-ability-InsightIntentDecorator.md#insightintentpage)装饰器支持的参数，例如目标页面的[NavDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)名称。
+PageIntentInfo用于描述[@InsightIntentPage](./js-apis-app-ability-InsightIntentDecorator.md#insightintentpage)装饰器支持的参数，例如目标页面的[NavDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)名称。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -104,7 +115,7 @@ PageIntentInfo继承自[IntentDecoratorInfo](./js-apis-app-ability-InsightIntent
 
 ## FormIntentInfo<sup>20+<sup>
 
-FormIntentInfo继承自[IntentDecoratorInfo](./js-apis-app-ability-InsightIntentDecorator.md#intentdecoratorinfo)，用于描述[@InsightIntentForm](./js-apis-app-ability-InsightIntentDecorator.md#insightintentform)装饰器支持的参数，例如卡片名称。
+FormIntentInfo用于描述[@InsightIntentForm](./js-apis-app-ability-InsightIntentDecorator.md#insightintentform)装饰器支持的参数，例如卡片名称。同时，该接口也可用于描述[使用配置文件开发的意图](../../application-models/insight-intent-config-development.md)所绑定的卡片信息。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -119,7 +130,7 @@ FormIntentInfo继承自[IntentDecoratorInfo](./js-apis-app-ability-InsightIntent
 
 ## EntryIntentInfo<sup>20+<sup>
 
-EntryIntentInfo继承自[IntentDecoratorInfo](./js-apis-app-ability-InsightIntentDecorator.md#intentdecoratorinfo)，用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry)装饰器支持的参数，例如意图调用执行模式。
+EntryIntentInfo用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry)装饰器支持的参数，例如意图调用执行模式。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -131,6 +142,85 @@ EntryIntentInfo继承自[IntentDecoratorInfo](./js-apis-app-ability-InsightInten
 | -------- | -------- | -------- | -------- |-------- |
 | abilityName | string | 是 | 否 | Ability名称。 |
 | executeMode | [insightIntent.ExecuteMode](./js-apis-app-ability-insightIntent.md#executemode)[] | 是 | 否 | 意图调用执行模式。即拉起绑定的Ability时支持的执行模式。 |
+
+## SubIntentInfoForConfiguration<sup>23+<sup>
+
+用于描述[使用配置文件开发的意图](../../application-models/insight-intent-config-development.md)的特有信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- |-------- |
+| srcEntry | string | 是 | 否 | 表示意图执行文件的相对路径，取值为长度不超过127字节的字符串。 |
+| inputParams | Array&lt;Record\<string, Object\>&gt; | 是 | 是 | 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。 |
+| outputParams | Array&lt;Record\<string, Object\>&gt; | 是 | 是 | 表示意图调用返回结果的数据格式声明，用于定义意图调用返回结果的数据格式。 |
+| uiAbility | [UIAbilityIntentInfo](#uiabilityintentinfo23) | 是 | 是 | 表示意图绑定的UIAbility组件信息，包含"ability"字段和"executeMode"字段。 |
+| uiExtension | [UIExtensionIntentInfo](#uiextensionintentinfo23) | 是 | 是 | 表示意图绑定的UIExtensionAbility组件信息。 |
+| from | [FormIntentInfo](#formintentinfo20) | 是 | 是 | 表示意图绑定的卡片信息。 |
+| serviceExtension | [ServiceExtensionIntentInfo](#serviceextensionintentinfo23) | 是 | 是 | 表示意图绑定的ServiceExtensionAbility组件信息。 |
+| entities | Record\<string, Object\> | 是 | 是 | 表示意图包含的实体信息。 |
+
+## UIAbilityIntentInfo<sup>23+<sup>
+
+用于描述[使用配置文件开发的意图](../../application-models/insight-intent-config-development.md)所绑定的UIAbility组件信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- |-------- |
+| abilityName | string | 是 | 否 | 意图绑定的UIAbility组件名称。 |
+| executeMode | [ExecuteModeForConfiguration](#executemodeforconfiguration23)[] | 是 | 否 | 意图调用执行模式。 |
+
+## UIExtensionIntentInfo<sup>23+<sup>
+
+用于描述[使用配置文件开发的意图](../../application-models/insight-intent-config-development.md)所绑定的UIExtensionAbility组件信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- |-------- |
+| abilityName | string | 是 | 否 | 意图绑定的UIExtensionAbility组件名称。 |
+
+## ServiceExtensionIntentInfo<sup>23+<sup>
+
+用于描述[使用配置文件开发的意图](../../application-models/insight-intent-config-development.md)所绑定的ServiceExtensionAbility组件信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- |-------- |
+| abilityName | string | 是 | 否 | 意图绑定的ServiceExtensionAbility组件名称。 |
+
+## DevelopType<sup>23+<sup>
+
+用于描述意图的开发方式。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| CONFIGURATION  | 'configuration' | 使用配置文件开发的意图。 |
+| DECORATOR | 'decorator' | 使用装饰器开发的意图。 |
 
 ## EntityInfo<sup>20+<sup>
 
@@ -173,11 +263,13 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 | icon | string | 是 | 否 | 表示意图图标。 |
 | llmDescription | string | 是 | 否 | 表示意图的功能，用于大型语言模型理解该意图。 |
 | keywords | string[] | 是 | 否 | 表示意图的搜索关键字。 |
-| intentType | [InsightIntentType](#insightintenttype20) | 是 | 否 | 表示通过意图装饰器定义的意图类型。 |
-| subIntentInfo | [LinkIntentInfo](#linkintentinfo20) \| [PageIntentInfo](#pageintentinfo20) \| [FunctionIntentInfo](#functionintentinfo20) \| [FormIntentInfo](#formintentinfo20) \| [EntryIntentInfo](#entryintentinfo20) | 是 | 否 | 表示特定意图装饰器的意图信息。 |
+| intentType | [InsightIntentType](#insightintenttype20) | 是 | 否 | 表示通过意图装饰器定义的意图类型。<br>**说明：**<br>对于使用配置文件开发的意图，该字段返回值默认为[@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry)类型装饰器。 |
+| subIntentInfo | [LinkIntentInfo](#linkintentinfo20) \| [PageIntentInfo](#pageintentinfo20) \| [FunctionIntentInfo](#functionintentinfo20) \| [FormIntentInfo](#formintentinfo20) \| [EntryIntentInfo](#entryintentinfo20) | 是 | 否 | 表示特定意图装饰器的意图信息。 <br>**说明：**<br>对于使用配置文件开发的意图，该字段返回值默认为[EntryIntentInfo](#entryintentinfo20)。 |
 | parameters | Record<string, Object> | 是 | 否 | 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。 |
 | result | Record<string, Object> | 是 | 否 | 表示意图调用返回的结果。 |
 | entities | Array&lt;[EntityInfo](#entityinfo20)&gt; | 是 | 否 | 表示意图包含的实体信息。 |
+| subIntentInfoForConfiguration<sup>23+</sup> | [SubIntentInfoForConfiguration](#subintentinfoforconfiguration23) | 是 | 是 | 表示使用配置文件开发的意图的特有信息。 |
+| developType<sup>23+</sup> | [DevelopType](#developtype23) | 是 | 是 | 表示意图的开发方式。 |
 
 ## GetInsightIntentFlag<sup>20+<sup>
 
@@ -190,6 +282,11 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 | GET_FULL_INSIGHT_INTENT | 0x00000001 | 查询[InsightIntentInfo](#insightintentinfo20)中的除entities以外的全量意图信息，详见下表。查询entities信息需要使用GET_ENTITY_INFO。 |
 | GET_SUMMARY_INSIGHT_INTENT | 0x00000002 | 查询[InsightIntentInfo](#insightintentinfo20)中的简要意图信息，详见下表。 |
 | GET_ENTITY_INFO | 0x00000004 | 查询[EntityInfo](#entityinfo20)的信息，不可单独使用，必选结合GET_FULL_INSIGHT_INTENT或者GET_SUMMARY_INSIGHT_INTENT使用。例如`GET_FULL_INSIGHT_INTENT \| GET_ENTITY_INFO`。 |
+
+> **说明：**
+>
+>  - 对于使用配置文件开发的意图，通过上述接口查询的全量信息和简要信息完全一致。
+>  - 对于使用装饰器开发的意图，通过上述接口查询的全量信息和简要信息存在差别，详见下表。
 
 **表1** 全量意图信息与简要意图信息差别
    
@@ -210,6 +307,8 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 | subIntentInfo | 是 | 是 |
 | parameters | 是 | 是 |
 | entities | 否 | 否 |
+| developType<sup>23+</sup> | 是 | 是 |
+| subIntentInfoForConfiguration<sup>23+</sup> | 否 | 否 |
 
 ## insightIntentDriver.execute
 
