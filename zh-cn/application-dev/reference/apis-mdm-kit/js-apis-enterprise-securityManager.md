@@ -785,7 +785,7 @@ setPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance,
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。      |
 | applicationInstance    | [ApplicationInstance](#applicationinstance20)  | 是 | 指定应用实例。 |
-| permissions | Array&lt;string&gt;  | 是 | 需要管理的权限名称列表，仅支持user_grant权限。该字段以[应用权限组](../../security/AccessToken/app-permission-group-list.md)维度进行管理，传入的权限应包含权限所在权限组的所有权限。 |
+| permissions | Array&lt;string&gt;  | 是 | 需要管理的权限名称列表，仅支持user_grant权限。该字段以[应用权限组](../../security/AccessToken/app-permission-group-list.md)维度进行管理，传入的权限列表应包含权限所在权限组的所有应用已声明使用的权限。 |
 | managedState | [PermissionManagedState](#permissionmanagedstate20) | 是 | 应用权限的管理策略。 |
 
 **错误码**：
