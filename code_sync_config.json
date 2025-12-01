@@ -794,6 +794,51 @@
 						"end_line":436,
 						"name":"AppEvent_Click_C++_Add_Watcher",
 						"start_line":386
+					},
+					{
+						"end_line":999,
+						"name":"AppEvent_Click_C++_WriteAppEvent",
+						"start_line":989
+					},
+					{
+						"end_line":1281,
+						"name":"AppEvent_C++_Init",
+						"start_line":1036
+					},
+					{
+						"end_line":910,
+						"name":"AppEvent_C++_RemoveWatcher",
+						"start_line":869
+					},
+					{
+						"end_line":974,
+						"name":"AppEvent_C++_DestroyWatcher",
+						"start_line":924
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts",
+				"functions":[
+					{
+						"end_line":22,
+						"name":"AppEvent_C++_Index.d.ts",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":30,
+						"name":"EventSub_Capi_Header",
+						"start_line":28
+					},
+					{
+						"end_line":438,
+						"name":"AppEvent_Call_Capi_Function",
+						"start_line":432
 					}
 				]
 			}
@@ -28551,6 +28596,21 @@
 						"end_line":136,
 						"name":"Button_Remove_Processor",
 						"start_line":123
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/dfx/hiappevent-watcher-app-events-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":62,
+						"name":"AppEvent_Crash_ArkTS_Add_Watcher",
+						"start_line":34
 					}
 				]
 			}
