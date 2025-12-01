@@ -445,53 +445,53 @@ struct MoveTo {
 3. 在`NativeEntry.cpp`中，挂载Native节点。
 
    <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/NativeEntry.cpp) -->
-
-``` C++
-// NativeEntry.cpp
-#include <arkui/native_node_napi.h>
-#include <hilog/log.h>
-#include <js_native_api.h>
-#include "NativeEntry.h"
-#include "MoveToExample.h"
-#include "GetNodeByIdExample.h"
-
-
-namespace NativeModule {
-// ···
-static napi_value CreateNativeRoot(napi_env env, napi_callback_info info, const char *who, MakeNodeFn makeNodeFn)
-{
-    size_t argc = 1;
-    napi_value args[1] = {nullptr};
-
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    // 获取NodeContent
-    ArkUI_NodeContentHandle contentHandle;
-    OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
-    if (contentHandle == nullptr) {
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, K_LOG_DOMAIN,
-                     "%{public}s nodeContentHandle is null", who);
-        return nullptr;
-    }
-    NativeEntry::GetInstance()->SetContentHandle(contentHandle);
-
-    // 创建节点
-    auto node = makeNodeFn();
-
-    // 保持Native侧对象到管理类中，维护生命周期。
-    NativeEntry::GetInstance()->SetRootNode(node);
-    return nullptr;
-}
-
-napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
-{
-    // 从管理类中释放Native侧对象。
-    NativeEntry::GetInstance()->DisposeRootNode();
-    return nullptr;
-}
-// ···
-} // namespace NativeModule
-```
+   
+   ``` C++
+   // NativeEntry.cpp
+   #include <arkui/native_node_napi.h>
+   #include <hilog/log.h>
+   #include <js_native_api.h>
+   #include "NativeEntry.h"
+   #include "MoveToExample.h"
+   #include "GetNodeByIdExample.h"
+   
+   
+   namespace NativeModule {
+   // ...
+   static napi_value CreateNativeRoot(napi_env env, napi_callback_info info, const char *who, MakeNodeFn makeNodeFn)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+   
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       // 获取NodeContent
+       ArkUI_NodeContentHandle contentHandle;
+       OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+       if (contentHandle == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, K_LOG_DOMAIN,
+                        "%{public}s nodeContentHandle is null", who);
+           return nullptr;
+       }
+       NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+   
+       // 创建节点
+       auto node = makeNodeFn();
+   
+       // 保持Native侧对象到管理类中，维护生命周期。
+       NativeEntry::GetInstance()->SetRootNode(node);
+       return nullptr;
+   }
+   
+   napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
+   {
+       // 从管理类中释放Native侧对象。
+       NativeEntry::GetInstance()->DisposeRootNode();
+       return nullptr;
+   }
+   // ...
+   } // namespace NativeModule
+   ```
 
 4. 运行程序，点击按钮，Stack节点会移动到目标位置。
 
