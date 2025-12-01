@@ -22,7 +22,7 @@
 
 1. 创建TransitionEffect。
 
-  ArkTS1.1示例：
+   ArkTS-Dyn示例：
   
    ```ts
    // 出现时会是所有转场效果的出现效果叠加，消失时会是所有消失转场效果的叠加
@@ -41,97 +41,97 @@
        .combine(TransitionEffect.asymmetric(TransitionEffect.scale({ x: 0, y: 0 }), TransitionEffect.rotate({ angle: 90 })));
    ```
   
-  ArkTS1.2示例：
+   ArkTS-Sta示例：
 
-  ```ts
-   import { TransitionEffect, TransitionEdge } from '@ohos.arkui.component';
-   import curves from '@ohos.curves';
-   // 出现时会是所有转场效果的出现效果叠加，消失时会是所有消失转场效果的叠加
-   // 说明各个effect跟随的动画参数
-   private effect: object =
-     TransitionEffect.OPACITY // 创建了透明度转场效果，这里没有调用animation接口，会跟随animateTo的动画参数
-       // 通过combine方法，添加缩放转场效果，并指定了springMotion(0.6, 1.2)曲线
-       .combine(TransitionEffect.scale({ x: 0, y: 0 }).animation({ curve: curves.springMotion(0.6, 1.2) }))
-       // 添加旋转转场效果，这里的动画参数会跟随上面的TransitionEffect，也就是springMotion(0.6, 1.2)
-       .combine(TransitionEffect.rotate({ angle: 90 }))
-       // 添加平移转场效果，动画参数会跟随其之上带animation的TransitionEffect，也就是springMotion(0.6, 1.2)
-       .combine(TransitionEffect.translate({ x: 150, y: 150 })
-       // 添加move转场效果，并指定了springMotion曲线
-       .combine(TransitionEffect.move(TransitionEdge.END)).animation({curve: curves.springMotion()}))
-       // 添加非对称的转场效果，由于这里没有设置animation，会跟随上面的TransitionEffect的animation效果，也就是springMotion
-       .combine(TransitionEffect.asymmetric(TransitionEffect.scale({ x: 0, y: 0 }), TransitionEffect.rotate({ angle: 90 })));
+   ```ts
+    import { TransitionEffect, TransitionEdge } from '@ohos.arkui.component';
+    import curves from '@ohos.curves';
+    // 出现时会是所有转场效果的出现效果叠加，消失时会是所有消失转场效果的叠加
+    // 说明各个effect跟随的动画参数
+    private effect: object =
+      TransitionEffect.OPACITY // 创建了透明度转场效果，这里没有调用animation接口，会跟随animateTo的动画参数
+        // 通过combine方法，添加缩放转场效果，并指定了springMotion(0.6, 1.2)曲线
+        .combine(TransitionEffect.scale({ x: 0, y: 0 }).animation({ curve: curves.springMotion(0.6, 1.2) }))
+        // 添加旋转转场效果，这里的动画参数会跟随上面的TransitionEffect，也就是springMotion(0.6, 1.2)
+        .combine(TransitionEffect.rotate({ angle: 90 }))
+        // 添加平移转场效果，动画参数会跟随其之上带animation的TransitionEffect，也就是springMotion(0.6, 1.2)
+        .combine(TransitionEffect.translate({ x: 150, y: 150 })
+        // 添加move转场效果，并指定了springMotion曲线
+        .combine(TransitionEffect.move(TransitionEdge.END)).animation({curve: curves.springMotion()}))
+        // 添加非对称的转场效果，由于这里没有设置animation，会跟随上面的TransitionEffect的animation效果，也就是springMotion
+        .combine(TransitionEffect.asymmetric(TransitionEffect.scale({ x: 0, y: 0 }), TransitionEffect.rotate({ angle: 90 })));
    ```
 
 
 
 2. 将转场效果通过[transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)接口设置到组件。
 
-  ArkTS1.1示例：
+   ArkTS-Dyn示例：
 
-   ```ts
-   Text('test')
-     .transition(this.effect)
-   ```
+    ```ts
+    Text('test')
+      .transition(this.effect)
+    ```
 
-  ArkTS1.2示例：
+   ArkTS-Sta示例：
   
-   ```ts
-   import { Text } from '@ohos.arkui.component';
+    ```ts
+    import { Text } from '@ohos.arkui.component';
 
-   Text('test')
-     .transition(this.effect)
-   ```
+    Text('test')
+      .transition(this.effect)
+    ```
 
 3. 新增或者删除组件触发转场。
 
-  **ArkTS1.1示例：**
+   ArkTS-Dyn示例：
   
-   ```ts
-   @State isPresent: boolean = true;
-   // ...
-   if (this.isPresent) {
-     Text('test')
-       .transition(this.effect)
-   }
-   // ...
-   // 控制新增或者删除组件
-   // 方式一：将控制变量放到animateTo闭包内，未通过animation接口定义动画参数的TransitionEffect将跟随animateTo的动画参数
-   this.getUIContext()?.animateTo({ curve: curves.springMotion() }, () => {
-     this.isPresent = false;
-   })
+    ```ts
+    @State isPresent: boolean = true;
+    // ...
+    if (this.isPresent) {
+      Text('test')
+        .transition(this.effect)
+    }
+    // ...
+    // 控制新增或者删除组件
+    // 方式一：将控制变量放到animateTo闭包内，未通过animation接口定义动画参数的TransitionEffect将跟随animateTo的动画参数
+    this.getUIContext()?.animateTo({ curve: curves.springMotion() }, () => {
+      this.isPresent = false;
+    })
    
-   // 方式二：直接控制删除或者新增组件，动画参数由TransitionEffect的animation接口配置
-   this.isPresent = false;
-   ```
+    // 方式二：直接控制删除或者新增组件，动画参数由TransitionEffect的animation接口配置
+    this.isPresent = false;
+    ```
 
-  ArkTS1.2示例：
+   ArkTS-Sta示例：
 
-   ```ts
-   import { Text } from '@ohos.arkui.component';
-   import { State } from '@ohos.arkui.stateManagement';
-   import curves from '@ohos.curves';
+    ```ts
+    import { Text } from '@ohos.arkui.component';
+    import { State } from '@ohos.arkui.stateManagement';
+    import curves from '@ohos.curves';
 
-   @State isPresent: boolean = true;
-   // ...
-   if (this.isPresent) {
-     Text('test')
-       .transition(this.effect)
-   }
-   // ...
-   // 控制新增或者删除组件
-   // 方式一：将控制变量放到animateTo闭包内，未通过animation接口定义动画参数的TransitionEffect将跟随animateTo的动画参数
-   this.getUIContext()?.animateTo({ curve: curves.springMotion() }, () => {
-     this.isPresent = false;
-   })
+    @State isPresent: boolean = true;
+    // ...
+    if (this.isPresent) {
+      Text('test')
+        .transition(this.effect)
+    }
+    // ...
+    // 控制新增或者删除组件
+    // 方式一：将控制变量放到animateTo闭包内，未通过animation接口定义动画参数的TransitionEffect将跟随animateTo的动画参数
+    this.getUIContext()?.animateTo({ curve: curves.springMotion() }, () => {
+      this.isPresent = false;
+    })
    
-   // 方式二：直接控制删除或者新增组件，动画参数由TransitionEffect的animation接口配置
-   this.isPresent = false;
-   ```
+    // 方式二：直接控制删除或者新增组件，动画参数由TransitionEffect的animation接口配置
+    this.isPresent = false;
+    ```
 
 
  完整的示例代码和效果如下，示例中采用直接删除或新增组件的方式触发转场，也可以替换为在animateTo闭包内改变控制变量触发转场。
 
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 
 ```ts
 import { curves } from '@kit.ArkUI';
@@ -196,7 +196,7 @@ struct TransitionEffectDemo {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
 
 ```ts
 import { Entry, Component, Column, Button, Text, ClickEvent, FlexAlign, TransitionEffect, TransitionEdge, Stack,
@@ -213,15 +213,14 @@ struct TransitionEffectDemo {
   private effect: TransitionEffect =
     // 创建默认透明度转场效果，并指定了springMotion(0.6, 0.8)曲线
     TransitionEffect.OPACITY.animation({
-      curve: curves.springMotion(0.6, 0.8)
-    })// 通过combine方法，这里的动画参数会跟随上面的TransitionEffect，也就是springMotion(0.6, 0.8)
+    })// 通过combine方法，这里的动画参数会跟随上面的TransitionEffect
       .combine(TransitionEffect.scale({
         x: 0,
         y: 0
-      }))// 添加旋转转场效果，这里的动画参数会跟随上面带animation的TransitionEffect，也就是springMotion(0.6, 0.8)
+      }))// 添加旋转转场效果，这里的动画参数会跟随上面带animation的TransitionEffect
       .combine(TransitionEffect.rotate({ angle: 90 }))// 添加平移转场效果，这里的动画参数使用指定的springMotion()
       .combine(TransitionEffect.translate({ y: 150 })
-        .animation({ curve: curves.springMotion() }))// 添加move转场效果，这里的动画参数会跟随上面的TransitionEffect，也就是springMotion()
+        .animation({}))// 添加move转场效果，这里的动画参数会跟随上面的TransitionEffect
       .combine(TransitionEffect.move(TransitionEdge.END));
 
   build() {
@@ -269,6 +268,8 @@ struct TransitionEffectDemo {
 
 
 对多个组件添加转场效果时，可以在animation动画参数中配置不同的delay值，实现组件渐次出现消失的效果：
+
+ArkTS-Dyn示例：
 
 ```ts
 const ITEM_COUNTS = 9;
@@ -323,6 +324,67 @@ struct Index1 {
       this.getUIContext()?.animateTo({
         duration: DURATION + INTERVAL * (ITEM_COUNTS - 1),
         curve: Curve.Friction
+      }, () => {
+        this.isGridShow = !this.isGridShow;
+      })
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Text, ClickEvent, TransitionEffect, Stack, GridItem,
+  Color, Grid, ForEach
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+const ITEM_COUNTS = 9;
+const ITEM_COLOR = '#ED6F21';
+const INTERVAL = 30;
+const DURATION = 300;
+
+@Entry
+@Component
+struct Index1 {
+  @State isGridShow: boolean = false;
+  @State items: Array<int> = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
+  build() {
+    Stack() {
+      if (this.isGridShow) {
+        Grid() {
+          ForEach(this.items, (item: int, index: int) => {
+            GridItem() {
+              Stack() {
+                Text((item + 1).toString())
+              }
+              .size({ width: 50, height: 50 })
+              .backgroundColor(ITEM_COLOR)
+              .transition(TransitionEffect.OPACITY
+                .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 }))// 对每个方格的转场添加delay，实现组件的渐次出现消失效果
+                .animation({ duration: DURATION, delay: INTERVAL * index }))
+              .borderRadius(10)
+            }
+            // 消失时，如果不对方格的所有父控件添加转场效果，则方格的消失转场不会生效
+            // 此处让方格的父控件在出现消失转场时一直以0.99的透明度显示，使得方格的转场效果不受影响
+            .transition(TransitionEffect.opacity(0.99))
+          }, (item: int) => item.toString())
+        }
+        .columnsTemplate('1fr 1fr 1fr')
+        .rowsGap(15)
+        .columnsGap(15)
+        .size({ width: 180, height: 180 })
+        // 消失时，如果不对方格的所有父控件添加转场效果，则方格的消失转场不会生效
+        // 此处让父控件在出现消失转场时一直以0.99的透明度显示，使得方格的转场效果不受影响
+        .transition(TransitionEffect.opacity(0.99))
+      }
+    }
+    .size({ width: '100%', height: '100%' })
+    .onClick((e: ClickEvent) => {
+      this.getUIContext()?.animateTo({
+        duration: DURATION + INTERVAL * (ITEM_COUNTS - 1)
       }, () => {
         this.isGridShow = !this.isGridShow;
       })
