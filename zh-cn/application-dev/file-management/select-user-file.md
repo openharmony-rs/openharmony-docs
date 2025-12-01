@@ -60,18 +60,18 @@
 
    <!--@[picker_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->				
 
-``` TypeScript
-      let uris: string[] = [];
-      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      const documentViewPicker = new picker.DocumentViewPicker(context);
-      documentViewPicker.select(documentSelectOptions).then((documentSelectResult: string[]) => {
-        uris = documentSelectResult;
-        Logger.info('documentViewPicker.select to file succeed and uris are:' + uris);
-		// ···
-      }).catch((err: BusinessError) => {
-        Logger.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
-      });
-```
+   ``` TypeScript
+   let uris: string[] = [];
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   const documentViewPicker = new picker.DocumentViewPicker(context);
+   documentViewPicker.select(documentSelectOptions).then((documentSelectResult: string[]) => {
+     uris = documentSelectResult;
+     console.info('documentViewPicker.select to file succeed and uris are:' + uris);
+     // ...
+   }).catch((err: BusinessError) => {
+     console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
+   });
+   ```
 
 
    > **注意：**
@@ -127,16 +127,20 @@
 
    <!--@[audio_select_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->				
 
-``` TypeScript
-      let uris: string[] = [];
-      // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      const audioViewPicker = new picker.AudioViewPicker(context);
-      audioViewPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
-        //文件选择成功后，返回被选中音频的URI结果集。
-        uris = audioSelectResult;
-        console.info('audioViewPicker.select to file succeed and uri is:' + uris);
-```
+   ``` TypeScript
+   let uris: string[] = [];
+   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   const audioViewPicker = new picker.AudioViewPicker(context);
+   audioViewPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
+     //文件选择成功后，返回被选中音频的URI结果集。
+     uris = audioSelectResult;
+     console.info('audioViewPicker.select to file succeed and uri is:' + uris);
+     // ...
+   }).catch((err: BusinessError) => {
+     console.error(`Invoke audioViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
+   })
+   ```
 
    > **注意：**
    >
