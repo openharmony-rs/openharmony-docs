@@ -101,8 +101,8 @@
 6. 设置段落文本内容为"Hello World. \nThis is the theme font."，此时该段落文本将应用主题字体。
 
    <!-- @[theme_font_c_draw_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
-
-   ```C++
+   
+   ``` C++
    // 设置其他文本样式
    OH_Drawing_SetTextStyleColor(myTextStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
    // 设置字体大小为100.0
