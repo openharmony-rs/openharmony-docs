@@ -3509,6 +3509,73 @@ abstract initialize(): ButtonAttribute
 | ------------------ | ------------------ |
 | ButtonAttribute | 返回Button组件的属性设置对象。 |
 
+**示例：** 
+
+```ts
+
+'use static'
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  Color,
+  ListItemOptions,
+  ListItemStyle,
+  NodeContainer,
+  ButtonType,
+  ButtonLabelStyle,
+  Font,
+  FontWeight,
+  TextOverflow,
+  FontStyle,
+  ButtonStyleMode,
+  ControlSize,
+  ButtonRole,
+  ContentModifier,ButtonConfiguration,WrappedBuilder,Checkbox,wrapBuilder
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+import { NodeController, FrameNode, typeNode } from '@ohos.arkui.node'
+import { UIContext } from '@ohos.arkui.UIContext'
+ 
+class MyNodeController extends NodeController {
+  public uiContext: UIContext | null = null;
+  public rootNode: FrameNode | null = null;
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.uiContext = uiContext;
+    this.rootNode = new FrameNode(uiContext);
+
+    let flexNode = typeNode.createNode(uiContext, "Flex");
+    flexNode.initialize().size({ width: 200, height: 200 }).backgroundColor(Color.White)
+ 
+    let button = typeNode.createButtonNode(uiContext);
+    button.initialize();
+    flexNode.appendChild(button);
+ 
+    this!.rootNode!.appendChild(flexNode);
+    return this.rootNode;
+  }
+}
+@Entry
+@Component
+struct MyStateSample {
+  private controller: MyNodeController = new MyNodeController()
+  build() {
+    Column(undefined) {
+      Text("NodeContainer start").fontSize(20)
+      NodeContainer(this.controller).id("NodeContainer001")
+      Text("NodeContainer end").fontSize(20)
+    }
+  }
+}
+```
+
+  ![image](figures/buttonInitialize1.png)
+
+
 ### initialize<sup>22+</sup>
 abstract initialize(label: ResourceStr, options?: ButtonOptions): ButtonAttribute
 
@@ -3533,6 +3600,72 @@ abstract initialize(label: ResourceStr, options?: ButtonOptions): ButtonAttribut
 | ------------------ | ------------------ |
 | ButtonAttribute | 返回Button组件的属性设置对象。 |
 
+**示例：** 
+
+```ts
+
+'use static'
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  Color,
+  ListItemOptions,
+  ListItemStyle,
+  NodeContainer,
+  ButtonType,
+  ButtonLabelStyle,
+  Font,
+  FontWeight,
+  TextOverflow,
+  FontStyle,
+  ButtonStyleMode,
+  ControlSize,
+  ButtonRole,
+  ContentModifier,ButtonConfiguration,WrappedBuilder,Checkbox,wrapBuilder
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+import { NodeController, FrameNode, typeNode } from '@ohos.arkui.node'
+import { UIContext } from '@ohos.arkui.UIContext'
+ 
+class MyNodeController extends NodeController {
+  public uiContext: UIContext | null = null;
+  public rootNode: FrameNode | null = null;
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.uiContext = uiContext;
+    this.rootNode = new FrameNode(uiContext);
+
+    let flexNode = typeNode.createNode(uiContext, "Flex");
+    flexNode.initialize().size({ width: 200, height: 200 }).backgroundColor(Color.White)
+ 
+    let button = typeNode.createButtonNode(uiContext);
+    button.initialize('OK', { type: ButtonType.Normal })
+    flexNode.appendChild(button);
+ 
+    this!.rootNode!.appendChild(flexNode);
+    return this.rootNode;
+  }
+}
+@Entry
+@Component
+struct MyStateSample {
+  private controller: MyNodeController = new MyNodeController()
+  build() {
+    Column(undefined) {
+      Text("NodeContainer start").fontSize(20)
+      NodeContainer(this.controller).id("NodeContainer001")
+      Text("NodeContainer end").fontSize(20)
+    }
+  }
+}
+```
+
+  ![image](figures/buttonInitialize3.png)
+
 ### initialize<sup>22+</sup>
 abstract initialize(value: ButtonOptions): ButtonAttribute
 
@@ -3555,6 +3688,73 @@ abstract initialize(value: ButtonOptions): ButtonAttribute
 | 类型                  | 说明      |
 | ------------------ | ------------------ |
 | ButtonAttribute | 返回Button组件的属性设置对象。 |
+
+**示例：** 
+
+```ts
+
+'use static'
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  Color,
+  ListItemOptions,
+  ListItemStyle,
+  NodeContainer,
+  ButtonType,
+  ButtonLabelStyle,
+  Font,
+  FontWeight,
+  TextOverflow,
+  FontStyle,
+  ButtonStyleMode,
+  ControlSize,
+  ButtonRole,
+  ContentModifier,ButtonConfiguration,WrappedBuilder,Checkbox,wrapBuilder
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+import { NodeController, FrameNode, typeNode } from '@ohos.arkui.node'
+import { UIContext } from '@ohos.arkui.UIContext'
+ 
+class MyNodeController extends NodeController {
+  public uiContext: UIContext | null = null;
+  public rootNode: FrameNode | null = null;
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.uiContext = uiContext;
+    this.rootNode = new FrameNode(uiContext);
+
+    let flexNode = typeNode.createNode(uiContext, "Flex");
+    flexNode.initialize().size({ width: 200, height: 200 }).backgroundColor(Color.White)
+ 
+    let button = typeNode.createButtonNode(uiContext);
+    button.initialize({type: ButtonType.Normal});
+    button.appendChild(typeNode.createCheckboxNode(uiContext))
+    flexNode.appendChild(button);
+ 
+    this!.rootNode!.appendChild(flexNode);
+    return this.rootNode;
+  }
+}
+@Entry
+@Component
+struct MyStateSample {
+  private controller: MyNodeController = new MyNodeController()
+  build() {
+    Column(undefined) {
+      Text("NodeContainer start").fontSize(20)
+      NodeContainer(this.controller).id("NodeContainer001")
+      Text("NodeContainer end").fontSize(20)
+    }
+  }
+}
+```
+
+  ![image](figures/buttonInitialize2.png)
 
 ### Button<sup>22+</sup>
 type Button = ButtonFrameNode
