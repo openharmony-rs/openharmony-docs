@@ -4,18 +4,18 @@
 <!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Powered by the ArkTS-based declarative development paradigm, ArkUI is a simplified, high-performance UI development framework for cross-device applications. It provides the capabilities required for building the application UI, including:
 
 
 - **ArkTS**
 
-  ArkTS is the preferred programming language for application development. As a superset of [TypeScript](https://www.typescriptlang.org/) (TS for short), it contains all TS features and added features, including declarative UI description, custom components, dynamic UI element extension, state management, and rendering control. State management in ArkTS provides clear page re-render processes and pipes through decorators with different functions. It covers UI component states and application states, allowing for a comprehensive data update and UI rendering mechanism across the application. To learn more about ArkTS, see [Getting Started with ArkTS](../quick-start/arkts-get-started.md).
+  ArkTS is the preferred programming language for application development. Extending the [TypeScript](https://www.typescriptlang.org/) ecosystem, ArkTS enhances it with capabilities tailored for application development, including declarative UI description, custom components, dynamic UI element extension, state management, and rendering control. State management in ArkTS provides clear page re-render processes and pipes through decorators with different functions. It covers UI component states and application states, allowing for a comprehensive data update and UI rendering mechanism across the application. To learn more about ArkTS, see [Getting Started with ArkTS](../quick-start/arkts-get-started.md).
 
 - **Layout**
 
-  Layout defines how components are laid out in the UI. ArkUI offers a diverse array of layouts. Besides the basic layouts, such as linear, stack, flex, and relative, you also have access to the advanced layouts, including list, grid, and swiper, for more complex UI design needs.
+  Layout defines how components are laid out in the UI. ArkUI offers a diverse array of layout options. Besides the basic layouts, such as linear, stack, flex, and relative, advanced layouts including list, grid, and swiper are available for more complex UI design requirements.
 
 - **Component**
 
@@ -53,7 +53,7 @@ Powered by the ArkTS-based declarative development paradigm, ArkUI is a simplifi
   - Language compiler and runtime optimization: The productivity punch includes unified bytecode, efficient Foreign Function Interface (FFI), ahead-of-time (AOT), engine minimization, and type optimization.
 
 - Promising ecosystem
-  ArkUI can gain traction with its relatively neutral and friendly programming language. It can tap on the ecosystems of mainstream languages and pushed toward a steady revolutionary path with standards organizations.
+  ArkUI can gain traction with its relatively neutral and developer-friendly programming language. It can tap on the ecosystems of mainstream languages and advance along an evolutionary path with standards organizations.
 
 
 ## Architecture
@@ -66,7 +66,7 @@ Powered by the ArkTS-based declarative development paradigm, ArkUI is a simplifi
 
 
 - **Declarative UI frontend**
-  Provides basic language specifications of the UI development paradigm, built-in UI components, layouts, and animations, and multiple state management mechanisms, with a wide array of APIs for you to call as required.
+  Provides basic language specifications of the UI development paradigm, built-in UI components, layout, and animations, and multiple state management mechanisms, with a wide array of APIs for you to call as required.
 
 - **Language runtime**
   Provides the parsing capability for the UI paradigm syntax and allows for cross-language API calls for a high-performance operating environment of the TS language.
