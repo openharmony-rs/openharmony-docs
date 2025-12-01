@@ -1193,6 +1193,8 @@ try {
 setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: number): Promise&lt;void&gt;
 设置某种类型系统窗口的窗口层级。使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
