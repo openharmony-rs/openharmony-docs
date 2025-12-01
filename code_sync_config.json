@@ -16146,7 +16146,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUITextNode.h",
 				"functions":[
 					{
-						"end_line":130,
+						"end_line":126,
 						"name":"arkUITestNode_start",
 						"start_line":15
 					}
