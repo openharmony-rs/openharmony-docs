@@ -226,35 +226,35 @@ libace_napi.z.so
 
 **参数：**
 
-- code: 该导出接口支持String或Number类型。
+- code: OpenHarmony中支持String或Number类型,但标准库接口的code类型仅支持String类型。
 
 **返回：**
 
-- 当code类型不匹配时，该导出接口返回napi_invalid_arg。
+- 当code类型不匹配时，OpenHarmony接口返回napi_invalid_arg，标准库接口返回napi_string_expected。
 
-- 该导出接口允许code属性设置失败。
+- OpenHarmony的导出接口允许code属性设置失败，标准库接口会判断设置执行情况，若设置失败，返回napi_genetic_failure。
 
-- OpenHarmony中创建的错误类型为Error。
+- OpenHarmony中创建的错误类型为Error，标准库创建的错误类型为TypeError。
 
 ### napi_create_range_error
 
 **参数：**
 
-- code: OpenHarmony中支持String或Number类型。
+- code: OpenHarmony中支持String或Number类型,但标准库接口的code类型仅支持String类型。
 
 **返回：**
 
-- 当code类型不匹配时，该导出接口返回napi_invalid_arg。
+- 当code类型不匹配时，OpenHarmony接口返回napi_invalid_arg，标准库接口返回napi_string_expected。
 
-- 该导出接口允许code属性设置失败。
+- OpenHarmony的导出接口允许code属性设置失败，标准库接口会判断设置执行情况，若设置失败，返回napi_genetic_failure。
 
-- OpenHarmony中创建的错误类型为Error。
+- OpenHarmony中创建的错误类型为Error，标准库创建的错误类型为RangeError。
 
 ### napi_create_reference
 
 **参数：**
 
-- value: 标准库中仅支持Object、Function、Symbol类型，而该导出接口对value的类型没有限制。
+- value: OpenHarmony接口对value的类型没有限制，而标准库中仅支持Object、Function、Symbol类型。
 
 ### napi_delete_reference
 
