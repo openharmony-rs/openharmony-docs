@@ -183,38 +183,38 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
 5. 调用OH_FileUri_GetFileName获取URI中的文件名称，在接口中malloc的内存需要在使用完后释放，因此需要free对应的内存。示例代码如下所示。
 
    <!-- @[get_file_name_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
-
-``` C++
-static napi_value NAPI_Global_OH_FileUri_GetFileNameExample(napi_env env, napi_callback_info info)
-{
-	// ···
-    char *uri = new char[strLength + 1]; // +1 for null terminator
-    // 将 JavaScript 字符串复制到 uri
-    napi_get_value_string_utf8(env, args[0], uri, strLength + 1, &strLength);
-
-    unsigned int length = strlen(uri);
-    // 输出传入uri字符串
-    OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
-    char *uriResult = nullptr;
-    FileManagement_ErrCode ret = OH_FileUri_GetFileName(uri, length, &uriResult);
-    // 输出获取到的文件名称
-	// ···
-    if (ret == 0 && uriResult != nullptr) {
-        // 将C字符串转换为napi_value
-        napi_status status = napi_create_string_utf8(env, uriResult, NAPI_AUTO_LENGTH, &result);
-        if (status != napi_ok) {
-            free(uriResult);
-            return NULL;
-        }
-        free(uriResult); // 释放临时字符串
-    } else {
-        // 将空字符串转换为napi_value
-        napi_status status = napi_create_string_utf8(env, "", NAPI_AUTO_LENGTH, &result);
-        if (status != napi_ok) {
-            return nullptr;
-        }
-    }
-    return result;
-}
-```
+   
+   ``` C++
+   static napi_value NAPI_Global_OH_FileUri_GetFileNameExample(napi_env env, napi_callback_info info)
+   {
+       // ...
+       char *uri = new char[strLength + 1]; // +1 for null terminator
+       // 将 JavaScript 字符串复制到 uri
+       napi_get_value_string_utf8(env, args[0], uri, strLength + 1, &strLength);
+   
+       unsigned int length = strlen(uri);
+       // 输出传入uri字符串
+       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
+       char *uriResult = nullptr;
+       FileManagement_ErrCode ret = OH_FileUri_GetFileName(uri, length, &uriResult);
+       // 输出获取到的文件名称
+       // ...
+       if (ret == 0 && uriResult != nullptr) {
+           // 将C字符串转换为napi_value
+           napi_status status = napi_create_string_utf8(env, uriResult, NAPI_AUTO_LENGTH, &result);
+           if (status != napi_ok) {
+               free(uriResult);
+               return NULL;
+           }
+           free(uriResult); // 释放临时字符串
+       } else {
+           // 将空字符串转换为napi_value
+           napi_status status = napi_create_string_utf8(env, "", NAPI_AUTO_LENGTH, &result);
+           if (status != napi_ok) {
+               return nullptr;
+           }
+       }
+       return result;
+   }
+   ```
 
