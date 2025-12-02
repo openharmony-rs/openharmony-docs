@@ -237,7 +237,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAssets(context: Context, assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
-删除媒体文件，删除的文件进入到回收站，使用Promise方式返回结果。
+删除媒体文件（删除的文件会进入到回收站）。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -295,7 +295,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAssets(context: Context, uriList: Array&lt;string&gt;): Promise&lt;void&gt;
 
-删除媒体文件，删除的文件进入到回收站，使用Promise方式返回结果。
+删除媒体文件（删除的文件会进入到回收站）。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -459,7 +459,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getWriteCacheHandler(): Promise&lt;number&gt;
 
-获取临时文件写句柄。
+获取临时文件写句柄。使用Promise异步回调。
 
 **注意**：对于同一个资产变更请求，不支持在成功获取临时文件写句柄后，重复调用该接口。
 
