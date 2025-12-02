@@ -162,44 +162,44 @@
 4. 获取通过中断传输读取数据的端点。
 
    <!-- @[interruptTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
-      console.error('deviceList_ is empty');
-      this.logInfo_ += '\n[ERROR] deviceList_ is empty';
-      return;
-    }
-    let usbDevice: usbManager.USBDevice = this.deviceList_[0];
-    if (!usbManager.hasRight(usbDevice.name)) {
-      console.error('permission denied');
-      this.logInfo_ += '\n[ERROR] permission denied';
-      return;
-    }
-    let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(usbDevice);
-    let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
-    let usbInterfaces: usbManager.USBInterface[] = [];
-    let usbInterface: usbManager.USBInterface | undefined = undefined;
-    let usbEndpoints: usbManager.USBEndpoint[] = [];
-    let usbEndpoint: usbManager.USBEndpoint | undefined = undefined;
-    for (let i = 0; i < usbConfigs?.length; i++) {
-      usbInterfaces = usbConfigs[i]?.interfaces;
-      for (let j = 0; j < usbInterfaces?.length; j++) {
-        usbEndpoints = usbInterfaces[j]?.endpoints;
-        usbEndpoint = usbEndpoints?.find((value) => {
-          return value.direction === 128 && value.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT;
-        })
-        if (usbEndpoint !== undefined) {
-          usbInterface = usbInterfaces[j];
-          break;
-        }
-      }
-    }
-    if (usbEndpoint === undefined) {
-      console.error(`get usbEndpoint error`)
-      this.logInfo_ += '\n[ERROR] get usbEndpoint error';
-      return;
-    }
-```
+   
+   ``` TypeScript
+   if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
+     console.error('deviceList_ is empty');
+     this.logInfo_ += '\n[ERROR] deviceList_ is empty';
+     return;
+   }
+   let usbDevice: usbManager.USBDevice = this.deviceList_[0];
+   if (!usbManager.hasRight(usbDevice.name)) {
+     console.error('permission denied');
+     this.logInfo_ += '\n[ERROR] permission denied';
+     return;
+   }
+   let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(usbDevice);
+   let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
+   let usbInterfaces: usbManager.USBInterface[] = [];
+   let usbInterface: usbManager.USBInterface | undefined = undefined;
+   let usbEndpoints: usbManager.USBEndpoint[] = [];
+   let usbEndpoint: usbManager.USBEndpoint | undefined = undefined;
+   for (let i = 0; i < usbConfigs?.length; i++) {
+     usbInterfaces = usbConfigs[i]?.interfaces;
+     for (let j = 0; j < usbInterfaces?.length; j++) {
+       usbEndpoints = usbInterfaces[j]?.endpoints;
+       usbEndpoint = usbEndpoints?.find((value) => {
+         return value.direction === 128 && value.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT;
+       })
+       if (usbEndpoint !== undefined) {
+         usbInterface = usbInterfaces[j];
+         break;
+       }
+     }
+   }
+   if (usbEndpoint === undefined) {
+     console.error(`get usbEndpoint error`)
+     this.logInfo_ += '\n[ERROR] get usbEndpoint error';
+     return;
+   }
+   ```
 
 
 5. 连接设备，注册通信接口。
