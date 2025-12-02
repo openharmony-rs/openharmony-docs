@@ -51,7 +51,7 @@ stringify(value: Object, replacer?: (number | string)[] | null, space?: string |
 | -------- | -------- | -------- |
 | BigInt支持 | 不支持（抛出TypeError）| 支持（通过stringifyBigInt扩展） |
 | 循环引用检测 | 抛出TypeError | 检测并抛出BusinessError |
-| 参数校验 | 弱校验 | 强校验（replacer 必须是函数或数组） |
+| 参数校验 | 弱校验 | 强校验（replacer必须是函数或数组） |
 | 错误信息 | 原生错误 | 自定义BusinessError |
 
 ### has
