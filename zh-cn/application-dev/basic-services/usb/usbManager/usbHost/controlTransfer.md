@@ -197,31 +197,31 @@
 5. 数据传输。
 
    <!-- @[controlTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    if (this.pipe_ === undefined) {
-      console.error('pipe_ is null');
-      this.logInfo_ += '\n[ERROR] pipe_ is null';
-      return;
-    }
-    let pipe: usbManager.USBDevicePipe = this.pipe_;
-    /*
-    构造控制传输参数
-    */
-    let param: usbManager.USBDeviceRequestParams = {
-      bmRequestType: 0x80, //0x80指一次由设备到主机的标准请求命令
-      bRequest: 0x06, //0x06指获取描述符
-      wValue: 0x01 << 8 | 0, //该值为2个字节，高字节指描述符类型，此处0x01指设备描述符；低字节指描述符索引，设备描述符不涉及，填0
-      wIndex: 0, //索引值，可填0
-      wLength: 18, //描述符的长度，此处18表示设备描述符长度，最大支持1024
-      data: new Uint8Array(18)
-    };
-
-    usbManager.usbControlTransfer(pipe, param).then((ret: number) => {
-      console.info(`usbControlTransfer = ${ret}`);
-      this.logInfo_ += '\n[INFO] usbControlTransfer = ' + JSON.stringify(ret);
-    })
-```
+   
+   ``` TypeScript
+   if (this.pipe_ === undefined) {
+     console.error('pipe_ is null');
+     this.logInfo_ += '\n[ERROR] pipe_ is null';
+     return;
+   }
+   let pipe: usbManager.USBDevicePipe = this.pipe_;
+   /*
+   构造控制传输参数
+   */
+   let param: usbManager.USBDeviceRequestParams = {
+     bmRequestType: 0x80, //0x80指一次由设备到主机的标准请求命令
+     bRequest: 0x06, //0x06指获取描述符
+     wValue: 0x01 << 8 | 0, //该值为2个字节，高字节指描述符类型，此处0x01指设备描述符；低字节指描述符索引，设备描述符不涉及，填0
+     wIndex: 0, //索引值，可填0
+     wLength: 18, //描述符的长度，此处18表示设备描述符长度，最大支持1024
+     data: new Uint8Array(18)
+   };
+   
+   usbManager.usbControlTransfer(pipe, param).then((ret: number) => {
+     console.info(`usbControlTransfer = ${ret}`);
+     this.logInfo_ += '\n[INFO] usbControlTransfer = ' + JSON.stringify(ret);
+   })
+   ```
 
 6. 释放接口，关闭设备。
 
