@@ -1066,6 +1066,7 @@ appEnvironments标签示例：
 | -------- | -------- | -------- | -------- |
 | package | 标识Native软件包名称。 | 字符串 | 该标签不可缺省。 |
 | type | 标识Native软件包类型。支持的取值如下：<br/>-&nbsp;public：公有类型。<br/>-&nbsp;private：私有类型。  | 字符串 | 该标签不可缺省。 |
+| independentSign | 标识Native软件包是否支持独立签名。<br/>**说明：**<br/>从API version 23开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 
 hnpPackages示例：
 
