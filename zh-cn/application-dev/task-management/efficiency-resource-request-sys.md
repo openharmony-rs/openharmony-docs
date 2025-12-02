@@ -108,7 +108,7 @@
      reason: "apply",
      isPersist: true,
      isProcess: false, // 在应用级别释放资源
-     cpuLevel: backgroundTaskManager.EfficiencyResourcesCpuLevel.SMALL_CPU, // 运行在小核，从API version 23
+     cpuLevel: backgroundTaskManager.EfficiencyResourcesCpuLevel.SMALL_CPU, // 运行在小核，从API version 23开始支持。
    };
    try {
      backgroundTaskManager.applyEfficiencyResources(request);

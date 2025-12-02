@@ -65,7 +65,7 @@ let request: backgroundTaskManager.EfficiencyResourcesRequest = {
     reason: "apply",
     isPersist: true,
     isProcess: false,
-    cpuLevel: backgroundTaskManager.EfficiencyResourcesCpuLevel.SMALL_CPU // 运行在小核，从API version 23
+    cpuLevel: backgroundTaskManager.EfficiencyResourcesCpuLevel.SMALL_CPU // 运行在小核，从API version 23开始支持。
 };
 try {
     backgroundTaskManager.applyEfficiencyResources(request);
