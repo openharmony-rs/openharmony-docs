@@ -57,7 +57,7 @@
     "type": "shared",
     "description": "$string:shared_desc",
     "deviceTypes": [
-      "phone"
+      "default"
     ],
     "deliveryWithInstall": true,
     // 只在独立卡片包形态中会使用，用来关联应用包模块。
