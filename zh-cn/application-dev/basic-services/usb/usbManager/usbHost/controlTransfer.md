@@ -161,37 +161,37 @@
 4. 打开设备。
 
    <!-- @[connectDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
-      console.error('deviceList_ is empty');
-      this.logInfo_ += '\n[ERROR] deviceList is empty';
-      return;
-    }
-    let deviceList: usbManager.USBDevice[] = this.deviceList_;
-    if (!usbManager.hasRight(deviceList[0]?.name)) {
-      console.error('permission denied');
-      this.logInfo_ += '\n[ERROR] permission denied';
-      return;
-    }
-    // 打开设备，获取数据传输通道。
-    let pipe: usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
-    if (!deviceList?.[0]?.configs?.[0]?.interfaces?.[0]) {
-      console.error('invalid interface');
-      this.logInfo_ += '\n[ERROR] invalid interface';
-      return;
-    }
-    let interface1: usbManager.USBInterface = deviceList?.[0]?.configs?.[0]?.interfaces?.[0];
-    /*
-     打开对应接口，在设备信息（deviceList）中选取对应的interface。
-    interface1为设备配置中的一个接口。
-    */
-    usbManager.claimInterface(pipe, interface1, true);
-    this.pipe_ = pipe;
-    this.interface_ = interface1;
-    console.info('open device success');
-    this.logInfo_ += '\n[INFO] open device success';
-```
+   
+   ``` TypeScript
+   if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
+     console.error('deviceList_ is empty');
+     this.logInfo_ += '\n[ERROR] deviceList is empty';
+     return;
+   }
+   let deviceList: usbManager.USBDevice[] = this.deviceList_;
+   if (!usbManager.hasRight(deviceList[0]?.name)) {
+     console.error('permission denied');
+     this.logInfo_ += '\n[ERROR] permission denied';
+     return;
+   }
+   // 打开设备，获取数据传输通道。
+   let pipe: usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
+   if (!deviceList?.[0]?.configs?.[0]?.interfaces?.[0]) {
+     console.error('invalid interface');
+     this.logInfo_ += '\n[ERROR] invalid interface';
+     return;
+   }
+   let interface1: usbManager.USBInterface = deviceList?.[0]?.configs?.[0]?.interfaces?.[0];
+   /*
+    打开对应接口，在设备信息（deviceList）中选取对应的interface。
+   interface1为设备配置中的一个接口。
+   */
+   usbManager.claimInterface(pipe, interface1, true);
+   this.pipe_ = pipe;
+   this.interface_ = interface1;
+   console.info('open device success');
+   this.logInfo_ += '\n[INFO] open device success';
+   ```
 
 
 5. 数据传输。
