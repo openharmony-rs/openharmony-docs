@@ -1564,7 +1564,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 
+**设备行为差异：**
 
 API version 14之前，该接口在所有设备中可正常调用。
 
@@ -1637,7 +1637,7 @@ setImmersiveModeEnabledState(enabled: boolean): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 
+**设备行为差异：**
 
 API version 14之前，该接口在所有设备中可正常调用。
 
@@ -1712,7 +1712,7 @@ try {
 
 isImmersiveLayout(): boolean
 
-查询当前窗口是否处于沉浸式布局状态。 
+查询当前窗口是否处于沉浸式布局状态。
 
 **系统能力**：SystemCapability.Window.SessionManager
 
@@ -1866,7 +1866,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**设备行为差异：** 
+**设备行为差异：**
 
 API version 12之前，该接口在所有设备中可正常调用。
 
@@ -1942,7 +1942,7 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 
+**设备行为差异：**
 
 API version 12之前，该接口在所有设备中可正常调用。
 
@@ -7402,7 +7402,7 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 
+**设备行为差异：**
 
 API version 19之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
@@ -7953,7 +7953,7 @@ setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 
+**设备行为差异：**
 
 API version 18之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 从API version 18开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
@@ -8016,7 +8016,7 @@ getDecorButtonStyle(): DecorButtonStyle
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 
+**设备行为差异：**
 
 API version 18之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 从API version 18开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
@@ -8928,7 +8928,7 @@ enableDrag(enable: boolean): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  windowClass.enableDrag(true).then(() => { 
+  windowClass.enableDrag(true).then(() => {
     console.info('succeeded in setting window draggable');
   }).catch((err: BusinessError) => {
     console.error(`Failed to set window draggable. Cause code: ${err.code}, message: ${err.message}`);
@@ -9393,12 +9393,13 @@ setWindowCornerRadius(cornerRadius: number): Promise&lt;void&gt;
 
 在调用此接口之前调用[getWindowCornerRadius()](#getwindowcornerradius17)接口可以获得窗口默认圆角半径值。
 
-> **说明：**
->
-> - 在API version 20之前，<!--RP6-->此接口仅可在2in1设备下使用。<!--RP6End-->
-> - 从API version 20开始，此接口支持在手机设备、2in1设备和平板设备下使用。
-
 **系统能力**：SystemCapability.Window.SessionManager
+
+**设备行为差异：**
+
+在<!--RP16-->OpenHarmony 6.0<!--RP16End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+从<!--RP16-->OpenHarmony 6.0<!--RP16End-->开始，该接口在Phone设备、Tablet设备和2in1设备下可正常调用。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -9448,11 +9449,11 @@ try{
 
 getWindowCornerRadius(): number
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，用于获取子窗或悬浮窗的圆角半径值，在未调用[setWindowCornerRadius()](#setwindowcornerradius17)接口设置窗口圆角半径值时，调用此接口可获取窗口默认圆角半径值。
+该接口用于获取子窗或悬浮窗的圆角半径值，在未调用[setWindowCornerRadius()](#setwindowcornerradius17)接口设置窗口圆角半径值时，调用此接口可获取窗口默认圆角半径值。
 
 **系统能力**：SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -10352,7 +10353,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 
+**设备行为差异：**
 
 API version 14之前，该接口在所有设备中可正常调用。
 
