@@ -1310,6 +1310,20 @@ clearPreviewText(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+### deleteBackward<sup>23+</sup>
+
+deleteBackward(): void
+
+删除基础控制器`controller`绑定的文本输入框`TextInput/TextArea/Search`内光标前的一个字符。如果在调用此功能前已用鼠标或键盘选中了部分文本，则会删除被选中的文本。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 ## TextDecorationOptions<sup>12+</sup>对象说明
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
