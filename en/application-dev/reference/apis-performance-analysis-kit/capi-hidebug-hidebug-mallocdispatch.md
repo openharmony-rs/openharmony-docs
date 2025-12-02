@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiDebug_MallocDispatch {...} HiDebug_MallocDispatch
+```
+
 ## Overview
 
 Defines the struct types of the replaceable/restorable **HiDebug_MallocDispatch** table of the application process.
