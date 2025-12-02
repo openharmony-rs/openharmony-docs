@@ -2,9 +2,9 @@
 
 键鼠穿越功能模块，提供两台或多台设备组网协同后键鼠共享能力，实现键鼠输入设备的跨设备协同操作。
 
-> **说明**
+> **说明**：
 >
->- 本模块仅支持ArkTS-Dyn
+>- 本模块仅支持ArkTS-Dyn。
 >
 >- 从API Version 10开始，该接口不再维护，推荐使用新接口[@ohos.cooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md) (键鼠穿越)。
 >

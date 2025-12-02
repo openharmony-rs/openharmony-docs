@@ -19,7 +19,7 @@
 import { inputConsumer } from '@kit.InputKit';
 ```
 
-## inputConsumer.on
+## <span id="on_key_dyn">inputConsumer.on</span>
 
 on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): void
 
@@ -29,7 +29,7 @@ on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): v
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onKey](#onKey22)
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onKey](#on_key_sta)
 
 **ArkTS-Dyn起始版本**：8
 
@@ -75,7 +75,7 @@ struct Index {
 }
 ```
 
-# inputConsumer.onKey<sup>22+</sup>
+## <span id="on_key_sta">inputConsumer.onKey<sup>22+</sup></span>
 
 onKey(callback: Callback&lt;KeyOptions&gt;): void
 
@@ -85,7 +85,7 @@ onKey(callback: Callback&lt;KeyOptions&gt;): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[on](#inputConsumer.on)
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#on_key_dyn)
 
 **ArkTS-Sta起始版本**：22
 
@@ -131,7 +131,7 @@ struct Index {
 }
 ```
 
-## inputConsumer.off
+## <span id="off_key_dyn">inputConsumer.off</span>
 
 off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 
@@ -141,7 +141,7 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offKey](#offKey22)
+**相关接口**: 该接口对应的ArkTS-Sta接口是[offKey](#off_key_sta)
 
 **参数：** 
 
@@ -212,9 +212,9 @@ struct Index {
 }
 ```
 
-## inputConsumer.offKey
+## <span id="off_key_sta">inputConsumer.offKey</span>
 
-off(keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
+offKey(keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 
 取消订阅系统快捷键。
 
@@ -222,7 +222,7 @@ off(keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[off](#inputConsumer.off)
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#off_key_dyn)
 
 **参数：** 
 
@@ -232,7 +232,7 @@ off(keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 | keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。             |
 | callback   | Callback&lt;KeyOptions&gt; | 否    | 需要取消订阅的回调函数。若不填，则取消当前应用组合键选项已订阅的所有回调函数。 |
 
-**示例：** 
+示例:
 
 ```ets
 import { inputConsumer } from '@kit.InputKit';
@@ -408,8 +408,12 @@ struct Index {
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                        | 值 | 说明           |
 | ------------------------------ | ----------- | ---------------- |
-| UNSET_MODE | -1 | 值为-1，表示不屏蔽系统快捷键。 <br>**ArkTS-Dyn起始版本**: 11 <br>**ArkTS-Sta起始版本**：22|
-| FACTORY_MODE | 0 | 值为0，表示屏蔽所有系统快捷键。 br>**ArkTS-Dyn起始版本**: 11 <br>**ArkTS-Sta起始版本**：22 |
-| OOBE_MODE | 1 | 值为1，表示OOBE阶段屏蔽所有系统快捷键，暂不支持该能力。br>**ArkTS-Dyn起始版本**: 11 <br>**ArkTS-Sta起始版本**：22 |
+| UNSET_MODE | -1 | 值为-1，表示不屏蔽系统快捷键。|
+| FACTORY_MODE | 0 | 值为0，表示屏蔽所有系统快捷键。|
+| OOBE_MODE | 1 | 值为1，表示OOBE阶段屏蔽所有系统快捷键，暂不支持该能力。|

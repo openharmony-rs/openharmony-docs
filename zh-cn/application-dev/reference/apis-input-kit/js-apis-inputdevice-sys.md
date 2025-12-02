@@ -147,7 +147,7 @@ ArkTS-Sta: setKeyboardRepeatDelay(delay: int): Promise&lt;void&gt;
 | 202 | SystemAPI permission error. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -203,7 +203,7 @@ ArkTS-Sta: getKeyboardRepeatDelay(callback: AsyncCallback&lt;int&gt;): void
 | 202  | SystemAPI permission error. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -232,7 +232,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```ts
 import { inputDevice } from '@kit.InputKit';
@@ -293,7 +293,7 @@ ArkTS-Sta: getKeyboardRepeatDelay(): Promise&lt;int&gt;
 | 202  | SystemAPI permission error. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -318,7 +318,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -375,7 +375,7 @@ ArkTS-Sta: setKeyboardRepeatRate(rate: int, callback: AsyncCallback&lt;void&gt;)
 | 202  | SystemAPI permission error. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -404,7 +404,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -526,7 +526,7 @@ ArkTS-Sta: getKeyboardRepeatRate(callback: AsyncCallback&lt;int&gt;): void
 | 202  | SystemAPI permission error. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -555,7 +555,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```ts
 import { inputDevice } from '@kit.InputKit';
@@ -615,7 +615,7 @@ ArkTS-Sta: getKeyboardRepeatRate(): Promise&lt;int&gt;
 | 202  | SystemAPI permission error. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -640,7 +640,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { inputDevice } from '@kit.InputKit';
