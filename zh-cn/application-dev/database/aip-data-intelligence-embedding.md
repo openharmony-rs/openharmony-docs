@@ -99,7 +99,19 @@
    调用getTextEmbeddingModel方法，获取文本嵌入模型。示例代码如下所示：
 
    <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-   <!-- @[aip_getTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   textEmbedding.loadModel()
+     .then(() => {
+       console.info('Succeeded in loading Model');
+       // ...
+     })
+     .catch((err:BusinessError) => {
+       console.error('Failed to load Model and code is ' + err.code);
+       // ...
+     })
+   ```
 
 3. 加载文本嵌入模型。
    调用loadModel方法，加载文本嵌入模型。示例代码如下所示：
