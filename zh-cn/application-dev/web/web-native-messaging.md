@@ -175,20 +175,20 @@ function onDisconnected() {
 ```
 
 2. 使用chrome.runtime.sendNativeMessage链接
-``` ts
-function sendNativeMessage() {
-  var bundleName = "com.example.app"; //插件对应应用的bundleName
-  var nativeMessage = "ping"; //插件要发给应用的内容
-  chrome.runtime.sendNativeMessage(
-    bundleName,
-    {message: nativeMessage},
-    function(response) {
-      // 收到一次应用回复的信息后断开链接
-      console.info("sendNativeMessage收到原生应用程序响应:", JSON.stringify(response));
-    }
-  )
-}
-```
+   ``` ts
+   function sendNativeMessage() {
+     var bundleName = "com.example.app"; //插件对应应用的bundleName
+     var nativeMessage = "ping"; //插件要发给应用的内容
+     chrome.runtime.sendNativeMessage(
+       bundleName,
+       {message: nativeMessage},
+       function(response) {
+         // 收到一次应用回复的信息后断开链接
+       console.info("sendNativeMessage收到原生应用程序响应:", JSON.stringify (response));
+       }
+    )
+   }
+   ```
 
 ### 实现一个WebNativeMessagingExtensionAbility（原生应用开发者）
 在DevEco Studio工程中手动新建一个WebNativeMessagingExtensionAbility组件，具体步骤如下：
@@ -198,7 +198,7 @@ function sendNativeMessage() {
 
     其目录结构如下所示：
 
-    ```
+    ```yml
     ├── ets
     │ ├── MyWebNativeMessageExtAbility
     │ │   ├── MyWebNativeMessageExtAbility.ets
@@ -264,29 +264,29 @@ function sendNativeMessage() {
   ```
 4. 在工程Module的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册WebNativeMessagingExtensionAbility组件。设置type标签为“webNativeMessaging”，srcEntry标签指向组件代码路径。
 
-    ```json
-    {
-      "module": {
-        // ...
-        "extensionAbilities": [
-          {
-            "name": "MyWebNativeMessageExtAbility",
-            "description": "webNativeMessaging",
-            "type": "webNativeMessaging",
-            "exported": true,
-            "srcEntry": "./ets/MyWebNativeMessageExtAbility/MyWebNativeMessageExtAbility.ets"
-          }
-        ]
-      }
-    }
-    ```
+   ```json
+   {
+     "module": {
+       // ...
+       "extensionAbilities": [
+         {
+           "name": "MyWebNativeMessageExtAbility",
+           "description": "webNativeMessaging",
+           "type": "webNativeMessaging",
+           "exported": true,
+           "srcEntry": "./ets/MyWebNativeMessageExtAbility/ MyWebNativeMessageExtAbility.ets"
+         }
+       ]
+     }
+   }
+   ```
 5. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中配置crossAppSharedConfig，定义共享配置项，共享配置文件需放置在工程resources/base/profile目录下，并通过$资源访问方式引用。
 ```json
-  {
-    "module": {
-      "crossAppSharedConfig": "$profile:shared_config"
-    }
-  }
+   {
+     "module": {
+       "crossAppSharedConfig": "$profile:shared_config"
+     }
+   }
 ```
 
 6.在shared_config.json添加[extension配置](#datashare存放原生应用extension配置信息)
@@ -366,7 +366,7 @@ function sendNativeMessage() {
     }
   ```
 2. 调用[webNativeMessagingExtensionManager.connectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerconnectnative)创建NativeMessage，如WebNativeMessagingExtensionAbility尚未运行，该接口则会拉起ExtensionAbility并触发。
-  ```ts
+   ```ts
     import { UIAbility, Want, common } from '@kit.AbilityKit';
     import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
 
@@ -404,14 +404,14 @@ function sendNativeMessage() {
         console.info(`inner callback error Message: ${JSON.stringify(error)}`);
       }
     }
-  ```
+   ```
 
 3. 需要销毁NativeMessaging连接时，调用[webNativeMessagingExtensionManager.disconnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerdisconnectnative)。
-  ```ts
+   ```ts
     import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
 
     function disconnencNative(connectId: number) : void {
       console.info(`NativeMessageDisconnect start connectionId is ${connectId}`);
       webNativeMessagingExtensionManager.disconnectNative(connectId);
     }
-  ```
+   ```

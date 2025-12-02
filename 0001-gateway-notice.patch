@@ -1,0 +1,227 @@
+From e25c9b78a7908fa9f458c7eaf9df7664c7a717ba Mon Sep 17 00:00:00 2001
+From: quyue00807312 <quyue5@huawei.com>
+Date: Tue, 2 Dec 2025 19:25:54 +0800
+Subject: [PATCH] gateway notice
+
+Signed-off-by: quyue00807312 <quyue5@huawei.com>
+---
+ ...-web-webNativeMessagingExtensionAbility.md |  2 +-
+ ...-web-webNativeMessagingExtensionContext.md |  2 +-
+ ...-web-webNativeMessagingExtensionManager.md |  4 +-
+ .../arkts-apis-webview-WebviewController.md   |  2 +-
+ .../arkts-basic-components-web-i.md           |  4 +-
+ .../web/web-native-messaging.md               | 80 +++++++++----------
+ 6 files changed, 47 insertions(+), 47 deletions(-)
+
+diff --git a/zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md b/zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md
+index d99f3de61eb..40fc997ad40 100644
+--- a/zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md
++++ b/zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md
+@@ -15,7 +15,7 @@ WebNativeMessagingExtensionAbility为开发者提供Web原生消息通信的能
+ ## 导入模块
+ 
+ ```ts
+-import WebNativeMessagingExtensionAbility from '@kit.ArkWeb';
++import { WebNativeMessagingExtensionAbility } from '@kit.ArkWeb';
+ ```
+ 
+ ## WebNativeMessagingExtensionAbility
+diff --git a/zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md b/zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md
+index e7c9fbcf7dd..81d92a1f94c 100644
+--- a/zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md
++++ b/zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md
+@@ -17,7 +17,7 @@ WebNativeMessagingExtensionContext是Web原生消息扩展的上下文, 继承
+ ## 导入模块
+ 
+ ```ts
+-import WebNativeMessagingExtensionContext from '@kit.ArkWeb';
++import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
+ ```
+ 
+ ## WebNativeMessagingExtensionContext
+diff --git a/zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md b/zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md
+index 14f39cd0caa..6812d791096 100644
+--- a/zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md
++++ b/zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md
+@@ -17,7 +17,7 @@ webNativeMessagingExtensionManager模块提供基于Web标准的消息扩展管
+ ## 导入模块
+ 
+ ```ts
+-import webNativeMessagingExtensionManager from '@kit.ArkWeb';
++import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+ ```
+ 
+ ## ConnectionNativeInfo
+@@ -339,7 +339,7 @@ disconnectNative(connectionId: number): Promise&lt;void&gt;
+ 
+ **示例:**
+ ```ts
+-import { UIAbility, Want } from '@kit.AbilityKit';
++import { UIAbility } from '@kit.AbilityKit';
+ import { BusinessError } from '@kit.BasicServicesKit';
+ import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+ 
+diff --git a/zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-WebviewController.md b/zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-WebviewController.md
+index fff13825cc1..bcba04b06d9 100644
+--- a/zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-WebviewController.md
++++ b/zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-WebviewController.md
+@@ -10202,7 +10202,7 @@ static getSiteIsolationMode(): SiteIsolationMode
+ 
+ | 类型                                      | 说明                                                         |
+ | ----------------------------------------- | ------------------------------------------------------------ |
+-| [SiteIsolationMode](./arkts-apis-webview-e.md#siteisolationmode21) | 站点隔离模式类型。<br>getSiteIsolationMode()查询当前生效的站点隔离模式。
++| [SiteIsolationMode](./arkts-apis-webview-e.md#siteisolationmode21) | 站点隔离模式类型。<br>getSiteIsolationMode()查询当前生效的站点隔离模式。|
+ 
+ 
+ **示例：**
+diff --git a/zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-i.md b/zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-i.md
+index c34cc138137..04922b85afc 100644
+--- a/zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-i.md
++++ b/zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-i.md
+@@ -664,7 +664,7 @@ Web组件进入全屏回调事件的详情。
+ | 名称             | 类型   | 只读   | 可选   | 说明                                       |
+ | -------------- | ---- | ---- | ---- | ---------------------------------------- |
+ | controller | [WebKeyboardController](./arkts-basic-components-web-WebKeyboardController.md)  | 否 | 否 | 提供控制自定义键盘的输入、删除、关闭等操作。 |
+-| attributes | Record<string, string> | 否 | 否 | 触发本次软键盘弹出的网页元素属性。
++| attributes | Record<string, string> | 否 | 否 | 触发本次软键盘弹出的网页元素属性。|
+ 
+ ## WebKeyboardOptions<sup>12+</sup>
+ 
+@@ -676,7 +676,7 @@ Web组件进入全屏回调事件的详情。
+ | -------------- | ---- | ---- | ---- | ---------------------------------------- |
+ | useSystemKeyboard | boolean  | 否 | 否 | 是否使用系统默认软键盘。<br>true表示使用系统默认软键盘，false表示不使用系统默认软键盘。<br>默认值：true。 |
+ | enterKeyType | number | 否 | 是 | 指定系统软键盘enter键的类型，取值范围见输入框架的定义[EnterKeyType](../apis-ime-kit/js-apis-inputmethod.md#enterkeytype10)，该参数为可选参数，默认值为UNSPECIFIED。当useSystemKeyboard为true，并且设置了有效的enterKeyType时候，才有效。|
+-| customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | 是 | 指定自定义键盘组件builder，可选参数，当useSystemKeyboard为false时，需要设置该参数，然后Web组件会拉起该自定义键盘。
++| customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | 是 | 指定自定义键盘组件builder，可选参数，当useSystemKeyboard为false时，需要设置该参数，然后Web组件会拉起该自定义键盘。|
+ 
+ 
+ ## FirstMeaningfulPaint<sup>12+</sup>
+diff --git a/zh-cn/application-dev/web/web-native-messaging.md b/zh-cn/application-dev/web/web-native-messaging.md
+index 935d15f52a2..15135f85e80 100644
+--- a/zh-cn/application-dev/web/web-native-messaging.md
++++ b/zh-cn/application-dev/web/web-native-messaging.md
+@@ -175,20 +175,20 @@ function onDisconnected() {
+ ```
+ 
+ 2. 使用chrome.runtime.sendNativeMessage链接
+-``` ts
+-function sendNativeMessage() {
+-  var bundleName = "com.example.app"; //插件对应应用的bundleName
+-  var nativeMessage = "ping"; //插件要发给应用的内容
+-  chrome.runtime.sendNativeMessage(
+-    bundleName,
+-    {message: nativeMessage},
+-    function(response) {
+-      // 收到一次应用回复的信息后断开链接
+-      console.info("sendNativeMessage收到原生应用程序响应:", JSON.stringify(response));
+-    }
+-  )
+-}
+-```
++   ``` ts
++   function sendNativeMessage() {
++     var bundleName = "com.example.app"; //插件对应应用的bundleName
++     var nativeMessage = "ping"; //插件要发给应用的内容
++     chrome.runtime.sendNativeMessage(
++       bundleName,
++       {message: nativeMessage},
++       function(response) {
++         // 收到一次应用回复的信息后断开链接
++       console.info("sendNativeMessage收到原生应用程序响应:", JSON.stringify (response));
++       }
++    )
++   }
++   ```
+ 
+ ### 实现一个WebNativeMessagingExtensionAbility（原生应用开发者）
+ 在DevEco Studio工程中手动新建一个WebNativeMessagingExtensionAbility组件，具体步骤如下：
+@@ -198,7 +198,7 @@ function sendNativeMessage() {
+ 
+     其目录结构如下所示：
+ 
+-    ```
++    ```yml
+     ├── ets
+     │ ├── MyWebNativeMessageExtAbility
+     │ │   ├── MyWebNativeMessageExtAbility.ets
+@@ -264,29 +264,29 @@ function sendNativeMessage() {
+   ```
+ 4. 在工程Module的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册WebNativeMessagingExtensionAbility组件。设置type标签为“webNativeMessaging”，srcEntry标签指向组件代码路径。
+ 
+-    ```json
+-    {
+-      "module": {
+-        // ...
+-        "extensionAbilities": [
+-          {
+-            "name": "MyWebNativeMessageExtAbility",
+-            "description": "webNativeMessaging",
+-            "type": "webNativeMessaging",
+-            "exported": true,
+-            "srcEntry": "./ets/MyWebNativeMessageExtAbility/MyWebNativeMessageExtAbility.ets"
+-          }
+-        ]
+-      }
+-    }
+-    ```
++   ```json
++   {
++     "module": {
++       // ...
++       "extensionAbilities": [
++         {
++           "name": "MyWebNativeMessageExtAbility",
++           "description": "webNativeMessaging",
++           "type": "webNativeMessaging",
++           "exported": true,
++           "srcEntry": "./ets/MyWebNativeMessageExtAbility/ MyWebNativeMessageExtAbility.ets"
++         }
++       ]
++     }
++   }
++   ```
+ 5. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中配置crossAppSharedConfig，定义共享配置项，共享配置文件需放置在工程resources/base/profile目录下，并通过$资源访问方式引用。
+ ```json
+-  {
+-    "module": {
+-      "crossAppSharedConfig": "$profile:shared_config"
+-    }
+-  }
++   {
++     "module": {
++       "crossAppSharedConfig": "$profile:shared_config"
++     }
++   }
+ ```
+ 
+ 6.在shared_config.json添加[extension配置](#datashare存放原生应用extension配置信息)
+@@ -366,7 +366,7 @@ function sendNativeMessage() {
+     }
+   ```
+ 2. 调用[webNativeMessagingExtensionManager.connectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerconnectnative)创建NativeMessage，如WebNativeMessagingExtensionAbility尚未运行，该接口则会拉起ExtensionAbility并触发。
+-  ```ts
++   ```ts
+     import { UIAbility, Want, common } from '@kit.AbilityKit';
+     import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
+ 
+@@ -404,14 +404,14 @@ function sendNativeMessage() {
+         console.info(`inner callback error Message: ${JSON.stringify(error)}`);
+       }
+     }
+-  ```
++   ```
+ 
+ 3. 需要销毁NativeMessaging连接时，调用[webNativeMessagingExtensionManager.disconnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerdisconnectnative)。
+-  ```ts
++   ```ts
+     import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
+ 
+     function disconnencNative(connectId: number) : void {
+       console.info(`NativeMessageDisconnect start connectionId is ${connectId}`);
+       webNativeMessagingExtensionManager.disconnectNative(connectId);
+     }
+-  ```
++   ```
+-- 
+2.25.1
+
