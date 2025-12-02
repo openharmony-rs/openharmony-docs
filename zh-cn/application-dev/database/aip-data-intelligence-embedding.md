@@ -66,6 +66,15 @@
    ``` TypeScript
    import { intelligence } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
+   <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let textConfig:intelligence.ModelConfig = {
+     version:intelligence.ModelVersion.BASIC_MODEL,
+     isNpuAvailable:false,
+     cachePath:"/data"
+   }
+   let textEmbedding:intelligence.TextEmbedding;
    ```
    
    ``` TypeScript
