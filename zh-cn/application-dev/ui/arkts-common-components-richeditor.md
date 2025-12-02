@@ -442,7 +442,7 @@ Symbol内容暂不支持手势、复制、拖拽处理。
             .onDidChange((rangeBefore: TextRange, rangeAfter: TextRange) => {
               // $r('app.string.AddEvent_Text_7')需要替换为开发者所需的资源文件
               this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_7')) +
-              JSON.stringify(rangeBefore) + '\nrangeAfter：' + JSON.stringify(rangeBefore), {
+              JSON.stringify(rangeBefore) + '\nrangeAfter:' + JSON.stringify(rangeBefore), {
                 style: {
                   fontColor: Color.Gray,
                   fontSize: 10
