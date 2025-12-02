@@ -89,7 +89,7 @@ disableHotspot(): void
   }
 ```
 
-## wifiManagerExt.getSupportedPowerMode<sup>9+</sup>
+## wifiManagerExt.getSupportedPowerMode
 
 getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 
@@ -114,7 +114,7 @@ getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
-## PowerMode<sup>9+</sup>
+## PowerMode
 
 表示功率模式的枚举。
 
@@ -127,7 +127,7 @@ getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 | THROUGH_WALL | 2 | 穿墙模式。 |
 
 
-## wifiManagerExt.getSupportedPowerMode<sup>9+</sup>
+## wifiManagerExt.getSupportedPowerMode
 
 getSupportedPowerMode(callback: AsyncCallback&lt;Array&lt;PowerMode&gt;&gt;): void
 
@@ -167,7 +167,7 @@ wifiManagerExt.getSupportedPowerMode((err, data: wifiManagerExt.PowerMode[]) => 
 });
 ```
 
-## wifiManagerExt.getPowerMode<sup>9+</sup>
+## wifiManagerExt.getPowerMode
 
 getPowerMode(): Promise&lt;PowerMode&gt;
 
@@ -209,7 +209,7 @@ getPowerMode(): Promise&lt;PowerMode&gt;
   }
 ```
 
-## wifiManagerExt.getPowerMode<sup>9+</sup>
+## wifiManagerExt.getPowerMode
 
 getPowerMode(callback: AsyncCallback&lt;PowerMode&gt;): void
 
