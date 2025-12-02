@@ -41,6 +41,7 @@ Defines the names of all predefined events. In addition to custom events associa
 | [EVENT_MAIN_THREAD_JANK](#event_main_thread_jank) "MAIN_THREAD_JANK"                                       | Main thread jank event.<br>**Since**: 12   |
 | [EVENT_APP_HICOLLIE](#event_app_hicollie) "APP_HICOLLIE"                                                   | Task execution timeout event.<br>**Since**: 18  |
 | [EVENT_APP_KILLED](#event_app_killed) "APP_KILLED"                                                         | Application killed event.<br>**Since**: 20     |
+| [EVENT_AUDIO_JANK_FRAME](#event_audio_jank_frame) "AUDIO_JANK_FRAME"                                       | Audio jank event.<br>**Since**: 21     |
 | [DOMAIN_OS](#domain_os) "OS"                                                                               | OS scope.<br>**Since**: 12       |
 
 ## Macro Description
@@ -212,6 +213,18 @@ Task execution timeout event.
 Application killed event.
 
 **Since**: 20
+
+### EVENT_AUDIO_JANK_FRAME
+
+```
+#define EVENT_AUDIO_JANK_FRAME "AUDIO_JANK_FRAME"
+```
+
+**Description**
+
+Audio jank event.
+
+**Since**: 21
 
 ### DOMAIN_OS
 
