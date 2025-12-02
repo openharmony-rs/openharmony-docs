@@ -1,5 +1,12 @@
 # errorcode.h
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @ningningW-->
+
 ## 概述
 
 提供国际化接口返回的错误码。
