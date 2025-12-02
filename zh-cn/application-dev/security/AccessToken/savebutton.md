@@ -126,12 +126,13 @@ import {
  SaveButtonCallback,
  Image,
  $r,
+ ColumnOptions,
 } from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement'
 import hilog from '@ohos.hilog'
 import { BusinessError } from '@ohos.base'
 import fileIo from '@ohos.file.fs'
-import photoAccessHelper from '@ohos.file photoAccessHelper'
+import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import Context from 'application.Context'
 import common from '@ohos.app.ability.common'
 import promptAction from '@ohos.promptAction'
@@ -163,7 +164,7 @@ function savePhotoToGallery(context: common.UIAbilityContext) {
 struct Index {
   build() {
     Row() {
-      Column() {
+      Column({ space: 10 } as ColumnOptions) {
         // $r('app.media.test')需要替换为开发者所需的图像资源文件。
         Image($r('app.media.test'))
           .height(400)

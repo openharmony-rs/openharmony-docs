@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
@@ -65,7 +65,7 @@ PasteButton(options: PasteButtonOptions)
 > **说明：**
 >
 > - icon或text需至少传入一个。<br>
-> - 如果icon、text都不传入，[PasteButton](#pastebutton-1)中的options参数不起效，创建的PasteButton为默认样式。
+> - 如果icon、text都不传入，PasteButton中的options参数不起效，创建的PasteButton为默认样式。
 >
 >     - PasteIconStyle默认样式为LINES。
 >
@@ -187,7 +187,7 @@ ArkTS-Sta: onClick(event: PasteButtonCallback | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| event | ArkTS-Dyn: [PasteButtonCallback](#pastebuttoncallback18) <br> ArkTS-Sta: [PasteButtonCallback](#pastebuttoncallback18) \| undefined |是 |见PasteButtonCallback。<br>在API10-17时，参数类型为：(event: [ClickEvent](ts-universal-events-click.md#clickevent), result: [PasteButtonOnClickResult](#pastebuttononclickresult)) => void。<br>从API18开始，变更为PasteButtonCallback。|
+| event | ArkTS-Dyn: [PasteButtonCallback](#pastebuttoncallback18) <br> ArkTS-Sta: [PasteButtonCallback](#pastebuttoncallback18) \| undefined |是 |见PasteButtonCallback。<br>在API10-17时，参数类型为：(event: [ClickEvent](ts-universal-events-click.md#clickevent), result: [PasteButtonOnClickResult](#pastebuttononclickresult)) => void。<br>从API18开始，变更为PasteButtonCallback。<br/>ArkTS-Sta: 设定为undefined时即没有回调。|
 
 ## 示例
 
@@ -262,6 +262,7 @@ import {
   PasteButtonOnClickResult,
   PasteButtonCallback,
   $r,
+  ColumnOptions,
 } from '@ohos.arkui.component'
 import hilog from '@ohos.hilog'
 import { BusinessError } from '@ohos.base'
@@ -281,7 +282,7 @@ struct Index {
 
   build() {
     Row() {
-      Column() {
+      Column({ space: 10 } as ColumnOptions) {
         // 默认参数下，图标、文字、背景都存在。
         PasteButton().onClick(this.handlePasteButtonClick)
         // 传入参数即表示元素存在，不传入的参数表示元素不存在，如果不传入buttonType，会默认添加ButtonType.Capsule配置，显示图标+背景。

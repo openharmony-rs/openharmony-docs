@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
@@ -65,7 +65,7 @@ SaveButton(options: SaveButtonOptions)
 > **说明：**
 >
 > - icon或text需至少传入一个。<br>
-> - 如果icon、text都不传入，[SaveButton](#savebutton-1)中的options参数不起效，创建的SaveButton为默认样式，默认样式：
+> - 如果icon、text都不传入，SaveButton中的options参数不起效，创建的SaveButton为默认样式，默认样式：
 >
 >   SaveIconStyle默认样式为FULL_FILLED；
 >
@@ -188,7 +188,7 @@ ArkTS-Sta: setIcon(icon: Resource | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| icon | ArkTS-Dyn: [Resource](ts-types.md#resource) <br> ArkTS-Sta: [Resource](ts-types.md#resource) \| undefined |是 |自定义图标资源信息，仅支持Resource类型的数据源。<br/>可支持的图片格式：png、jpg、jpeg、bmp、svg、webp、gif和heif等，支持的图片格式范围见[Image](ts-basic-components-image.md)。当资源为非图片资源或不支持的格式时，图标显示为空白。<br/>如果应用无ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则自定义图标设置不生效，保存控件保持默认样式。详见[SaveButtonOptions](#savebuttonoptions)说明。|
+| icon | ArkTS-Dyn: [Resource](ts-types.md#resource) <br> ArkTS-Sta: [Resource](ts-types.md#resource) \| undefined |是 |自定义图标资源信息，仅支持Resource类型的数据源。<br/>可支持的图片格式：png、jpg、jpeg、bmp、svg、webp、gif和heif等，支持的图片格式范围见[Image](ts-basic-components-image.md)。当资源为非图片资源或不支持的格式时，图标显示为空白。<br/>如果应用无ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则自定义图标设置不生效，保存控件保持默认样式。详见[SaveButtonOptions](#savebuttonoptions)说明。<br/>ArkTS-Sta: 设定为undefined时，保存控件保持默认样式。|
 
 ### setText<sup>20+</sup>
 
@@ -212,7 +212,7 @@ ArkTS-Sta: setText(text: string | Resource | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| text | ArkTS-Dyn: string \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: string \| [Resource](ts-types.md#resource) \| undefined |是 |自定义文本信息。<br/>如果应用无ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则自定义文本设置不生效，保存控件保持默认样式。详见[SaveButtonOptions](#savebuttonoptions)说明。|
+| text | ArkTS-Dyn: string \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: string \| [Resource](ts-types.md#resource) \| undefined |是 |自定义文本信息。<br/>如果应用无ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则自定义文本设置不生效，保存控件保持默认样式。详见[SaveButtonOptions](#savebuttonoptions)说明。<br/>ArkTS-Sta: 设定为undefined时，保存控件保持默认样式。|
 
 ### iconSize<sup>20+</sup>
 
@@ -234,7 +234,7 @@ ArkTS-Sta: iconSize(size: Dimension | SizeOptions | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| size | ArkTS-Dyn: [Dimension](ts-types.md#dimension10) \| [SizeOptions](ts-types.md#sizeoptions) <br> ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| [SizeOptions](ts-types.md#sizeoptions) \| undefined |是 |图标尺寸，不支持设置百分比字符串。宽高默认值均为16vp。<br/>对于保存控件提供的系统图标：<br/>- 使用Dimension类型入参时，宽、高相等，均为设定值。<br/>- 使用SizeOptions类型入参时，若宽、高设定值不一致，则宽、高相等取两者较小值；若仅设定其中一个值，则取该值作为宽、高值。<br/>对于自定义图标：<br/>- 使用Dimension类型入参时，宽、高相等，均为设定值。<br/>- 使用SizeOptions类型入参时，建议同时设定宽和高，此时按照指定宽、高生效；若仅设定其中一个值，则宽高均显示为该设定值。<br/>- 当设定的宽高与自定义图标的宽高比例不一致时，图片按[ImageFit.Cover](ts-appendix-enums.md#imagefit)的方式填充显示区域。|
+| size | ArkTS-Dyn: [Dimension](ts-types.md#dimension10) \| [SizeOptions](ts-types.md#sizeoptions) <br> ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| [SizeOptions](ts-types.md#sizeoptions) \| undefined |是 |图标尺寸，不支持设置百分比字符串。宽高默认值均为16vp。<br/>对于保存控件提供的系统图标：<br/>- 使用Dimension类型入参时，宽、高相等，均为设定值。<br/>- 使用SizeOptions类型入参时，若宽、高设定值不一致，则宽、高相等取两者较小值；若仅设定其中一个值，则取该值作为宽、高值。<br/>对于自定义图标：<br/>- 使用Dimension类型入参时，宽、高相等，均为设定值。<br/>- 使用SizeOptions类型入参时，建议同时设定宽和高，此时按照指定宽、高生效；若仅设定其中一个值，则宽高均显示为该设定值。<br/>- 当设定的宽高与自定义图标的宽高比例不一致时，图片按[ImageFit.Cover](ts-appendix-enums.md#imagefit)的方式填充显示区域。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ### iconBorderRadius<sup>20+</sup>
 
@@ -258,7 +258,7 @@ ArkTS-Sta: iconBorderRadius(radius: Dimension | BorderRadiuses | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| radius | ArkTS-Dyn: [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) <br> ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) \| undefined |是 |保存控件图标的圆角半径，支持设置四个圆角。<br/>如果应用无ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则图标的圆角半径设置不生效。 |
+| radius | ArkTS-Dyn: [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) <br> ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) \| undefined |是 |保存控件图标的圆角半径，支持设置四个圆角。四个圆角默认值均为0vp。<br/>如果应用无ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则图标的圆角半径设置不生效。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。 |
 
 ### stateEffect<sup>20+</sup>
 
@@ -282,7 +282,7 @@ ArkTS-Sta: stateEffect(enabled: boolean | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| enabled | ArkTS-Dyn: boolean <br> ArkTS-Sta: boolean \| undefined |是 | 表示是否开启按压效果，true表示保存控件按压时显示按压效果，false表示保存控件按压时不显示按压效果。<br/>默认值：true。<br/>如果应用无ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，按压效果设置不生效。 |
+| enabled | ArkTS-Dyn: boolean <br> ArkTS-Sta: boolean \| undefined |是 | 表示是否开启按压效果，true表示保存控件按压时显示按压效果，false表示保存控件按压时不显示按压效果。<br/>默认值：true。<br/>如果应用无ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，按压效果设置不生效。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。 |
 
 ### userCancelEvent<sup>21+</sup>
 
@@ -304,7 +304,7 @@ ArkTS-Sta: userCancelEvent(enabled: boolean | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| enabled | ArkTS-Dyn: boolean <br> ArkTS-Sta: boolean \| undefined | 是 | 表示是否接收保存控件的用户取消授权事件，true表示接收保存控件的用户取消授权事件，false表示不接收保存控件的用户取消授权事件。<br/>默认值：false。<br/> |
+| enabled | ArkTS-Dyn: boolean <br> ArkTS-Sta: boolean \| undefined | 是 | 表示是否接收保存控件的用户取消授权事件，true表示接收保存控件的用户取消授权事件，false表示不接收保存控件的用户取消授权事件。<br/>默认值：false。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## 属性
 
@@ -334,7 +334,7 @@ ArkTS-Sta: onClick(event: SaveButtonCallback | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| event | ArkTS-Dyn: [SaveButtonCallback](#savebuttoncallback18) <br> ArkTS-Sta: [SaveButtonCallback](#savebuttoncallback18) \| undefined |是 |见SaveButtonCallback。<br>在API10-17时，参数类型为：(event: [ClickEvent](ts-universal-events-click.md#clickevent), result: [SaveButtonOnClickResult](#savebuttononclickresult)) => void。<br>从API18开始，变更为SaveButtonCallback。|
+| event | ArkTS-Dyn: [SaveButtonCallback](#savebuttoncallback18) <br> ArkTS-Sta: [SaveButtonCallback](#savebuttoncallback18) \| undefined |是 |见SaveButtonCallback。<br>在API10-17时，参数类型为：(event: [ClickEvent](ts-universal-events-click.md#clickevent), result: [SaveButtonOnClickResult](#savebuttononclickresult)) => void。<br>从API18开始，变更为SaveButtonCallback。<br/>ArkTS-Sta: 设定为undefined时即没有回调。|
 
 ## 示例1
 
@@ -430,6 +430,7 @@ import {
   SaveDescription,
   SaveButtonOnClickResult,
   SaveButtonCallback,
+  ColumnOptions,
 } from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement'
 import hilog from '@ohos.hilog'
@@ -470,7 +471,7 @@ struct Index {
 
   build() {
     Row() {
-      Column() {
+      Column({ space: 10 } as ColumnOptions) {
         // 默认参数下，图标、文字、背景都存在。
         SaveButton().onClick((this.handleSaveButtonClick))
         // 传入参数即表示元素存在，不传入的参数表示元素不存在，如果不传入buttonType，会默认添加ButtonType.Capsule配置，显示图标+背景。
@@ -601,7 +602,8 @@ import {
   SaveButtonCallback,
   $r,
   Color,
-  BorderStyle
+  BorderStyle,
+  ColumnOptions
 } from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement'
 import hilog from '@ohos.hilog'
@@ -611,7 +613,7 @@ import hilog from '@ohos.hilog'
 struct SetIcon {
   build() {
     Row() {
-      Column() {
+      Column({ space: 10 } as ColumnOptions) {
         // 设置图标为resource类型，有权限时显示设置的图标。
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD })
           .setIcon($r('app.media.startIcon'))
