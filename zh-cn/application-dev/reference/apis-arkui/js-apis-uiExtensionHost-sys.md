@@ -388,7 +388,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ### createSubWindowWithOptions<sup>22+</sup>
 
-createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptions, isFollowCreatorLifecycle: boolean): Promise&lt;window.Window&gt;
+createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptions, followCreatorLifecycle: boolean): Promise&lt;window.Window&gt;
 
 创建该UIExtensionHostWindowProxy实例下的子窗口，使用Promise异步回调。
 
@@ -404,7 +404,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 | ------ | ------ | ---- | -------------- |
 | name   | string | 是   | 子窗口的名字。 |
 | subWindowOptions | [window.SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | 是 | 子窗口参数。 |
-| isFollowCreatorLifecycle | boolean | 是   | 子窗生命周期是否跟组件（EmbeddedComponent或UIExtensionComponent）保持同步。true表示该组件隐藏时，子窗隐藏，该组件显示时子窗显示，false表示子窗的显隐不跟随该组件变化|
+| followCreatorLifecycle | boolean | 是   | 子窗生命周期是否跟组件（EmbeddedComponent或UIExtensionComponent）保持同步。true表示该组件隐藏时，子窗隐藏，该组件显示时子窗显示，false表示子窗的显隐不跟随该组件变化|
 
 **返回值：**
 
@@ -420,7 +420,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 | ------- | ------------------------------ |
 | 401 | Parameter error. Possible causes: <br/> 1. Mandatory parameters are left unspecified.<br/> 2. Incorrect parameters types.<br/> 3. Parameter verification failed. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
 **示例：**
 
@@ -438,7 +438,7 @@ export default class EntryAbility extends UIExtensionAbility {
       decorEnabled: true
     };
     // 创建子窗口
-    extensionHostWindow.createSubWindowWithOptions('subWindowForHost', subWindowOpts, false)
+    extensionHostWindow.createSubWindowWithOptions('subWindowForHost', subWindowOpts, true)
       .then((subWindow: window.Window) => {
         subWindow.setUIContent('pages/Index', (err, data) =>{
           if (err && err.code != 0) {
