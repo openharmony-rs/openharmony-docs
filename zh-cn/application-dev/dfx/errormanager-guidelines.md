@@ -80,13 +80,13 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 ``` TypeScript
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
-    hilog.info(0x0000, 'testTag','onUnhandledException, errorMsg: ', errorMsg);
+    console.error('testErrorManage','onUnhandledException, errorMsg: ', errorMsg);
   },
   onException(errorObj) {
-    hilog.info(0x0000, 'testTag','onException, name: ', errorObj.name);
-    hilog.info(0x0000, 'testTag','onException, message: ', errorObj.message);
+    console.error('testErrorManage','onException, name: ', errorObj.name);
+    console.error('testErrorManage','onException, message: ', errorObj.message);
     if (typeof(errorObj.stack) === 'string') {
-      hilog.info(0x0000, 'testTag','onException, stack: ', errorObj.stack);
+      console.error('testErrorManage','onException, stack: ', errorObj.stack);
     }
   }
 };
@@ -103,8 +103,10 @@ Button('单线程监听场景').onClick(()=>{
   } catch (paramError) {
     let code = (paramError as BusinessError).code;
     let message = (paramError as BusinessError).message;
-    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
+    console.error('testErrorManage',`error: ${code}, ${message}`);
   }
+  // 构造场景故障
+  throw new Error('test errorObserver msg');
 }).position({x:50, y:50});
 ```
 
@@ -125,11 +127,11 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 ``` TypeScript
 function errorFunc(observer: errorManager.GlobalError) {
-  hilog.info(0x0000, 'testTag','result name :' + observer.name);
-  hilog.info(0x0000, 'testTag','result message :' + observer.message);
-  hilog.info(0x0000, 'testTag','result stack :' + observer.stack);
-  hilog.info(0x0000, 'testTag','result instanceName :' + observer.instanceName);
-  hilog.info(0x0000, 'testTag','result instanceType :' + observer.instanceType);
+  console.error('testErrorManage','result name :' + observer.name);
+  console.error('testErrorManage','result message :' + observer.message);
+  console.error('testErrorManage','result stack :' + observer.stack);
+  console.error('testErrorManage','result instanceName :' + observer.instanceName);
+  console.error('testErrorManage','result instanceType :' + observer.instanceType);
 };
 ```
 
@@ -143,8 +145,10 @@ Button('进程监听异常场景').onClick(()=>{
   } catch (paramError) {
     let code = (paramError as BusinessError).code;
     let message = (paramError as BusinessError).message;
-    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
+    console.error('testErrorManage',`error: ${code}, ${message}`);
   }
+  // 构造场景故障
+  throw new Error('test errorFunc msg');
 }).position({x:50, y:100});
 ```
 
@@ -164,12 +168,16 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 ``` TypeScript
 function promiseFunc(observer: errorManager.GlobalError) {
-  hilog.info(0x0000, 'testTag','result name :' + observer.name);
-  hilog.info(0x0000, 'testTag','result message :' + observer.message);
-  hilog.info(0x0000, 'testTag','result stack :' + observer.stack);
-  hilog.info(0x0000, 'testTag','result instanceName :' + observer.instanceName);
-  hilog.info(0x0000, 'testTag','result instanceType :' + observer.instanceType);
-}
+  console.error('testErrorManage','result name :' + observer.name);
+  console.error('testErrorManage','result message :' + observer.message);
+  console.error('testErrorManage','result stack :' + observer.stack);
+  console.error('testErrorManage','result instanceName :' + observer.instanceName);
+  console.error('testErrorManage','result instanceType :' + observer.instanceType);
+};
+
+async function promiseFuncOne() {
+  throw new Error('process promise exception');
+};
 ```
 
  新增触发按钮。
@@ -182,8 +190,14 @@ Button('进程监听promise异常场景').onClick(()=>{
   } catch (paramError) {
     let code = (paramError as BusinessError).code;
     let message = (paramError as BusinessError).message;
-    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
+    console.error('testErrorManage',`error: ${code}, ${message}`);
   }
+  // 构造场景故障
+  new Promise<string>(() => {
+    promiseFuncOne();
+  }).then(() => {
+    throw new Error('test promiseFuncOne msg');
+  });
 }).position({x:50, y:200});
 ```
 
@@ -203,8 +217,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 ``` TypeScript
 function freezeCallback() {
-  hilog.info(0x0000, 'testTag','freezecallback');
-}
+  console.error('testErrorManage','freezecallback');
+};
 ```
 
  新增触发按钮。
@@ -217,8 +231,12 @@ Button('主线程监听freeze').onClick(()=>{
   } catch (paramError) {
     let code = (paramError as BusinessError).code;
     let message = (paramError as BusinessError).message;
-    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
+    console.error('testErrorManage',`error: ${code}, ${message}`);
   }
+  // 构造场景故障
+  let date = Date.now();
+  while (Date.now() - date < 15000) {
+  };
 }).position({x:50, y:300});
 ```
 
@@ -239,7 +257,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 ``` TypeScript
 let loopObserver: errorManager.LoopObserver = {
   onLoopTimeOut(timeout: number) {
-    hilog.info(0x0000, 'testTag','Duration timeout: ' + timeout);
+    console.error('testErrorManage','Duration timeout: ' + timeout);
   }
 };
 ```
@@ -254,8 +272,12 @@ Button('主线程监听消息处理耗时').onClick(()=>{
   } catch (paramError) {
     let code = (paramError as BusinessError).code;
     let message = (paramError as BusinessError).message;
-    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
+    console.error('testErrorManage',`error: ${code}, ${message}`);
   }
+  // 构造场景故障
+  let date = Date.now();
+  while (Date.now() - date < 4000) {
+  };
 }).position({x:50, y:150});
 ```
 
@@ -280,13 +302,17 @@ let promise1 = new Promise<void>(() => {}).then(() => {
 
 let unhandledrejectionObserver: errorManager.UnhandledRejectionObserver = (reason: Error, promise: Promise<void>) => {
   if (promise === promise1) {
-    hilog.info(0x0000, 'testTag','promise1 is rejected');
+    console.error('testErrorManage','promise1 is rejected');
   }
-  hilog.info(0x0000, 'testTag','reason.name: ', reason.name);
-  hilog.info(0x0000, 'testTag','reason.message: ', reason.message);
+  console.error('testErrorManage','reason.name: ', reason.name);
+  console.error('testErrorManage','reason.message: ', reason.message);
   if (reason.stack) {
-    hilog.info(0x0000, 'testTag','reason.stack: ', reason.stack);
+    console.error('testErrorManage','reason.stack: ', reason.stack);
   }
+};
+
+async function promiseFuncTwo() {
+  throw new Error('process promise unhandled rejection exception');
 };
 ```
 
@@ -300,8 +326,14 @@ Button('进程promise监听注册被拒绝').onClick(()=>{
   } catch (paramError) {
     let code = (paramError as BusinessError).code;
     let message = (paramError as BusinessError).message;
-    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
+    console.error('testErrorManage',`error: ${code}, ${message}`);
   }
+  // 构造场景故障
+  new Promise<string>(() => {
+    promiseFuncTwo();
+  }).then(() => {
+    throw new Error('test promiseFuncTwo msg');
+  });
 }).position({x:50, y:250});
 ```
 
