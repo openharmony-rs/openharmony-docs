@@ -103,7 +103,7 @@ getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;Array&lt;[PowerMode](#powermode9)&gt;&gt; | Promise对象。表示功率模式。 |
+  | Promise&lt;Array&lt;[PowerMode](#powermode)&gt;&gt; | Promise对象。表示功率模式。 |
 
 **错误码：**
 
