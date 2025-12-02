@@ -131,19 +131,19 @@ target_link_libraries(sample PUBLIC libohfileshare.so)
 
 5. 调用OH_FileShare_CheckPersistentPermission接口，检查uri持久化权限，接口入参policyNum最大上限为500。
    <!-- @[check_persistent_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
-
-``` C++
-    bool *result = nullptr;
-    auto ret = OH_FileShare_CheckPersistentPermission(policy, policyNum, &result, &resultNum);
-    if (ret != ERR_OK) {
-        if (ret == ERR_EPERM && result != nullptr) {
-            for (uint32_t i = 0; i < resultNum && resultNum <= policyNum; i++) {
-                std::cout << "uri: " <<  policy[i].uri << std::endl;
-                std::cout << "result: " <<  result[i] << std::endl;
-				// ···
-            }
-        }
-    }
-    std::cout << "retCode: " <<  ret << std::endl;
-    free(result);
-```
+   
+   ``` C++
+   bool *result = nullptr;
+   auto ret = OH_FileShare_CheckPersistentPermission(policy, policyNum, &result, &resultNum);
+   if (ret != ERR_OK) {
+       if (ret == ERR_EPERM && result != nullptr) {
+           for (uint32_t i = 0; i < resultNum && resultNum <= policyNum; i++) {
+               std::cout << "uri: " <<  policy[i].uri << std::endl;
+               std::cout << "result: " <<  result[i] << std::endl;
+               // ...
+           }
+       }
+   }
+   std::cout << "retCode: " <<  ret << std::endl;
+   free(result);
+   ```
