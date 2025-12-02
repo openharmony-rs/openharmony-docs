@@ -8171,7 +8171,7 @@ on\(type: 'imsCallModeChange', callback: Callback\<ImsCallModeInfo\>\): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8230,7 +8230,7 @@ off\(type: 'imsCallModeChange', callback?: Callback\<ImsCallModeInfo\>\): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8288,7 +8288,7 @@ on\(type: 'callSessionEvent', callback: Callback\<CallSessionEvent\>\): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8346,7 +8346,7 @@ off\(type: 'callSessionEvent', callback?: Callback\<CallSessionEvent\>\): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8405,7 +8405,7 @@ on\(type: 'peerDimensionsChange', callback: Callback\<PeerDimensionsDetail\>\): 
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8452,7 +8452,7 @@ off\(type: 'peerDimensionsChange', callback?: Callback\<PeerDimensionsDetail\>\)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8499,7 +8499,7 @@ on\(type: 'cameraCapabilitiesChange', callback: Callback\<CameraCapabilities\>\)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8544,7 +8544,7 @@ off\(type: 'cameraCapabilitiesChange', callback?: Callback\<CameraCapabilities\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
