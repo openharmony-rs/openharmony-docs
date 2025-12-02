@@ -6462,7 +6462,7 @@ Stage模型下，该接口需要在[loadContent()](#loadcontent9)或[setUIConten
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Create pixelMap failed. |
 | 1300018 | Timeout. |
 
 **示例：**
