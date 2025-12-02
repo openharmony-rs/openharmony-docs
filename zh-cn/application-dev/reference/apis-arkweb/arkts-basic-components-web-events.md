@@ -1861,17 +1861,17 @@ struct Index {
         })
         .onClientAuthenticationRequest((event) => {
           // 收到客户端证书请求事件
-          console.log(`onClientAuthenticationRequest`);
+          console.info(`onClientAuthenticationRequest`);
           try {
             let certTypes: Array<certMgrDialog.CertificateType> = [
               certMgrDialog.CertificateType.CREDENTIAL_UKEY
             ];
             // 调用证书管理，打开证书选择框
             certMgrDialog.openAuthorizeDialog(this.context, { certTypes: certTypes })
-              .then((data: certMgrDialog.CertIndex) => {
+              .then((data: certMgrDialog.CertReference) => {
                 console.info(`openAuthorizeDialog request cred auth success`)
                 // 通知web选择的为ukey证书
-                event.handler.confirm(data.index, CredentialType.CREDENTIAL_UKEY);
+                event.handler.confirm(data.keyUri, CredentialType.CREDENTIAL_UKEY);
               }).catch((err: BusinessError) => {
               console.error(`openAuthorizeDialog request cred auth failed, err: ${JSON.stringify(err)}`);
             })
@@ -1882,16 +1882,16 @@ struct Index {
         })
         .onVerifyPin((event) => {
           // 收到PIN码认证请求事件
-          console.log(`onVerifyPin`);
+          console.info(`onVerifyPin`);
           // 调用证书管理，打开PIN码输入框
-          certMgrDialog.openUkeyAuthDialog(this.context, {ukeyCertIndex: event.identity})
+          certMgrDialog.openUkeyAuthDialog(this.context, {keyUri: event.identity})
             .then(() => {
               // 通知webPIN码认证成功
-              console.log(`onVerifyPin success`);
+              console.info(`onVerifyPin success`);
               event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_SUCCESS);
             }).catch((err: BusinessError) => {
             // 通知webPIN码认证失败
-            console.log(`onVerifyPin fail`);
+            console.info(`onVerifyPin fail`);
             event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_FAILED);
           })
         })
@@ -4842,7 +4842,7 @@ onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| callback | OnDetectBlankScreenCallback\<[BlankScreenDetectionEventInfo](./arkts-basic-components-web-i.md#blankscreendetectioneventinfo22)\> | 是    | 设置Web组件的检测到白屏时的回调函数。 |
+| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | 是    | 设置Web组件的检测到白屏时的回调函数。 |
 
 **示例：**
 

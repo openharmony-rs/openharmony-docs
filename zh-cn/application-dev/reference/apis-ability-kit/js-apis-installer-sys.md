@@ -152,7 +152,9 @@ install(hapFilePaths: Array&lt;string&gt;, installParam: InstallParam, callback:
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE<sup>10+</sup>
-> **说明：** 从API version 10起，可通过ohos.permission.INSTALL_ENTERPRISE_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限调用此接口。
+> **说明：**
+>
+> 从API version 10开始，申请ohos.permission.INSTALL_ENTERPRISE_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限，可以调用此接口。
 >
 > 安装企业应用需要ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
 >
@@ -247,7 +249,9 @@ install(hapFilePaths: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;):
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE<sup>10+</sup>
-> **说明：** 从API version 10起，可通过ohos.permission.INSTALL_ENTERPRISE_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限调用此接口。
+> **说明：**
+>
+> 从API version 10开始，申请ohos.permission.INSTALL_ENTERPRISE_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限，可以调用此接口。
 >
 > 安装企业应用需要ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
 >
@@ -337,7 +341,9 @@ install(hapFilePaths: Array\<string\>, installParam?: InstallParam) : Promise\<v
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE<sup>10+</sup>
-> **说明：** 从API version 10起，可通过ohos.permission.INSTALL_ENTERPRISE_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限调用此接口。
+> **说明：**
+>
+> 从API version 10开始，申请ohos.permission.INSTALL_ENTERPRISE_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限，可以调用此接口。
 >
 > 安装企业应用需要ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
 >

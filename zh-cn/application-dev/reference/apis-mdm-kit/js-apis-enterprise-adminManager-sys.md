@@ -1343,8 +1343,8 @@ replaceSuperAdmin(oldAdmin: Want, newAdmin: Want, isKeepPolicy: boolean): void
 
 | 参数名            | 类型                                  | 必填   | 说明                           |
 | -------------- | ----------------------------------- | ---- | ---------------------------- |
-| oldAdmin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 原有企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
-| newAdmin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 新企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                 |
+| oldAdmin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 原有企业设备管理扩展组件。Want中必须包含原有企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| newAdmin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 新企业设备管理扩展组件。Want中必须包含新的企业设备管理扩展能力的abilityName和所在应用的bundleName。                 |
 | isKeepPolicy   | boolean                             | 是    | 是否保留原有企业设备管理扩展组件的策略，取值为true表示保留，取值为false表示不保留。      |
 
 **错误码**：

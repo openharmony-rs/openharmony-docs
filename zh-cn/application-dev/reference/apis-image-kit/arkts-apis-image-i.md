@@ -97,7 +97,7 @@ PixelMap的初始化选项。
 | 名称                     | 类型                               | 只读 |可选 |  说明           |
 | ------------------------ | ---------------------------------- | ----| -----|  -------------- |
 | alphaType<sup>9+</sup>   | [AlphaType](arkts-apis-image-e.md#alphatype9)           | 否   | 是| 透明度。默认值为IMAGE_ALPHA_TYPE_PREMUL。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。      |
-| editable                 | boolean                            | 否   | 是| true表示可编辑，false表示不可编辑。默认值为false。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。|
+| editable                 | boolean                            | 否   | 是 | 图像像素是否可被编辑。true表示可被编辑，false表示不可被编辑。设为false时，可提升图像的渲染和传输性能。默认值为false。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。|
 | srcPixelFormat<sup>12+</sup>  | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否 | 是 | 传入的buffer数据的像素格式。默认值为BGRA_8888。|
 | pixelFormat              | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否 | 是| 生成的pixelMap的像素格式。默认值为RGBA_8888。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。     |
 | scaleMode<sup>9+</sup>   | [ScaleMode](arkts-apis-image-e.md#scalemode9)           | 否  | 是 | 缩略值。默认值为0。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。       |

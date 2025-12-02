@@ -1282,7 +1282,7 @@ textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
 设置文字阴影效果。
 
-不支持fill字段和智能取色模式。
+不支持ShadowOptions对象中的type、fill字段和color字段的智能取色模式。
 
 从API version 11开始，该接口支持以数组形式入参，实现多重文字阴影。
 
@@ -1965,34 +1965,35 @@ struct TextExample5 {
   @State end: number = 20;
 
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.Start }) {
-      Text(this.text)
-        .fontSize(12)
-        .border({ width: 1 })
-        .lineHeight(20)
-        .margin(30)
-        .copyOption(CopyOptions.InApp)
-        .selection(this.start, this.end)
-        .onCopy((value: string) => {
-          this.onCopy = value;
-        })
-        .draggable(true)
-        .caretColor(Color.Red)
-        .selectedBackgroundColor(Color.Grey)
-        .enableHapticFeedback(true)
-      Button('Set text selection')
-        .margin({ left: 20 })
-        .onClick(() => {
-          // 变更文本选中起始点、终点
-          this.start = 10;
-          this.end = 30;
-        })
-      Text(this.onCopy).fontSize(12).margin(10).key('copy')
-    }.height(600).width(335).padding({ left: 35, right: 35, top: 35 })
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Start }) {
+        Text(this.text)
+          .fontSize(12)
+          .border({ width: 1 })
+          .lineHeight(20)
+          .margin(30)
+          .copyOption(CopyOptions.InApp)
+          .selection(this.start, this.end)
+          .onCopy((value: string) => {
+            this.onCopy = value;
+          })
+          .draggable(true)
+          .caretColor(Color.Red)
+          .selectedBackgroundColor(Color.Grey)
+          .enableHapticFeedback(true)
+        Button('Set text selection')
+          .onClick(() => {
+            // 变更文本选中起始点、终点
+            this.start = 10;
+            this.end = 30;
+          })
+        Text(this.onCopy).fontSize(12).margin(10).key('copy')
+      }.height(600).width(335).padding({ left: 35, right: 35, top: 35 })
+    }.width('100%')
   }
 }
 ```
-![](figures/setTextSelection.png)
+![](figures/setTextSelection.gif)
 
 ### 示例6（设置文本自适应和缩放倍数限制范围）
 

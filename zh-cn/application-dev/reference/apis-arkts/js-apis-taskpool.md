@@ -1442,6 +1442,7 @@ static sendData(...args: Object[]): void
 >
 > - 该接口应在taskpool的线程中调用。
 > - 避免在回调函数中调用该方法，否则可能导致消息无法传递到宿主线程。
+> - 避免在异步函数中调用该方法，否则可能导致消息无法传递到宿主线程。如果在异步函数中使用，则需要使用await来确保该异步函数在任务中同步执行完成。
 > - 调用该接口时，请确保处理数据的回调函数已在宿主线程注册。
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -1493,6 +1494,35 @@ async function taskpoolTest(): Promise<void> {
 taskpoolTest();
 ```
 
+```ts
+// 异步函数中调用该方法
+@Concurrent
+async function sendDataTest(num: number) {
+  let func = async () => {
+    let asyncSleep = async (time: number): Promise<Object> => {
+      return new Promise(resolve => setTimeout(resolve, time));
+    }
+    await asyncSleep(10000);
+    let res: number = num * 10;
+    taskpool.Task.sendData(res);
+  }
+  await func(); // 需要使用await来确保该异步函数在任务中同步执行完成。
+}
+
+function taskpoolTest() {
+  try {
+    let task: taskpool.Task = new taskpool.Task(sendDataTest, 10);
+    task.onReceiveData((data: string) => {
+      console.info("taskpool: data is: " + data);
+    });
+    taskpool.execute(task);
+  } catch (e) {
+    console.error(`taskpool: error code: ${e.code}, info: ${e.message}`);
+  }
+}
+
+taskpoolTest();
+```
 
 ### onReceiveData<sup>11+</sup>
 
