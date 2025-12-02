@@ -89,29 +89,29 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
 3. 获取设备操作权限。
 
    <!-- @[requestSerialRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    if (this.portList_ === undefined || this.portList_.length === 0) {
-      console.error('usbSerial portList is empty');
-      this.logInfo_ += '\n[ERROR] usbSerial portList is empty';
-      return;
-    }
-    let portList: serialManager.SerialPort[] = this.portList_;
-    let portId: number = portList[0].portId;
-    if (!serialManager.hasSerialRight(portId)) {
-      serialManager.requestSerialRight(portId).then((result: boolean) => {
-        console.info('serial device request right result: ' + result);
-        this.logInfo_ += '\n[INFO] serial device request right result: ' + JSON.stringify(result);
-      }).catch((error: BusinessError) => {
-        console.error(`usb device request right failed : ${error}`);
-        this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
-      });
-    } else {
-      console.info('serial device already request right');
-      this.logInfo_ += '\n[INFO] serial device already request right';
-    }
-    this.portId_ = portId;
-```
+   
+   ``` TypeScript
+   if (this.portList_ === undefined || this.portList_.length === 0) {
+     console.error('usbSerial portList is empty');
+     this.logInfo_ += '\n[ERROR] usbSerial portList is empty';
+     return;
+   }
+   let portList: serialManager.SerialPort[] = this.portList_;
+   let portId: number = portList[0].portId;
+   if (!serialManager.hasSerialRight(portId)) {
+     serialManager.requestSerialRight(portId).then((result: boolean) => {
+       console.info('serial device request right result: ' + result);
+       this.logInfo_ += '\n[INFO] serial device request right result: ' + JSON.stringify(result);
+     }).catch((error: BusinessError) => {
+       console.error(`usb device request right failed : ${error}`);
+       this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
+     });
+   } else {
+     console.info('serial device already request right');
+     this.logInfo_ += '\n[INFO] serial device already request right';
+   }
+   this.portId_ = portId;
+   ```
 
 4. 根据串口打开设备。
 
