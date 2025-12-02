@@ -1164,7 +1164,7 @@ struct GridExample {
         console.info(last.toString());
       })
       .onScrollBarUpdate((index: number, offset: number) => {
-        console.info("XXX" + 'Grid onScrollBarUpdate,index : ' + index.toString() + ",offset" + offset.toString());
+        console.info('XXX' + 'Grid onScrollBarUpdate,index : ' + index.toString() + ',offset' + offset.toString());
         return { totalOffset: (index / 5) * (80 + 10) - offset, totalLength: 80 * 5 + 10 * 4 };
       })  //只适用于当前示例代码数据源，如果数据源有变化，则需要修改该部分代码，或者删掉此属性
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
@@ -1172,18 +1172,18 @@ struct GridExample {
         console.info(scrollState.toString());
       })
       .onScrollStart(() => {
-        console.info("XXX" + "Grid onScrollStart");
+        console.info('XXX' + 'Grid onScrollStart');
       })
       .onScrollStop(() => {
-        console.info("XXX" + "Grid onScrollStop");
+        console.info('XXX' + 'Grid onScrollStop');
       })
       .onReachStart(() => {
         this.gridPosition = 0;
-        console.info("XXX" + "Grid onReachStart");
+        console.info('XXX' + 'Grid onReachStart');
       })
       .onReachEnd(() => {
         this.gridPosition = 2;
-        console.info("XXX" + "Grid onReachEnd");
+        console.info('XXX' + 'Grid onReachEnd');
       })
 
       Button('next page')
@@ -2070,7 +2070,7 @@ class MyNodeController extends NodeController {
   }
 
   addCommonEvent(frameNode: FrameNode) {
-    let gridEvent: UIGridEvent | undefined = typeNode.getEvent(frameNode, "Grid");
+    let gridEvent: UIGridEvent | undefined = typeNode.getEvent(frameNode, 'Grid');
     gridEvent?.setOnWillScroll((scrollOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => {
       console.info(`onWillScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}, scrollSource = ${scrollSource}`);
     });
@@ -2116,7 +2116,7 @@ struct Index {
 
   build() {
     Column() {
-      Button("add CommonEvent to Grid")
+      Button('add CommonEvent to Grid')
         .onClick(() => {
           this.myNodeController!.addCommonEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling()!);
         })
@@ -2140,7 +2140,7 @@ struct Index {
       .backgroundColor(0xFAEEE0)
       .height(300)
       NodeContainer(this.myNodeController)
-    }.width("100%")
+    }.width('100%')
   }
 }
 ```
@@ -2423,7 +2423,7 @@ struct GridExample {
                 .textAlign(TextAlign.Center)
               if (this.canSlideSelect) {
                 // $r('app.media.gouxuan')和$r('app.media.weigouxuan')需要替换为开发者所需的图像资源文件。
-                Image(this.selectedIndexes.includes(day) ? $r('app.media.gouxuan') :$r('app.media.weigouxuan'));
+                Image(this.selectedIndexes.includes(day) ? $r('app.media.gouxuan') :$r('app.media.weigouxuan'))
                   .width(30)
                   .height(30)
                   .position({right:5,top:5})
@@ -2821,13 +2821,13 @@ struct Example {
             return { extraInfo: index + '' };
           })
           .onDragEnter((event: DragEvent, extraParams?: string) => {
-            console.info(index + "" + extraParams);
+            console.info(index + '' + extraParams);
           })
           .onDragEnd((event: DragEvent, extraParams?: string) => {
-            console.info('onDragEnd' + index + "" + extraParams);
+            console.info('onDragEnd' + index + '' + extraParams);
           })
           .onDrop((event?: DragEvent, extraParams?: string) => {
-            console.info('drop:' + item + "" + extraParams + JSON.stringify(event!));
+            console.info('drop:' + item + '' + extraParams + JSON.stringify(event!));
             this.changeIndex(parseInt(JSON.parse(extraParams!).extraInfo), index);
           })
         }, (item: string) => item)

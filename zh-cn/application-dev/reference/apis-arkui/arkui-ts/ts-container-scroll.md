@@ -1337,9 +1337,9 @@ struct NestedScroll {
     Flex() {
       Scroll(this.scrollerForScroll) {
         Column() {
-          Text("Scroll Area")
-            .width("100%")
-            .height("40%")
+          Text('Scroll Area')
+            .width('100%')
+            .height('40%')
             .backgroundColor(0X330000FF)
             .fontSize(16)
             .textAlign(TextAlign.Center)
@@ -1350,18 +1350,18 @@ struct NestedScroll {
           List({ space: 20, scroller: this.scrollerForList }) {
             ForEach(this.arr, (item: number) => {
               ListItem() {
-                Text("ListItem" + item)
-                  .width("100%")
-                  .height("100%")
+                Text('ListItem' + item)
+                  .width('100%')
+                  .height('100%')
                   .borderRadius(15)
                   .fontSize(16)
                   .textAlign(TextAlign.Center)
                   .backgroundColor(Color.White)
-              }.width("100%").height(100)
+              }.width('100%').height(100)
             }, (item: string) => item)
           }
-          .width("100%")
-          .height("50%")
+          .width('100%')
+          .height('50%')
           .edgeEffect(EdgeEffect.None)
           .friction(0.6)
           .onReachStart(() => {
@@ -1379,15 +1379,15 @@ struct NestedScroll {
             return { offsetRemain: offset };
           })
 
-          Text("Scroll Area")
-            .width("100%")
-            .height("40%")
+          Text('Scroll Area')
+            .width('100%')
+            .height('40%')
             .backgroundColor(0X330000FF)
             .fontSize(16)
             .textAlign(TextAlign.Center)
         }
       }
-      .width("100%").height("100%")
+      .width('100%').height('100%')
     }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding(20)
   }
 }
@@ -1407,16 +1407,16 @@ struct StickyNestedScroll {
   listCard() {
     .backgroundColor(Color.White)
     .height(72)
-    .width("100%")
+    .width('100%')
     .borderRadius(12)
   }
 
   build() {
     Scroll() {
       Column() {
-        Text("Scroll Area")
-          .width("100%")
-          .height("40%")
+        Text('Scroll Area')
+          .width('100%')
+          .height('40%')
           .backgroundColor('#0080DC')
           .textAlign(TextAlign.Center)
         Tabs({ barPosition: BarPosition.Start }) {
@@ -1424,24 +1424,24 @@ struct StickyNestedScroll {
             List({ space: 10 }) {
               ForEach(this.arr, (item: number) => {
                 ListItem() {
-                  Text("item" + item)
+                  Text('item' + item)
                     .fontSize(16)
                 }.listCard()
               }, (item: number) => item.toString())
-            }.width("100%")
+            }.width('100%')
             .edgeEffect(EdgeEffect.Spring)
             .nestedScroll({
               scrollForward: NestedScrollMode.PARENT_FIRST,
               scrollBackward: NestedScrollMode.SELF_FIRST
             })
-          }.tabBar("Tab1")
+          }.tabBar('Tab1')
 
           TabContent() {
-          }.tabBar("Tab2")
+          }.tabBar('Tab2')
         }
         .vertical(false)
-        .height("100%")
-      }.width("100%")
+        .height('100%')
+      }.width('100%')
     }
     .edgeEffect(EdgeEffect.Spring)
     .friction(0.6)
@@ -1479,9 +1479,9 @@ struct NestedScroll {
   build() {
     Scroll(this.scrollerForParent) {
       Column() {
-        Text("Scroll Area")
-          .width("100%")
-          .height("40%")
+        Text('Scroll Area')
+          .width('100%')
+          .height('40%')
           .backgroundColor(0X330000FF)
           .fontSize(16)
           .textAlign(TextAlign.Center)
@@ -1494,25 +1494,25 @@ struct NestedScroll {
         List({ space: 20, scroller: this.scrollerForChild }) {
           ForEach(this.arr, (item: number) => {
             ListItem() {
-              Text("ListItem" + item)
-                .width("100%")
-                .height("100%")
+              Text('ListItem' + item)
+                .width('100%')
+                .height('100%')
                 .borderRadius(15)
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
                 .backgroundColor(Color.White)
-            }.width("100%").height(100)
+            }.width('100%').height(100)
           }, (item: number) => item.toString())
         }
-        .width("100%")
-        .height("100%")
+        .width('100%')
+        .height('100%')
         .edgeEffect(EdgeEffect.None)
         .scrollBar(BarState.Off)
         .enableScrollInteraction(false)
 
-        Text("Scroll Area")
-          .width("100%")
-          .height("40%")
+        Text('Scroll Area')
+          .width('100%')
+          .height('40%')
           .backgroundColor(0X330000FF)
           .fontSize(16)
           .textAlign(TextAlign.Center)
@@ -1543,8 +1543,8 @@ struct NestedScroll {
       }
       return { offsetRemain: retOffset };
     })
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
     .backgroundColor(0xDCDCDC)
   }
 }
