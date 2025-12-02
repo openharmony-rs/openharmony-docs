@@ -390,9 +390,9 @@ try {
 ```
 ## deviceManager.bindDriverWithDeviceId<sup>19+</sup>
 
-ArkTS-Dyn: bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;long&gt;): Promise&lt;RemoteDeviceDriver&gt;;
+ArkTS-Dyn: bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt;;
 
-ArkTS-Sta: bindDriverWithDeviceId(deviceId: long, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt;;
+ArkTS-Sta: bindDriverWithDeviceId(deviceId: long, onDisconnect: AsyncCallback&lt;long&gt;): Promise&lt;RemoteDeviceDriver&gt;;
 
 根据queryDevices()返回的设备信息绑定设备。
 
