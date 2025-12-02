@@ -369,13 +369,13 @@
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                       |
 | ------ | ------ | ---- | ---- | ------------------------------------------ |
-| rect  | [Rect](arkts-apis-window-i.md#rect7)   | 否   | 否   | 窗口尺寸。 |
-| bundleName  | string   | 否   | 否   | 应用Bundle的名称。          |
-| abilityName | string   | 否   | 否   | Ability的名称。               |
-| windowId | number | 否   | 否   | 窗口ID。   |
-| windowStatusType | [WindowStatusType](arkts-apis-window-e.md#windowstatustype11) | 否   | 否   | 窗口模式枚举。   |
-| isFocused | boolean | 否   | 是   | 窗口是否获焦。true表示窗口获焦；false表示窗口未获焦。   |
-| globalDisplayRect<sup>20+</sup> | [Rect](arkts-apis-window-i.md#rect7)   | 否   | 是   | 全局坐标系下的窗口尺寸。扩展屏场景下以主屏左上角为坐标原点，虚拟屏场景下以虚拟屏左上角为坐标原点。默认值：[0, 0, 0, 0]。|
+| rect  | [Rect](arkts-apis-window-i.md#rect7)   | 否   | 否   | 窗口尺寸。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22 |
+| bundleName  | string   | 否   | 否   | 应用Bundle的名称。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22          |
+| abilityName | string   | 否   | 否   | Ability的名称。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22               |
+| windowId | number | 否   | 否   | 窗口ID。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22   |
+| windowStatusType | [WindowStatusType](arkts-apis-window-e.md#windowstatustype11) | 否   | 否   | 窗口模式枚举。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22   |
+| isFocused | boolean | 否   | 是   | 窗口是否获焦。true表示窗口获焦；false表示窗口未获焦。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22   |
+| globalDisplayRect<sup>20+</sup> | [Rect](arkts-apis-window-i.md#rect7)   | 否   | 是   | 全局坐标系下的窗口尺寸。扩展屏场景下以主屏左上角为坐标原点，虚拟屏场景下以虚拟屏左上角为坐标原点。默认值：[0, 0, 0, 0]。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22|
 
 ## TransitionAnimation<sup>20+</sup>
 
