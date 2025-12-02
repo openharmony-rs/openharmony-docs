@@ -56,19 +56,19 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
 2. 获取设备列表。
 
    <!-- @[getPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    // 获取连接主设备的USB设备列表
-    let portList: serialManager.SerialPort[] = serialManager.getPortList();
-    console.info(`usbSerial portList: ${portList}`);
-    this.logInfo_ += '\n[INFO] usbSerial portList: ' + JSON.stringify(portList);
-    if (portList === undefined || portList.length === 0) {
-      console.error('usbSerial portList is empty');
-      this.logInfo_ += '\n[ERROR] usbSerial portList is empty';
-      return;
-    }
-    this.portList_ = portList;
-```
+   
+   ``` TypeScript
+   // 获取连接主设备的USB设备列表
+   let portList: serialManager.SerialPort[] = serialManager.getPortList();
+   console.info(`usbSerial portList: ${portList}`);
+   this.logInfo_ += '\n[INFO] usbSerial portList: ' + JSON.stringify(portList);
+   if (portList === undefined || portList.length === 0) {
+     console.error('usbSerial portList is empty');
+     this.logInfo_ += '\n[ERROR] usbSerial portList is empty';
+     return;
+   }
+   this.portList_ = portList;
+   ```
 
 
 3. 获取设备操作权限。
