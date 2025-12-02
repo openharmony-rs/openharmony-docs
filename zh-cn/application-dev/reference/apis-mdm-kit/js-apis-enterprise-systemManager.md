@@ -698,7 +698,7 @@ try {
 
 setInstallLocalEnterpriseAppEnabled(admin: Want, isEnable: boolean): void
 
-设置是否支持本地安装普通企业应用。设置为支持安装后，具备本地安装能力的PC/2in1设备可本地双击应用安装包，安装签名证书分发类型为enterprise_normal的普通企业应用。
+设置是否支持本地安装企业应用。设置为支持安装后，具备本地安装能力的PC/2in1设备可本地双击应用安装包，安装签名证书分发类型为enterprise_normal的企业应用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -713,7 +713,7 @@ setInstallLocalEnterpriseAppEnabled(admin: Want, isEnable: boolean): void
 | 参数名   | 类型                                  | 必填  | 说明 |
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| isEnable | boolean | 是 | 是否支持本地安装普通企业应用。true表示支持，false表示不支持。 |
+| isEnable | boolean | 是 | 是否支持本地安装企业应用。true表示支持，false表示不支持。 |
 
 **错误码**：
 
@@ -752,7 +752,7 @@ try {
 
 getInstallLocalEnterpriseAppEnabled(admin: Want): boolean
 
-查询是否支持本地安装普通企业应用。
+查询是否支持本地安装企业应用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -772,7 +772,7 @@ getInstallLocalEnterpriseAppEnabled(admin: Want): boolean
 
 | 类型   | 说明                                |
 | ------ | ----------------------------------- |
-| boolean | 是否支持本地安装普通企业应用，true为支持，false为不支持。 |
+| boolean | 是否支持本地安装企业应用，true为支持，false为不支持。 |
 
 **错误码**：
 
