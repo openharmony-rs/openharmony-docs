@@ -420,7 +420,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ### createSubWindowWithOptions<sup>22+</sup>
 
-createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptions, followCreatorLifecycle: boolean): Promise&lt;window.Window&gt;
+createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions, followCreatorLifecycle: boolean): Promise&lt;window.Window&gt;
 
 创建该WindowProxy实例下的子窗口，使用Promise异步回调。
 
@@ -435,7 +435,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
 | name   | string | 是   | 子窗口的名字。 |
-| subWindowOptions | [window.SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | 是   | 子窗口参数。  |
+| subWindowConfig | [window.SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | 是   | 子窗口参数。  |
 | followCreatorLifecycle | boolean | 是   | 子窗生命周期是否跟组件（EmbeddedComponent或UIExtensionComponent）保持同步。true表示该组件隐藏时，子窗隐藏，该组件显示时子窗显示，false表示子窗的显隐不跟随该组件变化|
 
 **返回值：**
@@ -465,12 +465,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
     const extensionWindow = session.getUIExtensionWindowProxy();
-    const subWindowOpts: window.SubWindowOptions = {
+    const subWindowConfig: window.SubWindowOptions = {
       title: 'This is a subwindow',
       decorEnabled: true
     };
     // 创建子窗口
-    extensionWindow.createSubWindowWithOptions('subWindowForHost', subWindowOpts, true)
+    extensionWindow.createSubWindowWithOptions('subWindowForHost', subWindowConfig, true)
       .then((subWindow: window.Window) => {
         subWindow.setUIContent('pages/Index', (err, data) =>{
           if (err && err.code != 0) {
