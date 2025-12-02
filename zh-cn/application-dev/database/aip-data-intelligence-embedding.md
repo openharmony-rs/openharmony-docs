@@ -206,7 +206,20 @@
    }
    let imageEmbedding:intelligence.ImageEmbedding;
    ```
-
+   <!-- @[aip_getImageEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   intelligence.getImageEmbeddingModel(imageConfig)
+     .then((data:intelligence.ImageEmbedding) => {
+       console.info('Succeeded in getting ImageModel');
+       imageEmbedding = data;
+       // ...
+     })
+     .catch((err:BusinessError) => {
+       console.error('Failed to get ImageModel and code is ' + err.code);
+       // ...
+     })
+   ```
 2. 获取图像嵌入模型。
    调用getImageEmbeddingModel方法，获取图像嵌入模型。示例代码如下所示：
 
