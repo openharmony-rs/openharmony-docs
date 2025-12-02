@@ -4841,7 +4841,7 @@ off(type: 'keyboardWillShow', callback?: Callback&lt;KeyboardInfo&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardWillShow](#offkeyboardwillshow22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardWillShow](#offKeyboardWillShow22)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4943,7 +4943,7 @@ on(type: 'keyboardWillHide', callback: Callback&lt;KeyboardInfo&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardWillHide](#onkeyboardwillhide22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardWillHide](#onKeyboardWillHide22)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
