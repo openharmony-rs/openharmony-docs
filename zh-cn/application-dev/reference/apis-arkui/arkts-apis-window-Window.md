@@ -2237,7 +2237,7 @@ getStatusBarProperty(): StatusBarProperty
 
 获取主窗口状态栏的属性，如状态栏文字颜色。
 
-子窗口不支持查询，调用会返回错误码1300002。
+子窗口不支持查询，调用会返回错误码1300004。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
