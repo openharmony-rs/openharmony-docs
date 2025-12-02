@@ -3512,35 +3512,11 @@ abstract initialize(): ButtonAttribute
 **示例：** 
 
 ```ts
-
 'use static'
-import {
-  Entry,
-  Text,
-  Column,
-  Component,
-  Button,
-  ClickEvent,
-  Color,
-  ListItemOptions,
-  ListItemStyle,
-  NodeContainer,
-  ButtonType,
-  ButtonLabelStyle,
-  Font,
-  FontWeight,
-  TextOverflow,
-  FontStyle,
-  ButtonStyleMode,
-  ControlSize,
-  ButtonRole,
-  ContentModifier,ButtonConfiguration,WrappedBuilder,Checkbox,wrapBuilder
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
-import hilog from '@ohos.hilog'
+import { Entry,Column,Component,Color,NodeContainer, ButtonType,ItemAlign,FlexAlign } from '@ohos.arkui.component'
 import { NodeController, FrameNode, typeNode } from '@ohos.arkui.node'
 import { UIContext } from '@ohos.arkui.UIContext'
- 
+
 class MyNodeController extends NodeController {
   public uiContext: UIContext | null = null;
   public rootNode: FrameNode | null = null;
@@ -3549,12 +3525,13 @@ class MyNodeController extends NodeController {
     this.rootNode = new FrameNode(uiContext);
 
     let flexNode = typeNode.createNode(uiContext, "Flex");
-    flexNode.initialize().size({ width: 200, height: 200 }).backgroundColor(Color.White)
- 
+    flexNode.initialize({alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center})
+      .size({ width: 100, height: 100 })
+      .backgroundColor(Color.Gray)
+
     let button = typeNode.createButtonNode(uiContext);
     button.initialize();
     flexNode.appendChild(button);
- 
     this!.rootNode!.appendChild(flexNode);
     return this.rootNode;
   }
@@ -3565,15 +3542,12 @@ struct MyStateSample {
   private controller: MyNodeController = new MyNodeController()
   build() {
     Column(undefined) {
-      Text("NodeContainer start").fontSize(20)
-      NodeContainer(this.controller).id("NodeContainer001")
-      Text("NodeContainer end").fontSize(20)
+      NodeContainer(this.controller)
     }
   }
 }
 ```
-
-  ![image](figures/buttonInitialize1.png)
+![image](figures/buttonInitialize1.png)
 
 
 ### initialize<sup>22+</sup>
@@ -3603,35 +3577,11 @@ abstract initialize(label: ResourceStr, options?: ButtonOptions): ButtonAttribut
 **示例：** 
 
 ```ts
-
 'use static'
-import {
-  Entry,
-  Text,
-  Column,
-  Component,
-  Button,
-  ClickEvent,
-  Color,
-  ListItemOptions,
-  ListItemStyle,
-  NodeContainer,
-  ButtonType,
-  ButtonLabelStyle,
-  Font,
-  FontWeight,
-  TextOverflow,
-  FontStyle,
-  ButtonStyleMode,
-  ControlSize,
-  ButtonRole,
-  ContentModifier,ButtonConfiguration,WrappedBuilder,Checkbox,wrapBuilder
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
-import hilog from '@ohos.hilog'
+import { Entry,Column,Component,Color,NodeContainer, ButtonType,ItemAlign,FlexAlign } from '@ohos.arkui.component'
 import { NodeController, FrameNode, typeNode } from '@ohos.arkui.node'
 import { UIContext } from '@ohos.arkui.UIContext'
- 
+
 class MyNodeController extends NodeController {
   public uiContext: UIContext | null = null;
   public rootNode: FrameNode | null = null;
@@ -3640,12 +3590,13 @@ class MyNodeController extends NodeController {
     this.rootNode = new FrameNode(uiContext);
 
     let flexNode = typeNode.createNode(uiContext, "Flex");
-    flexNode.initialize().size({ width: 200, height: 200 }).backgroundColor(Color.White)
- 
+    flexNode.initialize({alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center})
+      .size({ width: 100, height: 100 })
+      .backgroundColor(Color.Gray)
+
     let button = typeNode.createButtonNode(uiContext);
     button.initialize('OK', { type: ButtonType.Normal })
     flexNode.appendChild(button);
- 
     this!.rootNode!.appendChild(flexNode);
     return this.rootNode;
   }
@@ -3656,15 +3607,12 @@ struct MyStateSample {
   private controller: MyNodeController = new MyNodeController()
   build() {
     Column(undefined) {
-      Text("NodeContainer start").fontSize(20)
-      NodeContainer(this.controller).id("NodeContainer001")
-      Text("NodeContainer end").fontSize(20)
+      NodeContainer(this.controller)
     }
   }
 }
 ```
-
-  ![image](figures/buttonInitialize3.png)
+![image](figures/buttonInitialize3.png)
 
 ### initialize<sup>22+</sup>
 abstract initialize(value: ButtonOptions): ButtonAttribute
@@ -3692,35 +3640,11 @@ abstract initialize(value: ButtonOptions): ButtonAttribute
 **示例：** 
 
 ```ts
-
 'use static'
-import {
-  Entry,
-  Text,
-  Column,
-  Component,
-  Button,
-  ClickEvent,
-  Color,
-  ListItemOptions,
-  ListItemStyle,
-  NodeContainer,
-  ButtonType,
-  ButtonLabelStyle,
-  Font,
-  FontWeight,
-  TextOverflow,
-  FontStyle,
-  ButtonStyleMode,
-  ControlSize,
-  ButtonRole,
-  ContentModifier,ButtonConfiguration,WrappedBuilder,Checkbox,wrapBuilder
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
-import hilog from '@ohos.hilog'
+import { Entry,Column,Component,Color,NodeContainer, ButtonType,ItemAlign,FlexAlign } from '@ohos.arkui.component'
 import { NodeController, FrameNode, typeNode } from '@ohos.arkui.node'
 import { UIContext } from '@ohos.arkui.UIContext'
- 
+
 class MyNodeController extends NodeController {
   public uiContext: UIContext | null = null;
   public rootNode: FrameNode | null = null;
@@ -3729,13 +3653,14 @@ class MyNodeController extends NodeController {
     this.rootNode = new FrameNode(uiContext);
 
     let flexNode = typeNode.createNode(uiContext, "Flex");
-    flexNode.initialize().size({ width: 200, height: 200 }).backgroundColor(Color.White)
- 
+    flexNode.initialize({alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center})
+      .size({ width: 100, height: 100 })
+      .backgroundColor(Color.Gray)
+    
     let button = typeNode.createButtonNode(uiContext);
     button.initialize({type: ButtonType.Normal});
     button.appendChild(typeNode.createCheckboxNode(uiContext))
     flexNode.appendChild(button);
- 
     this!.rootNode!.appendChild(flexNode);
     return this.rootNode;
   }
@@ -3746,15 +3671,12 @@ struct MyStateSample {
   private controller: MyNodeController = new MyNodeController()
   build() {
     Column(undefined) {
-      Text("NodeContainer start").fontSize(20)
-      NodeContainer(this.controller).id("NodeContainer001")
-      Text("NodeContainer end").fontSize(20)
+      NodeContainer(this.controller)
     }
   }
 }
 ```
-
-  ![image](figures/buttonInitialize2.png)
+![image](figures/buttonInitialize2.png)
 
 ### Button<sup>22+</sup>
 type Button = ButtonFrameNode
