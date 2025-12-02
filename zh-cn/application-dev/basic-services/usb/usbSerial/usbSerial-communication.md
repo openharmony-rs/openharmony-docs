@@ -119,30 +119,30 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
 5. 通过串口读取数据。
 
    <!-- @[serialRead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    let portId: number = this.portId_;
-    // 异步读取
-    let readBuffer: Uint8Array = new Uint8Array(64);
-    serialManager.read(portId, readBuffer, 2000).then((size: number) => {
-      console.info(`readAsync usbSerial success, readAsyncBuffer: ${readBuffer}`);
-      this.logInfo_ += '\n[INFO] readAsync usbSerial success, readAsyncBuffer: ' + JSON.stringify(readBuffer);
-    }).catch((error: Error) => {
-      console.error(`readAsync usbSerial error: ${error}`);
-      this.logInfo_ += '\n[ERROR] readAsync usbSerial error: ' + JSON.stringify(error);
-    })
-
-    // 同步读取
-    let readSyncBuffer: Uint8Array = new Uint8Array(64);
-    try {
-      serialManager.readSync(portId, readSyncBuffer, 2000);
-      console.info(`readSync usbSerial success, readSyncBuffer: ${readSyncBuffer}`);
-      this.logInfo_ += '\n[INFO] readSync usbSerial success, readSyncBuffer: ' + JSON.stringify(readSyncBuffer);
-    } catch (error) {
-      console.error(`readSync usbSerial error: ${error}`);
-      this.logInfo_ += '\n[ERROR] readSync usbSerial error: ' + JSON.stringify(error);
-    }
-```
+   
+   ``` TypeScript
+   let portId: number = this.portId_;
+   // 异步读取
+   let readBuffer: Uint8Array = new Uint8Array(64);
+   serialManager.read(portId, readBuffer, 2000).then((size: number) => {
+     console.info(`readAsync usbSerial success, readAsyncBuffer: ${readBuffer}`);
+     this.logInfo_ += '\n[INFO] readAsync usbSerial success, readAsyncBuffer: ' + JSON.stringify(readBuffer);
+   }).catch((error: Error) => {
+     console.error(`readAsync usbSerial error: ${error}`);
+     this.logInfo_ += '\n[ERROR] readAsync usbSerial error: ' + JSON.stringify(error);
+   })
+   
+   // 同步读取
+   let readSyncBuffer: Uint8Array = new Uint8Array(64);
+   try {
+     serialManager.readSync(portId, readSyncBuffer, 2000);
+     console.info(`readSync usbSerial success, readSyncBuffer: ${readSyncBuffer}`);
+     this.logInfo_ += '\n[INFO] readSync usbSerial success, readSyncBuffer: ' + JSON.stringify(readSyncBuffer);
+   } catch (error) {
+     console.error(`readSync usbSerial error: ${error}`);
+     this.logInfo_ += '\n[ERROR] readSync usbSerial error: ' + JSON.stringify(error);
+   }
+   ```
 
 
 6. 通过串口写入数据。
