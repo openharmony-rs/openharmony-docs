@@ -205,16 +205,16 @@
 5. 连接设备，注册通信接口。
 
    <!-- @[interruptTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
-    let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
-    if (claimInterfaceResult !== 0) {
-      console.error(`claimInterface error = ${claimInterfaceResult}`)
-      this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
-      return;
-    }
-```
+   
+   ``` TypeScript
+   // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
+   let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
+   if (claimInterfaceResult !== 0) {
+     console.error(`claimInterface error = ${claimInterfaceResult}`)
+     this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
+     return;
+   }
+   ```
 
 
 6. 传输数据。
