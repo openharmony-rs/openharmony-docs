@@ -241,7 +241,20 @@
 3. 加载图像嵌入模型。
    调用loadModel方法，加载图像嵌入模型。示例代码如下所示：
 
-   <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
+   imageEmbedding.getEmbedding(image)
+     .then((data:Array<number>) => {
+       console.info('Succeeded in getting Embedding');
+       // ...
+     })
+     .catch((err:BusinessError) => {
+       console.error('Failed to get Embedding and code is ' + err.code);
+       // ...
+     })
+   ```
 
 4. 获取给定图像的嵌入向量。
    调用getEmbedding方法，获取给定图像的嵌入向量。示例代码如下所示：
