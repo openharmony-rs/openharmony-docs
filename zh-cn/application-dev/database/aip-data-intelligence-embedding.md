@@ -196,7 +196,16 @@
 
 1. 导入模块。
 
-   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let imageConfig:intelligence.ModelConfig = {
+     version:intelligence.ModelVersion.BASIC_MODEL,
+     isNpuAvailable:false,
+     cachePath:"/data"
+   }
+   let imageEmbedding:intelligence.ImageEmbedding;
+   ```
 
 2. 获取图像嵌入模型。
    调用getImageEmbeddingModel方法，获取图像嵌入模型。示例代码如下所示：
