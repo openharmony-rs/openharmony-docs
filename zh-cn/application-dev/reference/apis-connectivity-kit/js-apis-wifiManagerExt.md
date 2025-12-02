@@ -272,7 +272,7 @@ setPowerMode(mode: PowerMode) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| mode | [PowerMode](#powermode9) | 是 | 功率模式。 |
+| mode | [PowerMode](#powermode) | 是 | 功率模式。 |
 
 **错误码：**
 
