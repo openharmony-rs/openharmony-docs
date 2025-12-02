@@ -135,42 +135,43 @@ UITest支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test
 
 <!-- @[findAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/Component/FindComAndOp.test.ets) -->
 
-  ```TypeScript
-  // 导入测试依赖kit
-  import { Driver, Component, ON, On } from '@kit.TestKit';
+``` TypeScript
+import { describe, it, TestType } from '@ohos/hypium';
+// 导入测试依赖kit
+import { Component, Driver, ON, On } from '@kit.TestKit';
 
-  export default function abilityTest() {
-    describe('componentOperationTest', () => {
-      /**
-       * 查找类型为'Button'的控件，并进行控件点击操作
-       */
-      it("componentSearchAndOperation", TestType.FUNCTION, async () => {
-        let driver: Driver = Driver.create();
-        await driver.delayMs(1000);
-        let button: Component = await driver.findComponent(ON.type('Button'));
-        await button.click();
-      })
-
-      /**
-       * 利用相对位置查找控件，查找'Scroll'类型控件中文本内容为'123'的控件
-       */
-      it("relativePositioncomponentSearch", TestType.FUNCTION, async () => {
-        let driver: Driver = Driver.create();
-        let on: On = ON.text('123').within(ON.type('Scroll'));
-        let items: Array<Component> = await driver.findComponents(on);
-      })
-
-      /**
-       * 查找类型为'Image'的控件，并进行对其进行双指放大操作
-       */
-      it("componentPinch", TestType.FUNCTION, async () => {
-        let driver: Driver = Driver.create();
-        let image: Component = await driver.findComponent(ON.type('Image'));
-        await image.pinchOut(1.5);
-      })
+export default function abilityTest() {
+  describe('componentOperationTest', () => {
+    /**
+     * 查找类型为'Button'的控件，并进行控件点击操作
+     */
+    it('componentSearchAndOperation', TestType.FUNCTION, async () => {
+      let driver: Driver = Driver.create();
+      await driver.delayMs(1000);
+      let button: Component = await driver.findComponent(ON.type('Button'));
+      await button.click();
     })
-  }
-  ```
+
+    /**
+     * 利用相对位置查找控件，查找'Scroll'类型控件中文本内容为'123'的控件
+     */
+    it('relativePositioncomponentSearch', TestType.FUNCTION, async () => {
+      let driver: Driver = Driver.create();
+      let on: On = ON.text('123').within(ON.type('Scroll'));
+      let items: Array<Component> = await driver.findComponents(on);
+    })
+
+    /**
+     * 查找类型为'Image'的控件，并进行对其进行双指放大操作
+     */
+    it('componentPinch', TestType.FUNCTION, async () => {
+      let driver: Driver = Driver.create();
+      let image: Component = await driver.findComponent(ON.type('Image'));
+      await image.pinchOut(1.5);
+    })
+  })
+}
+```
 
 ### 模拟触摸屏手指操作
 
@@ -372,27 +373,27 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 
 <!-- @[eventObserver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/EventObserver.test.ets) -->
 
-  ```TypeScript
-  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
-  // 导入测试依赖kit
-  import { Driver, UIElementInfo } from '@kit.TestKit';
+``` TypeScript
+import { describe, it, TestType } from '@ohos/hypium';
+// 导入测试依赖kit
+import { Driver, UIElementInfo } from '@kit.TestKit';
 
-  export default function abilityTest() {
-    describe('eventObserver_sample', () => {
-      // 监听Toast控件出现
-      it("toastObserver", TestType.FUNCTION, async () => {
-        let driver = Driver.create();
-        let observer = driver.createUIEventObserver();
-        let callback = (uiElementInfo : UIElementInfo) => {
-          let bundleName = uiElementInfo.bundleName;
-          let text = uiElementInfo.text;
-          let type = uiElementInfo.type;
-        }
-        observer.once('toastShow', callback);
-      })
+export default function abilityTest() {
+  describe('eventObserver_sample', () => {
+    // 监听Toast控件出现
+    it('toastObserver', TestType.FUNCTION, async () => {
+      let driver = Driver.create();
+      let observer = driver.createUIEventObserver();
+      let callback = (uiElementInfo: UIElementInfo) => {
+        let bundleName = uiElementInfo.bundleName;
+        let text = uiElementInfo.text;
+        let type = uiElementInfo.type;
+      }
+      observer.once('toastShow', callback);
     })
-  }
-  ```
+  })
+}
+```
 
 ### 模拟键鼠操作
 
@@ -445,61 +446,62 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 
 <!-- @[findWindowAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/FindWindowAndOp.test.ets) -->
 
-  ```TypeScript
-  import { describe, it, TestType, expect } from '@ohos/hypium';
-  // 导入测试依赖kit
-  import { Driver } from '@kit.TestKit';
-  // Error code when the device is not supported.
-  const DeviceErrorCode = 17000005;
+``` TypeScript
+import { describe, expect, it, TestType } from '@ohos/hypium';
+// 导入测试依赖kit
+import { Driver } from '@kit.TestKit';
 
-  export default function abilityTest() {
-    describe('findWindowAndOp_sample', () => {
-      // 根据指定条件查找活跃窗口，并对其进行窗口最小化操作
-      it("windowSearchAndOperation", TestType.FUNCTION, async () => {
-        let driver = Driver.create();
-        try {
-          let window = await driver.findWindow({active: true});
-          await window.minimize();
-        } catch (error) {
-          // 在不支持窗口操作的设备上调用minimize接口操作窗口时，将抛出17000005错误码
-          expect(error.code).assertEqual(DeviceErrorCode);
-        }
-      })
+// 设备不支持时的错误代码
+const DeviceErrorCode = 17000005;
+
+export default function abilityTest() {
+  describe('findWindowAndOp_sample', () => {
+    // 根据指定条件查找活跃窗口，并对其进行窗口最小化操作
+    it('windowSearchAndOperation', TestType.FUNCTION, async () => {
+      let driver = Driver.create();
+      try {
+        let window = await driver.findWindow({ active: true });
+        await window.minimize();
+      } catch (error) {
+        // 在不支持窗口操作的设备上调用minimize接口操作窗口时，将抛出17000005错误码
+        expect(error.code).assertEqual(DeviceErrorCode);
+      }
     })
-  }
-  ```
+  })
+}
+```
 
 ### 模拟触摸板操作
 如下给出触摸板模拟操作的示例，触摸板三指上滑返回桌面，三指下滑恢复应用窗口。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
 <!-- @[touchPadOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/TouchPadOp.test.ets) -->
 
-  ```TypeScript
-  import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
-  // 导入测试依赖kit
-  import { Driver, UiDirection } from '@kit.TestKit';
-  // Error code when the device is not supported.
-  const DeviceErrorCode = 17000005;
+``` TypeScript
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
+// 导入测试依赖kit
+import { Driver, UiDirection } from '@kit.TestKit';
 
-  export default function abilityTest() {
-    describe('touchPadOp_sample', () => {
-      // PC/2in1场景，模拟触摸板三指上滑（界面返回桌面），三指下滑（界面恢复窗口）操作
-      it('touchPadOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-        let driver = Driver.create();
-        try {
-          // 触摸板三指上滑返回桌面。
-          await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
-          // 触摸板三指下滑恢复窗口
-          await driver.touchPadMultiFingerSwipe(3, UiDirection.DOWN);
-        } catch (error) {
-          // 在不支持触摸板操作的设备上调用时，将抛出17000005错误码
-          expect(error.code).assertEqual(DeviceErrorCode);
-        }
-      })
+// 设备不支持时的错误代码
+const DeviceErrorCode = 17000005;
+
+export default function abilityTest() {
+  describe('touchPadOp_sample', () => {
+    // PC/2in1场景，模拟触摸板三指上滑（界面返回桌面），三指下滑（界面恢复窗口）操作
+    it('touchPadOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      try {
+        // 触摸板三指上滑返回桌面
+        await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
+        // 触摸板三指下滑恢复窗口
+        await driver.touchPadMultiFingerSwipe(3, UiDirection.DOWN);
+      } catch (error) {
+        // 在不支持触摸板操作的设备上调用时，将抛出17000005错误码
+        expect(error.code).assertEqual(DeviceErrorCode);
+      }
     })
-  }
-
-  ```
+  })
+}
+```
 
 ### 模拟手写笔操作
 如下给出手写笔模拟操作，包括点击、滑动等操作的示例，支持设置操作时的压力值大小。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
@@ -534,31 +536,32 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 
 <!-- @[watchOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/WatchOp.test.ets) -->
 
-  ```TypeScript
-  import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
-  // 导入测试依赖kit
-  import { Driver } from '@kit.TestKit';
-  // Error code when the device is not supported.
-  const CapabilityCode = 801;
+``` TypeScript
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
+// 导入测试依赖kit
+import { Driver } from '@kit.TestKit';
 
-  export default function abilityTest() {
-    describe('watchOp_sample', () => {
-      // 手表场景，模拟表冠顺/逆时针旋转
-      it('crownRotate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-        let driver = Driver.create();
-        try {
-          // 顺时针旋转50格，旋转速度为30格/秒
-          await driver.crownRotate(50, 30);
-          // 逆时针旋转20格，旋转速度为30格/秒
-          await driver.crownRotate(-20, 30);
-        } catch (error) {
-          // driver.crownRotate接口仅在智能表设备上生效，其他设备调用时将抛出801错误码
-          expect(error.code).assertEqual(CapabilityCode);
-        }
-      })
+// 设备不支持时的错误代码
+const CapabilityCode = 801;
+
+export default function abilityTest() {
+  describe('watchOp_sample', () => {
+    // 手表场景，模拟表冠顺/逆时针旋转，从API version 20开始支持
+    it('crownRotate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      try {
+        // 顺时针旋转50格，旋转速度为30格/秒
+        await driver.crownRotate(50, 30);
+        // 逆时针旋转20格，旋转速度为30格/秒
+        await driver.crownRotate(-20, 30);
+      } catch (error) {
+        // driver.crownRotate接口仅在智能表设备上生效，其他设备调用时将抛出801错误码
+        expect(error.code).assertEqual(CapabilityCode);
+      }
     })
-  }
-  ```
+  })
+}
+```
 
 ### 屏幕显示操作
 如下给出屏幕显示操作的示例，包括获取屏幕大小、分辨率等属性和屏幕唤醒、屏幕旋转等操作。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
