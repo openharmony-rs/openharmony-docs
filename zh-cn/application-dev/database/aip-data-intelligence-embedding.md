@@ -62,10 +62,10 @@
 1. 导入模块。
 
    <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-  
+
 2. 获取文本嵌入模型。
    调用getTextEmbeddingModel方法，获取文本嵌入模型。示例代码如下所示：
- 
+
    <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    <!-- @[aip_getTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
 
@@ -78,40 +78,39 @@
    调用splitText方法，获取文本的分块结果。示例代码如下所示：
 
    <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-  
+
 5. 获取给定文本的嵌入向量。给定的文本数据可以是单个文本或文本集合。
    调用getEmbedding方法，获取给定单个文本或文本集合的嵌入向量。示例代码如下所示：
 
    <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-  
+
 6. 释放文本嵌入模型。
    调用releaseModel方法，释放文本嵌入模型。示例代码如下所示：
 
    <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-  
+
 ## 图像向量化开发步骤
 
 1. 导入模块。
 
    <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-  
+
 2. 获取图像嵌入模型。
    调用getImageEmbeddingModel方法，获取图像嵌入模型。示例代码如下所示：
 
    <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-  
    <!-- @[aip_getImageEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-  
+
 3. 加载图像嵌入模型。
    调用loadModel方法，加载图像嵌入模型。示例代码如下所示：
 
    <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-  
+
 4. 获取给定图像的嵌入向量。
    调用getEmbedding方法，获取给定图像的嵌入向量。示例代码如下所示：
 
    <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-  
+
 5. 释放图像嵌入模型。
    调用releaseModel方法，释放图像嵌入模型。示例代码如下所示：
 
