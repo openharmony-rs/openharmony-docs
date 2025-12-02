@@ -3211,7 +3211,7 @@ on\(type: 'callEventChange', callback: Callback\<CallEventOptions\>\): void
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 22
 
@@ -3409,7 +3409,7 @@ off\(type: 'callEventChange', callback?: Callback\<CallEventOptions\>\): void
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 22
 
@@ -7037,7 +7037,7 @@ call.sendCallUiEvent(callId, 'eventName').then(() => {
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 |        名称              | 类型                               | 必填 | 说明                                                                                             |
 | ------------------------ | ---------------------------------- | ---- | ----------------------------------------------------------------------------------------------- |
@@ -7056,7 +7056,7 @@ call.sendCallUiEvent(callId, 'eventName').then(() => {
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 |        名称              | 类型                               | 只读 | 可选 | 说明                                         |
 | ------------------------ | ---------------------------------- | ---- | ------------------------------------------- |
@@ -8764,15 +8764,15 @@ onCallDetailsChange(callback: Callback\<CallAttributeOptions>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是on('callDetailsChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是on('callDetailsChange')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                       |必填 |说明                                                |
@@ -8824,15 +8824,15 @@ offCallDetailsChange(callback?: Callback\<CallAttributeOptions>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是off('callDetailsChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是off('callDetailsChange')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                       |必填 |说明                                           |
@@ -8885,15 +8885,15 @@ onCallEventChange(callback: Callback\<CallEventOptions>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是on('CallEventChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是on('CallEventChange')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                       |必填 |说明                                               |
@@ -8945,15 +8945,15 @@ offCallEventChange(callback?: Callback\<CallEventOptions>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是off('CallEventChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是off('CallEventChange')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                               |必填 |说明                                            |
@@ -9005,15 +9005,15 @@ onCallDisconnectedCause(callback: Callback\<DisconnectedDetails>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是on('CallDisconnectedCause')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是on('CallDisconnectedCause')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                       |必填 |说明                                               |
@@ -9065,15 +9065,15 @@ offCallDisconnectedCause(callback?: Callback\<DisconnectedDetails>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是off('CallDisconnectedCause')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是off('CallDisconnectedCause')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                       |必填 |说明                                           |
@@ -9125,15 +9125,15 @@ onMmiCodeResult(callback: Callback\<MmiCodeResults>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是on('MmiCodeResult')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是on('MmiCodeResult')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                           |必填 |说明                                            |
@@ -9185,15 +9185,15 @@ offMmiCodeResult(callback?: Callback\<MmiCodeResults>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是off('MmiCodeResult')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是off('MmiCodeResult')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                               |必填 |说明                                           |
@@ -9245,15 +9245,15 @@ onAudioDeviceChange(callback: Callback\<AudioDeviceCallbackInfo>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是on('AudioDeviceChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是on('AudioDeviceChange')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                              |必填 |说明                                             |
@@ -9305,15 +9305,15 @@ offAudioDeviceChange(callback?: Callback\<AudioDeviceCallbackInfo>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是off('AudioDeviceChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是off('AudioDeviceChange')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                               |必填 |说明                                           |
@@ -9366,15 +9366,15 @@ onPostDialDelay(callback: Callback\<string>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是on('PostDialDelay')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是on('PostDialDelay')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                         |必填 |说明                                             |
@@ -9426,15 +9426,15 @@ offPostDialDelay(callback?: Callback\<string>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是off('PostDialDelay')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是off('PostDialDelay')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                         |必填 |说明                                           |
@@ -9486,15 +9486,15 @@ onCallEventChange(callback: Callback\<CallEventOptions>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是on('ImsCallModeChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是on('ImsCallModeChange')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                         |必填 |说明                                                |
@@ -9545,15 +9545,15 @@ offCallEventChange(callback?: Callback\<CallEventOptions>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是off('ImsCallModeChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是off('ImsCallModeChange')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                         |必填 |说明                                           |
@@ -9604,15 +9604,15 @@ onCallSessionEvent(callback: Callback\<CallSessionEvent>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是on('CallSessionEvent')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是on('CallSessionEvent')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                |必填 |说明                                                |
@@ -9663,15 +9663,15 @@ offCallSessionEvent(callback?: Callback\<CallSessionEvent>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是off('CallSessionEvent')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是off('CallSessionEvent')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                |必填 |说明                                            |
@@ -9723,15 +9723,15 @@ onPeerDimensionsChange(callback: Callback\<PeerDimensionsDetail>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是on('PeerDimensionsChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是on('PeerDimensionsChange')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                        |必填 |说明                                                   |
@@ -9782,15 +9782,15 @@ offPeerDimensionsChange(callback?: Callback\<PeerDimensionsDetail>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是off('PeerDimensionsChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是off('PeerDimensionsChange')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                        |必填 |说明                                            |
@@ -9841,15 +9841,15 @@ onCameraCapabilitiesChange(callback: Callback\<CameraCapabilities>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是on('CameraCapabilitiesChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是on('CameraCapabilitiesChange')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                    |必填 |说明                                                   |
@@ -9900,15 +9900,15 @@ offCameraCapabilitiesChange(callback?: Callback\<CameraCapabilities>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：**ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：**该接口对应的ArkTS-Dyn接口是off('CameraCapabilitiesChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是off('CameraCapabilitiesChange')。
 
-**系统能力：**SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：**22
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                        |必填 |说明                                            |
