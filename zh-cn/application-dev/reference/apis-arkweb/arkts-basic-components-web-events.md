@@ -4843,7 +4843,7 @@ onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| callback | OnDetectBlankScreenCallback\<[BlankScreenDetectionEventInfo](./arkts-basic-components-web-i.md#blankscreendetectioneventinfo22)\> | 是    | 设置Web组件的检测到白屏时的回调函数。 |
+| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | 是    | 设置Web组件的检测到白屏时的回调函数。 |
 
 **示例：**
 
