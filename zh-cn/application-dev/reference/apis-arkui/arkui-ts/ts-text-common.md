@@ -185,7 +185,7 @@ ArkTS-Sta: getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, height
 | phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的电话号码跳转服务，拉起电话拨号页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的地址提供跳转服务，拉起地图应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的日期和时间提供跳转服务，拉起新建日程页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-
+| autoFill<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 自动填充。提供自动填充内容能力，仅支持[Search](ts-basic-components-search.md)/[TextInput](ts-basic-components-textinput.md)/[TextArea](ts-basic-components-textarea.md)/[RichEditor](ts-basic-components-richeditor.md)。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 23  <br/>**ArkTS-Sta起始版本：** 23|
 ### of
 
 static of(id: ResourceStr): TextMenuItemId

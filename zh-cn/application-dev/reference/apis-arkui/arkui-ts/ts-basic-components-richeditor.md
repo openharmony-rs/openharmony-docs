@@ -5435,7 +5435,9 @@ struct RichEditorExample {
       TextMenuItemId.TRANSLATE,
       TextMenuItemId.SHARE,
       TextMenuItemId.SEARCH,
-      TextMenuItemId.AI_WRITER
+      TextMenuItemId.AI_WRITER,
+      // 从API version 23开始支持TextMenuItemId.autoFill
+      TextMenuItemId.autoFill
     ]
     const items = menuItems.filter(item => !idsToFilter.some(id => id.equals(item.id)))
     let item1: TextMenuItem = {
