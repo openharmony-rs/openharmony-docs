@@ -394,8 +394,8 @@ RichEditor(this.options)
     return true;
   })
   .onDidChange((rangeBefore: TextRange, rangeAfter: TextRange) => {
-    this.infoShowController.addTextSpan('\n图文变化后，触发回调：\nrangeBefore：' + JSON.stringify(rangeBefore) +
-      '\nrangeAfter：' + JSON.stringify(rangeAfter), {
+    this.infoShowController.addTextSpan('\n图文变化后，触发回调：\nrangeBefore:' + JSON.stringify(rangeBefore) +
+      '\nrangeAfter:' + JSON.stringify(rangeAfter), {
       style: {
         fontColor: Color.Gray,
         fontSize: 10
