@@ -10,7 +10,7 @@
 
 提供与存储数据值相关的结构定义、函数和枚举。
 
-**引用文件：** <database/rdb/oh_data_values_buckets.h>
+**引用文件：** <database/data/oh_data_values_buckets.h>
 
 **库：** libnative_rdb_ndk.z.so
 
