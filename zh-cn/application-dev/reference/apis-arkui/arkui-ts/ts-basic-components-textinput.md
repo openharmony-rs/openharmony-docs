@@ -2645,6 +2645,11 @@ struct TextInputExample {
   @State endIndex: number = 0;
   onCreateMenu = (menuItems: Array<TextMenuItem>) => {
     // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+    // 从API version 23开始支持TextMenuItemId.autoFill
+    const idsToFilter: TextMenuItemId[] = [
+      TextMenuItemId.autoFill
+    ]
+    const items = menuItems.filter(item => !idsToFilter.some(id => id.equals(item.id)))
     let item1: TextMenuItem = {
       content: 'create1',
       icon: $r('app.media.startIcon'),
@@ -2655,9 +2660,9 @@ struct TextInputExample {
       id: TextMenuItemId.of('create2'),
       icon: $r('app.media.startIcon'),
     };
-    menuItems.push(item1);
-    menuItems.unshift(item2);
-    return menuItems;
+    items.push(item1);
+    items.unshift(item2);
+    return items;
   }
   onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
     if (menuItem.id.equals(TextMenuItemId.of("create2"))) {
