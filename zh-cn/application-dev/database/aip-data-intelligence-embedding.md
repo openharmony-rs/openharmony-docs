@@ -62,6 +62,11 @@
 1. 导入模块。
 
    <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { intelligence } from '@kit.ArkData';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   ```
 
 2. 获取文本嵌入模型。
    调用getTextEmbeddingModel方法，获取文本嵌入模型。示例代码如下所示：
