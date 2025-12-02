@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
-> 本模块首批接口从API version 14开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>- 本模块首批接口从API version 14开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口为系统接口。
 
@@ -20,6 +22,10 @@ import { Touch } from '@kit.InputKit';
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Core
 
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：22
+
 | 名称               | 类型                      | 只读 | 可选 | 说明             |
 | ------------------ | ------------------------- | ---- | ---- | ---------------- |
 | action | [TouchGestureAction](#touchgestureaction18) | 否   | 否   | 触摸屏手势类型。 |
@@ -30,6 +36,10 @@ import { Touch } from '@kit.InputKit';
 触摸屏手势类型。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Core
+
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：22
 
 | 名称            | 值  | 说明             |
 | --------------- | --- | --------------- |
