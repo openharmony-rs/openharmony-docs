@@ -36,7 +36,7 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
 | BundleStats属性 | 含义 | 统计路径 |
 | -------- | -------- | -------- |
 | appSize | 应用安装文件大小（单位为Byte） | 应用安装文件保存在以下目录：<br/>/data/storage/el1/bundle |
-| cacheSize | 应用缓存文件大小（单位为Byte） | 应用的缓存文件保存在以下目录：<br/>/data/storage/\${el1-el5}/base/cache<br/>/data/storage/\${el1-el5}/base/haps/\${moduleName}/cache<br/>/data/storage/el2/sharefiles/cache<br/>/data/storage/el2/sharefiles/haps/${moduleName}/cache<br/> **说明**：\${el1-el5}指的是[el1，el2，el3，el4，el5目录](./app-sandbox-directory.md#应用文件目录与应用文件路径)。\${moduleName}是模块名。 |
+| cacheSize | 应用缓存文件大小（单位为Byte） | 应用的缓存文件保存在以下目录：<br/>/data/storage/\${el1-el5}/base/cache<br/>/data/storage/\${el1-el5}/base/haps/\${moduleName}/cache<br/>**说明**：\${el1-el5}指的是[el1，el2，el3，el4，el5目录](./app-sandbox-directory.md#应用文件目录与应用文件路径)。\${moduleName}是模块名。 |
 | dataSize | 应用文件存储大小（除应用安装文件）（单位为Byte） | 应用文件通常由本地文件、分布式文件、数据库文件等部分组成。<br/>本地文件保存在以下目录（注意缓存文件目录为以下目录的子目录）：<br/>/data/storage/\${el1-el5}/base<br/>分布式文件保存在以下目录：<br/>/data/storage/el2/distributedfiles<br/>数据库文件保存在以下目录：<br/>/data/storage/\${el1-el5}/database<br/> **说明**：\${el1-el5}指的是[el1，el2，el3，el4，el5目录](./app-sandbox-directory.md#应用文件目录与应用文件路径)。 |
 
 ## 开发示例
@@ -49,7 +49,7 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   import { common } from '@kit.AbilityKit';
   
   ```
-  <!--@[storageStatistics_statfs_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->
+  <!--@[storageStatistics_statfs_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
 
 ``` TypeScript
       let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -70,7 +70,7 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-  <!--@[storageStatistics_getCurrentBundleStats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->
+  <!--@[storageStatistics_getCurrentBundleStats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
 
 ``` TypeScript
       storageStatistics.getCurrentBundleStats((err: BusinessError, bundleStats: storageStatistics.BundleStats) => {
@@ -89,7 +89,7 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-  <!--@[storageStatistics_getTotalSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->
+  <!--@[storageStatistics_getTotalSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
 
 ``` TypeScript
       storageStatistics.getTotalSize().then((number: number) => {
@@ -106,7 +106,7 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-  <!--@[storageStatistics_getTotalSizeSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->
+  <!--@[storageStatistics_getTotalSizeSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
 
 ``` TypeScript
     try {
@@ -125,7 +125,7 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-  <!--@[storageStatistics_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->
+  <!--@[storageStatistics_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
 
 ``` TypeScript
       storageStatistics.getFreeSize().then((number: number) => {
@@ -142,7 +142,7 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-  <!--@[storageStatistics_getFreeSizeSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->
+  <!--@[storageStatistics_getFreeSizeSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
 
 ``` TypeScript
       try {
