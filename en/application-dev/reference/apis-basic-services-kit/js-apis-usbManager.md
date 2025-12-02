@@ -1390,8 +1390,8 @@ Represents the USB configuration. One [USBDevice](#usbdevice) can contain multip
 | attributes     | number                                           | No| No|Configuration attributes.         |
 | maxPower       | number                                           | No| No|Maximum power consumption, in mA.   |
 | name           | string                                           | No| No|Configuration name, which can be left empty.    |
-| isRemoteWakeup | boolean                                          | No| No|Support for remote wakeup.|
-| isSelfPowered  | boolean                                          | No| No| Support for independent power supplies.|
+| isRemoteWakeup | boolean                                          | No| No|Whether remote wakeup is supported. The value **true** indicates that the remote wakeup is supported, and **false** indicates the opposite.|
+| isSelfPowered  | boolean                                          | No| No|Whether independent power supplies are supported. The value **true** indicates that independent power supplies are supported, and **false** indicates the opposite.|
 | interfaces     | Array&nbsp;&lt;[USBInterface](#usbinterface)&gt; | No| No|Supported interface attributes.     |
 
 ## USBDevice

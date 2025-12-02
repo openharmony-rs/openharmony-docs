@@ -1,7 +1,7 @@
 # 支持鼠标输入事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -56,14 +56,18 @@ struct MouseExample {
             this.buttonText = 'Button onMouse:\n' + '' +
               'button = ' + event.button + '\n' +
               'action = ' + event.action + '\n' +
-              'x,y = (' + event.x + ',' + event.y + ')' + '\n' +
-              'windowXY=(' + event.windowX + ',' + event.windowY + ')';
+              'x,y = ' + '\n' + '(' + event.x + ',' + event.y + ')' + '\n' +
+              'windowXY=' + '\n' + '(' + event.windowX + ',' + event.windowY + ')';
           }
         })
-      Divider()
-      Text(this.buttonText).fontColor(Color.Green)
-      Divider()
-      Text(this.columnText).fontColor(Color.Red)
+      Column() {
+        Divider()
+        Text(this.buttonText).fontColor(Color.Green).padding(5)
+        Divider()
+        Text(this.columnText).fontColor(Color.Red).padding(5)
+      }
+      .width('100%')
+      .alignItems(HorizontalAlign.Start)
     }
     .width('100%')
     .height('100%')
@@ -75,8 +79,8 @@ struct MouseExample {
         this.columnText = 'Column onMouse:\n' + '' +
           'button = ' + event.button + '\n' +
           'action = ' + event.action + '\n' +
-          'x,y = (' + event.x + ',' + event.y + ')' + '\n' +
-          'windowXY=(' + event.windowX + ',' + event.windowY + ')';
+          'x,y = ' + '\n' + '(' + event.x + ',' + event.y + ')' + '\n' +
+          'windowXY=' + '\n' + '(' + event.windowX + ',' + event.windowY + ')';
       }
     })
   }
@@ -85,7 +89,7 @@ struct MouseExample {
 
 上面的示例中给Button绑定onMouse接口。在回调中，打印出鼠标事件的button/action等回调参数值。同时，在外层的Column容器上，也做相同的设置。整个过程可以分为以下两个动作：
 
-1. 移动鼠标：当鼠标从Button外部移入Button的过程中，仅触发了Column的onMouse回调；当鼠标移入到Button内部后，由于onMouse事件默认是冒泡的，所以此时会同时响应Column的onMouse回调和Button的onMouse回调。此过程中，由于鼠标仅有移动动作没有点击动作，因此打印信息中的button均为0（MouseButton.None的枚举值）、action均为3（MouseAction.Move的枚举值）。
+1. 移动鼠标：在鼠标从Button外部移入Button内部前，仅触发了Column的onMouse回调；当鼠标移入到Button内部后，由于onMouse事件默认是冒泡的，所以此时会同时响应Column的onMouse回调和Button的onMouse回调。此过程中，由于鼠标仅有移动动作而没有点击动作，因此打印信息中的button均为0（MouseButton.None的枚举值）、action均为3（MouseAction.Move的枚举值）。
 
 2. 点击鼠标：鼠标进入Button后进行了2次点击，分别是左键点击和右键点击。
    左键点击时：button = 1（MouseButton.Left的枚举值），按下时：action = 1（MouseAction.Press的枚举值），抬起时：action = 2（MouseAction.Release的枚举值）。
@@ -123,10 +127,14 @@ struct MouseExample {
               'windowXY=' + '\n' + '(' + event.windowX + ',' + event.windowY + ')';
           }
         })
-      Divider()
-      Text(this.buttonText).fontColor(Color.Green)
-      Divider()
-      Text(this.columnText).fontColor(Color.Red)
+      Column() {
+        Divider()
+        Text(this.buttonText).fontColor(Color.Green).padding(5)
+        Divider()
+        Text(this.columnText).fontColor(Color.Red).padding(5)
+      }
+      .width('100%')
+      .alignItems(HorizontalAlign.Start)
     }
     .width('100%')
     .height('100%')
@@ -147,7 +155,7 @@ struct MouseExample {
 ```
 ![onMouse2](figures/onMouse_2.gif)
 
-在子组件（Button）的onMouse中，通过回调参数event调用stopPropagation回调方法（如下）即可阻止Button子组件的鼠标事件冒泡到父组件Column上。
+在子组件（Button）的onMouse中，通过回调参数event调用stopPropagation回调方法（如上）即可阻止Button子组件的鼠标事件冒泡到父组件Column上。
 
 ### onHover
 
@@ -293,9 +301,9 @@ struct ListExample {
           })
           .onMouse((event: MouseEvent) => {
             // 判断是否按下鼠标左键
-            if (event.button === MouseButton.Left && event.action === MouseAction.Press) {
-              // 判断之前是否已经时选中状态
-              let isSelected: boolean = this.isItemSelected(index);
+            if (event.button == MouseButton.Left && event.action == MouseAction.Press) {
+              // 判断之前是否已经是选中状态
+              let isSelected: boolean = this.isItemSelected(index)
               // 判断修饰键状态
               let isCtrlPressing: boolean = false;
               if (event.getModifierKeyState) {

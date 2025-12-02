@@ -150,9 +150,9 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 | 名称      | 值 | 说明           |
 | ------- | ---- | -------- |
-| NONE    | - | 全屏模态无转场动画。   |
-| DEFAULT | - | 全屏模态上下切换动画。  |
-| ALPHA   | - | 全屏模态透明度渐变动画。 |
+| DEFAULT | 0 | 全屏模态上下切换动画。  |
+| NONE    | 1 | 全屏模态无转场动画。   |
+| ALPHA   | 2 | 全屏模态透明度渐变动画。 |
 
 ## SheetType<sup>11+</sup>枚举说明
 

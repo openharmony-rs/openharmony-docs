@@ -1356,7 +1356,7 @@ Represents the progress information.
 
 | Name    | Type                                 | Read-Only| Optional| Description                                                            |
 | -------- |-------------------------------------| ---- | ---- |----------------------------------------------------------------|
-| progress | number                              | No  | No  | Progress of the drag task, in percentage. <br>The value is an integer ranging from -1 to 100. The value **-1** indicates a failure to obtain data, and the value **100** indicates data is obtained.|
+| progress | number                              | No  | No  | Progress of the drag task, in percentage. The value is an integer ranging from -1 to 100. The value **-1** indicates a failure to obtain data, and the value **100** indicates data is obtained.|
 | status | [ListenerStatus](#listenerstatus15) | No  | No  | Status code of the drag task reported by the system.                                                 |
 
 ## DataProgressListener<sup>15+</sup>

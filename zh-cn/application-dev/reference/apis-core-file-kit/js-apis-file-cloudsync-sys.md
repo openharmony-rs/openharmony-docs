@@ -199,6 +199,7 @@ start(): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let gallerySync = new cloudSync.GallerySync();
 
   gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
@@ -247,6 +248,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let gallerySync = new cloudSync.GallerySync();
 
   gallerySync.start((err: BusinessError) => {
@@ -294,6 +296,7 @@ stop(): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let gallerySync = new cloudSync.GallerySync();
 
   gallerySync.stop().then(() => {
@@ -339,6 +342,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let gallerySync = new cloudSync.GallerySync();
 
   gallerySync.stop((err: BusinessError) => {
@@ -523,6 +527,7 @@ start(uri: string): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let download = new cloudSync.Download();
   let uri: string = "file:///media/Photo/1";
 
@@ -584,6 +589,7 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let download = new cloudSync.Download();
   let uri: string = "file:///media/Photo/1";
 
@@ -638,6 +644,7 @@ stop(uri: string): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let download = new cloudSync.Download();
   let uri: string = "file:///media/Photo/1";
 
@@ -685,6 +692,7 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let download = new cloudSync.Download();
   let uri: string = "file:///media/Photo/1";
 
@@ -774,6 +782,7 @@ cleanCache(uri: string): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileUri } from '@kit.CoreFileKit';
+
   let fileCache = new cloudSync.CloudFileCache();
   let path = "/data/storage/el2/cloud/1.txt";
   let uri = fileUri.getUriFromPath(path);
@@ -932,6 +941,7 @@ getFileSyncState(uri: string): FileSyncState
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileUri } from '@kit.CoreFileKit';
+
   let path = "/data/storage/el2/cloud/1.txt";
   let uri = fileUri.getUriFromPath(path);
   try {
@@ -1045,6 +1055,7 @@ startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
   let callback = (data:cloudSync.OptimizeSpaceProgress) => {
     if (data.state == cloudSync.OptimizeState.FAILED) {
@@ -1089,6 +1100,7 @@ stopOptimizeSpace(): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
   let callback = (data:cloudSync.OptimizeSpaceProgress) => {
     if (data.state == cloudSync.OptimizeState.FAILED) {

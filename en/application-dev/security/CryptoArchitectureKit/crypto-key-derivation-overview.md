@@ -28,7 +28,7 @@ When creating a **KDF** instance, you need to specify the algorithm specificatio
 ## HKDF
 
 HMAC-based Extract-and-Expand Key Derivation Function (HKDF) is a simple KDF based on an [HMAC](crypto-compute-hmac.md). It is used to expand limited input key material into a cryptographically strong secret key.
-
+This algorithm extracts keys from the input key material and salt value, and expands keys based on the input key material and extension information.
 The HKDF has three modes:
 
 - **EXTRACT_ONLY**: generates a pseudorandom key (PRK) from the input key material (IKM) and an optional salt.

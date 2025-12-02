@@ -4,7 +4,7 @@
 <!--Owner: @zju_ljz-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 ## Overview
@@ -27,9 +27,9 @@ The [GridRow](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md) componen
 
 ### Breakpoints
 
-**GridRow** defines breakpoints, which are screen width types in effect, based on the horizontal width ([screen density pixels](../reference/apis-arkui/arkui-ts/ts-pixel-units.md), in vp) of the screens. You can use the breakpoints to meet specific layout requirements.
+**GridRow** defines breakpoints, which are screen width types in effect, based on screen width ([screen density pixels](../reference/apis-arkui/arkui-ts/ts-pixel-units.md), in vp). You can use the breakpoints to meet specific layout requirements.
 
-By default, the grid container divides the device width into four types: xs, sm, md, and lg. The size ranges are as follows:
+By default, devices are categorized into four breakpoints.
 
 | Breakpoint| Value Range (vp)       | Device Description     |
 | ---- | --------------- | --------- |
@@ -38,7 +38,7 @@ By default, the grid container divides the device width into four types: xs, sm,
 | md   | [600, 840) | Medium-width device.|
 | lg   | [840, +∞)  | Large-width device. |
 
-In the GridRow component, you can use [BreakPoints](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#breakpoints) to customize the breakpoint value range. A maximum of six breakpoints are supported. In addition to the default four breakpoints, the xl and xxl breakpoints can be enabled. The layout of six devices (xs, sm, md, lg, xl, and xxl) can be set.
+You can customize breakpoints using the [BreakPoints](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#breakpoints) parameter, supporting up to six breakpoints: xs, sm, md, lg, xl, and xxl.
 
 | Breakpoint| Device Description     |
 | ---- | --------- |
@@ -49,9 +49,9 @@ In the GridRow component, you can use [BreakPoints](../reference/apis-arkui/arku
 | xl   | Extra-large-width device.|
 | xxl  | Extra-extra-large-width device.|
 
-- You can set the breakpoint position using a monotonically increasing array based on the actual application scenario. By default, the grid container supports four breakpoints. If no breakpoint position is set, the monotonically increasing array configured for the default breakpoints is ["320vp", "600vp", "840vp"]. You can use [BreakPoints](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#breakpoints) to support a maximum of six breakpoints. Therefore, the maximum length of the monotonically increasing array is 5.
+- You can configure breakpoints using a monotonically increasing array based on your application's requirements. By default, the **GridRow** container supports four breakpoints. If no custom breakpoints are specified, the default array is ["320vp", "600vp", "840vp"]. Using the [BreakPoints](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#breakpoints) parameter, you can support up to six breakpoints, with a maximum array length of 5.
 
-  If the input array is [n0, n1, n2, n3, n4], the values of each breakpoint are as follows:
+  If you provide an array [n0, n1, n2, n3, n4], the breakpoint ranges are calculated as follows.
 
   |Breakpoint|Value Range|
   |---|-----------|
@@ -63,14 +63,14 @@ In the GridRow component, you can use [BreakPoints](../reference/apis-arkui/arku
   |xxl|[n4, INF)  |
 
   ```ts
-  breakpoints: {value: ['100vp', '200vp']} // xs, sm, and md breakpoints are used. If the value is less than 100vp, the xs breakpoint is used. If the value is greater than 100vp and less than 200vp, the sm breakpoint is used. If the value is greater than 200vp, the md breakpoint is used.
-  breakpoints: {value: ['320vp', '600vp']} // xs, sm, and md breakpoints are used. If the value is less than 320vp, the xs breakpoint is used. If the value is greater than 320vp and less than 600vp, the sm breakpoint is used. If the value is greater than 600vp, the md breakpoint is used.
-  breakpoints: {value: ['320vp', '600vp', '840vp', '1440vp']} // Five breakpoints are used, which are xs, sm, md, lg, and xl. If the window width is less than 320 vp, the xs breakpoint is used. If the window width is between 320 vp and 600 vp, the sm breakpoint is used. If the window width is between 600 vp and 840 vp, the md breakpoint is used. If the window width is between 840 vp and 1440 vp, the lg breakpoint is used. If the window width is greater than 1440 vp, the xl breakpoint is used.
+  breakpoints: {value: ['100vp', '200vp']} // Three breakpoints: xs, sm, md. < 100 vp: xs breakpoint. 100–200 vp: sm breakpoint. > 200 vp: md breakpoint.
+  breakpoints: {value: ['320vp', '600vp']} // Three breakpoints: xs, sm, md. < 320 vp: xs breakpoint. 320–600 vp: sm breakpoint. > 600 vp: md breakpoint.
+  breakpoints: {value: ['320vp', '600vp', '840vp', '1440vp']} // Five breakpoints: xs, sm, md, lg, xl. < 320 vp: xs breakpoint. 320–600 vp: sm breakpoint. 600–840 vp: md breakpoint. 840–1440 vp: lg breakpoint. > 1440 vp: xl breakpoint.
   ```
 
-- The grid container listens to the size change of the window or container to determine breakpoints. reference is used to set the reference object for breakpoint switching. Since the application may be displayed in non-full-screen mode, it is better to design the breakpoints with the application window width as the reference.
+- The **GridRow** container implements breakpoints by listening for the changes in the window or container size, and sets the breakpoint references through **reference**. Since the application may be displayed in non-full-screen mode, it is better to design the breakpoints with the application window width as the reference.
 
-  For example, you can set breakpoints to divide the application width into six ranges, and set columns to configure the number of columns in the grid container at each breakpoint.
+  For example, you can define breakpoints to divide the application width into six ranges, and configure **columns** to specify the number of columns in the container for each breakpoint range.
 
 
   ```ts
@@ -84,20 +84,20 @@ In the GridRow component, you can use [BreakPoints](../reference/apis-arkui/arku
     build() {
       GridRow({
         columns: {
-          xs: 2, // If the window width is within the xs breakpoint range, the grid container is divided into two columns.
-          sm: 4, // If the window width is within the sm breakpoint range, the grid container is divided into four columns.
-          md: 8, // If the window width is within the md breakpoint range, the grid container is divided into eight columns.
-          lg: 12, // If the window width is within the lg breakpoint range, the grid container is divided into 12 columns.
-          xl: 12, // If the window width is within the xl breakpoint range, the grid container is divided into 12 columns.
-          xxl: 12 // If the window width is within the xxl breakpoint range, the grid container is divided into 12 columns.
+          xs: 2, // 2 columns for xs devices
+          sm: 4, // 4 columns for sm devices
+          md: 8, // 8 columns for md devices
+          lg: 12, // 12 columns for lg devices
+          xl: 12, // 12 columns for xl devices
+          xxl: 12 // 12 columns for xxl devices
         },
         breakpoints: {
-          value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'], // Default breakpoints ['320vp', '600vp', '840vp'] are retained, and breakpoints '1440vp' and '1600vp' are added. In actual development, you need to set breakpoint values based on the actual application scenario to implement multi-device adaptation with one-time development.
+          value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'], // Add custom breakpoints '1440vp' and '1600vp' while retaining default breakpoints ['320vp', '600vp', '840vp']. In practice, set breakpoint values based on actual usage scenarios to achieve one-time development for multi-device deployment.
           reference: BreakpointsReference.WindowSize
         }
       }) {
         ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined) => {
-          GridCol({ span: 1 }) { // All child components occupy one column.
+          GridCol({ span: 1 }) { // All child components span 1 column.
             Row() {
               Text(`${index}`)
             }.width("100%").height('50vp')
@@ -113,10 +113,10 @@ In the GridRow component, you can use [BreakPoints](../reference/apis-arkui/arku
 
 ### Columns
 
-In the **GridRow**, **columns** is used to set the total number of columns in the responsive grid layout.
+The **columns** attribute defines the total number of columns in the **GridRow** container.
 
-- Before API version 20, the default value of columns is 12. That is, if columns is not set, the grid layout is divided into 12 columns at any breakpoint.
-- For API version 20 and later, the default value of columns is { xs: 2, sm: 4, md: 8, lg: 12, xl: 12, xxl: 12 }.
+- Before API version 20, the default value of **columns** is 12. If **columns** is not set, the responsive grid layout is divided into 12 columns at any breakpoint.
+- Since API version 20, the default value of **columns** is { xs: 2, sm: 4, md: 8, lg: 12, xl: 12, xxl: 12 }.
 
 
   ```ts
@@ -141,17 +141,17 @@ In the **GridRow**, **columns** is used to set the total number of columns in th
   }
   ```
 
-    Layout display before API version 20:
+    Below shows the layout display before API version 20.
 
     ![en-us_image_0000001563060709](figures/en-us_image_0000001563060709.png)
     
-    Layout display in API version 20 or later (using the SM device as an example, the default number of columns is 4):
+    Below shows the layout display since API version 20, using the sm device as an example where the default number of columns is 4.
     
     ![en-us_image_0000001563060710](figures/en-us_image_0000001563060710.png)
 
 
-The columns attribute supports two types: number and [GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption). You can set the total number of columns in the grid layout in either of the following ways:
-- When the columns attribute is set to number, the grid layout is divided into the same number of columns on devices of any size. The following figures show the effect of setting the number of columns in the grid layout to 4 and 8, respectively, and the subelements occupy one column.
+The **columns** attribute supports two data types: number and [GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption). You can configure the total number of responsive grid columns using either approach:
+- When **columns** is set to a number, the grid maintains the same number of columns across all device sizes. The following figures demonstrate the layout effects when the grid is configured with 4 and 8 columns respectively, with each child component spanning one column.
 
   ```ts
   // xxx.ets
@@ -213,7 +213,7 @@ The columns attribute supports two types: number and [GridRowColumnOption](../re
 
     ![en-us_image_0000001511421268](figures/en-us_image_0000001511421268.png)
 
-- When columns is set to [GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption), the number of grid columns can be set for devices of the following six sizes (xs, sm, md, lg, xl, and xxl). You can configure different numbers of grid columns for devices of different sizes.
+- When **columns** is set to [GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption), you can configure the number of grid columns for each of the six device sizes (xs, sm, md, lg, xl, and xxl).
 
   ```ts
   // xxx.ets
@@ -243,15 +243,15 @@ The columns attribute supports two types: number and [GridRowColumnOption](../re
     }
   }
   ```
-    Layout display before API version 20 (if the number of grid columns is not configured for xs devices, the default number of columns 12 is used):
+    Layout behavior before API version 20: If the number of grid columns is not configured for xs devices, the default value of 12 columns is used.
 
     ![en-us_image_0000001563060689](figures/en-us_image_0000001563060689.gif)
 
-    Layout display in API version 20 and later (xs devices inherit the number of grid columns of sm devices):
+    Layout behavior since API version 20: xs devices inherit the number of grid columns from sm devices.
 
     ![en-us_image_0000001563060689](figures/en-us_image_0000001563060690.gif)
 
-  If the number of grid columns is set only for sm and md devices, the default values are used for xs, lg, xl, and xxl devices according to [Grid Column Number Completion](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption).
+  If only the grid column numbers for sm and md devices are configured, the xs, lg, xl, and xxl devices will use default values based on the [grid column number completion rules](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption).
 
 
 ### Alignment
@@ -302,7 +302,7 @@ In the **GridRow** component, **gutter** is used to set the spacing between adja
 
 ## GridCol
 
-The **\GridCol** component is a child component of the **GridRow** component. You can set the **span**, **offset**, and **order** attributes of this component by passing parameters or using setters.
+The **GridCol** component is a child component of the **GridRow** component. You can set the **span**, **offset**, and **order** attributes of this component by passing parameters or using setters.
 
 - Setting **span**
 
@@ -341,8 +341,8 @@ The **\GridCol** component is a child component of the **GridRow** component. Yo
 
 Sets the number of columns occupied by a child component in the grid layout, which determines the child component width. The default value is **1**.
 
-The span can be of the number or [GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption) type. You can set the number of columns occupied by a child component in the grid container in either of the following ways:
-- When the value type is number, the number of columns occupied by the child component is the same across screen sizes.
+The **span** attribute supports two data types: number and [GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption). You can configure the column span in the following ways:
+- When **span** is set to a number, the child component occupies the same number of columns across all screen sizes.
 
 
     ```ts
@@ -369,7 +369,7 @@ The span can be of the number or [GridColColumnOption](../reference/apis-arkui/a
 
     ![en-us_image_0000001511421264](figures/en-us_image_0000001511421264.png)
 
-- When span is set to GridColColumnOption, the number of columns occupied by child components can be set on devices of six different sizes (xs, sm, md, lg, xl, and xxl). Child components can be configured with different numbers of columns on devices of different sizes. If the number of columns is set only for sm and md, the default values are used for xs, lg, xl, and xxl devices according to GridColColumnOption.
+- When **span** is set to the **GridColColumnOption** type, you can configure different column spans for the six device sizes (xs, sm, md, lg, xl, and xxl). If column spans are only specified for certain breakpoints (for example, sm and md), the remaining breakpoints (xs, lg, xl, and xxl) will use default values based on the [GridColColumnOption completion rules](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption).
 
 
     ```ts
@@ -401,7 +401,7 @@ The span can be of the number or [GridColColumnOption](../reference/apis-arkui/a
 
 Sets the column offset of a child component relative to the previous child component. The default value is **0**.
 
-- When the value type is number, the column offset of the child component is the same across screen sizes.
+- When **offset** is set to a number, the column offset remains consistent across all screen sizes.
 
 
     ```ts
@@ -428,9 +428,9 @@ Sets the column offset of a child component relative to the previous child compo
 
     ![en-us_image_0000001563060705](figures/en-us_image_0000001563060705.png)
 
-  A grid is divided into 12 columns. Each child component occupies one column and is offset by two columns. Each child component and spacing occupy three columns. Four child components are placed in one row.
+  In this example, the grid is divided into 12 columns. Each child component occupies one column with a two-column offset, resulting in each component and its spacing occupying three columns in total. Four child components fit within a single row.
 
-- When the value type is **GridColColumnOption**, you can assign values specific to the screen size (xs, sm, md, lg, xl, xxl).
+- When **offset** is set to the **GridColColumnOption** type, you can configure different offset values for specific screen sizes (xs, sm, md, lg, xl, xxl).
 
 
     ```ts
@@ -462,11 +462,11 @@ Sets the column offset of a child component relative to the previous child compo
 
 ### order
 
-Sets the sequence number of a child component in the grid layout. If a child component shares an **order** value with another child component or does not have **order** set, it is displayed based on its code sequence number. A child component with a smaller **order** value is placed before the one with a larger **order** value.
+Sets the display sequence number of a child component in the grid layout. When multiple components share the same **order** value or have no order set, they are displayed according to their code sequence. Components with smaller **order** values appear before those with larger values. 
 
-If **order** is not set for all child components, those that have **order** set are displayed after those that do not have **order** set and are sorted in ascending order based on the value.
+If **order** is set for only some child components, those with explicit **order** values are displayed after unordered components and sorted in ascending order.
 
-- When the value type is number, child components are sorted in the same order across screen sizes.
+- When **order** is set to a number, components maintain the same display sequence across all screen sizes.
 
 
     ```ts
@@ -496,31 +496,48 @@ If **order** is not set for all child components, those that have **order** set 
 
     ![en-us_image_0000001511580892](figures/en-us_image_0000001511580892.png)
 
-- When the value type is **GridColColumnOption**, you can assign values specific to the screen size (xs, sm, md, lg, xl, xxl). You can set 1234 for xs, 2341 for sm, 3412 for md, and 2431 for lg.
+- When **order** is set to the **GridColColumnOption** type, you can configure different display sequences for specific screen sizes (xs, sm, md, lg, xl, xxl). For example, you can define sequence 1234 for xs devices, 2341 for sm devices, 3412 for md devices, and 2431 for lg devices.
 
 
     ```ts
-    GridRow({ columns: 12 }) {
-      GridCol({ order: { xs:1, sm:5, md:3, lg:7}, span: 1 }) {
-        Row() {
-          Text('1')
-        }.width('100%').height('50vp')
-      }.backgroundColor(Color.Red)
-      GridCol({ order: { xs:2, sm:2, md:6, lg:1}, span:1 }) {
-        Row() {
-          Text('2')
-        }.width('100%').height('50vp')
-      }.backgroundColor(Color.Orange)
-      GridCol({ order: { xs:3, sm:3, md:1, lg:6}, span:1 }) {
-        Row() {
-          Text('3')
-        }.width('100%').height('50vp')
-      }.backgroundColor(Color.Yellow)
-      GridCol({ order: { xs:4, sm:4, md:2, lg:5}, span:1 }) {
-        Row() {
-          Text('4')
-        }.width('100%').height('50vp')
-      }.backgroundColor(Color.Green)
+    @Entry
+    @Component
+    struct GridRowExample {
+      @State currentBp: string = "unknown"
+
+      build() {
+        Column({ space: 5 }) {
+          GridRow({ columns: 12 }) {
+            GridCol({ order: { xs:1, sm:5, md:3, lg:7}, span: 1 }) {
+              Row() {
+                Text('1')
+              }.width('100%').height('50vp')
+            }.backgroundColor('rgb(213,213,213)')
+
+            GridCol({ order: { xs:2, sm:2, md:6, lg:1}, span:1 }) {
+              Row() {
+                Text('2')
+              }.width('100%').height('50vp')
+            }.backgroundColor('rgb(150,150,150)')
+
+            GridCol({ order: { xs:3, sm:3, md:1, lg:6}, span:1 }) {
+              Row() {
+                Text('3')
+              }.width('100%').height('50vp')
+            }.backgroundColor('rgb(0,74,175)')
+
+            GridCol({ order: { xs:4, sm:4, md:2, lg:5}, span:1 }) {
+              Row() {
+                Text('4')
+              }.width('100%').height('50vp')
+            }.backgroundColor('rgb(39,135,217)')
+          }.border({ width: 1, color: 'rgb(39,135,217)' }).height('200vp').onBreakpointChange((breakpoint) => {
+            this.currentBp = breakpoint
+          })
+
+          Text(this.currentBp)
+        }
+      }
     }
     ```
 
@@ -531,7 +548,7 @@ If **order** is not set for all child components, those that have **order** set 
 
 Responsive grid components can be contained in other responsive grid components.
 
-In the following example, the responsive grid divides the entire space into 12 parts. At the first layer, **\GridCol** is nested in **GridRow**, and the space is divided into the large area in the center and the footer area. At the second layer, **\GridCol** is nested in **GridRow**, and the space is divided into the left and right areas. The child components take up the space allocated by the parent component at the upper layer. In this example, the pink area is made up of 12 columns of the screen space, and the green and blue areas take up the 12 columns of the parent component proportionally.
+In the following example, the responsive grid divides the entire space into 12 parts. At the first layer, **GridCol** is nested in **GridRow**, and the space is divided into the large area in the center and the footer area. At the second layer, **GridCol** is nested in **GridRow**, and the space is divided into the left and right areas. The child components take up the space allocated by the parent component at the upper layer. In this example, the pink area is made up of 12 columns of the screen space, and the green and blue areas take up the 12 columns of the parent component proportionally.
 
 ```ts
 @Entry

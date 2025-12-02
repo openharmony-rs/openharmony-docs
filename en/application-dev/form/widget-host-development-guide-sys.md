@@ -8,7 +8,7 @@ A widget usually appears as a part of the UI of another application (which curre
 
 - Before you get started, it would be helpful if you have a basic understanding of the following concepts:
 
-  - Widget provider: an atomic service that controls the widget content to display, how widget components are laid out, and how they interact with users.
+  - Widget provider: an atomic service that provides the widget content to display and controls how widget components are laid out and how they interact with users.
   
   - Widget host: an application that displays the widget content and controls the widget location.
   
@@ -35,7 +35,7 @@ Carry out the following operations to develop the widget host based on the stage
 >
 > - To use this component, you must have the system signature.
 >
-> - The APIs provided by this component are system APIs.
+> - The APIs provided by this module are system APIs.
 
 When a widget is added through **FormComponent**, the [onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform) API in **FormExtensionAbility** of the widget provider is called.
 
@@ -476,3 +476,4 @@ struct formHostSample {
 ```
 
 ![screenshot](./figures/widget-host-development-guide-2.jpeg)
+

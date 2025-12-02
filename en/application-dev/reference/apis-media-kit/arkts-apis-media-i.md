@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -220,14 +220,14 @@ Describes the video transcoding parameters.
 
 | Name           | Type                                   | Read-Only| Optional| Description                                                        |
 | --------------- | ---------------------------------------- |---- | ---- | ------------------------------------------------------------ |
-| audioBitrate | number     | No| Yes| Bit rate of the output audio, in bit/s. The value range is [1, 500000]. The default value is 48 kbit/s. |
-| audioCodec | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | No| Yes | Encoding format of the output audio. Currently, only AAC is supported. The default value is **AAC**. |
-| fileFormat         | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | No| No  | Container format of the output video file. Currently, only MP4 is supported. |
-| videoBitrate         | number | No|  Yes | Bit rate of the output video, in bit/s. The default bit rate depends on the resolution of the output video. The default bit rate is 1 Mbit/s for the resolution in the range [240p, 480P], 2 Mbit/s for the range (480P, 720P], 4 Mbit/s for the range (720P, 1080P], and 8 Mbit/s for 1080p or higher. |
-| videoCodec        | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | No| Yes  | Encoding format of the output video. Currently, only AVC and HEVC are supported. If the source video is in HEVC format, the default value is **HEVC**. Otherwise, the default value is **AVC**. |
-| videoFrameWidth        | number | No|  Yes  | Width of the output video frame, in px. The value range is [240, 3840]. The default value is the width of the source video frame. |
-| videoFrameHeight        | number | No|  Yes  | Height of the output video frame, in px. The value range is [240, 2160]. The default value is the height of the source video frame. |
-| enableBFrame<sup>20+</sup> | boolean | No|  Yes  | Whether B-frame encoding is enabled for transcoding. **true** if enabled, **false** otherwise.<br>For details about the restrictions on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints). If the current environment does not meet these constraints, B-frames will be skipped, and encoding will proceed as if B-frame video encoding were not enabled. |
+| audioBitrate | number     | No| Yes| Bit rate of the output audio, in bit/s. The value range is [1, 500000]. The default value is 48 kbit/s.|
+| audioCodec | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | No| Yes | Encoding format of the output audio. Currently, only AAC is supported. The default value is **AAC**.|
+| fileFormat         | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | No| No  | Container format of the output video file. Currently, only MP4 is supported.|
+| videoBitrate         | number | No|  Yes | Bit rate of the output video, in bit/s. The default bit rate depends on the resolution of the output video. The default bit rate is 1 Mbit/s for the resolution in the range [240p, 480P], 2 Mbit/s for the range (480P, 720P], 4 Mbit/s for the range (720P, 1080P], and 8 Mbit/s for 1080p or higher.|
+| videoCodec        | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | No| Yes  | Encoding format of the output video. Currently, only AVC and HEVC are supported. If the source video is in HEVC format, the default value is **HEVC**. Otherwise, the default value is **AVC**.|
+| videoFrameWidth        | number | No|  Yes  | Width of the output video frame, in px. The value range is [240, 3840]. The default value is the width of the source video frame.|
+| videoFrameHeight        | number | No|  Yes  | Height of the output video frame, in px. The value range is [240, 2160]. The default value is the height of the source video frame.|
+| enableBFrame<sup>20+</sup> | boolean | No|  Yes  | Whether B-frame encoding is enabled for transcoding. **true** if enabled, **false** otherwise.<br>For details about the restrictions on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints). If the current environment does not meet these constraints, B-frames will be skipped, and encoding will proceed as if B-frame video encoding were not enabled.|
 
 
 ## AVMetadata<sup>11+</sup>
@@ -238,30 +238,30 @@ Defines the audio and video metadata.
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- |------------------------------------------------------------ |
-| album     | string | No| Yes| Title of the album. Currently, the AVRecorder does not support the setting of this property.    |
-| albumArtist | string | No| Yes| Artist of the album. Currently, the AVRecorder does not support the setting of this property.|
-| artist | string | No| Yes| Artist of the media asset. Currently, the AVRecorder does not support the setting of this property.|
-| author | string | No| Yes| Author of the media asset. Currently, the AVRecorder does not support the setting of this property.|
-| dateTime | string | No| Yes| Time when the media asset is created. Currently, the AVRecorder does not support the setting of this property.|
-| dateTimeFormat | string | No| Yes| Time when the media asset is created. The value is in the YYYY-MM-DD HH:mm:ss format. Currently, the AVRecorder does not support the setting of this property.|
-| composer | string | No| Yes| Composer of the media asset. Currently, the AVRecorder does not support the setting of this property.|
-| duration | string | No| Yes| Duration of the media asset. Currently, the AVRecorder does not support the setting of this property.|
+| album     | string | No| Yes| Title of the album. This property cannot be set for the AVRecorder.    |
+| albumArtist | string | No| Yes| Artist of the album. This property cannot be set for the AVRecorder.|
+| artist | string | No| Yes| Artist of the media asset. This property cannot be set for the AVRecorder.|
+| author | string | No| Yes| Author of the media asset. This property cannot be set for the AVRecorder.|
+| dateTime | string | No| Yes| Time when the media asset is created. This property cannot be set for the AVRecorder.|
+| dateTimeFormat | string | No| Yes| Time when the media asset is created. The value is in the YYYY-MM-DD HH:mm:ss format. This property cannot be set for the AVRecorder.|
+| composer | string | No| Yes| Composer of the media asset. This property cannot be set for the AVRecorder.|
+| duration | string | No| Yes| Duration of the media asset. This property cannot be set for the AVRecorder.|
 | genre | string | No| Yes| Type or genre of the media asset.|
-| hasAudio | string | No| Yes| Whether the media asset contains audio. Currently, the AVRecorder does not support the setting of this property.|
-| hasVideo | string | No| Yes| Whether the media asset contains a video. Currently, the AVRecorder does not support the setting of this property.|
-| mimeType | string | No| Yes| MIME type of the media asset. Currently, the AVRecorder does not support the setting of this property.|
-| trackCount | string | No| Yes| Number of tracks of the media asset. Currently, the AVRecorder does not support the setting of this property.|
-| sampleRate | string | No| Yes| Audio sample rate, in Hz. Currently, the AVRecorder does not support the setting of this property.|
-| title | string | No| Yes| Title of the media asset. This parameter is read-only in the current version. Currently, the AVRecorder does not support the setting of this property.|
-| videoHeight | string | No| Yes| Video height, in px. Currently, the AVRecorder does not support the setting of this property.|
-| videoWidth | string | No| Yes| Video width, in px. Currently, the AVRecorder does not support the setting of this property.|
+| hasAudio | string | No| Yes| Whether the media asset contains audio. This property cannot be set for the AVRecorder.|
+| hasVideo | string | No| Yes| Whether the media asset contains a video. This property cannot be set for the AVRecorder.|
+| mimeType | string | No| Yes| MIME type of the media asset. This property cannot be set for the AVRecorder.|
+| trackCount | string | No| Yes| Number of tracks of the media asset. This property cannot be set for the AVRecorder.|
+| sampleRate | string | No| Yes| Audio sample rate, in Hz. This property cannot be set for the AVRecorder.|
+| title | string | No| Yes| Title of the media asset. This parameter is read-only in the current version. This property cannot be set for the AVRecorder.|
+| videoHeight | string | No| Yes| Video height, in px. This property cannot be set for the AVRecorder.|
+| videoWidth | string | No| Yes| Video width, in px. This property cannot be set for the AVRecorder.|
 | videoOrientation | string | No| Yes| Video rotation direction, in degrees.|
-| hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | No| Yes| HDR type of the media asset. Currently, the AVRecorder does not support the setting of this property.|
+| hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | No| Yes| HDR type of the media asset. This property cannot be set for the AVRecorder.|
 | location<sup>12+</sup> | [Location](#location) | No| Yes| Geographical location of the media asset.|
 | customInfo<sup>12+</sup> | Record<string, string> | No| Yes| Custom key-value mappings obtained from **moov.meta.list**.|
-| tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | No| Yes| Track information of the media asset. Currently, the AVRecorder does not support the setting of this property.|
+| tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | No| Yes| Track information of the media asset. This property cannot be set for the AVRecorder.|
 
-### Description of MediaDescriptionKey supported by AVMetadata.tracks
+### MediaDescriptionKey Values Supported by AVMetadata.tracks
 
 The following table lists the values of [MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8) supported by AVMetadata.tracks.
 

@@ -7,7 +7,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-You can use [mediatool](#mediatool-1) or [hdc commands](#hdc-commands) to operate media library resources. The media library provides and manages data for the gallery. Images and videos in the media library are displayed on the gallery screen.
+You can use [mediatool](#mediatool-1) to operate media library resources. The media library provides and manages data for the gallery. Images and videos in the media library are displayed on the gallery screen.
 
 ## mediatool
 
@@ -314,7 +314,7 @@ uri
 
 ### Media Library URI Introduction and Obtaining Method
 
-The URI uniquely identifies a media library asset. Each URI corresponds to a media asset. mediatool uses the URI to determine the media asset object to be operated.
+The URI uniquely identifies a media library asset. mediatool uses the URI to determine the media asset object to be operated.
 
 To obtain the URI, perform the following steps:
 
@@ -331,94 +331,3 @@ The media library URI can be used in the **mediatool recv** command to export a 
 Example URI: **file://media/Photo/1/IMG_1743078145_000/MyImage.jpg**.
 
 When the preceding URIs are used during mediatool operations, the target asset can be correctly located regardless of whether **file://media/Photo/1/IMG_1743078145_000/MyImage.jpg** or **file://media/Photo/1** is used.
-
-## hdc Commands
-
-Since API version 20, the hdc command can be used to access media library file paths, including the **/mnt/data/\<uid\>/media_fuse/Photo/** directory and its subdirectories. **\<uid\>** indicates the ID of the current user.
-
-### Querying Media Library Files
-
-Images and videos that are not hidden in a specified path can be queried.
-
-Run the following command:
-
-```shell
-hdc shell ls -l DEST
-```
-
-**Use Example**
-
-```shell
-$ hdc shell ls -l /mnt/data/100/media_fuse/Photo # Return the album list.
-drwxrwxrwx 2 user_data_rw user_data_rw 3440 1970-01-01 00:00 Others
-drwxrwxrwx 2 user_data_rw user_data_rw 3440 1970-01-01 00:00 Camera
-
-$ hdc shell ls -l /mnt/data/100/media_fuse/Photo/Camera # List all local images and videos that are not hidden in the camera folder.
-total 32813056
--rw-rw-rw- 1 user_data_rw user_data_rw 7085591 1970-01-01 00:00 1.jpg
--rw-rw-rw- 1 user_data_rw user_data_rw 6217442 1970-01-01 00:00 2.jpg
-
-$ hdc shell ls -l /mnt/data/100/media_fuse/Photo/Camera/1.jpg # Return the details about 1.jpg.
--rw-rw-rw- 1 user_data_rw user_data_rw 7085591 1970-01-01 00:00 /mnt/data/100/media_fuse/Photo/Camera/1.jpg
-```
-
-### Exporting Media Library Files
-
-You can export all local files and directories that are not hidden in a specified path.
-
-Run the following command:
-
-```shell
-hdc file recv DEST SOURCE
-```
-
-**Use Example**
-
-```shell
-$ hdc file recv /mnt/data/100/media_fuse/Photo/Camera/File A # Export file A.
-FileTransfer finish, Size:xxx, File...
-
-$ hdc file recv /mnt/data/100/media_fuse/Photo/Camera # Export the Camera directory and files in the directory.
-FileTransfer finish, Size:xxx, File...
-
-$ hdc file recv /mnt/data/100/media_fuse/Photo/ # Export the Photo directory and its subfiles.
-FileTransfer finish, Size:xxx, File...
-```
-
-### Importing Media Library Files
-
-You can import files and directories, but cannot create directories. If the directory names are the same, the content is combined (all files with different names are retained). If the file names are the same, the target file is overwritten.
-
-```shell
-hdc file send SOURCE DEST
-```
-
-**Use Example**
-
-```shell
-$ hdc file send D:\dest\Camera/mnt/data/100/media_fuse/Photo/ # Import all files in D:\dest\Camera to /mnt/data/100/media_fuse/Photo/camera/.
-FileTransfer finish, Size:xxx, File...
-
-$ hdc file send D:\dest\New directory/mnt/data/100/media_fuse/Photo/Camera/ # Directory creation is not supported.
-[Fail][E005005] Error create directory: operation not permitted, path:/mnt/data/100/media_fuse/Photo/Camera//New directory
-
-$ hdc file send D:\dest\Camera\File A/mnt/data/100/media_fuse/Photo/Camera/ # Import file A to /mnt/data/100/media_fuse/Photo/Camera/.
-FileTransfer finish, Size:xxx, File...
-```
-
-### Deleting Media Library Files
-
-You can delete specified files in an album, but cannot delete directories.
-
-```shell
-hdc shell rm DEST
-```
-
-**Use Example**
-
-```shell
-$ hdc shell rm /mnt/data/100/media_fuse/Photo/Camera/ # Return failure.
-rm: /mnt/data/100/media_fuse/Photo/Camera: Is a directory
-
-$ hdc shell rm /mnt/data/100/media_fuse/Photo/Camera/File A # No information is returned, and the deletion is successful.
-```

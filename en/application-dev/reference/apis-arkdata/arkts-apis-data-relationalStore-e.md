@@ -29,7 +29,7 @@ Enumerates the KV store security levels. Use the enum name rather than the enum 
 
 ## EncryptionAlgo<sup>14+</sup>
 
-Enumerates the database encryption algorithms. Use the enum name rather than the enum value.
+Enumerates the encryption algorithms for the database. Use the enum name rather than the enum value.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -77,6 +77,8 @@ Enumerates tokenizers that can be used for FTS. Use the enum name rather than th
 The table creation statement varies with the tokenizer in use.
 
 **Example**:
+
+For details about the definition of **this.context** in the sample code, see the application [context](../apis-ability-kit/js-apis-inner-application-context.md) of the stage model.
 
 The following is an example of the table creation statement when **ICU_TOKENIZER** is used:
 
@@ -352,4 +354,4 @@ Enumerates the types of the column data. Use the enum name rather than the enum 
 | ASSET         | 5    | [Asset](arkts-apis-data-relationalStore-i.md#asset10).                             |
 | ASSETS        | 6    | [Assets](arkts-apis-data-relationalStore-t.md#assets10).                           |
 | FLOAT_VECTOR  | 7    | Float32Array.                                  |
-| UNLIMITED_INT | 8    | Bigint.                                        |
+| UNLIMITED_INT | 8    | BigInt.                                        |

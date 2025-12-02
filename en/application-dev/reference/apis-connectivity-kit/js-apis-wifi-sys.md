@@ -479,7 +479,7 @@ Obtains the device MAC address.
 
   | **Type**| **Description**|
   | -------- | -------- |
-  | string[] | MAC address obtained.|
+  | string[] | MAC address.|
 
 **Example**
 ```ts
@@ -1046,7 +1046,7 @@ Sets the device name.
 
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
-  | devName | string | Yes| Device name to set.|
+  | devName | string | Yes| Device name.|
 
 **Return value**
 
@@ -1192,7 +1192,7 @@ Subscribes to the disconnection of a STA from a Wi-Fi hotspot.
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStaLeave**.|
-  | callback | Callback&lt;StationInf]&gt; | Yes| Callback invoked to return the WLAN state.|
+  | callback | Callback&lt;StationInf&gt; | Yes| Callback invoked to return the WLAN state.|
 
 ## wifi.off('hotspotStaLeave')<sup>7+</sup>
 
@@ -1211,7 +1211,7 @@ Unsubscribes from the disconnection of a STA from a Wi-Fi hotspot.
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStaLeave**.|
-  | callback | Callback&lt;StationInf]&gt; | No| Callback invoked to return the WLAN state.|
+  | callback | Callback&lt;StationInf&gt; | No| Callback invoked to return the WLAN state.|
 
   **Example**
 ```ts

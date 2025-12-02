@@ -1,4 +1,10 @@
 # native_vsync.h
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @opasser-->
+<!--Designer: @opasser-->
+<!--Tester: @zhouhuan31-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -81,7 +87,7 @@ OH_NativeVSync* OH_NativeVSync_Create(const char* name, unsigned int length)
 | 参数项 | 描述 |
 | -- | -- |
 | const char* name | 表示一个名字，与创建的OH_NativeVSync实例关联。 |
-| unsigned int length | ame的长度（字符数）。 |
+| unsigned int length | name的长度（字符数）。 |
 
 **返回：**
 
@@ -110,7 +116,7 @@ OH_NativeVSync* OH_NativeVSync_Create_ForAssociatedWindow(uint64_t windowID, con
 | -- | -- |
 | uint64_t windowID | 表示窗口ID，窗口子进程索引标识符，可以通过[OH_NativeWindow_GetSurfaceId](capi-external-window-h.md#oh_nativewindow_getsurfaceid)接口获取。 |
 | const char* name | 表示一个名称，与创建的OH_NativeVSync实例关联。 |
-| unsigned int length | ame的长度（字符数）。 |
+| unsigned int length | name的长度（字符数）。 |
 
 **返回：**
 

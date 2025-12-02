@@ -147,7 +147,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onUpdateForm(formId: string, wantParams?: Record<string, Object>) {
-    console.log(`FormExtensionAbility onUpdateForm, formId: ${formId},
+    console.info(`FormExtensionAbility onUpdateForm, formId: ${formId},
         wantPara: ${wantParams?.['ohos.extra.param.key.host_bg_inverse_color']}`);
     let param: Record<string, string> = {
       'temperature': '22c',
@@ -155,7 +155,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     }
     let obj2: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
     formProvider.updateForm(formId, obj2).then(() => {
-      console.log(`FormExtensionAbility context updateForm`);
+      console.info(`FormExtensionAbility context updateForm`);
     }).catch((error: BusinessError) => {
       console.error(`FormExtensionAbility context updateForm failed, data: ${error}`);
     });
@@ -195,7 +195,7 @@ function getObjKeys(obj: Object): string[] {
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onChangeFormVisibility(newStatus: Record<string, number>) {
-    console.log(`FormExtensionAbility onChangeFormVisibility, newStatus: ${newStatus}`);
+    console.info(`FormExtensionAbility onChangeFormVisibility, newStatus: ${newStatus}`);
     let param: Record<string, string> = {
       'temperature': '22c',
       'time': '22:00'
@@ -205,9 +205,9 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     let keys: string[] = getObjKeys(newStatus);
 
     for (let i: number = 0; i < keys.length; i++) {
-      console.log(`FormExtensionAbility onChangeFormVisibility, key: ${keys[i]}, value= ${newStatus[keys[i]]}`);
+      console.info(`FormExtensionAbility onChangeFormVisibility, key: ${keys[i]}, value= ${newStatus[keys[i]]}`);
       formProvider.updateForm(keys[i], obj2).then(() => {
-        console.log(`FormExtensionAbility context updateForm`);
+        console.info(`FormExtensionAbility context updateForm`);
       }).catch((error: BusinessError) => {
         console.error(`Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
       });
@@ -242,7 +242,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
-    console.log(`FormExtensionAbility onFormEvent, formId: ${formId}, message: ${message}`);
+    console.info(`FormExtensionAbility onFormEvent, formId: ${formId}, message: ${message}`);
   }
 };
 ```
@@ -272,7 +272,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onRemoveForm(formId: string) {
-    console.log(`FormExtensionAbility onRemoveForm, formId: ${formId}`);
+    console.info(`FormExtensionAbility onRemoveForm, formId: ${formId}`);
   }
 };
 ```
@@ -305,7 +305,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   onConfigurationUpdate(newConfig: Configuration) {
     // 仅当前formExtensionAbility存活时更新配置才会触发此生命周期。
     // 需要注意：formExtensionAbility创建后10秒内无操作将会被清理。
-    console.log(`onConfigurationUpdate, config: ${JSON.stringify(newConfig)}`);
+    console.info(`onConfigurationUpdate, config: ${JSON.stringify(newConfig)}`);
   }
 };
 ```
@@ -342,7 +342,7 @@ import { Want } from '@kit.AbilityKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onAcquireFormState(want: Want) {
-    console.log(`FormExtensionAbility onAcquireFormState, want: ${want}`);
+    console.info(`FormExtensionAbility onAcquireFormState, want: ${want}`);
     return formInfo.FormState.UNKNOWN;
   }
 };
@@ -367,7 +367,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onStop() {
-    console.log(`FormExtensionAbility onStop`);
+    console.info(`FormExtensionAbility onStop`);
   }
 }
 ```

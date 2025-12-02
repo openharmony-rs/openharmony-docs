@@ -20,11 +20,11 @@ Call applications can use the [AVCastPicker](../avsession/using-switch-call-devi
 
 ### Switching Built-in Devices
 
-In voice call scenarios, the system uses the earpiece for audio output by default. In other scenarios, the system defaults to using the speaker. (If an external device is connected, the system defaults to using the external device for audio output.)
+If no external device is connected, in voice call scenarios, the system uses the earpiece for audio output by default. In other scenarios, the system defaults to using the speaker. If an external device is connected, the system defaults to using the external device for audio output.
 
 To cancel the default output device set by calling **setDefaultOutputDevice**, you can set the parameter to **audio.DeviceType.DEFAULT**, which returns the audio output device selection to the system.
 
-1. Applications can use [setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12) of AudioRenderer to switch between the earpiece and speaker routing. Before calling this API, you need to obtain an [AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8) instance.
+1. Starting from API version 12, applications can use [setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12) of AudioRenderer to switch between the earpiece and speaker routing. Before calling this API, you need to obtain an [AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8) instance.
 
    > **NOTE**
    >
@@ -42,7 +42,7 @@ To cancel the default output device set by calling **setDefaultOutputDevice**, y
      console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
    });
 
-   // Set the default output device to the default device, effectively canceling the application's default device setting.
+   // Set the default output device to the system's default output device, effectively canceling the application's default device setting.
    audioRenderer.setDefaultOutputDevice(audio.DeviceType.DEFAULT).then(() => {
      console.info('Succeeded in setting default output device.');
    }).catch((err: BusinessError) => {
@@ -50,7 +50,7 @@ To cancel the default output device set by calling **setDefaultOutputDevice**, y
    });
    ```
 
-2. Applications can use [setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20) of AudioSessionManager to switch between the earpiece and speaker routing.
+2. Starting from API version 20, applications can use [setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20) of AudioSessionManager to switch between the earpiece and speaker routing.
 
    > **NOTE**
    >
@@ -71,7 +71,7 @@ To cancel the default output device set by calling **setDefaultOutputDevice**, y
      console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
    });
 
-   // Set the default output device to the default device, effectively canceling the application's default device setting.
+   // Set the default output device to the system's default output device, effectively canceling the application's default device setting.
    audioSessionManager.setDefaultOutputDevice(audio.DeviceType.DEFAULT).then(() => {
      console.info('Succeeded in setting default output device.');
    }).catch((err: BusinessError) => {

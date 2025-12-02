@@ -1230,8 +1230,8 @@ void OH_Drawing_CanvasTranslate(OH_Drawing_Canvas* canvas, float dx, float dy)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向画布对象的指针。 |
-| float dx | 轴方向的移动距离。 |
-| float dy | 轴方向的移动距离。 |
+| float dx | x轴方向的移动距离。 |
+| float dy | y轴方向的移动距离。 |
 
 ### OH_Drawing_CanvasScale()
 
@@ -1253,8 +1253,8 @@ void OH_Drawing_CanvasScale(OH_Drawing_Canvas* canvas, float sx, float sy)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向画布对象的指针。 |
-| float sx | 轴方向的缩放比例。 |
-| float sy | 轴方向的缩放比例。 |
+| float sx | x轴方向的缩放比例。 |
+| float sy | y轴方向的缩放比例。 |
 
 ### OH_Drawing_CanvasSkew()
 

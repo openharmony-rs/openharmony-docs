@@ -20,21 +20,21 @@ The table below lists the types of continuous tasks, which are used in various s
 **Table 1** Continuous task types
 | Name| Description| Item| Example Scenario|
 | -------- | -------- | -------- | -------- |
-| DATA_TRANSFER | Data transfer| dataTransfer | Non-hosting uploading and downloading operations, like those occurring in the background of a web browser for data transfer.|
-| AUDIO_PLAYBACK | Audio and video playback| audioPlayback | Audio and video playback in the background; audio and video casting.<br> **Note**: It can be used in atomic services.|
-| AUDIO_RECORDING | Audio recording| audioRecording | Recording and screen capture in the background.|
-| LOCATION | Positioning and navigation| location | Positioning and navigation.|
-| BLUETOOTH_INTERACTION | Bluetooth-related services| bluetoothInteraction | An application transitions into the background during the process of file transfer using Bluetooth.|
-| MULTI_DEVICE_CONNECTION | Multi-device connection| multiDeviceConnection | Distributed service connection and casting.<br> **Note**: It can be used in atomic services.|
-| <!--DelRow-->WIFI_INTERACTION | WLAN-related services (for system applications only)| wifiInteraction  | An application transitions into the background during the process of file transfer using WLAN.|
-| VOIP<sup>13+</sup> | Audio and video calls| voip  | Chat applications (with audio and video services) transition into the background during audio and video calls.|
+| DATA_TRANSFER | Data transfer.| dataTransfer | Non-hosting uploading and downloading operations, like those occurring in the background of a web browser for data transfer.|
+| AUDIO_PLAYBACK | Audio and video playback.| audioPlayback | Audio and video playback in the background; audio and video casting.<br> **Note**: It can be used in atomic services.|
+| AUDIO_RECORDING | Recording.| audioRecording | Recording and screen capture in the background.|
+| LOCATION | Positioning and navigation.| location | Positioning and navigation.|
+| BLUETOOTH_INTERACTION | Bluetooth-related services.| bluetoothInteraction | An application transitions into the background during the process of file transfer using Bluetooth.|
+| MULTI_DEVICE_CONNECTION | Multi-device connection.| multiDeviceConnection | Distributed service connection and casting.<br> **Note**: It can be used in atomic services.|
+| <!--DelRow-->WIFI_INTERACTION | WLAN-related services (for system applications only).| wifiInteraction  | An application transitions into the background during the process of file transfer using WLAN.|
+| VOIP<sup>13+</sup> | Audio and video calls.| voip  | Chat applications (with audio and video services) transition into the background during audio and video calls.|
 | TASK_KEEPING | Computing tasks (for 2-in-1 devices only).| taskKeeping  | Antivirus software is running.|
 
 Description of **DATA_TRANSFER**:
 
 - During data transfer, if an application uses the [upload and download agent API](../reference/apis-basic-services-kit/js-apis-request.md) to hand over tasks to the system, the application will be suspended in the background even if it has requested the continuous task of the **DATA_TRANSFER** type.
 
-- During data transfer, the application needs to update the progress. If the progress is not updated for more than 10 minutes, the continuous task of the **DATA_TRANSFER** type will be canceled. The notification type of the progress update must be live view. For details, see the example in [startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning12).
+- During data transfer, the application needs to update the progress. If the progress is not updated for a long time (more than 10 minutes after the first update), the continuous task of the **DATA_TRANSFER** type will be canceled. The notification type of the progress update must be live view. For details, see the example in [startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning12).
 
 Description of **AUDIO_PLAYBACK**:
 
@@ -66,11 +66,11 @@ Description of **AUDIO_PLAYBACK**:
 
 > **NOTE**
 >
-> An application must proactively cancel a continuous task once the task is completed. Otherwise, the application will be suspended when moved to the background. For example, when a user taps the UI to pause music playback, the application must cancel the continuous task in a timely manner. When the user taps the UI again to continue music playback, the application needs to request a continuous task.
+> - An application must proactively cancel a continuous task once the task is completed. Otherwise, the application will be suspended when moved to the background. For example, when a user taps the UI to pause music playback, the application must cancel the continuous task in a timely manner. When the user taps the UI again to continue music playback, the application needs to request a continuous task.
 >
-> If an application that plays an audio in the background is [interrupted](../media/audio/audio-playback-concurrency.md), the system automatically detects and stops the continuous task. The application must request a continuous task again to restart the playback.
+> - If an application that plays an audio in the background is [interrupted](../media/audio/audio-playback-concurrency.md), the system automatically detects and stops the continuous task. The application must request a continuous task again to restart the playback.
 >
-> When an application that plays audio in the background stops a continuous task, it must suspend or stop the audio stream. Otherwise, the application will be forcibly terminated by the system.
+> - When an application that plays audio in the background stops a continuous task, it must suspend or stop the audio stream. Otherwise, the application will be forcibly terminated by the system.
 
 ## Available APIs
 
@@ -96,7 +96,7 @@ The following walks you through how to request a continuous task for recording t
 1. Declare the **ohos.permission.KEEP_BACKGROUND_RUNNING** permission. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
 2. Declare the continuous task type.
-   Declare the type of the continuous task for the target UIAbility in the **module.json5** file. Set the corresponding [configuration item](continuous-task.md#use-cases) in the configuration file.
+   Declare the type of the continuous task for the target UIAbility under **abilities** in the [module.json5 file](../quick-start/module-configuration-file.md). Set the corresponding [configuration item](continuous-task.md#use-cases) in the configuration file.
    
    ```json
     "module": {
@@ -201,6 +201,7 @@ The following walks you through how to request a continuous task for recording t
               backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
                 console.info("Operation startBackgroundRunning succeeded");
                 // Execute the continuous task logic, for example, recording.
+                // The system checks the authenticity of the service scenario. If the corresponding service is not executed, the system may cancel the continuous task and suspend the application.
               }).catch((error: BusinessError) => {
                 console.error(`Failed to Operation startBackgroundRunning. code is ${error.code} message is ${error.message}`);
               });

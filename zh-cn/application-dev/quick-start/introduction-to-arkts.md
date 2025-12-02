@@ -90,7 +90,7 @@ ArkTS提供`number`类型，任何整数和浮点数都可以被赋给此类型�
 ```typescript
 let n1 = 3.14;
 let n2 = 3.141592;
-let n3 = .5;
+let n3 = 0.5;
 let n4 = 1e2;
 
 function factorial(n: number): number {
@@ -100,19 +100,17 @@ function factorial(n: number): number {
   return n * factorial(n - 1);
 }
 
-factorial(n1)  //  7.660344000000002 
-factorial(n2)  //  7.680640444893748 
-factorial(n3)  //  1 
-factorial(n4)  //  9.33262154439441e+157 
+factorial(n1)  //  7.660344000000002
+factorial(n2)  //  7.680640444893748
+factorial(n3)  //  1
+factorial(n4)  //  9.33262154439441e+157
 ```
 
 `number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`BigInt`类型来确保精度：
 
 ```typescript
-
 let bigInt: BigInt = BigInt('999999999999999999999999999999999999999999999999999999999999');
 console.info('bigInt:' + bigInt.toString());
-
 ```
 
 **`boolean`类型**
@@ -139,7 +137,7 @@ if (isDone) {
 
 ```typescript
 let s1 = 'Hello, world!\n';
-let s2 = "this is a string";
+let s2 = 'this is a string';
 let a = 'Success';
 let s3 = `The result is ${a}`;
 ```
@@ -153,7 +151,7 @@ let s3 = `The result is ${a}`;
 class Class<T> {
   //...
 }
-let instance: Class <void>
+let instance: Class<void>;
 ```
 
 **`Object`类型**
@@ -161,7 +159,7 @@ let instance: Class <void>
 `Object`类型是所有引用类型的基类型。任何值，包括基本类型的值，都可以直接被赋给`Object`类型的变量（基本类型值会被自动装箱）。`Object`类型用于表示除基本类型外的类型。
 ```typescript
 let o1: Object = 'Alice';
-let o2: Object = ['a','b'];
+let o2: Object = ['a', 'b'];
 let o3: Object = 1;
 ```
 
@@ -257,7 +255,7 @@ type Handler = (s: string, no: number) => string;
 const repeatString: Handler = (str, times) => {
   return str.repeat(times);
 };
-console.info(repeatString("abc", 3)); // "abcabcabc"
+console.info(repeatString('abc', 3)); // 'abcabcabc'
 
 // 泛型函数类型
 type Predicate<T> = (x: T) => boolean;
@@ -265,8 +263,8 @@ const isEven: Predicate<number> = (num) => num % 2 === 0;
 
 // 可为空的对象类型
 type NullableObject = Object | null;
-class cat {}
-let animalData: NullableObject = new cat();
+class Cat {}
+let animalData: NullableObject = new Cat();
 let emptyData: NullableObject = null;
 ```
 
@@ -356,12 +354,16 @@ obj instanceof className
 ```typescript
 class Person {}
 const person = new Person();
-if ((person instanceof Person)) console.info("true") // true
+if ((person instanceof Person)) {
+  console.info('true'); // true
+}
 
 class Animal {}
 class Bird extends Animal {}
 const bird = new Bird();
-if (bird instanceof Animal)  console.info("true") // true
+if (bird instanceof Animal) {
+  console.info('true'); // true
+}
 ```
 
 ### 语句
@@ -617,8 +619,10 @@ try {
 ```typescript
 class ZeroDivisor extends Error {}
 
-function divide (a: number, b: number): number{
-  if (b == 0) throw new ZeroDivisor();
+function divide (a: number, b: number): number {
+  if (b == 0) {
+    throw new ZeroDivisor();
+  }
   return a / b;
 }
 
@@ -709,8 +713,9 @@ multiply(2, 3); // 返回2*3
 ```typescript
 function sum(...numbers: number[]): number {
   let res = 0;
-  for (let n of numbers)
+  for (let n of numbers) {
     res += n;
+  }
   return res;
 }
 
@@ -1354,8 +1359,8 @@ let cc: C[] = [{n: 1, s: 'a'}, {n: 2, s: 'b'}];
 ```typescript
 let map: Record<string, number> = {
   'John': 25,
-  'Mary': 21,
-}
+  'Mary': 21
+};
 
 map['John']; // 25
 ```
@@ -1539,29 +1544,29 @@ class Bird extends Animal implements CanFly, CanSwim {
 ```typescript
 interface MyInterface {
     // 错误：接口中不能包含静态成员
-    static staticMethod(): void; 
+    static staticMethod(): void;
 
     // 错误：接口中不能包含静态代码块
-    static { console.info("static") }; 
-} 
+    static { console.info('static'); };
+}
 
 abstract class MyAbstractClass {
     // 正确：抽象类可以有静态方法
-    static staticMethod(): void { console.info("static");}
+    static staticMethod(): void { console.info('static'); }
 
     // 正确：抽象类可以有静态代码块
-    static { console.info("static initialization block");}
+    static { console.info('static initialization block'); }
 }
 ```
 * 抽象类里面可以有方法的实现，但是接口没有方法的实现，是完全抽象的；
 ```typescript
 abstract class MyAbstractClass {
    // 正确：抽象类里面可以有方法的实现
-   func(): void { console.info("func");}
+   func(): void { console.info('func'); }
 }
 interface MyInterface {
    // 错误：接口没有方法的实现，是完全抽象的
-   func(): void { console.info("func");}
+   func(): void { console.info('func'); }
 }
 ```
 * 抽象类可以有构造函数，而接口不能有构造函数。
@@ -1647,12 +1652,12 @@ function last<T>(x: T[]): T {
 
 ```typescript
 // 显式设置的类型实参
-let res: string = last<string>(['aa', 'bb']);
-let res: number = last<number>([1, 2, 3]);
+let res1: string = last<string>(['aa', 'bb']);
+let res2: number = last<number>([1, 2, 3]);
 
 // 隐式设置的类型实参
 // 编译器根据调用参数的类型来确定类型实参
-let res: number = last([1, 2, 3]);
+let res3: number = last([1, 2, 3]);
 ```
 
 ### 泛型默认值
@@ -1865,11 +1870,11 @@ export function add(a:number, b:number):number {
   return c;
 }
 
-// Index.ts
-import("./Calc").then((obj: ESObject) => {
-  console.info(obj.add(3, 5));  
+// Index.ets
+import('./Calc').then((obj: ESObject) => {
+  console.info(obj.add(3, 5));
 }).catch((err: Error) => {
-  console.error("Module dynamic import error: ", err);
+  console.error('Module dynamic import error: ', err);
 });
 ```
 
@@ -2075,16 +2080,16 @@ type Pos = Position; // 编译错误：注解不是类型
   authorName: string;
 }
 
-@ClassAuthor({authorName: "John Smith"})
+@ClassAuthor({authorName: 'John Smith'})
 class MyClass {
-  private _name: string = "Bob";
+  private _name: string = 'Bob';
 
-  @ClassAuthor({authorName: "John Smith"}) // 编译错误：注解不支持在类的getter和setter方法添加
+  @ClassAuthor({authorName: 'John Smith'}) // 编译错误：注解不支持在类的getter和setter方法添加
   get name() {
     return this._name;
   }
 
-  @ClassAuthor({authorName: "John Smith"}) // 编译错误：注解不支持在类的getter和setter方法添加
+  @ClassAuthor({authorName: 'John Smith'}) // 编译错误：注解不支持在类的getter和setter方法添加
   set name(authorName: string) {
     this._name = authorName;
   }
@@ -2202,7 +2207,7 @@ export @interface Anno {}
 
 export @interface ClassAuthor {}
 
-console.info("hello");
+console.info('hello');
 
 // b.ets
 import { Anno } from './a';

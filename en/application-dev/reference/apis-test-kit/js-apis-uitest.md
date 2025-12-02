@@ -164,73 +164,11 @@ Describes the injected simulated mouse button.
 | MOUSE_BUTTON_RIGHT  | 1    | Right button on the mouse.  |
 | MOUSE_BUTTON_MIDDLE | 2    | Middle button on the mouse.|
 
-
-## WindowChangeType<sup>22+</sup>
-
-Enumerates the window change event types that can be listened for.
-
-**Atomic service API**: This API can be used in atomic services since API version 22.
-
-**System capability**: SystemCapability.Test.UiTest
-
-| Name               | Value  | Description        |
-| ------------------- | ---- | ------------ |
-| WINDOW_UNDEFINED   | 0    | Non-window change event. **Note**: This value can only be used as a return value. If it is passed in an API, an exception will be thrown.  |
-| WINDOW_ADDED  | 1    | Window adding event.  |
-| WINDOW_REMOVED | 2    | Window removing event.|
-| WINDOW_BOUNDS_CHANGED | 3    | Window bounds change event.|
-
-
-## ComponentEventType<sup>22+</sup>
-
-Enumerates the component operation event types that can be listened for.
-
-**Atomic service API**: This API can be used in atomic services since API version 22.
-
-**System capability**: SystemCapability.Test.UiTest
-
-| Name               | Value  | Description        |
-| ------------------- | ---- | ------------ |
-| COMPONENT_UNDEFINED   | 0    | Non-component operation event. **Note**: This value can only be used as a return value. If it is passed in an API, an exception will be thrown.  |
-| COMPONENT_CLICKED  | 1    | Component clicked event.  |
-| COMPONENT_LONG_CLICKED | 2    | Component long-clicked event.|
-| COMPONENT_SCROLL_START | 3    | Component scroll start event.|
-| COMPONENT_SCROLL_END  | 4    | Component scroll end event.  |
-| COMPONENT_TEXT_CHANGED | 5    | Component text changed event.|
-| COMPONENT_HOVER_ENTER | 6    | Event triggered when the mouse pointer hovers over a component and enters it.|
-| COMPONENT_HOVER_EXIT | 7    | Event triggered when the mouse pointer hovers over a component and leaves it.|
-
-
-## WindowChangeOptions<sup>22+</sup>
-
-Describes the extended configuration of window change event listening, which is used to specify the listening process configuration and event filtering conditions.
-
-**Atomic service API**: This API can be used in atomic services since API version 22.
-
-**System capability**: SystemCapability.Test.UiTest
-
-| Name      | Type  | Read-Only| Optional| Description                 |
-| ---------- | ------ | ---- | ---- | --------------------- |
-| timeout | number | No  | Yes  | Listening timeout interval, in milliseconds. The default value is 10000.     |
-| bundleName       | string | No  | Yes  | Bundle name of the window to listen for. By default, all windows are listened for.      |
-
-
-## ComponentEventOptions<sup>22+</sup>
-
-Describes the extended configuration of component operation event listening, which is used to specify the listening process configuration and event filtering conditions.
-
-**Atomic service API**: This API can be used in atomic services since API version 22.
-
-**System capability**: SystemCapability.Test.UiTest
-
-| Name      | Type  | Read-Only| Optional| Description                 |
-| ---------- | ------ | ---- | ---- | --------------------- |
-| timeout | number | No  | Yes  | Listening timeout interval, in milliseconds. The default value is 10000.     |
-| on       | [On](#on9) | No  | Yes  | Attribute requirements of the target component to listen for. By default, all components are listened for.<br> **Note**: Only components with specified attributes can be listened for. Components with relative positions such as **On.isBefore**, **On.isAfter**, and **On.within** cannot be listened for.      |
-
 ## UIElementInfo<sup>10+</sup>
 
 Provides information about the UI event.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -239,11 +177,6 @@ Provides information about the UI event.
 | bundleName | string | Yes  | No  | Bundle name of the application.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
 | type       | string | Yes  | No  | Component or window type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
 | text       | string | Yes  | No  | Text information of the component or window.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| windowChangeType<sup>22+</sup>       | [WindowChangeType](#windowchangetype22) | Yes  | Yes  | Window change event type. If the event is not a window change event, **WindowChangeType.WINDOW_UNDEFINED** is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-| componentEventType<sup>22+</sup>       | [ComponentEventType](#componenteventtype22) | Yes  | Yes  | Component operation event type. If it is not a component operation event, **ComponentEventType.COMPONENT_UNDEFINED** is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-| windowId<sup>22+</sup>       | number | Yes  | Yes  | ID of the window where the component belongs.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-| componentId<sup>22+</sup>       | string | Yes  | Yes  | Component ID. If it is not a component operation event, an empty string is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-| componentRect<sup>22+</sup>       | [Rect](#rect9) | Yes  | Yes  | Component border information. If it is not a component operation event, a **Rect** object with all attribute values being **0** is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
 
 ## TouchPadSwipeOptions<sup>18+</sup>
@@ -369,7 +302,7 @@ let on:On = ON.id('123'); // Use the static constructor ON to create an On objec
 
 id(id: string, pattern: MatchPattern): On
 
-Specifies the ID attribute of the target component.
+Specifies the **id** attribute and match pattern of the target component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -445,7 +378,7 @@ let on:On = ON.type('Button'); // Use the static constructor ON to create an On 
 
 type(tp: string, pattern: MatchPattern): On
 
-Specifies the type attribute of the target component.
+Specifies the **type** attribute and match pattern of the target component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1876,7 +1809,7 @@ async function demo() {
 
 scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
-Scrolls on this component to search for the target component. This API is applicable to components that support scrolling and uses a promise to return the result.
+Scrolls on a scrollable component to search for the target component. You can specify the scrolling direction and the offset between the scrolling start and end points and the component border. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -2246,11 +2179,7 @@ async function demo() {
 
 getOriginalText(): Promise\<string>
 
-Obtains the original text information of this component.
-
-> **NOTE**
->
-> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API can be used to obtain the text information of the component, but [Component.getText()](#gettext9) cannot.
+Obtains the original text information of this component. If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API can be used to obtain the text information of the component, but [Component.getText()](#gettext9) cannot.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2260,7 +2189,7 @@ Obtains the original text information of this component.
 
 | Type            | Description                             |
 | ---------------- | --------------------------------- |
-| Promise\<string> | Promise used to return the original text information of the component.|
+| Promise\<string> | Promise used to return the text information of the component.|
 
 **Error codes**
 
@@ -3090,7 +3019,7 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 | starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.                      |
 | endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.                      |
 | endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.                      |
-| speed  | number | No  | Swipe speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 
 **Return value**
 
@@ -3133,7 +3062,7 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 | ------ | ------ | ---- |------------------------------------------------------|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
 | to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 
 **Return value**
 
@@ -3181,7 +3110,7 @@ Drags from the start coordinate point to the target coordinate point. This API u
 | starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.             |
 | endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.             |
 | endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.             |
-| speed  | number | No  | Drag speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 
 **Return value**
 
@@ -3227,7 +3156,7 @@ Drags from the start point to the target point. You can specify the drag speed a
 | ------ | ------ | ---- |--------------------------------------------------------|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
 | to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Drag speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 | duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
 **Return value**
@@ -3956,7 +3885,7 @@ async function demo() {
 
 fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 
-Simulates a fling operation on a specified display with the specified direction and speed.
+Simulates a fling operation on a display with the specified direction and speed.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -5729,113 +5658,6 @@ async function demo() {
     console.info(UIElementInfo.type);
   }
   observer.once('dialogShow', callback);
-}
-```
-
-### once('windowChange')<sup>22+</sup>
-
-once(type: 'windowChange', windowChangeType: WindowChangeType, options: WindowChangeOptions, callback: Callback\<UIElementInfo>): void
-
-Starts listening for window change events of the specified type with extended configuration supported. This API triggers a callback when a specified window change event is detected.
-
-**Atomic service API**: This API can be used in atomic services since API version 22.
-
-**System capability**: SystemCapability.Test.UiTest
-
-**Parameters**
-
-| Name  | Type                                        | Mandatory| Description                              |
-| -------- | -------------------------------------------- | ---- | ---------------------------------- |
-| type     | string    | Yes  | Type of the event to subscribe to, which can be **windowChange**. This event is triggered when the window changes.|
-| windowChangeType     | [WindowChangeType](#windowchangetype22)   | Yes  | Type of the window change event.|
-| options  | [WindowChangeOptions](#windowchangeoptions22)   | Yes  | Extended configuration, including the listening timeout interval and the bundle name of the window to be listened for.|
-| callback | Callback\<[UIElementInfo](#uielementinfo10)> | Yes  | Callback triggered to return event information when an event occurs. |
-
-**Error codes**
-
-For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
-
-| ID| Error Message                                                    |
-| -------- | ------------------------------------------------------------ |
-| 17000005 | This operation is not supported.        |
-| 17000007  | Parameter verification failed.|
-
-**Example**
-
-```ts
-import { Driver, UIElementInfo, UIEventObserver, WindowChangeOptions, WindowChangeType } from '@kit.TestKit';
-
-async function demo() {
-  let driver: Driver = Driver.create();
-  let observer: UIEventObserver = driver.createUIEventObserver();
-  let options: WindowChangeOptions = {
-    timeout: 20000,
-    bundleName: "com.example.myapplication"  // Use the actual bundle name.
-  }
-  let callback = (UIElementInfo: UIElementInfo)=> {
-    console.info(UIElementInfo.bundleName);
-    console.info(UIElementInfo.text);
-    console.info(UIElementInfo.type);
-    console.info(UIElementInfo.windowChangeType?.toString());
-    console.info(UIElementInfo.windowId?.toString());
-  }
-  observer.once('windowChange', WindowChangeType.WINDOW_ADDED, options, callback);
-}
-```
-
-### once('componentEventOccur')<sup>22+</sup>
-
-once(type: 'componentEventOccur', componentEventType: ComponentEventType, options: ComponentEventOptions, callback: Callback\<UIElementInfo>): void
-
-Starts listening for component operation events of the specified type with extended configuration supported. This API triggers a callback when a specified component operation event is detected.
-
-**Atomic service API**: This API can be used in atomic services since API version 22.
-
-**System capability**: SystemCapability.Test.UiTest
-
-**Parameters**
-
-| Name  | Type                                        | Mandatory| Description                              |
-| -------- | -------------------------------------------- | ---- | ---------------------------------- |
-| type     | string    | Yes  | Type of the event to subscribe to, which can be **componentEventOccur**. This event is triggered when the component operation is detected.|
-| componentEventType   | [ComponentEventType](#componenteventtype22)   | Yes  | Type of the component operation event.|
-| options  | [ComponentEventOptions](#componenteventoptions22)  | Yes| Extended configuration, including the listening timeout interval and the matching condition of the component to be listened for.|
-| callback | Callback\<[UIElementInfo](#uielementinfo10)> | Yes  | Callback used to return the result. |
-
-**Error codes**
-
-For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
-
-| ID| Error Message                                                    |
-| -------- | ------------------------------------------------------------ |
-| 17000005 | This operation is not supported.        |
-| 17000007  | Parameter verification failed.|
-
-**Example**
-
-```ts
-import { Driver, UIElementInfo, UIEventObserver, ComponentEventOptions, ComponentEventType, ON } from '@kit.TestKit';
-
-async function demo() {
-  let driver: Driver = Driver.create();
-  let observer: UIEventObserver = driver.createUIEventObserver();
-  let option: ComponentEventOptions = {
-    timeout: 20000,
-    on: ON.id('123')  // Use the actual component ID.
-  };
-  let callback = (UIElementInfo: UIElementInfo)=> {
-    console.info(UIElementInfo.bundleName);
-    console.info(UIElementInfo.text);
-    console.info(UIElementInfo.type);
-    console.info(UIElementInfo.componentEventType?.toString());
-    console.info(UIElementInfo.windowId?.toString());
-    console.info(UIElementInfo.componentId);
-    console.info(UIElementInfo.componentRect?.left.toString());
-    console.info(UIElementInfo.componentRect?.left.toString());
-    console.info(UIElementInfo.componentRect?.left.toString());
-    console.info(UIElementInfo.componentRect?.left.toString());
-  };
-  observer.once('componentEventOccur', ComponentEventType.COMPONENT_CLICKED, option, callback);
 }
 ```
 

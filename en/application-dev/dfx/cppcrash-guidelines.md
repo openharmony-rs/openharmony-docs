@@ -48,9 +48,9 @@ After a process crashes, the system detects the crash, captures crash informatio
 
 The system detects a process crash as follows:
 
-- After a process crashes, it receives a crash signal from the kernel, which is processed by the signal handling module registered by the process during startup.
+1. After a process crashes, it receives a crash signal from the kernel, which is processed by the signal handling module registered by the process during startup.
 
-- After receiving the crash signal, the process saves the current process context and forks a child process to execute the **ProcessDump** command to capture crash information.
+2. After receiving the crash signal, the process saves the current process context and forks a child process to execute the **ProcessDump** command to capture crash information.
 
 3. The **ProcessDump** process writes the crash log data to a temporary directory for storage.
 
@@ -159,7 +159,7 @@ In addition to the preceding classification by **signo**, signals can also be cl
 
 - The system has registered signal handlers for the preceding crash signals and signals **35**, **38**, and **42**. It is recommended that you do not register signal handlers for these signals in applications. Otherwise, the system detection capability may fail.
 
-- By default, the asynchronous thread stack tracing functionality is enabled only for debug-type applications in the ARM 64-bit system. For details about the crash log specifications, see [Asynchronous Thread Stack Tracing Faults](#asynchronous-thread-stack-tracing-faults).
+- The asynchronous thread stack tracing and maintenance functionality is enabled only in the ARM 64-bit system in debug mode. For details about the crash log specifications, see [Asynchronous Thread Stack Tracing Faults](#asynchronous-thread-stack-tracing-faults).
 
 ## Obtaining Logs
 
@@ -203,7 +203,7 @@ The following table describes the fields in a fault log.
 | Reason | Fault cause.| 8 | Yes| - |
 | LastFatalMessage | Last **Fatal** log recorded by the application.| 8 | No| This field is displayed when the process is aborted and the last **Fatal** log is printed in HiLog.|
 | Fault thread info | Fault thread information.| 8 | Yes| - |
-| SubmitterStacktrace | Submitter thread stack.| 12 | No| The asynchronous thread stack tracing functionality is enabled for debug-type applications only in the ARM 64-bit system.|
+| SubmitterStacktrace | Submitter thread stack.| 12 | No| The asynchronous thread stack tracing functionality is enabled only for debug-type applications in the ARM 64-bit system.|
 | Registers | Fault register.| 8 | Yes| - |
 | Other thread info | Other thread information.| 8 | Yes| - |
 | Memory near registers | Memory value near the fault register.| 8 | Yes| - |
@@ -424,6 +424,8 @@ The following describes the content of a three-layer call stack in detail:
 >   - The function name is not saved in the binary file.
 >
 >   - The length of the function name saved in the binary file exceeds 256 bytes.
+>
+> - The function name is obtained by parsing the binary symbol table and [MiniDebugInfo](https://sourceware.org/gdb/current/onlinedocs/gdb.html/MiniDebugInfo.html). Therefore, it may change with the version function name and compilation optimization.
 >
 > - If **BuildID** is not printed, you can run the **readelf -n xxx.so** command to check whether the binary file has **BuildID**. If not, add the compilation parameter <b class="+ topic/ph hi-d/b " id="b0166624191214">--enable-linker-build-id</b> to the compilation options. Do not add <b class="+ topic/ph hi-d/b " id="b1911913393125">--build-id=none</b>.
 

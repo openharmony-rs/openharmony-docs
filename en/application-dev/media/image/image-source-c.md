@@ -128,7 +128,7 @@ static napi_value sourceTest(napi_env env, napi_callback_info info)
     OH_DecodingOptions_SetDesiredDynamicRange(ops, IMAGE_DYNAMIC_RANGE_AUTO);
     OH_PixelmapNative *resPixMap = nullptr;
 
-    // A null pointer cannot be passed in to ops. If ops does not need to be set, you do not need to create a PixelMap object.
+    // nullptr cannot be passed in to ops. If ops does not need to be set, you do not need to create a PixelMap object.
     errCode = OH_ImageSourceNative_CreatePixelmap(source, ops, &resPixMap);
     OH_DecodingOptions_Release(ops);
     if (errCode != IMAGE_SUCCESS) {

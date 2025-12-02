@@ -202,7 +202,7 @@ onResult(result: UserAuthResult): void
 **示例1：**
 
 发起用户认证，采用认证可信等级≥ATL3的锁屏口令认证，获取认证结果。
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -252,7 +252,7 @@ try {
 **示例2：**
 
 发起用户认证，采用认证可信等级≥ATL3的锁屏口令+认证类型相关+复用设备解锁最大有效时长认证，获取认证结果。
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -306,7 +306,7 @@ try {
 **示例3：**
 
 发起用户认证，采用认证可信等级≥ATL3的锁屏口令+任意应用认证类型相关+复用任意应用最大有效时长认证，获取认证结果。
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -387,7 +387,7 @@ type AuthTipCallback = (authTipInfo: AuthTipInfo) => void
 | authTipInfo | [AuthTipInfo](#authtipinfo20)   | 是   | 认证中间状态。 |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -469,7 +469,7 @@ on(type: 'result', callback: IAuthCallback): void
 **示例1：**
 
 以模系统方式进行用户身份认证。
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -613,7 +613,7 @@ off(type: 'result', callback?: IAuthCallback): void
 | 12500002 | General operation error. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -691,7 +691,7 @@ start(): void
 | 12500013 | Operation failed because of PIN expired. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -755,7 +755,7 @@ cancel(): void
 | 12500002 | General operation error.        |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -823,7 +823,7 @@ on(type: 'authTip', callback: AuthTipCallback): void
 | 12500002 | General operation error. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -899,7 +899,7 @@ off(type: 'authTip', callback?: AuthTipCallback): void
 | 12500002 | General operation error. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -978,7 +978,7 @@ getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthIns
 | 12500006 | The authentication trust level is not supported. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';

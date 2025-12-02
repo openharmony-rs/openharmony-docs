@@ -17,5 +17,5 @@ The struct describes the information about media keys.
 | Name| Description|
 | -- | -- |
 | uint32_t keysInfoCount | Number of keys.|
-| uint8_t keyId[MAX_KEY_INFO_COUNT][MAX_KEY_ID_LEN] | Key ID set.|
-| char statusValue[MAX_KEY_INFO_COUNT][MAX_KEY_STATUS_VALUE_LEN] | Key status value.|
+| uint8_t keyId[MAX_KEY_INFO_COUNT][MAX_KEY_ID_LEN] | Array of key IDs.|
+| char statusValue[MAX_KEY_INFO_COUNT][MAX_KEY_STATUS_VALUE_LEN] | Array of key status values.|

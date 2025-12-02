@@ -102,7 +102,7 @@ libnative_display_soloist.so
    
 3. 在 Native C++层获取NativeXComponent。建议使用单例模式保存XComponent。此步骤需要在napi_init的过程中处理。
 
-    创建一个PluginManger单例类，用于管理NativeXComponent。
+    创建一个PluginManager单例类，用于管理NativeXComponent。
     ```c++
     class PluginManager {
     public:

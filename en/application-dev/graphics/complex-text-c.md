@@ -914,7 +914,7 @@ OH_Drawing_SetTextStyleFontSize(txtStyle, 100);
 // Add an underline.
 OH_Drawing_SetTextStyleDecoration(txtStyle, TEXT_DECORATION_UNDERLINE);
 // Set the decoration line style to wavy.
-OH_Drawing_SetTextStyleDecorationStyle(txtStyle, ARKUI_TEXT_DECORATION_STYLE_WAVY);
+OH_Drawing_SetTextStyleDecorationStyle(txtStyle, TEXT_DECORATION_STYLE_WAVY);
 // Set the underline width.
 OH_Drawing_SetTextStyleDecorationThicknessScale(txtStyle, 1);
 // Set the underline color to blue.

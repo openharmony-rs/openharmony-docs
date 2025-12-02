@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Image** component is usually used to display images in applications. It supports data sources of the following types: [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md), [ResourceStr](ts-types.md#resourcestr), and [DrawableDescriptor](#drawabledescriptor10). Supported image formats include PNG, JPG, JPEG, BMP, SVG, WEBP, GIF, and HEIF. Note that the APNG and SVGA formats are not supported.
 
@@ -267,7 +267,7 @@ This attribute does not take effect when the parameter type of the component is 
 
 | Name| Type   | Mandatory| Description                                        |
 | ------ | ------- | ---- | -------------------------------------------- |
-| value  | boolean | Yes  | Whether the image follows the system language direction, displaying a mirrored effect in a RTL language environments.<br>Default value: **false**.<br>The value **true** means that the image follows the system language direction, displaying a mirrored effect in a RTL language environments, and **false** means the opposite.|
+| value  | boolean | Yes  | Whether the image follows the system language direction, displaying a mirrored effect in RTL language environments.<br>Default value: **false**.<br>The value **true** means that the image follows the system language direction, displaying a mirrored effect in RTL language environments, and **false** means the opposite.|
 
 ### fitOriginalSize
 
@@ -334,7 +334,7 @@ This attribute does not take effect when the parameter type of the component is 
 
 fillColor(color: ResourceColor|ColorContent|ColorMetrics)
 
-Sets the fill color to be superimposed on the image. This attribute applies only to SVG images. Once set, the fill color will replace the fill colors of all drawable elements within the SVG image. To set the fill color for a PNG image, use [colorFilter](#colorfilter9). To reset the fill color, pass a value of the [ColorContent](#colorcontent15) type. You can set P3 color gamut values by passing in the [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) type, which can achieve richer color performance on devices that support high color gamut.
+Sets the fill color to be superimposed on the image. This attribute applies only to SVG images. Once set, the fill color will replace the fill colors of all drawable elements within the SVG image. To set the fill color for a PNG image, use [colorFilter](#colorfilter9). To reset the fill color, pass a value of the [ColorContent](#colorcontent15) type. You can set P3 color gamut values by passing in the [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) type, which can achieve richer color reproduction on devices that support high color gamut.
 
 This attribute does not take effect when the parameter type of the component is [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12).
 
@@ -436,7 +436,8 @@ When this attribute is set, [renderMode](#rendermode) is not effective.
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter<sup>12+</sup>](#drawingcolorfilter12) | Yes  | 1. Color filter of the image. The input parameter is a 4 x 5 RGBA transformation matrix.<br>2. The ColorFilter type of **@ohos.graphics.drawing** can be used as an input parameter since API version 12.<br>**NOTE**<br>This parameter is not available for SVG images in API version 11 and earlier versions.<br>The DrawingColorfilter type can be used in atomic services since API version 12. For SVG sources, the effect only applies when the **stroke** property is set (regardless of the value).|
 
-The color filter uses a 4 x 5 matrix to set the color filter of the image. The first row of the matrix indicates the vector value of R (red), the second row indicates the vector value of G (green), and the third row indicates the vector value of B (blue). The fourth row represents a vector value of A (transparency), and the four rows represent different vector values of RGBA.<br>When the diagonal values of the matrix are 1 and all other values are 0, the original colors of the image are retained.<br> **Calculation rule:**<br>If the input filter matrix is as follows (value range: [0, 1]):<br>![image-matrix-1](figures/image_matrix_1.png) <br>And the pixel point is [R, G, B, A] with color values in the [0, 255] range,<br>then the color after filtering is [R', G', B', A'].<br>![image-matrix-2](figures/image_matrix_2.png)
+The color filter uses a 4 x 5 matrix to set the color filter of the image. The first row of the matrix indicates the vector value of R (red), the second row indicates the vector value of G (green), and the third row indicates the vector value of B (blue). The fourth row represents a vector value of A (transparency), and the four rows represent different vector values of RGBA.<br>When the diagonal values of the matrix are 1 and all other values are 0, the original colors of the image are retained.<br> **Calculation rule:**<br>If the input filter matrix is as follows (value range: [0, 1]):<br>![image-matrix-1](figures/image_matrix_1.png) <br>And the pixel point is [R, G, B, A] with color values in the [0, 255] range,<br>then the color after filtering is [R', G', B', A'].<br>![image-matrix-2](figures/image_matrix_2.png)<br>For details about how to use this attribute, see [Example 9](#example-9-setting-a-color-filter-for-an-image).
+
 ### draggable<sup>9+</sup>
 
 draggable(value: boolean)
@@ -471,7 +472,9 @@ This attribute does not take effect when the parameter type of the component is 
 
 > **NOTE**
 >
-> The ohos.permission.INTERNET permission must be declared.
+> - The ohos.permission.INTERNET permission must be declared.
+>
+> - This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -494,6 +497,10 @@ When [ResizableOptions](#resizableoptions11) is set to a valid value, neither **
 When the sum of the values of **top** and **bottom** is greater than the source image height, or the sum of the values of **left** and **right** is greater than the source image width, the [ResizableOptions](#resizableoptions11) attribute does not take effect.
 
 This attribute does not take effect when the parameter type of the component is [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12) or the image format is SVG.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -546,6 +553,8 @@ Device behavior difference: This API takes effect on mobile phones, PCs/2-in-1, 
 orientation(orientation: ImageRotateOrientation)
 
 Sets the display orientation of the image content.
+
+This attribute does not apply to placeholder images specified by [alt](#alt).
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -780,15 +789,15 @@ This event is not triggered if the parameter type of the component is [AnimatedD
 
 | Name                      | Type  | Mandatory| Description                                                        |
 | ---------------------------- | ------ | ---- | ------------------------------------------------------------ |
-| width                        | number | Yes  | Width of the image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>Unit: pixel                                   |
-| height                       | number | Yes  | Height of the image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>Unit: pixel                                   |
-| componentWidth               | number | Yes  | Width of the component.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>Unit: pixel                                   |
-| componentHeight              | number | Yes  | Height of the component.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>Unit: pixel                                   |
-| loadingStatus                | number | Yes  | Loading status of the image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**NOTE**<br>If the return value is **0**, the image is successfully loaded. If the return value is **1**, the image is successfully decoded.|
-| contentWidth<sup>10+</sup>   | number | Yes  | Actual rendered width of the image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>Unit: pixel<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
-| contentHeight<sup>10+</sup>  | number | Yes  | Actual rendered height of the image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>Unit: pixel<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
-| contentOffsetX<sup>10+</sup> | number | Yes  | Offset of the rendered content relative to the component on the x-axis.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>Unit: pixel<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
-| contentOffsetY<sup>10+</sup> | number | Yes  | Offset of the rendered content relative to the component on the y-axis<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>Unit: pixel<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
+| width                        | number | Yes  | Width of the image.<br>Unit: px<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.                                   |
+| height                       | number | Yes  | Height of the image.<br>Unit: px<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.                                   |
+| componentWidth               | number | Yes  | Width of the component.<br>Unit: px<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.                                   |
+| componentHeight              | number | Yes  | Height of the component.<br>Unit: px<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.                                   |
+| loadingStatus                | number | Yes  | Loading status of the image.<br>**NOTE**<br>If the return value is **0**, the image is successfully loaded. If the return value is **1**, the image is successfully decoded.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| contentWidth<sup>10+</sup>   | number | Yes  | Actual rendered width of the image.<br>Unit: px<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
+| contentHeight<sup>10+</sup>  | number | Yes  | Actual rendered height of the image.<br>Unit: px<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
+| contentOffsetX<sup>10+</sup> | number | Yes  | Offset of the rendered content relative to the component on the x-axis.<br>Unit: px<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
+| contentOffsetY<sup>10+</sup> | number | Yes  | Offset of the rendered content relative to the component on the y-axis<br>Unit: px<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
 
 ### onError<sup>9+</sup>
 
@@ -862,14 +871,14 @@ This event is not triggered if the parameter type of the component is [AnimatedD
 
 | Name         | Type  | Read-Only| Optional| Description                     |
 | --------------- | ------ | ---- | ------------------------- | ------------------------- |
-| componentWidth  | number | No | No | Width of the component.<br>Unit: pixel<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| componentHeight | number | No | No | Height of the component.<br>Unit: pixel<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| componentWidth  | number | No | No | Width of the component.<br>Unit: px<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| componentHeight | number | No | No | Height of the component.<br>Unit: px<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | message<sup>10+</sup>         | string | No | No | Error information.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | error<sup>20+</sup>         | [BusinessError\<void>](#businesserror20) | No | Yes | Error information returned when an error occurs during image loading, where **code** represents the error code and **message** indicates the error message. For details, see the error code reference below.<br>Default value: **{ code : -1, message : "" }**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 20.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## BusinessError<sup>20+</sup>
 
-type BusinessError\<T> = BusinessError\<T>
+type BusinessError\<T = void> = BusinessError\<T>
 
 Represents the error information returned when an error occurs during image loading.
 

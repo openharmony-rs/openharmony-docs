@@ -12,7 +12,7 @@ Audio and Video Session (AVSession) Kit provides the audio and video management 
 
 - Unified audio and video management: Audio and video applications access AVSession and send it application data (for example, the song that is being played and the playback state). Through a controller, the user can choose another application or device for playback.
 
-- Restricted audio background playback: After an audio application accesses AVSession, it can continue audio playback in the background. To use this feature, the application must also request a background task.
+- Restricted audio background playback: After an audio application accesses AVSession, it can continue audio playback in the background. To use this feature, the application must also request a [continuous task](../../task-management/continuous-task.md).
 
 ## Highlights
 
@@ -26,7 +26,7 @@ Audio and Video Session (AVSession) Kit provides the audio and video management 
 
   Through the controller, the background playback of applications is visible and controllable.
 
-  The system enforces strict control over background playback. For applications that have not integrated with AVSession or for applications that have integrated with AVSession but do not have a valid AVSession instance when they move to the background, their audio playback are forcibly paused. This addresses the issue of applications playing audio maliciously in the background, making it difficult for users to locate and close the offending application.
+  The system enforces strict control over background playback. For applications that have not integrated with AVSession or for applications that have integrated with AVSession but do not have a valid AVSession instance when they move to the background, their audio playback is forcibly paused. This addresses the issue of applications playing audio maliciously in the background, making it difficult for users to locate and close the offending application.
 
 ## Basic Concepts
 

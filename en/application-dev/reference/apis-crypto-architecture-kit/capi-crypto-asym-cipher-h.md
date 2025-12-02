@@ -19,7 +19,7 @@ Defines APIs for encrypting and decrypting asymmetric keys.
 
 **Since**: 20
 
-**Related Module**: [CryptoAsymCipherApi](capi-cryptoasymcipherapi.md)
+**Related module**: [CryptoAsymCipherApi](capi-cryptoasymcipherapi.md)
 
 ## Summary
 

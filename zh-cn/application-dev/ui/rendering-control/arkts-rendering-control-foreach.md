@@ -312,7 +312,7 @@ class Article {
 @Entry
 @Component
 struct ArticleListView {
-  @State isListReachEnd: boolean = false;
+  isListReachEnd: boolean = false;
   @State articleList: Array<Article> = [
     new Article('001', '第1篇文章', '文章简介内容'),
     new Article('002', '第2篇文章', '文章简介内容'),

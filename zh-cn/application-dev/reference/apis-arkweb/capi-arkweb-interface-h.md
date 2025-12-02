@@ -10,6 +10,8 @@
 
 提供ArkWeb在Native侧获取API的接口，及基础Native API类型。
 
+**引用文件：** <web/arkweb_interface.h>
+
 **库：** libohweb.so
 
 **系统能力：** SystemCapability.Web.Webview.Core

@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The AudioCapturer is used to record Pulse Code Modulation (PCM) audio data. It is suitable if you have extensive audio development experience and want to implement more flexible recording features.
 
@@ -150,7 +150,6 @@ class Options {
   length?: number;
 }
 
-let bufferSize: number = 0;
 let audioCapturer: audio.AudioCapturer | undefined = undefined;
 let audioStreamInfo: audio.AudioStreamInfo = {
   samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
@@ -170,8 +169,8 @@ let file: fs.File;
 let readDataCallback: Callback<ArrayBuffer>;
 
 async function initArguments(context: common.UIAbilityContext) {
+  let bufferSize: number = 0;
   let path = context.cacheDir;
-  // Ensure that the resource exists in the sandbox path.
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   readDataCallback = (buffer: ArrayBuffer) => {
@@ -233,7 +232,6 @@ async function stop() {
       if (err) {
         console.error('Capturer stop failed.');
       } else {
-        fs.close(file);
         console.info('Capturer stop success.');
       }
     });
@@ -254,6 +252,7 @@ async function release() {
       if (err) {
         console.error('Capturer release failed.');
       } else {
+        fs.closeSync(file);
         console.info('Capturer release success.');
       }
     });
