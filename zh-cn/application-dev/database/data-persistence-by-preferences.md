@@ -111,7 +111,6 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    import { window } from '@kit.ArkUI';
 
    let dataPreferences: preferences.Preferences | null = null;
-   const context = EntryAbility.getContext();
 
    class EntryAbility extends UIAbility {
      onWindowStageCreate(windowStage: window.WindowStage) {
@@ -146,7 +145,6 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    import { window } from '@kit.ArkUI';
 
    let dataPreferences: preferences.Preferences | null = null;
-   const context = EntryAbility.getContext();
 
    class EntryAbility extends UIAbility {
      onWindowStageCreate(windowStage: window.WindowStage) {
