@@ -108,7 +108,7 @@ onTouch(type: 'touch', receiver: TouchEventReceiver): void
 | 201  | Permission denied.   |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -225,7 +225,7 @@ onMouse(receiver: Callback&lt;MouseEvent&gt;): void
 | 201  | Permission denied.   |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -370,7 +370,7 @@ onMouse(rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -544,7 +544,7 @@ offTouch(receiver?: TouchEventReceiver): void
 | 201  | Permission denied.   |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -727,7 +727,7 @@ offMouse(receiver?: Callback&lt;MouseEvent&gt;): void
 | 201  | Permission denied.   |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -813,7 +813,7 @@ type TouchEventReceiver = (touchEvent: TouchEvent) => boolean;
 | ------- | ---------------------------------------- |
 | Boolean | 若返回true，本次触屏后续产生的事件不再分发到窗口；若返回false，本次触屏后续产生的事件还会分发到窗口。 |
 
-**ArkTS-Dyn示例：**
+ArkTS-Dyn示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -842,7 +842,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例：**
+ArkTS-Sta示例
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -963,7 +963,7 @@ onPinch(receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pi
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -1100,7 +1100,6 @@ offPinch(receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#
 
 **ArkTS-Sta起始版本**：22
 
-
 **参数：**
 
 | 参数名       | 类型                         | 必填   | 说明                  |
@@ -1117,7 +1116,7 @@ offPinch(receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -1193,7 +1192,6 @@ on(type: 'threeFingersSwipe', receiver: Callback&lt;[ThreeFingersSwipe](js-apis-
 
 **ArkTS-Dyn起始版本**：10
 
-
 **参数：**
 
 | 参数名       | 类型                         | 必填   | 说明                  |
@@ -1253,7 +1251,6 @@ onThreeFingersSwipe(receiver: Callback&lt;[ThreeFingersSwipe](js-apis-multimodal
 
 **ArkTS-Sta起始版本**：22
 
-
 **参数：**
 
 | 参数名       | 类型                         | 必填   | 说明                  |
@@ -1270,7 +1267,7 @@ onThreeFingersSwipe(receiver: Callback&lt;[ThreeFingersSwipe](js-apis-multimodal
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -1421,7 +1418,7 @@ offThreeFingersSwipe(receiver?: Callback&lt;[ThreeFingersSwipe](js-apis-multimod
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -1497,7 +1494,6 @@ on(type: 'fourFingersSwipe', receiver: Callback&lt;[FourFingersSwipe](js-apis-mu
 
 **ArkTS-Dyn起始版本**：10
 
-
 **参数：**
 
 | 参数名       | 类型                         | 必填   | 说明                  |
@@ -1555,8 +1551,7 @@ onFourFingersSwipe(receiver: Callback&lt;[FourFingersSwipe](js-apis-multimodalin
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#on_fourFingersSwipe_dyn)
 
-**ArkTS-Dyn起始版本**：22
-
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1574,7 +1569,7 @@ onFourFingersSwipe(receiver: Callback&lt;[FourFingersSwipe](js-apis-multimodalin
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -1725,7 +1720,7 @@ offFourFingersSwipe(receiver?: Callback&lt;[FourFingersSwipe](js-apis-multimodal
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -1879,7 +1874,7 @@ onRotate(fingers: int, receiver: Callback&lt;Rotate&gt;): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -2033,7 +2028,7 @@ offRotate(fingers: int, receiver?: Callback&lt;Rotate&gt;): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -2187,7 +2182,7 @@ onPinch(fingers: int, receiver: Callback&lt;Pinch&gt;): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -2341,7 +2336,7 @@ offPinch(fingers: int, receiver?: Callback&lt;Pinch&gt;): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -2492,7 +2487,7 @@ onThreeFingersTap(receiver: Callback&lt;[ThreeFingersTap](js-apis-multimodalinpu
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -2643,7 +2638,7 @@ offThreeFingersTap(receiver?: Callback&lt;[ThreeFingersTap](js-apis-multimodalin
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -2797,7 +2792,7 @@ onTouchscreenSwipe(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): v
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -2932,7 +2927,6 @@ offTouchscreenSwipe(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;):
 
 **ArkTS-Sta起始版本**：22
 
-
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
@@ -2950,7 +2944,7 @@ offTouchscreenSwipe(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;):
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -3101,7 +3095,7 @@ onTouchscreenPinch(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): v
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -3252,7 +3246,7 @@ offTouchscreenPinch(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;):
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -3384,7 +3378,7 @@ onKeyPressed(keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEvent&gt;): vo
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#on_keyPressed_dyn)
 
-**ArkTS-Dyn起始版本**：22
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -3404,7 +3398,7 @@ onKeyPressed(keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEvent&gt;): vo
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 4100001  | Event listening not supported for the key.                   |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
@@ -3550,7 +3544,7 @@ offKeyPressed(receiver?: Callback&lt;KeyEvent&gt;): void
 | 202      | Permission denied, non-system app called system api.         |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
@@ -3642,7 +3636,7 @@ ArkTS-Sta: queryTouchEvents(count: int): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 | 201      | Permission denied.                                           |
 | 202      | Permission denied, non-system app called system api.         |
 
-**示例：**
+示例：
 
 ```js
 import { inputMonitor, TouchEvent } from '@kit.InputKit'

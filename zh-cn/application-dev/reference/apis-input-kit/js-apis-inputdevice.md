@@ -46,7 +46,7 @@ ArkTS-Sta: getDeviceList(callback: AsyncCallback&lt;Array&lt;int&gt;&gt;): void
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -75,7 +75,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -124,7 +124,7 @@ ArkTS-Sta: getDeviceList(): Promise&lt;Array&lt;int&gt;&gt;
 | ---------------------------------- | ------------------------------------------- |
 | ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt; <br>  ArkTS-Sta: Promise&lt;Array&lt;int&gt;&gt; | Promise对象，返回所有输入设备的id列表。 |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -149,7 +149,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -203,7 +203,7 @@ ArkTS-Sta: getDeviceInfo(deviceId: int, callback: AsyncCallback&lt;InputDeviceDa
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -233,7 +233,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 
 ```ts
 import { inputDevice } from '@kit.InputKit';
@@ -297,7 +297,7 @@ ArkTS-Sta: getDeviceInfo(deviceId: int): Promise&lt;InputDeviceData&gt;
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -357,7 +357,7 @@ ArkTS-Sta: getDeviceInfoSync(deviceId: int): InputDeviceData
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -411,7 +411,7 @@ on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -476,7 +476,7 @@ onChange(listener: Callback&lt;DeviceListener&gt;): void
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```ts
 import { inputDevice } from '@kit.InputKit';
@@ -542,7 +542,7 @@ off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -611,7 +611,7 @@ off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -668,7 +668,7 @@ getDeviceIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | callback | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 回调函数，返回输入设备的id列表。 |
 
-**示例**：
+示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -709,7 +709,7 @@ getDeviceIds(): Promise&lt;Array&lt;number&gt;&gt;
 | ---------------------------------- | ------------------------------------------- |
 | Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回所有输入设备的id列表。 |
 
-**示例**：
+示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -747,7 +747,7 @@ getDevice(deviceId: number, callback: AsyncCallback&lt;InputDeviceData&gt;): voi
 | deviceId | number                                                   | 是   | 输入设备id。                     |
 | callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数，返回输入设备信息。 |
 
-**示例**：
+示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -795,7 +795,7 @@ getDevice(deviceId: number): Promise&lt;InputDeviceData&gt;
 | -------------------------------------------------- | ----------------------------------- |
 | Promise&lt;[InputDeviceData](#inputdevicedata)&gt; | Promise对象，返回输入设备信息。 |
 
-**示例**：
+示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -848,7 +848,7 @@ ArkTS-Sta: supportKeys(deviceId: int, keys: Array&lt;KeyCode&gt;, callback: Asyn
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -874,7 +874,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例：
 
 ```ts
 import { inputDevice } from '@kit.InputKit';
@@ -935,7 +935,7 @@ ArkTS-Sta: supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;): Promise&lt
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -996,7 +996,7 @@ ArkTS-Sta: supportKeysSync(deviceId: int, keys: Array&lt;KeyCode&gt;): Array&lt;
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -1050,7 +1050,7 @@ ArkTS-Sta: getKeyboardType(deviceId: int, callback: AsyncCallback&lt;KeyboardTyp
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -1080,7 +1080,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -1144,7 +1144,7 @@ ArkTS-Sta: getKeyboardType(deviceId: int): Promise&lt;KeyboardType&gt;
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -1169,7 +1169,7 @@ struct Index {
   }
 }
 ```
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -1229,7 +1229,7 @@ ArkTS-Sta: getKeyboardTypeSync(deviceId: int): KeyboardType
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -1254,7 +1254,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -1312,7 +1312,7 @@ isFunctionKeyEnabled(functionKey: FunctionKey): Promise&lt;boolean&gt;
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900002      | There is currently no keyboard device connected. |
 
-**示例**：
+示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -1370,7 +1370,7 @@ setFunctionKeyEnabled(functionKey: FunctionKey, enabled: boolean): Promise&lt;vo
 | 3900002      | There is currently no keyboard device connected. |
 | 3900003      | It is prohibited for non-input applications. |
 
-**示例**：
+示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -1418,7 +1418,7 @@ ArkTS-Sta: getIntervalSinceLastInput(): Promise&lt;long&gt;
 | --------------------------------------------- | ------------------------------- |
 | ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回距离上次系统输入事件的时间间隔，单位为微秒（μs）。|
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -1439,7 +1439,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';

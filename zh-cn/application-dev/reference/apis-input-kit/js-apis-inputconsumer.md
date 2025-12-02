@@ -320,7 +320,7 @@ offHotkeyChange(hotkeyOptions: HotkeyOptions, callback?: Callback&lt;HotkeyOptio
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 
-**示例：**
+示例：
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
@@ -447,7 +447,7 @@ onKeyPressed(options: KeyPressedConfig, callback: Callback&lt;KeyEvent&gt;): voi
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 
-**示例：**
+示例：
 
 ```js
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
@@ -564,7 +564,7 @@ offKeyPressed(callback?: Callback&lt;KeyEvent&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 
-**示例：**
+示例：
 
 ```js
 import { inputConsumer, KeyEvent } from '@kit.InputKit';

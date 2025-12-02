@@ -48,7 +48,7 @@ ArkTS-Sta: setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): 
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -77,7 +77,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -143,7 +143,7 @@ ArkTS-Sta: setPointerSpeed(speed: int): Promise&lt;void&gt;
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -199,7 +199,7 @@ ArkTS-Sta: setPointerSpeedSync(speed: int): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -252,7 +252,7 @@ getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -281,7 +281,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -330,7 +330,7 @@ getPointerSpeed(): Promise&lt;number&gt;
 | --------------------- | ------------------- |
 | ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Dyn: Promise&lt;int| Promise实例，异步返回鼠标移动速度。 |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -355,7 +355,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -411,7 +411,7 @@ ArkTS-Sta: getPointerSpeedSync(): int
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -465,7 +465,7 @@ setHoverScrollState(state: boolean, callback: AsyncCallback&lt;void&gt;): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -494,7 +494,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -558,7 +558,7 @@ setHoverScrollState(state: boolean): Promise&lt;void&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -612,7 +612,7 @@ getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -637,7 +637,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -691,7 +691,7 @@ getHoverScrollState(): Promise&lt;boolean&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -746,7 +746,7 @@ setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -775,7 +775,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -839,7 +839,7 @@ setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -893,7 +893,7 @@ getMousePrimaryButton(callback: AsyncCallback&lt;PrimaryButton&gt;): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -918,7 +918,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -972,7 +972,7 @@ getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1029,7 +1029,7 @@ ArkTS-Sta: setMouseScrollRows(rows: int, callback: AsyncCallback&lt;void&gt;): v
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1058,7 +1058,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1122,7 +1122,7 @@ setMouseScrollRows(rows: number): Promise&lt;void&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1178,7 +1178,7 @@ ArkTS-Sta: getMouseScrollRows(callback: AsyncCallback&lt;int&gt;): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1203,7 +1203,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1259,7 +1259,7 @@ ArkTS-Sta: getMouseScrollRows(): Promise&lt;int&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1284,7 +1284,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1339,7 +1339,7 @@ setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1368,7 +1368,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1432,7 +1432,7 @@ setTouchpadScrollSwitch(state: boolean): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1486,7 +1486,7 @@ getTouchpadScrollSwitch(callback:  AsyncCallback\<boolean>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1511,7 +1511,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1565,7 +1565,7 @@ getTouchpadScrollSwitch(): Promise\<boolean>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1590,7 +1590,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1645,7 +1645,7 @@ setTouchpadScrollDirection(state: boolean, callback: AsyncCallback\<void>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1674,7 +1674,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1738,7 +1738,7 @@ setTouchpadScrollDirection(state: boolean): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1792,7 +1792,7 @@ getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1817,7 +1817,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1871,7 +1871,7 @@ getTouchpadScrollDirection(): Promise\<boolean>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1926,7 +1926,7 @@ setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1955,7 +1955,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2019,7 +2019,7 @@ setTouchpadTapSwitch(state: boolean): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2073,7 +2073,7 @@ getTouchpadTapSwitch(callback:  AsyncCallback\<boolean>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2098,7 +2098,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2152,7 +2152,7 @@ getTouchpadTapSwitch(): Promise\<boolean>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2209,7 +2209,7 @@ ArkTS-Sta: setTouchpadPointerSpeed(speed: int, callback: AsyncCallback\<void>): 
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2238,7 +2238,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2304,7 +2304,7 @@ ArkTS-Sta: setTouchpadPointerSpeed(speed: int): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2360,7 +2360,7 @@ ArkTS-Sta: getTouchpadPointerSpeed(callback: AsyncCallback\<int>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2385,7 +2385,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2441,7 +2441,7 @@ ArkTS-Sta: getTouchpadPointerSpeed(): int\<number>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2466,7 +2466,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2521,7 +2521,7 @@ setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2550,7 +2550,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2614,7 +2614,7 @@ setTouchpadPinchSwitch(state: boolean): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2668,7 +2668,7 @@ getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2693,7 +2693,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2747,7 +2747,7 @@ getTouchpadPinchSwitch(): Promise\<boolean>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2802,7 +2802,7 @@ setTouchpadSwipeSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2832,7 +2832,7 @@ struct Index {
 ```
 
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2896,7 +2896,7 @@ setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2950,7 +2950,7 @@ getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2976,7 +2976,7 @@ struct Index {
 ```
 
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3030,7 +3030,7 @@ getTouchpadSwipeSwitch(): Promise\<boolean>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3085,7 +3085,7 @@ setTouchpadRightClickType(type: RightClickType, callback: AsyncCallback\<void>):
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3114,7 +3114,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3178,7 +3178,7 @@ setTouchpadRightClickType(type: RightClickType): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3232,7 +3232,7 @@ getTouchpadRightClickType(callback: AsyncCallback\<RightClickType>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3258,7 +3258,7 @@ struct Index {
 ```
 
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3312,7 +3312,7 @@ getTouchpadRightClickType(): Promise\<RightClickType>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3369,7 +3369,7 @@ ArkTS-Sta: setPointerSize(size: int, callback: AsyncCallback&lt;void&gt;): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3399,7 +3399,7 @@ struct Index {
 ```
 
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3465,7 +3465,7 @@ ArkTS-Sta: setPointerSize(size: int): Promise&lt;void&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3521,7 +3521,7 @@ ArkTS-Sta: setPointerSizeSync(size: int): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3576,7 +3576,7 @@ ArkTS-Sta: getPointerSize(callback: AsyncCallback&lt;int&gt;): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3602,7 +3602,7 @@ struct Index {
 ```
 
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3658,7 +3658,7 @@ ArkTS-Sta: getPointerSize(): Promise&lt;int&gt;
 | 202  | SystemAPI permission error.  |
 
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3684,7 +3684,7 @@ struct Index {
 ```
 
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3740,7 +3740,7 @@ ArkTS-Sta: getPointerSizeSync(): int
 | 202  | SystemAPI permission error.  |
 
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3800,7 +3800,7 @@ ArkTS-Sta: setPointerColor(color: int, callback: AsyncCallback&lt;void&gt;): voi
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3830,7 +3830,7 @@ struct Index {
 ```
 
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3900,7 +3900,7 @@ ArkTS-Sta: setPointerColor(color: int): Promise&lt;void&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3960,7 +3960,7 @@ ArkTS-Sta: setPointerColorSync(color: int): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -4015,7 +4015,7 @@ ArkTS-Sta: getPointerColor(callback: AsyncCallback&lt;int&gt;): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -4040,7 +4040,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -4096,7 +4096,7 @@ ArkTS-Sta: getPointerColor(): Promise&lt;int&gt;
 | 202  | SystemAPI permission error.  |
 
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -4121,7 +4121,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -4177,7 +4177,7 @@ ArkTS-Sta: getPointerColorSync(): int
 | 202  | SystemAPI permission error.  |
 
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -4231,7 +4231,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -4261,7 +4261,7 @@ struct Index {
 ```
 
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -4325,7 +4325,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -4379,7 +4379,7 @@ getTouchpadDoubleTapAndDragState(callback: AsyncCallback\<boolean>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -4404,7 +4404,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -4457,7 +4457,7 @@ getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -4483,7 +4483,7 @@ struct Index {
 ```
 
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';

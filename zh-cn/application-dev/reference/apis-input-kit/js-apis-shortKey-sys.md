@@ -48,7 +48,7 @@ ArkTS-Sta： setKeyDownDuration(businessKey: string, delay: int, callback: Async
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { shortKey } from '@kit.InputKit';
@@ -77,7 +77,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { shortKey } from '@kit.InputKit';
@@ -142,7 +142,7 @@ ArkTS-Sta：setKeyDownDuration(businessKey: string, delay: int): Promise&lt;void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { shortKey } from '@kit.InputKit';

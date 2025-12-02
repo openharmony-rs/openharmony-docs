@@ -97,7 +97,7 @@ onKey(callback: Callback&lt;KeyOptions&gt;): void
 | keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。                 |
 | callback   | Callback&lt;KeyOptions&gt; | 是    | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合按键数据。 |
 
-**示例：** 
+示例：
 
 ```ts
 import { inputConsumer } from '@kit.InputKit';

@@ -42,7 +42,7 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801  | Capability not supported. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -71,7 +71,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -133,7 +133,7 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801  | Capability not supported. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -184,7 +184,7 @@ setPointerVisibleSync(visible: boolean): void
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -234,7 +234,7 @@ isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -263,7 +263,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -310,7 +310,7 @@ isPointerVisible(): Promise&lt;boolean&gt;
 | ---------------------- | ------------------- |
 | Promise&lt;boolean&gt; | Promise对象，返回鼠标指针状态查询结果。true代表显示状态，false代表隐藏状态。 |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -353,7 +353,7 @@ isPointerVisibleSync(): boolean
 | ---------------------- | ------------------- |
 | boolean | 返回鼠标指针显示或隐藏状态。true代表显示状态，false代表隐藏状态。 |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -406,7 +406,7 @@ ArkTS-Sta: getPointerStyle(windowId: int, callback: AsyncCallback&lt;PointerStyl
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -445,7 +445,7 @@ struct Index {
 ```
 
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -517,7 +517,7 @@ ArkTS-Sta: getPointerStyle(windowId: int): Promise&lt;PointerStyle&gt;
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -556,7 +556,7 @@ struct Index {
 ```
 
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -628,7 +628,7 @@ ArkTS-Sta: getPointerStyleSync(windowId: int): PointerStyle
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -683,7 +683,7 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle, callback: 
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -721,7 +721,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -795,7 +795,7 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise&l
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -834,7 +834,7 @@ struct Index {
 ```
 
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -901,7 +901,7 @@ ArkTS-Sta: setPointerStyleSync(windowId: int, pointerStyle: PointerStyle): void
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 ```js
 import { pointer } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -937,7 +937,7 @@ struct Index {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 ```js
 import { pointer } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1101,7 +1101,7 @@ ArkTS-Sta: setCustomCursor(windowId: int, pixelMap: image.PixelMap, focusX?: int
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1141,7 +1141,7 @@ struct Index {
 ```
 
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1239,7 +1239,7 @@ ArkTS-Sta: setCustomCursor(windowId: int, cursor: CustomCursor, config: CursorCo
 | 401  | Parameter error. Possible causes: 1. Abnormal windowId parameter passed in. 2. Abnormal pixelMap parameter passed in; 3. Abnormal focusX parameter passed in.4. Abnormal focusY parameter passed in. |
 | 26500001 | Invalid windowId. Possible causes: The window id does not belong to the current process. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1279,7 +1279,7 @@ struct Index {
 ```
 
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1349,7 +1349,7 @@ ArkTS-Sta: setCustomCursorSync(windowId: int, pixelMap: image.PixelMap, focusX?:
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**ArkTS-Dyn示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1388,7 +1388,7 @@ struct Index {
 ```
 
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
