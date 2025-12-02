@@ -703,27 +703,27 @@ struct MyComponent {
 
 1. 如图16所示，使用默认翻页动画，CACHE_BOTH_SIDE模式，n设置为2，点击TabBar切换到yellow页，TabContent1~3被缓存。再切换到red页，TabContent1~2释放，TabContent3~5被缓存。
 
-**图16** 默认翻页动画，CACHE_BOTH_SIDE模式示意图
+   **图16** 默认翻页动画，CACHE_BOTH_SIDE模式示意图
 
-![cachedMaxCount1](figures/cachedMaxCount1.png)
+   ![cachedMaxCount1](figures/cachedMaxCount1.png)
 
 2. 如图17所示，使用默认翻页动画，CACHE_LATEST_SWITCHED模式，n设置为2，点击TabBar切换到yellow页，TabContent1、3被缓存，TabContent2释放。再切换到red页，TabContent1、3、5被缓存，TabContent4释放。
 
-**图17** 默认翻页动画，CACHE_LATEST_SWITCHED模式示意图
+   **图17** 默认翻页动画，CACHE_LATEST_SWITCHED模式示意图
 
-![cachedMaxCount2](figures/cachedMaxCount2.png)
+   ![cachedMaxCount2](figures/cachedMaxCount2.png)
 
 3. 如图18所示，关闭翻页动画，CACHE_BOTH_SIDE模式，n设置为2，点击TabBar切换到yellow页，TabContent1、3被缓存。再切换到red页，TabContent3、5被缓存，TabContent1释放。
 
-**图18** 关闭翻页动画，CACHE_BOTH_SIDE模式示意图
+   **图18** 关闭翻页动画，CACHE_BOTH_SIDE模式示意图
 
-![cachedMaxCount3](figures/cachedMaxCount3.png)
+   ![cachedMaxCount3](figures/cachedMaxCount3.png)
 
 4. 如图19所示，关闭翻页动画，CACHE_LATEST_SWITCHED模式，n设置为2，点击TabBar切换到yellow页，TabContent1、3被缓存。再切换到red页，TabContent1、3、5被缓存。
 
-**图19** 关闭翻页动画，CACHE_LATEST_SWITCHED模式示意图
+   **图19** 关闭翻页动画，CACHE_LATEST_SWITCHED模式示意图
 
-![cachedMaxCount4](figures/cachedMaxCount4.png)
+   ![cachedMaxCount4](figures/cachedMaxCount4.png)
 
 ## 相关实例
 
