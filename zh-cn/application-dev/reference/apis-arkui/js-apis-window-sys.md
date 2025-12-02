@@ -4180,12 +4180,14 @@ ArkTS-Sta示例：
 // EntryAbility.ets
 import { UIAbility, Want, StartOptions, AbilityConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import window from '@ohos.window';
+import { AppStorage } from '@ohos.arkui.stateManagement'
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    windowStage.loadContent('pages/Index', (err) => {
-      if (err.code) {
-        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}.`);
+    windowStage.loadContent('pages/Index', (err: BusinessError<void>|null) :void => {
+      if (err?.code) {
+        console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}.`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -4198,16 +4200,20 @@ export default class EntryAbility extends UIAbility {
           windowMode: AbilityConstant.WindowMode.WINDOW_MODE_FLOATING
         };
         this.context.startAbility(want, options);
-      } catch (err) {
-        console.error(`Failed to start the ability. Cause code: ${err.code}, message: ${err.message}.`);
+      } catch (exception) {
+        let err = exception as BusinessError;
+        console.error(`Failed to start the ability. Cause code: ${err?.code}, message: ${err?.message}.`);
       }
+
       setTimeout(async () => {
-        let mainWindow: window.Window | null | undefined = windowStage.getMainWindowSync();
-        let targetId: int | null | undefined = AppStorage.get('higher_window_id');
-        mainWindow.raiseMainWindowAboveTarget(targetId).then(() => {
+        let mainWindow = windowStage.getMainWindowSync();
+        //获取RaiseMainWindowAbility对应的主窗
+        let newMainWindow: window.Window = window.findWindow("myapplication1");
+        let targetId = newMainWindow.getWindowProperties().id;
+        mainWindow.raiseMainWindowAboveTarget(targetId).then((): void => {
           console.info('Succeeded in raising main window above target.');
-        }).catch((err: Error) => {
-          console.error(`Failed to raise main window above target. Cause code: ${err?.code}, message: ${err?.message}.`)
+        }).catch((err: BusinessError): void => {
+            console.error(`Failed to raise main window above target. Cause code: ${err?.code}, message: ${err?.message}.`)
         });
       }, 3000)
     });
@@ -4216,14 +4222,17 @@ export default class EntryAbility extends UIAbility {
 ```
 ```ts
 // 新建文件src/main/ets/raisemainwindowability/RaiseMainWindowAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
+// RaiseMainWindowAbility.ets
+import { UIAbility, Want, StartOptions, AbilityConstant } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import window from '@ohos.window';
+import { AppStorage } from '@ohos.arkui.stateManagement'
 
 export default class RaiseMainWindowAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    AppStorage.setOrCreate('higher_window_id', windowStage.getMainWindowSync().getWindowProperties().id);
-    windowStage.loadContent('pages/Index', (err) => {
-      if (err.code) {
-        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}.`);
+    windowStage.loadContent('pages/Index', (err: BusinessError<void>|null) :void => {
+      if (err?.code) {
+        console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}.`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -4232,7 +4241,6 @@ export default class RaiseMainWindowAbility extends UIAbility {
 }
 ```
 ```json5
-//module.json5
 {
   "module": {
     "name": "entry",
@@ -4240,9 +4248,7 @@ export default class RaiseMainWindowAbility extends UIAbility {
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
-      "phone",
-      "tablet",
-      "2in1"
+      "phone"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -4263,15 +4269,16 @@ export default class RaiseMainWindowAbility extends UIAbility {
               "entity.system.home"
             ],
             "actions": [
-              "action.system.home"
+              "ohos.want.action.home"
             ]
           }
         ]
-      },
+      }
+    ,
       {
         "name": "RaiseMainWindowAbility",
         "launchType": "multiton",
-        "srcEntry": "./ets/entryability/EntryAbility.ets",
+        "srcEntry": "./ets/raisemainwindowability/RaiseMainWindowAbility.ets",
         "description": "$string:EntryAbility_desc",
         "icon": "$media:layered_image",
         "label": "$string:EntryAbility_label",
