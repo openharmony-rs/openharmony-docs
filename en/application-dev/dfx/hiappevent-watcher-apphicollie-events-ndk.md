@@ -1,5 +1,5 @@
 # Subscribing to Task Execution Timeout Events (C/C++)
-
+ 
 ## Overview
 
 This topic describes how to use the C/C++ APIs provided by HiAppEvent to subscribe to task execution timeout events. For details (such as parameter restrictions and value ranges), see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
@@ -312,7 +312,7 @@ The following describes how to subscribe to the freeze event triggered by a butt
 
 ### Verifying the Subscription
 
-1. The application crashes. After restarting the application, you can view the following event information in the **Log** window.
+The application crashes. After restarting the application, you can view the following event information in the **Log** window.
 
    ```text
    HiAppEvent eventInfo.domain=OS
