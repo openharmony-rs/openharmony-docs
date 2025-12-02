@@ -995,6 +995,10 @@ ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于
 
 `BuilderNode.update()`方法并未新增`useParallel`参数。是否启用并行更新取决于构建阶段的`useParallel`参数决定。如果该[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)在创建时使用了并行方式构建，那么在调用`update()`时，只要该节点尚未挂载（即未显示在UI上），更新操作会将以并行方式执行。如下所示：
   ```ts
+  // ArkTS-Sta示例
+  import { UIContext, Column, Text, Button, Entry, Component, ClickEvent, Margin, NodeContainer, wrapBuilder, Color} from '@ohos.arkui.component'
+  import {BuilderNode, FrameNode, NodeController, NodeRenderType, RenderOptions, Size } from '@ohos.arkui.node'
+
   // 自定义参数
   class Params {
     text1: string;
@@ -1017,7 +1021,6 @@ ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于
   class MyNodeController extends NodeController {
     private rootNode ?: FrameNode;
     private builderNode ?: BuilderNode<Params>;
-    private content?: ComponentContent;
     private uiContext?: UIContext;
     private params: string = "update with Params";
 
@@ -1048,6 +1051,38 @@ ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于
         // useParallel为ture开启并行构建
         builderNode.build(wrapBuilder(BuildTextWithParams), new Params("Build with Params"), {useParallel: true});
         this.builderNode = builderNode;
+      }
+    }
+  }
+
+  @Entry
+  @Component
+  struct MyStateSample {
+    private nodeController: MyNodeController = new MyNodeController();
+
+    build() {
+      Column() {
+        Column() {
+          Text('NodeContainer')
+          NodeContainer(this.nodeController)
+            .borderWidth(1)
+            .height("80%")
+            .width("100%")
+        }
+        .height("40%")
+        Button('addBuilderNode')
+          .onClick((e: ClickEvent) => {
+            this.nodeController.addBuilderNode();
+          })
+          .width(200)
+          .height(50)
+          .margin({ bottom: 10} as Margin)
+        Button("Update")
+          .onClick((e: ClickEvent) => {
+            this.nodeController?.updateNode();
+          })
+          .width(200)
+          .height(50)
       }
     }
   }
