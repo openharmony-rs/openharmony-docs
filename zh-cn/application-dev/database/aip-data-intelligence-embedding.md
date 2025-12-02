@@ -73,7 +73,7 @@
 
    <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
-    ``` TypeScript
+   ``` TypeScript
    let textConfig:intelligence.ModelConfig = {
      version:intelligence.ModelVersion.BASIC_MODEL,
      isNpuAvailable:false,
@@ -82,24 +82,6 @@
    let textEmbedding:intelligence.TextEmbedding;
    ```
    <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-   
-    ``` TypeScript
-   intelligence.getTextEmbeddingModel(textConfig)
-     .then((data:intelligence.TextEmbedding) => {
-       console.info('Succeeded in getting TextModel');
-       textEmbedding = data;
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to get TextModel and code is ' + err.code);
-       // ...
-     })
-   ```
-
-3. 加载文本嵌入模型。
-   调用loadModel方法，加载文本嵌入模型。示例代码如下所示：
-
-   <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    textEmbedding.loadModel()
@@ -113,10 +95,10 @@
      })
    ```
 
-4. 获取文本的分块。当数据长度超过限定时，使用splitText()接口将其分块，然后再进行数据向量化。
-   调用splitText方法，获取文本的分块结果。示例代码如下所示：
+3. 加载文本嵌入模型。
+   调用loadModel方法，加载文本嵌入模型。示例代码如下所示：
 
-   <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    let splitConfig:intelligence.SplitConfig = {
@@ -136,12 +118,12 @@
      })
    ```
 
-5. 获取给定文本的嵌入向量。给定的文本数据可以是单个文本或文本集合。
-   调用getEmbedding方法，获取给定单个文本或文本集合的嵌入向量。示例代码如下所示：
+4. 获取文本的分块。当数据长度超过限定时，使用splitText()接口将其分块，然后再进行数据向量化。
+   调用splitText方法，获取文本的分块结果。示例代码如下所示：
 
-   <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
-    ``` TypeScript
+   ``` TypeScript
    let text = 'text';
    textEmbedding.getEmbedding(text)
      .then((data:Array<number>) => {
@@ -161,6 +143,23 @@
      })
      .catch((err:BusinessError) => {
        console.error('Failed to get Embedding and code is ' + err.code);
+       // ...
+     })
+   ```
+
+5. 获取给定文本的嵌入向量。给定的文本数据可以是单个文本或文本集合。
+   调用getEmbedding方法，获取给定单个文本或文本集合的嵌入向量。示例代码如下所示：
+
+   <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   textEmbedding.releaseModel()
+     .then(() => {
+       console.info('Succeeded in releasing Model');
+       // ...
+     })
+     .catch((err:BusinessError) => {
+       console.error('Failed to release Model and code is ' + err.code);
        // ...
      })
    ```
@@ -225,36 +224,36 @@
    调用loadModel方法，加载图像嵌入模型。示例代码如下所示：
 
     <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   imageEmbedding.loadModel()
-     .then(() => {
-       console.info('Succeeded in loading Model');
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to load Model and code is ' + err.code);
-       // ...
-     })
-   ```
+    
+    ``` TypeScript
+    imageEmbedding.loadModel()
+      .then(() => {
+        console.info('Succeeded in loading Model');
+        // ...
+      })
+      .catch((err:BusinessError) => {
+        console.error('Failed to load Model and code is ' + err.code);
+        // ...
+      })
+    ```
 
 4. 获取给定图像的嵌入向量。
    调用getEmbedding方法，获取给定图像的嵌入向量。示例代码如下所示：
 
     <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
-   imageEmbedding.getEmbedding(image)
-     .then((data:Array<number>) => {
-       console.info('Succeeded in getting Embedding');
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to get Embedding and code is ' + err.code);
-       // ...
-     })
-   ```
+    
+    ``` TypeScript
+    let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
+    imageEmbedding.getEmbedding(image)
+      .then((data:Array<number>) => {
+        console.info('Succeeded in getting Embedding');
+        // ...
+      })
+      .catch((err:BusinessError) => {
+        console.error('Failed to get Embedding and code is ' + err.code);
+        // ...
+      })
+    ```
 
 5. 释放图像嵌入模型。
    调用releaseModel方法，释放图像嵌入模型。示例代码如下所示：
