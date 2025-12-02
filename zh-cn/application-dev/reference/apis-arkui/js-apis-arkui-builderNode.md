@@ -216,7 +216,8 @@ build的可选参数。
 该示例演示了BuilderNode的build方法设置useParallel为true，BuildTextWithParams中Column组件和Text组件会以并行的方式创建。并行创建成功后会显示`Build with Params`等参数，Update按钮可以更新该参数。
 
 ```ts
-import { UIContext } from '@ohos.arkui.component'
+// ArkTS-Sta示例
+import { UIContext, Column, Text, Button, Entry, Component, ClickEvent, Margin, NodeContainer, wrapBuilder} from '@ohos.arkui.component'
 import {BuilderNode, FrameNode, NodeController, NodeRenderType, RenderOptions, Size } from '@ohos.arkui.node'
 
 class Params {
@@ -287,7 +288,7 @@ struct MyStateSample {
         })
         .width(200)
         .height(50)
-        .margin({botton: 10} as Margin)
+        .margin({ bottom: 10 } as Margin)
       Button("Update")
         .onClick((e: ClickEvent) => {
           this.nodeController?.updateNode();
