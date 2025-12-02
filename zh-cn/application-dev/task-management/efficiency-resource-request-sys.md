@@ -45,7 +45,7 @@
 | isPersist | boolean | 否 | 是否为永久持有资源，默认为false<br/>- true表示永久持有<br/>- false表示有限时间内持有 |
 | isProcess | boolean | 否 | 进程或应用申请，默认为false<br/>- true表示进程申请<br/>- false表示应用申请 |
 | reason | string | 是 | 申请资源原因 |
-| cpuLevel<sup>23+</sup> | EfficiencyResourcesCpuLevel  | 否 | 指定CPU资源，系统在空闲负载时会给应用分配指定的CPU资源。<br/>- 0表示运行在小核。<br/>- 1表示最高可运行在中核。<br/>- 2表示最高运行在大核。  |
+| cpuLevel<sup>23+</sup> | [EfficiencyResourcesCpuLevel](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager-sys.md#efficiencyresourcescpulevel23)  | 否 | 指定CPU资源，系统在空闲负载时会给应用分配指定的CPU资源。<br/>- 0表示运行在小核。<br/>- 1表示最高可运行在中核。<br/>- 2表示最高运行在大核。  |
 
 **表3** 能效资源类型
 | 参数名 | 值 | 描述 |
