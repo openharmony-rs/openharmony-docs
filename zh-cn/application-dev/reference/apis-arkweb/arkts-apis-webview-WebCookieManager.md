@@ -1525,15 +1525,15 @@ struct WebComponent {
 
 static setLazyInitializeWebEngine(lazy: boolean): void
 
-设置是否延迟初始化Web内核。
+设置是否延迟初始化ArkWeb内核。
 
 > **说明：**
 >
-> 该接口为全局静态方法，须在使用Web组件和初始化Web内核前调用，否则该设置无效。
+> 该接口为全局静态方法，须在使用ArkWeb组件和初始化ArkWeb内核前调用，否则该设置无效。
 > 
-> 该接口仅适用于调用后会初始化CookieManager的接口，比如本类WebCookieManager的接口。调用本接口设置为true后，再调用适用的接口，会在初始化CookieManager时跳过初始化Web内核，后续需自行初始化Web内核。
+> 该接口仅适用于调用后会初始化CookieManager的接口，比如本类WebCookieManager的其他接口。调用本接口设置为true后，再调用适用的接口，会在初始化CookieManager时跳过初始化ArkWeb内核，后续需自行初始化ArkWeb内核。
 > 
-> 调用本接口设置为true后，无痕模式下，初始化Web内核前的Cookie与初始化Web内核后的Cookie不共享。
+> 调用本接口设置为true后，无痕模式下，初始化ArkWeb内核前后的Cookie数据不共享。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1541,7 +1541,7 @@ static setLazyInitializeWebEngine(lazy: boolean): void
 
 | 参数名 | 类型   | 必填 | 说明                     |
 | ---- | ------- | -- | ------------------------- |
-| lazy | boolean | 是 | 是否延迟初始化Web内核，true：延迟，false：不延迟。<br>默认值：false。 |
+| lazy | boolean | 是 | 是否延迟初始化ArkWeb内核，true：延迟，false：不延迟。<br>默认值：false。 |
 
 **示例：**
 
