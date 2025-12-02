@@ -4749,6 +4749,8 @@ on(type: 'keyboardWillShow', callback: Callback&lt;KeyboardInfo&gt;): void
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 20
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -4835,11 +4837,13 @@ off(type: 'keyboardWillShow', callback?: Callback&lt;KeyboardInfo&gt;): void
 
 关闭固定态软键盘即将开始显示的监听。改变输入法窗口为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
-**ArkTS卡片模式：** 该接口仅适用于ArkTS卡片（ArkTS-Dyn）。
+**ArkTS模式：** 该接口仅适用于ArkTS。
 
 **相关接口：** 该接口对应的ArkTS应用（ArkTS-Sta）接口是[offKeyboardWillShow](#offkeyboardwillshow22)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -4933,11 +4937,13 @@ on(type: 'keyboardWillHide', callback: Callback&lt;KeyboardInfo&gt;): void
 
 改变软键盘为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
-**ArkTS卡片模式：** 该接口仅适用于ArkTS卡片（ArkTS-Dyn）。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS应用（ArkTS-Sta）接口是[onKeyboardWillHide](#onkeyboardwillhide22)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -5031,6 +5037,8 @@ off(type: 'keyboardWillHide', callback?: Callback&lt;KeyboardInfo&gt;): void
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 20
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -5074,9 +5082,9 @@ offKeyboardWillHide(callback?: Callback&lt;KeyboardInfo&gt;): void
 
 关闭固定态软键盘即将开始隐藏的监听。改变输入法窗口为固定态切换至悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
-**ArkTS应用模式：** 该接口仅适用于ArkTS应用（ArkTS-Sta）。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS卡片（ArkTS-Dyn）接口是[off('keyboardWillHide')](#offkeyboardwillhide20)。
+**相关接口：** 该接口对应的ArkTS-Duyn接口是[off('keyboardWillHide')](#offkeyboardwillhide20)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
