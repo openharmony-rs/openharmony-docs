@@ -11800,19 +11800,6 @@ type ValuesBucket = Record&lt;string, ValueType&gt;
 
 下列API示例中，需先使用[query](#query22)方法获取ResultSet实例，再调用对应方法。
 
-## VideoMode<sup>22+</sup>
-
-枚举，视频文件的log模式。
-
-​**系统接口**​：此接口为系统接口。
-
-**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-| 名称  |  值 |  说明 |
-| ----- |  ---- |  ---- |
-| DEFAULT |  0 |  默认类型。<br>取值为0表示当前视频非log模式或未判断类型，后续部分视频判断后字段会更新为1，因此不建议使用此字段进行查询。|
-| LOG_VIDEO |  1 |  log模式视频的文件类型。  |
-
 ### 属性
 
 ​**系统能力**​：SystemCapability.FileManagement.PhotoAccessHelper.Core
