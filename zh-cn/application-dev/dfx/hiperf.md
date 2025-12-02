@@ -313,7 +313,7 @@ Supported events for hardware:
 | -a | 采集整机的性能数据。 | 
 | --exclude-hiperf | 不采集hiperf进程自身的性能数据，该可选参数必须和-a一起使用。 | 
 | --exclude-process | 不采集的进程名，该参数必须和-a一起使用。 |
-| --pipe_input | 在应用开发中，无需使用该参数，在设备开发中,该参数用于客户端进程调用hiperf时建立命令输入通道，开发者可参考[hiperf_client接口](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。 |
+| --pipe_input | 在设备开发中,该参数用于客户端进程调用hiperf时建立命令输入通道，开发者可参考[hiperf_client接口](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。在应用开发中，无需使用该参数。 |
 | --pipe_output | 该参数用于客户端进程调用hiperf时建立响应输出通道，开发者可参考[hiperf_client接口](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。在应用开发中，此参数无实际作用，开发者可以忽略。 |
 <!--RP1End-->
 
