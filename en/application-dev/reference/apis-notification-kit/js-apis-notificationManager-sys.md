@@ -983,7 +983,7 @@ notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
 
 setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promise\<void\>
 
-Sets the notification slot for a specified application. This API uses a promise to return the result.
+Sets the slot flags for a specified application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3389,7 +3389,7 @@ notificationManager.setNotificationEnableSlot(
 
 isNotificationSlotEnabled(bundle: BundleOption, type: SlotType, callback: AsyncCallback\<boolean\>): void
 
-Checks whether a specified notification slot type is enabled for a specified application. This API uses an asynchronous callback to return the result.
+Checks whether a notification slot type is enabled for the specified application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3446,7 +3446,7 @@ notificationManager.isNotificationSlotEnabled(
 
 isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolean\>  
 
-Checks whether a specified notification slot type is enabled for a specified application. This API uses a promise to return the result.
+Checks whether a notification slot type is enabled for the specified application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
