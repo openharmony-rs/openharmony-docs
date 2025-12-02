@@ -15,7 +15,7 @@
 ## 导入模块
 ```ts
 import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastParameters,RenderResourceFactory,
-  SceneResourceFactory, SceneComponent, RenderContext, RenderParameters, Scene } from '@kit.ArkGraphics3D';
+  SceneResourceFactory, SceneComponent, RenderContext, RenderConfiguration, RenderParameters, Scene } from '@kit.ArkGraphics3D';
 ```
 
 ## ResourceStr<sup>20+</sup>
@@ -855,6 +855,18 @@ function registerResourcePath(): void {
 }
 ```
 
+## RenderConfiguration<sup>23+</sup>
+渲染配置接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| shadowResolution<sup>23+</sup> | Vec2 | 否 | 是 | 表示全局阴影贴图分辨率。默认值为undefined，表示阴影贴图分辨率设置为{1024，1024}。
+
 ## RenderParameters<sup>15+</sup>
 渲染参数接口。
 
@@ -884,6 +896,7 @@ function registerResourcePath(): void {
 | environment | [Environment](js-apis-inner-scene-resources.md#environment) | 否 | 否 | 环境对象。 |
 | animations | [Animation](js-apis-inner-scene-resources.md#animation)[] | 是 | 否 | 动画数组，用于保存3D场景中的动画对象。|
 | root | [Node](js-apis-inner-scene-nodes.md#node) \| null | 是 | 否 | 3D场景树根结点。 |
+| renderConfiguration | [RenderConfiguration](#renderconfiguration23)  | 是 | 否 | 渲染配置设置 |
 
 ### load
 static load(uri?: ResourceStr): Promise\<Scene>
