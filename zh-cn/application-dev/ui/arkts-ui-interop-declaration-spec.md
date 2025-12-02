@@ -19,12 +19,12 @@ UI互操作无需对胶水代码做额外处理，可直接使用自动生成结
 
 声明文件路径如下：`build/default/intermediates/declgen/default/declgenV1/.../xxx.d.ets`。
 
-下文依次给出声明文件全局修改原则，状态管理V1装饰器转换规格，状态管理V2装饰器转换规格，[\@Builder](./state-management/arkts-builder.md)/[WrappedBuilder](./state-management/arkts-v1.2-wrapBuilder.md)/[\@BuilderParam](./state-management/arkts-builderparam.md)转换规格。开发者需要参照这些规则，检视自动生成的声明文件是否符合要求。对于不完整或不符合规格的部分，参照对应规则进行手动调整。建议结合[使用场景](#arkts-dyn调用arkts-sta-1)章节，通过完整示例了解这些规则在互操作工程中的用法。
+下文依次给出声明文件全局修改原则，状态管理V1装饰器转换规格，状态管理V2装饰器转换规格，以及[\@Builder](./state-management/arkts-builder.md)，[WrappedBuilder](./state-management/arkts-v1.2-wrapBuilder.md)，[\@BuilderParam](./state-management/arkts-builderparam.md)转换规格。开发者需要参照这些规则，检视自动生成的声明文件是否符合要求。对于不完整或不符合规格的部分，参照对应规则进行手动调整。若声明文件不符合本节规则，会导致编译声明文件时报错。建议结合[使用场景](#arkts-dyn调用arkts-sta-1)章节，通过完整示例了解这些规则在互操作工程中的用法。
 
 **声明文件全局修改原则**
 - ArkTS-Dyn声明文件无需import装饰器及组件。
 - ArkTS-Dyn与ArkTS-Sta状态管理接口不一致时，需要修改成ArkTS-Dyn可识别的语法。
-- 修复语言自动转换的缺失及错误，如装饰器缺失，类型缺失等。
+- 修复语言自动转换的缺失及错误，如装饰器缺失、类型缺失等。
 
 
 **状态管理V1装饰器转换规格**
@@ -57,7 +57,7 @@ UI互操作无需对胶水代码做额外处理，可直接使用自动生成结
 | [\@Computed](./state-management-static/arkts-static-new-computed.md) | `@Computed get computeVar(): string {}` | `public get computeVar(): string;` |
 | [\@ObservedV2/\@Trace](./state-management-static/arkts-static-new-observedV2-and-trace.md) | `@ObservedV2 export class PersonV2 { @Trace age: number = 20; }` | `@ObservedV2 export declare class PersonV2 { @Trace age: number; }` |
 
-**\@Builder/WrappedBuilder/\@BuilderParam转换规格**
+**\@Builder，WrappedBuilder，\@BuilderParam转换规格**
 | \@Builder相关语法 | ArkTS-Sta源码示例 | ArkTS-Dyn声明文件示例 |
 |---|---|---|
 | [\@Builder](./state-management/arkts-builder.md) | `@Builder export function myBuilder(value: string) { Text(value) }` | `@Builder export declare function myBuilder(value: string): void;` |
@@ -70,15 +70,15 @@ UI互操作无需对胶水代码做额外处理，可直接使用自动生成结
 
 声明文件路径如下：`build/default/intermediates/declgen/default/declgenV2/.../xxx.d.ets`。
 
-下文依次给出声明文件全局修改原则，状态管理V1装饰器转换规格，状态管理V2装饰器转换规格，[\@Builder](./state-management/arkts-builder.md)/[WrappedBuilder](./state-management/arkts-v1.2-wrapBuilder.md)/[\@BuilderParam](./state-management/arkts-builderparam.md)转换规格。开发者需要参照这些规则，检视自动生成的声明文件是否符合要求。对于不完整或不符合规格的部分，参照对应规则进行手动调整。建议结合[使用场景](#arkts-sta调用arkts-dyn-1)章节，通过完整示例了解这些规则在互操作工程中的用法。
+下文依次给出声明文件全局修改原则，状态管理V1装饰器转换规格，状态管理V2装饰器转换规格，以及[\@Builder](./state-management/arkts-builder.md)，[WrappedBuilder](./state-management/arkts-v1.2-wrapBuilder.md)，[\@BuilderParam](./state-management/arkts-builderparam.md)转换规格。开发者需要参照这些规则，检视自动生成的声明文件是否符合要求。对于不完整或不符合规格的部分，参照对应规则进行手动调整。若声明文件不符合本节规则，会导致编译声明文件时报错。建议结合[使用场景](#arkts-sta调用arkts-dyn-1)章节，通过完整示例了解这些规则在互操作工程中的用法。
 
 **声明文件全局修改原则**
 - ArkTS-Sta声明文件需要import装饰器及组件。
 - ArkTS-Sta与ArkTS-Dyn状态管理接口不一致时，需要修改成符合ArkTS-Sta的语法。
-- 修复语言自动转换的缺失及错误，如装饰器缺失，类型缺失等。
+- 修复语言自动转换的缺失及错误，如装饰器缺失、类型缺失等。
 
 **状态管理V1装饰器转换规格**
-| V1装饰器 | ArkTS-Sta源码示例 | ArkTS-Dyn声明文件示例 |
+| V1装饰器 | ArkTS-Dyn源码示例 | ArkTS-Sta声明文件示例 |
 |---|---|---|
 | [\@State](./state-management/arkts-state.md) | `@State stateVar: string = 'stateVar';` | `@State stateVar: string;` |
 | [\@Prop](./state-management/arkts-prop.md) | `@Prop propVar: string = 'propVar';` | `@Prop propVar: string;` |
@@ -106,7 +106,7 @@ UI互操作无需对胶水代码做额外处理，可直接使用自动生成结
 | [\@Computed](./state-management/arkts-new-Computed.md) | `@Computed get computeVar(): string {}` | `@Computed get computeVar(): string;` |
 | [\@ObservedV2/\@Trace](./state-management/arkts-new-observedV2-and-trace.md) | `@ObservedV2 export class PersonV2 { @Trace age: number = 20; }` | `@ObservedV2 export declare class PersonV2 { @Trace age: number; }` |
 
-**\@Builder/WrappedBuilder/\@BuilderParam转换规格**
+**\@Builder，WrappedBuilder，\@BuilderParam转换规格**
 | \@Builder相关语法 | ArkTS-Dyn源码示例 | ArkTS-Sta声明文件示例 |
 |---|---|---|
 | [\@Builder](./state-management/arkts-builder.md) | `@Builder export function myBuilder(value: string) { Text(value) }` | `@Builder export declare function myBuilder(value: string): void;` |
@@ -115,7 +115,7 @@ UI互操作无需对胶水代码做额外处理，可直接使用自动生成结
 
 ## 使用场景
 ### ArkTS-Dyn调用ArkTS-Sta
-结合[声明文件转换规格](#arkts-dyn调用arkts-sta)，下文依次给出状态管理V1装饰器，状态管理V2装饰器，[\@Builder](./state-management/arkts-builder.md)/[WrappedBuilder](./state-management/arkts-v1.2-wrapBuilder.md)/[\@BuilderParam](./state-management/arkts-builderparam.md)的使用场景。
+结合[声明文件转换规格](#arkts-dyn调用arkts-sta)，下文依次给出状态管理V1装饰器，状态管理V2装饰器，以及[\@Builder](./state-management/arkts-builder.md)，[WrappedBuilder](./state-management/arkts-v1.2-wrapBuilder.md)，[\@BuilderParam](./state-management/arkts-builderparam.md)的使用场景。
 
 **状态管理V1装饰器**
 
@@ -152,7 +152,7 @@ project/
 
 下面的代码示例展示了在ArkTS-Dyn中调用ArkTS-Sta自定义组件并使用状态管理V1装饰器的场景下，修改声明文件的规格。
 
-- 创建ArkTS-Sta子模块`static_library`，在`static_library/src/main/ets/components`目录创建并导出自定义组件。
+- 创建ArkTS-Sta子模块`static_library`，在`static_library/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
 'use static';
@@ -324,7 +324,7 @@ project/
 
 下面的代码示例展示了在ArkTS-Dyn中调用ArkTS-Sta自定义组件并使用状态管理V2装饰器的场景下，修改声明文件的规格。
 
-- 创建ArkTS-Sta子模块`static_library`，在`static_library/src/main/ets/components`目录创建并导出自定义组件。
+- 创建ArkTS-Sta子模块`static_library`，在`static_library/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
 'use static'
@@ -482,7 +482,7 @@ project/
 
 下面的代码示例展示了在ArkTS-Dyn中调用ArkTS-Sta自定义组件并使用\@Builder，WrappedBuilder，\@BuilderParam，修改声明文件的规格。
 
-- 创建ArkTS-Sta子模块`static_library`，在`static_library/src/main/ets/components`目录创建并导\@Builder，WrappedBuilder，自定义组件。
+- 创建ArkTS-Sta子模块`static_library`，在`static_library/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
 'use static';
@@ -576,7 +576,7 @@ struct Parent {
 ```
 
 ### ArkTS-Sta调用ArkTS-Dyn
-结合[声明文件转换规格](#arkts-sta调用arkts-dyn)，下文依次给出状态管理V1装饰器，状态管理V2装饰器，[\@Builder](./state-management/arkts-builder.md)/[WrappedBuilder](./state-management/arkts-v1.2-wrapBuilder.md)/[\@BuilderParam](./state-management/arkts-builderparam.md)的使用场景。
+结合[声明文件转换规格](#arkts-sta调用arkts-dyn)，下文依次给出状态管理V1装饰器，状态管理V2装饰器，以及[\@Builder](./state-management/arkts-builder.md)，[WrappedBuilder](./state-management/arkts-v1.2-wrapBuilder.md)，[\@BuilderParam](./state-management/arkts-builderparam.md)的使用场景。
 
 **状态管理V1装饰器**
 
@@ -613,7 +613,7 @@ project/
 
 下面的代码示例展示了在ArkTS-Sta中调用ArkTS-Dyn自定义组件并使用状态管理V1装饰器的场景下，修改声明文件的规格。
 
-- 创建ArkTS-Sta子模块`dynamic_library`，在`dynamic_library/src/main/ets/components`目录创建并导出自定义组件。
+- 创建ArkTS-Dyn子模块`dynamic_library`，在`dynamic_library/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
 // dynamic_library/src/main/ets/components/MainPage.ets
@@ -782,7 +782,7 @@ project/
 
 下面的代码示例展示了在ArkTS-Sta中调用ArkTS-Dyn自定义组件并使用状态管理V2装饰器的场景下，修改声明文件的规格。
 
-- 创建ArkTS-Sta子模块`dynamic_library`，在`dynamic_library/src/main/ets/components`目录创建并导出自定义组件。
+- 创建ArkTS-Dyn子模块`dynamic_library`，在`dynamic_library/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
 // dynamic_library/src/main/ets/components/MainPage.ets
@@ -939,7 +939,7 @@ project/
 
 下面的代码示例展示了在ArkTS-Sta中调用ArkTS-Dyn自定义组件并使用\@Builder，WrappedBuilder，\@BuilderParam的场景下，修改声明文件的规格。
 
-- 创建ArkTS-Sta子模块`dynamic_library`，在`dynamic_library/src/main/ets/components`目录创建并导出自定义组件。
+- 创建ArkTS-Dyn子模块`dynamic_library`，在`dynamic_library/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
 // dynamic_library/src/main/ets/components/MainPage.ets
