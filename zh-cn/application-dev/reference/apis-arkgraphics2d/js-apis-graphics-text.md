@@ -1352,6 +1352,8 @@ loadFontSyncWithCheck(name: string, path: string | Resource, index?: number): vo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { text } from '@kit.ArkGraphics2D'
 
@@ -1378,6 +1380,46 @@ struct Index {
           try {
             fc.loadFontSyncWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1);
           } catch (e) {
+            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(e)} message: ${e.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { 
+  Entry, Component, RelativeContainer, Text, FontWeight, AlignRuleOption, VerticalAlign, HorizontalAlign
+} from '@ohos.arkui.component';
+import { text } from '@kit.ArkGraphics2D';
+
+let fc: text.FontCollection = text.FontCollection.getGlobalInstance();
+
+@Entry
+@Component
+struct Index {
+  message: string = 'Hello World';
+  fontFamily: string = 'family';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontFamily(this.fontFamily)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        } as AlignRuleOption)
+        .onClick(() => {
+          fc.loadFontSyncWithCheck(this.fontFamily, 'file:///system/fonts/NotoSansCJK-Regular.ttc', 1);
+          try {
+            fc.loadFontSyncWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1);
+          } catch (e: Error) {
             console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(e)} message: ${e.message}`);
           }
         })
@@ -1431,6 +1473,8 @@ loadFontWithCheck(name: string, path: string | Resource, index?: number): Promis
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { text } from '@kit.ArkGraphics2D'
 
@@ -1461,6 +1505,50 @@ struct Index {
           fc.loadFontWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1).then((data) => {
             console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
           }).catch((error: Error) => {
+            });
+            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { 
+  Entry, Component, RelativeContainer, Text, FontWeight, AlignRuleOption, VerticalAlign, HorizontalAlign
+} from '@ohos.arkui.component';
+import { text } from '@kit.ArkGraphics2D';
+
+let fc: text.FontCollection = text.FontCollection.getGlobalInstance();
+
+@Entry
+@Component
+struct Index {
+  message: string = 'Hello World';
+  fontFamily: string = 'family';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontFamily(this.fontFamily)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        } as AlignRuleOption)
+        .onClick(() => {
+          fc.loadFontWithCheck(this.fontFamily, 'file:///system/fonts/NotoSansCJK-Regular.ttc', 1).then((data) => {
+            console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
+          }).catch((error: Error) => {
+            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
+          });
+          fc.loadFontWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1).then((data) => {
+            console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
+          }).catch((error: Error) => {
             console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
           });
         })
@@ -1470,6 +1558,7 @@ struct Index {
   }
 }
 ```
+
 
 ### unloadFontSync<sup>20+</sup>
 unloadFontSync(name: string): void
