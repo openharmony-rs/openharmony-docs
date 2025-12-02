@@ -114,7 +114,7 @@ getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
-## PowerMode<sup>9+</sup>
+## PowerMode
 
 表示功率模式的枚举。
 
