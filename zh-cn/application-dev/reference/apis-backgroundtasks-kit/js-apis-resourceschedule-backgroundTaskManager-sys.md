@@ -65,7 +65,7 @@ let request: backgroundTaskManager.EfficiencyResourcesRequest = {
     reason: "apply",
     isPersist: true,
     isProcess: false,
-    cpuLevel: backgroundTaskManager.EfficiencyResourcesCpuLevel.SMALL_CPU
+    cpuLevel: backgroundTaskManager.EfficiencyResourcesCpuLevel.SMALL_CPU // 运行在小核，从API version 23
 };
 try {
     backgroundTaskManager.applyEfficiencyResources(request);
@@ -234,8 +234,8 @@ try {
 | 名称                      | 值  | 说明                    |
 | ------------------------ | ---- | ---------------------  |
 | SMALL_CPU | 0 | 表示运行在小核，用于处理轻量级后台任务，CPU频点较低。 |
-| MEDIUM_CPU | 1 | 表示最高可以运行在中核，系统基于负载决策运行在小核或中核。平衡性能与能效，用于需要处理复杂任务、CPU频点高的场景。 |
-| LARGE_CPU | 2 | 表示最高可以运行在大核，系统基于负载决策运行在小核、中核或大核。 极致性能，用于应对重载任务、CPU频点最高。 |
+| MEDIUM_CPU | 1 | 表示最高可以运行在中核，系统基于负载决策运行在小核或中核。平衡性能与能效，用于需要处理复杂任务的场景，CPU频点高。 |
+| LARGE_CPU | 2 | 表示最高可以运行在大核，系统基于负载决策运行在小核、中核或大核。 极致性能，用于应对重载任务的场景，CPU频点最高。 |
 
 ## BackgroundTaskMode<sup>21+</sup>
 
