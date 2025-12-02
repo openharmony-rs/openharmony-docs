@@ -35,7 +35,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.ReportingMode
 
-测距结果的上报模式。
+测距后返回结果的上报模式。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -100,17 +100,17 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 | 名称               |  类型                   | 只读      | 可选       | 说明     |
-| -------------------| ----------------------| -----------------------|
+| -------------------| ----------------------| -----------|------------|----------|
 | deviceList         | string[]              | 是         | 否 | 表示设备列表。|
-| techType           | TechnologyType        | 是         | 否  | 表示信号类型。|
-| reportMode         | ReportingMode         | 是         | 否   | 表示结果上报模式。|
+| techType           | TechnologyType        | 是         | 否 | 表示信号类型。|
+| reportMode         | ReportingMode         | 是         | 否  | 表示结果上报模式。|
 
 ## spatialAwareness.onDistanceMeasure
 
 onDistanceMeasure(configParams: DistanceMeasurementConfigParams,
     callback: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
-订阅测距结果数据。
+订阅测距结果数据。表示订阅测距事件后的测距结果。订阅测距事件后，返回测距结果。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -159,7 +159,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 offDistanceMeasure(configParams: DistanceMeasurementConfigParams,
     callback?: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
-取消测距。
+取消测距。表示取消订阅测距事件。取消订阅测距事件，不会发生测距。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -208,7 +208,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
     callback: Callback&lt;DoorPositionResponse&gt;): void;
 
-识别门内外。
+识别门内外。表示订阅门内外识别事件后返回结果的接口。订阅门内外识别事件后，返回设备在门内还是门外的信息。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -257,7 +257,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
     callback？: Callback&lt;DoorPositionResponse&gt;): void;
 
-取消识别门内外功能。
+取消识别门内外订阅。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
