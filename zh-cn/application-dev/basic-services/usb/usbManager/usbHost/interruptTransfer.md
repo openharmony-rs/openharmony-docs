@@ -220,39 +220,39 @@
 6. 传输数据。
 
    <!-- @[interruptTransfer_interruptTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    let transferParams: usbManager.UsbDataTransferParams | undefined = undefined;
-    try {
-      // 通信接口注册成功，传输数据
-      transferParams = {
-        devPipe: devicePipe,
-        flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
-        endpoint: usbEndpoint.address,
-        type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT,
-        timeout: 2000,
-        length: 10,
-        callback: () => {
-        },
-        userData: new Uint8Array(10),
-        buffer: new Uint8Array(10),
-        isoPacketCount: 2,
-      };
-
-      transferParams.callback = (err: Error, callBackData: usbManager.SubmitTransferCallback) => {
-        console.info(`callBackData = ${callBackData}`);
-        this.logInfo_ += '\n[INFO] callBackData = ' + JSON.stringify(callBackData);
-        console.info(`transfer success,result = ${transferParams?.buffer}`);
-        this.logInfo_ += '\n[INFO] transfer success,result = ' + JSON.stringify(transferParams?.buffer);
-      }
-      usbManager.usbSubmitTransfer(transferParams);
-      console.info('USB transfer request submitted.');
-      this.logInfo_ += '\n[INFO] USB transfer request submitted.';
-    } catch (error) {
-      console.error(`USB transfer failed: ${error}`);
-      this.logInfo_ += '\n[ERROR] USB transfer failed: ' + JSON.stringify(error);
-    }
-```
+   
+   ``` TypeScript
+   let transferParams: usbManager.UsbDataTransferParams | undefined = undefined;
+   try {
+     // 通信接口注册成功，传输数据
+     transferParams = {
+       devPipe: devicePipe,
+       flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
+       endpoint: usbEndpoint.address,
+       type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT,
+       timeout: 2000,
+       length: 10,
+       callback: () => {
+       },
+       userData: new Uint8Array(10),
+       buffer: new Uint8Array(10),
+       isoPacketCount: 2,
+     };
+   
+     transferParams.callback = (err: Error, callBackData: usbManager.SubmitTransferCallback) => {
+       console.info(`callBackData = ${callBackData}`);
+       this.logInfo_ += '\n[INFO] callBackData = ' + JSON.stringify(callBackData);
+       console.info(`transfer success,result = ${transferParams?.buffer}`);
+       this.logInfo_ += '\n[INFO] transfer success,result = ' + JSON.stringify(transferParams?.buffer);
+     }
+     usbManager.usbSubmitTransfer(transferParams);
+     console.info('USB transfer request submitted.');
+     this.logInfo_ += '\n[INFO] USB transfer request submitted.';
+   } catch (error) {
+     console.error(`USB transfer failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] USB transfer failed: ' + JSON.stringify(error);
+   }
+   ```
 
 
 7. 取消传输，释放接口，关闭设备消息控制通道。
