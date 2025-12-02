@@ -152,25 +152,25 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
    ```
 
    <!-- @[setSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    let portId: number = this.portId_;
-    // 设置串口配置
-    try {
-      let attribute: serialManager.SerialAttribute = {
-        baudRate: serialManager.BaudRates.BAUDRATE_9600,
-        dataBits: serialManager.DataBits.DATABIT_8,
-        parity: serialManager.Parity.PARITY_NONE,
-        stopBits: serialManager.StopBits.STOPBIT_1
-      }
-      serialManager.setAttribute(portId, attribute);
-      console.info(`setAttribute usbSerial success, attribute: ${attribute}`);
-      this.logInfo_ += '\n[INFO] setAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
-    } catch (error) {
-      console.error(`setAttribute usbSerial error: ${error}`);
-      this.logInfo_ += '\n[ERROR] setAttribute usbSerial error: ' + JSON.stringify(error);
-    }
-```
+   
+   ``` TypeScript
+   let portId: number = this.portId_;
+   // 设置串口配置
+   try {
+     let attribute: serialManager.SerialAttribute = {
+       baudRate: serialManager.BaudRates.BAUDRATE_9600,
+       dataBits: serialManager.DataBits.DATABIT_8,
+       parity: serialManager.Parity.PARITY_NONE,
+       stopBits: serialManager.StopBits.STOPBIT_1
+     }
+     serialManager.setAttribute(portId, attribute);
+     console.info(`setAttribute usbSerial success, attribute: ${attribute}`);
+     this.logInfo_ += '\n[INFO] setAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
+   } catch (error) {
+     console.error(`setAttribute usbSerial error: ${error}`);
+     this.logInfo_ += '\n[ERROR] setAttribute usbSerial error: ' + JSON.stringify(error);
+   }
+   ```
 
 ### 调测验证
 
