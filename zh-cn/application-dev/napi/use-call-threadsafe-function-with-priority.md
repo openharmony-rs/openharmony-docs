@@ -28,8 +28,9 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
 
 ### 示例代码
 
-- 模块注册
+- 功能实现
 
+  <!-- @[napi_call_threadsafe_function_with_priority_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->
    ```c++
     // napi_init.cpp
     #include "napi/native_api.h"
@@ -129,41 +130,76 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
         napi_module_register(&nativeModule);
     }
    ```
-   <!-- @[napi_call_threadsafe_function_with_priority_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->
+
+- 模块注册
+
+  ``` C++
+  // 注册模块接口
+  EXTERN_C_START
+  static napi_value Init(napi_env env, napi_value exports)
+  {
+      napi_property_descriptor desc[] = {
+          { "callThreadSafeWithPriority", nullptr, CallThreadSafeWithPriority, nullptr, nullptr, nullptr, napi_default, nullptr }
+      };
+      napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+      return exports;
+  }
+  EXTERN_C_END
+
+  static napi_module nativeModule = {
+      .nm_version = 1,
+      .nm_flags = 0,
+      .nm_filename = nullptr,
+      .nm_register_func = Init,
+      .nm_modname = "entry",
+      .nm_priv = nullptr,
+      .reserved = { 0 },
+  };
+
+  extern "C" __attribute__((constructor)) void RegisterEntryModule()
+  {
+      napi_module_register(&nativeModule);
+  }
+  ```
 
 - 接口声明
 
+  <!-- @[napi_call_threadsafe_function_with_priority_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+  
     ```ts
     // index.d.ts
     export const callThreadSafeWithPriority: (cb: (a: number, b: number) => number) => void;
     ```
-    <!-- @[napi_call_threadsafe_function_with_priority_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 - 编译配置
 
   CMakeLists.txt文件需要按照如下配置
+  ```text
+  # the minimum version of CMake.
+  cmake_minimum_required(VERSION 3.5.0)
+  project(MyApplication3)
 
-    ```
-    // CMakeLists.txt
-    # the minimum version of CMake.
-    cmake_minimum_required(VERSION 3.4.1)
-    project(myapplication)
+  set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
-    set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+  if(DEFINED PACKAGE_FIND_FILE)
+      include(${PACKAGE_FIND_FILE})
+  endif()
+  add_definitions( "-DLOG_TAG=\"LOG_TAG\"" )
+  include_directories(${NATIVERENDER_ROOT_PATH}
+                      ${NATIVERENDER_ROOT_PATH}/include)
 
-    if(DEFINED PACKAGE_FIND_FILE)
-        include(${PACKAGE_FIND_FILE})
-    endif()
+  add_library(entry SHARED napi_init.cpp)
+  target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
+  ```
 
-    add_definitions( "-DLOG_TAG=\"LOG_TAG\"" )
-    include_directories(${NATIVERENDER_ROOT_PATH}
-                        ${NATIVERENDER_ROOT_PATH}/include)
-    add_library(entry SHARED napi_init.cpp)
-    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
-    ```
-    <!-- @[napi_call_threadsafe_function_with_priority_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/CMakeLists.txt) -->
+- ArkTS导入头文件
+  ``` TypeScript
+  import testNapi from 'libentry.so';
+  ```
 
 - ArkTS代码示例
+
+  <!-- @[napi_call_threadsafe_function_with_priority_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
 
     ```ts
     // index.ets
@@ -175,4 +211,3 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
     }
     testNapi.callThreadSafeWithPriority(callback); // 注意：如果底层 ThreadSafeFunction 被取消，则无法保证所有任务都会被执行
     ```
-    <!-- @[napi_call_threadsafe_function_with_priority_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->

@@ -15,7 +15,8 @@
 如果使用napi_event_mode_default模式来运行底层事件循环，系统会阻塞当前的线程，同时会一直尝试从事件队列中获取任务并执行处理这些任务。如果不想当前线程继续被阻塞，可以使用扩展接口napi_stop_event_loop将正在运行的事件循环停止。
 
 ### 示例代码
-- 模块注册
+- 功能实现
+  <!-- @[napi_event_loop_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->
     ```c++
     // napi_init.cpp
     #include "napi/native_api.h"
@@ -123,35 +124,68 @@
         napi_module_register(&nativeModule);
     }
     ```
-    <!-- @[napi_event_loop_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->
+
+- 模块注册
+
+  ``` C++
+  EXTERN_C_START
+  static napi_value Init(napi_env env, napi_value exports)
+  {
+      napi_property_descriptor desc[] = {
+          { "runEventLoop", nullptr, RunEventLoop, nullptr, nullptr, nullptr, napi_default, nullptr }
+      };
+      napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+      return exports;
+  }
+  EXTERN_C_END
+
+  static napi_module nativeModule = {
+      .nm_version = 1,
+      .nm_flags = 0,
+      .nm_filename = nullptr,
+      .nm_register_func = Init,
+      .nm_modname = "entry",
+      .nm_priv = nullptr,
+      .reserved = { 0 },
+  };
+
+  extern "C" __attribute__((constructor)) void RegisterEntryModule()
+  {
+      napi_module_register(&nativeModule);
+  }
+  ```
 
 - 接口声明
+  <!-- @[napi_event_loop_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry/Index.d.ts) -->
     ```ts
     // index.d.ts
     export const runEventLoop: (isDefault: boolean) => object;
     ```
-    <!-- @[napi_event_loop_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 - 编译配置
 1. CMakeLists.txt文件需要按照如下配置
-    ```
-    // CMakeLists.txt
-    # the minimum version of CMake.
-    cmake_minimum_required(VERSION 3.4.1)
-    project(myapplication)
+   ``` text
+   // CMakeLists.txt
+   # the minimum version of CMake.
+   cmake_minimum_required(VERSION 3.5.0)
+   project(MyApplication3)
 
-    set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
-    if(DEFINED PACKAGE_FIND_FILE)
-        include(${PACKAGE_FIND_FILE})
-    endif()
+   if(DEFINED PACKAGE_FIND_FILE)
+       include(${PACKAGE_FIND_FILE})
+   endif()
+   add_definitions( "-DLOG_TAG=\"LOG_TAG\"" )
+   include_directories(${NATIVERENDER_ROOT_PATH}
+                       ${NATIVERENDER_ROOT_PATH}/include)
 
-    include_directories(${NATIVERENDER_ROOT_PATH}
-                        ${NATIVERENDER_ROOT_PATH}/include)
-    add_library(entry SHARED napi_init.cpp)
-    target_link_libraries(entry PUBLIC libace_napi.z.so)
-    ```
+   add_library(entry SHARED napi_init.cpp)
+   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
+   ```
+
 2. 需要在模块的build-profile.json5文件中进行以下配置
+
+   <!-- @[napi_event_loop_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/build-profile.json5) -->
     ```json
     {
         "buildOption" : {
@@ -165,17 +199,22 @@
         }
     }
     ```
-    <!-- @[napi_event_loop_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/build-profile.json5) -->
 
 - ArkTS代码示例
+  ``` TypeScript
+  // 导入头文件
+  import testNapi from 'libentry.so'
+  ```
+
+  <!-- @[napi_event_loop_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
     ```ts
     // index.ets
     import testNapi from 'libentry.so'
 
     testNapi.runEventLoop(true);
     ```
-    <!-- @[napi_event_loop_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
-
+  
+  <!-- @[napi_event_loop_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/ObjectUtils.ets) -->
     ```ts
     // ets/pages/ObjectUtils.ets
     export function SetTimeout() : Promise<void> {
@@ -188,4 +227,3 @@
         })
     }
     ```
-    <!-- @[napi_event_loop_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/ObjectUtils.ets) -->
