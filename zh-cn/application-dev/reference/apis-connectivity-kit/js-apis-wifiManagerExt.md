@@ -184,7 +184,7 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;[PowerMode](#powermode9)&gt; | Promise对象。表示功率模式。 |
+  | Promise&lt;[PowerMode](#powermode)&gt; | Promise对象。表示功率模式。 |
 
 **错误码：**
 
