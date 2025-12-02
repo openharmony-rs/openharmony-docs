@@ -940,9 +940,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":54,
+						"end_line":53,
 						"name":"input_case_entry_module_extensionAbilities",
-						"start_line":37
+						"start_line":36
 					}
 				]
 			}
@@ -2370,9 +2370,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/components/Submenu.ets",
 				"functions":[
 					{
-						"end_line":76,
+						"end_line":77,
 						"name":"input_case_input_switchInputMethodgetInputMethods",
-						"start_line":54
+						"start_line":67
 					}
 				]
 			}
