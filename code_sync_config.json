@@ -27547,14 +27547,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":170,
+						"end_line":171,
 						"name":"napi_create_external_string_utf16",
 						"start_line":136
 					},
 					{
-						"end_line":206,
+						"end_line":209,
 						"name":"napi_create_external_string_ascii",
-						"start_line":172
+						"start_line":173
 					}
 				]
 			},
