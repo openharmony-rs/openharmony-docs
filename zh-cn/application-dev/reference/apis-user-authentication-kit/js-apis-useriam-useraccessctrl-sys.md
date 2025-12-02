@@ -69,7 +69,7 @@ ArkTS-Dyn: verifyAuthToken(authToken: Uint8Array, allowableDuration: number): Pr
 
 ArkTS-Sta: verifyAuthToken(authToken: Uint8Array, allowableDuration: int): Promise\<AuthToken>
 
-验证认证令牌。
+验证认证令牌。使用Promise异步回调。
 
 **需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
 

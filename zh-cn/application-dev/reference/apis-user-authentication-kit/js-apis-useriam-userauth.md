@@ -28,7 +28,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 | 名称        | 类型   | 值   | 说明       |
 | ----------- | ---- | ---- | ---------- |
 | MAX_ALLOWABLE_REUSE_DURATION<sup>12+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 300000   | 复用解锁认证结果最大有效时长，值为300000毫秒。 <br/> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| PERMANENT_LOCKOUT_DURATION<sup>22+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 0x7FFFFFFF | 永久冻结时间，值为0x7FFFFFFF毫秒。<br/> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| PERMANENT_LOCKOUT_DURATION<sup>22+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 0x7fffffff | 永久冻结时间，值为0x7fffffff毫秒。<br/> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 
 ## AuthLockState<sup>22+</sup>
 
@@ -673,6 +673,10 @@ on(type: 'result', callback: IAuthCallback): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onResult](#onResult22)。
 
+> **说明：**
+>
+> 在PC/2in1设备上，应用如果使用模应用方式发起认证（即配置用户界面参数[widgetParam](#widgetparam10)时传入了有效的uiContext），收到认证结果后，若需弹出其他窗口，应先获取控件弹窗释放的标志消息，通过[on('authTip')](#on20)接口订阅控件释放消息（authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -1276,6 +1280,10 @@ on(type: 'authTip', callback: AuthTipCallback): void
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onAuthTip](#onAuthTip22)。
+
+> **说明：**
+>
+> 在PC/2in1设备上，应用如果使用模应用方式发起认证（即配置用户界面参数[widgetParam](#widgetparam10)时传入了有效的uiContext），收到认证结果后，若需弹出其他窗口，应先获取控件弹窗释放的标志消息，通过[on('authTip')](#on20)接口订阅控件释放消息（authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
