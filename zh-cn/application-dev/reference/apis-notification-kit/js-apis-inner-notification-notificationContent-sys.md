@@ -101,6 +101,8 @@
 
 type IconType = Resource | image.PixelMap
 
+描述图标的类型。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
