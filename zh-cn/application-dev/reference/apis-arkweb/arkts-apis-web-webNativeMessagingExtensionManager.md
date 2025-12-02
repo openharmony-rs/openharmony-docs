@@ -17,7 +17,7 @@ webNativeMessagingExtensionManager模块提供基于Web标准的消息扩展管�
 ## 导入模块
 
 ```ts
-import webNativeMessagingExtensionManager from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
 ```
 
 ## ConnectionNativeInfo
@@ -339,7 +339,7 @@ disconnectNative(connectionId: number): Promise&lt;void&gt;
 
 **示例:**
 ```ts
-import { UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
 
