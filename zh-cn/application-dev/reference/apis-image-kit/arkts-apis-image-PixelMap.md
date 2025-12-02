@@ -24,10 +24,10 @@ import { image } from '@kit.ImageKit';
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-| 名称              | 类型    | 只读 | 可选 | 说明                       |
-| -----------------| ------- | ---- | ---- | -------------------------- |
-| isEditable<sup>7+</sup>        | boolean | 是   | 否   | true表示图像像素可被编辑，false表示不可被编辑。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
-| isStrideAlignment<sup>11+</sup> | boolean | 是   | 否   | true表示图像内存为DMA内存，false表示非DMA内存。 |
+| 名称              | 类型     | 只读 | 可选 | 说明                       |
+| ----------------- | ------- | ---- | ---- | -------------------------- |
+| isEditable<sup>7+</sup>        | boolean | 是   | 否   | 图像像素是否可被编辑。true表示可被编辑，false表示不可被编辑。为false时，图像的渲染和传输性能更好。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 22 |
+| isStrideAlignment<sup>11+</sup> | boolean | 是   | 否   | 图像的行数据是否已进行内存对齐。true表示已进行内存对齐，每行数据的末尾可能有空白字节填充以满足对齐要求；false表示未进行内存对齐，每行数据紧密排列，末尾无空白字节填充。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
 
 ## readPixelsToBuffer<sup>7+</sup>
 
@@ -40,6 +40,10 @@ readPixelsToBuffer(dst: ArrayBuffer): Promise\<void>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -83,6 +87,10 @@ readPixelsToBuffer(dst: ArrayBuffer, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
@@ -122,6 +130,10 @@ readPixelsToBufferSync(dst: ArrayBuffer): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -169,6 +181,10 @@ RGBA的区域计算公式：读取区域（region.size{width * height}）* 4 （
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -239,6 +255,10 @@ RGBA的区域计算公式：读取区域（region.size{width * height}）* 4 （
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                           | 必填 | 说明                           |
@@ -301,6 +321,10 @@ readPixelsSync(area: PositionArea): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                           | 必填 | 说明                     |
@@ -351,6 +375,10 @@ RGBA的区域计算公式：读取区域（region.size{width * height}）* 4 （
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -428,6 +456,10 @@ RGBA的区域计算公式：读取区域（region.size{width * height}）* 4 （
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型                           | 必填 | 说明                           |
@@ -496,6 +528,10 @@ writePixelsSync(area: PositionArea): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -679,6 +715,10 @@ writeBufferToPixelsSync(src: ArrayBuffer): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型        | 必填 | 说明           |
@@ -724,6 +764,10 @@ getImageInfo(): Promise\<ImageInfo>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                              | 说明                                                        |
@@ -759,6 +803,10 @@ getImageInfo(callback: AsyncCallback\<ImageInfo>): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -796,6 +844,10 @@ getImageInfoSync(): ImageInfo
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -839,20 +891,24 @@ ArkTS-Sta: getBytesNumberPerRow(): int
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 图像像素的行字节数。 |
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let rowBytes: number = pixelMap.getBytesNumberPerRow();
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 let rowBytes: int = pixelMap.getBytesNumberPerRow();
 ```
@@ -871,20 +927,24 @@ ArkTS-Sta: getPixelBytesNumber(): int
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 图像像素的总字节数。 |
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let totalBytes: number = pixelMap.getPixelBytesNumber();
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 let totalBytes: int = pixelMap.getPixelBytesNumber();
 ```
@@ -903,20 +963,24 @@ ArkTS-Sta: getDensity(): int
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型   | 说明            |
 | ------ | --------------- |
 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 图像像素的密度，单位为ppi。|
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let density: number = pixelMap.getDensity();
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 let density: int = pixelMap.getDensity();
 ```
@@ -935,6 +999,10 @@ ArkTS-Sta: opacity(rate: double, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                           |
@@ -942,8 +1010,9 @@ ArkTS-Sta: opacity(rate: double, callback: AsyncCallback\<void>): void
 | rate     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 透明比率的值，取值范围是(0, 1]。  |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当设置透明比率成功，err为undefined，否则为错误对象。 |
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -961,8 +1030,7 @@ async function Opacity() {
 }
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -994,6 +1062,10 @@ ArkTS-Sta: opacity(rate: double): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                        |
@@ -1006,8 +1078,9 @@ ArkTS-Sta: opacity(rate: double): Promise\<void>
 | -------------- | ----------------------------------------------- |
 | Promise\<void> | Promise对象。无返回结果的Promise对象。  |
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1023,8 +1096,7 @@ async function Opacity() {
 }
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1052,6 +1124,10 @@ ArkTS-Sta: opacitySync(rate: double): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                           |
@@ -1067,8 +1143,9 @@ ArkTS-Sta: opacitySync(rate: double): void
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
 |  501    | Resource Unavailable |
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function OpacitySync() {
   let rate: number = 0.5;
@@ -1078,8 +1155,7 @@ async function OpacitySync() {
 }
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 async function OpacitySync() {
   let rate: double = 0.5;
@@ -1100,6 +1176,10 @@ createAlphaPixelmap(): Promise\<PixelMap>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1135,6 +1215,10 @@ createAlphaPixelmap(callback: AsyncCallback\<PixelMap>): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明                     |
@@ -1169,6 +1253,10 @@ createAlphaPixelmapSync(): PixelMap
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1218,6 +1306,10 @@ ArkTS-Sta: scale(x: double, y: double, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                            |
@@ -1226,8 +1318,9 @@ ArkTS-Sta: scale(x: double, y: double, callback: AsyncCallback\<void>): void
 | y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。|
 | callback | AsyncCallback\<void> | 是   | 回调函数。当对图片进行缩放成功，err为undefined，否则为错误对象。 |
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1246,8 +1339,7 @@ async function Scale() {
 }
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1285,6 +1377,10 @@ ArkTS-Sta: scale(x: double, y: double): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                            |
@@ -1298,8 +1394,9 @@ ArkTS-Sta: scale(x: double, y: double): Promise\<void>
 | -------------- | --------------------------- |
 | Promise\<void> |  Promise对象。无返回结果的Promise对象。|
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1316,8 +1413,7 @@ async function Scale() {
 }
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1351,6 +1447,10 @@ ArkTS-Sta: scaleSync(x: double, y: double): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                            |
@@ -1367,8 +1467,9 @@ ArkTS-Sta: scaleSync(x: double, y: double): void
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
 |  501    | Resource Unavailable |
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function ScaleSync() {
   let scaleX: number = 2.0;
@@ -1379,8 +1480,7 @@ async function ScaleSync() {
 }
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 async function ScaleSync() {
   let scaleX: double = 2.0;
@@ -1410,6 +1510,10 @@ ArkTS-Sta: scale(x: double, y: double, level: AntiAliasingLevel): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                            |
@@ -1433,8 +1537,9 @@ ArkTS-Sta: scale(x: double, y: double, level: AntiAliasingLevel): Promise\<void>
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
 |  501    | Resource Unavailable |
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1451,8 +1556,7 @@ async function Scale() {
 }
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1486,6 +1590,10 @@ ArkTS-Sta: scaleSync(x: double, y: double, level: AntiAliasingLevel): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                            |
@@ -1503,8 +1611,9 @@ ArkTS-Sta: scaleSync(x: double, y: double, level: AntiAliasingLevel): void
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
 |  501    | Resource Unavailable |
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function ScaleSync() {
   let scaleX: number = 2.0;
@@ -1515,8 +1624,7 @@ async function ScaleSync() {
 }
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 async function ScaleSync() {
   let scaleX: double = 2.0;
@@ -1536,6 +1644,10 @@ ArkTS-Sta: createScaledPixelMap(x: double, y: double, level?: AntiAliasingLevel)
 根据指定的缩放算法和输入的宽高的缩放倍数，创建一个新的缩放后的图片，使用Promise形式返回。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1560,8 +1672,9 @@ ArkTS-Sta: createScaledPixelMap(x: double, y: double, level?: AntiAliasingLevel)
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
 |  501    | Resource Unavailable |
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1578,8 +1691,7 @@ async function CreateScaledPixelMap() {
 }
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1606,6 +1718,10 @@ ArkTS-Sta: createScaledPixelMapSync(x: double, y: double, level?: AntiAliasingLe
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                            |
@@ -1629,8 +1745,9 @@ ArkTS-Sta: createScaledPixelMapSync(x: double, y: double, level?: AntiAliasingLe
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
 |  501    | Resource Unavailable |
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function CreateScaledPixelMapSync() {
   let scaleX: number = 2.0;
@@ -1641,8 +1758,7 @@ async function CreateScaledPixelMapSync() {
 }
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 async function CreateScaledPixelMapSync() {
   let scaleX: double = 2.0;
@@ -1696,7 +1812,6 @@ ArkTS-Sta: createCroppedAndScaledPixelMap(region: Region, x: double, y: double, 
 **示例：**
 
 ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1720,7 +1835,6 @@ function DemoCreateCroppedAndScaledPixelMap(pixelMap: PixelMap) {
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1786,7 +1900,6 @@ ArkTS-Sta: createCroppedAndScaledPixelMapSync(region: Region, x: double, y: doub
 **示例：**
 
 ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1809,7 +1922,6 @@ function DemoCreateCroppedAndScaledPixelMapSync(pixelMap: PixelMap) {
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1838,6 +1950,10 @@ clone(): Promise\<PixelMap>
 拷贝一份当前Pixelmap对象，使用Promise形式返回。
 
 **系统能力：**: SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1880,6 +1996,10 @@ cloneSync(): PixelMap
 拷贝一份当前Pixelmap对象, 同步返回结果。
 
 **系统能力：**: SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1932,6 +2052,10 @@ translate后的图片尺寸改变为：width+X ，height+Y，建议translate后�
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                          |
@@ -1940,8 +2064,9 @@ translate后的图片尺寸改变为：width+X ，height+Y，建议translate后�
 | y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 区域纵坐标。单位：像素。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当对图片进行位置变换成功，err为undefined，否则为错误对象。|
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1960,8 +2085,7 @@ async function Translate() {
 }
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1996,6 +2120,10 @@ translate后的图片尺寸改变为：width+X ，height+Y，建议translate后�
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明        |
@@ -2009,8 +2137,9 @@ translate后的图片尺寸改变为：width+X ，height+Y，建议translate后�
 | -------------- | --------------------------- |
 | Promise\<void> |  Promise对象。无返回结果的Promise对象。 |
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2027,8 +2156,7 @@ async function Translate() {
 }
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2059,6 +2187,10 @@ translate后的图片尺寸改变为：width+X ，height+Y，建议translate后�
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                            |
@@ -2075,8 +2207,9 @@ translate后的图片尺寸改变为：width+X ，height+Y，建议translate后�
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
 |  501    | Resource Unavailable |
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function TranslateSync() {
   let translateX : number = 50.0;
@@ -2087,8 +2220,7 @@ async function TranslateSync() {
 }
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 async function TranslateSync() {
   let translateX : double = 50.0;
@@ -2118,6 +2250,10 @@ ArkTS-Sta: rotate(angle: double, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                          |
@@ -2125,8 +2261,9 @@ ArkTS-Sta: rotate(angle: double, callback: AsyncCallback\<void>): void
 | angle    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 图片旋转的角度。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当对图片进行旋转成功，err为undefined，否则为错误对象。|
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2144,8 +2281,7 @@ async function Rotate() {
 }
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2182,6 +2318,10 @@ ArkTS-Sta: rotate(angle: double): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                          |
@@ -2194,8 +2334,9 @@ ArkTS-Sta: rotate(angle: double): Promise\<void>
 | -------------- | --------------------------- |
 | Promise\<void> |  Promise对象。无返回结果的Promise对象。 |
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2211,8 +2352,7 @@ async function Rotate() {
 }
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2245,6 +2385,10 @@ ArkTS-Sta: rotateSync(angle: double): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                          |
@@ -2260,8 +2404,9 @@ ArkTS-Sta: rotateSync(angle: double): void
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
 |  501    | Resource Unavailable |
 
-**ArkTS-Dyn示例：**
+**示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function RotateSync() {
   let angle : number = 90.0;
@@ -2271,8 +2416,7 @@ async function RotateSync() {
 }
 ```
 
-**ArkTS-Sta示例：**
-
+ArkTS-Sta示例：
 ```ts
 async function RotateSync() {
   let angle : double = 90.0;
@@ -2293,6 +2437,10 @@ flip(horizontal: boolean, vertical: boolean, callback: AsyncCallback\<void>): vo
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2335,6 +2483,10 @@ flip(horizontal: boolean, vertical: boolean): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型    | 必填 | 说明      |
@@ -2375,6 +2527,10 @@ flipSync(horizontal: boolean, vertical: boolean): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2418,6 +2574,10 @@ crop(region: Region, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                          |
@@ -2456,6 +2616,10 @@ crop(region: Region): Promise\<void>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2497,6 +2661,10 @@ cropSync(region: Region): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                          |
@@ -2533,6 +2701,10 @@ getColorSpace(): colorSpaceManager.ColorSpaceManager
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                                | 说明             |
@@ -2566,6 +2738,10 @@ setColorSpace(colorSpace: colorSpaceManager.ColorSpaceManager): void
 设置图像广色域信息。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2825,6 +3001,10 @@ getMetadata(key: HdrMetadataKey): HdrMetadataValue
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名        | 类型                             | 必填 | 说明             |
@@ -2885,6 +3065,10 @@ setMetadata(key: HdrMetadataKey, value: HdrMetadataValue): Promise\<void>
 设置PixelMap元数据。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2947,6 +3131,10 @@ setTransferDetached(detached: boolean): void
 pixelmap在跨线程传输时，断开原线程的引用。适用于需立即释放pixelmap的场景。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3019,6 +3207,10 @@ marshalling(sequence: rpc.MessageSequence): void
 将PixelMap序列化后写入MessageSequence。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3099,6 +3291,10 @@ unmarshalling(sequence: rpc.MessageSequence): Promise\<PixelMap>
 从MessageSequence中获取PixelMap，如需使用同步方式创建PixelMap可使用：[createPixelMapFromParcel](arkts-apis-image-f.md#imagecreatepixelmapfromparcel11)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3197,6 +3393,10 @@ ArkTS有内存回收机制，PixelMap对象不调用release方法，内存最终
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型           | 说明                            |
@@ -3237,6 +3437,10 @@ ArkTS有内存回收机制，PixelMap对象不调用release方法，内存最终
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明               |
@@ -3274,6 +3478,10 @@ YUV和RGB类型互转，目前仅支持NV12/NV21与RGB888/RGBA8888/RGB565/BGRA88
 > 仅在ASTC_4x4格式的图像需要进行像素访问时，建议调用此接口将ASTC_4x4类型转为RGBA_8888类型。由于使用ASTC_4x4反解为RGBA_8888时延较高，其余情况下不推荐使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3324,6 +3532,10 @@ setMemoryNameSync(name: string): void
 设置PixelMap内存标识符。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3389,7 +3601,6 @@ ArkTS-Sta: getUniqueId(): int
 **示例：**
 
 ArkTS-Dyn示例：
-
 ```ts
 function DemoGetUniqueId(pixelMap: PixelMap) {
   const uniqueId: number = pixelMap.getUniqueId();
@@ -3397,7 +3608,6 @@ function DemoGetUniqueId(pixelMap: PixelMap) {
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 function DemoGetUniqueId(pixelMap: PixelMap) {
   const uniqueId: int = pixelMap.getUniqueId();
