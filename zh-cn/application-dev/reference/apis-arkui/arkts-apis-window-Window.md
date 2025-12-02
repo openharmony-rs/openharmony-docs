@@ -6843,7 +6843,7 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 
 - 当调用对象为子窗口或悬浮窗时，实现隐藏功能，不可在Dock栏中还原，可以使用[showWindow()](#showwindow9)进行还原。
 
-使用callback异步回调。
+该接口仅支持主窗口、子窗口或悬浮窗，其它窗口调用返回1300002错误码，使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6890,7 +6890,7 @@ minimize(): Promise&lt;void&gt;
 
 - 当调用对象为子窗口或悬浮窗时，实现隐藏功能，不可在Dock栏中还原，可以使用[showWindow()](#showwindow9)进行还原。
 
-使用Promise异步回调。
+该接口仅支持主窗口、子窗口或悬浮窗，其它窗口调用返回1300002错误码，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
