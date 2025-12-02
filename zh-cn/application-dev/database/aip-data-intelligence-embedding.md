@@ -118,7 +118,31 @@
 4. 获取文本的分块。当数据长度超过限定时，使用splitText()接口将其分块，然后再进行数据向量化。
    调用splitText方法，获取文本的分块结果。示例代码如下所示：
 
-   <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let text = 'text';
+   textEmbedding.getEmbedding(text)
+     .then((data:Array<number>) => {
+       console.info('Succeeded in getting Embedding');
+       // ...
+     })
+     .catch((err:BusinessError) => {
+       console.error('Failed to get Embedding and code is ' + err.code);
+       // ...
+     })
+   
+   let batchTexts = ['text1','text2'];
+   textEmbedding.getEmbedding(batchTexts)
+     .then((data:Array<Array<number>>) => {
+       console.info('Succeeded in getting Embedding');
+       // ...
+     })
+     .catch((err:BusinessError) => {
+       console.error('Failed to get Embedding and code is ' + err.code);
+       // ...
+     })
+   ```
 
 5. 获取给定文本的嵌入向量。给定的文本数据可以是单个文本或文本集合。
    调用getEmbedding方法，获取给定单个文本或文本集合的嵌入向量。示例代码如下所示：
