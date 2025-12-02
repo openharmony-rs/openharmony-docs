@@ -145,7 +145,7 @@ function sendMessageToNative() {
 **实现配置background.js**
 
 1. 使用chrome.runtime.connectNative链接
-``` ts
+   ``` ts
 var port = null;
 //监听来自main.js的信息
 chrome.runtime.onMessage.addListener(
@@ -172,7 +172,7 @@ async function onNativeMessage(message) {
 function onDisconnected() {
   port = null;
 }
-```
+   ```
 
 2. 使用chrome.runtime.sendNativeMessage链接
    ``` ts
@@ -281,17 +281,17 @@ function onDisconnected() {
    }
    ```
 5. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中配置crossAppSharedConfig，定义共享配置项，共享配置文件需放置在工程resources/base/profile目录下，并通过$资源访问方式引用。
-```json
+   ```json
    {
      "module": {
        "crossAppSharedConfig": "$profile:shared_config"
      }
    }
-```
+   ```
 
 6.在shared_config.json添加[extension配置](#datashare存放原生应用extension配置信息)
 
-```json
+   ```json
   {
     "crossAppSharedConfig": [
       // ...
@@ -307,7 +307,7 @@ function onDisconnected() {
       }
     ]
   }
-```
+   ```
 ### 实现拉起WebNativeMessagingExtensionAbility（浏览器开发者）
 浏览器负责实现扩展runtime接口，拉起WebNativeMessagingExtensionAbility，建立和管理NativeMessaging连接。需要申请权限：ohos.permission.WEB_NATIVE_MESSAGING
 
