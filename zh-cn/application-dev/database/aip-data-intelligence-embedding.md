@@ -66,9 +66,14 @@
    ``` TypeScript
    import { intelligence } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
+   ```
+
+2. 获取文本嵌入模型。
+   调用getTextEmbeddingModel方法，获取文本嵌入模型。示例代码如下所示：
+
    <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
-   ``` TypeScript
+    ``` TypeScript
    let textConfig:intelligence.ModelConfig = {
      version:intelligence.ModelVersion.BASIC_MODEL,
      isNpuAvailable:false,
@@ -76,14 +81,9 @@
    }
    let textEmbedding:intelligence.TextEmbedding;
    ```
+   <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
-   ``` TypeScript
-   import { intelligence } from '@kit.ArkData';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   ```
-   <!-- @[aip_getTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
+    ``` TypeScript
    intelligence.getTextEmbeddingModel(textConfig)
      .then((data:intelligence.TextEmbedding) => {
        console.info('Succeeded in getting TextModel');
@@ -95,11 +95,11 @@
        // ...
      })
    ```
-2. 获取文本嵌入模型。
-   调用getTextEmbeddingModel方法，获取文本嵌入模型。示例代码如下所示：
 
-   <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-   <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+3. 加载文本嵌入模型。
+   调用loadModel方法，加载文本嵌入模型。示例代码如下所示：
+
+   <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    textEmbedding.loadModel()
@@ -113,10 +113,10 @@
      })
    ```
 
-3. 加载文本嵌入模型。
-   调用loadModel方法，加载文本嵌入模型。示例代码如下所示：
+4. 获取文本的分块。当数据长度超过限定时，使用splitText()接口将其分块，然后再进行数据向量化。
+   调用splitText方法，获取文本的分块结果。示例代码如下所示：
 
-   <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    let splitConfig:intelligence.SplitConfig = {
@@ -136,12 +136,12 @@
      })
    ```
 
-4. 获取文本的分块。当数据长度超过限定时，使用splitText()接口将其分块，然后再进行数据向量化。
-   调用splitText方法，获取文本的分块结果。示例代码如下所示：
+5. 获取给定文本的嵌入向量。给定的文本数据可以是单个文本或文本集合。
+   调用getEmbedding方法，获取给定单个文本或文本集合的嵌入向量。示例代码如下所示：
 
-   <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
-   ``` TypeScript
+    ``` TypeScript
    let text = 'text';
    textEmbedding.getEmbedding(text)
      .then((data:Array<number>) => {
@@ -165,8 +165,8 @@
      })
    ```
 
-5. 获取给定文本的嵌入向量。给定的文本数据可以是单个文本或文本集合。
-   调用getEmbedding方法，获取给定单个文本或文本集合的嵌入向量。示例代码如下所示：
+6. 释放文本嵌入模型。
+   调用releaseModel方法，释放文本嵌入模型。示例代码如下所示：
 
    <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
@@ -182,19 +182,19 @@
      })
    ```
 
-6. 释放文本嵌入模型。
-   调用releaseModel方法，释放文本嵌入模型。示例代码如下所示：
+## 图像向量化开发步骤
 
-   <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+1. 导入模块。
+
    <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { intelligence } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
-## 图像向量化开发步骤
 
-1. 导入模块。
+2. 获取图像嵌入模型。
+   调用getImageEmbeddingModel方法，获取图像嵌入模型。示例代码如下所示：
 
    <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
@@ -220,11 +220,11 @@
        // ...
      })
    ```
-2. 获取图像嵌入模型。
-   调用getImageEmbeddingModel方法，获取图像嵌入模型。示例代码如下所示：
 
-   <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-   <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+3. 加载图像嵌入模型。
+   调用loadModel方法，加载图像嵌入模型。示例代码如下所示：
+
+    <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    imageEmbedding.loadModel()
@@ -238,10 +238,10 @@
      })
    ```
 
-3. 加载图像嵌入模型。
-   调用loadModel方法，加载图像嵌入模型。示例代码如下所示：
+4. 获取给定图像的嵌入向量。
+   调用getEmbedding方法，获取给定图像的嵌入向量。示例代码如下所示：
 
-   <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
@@ -256,8 +256,8 @@
      })
    ```
 
-4. 获取给定图像的嵌入向量。
-   调用getEmbedding方法，获取给定图像的嵌入向量。示例代码如下所示：
+5. 释放图像嵌入模型。
+   调用releaseModel方法，释放图像嵌入模型。示例代码如下所示：
 
    <!-- @[aip_releaseImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
@@ -272,8 +272,3 @@
        // ...
      })
    ```
-
-5. 释放图像嵌入模型。
-   调用releaseModel方法，释放图像嵌入模型。示例代码如下所示：
-
-   <!-- @[aip_releaseImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
