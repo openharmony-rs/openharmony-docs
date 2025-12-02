@@ -59,15 +59,14 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
 1. 导入模块。
 
    <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 导入usbManager模块
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit'
-import { buffer } from '@kit.ArkTS';
-import { JSON } from '@kit.ArkTS';
-
-```
+   
+   ``` TypeScript
+   // 导入usbManager模块
+   import { serialManager } from '@kit.BasicServicesKit';
+   import { BusinessError } from '@kit.BasicServicesKit'
+   import { buffer } from '@kit.ArkTS';
+   import { JSON } from '@kit.ArkTS';
+   ```
 
 2. 获取设备列表。
 
