@@ -148,30 +148,30 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
 6. 通过串口写入数据。
 
    <!-- @[serialWrite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    let portId: number = this.portId_;
-    // 异步写入
-    let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
-    serialManager.write(portId, writeBuffer, 2000).then((size: number) => {
-      console.info(`writeAsync usbSerial success, writeAsyncBuffer: ${writeBuffer}`);
-      this.logInfo_ += '\n[INFO] writeAsync usbSerial success, writeAsyncBuffer: ' + JSON.stringify(writeBuffer);
-    }).catch((error: Error) => {
-      console.error(`writeAsync usbSerial error: ${error}`);
-      this.logInfo_ += '\n[ERROR] writeAsync usbSerial error: ' + JSON.stringify(error);
-    })
-
-    // 同步写入
-    let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
-    try {
-      serialManager.writeSync(portId, writeSyncBuffer, 2000);
-      console.info(`writeSync usbSerial success, writeSyncBuffer: ${writeSyncBuffer}`);
-      this.logInfo_ += '\n[INFO] writeSync usbSerial success, writeSyncBuffer: ' + JSON.stringify(writeSyncBuffer);
-    } catch (error) {
-      console.error(`writeSync usbSerial error: ${error}`);
-      this.logInfo_ += '\n[ERROR] writeSync usbSerial error: ' + JSON.stringify(error);
-    }
-```
+   
+   ``` TypeScript
+   let portId: number = this.portId_;
+   // 异步写入
+   let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
+   serialManager.write(portId, writeBuffer, 2000).then((size: number) => {
+     console.info(`writeAsync usbSerial success, writeAsyncBuffer: ${writeBuffer}`);
+     this.logInfo_ += '\n[INFO] writeAsync usbSerial success, writeAsyncBuffer: ' + JSON.stringify(writeBuffer);
+   }).catch((error: Error) => {
+     console.error(`writeAsync usbSerial error: ${error}`);
+     this.logInfo_ += '\n[ERROR] writeAsync usbSerial error: ' + JSON.stringify(error);
+   })
+   
+   // 同步写入
+   let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
+   try {
+     serialManager.writeSync(portId, writeSyncBuffer, 2000);
+     console.info(`writeSync usbSerial success, writeSyncBuffer: ${writeSyncBuffer}`);
+     this.logInfo_ += '\n[INFO] writeSync usbSerial success, writeSyncBuffer: ' + JSON.stringify(writeSyncBuffer);
+   } catch (error) {
+     console.error(`writeSync usbSerial error: ${error}`);
+     this.logInfo_ += '\n[ERROR] writeSync usbSerial error: ' + JSON.stringify(error);
+   }
+   ```
 
    
 7. 关闭串口设备。
