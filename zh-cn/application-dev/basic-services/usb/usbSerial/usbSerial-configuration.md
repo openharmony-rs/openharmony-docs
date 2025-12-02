@@ -132,24 +132,24 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
 5. 获取和修改串口配置。
 
    <!-- @[getSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    let portId: number = this.portId_;
-    // 获取串口配置
-    try {
-      let attribute: serialManager.SerialAttribute = serialManager.getAttribute(portId);
-      if (attribute === undefined) {
-        console.error('getAttribute usbSerial error, attribute is undefined');
-        this.logInfo_ += '\n[ERROR] getAttribute usbSerial error, attribute is undefined';
-      } else {
-        console.info(`getAttribute usbSerial success, attribute: ${attribute}`);
-        this.logInfo_ += '\n[INFO] getAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
-      }
-    } catch (error) {
-      console.error(`getAttribute usbSerial error: ${error}`);
-      this.logInfo_ += '\n[ERROR] getAttribute usbSerial error: ' + JSON.stringify(error);
-    }
-```
+   
+   ``` TypeScript
+   let portId: number = this.portId_;
+   // 获取串口配置
+   try {
+     let attribute: serialManager.SerialAttribute = serialManager.getAttribute(portId);
+     if (attribute === undefined) {
+       console.error('getAttribute usbSerial error, attribute is undefined');
+       this.logInfo_ += '\n[ERROR] getAttribute usbSerial error, attribute is undefined';
+     } else {
+       console.info(`getAttribute usbSerial success, attribute: ${attribute}`);
+       this.logInfo_ += '\n[INFO] getAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
+     }
+   } catch (error) {
+     console.error(`getAttribute usbSerial error: ${error}`);
+     this.logInfo_ += '\n[ERROR] getAttribute usbSerial error: ' + JSON.stringify(error);
+   }
+   ```
 
    <!-- @[setSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
