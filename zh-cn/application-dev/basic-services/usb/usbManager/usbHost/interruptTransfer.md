@@ -258,17 +258,17 @@
 7. 取消传输，释放接口，关闭设备消息控制通道。
 
    <!-- @[interruptTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    try {
-      usbManager.usbCancelTransfer(transferParams);
-      usbManager.releaseInterface(devicePipe, usbInterface);
-      usbManager.closePipe(devicePipe);
-    } catch (error) {
-      console.error(`release failed: ${error}`);
-      this.logInfo_ += '\n[ERROR] release failed: ' + JSON.stringify(error);
-    }
-```
+   
+   ``` TypeScript
+   try {
+     usbManager.usbCancelTransfer(transferParams);
+     usbManager.releaseInterface(devicePipe, usbInterface);
+     usbManager.closePipe(devicePipe);
+   } catch (error) {
+     console.error(`release failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] release failed: ' + JSON.stringify(error);
+   }
+   ```
 
    
 ### 调测验证
