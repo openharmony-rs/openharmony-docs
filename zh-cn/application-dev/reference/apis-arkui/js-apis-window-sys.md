@@ -4241,6 +4241,7 @@ export default class RaiseMainWindowAbility extends UIAbility {
 }
 ```
 ```json5
+//module.json5
 {
   "module": {
     "name": "entry",
@@ -4269,7 +4270,7 @@ export default class RaiseMainWindowAbility extends UIAbility {
               "entity.system.home"
             ],
             "actions": [
-              "ohos.want.action.home"
+              "action.system.home"
             ]
           }
         ]
