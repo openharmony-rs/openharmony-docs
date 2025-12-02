@@ -1,5 +1,12 @@
 # timezone.h
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @ningningW-->
+
 ## 概述
 
 提供获取时区信息的能力。
