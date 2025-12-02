@@ -61,6 +61,8 @@ ArkTS-Sta: setFormNextRefreshTime(formId: string, minute: int, callback: AsyncCa
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -125,6 +127,8 @@ ArkTS-Sta: setFormNextRefreshTime(formId: string, minute: int): Promise&lt;void&
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -138,6 +142,27 @@ try {
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import formProvider  from '@ohos.app.form.formProvider';
+import { BusinessError } from '@ohos.base';
+
+let formId2: string = '21347330770'; //用hap包装好的应用的卡片id
+try {
+  formProvider.setFormNextRefreshTime(formId2, 3).then(() => {
+    console.info('testTag', `XtsFormProvider setFormNextRefreshTime success`);
+  }).catch((error) => {
+    console.info('testTag', `XtsFormProvider promise error, code:`);
+  });
+  console.info('testTag', 'XtsFormProvider setFormNextRefreshTime register success');
+} catch (error) {
+  console.info('testTag', `XtsFormProvider catch error, code: `);
 }
 ```
 
