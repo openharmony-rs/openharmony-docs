@@ -2760,64 +2760,64 @@
 						"start_line":16
 					},
 					{
-						"end_line":35,
+						"end_line":38,
 						"name":"error_observer",
-						"start_line":22
+						"start_line":25
 					},
 					{
-						"end_line":116,
+						"end_line":127,
 						"name":"onclick_error_observer",
-						"start_line":103
+						"start_line":114
 					},
 					{
-						"end_line":45,
+						"end_line":48,
 						"name":"error_func",
-						"start_line":37
+						"start_line":40
 					},
 					{
-						"end_line":130,
+						"end_line":141,
 						"name":"onclick_error_func",
-						"start_line":118
+						"start_line":129
 					},
 					{
-						"end_line":67,
+						"end_line":70,
 						"name":"promise_func",
-						"start_line":55
+						"start_line":58
 					},
 					{
-						"end_line":164,
+						"end_line":175,
 						"name":"onclick_promise_func",
-						"start_line":148
+						"start_line":159
 					},
 					{
-						"end_line":94,
+						"end_line":97,
 						"name":"freeze_call_back",
-						"start_line":90
+						"start_line":93
 					},
 					{
-						"end_line":198,
+						"end_line":209,
 						"name":"onclick_freeze_call_back",
-						"start_line":184
+						"start_line":195
 					},
 					{
-						"end_line":53,
+						"end_line":56,
 						"name":"loop_observer",
-						"start_line":47
+						"start_line":50
 					},
 					{
-						"end_line":146,
+						"end_line":157,
 						"name":"onclick_loop_observer",
-						"start_line":132
+						"start_line":143
 					},
 					{
-						"end_line":88,
+						"end_line":91,
 						"name":"unhandled_rejection_observer",
-						"start_line":69
+						"start_line":72
 					},
 					{
-						"end_line":182,
+						"end_line":193,
 						"name":"onclick_unhandled_rejection_observer",
-						"start_line":166
+						"start_line":177
 					}
 				]
 			}
