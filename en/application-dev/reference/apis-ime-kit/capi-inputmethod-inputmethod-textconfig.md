@@ -15,3 +15,4 @@ Represents the text box configuration information.
 **Related module**: [InputMethod](capi-inputmethod.md)
 
 **Header file**: [inputmethod_text_config_capi.h](capi-inputmethod-text-config-capi-h.md)
+
