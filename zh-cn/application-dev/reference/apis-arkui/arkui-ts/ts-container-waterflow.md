@@ -572,7 +572,7 @@ onScrollIndex(event: (first: number, last: number) => void)
 | first  | number | 是   | 当前显示的瀑布流起始位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
 | last   | number | 是   | 当前显示的瀑布流终止位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
 
-通过`last`参数可以判断是否“继续加载数据”，参考[示例3使用分组](#示例3使用分组)中"即将触底时提前增加数据"的处理逻辑。
+通过`last`参数可以判断是否“继续加载数据”，参考[示例3使用分组](#示例3使用分组)中“即将触底时提前增加数据”的处理逻辑。
 
 当WaterFlow列表为空时，使用不同的WaterFlowOptions参数会导致onScrollIndex事件的返回值有所不同。具体差异请参见下表：
 
@@ -897,7 +897,7 @@ struct WaterFlowDemo {
         LazyForEach(this.dataSource, (item: number) => {
           FlowItem() {
             Column() {
-              Text("N" + item).fontSize(12).height('16')
+              Text('N' + item).fontSize(12).height('16')
               // 注意：需要确保对应的jpg文件存在才会正常显示
               Image('res/waterFlowTest(' + item % 5 + ').jpg')
                 .objectFit(ImageFit.Fill)
@@ -910,7 +910,7 @@ struct WaterFlowDemo {
           .backgroundColor(this.colors[item % this.colors.length])
         }, (item: string) => item)
       }
-      .columnsTemplate("1fr 1fr")    // 设置2列等宽布局
+      .columnsTemplate('1fr 1fr')    // 设置2列等宽布局
       .columnsGap(10)
       .rowsGap(5)
       .backgroundColor(0xFAEEE0)
@@ -918,7 +918,7 @@ struct WaterFlowDemo {
       .height('100%')
       // 触底加载数据：滚动到底部时触发分页加载
       .onReachEnd(() => {
-        console.info("onReachEnd")
+        console.info('onReachEnd')
 
         // 模拟分页加载：当数据超过200条时停止加载
         if (this.dataSource.totalCount() > 200) {
@@ -1001,7 +1001,7 @@ struct WaterFlowDemo {
         LazyForEach(this.dataSource, (item: number) => {
           FlowItem() {
             Column() {
-              Text("N" + item).fontSize(12).height('16')
+              Text('N' + item).fontSize(12).height('16')
               // 存在对应的jpg文件才会显示图片
               Image('res/waterFlowTest(' + item % 5 + ').jpg')
             }
@@ -1284,7 +1284,7 @@ struct WaterFlowDemo {
 ![waterflowSections.png](figures/waterflowSections.png)
 
 ### 示例4（双指缩放改变列数）
-该示例通过[priorityGesture](ts-gesture-settings.md)和[PinchGesture](ts-basic-gestures-pinchgesture.md)实现了双指缩放改变列数效果。
+该示例通过[priorityGesture](ts-gesture-settings.md#prioritygesture)和[PinchGesture](ts-basic-gestures-pinchgesture.md)实现了双指缩放改变列数效果。
 
 WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
 
@@ -1307,7 +1307,7 @@ struct ReusableFlowItem {
 
   build() {
     Column() {
-      Text("N" + this.item).fontSize(12).height('16')
+      Text('N' + this.item).fontSize(12).height('16')
       // 注意：需要确保对应的jpg文件存在才会正常显示
       Image('res/waterFlow(' + this.item % 5 + ').jpg')
         .objectFit(ImageFit.Fill)
@@ -1530,7 +1530,7 @@ struct WaterFlowDemo {
         LazyForEach(this.dataSource, (item: number) => {
           FlowItem() {
             Column() {
-              Text("N" + item).fontSize(12).height('16')
+              Text('N' + item).fontSize(12).height('16')
             }
           }
           .width('100%')
@@ -1603,7 +1603,7 @@ struct WaterFlowDemo {
         LazyForEach(this.dataSource, (item: number) => {
           FlowItem() {
             Column() {
-              Text("N" + item).fontSize(12).height('16')
+              Text('N' + item).fontSize(12).height('16')
             }
           }
           .width('100%')
@@ -1639,11 +1639,11 @@ WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#�
 <!--code_no_check-->
 ```ts
 // Index.ets
-import { ComponentContent, UIContext } from "@kit.ArkUI";
+import { ComponentContent, UIContext } from '@kit.ArkUI';
 import { WaterFlowDataSource } from './WaterFlowDataSource';
 
 class Params {
-  text: string = "";
+  text: string = '';
 
   constructor(text: string) {
     this.text = text;
@@ -1664,8 +1664,8 @@ function buildText(params: Params) {
 @Entry
 @Component
 struct Index {
-  @State message1: string = "已经到底了";
-  @State message2: string = "加载更多";
+  @State message1: string = '已经到底了';
+  @State message2: string = '加载更多';
   @State colors: number[] = [0xD5D5D5, 0x7F7F7F, 0xF7F7F7];
   @State minSize: number = 80;
   @State maxSize: number = 180;
@@ -1676,7 +1676,7 @@ struct Index {
   // 动态尾部组件：使用ComponentContent创建可更新的尾部组件
   // ComponentContent<Params>：泛型指定参数类型
   // wrapBuilder<[Params]>(buildText)：包装Builder函数
-  // new Params(this.message1)：初始参数，显示"已经到底了"
+  // new Params(this.message1)：初始参数，显示'已经到底了'
   footerContent: ComponentContent<Params> = new ComponentContent<Params>(
     this.context,
     wrapBuilder<[Params]>(buildText),
@@ -1709,17 +1709,17 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Button("更新footer").width('90%').margin(20)
+        Button('更新footer').width('90%').margin(20)
           .onClick((event?: ClickEvent) => {
             // 调用ComponentContent的update方法更新尾部组件
-            // 传入新的Params对象，文本内容从"已经到底了"变为"加载更多"
+            // 传入新的Params对象，文本内容从'已经到底了'变为'加载更多'
             this.footerContent.update(new Params(this.message2));
           })
         WaterFlow({ footerContent: this.footerContent }) {
           LazyForEach(this.dataSource, (item: number) => {
             FlowItem() {
               Column() {
-                Text("N" + item).fontSize(12).height('16')
+                Text('N' + item).fontSize(12).height('16')
               }
               .width('100%')
               .height(this.itemHeightArray[item % 100])
@@ -1730,7 +1730,7 @@ struct Index {
           }, (item: number) => item.toString())
         }
         .columnsTemplate('1fr')
-        .height("90%")
+        .height('90%')
       }
       .width('100%')
       .height('100%')
