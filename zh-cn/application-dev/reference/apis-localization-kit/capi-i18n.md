@@ -1,5 +1,12 @@
 # i18n
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @ningningW-->
+
 ## 概述
 
 提供国际化能力C API的接口。
