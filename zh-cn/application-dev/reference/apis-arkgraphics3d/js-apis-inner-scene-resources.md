@@ -15,7 +15,7 @@
 ## 导入模块
 ```ts
 import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, Material,
-  MaterialProperty, MetallicRoughnessMaterial, ShaderMaterial, SamplerFilter, SamplerAddressMode, Sampler,
+  MaterialProperty, MetallicRoughnessMaterial, ShaderMaterial, UnlitMaterial, UnlitShadowAlphaMaterial,  SamplerFilter, SamplerAddressMode, Sampler,
   SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image } from '@kit.ArkGraphics3D';
 ```
 
@@ -126,6 +126,7 @@ function destroy(): void {
 | SHADER | 1 | 材质由着色器定义。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
 | METALLIC_ROUGHNESS<sup>20+</sup> | 2 | 采用基于物理渲染（PBR）的金属-粗糙度模型，通过金属度与粗糙度参数，模拟更真实的材质光照效果。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
 | UNLIT<sup>22+</sup> | 3 | 不受光照影响的材质。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 22|
+| UNLIT_SHADOW_ALPHA<sup>23+</sup> | 100 | 仅对阴影进行绘制，当材质开启blend属性，与背景融合模拟透明材质效果。<br>**系统接口：** 此接口为系统接口。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
 
 ## CullMode<sup>20+</sup>
 用于设置基于物理渲染（PBR）材质的剔除模式枚举。通过控制剔除物体的正面或背面几何面片，提升渲染性能和视觉效果。
@@ -262,6 +263,20 @@ function destroy(): void {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | baseColor | [MaterialProperty](#materialproperty20) | 否 | 否 | 基础颜色属性，用于表达材质的基础颜色信息。|
+
+## UnlitShadowAlphaMaterial<sup>23+</sup>
+
+仅对阴影进行绘制，当材质开启blend属性，与背景融合模拟透明材质效果。继承自[Material](#material)。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| baseColor | [MaterialProperty](#materialproperty20) | 否 | 否 | 仅对阴影进行绘制，当材质开启blend属性，与背景融合模拟透明材质效果。<br>**系统接口：** 此接口为系统接口。|
 
 ## SamplerFilter<sup>20+</sup>
 采样器过滤模式枚举，定义纹理采样时的插值方法，用于控制纹理在缩放或变形时如何计算最终像素的颜色值。
