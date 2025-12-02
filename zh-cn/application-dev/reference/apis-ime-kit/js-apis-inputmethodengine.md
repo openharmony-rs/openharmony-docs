@@ -182,15 +182,23 @@ type SizeChangeCallback = (size: window.Size, keyboardArea?: KeyboardArea) => vo
 | size         | [window.Size](../apis-arkui/arkts-apis-window-i.md#size7) | 是   | 当前面板大小。                   |
 | keyboardArea | [KeyboardArea](#keyboardarea15)                      | 否   | 当前面板中可作为键盘区域的大小。 |
 
-## InputMethodEngine
+## InputMethodEngine<sup>(deprecated)</sup>
+
+> **说明：**
+>
+> 从API version9开始支持，API version 23开始废弃，建议使用[InputMethodAbility](#inputmethodability)替代。
 
 下列API均需使用[getInputMethodEngine](#inputmethodenginegetinputmethodenginedeprecated)获取到InputMethodEngine实例后，通过实例调用。
 
-### on('inputStart')
+### on('inputStart')<sup>(deprecated)</sup>
 
 on(type: 'inputStart', callback: (kbController: KeyboardController, textInputClient: TextInputClient) => void): void
 
 订阅输入法绑定成功事件。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，API version 23开始废弃，建议使用[on('inputStart')](#oninputstart9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -212,11 +220,15 @@ inputMethodEngine.getInputMethodEngine()
     });
 ```
 
-### off('inputStart')
+### off('inputStart')<sup>(deprecated)</sup>
 
 off(type: 'inputStart', callback?: (kbController: KeyboardController, textInputClient: TextInputClient) => void): void
 
 取消订阅输入法绑定成功事件。
+
+> **说明：**
+>
+> 从API version 9开始支持，API version 23开始废弃，建议使用[off('inputStart')](#offinputstart9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -237,11 +249,15 @@ inputMethodEngine.getInputMethodEngine()
     });
 ```
 
-### on('keyboardShow'|'keyboardHide')
+### on('keyboardShow'|'keyboardHide')<sup>(deprecated)</sup>
 
 on(type: 'keyboardShow'|'keyboardHide', callback: () => void): void
 
 订阅输入法软键盘显示或隐藏事件。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，API version 23开始废弃，建议使用[on('keyboardShow'|'keyboardHide')](#onkeyboardshowkeyboardhide9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -263,11 +279,15 @@ inputMethodEngine.getInputMethodEngine().on('keyboardHide', () => {
 });
 ```
 
-### off('keyboardShow'|'keyboardHide')
+### off('keyboardShow'|'keyboardHide')<sup>(deprecated)</sup>
 
 off(type: 'keyboardShow'|'keyboardHide', callback?: () => void): void
 
 取消订阅输入法软键盘显示或隐藏事件。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，API version 23开始废弃，建议使用[off('keyboardShow'|'keyboardHide')](#offkeyboardshowkeyboardhide9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
