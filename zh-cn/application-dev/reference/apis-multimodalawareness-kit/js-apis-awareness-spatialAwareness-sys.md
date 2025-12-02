@@ -35,7 +35,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.ReportingMode
 
-测距结果的上报模式。
+测距后返回结果的上报模式。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
