@@ -138,24 +138,24 @@
 3. 获取设备操作权限。
 
    <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
-      console.error('deviceList is empty');
-      this.logInfo_ += '\n[ERROR] deviceList is empty';
-      return;
-    }
-    let deviceList: usbManager.USBDevice[] = this.deviceList_;
-    let deviceName: string = deviceList[0].name;
-    // 申请操作指定的device的操作权限。
-    usbManager.requestRight(deviceName).then((hasRight: boolean) => {
-      console.info('usb device request right result: ' + hasRight);
-      this.logInfo_ += '\n[INFO] usb device request right result: ' + JSON.stringify(hasRight);
-    }).catch((error: BusinessError) => {
-      console.error(`usb device request right failed : ${error}`);
-      this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
-    });
-```
+   
+   ``` TypeScript
+   if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
+     console.error('deviceList is empty');
+     this.logInfo_ += '\n[ERROR] deviceList is empty';
+     return;
+   }
+   let deviceList: usbManager.USBDevice[] = this.deviceList_;
+   let deviceName: string = deviceList[0].name;
+   // 申请操作指定的device的操作权限。
+   usbManager.requestRight(deviceName).then((hasRight: boolean) => {
+     console.info('usb device request right result: ' + hasRight);
+     this.logInfo_ += '\n[INFO] usb device request right result: ' + JSON.stringify(hasRight);
+   }).catch((error: BusinessError) => {
+     console.error(`usb device request right failed : ${error}`);
+     this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
+   });
+   ```
 
 
 4. 打开设备。
