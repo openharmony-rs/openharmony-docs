@@ -59,7 +59,7 @@ Web媒体策略的配置。
 
 | 名称          | 类型  | 只读 | 可选 | 说明            |
 | ----------- | ------ | --- | -----|---------------- |
-| secondLevelDomain | string | 否  | 否    | 二级域名的精确匹配。例如，"https://www.example.com"的二级域名为example.com；"https://www.example.com.cn"二级域名为example.com.cn。 |
+| secondLevelDomain | string | 否  | 否    | 二级域名的精确匹配。例如，"https://www.example.com"的二级域名为example.com；"https://www.example.com.cn"二级域名为example.com.cn。网址没有二级域名则为空。 |
 | rule | string | 否  | 否    | url正则表达式。 在secondLevelDomain匹配成功后，才进行url正则匹配。 |
 
 ## NestedScrollOptionsExt<sup>14+</sup>
