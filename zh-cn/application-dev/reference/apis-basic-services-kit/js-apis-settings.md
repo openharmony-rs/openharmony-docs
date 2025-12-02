@@ -1108,8 +1108,6 @@ openInputMethodSettings(context: Context): void
 
 打开输入法设置页面。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Applications.Settings.Core
 
 **设备行为差异**：该接口在Phone、Tablet设备中可正常调用，在其他设备调用不生效。
@@ -1122,7 +1120,7 @@ openInputMethodSettings(context: Context): void
 
 **错误码**：
 
-以下错误码详细介绍请参考[设置数据项错误码](./errorcode-settings.md)。
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
 
 | 错误码ID    | 错误信息                    |
 |----------|-------------------------|
@@ -1147,8 +1145,6 @@ openInputMethodDetail(context: Context, bundleName: string, inputMethodId: strin
 
 打开输入法详情页面。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Applications.Settings.Core
 
 **设备行为差异**：该接口在Phone、Tablet设备中可正常调用，在其他设备调用不生效。
@@ -1163,7 +1159,7 @@ openInputMethodDetail(context: Context, bundleName: string, inputMethodId: strin
 
 **错误码**：
 
-以下错误码详细介绍请参考[设置数据项错误码](./errorcode-settings.md)。
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
 
 | 错误码ID    | 错误信息                    |
 |----------|-------------------------|
