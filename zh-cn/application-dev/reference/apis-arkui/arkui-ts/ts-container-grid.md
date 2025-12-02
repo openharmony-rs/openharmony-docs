@@ -2057,6 +2057,8 @@ struct GridExample {
 
 ### 示例13（滚动事件）
 
+[UIGridEvent](#uigridevent19)中的滚动事件的使用。
+
 ```ts
 import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
 
