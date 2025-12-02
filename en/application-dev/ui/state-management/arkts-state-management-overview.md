@@ -42,7 +42,7 @@ Before implementing state management, you need to understand the basic syntax of
   @Component
   struct MyComponent {
     @State count: number = 0;
-    private increaseBy: number = 1;
+    increaseBy: number = 1;
 
     build() {
     }
@@ -179,9 +179,9 @@ State management of V2 provides a new set of decorators.
 
 - [\@Monitor](arkts-new-monitor.md): \@Monitor is used in custom components decorated with \@ComponentV2 or classes decorated with \@ObservedV2 to implement deep observation on state variables.
 
-- [\@Provider and \@Consumer](arkts-new-Provider-and-Consumer.md): These decorators are used to implement two-way synchronization across component levels.
+- [\@Provider and \@Consumer](arkts-new-provider-and-consumer.md): These decorators are used to implement two-way synchronization across component levels.
 
-- [\@Computed](arkts-new-Computed.md): An \@Computed decorated method is a computed property, for which computation is performed only once when the value changes. It is mainly used to solve the performance problem caused by repeated computation when the UI reuses the property multiple times.
+- [\@Computed](arkts-new-computed.md): An \@Computed decorated method is a computed property, for which computation is performed only once when the value changes. It is mainly used to solve the performance problem caused by repeated computation when the UI reuses the property multiple times.
 
 - [!! Syntax](arkts-new-binding.md): The **!!** syntax is syntax sugar used for two-way binding.
 
@@ -213,4 +213,3 @@ State management of V2 provides a new set of decorators.
 | animateTo | Partial support| When **animateTo** is used in V2, exceptions may occur under certain scenarios. For details, see [Using animateTo Failed in State Management V2](./arkts-new-local.md#using-animateto-failed-in-state-management-v2).|
 
 For details about how to migrate applications from V1 to V2, see [Migrating Applications from V1 to V2](./arkts-v1-v2-migration.md).<br>For details about how to use decorators of V1 and V2 together, see [Mixing Use of Custom Components](./arkts-custom-component-mixed-scenarios.md).
-<!--no_check-->

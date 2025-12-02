@@ -62,7 +62,7 @@ struct Index {
 
 **Reference**
 
-[PersistentStorage: Persisting Application State](../ui/state-management/arkts-persiststorage.md)
+[PersistentStorage: Persisting UI State](../ui/state-management/arkts-persiststorage.md)
 
 
 ## How do I save pixel map data to a database? (API version 9)

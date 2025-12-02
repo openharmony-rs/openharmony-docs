@@ -50,14 +50,15 @@ ArkTS数据类型对应剪贴板类型，详见[ohos.pasteboard](../../reference
 ### 示例代码
 ```ts
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
-// ···
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// ...
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
-
-// ···
+// ...
+  export async function setPlainData(content: string): Promise<void> {
     let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, content);
     await systemPasteboard.setData(pasteData);
-    // ···
+  }
+  export async function getPlainData(type: string): Promise<string> {
     //从系统剪贴板中读取数据
     let data = await systemPasteboard.getData();
     let recordCount = data.getRecordCount();
@@ -67,6 +68,8 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
       hilog.info(0xFF00, '[Sample_pasteboard]', 'Get data success, record:' + record);
       result = record;
     }
+    return result;
+  }
 ```
 
 ## 使用统一数据类型进行复制粘贴
@@ -79,20 +82,20 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 
 详细接口见[接口文档](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddata12)。
 
-| 名称 | 说明                                                                                                                                        |
-| -------- |----------------------------------------------------------------------------------------------------------------------------------------|
-| setUnifiedData(data: udc.UnifiedData): Promise\<void\> | 将统一数据对象的数据写入系统剪贴板。
-| setUnifiedDataSync(data: udc.UnifiedData): void | 将统一数据对象的数据写入系统剪贴板，此接口为同步接口。                                                                                                                          |
-| getUnifiedData(): Promise\<udc.UnifiedData\> | 从系统剪贴板中读取统一数据对象的数据。                                                                                                                          |
-| getUnifiedDataSync(): udc.UnifiedData | 从系统剪贴板中读取统一数据对象的数据，此接口为同步接口。
+| 名称 | 说明                                                                                           |
+| -------- |-------------------------------------------------------------------------------------------|
+| setUnifiedData(data: udc.UnifiedData): Promise\<void\> | 将统一数据对象的数据写入系统剪贴板。           |
+| setUnifiedDataSync(data: udc.UnifiedData): void | 将统一数据对象的数据写入系统剪贴板，此接口为同步接口。 |
+| getUnifiedData(): Promise\<udc.UnifiedData\> | 从系统剪贴板中读取统一数据对象的数据。                   |
+| getUnifiedDataSync(): udc.UnifiedData | 从系统剪贴板中读取统一数据对象的数据，此接口为同步接口。          |
 
 ### 示例代码
 ```ts
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-
-// ···
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+// ...
   // 1.构造一条PlainText数据
   export async function handleUniformData() {
     let plainText: uniformDataStruct.PlainText = {

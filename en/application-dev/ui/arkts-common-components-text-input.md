@@ -7,16 +7,16 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-The **TextInput** and **TextArea** components are input fields designed to capture user input, such as comments, chat messages, and table content. They can be combined with other components for diverse use cases like login and registration forms. For details, see [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md) and [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md). The **Search** component is a specialized input field with a default style that includes a search icon. For details, see [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md).
+The **TextInput** and **TextArea** components are input components used to accept input from the user, such as comments, chat messages, and table content. They can be used in combination with other components to meet more diversified purposes, for example, login and registration. For details, see [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md) and [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md). Search is a special input box component, which is called a search box. The default style contains the search icon. For details, see [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md).
 
 
 >  **NOTE**
 >
->  Only plain text is supported. For rich text input, use the [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md) component.
+>  Only the single-text style is supported. If the rich-text style is required, you are advised to use the [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md) component.
 
-## Creating a Text Input
+## Creating an Input Box
 
-TextInput is a single-line input field, TextArea is a multi-line input field, and Search is a search field. Use the following APIs to create these components.
+TextInput is a single-line input box, TextArea is a multi-line input box, and Search is a search box. Use the following APIs to create these components.
 
 ```ts
 TextInput(value?:{placeholder?: ResourceStr, text?: ResourceStr, controller?: TextInputController})
@@ -30,7 +30,7 @@ TextArea(value?:{placeholder?: ResourceStr, text?: ResourceStr, controller?: Tex
 Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: SearchController, icon?: string})
 ```
 
-- Single-line input field.
+- Single-line text box.
 
   ```ts
   TextInput()
@@ -39,7 +39,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
   ![en-us_image_0000001511580844](figures/en-us_image_0000001511580844.png)
 
 
-- Multi-line input field.
+- Multi-line text box.
 
   ```ts
   TextArea()
@@ -47,7 +47,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
 
   ![en-us_image_0000001562940481](figures/en-us_image_0000001562940481.png)
 
-- The **TextArea** component automatically wraps text to fit the component's width.
+- The **TextArea** component automatically wraps text so that each line does not have more than the width of the component.
 
 
   ```ts
@@ -56,7 +56,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
 
   ![en-us_image_0000001511580836](figures/en-us_image_0000001511580836.png)
 
-- Search field.
+- A search box.
 
   ```ts
   Search()
@@ -65,79 +65,114 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
 
   ![en-us_image_ui_arkts-common-components-text-input_search_default](figures/en-us_image_ui_arkts-common-components-text-input_search_default.png)
 
-## Setting the Input Type
+## Setting the Input Box Type
 
-The input type for TextInput, TextArea, and Search can be set using the **type** attribute. The available enumerated values vary slightly by component. The following example uses a single-line input field.
+The input box type can be set for TextInput, TextArea, and Search through the type attribute. However, the enumerated values of each component are slightly different. The following uses a single-line text box as an example.
 
-The **TextInput** component supports several input types. Set the **type** parameter to any of the following: **Normal**, **Password**, **Email**, **Number**, **PhoneNumber**, **USER_NAME**, **NEW_PASSWORD**, **NUMBER_PASSWORD**,<!--Del--> **SCREEN_LOCK_PASSWORD**,<!--DelEnd--> or **NUMBER_DECIMAL**. For details, see [type](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#type).
+The **TextInput** component comes in several types. You can specify its type by setting the **type** parameter to any of the following: **Normal**, **Password**, **Email**, **Number**, **PhoneNumber**, **USER_NAME**, **NEW_PASSWORD**, **NUMBER_PASSWORD**,<!--Del--> **SCREEN_LOCK_PASSWORD**,<!--DelEnd--> and **NUMBER_DECIMAL**. You can set this attribute through [type](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#type).
 
-
-- Normal input mode (default).
+### Normal Input Mode (Default Mode)
 
   ```ts
-  TextInput({ text: 'aaa' })
+  TextInput()
     .type(InputType.Normal)
   ```
 
   ![en-us_image_0000001562820765](figures/en-us_image_0000001562820765.png)
 
-- Password input mode.
+### Password Mode
 
+The password input mode, number input mode, and new password input mode are supported.
+
+The following example is a password input box.
   ```ts
-  TextInput({ text: '123' })
+  TextInput()
     .type(InputType.Password)
   ```
 
   ![en-us_image_0000001511580840](figures/en-us_image_0000001511580840.png)
 
-- Email address input mode.
+### Email Address Input Mode
+
+An email address input box can contain only one at sign (@).
 
   ```ts
-  TextInput({ text: '123456@example.com' })
+  TextInput()
     .type(InputType.Email)
   ```
 
   ![text_input_type_email](figures/text_input_type_email.PNG)
 
-- Number input mode.
+### Digit Input Mode
+An input box in numeric input mode can contain only digits (0-9).
 
   ```ts
-  TextInput({ text: '123456789' })
+  TextInput()
     .type(InputType.Number)
   ```
 
   ![text_input_type_number](figures/text_input_type_number.PNG)
 
-- Phone number input mode.
+### Phone Number Input Mode
 
+An input box in phone number input mode can contain digits, spaces, plus signs (+), minus signs (-), asterisks (*), number signs (#), parentheses (()), and brackets ([]). The length is not limited.
+
+```ts
+TextInput()
+  .type(InputType.PhoneNumber)
+```
+
+![text_input_type_phone_number](figures/text_input_type_phone_number.PNG)
+
+### Number Input Mode with a Decimal Point
+
+An input box in numeric input mode with decimal points can contain only digits (0-9) and decimal points (.). Only one decimal point is allowed.
   ```ts
-  TextInput({ text: '+86 123-0123-0456' })
-    .type(InputType.PhoneNumber)
-  ```
-
-  ![text_input_type_phone_number](figures/text_input_type_phone_number.PNG)
-
-- Decimal number input mode.
-
-  ```ts
-  TextInput({ text: '9.15' })
+  TextInput()
     .type(InputType.NUMBER_DECIMAL)
   ```
 
   ![text_input_type_number_decimal](figures/text_input_type_number_decimal.PNG)
 
-- URL input mode.
+### URL Input Mode
 
+URL input mode with no special restrictions.
   ```ts
-  TextInput({ text: 'https://www.example.com' })
+  TextInput()
     .type(InputType.URL)
   ```
 
   ![text_input_type_url](figures/text_input_type_url.PNG)
 
+## Setting the Polymorphic Style of an Input Box
+
+The TextInput and TextArea components support the polymorphic style of the input box, which is set through the [style](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#style10) attribute. The following uses the multi-line input box TextArea as an example.
+
+TextArea has the following two types: default style (the input parameter is TextContentStyle.DEFAULT) and inline mode (also called inline input style, the input parameter is TextContentStyle.INLINE).
+
+### Default Mode
+
+The input box in the default style has the same style in the editing state and non-editing state.
+```ts
+TextArea()
+  .style(TextContentStyle.DEFAULT)
+```
+
+  ![textArea_style_default](figures/textArea_style_default.gif)
+
+### Inline Mode
+
+Inline mode, also called inline input style. The input box in inline mode has obvious style differences in the editing state and non-editing state.
+```ts
+TextArea()
+  .style(TextContentStyle.INLINE)
+```
+
+  ![textArea_style_default](figures/textArea_style_inline.gif)
+
 ## Setting Styles
 
-- Set the placeholder text displayed when the input is empty.
+- Set the placeholder text displayed when there is no input.
 
 
   ```ts
@@ -147,7 +182,7 @@ The **TextInput** component supports several input types. Set the **type** param
   ![en-us_image_0000001511900400](figures/en-us_image_0000001511900400.png)
 
 
-- Set the initial input text.
+- Set the current text input.
 
   ```ts
   TextInput({ placeholder: 'I am placeholder text', text: 'I am current text input' })
@@ -155,7 +190,7 @@ The **TextInput** component supports several input types. Set the **type** param
 
   ![en-us_image_0000001562820761](figures/en-us_image_0000001562820761.png)
 
-- Set the background color of the input field using **backgroundColor**.
+- Use **backgroundColor** to set the background color of the text box.
 
   ```ts
   TextInput({ placeholder: 'I am placeholder text', text: 'I am current text input' })
@@ -164,20 +199,20 @@ The **TextInput** component supports several input types. Set the **type** param
 
   ![en-us_image_0000001511740444](figures/en-us_image_0000001511740444.png)
 
-  Additional styles can be applied using [universal attributes](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md).
+  More styles can be implemented by leveraging the [universal attributes](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md).
 
 
 ## Adding Events
 
-Input fields capture user input and submit it as data. Bind the **onChange** event to get the updated text content, the **onSubmit** event to get the text submitted by pressing Enter, and the **onTextSelectionChange** event to get the selection range or cursor position during editing. Common events can also be used for interactive operations.
+The text box is used to obtain the information entered by the user and upload the information as data. The onChange event can be bound to obtain the changed text content in the text box. The onSubmit event can be bound to obtain the text information submitted by pressing Enter. The onTextSelectionChange event can be bound to obtain the handle position information when the text is selected or the cursor position information when the text is edited. You can also use common events to perform interaction operations.
 
 >  **NOTE**
 >
->  In password mode, when the **showPassword** attribute is set, it is recommended to synchronize the state in the **onSecurityStateChange** callback. For details, see the example below.
+>  In password mode, when the showPassword attribute is set, you are advised to add status synchronization in the onSecurityStateChange callback. For details, see the following example.
 >
-> The **onWillInsert**, **onDidInsert**, **onWillDelete**, and **onDidDelete** callbacks are only supported with the system input method.
+> The onWillInsert, onDidInsert, onWillDelete, and onDidDelete callback functions support only the system input method.
 >
-> [onWillChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillchange15) is called after **onWillInsert** and **onWillDelete**, and before **onDidInsert** and **onDidDelete**.
+> [onWillChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillchange15) is called after onWillInsert and onWillDelete, and before onDidInsert and onDidDelete.
 
 ```ts
 // xxx.ets
@@ -208,52 +243,52 @@ struct Index {
           .type(InputType.Password)
           .showPassword(this.passwordState)
           .onChange((value: string) => {
-            // Triggered when the text content changes.
-            console.info('onChange is triggered: ', value);
-            this.textStr1 = `onChange is triggered: ${value}`;
+            // Called when the text content changes.
+            console.info('onChange is triggering: ', value);
+            this.textStr1 = `onChange is triggering: ${value}`;
           })
           .onSubmit((enterKey: EnterKeyType, event: SubmitEvent) => {
-            // Triggered when the Enter key is pressed.
-            console.info('onSubmit is triggered: ', enterKey, event.text);
-            this.textStr2 = `onSubmit is triggered: ${enterKey} ${event.text}`;
+            // Called when the Enter key is pressed.
+            console.info('onSubmit is triggering: ', enterKey, event.text);
+            this.textStr2 = `onSubmit is triggering: ${enterKey} ${event.text}`;
           })
           .onTextSelectionChange((selectionStart: number, selectionEnd: number) => {
-            // Triggered when the text selection or cursor position changes during editing.
-            console.info('onTextSelectionChange is triggered: ', selectionStart, selectionEnd);
-            this.textStr3 = `onTextSelectionChange is triggered: ${selectionStart} ${selectionEnd}`;
+            // Called when the text selection position changes or the cursor position changes in the editing state.
+            console.info('onTextSelectionChange is triggering: ', selectionStart, selectionEnd);
+            this.textStr3 = `onTextSelectionChange is triggering: ${selectionStart} ${selectionEnd}`;
           })
           .onSecurityStateChange((isShowPassword: boolean) => {
-            // Triggered when the password visibility is toggled.
-            console.info('onSecurityStateChange is triggered: ', isShowPassword);
+            // This callback function is triggered when the password display/hide status is switched.
+            console.info('onSecurityStateChange is triggering: ', isShowPassword);
             this.passwordState = isShowPassword;
-            this.textStr4 = `onSecurityStateChange is triggered: ${isShowPassword}`;
+            this.textStr4 = `onSecurityStateChange is triggering: ${isShowPassword}`;
           })
           .onWillInsert((info: InsertValue) => {
-            // Triggered before text is inserted.
-            console.info('onWillInsert is triggered: ', info.insertValue, info.insertOffset);
-            this.textStr5 = `onWillInsert is triggered: ${info.insertValue} ${info.insertOffset}`;
+            // Trigger the callback function when the input is about to be performed.
+            console.info('onWillInsert is triggering: ', info.insertValue, info.insertOffset);
+            this.textStr5 = `onWillInsert is triggering: ${info.insertValue} ${info.insertOffset}`;
             return true;
           })
           .onDidInsert((info: InsertValue) => {
-            // Triggered after text is inserted.
-            console.info('onDidInsert is triggered: ', info.insertValue, info.insertOffset);
-            this.textStr6 = `onDidInsert is triggered: ${info.insertValue} ${info.insertOffset}`;
+            // This callback is triggered when the input is complete.
+            console.info('onDidInsert is triggering: ', info.insertValue, info.insertOffset);
+            this.textStr6 = `onDidInsert is triggering: ${info.insertValue} ${info.insertOffset}`;
           })
           .onWillDelete((info: DeleteValue) => {
-            // Triggered before text is deleted.
-            console.info('onWillDelete is triggered: ', info.deleteValue, info.deleteOffset);
-            this.textStr7 = `onWillDelete is triggered: ${info.deleteValue} ${info.deleteOffset}`;
+            // This callback is triggered when the object is to be deleted.
+            console.info('onWillDelete is triggering: ', info.deleteValue, info.deleteOffset);
+            this.textStr7 = `onWillDelete is triggering: ${info.deleteValue} ${info.deleteOffset}`;
             return true;
           })
           .onDidDelete((info: DeleteValue) => {
-            // Triggered after text is deleted.
-            console.info('onDidDelete is triggered: ', info.deleteValue, info.deleteOffset);
-            this.textStr8 = `onDidDelete is triggered: ${info.deleteValue} ${info.deleteOffset}`;
+            // This callback is triggered when the deletion is complete.
+            console.info('onDidDelete is triggering: ', info.deleteValue, info.deleteOffset);
+            this.textStr8 = `onDidDelete is triggering: ${info.deleteValue} ${info.deleteOffset}`;
           })
           .onFocus(() => {
-            // Common event: triggered when the input field gains focus.
-            console.info('onFocus is triggered')
-            this.textStr9 = `onFocus is triggered`;
+            // Bind a common event. This callback function is triggered when the text box is focused.
+            console.info('onFocus is triggering')
+            this.textStr9 = `onFocus is triggering`;
           })
       }.width('100%')
     }
@@ -264,25 +299,25 @@ struct Index {
 
 ![text_input_event](figures/text_input_event.gif)
 
-## Selection Menu
+## Selected menu
 
-When text is selected in an input field, a context menu appears with options such as Cut, Copy, Translate, and Search.
+When the text in the text box is selected, a menu containing the cut, copy, translation, and sharing options is displayed.
 
 TextInput:
 ```ts
-TextInput ({text : 'This is a piece of text, which is used to display the selection menu.'})
+TextInput ({text : 'This is a piece of text, which is used to display the selected menu.'})
 ```
 
 
 TextArea:
 ```ts
-TextArea ({text : 'This is a piece of text, which is used to display the selection menu.'})
+TextArea ({text : 'This is a piece of text, which is used to display the selected menu.'})
 ```
 
 
-## Disabling System Service Menu Items
+## Disabling System Service Menus
 
-Starting from API version 20, the [disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) method can be used to disable all system service menu items in the text selection menu.
+In API version 20 and later versions, the [disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) method can be used to disable all system service menus in the text selection menu.
 
   ```ts
   import { TextMenuController } from '@kit.ArkUI';
@@ -292,12 +327,12 @@ Starting from API version 20, the [disableSystemServiceMenuItems](../reference/a
   @Component
   struct Index {
     aboutToAppear(): void {
-      // Disable all system service menu items.
+      // Disable all system service menus.
       TextMenuController.disableSystemServiceMenuItems(true)
     }
   
     aboutToDisappear(): void {
-      // Restore system service menu items when the page is destroyed.
+      // Restore the system service menus when the page disappears.
       TextMenuController.disableSystemServiceMenuItems(false)
     }
   
@@ -312,7 +347,7 @@ Starting from API version 20, the [disableSystemServiceMenuItems](../reference/a
             .caretStyle({ width: '4vp' })
             .editMenuOptions({
               onCreateMenu: (menuItems: Array<TextMenuItem>) => {
-                // menuItems no longer contains the disabled system menu items.
+                // menuItems does not contain the disabled system menu items.
                 return menuItems
               },
               onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
@@ -328,7 +363,7 @@ Starting from API version 20, the [disableSystemServiceMenuItems](../reference/a
 
 
 
-Starting from API version 20, the [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) method can be used to hide specific system service menu items in the text selection menu.
+In API version 20 and later versions, you can use the [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) method to mask specified system service menu items in the text selection menu.
 
   ```ts
   import { TextMenuController } from '@kit.ArkUI';
@@ -338,12 +373,12 @@ Starting from API version 20, the [disableMenuItems](../reference/apis-arkui/ark
   @Component
   struct Index {
     aboutToAppear(): void {
-      // Disable Search and Translate.
+      // Disable search and translation.
       TextMenuController.disableMenuItems([TextMenuItemId.SEARCH, TextMenuItemId.TRANSLATE])
     }
   
     aboutToDisappear(): void {
-      // Restore system service menu items when the page is destroyed.
+      // Restore the system service menu items when the page disappears.
       TextMenuController.disableMenuItems([])
     }
   
@@ -358,7 +393,7 @@ Starting from API version 20, the [disableMenuItems](../reference/apis-arkui/ark
             .caretStyle({ width: '4vp' })
             .editMenuOptions({
               onCreateMenu: (menuItems: Array<TextMenuItem>) => {
-                  // menuItems no longer contains Search and Translate.
+                  // menuItems does not contain search and translation.
                   return menuItems;
               },
               onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
@@ -376,9 +411,9 @@ Starting from API version 20, the [disableMenuItems](../reference/apis-arkui/ark
 
 ## Autofill
 
-Set the autofill type for an input field using the [contentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12) attribute.
+You can set the auto-population type for an input box using the [contentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12) attribute.
 
-For supported types, see [ContentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12).
+For details about the supported types, see [ContentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12).
 ```ts
 TextInput ({ placeholder: 'Enter your email address...' })
   .width('95%')
@@ -387,13 +422,13 @@ TextInput ({ placeholder: 'Enter your email address...' })
   .contentType(ContentType.EMAIL_ADDRESS)
 ```
 
-## Setting Properties
+## Setting Attributes
 
-- Set the ellipsis behavior.
+- Sets the ellipsis attribute.
 
-  Configure the ellipsis position for an input field using the [ellipsisMode](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ellipsismode18) attribute.
+  You can set the ellipsis position for an input box using the [ellipsisMode](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ellipsismode18) attribute.
 
-  For this setting to take effect, **overflow** must be set to **TextOverflow.Ellipsis**. Setting **ellipsisMode** alone has no effect.
+  For the settings to work, **overflow** must be set to **TextOverflow.Ellipsis**. Setting **ellipsisMode** alone does not take effect.
 
   ```ts
   TextInput ({ text: 'This is a text used to display the ellipsis mode.' })
@@ -405,9 +440,9 @@ TextInput ({ placeholder: 'Enter your email address...' })
   ```
   ![TextInput_ellipsismode](figures/TextInput_ellipsismode.jpg)
 
-- Set the text stroke.
+- Sets the text stroke attribute.
 
-  Starting from API version 20, you can set the stroke width and color for the text within an input field using the [strokeWidth](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#strokewidth20) and [strokeColor](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#strokecolor20) attributes.
+  From API version 20 onwards, you can set the stroke width and color of the text in the text box through the [strokeWidth](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#strokewidth20) and [strokeColor](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#strokecolor20) attributes.
 
   ```ts
   TextInput({ text: 'Text with stroke' })
@@ -420,9 +455,9 @@ TextInput ({ placeholder: 'Enter your email address...' })
   ```
   ![TextInput_stroke](figures/TextInput_stroke.jpg)
 
-## Setting Text Line Spacing
+## Setting the Line Spacing of Text
 
-Starting from API version 20, you can use [lineSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#linespacing20) to configure text line spacing. If [LineSpacingOptions](../reference/apis-arkui/arkui-ts/ts-text-common.md#linespacingoptions20) is not configured, line spacing is applied above the first line and below the last line by default. If **onlyBetweenLines** is set to **true**, line spacing is only applied between lines, with no extra space above the first line.
+Since API version 20, you can use [lineSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#linespacing20) to configure text line spacing. If [LineSpacingOptions](../reference/apis-arkui/arkui-ts/ts-text-common.md#linespacingoptions20) is not configured, the line spacing is available above the first line and below the last line by default. If onlyBetweenLines is set to true, the line spacing applies only to the lines. No extra line spacing is available above the first line.
 
 ```ts
 TextArea({
@@ -436,7 +471,7 @@ TextArea({
 
 ## Keyboard Avoidance
 
-After the keyboard is displayed, scrollable container components activate keyboard avoidance only when switching between landscape and portrait modes. To enable keyboard avoidance for non-scrollable container components, nest them within a scrollable container such as [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), or [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md).
+After the keyboard is raised, scrollable container components will only activate the keyboard avoidance feature when switching between landscape and portrait modes. To enable keyboard avoidance for non-scrollable container components, nest them within a scrollable container component, such as [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), or [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md).
 
 ```ts
 // xxx.ets
@@ -464,8 +499,8 @@ struct Index {
 
 ## Caret Avoidance
 
-After the keyboard is displayed, the **OFFSET** and **RESIZE** options in the [keyBoardAvoidMode](../reference/apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11) enumeration do not support secondary avoidance. To enable additional caret avoidance, use the **OFFSET_WITH_CARET** and **RESIZE_CARET** options.<br>
-**RESIZE_WITH_CARET** is recommended for scrollable containers, and **OFFSET_WITH_CARET** for non-scrollable containers.
+After the keyboard is lifted, the OFFSET and RESIZE in the [keyBoardAvoidMode](../reference/apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11) enumeration do not support secondary avoidance. To support additional caret avoidance actions, you can use the **OFFSET_WITH_CARET** and **RESIZE_CARET** options.<br>
+**RESIZE_WITH_CARET** is recommended for scrollable containers, and **OFFSET_WITH_CARET** is recommended for non-scrollable containers.
 
 ```ts
 // EntryAbility.ets
@@ -527,17 +562,18 @@ struct Index {
 ![textinputkeyboardavoid](figures/caretavoid.gif)
 
 
+
 ## FAQs
 
-### How Do I Set the Minimum Number of Lines for a TextArea and Make Its Height Adaptive?
+### How Do I Set the Minimum Number of Lines to Display Text in a TextArea and Adapt the Height?
 
 **Symptom**
 
-Set the initial height of the TextArea to control the minimum number of displayed lines. When the input text exceeds the initial height, the TextArea height should adapt accordingly.
+Set the initial height of the TextArea to control the minimum number of lines to display text. When the input text exceeds the initial height, the height of the TextArea adapts.
 
 **Solution**
 
-Set [minLines](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#minlines20) (available from API version 20), or set the height to **auto** and use [constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize) to calculate the height.
+Set [minLines](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#minlines20) (available since API version 20), or set height to auto and use [constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize) to calculate the height.
 
 ```ts
 import { MeasureUtils } from '@kit.ArkUI';
@@ -571,8 +607,8 @@ struct TextExample {
         .width(300)
         .height("auto")
         .constraintSize({
-          // Calculate the minimum height based on padding and the desired number of lines.
-          // If font scaling for accessibility is involved, listen for changes and adjust the height accordingly.
+          // Set the minimum number of lines to display based on the padding calculation.
+          // If font scaling for the elderly is involved, listen for and adjust the height.
           minHeight: this.textAreaPadding * 2 +
             this.setMaxLines * this.getUIContext().px2vp(Number(this.textSize.height))
         })

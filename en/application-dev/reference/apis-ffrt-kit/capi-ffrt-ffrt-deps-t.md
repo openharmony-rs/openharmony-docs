@@ -25,3 +25,5 @@ The **ffrt_deps_t** struct describes dependencies.
 | -- | -- |
 | uint32_t len | Number of dependencies.|
 | const [ffrt_dependence_t*](capi-ffrt-ffrt-dependence-t.md) items | Dependency data.|
+
+

@@ -4,7 +4,7 @@
 <!--Owner: @maorh-->
 <!--Designer: @keerecles-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -321,14 +321,12 @@ Represents an operation for adding data.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
-
-| Name| Type                     | Mandatory| Description                |
-| ------ | ------------------------- | ---- | -------------------- |
-| type   | [DataOperationType](#dataoperationtype).ADD     | Yes  | Type of data addition.        |
-| index  | number                    | Yes  | Index at which to insert the data record. The value range is [0, data source length - 1].|
-| count  | number                    | No  | Number of data records to insert.<br>Default value: **1**.  |
-| key    | string \| Array\<string\> | No  | Keys to assign to the inserted data records. The original keys are used by default.|
+| Name| Type                     | Read-Only| Optional| Description                |
+| ------ | ------------------------- | ---- | ---- | -------------------- |
+| type   | [DataOperationType](#dataoperationtype).ADD     | No| No  | Type of data addition.        |
+| index  | number                    | No| No  | Index at which to insert the data record. The value range is [0, data source length - 1].|
+| count  | number                    | No| Yes  | Number of data records to insert.<br>Default value: **1**.  |
+| key    | string \| Array\<string\> | No| Yes  | Keys to assign to the inserted data records. The original keys are used by default.|
 
 ### DataDeleteOperation
 
@@ -338,13 +336,11 @@ Represents an operation for deleting data.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
-
-| Name| Type                     | Mandatory| Description                |
-| ------ | ------------------------- | ---- | -------------------- |
-| type   | [DataOperationType](#dataoperationtype).DELETE     | Yes  | Type of data deletion.        |
-| index  | number                    | Yes  | Index at which to start deleting data. The value range is [0, data source length - 1].|
-| count  | number                    | No  | Number of data records to delete.<br>Default value: **1**.   |
+| Name| Type                     | Read-Only| Optional| Description                |
+| ------ | ------------------------- | ---- | ---- | -------------------- |
+| type   | [DataOperationType](#dataoperationtype).DELETE     | No| No  | Type of data deletion.        |
+| index  | number                    | No| No  | Index at which to start deleting data. The value range is [0, data source length - 1].|
+| count  | number                    | No| Yes  | Number of data records to delete.<br>Default value: **1**.   |
 
 ### DataChangeOperation
 
@@ -354,13 +350,11 @@ Represents an operation for changing data.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
-
-| Name| Type                     | Mandatory| Description                |
-| ------ | ------------------------- | ---- | -------------------- |
-| type   | [DataOperationType](#dataoperationtype).CHANGE     | Yes  | Type of data change.        |
-| index  | number                    | Yes  | Index of the data to be changed. The value range is [0, data source length - 1].|
-| key  | string                    | No  | New key to assign to the changed data. The original key is used by default.   |
+| Name| Type                     | Read-Only| Optional| Description                |
+| ------ | ------------------------- | ---- | ---- | -------------------- |
+| type   | [DataOperationType](#dataoperationtype).CHANGE     | No| No  | Type of data change.        |
+| index  | number                    | No| No  | Index of the data to be changed. The value range is [0, data source length - 1].|
+| key  | string                    | No| Yes  | New key to assign to the changed data. The original key is used by default.   |
 
 ### DataMoveOperation
 
@@ -370,13 +364,11 @@ Represents an operation for moving data.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
-
-| Name| Type                     | Mandatory| Description                |
-| ------ | ------------------------- | ---- | -------------------- |
-| type   | [DataOperationType](#dataoperationtype).MOVE     | Yes  | Type of data movement.|
-| index  | [MoveIndex](#moveindex12)        | Yes  | Positions for the movement. The value range is [0, data source length - 1].|
-| key | string              | No  | New key to assign to the moved data. The original key is used by default.|
+| Name| Type                     | Read-Only| Optional| Description                |
+| ------ | ------------------------- | ---- | ---- | -------------------- |
+| type   | [DataOperationType](#dataoperationtype).MOVE     | No| No  | Type of data movement.|
+| index  | [MoveIndex](#moveindex12)        | No| No  | Positions for the movement. The value range is [0, data source length - 1].|
+| key | string              | No| Yes  | New key to assign to the moved data. The original key is used by default.|
 
 ### DataExchangeOperation
 
@@ -386,13 +378,11 @@ Represents an operation for exchanging data.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
-
-| Name| Type                      | Mandatory| Description                        |
-| ------ | -------------------------- | ---- | ---------------------------- |
-| type   | [DataOperationType](#dataoperationtype).EXCHANGE | Yes  | Type of data exchange.                |
-| index  | [ExchangeIndex](#exchangeindex12)            | Yes  | Positions for the exchange. The value range is [0, data source length - 1].|
-| key    | [ExchangeKey](#exchangekey12)              | No  | New keys to assign to the exchanged data. The original keys are used by default.|
+| Name| Type                      | Read-Only| Optional| Description                        |
+| ------ | -------------------------- | ---- | ---- | ---------------------------- |
+| type   | [DataOperationType](#dataoperationtype).EXCHANGE | No| No  | Type of data exchange.                |
+| index  | [ExchangeIndex](#exchangeindex12)            | No| No  | Positions for the exchange. The value range is [0, data source length - 1].|
+| key    | [ExchangeKey](#exchangekey12)              | No| Yes  | New keys to assign to the exchanged data. The original keys are used by default.|
 
 ### DataReloadOperation
 
@@ -402,11 +392,9 @@ Represents an operation for reloading data. If the **onDatasetChange** event con
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
-
-| Name| Type                    | Mandatory| Description            |
-| ------ | ------------------------ | ---- | ---------------- |
-| type   | [DataOperationType](#dataoperationtype).RELOAD | Yes  | Type of data reloading.|
+| Name| Type                    | Read-Only| Optional| Description            |
+| ------ | ------------------------ | ---- | ---- | ---------------- |
+| type   | [DataOperationType](#dataoperationtype).RELOAD | No| No  | Type of data reloading.|
 
 ### DataOperationType
 
@@ -431,12 +419,10 @@ Enumerates the data operation types.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
-
-| Name| Type                      | Mandatory| Description           |
-| ------ | --------------- | ---- | ------- |
-| from   | number | Yes  | Start position for the movement. The value range is [0, data source length - 1].|
-| to  | number           | Yes  | End position for the movement. The value range is [0, data source length - 1].|
+| Name| Type                      | Read-Only| Optional| Description           |
+| ------ | --------------- | ---- | ---- | ------- |
+| from   | number | No| No  | Start position for the movement. The value range is [0, data source length - 1].|
+| to  | number           | No| No  | End position for the movement. The value range is [0, data source length - 1].|
 
 ## ExchangeIndex<sup>12+</sup>
 
@@ -444,12 +430,10 @@ Enumerates the data operation types.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
-
-| Name| Type                      | Mandatory| Description           |
-| ------ | --------------- | ---- | ------- |
-| start   | number | Yes  | First position for the exchange. The value range is [0, data source length - 1].|
-| end  | number           | Yes  | Second position for the exchange. The value range is [0, data source length - 1].|
+| Name| Type                      | Read-Only| Optional| Description           |
+| ------ | --------------- | ---- | ---- | ------- |
+| start   | number | No| No  | First position for the exchange. The value range is [0, data source length - 1].|
+| end  | number           | No| No  | Second position for the exchange. The value range is [0, data source length - 1].|
 
 ## ExchangeKey<sup>12+</sup>
 
@@ -457,9 +441,7 @@ Enumerates the data operation types.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
-
-| Name| Type                      | Mandatory| Description           |
-| ------ | --------------- | ---- | ------- |
-| start   | string | Yes  | New key to assign to the first position in the exchange. The original key is used by default.       |
-| end  | string   | Yes  | New key to assign to the second position in the exchange. The original key is used by default.          |
+| Name| Type                      | Read-Only| Optional| Description           |
+| ------ | --------------- | ---- | ---- | ------- |
+| start   | string | No| No  | New key to assign to the first position in the exchange. The original key is used by default.       |
+| end  | string   | No| No  | New key to assign to the second position in the exchange. The original key is used by default.          |

@@ -1,10 +1,10 @@
-# XComponent
+# XComponent (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **XComponent** provides a surface for graphics rendering and media data input into your view. You can customize the position and size of the surface as needed.
 
@@ -21,8 +21,6 @@
 Defines the options of the **XComponent**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |

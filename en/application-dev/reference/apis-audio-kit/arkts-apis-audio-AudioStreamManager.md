@@ -6,14 +6,14 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+This interface implements audio stream management.
+
+Before calling any API in AudioStreamManager, you must use [getStreamManager](arkts-apis-audio-AudioManager.md#getstreammanager9) to obtain an AudioStreamManager instance.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 9.
-
-This interface implements audio stream management.
-
-Before calling any API in AudioStreamManager, you must use [getStreamManager](arkts-apis-audio-AudioManager.md#getstreammanager9) to obtain an AudioStreamManager instance.
 
 ## Modules to Import
 

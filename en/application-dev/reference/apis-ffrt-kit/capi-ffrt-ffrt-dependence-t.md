@@ -25,3 +25,5 @@ The **ffrt_dependence_t** struct describes dependency data.
 |----------------------------------------------------| -- |
 | [ffrt_dependence_type_t](capi-type-def-h.md#ffrt_dependence_type_t) type | Dependency type.|
 | const void* ptr                                    | Address of the dependency data.|
+
+

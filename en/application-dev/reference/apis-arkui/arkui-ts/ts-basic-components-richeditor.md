@@ -4,7 +4,7 @@
 <!--Owner: @carnivore233-->
 <!--Designer: @pssea-->
 <!--Tester: @mateng_Holtens-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **RichEditor** is a component that supports interactive text editing and mixture of text and imagery.
 
@@ -71,6 +71,10 @@ The custom keyboard's height can be set through the **height** attribute of the 
 The custom keyboard cannot obtain focus, but it blocks gesture events.
 
 By default, the custom keyboard is closed when the input component loses the focus.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -195,6 +199,10 @@ enablePreviewText(enable: boolean)
 
 Sets whether to enable preview text.
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 18.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -222,6 +230,10 @@ This API is disabled by default in C API scenarios. To enable preview text in su
 placeholder(value: ResourceStr, style?: PlaceholderStyle)
 
 Sets the placeholder text, which is displayed when there is no input.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 18.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -274,6 +286,10 @@ Sets the extended options of the default system menu, including the text content
 
 When [disableMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) or [disableSystemServiceMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) is used to disable system service menu items in the context menu on selection, the disabled menu options will be excluded from the parameter list in the [onCreateMenu](./ts-text-common.md#oncreatemenu12) callback of **editMenuOptions**.
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 18.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -306,6 +322,9 @@ enableKeyboardOnFocus(isEnabled: boolean)
 
 Sets whether to enable the input method when the **RichEditor** component obtains focus in a way other than clicking.
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 18.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -322,6 +341,10 @@ Sets whether to enable the input method when the **RichEditor** component obtain
 barState(state: BarState)
 
 Sets the scrollbar display mode.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 18.
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
@@ -363,13 +386,17 @@ Sets the maximum number of lines that the rich text can display. When **maxLines
 
 | Name| Type                                     | Mandatory| Description                                                        |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| maxLines  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | Yes  | Maximum number of lines that the rich text can display. When **maxLines** is set, content that exceeds the specified number of lines can be scrolled to display. If both the component height and **maxLines** are set, the component height takes precedence.<br>Default value: **Infinity**, which means unlimited lines. The **undefined** type is supported.<br>Value range: (0, +∞)|
+| maxLines  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | Yes  | Maximum number of lines that the rich text can display. When **maxLines** is set, content that exceeds the specified number of lines can be scrolled to display. If both the component height and **maxLines** are set, the component height takes precedence.<br>Default value: **UINT32_MAX**, which means unlimited input. The **undefined** type is supported.<br>Value range: (0, UINT32_MAX]|
 
 ### enableHapticFeedback<sup>13+</sup>
 
 enableHapticFeedback(isEnabled: boolean)
 
 Sets whether to enable haptic feedback.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
@@ -461,7 +488,7 @@ Sets the color of the scrollbar.
 
 | Name| Type                                                        | Mandatory| Description                                    |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| color  | [Optional\<ColorMetrics>](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Color of the scrollbar.<br>Default value: **'\#66182431'**.<br>Note: If an abnormal value is set, the default value is used.|
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)> | Yes  | Color of the scrollbar.<br>Default value: '#66182431', which is displayed in gray.<br>Note: If an abnormal value is set, the default value is used.|
 
 
 ## Events
@@ -531,6 +558,10 @@ onDidIMEInput(callback:Callback\<TextRange>)
 Triggered when text input in the input method is complete.
 
 This callback is not supported when the **RichEditor** component constructed with [RichEditorStyledStringOptions](#richeditorstyledstringoptions12) is used.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -671,6 +702,10 @@ Invoked when any addition or deletion operation is about to be performed in the 
 
 This callback is not supported when the **RichEditor** component constructed with [RichEditorStyledStringOptions](#richeditorstyledstringoptions12) is used.
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 18.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -688,6 +723,10 @@ onDidChange(callback: OnDidChangeCallback)
 Triggered after an addition or deletion operation is performed in the component. This callback is not executed if there is no actual addition or deletion of text.
 
 This callback is not supported when the **RichEditor** component constructed with [RichEditorStyledStringOptions](#richeditorstyledstringoptions12) is used.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 18.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1004,6 +1043,8 @@ Represents the base class of the **RichEditor** component controller.
 getCaretOffset(): number
 
 Obtains the current cursor position.
+
+If the cursor position cannot be obtained (for example, the controller is not bound to the component), -1 is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2848,7 +2889,8 @@ struct Index {
               start: this.start,
               textStyle:
               {
-                fontWeight: FontWeight.Bolder
+                fontWeight: FontWeight.Bolder,
+                fontSize:15
               },
               imageStyle: {
                 size: ["80px", "80px"],
@@ -2867,7 +2909,8 @@ struct Index {
               start: this.start,
               textStyle:
               {
-                fontWeight: FontWeight.Bolder
+                fontWeight: FontWeight.Bolder,
+                fontSize:15
               },
               imageStyle: {
                 size: ["70px", "70px"],
@@ -2886,7 +2929,8 @@ struct Index {
               start: this.start,
               textStyle:
               {
-                fontWeight: FontWeight.Bolder
+                fontWeight: FontWeight.Bolder,
+                fontSize:15
               },
               imageStyle: {
                 size: ["60px", "60px"],
@@ -5466,8 +5510,6 @@ This example demonstrates how to implement text hyperlinking functionality using
 struct RichEditorExample {
   controller: RichEditorController = new RichEditorController();
   options: RichEditorOptions = { controller: this.controller };
-  styledStringController: RichEditorStyledStringController = new RichEditorStyledStringController();
-  styledStringOptions: RichEditorStyledStringOptions = { controller: this.styledStringController };
 
   build() {
     Column() {
@@ -5490,12 +5532,6 @@ struct RichEditorExample {
         RichEditor(this.options)
           .height('35%')
           .border({ width: 1, color: Color.Blue })
-      }
-
-      Row() {
-        RichEditor(this.styledStringOptions)
-          .height('35%')
-          .border({ width: 1, color: Color.Red })
       }
     }
   }
@@ -5897,7 +5933,7 @@ struct AutoSpacing {
                 }
               });
           })
-          Button("Insert symbol").onClick(() => {
+          Button("Insert Symbol").onClick(() => {
             this.controller.addSymbolSpan($r("sys.symbol.ohos_trash"),
               {
                 style:
@@ -5939,7 +5975,7 @@ struct AutoSpacing {
                   size: ["100px", "100px"]
                 }
               });
-            this.controller.addTextSpan(" Chinese and Western Auto Spacing
+            this.controller.addTextSpan("Automatic spacing between Chinese and English",
               {
                 style:
                 {

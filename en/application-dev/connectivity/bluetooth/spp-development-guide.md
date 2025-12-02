@@ -184,7 +184,7 @@ try {
 **3.2 Receiving Data**<br>
 After the connection between the server and client is established, the server can receive data from the client. This is implemented through [socket.on('sppRead ')](../../reference/apis-connectivity-kit/js-apis-bluetooth-socket.md#socketonsppread).
 ```ts
-let clientNumber = 1; // Note: This value is the client socket ID obtained by the asynchronous callback when the server listens to the connection. It is a pseudo-code ID here.
+let clientNumber = 1; // Note: The value is the client socket ID in the asynchronous callback returned when the server listens for a client connection. It is a pseudo-code ID here.
 
 // Define the callback for data read events.
 function read(dataBuffer: ArrayBuffer) {

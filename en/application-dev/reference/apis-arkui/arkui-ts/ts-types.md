@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >**NOTE**
 >
@@ -332,6 +332,10 @@ The **LengthConstrain** type is used to describe the maximum and minimum lengths
 
 The **Font** type is used to set the text style.
 
+> **NOTE**
+>
+> You can use [loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) to register custom fonts.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -340,7 +344,7 @@ The **Font** type is used to set the text style.
 | ------ | ------------------------------------------------------------ | ---- | -------- | ------------------------------------------------------------ |
 | size   | [Length](#length)                                            | No  |  Yes | Font size. If the value is of the number type, the unit fp is used. Percentage strings are not supported.<br>Default value: **16.0**|
 | weight | [FontWeight](ts-appendix-enums.md#fontweight) \| number \| string | No |  Yes| Font weight. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a thicker font.<br>Default value: **400** \| **FontWeight.Normal** |
-| family | string \| [Resource](#resource)                              | No  |  Yes | Font family of the text. Use commas (,) to separate multiple fonts. The priority of the fonts is the sequence in which they are placed. An example value is **'Arial, HarmonyOS Sans'**. Currently, the HarmonyOS Sans font and custom font [loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) are supported.|
+| family | string \| [Resource](#resource)                              | No  |  Yes | Font family. Default font: **'HarmonyOS Sans'**<br>To specify multiple fonts, separate them with commas (,), and fonts are applied in priority order. Example: **'Arial, HarmonyOS Sans'**.|
 | style  | [FontStyle](ts-appendix-enums.md#fontstyle)                  | No  |  Yes | Font style.<br>Default value: **FontStyle.Normal**            |
 
 ## Area<sup>8+</sup>
@@ -729,10 +733,10 @@ The **ChainWeightOptions** type is used to describe the layout weight of a compo
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type    | Description            |
-| ----- | ------ | -------------- |
-| horizontal | number | Layout weight of the component in the horizontal direction. It is effective when set to a value greater than 0.<br> Default value: **0**<br> Invalid values are treated as **0**. |
-| vertical     | number | Layout weight of the component in the vertical direction. It is effective when set to a value greater than 0.<br> Default value: **0**<br> Invalid values are treated as **0**.|
+| Name     | Type  | Read-Only| Optional| Description      |
+| --------- | ------ | ---- | ---- | ---------- |
+| horizontal | number | No| Yes| Layout weight of the component in the horizontal direction. It is effective when set to a value greater than 0.<br> Default value: **0**<br> Invalid values are treated as **0**. |
+| vertical     | number | No| Yes| Layout weight of the component in the vertical direction. It is effective when set to a value greater than 0.<br> Default value: **0**<br> Invalid values are treated as **0**.|
 
 ## Configuration
 

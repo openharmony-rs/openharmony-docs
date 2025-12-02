@@ -1,10 +1,10 @@
 # Common Event Callbacks
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >**NOTE**
 >
@@ -199,9 +199,9 @@ Sets the callback for the [onVisibleAreaChange](./ts-universal-component-visible
 
 ## HoverCallback
 
-The **HoverCallback** type is used to represent the callback for the hover event.
-
 type HoverCallback = (isHover: boolean, event: HoverEvent)=> void
+
+The **HoverCallback** type is used to represent the callback for the hover event.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

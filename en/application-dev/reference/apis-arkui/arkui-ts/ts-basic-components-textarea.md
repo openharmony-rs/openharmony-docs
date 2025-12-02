@@ -4,7 +4,7 @@
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **TextArea** component provides multi-line text input and automatically wraps text to ensure that no line extends beyond the component's width.
 
@@ -228,7 +228,7 @@ Sets the font family.
 
 > **NOTE**
 >
-> You are advised to use [loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) to register custom fonts.
+> You can use [loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) to register custom fonts.
 
 ### inputFilter<sup>8+</sup>
 
@@ -237,6 +237,8 @@ inputFilter(value: ResourceStr, error?: (value: string) => void)
 Sets the regular expression for input filtering. Only inputs that comply with the regular expression can be displayed. Other inputs are filtered out.
 
 For single-character input scenarios, only single-character matching is supported; for multi-character input scenarios (such as pasting), string matching is supported.
+
+Since API version 11, if inputFilter is set and the entered characters are not empty, the text filtering effect of the [type](#type11) API is invalid.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -271,7 +273,7 @@ The **TextArea** component supports pasting and selecting all; all other actions
 
 maxLength(value: number)
 
-Sets the maximum number of characters for text input. By default, there is no maximum number of characters. When the maximum number of characters is reached, no more characters can be entered, and the border turns red.
+Sets the maximum number of characters for text input. By default, there is no maximum number of characters. When the maximum number is reached, no more characters can be entered.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -287,11 +289,13 @@ Sets the maximum number of characters for text input. By default, there is no ma
 
 showCounter(value: boolean, options?: InputCounterOptions)
 
-Sets the character counter displayed when the number of characters entered exceeds the threshold.
+Sets the character counter displayed when the number of characters entered exceeds the threshold. If showCounter is not called, the character counter is not displayed by default.
 
 **options** can be set only when **value** is set to **true**, in which case a character counter is displayed below the text box. This attribute must be used together with **maxLength**. The character counter is displayed in this format: Number of characters entered/Character limit.
 
 It is visible when the number of characters entered is greater than the character limit multiplied by the threshold percentage value. If **options** is not set, the text box border and character counter subscript turn red when the number of characters entered reaches the limit. If **value** is set to **true** and **options** is set, the text box border and character counter subscript turn red and the text box shakes when the number of characters entered reaches the limit, provided that the value of **thresholdPercentage** is valid. If **highlightBorder** is set to **false**, the text box border does not turn red. By default, **highlightBorder** is set to **true**. The character counter is not displayed for text boxes in inline input style.
+
+[Example 2: Implementing a Counter](#example-2-implementing-a-counter) demonstrates demonstrating the effect of setting showCounter.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -384,7 +388,7 @@ Sets the maximum number of lines that can be displayed. When **textOverflow** is
 
 | Name| Type                                     | Mandatory| Description                                                        |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Maximum number of lines that can be displayed with the inline style in the editing state or with the non-inline style.<br>Default value: **3** with the inline style; **+∞** with the non-inline style, indicating that there is no maximum number of lines<br>Value range: (0, +∞)|
+| value  | number | Yes  | Maximum number of lines that can be displayed with the inline style in the editing state or with the non-inline style.<br>Default value: 3. Non-inline mode: UINT32_MAX<br>Value range: (0, UINT32_MAX]|
 
 ### maxLines<sup>20+</sup>
 
@@ -435,9 +439,11 @@ The custom keyboard cannot obtain the focus, but it blocks gesture events.
 
 By default, the custom keyboard is closed when the input component loses the focus. You can also use the [TextAreaController](#textareacontroller8).[stopEditing](#stopediting10) API to close the keyboard.
 
-When a custom keyboard is set, camera input is disabled for the text box, even when the device supports camera input.
-
 When setting a custom keyboard, you can bind the [onKeyPrelme](ts-universal-events-key.md#onkeypreime12) event to prevent input from the physical keyboard.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -456,6 +462,8 @@ type(value: TextAreaType)
 
 Sets the text box type.
 
+Different **TextAreaType** values trigger corresponding keyboard types and enforce input restrictions.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -472,6 +480,10 @@ enterKeyType(value: EnterKeyType)
 
 Sets the type of the Enter key.
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -486,7 +498,7 @@ Sets the type of the Enter key.
 
 enableAutoFill(value: boolean)
 
-Sets whether to enable autofill.
+Sets whether to enable autofill.<!--RP2--><!--RP2End-->
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -502,7 +514,7 @@ Sets whether to enable autofill.
 
 contentType(contentType: ContentType)
 
-Sets the content type for autofill.
+Sets the content type for autofill.<!--RP3--><!--RP3End-->
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -842,7 +854,7 @@ enablePreviewText(enable: boolean)
 
 Sets whether to enable preview text.
 
-Preview text is in a temporary state and does not support text interception. As such, it does not trigger [onWillInsert](#onwillinsert12), [onDidInsert](#ondidinsert12), [onWillDelete](#onwilldelete12) and [onDidDelete](#ondiddelete12) callbacks.
+Preview text is in a temporary state and does not support text interception. 
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -905,7 +917,7 @@ Sets the auto-capitalization text mode. This API provides the capability, but ac
 
 keyboardAppearance(appearance: Optional\<KeyboardAppearance>)
 
-Sets the appearance of the keyboard when the text box is focused.
+Sets the keyboard appearance for the text box. This setting takes effect only after input method adaptation. For details, see [Immersive Mode of the Input Method Application](../../../inputmethod/inputmethod-immersive-mode-guide.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -953,7 +965,7 @@ Sets the text stroke color.
 
 stopBackPress(isStopped: Optional\<boolean>)
 
-Sets whether to prevent the back button press from being propagated to other components or applications.
+Sets whether to prevent the back button press from being propagated.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -963,7 +975,7 @@ Sets whether to prevent the back button press from being propagated to other com
 
 | Name| Type                                               | Mandatory| Description                                     |
 | ------ | --------------------------------------------------- | ---- | ----------------------------------------- |
-| isStopped  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to prevent the back button press from being propagated to other components or applications.<br>**true** to prevent, **false** otherwise.<br>Default value: **true**.|
+| isStopped  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to prevent the back button press from being propagated to other components or applications.<br>**true** to prevent, **false** otherwise.<br>Default value: **true**. If an invalid value is provided, the default value is used.|
 
 ### halfLeading<sup>18+</sup>
 
@@ -1055,7 +1067,7 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 onChange(callback: EditableTextOnChangeCallback)
 
-Called when the input in the text box changes.
+Triggered when the input in the text box changes.
 
 In this callback, if cursor operations are performed, you need to adjust the cursor logic based on the **previewText** parameter to make sure it works seamlessly under the preview display scenario.
 
@@ -1083,7 +1095,7 @@ Triggered when the input status changes. The text box is in the editing state wh
 
 | Name   | Type   | Mandatory| Description                |
 | --------- | ------- | ---- | -------------------- |
-| isEditing | boolean | Yes  | Whether the text box is in the editing state. The value **true** indicates that the text box is in the editing state.|
+| isEditing | boolean | Yes  | Whether the text is in edit state.<br> **true** means that the text is in edit state, and **false** means the opposite.|
 
 ### onCopy<sup>8+</sup>
 
@@ -1220,7 +1232,7 @@ Triggered when text is about to be inserted.
 
 onDidInsert(callback: Callback\<InsertValue>)
 
-Called when text is inserted.
+Triggered when text is inserted.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1937,6 +1949,8 @@ struct TextAreaExample {
   @State insertOffset: number = 0;
   @State deleteOffset: number = 0;
   @State deleteDirection: number = 0;
+  @State currentValue_1: string = "";
+  @State currentValue_2: string = "";
 
   build() {
     Row() {
@@ -1951,8 +1965,13 @@ struct TextAreaExample {
           .onDidInsert((info: InsertValue) => {
             this.insertOffset = info.insertOffset;
           })
+          .onWillChange((info: EditableTextChangeValue) => {
+            this.currentValue_1 = info.content
+            return true
+          })
 
         Text("insertValue:" + this.insertValue + "  insertOffset:" + this.insertOffset).height(30)
+        Text("currentValue_1:" + this.currentValue_1).height(30)
 
         TextArea({ text: "Delete callbacks" })
           .width(300)
@@ -1966,9 +1985,14 @@ struct TextAreaExample {
             this.deleteOffset = info.deleteOffset;
             this.deleteDirection = info.direction;
           })
+          .onWillChange((info: EditableTextChangeValue) => {
+            this.currentValue_2 = info.content
+            return true
+          })
 
         Text("deleteValue:" + this.deleteValue + "  deleteOffset:" + this.deleteOffset).height(30)
         Text("deleteDirection:" + (this.deleteDirection == 0 ? "BACKWARD" : "FORWARD")).height(30)
+        Text("currentValue_2:" + this.currentValue_2).height(30)
 
       }.width('100%')
     }
@@ -2057,8 +2081,9 @@ struct TextAreaExample {
   }
 }
 ```
-
-![textAreaEditMenuOptions](figures/textAreaEditMenuOptions.gif)
+<!--RP4-->
+![textAreaEditMenuOptions](figures/textAreaEditMenuOptions.png)
+<!--RP4End-->
 
 ### Example 15: Setting Text Overflow
 
@@ -2345,7 +2370,7 @@ struct TextAreaExample {
 }
 ```
 
-
+![textAreaSetTextSelection](figures/textAreaSetTextSelection.gif)
 
 ### Example 19: Setting Text Stroke
 

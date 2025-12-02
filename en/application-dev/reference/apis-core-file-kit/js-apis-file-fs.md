@@ -50,7 +50,7 @@ Obtains detailed attribute information of a file or directory. This API uses a p
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| file   | string \| number | Yes  | Application sandbox path or FD of the file or directory.|
+| file   | string \| number | Yes  | Application sandbox path, URI, or FD of the file or directory.|
 
 **Return value**
 
@@ -88,7 +88,7 @@ Obtains detailed attribute information of a file or directory. This API uses an 
 
 | Name  | Type                              | Mandatory| Description                          |
 | -------- | ---------------------------------- | ---- | ------------------------------ |
-| file     | string \| number                   | Yes  | Application sandbox path or FD of the file or directory.|
+| file     | string \| number                   | Yes  | Application sandbox path, URI, or FD of the file or directory.|
 | callback | AsyncCallback&lt;[Stat](#stat)&gt; | Yes  | Callback used to return the file or directory information obtained.|
 
 **Error codes**
@@ -122,7 +122,7 @@ Obtains detailed attribute information of a file or directory. This API returns 
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| file   | string \| number | Yes  | Application sandbox path or FD of the file or directory.|
+| file   | string \| number | Yes  | Application sandbox path, URI, or FD of the file or directory.|
 
 **Return value**
 
@@ -5541,11 +5541,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   fs.closeSync(file);
   ```
 
-  ## fs.DfsListeners<sup>12+</sup>
-
-interface DfsListeners {
-  onStatus(networkId: string, status: number): void
-}
+## fs.DfsListeners<sup>12+</sup>
 
 Provides APIs for listening for the distributed file system status.
 
@@ -6162,7 +6158,7 @@ The data obtained by **ReadStream** is a decoded string. Currently, only the UTF
 | bytesRead    | number | Yes   | No   | Number of bytes read by the readable stream.|
 | path    | string | Yes   | No   | Path of the file corresponding to the readable stream.|
 
-### Seek<sup>12+</sup>
+### seek<sup>12+</sup>
 
 seek(offset: number, whence?: WhenceType): number
 

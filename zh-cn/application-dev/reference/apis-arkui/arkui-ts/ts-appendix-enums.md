@@ -534,6 +534,17 @@
 | Bold    | - |700字重，字体较粗。   |
 | Bolder  | - |900字重，字体非常粗。 |
 
+FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参value的类型之一。value是FontWeight、number、[ResourceStr](./ts-types.md#resourcestr)类型时，映射关系如下。
+
+| FontWeight | number | ResourceStr |
+| ---------------- | ------ | ------ |
+| Lighter | 100 |'lighter' |
+| Normal  | 400 |'normal' |
+| Regular | 400 |'regular' |
+| Medium  | 500 |'medium' |
+| Bold    | 700 |'bold'   |
+| Bolder  | 900 |'bolder' |
+
 ## FoldStatus<sup>11+</sup>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。

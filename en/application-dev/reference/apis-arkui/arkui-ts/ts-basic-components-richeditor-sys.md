@@ -4,7 +4,7 @@
 <!--Owner: @carnivore233-->
 <!--Designer: @pssea-->
 <!--Tester: @mateng_Holtens-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **RichEditor** is a component that supports interactive text editing and mixture of text and imagery.
 
@@ -52,7 +52,7 @@ Defines the callback for user interactions.
 ## Example
 
 ### Example 1: Obtaining the Reason for Component Content Changes
-In API version 20 and later versions, this example uses the changeReason returned by the onWillChange API to obtain the reason why the component content changes.
+This example demonstrates how to use the **changeReason** returned by the **onWillChange** API to determine the reason of component content changes. This feature is supported since API version 20.
 
 ```ts
 @Entry
@@ -77,7 +77,7 @@ struct RichEditorExample {
 ```
 
 ### Example 2: Setting the Drag Preview and Drag Shadow for a Custom Layout
-In API version 18 and later versions, you can use the [dragBackgroundColor](#richeditorbuilderspanoptions11) and [isDragShadowNeeded](#richeditorbuilderspanoptions11) parameters in the addBuilderSpan API to set parameters for the drag background and drag shadow of the custom layout.
+In API version 18 and later versions, you can use the [dragBackgroundColor](#richeditorbuilderspanoptions11) and [isDragShadowNeeded](#richeditorbuilderspanoptions11) parameters in the addBuilderSpan API to set parameters for the drag preview and drag shadow for a custom layout.
 
 ```ts
 // xxx.ets

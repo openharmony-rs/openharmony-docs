@@ -404,7 +404,7 @@ int (*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)
 
 函数指针，以资产的形式获取当前行中指定列的值。
 
-**起始版本：** 10
+**起始版本：** 11
 
 
 **参数：**
@@ -431,7 +431,7 @@ int (*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uin
 
 函数指针，以资产数组的形式获取当前行中指定列的值。
 
-**起始版本：** 10
+**起始版本：** 11
 
 
 **参数：**

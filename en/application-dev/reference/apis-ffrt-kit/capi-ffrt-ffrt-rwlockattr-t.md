@@ -24,3 +24,5 @@ The **ffrt_rwlockattr_t** struct describes an FFRT read-write lock attribute.
 | Name| Description|
 | -- | -- |
 | long storage | Storage size of a read-write lock.|
+
+

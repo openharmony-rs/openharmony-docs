@@ -4,7 +4,7 @@
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Shape** component is the parent component of the drawing components. The attributes described in this topic are universal attributes supported by all the drawing components.
 
@@ -83,7 +83,7 @@ Sets the viewport of the shape.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | [ViewportRect](ts-drawing-components-shape.md#viewportrect18) | Yes| Options of the viewport.<br>The **undefined** value is treated as the default value.|
+| value | [ViewportRect](ts-drawing-components-shape.md#viewportrect18) | Yes| Options of the viewport.<br>Default value: { x: 0, y: 0, width: width of the Shape component, height: height of the Shape component}<br>The **undefined** value is treated as the default value.|
 
 ### fill
 
@@ -155,7 +155,7 @@ Sets the stroke dashes. This attribute can be dynamically set using [attributeMo
 
 | Name| Type            | Mandatory| Description                     |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | Yes  | Stroke dashes.<br>Default value: [] (empty array)<br>Default unit: vp.<br>The **undefined** and **null** values are treated as the default value.|
+| value  | Array&lt;any&gt; | Yes  | Array defining the dash pattern for the shape outline. Elements alternate between dash length and gap length.<br>Default value: [] (empty array)<br>Default unit: vp.<br>The **undefined** and **null** values are treated as the default value.<br>**NOTE**<br>Empty array: solid line<br>Even-numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ...|
 
 ### strokeDashOffset
 
@@ -265,7 +265,7 @@ Sets the stroke width. This attribute can be dynamically set using [attributeMod
 
 | Name| Type                        | Mandatory| Description                    |
 | ------ | ---------------------------- | ---- | ------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Stroke width. The value must be greater than or equal to 0.<br>Default value: **1**.<br>Default unit: vp.<br>Default unit: vp.<br>For abnormal values undefined, null, and NaN, the default value is used. For Infinity, the value 0 is used.|
+| value  | [Length](ts-types.md#length) | Yes  | Stroke width. The value must be greater than or equal to 0.<br>Default value: **1**.<br>Default unit: vp.<br>For abnormal values undefined, null, and NaN, the default value is used. For Infinity, the value 0 is used.|
 
 ### antiAlias
 
@@ -556,4 +556,43 @@ struct ShapeModifierDemo {
 ```
 
 ![](figures/shapeModifier.png)
-<!--no_check-->
+
+### Example 4: Using Mesh for Local Image Distortion
+
+This example demonstrates how to configure **mesh** to achieve local image distortion.
+
+```ts
+// xxx.ets
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct Index {
+  private context: OffscreenCanvasRenderingContext2D = new OffscreenCanvasRenderingContext2D(200, 200)
+  private meshArray: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360]
+  @State pixelMap: image.PixelMap | undefined = undefined
+
+  aboutToAppear(): void {
+    // Replace "resources/base/media/img.png" with the image resource file you use.
+    let img: ImageBitmap = new ImageBitmap("resources/base/media/img.png")
+    this.context.drawImage(img, 0, 0, 200, 200)
+    this.pixelMap = this.context.getPixelMap(0, 0, 200, 200)
+  }
+
+  build() {
+    Column() {
+      Shape(this.pixelMap)
+      .backgroundColor(Color.Grey)
+      .width(250)
+      .height(250)
+      .mesh(this.meshArray, 2, 2)
+
+      Shape(this.pixelMap)
+      .backgroundColor(Color.Grey)
+      .width(250)
+      .height(250)
+    }
+  }
+}
+```
+![](figures/shapeMesh.png)

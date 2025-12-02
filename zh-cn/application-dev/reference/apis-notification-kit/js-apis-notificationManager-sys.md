@@ -5205,6 +5205,142 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+## notificationManager.setRingtoneInfoByBundle<sup>21+</sup>
+
+setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInfo): Promise\<void\>
+
+设置应用自定义铃声信息。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数说明：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| ringtoneInfo | [RingtoneInfo](#ringtoneinfo21) | 是   | 自定义铃声信息。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error.                                      |
+| 1600003  | Failed to connect to the service.                    |
+| 1600022  | The specified bundle is invalid.                    |
+
+**示例：**
+
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  }
+
+  onForeground(): void {
+    try {
+      let bundle: notificationManager.BundleOption = {
+        bundle: "bundleName",
+      };
+      let ringtoneInfo: notificationManager.RingtoneInfo = {
+        ringtoneType: notificationManager.RingtoneType.RINGTONE_TYPE_SYSTEM,
+        ringtoneTitle: "ringtoneName",
+        ringtoneFileName: "ringtonePath",
+        ringtoneUri: "ringtoneUri",
+      }
+      notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
+        console.info(`setRingtoneInfoByBundle bundle: ${JSON.stringify(bundle)}', ringtoneInfoJSON：' ${JSON.stringify(ringtoneInfo)}`);
+      }).catch((err: BusinessError) => {
+         console.error(`setRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      console.error(`setRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
+## notificationManager.getRingtoneInfoByBundle<sup>21+</sup>
+
+getRingtoneInfoByBundle(bundle: BundleOption): Promise\<RingtoneInfo\>
+
+获取应用自定义铃声信息。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数说明：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<[RingtoneInfo](#ringtoneinfo21)\> | Promise对象，返回应用自定义铃声信息。 |
+
+**错误码**：
+
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error.                                      |
+| 1600003  | Failed to connect to the service.                    |
+| 1600022  | The specified bundle is invalid.                    |
+| 1600024  | The specified bundle has no custom ringtone information.  |
+
+**示例：**
+
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  }
+
+  onForeground(): void {
+    try {
+      let bundle: notificationManager.BundleOption = {
+        bundle: "bundleName",
+      };
+      notificationManager.getRingtoneInfoByBundle(bundle)
+        .then((ringtoneInfo: notificationManager.RingtoneInfo) => {
+          console.info(`getRingtoneInfoByBundle success: ${JSON.stringify(ringtoneInfo)}`);
+        }).catch((err: BusinessError) => {
+        console.error(`getRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      console.error(`getRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
 
 ## DoNotDisturbDate
 
@@ -5397,3 +5533,33 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | bundleName   | string | 否 | 否 | 包名。          |
 | uid          | number | 否 | 否 | 应用程序的UID。          |
 | enable       | boolean| 否 | 是 | 是否支持跨设备协同，返回true表示支持，返回false表示不支持，默认为false。      |
+
+## RingtoneType<sup>21+</sup>
+
+描述自定义铃声类型。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称                 | 值  | 说明                               |
+| --------------------| --- | --------------------------------- |
+| RINGTONE_TYPE_SYSTEM   | 0   | 表示系统自定义铃声。            |
+| RINGTONE_TYPE_LOCAL    | 1   | 表示本地自定义铃声。                 |
+| RINGTONE_TYPE_ONLINE  | 2   | 表示在线自定义铃声。            |
+| RINGTONE_TYPE_NONE   | 3   | 表示非自定义铃声。                 |
+
+## RingtoneInfo<sup>21+</sup>
+
+描述自定义铃声信息。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称    | 类型     | 只读 | 可选 | 说明                     |
+| ------- | ------- | ---- | ---- | ----------------------- |
+| ringtoneType | [RingtoneType](#ringtonetype21)  |  否  | 否   | 铃声的类型。|
+| ringtoneTitle | string  |  否  | 是   | 铃声的标题。  |
+| ringtoneFileName | string  |  否  | 是   | 铃声的文件名称。  |
+| ringtoneUri | string  |  否  | 是   | 铃声的URI。  |

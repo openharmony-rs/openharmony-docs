@@ -27,9 +27,9 @@ import {
 } from '@ohos.file.PhotoPickerComponent';
 ```
 
-## Properties
+## Attributes
 
-The [universal properties](../apis-arkui/arkui-ts/ts-component-general-attributes.md) are supported.
+The [universal attributes](../apis-arkui/arkui-ts/ts-component-general-attributes.md) are supported.
 
 ## PhotoPickerComponent
 
@@ -79,7 +79,7 @@ Allows the application to access images or videos in the user directory without 
 
 ## PickerOptions
 
-Describes the configuration of a Picker. It inherits from [BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions10).
+Describes the configuration of a Picker. It inherits from [photoAccessHelper.BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions10).
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -100,7 +100,7 @@ Describes the configuration of a Picker. It inherits from [BaseSelectOptions](ar
 | gridMargin<sup>14+</sup>        | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | No | Yes| Margin of the component on a grid page.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | photoBrowserMargin<sup>14+</sup>    | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | No | Yes| Margin of the component on a photo browser page.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | singleLineConfig<sup>20+</sup>             | [SingleLineConfig](#singlelineconfig20)                                                | No | Yes| Single-line display mode of a grid page. In single-line mode, the component does not provide functions for viewing a larger image. The component does not support callbacks related to large images, and the PickerController does not support APIs related to large images, making API calls ineffective.<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |  
-| uiComponentColorMode<sup>20+</sup>             | [PickerColorMode](#pickercolormode)                                                | No | Yes| Picker color mode. Dark/Light color mode (excluding the background color) of other components on the Picker grid page, including the search box, camera entry, safety tips for using Gallery, and recommendation bubble. This property is usually used together with **backgroundColor**. The default value is **PickerColorMode.AUTO**, which follows the system's dark/light color mode.<br>When setting this property, avoid using **PickerColorMode.LIGHT** with a dark backgroundColor, as it may make components or text hard to see. Avoid using **PickerColorMode.DARK** with a light backgroundColor for the same reason.<br>**Atomic service API**: This API can be used in atomic services since API version 20. |
+| uiComponentColorMode<sup>20+</sup>             | [PickerColorMode](#pickercolormode)                                                | No | Yes| Picker color mode. Dark/Light color mode (excluding the background color) of other components on the Picker grid page, including the search box, camera entry, safety tips for using Gallery, and recommendation bubble. This attribute is usually used together with **backgroundColor**. The default value is **PickerColorMode.AUTO**, which follows the system's dark/light color mode.<br>When setting this attribute, avoid using **PickerColorMode.LIGHT** with a dark backgroundColor, as it may make components or text hard to see. Avoid using **PickerColorMode.DARK** with a light backgroundColor for the same reason.<br>**Atomic service API**: This API can be used in atomic services since API version 20. |
 | gridStartOffset<sup>20+</sup>    | number                              | No | Yes | Space between the top of the component and the first row of the grid thumbnail. The default value is **0**, in vp.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | gridEndOffset<sup>20+</sup>    | number                              | No | Yes| Space between the bottom of the component and the last row of the grid thumbnail. The default value is **0**, in vp.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | pickerIndex<sup>21+</sup>    | number                              | No | Yes | Unique serial number used to distinguish different picker components. The default value is **-1**, indicating that no distinction is made.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
@@ -331,19 +331,19 @@ Represents basic image and video information.
 
 | Name    | Type   | Read-Only| Optional | Description                                               |
 |----------|--------|-----|-----|---------------------------------------------------|
-| uri      | string                | No| Yes  | Image or video URI. This parameter is mandatory when [ItemType](#itemtype) is **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.           |
-| mimeType | string                | No| Yes  | MIME type of the image or video. This parameter is mandatory when [ItemType](#itemtype) is **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
-| width    | number                | No| Yes  | Width of the image or video, in pixels. This parameter is mandatory when [ItemType](#itemtype) is **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
-| height   | number                | No| Yes  | Height of the image or video, in pixels. This parameter is mandatory when [ItemType](#itemtype) is **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
-| size     | number                | No| Yes  | Size of the image or video, in bytes. This parameter is mandatory when [ItemType](#itemtype) is **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
-| duration   | number                | No| Yes  | Video duration, in ms. This parameter is mandatory when [ItemType](#itemtype) is **THUMBNAIL**. Otherwise, it is left empty.<br>The value -1 indicates an image or moving photo.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| uri      | string                | No| Yes  | URI of the image or video.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.           |
+| mimeType | string                | No| Yes  | MIME type of the image or video.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
+| width    | number                | No| Yes  | Width of the image or video, in px.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
+| height   | number                | No| Yes  | Height of the image or video, in px.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
+| size     | number                | No| Yes  | Size of the image or video, in bytes.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
+| duration   | number                | No| Yes  | Video duration, in milliseconds. For an image or a moving photo, the value **-1** is returned.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | photoSubType<sup>21+</sup>   | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | No| Yes  | Subtype of the photo. The options are **DEFAULT**, **MOVING_PHOTO**, and **BRUST**.<br>The default value is **DEFAULT (0)**.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | No| Yes  | Dynamic range type of the media file. The options are **HDR** and **SDR**.<br>For moving photos, this parameter specifies the dynamic range type of the cover image.<br>**Atomic service API**: This API can be used in atomic services since API version 21.
-| orientation<sup>21+</sup>   | number             | No| Yes  | Image or video direction information.<br>1: **TOP-left**: The image is not rotated.<br>2: **TOP-right**: The image is flipped horizontally.<br>3: **Bottom-right**: The image is rotated by 180°.<br>4: **Bottom-left**: The image is flipped vertically.<br>5: **Left-top**: The image is flipped horizontally and then rotated clockwise by 270°.<br>6: **Right-top**: The image is rotated clockwise by 90°.<br>7: **Right-bottom**: The image is vertically flipped and then rotated clockwise by 90°.<br>8: **Left-bottom**: The image is rotated clockwise by 270°.<br>**Atomic service API**: This API can be used in atomic services since API version 21.
+| orientation<sup>21+</sup>   | number             | No| Yes  | Image or video direction information.<br>1: **TOP-left**: The image is not rotated.<br>2: **TOP-right**: The image is flipped horizontally.<br>3: **Bottom-right**: The image is rotated by 180°.<br>4: **Bottom-left**: The image is flipped vertically.<br>5: **Left-top**: The image is flipped horizontally and then rotated clockwise by 270°.<br>6: **Right-top**: The image is rotated clockwise by 90°.<br>7: **Right-bottom**: The image is vertically flipped and then rotated clockwise by 90°.<br>8: **Left-bottom**: The image is rotated clockwise by 270°.<br>Images with mirroring information retain their original width and height attributes regardless of rotation, whereas images without such information have these attributes updated to reflect the post-rotation dimensions.<br>**Atomic service API**: This API can be used in atomic services since API version 21.
 
 ## ItemInfo
 
-Represents image and video information. It inherits from [BaseItemInfo](#baseiteminfo), adding the parameter **itemType**.
+Represents the image and video information. It inherits from [BaseItemInfo](#baseiteminfo), adding the parameter **itemType**.
  
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
