@@ -67,6 +67,11 @@
    import { intelligence } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
+   
+   ``` TypeScript
+   import { intelligence } from '@kit.ArkData';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   ```
 
 2. 获取文本嵌入模型。
    调用getTextEmbeddingModel方法，获取文本嵌入模型。示例代码如下所示：
