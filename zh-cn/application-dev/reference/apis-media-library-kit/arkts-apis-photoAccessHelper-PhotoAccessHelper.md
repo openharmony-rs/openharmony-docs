@@ -1541,3 +1541,56 @@ async function example(context: Context) {
   });
 }
 ```
+
+## getAlbumIdByLpath<sup>22+</sup>
+
+getAlbumIdByLpath(lpath: string): Promise&lt;number&gt;
+
+根据相册的虚拟路径获取媒体库相册的ID。使用Promise异步回调。
+
+该接口仅支持以下相册：相机相册('/DCIM/Camera')、截图相册('/Pictures/Screenshots')和屏幕录制相册('/Pictures/Screenrecords')。
+
+​**模型约束**： 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| lpath | string | 是 | 相册的虚拟路径，lpath长度不能超过255个字符。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;number&gt; | Promise对象，返回相册lpath对应的媒体库相册的ID。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 23800151     | The lpath is invalid, such as null, undefined and empty. |
+| 23800301     | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getAlbumIdByLpath');
+
+  try {
+      let albumId: number = await phAccessHelper.getAlbumIdByLpath('testLpath');
+      console.info('requestFile:: albumId: ', albumId);
+
+      console.info('getAlbumIdByLpath completed.');
+      console.info(`albumId : ${albumId}`);
+    } catch (err) {
+      console.error(`getAlbumIdByLpath failed: ${err.code}, ${err.message}`);
+    }
+}
+```
