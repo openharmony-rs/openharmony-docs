@@ -382,11 +382,15 @@ type OnRatingChangeCallback = (rating: number) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                       | 类型   | 必填 | 说明                                                         |
 | -------------------------- | ------ | ---- | ------------------------------------------------------------ |
-| backgroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | 是   | 未选中的星级的图片链接，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例4（通过Resource资源设置评分的样式）](#示例4通过resource资源设置评分的样式)代码。|
-| foregroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | 是   | 选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例4（通过Resource资源设置评分的样式）](#示例4通过resource资源设置评分的样式)代码。|
-| secondaryUri<sup>7+</sup>  | [ResourceStr](ts-types.md#resourcestr) | 否   | 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例4（通过Resource资源设置评分的样式）](#示例4通过resource资源设置评分的样式)代码。|
+| backgroundUri<sup>7+</sup> | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined | 是   | 未选中的星级的图片链接，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例4（通过Resource资源设置评分的样式）](#示例4通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 22|
+| foregroundUri<sup>7+</sup> | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined | 是   | 选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例4（通过Resource资源设置评分的样式）](#示例4通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 22|
+| secondaryUri<sup>7+</sup>  | [ResourceStr](ts-types.md#resourcestr) | 否   | 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例4（通过Resource资源设置评分的样式）](#示例4通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 22|
 
 > **说明：** 
 >
@@ -456,6 +460,8 @@ struct RatingExample {
 
 以下示例展示了如何通过配置starStyle实现自定义星级的图片链接。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -481,6 +487,40 @@ struct RatingExample {
         .fontSize(16)
         .fontColor('rgba(24,36,49,0.60)')
         .margin({ top: 16 })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Text, Color, Rating, Row, Margin } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct RatingExample {
+  @State rating: number = 3.5;
+
+  build() {
+    Column() {
+      Rating({ rating: this.rating, indicator: false })
+        .stars(5)
+        .stepSize(0.5)
+        .starStyle({
+          backgroundUri: '/common/image1.png', // common目录与pages同级
+          foregroundUri: '/common/image2.png',
+          secondaryUri: '/common/image3.png'
+        })
+        .margin({ top: 24 } as Margin)
+        .onChange((value: number) => {
+          this.rating = value;
+        })
+      Text('current score is ' + this.rating)
+        .fontSize(16)
+        .fontColor('#99182431')
+        .margin({ top: 16 } as Margin)
     }.width('100%').height('100%').backgroundColor('#F1F3F5')
   }
 }
@@ -696,6 +736,8 @@ struct ratingExample {
 
 该示例通过Resource资源配置starStyle，实现自定义星级图片链接。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -726,4 +768,38 @@ struct RatingExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Text, Color, Rating, Row, Margin, $r, StarStyleOptions } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct RatingExample {
+  @State rating: number = 3.5;
+
+  build() {
+    Column() {
+      Rating({ rating: this.rating, indicator: false })
+        .stars(5)
+        .stepSize(0.5)
+        .starStyle({
+          backgroundUri: $r('app.media.imag1'),
+          foregroundUri: $r('app.media.imag2'),
+          secondaryUri: $r('app.media.imag3')
+        } as StarStyleOptions)
+        .margin({ top: 24 } as Margin)
+        .onChange((value: number) => {
+          this.rating = value;
+        })
+      Text('current score is ' + this.rating)
+        .fontSize(16)
+        .fontColor('#99182431')
+        .margin({ top: 16 } as Margin)
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
 ![rating1](figures/rating1.gif)

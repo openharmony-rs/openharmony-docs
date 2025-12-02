@@ -76,7 +76,7 @@ Slider(options?: SliderOptions)
 
 ArkTS-Dyn: blockColor(value: ResourceColor)
 
-ArkTS-Sta: blockColor(value: ResourceColor | undefined)
+ArkTS-Sta: blockColor(value: ResourceColor | LinearGradient | undefined)
 
 设置滑块的颜色。
 
@@ -100,7 +100,7 @@ ArkTS-Sta: blockColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                |
 | ------ | ------------------------------------------ | ---- | ----------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 滑块的颜色。 <br/>默认值：`$r('sys.color.ohos_id_color_foreground_contrary')` |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10)<sup>23+</sup> \| undefined | 是   | 滑块的颜色。 <br/>默认值：`$r('sys.color.ohos_id_color_foreground_contrary')` |
 
 ### trackColor
 
@@ -630,7 +630,9 @@ ArkTS-Sta: digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined)
 
 ### prefix<sup>20+</sup>
 
-prefix(content: ComponentContent, options?: SliderPrefixOptions)
+ArkTS-Dyn: prefix(content: ComponentContent, options?: SliderPrefixOptions)
+
+ArkTS-Sta: prefix(content: ComponentContent | undefined, options?: SliderPrefixOptions | undefined)
 
 设置滑动条的前缀。
 
@@ -638,16 +640,22 @@ prefix(content: ComponentContent, options?: SliderPrefixOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| content | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 是   | 自定义组件内容，用于定义滑块前缀的可视化内容，该内容会显示在滑块的起始位置。 |
-| options | [SliderPrefixOptions](#sliderprefixoptions20) | 否   | 滑块前缀的配置选项，用于设置与无障碍功能相关的属性。 |
+| content | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: [ComponentContent](../js-apis-arkui-ComponentContent.md) \| undefined | 是   | 自定义组件内容，用于定义滑块前缀的可视化内容，该内容会显示在滑块的起始位置。 |
+| options | ArkTS-Dyn: [SliderPrefixOptions](#sliderprefixoptions20)<br/>ArkTS-Sta: [SliderPrefixOptions](#sliderprefixoptions20) \| undefined | 否   | 滑块前缀的配置选项，用于设置与无障碍功能相关的属性。 |
 
 ### suffix<sup>20+</sup>
 
-suffix(content: ComponentContent, options?: SliderSuffixOptions)
+ArkTS-Dyn: suffix(content: ComponentContent, options?: SliderSuffixOptions)
+
+ArkTS-Sta: suffix(content: ComponentContent | undefined, options?: SliderSuffixOptions | undefined)
 
 设置滑动条的后缀。
 
@@ -655,12 +663,45 @@ suffix(content: ComponentContent, options?: SliderSuffixOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| content | [ComponentContent](../js-apis-arkui-ComponentContent.md)    | 是   | 自定义组件内容，用于定义滑块后缀的可视化内容，该内容会显示在滑块的结束位置。 |
-| options | [SliderSuffixOptions](#slidersuffixoptions20) | 否   | 滑块后缀的配置选项，用于设置与无障碍功能相关的属性。 |
+| content | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: [ComponentContent](../js-apis-arkui-ComponentContent.md) \| undefined   | 是   | 自定义组件内容，用于定义滑块后缀的可视化内容，该内容会显示在滑块的结束位置。 |
+| options | ArkTS-Dyn: [SliderSuffixOptions](#slidersuffixoptions20)<br/>ArkTS-Sta: [SliderSuffixOptions](#slidersuffixoptions20) \| undefined | 否   | 滑块后缀的配置选项，用于设置与无障碍功能相关的属性。 |
+
+### showSteps<sup>20+</sup>
+
+ArkTS-Dyn: showSteps(value: boolean, options?: SliderShowStepOptions)
+
+ArkTS-Sta: showSteps(value: boolean | undefined, options?: SliderShowStepOptions | undefined)
+
+设置当前是否显示步长刻度值。
+
+支持设置每个刻度点的无障碍文本信息，不设置时默认使用当前刻度点的值作为无障碍文本信息。
+
+当显示步长时，设置的刻度点无障碍文本信息生效。
+
+**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                                         | 必填 | 说明                                                    |
+| ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
+| value | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是 | 当前是否显示步长刻度值。<br/>true：显示刻度值；false：不显示刻度值。<br />默认值：false |
+| options | ArkTS-Dyn: [SliderShowStepOptions](#slidershowstepoptions20)<br/>ArkTS-Sta: [SliderShowStepOptions](#slidershowstepoptions20)  \| undefined | 否 | 刻度点无障碍文本的配置选项，用于设置与无障碍功能相关的属性。<br/>默认值：null |
 
 ## SliderCustomContentOptions<sup>20+</sup>
 
@@ -669,6 +710,10 @@ Slider前后缀组件无障碍信息参数。
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                     | 类型        | 必填 | 说明                                                         |
 | ------------------------ | ----------- | ---- | ------------------------------------------------------------ |
@@ -685,6 +730,10 @@ Slider前缀组件无障碍信息参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 提供前缀组件的无障碍信息，继承自[SliderCustomContentOptions](#slidercustomcontentoptions20)。
 
 ## SliderSuffixOptions<sup>20+</sup>
@@ -695,7 +744,43 @@ Slider后缀组件无障碍信息参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 提供后缀组件的无障碍信息，继承自[SliderCustomContentOptions](#slidercustomcontentoptions20)。
+
+## SliderStepItemAccessibility<sup>20+</sup>
+
+Slider刻度点的无障碍文本信息。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                     | 类型        | 只读 | 可选 | 说明                                                         |
+| ------------------------ | ----------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| text | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 用于提供辅助功能的文本，供屏幕阅读器等工具读取，增强无障碍功能。 <br/>默认值："" |
+
+## SliderShowStepOptions<sup>20+</sup>
+
+Slider刻度点的无障碍文本信息映射集。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                     | 类型        | 只读 | 可选 | 说明                                                         |
+| ------------------------ | ----------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| stepsAccessibility | Map<number, [SliderStepItemAccessibility](#sliderstepitemaccessibility20)> | 否 | 是 | 用于设置刻度点提供辅助功能文本，供屏幕阅读器等工具读取，增强无障碍功能。 <br/>Key取值范围：[0, INT32_MAX]，当Key设定为负数和小数时，设定项不生效。 <br/>默认值：{} |
 
 ## SliderBlockStyle<sup>10+</sup>对象说明
 
@@ -842,6 +927,8 @@ type SliderTriggerChangeCallback = (value: number, mode: SliderChangeMode) => vo
 ### 示例1（滑动条基础样式）
 
 该示例通过配置style、showTips、showSteps控制气泡、刻度值、滑块和滑轨的显示。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -1018,11 +1105,193 @@ struct SliderExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, Button, ColumnOptions, SliderChangeMode, Row, Slider, SliderOptions, SliderStyle, Axis } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct SliderExample {
+  @State outSetValueOne: number = 40;
+  @State inSetValueOne: number = 40;
+  @State noneValueOne: number = 40;
+  @State outSetValueTwo: number = 40;
+  @State inSetValueTwo: number = 40;
+  @State vOutSetValueOne: number = 40;
+  @State vInSetValueOne: number = 40;
+  @State vOutSetValueTwo: number = 40;
+  @State vInSetValueTwo: number = 40;
+
+  build() {
+    Column({ space: 8 } as ColumnOptions) {
+      Text('outset slider').fontSize(9).fontColor(0xCCCCCC).width('90%').margin(15)
+      Row() {
+        Slider({
+          value: this.outSetValueOne,
+          min: 0,
+          max: 100,
+          style: SliderStyle.OutSet
+        } as SliderOptions)
+          .showTips(true)
+          .onChange((value: number, mode: SliderChangeMode) => {
+            this.outSetValueOne = value;
+            console.info('value:' + value + 'mode:' + mode.toString());
+          })
+        // toFixed(0)将滑动条返回值处理为整数精度
+        Text(this.outSetValueOne.toFixed(0)).fontSize(12)
+      }
+      .width('80%')
+      Row() {
+        Slider({
+          value: this.outSetValueTwo,
+          step: 10,
+          style: SliderStyle.OutSet
+        } as SliderOptions)
+          .showSteps(true)
+          .onChange((value: number, mode: SliderChangeMode) => {
+            this.outSetValueTwo = value;
+            console.info('value:' + value + 'mode:' + mode.toString());
+          })
+        Text(this.outSetValueTwo.toFixed(0)).fontSize(12)
+      }
+      .width('80%')
+
+      Text('inset slider').fontSize(9).fontColor(0xCCCCCC).width('90%').margin(15)
+      Row() {
+        Slider({
+          value: this.inSetValueOne,
+          min: 0,
+          max: 100,
+          style: SliderStyle.InSet
+        })
+          .blockColor('#191970')
+          .trackColor('#ADD8E6')
+          .selectedColor('#4169E1')
+          .showTips(true)
+          .onChange((value: number, mode: SliderChangeMode) => {
+            this.inSetValueOne = value;
+            console.info('value:' + value + 'mode:' + mode.toString());
+          })
+        Text(this.inSetValueOne.toFixed(0)).fontSize(12)
+      }
+      .width('80%')
+      Row() {
+        Slider({
+          value: this.inSetValueTwo,
+          step: 10,
+          style: SliderStyle.InSet
+        })
+          .blockColor('#191970')
+          .trackColor('#ADD8E6')
+          .selectedColor('#4169E1')
+          .showSteps(true)
+          .onChange((value: number, mode: SliderChangeMode) => {
+            this.inSetValueTwo = value;
+            console.info('value:' + value + 'mode:' + mode.toString());
+          })
+        Text(this.inSetValueTwo.toFixed(0)).fontSize(12)
+      }
+      .width('80%')
+
+      Text('none slider').fontSize(9).fontColor(0xCCCCCC).width('90%').margin(15)
+      Row() {
+        Slider({
+          value: this.noneValueOne,
+          min: 0,
+          max: 100,
+          style: SliderStyle.NONE
+        })
+          .blockColor('#191970')
+          .trackColor('#ADD8E6')
+          .selectedColor('#4169E1')
+          .showTips(true)
+          .onChange((value: number, mode: SliderChangeMode) => {
+            this.noneValueOne = value;
+            console.info('value:' + value + 'mode:' + mode.toString());
+          })
+        Text(this.noneValueOne.toFixed(0)).fontSize(12)
+      }
+      .width('80%')
+
+      Row() {
+        Column() {
+          Text('vertical outset slider').fontSize(9).fontColor(0xCCCCCC).width('50%').margin(15)
+          Row() {
+            Text().width('10%')
+            Slider({
+              value: this.vOutSetValueOne,
+              style: SliderStyle.OutSet,
+              direction: Axis.Vertical
+            } as SliderOptions)
+              .blockColor('#191970')
+              .trackColor('#ADD8E6')
+              .selectedColor('#4169E1')
+              .showTips(true)
+              .onChange((value: number, mode: SliderChangeMode) => {
+                this.vOutSetValueOne = value;
+                console.info('value:' + value + 'mode:' + mode.toString());
+              })
+            Slider({
+              value: this.vOutSetValueTwo,
+              step: 10,
+              style: SliderStyle.OutSet,
+              direction: Axis.Vertical
+            })
+              .blockColor('#191970')
+              .trackColor('#ADD8E6')
+              .selectedColor('#4169E1')
+              .showSteps(true)
+              .onChange((value: number, mode: SliderChangeMode) => {
+                this.vOutSetValueTwo = value;
+                console.info('value:' + value + 'mode:' + mode.toString());
+              })
+          }
+        }.width('50%').height(300)
+
+        Column() {
+          Text('vertical inset slider').fontSize(9).fontColor(0xCCCCCC).width('50%').margin(15)
+          Row() {
+            Slider({
+              value: this.vInSetValueOne,
+              style: SliderStyle.InSet,
+              direction: Axis.Vertical,
+              reverse: true // 竖向的Slider默认是上端是min值，下端是max值，因此想要从下往上滑动，需要设置reverse为true
+            })
+              .showTips(true)
+              .onChange((value: number, mode: SliderChangeMode) => {
+                this.vInSetValueOne = value;
+                console.info('value:' + value + 'mode:' + mode.toString());
+              })
+            Slider({
+              value: this.vInSetValueTwo,
+              step: 10,
+              style: SliderStyle.InSet,
+              direction: Axis.Vertical,
+              reverse: true
+            })
+              .showSteps(true)
+              .onChange((value: number, mode: SliderChangeMode) => {
+                this.vInSetValueTwo = value;
+                console.info('value:' + value + 'mode:' + mode.toString());
+              })
+          }
+        }.width('50%').height(300)
+      }
+    }.width('100%')
+  }
+}
+```
+
 ![slider](figures/slider.gif)
 
 ### 示例2（设置滑动条样式）
 
 该示例通过blockBorderColor、blockSize、blockBorderWidth、blockStyle设置滑块的样式，通过stepSize、stepColor设置刻度值的样式，通过trackBorderRadius设置底板的圆角，通过selectedBorderRadius设置已滑动部分的圆角。
+
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -1073,6 +1342,60 @@ struct SliderExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, Button, ColumnOptions, SliderChangeMode, Row, Slider, SliderOptions, SliderStyle, Color, Divider, SliderBlockType, $r, PathShape } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct SliderExample {
+  @State tipsValue: number = 40;
+
+  build() {
+    Column({ space: 8 } as ColumnOptions) {
+      Text('block').fontSize(9).fontColor(0xCCCCCC).margin(15).width('90%')
+      Slider({ style: SliderStyle.OutSet, value: 40 })
+        .blockSize({ width: 40, height: 40 })
+        .blockBorderColor(Color.Red)
+        .blockBorderWidth(5)
+      Divider()
+      Text('step').fontSize(9).fontColor(0xCCCCCC).margin(15).width('90%')
+      Slider({ style: SliderStyle.InSet, value: 40, step: 10 })
+        .showSteps(true)
+        .stepSize(8)
+        .stepColor(Color.Yellow)
+      Divider()
+      Text('track').fontSize(9).fontColor(0xCCCCCC).margin(15).width('90%')
+      Slider({ style: SliderStyle.InSet, value: 40 })
+        .trackBorderRadius(2)
+      Divider()
+      Text('selected').fontSize(9).fontColor(0xCCCCCC).margin(15).width('90%')
+      Slider({ style: SliderStyle.InSet, value: 40 })
+        .selectedBorderRadius(2)
+      Divider()
+      Text('blockStyle').fontSize(9).fontColor(0xCCCCCC).margin(15).width('90%')
+      Slider({ style: SliderStyle.OutSet, value: 40 })
+        .blockStyle({ type: SliderBlockType.DEFAULT })
+      Slider({ style: SliderStyle.OutSet, value: 40 })
+        .blockStyle({ type: SliderBlockType.IMAGE, image: $r('sys.media.ohos_app_icon') })
+      Slider({ style: SliderStyle.OutSet, value: 40 })
+        .blockSize({ width: '60px', height: '60px' })
+        .blockColor(Color.Red)
+        .blockStyle({ type: SliderBlockType.IMAGE, image: $r('sys.media.ohos_app_icon') })
+      Divider()
+      Text('tips').fontSize(9).fontColor(0xCCCCCC).margin(15).width('90%')
+      Slider({ style: SliderStyle.InSet, value: this.tipsValue })
+        .showTips(true, this.tipsValue.toFixed())
+        .onChange(value => {
+          this.tipsValue = value;
+        })
+    }
+  }
+}
+```
 ![slider_2](figures/slider_2.png)
 
 
@@ -1283,6 +1606,8 @@ struct SliderExample {
 ### 示例5（滑动条设置前后缀内容）
 
 该示例实现了Slider组件通过prefix、suffix属性设置滑动条的前后缀内容，定制其内容区以及无障碍属性。设置无障碍属性后，屏幕阅读器将以设置的无障碍内容进行朗读。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -1495,4 +1820,209 @@ struct SliderExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, Button, ClickEvent, LengthMetrics, Color, Slider, Builder, Row, ColumnOptions, wrapBuilder, UIContext, ComponentContent, SliderStyle, SliderOptions, SliderPrefixOptions, SliderSuffixOptions } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Builder
+function textBuilder() {
+  Text("低")
+    .clip(true)
+    .fontColor(Color.Black)
+}
+@Builder
+function textBuilder1() {
+  Text("高")
+    .clip(true)
+    .fontColor(Color.Black)
+}
+
+@Entry
+@Component
+struct SliderExample {
+  private uiContext: UIContext = this.getUIContext();
+  private preNode1: ComponentContent = new ComponentContent(this.uiContext, wrapBuilder(textBuilder));
+  private sufNode1: ComponentContent = new ComponentContent(this.uiContext, wrapBuilder(textBuilder1));
+  private preNode2: ComponentContent = new ComponentContent(this.uiContext, wrapBuilder(textBuilder));
+  private sufNode2: ComponentContent = new ComponentContent(this.uiContext, wrapBuilder(textBuilder1));
+  private preNode3: ComponentContent = new ComponentContent(this.uiContext, wrapBuilder(textBuilder));
+  private sufNode3: ComponentContent = new ComponentContent(this.uiContext, wrapBuilder(textBuilder1));
+  private preNode4: ComponentContent = new ComponentContent(this.uiContext, wrapBuilder(textBuilder));
+  private sufNode4: ComponentContent = new ComponentContent(this.uiContext, wrapBuilder(textBuilder1));
+  private preNode5: ComponentContent = new ComponentContent(this.uiContext, wrapBuilder(textBuilder));
+  private sufNode5: ComponentContent = new ComponentContent(this.uiContext, wrapBuilder(textBuilder1));
+  private preNode6: ComponentContent = new ComponentContent(this.uiContext, wrapBuilder(textBuilder));
+  private sufNode6: ComponentContent = new ComponentContent(this.uiContext, wrapBuilder(textBuilder1));
+  build() {
+    Column({ space: 8 } as ColumnOptions) {
+      Text('outset slider').fontSize(9).fontColor(0xCCCCCC).width('90%').margin(15)
+      Row() {
+        Slider({
+          value: 50,
+          min: 0,
+          max: 100,
+          style: SliderStyle.OutSet
+        } as SliderOptions)
+          .showTips(true)
+          .prefix(this.preNode1)
+          .suffix(this.sufNode1)
+      }
+      .width('80%')
+
+      Row() {
+        Slider({
+          value: 50,
+          min: 0,
+          max: 100,
+          style: SliderStyle.OutSet
+        } as SliderOptions)
+          .showTips(true)
+          .prefix(this.preNode3)
+      }
+      .width('80%')
+
+      Row() {
+        Slider({
+          value: 50,
+          min: 0,
+          max: 100,
+          style: SliderStyle.OutSet
+        } as SliderOptions)
+          .showTips(true)
+          .suffix(this.sufNode3)
+      }
+      .width('80%')
+
+      Text('inset slider').fontSize(9).fontColor(0xCCCCCC).width('90%').margin(15)
+      Row() {
+        Slider({
+          value: 50,
+          min: 0,
+          max: 100,
+          style: SliderStyle.InSet
+        } as SliderOptions)
+          .blockColor('#191970')
+          .trackColor('#ADD8E6')
+          .selectedColor('#4169E1')
+          .showTips(true)
+          .trackThickness(36)
+          .prefix(this.preNode2)
+          .suffix(this.sufNode2)
+      }
+      .width('80%')
+
+      Row() {
+        Slider({
+          value: 50,
+          min: 0,
+          max: 100,
+          style: SliderStyle.InSet
+        } as SliderOptions)
+          .blockColor('#191970')
+          .trackColor('#ADD8E6')
+          .selectedColor('#4169E1')
+          .showTips(true)
+          .trackThickness(36)
+          .prefix(this.preNode4)
+      }
+      .width('80%')
+
+      Row() {
+        Slider({
+          value: 50,
+          min: 0,
+          max: 100,
+          style: SliderStyle.InSet
+        } as SliderOptions)
+          .blockColor('#191970')
+          .trackColor('#ADD8E6')
+          .selectedColor('#4169E1')
+          .showTips(true)
+          .trackThickness(36)
+          .suffix(this.sufNode4)
+      }
+      .width('80%')
+
+      Text('slider Show Step').fontSize(9).fontColor(0xCCCCCC).width('90%').margin(15)
+      Row() {
+        Slider({
+          value: 50,
+          min: 0,
+          max: 100,
+          step:10,
+          style: SliderStyle.InSet
+        } as SliderOptions)
+          .blockColor('#191970')
+          .trackColor('#ADD8E6')
+          .selectedColor('#4169E1')
+          .showTips(true)
+          .trackThickness(36)
+          .showSteps(true)
+          .prefix(this.preNode5, {
+            accessibilityText: 'prefixText',
+            accessibilityDescription: 'prefixDescription',
+            accessibilityLevel: 'auto',
+            accessibilityGroup: true
+          } as SliderPrefixOptions)
+          .suffix(this.sufNode5, {
+            accessibilityText: 'suffixText',
+            accessibilityDescription: 'suffixDescription',
+            accessibilityLevel: 'auto',
+            accessibilityGroup: true
+          } as SliderSuffixOptions)
+      }
+      .width('80%')
+
+      Row() {
+        Slider({
+          value: 50,
+          min: 0,
+          max: 100,
+          step:10,
+          style: SliderStyle.InSet
+        } as SliderOptions)
+          .blockColor('#191970')
+          .trackColor('#ADD8E6')
+          .selectedColor('#4169E1')
+          .showTips(true)
+          .trackThickness(36)
+          .showSteps(true)
+          .prefix(this.preNode6, {
+            accessibilityText: 'prefixText',
+            accessibilityDescription: 'prefixDescription',
+            accessibilityLevel: 'auto',
+            accessibilityGroup: true
+          } as SliderPrefixOptions)
+      }
+      .width('80%')
+
+      Row() {
+        Slider({
+          value: 50,
+          min: 0,
+          max: 100,
+          step:10,
+          style: SliderStyle.InSet
+        } as SliderOptions)
+          .blockColor('#191970')
+          .trackColor('#ADD8E6')
+          .selectedColor('#4169E1')
+          .showTips(true)
+          .trackThickness(36)
+          .showSteps(true)
+          .suffix(this.sufNode6, {
+            accessibilityText: 'suffixText',
+            accessibilityDescription: 'suffixDescription',
+            accessibilityLevel: 'auto',
+            accessibilityGroup: true
+          } as SliderSuffixOptions)
+      }
+      .width('80%')
+    }.width('100%')
+  }
+}
+```
 ![slider_5](figures/slider_5.jpeg)
