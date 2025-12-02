@@ -27,7 +27,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 | 名称        | 类型   | 值   | 说明       |
 | ----------- | ---- | ---- | ---------- |
 | MAX_ALLOWABLE_REUSE_DURATION<sup>12+</sup>     | number | 300000   | 复用解锁认证结果最大有效时长，值为300000毫秒。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| PERMANENT_LOCKOUT_DURATION<sup>22+</sup>      | number | 0x7FFFFFFF | 永久冻结时间，值为0x7FFFFFFF毫秒。<br/> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| PERMANENT_LOCKOUT_DURATION<sup>22+</sup>      | number | 0x7fffffff | 永久冻结时间，值为0x7fffffff毫秒。<br/> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 
 ## AuthLockState<sup>22+</sup>
 
@@ -524,6 +524,7 @@ on(type: 'result', callback: IAuthCallback): void
 订阅用户身份认证的最终结果。通过该接口获取到的是用户在认证控件完成身份认证交互后的最终身份认证结果。认证控件消失前，用户中间的认证失败尝试并不会通过该接口返回。如果需要感知整个认证过程中用户的每一次认证失败尝试，请通过[on('authTip')](#on20)接口订阅。
 
 > **说明：**
+>
 > 在PC/2in1设备上，应用如果使用模应用方式发起认证（即配置用户界面参数[widgetParam](#widgetparam10)时传入了有效的uiContext），收到认证结果后，若需弹出其他窗口，应先获取控件弹窗释放的标志消息，通过[on('authTip')](#on20)接口订阅控件释放消息（authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -885,6 +886,7 @@ on(type: 'authTip', callback: AuthTipCallback): void
 订阅身份认证过程中的提示信息。通过该接口可以获取到认证过程中控件的拉起和退出提示，以及认证过程中用户的每一次认证失败尝试。使用callback异步回调。
 
 > **说明：**
+>
 > 在PC/2in1设备上，应用如果使用模应用方式发起认证（即配置用户界面参数[widgetParam](#widgetparam10)时传入了有效的uiContext），收到认证结果后，若需弹出其他窗口，应先获取控件弹窗释放的标志消息，通过[on('authTip')](#on20)接口订阅控件释放消息（authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
