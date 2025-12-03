@@ -319,5 +319,5 @@ WindowStage生命周期的状态类型枚举。
 | 名称       | 值     | 说明       |
 | ---------- | ------ | ---------- |
 | WINDOW_ORIENTATION  | 0      | 窗口所在屏幕的显示方向，以窗口模块对横竖屏的定义方式表示。<br>开发者在使用时，需要注意该方向表示[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)中的orientation参数。 |
-| DISPLAY_ORIENTATION | 1      | 屏幕显示方向。<br>开发者在使用时，需要注意该方向表示[display](js-apis-display.md#display)对象的orientation属性。 |
+| DISPLAY_ORIENTATION | 1      | 屏幕显示方向，以屏幕模块对横竖屏的定义方式表示。<br>开发者在使用时，需要注意该方向表示[display](js-apis-display.md#display)对象的orientation属性。 |
 | DISPLAY_ROTATION    | 2      | 设备的屏幕顺时针旋转角度。<br>开发者在使用时，需要注意该方向表示[display](js-apis-display.md#display)对象的rotation属性。 |
