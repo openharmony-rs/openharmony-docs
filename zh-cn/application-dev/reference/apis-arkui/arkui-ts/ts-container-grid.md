@@ -2017,6 +2017,8 @@ struct GridExample {
 
 ### 示例13（滚动事件）
 
+从API version 19开始，新增[UIGridEvent](#uigridevent19)中的滚动事件的使用。
+
 ```ts
 import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
 
