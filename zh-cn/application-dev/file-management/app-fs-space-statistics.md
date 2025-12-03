@@ -126,14 +126,14 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
   <!--@[storageStatistics_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
-
-``` TypeScript
-      storageStatistics.getFreeSize().then((number: number) => {
-        console.info(`getFreeSize successfully, number is ${number}`);
-      }).catch((err: BusinessError) => {
-        console.error(`getFreeSize failed with error, code is ${err.code}, message is ${err.message}`);
-      });
-```
+  
+  ``` TypeScript
+  storageStatistics.getFreeSize().then((number: number) => {
+    console.info(`getFreeSize successfully, number is ${number}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getFreeSize failed with error, code is ${err.code}, message is ${err.message}`);
+  });
+  ```
 
 
 - 同步获取内置存储的可用空间大小。
