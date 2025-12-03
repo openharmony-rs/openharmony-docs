@@ -461,7 +461,7 @@
 
 ## FillMode
 
-用于设置当前播放方向下，动画开始前和结束后的状态。
+设置当前播放方向下，动画开始前和结束后的状态。动画结束后的状态由fillMode和reverse属性共同决定。例如，fillMode为Forwards表示停止时维持动画最后一个关键帧的状态，若reverse为false则维持正播的最后一帧，即最后一张图，若reverse为true则维持逆播的最后一帧，即第一张图。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
