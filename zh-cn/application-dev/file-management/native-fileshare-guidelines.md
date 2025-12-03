@@ -112,7 +112,7 @@ target_link_libraries(sample PUBLIC libohfileshare.so)
    ```
 
 4. 调用OH_FileShare_RevokePermission接口，撤销已经授权的uri持久化权限，接口入参policyNum最大上限为500。
-<!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
 
    ``` C++
    auto ret = OH_FileShare_RevokePermission(policy, policyNum, &result, &resultNum);
@@ -130,7 +130,7 @@ target_link_libraries(sample PUBLIC libohfileshare.so)
    ```
 
 5. 调用OH_FileShare_CheckPersistentPermission接口，检查uri持久化权限，接口入参policyNum最大上限为500。
-<!-- @[check_persistent_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[check_persistent_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
 
    ``` C++
    bool *result = nullptr;

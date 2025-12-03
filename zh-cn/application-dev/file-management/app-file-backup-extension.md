@@ -105,28 +105,22 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
     }
     ```
 
-    <!-- @[on_backup_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->
-
+   <!-- @[on_backup_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->    
+   
    ``` TypeScript
-   // [Start on_release]
    import { BackupExtensionAbility } from '@kit.CoreFileKit';
-   // [StartExclude on_release]
    import { BundleVersion } from '@kit.CoreFileKit';
-   // [EndExclude on_release]
-   // ···
-
-   // [StartExclude on_release]
+   // ...
+   
    interface ErrorInfo {
      type: string,
      errorCode: number,
      errorInfo: string
    }
-   // [EndExclude on_release]
-
-   // ···
-
+   
+   // ...
+   
    class BackupExt extends BackupExtensionAbility {
-     // [StartExclude on_release]
      //onBackupEx
      async onBackupEx(backupInfo: string): Promise<string> {
        console.info('onBackupEx ok');
@@ -137,7 +131,7 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
        }
        return JSON.stringify(errorInfo);
      }
-
+   
      // onRestoreEx
      async onRestoreEx(bundleVersion : BundleVersion, restoreInfo: string): Promise<string> {
        console.info(`onRestoreEx begin`);
@@ -148,8 +142,7 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
        }
        return JSON.stringify(errorInfo);
      }
-     // [EndExclude on_release]
-   // ···
+     // ...
    }
    ```
 
@@ -160,27 +153,22 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
 
    下面的示例展示了需要清理临时文件目录时`onRelease`的实现：
 
-   <!-- @[on_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->
-
+   <!-- @[on_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->    
+   
    ``` TypeScript
    import { BackupExtensionAbility } from '@kit.CoreFileKit';
-   // ···
-   // [StartExclude on_backup_restore]
+   // ...
    import { fileIo } from '@kit.CoreFileKit';
-   // [EndExclude on_backup_restore]
-
-   // ···
-
-   // [StartExclude on_backup_restore]
+   
+   // ...
+   
    const SCENARIO_BACKUP: number = 1;
    const SCENARIO_RESTORE: number = 2;
    // 需要清理的临时目录
    let filePath: string = '/data/storage/el2/base/.temp/';
-   // [EndExclude on_backup_restore]
-
+   
    class BackupExt extends BackupExtensionAbility {
-   // ···
-     // [StartExclude on_backup_restore]
+     // ...
      // onRelease
      async onRelease(scenario: number): Promise<void> {
        try {
@@ -200,9 +188,7 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
          console.error(`onRelease failed with error. Code: ${error.code}, message: ${error.message}`);
        }
      }
-     // [EndExclude on_backup_restore]
    }
-   // [End on_backup_restore]
    ```
 
 
