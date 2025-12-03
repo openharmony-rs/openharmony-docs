@@ -1662,6 +1662,8 @@ requestAuthFromUser(context: Context, callback: Callback&lt;UserAuthResult&gt;):
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常调用，在其他设备类型中返回9800005错误码。
+
 **参数：**
 
 | 参数名      | 类型                                                  | 必填   | 说明           |
@@ -1715,6 +1717,8 @@ checkSpecialScenarioAuth(context: Context): Promise&lt;UserAuthResult&gt;
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常调用，在其他设备类型中返回9800005错误码。
 
 **参数：**
 
