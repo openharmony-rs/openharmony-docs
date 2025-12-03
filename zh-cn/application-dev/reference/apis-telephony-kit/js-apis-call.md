@@ -1192,6 +1192,8 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
 
 拨打电话的可选参数。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Telephony.CallManager
 
 **ArkTS-Dyn起始版本：** 6
@@ -1222,6 +1224,8 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
 ## TelCallState<sup>21+</sup>
 
 通话状态码。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
