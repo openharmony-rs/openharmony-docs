@@ -1327,6 +1327,10 @@ loadFontSyncWithCheck(name: string, path: string | Resource, index?: number): vo
 
 **原子化服务API**：该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型               | 必填 | 说明                              |
@@ -1441,6 +1445,10 @@ loadFontWithCheck(name: string, path: string | Resource, index?: number): Promis
 **系统能力**：SystemCapability.Graphics.Drawing
 
 **原子化服务API**：该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
