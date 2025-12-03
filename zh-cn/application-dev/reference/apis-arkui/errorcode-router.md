@@ -72,11 +72,11 @@ Builder function not registered.
 
 **错误描述**
 
-Navigation跳转时，Navigation未注册创建NavDestination组件的builder函数，系统会产生此错误码。
+Navigation跳转时，未注册创建NavDestination组件的builder函数，系统会产生此错误码。
 
 **可能原因**
 
-Navigation跳转时，Navigation未注册创建NavDestination的builder函数。
+Navigation跳转时，未注册创建NavDestination的builder函数。
 
 **处理步骤**
 

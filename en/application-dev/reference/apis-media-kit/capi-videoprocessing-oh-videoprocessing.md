@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_VideoProcessing OH_VideoProcessing
+```
+
 ## Overview
 
 The struct describes an object for video processing.

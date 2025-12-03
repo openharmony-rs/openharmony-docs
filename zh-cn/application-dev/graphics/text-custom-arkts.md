@@ -184,6 +184,46 @@ function drawText(canvas: drawing.Canvas) {
     // 自定义绘制一串具有相同属性的一系列连续字形
     canvas.drawTextBlob(textBlob, 20, 100);
   }
+}
+
+// 创建一个MyRenderNode类，并绘制文本。
+class MyRenderNode extends RenderNode {
+  async draw(context: DrawContext) {
+    drawText(context.canvas);
+  }
+}
+
+// 创建一个MyRenderNode对象
+const textNode = new MyRenderNode();
+// 定义newNode的像素格式
+textNode.frame = {
+  x: 0,
+  y: 0,
+  width: 300,
+  height: 300
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode {
+    this.rootNode = new FrameNode(uiContext);
+    if (this.rootNode == null) {
+      return this.rootNode;
+    }
+    const renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) {
+      renderNode.frame = {
+        x: 0,
+        y: 0,
+        width: 500,
+        height: 500
+      }
+      renderNode.appendChild(textNode);
+    }
+    return this.rootNode;
+  }
+}
 ```
 
 效果展示：  

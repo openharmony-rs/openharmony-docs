@@ -19,7 +19,7 @@
 ## 导入模块
 
 ```ts
-import { InnerFullScreenLaunchComponent, LauncherController } from '@kit.ArkUI';
+import { InnerFullScreenLaunchComponent, LaunchController } from '@kit.ArkUI';
 ```
 
 
@@ -50,7 +50,7 @@ InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchCon
 | controller | [LaunchController](#launchcontroller) | 是 | - | 拉起原子化服务控制器。 |
 | onReceive<sup>20+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, Object>> | 否 | - | 被拉起的嵌入式运行原子化服务通过[Window](../../../windowmanager/application-window-stage.md)调用API时，触发本回调。 |
 | onError<sup>23+<sup> | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否 | - | 被拉起的嵌入式运行原子化服务在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理。 |
-| onTerminated<sup>23+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | 否 | - | 被拉起的嵌入式运行原子化服务通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或者[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时，触发本回调函数。 |
+| onTerminated<sup>23+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | 否 | - | 被拉起的嵌入式运行原子化服务通过点击原子化服务退出按钮、调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或者[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时，触发本回调函数。手势侧滑退出原子化服务，不会触发本回调函数。|
 
 ## LaunchController
 
@@ -116,7 +116,7 @@ struct Index {
             console.info("onReceive, data: " + data['ohos.atomicService.window']);
           },
           onError: (err: Error) => {
-            console.info("onError, err: " + JSON.stringify(err));
+            console.error("onError, err: " + JSON.stringify(err));
           },
           onTerminated: (info: TerminationInfo) => {
             console.info("onTerminated, info: " + JSON.stringify(info));

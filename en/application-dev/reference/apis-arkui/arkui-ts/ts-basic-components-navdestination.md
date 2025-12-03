@@ -502,8 +502,8 @@ Sets whether to show or hide the system navigation bar when entering this **NavD
 >
 > This attribute is effective only if the following conditions are all met:
 > 1. The **NavDestination** component belongs to the application's main window page, and the main window is a full-screen window.
-> 2. The size of the **Navigation** container to which the **NavDestination** component belongs occupies the entire application page.
-> 3. The size of the **NavDestination** component occupies the entire **Navigation** container.
+> 2. The **Navigation** container containing the **NavDestination** component occupies the entire page area.
+> 3. The **NavDestination** component occupies the entire **Navigation** container.
 > 4. The type of **NavDestination** is [NavDestinationMode](#navdestinationmode11).STANDARD.
 >
 > The actual effect of setting the system navigation bar depends on the specific device support. For details, see [setSpecificSystemBarEnabled](../arkts-apis-window-Window.md#setspecificsystembarenabled11).

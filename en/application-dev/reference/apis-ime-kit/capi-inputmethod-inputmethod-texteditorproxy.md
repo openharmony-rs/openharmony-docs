@@ -6,6 +6,10 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct InputMethod_TextEditorProxy InputMethod_TextEditorProxy
+```
+
 ## Overview
 
 Text box proxy. It provides methods for obtaining notifications and requests from the input method application.  

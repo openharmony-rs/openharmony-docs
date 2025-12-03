@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} JSVM_VMInfo
+```
+
 ## Overview
 
 Defines the JavaScript VM information.

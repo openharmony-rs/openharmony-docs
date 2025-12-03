@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Image** component is usually used to display images in applications.
 
@@ -82,7 +82,7 @@ This attribute does not support non-decoded image types such as SVG, [PixelMap](
 
 | Name| Type                                   | Mandatory| Description                            |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| imageQuality | [ResolutionQuality](#resolutionquality12) | Yes  | Image resolution used for decoding.|
+| imageQuality | [ResolutionQuality](#resolutionquality12) | Yes  | Image resolution used for decoding.<br>Default value: **ResolutionQuality.Low**|
 
 ## ResolutionQuality<sup>12+</sup>
 

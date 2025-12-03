@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVRecorder_Range {...} OH_AVRecorder_Range
+```
+
 ## Overview
 
 The struct describes the range.

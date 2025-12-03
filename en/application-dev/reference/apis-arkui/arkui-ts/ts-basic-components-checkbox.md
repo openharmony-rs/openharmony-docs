@@ -4,7 +4,7 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **Checkbox** is a component that is used to enable or disable an option.
 
@@ -198,7 +198,7 @@ Sets the check mark style of the check box. Compared with [mark](#mark10)<sup>10
 
 shape(value: CheckBoxShape)
 
-Sets the shape of the check box. To adjust the style of the current check box, use [contentModifier](#contentmodifier12).
+Sets the check box shape. To adjust the style of the current check box, use [contentModifier](#contentmodifier12).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 11.
 
@@ -216,7 +216,7 @@ Sets the shape of the check box. To adjust the style of the current check box, u
 
 shape(shape: Optional\<CheckBoxShape>)
 
-Sets the shape of the check box. Compared with [shape](#shape11)<sup>11+</sup>, this API supports the **undefined** type for the **shape** parameter.
+Sets the check box shape. Compared with [shape](#shape11)<sup>11+</sup>, this API supports the **undefined** type for the **shape** parameter. To adjust the style of the current check box, use [contentModifier](#contentmodifier12).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -234,7 +234,7 @@ Sets the shape of the check box. Compared with [shape](#shape11)<sup>11+</sup>, 
 
 contentModifier(modifier: ContentModifier\<CheckBoxConfiguration>)
 
-Creates a content modifier. Setting this attribute will invalidate other attribute settings.
+Creates a content modifier for the **Checkbox** component. Setting this attribute will invalidate other attribute settings.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -244,7 +244,7 @@ Creates a content modifier. Setting this attribute will invalidate other attribu
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<CheckBoxConfiguration>](#checkboxconfiguration12) | Yes  | Content modifier to apply to the check box.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
+| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<CheckBoxConfiguration>](#checkboxconfiguration12) | Yes  | Content modifier to apply to the **Checkbox** component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
 
 ### contentModifier<sup>18+</sup>
 
@@ -260,7 +260,7 @@ Creates a content modifier. Compared with [contentModifier](#contentmodifier12)<
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ContentModifier\<CheckBoxConfiguration>](#checkboxconfiguration12)> | Yes  | Content modifier to apply to the check box.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.<br>If **modifier** is set to **undefined**, no content modifier is used.|
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<CheckBoxConfiguration>](#checkboxconfiguration12)> | Yes  | Content modifier to apply to the **Checkbox** component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.<br>If **modifier** is set to **undefined**, no content modifier is used.|
 
 ## Events
 
@@ -328,7 +328,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type   |    Read Only   |    Optional     |  Description             |
+| Name| Type   |    Read-Only   |    Optional     |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | name | string | No| No|Name of the check box.|
 | selected | boolean| No| No| Whether the check box is selected.<br>**true**: The check box is selected. <br>**false**: The check box is not selected.<br>If the **select** attribute is not set, the default value **false** is used.<br>If the **select** attribute is set, the attribute value is used here.|

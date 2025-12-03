@@ -18,7 +18,7 @@ The target is not a custom component instance or V2 class instance.
 
 **错误描述**
 
-[addMonitor](./js-apis-StateManagement.md#addmonitor20)/[clearMonitor](./js-apis-StateManagement.md#clearmonitor20)的目标对象参数不合法。
+[addMonitor](./js-apis-stateManagement.md#addmonitor20)/[clearMonitor](./js-apis-stateManagement.md#clearmonitor20)的目标对象参数不合法。
 
 **可能原因**
 

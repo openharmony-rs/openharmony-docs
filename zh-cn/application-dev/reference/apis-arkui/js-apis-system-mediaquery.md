@@ -84,7 +84,7 @@ let mMediaQueryList = mediaquery.matchMedia('(max-width: 466)');
 | ------- | ------- | ---- |---- | ----------------- |
 | media   | string  | 否|  是    | 序列化媒体查询条件，该参数为只读。 |
 | matches | boolean | 否|  是     | 匹配结果。 true表示满足查询条件，false表示不满足查询条件。            |
-| onchange | (matches: boolean) => void | 否|  是     | matches状态变化时的执行函数。<br/>true：满足查询条件；false：不满足查询条件。 |
+| onchange | (matches: boolean) => void | 否|  是     | 匹配结果发生变化时的执行函数。matches表示是否匹配媒体查询条件，true满足查询条件，false不满足查询条件。 |
 
 
 ### MediaQueryList.addListener

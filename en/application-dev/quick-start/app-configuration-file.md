@@ -24,14 +24,8 @@ The following example describes the structure and content of the **app.json5** c
 <!-- @[app_json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
 ``` JSON5
-// [Start app_json5_appEnvironments]
-// [Start app_json5_multiAppMode]
-// [Start app_json5_configuration]
 {
   "app": {
-    // [StartExclude app_json5_appEnvironments]
-    // [StartExclude app_json5_multiAppMode]
-    // [StartExclude app_json5_configuration]
     "bundleName": "com.application.myapplication",
     "vendor": "example",
     "versionCode": 1000000,
@@ -45,44 +39,31 @@ The following example describes the structure and content of the **app.json5** c
     "car": {
       "minAPIVersion": 8
     },
-    // [EndExclude app_json5_appEnvironments]
     "appEnvironments": [
       {
         "name":"name1",
         "value": "value1"
       }
     ],
-    // [StartExclude app_json5_appEnvironments]
     "maxChildProcess": 5,
-    // [EndExclude app_json5_multiAppMode]
     "multiAppMode": {
       "multiAppModeType": "appClone",
       "maxCount": 5
     },
-    // [StartExclude app_json5_multiAppMode]
     "hwasanEnabled": false,
     "ubsanEnabled": false,
     "cloudFileSyncEnabled": false,
     "cloudStructuredDataSyncEnabled": false,
-    // [EndExclude app_json5_configuration]
     "configuration": "$profile:configuration",
-    // [StartExclude app_json5_configuration]
     "assetAccessGroups": [
       "com.ohos.photos",
       "com.ohos.screenshot",
       "com.ohos.note"
     ],
     "startMode": "mainTask"
-    // [EndExclude app_json5_configuration]
-    // [EndExclude app_json5_appEnvironments]
-    // [EndExclude app_json5_multiAppMode]
   }
 }
-// [End app_json5_configuration]
-// [End app_json5_multiAppMode]
-// [End app_json5_appEnvironments]
 ```
-
 
 ## Tags in the Configuration File
 
@@ -146,25 +127,19 @@ Example of the **appEnvironments** structure:
 <!-- @[app_json5_appEnvironments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
 ``` JSON5
-// [Start app_json5_multiAppMode]
-// [Start app_json5_configuration]
 {
   "app": {
-	// ···
+    // ...
     "appEnvironments": [
       {
         "name":"name1",
         "value": "value1"
       }
     ],
-	// ···
-    // [EndExclude app_json5_multiAppMode]
+    // ...
   }
 }
-// [End app_json5_configuration]
-// [End app_json5_multiAppMode]
 ```
-
 
 ## multiAppMode
 
@@ -182,21 +157,17 @@ Example of the **multiAppMode** structure:
 <!-- @[app_json5_multiAppMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
 ``` JSON5
-// [Start app_json5_configuration]
 {
   "app": {
-    // [StartExclude app_json5_appEnvironments]
-	// ···
+    // ...
     "multiAppMode": {
       "multiAppModeType": "appClone",
       "maxCount": 5
     },
-	// ···
+    // ...
   }
 }
-// [End app_json5_configuration]
 ```
-
 
 ## configuration
 
@@ -209,17 +180,12 @@ Example of the **configuration** structure:
 ``` JSON5
 {
   "app": {
-    // [StartExclude app_json5_appEnvironments]
-    // [StartExclude app_json5_multiAppMode]
-	// ···
+    // ...
     "configuration": "$profile:configuration",
-	// ···
-    // [EndExclude app_json5_appEnvironments]
-    // [EndExclude app_json5_multiAppMode]
+    // ...
   }
 }
 ```
-
 
 Define the **configuration.json** file under **AppScope/resources/base/profile** in the development view. The file name (**configuration** in this example) can be customized, but must be consistent with the file specified by the **configuration** tag. The configuration file lists the attributes that enable the application font size to change with the system.
 
@@ -228,7 +194,7 @@ Define the **configuration.json** file under **AppScope/resources/base/profile**
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | fontSizeScale | Settings of the application font size. The options are as follows:<br>- **followSystem**: The font size follows the system.<br>- **nonFollowSystem**: The font size does not follow the system.| String| Yes (initial value: **nonFollowSystem**)|
-| fontSizeMaxScale | Maximum ratio of the application font size after the font size is set to follow the system. The options are as follows: **1**, **1.15**, **1.3**, **1.45**, **1.75**, **2**, and **3.2**.	 <br> For example, the value is set to **1.75** and the system font size is 10 fp, the application font size changes as follows:<br>(1) If the system font size is set to 1.5 times its original size in Settings, the application font size also changes to 15 fp, in line with the system.<br>(2) If the system font size is set to 2 times its original size in Settings, the system font size is 20 fp. However, the application font size is 17.5 fp because the maximum ratio of the application font size is set to 1.75.<br>**NOTE**<br>If **fontSizeScale** is set to **nonFollowSystem**, this attribute does not take effect. | String| Yes (initial value: **3.2**)|
+| fontSizeMaxScale | Maximum ratio of the application font size after the font size is set to follow the system. The options are as follows: **1**, **1.15**, **1.3**, **1.45**, **1.75**, **2**, and **3.2**.	 <br>For example, the value is set to **1.75** and the system font size is 10 fp, the application font size changes as follows:<br>(1) If the system font size is set to 1.5 times its original size in Settings, the application font size also changes to 15 fp, in line with the system.<br>(2) If the system font size is set to 2 times its original size in Settings, the system font size is 20 fp. However, the application font size is 17.5 fp because the maximum ratio of the application font size is set to 1.75.<br>**NOTE**<br>If **fontSizeScale** is set to **nonFollowSystem**, this attribute does not take effect.| String| Yes (initial value: **3.2**)|
 
 Example of the **configuration** structure:
 

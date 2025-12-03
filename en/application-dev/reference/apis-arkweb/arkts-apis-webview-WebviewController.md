@@ -5865,6 +5865,10 @@ enableAdsBlock(enable: boolean): void
 
 Enables ad blocking.
 
+> **NOTE**
+>
+> - The ad blocking feature works only for the release-type application, not the debug-type application.
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Parameters**
@@ -10034,7 +10038,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info("EntryAbility onCreate");
-    // If the web page of the application will be greatly changed on May 6, 2022, for example, during product promotion activities, you are advised to clear the frame interpolation to optimize the cache.
+    // If the web page of the application will be greatly changed on June 10, 2025, for example, during product promotion activities, you are advised to clear the frame interpolation to optimize the cache.
     webview.WebviewController.initializeWebEngine();
     let pageUpdateTime: number = Date.UTC(2025, 5, 10, 0, 0, 0, 0);
     let pageUpdateTime1: number = Date.UTC(2025, 5, 11, 0, 0, 0, 0);
@@ -10138,6 +10142,72 @@ export default class EntryAbility extends UIAbility {
     console.info("EntryAbility onCreate done");
   }
 }
+```
+
+## setScrollbarMode<sup>23+</sup>
+
+setScrollbarMode(scrollbarMode: ScrollbarMode): void
+
+Sets the global scrollbar mode in the web page. When this API is not explicitly called, [ScrollbarMode.OVERLAY_LAYOUT_SCROLLBAR ](./arkts-apis-webview-e.md#scrollbarmode23) is used by default, indicating that the scroll bar is not always displayed.
+
+> **NOTE**
+>
+> - You can set whether to always display the web scrollbar of the current application based on the scrollbar mode.
+> - If the [forceDisplayScrollBar](./arkts-basic-components-web-attributes.md#forcedisplayscrollbar14) API is set at the same time as this API, the setting of **forceDisplayScrollBar** does not take effect.
+> - This API must be called before WebViewController is bound to a **Web** component.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name  | Type   | Mandatory| Description                     |
+| -------- | ------- | ---- | -------------------------------------- |
+| scrollbarMode | [ScrollbarMode](./arkts-apis-webview-e.md#scrollbarmode23) | Yes| Scroll bar mode.|
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  aboutToAppear(): void {
+    webview.WebviewController.setScrollbarMode(webview.ScrollbarMode.FORCE_DISPLAY_SCROLLBAR);
+  }
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .height('90%')
+    }
+  }
+}
+```
+
+HTML file to be loaded:
+```html
+<!--index.html-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+    <style>
+      body {
+        width:2560px;
+        height:2560px;
+        padding-right:170px;
+        padding-left:170px;
+        border:5px solid blueviolet;
+      }
+    </style>
+</head>
+<body>
+Scroll Test
+</body>
+</html>
 ```
 
 ## setActiveWebEngineVersion<sup>20+</sup>

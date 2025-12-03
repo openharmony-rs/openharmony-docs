@@ -728,7 +728,7 @@ type OnHomeShowOnTopCallback = (name: string) => void
 <!--code_no_check-->
 ```typescript
 // pages/Index.ets
-import { MultiNavigation, MultiNavPathStack, SplitPolicy } from '@ohos.arkui.advanced.MultiNavigation';
+import { MultiNavigation, MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 import { PageDetail1 } from './PageDetail1';
 import { PageDetail2 } from './PageDetail2';
 import { PageFull1 } from './PageFull1';
@@ -772,7 +772,7 @@ struct Index {
 <!--code_no_check-->
 ```typescript
 // pages/PageHome1.ets, 对应首页
-import { MultiNavPathStack, SplitPolicy } from '@ohos.arkui.advanced.MultiNavigation';
+import { MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Component
@@ -995,7 +995,7 @@ export struct PageHome1 {
 <!--code_no_check-->
 ```typescript
 // pages/PageDetail1.ets：详情页
-import { MultiNavPathStack, SplitPolicy } from '@ohos.arkui.advanced.MultiNavigation';
+import { MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Component
@@ -1229,7 +1229,7 @@ export struct PageDetail1 {
 <!--code_no_check-->
 ```typescript
 // pages/PageDetail2.ets: 详情页
-import { MultiNavPathStack, SplitPolicy } from '@ohos.arkui.advanced.MultiNavigation';
+import { MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Component
@@ -1400,7 +1400,7 @@ export struct PageDetail2 {
 <!--code_no_check-->
 ```typescript
 // pages/PageFull1.ets: 不参与分栏的页面，默认全屏展示
-import { MultiNavPathStack, SplitPolicy } from '@ohos.arkui.advanced.MultiNavigation';
+import { MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Component

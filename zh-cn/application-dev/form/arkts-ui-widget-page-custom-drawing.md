@@ -11,6 +11,7 @@ ArkTS卡片开放了自定义绘制的能力，在卡片上可以通过[Canvas](
 <!-- @[custom_drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/customcanvasdrawing/pages/CustomCanvasDrawingCard.ets) -->
 
 ``` TypeScript
+// entry/src/main/ets/customcanvasdrawing/pages/CustomCanvasDrawingCard.ets
 @Entry
 @Component
 struct CustomCanvasDrawingCard {

@@ -112,7 +112,7 @@ Enumerates the media description keys.
 | MD_KEY_TRACK_TYPE        | 'track_type'    | Track type, which is a number. For details, see [MediaType](#mediatype8).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | MD_KEY_CODEC_MIME        | 'codec_mime'    | Codec MIME type, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | MD_KEY_DURATION          | 'duration'      | Media duration, which is a number, in units of ms.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_BITRATE           | 'bitrate'       | Bit rate, which is a number, in units of bit/s.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_BITRATE           | 'bitrate'       | Bit rate, which is a number, in units of bit/s. If the value is **undefined** or **0**, the bit rate is abnormal.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | MD_KEY_WIDTH             | 'width'         | Video width, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | MD_KEY_HEIGHT            | 'height'        | Video height, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | MD_KEY_FRAME_RATE        | 'frame_rate'    | Video frame rate, which is a number, measured in frames per 100 seconds.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|

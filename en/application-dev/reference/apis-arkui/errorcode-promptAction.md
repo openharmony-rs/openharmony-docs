@@ -1,32 +1,14 @@
-# promptAction Error Codes
+# Popup Window Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-## 100001 Internal Error
-
-**Error Message**
-
-Internal error.
-
-**Description**
-
-This error code is reported when an internal system issue that cannot be resolved through application-level changes. The specific internal error type is provided in the error details.
-
-**Possible Causes**
-
-The operation for obtaining the rendering engine or parsing parameters fails.
-
-**Solution**
-
-N/A
 
 ## 103301 Dialog Content Error
 

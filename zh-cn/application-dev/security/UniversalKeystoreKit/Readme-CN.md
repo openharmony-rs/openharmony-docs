@@ -79,6 +79,11 @@
   - 查询密钥别名集<!--huks-list-aliases-->
     - [查询密钥别名集(ArkTS)](huks-list-aliases-arkts.md)
     - [查询密钥别名集(C/C++)](huks-list-aliases-ndk.md)
+  - 群组密钥<!--huks-group-key-->
+    - [群组密钥介绍](huks-group-key-overview.md)
+    - 开发指导<!--huks-group-key-dev-->
+      - [群组密钥(ArkTS)](huks-group-key-arkts.md)
+      - [群组密钥(C/C++)](huks-group-key-ndk.md)
   <!--Del-->
   - [指定用户身份操作(仅对系统应用开放)](huks-as-user-sys.md)
   <!--DelEnd-->

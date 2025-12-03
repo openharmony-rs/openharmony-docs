@@ -403,6 +403,17 @@ Represents the callback invoked when an SSL client certificate is required from 
 | keyTypes | Array<string\>                           | No| No| Acceptable asymmetric private key types.   |
 | issuers  | Array<string\>                           | No| No| Issuer of the certificate that matches the private key.|
 
+
+## VerifyPinEvent<sup>22+</sup>
+Defines the callback triggered to notify the user of PIN verification.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name            | Type     | Read-Only| Optional  | Description                                      |
+| -------------- | ---- | ---- | ------------|---------------------------- |
+| handler  | [VerifyPinHandler](./arkts-basic-components-web-VerifyPinHandler.md) | No| No| User operation. |
+| identity     | string                                   | No| No| Certificate credential ID used for verification.   |
+
 ## OnWindowNewEvent<sup>12+</sup>
 
 Represents the callback invoked when the web page requests the user to create a window.

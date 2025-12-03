@@ -425,7 +425,7 @@ Node将自定义节点的二级模块API组织在一起，方便开发者进行�
 
 ### 问题2：Class是继承的，只有一个导入模块，这种情况下的SysCap应该写在哪里
 >
-> 声明方式形如：[EmbeddableUIAbilityContext.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/application/EmbeddableUIAbilityContext.d.ts)，参考如下样例写作。<br/>
+> 声明方式形如：[EmbeddableUIAbilityContext.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/application/EmbeddableUIAbilityContext.d.ts)，参考如下样例写作。<br/>
 >
 
 #### EmbeddableUIAbilityContext

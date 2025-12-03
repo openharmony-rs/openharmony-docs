@@ -318,7 +318,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_ConvertColorSpace(OH_ImageProcessin
 
 | 类型 | 说明 |
 | -- | -- |
-| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间时不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
+| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间是不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
 
 ### OH_ImageProcessing_Compose()
 
@@ -346,7 +346,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_Compose(OH_ImageProcessing* imagePr
 
 | 类型 | 说明 |
 | -- | -- |
-| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间时不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
+| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间是不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
 
 ### OH_ImageProcessing_Decompose()
 
@@ -374,7 +374,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_Decompose(OH_ImageProcessing* image
 
 | 类型 | 说明 |
 | -- | -- |
-| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间时不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
+| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间是不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
 
 ### OH_ImageProcessing_GenerateMetadata()
 
@@ -400,7 +400,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_GenerateMetadata(OH_ImageProcessing
 
 | 类型 | 说明 |
 | -- | -- |
-| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间时不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
+| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间是不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
 
 ### OH_ImageProcessing_EnhanceDetail()
 
@@ -427,6 +427,6 @@ ImageProcessing_ErrorCode OH_ImageProcessing_EnhanceDetail(OH_ImageProcessing* i
 
 | 类型 | 说明 |
 | -- | -- |
-| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间时不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
+| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间是不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
 
 

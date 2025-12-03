@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef JSVM_PropertyHandlerConfigurationStruct* JSVM_PropertyHandlerCfg
+```
+
 ## 概述
 
 包含属性监听回调的结构的指针类型。

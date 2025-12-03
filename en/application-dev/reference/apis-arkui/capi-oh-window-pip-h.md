@@ -68,6 +68,7 @@ The file declares the APIs related to the Picture in Picture (PiP) feature, incl
 | [int32_t OH_PictureInPicture_UnregisterAllResizeListeners(uint32_t controllerId)](#oh_pictureinpicture_unregisterallresizelisteners) | - | Unregisters all the callbacks used to listen for PiP window size changes.|
 | [int32_t OH_PictureInPicture_SetPipInitialSurfaceRect(uint32_t controllerId, int32_t positionX, int32_t positionY,uint32_t width, uint32_t height)](#oh_pictureinpicture_setpipinitialsurfacerect) | - | Sets the initial position and size of the PiP surface when the PiP launch animation starts. It can be used to achieve a seamless transition effect.|
 | [int32_t OH_PictureInPicture_UnsetPipInitialSurfaceRect(uint32_t controllerId)](#oh_pictureinpicture_unsetpipinitialsurfacerect) | - | Cancels the previously set initial position and size for the PiP surface.|
+| [int32_t OH_PictureInPicture_SetParentWindowId(uint32_t controllerId, uint32_t windowId)](#oh_pictureinpicture_setparentwindowid) | - | Sets the main window ID for PiP.|
 
 ## Enum Description
 
@@ -991,3 +992,34 @@ Cancels the previously set initial position and size for the PiP surface.
 | Type| Description|
 | -- | -- |
 | int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: A parameter is incorrect.<br>**WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR**: An internal error occurs in PiP.|
+
+### OH_PictureInPicture_SetParentWindowId()
+
+```
+int32_t OH_PictureInPicture_SetParentWindowId(uint32_t controllerId, uint32_t windowId)
+```
+
+**Description**
+
+Sets the main window ID for PiP.
+
+Before launching PiP, call [OH_PictureInPicture_SetPipMainWindowId()](#oh_pictureinpicture_setpipmainwindowid) to set the main window ID.
+
+If the main window of PiP changes (for example, if you launch PiP in one tab of a browser and then drag that tab out to create a new window), you must call this API to update the main window ID to the new window ID. This ensures that PiP can be restored to the correct main window.
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t windowId | ID of the main window. The value is a non-negative integer.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: A parameter is incorrect.<br>**WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED**: The device does not support PiP.<br>**WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR**: An internal error occurs in PiP.|

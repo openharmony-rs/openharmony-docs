@@ -131,7 +131,7 @@
     @Component
     struct WidgetProcessDataCard {
       // $r('app.string.loading')需要替换为开发者所需的资源文件
-      @LocalStorageProp('datashareproxy://com.samples.widgetupdatebyproxy/weather') city: ResourceStr = 
+      @LocalStorageProp('datashareproxy://com.samples.widgetupdatebyproxy/weather') city: ResourceStr =
         $r('app.string.loading');
     
       build() {

@@ -6,24 +6,27 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-The [Web component](../reference/apis-arkweb/arkts-basic-components-web.md) supports PDF preview on web pages. An application can use the **src** parameter of [WebOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions) parameter and [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API to load PDF files, including network PDF files, PDF files in the application sandbox, and local PDF files.
+The [Web component](../reference/apis-arkweb/arkts-basic-components-web.md) supports PDF preview on web pages. An application can use the **src** parameter of [WebOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions) and the [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API to load PDF files, including network PDF files, PDF files in the application sandbox, and local PDF files.
 
 To obtain network documents, you need to configure the network access permission in the **module.json5** file. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
 
-  ```
-  "requestPermissions":[
-      {
-        "name" : "ohos.permission.INTERNET"
-      }
-    ]
-  ```
+<!-- @[web_module_preview_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/module.json5) -->
+
+``` JSON5
+"requestPermissions":[
+  {
+    "name" : "ohos.permission.INTERNET"
+  }
+],
+```
 
 ## Loading Different PDF Files
 
 In the following example, the network PDF file **https://www.example.com/test.pdf** is specified as the default PDF file to be loaded when the **Web** component is created. Replace it with an actual accessible address.
 
-```ts
-// xxx.ets
+<!-- @[web_module_create_load_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/PreviewPDF.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -33,13 +36,13 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ 
-      	src: 
-      	"https://www.example.com/test.pdf",                                    // Method 1: Load an online PDF file.
-      	// this.getUIContext().getHostContext()!.filesDir + "/test.pdf", // Method 2: Load a PDF file from the local application sandbox.
-      	// "resource://rawfile/test.pdf", 						// Method 3: Load a local PDF file (format 1).
-      	// $rawfile('test.pdf'), 								// Method 3: Load a local PDF file (format 2).
-      	controller: this.controller 
+      Web({
+        src:
+        'https://www.example.com/test.pdf',                     // Method 1: Load a network PDF file.
+          // this.getUIContext().getHostContext()!.filesDir + '/test.pdf', // Method 2: Load a PDF file from the local application sandbox.
+          // 'resource://rawfile/test.pdf',                         // Method 3: Load a local PDF file (format 1).
+          // $rawfile('test.pdf'),                                 // Method 3: Load a local PDF file (format 2).
+          controller: this.controller
       })
         .domStorageAccess(true)
     }

@@ -112,7 +112,7 @@ prepare(config: AVRecorderConfig): Promise\<void>
 
 **需要权限：** ohos.permission.MICROPHONE
 
-不涉及音频录制时，可以不需要获ohos.permission.MICROPHONE权限。
+不涉及音频录制时，可以不需要获取ohos.permission.MICROPHONE权限。
 
 使用相机视频录制还需要与相机模块配合，相机模块接口的使用详情见[相机管理](../apis-camera-kit/arkts-apis-camera.md)。
 

@@ -10,6 +10,8 @@
 
 Declares the error codes of the ArkWeb NDK APIs.
 
+**File to include**: <web/arkweb_error_code.h>
+
 **Library**: libohweb.so
 
 **System capability**: SystemCapability.Web.Webview.Core

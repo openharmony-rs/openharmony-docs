@@ -4,14 +4,14 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 
 The **formInfo** module provides types and enums related to the widget information and state.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.formInfo (formInfo)](./js-apis-app-form-formInfo.md).
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.formInfo (formInfo)](./js-apis-app-form-formInfo.md).
 
 ## Modules to Import
 
@@ -25,13 +25,13 @@ Defines the widget information.
 
 **System capability**: SystemCapability.Ability.Form
 
-| Name       | Type                | Readable   | Writable   | Description                                                        |
+| Name       | Type                | Read-Only   | Optional   | Description                                                        |
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
-| previewImages<sup>18+</sup> | Array&lt;number&gt; | Yes| No| Resource IDs of the preview images of the widget.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| enableBlurBackground<sup>18+</sup>  | boolean               | Yes   | No    | Whether the widget uses a blur background.|
-| renderingMode<sup>18+</sup>|[RenderingMode](./js-apis-app-form-formInfo-sys.md#renderingmode18)|Yes|No|Widget rendering mode.|
-| resizable<sup>20+</sup> | boolean  | Yes   | No    | Whether the widget can be resized by dragging. The value must be in the **supportDimensions** configuration list of the widget or the widget with the same **groupId**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| groupId<sup>20+</sup> | string     | Yes   | No    | Common ID of a group of widgets. If the values of **groupId** of multiple widgets are the same and the value of **resizable** is **true**, the **supportDimensions** configuration of multiple widgets is shared. For example, if the **groupId** values of widgets A and B are the same and the **resizable** values are **true**, widget A can be adjusted to any size specified by **supportDimensions**.<br>It is recommended that this field be set when multiple widgets with the same functionality need to be resized.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| previewImages<sup>18+</sup> | Array&lt;number&gt; | Yes| Yes| Resource IDs of the preview images of the widget.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| enableBlurBackground<sup>18+</sup>  | boolean               | Yes   | Yes    | Whether the widget uses a blur background.<br>- **true**: A blur background is enabled.<br>- **false**: A blur background is disabled.|
+| renderingMode<sup>18+</sup>|[RenderingMode](./js-apis-app-form-formInfo-sys.md#renderingmode18)|Yes|Yes|Widget rendering mode.|
+| resizable<sup>20+</sup> | boolean  | Yes   | Yes    | Whether the widget can be resized by dragging. The value must be in the **supportDimensions** configuration list of the widget or the widget with the same **groupId**.<br>- **true**: The widget can be resized.<br>- **false**: The widget cannot be resized.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| groupId<sup>20+</sup> | string     | Yes   | Yes    | Common ID of a group of widgets. If the values of **groupId** of multiple widgets are the same and the value of **resizable** is **true**, the **supportDimensions** configuration of multiple widgets is shared. For example, if the **groupId** values of widgets A and B are the same and the **resizable** values are **true**, widget A can be adjusted to any size specified by **supportDimensions**.<br>It is recommended that this field be set when multiple widgets with the same functionality need to be resized.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 
 ##  FormParam
@@ -171,9 +171,9 @@ Defines the request for interactive widget animations.
 
 | Name| Type| Read-Only| Optional| Description|
 |-----|-----|----|----|-----|
-| formId       | string  | Yes | No | Widget ID.|
-| isOverflow   | boolean | Yes | No | Animation request type. The value **true** indicates the interactive widget requests to trigger the animation; the value **false** indicates the interactive widget requests to cancel the animation.|
-| overflowInfo | [formInfo.OverflowInfo](js-apis-app-form-formInfo.md#overflowinfo20) | Yes| Yes| Animation request parameters, including the animation duration (unit: ms) and animation area (the upper left corner of the widget is used as the origin of the animation area, in vp). The default value is empty.|
+| formId       | string  | No | No | Widget ID.|
+| isOverflow   | boolean | No | No | Animation request type. The value **true** indicates the interactive widget requests to trigger the animation; the value **false** indicates the interactive widget requests to cancel the animation.|
+| overflowInfo | [formInfo.OverflowInfo](js-apis-app-form-formInfo.md#overflowinfo20) | No| Yes| Animation request parameters, including the animation duration (unit: ms) and animation area (the upper left corner of the widget is used as the origin of the animation area, in vp). The default value is empty.|
 
 ## ChangeSceneAnimationStateRequest<sup>20+</sup>
 
@@ -185,8 +185,8 @@ Defines the request for switching the status of an interactive widget. An intera
 
 | Name| Type| Read-Only| Optional| Description|
 |-----|-----|-----|-----|----------------------------------------|
-| formId | string | Yes| No| Widget ID.                                 |
-| state  | number | Yes| No| Status switching request type. The value **1** indicates that the switching request is activated, and the value **0** indicates that the switching request is deactivated.|
+| formId | string | No| No| Widget ID.                                 |
+| state  | number | No| No| Status switching request type. The value **1** indicates that the switching request is activated, and the value **0** indicates that the switching request is deactivated.|
 
 ## FunInteractionParams<sup>20+</sup>
 
@@ -198,10 +198,10 @@ Defines the parameters for a fun-based widget.
 
 | Name| Type| Read-Only| Optional| Description                                                                                                                                  |
 |-----|-----|----|-----|--------------------------------------------------------------------------------------------------------------------------------------|
-| abilityName | string | Yes | Yes  | ExtensionAbility name of the interaction scenario. This parameter is left empty by default.|
-| targetBundleName  | string | Yes | No  | Bundle name.       |
-| subBundleName  | string | Yes | No  | Sub-bundle name.|
-| keepStateDuration  | number | Yes | Yes  | Duration of the activated state when there is no interaction. The default value is **10000**, in ms. The value should be an integer within the range [0, 10000]. If the value exceeds this range, it defaults to 10000 milliseconds.|
+| abilityName | string | No | Yes  | ExtensionAbility name of the interaction scenario. This parameter is left empty by default.|
+| targetBundleName  | string | No | No  | Bundle name.       |
+| subBundleName  | string | No | No  | Sub-bundle name.|
+| keepStateDuration  | number | No | Yes  | Duration of the activated state when there is no interaction. The default value is **10000**, in ms. The value should be an integer within the range [0, 10000]. If the value exceeds this range, it defaults to 10000 milliseconds.|
 
 ## SceneAnimationParams<sup>20+</sup>
 
@@ -213,8 +213,8 @@ Defines the parameters for a scene-based widget.
 
 | Name| Type| Read-Only| Optional| Description                                                                                                                                             |
 |-----|-----|------|----|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| abilityName | string | Yes| No | ExtensionAbility name, for example, LiveFormExtensionAbility name of the widget provider.                                    |
-| disabledDesktopBehaviors | string | Yes| Yes | The options are **SWIPE_DESKTOP**, **PULL_DOWN_SEARCH**, **LONG_CLICK**, and **DRAG**. You can select one or more options. Use a vertical bar (\|) in between| to concatenate two different operations, for example, SWIPE_DESKTOP\|PULL_DOWN_SEARCH| By default, no operation is disabled.|
+| abilityName | string | No| No | ExtensionAbility name, for example, LiveFormExtensionAbility name of the widget provider.                                    |
+| disabledDesktopBehaviors | string | No| Yes | The options are **SWIPE_DESKTOP**, **PULL_DOWN_SEARCH**, **LONG_CLICK**, and **DRAG**. You can select one or more options. Use a vertical bar (\|) in between to concatenate two different operations, for example, SWIPE_DESKTOP\|PULL_DOWN_SEARCH. By default, no operation is disabled.|
 
 ## GetFormRectInfoCallback<sup>20+</sup>
 
@@ -257,7 +257,7 @@ import { formInfo } from '@kit.FormKit';
 let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
   (formId: string): Promise<formInfo.Rect> => {
     return new Promise<formInfo.Rect>((resolve: Function) => {
-      console.log(`formId is ${formId}`);
+      console.info(`formId is ${formId}`);
       let formRect: formInfo.Rect = {left: 0, top: 0, width: 0, height: 0};
       resolve(formRect);
     })

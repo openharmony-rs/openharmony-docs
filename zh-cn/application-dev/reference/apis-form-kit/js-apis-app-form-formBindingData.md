@@ -86,11 +86,13 @@ createFormBindingData(obj?: Object | string): FormBindingData
 import { formBindingData } from '@kit.FormKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
+
 @Entry
 @Component
 struct Index {
   content = this.getUIContext().getHostContext() as common.UIAbilityContext;
   pathDir: string = this.content.filesDir;
+
   createFormBindingData() {
     try {
       let filePath = this.pathDir + "/form.png";
@@ -108,9 +110,10 @@ struct Index {
       console.error(`catch error, error: ${JSON.stringify(error)}`);
     }
   }
+
   build() {
     Button('createFormBindingData')
-      .onClick((event: ClickEvent)=>{
+      .onClick((event: ClickEvent) => {
         this.createFormBindingData();
       })
   }

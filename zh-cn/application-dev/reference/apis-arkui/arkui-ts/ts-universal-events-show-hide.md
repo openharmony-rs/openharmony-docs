@@ -1,7 +1,7 @@
 # 挂载卸载事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -16,13 +16,13 @@
 
 onAttach(callback: Callback\<void>): T
 
-组件挂载到组件树时触发此回调。
+组件挂载到组件树时触发此回调。由于以下说明中的限制，建议使用[onAppear](#onappear)替代此接口。
 
 > **说明：**
 >
-> 回调在组件布局渲染前调用。
+> - 回调在组件布局渲染前调用。
 >
-> 不允许在回调中对组件树进行变更，例如启动动画或使用if-else变更组件树结构。
+> - 不允许在回调中对组件树进行变更，例如启动动画或使用if-else变更组件树结构。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -45,7 +45,7 @@ onAttach(callback: Callback\<void>): T
 
 onDetach(callback: Callback\<void>): T
 
-组件从组件树卸载时触发此回调。
+组件从组件树卸载时触发此回调。建议使用[onDisAppear](#ondisappear)替代此接口。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

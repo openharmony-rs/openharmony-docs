@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct MediaKeySession MediaKeySession
+```
+
 ## Overview
 
 The MediaKeySession struct describes the media key session.

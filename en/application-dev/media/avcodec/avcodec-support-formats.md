@@ -12,88 +12,106 @@ The capabilities for encoding and decoding audio and video, as well as for multi
 ## Media Codec
 
 ### Video Decoding
-
 Currently, the following decoding capabilities are supported:
-
-| Video Hardware Decoding Type      | Video Software Decoding Type  |
+| Video Decoding Type      | MIME Type for Video Decoding Format  |
 | --------------------- | ---------------- |
-| AVC (H.264), HEVC (H.265)<!--RP14--><!--RP14End--> | MPEG2, MPEG4, H.263, AVC (H.264)<!--RP12--><!--RP12End--> |
+| MPEG2 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG2](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| MPEG4 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG4](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| H.263 | [OH_AVCODEC_MIMETYPE_VIDEO_H263](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+<!--RP14--><!--RP14End-->
 
-When you attempt to create a decoder using the MIME type, the system preferentially creates a hardware decoder instance. If the system platform does not support the hardware decoder or the hardware decoder resources are insufficient, the system creates a software decoder instance.
+When you attempt to create a decoder using the MIME type, if the system supports hardware decoding, the system preferentially creates a hardware decoder instance. If the system does not support hardware decoding or the hardware decoder resources are insufficient, the system creates a software decoder instance.
 
-The system supports the following software decoder formats:
-- MPEG2 (OH_AVCODEC_MIMETYPE_VIDEO_MPEG2)
-- MPEG4 (OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2)
-- H.263 (OH_AVCODEC_MIMETYPE_VIDEO_H263)
-- H.264 (OH_AVCODEC_MIMETYPE_VIDEO_AVC)
-<!--RP13--><!--RP13End-->
-
-The hardware decoding capability provided by the system is closely related to the platform hardware capability. You can obtain the hardware decoding capability and capability specifications of the system by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
-
+The decoding capability provided by the system is closely related to the device. You can obtain the supported capabilities and specifications by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
 For example, you can query the <!--RP16-->hardware decoding capabilities of H.264 and H.265<!--RP16End--> by using <!--RP15-->**OH_AVCODEC_MIMETYPE_VIDEO_AVC** and **OH_AVCODEC_MIMETYPE_VIDEO_HEVC**<!--RP15End-->.
 
 For details about the development guide, see [Video Decoding](video-decoding.md).
 
 ### Video Encoding
-
 Currently, the following encoding capabilities are supported:
+| Video Encoding Type      | MIME Type for Video Encoding Format   |
+| --------------------- | ---------------- |
+| HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
 
-| Video Encoding Type                |
-| ---------------------------- |
-| HEVC (H.265), AVC (H.264)|
+If the system does not support the required encoding capability, the encoder instance fails to be created.
 
-Only hardware encoding is supported. When an encoder is created based on the MIME type, H.264 (OH_AVCODEC_MIMETYPE_VIDEO_AVC) and H.265 (OH_AVCODEC_MIMETYPE_VIDEO_HEVC) are supported.
-
-For details about the range of each encoding capability, see [Obtaining Supported Codecs](obtain-supported-codecs.md).
+Supported MIME types for encoder creation include H.264 (OH_AVCODEC_MIMETYPE_VIDEO_AVC) and H.265 (OH_AVCODEC_MIMETYPE_VIDEO_HEVC).
+You can obtain the supported capabilities and specifications by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
 
 For details about the development guide, see [Video Encoding](video-encoding.md).
 
-
 ### Audio Decoding
-
 Currently, the following decoding capabilities are supported:
+| Audio Decoding Type        | MIME Type for Audio Decoding Format    |
+| --------------------- | ---------------- |
+| AAC | [OH_AVCODEC_MIMETYPE_AUDIO_AAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| MPEG(MP3) | [OH_AVCODEC_MIMETYPE_AUDIO_MPEG](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| Flac | [OH_AVCODEC_MIMETYPE_AUDIO_FLAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| Vorbis | [OH_AVCODEC_MIMETYPE_AUDIO_VORBIS](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| AMR (AMR-NB and AMR-WB)| [OH_AVCODEC_MIMETYPE_AUDIO_AMR_NB](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables) and [OH_AVCODEC_MIMETYPE_AUDIO_AMR_WB](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| G711mu | [OH_AVCODEC_MIMETYPE_AUDIO_G711MU](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| APE | [OH_AVCODEC_MIMETYPE_AUDIO_APE](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| G711a<sup>20+</sup> | [OH_AVCODEC_MIMETYPE_AUDIO_G711A](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| ALAC<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_AUDIO_ALAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| AC3<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_AUDIO_AC3](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| WMA<sup>22+</sup>(V1, V2, PRO)| [OH_AVCODEC_MIMETYPE_AUDIO_WMAV1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables), [OH_AVCODEC_MIMETYPE_AUDIO_WMAV2](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables), and [OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| GSM<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_AUDIO_GSM](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| GSM_MS<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_AUDIO_GSM_MS](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+<!--RP1--> <!--RP1End-->
+<!--RP2--> <!--RP2End-->
 
-AAC, MPEG (MP3), FLAC, Vorbis, AMR (AMR-NB and AMR-WB), G711mu, APE<!--RP1--><!--RP1End-->
+If the system does not support the required decoding capability, the decoder instance fails to be created.
 
-G711a (supported since API version 20)
-
-ALAC, AC3, WMA (V1, V2, and PRO), GSM, and GSM_MS (supported since API version 22)
+The decoding capability provided by the system is closely related to the device. You can obtain the supported capabilities and specifications by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
 
 For details about the development guide, see [Audio Decoding](audio-decoding.md).
 
-
 ### Audio Encoding
-
 Currently, the following encoding capabilities are supported:
+| Audio Encoding Type        | MIME Type for Audio Encoding Format    |
+| --------------------- | ---------------- |
+| AAC | [OH_AVCODEC_MIMETYPE_AUDIO_AAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| Flac | [OH_AVCODEC_MIMETYPE_AUDIO_FLAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| MPEG(MP3) | [OH_AVCODEC_MIMETYPE_AUDIO_MPEG](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| G711mu | [OH_AVCODEC_MIMETYPE_AUDIO_G711MU](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+<!--RP3--> <!--RP3End-->
+<!--RP13--><!--RP13End-->
 
-<!--RP3-->AAC, FLAC, MPEG (MP3), G711mu<!--RP3End-->
+If the system does not support the required encoding capability, the encoder instance fails to be created.
+
+The encoding capability provided by the system is closely related to the device. You can obtain the supported capabilities and specifications by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
 
 For details about the development guide, see [Audio Encoding](audio-encoding.md).
-
 
 ## Media Data Multiplexing and Demultiplexing
 
 ### Media Data Demultiplexing
-
 The following formats are supported:
-
 | Media Format | Container Format                     | Track Format                     |
 | -------- | :----------------------------| :----------------------------|
-| Audio/Video    | mp4                        |<!--RP4-->Video track: AVC (H.264), MPEG4<br>Audio track: AAC, MPEG (MP3)<br>Subtitle track: WEBVTT<br>Auxiliary track: AUXL (AAC, MP3)<br>Timed metadata track<!--RP4End-->|
+| Audio/Video    | mp4                        |<!--RP4-->Video track: AVC (H.264), MPEG4<br>Audio track: AAC, MPEG (MP3), ALAC<sup>22+</sup><br>Subtitle track: WEBVTT<br>Auxiliary track: AUXL (such as audio raw information and video depth information)<br>Timed metadata track: time-related description information, such as frame-level maintenance and debugging information and sensor information.<!--RP4End-->|
 | Audio/Video    | fmp4                       |<!--RP5-->Video track: AVC (H.264)<br>Audio track: AAC, MPEG (MP3)<!--RP5End-->|
-| Audio/Video    | mkv                        |<!--RP6-->Video track: AVC (H.264)<br>Audio track: AAC, MPEG (MP3), OPUS<!--RP6End-->|
+| Audio/Video    | mkv                        |<!--RP6-->Video track: AVC (H.264), MSVIDEO1<sup>22+</sup><br>Audio track: AAC, MPEG(MP3), OPUS, ADPCM_YAMAHA<sup>22+</sup>, ADPCM_G722<sup>22+</sup>, ALAC<sup>22+</sup><!--RP6End-->|
 | Audio/Video    | mpeg-ts                    |<!--RP7-->Video track: AVC (H.264), MPEG2, MPEG4<br>Audio track: AAC, MPEG (MP3)<!--RP7End-->|
 | Audio/Video    | flv                        |<!--RP8-->Video track: AVC (H.264)<br>Audio track: AAC<!--RP8End-->|
 | Audio/Video    | mpeg-ps                    |Video track: AVC (H.264), MPEG2<br>Audio track: MPEG (MP2, MP3)|
-| Audio/Video    | avi                        |Video track: H.263, AVC (H.264), MPEG2, MPEG4<br>Audio track: AAC, MPEG (MP2, MP3), PCM|
-| Audio      | m4a                        |<!--RP9-->Audio track: AAC<!--RP9End-->|
+| Audio/Video    | avi                        |Video track: H.263, AVC(H.264), MPEG2, MPEG4, MJPEG<sup>22+</sup>, MSVIDEO1<sup>22+</sup><br>Audio track: AAC, MPEG (MP2, MP3), PCM, GSM_MS<sup>22+</sup>, ADPCM_YAMAHA<sup>22+</sup>, ADPCM_G722<sup>22+</sup>|
+| Audio/Video    | 3gp<sup>22+</sup>                        |Video track: H.263, AVC (H.264), MPEG4<br>Audio track: AAC, AMR (amrnb and amrwb)|
+| Audio/Video    | 3g2<sup>22+</sup>                        |Video track: H.263, AVC (H.264), MPEG4<br>Audio track: AAC, AMR (amrnb and amrwb)|
+| Audio/Video    | m4v<sup>22+</sup>                        |<!--RP12-->Video track: AVC (H.264), MPEG4<!--RP12End--><br>Audio track: AAC, ALAC, AC3|
+| Audio/Video    | wmv<sup>22+</sup>                        |Video track: AVC (H.264), WMV3<br>Audio track: WMAV1, WMAV2, WMAPRO|
+| Audio      | m4a                        |<!--RP9-->Audio track: AAC, ALAC<sup>22+</sup><!--RP9End-->|
 | Audio      | aac                        |Audio track: AAC|
 | Audio      | mp3                        |Audio track: MPEG (MP3)|
 | Audio      | ogg                        |Audio track: Vorbis|
 | Audio      | flac                       |Audio track: FLAC|
-| Audio      | wav                        |Audio track: PCM, G711mu, G711a|
+| Audio      | wav                        |Audio track: PCM, G711mu, G711a, GSM_MS<sup>22+</sup>, ADPCM_YAMAHA<sup>22+</sup>, ADPCM_G722<sup>22+</sup>, ADPCM_G726<sup>22+</sup>|
 | Audio      | amr                        |Audio track: AMR (amrnb and amrwb)|
 | Audio      | ape                        |Audio track: APE|
+| Audio      | wma<sup>22+</sup>                        |Audio track: AC3, WMAV1, WMAV2, Vorbis, Flac, AMR (amrnb and amrwb), AAC, MPEG (MP2 and MP3), GSM_MS, G711mu, G711a, PCM, ADPCM_G722, ADPCM_G726, ADPCM_IMA_WAV, ADPCM_MS, ADPCM_YAMAHA|
 | External subtitle  | srt                        |Subtitle track: SRT|
 | External subtitle  | webvtt                     |Subtitle track: WEBVTT|
 
@@ -101,11 +119,8 @@ The DRM demultiplexing capability supports the following formats: <!--RP10-->mp4
 
 For details about the development guide, see [Media Data Demultiplexing](audio-video-demuxer.md).
 
-
 ### Media Data Multiplexing
-
 Currently, the following muxer capabilities are supported:
-
 | Container Format| Video Codec Type       | Audio Codec Type  | Cover Type      |
 | -------- | --------------------- | ---------------- | -------------- |
 | mp4      | AVC (H.264) <!--RP11--><!--RP11End-->    | AAC, MPEG (MP3)| jpeg, png, bmp|

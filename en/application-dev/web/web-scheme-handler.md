@@ -77,32 +77,34 @@ The creation of a **Web** component triggers the initialization of the web kerne
 
 In the NDK, you can call **testNapi.registerCustomSchemes** on the ETS side to register a custom scheme, and then call [initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) to initialize the web kernel. The sample code is as follows:
 
-  ```ts
-    export default class EntryAbility extends UIAbility {
-        onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-            // Register the scheme configuration.
-            testNapi.registerCustomSchemes();
-            // Initialize the Web Engine, which will initialize the Browser process and create a BrowserContext. 
-            webview.WebviewController.initializeWebEngine();
-            // Create and set ArkWeb_SchemeHandler.
-            testNapi.setSchemeHandler();
-        }
-        ...
-    };
-  ```
+<!-- @[register_init_scheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // Register the configuration of the third-party protocol.
+    testNapi.registerCustomSchemes();
+    // Initialize the Web Engine, which will initialize the Browser process and create a BrowserContext. 
+    webview.WebviewController.initializeWebEngine();
+    // Set SchemeHandler.
+    testNapi.setSchemeHandler();
+  }
+```
 
 C++ implementation of **testNapi.registerCustomSchemes**:
 
-  ```c++
-    // Register the custom scheme with the Web component and specify that this scheme should follow the standard scheme rules, allowing cross-origin requests from this scheme.
-    OH_ArkWeb_RegisterCustomSchemes("custom", ARKWEB_SCHEME_OPTION_STANDARD | ARKWEB_SCHEME_OPTION_CORS_ENABLED);
-    // Register the custom-local scheme with the Web component and specify that this scheme should follow the same rules as the file scheme.
-    OH_ArkWeb_RegisterCustomSchemes("custom-local", ARKWEB_SCHEME_OPTION_LOCAL);
-    // Register custom-csp-bypassing with the Web component and specify that this scheme should follow the standard scheme rules, allowing it to bypass CSP checks.
-    OH_ArkWeb_RegisterCustomSchemes("custom-csp-bypassing", ARKWEB_SCHEME_OPTION_CSP_BYPASSING | ARKWEB_SCHEME_OPTION_STANDARD);
-    // Register custom-isolated with the Web component and specify that requests for this scheme must be initiated from web pages loaded with the same scheme. 
-    OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED);
-  ```
+<!-- @[register_set_custom_schemes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+// Register the custom scheme with the Web component and specify that this scheme should follow the standard scheme rules, allowing cross-origin requests from this scheme.
+OH_ArkWeb_RegisterCustomSchemes("custom", ARKWEB_SCHEME_OPTION_STANDARD | ARKWEB_SCHEME_OPTION_CORS_ENABLED);
+// Register the custom-local scheme with the Web component and specify that this scheme should follow the same rules as the file scheme.
+OH_ArkWeb_RegisterCustomSchemes("custom-local", ARKWEB_SCHEME_OPTION_LOCAL);
+// Register custom-csp-bypassing with the Web component and specify that this scheme should follow the standard scheme rules, allowing it to bypass CSP checks.
+OH_ArkWeb_RegisterCustomSchemes("custom-csp-bypassing", ARKWEB_SCHEME_OPTION_CSP_BYPASSING | ARKWEB_SCHEME_OPTION_STANDARD);
+// Register custom-isolated with the Web component and specify that requests for this scheme must be initiated from web pages loaded with the same scheme. 
+OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED);
+```
 
 In ArkTS, you can register a custom scheme using **customizeSchemes**. The sample code is as follows:
 

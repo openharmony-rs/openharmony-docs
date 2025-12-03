@@ -314,7 +314,7 @@ uri
 
 ### Media Library URI Introduction and Obtaining Method
 
-The URI uniquely identifies a media library asset. Each URI corresponds to a media asset. mediatool uses the URI to determine the media asset object to be operated.
+The URI uniquely identifies a media library asset. mediatool uses the URI to determine the media asset object to be operated.
 
 To obtain the URI, perform the following steps:
 
@@ -346,7 +346,7 @@ Run the following command:
 hdc shell ls -l DEST
 ```
 
-**Use Example**
+**Example**
 
 ```shell
 $ hdc shell ls -l /mnt/data/100/media_fuse/Photo # Return the album list.
@@ -372,7 +372,7 @@ Run the following command:
 hdc file recv DEST SOURCE
 ```
 
-**Use Example**
+**Example**
 
 ```shell
 $ hdc file recv /mnt/data/100/media_fuse/Photo/Camera/File A # Export file A.
@@ -393,7 +393,7 @@ You can import media files (such as images and videos) and directories, but cann
 hdc file send SOURCE DEST
 ```
 
-**Use Example**
+**Example**
 
 ```shell
 $ hdc file send D:\dest\Camera/mnt/data/100/media_fuse/Photo/ # Import all files in D:\dest\Camera to /mnt/data/100/media_fuse/Photo/camera/.
@@ -414,7 +414,7 @@ You can delete specified files in an album, but cannot delete directories.
 hdc shell rm DEST
 ```
 
-**Use Example**
+**Example**
 
 ```shell
 $ hdc shell rm /mnt/data/100/media_fuse/Photo/Camera/ # Return failure.

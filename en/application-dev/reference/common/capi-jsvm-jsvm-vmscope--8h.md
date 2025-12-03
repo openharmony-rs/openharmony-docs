@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct JSVM_VMScope__* JSVM_VMScope
+```
+
 ## Overview
 
 Defines the JavaScript VM scope.

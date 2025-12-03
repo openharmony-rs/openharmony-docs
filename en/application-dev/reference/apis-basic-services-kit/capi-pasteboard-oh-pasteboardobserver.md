@@ -6,6 +6,10 @@
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct OH_PasteboardObserver OH_PasteboardObserver
+```
+
 ## Overview
 
 Defines the pasteboard observer.

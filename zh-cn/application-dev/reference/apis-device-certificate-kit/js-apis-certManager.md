@@ -85,7 +85,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | state          | boolean     | 否  | 否  | 表示证书的状态，true为启用状态、false为禁用状态。 |
 | issuerName          | string         | 否  | 否  | 表示证书的颁发者名称，最大长度为256字节。 |
 | subjectName          | string   | 否  | 否  | 表示证书的使用者名称，最大长度为1024字节。 |
-| serial          | string     | 否  | 否  | 表示证书的序列号，最大长度为64字节。 |
+| serial          | string     | 否  | 否  | 表示证书的序列号，最大长度为64字节。格式为16进制字符串，例如：62C2CB4DE8405E96。 |
 | notBefore          | string         | 否  | 否  | 表示证书有效期起始日期，最大长度为32字节。 |
 | notAfter          | string   | 否  | 否  | 表示证书有效期截止日期，最大长度为32字节。 |
 | fingerprintSha256     | string     | 否  | 否  | 表示证书的指纹值，最大长度为128字节。 |

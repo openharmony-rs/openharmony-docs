@@ -7,6 +7,10 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct PurgMem OH_PurgeableMemory
+```
+
 ## Overview
 
 Defines a purgeable memory struct.

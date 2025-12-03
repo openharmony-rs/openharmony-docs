@@ -151,7 +151,7 @@ Button('click for Menu')
   <!-- @[create_right_click_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateMenu.ets) -->
   
   ``` TypeScript
-  Button('click for Menu')
+  Button('Right-click for Menu')
     .bindContextMenu(this.MyMenu, ResponseType.RightClick)
   ```
 
@@ -177,7 +177,7 @@ Button('click for Menu')
 ``` TypeScript
 Button('click for Menu')
   .id('click for Menu')
-  .bindContextMenu(this.MyMenu, ResponseType.RightClick, { hapticFeedbackMode: HapticFeedbackMode.ENABLED})
+  .bindMenu(this.MyMenu, { hapticFeedbackMode: HapticFeedbackMode.ENABLED})
 ```
 
 ## 菜单支持避让中轴

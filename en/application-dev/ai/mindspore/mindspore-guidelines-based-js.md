@@ -38,10 +38,6 @@ APIs involved in MindSpore Lite model inference are categorized into context API
 1. Select an image classification model.
 2. Use the MindSpore Lite inference model on the device to classify the selected images.
 
-## Environment Setup
-
-Install DevEco Studio 4.1 or later, and update the SDK to API version 11 or later.
-
 ## How to Develop
 
 The following uses inference on an image in the album as an example to describe how to use MindSpore Lite to implement image classification.
@@ -368,5 +364,10 @@ Touch the **photo** button on the device screen, select an image, and touch **OK
 
 ![step3](figures/step3.png)         ![step4](figures/step4.png) 
 
+## Related Samples
+
+The following sample is provided to help you better understand how to develop image classification applications using MindSpore Lite:
+
+- [MindSpore Lite Application Development Based on ArkTS APIs (ArkTS) (API 11)] (https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo)
 
 <!--RP1--><!--RP1End-->

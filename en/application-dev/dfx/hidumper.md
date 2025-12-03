@@ -351,7 +351,7 @@ Size        Rss         Pss         Clean       Dirty       Clean       Dirty   
 
 The **hidumper --mem-smaps \[pid] \[-v]** command should be used for [applications of the debug version](performance-analysis-kit-terminology.md#applications-of-the-debug-version).
 
-To check whether the application specified by the command is a debug application, run the **hdc shell "bm dump -n [application bundle name] | grep appProvisionType"** command. The expected result is **"appProvisionType": "debug"**.
+To check whether the application specified by the command is a debug-type application, run the **hdc shell "bm dump -n [application bundle name] | grep appProvisionType"** command. The expected result is **"appProvisionType": "debug"**.
 
 For example, run the following command to check the bundle name **com.example.myapplication**:
 

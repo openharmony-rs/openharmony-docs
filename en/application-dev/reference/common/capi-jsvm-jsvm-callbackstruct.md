@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} JSVM_CallbackStruct
+```
+
 ## Overview
 
 Defines the pointer to the data of the native callbacks provided by the user. These functions are exposed to JavaScript via JSVM-API.

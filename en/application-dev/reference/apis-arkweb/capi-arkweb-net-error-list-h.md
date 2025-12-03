@@ -10,6 +10,8 @@
 
 The **arkweb_error_code.h** file declares the error codes of the ArkWeb network protocol stack.
 
+**File to include**: <web/arkweb_net_error_list.h>
+
 **Library**: libohweb.so
 
 **System capability**: SystemCapability.Web.Webview.Core

@@ -21,7 +21,7 @@
 
 1. 在entry/src/main/ets/创建目录notificationsubscriberextability。
 
-2. 在entry/src/main/ets/notificationsubscriberextability创建NotificationSubscriberExtAbility.ets，其内容如下。
+2. 在entry/src/main/ets/notificationsubscriberextability目录下创建NotificationSubscriberExtAbility.ets，其内容如下。
 ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';

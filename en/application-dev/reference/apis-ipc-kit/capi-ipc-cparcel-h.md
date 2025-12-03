@@ -55,18 +55,18 @@ Provides C APIs for IPC serialization and deserialization.
 | [int OH_IPCParcel_WriteDouble(OHIPCParcel *parcel, double value)](#oh_ipcparcel_writedouble) | - | Writes a double value to an **OHIPCParcel** object.|
 | [int OH_IPCParcel_ReadDouble(const OHIPCParcel *parcel, double *value)](#oh_ipcparcel_readdouble) | - | Reads a double value from an **OHIPCParcel** object.|
 | [int OH_IPCParcel_WriteString(OHIPCParcel *parcel, const char *str)](#oh_ipcparcel_writestring) | - | Writes a string including a string terminator to an **OHIPCParcel** object.|
-| [const char OH_IPCParcel_ReadString(const OHIPCParcel *parcel)](#oh_ipcparcel_readstring) | - | Reads a string from an **OHIPCParcel** object. You can obtain the length of the string from **strlen**.|
-| [int OH_IPCParcel_Writebuffer(OHIPCParcel *parcel, const uint8_t *buffer, size_t len)](#oh_ipcparcel_writebuffer) | - | Writes data of the specified length from the memory to an **OHIPCParcel** object.|
-| [const uint8_t *OH_IPCParcel_ReadBuffer(const OHIPCParcel *parcel, int32_t len)](#oh_ipcparcel_readbuffer) | - | Reads memory information of the specified length from an **OHIPCParcel** object.|
-| [int OH_IPCParcel_WriteRemoteStub(OHIPCParcel *parcel, const OHRemoteObject *stub)](#oh_ipcparcel_writeremotestub) | - | Writes an **OHRemoteObject** object to an **OHIPCParcel** object.|
-| [OHIPCRemoteStub* OH_IPCParcel_ReadRemoteStub(OHIPCParcel *parcel)](#oh_ipcparcel_readremotestub) | - | Reads the **OHRemoteObject** object from an **OHIPCParcel** object.|
-| [int OH_IPCParcel_WriteRemoteProxy(OHIPCParcel *parcel, const OHRemoteObject *proxy)](#oh_ipcparcel_writeremoteproxy) | - | Writes an **OHRemoteObject** object to an **OHIPCParcel** object.|
-| [OHIPCRemoteProxy* OH_IPCParcel_ReadRemoteProxy(OHIPCParcel *parcel)](#oh_ipcparcel_readremoteproxy) | - | Reads the **OHRemoteObject** object from an **OHIPCParcel** object.|
+| [const char* OH_IPCParcel_ReadString(const OHIPCParcel *parcel)](#oh_ipcparcel_readstring) | - | Reads a string from an **OHIPCParcel** object. You can obtain the length of the string from **strlen**.|
+| [int OH_IPCParcel_Writebuffer(OHIPCParcel *parcel, const uint8_t *buffer, int32_t len)](#oh_ipcparcel_writebuffer) | - | Writes data of the specified length from the memory to an **OHIPCParcel** object.|
+| [const uint8_t* OH_IPCParcel_ReadBuffer(const OHIPCParcel *parcel, int32_t len)](#oh_ipcparcel_readbuffer) | - | Reads memory information of the specified length from an **OHIPCParcel** object.|
+| [int OH_IPCParcel_WriteRemoteStub(OHIPCParcel *parcel, const OHIPCRemoteStub *stub)](#oh_ipcparcel_writeremotestub) | - | Writes an **OHIPCRemoteStub** object to an **OHIPCParcel** object.|
+| [OHIPCRemoteStub* OH_IPCParcel_ReadRemoteStub(const OHIPCParcel *parcel)](#oh_ipcparcel_readremotestub) | - | Reads the **OHIPCRemoteStub** object from an **OHIPCParcel** object.|
+| [int OH_IPCParcel_WriteRemoteProxy(OHIPCParcel *parcel, const OHIPCRemoteProxy *proxy)](#oh_ipcparcel_writeremoteproxy) | - | Writes an **OHIPCRemoteProxy** object to an **OHIPCParcel** object.|
+| [OHIPCRemoteProxy* OH_IPCParcel_ReadRemoteProxy(const OHIPCParcel *parcel)](#oh_ipcparcel_readremoteproxy) | - | Reads the **OHIPCRemoteProxy** object from an **OHIPCParcel** object.|
 | [int OH_IPCParcel_WriteFileDescriptor(OHIPCParcel *parcel, int32_t fd)](#oh_ipcparcel_writefiledescriptor) | - | Writes a file descriptor to an **OHIPCParcel** object.|
-| [int OH_IPCParcel_ReadFileDescriptor(OHIPCParcel *parcel int32_t *fd)](#oh_ipcparcel_readfiledescriptor) | - | Reads a file descriptor from an **OHIPCParcel** object.|
+| [int OH_IPCParcel_ReadFileDescriptor(const OHIPCParcel *parcel, int32_t *fd)](#oh_ipcparcel_readfiledescriptor) | - | Reads a file descriptor from an **OHIPCParcel** object.|
 | [int OH_IPCParcel_Append(OHIPCParcel *parcel, const OHIPCParcel *data)](#oh_ipcparcel_append) | - | Appends data to an **OHIPCParcel** object.|
 | [int OH_IPCParcel_WriteInterfaceToken(OHIPCParcel *parcel, const char *token)](#oh_ipcparcel_writeinterfacetoken) | - | Writes an interface token to an **OHIPCParcel** object for interface identity verification.|
-| [int OH_IPCParcel_ReadInterfaceToken(OHIPCParcel *parcel, char **token, int32_t *len)](#oh_ipcparcel_readinterfacetoken) | - | Reads an interface token from an **OHIPCParcel** object for interface identity verification.|
+| [int OH_IPCParcel_ReadInterfaceToken(const OHIPCParcel *parcel, char **token, int32_t *len, OH_IPC_MemAllocator allocator)](#oh_ipcparcel_readinterfacetoken) | - | Reads an interface token from an **OHIPCParcel** object for interface identity verification.|
 
 ## Function Description
 
@@ -143,6 +143,7 @@ int OH_IPCParcel_GetDataSize(const OHIPCParcel *parcel)
 ```
 
 **Description**
+
 Obtains the size of the data contained in an **OHIPCParcel** object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
@@ -216,7 +217,7 @@ Obtains the number of bytes that can be read from an **OHIPCParcel** object.
 ### OH_IPCParcel_GetReadPosition()
 
 ```C
-int OH_IPCParcel_GetReadPosition(const OH_IPCParcel *parcel)
+int OH_IPCParcel_GetReadPosition(const OHIPCParcel *parcel)
 ```
 
 **Description**
@@ -291,7 +292,7 @@ Resets the position to read data in an **OHIPCParcel** object.
 ### OH_IPCParcel_RewindWritePosition()
 
 ```C
-int OH_IPCParcel_RewindWritePosition(OHIPCParcel *parcel, uint32_t newWritePos);
+int OH_IPCParcel_RewindWritePosition(OHIPCParcel *parcel, uint32_t newWritePos)
 ```
 
 **Description**
@@ -345,7 +346,7 @@ Writes an int8_t value to an **OHIPCParcel** object.
 ### OH_IPCParcel_ReadInt8()
 
 ```C
-int OH_IPCParcel_ReadInt8(OHIPCParcel *parcel, int8_t *value)
+int OH_IPCParcel_ReadInt8(const OHIPCParcel *parcel, int8_t *value)
 ```
 
 **Description**
@@ -376,6 +377,7 @@ int OH_IPCParcel_WriteInt16(OHIPCParcel *parcel, int16_t value)
 ```
 
 **Description**
+
 Writes an int16_t value to an **OHIPCParcel** object.
 
 **System capability**: SystemCapability.Communication.IPC
@@ -429,6 +431,7 @@ int OH_IPCParcel_WriteInt32(OHIPCParcel *parcel, int32_t value)
 ```
 
 **Description**
+
 Writes an int32_t value to an **OHIPCParcel** object.
 
 **System capability**: SystemCapability.Communication.IPC
@@ -482,6 +485,7 @@ int OH_IPCParcel_WriteInt64(OHIPCParcel *parcel, int64_t value)
 ```
 
 **Description**
+
 Writes an int64_t value to an **OHIPCParcel** object.
 
 **System capability**: SystemCapability.Communication.IPC
@@ -504,7 +508,7 @@ Writes an int64_t value to an **OHIPCParcel** object.
 ### OH_IPCParcel_ReadInt64()
 
 ```C
-int OH_IPCParcel_ReadInt16(const OHIPCParcel *parcel, int64_t *value)
+int OH_IPCParcel_ReadInt64(const OHIPCParcel *parcel, int64_t *value)
 ```
 
 **Description**
@@ -535,6 +539,7 @@ int OH_IPCParcel_WriteFloat(OHIPCParcel *parcel, float value)
 ```
 
 **Description**
+
 Writes a float value to an **OHIPCParcel** object.
 
 **System capability**: SystemCapability.Communication.IPC
@@ -588,6 +593,7 @@ int OH_IPCParcel_WriteDouble(OHIPCParcel *parcel, double value)
 ```
 
 **Description**
+
 Writes a double value to an **OHIPCParcel** object.
 
 **System capability**: SystemCapability.Communication.IPC
@@ -641,6 +647,7 @@ int OH_IPCParcel_WriteString(OHIPCParcel *parcel, const char *str)
 ```
 
 **Description**
+
 Writes a string including a string terminator to an **OHIPCParcel** object.
 
 **System capability**: SystemCapability.Communication.IPC
@@ -663,7 +670,7 @@ Writes a string including a string terminator to an **OHIPCParcel** object.
 ### OH_IPCParcel_ReadString()
 
 ```C
-const OH_IPCParcel_ReadString(const OHIPCParcel *parcel)
+const char* OH_IPCParcel_ReadString(const OHIPCParcel *parcel)
 ```
 
 **Description**
@@ -684,7 +691,7 @@ Reads a string from an **OHIPCParcel** object. You can obtain the length of the 
 
 | Type| Description|
 | ---- | ---- |
-| const | Returns the address of the string read if the operation is successful; returns NULL if the operation fails or invalid parameters are found.|
+| const char* | Returns the address of the string read if the operation is successful; returns NULL if the operation fails or invalid parameters are found.|
 
 ### OH_IPCParcel_WriteBuffer()
 
@@ -693,6 +700,7 @@ int OH_IPCParcel_WriteBuffer(OHIPCParcel *parcel, const uint8_t *buffer, int32_t
 ```
 
 **Description**
+
 Writes data of the specified length from the memory to an **OHIPCParcel** object.
 
 **System capability**: SystemCapability.Communication.IPC
@@ -738,7 +746,7 @@ Reads memory information of the specified length from an **OHIPCParcel** object.
 
 | Type| Description|
 | ---- | ---- |
-| const | Returns the memory address read if the operation is successful; returns NULL if invalid parameters are found or **len** exceeds the readable length of **parcel**.|
+| const uint8_t* | Returns the memory address read if the operation is successful; returns NULL if invalid parameters are found or **len** exceeds the readable length of **parcel**.|
 
 ### OH_IPCParcel_WriteRemoteStub()
 
@@ -853,6 +861,7 @@ int OH_IPCParcel_WriteFileDescriptor(OHIPCParcel *parcel, int32_t fd)
 ```
 
 **Description**
+
 Writes a file descriptor to an **OHIPCParcel** object.
 
 **System capability**: SystemCapability.Communication.IPC
@@ -875,7 +884,7 @@ Writes a file descriptor to an **OHIPCParcel** object.
 ### OH_IPCParcel_ReadFileDescriptor()
 
 ```C
-const uint8_t* OH_IPCParcel_ReadFileDescriptor(const OHIPCParcel *parcel, int32_t *fd)
+int OH_IPCParcel_ReadFileDescriptor(const OHIPCParcel *parcel, int32_t *fd)
 ```
 
 **Description**
@@ -902,7 +911,7 @@ Reads a file descriptor from an **OHIPCParcel** object.
 ### OH_IPCParcel_Append()
 
 ```C
-const uint8_t* OH_IPCParcel_Append(OHIPCParcel *parcel, const OHIPCParcel *data)
+int OH_IPCParcel_Append(OHIPCParcel *parcel, const OHIPCParcel *data)
 ```
 
 **Description**
@@ -933,6 +942,7 @@ int OH_IPCParcel_WriteInterfaceToken(OHIPCParcel *parcel, const char *token)
 ```
 
 **Description**
+
 Writes an interface token to an **OHIPCParcel** object for interface identity verification.
 
 **System capability**: SystemCapability.Communication.IPC

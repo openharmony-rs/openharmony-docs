@@ -52,6 +52,20 @@ Defines a callback invoked when an SSL error occurs during resource loading.
 | ------ | ------ | ---- | --------------------- |
 | sslErrorEvent | [SslErrorEvent](./arkts-basic-components-web-i.md#sslerrorevent12)  | Yes| Details about the callback invoked when an SSL error occurs during resource loading.|
 
+## OnVerifyPinCallback<sup>22+</sup>
+
+type OnVerifyPinCallback = (verifyPinEvent: VerifyPinEvent) => void
+
+Callback triggered to notify the user of PIN authentication.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name   | Type  | Mandatory  | Description                 |
+| ------ | ------ | ---- | --------------------- |
+| verifyPinEvent | [VerifyPinEvent](./arkts-basic-components-web-i.md#verifypinevent22)  | Yes| Details of the callback triggered to notify the user of PIN authentication.|
+
 ## OnContextMenuHideCallback<sup>11+</sup>
 
 type OnContextMenuHideCallback = () => void

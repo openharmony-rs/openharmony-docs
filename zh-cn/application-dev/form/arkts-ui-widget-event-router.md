@@ -6,7 +6,7 @@
 <!--Tester: @chenmingze-->
 <!--Adviser: @HelloShuo-->
 
-在动态卡片中使用[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口的router能力，能够快速拉起动态卡片提供方应用的指定UIAbility(页面)，因此UIAbility较多的应用往往会通过卡片提供不同的跳转按钮，实现一键直达的效果。例如相机卡片，卡片上提供拍照、录像等按钮，点击不同按钮将拉起相机应用的不同UIAbility，从而提高用户的体验。
+在动态卡片中使用[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口的router能力，能够快速拉起动态卡片提供方应用的指定UIAbility(页面)，因此UIAbility较多的应用往往会通过卡片提供不同的跳转按钮，实现一键直达的效果。例如相机卡片，卡片上提供拍照、录像等按钮，点击不同按钮将拉起相机应用的不同UIAbility，从而提升用户的体验。
 
 ![WidgerCameraCard](figures/WidgerCameraCard.png)
 
@@ -174,7 +174,12 @@
               .fontSize(24)
               .fontWeight(FontWeight.Bold)
               .textAlign(TextAlign.Start)
-              .margin({ top: 12, bottom: 11, right: 24, left: 24 })
+              .margin({
+                top: 12,
+                bottom: 11,
+                right: 24,
+                left: 24
+              })
           }
           .width('100%')
           .height(56)
@@ -192,7 +197,12 @@
             // $r('app.color.text_color')需要替换为开发者所需的资源文件
             .fontColor($r('app.color.text_color'))
             .opacity(0.4)
-            .margin({ top: 8, bottom: 317, right: 152, left: 152 })
+            .margin({
+              top: 8,
+              bottom: 317,
+              right: 152,
+              left: 152
+            })
         }
         .width('100%')
         .height('100%')
@@ -215,7 +225,12 @@
               .fontSize(24)
               .fontWeight(FontWeight.Bold)
               .textAlign(TextAlign.Start)
-              .margin({ top: 12, bottom: 11, right: 24, left: 24 })
+              .margin({
+                top: 12,
+                bottom: 11,
+                right: 24,
+                left: 24
+              })
           }
           .width('100%')
           .height(56)
@@ -233,7 +248,12 @@
             // $r('app.color.text_color')需要替换为开发者所需的资源文件
             .fontColor($r('app.color.text_color'))
             .opacity(0.4)
-            .margin({ top: 8, bottom: 317, right: 152, left: 152 })
+            .margin({
+              top: 8,
+              bottom: 317,
+              right: 152,
+              left: 152
+            })
         }
         .width('100%')
         .height('100%')

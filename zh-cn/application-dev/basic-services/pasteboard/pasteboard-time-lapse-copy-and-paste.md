@@ -61,10 +61,13 @@
    <!-- @[pasteboard_timelapse_Record1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
+   #include <cstring>
+   #include <hilog/log.h>
    #include <database/pasteboard/oh_pasteboard.h>
    #include <database/udmf/udmf.h>
    #include <database/udmf/uds.h>
    #include <database/udmf/udmf_meta.h>
+   #include <accesstoken/ability_access_control.h>
    ```
 
 
@@ -118,31 +121,32 @@
    <!-- @[pasteboard_timelapse_Record4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
-   // 4. 创建OH_UdmfRecord对象。
-   OH_UdmfRecord* record = OH_UdmfRecord_Create();
-   // 5. 创建OH_UdmfRecordProvider对象，并设置用于提供延迟数据、析构的两个回调函数。
-   OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
-   OH_UdmfRecordProvider_SetData(provider, (void *)record, GetDataCallback, ProviderFinalizeCallback);
-   
-   // 6. 将provider绑定到record，并设置支持的数据类型。
-   #define TYPE_COUNT 2
-   const char* types[TYPE_COUNT] = {UDMF_META_PLAIN_TEXT, UDMF_META_HTML};
-   OH_UdmfRecord_SetProvider(record, types, TYPE_COUNT, provider);
-   
-   // 7. 创建OH_UdmfData对象，并向OH_UdmfData中添加OH_UdmfRecord。
-   OH_UdmfData* setData = OH_UdmfData_Create();
-   if (setData != nullptr) {
-       OH_UdmfData_AddRecord(setData, record);
+   OH_Pasteboard* CreateAndSetPasteboardData()
+   {
+       // 4. 创建OH_UdmfRecord对象。
+       OH_UdmfRecord* record = OH_UdmfRecord_Create();
+       // 5. 创建OH_UdmfRecordProvider对象，并设置用于提供延迟数据、析构的两个回调函数。
+       OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
+       OH_UdmfRecordProvider_SetData(provider, (void *)record, GetDataCallback, ProviderFinalizeCallback);
+       // 6. 将provider绑定到record，并设置支持的数据类型。
+       #define TYPE_COUNT 2
+       const char* types[TYPE_COUNT] = {UDMF_META_PLAIN_TEXT, UDMF_META_HTML};
+       OH_UdmfRecord_SetProvider(record, types, TYPE_COUNT, provider);
+       // 7. 创建OH_UdmfData对象，并向OH_UdmfData中添加OH_UdmfRecord。
+       OH_UdmfData* setData = OH_UdmfData_Create();
+       if (setData != nullptr) {
+           OH_UdmfData_AddRecord(setData, record);
+       }
+       // 8. 创建OH_Pasteboard对象，将数据写入剪贴板中。
+       OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+       if (setData != nullptr) {
+           OH_Pasteboard_SetData(pasteboard, setData);
+       }
+       OH_UdmfRecordProvider_Destroy(provider);
+       OH_UdmfRecord_Destroy(record);
+       OH_UdmfData_Destroy(setData);
+       return pasteboard;
    }
-   
-   // 8. 创建OH_Pasteboard对象，将数据写入剪贴板中。
-   OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-   if (setData != nullptr) {
-       OH_Pasteboard_SetData(pasteboard, setData);
-   }
-   OH_UdmfRecordProvider_Destroy(provider);
-   OH_UdmfRecord_Destroy(record);
-   OH_UdmfData_Destroy(setData);
    ```
 
 
@@ -180,17 +184,18 @@
        // 13. 查询OH_UdmfRecord中的数据类型。
        unsigned typeCount = 0;
        char** recordTypes = OH_UdmfRecord_GetTypes(record, &typeCount);
-   
        // 14. 遍历数据类型。
        for (unsigned int typeIndex = 0; typeIndex < typeCount; ++typeIndex) {
            const char* recordType = recordTypes[typeIndex];
            ProcessRecordType(record, recordType);
        }
    }
-   // ...
+   
+   static napi_value NAPI_Pasteboard_time(napi_env env, napi_callback_info info)
+   {
+       OH_Pasteboard* pasteboard = CreateAndSetPasteboardData();
        // 9. 记录当前的剪贴板数据变化次数。
        uint32_t changeCount = OH_Pasteboard_GetChangeCount(pasteboard);
-   
        // 10. 从剪贴板获取OH_UdmfData。
        int status = -1;
        bool hasPermission = OH_AT_CheckSelfPermission("ohos.permission.READ_PASTEBOARD");
@@ -202,13 +207,11 @@
            // 处理错误情况，清理资源
            OH_LOG_ERROR(LOG_APP, "Failed to get data from pasteboard, status: %d\n", status);
        }
-   
        // 11. 获取OH_UdmfData中的所有OH_UdmfRecord。
        unsigned int recordCount = 0;
        OH_UdmfRecord** getRecords = OH_UdmfData_GetRecords(getData, &recordCount);
        OH_UdsPlainText* udsText = nullptr;
        OH_UdsHtml* udsHtml = nullptr;
-   
        // 12. 遍历OH_UdmfRecord。
        for (unsigned int recordIndex = 0; recordIndex < recordCount; ++recordIndex) {
            OH_UdmfRecord* record = getRecords[recordIndex];
@@ -239,10 +242,11 @@
    <!-- @[pasteboard_timelapse_Record7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
-   OH_UdsPlainText_Destroy(udsText);
-   OH_UdsHtml_Destroy(udsHtml);
-   OH_UdmfData_Destroy(getData);
-   OH_Pasteboard_Destroy(pasteboard);
+       OH_UdsPlainText_Destroy(udsText);
+       OH_UdsHtml_Destroy(udsHtml);
+       OH_UdmfData_Destroy(getData);
+       OH_Pasteboard_Destroy(pasteboard);
+   }
    ```
 
 
@@ -270,8 +274,9 @@
    
    ``` TypeScript
    import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
-   import hilog from '@ohos.hilog';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
    import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
+   const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
    ```
 
 

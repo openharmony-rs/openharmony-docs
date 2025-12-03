@@ -44,7 +44,7 @@
 
 - 下次刷新：表示指定卡片的下一次刷新时间。可以通过调用[setFormNextRefreshTime](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidersetformnextrefreshtime)接口来实现。最短刷新时间为5分钟。例如，可以在接口调用后的5分钟内刷新卡片内容。
 
-  <!-- @[set_form_next_refreshime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts) -->
+  <!-- @[set_form_next_refreshime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts) --> 
   
   ``` TypeScript
   // entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts
@@ -63,7 +63,8 @@
       let formData = {};
       return formBindingData.createFormBindingData(formData);
     }
-  // ···
+  
+    // ...
     onFormEvent(formId: string, message: string): void {
       // 当卡片提供方的postCardAction接口的message事件被触发时调用
       hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${JSON.stringify(message)}`);
@@ -84,10 +85,12 @@
            message: ${(err as BusinessError).message}`);
       }
     }
+  
     onAcquireFormState(want: Want): formInfo.FormState {
       // 卡片使用方查询卡片状态时触发该回调，默认返回初始状态。
       return formInfo.FormState.READY;
     }
+  
   }
   ```
 

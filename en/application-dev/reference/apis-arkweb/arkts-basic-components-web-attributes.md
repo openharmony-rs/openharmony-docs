@@ -275,7 +275,7 @@ Sets the behavior when a secure source attempts to load resources from an insecu
 
 | Name      | Type                       | Mandatory  | Description     |
 | --------- | --------------------------- | ---- | --------- |
-| mixedMode | [MixedMode](./arkts-basic-components-web-e.md#mixedmode) | Yes   | Mixed content mode to be set.<br>When **undefined** or **null** is passed in, the value is **MixedMode.None**. |
+| mixedMode | [MixedMode](./arkts-basic-components-web-e.md#mixedmode) | Yes   | Mixed content mode to be set.<br>If **undefined** or **null** is passed in, the value **MixedMode.All** is used. |
 
 **Example**
 
@@ -853,7 +853,7 @@ Sets whether to block online downloads. When this attribute is not explicitly ca
 
 | Name  | Type   | Mandatory  | Description               |
 | ----- | ------- | ---- | ------------------- |
-| block | boolean | Yes   | Whether to allow online downloads.<br>The value **true** means to block online downloads, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the value is **true**.|
+| block | boolean | Yes   | Whether to allow online downloads.<br>The value **true** means to block online downloads, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
 **Example**
 

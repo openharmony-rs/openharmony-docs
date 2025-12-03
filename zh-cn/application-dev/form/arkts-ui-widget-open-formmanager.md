@@ -25,10 +25,10 @@
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
     const DOMAIN = 0x0000;
+    
     @Entry
     @Component
     struct Index {
-    
       build() {
         Row() {
           Column() {
@@ -48,7 +48,7 @@
                   // 点击按钮后调用openFormManager方法，拉起卡片管理页面
                   formProvider.openFormManager(want);
                 } catch (error) {
-                  promptAction.openToast({message: (error as BusinessError).message});
+                  promptAction.openToast({ message: (error as BusinessError).message });
                   hilog.info(DOMAIN, 'testTag', 'catch error ', 'code:', (error as BusinessError).code, 'message:',
                     (error as BusinessError).message);
                 }

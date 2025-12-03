@@ -13,6 +13,6 @@ Defines a struct for key agreement.
 
 **Since**: 20
 
-**Related Module**: [CryptoKeyAgreementApi](capi-cryptokeyagreementapi.md)
+**Related module**: [CryptoKeyAgreementApi](capi-cryptokeyagreementapi.md)
 
-**Header File**: [crypto_key_agreement.h](capi-crypto-key-agreement-h.md)
+**Header file**: [crypto_key_agreement.h](capi-crypto-key-agreement-h.md)

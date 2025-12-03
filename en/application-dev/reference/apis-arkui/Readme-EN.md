@@ -716,7 +716,7 @@
 - Error Codes<!--arkui-arkts-errcode-->
   - UI<!--arkui-ui-arkts-errcode-->
     - [API Call Error Codes](errorcode-internal.md)
-    - [promptAction Error Codes](errorcode-promptAction.md)
+    - [Popup Window Error Codes](errorcode-promptAction.md)
     - [Router Error Codes](errorcode-router.md)
     - [Drag Event Error Codes](errorcode-drag-event.md)
     - [AI Image Analyzer Error Codes](arkui-ts/errorcode-image-analyzer.md)

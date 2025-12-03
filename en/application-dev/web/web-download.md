@@ -16,8 +16,9 @@ In the following example, the **index.html** and **download.html** files are add
 
 By default, the download path is in the web directory of the application sandbox and cannot be viewed by users. If users need to view it, change the download path to a directory with access permission, for example, the **Download** directory. For details, see [Initiating a Download Task](#initiating-a-download-task).
 
-```ts
-// xxx.ets
+<!-- @[download_delegate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/ListenForPageDown.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -26,37 +27,41 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
+  @State myText: string = 'download';
 
   build() {
     Column() {
+      Text(this.myText)
       Button('setDownloadDelegate')
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download.");
+              console.info('will start a download.');
               // Pass in a download path and start the download.
               // If the path is invalid, the file will be downloaded to the default directory at /data/storage/el2/base/cache/web/.
-              webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
+              webDownloadItem.start('/data/storage/el2/base/cache/web/' + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
               // Unique ID of a download task.
-              console.info("download update guid: " + webDownloadItem.getGuid());
+              console.info('download update guid: ' + webDownloadItem.getGuid());
               // Download progress.
-              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info('download update percent complete: ' + webDownloadItem.getPercentComplete());
               // Current download speed.
-              console.info("download update speed: " + webDownloadItem.getCurrentSpeed())
+              console.info('download update speed: ' + webDownloadItem.getCurrentSpeed());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.error("download failed guid: " + webDownloadItem.getGuid());
+              console.error('download failed guid: ' + webDownloadItem.getGuid());
               // Error code of a download task failure.
-              console.error("download failed last error code: " + webDownloadItem.getLastErrorCode());
+              console.error('download failed last error code: ' + webDownloadItem.getLastErrorCode());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download finish guid: " + webDownloadItem.getGuid());
+              console.info('download finish guid: ' + webDownloadItem.getGuid());
+              this.myText = 'download finish';
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
@@ -100,8 +105,9 @@ For a download initiated by it, the **Web** component works out the referrer bas
   In the following example, clicking **setDownloadDelegate** registers a listener class with the **Web** component, and clicking **startDownload** initiates a download task.
   The application is notified of the download task progress through the configured **DownloadDelegate** object.
 
-```ts
-// xxx.ets
+<!-- @[init_download_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/InitiatingADownloadTask.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -110,30 +116,34 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
+  @State myText: string = 'download';
 
   build() {
     Column() {
+      Text(this.myText)
       Button('setDownloadDelegate')
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download.");
+              console.info('will start a download.');
               // Pass in a download path and start the download.
               // If the path is invalid, the file will be downloaded to the default directory at /data/storage/el2/base/cache/web/.
-              webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
+              webDownloadItem.start('/data/storage/el2/base/cache/web/' + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download update guid: " + webDownloadItem.getGuid());
+              console.info('download update guid: ' + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.error("download failed guid: " + webDownloadItem.getGuid());
+              console.error('download failed guid: ' + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download finish guid: " + webDownloadItem.getGuid());
+              console.info('download finish guid: ' + webDownloadItem.getGuid());
+              this.myText = 'download finish';
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Button('startDownload')
@@ -143,7 +153,8 @@ struct WebComponent {
             // Replace it with the URL from which you want to download files.
             this.controller.startDownload('https://www.example.com/');
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -244,11 +255,13 @@ function getDownloadPathFromPicker(): Promise<string> {
 When the **Web** component is started, you can resume the unfinished download task through the [resumeDownload()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadManager.md#resumedownload11) API.
 
 In the following example, the **record** button is used to save the current download task to a persistent file. After the application is restarted, the **recovery** button can be used to resume the persistent download task. If multiple download tasks need to be saved, the application can adjust the persistence time and mode as required.
-```ts
-// xxx.ets
+
+<!-- @[recovery_download_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/ResumeDownload.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { downloadUtil, fileName, filePath } from './downloadUtil'; // downloadUtil.ets is described below.
+import { DownloadUtil, fileName, filePath } from './downloadUtil'; // downloadUtil.ets is described below.
 
 @Entry
 @Component
@@ -260,7 +273,7 @@ struct WebComponent {
   failedData: Uint8Array = new Uint8Array();
 
   aboutToAppear(): void {
-    downloadUtil.init(this.getUIContext());
+    DownloadUtil.init(this.getUIContext());
   }
 
   build() {
@@ -269,27 +282,28 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download.");
+              console.info('will start a download.');
               // Pass in a download path and start the download.
               // If the path is invalid, the file will be downloaded to the default directory at /data/storage/el2/base/cache/web/.
-              webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
+              webDownloadItem.start('/data/storage/el2/base/cache/web/' + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info('download update percent complete: ' + webDownloadItem.getPercentComplete());
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.error("download failed guid: " + webDownloadItem.getGuid());
+              console.error('download failed guid: ' + webDownloadItem.getGuid());
               // Serialize the failed download task to a byte array.
               this.failedData = webDownloadItem.serialize();
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download finish guid: " + webDownloadItem.getGuid());
+              console.info('download finish guid: ' + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
             webview.WebDownloadManager.setDownloadDelegate(this.delegate);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Button('startDownload')
@@ -299,7 +313,8 @@ struct WebComponent {
             // Replace it with the URL from which you want to download files.
             this.controller.startDownload('https://www.example.com/');
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       // Serialize and save the current download task information for subsequent download task resumption.
@@ -308,9 +323,10 @@ struct WebComponent {
         .onClick(() => {
           try {
             // Save the downloaded data to a persistent file.
-            downloadUtil.saveDownloadInfo(downloadUtil.uint8ArrayToStr(this.download.serialize()));
+            DownloadUtil.saveDownloadInfo(DownloadUtil.uint8ArrayToStr(this.download.serialize()));
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       // Resume the download task from the serialized download task information.
@@ -320,10 +336,12 @@ struct WebComponent {
           try {
             // The persistence file is available by default. You can set it as required.
             let webDownloadItem =
-              webview.WebDownloadItem.deserialize(downloadUtil.strToUint8Array(downloadUtil.readFileSync(filePath, fileName)));
+              webview.WebDownloadItem.deserialize(
+                DownloadUtil.strToUint8Array(DownloadUtil.readFileSync(filePath, fileName)));
             webview.WebDownloadManager.resumeDownload(webDownloadItem);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
 
@@ -334,8 +352,9 @@ struct WebComponent {
 ```
 
 Download the task information persistence utility file.
-```ts
-// downloadUtil.ets
+<!-- @[task_info_persistence_util](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/downloadUtil.ets) -->
+
+``` TypeScript
 import { util } from '@kit.ArkTS';
 import fileStream from '@ohos.file.fs';
 
@@ -343,7 +362,7 @@ const helper = new util.Base64Helper();
 
 export let filePath : string;
 export const fileName = 'demoFile.txt';
-export namespace  downloadUtil {
+export namespace  DownloadUtil {
   
   export function init(context: UIContext): void {
     filePath = context.getHostContext()!.filesDir;

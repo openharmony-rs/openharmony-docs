@@ -267,7 +267,7 @@ export default class EntryAbility extends UIAbility {
 
 destroyWindow(callback: AsyncCallback&lt;void&gt;): void
 
-Destroys this window. This API uses an asynchronous callback to return the result. This API takes effect only for a system window or an application child window.
+Destroys this window. This API uses an asynchronous callback to return the result. It takes effect for a system window, an application child window, a global floating window, or a modal window.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -306,7 +306,7 @@ windowClass.destroyWindow((err) => {
 
 destroyWindow(): Promise&lt;void&gt;
 
-Destroys this window. This API uses a promise to return the result. This API takes effect only for a system window or an application child window.
+Destroys this window. This API uses a promise to return the result. It takes effect for a system window, an application child window, a global floating window, or a modal window.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -466,11 +466,11 @@ A value is returned once the call takes effect. You can use [getWindowProperties
 
 > **NOTE**
 >
-> - This API is supported only in the floating window mode (when the window mode is **window.WindowStatusType.FLOATING**, which you can check using [getWindowStatus()](#getwindowstatus12)).
+> - In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API takes effect only when the window is in the floating window mode (when the window mode is **window.WindowStatusType.FLOATING**, which you can check using [getWindowStatus()](#getwindowstatus12)). Otherwise, error code 1300010 is thrown.
 >
-> - In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, the window moves relative to the screen. In non-freeform window mode, the window moves relative to the parent window.
+> - In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, the window moves relative to the screen. In non-freeform window mode, the window moves relative to the main window.
 >
-> - This API does not work for the main window in non-freeform window mode.
+> - In non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API does not work for the main window.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -530,11 +530,11 @@ A value is returned once the call takes effect. You can use [getWindowProperties
 
 > **NOTE**
 >
-> - This API is supported only in the floating window mode (when the window mode is **window.WindowStatusType.FLOATING**, which you can check using [getWindowStatus()](#getwindowstatus12)).
+> - In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API takes effect only when the window is in the floating window mode (when the window mode is **window.WindowStatusType.FLOATING**, which you can check using [getWindowStatus()](#getwindowstatus12)). Otherwise, error code 1300010 is thrown.
 >
-> - In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, the window moves relative to the screen. In non-freeform window mode, the window moves relative to the parent window.
+> - In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, the window moves relative to the screen. In non-freeform window mode, the window moves relative to the main window.
 >
-> - This API does not work for the main window in non-freeform window mode.
+> - In non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API does not work for the main window.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -597,9 +597,9 @@ Moves this window based on the coordinates. This API uses a promise to return th
 
 > **NOTE**
 >
-> - This API is supported only in the floating window mode (when the window mode is **window.WindowStatusType.FLOATING**, which you can check using [getWindowStatus()](#getwindowstatus12)).
+> - In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API takes effect only when the window is in the floating window mode (when the window mode is **window.WindowStatusType.FLOATING**, which you can check using [getWindowStatus()](#getwindowstatus12)). Otherwise, error code 1300010 is thrown.
 >
-> - This API does not work for the main window not in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+> - In non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API does not work for the main window.
 
 
 **System capability**: SystemCapability.Window.SessionManager
@@ -660,9 +660,9 @@ A value is returned once the call takes effect. You can use [getWindowProperties
 
 > **NOTE**
 >
-> - This API is supported only in the floating window mode (when the window mode is **window.WindowStatusType.FLOATING**, which you can check using [getWindowStatus()](#getwindowstatus12)).
+> - In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API takes effect only when the window is in the floating window mode (when the window mode is **window.WindowStatusType.FLOATING**, which you can check using [getWindowStatus()](#getwindowstatus12)). Otherwise, error code 1300010 is thrown.
 >
-> - This API does not work for the main window not in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+> - In non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API does not work for the main window.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -725,9 +725,9 @@ Moves this window based on the global coordinate system. (In extended screen sce
 
 > **NOTE**
 >
-> - This API is supported only in the floating window mode (when the window mode is **window.WindowStatusType.FLOATING**, which you can check using [getWindowStatus()](#getwindowstatus12)).
+> - In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API takes effect only when the window is in the floating window mode (when the window mode is **window.WindowStatusType.FLOATING**, which you can check using [getWindowStatus()](#getwindowstatus12)). Otherwise, error code 1300010 is thrown.
 >
-> - This API does not work for the main window not in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+> - In non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API does not work for the main window.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -867,19 +867,23 @@ try {
 
 resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
-Changes the size of this window. This API uses an asynchronous callback to return the result.
+Changes the size of this window based on the top-left vertex of the window. This API uses an asynchronous callback to return the result.
+
+A value is returned once the API is called successfully. However, the final effect cannot be obtained immediately from the return value. To obtain the final effect immediately, call [resizeAsync()](#resizeasync12).
 
 The window size is restricted by [WindowLimits](arkts-apis-window-i.md#windowlimits11). You can call [getWindowLimits](#getwindowlimits11) to find out the exact limits.
 
 The new window width and height you set must meet the following limits:
-- If the window width or height is less than the minimum width or height limit, then the minimum width or height limit takes effect.
+
+- If the window width or height is less than the minimum width or height limit, then the minimum width or height limit takes effect. However, the system window and global floating window settings are not subject to these minimum width or height restrictions.
+
 - If the window width or height is greater than the maximum width or height limit, then the maximum width or height limit takes effect.
 
 > **NOTE**
 >
-> - This API is supported only in the floating window mode (when the window mode is **window.WindowStatusType.FLOATING**, which you can check using [getWindowStatus()](#getwindowstatus12)).
+> - In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API takes effect only when the window is in the floating window mode (when the window mode is **window.WindowStatusType.FLOATING**, which you can check using [getWindowStatus()](#getwindowstatus12)). Otherwise, error code 1300002 is thrown.
 >
-> - This API does not work for the main window not in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+> - In non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API does not work for the main window.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -889,8 +893,8 @@ The new window width and height you set must meet the following limits:
 
 | Name| Type| Mandatory| Description|
 | -------- | ------------------------- | -- | ------------------------ |
-| width    | number                    | Yes| New width of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid.|
-| height   | number                    | Yes| New height of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid.|
+| width    | number                    | Yes| New width of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code 401 is thrown.|
+| height   | number                    | Yes| New height of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code 401 is thrown.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.               |
 
 **Error codes**
@@ -926,21 +930,23 @@ try {
 
 resize(width: number, height: number): Promise&lt;void&gt;
 
-Changes the size of this window. This API uses a promise to return the result.
+Changes the size of this window based on the top-left vertex of the window. This API uses a promise to return the result.
 
 A value is returned once the API is called successfully. However, the final effect cannot be obtained immediately from the return value. To obtain the final effect immediately, call [resizeAsync()](#resizeasync12).
 
 The window size is restricted by [WindowLimits](arkts-apis-window-i.md#windowlimits11). You can call [getWindowLimits](#getwindowlimits11) to find out the exact limits.
 
 The new window width and height you set must meet the following limits:
-- If the window width or height is less than the minimum width or height limit, then the minimum width or height limit takes effect.
+
+- If the window width or height is less than the minimum width or height limit, then the minimum width or height limit takes effect. However, the system window and global floating window settings are not subject to these minimum width or height restrictions.
+
 - If the window width or height is greater than the maximum width or height limit, then the maximum width or height limit takes effect.
 
 > **NOTE**
 >
-> - This API is supported only in the floating window mode (when the window mode is **window.WindowStatusType.FLOATING**, which you can check using [getWindowStatus()](#getwindowstatus12)).
+> - In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API takes effect only when the window is in the floating window mode (when the window mode is **window.WindowStatusType.FLOATING**, which you can check using [getWindowStatus()](#getwindowstatus12)). Otherwise, error code 1300002 is thrown.
 >
-> - This API does not work for the main window not in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+> - In non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API does not work for the main window.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -950,8 +956,8 @@ The new window width and height you set must meet the following limits:
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | -- | ------------------------ |
-| width  | number | Yes| New width of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid.|
-| height | number | Yes| New height of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid.|
+| width  | number | Yes| New width of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code 401 is thrown.|
+| height | number | Yes| New height of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code 401 is thrown.|
 
 **Return value**
 
@@ -990,21 +996,23 @@ try {
 
 resizeAsync(width: number, height: number): Promise&lt;void&gt;
 
-Changes the size of this window. This API uses a promise to return the result.
+Changes the size of this window based on the top-left vertex of the window. This API uses a promise to return the result.
 
 A value is returned once the call takes effect. You can use [getWindowProperties()](#getwindowproperties9) in the callback (see the code snippet below) to obtain the final effect immediately.
 
 The window size is restricted by [WindowLimits](arkts-apis-window-i.md#windowlimits11). You can call [getWindowLimits](#getwindowlimits11) to find out the exact limits.
 
 The new window width and height you set must meet the following limits:
-- If the window width or height is less than the minimum width or height limit, then the minimum width or height limit takes effect.
+
+- If the window width or height is less than the minimum width or height limit, then the minimum width or height limit takes effect. However, the system window and global floating window settings are not subject to these minimum width or height restrictions.
+
 - If the window width or height is greater than the maximum width or height limit, then the maximum width or height limit takes effect.
 
 > **NOTE**
 >
-> - This API is supported only in the floating window mode (when the window mode is **window.WindowStatusType.FLOATING**, which you can check using [getWindowStatus()](#getwindowstatus12)).
+> - In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API takes effect only when the window is in the floating window mode (when the window mode is **window.WindowStatusType.FLOATING**, which you can check using [getWindowStatus()](#getwindowstatus12)). Otherwise, error code 1300010 is thrown.
 >
-> - This API does not work for the main window not in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+> - In non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API does not work for the main window.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -1014,8 +1022,8 @@ The new window width and height you set must meet the following limits:
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | -- | ------------------------ |
-| width  | number | Yes| New width of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid.|
-| height | number | Yes| New height of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid.|
+| width  | number | Yes| New width of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code 401 is thrown.|
+| height | number | Yes| New height of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code 401 is thrown.|
 
 **Return value**
 
@@ -2406,7 +2414,7 @@ export default class EntryAbility extends UIAbility {
 
 getPreferredOrientation(): Orientation
 
-Obtains the orientation of the main window. This API can be called only by the main window.
+Obtains the orientation of the window. If no orientation is specified, **window.Orientation.UNSPECIFIED** is returned.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -3151,7 +3159,7 @@ Subscribes to the event indicating soft keyboard height changes in the fixed sta
 
 The system notifies the keyboard height change when the soft keyboard is invoked by the window and overlaps with the window.
 
-Since API version 10, the soft keyboard can be set to the fixed or floating state. For details, see [Input Method Service](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10).
+Starting from API version 10, the soft keyboard can be set to the fixed or floating state. For details, see [Input Method Service](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3192,7 +3200,7 @@ off(type: 'keyboardHeightChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from the event indicating soft keyboard height changes in the fixed state so that the application does not receive notifications of soft keyboard height changes.
 
-Since API version 10, the soft keyboard can be set to the fixed or floating state. For details, see [Input Method Service](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10).
+Starting from API version 10, the soft keyboard can be set to the fixed or floating state. For details, see [Input Method Service](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4220,6 +4228,87 @@ try {
   windowClass.off('occlusionStateChanged', callback);
   // Unregister all the callbacks that have been registered through on().
   windowClass.off('occlusionStateChanged');
+} catch (exception) {
+  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## on('frameMetricsMeasured')<sup>22+</sup>
+
+on(type: 'frameMetricsMeasured', callback: Callback&lt;FrameMetrics&gt;): void
+
+Subscribes to events indicating changes in window frame metrics. This API must be used after the call of [loadContent](#loadcontent9) or [setUIContent()](#setuicontent9) takes effect.
+
+The callback is triggered only when the client UI content is redrawn (for example, during page transitions, interactions with responsive components, setting background colors, or adjusting opacity).
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name  | Type                          | Mandatory| Description                                                    |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| type     | string                         | Yes  | Event type. The value is fixed at **'frameMetricsMeasured'**, indicating the window frame metrics change event.|
+| callback | Callback&lt;[FrameMetrics](arkts-apis-window-i.md#framemetrics22)&gt; | Yes | Callback invoked when the window frame metrics change. For details, see [Frame Rate Metrics](arkts-apis-window-i.md#framemetrics22).|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+
+**Example**
+
+```ts
+try {
+  let callback: Callback<window.FrameMetrics> = (data: window.FrameMetrics) => {
+    console.info(`Window frame metrics changed: ${JSON.stringify(data)}`);
+  };
+  windowClass.on('frameMetricsMeasured', callback);
+} catch (exception) {
+  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## off('frameMetricsMeasured')<sup>22+</sup>
+
+off(type: 'frameMetricsMeasured', callback?: Callback&lt;FrameMetrics&gt;): void
+
+Unsubscribes from events indicating changes in window frame metrics. This API must be used after the call of [loadContent](#loadcontent9) or [setUIContent()](#setuicontent9) takes effect.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name  | Type                          | Mandatory| Description                                                    |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| type     | string                         | Yes  | Event type. The value is fixed at **'frameMetricsMeasured'**, indicating the window frame metrics change event.|
+| callback | Callback&lt;[FrameMetrics](arkts-apis-window-i.md#framemetrics22)&gt; | No | If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+
+**Example**
+
+```ts
+try {
+  let callback: Callback<window.FrameMetrics> = (data: window.FrameMetrics) => {
+    console.info(`Window frame metrics changed: ${JSON.stringify(data)}`);
+  };
+  // Enable listening through the on API.
+  windowClass.on('frameMetricsMeasured', callback);
+  // Disable the listening of a specified callback.
+  windowClass.off('frameMetricsMeasured', callback);
+  // Unregister all the callbacks that have been registered through on().
+  windowClass.off('frameMetricsMeasured');
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
 }
@@ -5607,7 +5696,7 @@ In the stage model, this API must be used after the call of [loadContent](#loadc
 
 | Name  | Type                                                         | Mandatory | Description                                                  |
 | ----- | ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
-| color | string \| [ColorMetrics](js-apis-arkui-graphics.md#colormetrics12)<sup>18+</sup> | Yes       | Background color to set. The value is a hexadecimal RGB or ARGB color code and is case insensitive, for example, **'#00FF00'** or **'#FF00FF00'**.<br>Since API version 18, this parameter supports the ColorMetrics type. |
+| color | string \| [ColorMetrics](js-apis-arkui-graphics.md#colormetrics12)<sup>18+</sup> | Yes       | Background color to set. The value is a hexadecimal RGB or ARGB color code and is case insensitive, for example, **'#00FF00'** or **'#FF00FF00'**.<br>Starting from API version 18, this parameter supports the ColorMetrics type. |
 
 **Error codes**
 
@@ -5729,7 +5818,7 @@ When the window moves to the background, the system restores the screen brightne
 > **NOTE**
 >
 > - For non-2-in-1 devices, when the window's brightness setting is active, Control Panel cannot change the overall screen brightness. If the input value is **-1** or the window goes into the background, the window's brightness resets to match the system's, allowing Control Panel to adjust the screen brightness again.
-> - For 2-in-1 devices, prior to API version 14, both Control Panel and shortcut keys are blocked from changing the screen brightness when the window's brightness setting is active. If the input value is **-1** or the window goes into the background, the window's brightness resets to match the system's, allowing Control Panel and shortcut keys to adjust the screen brightness again. Starting from API version, the window brightness synchronizes with the system screen brightness, and changes can be made through this API, Control Panel, or shortcut keys.
+> - For 2-in-1 devices, prior to API version 14, both Control Panel and shortcut keys are blocked from changing the screen brightness when the window's brightness setting is active. If the input value is **-1** or the window goes into the background, the window's brightness resets to match the system's, allowing Control Panel and shortcut keys to adjust the screen brightness again. Starting from API version 14, the window brightness synchronizes with the system screen brightness, and changes can be made through this API, Control Panel, or shortcut keys.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -5869,6 +5958,8 @@ setWindowFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): v
 
 Sets whether this window is focusable. This API uses an asynchronous callback to return the result.
 
+Starting from API version 22, if a virtual screen is created by calling [createVirtualScreen](js-apis-display.md#displaycreatevirtualscreen16) with **supportsFocus** set to **false**, windows on that virtual screen cannot call the current API to change their focusability. Attempting to do so will result in error code 1300002.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
@@ -5915,6 +6006,8 @@ try {
 setWindowFocusable(isFocusable: boolean): Promise&lt;void&gt;
 
 Sets whether this window is focusable. This API uses a promise to return the result.
+
+Starting from API version 22, if a virtual screen is created by calling [createVirtualScreen](js-apis-display.md#displaycreatevirtualscreen16) with **supportsFocus** set to **false**, windows on that virtual screen cannot call the current API to change their focusability. Attempting to do so will result in error code 1300002.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -6067,7 +6160,9 @@ setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;
 
 Sets whether this window is in privacy mode. This API uses an asynchronous callback to return the result.
 
-A window in privacy mode cannot be captured or recorded. This API can be used in scenarios where screen capture or recording is disabled.
+A window in privacy mode cannot be captured or recorded.
+
+When a window in privacy mode is moved to the background, it displays as a white overlay or privacy mask in the multi-tasking view.
 
 If this API is not called, the privacy mode is disabled by default, and the window can be captured or recorded.
 
@@ -6120,7 +6215,9 @@ setWindowPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 
 Sets whether this window is in privacy mode. This API uses a promise to return the result.
 
-A window in privacy mode cannot be captured or recorded. This API can be used in scenarios where screen capture or recording is disabled.
+A window in privacy mode cannot be captured or recorded.
+
+When a window in privacy mode is moved to the background, it displays as a white overlay or privacy mask in the multi-tasking view.
 
 If this API is not called, the privacy mode is disabled by default, and the window can be captured or recorded.
 
@@ -6911,6 +7008,67 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+## maximize<sup>22+</sup>
+
+maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&lt;void&gt;
+
+Maximizes the window. The main window can use this API to maximize itself. For child windows to maximize, you must set **maximizeSupported** to **true** when creating the window and then call this API. On 2-in-1 devices with folding capabilities, you can use the **acrossDisplay** parameter to control the main window's behavior in waterfall mode when maximized in the hover state. (See [Semi-Folded State of Foldable Screens](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-folded-hover)). This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, this API has no effect and does not report errors.
+
+**Parameters**
+
+| Name          | Type                                                         | Mandatory | Description                                                  |
+| ------------- | ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
+| presentation  | [MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12) | No        | Layout of the main window or child window when maximized. The default value is **window.MaximizePresentation.ENTER_IMMERSIVE**, indicating that the window enters the full-screen mode when maximized. |
+| acrossDisplay | boolean                                                      | No        | Behavior of the main window in waterfall mode when maximized in the hover state. This parameter can be set only for the main window. Calling it on non-main windows results in error code 1300004.<br>When this parameter is set to **true**:<br>- In the hover state, the window enters waterfall mode directly.<br>- In the unfolded state, the window maximizes and retains waterfall mode when in the hover state.<br>When this parameter is set to **false**:<br>- In the hover state, the window exits waterfall mode and maximizes on one half of the screen (single-sided maximization).<br>- In the unfolded state, the window maximizes and exits waterfall mode when in the hover state.<br>When this parameter is set to **undefined** or not provided, the waterfall mode of the window remains unchanged.<br>- In the hover state, the window maximizes on one half of the screen.<br>- In the unfolded state, the window maximizes and defaults to maintaining waterfall mode when in the hover state.<br>**Device behavior differences**: This API can be properly called only on 2-in-1 devices with folding capabilities. If it is called on other device types, it has no effect. |
+
+**Return value**
+
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 801     | Capability not supported. Function maximize can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
+
+**Example**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      let mainWindow = windowStage.getMainWindowSync();
+      mainWindow.maximize(window.MaximizePresentation.ENTER_IMMERSIVE, true)
+        .then(() => {
+          console.info('Window maximized successfully.');
+        })
+        .catch((err: BusinessError) => {
+          console.error(`Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
+    });
+  }
+};
+```
+
 ## setResizeByDragEnabled<sup>14+</sup>
 setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -7126,7 +7284,7 @@ export default class EntryAbility extends UIAbility {
 
 getWindowLimits(): WindowLimits
 
-Obtains the size limits of this application window.
+Obtains the size limits of this application window, in px.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -7157,12 +7315,50 @@ try {
 }
 ```
 
+## getWindowLimitsVP<sup>22+</sup>
+
+getWindowLimitsVP(): WindowLimits
+
+Obtains the size limits of this application window, in vp.
+
+For system windows and global floating windows, the default minimum width and height are set to 1 px. The 1 vp value obtained via this API represents the result after rounding calculations.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Return value**
+
+| Type                                                  | Description         |
+| ----------------------------------------------------- | ------------------- |
+| [WindowLimits](arkts-apis-window-i.md#windowlimits11) | Window size limits. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID      | Error Message                                                |
+| :------ | :----------------------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+
+**Example**
+
+```ts
+try {
+  let windowLimits: window.WindowLimits = windowClass.getWindowLimitsVP();
+} catch (exception) {
+  console.error(`Failed to obtain the window limits. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## setWindowLimits<sup>11+</sup>
 
 setWindowLimits(windowLimits: WindowLimits): Promise&lt;WindowLimits&gt;
 
 Sets the size limits for this application window. This API uses a promise to return the result.
-By default, system size limits are provided. They are determined by the product configuration and cannot be modified. If **setWindowLimits** has not been called, you can call [getWindowLimits](#getwindowlimits11) to obtain the system size limits.
+
+By default, system size limits are provided. They are determined by the product configuration and cannot be modified.
+
+If **setWindowLimits** has not been called, you can call [getWindowLimits](#getwindowlimits11) or [getWindowLimitsVP](#getwindowlimitsvp22) to obtain the system size limits.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -7170,9 +7366,9 @@ By default, system size limits are provided. They are determined by the product 
 
 **Parameters**
 
-| Name         | Type                                                  | Mandatory | Description                |
-| :----------- | :---------------------------------------------------- | :-------- | :------------------------- |
-| windowLimits | [WindowLimits](arkts-apis-window-i.md#windowlimits11) | Yes       | Target size limits, in px. |
+| Name         | Type                                                  | Mandatory | Description                      |
+| :----------- | :---------------------------------------------------- | :-------- | :------------------------------- |
+| windowLimits | [WindowLimits](arkts-apis-window-i.md#windowlimits11) | Yes       | Target size limits, in px or vp. |
 
 **Return value**
 
@@ -7220,7 +7416,9 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 
 Sets the size limits for this application window. This API uses a promise to return the result.
 
-By default, system size limits are provided. They are determined by the product configuration and cannot be modified. If **setWindowLimits** has not been called, you can call [getWindowLimits](#getwindowlimits11) to obtain the system size limits.
+By default, system size limits are provided. They are determined by the product configuration and cannot be modified.
+
+If **setWindowLimits** has not been called, you can call [getWindowLimits](#getwindowlimits11) or [getWindowLimitsVP](#getwindowlimitsvp22) to obtain the system size limits.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -7236,8 +7434,8 @@ Starting from API version 19, this API can be called on a device that supports [
 
 | Name         | Type                                                  | Mandatory | Description                                                  |
 | :----------- | :---------------------------------------------------- | :-------- | :----------------------------------------------------------- |
-| windowLimits | [WindowLimits](arkts-apis-window-i.md#windowlimits11) | Yes       | Target size limits, in px.                                   |
-| isForcible   | boolean                                               | Yes       | Whether to forcibly set the window size limits.<br>If this parameter is set to **true**, the minimum width and height of the window are determined by the lower value between the system size limits and 40 vp, and the maximum width and height depend on the system size limits.<br>If this parameter is set to **false**, the minimum and maximum window width and height are restricted by the system size limits. |
+| windowLimits | [WindowLimits](arkts-apis-window-i.md#windowlimits11) | Yes       | Target size limits, in px or vp.                             |
+| isForcible   | boolean                                               | Yes       | Whether to forcibly set the window size limits.<br>When the unit of [windowLimits](arkts-apis-window-i.md#windowlimits11) is vp, both **true** and **false** are treated as **false**, and the minimum and maximum values for window width and height are determined by system constraints.<br>When the unit of [windowLimits](arkts-apis-window-i.md#windowlimits11) is px, if this parameter is set to **true**, the minimum window width and height are the smaller value between the system constraints and 40 vp, and the maximum window width and height are subject to system constraints. If this parameter is set to **false**, both the minimum and maximum values for window width and height are subject to system constraints. |
 
 **Return value**
 
@@ -10453,7 +10651,7 @@ promise.then(() => {
 
 resetSize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
-Changes the size of this window. This API uses an asynchronous callback to return the result.
+Changes the size of this window based on the top-left vertex of the window. This API uses an asynchronous callback to return the result.
 
 - The main window and child window have the following default size limits: [320, 1920] in width and [240, 1920] in height, both in units of vp.
 - The minimum width and height of the main window and child window of the application depends on the configuration on the product side. You can call [getWindowLimits](#getwindowlimits11) to obtain size limits.
@@ -10476,8 +10674,8 @@ This operation is not supported in a window in full-screen mode.
 
 | Name     | Type                      | Mandatory | Description                                                  |
 | -------- | ------------------------- | --------- | ------------------------------------------------------------ |
-| width    | number                    | Yes       | New width of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid. |
-| height   | number                    | Yes       | New height of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid. |
+| width    | number                    | Yes       | New width of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown. |
+| height   | number                    | Yes       | New height of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown. |
 | callback | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 **Example**
@@ -10499,7 +10697,7 @@ windowClass.resetSize(500, 1000, (err: BusinessError) => {
 
 resetSize(width: number, height: number): Promise&lt;void&gt;
 
-Changes the size of this window. This API uses a promise to return the result.
+Changes the size of this window based on the top-left vertex of the window. This API uses a promise to return the result.
 
 - The main window and child window have the following default size limits: [320, 1920] in width and [240, 1920] in height, both in units of vp.
 - The minimum width and height of the main window and child window of the application depends on the configuration on the product side. You can call [getWindowLimits](#getwindowlimits11) to obtain size limits.
@@ -10522,8 +10720,8 @@ This operation is not supported in a window in full-screen mode.
 
 | Name   | Type   | Mandatory | Description                                                  |
 | ------ | ------ | --------- | ------------------------------------------------------------ |
-| width  | number | Yes       | New width of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid. |
-| height | number | Yes       | New height of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid. |
+| width  | number | Yes       | New width of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown. |
+| height | number | Yes       | New height of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown. |
 
 **Return value**
 
@@ -11928,7 +12126,7 @@ Sets whether the area outside the child window is touchable. This API uses an as
 >
 > This API is supported since API version 7 and deprecated since API version 9.
 >
-> Since API version 9, the area outside the child window is touchable by default. This API is no longer supported and no substitute API is provided.
+> Starting from API version 9, the area outside the child window is touchable by default. This API is no longer supported and no substitute API is provided.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -11964,7 +12162,7 @@ Sets whether the area outside the child window is touchable. This API uses a pro
 >
 > This API is supported since API version 7 and deprecated since API version 9.
 >
-> Since API version 9, the area outside the child window is touchable by default. This API is no longer supported and no substitute API is provided.
+> Starting from API version 9, the area outside the child window is touchable by default. This API is no longer supported and no substitute API is provided.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 

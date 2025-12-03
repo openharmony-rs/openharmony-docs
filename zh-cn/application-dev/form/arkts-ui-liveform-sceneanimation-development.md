@@ -30,7 +30,7 @@
 
     通过[LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)创建互动卡片，创建时加载互动卡片页面。
 
-    <!-- @[liveform_LiveFormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/MyLiveFormExtensionAbility.ets) -->
+    <!-- @[liveform_LiveFormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/MyLiveFormExtensionAbility.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/myliveformextensionability/MyLiveFormExtensionAbility.ets
@@ -71,13 +71,14 @@
 
 2. 实现互动卡片页面
 
-    <!-- @[liveform_MyLiveFormPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets) -->
+    <!-- @[liveform_MyLiveFormPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets
     import { formInfo, formProvider } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
+    // Constants实现参考“互动卡片动效工具函数实现”小节
     import { Constants } from '../../common/Constants';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
@@ -91,7 +92,6 @@
     struct MyLiveFormPage {
       @State columnScale: number = 1.0;
       @State columnTranslate: number = 0.0;
-    
       private uiContext: UIContext | undefined = undefined;
       private storageForMyLiveFormPage: LocalStorage | undefined = undefined;
       private formId: string | undefined = undefined;
@@ -138,7 +138,8 @@
               hilog.info(DOMAIN, 'testTag', 'startAbilityByLiveForm succeed');
             })
             .catch((err: BusinessError) => {
-              hilog.error(DOMAIN, 'testTag', `startAbilityByLiveForm failed, code is ${err?.code}, message is ${err?.message}`);
+              hilog.error(DOMAIN, 'testTag',
+                `startAbilityByLiveForm failed, code is ${err?.code}, message is ${err?.message}`);
             });
         } catch (e) {
           hilog.error(DOMAIN, 'testTag', `startAbilityByLiveForm failed, code is ${e?.code}, message is ${e?.message}`);
@@ -146,14 +147,14 @@
       }
     
       build() {
-        Stack({alignContent: Alignment.TopStart}) {
+        Stack({ alignContent: Alignment.TopStart }) {
           // 背景组件和普通卡片一样大
           Column()
-            .width(this.formRect? this.formRect.width : 0)
-            .height(this.formRect? this.formRect.height : 0)
+            .width(this.formRect ? this.formRect.width : 0)
+            .height(this.formRect ? this.formRect.height : 0)
             .offset({
-              x: this.formRect? this.formRect.left : 0,
-              y: this.formRect? this.formRect.top : 0,
+              x: this.formRect ? this.formRect.left : 0,
+              y: this.formRect ? this.formRect.top : 0,
             })
             .borderRadius(this.formBorderRadius ? this.formBorderRadius : 0)
             .backgroundColor('#2875F5')
@@ -212,13 +213,13 @@
 
     在module.json5配置文件中[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)下配置LiveFormExtensionAbility。
 
-    <!-- @[liveform_moudlejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/module.json5) -->
+    <!-- @[liveform_moudlejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/module.json5) --> 
     
     ``` JSON5
     // entry/src/main/module.json5
-    // ···
+    // ...
         "extensionAbilities": [
-        // ···
+          // ...
           {
             "name": "MyLiveFormExtensionAbility",
             "srcEntry": "./ets/myliveformextensionability/MyLiveFormExtensionAbility.ets",
@@ -226,7 +227,7 @@
             "type": "liveForm"
           }
         ],
-        // ···
+        // ...
     ```
 
     在main_pages.json文件中声明互动卡片页面。
@@ -247,7 +248,7 @@
 
     非激活态卡片页面开发同普通卡片开发流程完全一致，在widgetCard.ets中完成。widgetCard.ets文件在卡片创建时自动生成，卡片创建流程可以参考[创建ArkTS卡片](arkts-ui-widget-creation.md)。在非激活态卡片页面实现点击卡片时，发起卡片动效请求。
 
-    <!-- @[liveform_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/widget/pages/WidgetCard.ets) -->
+    <!-- @[liveform_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/widget/pages/WidgetCard.ets
@@ -262,7 +263,6 @@
               // $r('app.float.font_size')需开发者根据实际情况替换相应的资源或值
               .fontSize($r('app.float.font_size'))
               .fontWeight(FontWeight.Medium)
-              // $r('sys.color.font_primary')需开发者根据实际情况替换相应的资源或值
               .fontColor($r('sys.color.font_primary'))
           }
           .width('100%')
@@ -329,12 +329,13 @@
 
     互动卡片通过调用[formProvider.requestOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20)接口触发动效，调用时需要明确：（1）动效申请范围。（2）动效持续时间。（3）是否使用系统提供的默认切换动效。具体可参考[formInfo.OverflowInfo](../reference/apis-form-kit/js-apis-app-form-formInfo.md#overflowinfo20)。其中，互动卡片可以通过调用[formProvider.getFormRect](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20)接口获取卡片尺寸和在窗口内的位置信息。卡片提供方以此计算动效申请范围，单位为vp。计算规则具体请参考[互动卡片请求参数约束](arkts-ui-liveform-sceneanimation-overview.md#请求参数约束)。
 
-    <!-- @[liveform_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
+    <!-- @[liveform_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/entryformability/EntryFormAbility.ets
     import { formInfo, formProvider, FormExtensionAbility } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
+    // Constants实现参考“互动卡片动效工具函数实现”小节
     import { Constants } from '../common/Constants';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
@@ -370,7 +371,12 @@
         try {
           formProvider.requestOverflow(formId, {
             // 动效申请范围
-            area: { left: left, top: top, width: width, height: height },
+            area: {
+              left: left,
+              top: top,
+              width: width,
+              height: height
+            },
             // 动效持续时间
             duration: duration,
             // 指定是否使用系统提供的默认切换动效
@@ -392,7 +398,7 @@
 
 2. 互动卡片动效工具函数实现
 
-    <!-- @[liveform_Constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/common/Constants.ets) -->
+    <!-- @[liveform_Constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/common/Constants.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/common/Constants.ets
@@ -400,16 +406,12 @@
     export class Constants {
       // 互动卡片动效超范围，左侧偏移百分比 = 偏移值/卡片宽度
       public static readonly OVERFLOW_LEFT_RATIO: number = 0.1;
-    
       // 互动卡片动效超范围，上侧偏移百分比 = 偏移值/卡片高度
       public static readonly OVERFLOW_TOP_RATIO: number = 0.15;
-    
       // 互动卡片动效超范围，宽度放大百分比
       public static readonly OVERFLOW_WIDTH_RATIO: number = 1.2;
-    
       // 互动卡片动效超范围，高度放大百分比
       public static readonly OVERFLOW_HEIGHT_RATIO: number = 1.3;
-    
       // 互动卡片动效超范围，动效时长
       public static readonly OVERFLOW_DURATION: number = 3500;
     }

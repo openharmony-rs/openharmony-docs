@@ -52,6 +52,6 @@ Enumerates the IPC error codes.
 | OH_IPC_DEAD_REMOTE_OBJECT = OH_IPC_ERROR_CODE_BASE + 5 | The remote object is dead.|
 | OH_IPC_INVALID_USER_ERROR_CODE = OH_IPC_ERROR_CODE_BASE + 6 | The custom error code is out of the range [1900001, 1999999].|
 | OH_IPC_INNER_ERROR = OH_IPC_ERROR_CODE_BASE + 7| IPC internal error.|
-| OH_IPC_ERROR_CODE_MAX = OH_IPC_ERROR_CODE_BASE + 8| Maximum error code.|
-| OH_IPC_USER_ERROR_CODE_MIN = OH_IPC_ERROR_CODE_BASE + 9| Minimum value for a custom error code.|
-| OH_IPC_USER_ERROR_CODE_MAX = OH_IPC_ERROR_CODE_BASE + 10| Maximum value for a custom error code.|
+| OH_IPC_ERROR_CODE_MAX = OH_IPC_ERROR_CODE_BASE + 1000| Maximum error code.|
+| OH_IPC_USER_ERROR_CODE_MIN = 1909000 | Minimum value for a custom error code.|
+| OH_IPC_USER_ERROR_CODE_MAX = 1909999 | Maximum value for a custom error code.|

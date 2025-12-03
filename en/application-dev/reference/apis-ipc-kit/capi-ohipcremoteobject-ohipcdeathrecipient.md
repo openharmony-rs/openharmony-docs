@@ -6,6 +6,10 @@
 <!--Tester: @maxiaorong-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct OHIPCDeathRecipient OHIPCDeathRecipient
+```
+
 ## Overview
 
 Defines an object that receives death notifications.

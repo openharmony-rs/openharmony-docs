@@ -50,15 +50,12 @@ Index.ets文件是HAR导出声明文件的入口，HAR需要导出的接口，�
 <!-- @[har_package_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/oh-package.json5) -->
 
 ``` JSON5
-// [Start har_package_008]
 {
-// ···
+  // ...
   "main": "Index.ets",
-// ···
+  // ...
 }
-// [End har_package_008]
 ```
-
 
 > **说明：**
 >
@@ -186,17 +183,14 @@ export { nativeAdd } from './src/main/ets/utils/nativeTest';
 
 ``` JSON5
 {
-  // [StartExclude har_package_001]
-// ···
+  // ...
   "dependencies": {
-	// ···
+    // ...
     "dayjs": "file:../dayjs",
     "lottie": "file:../lottie",
   },
-  // [EndExclude har_package_001]
 }
 ```
-
 
 ## 使用
 
@@ -236,8 +230,7 @@ struct IndexSec {
 ``` TypeScript
 // entry/src/main/ets/pages/Index.ets
 import { Log, func } from 'library';
-// ···
-// [EndExclude har_package_011]
+// ...
 @Entry
 @Component
 struct Index {
@@ -250,8 +243,6 @@ struct Index {
         .fontWeight(FontWeight.Bold)
         .fontSize(32)
 
-      // [StartExclude har_package_011]
-      // [StartExclude har_package_012]
       //引用HAR的ets类和方法
       Button($r('app.string.button'))
         .id('button')
@@ -264,24 +255,16 @@ struct Index {
           Log.info('har msg');
           this.message = 'func return: ' + func();
         })
-      // [EndExclude har_package_011]
-      // [EndExclude har_package_012]
+      // ...
 
-	// ···
-      // [EndExclude har_package_012]
-
-	// ···
-      // [EndExclude har_package_011]
+      // ...
     }
     .width('100%')
     .backgroundColor($r('app.color.page_background'))
     .height('100%')
   }
 }
-// [End har_package_012]
-// [End har_package_011]
 ```
-
 
 ### 引用HAR的native方法
 通过`import`引用HAR导出的native方法，示例如下所示：
@@ -291,7 +274,7 @@ struct Index {
 ``` TypeScript
 // entry/src/main/ets/pages/Index.ets
 import { nativeAdd } from 'library';
-// ···
+// ...
 @Entry
 @Component
 struct Index {
@@ -304,11 +287,7 @@ struct Index {
         .fontWeight(FontWeight.Bold)
         .fontSize(32)
 
-	// ···
-      // [EndExclude har_package_012]
-
-      // [StartExclude har_package_010]
-      // [StartExclude har_package_012]
+      // ...
       //引用HAR的native方法
       Button($r('app.string.native_add'))
         .id('nativeAdd')
@@ -319,20 +298,15 @@ struct Index {
         .onClick(() => {
           this.message = 'result: ' + nativeAdd(1, 2);
         })
-      // [EndExclude har_package_010]
-      // [EndExclude har_package_012]
 
-      // [StartExclude har_package_010]
-	// ···
+      // ...
     }
     .width('100%')
     .backgroundColor($r('app.color.page_background'))
     .height('100%')
   }
 }
-// [End har_package_012]
 ```
-
 
 ### 引用HAR的资源
 通过`$r`引用HAR中的资源，例如在HAR模块的`src/main/resources`里添加字符串资源（在string.json中定义，name：hello_har）和图片资源（icon_har.png），然后在Entry模块中引用该字符串和图片资源的示例如下所示：
@@ -341,8 +315,6 @@ struct Index {
 
 ``` TypeScript
 // entry/src/main/ets/pages/Index.ets
-// [EndExclude har_package_010]
-// [EndExclude har_package_011]
 @Entry
 @Component
 struct Index {
@@ -355,14 +327,8 @@ struct Index {
         .fontWeight(FontWeight.Bold)
         .fontSize(32)
 
-      // [StartExclude har_package_011]
-	// ···
+      // ...
 
-      // [StartExclude har_package_010]
-	// ···
-
-      // [StartExclude har_package_010]
-      // [StartExclude har_package_011]
       // 引用HAR的字符串资源
       Text($r('app.string.hello_har'))
         .id('stringHar')
@@ -383,8 +349,6 @@ struct Index {
         .width('312px')
       }
       .alignListItem(ListItemAlign.Center)
-      // [EndExclude har_package_010]
-      // [EndExclude har_package_011]
     }
     .width('100%')
     .backgroundColor($r('app.color.page_background'))
@@ -392,7 +356,6 @@ struct Index {
   }
 }
 ```
-
 
 ## 编译
 
@@ -403,41 +366,40 @@ HAR可以作为二方库和三方库提供给其他应用使用，如果需要�
 HAR模块原先默认开启混淆能力，会对API 10及以上的HAR模块，且编译模块为release时，自动进行简单的代码混淆；**从DevEco Studio 5.0.3.600开始，新建工程默认关闭代码混淆功能**，可以在HAR模块的build-profile.json5文件中的ruleOptions字段下的enable进行开启混淆，详情请见[代码混淆](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-build-obfuscation)，配置如下所示：
 
   <!-- @[har_package_013](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/build-profile.json5) -->
-
-``` JSON5
-{
-  "apiType": "stageMode",
-  "buildOption": {
-	// ···
-  },
-  "buildOptionSet": [
-    {
-      "name": "release",
-      "arkOptions": {
-        "obfuscation": {
-          "ruleOptions": {
-            "enable": true,
-            "files": [
-              "./obfuscation-rules.txt"
+  
+  ``` JSON5
+  {
+    "apiType": "stageMode",
+    "buildOption": {
+      // ...
+    },
+    "buildOptionSet": [
+      {
+        "name": "release",
+        "arkOptions": {
+          "obfuscation": {
+            "ruleOptions": {
+              "enable": true,
+              "files": [
+                "./obfuscation-rules.txt"
+              ]
+            },
+            "consumerFiles": [
+              "./consumer-rules.txt"
             ]
-          },
-          "consumerFiles": [
-            "./consumer-rules.txt"
-          ]
-        }
+          }
+        },
+        // ...
       },
-	// ···
-    },
-  ],
-  "targets": [
-    {
-      "name": "default"
-    },
-	// ···
-  ]
-}
-```
-
+    ],
+    "targets": [
+      {
+        "name": "default"
+      },
+      // ...
+    ]
+  }
+  ```
 
 ### 编译生成TS文件
 
@@ -458,27 +420,25 @@ HAR模块中arkts文件编译后，默认产物为js文件，想要将产物修�
 >
 
   <!-- @[har_package_014](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-    "name": "library",
-    "type": "har",
-    "deviceTypes": [
-      "tablet",
-      "2in1"
-    ],
-    "metadata": [
-      {
-        "name": "UseTsHar",
-        "value": "true"
-      }
-    ]
+  
+  ``` JSON5
+  {
+    "module": {
+      "name": "library",
+      "type": "har",
+      "deviceTypes": [
+        "tablet",
+        "2in1"
+      ],
+      "metadata": [
+        {
+          "name": "UseTsHar",
+          "value": "true"
+        }
+      ]
+    }
   }
-}
-```
-
-
+  ```
 
 ## 发布
 
