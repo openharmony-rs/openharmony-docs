@@ -109,7 +109,7 @@ let KeyboardDelegate: inputMethodEngine.KeyboardDelegate = inputMethodEngine.get
 
 getInputMethodEngine(): InputMethodEngine
 
-获取输入法应用客户端实例[InputMethodEngine](#inputmethodengine)。<br/>输入法应用获取该实例后，可订阅软键盘显示/隐藏请求事件等。
+获取输入法应用客户端实例[InputMethodEngine](#inputmethodenginedeprecated)。<br/>输入法应用获取该实例后，可订阅软键盘显示/隐藏请求事件等。
 
 > **说明：**
 >
@@ -121,7 +121,7 @@ getInputMethodEngine(): InputMethodEngine
 
 | 类型                                      | 说明               |
 | ----------------------------------------- | ------------------ |
-| [InputMethodEngine](#inputmethodengine) | 输入法应用客户端。 |
+| [InputMethodEngine](#inputmethodenginedeprecated) | 输入法应用客户端。 |
 
 **示例：**
 
@@ -4771,7 +4771,7 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 >
 > 从API version 8开始支持，API version 9开始废弃，建议使用[InputClient](#inputclient9)替代。
 
-下列API示例中都需使用[on('inputStart')](#oninputstart)回调获取到TextInputClient实例，再通过此实例调用对应方法。
+下列API示例中都需使用[on('inputStart')](#oninputstartdeprecated)回调获取到TextInputClient实例，再通过此实例调用对应方法。
 
 ### getForward<sup>(deprecated)</sup>
 
