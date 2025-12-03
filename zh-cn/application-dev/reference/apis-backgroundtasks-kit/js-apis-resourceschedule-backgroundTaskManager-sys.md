@@ -222,6 +222,12 @@ getBackgroundTaskState(stateInfo: [BackgroundTaskStateInfo](#backgroundtaskstate
 | ------- | ------- | ---- |-----------------------|
 | stateInfo | [BackgroundTaskStateInfo](#backgroundtaskstateinfo22) | 是    | 授权的必要信息，包括用户ID、应用包名等。 |
 
+**返回值**：
+
+| 类型                                            | 说明          |
+|-----------------------------------------------|-------------|
+|  [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | 授权结果 |
+
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
