@@ -50,6 +50,7 @@ struct WebComponent {
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 webview.WebCookieManager.setLazyInitializeWebEngine(true);
 
