@@ -163,7 +163,7 @@ enableAbilityWithCallback(name: string, capability: Array&lt;accessibility.Capab
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
-**模型约束**： 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -763,13 +763,36 @@ config.highContrastText.off((data: boolean) => {
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
-**模型约束**： 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-### 属性
+**参数：**
 
-| 名称                  | 类型                                 | 只读 | 可选 | 描述             |
-|----------------------|--------------------------------------|------|------|-------------------|
-| onDisconnect         | OnDisconnectCallback                 | 否  | 否 | 辅助扩展应用的连接断开时调用的回调函数。|
+| 参数名         | 类型                                         | 只读 | 可选 | 描述                                     |
+| ------------ | -------------------------------------------- | ---- | ---- | ---------------------------------------- |
+| onDisconnect | [OnDisconnectCallback](#OnDisconnectCallback23) | 否   | 否   | 辅助扩展应用的连接断开时调用的回调函数。 |
+
+
+## OnDisconnectCallback<sup>23+</sup>
+
+type OnDisconnectCallback = () => void
+
+**系统接口**：此类型为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**模型约束**：此类型仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| 无     | -    | -    | 无参数 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| void | 无返回值 |
 
 ## DaltonizationColorFilter
 
