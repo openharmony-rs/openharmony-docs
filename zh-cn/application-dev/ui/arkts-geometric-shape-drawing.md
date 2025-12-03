@@ -73,10 +73,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   
   class TmpOne {
-    public x:number = 0;
-    public y:number = 0;
-    public width:number = 300;
-    public height:number = 300;
+    public x: number = 0;
+    public y: number = 0;
+    public width: number = 300;
+    public height: number = 300;
   }
   
   @Entry
@@ -100,8 +100,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
             // $r('app.string.EnlargedCircle')需要替换为开发者所需的资源文件
             Text($r('app.string.EnlargedCircle'))
             Shape() {
-              Rect().width('100%').height('100%').fill('#0097D4')
-              Circle({ width: 75, height: 75 }).fill('#E87361')
+              Rect().width('100%').height('100%').fill('#8981F7')
+              Circle({ width: 75, height: 75 }).fill('#86C5E3')
             }
             .viewPort(this.viep)
             .width(150)
@@ -116,13 +116,13 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
             // $r('app.string.ShrunkCircle')需要替换为开发者所需的资源文件
             Text($r('app.string.ShrunkCircle'))
             Shape() {
-              Rect().width('100%').height('100%').fill('#BDDB69')
-              Circle({width: 75, height: 75}).fill('#E87361')
+              Rect().width('100%').height('100%').fill('#8981F7')
+              Circle({ width: 75, height: 75 }).fill('#86C5E3')
             }
             .viewPort(this.viep1)
             .width(150)
             .height(150)
-            .backgroundColor('#F5DC62')
+            .backgroundColor('#61CFBE')
           }
         }
       }
@@ -506,9 +506,14 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
         Shape() {
           Path().width(200).height(60).commands('M0 0 L400 0 L400 150 Z')
         }
-        .viewPort({ x: -80, y: -5, width: 500, height: 300 })
-        .fill(0x317AF7)
-        .stroke(Color.Red)
+        .viewPort({
+          x: -80,
+          y: -5,
+          width: 500,
+          height: 300
+        })
+        .fill('#86C5E3')
+        .stroke('#61CFBE')
         .strokeWidth(3)
         .strokeLineJoin(LineJoinStyle.Miter)
         .strokeMiterLimit(5)
