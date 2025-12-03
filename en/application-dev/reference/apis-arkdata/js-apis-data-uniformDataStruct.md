@@ -63,7 +63,7 @@ Represents data of the hyperlink type.
 
 | Name       | Type  | Read-Only| Optional| Description          |
 | ----------- | ------ | ---- | ---- |--------------|
-| uniformDataType | 'general.hyperlink'| Yes  | No  | Uniform data type, which has a fixed value of **general.hyperlink**. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype). |
+| uniformDataType | 'general.hyperlink'| Yes  | No  | Uniform data type, which has a fixed value of **general.hyperlink**. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).|
 | url         | string | No  | No  | URL.      |
 | description | string | No  | Yes  | Description of the linked content. This parameter is optional. By default, it is an empty string.|
 | details | Record<string, string> | No  | Yes | Object of the dictionary type used to describe the attributes of the hyperlink. Both the key and value of the object are of the string type. For example, the following is a **details** object used to describe the properties of a file:<br>{<br>"title":"Title of the file",<br>"content":"Content of the file"<br>}<br>By default, it is an empty dictionary object.|
@@ -94,7 +94,7 @@ Represents data of the HTML type.
 
 | Name        | Type  | Read-Only| Optional| Description                   |
 | ------------ | ------ | ---- | ---- |-----------------------|
-| uniformDataType | 'general.html'| Yes  | No  | Uniform data type, which has a fixed value of **general.html**. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype). |
+| uniformDataType | 'general.html'| Yes  | No  | Uniform data type, which has a fixed value of **general.html**. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).|
 | htmlContent  | string | No  | No  | Content in HTML format.            |
 | plainContent | string | No  | Yes  | Plaintext without HTML tags. This parameter is optional. By default, it is an empty string.|
 | details | Record<string, string> | No  | Yes  | Object of the dictionary type used to describe the attributes of the HTML content. Both the key and value of the object are of the string type. For example, the following is a **details** object used to describe the properties of a file:<br>{<br>"title":"Title of the file",<br>"content":"Content of the file"<br>}<br>By default, it is an empty dictionary object.|
@@ -125,7 +125,7 @@ Represents data of the home screen icon type defined by the system.
 
 | Name       | Type  | Read-Only| Optional| Description             |
 | ----------- | ------ | ---- | ---- |-----------------|
-| uniformDataType | 'openharmony.app-item'| Yes  | No  | Uniform data type, which has a fixed value of **openharmony.app-item**. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype). |
+| uniformDataType | 'openharmony.app-item'| Yes  | No  | Uniform data type, which has a fixed value of **openharmony.app-item**. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).|
 | appId       | string | No  | No  | ID of the application, for which the icon is used.     |
 | appName     | string | No  | No  | Name of the application, for which the icon is used.      |
 | appIconId   | string | No  | No  | Image ID of the icon.       |
@@ -167,7 +167,7 @@ Represents data of the content widget type.
 
 | Name        | Type  | Read-Only| Optional| Description                                                                                                                            |
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
-| uniformDataType | 'general.content-form'| Yes  | No | Uniform data type, which has a fixed value of **general.content-form**. |
+| uniformDataType | 'general.content-form'| Yes  | No | Uniform data type, which has a fixed value of **general.content-form**.|
 | title      | string | No  | No | Title of the content widget.|
 | thumbData  | Uint8Array | No  | Yes | Image data in the content widget.|
 | description| string | No  | Yes | Description of the content widget.|
@@ -203,7 +203,7 @@ Represents data of the widget type defined by the system.
 
 | Name        | Type  | Read-Only| Optional| Description                                                                                                                            |
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
-| uniformDataType | 'openharmony.form'| Yes  | No | Uniform data type, which has a fixed value of **openharmony.form**. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype). |
+| uniformDataType | 'openharmony.form'| Yes  | No | Uniform data type, which has a fixed value of **openharmony.form**. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).|
 | formId     | number | No  | No | Widget ID.|
 | formName   | string | No  | No | Widget name.|
 | bundleName | string | No  | No | Bundle to which the widget belongs.|
@@ -243,7 +243,7 @@ Represents data of the file URI type.
 
 | Name        | Type  | Read-Only| Optional| Description                                                                                                                            |
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
-| uniformDataType | 'general.file-uri'| Yes  | No | Uniform data type, which has a fixed value of **general.file-uri**. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype). |
+| uniformDataType | 'general.file-uri'| Yes  | No | Uniform data type, which has a fixed value of **general.file-uri**. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).|
 | oriUri     | string | No  | No | File path.|
 | fileType   | string | No  | No | File type, which must be UTD. For details, see [Prebuilt UTDs](../../database/uniform-data-type-list.md). The maximum length of the value is 1024 bytes.|
 | details | Record<string, number \| string \| Uint8Array> | No  | Yes  | Object of the dictionary type used to describe the icon. The key is of the string type, and the value can be a number, a string, or a Uint8Array. By default, it is an empty dictionary object.|
@@ -278,7 +278,7 @@ Represents data of the pixel map type defined by the system.
 
 | Name        | Type  | Read-Only| Optional| Description                                                                                                                            |
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
-| uniformDataType | 'openharmony.pixel-map'| Yes  | No | Uniform data type, which has a fixed value of **openharmony.pixel-map**. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype). |
+| uniformDataType | 'openharmony.pixel-map'| Yes  | No | Uniform data type, which has a fixed value of **openharmony.pixel-map**. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).|
 | pixelMap     | image.PixelMap | No  | No | Binary data of the pixel map.|
 | details | Record<string, number \| string \| Uint8Array> | No  | Yes  | Object of the dictionary type used to describe the icon. The key is of the string type, and the value can be a number, a string, or a Uint8Array. By default, it is an empty dictionary object.|
 
