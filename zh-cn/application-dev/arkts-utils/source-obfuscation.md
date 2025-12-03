@@ -131,6 +131,7 @@ test(a2);
 | 合并依赖模块选项 | [`-enable-lib-obfuscation-options`](#-enable-lib-obfuscation-options) |
 | 通过注释在源码中标记白名单 | [`-use-keep-in-source`](#-use-keep-in-source) |
 | 保留对象字面量属性名称 | [`-keep-object-props`](#-keep-object-props) |
+| 删除指定的方法调用语句 | [`-remove-nosideeffects-calls`](#-remove-nosideeffects-calls) |
 
 ### 默认混淆
 
@@ -943,6 +944,135 @@ const complexComputedPropertyObj = {
 }
 ```
 
+### -remove-nosideeffects-calls
+从API version 23开始，支持删除指定名称的方法调用，要求方法调用的返回值未被使用。该功能适用于删除自定义日志方法调用等场景。  
+
+支持的方法调用方式有如下几种：  
+
+1. 直接调用：method，匹配method()。
+2. 点号调用：A.B，匹配A.B()。
+3. 方括号调用：A["B"]，匹配A["B"]\(\)。
+4. 嵌套调用：A.B["method"]，匹配A.B["method"]\(\)。
+5. 通配符匹配：通过名称类通配符进行模式匹配，如*.log，匹配任意对象的log()。  
+
+**使用该选项时，需要注意以下事项：**
+
+1. 使用该选项在删除方法调用时不会分析其内部的副作用，需确保删除的方法调用不影响应用功能。
+
+2. 配置项需与源码中实际调用处的完整名称一致，而非声明处的名称。
+
+   例如，下面例子中的配置项`MyLog.debug`不是调用处的名称，`Log.debug()`不会被删除：  
+
+   ```text
+   // obfuscation-rules.txt或consumer-rules.txt：
+   -remove-nosideeffects-calls
+   MyLog.debug
+   ```
+
+   ```ts
+   // a.ts
+   export class MyLog {
+     public static debug(message: string) {
+       console.info(message);
+     }
+   }
+
+   // b.ts
+   import { MyLog as Log } from './a'
+
+   Log.debug("this is alias"); 
+   ```
+
+3. 配置项间可用逗号、空格或换行的方式分隔。
+
+**示例** 
+
+在混淆配置文件obfuscation-rules.txt或consumer-rules.txt:
+
+```text
+-remove-nosideeffects-calls
+logger
+Log.debug*
+example["log"].info
+```
+
+根据上述配置，在以下场景中的方法调用语句将被删除:  
+
+1. 文件顶层的调用。
+
+   例如：  
+   ```ts
+   function logger(msg: string) {
+     console.info(msg);
+   }
+
+   logger("in top level"); // 经过混淆，该方法调用会被删除
+   ```
+
+2. 代码块的调用。
+
+   例如：  
+   ```ts
+   class Log {
+     public static debugBlock(msg: string) {
+       console.info(msg);
+     }
+   }
+
+   function foo() {
+     Log.debugBlock("in block"); // 经过混淆，该方法调用会被删除
+   }
+   ```
+
+3. module或namespace中的调用。
+
+   例如：  
+   ```ts
+   // example.ts
+   class Log {
+     public static debugNamespace(msg: string) {
+       console.info(msg);
+     }
+   }
+
+   namespace ns {
+     Log.debugNamespace("in namespace"); // 经过混淆，该方法调用会被删除
+   }
+   ```
+
+4. switch语句中的调用。
+
+   例如：  
+   ```ts
+   interface Logger {
+     info: (msg: string, res?: number) => void;
+   }
+
+   const logFunc: Logger = {
+     info: (msg: string, res?: number): void => {
+       console.info(msg, res);
+     }
+   }
+
+   const example: Record<string, Logger> = {
+     ["log"]: logFunc
+   }
+
+   function getDayName(day: number): string {
+     switch (day) {
+       case 1:
+         example["log"].info("Matched case 1: 星期一"); // 经过混淆，该方法调用会被删除
+         return "星期一";
+       case 2:
+         example["log"].info("Matched case 2: 星期二"); // 经过混淆，该方法调用会被删除
+         return "星期二";
+       default:
+         example["log"].info("No matching case for day:", day); // 经过混淆，该方法调用会被删除
+         return "无效的日期";
+     }
+   }
+   ```
+
 ## 保留选项
 
 开启混淆后，代码中的方法、属性或路径被混淆。但是在程序运行时，如果访问未混淆的方法、属性或路径，可能导致功能不可用。因此需要根据不同的场景配置保留选项。
@@ -1559,3 +1689,4 @@ a*
 | -enable-lib-obfuscation-options | 合并依赖模块选项 | 18 |
 | -use-keep-in-source          | 通过注释在源码中标记白名单 | 19 |
 | -keep-object-props          | 保留对象字面量属性名称 | 23 |
+| -remove-nosideeffects-calls   | 删除特定场景中指定的方法调用   | 23 |
