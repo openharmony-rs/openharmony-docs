@@ -55,6 +55,19 @@ import { huks } from '@kit.UniversalKeystoreKit';
 | tag    | [HuksExternalCryptoTag](#huksexternalcryptotag)  | 否   | 否   | 参数标签，用于区分参数。 |
 | value  | boolean\|number\|bigint\|Uint8Array | 否   | 否   | 标签对应值。 |
 
+## HuksExternalPinAuthState
+
+表示Ukey PIN码管理的状态值的枚举。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+| 名称    | 值   | 说明   |
+| ------- | ---- | -------- |
+| HUKS_EXT_CRYPTO_PIN_NO_AUTH | 0 | Ukey PIN未认证。 |
+| HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED | 1 | Ukey PIN认证成功。 |
+| HUKS_EXT_CRYPTO_PIN_LOCKED  | 2 | Ukey PIN已锁定。 |
+
+
 ## huksExternalCrypto.registerProvider
 
 registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>): Promise\<void>
@@ -185,7 +198,7 @@ huksExternalCrypto.unregisterProvider(providerName, extProperties)
 
 ## huksExternalCrypto.getUkeyPinAuthState
 
-getUkeyPinAuthState(resourceId: string, params?: Array\<HuksExternalCryptoParam>): Promise\<boolean>
+getUkeyPinAuthState(resourceId: string, params?: Array\<HuksExternalCryptoParam>): Promise\<HuksExternalPinAuthState>;
 
 获取PIN码认证状态。使用Promise异步回调。
 
@@ -202,7 +215,7 @@ getUkeyPinAuthState(resourceId: string, params?: Array\<HuksExternalCryptoParam>
 
 | 类型   | 说明   |
 | -------- | ------- |
-| Promise\<boolean> | Promise对象，返回认证结果。<br>true表示认证成功；false表示认证失败。 |
+| Promise\<HuksExternalPinAuthState> | Promise对象，返回认证结果。<br>HUKS_EXT_CRYPTO_PIN_NO_AUTH 表示未认证；HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED 表示认证成功；HUKS_EXT_CRYPTO_PIN_LOCKED 表示PIN被锁定。 |
 
 **错误码：**
 
@@ -212,9 +225,11 @@ getUkeyPinAuthState(resourceId: string, params?: Array\<HuksExternalCryptoParam>
 | -------- | ------------- |
 | 801 | api is not supported. |
 | 12000005 | IPC communication failed. |
+| 12000006 | the Ukey driver operation failed. |
 | 12000014 | memory is insufficient. |
 | 12000018 | the input parameter is invalid. |
-| 12000020 | an error occured in the dependent module. |
+| 12000020 | the provider operation failed. |
+| 12000024 | the provider or Ukey is busy. |
 
 **示例：**
 
@@ -233,6 +248,6 @@ const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
 huksExternalCrypto.getUkeyPinAuthState(testResourceId, extProperties)
     .then((data) => {
-        console.info(`promise: getUkeyPinAuthState success`);
+      console.info(`promise: getUkeyPinAuthState success, data: ${data}`);
     });
 ```

@@ -19,8 +19,8 @@ HUKS提供认证状态查询接口，应用可以通过该接口查询PIN码是�
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from "@kit.BasicServicesKit";
 
-async function getUkeyPinAuthState(): Promise<boolean> {
-  let ret: boolean = false;
+async function getUkeyPinAuthState(): Promise<HuksExternalPinAuthState> {
+  let ret: HuksExternalPinAuthState = huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_NO_AUTH;
   try {
     /* 1.构造查询PIN码状态参数 */
     const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\",\"index\":{\"key\":\"testKey\"}}";
@@ -28,9 +28,8 @@ async function getUkeyPinAuthState(): Promise<boolean> {
 
     /* 2.调用getUkeyPinAuthState */
     await huksExternalCrypto.getUkeyPinAuthState(testResourceId, extProperties)
-      .then(() => {
-        console.info(`promise: getUkeyPinAuthState success`);
-        ret = true;
+      .then((data) => {
+        console.info(`promise: getUkeyPinAuthState success , data : ${data}`);
       }).catch((error: BusinessError) => {
         console.error(`promise: getUkeyPinAuthState failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
