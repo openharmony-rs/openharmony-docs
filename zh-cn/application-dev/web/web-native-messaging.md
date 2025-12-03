@@ -292,7 +292,7 @@ function sendMessageToNative() {
 6.在shared_config.json添加[extension配置](#datashare存放原生应用extension配置信息)
 
    ```json
-  {
+   {
     "crossAppSharedConfig": [
       // ...
       {
@@ -306,7 +306,7 @@ function sendMessageToNative() {
         ]
       }
     ]
-  }
+   }
    ```
 ### 实现拉起WebNativeMessagingExtensionAbility（浏览器开发者）
 浏览器负责实现扩展runtime接口，拉起WebNativeMessagingExtensionAbility，建立和管理NativeMessaging连接。需要申请权限：ohos.permission.WEB_NATIVE_MESSAGING
