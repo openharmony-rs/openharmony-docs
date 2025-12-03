@@ -1440,9 +1440,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":55,
 						"name":"add_asset",
-						"start_line":16
+						"start_line":30
 					}
 				]
 			}
@@ -1455,9 +1455,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add_group.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":55,
 						"name":"add_group_asset",
-						"start_line":16
+						"start_line":30
 					}
 				]
 			},
@@ -1465,9 +1465,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove_group.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":52,
 						"name":"remove_group_asset",
-						"start_line":16
+						"start_line":30
 					}
 				]
 			},
@@ -1475,9 +1475,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/update_group.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":55,
 						"name":"update_group_asset",
-						"start_line":16
+						"start_line":30
 					}
 				]
 			},
@@ -1485,9 +1485,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_group_plaintext.ets",
 				"functions":[
 					{
-						"end_line":57,
+						"end_line":64,
 						"name":"query_group_asset_plaintext",
-						"start_line":16
+						"start_line":36
 					}
 				]
 			},
@@ -1495,9 +1495,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_group_attr.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":57,
 						"name":"query_group_asset_attribute",
-						"start_line":16
+						"start_line":30
 					}
 				]
 			}
@@ -1510,9 +1510,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_auth.ets",
 				"functions":[
 					{
-						"end_line":127,
+						"end_line":129,
 						"name":"query_user_auth_asset",
-						"start_line":16
+						"start_line":34
 					}
 				]
 			}
@@ -1525,9 +1525,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_plaintext.ets",
 				"functions":[
 					{
-						"end_line":57,
+						"end_line":64,
 						"name":"query_single_plaintext",
-						"start_line":16
+						"start_line":36
 					}
 				]
 			},
@@ -1535,9 +1535,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_attr.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":57,
 						"name":"query_single_attribute",
-						"start_line":16
+						"start_line":30
 					}
 				]
 			},
@@ -1545,9 +1545,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_batch_attrs.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":59,
 						"name":"query_batch_attributes",
-						"start_line":16
+						"start_line":30
 					}
 				]
 			}
@@ -1560,9 +1560,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":52,
 						"name":"remove_asset",
-						"start_line":16
+						"start_line":30
 					}
 				]
 			}
@@ -1575,9 +1575,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add_sync.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":55,
 						"name":"add_sync_asset",
-						"start_line":16
+						"start_line":30
 					}
 				]
 			},
@@ -1585,9 +1585,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_sync_result.ets",
 				"functions":[
 					{
-						"end_line":32,
+						"end_line":37,
 						"name":"query_sync_result",
-						"start_line":16
+						"start_line":24
 					}
 				]
 			}
@@ -1600,9 +1600,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/update.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":55,
 						"name":"update_asset",
-						"start_line":16
+						"start_line":30
 					}
 				]
 			}
