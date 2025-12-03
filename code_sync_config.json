@@ -16561,7 +16561,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleOne.ets",
 				"functions":[
 					{
-						"end_line":68,
+						"end_line":78,
 						"name":"NavigationExampleOne",
 						"start_line":15
 					}
