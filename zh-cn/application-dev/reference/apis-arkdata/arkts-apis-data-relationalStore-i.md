@@ -223,3 +223,24 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+## ReturningConfig<sup>23+</sup>
+
+指定returnin相关接口返回值的配置信息。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| 名称              | 类型          | 只读 | 可选 | 说明                                                         |
+| ----------------- | ------------- | ---- | ---- | ------------------------------------------------------------ |
+| columns           | Array<string> | 否   | 否   | 指定结果集中返回的字段，支持传入1到4个字段。注意：不能传入带有空格、逗号以及星号的字段名。 |
+| maxReturningCount | int           | 否   | 是   | 指定结果集返回的最大行数量，默认为1024条，最大支持32766条。注意：实际修改行大于指定行数量时会丢弃指定数量之后的数据。 |
+
+## Result<sup>23+</sup>
+
+记录受影响的数据行数量和结果集。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| 名称      | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| --------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| changed   | long                                                         | 是   | 否   | 表示受影响的行数量。                                         |
+| resultSet | [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md#liteResultset23) | 是   | 否   | 表示受影响数据的结果集。注意：默认返回1024行数据，最大支持32766行，超过的数据会丢弃。 |
