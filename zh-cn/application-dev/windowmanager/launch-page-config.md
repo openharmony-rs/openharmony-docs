@@ -58,9 +58,9 @@ startWindow字段提供了增强的启动页配置能力，可用于元素更复
 
    其中，json文件需要由开发者自行创建并放置到工程目录下。推荐的文件名及路径为resources/base/profile/start_window.json，此时需在module.json5的abilities标签中配置如下：
    <!-- @[enhancedStartWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StartWindow/EnhancedStartingWindow/entry/src/main/module.json5) -->
-
-   ```json
-   "startWindow": "$profile:start_window"
+   
+   ``` JSON5
+   "startWindow": "$profile:start_window",
    ```
 
 2. 配置二级json文件的具体字段。启动页资源主要在上、下两个区域进行展示，如果对应区域的资源未配置，则留空，其他区域的位置和尺寸不受影响。
