@@ -55,8 +55,8 @@ Different from private events, universal events can be bound to most components.
 | --------------------- | -------------------- | --------------------------- |
 | type                  | string               | Event type, such as **click** and **longpress**.|
 | timestamp             | number               | Timestamp when the event is triggered.                |
-| deviceId<sup>6+</sup> | number               | ID of the device that triggers the event.              |
-| target<sup>6+</sup>   | [Target](#target6)| Target object that triggers the event.                |
+| deviceId<sup>8+</sup> | number               | ID of the device that triggers the event.              |
+| target<sup>12+</sup>   | [Target](#target6)| Target object that triggers the event.                |
 
 **Table 2** TouchEvent (inherited from BaseEvent)
 
