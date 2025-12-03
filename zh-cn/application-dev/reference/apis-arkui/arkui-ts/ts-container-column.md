@@ -25,7 +25,7 @@
 ### Column
 Column(options?: ColumnOptions)
 
-创建垂直方向线性布局容器，可以设置子组件的间距，间距类型为number或string类型。
+创建垂直方向线性布局容器，可以设置子组件的间距。
 
 >  **说明：**
 >
@@ -41,12 +41,12 @@ Column(options?: ColumnOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [ColumnOptions<sup>18+</sup>](#columnoptions18对象说明) | 否 | 纵向布局元素垂直方向间距。 |
+| options<sup>18+</sup> | [ColumnOptions](#columnoptions18对象说明) | 否 | 纵向布局元素垂直方向间距，支持设置number或string类型。 |
 
 ### Column<sup>18+</sup>
 Column(options?: ColumnOptions | ColumnOptionsV2)
 
-创建垂直方向线性布局容器，可以设置子组件的间距，间距类型为number、string或Resource类型。
+创建垂直方向线性布局容器，可以设置子组件的间距。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -58,7 +58,7 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [ColumnOptions](#columnoptions18对象说明) \| [ColumnOptionsV2](#columnoptionsv218对象说明) | 否 | 纵向布局元素垂直方向间距。 |
+| options | [ColumnOptions](#columnoptions18对象说明) \| [ColumnOptionsV2](#columnoptionsv218对象说明) | 否 | 纵向布局元素垂直方向间距，支持设置number、string或Resource类型。 |
 
 ## ColumnOptions<sup>18+</sup>对象说明
 
