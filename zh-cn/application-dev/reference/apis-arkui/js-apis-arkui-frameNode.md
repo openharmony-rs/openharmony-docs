@@ -3512,20 +3512,20 @@ abstract initialize(): ButtonAttribute
 **示例：** 
 
 ```ts
-'use static'
-import { Entry,Column,Component,Color,NodeContainer, ButtonType,ItemAlign,FlexAlign } from '@ohos.arkui.component'
+import { Entry, Column, Component, Color, NodeContainer, ItemAlign, FlexAlign } from '@ohos.arkui.component'
 import { NodeController, FrameNode, typeNode } from '@ohos.arkui.node'
 import { UIContext } from '@ohos.arkui.UIContext'
 
 class MyNodeController extends NodeController {
   public uiContext: UIContext | null = null;
   public rootNode: FrameNode | null = null;
+
   makeNode(uiContext: UIContext): FrameNode | null {
     this.uiContext = uiContext;
     this.rootNode = new FrameNode(uiContext);
 
     let flexNode = typeNode.createNode(uiContext, "Flex");
-    flexNode.initialize({alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center})
+    flexNode.initialize({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center })
       .size({ width: 100, height: 100 })
       .backgroundColor(Color.Gray)
 
@@ -3536,10 +3536,12 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 }
+
 @Entry
 @Component
 struct MyStateSample {
   private controller: MyNodeController = new MyNodeController()
+
   build() {
     Column(undefined) {
       NodeContainer(this.controller)
@@ -3577,20 +3579,20 @@ abstract initialize(label: ResourceStr, options?: ButtonOptions): ButtonAttribut
 **示例：** 
 
 ```ts
-'use static'
-import { Entry,Column,Component,Color,NodeContainer, ButtonType,ItemAlign,FlexAlign } from '@ohos.arkui.component'
+import { Entry, Column, Component, Color, NodeContainer, ButtonType, ItemAlign, FlexAlign } from '@ohos.arkui.component'
 import { NodeController, FrameNode, typeNode } from '@ohos.arkui.node'
 import { UIContext } from '@ohos.arkui.UIContext'
 
 class MyNodeController extends NodeController {
   public uiContext: UIContext | null = null;
   public rootNode: FrameNode | null = null;
+
   makeNode(uiContext: UIContext): FrameNode | null {
     this.uiContext = uiContext;
     this.rootNode = new FrameNode(uiContext);
 
     let flexNode = typeNode.createNode(uiContext, "Flex");
-    flexNode.initialize({alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center})
+    flexNode.initialize({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center })
       .size({ width: 100, height: 100 })
       .backgroundColor(Color.Gray)
 
@@ -3601,10 +3603,12 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 }
+
 @Entry
 @Component
 struct MyStateSample {
   private controller: MyNodeController = new MyNodeController()
+
   build() {
     Column(undefined) {
       NodeContainer(this.controller)
@@ -3640,35 +3644,37 @@ abstract initialize(value: ButtonOptions): ButtonAttribute
 **示例：** 
 
 ```ts
-'use static'
-import { Entry,Column,Component,Color,NodeContainer, ButtonType,ItemAlign,FlexAlign } from '@ohos.arkui.component'
+import { Entry, Column, Component, Color, NodeContainer, ButtonType, ItemAlign, FlexAlign } from '@ohos.arkui.component'
 import { NodeController, FrameNode, typeNode } from '@ohos.arkui.node'
 import { UIContext } from '@ohos.arkui.UIContext'
 
 class MyNodeController extends NodeController {
   public uiContext: UIContext | null = null;
   public rootNode: FrameNode | null = null;
+
   makeNode(uiContext: UIContext): FrameNode | null {
     this.uiContext = uiContext;
     this.rootNode = new FrameNode(uiContext);
 
     let flexNode = typeNode.createNode(uiContext, "Flex");
-    flexNode.initialize({alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center})
+    flexNode.initialize({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center })
       .size({ width: 100, height: 100 })
       .backgroundColor(Color.Gray)
-    
+
     let button = typeNode.createButtonNode(uiContext);
-    button.initialize({type: ButtonType.Normal});
+    button.initialize({ type: ButtonType.Normal });
     button.appendChild(typeNode.createCheckboxNode(uiContext))
     flexNode.appendChild(button);
     this!.rootNode!.appendChild(flexNode);
     return this.rootNode;
   }
 }
+
 @Entry
 @Component
 struct MyStateSample {
   private controller: MyNodeController = new MyNodeController()
+
   build() {
     Column(undefined) {
       NodeContainer(this.controller)
