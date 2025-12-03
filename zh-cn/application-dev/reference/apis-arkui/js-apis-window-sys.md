@@ -1194,6 +1194,8 @@ setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: number): Promise&l
 
 设置系统窗口的窗口层级。使用Promise异步回调。
 
+设置成功之后所属类型所有窗口层级调整为所设置的值，焦点窗口不发生变化。当应用退出之后该类型窗口层级恢复默认值。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -1202,7 +1204,7 @@ setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: number): Promise&l
 
 | 参数名          | 类型   | 必填  | 说明                    |
 | -------------- | ------ | ----- | ----------------------- |
-| windowType | [WindowType](#windowtype7) | 是    | 窗口类型。支持TYPE_WALLET_SWIPE_CARD、TYPE_VOICE_INTERACTION、TYPE_SCREENSHOT、TYPE_SCREEN_CONTROL、TYPE_FLOAT_NAVIGATION和TYPE_MUTISCREEN_COLLABORATION。 |
+| windowType | [WindowType](#windowtype7) | 是    | 窗口类型。仅支持TYPE_WALLET_SWIPE_CARD、TYPE_VOICE_INTERACTION、TYPE_SCREENSHOT、TYPE_SCREEN_CONTROL、TYPE_FLOAT_NAVIGATION和TYPE_MUTISCREEN_COLLABORATION。 |
 | zIndex | number | 是    | 系统窗口的层级。该参数仅支持整数输入，浮点数输入将向下取整。|
 
 **返回值：**
