@@ -1,4 +1,10 @@
 # svg
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **\<svg>** component is a basic container. It can be used as the root node of an SVG document or be used to nest an SVG fragment into an SVG document.
 

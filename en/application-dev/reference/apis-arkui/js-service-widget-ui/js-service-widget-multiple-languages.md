@@ -1,5 +1,11 @@
 # Multi-Language Capability 
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Applications designed based on the development framework apply to different countries and regions. With the multi-language capability, you do not need to develop application versions in different languages, and your users can switch between various locales. This also facilitates project maintenance.
 
@@ -102,7 +108,7 @@ Multi-language syntax used on application development pages (including simple fo
   <div>
       <!-- When the value 0 is passed, "0 people" matches the Arabic string whose key is zero. -->
     <text>{{ $tc('strings.plurals', 0) }}</text>
-      <!-- When the value 1 is passed, "1 person" matches the Arabic string whose key is one. -->
+      <!-- When the value 1 is passed, "one person" matches the Arabic string whose key is one. -->
     <text>{{ $tc('strings.plurals', 1) }}</text>
       <!-- When the value 2 is passed, "2 people" matches the Arabic string whose key is two. -->
     <text>{{ $tc('strings.plurals', 2) }}</text>
