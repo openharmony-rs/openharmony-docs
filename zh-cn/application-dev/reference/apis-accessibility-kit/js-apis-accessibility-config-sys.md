@@ -769,7 +769,7 @@ config.highContrastText.off((data: boolean) => {
 
 | 参数名         | 类型                                         | 只读 | 可选 | 描述                                     |
 | ------------ | -------------------------------------------- | ---- | ---- | ---------------------------------------- |
-| onDisconnect | [OnDisconnectCallback](#OnDisconnectCallback23) | 否   | 否   | 辅助扩展应用的连接断开时调用的回调函数。 |
+| onDisconnect | [OnDisconnectCallback](#ondisconnectcallback23) | 否   | 否   | 辅助扩展应用的连接断开时调用的回调函数。 |
 
 
 ## OnDisconnectCallback<sup>23+</sup>
