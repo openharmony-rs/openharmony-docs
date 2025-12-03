@@ -865,7 +865,7 @@ function registerResourcePath(): void {
 **ArkTS-Sta起始版本：** 23
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| shadowResolution<sup>23+</sup> | Vec2 | 否 | 是 | 表示全局阴影贴图分辨率。默认值为undefined，表示阴影贴图分辨率设置为{1024，1024}。
+| shadowResolution<sup>23+</sup> | Vec2 | 否 | 是 | 表示全局阴影贴图分辨率。默认值为undefined，表示阴影贴图分辨率设置为1024 * 1024。
 
 ## RenderParameters<sup>15+</sup>
 渲染参数接口。
