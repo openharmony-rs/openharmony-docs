@@ -4180,8 +4180,7 @@ ArkTS-Sta示例：
 // EntryAbility.ets
 import { UIAbility, Want, StartOptions, AbilityConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import window from '@ohos.window';
-import { AppStorage } from '@ohos.arkui.stateManagement'
+import { window , AppStorage } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
