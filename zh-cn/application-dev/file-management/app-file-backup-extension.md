@@ -107,51 +107,51 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
 
     <!-- @[on_backup_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->
 
-``` TypeScript
-// [Start on_release]
-import { BackupExtensionAbility } from '@kit.CoreFileKit';
-// [StartExclude on_release]
-import { BundleVersion } from '@kit.CoreFileKit';
-// [EndExclude on_release]
-// ···
+   ``` TypeScript
+   // [Start on_release]
+   import { BackupExtensionAbility } from '@kit.CoreFileKit';
+   // [StartExclude on_release]
+   import { BundleVersion } from '@kit.CoreFileKit';
+   // [EndExclude on_release]
+   // ···
 
-// [StartExclude on_release]
-interface ErrorInfo {
-  type: string,
-  errorCode: number,
-  errorInfo: string
-}
-// [EndExclude on_release]
+   // [StartExclude on_release]
+   interface ErrorInfo {
+     type: string,
+     errorCode: number,
+     errorInfo: string
+   }
+   // [EndExclude on_release]
 
-// ···
+   // ···
 
-class BackupExt extends BackupExtensionAbility {
-  // [StartExclude on_release]
-  //onBackupEx
-  async onBackupEx(backupInfo: string): Promise<string> {
-    console.info('onBackupEx ok');
-    let errorInfo: ErrorInfo = {
-      type: 'ErrorInfo',
-      errorCode: 0,
-      errorInfo: 'app diy error info'       
-    }
-    return JSON.stringify(errorInfo);
-  }
+   class BackupExt extends BackupExtensionAbility {
+     // [StartExclude on_release]
+     //onBackupEx
+     async onBackupEx(backupInfo: string): Promise<string> {
+       console.info('onBackupEx ok');
+       let errorInfo: ErrorInfo = {
+         type: 'ErrorInfo',
+         errorCode: 0,
+         errorInfo: 'app diy error info'       
+       }
+       return JSON.stringify(errorInfo);
+     }
 
-  // onRestoreEx
-  async onRestoreEx(bundleVersion : BundleVersion, restoreInfo: string): Promise<string> {
-    console.info(`onRestoreEx begin`);
-    let errorInfo: ErrorInfo = {
-      type: 'ErrorInfo',
-      errorCode: 0,
-      errorInfo: 'app diy error info'
-    }
-    return JSON.stringify(errorInfo);
-  }
-  // [EndExclude on_release]
-// ···
-}
-```
+     // onRestoreEx
+     async onRestoreEx(bundleVersion : BundleVersion, restoreInfo: string): Promise<string> {
+       console.info(`onRestoreEx begin`);
+       let errorInfo: ErrorInfo = {
+         type: 'ErrorInfo',
+         errorCode: 0,
+         errorInfo: 'app diy error info'
+       }
+       return JSON.stringify(errorInfo);
+     }
+     // [EndExclude on_release]
+   // ···
+   }
+   ```
 
 
 4. 从API 20开始，开发者如需在应用备份恢复完成后执行一些特殊操作，例如清理备份或恢复时应用创建的临时文件，可以在`BackupExtension.ets`文件中自定义类继承的`BackupExtensionAbility`，通过重写其`onRelease`方法，当备份或恢复完成时，会执行`onRelease`方法以执行开发者自定义的行为。
