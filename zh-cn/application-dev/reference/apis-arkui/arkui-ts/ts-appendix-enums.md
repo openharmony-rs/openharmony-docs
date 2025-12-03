@@ -803,17 +803,19 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## LineJoinStyle
 
+线条连接样式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 说明         |
-| ----- | ---------- |
-| Bevel | 使用斜角连接路径段。 |
-| Miter | 使用尖角连接路径段。 |
-| Round | 使用圆角连接路径段。 |
+| 名称 | 值 | 说明 |
+| -------- | ---- | ------------- |
+| Miter | 0 | 使用尖角连接路径段。  |
+| Round | 1 | 使用圆角连接路径段。  |
+| Bevel | 2 | 使用斜角连接路径段。  |
 
 ## LocalizedAlignment<sup>20+</sup>
 
@@ -839,17 +841,19 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## LineCapStyle
 
+线条端点样式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明                            |
-| ------ | ----------------------------- |
-| Butt   | 线条两端为平行线，不额外扩展。               |
-| Round  | 在线条两端延伸半个圆，直径等于线宽。            |
-| Square | 在线条两端延伸一个矩形，宽度等于线宽的一半，高度等于线宽。 |
+| 名称 | 值 | 说明 |
+| ------ | ---- | ------------- |
+| Butt   | 0 | 线条两端为平行线，不额外扩展。    |
+| Round  | 1 | 在线条两端延伸半个圆，直径等于线宽。  |
+| Square | 2 | 在线条两端延伸一个矩形，宽度等于线宽的一半，高度等于线宽。   |
 
 ## LineBreakStrategy<sup>12+</sup>
 
