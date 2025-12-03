@@ -160,55 +160,55 @@
 4. 创建跳转后的UIAbility页面，新建FunA.ets和FunB.ets，构建页面布局。
 
    <!-- @[fun_a](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/funpages/FunA.ets) -->
-    
-    ``` TypeScript
-    // src/main/ets/funpages/FunA.ets
-    @Entry
-    @Component
-    struct FunA {
-      build() {
-        Column() {
-          Row() {
-            // $r('app.string.ButtonA_label')需要替换为开发者所需的资源文件
-            Text(($r('app.string.ButtonA_label')))
-              .fontSize(24)
-              .fontWeight(FontWeight.Bold)
-              .textAlign(TextAlign.Start)
-              .margin({
-                top: 12,
-                bottom: 11,
-                right: 24,
-                left: 24
-              })
-          }
-          .width('100%')
-          .height(56)
-          .justifyContent(FlexAlign.Start)
-    
-          // $r('app.media.pic_empty')需要替换为开发者所需的资源文件
-          Image($r('app.media.pic_empty'))
-            .width(120)
-            .height(120)
-            .margin({ top: 224 })
-    
-          // $r('app.string.NoContentAvailable')需要替换为开发者所需的资源文件
-          Text($r('app.string.NoContentAvailable'))
-            .fontSize(14)
-            // $r('app.color.text_color')需要替换为开发者所需的资源文件
-            .fontColor($r('app.color.text_color'))
-            .opacity(0.4)
-            .margin({
-              top: 8,
-              bottom: 317,
-              right: 152,
-              left: 152
-            })
-        }
-        .width('100%')
-        .height('100%')
-      }
-    }
-    ```
+   
+   ``` TypeScript
+   // src/main/ets/funpages/FunA.ets
+   @Entry
+   @Component
+   struct FunA {
+     build() {
+       Column() {
+         Row() {
+           // $r('app.string.ButtonA_label')需要替换为开发者所需的资源文件
+           Text(($r('app.string.ButtonA_label')))
+             .fontSize(24)
+             .fontWeight(FontWeight.Bold)
+             .textAlign(TextAlign.Start)
+             .margin({
+               top: 12,
+               bottom: 11,
+               right: 24,
+               left: 24
+             })
+         }
+         .width('100%')
+         .height(56)
+         .justifyContent(FlexAlign.Start)
+   
+         // $r('app.media.pic_empty')需要替换为开发者所需的资源文件
+         Image($r('app.media.pic_empty'))
+           .width(120)
+           .height(120)
+           .margin({ top: 224 })
+   
+         // $r('app.string.NoContentAvailable')需要替换为开发者所需的资源文件
+         Text($r('app.string.NoContentAvailable'))
+           .fontSize(14)
+           // $r('app.color.text_color')需要替换为开发者所需的资源文件
+           .fontColor($r('app.color.text_color'))
+           .opacity(0.4)
+           .margin({
+             top: 8,
+             bottom: 317,
+             right: 152,
+             left: 152
+           })
+       }
+       .width('100%')
+       .height('100%')
+     }
+   }
+   ```
 
    <!-- @[fun_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/funpages/FunB.ets) -->
    
