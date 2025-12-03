@@ -14336,7 +14336,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/JavaScriptProxy.ets",
 				"functions":[
 					{
-						"end_line":70,
+						"end_line":71,
 						"name":"functions_that_trigger_a_run_on_the_front_end_page_are_registered_in_the_front_end_page",
 						"start_line":16
 					}
