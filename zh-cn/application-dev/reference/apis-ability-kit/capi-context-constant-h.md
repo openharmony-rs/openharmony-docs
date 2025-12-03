@@ -36,7 +36,7 @@
 
 ### AbilityRuntime_AreaMode
 
-```
+```c
 enum AbilityRuntime_AreaMode
 ```
 
