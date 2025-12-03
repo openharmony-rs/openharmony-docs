@@ -776,23 +776,14 @@ config.highContrastText.off((data: boolean) => {
 
 type OnDisconnectCallback = () => void
 
+描述AccessibilityExtensionAbility断开连接的回调接口。
+
 **系统接口**：此类型为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **模型约束**：此类型仅可在Stage模型下使用。
 
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ------ | ---- | ---- | ---- |
-| 无     | -    | -    | 无参数 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| ---- | ---- |
-| void | 无返回值 |
 
 ## DaltonizationColorFilter
 
