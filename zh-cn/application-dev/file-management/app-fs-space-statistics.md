@@ -71,16 +71,16 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
   <!--@[storageStatistics_getCurrentBundleStats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
-
-``` TypeScript
-      storageStatistics.getCurrentBundleStats((err: BusinessError, bundleStats: storageStatistics.BundleStats) => {
-        if (err) {
-          console.error(`Invoke getCurrentBundleStats failed, code is ${err.code}, message is ${err.message}`);
-        } else {
-          console.info(`Invoke getCurrentBundleStats succeeded, appsize is ${bundleStats.appSize}`);
-        }
-      });
-```
+  
+  ``` TypeScript
+  storageStatistics.getCurrentBundleStats((err: BusinessError, bundleStats: storageStatistics.BundleStats) => {
+    if (err) {
+      console.error(`Invoke getCurrentBundleStats failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info(`Invoke getCurrentBundleStats succeeded, appsize is ${bundleStats.appSize}`);
+    }
+  });
+  ```
 
 
 - 异步获取内置存储的总空间大小。
