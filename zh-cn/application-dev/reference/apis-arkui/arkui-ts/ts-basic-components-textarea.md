@@ -2081,6 +2081,11 @@ struct TextAreaExample {
       id: TextMenuItemId.of('create2'),
       icon: $r('app.media.startIcon'),
     };
+    // 从API version 23开始支持TextMenuItemId.autoFill
+    let targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.autoFill));
+    if (targetIndex !== -1) {
+      menuItems.splice(targetIndex, 1); // 从目标索引删除1个元素
+    }
     menuItems.push(item1);
     menuItems.unshift(item2);
     return menuItems;
