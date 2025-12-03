@@ -83,7 +83,7 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_MD_KEY_BITRATE                      | 比特率的键，值类型为int64_t。该键用于音视频编码场景。在视频编码场景下该键是可选的。 |
 | OH_MD_KEY_PROFILE                     | 编码档次，值类型为int32_t，请参见[OH_AVCProfile](capi-native-avcodec-base-h.md#oh_avcprofile)，[OH_HEVCProfile](capi-native-avcodec-base-h.md#oh_hevcprofile)，[OH_AACProfile](capi-native-avcodec-base-h.md#oh_aacprofile)。该键是可选的。 |
 | OH_MD_KEY_MAX_INPUT_SIZE        | 设置解码输入码流大小最大值的键，值类型为int32_t。该键是可选的。           |
-| OH_MD_KEY_ENABLE_SYNC_MODE   | 设置音视频编解码同步模式的键，值类型为int32_t，1表示使能，0表示不使能。该键是可选的配置项，默认不配置则表示不使能同步模，在Configure阶段使用。 |
+| OH_MD_KEY_ENABLE_SYNC_MODE   | 设置音视频编解码同步模式的键，值类型为int32_t，1表示使能，0表示不使能。该键是可选的配置项，默认不配置则表示不使能同步模式，在Configure阶段使用。 |
 
 ### 视频专有的键值对
 
