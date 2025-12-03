@@ -20,72 +20,72 @@
 2. 构建ArkTS卡片页面代码布局，卡片页面布局中有两个按钮，点击其中一个按钮时调用postCardAction向指定UIAbility发送router事件，并在事件内定义需要传递的内容。
 
    <!-- @[widget_event_router_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventrouter/pages/WidgetEventRouterCard.ets) -->
-    
-    ``` TypeScript
-    // src/main/ets/widgeteventrouter/pages/WidgetEventRouterCard.ets
-    @Entry
-    @Component
-    struct WidgetEventRouterCard {
-      build() {
-        Column() {
-          // $r('app.string.JumpLabel')需要替换为开发者所需的资源文件
-          Text($r('app.string.JumpLabel'))
-            .fontColor('#FFFFFF')
-            .opacity(0.9)
-            .fontSize(14)
-            .margin({ top: '8%', left: '10%' })
-          Row() {
-            Column() {
-              Button() {
-                // $r('app.string.ButtonA_label')需要替换为开发者所需的资源文件
-                Text($r('app.string.ButtonA_label'))
-                  .fontColor('#45A6F4')
-                  .fontSize(12)
-              }
-              .width(120)
-              .height(32)
-              .margin({ top: '20%' })
-              .backgroundColor('#FFFFFF')
-              .borderRadius(16)
-              .onClick(() => {
-                postCardAction(this, {
-                  action: 'router',
-                  abilityName: 'EntryAbility',
-                  params: { targetPage: 'funA' }
-                });
-              })
-    
-              Button() {
-                // $r('app.string.ButtonB_label')需要替换为开发者所需的资源文件
-                Text($r('app.string.ButtonB_label'))
-                  .fontColor('#45A6F4')
-                  .fontSize(12)
-              }
-              .width(120)
-              .height(32)
-              .margin({ top: '8%', bottom: '15vp' })
-              .backgroundColor('#FFFFFF')
-              .borderRadius(16)
-              .onClick(() => {
-                postCardAction(this, {
-                  action: 'router',
-                  abilityName: 'EntryAbility',
-                  params: { targetPage: 'funB' }
-                });
-              })
-            }
-          }.width('100%').height('80%')
-          .justifyContent(FlexAlign.Center)
-        }
-        .width('100%')
-        .height('100%')
-        .alignItems(HorizontalAlign.Start)
-        // $r('app.media.CardEvent')需要替换为开发者所需的资源文件
-        .backgroundImage($r('app.media.CardEvent'))
-        .backgroundImageSize(ImageSize.Cover)
-      }
-    }
-    ```
+   
+   ``` TypeScript
+   // src/main/ets/widgeteventrouter/pages/WidgetEventRouterCard.ets
+   @Entry
+   @Component
+   struct WidgetEventRouterCard {
+     build() {
+       Column() {
+         // $r('app.string.JumpLabel')需要替换为开发者所需的资源文件
+         Text($r('app.string.JumpLabel'))
+           .fontColor('#FFFFFF')
+           .opacity(0.9)
+           .fontSize(14)
+           .margin({ top: '8%', left: '10%' })
+         Row() {
+           Column() {
+             Button() {
+               // $r('app.string.ButtonA_label')需要替换为开发者所需的资源文件
+               Text($r('app.string.ButtonA_label'))
+                 .fontColor('#45A6F4')
+                 .fontSize(12)
+             }
+             .width(120)
+             .height(32)
+             .margin({ top: '20%' })
+             .backgroundColor('#FFFFFF')
+             .borderRadius(16)
+             .onClick(() => {
+               postCardAction(this, {
+                 action: 'router',
+                 abilityName: 'EntryAbility',
+                 params: { targetPage: 'funA' }
+               });
+             })
+   
+             Button() {
+               // $r('app.string.ButtonB_label')需要替换为开发者所需的资源文件
+               Text($r('app.string.ButtonB_label'))
+                 .fontColor('#45A6F4')
+                 .fontSize(12)
+             }
+             .width(120)
+             .height(32)
+             .margin({ top: '8%', bottom: '15vp' })
+             .backgroundColor('#FFFFFF')
+             .borderRadius(16)
+             .onClick(() => {
+               postCardAction(this, {
+                 action: 'router',
+                 abilityName: 'EntryAbility',
+                 params: { targetPage: 'funB' }
+               });
+             })
+           }
+         }.width('100%').height('80%')
+         .justifyContent(FlexAlign.Center)
+       }
+       .width('100%')
+       .height('100%')
+       .alignItems(HorizontalAlign.Start)
+       // $r('app.media.CardEvent')需要替换为开发者所需的资源文件
+       .backgroundImage($r('app.media.CardEvent'))
+       .backgroundImageSize(ImageSize.Cover)
+     }
+   }
+   ```
 
 3. 处理router事件，在UIAbility中接收router事件并获取参数，根据传递的params不同，选择拉起不同的页面。
   
