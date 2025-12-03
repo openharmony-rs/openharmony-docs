@@ -415,7 +415,6 @@ struct SelectionMenuLongPress {
         .onPageEnd(()=>{
           this.progressVisible = false;
         })
-        .hitTestBehavior(HitTestMode.None) // 使预览Web不响应手势
     }.width($$.width).height($$.height) // 设置预览宽高
   }
 

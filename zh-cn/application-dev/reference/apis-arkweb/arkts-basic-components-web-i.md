@@ -49,18 +49,6 @@ Web媒体策略的配置。
 | ----------- | -------------- | --- | ------|--------------- |
 | script      | string         | 否  |  否    | 需要注入、执行的JavaScript脚本。 |
 | scriptRules | Array\<string> | 否  |  否    | 一组允许来源的匹配规则。<br>1.如果需要允许所有来源的网址，使用通配符“ * ”。<br>2.如果需要精确匹配，则描述网站地址，如"https:\//www\.example.com"。<br>3.如果模糊匹配网址，可以使用“ * ”通配符替代，如"https://*.example.com"。不允许使用"x. * .y.com"、" * foobar.com"等。<br>4.如果来源是ip地址，则使用规则2。<br>5.对于http/https以外的协议(自定义协议)，不支持使用精确匹配和模糊匹配，且必须以`://`结尾，例如"resource://"。<br>6.一组scriptRule中，如果其中一条不满足以上规则，则整组scriptRule都不生效。 |
-| urlRegexRules<sup>23+</sup>  | Array\<[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)\> | 否  |  是    | 一组允许来源的正则匹配规则。 当scriptRules设置为[]时，才使用urlRegexRules进行匹配。 |
-
-## UrlRegexRule<sup>23+</sup>
-
-定义Url正则表达式规则。
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-| 名称          | 类型  | 只读 | 可选 | 说明            |
-| ----------- | ------ | --- | -----|---------------- |
-| secondLevelDomain | string | 否  | 否    | 二级域名的精确匹配。例如，"https://www.example.com"的二级域名为example.com；"https://www.example.com.cn"二级域名为example.com.cn。网址没有二级域名则为空。 |
-| rule | string | 否  | 否    | url正则表达式。 在secondLevelDomain匹配成功后，才进行url正则匹配。 |
 
 ## NestedScrollOptionsExt<sup>14+</sup>
 
@@ -86,7 +74,7 @@ Web媒体策略的配置。
 |  enable  | boolean | 否 | 否 | 是否开启应用接管网页媒体播放功能。<br/> true表示开启应用接管网页媒体播放功能，false表示关闭应用接管网页媒体播放功能。<br/> 默认值：false。 |
 |  shouldOverlay | boolean | 否 | 否 | 开启应用接管网页媒体播放功能后，应用接管网页视频的播放器画面是否覆盖网页内容。<br/> true表示改变视频图层的高度，使其覆盖网页内容。false表示不覆盖网页内容，跟原视频图层高度一样，嵌入在网页中。<br>默认值：false。 |
 
-## ExpandedMenuItemOptions<sup>12+</sup>
+## ExpandedMenuItemOptions<sup>(deprecated)</sup>
 
 自定义菜单扩展项。
 
@@ -875,36 +863,3 @@ Web屏幕捕获的配置。
 | detectionTiming | double[] | 否 | 是 | 用以设置需要在加载后多少秒的时机来检测是否白屏。<br>单位：秒。<br>注：<br>1.重复值会忽略。<br>2.需大于0，小于0的值会被忽略。<br/>默认值：[1.0,3.0,5.0]。 |
 | detectionMethods | [BlankScreenDetectionMethod](./arkts-basic-components-web-e.md#blankscreendetectionmethod22)[] | 否 | 是 | 使用检测策略的方法，是一个数组。<br>注：<br>1.重复值会忽略。  <br/>默认值：[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]。  |
 | contentfulNodesCountThreshold | int | 否 | 是 | 在使用到检测有内容的节点检测策略时，才会生效。<br/>可以设置0-${检测策略最大节点}，如果小于等于阈值则会触发近似白屏。<br/>默认值：0。|
-
-## CameraCaptureStateChangeInfo<sup>23+</sup>
-
-定义摄像头触发回调时的改变前后的状态信息。
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-| 名称             | 类型      | 只读 | 可选   | 说明                                       |
-| -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| originalState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | 否 | 否 | 原来的状态   |
-| newState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | 否 | 否 | 改变后的状态   |
-
-## MicrophoneCaptureStateChangeInfo<sup>23+</sup>
-
-定义麦克风触发回调时的改变前后的状态信息。
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-| 名称             | 类型      | 只读 | 可选   | 说明                                       |
-| -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| originalState | [MicrophoneCameraCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 原来的状态。   |
-| newState | [MicrophoneCameraCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 改变后的状态。   |
-
-## AcceptableFileType<sup>23+</sup>
-
-定义文件选择器拉取文件时网页推荐的文件类型信息。
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-| 名称  | 类型                     | 只读 | 可选 | 说明             |
-| :---- | :------------------------- | :--- | :--- | :--------------- |
-| mimeType | string | 否 | 否   | 文件MIME类型。 |
-| acceptableType | Array\<string\> | 否 | 否   | 文件类型数组，包含若干可供选择的文件类型。 |
