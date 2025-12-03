@@ -97,23 +97,7 @@
 <!-- @[query_user_auth_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_auth.ets) -->
 
 ``` TypeScript
-import { asset } from '@kit.AssetStoreKit';
-import { util } from '@kit.ArkTS';
-import { userAuth } from '@kit.UserAuthenticationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function stringToArray(str: string): Uint8Array {
-  let textEncoder = new util.TextEncoder();
-  return textEncoder.encodeInto(str);
-}
-
-function arrayToString(arr: Uint8Array): string {
-  let textDecoder = util.TextDecoder.create('utf-8', { ignoreBOM: true });
-  let str = textDecoder.decodeToString(arr, { stream: false });
-  return str;
-}
-
-export async function userAuthenticate(challenge: Uint8Array): Promise<Uint8Array> {
+async function userAuthenticate(challenge: Uint8Array): Promise<Uint8Array> {
   return new Promise((resolve, reject) => {
     const authParam: userAuth.AuthParam = {
       challenge: challenge,
