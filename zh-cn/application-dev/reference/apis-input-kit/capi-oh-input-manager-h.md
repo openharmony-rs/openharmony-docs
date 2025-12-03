@@ -3705,7 +3705,7 @@ Input_Result OH_Input_GetDeviceAddress(Input_DeviceInfo *deviceInfo, char **addr
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) 表示操作成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示deviceInfo或者address是空指针。 |
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示deviceInfo或者address是空指针。 |
 
 ### OH_Input_GetFunctionKeyState()
 
@@ -3731,7 +3731,7 @@ Input_Result OH_Input_GetFunctionKeyState(int32_t keyCode, int32_t *state)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_GetFunctionKeyState的执行结果。<br>         [INPUT_SUCCESS](#input_result) 表示获取状态成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>         {@link INPUT_DEVICE_NOT_EXIST } 表示键盘设备不存在。 |
+| [Input_Result](#input_result) | OH_Input_GetFunctionKeyState的执行结果。<br>  [INPUT_SUCCESS](#input_result) 表示获取状态成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>  [INPUT_KEYBOARD_DEVICE_NOT_EXIST](#input_result) 表示键盘设备不存在。 |
 
 ### OH_Input_InjectTouchEvent()
 
