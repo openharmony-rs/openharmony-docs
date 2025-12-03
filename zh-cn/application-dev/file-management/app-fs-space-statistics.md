@@ -107,16 +107,16 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
   <!--@[storageStatistics_getTotalSizeSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
-
-``` TypeScript
-    try {
-      let number = storageStatistics.getTotalSizeSync();
-      console.info(`getTotalSizeSync successfully, number is ${number}`);
-    } catch (err) {
-      let error: BusinessError = err as BusinessError;
-      console.error(`getTotalSizeSync failed with error, code is ${error.code}, message is ${error.message}`);
-    }
-```
+  
+  ``` TypeScript
+  try {
+    let number = storageStatistics.getTotalSizeSync();
+    console.info(`getTotalSizeSync successfully, number is ${number}`);
+  } catch (err) {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getTotalSizeSync failed with error, code is ${error.code}, message is ${error.message}`);
+  }
+  ```
 
 
 - 异步获取内置存储的可用空间大小。
