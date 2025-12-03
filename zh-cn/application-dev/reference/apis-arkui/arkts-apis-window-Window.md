@@ -9968,8 +9968,7 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 
 提供窗口方向、屏幕方向、屏幕角度互相转换的能力。
 
-窗口的方向分别用0、1、2和3表示竖屏、反向横屏、反向竖屏和横屏四个方向，其和枚举类[Orientation](arkts-apis-window-e.md#orientation9)中各显示模式的方向是一致的，如窗口方向为横屏时，和Orientation设置为LANDSCAPE的方向是一致的。
-屏幕的方向和角度分别为[display](js-apis-display.md#display)对象的orientation和rotation属性。
+窗口方向指窗口所在屏幕的方向，以窗口模块对横竖屏的定义方式表示，窗口的方向分别用0、1、2和3表示竖屏、反向横屏、反向竖屏和横屏四个方向，其对横竖屏的定义与[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)和枚举类[Orientation](arkts-apis-window-e.md#orientation9)中对横竖屏的定义一致，如窗口方向为横屏时，和Orientation设置为LANDSCAPE的方向是一致的。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
