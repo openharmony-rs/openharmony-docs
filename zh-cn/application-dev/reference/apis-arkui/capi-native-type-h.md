@@ -995,7 +995,7 @@ enum ArkUI_AccessibilityCheckedState
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_ACCESSIBILITY_UNCHECKED = 0 | 复选框未被选中。 |
-| ARKUI_ACCESSIBILITY_CHECKED | 复选框被选中。 |
+| ARKUI_ACCESSIBILITY_CHECKED = 1 | 复选框被选中。 |
 
 ### ArkUI_AccessibilityActionType
 
@@ -1390,9 +1390,9 @@ enum ArkUI_AccessibilityMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_ACCESSIBILITY_MODE_AUTO = 0 | 根据组件不同会转换为“enabled”或者“disabled”。 |
-| ARKUI_ACCESSIBILITY_MODE_ENABLED | 当前组件可被无障碍辅助服务所识别。 |
-| ARKUI_ACCESSIBILITY_MODE_DISABLED | 当前组件不可被无障碍辅助服务所识别。 |
-| ARKUI_ACCESSIBILITY_MODE_DISABLED_FOR_DESCENDANTS | 当前组件及其所有子组件不可被无障碍辅助服务所识别。 |
+| ARKUI_ACCESSIBILITY_MODE_ENABLED = 1 | 当前组件可被无障碍辅助服务所识别。 |
+| ARKUI_ACCESSIBILITY_MODE_DISABLED = 2 | 当前组件不可被无障碍辅助服务所识别。 |
+| ARKUI_ACCESSIBILITY_MODE_DISABLED_FOR_DESCENDANTS = 3 | 当前组件及其所有子组件不可被无障碍辅助服务所识别。 |
 
 ### ArkUI_TextCopyOptions
 
