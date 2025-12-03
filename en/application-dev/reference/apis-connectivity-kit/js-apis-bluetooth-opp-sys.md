@@ -1,5 +1,12 @@
 # @ohos.bluetooth.opp (Bluetooth OPP Module) (System API)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
 The OPP module provides the Bluetooth-based file transfer functions, including sending files, receiving files, and obtaining the file transfer progress.
 
 > **NOTE**
@@ -42,7 +49,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let oppProfile = opp.createOppServerProfile();
     console.info('oppServer success');
@@ -59,7 +66,7 @@ Represents the **OppServerProfile** class. Before using APIs of this class, you 
 
 sendFile(deviceId: string, fileHolds: Array&lt;FileHolder&lt;): Promise&lt;void&gt;
 
-Send files over Bluetooth.
+Send files over Bluetooth. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -81,12 +88,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Permission denied. Non-system applications are not allowed to use system APIs.                 |
+|202 | Non-system applications are not allowed to use system APIs.                 |
 |203 | This function is prohibited by enterprise management policies.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900003 | Bluetooth disabled.                 |
+|2900003 | Bluetooth switch is off.                 |
 |2900004 | Profile is not supported.                 |
 |2900099 | Failed to send file.                        |
 |2903001 | The file type is not supported.                 |
@@ -97,7 +104,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
+import { fileIo as fs} from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
 // Create fileHolders.
 try {
@@ -128,7 +135,7 @@ try {
 
 setIncomingFileConfirmation(accept: boolean, fileFd: number): Promise&lt;void&gt;
 
-Receives files over Bluetooth.
+Receives files over Bluetooth. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -150,12 +157,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Permission denied. Non-system applications are not allowed to use system APIs.                 |
+|202 | Non-system applications are not allowed to use system APIs.                 |
 |203 | This function is prohibited by enterprise management policies.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter.                |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900003 | Bluetooth disabled.                 |
+|2900003 | Bluetooth switch is off.                 |
 |2900004 | Profile is not supported.                 |
 |2900099 | Failed to confirm the received file information.                        |
 |2903002 | Current Transfer Information is busy.                 |
@@ -165,12 +172,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
+import { fileIo as fs} from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
 // Create fileHolders.
 try {
     let oppProfile = opp.createOppServerProfile();
-    let pathDir = this.context.filesDir + "/test.jpg";
+    let pathDir = "/test.jpg"; // Replace the example path with the actual one.
     let file = fs.openSync(pathDir, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
     oppProfile.setIncomingFileConfirmation(true, file.fd);
     // Close the file descriptor after file receiving is complete. 
@@ -206,16 +213,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Permission denied. Non-system applications are not allowed to use system APIs.                 |
+|202 | Non-system applications are not allowed to use system APIs.                 |
 |203 | This function is prohibited by enterprise management policies.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
-|2900004 | Profile is not supported.                 |
-|2903001 | The file type is not supported.                 |
-|2903002 | Current Transfer Information is busy.                 |
-|2903003 | The file is not accessible.                        |
+|2900004 | Profile not supported.                 |
 
 **Example**
 
@@ -265,15 +269,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Permission denied. Non-system applications are not allowed to use system APIs.          |
+|202 | Non-system applications are not allowed to use system APIs.          |
 |203 | This function is prohibited by enterprise management policies.          |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
-|2900004 | Profile is not supported.                 |
-|2903001 | The file type is not supported.                 |
-|2903002 | Current Transfer Information is busy.                 |
-|2903003 | The file is not accessible.                        |
+|2900004 | Profile not supported.                 |
 
 **Example**
 
@@ -316,15 +318,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Permission denied. Non-system applications are not allowed to use system APIs.          |
+|202 | Non-system applications are not allowed to use system APIs.          |
 |203 | This function is prohibited by enterprise management policies.          |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
-|2900004 | Profile is not supported.                 |
-|2903001 | The file type is not supported.                 |
-|2903002 | Current Transfer Information is busy.                 |
-|2903003 | The file is not accessible.                        |
+|2900004 | Profile not supported.                 |
 
 **Example**
 
@@ -374,21 +374,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Permission denied. Non-system applications are not allowed to use system APIs.          |
+|202 | Non-system applications are not allowed to use system APIs.          |
 |203 | This function is prohibited by enterprise management policies.          |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
-|2900004 | Profile is not supported.                 |
-|2903001 | The file type is not supported.                 |
-|2903002 | Current Transfer Information is busy.                 |
-|2903003 | The file is not accessible.                        |
+|2900004 | Profile not supported.                 |
 
 **Example**
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
 // Create fileHolders.
 try {
@@ -403,7 +400,7 @@ try {
 
 cancelTransfer(): Promise&lt;void&gt;
 
-Cancels Bluetooth file transfer.
+Cancels Bluetooth file transfer. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -418,11 +415,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Permission denied. Non-system applications are not allowed to use system APIs.          |
+|202 | Non-system applications are not allowed to use system APIs.          |
 |203 | This function is prohibited by enterprise management policies.          |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900003 | Bluetooth disabled.                 |
+|2900003 | Bluetooth switch is off.                 |
 |2900004 | Profile is not supported.                 |
 |2900099 | Failed to cancel the current transfer.                        |
 |2903002 | Current Transfer Information is busy.                 |
@@ -446,7 +443,7 @@ try {
 
 getCurrentTransferInformation(): Promise&lt;[OppTransferInformation](#opptransferinformation)&gt;
 
-Obtains the information about the file that is being transferred.
+Obtains the information about the file that is being transferred. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -461,11 +458,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Permission denied. Non-system applications are not allowed to use system APIs.          |
+|202 | Non-system applications are not allowed to use system APIs.          |
 |203 | This function is prohibited by enterprise management policies.          |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900003 | Bluetooth disabled.                 |
+|2900003 | Bluetooth switch is off.                 |
 |2900004 | Profile is not supported.                 |
 |2900099 | Failed to obtain the current transmission information.                        |
 |2903004 | Current Transfer Information is empty.                 |
@@ -480,7 +477,6 @@ import { opp } from '@kit.ConnectivityKit';
 try {
     let oppProfile = opp.createOppServerProfile();
     let data = oppProfile.getCurrentTransferInformation();
-    console.info('[opp_js] data ', data.status);
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -490,7 +486,7 @@ try {
 
 setLastReceivedFileUri(uri: string): Promise&lt;void&gt;
 
-Sets the URI of the last received file.
+Sets the URI of the last received file. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -511,7 +507,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Permission denied. Non-system applications are not allowed to use system APIs.          |
+|202 | Non-system applications are not allowed to use system APIs.          |
 |203 | This function is prohibited by enterprise management policies.          |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
@@ -524,12 +520,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
 // Create fileHolders.
 try {
     let oppProfile = opp.createOppServerProfile();
-    oppProfile.setLastReceivedFileUri("file://media/Photo/1/IMG_1739266559_000/screenshot_20250211_173419.jpg ");
+    oppProfile.setLastReceivedFileUri("file://media/Photo/1/IMG_1739266559_000/screenshot_20250211_173419.jpg"); // Replace the example path with the actual one.
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }

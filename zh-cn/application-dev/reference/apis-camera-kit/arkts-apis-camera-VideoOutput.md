@@ -4,13 +4,13 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+录像会话中使用的输出信息，继承[CameraOutput](arkts-apis-camera-CameraOutput.md)。
 
 > **说明：**
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
-录像会话中使用的输出信息，继承[CameraOutput](arkts-apis-camera-CameraOutput.md)。
 
 ## 导入模块
 
@@ -357,7 +357,7 @@ getSupportedFrameRates(): Array\<FrameRateRange\>
 
 |      类型      |     说明     |
 | -------------  | ------------ |
-| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | 支持的帧率范围列表 |
+| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | 支持的帧率范围列表。若接口调用失败，返回undefined。 |
 
 **示例：**
 
@@ -493,7 +493,7 @@ isMirrorSupported(): boolean
 
 | 类型            | 说明                              |
 | -------------- |---------------------------------|
-| boolean | 返回是否支持镜像录像，true表示支持，false表示不支持。 |
+| boolean | 返回是否支持镜像录像，true表示支持，false表示不支持。若接口调用失败，返回undefined。 |
 
 **示例：**
 

@@ -4,7 +4,7 @@
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
+<!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
 本模块提供后台任务管理能力。
@@ -504,11 +504,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
-| 名称             | 类型     | 必填   | 说明                                       |
-| --------------- | ------ | ---- | ---------------------------------------- |
-| requestId       | number | 是    | 延迟挂起的请求ID。                               |
-| actualDelayTime | number | 是    | 应用的实际挂起延迟时间，以毫秒为单位。<br/>一般情况下默认值为180000，低电量（依据系统低电量广播）时默认值为60000。 |
-
+| 名称             | 类型     | 只读   | 可选   | 说明                                       |
+| --------------- | ------ | ---- | ---- | ---------------------------------------- |
+| requestId       | number | 否    | 否    | 延迟挂起的请求ID。                               |
+| actualDelayTime | number | 否    | 否    | 应用的实际挂起延迟时间，以毫秒为单位。<br/>一般情况下默认值为180000，低电量（依据系统低电量广播）时默认值为60000。 |
 
 ## BackgroundMode<sup>(deprecated)</sup>
 

@@ -41,7 +41,7 @@
 
 ## 开发步骤
 
-以下步骤如何说明了将视频解码器输出的本机缓冲区（OHNativeBuffer）导入为Vulkan内存，并绑定到VkImage/VkBuffer。
+以下步骤说明了如何将视频解码器输出的本机缓冲区（OHNativeBuffer）导入为Vulkan内存，并绑定到VkImage/VkBuffer。
 
 1. 启动渲染子线程，初始化Vulkan环境，动态加载libvulkan.so, 并加载Vulkan基础函数的指针。
     ```c++
@@ -163,7 +163,7 @@
     }
     ```
 
-    同时更新初始化Vulkan的上下文，包括Vulkan的实列、选择物理设备、创建渲染渲染管线等。
+    同时更新初始化Vulkan的上下文，包括Vulkan的实列、选择物理设备、创建渲染管线等。
     ```c++
     void VulkanRender::SetupWindow(NativeWindow *nativeWindow) {
         nativeWindow_ = nativeWindow;

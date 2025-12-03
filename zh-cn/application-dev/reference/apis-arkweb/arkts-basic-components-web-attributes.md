@@ -275,7 +275,7 @@ mixedMode(mixedMode: MixedMode)
 
 | 参数名       | 类型                        | 必填   | 说明      |
 | --------- | --------------------------- | ---- | --------- |
-| mixedMode | [MixedMode](./arkts-basic-components-web-e.md#mixedmode) | 是    | 要设置的混合内容模式。<br>传入undefined或null时为MixedMode.None。 |
+| mixedMode | [MixedMode](./arkts-basic-components-web-e.md#mixedmode) | 是    | 要设置的混合内容模式。<br>传入undefined或null时为MixedMode.All。 |
 
 **示例：**
 
@@ -853,7 +853,7 @@ blockNetwork(block: boolean)
 
 | 参数名   | 类型    | 必填   | 说明                |
 | ----- | ------- | ---- | ------------------- |
-| block | boolean | 是    | 设置Web组件是否允许从网络加载资源。<br>true表示不允许从网络加载资源，false表示允许从网络加载资源。<br>传入undefined或null时为true。 |
+| block | boolean | 是    | 设置Web组件是否允许从网络加载资源。<br>true表示不允许从网络加载资源，false表示允许从网络加载资源。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -2411,7 +2411,7 @@ metaViewport(enabled: boolean)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -2427,7 +2427,7 @@ struct WebComponent {
     }
   }
 }
-  ```
+```
 加载的html文件。
 ```html
 <!--index.html-->
@@ -3576,54 +3576,6 @@ gestureFocusMode(mode: GestureFocusMode)
   </head>
   <body>
     <input type="text" placeholder="Text">
-  </body>
-  </html>
-  ```
-
-## rotateRenderEffect<sup>21+</sup>
-
-rotateRenderEffect(effect: WebRotateEffect)
-
-设置Web组件旋转时，宽高动画过程中组件内容的填充方式。若未显式调用属性，默认保持动画终态的内容大小，内容始终与组件左上角对齐。
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**参数：**
-
-| 参数名              | 类型                              | 必填   | 说明          |
-| ------------------- | ------------------------------   | ------ | ------------- |
-| effect | [WebRotateEffect](./arkts-basic-components-web-e.md#webrotateeffect21) | 是     | 设置Web组件旋转时，宽高动画过程中组件内容的填充方式。|
-
-**示例：**
-
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    @State effect: WebRotateEffect = WebRotateEffect.TOPLEFT_EFFECT;
-    build() {
-      Column() {
-        Web({ src: $rawfile("index.html"), controller: this.controller })
-          .rotateRenderEffect(this.effect)
-      }
-    }
-  }
-  ```
-
-  加载的html文件。
-  ```html
-  <!--index.html-->
-  <!DOCTYPE html>
-  <html>
-  <head>
-    <title>测试网页</title>
-  </head>
-  <body>
-    <p>测试网页</p>
   </body>
   </html>
   ```

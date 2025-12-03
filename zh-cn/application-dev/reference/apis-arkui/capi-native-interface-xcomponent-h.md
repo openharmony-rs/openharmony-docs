@@ -4,7 +4,7 @@
 <!--Owner: @ZhangYu-Coder-->
 <!--Designer: @sunbees-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -195,10 +195,10 @@ enum OH_NativeXComponent_TouchEventType
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_NATIVEXCOMPONENT_DOWN = 0 | 手指按下时触发触摸事件。 |
-| OH_NATIVEXCOMPONENT_UP | 手指抬起时触发触摸事件。 |
-| OH_NATIVEXCOMPONENT_MOVE | 手指按下状态下在屏幕上移动时触发触摸事件。 |
-| OH_NATIVEXCOMPONENT_CANCEL | 触摸事件取消时触发事件。 |
-| OH_NATIVEXCOMPONENT_UNKNOWN | 无效的触摸类型。 |
+| OH_NATIVEXCOMPONENT_UP = 1 | 手指抬起时触发触摸事件。 |
+| OH_NATIVEXCOMPONENT_MOVE = 2 | 手指按下状态下在屏幕上移动时触发触摸事件。 |
+| OH_NATIVEXCOMPONENT_CANCEL = 3 | 触摸事件取消时触发事件。 |
+| OH_NATIVEXCOMPONENT_UNKNOWN = 4 | 无效的触摸类型。 |
 
 ### OH_NativeXComponent_TouchPointToolType
 
@@ -216,14 +216,14 @@ enum OH_NativeXComponent_TouchPointToolType
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_NATIVEXCOMPONENT_TOOL_TYPE_UNKNOWN = 0 | 未识别工具类型。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_FINGER | 表示用手指。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_PEN | 表示用触笔。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_RUBBER | 表示用橡皮擦。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_BRUSH | 表示用画笔。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_PENCIL | 表示用铅笔。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH | 表示用气笔。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_MOUSE | 表示用鼠标。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS | 表示用晶状体。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_FINGER = 1 | 表示用手指。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_PEN = 2 | 表示用触笔。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_RUBBER = 3 | 表示用橡皮擦。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_BRUSH = 4 | 表示用画笔。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_PENCIL = 5 | 表示用铅笔。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH = 6 | 表示用气笔。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_MOUSE = 7 | 表示用鼠标。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS = 8 | 表示用晶状体。 |
 
 ### OH_NativeXComponent_EventSourceType
 
@@ -241,11 +241,11 @@ enum OH_NativeXComponent_EventSourceType
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_NATIVEXCOMPONENT_SOURCE_TYPE_UNKNOWN = 0 | 未知的输入源类型。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_MOUSE | 表示输入源生成鼠标多点触摸事件。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHSCREEN | 表示输入源生成一个触摸屏多点触摸事件。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHPAD | 表示输入源生成一个触摸板多点触摸事件。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_JOYSTICK | 表示输入源生成一个操纵杆多点触摸事件。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_KEYBOARD | 表示输入源生成一个键盘事件。<br>**起始版本：** 10 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_MOUSE = 1 | 表示输入源生成鼠标多点触摸事件。 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHSCREEN = 2 | 表示输入源生成一个触摸屏多点触摸事件。 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHPAD = 3 | 表示输入源生成一个触摸板多点触摸事件。 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_JOYSTICK = 4 | 表示输入源生成一个操纵杆多点触摸事件。 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_KEYBOARD = 5 | 表示输入源生成一个键盘事件。<br>**起始版本：** 10 |
 
 ### OH_NativeXComponent_MouseEventAction
 
@@ -263,10 +263,10 @@ enum OH_NativeXComponent_MouseEventAction
 | 枚举项 | 描述                              |
 | -- |---------------------------------|
 | OH_NATIVEXCOMPONENT_MOUSE_NONE = 0 | 无效鼠标事件。                         |
-| OH_NATIVEXCOMPONENT_MOUSE_PRESS | 鼠标按键按下时触发鼠标事件。                  |
-| OH_NATIVEXCOMPONENT_MOUSE_RELEASE | 鼠标按键松开时触发鼠标事件。                  |
-| OH_NATIVEXCOMPONENT_MOUSE_MOVE | 鼠标在屏幕上移动时触发鼠标事件。                |
-| OH_NATIVEXCOMPONENT_MOUSE_CANCEL | 鼠标按键被取消时触发鼠标事件。<br>**起始版本：** 18 |
+| OH_NATIVEXCOMPONENT_MOUSE_PRESS = 1 | 鼠标按键按下时触发鼠标事件。                  |
+| OH_NATIVEXCOMPONENT_MOUSE_RELEASE = 2 | 鼠标按键松开时触发鼠标事件。                  |
+| OH_NATIVEXCOMPONENT_MOUSE_MOVE = 3 | 鼠标在屏幕上移动时触发鼠标事件。                |
+| OH_NATIVEXCOMPONENT_MOUSE_CANCEL = 4 | 鼠标按键被取消时触发鼠标事件。<br>**起始版本：** 18 |
 
 ### OH_NativeXComponent_MouseEventButton
 
@@ -345,7 +345,7 @@ int32_t OH_NativeXComponent_GetXComponentId(OH_NativeXComponent* component, char
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetXComponentSize()
 
@@ -374,7 +374,7 @@ int32_t OH_NativeXComponent_GetXComponentSize(OH_NativeXComponent* component, co
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetXComponentOffset()
 
@@ -403,7 +403,7 @@ int32_t OH_NativeXComponent_GetXComponentOffset(OH_NativeXComponent* component, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetTouchEvent()
 
@@ -431,7 +431,7 @@ int32_t OH_NativeXComponent_GetTouchEvent(OH_NativeXComponent* component, const 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetTouchPointToolType()
 
@@ -459,7 +459,7 @@ int32_t OH_NativeXComponent_GetTouchPointToolType(OH_NativeXComponent* component
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetTouchPointTiltX()
 
@@ -487,7 +487,7 @@ int32_t OH_NativeXComponent_GetTouchPointTiltX(OH_NativeXComponent* component, u
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetTouchPointTiltY()
 
@@ -515,7 +515,7 @@ int32_t OH_NativeXComponent_GetTouchPointTiltY(OH_NativeXComponent* component, u
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetTouchPointWindowX()
 
@@ -656,7 +656,7 @@ int32_t OH_NativeXComponent_GetHistoricalPoints(OH_NativeXComponent* component, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetMouseEvent()
 
@@ -684,7 +684,7 @@ int32_t OH_NativeXComponent_GetMouseEvent(OH_NativeXComponent* component, const 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterCallback()
 
@@ -711,7 +711,7 @@ int32_t OH_NativeXComponent_RegisterCallback(OH_NativeXComponent* component, OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterMouseEventCallback()
 
@@ -738,7 +738,7 @@ int32_t OH_NativeXComponent_RegisterMouseEventCallback(OH_NativeXComponent* comp
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetExtraMouseEventInfo()
 
@@ -819,7 +819,7 @@ int32_t OH_NativeXComponent_RegisterFocusEventCallback(OH_NativeXComponent* comp
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterKeyEventCallback()
 
@@ -846,7 +846,7 @@ int32_t OH_NativeXComponent_RegisterKeyEventCallback(OH_NativeXComponent* compon
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterBlurEventCallback()
 
@@ -873,7 +873,7 @@ int32_t OH_NativeXComponent_RegisterBlurEventCallback(OH_NativeXComponent* compo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEvent()
 
@@ -900,7 +900,7 @@ int32_t OH_NativeXComponent_GetKeyEvent(OH_NativeXComponent* component, OH_Nativ
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventAction()
 
@@ -927,7 +927,7 @@ int32_t OH_NativeXComponent_GetKeyEventAction(OH_NativeXComponent_KeyEvent* keyE
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventCode()
 
@@ -954,7 +954,7 @@ int32_t OH_NativeXComponent_GetKeyEventCode(OH_NativeXComponent_KeyEvent* keyEve
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventSourceType()
 
@@ -981,7 +981,7 @@ int32_t OH_NativeXComponent_GetKeyEventSourceType(OH_NativeXComponent_KeyEvent* 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventDeviceId()
 
@@ -1008,7 +1008,7 @@ int32_t OH_NativeXComponent_GetKeyEventDeviceId(OH_NativeXComponent_KeyEvent* ke
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventTimestamp()
 
@@ -1035,7 +1035,7 @@ int32_t OH_NativeXComponent_GetKeyEventTimestamp(OH_NativeXComponent_KeyEvent* k
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventModifierKeyStates()
 
@@ -1083,7 +1083,7 @@ int32_t OH_NativeXComponent_GetKeyEventNumLockState(OH_NativeXComponent_KeyEvent
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)* keyEvent | 表示指向按键事件的指针。 |
-| bool* isNumLockOn | 表示用于接收NumLock（小键盘锁定）键状态的bool类型变量的地址。 |
+| bool* isNumLockOn | 表示用于接收NumLock（小键盘锁定）键状态的bool类型变量的地址。true表示小键盘锁定，false表示小键盘解锁。 |
 
 **返回：**
 
@@ -1110,7 +1110,7 @@ int32_t OH_NativeXComponent_GetKeyEventCapsLockState(OH_NativeXComponent_KeyEven
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)* keyEvent | 表示指向按键事件的指针。 |
-| bool* isCapsLockOn | 表示用于接收CapsLock（大写锁定）键状态的bool类型变量的地址。 |
+| bool* isCapsLockOn | 表示用于接收CapsLock（大写锁定）键状态的bool类型变量的地址。true表示大写处于锁定，false表示大写处于解锁。 |
 
 **返回：**
 
@@ -1137,7 +1137,7 @@ int32_t OH_NativeXComponent_GetKeyEventScrollLockState(OH_NativeXComponent_KeyEv
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)* keyEvent | 表示指向按键事件的指针。 |
-| bool* isScrollLockOn | 表示用于接收ScrollLock（滚动锁定）键状态的bool类型变量的地址。 |
+| bool* isScrollLockOn | 表示用于接收ScrollLock（滚动锁定）键状态的bool类型变量的地址。true表示滚动处于锁定，false表示滚动处于解锁。 |
 
 **返回：**
 
@@ -1170,7 +1170,7 @@ int32_t OH_NativeXComponent_SetExpectedFrameRateRange(OH_NativeXComponent* compo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterOnFrameCallback()
 
@@ -1197,7 +1197,7 @@ int32_t OH_NativeXComponent_RegisterOnFrameCallback(OH_NativeXComponent* compone
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_UnregisterOnFrameCallback()
 
@@ -1223,7 +1223,7 @@ int32_t OH_NativeXComponent_UnregisterOnFrameCallback(OH_NativeXComponent* compo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_AttachNativeRootNode()
 
@@ -1361,13 +1361,13 @@ int32_t OH_NativeXComponent_SetNeedSoftKeyboard(OH_NativeXComponent* component, 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
-| bool needSoftKeyboard | 表示此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例是否需要软键盘。默认值为false。 |
+| bool needSoftKeyboard | 表示此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例是否需要软键盘。需要时为true，不需要时为false，默认值为false。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterSurfaceShowCallback()
 
@@ -1394,7 +1394,7 @@ int32_t OH_NativeXComponent_RegisterSurfaceShowCallback(OH_NativeXComponent* com
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterSurfaceHideCallback()
 
@@ -1421,7 +1421,7 @@ int32_t OH_NativeXComponent_RegisterSurfaceHideCallback(OH_NativeXComponent* com
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetTouchEventSourceType()
 
@@ -1523,7 +1523,7 @@ int32_t OH_NativeXComponent_RegisterKeyEventCallbackWithResult(OH_NativeXCompone
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
-| bool (\*callback)(OH_NativeXComponent* component, void* window) | 表示指向按键事件回调的指针。- window: 表示NativeWindow句柄。 |
+| bool (\*callback)(OH_NativeXComponent* component, void* window) | 表示指向按键事件回调的指针。- window: 表示NativeWindow句柄。当回调返回值为true时，该事件将不会继续分发；当回调返回值为false时，该事件将按照事件处理流程继续分发。 |
 
 **返回：**
 
@@ -1885,7 +1885,7 @@ int32_t OH_ArkUI_XComponent_SetAutoInitialize(ArkUI_NodeHandle node, bool autoIn
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 表示指向XComponent组件实例的指针。 |
-| bool autoInitialize | 表示XComponent组件是否需要自动初始化Surface。如果autoInitialize值是true，OnSurfaceCreated回调会在挂树时被触发，OnSurfaceDestroyed回调会在下树时被触发。autoInitialize默认值是true。 |
+| bool autoInitialize | 表示XComponent组件是否需要自动初始化Surface。如果autoInitialize值是true，OnSurfaceCreated回调会在挂树时被触发，OnSurfaceDestroyed回调会在下树时被触发。false表示组件不需要自动初始化Surface。<br>autoInitialize默认值是true。 |
 
 **返回：**
 
@@ -1964,7 +1964,7 @@ int32_t OH_ArkUI_XComponent_IsInitialized(ArkUI_NodeHandle node, bool* isInitial
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 表示指向XComponent组件实例的指针。 |
-| bool* isInitialized | 表示XComponent组件是否已经初始化Surface。 |
+| bool* isInitialized | 表示XComponent组件是否已经初始化Surface。true表示组件已初始化Surface，false表示组件未初始化Surface。 |
 
 **返回：**
 
@@ -2071,7 +2071,7 @@ int32_t OH_ArkUI_XComponent_SetNeedSoftKeyboard(ArkUI_NodeHandle node, bool need
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 表示XComponent组件实例。 |
-| bool needSoftKeyboard | 表示是否需要软键盘。默认值为false。 |
+| bool needSoftKeyboard | 表示是否需要软键盘。需要时为true，不需要时为false，默认值为false。 |
 
 **返回：**
 

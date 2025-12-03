@@ -1,8 +1,15 @@
 # Event Interception Development (C/C++)
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## Introduction
 
-The multimodal module provides applications with the ability to create and delete keystrokes and intercept input events. For example, you can intercept key, mouse, touch, and axis events.
+Since API version 12, the multimodal module provides applications with the ability to create and delete keys and intercept input events (including mouse, touch, and axis events). For example, you can intercept key, mouse, touch, and axis events.
 
 ## Available APIs
 

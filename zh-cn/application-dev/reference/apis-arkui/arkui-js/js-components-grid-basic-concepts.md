@@ -4,7 +4,7 @@
 <!--Owner: @lanshouren-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供栅格布局效果，通过栅格系统进行元素布局，主要提供&lt;grid-container&gt;&lt;grid-row&gt;&lt;grid-col&gt;栅格容器组件。
 
@@ -49,4 +49,4 @@
 
    md: 600&lt;=水平分辨率&lt;840时：8 Columns栅格；
 
-   lg: 840&lt;=水平分辨率时：12 Columns栅格；
+   lg: 840&lt;=水平分辨率时：12 Columns栅格。

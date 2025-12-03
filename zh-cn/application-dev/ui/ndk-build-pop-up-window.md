@@ -4,16 +4,16 @@
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 可以通过创建弹窗控制器和创建自定义弹窗的内容对象两种方法显示自定义弹窗，设置其样式和内容。
 
 
-[通过创建弹窗控制器显示自定义弹窗](#通过创建弹窗控制器显示自定义弹窗)：此时在命名为ArkUI_NativeDialogAPI_x （x表示版本）的结构体里，定义了弹窗接口集合，用于实现各种弹窗控制。
+[通过创建弹窗控制器显示自定义弹窗](#通过创建弹窗控制器显示自定义弹窗)：在命名为ArkUI_NativeDialogAPI_x （x表示版本）的结构体中，定义了弹窗接口集合，用于实现各种弹窗控制。
 
 
-[通过创建自定义弹窗的内容对象显示自定义弹窗](#通过创建自定义弹窗的内容对象显示自定义弹窗)：该方式下弹窗接口定义在[native_dialog.h](../reference/apis-arkui/capi-native-dialog-h.md#函数)的函数中。
+[通过创建自定义弹窗的内容对象显示自定义弹窗](#通过创建自定义弹窗的内容对象显示自定义弹窗)：该方式下的弹窗接口在[native_dialog.h](../reference/apis-arkui/capi-native-dialog-h.md#函数)的函数中定义。
 
 
 > **说明：**
@@ -270,7 +270,7 @@
 
 ## 弹窗的生命周期
 
-弹窗显示和关闭前后，存在四个生命周期：registerOnWillAppear、registerOnDidAppear、registerOnWillDisappear、registerOnDidDisappear。
+从API version 19开始，弹窗显示和关闭前后，存在四个生命周期：registerOnWillAppear、registerOnDidAppear、registerOnWillDisappear、registerOnDidDisappear。
 这些生命周期方法需要在调用show方法之前调用，生命周期的时序如下：
 registerOnWillAppear -> 弹窗显示动画开始 -> 弹窗显示动画结束 -> registerOnDidAppear -> 弹窗显示完成 ->
 registerOnWillDisappear -> 弹窗关闭动画开始 ->  弹窗关闭动画结束 -> registerOnDidDisappear -> 弹窗关闭完成。

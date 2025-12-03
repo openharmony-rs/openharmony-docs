@@ -58,7 +58,7 @@ screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
     return;
   }
   console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
-  if(data.length > 0 ）{
+  if (data.length > 0) {
     screenClass = data[0];
   }
 });
@@ -803,7 +803,7 @@ isScreenRotationLocked(): Promise&lt;boolean&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 screen.isScreenRotationLocked().then((isLocked: boolean) => {
-  console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${islocked}`);
+  console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${isLocked}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to get the screen rotation lock status. Code:${err.code}, message is ${err.message}`);
 });
@@ -839,12 +839,12 @@ isScreenRotationLocked(callback: AsyncCallback&lt;boolean&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 screen.isScreenRotationLocked((err: BusinessError, isLocked: boolean) => {
-const errCode: number = err.code;
-if (errCode) {
-  console.error(`Failed to get the screen rotation lock status. Code:${err.code}, message is ${err.message}`);
-  return;
-}
-console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${islocked}`);
+  const errCode: number = err.code;
+  if (errCode) {
+    console.error(`Failed to get the screen rotation lock status. Code:${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${isLocked}`);
 });
 ```
 

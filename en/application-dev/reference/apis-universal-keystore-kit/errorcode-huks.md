@@ -17,18 +17,27 @@
 
 The `${messageInfo}` is not supported.
 
+**Description**
+
+The features specified in `${messageInfo}` are not supported.
+
 **Possible Causes**
 
 The API is supported, but certain features in the API, such as the algorithm, are not supported.
 
 **Solution**
 
-Use the supported features as parameters.
+Adjust the API parameters and use the supported alternative parameters.
 
 ## 12000002 Missing Key Algorithm Parameter
+
 **Error Message**
 
 Failed to obtain the `${messageInfo}`. It is not set in ParamSet.
+
+**Description**
+
+The parameters in `${messageInfo}` cannot be obtained because related parameters are not set.
 
 **Possible Causes**
 
@@ -45,9 +54,13 @@ The key parameter is not set.
 
 Invalid `${messageInfo}`.
 
+**Description**
+
+An invalid parameter is used. For details, see `${messageInfo}`.
+
 **Possible Causes**
 
-An invalid parameter is found.
+The related parameters are invalid when the key is used.
 
 **Solution**
 
@@ -64,6 +77,13 @@ A file error can be any of the following:
 - Invalid file size.
 - Failed to `${messageInfo}`.
 
+**Description**
+
+A file error can be any of the following: 
+
+- Disk is full.
+- Invalid file size.
+- The file cannot be accessed. For details, see `${messageInfo}` in the log.
 
 **Possible Causes**
 
@@ -83,6 +103,13 @@ A file error can be any of the following:
 - Failed to get messages from IPC.
 - IPC `${messageInfo}`.
 
+**Description**
+
+A file error can be any of the following: 
+
+- Failed to obtain messages from the IPC.
+- An IPC error occurs. For details about the cause, see `${messageInfo}` in the log.
+
 **Possible Causes**
 
 The Inter-Process Communication (IPC) failed.
@@ -96,6 +123,10 @@ Locate and rectify the IPC failure.
 **Error Message**
 
 Crypto engine error.
+
+**Description**
+
+Crypto operation failed.
 
 **Possible Causes**
 
@@ -115,6 +146,10 @@ The algorithm library operation fails. The possible causes include the following
 
 This credential is invalidated permanently.
 
+**Description**
+
+The current credential has expired permanently.
+
 **Possible Causes**
 
 The possible causes include the following:
@@ -133,6 +168,10 @@ The possible causes include the following:
 
 The authentication token verification failed.
 
+**Description**
+
+The user token cannot pass the authentication.
+
 **Possible Causes**
 
 The challenge value is incorrect.
@@ -148,6 +187,10 @@ The challenge value is incorrect.
 
 This authentication token timed out.
 
+**Description**
+
+The token of the current user has timed out.
+
 **Possible Causes**
 
 The authentication failed because the authentication token timed out.
@@ -159,6 +202,10 @@ Initialize the key and perform the authentication again. Ensure that the differe
 ## 12000010 Key Operation Sessions Reaches the Limit
 
 **Error Message**
+
+The number of key operation sessions has reached the limit.
+
+**Description**
 
 The number of key operation sessions has reached the limit.
 
@@ -177,6 +224,10 @@ The number of concurrent key operation sessions has reached the maximum (15).
 
 The entity does not exist.
 
+**Description**
+
+The target object does not exist.
+
 **Possible Causes**
 
 The key corresponding to the key alias does not exist.
@@ -192,6 +243,10 @@ The key corresponding to the key alias does not exist.
 
 Device environment or input parameter abnormal.
 
+**Description**
+
+The device environment or input parameters are abnormal.
+
 **Possible Causes**
 
 An external error, such as a hardware fault or file error, occurs.
@@ -205,6 +260,10 @@ Provide the error code and log information to the related party.
 **Error Message**
 
 The credential does not exist.
+
+**Description**
+
+The current credential does not exist.
 
 **Possible Causes**
 
@@ -223,6 +282,13 @@ A file error can be any of the following:
 - Insufficient memory.
 - Malloc failed.
 
+**Description**
+
+A file error can be any of the following: 
+
+- The memory is insufficient.
+- Failed to allocate memory.
+
 **Possible Causes**
 
 The system memory is insufficient, or the buffer allocated for the output parameter is too small.
@@ -238,6 +304,10 @@ The system memory is insufficient, or the buffer allocated for the output parame
 
 Failed to obtain the `${messageInfo}` information via UserIAM.
 
+**Description**
+
+Failed to obtain the `${messageInfo}` information through UserIAM.
+
 **Possible Causes**
 
 The called system service has not started.
@@ -252,6 +322,10 @@ Wait for the system service to start and call the API again.
 
 The key with same alias is already exist.
 
+**Description**
+
+A key with the same name already exists.
+
 **Possible Causes**
 
 The same key alias already exists and cannot be overwritten.
@@ -265,6 +339,10 @@ Check whether the same key alias needs to be overwritten as needed.
 **Error Message**
 
 The input parameter is invalid.
+
+**Description**
+
+The entered parameter is invalid.
 
 **Possible Causes**
 

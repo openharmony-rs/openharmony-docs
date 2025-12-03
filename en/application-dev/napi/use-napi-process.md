@@ -10,7 +10,7 @@
 To implement cross-language interaction using Node-API, you need to register and load modules based on the Node-API mechanism first.
 
 
-- ArkTS/JS: Import the .so library and call C++ APIs.  
+- ArkTS/JS: Call C++ methods by importing the required .so library.
 
 - Native: Implement module registration via a .cpp file. You need to declare the name of the library to register and define the mappings between the native and JS/ArkTS APIs in the callbacks registered.
 
@@ -225,5 +225,12 @@ Each engine instance corresponds to a JS thread. The objects of an instance cann
 - The Node-API can be used only by JS threads.
 - The input parameter **env** of a native API can be bound to a JS thread only when the thread is created.
 - Data created using Node-APIs must be released before **env** is completely destroyed. Otherwise, memory leaks may be caused. In addition, accessing or using the data after **napi_env** is destroyed may cause the process to crash.
+
+
+### Debugging Device Selection
+
+You are advised to use a real device instead of the previewer for code debugging. The previewer is mainly used to debug UI components. If it is used for functionality debugging, the following error may occur:
+
+- TypeError: undefined is not callable
 
 Maintenance and testing measures have been added to address common errors. For details, see [Analyzing Exceptions and Crashes Using Node-API](use-napi-about-crash.md).

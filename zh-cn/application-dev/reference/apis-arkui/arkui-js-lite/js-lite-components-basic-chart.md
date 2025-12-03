@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 图表组件，用于呈现线形图、柱状图界面。
 
@@ -66,7 +66,7 @@
 | headPoint   | PointStyle     | 否    | 线最前端位置白点的样式和大小。      |
 | topPoint    | PointStyle     | 否    | 最高点的样式和大小。           |
 | bottomPoint | PointStyle     | 否    | 最低点的样式和大小。           |
-| loop        | ChartLoop      | 否    | 设置屏幕显示满时，是否需要重头开始绘制。 |
+| loop        | ChartLoop      | 否    | 设置屏幕显示满时，是否需要从头开始绘制。 |
 
   **表5** ChartLineStyle
 

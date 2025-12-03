@@ -4,7 +4,7 @@
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
   > **说明：**
   > 该组件从API Version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
@@ -56,15 +56,15 @@
 
 提供surface类型xcomponent，支持相机预览等能力。
 
-   ```html
+```html
 <!-- xxx.hml -->
 <div style="height: 500px; width: 500px; flex-direction: column; justify-content: center; align-items: center;">
 	<text id = 'camera' class = 'title'>camera_display</text>
 	<xcomponent id = 'xcomponent' type = 'surface' onload = 'onload' ondestroy = 'ondestroy'></xcomponent>
 </div>
-   ```
+```
 
-   ```js
+```js
 // xxx.js
 import camera from '@ohos.multimedia.camera';
 export default {
@@ -75,4 +75,4 @@ export default {
         })
     }
 }
-   ```
+```

@@ -54,7 +54,7 @@ The setting fails due to system scheduling.
 
 **Possible Causes**
 
-The system scheduling is performed.
+The setting fails due to system scheduling.
 
 **Solution**
 

@@ -1,4 +1,10 @@
 # \@Watch Decorator: Getting Notified of State Variable Changes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 
 \@Watch is used to listen for state variables. If your application needs watch for value changes of a state variable, you can decorate the variable with \@Watch.
@@ -10,7 +16,7 @@ Before reading this topic, you are advised to read [\@State](./arkts-state.md) t
 
 > **NOTE**
 >
-> Since API version 9, this decorator is supported in ArkTS widgets.
+> This decorator can be used in ArkTS widgets since API version 9.
 >
 > This decorator can be used in atomic services since API version 11.
 
@@ -46,7 +52,7 @@ An application can request to be notified whenever the value of the \@Watch deco
 4. A \@Watch function is not called upon custom component variable initialization, because initialization is not considered as variable mutation. A \@Watch function is called upon change of the custom component variable.
 
 
-## Restrictions
+## Constraints
 
 - Pay attention to the risk of infinite loops. Loops can be caused by the \@Watch callback directly or indirectly mutating the same variable. To avoid loops, do not mutate the \@Watch decorated state variable inside the callback handler.
 
@@ -54,17 +60,17 @@ An application can request to be notified whenever the value of the \@Watch deco
 
 - Calling **async await** from an \@Watch function is not recommended, because asynchronous behavior may cause performance issues of re-rendering.
 
-- The \@Watch parameter is mandatory and must be of the string type. Otherwise, an error will be reported during compilation.
+- The \@Watch parameter is mandatory and must be of the string type. Otherwise, an error will be reported during compilation. You are not advised to pass undefined. If undefined is passed, no error is reported during compilation, which is equivalent to passing undefined.
 
 ```ts
-// Incorrect format. An error is reported during compilation.
+// Incorrect usage. An error is reported during compilation.
 @State @Watch() num: number = 10;
 @State @Watch(change) num: number = 10;
 
-// Correct format.
+// Correct usage.
 @State @Watch('change') num: number = 10;
 change() {
-  console.log(`xxx`);
+  console.info(`xxx`);
 }
 ```
 
@@ -74,13 +80,13 @@ change() {
 // Incorrect format. No function with the corresponding name is available, and an error is reported during compilation.
 @State @Watch('change') num: number = 10;
 onChange() {
-  console.log(`xxx`);
+  console.info(`xxx`);
 }
 
-// Correct format.
+// Correct usage.
 @State @Watch('change') num: number = 10;
 change() {
-  console.log(`xxx`);
+  console.info(`xxx`);
 }
 ```
 
@@ -90,18 +96,18 @@ change() {
 // Incorrect format.
 @Watch('change') num: number = 10;
 change() {
-  console.log(`xxx`);
+  console.info(`xxx`);
 }
 
-// Correct format.
+// Correct usage.
 @State @Watch('change') num: number = 10;
 change() {
-  console.log(`xxx`);
+  console.info(`xxx`);
 }
 ```
 
 
-## Use Scenarios
+## Use Cases
 
 ### \@Watch and Custom Component Update
 
@@ -140,7 +146,7 @@ struct CountModifier {
 }
 ```
 
-The procedure is as follows:
+Procedure:
 
 1. The click event **Button.onClick** of the **CountModifier** custom component increases the value of **count**.
 
@@ -226,7 +232,7 @@ The procedure is as follows:
 
 ### Time for \@Watch to be Called
 
-To show the \@Watch callback is called when the state variable changes, this example uses the \@Link and \@ObjectLink decorators in the child component to observe different state objects. You can change the state variable in the parent component and observe the calling sequence of the \@Watch callback to learn the relationship between the time for calling, value assignment, and synchronization.
+To show that the triggering time of the \@Watch callback is based on the actual change time of the state variable, this example uses the \@Link and [\@ObjectLink](./arkts-observed-and-objectlink.md) decorators in the child component to observe different status objects. You can change the state variable in the parent component and observe the calling sequence of the \@Watch callback to learn the relationship between the time for calling, value assignment, and synchronization.
 
 ```ts
 @Observed
@@ -245,11 +251,11 @@ struct ParentComponent {
   @State @Watch('onTaskBChanged') taskB: Task = new Task(false);
 
   onTaskAChanged(changedPropertyName: string): void {
-    console.log(`Property of this parent component task is changed: ${changedPropertyName}`);
+    console.info(`Property of this parent component task is changed: ${changedPropertyName}`);
   }
 
   onTaskBChanged(changedPropertyName: string): void {
-    console.log(`Property of this parent component task is changed: ${changedPropertyName}`);
+    console.info(`Property of this parent component task is changed: ${changedPropertyName}`);
   }
 
   build() {
@@ -272,11 +278,11 @@ struct ChildComponent {
   @Link @Watch('onLinkTaskChanged') taskA: Task;
 
   onObjectLinkTaskChanged(changedPropertyName: string): void {
-    console.log(`Property of @ObjectLink associated task of the child component is changed: ${changedPropertyName}`);
+    console.info(`Property of @ObjectLink associated task of the child component is changed: ${changedPropertyName}`);
   }
 
   onLinkTaskChanged(changedPropertyName: string): void {
-    console.log(`Property of @Link associated task of the child component is changed: ${changedPropertyName}`);
+    console.info(`Property of @Link associated task of the child component is changed: ${changedPropertyName}`);
   }
 
   build() {
@@ -302,7 +308,7 @@ The procedure is as follows:
 
 3. The log shows that the calling sequence of the parent component is the same as the change sequence, but the calling sequence of \@Link and \@ObjectLink in the child component is different from the variable update sequence in the parent component. This is because the variables of the parent component are updated in real time, but \@Link and \@ObjectLink in the child component obtain the updated data at different time. The \@Link associated state is updated synchronously, therefore, state change immediately calls the \@Watch callback. The update of \@ObjectLink associated state depends on the synchronization of the parent component. The \@Watch callback is called only when the parent component updates and passes the updated variables to the child component. Therefore, the calling sequence is slightly later than that of \@Link.
 
-4. This behavior meets the expectation. The \@Watch callback is invoked based on the actual state variable change time.  Similarly, \@Prop may behave similarly to \@ObjectLink, and the time for its callback to be invoked is slightly later.
+4. This behavior meets the expectation. The \@Watch callback is invoked based on the actual state variable change time. @Link is directly synchronized, while @ObjectLink needs to wait for the parent component to update the child component variables. Similarly, \@Prop may behave similarly to \@ObjectLink, and the time for its callback to be invoked is slightly later.
 
 ### Using changedPropertyName for Different Logic Processing
 

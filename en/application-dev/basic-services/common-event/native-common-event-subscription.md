@@ -5,7 +5,7 @@
 <!--Owner: @peixu-->
 <!--Designer: @dongqingran; @wulong158-->
 <!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @fang-jinxu-->
 
 ## When to Use
 
@@ -52,13 +52,13 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
 3. Create the subscriber information using [OH_CommonEvent_CreateSubscribeInfo](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscribeinfo).
 
    ```c++
-CommonEvent_SubscribeInfo* CreateSubscribeInfo(const char* events[], int32_t eventsNum, const char* permission, const char* bundleName) {
+   CommonEvent_SubscribeInfo* CreateSubscribeInfo(const char* events[], int32_t eventsNum, const char* permission, const char* bundleName) {
        int32_t ret = -1;
        // Create the subscriber information.
        CommonEvent_SubscribeInfo* info = OH_CommonEvent_CreateSubscribeInfo(events, eventsNum);
-   
+
        // Set the publisher permission.
-    ret = OH_CommonEvent_SetPublisherPermission(info, permission);
+       ret = OH_CommonEvent_SetPublisherPermission(info, permission);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetPublisherPermission ret <%{public}d>.", ret);
        
        // Set the publisher bundle name.
@@ -73,7 +73,7 @@ CommonEvent_SubscribeInfo* CreateSubscribeInfo(const char* events[], int32_t eve
        info = nullptr;
    }
    ```
-   
+
 4. Create a subscriber.
 
    When creating a subscriber, pass in [CommonEvent_ReceiveCallback](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#commonevent_receivecallback). When the event is published, the subscriber receives [CommonEvent_RcvData](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#structs).
@@ -194,7 +194,7 @@ CommonEvent_SubscribeInfo* CreateSubscribeInfo(const char* events[], int32_t eve
    }
    ```
 
-   Create a subscriber through [OH_CommonEvent_CreateSubscriber](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscriber), and pass in [CommonEvent_SubscribeInfo](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#structs) and the **OnReceive** function defined in step 4.
+   Create a subscriber through [OH_CommonEvent_CreateSubscriber](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscriber), and pass in [CommonEvent_SubscribeInfo](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#structs) and the **OnReceive** callback function defined in step 4.
 
    ```c++
    // Create a subscriber.
@@ -212,13 +212,13 @@ CommonEvent_SubscribeInfo* CreateSubscribeInfo(const char* events[], int32_t eve
 5. Subscribe to an event using [OH_CommonEvent_Subscribe](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_subscribe).
 
    ```c++
-void Subscribe(CommonEvent_Subscriber* subscriber) {
+   void Subscribe(CommonEvent_Subscriber* subscriber) {
        // Subscribe to an event by passing a subscriber.
        int32_t ret = OH_CommonEvent_Subscribe(subscriber);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_Subscribe ret <%{public}d>.", ret);
    }
    ```
-   
+
 6. (Optional) Further process the subscribed event if this event is an ordered common event.
 
    Based on the priority set by the subscriber, the common event is preferentially sent to the subscriber with a higher priority. After the subscriber successfully receives the event, the public event is sent to the subscriber with a lower priority. Subscribers with the same priority receive common events in a random order.
@@ -281,7 +281,7 @@ void Subscribe(CommonEvent_Subscriber* subscriber) {
    - Modify the content of an ordered common event using [OH_CommonEvent_SetCodeToSubscriber](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_setcodetosubscriber) and [OH_CommonEvent_SetDataToSubscriber](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_setdatatosubscriber).
 
      ```c++
-void SetToSubscriber(CommonEvent_Subscriber* subscriber, const int32_t code, const char* data) {
+     void SetToSubscriber(CommonEvent_Subscriber* subscriber, const int32_t code, const char* data) {
          // Set the result code for an ordered common event.
          if(!OH_CommonEvent_SetCodeToSubscriber(subscriber, code)) {
              OH_LOG_Print(LOG_APP, LOG_ERROR, 1, "CES_TEST", "OH_CommonEvent_SetCodeToSubscriber failed.");
@@ -294,9 +294,9 @@ void SetToSubscriber(CommonEvent_Subscriber* subscriber, const int32_t code, con
              return;
          }
      }
-     
+   
      void GetFromSubscriber(CommonEvent_Subscriber* subscriber) {
-       // Obtain the result data and code of an ordered common event.
+         // Obtain the result data and code of an ordered common event.
          const char* data = OH_CommonEvent_GetDataFromSubscriber(subscriber);
          int32_t code = OH_CommonEvent_GetCodeFromSubscriber(subscriber);
          OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "Subscriber data <%{public}s>, code <%{public}d>.", data, code);

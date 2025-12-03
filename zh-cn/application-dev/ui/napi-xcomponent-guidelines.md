@@ -4,7 +4,7 @@
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -13,9 +13,12 @@ XComponent组件作为一种渲染组件，可用于EGL/OpenGLES和媒体数据�
 XComponent持有一个Surface，开发者能通过调用[NativeWindow](../graphics/native-window-guidelines.md)等接口，申请并提交Buffer至图形队列，以此方式将自绘制内容传送至该Surface。XComponent负责将此Surface整合进UI界面，其中展示的内容正是开发者传送的自绘制内容。Surface的默认位置与大小与XComponent组件一致，开发者可利用[setXComponentSurfaceRect](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#setxcomponentsurfacerect12)接口自定义调整Surface的位置和大小。XComponent组件负责创建Surface，并通过回调将Surface的相关信息告知应用。应用可以通过一系列接口设定Surface的属性。该组件本身不对所绘制的内容进行感知，亦不提供渲染绘制的接口。
 
 目前XComponent组件主要有三个应用场景：
-1. [使用XComponentController管理Surface生命周期场景](#使用xcomponentcontroller管理surface生命周期)，该场景在ArkTS侧获取SurfaceId，生命周期回调、触摸、鼠标、按键等事件回调等均在ArkTS侧触发。
-2. [使用OH_ArkUI_SurfaceHolder管理Surface生命周期场景](#使用oh_arkui_surfaceholder管理surface生命周期)，该场景根据XComponent组件对应的ArkUI_NodeHandle中创建OH_ArkUI_SurfaceHolder，生命周期回调、触摸等事件回调、无障碍和可变帧率回调等均在Native侧触发。
-3. [使用NativeXComponent管理Surface生命周期场景](#使用nativexcomponent管理surface生命周期)，该场景在native层获取Native XComponent实例，在Native侧注册XComponent的生命周期回调，以及触摸、鼠标、按键等事件回调。
+
+| XComponent组件应用场景                | 场景简介                                      | 场景特点                                        |
+|--------------------------------------|-----------------------------------------------|------------------------------------------------|
+| [使用XComponentController管理Surface生命周期场景](#使用xcomponentcontroller管理surface生命周期) | 该场景在ArkTS侧的XComponentController获取SurfaceId，生命周期回调、触摸、鼠标、按键等事件回调等均在ArkTS侧触发。 | 适用于视频播放、相机预览等媒体播放类场景，该场景需要在ArkTS侧获取SurfaceId，并将SurfaceId传入对应接口。 |
+| [使用OH_ArkUI_SurfaceHolder管理Surface生命周期场景](#使用oh_arkui_surfaceholder管理surface生命周期) | 该场景根据XComponent组件对应的ArkUI_NodeHandle创建OH_ArkUI_SurfaceHolder，生命周期回调、触摸等事件回调、无障碍和可变帧率回调等均在Native侧触发。 | 适用于如下场景：<br>1.有较复杂的交互逻辑、对频繁跨语言调用导致性能损耗敏感的场景。<br>2.希望能控制Surface生命周期触发时机的场景。 |
+| [使用NativeXComponent管理Surface生命周期场景](#使用nativexcomponent管理surface生命周期) | 该场景在native层获取Native XComponent实例，在Native侧注册XComponent的生命周期回调，以及触摸、鼠标、按键等事件回调。 | 与[使用OH_ArkUI_SurfaceHolder管理Surface生命周期场景](#使用oh_arkui_surfaceholder管理surface生命周期)类似，但交互事件接口不够丰富，且使用不当容易出现稳定性问题，建议使用OH_ArkUI_SurfaceHolder的接口。 |
 
 ## 约束与限制
 
@@ -126,18 +129,18 @@ Native侧
     // 重写XComponentController，设置生命周期回调
     class MyXComponentController extends XComponentController {
         onSurfaceCreated(surfaceId: string): void {
-            console.log(`onSurfaceCreated surfaceId: ${surfaceId}`)
+            console.info(`onSurfaceCreated surfaceId: ${surfaceId}`)
             nativeRender.SetSurfaceId(BigInt(surfaceId));
         }
     
         onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
-            console.log(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`)
+            console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`)
             // 在onSurfaceChanged中调用ChangeSurface绘制内容
             nativeRender.ChangeSurface(BigInt(surfaceId), rect.surfaceWidth, rect.surfaceHeight)
         }
     
         onSurfaceDestroyed(surfaceId: string): void {
-            console.log(`onSurfaceDestroyed surfaceId: ${surfaceId}`)
+            console.info(`onSurfaceDestroyed surfaceId: ${surfaceId}`)
             nativeRender.DestroySurface(BigInt(surfaceId))
         }
     }
@@ -1469,9 +1472,9 @@ Native侧
     target_link_libraries(nativerender PUBLIC ${EGL-lib} ${GLES-lib} ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} libnative_window.so)
     ```
 
-<!--RP3-->上述用例具体实现可参考[NativeXComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NativeXComponent)。<!--RP3End-->
+    上述用例具体实现可参考<!--RP3-->[NativeXComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)<!--RP3End-->。
 
-![示意图](./figures/drawStar.jpeg)
+    ![示意图](./figures/drawStar.jpeg)
 
 ## 使用NativeXComponent管理Surface生命周期
 
@@ -1559,7 +1562,7 @@ Native侧
 
 **开发步骤**
 
-以下步骤以SURFACE类型为例，描述了如何使用`XComponent组件`调用`Node-API`接口来创建`EGL/GLES`环境，实现在主页面绘制图形，并可以改变图形的颜色。
+以下步骤以SURFACE类型为例，描述了如何使用`XComponent组件`调用`Node-API`接口来创建`EGL/GLES`环境，实现在主页面绘制图形，并可以改变图形的颜色。以下仅包含主要步骤，详细工程请参见<!--RP4-->[NativeXComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)<!--RP4End-->。
 
 1. 在界面中定义XComponent。
     
@@ -2323,7 +2326,7 @@ Native侧
 
 6. 释放相关资源。
 
-    (1) EGLCore类下创建Release()方法，释放初始化环境时申请的资源，包含窗口display、渲染区域surface、环境上下文context等。
+    EGLCore类下创建Release()方法，释放初始化环境时申请的资源，包含窗口display、渲染区域surface、环境上下文context等。
 
     ```c++
     void EGLCore::Release() {
@@ -2404,10 +2407,8 @@ Native侧
 针对Native XComponent的使用，有以下相关实例可供参考：
 
 - [XComponent3D（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/XComponent3D)
-- [XComponent（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/XComponent)
-- [Native XComponent（API12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkXComponent)
 - [OpenGL三棱椎（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkOpenGL)
-- [NativeXComponent（api19）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NativeXComponent)
+- [NativeXComponent（api19）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)
 
 针对ArkTS XComponent的使用，有以下相关实例可供参考：
 

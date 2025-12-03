@@ -105,6 +105,7 @@ Enumerates the node types.
 | GEOMETRY | 2 | Geometry node.|
 | CAMERA | 3 | Camera node.|
 | LIGHT | 4 | Light node.|
+| CUSTOM<sup>21+</sup> | 255 | Custom node, which is usually defined in an extension plugin.|
 
 ## Container\<T>
 Container for defining scene nodes. It provides a way to group scene nodes into a hierarchy.
@@ -131,8 +132,10 @@ function append(): void {
   scene.then(async (result: Scene) => {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
-      // Call append to add a node.
-      result.root?.children.get(0)?.children.append(node);
+      if (node) {
+        // Append a node. If the node is already in the children list, the total count does not change, but the operation is successful.
+        result.root?.children.get(0)?.children.append(node);
+      }
     }
   }).catch((error: Error) => {
     console.error('Scene load failed:', error);
@@ -164,7 +167,7 @@ function insertAfter(): void {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
       if (node) {
-        // Call insertAfter to add a node.
+        // Insert a node after another. If the node is already in the children list, the total count does not change, but the operation is successful.
         result.root?.children.get(0)?.children.insertAfter(node, null);
       }
     }
@@ -320,7 +323,7 @@ The 3D scene consists of nodes in a tree hierarchy, where each node implements a
 | layerMask | [LayerMask](#layermask) | Yes| No| Layer mask of the node.|
 | path | string | Yes| No| Path of the node.|
 | parent | [Node](#node) \| null | Yes| No| Parent node of the node. If the parent node does not exist, the value is null.|
-| children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | Yes| No| Children of the node. If the node does not have a child, the value is null.|
+| children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | Yes| No| Child node of the node. If the node does not have a child, the value is null. This is a read-only property, indicating that you cannot directly replace the entire children container. However, you can modify the children using container methods like [append()](#append), [insertAfter()](#insertafter), [remove()](#remove), or [clear()](#clear). If the node being appended or inserted already exists in the container, it is removed first and then reinserted. As a result, the total number of child nodes remains unchanged, making the operation seem ineffective. The count increases only when a new node is added.|
 
 ### getNodeByPath
 getNodeByPath(path: string): Node | null
@@ -389,7 +392,7 @@ Light node, which inherits from [Node](#node).
 | enabled | boolean | No| No| Whether the light is used. **true** if used, **false** otherwise.|
 
 ## SpotLight
-Spot light, which inherits from [Light](#light).
+Spotlight, which inherits from [Light](#light).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -413,7 +416,9 @@ Camera node, which inherits from [Node](#node).
 | farPlane | number | No| No| Remote plane. The value must be greater than that of **nearPlane**.|
 | enabled | boolean | No| No| Whether the camera is enabled. **true** if enabled, **false** otherwise.|
 | postProcess | [PostProcessSettings](js-apis-inner-scene-post-process-settings.md#postprocesssettings) \| null | No| No| Post-processing settings.|
+| effects<sup>21+</sup> | [Container](js-apis-inner-scene-nodes.md#containert)\<[Effect](js-apis-inner-scene-resources.md#effect21)> | Yes| No| Post-processing effects applied to the camera output.|
 | clearColor | [Color](js-apis-inner-scene-types.md#color) \| null | No| No| Color after the render target is cleared.|
+| renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | No| Yes| Rendering pipeline type. If this parameter is not set, the lightweight forward rendering pipeline is used by default. (If the **FORWARD_LIGHTWEIGHT** pipeline is selected, certain features are unavailable.)|
 
 ### raycast<sup>20+</sup>
 raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>
@@ -425,7 +430,7 @@ Casts a ray from a specific position on the screen to detect and retrieve inform
 **Parameters**
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| viewPosition | [Vec2](js-apis-inner-scene-types.md#vec2) | Yes| Standardized Device Coordinates (NDC). The value range is [-1, 1]. The bottom-left corner of the screen is (-1, -1), and the top-right corner is (1, 1).|
+| viewPosition | [Vec2](js-apis-inner-scene-types.md#vec2) | Yes| Normalized screen coordinates within the UI coordinate system. The value range is [0, 1], where (0,0) corresponds to the top-left corner of the Component3D component, and (1,1) corresponds to the bottom-right corner.|
 | params | [RaycastParameters](js-apis-inner-scene.md#raycastparameters20) | Yes| Configuration parameters for raycasting, such as detection range and filtered nodes.|
 
 **Return value**

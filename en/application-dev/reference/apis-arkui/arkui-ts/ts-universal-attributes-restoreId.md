@@ -1,14 +1,20 @@
-# restoreId
+# Distributed Migration Identifier
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **restoreId** attribute identifies a component in hopping scenarios. It can be used to restore the component to a specific state on a remote device.
+The distributed migration identifier **restoreId** identifies a component in distributed migration scenarios. It can be used to restore the component to a specific state on a remote device.
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## restoreId
 
-restoreId(value: number)
+restoreId(value: number): T
 
 Sets the ID of the component used for device matching during hopping.
 
@@ -22,6 +28,12 @@ Sets the ID of the component used for device matching during hopping.
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | number | Yes  | ID of the component used for device matching during hopping. This ID must be unique within an application.|
 
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
+
 ## Components with Hopping Support
 
 | Name     | Initial API Version| Description                                    |
@@ -29,7 +41,7 @@ Sets the ID of the component used for device matching during hopping.
 | List      | 8    | The index of the top list item on the current device is migrated to the remote device. After the migration, the corresponding list item is pinned to the top on the remote device.|
 | Grid      | 9    | The index of the top grid item on the current device is migrated to the remote device. After the migration, the corresponding grid item is pinned to the top on the remote device. Note that the position of the scrollbar cannot be migrated.|
 | Scroll    | 9    | The absolute scroll distance from the top edge is migrated. Be aware that layout differences between devices may affect hopping results.|
-| WaterFlow | 11   | The index of the top water flow item on the current device is migrated to the remote device. After the migration, the corresponding water flow item is pinned to the top on the remote device. The offset (in vp) of the top water flow item relative to the **WaterFlow** component along the main axis is also migrated.|
+| WaterFlow | 11   | The index of the top **FlowItem** component on the current device is migrated to the remote device. After the migration, the corresponding **FlowItem** component is pinned to the top on the remote device. The offset (in vp) of the top water flow item relative to the **WaterFlow** component along the main axis is also migrated.|
 
 ## Example
 

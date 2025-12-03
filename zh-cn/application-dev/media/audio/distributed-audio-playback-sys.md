@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 通过分布式音频播放的能力，用户可以将音频投播远端设备播放，实现音频在组网中不同设备之间流转。
 
@@ -12,7 +12,7 @@
 
 ## 开发步骤及示例
 
-在将音频投播到组网内其他设备前，需要先获取组网内的设备列表，并监听设备连接状态的变化，具体开发步骤请参考[音频输出设备管理](audio-output-device-management.md)。
+在将音频投播到组网内其他设备前，需要先获取组网内的设备列表，并监听设备连接状态的变化，具体开发步骤请参考[查询和监听音频输出设备](audio-output-device-management.md)。
 
 在获取组网内的设备列表时，可以通过指定DeviceFlag，筛选出需要的设备。
 

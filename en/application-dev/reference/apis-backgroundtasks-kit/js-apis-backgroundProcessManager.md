@@ -4,7 +4,7 @@
 <!--Subsystem: Resourceschedule-->
 <!--Owner: @hongjianfeng-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
+<!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **backgroundProcessManager** module provides APIs for background child process management. You can use these APIs to suppress and unsuppress child processes to prevent child processes from occupying too many system resources and causing system stuttering. The APIs take effect only for the child processes created through [OH_Ability_StartNativeChildProcess](../apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess).
@@ -101,12 +101,14 @@ try {
 
 setPowerSaveMode(pid: number, powerSaveMode: PowerSaveMode): Promise&lt;void&gt;
 
-Sets the power saving mode for a process. This API uses a promise to return the result. This API takes effect only on PCs/2-in-1 devices.
+Sets the power saving mode for a process. This API uses a promise to return the result.
 
 You can set to enter the power saving mode when:
 - The application is not focused, and there are no audio operations or UI updates.
 - The application cannot obtain the power lock through the system framework.
 - The application needs to perform time-consuming computing tasks, such as compression, decompression, and compilation, which are significantly restricted by CPU resources. (In this case, the power saving mode will be enabled forcibly.)
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **Required permissions**: ohos.permission.BACKGROUND_MANAGER_POWER_SAVE_MODE
 
@@ -155,7 +157,9 @@ try {
 
 isPowerSaveMode(pid: number): Promise&lt;boolean&gt;
 
-Queries whether the process is in power saving mode. This API uses a promise to return the result. This API takes effect only on PCs/2-in-1 devices.
+Queries whether the process is in power saving mode. This API uses a promise to return the result.
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **Required permissions**: ohos.permission.BACKGROUND_MANAGER_POWER_SAVE_MODE
 
@@ -207,7 +211,7 @@ Specifies the child process priority.
 
 | Name                  |  Value     | Description                                                                            |
 |----------------------| -------- |--------------------------------------------------------------------------------|
-| PROCESS_BACKGROUND   | 1        | Compared with **PROCESS_INACTIVE**, this priority has a more obvious suppression effect. Child processes can obtain less CPU resources. You are advised to set this priority when executing background child processes that cannot be perceived by users, such as background image-text pages. |
+| PROCESS_BACKGROUND   | 1        | Compared with **PROCESS_INACTIVE**, **PROCESS_LOWER** has a more significant suppression effect and obtains fewer CPU resources. You are advised to set this priority when executing background child processes that cannot be perceived by users, such as background image-text pages. |
 | PROCESS_INACTIVE     | 2        | You are advised to set this priority when executing background child processes that can be perceived by users, such as audio playback and navigation.                                            |
 
 ## PowerSaveMode<sup>20+</sup>
@@ -221,4 +225,3 @@ Specifies the power saving mode.
 | EFFICIENCY_MODE | 1 | Efficiency mode. Applications set to this mode will not enter the power saving mode, where fewer CPU resources are available.|
 | DEFAULT_MODE | 2 | Default mode. Applications set to this mode may follow the system to enter the power saving mode.|
 
-<!--no_check-->

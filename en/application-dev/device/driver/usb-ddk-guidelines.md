@@ -1,4 +1,10 @@
 # USB DDK Development
+<!--Kit: Driver Development Kit-->
+<!--Subsystem: Driver-->
+<!--Owner: @lixinsheng2-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -53,14 +59,14 @@ Before you get started, make necessary preparations by following instructions in
 | OH_Usb_SelectInterfaceSetting(uint64_t interfaceHandle, uint8_t settingIndex) | Activates the alternate setting of a USB interface.|
 | OH_Usb_GetCurrentInterfaceSetting(uint64_t interfaceHandle, uint8_t \*settingIndex) | Obtains the alternate setting of a USB interface.|
 | OH_Usb_SendControlReadRequest(uint64_t interfaceHandle, const struct UsbControlRequestSetup \*setup, uint32_t timeout, uint8_t \*data, uint32_t \*dataLen) | Sends a control read transfer request. This API returns the result synchronously.|
-| OH_Usb_SendControlWriteRequest(uint64_t interfaceHandle, const struct UsbControlRequestSetup \*setup, uint32_t, const uint8_t \*data, uint32_t dataLen) | Sends a control write transfer request. This API returns the result synchronously.|
+| OH_Usb_SendControlWriteRequest(uint64_t interfaceHandle, const struct UsbControlRequestSetup \*setup, uint32_t timeout, const uint8_t \*data, uint32_t dataLen) | Sends a control write transfer request. This API returns the result synchronously.|
 | OH_Usb_ReleaseInterface(uint64_t interfaceHandle) | Releases a USB interface.|
 | OH_Usb_SendPipeRequest(const struct UsbRequestPipe *pipe, UsbDeviceMemMap *devMmap) | Sends a pipe request. This API returns the result synchronously. It applies to interrupt transfer and bulk transfer.|
 | OH_Usb_CreateDeviceMemMap(uint64_t deviceId, size_t size, UsbDeviceMemMap **devMmap) | Create a buffer. To avoid resource leakage, use **OH_Usb_DestroyDeviceMemMap()** to destroy a buffer after use.|
 | OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap) | Destroy a buffer. To avoid resource leakage, destroy a buffer in time after use.|
 | OH_Usb_GetDevices(struct Usb_DeviceArray *devices) | Obtains the USB device ID list. Ensure that the input pointer is valid and the number of devices does not exceed 128. To prevent resource leakage, release the member memory after usage. Besides, make sure that the obtained USB device ID has been filtered by **vid** in the driver configuration information.|
 
-For details about the APIs, see [USB DDK](../../reference/apis-driverdevelopment-kit/_usb_ddk.md).
+For details about the APIs, see [USB DDK](../../reference/apis-driverdevelopment-kit/capi-usbddk.md).
 
 ### How to Develop
 
@@ -118,7 +124,7 @@ libusb_ndk.z.so
     OH_Usb_GetCurrentInterfaceSetting(interfaceHandle, &settingIndex);
 
     // Activate the alternate setting.
-    OH_Usb_SelectInterfaceSetting(interfaceHandle, &settingIndex);
+    OH_Usb_SelectInterfaceSetting(interfaceHandle, settingIndex);
     ```
 4. Send control read requests and control write requests.
 
@@ -148,7 +154,7 @@ libusb_ndk.z.so
     uint8_t dataWrite[256] = {0};
     uint32_t dataWriteLen = 256;
     // Send a control write request.
-    OH_Usb_SendControlWriteRequest(interfaceHandle, &setupWrite, timeout, dataWrite, &dataWriteLen);
+    OH_Usb_SendControlWriteRequest(interfaceHandle, &setupWrite, timeout, dataWrite, dataWriteLen);
     ```
 
 5. Create a buffer, and send a request.

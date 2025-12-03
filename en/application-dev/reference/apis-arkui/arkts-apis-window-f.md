@@ -22,6 +22,10 @@ createWindow(config: Configuration, callback: AsyncCallback&lt;Window&gt;): void
 
 Creates a child window or system window. This API uses an asynchronous callback to return the result.
 
+In non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, the child window created uses an [immersive layout](../../windowmanager/window-terminology.md#immersive-layout) by default.
+
+In freeform window mode, the child window created uses an immersive layout when [decorEnabled](arkts-apis-window-i.md#configuration9) is set to **false**, and it uses a non-immersive layout when this parameter is set to **true**.
+
 **Required permissions**: ohos.permission.SYSTEM_FLOAT_WINDOW (required only when the window type is **window.WindowType.TYPE_FLOAT**.)
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -89,6 +93,10 @@ createWindow(config: Configuration): Promise&lt;Window&gt;
 
 Creates a child window or system window. This API uses a promise to return the result.
 
+In non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, the child window created uses an [immersive layout](../../windowmanager/window-terminology.md#immersive-layout) by default.
+
+In freeform window mode, the child window created uses an immersive layout when [decorEnabled](arkts-apis-window-i.md#configuration9) is set to **false**, and it uses a non-immersive layout when this parameter is set to **true**.
+
 **Required permissions**: ohos.permission.SYSTEM_FLOAT_WINDOW (required only when the window type is **window.WindowType.TYPE_FLOAT**.)
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -134,8 +142,7 @@ export default class EntryAbility extends UIAbility {
     let config: window.Configuration = {
       name: "test",
       windowType: window.WindowType.TYPE_DIALOG,
-      ctx: this.context,
-      defaultDensityEnabled: true
+      ctx: this.context
     };
     try {
       window.createWindow(config).then((value:window.Window) => {
@@ -165,13 +172,13 @@ Finds a window based on the name.
 
 | Name| Type  | Mandatory| Description    |
 | ------ | ------ | ---- | -------- |
-| name   | string | Yes  | Window name, that is, the value of name in [Configuration](arkts-apis-window-i.md#configuration9).|
+| name   | string | Yes  | Window name. When searching for a child window or system window, use the window name in [Configuration](arkts-apis-window-i.md#configuration9). When searching for the main window, use [getWindowName](arkts-apis-uicontext-uicontext.md#getwindowname12) to obtain the window name of the current instance.|
 
 **Return value**
 
 | Type| Description|
 | ----------------- | ------------------- |
-| [Window](arkts-apis-window-Window.md) | Window found.|
+| [Window](arkts-apis-window-Window.md) | Window found. If the window with the specified name does not exist, an empty object is returned.|
 
 **Error codes**
 
@@ -233,20 +240,33 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
-    windowStage.createSubWindow('TestSubWindow').then((subWindow) => {
-      subWindow.showWindow().then(() => {
-        try {
-          window.getLastWindow(this.context, (err: BusinessError, topWindow) => {
-            const errCode: number = err.code;
-            if (errCode) {
-              console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
-              return;
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.loadContent('pages/Index', (err: BusinessError) => {
+      if (err.code) {
+        console.error(`Failed to load content for main window. Cause code: ${err.code}, message: ${err.message}`);
+      }
+      windowStage.createSubWindow('TestSubWindow').then((subWindow) => {
+        let storage: LocalStorage = new LocalStorage();
+        subWindow.loadContent('pages/Index', storage, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`Failed to load content for sub window. Cause code: ${err.code}, message: ${err.message}`);
+          }
+          subWindow.showWindow().then(() => {
+            try {
+              window.getLastWindow(this.context, (err: BusinessError, data) => {
+                const errCode: number = err.code;
+                if (errCode) {
+                  console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
+                  return;
+                }
+                windowClass = data;
+                console.info(`Succeeded in obtaining the top window. Window id: ${windowClass.getWindowProperties().id}`);
+              });
+            } catch (exception) {
+              console.error(`Failed to obtain the top window. Cause code: ${exception.code}, message: ${exception.message}`);
             }
-            console.info(`Succeeded in obtaining the top window. Window id: ${topWindow.getWindowProperties().id}`);
           });
-        } catch (exception) {
-          console.error(`Failed to obtain the top window. Cause code: ${exception.code}, message: ${exception.message}`);
-        }
+        });
       });
     });
   }
@@ -300,17 +320,30 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
-    windowStage.createSubWindow('TestSubWindow').then((subWindow) => {
-      subWindow.showWindow().then(() => {
-        try {
-          window.getLastWindow(this.context).then((topWindow) => {
-            console.info(`Succeeded in obtaining the top window. Window id: ${topWindow.getWindowProperties().id}`);
-          }).catch((err: BusinessError) => {
-            console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.loadContent('pages/Index', (err: BusinessError) => {
+      if (err.code) {
+        console.error(`Failed to load content for main window. Cause code: ${err.code}, message: ${err.message}`);
+      }
+      windowStage.createSubWindow('TestSubWindow').then((subWindow) => {
+        let storage: LocalStorage = new LocalStorage();
+        subWindow.loadContent('pages/Index', storage, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`Failed to load content for sub window. Cause code: ${err.code}, message: ${err.message}`);
+          }
+          subWindow.showWindow().then(() => {
+            try {
+              window.getLastWindow(this.context).then((topWindow) => {
+                windowClass = topWindow;
+                console.info(`Succeeded in obtaining the top window. Window id: ${topWindow.getWindowProperties().id}`);
+              }).catch((err: BusinessError) => {
+                console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
+              });
+            } catch (exception) {
+              console.error(`Failed to obtain the top window. Cause code: ${exception.code}, message: ${exception.message}`);
+            }
           });
-        } catch (exception) {
-          console.error(`Failed to obtain the top window. Cause code: ${exception.code}, message: ${exception.message}`);
-        }
+        });
       });
     });
   }
@@ -321,9 +354,13 @@ export default class EntryAbility extends UIAbility {
 ## window.shiftAppWindowFocus<sup>11+</sup>
 shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
 
-Shifts the window focus from the source window to the target window in the same application. The window focus can be shifted between the main window and a child window.
+Shifts the window focus from the source window to the target window in the same application. The window focus can be shifted within the main window and child windows. This API uses a promise to return the result.
 
-Ensure that the focusable property of the target window is true (see [setWindowFocusable()](arkts-apis-window-Window.md#setwindowfocusable9)) and that [showWindow()](arkts-apis-window-Window.md#showwindow9) is successfully executed.
+Ensure that the target window can gain focus (configurable by calling [setWindowFocusable()](arkts-apis-window-Window.md#setwindowfocusable9)) and that [showWindow()](arkts-apis-window-Window.md#showwindow9) has been successfully executed.
+
+> **NOTE**
+>
+> Before calling **shiftAppWindowFocus()**, ensure that the target window has called [loadContent()](arkts-apis-window-Window.md#loadcontent9) or [setUIContent()](arkts-apis-window-Window.md#setuicontent9) and these operations have been effective. Otherwise, an invisible window may gain focus, causing function exceptions or affecting user experience.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -333,8 +370,8 @@ Ensure that the focusable property of the target window is true (see [setWindowF
 
 | Name         | Type  | Mandatory | Description                   |
 | -------------- | ------ | ----- | ----------------------- |
-| sourceWindowId | number | Yes   | ID of the source window, which is having the focus.|
-| targetWindowId | number | Yes   | ID of the target window.            |
+| sourceWindowId | number | Yes   | ID of the source window, which is having the focus. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
+| targetWindowId | number | Yes   | ID of the target window. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
 
 **Return value**
 
@@ -372,40 +409,46 @@ export default class EntryAbility extends UIAbility {
     let subWindowId: number = -1;
 
     try {
-      // Obtain the main window and ID of the application.
-      windowStage.getMainWindow().then((data) => {
-        if (data == null) {
-          console.error('Failed to obtain the main window. Cause: The data is empty');
-          return;
+      windowStage.loadContent('pages/Index', (err) => {
+        if (err.code) {
+          console.error(`Failed to load content for main window. Cause code: ${err.code}, message: ${err.message}`);
         }
-        mainWindow = data;
-        mainWindowId = mainWindow.getWindowProperties().id;
-        console.info('Succeeded in obtaining the main window');
-      }).catch((err: BusinessError) => {
-        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
-      });
-
-      // Create or obtain a child window and its ID. In this case, the child window has focus.
-      windowStage.createSubWindow('testSubWindow').then((data) => {
-        if (data == null) {
-          console.error('Failed to obtain the sub window. Cause: The data is empty');
-          return;
-        }
-        subWindow = data;
-        subWindowId = subWindow.getWindowProperties().id;
-        subWindow.resize(500, 500);
-        subWindow.showWindow();
-
-        // Listen for the window status and ensure that the window is ready.
-        subWindow.on("windowEvent", (windowEvent) => {
-          if (windowEvent == window.WindowEventType.WINDOW_ACTIVE) {
-            // Switch the focus.
-            window.shiftAppWindowFocus(subWindowId, mainWindowId).then(() => {
-              console.info('Succeeded in shifting app window focus');
-            }).catch((err: BusinessError) => {
-              console.error(`Failed to shift app window focus. Cause code: ${err.code}, message: ${err.message}`);
-            });
+        // Obtain the main window and ID of the application.
+        windowStage.getMainWindow().then((data) => {
+          if (data == null) {
+            console.error('Failed to obtain the main window. Cause: The data is empty');
+            return;
           }
+          mainWindow = data;
+          mainWindowId = mainWindow.getWindowProperties().id;
+          console.info('Succeeded in obtaining the main window');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+        });
+
+        // Create or obtain a child window and its ID. In this case, the child window has focus.
+        windowStage.createSubWindow('testSubWindow').then((data) => {
+          if (data == null) {
+            console.error('Failed to obtain the sub window. Cause: The data is empty');
+            return;
+          }
+          subWindow = data;
+          subWindowId = subWindow.getWindowProperties().id;
+          subWindow.resize(500, 500);
+          subWindow.setUIContent('pages/Index');
+          subWindow.showWindow();
+
+          // Listen for the window status and ensure that the window is ready.
+          subWindow.on("windowEvent", (windowEvent) => {
+            if (windowEvent == window.WindowEventType.WINDOW_ACTIVE) {
+              // Switch the focus.
+              window.shiftAppWindowFocus(subWindowId, mainWindowId).then(() => {
+                console.info('Succeeded in shifting app window focus');
+              }).catch((err: BusinessError) => {
+                console.error(`Failed to shift app window focus. Cause code: ${err.code}, message: ${err.message}`);
+              });
+            }
+          });
         });
       });
     } catch (exception) {
@@ -418,15 +461,15 @@ export default class EntryAbility extends UIAbility {
 ## window.shiftAppWindowPointerEvent<sup>15+</sup>
 shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
 
-Transfers an input event from one window to another within the same application, particularly in split-window scenarios. This API uses a promise to return the result. It works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode and takes effect only for the main window and its child windows.
+Transfers a mouse input event from one window to another within the same application. This API takes effect only for the main window and its child windows. This API uses a promise to return the result.
 
-The source window must be in a mouse-down state for this API to work; otherwise, the call does not take effect. After the input event is transferred, a mouse-up event is sent to the source window, and a mouse-down event is sent to the target window.
+To transfer mouse input events, the source window must call this API within the callback of the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) event (the event type must be **TouchType.Down**). After a successful call, the system sends a **TouchType.Up** event to the source window and a **TouchType.Down** event to the target window.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -492,13 +535,13 @@ struct Index {
 ## window.shiftAppWindowTouchEvent<sup>20+</sup>
 shiftAppWindowTouchEvent(sourceWindowId: number, targetWindowId: number, fingerId: number): Promise&lt;void&gt;
 
-Moves touch screen input events from one window to another in scenarios where windows within the same application are being split or merged. This API uses a promise to return the result. It takes effect only for the main window and its child windows.
+Transfers a touchscreen input event from one window to another within the same application. This API takes effect only for the main window and its child windows. This API uses a promise to return the result.
 
-To transfer touch screen input events, the source window must call this API within the callback of the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) event (the event type must be **TouchType.Down**). After a successful call, the system sends a touch-up event to the source window and a touch-down event to the target window.
-
-<!--RP6-->This API can be used only on 2-in-1 devices.<!--RP6End-->
+To transfer touchscreen input events, the source window must call this API within the callback of the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) event (the event type must be **TouchType.Down**). After a successful call, the system sends a **TouchType.Up** event to the source window and a **TouchType.Down** event to the target window.
 
 **System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -506,7 +549,7 @@ To transfer touch screen input events, the source window must call this API with
 | -------------- | ------ | ----- | ----------------------- |
 | sourceWindowId | number | Yes   | ID of the source window. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID. The value must be an integer greater than 0. If it is less than or equal to 0, error code 1300016 is returned.           |
 | targetWindowId | number | Yes   | ID of the target window. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID. The value must be an integer greater than 0. If it is less than or equal to 0, error code 1300016 is returned.            |
-| fingerId | number | Yes   | Finger ID of the touch event. You are advised to use the [touches](arkui-ts/ts-universal-events-touch.md#touchobject) property in the [touchEvent](arkui-ts/ts-universal-events-touch.md#touchevent) event to obtain the ID. This parameter must be an integer greater than or equal to 0. If the value is less than 0, error code 1300016 is returned.            |
+| fingerId | number | Yes   | Unique ID of the finger in the touchscreen input event. You are advised to use the **touches** attribute in the [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent) object to obtain the ID. This parameter must be an integer greater than or equal to 0. If the value is less than 0, error code 1300016 is returned.            |
 
 **Return value**
 
@@ -577,10 +620,10 @@ Obtains visible windows at the specified coordinates within the current applicat
 
 | Name| Type  | Mandatory| Description                                                                       |
 | ------ | ---------- |----|---------------------------------------------------------------------------|
-| displayId   | number| Yes | ID of the display where the windows are located. The value must be an integer and can be obtained from [WindowProperties](arkts-apis-window-i.md#windowproperties).|
-| windowNumber    | number| No | Number of windows to obtain. The value must be an integer greater than 0. If this parameter is not set or is less than or equal to 0, all windows that meet the conditions are returned.                                 |
-| x    | number | No | X coordinate. The value must be a non-negative integer. If this parameter is not set or is less than 0, all visible windows are returned.                                        |
-| y    | number| No | Y coordinate. The value must be a non-negative integer. If this parameter is not set or is less than 0, all visible windows are returned.                                        |
+| displayId   | number| Yes | ID of the display where the windows are located. The value must be an integer. If a non-integer is passed, the decimal part is ignored. The value can be obtained from [WindowProperties](arkts-apis-window-i.md#windowproperties).|
+| windowNumber    | number| No | Number of windows to obtain. The value must be an integer greater than 0. If a non-integer is passed, the decimal part is ignored. If this parameter is not set or is less than or equal to 0, all windows that meet the conditions are returned.                                 |
+| x    | number | No | X coordinate, with the top-left corner of the screen used as the origin. The value must be a non-negative integer. If a non-integer is passed, the decimal part is ignored. If this parameter is not set or is less than 0, all visible windows are returned.                                        |
+| y    | number| No | Y coordinate, with the top-left corner of the screen used as the origin. The value must be a non-negative integer. If a non-integer is passed, the decimal part is ignored. If this parameter is not set or is less than 0, all visible windows are returned.                                        |
 
 **Return value**
 
@@ -599,36 +642,29 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1300003 | This window manager service works abnormally. |
 
 ```ts
-import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIAbility {
-
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    try {
-      let windowClass = windowStage.getMainWindowSync();
-      let properties = windowClass.getWindowProperties();
-      window.getWindowsByCoordinate(properties.displayId).then((data) => {
-        console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
-        for (let window of data) {
-          // do something with window
-        }
-      }).catch((err: BusinessError) => {
-        console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
-      });
-      window.getWindowsByCoordinate(properties.displayId, 2, 500, 500).then((data) => {
-        console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
-        for (let window of data) {
-          // do something with window
-        }
-      }).catch((err: BusinessError) => {
-        console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
-      });
-    } catch (exception) {
-      console.error(`Failed to get window from point. Cause code: ${exception.code}, message: ${exception.message}`);
+try {
+  let displayId = 0;
+  window.getWindowsByCoordinate(displayId).then((data) => {
+    console.info(`Succeeded in getting windows. Data: ${data}`);
+    for (let window of data) {
+      // do something with window
     }
-  }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
+  });
+  window.getWindowsByCoordinate(displayId, 2, 500, 500).then((data) => {
+    console.info(`Succeeded in getting windows. Data: ${data}`);
+    for (let window of data) {
+      // do something with window
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to get window from point. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -749,7 +785,7 @@ Obtains the window mode of the window that is in the foreground lifecycle on the
 
 | Name| Type      | Mandatory                | Description                                                                             |
 | ------ | ---------- |--------------------|------------------------------------------------------------------------------------|
-| displayId   | number| No | Optional display ID, which is used to obtain the window mode information on the corresponding screen. This parameter must be an integer greater than or equal to 0. If it is less than 0, error code 1300016 is returned. If this parameter is not passed or is set to null or undefined, all screens are queried. If the specified screen does not exist, the return value is 0. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the display ID of the window.                                                   |
+| displayId   | number| No | Optional display ID, which is used to obtain the window mode information on the corresponding screen. This parameter must be an integer greater than or equal to 0. If it is less than 0, error code 1300016 is returned. If this parameter is not passed or is set to null or undefined, all screens are queried. If a non-integer is passed, the decimal part is ignored. If the specified screen does not exist, the return value is 0. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the display ID of the window.                                                   |
 
 **Return value**
 
@@ -785,13 +821,75 @@ try {
 }
 ```
 
+## window.setWatermarkImageForAppWindows<sup>21+</sup>
+
+setWatermarkImageForAppWindows(pixelMap: image.PixelMap | undefined): Promise&lt;void&gt;
+
+Sets a watermark image for windows in the current application process. This API uses a promise to return the result. This API must be called after [loadContent()](arkts-apis-window-Window.md#loadcontent9) or [setUIContent()](arkts-apis-window-Window.md#setuicontent9) takes effect.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name  | Type                                                                         | Mandatory| Description                                                                                                          |
+| -------- | ----------------------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------- |
+| pixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined | Yes  | If this parameter is set to **image.PixelMap**, a watermark image is set. If this parameter is set to **undefined**, the watermark is removed.<br>If the width and height of the image both surpass the window and screen sizes, error code 1300016 is returned.<br>If the width or height of the image goes beyond the window dimensions, the excess part is trimmed.<br>If the width or height of the image falls short of the window dimensions, the shortfall is automatically repeated to complete the image.|
+
+**Return value**
+
+| Type               | Description                       |
+| ------------------- | --------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message                                                                                                                 |
+| --------- | ------------------------------------------------------------------------------------------------------------------------- |
+| 801       | Capability not supported. Function setWatermarkImageForAppWindows can not to work correctly due to limited device capabilities. |
+| 1300003   | This window manager service works abnormally.                                                                             |
+| 1300016   | Parameter error. Possible cause: 1. Invalid parameter range.                                                              |
+
+**Example**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { BusinessError } from "@kit.BasicServicesKit";
+
+let color: ArrayBuffer = new ArrayBuffer(96);
+let initializationOptions: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: image.PixelMapFormat.RGBA_8888,
+  size: {
+    height: 4,
+    width: 6,
+  },
+};
+image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMap) => {
+  console.info("Succeeded in creating pixelmap.");
+  try {
+    let promise = window.setWatermarkImageForAppWindows(pixelMap);
+    promise.then(() => {
+        console.info("Succeeded in setting watermark image.");
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set watermark image. Cause code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (exception) {
+    console.error(`Failed to set watermark image. Exception code: ${exception.code}, message: ${exception.message}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create PixelMap. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## window.setStartWindowBackgroundColor<sup>20+</sup>
 
 setStartWindowBackgroundColor(moduleName: string, abilityName: string, color: ColorMetrics): Promise&lt;void&gt;
 
-Sets the background color of the splash screen of the UIAbility based on the specified module name and ability name in the same application. This API uses a promise to return the result.
+Sets the background color of the splash screen of the UIAbility based on the specified module name and ability name within the same bundle name. This API uses a promise to return the result.
 
-This API takes effect for all processes of the same application, for example, in multi-instance or clone scenarios.
+This API takes effect for all processes of the same bundle name, for example, in multi-instance or clone scenarios.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
  
@@ -801,8 +899,8 @@ This API takes effect for all processes of the same application, for example, in
 
 | Name  | Type                         | Mandatory| Description                                                    |
 | -------- | ----------------------------- | ---- | -------------------------------------------------------- |
-| moduleName     | string                        | Yes  | Module name of the UIAbility. The value is a string of 0 to 200 characters. Only the module names within the same application can be set.|
-| abilityName     | string                        | Yes  | Name of the UIAbility. The value is a string of 0 to 200 characters. Only the ability names within the same application can be set.|
+| moduleName     | string                        | Yes  | Module name of the UIAbility. The value is a string of 0 to 200 bytes. Only the module names within the same application can be set. The module name is specified in the **name** field of the [module.json5 file](../../quick-start/module-configuration-file.md#tags-in-the-configuration-file).|
+| abilityName     | string                        | Yes  | Name of the UIAbility. The value is a string of 0 to 200 bytes. Only the ability names within the same application can be set. The UIAbility name is specified in the **name** field under [abilities in the module.json5 file](../../quick-start/module-configuration-file.md#abilities).|
 | color | [ColorMetrics](js-apis-arkui-graphics.md#colormetrics12) | Yes  | Background color of the splash screen.                      |
 
 **Return value**
@@ -830,7 +928,7 @@ import { ColorMetrics, window } from '@kit.ArkUI';
 try {
   let promise = window.setStartWindowBackgroundColor("entry", "EntryAbility", ColorMetrics.numeric(0xff000000));
   promise.then(() => {
-    console.log('Succeeded in setting the starting window color.');
+    console.info('Succeeded in setting the starting window color.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to set the starting window color. Cause code: ${err.code}, message: ${err.message}`);
   });
@@ -839,11 +937,191 @@ try {
 }
 ```
 
+## window.getAllMainWindowInfo<sup>21+</sup>
+
+getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
+
+Obtains the information about all main windows. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.CUSTOM_SCREEN_CAPTURE
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Return value**
+
+| Type| Description|
+| ------------------- | ------------------------ |
+| Promise&lt;Array&lt;[MainWindowInfo](arkts-apis-window-i.md#mainwindowinfo21)&gt;&gt; | Promise used to return an array of main window information.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message                      |
+| -------- | ------------------------------ |
+| 201      | Permission verification failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300003  | This window manager service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, UIAbility, common, Permissions } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
+      }
+      reqPermissionsFromUser(permissions, this.context);
+      console.info('Succeeded in loading the content');
+    });
+    try {
+      let windowInfoPromise = window.getAllMainWindowInfo();
+      windowInfoPromise.then((list: Array<window.MainWindowInfo>) => {
+        console.info('Get all main window info success.');
+      }).catch((err: BusinessError) => {
+        console.error(`Get all main window info failed. Error info: ${JSON.stringify(err)}`);
+      });
+    } catch (err) {
+      console.error(`Get all main window info failed. Cause info: ${JSON.stringify(err)}`);
+    }
+  }
+}
+
+const permissions: Array<Permissions> = ['ohos.permission.CUSTOM_SCREEN_CAPTURE'];
+function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  atManager.requestPermissionsFromUser(context, permissions).then((data) => {
+    console.info('requestPermissionsFromUser');
+    let grantStatus: Array<number> = data.authResults;
+    let length: number = grantStatus.length;
+    for (let i = 0; i < length; i++) {
+      if (grantStatus[i] === 0) {
+        // User granted permission.
+      } else {
+        // User denied permission.
+        return;
+      }
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request permission from user. Code is ${err.code}, message is ${err.message}`);
+  })
+}
+```
+
+## window.getMainWindowSnapshot<sup>21+</sup>
+
+getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfiguration): Promise&lt;Array&lt;image.PixelMap | undefined&gt;&gt;
+
+Obtains the screenshots of one or more main windows specified by **windowId**. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.CUSTOM_SCREEN_CAPTURE
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Parameters**
+
+| Name   | Type   | Mandatory| Description                                         |
+| --------- | ------- | ---- | --------------------------------------------- |
+| windowId | Array&lt;number&gt; | Yes  | Array of main window IDs. These IDs can be obtained using [window.getAllMainWindowInfo()](#windowgetallmainwindowinfo21). If the array is null or undefined, contains any negative number, includes duplicates, or has more than 512 entries, error code 401 is returned. If the array contains any positive ID that does not match an existing window, undefined is returned.|
+| config | [WindowSnapshotConfiguration](arkts-apis-window-i.md#windowsnapshotconfiguration21) | Yes| Configuration for obtaining the window screenshot.|
+
+**Return value**
+
+| Type| Description|
+| ------------------- | ------------------------ |
+| Promise&lt;Array&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined&gt;&gt; | Promise used to return an array of PixelMap objects of the screenshots, representing the screenshots, in the order of the provided window ID array. If a window ID is valid but the corresponding main window cannot be found, undefined is returned.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message                      |
+| -------- | ------------------------------ |
+| 201      | Permission verification failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300003  | This window manager service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, UIAbility, common, Permissions } from '@kit.AbilityKit';
+import { image } from '@kit.ImageKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause: JSON.stringify(err)`);
+      }
+      reqPermissionsFromUser(permissions, this.context);
+      console.info('Success in loading the content');
+    });
+    try {
+      let windowIds: number[] = [];
+      let configs: window.WindowSnapshotConfiguration = {
+        useCache: false
+      }
+      let windowInfoPromise = window.getAllMainWindowInfo();
+      windowInfoPromise.then((mainWindowInfoList: Array<window.MainWindowInfo>) => {
+        for (let i = 0; i < mainWindowInfoList.length; i++) {
+          windowIds[i] = mainWindowInfoList[i].windowId;
+        }
+        let promise = window.getMainWindowSnapshot(windowIds, configs);
+        promise.then((list: Array<image.PixelMap | undefined>) => {
+          for (let i = 0; i < list.length; i++) {
+            console.info(`Get main window snapshot, getBytesNumberPerRow: ${list[i]?.getBytesNumberPerRow()}`);
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`Get main window snapshot failed. Error info: ${JSON.stringify(err)}`);
+        });
+      }).catch((err: BusinessError) => {
+        console.error(`Get all main window info failed. Error info: ${JSON.stringify(err)}`);
+      });
+    } catch (err) {
+      console.error(`Get all main window info failed. Cause info: ${JSON.stringify(err)}`);
+    }
+  }
+}
+
+const permissions: Array<Permissions> = ['ohos.permission.CUSTOM_SCREEN_CAPTURE'];
+function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  atManager.requestPermissionsFromUser(context, permissions).then((data) => {
+    console.info('requestPermissionsFromUser');
+    let grantStatus: Array<number> = data.authResults;
+    let length: number = grantStatus.length;
+    for (let i = 0; i < length; i++) {
+      if (grantStatus[i] === 0) {
+        // User granted permission.
+      } else {
+        // User denied permission.
+        return;
+      }
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request permission from user. Code is ${err.code}, message is ${err.message}`);
+  })
+}
+```
+
 ## window.create<sup>(deprecated)</sup>
 
 create(id: string, type: WindowType, callback: AsyncCallback&lt;Window&gt;): void
 
 Creates a child window. This API uses an asynchronous callback to return the result.
+
+The child window created uses an [immersive layout](../../windowmanager/window-terminology.md#immersive-layout) by default.
 
 > **NOTE**
 >
@@ -884,6 +1162,8 @@ window.create('test', window.WindowType.TYPE_APP, (err: BusinessError, data) => 
 create(id: string, type: WindowType): Promise&lt;Window&gt;
 
 Creates a child window. This API uses a promise to return the result.
+
+The child window created uses an [immersive layout](../../windowmanager/window-terminology.md#immersive-layout) by default.
 
 > **NOTE**
 >

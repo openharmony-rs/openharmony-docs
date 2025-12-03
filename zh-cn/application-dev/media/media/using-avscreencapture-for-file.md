@@ -4,7 +4,7 @@
 <!--Owner: @zzs_911-->
 <!--Designer: @stupig001-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 屏幕录制主要为主屏幕录屏功能。
 
@@ -294,7 +294,7 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     // 进行初始化操作。
     int32_t retInit = OH_AVScreenCapture_Init(capture, config);
 
-    // 可选（API 20开始支持）：可以根据需要设置区域坐标和大小，设置想要捕获的区域，如下方创建了一个从（0，0）为起点的长100，宽100的矩形区域。此接口也可以在开始录屏以后设置。
+    // 可选（API version 20开始支持）：可以根据需要设置区域坐标和大小，设置想要捕获的区域，如下方创建了一个从（0，0）为起点的长100，宽100的矩形区域。此接口也可以在开始录屏以后设置。
     OH_Rect* region = new OH_Rect;
     region->x = 0;
     region->y = 0;

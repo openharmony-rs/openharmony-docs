@@ -15,7 +15,7 @@ After the errorManager APIs are used to listen for exceptions and errors, the ap
 
 ## Available APIs
 
-The errorManager APIs are provided by the [@ohos.app.ability.errorManager (Error Observation Management)](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md) module. You can import the APIs by referring to [How to Develop](#how-to-develop).
+The errorManager APIs are provided by [@ohos.app.ability.errorManager(Error Management Module)](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md). Before using the APIs, you need to register an error observer and import it through **import**. For details, see [How to Develop](#how-to-develop).
 
 **errorManager APIs**
 
@@ -28,11 +28,11 @@ The errorManager APIs are provided by the [@ohos.app.ability.errorManager (Error
 | off(type: 'globalErrorOccurred', observer?: GlobalObserver): void | Unregisters an observer in callback mode. (**Recommended**)<br>Note: This API is supported since API version 18.|
 | on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void | Registers a global observer for process errors. This is a synchronous API. When the system detects an application promise exception, the observer is called. (**Recommended**)<br>Note: This API is supported since API version 18.|
 | off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void | Unregisters an observer in callback mode. (**Recommended**)<br>Note: This API is supported since API version 18.|
-| on(type: 'loopObserver', timeout: number, observer: LoopObserver): void | Registers an observer for the message processing duration of the main thread. A callback will be invoked if a main thread jank event occurs.<br>This API can be called only in the main thread. A new observer will overwrite the previous one.|
-| off(type: 'loopObserver', observer?: LoopObserver): void | Unregisters an observer for the message processing duration of the main thread in LoopObserver mode.|
+| on(type: 'loopObserver', timeout: number, observer: LoopObserver): void | Registers an observer for the message processing timeouts of the main thread.<br>This API can be called only in the main thread. A new observer will overwrite the previous one.|
+| off(type: 'loopObserver', observer?: LoopObserver): void | Unregisters an observer for the message processing timeouts of the main thread in LoopObserver mode.|
 | on(type: 'freeze', observer: FreezeObserver): void | Registers an observer for the main thread freeze event of the application. This API can be called only in the main thread. A new observer will overwrite the previous one.|
-| off(type: 'freeze', observer?: FreezeObserver): void | Unregisters an observer for the message processing duration of the main thread in FreezeObserver mode.<br>Note: This API is supported since API version 18.|
-
+| off(type: 'freeze', observer?: FreezeObserver): void | Unregisters an observer for the message processing timeouts of the main thread in FreezeObserver mode.<br>Note: This API is supported since API version 18.|
+| setDefaultErrorHandler(defaultHandler?: ErrorHandler): ErrorHandler | Sets a default error handler. This API can be called only in the main thread. When the **JS_CRASH** exception occurs, chain callback is supported and the return value is the last registered handler.<br>Note: This API is supported since API version 21.|
 When an asynchronous callback is used, the return value can be processed directly in the callback.
 When a promise is used, the return value can also be processed in the promise. For details about the result codes, see [Result Codes for Unregistering an Observer](#result-codes-for-unregistering-an-observer).
 
@@ -51,10 +51,10 @@ When a promise is used, the return value can also be processed in the promise. F
 
 ### Result Codes for Unregistering an Observer
 
-| Result Code| Description|
+| Result Code| Cause|
 | -------- | -------- |
 | 0 | Normal.|
-| -1 | Input **number** not exist.|
+| -1 | Passed-in **number** not exist.|
 | -2 | Invalid parameter.|
 
 ## How to Develop
@@ -262,7 +262,7 @@ import { AbilityConstant, errorManager, UIAbility, Want } from '@kit.AbilityKit'
 import { window } from '@kit.ArkUI';
 import { process } from '@kit.ArkTS';
 
-// Define freezeCallback.
+// Define freezeCallback
 function freezeCallback() {
     console.info("freezecallback");
 }
@@ -309,4 +309,88 @@ export default class EntryAbility extends UIAbility {
         console.info("[Demo] EntryAbility onBackground");
     }
 };
+```
+### Chaining Error Handlers
+
+The following sample files are stored in the same directory.
+
+Define the first error handler and register the method. If no pre-handler is available, the process exits.
+```ts
+// firstErrorHandler.ets
+import { errorManager } from '@kit.AbilityKit';
+import { process } from '@kit.ArkTS';
+
+let firstHandler: errorManager.ErrorHandler;
+const firstErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
+    // Implement the logic of the first custom error handler.
+    console.info('[FirstHandler] First uncaught exception handler invoked.');
+    if (firstHandler) {
+        firstHandler(reason);
+    } else {
+        // You are advised to add a null check. If the value is null, use a synchronous exit approach.
+        const processManager = new process.ProcessManager();
+        processManager.exit(0);
+    }  
+};
+
+export function setFirstErrorHandler() {
+    firstHandler = errorManager.setDefaultErrorHandler(firstErrorHandler); 
+    console.info('Registered First Error Handler');
+}
+```
+
+Define the second error handler and register the method to implement a chain call.
+```ts
+// secondErrorHandler.ets
+import { errorManager } from '@kit.AbilityKit';
+import { process } from '@kit.ArkTS';
+
+let secondHandler: errorManager.ErrorHandler;
+const secondErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
+    // Implement the logic of the second custom error handler.
+    console.info('[SecondHandler] Second uncaught exception handler invoked.');
+    if (secondHandler) {
+        secondHandler(reason);
+    } else {
+        const processManager = new process.ProcessManager();
+        processManager.exit(0);
+    }
+};
+
+export function setSecondErrorHandler() {
+    secondHandler = errorManager.setDefaultErrorHandler(secondErrorHandler); 
+    console.info('Registered Second Error Handler');
+}
+```
+
+Trigger the test through the button for the main component, register two handlers, and throw an error to verify the handler chain.
+```ts
+// Index.ets
+import { setFirstErrorHandler } from './firstErrorHandler';
+import { setSecondErrorHandler } from './secondErrorHandler';
+
+@Entry
+@Component
+// Register two error handlers and throw an error to verify the chain call.
+struct ErrorHandlerTest {
+    private testErrorHandlers() {
+      setFirstErrorHandler();
+      setSecondErrorHandler();
+      throw new Error('Test uncaught exception!');
+    }
+
+    build() {
+      Column() {
+        Button('Test Handler Chain')
+          .width('90%') 
+          .height(48)
+          .margin(16)
+          .onClick(() => this.testErrorHandlers())
+      }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center) 
+    }
+}
+
 ```

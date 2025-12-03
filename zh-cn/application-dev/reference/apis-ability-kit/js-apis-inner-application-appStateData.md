@@ -27,8 +27,8 @@ import { appManager } from '@kit.AbilityKit';
 | bundleName  | string | 否   | 否   | Bundle名称。 |
 | uid          | number | 否   | 否   | 应用程序的uid。   |
 | state        | number | 否   | 否   | 应用状态。<br>0：初始化状态，应用正在初始化<br>1：就绪状态，应用已初始化完毕<br>2：前台状态，应用位于前台<br>3：获焦状态。（预留状态，当前暂不支持）<br>4：后台状态，应用位于后台<br>5：退出状态，应用已退出 |
-| isSplitScreenMode | boolean | 否 | 否 | 判断应用是否进入分屏模式。<br>true:应用处于分屏模式。<br>false:应用不处于分屏模式。 |
-| isFloatingWindowMode | boolean | 否 | 否 | 判断应用是否进入悬浮窗模式。<br>true:应用处于浮窗模式。<br>false:应用不处于浮窗模式。 |
+| isSplitScreenMode | boolean | 否 | 否 | 判断应用是否处于分屏模式。<br>true:应用处于分屏模式。<br>false:应用不处于分屏模式。 |
+| isFloatingWindowMode | boolean | 否 | 否 | 判断应用是否处于悬浮窗模式。<br>true:应用处于悬浮窗模式。<br>false:应用不处于悬浮窗模式。 |
 
 **示例：**
 
@@ -37,7 +37,7 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let applicationStateObserver: appManager.ApplicationStateObserver = {
-  onForegroundApplicationChanged(appStateData) {
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
     console.info(`appStateData.bundleName: ${appStateData.bundleName}`);
     console.info(`appStateData.uid: ${appStateData.uid}`);
@@ -45,22 +45,22 @@ let applicationStateObserver: appManager.ApplicationStateObserver = {
     console.info(`appStateData.isSplitScreenMode: ${appStateData.isSplitScreenMode}`);
     console.info(`appStateData.isFloatingWindowMode: ${appStateData.isFloatingWindowMode}`);
   },
-  onAbilityStateChanged(abilityStateData) {
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData) {
     console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
-  onProcessCreated(processData) {
+  onProcessCreated(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
-  onProcessDied(processData) {
+  onProcessDied(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
-  onProcessStateChanged(processData) {
+  onProcessStateChanged(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
-  onAppStarted(appStateData) {
+  onAppStarted(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
-  onAppStopped(appStateData) {
+  onAppStopped(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };

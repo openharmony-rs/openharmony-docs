@@ -63,7 +63,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -121,7 +121,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -138,6 +138,9 @@ try {
 addOsAccountAsync(admin: Want, name: string, type: osAccount.OsAccountType): Promise&lt;osAccount.OsAccountInfo&gt;
 
 后台添加账号。使用promise异步回调。
+> **说明：**
+> 
+> 该接口比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -182,7 +185,7 @@ import { BusinessError, osAccount } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // 参数需根据实际情况进行替换
@@ -236,7 +239,7 @@ async function setDomainAccountPolicy() {
   let wantTemp: Want = {
     // 需根据实际情况进行替换
     bundleName: 'com.example.myapplication',
-    abilityName: 'EntryAbility'
+    abilityName: 'EnterpriseAdminAbility'
   };
   let policy: accountManager.DomainAccountPolicy = {
     // 需根据实际情况进行替换
@@ -330,7 +333,7 @@ async function getDomainAccountPolicy() {
   let wantTemp: Want = {
     // 需根据实际情况进行替换
     bundleName: 'com.example.myapplication',
-    abilityName: 'EntryAbility'
+    abilityName: 'EnterpriseAdminAbility'
   };
   let domainAccountPolicy: accountManager.DomainAccountPolicy = {};
   // 查询全局域账号策略

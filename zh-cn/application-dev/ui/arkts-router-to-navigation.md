@@ -4,7 +4,7 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 鉴于组件导航(Navigation)支持更丰富的动效、一次开发多端部署能力和更灵活的栈操作。本文主要从页面跳转、动效和生命周期等方面介绍如何从Router切换到Navigation。
 
@@ -440,7 +440,7 @@ struct PageOne {
 
 ## 转场动画
 
-Router和Navigation都提供了系统的转场动画也提供了自定义转场的能力。
+Router和Navigation都提供了系统的转场动画，也提供了自定义转场的能力。
 
 其中Router自定义页面转场通过通用方法`pageTransition()`实现，具体可参考Router[页面转场动画](arkts-page-transition-animation.md)。
 
@@ -482,9 +482,11 @@ Router可以通过命名路由的方式实现跨包跳转。
 2. 配置成功后需要在跳转的页面中引入命名路由的页面并跳转。
 
    ```ts
-   import { router } from '@kit.ArkUI';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import('library/src/main/ets/pages/Index');  // 引入共享包中的命名路由页面
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import('library/src/main/ets/pages/routerToNavigation/router/Index'); // 引入共享包中的命名路由页面
+   const DOMAIN = 0xF811;
+   const TAG = '[Sample_ArkTSRouter]';
    
    @Entry
    @Component
@@ -497,8 +499,7 @@ Router可以通过命名路由的方式实现跨包跳转。
            .margin({ top: 20 })
            .backgroundColor('#ccc')
            .onClick(() => { // 点击跳转到其他共享包中的页面
-             try {
-               this.getUIContext().getRouter().pushNamedRoute({
+             this.getUIContext().getRouter().pushNamedRoute({
                  name: 'myPage',
                  params: {
                    data1: 'message',
@@ -507,11 +508,14 @@ Router可以通过命名路由的方式实现跨包跳转。
                    }
                  }
                })
-             } catch (err) {
-               let message = (err as BusinessError).message
-               let code = (err as BusinessError).code
-               console.error(`pushNamedRoute failed, code is ${code}, message is ${message}`);
-             }
+               .then(() => {
+                 hilog.info(DOMAIN, TAG, 'pushNamedRoute succeeded.');
+               })
+               .catch((err: BusinessError) => {
+                 let code = err.code;
+                 let message = err.message;
+                 hilog.error(DOMAIN, TAG,`pushNamedRoute failed, code is ${code}, message is ${message}`);
+               });
            })
        }
        .width('100%')

@@ -1,15 +1,20 @@
 # Embedding ArkTS Components
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ArkUI on the native side offers a subset of ArkTS features, which excludes certain capabilities such as declarative UI syntax, custom struct components, and some advanced UI components.
 
 
-For scenarios requiring ArkTS-specific features, ArkUI provides a mechanism to embed ArkTS components using [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md). This involves encapsulating ArkTS components and passing them to the native side, where they are converted into **ArkUI_NodeHandle** objects through the [OH_ArkUI_GetNodeHandleFromNapiValue](../reference/apis-arkui/_ark_u_i___native_module.md#oh_arkui_getnodehandlefromnapivalue) API for component mounting.
+For scenarios requiring ArkTS-specific features, ArkUI provides a mechanism to embed ArkTS components using [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md). This involves encapsulating ArkTS components and passing them to the native side, where they are converted into **ArkUI_NodeHandle** objects through the [OH_ArkUI_GetNodeHandleFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodehandlefromnapivalue) API for component mounting.
 
 
 > **NOTE**
 >
-> - **ArkUI_NodeHandle** objects obtained from **OH_ArkUI_GetNodeHandleFromNapiValue** are for child component parameters only, such as the second parameter of the [addChild](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md#addchild) API. Using such objects in other scenarios, such as setting attributes with [setAttribute](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md#setattribute), will not take effect and will return an error code.
+> - **ArkUI_NodeHandle** objects obtained from **OH_ArkUI_GetNodeHandleFromNapiValue** are for child component parameters only, such as the second parameter of the [addChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild) API. Using such objects in other scenarios, such as setting attributes with [setAttribute](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute), will not take effect and will return an error code.
 > 
 > - To modify ArkTS components on the native side, construct update data using Node-APIs, and then call the [update](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#update) API of **ComponentContent**.
 > 
@@ -155,7 +160,7 @@ The following example introduces the ArkTS **Refresh** component based on the [I
 
 2. Register the creation and update functions with the native side.
    ```ts
-   // entry.ets
+   // Index.ets
    import nativeNode from 'libentry.so';
    import { NodeContent } from '@kit.ArkUI';
    import { createMixedRefresh, updateMixedRefresh } from './MixedModule'
@@ -209,6 +214,7 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    EXTERN_C_START
    static napi_value Init(napi_env env, napi_value exports) {
        napi_property_descriptor desc[] = {
+           // Register the NDK root node.
            {"createNativeRoot", nullptr, NativeModule::CreateNativeRoot, nullptr, nullptr, nullptr, napi_default, nullptr},
            // Register the mixed mode creation function.
            {"registerCreateMixedRefreshNode", nullptr, NativeModule::ArkUIMixedRefresh::RegisterCreateRefresh, nullptr,
@@ -216,6 +222,7 @@ The following example introduces the ArkTS **Refresh** component based on the [I
            // Register the mixed mode update function.
            {"registerUpdateMixedRefreshNode", nullptr, NativeModule::ArkUIMixedRefresh::RegisterUpdateRefresh, nullptr,
             nullptr, nullptr, napi_default, nullptr},
+           // Destroy the NDK root node.
            {"destroyNativeRoot", nullptr, NativeModule::DestroyNativeRoot, nullptr, nullptr, nullptr, napi_default,
             nullptr}};
        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
@@ -255,8 +262,7 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    
    class ArkUIMixedRefresh : public ArkUIMixedNode {
    public:
-       static napi_value RegisterCreateRefresh(napi_env env, napi_callback_info info);
-       static napi_value RegisterUpdateRefresh(napi_env env, napi_callback_info info);
+       static napi_value RegisterCreateAndUpdateRefresh(napi_env env, napi_callback_info info);
    };
    
    } // namespace NativeModule
@@ -269,7 +275,6 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    // Mixed mode interaction class.
    
    #include "ArkUIMixedRefresh.h"
-   #include <hilog/log.h>
    
    namespace NativeModule {
    namespace {
@@ -278,7 +283,7 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    napi_ref g_updateRefresh;
    } // namespace
    
-   napi_value ArkUIMixedRefresh::RegisterCreateRefresh(napi_env env, napi_callback_info info) {
+   napi_value ArkUIMixedRefresh::RegisterCreateAndUpdateRefresh(napi_env env, napi_callback_info info) {
        size_t argc = 1;
        napi_value args[1] = {nullptr};
    
@@ -293,22 +298,58 @@ The following example introduces the ArkTS **Refresh** component based on the [I
        return nullptr;
    }
    
-   napi_value ArkUIMixedRefresh::RegisterUpdateRefresh(napi_env env, napi_callback_info info) {
-       size_t argc = 1;
-       napi_value args[1] = {nullptr};
-   
-       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-   
-       g_env = env;
-       napi_ref refer;
-       // Save the reference after creation to prevent it from being released.
-       napi_create_reference(env, args[0], 1, &refer);
-   
-       g_updateRefresh = refer;
-       return nullptr;
-   }
-   
    } // namespace NativeModule
+   ```
+
+   ```cpp
+     # CMakeLists.txt
+ 
+     # the minimum version of CMake.
+     cmake_minimum_required(VERSION 3.4.1)
+     project(testndk)
+     
+     # optional depends on C++17.
+     set(CMAKE_CXX_STANDARD 17)
+     set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+     
+     include_directories(${NATIVERENDER_ROOT_PATH}
+                          ${NATIVERENDER_ROOT_PATH}/include)
+     
+     add_library(entry SHARED NativeEntry.cpp ArkUIMixedRefresh.cpp napi_init.cpp)
+     # target_link_libraries(entry PUBLIC libace_napi.z.so, libace_ndk.z.so, libhilog_ndk.z.so)
+     
+     find_library(
+          # Sets the name of the path variable.
+          hilog-lib
+          # Specifies the name of the NDK library that
+          # you want CMake to locate.
+          hilog_ndk.z
+      )
+     
+     find_library(
+          # Sets the name of the path variable.
+          libace-lib
+          # Specifies the name of the NDK library that
+          # you want CMake to locate.
+          ace_ndk.z
+      )
+     
+     find_library(
+          # Sets the name of the path variable.
+          libnapi-lib
+          # Specifies the name of the NDK library that
+          # you want CMake to locate.
+          ace_napi.z
+      )
+     
+      find_library(
+           # Sets the name of the path variable.
+           libuv-lib
+           uv
+       )
+     
+     target_link_libraries(entry PUBLIC
+          ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} )
    ```
 
 4. Abstract the base class of components in mixed mode for general logic management.
@@ -447,6 +488,8 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    Related implementation class description:
 
    ```c
+   // ArkUIMixedRefresh.cpp
+
    #include "ArkUIMixedRefresh.h"
    #include <hilog/log.h>
    
@@ -606,31 +649,31 @@ The following example introduces the ArkTS **Refresh** component based on the [I
        napi_value result = nullptr;
        napi_call_function(g_env, nullptr, updateRefresh, 3, argv, &result);
    }
-   
+
    napi_value ArkUIMixedRefresh::RegisterCreateRefresh(napi_env env, napi_callback_info info) {
-       size_t argc = 1;
-       napi_value args[1] = {nullptr};
-   
-       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-   
-       g_env = env;
-       napi_ref refer;
-       napi_create_reference(env, args[0], 1, &refer);
-   
-       g_createRefresh = refer;
-       return nullptr;
-   }
+        size_t argc = 1;
+        napi_value args[1] = {nullptr};
+
+        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+        g_env = env;
+        napi_ref refer;
+        napi_create_reference(env, args[0], 1, &refer);
+
+        g_createRefresh = refer;
+        return nullptr;
+    }
    
    napi_value ArkUIMixedRefresh::RegisterUpdateRefresh(napi_env env, napi_callback_info info) {
        size_t argc = 1;
        napi_value args[1] = {nullptr};
-   
+
        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-   
+
        g_env = env;
        napi_ref refer;
        napi_create_reference(env, args[0], 1, &refer);
-   
+
        g_updateRefresh = refer;
        return nullptr;
    }
@@ -639,7 +682,82 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    
    ```
 
-6. Use the page structure from the [Integrating with ArkTS Page](ndk-access-the-arkts-page.md) section, and continue with the [timer module simple implementation](ndk-loading-long-list.md), making the **Refresh** component the parent component of the text list. 
+6. Implement a simple timer module.
+   ```c
+   // UITimer.h
+   // Timer module.
+   
+   #ifndef MYAPPLICATION_UITIMER_H
+   #define MYAPPLICATION_UITIMER_H
+   
+   #include <hilog/log.h>
+   #include <js_native_api.h>
+   #include <js_native_api_types.h>
+   #include <node_api.h>
+   #include <node_api_types.h>
+   #include <string>
+   #include <thread>
+   #include <uv.h>
+   
+   namespace NativeModule {
+   
+   struct UIData {
+       void *userData = nullptr;
+       int32_t count = 0;
+       int32_t totalCount = 0;
+       void (*func)(void *userData, int32_t count) = nullptr;
+   };
+   
+   napi_threadsafe_function threadSafeFunction = nullptr;
+   
+   void CreateNativeTimer(napi_env env, void *userData, int32_t totalCount, void (*func)(void *userData, int32_t count)) {
+       napi_value name;
+       std::string str = "UICallback";
+       napi_create_string_utf8(env, str.c_str(), str.size(), &name);
+       // UI main thread callback function.
+       napi_create_threadsafe_function(
+           env, nullptr, nullptr, name, 0, 1, nullptr, nullptr, nullptr,
+           [](napi_env env, napi_value value, void *context, void *data) {
+               auto userdata = reinterpret_cast<UIData *>(data);
+               userdata->func(userdata->userData, userdata->count);
+               delete userdata;
+           },
+           &threadSafeFunction);
+       // Start the timer to simulate data changes.
+       std::thread timerThread([data = userData, totalCount, func]() {
+           uv_loop_t *loop = uv_loop_new();
+           uv_timer_t *timer = new uv_timer_t();
+           uv_timer_init(loop, timer);
+           timer->data = new UIData{data, 0, totalCount, func};
+           uv_timer_start(
+               timer,
+               [](uv_timer_t *handle) {
+                   OH_LOG_INFO(LOG_APP, "on timeout");
+                   napi_acquire_threadsafe_function(threadSafeFunction);
+                   auto *customData = reinterpret_cast<UIData *>(handle->data);
+                   // Create callback data.
+                   auto *callbackData =
+                       new UIData{customData->userData, customData->count, customData->totalCount, customData->func};
+                   napi_call_threadsafe_function(threadSafeFunction, callbackData, napi_tsfn_blocking);
+                   customData->count++;
+                   if (customData->count > customData->totalCount) {
+                       uv_timer_stop(handle);
+                       delete handle;
+                       delete customData;
+                   }
+               },
+               4000, 4000);
+           uv_run(loop, UV_RUN_DEFAULT);
+           uv_loop_delete(loop);
+       });
+       timerThread.detach();
+   }
+   } // namespace NativeModule
+   
+   #endif // MYAPPLICATION_UITIMER_H
+   ```
+
+7. Use the page structure from the [Integrating with ArkTS Page](ndk-access-the-arkts-page.md) section, and continue with the [timer module simple implementation](ndk-embed-arkts-components.md), making the **Refresh** component the parent component of the text list.
    ```c
    // MixedRefreshExample.h
    // Sample code for mixed mode.
@@ -649,7 +767,7 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    
    #include "ArkUIBaseNode.h"
    #include "ArkUIMixedRefresh.h"
-   #include "TextListExample.h"
+   #include "NormalTextListExample.h"
    #include "UITimer.h"
    
    #include <js_native_api_types.h>
@@ -691,11 +809,13 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    Replace the entry component creation with the pull-to-refresh text list.
 
    ```c
+   // NativeEntry.cpp
+
    #include "NativeEntry.h"
    
    #include "ArkUIMixedRefresh.h"
    #include "MixedRefreshExample.h"
-   #include "TextListExample.h"
+   #include "NormalTextListExample.h"
    
    #include <arkui/native_node_napi.h>
    #include <arkui/native_type.h>
@@ -731,4 +851,15 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    
    } // namespace NativeModule
    
+   ```
+
+8. Implement Node-API bridging to expose NativeNode module APIs from the native side to ArkTS.
+   ```ts
+   // Index.d.ts
+   
+   export const createNativeRoot: (content: Object) => void;
+   export const destroyNativeRoot: () => void;
+
+   export const registerCreateMixedRefreshNode: (content: Object) => void;
+   export const registerUpdateMixedRefreshNode: (content: Object) => void;
    ```

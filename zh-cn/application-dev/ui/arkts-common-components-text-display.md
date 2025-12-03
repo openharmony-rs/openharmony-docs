@@ -4,13 +4,14 @@
 <!--Owner: @xiangyuan6-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 Text是文本组件，用于展示用户视图，如显示文章的文字内容。该组件支持绑定自定义文本选择菜单，用户可根据需要选择不同功能。此外，还可以扩展自定义菜单，丰富可用选项，进一步提升用户体验。Span则用于展示行内文本。  
 
 具体用法请参考[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)和[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)组件的使用说明。
 
+常见问题请参考[文本显示（Text/Span）常见问题](./arkts-text-faq.md#文本显示textspan常见问题)。
 
 ## 创建文本
 
@@ -731,15 +732,15 @@ struct Index {
     
     onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
       if (menuItem.id.equals(TextMenuItemId.of("customMenu2"))) {
-        console.log("拦截 id: customMenu2 start:" + textRange.start + "; end:" + textRange.end);
+        console.info("拦截 id: customMenu2 start:" + textRange.start + "; end:" + textRange.end);
         return true;
       }
       if (menuItem.id.equals(TextMenuItemId.COPY)) {
-        console.log("拦截 COPY start:" + textRange.start + "; end:" + textRange.end);
+        console.info("拦截 COPY start:" + textRange.start + "; end:" + textRange.end);
         return true;
       }
       if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
-        console.log("不拦截 SELECT_ALL start:" + textRange.start + "; end:" + textRange.end);
+        console.info("不拦截 SELECT_ALL start:" + textRange.start + "; end:" + textRange.end);
         return false;
       }
       return false;
@@ -912,19 +913,19 @@ struct TextExample12 {
   }
   onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
     if (menuItem.id.equals(TextMenuItemId.of("create2"))) {
-      console.log("拦截 id: create2 start:" + textRange.start + "; end:" + textRange.end);
+      console.info("拦截 id: create2 start:" + textRange.start + "; end:" + textRange.end);
       return true;
     }
     if (menuItem.id.equals(TextMenuItemId.of("prepare1"))) {
-      console.log("拦截 id: prepare1 start:" + textRange.start + "; end:" + textRange.end);
+      console.info("拦截 id: prepare1 start:" + textRange.start + "; end:" + textRange.end);
       return true;
     }
     if (menuItem.id.equals(TextMenuItemId.COPY)) {
-      console.log("拦截 COPY start:" + textRange.start + "; end:" + textRange.end);
+      console.info("拦截 COPY start:" + textRange.start + "; end:" + textRange.end);
       return true;
     }
     if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
-      console.log("不拦截 SELECT_ALL start:" + textRange.start + "; end:" + textRange.end);
+      console.info("不拦截 SELECT_ALL start:" + textRange.start + "; end:" + textRange.end);
       return false;
     }
     return false;
@@ -1090,223 +1091,3 @@ struct TextExample {
 
 ![zh-cn_image_0000001562820805](figures/zh-cn_image_0000001562820805.png)
 <!--RP1--><!--RP1End-->
-
-## 常见问题
-
-### Text组件尾部省略号后为什么还有一段空白，没有占满组件宽度
-
-**问题现象**
-
-在Text组件上未设置宽度，当内容过长时，省略号与组件边缘之间会留有较大空白，且内容更新时省略号的位置会发生变化。
-
-![](figures/EllipsisDemo1.gif)
-
-**原因分析**
-
-当Text组件未设置宽度且内容超长时，组件宽度将采用父组件传递的布局约束的最大宽度。省略开始位置会根据不同的断词模式导致排版塑型结果有所不同，因此不同内容的省略开始位置也会不同。
-
-**解决措施**
-
-设置[wordBreak](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#wordbreak11)属性为`WordBreak.BREAK_ALL`，任意2个字符间断行使文本内容尽量占满组件区域。
-
-示例代码如下：
-```ts
-@Entry
-@Component
-struct Index {
-  @State message: string = '混合Hello World! honorificabilitudinitatibus!';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .id('HelloWorld')
-        .fontSize('25fp')
-        .maxLines(1)
-        .textOverflow({ overflow: TextOverflow.Ellipsis})
-        .onClick(() => {
-          this.message = 'Welcome try try try 1235628327434348';
-        })
-        .border({ width: 1})
-        .wordBreak(WordBreak.BREAK_ALL) // 修改断词模式
-    }
-    .width(300)
-    .border({ width: 1, color: Color.Blue})
-    .margin({left: 30, top: 50})
-  }
-}
-```
-
-### Text组件如何实现行末展开样式
-
-**解决措施**
-
-自行测算截断字符，并在行末添加`...展开`或者`...图标`作为组件内容。
-
-**参考链接**
-
-[属性字符串转Paragraph数组](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)<!--RP3--><!--RP3End-->
-
-### Text组件如何实现不设置maxLines在固定布局约束下内容超出仍显示省略样式
-
-**问题现象**
-
-在固定尺寸的组件区域内，不同字号的内容显示的最大行数会有所不同。期望实现内容超长时自动显示省略样式，则无需设置固定的`maxLines`值。
-
-**解决措施**
-
-设置[heightAdaptivePolicy](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#heightadaptivepolicy10)为TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST，该模式会删除超过布局约束的行，从而实现类似设置maxLines的效果。
-
-示例代码如下：
-```ts
-@Entry
-@Component
-struct Index {
-  @State message: string = '混合Hello World! 多行文本 中英文数字混合 1282378283 ~';
-  @State fontSize: number = 25;
-
-  build() {
-    Column({ space: 10 }) {
-      Text(this.message)
-        .id('HelloWorld')
-        .fontSize(this.fontSize)
-        .textOverflow({ overflow: TextOverflow.Ellipsis})
-        .border({ width: 1})
-        .heightAdaptivePolicy(TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST) // 调整自适应布局策略
-        .width(300)
-        .height(200)
-      Row(){
-        Button('fontSize+5')
-          .onClick(()=>{
-            this.fontSize += 5;
-          })
-        Button('fontSize-5')
-          .onClick(()=>{
-            this.fontSize -= 5;
-          })
-      }
-    }
-    .margin({left: 30, top: 50})
-  }
-}
-```
-![](figures/EllipsisDemo2.gif)
-
-### 在文本前后添加自定义标签
-
-**问题现象**
-
-如何在文本的前后各添加一个标签，例如“专题”或“Top1”。这些标签的[背景样式](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md)、[尺寸设置](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)需要能够自定义。
-
-**解决措施一**
-
-如果标签和中间的长文本需在同一行显示，开发者可能会考虑使用[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)实现，但是Span不支持设置尺寸。此时，可以在[弹性布局 (Flex)](./arkts-layout-development-flex-layout.md)或者[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)中放置标签和长文本，并为长文本设置[textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow)属性，以确保文本超长时能够自适应截断，显示在一行之内。
-
-实现步骤：
-
-1.将标签和长文本放在同一个沿水平方向布局的容器Row中。
-
-2.中间长文本设置textOverflow属性为TextOverflow.Ellipsis，空间不足时截断文本，显示省略号。
-
-实现案例可以参考[实现热搜榜](#实现热搜榜)，该示例中，文字“1”、“爆”就是“我是热搜词条”的两个标签。这种实现方式写法简便，适合单行文本添加标签的场景。
-
-**解决措施二**
-
-如果需求是在多行文本前后添加标签，并且不截断文本，上面的方案会导致三个Text中的文本不能对齐。此时，可以在[层叠布局 (Stack)](./arkts-layout-development-stack-layout.md)中放置标签和长文本，给中间多行文本设置首行文本缩进距离[textIndent](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textindent10)。多行文本后面的标签则需要通过[offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)属性调整位置。这种实现方式，可以让三个Text组件中的文字水平对齐。
-
-实现步骤：
-
-1.将标签和长文本放在Stack中。
-
-2.在显示之前的回调[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)中，使用[measureTextSize](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#measuretextsize12)计算前标签的宽度，作为中间多行文本的首行缩进距离。
-
-3.通过[getparagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)<sup>20+</sup>计算中间多行文本最后一行的宽度、除最后一行文本之外的高度，作为后标签的偏移量offset。
-
-4.设置后标签相对于Stack左上角的偏移量。
-
-示例代码如下：
-```ts
-import { LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = '这是一段长文本，超长部分折行，前后添加标签';
-  @State frontTag: string = '前标签';
-  @State backTag: string = '后标签';
-  @State frontPaddingVp: number = 20;
-  @State backPaddingVp: number = 10;
-  @State fontTagWidthVp: Length = 0;
-  @State backTagWidthVp: Length = 0;
-  @State backOffsetVpX: Length = 0;
-  @State backOffsetVpY: Length = 0;
-  @State messageLines: number = 0;
-  @State stackWidthVp: number = 300;
-
-  // 显示之前，测算前后标签的位置，中间文本的缩进距离
-  aboutToAppear(): void {
-    // 计算前标签的宽度fontTagWidthVp，作为message的首行缩进距离
-    let frontTagSize: SizeOptions = this.getUIContext().getMeasureUtils().measureTextSize({
-      textContent: this.frontTag,
-    });
-    this.fontTagWidthVp = this.getUIContext().px2vp(Number(frontTagSize.width)) + this.frontPaddingVp * 2
-
-    // 计算frontTag+message占据的行数
-    let linesFrontTagPlusMessage = 0;
-    let mutableStr = new MutableStyledString(this.message,
-      [{
-        start: 0,
-        length: 1,
-        styledKey: StyledStringKey.PARAGRAPH_STYLE,
-        styledValue: new ParagraphStyle({ textIndent: LengthMetrics.vp(this.fontTagWidthVp) })
-      }]
-    )
-    let paragraphArr = this.getUIContext()
-      .getMeasureUtils()
-      .getParagraphs(mutableStr, { constraintWidth: LengthMetrics.vp(this.stackWidthVp) });
-    for (let i = 0; i < paragraphArr.length; ++i) {
-      linesFrontTagPlusMessage += paragraphArr[i].getLineCount();
-    }
-
-    // 后标签offsetX的偏移量backOffsetVpX=frontTag+message最后一行的宽度
-    this.backOffsetVpX =
-      this.getUIContext().px2vp((paragraphArr[paragraphArr.length-1].getLineWidth(linesFrontTagPlusMessage - 1)))
-    // 后标签offsetY的偏移量backOffsetVpY=frontTag+message总高度-最后一行的高度。
-    let heightFrontTagPlusMessageVp = 0;
-    for (let i = 0; i < paragraphArr.length; ++i) {
-      heightFrontTagPlusMessageVp += this.getUIContext().px2vp(paragraphArr[i].getHeight());
-    }
-    let lastLineHeight =
-      this.getUIContext().px2vp(paragraphArr[paragraphArr.length-1].getLineHeight(linesFrontTagPlusMessage - 1))
-    this.backOffsetVpY = heightFrontTagPlusMessageVp - lastLineHeight
-  }
-
-  build() {
-    Column({ space: 20 }) {
-      Blank()
-        .height(200)
-      Stack() {
-        Text(this.frontTag)
-          .padding({ left: this.frontPaddingVp, right: this.frontPaddingVp })
-          .backgroundColor('rgb(39, 135, 217)')
-        Text(this.message)
-          .textIndent(this.fontTagWidthVp)
-          .padding(0)
-        Text(this.backTag)
-          .padding({ left: this.backPaddingVp, right: this.backPaddingVp })
-          .backgroundColor('rgb(0, 74, 175)')
-          .offset({
-            x: this.backOffsetVpX,
-            y: this.backOffsetVpY
-          })
-      }
-      .alignContent(Alignment.TopStart) // 顶部起始端对齐
-      .width(this.stackWidthVp)
-    }
-    .height('100%')
-    .width('90%')
-    .padding('5%')
-  }
-}
-```
-
-![](figures/text_tag_case_2.png)

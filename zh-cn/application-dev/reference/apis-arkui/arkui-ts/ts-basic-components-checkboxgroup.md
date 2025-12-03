@@ -4,7 +4,7 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 多选框群组，用于控制多选框全选或者不全选状态。
 
@@ -22,7 +22,7 @@ CheckboxGroup(options?: CheckboxGroupOptions)
 
 创建多选框群组，用于控制群组内Checkbox的全选或取消全选状态，具有相同group值的Checkbox和CheckboxGroup属于同一群组。
 
-在结合带缓存组件使用时(如List)，未被创建的Checkbox选中状态需要应用手动控制。详细示例请参考[示例4](#示例4设置全选)。
+在结合带缓存组件使用时（如[List](ts-container-list.md)），未被创建的Checkbox选中状态需要应用手动控制。详细示例请参考[示例4](#示例4设置全选)。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -240,6 +240,10 @@ checkboxShape(shape: Optional\<CheckBoxShape>)
 contentModifier(modifier: Optional<ContentModifier\<CheckBoxGroupConfiguration>>)
 
 定制CheckboxGroup内容区的方法。设置该属性时，其他属性设置会失效。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -514,7 +518,7 @@ class MyCheckboxGroupStyle implements ContentModifier<CheckBoxGroupConfiguration
     return wrapBuilder(buildCheckboxgroup);
   }
 }
-let statusString: string[] = ["全选", "部分选中", "全不选"];
+let statusString: string[] = ['全选', '部分选中', '全不选'];
 @Builder
 function buildCheckboxgroup(config: CheckBoxGroupConfiguration) {
   Column({ space: 10 }) {
@@ -528,13 +532,13 @@ function buildCheckboxgroup(config: CheckBoxGroupConfiguration) {
         .fillOpacity(0)
         .strokeWidth(3)
         .onClick(() => {
-          console.log("checkboxgroup status ", statusString[config.status])
+          console.info('checkboxgroup status ', statusString[config.status])
           if (config.status === SelectStatus.All ||  config.status === SelectStatus.Part) {
             config.triggerChange(false);
-            console.log("checkboxgroup not selected")
+            console.info('checkboxgroup not selected')
           } else {
             config.triggerChange(true);
-            console.log("checkboxgroup selected")
+            console.info('checkboxgroup selected')
           }
         })
         .opacity(config.enabled ? 1 : 0.1)

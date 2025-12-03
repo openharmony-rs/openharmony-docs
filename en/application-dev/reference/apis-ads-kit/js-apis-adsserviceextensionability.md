@@ -1,8 +1,15 @@
 # @ohos.advertising.AdsServiceExtensionAbility (ExtensionAbility for Ads)
 
+<!--Kit: Ads Kit-->
+<!--Subsystem: Advertising-->
+<!--Owner: @SukiEvas-->
+<!--Designer: @zhansf1988-->
+<!--Tester: @hongmei_may-->
+<!--Adviser: @RayShih-->
+
 The AdsServiceExtensionAbility module provides ExtensionAbilities for the ads service. Device vendors can implement the callbacks for ads requests.
 
-> **NOTE**
+> **NOTE**<br>
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
@@ -33,19 +40,9 @@ Ad request callback.
 import { advertising, RespCallback } from '@kit.AdsKit';
 
 function setRespCallback(respCallback: RespCallback) {
-    const ads: Array<advertising.Advertisement> = [];
-    const rewardVerifyConfig: Map<string, string> = new Map();
-    ads.push({
-        adType: 7,
-        uniqueId: '111111',
-        rewardVerifyConfig: rewardVerifyConfig,
-        rewarded: false,
-        shown: false,
-        clicked: false
-    })
-    const slot: string = 'test';
-    const respData: Map<string, Array<advertising.Advertisement>> = new Map();
-    respData.set(slot, ads);
-    respCallback(respData);
+  const respData: Map<string, Array<advertising.Advertisement>> = new Map();
+  // Set the returned ad data.
+  // ...
+  respCallback(respData);
 }
 ```

@@ -1,12 +1,19 @@
 # Application Sandbox
 
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wangfenging -->
+<!--Designer: @liveery; @zl_startup-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @foryourself-->
+
 The application sandbox is an isolation mechanism used to prevent malicious data access through path traversal. With this mechanism, only the application sandbox directory is visible to an application.
 
 - The system provides a dedicated application sandbox directory in the internal storage to map the directory of each application. The application sandbox directory contains only the [application file directory](#application-file-directory-and-application-file-path) and the directory containing the minimum system files required for the running of the application.
 
 - The application sandbox limits the scope of data visible to an application. By default, each application can access only its own application files and the system files required for its running. On the device platform where all files are mounted, the File Manager application can view the data stored by other applications under the **el2/base** directory.
 
-- In each application sandbox directory, the application can save and process its application files in the application file directory, and can only read the system files and directories. To access [user files](user-file-overview.md), the application needs to call specific APIs and have authorization from the user.
+- In each application sandbox directory, the application can save and process its application files in the application file directory, and can only read the system files and directories. To access user files, see [User File Overview](user-file-overview.md).
 
 The following figure illustrates the file access mechanism in the application sandbox.
 
@@ -71,11 +78,11 @@ The following figure shows the application file directory structure. The path of
 
    > **NOTE**
    >
-   > Unless otherwise required, application data is placed in the **el2** directory for security purposes. The data that needs to be accessed before the first user authentication (such as the clock, alarm, and wallpaper data) is placed in the **el1** directory.
+   > - Unless otherwise required, application data is placed in the **el2** directory for security purposes. The data that needs to be accessed before the first user authentication (such as the clock, alarm, and wallpaper data) is placed in the **el1** directory.
    >
-   > You can listen for the [COMMON_EVENT_USER_UNLOCKED](../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_user_unlocked) event to detect that the first user authentication is complete.
+   > - You can listen for the [COMMON_EVENT_USER_UNLOCKED](../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_user_unlocked) event to detect that the first user authentication is complete.
    >
-   > For details about the operations on **el1/** and **el2/**, see [Obtaining and Modifying el Directories](../application-models/application-context-stage.md#obtaining-and-modifying-encryption-levels).
+   > - For details about the operations on **el1/** and **el2/**, see [Obtaining and Modifying el Directories](../application-models/application-context-stage.md#obtaining-and-modifying-encryption-levels).
 
 4. Level 4 and level 5 directories:
    The application's global data is stored in the **distributedfiles** directory and **files**, **cache**, **preferences**, and **temp** in **base**. You can use **ApplicationContext** to obtain the application file paths of these directories.
@@ -89,7 +96,7 @@ The following figure shows the application file directory structure. The path of
    | Folder Name| Context Attribute Name| Type| Description|
    | -------- | -------- | -------- | -------- |
    | bundle | bundleCodeDir | Installation file directory| Directory for saving the HAPs after an application is installed.<br>This directory is cleared when the application is uninstalled.<br>You cannot access resource files using concatenated paths. Use [@ohos.resourceManager](../reference/apis-localization-kit/js-apis-resource-manager.md) instead.<br>You can store the application's code resource data, including the HAPs of the application, reusable library files, and plug-ins, in this directory. The code in this directory can be dynamically loaded.|
-   | base | NA | Directory for the device's files| Directory for saving the application's persistent data on the device. Subdirectories include **files/**, **cache/**, **temp/**, and **haps/**.<br>This directory is cleared when the application is uninstalled.|
+   | base | NA | Directory for the device's files| Directory for storing persistent data on the device (the directory is cleared when the application is uninstalled). The subdirectories include **files/**, **cache/**, **temp/**, and **haps/**.<br>You are not advised to store high-risk information such as cookies, passwords, and tokens in plaintext in this directory.|
    | database | databaseDir | Database directory| Directory in **el2** for saving the files operated by the distributed database service.<br>This directory is cleared when the application is uninstalled.<br>This directory can be used to store the application's private database data, such as database files, in distributed scenarios only.|
    | distributedfiles | distributedFilesDir | Distributed file directory| Directory in **el2** for saving the application files that can be directly accessed across devices.<br>This directory is cleared when the application is uninstalled.<br>You can place the application's data used for distributed scenarios, including file sharing, file backup, and file processing across devices, in this directory. The data stored in this directory enables an application to run smoothly on multiple devices that form a Super Device.|
    | files | filesDir | Application file directory| Directory for saving the application's persistent files on the device.<br>This directory is cleared when the application is uninstalled.<br>You can place the application's private data, including persistent files, images, media files, and log files, in this directory. The data is stored in this directory to ensure privacy, security, and permanent validity.|

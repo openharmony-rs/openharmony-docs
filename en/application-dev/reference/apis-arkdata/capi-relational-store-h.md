@@ -30,7 +30,7 @@ Provides APIs for managing data in an RDB store. The APIs not marked as supporti
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md)                | OH_Rdb_Store | Defines the RDB store type.                                                               |
 | [Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md) | Rdb_DistributedConfig | Defines a struct for distributed configuration of a table.                                                           |
 | [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md)                      | Rdb_KeyInfo | Defines a struct for the primary key or number of the row that changes.                                                       |
-| [Rdb_KeyData](capi-rdb-rdb-keydata.md)                      | - | Holds the changed data.                                                             |
+| [Rdb_KeyData](capi-rdb-rdb-keydata.md)                      | - | Stores the changed data.                                                             |
 | [Rdb_ChangeInfo](capi-rdb-rdb-changeinfo.md)                | Rdb_ChangeInfo | Defines a struct for the details about the device-cloud sync process.                                                            |
 | [Rdb_SubscribeCallback](capi-rdb-rdb-subscribecallback.md)  | Rdb_SubscribeCallback | Defines a callback used to return the subscribed event.                                                                |
 | [Rdb_DataObserver](capi-rdb-rdb-dataobserver.md)            | Rdb_DataObserver | Defines a struct for the data observer.                                                               |
@@ -83,11 +83,11 @@ Provides APIs for managing data in an RDB store. The APIs not marked as supporti
 | [OH_Rdb_Store *OH_Rdb_GetOrOpen(const OH_Rdb_Config *config, int *errCode)](#oh_rdb_getoropen) | - | Obtains a related [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance to operate the RDB store.|
 | [OH_Rdb_Store *OH_Rdb_CreateOrOpen(const OH_Rdb_ConfigV2 *config, int *errCode)](#oh_rdb_createoropen) | - | Creates or opens an [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance based on the given [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md).|
 | [int OH_Rdb_CloseStore(OH_Rdb_Store *store)](#oh_rdb_closestore) | - | Closes an [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) object and reclaims the memory occupied by the object.|
-| [int OH_Rdb_DeleteStore(const OH_Rdb_Config *config)](#oh_rdb_deletestore) | - | Deletes a graph store.|
+| [int OH_Rdb_DeleteStore(const OH_Rdb_Config *config)](#oh_rdb_deletestore) | - | Deletes an RDB store with the specified configuration. |
 | [int OH_Rdb_DeleteStoreV2(const OH_Rdb_ConfigV2 *config)](#oh_rdb_deletestorev2) | - | Deletes an RDB store based on the given [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md).<br>Before calling **DeleteStoreV2**, ensure that the **OH_Rdb_Store** and **OH_Cursor** of the vector store have been closed.|
 | [int OH_Rdb_Insert(OH_Rdb_Store *store, const char *table, OH_VBucket *valuesBucket)](#oh_rdb_insert) | - | Inserts a row of data into a table.|
 | [int OH_Rdb_InsertWithConflictResolution(OH_Rdb_Store *store, const char *table, OH_VBucket *row,Rdb_ConflictResolution resolution, int64_t *rowId)](#oh_rdb_insertwithconflictresolution) | - | Inserts a row of data into the target table and supports conflict resolution.|
-| [int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table,const OH_Data_VBuckets *rows, Rdb_ConflictResolution resolution, int64_t *changes)](#oh_rdb_batchinsert) | - | Inserts a batch of data into a table.|
+| [int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table,const OH_Data_VBuckets *rows, Rdb_ConflictResolution resolution, int64_t *changes)](#oh_rdb_batchinsert) | - | Inserts data into a table in batches.|
 | [int OH_Rdb_Update(OH_Rdb_Store *store, OH_VBucket *valuesBucket, OH_Predicates *predicates)](#oh_rdb_update) | - | Updates data in an RDB store based on specified conditions.|
 | [int OH_Rdb_UpdateWithConflictResolution(OH_Rdb_Store *store, OH_VBucket *row, OH_Predicates *predicates,Rdb_ConflictResolution resolution, int64_t *changes)](#oh_rdb_updatewithconflictresolution) | - | Updates data in the database based on specified conditions and supports conflict resolution.|
 | [int OH_Rdb_Delete(OH_Rdb_Store *store, OH_Predicates *predicates)](#oh_rdb_delete) | - | Deletes data from an RDB store based on specified conditions.|
@@ -332,7 +332,7 @@ Sets whether to enable knowledge processing based on semantic indexes.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code. For details about the error code, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).<br>**ERR_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns an error code. For details about the error code, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
 
 ### OH_Rdb_CreateConfig()
 
@@ -1061,7 +1061,7 @@ int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table,const OH_Data_VBuc
 
 **Description**
 
-Inserts a batch of data into a table.
+Inserts data into a table in batches.
 
 **Since**: 18
 
@@ -1636,7 +1636,7 @@ Sets distributed database tables.
 | const char *tables[] |  Pointer to the names of the distributed tables to set.|
 | uint32_t count | Number of distributed database tables to be set.|
 | [Rdb_DistributedType](#rdb_distributedtype) type | [Rdb_DistributedType](capi-relational-store-h.md#rdb_distributedtype) of the table.|
-| const [Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md) *config | Distributed configuration information of a table ([Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md)).|
+| const [Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md) *config | Pointer to the distributed configuration of a table ([Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md)).|
 
 **Returns**
 
@@ -1726,7 +1726,7 @@ int OH_Rdb_Subscribe(OH_Rdb_Store *store, Rdb_SubscribeType type, const Rdb_Data
 
 **Description**
 
-Registers an observer for an RDB store. The registered callback will be called when data in a distributed or local RDB store changes.
+Registers an observer for an RDB store. The registered callback will be invoked when data in a distributed or local RDB store changes.
 
 **Since**: 11
 

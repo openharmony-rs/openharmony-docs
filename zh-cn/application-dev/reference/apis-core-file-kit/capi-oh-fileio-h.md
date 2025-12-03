@@ -9,7 +9,7 @@
 
 ## 概述
 
-fileio模块接口定义，使用fileio提供的native接口，进行文件基础操作。
+fileio模块接口定义，提供获取文件存储位置的native接口。
 
 **引用文件：** <filemanagement/fileio/oh_fileio.h>
 

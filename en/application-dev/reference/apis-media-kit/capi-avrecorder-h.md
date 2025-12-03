@@ -4,7 +4,7 @@
 <!--Owner: @shiwei75-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -93,7 +93,7 @@ To record only audio, you do not need to set video parameters. Similarly, to rec
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr or the preparation fails.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>        **AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr or the preparation fails.|
 
 ### OH_AVRecorder_GetAVRecorderConfig()
 
@@ -123,7 +123,7 @@ Obtains the AVRecorder configuration. This function must be called after the rec
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr or **config** is not nullptr.<br>**AV_ERR_NO_MEMORY**: The memory fails to be allocated due to insufficient memory.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>        **AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr or **config** is not nullptr.<br>        **AV_ERR_NO_MEMORY**: The memory fails to be allocated due to insufficient memory.|
 
 ### OH_AVRecorder_GetInputSurface()
 
@@ -153,7 +153,7 @@ The caller obtains the **surfaceBuffer** from this surface and fills in the corr
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>        **AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr.|
 
 ### OH_AVRecorder_UpdateRotation()
 
@@ -181,7 +181,7 @@ Updates the video rotation angle. This function must be called after [OH_AVRecor
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr, **rotation** is invalid, or the update operation fails.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>        **AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr, **rotation** is invalid, or the update operation fails.|
 
 ### OH_AVRecorder_Start()
 
@@ -208,7 +208,7 @@ Starts recording. This function must be called after [OH_AVRecorder_Prepare](#oh
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr or recording fails to start.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>        **AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr or recording fails to start.|
 
 ### OH_AVRecorder_Pause()
 
@@ -237,7 +237,7 @@ Then, you can call [OH_AVRecorder_Resume](#oh_avrecorder_resume) to resume recor
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr or recording fails to pause.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>        **AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr or recording fails to pause.|
 
 ### OH_AVRecorder_Resume()
 
@@ -264,7 +264,7 @@ Resumes recording. This function must be called after [OH_AVRecorder_Pause](#oh_
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr or recording fails to resume.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>        **AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr or recording fails to resume.|
 
 ### OH_AVRecorder_Stop()
 
@@ -295,7 +295,7 @@ For video-only recording or audio and video recording, you can call [OH_AVRecord
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr or recording fails to stop.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>        **AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr or recording fails to stop.|
 
 ### OH_AVRecorder_Reset()
 
@@ -326,7 +326,7 @@ For video-only recording or audio and video recording, you can call [OH_AVRecord
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr or recording fails to reset.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>        **AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr or recording fails to reset.|
 
 ### OH_AVRecorder_Release()
 
@@ -355,7 +355,7 @@ The recorder memory will be released. The application layer must explicitly set 
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr or recording fails to release.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>        **AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr or recording fails to release.|
 
 ### OH_AVRecorder_GetAvailableEncoder()
 
@@ -386,7 +386,7 @@ Obtains the available encoders and encoder information of the AVRecorder.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr.<br>**AV_ERR_NO_MEMORY**: The memory fails to be allocated due to insufficient memory.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>        **AV_ERR_INVALID_VAL**: The input parameter **recorder** is nullptr.<br>        **AV_ERR_NO_MEMORY**: The memory fails to be allocated due to insufficient memory.|
 
 ### OH_AVRecorder_SetStateCallback()
 
@@ -415,7 +415,7 @@ Sets a state callback so that the application can respond to state change events
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **recorder** or **callback** is nullptr.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>        **AV_ERR_INVALID_VAL**: The input parameter **recorder** or **callback** is nullptr.|
 
 ### OH_AVRecorder_SetErrorCallback()
 
@@ -444,7 +444,7 @@ Sets an error callback so that the application can respond to error events gener
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **recorder** or **callback** is nullptr.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>        **AV_ERR_INVALID_VAL**: The input parameter **recorder** or **callback** is nullptr.|
 
 ### OH_AVRecorder_SetUriCallback()
 
@@ -473,7 +473,7 @@ Sets a URI callback so that the application can respond to URI events generated 
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **recorder** or **callback** is nullptr.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>        **AV_ERR_INVALID_VAL**: The input parameter **recorder** or **callback** is nullptr.|
 
 ### OH_AVRecorder_SetWillMuteWhenInterrupted()
 
@@ -501,6 +501,6 @@ Sets whether to enable the mute interruption mode.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **recorder** or **callback** is nullptr.<br>**AV_ERR_INVALID_STATE**: The function is called in an invalid state. It must be in the prepared state.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>        **AV_ERR_INVALID_VAL**: The input parameter **recorder** or **callback** is nullptr.<br>        **AV_ERR_INVALID_STATE**: The function is called in an invalid state. It must be in the prepared state.|
 
-<!--no_check-->
+ <!--no_check--> 

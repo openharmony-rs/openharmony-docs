@@ -4,13 +4,13 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+PreviewOutput implements preview output. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-PreviewOutput implements preview output. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
 ## Modules to Import
 
@@ -220,7 +220,7 @@ Obtains the supported frame rates.
 
 |      Type     |     Description    |
 | -------------  | ------------ |
-| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | Array of supported frame rates.|
+| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | Array of supported frame rates. If the API call fails, undefined is returned.|
 
 **Example**
 
@@ -362,7 +362,7 @@ Obtains the preview rotation degree.
 
 |      Type     | Description       |
 | -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Preview rotation degree.|
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Preview rotation degree. If the API call fails, undefined is returned.|
 
 **Error codes**
 
@@ -382,7 +382,7 @@ function testGetPreviewRotation(previewOutput: camera.PreviewOutput, imageRotati
   let previewRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
   try {
     previewRotation = previewOutput.getPreviewRotation(imageRotation);
-    console.log(`Preview rotation is: ${previewRotation}`);
+    console.info(`Preview rotation is: ${previewRotation}`);
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
@@ -583,3 +583,4 @@ function stopPreviewOutput(previewOutput: camera.PreviewOutput): void {
   });
 }
 ```
+

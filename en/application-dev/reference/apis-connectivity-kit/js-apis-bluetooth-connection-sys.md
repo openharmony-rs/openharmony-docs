@@ -1,5 +1,12 @@
 # @ohos.bluetooth.connection (Bluetooth Connection Module) (System API)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
 The **connection** module provides APIs for operating and managing Bluetooth.
 
 > **NOTE**
@@ -32,7 +39,7 @@ Pairs a trusted device whose address is obtained in a non-Bluetooth scan mode (s
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string | Yes   | Address of the device to pair, for example, XX:XX:XX:XX:XX:XX.|
-| transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | Yes   | Device type, for example, a classic Bluetooth device or a Bluetooth low energy (BLE) device.|
+| transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | Yes   | Transport mode used for pairing with a remote device.<br>- If the Bluetooth Classic (BR/EDR) or Bluetooth Low Energy (BLE) mode is used, pass in **TRANSPORT_BR_EDR** or **TRANSPORT_LE**.<br>- If you are not sure which transport mode is used, pass in **TRANSPORT_DUAL**<sup>20+</sup> or **TRANSPORT_UNKNOWN**<sup>20+</sup>. The Bluetooth subsystem will decide the transport mode based on the actual situation.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
 **Error codes**
@@ -52,7 +59,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.pairCredibleDevice('68:13:24:79:4C:8C', connection.BluetoothTransport
         .TRANSPORT_BR_EDR, (err: BusinessError) => {
@@ -85,7 +92,7 @@ Pairs a trusted device whose address is obtained in a non-Bluetooth scan mode (s
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string | Yes   | Address of the device to pair, for example, XX:XX:XX:XX:XX:XX.|
-| transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | Yes   | Device type, for example, a classic Bluetooth device or a BLE device.|
+| transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | Yes   | Transport mode used for pairing with a remote device.<br>- If the Bluetooth Classic (BR/EDR) or Bluetooth Low Energy (BLE) mode is used, pass in **TRANSPORT_BR_EDR** or **TRANSPORT_LE**.<br>- If you are not sure which transport mode is used, pass in **TRANSPORT_DUAL**<sup>20+</sup> or **TRANSPORT_UNKNOWN**<sup>20+</sup>. The Bluetooth subsystem will decide the transport mode based on the actual situation.|
 
 **Return value**
 
@@ -110,7 +117,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.pairCredibleDevice('68:13:24:79:4C:8C', 0).then(() => {
         console.info('PairCredibleDevice');
@@ -159,7 +166,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // callback
 try {
     connection.cancelPairedDevice('11:22:33:44:55:66', (err: BusinessError) => {
@@ -212,13 +219,13 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
     connection.cancelPairedDevice('11:22:33:44:55:66').then(() => {
         console.info('cancelPairedDevice');
     }, (error: BusinessError) => {
-        console.info('cancelPairedDevice: errCode:' + error.code + ',errMessage' + error.message);
+        console.error('cancelPairedDevice: errCode:' + error.code + ',errMessage' + error.message);
     })
 
 } catch (err) {
@@ -263,7 +270,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.cancelPairingDevice('XX:XX:XX:XX:XX:XX');
 } catch (err) {
@@ -313,7 +320,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.cancelPairingDevice('XX:XX:XX:XX:XX:XX');
 } catch (err) {
@@ -338,7 +345,7 @@ Obtains the profile UUIDs of the local device. This API uses an asynchronous cal
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids)&gt;&gt; | Yes   | Callback used to return the profile UUIDs obtained. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -357,7 +364,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.getLocalProfileUuids((err: BusinessError, data: Array<connection.ProfileUuids>) => {
         console.info('getLocalProfileUuids, err: ' + JSON.stringify(err) + ', data: ' + JSON.stringify(data));
@@ -384,7 +391,7 @@ Obtains the profile UUIDs of the local device. This API uses a promise to return
 
 | Type                 | Description           |
 | ------------------- | ------------- |
-|   Promise&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids)&gt;&gt; | Promise used to return the result.|
+|   Promise&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | Promise used to return the result.|
 
 **Error codes**
 
@@ -403,7 +410,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.getLocalProfileUuids().then(() => {
         console.info('getLocalProfileUuids');
@@ -452,7 +459,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.disconnectAllowedProfiles('68:13:24:79:4C:8C', (err: BusinessError) => {
         if (err) {
@@ -508,7 +515,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.disconnectAllowedProfiles('68:13:24:79:4C:8C').then(() => {
         console.info('disconnectAllowedProfiles');
@@ -605,7 +612,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
     connection.setRemoteDeviceType('11:22:33:44:55:66', connection.DeviceType.DEVICE_TYPE_HEADSET).then(() => {
@@ -653,7 +660,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
     connection.getRemoteDeviceType('11:22:33:44:55:66').then((data: connection.DeviceType) => {
@@ -672,6 +679,8 @@ controlDeviceAction(controlDeviceActionParams: ControlDeviceActionParams): Promi
 Sends a control command to Bluetooth headsets during scanning. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH (available only for system applications)
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -704,7 +713,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let controlDeviceActionParams: connection.ControlDeviceActionParams = {
         deviceId: '40:DC:A5:E5:75:C3',
@@ -764,45 +773,44 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { connection } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 /**
  * Update cloud devices in Bluetooth settings.
  */
-public updateCloudBluetoothDevice() {
-    const trustPairDeviceArr: connection.TrustedPairedDevice[] = [];
-    let descBuffer = new ArrayBuffer(1);
-    trustPairDeviceArr.push({
-        sn: '',
-        deviceType: '',
-        modelId: '',
-        manufactory: '',
-        productId: '',
-        hiLinkVersion: '',
-        macAddress: '11:22:33:44:55:66',
-        serviceType: '',
-        serviceId: '',
-        deviceName: '',
-        uuids: '',
-        bluetoothClass: 0,
-        token: descBuffer,
-        deviceNameTime: 0,
-        secureAdvertisingInfo: descBuffer,
-        pairState: 0
+const trustPairDeviceArr: connection.TrustedPairedDevice[] = [];
+let descBuffer = new ArrayBuffer(1);
+trustPairDeviceArr.push({
+    sn: '',
+    deviceType: '',
+    modelId: '',
+    manufactory: '',
+    productId: '',
+    hiLinkVersion: '',
+    macAddress: '11:22:33:44:55:66',
+    serviceType: '',
+    serviceId: '',
+    deviceName: '',
+    uuids: '',
+    bluetoothClass: 0,
+    token: descBuffer,
+    deviceNameTime: 0,
+    secureAdvertisingInfo: descBuffer,
+    pairState: 0
+    });
+const trustPairDevices: connection.TrustedPairedDevices = { trustedPairedDevices: trustPairDeviceArr };
+try {
+    connection.updateCloudBluetoothDevice(trustPairDevices)
+        .then(() => {
+            console.info('updateCloudBluetoothDevice success!');
+        })
+        .catch((err: BusinessError) => {
+            console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
         });
-    const trustPairDevices: connection.TrustedPairedDevices = { trustedPairedDevices: trustPairDeviceArr };
-    try {
-        connection.updateCloudBluetoothDevice(trustPairDevices)
-            .then(() => {
-                console.info('updateCloudBluetoothDevice success!');
-            })
-            .catch((err: BusinessError) => {
-                console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-            });
-    } catch (err) {
-        console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-    }
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
+
 ```
 
 
@@ -812,22 +820,24 @@ Represents the pairing request parameters.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name      | Type  | Readable  | Writable  | Description         |
+| Name      | Type  | Read-Only  | Optional  | Description         |
 | -------- | ------ | ---- | ---- | ----------- |
-| pinType | [PinType](#pintype) | Yes   | No   | Type of the device to pair.<br>This is a system API.  |
+| pinType | [PinType](#pintype) | No   | No   | Type of the device to pair.<br>This is a system API.  |
 
 ## ControlDeviceActionParams<sup>15+</sup>
 
 Defines the configuration parameters of the control command.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name      | Type  | Readable  | Writable  | Description         |
+| Name      | Type  | Read-Only  | Optional  | Description         |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string | Yes   | No| Device ID.|
-| type | [ControlType](#controltype15) | Yes   | No   | Control type.|
-| typeValue | [ControlTypeValue](#controltypevalue15) | Yes| No| Control action.|
-| controlObject | [ControlObject](#controlobject15) | Yes| No| Control object.|
+| deviceId | string | No   | No| Device ID.|
+| type | [ControlType](#controltype15) | No   | No   | Control type.|
+| typeValue | [ControlTypeValue](#controltypevalue15) | No| No| Control action.|
+| controlObject | [ControlObject](#controlobject15) | No| No| Control object.|
 
 ## PinType
 
@@ -876,14 +886,16 @@ Represents the battery information.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name      | Type  | Readable  | Writable  | Description         |
+| Name      | Type  | Read-Only  | Optional  | Description         |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string | Yes   | No   | MAC address of the remote device.<br>This is a system API.|
+| deviceId | string | No   | No   | MAC address of the remote device.<br>This is a system API.|
 
 
 ## ControlType<sup>15+</sup>
 
 Enumerates control types.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -899,6 +911,8 @@ Enumerates control types.
 
 Enumerates control actions.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
 | Name   | Value  | Description      |
@@ -911,6 +925,8 @@ Enumerates control actions.
 ## ControlObject<sup>15+</sup>
 
 Enumerates control objects.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -925,33 +941,37 @@ Enumerates control objects.
 
 Defines the cloud device list.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name      | Type  | Readable  | Optional  | Description         |
+| Name      | Type  | Read-Only  | Optional  | Description         |
 | -------- | ------ | ---- | ---- | ----------- |
-| trustedPairedDevices  | Array&lt;[TrustedPairedDevice](#trustedpaireddevice15)&gt; | Yes   | No   | Cloud device list.  |
+| trustedPairedDevices  | Array&lt;[TrustedPairedDevice](#trustedpaireddevice15)&gt; | No   | No   | Cloud device list.  |
 
 ## TrustedPairedDevice<sup>15+</sup>
 
 Defines the cloud device information.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name      | Type  | Readable  | Optional  | Description         |
+| Name      | Type  | Read-Only  | Optional  | Description         |
 | -------- | ------ | ---- | ---- | ----------- |
-| sn  | string | Yes   | No   | Device SN.  |
-| deviceType  | string | Yes   | No   | Device type to set.  |
-| modelId  | string | Yes   | No   | Charging state of the left earbud.  |
-| manufactory  | string | Yes   | No   | Manufacturer information.  |
-| productId  | string | Yes   | No   | Product information.  |
-| hiLinkVersion  | string | Yes   | No   | HiLink version.  |
-| macAddress  | string | Yes   | No   | MAC address.  |
-| serviceType  | string | Yes   | No   | Service type.  |
-| serviceId  | string | Yes   | No   | Device ID.  |
-| deviceName  | string | Yes   | No   | Device name.  |
-| uuids  | string | Yes   | No   | Device UUID.  |
-| bluetoothClass  | number | Yes   | No   | Peer device type.  |
-| token  | ArrayBuffer | Yes   | No   | Device token information.  |
-| deviceNameTime  | number | Yes   | No   | Device name modification time.  |
-| secureAdvertisingInfo  | ArrayBuffer | Yes   | No   | Device advertising information.  |
-| pairState  | number | Yes   | No   | Device pairing status.  |
+| sn  | string | No   | No   | Device SN.  |
+| deviceType  | string | No   | No   | Device type to set.  |
+| modelId  | string | No   | No   | Charging state of the left earbud.  |
+| manufactory  | string | No   | No   | Manufacturer information.  |
+| productId  | string | No   | No   | Product information.  |
+| hiLinkVersion  | string | No   | No   | HiLink version.  |
+| macAddress  | string | No   | No   | MAC address.  |
+| serviceType  | string | No   | No   | Service type.  |
+| serviceId  | string | No   | No   | Device ID.  |
+| deviceName  | string | No   | No   | Device name.  |
+| uuids  | string | No   | No   | Device UUID.  |
+| bluetoothClass  | number | No   | No   | Peer device type.  |
+| token  | ArrayBuffer | No   | No   | Device token information.  |
+| deviceNameTime  | number | No   | No   | Device name modification time.  |
+| secureAdvertisingInfo  | ArrayBuffer | No   | No   | Device advertising information.  |
+| pairState  | number | No   | No   | Device pairing status.  |

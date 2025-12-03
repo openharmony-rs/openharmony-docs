@@ -5,9 +5,9 @@
 <!--Owner: @zhanghongran-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
-从API 20开始，支持视频编码同步模式。
+从API version 20开始，支持视频编码同步模式。
 
 开发者可以调用本模块的Native API接口，完成同步模式的视频编码。
 

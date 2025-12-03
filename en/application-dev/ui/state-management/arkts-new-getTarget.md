@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-To obtain the original object before a proxy is added by the state management framework, you can use the [getTarget](../../reference/apis-arkui/js-apis-StateManagement.md#gettarget) API.
+To obtain the original object before a proxy is added by the state management framework, you can use the [getTarget](../../reference/apis-arkui/js-apis-stateManagement.md#gettarget) API.
 
 Before reading this topic, you are advised to review [\@Observed](./arkts-observed-and-objectlink.md) and [\@ObservedV2](./arkts-new-observedV2-and-trace.md).
 
@@ -35,7 +35,7 @@ The **getTarget** API is used to obtain the original objects of these proxy obje
 
   ```ts
   import { UIUtils } from '@kit.ArkUI';
-  let res = UIUtils.getTarget(2); // Incorrect usage. The input parameter is of the non-object type.
+  let res = UIUtils.getTarget(2); // Non-object type parameter; returns the input value directly.
   @Observed
   class Info {
     name: string = "Tom";
@@ -44,7 +44,7 @@ The **getTarget** API is used to obtain the original objects of these proxy obje
   let rawInfo: Info = UIUtils.getTarget (info); // Correct usage.
   ```
 
-- Changes to the content in the original object obtained by **getTarget** cannot be observed nor trigger UI re-renders.
+- Changes to the properties in the original object obtained by **getTarget** cannot be observed nor trigger UI re-renders.
 
   ```ts
   import { UIUtils } from '@kit.ArkUI';
@@ -80,7 +80,7 @@ The **getTarget** API is used to obtain the original objects of these proxy obje
 
 State management V1 adds proxies to the following objects:
 
-1. Instances of classes decorated with \@Observed A proxy is automatically added to an instance of a class decorated with \@Observed when the instance is created. However, instances not initialized with the **new** operator are not proxied.
+1. Instances of classes decorated with \@Observed A proxy is automatically added to an instance of a class decorated with \@Observed when the instance is created. In the following example, classes not decorated with \@Observed are not proxied.
 
 ```ts
 @Observed
@@ -94,7 +94,7 @@ let observedClass: ObservedClass = new ObservedClass(); // Proxied.
 let nonObservedClass: NonObservedClass = new NonObservedClass(); // Not proxied.
 ```
 
-2. Complex-type objects decorated with state variable decorators Proxies are added to objects of the Class, Map, Set, Date, or Array type decorated with \@State, \@Prop, or other state variable decorators. If the object is already a proxy, no new proxy is added.
+2. Complex-type objects decorated with state variable decorators Proxies are added to objects of the Class, Map, Set, Date, or Array type decorated with \@State, [\@Prop](./arkts-prop.md), or other state variable decorators. If the object is already a proxy, no new proxy is added.
 
 ```ts
 @Observed

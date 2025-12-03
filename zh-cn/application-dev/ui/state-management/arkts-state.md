@@ -46,7 +46,7 @@
 
   **图1** 初始化规则图示
 
-![zh-cn_image_0000001502091796](figures/zh-cn_image_0000001502091796.png)
+![state-initialization](figures/state-initialization.png)
 
 ## 观察变化和行为表现
 
@@ -279,9 +279,9 @@ struct MyComponent {
 
 ![Video-state](figures/Video-state.gif)
 
-从该示例中，我们可以了解到\@State变量的初始化机制：
+从上述示例中，我们可以了解到\@State变量的初始化机制：
 
-1. 没有外部传入的情况下，使用默认的值进行本地初始化：
+1. 上述示例中，在没有外部传入的情况下，使用默认的值进行本地初始化：
 
    ```ts
    // title没有外部传入，使用本地的值new Model('Hello World')进行初始化
@@ -290,7 +290,7 @@ struct MyComponent {
    MyComponent({ title: new Model('Hello World 2'), count: 7 })
    ```
 
-2. 在有外部传入的情况下，使用外部传入的值进行初始化：
+2. 上述示例中，在有外部传入的情况下，使用外部传入的值进行初始化：
 
    ```ts
    // count和increaseBy均有外部传入，分别使用传入的1和2进行初始化
@@ -826,7 +826,7 @@ struct ConsumerChild {
 }
 ```
 
-以上示例每次点击Button('change to self')，把相同的类常量赋值给一个Class类型的状态变量，会触发刷新并输出`this.dataObj.name change: a`日志。原因是在状态管理V1中，会给被\@Observed装饰的类对象以及使用状态变量装饰器如@State装饰的Class、Date、Map、Set、Array类型的对象添加一层代理，用于观测一层属性或API调用产生的变化。  
+以上示例每次点击Button('change to self')，把相同的类实例赋值给一个Class类型的状态变量，会触发刷新并输出`this.dataObj.name change: a`日志。原因是在状态管理V1中，会给被\@Observed装饰的类对象以及使用状态变量装饰器如@State装饰的Class、Date、Map、Set、Array类型的对象添加一层代理，用于观测一层属性或API调用产生的变化。  
 当再次赋值`list[0]`时，`dataObjFromList`已经是`Proxy`类型，而`list[0]`是`Object`类型，因此判断两者不相等，会触发赋值和刷新。 
 为了避免这种不必要的赋值和刷新，可以通过用\@Observed装饰类，或者使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象，提前进行新旧值的判断，如果相同则不执行赋值。  
 方法一：增加\@Observed
@@ -927,7 +927,7 @@ struct ConsumerChild {
 
 ### 不允许在build里改状态变量
 
-不允许在build里改变状态变量，状态管理框架会在运行时报出Error级别日志。
+不允许在build里改变状态变量，状态管理框架会在运行时报出Error级别日志。通过事件回调或异步回调更新状态变量，例如在onClick中修改\@State，是允许的。
 
 下面的示例，渲染的流程是：
 
@@ -965,7 +965,7 @@ struct Index {
 框架识别到在build里改变状态变量会打error日志，error日志为：
 
 ```ts
-FIX THIS APPLICATION ERROR: @Component 'Index'[4]: State variable 'count' has changed during render! It's illegal to change @Component state while build (initial render or re-render) is on-going. Application error!
+FIX THIS APPLICATION ERROR: @Component 'Index': State variable 'count' has changed during render! It's illegal to change @Component state while build (initial render or re-render) is on-going. Application error!
 ```
 
 在上述示例中，Text组件多渲染了一次。这个错误行为不会造成严重的后果，所以许多开发者忽略了这个日志。

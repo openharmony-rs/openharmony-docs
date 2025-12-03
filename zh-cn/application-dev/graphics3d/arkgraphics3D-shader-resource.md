@@ -253,8 +253,8 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
         "rasterizationState": {
             "enableDepthClamp": false,
             "enableDepthBias": false,
-            "enableRasterizerDiscard": true,
-            "polygonMode": "line",
+            "enableRasterizerDiscard": false,
+            "polygonMode": "fill",
             "cullModeFlags": "back",
             "frontFace": "counter_clockwise"
         },
@@ -269,7 +269,7 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
             "colorAttachments": [
                 {
                     "enableBlend": true,
-                    "colorWriteMask": "g_bit|b_bit",
+                    "colorWriteMask": "r_bit|g_bit|b_bit|a_bit",
                     "srcColorBlendFactor": "one",
                     "dstColorBlendFactor": "one_minus_src_alpha",
                     "colorBlendOp": "add",

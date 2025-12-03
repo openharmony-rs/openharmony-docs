@@ -39,7 +39,7 @@ NetConnection常用接口如下表所示，详细的接口说明请参考[net_co
 
 ### 开发步骤
 
-使用本文档涉及接口获取网络相关信息时，需先创建Native C++工程，在源文件中将相关接口封装，再在ArkTs层对封装的接口进行调用，使用hilog或者console.log等手段选择打印在控制台或者生成设备日志。
+使用本文档涉及接口获取网络相关信息时，需先创建Native C++工程，在源文件中将相关接口封装，再在ArkTs层对封装的接口进行调用，使用hilog或者console.info等手段选择打印在控制台或者生成设备日志。
 
 本文以实现获取默认激活的数据网络为例，给出具体的开发指导。
 
@@ -183,18 +183,18 @@ libnet_connection.so
 
       GetDefaultNet() {
         let netid = testNetManager.NetId();
-        console.log("The defaultNetId is [" + netid + "]");
+        console.info("The defaultNetId is [" + netid + "]");
       }
 
       CodeNumber() {
         let testParam = 0;
         let codeNumber = testNetManager.GetDefaultNet(testParam);
         if (codeNumber === 0) {
-          console.log("Test success. [" + codeNumber + "]");
+          console.info("Test success. [" + codeNumber + "]");
         } else if (codeNumber === 201) {
-          console.log("Missing permissions. [" + codeNumber + "]");
+          console.info("Missing permissions. [" + codeNumber + "]");
         } else if (codeNumber === 401) {
-          console.log("Parameter error. [" + codeNumber + "]");
+          console.info("Parameter error. [" + codeNumber + "]");
         }
       }
     }

@@ -5,7 +5,7 @@
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -19,7 +19,7 @@ The CodecBase module provides the variables, attributes, and functions for basic
 
 | Name| Description|
 | -- | -- |
-| [avcodec_audio_channel_layout.h](capi-avcodec-audio-channel-layout-h.md) | Declares the enums used for audio encoding and decoding.|
+| [avcodec_audio_channel_layout.h](capi-avcodec-audio-channel-layout-h.md) | Declares the enums used for audio codec channel layouts.|
 | [native_avcodec_base.h](capi-native-avcodec-base-h.md) | Declares the native APIs used for basic audio and video multiplexing, demultiplexing, encoding, and decoding.|
 
 ## Media Codec Formats
@@ -39,7 +39,7 @@ The table below lists the media codec formats. The type is a constant string.
 | OH_AVCODEC_MIMETYPE_AUDIO_VIVID | MIME type of the Audio Vivid audio decoder. <!--Del-->(This specification is not available yet.)<!--DelEnd-->     |
 | OH_AVCODEC_MIMETYPE_AUDIO_AMR_NB | MIME type of the AMR-NB audio decoder.                          |
 | OH_AVCODEC_MIMETYPE_AUDIO_AMR_WB | MIME type of the AMR-WB audio decoder.                          |
-| OH_AVCODEC_MIMETYPE_AUDIO_APE |MIME type of the APE audio decoder.                        |
+| OH_AVCODEC_MIMETYPE_AUDIO_APE | MIME type of the APE audio decoder.                        |
 | OH_AVCODEC_MIMETYPE_VIDEO_VVC | MIME type of the VVC (H.266) video codec.                   |
 | OH_AVCODEC_MIMETYPE_VIDEO_HEVC | MIME type of the HEVC (H.265) video codec.                   |
 | OH_AVCODEC_MIMETYPE_VIDEO_AVC | MIME type of the AVC (H.264) video codec.                    |
@@ -57,7 +57,7 @@ The table below lists the media codec formats. The type is a constant string.
 
 The tables below list the key-value pairs used to describe media data. The key type is a constant string, and the value type can be int32_t, int64_t, float, double, char *, or uint8_t *.
 
-The [OH_AVFormat](_core.md#functions) API is used to configure or query parameters.
+The [OH_AVFormat](capi-core-oh-avformat.md) API is used to configure or query parameters.
 
 ### Key-Value Pairs Dedicated for Capability Query
 
@@ -84,7 +84,7 @@ The [OH_AVFormat](_core.md#functions) API is used to configure or query paramete
 | OH_ED_KEY_EOS                         | End of stream for the surface buffer. The value type is int32_t. This key is optional. (It is deprecated from API version 14.)|
 | OH_MD_KEY_WIDTH                          | Video width. The value type is int32_t.                            |
 | OH_MD_KEY_HEIGHT                        | Video height. The value type is int32_t.                              |
-| OH_MD_KEY_PIXEL_FORMAT            | Video pixel format. The value type is int32_t. For details, see [OH_AVPixelFormat](_core.md#oh_avpixelformat).|
+| OH_MD_KEY_PIXEL_FORMAT            | Video pixel format. The value type is int32_t. For details, see [OH_AVPixelFormat](capi-native-avformat-h.md#oh_avpixelformat).|
 | OH_MD_KEY_FRAME_RATE                | Video frame rate. The value type is double. This key is optional.                |
 | OH_MD_KEY_RANGE_FLAG           | Video YUV value range flag. The value type is int32_t. The value **1** means a full range, and **0** means a limited range. This key is optional.|
 | OH_MD_KEY_COLOR_PRIMARIES      | Video primary colors. The value type is int32_t. For details, see [OH_ColorPrimary](capi-native-avcodec-base-h.md#oh_colorprimary). The value complies with Table 2 in H.273. This key is optional.|
@@ -106,7 +106,7 @@ The [OH_AVFormat](_core.md#functions) API is used to configure or query paramete
 | OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT        | Number of LTR frames. The value type is int32_t. The value must be within the supported value range. This key is optional and is used only for video encoding.|
 | OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_MARK_LTR  | Whether the current frame is marked as an LTR frame. The value type is int32_t. **1** if marked, **0** otherwise. This key is optional and is used only for video encoding.|
 | OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR    | 	POC number of the LTR frame referenced by the current frame. The value type is int32_t. This key is optional and is used only for video encoding.|
-| OH_MD_KEY_VIDEO_PER_FRAME_IS_LTR      | Whether the frame corresponding to the stream output from the current [OH_AVBuffer](_core.md#oh_avbuffer) is marked as an LTR frame. The value type is int32_t. **1** if marked, **0** otherwise. This key is optional and is used only for video encoding.|
+| OH_MD_KEY_VIDEO_PER_FRAME_IS_LTR      | Whether the frame corresponding to the stream output from the current [OH_AVBuffer](capi-core-oh-avbuffer.md) is marked as an LTR frame. The value type is int32_t. **1** if marked, **0** otherwise. This key is optional and is used only for video encoding.|
 | OH_MD_KEY_VIDEO_PER_FRAME_POC            | POC number of the frame. The value type is int32_t. This key is optional and is used only for video encoding.|
 | OH_MD_KEY_VIDEO_ENCODER_QP_MAX       | Maximum Quantization Parameter (QP) allowed by the video encoder. The value type is int32_t. This key is optional and is used only for video encoding.|
 | OH_MD_KEY_VIDEO_ENCODER_QP_MIN      | Minimum QP allowed by the video encoder. The value type is int32_t. This key is optional and is used only for video encoding.|
@@ -115,7 +115,7 @@ The [OH_AVFormat](_core.md#functions) API is used to configure or query paramete
 | OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER         | Duration (in milliseconds) for which the last frame will be resubmitted repeatedly, if no new frame is available after the previous frame is submitted to the encoder. The value type is int32_t. This key is used only in the configuration phase of video encoding in surface mode.|
 | OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT         | Maximum number of times the encoder can repeat encoding the previous frame when no new frame is available. The value type is int32_t. This key takes effect only when **OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER** is available and is used only in the configuration phase.|
 | OH_MD_KEY_VIDEO_DECODER_OUTPUT_COLOR_SPACE   | Output color space of the video decoder. The value type is int32_t. The supported value is **OH_COLORSPACE_BT709_LIMIT**.|
-| OH_MD_KEY_ROTATION                    | Rotation angle of the surface. The value type is int32_t, and the value range is {0, 90, 180, 270}. The default value is 0. This key is optional and is used only for video decoding in surface mode This key is optional.|
+| OH_MD_KEY_ROTATION                    | Rotation angle of the surface, with a clockwise direction. The value type is int32_t, and the value range is {0, 90, 180, 270}. The default value is 0. This key is optional and is used only for video decoding in surface mode This key is optional.|
 | OH_MD_KEY_SCALING_MODE            | Video scaling mode. The value type is int32_t. For details, see [OH_ScalingMode](capi-native-avcodec-base-h.md#oh_scalingmode). This key is optional and is used only for video decoding in surface mode. You are advised to set the scaling mode by calling [OH_NativeWindow_NativeWindowSetScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowsetscalingmodev2). (It is deprecated from API version 14.)|
 | OH_MD_KEY_VIDEO_CROP_TOP       | Top coordinate (y) of the cropped rectangle. The value type is int32_t. This key is optional and is used only for video decoding.|
 | OH_MD_KEY_VIDEO_CROP_BOTTOM        | Bottom coordinate (y) of the cropped rectangle. The value type is int32_t. This key is optional and is used only for video decoding.|
@@ -135,7 +135,7 @@ The [OH_AVFormat](_core.md#functions) API is used to configure or query paramete
 | OH_MD_KEY_AUD_CHANNEL_COUNT  | Number of audio channels. The value type is int32_t.                          |
 | OH_MD_KEY_AUD_SAMPLE_RATE      | Audio sampling rate. The value type is int32_t.                            |
 | OH_MD_KEY_AUDIO_COMPRESSION_LEVEL | Audio codec compression level. The value type is int32_t type. This key is used only for audio encoding. This key is optional.    |
-| OH_MD_KEY_CHANNEL_LAYOUT        | Required encoding channel layout. The value type is int64_t. This key applies only to encoders. For details, see [OH_AudioChannelLayout](_core.md#oh_audiochannellayout-1). |
+| OH_MD_KEY_CHANNEL_LAYOUT        | Required encoding channel layout. The value type is int64_t. This key applies only to encoders. For details, see [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout). |
 | OH_MD_KEY_BITS_PER_CODED_SAMPLE | Number of bits per sample. The value type is int32_t. This key is optional.<br>In versions earlier than API version 20, this parameter must be set to **1** for FLAC encoding. Otherwise, **OH_AudioCodec_Configure** returns the error code **AV_ERR_INVALID_VAL**. However, this parameter has no actual effect and does not affect the encoding result. Starting from API version 20, you do not need to set it anymore.|
 | OH_MD_KEY_SBR                              | AAC SBR format. The value type is int32_t. This key applies to AAC encoders. This key is optional.|
 | OH_MD_KEY_COMPLIANCE_LEVEL    | FLAC compliance level. The value type is int32_t. This key is used only for audio encoding. This key is optional.         |
@@ -174,4 +174,3 @@ The [OH_AVFormat](_core.md#functions) API is used to configure or query paramete
 | OH_MD_KEY_REFERENCE_TRACK_IDS          | Reference relationship between media file tracks. The value type is int32_t\*.|
 | OH_MD_KEY_TRACK_REFERENCE_TYPE         | Auxiliary track type of a media file. The value type is string.|
 | OH_MD_KEY_TRACK_DESCRIPTION         | Auxiliary track description of a media file. The value type is string.|
-<!--no_check-->

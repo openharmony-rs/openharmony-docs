@@ -1,4 +1,10 @@
 # AlphabetIndexer
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **AlphabetIndexer** component can create a logically indexed array of items in a container for instant location.
 
@@ -16,6 +22,8 @@ Not supported
 
 AlphabetIndexer(options: AlphabetIndexerOptions)
 
+Creates an **AlphabetIndexer** component.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -30,14 +38,18 @@ AlphabetIndexer(options: AlphabetIndexerOptions)
 
 Defines the options of the **AlphabetIndexer** component.
 
+> **NOTE**
+>
+> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
+
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| arrayValue<sup>7+</sup> | Array&lt;string&gt; | Yes| Array of index items.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| selected<sup>7+</sup>   | number              | Yes   | Index of the initially selected item. If the value exceeds the value range, the default value 0 is used.<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | ---- | ---- | -------- |
+| arrayValue<sup>7+</sup> | Array&lt;string&gt; | No| No| Array of index items.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| selected<sup>7+</sup>   | number              | No| No   | Index of the initially selected item. If the value exceeds the value range, the default value 0 is used.<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## Attributes
 
@@ -143,7 +155,7 @@ Sets whether to display the pop-up window.
 
 | Name| Type   | Mandatory| Description                                  |
 | ------ | ------- | ---- | -------------------------------------- |
-| value  | boolean | Yes  | Whether to display the pop-up window.<br>Default value: **false** (no the pop-up window is displayed).|
+| value  | boolean | Yes  | Whether to display the pop-up window.<br>Default value: **false**.<br>**true**: Display the pop-up window.<br>**false**: Do not display the pop-up window.|
 
 ### selectedFont
 
@@ -207,7 +219,7 @@ Sets the size of the index item area.
 
 | Name| Type                      | Mandatory| Description                                                        |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string \| number | Yes  | Size of the index item area, which is a square, meaning the side length of the square. This attribute cannot be set in percentage.<br>Default value: **16.0**<br>Unit: vp|
+| value  | string \| number | Yes  | Size of the index item area, which is a square, meaning the side length of the square. This attribute cannot be set in percentage.<br>The actual value is restricted by the component size. The maximum width of an index item is the component width minus the left and right [padding](ts-universal-attributes-size.md#padding), and the maximum height of an index item is (component height minus the top and bottom [padding](ts-universal-attributes-size.md#padding))/number of index items. If the input value is less than or equal to 0, the default value is used.<br>Default value: **16.0**<br>Unit: vp|
 
 ### alignStyle
 
@@ -328,19 +340,15 @@ Sets the background color for the secondary index item in the pop-up window.
 
 autoCollapse(value: boolean)
 
-Sets whether to auto-collapse or expand the indexer bar.
+Sets whether to enable the adaptive collapse behavior for the indexer.
 
-When the first index item is **#**:
+If the first index item is **"#"**: Remaining items ≤ 9: Full display mode; 9 < Remaining items ≤ 13: Adapts between full display and short collapse modes based on the indexer height. Remaining items > 13: Adapts between short and long collapse modes based on the indexer height.
 
-- If the number of remaining index items after excluding the first item is less than or equal to 9, the full display mode is used.
-- If the number of remaining index items is between 9 and 13 (inclusive), the mode will adaptively switch between full display and short collapse modes based on the indexer height.
-- If the number of remaining index items is greater than 13, the mode will adaptively switch between short and long collapse modes based on the indexer height.
+If the first index item is not **"#"**: Total index items ≤ 9: Full display mode; 9 < Total index items ≤ 13: Adapts between full display and short collapse modes based on the indexer height. Total index items > 13: Adapts between short and long collapse modes based on the indexer height.
 
-When the first index item is not **#**:
-
-- If the total number of index items is less than or equal to 9, the full display mode is used.
-- If the number of remaining index items is between 9 and 13 (inclusive), the mode will adaptively switch between full display and short collapse modes based on the indexer height.
-- If the total number of index items is greater than 13, the mode will adaptively switch between short and long collapse modes based on the indexer height.
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -350,7 +358,7 @@ When the first index item is not **#**:
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | ------------------------------------------ |
-| value  | boolean | Yes  | Whether to auto-collapse or expand the indexer bar.<br>Default value:<br>In versions earlier than API version 12: **false**<br>API version 12 and later: **true**|
+| value  | boolean | Yes  | Whether to auto-collapse or expand the indexer bar.<br>Default value:<br>Versions earlier than API version 12: false<br>API version 12 and later: true<br>**true**: Enable the adaptive collapse behavior.<br>**false**: Disable the adaptive collapse behavior.|
 
 ### popupItemBorderRadius<sup>12+</sup>   
 
@@ -424,11 +432,15 @@ enableHapticFeedback(value: boolean)
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
 | Name        | Type                                                 | Mandatory| Description                        |
 |-------------|-----------------------------------------------------|----|----------------------------|
-| value | boolean | Yes | Whether to enable haptic feedback.<br>Default value: **true** (haptic feedback is enabled).|
+| value | boolean | Yes | Whether to enable haptic feedback.<br>Default value: **true** (haptic feedback is enabled).<br>To enable haptic feedback, you must declare the ohos.permission.VIBRATE permission under **requestPermissions** in the **module.json5** file of the project.<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
 
 ## IndexerAlign
+
+Enumerates the alignment styles of the index bar pop-up window.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -565,14 +577,14 @@ This example demonstrates how to customize the display text for the index pop-up
 @Entry
 @Component
 struct AlphabetIndexerSample {
-  private arrayA: string[] = ['Ann']
-  private arrayB: string[] = ['Ben', 'Bob']
-  private arrayC: string[] = ['Calvin', 'Cameron', 'Charlie', 'Charlotte']
-  private arrayL: string[] = ['Daisy', 'Daniel', 'Darla', 'David', 'Derek', 'Dorothy', 'Duke']
+  private arrayA: string[] = ['Ann'];
+  private arrayB: string[] = ['Ben', 'Bob'];
+  private arrayC: string[] = ['Calvin', 'Cameron', 'Charlie', 'Charlotte'];
+  private arrayL: string[] = ['Daisy', 'Daniel', 'Darla', 'David', 'Derek', 'Dorothy', 'Duke'];
   private value: string[] = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
     'H', 'I', 'J', 'K', 'L', 'M', 'N',
     'O', 'P', 'Q', 'R', 'S', 'T', 'U',
-    'V', 'W', 'X', 'Y', 'Z']
+    'V', 'W', 'X', 'Y', 'Z'];
 
   build() {
     Stack({ alignContent: Alignment.Start }) {
@@ -642,25 +654,25 @@ struct AlphabetIndexerSample {
           .popupItemFont({ size: 30, style: FontStyle.Normal }) // Text style of the secondary index item in the pop-up window.
           .popupItemBackgroundColor(0xCCCCCC) // Background color of the secondary index item in the pop-up window.
           .onSelect((index: number) => {
-            console.info(this.value[index] + ' Selected!')
+            console.info(this.value[index] + ' Selected!');
           })
           .onRequestPopupData((index: number) => {
             // When A is selected, the secondary index item list in the pop-up window displays arrayA. Similarly, selecting B, C, or L will display their respective arrays.
             // For other index items, the pop-up window will only show the primary index item.
             if (this.value[index] == 'A') {
-              return this.arrayA
+              return this.arrayA;
             } else if (this.value[index] == 'B') {
-              return this.arrayB
+              return this.arrayB;
             } else if (this.value[index] == 'C') {
-              return this.arrayC
+              return this.arrayC;
             } else if (this.value[index] == 'L') {
-              return this.arrayL
+              return this.arrayL;
             } else {
-              return []
+              return [];
             }
           })
           .onPopupSelect((index: number) => {
-            console.info('onPopupSelected:' + index)
+            console.info('onPopupSelected:' + index);
           })
       }
       .width('100%')
@@ -681,14 +693,14 @@ This example demonstrates how to enable adaptive collapse mode using the [autoCo
 @Entry
 @Component
 struct AlphabetIndexerSample {
-  private arrayA: string[] = ['Ann']
-  private arrayB: string[] = ['Ben', 'Bob']
-  private arrayC: string[] = ['Calvin', 'Cameron', 'Charlie', 'Charlotte']
-  private arrayJ: string[] = ['Jack', 'James']
+  private arrayA: string[] = ['Ann'];
+  private arrayB: string[] = ['Ben', 'Bob'];
+  private arrayC: string[] = ['Calvin', 'Cameron', 'Charlie', 'Charlotte'];
+  private arrayJ: string[] = ['Jack', 'James'];
   private value: string[] = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
     'H', 'I', 'J', 'K', 'L', 'M', 'N',
     'O', 'P', 'Q', 'R', 'S', 'T', 'U',
-    'V', 'W', 'X', 'Y', 'Z']
+    'V', 'W', 'X', 'Y', 'Z'];
   @State isNeedAutoCollapse: boolean = false;
   @State indexerHeight: string = '75%';
 
@@ -823,14 +835,14 @@ This example demonstrates how to apply a background blur effect to the pop-up wi
 @Entry
 @Component
 struct AlphabetIndexerSample {
-  private arrayA: string[] = ['Ann']
-  private arrayB: string[] = ['Ben', 'Bob']
-  private arrayC: string[] = ['Calvin', 'Cameron', 'Charlie', 'Charlotte']
-  private arrayL: string[] = ['Daisy', 'Daniel', 'Darla', 'David', 'Derek', 'Dorothy', 'Duke']
+  private arrayA: string[] = ['Ann'];
+  private arrayB: string[] = ['Ben', 'Bob'];
+  private arrayC: string[] = ['Calvin', 'Cameron', 'Charlie', 'Charlotte'];
+  private arrayL: string[] = ['Daisy', 'Daniel', 'Darla', 'David', 'Derek', 'Dorothy', 'Duke'];
   private value: string[] = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
     'H', 'I', 'J', 'K', 'L', 'M', 'N',
     'O', 'P', 'Q', 'R', 'S', 'T', 'U',
-    'V', 'W', 'X', 'Y', 'Z']
+    'V', 'W', 'X', 'Y', 'Z'];
   @State customBlurStyle: BlurStyle = BlurStyle.NONE;
 
   build() {
@@ -909,25 +921,25 @@ struct AlphabetIndexerSample {
               .popupBackgroundBlurStyle(this.customBlurStyle) // Set the background blur style of the pop-up window.
               .popupTitleBackground(0xCCCCCC) // Background color of the primary index item in the pop-up window.
               .onSelect((index: number) => {
-                console.info(this.value[index] + ' Selected!')
+                console.info(this.value[index] + ' Selected!');
               })
               .onRequestPopupData((index: number) => {
                 // When A is selected, the secondary index item list in the pop-up window displays arrayA. Similarly, selecting B, C, or L will display their respective arrays.
                 // For other index items, the pop-up window will only show the primary index item.
                 if (this.value[index] == 'A') {
-                  return this.arrayA
+                  return this.arrayA;
                 } else if (this.value[index] == 'B') {
-                  return this.arrayB
+                  return this.arrayB;
                 } else if (this.value[index] == 'C') {
-                  return this.arrayC
+                  return this.arrayC;
                 } else if (this.value[index] == 'L') {
-                  return this.arrayL
+                  return this.arrayL;
                 } else {
-                  return []
+                  return [];
                 }
               })
               .onPopupSelect((index: number) => {
-                console.info('onPopupSelected:' + index)
+                console.info('onPopupSelected:' + index);
               })
           }
           .height('80%')
@@ -936,6 +948,7 @@ struct AlphabetIndexerSample {
       }
       .width('100%')
       .height('100%')
+      // Replace $r('app.media.image') with the image resource file you use.
       .backgroundImage($r("app.media.image"))
     }
   }

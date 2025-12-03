@@ -91,7 +91,7 @@ Internal error.
 
 **Description**
 
-This error code is reported if an internal error occurs.
+Internal error.
 
 **Possible Causes**
 

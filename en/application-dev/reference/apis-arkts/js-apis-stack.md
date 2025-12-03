@@ -17,9 +17,9 @@ This topic uses the following to identify the use of generics:
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> Container classes, implemented in static languages, have restrictions on storage locations and properties, and do not support custom properties or methods.
+> - Container classes, implemented in static languages, have restrictions on storage locations and properties, and do not support custom properties or methods.
 
 
 ## Modules to Import
@@ -152,7 +152,7 @@ console.info("result = " + result); // result = 4
 
 peek(): T
 
-Obtains the top element of this Stack.
+Obtains the top element of this Stack. If the Stack is empty, **undefined** is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -162,7 +162,7 @@ Obtains the top element of this Stack.
 
 | Type| Description|
 | -------- | -------- |
-| T | Element obtained.|
+| T | Element removed. If the Stack is empty, **undefined** is returned.|
 
 **Error codes**
 

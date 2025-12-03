@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 > **NOTE**
 >
@@ -16,7 +16,7 @@ Enumerates the information levels of **ConsoleMessage**.
 
 > **NOTE**
 >
-> - On the HTML5 side, the information level of **ConsoleMessage** corresponding to **console.log** or **console.info** is **MessageLevel.Info**. 
+> - On the HTML5 side, the information level of **ConsoleMessage** corresponding to **console.log** or **console.info** is **MessageLevel.Info**.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -40,11 +40,15 @@ Enumerates the mixed content modes.
 | Compatible | 1 | Compatible mode: HTTP and HTTPS hybrid content can be loaded in compatibility mode. This means that some insecure content may be loaded.          |
 | None       | 2 | Strict mode: HTTP and HTTPS hybrid content cannot be loaded.              |
 
-## HitTestType
+## HitTestType<sup>(deprecated)</sup>
 
 Enumerates the test result types of the click event.
 
  **System capability**: SystemCapability.Web.Webview.Core
+
+> **NOTE**
+>
+> This enum is supported since API version 9 and deprecated since API version 21. You are advised to use [WebHitTestType](./arkts-apis-webview-e.md#webhittesttype) instead.
 
 | Name           | Value| Description                      |
 | ------------- | -- | ------------------------ |
@@ -129,6 +133,8 @@ Enumerates the website threat types.
 | THREAT_FRAUD    | 1 | Fraudulent website.             |
 | THREAT_RISK     | 2 | Website that poses security risks.     |
 | THREAT_WARNING  | 3 | Website suspected to contain unsafe content.|
+| THREAT_NONE<sup>21+</sup>      | 4 | Website that passes the security check and no risk is found.|
+| THREAT_UNPROCESSED<sup>21+</sup>  | 5 | Website that does not perform security check.|
 
 ## RenderExitReason<sup>9+</sup>
 
@@ -255,6 +261,18 @@ Enumerates the lifecycles of the same-layer tag. When a same-layer tag exists on
 | ENTER_BFCACHE<sup>12+</sup>   | 3 | The same-layer tag enters BFCache.  |
 | LEAVE_BFCACHE<sup>12+</sup>   | 4 | The same-layer tag leaves BFCache.|
 
+## NativeEmbedParamStatus<sup>21+</sup>
+
+Enumerates the status change types of the **param** element embedded in the same-layer rendering tag **object**. **ADD** is triggered when the **param** element is added, **UPDATE** is triggered when it is modified, and **DELETE** is triggered when it is deleted.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name                          | Value| Description          |
+| ----------------------------- | -- | ------------ |
+| ADD                           | 0 | Triggered when a **param** element is added.  |
+| UPDATE                        | 1 | Triggered when a **param** element is modified.  |
+| DELETE                        | 2 | Triggered when a **param** element is deleted.|
+
 ## ContextMenuEditStateFlags<sup>9+</sup>
 
 Enumerates the context menu edit state flags. This enum can be used in bitwise OR mode. For example, to support **CAN_CUT**, **CAN_COPY**, and **CAN_SELECT_ALL** at the same time, use **CAN_CUT | CAN_COPY | CAN_SELECT_ALL** or **11**.
@@ -332,6 +350,7 @@ Enumerates the web element types.
 | --------- | -- | ----------------- |
 | IMAGE     | 1 | Image.|
 | LINK<sup>20+</sup>     | 2 | Hyperlink.|
+| TEXT<sup>21+</sup>     | 3 | Text or editable area.|
 
 ## WebResponseType<sup>13+</sup>
 
@@ -344,6 +363,7 @@ Enumerates the response types of the menu.
 | Name           | Value| Description               |
 | -------------- | -- | ------------------  |
 | LONG_PRESS     | 1 | The menu is displayed when the component is long-pressed.|
+| RIGHT_CLICK<sup>21+</sup>    | 2 | The menu is displayed when the component is right-clicked.|
 
 ## AudioSessionType<sup>20+</sup>
 
@@ -367,17 +387,6 @@ Enumerates the focus modes.
 | -------------------------- | -- | ------------- |
 | DEFAULT                    | 0 | The **Web** component applies for the focus when it is touched, long-pressed, swiped, or zoomed.|
 | GESTURE_TAP_AND_LONG_PRESS | 1 | The **Web** component applies for the focus only when it is touched and long-pressed. The swipe and zoom gestures do not apply for the focus.|
-
-## WebRotateEffect<sup>21+</sup>
-
-Enumerates the effect of rotation.
-
-**System capability**: SystemCapability.Web.Webview.Core
-
-| Name                      | Value| Description          |
-| -------------------------- | -- | ------------- |
-| TOPLEFT_EFFECT                    | 0 | The content area is drawn in top-left of the node.|
-| RESIZE_COVER_EFFECT | 1 | The content area is scaled to completely fill the node.|
 
 ## WebBypassVsyncCondition<sup>20+</sup>
 

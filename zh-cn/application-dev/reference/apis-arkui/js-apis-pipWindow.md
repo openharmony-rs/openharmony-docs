@@ -79,7 +79,6 @@ create(config: PiPConfiguration): Promise&lt;PiPController&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
 
 class Params {
   text: string = '';
@@ -118,7 +117,7 @@ class TextNodeController extends NodeController {
 
   // 开发者可自定义该方法实现布局更新
   update(message: string) {
-    console.log(`update message: ${message}`);
+    console.info(`update message: ${message}`);
     if (this.textNode !== null) {
       this.textNode.update(new Params(message));
     }
@@ -211,7 +210,6 @@ create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise&lt;P
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { PiPWindow, typeNode, UIContext } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
 
 @Entry
 @Component
@@ -739,7 +737,7 @@ this.pipController.updatePiPControlStatus(controlType, status);
 ### updateContentNode<sup>18+</sup>
 updateContentNode(contentNode: typeNode.XComponent): Promise&lt;void&gt;
 
-更新画中画节点内容。
+更新画中画节点内容，使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -816,7 +814,7 @@ this.pipController.setPiPControlEnabled(controlType, enabled);
 ### getPiPWindowInfo<sup>15+</sup>
 getPiPWindowInfo(): Promise&lt;[PiPWindowInfo](#pipwindowinfo15)&gt;
 
-获取画中画窗口信息。
+获取画中画窗口信息，使用Promise异步回调。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -857,7 +855,7 @@ try {
 ### getPiPSettingSwitch<sup>20+</sup>
 getPiPSettingSwitch(): Promise&lt;boolean&gt;
 
-获取设置中自动启动画中画开关的状态。
+获取设置中自动启动画中画开关的状态，使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 

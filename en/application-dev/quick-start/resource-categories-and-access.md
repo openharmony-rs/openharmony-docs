@@ -244,7 +244,7 @@ If the **attr** attribute is not configured, a string is translated by default.
 
 | Name       | Type                   |  Description  |
 | --------- | ----------------------- |  ---- |
-| translatable |  boolean |  Whether the string needs to be translated.<br>**true**: The string needs to be translated.<br>**false**: The string does not need to be translated.|
+| translatable |  boolean | Whether the string needs to be translated.<br>**true**: The string needs to be translated.<br>**false**: The string does not need to be translated. |
 | priority    | string   |  Translation status of the string.<br>**code**: untranslated<br>**translate**: translated but not verified<br>**LT**: translated and verified<br>**customer**: custom  |
 
 ### Constraints
@@ -286,7 +286,7 @@ The following shows the **attr** attribute configured in **string**. The **strin
 
 ### HAP Resources
 
- - Access resources through `$r()` or `$rawfile()`.<br>Resources of the color, float, string, plural, media and profile types are accessed through `$r('app.type.name')`, in which **app** indicates the resource defined in the **resources** directory, **type** indicates the resource type, and **name** indicates the resource name.<br>To access strings with multiple placeholders in the **string.json** file, for example, `%1$s` and `%2$d` in a value, use the `$r('app.string.label', 'aaa', 444)` format, where **label** indicates the resource name, and **'aaa'** and **444** are used to replace placeholders.<br>To access resources in the **rawfile** subdirectory, use the `$rawfile('filename')` format. Wherein **filename** indicates the relative path of a file in the **rawfile** subdirectory, which must contain the file name extension and cannot start with a slash (/).
+ - Access resources through `$r` or `$rawfile`.<br>Resources of the color, float, string, plural, media and profile types are accessed through `$r('app.type.name')`, in which **app** indicates the resource defined in the **resources** directory, **type** indicates the resource type, and **name** indicates the resource name.<br>To access strings with multiple placeholders in the **string.json** file, for example, `%1$s` and `%2$d` in a value, use the `$r('app.string.label', 'aaa', 444)` format, where **label** indicates the resource name, and **'aaa'** and **444** are used to replace placeholders.<br>To access resources in the **rawfile** subdirectory, use the `$rawfile('filename')` format. Wherein **filename** indicates the relative path of a file in the **rawfile** subdirectory, which must contain the file name extension and cannot start with a slash (/).
 
    > **NOTE**
    >
@@ -496,14 +496,13 @@ The following example demonstrates how to obtain the specified resources for lan
 In **Index.ets**, add code to obtain the resources of the three languages and display them in the text box. The current system language is Chinese. The following is sample code in **entry/src/main/ets/pages/Index.ets**:
 
 ```ts
-import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct Index {
   @State englishString: string = "";
-  @State germanString: string = "";
+  @State japaneseString: string = "";
 
   getString(): string {
     let resMgr = this.getUIContext().getHostContext()?.resourceManager;
@@ -526,7 +525,7 @@ struct Index {
       // Obtain resources that match the current system configuration, including the color mode and resolution, for the Japanese language.
       overrideConfig.locale = "ja_JP"; // Set the language to Japanese and locale to ja_JP.
       overrideResMgr.updateOverrideConfiguration(overrideConfig); // Equivalent to resMgr.updateOverrideConfiguration(overrideConfig).
-      this.germanString = overrideResMgr.getStringSync(resId);
+      this.japaneseString = overrideResMgr.getStringSync(resId);
     } catch (err) {
       const code = (err as BusinessError).code;
       const message = (err as BusinessError).message;
@@ -544,7 +543,7 @@ struct Index {
         Text(this.englishString)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
-        Text(this.germanString)
+        Text(this.japaneseString)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
       }
@@ -646,6 +645,6 @@ The **module.json5** file in the cross-application overlay resource package supp
 
 If the **module.json5** file of a module contains the **targetModuleName** and **targetPriority fields** during project creation on DevEco Studio, the module is identified as a module with the overlay feature in the installation phase. Modules with the overlay feature generally provide an overlay resource file for other modules on the device, so that the module specified by **targetModuleName** can display different colors, labels, themes, and the like by using the overlay resource file in a running phase.
 
-<!--Del-->
+<!--Del--> 
 <!--DelEnd-->
 <!--no_check-->

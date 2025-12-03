@@ -4,7 +4,7 @@
 <!--Owner: @camlostshi-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 ## 概述
@@ -29,7 +29,7 @@
 
 ## 布局方向
 
-在弹性布局中，容器的子元素可以按照任意方向排列。通过设置参数direction，可以决定主轴的方向，从而控制子元素的排列方向。
+在弹性布局中，容器的子元素可以按照任意方向排列。通过设置[FlexOptions](../reference/apis-arkui/arkui-ts/ts-container-flex.md#flexoptions对象说明)的参数direction，可以决定主轴的方向，从而控制子元素的排列方向。
 
   **图2** 弹性布局方向图
 
@@ -268,7 +268,7 @@
 
 ### 容器组件设置交叉轴对齐
 
-可以通过Flex组件的alignItems参数设置子元素在交叉轴的对齐方式。
+可以通过设置[FlexOptions](../reference/apis-arkui/arkui-ts/ts-container-flex.md#flexoptions对象说明)的参数alignItems，设置子元素在交叉轴的对齐方式。
 
 
 - ItemAlign.Auto：使用Flex容器中默认配置。
@@ -587,6 +587,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
       .backgroundColor('#F5DEB3')
     
     Text('no flexShrink')
+      .flexShrink(0)
       .width(200)
       .height(100)
       .backgroundColor('#D2B48C')
@@ -600,6 +601,10 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   ```
 
   ![zh-cn_image_0000001562820813](figures/zh-cn_image_0000001562820813.png)
+
+  父容器宽度400vp，三个子元素原始宽度为200vp，左右padding为20vp，父容器给子元素的布局空间为380vp，超出父容器空间220vp。
+  
+  将第一个元素和第三个元素以3:2的压缩比例进行压缩，直至不再超出父容器提供的布局空间。第一个元素为200vp - (220vp / 5) * 3=68vp，第三个元素为200vp - (220vp / 5) * 2=112vp。
 
 
 ## 场景示例

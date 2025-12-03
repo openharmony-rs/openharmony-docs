@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供自绘制渲染节点RenderNode，支持开发者通过C API进行开发，完成自定义绘制需求。
 
@@ -2530,7 +2530,7 @@ get shapeClip(): ShapeClip
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.clip
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
@@ -2830,7 +2830,7 @@ get lengthMetricsUnit(): LengthMetricsUnit
 ```ts
 import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
-import { LengthMetricsUnit } from '@ohos.arkui.node';
+import { LengthMetricsUnit } from '@kit.ArkUI';
 
 // 继承RenderNode，设置RenderNode各个属性使用的单位
 class BaseRenderNode extends RenderNode {
@@ -2898,7 +2898,7 @@ isDisposed(): boolean
 
 | 类型    | 说明               |
 | ------- | ------------------ |
-| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。
+| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。 |
 
 **示例：**
 

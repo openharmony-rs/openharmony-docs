@@ -4,16 +4,16 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+AutoExposure 继承自 [AutoExposureQuery](arkts-apis-camera-AutoExposureQuery.md)。
+
+自动曝光类，对设备自动曝光（AE）操作。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 11开始支持。
-
-AutoExposure 继承自 [AutoExposureQuery](arkts-apis-camera-AutoExposureQuery.md)。
-
-自动曝光类，对设备自动曝光（AE）操作。
 
 ## 导入模块
 
@@ -39,7 +39,7 @@ getExposureMode(): ExposureMode
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| [ExposureMode](arkts-apis-camera-e.md#exposuremode)    | 获取当前曝光模式。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+| [ExposureMode](arkts-apis-camera-e.md#exposuremode)    | 获取当前曝光模式。接口调用失败会抛出相应错误码并返回undefined，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
 
 **错误码：**
 

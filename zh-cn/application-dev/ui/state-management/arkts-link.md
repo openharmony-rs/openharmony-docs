@@ -43,7 +43,7 @@
 
  **图1** 初始化规则示意图
 
-![zh-cn_image_0000001502092556](figures/zh-cn_image_0000001502092556.png)
+![link-initialization](figures/link-initialization.png)
 
 
 ## 观察变化和行为表现

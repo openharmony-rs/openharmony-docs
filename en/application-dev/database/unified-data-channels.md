@@ -39,11 +39,11 @@ The public data channel allows all applications to write data into it. When data
 
 The following table lists the UDMF APIs. All of them are executed asynchronously in callback or promise mode. The following table uses the callback mode as an example. For details about more APIs and their usage, see [Unified Data Channel](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md) and [Standard Data Definition and Description](../reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md).
 
-| API                                                                                   | Description                                         |
+| API                                                                                   | Description                                         | 
 |-----------------------------------------------------------------------------------------|---------------------------------------------|
-| insertData(options: Options, data: UnifiedData, callback: AsyncCallback\<string>): void | Inserts data to the UDMF public data channel. This API uses an asynchronous callback to return a unique data identifier.|
-| updateData(options: Options, data: UnifiedData, callback: AsyncCallback\<void>): void   | Updates the data in the UDMF public data channel. This API uses an asynchronous callback to return the result.          |
-| queryData(options: Options, callback: AsyncCallback\<Array\<UnifiedData>>): void        | Queries data in the UDMF public data channel. This API uses an asynchronous callback to return the result.              |
+| insertData(options: Options, data: UnifiedData, callback: AsyncCallback\<string>): void | Inserts data to the UDMF public data channel. This API uses an asynchronous callback to return a unique data identifier.| 
+| updateData(options: Options, data: UnifiedData, callback: AsyncCallback\<void>): void   | Updates the data in the UDMF public data channel. This API uses an asynchronous callback to return the result.          | 
+| queryData(options: Options, callback: AsyncCallback\<Array\<UnifiedData>>): void        | Queries data in the UDMF public data channel. This API uses an asynchronous callback to return the result.              | 
 | deleteData(options: Options, callback: AsyncCallback\<Array\<UnifiedData>>): void       | Deletes data from the UDMF public data channel. This API uses an asynchronous callback to return the deleted data set.|
 
 

@@ -1,4 +1,10 @@
 # Custom Node Error Codes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @wangchensu1-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -81,6 +87,8 @@ Pass nodes not created by ArkTS.
 ## 106203 Passed Node Not Mounted to Component Tree
 
 **Error Message**
+
+The node not mounted to component tree.
 
 **Description**
 

@@ -190,7 +190,9 @@ Calls back an asynchronous function. In the callback, the first parameter indica
 
 > **NOTE**
 >
-> **original** must be an asynchronous function. If a non-asynchronous function is passed in, the function is not intercepted, but the error message "callbackWrapper: The type of Parameter must be AsyncFunction" is displayed.
+> - **original** must be an asynchronous function. If a non-asynchronous function is passed in, the function is not intercepted, but the error message "callbackWrapper: The type of Parameter must be AsyncFunction" is displayed.
+>
+> - This API converts an async function that returns a promise into an error-first callback function. The function returned by this API accepts a callback as its second input parameter. When this method is called, the original function is executed first. When the promise of **original** returns **resolve**, the first parameter of the callback function is **null**, and the second parameter is the value of **resolve**. When the promise of **original** returns **reject**, the first parameter of the callback function is an error object, and the second parameter is **null**. When **original** is a function without input parameters, the first input parameter of the function returned by this API must be an invalid placeholder parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -219,11 +221,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-async function fn() {
-  return 'hello world';
+async function fn(input: string) {
+  return input;
 }
 let cb = util.callbackWrapper(fn);
-cb(1, (err : Object, ret : string) => {
+cb('hello world', (err : Object, ret : string) => {
   if (err) throw new Error;
   console.info(ret);
 });
@@ -234,7 +236,7 @@ cb(1, (err : Object, ret : string) => {
 
 promisify(original: (err: Object, value: Object) =&gt; void): Function
 
-Processes an asynchronous function and returns a promise.
+Receives a function that uses the error-first callback mode, that is, uses `(err, value) => callback` as the last parameter, and uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -464,7 +466,7 @@ console.info("result = " + result);
 
 promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
-Processes an asynchronous function and returns a promise.
+Receives a function that uses the error-first callback mode, that is, uses `(err, value) => callback` as the last parameter, and uses a promise to return the result.
 
 > **NOTE**
 >
@@ -566,10 +568,10 @@ Describes decoding-related options, which include **fatal** and **ignoreBOM**.
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name     | Type| Mandatory| Description              |
-| --------- | -------- | ---- | ------------------ |
-| fatal     | boolean  | No  | Whether to display fatal errors. The value **true** means to display fatal errors, and **false** means the opposite. The default value is **false**.|
-| ignoreBOM | boolean  | No  | Whether to ignore the BOM. The value **true** means to ignore the BOM, and **false** means the opposite. The default value is **false**. |
+| Name     | Type| Read-Only| Optional| Description              |
+| --------- | -------- | ---- | ---- | ------------------ |
+| fatal     | boolean  | No  | Yes| Whether to display fatal errors. The value **true** means to display fatal errors, and **false** means the opposite. The default value is **false**.|
+| ignoreBOM | boolean  | No  | Yes| Whether to ignore the BOM. The value **true** means to ignore the BOM, and **false** means the opposite. The default value is **false**. |
 
 ## DecodeToStringOptions<sup>12+</sup>
 
@@ -579,9 +581,9 @@ Describes the behavioral parameters for the **decodeToString** method when decod
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| stream | boolean | No| Whether the incomplete byte sequence at the end of the input needs to be appended to the parameter for the next call of **decodeToString**. The value **true** means that the incomplete byte sequence is stored in the internal buffer until the function is called next time. If the value is false, the byte sequence is directly decoded when the function is called currently. The default value is **false**.|
+| Name| Type| Read-Only| Optional| Description|
+| --------- | -------- | ---- | ---- | ------------------ |
+| stream | boolean | No| Yes| Whether the incomplete byte sequence at the end of the input needs to be appended to the parameter for the next call of **decodeToString**. The value **true** means that the incomplete byte sequence is stored in the internal buffer until the function is called next time. If the value is false, the byte sequence is directly decoded when the function is called currently. The default value is **false**.|
 
 ## DecodeWithStreamOptions<sup>11+</sup>
 
@@ -591,9 +593,9 @@ Defines whether decoding follows data blocks.
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| stream | boolean | No| Whether to allow data blocks in subsequent **decodeWithStream()**. If data is processed in blocks, set this parameter to **true**. If this is the last data block to process or data is not divided into blocks, set this parameter to **false**. The default value is **false**.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | ---- | ---- | -------- |
+| stream | boolean | No| Yes| Whether to allow data blocks in subsequent **decodeWithStream()**. If data is processed in blocks, set this parameter to **true**. If this is the last data block to process or data is not divided into blocks, set this parameter to **false**. The default value is **false**.|
 
 ## Aspect<sup>11+</sup>
 
@@ -1395,7 +1397,7 @@ let rationalNumber = new util.RationalNumber();
 
 static parseRationalNumber(numerator: number,denominator: number): RationalNumber
 
-Create a **RationalNumber** instance with a given numerator and denominator.
+Creates a **RationalNumber** instance with a given numerator and denominator.
 
 > **NOTE**
 >
@@ -2325,7 +2327,7 @@ console.info('result = ' + result);
 
 values(): V[]
 
-Obtains all values in this cache, listed from the most to the least recently accessed.
+Obtains all values in this cache, listed from the least to the most recently accessed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2335,25 +2337,33 @@ Obtains all values in this cache, listed from the most to the least recently acc
 
 | Type     | Description                                                        |
 | --------- | ------------------------------------------------------------ |
-| V[] | All values in the cache, listed from the most to the least recently accessed.|
+| V[] | The list of all values in this cache, listed from the least to the most recently accessed.|
 
 **Example**
 
 ```ts
-let pro = new util.LRUCache<number|string,number|string>();
-pro.put(2, 10);
-pro.put(2, "anhu");
-pro.put("afaf", "grfb");
+let pro = new util.LRUCache<number, string>();
+pro.put(1, 'A');
+pro.put(2, "B");
+pro.put(3, 'C');
+pro.put(4, 'D')
+pro.put(5, 'E')
+pro.put(6, 'F')
 let result = pro.values();
 console.info('result = ' + result);
-// Output: result = anhu,grfb
+// Output: result = A,B,C,D,E,F
+pro.get(1);
+pro.get(2);
+result = pro.values();
+console.info('result = ' + result);
+// Output: result = C,D,E,F,A,B
 ```
 
 ### keys<sup>9+</sup>
 
 keys(): K[]
 
-Obtains all keys in this cache, listed from the most to the least recently accessed.
+Obtains all keys in this cache, listed from the least to the most recently accessed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2363,17 +2373,26 @@ Obtains all keys in this cache, listed from the most to the least recently acces
 
 | Type     | Description                                                        |
 | --------- | ------------------------------------------------------------ |
-| K&nbsp;[] | All keys in the cache, listed from the most to the least recently accessed.|
+| K[] | The list of all keys in this cache, listed from the least to the most recently accessed.|
 
 **Example**
 
 ```ts
-let pro = new util.LRUCache<number, number>();
-pro.put(2, 10);
-pro.put(3, 1);
+let pro = new util.LRUCache<number, string>();
+pro.put(1, 'A');
+pro.put(2, "B");
+pro.put(3, 'C');
+pro.put(4, 'D')
+pro.put(5, 'E')
+pro.put(6, 'F')
 let result = pro.keys();
 console.info('result = ' + result);
-// Output: result = 2,3
+// Output: result = 1,2,3,4,5,6
+pro.get(5);
+pro.get(3);
+result = pro.keys();
+console.info('result = ' + result);
+// Output: result = 1,2,4,6,5,3
 ```
 
 ### remove<sup>9+</sup>

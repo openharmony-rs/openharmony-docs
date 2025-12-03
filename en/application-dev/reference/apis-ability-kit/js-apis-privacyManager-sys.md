@@ -415,7 +415,7 @@ When an application starts to use a permission, the privacy service notifies the
 
 For a multi-process application, you can specify the process ID (PID) of the application when reporting the permission usage. If no PID is specified, the privacy service responds by application. When the application exits, the privacy service notifies the privacy indicator and clears the cache.
 
-If a PID is specified, the privacy service responds by process. when the process exits, the privacy service notifies the privacy indicator and clears the cache. In this case, the PID must be that of the application corresponding to the token ID.
+If a PID is specified, the privacy service responds by process. When the process exits, the privacy service notifies the privacy indicator and clears the cache. In this case, the PID must be that of the application corresponding to the token ID.
 
 **Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
 

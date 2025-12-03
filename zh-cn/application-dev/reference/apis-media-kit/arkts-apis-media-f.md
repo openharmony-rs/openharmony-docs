@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -204,7 +204,7 @@ createAVTranscoder(): Promise\<AVTranscoder>
 创建视频转码实例。使用Promise异步回调。
 
 > **说明：**
-
+>
 > 可创建的视频转码实例不能超过2个。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
@@ -327,8 +327,8 @@ createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo, ca
 
 > **说明：**
 >
-> - API 18以下版本，创建的SoundPool对象底层为单实例模式，一个应用进程只能够创建1个SoundPool实例。
-> - API 18及API 18以上版本，创建的SoundPool对象底层为多实例模式，一个应用进程最多能够创建128个SoundPool实例。
+> - API version 18以下版本，创建的SoundPool对象底层为单实例模式，一个应用进程只能够创建1个SoundPool实例。
+> - API version 18及API version 18以上版本，创建的SoundPool对象底层为多实例模式，一个应用进程最多能够创建128个SoundPool实例。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -337,7 +337,7 @@ createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo, ca
 | 参数名   | 类型                                            | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
 | maxStreams | number | 是   | soundPool实例的最大播放的流数，设置范围为1-32的正整数。 |
-| audioRenderInfo | [audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)  | 是   | 音频播放参数信息。其中audioRenderInfo中的参数usage取值为STREAM_USAGE_UNKNOWN，STREAM_USAGE_MUSIC，STREAM_USAGE_MOVIE，STREAM_USAGE_AUDIOBOOK时，SoundPool播放短音时为混音模式，不会打断其他音频播放。 |
+| audioRenderInfo | [audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)  | 是   | 音频播放参数信息。其中audioRenderInfo中的参数usage取值为STREAM_USAGE_UNKNOWN，STREAM_USAGE_MUSIC，STREAM_USAGE_MOVIE，STREAM_USAGE_AUDIOBOOK时，SoundPool播放短音时为混音模式，不会打断其他音频播放。SoundPool支持将rendererFlags设置为1用于低时延通路播放。 |
 | callback | AsyncCallback<[SoundPool](js-apis-inner-multimedia-soundPool.md)> | 是   | 回调函数。异步返回SoundPool实例，失败时返回null。用于音频池实例的加载播放功能。 |
 
 **错误码：**
@@ -378,8 +378,8 @@ createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo): P
 
 > **说明：**
 >
-> - API 18以下版本，创建的SoundPool对象底层为单实例模式，一个应用进程只能够创建1个SoundPool实例。
-> - API 18及API 18以上版本，创建的SoundPool对象底层为多实例模式，一个应用进程最多能够创建128个SoundPool实例。
+> - API version 18以下版本，创建的SoundPool对象底层为单实例模式，一个应用进程只能够创建1个SoundPool实例。
+> - API version 18及API version 18以上版本，创建的SoundPool对象底层为多实例模式，一个应用进程最多能够创建128个SoundPool实例。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -499,7 +499,7 @@ media.createAVImageGenerator((error: BusinessError, generator: media.AVImageGene
     avImageGenerator = generator;
     console.info('Succeeded in creating AVImageGenerator');
   } else {
-    console.error(`Failed to creat AVImageGenerator, error message:${error.message}`);
+    console.error(`Failed to create AVImageGenerator, error message:${error.message}`);
   }
 });
 ```
@@ -537,10 +537,10 @@ media.createAVImageGenerator().then((generator: media.AVImageGenerator) => {
     avImageGenerator = generator;
     console.info('Succeeded in creating AVImageGenerator');
   } else {
-    console.error('Failed to creat AVImageGenerator');
+    console.error('Failed to create AVImageGenerator');
   }
 }).catch((error: BusinessError) => {
-  console.error(`Failed to creat AVImageGenerator, error message:${error.message}`);
+  console.error(`Failed to create AVImageGenerator, error message:${error.message}`);
 });
 ```
 

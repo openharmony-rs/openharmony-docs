@@ -16,13 +16,17 @@ import { screenLock } from '@kit.BasicServicesKit';
 
 ## EventType<sup>9+</sup>
 
+type EventType = beginWakeUp | endWakeUp | beginScreenOn | endScreenOn | beginScreenOff | endScreenOff | unlockScreen |
+lockScreen | beginExitAnimation | beginSleep | endSleep | changeUser | screenlockEnabled | serviceRestart |
+strongAuthChanged | screenLockDisabledChanged
+
 Defines the system event type.
 
 **System capability**: SystemCapability.MiscServices.ScreenLock
 
 **System API**: This is a system API.
 
-| Event Type           | Description                    |
+| Type           | Description                    |
 | ------------------ | ------------------------ |
 | beginWakeUp        | Wakeup starts.|
 | endWakeUp          | Wakeup ends.|
@@ -38,6 +42,8 @@ Defines the system event type.
 | changeUser         | The user is switched.          |
 | screenlockEnabled  | Screen lock is enabled.      |
 | serviceRestart     | The screen lock service is restarted.  |
+| strongAuthChanged  | The strong authentication state of the screen lock is changed.      |
+| screenLockDisabledChanged     | The enabling state of the screen lock is changed.  |
 
 ## SystemEvent<sup>9+</sup>
 
@@ -47,10 +53,10 @@ Defines the structure of the system event callback.
 
 **System API**: This is a system API.
 
-| Name   | Type  | Mandatory|       Description       |
-| --------- | ------ | ---- | ------------- |
-| eventType   | [EventType](#eventtype9) | Yes  | System event type.|
-| params | string | Yes  | System event parameters.|
+| Name   | Type  | Read-Only| Optional|       Description       |
+| --------- | ------ | ---- | ---- | ------------- |
+| eventType   | [EventType](#eventtype9) | No  | No  | System event type.|
+| params | string | No  | No  | System event parameters.|
 
 ## screenLock.isLocked<sup>9+</sup>
 
@@ -319,7 +325,7 @@ Sends an event to the screen lock service. This API can be called only by screen
 | Name   | Type           | Mandatory| Description                                                                                                               |
 | --------- | ------------------------ | ---- |-------------------------------------------------------------------------------------------------------------------|
 | event     | String                   | Yes  | Event type. Options are as follows:<br>- **"unlockScreenResult"**: Screen unlock result.<br>- **"lockScreenResult"**: Screen lock result.<br>- **"screenDrawDone"**: Screen drawing is complete.|
-| parameter | number                   | Yes  | Result.<br>- **0**: The operation is successful. For example, the screen is locked or unlocked successfully.<br>- **1**: The operation fails. For example, screen locking or unlocking fails.<br>- **2**: The operation is canceled. For example, screen locking or unlocking is canceled. |
+| parameter | number                   | Yes  | Result.<br>- **0**: The operation is successful. For example, the screen is locked or unlocked successfully.<br>- **1**: The operation fails. For example, screen locking or unlocking fails.<br>- **2**: The operation is canceled. For example, screen locking or unlocking is canceled.|
 | callback  | AsyncCallback\<boolean> | Yes  | Callback used to return the result. The **value** true means that the event is sent successfully, and **false** means the opposite.                                                                             |
 
 **Error codes**
@@ -364,7 +370,7 @@ Sends an event to the screen lock service. This API can be called only by screen
 | Name   | Type  | Mandatory| Description                                                                                                               |
 | --------- | ------ | ---- |-------------------------------------------------------------------------------------------------------------------|
 | event     | String | Yes  | Event type. Options are as follows:<br>- **"unlockScreenResult"**: Screen unlock result.<br>- **"lockScreenResult"**: Screen lock result.<br>- **"screenDrawDone"**: Screen drawing is complete.|
-| parameter | number | Yes  | Result.<br>- **0**: The operation is successful. For example, the screen is locked or unlocked successfully.<br>- **1**: The operation fails. For example, screen locking or unlocking fails.<br>- **2**: The operation is canceled. For example, screen locking or unlocking is canceled. |
+| parameter | number | Yes  | Result.<br>- **0**: The operation is successful. For example, the screen is locked or unlocked successfully.<br>- **1**: The operation fails. For example, screen locking or unlocking fails.<br>- **2**: The operation is canceled. For example, screen locking or unlocking is canceled.|
 
 **Return value**
 

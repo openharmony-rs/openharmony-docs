@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **ClientAuthenticationHandler** object returned by the **Web** component. For details about the sample code, see [onClientAuthenticationRequest](./arkts-basic-components-web-events.md#onclientauthenticationrequest9).
 

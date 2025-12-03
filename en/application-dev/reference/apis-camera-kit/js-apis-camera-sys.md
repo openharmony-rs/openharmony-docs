@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The module provides a set of camera service APIs for you to easily develop a camera application. The application can access and operate the camera hardware to implement basic operations, such as preview, taking photos, and recording videos. It can also perform more operations, for example, controlling the flash and exposure time, and focusing or adjusting the focus.
 
@@ -79,7 +79,7 @@ Defines a higher-resolution image object.
 
 | Name  | Type                           | Read-only | Optional      | Description|
 | ------ | ----------------------------- |-----| ---------- | ---------- |
-| raw<sup>12+</sup> | [image.Image](../apis-image-kit/arkts-apis-image-Image.md)| NA  | Yes  | Raw image.|
+| raw<sup>12+</sup> | [image.Image](../apis-image-kit/arkts-apis-image-Image.md)| No | Yes  | Raw image.|
 
 ## ExposureMode
 
@@ -154,7 +154,6 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | --------------- | --------------- |
 | 202                    |  Not System Application.               |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
-| 7400201                |  Camera service fatal error.               |
 
 **Example**
 
@@ -290,6 +289,15 @@ Subscribes to camera mute status events. This API uses an asynchronous callback 
 | type     | string          | Yes  | Event type. The value is fixed at **'cameraMute'**, indicating the camera mute status. The event can be listened for when a CameraManager instance is obtained. This event is triggered and the status is returned when the camera device is muted or unmuted.|
 | callback | AsyncCallback\<boolean> | Yes  | Callback used to return the camera mute status. **true** if muted, **false** otherwise.              |
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 202               |  Permission verification failed. A non-system application calls a system API.       |
+
+
 **Example**
 
 ```ts
@@ -325,6 +333,14 @@ Unsubscribes from camera mute status events.
 | -------- | --------------- | ---- |---------------------------------------------------------|
 | type     | string          | Yes  | Event type. The value is fixed at **'cameraMute'**, indicating the camera mute status. The event can be listened for when a CameraManager instance is obtained.|
 | callback | AsyncCallback\<boolean> | No  | Callback used to return the camera mute status. **true** if muted, **false** otherwise. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('cameraMute')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)                 |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 202               |  Permission verification failed. A non-system application calls a system API.     |
 
 **Example**
 
@@ -364,7 +380,7 @@ Checks whether a camera device supports prelaunch.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -411,7 +427,7 @@ Before the setting, call [isPrelaunchSupported](#isprelaunchsupported) to check 
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -503,7 +519,7 @@ Creates a deferred PreviewOutput instance and adds it, instead of a common Previ
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -540,7 +556,7 @@ Pre-switches a camera device to speed up its startup.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message                                          |
 | ------- |------------------------------------------------|
@@ -576,7 +592,7 @@ Describes the status indicating whether the camera is occluded.
 | ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
 | isCameraOccluded                 | boolean              |  Yes | No|Whether the camera is occluded. **true** if occluded, **false** otherwise.       |
 
-## CameraOutputCapability<sup>13+</sup>
+## CameraOutputCapability<sup>10+</sup>
 
 Describes the camera output capability.
 
@@ -598,6 +614,8 @@ Enumerates the camera output formats.
 
 | Name                    | Value       | Description        |
 | ----------------------- | --------- | ------------ |
+| CAMERA_FORMAT_DNG<sup>12+</sup> |   4   | Image in digital negative format.     |
+| CAMERA_FORMAT_DNG_XDRAW<sup>18+</sup> |    5    | Image in extreme digital format.  |
 | CAMERA_FORMAT_DEPTH_16<sup>13+</sup> |   3000   | Depth map in DEPTH_16 format.     |
 | CAMERA_FORMAT_DEPTH_32<sup>13+</sup> |   3001   | Depth map in DEPTH_32 format.     |
 
@@ -621,6 +639,14 @@ Subscribes to CameraInput occlusion events. This API uses an asynchronous callba
 | -------- | -------------------------------- | --- | ------------------------------------------- |
 | type     | string                           | Yes  | Event type. The value is fixed at **'cameraOcclusionDetection'**. The event can be listened for when a CameraInput instance is created. It is triggered when the occlusion status of the camera module changes, and the occlusion status is returned.|
 | callback | AsyncCallback\<[CameraOcclusionDetectionResult](#cameraocclusiondetectionresult12)\> | Yes  | Callback used to return the occlusion status. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 202 | Not System Application. |
 
 **Example**
 
@@ -655,6 +681,14 @@ Unsubscribes from CameraInput occlusion events.
 | type     | string          | Yes  | Event type. The value is fixed at **'cameraOcclusionDetection'**. The event can be listened for when a CameraInput instance is created.|
 | callback | AsyncCallback\<[CameraOcclusionDetectionResult](#cameraocclusiondetectionresult12)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('cameraOcclusionDetection')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)                 |
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 202 | Not System Application. |
+
 **Example**
 
 ```ts
@@ -681,10 +715,10 @@ Describes the accuracy of depth data.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name     | Type                         | Read-only| Optional| Description           |
-| -------- | ----------------------------- |----- |---| -------------- |
-| DEPTH_DATA_ACCURACY_RELATIVE      | number                        |  Yes | No| Relative accuracy, which is the depth map calculated based on the disparity.     |
-| DEPTH_DATA_ACCURACY_ABSOLUTE      | number                        |  Yes | No| Absolute accuracy, which is the depth map calculated from distance measurement.     |
+| Name                              | Value |                       Description           |
+| --------------------------------- | ----| -------------------------------------- |
+| DEPTH_DATA_ACCURACY_RELATIVE      | 0   | Relative accuracy, which is the depth map calculated based on the disparity.     |
+| DEPTH_DATA_ACCURACY_ABSOLUTE      | 1   | Absolute accuracy, which is the depth map calculated from distance measurement.     |
 
 ## DepthProfile<sup>13+</sup>
 
@@ -769,10 +803,11 @@ Starts depth data output. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
+| 202 | Not System Application. |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.                           |
 
@@ -805,6 +840,16 @@ Stops depth data output. This API uses a promise to return the result.
 | Type           | Description                    |
 | -------------- | ----------------------- |
 | Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 202 | Not System Application. |
+| 7400103                |  Session not config.                                   |
+| 7400201                |  Camera service fatal error.                           |
 
 **Example**
 
@@ -841,6 +886,14 @@ Subscribes to depth data availability events. This API uses an asynchronous call
 | type     | string     | Yes  | Event type. The value is fixed at **'depthDataAvailable'**. The event can be listened for when a depthDataOutput instance is created.|
 | callback | AsyncCallback\<[DepthData](#depthdata13)\> | Yes  | Callback used to listen for depth data.|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 202 | Not System Application. |
+
 **Example**
 
 ```ts
@@ -874,6 +927,14 @@ Unsubscribes from depth data availability events.
 | -------- | ---------------------- | ---- | ------------------------------------------ |
 | type     | string                 | Yes  | Event type. The value is fixed at **'depthDataAvailable'**. The event can be listened for when a depthDataOutput instance is created.|
 | callback | AsyncCallback\<[DepthData](#depthdata13)\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 202 | Not System Application. |
 
 **Example**
 
@@ -913,6 +974,14 @@ Subscribes to DepthDataOutput error events. This API uses an asynchronous callba
 | type     | string        | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a depthDataOutput instance is created.|
 | callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | Yes  | Callback used to return an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode). |
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 202 | Not System Application. |
+
 **Example**
 
 ```ts
@@ -943,6 +1012,14 @@ Unsubscribes from DepthDataOutput error events.
 | -------- | --------------| ---- | ------------------------ |
 | type     | string        | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a depthDataOutput instance is created.|
 | callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 202 | Not System Application. |
 
 **Example**
 
@@ -1133,12 +1210,12 @@ Currently, the configuration is used for sensor-level prelaunch. It will be used
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-|            Name                | Type                                              |     Read-only   |     Mandatory    | Description      |
+|            Name                | Type                                              |     Read-only   |     Optional    | Description      |
 | ------------------------------- |--------------------------------------------------| ----------- | ------------ | ---------- |
-| cameraDevice                    | [CameraDevice](arkts-apis-camera-i.md#cameradevice) |      No    |       Yes     | Camera device.        |
-| restoreParamType<sup>11+</sup>  | [RestoreParamType](#restoreparamtype11)          |      No    |       No     | Type of the parameter used for prelaunch.   |
-| activeTime<sup>11+</sup>        | number                                           |      No    |       No     | Activation time, in minutes.|
-| settingParam<sup>11+</sup>      | [SettingParam](#settingparam11)                  |      No    |       No     | Setting parameter.     |
+| cameraDevice                    | [CameraDevice](arkts-apis-camera-i.md#cameradevice) |      No    |       No     | Camera device.        |
+| restoreParamType<sup>11+</sup>  | [RestoreParamType](#restoreparamtype11)          |      No    |       Yes     | Type of the parameter used for prelaunch.   |
+| activeTime<sup>11+</sup>        | number                                           |      No    |       Yes     | Activation time, in minutes.|
+| settingParam<sup>11+</sup>      | [SettingParam](#settingparam11)                  |      No    |       Yes     | Setting parameter.     |
 
 ## RestoreParamType<sup>11+</sup>
 
@@ -1201,6 +1278,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 ```ts
 import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function preview(context: common.BaseContext, cameraDevice: camera.CameraDevice, previewProfile: camera.Profile, photoProfile: camera.Profile, mode: camera.SceneMode, previewSurfaceId: string): Promise<void> {
   const cameraManager: camera.CameraManager = camera.getCameraManager(context);
@@ -1242,7 +1320,7 @@ Checks whether Picture-in-Picture (PiP) preview is supported.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message                   |
 | --------------- |-------------------------|
@@ -1284,7 +1362,7 @@ Obtains the zoom ratio when PiP preview is enabled.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -1318,7 +1396,7 @@ Enables or disables PiP preview.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID    | Error Message                       |
 |-----------|-----------------------------|
@@ -1365,7 +1443,7 @@ Attaches a surface for PiP preview.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message                                          |
 |---------|------------------------------------------------|
@@ -1414,7 +1492,7 @@ Subscribes to PiP status change events. This API uses an asynchronous callback t
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message                         |
 |---------|-------------------------------|
@@ -1457,7 +1535,7 @@ Unsubscribes from PiP status change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message                         |
 |---------|-------------------------------|
@@ -1507,7 +1585,7 @@ Obtains the PixelMap of a thumbnail.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -1543,7 +1621,7 @@ Releases depth data output resources. This API uses a promise to return the resu
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -1585,7 +1663,7 @@ Starts the burst mode, in which users can capture a series of photos in quick su
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -1621,7 +1699,7 @@ function burstCapture(photoOutput: camera.PhotoOutput): void {
 
 ### confirmCapture<sup>11+</sup>
 
-confirmCapture()
+confirmCapture(): void
 
 Confirms photo capture. This API is generally used in night photo mode when users need to stop the exposure countdown and take a photo in advance.
 
@@ -1633,7 +1711,7 @@ This API is used to end the burst mode, which is started by calling [burstCaptur
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -1680,7 +1758,7 @@ Checks whether deferred delivery of a certain type is supported.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message                                               |
 | --------------- |-----------------------------------------------------|
@@ -1723,7 +1801,7 @@ Checks whether deferred delivery of a certain type is enabled.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -1760,7 +1838,7 @@ Enables deferred delivery of a certain type.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -1795,7 +1873,7 @@ Checks whether automatic high quality is supported for photos.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -1833,7 +1911,7 @@ Before using this API, call [isAutoHighQualityPhotoSupported](#isautohighquality
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -1871,7 +1949,7 @@ Subscribes to events indicating available thumbnail proxies. This API uses an as
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -1917,7 +1995,7 @@ Unsubscribes from events indicating available thumbnail proxies.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -1964,7 +2042,7 @@ This API takes effect after [addOutput](arkts-apis-camera-Session.md#addoutput11
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -2026,7 +2104,7 @@ This API takes effect after [addOutput](arkts-apis-camera-Session.md#addoutput11
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -2181,7 +2259,7 @@ Adds the types of metadata objects to be detected.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -2283,7 +2361,7 @@ Implements the basic metadata object used for camera detection. It is the data s
 | Name        | Type                                       | Read-only| Optional|Description               |
 | -----------  | ------------------------------------------- | ---- | ---- | ----------------- |
 | objectId<sup>13+</sup>     | number                                      |  Yes |  No | Metadata object ID.|
-| confidence<sup>13+</sup>   | number                                      |  Yes |  No | Confidence of the detection, with a value range of [0,1].|
+| confidence<sup>13+</sup>   | number                                      |  Yes |  No | Confidence of the detection, with a value range of [0, 1].|
 
 ## MetadataFaceObject<sup>13+</sup>
 
@@ -2296,7 +2374,7 @@ Implements the human face metadata object used for camera detection. It inherits
 | leftEyeBoundingBox     | [Rect](arkts-apis-camera-i.md#rect)                             |  Yes |  No | Left eye area.|
 | rightEyeBoundingBox    | [Rect](arkts-apis-camera-i.md#rect)                            |  Yes |  No | Right eye area.|
 | emotion                | [Emotion](#emotion13)             |  Yes |  No | Detected emotion.|
-| emotionConfidence      | number                            |  Yes |  No | Confidence of the emotion detection, with a value range of [0,1].|
+| emotionConfidence      | number                            |  Yes |  No | Confidence of the emotion detection, with a value range of [0, 1].|
 | pitchAngle             | number                            |  Yes |  No | Pitch angle, with a value range of [-90, 90], where downward is positive.|
 | yawAngle               | number                            |  Yes |  No | Yaw angle, with a value range of [-90, 90], where rightward is positive.|
 | rollAngle              | number                            |  Yes |  No | Row angle, with a value range of [-180, 180], where clockwise direction is positive.|
@@ -2392,7 +2470,7 @@ Obtains the supported beauty types.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -2421,7 +2499,7 @@ The beauty levels vary according to the device type. The following table is only
 | AUTO           | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     |Beauty levels supported when **type** is set to **AUTO**. The value **0** means that beauty mode is disabled, and other positive values mean the corresponding automatic beauty levels.   |
 | SKIN_SMOOTH    | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     | Beauty levels supported when **type** is set to **SKIN_SMOOTH**. The value **0** means that the skin smoothing feature is disabled, and other positive values mean the corresponding skin smoothing levels.   |
 | FACE_SLENDER   | [0, 1, 2, 3, 4, 5]      | Beauty levels supported when **type** is set to **FACE_SLENDER**. The value **0** means that the face slimming feature is disabled, and other positive values mean the corresponding face slimming levels.  |
-| SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB, for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.   |
+| SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB,<br> for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.   |
 
 **System API**: This is a system API.
 
@@ -2441,7 +2519,7 @@ The beauty levels vary according to the device type. The following table is only
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -2498,7 +2576,7 @@ Obtains the supported manual exposure durations.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -2538,7 +2616,7 @@ Obtains the manual exposure duration in use.
 
 **Error codes**
  
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -2577,6 +2655,8 @@ Sets the manual exposure duration. Before using this API, call [getSupportedExpo
 
  **Error codes**
 
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 202                	 |  Not System Application.  |
@@ -2611,6 +2691,8 @@ Enumerates the tripod statuses.
 
 Enumerates the scene features.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name                           | Value  | Description                       |
@@ -2623,12 +2705,14 @@ Enumerates the scene features.
 
 Describes the scene feature detection result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name    | Type       |   Read-only  |   Mandatory  | Description      |
+| Name    | Type       |   Read-only  |   Optional  | Description      |
 | -------- | ---------- | -------- | -------- | ---------- |
-| featureType |   [SceneFeatureType](#scenefeaturetype12)   |   Yes    |    Yes   | Scene feature type. |
-| detected |   boolean   |   Yes    |    Yes   | Check result for whether the specified scene feature is detected. **true** if detected, **false** otherwise.|
+| featureType |   [SceneFeatureType](#scenefeaturetype12)   |   Yes    |    No   | Scene feature type. |
+| detected |   boolean   |   Yes    |    No   | Whether the specified scene feature is detected. **true** if detected, **false** otherwise.|
 
 ## TripodDetectionResult<sup>13+</sup>
 
@@ -2636,11 +2720,13 @@ TripodDetectionResult extends [SceneFeatureDetectionResult](#scenefeaturedetecti
 
 Describes the tripod detection result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name    | Type                             |   Read-only  |   Mandatory  | Description     |
+| Name    | Type                             |   Read-only  |   Optional  | Description     |
 | -------- |---------------------------------| -------- | -------- |---------|
-| tripodStatus | [TripodStatus](#tripodstatus13) |   Yes    |    Yes   | Tripod status.|
+| tripodStatus | [TripodStatus](#tripodstatus13) |   Yes    |    No   | Tripod status.|
 
 ## SceneDetection<sup>12+</sup>
 
@@ -2670,7 +2756,7 @@ Checks whether a scene feature is supported.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message                                          |
 |---------|------------------------------------------------|
@@ -2705,7 +2791,7 @@ Enables or disables a scene feature. This API must be called after [SceneFeature
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message                                          |
 |---------|------------------------------------------------|
@@ -2778,7 +2864,7 @@ Obtains the equivalent focal length information list in the current mode.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -2822,7 +2908,7 @@ Instructs the bottom layer to prepare for zooming, for example, powering on the 
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -2857,7 +2943,7 @@ Instructs the bottom layer to unprepare for zooming.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -2888,10 +2974,10 @@ Obtains the supported zoom ratio range. The range is [min, max), which includes 
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name    | Type          | Read-only| Mandatory| Description        |
+| Name    | Type          | Read-only| Optional| Description        |
 | -------- | ------------- |---- | ---- | -------------|
-| min      | number        | Yes |  N/A  | Minimum value of the zoom ratio range. |
-| max      | number        | Yes |  N/A  | Maximum value of the zoom ratio range.|
+| min      | number        | Yes |  No | Minimum value of the zoom ratio range. |
+| max      | number        | Yes |  No | Maximum value of the zoom ratio range.|
 
 ## Beauty<sup>11+</sup>
 
@@ -2918,7 +3004,7 @@ Sets a beauty type and its level. Beauty mode is turned off only when all the [b
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -2964,7 +3050,7 @@ Obtains the level of the beauty type in use.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -3012,7 +3098,7 @@ Obtains the supported color effects.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -3052,7 +3138,7 @@ Sets a color effect. Before the setting, call [getSupportedColorEffects](#getsup
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -3085,7 +3171,7 @@ Obtains the color effect in use.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -3138,7 +3224,7 @@ Obtains the supported portrait effects.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -3172,7 +3258,7 @@ Sets a portrait effect. Before the setting, call [getSupportedPortraitEffects](#
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -3215,7 +3301,7 @@ Obtains the portrait effect in use.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -3266,7 +3352,7 @@ Obtains the supported virtual apertures.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -3300,7 +3386,7 @@ Obtains the virtual aperture in use.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -3334,7 +3420,7 @@ Sets a virtual aperture. Before the setting, call [getSupportedVirtualApertures]
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -3367,7 +3453,7 @@ Obtains the supported physical apertures.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -3401,7 +3487,7 @@ Obtains the physical aperture in use.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -3435,7 +3521,7 @@ Sets a physical aperture. Before the setting, call [getSupportedPhysicalAperture
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -3480,11 +3566,12 @@ Obtains the supported beauty types.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
+| 202             |  Not System Application.                      |
 
 **Example**
 
@@ -3530,11 +3617,12 @@ Obtains the levels that can be set a beauty type. The beauty levels vary accordi
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
+| 202                    |    Not System Application.             |
 
 **Example**
 
@@ -3572,11 +3660,12 @@ Sets a beauty type and its level. Beauty mode is turned off only when all the [b
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
+| 202                    |    Not System Application.             |
 
 **Example**
 
@@ -3621,11 +3710,12 @@ Obtains the level of the beauty type in use.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
+| 202                    |    Not System Application.             |
 
 **Example**
 
@@ -3682,7 +3772,7 @@ Subscribe to scene feature detection status change events. This API uses an asyn
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                     |
 |-------|---------------------------|
@@ -3727,7 +3817,7 @@ Unsubscribe from camera feature detection status change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                     |
 |-------|---------------------------|
@@ -3760,7 +3850,7 @@ Subscribes to LCD flash status change events. This API uses an asynchronous call
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                     |
 |-------|---------------------------|
@@ -3804,7 +3894,7 @@ Unsubscribes from LCD flash status change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                     |
 |-------|---------------------------|
@@ -3887,7 +3977,7 @@ Subscribes to LCD flash status change events. This API uses an asynchronous call
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                     |
 |-------|---------------------------|
@@ -3931,7 +4021,7 @@ Unsubscribes from LCD flash status change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                     |
 |-------|---------------------------|
@@ -3964,7 +4054,7 @@ Subscribes to focus tracking information events. This API uses an asynchronous c
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message               |
 | -------- | ----------------------- |
@@ -4005,7 +4095,7 @@ Unsubscribes from focus tracking information events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message               |
 | -------- | ----------------------- |
@@ -4318,7 +4408,7 @@ Subscribes to LCD flash status change events. This API uses an asynchronous call
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                     |
 |-------|---------------------------|
@@ -4362,7 +4452,7 @@ Unsubscribes from LCD flash status change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                     |
 |-------|---------------------------|
@@ -4579,7 +4669,7 @@ Subscribes to LCD flash status change events. This API uses an asynchronous call
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                     |
 |-------|---------------------------|
@@ -4622,7 +4712,7 @@ Unsubscribes from LCD flash status change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                     |
 |-------|---------------------------|
@@ -4665,7 +4755,7 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -4703,7 +4793,7 @@ Unsubscribes from HighResolutionPhotoSession error events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -4736,7 +4826,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -4772,7 +4862,7 @@ Unsubscribes from focus state change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -4801,10 +4891,11 @@ Defines the PiP status data.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name         | Type     | Read-only| Mandatory| Description       |
+| Name         | Type     | Read-only| Optional| Description       |
 | ------------- | -------- | ---- | ---- | ---------- |
-| status        | number   | No  | Yes  | Status of PiP. The options are 0 (stopped), 1 (started), 2 (stopping), and 3 (starting).|
-| sketchRatio   | number   | No  | Yes  | Zoom ratio of PiP.|
+| status        | number   | No  | No  | Status of PiP. The options are 0 (stopped), 1 (started), 2 (stopping), and 3 (starting).|
+| sketchRatio   | number   | No  | No  | Zoom ratio of PiP.|
+| centerPointOffset<sup>20+</sup> | Point | No | No  | Offset of PiP. |
 
 ## SlowMotionVideoSession<sup>12+</sup>
 
@@ -4834,7 +4925,7 @@ Subscribes to SlowMotionVideoSession error events. This API uses an asynchronous
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -4873,7 +4964,7 @@ Unsubscribes from SlowMotionVideoSession error events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -4906,7 +4997,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -4949,7 +5040,7 @@ Unsubscribes from focus state change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -4982,7 +5073,7 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -5025,7 +5116,7 @@ Unsubscribes from smooth zoom state change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -5058,7 +5149,7 @@ Subscribes to slow-motion status change events. This API uses an asynchronous ca
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -5101,7 +5192,7 @@ Unsubscribes from slow-motion status change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -5136,7 +5227,7 @@ Checks whether the device supports slow-motion detection.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -5183,7 +5274,7 @@ This API must be called after [commitConfig](arkts-apis-camera-Session.md#commit
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -5379,7 +5470,7 @@ Describes the illumination information.
 
 | Name       | Type   | Read-only| Optional | Description      |
 | ----------- | ------- | ---- |-----| ---------- |
-| lumination  | number  | Yes  | Yes  | Illumination. The value range is [0,1].|
+| lumination  | number  | Yes  | Yes  | Illumination. The value range is [0, 1].|
 
 ## CameraFormat
 
@@ -5433,7 +5524,7 @@ Checks whether an exposure metering mode is supported.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -5484,7 +5575,7 @@ Obtains the exposure metering mode in use.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -5529,7 +5620,7 @@ Before the setting, call [isExposureMeteringModeSupported](#isexposuremeteringmo
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -5597,7 +5688,7 @@ Checks whether the focus assist is supported.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -5646,7 +5737,7 @@ Checks whether a focus range type is supported.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5696,7 +5787,7 @@ Checks whether a focus drive type is supported.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5748,7 +5839,7 @@ Before the setting, call [isFocusAssistSupported](#isfocusassistsupported12) to 
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -5791,7 +5882,7 @@ Checks whether the focus assist is enabled.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -5832,7 +5923,7 @@ Sets a focus range type. Before the setting, call [isFocusRangeTypeSupported](#i
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5876,7 +5967,7 @@ Obtains the focus range type in use.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message               |
 | -------- | ----------------------- |
@@ -5919,7 +6010,7 @@ Sets a focus drive type. Before the setting, call [isFocusDrivenTypeSupported](#
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5963,7 +6054,7 @@ Obtains the focus drive type in use.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message               |
 | -------- | ----------------------- |
@@ -6006,11 +6097,11 @@ Sets the manual focus distance.
 
 | Name     | Type                    | Mandatory| Description                |
 | -------- | ----------------------- | ---- | ------------------- |
-| distance | number | Yes  | Manual focus distance. The value is a floating-point number in the range [0, 1]. The value **0** indicates a close-up shot, and **1** indicates a long shot. |
+| distance | number | Yes  | Manual focus distance. The value is a floating-point number in the range [0, 1]. The value **0** indicates a close-up shot, and **1** indicates a long shot.<br> |
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -6053,7 +6144,7 @@ Obtains the focus distance in use.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -6100,7 +6191,7 @@ Checks whether manual ISO setting is supported.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -6143,7 +6234,7 @@ Obtains the supported ISO range.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -6193,7 +6284,7 @@ Sets the ISO.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -6236,7 +6327,7 @@ Obtains the ISO in use.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -6286,7 +6377,7 @@ Subscribes to ProfessionalPhotoSession error events. This API uses an asynchrono
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -6325,7 +6416,7 @@ Unsubscribes from ProfessionalPhotoSession error events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -6358,7 +6449,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -6401,7 +6492,7 @@ Unsubscribes from focus state change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -6434,7 +6525,7 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -6477,7 +6568,7 @@ Unsubscribes from smooth zoom state change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -6510,6 +6601,8 @@ Subscribes to automatic ISO change events to obtain real-time ISO information. T
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -6524,7 +6617,7 @@ function isoInfoCallback(err: BusinessError, info: camera.IsoInfo): void {
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`ISO value: ${info.iso}`);
+  console.info(`ISO value: ${info.iso}`);
 }
 
 function registerIsoInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
@@ -6550,6 +6643,8 @@ Unsubscribes from automatic ISO change events.
 | callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('isoInfoChange')**.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                   |
 | ------- | ---------------------- |
@@ -6582,6 +6677,8 @@ Subscribes to exposure information change events to obtain the exposure informat
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -6596,7 +6693,7 @@ function exposureInfoCallback(err: BusinessError, info: camera.ExposureInfo): vo
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`exposureTimeValue: ${info.exposureTime}`);
+  console.info(`exposureTimeValue: ${info.exposureTime}`);
 }
 
 function registerExposureInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
@@ -6622,6 +6719,8 @@ Unsubscribes from exposure information change events.
 | callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                    |
 | ------- | ---------------------- |
@@ -6654,6 +6753,8 @@ Subscribes to aperture change events to obtain the real-time aperture informatio
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -6668,7 +6769,7 @@ function apertureInfoCallback(err: BusinessError, info: camera.ApertureInfo): vo
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`Aperture value: ${info.aperture}`);
+  console.info(`Aperture value: ${info.aperture}`);
 }
 
 function registerApertureInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
@@ -6694,6 +6795,8 @@ Unsubscribes from aperture change events.
 | callback | AsyncCallback\<[ApertureInfo](#apertureinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('apertureInfoChange')**.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                    |
 | ------- | ---------------------- |
@@ -6726,6 +6829,8 @@ Subscribes to illumination change events to obtain real-time illumination inform
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -6740,7 +6845,7 @@ function luminationInfoCallback(err: BusinessError, info: camera.LuminationInfo)
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`Lumination: ${info.lumination}`);
+  console.info(`Lumination: ${info.lumination}`);
 }
 
 function registerLuminationInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
@@ -6766,6 +6871,8 @@ Unsubscribes from illumination change events.
 | callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('luminationInfoChange')**.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                    |
 | ------- | ---------------------- |
@@ -6804,7 +6911,7 @@ Subscribes to ProfessionalVideo error events. This API uses an asynchronous call
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -6843,7 +6950,7 @@ Unsubscribes from ProfessionalVideo error events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -6876,7 +6983,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -6919,7 +7026,7 @@ Unsubscribes from focus state change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -6952,7 +7059,7 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -6995,7 +7102,7 @@ Unsubscribes from smooth zoom state change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -7028,6 +7135,8 @@ Subscribes to automatic ISO change events to obtain real-time ISO information. T
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -7042,7 +7151,7 @@ function isoInfoCallback(err: BusinessError, info: camera.IsoInfo): void {
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`ISO value: ${info.iso}`);
+  console.info(`ISO value: ${info.iso}`);
 }
 
 function registerIsoInfoEvent(professionalVideoSession: camera.ProfessionalVideoSession): void {
@@ -7068,6 +7177,8 @@ Unsubscribes from automatic ISO change events.
 | callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('isoInfoChange')**.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                    |
 | ------- | ---------------------- |
@@ -7100,6 +7211,8 @@ Subscribes to exposure information change events to obtain the exposure informat
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -7114,7 +7227,7 @@ function exposureInfoCallback(err: BusinessError, info: camera.ExposureInfo): vo
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`exposureTimeValue: ${info.exposureTime}`);
+  console.info(`exposureTimeValue: ${info.exposureTime}`);
 }
 
 function registerExposureInfoEvent(professionalVideoSession: camera.ProfessionalVideoSession): void {
@@ -7140,6 +7253,8 @@ Unsubscribes from exposure information change events.
 | callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                    |
 | ------- | ---------------------- |
@@ -7172,6 +7287,8 @@ Subscribes to aperture change events to obtain the aperture information. This AP
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -7186,7 +7303,7 @@ function apertureInfoCallback(err: BusinessError, info: camera.ApertureInfo): vo
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`Aperture value: ${info.aperture}`);
+  console.info(`Aperture value: ${info.aperture}`);
 }
 
 function registerApertureInfoEvent(professionalVideoSession: camera.ProfessionalVideoSession): void {
@@ -7212,6 +7329,8 @@ Unsubscribes from aperture change events.
 | callback | AsyncCallback\<[ApertureInfo](#apertureinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('apertureInfoChange')**.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                    |
 | ------- | ---------------------- |
@@ -7244,6 +7363,8 @@ Subscribes to illumination change events to obtain illumination information. Thi
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -7258,7 +7379,7 @@ function luminationInfoCallback(err: BusinessError, info: camera.LuminationInfo)
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`Lumination: ${info.lumination}`);
+  console.info(`Lumination: ${info.lumination}`);
 }
 
 function registerLuminationInfoEvent(professionalVideoSession: camera.ProfessionalVideoSession): void {
@@ -7284,6 +7405,8 @@ Unsubscribes from illumination change events.
 | callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('luminationInfoChange')**.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                    |
 | ------- | ---------------------- |
@@ -7322,7 +7445,7 @@ Subscribes to MacroPhotoSession error events. This API uses an asynchronous call
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                      |
 |-------|----------------------------|
@@ -7361,7 +7484,7 @@ Unsubscribes from MacroPhotoSession error events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                      |
 |-------|----------------------------|
@@ -7394,7 +7517,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                      |
 |-------|----------------------------|
@@ -7437,7 +7560,7 @@ Unsubscribes from focus state change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                      |
 |-------|----------------------------|
@@ -7470,7 +7593,7 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                      |
 |-------|----------------------------|
@@ -7513,7 +7636,7 @@ Unsubscribes from smooth zoom state change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                      |
 |-------|----------------------------|
@@ -7552,7 +7675,7 @@ Subscribes to MacroVideoSession error events. This API uses an asynchronous call
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                      |
 |-------|----------------------------|
@@ -7591,7 +7714,7 @@ Unsubscribes from MacroVideoSession error events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                      |
 |-------|----------------------------|
@@ -7624,7 +7747,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                      |
 |-------|----------------------------|
@@ -7667,7 +7790,7 @@ Unsubscribes from focus state change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                      |
 |-------|----------------------------|
@@ -7700,7 +7823,7 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                      |
 |-------|----------------------------|
@@ -7743,7 +7866,7 @@ Unsubscribes from smooth zoom state change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                      |
 |-------|----------------------------|
@@ -7779,7 +7902,7 @@ Checks whether the LCD flash is supported.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -7907,7 +8030,7 @@ Subscribes to TimeLapsePhotoSession error events. This API uses an asynchronous 
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -7946,7 +8069,7 @@ Unsubscribes from TimeLapsePhotoSession error events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -7979,7 +8102,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -8022,7 +8145,7 @@ Unsubscribes from focus state change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message       |
 |---------| --------------- |
@@ -8055,6 +8178,8 @@ Subscribes to automatic ISO change events to obtain real-time ISO information. T
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -8069,7 +8194,7 @@ function isoInfoCallback(err: BusinessError, info: camera.IsoInfo): void {
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`ISO value: ${info.iso}`);
+  console.info(`ISO value: ${info.iso}`);
 }
 
 function registerIsoInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
@@ -8095,6 +8220,8 @@ Unsubscribes from automatic ISO change events.
 | callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('isoInfoChange')**.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                   |
 | ------- | ---------------------- |
@@ -8127,6 +8254,8 @@ Subscribes to exposure information change events to obtain the exposure informat
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -8141,7 +8270,7 @@ function exposureInfoCallback(err: BusinessError, info: camera.ExposureInfo): vo
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`exposureTimeValue: ${info.exposureTime}`);
+  console.info(`exposureTimeValue: ${info.exposureTime}`);
 }
 
 function registerExposureInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
@@ -8167,6 +8296,8 @@ Unsubscribes from exposure information change events.
 | callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                    |
 | ------- | ---------------------- |
@@ -8199,6 +8330,8 @@ Subscribes to illumination change events to obtain real-time illumination inform
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -8213,7 +8346,7 @@ function luminationInfoCallback(err: BusinessError, info: camera.LuminationInfo)
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`Lumination: ${info.lumination}`);
+  console.info(`Lumination: ${info.lumination}`);
 }
 
 function registerLuminationInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
@@ -8239,6 +8372,8 @@ Unsubscribes from illumination change events.
 | callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('luminationInfoChange')**.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                    |
 | ------- | ---------------------- |
@@ -8271,6 +8406,8 @@ Subscribes to Try AE change events to obtain real-time Try AE parameters. This A
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -8285,7 +8422,7 @@ function tryAEInfoCallback(err: BusinessError, info: camera.TryAEInfo): void {
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`TryAEInfo: ${info.isTryAEDone}, ${info.isTryAEHintNeeded}, ${info.previewType}, ${info.captureInterval}`);
+  console.info(`TryAEInfo: ${info.isTryAEDone}, ${info.isTryAEHintNeeded}, ${info.previewType}, ${info.captureInterval}`);
 }
 
 function registerTryAEInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
@@ -8311,6 +8448,8 @@ Unsubscribes from Try AE change events.
 | callback | AsyncCallback\<[TryAEInfo](#tryaeinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('tryAEInfoChange')**.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                    |
 | ------- | ---------------------- |
@@ -8379,7 +8518,7 @@ Starts to execute Try AE.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -8414,7 +8553,7 @@ Stops the execution of Try AE.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -8455,7 +8594,7 @@ Obtains the supported time-lapse shooting interval range.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -8498,7 +8637,7 @@ Obtains the current time-lapse shooting interval.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -8540,7 +8679,7 @@ Sets a time-lapse shooting interval.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -8583,7 +8722,7 @@ Obtains the time-lapse shooting state.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -8626,7 +8765,7 @@ Sets the time-lapse shooting state.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -8668,7 +8807,7 @@ Obtains the time-lapse preview type.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -8711,7 +8850,7 @@ Sets the time-lapse preview type.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -8760,7 +8899,7 @@ Subscribes to LightPaintingPhotoSession error events. This API uses an asynchron
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                      |
 |-------|----------------------------|
@@ -8799,7 +8938,7 @@ Unsubscribes from LightPaintingPhotoSession error events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                      |
 |-------|----------------------------|
@@ -8832,7 +8971,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                      |
 |-------|----------------------------|
@@ -8875,7 +9014,7 @@ Unsubscribes from focus state change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                      |
 |-------|----------------------------|
@@ -8908,7 +9047,7 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                      |
 |-------|----------------------------|
@@ -8951,7 +9090,7 @@ Unsubscribes from smooth zoom state change events.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                      |
 |-------|----------------------------|
@@ -8982,7 +9121,7 @@ Obtains the type of light painting shutter mode in use.
 
 **Error codes**
  
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -9015,7 +9154,7 @@ Sets the type of light painting shutter mode.
 
 **Error codes**
  
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -9057,7 +9196,7 @@ Obtains the supported types of light painting shutter mode.
 
 **Error codes**
  
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -9106,7 +9245,7 @@ Obtains the supported color reservation types.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message               |
 | -------- | ----------------------- |
@@ -9155,7 +9294,7 @@ Sets a color reservation type. Before the setting, call [getSupportedColorReserv
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -9199,7 +9338,7 @@ Obtains the color reservation type in use.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message               |
 | -------- | ----------------------- |

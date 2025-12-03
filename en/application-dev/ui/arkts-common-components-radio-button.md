@@ -1,4 +1,10 @@
 # Radio Button (Radio)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The **Radio** component allows users to select from a set of mutually exclusive options. Only one radio button in a given group can be selected at the same time. For details, see [Radio](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md).
@@ -6,7 +12,7 @@ The **Radio** component allows users to select from a set of mutually exclusive 
 
 ## Creating a Radio Button
 
-You can create a radio button by calling the following API:
+A radio button is created using the **Radio** component with [RadioOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md#radiooptions). The following example demonstrates how to use the **value** and **group** properties in **RadioOptions**:
 
 
 ```ts
@@ -30,7 +36,7 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
 
 ## Adding Events
 
-The **Radio** component supports the [universal events](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md). In addition, it can be bound to the **onChange** event so that it responds with custom behavior after being selected.
+The **Radio** component supports the [universal events](../reference/apis-arkui/arkui-ts/ts-component-general-events.md). In addition, it can be bound to the **onChange** event to execute custom logic when the selection changes.
 
 ```ts
   Radio({ value: 'Radio1', group: 'radioGroup' })
@@ -60,9 +66,10 @@ import { promptAction } from '@kit.ArkUI';
 @Entry
 @Component
 struct RadioExample {
-  @State Rst:promptAction.ShowToastOptions = {'message': 'Ringing mode.'}
-  @State Vst:promptAction.ShowToastOptions = {'message': 'Vibration mode.'}
-  @State Sst:promptAction.ShowToastOptions = {'message': 'Silent mode.'}
+  @State Rst: promptAction.ShowToastOptions = { 'message': 'Ringing mode.' };
+  @State Vst: promptAction.ShowToastOptions = { 'message': 'Vibration mode.' };
+  @State Sst: promptAction.ShowToastOptions = { 'message': 'Silent mode.' };
+
   build() {
     Row() {
       Column() {
@@ -70,33 +77,35 @@ struct RadioExample {
           .height(50)
           .width(50)
           .onChange((isChecked: boolean) => {
-            if(isChecked) {
+            if (isChecked) {
               // Switch to the ringing mode.
-              promptAction.showToast(this.Rst)
+              this.getUIContext().getPromptAction().showToast(this.Rst);
             }
           })
         Text('Ringing')
       }
+
       Column() {
         Radio({ value: 'Radio2', group: 'radioGroup' })
           .height(50)
           .width(50)
           .onChange((isChecked: boolean) => {
-            if(isChecked) {
+            if (isChecked) {
               // Switch to the vibration mode.
-              promptAction.showToast(this.Vst)
+              this.getUIContext().getPromptAction().showToast(this.Vst);
             }
           })
         Text('Vibration')
       }
+
       Column() {
         Radio({ value: 'Radio3', group: 'radioGroup' })
           .height(50)
           .width(50)
           .onChange((isChecked: boolean) => {
-            if(isChecked) {
+            if (isChecked) {
               // Switch to the silent mode.
-              promptAction.showToast(this.Sst)
+              this.getUIContext().getPromptAction().showToast(this.Sst);
             }
           })
         Text('Silent')

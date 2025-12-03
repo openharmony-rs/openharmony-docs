@@ -1,5 +1,12 @@
 # @ohos.security.asset (Asset Store Service)
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 The asset store service (ASSET) provides secure storage and management of sensitive data less than 1024 bytes in size, including passwords, app tokens, and other critical data (such as bank card numbers).
 
 > **NOTE**
@@ -16,7 +23,7 @@ import { asset } from '@kit.AssetStoreKit';
 
 add(attributes: AssetMap): Promise\<void>
 
-Add an asset. This API uses a promise to return the result.
+Adds an asset. This API uses a promise to return the result.
 
 To set [IS_PERSISTENT](#tag), the application must have the ohos.permission.STORE_PERSISTENT_DATA permission.
 
@@ -63,7 +70,6 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
   let textEncoder = new util.TextEncoder();
@@ -75,16 +81,9 @@ attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
 attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
 attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
 attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
-try {
-  asset.add(attr).then(() => {
-    console.info(`Asset added successfully.`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
-  })
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
-}
+asset.add(attr).then(() => {
+  console.info(`Succeeded in adding Asset.`);
+});
 ```
 
 ## asset.addSync<sup>12+</sup>
@@ -132,7 +131,6 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
   let textEncoder = new util.TextEncoder();
@@ -144,12 +142,7 @@ attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
 attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
 attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
 attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
-try {
-  asset.addSync(attr);
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
-}
+asset.addSync(attr);
 ```
 
 ## asset.remove
@@ -197,7 +190,6 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
   let textEncoder = new util.TextEncoder();
@@ -206,16 +198,9 @@ function stringToArray(str: string): Uint8Array {
 
 let query: asset.AssetMap = new Map();
 query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-try {
-  asset.remove(query).then(() => {
-    console.info(`Asset removed successfully.`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
-  });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
-}
+asset.remove(query).then(() => {
+  console.info(`Succeeded in removing Asset.`);
+});
 ```
 
 ## asset.removeSync<sup>12+</sup>
@@ -257,7 +242,6 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
   let textEncoder = new util.TextEncoder();
@@ -266,12 +250,7 @@ function stringToArray(str: string): Uint8Array {
 
 let query: asset.AssetMap = new Map();
 query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-try {
-  asset.removeSync(query);
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
-}
+asset.removeSync(query);
 ```
 
 ## asset.update
@@ -322,7 +301,6 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
   let textEncoder = new util.TextEncoder();
@@ -333,16 +311,9 @@ let query: asset.AssetMap = new Map();
 query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
 let attrsToUpdate: asset.AssetMap = new Map();
 attrsToUpdate.set(asset.Tag.SECRET, stringToArray('demo_pwd_new'));
-try {
-  asset.update(query, attrsToUpdate).then(() => {
-    console.info(`Asset updated successfully.`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
-  });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
-}
+asset.update(query, attrsToUpdate).then(() => {
+  console.info(`Succeeded in updating Asset.`);
+});
 ```
 
 ## asset.updateSync<sup>12+</sup>
@@ -387,7 +358,6 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
   let textEncoder = new util.TextEncoder();
@@ -398,12 +368,7 @@ let query: asset.AssetMap = new Map();
 query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
 let attrsToUpdate: asset.AssetMap = new Map();
 attrsToUpdate.set(asset.Tag.SECRET, stringToArray('demo_pwd_new'));
-try {
-  asset.updateSync(query, attrsToUpdate);
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
-}
+asset.updateSync(query, attrsToUpdate);
 ```
 
 ## asset.preQuery
@@ -426,7 +391,7 @@ Performs preprocessing for the asset query. This API is used when user authentic
 
 | Type               | Description                                                 |
 | ------------------- | ----------------------------------------------------- |
-| Promise\<Uint8Array> | Promise used to return a challenge value.<br>**NOTE**: The challenge value is used for subsequent user authentication.|
+| Promise\<Uint8Array> | Promise used to return a challenge value.<br>**Note**: The challenge value is used for subsequent user authentication.|
 
 **Error codes**
 
@@ -454,7 +419,6 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
   let textEncoder = new util.TextEncoder();
@@ -463,16 +427,9 @@ function stringToArray(str: string): Uint8Array {
 
 let query: asset.AssetMap = new Map();
 query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-try {
-  asset.preQuery(query).then((challenge: Uint8Array) => {
-    console.info(`Succeeded in pre-querying Asset.`);
-  }).catch ((err: BusinessError) => {
-    console.error(`Failed to pre-query Asset. Code is ${err.code}, message is ${err.message}`);
-  });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to pre-query Asset. Code is ${err.code}, message is ${err.message}`);
-}
+asset.preQuery(query).then((challenge: Uint8Array) => {
+  console.info(`Succeeded in pre-querying Asset.`);
+});
 ```
 
 ## asset.preQuerySync<sup>12+</sup>
@@ -495,7 +452,7 @@ Performs preprocessing for the asset query. This API is used when user authentic
 
 | Type               | Description                                                 |
 | ------------------- | ----------------------------------------------------- |
-| Uint8Array | Challenge value.<br>**NOTE**: The challenge value is used for subsequent user authentication.|
+| Uint8Array | Challenge value.<br>**Note**: The challenge value is used for subsequent user authentication.|
 
 **Error codes**
 
@@ -523,7 +480,6 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
   let textEncoder = new util.TextEncoder();
@@ -532,12 +488,8 @@ function stringToArray(str: string): Uint8Array {
 
 let query: asset.AssetMap = new Map();
 query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-try {
-  let challenge: Uint8Array = asset.preQuerySync(query);
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to pre-query Asset. Code is ${err.code}, message is ${err.message}`);
-}
+let challenge: Uint8Array = asset.preQuerySync(query);
+console.info(`Succeeded in pre-querying with sync, the challenge is: `, challenge);
 ```
 
 ## asset.query
@@ -545,6 +497,8 @@ try {
 query(query: AssetMap): Promise\<Array\<AssetMap>>
 
 Queries one or more assets. If user authentication is required for the access to the asset, call [asset.preQuery](#assetprequery) before this API and call [asset.postQuery](#assetpostquery) after this API. For details about the development procedure, see [Querying an Asset with User Authentication](../../security/AssetStoreKit/asset-js-query-auth.md). This API uses a promise to return the result.
+
+If no asset is found, an exception indicating that no asset is found is thrown instead of an empty query result list.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -588,7 +542,6 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
   let textEncoder = new util.TextEncoder();
@@ -597,20 +550,16 @@ function stringToArray(str: string): Uint8Array {
 
 let query: asset.AssetMap = new Map();
 query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-try {
-  asset.query(query).then((res: Array<asset.AssetMap>) => {
-    for (let i = 0; i < res.length; i++) {
-      // parse the attribute.
-      let accessibility: number = res[i].get(asset.Tag.ACCESSIBILITY) as number;
-    }
-    console.info(`Asset query succeeded.`);
-  }).catch ((err: BusinessError) => {
-    console.error(`Failed to query Asset. Code is ${err.code}, message is ${err.message}`);
-  });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to query Asset. Code is ${err.code}, message is ${err.message}`);
-}
+// If only the asset attributes need to be returned, set RETURN_TYPE to ATTRIBUTES. The attributes do not need to be decrypted, so the query takes a short time.
+query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL); // Return all asset information, including the attributes and asset plaintext. The plaintext needs to be decrypted, so the query takes a long time.
+asset.query(query).then((res: Array<asset.AssetMap>) => {
+  for (let i = 0; i < res.length; i++) {
+    // Parse the attributes.
+    let accessibility: number = res[i].get(asset.Tag.ACCESSIBILITY) as number;
+    console.info(`Succeeded in getting accessibility, which is: ${accessibility}.`);
+  }
+  console.info(`Succeeded in querying Asset.`);
+});
 ```
 
 ## asset.querySync<sup>12+</sup>
@@ -618,6 +567,8 @@ try {
 querySync(query: AssetMap): Array\<AssetMap>
 
 Queries one or more assets. If user authentication is required for the access to the asset, call [asset.preQuerySync](#assetprequerysync12) before this API and call [asset.postQuerySync](#assetpostquerysync12) after this API. For details about the development procedure, see [Querying an Asset with User Authentication](../../security/AssetStoreKit/asset-js-query-auth.md). This API returns the result synchronously.
+
+If no asset is found, an exception indicating that no asset is found is thrown instead of an empty query result list.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -661,7 +612,6 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
   let textEncoder = new util.TextEncoder();
@@ -670,26 +620,22 @@ function stringToArray(str: string): Uint8Array {
 
 let query: asset.AssetMap = new Map();
 query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-try {
-  let res: Array<asset.AssetMap> = asset.querySync(query);
-  let accessibility: number;
-  for (let i = 0; i < res.length; i++) {
-    // parse the attribute.
-    if (res[i] != null) {
-      accessibility = res[i].get(asset.Tag.ACCESSIBILITY) as number;
-    }
-  }
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to query Asset. Code is ${err.code}, message is ${err.message}`);
+// If only the asset attributes need to be returned, set RETURN_TYPE to ATTRIBUTES. The attributes do not need to be decrypted, so the query takes a short time.
+query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL); // Return all asset information, including the attributes and asset plaintext. The plaintext needs to be decrypted, so the query takes a long time.
+let res: Array<asset.AssetMap> = asset.querySync(query);
+for (let i = 0; i < res.length; i++) {
+  // Parse the attributes.
+  let accessibility: number = res[i].get(asset.Tag.ACCESSIBILITY) as number;
+  console.info(`Succeeded in getting accessibility, which is: ${accessibility}.`);
 }
+console.info(`Succeeded in querying Asset.`);
 ```
 
 ## asset.postQuery
 
 postQuery(handle: AssetMap): Promise\<void>
 
-Performs postprocessing for the asset query. This API is used when user authentication is required for the access to the asset. This API must be used with [asset.preQuery](#assetprequery) together. This API uses a promise to return the result.
+Performs postprocessing for the asset query. This API is used when user authentication is required for the access to an asset. It must be used with [asset.preQuery](#assetprequery). This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -725,21 +671,13 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let handle: asset.AssetMap = new Map();
 // The new Uint8Array(32) is only an example. Pass in the challenge value returned by asset.preQuery.
 handle.set(asset.Tag.AUTH_CHALLENGE, new Uint8Array(32));
-try {
-  asset.postQuery(handle).then(() => {
-    console.info(`Succeeded in post-querying Asset.`);
-  }).catch ((err: BusinessError) => {
-    console.error(`Failed to post-query Asset. Code is ${err.code}, message is ${err.message}`);
-  });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to post-query Asset. Code is ${err.code}, message is ${err.message}`);
-}
+asset.postQuery(handle).then(() => {
+  console.info(`Succeeded in post-querying Asset.`);
+});
 ```
 
 ## asset.postQuerySync<sup>12+</sup>
@@ -776,17 +714,11 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let handle: asset.AssetMap = new Map();
 // The new Uint8Array(32) is only an example. Pass in the challenge value returned by asset.preQuerySync.
 handle.set(asset.Tag.AUTH_CHALLENGE, new Uint8Array(32));
-try {
-  asset.postQuerySync(handle)
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to post-query Asset. Code is ${err.code}, message is ${err.message}`);
-}
+asset.postQuerySync(handle)
 ```
 
 ## asset.querySyncResult<sup>20+</sup>
@@ -828,13 +760,10 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let query: asset.AssetMap = new Map();
 asset.querySyncResult(query).then((res: asset.SyncResult) => {
-  console.info(`sync result: ${JSON.stringify(res)}`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to query sync result of Asset. Code is ${err.code}, message is ${err.message}`);
+  console.info(`Succeeded in querying sync result: ${JSON.stringify(res)}`);
 });
 ```
 
@@ -888,8 +817,8 @@ Enumerate the keys of asset attributes ([AssetMap](#assetmap)), which are in key
 | DATA_LABEL_NORMAL_LOCAL_4<sup>12+</sup> | TagType.BYTES &#124; 0x37 | Local information about the asset. The value is assigned by the service without integrity protection and will not be synced.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | RETURN_TYPE               | TagType.NUMBER &#124; 0x40 | Type of the asset query result to return.<br>**Atomic service API**: This API can be used in atomic services since API version 14.                                        |
 | RETURN_LIMIT              | TagType.NUMBER &#124; 0x41                      | Maximum number of asset records to return.<br>**Atomic service API**: This API can be used in atomic services since API version 14.                                        |
-| RETURN_OFFSET             | TagType.NUMBER &#124; 0x42   | Offset of the asset query result.<br>**NOTE**: This parameter specifies the starting asset record to return in batch asset query.<br>**Atomic service API**: This API can be used in atomic services since API version 14.                                |
-| RETURN_ORDERED_BY         | TagType.NUMBER &#124; 0x43 | Sorting order of the query results. Currently, the results can be sorted only by **ASSET_TAG_DATA_LABEL**.<br>**NOTE**: By default, assets are returned in the order in which they are added.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| RETURN_OFFSET             | TagType.NUMBER &#124; 0x42   | Offset of the asset query result.<br>**Note**: This parameter specifies the starting asset record to return in batch asset query.<br>**Atomic service API**: This API can be used in atomic services since API version 14.                                |
+| RETURN_ORDERED_BY         | TagType.NUMBER &#124; 0x43 | Sorting order of the query results. Currently, the results can be sorted only by **ASSET_TAG_DATA_LABEL**.<br>**Note**: By default, assets are returned in the order in which they are added.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | CONFLICT_RESOLUTION       | TagType.NUMBER &#124; 0x44 | Policy for resolving the conflict (for example, a duplicate alias).<br>**Atomic service API**: This API can be used in atomic services since API version 14.                            |
 | UPDATE_TIME<sup>12+</sup> | TagType.BYTES &#124; 0x45 | Data update time, in timestamp.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | OPERATION_TYPE<sup>12+</sup> | TagType.NUMBER &#124; 0x46 | Additional operation type.|
@@ -938,8 +867,8 @@ Enumerates the types of access control based on the lock screen status.
 | Name                 | Value  | Description                                                        |
 | --------------------- | ---- | ------------------------------------------------------------ |
 | DEVICE_POWERED_ON     | 0    | The asset can be accessed after the device is powered on.                                  |
-| DEVICE_FIRST_UNLOCKED | 1    | The asset can be accessed only after the device is unlocked for the first time.<br>**NOTE**: If no lock screen password is set, this option is equivalent to **DEVICE_POWERED_ON**.|
-| DEVICE_UNLOCKED       | 2    | The asset can be accessed only when the device is unlocked.<br>**NOTE**: If no lock screen password is set, this option is equivalent to **DEVICE_POWERED_ON**.|
+| DEVICE_FIRST_UNLOCKED | 1    | The asset can be accessed only after the device is unlocked for the first time.<br>**Note**: If no lock screen password is set, this option is equivalent to **DEVICE_POWERED_ON**.|
+| DEVICE_UNLOCKED       | 2    | The asset can be accessed only when the device is unlocked.<br>**Note**: If no lock screen password is set, this option is equivalent to **DEVICE_POWERED_ON**.|
 
 ## AuthType
 
@@ -958,10 +887,6 @@ Enumerates the types of user authentication supported by an asset.
 
 Enumerates the sync types supported by an asset.
 
-> **NOTE**
->
-> This field is an embedded parameter. Currently, asset sync is not supported.
-
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Security.Asset
@@ -969,9 +894,9 @@ Enumerates the sync types supported by an asset.
 | Name                         | Value    | Description                                            |
 | ----------------------------- | ------ | ------------------------------------------------ |
 | NEVER                         | 0      | Asset sync is not allowed.                            |
-| THIS_DEVICE                   | 1 << 0 | Asset sync is allowed only on the local device, for example, in data restore on the local device.|
+| THIS_DEVICE                   | 1 << 0 | Asset sync is allowed only on the local device, for example, in data restore on the local device.<br>**Note**: This field is reserved for future use and is not supported currently.|
 | TRUSTED_DEVICE                | 1 << 1 | Asset sync is allowed only between trusted devices, for example, in the case of cloning.            |
-| TRUSTED_ACCOUNT<sup>12+</sup> | 1 << 2 | Asset sync is allowed only between the devices that are logged in with trusted accounts, for example, in cloud sync scenarios.|
+| TRUSTED_ACCOUNT<sup>12+</sup> | 1 << 2 | Asset sync is allowed only between the devices that are logged in with trusted accounts, for example, in cloud sync scenarios.<br>**Note**: This field is reserved for future use and is not supported currently.|
 
 ## ReturnType
 
@@ -983,8 +908,8 @@ Enumerates the type of information returned by an asset query operation.
 
 | Name      | Value  | Description                                                        |
 | ---------- | ---- | ------------------------------------------------------------ |
-| ALL        | 0    | The query result contains the asset in plaintext and its attributes.<br>**NOTE**: Use this option when you need to query the plaintext of a single asset.|
-| ATTRIBUTES | 1    | The query result contains only the asset attributes.<br>**NOTE**: Use this option when you need to query attributes of multiple assets.|
+| ALL        | 0    | The query result contains the asset in plaintext and its attributes.<br>**Note**: Use this option when you need to query the plaintext of a single asset.|
+| ATTRIBUTES | 1    | The query result contains only the asset attributes.<br>**Note**: Use this option when you need to query attributes of multiple assets.|
 
 ## ConflictResolution
 

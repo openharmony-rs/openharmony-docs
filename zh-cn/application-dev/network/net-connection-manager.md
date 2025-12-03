@@ -8,7 +8,7 @@
 
 ## 简介
 
-网络连接管理提供管理网络一些基础能力，包括WiFi/蜂窝/Ethernet等多网络连接优先级管理、网络质量评估、订阅默认/指定网络连接状态变化、查询网络连接信息、DNS解析等功能。
+网络连接管理提供管理网络的一些基础能力，包括WiFi/蜂窝/Ethernet等多网络连接优先级管理、网络质量评估、订阅默认/指定网络连接状态变化、查询网络连接信息、DNS解析等功能。
 
 > **说明：**
 >
@@ -203,7 +203,6 @@ function socketTest() {
     ```ts
     // 从@kit.NetworkKit中导入connection命名空间。
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
 
     // 调用getAllNets方法，获取所有处于连接状态的网络列表。
     connection.getAllNets().then((data: connection.NetHandle[]) => {
@@ -226,7 +225,6 @@ function socketTest() {
     ```ts
     // 从@kit.NetworkKit中导入connection命名空间。
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
     
     function getDefaultNetsInfo() {
       let netHandleInfo:connection.NetHandle|null = null;
@@ -297,7 +295,6 @@ function socketTest() {
     ```ts
     // 从@kit.NetworkKit中导入connection命名空间。
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
 
     function getAllNetsInfo() {
       // 调用getAllNets,获取所有处于连接状态的网络列表(Array<NetHandle>)。
@@ -337,7 +334,6 @@ function socketTest() {
     ```ts
     // 从@kit.NetworkKit中导入connection命名空间。
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
 
     // 获取默认激活的数据网络。
     let netHandle = connection.getDefaultNetSync();
@@ -376,7 +372,6 @@ function socketTest() {
     ```ts
     // 从@kit.NetworkKit中导入connection命名空间。
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
     // 使用默认网络解析主机名以获取所有IP地址。
     connection.getAddressesByName("xxxx").then((data: connection.NetAddress[]) => {
       console.info("Succeeded to get data: " + JSON.stringify(data));

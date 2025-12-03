@@ -12,7 +12,7 @@
 import { networkSecurity } from '@kit.NetworkKit';
 ```
 
-## 完整实例
+## 完整示例
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
@@ -71,7 +71,7 @@ networkSecurity.certVerification(cert, caCert)
 
 certVerification(cert: CertBlob, caCert?: CertBlob): Promise\<number\>
 
-从证书管理获取系统预置的CA证书和用户安装的CA证书，对应用传入的证书进行校验。
+从证书管理获取系统预置的CA证书和用户安装的CA证书，对应用传入的证书进行校验。使用Promise异步回调。
 
 **系统能力**: SystemCapability.Communication.NetStack
 
@@ -153,7 +153,7 @@ networkSecurity.certVerification(cert, caCert)
 
 certVerificationSync(cert: CertBlob, caCert?: CertBlob): number
 
-从证书管理获取系统预置的CA证书和用户安装的CA证书，对应用传入的证书进行校验。
+从证书管理获取系统预置的CA证书和用户安装的CA证书，对应用传入的证书进行校验，使用同步方式返回。
 
 **系统能力**：SystemCapability.Communication.NetStack
 

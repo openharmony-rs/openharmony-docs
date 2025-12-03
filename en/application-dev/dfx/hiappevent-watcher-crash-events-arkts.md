@@ -2,8 +2,8 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @chenshi51-->
-<!--Designer: @Maplestory-->
-<!--Tester: @yufeifei-->
+<!--Designer: @Maplestory91-->
+<!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
 ## Overview
@@ -32,7 +32,7 @@ The following describes how to subscribe to the crash event triggered by a butto
 1. Create a native C++ project in DevEco Studio. In the **entry/src/main/ets/entryability/EntryAbility.ets** file, import the dependent modules. The sample code is as follows:
 
    ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { BusinessError, deviceInfo } from '@kit.BasicServicesKit';
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
    import testNapi from 'libentry.so';
    ```
@@ -42,7 +42,7 @@ The following describes how to subscribe to the crash event triggered by a butto
    ```ts
     // Build custom parameters for the crash event.
     let params: Record<string, hiAppEvent.ParamType> = {
-      "test_data": 100,
+      "test_data": 100, // test_data is the custom data. You can customize the params parameter as required.
     };
     // Set custom parameters for the crash event.
     hiAppEvent.setEventParam(params, hiAppEvent.domain.OS, hiAppEvent.event.APP_CRASH).then(() => {
@@ -51,22 +51,23 @@ The following describes how to subscribe to the crash event triggered by a butto
       hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
     });
    
-    // Build custom parameters for crash log specifications.
-    let configParams: Record<string, hiAppEvent.ParamType> = {
-      "extend_pc_lr_printing": true, // Enable the functionality of printing the memory values near the PC and LR.
-      "log_file_cutoff_sz_bytes": 102400, // Truncate the crash log to 100 KB.
-      "simplify_vma_printing": true // Enable simplified printing of maps.
-    };
-   
-    // Set the crash log configuration parameters.
-    hiAppEvent.setEventConfig(hiAppEvent.event.APP_CRASH, configParams).then(() => {
-      hilog.info(0x0000, 'testTag', `HiAppEvent success to set event config.`);
-    }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
-    });
+    if (deviceInfo.sdkApiVersion >= 20) {  // Since API Version 20, you can set crash log configuration parameters.
+      // Build custom parameters for crash log specifications.
+      let crashConfigParams: Record<string, hiAppEvent.ParamType> = {
+        "extend_pc_lr_printing": true, // Enable the functionality of printing the memory values near the PC and LR.
+        "log_file_cutoff_sz_bytes": 1024000, // Truncate the crash log to 1000 KB.
+        "simplify_vma_printing": true // Enable simplified printing of maps.
+      };
+      // Set the crash log configuration parameters.
+      hiAppEvent.setEventConfig(hiAppEvent.event.APP_CRASH, crashConfigParams).then(() => {
+        hilog.info(0x0000, 'testTag', `HiAppEvent success to set event config.`);
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
+      });
+    }
    ```
 
-3. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, add the system event subscription to **onCreate()**. The sample code is as follows:
+3. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, add a watcher in **onCreate()** to subscribe to system events. The sample code is as follows:
 
    ```ts
     let watcher: hiAppEvent.Watcher = {
@@ -165,6 +166,8 @@ Depending on whether an application proactively captures crash events, callbacks
 
 If the application does not proactively capture the crash exception, the application will exit after the system handles the crash. When the application restarts, HiAppEvent reports the crash event to the registered watcher to complete the callback.
 
+If the application fails to start or remains unstarted for a long time, you can delay the event notification by referring to [Using FaultLogExtensionAbility to Subscribe to Events](./fault-log-extension-app-events-arkts.md).
+
 **Application proactively captures crash events**
 
 If an application proactively captures the crash event, a callback is triggered before the application exits. The following are examples:
@@ -204,5 +207,37 @@ HiAppEvent eventInfo.params.test_data=100
 // Remove the event watcher to unsubscribe from events.
 hiAppEvent.removeWatcher(watcher);
 ```
+
+## Migrating Crash Events from the FaultLogger API
+
+The[@ohos.faultLogger (FaultLogger)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md) API is deprecated and no longer maintained since API version 18. You are advised to use the [@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md) API to subscribe to crash events. The following describes how to migrate the crash event subscription from the FaultLogger API to the HiAppEvent API.
+
+**CPP_CRASH** and **JS_CRASH** defined in the [FaultType](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) of FaultLogger are crash events.
+
+Through HiAppEvent, you can subscribe to crash events by setting the event name to **hiAppEvent.event.APP_CRASH** and event domain to **hiAppEvent.domain.OS** in the **hiAppEvent.addWatcher** API.
+
+You can identify the specific crash event by the **crash_type** field in [hiAppEvent.AppEventInfo.params](./hiappevent-watcher-crash-events.md#params).
+
+The following table shows the mapping between the crash events.
+| Faultlogger.FaultType | hiAppEvent.AppEventInfo.params.crash_type |
+| --- | --- |
+| CPP_CRASH | NativeCrash |
+| JS_CRASH | JsError |
+
+The following table shows the mapping between [FaultLogInfo](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloginfo) and [hiAppEvent.AppEventInfo.params](./hiappevent-watcher-crash-events.md#params).
+| Faultlogger.FaultLogInfo | hiAppEvent.AppEventInfo.params | Description|
+| --- | --- | --- |
+| pid | pid | None|
+| uid | uid | None|
+| type | crash_type | The event types are different. In FaultLogger, **type** is a fault type enumeration. In HiAppEvent, **crash_type** is a string.|
+| timestamp | time | None|
+| module | bundle_name | None|
+| fullLog | external_log | **fullLog** indicates the fault log content. **external_log** indicates the application sandbox path of the fault log file. You can access the file to obtain the fault log content.|
+| reason | **Reason** field in the **external_log** file| None|
+| summary | Part of the** external_log** file| The **summary** of **CPP_CRASH** corresponds to the **Fault thread info** field in the **external_log** file. The **summary** of **JS_CRASH** corresponds to the **Error name**, **Error message**, **Stacktrace**, and **HybridStack** fields in the **external_log** file.|
+
+Both [FaultLogger.query (using callback)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9) and [FaultLogger.query (using promise)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1) can use [hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher) to implement the same functionality.
+
+For details about how to use HiAppEvent to subscribe to crash events (ArkTS), see [How to Develop](#how-to-develop) and [Checking Whether a Watcher Subscribes to Crash Events](#checking-whether-a-watcher-subscribes-to-crash-events).
 <!--RP1-->
 <!--RP1End-->

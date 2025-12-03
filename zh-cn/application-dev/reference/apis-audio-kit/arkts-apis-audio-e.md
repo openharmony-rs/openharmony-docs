@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -12,7 +12,7 @@
 
 ## AudioVolumeType
 
-表示音频流类型的枚举。
+表示音频音量类型的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -289,7 +289,7 @@
 
 ## StreamUsage
 
-表示音频流使用类型的枚举。
+表示播放音频流类型的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -427,7 +427,7 @@
 | -------------------- | ---- | -------------------------------- |
 | PRIVACY_TYPE_PUBLIC  | 0    | 表示音频流可以被其他应用录制或屏幕投射，不包含隐私类型的流。|
 | PRIVACY_TYPE_PRIVATE | 1    | 表示音频流不可以被其他应用录制或屏幕投射。 |
-| PRIVACY_TYPE_SHARED<sup>21+</sup>  | 2    | 表示音频流可以被其他应用录制或屏幕投射，包含隐私类型的流。 <br/> 例如，在PRIVACY_TYPE_PUBLIC策略下，[STREAM_USAGE_VOICE_COMMUNICATION](#streamusage)类型音频流不会被其他应用录制或屏幕投射。 <br/> 然而，在PRIVACY_TYPE_SHARED策略下，这些音频流将会允许被其他应用录制或屏幕投射。 <br> **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
+| PRIVACY_TYPE_SHARED<sup>21+</sup>  | 2    | 表示音频流可以被其他应用录制或屏幕投射，包含隐私类型的流。 <br/> 例如，在PRIVACY_TYPE_PUBLIC策略下，[STREAM_USAGE_VOICE_COMMUNICATION](#streamusage)类型音频流不会被其他应用录制或屏幕投射。 <br/> 然而，在PRIVACY_TYPE_SHARED策略下，这些音频流将会允许被其他应用录制或屏幕投射。|
 
 ## ChannelBlendMode<sup>11+</sup>
 
@@ -492,7 +492,7 @@
 
 ## SourceType<sup>8+</sup>
 
-表示音源类型的枚举。
+表示录制音频流类型的枚举。
 
 | 名称                                         |  值     | 说明                   |
 | :------------------------------------------- | :----- | :--------------------- |

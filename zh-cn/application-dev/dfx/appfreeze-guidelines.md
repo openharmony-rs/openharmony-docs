@@ -9,7 +9,7 @@
 
 ## 简介
 
-用户在使用应用时，如果出现点击无反应或应用无响应等情况，并且持续时间超过一定限制，就会被定义为应用冻屏（AppFreeze），即应用无响应或卡死。系统会检测应用无响应，并生成AppFreeze日志，供应用开发者分析。
+用户在使用应用时，如果出现点击无反应或应用无响应等情况，并且持续时间超过一定限制，就会被定义为应用冻屏（AppFreeze），即应用无响应。系统会检测应用无响应，并生成AppFreeze日志，供应用开发者分析。
 
 > **说明：**
 >
@@ -453,7 +453,7 @@ client actions for app:
 
 ## AppFreeze（应用冻屏）增强日志信息
 
-从API version 21开始，支持获取AppFreeze的增强日志。该日志通过采集整机及主线程的运行负载，并抓取多份主线程调用栈，帮助开发者更精准地分析问题根源。相比原有日志，AppFreeze的增强日志主要解决了以下两个不足：
+从API version 21开始，支持获取AppFreeze的增强日志。该日志通过采集整机及主线程的运行负载，并抓取多份主线程调用栈，帮助开发者分析问题根源。相比原有日志，AppFreeze的增强日志主要解决了以下两个不足：
 
 1. 难以定位故障期间的主线程热点。
 
@@ -546,8 +546,8 @@ T1:  StaticsDuration, EndTime - StartTime.
 T2:  CpuTime              --Time that spend on CPU.
 T3:  SyncWaitTime         --SleepingTime + Runnable Time, etc.
 T4:  OptimalCpuTime       --run the thread at the max Core's max cpu capacity.
-T5:  SupplyAvailableTime  --T2 - T3. Time can be optimized by scheduling.
-Equation:  T1 = T2 + T3. T2 = T4 = T5.
+T5:  SupplyAvailableTime  --T2 - T4. Time can be optimized by scheduling.
+Equation:  T1 = T2 + T3. T2 = T4 + T5.
 |-----------------------------------StaticsDuration-----------------------------------|.
 |-------------------------CpuTime----------------------|--------SyncWaitTime----------|.
 |----OptimalCpuTime----|------SupplyAvailableTime------|--------SyncWaitTime----------|.

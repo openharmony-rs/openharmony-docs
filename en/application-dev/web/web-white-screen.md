@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc-->
 <!--Designer: @LongLie-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 There are many reasons for white screen issues on web pages. This topic describes how to troubleshoot common white screen issues.
 
@@ -13,6 +13,7 @@ There are many reasons for white screen issues on web pages. This topic describe
 3. In complex layout scenarios, check the rendering mode and component constraints.
 4. Handle the compatibility problem of the HTML5 code.
 5. Check the keywords related to the lifecycle and network loading in the log.
+6. Check whether the Secure Shield mode is enabled. For details about the restrictions after the Secure Shield mode is enabled, see [HTML5 Features Restricted by ArkWeb](./web-secure-shield-mode.md#html5-features-restricted-by-arkweb).
 
 ## Checking Permissions and Network Status
 If the network or file access permission is not added for the application, or the network status of the device is poor, the **Web** component will fail to be loaded or page elements will be missing, resulting in a white screen.
@@ -20,12 +21,12 @@ If the network or file access permission is not added for the application, or th
 * Ensure that the network permission **ohos.permission.INTERNET** is added to the application (mandatory for accessing online pages).
   ```
   // Add the required permission in module.json5.
-  "requestPermissions":[
-     {
+    "requestPermissions":[
+      {
         "name" : "ohos.permission.INTERNET"
-     }
+      }
   ]
-  ```
+    ```
 * The following table lists attributes used to enable related permissions.
     | Name  | Description |                       
     | ----   | -------------------------------- |
@@ -38,54 +39,54 @@ If the network or file access permission is not added for the application, or th
 
   ```ts
   // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-          .domStorageAccess(true)
-          .fileAccess(true)
-          .imageAccess(true)
-          .onlineImageAccess(true)
-          .javaScriptAccess(true)
+    import { webview } from '@kit.ArkWeb';
+    
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: webview.WebviewController = new webview.WebviewController();
+    
+      build() {
+        Column() {
+          Web({ src: 'www.example.com', controller: this.controller })
+            .domStorageAccess(true)
+            .fileAccess(true)
+            .imageAccess(true)
+            .onlineImageAccess(true)
+            .javaScriptAccess(true)
+        }
       }
     }
-  }
-  ```
+    ```
 * Modify the [UserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10) and check whether the page is restored.
 
   ```ts
   // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    @State customUserAgent: string = ' DemoApp';
-
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-        .onControllerAttached(() => {
+    import { webview } from '@kit.ArkWeb';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: webview.WebviewController = new webview.WebviewController();
+      @State customUserAgent: string = ' DemoApp';
+    
+      build() {
+        Column() {
+          Web({ src: 'www.example.com', controller: this.controller })
+            .onControllerAttached(() => {
           console.info("onControllerAttached");
-          try {
-            let userAgent = this.controller.getUserAgent() + this.customUserAgent;
-            this.controller.setCustomUserAgent(userAgent);
-          } catch (error) {
+              try {
+                let userAgent = this.controller.getUserAgent() + this.customUserAgent;
+                this.controller.setCustomUserAgent(userAgent);
+              } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
+              }
+            })
+        }
       }
     }
-  }
-  ```
+    ```
 ## Debugging Pages by Using DevTools
 If a white screen issue persists after the network and permission configurations are correctly configured, use DevTools to debug the frontend page and listen for the web-related error reporting APIs to locate the error type.
 
@@ -217,13 +218,13 @@ If a white screen issue persists after the network and permission configurations
     // main/ets/pages/Index.ets
     import { webview } from '@kit.ArkWeb';
     import { BusinessError } from '@kit.BasicServicesKit';
-
+    
     @Entry
     @Component
     struct WebComponent {
       controller: WebviewController = new webview.WebviewController();
       uiContext: UIContext = this.getUIContext();
-
+    
       build() {
         Row() {
           Web({ src: "", controller: this.controller })
@@ -366,7 +367,7 @@ To avoid white screen issues, you can handle the compatibility issue as follows:
    })
    ```
 ## Monitoring Memory and Lifecycle
-If the memory usage reaches the threshold, the rendering process will be terminated, causing a white screen. Similarly, a white screen will occur if the rendering process fails to start or is abnormally terminated. You can check the cause in logs. For example, check whether the **Web** component is correctly bound to the **WebController** or whether the white screen occurs because the **Web** component is released too early. Check the information related to the render process in the log, for example, whether a memory leak causes insufficient rendering memory. The keyword **MEMORY_PRESSURE_LEVEL_CRITICAL** indicates that the memory usage has reached the threshold. In this case, the web page may encounter exceptions such as black screen, artifacts, or flicker. You need to check whether a memory leak occurs, and whether the render process starts successfully or exits abnormally.
+If the memory usage reaches the threshold, the rendering process will be terminated, causing a white screen. Similarly, a white screen will occur if the rendering process fails to start or is abnormally terminated. You can check the cause in logs. For example, check whether the **Web** component is correctly bound to the **WebController** or whether the white screen occurs because the **Web** component is released too early. Check the information related to the render process in the log, for example, whether a memory leak causes insufficient rendering memory. The keyword **MEMORY_PRESSURE_LEVEL_CRITICAL** indicates that the memory usage has reached the threshold. In this case, the web page may encounter exceptions such as black screen, artifacts, or flicker. You need to check whether a memory leak occurs. Check whether the render process starts successfully or exits abnormally.
 
 The following table lists log keywords and the corresponding descriptions.
 
@@ -397,3 +398,20 @@ The following figure shows the key points contained during the **Web** component
 | NWebHandlerDelegate::OnFirstContentfulPaint| The first frame content is displayed.|
 | event_message: content load finished | The page content parsing is complete.|
 | event_message: page load finished,<br> NWebHandlerDelegate::OnLoadEnd,<br> NWebHandlerDelegate::MainFrame OnLoadEnd,<br> NWebHandlerDelegate::OnFirstMeaningfulPaint | The page and sub-resources are loaded.|
+
+## White Screen During HTML5 Page Loading Due to Inconsistent Default WebView Loading Processes
+
+**Symptom**
+
+The HTML5 page is properly loaded through WebView on the phone, but a white screen is displayed on the tablet, and PC/2-in-1 device.
+
+**Possible causes**
+
+The WebView on the tablet, and PC/2-in-1 device uses multi-process loading by default, and iframe is loaded using sub-processes by default. After the main process is loaded, if the sub-process is not loaded, a white screen is displayed.
+
+**Solution**
+
+Use **setRenderProcessMode()** to set the WebView rendering mode to single-process loading.
+   ```
+   webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.SINGLE);
+   ```

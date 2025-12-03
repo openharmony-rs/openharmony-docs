@@ -4,13 +4,13 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+预览输出类。继承[CameraOutput](arkts-apis-camera-CameraOutput.md)。
 
 > **说明：**
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
-预览输出类。继承[CameraOutput](arkts-apis-camera-CameraOutput.md)。
 
 ## 导入模块
 
@@ -220,7 +220,7 @@ function unregisterPreviewOutputError(previewOutput: camera.PreviewOutput): void
 
 |      类型      |     说明     |
 | -------------  | ------------ |
-| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | 支持的帧率范围列表 |
+| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | 支持的帧率范围列表。若接口调用失败，返回undefined。 |
 
 **示例：**
 
@@ -362,7 +362,7 @@ getPreviewRotation(displayRotation: number): ImageRotation
 
 |      类型      | 说明        |
 | -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 获取预览旋转角度。 |
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 获取预览旋转角度。若接口调用失败，返回undefined。 |
 
 **错误码：**
 

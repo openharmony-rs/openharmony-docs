@@ -4,16 +4,16 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+This interface implements audio stream management.
+
+Before calling any API in AudioStreamManager, you must use [getStreamManager](arkts-apis-audio-AudioManager.md#getstreammanager9) to obtain an AudioStreamManager instance.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 9.
-
-This interface implements audio stream management.
-
-Before calling any API in AudioStreamManager, you must use [getStreamManager](arkts-apis-audio-AudioManager.md#getstreammanager9) to obtain an AudioStreamManager instance.
 
 ## Modules to Import
 
@@ -745,4 +745,46 @@ audio.createAudioCapturer(audioCapturerOptions, (err: BusinessError, audioCaptur
     }
   }
 });
+```
+
+## isIntelligentNoiseReductionEnabledForCurrentDevice<sup>21+</sup>
+
+isIntelligentNoiseReductionEnabledForCurrentDevice(sourceType: SourceType): boolean
+
+Checks whether the intelligent noise reduction feature is enabled for the audio stream of the specified source type.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+**Parameters**
+
+| Name   | Type                               | Mandatory    | Description                        |
+| -------- | ----------------------------------- | -------- | --------------------------- |
+| sourceType    | [SourceType](arkts-apis-audio-e.md#sourcetype8)         | Yes    |  Audio source type.              |
+
+**Return value**
+
+| Type                                                                     | Description                                   |
+| --------------------------------------------------------------------------| --------------------------------------- |
+|  boolean     | Check result for whether the intelligent noise reduction feature is enabled. **true** if enabled, **false** otherwise.       |
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isSupport = audioStreamManager.isIntelligentNoiseReductionEnabledForCurrentDevice(audio.SourceType.SOURCE_TYPE_LIVE);
+  console.info(`SourceType: ${audio.SourceType.SOURCE_TYPE_LIVE} intelligent noise reduction enabled is: ${isSupport}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`isIntelligentNoiseReductionEnabledForCurrentDevice ERROR: ${error}`);
+}
 ```

@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 AVSession Kit（Audio &amp; Video Session Kit，音视频播控服务）是系统提供的音视频管控服务，用于统一管理系统中所有音视频行为，帮助开发者快速构建音视频统一展示和控制能力。
 
@@ -12,7 +12,7 @@ AVSession Kit（Audio &amp; Video Session Kit，音视频播控服务）是系�
 
 - 提供音视频统一管控能力，音视频类应用接入AVSession后，可以发送应用的数据（比如正在播放的歌曲、歌曲的播放状态等），用户可以通过系统播控中心、语音助手等应用切换多个应用、多个设备播放。
 
-- 提供音频后台约束能力，音频接入AVSession后，可以进行后台音频播放。此功能需要同时申请后台任务。
+- 提供音频后台约束能力，音频接入AVSession后，可以进行后台音频播放。此功能需要同时申请[长时任务](../../task-management/continuous-task.md)。
 
 ## 亮点/特征
 

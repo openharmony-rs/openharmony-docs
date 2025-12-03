@@ -131,7 +131,7 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback: AsyncCallback\<BundleInfo>): void
 
-根据给定的bundleName、bundleFlags和userId获取BundleInfo，使用callback异步回调。
+根据给定的bundleName、bundleFlags和userId获取BundleInfo。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -212,7 +212,7 @@ try {
 
 getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
 
-根据给定的bundleName和bundleFlags获取BundleInfo，使用callback异步回调。
+根据给定的bundleName和bundleFlags获取BundleInfo。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -267,7 +267,7 @@ try {
 
 getBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise\<BundleInfo>
 
-根据给定的bundleName、bundleFlags和userId获取BundleInfo，使用Promise异步回调。
+根据给定的bundleName、bundleFlags和userId获取BundleInfo。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -348,7 +348,7 @@ try {
 
 getApplicationInfo(bundleName: string, appFlags: number, userId: number, callback: AsyncCallback\<ApplicationInfo>): void
 
-根据给定的bundleName、appFlags和userId获取ApplicationInfo，使用callback异步回调。
+根据给定的bundleName、appFlags和userId获取ApplicationInfo。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -408,7 +408,7 @@ try {
 
 getApplicationInfo(bundleName: string, appFlags: number, callback: AsyncCallback\<ApplicationInfo>): void
 
-根据给定的bundleName和appFlags获取ApplicationInfo，使用callback异步回调。
+根据给定的bundleName和appFlags获取ApplicationInfo。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -465,7 +465,7 @@ try {
 
 getApplicationInfo(bundleName: string, appFlags: number, userId?: number): Promise\<ApplicationInfo>
 
-根据给定的bundleName、appFlags和userId获取ApplicationInfo，使用Promise异步回调。
+根据给定的bundleName、appFlags和userId获取ApplicationInfo。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -528,7 +528,7 @@ try {
 
 getAllBundleInfo(bundleFlags: number, userId: number, callback: AsyncCallback<Array\<BundleInfo>>): void
 
-根据给定的bundleFlags和userId获取系统中所有的BundleInfo，使用callback异步回调。
+根据给定的bundleFlags和userId获取系统中所有的BundleInfo。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -582,7 +582,7 @@ try {
 
 getAllBundleInfo(bundleFlags: number, callback: AsyncCallback<Array\<BundleInfo>>): void
 
-根据给定的bundleFlags获取系统中所有的BundleInfo，使用callback异步回调。
+根据给定的bundleFlags获取系统中所有的BundleInfo。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -633,7 +633,7 @@ try {
 
 getAllBundleInfo(bundleFlags: number, userId?: number): Promise<Array\<BundleInfo>>
 
-根据给定的bundleFlags和userId获取系统中所有的BundleInfo，使用Promise异步回调。
+根据给定的bundleFlags和userId获取系统中所有的BundleInfo。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -689,7 +689,7 @@ try {
 
 getAllApplicationInfo(appFlags: number, userId: number, callback: AsyncCallback<Array\<ApplicationInfo>>): void
 
-根据给定的appFlags和userId获取系统中所有的ApplicationInfo，使用callback异步回调。
+根据给定的appFlags和userId获取系统中所有的ApplicationInfo。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -743,7 +743,7 @@ try {
 
 getAllApplicationInfo(appFlags: number, callback: AsyncCallback<Array\<ApplicationInfo>>): void
 
-根据给定的appFlags获取系统中所有的ApplicationInfo，使用callback异步回调。
+根据给定的appFlags获取系统中所有的ApplicationInfo。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -794,7 +794,7 @@ try {
 
 getAllApplicationInfo(appFlags: number, userId?: number): Promise<Array\<ApplicationInfo>>
 
-根据给定的appFlags和userId获取系统中所有的ApplicationInfo，使用Promise异步回调。
+根据给定的appFlags和userId获取系统中所有的ApplicationInfo。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -851,7 +851,7 @@ try {
 
 queryAbilityInfo(want: Want, abilityFlags: number, userId: number, callback: AsyncCallback<Array\<AbilityInfo>>): void
 
-根据给定的want、abilityFlags和userId获取多个AbilityInfo，使用callback异步回调。
+根据给定的want、abilityFlags和userId获取多个AbilityInfo。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -865,7 +865,7 @@ queryAbilityInfo(want: Want, abilityFlags: number, userId: number, callback: Asy
 
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
-| want         | Want   | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
+| want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
 | abilityFlags | [number](#abilityflag) | 是   | 指定返回的AbilityInfo所包含的信息。                       |
 | userId       | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                               |
 | callback | AsyncCallback<Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的Array\<AbilityInfo>；否则为错误对象。 |
@@ -917,7 +917,7 @@ try {
 
 queryAbilityInfo(want: Want, abilityFlags: number, callback: AsyncCallback<Array\<AbilityInfo>>): void
 
-根据给定的want和abilityFlags获取一个或多个AbilityInfo，使用callback异步回调。
+根据给定的want和abilityFlags获取一个或多个AbilityInfo。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -931,7 +931,7 @@ queryAbilityInfo(want: Want, abilityFlags: number, callback: AsyncCallback<Array
 
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | -------------------------------------------------------|
-| want         | Want   | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
+| want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
 | abilityFlags | [number](#abilityflag) | 是   | 指定返回的AbilityInfo所包含的信息。       |
 | callback | AsyncCallback<Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的Array\<AbilityInfo>；否则为错误对象。 |
 
@@ -980,7 +980,7 @@ try {
 
 queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Promise<Array\<AbilityInfo>>
 
-根据给定的want、abilityFlags和userId获取一个或多个AbilityInfo，使用Promise异步回调。
+根据给定的want、abilityFlags和userId获取一个或多个AbilityInfo。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -994,7 +994,7 @@ queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Promise<Arr
 
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
-| want         | Want   | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
+| want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
 | abilityFlags | [number](#abilityflag) | 是   | 表示指定返回的AbilityInfo所包含的信息。 |
 | userId       | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
 
@@ -1086,7 +1086,7 @@ queryAbilityInfoSync(want: Want, abilityFlags: number, userId?: number): Array\<
 
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
-| want         | Want   | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
+| want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
 | abilityFlags | [number](#abilityflag) | 是   | 表示指定返回的AbilityInfo所包含的信息。 |
 | userId       | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
 
@@ -1159,7 +1159,7 @@ try {
 
 queryAbilityInfo(wants: Array\<Want>, abilityFlags: number, userId?: number): Promise<Array\<AbilityInfo>>
 
-根据给定的want列表、abilityFlags和userId获取一个或多个AbilityInfo，使用Promise异步回调。
+根据给定的want列表、abilityFlags和userId获取一个或多个AbilityInfo。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -1173,7 +1173,7 @@ queryAbilityInfo(wants: Array\<Want>, abilityFlags: number, userId?: number): Pr
 
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
-| want         | Array\<Want>   | 是   | 表示包含要查询的应用Bundle名称的Want集合。                 |
+| want         | Array\<[Want](js-apis-app-ability-want.md)>   | 是   | 表示包含要查询的应用Bundle名称的Want集合。                 |
 | abilityFlags | [number](#abilityflag) | 是   | 表示指定返回的AbilityInfo所包含的信息。 |
 | userId       | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
 
@@ -1232,7 +1232,7 @@ let wants: Array<Want> = [ want, want1 ];
 
 queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId: number, callback: AsyncCallback<Array\<ExtensionAbilityInfo>>): void
 
-根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取一个或多个ExtensionAbilityInfo，使用callback异步回调。
+根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取一个或多个ExtensionAbilityInfo。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -1246,7 +1246,7 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| want                  | Want                                                         | 是   | 表示包含要查询的应用Bundle名称的Want。                       |
+| want                  | [Want](js-apis-app-ability-want.md)                                                        | 是   | 表示包含要查询的应用Bundle名称的Want。                       |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype)                | 是   | 标识extensionAbility的类型。                                 |
 | extensionAbilityFlags | [number](#extensionabilityflag)                              | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志。    |
 | userId                | number                                                       | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                                                 |
@@ -1299,7 +1299,7 @@ try {
 
 queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, callback: AsyncCallback<Array\<ExtensionAbilityInfo>>): void
 
-根据给定的want、extensionAbilityType和extensionAbilityFlags获取一个或多个ExtensionAbilityInfo，使用callback异步回调。
+根据给定的want、extensionAbilityType和extensionAbilityFlags获取一个或多个ExtensionAbilityInfo。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -1313,7 +1313,7 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| want                  | Want                                                         | 是   | 表示包含要查询的应用Bundle名称的Want。                       |
+| want                  | [Want](js-apis-app-ability-want.md)                                                        | 是   | 表示包含要查询的应用Bundle名称的Want。                       |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype)                | 是   | 标识extensionAbility的类型。                                 |
 | extensionAbilityFlags | [number](#extensionabilityflag)                              | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志。    |
 | callback              | AsyncCallback<Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)>> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到Array\<ExtensionAbilityInfo>；否则为错误对象。 |
@@ -1363,7 +1363,7 @@ try {
 
 queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId?: number): Promise<Array\<ExtensionAbilityInfo>>
 
-根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取ExtensionAbilityInfo，使用Promise异步回调。
+根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取ExtensionAbilityInfo。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -1377,7 +1377,7 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 
 | 参数名                | 类型                                          | 必填 | 说明                                                      |
 | --------------------- | --------------------------------------------- | ---- | --------------------------------------------------------- |
-| want                  | Want                                          | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
+| want                  | [Want](js-apis-app-ability-want.md)                                         | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype) | 是   | 标识extensionAbility的类型。                              |
 | extensionAbilityFlags | [number](#extensionabilityflag)               | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志。 |
 | userId                | number                                        | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                                              |
@@ -1472,7 +1472,7 @@ queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: ExtensionAbility
 
 | 参数名                | 类型                                          | 必填 | 说明                                                      |
 | --------------------- | --------------------------------------------- | ---- | --------------------------------------------------------- |
-| want                  | Want                                          | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
+| want                  | [Want](js-apis-app-ability-want.md)                                         | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype) | 是   | 标识extensionAbility的类型。                              |
 | extensionAbilityFlags | [number](#extensionabilityflag)               | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志。 |
 | userId                | number                                        | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                                              |
@@ -1547,7 +1547,7 @@ try {
 
 getBundleNameByUid(uid: number, callback: AsyncCallback\<string>): void
 
-根据给定的uid获取对应的bundleName，使用callback异步回调。
+根据给定的uid获取对应的bundleName。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
@@ -1595,7 +1595,7 @@ try {
 
 getBundleNameByUid(uid: number): Promise\<string>
 
-根据给定的uid获取对应的bundleName，使用Promise异步回调。
+根据给定的uid获取对应的bundleName。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
@@ -1694,7 +1694,7 @@ try {
 
 getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
 
-根据给定的hapFilePath和bundleFlags获取BundleInfo，使用callback异步回调。
+根据给定的hapFilePath和bundleFlags获取BundleInfo。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1748,7 +1748,7 @@ try {
 
 getBundleArchiveInfo(hapFilePath: string,  bundleFlags: number): Promise\<BundleInfo>
 
-根据给定的hapFilePath和bundleFlags获取BundleInfo，使用Promise异步回调。
+根据给定的hapFilePath和bundleFlags获取BundleInfo。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1859,7 +1859,7 @@ try {
 
 getAllBundleCacheSize(): Promise\<number>
 
-获取全局缓存大小，使用Promise异步回调。
+获取全局缓存大小。使用Promise异步回调。
 
 有程序运行时的应用的缓存、或者在[应用配置指南](../../../device-dev/subsystems/subsys-app-privilege-config-guide.md)中已配置“AllowAppDataNotCleared”特权的应用的缓存，无法被获取。
 
@@ -1907,7 +1907,7 @@ try {
 
 cleanAllBundleCache(): Promise\<void>
 
-清理全局缓存，使用Promise异步回调。
+清理全局缓存。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1953,7 +1953,7 @@ try {
 
 cleanBundleCacheFiles(bundleName: string, callback: AsyncCallback\<void>): void
 
-根据给定的bundleName清理BundleCache，使用callback异步回调。
+根据给定的bundleName清理BundleCache。使用callback异步回调。
 
 调用方清理自身缓存数据时不需要权限。
 
@@ -2008,7 +2008,7 @@ try {
 
 cleanBundleCacheFiles(bundleName: string): Promise\<void>
 
-根据给定的bundleName清理BundleCache，使用Promise异步回调。
+根据给定的bundleName清理BundleCache。使用Promise异步回调。
 
 调用方清理自身缓存数据时不需要权限。
 
@@ -2066,7 +2066,7 @@ try {
 
 cleanBundleCacheFiles(bundleName: string, appIndex: number): Promise\<void>
 
-根据给定的bundleName和appIndex清理BundleCache，使用Promise异步回调。
+根据给定的bundleName和appIndex清理BundleCache。使用Promise异步回调。
 
 调用方清理自身缓存数据时不需要权限。
 
@@ -2127,7 +2127,7 @@ try {
 
 setApplicationEnabled(bundleName: string, isEnabled: boolean, callback: AsyncCallback\<void>): void
 
-设置指定应用的禁用或使能状态，使用callback异步回调。
+设置指定应用的禁用或使能状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2180,7 +2180,7 @@ try {
 
 setApplicationEnabled(bundleName: string, isEnabled: boolean): Promise\<void>
 
-设置指定应用的禁用或使能状态，使用Promise异步回调。
+设置指定应用的禁用或使能状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2236,7 +2236,7 @@ try {
 
 setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: boolean): Promise\<void>
 
-设置指定应用或分身应用的禁用或使能状态，使用Promise异步回调。
+设置指定应用或分身应用的禁用或使能状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2341,7 +2341,7 @@ try {
 
 setAbilityEnabled(info: AbilityInfo, isEnabled: boolean, callback: AsyncCallback\<void>): void
 
-设置指定组件的禁用或使能状态，使用callback异步回调。
+设置指定组件的禁用或使能状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2408,7 +2408,7 @@ try {
 
 setAbilityEnabled(info: AbilityInfo, isEnabled: boolean): Promise\<void>
 
-设置指定组件的禁用或使能状态，使用Promise异步回调。
+设置指定组件的禁用或使能状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2478,7 +2478,7 @@ try {
 
 setAbilityEnabled(info: AbilityInfo, appIndex: number, isEnabled: boolean): Promise\<void>
 
-设置指定应用或分身应用组件的禁用或使能状态，使用Promise异步回调。
+设置指定应用或分身应用组件的禁用或使能状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2616,7 +2616,7 @@ try {
 
 isApplicationEnabled(bundleName: string, callback: AsyncCallback\<boolean>): void
 
-获取指定应用的禁用或使能状态，使用callback异步回调。
+获取指定应用的禁用或使能状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2665,7 +2665,7 @@ try {
 
 isApplicationEnabled(bundleName: string): Promise\<boolean>
 
-获取指定应用的禁用或使能状态，使用Promise异步回调。
+获取指定应用的禁用或使能状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2717,7 +2717,7 @@ try {
 
 isApplicationEnabled(bundleName: string, appIndex: number): Promise\<boolean>
 
-获取指定应用或分身应用的禁用或使能状态，使用Promise异步回调。
+获取指定应用或分身应用的禁用或使能状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2820,7 +2820,7 @@ try {
 
 isAbilityEnabled(info: AbilityInfo, callback: AsyncCallback\<boolean>): void
 
-获取指定组件的禁用或使能状态，使用callback异步回调。
+获取指定组件的禁用或使能状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2883,7 +2883,7 @@ try {
 
 isAbilityEnabled(info: AbilityInfo): Promise\<boolean>
 
-获取指定组件的禁用或使能状态，使用Promise异步回调。
+获取指定组件的禁用或使能状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2949,7 +2949,7 @@ try {
 
 isAbilityEnabled(info: AbilityInfo, appIndex: number): Promise\<boolean>
 
-获取应用或指定分身应用组件的禁用或使能状态，使用Promise异步回调。
+获取应用或指定分身应用组件的禁用或使能状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3085,7 +3085,7 @@ try {
 
 getLaunchWantForBundle(bundleName: string, userId: number, callback: AsyncCallback\<Want>): void
 
-根据给定的bundleName和userId获取用于启动应用程序的Want参数，使用callback异步回调。
+根据给定的bundleName和userId获取用于启动应用程序的Want参数。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3141,7 +3141,7 @@ try {
 
 getLaunchWantForBundle(bundleName: string, callback: AsyncCallback\<Want>): void
 
-根据给定的bundleName获取用于启动应用程序的Want参数，使用callback异步回调。
+根据给定的bundleName获取用于启动应用程序的Want参数。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3194,7 +3194,7 @@ try {
 
 getLaunchWantForBundle(bundleName: string, userId?: number): Promise\<Want>
 
-根据给定的bundleName和userId获取用于启动应用程序的Want参数，使用Promise异步回调。
+根据给定的bundleName和userId获取用于启动应用程序的Want参数。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3273,7 +3273,7 @@ getLaunchWantForBundleSync(bundleName: string, userId?: number): Want
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Want | Want对象。 |
+| [Want](js-apis-app-ability-want.md)| Want对象。 |
 
 **错误码：**
 
@@ -3328,7 +3328,7 @@ try {
 
 getPermissionDef(permissionName: string, callback: AsyncCallback\<PermissionDef>): void
 
-根据给定的permissionName获取权限定义结构体PermissionDef信息，使用callback异步回调。
+根据给定的permissionName获取权限定义结构体PermissionDef信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3379,7 +3379,7 @@ try {
 
 getPermissionDef(permissionName: string): Promise\<PermissionDef>
 
-根据给定的permissionName获取权限定义结构体PermissionDef信息，使用Promise异步回调。
+根据给定的permissionName获取权限定义结构体PermissionDef信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3484,7 +3484,7 @@ try {
 
 getAbilityLabel(bundleName: string, moduleName: string, abilityName: string, callback: AsyncCallback\<string>): void
 
-获取指定bundleName、moduleName和abilityName的label，使用callback异步回调。
+获取指定bundleName、moduleName和abilityName的label。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -3547,7 +3547,7 @@ try {
 
 getAbilityLabel(bundleName: string, moduleName: string, abilityName: string): Promise\<string>
 
-获取指定bundleName、moduleName和abilityName的label，使用Promise异步回调。
+获取指定bundleName、moduleName和abilityName的label。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -3903,7 +3903,7 @@ try {
 
 getSharedBundleInfo(bundleName: string,  moduleName: string, callback: AsyncCallback\<Array\<SharedBundleInfo\>\>): void
 
-获取指定的共享包信息，使用callback异步回调。
+获取指定的共享包信息。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -3960,7 +3960,7 @@ try {
 
 getSharedBundleInfo(bundleName: string, moduleName: string): Promise\<Array\<SharedBundleInfo\>\>
 
-获取指定的共享包信息，使用Promise异步回调。
+获取指定的共享包信息。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -4020,7 +4020,7 @@ try {
 
 getAllSharedBundleInfo(callback: AsyncCallback\<Array\<SharedBundleInfo\>\>): void
 
-获取所有的共享包信息，使用callback异步回调。
+获取所有的共享包信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4068,7 +4068,7 @@ try {
 
 getAllSharedBundleInfo(): Promise\<Array\<SharedBundleInfo\>\>
 
-获取所有的共享包信息，使用Promise异步回调。
+获取所有的共享包信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口
 
@@ -4114,7 +4114,7 @@ try {
 
 getAppProvisionInfo(bundleName: string, callback: AsyncCallback\<AppProvisionInfo\>): void
 
-获取指定bundleName的provision配置文件信息，使用callback异步回调。
+获取指定bundleName的provision配置文件信息。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -4168,7 +4168,7 @@ try {
 
 getAppProvisionInfo(bundleName: string, userId: number, callback: AsyncCallback\<AppProvisionInfo\>): void
 
-获取指定bundleName和userId的provision配置文件信息，使用callback异步回调。
+获取指定bundleName和userId的provision配置文件信息。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -4226,7 +4226,7 @@ try {
 
 getAppProvisionInfo(bundleName: string, userId?: number): Promise\<AppProvisionInfo\>
 
-根据bundleName和userId获取应用的provision配置文件信息，使用Promise异步回调。
+根据bundleName和userId获取应用的provision配置文件信息。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -4481,7 +4481,7 @@ queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string, extensio
 
 | 参数名                | 类型                            | 必填 | 说明                                                      |
 | --------------------- | ------------------------------- | ---- | --------------------------------------------------------- |
-| want                  | Want                            | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
+| want                  | [Want](js-apis-app-ability-want.md)      | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
 | extensionAbilityType  | string                          | 是   | 表示自定义extensionAbility的类型。                        |
 | extensionAbilityFlags | [number](#extensionabilityflag) | 是   | 表示返回的ExtensionInfo对象中需要包含的信息标志。 |
 | userId                | number                          | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
@@ -4623,7 +4623,7 @@ try {
 
 getRecoverableApplicationInfo(callback: AsyncCallback\<Array\<RecoverableApplicationInfo\>\>): void
 
-获取所有可恢复的预置应用信息，使用callback异步回调。
+获取所有可恢复的预置应用信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4671,7 +4671,7 @@ try {
 
 getRecoverableApplicationInfo(): Promise\<Array\<RecoverableApplicationInfo\>\>
 
-获取所有可恢复的预置应用信息，使用Promise异步回调。
+获取所有可恢复的预置应用信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4767,7 +4767,7 @@ try {
 
 getAllPreinstalledApplicationInfo(): Promise\<Array\<PreinstalledApplicationInfo\>\>
 
-获取所有预置应用信息，使用promise异步回调。
+获取所有预置应用信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -5043,7 +5043,7 @@ try {
 
 getAllPluginInfo(hostBundleName: string, userId?: number): Promise<Array\<PluginBundleInfo>>
 
-根据给定的hostBundleName和userId获取所有的PluginBundleInfo，使用Promise异步回调。
+根据给定的hostBundleName和userId获取所有的PluginBundleInfo。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6123,7 +6123,7 @@ try {
 }
 ```
 
-## bundleManager.RecoverBackupBundleData<sup>21+</sup>
+## bundleManager.recoverBackupBundleData<sup>21+</sup>
 
 recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
 
@@ -6185,7 +6185,7 @@ try {
 }
 ```
 
-## bundleManager.RemoveBackupBundleData<sup>21+</sup>
+## bundleManager.removeBackupBundleData<sup>21+</sup>
 
 removeBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
 

@@ -26,7 +26,7 @@
 >
 > 本示例使用了router进行页面跳转，建议开发者使用组件导航(Navigation)代替页面路由(router)来实现页面切换。Navigation提供了更多的功能和更灵活的自定义能力。请参考[使用Navigation的组件冻结用例](#navigation)。
 
-当页面1调用router.pushUrl接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。
+当页面1调用this.getUIContext().getRouter().pushUrl()接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。
 图示如下：
 
 ![freezeInPage](./figures/freezeInPage.png)
@@ -172,6 +172,8 @@ struct FreezeChild {
 ### Navigation
 
 当NavDestination不可见时，会将其子自定义组件设置成非激活态，修改状态变量不会触发冻结组件的刷新。当返回该页面时，其子自定义组件重新恢复成激活态，触发@Monitor回调进行刷新。
+
+需要注意：本文档里说的“激活（active）/非激活（inactive）”是指组件冻结的激活/非激活状态，和[NavDestination](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)组件中的[onActive](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onactive17)和[onInactive](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#oninactive17)不同。
 
 ```ts
 @Entry
@@ -776,7 +778,7 @@ class Params {
   }
 }
 
-// 定义一个buildNodeChild组件，它包含一个message属性和一个index属性
+// 定义一个buildNodeChild组件，它包含一个storage属性和一个index属性
 @ComponentV2
 struct buildNodeChild {
   // 使用Params实例作为storage属性
@@ -876,6 +878,5 @@ struct FreezeBuildNode {
 }
 ```
 
-点击`change`，改变message的值，当前正在显示的TabContent组件中的[@Watch](./arkts-watch.md)中注册的方法onMessageUpdated被触发。未显示的TabContent中的BuilderNode节点下组件的@Watch方法onMessageUpdated也被触发，并没有被冻结。
-
+点击`change`，改变message的值，当前正在显示的TabContent组件中@Monitor注册的方法onMessageChange被触发。未显示的TabContent中的BuilderNode节点下组件的@Monitor方法onMessageChange也被触发，并没有被冻结。
 ![builderNode.gif](figures/builderNode.gif)

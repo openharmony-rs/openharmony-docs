@@ -21,7 +21,7 @@ Applications can directly use the uniform data structs in certain scenarios. For
 
 For details about the APIs, see [uds.h](../reference/apis-arkdata/capi-uds-h.md).
 
-| API                                                                                   | Description                                         |
+| API                                                                                   | Description                                         | 
 |-----------------------------------------------------------------------------------------|---------------------------------------------|
 | OH_UdmfData* OH_UdmfData_Create()                                                       | Creates an **OH_UdmfData** instance and a pointer to it.|
 | OH_UdmfRecord* OH_UdmfRecord_Create()                                                   | Creates an **OH_UdmfRecord** instance and a pointer to it.|

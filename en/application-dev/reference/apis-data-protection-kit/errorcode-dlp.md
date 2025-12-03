@@ -2,8 +2,9 @@
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--SE: @lucky-jinduo-->
-<!--TSE: @nacyli-->
+<!--Designer: @lucky-jinduo-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
 
 > **NOTE**
 > 
@@ -404,3 +405,101 @@ The device is not connected to Wi-Fi.
 
 Connect the device to Wi-Fi.
 <!--DelEnd-->
+
+## 19100021 Failed to Set Enterprise Application Policy
+
+**Error Message**
+
+Failed to set the enterprise policy.
+
+**Description**
+
+Failed to set the policy for an enterprise application.
+
+**Solution**
+
+Check the policy format and try again.
+
+## 19110001 Invalid Parameter
+
+**Error Message**
+
+Parameter error.
+
+**Description**
+
+The parameter is invalid.
+
+**Possible Causes**
+
+1. The policy format is incorrect.
+
+2. The parameter range is incorrect.
+
+**Solution**
+
+Set parameters correctly.
+
+## 19110002 File Sensitive Content Identification Timed Out
+
+**Error Message**
+
+Sensitive file content identification timed out.
+
+**Description**
+
+Identification of sensitive file content timed out.
+
+**Possible Causes**
+
+Identification of sensitive file content timed out.
+
+**Solution**
+
+Try again later.
+
+## 19110003 File Not Supported
+
+**Error Message**
+
+The file is not supported.
+
+**Description**
+
+The file is not supported.
+
+**Possible Causes**
+
+1. The file path does not exist.
+
+2. The file type is not supported.
+
+3. The file permission is not supported.
+
+**Solution**
+
+Check whether the input file is correct.
+
+## 19110004 System Function Abnormal
+
+**Error Message**
+
+A system error has occurred.
+
+**Description**
+
+The system function is abnormal.
+
+**Possible Causes**
+
+1. The service cannot be started.
+
+2. The service on which the service depends cannot be started properly.
+
+3. IPC data read/write identification.
+
+4. The service is not initialized.
+
+**Solution**
+
+Try again later or restart the device.

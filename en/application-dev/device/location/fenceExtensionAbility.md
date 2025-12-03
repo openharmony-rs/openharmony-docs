@@ -12,8 +12,8 @@
 For details about the APIs, see [FenceExtensionAbility](../../reference/apis-location-kit/js-apis-app-ability-FenceExtensionAbility.md).
 | Available APIs| Description|
 | ---- | ---- |
-| onFenceStatusChange(transition: geoLocationManager.GeofenceTransition, additions: Record&lt;string, string&gt;): void  | Callback invoked when a geofence status change event is received. Service processing is then performed based on the event type and data.|
-| onDestroy(): void | Callback invoked when a FenceExtensionAbility destruction event is received.|
+| [onFenceStatusChange(transition: geoLocationManager.GeofenceTransition, additions: Record&lt;string, string&gt;): void](../../reference/apis-location-kit/js-apis-app-ability-FenceExtensionAbility.md#onfencestatuschange)  | Callback invoked when a geofence status change event is received. Service processing is then performed based on the event type and data.|
+| [onDestroy(): void](../../reference/apis-location-kit/js-apis-app-ability-FenceExtensionAbility.md#ondestroy) | Callback invoked when a FenceExtensionAbility destruction event is received.|
 
 ## How to Develop
 

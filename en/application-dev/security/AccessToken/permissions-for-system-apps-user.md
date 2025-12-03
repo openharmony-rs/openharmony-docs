@@ -3,8 +3,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Security-->
 <!--Owner: @harylee-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 Before requesting permissions for your application, read and understand the [permission request paths](determine-application-mode.md) and this topic to determine the permissions required.
 
@@ -15,30 +16,6 @@ Before requesting permissions for your application, read and understand the [per
 > - Applications of a lower APL can request these permissions via [Access Control List (ACL)](app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism).
 
 For details about the process for requesting permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
-
-## ohos.permission.READ_WHOLE_CALENDAR
-
-Allows an application to read all calendar information.
-
-**Permission level**: system_basic
-
-**Authorization mode**: user_grant
-
-**Enable via ACL**: true
-
-**Valid since**: 9
-
-## ohos.permission.WRITE_WHOLE_CALENDAR
-
-Allows an application to add, remove, or edit calendar events.
-
-**Permission level**: system_basic
-
-**Authorization mode**: user_grant
-
-**Enable via ACL**: true
-
-**Valid since**: 9
 
 ## ohos.permission.GET_INSTALLED_BUNDLE_LIST
 

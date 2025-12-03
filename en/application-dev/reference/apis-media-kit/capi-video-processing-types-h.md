@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -44,7 +44,7 @@ The file declares the video processing types.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef void (\*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProcessor,VideoProcessing_ErrorCode error, void* userData)](#oh_videoprocessingcallback_onerror) | OH_VideoProcessingCallback_OnError | Called when an error occurs during video processing.|
+| [typedef void (\*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProcessor, VideoProcessing_ErrorCode error, void* userData)](#oh_videoprocessingcallback_onerror) | OH_VideoProcessingCallback_OnError | Called when an error occurs during video processing.|
 | [typedef void (\*OH_VideoProcessingCallback_OnState)(OH_VideoProcessing* videoProcessor, VideoProcessing_State state, void* userData)](#oh_videoprocessingcallback_onstate) | OH_VideoProcessingCallback_OnState | Called when the video processing state changes.<br>After [OH_VideoProcessing_Start](capi-video-processing-h.md#oh_videoprocessing_start) is called, the video processing state changes to [VideoProcessing_State](#videoprocessing_state).VIDEO_PROCESSING_STATE_RUNNING. After [OH_VideoProcessing_Stop](capi-video-processing-h.md#oh_videoprocessing_stop) is called, the video processing state changes to [VideoProcessing_State](#videoprocessing_state).VIDEO_PROCESSING_STATE_STOPPED after all buffers are processed.|
 | [typedef void (\*OH_VideoProcessingCallback_OnNewOutputBuffer)(OH_VideoProcessing* videoProcessor, uint32_t index, void* userData)](#oh_videoprocessingcallback_onnewoutputbuffer) | OH_VideoProcessingCallback_OnNewOutputBuffer | Called when the output buffer is filled with data.<br>After data is filled in each new output buffer, the index of the buffer is reported. Call [OH_VideoProcessing_RenderOutputBuffer](capi-video-processing-h.md#oh_videoprocessing_renderoutputbuffer) to process rendering based on the index and output the buffer. If this callback function is not registered, the data filled in the output buffer is not reported. Instead, the data is directly processed, rendered, and output.|
 
@@ -118,9 +118,7 @@ enum VideoProcessing_State
 
 **Description**
 
-Enumerates the video processing states.
-
-The video processing state is reported through the callback function [OH_VideoProcessingCallback_OnState](#oh_videoprocessingcallback_onstate).
+Enumerates the video processing states. The video processing state is reported through the callback function [OH_VideoProcessingCallback_OnState](#oh_videoprocessingcallback_onstate).
 
 **Since**: 12
 
@@ -135,7 +133,7 @@ The video processing state is reported through the callback function [OH_VideoPr
 ### OH_VideoProcessingCallback_OnError()
 
 ```
-typedef void (*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProcessor,VideoProcessing_ErrorCode error, void* userData)
+typedef void (*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProcessor, VideoProcessing_ErrorCode error, void* userData)
 ```
 
 **Description**
@@ -153,7 +151,6 @@ The following error codes are defined in [VideoProcessing_ErrorCode](#videoproce
 **VIDEO_PROCESSING_ERROR_PROCESS_FAILED**: An error occurs during the processing.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -177,13 +174,12 @@ After [OH_VideoProcessing_Start](capi-video-processing-h.md#oh_videoprocessing_s
 
 **Since**: 12
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md)* videoProcessor | Pointer to the video processing instance.|
-|  [VideoProcessing_State](#videoprocessing_state) state | Video processing state.|
+| [VideoProcessing_State](#videoprocessing_state) state | Video processing state.|
 | void* userData | Pointer to user-defined data.|
 
 ### OH_VideoProcessingCallback_OnNewOutputBuffer()
@@ -200,11 +196,10 @@ After data is filled in each new output buffer, the index of the buffer is repor
 
 **Since**: 12
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md)* videoProcessor | Pointer to the video processing instance.|
 |  uint32_t index | Index of the output buffer.|
-| void* userData | Pointer to user-defined data.|
+|  void* userData | Pointer to user-defined data.|

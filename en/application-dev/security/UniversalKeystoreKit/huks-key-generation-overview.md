@@ -12,7 +12,8 @@ You can use the HUKS APIs to generate a key randomly and store the key in HUKS.
 >
 > - The key alias can contain a maximum of 128 bytes.
 > - Key aliases must not contain sensitive information, such as personal data. You are not advised to include information such as the encryption algorithm, key length, and encryption mode.
-> - Using an existing key alias as the alias of the key generated will overwrite the existing key.
+> - If the key alias of the current service is used as the generated key alias, the existing key will be overwritten by default. You can use [HUKS_TAG_KEY_OVERRIDE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) to specify that an error is returned when the key alias conflicts.
+> - For the keys generated for different services, HUKS isolates the storage paths based on the service identity information to prevent conflicts caused by the same key alias.
 
 - Random generation: HUKS uses a cryptographically secure pseudorandom number generator (PRNG) to generate keys. The PRNG helps improve the randomness, unpredictability, and non-reproducibility of the keys, making the generated keys difficult to infer.
 
@@ -59,7 +60,7 @@ The key management service specifications include mandatory specifications and o
 | DES | 64 | 18+ | Yes|
 | 3DES | 128, 192| 18+ | Yes|
 
-> **NOTE**<br>
+> **NOTE**
 > The DH algorithm uses the FFDHE named safe prime groups.
 > Use DES and 3DES algorithms only in certain cases; avoid them otherwise.
 

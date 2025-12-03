@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 On mobile or touch-enabled web applications, users interact with web pages through gestures. ArkWeb supports the recognition of common gestures, such as touch and hold, swipe, and tap, providing a rich user interaction experience.
 ## ArkWeb Gesture Recognition
 ArkWeb receives the ArkUI [touch event](../ui/arkts-interaction-development-guide-touch-screen.md#touch-event) and identifies the gesture. For details about the distribution policy of touch events, see [Basic Interaction Principles](../ui/arkts-interaction-basic-principles.md). ArkWeb gestures comply with the touch events, UI events, and pointer events defined by the W3C standard.
@@ -30,7 +30,7 @@ ArkUI provides [gesture binding](../ui/arkts-gesture-events-binding.md) while Ar
 
 The following uses zoom as an example to describe the differences between the two gestures:
 - When two fingers are pinched on the web page, the content in the **Web** component is zoomed in or out. This is because ArkWeb identifies the pinch event and applies it to the web page.
-- If a user pinches three fingers together, the **Web** component itself scales. This is because ArkWeb receives the [Pinch Gesture](../ui/arkts-gesture-events-single-gesture.md#pinch-gesture) identified by ArkUI and executes the bound callback function. In addition, ArkWeb supports the **scale** method, which can be used to adjust the zoom ratio of the **Web** component.
+- If a user pinches three fingers together, the **Web** component itself scales. This is because ArkWeb receives the [Pinch Gesture](../ui/arkts-gesture-events-single-gesture.md#pinch-gesture-pinchgesture) identified by ArkUI and executes the bound callback function. In addition, ArkWeb supports the **scale** method, which can be used to adjust the zoom ratio of the **Web** component.
 
 > **NOTE**
 >
@@ -50,26 +50,26 @@ struct Index {
     Column() {
       Web({ src: 'www.example.com', controller: this.controller })
       // Bind the zoom ratio to the component. You can change the zoom ratio to zoom in or out the component.
-      .scale({ x: this.scaleValue, y: this.scaleValue, z: 1 })
-      .zoomAccess(true)
-      .gesture(
-        // Bind the pinch gesture triggered by three fingers to the component.
-        PinchGesture({ fingers: 3 })
-          .onActionStart((event: GestureEvent|undefined) => {
+        .scale({ x: this.scaleValue, y: this.scaleValue, z: 1 })
+        .zoomAccess(true)
+        .gesture(
+          // Bind the pinch gesture triggered by three fingers to the component.
+          PinchGesture({ fingers: 3 })
+            .onActionStart((event: GestureEvent|undefined) => {
             console.info('Pinch start');
-          })
+            })
             // Obtain the zoom ratio through the callback function when the pinch gesture is triggered, and then change the zoom ratio of the component.
-          .onActionUpdate((event: GestureEvent|undefined) => {
-            if(event){
-              this.scaleValue = this.pinchValue * event.scale;
+            .onActionUpdate((event: GestureEvent|undefined) => {
+              if(event){
+                this.scaleValue = this.pinchValue * event.scale;
               console.info('Pinch update');
-            }
-          })
-          .onActionEnd(() => {
-            this.pinchValue = this.scaleValue;
+              }
+            })
+            .onActionEnd(() => {
+              this.pinchValue = this.scaleValue;
             console.info('Pinch end');
-          })
-      )
+            })
+        )
     }
   }
 }
@@ -79,13 +79,13 @@ struct Index {
 ## ArkWep Gesture Judgment
 - ArkUI gestures
 
-  ArkWeb consumes some ArkUI gestures, for example, [pan gesture](../ui/arkts-gesture-events-single-gesture.md#pan-gesture). If you want to process these gestures by yourself instead of ArkWeb, see [Gesture Judgment](../ui/arkts-gesture-events-gesture-judge.md).
+  ArkWeb consumes some ArkUI gestures, for example, [pan gesture](../ui/arkts-gesture-events-single-gesture.md#pan-gesture-pangesture). If you want to process these gestures by yourself instead of ArkWeb, see [Gesture Conflict Handling](../ui/arkts-gesture-events-gesture-judge.md).
 
 - ArkWeb gestures
 
   ArkWeb gestures are generated after the **Web** component receives touch events. You can use either of the following methods to judge ArkWeb gestures:
   1. Do not send touch events to the **Web** component. For details, see [Hit Testing](../ui/arkts-interaction-basic-principles.md#hit-testing).
-  2. Send the **TouchCancel** event to the **Web** component. For details, see **OH_ArkUI_TouchRecognizer_CancelTouch**.
+  2. Send the **TouchCancel** event to the **Web** component. For details, see [OH_ArkUI_TouchRecognizer_CancelTouch](../reference/apis-arkui/capi-native-gesture-h.md#functions).
 
 
 ## FAQs
@@ -101,12 +101,12 @@ Override the **onBackPress** API to define the return logic and use **WebviewCon
 **Example**
 
 ```ts
-import web_webview from '@ohos.web.webview';
+import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
 struct Index {
-  controller: web_webview.WebviewController = new web_webview.WebviewController();
+  controller: webview.WebviewController = new webview.WebviewController();
 
   build() {
     Column() {
@@ -139,17 +139,17 @@ import { webview } from '@kit.ArkWeb'
 @Component
 struct Index {
     private webController: webview.WebviewController = new webview.WebviewController()
-    build(){
-      Column() {
-        Web({
-          src: 'https://www.example.com',
-          controller: this.webController,
-        }).onControllerAttached(() => {
-          // Customize User-Agent.
+  build(){
+    Column() {
+      Web({
+        src: 'https://www.example.com',
+        controller: this.webController,
+      }).onControllerAttached(() => {
+        // Customize User-Agent.
           let customUA = 'Mozilla/5.0 (Phone; Android; OpenHarmony 5.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Mobile Safari/537.36'
           this.webController.setCustomUserAgent(customUA)
-        })
-      }
+      })
     }
+  }
 }
 ```

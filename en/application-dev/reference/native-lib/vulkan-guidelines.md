@@ -1,4 +1,4 @@
-# Vulkan Development
+# Vulkan Surface Development
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
@@ -9,9 +9,9 @@
 
 ## When to Use
 
-Vulkan is a set of graphics APIs for 2D and 3D rendering. To start with, you need to create a VkSurfaceKHR instance, which works with the OHNativeWindow module to implement buffer recycling.
+In OpenHarmony, the VK_OHOS_surface extension enables the creation of a VkSurfaceKHR, which connects to the OHNativeWindow module to implement the rotation of OHNativeBuffers for display purposes.
 
-A VkSurfaceKHR instance is obtained through an OHNativeWindow, which is obtained from the **XComponent**. Therefore, the OHNativeWindow module must be used together with the **XComponent** and NativeWindow modules.
+A VkSurfaceKHR instance is obtained through an OHNativeWindow, which is obtained from the **XComponent**. Therefore, the OHNativeWindow module must be used together with the **XComponent** and NativeWindow modules. For specific usage of the XComponent, see [Custom Rendering (XComponent)](../../ui/napi-xcomponent-guidelines.md).
 
 ## Available APIs
 
@@ -25,7 +25,9 @@ For details about the APIs, see [Vulkan](vulkan.md).
 
 The following steps illustrate how to create a VkSurfaceKHR instance.
 
-To use the extended APIs, define the macro **VK_USE_PLATFORM_OHOS** in the **CMakeLists.txt** file.
+**OpenHarmony Platform Macro**
+
+To use the extension, you must define the macro **VK_USE_PLATFORM_OHOS** in the **CMakeLists.txt** file.
 
 ```txt
 ADD_DEFINITIONS(-DVK_USE_PLATFORM_OHOS=1)
@@ -33,12 +35,14 @@ ADD_DEFINITIONS(-DVK_USE_PLATFORM_OHOS=1)
 
 **Adding Dynamic Link Libraries**
 
-Add the following libraries to **CMakeLists.txt**:
+Add the Vulkan library and associated module libraries in the **CMakeLists.txt** file.
 
 ```txt
+libvulkan.so
 libace_ndk.z.so
 libnative_window.so
-libvulkan.so
+libnative_image.so
+libnative_buffer.so
 ```
 
 > **NOTE**
@@ -52,6 +56,7 @@ libvulkan.so
 #include <native_window/external_window.h>
 #include <vulkan/vulkan.h>
 ```
+
 
 1. Create a Vulkan instance.
 
@@ -143,4 +148,3 @@ libvulkan.so
    }
    ```
 
-For details about how to use Vulkan, visit the [Vulkan official website](https://www.vulkan.org/).

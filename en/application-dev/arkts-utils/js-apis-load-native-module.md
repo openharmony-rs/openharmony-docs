@@ -19,11 +19,12 @@ loadNativeModule(moduleName: string): Object;
 | moduleName            | Name of the module to load.      |
 
 > **NOTE**
-> The name of the module loaded by **loadNativeModule** is the name provided in **dependencies** in the **oh-package.json5** file of the dependency.
 >
-> **loadNativeModule** must be called in the UI main thread.
+> - The name of the module loaded by **loadNativeModule** is the name provided in **dependencies** in the **oh-package.json5** file of the dependency.
 >
-> Dependencies must be configured for the API call regardless of whether the parameter is a constant string or variable expression.
+> - **loadNativeModule** must be called in the UI main thread.
+>
+> - Dependencies must be configured for the API call regardless of whether the parameter is a constant string or variable expression.
 
 ## Supported Scenarios
 

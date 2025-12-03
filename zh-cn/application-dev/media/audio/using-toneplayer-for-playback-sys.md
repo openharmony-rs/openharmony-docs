@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 TonePlayer<sup>9+</sup>提供播放和管理DTMF（Dual Tone Multi Frequency，双音多频）音调的方法，包括各种系统监听音调、专有音调，如拨号音、通话回铃音等。主要工作是将需要生成音调的[ToneType](../../reference/apis-audio-kit/js-apis-audio-sys.md#tonetype9)类型，通过自带算法生成多个不同频率的正弦波叠加形成声音数据，通过[AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md)进行播放，同时对播放任务进行管理。包含加载DTMF音调配置、启动DTMF音调播放、停止当前正在播放的音调、释放与此TonePlayer对象关联的资源等流程。详细API说明请参考[TonePlayer API文档](../../reference/apis-audio-kit/js-apis-audio-sys.md#toneplayer9)。
 
@@ -48,51 +48,51 @@ TonePlayer<sup>9+</sup>提供播放和管理DTMF（Dual Tone Multi Frequency，�
 以下步骤描述了TonePlayer接口实现播放功能流程：
 
 1. 创建DTMF播放器 ，获取tonePlayer实例。
-     
-```ts
-import { audio } from '@kit.AudioKit';
 
-let audioRendererInfo: audio.AudioRendererInfo = {
-  usage: audio.StreamUsage.STREAM_USAGE_DTMF, // 音频流使用类型：拨号音。根据业务场景配置，参考StreamUsage。
-  rendererFlags: 0 // 音频渲染器标志。
-};
+   ```ts
+   import { audio } from '@kit.AudioKit';
 
-async function createTonePlayer() {
-  let tonePlayerPromise = await audio.createTonePlayer(audioRendererInfo);
-}
-```
+   let audioRendererInfo: audio.AudioRendererInfo = {
+     usage: audio.StreamUsage.STREAM_USAGE_DTMF, // 音频流使用类型：拨号音。根据业务场景配置，参考StreamUsage。
+     rendererFlags: 0 // 音频渲染器标志。
+   };
+
+   async function createTonePlayer() {
+     let tonePlayerPromise = await audio.createTonePlayer(audioRendererInfo);
+   }
+   ```
 
 2. 加载指定类型DTMF音调配置。
-     
-```ts
-async function load() {
-  await tonePlayerPromise.load(audio.ToneType.TONE_TYPE_DIAL_0);
-}
-```
+
+   ```ts
+   async function load() {
+     await tonePlayerPromise.load(audio.ToneType.TONE_TYPE_DIAL_0);
+   }
+   ```
 
 3. 启动DTMF音调播放。
-     
-```ts
-async function start() {
-  await tonePlayerPromise.start();
-}
-```
+
+   ```ts
+   async function start() {
+     await tonePlayerPromise.start();
+   }
+   ```
 
 4. 停止当前正在播放的音调。
-     
-```ts
-async function stop() {
-  await tonePlayerPromise.stop();
-}
-```
+
+   ```ts
+   async function stop() {
+     await tonePlayerPromise.stop();
+   }
+   ```
 
 5. 释放与此TonePlayer对象关联的资源。
-     
-```ts
-async function release() {
-  await tonePlayerPromise.release();
-}
-```
+
+   ```ts
+   async function release() {
+     await tonePlayerPromise.release();
+   }
+   ```
 
 在接口未按此正常调用时序调用时，接口会返回错误码6800301 NAPI_ERR_SYSTEM。
 

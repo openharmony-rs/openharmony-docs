@@ -322,7 +322,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The context is invalid when it does not belong to the application itself. |
+| 12100001 | (Deprecated in 12) Invalid parameter. The context is invalid when it does not belong to the application itself. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation results. |
 
 **Example**
 
@@ -380,11 +381,9 @@ Before calling this API, the application must have called [requestPermissionsFro
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
-| ID| Error Message|
+| ID | Error Message|
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission list contains the permission that is not declared in the module.json file;<br>3. The permission list is invalid because the permissions in it do not belong to the same permission group;<br>4. The permission list contains one or more system_grant permissions. |
-| 12100010 | The request already exists. |
+| 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission list contains the permission that is not declared in the module.json file;<br>3. The permission list is invalid because the permissions in it do not belong to the same permission group. |
 | 12100011 | All permissions in the permission list have been granted. |
 | 12100012 | The permission list contains the permission that has not been revoked by the user. |
 | 12100014 | Unexpected permission. You cannot request this type of permission from users via a pop-up window. |
@@ -736,7 +735,3 @@ Enumerates the permission states.
 | NOT_DETERMINED | 1     | The permission state is not determined. This value is returned when the application declares [user_grant permissions](../../security/AccessToken/permissions-for-all-user.md) and does not call [requestPermissionsFromUser](#requestpermissionsfromuser9) to request user authorization, or when the user changes the permission state to **Ask each time** in **Settings**.|
 | INVALID | 2     | The permission is invalid. The application does not [declare permissions](../../security/AccessToken/declare-permissions.md) or cannot process the request. For example, if the status of the approximate location permission is **NOT_DETERMINED**, this value will be returned when the status of the precise location permission is queried.|
 | RESTRICTED | 3     | The permission is restricted. <!--RP2-->The application is not allowed to call [requestPermissionsFromUser](#requestpermissionsfromuser9) to request user authorization.<!--RP2End--> |
-
-
-
-

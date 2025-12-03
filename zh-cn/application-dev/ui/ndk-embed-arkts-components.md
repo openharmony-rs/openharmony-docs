@@ -4,12 +4,12 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Native侧提供，如声明式UI语法，自定义struct组件，UI高级组件。
 
 
-针对需要使用ArkTS侧独立能力的场景，ArkUI开发框架提供了Native侧嵌入ArkTS组件的能力，该能力依赖[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)机制，通过ComponentContent完成对ArkTS组件的封装，然后将封装对象转递到Native侧，通过Native侧的[OH_ArkUI_GetNodeHandleFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodehandlefromnapivalue)接口转化为ArkUI_NodeHandle对象用于Native侧组件挂载使用。
+针对需要使用ArkTS侧独立能力的场景，ArkUI开发框架提供了Native侧嵌入ArkTS组件的能力，该能力依赖[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)机制，通过ComponentContent完成对ArkTS组件的封装，然后将封装对象传递到Native侧，通过Native侧的[OH_ArkUI_GetNodeHandleFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodehandlefromnapivalue)接口转化为ArkUI_NodeHandle对象用于Native侧组件挂载使用。
 
 
 > **说明：**
@@ -649,6 +649,20 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
        napi_value result = nullptr;
        napi_call_function(g_env, nullptr, updateRefresh, 3, argv, &result);
    }
+
+   napi_value ArkUIMixedRefresh::RegisterCreateRefresh(napi_env env, napi_callback_info info) {
+        size_t argc = 1;
+        napi_value args[1] = {nullptr};
+
+        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+        g_env = env;
+        napi_ref refer;
+        napi_create_reference(env, args[0], 1, &refer);
+
+        g_createRefresh = refer;
+        return nullptr;
+    }
    
    napi_value ArkUIMixedRefresh::RegisterUpdateRefresh(napi_env env, napi_callback_info info) {
        size_t argc = 1;
@@ -731,7 +745,6 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
                        delete handle;
                        delete customData;
                    }
-                   delete callbackData;
                },
                4000, 4000);
            uv_run(loop, UV_RUN_DEFAULT);

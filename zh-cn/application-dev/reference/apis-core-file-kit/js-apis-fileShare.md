@@ -6,7 +6,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @foryourself-->
 
-该模块提供文件分享能力，提供系统应用将公共目录文件统一资源标志符（Uniform Resource Identifier，URI）以读写权限授权给其他应用的接口，授权后应用可通过[@ohos.file.fs](js-apis-file-fs.md)的相关接口进行相关open、read、write等操作，实现文件分享。
+该模块提供文件分享能力，提供系统应用将公共目录文件统一资源标识符（Uniform Resource Identifier，URI）以读写权限授权给其他应用的接口，授权后应用可通过[@ohos.file.fs](js-apis-file-fs.md)的相关接口进行相关open、read、write等操作，实现文件分享。
 
 > **说明：**
 >
@@ -47,9 +47,9 @@ import { fileShare } from '@kit.CoreFileKit';
 
 ## PolicyErrorResult<sup>11+</sup>
 
-授予或使能权限失败的URI策略结果。支持persistPermission、revokePermission、activatePermission、deactivatePermission接口抛出错误时使用。
-
 type PolicyErrorResult = { uri: string; code: PolicyErrorCode; message: string; }
+
+授予或使能权限失败的URI策略结果。支持persistPermission、revokePermission、activatePermission、deactivatePermission接口抛出错误时使用。
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 

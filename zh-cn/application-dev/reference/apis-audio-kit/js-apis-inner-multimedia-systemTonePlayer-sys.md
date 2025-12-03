@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 系统提示音播放器提供了短信提示音、通知提示音的播放、配置、获取信息等功能。
 
@@ -29,10 +29,10 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
-| 名称        | 类型    | 必填 | 说明                                          |
-| ----------- | ------- | ---- | --------------------------------------------- |
-| muteAudio   | boolean | 否   | 是否静音，true表示静音，false表示正常发声。   |
-| muteHaptics | boolean | 否   | 是否震动，true表示无振动，false表示正常振动。 |
+| 名称        | 类型    | 只读 | 可选 | 说明                                          |
+| ----------- | ------- | ---- | ---- | --------------------------------------------- |
+| muteAudio   | boolean | 否   | 是   | 提示音是否静音，true表示静音，false表示不静音。   |
+| muteHaptics | boolean | 否   | 是   | 提示音时是否振动，true表示关闭振动，false表示开启振动。 |
 
 ## SystemTonePlayer
 

@@ -1,4 +1,10 @@
 # Location Kit Error Codes
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @liu-binjun-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @mhy123456789-->
+<!--Adviser: @RayShih-->
 
 > **NOTE**
 >
@@ -26,7 +32,7 @@ This error code is reported if the location service is unavailable and relevant 
 
 Add a retry mechanism.
 
-## 3301100 Positioning Failed Due to Location Service Switch Turning-off
+## 3301100 Positioning Failed Because the Location Switch Is Turned Off
 
 **Error Message**
 
@@ -34,11 +40,11 @@ The location switch is off.
 
 **Description**
 
-This error code is reported if positioning fails because the location service switch is turned off.
+This error code is reported if positioning fails because the location switch is turned off.
 
 **Possible Cause**
 
-The location service switch is turned off, which makes basic functions such as continuous positioning and immediate positioning unavailable.
+The location switch is turned off, which makes basic functions such as continuous positioning and immediate positioning unavailable.
 
 **Procedure**
 
@@ -191,7 +197,7 @@ This error code is reported if a geofence operation, for example, adding, deleti
 
 2. Add a retry mechanism.
 
-## 3301601 Failed to Add a Geofence Due to a Limit on the Maximum Number
+## 3301601 Failed to Add a Geofence Because the Maximum Number Is Exceeded
 
 **Error Message**
 
@@ -199,7 +205,7 @@ The number of geofences exceeds the maximum.
 
 **Description**
 
-This error code is reported if the attempt to add a geofence fails because the number of geofences exceeds the maximum.
+This error code is reported if the attempt to add a geofence fails because the number of geofences has reached the maximum.
 
 **Possible Cause**
 
@@ -292,3 +298,93 @@ This error code is reported if the attempt to obtain the MAC address of the Wi-F
 1. Enable Wi-Fi.
 
 2. Connect to a router or Wi-Fi hotspot.
+
+## 3501100 Failed to Add a Beacon Fence Because the Location Switch Is Turned Off
+
+**Error Message**
+
+Failed to add a beacon fence because the location switch is off.
+
+**Description**
+
+This error code is reported if the attempt to add a beacon fence fails because the location switch is turned off.
+
+**Possible Cause**
+
+The location switch is turned off.
+
+**Procedure**
+
+Display a prompt asking the user to enable the location service.
+
+## 3501101 Failed to Add a Beacon Fence Because Bluetooth Is Disabled
+
+**Error Message**
+
+Failed to add a beacon fence because the bluetooth switch is off.
+
+**Description**
+
+This error code is reported if the attempt to add a beacon fence fails because the Bluetooth is disabled.
+
+**Possible Cause**
+
+Bluetooth is disabled.
+
+**Procedure**
+
+Display a prompt asking the user to enable Bluetooth.
+
+## 3501601 Failed to Add a Beacon Fence Because the Maximum Number Is Exceeded
+
+**Error Message**
+
+The number of beacon fence exceeds the maximum.
+
+**Description**
+
+This error code is reported if the attempt to add a beacon fence fails because the number of beacon fences has reached the maximum.
+
+**Possible Cause**
+
+The number of beacon fences has reached the maximum (that is, 16).
+
+**Procedure**
+
+Delete unnecessary geofences before adding new ones.
+
+## 3501602 Failed to Delete a Beacon Fence Because of Incorrect Information
+
+**Error Message**
+
+Failed to delete the fence due to incorrect beacon fence information.
+
+**Description**
+
+This error code is reported if the attempt to delete a beacon fence fails because the beacon fence information is incorrect.
+
+**Possible Cause**
+
+The information about the beacon fence to be deleted is incorrect.
+
+**Procedure**
+
+Pass the correct beacon fence information to the beacon fence deletion API.
+
+## 3501603 Failed to Add a Beacon Fence Because of Duplication
+
+**Error Message**
+
+Duplicate beacon fence information.
+
+**Description**
+
+This error code is reported if the attempt to add a beacon fence fails because the beacon fence already exists.
+
+**Possible Cause**
+
+The beacon fence already exists in the system.
+
+**Procedure**
+
+Delete unnecessary beacon fences before adding new ones.

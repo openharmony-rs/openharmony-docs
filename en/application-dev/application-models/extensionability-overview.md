@@ -72,5 +72,4 @@ The following uses [FormExtensionAbility](../reference/apis-form-kit/js-apis-app
 You do not need to care when to add or delete a widget. The lifecycle of the FormExtensionAbility instance and the lifecycle of the [ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md) process where the FormExtensionAbility instance is located are scheduled and managed by FormManagerService.
 
 ![form_extension](figures/form_extension.png)
-
 <!--no_check-->

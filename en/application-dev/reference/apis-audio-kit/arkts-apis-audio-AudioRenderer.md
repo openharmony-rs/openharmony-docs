@@ -4,16 +4,16 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+This interface provides APIs for audio rendering.
+
+Before calling any API in AudioRenderer, you must use [createAudioRenderer](arkts-apis-audio-f.md#audiocreateaudiorenderer8) to create an AudioRenderer instance.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 8.
-
-This interface provides APIs for audio rendering.
-
-Before calling any API in AudioRenderer, you must use [createAudioRenderer](arkts-apis-audio-f.md#audiocreateaudiorenderer8) to create an AudioRenderer instance.
 
 ## Modules to Import
 
@@ -1670,10 +1670,7 @@ Sets the default audio output device. This API uses a promise to return the resu
 > **NOTE**
 >
 > - This API applies only to the scenarios where [StreamUsage](arkts-apis-audio-e.md#streamusage) is set to voice message, VoIP voice calls, or VoIP video calls. It supports only receivers, speakers, and system default devices.
->
-> - This API can be called at any time after an AudioRenderer instance is created. The system records the device set by the application. When the application is started, if an external device such as a Bluetooth or wired headset is connected, the system preferentially uses the external device to play sound. Otherwise, the system uses this default device to play sound.
->
-> - This API has a lower priority than [AVCastPicker](../apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker). If you have already switched the audio device using AVCastPicker, using this API to switch devices again does not take effect.
+> - This API can be called at any time after an AudioRenderer instance is created. When this API is called, the system registers the specified device as the default built-in audio output device for the application. If an external audio device, such as a Bluetooth speaker or wired headset, is connected when the application starts, the system preferentially uses the external device for audio playback. In the absence of an external device, the system uses the device specified by this API for playback.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
@@ -2276,7 +2273,7 @@ let bufferSize: number = 0;
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let path = context.cacheDir;
-// Ensure that the resource exists in the path.
+// This is just an example. Replace the file with the PCM file to be played by the application.
 let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
 let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
 let writeDataCallback = (buffer: ArrayBuffer) => {
@@ -2382,6 +2379,7 @@ audioRenderer.getBufferSize().then((data: number)=> {
   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.cacheDir;
+  // This is just an example. Replace the file with the PCM file to be played by the application.
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
   fs.stat(filePath).then(async (stat: fs.Stat) => {
@@ -2452,6 +2450,7 @@ audioRenderer.getBufferSize().then((data: number) => {
   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.cacheDir;
+  // This is just an example. Replace the file with the PCM file to be played by the application.
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
   fs.stat(filePath).then(async (stat: fs.Stat) => {

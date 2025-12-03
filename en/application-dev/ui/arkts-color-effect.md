@@ -1,4 +1,10 @@
 # Color Effect
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 ## Color
@@ -70,7 +76,7 @@ struct LinearGradientDemo {
           repeating: true, // Repeat the gradients of the area from 0 to 0.3 in the area from 0.3 to 1.0.
           colors: [
             [0xf56c6c, 0.0],
-            [0xE6A23C, .3],
+            [0xE6A23C, 0.3],
           ]
         })
       }
@@ -87,7 +93,7 @@ struct LinearGradientDemo {
         .linearGradient({
           colors: [
             [0xf56c6c, 0.0], // As repeating is not specified, the default value false is used. In this case, only the area from 0 to 0.3 in the component have the color gradient effect.
-            [0xE6A23C, .3],
+            [0xE6A23C, 0.3],
           ]
         })
       }

@@ -1,5 +1,12 @@
 # Removing Assets (ArkTS)
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 ## Available APIs
 
 You can use [remove(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremove), an asynchronous API, or [removeSync(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremovesync12), a synchronous API, to remove assets. If the asset alias is specified, the specified asset will be removed. If no asset alias is specified, all assets will be removed.
@@ -8,7 +15,7 @@ The following table describes the attributes of **AssetMap** for removing an ass
 
 >**NOTE**
 >
->In the following table, the attributes starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put personal data in these attributes.
+>In the following table, the attributes **ALIAS** and those starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
 
 | Attribute Name (Tag)       | Value                                            | Mandatory | Description                                            |
 | --------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------ |
@@ -57,12 +64,11 @@ let query: asset.AssetMap = new Map();
 query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the asset alias to remove a single asset. To remove all assets, leave the alias unspecified.
 try {
   asset.remove(query).then(() => {
-    console.info(`Asset removed successfully.`);
+    console.info(`Succeeded in removing Asset.`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
   });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
+} catch (err) {
+  console.error(`Failed to remove Asset. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```

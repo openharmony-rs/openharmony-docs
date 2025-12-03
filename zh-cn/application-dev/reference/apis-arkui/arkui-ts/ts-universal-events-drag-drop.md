@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 拖拽事件是指在用户界面中，当用户拖动某个对象（如文件、控件或元素）时触发的一系列事件。这些事件允许开发者自定义拖拽行为，实现诸如拖放、调整位置等功能。
 
@@ -38,6 +38,10 @@ onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | D
 - 如果开发者设置了拖拽数据，则不再使用系统默认填充的拖拽数据。
 
 文本类组件[Text](ts-basic-components-text.md)、[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)、[RichEditor](ts-basic-components-richeditor.md)对选中的文本内容进行拖拽时，不支持自定义预览图。当onDragStart与菜单预览一起使用或使用了默认支持拖拽能力的组件时，预览及菜单项上的自定义内容不支持拖拽。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -196,6 +200,10 @@ onPreDrag(callback: Callback\<PreDragStatus>): T
 
 绑定此事件的组件，当处于手势拖拽发起前的不同阶段时，触发回调。此接口不支持在鼠标拖拽中触发。
 
+> **说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -211,9 +219,6 @@ onPreDrag(callback: Callback\<PreDragStatus>): T
 | 类型 | 说明 |
 | -------- | -------- |
 | T | 返回当前组件。 |
-
-> **说明：**
->- 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 ## onDragSpringLoading<sup>20+</sup>
 
@@ -733,8 +738,8 @@ getGlobalDisplayY(): number
 
 | 名称 | 值 | 说明 |
 | ----- | -- | ----------------- |
-| COPY | - |指定对数据的处理方式为复制。|
-| MOVE| - |指定对数据的处理方式为剪切。|
+| COPY | 0 |指定对数据的处理方式为复制。|
+| MOVE| 1 |指定对数据的处理方式为剪切。|
 
 ## PreDragStatus<sup>12+</sup>枚举说明
 
@@ -1065,7 +1070,7 @@ struct Index {
 
 ### 示例2（自定义落位动效）
 
-示例2展示了通过自定义接口executeDropAnimation，实现落位动效。
+从API version 18开始，示例2展示了通过自定义接口[executeDropAnimation](#executedropanimation18)，实现落位动效。
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 
@@ -1152,7 +1157,7 @@ struct DropAnimationExample {
 
 ### 示例3（拖拽异步获取数据）
 
-示例3展示了通过startDataLoading实现拖拽异步获取数据。
+从API version 15开始，示例3展示了通过[startDataLoading](#startdataloading15)实现拖拽异步获取数据。
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
@@ -1269,7 +1274,7 @@ struct ImageExample {
 ```
 ### 示例4（获取当前拖拽的屏幕ID）
 
-示例4展示了通过onDragXXX（不支持onDragEnd）接口获取到拖拽事件，并调用拖拽事件里的getDisplayId接口获取屏幕ID。
+从API version 20开始，示例4展示了通过onDragXXX（不支持onDragEnd）接口获取到拖拽事件，并调用拖拽事件里的[getDisplayId](#getdisplayid20)接口获取屏幕ID。
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
@@ -1446,7 +1451,7 @@ struct Index {
 
 ### 示例5（获取包名和是否是跨设备）
 
-示例5展示了通过onDragXXX接口获取到拖拽事件，调用拖拽事件里的getDragSource接口获取包名，调用isRemote接口获取是否是跨设备。
+从API version 20开始，示例5展示了通过onDragXXX接口获取到拖拽事件，调用拖拽事件里的[getDragSource](#getdragsource20)接口获取包名，调用isRemote接口获取是否是跨设备。
 
 ```ts
 @Entry
@@ -1526,7 +1531,7 @@ struct Index {
 
 ### 示例6（拖拽支持悬停检测）
 
-示例6展示了通过onDragSpringLoading接口注册回调，并调用SpringLoadingContext接口获取上下文（当前状态、通知序列）。
+从API version 20开始，示例6展示了通过[onDragSpringLoading](#ondragspringloading20)接口注册回调，并调用[SpringLoadingContext](#springloadingcontext20)接口获取上下文（当前状态、通知序列）。
 
 ```ts
 // xxx.ets
@@ -1609,7 +1614,7 @@ struct Index {
 
 ### 示例7（拖起方延迟提供数据）
 
-示例7展示了在onDragStart中调用setDataLoadParams延迟提供数据接口，并在onDrop中调用startDataLoading异步获取数据接口。
+从API version 20开始，示例7展示了在[onDragStart](#ondragstart)中调用[setDataLoadParams](#setdataloadparams20)延迟提供数据接口，并在[onDrop](#ondrop)中调用[startDataLoading](#startdataloading15)异步获取数据接口。
 
 ```ts
 import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';

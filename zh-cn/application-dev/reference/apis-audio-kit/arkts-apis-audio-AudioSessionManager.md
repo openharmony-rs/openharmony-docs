@@ -4,16 +4,16 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+音频会话管理。
+
+在使用AudioSessionManager的接口之前，需先通过[getSessionManager](arkts-apis-audio-AudioManager.md#getsessionmanager12)获取AudioSessionManager实例。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
-
-音频会话管理。
-
-在使用AudioSessionManager的接口之前，需先通过[getSessionManager](arkts-apis-audio-AudioManager.md#getsessionmanager12)获取AudioSessionManager实例。
 
 ## 导入模块
 
@@ -305,10 +305,7 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise&lt;void&gt;
 > **说明：**
 >
 > - 本接口适用于以下情况：当设置的[AudioSessionScene](arkts-apis-audio-e.md#audiosessionscene20)为VoIP场景时，激活AudioSession后立即生效。若[AudioSessionScene](arkts-apis-audio-e.md#audiosessionscene20)为非VoIP场景，激活AudioSession时不会生效，仅在启动播放的[StreamUsage](arkts-apis-audio-e.md#streamusage)为语音消息、VoIP语音通话或VoIP视频通话时才生效。支持听筒、扬声器和系统默认设备。
->
 > - 本接口允许在AudioSessionManager创建后随时调用，系统会记录应用设置的默认本机内置发声设备。但只有激活AudioSession后才能生效。应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从外接设备发声。否则，系统遵循应用设置的默认本机内置发声设备。
->
-> - 本接口优先级低于[AVCastPicker](../apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker)。如果使用AVCastPicker切换过发声设备，再次调用本接口将不生效。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -552,7 +549,7 @@ off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction\>): vo
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 6800101 | Parameter verification failed. |
+| 6800301 | Audio client call audio service error, System error. |
 
 **示例：**
 
@@ -579,9 +576,12 @@ selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void\>
 
 设置媒体输入设备。使用Promise异步回调。
 
-此功能不适用于呼叫录音，即[SourceType](arkts-apis-audio-e.md#sourcetype8)为SOURCE_TYPE_VOICE_COMMUNICATION的场景不适用。
-在存在更高优先级的并发录音流的场景中，应用程序实际使用的输入设备可能与所选设备不同。
-应用程序可以监听[currentInputDeviceChanged](#oncurrentinputdevicechanged21)事件来获得实际的输入设备。
+> **说明：**
+>
+> - 本接口不适用于VoIP通话录音，即[SourceType](arkts-apis-audio-e.md#sourcetype8)为SOURCE_TYPE_VOICE_COMMUNICATION的场景不适用。
+> - 本接口调用前需要先调用[getAvailableDevices](#getavailabledevices21)接口查询到当前可用输入设备列表，从列表中选择输入设备。
+> - 当系统中存在其他更高优先级的应用录音流时，实际使用的输入设备会跟随其他高优先级应用所选的输入设备。
+> - 应用程序可以监听[currentInputDeviceChanged](#oncurrentinputdevicechanged21)事件来获得实际的输入设备。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -603,7 +603,7 @@ selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void\>
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 6800101 | Parameter verification failed. |
+| 6800101 | Parameter verification failed, for example, the selected device does not exist. |
 | 6800301 | Audio client call audio service error, System error. |
 
 **示例：**
@@ -705,9 +705,11 @@ setBluetoothAndNearlinkPreferredRecordCategory(category: BluetoothAndNearlinkPre
 
 设置在使用蓝牙或星闪进行录音时，应用程序的设备偏好分类。使用Promise异步回调。
 
-应用程序可以在蓝牙或星闪连接之前设置此分类，系统将在设备连接时优先使用蓝牙或星闪进行录音。
-在更高优先级的并发录音流的场景中，应用程序实际使用的输入设备可能与当前设置的偏好设备不同。
-应用程序可以监听[currentInputDeviceChanged](#oncurrentinputdevicechanged21)事件来获得实际的输入设备。
+> **说明：**
+>
+> - 应用程序可以在蓝牙或星闪连接之前设置此分类，系统将在设备连接时优先使用蓝牙或星闪进行录音。
+> - 当系统中存在其他更高优先级的应用录音流时，实际使用的输入设备会跟随其他高优先级应用所选的输入设备。
+> - 应用程序可以监听[currentInputDeviceChanged](#oncurrentinputdevicechanged21)事件来获得实际的输入设备。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 

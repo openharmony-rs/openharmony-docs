@@ -17,3 +17,9 @@
 
 **所在头文件：** [oh_input_manager.h](capi-oh-input-manager-h.md)
 
+**相关接口：**
+
+| 名称 | 描述 |
+| -- | -- |
+| [OH_Input_CreateHotkey](capi-oh-input-manager-h.md#oh_input_createhotkey) | 创建快捷键对象。 |
+| [OH_Input_DestroyHotkey](capi-oh-input-manager-h.md#oh_input_destroyhotkey) | 销毁快捷键对象。 |

@@ -100,7 +100,7 @@ OpenHarmony提供的API优化了强引用的创建效率，保留了Node-API的�
    ```ts
    // index.d.ts
    export const saveOrReplaceObject: <T>(val: T) => void;
-   export const queryObject: () => number | boolean | undefined | null | Symbol | BigInt | EcmaObject;
+   export const queryObject: <T>() => T;
    export const releaseObject: () => void;
    ```
 
@@ -112,7 +112,7 @@ OpenHarmony提供的API优化了强引用的创建效率，保留了Node-API的�
 
    const makeTest = <T>(val: T) => {
       testNapi.saveOrReplaceObject(val);
-      const result = testNapi.queryObject();
+      const result = testNapi.queryObject<T>();
       testNapi.releaseObject();
       if (val !== result) {
          throw new Error("result not equals to input");

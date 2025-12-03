@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc-->
 <!--Designer: @LongLie-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 When **layoutMode(WebLayoutMode.FIT_CONTENT)** is used, the size of the **Web** component can automatically fit in the page content.
 
@@ -76,7 +76,7 @@ struct WebHeightPage {
 
       }
     }
-    .title ("Title bar")
+    .title("Title bar")
   }
 }
 ```
@@ -145,7 +145,7 @@ struct WebHeightPage {
 **Solution**
 
 - Change the rendering mode to [synchronous rendering mode](web-render-mode.md#synchronous-rendering-mode).
-- Configure `<\meta name="viewport" content="width=device-width, initial-scale=1.0">` on the HTML5 page.
+- Configure `<meta name="viewport" content="width=device-width, initial-scale=1.0">` on the HTML5 page.
 
 
 ### What should I do if a white screen is displayed or the page disappears after FIT_CONTENT is set?

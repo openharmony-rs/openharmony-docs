@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 Canvas提供画布组件，用于自定义绘制图形，开发者使用CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象在Canvas组件上进行绘制，绘制对象可以是基础形状、文本、图片等。
@@ -391,6 +391,143 @@ struct CanvasContentUpdate {
 ```
 
 ![data_drive_update](figures/data_drive_update.gif)
+
+## 控制在画布组件不可见时不进行绘制
+
+可以使用以下两种方式监听Canvas组件可见性，避免不可见时仍在无效绘制。
+
+- 从API version 13开始，使用[setOnVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-uicommonevent.md#setonvisibleareaapproximatechange)接口监听Canvas组件可见性。
+
+  ```ts
+  import { ColorMetrics } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct Page {
+    private canvasContext: CanvasRenderingContext2D = new CanvasRenderingContext2D()
+    private timerId: number = -1;
+
+    drawRandomCircle(): void {
+      let center: [number, number] = [Math.random() * 200 + 50, Math.random() * 200 + 50]
+      let radius: number = Math.random() * 20 + 10
+      let color: ColorMetrics =
+        ColorMetrics.rgba(Math.floor(Math.random() * 255), Math.floor(Math.random() * 255),
+          Math.floor(Math.random() * 255))
+
+      // 清空原先内容与画布状态
+      this.canvasContext.reset()
+
+      // 开始绘制
+      this.canvasContext.fillStyle = color.color
+      let path: Path2D = new Path2D()
+      path.ellipse(center[0], center[1], radius, radius, 0, 0, Math.PI * 2)
+      this.canvasContext.fill(path)
+    }
+
+    build() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+        Canvas(this.canvasContext)
+          .width(300)
+          .height(300)
+          .onReady(() => {
+            let frameNode = this.canvasContext.canvas;
+            frameNode.commonEvent.setOnVisibleAreaApproximateChange({ ratios: [0.0] },
+              (isVisible: boolean, currentRatio: number) => {
+              // canvas不可见
+              if (!isVisible && currentRatio <= 0) {
+                clearInterval(this.timerId)
+                this.timerId = -2
+              }
+              // canvas可见
+              if (isVisible) {
+                if (this.timerId == -2) {
+                  this.timerId = setInterval(() => {
+                    this.drawRandomCircle()
+                  }, 50)
+                }
+              }
+            })
+          })
+        Button("draw sth")
+          .onClick(() => {
+            if (this.timerId < 0) {
+              this.timerId = setInterval(() => {
+                this.drawRandomCircle()
+              }, 50)
+            }
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+  ```
+  ![canvas_RenderingContext](figures/Canvas_RenderingContext.gif)
+
+- 从API version 17开始，使用[onVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareaapproximatechange17)接口监听Canvas组件可见性。
+
+  ```ts
+  import { ColorMetrics } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct Page {
+    private canvasContext: CanvasRenderingContext2D = new CanvasRenderingContext2D()
+    private timerId: number = -1;
+
+    drawRandomCircle(): void {
+      let center: [number, number] = [Math.random() * 200 + 50, Math.random() * 200 + 50]
+      let radius: number = Math.random() * 20 + 10
+      let color: ColorMetrics =
+        ColorMetrics.rgba(Math.floor(Math.random() * 255), Math.floor(Math.random() * 255),
+          Math.floor(Math.random() * 255))
+
+      // 清空原先内容与画布状态
+      this.canvasContext.reset()
+
+      // 开始绘制
+      this.canvasContext.fillStyle = color.color
+      let path: Path2D = new Path2D()
+      path.ellipse(center[0], center[1], radius, radius, 0, 0, Math.PI * 2)
+      this.canvasContext.fill(path)
+    }
+
+    build() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+        Canvas(this.canvasContext)
+          .width(300)
+          .height(300)
+          .onVisibleAreaApproximateChange({ ratios: [0.0] },
+              (isVisible: boolean, currentRatio: number) => {
+                // canvas不可见
+                if (!isVisible && currentRatio <= 0) {
+                  clearInterval(this.timerId)
+                  this.timerId = -2
+                }
+                // canvas可见
+                if (isVisible) {
+                  if (this.timerId == -2) {
+                    this.timerId = setInterval(() => {
+                      this.drawRandomCircle()
+                    }, 50)
+                  }
+                }
+              })
+        Button("draw sth")
+          .onClick(() => {
+            if (this.timerId < 0) {
+              this.timerId = setInterval(() => {
+                this.drawRandomCircle()
+              }, 50)
+            }
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+  ```
+  ![canvas_onVisibleAreaApproximateChange](figures/Canvas_onVisibleAreaApproximateChange.gif)
 
 ## 场景示例
 

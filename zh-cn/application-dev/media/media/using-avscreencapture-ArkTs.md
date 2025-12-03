@@ -4,7 +4,7 @@
 <!--Owner: @zzs_911-->
 <!--Designer: @stupig001-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 屏幕录制主要为主屏幕录屏功能。
 
@@ -177,7 +177,7 @@
 
 ## 完整示例
 
-下面展示了使用AVScreenCaptureRecorder屏幕录屏存文件的完整示例代码。
+以下是通过AVScreenCaptureRecorder实现录屏存文件的完整代码示例。
 
 ```javascript
 import { media } from '@kit.MediaKit';

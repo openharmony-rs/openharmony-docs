@@ -958,7 +958,7 @@ Describes an uninstallation disposed rule.
 
 | Name     | Type          | Read-Only| Optional| Description                       |
 | --------- | -------------- | ---- | ---- | --------------------------- |
-| want | [Want](js-apis-app-ability-want.md)     | No  | No  | Page displayed when the application is disposed of.|
+| want | [Want](js-apis-app-ability-want.md)     | No  | No  | Component displayed when the application is disposed of.|
 | UninstallComponentType | [UninstallComponentType](#uninstallcomponenttype15)  | No  | No  | Type of the ability to start during interception.|
 | priority | number | No| No| Priority of the disposed rule, which is used to sort the query results of the rule list. The value is an integer. A smaller value indicates a higher priority.|
 
@@ -972,7 +972,7 @@ Enumerates the types of abilities during uninstallation.
 
 | Name   | Value  | Description                |
 | ------- | ---- | -------------------- |
-| EXTENSION | 1    | Extension ability.|
+| EXTENSION | 1    | ExtensionAbility component. Only [ExtensionAbility](../../quick-start/module-configuration-file.md#extensionabilities) components of the service type is supported.<br>The ExtensionAbility component is determined by bundleName, moduleName, and abilityName in want.|
 
 ## DisposedRuleConfiguration<sup>20+</sup>
 
@@ -987,5 +987,3 @@ Describes the configurations for setting disposed rules in batches.
 | appId        | string                          | No  | No  | appId or appIdentifier of the target application. Identical appId and appIdentifier values indicate the same application instance. If a rule is set using appId, it overwrites the one set with appIdentifier, and the reverse is also true.<br>**NOTE**<br>**appId** is also the unique identifier of an app. For details, see [What is appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier). For details about how to obtain **appIdentifier**, see [How do I obtain appIdentifier from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appidentifier-from-application-information).|
 | appIndex     | number                          | No  | No  | Index of the application clone. The default value is **0**.<br> The value **0** means to set the disposed rule for the main application. A value greater than 0 means to set the disposed rule for the application clone with the specified index.|
 | disposedRule | [DisposedRule](#disposedrule11) | No  | No  | Disposal rule of the application, including the type of the ability to be started during disposal.        |
-
-<!--no_check-->

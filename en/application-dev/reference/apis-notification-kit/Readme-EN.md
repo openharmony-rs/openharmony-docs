@@ -1,10 +1,10 @@
-# Notification Kit (User Notification Service)
+# Notification Kit<!--notification-api-->
 
-- ArkTS APIs
-  - [@ohos.notificationManager (NotificationManager)](js-apis-notificationManager.md)
+- ArkTS APIs<!--notification-arkts-->
+  - [@ohos.notificationManager (NotificationManager)](js-apis-notificationManager.md)<!--Del-->
   - [@ohos.notificationManager (NotificationManager) (System API)](js-apis-notificationManager-sys.md)
-  - [@ohos.notificationSubscribe (NotificationSubscribe) (System API)](js-apis-notificationSubscribe-sys.md)
-  - Notification
+  - [@ohos.notificationSubscribe (NotificationSubscribe) (System API)](js-apis-notificationSubscribe-sys.md)<!--DelEnd-->
+  - Notification<!--notification-->
     - [NotificationActionButton](js-apis-inner-notification-notificationActionButton.md)
     - [NotificationCommonDef](js-apis-inner-notification-notificationCommonDef.md)
     - [NotificationContent](js-apis-inner-notification-notificationContent.md)
@@ -23,16 +23,16 @@
     - [NotificationSubscriber (System API)](js-apis-inner-notification-notificationSubscriber-sys.md)
     - [NotificationSubscribeInfo (System API)](js-apis-inner-notification-notificationSubscribeInfo-sys.md)
     <!--DelEnd-->
-  - APIs No Longer Maintained
+  - APIs No Longer Maintained<!--notification-arkts-dep-->
     - [@ohos.notification (Notification)](js-apis-notification.md)
     - [@system.notification (Notification)](js-apis-system-notification.md)
     <!--Del-->
     - [@ohos.notification (Notification) (System API)](js-apis-notification-sys.md)
     <!--DelEnd-->
-- C APIs
-  - Module
+- C APIs<!--notification-c-->
+  - Modules<!--notification-module-->
       - [NOTIFICATION](capi-notification.md)
-  - Header File
+  - Header Files<!--notification-headerfile-->
       - [notification.h](capi-notification-h.md)
-- Error Codes
+- Error Codes<!--notification-arkts-errcode-->
   - [Notification Error Codes](errorcode-notification.md)

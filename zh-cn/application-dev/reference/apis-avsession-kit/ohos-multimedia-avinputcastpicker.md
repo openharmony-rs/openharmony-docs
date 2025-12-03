@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 本模块提供创建录音设备选择组件AVInputCastPicker的功能，提供录音设备发现连接的统一入口。
 
@@ -46,9 +46,9 @@ AVInputCastPicker({
 
 **参数：**
 
-| 名称 | 类型 | 必填 | 装饰器类型 | 说明 |	
-| -------- | -------- | -------- | -------- | -------- |	
-| customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | @Prop | 自定义样式。建议应用自定义组件样式，可有效提升组件显示速度。 |	
+| 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | @Prop | 自定义样式。建议应用自定义组件样式，可有效提升组件渲染性能。 |
 | onStateChange | [OnPickerStateCallback](#onpickerstatecallback) | 否 | - | 设备列表状态变更回调。 |
 
 ## OnPickerStateCallback

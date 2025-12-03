@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -74,7 +74,7 @@ SEI信息内容，描述SEI信息的负载类型和数据。
 
 | 名称          | 类型   | 只读 | 可选  | 说明                                                         |
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [key: string] | Object | 否  | 否  | 该键值对支持的key取值范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)；每个key值的Object类型和范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)对应Key值的说明。 |
+| [key: string] | Object | 否  | 是  | 该键值对支持的key取值范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)；每个key值的Object类型和范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)对应Key值的说明。 |
 
 **示例：**
 
@@ -116,7 +116,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 
 | 名称          | 类型   | 只读 | 可选  | 说明                                                         |
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [key: string]| Object | 否  | 否  | 该键值对支持的key取值范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。<br>每个key值的Object类型和范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。 |
+| [key: string]| Object | 否  | 是  | 该键值对支持的key取值范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。<br>每个key值的Object类型和范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。 |
 
 ## AVRecorderConfig<sup>9+</sup>
 
@@ -238,30 +238,30 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- |------------------------------------------------------------ |
-| album     | string | 否 | 是 | 专辑的标题。当前版本AVRecorder不支持该属性的设置。     |
-| albumArtist | string | 否 | 是 | 专辑的艺术家。当前版本AVRecorder不支持该属性的设置。 |
-| artist | string | 否 | 是 | 媒体资源的艺术家。当前版本AVRecorder不支持该属性的设置。 |
-| author | string | 否 | 是 | 媒体资源的作者。当前版本AVRecorder不支持该属性的设置。 |
-| dateTime | string | 否 | 是 | 媒体资源的创建时间。当前版本AVRecorder不支持该属性的设置。 |
-| dateTimeFormat | string | 否 | 是 | 媒体资源的创建时间，按YYYY-MM-DD HH:mm:ss格式输出。当前版本AVRecorder不支持该属性的设置。 |
-| composer | string | 否 | 是 | 媒体资源的作曲家。当前版本AVRecorder不支持该属性的设置。 |
-| duration | string | 否 | 是 | 媒体资源的时长。当前版本AVRecorder不支持该属性的设置。 |
+| album     | string | 否 | 是 | 专辑的标题。不支持AVRecorder设置该属性。     |
+| albumArtist | string | 否 | 是 | 专辑的艺术家。不支持AVRecorder设置该属性。 |
+| artist | string | 否 | 是 | 媒体资源的艺术家。不支持AVRecorder设置该属性。 |
+| author | string | 否 | 是 | 媒体资源的作者。不支持AVRecorder设置该属性。 |
+| dateTime | string | 否 | 是 | 媒体资源的创建时间。不支持AVRecorder设置该属性。 |
+| dateTimeFormat | string | 否 | 是 | 媒体资源的创建时间，按YYYY-MM-DD HH:mm:ss格式输出。不支持AVRecorder设置该属性。 |
+| composer | string | 否 | 是 | 媒体资源的作曲家。不支持AVRecorder设置该属性。 |
+| duration | string | 否 | 是 | 媒体资源的时长。不支持AVRecorder设置该属性。 |
 | genre | string | 否 | 是 | 媒体资源的类型或体裁。|
-| hasAudio | string | 否 | 是 | 媒体资源是否包含音频。当前版本AVRecorder不支持该属性的设置。 |
-| hasVideo | string | 否 | 是 | 媒体资源是否包含视频。当前版本AVRecorder不支持该属性的设置。 |
-| mimeType | string | 否 | 是 | 媒体资源的mime类型。当前版本AVRecorder不支持该属性的设置。 |
-| trackCount | string | 否 | 是 | 媒体资源的轨道数量。当前版本AVRecorder不支持该属性的设置。 |
-| sampleRate | string | 否 | 是 | 音频的采样率，单位为赫兹（Hz）。当前版本AVRecorder不支持该属性的设置。 |
-| title | string | 否 | 是 | 媒体资源的标题。当前版本为只读参数。当前版本AVRecorder不支持该属性的设置。 |
-| videoHeight | string | 否 | 是 | 视频的高度，单位为像素（px）。当前版本AVRecorder不支持该属性的设置。 |
-| videoWidth | string | 否 | 是 | 视频的宽度，单位为像素（px）。当前版本AVRecorder不支持该属性的设置。 |
+| hasAudio | string | 否 | 是 | 媒体资源是否包含音频。不支持AVRecorder设置该属性。 |
+| hasVideo | string | 否 | 是 | 媒体资源是否包含视频。不支持AVRecorder设置该属性。 |
+| mimeType | string | 否 | 是 | 媒体资源的mime类型。不支持AVRecorder设置该属性。 |
+| trackCount | string | 否 | 是 | 媒体资源的轨道数量。不支持AVRecorder设置该属性。 |
+| sampleRate | string | 否 | 是 | 音频的采样率，单位为赫兹（Hz）。不支持AVRecorder设置该属性。 |
+| title | string | 否 | 是 | 媒体资源的标题。当前版本为只读参数。不支持AVRecorder设置该属性。 |
+| videoHeight | string | 否 | 是 | 视频的高度，单位为像素（px）。不支持AVRecorder设置该属性。 |
+| videoWidth | string | 否 | 是 | 视频的宽度，单位为像素（px）。不支持AVRecorder设置该属性。 |
 | videoOrientation | string | 否 | 是 | 视频的旋转方向，单位为度（°）。|
-| hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | 否 | 是 | 媒体资源的HDR类型。当前版本AVRecorder不支持该属性的设置。 |
+| hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | 否 | 是 | 媒体资源的HDR类型。不支持AVRecorder设置该属性。 |
 | location<sup>12+</sup> | [Location](#location) | 否 | 是 | 视频的地理位置信息。 |
 | customInfo<sup>12+</sup> | Record<string, string> | 否 | 是 | 从moov.meta.list 获取的自定义参数键值映射。|
-| tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | 否 | 是 | 媒体资源的轨道信息。当前版本AVRecorder不支持该属性的设置。|
+| tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | 否 | 是 | 媒体资源的轨道信息。不支持AVRecorder设置该属性。|
 
-### AVMetadata.tracks支持的MediaDescriptionKey说明
+### AVMetadata.tracks支持的MediaDescriptionKey<sup>8+</sup>说明
 
 AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)的范围如下：
 
@@ -275,11 +275,11 @@ AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescr
 | MD_KEY_FRAME_RATE | 'frame_rate' | 视频 |
 | MD_KEY_AUD_CHANNEL_COUNT | 'channel_count' | 音频 |
 | MD_KEY_AUD_SAMPLE_RATE | 'sample_rate' | 音频 |
-| MD_KEY_HDR_TYPE | 'hdr_type' | 视频 |
-| MD_KEY_ORIGINAL_WIDTH | 'original_width' | 视频 |
-| MD_KEY_ORIGINAL_HEIGHT | 'original_height' | 视频 |
-| MD_KEY_BITRATE | 'bitrate' | 音频 |
-| MD_KEY_AUD_SAMPLE_DEPTH | 'sample_depth' | 音频 |
+| MD_KEY_HDR_TYPE<sup>12+</sup> | 'hdr_type' | 视频 |
+| MD_KEY_ORIGINAL_WIDTH<sup>21+</sup> | 'original_width' | 视频 |
+| MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup> | 'original_height' | 视频 |
+| MD_KEY_BITRATE | 'bitrate' | 音频、视频（从API version 21开始，AVMetadata.tracks支持该值获取。） |
+| MD_KEY_AUD_SAMPLE_DEPTH<sup>12+</sup> | 'sample_depth' | 音频（从API version 21开始，AVMetadata.tracks支持该值获取。） |
 
 ## PixelMapParams<sup>12+</sup>
 
@@ -343,18 +343,18 @@ let uuid: number = 1;
 let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
 let mediaSourceLoader: media.MediaSourceLoader = {
   open: (request: media.MediaSourceLoadingRequest) => {
-    console.log(`Opening resource: ${request.url}`);
+    console.info(`Opening resource: ${request.url}`);
     // 成功打开资源，返回唯一的句柄, 保证uuid和request对应。
     uuid += 1;
     requests.set(uuid, request);
     return uuid;
   },
   read: (uuid: number, requestedOffset: number, requestedLength: number) => {
-    console.log(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
+    console.info(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
     // 判断uuid是否合法、存储read请求，不要在read请求阻塞去推送数据和头信息。
   },
   close: (uuid: number) => {
-    console.log(`Closing resource with handle ${uuid}`);
+    console.info(`Closing resource with handle ${uuid}`);
     // 清除当前uuid相关资源。
     requests.remove(uuid);
   }
@@ -385,7 +385,7 @@ async function setupPlayer() {
 | preferredHdr | boolean | 否   | 是   | 表示播放策略是否为hdr。true表示是，false表示不是，默认为false。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | enableSuperResolution<sup>18+</sup> | boolean | 否   | 是   | 表示是否使能超分功能。true表示使能超分，false表示不使能超分，默认为false。<br>若不使能超分，则后续不能调用超分相关接口。若使能超分，则超分功能默认开启，默认目标分辨率为1920x1080，单位为像素。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | showFirstFrameOnPrepare<sup>17+</sup> | boolean | 否   | 是   | 播放策略true是Prepare之后显示视频起播首帧，false是Prepare之后不显示视频起播首帧，默认不显示。<br>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。 |
-| mutedMediaType | [MediaType](arkts-apis-media-e.md#mediatype8) | 否   | 是   | 关闭输出的媒体类型。<br>API 12-19，仅支持设置MediaType.MEDIA_TYPE_AUD。API 20起，增加支持MediaType.MEDIA_TYPE_VID。 |
+| mutedMediaType | [MediaType](arkts-apis-media-e.md#mediatype8) | 否   | 是   | 关闭输出的媒体类型。<br>API version 12-19，仅支持设置MediaType.MEDIA_TYPE_AUD。API version 20起，增加支持MediaType.MEDIA_TYPE_VID。 |
 | preferredAudioLanguage<sup>13+</sup> | string | 否   | 是   | 播放策略首选音轨语言。dash场景下应用可按需设置。非dash场景暂不支持，建议缺省。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | preferredSubtitleLanguage<sup>13+</sup> | string | 否   | 是   | 播放策略首选字幕语言。dash场景下应用可按需设置。非dash场景暂不支持，建议缺省。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | preferredBufferDurationForPlaying<sup>18+</sup> | number | 否   | 是   | 播放策略首选起播缓冲水线。当起播缓冲时间超过该值，开始播放。单位为秒（s），取值范围[0, 20]。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |

@@ -10,7 +10,7 @@
 
 * 通过调用接口获取。
 
-可以调用[bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含fingerprint指纹信息。
+可以调用[bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含指纹信息。
 
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
@@ -30,7 +30,7 @@ try {
 }
 ```
 
-* 通过[bm工具](../tools/bm-tool.md)获取fingerprint指纹信息。
+* 通过[bm工具](../tools/bm-tool.md)获取指纹信息。
 
 ```shell
 hdc shell
@@ -119,6 +119,6 @@ try {
 ```shell
 hdc shell
 # 需将com.example.myapplication替换为实际应用的包名
-dump -n ohos.app.hap.myapplication |grep '"appId":'
+bm dump -n ohos.app.hap.myapplication |grep '"appId":'
 ```
 ![alt text](figures/get_appId.png)

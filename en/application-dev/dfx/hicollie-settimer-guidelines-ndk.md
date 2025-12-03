@@ -132,7 +132,7 @@ The following describes how to add a button in the application and click the but
            Button("TestHiCollieTimerNdk")
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
-             .onClick(testNapi.TestHiCollieTimerNdk);  //Add a click event to trigger the testHiCollieTimerNdk method.
+             .onClick(testNapi.TestHiCollieTimerNdk);  // Add a click event to trigger the testHiCollieTimerNdk method.
          }
          .width('100%')
        }

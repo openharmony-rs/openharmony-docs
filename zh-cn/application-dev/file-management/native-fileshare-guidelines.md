@@ -69,7 +69,7 @@ target_link_libraries(sample PUBLIC libohfileshare.so)
     }
     OH_FileShare_ReleasePolicyErrorResult(result, resultNum);
     ```
-2. 调用OH_FileShare_ActivatePermission接口，激活启用已授权过的uri，接口入参policyNum最大上限为500。
+2. 调用OH_FileShare_ActivatePermission接口，激活已授权过的uri，接口入参policyNum最大上限为500。
     ```c++
     auto ret = OH_FileShare_ActivatePermission(policy, POLICY_NUM, &result, &resultNum);
     if (ret != ERR_OK) {

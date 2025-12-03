@@ -4,7 +4,7 @@
 <!--Owner: @lushi871202-->
 <!--Designer: @lushi871202-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用户界面外观提供管理系统外观的一些基础能力，目前仅包括深浅色模式配置。
 
@@ -26,7 +26,7 @@ import { uiAppearance } from '@kit.ArkUI';
 
 setDarkMode(mode: DarkMode, callback: AsyncCallback\<void>): void
 
-设置系统深色模式。
+设置系统深色模式。使用callback异步回调。
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
@@ -51,29 +51,30 @@ setDarkMode(mode: DarkMode, callback: AsyncCallback\<void>): void
 
 **示例：** 
 
-  ```ts
+```ts
 import { uiAppearance } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-    uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK, (error) => {
-      if (error) {
-        console.error('Set dark-mode failed, ' + error.message);
-      } else {
-        console.info('Set dark-mode successfully.');
-      }
-    })
+  uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK, (error) => {
+    if (error) {
+      console.error('Set dark-mode failed, ' + error.message);
+    } else {
+      console.info('Set dark-mode successfully.');
+    }
+  })
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('Set dark-mode failed, ' + message);
+  let message = (error as BusinessError).message;
+  console.error('Set dark-mode failed, ' + message);
 }
-  ```
+```
 
 
 ## uiAppearance.setDarkMode
 
 setDarkMode(mode: DarkMode): Promise\<void>;
 
-设置系统深色模式。
+设置系统深色模式。使用Promise异步回调。
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
@@ -103,20 +104,21 @@ setDarkMode(mode: DarkMode): Promise\<void>;
 
 **示例：** 
 
-  ```ts
+```ts
 import { uiAppearance } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-    uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK).then(() => {
-      console.info('Set dark-mode successfully.');
-    }).catch((error:Error) => {
-      console.error('Set dark-mode failed, ' + error.message);
-    });
+  uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK).then(() => {
+    console.info('Set dark-mode successfully.');
+  }).catch((error: Error) => {
+    console.error('Set dark-mode failed, ' + error.message);
+  });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('Set dark-mode failed, ' + message);
+  let message = (error as BusinessError).message;
+  console.error('Set dark-mode failed, ' + message);
 }
-  ```
+```
 
 
 ## uiAppearance.setFontScale<sup>12+<sup>

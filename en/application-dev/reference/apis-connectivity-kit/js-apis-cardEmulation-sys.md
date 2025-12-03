@@ -1,5 +1,12 @@
 # @ohos.nfc.cardEmulation (Standard NFC Card Emulation) (System API)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @amunra03-->
+<!--Designer: @wenxiaolin-->
+<!--Tester: @zs_111-->
+<!--Adviser: @zhang_yixin13-->
+
 The **cardEmulation** module implements Near-Field Communication (NFC) card emulation. You can use the APIs provided by this module to determine the card emulation type supported and implement Host Card Emulation (HCE).
 HCE provides card emulation that does not depend on a secure element. It allows an application to emulate a card and communicate with an NFC card reader through the NFC service.
 
@@ -40,7 +47,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Non-system applications are not allowed to use system APIs. |
+|202 | Not system application.            |
 |801 | Capability not supported.          |
 
 **Example**
@@ -49,7 +56,7 @@ import { cardEmulation } from '@kit.ConnectivityKit';
 
 let paymentServices = cardEmulation.getPaymentServices();
 if (paymentServices == undefined || paymentServices.length == 0) {
-  console.log('paymentServices is null.');
+  console.error('paymentServices is null.');
 }
 
 ```

@@ -5,7 +5,7 @@
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You can call native APIs to perform audio decoding, which decodes media data into PCM streams.
 
@@ -28,7 +28,7 @@ For details about the supported decoding capabilities, see [AVCodec Supported Fo
 
 ## Development Guidelines
 
-Read [AudioCodec](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md) for the API reference.
+Read the [API reference](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md).
 
 Refer to the code snippet below to complete the entire audio decoding process, including creating a decoder, setting decoding parameters (such as the sample rate, bit rate, and audio channel count), and starting, refreshing, resetting, and destroying the decoder.
 
@@ -66,7 +66,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     #include <multimedia/player_framework/native_avbuffer.h>
     ```
 
-2. Create a decoder instance. In the code snippet below, **OH_AVCodec *** is the pointer to the decoder instance created.
+2. Create a decoder instance. In the code snippet below, OH_AVCodec * is the pointer to the decoder instance created.
 
    You can create a decoder by MIME type or codec name.
 
@@ -410,7 +410,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    You should fill in complete input data before calling this API.
 
-   To indicate the End of Stream (EOS), pass in the **AVCODEC_BUFFER_FLAGS_EOS** flag.
+   When finished, set the flags to **AVCODEC_BUFFER_FLAGS_EOS**.
 
     ```c++
     uint32_t index = signal_->inQueue_.front();

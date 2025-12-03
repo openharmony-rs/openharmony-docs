@@ -409,7 +409,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 201      | Permission denied. |
 | 202      | Not system application. |
-| 16000050 | Internal error. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 
 **Example**
 
@@ -467,7 +467,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 201      | Permission denied. |
 | 202      | Not system application. |
-| 16000050 | Internal error. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module.  |
 
 **Example**
 
@@ -528,7 +528,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 201      | Permission denied. |
 | 202      | Not system application. |
-| 16000050 | Internal error. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module.  |
 
 **Example**
 

@@ -6,7 +6,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-本模块用于查询当前设备上安装的应用程序的路由Ability信息。系统通过业务路由提供标准化的业务模板和管理能力，允许开发者依据特定业务类别注册标准业务，构建一个庞大且丰富的业务超市。系统应用可以便捷地从业务路由中挑选并获取合适的业务进行使用。同时业务路由还提供统一的跳转管控规则，确保应用与业务之间合理跳转，防止非法前后台跳转，杜绝三方应用通过跳转变相分发，从而保障系统的安全性与良好的用户体验。
+本模块用于查询当前设备上安装的应用程序的路由Ability信息。系统通过业务路由提供标准化的业务模板和管理能力，允许开发者依据特定业务类别注册标准业务，构建一个庞大且丰富的业务超市。系统应用可以便捷地从业务路由中选取合适的业务进行使用。同时业务路由还提供统一的跳转管控规则，确保应用与业务之间合理跳转，防止非法前后台跳转，杜绝三方应用通过跳转变相分发，从而保障系统的安全性与良好的用户体验。
 
 > **说明：**
 >
@@ -17,7 +17,7 @@
 ## 导入模块
 
 ``` ts
-import businessAbilityRouter from '@ohos.app.businessAbilityRouter';
+import { businessAbilityRouter } from '@kit.AbilityKit';
 ```
 
 ## 权限列表
@@ -87,22 +87,22 @@ queryBusinessAbilityInfo(filter: BusinessAbilityFilter, callback: AsyncCallback\
 **示例：**
 
 ```ts
-import businessAbilityRouter from '@ohos.app.businessAbilityRouter';
-import { BusinessError } from '@ohos.base';
+import { businessAbilityRouter } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let filter: businessAbilityRouter.BusinessAbilityFilter = {businessType: businessAbilityRouter.BusinessType.SHARE};
+let filter: businessAbilityRouter.BusinessAbilityFilter = { businessType: businessAbilityRouter.BusinessType.SHARE };
 
 try {
-    businessAbilityRouter.queryBusinessAbilityInfo(filter, (error, data) => {
-        if (error) {
-            console.error('queryBusinessAbilityInfo failed ' + error.message);
-            return;
-        }
-        console.info('queryBusinessAbilityInfo success');
-    });
+  businessAbilityRouter.queryBusinessAbilityInfo(filter, (error, data) => {
+    if (error) {
+      console.error('queryBusinessAbilityInfo failed ' + error.message);
+      return;
+    }
+    console.info('queryBusinessAbilityInfo success');
+  });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('queryBusinessAbilityInfo failed ' + message);
+  let message = (error as BusinessError).message;
+  console.error('queryBusinessAbilityInfo failed ' + message);
 }
 ```
 
@@ -143,20 +143,20 @@ queryBusinessAbilityInfo(filter: BusinessAbilityFilter): Promise\<Array\<Busines
 **示例：**
 
 ```ts
-import businessAbilityRouter from '@ohos.app.businessAbilityRouter';
-import { BusinessError } from '@ohos.base';
+import { businessAbilityRouter } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let filter: businessAbilityRouter.BusinessAbilityFilter = {businessType: businessAbilityRouter.BusinessType.SHARE};
+let filter: businessAbilityRouter.BusinessAbilityFilter = { businessType: businessAbilityRouter.BusinessType.SHARE };
 
 try {
-    businessAbilityRouter.queryBusinessAbilityInfo(filter)
-        .then(() => {
-            console.info('queryBusinessAbilityInfo success');
-        }).catch((error: BusinessError) => {
-            console.error('queryBusinessAbilityInfo failed ' + error.message);
-        });
+  businessAbilityRouter.queryBusinessAbilityInfo(filter)
+    .then(() => {
+      console.info('queryBusinessAbilityInfo success');
+    }).catch((error: BusinessError) => {
+    console.error('queryBusinessAbilityInfo failed ' + error.message);
+  });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('queryBusinessAbilityInfo failed ' + message);
+  let message = (error as BusinessError).message;
+  console.error('queryBusinessAbilityInfo failed ' + message);
 }
 ```

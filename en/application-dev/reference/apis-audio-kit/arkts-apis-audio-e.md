@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -12,7 +12,7 @@
 
 ## AudioVolumeType
 
-Enumerates the audio stream types.
+Enumerates the audio volume types.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -104,6 +104,19 @@ Enumerates the device types.
 | HEARING_AID<sup>20+</sup>        | 30 | Hearing aid device.|
 | NEARLINK<sup>20+</sup>        | 31 | NearLink device.|
 | DEFAULT<sup>9+</sup> | 1000   | Default device type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+
+## BluetoothAndNearlinkPreferredRecordCategory<sup>21+</sup>
+
+Enumerates the preferred device categories available for recording with Bluetooth or NearLink.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+| Name                | Value    | Description                                                     |
+| ---------------------| ------ | --------------------------------------------------------- |
+| PREFERRED_NONE  | 0      | No specific device preference.|
+| PREFERRED_DEFAULT | 1      | Prefers using Bluetooth or NearLink devices for recording; whether to use low-latency or high-quality recording depends on the system.|
+| PREFERRED_LOW_LATENCY  | 2      | Prefers using Bluetooth or NearLink devices in low-latency mode for recording.|
+| PREFERRED_HIGH_QUALITY | 3      | Prefers using Bluetooth or NearLink devices in high-quality mode for recording.|
 
 ## CommunicationDeviceType<sup>9+</sup>
 
@@ -276,7 +289,7 @@ Enumerates the audio channel layouts of audio files.
 
 ## StreamUsage
 
-Enumerates the audio stream usage types.
+Enumerates the types of audio streams played.
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -285,7 +298,7 @@ Enumerates the audio stream usage types.
 | STREAM_USAGE_UNKNOWN                      | 0      | Unknown content.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | STREAM_USAGE_MEDIA<sup>(deprecated)</sup> | 1      | Media.<br> This enumerated value is supported since API version 7 and deprecated since API version 10. You are advised to use **STREAM_USAGE_MUSIC**, **STREAM_USAGE_MOVIE**, **STREAM_USAGE_GAME**, or **STREAM_USAGE_AUDIOBOOK** instead.|
 | STREAM_USAGE_MUSIC<sup>10+</sup>          | 1      | Music.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| STREAM_USAGE_VOICE_COMMUNICATION          | 2      | VoIP voice call.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| STREAM_USAGE_VOICE_COMMUNICATION          | 2      | VoIP voice call. (The 3A algorithm is enabled when this stream starts.)<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | STREAM_USAGE_VOICE_ASSISTANT<sup>9+</sup> | 3      | Voice assistant.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | STREAM_USAGE_ALARM<sup>10+</sup>          | 4      | Audio stream for alarming.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | STREAM_USAGE_VOICE_MESSAGE<sup>10+</sup>  | 5      | Voice message.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -297,7 +310,7 @@ Enumerates the audio stream usage types.
 | STREAM_USAGE_GAME<sup>10+</sup>           | 11     | Gaming.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | STREAM_USAGE_AUDIOBOOK<sup>10+</sup>      | 12     | Audiobooks (including crosstalks and storytelling), news radio, and podcasts.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | STREAM_USAGE_NAVIGATION<sup>10+</sup>     | 13     | Navigation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| STREAM_USAGE_VIDEO_COMMUNICATION<sup>12+</sup>     | 17     | VoIP video call.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| STREAM_USAGE_VIDEO_COMMUNICATION<sup>12+</sup>     | 17     | VoIP video call. (The 3A algorithm is enabled when this stream starts.)<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## AudioState<sup>8+</sup>
 
@@ -412,8 +425,9 @@ Enumerates whether an audio stream can be recorded by other applications.
 
 | Name                | Value  | Description                            |
 | -------------------- | ---- | -------------------------------- |
-| PRIVACY_TYPE_PUBLIC  | 0    | The audio stream can be recorded by other applications.  |
-| PRIVACY_TYPE_PRIVATE | 1    | The audio stream cannot be recorded by other applications.|
+| PRIVACY_TYPE_PUBLIC  | 0    | The audio stream can be recorded or screen-projected by other applications and is not privacy-related.|
+| PRIVACY_TYPE_PRIVATE | 1    | The audio stream cannot be recorded or screen-projected by other applications.|
+| PRIVACY_TYPE_SHARED<sup>21+</sup>  | 2    | The audio stream can be recorded or screen-projected by other applications and is privacy-related.<br> For example, if the privacy policy is **PRIVACY_TYPE_PUBLIC**, audio streams of the [STREAM_USAGE_VOICE_COMMUNICATION](#streamusage) type cannot be recorded or screen-projected by other applications.<br> However, if the privacy policy is **PRIVACY_TYPE_SHARED**, these audio streams can be recorded or screen-projected by other applications.|
 
 ## ChannelBlendMode<sup>11+</sup>
 
@@ -478,7 +492,7 @@ Enumerates the blocked statuses of audio devices.
 
 ## SourceType<sup>8+</sup>
 
-Enumerates the audio source types.
+Enumerates the types of audio streams captured.
 
 | Name                                        |  Value    | Description                  |
 | :------------------------------------------- | :----- | :--------------------- |
@@ -486,11 +500,11 @@ Enumerates the audio source types.
 | SOURCE_TYPE_MIC                              | 0      | Mic source.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
 | SOURCE_TYPE_VOICE_RECOGNITION<sup>9+</sup>   | 1      | Voice recognition source.<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
 | SOURCE_TYPE_PLAYBACK_CAPTURE<sup>(deprecated)</sup>   | 2 | Internal audio recording source.<br>**System capability**: SystemCapability.Multimedia.Audio.PlaybackCapture<br> This API is supported since API version 10 and deprecated since API version 12. You are advised to use [AVScreenCapture](../apis-media-kit/capi-avscreencapture.md) instead. |
-| SOURCE_TYPE_VOICE_COMMUNICATION              | 7      | Voice communication source.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
+| SOURCE_TYPE_VOICE_COMMUNICATION              | 7      | Voice communication source. (The 3A algorithm is not enabled if recording is started independently. It is enabled when the AudioRenderer of the [STREAM_USAGE_VOICE_COMMUNICATION](#streamusage) or [STREAM_USAGE_VIDEO_COMMUNICATION](#streamusage) type is also used to start playback.)<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
 | SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup>      | 10     | Voice message source.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
 | SOURCE_TYPE_CAMCORDER<sup>13+</sup>          | 13     | Video recording source.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
 | SOURCE_TYPE_UNPROCESSED<sup>14+</sup>     | 14 |  Audio source for raw microphone recording, where the system does not perform any algorithm processing.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
-|  SOURCE_TYPE_LIVE<sup>20+</sup>     | 17 |  Audio source in live streaming scenarios.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
+| SOURCE_TYPE_LIVE<sup>20+</sup>     | 17 |  Audio source in live streaming scenarios. This source type provides system echo cancellation capabilities on supported devices.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
 
 ## AudioScene<sup>8+</sup>
 

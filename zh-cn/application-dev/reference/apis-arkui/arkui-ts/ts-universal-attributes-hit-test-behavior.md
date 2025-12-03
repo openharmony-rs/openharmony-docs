@@ -1,10 +1,10 @@
 # 触摸测试控制
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 设置组件的[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)类型。在ArkUI开发框架中，处理触屏事件和鼠标事件时，会在事件触发前进行按压点与组件响应热区的触摸测试，以收集需响应事件的组件。基于测试结果，框架会分发相应的事件。hitTestBehavior属性用于设置不同的触摸测试响应模式，影响触摸测试收集结果及后续事件分发。具体影响参考[HitTestMode](./ts-appendix-enums.md#hittestmode9)枚举说明。影响[点击事件](ts-universal-events-click.md)、[触摸事件](ts-universal-events-touch.md)、[拖拽事件](ts-universal-events-drag-drop.md)、[鼠标事件](ts-universal-mouse-key.md)、[轴事件](ts-universal-events-axis.md)、[悬浮事件](ts-universal-events-hover.md)、[无障碍悬浮事件](ts-universal-accessibility-hover-event.md)和[手势事件](ts-gesture-settings.md)的分发。
 
@@ -38,7 +38,7 @@ hitTestBehavior(value: HitTestMode): T
 
 ### 示例1（触摸测试类型为Block和Transparent的触摸测试效果）
 
-该示例通过设置不同的HitTestMode值演示了Block和Transparent的触摸测试效果。
+该示例通过设置不同的[HitTestMode](./ts-appendix-enums.md#hittestmode9)值演示了Block和Transparent的触摸测试效果。
 
 ```ts
 // xxx.ets
@@ -78,7 +78,7 @@ struct HitTestBehaviorExample {
 
 ### 示例2（触摸测试类型为BLOCK_HIERARCHY时的触摸测试效果）
 
-该示例演示了设置触摸测试类型为BLOCK_HIERARCHY时的触摸测试效果。
+从API version 20开始，该示例演示了设置触摸测试类型为BLOCK_HIERARCHY时的触摸测试效果。
 
 ```ts
 // xxx.ets
@@ -155,7 +155,7 @@ struct BlockHierarchy {
 
 ### 示例3（触摸测试类型为BLOCK_DESCENDANTS时的触摸测试效果）
 
-该示例演示了设置触摸测试类型为BLOCK_DESCENDANTS时的触摸测试效果。
+从API version 20开始，该示例演示了设置触摸测试类型为BLOCK_DESCENDANTS时的触摸测试效果。
 
 ```ts
 // xxx.ets

@@ -36,7 +36,7 @@ getWantAgent(info: WantAgentInfo, callback: AsyncCallback\<WantAgent\>): void
 | 参数名     | 类型                       | 必填 | 说明                    |
 | -------- | -------------------------- | ---- | ----------------------- |
 | info     | [WantAgentInfo](js-apis-inner-wantAgent-wantAgentInfo.md)              | 是   | 表示创建WantAgent所需的配置信息，包括目标UIAbility、操作类型、请求码等。三方应用在WantAgentInfo中只能设置本应用的UIAbility。|
-| callback | AsyncCallback\<WantAgent\> | 是   | 创建WantAgent的回调方法。 |
+| callback | AsyncCallback\<WantAgent\> | 是   | 回调函数。当创建WantAgent成功，err中code为0，data为创建的WantAgent；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -87,7 +87,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 
 // getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
-  if (err) {
+  if (err.code) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
     wantAgentData = data;
@@ -197,7 +197,7 @@ getBundleName(agent: WantAgent, callback: AsyncCallback\<string\>): void
 | 参数名     | 类型                    | 必填 | 说明                              |
 | -------- | ----------------------- | ---- | --------------------------------- |
 | agent    | WantAgent               | 是   | WantAgent对象。                     |
-| callback | AsyncCallback\<string\> | 是   | 获取WantAgent实例的包名的回调方法。 |
+| callback | AsyncCallback\<string\> | 是   | 回调函数。当获取包名成功，err为undefined，data为创建的WantAgent；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 

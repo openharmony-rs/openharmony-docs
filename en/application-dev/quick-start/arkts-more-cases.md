@@ -51,7 +51,7 @@ let wantInfo: W = {
 
 ```typescript
 function printObj(obj: any) {
-  console.log(obj);
+  console.info(obj);
 }
 
 printObj('abc'); // abc
@@ -61,7 +61,7 @@ printObj('abc'); // abc
 
 ```typescript
 function printObj(obj: string) {
-  console.log(obj);
+  console.info(obj);
 }
 
 printObj('abc'); // abc
@@ -109,8 +109,8 @@ class A {
 
 ```typescript
 function printProperties(obj: any) {
-  console.log(obj.name);
-  console.log(obj.value);
+  console.info(obj.name);
+  console.info(obj.value);
 }
 ```
 
@@ -118,8 +118,8 @@ function printProperties(obj: any) {
 
 ```typescript
 function printProperties(obj: Record<string, Object>) {
-  console.log(obj.name as string);
-  console.log(obj.value as string);
+  console.info(obj.name as string);
+  console.info(obj.value as string);
 }
 ```
 
@@ -139,7 +139,7 @@ function foo(fn: I) {
 }
 
 foo((value: string) => {
-  console.log(value);
+  console.info(value);
 })
 ```
 
@@ -154,7 +154,7 @@ function foo(fn: I) {
 }
 
 foo((value: string) => {
-  console.log(value);
+  console.info(value);
 })
 ```
 
@@ -177,7 +177,7 @@ type ControllerConstructor = {
   new (value: string): Controller;
 }
 
-class Menu {
+class testMenu {
   controller: ControllerConstructor = Controller
   createController() {
     if (this.controller) {
@@ -187,8 +187,8 @@ class Menu {
   }
 }
 
-let t = new Menu();
-console.log(t.createController()!.value);
+let t = new testMenu();
+console.info(t.createController()!.value);
 ```
 
 **After adaptation**
@@ -204,7 +204,7 @@ class Controller {
 
 type ControllerConstructor = () => Controller;
 
-class Menu {
+class testMenu {
   controller: ControllerConstructor = () => {
     return new Controller('abc');
   }
@@ -217,8 +217,8 @@ class Menu {
   }
 }
 
-let t: Menu = new Menu();
-console.log(t.createController()!.value);
+let t: testMenu = new testMenu();
+console.info(t.createController()!.value);
 ```
 
 ## arkts-no-indexed-signatures
@@ -319,7 +319,7 @@ interface ControllerConstructor {
   new (value: string): Controller;
 }
 
-class Menu {
+class testMenu {
   controller: ControllerConstructor = Controller
   createController() {
     if (this.controller) {
@@ -329,8 +329,8 @@ class Menu {
   }
 }
 
-let t = new Menu();
-console.log(t.createController()!.value);
+let t = new testMenu();
+console.info(t.createController()!.value);
 ```
 
 **After adaptation**
@@ -346,7 +346,7 @@ class Controller {
 
 type ControllerConstructor = () => Controller;
 
-class Menu {
+class testMenu {
   controller: ControllerConstructor = () => {
     return new Controller('abc');
   }
@@ -359,8 +359,8 @@ class Menu {
   }
 }
 
-let t: Menu = new Menu();
-console.log(t.createController()!.value);
+let t: testMenu = new testMenu();
+console.info(t.createController()!.value);
 ```
 
 ## arkts-no-props-by-index
@@ -755,7 +755,7 @@ test.foo('', option);
 **Reason for change**
 
 The object literal lacks a type. According to the analysis of **test.foo**, the **option** type comes from the declaration file. Therefore, you only need to import the type.
-In **test.d.ets**, **I** is defined in **namespace**. Import **namespace** to the .ets file and then obtain t he corresponding type by name.
+In **test.d.ets**, **I** is defined in **namespace**. Import **namespace** to the .ets file and then obtain the corresponding type by name.
 
 ### Passing Parameters from the Object Literal to the Object Type
 
@@ -891,7 +891,7 @@ let d = +'string';
 let a = Number.parseInt('5'); // Explicit conversion using Number.parseInt.
 let b = -Number.parseInt('5');
 let c = ~Number.parseInt('5');
-let d = new Number('string');
+let d = new Number('123');
 ```
 
 ## arkts-no-type-query
@@ -962,8 +962,8 @@ Use index access or manual assignment instead of destructuring assignment.
 ```typescript
 let map = new Map<string, string>([['a', 'a'], ['b', 'b']]);
 for (let [key, value] of map) {
-  console.log(key);
-  console.log(value);
+  console.info(key);
+  console.info(value);
 }
 ```
 
@@ -976,8 +976,8 @@ let map = new Map<string, string>([['a', 'a'], ['b', 'b']]);
 for (let arr of map) {
   let key = arr[0];
   let value = arr[1];
-  console.log(key);
-  console.log(value);
+  console.info(key);
+  console.info(value);
 }
 ```
 
@@ -1026,7 +1026,7 @@ let p: Person = {
 };
 
 for (let t in p) {
-  console.log(p[t]);  // log: "tom", "18" 
+  console.info(p[t]);  // info: "tom", "18" 
 }
 ```
 
@@ -1039,7 +1039,7 @@ let p: Record<string, string> = {
 };
 
 for (let ele of Object.entries(p)) {
-  console.log(ele[1]);  // log: "tom", "18" 
+  console.info(ele[1]);  // info: "tom", "18" 
 }
 ```
 
@@ -1108,7 +1108,7 @@ The type of the value in the **throw** statement must be **Error** or its inheri
 
 ```typescript
 function foo() {
-  console.log(this.value);
+  console.info(this.value);
 }
 
 let obj = { value: 'abc' };
@@ -1127,7 +1127,7 @@ class Test {
   }
   
   foo() {
-    console.log(this.value);
+    console.info(this.value);
   }
 }
 
@@ -1141,7 +1141,7 @@ Pass in **this** as a parameter.
 
 ```typescript
 function foo(obj: Test) {
-  console.log(obj.value);
+  console.info(obj.value);
 }
 
 class Test {
@@ -1157,7 +1157,7 @@ foo(obj);
 Pass in a property as a parameter.
 ```typescript
 function foo(value: string) {
-  console.log(value);
+  console.info(value);
 }
 
 class Test {
@@ -1262,7 +1262,7 @@ class Controller {
 
 type ControllerConstructor = new (value: string) => Controller;
 
-class Menu {
+class testMenu {
   controller: ControllerConstructor = Controller
   createController() {
     if (this.controller) {
@@ -1272,8 +1272,8 @@ class Menu {
   }
 }
 
-let t = new Menu()
-console.log(t.createController()!.value)
+let t = new testMenu()
+console.info(t.createController()!.value)
 ```
 
 **After adaptation**
@@ -1288,7 +1288,7 @@ class Controller {
 
 type ControllerConstructor = () => Controller;
 
-class Menu {
+class testMenu {
   controller: ControllerConstructor = () => { return new Controller('abc') }
   createController() {
     if (this.controller) {
@@ -1298,8 +1298,8 @@ class Menu {
   }
 }
 
-let t: Menu = new Menu();
-console.log(t.createController()!.value);
+let t: testMenu = new testMenu();
+console.info(t.createController()!.value);
 ```
 
 ## arkts-no-globalthis
@@ -1414,7 +1414,7 @@ class Test {
   }
   
   foo() {
-    console.log(this.value);
+    console.info(this.value);
   }
 }
 ```
@@ -1435,7 +1435,7 @@ class Test {
   }
   
   foo() {
-    console.log(this.value);
+    console.info(this.value);
   }
 }
 ```
@@ -1451,7 +1451,7 @@ class A {
 class Test {
   value: string = '1234'
   foo: () => void = () => {
-    console.log(this.value);
+    console.info(this.value);
   }
   obj: A = {
     value: this.value,
@@ -1472,7 +1472,7 @@ class A {
   }
 
   foo() {
-    console.log(this.value);
+    console.info(this.value);
   }
 }
 
@@ -1497,7 +1497,7 @@ class A {
   }
 
   fooApply(a: A) {
-    console.log(a.value);
+    console.info(a.value);
   }
 }
 
@@ -1532,36 +1532,14 @@ let entries = new Map([
 ]);
 
 let obj: Record<string, Object> = {};
-entries.forEach((value, key) => {
+entries.forEach((key, value) => {
   if (key != undefined && key != null) {
     obj[key] = value;
   }
 })
 ```
 
-### Using Properties and Methods of Number
-
-ArkTS does not allow the use of the following properties and methods for global objects: **Infinity**, **NaN**, **isFinite**, **isNaN**, **parseFloat**, and **parseInt**.
-
-You can use them for **Number**.
-
-**Before adaptation**
-
-```typescript
-NaN;
-isFinite(123);
-parseInt('123');
-```
-
-**After adaptation**
-
-```typescript
-Number.NaN;
-Number.isFinite(123);
-Number.parseInt('123');
-```
-
-## arkts-strict-typing(StrictModeError)
+## Strict Mode Check (StrictModeError)
 
 ### strictPropertyInitialization
 
@@ -1730,16 +1708,22 @@ To avoid unexpected behavior during runtime, if strict type check is enabled, th
 
 ```typescript
 class Test {
-  private value?: string
+  private value?: string;
   
   public printValue () {
-    console.log(this.value.toLowerCase());
+    console.info(this.value.toLowerCase());
   }
 }
 
 let t = new Test();
 t.printValue();
 ```
+
+**Cause of the runtime error**
+
+If strict null check is not enabled during compilation, the code segment can be compiled successfully, but unexpected behavior occurs at runtime.
+
+This is because the **value** property of **t** is **undefined**, and when the **printValue** method is called, the property is directly accessed based on the string type, due to a lack of null check on the value of **this.value** in the method body.
 
 **After adaptation**
 
@@ -1747,11 +1731,11 @@ When writing code, minimize the use of nullable types. If a variable or property
 
 ```typescript
 class Test {
-  private value?: string
+  private value?: string;
 
   public printValue () {
     if (this.value) {
-      console.log(this.value.toLowerCase());
+      console.info(this.value.toLowerCase());
     }
   }
 }
@@ -1759,10 +1743,6 @@ class Test {
 let t = new Test();
 t.printValue();
 ```
-
-**Reason for change**
-
-In the first code segment, if strict null check is not enabled during compilation, the code segment can be compiled successfully, but unexpected behavior occurs at runtime. This is because the **value** property of **t** is **undefined** (**value?: string** is the syntax sugar of **value: string | undefined = undefined**), and when the **printValue** method is called in line 11, the property is directly accessed based on the string type, due to a lack of null check on the value of **this.value** in the method body. To avoid unexpected behavior at runtime, enable strict null check during compilation.
 
 ### Function Return Type Mismatch
 
@@ -1781,30 +1761,6 @@ In the original code, the return type of the function is parsed as **void | unde
 ```typescript
 class Test {
   handleClick: ((action: string, externInfo?: string) => void) | null = null;
-}
-```
-
-### '***' is of type 'unknown'
-
-**Before adaptation**
-
-```typescript
-try {
-  
-} catch (error) {
-  console.log(error.message);
-}
-```
-
-**After adaptation**
-
-```typescript
-import { BusinessError } from '@kit.BasicServicesKit'
-
-try {
-  
-} catch (error) {
-  console.log((error as BusinessError).message);
 }
 ```
 
@@ -1880,7 +1836,7 @@ function foo(v: number): A | null {
 let a: A = foo(123)!;
 ```
 
-### Cannot invoke an object which possibly 'undefined'
+### Cannot invoke an object which is possibly 'undefined'
 
 **Before adaptation**
 
@@ -1999,7 +1955,7 @@ Remove the @ts-nocheck comment and explicitly declare types for all variables.
 **Before adaptation**
 
 ```typescript
-// @ts-nocheck
+// @ts-ignore
 var a: any = 123;
 ```
 
@@ -2027,7 +1983,7 @@ Mode 2: Extract the code that the .ts file depends on from the .ets file to the 
 
 ## arkts-no-special-imports
 
-Use **import { ... } from '...'** to import the type.
+Use **import { ... } from '...'** to import types.
 
 **Before adaptation**
 
@@ -2060,7 +2016,7 @@ interface ControllerConstructor {
   new (value: string): Controller;
 }
 
-class Menu {
+class TestMenu {
   controller: ControllerConstructor = Controller
   createController() {
     if (this.controller) {
@@ -2070,8 +2026,8 @@ class Menu {
   }
 }
 
-let t = new Menu();
-console.log(t.createController()!.value);
+let t = new TestMenu();
+console.info(t.createController()!.value);
 ```
 
 **After adaptation**
@@ -2079,15 +2035,19 @@ console.log(t.createController()!.value);
 ```typescript
 class Controller {
   value: string = ''
+
   constructor(value: string) {
-    this.value = value
+    this.value = value;
   }
 }
 
 type ControllerConstructor = () => Controller;
 
-class Menu {
-  controller: ControllerConstructor = () => { return new Controller('abc'); }
+class TestMenu {
+  controller: ControllerConstructor = () => {
+    return new Controller('abc');
+  }
+
   createController() {
     if (this.controller) {
       return this.controller();
@@ -2096,8 +2056,8 @@ class Menu {
   }
 }
 
-let t: Menu = new Menu();
-console.log(t.createController()!.value);
+let t: TestMenu = new TestMenu();
+console.info(t.createController()!.value);
 ```
 
 ### Accessing Static Properties
@@ -2117,8 +2077,8 @@ function getValue(obj: any) {
   return obj['value'];
 }
 
-console.log(getValue(C1));
-console.log(getValue(C2));
+console.info(getValue(C1));
+console.info(getValue(C2));
 ```
 
 **After adaptation**
@@ -2140,8 +2100,8 @@ function getC2Value(): string {
   return C2.value;
 }
 
-console.log(getC1Value());
-console.log(getC2Value());
+console.info(getC1Value());
+console.info(getC2Value());
 ```
 
 ## arkts-no-side-effects-imports
@@ -2168,7 +2128,7 @@ Use a **class** to organize multiple related functions.
 
 ```typescript
 function foo(value: number): void {
-  console.log(value.toString());
+  console.info(value.toString());
 }
 
 foo.add = (left: number, right: number) => {
@@ -2185,7 +2145,7 @@ foo.sub = (left: number, right: number) => {
 ```typescript
 class Foo {
   static foo(value: number): void {
-    console.log(value.toString());
+    console.info(value.toString());
   }
 
   static add(left: number, right: number): number {
@@ -2205,10 +2165,13 @@ Use specific types (such as **number**, **string**) or **interface** instead of 
 **Before adaptation**
 
 ```typescript
-// lib.d.ts
-declare function foo(): any;
+// testa.ts
+export function foo(): any {
+  return null;
+}
 
 // main.ets
+import {foo} from './testa'
 let e0: ESObject = foo();
 
 function f() {
@@ -2222,10 +2185,13 @@ function f() {
 **After adaptation**
 
 ```typescript
-// lib.d.ts
-declare function foo(): any;
+// testa.ts
+export function foo(): any {
+  return null;
+}
 
 // main.ets
+import {foo} from './testa'
 interface I {}
 
 function f() {

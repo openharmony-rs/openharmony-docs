@@ -98,6 +98,7 @@ The following describes how to configure a static shortcut in a project.
     }
     ```
 
+
 After installing the application, long press the icon on the home screen. The shortcuts (**Favorites** and **Share**) configured by you are displayed above the application icon. Tap a label to start the corresponding component. The following figure shows a static shortcut of an application displayed on the home screen.
 
 <img src="figures/shortcut_display.jpg"/>

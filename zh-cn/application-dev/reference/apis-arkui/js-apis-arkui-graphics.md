@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 自定义节点相关属性定义的详细信息。
 
@@ -393,7 +393,7 @@ LengthMetrics的构造函数。若参数unit不传入值或传入undefined，返
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | 是   | 长度属性的值。<br/>取值范围：[0, +∞) |
+| value   | number | 是   | 长度属性的值。<br/>取值范围：(-∞, +∞) |
 | unit   | [LengthUnit](#lengthunit12) | 否   | 长度属性的单位。 |
 
 ### px<sup>12+</sup>
@@ -862,7 +862,7 @@ struct ColorMetricsSample {
 
 ## Corners\<T><sup>12+</sup>
 
-用于设置四个角的圆角度数。
+用于设置四个角的圆角属性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -879,7 +879,7 @@ struct ColorMetricsSample {
 
 type CornerRadius = Corners\<Vector2>
 
-设置四个角的圆角度数。
+设置四个角的圆角x轴与y轴的半轴长。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -887,13 +887,13 @@ type CornerRadius = Corners\<Vector2>
 
 | 类型                                         | 说明               |
 | -------------------------------------------- | ------------------ |
-| [Corners](#cornerst12)[\<Vector2>](#vector2) | 四个角的圆角度数。 |
+| [Corners](#cornerst12)[\<Vector2>](#vector2) | 四个角的圆角x轴与y轴的半轴长。 |
 
 ## BorderRadiuses<sup>12+</sup>
 
 type BorderRadiuses = Corners\<number>
 
-设置四个角的圆角度数。
+设置四个角的圆角半径。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -901,7 +901,7 @@ type BorderRadiuses = Corners\<number>
 
 | 类型                            | 说明               |
 | ------------------------------- | ------------------ |
-| [Corners\<number>](#cornerst12) | 四个角的圆角度数。 |
+| [Corners\<number>](#cornerst12) | 四个角的圆角半径。 |
 
 ## Rect<sup>12+</sup>
 
@@ -954,7 +954,7 @@ type Rect = common2D.Rect
 
 | 名称                                                         | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------------------------------------------------------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [commands](./arkui-ts/ts-drawing-components-path.md#commands) | string | 否   | 否   | 路径绘制的指令字符串。像素单位的转换方法请参考[像素单位转换](./arkui-ts/ts-pixel-units.md#像素单位转换)。<br/>单位：px |
+| [commands](./arkui-ts/ts-drawing-components-path.md#commands) | string | 否   | 否   | 路径绘制的指令字符串。像素单位的转换方法请参考[像素单位](./arkui-ts/ts-pixel-units.md)。<br/>单位：px |
 
 ## ShapeMask<sup>12+</sup>
 

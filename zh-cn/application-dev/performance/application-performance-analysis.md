@@ -351,7 +351,7 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
     > 插桩位置建议选择为不会重复执行的关键位置，例如`onClick`中的首行和末行；若重复执行start、stop，仅有第一次的start、stop会成功执行。
 
     ```ts
-    import hidebug from '@ohos.hidebug';
+    import { hidebug } from '@kit.PerformanceAnalysisKit';
     // 参数为输出文件的文件名，无需加后缀。该参数为必要参数。
     hidebug.startJsCpuProfiling("filename");
     // code block

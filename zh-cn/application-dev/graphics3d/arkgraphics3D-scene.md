@@ -20,7 +20,8 @@
 
 一个glTF模型可以包含光源、相机、模型等3D场景关键要素，如果一个glTF模型中包含相机，使用ArkGraphics 3D提供的接口加载glTF就可以直接完成该相机视角下3D场景的渲染。如果不包含相机，也可以利用ArkGraphics 3D创建一个相机完成渲染。由于3D模型往往数据量很大，通常采用异步方式进行加载，加载成功后将返回一个scene对象，通过该对象可对整个3D场景进行编辑。
 
-glTF模型可用Scene提供的[load](../reference/apis-arkgraphics3d/js-apis-inner-scene.md#load)接口加载，示例代码如下：
+glTF模型可用Scene提供的load()接口加载，模型文件支持.gltf与.glb格式，其中.glb为二进制封装形式，与.gltf内容等价但更便于加载与使用。模型加载支持相对路径和绝对路径两种方式：相对路径加载使用$rawfile()，从应用的resources/rawfile/目录读取内置资源文件；绝对路径加载需从应用沙箱目录读取文件，Scene.load()仅支持访问应用自身创建或写入的沙箱文件，具体示例可参见[load()](../reference/apis-arkgraphics3d/js-apis-inner-scene.md#load)。
+以下示例展示通过相对路径加载.glb模型：
 ```ts
 import { Scene } from '@kit.ArkGraphics3D';
 

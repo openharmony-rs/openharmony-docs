@@ -9,9 +9,12 @@
 A Harmony Shared Package (HSP) is a dynamic shared package that can contain code, C++ libraries, resource files, and configuration files (also called profiles) and allows for code and resource sharing. An HSP is released with the Application Package (App Pack) of the host application, shares a process with the host application, and has the same bundle name and lifecycle as the host application.
 > **NOTE**
 > 
-> In-app HSP: a type of HSP that is closely coupled with an application bundle name (**bundleName**) during compilation and can be used only by the specified application. This topic mainly describes in-app HSP.
+> * In-app HSP: a type of HSP that is closely coupled with an application bundle name (**bundleName**) during compilation and can be used only by the specified application.
 > 
-> [Integrated HSP](integrated-hsp.md): a type of HSP that is not coupled with specific application bundle names during building and publishing. The toolchain can automatically replace the bundle name of the integrated HSP with that of the host application and generate a new HSP as the installation package of the host application. The new HSP also belongs to the in-app HSP of the host application.
+> * [Integrated HSP](integrated-hsp.md): a type of HSP that is not coupled with specific application bundle names during building and publishing. The toolchain can automatically replace the bundle name of the integrated HSP with that of the host application and generate a new HSP as the installation package of the host application. The new HSP also belongs to the in-app HSP of the host application's HAP.
+>
+> * Unless otherwise specified, all HSPs in the guide and API reference documents are in-app HSPs by default.
+>
 
 ## Use Scenarios
 - By storing code and resource files shared by multiple HAPs/HSPs in one place, the HSP significantly improves the reusability and maintainability of the code and resource files. Better yet, because only one copy of the HSP code and resource files is retained during building and packaging, the size of the application package is effectively controlled.
@@ -22,7 +25,7 @@ A Harmony Shared Package (HSP) is a dynamic shared package that can contain code
 
 ## Constraints
 
-- An HSP must be installed and run with the HAP that depends on it. It cannot be installed or run independently on a device. Since API version 18, the HAP version must be later than or equal to the HSP version. For API version 17 and earlier versions, the HSP version must be the same as the HAP version.
+- An HSP must be installed and run with the HAP that depends on it. It cannot be installed or run independently on a device. During installation or update, a consistency verification is performed between modules. For details, see [Consistency Verification for Application Installation and Update](multi_module_installation_update_consistency_verification.md). During application packaging, validity verification is performed. For details, see [Packing Tool](../../application-dev/tools/packing-tool.md).
 - Since API version 14, HSP supports the declaration of the [UIAbility](../application-models/uiability-overview.md#declaration-configuration) component in the configuration file. However, UIAbility with entry capabilities (that is, **entity.system.home** and **ohos.want.action.home** are configured for the **skill** tag) is not supported. For details about how to configure a UIAbility, see [Adding a UIAbility to a Module](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-add-new-ability#section18658758104318). The method of starting a UIAbility in an HSP is the same as that described in [Starting UIAbility in the Same Application](../application-models/uiability-intra-device-interaction.md). For API version 13 and earlier versions, the [UIAbility](../application-models/uiability-overview.md#declaration-configuration) component cannot be declared in the configuration file.
 - Since API version 18, HSP supports the declaration of the [ExtensionAbility](../application-models/extensionability-overview.md) component in the configuration file. However, ExtensionAbility with entry capabilities (that is, **entity.system.home** and **ohos.want.action.home** are configured for the **skill** tag) is not supported. For details about how to configure an ExtensionAbility in an HSP, see [Adding an ExtensionAbility to a Module](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-add-new-ability#section18891639459). For API version 17 and earlier versions, the [ExtensionAbility](../application-models/extensionability-overview.md) component cannot be declared in the configuration file.
 - An HSP can depend on other HARs or HSPs, and can be depended on or integrated by HAPs or HSPs. However, cyclic dependency and dependency transfer are not supported.
@@ -137,11 +140,11 @@ if you use **Image("../../resources/base/media/example.png")**, the image actual
 
 ```ts
 // library/src/main/ets/pages/Index.ets
-// Correct
+// Correct case
 Image($r('app.media.example'))
   .id('example')
   .borderRadius('48px')
-// Incorrect
+// Incorrect case
 Image("../../resources/base/media/example.png")
   .id('example')
   .borderRadius('48px')
@@ -191,6 +194,7 @@ export { ResManager } from './src/main/ets/ResManager';
 export { nativeMulti } from './src/main/ets/utils/nativeTest';
 ```
 The APIs can be used as follows in the code of the invoking module:
+<!--deprecated_code_no_check-->
 ```ts
 // entry/src/main/ets/pages/index.ets
 import { Log, add, MyTitleBar, ResManager, nativeMulti } from 'library';
@@ -273,7 +277,7 @@ struct Index {
           application.createModuleContext(this.getUIContext()?.getHostContext(), "library").then((context:Context)=>{
               context.resourceManager.getStringValue(ResManager.getDesc().id)
               .then(value => {
-                console.log('getStringValue is ' + value);
+                console.info('getStringValue is ' + value);
                 this.message = 'getStringValue is ' + value;
               })
               .catch((err: BusinessError) => {
@@ -433,7 +437,7 @@ Configure the **route_map.json** file in the **library/src/main/module.json5** f
     ],
     "deliveryWithInstall": true,
     "pages": "$profile:main_pages",
-    "routerMap": "$profile:route_map" // Added file.
+    "routerMap": "$profile:route_map" // Added configuration, which points to the route_map.json file.
   }
 }
 ```

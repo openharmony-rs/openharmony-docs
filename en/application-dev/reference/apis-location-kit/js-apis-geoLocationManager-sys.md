@@ -1,4 +1,10 @@
 # @ohos.geoLocationManager (Geolocation Manager) (System API)
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @liu-binjun-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @mhy123456789-->
+<!--Adviser: @RayShih-->
 
 The **geoLocationManager** module provides location services such as Global Navigation Satellite System (GNSS)-based positioning, network positioning, geofencing, as well as geocoding and reverse geocoding.
 
@@ -77,8 +83,8 @@ Defines the configuration of the mock reverse geocoding function.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| location |  [ReverseGeoCodeRequest](js-apis-geoLocationManager.md#reversegeocoderequest) | No| No| Latitude and longitude information.|
-| geoAddress |  [GeoAddress](#geoaddress) | No| No|Geographical name.|
+| location |  [ReverseGeoCodeRequest](js-apis-geoLocationManager.md#reversegeocoderequest) | No| No| Latitude and longitude information. **System API**: This is a system API.|
+| geoAddress |  [GeoAddress](#geoaddress) | No| No|Geographical name. **System API**: This is a system API.|
 
 
 ## LocationMockConfig
@@ -91,8 +97,8 @@ Defines the configuration of the mock location switch.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| timeInterval | number | No| No| Time interval at which mock locations are reported, in seconds.|
-| locations | Array&lt;[Location](#location)&gt; | No| No| Array of mocked locations.|
+| timeInterval | number | No| No| Time interval at which mock locations are reported, in seconds. **System API**: This is a system API.|
+| locations | Array&lt;[Location](#location)&gt; | No| No| Array of mocked locations. **System API**: This is a system API.|
 
 ## LocatingRequiredDataConfig<sup>10+</sup>
 
@@ -104,10 +110,23 @@ Defines the configuration for obtaining the required data of the location servic
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| type | [LocatingRequiredDataType](#locatingrequireddatatype10) | No| No| Type of the required data.|
-| needStartScan |  boolean | No| No| **true**: Scanning needs to be initiated.<br>**false**: Scanning does not need to be initiated.|
-| scanInterval |  number | No| Yes| Scanning interval, in milliseconds. The specified value must be greater than **0**. The default value is **10000**.|
-| scanTimeout |  number | No| Yes| Scanning timeout interval, in milliseconds. The value ranges from **0** to **600000**. The default value is **10000**.|
+| type | [LocatingRequiredDataType](#locatingrequireddatatype10) | No| No| Type of the required data. **System API**: This is a system API.|
+| needStartScan |  boolean | No| No| **true**: Scanning needs to be initiated.<br>**false**: Scanning does not need to be initiated. **System API**: This is a system API.|
+| scanInterval |  number | No| Yes| Scanning interval, in milliseconds. The specified value must be greater than **0**. The default value is **10000**. **System API**: This is a system API.|
+| scanTimeout |  number | No| Yes| Scanning timeout interval, in milliseconds. The value ranges from **0** to **600000**. The default value is **10000**. **System API**: This is a system API.|
+
+
+## ContinuousLocationRequest<sup>12+</sup>
+
+Defines a continuous location request.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.Location.Location.Core
+
+| Name| Type| Read Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| sportsType<sup>18+</sup> | [SportsType](#sportstype18) | No| Yes| Sports type.<br>**Atomic service API**: This API can be used in atomic services since API version 18. **System API**: This is a system API.|
 
 
 ## LocatingRequiredData<sup>10+</sup>
@@ -120,8 +139,8 @@ Defines the required data of the location service, including the Wi-Fi or Blueto
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| wifiData | [WifiScanInfo](#wifiscaninfo10) | No| Yes| Wi-Fi scanning result.|
-| bluetoothData |  [BluetoothScanInfo](#bluetoothscaninfo10) | No| Yes| Bluetooth scanning result.|
+| wifiData | [WifiScanInfo](#wifiscaninfo10) | No| Yes| Wi-Fi scanning result. **System API**: This is a system API.|
+| bluetoothData |  [BluetoothScanInfo](#bluetoothscaninfo10) | No| Yes| Bluetooth scanning result. **System API**: This is a system API.|
 
 
 ## WifiScanInfo<sup>10+</sup>
@@ -134,11 +153,11 @@ Defines the Wi-Fi scanning information, including the SSID, BSSID, and RSSI of t
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | No| No| Service set identifier (SSID) of a Wi-Fi hotspot, in UTF-8 format.|
-| bssid | string | No| No| Base station subsystem identifier (BSSID) of a Wi-Fi hotspot.|
-| rssi | number | No| No| Received signal strength indicator (RSSI) of a Wi-Fi hotspot, in dBm.|
-| frequency | number | No| No| Frequency of a Wi-Fi hotspot.|
-| timestamp | number | No| No| Scanning timestamp.|
+| ssid | string | No| No| Service set identifier (SSID) of a Wi-Fi hotspot, in UTF-8 format. **System API**: This is a system API.|
+| bssid | string | No| No| Base station subsystem identifier (BSSID) of a Wi-Fi hotspot. **System API**: This is a system API.|
+| rssi | number | No| No| Received signal strength indicator (RSSI) of a Wi-Fi hotspot, in dBm. **System API**: This is a system API.|
+| frequency | number | No| No| Frequency of a Wi-Fi hotspot, in Hz. **System API**: This is a system API.|
+| timestamp | number | No| No| Scanning timestamp. **System API**: This is a system API.|
 
 
 ## BluetoothScanInfo<sup>10+</sup>
@@ -151,10 +170,10 @@ Defines the Bluetooth scanning information.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| deviceName | string | No| No| Name of a Bluetooth device.|
-| macAddress | string | No| No| MAC address of a Bluetooth device.|
-| rssi | number | No| No| Signal strength of a Bluetooth device, in dBm.|
-| timestamp | number | No| No| Scanning timestamp.|
+| deviceName | string | No| No| Name of a Bluetooth device. **System API**: This is a system API.|
+| macAddress | string | No| No| MAC address of a Bluetooth device. **System API**: This is a system API.|
+| rssi | number | No| No| Signal strength of a Bluetooth device, in dBm. **System API**: This is a system API.|
+| timestamp | number | No| No| Scanning timestamp. **System API**: This is a system API.|
 
 ## LocationPrivacyType
 
@@ -166,9 +185,9 @@ Defines the privacy statement type.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| OTHERS | 0 | Other scenarios. Reserved field.|
-| STARTUP | 1 | Privacy statement displayed in the startup wizard. The user needs to choose whether to agree with the statement.|
-| CORE_LOCATION | 2 | Privacy statement displayed when enabling the location service.|
+| OTHERS | 0 | Other scenarios. Reserved field. **System API**: This is a system API.|
+| STARTUP | 1 | Privacy statement displayed in the startup wizard. The user needs to choose whether to agree with the statement. **System API**: This is a system API.|
+| CORE_LOCATION | 2 | Privacy statement displayed when enabling the location service. **System API**: This is a system API.|
 
 ## LocatingRequiredDataType<sup>10+</sup>
 
@@ -180,8 +199,8 @@ Defines the type of the required data of the location service.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| WIFI  | 1 | Wi-Fi scanning information.|
-| BLUETOOTH | 2 | Bluetooth scanning information.|
+| WIFI  | 1 | Wi-Fi scanning information. **System API**: This is a system API.|
+| BLUETOOTH | 2 | Bluetooth scanning information. **System API**: This is a system API.|
 
 
 ## LocationIconStatus<sup>12+</sup>
@@ -194,9 +213,24 @@ Defines the location icon status.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| LOCATING_NOT_STARTED  | 0 | No location services are available and the location icon does not need to be displayed.|
-| LOCATING_STARTED | 1 | Common location is in progress, and the common location icon needs to be displayed.|
-| HD_LOCATING_STARTED | 2 | High-precision location is in progress, and the high-precision location icon needs to be displayed.|
+| LOCATING_NOT_STARTED  | 0 | No location services are available and the location icon does not need to be displayed. **System API**: This is a system API.|
+| LOCATING_STARTED | 1 | Common location is in progress, and the common location icon needs to be displayed. **System API**: This is a system API.|
+| HD_LOCATING_STARTED | 2 | High-precision location is in progress, and the high-precision location icon needs to be displayed. **System API**: This is a system API.|
+
+
+## SportsType<sup>18+</sup>
+
+Enumerates sports types.
+
+**Atomic service API**: This API can be used in atomic services since API version 18.
+
+**System capability**: SystemCapability.Location.Location.Core
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| RUNNING   | 1 |  Running.|
+| WALKING    | 2 | Walking.|
+| CYCLING     | 3 | Cycling.|
 
 
 ## geoLocationManager.on('locatingRequiredDataChange')<sup>10+</sup>
@@ -951,7 +985,7 @@ Enables the location switch for the specified system account. This API uses a pr
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | userId | number | Yes| System account ID. For details about how to obtain the system account ID, see [Obtaining All System Accounts](../../basic-services/account/manage-os-account.md#obtaining-all-system-accounts).|
+  | userId | number | Yes| System account ID. For details about how to obtain the system account ID, see [Obtaining All System Accounts](../../basic-services/account/manage-os-account-sys.md#obtaining-all-system-accounts).|
 
 **Return value**
 
@@ -1006,7 +1040,7 @@ Disables the location switch for the specified system account.
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | userId | number | Yes| System account ID. For details about how to obtain the system account ID, see [Obtaining All System Accounts](../../basic-services/account/manage-os-account.md#obtaining-all-system-accounts).|
+  | userId | number | Yes| System account ID. For details about how to obtain the system account ID, see [Obtaining All System Accounts](../../basic-services/account/manage-os-account-sys.md#obtaining-all-system-accounts).|
 
 **Error codes**
 
@@ -1047,7 +1081,7 @@ Checks whether the location switch is enabled for the specified system account.
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | userId | number | Yes| System account ID. For details about how to obtain the system account ID, see [Obtaining All System Accounts](../../basic-services/account/manage-os-account.md#obtaining-all-system-accounts).|
+  | userId | number | Yes| System account ID. For details about how to obtain the system account ID, see [Obtaining All System Accounts](../../basic-services/account/manage-os-account-sys.md#obtaining-all-system-accounts).|
 
 **Return value**
 
@@ -1062,7 +1096,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 |202 | Permission verification failed. A non-system application calls a system API. |
-|801 | Capability not supported. Failed to call ${geoLocationManager.isLocationEnabled} due to limited device capabilities.          |
+|801 | Capability not supported. Failed to call ${geoLocationManager.isLocationEnabledByUserId} due to limited device capabilities.          |
 |3301000 | The location service is unavailable. |
 
 **Example**
@@ -1107,7 +1141,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 | -------- | ---------------------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API.                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
-|801 | Capability not supported. Failed to call ${geoLocationManager.disableLocationByUserId} due to limited device capabilities.          |
+|801 | Capability not supported. Failed to call ${geoLocationManager.setLocationSwitchIgnored} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                            |
 
 **Example**

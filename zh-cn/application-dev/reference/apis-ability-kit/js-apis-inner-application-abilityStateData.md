@@ -29,7 +29,7 @@ import { appManager } from '@kit.AbilityKit';
 | bundleName              | string   | 否   | 否  | 应用Bundle名称。          |
 | abilityName            | string   | 否   | 否   | Ability名称。               |
 | uid                    | number   | 否   | 否   | 所属应用程序的UID。                  |
-| state                   | number   | 否   | 否   | Ability状态。<br>- [Stage模型](../../application-models/ability-terminology.md#stage模型)：[UIAbility](js-apis-app-ability-uiAbility.md)的状态参见[UIAbility状态](#uiability状态)；[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的状态参见[ExtensionAbility状态](#extensionability状态)。<br>- [FA模型](../../application-models/ability-terminology.md#fa模型)：参见[Ability状态](#ability状态)。                |
+| state                   | number   | 否   | 否   | Ability状态。<br>- [Stage模型](../../application-models/ability-terminology.md#stage模型)：[UIAbility](js-apis-app-ability-uiAbility.md)的状态参见[UIAbility状态](#uiability状态)；[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的状态参见[ExtensionAbility状态](#extensionability状态)；[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)的状态参见[UIExtensionAbility状态](#uiextensionability状态)。<br>- [FA模型](../../application-models/ability-terminology.md#fa模型)：参见[Ability状态](#ability状态)。                |
 | moduleName | string   | 否   | 否   | Ability所属的模块名称。    |
 | abilityType | number | 否   | 否   | [Ability类型](#ability类型)：[UIAbility](js-apis-app-ability-uiAbility.md)或[ExtensionAbility](js-apis-app-ability-extensionAbility.md)等。 |
 | isAtomicService | boolean | 否 | 否 | 判断Ability所属应用是否为原子化服务。<br>true: 是原子化服务。<br>false: 不是原子化服务。 |
@@ -54,6 +54,16 @@ import { appManager } from '@kit.AbilityKit';
 | 2    | EXTENSION_STATE_CONNECTED  | ExtensionAbility已与客户端建立连接。 |
 | 3    | EXTENSION_STATE_DISCONNECTED | ExtensionAbility与客户端断开连接。 |
 | 4    | EXTENSION_STATE_TERMINATED  | ExtensionAbility已经销毁。  |
+
+### UIExtensionAbility状态
+
+| 值   | 状态                       | 说明                   |
+| ---- | -------------------------- | ---------------------- |
+| 0    | ABILITY_STATE_CREATE       | UIExtensionAbility正在创建中。      |
+| 1    | ABILITY_STATE_READY        | UIExtensionAbility已创建完成。      |
+| 2    | ABILITY_STATE_FOREGROUND   | UIExtensionAbility处于前台。        |
+| 4    | ABILITY_STATE_BACKGROUND   | UIExtensionAbility处于后台。        |
+| 5    | ABILITY_STATE_TERMINATED   | UIExtensionAbility已经销毁。        |
 
 ### Ability状态
 

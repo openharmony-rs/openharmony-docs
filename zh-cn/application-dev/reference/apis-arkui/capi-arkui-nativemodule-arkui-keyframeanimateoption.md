@@ -1,5 +1,12 @@
 # ArkUI_KeyframeAnimateOption
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 概述
 
 定义关键帧动画参数对象。

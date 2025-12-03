@@ -4,7 +4,7 @@
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 为组件绑定Popup气泡，并设置气泡内容、交互逻辑和显示状态。
 
@@ -30,7 +30,9 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 
 >  **说明：**
 >
->  不支持在输入法类型窗口中使用子窗（showInSubwindow为true）的bindPopup，详情见输入法框架的约束与限制说明[createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+>  - 不支持在输入法类型窗口中使用子窗（showInSubwindow为true）的bindPopup，详情见输入法框架的约束与限制说明[createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+>
+>  - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

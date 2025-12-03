@@ -5,7 +5,7 @@
 <!--Owner: @zcdqs; @fangyuhao-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 网格容器中单项内容容器。
 
@@ -116,30 +116,32 @@ columnEnd(value: number)
 >
 > * 在设置columnsTemplate和rowsTemplate的Grid中，单独设置行号rowStart/rowEnd或列号columnStart/columnEnd的GridItem会按照一行一列进行布局。
 >
->  * 在只设置columnsTemplate的Grid中设置列号columnStart/columnEnd的GridItem按照列数布局。在该区域位置存在GridItem布局，则直接换行进行放置。
+> * 在只设置columnsTemplate的Grid中设置列号columnStart/columnEnd的GridItem按照列数布局。在该区域位置存在GridItem布局，则直接换行进行放置。
 >
 > * 在只设置rowsTemplate的Grid中设置行号rowStart/rowEnd的GridItem按照行数布局。在该区域位置存在GridItem布局，则直接换列进行放置。
 >
 > * columnsTemplate和rowsTemplate都不设置的Grid中GridItem的行列号属性无效。
 >  
->  以下是GridItem行列号异常值的处理规则：
+> 以下是GridItem行列号异常值的处理规则：
 >
->  | 属性设置情况  |‌异常类型| ‌修正后布局规则  |
->  | ----- |----| ------------------------ |
->  | 仅设置columnsTemplate  |  任意行列异常 | 按一行一列布局。                 |
->  | 仅设置rowsTemplate |  任意行列异常 | 按一行一列布局。 |
->  | 同时设置rows/columnsTemplate |  rowStart < rowEnd | 行跨度 = min(rowEnd-rowStart+1, 总行数)。 |
->  | 同时设置rows/columnsTemplate |  rowStart > rowEnd | 按一行一列布局。 |
->  | 同时设置rows/columnsTemplate |  columnStart < columnEnd | 列跨度 = min(columnEnd-columnStart+1, 总列数)。 |
->  | 同时设置rows/columnsTemplate |  columnStart > columnEnd | 按一行一列布局。 |
+> | 属性设置情况  | 异常类型 | ‌修正后布局规则  |
+> | ----- |----| ------------------------ |
+> | 仅设置columnsTemplate  |  任意行列异常 | 按一行一列布局。 |
+> | 仅设置rowsTemplate |  任意行列异常 | 按一行一列布局。 |
+> | 同时设置rows/columnsTemplate |  rowStart < rowEnd | 行跨度 = min(rowEnd-rowStart+1, 总行数)。 |
+> | 同时设置rows/columnsTemplate |  rowStart > rowEnd | 按一行一列布局。 |
+> | 同时设置rows/columnsTemplate |  columnStart < columnEnd | 列跨度 = min(columnEnd-columnStart+1, 总列数)。 |
+> | 同时设置rows/columnsTemplate |  columnStart > columnEnd | 按一行一列布局。 |
 
 ### forceRebuild<sup>(deprecated)</sup>
 
 forceRebuild(value: boolean)
 
-设置在触发组件build时是否重新创建此节点。GridItem会根据自身属性和子组件变化自行决定是否需要重新创建，无需设置。
+设置在触发组件build时是否重新创建此节点。
 
-从API version 9开始废弃。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。GridItem会根据自身属性和子组件变化自行决定是否需要重新创建，无需设置。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -242,7 +244,7 @@ GridItem通过设置合理的ColumnStart、ColumnEnd、RowStart、RowEnd属性�
 @Entry
 @Component
 struct GridItemExample {
-  @State numbers: string[] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
+  @State numbers: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'];
 
   build() {
     Column() {
@@ -351,4 +353,4 @@ struct GridItemExample {
 }
 ```
 
-![zh-ch_image_griditem_griditemoptions](figures/zh-ch_image_griditem_griditemoptions.png)
+![zh-cn_image_griditem_griditemoptions](figures/zh-cn_image_griditem_griditemoptions.png)

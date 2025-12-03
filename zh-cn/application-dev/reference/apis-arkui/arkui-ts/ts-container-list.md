@@ -5,17 +5,33 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 列表包含一系列相同宽度的列表项。适合连续、多行呈现同类数据，例如图片和文本。
+
+List的懒加载是指组件按需加载可见区域可见的子组件。相比全量加载，使用懒加载可以提升应用启动速度，减少内存消耗。List和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，懒加载能力存在差异：
+
+ - 当List和ForEach结合，会一次性创建所有的子节点，在需要的时候布局和渲染屏幕范围内的节点。当用户滑动时，划出屏幕范围的节点不会下树销毁，划入屏幕范围的节点会布局和渲染。
+
+ - 当List和LazyForEach结合，会一次性创建、布局、渲染屏幕范围的节点。当用户滑动时，划出屏幕范围的节点会下树销毁，划入屏幕范围的节点会创建、布局、渲染。
+
+ - 当List和带[virtualScroll](./ts-rendering-control-repeat.md#virtualscroll)的Repeat结合，它的懒加载行为和LazyForEach一致。当List和不带virtualScroll的Repeat结合，它的懒加载行为和ForEach一致。
+
+如果可滚动组件嵌套List组件，并且滚动方向相同，List组件又没有设置主轴尺寸时，List组件会全量加载子组件，导致懒加载失效。该场景推荐使用List嵌套[ListItemGroup](ts-container-listitemgroup.md)组件以实现优化性能。
+
+List的预加载是指除了加载显示区域可见区域外子组件外，还支持空闲时隙提前加载部分显示区域外不可见的子组件。使用预加载可以减少滚动丢帧，提升流畅性。预加载需要结合懒加载才会生效。List支持通过[cachedCount](#cachedcount)设置预加载的数量。默认会预加载显示区域上下各一屏子节点（最大预加载16行子节点）。List和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，预加载能力存在差异：
+
+ - 当List和ForEach结合，如果设置了cachedCount，除了会布局显示区域内子组件外，还会在空闲时隙预布局显示区域外cachedCount范围内的子节点。
+
+ - 当List和LazyForEach结合，如果设置了cachedCount，除了会创建和布局显示区域内子组件外，还会在空闲时隙预创建和预布局显示区域外cachedCount范围内的子节点。
+
+ - 当List和带[virtualScroll](./ts-rendering-control-repeat.md#virtualscroll)的Repeat结合，它的预加载行为和LazyForEach一致。当List和不带virtualScroll的Repeat结合，它的预加载行为和ForEach一致。
 
 > **说明：**
 >
 > 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](ts-gesture-blocking-enhancement.md)进行处理。
-
-
 
 ## 子组件
 
@@ -25,6 +41,8 @@
 > **说明：**
 >
 > 如果在处理大量子组件时遇到卡顿问题，请考虑采用懒加载、缓存列表项、动态预加载、组件复用和布局优化等方法来进行优化。最佳实践请参考[优化长列表加载慢丢帧问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-best-practices-long-list)。
+>
+> 从API version 21开始，List单个子组件的宽高最大为16777216px；API version 20及之前，List单个子组件的宽高最大为1000000px。子组件超出该大小可能导致滚动或显示异常。
 >
 > List的子组件的索引值计算规则：
 >
@@ -39,9 +57,6 @@
 > - ListItemGroup作为一个整体计算一个索引值，ListItemGroup内部的ListItem不计算索引值。
 >
 > - List子组件visibility属性设置为Hidden或None依然会计算索引值。
->
-> - 从API version 21开始，List单个子组件的宽高最大为16777216px；API version 20及之前，List单个子组件的宽高最大为1000000px。子组件超出该大小可能导致滚动或显示异常。
-
 
 ## 接口
 
@@ -272,11 +287,11 @@ lanes(value: number | LengthConstrain, gutter?: Dimension)
 
 规则如下：
 
-- lanes为指定的数量时，列宽由List组件的交叉轴尺寸除以列数得到。
-- lanes设置了{minLength，maxLength}时，根据List组件的宽度自适应决定lanes数量（即列数），保证缩放过程中lane的宽度符合{minLength，maxLength}的限制。其中，minLength条件会被优先满足，即优先保证ListItem的交叉轴尺寸符合最小限制。
-- lanes设置了{minLength，maxLength}，如果父组件交叉轴方向尺寸约束为无穷大时，固定按一列排列，List的列宽等于显示区域内最大的ListItem的列宽。
+- value为number类型时，指定列数或行数，列宽由List组件的交叉轴尺寸除以列数得到。
+- value为LengthConstrain类型时，指定最小和最大的列数或者行数，即lanes的value参数设置为{minLength，maxLength}会根据List组件的宽度自适应决定lanes数量（即列数），保证缩放过程中列的宽度符合{minLength，maxLength}的限制。其中，minLength条件会被优先满足，即优先保证ListItem的交叉轴尺寸符合最小限制。
+ - lanes的value参数设置为{minLength，maxLength}，如果父组件交叉轴方向尺寸约束为无穷大时，固定按一列排列，List的列宽等于显示区域内最大的ListItem的列宽。
 - &nbsp;ListItemGroup在多列模式下也是独占一行，ListItemGroup中的ListItem按照List组件的lanes属性设置值来布局。
-- lanes设置了{minLength，maxLength}时，计算ListItemGroup中的列数时会按照ListItemGroup的交叉轴尺寸计算。当ListItemGroup交叉轴尺寸与List交叉轴尺寸不一致时ListItemGroup中的列数与List中的列数可能不一样。
+- lanes的value参数设置为{minLength，maxLength}时，计算ListItemGroup中的列数时会按照ListItemGroup的交叉轴尺寸计算。当ListItemGroup交叉轴尺寸与List交叉轴尺寸不一致时ListItemGroup中的列数与List中的列数可能不一样。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -797,6 +812,10 @@ onItemDragStart(event: (event: ItemDragInfo, itemIndex: number) => ((() => any) 
 
 不支持拖动到List边缘时触发List的自动滚动，可以使用ForEach、LazyForEach、Repeat的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口实现该效果，参考[示例12（使用OnMove进行拖拽）](#示例12使用onmove进行拖拽)。但需注意[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口不支持跨ListItemGroup拖拽。
 
+>**说明：**
+>
+> 从API version 14开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1123,6 +1142,10 @@ type OnScrollVisibleContentChangeCallback = (start: VisibleListContentInfo, end:
 start和end的index同时返回-1，代表List从有数据变成空的List。
 
 start和end的index同时返回0，代表List内只有一个子组件。
+
+>**说明：**
+>
+> 从API version 14开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1707,7 +1730,7 @@ struct ListItemGroupExample {
 ];
   private scroller: ListScroller = new ListScroller();
   @State listIndexInfo: VisibleListContentInfo = { index: -1 };
-  @State mess:string = "null";
+  @State mess:string = 'null';
   @State itemBackgroundColorArr: boolean[] = [false];
   @Builder
   itemHead(text: string) {
@@ -1720,7 +1743,7 @@ struct ListItemGroupExample {
 
   @Builder
   itemFoot(num: number) {
-    Text('共' + num + "节课")
+    Text('共' + num + '节课')
       .fontSize(16)
       .backgroundColor(0xAABBCC)
       .width('100%')
@@ -1870,7 +1893,7 @@ struct ListExample {
 
 ### 示例9（设置折行走焦）
 
-该示例通过focusWrapMode接口，实现了List组件方向键走焦换行效果。
+从API version 20开始，该示例通过[focusWrapMode](#focuswrapmode20)接口，实现了List组件方向键走焦换行效果。
 
 ```ts
 @Entry
@@ -1964,7 +1987,7 @@ struct ListExample {
 
 ### 示例11（设置滚动条的边距）
 
-该示例展示了在设置了[contentStartOffset](#contentstartoffset11)、[contentEndOffset](#contentendoffset11)属性的情况下，设置滚动条边距的效果。
+从API version 20开始，该示例展示了通过[scrollBarMargin](./ts-container-scrollable-common.md#scrollbarmargin20)属性设置滚动条边距并避让[contentStartOffset](#contentstartoffset11)、[contentEndOffset](#contentendoffset11)区域的效果。
 
 ```ts
 // xxx.ets
