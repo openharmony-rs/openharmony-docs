@@ -1,4 +1,10 @@
 # button
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyi0309-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -139,10 +145,10 @@ export default {
     downloadText: "Download"
   },
   progress(e) {
-    this.count+= 10;
-    this.downloadText = this.count+ "%";
+    this.count += 10;
+    this.downloadText = this.count + "%";
     this.$element('download-btn').setProgress({ progress: this.count});
-    if (this.count>= 100) {
+    if (this.count >= 100) {
       this.downloadText = "Done";
     }
   }

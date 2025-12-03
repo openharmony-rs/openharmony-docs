@@ -1,4 +1,10 @@
 # swiper
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **\<swiper>** component provides a container that allows users to switch among child components using swipe gestures.
 
@@ -17,7 +23,7 @@ All child components except **\<list>** are supported.
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | index | number | 0 | No| Index of the child component currently displayed in the container.|
-| loop | boolean | true | No| Whether to enable looping. |
+| loop | boolean | true | No| Whether to enable looping. **true** to enable, **false** otherwise.|
 | duration | number | - | No| Duration of the autoplay for child component switching.|
 | vertical | boolean | false | No| Whether the swipe gesture is performed vertically. A vertical swipe uses the vertical indicator.<br>The value cannot be dynamically updated.|
 | id | string | - | No| Unique ID of the component.|
@@ -54,22 +60,27 @@ All child components except **\<list>** are supported.
 | display | string | flex | No| How and whether to display the box containing an element. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
 | [left\|top] | &lt;length&gt; \| &lt;percentage&gt;<sup>6+</sup> | - | No| Edge of the element.<br>- **left**: left edge position of the element. This attribute defines the offset between the left edge of the margin area of a positioned element and left edge of its containing block.<br>- **top**: top edge position of the element. This attribute defines the offset between the top edge of a positioned element and that of a block included in the element. |
 
+## Methods
+
+| Name| Parameter| Description|
+| -------- | -------- | -------- |
+| rotation | {&nbsp;focus:&nbsp;boolean&nbsp;} | Specifies whether to request focus for crown rotation. **focus: true**: acquires focus, allowing users to scroll options by rotating the crown (only works for single-column pickers). **focus: false**: releases focus.|
 
 ## Example
 
 
 ```html
 <!-- xxx.hml -->
-<swiper class="container" index="{{index}}">
-  <div class="swiper-item primary-item">
-    <text>1</text>
-  </div>
-  <div class="swiper-item warning-item">
-    <text>2</text>
-  </div>
-  <div class="swiper-item success-item">
-    <text>3</text>
-  </div>
+<swiper class="container" index="{{index}}" ref="swiperObj">
+    <div class="swiper-item primary-item">
+        <text>1</text>
+    </div>
+    <div class="swiper-item warning-item">
+        <text>2</text>
+    </div>
+    <div class="swiper-item success-item">
+        <text>3</text>
+    </div>
 </swiper>
 ```
 
@@ -103,9 +114,12 @@ All child components except **\<list>** are supported.
 ```js
 /* xxx.js */
 export default {
-  data: {
-    index: 1
-  }
+    data: {
+        index: 1
+    },
+    onShow() {
+        this.$refs.swiperObj.rotation({focus: true});
+    }
 }
 ```
 
