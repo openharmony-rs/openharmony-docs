@@ -826,7 +826,7 @@ function registerResourcePath(): void {
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| shadowResolution<sup>23+</sup> | Vec2 | 否 | 是 | 表示全局阴影贴图分辨率。默认值为undefined，表示阴影贴图分辨率设置为1024 * 1024。
+| shadowResolution<sup>23+</sup> | Vec2 | 否 | 是 | 表示全局阴影贴图分辨率。未设置时的默认值为undefined，表示阴影贴图分辨率设置为1024 * 1024。输入的x与y的值需要大于0才能正确生效。
 
 ## RenderParameters<sup>15+</sup>
 渲染参数接口。
@@ -849,7 +849,7 @@ function registerResourcePath(): void {
 | environment | [Environment](js-apis-inner-scene-resources.md#environment) | 否 | 否 | 环境对象。 |
 | animations | [Animation](js-apis-inner-scene-resources.md#animation)[] | 是 | 否 | 动画数组，用于保存3D场景中的动画对象。|
 | root | [Node](js-apis-inner-scene-nodes.md#node) \| null | 是 | 否 | 3D场景树根结点。 |
-| renderConfiguration | [RenderConfiguration](#renderconfiguration23)  | 是 | 否 | 渲染配置设置 |
+| renderConfiguration | [RenderConfiguration](#renderconfiguration23)  | 是 | 否 | 渲染配置 |
 
 ### load
 static load(uri?: ResourceStr): Promise\<Scene>
