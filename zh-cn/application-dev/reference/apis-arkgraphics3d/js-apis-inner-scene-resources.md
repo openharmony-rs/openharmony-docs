@@ -204,13 +204,13 @@ function destroy(): void {
 
 ## UnlitShadowAlphaMaterial<sup>23+</sup>
 
-仅对阴影进行绘制，当材质开启blend属性，与背景融合模拟透明材质效果，继承自[Material](#material)。
+此材质继承自[Material](#material)，仅绘制材质表面阴影。材质启用blend属性时，可与背景融合模拟透明效果。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| baseColor | [MaterialProperty](#materialproperty20) | 否 | 否 | 基础颜色属性，仅对阴影进行绘制，当材质开启blend属性，与背景融合模拟透明材质效果。<br>**系统接口：** 此接口为系统接口。|
+| baseColor | [MaterialProperty](#materialproperty20) | 否 | 否 | 仅绘制材质表面阴影。材质启用blend属性时，可与背景融合模拟透明效果。<br>**系统接口：** 此接口为系统接口。|
 
 ## SamplerFilter<sup>20+</sup>
 采样器过滤模式枚举，定义纹理采样时的插值方法，用于控制纹理在缩放或变形时如何计算最终像素的颜色值。
