@@ -208,15 +208,15 @@ See 'hiperf help [command]' for more information on a specific command.
 > 
 > 以包名com.example.myapplication为例，可执行如下命令查询：
 > 
-> ```shell
-> hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
-> ```
+>   ```shell
+>   hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
+>   ```
 > 
 > 如包名对应的应用是可调试应用，预期返回信息如下：
 > 
-> ```shell
-> "appProvisionType": "debug",
-> ```
+>   ```shell
+>   "appProvisionType": "debug",
+>   ```
 > 
 > 构建可调试应用需要使用调试证书进行签名，申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
 
