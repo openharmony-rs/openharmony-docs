@@ -26,10 +26,10 @@ import { bundleManager } from '@kit.AbilityKit';
 
 | 名称       | 类型                           | 只读 | 可选 | 说明                   |
 | ---------- | ------------------------------ | ---- | ---- | ---------------------- |
-| bundleName | string                         | 是   | 否   | 应用包的名称。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
-| moduleName | string                         | 是   | 否   | 模块名称。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
-| labelId    | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 是   | 否   | 模块标签的资源ID值。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
-| iconId     | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 是   | 否   | 模块图标的资源ID值。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
-| systemApp<sup>12+</sup>       | boolean                        | 是   | 否   | 标识应用是否为系统应用，取值为true表示系统应用，取值为false表示非系统应用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| bundleType<sup>12+</sup>       |[BundleType](js-apis-bundleManager.md#bundletype)             | 是   | 否   | 标识包的类型，取值为APP（应用）或者ATOMIC_SERVICE（原子化服务）。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| codePaths<sup>12+</sup>        | Array\<string>                 | 是   | 否   | 应用程序的安装目录。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| bundleName | string                         | 是   | 否   | 应用包的名称。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| moduleName | string                         | 是   | 否   | 模块名称。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| labelId    | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 是   | 否   | 模块标签的资源ID值。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| iconId     | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 是   | 否   | 模块图标的资源ID值。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| systemApp<sup>12+</sup>       | boolean                        | 是   | 否   | 标识应用是否为系统应用，取值为true表示系统应用，取值为false表示非系统应用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| bundleType<sup>12+</sup>       |[BundleType](js-apis-bundleManager.md#bundletype)             | 是   | 否   | 标识包的类型，取值为APP（应用）或者ATOMIC_SERVICE（原子化服务）。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| codePaths<sup>12+</sup>        | Array\<string>                 | 是   | 否   | 应用程序的安装目录。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |

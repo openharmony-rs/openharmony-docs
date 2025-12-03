@@ -30,7 +30,7 @@ setOverlayEnabledByBundleName(bundleName: string, moduleName: string, isEnabled:
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
@@ -122,7 +122,7 @@ setOverlayEnabledByBundleName(bundleName: string, moduleName: string, isEnabled:
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
@@ -187,7 +187,7 @@ getOverlayModuleInfoByBundleName(bundleName: string, moduleName?: string): Promi
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
@@ -252,7 +252,7 @@ getOverlayModuleInfoByBundleName(bundleName: string, moduleName: string, callbac
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
@@ -315,7 +315,7 @@ getOverlayModuleInfoByBundleName(bundleName: string, callback: AsyncCallback\<Ar
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
@@ -374,7 +374,7 @@ getTargetOverlayModuleInfosByBundleName(targetBundleName: string, moduleName?: s
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
@@ -439,7 +439,7 @@ getTargetOverlayModuleInfosByBundleName(targetBundleName: string, moduleName: st
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
@@ -502,7 +502,7 @@ getTargetOverlayModuleInfosByBundleName(targetBundleName: string, callback: Asyn
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 

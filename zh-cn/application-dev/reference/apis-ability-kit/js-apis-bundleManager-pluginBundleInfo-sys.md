@@ -23,7 +23,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
  
 **系统接口：** 此接口为系统接口。
 
@@ -45,7 +45,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 

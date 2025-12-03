@@ -22,7 +22,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 | 名称     | 类型   | 只读 | 可选 | 说明       |
 | -------- | ------ | ---- | ---- | ---------- |
-| name     | string | 否   | 否   | 元数据名称。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
-| value    | string | 否   | 否   | 元数据值。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
-| resource | string | 否   | 否   | 元数据资源描述符，参考示例$profile:config_file，表示profile目录下配置了config_file.json文件。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
-| valueId<sup>18+</sup>  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 是   | 元数据值id。当valueId不为0时，表示当前元数据值为自定义配置，需要使用valueId去资源管理获取对应的值。 当valueId为0时，表示当前元数据值为固定字符串。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22 |
+| name     | string | 否   | 否   | 元数据名称。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| value    | string | 否   | 否   | 元数据值。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| resource | string | 否   | 否   | 元数据资源描述符，参考示例$profile:config_file，表示profile目录下配置了config_file.json文件。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| valueId<sup>18+</sup>  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 是   | 元数据值id。当valueId不为0时，表示当前元数据值为自定义配置，需要使用valueId去资源管理获取对应的值。 当valueId为0时，表示当前元数据值为固定字符串。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |

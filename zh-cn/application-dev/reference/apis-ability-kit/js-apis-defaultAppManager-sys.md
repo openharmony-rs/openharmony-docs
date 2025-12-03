@@ -29,7 +29,7 @@ ArkTS-Sta: getDefaultApplication(type: string, userId?: int): Promise\<BundleInf
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
@@ -136,7 +136,7 @@ ArkTS-Sta: getDefaultApplication(type: string, userId: int, callback: AsyncCallb
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
@@ -240,7 +240,7 @@ getDefaultApplication(type: string, callback: AsyncCallback\<BundleInfo>) : void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
@@ -340,7 +340,7 @@ ArkTS-Sta: getDefaultApplicationSync(type: string, userId?: int): BundleInfo
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
@@ -412,7 +412,7 @@ ArkTS-Sta: setDefaultApplication(type: string, elementName: ElementName, userId?
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
@@ -555,7 +555,7 @@ ArkTS-Sta: setDefaultApplication(type: string, elementName: ElementName, userId:
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
@@ -684,7 +684,7 @@ setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCal
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
@@ -810,7 +810,7 @@ ArkTS-Sta: setDefaultApplicationSync(type: string, elementName: ElementName, use
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
@@ -901,7 +901,7 @@ ArkTS-Sta: resetDefaultApplication(type: string, userId?: int): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
@@ -1010,7 +1010,7 @@ ArkTS-Sta: resetDefaultApplication(type: string, userId: int, callback: AsyncCal
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
@@ -1113,7 +1113,7 @@ resetDefaultApplication(type: string, callback: AsyncCallback\<void>) : void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
@@ -1212,7 +1212,7 @@ ArkTS-Sta: resetDefaultApplicationSync(type: string, userId?: int): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：**  此接口为系统接口。
 
