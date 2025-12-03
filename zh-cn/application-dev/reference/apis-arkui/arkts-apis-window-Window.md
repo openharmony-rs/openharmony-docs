@@ -9966,7 +9966,7 @@ try {
 
 convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, value: int): int
 
-转换窗口和屏幕的方向和角度。
+提供窗口方向、屏幕方向、屏幕角度互相转换的能力。
 
 窗口的方向分别用0、1、2和3表示竖屏、反向横屏、反向竖屏和横屏四个方向，其和枚举类[Orientation](arkts-apis-window-e.md#orientation9)中各显示模式的方向是一致的，如窗口方向为横屏时，和Orientation设置为LANDSCAPE的方向是一致的。
 屏幕的方向和角度分别为[display](js-apis-display.md#display)对象的orientation和rotation属性。
@@ -9983,12 +9983,12 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 
 **错误码：**
 
-以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                       |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.    |
 | 1300003  | This window manager service works abnormally.        |
 
 **示例：**
