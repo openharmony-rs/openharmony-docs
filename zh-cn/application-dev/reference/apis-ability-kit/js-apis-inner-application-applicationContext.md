@@ -34,7 +34,7 @@ on(type: 'abilityLifecycle', callback: AbilityLifecycleCallback): number
 
 | 参数名                   | 类型     | 必填 | 说明                           |
 | ------------------------ | -------- | ---- | ------------------------------ |
-| type | 'abilityLifecycle' | 是   | 此类型表示应用内UIAbility的生命周期。 |
+| type | string | 是   | 此类型表示应用内UIAbility的生命周期，固定为'abilityLifecycle'。 |
 | callback | [AbilityLifecycleCallback](js-apis-app-ability-abilityLifecycleCallback.md) | 是   | UIAbility生命周期变化时触发的回调方法。 |
 
 **返回值：**
@@ -122,7 +122,7 @@ off(type: 'abilityLifecycle', callbackId: number,  callback: AsyncCallback\<void
 
 | 参数名        | 类型     | 必填 | 说明                       |
 | ------------- | -------- | ---- | -------------------------- |
-| type | 'abilityLifecycle' | 是   | 此类型表示应用内UIAbility的生命周期。 |
+| type | string | 是   | 此类型表示应用内UIAbility的生命周期，固定为'abilityLifecycle'。 |
 | callbackId    | number   | 是   | 通过[ApplicationContext.on('abilityLifecycle')](#applicationcontextonabilitylifecycle)接口注册监听应用内UIAbility的生命周期时返回的ID。 |
 | callback | AsyncCallback\<void> | 是   | 回调方法。当取消监听应用内生命周期成功，err为undefined，否则为错误对象。   |
 
@@ -175,7 +175,7 @@ off(type: 'abilityLifecycle', callbackId: number): Promise\<void>
 
 | 参数名        | 类型     | 必填 | 说明                       |
 | ------------- | -------- | ---- | -------------------------- |
-| type | 'abilityLifecycle' | 是   | 此类型表示应用内UIAbility的生命周期。 |
+| type | string | 是   | 此类型表示应用内UIAbility的生命周期，固定为'abilityLifecycle'。 |
 | callbackId    | number   | 是   | 通过[ApplicationContext.on('abilityLifecycle')](#applicationcontextonabilitylifecycle)接口注册监听应用内UIAbility的生命周期时返回的ID。 |
 
 **返回值：**
@@ -232,7 +232,7 @@ on(type: 'environment', callback: EnvironmentCallback): number
 
 | 参数名                   | 类型     | 必填 | 说明                           |
 | ------------------------ | -------- | ---- | ------------------------------ |
-| type | 'environment' | 是   | 此类型表示系统环境变化，如系统深浅色发生变化。 |
+| type | string | 是   | 此类型表示系统环境变化，如系统深浅色发生变化，固定为'environment'。 |
 | callback | [EnvironmentCallback](js-apis-app-ability-environmentCallback.md) | 是   | 系统环境变化时触发的回调方法。 |
 
 **返回值：**
@@ -295,7 +295,7 @@ off(type: 'environment', callbackId: number,  callback: AsyncCallback\<void>): v
 
 | 参数名         | 类型     | 必填 | 说明                       |
 | ------------- | -------- | ---- | -------------------------- |
-| type | 'environment' | 是   | 此类型表示系统环境变化，如系统深浅色发生变化。 |
+| type | string | 是   | 此类型表示系统环境变化，如系统深浅色发生变化，固定为'environment'。 |
 | callbackId    | number   | 是   | 通过[ApplicationContext.on('environment')](#applicationcontextonenvironment)接口注册监听系统环境变化时返回的ID。 |
 | callback | AsyncCallback\<void> | 是   | 回调方法。当取消对系统环境变化的监听成功，err为undefined，否则为错误对象。   |
 
@@ -347,7 +347,7 @@ off(type: 'environment', callbackId: number): Promise\<void\>
 
 | 参数名         | 类型     | 必填 | 说明                       |
 | ------------- | -------- | ---- | -------------------------- |
-| type | 'environment' | 是   | 此类型表示系统环境变化，如系统深浅色发生变化。 |
+| type | string | 是   | 此类型表示系统环境变化，如系统深浅色发生变化，固定为'environment'。 |
 | callbackId    | number   | 是   | 通过[ApplicationContext.on('environment')](#applicationcontextonenvironment)接口注册监听系统环境变化时返回的ID。 |
 
 **返回值：**
@@ -398,7 +398,7 @@ on(type: 'applicationStateChange', callback: ApplicationStateChangeCallback): vo
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| type     | 'applicationStateChange'                                     | 是   | 此类型表示当前应用进程状态变化。 |
+| type     | string                                   | 是   | 此类型表示当前应用进程状态变化，固定为'applicationStateChange'。 |
 | callback | [ApplicationStateChangeCallback](js-apis-app-ability-applicationStateChangeCallback.md) | 是   | 当前应用进程状态切换时触发的回调方法。 |
 
 **错误码**：
@@ -454,7 +454,7 @@ off(type: 'applicationStateChange', callback?: ApplicationStateChangeCallback): 
 
 | 参数名 | 类型          | 必填 | 说明                 |
 | ------ | ------------- | ---- | -------------------- |
-| type   | 'applicationStateChange' | 是   | 此类型表示当前应用进程状态变化。 |
+| type   |  string                                   | 是   | 此类型表示当前应用进程状态变化，固定为'applicationStateChange'。 |
 | callback | [ApplicationStateChangeCallback](js-apis-app-ability-applicationStateChangeCallback.md) | 否   | 回调函数。取值可以为使用[ApplicationContext.on('applicationStateChange')](#applicationcontextonapplicationstatechange10)方法定义的callback回调，也可以为空。<br/>-&nbsp;如果传入已定义的回调，则取消该监听。 <br/>-&nbsp;如果未传入参数，则取消所有已注册的该类型事件的监听。  |
 
 **错误码**：
