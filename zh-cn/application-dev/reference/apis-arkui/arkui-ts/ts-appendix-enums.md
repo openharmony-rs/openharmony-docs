@@ -61,18 +61,20 @@
 
 ## AnimationStatus
 
+用于动画播放状态。
+
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 说明        |
-| ------- | --------- |
-| Initial | 动画初始状态。   |
-| Running | 动画处于播放状态。 |
-| Paused  | 动画处于暂停状态。 |
-| Stopped | 动画处于停止状态。 |
+| 名称      |值| 说明        |
+| ------- |-| --------- |
+| Initial |0| 动画初始状态。   |
+| Running |1| 动画处于播放状态。 |
+| Paused  |2| 动画处于暂停状态。 |
+| Stopped |3| 动画处于停止状态。 |
 
 ## AppRotation<sup>12+</sup>
 
@@ -445,18 +447,20 @@
 
 ## FillMode
 
+设置当前播放方向下，动画开始前和结束后的状态。动画结束后的状态由fillMode和reverse属性共同决定。例如，fillMode为Forwards表示停止时维持动画最后一个关键帧的状态，若reverse为false则维持正播的最后一帧，即最后一张图，若reverse为true则维持逆播的最后一帧，即第一张图。
+
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        | 说明                                       |
-| --------- | ---------------------------------------- |
-| None      | 动画未执行时，不应用任何样式到目标；播放完成后，恢复初始默认状态。     |
-| Forwards  | 目标将保留动画执行期间最后一个关键帧的状态。                   |
-| Backwards | 动画应用于目标时，立即采用第一个关键帧定义的值，并在delay期间保留此值。第一个关键帧取决于playMode，playMode为Normal或Alternate时，帧为from状态；playMode为Reverse或AlternateReverse时，帧为to状态。 |
-| Both      | 动画将遵循Forwards和Backwards的规则，从而在两个方向上扩展动画属性。 |
+| 名称        |值| 说明                                       |
+| --------- |-| ---------------------------------------- |
+| None      |0| 动画未执行时，不应用任何样式到目标；播放完成后，恢复初始默认状态。     |
+| Forwards  |1| 目标将保留动画执行期间最后一个关键帧的状态。                   |
+| Backwards |2| 动画应用于目标时，立即采用第一个关键帧定义的值，并在delay期间保留此值。第一个关键帧取决于playMode，playMode为Normal或Alternate时，帧为from状态；playMode为Reverse或AlternateReverse时，帧为to状态。 |
+| Both      |3| 动画将遵循Forwards和Backwards的规则，从而在两个方向上扩展动画属性。 |
 
 ## FlexAlign
 
@@ -664,6 +668,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## ImageFit
 
+用于设置图片填充效果。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称        | 值    | 说明                              |
@@ -704,20 +710,24 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## ImageRepeat
 
+用于设置图片重复样式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称       | 说明            |
-| -------- | ------------- |
-| X        | 只在水平轴上重复绘制图片。 |
-| Y        | 只在垂直轴上重复绘制图片。 |
-| XY       | 在两个轴上重复绘制图片。  |
-| NoRepeat | 不重复绘制图片。      |
+| 名称       |值| 说明            |
+| -------- |-| ------------- |
+| NoRepeat |0| 不重复绘制图片。      |
+| X        |1| 只在水平轴上重复绘制图片。 |
+| Y        |2| 只在垂直轴上重复绘制图片。 |
+| XY       |3| 在两个轴上重复绘制图片。  |
 
 ## ImageSize
+
+用于设置图片宽高效果。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -864,7 +874,7 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | Release |   -   | 鼠标按键释放。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Move    |   -   | 鼠标移动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | Hover   |   -   | 鼠标悬浮。<br/>**说明：** 该枚举值无效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| CANCEL<sup>18+</sup>  |  13  | 鼠标按键取消。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| CANCEL<sup>18+</sup>  |  13  | 鼠标按键取消。通常在以下场景触发：<br/>1. 组件失去焦点：当前持有焦点的组件因系统事件（如弹窗打断、应用切换）失去焦点时，会触发该动作。<br/>2. 事件中断：鼠标操作过程中发生更高优先级事件（如系统级手势或强制回收事件流），导致当前鼠标操作被强制终止。<br/>3. 异常状态退出：如组件销毁、渲染环境异常等场景下，未完成的鼠标事件会被标记为取消。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## ModifierKey<sup>10+</sup>
 
