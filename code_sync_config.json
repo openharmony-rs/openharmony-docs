@@ -11320,11 +11320,6 @@
 						"end_line":84,
 						"name":"changing_data_sub_properties",
 						"start_line":16
-					},
-					{
-						"end_line":79,
-						"name":"basic_data_source",
-						"start_line":17
 					}
 				]
 			},
@@ -11434,6 +11429,16 @@
 					{
 						"end_line":91,
 						"name":"basic_data_source_string",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/GenericBasicDataSource.ets",
+				"functions":[
+					{
+						"end_line":86,
+						"name":"generic_basic_data_source",
 						"start_line":16
 					}
 				]
