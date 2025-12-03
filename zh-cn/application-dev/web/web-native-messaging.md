@@ -299,7 +299,7 @@ function sendMessageToNative() {
          // uri固定格式，datashardporxy://[包名]/browserNativeMessagingHosts，浏览器应用通过该uri获取的value，即extension配置。	
          "uri": "datashareproxy://com.example.app/browserNativeMessagingHosts",	
          // extension配置，格式参考extension配置章节的格式，注意转义字符	
-         "value": "{\"name\": \"com.example.myapplication\",\"description\": \"Send message to native app.\",\"abilityName\":  \"MyWebNativeMessageExtAbility\", \"allowed_origins\":[\"chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/\"]}",	
+         "value": "{\"name\": \"com.example.myapplication\",\"description\": \"Send message to native app.\",\"abilityName\": \"MyWebNativeMessageExtAbility\", \"allowed_origins\":[\"chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/\"]}",	
          "allowList": [	
            // 允许访问的应用appIdentifier, 这里加入具体浏览器的appIdentifier	
            "1234567890123456789"	
