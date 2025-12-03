@@ -95,13 +95,16 @@ struct CalendarPickerDialogExample {
             backgroundBlurStyle: BlurStyle.NONE,
             shadow: ShadowStyle.OUTER_FLOATING_SM,
             onAccept: (value) => {
+              // 点击弹窗中的“确定”按钮时触发该回调，value表示选中的日期值。
               this.selectedDate = value;
               console.info("calendar onAccept:" + JSON.stringify(value));
             },
             onCancel: () => {
+              // 点击弹窗中的“取消”按钮时触发该回调。
               console.info("calendar onCancel");
             },
             onChange: (value) => {
+              // 选择弹窗中日期使当前选中项改变时触发该回调，value表示选中的日期值。
               console.info("calendar onChange:" + JSON.stringify(value));
             },
             onDidAppear: () => {
