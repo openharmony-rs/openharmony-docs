@@ -149,6 +149,28 @@ ArkTS-Sta: bindContextMenu(isShown: boolean | undefined, content: CustomBuilder 
 |---|---|
 |ArkTS-Dyn: T<br/>ArkTS-Sta: this|返回当前组件。|
 
+## subMenuExpandSymbol<sup>20+</sup>
+
+ArkTS-Dyn: subMenuExpandSymbol(symbol: SymbolGlyphModifier)
+
+ArkTS-Sta: subMenuExpandSymbol(symbol: SymbolGlyphModifier | undefined)
+
+设置Menu子菜单展开符号。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                                               | 必填 | 说明                                         |
+| ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
+| symbol | ArkTS-Dyn: [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) <br/>ArkTS-Sta: [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是   | Menu子菜单展开符号。<br/>1. 子菜单的展开样式为[SubMenuExpandingMode](#submenuexpandingmode12枚举说明).SIDE_EXPAND时，不显示展开符号。<br/>2. 子菜单的展开样式为[SubMenuExpandingMode](#submenuexpandingmode12枚举说明).EMBEDDED_EXPAND时，展开时展开符号会顺时针旋转180°。展开符号默认值：`$r('sys.symbol.chevron_down').fontSize('24vp')` <br/>3. 子菜单的展开样式为[SubMenuExpandingMode](#submenuexpandingmode12枚举说明).STACK_EXPAND时，展开时展开符号会顺时针旋转90°。展开符号默认值：`$r('sys.symbol.chevron_forward').fontSize('20vp').padding('2vp')` |
+
 ## MenuElement
 
 菜单项的图标、文本和交互信息。
@@ -197,17 +219,18 @@ ArkTS-Sta: bindContextMenu(isShown: boolean | undefined, content: CustomBuilder 
 | layoutRegionMargin<sup>13+</sup>  | [Margin](ts-types.md#margin) | 否   | 设置预览图与菜单布局时距上下左右边界的最小边距。<br />**说明：** <br/> 仅支持vp、px、fp、lpx、百分比。<br/> 当margin设置异常值或负值时，按默认值处理。<br/> 若preview为CustomBuilder，设置margin.left或margin.right时，预览图取消最大栅格的宽度限制。<br/> 注意应避免设置过大的margin导致布局区域变小，使得预览图和菜单无法正常布局。<br />当水平方向上margin之和超过布局最大宽度时，margin.left和margin.right均不生效，按默认值处理。<br/> 当垂直方向上margin之和超过布局最大高度时，margin.top和margin.bottom均不生效，按默认值处理。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | backgroundBlurStyleOptions<sup>18+</sup> | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 背景模糊效果。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | backgroundEffect<sup>18+</sup> | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 背景效果参数。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| hapticFeedbackMode<sup>18+</sup> | [HapticFeedbackMode](#hapticfeedbackmode18) | 否 | 菜单弹出时振动效果。<br/>默认值：HapticFeedbackMode.DISABLED，菜单弹出时不振动。<br />**说明：**<br />只有一级菜单可配置弹出时振动效果。<br />仅当应用具备ohos.permission.VIBRATE权限，且用户启用了触感反馈时才会生效。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| outlineWidth<sup>20+</sup> | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-universal-attributes-outline.md#edgeoutlinewidths对象说明) | 否 | 设置菜单边框外描边宽度。<br />默认值：0vp<br />**说明：**<br />不支持百分比，若需要外描边效果outlineWidth为必填项。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| outlineColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-universal-attributes-outline.md#edgecolors对象说明) | 否 | 设置菜单边框外描边颜色。<br />**说明：**<br />默认值：'#19ffffff'<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| mask<sup>20+</sup> | boolean&nbsp;\|&nbsp;[MenuMaskType](#menumasktype20类型说明) | 否 | 设置菜单是否有蒙层及蒙层样式。如果设置为false，则没有蒙层；如果设置为true，则有蒙层；如果设置为MenuMaskType，则自定义蒙层的样式。<br/>默认值：菜单有预览图时默认显示蒙层，否则不显示。<br>**说明：** <br/>当设备配置不显示菜单蒙层时，该接口不生效。如当前在2in1设备上该接口不生效。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| modalMode<sup>20+</sup> | [ModalMode](#modalmode20类型说明) | 否 | 设置菜单的模态模式。<br />**说明：**<br />默认值：ModalMode.AUTO<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| anchorPosition<sup>20+</sup> | [Position](ts-types.md#position) | 否   | 通过设定水平与垂直偏移量，控制菜单相对于绑定组件左上角的弹出位置，与单独使用offset接口不同的是可以覆盖显示在绑定组件上。<br/>默认值：{ x: 0, y: 0 }，不支持设置百分比。<br/>**说明：**<br />1.当菜单处于预览状态时，设定的定位偏移量将无法生效。<br/>2.预设的placement对齐参数将不再生效。<br/>3.叠加offset参数的偏移量，最终确定菜单的精确显示位置。<br/>4.当水平与垂直偏移量均设为负值时，菜单以绑定组件左下角为基准点进行显示。<br/>5.当水平或垂直偏移量存在负值时，组件将以绑定组件的左上角为定位基准点，通过叠加偏移量参数实现反向偏移。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| onWillAppear<sup>20+</sup> | [Callback&lt;void&gt;](ts-types.md#callback12) | 否 | 菜单显示动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br/>2.aboutToAppear是初始化时触发调用，onWillAppear是在动画执行前触发调用，onWillAppear在aboutToAppear之后执行。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
-| onDidAppear<sup>20+</sup> | [Callback&lt;void&gt;](ts-types.md#callback12) | 否 | 菜单弹出时的事件回调。<br />**说明：**<br />1.正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br />2.快速点击弹出，消失菜单时，存在onWillDisappear在onDidAppear前生效。<br />3. 当菜单入场动效未完成时关闭菜单，该回调不会触发。<br/>4.onAppear和onDidAppear触发时机相同，onDidAppear在onAppear后生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| onWillDisappear<sup>20+</sup> | [Callback&lt;void&gt;](ts-types.md#callback12) | 否 | 菜单退出动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br />2.快速点击弹出，消失菜单时，存在onWillDisappear在onDidAppear前生效。<br/>3.aboutToDisappear和onWillDisappear触发时机相同，onWillDisappear在aboutToDisappear后生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
-| onDidDisappear<sup>20+</sup> | [Callback&lt;void&gt;](ts-types.md#callback12) | 否 | 菜单消失时的事件回调。<br />**说明：**<br />1.正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br/>2.onDisappear和onDidDisappear触发时机相同，onDidDisappear在onDisappear后生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| previewScaleMode<sup>20+</sup> | [PreviewScaleMode](#previewscalemode20类型说明) | 否 | 预览图缩放方式。<br />默认值：PreviewScaleMode.AUTO<br />**说明：**<br />布局空间不足时，控制预览图的缩放方式。未设置或设置undefined按照PreviewScaleMode.AUTO处理。当设置成PreviewScaleMode.CONSTANT时，如果预览图过大，剩余的空间不足以放置菜单时，菜单将重叠显示在预览图之下。<br />预览图的最大宽高不会超过预览图最大可布局区域（窗口大小减去上下左右的安全边距）。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| hapticFeedbackMode<sup>18+</sup> | [HapticFeedbackMode](#hapticfeedbackmode18) | 否 | 菜单弹出时振动效果。<br/>默认值：HapticFeedbackMode.DISABLED，菜单弹出时不振动。<br />**说明：**<br />只有一级菜单可配置弹出时振动效果。<br />仅当应用具备ohos.permission.VIBRATE权限，且用户启用了触感反馈时才会生效。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23|
+| outlineWidth<sup>20+</sup> | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-universal-attributes-outline.md#edgeoutlinewidths对象说明) | 否 | 设置菜单边框外描边宽度。<br />默认值：0vp<br />**说明：**<br />不支持百分比，若需要外描边效果outlineWidth为必填项。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
+| outlineColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-universal-attributes-outline.md#edgecolors对象说明) | 否 | 设置菜单边框外描边颜色。<br />**说明：**<br />默认值：'#19ffffff'<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
+| mask<sup>20+</sup> | boolean&nbsp;\|&nbsp;[MenuMaskType](#menumasktype20类型说明) | 否 | 设置菜单是否有蒙层及蒙层样式。如果设置为false，则没有蒙层；如果设置为true，则有蒙层；如果设置为MenuMaskType，则自定义蒙层的样式。<br/>默认值：菜单有预览图时默认显示蒙层，否则不显示。<br>**说明：** <br/>当设备配置不显示菜单蒙层时，该接口不生效。如当前在2in1设备上该接口不生效。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br /> **ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 23|
+| modalMode<sup>20+</sup> | [ModalMode](#modalmode20类型说明) | 否 | 设置菜单的模态模式。<br />**说明：**<br />默认值：ModalMode.AUTO<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br /> **ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 23|
+| anchorPosition<sup>20+</sup> | [Position](ts-types.md#position) | 否   | 通过设定水平与垂直偏移量，控制菜单相对于绑定组件左上角的弹出位置，与单独使用offset接口不同的是可以覆盖显示在绑定组件上。<br/>默认值：{ x: 0, y: 0 }，不支持设置百分比。<br/>**说明：**<br />1.当菜单处于预览状态时，设定的定位偏移量将无法生效。<br/>2.预设的placement对齐参数将不再生效。<br/>3.叠加offset参数的偏移量，最终确定菜单的精确显示位置。<br/>4.当水平与垂直偏移量均设为负值时，菜单以绑定组件左下角为基准点进行显示。<br/>5.当水平或垂直偏移量存在负值时，组件将以绑定组件的左上角为定位基准点，通过叠加偏移量参数实现反向偏移。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br />**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 23|
+| onWillAppear<sup>20+</sup> | ArkTS-Dyn: [Callback&lt;void&gt;](ts-types.md#callback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) | 否 | 菜单显示动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br/>2.aboutToAppear是初始化时触发调用，onWillAppear是在动画执行前触发调用，onWillAppear在aboutToAppear之后执行。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br /> **ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 23|
+| onDidAppear<sup>20+</sup> | ArkTS-Dyn: [Callback&lt;void&gt;](ts-types.md#callback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) | 否 | 菜单弹出时的事件回调。<br />**说明：**<br />1.正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br />2.快速点击弹出，消失菜单时，存在onWillDisappear在onDidAppear前生效。<br />3. 当菜单入场动效未完成时关闭菜单，该回调不会触发。<br/>4.onAppear和onDidAppear触发时机相同，onDidAppear在onAppear后生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br />**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 23|
+| onWillDisappear<sup>20+</sup> | ArkTS-Dyn: [Callback&lt;void&gt;](ts-types.md#callback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) | 否 | 菜单退出动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br />2.快速点击弹出，消失菜单时，存在onWillDisappear在onDidAppear前生效。<br/>3.aboutToDisappear和onWillDisappear触发时机相同，onWillDisappear在aboutToDisappear后生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 23|
+| onDidDisappear<sup>20+</sup> | ArkTS-Dyn: [Callback&lt;void&gt;](ts-types.md#callback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) | 否 | 菜单消失时的事件回调。<br />**说明：**<br />1.正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br/>2.onDisappear和onDidDisappear触发时机相同，onDidDisappear在onDisappear后生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br />**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 23|
+| previewScaleMode<sup>20+</sup> | [PreviewScaleMode](#previewscalemode20类型说明) | 否 | 预览图缩放方式。<br />默认值：PreviewScaleMode.AUTO<br />**说明：**<br />布局空间不足时，控制预览图的缩放方式。未设置或设置undefined按照PreviewScaleMode.AUTO处理。当设置成PreviewScaleMode.CONSTANT时，如果预览图过大，剩余的空间不足以放置菜单时，菜单将重叠显示在预览图之下。<br />预览图的最大宽高不会超过预览图最大可布局区域（窗口大小减去上下左右的安全边距）。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br />**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 23|
+| availableLayoutArea<sup>20+</sup> | [AvailableLayoutArea](#availableLayoutArea20类型说明) | 否 | 设置预览图宽高的可布局区域，预览图的百分比依据此设置计算，最终可能因安全区限制而被压缩或裁剪。<br />**说明：**<br />未设置或设置为undefined时，百分比依据窗口大小计算。若设置为AvailableLayoutArea.SAFE_AREA，预览图的可布局区域为窗口大小减去上下左右的安全边距。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br /> **ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 23|
 
 ## MenuPreviewMode<sup>11+</sup>
 
@@ -233,7 +256,7 @@ ArkTS-Sta: bindContextMenu(isShown: boolean | undefined, content: CustomBuilder 
 | scale | [AnimationRange](#animationrange11)\<number> | 否   | 动画开始和结束时相对预览原图缩放比例。<br/>**说明：** <br/>缩放比例需要根据实际开发场景设置，建议设置值为小于预览图宽度或布局的最大限制。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 设置菜单显示和退出的过渡效果。<br/>**说明：** <br/>在菜单退出动效过程中，横竖屏切换时，菜单会避让。二级菜单不继承自定义动效。弹出过程中可以点击二级菜单，但在退出动效执行过程中不允许点击二级菜单。<br />详细描述见[TransitionEffect](ts-transition-animation-component.md#transitioneffect10对象说明)对象说明。 <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | hoverScale<sup>12+</sup> | [AnimationRange](#animationrange11)\<number> | 否   | 在自定义预览图（preview为CustomBuilder类型）以及长按弹出（responseType指定为LongPress）菜单的场景下，hoverScale用于为绑定组件的截图浮起动画设置两个参数：相对于预览原图的起始与结束缩放比例。hoverScale设置后，浮起动画和预览图之间会有切换过渡动效。 <br/>**说明：**<br /> 倍率设置参数小于等于0时，不生效。<br />[bindContextMenu<sup>12+</sup>](#bindcontextmenu12)场景下，不生效。<br /> 设置transition接口时，不生效。<br /> 使用此接口且同时使用scale接口时，scale接口起始值不生效。<br /> 为保障最佳体验，最终预览图尺寸不建议小于原组件截图尺寸。当前预览动效宽高会受组件截图和自定义预览大小影响，请根据实际使用情况自行保障展示效果。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| hoverScaleInterruption<sup>20+</sup> | boolean | 否   | 在自定义预览图（preview为CustomBuilder类型）以及长按弹出（responseType指定为LongPress）菜单的场景下，且hoverScaleInterruption为true时，在触发拖拽效果前抬起手是否允许取消预览菜单弹出。true表示允许取消预览菜单弹出，false表示不允许取消预览菜单弹出。<br/>默认值：false <br/>**说明：** <br />未设置hoverScale接口或设置了transition接口时，该参数不生效。长按时长不足以触发拖拽效果时抬起手，预览菜单hoverScale效果回退，预览菜单不弹出，并可触发原组件上绑定的click等手势事件。长按时长足以触发拖拽效果后抬起手，预览菜单正常弹出，并不再触发原组件上绑定的click等手势事件。 <br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| hoverScaleInterruption<sup>20+</sup> | boolean | 否   | 在自定义预览图（preview为CustomBuilder类型）以及长按弹出（responseType指定为LongPress）菜单的场景下，且hoverScaleInterruption为true时，在触发拖拽效果前抬起手是否允许取消预览菜单弹出。true表示允许取消预览菜单弹出，false表示不允许取消预览菜单弹出。<br/>默认值：false <br/>**说明：** <br />未设置hoverScale接口或设置了transition接口时，该参数不生效。长按时长不足以触发拖拽效果时抬起手，预览菜单hoverScale效果回退，预览菜单不弹出，并可触发原组件上绑定的click等手势事件。长按时长足以触发拖拽效果后抬起手，预览菜单正常弹出，并不再触发原组件上绑定的click等手势事件。 <br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 23|
 
 ## AnimationRange<sup>11+</sup>
 
@@ -287,6 +310,10 @@ type BorderRadiusType = [Length](ts-types.md#length) | [BorderRadiuses](ts-types
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型                                       | 必填 | 说明                                                         |
 | --------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
 | color | [ResourceColor](ts-types.md#resourcecolor) | 否   | 设置蒙层颜色。<br/>默认值：$r('sys.color.ohos_id_color_mask_thin')                                       |
@@ -299,6 +326,10 @@ type BorderRadiusType = [Length](ts-types.md#length) | [BorderRadiuses](ts-types
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 值 | 说明                                   |
 | ----- | -  | --------------------------------------|
@@ -314,11 +345,45 @@ type BorderRadiusType = [Length](ts-types.md#length) | [BorderRadiuses](ts-types
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称  | 值 | 说明                                   |
 | ----- | -  | --------------------------------------|
 | AUTO  | 0  | 预览图根据[Placement](ts-appendix-enums.md#placement8)自动调整预览图宽高及缩放。|
 | CONSTANT  | 1 | 预览图不缩放，大小保持不变。最终仍会受到安全区的限制而出现压缩、裁剪。|
 | MAINTAIN | 2 | 预览图缩放时保持宽高比。|
+
+## AvailableLayoutArea<sup>20+</sup>类型说明
+
+预览图宽高设置为百分比时的参考可布局区域大小。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称  | 值 | 说明                                   |
+| ----- | -  | --------------------------------------|
+| SAFE_AREA  | 0  | 参考可布局区域大小为窗口大小减去上下左右安全边距。|
+
+## SubMenuExpandingMode<sup>12+</sup>枚举说明
+
+Menu子菜单展开样式枚举。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称            | 值   | 说明                                       |
+| --------------- | ---- | ------------------------------------------ |
+| SIDE_EXPAND     | 0    | 默认展开样式，子菜单位于同一平面侧边展开。 |
+| EMBEDDED_EXPAND | 1    | 直接展开样式，子菜单嵌于主菜单内展开。     |
+| STACK_EXPAND    | 2    | 堆叠样式，子菜单浮于主菜单上方展开。       |
 
 ## 示例
 
@@ -1760,6 +1825,8 @@ struct MenuExample {
 
 该示例为bindContextMenu通过配置preview中hoverScale实现一镜到底过渡动效的基础上, 再配置hoverScaleInterruption控制是否允许长按抬手取消菜单弹出。
 
+ArkTS-Dyn示例：
+
  ```ts
  // xxx.ets
 @Entry
@@ -1810,6 +1877,70 @@ struct Index {
         }
       }.width('100%')
     }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, ClickEvent, Column, Row, Text, SymbolGlyphModifier, $r, Image, SubMenuExpandingMode, Menu, MenuItem, MenuItemOptions, ResponseType } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import hilog from '@ohos.hilog';
+
+let symbolStartIcon: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_star'))
+let symbolEndIcon: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_mic'))
+
+@Builder
+function MyMenu() {
+  Menu() {
+    MenuItem({
+      symbolStartIcon: symbolStartIcon,
+      symbolEndIcon: symbolEndIcon,
+      content: "新建文件夹",
+    } as MenuItemOptions)
+    MenuItem({
+      symbolStartIcon: symbolStartIcon,
+      content: "排序方式",
+    } as MenuItemOptions)
+    MenuItem({
+      symbolStartIcon: symbolStartIcon,
+      content: "查看方式",
+    } as MenuItemOptions)
+  }
+  .subMenuExpandingMode(SubMenuExpandingMode.SIDE_EXPAND)
+}
+
+@Entry
+@Component
+struct MyStateSample {
+  @Builder
+  MyPreview() {
+    Column() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.startIcon'))
+        .width(200)
+        .height(200)
+    }
+  }
+
+  build() {
+    Column() {
+          // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+          Image($r('app.media.startIcon'))
+            .width(100)
+            .height(100)
+            .margin(100)
+            .bindContextMenu(MyMenu, ResponseType.LongPress,{
+              preview: this.MyPreview,
+              previewAnimationOptions: {
+                hoverScale: [1.0, 0.8],
+                hoverScaleInterruption: true
+              }
+            })
+    }
+    .width("100%")
   }
 }
 ```
@@ -1947,6 +2078,8 @@ struct Index {
 
 该示例为bindMenu配置生命周期回调。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -2016,14 +2149,136 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, ClickEvent, Column, ColumnOptions, Row, Text, SymbolGlyphModifier, $r, Image, SubMenuExpandingMode, Menu, MenuItem, MenuItemOptions, ResponseType, ResourceStr, Color, Button, TextAlign } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import hilog from '@ohos.hilog';
+
+@Entry
+@Component
+struct Index {
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+  private iconStr: ResourceStr = $r("app.media.startIcon")
+  @State isShown: boolean = false
+  @State textColor: Color = Color.Black
+  @State blueColor: Color = Color.Blue
+  @State onWillAppear: boolean = false
+  @State onDidAppear: boolean = false
+  @State onWillDisappear: boolean = false
+  @State onDidDisappear: boolean = false
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
+    }
+  }
+
+  build() {
+    Column() {
+      Column({ space: 30 } as ColumnOptions) {
+        Text('onWillAppear').fontColor(this.onWillAppear ? this.blueColor : this.textColor)
+        Text('onDidAppear').fontColor(this.onDidAppear ? this.blueColor : this.textColor)
+        Text('onWillDisappear').fontColor(this.onWillDisappear ? this.blueColor : this.textColor)
+        Text('onDidDisappear').fontColor(this.onDidDisappear ? this.blueColor : this.textColor)
+        Button('click')
+          .onClick(() => {
+            this.isShown = true;
+          })
+          .width(100)
+          .height(50)
+        Text('callback')
+          .width(200)
+          .height(100)
+          .textAlign(TextAlign.Center)
+          .fontSize(20)
+          .fontColor(this.textColor)
+          .bindMenu(this.isShown, this.MyMenu,
+            {
+              onWillAppear: () => {
+                console.info("menu cycle life onWillAppear");
+                this.onWillAppear = true;
+              },
+              onDidAppear: () => {
+                console.info("menu cycle life onDidAppear");
+                this.onDidAppear = true;
+              },
+              onWillDisappear: () => {
+                this.isShown = false;
+                console.info("menu cycle life onWillDisappear");
+                this.onWillDisappear = true;
+              },
+              onDidDisappear: () => {
+                console.info("menu cycle life onDidDisappear");
+                this.onDidDisappear = true;
+              }
+            })
+      }
+    }.width('100%')
+  }
+}
+```
+
 ![preview-builder](figures/zh-cn_image_bindMenuLifeCycle.gif)
 
 ### 示例16（设置菜单蒙层）
 
 该示例为bindMenu通过配置mask属性设置菜单蒙层。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State startIconModifier: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_star'))
+  @State isShow: boolean = false;
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({
+        symbolStartIcon: this.startIconModifier,
+        content: "新建文件夹",
+      })
+      MenuItem({
+        symbolStartIcon: this.startIconModifier,
+        content: "排序方式",
+      })
+      MenuItem({
+        symbolStartIcon: this.startIconModifier,
+        content: "查看方式",
+      })
+    }
+  }
+
+  build() {
+    Button('bindMenu')
+      .position({ top: 80, left: 80 })
+      .onClick(() => {
+        this.isShow = !this.isShow;
+      })
+      .bindMenu(this.isShow, this.MyMenu, {
+        mask: { color: 'rgba(23,169,141,0.5)', backgroundBlurStyle: BlurStyle.Thin }
+      })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, ClickEvent, Column, ColumnOptions, Row, SymbolGlyphModifier, $r, Menu, MenuItem, Color, Button, BlurStyle } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import hilog from '@ohos.hilog';
 
 @Entry
 @Component
