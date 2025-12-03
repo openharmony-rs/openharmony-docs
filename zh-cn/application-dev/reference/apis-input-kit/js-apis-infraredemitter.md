@@ -163,4 +163,4 @@ struct Index {
 | 名称                               | 类型 | 必填   | 说明  |
 | -------------------------------- | ---- | ------ | ------ |
 | max                       | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是 | 最大支持频率，单位：Hz。 |
-| min                          | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是  | 最小支持频率，单位：Hz。 |
+| min                       | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是  | 最小支持频率，单位：Hz。 |

@@ -40,7 +40,7 @@ import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
-**ArkTS-Dyn起始版本**：14
+**ArkTS-Dyn起始版本**：16
 
 **ArkTS-Sta起始版本**：22
 
@@ -107,7 +107,7 @@ on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;Hot
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onHotkeyChange](#on_hotkeyChange_sta)
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onHotkeyChange](#on_hotkeyChange_sta)。
 
 **ArkTS-Sta起始版本**：14
 
@@ -163,7 +163,7 @@ struct Index {
 }
 ```
 
-## <span id="on_hotkeyChange_sta">inputConsumer.onHotkeyChange</span>
+## <span id="on_hotkeyChange_sta">inputConsumer.onHotkeyChange<sup>22+</sup></span>
 
 onHotkeyChange(hotkeyOptions: HotkeyOptions, callback: Callback&lt;HotkeyOptions&gt;): void
 
@@ -173,11 +173,11 @@ onHotkeyChange(hotkeyOptions: HotkeyOptions, callback: Callback&lt;HotkeyOptions
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#on_hotkeyChange_dyn)
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#on_hotkeyChange_dyn)。
 
 **ArkTS-Syn起始版本**：22
 
-**参数：** 
+**参数：**
 
 | 参数名         | 类型                         | 必填   | 说明                                       |
 | ---------- | -------------------------- | ---- | ---------- |
@@ -237,11 +237,11 @@ off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;H
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offhotkeyChange](#off_hotkeyChange_sta)
+**相关接口**: 该接口对应的ArkTS-Sta接口是[offhotkeyChange](#off_hotkeyChange_sta)。
 
 **ArkTS-Dyn起始版本**：14
 
-**参数：** 
+**参数：**
 
 | 参数名         | 类型                         | 必填   | 说明                              |
 | ---------- | -------------------------- | ---- | ---------- |
@@ -300,7 +300,7 @@ offHotkeyChange(hotkeyOptions: HotkeyOptions, callback?: Callback&lt;HotkeyOptio
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#off_hotkeyChange_sta)
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#off_hotkeyChange_sta)。
 
 **ArkTS-Dyn起始版本**：22
 
@@ -320,7 +320,7 @@ offHotkeyChange(hotkeyOptions: HotkeyOptions, callback?: Callback&lt;HotkeyOptio
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 
-示例：
+**示例：**
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
@@ -364,7 +364,7 @@ on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onKeyPressed](#on_keyPressed_sta)
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onKeyPressed](#on_keyPressed_sta)。
 
 **ArkTS-Dyn起始版本**：16
 
@@ -427,7 +427,7 @@ onKeyPressed(options: KeyPressedConfig, callback: Callback&lt;KeyEvent&gt;): voi
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Syn接口是[on](#on_keyPressed_dyn)
+**相关接口**: 该接口对应的ArkTS-Syn接口是[on](#on_keyPressed_dyn)。
 
 **ArkTS-Dyn起始版本**：22
 
@@ -447,7 +447,7 @@ onKeyPressed(options: KeyPressedConfig, callback: Callback&lt;KeyEvent&gt;): voi
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 
-示例：
+**示例：**
 
 ```js
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
@@ -487,7 +487,7 @@ off(type: 'keyPressed', callback?: Callback&lt;KeyEvent&gt;): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offKeyPressed](#off_keyPressed_sta)
+**相关接口**: 该接口对应的ArkTS-Sta接口是[offKeyPressed](#off_keyPressed_sta)。
 
 **ArkTS-Dyn起始版本**：16
 
@@ -545,7 +545,7 @@ offKeyPressed(callback?: Callback&lt;KeyEvent&gt;): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#off_keyPressed_dyn)
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#off_keyPressed_dyn)。
 
 **ArkTS-Dyn起始版本**：22
 
@@ -564,7 +564,7 @@ offKeyPressed(callback?: Callback&lt;KeyEvent&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 
-示例：
+**示例：**
 
 ```js
 import { inputConsumer, KeyEvent } from '@kit.InputKit';

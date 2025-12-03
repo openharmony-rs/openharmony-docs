@@ -115,5 +115,5 @@ import { Action,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 | touch      | [Touch](#touch)      | 否    | 否    | 当前触屏点信息。   |
 | touches    | [Touch](#touch)[]    | 否    | 否    | 所有触屏点。     |
 | sourceType | [SourceType](#sourcetype) | 否    | 否    | 触屏来源的设备类型。 |
-| isInject<sup>20+</sup>   | boolean     | 否   | 是    | 是否注入事件。<br>**ArkTS-Dyn起始版本**：20 <br>**ArkTS-Sta起始版本**：22  |
+| isInject<sup>20+</sup>   | boolean     | 否   | 是    | 是否注入事件。true代表注入，false代表非注入。<br>**ArkTS-Dyn起始版本**：20 <br>**ArkTS-Sta起始版本**：22  |
 

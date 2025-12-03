@@ -47,6 +47,7 @@ ArkTS-Sta: setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): 
 | -------- | ----------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
+**示例：**
 
 ArkTS-Dyn示例:
 
@@ -143,7 +144,7 @@ ArkTS-Sta: setPointerSpeed(speed: int): Promise&lt;void&gt;
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -199,7 +200,7 @@ ArkTS-Sta: setPointerSpeedSync(speed: int): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -251,6 +252,7 @@ getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例：**
 
 ArkTS-Dyn示例:
 
@@ -329,6 +331,8 @@ getPointerSpeed(): Promise&lt;number&gt;
 | 参数                    | 说明                  |
 | --------------------- | ------------------- |
 | ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Dyn: Promise&lt;int| Promise实例，异步返回鼠标移动速度。 |
+
+**示例：**
 
 ArkTS-Dyn示例:
 
@@ -411,7 +415,7 @@ ArkTS-Sta: getPointerSpeedSync(): int
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -464,6 +468,8 @@ setHoverScrollState(state: boolean, callback: AsyncCallback&lt;void&gt;): void
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
 
 ArkTS-Dyn示例:
 
@@ -558,7 +564,7 @@ setHoverScrollState(state: boolean): Promise&lt;void&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -611,6 +617,8 @@ getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
 
 ArkTS-Dyn示例:
 
@@ -691,7 +699,7 @@ getHoverScrollState(): Promise&lt;boolean&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -745,6 +753,8 @@ setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
 
 ArkTS-Dyn示例:
 
@@ -839,7 +849,7 @@ setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -892,6 +902,8 @@ getMousePrimaryButton(callback: AsyncCallback&lt;PrimaryButton&gt;): void
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
 
 ArkTS-Dyn示例:
 
@@ -972,7 +984,7 @@ getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1028,6 +1040,8 @@ ArkTS-Sta: setMouseScrollRows(rows: int, callback: AsyncCallback&lt;void&gt;): v
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
 
 ArkTS-Dyn示例:
 
@@ -1122,7 +1136,7 @@ setMouseScrollRows(rows: number): Promise&lt;void&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1177,6 +1191,8 @@ ArkTS-Sta: getMouseScrollRows(callback: AsyncCallback&lt;int&gt;): void
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
 
 ArkTS-Dyn示例:
 
@@ -1432,7 +1448,7 @@ setTouchpadScrollSwitch(state: boolean): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1738,7 +1754,7 @@ setTouchpadScrollDirection(state: boolean): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1871,7 +1887,7 @@ getTouchpadScrollDirection(): Promise\<boolean>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2019,7 +2035,7 @@ setTouchpadTapSwitch(state: boolean): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2152,7 +2168,7 @@ getTouchpadTapSwitch(): Promise\<boolean>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2304,7 +2320,7 @@ ArkTS-Sta: setTouchpadPointerSpeed(speed: int): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2614,7 +2630,7 @@ setTouchpadPinchSwitch(state: boolean): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2747,7 +2763,7 @@ getTouchpadPinchSwitch(): Promise\<boolean>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2896,7 +2912,7 @@ setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3030,7 +3046,7 @@ getTouchpadSwipeSwitch(): Promise\<boolean>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3178,7 +3194,7 @@ setTouchpadRightClickType(type: RightClickType): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3312,7 +3328,7 @@ getTouchpadRightClickType(): Promise\<RightClickType>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3465,7 +3481,7 @@ ArkTS-Sta: setPointerSize(size: int): Promise&lt;void&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3521,7 +3537,7 @@ ArkTS-Sta: setPointerSizeSync(size: int): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3740,7 +3756,7 @@ ArkTS-Sta: getPointerSizeSync(): int
 | 202  | SystemAPI permission error.  |
 
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3900,7 +3916,7 @@ ArkTS-Sta: setPointerColor(color: int): Promise&lt;void&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3960,7 +3976,7 @@ ArkTS-Sta: setPointerColorSync(color: int): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -4177,7 +4193,7 @@ ArkTS-Sta: getPointerColorSync(): int
 | 202  | SystemAPI permission error.  |
 
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -4325,7 +4341,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -4379,6 +4395,8 @@ getTouchpadDoubleTapAndDragState(callback: AsyncCallback\<boolean>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例：**
+
 ArkTS-Dyn示例:
 
 ```js
@@ -4404,7 +4422,7 @@ struct Index {
 }
 ```
 
-ArkTS-Dyn示例:
+ArkTS-Sta示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -4456,6 +4474,8 @@ getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
+
+**示例：**
 
 ArkTS-Dyn示例:
 

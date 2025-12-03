@@ -133,7 +133,7 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801  | Capability not supported. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -184,7 +184,7 @@ setPointerVisibleSync(visible: boolean): void
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -353,7 +353,7 @@ isPointerVisibleSync(): boolean
 | ---------------------- | ------------------- |
 | boolean | 返回鼠标指针显示或隐藏状态。true代表显示状态，false代表隐藏状态。 |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -628,7 +628,7 @@ ArkTS-Sta: getPointerStyleSync(windowId: int): PointerStyle
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-示例：
+**示例：**
 
 ```js
 import { pointer } from '@kit.InputKit';
