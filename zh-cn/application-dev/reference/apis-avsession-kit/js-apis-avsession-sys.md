@@ -587,6 +587,56 @@ avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
 });
 ```
 
+## avSession.startAVPlayback<sup>22+</sup>
+
+startAVPlayback(bundleName: string, assetId: string, info: CommandInfo): Promise\<void>
+
+启动媒体播放应用程序。结果通过Promise异步回调方式返回。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**系统接口：** 该接口为系统接口。
+
+**参数：**
+
+| 参数名        | 类型                                                   | 必填 | 说明       |	
+| ------------ |------------------------------------------------------|----|----------|	
+| bundleName   | string                                               | 是  | 指定应用包名。  |	
+| assetId      | string                                               | 是  | 指定媒体ID。  |
+| info      | [CommandInfo](js-apis-avsession-sys.md#CommandInfo22) | 否  | 命令信息。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象。当播放成功，无返回结果，否则返回错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 6600101  | Session service exception. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avSession.startAVPlayback("com.example.myapplication", "121278", "entry").then(() => {
+  console.info('startAVPlayback : SUCCESS');
+}).catch((err: BusinessError) => {
+  console.error(`startAVPlayback BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## avSession.getDistributedSessionController<sup>18+</sup>
 
 getDistributedSessionController(distributedSessionType: DistributedSessionType): Promise<Array\<AVSessionController>>
@@ -2509,3 +2559,18 @@ aVCastController.off('videoSizeChange');
 | --------------------------- | ---- | ----------- |
 | DEVICE_LOG_FULL       | 1    | 日志已满。    |
 | DEVICE_LOG_EXCEPTION       | 2    | 日志写入异常。 |
+
+## CommandInfo<sup>22+</sup>
+
+命令信息的相关属性。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**系统接口：** 该接口为系统接口。
+
+| 名称               | 类型                                                 | 只读 | 可选 | 说明        |
+|------------------|----------------------------------------------------|----|----|-----------|
+| callerBundleName | string                                             | 否  | 是  | 调用方应用包名。  |
+| callerModuleName | string                                             | 否  | 是  | 调用方应用模块名。 |
+| callerDeviceId   | string                                             | 否  | 是  | 调用方设备ID。  |
+| callerType       | [CallerType](arkts-apis-avsession-e.md#CallerType22) | 否  | 是  | 调用方来源。    |

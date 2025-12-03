@@ -123,3 +123,26 @@ type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevio
 |'answer' <sup>11+</sup>        | 接听。无需传入参数。  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
 | 'hangUp' <sup>11+</sup>         | 挂断。无需传入参数。  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
 |'toggleCallMute' <sup>11+</sup>  | 设置通话静音状态。无需传入参数。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+
+## TwoParamCallback<sup>22+</sup>
+
+type TwoParamCallback<T, G> = (data1: T, data2: G) => void
+
+双参数的回调函数。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名   | 类型 | 必填 | 说明   |
+|-------|----| ---- |------|
+| data1 | 泛型 | 是   | 参数T。 |
+| data2 | 泛型 | 是   | 参数G。 |
+
+**示例：**
+<!--code_no_check-->
+```ts
+let twoParamCallback: avSession.TwoParamCallback = (time: number, offset: number) => {
+  console.info(`Succeeded in twoParamCallback. time: ${time}, offset: ${offset}`);
+}
+```

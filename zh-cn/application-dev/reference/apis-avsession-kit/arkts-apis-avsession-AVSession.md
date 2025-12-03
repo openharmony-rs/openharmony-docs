@@ -1759,6 +1759,40 @@ currentAVSession.on('play', () => {
 });
 ```
 
+## onPlay<sup>22+</sup>
+
+onPlay(callback: Callback\<CommandInfo>): void
+
+设置播放命令监听事件。注册该监听，说明应用支持播放指令。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名   | 类型                                                               | 必填 | 说明     |
+| -------- |------------------------------------------------------------------| ---- | --------- |
+| callback | Callback\<[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)> | 是   | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。                                        |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.onPlay((info: CommandInfo) => {
+  console.info('on play entry');
+});
+```
+
 ## on('pause')<sup>10+</sup>
 
 on(type: 'pause', callback: () => void): void
@@ -1870,6 +1904,40 @@ currentAVSession.on('playNext', () => {
 });
 ```
 
+## onPlayNext<sup>22+</sup>
+
+onPlayNext(callback: Callback\<CommandInfo>): void
+
+设置播放下一首命令监听事件。注册该监听，说明应用支持下一首指令。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名   | 类型       | 必填 | 说明     |
+| -------- | ---------- | ---- | --------- |
+| callback | Callback\<[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)> | 是   | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.onPlayNext((info: CommandInfo) => {
+  console.info('on playNext entry');
+});
+```
+
 ## on('playPrevious')<sup>10+</sup>
 
 on(type:'playPrevious', callback: () => void): void
@@ -1903,6 +1971,40 @@ on(type:'playPrevious', callback: () => void): void
 
 ```ts
 currentAVSession.on('playPrevious', () => {
+  console.info('on playPrevious entry');
+});
+```
+
+## onPlayPrevious<sup>22+</sup>
+
+onPlayPrevious(callback: Callback\<CommandInfo>): void
+
+设置播放上一首命令监听事件。注册该监听，说明应用支持上一首指令。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明     |
+| -------- | -------------------- | ---- | --------- |
+| callback | Callback\<[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)> | 是   | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。       |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.onPlayPrevious((info: CommandInfo) => {
   console.info('on playPrevious entry');
 });
 ```
@@ -1944,6 +2046,40 @@ currentAVSession.on('fastForward', (time?: number) => {
 });
 ```
 
+## onFastForward<sup>22+</sup>
+
+onFastForward(callback: TwoParamCallback\<long, CommandInfo>): void
+
+设置快进命令监听事件。注册该监听，说明应用支持快进指令。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明     |
+| -------- | -------------------- | ---- | --------- |
+| callback | TwoParamCallback\<long, [CommandInfo](js-apis-avsession-sys.md#CommandInfo22)> | 是   | 回调函数。参数time是时间节点，单位为秒。    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.onFastForward((time: number, info: CommandInfo) => {
+  console.info('on fastForward entry');
+});
+```
+
 ## on('rewind')<sup>10+</sup>
 
 on(type:'rewind', callback: (time?: number) => void): void
@@ -1977,6 +2113,40 @@ on(type:'rewind', callback: (time?: number) => void): void
 
 ```ts
 currentAVSession.on('rewind', (time?: number) => {
+  console.info('on rewind entry');
+});
+```
+
+## onRewind<sup>22+</sup>
+
+onRewind(callback: TwoParamCallback\<long, CommandInfo>): void
+
+设置快退命令监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明     |
+| -------- | -------------------- | ---- | --------- |
+| callback | TwoParamCallback\<long, [CommandInfo](js-apis-avsession-sys.md#CommandInfo22)> | 是   | 回调函数。参数time是时间节点，单位为秒。      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.onRewind((time: long, info: CommandInfo) => {
   console.info('on rewind entry');
 });
 ```
@@ -2448,6 +2618,36 @@ off(type: 'play', callback?: () => void): void
 currentAVSession.off('play');
 ```
 
+## offPlay<sup>22+</sup>
+
+offPlay(callback?: Callback\<CommandInfo>): void
+
+取消会话播放事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名    | 类型                  | 必填 | 说明                   |
+| -------- | -------------------- | ---- | ---------------------- |
+| callback | Callback\<[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.offPlay();
+```
+
 ## off('pause')<sup>10+</sup>
 
 off(type: 'pause', callback?: () => void): void
@@ -2547,6 +2747,36 @@ off(type: 'playNext', callback?: () => void): void
 currentAVSession.off('playNext');
 ```
 
+## offPlayNext<sup>22+</sup>
+
+offPlayNext(callback?: Callback\<CommandInfo>): void
+
+取消会话播放下一首事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名    | 类型        | 必填 | 说明                   |
+| -------- | ---------- | ---- | ---------------------- |
+| callback | Callback\<[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.offPlayNext();
+```
+
 ## off('playPrevious')<sup>10+</sup>
 
 off(type: 'playPrevious', callback?: () => void): void
@@ -2578,6 +2808,36 @@ off(type: 'playPrevious', callback?: () => void): void
 
 ```ts
 currentAVSession.off('playPrevious');
+```
+
+## offPlayPrevious<sup>22+</sup>
+
+offPlayPrevious(callback?: Callback\<CommandInfo>): void
+
+取消会话播放上一首事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名    | 类型     | 必填 | 说明                   |
+| -------- |--------| ---- | ---------------------- |
+| callback | Callback\<[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)>  | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.offPlayPrevious();
 ```
 
 ## off('fastForward')<sup>10+</sup>
@@ -2613,6 +2873,36 @@ off(type: 'fastForward', callback?: () => void): void
 currentAVSession.off('fastForward');
 ```
 
+## offFastForward<sup>22+</sup>
+
+offFastForward(callback?: TwoParamCallback\<long, CommandInfo>): void
+
+取消会话快进事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名    | 类型                                   | 必填 | 说明                   |
+| -------- |--------------------------------------| ---- | ---------------------- |
+| callback | TwoParamCallback\<long, [CommandInfo](js-apis-avsession-sys.md#CommandInfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.offFastForward();
+```
+
 ## off('rewind')<sup>10+</sup>
 
 off(type: 'rewind', callback?: () => void): void
@@ -2644,6 +2934,38 @@ off(type: 'rewind', callback?: () => void): void
 
 ```ts
 currentAVSession.off('rewind');
+```
+
+## offRewind<sup>22+</sup>
+
+offRewind(callback?: TwoParamCallback\<long, CommandInfo>): void
+
+取消会话快退事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名    | 类型                  | 必填 | 说明                   |
+| -------- | -------------------- | ---- | ---------------------- |
+| callback | TwoParamCallback\<long, [CommandInfo](js-apis-avsession-sys.md#CommandInfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.offRewind();
 ```
 
 ## off('seek')<sup>10+</sup>
