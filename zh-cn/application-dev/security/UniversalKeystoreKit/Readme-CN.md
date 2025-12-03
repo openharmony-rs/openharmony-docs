@@ -102,7 +102,9 @@
   - UkeyPIN码认证管理<!--huks-ukey-pin-authentication-management-->
     - [UkeyPIN码认证介绍及规格](huks-ukey-pin-authentication-management-overview.md)
     - 开发指导<!--huks-ukey-pin-authentication-dev-->
-      - [UkeyPIN码认证(ArkTS)](huks-ukey-pin-authentication-arkts.md)
+      <!--Del-->
+      - [UkeyPIN码认证(ArkTS)(仅对系统应用开放)](huks-ukey-pin-authentication-arkts-sys.md)
+      <!--DelEnd-->
       - [查询认证状态(ArkTS)](huks-query-authentication-status-arkts.md)
       - [查询认证状态(C/C++)](huks-query-authentication-status-ndk.md)
   - 签名/验签<!--huks-ukey-signing-signature-verification-->

@@ -18,7 +18,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 **签名**
 
-1. 通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取resourceId作为密钥别名，并[打开资源](huks-open-close-resource-ndk.md)完成[PIN码认证](huks-ukey-pin-authentication-arkts.md)。
+1. 通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取resourceId作为密钥别名，并完成PIN码认证后打开资源。
 
 2. 指定待签名的明文数据。
 
