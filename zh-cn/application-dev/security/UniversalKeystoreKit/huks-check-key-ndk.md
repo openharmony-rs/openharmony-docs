@@ -9,10 +9,13 @@
 
 HUKS提供了接口供应用查询指定密钥是否存在。
 
+从API 23开始支持[群组密钥](huks-group-key-overview.md)特性。
+
 ## 在CMake脚本中链接相关动态库
 ```txt
 target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 ```
+
 ## 开发步骤
 
 1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。

@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct {...} ffrt_cond_t
+```
+
 ## Overview
 
 The **ffrt_cond_t** struct describes a condition variable.

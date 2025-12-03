@@ -4,7 +4,7 @@
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >**NOTE**
 >
@@ -156,15 +156,15 @@ Defines the unique identifier for a custom menu item. It is used to identify men
 | COLLABORATION_SERVICE   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the collaboration service menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | CAMERA_INPUT   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No  | ID for the camera input menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | AI_WRITER<sup>13+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the menu item involving text enhancement features, such as polishing, summary extraction, and formatting, for selected text. This menu item requires foundation model capabilities to work.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
-| TRANSLATE<sup>15+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the translate menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| TRANSLATE<sup>15+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the translate menu item, which provides translation services for selected text.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | SHARE<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the share menu item, which launches a window for sharing the selected text.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | SEARCH<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the search menu item, which launches a browser to search the selected text.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | Redirection service for the selected URL, launching a browser search or application page.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | Redirection service for the selected email address, launching the email application.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | Redirection service for the selected phone number, launching the phone dialer page.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | Redirection service for the selected address, launching the map application.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | Redirection service for the selected date and time, launching the page for creating a calendar event.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | AI query capability for the selected text.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the URL menu item. It provides a redirection service for the selected URL, launching a browser search or application page.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the email menu item. It provides a redirection service for the selected email address, launching the email application.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the phone call menu item. It provides a redirection service for the selected phone number, launching the phone dialer page.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the navigation menu item. It provides a redirection service for the selected address, launching the map application.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the event creation menu item. It provides a redirection service for the selected date and time, launching the page for creating a calendar event.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the AI assistant menu item, which provides AI query capabilities for the selected text.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 ### of
 
 static of(id: ResourceStr): TextMenuItemId
@@ -418,7 +418,7 @@ Enumerates the appearance modes of the keyboard.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                                                   | Read-Only| Optional| Description                                                   |
+| Name   | Type                                                   | Read Only| Optional| Description                                                   |
 | ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | deleteOffset  | number | No  | No| Position of the deleted text.|
 | direction  | [TextDeleteDirection](#textdeletedirection12) | No  | No  | Direction for deleting the text.|
@@ -453,7 +453,7 @@ Preview text.
 
 ## FontSettingOptions<sup>12+</sup>
 
-Defines the font configuration option for adjusting variable font weights, for example, by setting the font weight of components within an application.
+Defines the font settings.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -463,7 +463,7 @@ Defines the font configuration option for adjusting variable font weights, for e
 
 | Name    | Type                                            | Read-Only| Optional| Description                                                    |
 | -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
-| enableVariableFontWeight | boolean | No| Yes | Whether to enable variable font weight adjustment.<br>Default value: **false**.<br>The value **true** means to enable variable font weight adjustment, and **false** means the opposite.|
+| enableVariableFontWeight | boolean | No| Yes | Whether to enable variable font weight adjustment. This parameter serves as the input for the [fontWeight](./ts-basic-components-text.md#fontweight12) API. When the **weight** value in **fontWeight** is a non-hundred value within the [100, 900] range, **enableVariableFontWeight** controls whether this **weight** value is applied.<br>Default value: **false**.<br>**true**: Enable variable font weight adjustment. If the **weight** value is an integer within the [100, 900] range, it is applied as the font weight.<br>**false**: Disable variable font weight adjustment. If the **weight** value is an integer multiple of 100 within the [100, 900] range, it is used as the font weight. If the **weight** value is not an integer multiple of 100, the font weight defaults to 400.|
 
 ## OnDidChangeCallback<sup>12+</sup>
 
@@ -520,9 +520,9 @@ Enumerates automatic capitalization modes. This only provides API capabilities; 
 | Name| Value| Description|
 | ------- | ---- | ------------------- |
 | NONE | 0 | Default state; automatic capitalization is disabled.|
-| WORDS | 1 | Automatic capitalization applied per word.|
-| SENTENCES | 2 | Automatic capitalization applied per sentence.|
-| ALL_CHARACTERS | 3 | Automatic capitalization applied to all characters.|
+| WORDS | 1 | Automatic capitalization is applied per word: The first character of each word is capitalized, others are lowercase.|
+| SENTENCES | 2 | Automatic capitalization is applied per sentence: The first character of each sentence is capitalized, others are lowercase.|
+| ALL_CHARACTERS | 3 | Automatic capitalization is applied to all characters.|
 
 ## TextBaseController<sup>12+</sup>
 
@@ -646,7 +646,7 @@ Obtains the current position of the caret.
 
 setCaretOffset(offset: number): boolean
 
-Sets the caret offset.
+Sets the offset of the caret.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

@@ -35,6 +35,17 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 | TLS | 'TLS' | 使用TLS安全通信协议。|
 | TLCP | 'TLCP' | 使用TLCP安全通信协议。 |
 
+## CacheStrategy<sup>23+</sup>
+
+表示缓存刷新策略的枚举。
+
+**系统能力**：SystemCapability.Request.FileTransferAgent
+
+| 名称 | 值 |说明 |
+| -------- | -------- |-------- |
+| FORCE | 0 | 强制更新缓存，无论缓存是否已经存在。|
+| LAZY | 1 | 延迟更新缓存，只有当缓存不存在时才会更新。|
+
 ## CacheDownloadOptions
 
 缓存下载的配置选项。包括HTTP选项、传输选项和任务选项。
@@ -46,6 +57,7 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 | headers | Record\<string, string\> | 否  | 是 | 缓存下载任务在HTTP传输时使用的请求头。 |
 | sslType<sup>21+</sup> | [SslType](#ssltype21) | 否  | 是 | 使用安全通信协议TLS或TLCP，默认使用TLS。当前TLS和TLCP均不支持双向认证。 |
 | caPath<sup>21+</sup> | string | 否  | 是 | CA证书路径。目前仅支持.pem格式证书，默认使用系统预设的CA证书。 |
+| cacheStrategy<sup>23+</sup> | [CacheStrategy](#cachestrategy23) | 否  | 是 | 使用缓存刷新策略FORCE或LAZY，默认使用FORCE。 |
 
 ## ResourceInfo<sup>20+</sup>
 
@@ -139,6 +151,7 @@ download(url: string, options: CacheDownloadOptions): void
     headers: { 'Accept': 'application/json' },
     sslType: cacheDownload.SslType.TLS,
     caPath: '/path/to/ca.pem',
+    cacheStrategy: cacheDownload.CacheStrategy.FORCE,
   };
   
   try {

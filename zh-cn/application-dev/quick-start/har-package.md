@@ -255,7 +255,6 @@ struct Index {
           Log.info('har msg');
           this.message = 'func return: ' + func();
         })
-
       // ...
 
       // ...
@@ -289,7 +288,6 @@ struct Index {
         .fontSize(32)
 
       // ...
-
       //引用HAR的native方法
       Button($r('app.string.native_add'))
         .id('nativeAdd')
@@ -328,8 +326,6 @@ struct Index {
         .fontFamily('HarmonyHeiTi')
         .fontWeight(FontWeight.Bold)
         .fontSize(32)
-
-      // ...
 
       // ...
 

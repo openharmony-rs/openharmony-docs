@@ -62,7 +62,7 @@ Obtains the area where this window cannot be displayed, for example, the system 
 | -------- | ---------------- |
 | 401      | Parameter error. |
 
-**Example:**
+**Example**
 
 ```ts
 // ExtensionProvider.ts

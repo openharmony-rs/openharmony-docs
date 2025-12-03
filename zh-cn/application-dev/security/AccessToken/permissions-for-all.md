@@ -625,6 +625,20 @@
 
 **起始版本**：22
 
+## ohos.permission.CUSTOMIZE_MENU_ICON
+
+允许应用在“文件管理”的右键菜单中配置自定义图标。
+
+获取该权限后，应用可在右键菜单中配置自定义图标，帮助用户识别并拉起本应用。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：22
+
 ## ohos.permission.kernel.EXEMPT_ANONYMOUS_EXECUTABLE_MEMORY
 
 允许声明匿名可执行内存。

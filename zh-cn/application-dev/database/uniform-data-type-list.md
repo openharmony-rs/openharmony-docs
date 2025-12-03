@@ -240,7 +240,7 @@
 | debian.deb                 | general.archive          | .deb,.udeb                            | application/x-debian-package,application/vnd.debian.binary-package  | Debian系统中的软件安装包类型。                |
 | com.android.apk            | general.archive          | .apk, .apks, .aab, .xapk, .apkm, .akp | application/vnd.android.package-archive                             | Android安装包文件类型。                   |
 | redhat.rpm-archive         | general.archive          | .rpm                                  | application/x-rpm                                                   | RedHat软件安装包类型。                    |
-| com.huawei.hmos.settings.wifi  | general.text         | .hmoswifi                             |                                                                     | HarmonyOS wifi分享配置文件类型。                    |
+| com.huawei.hmos.settings.wifi  | general.text         | .hmoswifi                             |-                                                                  | HarmonyOS wifi分享配置文件类型。                    |
 | openharmony.dlp            | general.composite-object | .dlp                                  |-                                                                    | OpenHarmony系统定义的基于账号身份加密的文件类型。     |
 
 ## 应用定义类型

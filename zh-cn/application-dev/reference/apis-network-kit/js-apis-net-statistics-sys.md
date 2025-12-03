@@ -353,7 +353,7 @@ getTrafficStatsByUid(uidInfo: UidInfo): Promise\<NetStatsInfo>
 **示例：**
 
 ```js
-import statistics from '@ohos.net.statistics'
+import { statistics } from '@kit.NetworkKit';
 
 let uidInfo: statistics.UidInfo = {
   uid: 20010037,
@@ -567,8 +567,8 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称        | 类型                                            | 只读 |可选| 说明           |
-|-----------|-----------------------------------------------|----|---|--------------|
+| 名称        | 类型                                            | 只读 |可选| 说明           |	
+|-----------|-----------------------------------------------|----|---|--------------|	
 | undefined | [uid:number]: [NetStatsInfo](#netstatsinfo10) | 否  |否 |所有应用的历史流量信息。 |
 
 ## NetStatsInfoSequence<sup>12+</sup>
@@ -579,8 +579,8 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称        | 类型                              | 只读 | 可选|说明           |
-|-----------|---------------------------------|----|---|--------------|
-| startTime | number                          | 否  |否 |开始时间戳(单位:秒)。 |
-| endTime   | number                          | 否  |否 |结束时间戳(单位:秒)。 |
+| 名称        | 类型                              | 只读 | 可选|说明           |	
+|-----------|---------------------------------|----|---|--------------|	
+| startTime | number                          | 否  |否 |开始时间戳(单位:秒)。 |	
+| endTime   | number                          | 否  |否 |结束时间戳(单位:秒)。 |	
 | info      | [NetStatsInfo](#netstatsinfo10) | 否  |否 |获取的应用历史流量信息。 |

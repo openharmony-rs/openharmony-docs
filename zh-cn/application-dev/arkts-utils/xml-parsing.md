@@ -86,7 +86,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 	输出结果如下所示：
 
-	```
+	```txt
 	note
 	  title
 	    Play
@@ -142,7 +142,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
     ```
 
    输出结果如下所示：
-   ```
+   ```txt
    importance high logged true // note节点的属性及属性值
    ```
 
@@ -188,7 +188,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
    输出结果如下所示：
 
-	```
+	```txt
 	 0 0 // 0：<?xml version="1.0" encoding="utf-8"?> 对应事件类型START_DOCUMENT值为0  0：起始深度为0
 	 2 1 // 2：<note importance="high" logged="true"> 对应事件类型START_TAG值为2  1：深度为1
 	 2 2 // 2：<title>对应事件类型START_TAG值为2  2：深度为2
@@ -250,7 +250,7 @@ xmlParser.parseXml(options);
 
 输出结果如下所示：
 
-```
+```txt
 tag-
 token-0 0
 tag-book

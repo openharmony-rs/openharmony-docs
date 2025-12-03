@@ -6,14 +6,14 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+This interface provides APIs for audio capture.
+
+Before calling any API in AudioCapturer, you must use [createAudioCapturer](arkts-apis-audio-f.md#audiocreateaudiocapturer8) to create an AudioCapturer instance.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 8.
-
-This interface provides APIs for audio capture.
-
-Before calling any API in AudioCapturer, you must use [createAudioCapturer](arkts-apis-audio-f.md#audiocreateaudiocapturer8) to create an AudioCapturer instance.
 
 ## Modules to Import
 

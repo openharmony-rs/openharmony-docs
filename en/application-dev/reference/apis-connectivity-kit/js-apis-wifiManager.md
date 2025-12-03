@@ -158,6 +158,37 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 	}
 ```
 
+## wifiManager.startScan<sup>21+</sup>
+
+startScan(): void
+
+Starts a WLAN scan. Initiating no more than four scans within 2 minutes while the application is running in the foreground. Initiating a scan at most once within 30 minutes while the application is running in the background.
+
+**Required permissions**: ohos.permission.SET_WIFI_INFO
+
+**System capability**: SystemCapability.Communication.WiFi.STA
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Wi-Fi Error Codes](errorcode-wifi.md).
+
+| **ID**| **Error Message**|
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+
+**Example**
+
+```ts
+	import { wifiManager } from '@kit.ConnectivityKit';
+
+	try {
+		wifiManager.startScan();
+	}catch(error){
+		console.error("failed:" + JSON.stringify(error));
+	}
+```
 
 ## wifiManager.getScanResults<sup>9+</sup><sup>(deprecated)</sup>
 
@@ -1203,7 +1234,7 @@ Obtains the WLAN signal level.
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | rssi | number | Yes| RSSI of the hotspot, in dBm.|
-  | band | number | Yes| Frequency band of the WLAN AP. The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz.|
+  | band | number | Yes| Frequency band of the WLAN access point (AP). The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz.|
 
 **Return value**
 
@@ -1241,7 +1272,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
-Obtains WLAN connection information. This API uses a promise to return the result.
+Obtains information about the WLAN connection. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -1272,7 +1303,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
-Obtains WLAN connection information. This API uses an asynchronous callback to return the result.
+Obtains information about the WLAN connection. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -1779,7 +1810,6 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | **ID**| **Error Message**|
 | -------- | -------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -1910,7 +1940,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
-Obtains P2P link information. This API uses an asynchronous callback to return the result.
+Obtains P2P connection information. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -2054,7 +2084,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 getP2pPeerDevices(): Promise&lt;WifiP2pDevice[]&gt;
 
-Obtains the peer device list in the P2P connection. This API uses a promise to return the result.
+Obtains the P2P peer device list. This API uses a promise to return the result.
 
 **Required permissions**:
 
@@ -2082,7 +2112,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 getP2pPeerDevices(callback: AsyncCallback&lt;WifiP2pDevice[]&gt;): void
 
-Obtains the peer device list in the P2P connection. This API uses an asynchronous callback to return the result.
+Obtains the P2P peer device list. This API uses an asynchronous callback to return the result.
 
 **Required permissions**:
 
@@ -3090,7 +3120,7 @@ Subscribes to P2P connection state changes. When the service exits, call off(typ
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pConnectionChange**.|
-  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | Yes| Callback used to return the WLAN state.|
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | Yes| Callback used to return the P2P connection state change.|
 
 **Error codes**
 
@@ -3163,7 +3193,7 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDeviceChange**.|
-  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice9)&gt; | Yes| Callback used to return the WLAN state.|
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice9)&gt; | Yes| Callback used to return the P2P connection state change.|
 
 **Error codes**
 
@@ -3234,7 +3264,7 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **p2pPeerDeviceChange**.|
-| callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice9)&gt; | Yes| Callback used to return the WLAN state. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
+| callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice9)&gt; | Yes| Callback used to return the P2P peer device state changes. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
 
 **Error codes**
 
@@ -3303,7 +3333,7 @@ Subscribes to P2P persistent group changes. When the service exits, call off(typ
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pPersistentGroupChange**.|
-  | callback | Callback&lt;void&gt; | Yes| Callback used to return the WLAN state.|
+  | callback | Callback&lt;void&gt; | Yes| Callback used to return the P2P persistent group changes.|
 
 **Error codes**
 
@@ -3374,7 +3404,7 @@ Subscribes to P2P device discovery changes. When the service exits, call off(typ
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDiscoveryChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the P2P device discovery change.|
+  | callback | Callback&lt;number&gt; | Yes| Callback used to return the P2P device discovery changes.|
 
 **P2P discovered device states**
 
@@ -3435,36 +3465,4 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
   
   // Unregister an event.
   wifiManager.off("p2pDiscoveryChange", recvP2pDiscoveryChangeFunc);
-```
-
-## wifiManager.startScan<sup>21+</sup>
-
-startScan(): void
-
-Starts a WLAN scan.
-
-**Required permissions**: ohos.permission.SET_WIFI_INFO
-
-**System capability**: SystemCapability.Communication.WiFi.STA
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Wi-Fi Error Codes](errorcode-wifi.md).
-
-| **ID**| **Error Message**|
-| -------- | -------- |
-| 201 | Permission denied.                 |
-| 801 | Capability not supported.          |
-| 2501000  | Operation failed.|
-
-**Example**
-
-```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
-
-	try {
-		wifiManager.startScan();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
 ```

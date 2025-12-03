@@ -5180,3 +5180,31 @@ Allows an application to capture screenshots, including privacy windows.
 **Supported devices**: general devices
 
 **Valid since**: 13
+
+## ohos.permission.GET_BACKGROUND_TASK_INFO
+
+Allows an application to obtain background task status.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Device**: general devices
+
+**Since**: 23
+
+## ohos.permission.SET_BACKGROUND_TASK_STATE
+
+Allows an application to obtain and set the user authorization status of special continous task.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Device**: general devices
+
+**Since**: 23

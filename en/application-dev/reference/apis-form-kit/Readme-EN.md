@@ -1,4 +1,10 @@
 # Form Kit<!--form-kit-->
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 
 - ArkTS APIs<!--form-arkts-->
   - [@ohos.app.form.formBindingData (formBindingData)](js-apis-app-form-formBindingData.md)
@@ -21,6 +27,7 @@
     - [LiveFormExtensionContext](js-apis-application-LiveFormExtensionContext.md)
     <!--Del-->
     - [FormExtensionContext (System API)](js-apis-inner-application-formExtensionContext-sys.md)
+    - [LiveFormExtensionContext (for System Applications Only)](js-apis-application-LiveFormExtensionContext-sys.md)
    <!--DelEnd-->
 - APIs No Longer Maintained<!--form-arkts-dep-->
   - [@ohos.application.formBindingData (formBindingData)](js-apis-application-formBindingData.md)

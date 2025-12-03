@@ -97,7 +97,7 @@
 2. 在src/main/cpp/napi_init.cpp文件中获取Native的包信息对象，并转为js的包信息对象，即可在js侧获取应用的信息：
 
     <!-- @[native-bundle-guidelines_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     static napi_value GetCurrentApplicationInfo(napi_env env, napi_callback_info info)
     {
@@ -118,7 +118,7 @@
         free(nativeApplicationInfo.fingerprint);
         return result;
     }
-
+    
     static napi_value GetAppId(napi_env env, napi_callback_info info)
     {
         // 调用Native接口获取应用appId
@@ -130,7 +130,7 @@
         free(appId);
         return nAppId;
     }
-
+    
     static napi_value GetAppIdentifier(napi_env env, napi_callback_info info)
     {
         // 调用Native接口获取应用appIdentifier
@@ -142,7 +142,7 @@
         free(appIdentifier);
         return nAppIdentifier;
     }
-
+    
     static napi_value GetMainElementName(napi_env env, napi_callback_info info)
     {
         // 调用Native接口获取应用入口的信息
@@ -167,7 +167,7 @@
         free(elementName.abilityName);
         return result;
     }
-
+    
     static napi_value GetCompatibleDeviceType(napi_env env, napi_callback_info info)
     {
         // 调用Native接口获取应用deviceType
@@ -179,7 +179,7 @@
         free(deviceType);
         return nDeviceType;
     }
-
+    
     static napi_value IsDebugMode(napi_env env, napi_callback_info info)
     {
         bool isDebug = false;
@@ -195,7 +195,7 @@
         napi_get_boolean(env, isDebug, &debug);
         return debug;
     }
-
+    
     static napi_value GetModuleMetadata(napi_env env, napi_callback_info info)
     {
         size_t moduleCount = 0;
@@ -254,7 +254,7 @@
 
 
     <!-- @[native-bundle-guidelines_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     static void AddDefaultApp(napi_env env,
         napi_value &infoObj,
@@ -267,7 +267,7 @@
         napi_get_boolean(env, isDefaultApp, &defaultAppValue);
         napi_set_named_property(env, infoObj, "isDefaultApp", defaultAppValue);
     }
-
+    
     static void AddAppIndex(napi_env env,
         napi_value &infoObj,
         OH_NativeBundle_AbilityResourceInfo* temp)
@@ -279,7 +279,7 @@
         napi_create_int32(env, appIndex, &appIndexValue);
         napi_set_named_property(env, infoObj, "appIndex", appIndexValue);
     }
-
+    
     static void AddLabel(napi_env env,
         napi_value &infoObj,
         OH_NativeBundle_AbilityResourceInfo* temp)
@@ -296,7 +296,7 @@
         }
         napi_set_named_property(env, infoObj, "label", labelValue);
     }
-
+    
     static void AddBundleName(napi_env env,
         napi_value &infoObj,
         OH_NativeBundle_AbilityResourceInfo* temp)
@@ -313,7 +313,7 @@
         }
         napi_set_named_property(env, infoObj, "bundleName", bundleNameValue);
     }
-
+    
     static void AddModuleName(napi_env env,
         napi_value &infoObj,
         OH_NativeBundle_AbilityResourceInfo* temp)
@@ -330,7 +330,7 @@
         }
         napi_set_named_property(env, infoObj, "moduleName", moduleNameValue);
     }
-
+    
     static void AddAbilityName(napi_env env,
         napi_value &infoObj,
         OH_NativeBundle_AbilityResourceInfo* temp)
@@ -347,7 +347,7 @@
         }
         napi_set_named_property(env, infoObj, "abilityName", abilityNameValue);
     }
-
+    
     static void GetDrawableDescriptor(
         OH_NativeBundle_AbilityResourceInfo* temp)
     {
@@ -358,7 +358,7 @@
             //使用ArkUI_DrawableDescriptor对象绘制图标
         }
     }
-
+    
     static void AssemblyAbilityResourceInfo(napi_env env,
         napi_value &infoObj,
         OH_NativeBundle_AbilityResourceInfo* temp)
@@ -378,7 +378,7 @@
         // 7. 获取ArkUI_DrawableDescriptor对象
         GetDrawableDescriptor(temp);
     }
-
+    
     static napi_value GetAbilityResourceInfo(napi_env env, napi_callback_info info)
     {
         size_t argc = 1;

@@ -502,5 +502,3 @@ Sets whether to enable the mute interruption mode.
 | Type| Description|
 | -- | -- |
 | [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>        **AV_ERR_INVALID_VAL**: The input parameter **recorder** or **callback** is nullptr.<br>        **AV_ERR_INVALID_STATE**: The function is called in an invalid state. It must be in the prepared state.|
-
- <!--no_check--> 

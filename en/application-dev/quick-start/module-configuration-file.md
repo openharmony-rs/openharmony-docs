@@ -152,7 +152,7 @@ As shown above, the **module.json5** file contains several tags.
 | abilityStageSrcEntryDelegator | Name of the target module corresponding to the UIAbility that the current module redirects to (different from the current module name). It is used together with the **abilitySrcEntryDelegator** tag to specify the target object for redirection.<br>**NOTE**<br>1. This tag is supported since API version 17.<br>2. This tag does not take effect when the UIAbility is started through the [startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall) API.<br>3. Configuration in the HAR and redirection to the UIAbility of the HAR are not supported.| String| Yes (initial value: left empty)|
 | crossAppSharedConfig | Name of the configuration file for inter-application sharing. The value is a string with a maximum of 255 bytes. It is used to release configurations for other applications to read. The configurations take effect when the application is installed and become invalid when the application is uninstalled. For details, see [Sharing Configurations Between Applications (ArkTS)](../database/share-config.md#configuring-the-publisher).<br>**NOTE**<br>This tag is supported since API version 20.| String| Yes (initial value: left empty)|
 | formWidgetModule | In [standalone widget package](../form/arkts-ui-widget-creation.md#method-2-creating-a-standalone-package), this tag needs to be configured for the application package to associate with the widget package. The value is the module name of the widget package, corresponding to the **name** tag in the **module.json5** file of the widget package. For details, see [FormExtensionAbility Configuration](../form/arkts-ui-widget-configuration.md#formextensionability-configuration).<br>**NOTE**<br> 1. This tag is supported since API version 20.<br> 2. This tag takes effect only in the application package of a standalone widget package. The **formExtensionModule** tag must be configured for the corresponding widget package module.| String| Yes (initial value: left empty) |
-| formExtensionModule | In [standalone widget package](../form/arkts-ui-widget-creation.md#method-2-creating-a-standalone-package), this tag needs to be configured for the widget package to associate with the application package. The value is the module name of the application package, corresponding to the **name** tag in the **module.json5** file of the application package. For details, see [Standalone Widget Package Configuration](../form/arkts-ui-widget-configuration.md#independent-widget-package-configuration).<br>**NOTE**<br>1. This tag is supported since API version 20.<br>2. This tag takes effect only in the widget package of a standalone widget package. The **formWidgetModule** tag must be configured for the corresponding application package module.| String| Yes (initial value: left empty) |
+| formExtensionModule | In [standalone widget package](../form/arkts-ui-widget-creation.md#method-2-creating-a-standalone-package), this tag needs to be configured for the widget package to associate with the application package. The value is the module name of the application package, corresponding to the **name** tag in the **module.json5** file of the application package. For details, see [Standalone Widget Package Configuration](../form/arkts-ui-widget-configuration.md#standalone-widget-package-configuration).<br>**NOTE**<br>1. This tag is supported since API version 20.<br>2. This tag takes effect only in the widget package of a standalone widget package. The **formWidgetModule** tag must be configured for the corresponding application package module.| String| Yes (initial value: left empty) |
 <!--RP6--><!--RP6End-->
 
 ## deviceTypes
@@ -651,7 +651,7 @@ The **distributionFilter** tag defines the rules for distributing HAP files base
 
 
   <!-- @[module_distributionFilter_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile02/entry2/src/main/module.json5) -->
-  
+
   ``` JSON5
   // Device types supported by entry2
   {
@@ -765,7 +765,7 @@ Example:
 2. Configure **metadata** in the **module** tag in the **module.json5** file.
 
   <!-- @[module_distributionFilter_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5)   -->
-  
+
   ``` JSON5
   {
     "module": {

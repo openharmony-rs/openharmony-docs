@@ -91,6 +91,7 @@ static napi_value HandleScopeTest(napi_env env, napi_callback_info info)
     napi_close_handle_scope(env, scope);
     // 此处的result能够得到值“handleScope”
     return result;
+    // result已经离开scope的作用域，继续使用可能会存在稳定性问题
 }
 
 static napi_value HandleScope(napi_env env, napi_callback_info info)

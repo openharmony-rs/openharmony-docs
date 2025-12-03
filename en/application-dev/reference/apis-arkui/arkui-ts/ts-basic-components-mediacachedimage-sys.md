@@ -1,4 +1,10 @@
 # MediaCachedImage (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @baosiyuan-->
+<!--Designer: @shiyu-hu-->
+<!--Tester: @abec123-->
+<!--Adviser: @w_Machine_cc-->
 
 The **MediaCachedImage** component, with APIs that inherit from [Image](ts-basic-components-image.md) and the added capability of loading texture resources (for system applications only), is typically used to display images in applications.
 
@@ -10,6 +16,7 @@ The **MediaCachedImage** component, with APIs that inherit from [Image](ts-basic
 
 ## APIs
 
+### MediaCachedImage
 MediaCachedImage(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource)
 
 Obtains an image from the specified source for subsequent rendering and display.
@@ -20,9 +27,17 @@ Obtains an image from the specified source for subsequent rendering and display.
 
 **Parameters**
 
-| Name| Type                                                    | Mandatory| Description                                                    |
-| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| Name| Type                                                    | Mandatory| Description                                                    |	
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |	
 | src    | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [ResourceStr](ts-types.md#resourcestr) \| [DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor) \| [ASTCResource](#astcresource12) | Yes  | Data source of the image. Media library resources are supported. For details about how to reference an image of the PixelMap, ResourceStr, or DrawableDescriptor type, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources). The ASTCResource type is available for system applications only.|
+
+## Attributes
+
+The [universal attributes](ts-component-general-attributes.md) are supported.
+
+## Events
+
+The [universal events](ts-component-general-events.md) are supported.
 
 ## ASTCResource<sup>12+</sup>
 
@@ -32,10 +47,10 @@ Describes texture stitching.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Type   | Description                                     |
-| ------- | ----------------------------------------- |
-| sources | URI array, indicating the textures to be stitched.|
-| column  | Column size, indicating the number of textures to be stitched in each row.   |
+| Name   | Type| Mandatory| Description                                     |
+| ------- | --- | --- | ------------------------------------------ |
+| sources | Array&lt;string&gt; | Yes| URI array, indicating the textures to be stitched.|
+| column  | number | Yes| Column size, indicating the number of textures to be stitched in each row.   |
 
 ## Example
 

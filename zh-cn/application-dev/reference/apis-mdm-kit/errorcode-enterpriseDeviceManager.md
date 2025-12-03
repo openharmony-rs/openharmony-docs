@@ -234,7 +234,7 @@ Failed to replace the administrator application of the device.
 
 **错误信息**
 
-The parameter verification failed.
+Parameter verification failed.
 
 **错误描述**
 

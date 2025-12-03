@@ -41,4 +41,4 @@
   - [EGL Symbols Exported from Native APIs](egl-symbol.md)
   - [ICU4C Symbols Exported from Native APIs](icu4c-symbol.md)
   - [OpenGL ES 3.2 Symbols Exported from Native APIs](openglesv3-symbol.md)
-  - [OpenGL 3.0 Symbols Exported from Native APIs](opengl-symbol.md)
+  - [OpenGL Symbols Exported from Native APIs](opengl-symbol.md)

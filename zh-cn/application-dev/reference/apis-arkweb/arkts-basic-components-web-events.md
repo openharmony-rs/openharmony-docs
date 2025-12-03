@@ -1862,17 +1862,17 @@ struct Index {
         })
         .onClientAuthenticationRequest((event) => {
           // 收到客户端证书请求事件
-          console.log(`onClientAuthenticationRequest`);
+          console.info(`onClientAuthenticationRequest`);
           try {
             let certTypes: Array<certMgrDialog.CertificateType> = [
               certMgrDialog.CertificateType.CREDENTIAL_UKEY
             ];
             // 调用证书管理，打开证书选择框
             certMgrDialog.openAuthorizeDialog(this.context, { certTypes: certTypes })
-              .then((data: certMgrDialog.CertIndex) => {
+              .then((data: certMgrDialog.CertReference) => {
                 console.info(`openAuthorizeDialog request cred auth success`)
                 // 通知web选择的为ukey证书
-                event.handler.confirm(data.index, CredentialType.CREDENTIAL_UKEY);
+                event.handler.confirm(data.keyUri, CredentialType.CREDENTIAL_UKEY);
               }).catch((err: BusinessError) => {
               console.error(`openAuthorizeDialog request cred auth failed, err: ${JSON.stringify(err)}`);
             })
@@ -1883,16 +1883,16 @@ struct Index {
         })
         .onVerifyPin((event) => {
           // 收到PIN码认证请求事件
-          console.log(`onVerifyPin`);
+          console.info(`onVerifyPin`);
           // 调用证书管理，打开PIN码输入框
-          certMgrDialog.openUkeyAuthDialog(this.context, {ukeyCertIndex: event.identity})
+          certMgrDialog.openUkeyAuthDialog(this.context, {keyUri: event.identity})
             .then(() => {
               // 通知webPIN码认证成功
-              console.log(`onVerifyPin success`);
+              console.info(`onVerifyPin success`);
               event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_SUCCESS);
             }).catch((err: BusinessError) => {
             // 通知webPIN码认证失败
-            console.log(`onVerifyPin fail`);
+            console.info(`onVerifyPin fail`);
             event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_FAILED);
           })
         })
@@ -4843,7 +4843,7 @@ onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| callback | OnDetectBlankScreenCallback\<[BlankScreenDetectionEventInfo](./arkts-basic-components-web-i.md#blankscreendetectioneventinfo22)\> | 是    | 设置Web组件的检测到白屏时的回调函数。 |
+| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | 是    | 设置Web组件的检测到白屏时的回调函数。 |
 
 **示例：**
 
@@ -5176,5 +5176,62 @@ onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
        }
      </script>
    </body>
+  </html>
+  ```
+
+## onTextSelectionChange<sup>23+</sup>
+
+onTextSelectionChange(callback: TextSelectionChangeCallback)
+
+设置Web组件选区文本改变时的回调函数，使用callback异步回调。
+
+> **说明：**
+>
+> - 支持手势选中、鼠标选中以及JS选中选区。
+>
+> - 使用上述方式选中内容结束后触发回调。
+>
+> - 使用同样方式选中和上一次相同内容时，不触发回调；使用不同方式选中和上一次相同内容时，依然触发。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填   | 说明                                   |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| callback | [TextSelectionChangeCallback](./arkts-basic-components-web-t.md#textselectionchangecallback23) | 是    | 回调函数，所选区域文本内容改变时触发。 |
+
+**示例：**
+
+  ```ts
+  // onTextSelectionChange.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onTextSelectionChange((selectionText: string) => {
+            console.info(`Selected text is ${selectionText}.`);
+          })
+      }
+    }
+  }
+  ```
+  加载的html文件
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>示例页面</title>
+  </head>
+  <body>
+      示例文本
+  </body>
   </html>
   ```

@@ -55,7 +55,7 @@ This section describes how to execute concurrent tasks through TaskPool within a
 
    ```ts
    // Worker.ets
-   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+   import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
    import { taskpool } from '@kit.ArkTS';
    
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;

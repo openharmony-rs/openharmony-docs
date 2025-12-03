@@ -171,7 +171,7 @@ reverse(isReversed: Optional\<boolean\>)
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| isReversed  | Optional\<boolean\> | 是   | 子组件在垂直方向上的排列是否反转。<br/>默认值：true，设置true表示子组件在垂直方向上反转排列，设置false表示子组件在垂直方向上正序排列。 |
+| isReversed  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean\> | 是   | 子组件在垂直方向上的排列是否反转。<br/>默认值：true，设置true表示子组件在垂直方向上反转排列，设置false表示子组件在垂直方向上正序排列。 |
 
 >  **说明：**
 >
@@ -213,7 +213,7 @@ struct ColumnExample {
 
       // 通过资源引用方式设置子元素垂直方向间距
       Text('Resource space').width('90%')
-      Column({ space: $r("app.string.stringSpace") }) {
+      Column({ space: $r('app.string.stringSpace') }) {
         Column().width('100%').height(30).backgroundColor(0xAFEEEE)
         Column().width('100%').height(30).backgroundColor(0x00FFFF)
       }.width('90%').height(100).border({ width: 1 })

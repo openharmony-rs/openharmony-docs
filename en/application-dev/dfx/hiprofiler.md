@@ -55,6 +55,7 @@ $ hiprofiler_cmd \
   -t 30 \
   -s \
   -k \
+  --nonblock \
 <<CONFIG
  request_id: 1
  session_config {
@@ -83,10 +84,11 @@ CONFIG
 | -o | Sets the custom file save path, which must start with **/data/local/tmp**. If no path is set, the profiling data is saved to **/data/local/tmp/hiprofiler_data.htrace** by default. If the profiling is performed repeatedly, the file in the original path will be overwritten.| 
 | -k | Kills the existing profiling service process.| 
 | -s | Starts the profiling service process.| 
-| -t | Sets the profiling duration, in seconds.| 
+| -t | Sets the profiling duration, in seconds.|
+| --nonblock | Sets **hiprofiler_cmd** to run in non-blocking mode.<br>After the command is executed, **hiprofiler_cmd** runs in the background and other commands can be executed.<br>If this parameter is not set, **hiprofiler_cmd** will block the execution until it is complete.<br>Note: This parameter is supported since API version 23.|
 
 
-After inputting the hiprofiler_cmd parameter, input the plugin configuration information. The configuration information starts with **<<CONFIG** and ends with **CONFIG**. The content in the middle is in JSON format.
+After inputting the **hiprofiler_cmd** parameter, input the plugin configuration information, which starts with **<<CONFIG** and ends with **CONFIG**. The configuration varies depending on the plugin. For details, see [Plugin Parameters](#plugin-parameters).
 
 
 The following table describes the **session config** fields.
