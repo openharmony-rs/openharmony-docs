@@ -20,7 +20,7 @@
     - [模块描述](arkts-apis-graphics-drawing.md)
     - [Class (Brush)](arkts-apis-graphics-drawing-Brush.md)
     - [Class (Canvas)](arkts-apis-graphics-drawing-Canvas.md)
-    - [Class (ClorFilter)](arkts-apis-graphics-drawing-ColorFilter.md)
+    - [Class (ColorFilter)](arkts-apis-graphics-drawing-ColorFilter.md)
     - [Class (Font)](arkts-apis-graphics-drawing-Font.md)
     - [Class (ImageFilter)](arkts-apis-graphics-drawing-ImageFilter.md)
     - [Class (Lattice)](arkts-apis-graphics-drawing-Lattice.md)
