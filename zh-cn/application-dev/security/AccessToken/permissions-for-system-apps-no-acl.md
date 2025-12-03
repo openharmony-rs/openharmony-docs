@@ -217,7 +217,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：false
+**ACL使能**：true
 
 **起始版本**：12
 
