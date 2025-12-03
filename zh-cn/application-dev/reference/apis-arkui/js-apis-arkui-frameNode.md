@@ -2356,13 +2356,13 @@ struct ListNodeTest {
 }
  ```
 
-### adoptChild<sup>23+</sup>
+### adoptChild<sup>22+</sup>
 
 adoptChild(child: FrameNode): void
 
 当前节点接纳目标节点为附属节点。被接纳的附属节点不能已有父节点。调用该接口实际上不会将其添加为子节点，而是仅允许其接收对应子节点的生命周期回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2386,13 +2386,13 @@ adoptChild(child: FrameNode): void
 
 完整示例请参考[接纳为附属节点示例](#接纳为附属节点示例)。
 
-### removeAdoptedChild<sup>23+</sup>
+### removeAdoptedChild<sup>22+</sup>
 
 removeAdoptedChild(child: FrameNode): void
 
 移除被接纳的目标附属节点。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -10589,7 +10589,7 @@ struct Index {
 
 ## 接纳为附属节点示例
 
-从API version 23开始，该示例演示了如何通过FrameNode的[adoptChild](#adoptchild23)和[removeAdoptedChild](#removeadoptedchild23)接口进行接纳为附属节点的相关操作。
+从API version 22开始，该示例演示了如何通过FrameNode的[adoptChild](#adoptchild22)和[removeAdoptedChild](#removeadoptedchild22)接口进行接纳为附属节点的相关操作。
 
 ```ts
 import {NodeController, FrameNode, UIContext} from '@kit.ArkUI';
