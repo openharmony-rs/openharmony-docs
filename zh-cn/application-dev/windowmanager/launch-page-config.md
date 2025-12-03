@@ -29,7 +29,7 @@
 在创建的UIAbility模板中，简易启动页相关字段的默认配置如下：
 <!-- @[startWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StartWindow/sampleForStartWindow/entry/src/main/module.json5) -->
 
-```json
+``` JSON5
 "startWindowIcon": "$media:startIcon",
 "startWindowBackground": "$color:start_window_background",
 ```
