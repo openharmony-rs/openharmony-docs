@@ -1525,7 +1525,7 @@ struct WebComponent {
 
 static setLazyInitializeWebEngine(lazy: boolean): void
 
-设置是否延迟初始化ArkWeb内核，不调用该方法时，默认不延迟初始化ArkWeb内核。
+设置是否延后初始化ArkWeb内核，不调用该方法时，默认不延后初始化ArkWeb内核。
 
 > **说明：**
 >
@@ -1539,7 +1539,7 @@ static setLazyInitializeWebEngine(lazy: boolean): void
 
 | 参数名 | 类型   | 必填 | 说明                     |
 | ---- | ------- | -- | ------------------------- |
-| lazy | boolean | 是 | 是否延迟初始化ArkWeb内核，true：延迟，false：不延迟。 |
+| lazy | boolean | 是 | 是否延后初始化ArkWeb内核，true：延后，false：不延后。 |
 
 **示例：**
 
