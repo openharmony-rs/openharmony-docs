@@ -595,11 +595,11 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 2. 创建一个双向认证TLSSocket连接，返回一个TLSSocket对象。
 
    <!-- @[two-way_constructTLSSocketInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
-
-``` TypeScript
-// 创建一个（双向认证）TLS Socket连接，返回一个TLS Socket对象。
-let tlsSocket: socket.TLSSocket | null = socket.constructTLSSocketInstance();
-```
+   
+   ``` TypeScript
+   // 创建一个（双向认证）TLS Socket连接，返回一个TLS Socket对象。
+   let tlsSocket: socket.TLSSocket | null = socket.constructTLSSocketInstance();
+   ```
 
 3. 绑定本地IP地址和端口，确保bind成功后，再订阅TLS Socket相关的订阅事件。上传客户端CA证书及数字证书，调用[connect](../reference/apis-network-kit/js-apis-socket.md#connect9)接口建立连接。连接成功后，可调用[send](../reference/apis-network-kit/js-apis-socket.md#send9)接口发送数据。
    ```ts
