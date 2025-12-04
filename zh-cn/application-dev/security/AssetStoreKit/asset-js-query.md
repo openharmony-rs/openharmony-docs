@@ -64,6 +64,23 @@
 
 1. 引用头文件，定义工具函数。
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_plaintext.ets) -->
+   
+   ``` TypeScript
+   import { asset } from '@kit.AssetStoreKit';
+   import { util } from '@kit.ArkTS';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   function stringToArray(str: string): Uint8Array {
+     let textEncoder = new util.TextEncoder();
+     return textEncoder.encodeInto(str);
+   }
+   
+   function arrayToString(arr: Uint8Array): string {
+     let textDecoder = util.TextDecoder.create('utf-8', { ignoreBOM: true });
+     let str = textDecoder.decodeToString(arr, { stream: false });
+     return str;
+   }
+   ```
 
 2. 参考如下示例代码，进行业务功能开发。
    <!-- @[query_single_plaintext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_plaintext.ets) -->
