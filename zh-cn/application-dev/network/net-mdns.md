@@ -105,15 +105,15 @@ MDNS管理的典型场景有：
 3. 创建DiscoveryService对象，用于发现指定服务类型的MDNS服务。
 
    <!-- @[create_discovery_service_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    
-// ···
-// 创建DiscoveryService对象，用于发现指定服务类型的MDNS服务。
-let serviceType = '_print._tcp';
-let discoveryService = mdns.createDiscoveryService(context, serviceType);
-```
+   
+   ``` TypeScript
+   let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+       
+   // ...
+   // 创建DiscoveryService对象，用于发现指定服务类型的MDNS服务。
+   let serviceType = '_print._tcp';
+   let discoveryService = mdns.createDiscoveryService(context, serviceType);
+   ```
   
 4. 订阅MDNS服务发现相关状态变化。
 
