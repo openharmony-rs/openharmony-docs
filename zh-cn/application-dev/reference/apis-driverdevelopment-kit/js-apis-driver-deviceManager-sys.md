@@ -15,7 +15,9 @@ import { deviceManager } from '@kit.DriverDevelopmentKit';
 
 ## deviceManager.queryDeviceInfo
 
-queryDeviceInfo(deviceId?: long): Array&lt;Readonly&lt;DeviceInfo&gt;&gt;
+ArkTS-Dyn: queryDeviceInfo(deviceId?: number): Array&lt;Readonly&lt;DeviceInfo&gt;&gt;
+
+ArkTS-Sta: queryDeviceInfo(deviceId?: long): Array&lt;Readonly&lt;DeviceInfo&gt;&gt;
 
 查询扩展外设详细信息列表。如果没有设备接入，那么将会返回一个空的列表。
 
@@ -33,7 +35,7 @@ queryDeviceInfo(deviceId?: long): Array&lt;Readonly&lt;DeviceInfo&gt;&gt;
 
 | 参数名      | 类型     | 必填  | 说明                     |
 |----------|--------|-----|------------------------|
-| deviceId | long | 否   | 设备ID，通过[queryDevices](js-apis-driver-deviceManager.md#devicemanagerquerydevices)获得。如果不传入设备ID，则默认获取所有的设备信息；如果没有外接设备，且没有传入设备ID则会返回空数组。 |
+| deviceId | ArkTs-Dyn: number<br> ArkTs-Sta: long | 否   | 设备ID，通过[queryDevices](js-apis-driver-deviceManager.md#devicemanagerquerydevices)获得。如果不传入设备ID，则默认获取所有的设备信息；如果没有外接设备，且没有传入设备ID则会返回空数组。 |
 
 **返回值：**
 

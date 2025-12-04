@@ -390,7 +390,7 @@ try {
 ```
 ## deviceManager.bindDriverWithDeviceId<sup>19+</sup>
 
-ArkTS-Dyn: bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;long&gt;): Promise&lt;RemoteDeviceDriver&gt;;
+ArkTS-Dyn: bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt;;
 
 ArkTS-Sta: bindDriverWithDeviceId(deviceId: long, onDisconnect: AsyncCallback&lt;long&gt;): Promise&lt;RemoteDeviceDriver&gt;;
 
@@ -410,8 +410,8 @@ ArkTS-Sta: bindDriverWithDeviceId(deviceId: long, onDisconnect: AsyncCallback&lt
 
 | 参数名       | 类型                        | 必填 | 说明                         |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-| deviceId     | ArkTs-Dyn: number<br> ArkTs-Sta: int | 是   | 设备ID，通过queryDevices获得。|
-| onDisconnect | AsyncCallback&lt;long&gt; | 是   | 绑定设备断开的回调。           |
+| deviceId     | ArkTs-Dyn: number<br> ArkTs-Sta: long | 是   | 设备ID，通过queryDevices获得。|
+| onDisconnect | ArkTs-Dyn: AsyncCallback&lt;number&gt;<br> ArkTs-Sta: AsyncCallback&lt;long&gt; | 是   | 绑定设备断开的回调。           |
 
 **返回值：**
 
