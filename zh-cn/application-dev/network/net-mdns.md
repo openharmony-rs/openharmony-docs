@@ -94,13 +94,14 @@ MDNS管理的典型场景有：
 2. 从@kit.NetworkKit里导入mdns的命名空间。
 
    <!-- @[MDNS_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 从@kit.NetworkKit中导入mdns命名空间。
-import { mdns } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-```
+   
+   ``` TypeScript
+   // 从@kit.NetworkKit中导入mdns命名空间。
+   import { mdns } from '@kit.NetworkKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 3. 创建DiscoveryService对象，用于发现指定服务类型的MDNS服务。
 
    <!-- @[create_discovery_service_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
