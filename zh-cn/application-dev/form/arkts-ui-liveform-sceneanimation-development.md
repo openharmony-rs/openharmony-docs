@@ -28,16 +28,13 @@
 
 1. 创建互动卡片
 
-   通过[LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)创建互动卡片，创建时加载互动卡片页面。
+    通过[LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)创建互动卡片，创建时加载互动卡片页面。
     
     ```ts
     // entry/src/main/ets/myliveformextensionability/MyLiveFormExtensionAbility.ets
     import { formInfo, LiveFormInfo, LiveFormExtensionAbility } from '@kit.FormKit';
     import { UIExtensionContentSession } from '@kit.AbilityKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-
-    const DOMAIN = 0x0000;
-
+    
     export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility {
       onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession) {
         let storage: LocalStorage = new LocalStorage();
@@ -45,23 +42,23 @@
         storage.setOrCreate('session', session);
         let formId: string = liveFormInfo.formId;
         storage.setOrCreate('formId', formId);
-
+    
         // 获取卡片圆角信息
         let borderRadius: number = liveFormInfo.borderRadius;
         storage.setOrCreate('borderRadius', borderRadius);
-
+    
         // liveFormInfo.rect字段表示非激活态卡片组件相对激活态UI的位置和尺寸信息
         let formRect: formInfo.Rect = liveFormInfo.rect;
         storage.setOrCreate('formRect', formRect);
-        hilog.info(DOMAIN, 'testTag', `MyLiveFormExtensionAbility onSessionCreate formId: ${formId}` +
+        console.log(`MyLiveFormExtensionAbility onSessionCreate formId: ${formId}` +
           `, borderRadius: ${borderRadius}, formRectInfo: ${JSON.stringify(formRect)}`);
-
+    
         // 加载互动页面
         session.loadContent('myliveformextensionability/pages/MyLiveFormPage', storage);
       }
-
+    
       onLiveFormDestroy(liveFormInfo: LiveFormInfo) {
-        hilog.info(DOMAIN, 'testTag', `MyLiveFormExtensionAbility onDestroy`);
+        console.log(`MyLiveFormExtensionAbility onDestroy`);
       }
     };
     ```
@@ -73,6 +70,7 @@
     import { formInfo, formProvider } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
+    // Constants实现参考“互动卡片动效工具函数实现”小节
     import { Constants } from '../../common/Constants';
     
     const ANIMATION_RECT_SIZE: number = 100;
@@ -247,7 +245,6 @@
             Text('点击触发互动卡片动效')
               .fontSize($r('app.float.font_size'))
               .fontWeight(FontWeight.Medium)
-              // $r('sys.color.font_primary')需开发者根据实际情况替换相应的资源或值
               .fontColor($r('sys.color.font_primary'))
           }
           .width('100%')
@@ -321,6 +318,7 @@
       FormExtensionAbility,
     } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
+    // Constants实现参考“互动卡片动效工具函数实现”小节
     import { Constants } from '../common/Constants';
     
     export default class EntryFormAbility extends FormExtensionAbility {
@@ -390,6 +388,7 @@
       public static readonly OVERFLOW_DURATION: number = 3500;
     }
     ```
+
 ## 实现效果
 以下是按照本文档代码示例开发而成的效果demo，demo执行动效时，点击按钮，将调用 [formProvider.cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20) 接口，打断当前破框动效，卡片切换为非激活态。
 
