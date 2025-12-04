@@ -468,7 +468,7 @@
           - 状态管理优秀实践<!--arkts-state-management-best-practices-->
             - [V1状态管理优秀实践](ui/state-management/arkts-state-management-best-practices.md)
             - [V1状态管理合理使用开发指导](ui/state-management/properly-use-state-management-to-develope.md)
-            - [状态变量改变不触发组件刷新问题常用定位方法](ui/state-management/troubleshooting-state-manange.md)
+            - [状态变量改变不触发组件刷新问题常用定位方法](ui/state-management/troubleshooting-state-manage.md)
         - 学习UI范式渲染控制<!--arkts-rendering-control-->
           - [渲染控制概述](ui/rendering-control/arkts-rendering-control-overview.md)
           - [if/else：条件渲染](ui/rendering-control/arkts-rendering-control-ifelse.md)
