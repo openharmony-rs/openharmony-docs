@@ -209,18 +209,6 @@
 
 **起始版本**：11
 
-## ohos.permission.ACCESS_SUPER_HUB
-
-允许应用拉起"中转站"。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：false
-
-**起始版本**：12
-
 ## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
 
 允许UIExtensionAbility显示在锁屏之上。
