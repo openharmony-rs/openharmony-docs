@@ -127,12 +127,12 @@ struct Index {
     export default class EntryAbility extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void { 
         // 应用冷启动生命周期回调，其他业务处理...
-        parseMailto(want);
+        this.parseMailto(want);
       }
     
       onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 应用热启动生命周期回调，其他业务处理...
-        parseMailto(want);
+        this.parseMailto(want);
       }
     
       public parseMailto(want: Want) {
