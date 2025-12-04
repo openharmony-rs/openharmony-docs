@@ -1794,7 +1794,7 @@ export struct ExampleOne {
 
 ### \@Builder支持状态变量刷新
 
-从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。在ArkTS-Dyn上下文中，`UIUtils.makeBinding()`的使用方法详情请参考[状态管理API文档（ArkTS-Dyn）](../../reference/apis-arkui/js-apis-StateManagement.md#makebinding20)；在ArkTS-Sta上下文中，详情请参考[状态管理API文档（ArkTS-Sta）](../../reference/apis-arkui/js-apis-stateManagement-static.md#makebinding)。
+从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。在ArkTS-Dyn上下文中，`UIUtils.makeBinding()`的使用方法详情请参考[状态管理API文档（ArkTS-Dyn）](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20)；在ArkTS-Sta上下文中，详情请参考[状态管理API文档（ArkTS-Sta）](../../reference/apis-arkui/js-apis-stateManagement-static.md#makebinding)。
 
 **ArkTS-Dyn:**
 ```ts

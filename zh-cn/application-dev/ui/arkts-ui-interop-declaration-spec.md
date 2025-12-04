@@ -100,10 +100,10 @@ UI互操作无需对胶水代码做额外处理，可直接使用自动生成结
 | [\@Param](./state-management/arkts-new-param.md) | `@Param paramVar: string = 'paramVar';` | `@Param paramVar: string;` |
 | [\@Once](./state-management/arkts-new-once.md) | `@Param @Once onceParam: string = 'onceParam';` | `@Param @Once onceParam: string;` |
 | [\@Event](./state-management/arkts-new-event.md) | `@Event eventVar: (val: number) => void;` | `@Event eventVar: (val: number) => void;` |
-| [\@Provider](./state-management/arkts-new-Provider-and-Consumer.md) | `@Provider() providerVar: string = 'providerVar';` | `@Provider providerVar: string;` |
-| [\@Consumer](./state-management/arkts-new-Provider-and-Consumer.md) | `@Consumer() consumerVar: string = 'consumerVar';` | `@Consumer consumerVar: string;` |
+| [\@Provider](./state-management/arkts-new-provider-and-consumer.md) | `@Provider() providerVar: string = 'providerVar';` | `@Provider providerVar: string;` |
+| [\@Consumer](./state-management/arkts-new-provider-and-consumer.md) | `@Consumer() consumerVar: string = 'consumerVar';` | `@Consumer consumerVar: string;` |
 | [\@Monitor](./state-management/arkts-new-monitor.md) | `@Monitor('localVar', 'paramVar') onStrChange(monitor: IMonitor) {}` | `@Monitor(['localVar', 'paramVar']) onStrChange(monitor: IMonitor): void;` |
-| [\@Computed](./state-management/arkts-new-Computed.md) | `@Computed get computeVar(): string {}` | `@Computed get computeVar(): string;` |
+| [\@Computed](./state-management/arkts-new-computed.md) | `@Computed get computeVar(): string {}` | `@Computed get computeVar(): string;` |
 | [\@ObservedV2/\@Trace](./state-management/arkts-new-observedV2-and-trace.md) | `@ObservedV2 export class PersonV2 { @Trace age: number = 20; }` | `@ObservedV2 export declare class PersonV2 { @Trace age: number; }` |
 
 **\@Builder，WrappedBuilder，\@BuilderParam转换规格**

@@ -12,7 +12,7 @@
 
 @Computed为方法装饰器，用于状态管理V2中，装饰getter方法。
 
-在ArkTS-Dyn中使用时，开发指南参考：[@Computed装饰器：计算属性（ArkTS-Dyn）](../../../ui/state-management/arkts-new-Computed.md)。
+在ArkTS-Dyn中使用时，开发指南参考：[@Computed装饰器：计算属性（ArkTS-Dyn）](../../../ui/state-management/arkts-new-computed.md)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
