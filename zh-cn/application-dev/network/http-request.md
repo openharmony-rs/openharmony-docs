@@ -743,11 +743,11 @@ httpRequest.request(EXAMPLE_URL, options, (err: BusinessError, res: http.HttpRes
 9.  调用destroy()方法销毁http请求。
 
     <!-- @[HTTP_interceptor_case_request_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
-```typescript
-// 销毁请求
-httpRequest.destroy();
-```
+    
+    ``` TypeScript
+    // 销毁请求
+    httpRequest.destroy();
+    ```
 
 ## 
 ## 相关实例
