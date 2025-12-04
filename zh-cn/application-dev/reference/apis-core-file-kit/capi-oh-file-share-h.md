@@ -51,7 +51,7 @@
 
 ### FileShare_OperationMode
 
-```
+```c
 enum FileShare_OperationMode
 ```
 
@@ -68,7 +68,7 @@ URI操作模式枚举值。
 
 ### FileShare_PolicyErrorCode
 
-```
+```c
 enum FileShare_PolicyErrorCode
 ```
 
@@ -90,7 +90,7 @@ enum FileShare_PolicyErrorCode
 
 ### OH_FileShare_PersistPermission()
 
-```
+```c
 FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
@@ -119,7 +119,7 @@ FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo
 
 ### OH_FileShare_RevokePermission()
 
-```
+```c
 FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
@@ -148,7 +148,7 @@ FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo 
 
 ### OH_FileShare_ActivatePermission()
 
-```
+```c
 FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
@@ -177,7 +177,7 @@ FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInf
 
 ### OH_FileShare_DeactivatePermission()
 
-```
+```c
 FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
@@ -206,7 +206,7 @@ FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyI
 
 ### OH_FileShare_CheckPersistentPermission()
 
-```
+```c
 FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, bool **result, unsigned int *resultNum)
 ```
 
@@ -235,7 +235,7 @@ FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_Po
 
 ### OH_FileShare_ReleasePolicyErrorResult()
 
-```
+```c
 void OH_FileShare_ReleasePolicyErrorResult(FileShare_PolicyErrorResult *errorResult, unsigned int resultNum)
 ```
 
