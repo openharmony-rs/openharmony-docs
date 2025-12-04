@@ -111,36 +111,23 @@ try {
 <!-- @[update_group_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/update_group.ets) --> 
 
 ``` TypeScript
-import { asset } from '@kit.AssetStoreKit';
-import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function stringToArray(str: string): Uint8Array {
-  let textEncoder = new util.TextEncoder();
-  return textEncoder.encodeInto(str);
-}
-
-export async function updateGroupAsset(): Promise<string> {
-  let result: string = '';
-  let query: asset.AssetMap = new Map();
-  query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-  query.set(asset.Tag.GROUP_ID, stringToArray('demo_group_id'));
-  let attrsToUpdate: asset.AssetMap = new Map();
-  attrsToUpdate.set(asset.Tag.SECRET, stringToArray('demo_pwd_new'));
-  attrsToUpdate.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label_new'));
-  try {
-    await asset.update(query, attrsToUpdate).then(() => {
-      console.info(`Succeeded in updating Asset in the group.`);
-      result = 'Succeeded in updating Asset in the group';
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to update Asset in the group. Code is ${err.code}, message is ${err.message}`);
-      result = 'Failed to update Asset in the group';
-    });
-  } catch (err) {
-    console.error(`Failed to update Asset in the group. Code is ${err?.code}, message is ${err?.message}`);
-    result = 'Failed to update Asset in the group';
-  }
-  return result;
+let query: asset.AssetMap = new Map();
+query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
+query.set(asset.Tag.GROUP_ID, stringToArray('demo_group_id'));
+let attrsToUpdate: asset.AssetMap = new Map();
+attrsToUpdate.set(asset.Tag.SECRET, stringToArray('demo_pwd_new'));
+attrsToUpdate.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label_new'));
+try {
+  asset.update(query, attrsToUpdate).then(() => {
+    console.info(`Succeeded in updating Asset in the group.`);
+    // ...
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to update Asset in the group. Code is ${err.code}, message is ${err.message}`);
+    // ...
+  });
+} catch (err) {
+  console.error(`Failed to update Asset in the group. Code is ${err?.code}, message is ${err?.message}`);
+  // ...
 }
 ```
 
