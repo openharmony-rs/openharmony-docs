@@ -67,14 +67,14 @@ MDNS管理的典型场景有：
 4. 通过resolveLocalService方法，解析本地网络的IP地址（非必要，根据需求使用）。
    
    <!-- @[MDNS_resolve_local_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// resolveLocalService解析本地服务对象（非必要，根据需求使用）。
-mdns.resolveLocalService(context, this.localServiceInfo).then((data: mdns.LocalServiceInfo) => {
-// ···
-  console.info(`Resolved Local Service: ${JSON.stringify(data)}`);
-})
-```
+   
+   ``` TypeScript
+   // resolveLocalService解析本地服务对象（非必要，根据需求使用）。
+   mdns.resolveLocalService(context, this.localServiceInfo).then((data: mdns.LocalServiceInfo) => {
+     // ...
+     hilog.info(0x0000, 'testTag', `Resolved Local Service: ${JSON.stringify(data)}`);
+   })
+   ```
 
 5. 通过removeLocalService方法，移除本地服务。
 
