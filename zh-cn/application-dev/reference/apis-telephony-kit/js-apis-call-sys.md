@@ -8768,7 +8768,7 @@ onCallDetailsChange(callback: Callback\<CallAttributeOptions>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('callDetailsChange')](#calloncallDetailsChange7)
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('callDetailsChange')](#calloncallDetailsChange7)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -8828,7 +8828,7 @@ offCallDetailsChange(callback?: Callback\<CallAttributeOptions>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('callDetailsChange')](#calloffcallDetailsChange7)
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('callDetailsChange')](#calloffcallDetailsChange7)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
