@@ -146,37 +146,37 @@
 3. 当企业管理软件需要进行认证，调用[startEthEap](../reference/apis-network-kit/js-apis-net-eap.md#eapstartetheap)方法时，会发起802.1X认证流程。
 
    <!-- @[eap_case_start_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
-
-``` TypeScript
-const netId: number = 100;
-// ···
-  let profile: eap.EthEapProfile = {
-    eapMethod: eap.EapMethod.EAP_TTLS,
-    phase2Method: eap.Phase2Method.PHASE2_AKA_PRIME,
-    identity: 'identity',
-    anonymousIdentity: 'anonymousIdentity',
-    password: 'password',
-    caCertAliases: 'caCertAliases',
-    caPath: 'caPath',
-    clientCertAliases: 'clientCertAliases',
-    certEntry: new Uint8Array([5,6,7,8,9,10]),
-    certPassword: 'certPassword',
-    altSubjectMatch: 'altSubjectMatch',
-    domainSuffixMatch: 'domainSuffixMatch',
-    realm: 'realm',
-    plmn: 'plmn',
-    eapSubId: 1
-  };
-
-  try {
-    eap.startEthEap(netId, profile);
-    hilog.info(0x0000, 'testTag', 'startEthEap success');
-    // ···
-  } catch (err) {
-    // ···
-    hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ', errMessage: ' + err.message);
-  }
-```
+   
+   ``` TypeScript
+   const netId: number = 100;
+   // ...
+     let profile: eap.EthEapProfile = {
+       eapMethod: eap.EapMethod.EAP_TTLS,
+       phase2Method: eap.Phase2Method.PHASE2_AKA_PRIME,
+       identity: 'identity',
+       anonymousIdentity: 'anonymousIdentity',
+       password: 'password',
+       caCertAliases: 'caCertAliases',
+       caPath: 'caPath',
+       clientCertAliases: 'clientCertAliases',
+       certEntry: new Uint8Array([5,6,7,8,9,10]),
+       certPassword: 'certPassword',
+       altSubjectMatch: 'altSubjectMatch',
+       domainSuffixMatch: 'domainSuffixMatch',
+       realm: 'realm',
+       plmn: 'plmn',
+       eapSubId: 1
+     };
+   
+     try {
+       eap.startEthEap(netId, profile);
+       hilog.info(0x0000, 'testTag', 'startEthEap success');
+       // ...
+     } catch (err) {
+       // ...
+       hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ', errMessage: ' + err.message);
+     }
+   ```
 
 4. 当企业管理软件需要退出认证状态，调用[logOffEthEap](../reference/apis-network-kit/js-apis-net-eap.md#eaplogoffetheap)方法，即会发起802.1X取消认证流程。
 
