@@ -214,7 +214,7 @@
 
 ### OH_MediaType
 
-```
+```c
 enum OH_MediaType
 ```
 
@@ -236,7 +236,7 @@ enum OH_MediaType
 
 ### OH_AACProfile
 
-```
+```c
 enum OH_AACProfile
 ```
 
@@ -256,7 +256,7 @@ AAC档次。<!--Del--><br/>（AAC_PROFILE_HE、AAC_PROFILE_HE_V2暂未开放）<
 
 ### OH_AVCProfile
 
-```
+```c
 enum OH_AVCProfile
 ```
 
@@ -276,7 +276,7 @@ AVC档次。
 
 ### OH_HEVCProfile
 
-```
+```c
 enum OH_HEVCProfile
 ```
 
@@ -298,7 +298,7 @@ HEVC档次。
 
 ### OH_VVCProfile
 
-```
+```c
 enum OH_VVCProfile
 ```
 
@@ -330,7 +330,7 @@ VVC档次。
 
 ### OH_MPEG2Profile
 
-```
+```c
 enum OH_MPEG2Profile
 ```
 
@@ -353,7 +353,7 @@ MPEG2档次。
 
 ### OH_MPEG4Profile
 
-```
+```c
 enum OH_MPEG4Profile
 ```
 
@@ -385,7 +385,7 @@ MPEG4档次。
 
 ### OH_H263Profile
 
-```
+```c
 enum OH_H263Profile
 ```
 
@@ -404,7 +404,7 @@ H.263档次。
 
 ### OH_AVOutputFormat
 
-```
+```c
 enum OH_AVOutputFormat
 ```
 
@@ -429,7 +429,7 @@ enum OH_AVOutputFormat
 
 ### OH_AVSeekMode
 
-```
+```c
 enum OH_AVSeekMode
 ```
 
@@ -449,7 +449,7 @@ enum OH_AVSeekMode
 
 ### OH_ScalingMode
 
-```
+```c
 enum OH_ScalingMode
 ```
 
@@ -472,7 +472,7 @@ enum OH_ScalingMode
 
 ### OH_BitsPerSample
 
-```
+```c
 enum OH_BitsPerSample
 ```
 
@@ -500,7 +500,7 @@ enum OH_BitsPerSample
 
 ### OH_ColorPrimary
 
-```
+```c
 enum OH_ColorPrimary
 ```
 
@@ -528,7 +528,7 @@ enum OH_ColorPrimary
 
 ### OH_TransferCharacteristic
 
-```
+```c
 enum OH_TransferCharacteristic
 ```
 
@@ -562,7 +562,7 @@ enum OH_TransferCharacteristic
 
 ### OH_MatrixCoefficient
 
-```
+```c
 enum OH_MatrixCoefficient
 ```
 
@@ -593,7 +593,7 @@ enum OH_MatrixCoefficient
 
 ### OH_AVCLevel
 
-```
+```c
 enum OH_AVCLevel
 ```
 
@@ -630,7 +630,7 @@ AVC级别。
 
 ### OH_HEVCLevel
 
-```
+```c
 enum OH_HEVCLevel
 ```
 
@@ -660,7 +660,7 @@ HEVC级别。
 
 ### OH_VVCLevel
 
-```
+```c
 enum OH_VVCLevel
 ```
 
@@ -692,7 +692,7 @@ VVC级别。
 
 ### OH_MPEG2Level
 
-```
+```c
 enum OH_MPEG2Level
 ```
 
@@ -713,7 +713,7 @@ MPEG2级别。
 
 ### OH_MPEG4Level
 
-```
+```c
 enum OH_MPEG4Level
 ```
 
@@ -740,7 +740,7 @@ MPEG4级别。
 
 ### OH_H263Level
 
-```
+```c
 enum OH_H263Level
 ```
 
@@ -765,7 +765,7 @@ H.263级别。
 
 ### OH_TemporalGopReferenceMode
 
-```
+```c
 enum OH_TemporalGopReferenceMode
 ```
 
@@ -785,7 +785,7 @@ enum OH_TemporalGopReferenceMode
 
 ### OH_BitrateMode
 
-```
+```c
 enum OH_BitrateMode
 ```
 
@@ -809,7 +809,7 @@ enum OH_BitrateMode
 
 ### OH_AVCodecOnError()
 
-```
+```c
 typedef void (*OH_AVCodecOnError)(OH_AVCodec *codec, int32_t errorCode, void *userData)
 ```
 
@@ -838,7 +838,7 @@ typedef void (*OH_AVCodecOnError)(OH_AVCodec *codec, int32_t errorCode, void *us
 
 ### OH_AVCodecOnStreamChanged()
 
-```
+```c
 typedef void (*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
 ```
 
@@ -860,7 +860,7 @@ typedef void (*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format
 
 ### OH_AVCodecOnNeedInputData()
 
-```
+```c
 typedef void (*OH_AVCodecOnNeedInputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, void *userData)
 ```
 
@@ -887,7 +887,7 @@ typedef void (*OH_AVCodecOnNeedInputData)(OH_AVCodec *codec, uint32_t index, OH_
 
 ### OH_AVCodecOnNewOutputData()
 
-```
+```c
 typedef void (*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, OH_AVCodecBufferAttr *attr, void *userData)
 ```
 
@@ -915,7 +915,7 @@ typedef void (*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_
 
 ### OH_AVCodecOnNeedInputBuffer()
 
-```
+```c
 typedef void (*OH_AVCodecOnNeedInputBuffer)(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
 ```
 
@@ -938,7 +938,7 @@ typedef void (*OH_AVCodecOnNeedInputBuffer)(OH_AVCodec *codec, uint32_t index, O
 
 ### OH_AVCodecOnNewOutputBuffer()
 
-```
+```c
 typedef void (*OH_AVCodecOnNewOutputBuffer)(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
 ```
 
@@ -961,7 +961,7 @@ typedef void (*OH_AVCodecOnNewOutputBuffer)(OH_AVCodec *codec, uint32_t index, O
 
 ### OH_AVDataSourceReadAt()
 
-```
+```c
 typedef int32_t (*OH_AVDataSourceReadAt)(OH_AVBuffer *data, int32_t length, int64_t pos)
 ```
 
@@ -989,7 +989,7 @@ typedef int32_t (*OH_AVDataSourceReadAt)(OH_AVBuffer *data, int32_t length, int6
 
 ### OH_AVDataSourceReadAtExt()
 
-```
+```c
 typedef int32_t (*OH_AVDataSourceReadAtExt)(OH_AVBuffer *data, int32_t length, int64_t pos, void *userData)
 ```
 
