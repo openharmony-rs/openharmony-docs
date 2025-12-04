@@ -48,14 +48,14 @@ Game Controller Kit提供设备上下线事件监听和查询在线设备信息�
 
 ### 链接动态库
 
-```
+```c
 target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 ```
 
 
 ### 导入模块
 
-```
+```c
 #include <GameControllerKit/game_device.h>
 ```
 
@@ -64,7 +64,7 @@ target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 
 调用OH_GameDevice_RegisterDeviceMonitor接口注册设备状态变化监听，获取设备上下线的回调通知。
 
-```
+```c
 napi_value DeviceApi::RegisterDeviceMonitor(napi_env env, napi_callback_info info) {
     napi_value result;
     GameController_ErrorCode errorCode = OH_GameDevice_RegisterDeviceMonitor(DeviceApi::OnDeviceChanged);
@@ -95,7 +95,7 @@ void DeviceApi::OnDeviceChanged(const struct GameDevice_DeviceEvent *deviceEvent
 
 如果不再需要订阅，可以调用OH_GameDevice_UnregisterDeviceMonitor接口取消设备状态变化事件的监听。
 
-```
+```c
 napi_value DeviceApi::UnregisterDeviceMonitor(napi_env env, napi_callback_info info) {
     napi_value result;
     GameController_ErrorCode errorCode = OH_GameDevice_UnregisterDeviceMonitor();
@@ -115,7 +115,7 @@ napi_value DeviceApi::UnregisterDeviceMonitor(napi_env env, napi_callback_info i
 
 调用OH_GameDevice_GetAllDeviceInfos接口，查询所有在线游戏设备的信息。
 
-```
+```c
 GameController_ErrorCode DeviceApi::DoQueryAllDeviceInfos() {
     GameDevice_AllDeviceInfos *gameDevice_AllDeviceInfos;
     // 查询所有在线设备

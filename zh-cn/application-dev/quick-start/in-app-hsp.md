@@ -490,4 +490,4 @@ export struct Library_Menu {
 ```
 
 
-页面跳转和页面返回都使用了Navigation的特性，详情参考[Navigation跳转](../ui/arkts-navigation-navigation.md#路由操作)。
+页面跳转和页面返回都使用了Navigation的特性，详情参考[Navigation跳转](../ui/arkts-navigation-jump.md#路由操作)。

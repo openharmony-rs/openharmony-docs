@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiAppEvent_AppEventGroup {...} HiAppEvent_AppEventGroup
+```
+
 ## Overview
 
 Defines the information of an event group, including its name, the array of event information grouped by name, and the length of the event array.

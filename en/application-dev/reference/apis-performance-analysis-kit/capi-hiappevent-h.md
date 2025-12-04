@@ -1048,8 +1048,8 @@ Sets the report policy for the processor.
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)* processor | Pointer to the processor, that is, the pointer returned by **OH_HiAppEvent_CreateProcessor**.|
 | int periodReport | Period for reporting events, in seconds.|
 | int batchReport | Threshold for reporting events. When the number of events reaches the threshold, an event is reported.|
-| bool onStartReport | Whether to report an event when the processor is started. The default value is **false**.|
-| bool onBackgroundReport | Whether to report an event when an application enters the background. The default value is **false**.|
+| bool onStartReport | Whether to report events during startup. The value **true** means to report events during startup, and **false** means the opposite.|
+| bool onBackgroundReport | Whether to report events after an application switches to the background. The value **true** means to report events after an application switches to the background, and **false** means the opposite.|
 
 **Returns**
 
@@ -1077,7 +1077,7 @@ Sets the report event for the processor.
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)* processor | Pointer to the processor, that is, the pointer returned by **OH_HiAppEvent_CreateProcessor**.|
 | const char* domain | Domain of the report event.|
 | const char* name | Name of the report event.|
-| bool isRealTime | Whether to report events in real time.|
+| bool isRealTime | Whether to report events in real time. The value **true** means to report events in real time, and **false** means the opposite.|
 
 **Returns**
 

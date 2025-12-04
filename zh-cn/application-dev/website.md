@@ -468,7 +468,7 @@
           - 状态管理优秀实践<!--arkts-state-management-best-practices-->
             - [V1状态管理优秀实践](ui/state-management/arkts-state-management-best-practices.md)
             - [V1状态管理合理使用开发指导](ui/state-management/properly-use-state-management-to-develope.md)
-            - [状态变量改变不触发组件刷新问题常用定位方法](ui/state-management/troubleshooting-state-manange.md)
+            - [状态变量改变不触发组件刷新问题常用定位方法](ui/state-management/troubleshooting-state-manage.md)
         - 学习UI范式渲染控制<!--arkts-rendering-control-->
           - [渲染控制概述](ui/rendering-control/arkts-rendering-control-overview.md)
           - [if/else：条件渲染](ui/rendering-control/arkts-rendering-control-ifelse.md)
@@ -481,7 +481,13 @@
           - [\@Env：环境变量](ui/arkts-env-system-property.md)
         - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
           - [组件导航和页面路由概述](ui/arkts-navigation-introduction.md)
-          - [组件导航(Navigation) (推荐)](ui/arkts-navigation-navigation.md)
+          - 组件导航(Navigation) (推荐)<!--arkts-navigation-navigation-->
+            - [Navigation基础架构介绍](ui/arkts-navigation-architecture.md)
+            - [Navigation子页面](ui/arkts-navigation-navdestination.md)
+            - [Navigation页面路由](ui/arkts-navigation-jump.md)
+            - [Navigation转场动画](ui/arkts-navigation-animation.md)
+            - [Navigation跨包路由](ui/arkts-navigation-cross-package.md)
+            - [Navigation分栏开发](ui/arkts-navigation-split-mode.md)
           - [页面路由 (@ohos.router)(不推荐)](ui/arkts-routing.md)
           - [Router切换Navigation](ui/arkts-router-to-navigation.md)
         - 组件布局<!--arkts-layout-development-->
@@ -742,6 +748,7 @@
         - [UI调优](ui/ui-inspector-profiler.md)
         - [UI高性能开发](ui/ui-performance-overview.md)
         - UI开发常见问题<!--ui-development-faq-->
+          - [Navigation动画常见问题](ui/arkts-navigation-animation-faq.md)
           - [自定义节点常见问题](ui/arkts-user-defined-node-faq.md)
           - [按钮与选择组件常见问题](ui/arkts-select-component-faq.md)
           - [使用文本常见问题](ui/arkts-text-faq.md)
@@ -5507,7 +5514,7 @@
           - [模块描述](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing.md)
           - [Class (Brush)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Brush.md)
           - [Class (Canvas)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)
-          - [Class (ClorFilter)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md)
+          - [Class (ColorFilter)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md)
           - [Class (Font)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Font.md)
           - [Class (ImageFilter)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-ImageFilter.md)
           - [Class (Lattice)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md)

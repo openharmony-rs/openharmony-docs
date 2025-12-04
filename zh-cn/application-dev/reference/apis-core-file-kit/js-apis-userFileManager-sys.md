@@ -280,7 +280,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 createPhotoAsset(displayName: string, albumUri?: string): Promise&lt;FileAsset&gt;
 
-指定待创建的图片或者视频的文件名和所在相册的uri，创建图片或视频资源，使用Promise方式返回结果。
+指定待创建的图片或者视频的文件名和所在相册的uri，创建图片或视频资源。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -378,7 +378,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 createPhotoAsset(displayName: string, createOption: PhotoCreateOptions): Promise&lt;FileAsset&gt;
 
-指定待创建的图片或者视频的文件名和创建选项，创建图片或视频资源，使用Promise方式返回结果。
+指定待创建的图片或者视频的文件名和创建选项，创建图片或视频资源。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -475,7 +475,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 createAudioAsset(displayName: string): Promise&lt;FileAsset&gt;
 
-创建音频文件资源，使用Promise方式返回结果。
+创建音频文件资源。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -564,7 +564,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 createAlbum(name: string): Promise&lt;Album&gt;
 
-创建相册，使用Promise方式返回结果。
+创建相册。使用Promise异步回调。
 
 待创建的相册名参数规格为：
 - 相册名字符串长度为1~255。
@@ -824,7 +824,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getAlbums(type: AlbumType, subType: AlbumSubType, options?: FetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
 
-根据检索选项和相册类型获取相册，使用Promise方式返回结果。
+根据检索选项和相册类型获取相册。使用Promise异步回调。
 
 该接口不支持获取隐藏相册，请使用[getHiddenAlbums](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#gethiddenalbums11)获得。
 
@@ -951,7 +951,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getPhotoAlbums(options: AlbumFetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
 
-获取相册，使用Promise方式返回结果。
+获取相册。使用Promise异步回调。
 
 该接口不支持获取隐藏相册，请使用[getHiddenAlbums](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#gethiddenalbums11)获得。
 
@@ -1054,7 +1054,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getPrivateAlbum(type: PrivateAlbumType): Promise&lt;FetchResult&lt;PrivateAlbum&gt;&gt;
 
-获取系统相册，使用Promise方式返回结果。
+获取系统相册。使用Promise异步回调。
 
 此接口即将废弃，请使用[getAlbums<sup>10+</sup>](#getalbums10)的新接口。
 
@@ -1158,7 +1158,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 getAudioAssets(options: FetchOptions): Promise&lt;FetchResult&lt;FileAsset&gt;&gt;
 
 
-获取音频文件，使用promise方式返回结果。
+获取音频文件。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1278,7 +1278,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 delete(uri: string): Promise&lt;void&gt;
 
-删除媒体文件,删除的文件进入到回收站。
+删除媒体文件（删除的文件会进入到回收站）。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.READ_AUDIO 和 ohos.permission.WRITE_AUDIO
 
@@ -1371,7 +1371,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getActivePeers(): Promise&lt;Array&lt;PeerInfo&gt;&gt;
 
-获取在线对端设备的信息，使用promise方式返回异步结果。
+获取在线对端设备的信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.DistributedCore
 
@@ -1442,7 +1442,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getAllPeers(): Promise&lt;Array&lt;PeerInfo&gt;&gt;
 
-获取所有对端设备的信息，使用promise方式返回异步结果。
+获取所有对端设备的信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.DistributedCore
 
@@ -1660,7 +1660,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 release(): Promise&lt;void&gt;
 
-释放UserFileManager实例，使用Promise方式返回结果。
+释放UserFileManager实例。使用Promise异步回调。
 当后续不需要使用UserFileManager 实例中的方法时调用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
@@ -2122,7 +2122,9 @@ open(mode: string, callback: AsyncCallback&lt;number&gt;): void
 
 打开当前文件，使用callback方式返回异步结果。
 
-**注意**：当前写操作是互斥的操作，写操作完成后需要调用close进行释放。
+> **注意**：
+>
+> 当前写操作是互斥的操作，写操作完成后需要调用close进行释放。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO 或 ohos.permission.READ_AUDIO 或 ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.WRITE_AUDIO
 
@@ -2159,9 +2161,11 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 open(mode: string): Promise&lt;number&gt;
 
-打开当前文件，使用promise方式返回异步结果。
+打开当前文件。使用Promise异步回调。
 
-**注意**：当前写操作是互斥的操作，写操作完成后需要调用close进行释放。
+> **注意**：
+>
+> 当前写操作是互斥的操作，写操作完成后需要调用close进行释放。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO 或 ohos.permission.READ_AUDIO 或 ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.WRITE_AUDIO
 
@@ -2253,7 +2257,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 close(fd: number): Promise&lt;void&gt;
 
-关闭当前文件，使用promise方式返回异步结果。
+关闭当前文件。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -2482,7 +2486,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 favorite(isFavorite: boolean): Promise&lt;void&gt;
 
-将文件设置为收藏文件，使用promise方式返回异步结果。
+将文件设置为收藏文件。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.WRITE_AUDIO
 
@@ -2583,7 +2587,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 setHidden(hiddenState: boolean): Promise&lt;void&gt;
 
-将文件设置为隐私文件，使用promise方式返回异步结果。
+将文件设置为隐私文件。使用Promise异步回调。
 
 隐私文件存在隐私相册中，对三方应用不开放，用户通过隐私相册去获取隐私文件后可以通过设置hiddenState为false来从隐私相册中移除。
 
@@ -2644,9 +2648,11 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getExif(): Promise&lt;string&gt;
 
-返回jpg格式图片Exif标签组成的json格式的字符串，该方法使用Promise方式返回结果。
+读取jpg格式图片的Exif标签，并返回json格式的字符串。使用Promise异步回调。
 
-**注意**：此接口返回的是exif标签组成的json格式的字符串，完整exif信息由all_exif与[ImageVideoKey.USER_COMMENT](#imagevideokey)组成，fetchColumns需要传入这两个字段。
+> **注意**：
+>
+> 此接口返回的是Exif标签组成的json格式的字符串，完整Exif信息由all_exif与[ImageVideoKey](#imagevideokey).USER_COMMENT组成，fetchColumns需要传入这两个字段。
 
 **系统接口**：此接口为系统接口。
 
@@ -2738,7 +2744,9 @@ getExif(callback: AsyncCallback&lt;string&gt;): void
 
 返回jpg格式图片Exif标签组成的json格式的字符串，该方法使用callback方式返回结果。
 
-**注意**：此接口返回的是exif标签组成的json格式的字符串，完整exif信息由all_exif与[ImageVideoKey.USER_COMMENT](#imagevideokey)组成，fetchColumns需要传入这两个字段。
+> **注意**：
+>
+> 此接口返回的是Exif标签组成的json格式的字符串，完整Exif信息由all_exif与[ImageVideoKey](#imagevideokey).USER_COMMENT组成，fetchColumns需要传入这两个字段。
 
 **系统接口**：此接口为系统接口。
 
@@ -2838,9 +2846,11 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 setUserComment(userComment: string): Promise&lt;void&gt;
 
-修改图片或者视频的备注信息，该方法使用Promise来返回结果。
+修改图片或者视频的备注信息。使用Promise异步回调。
 
-**注意**：此接口只可修改图片或者视频的备注信息。
+> **注意**：
+>
+> 此接口只可修改图片或者视频的备注信息。
 
 **系统接口**：此接口为系统接口。
 
@@ -2900,7 +2910,9 @@ setUserComment(userComment: string, callback: AsyncCallback&lt;void&gt;): void
 
 修改图片或者视频的备注信息，该方法使用callback形式来返回结果。
 
-**注意**：此接口只可修改图片或者视频的备注信息。
+> **注意**：
+>
+> 此接口只可修改图片或者视频的备注信息。
 
 **系统接口**：此接口为系统接口。
 
@@ -3744,7 +3756,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 addPhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
-往相册中添加图片或者视频，需要先预置相册和文件资源。该方法使用Promise来返回结果。
+在相册中添加图片或者视频，需要先预置相册和文件资源。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -3862,7 +3874,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 removePhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
-从相册中移除图片或者视频，需要先预置相册和文件资源。该方法使用Promise来返回结果。
+从相册中移除图片或者视频，需要先预置相册和文件资源。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -3980,7 +3992,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 recoverPhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
-从回收站中恢复图片或者视频，需要先在回收站中预置文件资源。该方法使用Promise来返回结果。
+从回收站中恢复图片或者视频，需要先在回收站中预置文件资源。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -4043,7 +4055,9 @@ deletePhotoAssets(assets: Array&lt;FileAsset&gt;, callback: AsyncCallback&lt;voi
 
 从回收站中彻底删除图片或者视频，需要先在回收站中预置文件资源。该方法使用callback形式来返回结果。
 
-**注意**：此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
+> **注意**：
+>
+> 此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -4100,9 +4114,11 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 deletePhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
-从回收站中彻底删除图片或者视频，需要先在回收站中预置文件资源。该方法使用Promise来返回结果。
+从回收站中彻底删除图片或者视频，需要先在回收站中预置文件资源。使用Promise异步回调。
 
-**注意**：此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
+> **注意**：
+>
+> 此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -4240,7 +4256,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getPhotoAssets(options: FetchOptions): Promise&lt;FetchResult&lt;FileAsset&gt;&gt;
 
-获取系统相册中的文件。该方法使用Promise来返回文件。
+获取系统相册中的文件。使用Promise异步回调。
 
 此接口即将废弃，请使用[Album.getPhotoAssets](#getphotoassets-3)接口替代。
 

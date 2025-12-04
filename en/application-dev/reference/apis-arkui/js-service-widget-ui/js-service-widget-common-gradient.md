@@ -1,5 +1,12 @@
 # Gradient Styles
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
 Gradient styles are commonly supported and can be set in the **style** attribute or a **.css** file. Gradients enable smooth transition between two or more specified colors.
 
 > **NOTE**
@@ -60,7 +67,7 @@ The color can be specified in any of the following formats: \#ff0000, \#ffff0000
 
    ```css
    /* Gradient at an angle of 45°, changing from red to green */
-     background: linear-gradient(45deg, rgb(255, 0, 0),rgb(0, 255, 0));
+   background: linear-gradient(45deg, rgb(255, 0, 0),rgb(0, 255, 0));
    ```
 
       ![222](figures/222.PNG)
@@ -78,7 +85,10 @@ The color can be specified in any of the following formats: \#ff0000, \#ffff0000
 
    ```css
      /* Repeating gradient from left to right, the area of which is 30 px (60 – 30) and the opacity is 0.5 */
-     background: repeating-linear-gradient(to right, rgba(255, 255, 0, 1) 30vp,rgba(0, 0, 255, .5) 60vp);
+   background: repeating-linear-gradient(to right, rgba(255, 255, 0, 1) 30vp,rgba(0, 0, 255, .5) 60vp);
    ```
 
    ![444](figures/444.PNG)
+
+
+

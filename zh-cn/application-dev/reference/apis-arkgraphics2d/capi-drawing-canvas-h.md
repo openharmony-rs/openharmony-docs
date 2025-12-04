@@ -78,7 +78,7 @@
 | [void OH_Drawing_CanvasRotate(OH_Drawing_Canvas* canvas, float degrees, float px, float py)](#oh_drawing_canvasrotate) | 用于画布旋转一定的角度，正数表示顺时针旋转，负数反之。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_CanvasTranslate(OH_Drawing_Canvas* canvas, float dx, float dy)](#oh_drawing_canvastranslate) | 用于平移画布一段距离。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_CanvasScale(OH_Drawing_Canvas* canvas, float sx, float sy)](#oh_drawing_canvasscale) | 用于画布缩放。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [void OH_Drawing_CanvasSkew(OH_Drawing_Canvas* canvas, float sx, float sy)](#oh_drawing_canvasskew) | 用于画布倾斜变换。等同于将当前画布矩阵左乘（premultiply）倾斜变换矩阵，并应用到画布上。其中倾斜变换矩阵为：<br>|1 sx 0|  <br>|sy 1 0|  <br>|0  0 1|。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [void OH_Drawing_CanvasSkew(OH_Drawing_Canvas* canvas, float sx, float sy)](#oh_drawing_canvasskew) | 用于画布倾斜变换。等同于将当前画布矩阵左乘（premultiply）倾斜变换矩阵，并应用到画布上。其中倾斜变换矩阵为：<br>\|1 sx 0\|  <br>\|sy 1 0\|  <br>\|0  0 1\|。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [int32_t OH_Drawing_CanvasGetWidth(OH_Drawing_Canvas* canvas)](#oh_drawing_canvasgetwidth) | 获取画布宽度。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [int32_t OH_Drawing_CanvasGetHeight(OH_Drawing_Canvas* canvas)](#oh_drawing_canvasgetheight) | 获取画布高度。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_CanvasGetLocalClipBounds(OH_Drawing_Canvas* canvas, OH_Drawing_Rect* rect)](#oh_drawing_canvasgetlocalclipbounds) | 获取画布裁剪区域的边界。该接口不可用于录制类型画布。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
@@ -107,7 +107,7 @@
 
 ### OH_Drawing_SrcRectConstraint
 
-```
+```c
 enum OH_Drawing_SrcRectConstraint
 ```
 
@@ -124,7 +124,7 @@ enum OH_Drawing_SrcRectConstraint
 
 ### OH_Drawing_PointMode
 
-```
+```c
 enum OH_Drawing_PointMode
 ```
 
@@ -142,7 +142,7 @@ enum OH_Drawing_PointMode
 
 ### OH_Drawing_CanvasClipOp
 
-```
+```c
 enum OH_Drawing_CanvasClipOp
 ```
 
@@ -159,7 +159,7 @@ enum OH_Drawing_CanvasClipOp
 
 ### OH_Drawing_CanvasShadowFlags
 
-```
+```c
 enum OH_Drawing_CanvasShadowFlags
 ```
 
@@ -178,7 +178,7 @@ enum OH_Drawing_CanvasShadowFlags
 
 ### OH_Drawing_VertexMode
 
-```
+```c
 enum OH_Drawing_VertexMode
 ```
 
@@ -199,7 +199,7 @@ enum OH_Drawing_VertexMode
 
 ### OH_Drawing_CanvasDrawSingleCharacterWithFeatures()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawSingleCharacterWithFeatures(OH_Drawing_Canvas* canvas, const char* str, const OH_Drawing_Font* font, float x, float y, OH_Drawing_FontFeatures* fontFeatures)
 ```
 
@@ -231,7 +231,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawSingleCharacterWithFeatures(OH_Drawing
 
 ### OH_Drawing_CanvasDrawPixelMapRectConstraint()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapRectConstraint(OH_Drawing_Canvas* canvas,OH_Drawing_PixelMap* pixelMap, const OH_Drawing_Rect* src, const OH_Drawing_Rect* dst, const OH_Drawing_SamplingOptions* samplingOptions, OH_Drawing_SrcRectConstraint constraint)
 ```
 
@@ -263,7 +263,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapRectConstraint(OH_Drawing_Canv
 
 ### OH_Drawing_CanvasDrawRecordCmdNesting()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawRecordCmdNesting(OH_Drawing_Canvas* canvas, OH_Drawing_RecordCmd* recordCmd)
 ```
 
@@ -293,7 +293,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawRecordCmdNesting(OH_Drawing_Canvas* ca
 
 ### OH_Drawing_CanvasCreate()
 
-```
+```c
 OH_Drawing_Canvas* OH_Drawing_CanvasCreate(void)
 ```
 
@@ -313,7 +313,7 @@ OH_Drawing_Canvas* OH_Drawing_CanvasCreate(void)
 
 ### OH_Drawing_CanvasCreateWithPixelMap()
 
-```
+```c
 OH_Drawing_Canvas* OH_Drawing_CanvasCreateWithPixelMap(OH_Drawing_PixelMap* pixelMap)
 ```
 
@@ -340,7 +340,7 @@ OH_Drawing_Canvas* OH_Drawing_CanvasCreateWithPixelMap(OH_Drawing_PixelMap* pixe
 
 ### OH_Drawing_CanvasDestroy()
 
-```
+```c
 void OH_Drawing_CanvasDestroy(OH_Drawing_Canvas* canvas)
 ```
 
@@ -361,7 +361,7 @@ void OH_Drawing_CanvasDestroy(OH_Drawing_Canvas* canvas)
 
 ### OH_Drawing_CanvasBind()
 
-```
+```c
 void OH_Drawing_CanvasBind(OH_Drawing_Canvas* canvas, OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -383,7 +383,7 @@ void OH_Drawing_CanvasBind(OH_Drawing_Canvas* canvas, OH_Drawing_Bitmap* bitmap)
 
 ### OH_Drawing_CanvasAttachPen()
 
-```
+```c
 void OH_Drawing_CanvasAttachPen(OH_Drawing_Canvas* canvas, const OH_Drawing_Pen* pen)
 ```
 
@@ -405,7 +405,7 @@ void OH_Drawing_CanvasAttachPen(OH_Drawing_Canvas* canvas, const OH_Drawing_Pen*
 
 ### OH_Drawing_CanvasDetachPen()
 
-```
+```c
 void OH_Drawing_CanvasDetachPen(OH_Drawing_Canvas* canvas)
 ```
 
@@ -426,7 +426,7 @@ void OH_Drawing_CanvasDetachPen(OH_Drawing_Canvas* canvas)
 
 ### OH_Drawing_CanvasAttachBrush()
 
-```
+```c
 void OH_Drawing_CanvasAttachBrush(OH_Drawing_Canvas* canvas, const OH_Drawing_Brush* brush)
 ```
 
@@ -448,7 +448,7 @@ void OH_Drawing_CanvasAttachBrush(OH_Drawing_Canvas* canvas, const OH_Drawing_Br
 
 ### OH_Drawing_CanvasDetachBrush()
 
-```
+```c
 void OH_Drawing_CanvasDetachBrush(OH_Drawing_Canvas* canvas)
 ```
 
@@ -469,7 +469,7 @@ void OH_Drawing_CanvasDetachBrush(OH_Drawing_Canvas* canvas)
 
 ### OH_Drawing_CanvasSave()
 
-```
+```c
 void OH_Drawing_CanvasSave(OH_Drawing_Canvas* canvas)
 ```
 
@@ -490,7 +490,7 @@ void OH_Drawing_CanvasSave(OH_Drawing_Canvas* canvas)
 
 ### OH_Drawing_CanvasSaveLayer()
 
-```
+```c
 void OH_Drawing_CanvasSaveLayer(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* rect, const OH_Drawing_Brush* brush)
 ```
 
@@ -513,7 +513,7 @@ void OH_Drawing_CanvasSaveLayer(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect
 
 ### OH_Drawing_CanvasRestore()
 
-```
+```c
 void OH_Drawing_CanvasRestore(OH_Drawing_Canvas* canvas)
 ```
 
@@ -534,7 +534,7 @@ void OH_Drawing_CanvasRestore(OH_Drawing_Canvas* canvas)
 
 ### OH_Drawing_CanvasGetSaveCount()
 
-```
+```c
 uint32_t OH_Drawing_CanvasGetSaveCount(OH_Drawing_Canvas* canvas)
 ```
 
@@ -561,7 +561,7 @@ uint32_t OH_Drawing_CanvasGetSaveCount(OH_Drawing_Canvas* canvas)
 
 ### OH_Drawing_CanvasRestoreToCount()
 
-```
+```c
 void OH_Drawing_CanvasRestoreToCount(OH_Drawing_Canvas* canvas, uint32_t saveCount)
 ```
 
@@ -583,7 +583,7 @@ void OH_Drawing_CanvasRestoreToCount(OH_Drawing_Canvas* canvas, uint32_t saveCou
 
 ### OH_Drawing_CanvasDrawLine()
 
-```
+```c
 void OH_Drawing_CanvasDrawLine(OH_Drawing_Canvas* canvas, float x1, float y1, float x2, float y2)
 ```
 
@@ -608,7 +608,7 @@ void OH_Drawing_CanvasDrawLine(OH_Drawing_Canvas* canvas, float x1, float y1, fl
 
 ### OH_Drawing_CanvasDrawPath()
 
-```
+```c
 void OH_Drawing_CanvasDrawPath(OH_Drawing_Canvas* canvas, const OH_Drawing_Path* path)
 ```
 
@@ -630,7 +630,7 @@ void OH_Drawing_CanvasDrawPath(OH_Drawing_Canvas* canvas, const OH_Drawing_Path*
 
 ### OH_Drawing_CanvasDrawPixelMapNine()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapNine(OH_Drawing_Canvas* canvas, OH_Drawing_PixelMap* pixelMap,const OH_Drawing_Rect* center, const OH_Drawing_Rect* dst, OH_Drawing_FilterMode mode)
 ```
 
@@ -661,7 +661,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapNine(OH_Drawing_Canvas* canvas
 
 ### OH_Drawing_CanvasDrawPixelMapRect()
 
-```
+```c
 void OH_Drawing_CanvasDrawPixelMapRect(OH_Drawing_Canvas* canvas, OH_Drawing_PixelMap* pixelMap,const OH_Drawing_Rect* src, const OH_Drawing_Rect* dst, const OH_Drawing_SamplingOptions* samplingOptions)
 ```
 
@@ -686,7 +686,7 @@ void OH_Drawing_CanvasDrawPixelMapRect(OH_Drawing_Canvas* canvas, OH_Drawing_Pix
 
 ### OH_Drawing_CanvasDrawBackground()
 
-```
+```c
 void OH_Drawing_CanvasDrawBackground(OH_Drawing_Canvas* canvas, const OH_Drawing_Brush* brush)
 ```
 
@@ -708,7 +708,7 @@ void OH_Drawing_CanvasDrawBackground(OH_Drawing_Canvas* canvas, const OH_Drawing
 
 ### OH_Drawing_CanvasDrawRegion()
 
-```
+```c
 void OH_Drawing_CanvasDrawRegion(OH_Drawing_Canvas* canvas, const OH_Drawing_Region* region)
 ```
 
@@ -730,7 +730,7 @@ void OH_Drawing_CanvasDrawRegion(OH_Drawing_Canvas* canvas, const OH_Drawing_Reg
 
 ### OH_Drawing_CanvasDrawPoint()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPoint(OH_Drawing_Canvas* canvas, const OH_Drawing_Point2D* point)
 ```
 
@@ -758,7 +758,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPoint(OH_Drawing_Canvas* canvas, const
 
 ### OH_Drawing_CanvasDrawPoints()
 
-```
+```c
 void OH_Drawing_CanvasDrawPoints(OH_Drawing_Canvas* canvas, OH_Drawing_PointMode mode,uint32_t count, const OH_Drawing_Point2D* point2D)
 ```
 
@@ -782,7 +782,7 @@ void OH_Drawing_CanvasDrawPoints(OH_Drawing_Canvas* canvas, OH_Drawing_PointMode
 
 ### OH_Drawing_CanvasDrawBitmap()
 
-```
+```c
 void OH_Drawing_CanvasDrawBitmap(OH_Drawing_Canvas* canvas, const OH_Drawing_Bitmap* bitmap, float left, float top)
 ```
 
@@ -806,7 +806,7 @@ void OH_Drawing_CanvasDrawBitmap(OH_Drawing_Canvas* canvas, const OH_Drawing_Bit
 
 ### OH_Drawing_CanvasDrawBitmapRect()
 
-```
+```c
 void OH_Drawing_CanvasDrawBitmapRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Bitmap* bitmap,const OH_Drawing_Rect* src, const OH_Drawing_Rect* dst, const OH_Drawing_SamplingOptions* samplingOptions)
 ```
 
@@ -831,7 +831,7 @@ void OH_Drawing_CanvasDrawBitmapRect(OH_Drawing_Canvas* canvas, const OH_Drawing
 
 ### OH_Drawing_CanvasDrawRect()
 
-```
+```c
 void OH_Drawing_CanvasDrawRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* rect)
 ```
 
@@ -853,7 +853,7 @@ void OH_Drawing_CanvasDrawRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect*
 
 ### OH_Drawing_CanvasDrawCircle()
 
-```
+```c
 void OH_Drawing_CanvasDrawCircle(OH_Drawing_Canvas* canvas, const OH_Drawing_Point* point, float radius)
 ```
 
@@ -876,7 +876,7 @@ void OH_Drawing_CanvasDrawCircle(OH_Drawing_Canvas* canvas, const OH_Drawing_Poi
 
 ### OH_Drawing_CanvasDrawColor()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawColor(OH_Drawing_Canvas* canvas, uint32_t color,OH_Drawing_BlendMode blendMode)
 ```
 
@@ -905,7 +905,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawColor(OH_Drawing_Canvas* canvas, uint3
 
 ### OH_Drawing_CanvasDrawOval()
 
-```
+```c
 void OH_Drawing_CanvasDrawOval(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* rect)
 ```
 
@@ -927,7 +927,7 @@ void OH_Drawing_CanvasDrawOval(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect*
 
 ### OH_Drawing_CanvasDrawArc()
 
-```
+```c
 void OH_Drawing_CanvasDrawArc(OH_Drawing_Canvas* canvas,const OH_Drawing_Rect* rect, float startAngle, float sweepAngle)
 ```
 
@@ -951,7 +951,7 @@ void OH_Drawing_CanvasDrawArc(OH_Drawing_Canvas* canvas,const OH_Drawing_Rect* r
 
 ### OH_Drawing_CanvasDrawArcWithCenter()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawArcWithCenter(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* rect,float startAngle, float sweepAngle, bool useCenter)
 ```
 
@@ -982,7 +982,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawArcWithCenter(OH_Drawing_Canvas* canva
 
 ### OH_Drawing_CanvasDrawRoundRect()
 
-```
+```c
 void OH_Drawing_CanvasDrawRoundRect(OH_Drawing_Canvas* canvas, const OH_Drawing_RoundRect* roundRect)
 ```
 
@@ -1004,7 +1004,7 @@ void OH_Drawing_CanvasDrawRoundRect(OH_Drawing_Canvas* canvas, const OH_Drawing_
 
 ### OH_Drawing_CanvasDrawNestedRoundRect()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawNestedRoundRect(OH_Drawing_Canvas* canvas, const OH_Drawing_RoundRect* outer,const OH_Drawing_RoundRect* inner)
 ```
 
@@ -1033,7 +1033,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawNestedRoundRect(OH_Drawing_Canvas* can
 
 ### OH_Drawing_CanvasDrawSingleCharacter()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawSingleCharacter(OH_Drawing_Canvas* canvas, const char* str,const OH_Drawing_Font* font, float x, float y)
 ```
 
@@ -1064,7 +1064,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawSingleCharacter(OH_Drawing_Canvas* can
 
 ### OH_Drawing_CanvasDrawTextBlob()
 
-```
+```c
 void OH_Drawing_CanvasDrawTextBlob(OH_Drawing_Canvas* canvas, const OH_Drawing_TextBlob* textBlob, float x, float y)
 ```
 
@@ -1088,7 +1088,7 @@ void OH_Drawing_CanvasDrawTextBlob(OH_Drawing_Canvas* canvas, const OH_Drawing_T
 
 ### OH_Drawing_CanvasClipRect()
 
-```
+```c
 void OH_Drawing_CanvasClipRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* rect,OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias)
 ```
 
@@ -1112,7 +1112,7 @@ void OH_Drawing_CanvasClipRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect*
 
 ### OH_Drawing_CanvasClipRoundRect()
 
-```
+```c
 void OH_Drawing_CanvasClipRoundRect(OH_Drawing_Canvas* canvas, const OH_Drawing_RoundRect* roundRect,OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias)
 ```
 
@@ -1136,7 +1136,7 @@ void OH_Drawing_CanvasClipRoundRect(OH_Drawing_Canvas* canvas, const OH_Drawing_
 
 ### OH_Drawing_CanvasClipPath()
 
-```
+```c
 void OH_Drawing_CanvasClipPath(OH_Drawing_Canvas* canvas, const OH_Drawing_Path* path,OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias)
 ```
 
@@ -1160,7 +1160,7 @@ void OH_Drawing_CanvasClipPath(OH_Drawing_Canvas* canvas, const OH_Drawing_Path*
 
 ### OH_Drawing_CanvasClipRegion()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasClipRegion(OH_Drawing_Canvas* canvas, const OH_Drawing_Region* region,OH_Drawing_CanvasClipOp clipOp)
 ```
 
@@ -1189,7 +1189,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasClipRegion(OH_Drawing_Canvas* canvas, cons
 
 ### OH_Drawing_CanvasRotate()
 
-```
+```c
 void OH_Drawing_CanvasRotate(OH_Drawing_Canvas* canvas, float degrees, float px, float py)
 ```
 
@@ -1213,7 +1213,7 @@ void OH_Drawing_CanvasRotate(OH_Drawing_Canvas* canvas, float degrees, float px,
 
 ### OH_Drawing_CanvasTranslate()
 
-```
+```c
 void OH_Drawing_CanvasTranslate(OH_Drawing_Canvas* canvas, float dx, float dy)
 ```
 
@@ -1236,7 +1236,7 @@ void OH_Drawing_CanvasTranslate(OH_Drawing_Canvas* canvas, float dx, float dy)
 
 ### OH_Drawing_CanvasScale()
 
-```
+```c
 void OH_Drawing_CanvasScale(OH_Drawing_Canvas* canvas, float sx, float sy)
 ```
 
@@ -1259,7 +1259,7 @@ void OH_Drawing_CanvasScale(OH_Drawing_Canvas* canvas, float sx, float sy)
 
 ### OH_Drawing_CanvasSkew()
 
-```
+```c
 void OH_Drawing_CanvasSkew(OH_Drawing_Canvas* canvas, float sx, float sy)
 ```
 
@@ -1282,7 +1282,7 @@ void OH_Drawing_CanvasSkew(OH_Drawing_Canvas* canvas, float sx, float sy)
 
 ### OH_Drawing_CanvasGetWidth()
 
-```
+```c
 int32_t OH_Drawing_CanvasGetWidth(OH_Drawing_Canvas* canvas)
 ```
 
@@ -1309,7 +1309,7 @@ int32_t OH_Drawing_CanvasGetWidth(OH_Drawing_Canvas* canvas)
 
 ### OH_Drawing_CanvasGetHeight()
 
-```
+```c
 int32_t OH_Drawing_CanvasGetHeight(OH_Drawing_Canvas* canvas)
 ```
 
@@ -1336,7 +1336,7 @@ int32_t OH_Drawing_CanvasGetHeight(OH_Drawing_Canvas* canvas)
 
 ### OH_Drawing_CanvasGetLocalClipBounds()
 
-```
+```c
 void OH_Drawing_CanvasGetLocalClipBounds(OH_Drawing_Canvas* canvas, OH_Drawing_Rect* rect)
 ```
 
@@ -1358,7 +1358,7 @@ void OH_Drawing_CanvasGetLocalClipBounds(OH_Drawing_Canvas* canvas, OH_Drawing_R
 
 ### OH_Drawing_CanvasGetTotalMatrix()
 
-```
+```c
 void OH_Drawing_CanvasGetTotalMatrix(OH_Drawing_Canvas* canvas, OH_Drawing_Matrix* matrix)
 ```
 
@@ -1380,7 +1380,7 @@ void OH_Drawing_CanvasGetTotalMatrix(OH_Drawing_Canvas* canvas, OH_Drawing_Matri
 
 ### OH_Drawing_CanvasConcatMatrix()
 
-```
+```c
 void OH_Drawing_CanvasConcatMatrix(OH_Drawing_Canvas* canvas, OH_Drawing_Matrix* matrix)
 ```
 
@@ -1402,7 +1402,7 @@ void OH_Drawing_CanvasConcatMatrix(OH_Drawing_Canvas* canvas, OH_Drawing_Matrix*
 
 ### OH_Drawing_CanvasDrawShadow()
 
-```
+```c
 void OH_Drawing_CanvasDrawShadow(OH_Drawing_Canvas* canvas, OH_Drawing_Path* path, OH_Drawing_Point3D planeParams,OH_Drawing_Point3D devLightPos, float lightRadius, uint32_t ambientColor, uint32_t spotColor,OH_Drawing_CanvasShadowFlags flag)
 ```
 
@@ -1430,7 +1430,7 @@ void OH_Drawing_CanvasDrawShadow(OH_Drawing_Canvas* canvas, OH_Drawing_Path* pat
 
 ### OH_Drawing_CanvasClear()
 
-```
+```c
 void OH_Drawing_CanvasClear(OH_Drawing_Canvas* canvas, uint32_t color)
 ```
 
@@ -1452,7 +1452,7 @@ void OH_Drawing_CanvasClear(OH_Drawing_Canvas* canvas, uint32_t color)
 
 ### OH_Drawing_CanvasSetMatrix()
 
-```
+```c
 void OH_Drawing_CanvasSetMatrix(OH_Drawing_Canvas* canvas, OH_Drawing_Matrix* matrix)
 ```
 
@@ -1474,7 +1474,7 @@ void OH_Drawing_CanvasSetMatrix(OH_Drawing_Canvas* canvas, OH_Drawing_Matrix* ma
 
 ### OH_Drawing_CanvasResetMatrix()
 
-```
+```c
 void OH_Drawing_CanvasResetMatrix(OH_Drawing_Canvas* canvas)
 ```
 
@@ -1495,7 +1495,7 @@ void OH_Drawing_CanvasResetMatrix(OH_Drawing_Canvas* canvas)
 
 ### OH_Drawing_CanvasDrawImageRectWithSrc()
 
-```
+```c
 void OH_Drawing_CanvasDrawImageRectWithSrc(OH_Drawing_Canvas* canvas, const OH_Drawing_Image* image,const OH_Drawing_Rect* src, const OH_Drawing_Rect* dst, const OH_Drawing_SamplingOptions* samplingOptions,OH_Drawing_SrcRectConstraint srcRectConstraint)
 ```
 
@@ -1521,7 +1521,7 @@ void OH_Drawing_CanvasDrawImageRectWithSrc(OH_Drawing_Canvas* canvas, const OH_D
 
 ### OH_Drawing_CanvasDrawImageRect()
 
-```
+```c
 void OH_Drawing_CanvasDrawImageRect(OH_Drawing_Canvas* canvas, OH_Drawing_Image* image,OH_Drawing_Rect* rect, OH_Drawing_SamplingOptions* samplingOptions)
 ```
 
@@ -1545,7 +1545,7 @@ void OH_Drawing_CanvasDrawImageRect(OH_Drawing_Canvas* canvas, OH_Drawing_Image*
 
 ### OH_Drawing_CanvasDrawVertices()
 
-```
+```c
 void OH_Drawing_CanvasDrawVertices(OH_Drawing_Canvas* canvas, OH_Drawing_VertexMode vertexMmode,int32_t vertexCount, const OH_Drawing_Point2D* positions, const OH_Drawing_Point2D* texs,const uint32_t* colors, int32_t indexCount, const uint16_t* indices, OH_Drawing_BlendMode mode)
 ```
 
@@ -1574,7 +1574,7 @@ void OH_Drawing_CanvasDrawVertices(OH_Drawing_Canvas* canvas, OH_Drawing_VertexM
 
 ### OH_Drawing_CanvasReadPixels()
 
-```
+```c
 bool OH_Drawing_CanvasReadPixels(OH_Drawing_Canvas* canvas, OH_Drawing_Image_Info* imageInfo,void* dstPixels, uint32_t dstRowBytes, int32_t srcX, int32_t srcY)
 ```
 
@@ -1606,7 +1606,7 @@ bool OH_Drawing_CanvasReadPixels(OH_Drawing_Canvas* canvas, OH_Drawing_Image_Inf
 
 ### OH_Drawing_CanvasReadPixelsToBitmap()
 
-```
+```c
 bool OH_Drawing_CanvasReadPixelsToBitmap(OH_Drawing_Canvas* canvas,OH_Drawing_Bitmap* bitmap, int32_t srcX, int32_t srcY)
 ```
 
@@ -1636,7 +1636,7 @@ bool OH_Drawing_CanvasReadPixelsToBitmap(OH_Drawing_Canvas* canvas,OH_Drawing_Bi
 
 ### OH_Drawing_CanvasIsClipEmpty()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasIsClipEmpty(OH_Drawing_Canvas* canvas, bool* isClipEmpty)
 ```
 
@@ -1664,7 +1664,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasIsClipEmpty(OH_Drawing_Canvas* canvas, boo
 
 ### OH_Drawing_CanvasGetImageInfo()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasGetImageInfo(OH_Drawing_Canvas* canvas, OH_Drawing_Image_Info* imageInfo)
 ```
 
@@ -1692,7 +1692,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasGetImageInfo(OH_Drawing_Canvas* canvas, OH
 
 ### OH_Drawing_CanvasDrawRecordCmd()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawRecordCmd(OH_Drawing_Canvas* canvas, OH_Drawing_RecordCmd* recordCmd)
 ```
 
@@ -1720,7 +1720,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawRecordCmd(OH_Drawing_Canvas* canvas, O
 
 ### OH_Drawing_CanvasQuickRejectPath()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasQuickRejectPath(OH_Drawing_Canvas* canvas, const OH_Drawing_Path* path,bool* quickReject)
 ```
 
@@ -1749,7 +1749,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasQuickRejectPath(OH_Drawing_Canvas* canvas,
 
 ### OH_Drawing_CanvasQuickRejectRect()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasQuickRejectRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* rect,bool* quickReject)
 ```
 
@@ -1779,7 +1779,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasQuickRejectRect(OH_Drawing_Canvas* canvas,
 
 ### OH_Drawing_CanvasDrawPixelMapMesh()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapMesh(OH_Drawing_Canvas* cCanvas, OH_Drawing_PixelMap* pixelMap, uint32_t meshWidth, uint32_t meshHeight, const float* vertices, uint32_t verticesSize, uint32_t vertOffset, const uint32_t* colors, uint32_t colorsSize, uint32_t colorOffset)
 ```
 
