@@ -90,7 +90,8 @@
     ```
 
 4. 定义查询设备接口，通过queryDevices获取目标设备ID。
-    ArkTs-Dyn示例：
+    
+   ArkTs-Dyn示例：
     ```ts
     private async queryTargetDeviceId(): Promise<number> {
     try {
@@ -298,7 +299,7 @@
 <!--RP1-->
 ## 应用签名
 
-**注意：** 先配置权限，再自动签名。
+**注意： 先配置权限，再自动签名。**
 
 应用需要配置签名文件才能在设备上运行，并且扩展外设管理客户端开发，需要配置扩展外设的权限：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER及ohos.permission.ACCESS_DDK_DRIVERS。
 - ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER（API version 10及以上版本，需要申请此权限。）
