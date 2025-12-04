@@ -58,36 +58,23 @@
 <!-- @[add_group_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add_group.ets) --> 
 
 ``` TypeScript
-import { asset } from '@kit.AssetStoreKit';
-import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function stringToArray(str: string): Uint8Array {
-  let textEncoder = new util.TextEncoder();
-  return textEncoder.encodeInto(str);
-}
-
-export async function addGroupAsset(): Promise<string> {
-  let result: string = '';
-  let attr: asset.AssetMap = new Map();
-  attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
-  attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-  attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
-  attr.set(asset.Tag.GROUP_ID, stringToArray('demo_group_id'));
-  try {
-    await asset.add(attr).then(() => {
-      console.info(`Succeeded in adding Asset to the group.`);
-      result = 'Succeeded in adding Asset to the group';
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to add Asset to the group. Code is ${err.code}, message is ${err.message}`);
-      result = 'Failed to add Asset to the group';
-    })
-  } catch (error) {
-    let err = error as BusinessError;
-    console.error(`Failed to add Asset to the group. Code is ${err?.code}, message is ${err?.message}`);
-    result = 'Failed to add Asset to the group';
-  }
-  return result;
+let attr: asset.AssetMap = new Map();
+attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
+attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
+attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
+attr.set(asset.Tag.GROUP_ID, stringToArray('demo_group_id'));
+try {
+  asset.add(attr).then(() => {
+    console.info(`Succeeded in adding Asset to the group.`);
+    // ...
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to add Asset to the group. Code is ${err.code}, message is ${err.message}`);
+    // ...
+  })
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`Failed to add Asset to the group. Code is ${err?.code}, message is ${err?.message}`);
+  // ...
 }
 ```
 
