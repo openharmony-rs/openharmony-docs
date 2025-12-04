@@ -629,6 +629,30 @@
 
 **起始版本**：10
 
+## ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE
+
+允许在企业设备上安装企业MDM应用包。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：10
+
+## ohos.permission.INSTALL_SELF_BUNDLE
+
+允许企业MDM应用在企业设备上自升级。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：10
+
 ## ohos.permission.INSTALL_ENTERPRISE_BUNDLE
 
 允许应用安装企业InHouse应用。
