@@ -137,7 +137,7 @@ setFontScale(fontScale: number): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| fontScale | number | 是 | 需要设置的字体大小。<br/> 取值范围：[0, 5] |
+| fontScale | number | 是 | 需要设置的字体大小。<br/> 取值范围：(0, 5.0] |
 
 **返回值：** 
 
@@ -197,7 +197,7 @@ setFontWeightScale(fontWeightScale: number): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| fontWeightScale | number | 是 | 需要设置的字体粗细。<br/> 取值范围：[0, 5] |
+| fontWeightScale | number | 是 | 需要设置的字体粗细。<br/> 取值范围：(0, 5.0] |
 
 **返回值：** 
 
