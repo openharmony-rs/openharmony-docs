@@ -725,20 +725,20 @@ let options: http.HttpRequestOptions = {
 8.  调用该对象的request()方法，传入HTTP请求的URL地址和可选参数，发起网络请求，按照实际业务需要，解析服务器响应事件。
 
     <!-- @[HTTP_interceptor_case_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 发起请求
-httpRequest.request(EXAMPLE_URL, options, (err: BusinessError, res: http.HttpResponse) => {
-  if (err) {
-    hilog.error(0xFF00, 'httpNormalRequest', `request fail, error code: ${err.code}, msg: ${err.message}`);
-    // ···
-  } else {
-    hilog.info(0xFF00, 'httpNormalRequest', `res:${JSON.stringify(res)}`);
-    // ···
-  }
-// ···
-});
-```
+    
+    ``` TypeScript
+    // 发起请求
+    httpRequest.request(EXAMPLE_URL, options, (err: BusinessError, res: http.HttpResponse) => {
+      if (err) {
+        hilog.error(0xFF00, 'httpNormalRequest', `request fail, error code: ${err.code}, msg: ${err.message}`);
+        // ...
+      } else {
+        hilog.info(0xFF00, 'httpNormalRequest', `res:${JSON.stringify(res)}`);
+        // ...
+      }
+      // ...
+    });
+    ```
 
 9.  调用destroy()方法销毁http请求。
 
