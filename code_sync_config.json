@@ -1443,6 +1443,11 @@
 						"end_line":55,
 						"name":"add_asset",
 						"start_line":30
+					},
+					{
+						"end_line":26,
+						"name":"import",
+						"start_line":17
 					}
 				]
 			}
@@ -1488,6 +1493,11 @@
 						"end_line":64,
 						"name":"query_group_asset_plaintext",
 						"start_line":36
+					},
+					{
+						"end_line":32,
+						"name":"import",
+						"start_line":17
 					}
 				]
 			},
@@ -1513,6 +1523,11 @@
 						"end_line":129,
 						"name":"query_user_auth_asset",
 						"start_line":34
+					},
+					{
+						"end_line":32,
+						"name":"import",
+						"start_line":16
 					}
 				]
 			}
@@ -1528,6 +1543,11 @@
 						"end_line":64,
 						"name":"query_single_plaintext",
 						"start_line":36
+					},
+					{
+						"end_line":32,
+						"name":"import",
+						"start_line":17
 					}
 				]
 			},
@@ -1538,6 +1558,11 @@
 						"end_line":57,
 						"name":"query_single_attribute",
 						"start_line":30
+					},
+					{
+						"end_line":26,
+						"name":"import",
+						"start_line":17
 					}
 				]
 			},
@@ -1548,6 +1573,11 @@
 						"end_line":59,
 						"name":"query_batch_attributes",
 						"start_line":30
+					},
+					{
+						"end_line":26,
+						"name":"import",
+						"start_line":17
 					}
 				]
 			}
@@ -1563,6 +1593,11 @@
 						"end_line":52,
 						"name":"remove_asset",
 						"start_line":30
+					},
+					{
+						"end_line":26,
+						"name":"import",
+						"start_line":17
 					}
 				]
 			}
@@ -1578,6 +1613,11 @@
 						"end_line":55,
 						"name":"add_sync_asset",
 						"start_line":30
+					},
+					{
+						"end_line":26,
+						"name":"import",
+						"start_line":17
 					}
 				]
 			},
@@ -1588,6 +1628,11 @@
 						"end_line":37,
 						"name":"query_sync_result",
 						"start_line":24
+					},
+					{
+						"end_line":20,
+						"name":"import",
+						"start_line":17
 					}
 				]
 			}
@@ -1603,6 +1648,11 @@
 						"end_line":55,
 						"name":"update_asset",
 						"start_line":30
+					},
+					{
+						"end_line":26,
+						"name":"import",
+						"start_line":17
 					}
 				]
 			}
