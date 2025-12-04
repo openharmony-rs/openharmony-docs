@@ -1227,7 +1227,6 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 
 **示例：**
 
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
