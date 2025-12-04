@@ -118,24 +118,24 @@ MDNS管理的典型场景有：
 4. 订阅MDNS服务发现相关状态变化。
 
     <!-- @[discovery_service_on_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
- 
- ``` TypeScript
- // 订阅MDNS服务发现相关状态变化。
- discoveryService.on('discoveryStart', (data: mdns.DiscoveryEventInfo) => {
-   console.info(JSON.stringify(data));
- });
- discoveryService.on('discoveryStop', (data: mdns.DiscoveryEventInfo) => {
-   console.info(JSON.stringify(data));
- });
- discoveryService.on('serviceFound', (data: mdns.LocalServiceInfo) => {
-   console.info(JSON.stringify(data));
- // ···
- });
- discoveryService.on('serviceLost', (data: mdns.LocalServiceInfo) => {
-   console.info(JSON.stringify(data));
- // ···
- });
- ```
+    
+    ``` TypeScript
+    // 订阅MDNS服务发现相关状态变化。
+    discoveryService.on('discoveryStart', (data: mdns.DiscoveryEventInfo) => {
+      hilog.info(0x0000, 'testTag', JSON.stringify(data));
+    });
+    discoveryService.on('discoveryStop', (data: mdns.DiscoveryEventInfo) => {
+      hilog.info(0x0000, 'testTag', JSON.stringify(data));
+    });
+    discoveryService.on('serviceFound', (data: mdns.LocalServiceInfo) => {
+      hilog.info(0x0000, 'testTag', JSON.stringify(data));
+      // ...
+    });
+    discoveryService.on('serviceLost', (data: mdns.LocalServiceInfo) => {
+      hilog.info(0x0000, 'testTag', JSON.stringify(data));
+      // ...
+    });
+    ```
 
 5. 启动搜索局域网内的MDNS服务。
 
