@@ -1,4 +1,10 @@
 # os_account.h
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Account-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @zhaimengchao-->
+<!--Adviser: @zengyawen-->
 
 ## 概述
 
