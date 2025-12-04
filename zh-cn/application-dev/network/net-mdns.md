@@ -140,11 +140,11 @@ MDNS管理的典型场景有：
 5. 启动搜索局域网内的MDNS服务。
 
    <!-- @[start_searching_MDNS_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 启动搜索局域网内的MDNS服务。
-discoveryService.startSearchingMDNS();
-```
+   
+   ``` TypeScript
+   // 启动搜索局域网内的MDNS服务。
+   discoveryService.startSearchingMDNS();
+   ```
 6. 停止搜索局域网内的MDNS服务。
 
    <!-- @[stop_searching_MDNS_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
