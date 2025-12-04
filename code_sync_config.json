@@ -8323,7 +8323,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcall/pages/WidgetEventCallCard.ets",
 				"functions":[
 					{
-						"end_line":76,
+						"end_line":77,
 						"name":"widget_event_call_card",
 						"start_line":15
 					}
@@ -22569,7 +22569,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/widget/pages/WidgetCard.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":46,
 						"name":"liveform_WidgetCard",
 						"start_line":15
 					}
