@@ -357,11 +357,11 @@ multicast.addMembership(addr).then(() => {
 6. 关闭message消息的监听。
 
    <!-- @[multicast_worker_off_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
-
-``` TypeScript
-// 关闭消息的监听。
-multicast.off('message');
-```
+   
+   ``` TypeScript
+   // 关闭消息的监听。
+   multicast.off('message');
+   ```
 
 7. 退出多播组。
 
