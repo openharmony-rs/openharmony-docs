@@ -78,6 +78,7 @@
     import { formInfo, formProvider } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
+    // Constants实现参考“互动卡片动效工具函数实现”小节
     import { Constants } from '../../common/Constants';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
@@ -335,6 +336,7 @@
     // entry/src/main/ets/entryformability/EntryFormAbility.ets
     import { formInfo, formProvider, FormExtensionAbility } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
+    // Constants实现参考“互动卡片动效工具函数实现”小节
     import { Constants } from '../common/Constants';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
