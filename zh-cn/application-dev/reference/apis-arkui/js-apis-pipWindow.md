@@ -901,6 +901,47 @@ try {
 }
 ```
 
+### getPiPActiveStatus<sup>23+</sup>
+getPiPActiveStatus(): Promise&lt;boolean&gt;
+
+获取画中画的显隐状态，使用Promise异步回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**返回值：**
+
+| 类型                   | 说明                  |
+|----------------------|---------------------|
+| Promise&lt;boolean&gt;  | Promise对象，返回当前画中画的隐藏状态。true表示前台可见，false表示前台不可见。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息       |
+|-------|-------------------------------------------------------------------------------------------------------------|
+| 801   | Capability not supported. Failed to call the API due to limited device capabilities.        |
+| 1300014    | PiP internal error.                                    |
+
+**示例：**
+
+```ts
+let pipActiveStatus: boolean | undefined = undefined;
+try {
+  let promise : Promise<boolean> = this.pipController.getPiPActiveStatus();
+  promise.then((data) => {
+    pipActiveStatus = data;
+    console.info('Succeeded in getting pip active status. activeStatus: ' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get pip active status. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to get pip active status. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ### on('stateChange')
 
 on(type: 'stateChange', callback: (state: PiPState, reason: string) => void): void
