@@ -245,18 +245,6 @@ Allows an application to query and configure user identity authentication polici
 
 **Valid since**: 18
 
-## ohos.permission.SET_LAUNCH_REASON_MESSAGE
-
-Allows a system application to set the launch reason when starting another application.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 18
-
 ## ohos.permission.ACCESS_USER_ACCOUNT_INFO
 
 Allows a system application to access user account information.

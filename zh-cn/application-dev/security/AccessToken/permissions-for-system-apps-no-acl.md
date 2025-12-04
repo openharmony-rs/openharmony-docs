@@ -245,18 +245,6 @@
 
 **起始版本**：18
 
-## ohos.permission.SET_LAUNCH_REASON_MESSAGE
-
-允许系统应用拉起其他应用时设置拉起原因。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：false
-
-**起始版本**：18
-
 ## ohos.permission.ACCESS_USER_ACCOUNT_INFO
 
 允许系统应用获取账号提供的数据。
