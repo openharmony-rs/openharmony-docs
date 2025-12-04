@@ -71,7 +71,7 @@
 
 ### OH_AudioStream_Result
 
-```
+```c
 enum OH_AudioStream_Result
 ```
 
@@ -91,7 +91,7 @@ enum OH_AudioStream_Result
 
 ### OH_AudioStream_Type
 
-```
+```c
 enum OH_AudioStream_Type
 ```
 
@@ -108,7 +108,7 @@ enum OH_AudioStream_Type
 
 ### OH_AudioStream_SampleFormat
 
-```
+```c
 enum OH_AudioStream_SampleFormat
 ```
 
@@ -128,7 +128,7 @@ enum OH_AudioStream_SampleFormat
 
 ### OH_AudioStream_EncodingType
 
-```
+```c
 enum OH_AudioStream_EncodingType
 ```
 
@@ -146,7 +146,7 @@ enum OH_AudioStream_EncodingType
 
 ### OH_AudioStream_Usage
 
-```
+```c
 enum OH_AudioStream_Usage
 ```
 
@@ -175,7 +175,7 @@ enum OH_AudioStream_Usage
 
 ### OH_AudioStream_LatencyMode
 
-```
+```c
 enum OH_AudioStream_LatencyMode
 ```
 
@@ -192,7 +192,7 @@ enum OH_AudioStream_LatencyMode
 
 ### OH_AudioStream_DirectPlaybackMode
 
-```
+```c
 enum OH_AudioStream_DirectPlaybackMode
 ```
 
@@ -210,7 +210,7 @@ enum OH_AudioStream_DirectPlaybackMode
 
 ### OH_AudioStream_VolumeMode
 
-```
+```c
 enum OH_AudioStream_VolumeMode
 ```
 
@@ -227,7 +227,7 @@ enum OH_AudioStream_VolumeMode
 
 ### OH_AudioStream_State
 
-```
+```c
 enum OH_AudioStream_State
 ```
 
@@ -249,7 +249,7 @@ enum OH_AudioStream_State
 
 ### OH_AudioStream_SourceType
 
-```
+```c
 enum OH_AudioStream_SourceType
 ```
 
@@ -273,7 +273,7 @@ enum OH_AudioStream_SourceType
 
 ### OH_AudioStream_Event
 
-```
+```c
 enum OH_AudioStream_Event
 ```
 
@@ -291,7 +291,7 @@ enum OH_AudioStream_Event
 
 ### OH_AudioInterrupt_ForceType
 
-```
+```c
 enum OH_AudioInterrupt_ForceType
 ```
 
@@ -308,7 +308,7 @@ enum OH_AudioInterrupt_ForceType
 
 ### OH_AudioInterrupt_Hint
 
-```
+```c
 enum OH_AudioInterrupt_Hint
 ```
 
@@ -331,7 +331,7 @@ enum OH_AudioInterrupt_Hint
 
 ### OH_AudioInterrupt_Mode
 
-```
+```c
 enum OH_AudioInterrupt_Mode
 ```
 
@@ -348,7 +348,7 @@ enum OH_AudioInterrupt_Mode
 
 ### OH_AudioStream_AudioEffectMode
 
-```
+```c
 enum OH_AudioStream_AudioEffectMode
 ```
 
@@ -365,7 +365,7 @@ enum OH_AudioStream_AudioEffectMode
 
 ### OH_AudioStream_FastStatus
 
-```
+```c
 enum OH_AudioStream_FastStatus
 ```
 
@@ -382,7 +382,7 @@ enum OH_AudioStream_FastStatus
 
 ### OH_AudioStream_DeviceChangeReason
 
-```
+```c
 enum OH_AudioStream_DeviceChangeReason
 ```
 
@@ -403,7 +403,7 @@ enum OH_AudioStream_DeviceChangeReason
 
 ### OH_AudioStream_PrivacyType
 
-```
+```c
 enum OH_AudioStream_PrivacyType
 ```
 
@@ -421,7 +421,7 @@ enum OH_AudioStream_PrivacyType
 
 ### OH_AudioData_Callback_Result
 
-```
+```c
 enum OH_AudioData_Callback_Result
 ```
 
@@ -441,7 +441,7 @@ enum OH_AudioData_Callback_Result
 
 ### OH_AudioRenderer_OutputDeviceChangeCallback()
 
-```
+```c
 typedef void (*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_DeviceChangeReason reason)
 ```
 
@@ -461,7 +461,7 @@ typedef void (*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* re
 
 ### OH_AudioRenderer_OnMarkReachedCallback()
 
-```
+```c
 typedef void (*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* renderer, uint32_t samplePos, void* userData)
 ```
 
@@ -481,7 +481,7 @@ typedef void (*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* rendere
 
 ### OH_AudioRenderer_WriteDataWithMetadataCallback()
 
-```
+```c
 typedef int32_t (*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize, void* metadata, int32_t metadataSize)
 ```
 
@@ -510,7 +510,7 @@ typedef int32_t (*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRender
 
 ### OH_AudioRenderer_OnWriteDataCallback()
 
-```
+```c
 typedef OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)
 ```
 
@@ -537,7 +537,7 @@ typedef OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_
 
 ### OH_AudioRenderer_OnWriteDataCallbackAdvanced()
 
-```
+```c
 typedef int32_t (*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)
 ```
 
