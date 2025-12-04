@@ -114,7 +114,7 @@
    
 5. 连接设备，注册通信接口。
 
-  ArkTs-Dyn示例：
+   ArkTs-Dyn示例：
     ```ts
     // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
     let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
@@ -132,7 +132,7 @@
       }
     }
     ```
-  ArkTs-Sta示例：
+   ArkTs-Sta示例：
     ```ts
     // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
     let claimInterfaceResult: int = usbManager.claimInterface(devicePipe, usbInterface, true);
