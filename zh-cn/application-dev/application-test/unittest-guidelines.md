@@ -26,7 +26,7 @@
 
   **图1.单元测试框架主要功能**
 
-  ![alt text](image-1.png)
+  ![](figures/UnitTest.PNG)
 
 
 ## 单元测试框架发布方式
