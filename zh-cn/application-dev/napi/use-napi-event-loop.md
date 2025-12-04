@@ -182,19 +182,17 @@
 2. 需要在模块的build-profile.json5文件中进行以下配置
 
    <!-- @[napi_event_loop_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/build-profile.json5) -->
-    ```json
-    {
-        "buildOption" : {
-            "arkOptions" : {
-                "runtimeOnly" : {
-                    "sources": [
-                        "./src/main/ets/pages/ObjectUtils.ets"
-                    ]
-                }
-            }
-        }
-    }
-    ```
+   
+   ``` JSON5
+   "buildOption": {
+     "arkOptions" : {
+       "runtimeOnly" : {
+         "sources": [
+           "./src/main/ets/pages/ObjectUtils.ets"
+         ]
+       }
+     },
+   ```
 
 - ArkTS代码示例
   ``` TypeScript
