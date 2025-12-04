@@ -28,7 +28,7 @@
 
 ### OH_MediaAccessHelper_ApplyChanges()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAccessHelper_ApplyChanges(OH_MediaAssetChangeRequest* changeRequest)
 ```
 
