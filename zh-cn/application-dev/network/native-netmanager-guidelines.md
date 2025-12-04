@@ -151,11 +151,11 @@ libnet_connection.so
 - NetId函数不接受参数，返回一个数字类型的值。
 
    <!-- @[defining_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
-``` TypeScript
-export const GetDefaultNet: (code: number) => number;
-export const NetId: () => number;
-```
+   
+   ``` TypeScript
+   export const GetDefaultNet: (code: number) => number;
+   export const NetId: () => number;
+   ```
 5. 在index.ets文件中对上述封装好的接口进行调用。
 
    <!-- @[build_project5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/ets/pages/Index.ets) -->
