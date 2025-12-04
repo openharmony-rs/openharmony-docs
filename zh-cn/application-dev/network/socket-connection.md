@@ -291,11 +291,11 @@ UDP与TCP流程大体类似，下面以TCP为例：
 2. 创建multicastSocket多播对象。
 
    <!-- @[multicast_worker_multicast](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
-
-``` TypeScript
-// 创建Multicast对象。
-let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-```
+   
+   ``` TypeScript
+   // 创建Multicast对象。
+   let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
+   ```
 
 3. 指定多播IP与端口，加入多播组。
    ```ts
