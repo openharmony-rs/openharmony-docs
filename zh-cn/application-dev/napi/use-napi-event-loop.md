@@ -152,10 +152,11 @@
 
 - 接口声明
   <!-- @[napi_event_loop_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-    ```ts
-    // index.d.ts
-    export const runEventLoop: (isDefault: boolean) => object;
-    ```
+  
+  ``` TypeScript
+  // index.d.ts
+  export const runEventLoop: (isDefault: boolean) => object;
+  ```
 
 - 编译配置
 1. CMakeLists.txt文件需要按照如下配置
