@@ -86,33 +86,20 @@ try {
 <!-- @[remove_group_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove_group.ets) --> 
 
 ``` TypeScript
-import { asset } from '@kit.AssetStoreKit';
-import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function stringToArray(str: string): Uint8Array {
-  let textEncoder = new util.TextEncoder();
-  return textEncoder.encodeInto(str);
-}
-
-export async function removeGroupAsset(): Promise<string> {
-  let result: string = '';
-  let query: asset.AssetMap = new Map();
-  query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // 此处指定别名删除单条群组关键资产，也可不指定别名删除多条群组关键资产。
-  query.set(asset.Tag.GROUP_ID, stringToArray('demo_group_id'));
-  try {
-    await asset.remove(query).then(() => {
-      console.info(`Succeeded in removing Asset from the group.`);
-      result = 'Succeeded in removing Asset from the group';
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to remove Asset from the group. Code is ${err.code}, message is ${err.message}`);
-      result = 'Failed to remove Asset from the group';
-    });
-  } catch (err) {
-    console.error(`Failed to remove Asset from the group. Code is ${err?.code}, message is ${err?.message}`);
-    result = 'Failed to remove Asset from the group';
-  }
-  return result;
+let query: asset.AssetMap = new Map();
+query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // 此处指定别名删除单条群组关键资产，也可不指定别名删除多条群组关键资产。
+query.set(asset.Tag.GROUP_ID, stringToArray('demo_group_id'));
+try {
+  asset.remove(query).then(() => {
+    console.info(`Succeeded in removing Asset from the group.`);
+    // ...
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to remove Asset from the group. Code is ${err.code}, message is ${err.message}`);
+    // ...
+  });
+} catch (err) {
+  console.error(`Failed to remove Asset from the group. Code is ${err?.code}, message is ${err?.message}`);
+  // ...
 }
 ```
 
