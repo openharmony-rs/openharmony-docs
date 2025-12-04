@@ -5109,7 +5109,7 @@ async function demo() {
 
 ### injectKnucklePointerAction<sup>22+</sup>
 
-injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise<\void>
+injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise\<void>
 
 模拟指关节多点注入滑动操作，使用Promise异步回调。
 
