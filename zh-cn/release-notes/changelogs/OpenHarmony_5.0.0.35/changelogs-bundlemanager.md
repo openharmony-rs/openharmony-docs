@@ -35,7 +35,7 @@
 
 | 接口文件   |
 |---------|
-| [ohos.bundle.bundleResourceManager.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleResourceManager.d.ts) |
+| [ohos.bundle.bundleResourceManager.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleResourceManager.d.ts) |
 
 | 接口名称   |
 |---------|
