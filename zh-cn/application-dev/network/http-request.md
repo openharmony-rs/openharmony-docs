@@ -208,12 +208,13 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 1. 导入HTTP流式传输所需模块
 
      <!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import { http } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-```
+     
+     ``` TypeScript
+     import { http } from '@kit.NetworkKit';
+     import { BusinessError } from '@kit.BasicServicesKit';
+     import { common } from '@kit.AbilityKit';
+     import { hilog } from '@kit.PerformanceAnalysisKit';
+     ```
 
 2. 创建HTTP流式传输HttpRequest对象
 
