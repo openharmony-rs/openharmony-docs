@@ -70,42 +70,42 @@ libnet_connection.so
 1. 在源文件中编写调用该API的代码，并将结果封装成一个`napi_value`类型的值返回给Node.js环境。
 
    <!-- @[build_project1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-// 获取默认网络的函数
-static napi_value GetDefaultNet(napi_env env, napi_callback_info info)
-{
-    size_t argc = 1; // 期望接收一个函数
-    napi_value args[1] = {nullptr}; // 存储接收到的参数
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    // ···
-    int32_t param;
-    napi_get_value_int32(env, args[0], &param); // 从 args[0] 获取整数值并存储到 param 中
-    
-    NetConn_NetHandle netHandle;
-    if (param == 0) { // 如果参数是0
-        param = OH_NetConn_GetDefaultNet(NULL);
-    } else {
-        param = OH_NetConn_GetDefaultNet(&netHandle);
-    }
-
-    napi_value result;
-    napi_create_int32(env, param, &result);
-    return result;
-}
-
-// 获取默认网络ID的函数
-static napi_value NetId(napi_env env, napi_callback_info info)
-{
-    int32_t defaultNetId;
-    NetConn_NetHandle netHandle;
-    OH_NetConn_GetDefaultNet(&netHandle);
-    defaultNetId = netHandle.netId; // 获取默认的 netId
-    napi_value result;
-    napi_create_int32(env, defaultNetId, &result);
-    return result;
-}
-```
+   
+   ``` C++
+   // 获取默认网络的函数
+   static napi_value GetDefaultNet(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1; // 期望接收一个函数
+       napi_value args[1] = {nullptr}; // 存储接收到的参数
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+       // ...
+       int32_t param;
+       napi_get_value_int32(env, args[0], &param); // 从 args[0] 获取整数值并存储到 param 中
+       
+       NetConn_NetHandle netHandle;
+       if (param == 0) { // 如果参数是0
+           param = OH_NetConn_GetDefaultNet(NULL);
+       } else {
+           param = OH_NetConn_GetDefaultNet(&netHandle);
+       }
+   
+       napi_value result;
+       napi_create_int32(env, param, &result);
+       return result;
+   }
+   
+   // 获取默认网络ID的函数
+   static napi_value NetId(napi_env env, napi_callback_info info)
+   {
+       int32_t defaultNetId;
+       NetConn_NetHandle netHandle;
+       OH_NetConn_GetDefaultNet(&netHandle);
+       defaultNetId = netHandle.netId; // 获取默认的 netId
+       napi_value result;
+       napi_create_int32(env, defaultNetId, &result);
+       return result;
+   }
+   ```
 简要说明：这两个函数用于获取系统默认网络连接的相关信息。其中，GetDefaultNet是接收ArkTs端传入的测试参数，返回调用接口后对应的返回值，param可以自行调整；如果返回值为0，代表获取成功，401代表参数错误，201代表没有权限；而NetId函数则用于获取默认网络连接的ID。这些信息可以用于进一步的网络操作。
 
 
