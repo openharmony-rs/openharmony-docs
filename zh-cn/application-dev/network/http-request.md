@@ -57,7 +57,7 @@
 
 1. 导入HTTP一般数据请求所需模块
 
-<!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->  
+   <!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 import { http } from '@kit.NetworkKit';
@@ -69,7 +69,7 @@ import { common } from '@kit.AbilityKit';
 
     调用createHttp()方法，创建HttpRequest对象。
 
- <!-- @[HTTP_case_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[HTTP_case_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -81,7 +81,7 @@ import { common } from '@kit.AbilityKit';
 
     调用该对象的on()方法，订阅HTTP响应头事件，此接口会比request请求先返回。可以根据业务需要订阅此消息。
 
-<!-- @[HTTP_case_http_request_on_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[HTTP_case_http_request_on_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     // 用于订阅HTTP响应头，此接口会比request请求先返回。可以根据业务需要订阅此消息。
@@ -96,7 +96,7 @@ import { common } from '@kit.AbilityKit';
 
     调用该对象的request()方法，传入HTTP请求的url地址和可选参数，发起网络请求，按照实际业务需要，解析返回结果。
 
-<!-- @[HTTP_case_http_request_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[HTTP_case_http_request_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     httpRequest.request(
@@ -206,7 +206,7 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 
 1. 导入HTTP流式传输所需模块
 
-  <!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { http } from '@kit.NetworkKit';
@@ -218,7 +218,7 @@ import { common } from '@kit.AbilityKit';
 
     调用createHttp()方法，创建HttpRequest对象。
 
- <!-- @[request_in_stream_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[request_in_stream_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     // 每一个httpRequest对应一个HTTP请求任务，不可复用。
@@ -229,7 +229,7 @@ import { common } from '@kit.AbilityKit';
 
 	服务器响应的数据在dataReceive回调中返回，可通过订阅该信息获取服务器响应的数据，其他流式响应事件可按需进行订阅。
   
-<!-- @[request_in_stream_data_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[request_in_stream_data_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     // 用于订阅HTTP流式响应数据接收事件。
@@ -263,7 +263,7 @@ import { common } from '@kit.AbilityKit';
 
 4. 发起HTTP流式请求，获取服务端数据
 
-<!-- @[request_in_stream_get_server_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[request_in_stream_get_server_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 let streamInfo: http.HttpRequestOptions = {
@@ -304,7 +304,7 @@ httpRequest.requestInStream('EXAMPLE_URL', streamInfo)
 
     调用该对象的off()方法，取消订阅步骤3中的事件，并且当该请求使用完毕时，调用destroy()方法销毁，该方法调用的时机，可以参考步骤4中的示例代码。
 
-<!-- @[request_in_stream_destroy_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[request_in_stream_destroy_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
   public destroyRequest(httpRequest: http.HttpRequest) {
@@ -559,7 +559,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 1.  导入HTTP请求拦截器所需模块。
 
-<!-- @[HTTP_interceptor_case_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->  
+    <!-- @[HTTP_interceptor_case_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->  
 
 ```typescript
 import { http } from '@kit.NetworkKit';
@@ -569,7 +569,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 2.  调用[createHttp()](../reference/apis-network-kit/js-apis-http.md#httpcreatehttp)方法，创建HttpRequest对象。
 
- <!-- @[HTTP_interceptor_case_creat_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @[HTTP_interceptor_case_creat_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
 ```typescript
 // 创建http请求
@@ -578,7 +578,7 @@ let httpRequest: http.HttpRequest = http.createHttp();
 
 3.  调用HttpInterceptorChain()方法，创建拦截器链对象。
 
-<!-- @[HTTP_interceptor_case_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[HTTP_interceptor_case_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
 ```typescript
 // 创建拦截器链
@@ -587,7 +587,7 @@ let chain: http.HttpInterceptorChain = new http.HttpInterceptorChain();
 
 4.  创建拦截器类实现http.HttpInterceptor接口。
 
-<!-- @[HTTP_interceptor_case_creat_http_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[HTTP_interceptor_case_creat_http_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
 ```typescript
 enum InterceptorType {
@@ -688,7 +688,7 @@ class FinalHttpInterceptor implements http.HttpInterceptor {
 
 5.  调用addChain()方法，将需要的拦截器实例加入到拦截器链中。
 
-<!-- @[HTTP_interceptor_case_addChain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[HTTP_interceptor_case_addChain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 创建所需要的拦截器对象,将拦截器对象加入拦截器链中
@@ -701,7 +701,7 @@ chain.addChain([
 
 6.  调用apply()方法，将当前配置好的拦截器链附加到httpRequest中。
 
-<!-- @[HTTP_interceptor_case_apply](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[HTTP_interceptor_case_apply](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
 ```typescript
 // 将当前配置好的拦截器链附加到httpRequest中
@@ -710,7 +710,7 @@ chain.apply(httpRequest);
 
 7.  创建请求可选项。
 
-<!-- @[HTTP_interceptor_case_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[HTTP_interceptor_case_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
 ```typescript
 // 创建请求可选项
@@ -723,7 +723,7 @@ let options: http.HttpRequestOptions = {
 
 8.  调用该对象的request()方法，传入HTTP请求的URL地址和可选参数，发起网络请求，按照实际业务需要，解析服务器响应事件。
 
-<!-- @[HTTP_interceptor_case_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[HTTP_interceptor_case_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 发起请求
@@ -741,7 +741,7 @@ httpRequest.request(EXAMPLE_URL, options, (err: BusinessError, res: http.HttpRes
 
 9.  调用destroy()方法销毁http请求。
 
-<!-- @[HTTP_interceptor_case_request_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[HTTP_interceptor_case_request_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
 ```typescript
 // 销毁请求
