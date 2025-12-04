@@ -8863,6 +8863,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/CookieManagement_LazyInitializeWebEngine.ets",
+				"functions":[
+					{
+						"end_line":42,
+						"name":"set_lazy_initialize_web_engine",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
