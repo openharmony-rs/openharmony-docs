@@ -42,12 +42,13 @@
 2. 从@kit.NetworkKit中导入netfirewall命名空间。
 
    <!-- @[net_firewall_case_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 从@kit.NetworkKit中导入netFirewall命名空间。
-import { netFirewall } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-```
+   
+   ``` TypeScript
+   // 从@kit.NetworkKit中导入netFirewall命名空间。
+   import { netFirewall } from '@kit.NetworkKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 3. 用户调用setNetFirewallPolicy方法，打开防火墙。
 
    <!-- @[net_firewall_set_net_firewall_policy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
