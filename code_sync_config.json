@@ -28840,5 +28840,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/windowmanager/launch-page-config.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StartWindow/sampleForStartWindow/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"startWindow",
+						"start_line":37
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StartWindow/EnhancedStartingWindow/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":41,
+						"name":"enhancedStartWindow",
+						"start_line":39
+					}
+				]
+			}
+		]
 	}
 ]
