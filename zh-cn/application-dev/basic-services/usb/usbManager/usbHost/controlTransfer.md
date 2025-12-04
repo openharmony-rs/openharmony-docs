@@ -35,7 +35,7 @@
 
 | 接口名                                                       | 描述     |
 | ------------------------------------------------------------ |--------|
-| usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout?: number): Promise&lt;number&gt; | 控制传输。  |
+| usbControlTransfer | 控制传输。  |
 
 更多关于设备管理和传输模式的详细接口介绍，请查阅[API参考文档](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md)。
 
@@ -140,7 +140,7 @@
    ```
 
 5. 数据传输。
-
+  ArkTs-Dyn示例：
     ```ts
     /*
       构造控制传输参数
@@ -155,6 +155,24 @@
     };
 
     usbManager.usbControlTransfer(pipe, param).then((ret: number) => {
+    console.info(`usbControlTransfer = ${ret}`);
+    })
+    ```
+  ArkTs-Sta示例：
+    ```ts
+    /*
+      构造控制传输参数
+    */
+    let param: usbManager.USBDeviceRequestParams = {
+      bmRequestType: 0x80,    //0x80指一次由设备到主机的标准请求命令
+      bRequest: 0x06,    //0x06指获取描述符
+      wValue:0x01 << 8 | 0,    //该值为2个字节，高字节指描述符类型，此处0x01指设备描述符；低字节指描述符索引，设备描述符不涉及，填0
+      wIndex: 0,    //索引值，可填0
+      wLength: 18,    //描述符的长度，此处18表示设备描述符长度，最大支持1024
+      data: new Uint8Array(18)
+    };
+
+    usbManager.usbControlTransfer(pipe, param).then((ret: int) => {
     console.info(`usbControlTransfer = ${ret}`);
     })
     ```

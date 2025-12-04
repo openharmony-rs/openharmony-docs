@@ -35,7 +35,7 @@
 
 | 接口名                                                                                                               | 描述                    |
 |-------------------------------------------------------------------------------------------------------------------|-----------------------|
-| bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, timeout ?: number): Promise&lt;number&gt;  | 批量传输。                 |
+| bulkTransfer  | 批量传输。                 |
 
 更多关于设备管理和传输模式的详细接口介绍，请查阅[API参考文档](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md)。
 
@@ -159,6 +159,35 @@
     });
     // 发送数据，在device信息中选取对应数据发送的endpoint来做数据传输。（endpoint.direction == 0）
     usbManager.bulkTransfer(pipe, outEndpoint, dataUint8Array, 15000).then((dataLength : number) => {
+      if (dataLength >= 0) {
+        console.info(`usb writeData result write length : ${dataLength}`);
+      } else {
+        console.error("usb writeData failed");
+      }
+    }).catch((error : BusinessError) => {
+      console.error(`usb writeData error : ${error}`);
+    });
+    ```
+
+      ```ts
+    /*
+      读取数据，在device信息中选取对应数据接收的endpoint来做数据传输
+    （endpoint.direction == 0x80）；dataUint8Array是要读取的数据，类型为Uint8Array。
+    */
+    let inEndpoint : usbManager.USBEndpoint = interface1.endpoints[2];
+    let outEndpoint : usbManager.USBEndpoint = interface1.endpoints[1];
+    let dataUint8Array : Uint8Array = new Uint8Array(1024);
+    usbManager.bulkTransfer(pipe, inEndpoint, dataUint8Array, 15000).then((dataLength : int) => {
+    if (dataLength >= 0) {
+      console.info(`usb readData result Length : ${dataLength}`);
+    } else {
+      console.error("usb readData failed");
+    }
+    }).catch((error : BusinessError) => {
+    console.error(`usb readData error : ${error}`);
+    });
+    // 发送数据，在device信息中选取对应数据发送的endpoint来做数据传输。（endpoint.direction == 0）
+    usbManager.bulkTransfer(pipe, outEndpoint, dataUint8Array, 15000).then((dataLength : int) => {
       if (dataLength >= 0) {
         console.info(`usb writeData result write length : ${dataLength}`);
       } else {
