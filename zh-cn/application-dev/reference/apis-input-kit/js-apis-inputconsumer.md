@@ -249,7 +249,7 @@ on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
-**设备行为差异**：该接口仅在Phone、Tablet、PC、大屏和座舱设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口仅在Phone、Tablet、PC/2in1、TV和car设备中可正常调用，在其他设备上返回801错误码。
 
 **参数：**
 
@@ -306,7 +306,7 @@ off(type: 'keyPressed', callback?: Callback&lt;KeyEvent&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
-**设备行为差异**：该接口仅在Phone、Tablet、PC、大屏和座舱设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口仅在Phone、Tablet、PC/2in1、TV和car设备中可正常调用，在其他设备上返回801错误码。
 
 **参数：**
 
