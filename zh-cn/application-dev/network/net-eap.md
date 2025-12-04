@@ -47,7 +47,7 @@
 
 1. 从@kit.NetworkKit中导入eap命名空间。
 
-<!-- @[eap_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
+   <!-- @[eap_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
 
 ``` TypeScript
 import { eap } from '@kit.NetworkKit';
@@ -65,7 +65,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
     以下注册服务器发送给客户端的报文类型（即eapCode=1，eapType=25）为例，若需注册其他类型，修改eapCode值后再调用[regCustomEapHandler](../reference/apis-network-kit/js-apis-net-eap.md#eapregcustomeaphandler)方法即可。
 
- <!-- @[eap_case_reply_custom_eapData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
+    <!-- @[eap_case_reply_custom_eapData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
  
  ``` TypeScript
  let netType = 1;
@@ -102,7 +102,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
  ```
 3. 若需取消定制化，可调用[unregCustomEapHandler](../reference/apis-network-kit/js-apis-net-eap.md#eapunregcustomeaphandler)方法。
 
-<!-- @[eap_case_unreg_custom_eapHandler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
+   <!-- @[eap_case_unreg_custom_eapHandler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
 
 ``` TypeScript
 let netType = 1;
@@ -136,7 +136,7 @@ let eapData = (eapData:eap.EapData):void => {
 1. 设备通过硬件接口，插入网线。
 2. 从@kit.NetworkKit中导入eap命名空间。
 
-<!-- @[eap_case_eth_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
+   <!-- @[eap_case_eth_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
 
 ``` TypeScript
 import { eap } from '@kit.NetworkKit';
@@ -145,7 +145,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 3. 当企业管理软件需要进行认证，调用[startEthEap](../reference/apis-network-kit/js-apis-net-eap.md#eapstartetheap)方法时，会发起802.1X认证流程。
 
-<!-- @[eap_case_start_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
+   <!-- @[eap_case_start_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
 
 ``` TypeScript
 const netId: number = 100;
@@ -180,7 +180,7 @@ const netId: number = 100;
 
 4. 当企业管理软件需要退出认证状态，调用[logOffEthEap](../reference/apis-network-kit/js-apis-net-eap.md#eaplogoffetheap)方法，即会发起802.1X取消认证流程。
 
-<!-- @[eap_case_log_off_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
+   <!-- @[eap_case_log_off_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
 
 ``` TypeScript
   try{
