@@ -42,27 +42,27 @@ MDNS管理的典型场景有：
 3. 调用addLocalService方法，添加本地服务。
 
    <!-- @[MDNS_add_local_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-  // 建立LocalService对象。
-  private localServiceInfo: mdns.LocalServiceInfo = {
-    serviceType: '_print._tcp',
-    serviceName: 'servicename',
-    port: 5555,
-    host: {
-      address: '127.0.0.1'
-    },
-    serviceAttribute: [{ key: '111', value: [1] }]
-  };
-// ···
-    let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    // addLocalService添加本地服务。
-    mdns.addLocalService(context, this.localServiceInfo).then((data) => {
-    // ···
-      console.info(`Local Service Added: ${JSON.stringify(data)}`);
-    })
-    // ···
-```
+   
+   ``` TypeScript
+   // 建立LocalService对象。
+   private localServiceInfo: mdns.LocalServiceInfo = {
+     serviceType: '_print._tcp',
+     serviceName: 'servicename',
+     port: 5555,
+     host: {
+       address: '127.0.0.1'
+     },
+     serviceAttribute: [{ key: '111', value: [1] }]
+   };
+   // ...
+     let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+     // addLocalService添加本地服务。
+     mdns.addLocalService(context, this.localServiceInfo).then((data) => {
+       // ...
+       hilog.info(0x0000, 'testTag', `Local Service Added: ${JSON.stringify(data)}`);
+     })
+     // ...
+   ```
 
 4. 通过resolveLocalService方法，解析本地网络的IP地址（非必要，根据需求使用）。
    
