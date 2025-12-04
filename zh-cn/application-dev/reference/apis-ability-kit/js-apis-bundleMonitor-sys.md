@@ -34,17 +34,21 @@ import { bundleMonitor } from '@kit.AbilityKit';
 
 ## BundleChangedEvent
 
+type BundleChangedEvent = 'add' | 'update' | 'remove'
+
 监听的事件类型。
+
+取值类型为下表类型中的一个。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：**  此接口为系统接口。
 
-| 名称       | 说明             |
-| ---------- | --------------- |
-| add        | 监听应用安装事件。   |
-| update     | 监听应用更新事件。   |
-| remove     | 监听应用卸载事件。   |
+| 类型       | 说明                                      |
+| ---------- | ----------------------------------------- |
+| 'add'      | 监听应用安装事件，值固定为'add'字符串。      |
+| 'update'   | 监听应用更新事件，值固定为'update'字符串。   |
+| 'remove'   | 监听应用卸载事件，值固定为'remove'字符串。   |
 
 ## bundleMonitor.on
 
@@ -87,11 +91,11 @@ let callbackFun = (bundleChangeInfo: bundleMonitor.BundleChangedInfo) => {
   console.info(`bundleName : ${bundleChangeInfo.bundleName} userId : ${bundleChangeInfo.userId}`);
 };
 try {
-    bundleMonitor.on('add', callbackFun);
+  bundleMonitor.on('add', callbackFun);
 } catch (errData) {
-    let message = (errData as BusinessError).message;
-    let errCode = (errData as BusinessError).code;
-    console.error(`errData is errCode:${errCode}  message:${message}`);
+  let message = (errData as BusinessError).message;
+  let errCode = (errData as BusinessError).code;
+  console.error(`errData is errCode:${errCode}  message:${message}`);
 }
 ```
 
@@ -136,10 +140,10 @@ let callbackFun = (bundleChangeInfo: bundleMonitor.BundleChangedInfo) => {
 };
 
 try {
-    bundleMonitor.off('add', callbackFun);
+  bundleMonitor.off('add', callbackFun);
 } catch (errData) {
-    let message = (errData as BusinessError).message;
-    let errCode = (errData as BusinessError).code;
-    console.error(`errData is errCode:${errCode}  message:${message}`);
+  let message = (errData as BusinessError).message;
+  let errCode = (errData as BusinessError).code;
+  console.error(`errData is errCode:${errCode}  message:${message}`);
 }
 ```
