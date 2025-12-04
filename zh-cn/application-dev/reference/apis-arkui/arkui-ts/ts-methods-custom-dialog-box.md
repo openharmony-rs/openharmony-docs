@@ -692,7 +692,6 @@ Ark-Sta示例：
 // xxx.ets
 import { Entry, Component, ClickEvent, BusinessError, Column, ColumnOptions, Button, Text, Color, Image, CustomDialog, wrapBuilder, CustomDialogController } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
-import hilog from '@ohos.hilog';
 
 @CustomDialog
 struct CustomDialogExample {
@@ -755,7 +754,6 @@ struct MyStateSample {
     .padding(10)
     .width("100%")
     .backgroundColor(Color.Pink)
-
   }
 }
 ```

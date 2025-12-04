@@ -231,10 +231,10 @@ closeToast(toastId: number): void
 | levelMode<sup>15+</sup>       | [LevelMode](#levelmode15枚举说明) | 否   | 设置菜单显示层级。<br />**说明：**<br />- 默认值：LevelMode.OVERLAY <br />- 当且仅当showInSubWindow属性设置为false时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 | levelUniqueId<sup>15+</sup>       | number | 否   | 设置页面级菜单需要显示的层级下的[节点 uniqueId](js-apis-arkui-frameNode.md#getuniqueid12)。<br/>取值范围：大于等于0的数字。<br />**说明：**<br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 | immersiveMode<sup>15+</sup>       | [ImmersiveMode](#immersivemode15枚举说明) | 否   | 设置页面内菜单蒙层效果。<br />**说明：**<br />- 默认值：ImmersiveMode.DEFAULT <br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
-| onWillAppear<sup>20+</sup> | ArkTS-Dyn: Callback&lt;void&gt; <br/>ArkTS-Sta: [VoidCallback](arkui-ts/ts-types.md#voidcallback12) | 否 | 菜单显示动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。 <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23|
-| onDidAppear<sup>20+</sup> | ArkTS-Dyn: Callback&lt;void&gt; <br/>ArkTS-Sta: [VoidCallback](arkui-ts/ts-types.md#voidcallback12) | 否 | 菜单弹出时的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br />2.快速点击弹出，关闭菜单时，onWillDisappear在onDidAppear前生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23|
-| onWillDisappear<sup>20+</sup> | ArkTS-Dyn: Callback&lt;void&gt; <br/>ArkTS-Sta: [VoidCallback](arkui-ts/ts-types.md#voidcallback12) | 否 | 菜单退出动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br /> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23|
-| onDidDisappear<sup>20+</sup> | ArkTS-Dyn: Callback&lt;void&gt; <br/>ArkTS-Sta: [VoidCallback](arkui-ts/ts-types.md#voidcallback12) | 否 | 菜单消失时的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23|
+| onWillAppear<sup>20+</sup> | ArkTS-Dyn: Callback&lt;void&gt; <br/>ArkTS-Sta: [VoidCallback](arkui-ts/ts-types.md#voidcallback12) | 否 | 菜单显示动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。 <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
+| onDidAppear<sup>20+</sup> | ArkTS-Dyn: Callback&lt;void&gt; <br/>ArkTS-Sta: [VoidCallback](arkui-ts/ts-types.md#voidcallback12) | 否 | 菜单弹出时的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br />2.快速点击弹出，关闭菜单时，onWillDisappear在onDidAppear前生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
+| onWillDisappear<sup>20+</sup> | ArkTS-Dyn: Callback&lt;void&gt; <br/>ArkTS-Sta: [VoidCallback](arkui-ts/ts-types.md#voidcallback12) | 否 | 菜单退出动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br /> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
+| onDidDisappear<sup>20+</sup> | ArkTS-Dyn: Callback&lt;void&gt; <br/>ArkTS-Sta: [VoidCallback](arkui-ts/ts-types.md#voidcallback12) | 否 | 菜单消失时的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## ActionMenuSuccessResponse
 
@@ -673,71 +673,73 @@ ArkTS-Sta示例:
 
 ```ts
 // xxx.ets
-import { Entry, Component, ClickEvent, BusinessError, Column, Button, Text, Color, $r, CustomDialog, ComponentContent, wrapBuilder } from '@ohos.arkui.component';
-import { UIContext, PromptAction, TargetInfo } from '@ohos.arkui.UIContext';
+import { Entry, Component, ClickEvent, Error, Row, Column, Button, Text, Color, $r, CustomDialog, ComponentContent, wrapBuilder, FontWeight, Margin, TransitionEffect } from '@ohos.arkui.component';
+import { UIContext } from '@ohos.arkui.UIContext';
 import { State } from '@ohos.arkui.stateManagement';
 import promptAction from '@ohos.promptAction';
-import hilog from '@ohos.hilog';
 
-class Params {
-  dialogController: promptAction.DialogController = new promptAction.DialogController();
-
-  constructor(dialogController: promptAction.DialogController) {
-    this.dialogController = dialogController;
+@Component
+struct CustomDialogExample {
+  build() {
+    Column() {
+      Text('Hello')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 36 } as Margin)
+      Button('点我关闭弹窗')
+        .onClick(() => {
+          let controller = this.getDialogController()
+          if (controller != undefined) {
+            controller.close()
+          } else {
+            console.info('state: no exist')
+          }
+        })
+      Button('点我获取状态')
+        .onClick(() => {
+          let controller = this.getDialogController()
+          if (controller != undefined) {
+            let state: promptAction.CommonState = controller.getState();
+            console.info('state:' + state); // 打印弹窗状态
+          } else {
+            console.info('state: no exist')
+          }
+        })
+    }.backgroundColor('#FFF0F0F0')
   }
 }
 
 @Builder
-function DialogBuilder(params: Params) {
-  Column() {
-    Button('点我关闭弹窗')
-      .onClick(() => {
-        params.dialogController.close()
-      }).margin(20)
-    Button('点我查询弹窗状态')
-      .onClick(() => {
-        console.info('DialogController.getState: ', params.dialogController.getState())
-      }).margin(20)
-  }
+function buildText() {
+  CustomDialogExample()
 }
 
 @Entry
 @Component
-struct MyStateSample {
-  private uiContext: UIContext = this.getUIContext();
-  private promptAction: PromptAction = this.uiContext.getPromptAction();
-  dialogController: promptAction.DialogController = new promptAction.DialogController()
+struct Index {
+  private dialogController: promptAction.DialogController = new promptAction.DialogController()
 
   build() {
-    Column() {
-      Text(`click me`)
-        .fontSize(15)
-        .backgroundColor(Color.Orange)
-        .margin(3)
-        .padding(3)
-        .borderWidth(1.0)
-        .onClick(() => {
-          try {
-            let contentNode = new ComponentContent<Params>(this.uiContext, wrapBuilder(DialogBuilder),
-              new Params(this.dialogController));
-            this.promptAction.openCustomDialogWithController(contentNode, this.dialogController)
-              .then(() => {
-                console.info('succeeded, dialogController.getState: ', this.dialogController.getState())
+    Row() {
+      Column() {
+        Button("click me")
+          .onClick(() => {
+            let uiContext = this.getUIContext();
+            let promptAction = uiContext.getPromptAction();
+            let contentNode = new ComponentContent(uiContext, wrapBuilder(buildText));
+            promptAction.openCustomDialogWithController(contentNode, this.dialogController, {
+              transition: TransitionEffect.OPACITY.animation({
+                duration: 3000
               })
-              .catch((err: Error) => {
-                console.info('openCustomDialogWithController error：' + err.code + '+' + err.message);
-              })
-          } catch (error) {
-            let message = (error as BusinessError).message;
-            let code = (error as BusinessError).code;
-            console.error(`openCustomDialogWithController error code is ${code}, message is ${message}`);
-          }
-          ;
-        })
-    }.borderWidth(1.0)
-    .padding(10)
-    .width("100%")
-    .backgroundColor(Color.Pink)
+            } as promptAction.BaseDialogOptions).then(() => {
+              console.info('succeeded')
+            }).catch((error: Error) => {
+              console.error(`OpenCustomDialogWithController args error code is ${error.code}, message is ${error.message}`);
+            })
+          })
+      }.width('100%')
+      .height('100%')
+    }.height('100%')
   }
 }
 ```
