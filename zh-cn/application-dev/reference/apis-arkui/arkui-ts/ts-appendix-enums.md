@@ -1183,6 +1183,8 @@ type Nullable\<T> = T | undefined
 
 ## TitleHeight<sup>9+</sup>
 
+设置标题栏的推荐高度。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
