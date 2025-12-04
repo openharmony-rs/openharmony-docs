@@ -218,6 +218,8 @@
 | [ArkUI_TextMenuItemId](#arkui_textmenuitemid) | ArkUI_TextMenuItemId | 文本菜单项id枚举。 |
 | [ArkUI_TextSpanType](#arkui_textspantype) | ArkUI_TextSpanType | 自定义文本选择菜单的文本识别类型枚举。 |
 | [ArkUI_TextResponseType](#arkui_textresponsetype) | ArkUI_TextResponseType | 自定义文本选择菜单的响应类型枚举。 |
+| [ArkUI_HoverEffect](#arkui_hovereffect) | ArkUI_HoverEffect | 组件被悬停时的效果。 |
+| [ArkUI_FocusPriority](#arkui_focuspriority) | ArkUI_FocusPriority | 应用程序内焦点管理的优先级级别。确定UI组件在交互期间接收焦点的顺序。 |
 
 ### 函数
 
@@ -3138,6 +3140,45 @@ GridItem样式枚举。
 | -- | -- |
 | GRID_ITEM_STYLE_NONE  = 0 | 无样式。 |
 | GRID_ITEM_STYLE_PLAIN  = 1  | 显示Hover、Press态样式。 |
+
+### ArkUI_HoverEffect
+
+```
+enum ArkUI_HoverEffect
+```
+
+**描述：**
+
+
+组件被悬停时的效果。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_HOVER_EFFECT_AUTO = 0 | 默认效果。 |
+| ARKUI_HOVER_EFFECT_SCALE  | 缩放效果。 |
+| ARKUI_HOVER_EFFECT_HIGHLIGHT  | 高亮效果。 |
+| ARKUI_HOVER_EFFECT_NONE  | 无效果。 |
+
+### ArkUI_FocusPriority
+
+```
+enum ArkUI_FocusPriority
+```
+
+**描述：**
+
+
+应用程序内焦点管理的优先级级别。确定UI组件在交互期间接收焦点的顺序。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_FOCUS_PRIORITY_AUTO  = 0 | 默认优先级。 |
+| ARKUI_FOCUS_PRIORITY_PRIOR   | 先前的优先级。 |
+| ARKUI_FOCUS_PRIORITY_PREVIOUS   | 上一个焦点优先级。 |
 
 ### ArkUI_MenuPolicy
 
