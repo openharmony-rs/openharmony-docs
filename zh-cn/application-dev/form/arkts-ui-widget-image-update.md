@@ -26,7 +26,7 @@
         hilog.info(DOMAIN_NUMBER, TAG, `tempDir: ${tempDir}`);
         let imgMap: Record<string, number> = {};
         try {
-          // 打开本地图片并获取其打开后的fd
+          // 打开本地图片并获取其打开后的fd, FormExtensionAbility进程销毁时释放
           let file = fileIo.openSync(tempDir + '/' + 'head.PNG');
           imgMap['imgBear'] = file.fd;
         } catch (e) {
