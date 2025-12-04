@@ -506,8 +506,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                 info.size = frameSize;
                 info.offset = 0;
                 info.pts = 0;
-                //输入最后一帧数据时，设置AVCODEC_BUFFER_FLAGS_EOS标识
-                //info.flags = AVCODEC_BUFFER_FLAGS_EOS;
+                // 输入最后一帧数据时，设置AVCODEC_BUFFER_FLAGS_EOS标识。
+                // info.flags = AVCODEC_BUFFER_FLAGS_EOS;
                 OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(buffer, &info);
                 if (setBufferRet != AV_ERR_OK) {
                     // 异常处理。
