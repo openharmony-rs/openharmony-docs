@@ -282,11 +282,11 @@ UDP与TCP流程大体类似，下面以TCP为例：
 1. 导入所需的socket模块。
 
    <!-- @[multicast_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
-
-``` TypeScript
-import { socket } from '@kit.NetworkKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+   
+   ``` TypeScript
+   import { socket } from '@kit.NetworkKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 2. 创建multicastSocket多播对象。
 
