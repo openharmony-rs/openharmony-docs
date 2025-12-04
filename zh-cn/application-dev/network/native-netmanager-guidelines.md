@@ -159,79 +159,79 @@ libnet_connection.so
 5. 在index.ets文件中对上述封装好的接口进行调用。
 
    <!-- @[build_project5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import testNetManager from 'libentry.so';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-enum ReturnCode {
-  SUCCESS = 0, // 操作成功
-  MISSING_PERMISSION = 201, // 缺少权限
-  PARAMETER_ERROR = 401, // 参数错误
-}
-
-// ···
-@Entry
-@Component
-struct Index {
-  @State message: string = ''; // 用于展示日志消息
-// ···
-
-  build() {
-    Column() { // 显示 Logger 输出的日志
-    // ···
-      Text(this.message)
-        .fontSize(16)
-        .fontColor(Color.Black)
-        .margin({ bottom: 10 })
-        .id('test-message') // 为测试消息设置 ID，便于测试获取内容
-
-      Button($r('app.string.GetDefaultNet'))
-        .onClick(() => {
-          this.GetDefaultNet();
-        })
-        // ···
-
-      Button($r('app.string.CodeNumber'))
-        .onClick(() => {
-          this.CodeNumber();
-        })
-        // ···
-    }.width('100%').height('100%').justifyContent(FlexAlign.Center);
-  }
-  
-  GetDefaultNet() {
-    let netId = testNetManager.NetId();
-    // ···
-      hilog.info(0x0000, 'testTag', 'The defaultNetId is [' + netId + ']');
-    // ···
-  }
-
-  CodeNumber() {
-    let testParam = 1;
-    // ···
-      let codeNumber = testNetManager.GetDefaultNet(testParam);
-      switch (codeNumber) {
-        case ReturnCode.SUCCESS:
-          hilog.info(0x0000, 'testTag', 'Test success. [' + codeNumber + ']');
-        // ···
-          break;
-        case ReturnCode.MISSING_PERMISSION:
-          hilog.info(0x0000, 'testTag', 'Missing permissions. [' + codeNumber + ']');
-        // ···
-          break;
-        case ReturnCode.PARAMETER_ERROR:
-          hilog.info(0x0000, 'testTag', 'Parameter error. [' + codeNumber + ']');
-        // ···
-          break;
-        default:
-          hilog.info(0x0000, 'testTag', 'Unexpected result: [' + codeNumber + ']');
-        // ···
-          break;
-      }
-    // ···
-  }
-```
+   
+   ``` TypeScript
+   import testNetManager from 'libentry.so';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   enum ReturnCode {
+     SUCCESS = 0, // 操作成功
+     MISSING_PERMISSION = 201, // 缺少权限
+     PARAMETER_ERROR = 401, // 参数错误
+   }
+   
+   // ...
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = ''; // 用于展示日志消息
+     // ...
+   
+     build() {
+       Column() { // 显示 Logger 输出的日志
+         // ...
+         Text(this.message)
+           .fontSize(16)
+           .fontColor(Color.Black)
+           .margin({ bottom: 10 })
+           .id('test-message') // 为测试消息设置 ID，便于测试获取内容
+   
+         Button($r('app.string.GetDefaultNet'))
+           .onClick(() => {
+             this.GetDefaultNet();
+           })
+             // ...
+   
+         Button($r('app.string.CodeNumber'))
+           .onClick(() => {
+             this.CodeNumber();
+           })
+             // ...
+       }.width('100%').height('100%').justifyContent(FlexAlign.Center);
+     }
+     
+     GetDefaultNet() {
+       let netId = testNetManager.NetId();
+       // ...
+         hilog.info(0x0000, 'testTag', 'The defaultNetId is [' + netId + ']');
+         // ...
+     }
+   
+     CodeNumber() {
+       let testParam = 1;
+       // ...
+         let codeNumber = testNetManager.GetDefaultNet(testParam);
+         switch (codeNumber) {
+           case ReturnCode.SUCCESS:
+             hilog.info(0x0000, 'testTag', 'Test success. [' + codeNumber + ']');
+             // ...
+             break;
+           case ReturnCode.MISSING_PERMISSION:
+             hilog.info(0x0000, 'testTag', 'Missing permissions. [' + codeNumber + ']');
+             // ...
+             break;
+           case ReturnCode.PARAMETER_ERROR:
+             hilog.info(0x0000, 'testTag', 'Parameter error. [' + codeNumber + ']');
+             // ...
+             break;
+           default:
+             hilog.info(0x0000, 'testTag', 'Unexpected result: [' + codeNumber + ']');
+             // ...
+             break;
+         }
+       // ...
+     }
+   ```
 6. 配置`CMakeLists.txt`，本模块需要用到的共享库是`libnet_connection.so`，在工程自动生成的`CMakeLists.txt`中的`target_link_libraries`中添加此共享库。
 
    > **注意：**
