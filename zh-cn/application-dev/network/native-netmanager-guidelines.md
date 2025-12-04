@@ -58,7 +58,7 @@ libnet_connection.so
 <!-- [CMAKE_list_add_lib_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/CMakeLists.txt) -->
 **头文件**
 
-<!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -69,7 +69,7 @@ libnet_connection.so
 
 1. 在源文件中编写调用该API的代码，并将结果封装成一个`napi_value`类型的值返回给Node.js环境。
 
-<!-- @[build_project1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[build_project1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // 获取默认网络的函数
@@ -111,7 +111,7 @@ static napi_value NetId(napi_env env, napi_callback_info info)
 
 2. 将通过napi封装好的`napi_value`类型对象初始化导出，通过外部函数接口，将以上两个函数暴露给JavaScript使用。
 
-<!-- @[build_project2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[build_project2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 EXTERN_C_START
@@ -130,7 +130,7 @@ EXTERN_C_END
 ```
 3. 将上一步中初始化成功的对象通过`RegisterEntryModule`函数，使用`napi_module_register`函数将模块注册到Node.js中。
 
-<!-- @[build_project3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[build_project3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_module demoModule = {
@@ -150,7 +150,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_mo
 - GetDefaultNet函数接受一个数字参数code，返回一个数字类型的值。
 - NetId函数不接受参数，返回一个数字类型的值。
 
-<!-- @[defining_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   <!-- @[defining_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
 export const GetDefaultNet: (code: number) => number;
@@ -158,7 +158,7 @@ export const NetId: () => number;
 ```
 5. 在index.ets文件中对上述封装好的接口进行调用。
 
-<!-- @[build_project5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[build_project5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import testNetManager from 'libentry.so';
@@ -234,11 +234,11 @@ struct Index {
 ```
 6. 配置`CMakeLists.txt`，本模块需要用到的共享库是`libnet_connection.so`，在工程自动生成的`CMakeLists.txt`中的`target_link_libraries`中添加此共享库。
 
-> **注意：**
->
-> 如图所示，在`add_library`中的`entry`是工程自动生成的`modename`。若要做修改，需和步骤3中`.nm_modname`保持一致。
+   > **注意：**
+   >
+   > 如图所示，在`add_library`中的`entry`是工程自动生成的`modename`。若要做修改，需和步骤3中`.nm_modname`保持一致。
 
-![netmanager-4.png](./figures/netmanager-4.png)
+   ![netmanager-4.png](./figures/netmanager-4.png)
 
 经过以上步骤，整个工程的搭建已经完成，接下来就可以连接设备运行工程进行日志查看了。
 
@@ -248,18 +248,18 @@ struct Index {
 
 2. 运行工程，设备上会弹出以下所示图片。
 
-- 点击`GetDefaultNet`时获取的是默认网络ID。
-- 点击`codeNumber`时获取的是接口返回的响应状态码。
+   - 点击`GetDefaultNet`时获取的是默认网络ID。
+   - 点击`codeNumber`时获取的是接口返回的响应状态码。
 
-![netmanager-1.png](./figures/netmanager-1.png)
+   ![netmanager-1.png](./figures/netmanager-1.png)
 
 3. 点击`GetDefaultNet`按钮，控制台会打印日志。
 
-![netmanager-2.png](./figures/netmanager-2.png)
+   ![netmanager-2.png](./figures/netmanager-2.png)
 
 4. 点击`codeNumber`按钮，控制台会打印相应的响应状态码。
 
-![netmanager-3.png](./figures/netmanager-3.png)
+   ![netmanager-3.png](./figures/netmanager-3.png)
 
 ## 相关实例
 
