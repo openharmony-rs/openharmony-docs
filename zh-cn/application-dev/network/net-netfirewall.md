@@ -86,66 +86,66 @@
 4. 用户通过addNetFirewallRule方法，添加防火墙规则。
 
    <!-- @[net_firewall_add_net_firewall_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 初始化具体的防火墙ip类型规则。
-let ipRule: netFirewall.NetFirewallRule = {
-  name: 'rule1',
-  description: 'rule1 description',
-  direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-  action: netFirewall.FirewallRuleAction.RULE_DENY,
-  type: netFirewall.NetFirewallRuleType.RULE_IP,
-  isEnabled: true,
-  appUid: 20001,
-  localIps: [
-    {
-      family: 1,
-      type: 1,
-      address: '10.10.1.1',
-      mask: 24
-    },{
-    family: 1,
-    type: 2,
-    startIp: '10.20.1.1',
-    endIp: '10.20.1.10'
-  }] as IpType[],
-  remoteIps:[
-    {
-      family: 1,
-      type: 1,
-      address: '20.10.1.1',
-      mask: 24
-    },{
-    family: 1,
-    type: 2,
-    startIp: '20.20.1.1',
-    endIp: '20.20.1.10'
-  }] as IpType[],
-  protocol: 6,
-  localPorts: [
-    {
-      startPort: 1000,
-      endPort: 1000
-    },{
-    startPort: 2000,
-    endPort: 2001
-  }] as IpPort[],
-  remotePorts: [
-    {
-      startPort: 443,
-      endPort: 443
-    }] as IpPort[],
-  userId: 100
-};
-// 添加防火墙规则。
-netFirewall.addNetFirewallRule(ipRule).then((result: number) => {
-// ···
-  console.info(`rule Id: ${result}`);
-}, (reason: BusinessError) => {
-// ···
-  console.error(`error: add firewall rule failed:  ${JSON.stringify(reason)}`);
-});
-```
+   
+   ``` TypeScript
+   // 初始化具体的防火墙ip类型规则。
+   let ipRule: netFirewall.NetFirewallRule = {
+     name: 'rule1',
+     description: 'rule1 description',
+     direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
+     action: netFirewall.FirewallRuleAction.RULE_DENY,
+     type: netFirewall.NetFirewallRuleType.RULE_IP,
+     isEnabled: true,
+     appUid: 20001,
+     localIps: [
+       {
+         family: 1,
+         type: 1,
+         address: '10.10.1.1',
+         mask: 24
+       },{
+       family: 1,
+       type: 2,
+       startIp: '10.20.1.1',
+       endIp: '10.20.1.10'
+     }] as IpType[],
+     remoteIps:[
+       {
+         family: 1,
+         type: 1,
+         address: '20.10.1.1',
+         mask: 24
+       },{
+       family: 1,
+       type: 2,
+       startIp: '20.20.1.1',
+       endIp: '20.20.1.10'
+     }] as IpType[],
+     protocol: 6,
+     localPorts: [
+       {
+         startPort: 1000,
+         endPort: 1000
+       },{
+       startPort: 2000,
+       endPort: 2001
+     }] as IpPort[],
+     remotePorts: [
+       {
+         startPort: 443,
+         endPort: 443
+       }] as IpPort[],
+     userId: 100
+   };
+   // 添加防火墙规则。
+   netFirewall.addNetFirewallRule(ipRule).then((result: number) => {
+     // ...
+     hilog.info(0x0000, 'testTag', `rule Id: ${result}`);
+   }, (reason: BusinessError) => {
+     // ...
+     hilog.error(0x0000, 'testTag', `error: add firewall rule failed:  ${JSON.stringify(reason)}`);
+   });
+   ```
 ## 针对域名联网访问控制支持拦截
 
 1. 设备通过硬件接口，插入网线。
