@@ -148,11 +148,11 @@ MDNS管理的典型场景有：
 6. 停止搜索局域网内的MDNS服务。
 
    <!-- @[stop_searching_MDNS_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 停止搜索局域网内的MDNS服务。
-discoveryService.stopSearchingMDNS();
-```
+   
+   ``` TypeScript
+   // 停止搜索局域网内的MDNS服务。
+   discoveryService.stopSearchingMDNS();
+   ```
 7. 取消订阅的MDNS服务。
 
    <!-- @[discovery_service_off_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
