@@ -3365,8 +3365,7 @@ Called when the safe browsing check result is received.
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onSafeBrowsingCheckResult((callback) => {
-            let jsonData = JSON.stringify(callback);
-            let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
+            let json: ThreatType = JSON.parse(JSON.stringify(callback)).threatType;
             console.info("onSafeBrowsingCheckResult: [threatType]= " + json);
           })
       }
