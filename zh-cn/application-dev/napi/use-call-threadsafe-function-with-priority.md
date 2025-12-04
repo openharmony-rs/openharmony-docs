@@ -138,10 +138,10 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
 
   <!-- @[napi_call_threadsafe_function_with_priority_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry/Index.d.ts) -->
   
-    ```ts
-    // index.d.ts
-    export const callThreadSafeWithPriority: (cb: (a: number, b: number) => number) => void;
-    ```
+  ``` TypeScript
+  // index.d.ts
+  export const callThreadSafeWithPriority: (cb: (a: number, b: number) => number) => void;
+  ```
 
 - 编译配置
 
