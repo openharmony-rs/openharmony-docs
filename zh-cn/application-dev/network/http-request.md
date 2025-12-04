@@ -562,12 +562,12 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 1.  导入HTTP请求拦截器所需模块。
 
     <!-- @[HTTP_interceptor_case_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->  
-
-```typescript
-import { http } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+    
+    ``` TypeScript
+    import { http } from '@kit.NetworkKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    ```
 
 2.  调用[createHttp()](../reference/apis-network-kit/js-apis-http.md#httpcreatehttp)方法，创建HttpRequest对象。
 
