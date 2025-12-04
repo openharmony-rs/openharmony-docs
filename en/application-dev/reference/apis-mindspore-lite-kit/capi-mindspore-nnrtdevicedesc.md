@@ -7,6 +7,10 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct NNRTDeviceDesc NNRTDeviceDesc
+```
+
 ## Overview
 
 Defines NNRt device information, including the device ID and device name.
