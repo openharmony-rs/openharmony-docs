@@ -1234,8 +1234,8 @@ Swiper导航点箭头枚举值。
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SWIPER_ARROW_HIDE = 0 | 不显示swiper中导航点箭头。 |
-| ARKUI_SWIPER_ARROW_SHOW | 显示swiper中导航点箭头。 |
-| ARKUI_SWIPER_ARROW_SHOW_ON_HOVER | 在hover状态下显示swiper中导航点箭头。 |
+| ARKUI_SWIPER_ARROW_SHOW = 1 | 显示swiper中导航点箭头。 |
+| ARKUI_SWIPER_ARROW_SHOW_ON_HOVER = 2 | 在hover状态下显示swiper中导航点箭头。 |
 
 ### ArkUI_SwiperNestedScrollMode
 
@@ -1253,7 +1253,7 @@ Swiper组件和父组件的嵌套滚动模式。
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0 | Swiper只自身滚动，不与父组件联动。 |
-| ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST | Swiper自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则Swiper触发边缘效果。 |
+| ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST = 1 | Swiper自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则Swiper触发边缘效果。 |
 
 ### ArkUI_PageFlipMode
 
@@ -1271,7 +1271,7 @@ Swiper组件鼠标滚轮翻页模式。
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0 | 鼠标滚轮连续滚动时翻多页，根据鼠标事件上报次数确定。 |
-| ARKUI_PAGE_FLIP_MODE_SINGLE | 一次翻页动画结束前不响应其他鼠标滚轮事件。 |
+| ARKUI_PAGE_FLIP_MODE_SINGLE = 1 | 一次翻页动画结束前不响应其他鼠标滚轮事件。 |
 
 ### ArkUI_SwiperAnimationMode
 
@@ -2478,8 +2478,8 @@ enum ArkUI_SwiperIndicatorType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SWIPER_INDICATOR_TYPE_DOT | 圆点指示器类型。 |
-| ARKUI_SWIPER_INDICATOR_TYPE_DIGIT | 数字指示器类型。 |
+| ARKUI_SWIPER_INDICATOR_TYPE_DOT = 0 | 圆点指示器类型。 |
+| ARKUI_SWIPER_INDICATOR_TYPE_DIGIT = 1 | 数字指示器类型。 |
 
 ### ArkUI_AnimationDirection
 
