@@ -344,15 +344,15 @@ multicast.addMembership(addr).then(() => {
 5. 发送数据，数据以广播的形式传输，同一多播组中已经开启消息message监听的多播对象都会接收到数据。
 
    <!-- @[multicast_worker_send](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
-
-``` TypeScript
-// 发送一条多播消息
-multicast.send({ data: 'Hello multicast group!', address: addr }).then(() => {
-  hilog.info(0x0000, 'testTag', 'Multicast: Message sent successfully');
-}).catch((err: BusinessError) => {
-  hilog.error(0x0000, 'testTag', `Multicast: Failed to send message - ${JSON.stringify(err)}`);
-});
-```
+   
+   ``` TypeScript
+   // 发送一条多播消息
+   multicast.send({ data: 'Hello multicast group!', address: addr }).then(() => {
+     hilog.info(0x0000, 'testTag', 'Multicast: Message sent successfully');
+   }).catch((err: BusinessError) => {
+     hilog.error(0x0000, 'testTag', `Multicast: Failed to send message - ${JSON.stringify(err)}`);
+   });
+   ```
 
 6. 关闭message消息的监听。
 
