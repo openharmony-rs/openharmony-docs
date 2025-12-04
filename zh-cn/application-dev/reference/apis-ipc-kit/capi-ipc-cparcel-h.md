@@ -138,7 +138,7 @@ void OH_IPCParcel_Destroy(OHIPCParcel *parcel)
 
 ### OH_IPCParcel_GetDataSize()
 
-``` C
+```C
 int OH_IPCParcel_GetDataSize(const OHIPCParcel *parcel)
 ```
 
