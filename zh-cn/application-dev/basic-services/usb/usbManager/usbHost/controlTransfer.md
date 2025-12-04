@@ -140,7 +140,8 @@
    ```
 
 5. 数据传输。
-  ArkTs-Dyn示例：
+
+   ArkTs-Dyn示例：
     ```ts
     /*
       构造控制传输参数
@@ -158,7 +159,8 @@
     console.info(`usbControlTransfer = ${ret}`);
     })
     ```
-  ArkTs-Sta示例：
+
+   ArkTs-Sta示例：
     ```ts
     /*
       构造控制传输参数
