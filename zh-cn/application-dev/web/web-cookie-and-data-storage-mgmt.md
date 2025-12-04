@@ -48,34 +48,6 @@ struct WebComponent {
 
 <!-- @[set_lazy_initialize_web_engine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/CookieManagement_LazyInitializeWebEngine.ets) -->
 
-``` TypeScript
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-webview.WebCookieManager.setLazyInitializeWebEngine(true);
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  aboutToAppear(): void {
-    try {
-      webview.WebCookieManager.configCookieSync('https://www.example.com', 'value=test');
-    } catch (error) {
-      console.error(
-        `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-    }
-  }
-
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 > **说明：**
 >
 > Cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#savecookieasync)进行强制落盘（PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieAsync，也不会将session cookie写入磁盘）。
