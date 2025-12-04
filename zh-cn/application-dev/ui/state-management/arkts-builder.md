@@ -2,10 +2,10 @@
 
 ArkUI提供轻量的UI元素复用机制\@Builder，其内部UI结构固定，仅与使用方进行数据传递。开发者可将重复使用的UI元素抽象成函数，在build函数中调用。
 
-在静态上下文中，需导入装饰器：
+在ArkTS-Sta上下文中，需导入装饰器：
 
 ```ts
-import { Builder } from '@ohos.arkui.component';
+import { Builder } from '@kit.ArkUI';
 ```
 
 \@Builder装饰的函数也称为“自定义构建函数”。
@@ -24,7 +24,7 @@ import { Builder } from '@ohos.arkui.component';
 >
 > 从API version 11开始，该装饰器支持在原子化服务中使用。
 >
-> 从API version 20开始，该装饰器支持在静态ArkTS中使用。
+> 从API version 22开始，该装饰器支持在ArkTS-Sta中使用。
 
 ## 装饰器使用说明
 
@@ -34,7 +34,7 @@ import { Builder } from '@ohos.arkui.component';
 
 示例：
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 @Entry
 @Component
@@ -65,11 +65,11 @@ struct BuilderDemo {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Builder, FontWeight } from '@ohos.arkui.component';
+import { Entry, Component, Column, Text, Builder, FontWeight } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -100,6 +100,9 @@ struct BuilderDemo {
 }
 
 ```
+示例效果图：
+
+![arkts-builder-private](figures/arkts-builder-private.png)
 
 使用方法：
 
@@ -113,7 +116,7 @@ struct BuilderDemo {
 
 示例：
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 @Builder
 function showTextBuilder() {
@@ -132,11 +135,11 @@ struct BuilderDemo {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Builder, FontWeight } from '@ohos.arkui.component';
+import { Entry, Component, Column, Text, Builder, FontWeight } from '@kit.ArkUI';
 
 @Builder
 function showTextBuilder() {
@@ -154,6 +157,9 @@ struct BuilderDemo {
   }
 }
 ```
+示例效果图：
+
+![arkts-builder-usage-global](figures/arkts-builder-usage-global.png)
 
 - 如果不涉及组件状态变化，建议使用全局的自定义构建函数。
 
@@ -176,11 +182,12 @@ struct BuilderDemo {
 
 调用\@Builder装饰的函数默认按值传递。当传递的参数为状态变量时，状态变量的改变不会引起\@Builder函数内的UI刷新。所以当使用状态变量的时候，推荐使用[按引用传递](#按引用传递参数)。
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
-@Builder function overBuilder(paramA1: string) {
+@Builder
+function overBuilder(paramA1: string) {
   Row() {
-    Text(`UseStateVarByValue: ${paramA1} `)
+    Text(`UseStateVarByValue: ${paramA1}`)
   }
 }
 @Entry
@@ -195,16 +202,16 @@ struct Parent {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Component, Column, Row, Text, Builder } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Row, Text, Builder, State } from '@kit.ArkUI';
 
-@Builder function overBuilder(paramA1: string) {
+@Builder
+function overBuilder(paramA1: string) {
   Row() {
-    Text(`UseStateVarByValue: ${paramA1} `)
+    Text(`UseStateVarByValue: ${paramA1}`)
   }
 }
 @Entry
@@ -218,12 +225,15 @@ struct Parent {
   }
 }
 ```
+示例效果图：
+
+![arkts-builder-usage-pass-by-value](figures/arkts-builder-usage-pass-by-value.png)
 
 ### 按引用传递参数
 
-按引用传递参数时，传递的参数可为状态变量，且状态变量的改变会引起\@Builder函数内的UI刷新。在静态上下文中，引用传递参数的类型必须interface或者@Observed修饰的class才能触发UI刷新。
+按引用传递参数时，传递的参数可为状态变量，且状态变量的改变会引起\@Builder函数内的UI刷新。在ArkTS-Sta上下文中，引用传递参数的类型必须为interface才能触发UI刷新。
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 class Tmp {
   paramA1: string = '';
@@ -232,7 +242,10 @@ class Tmp {
 @Builder
 function overBuilder(params: Tmp) {
   Row() {
-    Text(`UseStateVarByReference: ${params.paramA1} `)
+    Text(`UseStateVarByReference: ${params.paramA1}`)
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+      .textAlign(TextAlign.Center)
   }
 }
 
@@ -255,14 +268,13 @@ struct Parent {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, State, FontWeight, TextAlign } from '@kit.ArkUI';
 
-// 引用传递类型是interface或@Observed class时才能触发UI刷新。
+// 引用传递类型是interface才能触发UI刷新。
 interface Tmp {
   paramA1: string;
 }
@@ -270,7 +282,10 @@ interface Tmp {
 @Builder
 function overBuilder(params: Tmp) {
   Row() {
-    Text(`UseStateVarByReference: ${params.paramA1} `)
+    Text(`UseStateVarByReference: ${params.paramA1}`)
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+      .textAlign(TextAlign.Center)
   }
 }
 
@@ -292,10 +307,13 @@ struct Parent {
   }
 }
 ```
+示例效果图：
+
+![usage-pass-by-refer](figures/usage-pass-by-refer.gif)
 
 ## 限制条件
 
-1. \@Builder装饰的函数内部不允许修改参数值，否则，在动态上下文中框架会抛出运行时错误，在静态上下文中框架会编译报错。但开发者可以在使用@Builder的自定义组件中改变其参数。请参考[在@Builder装饰的函数内部修改入参内容](#在builder装饰的函数内部修改入参内容)。
+1. \@Builder装饰的函数内部不允许修改参数值，否则，在ArkTS-Dyn上下文中框架会抛出运行时错误，在ArkTS-Sta上下文中框架会编译报错。但开发者可以在使用@Builder的自定义组件中改变其参数。请参考[在@Builder装饰的函数内部修改入参内容](#在builder装饰的函数内部修改入参内容)。
 
 2. \@Builder按引用传递且仅传入一个参数时，才会触发动态渲染UI。请参考[按引用传递参数](#按引用传递参数)。
 
@@ -312,7 +330,7 @@ struct Parent {
 
 创建私有的`@Builder`函数，在`Column`中使用`this.builder()`调用。通过`aboutToAppear`生命周期函数和按钮的点击事件更新`builder_value`，实现UI的动态渲染。
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 @Entry
 @Component
@@ -360,12 +378,11 @@ struct PrivateBuilder {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, State } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -413,7 +430,7 @@ struct PrivateBuilder {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario1](figures/arkts-builder-usage-scenario1.gif)
 
@@ -421,7 +438,7 @@ struct PrivateBuilder {
 
 创建全局的\@Builder函数，在Column里面使用overBuilder()方式调用，通过以对象字面量的形式传递参数，无论是简单类型还是复杂类型，值的改变都会引起UI界面的刷新。
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 class ChildTmp {
   val: number = 1;
@@ -508,24 +525,21 @@ struct Parent {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem } from '@ohos.arkui.component';
-import { State, Observed } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, State, Observed } from '@kit.ArkUI';
 
-@Observed
-class ChildTmp {
-  val: number = 1;
+interface ChildTmp {
+  val: number;
 }
 
-@Observed
-class Tmp {
-  str_value: string = 'Hello';
-  num_value: number = 0;
-  tmp_value: ChildTmp = new ChildTmp();
-  arrayTmp_value: Array<ChildTmp> = [];
+interface Tmp {
+  str_value: string;
+  num_value: number;
+  tmp_value: ChildTmp;
+  arrayTmp_value: Array<ChildTmp>;
 }
 
 @Builder
@@ -573,7 +587,12 @@ function overBuilder(param: Tmp) {
 @Entry
 @Component
 struct Parent {
-  @State objParam: Tmp = new Tmp();
+  @State objParam: Tmp = {
+    str_value: 'Hello',
+    num_value: 0,
+    tmp_value: { val: 1 } as ChildTmp,
+    arrayTmp_value: [] as Array<ChildTmp>
+  } as Tmp;
 
   build() {
     Column() {
@@ -602,7 +621,7 @@ struct Parent {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario2](figures/arkts-builder-usage-scenario2.gif)
 
@@ -610,7 +629,7 @@ struct Parent {
 
 在该场景中，`@Builder`被用来展示Text组件，不会参与动态UI刷新。Text组件中值的变化是通过使用装饰器的特性，监听到值的改变触发的UI刷新，而不是通过`@Builder`的能力触发的。
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 class Tmp {
   str_value: string = 'Hello';
@@ -660,22 +679,20 @@ struct Parent {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem } from '@ohos.arkui.component';
-import { State, Observed } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, State, Observed } from '@kit.ArkUI';
 
-@Observed
-class Tmp {
-  str_value: string = 'Hello';
+interface Tmp {
+  str_value: string;
 }
 
 @Entry
 @Component
 struct Parent {
-  @State objParam: Tmp = new Tmp();
+  @State objParam: Tmp = { str_value: 'Hello' } as Tmp;
   @State label: string = 'World';
 
   @Builder
@@ -716,7 +733,7 @@ struct Parent {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario3](figures/arkts-builder-usage-scenario3.gif)
 
@@ -724,7 +741,7 @@ struct Parent {
 
 当参数类型为`customBuilder`时，可以传入定义的`@Builder`函数。
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 @Builder
 function overBuilder() {
@@ -779,12 +796,11 @@ struct CustomBuilderDemo {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, FontWeight, List } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, FontWeight, List, State } from '@kit.ArkUI';
 
 @Builder
 function overBuilder() {
@@ -839,15 +855,15 @@ struct CustomBuilderDemo {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario4](figures/arkts-builder-usage-scenario4.gif)
 
 ### 多层\@Builder函数嵌套
 
-在\@Builder函数内调用自定义组件或者其他\@Builder函数，以实现多个\@Builder嵌套使用的场景，要想实现最里面的\@Builder动态UI刷新功能，必须要保证每层调用\@Builder的地方使用按引用传递的方式。这里的\$$不是必须的参数形式，\$$也可以换成其他名称。
+在\@Builder函数内调用自定义组件或者其他\@Builder函数，以实现多个\@Builder嵌套使用的场景，要想实现最里面的\@Builder动态UI刷新功能，必须要保证每层调用\@Builder的地方使用按引用传递的方式。这里的`$$`不是必须的参数形式，`$$`也可以换成其他名称。
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 class Tmp {
   paramA1: string = '';
@@ -978,14 +994,13 @@ struct Parent {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight } from '@ohos.arkui.component';
-import { State, Prop } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight, State, PropRef } from '@kit.ArkUI';
 
-// 引用传递类型是interface或@Observed class时才能触发UI刷新。
+// 引用传递类型是interface时才能触发UI刷新。
 interface Tmp {
   paramA1: string;
 }
@@ -1010,7 +1025,7 @@ function parentBuilder($$: Tmp) {
 
 @Component
 struct HelloComponent {
-  @Prop message: string = '';
+  @PropRef message: string = '';
 
   build() {
     Row() {
@@ -1046,7 +1061,7 @@ function childBuilder($$: Tmp) {
 
 @Component
 struct HelloChildComponent {
-  @Prop message: string = '';
+  @PropRef message: string = '';
 
   build() {
     Row() {
@@ -1081,7 +1096,7 @@ function grandsonBuilder($$: Tmp) {
 
 @Component
 struct HelloGrandsonComponent {
-  @Prop message: string = '';
+  @PropRef message: string = '';
 
   build() {
     Row() {
@@ -1115,7 +1130,7 @@ struct Parent {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario5](figures/arkts-builder-usage-scenario5.gif)
 
@@ -1123,7 +1138,7 @@ struct Parent {
 
 由`@ObservedV2`和`@Trace`装饰的类对象实例具备深度观测属性变化的能力。在`@ComponentV2`装饰的自定义组件中，当调用全局Builder或局部Builder且使用值传递的方式传递参数时，修改`@Trace`装饰的对象属性可以触发UI刷新。
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 @ObservedV2
 class Info {
@@ -1165,8 +1180,8 @@ struct ChildPage {
 @Entry
 @ComponentV2
 struct ParentPage {
-  info1: Info = new Info("Tom", 25);
-  info2: Info = new Info("Tom", 25);
+  info1: Info = new Info('Tom', 25);
+  info2: Info = new Info('Tom', 25);
 
   @Builder
   privateBuilder() {
@@ -1202,11 +1217,11 @@ struct ParentPage {
       overBuilder(this.info2)
       ChildPage({ childInfo: this.info1 }) // 调用自定义组件
       ChildPage({ childInfo: this.info2 }) // 调用自定义组件
-      Button("change info1&info2")
+      Button('change info1&info2')
         .onClick(() => {
-          this.info1.name = "Cat"; // 修改Text1显示的info1的name值
+          this.info1.name = 'Cat'; // 修改Text1显示的info1的name值
           this.info1.age = 18; // 修改Text1显示的info1的age值
-          this.info2.name = "Cat"; // 修改Text2显示的info2的name值
+          this.info2.name = 'Cat'; // 修改Text2显示的info2的name值
           this.info2.age = 18; // 修改Text2显示的info2的age值
         })
     }
@@ -1216,12 +1231,11 @@ struct ParentPage {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Column, Text, Builder, Button, ClickEvent, ComponentV2 } from '@ohos.arkui.component';
-import { ObservedV2, Trace, Require, Param } from '@ohos.arkui.stateManagement';
+import { Entry, Column, Text, Builder, Button, ClickEvent, ComponentV2, ObservedV2, Trace, Require, Param } from '@kit.ArkUI';
 
 @ObservedV2
 class Info {
@@ -1262,8 +1276,8 @@ struct ChildPage {
 @Entry
 @ComponentV2
 struct ParentPage {
-  info1: Info = new Info("Tom", 25);
-  info2: Info = new Info("Tom", 25);
+  info1: Info = new Info('Tom', 25);
+  info2: Info = new Info('Tom', 25);
 
   @Builder
   privateBuilder() {
@@ -1296,11 +1310,11 @@ struct ParentPage {
       overBuilder(this.info2)
       ChildPage({ childInfo: this.info1 }) // 调用自定义组件
       ChildPage({ childInfo: this.info2 }) // 调用自定义组件
-      Button("change info1&info2")
+      Button('change info1&info2')
         .onClick((e: ClickEvent) => {
-          this.info1.name = "Cat"; // 修改Text1显示的info1的name值
+          this.info1.name = 'Cat'; // 修改Text1显示的info1的name值
           this.info1.age = 18; // 修改Text1显示的info1的age值
-          this.info2.name = "Cat"; // 修改Text2显示的info2的name值
+          this.info2.name = 'Cat'; // 修改Text2显示的info2的name值
           this.info2.age = 18; // 修改Text2显示的info2的age值
         })
     }
@@ -1309,16 +1323,16 @@ struct ParentPage {
   }
 }
 ```
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario6](figures/arkts-builder-usage-scenario6.gif)
 
 当通过引用传递方式向`@Builder`传递参数时，若参数为`@Local`装饰的对象，对该对象进行整体赋值会触发`@Builder`中UI刷新。
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 class Info {
-  name: string = "Tom";
+  name: string = 'Tom';
   age: number = 25;
 }
 
@@ -1351,8 +1365,8 @@ struct ChildPage {
 @Entry
 @ComponentV2
 struct ParentPage {
-  info1: Info = { name: "Tom", age: 25 };
-  @Local info2: Info = { name: "Tom", age: 25 };
+  info1: Info = { name: 'Tom', age: 25 };
+  @Local info2: Info = { name: 'Tom', age: 25 };
 
   @Builder
   privateBuilder() {
@@ -1388,10 +1402,10 @@ struct ParentPage {
       overBuilder({ name: this.info2.name, age: this.info2.age })
       ChildPage({ childInfo: this.info1 }) // 调用自定义组件
       ChildPage({ childInfo: this.info2 }) // 调用自定义组件
-      Button("change info1&info2")
+      Button('change info1&info2')
         .onClick(() => {
-          this.info1 = { name: "Cat", age: 18 }; // Text1不会刷新，原因是没有装饰器修饰监听不到值的改变
-          this.info2 = { name: "Cat", age: 18 }; // Text2会刷新，原因是有装饰器修饰，可以监听到值的改变
+          this.info1 = { name: 'Cat', age: 18 }; // Text1不会刷新，原因是没有装饰器修饰监听不到值的改变
+          this.info2 = { name: 'Cat', age: 18 }; // Text2会刷新，原因是有装饰器修饰，可以监听到值的改变
         })
     }
     .height('100%')
@@ -1399,7 +1413,95 @@ struct ParentPage {
   }
 }
 ```
-示例效果图
+**ArkTS-Sta:**
+```ts
+'use static'
+
+import { Entry, ComponentV2, Column, Text, Builder, Button, Flex, Require, Param, Local } from '@kit.ArkUI';
+
+interface Info {
+  name: string;
+  age: number;
+}
+
+@Builder
+function overBuilder(param: Info) {
+  Column() {
+    Text(`全局@Builder name: ${param.name}`)
+    Text(`全局@Builder age: ${param.age}`)
+  }
+  .width(230)
+  .height(40)
+  .margin(10)
+  .padding({ left: 20 })
+  .backgroundColor('#0d000000')
+  .borderRadius(20)
+}
+
+@ComponentV2
+struct ChildPage {
+  @Require @Param childInfo: Info;
+
+  build() {
+    Column() {
+      // 此处为引用传递方式
+      overBuilder({ name: this.childInfo.name, age: this.childInfo.age })
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct ParentPage {
+  info1: Info = { name: 'Tom', age: 25 } as Info;
+  @Local info2: Info = { name: 'Tom', age: 25 } as Info;
+
+  @Builder
+  privateBuilder() {
+    Column() {
+      Text(`局部@Builder name: ${this.info1.name}`)
+      Text(`局部@Builder age: ${this.info1.age}`)
+    }
+    .width(230)
+    .height(40)
+    .margin(10)
+    .backgroundColor('#0d000000')
+    .borderRadius(20)
+  }
+
+  build() {
+    Column() {
+      Flex() {
+        Column() {
+          Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1
+          Text(`info2: ${this.info2.name}  ${this.info2.age}`) // Text2
+        }
+      }
+      .width(230)
+      .height(40)
+      .margin(10)
+      .padding({ left: 60 })
+      .backgroundColor('#0d000000')
+      .borderRadius(20)
+
+      // 调用局部@Builder
+      this.privateBuilder()
+      // 调用全局@Builder, 此处为引用传递方式
+      overBuilder({ name: this.info2.name, age: this.info2.age })
+      ChildPage({ childInfo: this.info1 }) // 调用自定义组件
+      ChildPage({ childInfo: this.info2 }) // 调用自定义组件
+      Button('change info1&info2')
+        .onClick(() => {
+          this.info1 = { name: 'Cat', age: 18 }; // Text1不会刷新，原因是没有装饰器修饰监听不到值的改变
+          this.info2 = { name: 'Cat', age: 18 }; // Text2会刷新，原因是有装饰器修饰，可以监听到值的改变
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+示例效果图：
 
 ![arkts-builder-usage-scenario8](figures/arkts-builder-usage-scenario8.gif)
 
@@ -1407,7 +1509,7 @@ struct ParentPage {
 
 在跨组件的场景中调用全局\@Builder，通过按引用传递的方式传递参数，可以实现UI的动态刷新功能。
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 class Tmp {
   componentName: string = 'Child';
@@ -1500,14 +1602,13 @@ struct ReusableChildTwoPage {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight } from '@ohos.arkui.component';
-import { State, Prop } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight, State, Prop } from '@kit.ArkUI';
 
-// 引用传递类型是interface或@Observed class时才能触发UI刷新。
+// 引用传递类型是interface才能触发UI刷新。
 interface Tmp {
   componentName: string;
 }
@@ -1587,20 +1688,19 @@ struct ReusableChildTwoPage {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario7](figures/arkts-builder-usage-scenario7.gif)
 
-### 用变量存储@Builder函数（仅适用于静态上下文）
+### 用变量存储@Builder函数（仅适用于ArkTS-Sta上下文）
 
 使用变量存储@Builder函数，并在UI组件中使用。
 
-**ArkTS-ST**
+**ArkTS-Sta**
 ```ts
 'use static'
 
-import { Builder, Component, Column, Color, Entry, ForEach, Text } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Builder, Component, Column, Color, Entry, ForEach, Text, State } from '@kit.ArkUI';
 
 @Builder
 function MyBuilder(value: string, size: number) {
@@ -1630,17 +1730,19 @@ struct Index {
   }
 }
 ```
+示例效果图：
 
-## \@Builder支持函数泛型（仅适用于动态上下文）
+![arkts-builder-usage-value-save-by-builder](figures/arkts-builder-usage-value-save-by-builder.png)
+
+### \@Builder支持函数泛型（仅适用于ArkTS-Sta上下文）
 
 Builder函数可以支持泛型声明。
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Column, Component, Text, Resource, Color, ForEach, Builder, Row, TextAlign } from '@ohos.arkui.component';
-import { Observed } from '@ohos.arkui.stateManagement';
+import { Entry, Column, Component, Text, Resource, Color, ForEach, Builder, Row, TextAlign, Observed } from '@kit.ArkUI';
 
 type ItemBuilder<T> = @Builder (item: T) => void;
 
@@ -1657,7 +1759,7 @@ function forEachWithType<T>(arrayList: T[], closer: ItemBuilder<T>) {
 
 @Observed
 class ClassA {
-  stringData: string = "Hello";
+  stringData: string = 'Hello';
 }
 
 @Entry
@@ -1686,15 +1788,15 @@ export struct ExampleOne {
   }
 }
 ```
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario9](figures/arkts-builder-usage-scenario9.png)
 
 ### \@Builder支持状态变量刷新
 
-从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。在动态上下文中，`UIUtils.makeBinding()`的使用方法详情请参考[状态管理API文档（ArkTS-DT）](../../reference/apis-arkui/js-apis-StateManagement.md#makebinding20)；在静态上下文中，详情请参考[状态管理API文档（ArkTS-ST）](../../reference/apis-arkui/js-apis-stateManagement-static.md#makebinding)。
+从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。在ArkTS-Dyn上下文中，`UIUtils.makeBinding()`的使用方法详情请参考[状态管理API文档（ArkTS-Dyn）](../../reference/apis-arkui/js-apis-StateManagement.md#makebinding20)；在ArkTS-Sta上下文中，详情请参考[状态管理API文档（ArkTS-Sta）](../../reference/apis-arkui/js-apis-stateManagement-static.md#makebinding)。
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
 
@@ -1805,15 +1907,11 @@ struct Single {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import {
-  Entry, Text, TextAttribute, Column, ComponentV2, Button, ButtonAttribute, ClickEvent, Row, Color, CommonMethod,
-  Margin, HorizontalAlign, Builder, TextAlign, FlexAlign, applyStyles
-} from '@ohos.arkui.component';
-import { UIUtils, Binding, MutableBinding, State, ObservedV2, Prop, Trace, Local } from '@ohos.arkui.stateManagement';
+import { Entry, Text, TextAttribute, Column, ComponentV2, Button, ButtonAttribute, ClickEvent, Row, Color, CommonMethod, Margin, HorizontalAlign, Builder, TextAlign, FlexAlign, applyStyles, UIUtils, Binding, MutableBinding, State, ObservedV2, Prop, Trace, Local } from '@kit.ArkUI';
 
 @ObservedV2
 class ClassA {
@@ -1904,6 +2002,7 @@ struct Single {
   }
 }
 ```
+示例效果图：
 
 ![arkts-builder-refresh](figures/arkts-builder-refresh.gif)
 
@@ -1915,13 +2014,14 @@ struct Single {
 
 【反例】
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 class GlobalTmp {
   str_value: string = 'Hello';
 }
 
-@Builder function overBuilder(param: GlobalTmp, num: number) {
+@Builder
+function overBuilder(param: GlobalTmp, num: number) {
   Column() {
     Text(`str_value: ${param.str_value}`)
     Text(`num: ${num}`)
@@ -1952,19 +2052,18 @@ struct Parent {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Column, Text, Builder, Button, ClickEvent, Component, Line } from '@ohos.arkui.component';
-import { State, Observed } from '@ohos.arkui.stateManagement';
+import { Entry, Column, Text, Builder, Button, ClickEvent, Component, Line, State, Observed } from '@kit.ArkUI';
 
-@Observed
-class GlobalTmp {
-  str_value: string = 'Hello';
+interface GlobalTmp {
+  str_value: string;
 }
 
-@Builder function overBuilder(param: GlobalTmp, num: number) {
+@Builder
+function overBuilder(param: GlobalTmp, num: number) {
   Column() {
     Text(`str_value: ${param.str_value}`)
     Text(`num: ${num}`)
@@ -1974,7 +2073,7 @@ class GlobalTmp {
 @Entry
 @Component
 struct Parent {
-  @State objParam: GlobalTmp = new GlobalTmp();
+  @State objParam: GlobalTmp = { str_value: 'Hello' } as GlobalTmp;
   @State num: number = 0;
   build() {
     Column() {
@@ -1997,7 +2096,7 @@ struct Parent {
 
 【反例】
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 class GlobalTmp {
   str_value: string = 'Hello';
@@ -2005,7 +2104,8 @@ class GlobalTmp {
 class SecondTmp {
   num_value: number = 0;
 }
-@Builder function overBuilder(param: GlobalTmp, num: SecondTmp) {
+@Builder
+function overBuilder(param: GlobalTmp, num: SecondTmp) {
   Column() {
     Text(`str_value: ${param.str_value}`)
     Text(`num: ${num.num_value}`)
@@ -2036,22 +2136,20 @@ struct Parent {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Column, Text, Builder, Button, ClickEvent, Component, Line } from '@ohos.arkui.component';
-import { State, Observed } from '@ohos.arkui.stateManagement';
+import { Entry, Column, Text, Builder, Button, ClickEvent, Component, Line, State, Observed } from '@kit.ArkUI';
 
-@Observed
-class GlobalTmp {
-  str_value: string = 'Hello';
+interface GlobalTmp {
+  str_value: string;
 }
-@Observed
-class SecondTmp {
-  num_value: number = 0;
+interface SecondTmp {
+  num_value: number;
 }
-@Builder function overBuilder(param: GlobalTmp, num: SecondTmp) {
+@Builder
+function overBuilder(param: GlobalTmp, num: SecondTmp) {
   Column() {
     Text(`str_value: ${param.str_value}`)
     Text(`num: ${num.num_value}`)
@@ -2061,8 +2159,8 @@ class SecondTmp {
 @Entry
 @Component
 struct Parent {
-  @State strParam: GlobalTmp = new GlobalTmp();
-  @State numParam: SecondTmp = new SecondTmp();
+  @State strParam: GlobalTmp = { str_value: 'Hello' } as GlobalTmp;
+  @State numParam: SecondTmp = { num_value: 0 } as SecondTmp;
   build() {
     Column() {
       Text('通过调用@Builder渲染UI界面')
@@ -2086,13 +2184,14 @@ struct Parent {
 
 【正例】
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 class GlobalTmp {
   str_value: string = 'Hello';
   num_value: number = 0;
 }
-@Builder function overBuilder(param: GlobalTmp) {
+@Builder
+function overBuilder(param: GlobalTmp) {
   Column() {
     Text(`str_value: ${param.str_value}`)
     Text(`num: ${param.num_value}`)
@@ -2121,19 +2220,18 @@ struct Parent {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Column, Text, Builder, Button, ClickEvent, Component, Line } from '@ohos.arkui.component';
-import { State, Observed } from '@ohos.arkui.stateManagement';
+import { Entry, Column, Text, Builder, Button, ClickEvent, Component, Line, State, Observed } from '@kit.ArkUI';
 
-@Observed
-class GlobalTmp {
-  str_value: string = 'Hello';
-  num_value: number = 0;
+interface GlobalTmp {
+  str_value: string;
+  num_value: number;
 }
-@Builder function overBuilder(param: GlobalTmp) {
+@Builder
+function overBuilder(param: GlobalTmp) {
   Column() {
     Text(`str_value: ${param.str_value}`)
     Text(`num: ${param.num_value}`)
@@ -2143,7 +2241,7 @@ class GlobalTmp {
 @Entry
 @Component
 struct Parent {
-  @State objParam: GlobalTmp = new GlobalTmp();
+  @State objParam: GlobalTmp = { str_value: 'Hello', num_value: 0 } as GlobalTmp;
   build() {
     Column() {
       Text('通过调用@Builder渲染UI界面')
@@ -2161,6 +2259,9 @@ struct Parent {
   }
 }
 ```
+示例效果图：
+
+![arkts-builder-one-param](figures/arkts-builder-one-param.gif)
 
 ### 使用@ComponentV2装饰器触发动态刷新
 
@@ -2170,7 +2271,7 @@ struct Parent {
 
 在@ComponentV2装饰的自定义组件中，使用简单数据类型不可以触发UI的刷新。
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 @ObservedV2
 class ParamTmp {
@@ -2214,12 +2315,11 @@ struct PageBuilder {
 }
 ```
  
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Column, Text, Builder, ComponentV2, FontWeight } from '@ohos.arkui.component';
-import { Trace, ObservedV2, Local } from '@ohos.arkui.stateManagement';
+import { Entry, Column, Text, Builder, ComponentV2, FontWeight, Trace, ObservedV2, Local } from '@kit.ArkUI';
 
 @ObservedV2
 class ParamTmp {
@@ -2266,7 +2366,7 @@ struct PageBuilder {
 
 在@ComponentV2装饰器装饰的自定义组件中，只有使用@ObservedV2装饰的ParamTmp类和使用@Trace装饰的count属性才能触发UI刷新。
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 @ObservedV2
 class ParamTmp {
@@ -2352,12 +2452,11 @@ struct PageBuilder {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Column, Text, Builder, ComponentV2, FontWeight } from '@ohos.arkui.component';
-import { Trace, ObservedV2, Local } from '@ohos.arkui.stateManagement';
+import { Entry, Column, Text, Builder, ComponentV2, FontWeight, Trace, ObservedV2, Local } from '@kit.ArkUI';
 
 @ObservedV2
 class ParamTmp {
@@ -2442,23 +2541,27 @@ struct PageBuilder {
   }
 }
 ```
+示例效果图：
+
+![arkts-builder-usage-flash-by-ComponentV2](figures/arkts-builder-usage-flash-by-ComponentV2.gif)
 
 ### 在\@Builder装饰的函数内部修改入参内容
 
 【反例】
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 interface Temp {
   paramA: string;
 }
 
-@Builder function overBuilder(param: Temp) {
+@Builder
+function overBuilder(param: Temp) {
   Row() {
     Column() {
       Button(`overBuilder === ${param.paramA}`)
         .onClick(() => {
-          // 错误写法，不允许在@Builder装饰的函数内部修改参数值
+          // 错误写法，不允许在@Builder装饰的函数内部修改参数值，否则程序崩溃
           param.paramA = 'Yes';
       })
     }
@@ -2482,24 +2585,24 @@ struct Parent {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight, State } from '@kit.ArkUI';
 
-// 引用传递类型是interface或@Observed class时才能触发UI刷新。
+// 引用传递类型是interface时才能触发UI刷新。
 interface Temp {
   paramA: string;
 }
 
-@Builder function overBuilder(param: Temp) {
+@Builder
+function overBuilder(param: Temp) {
   Row() {
     Column() {
       Button(`overBuilder === ${param.paramA}`)
         .onClick((e: ClickEvent) => {
-          // 错误写法，不允许在@Builder装饰的函数内部修改参数值
+          // 错误写法，不允许在@Builder装饰的函数内部修改参数值，否则该参数值的修改不触发刷新
           param.paramA = 'Yes';
       })
     }
@@ -2525,13 +2628,14 @@ struct Parent {
 
 【正例】
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 interface Temp {
   paramA: string;
 }
 
-@Builder function overBuilder(param: Temp) {
+@Builder
+function overBuilder(param: Temp) {
   Row() {
     Column() {
       Button(`overBuilder === ${param.paramA}`)
@@ -2556,19 +2660,19 @@ struct Parent {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ListItem, FontWeight } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ListItem, FontWeight, State } from '@kit.ArkUI';
 
-// 引用传递类型是interface或@Observed class时才能触发UI刷新。
+// 引用传递类型是interface时才能触发UI刷新。
 interface Temp {
   paramA: string;
 }
 
-@Builder function overBuilder(param: Temp) {
+@Builder
+function overBuilder(param: Temp) {
   Row() {
     Column() {
       Button(`overBuilder === ${param.paramA}`)
@@ -2583,7 +2687,7 @@ struct Parent {
 
   build() {
     Column() {
-      overBuilder({paramA: this.label})
+      overBuilder({paramA: this.label} as Temp)
       Button('click me')
         .onClick((e: ClickEvent) => {
           this.label = 'ArkUI';
@@ -2599,7 +2703,7 @@ struct Parent {
 
 【反例】
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 class Tmp {
   name: string = 'Hello';
@@ -2654,12 +2758,11 @@ struct ParentPage {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight } from '@ohos.arkui.component';
-import { State, Prop, Observed } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight, State, PropRef, Observed } from '@kit.ArkUI';
 
 @Observed
 class Tmp {
@@ -2682,7 +2785,7 @@ function parentBuilder(params: Tmp) {
 
 @Component
 struct HelloComponent {
-  @Prop info: Tmp = new Tmp();
+  @PropRef info: Tmp = new Tmp();
 
   build() {
     Row() {
@@ -2719,7 +2822,7 @@ struct ParentPage {
 
 【正例】
 
-**ArkTS-DT:**
+**ArkTS-Dyn:**
 ```ts
 class Tmp {
   name: string = 'Hello';
@@ -2768,6 +2871,7 @@ struct ParentPage {
           this.nameValue = '李四';
           this.ageValue = 20;
         })
+        .margin(10)
     }
     .height('100%')
     .width('100%')
@@ -2775,14 +2879,13 @@ struct ParentPage {
 }
 ```
 
-**ArkTS-ST:**
+**ArkTS-Sta:**
 ```ts
 'use static'
 
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight } from '@ohos.arkui.component';
-import { State, Prop } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight, State, PropRef } from '@kit.ArkUI';
 
-// 引用传递类型是interface或@Observed class时才能触发UI刷新。
+// 引用传递类型是interface时才能触发UI刷新。
 interface Tmp {
   name: string;
   age: number;
@@ -2803,8 +2906,8 @@ function parentBuilder(params: Tmp) {
 
 @Component
 struct HelloComponent {
-  @Prop childName: string = '';
-  @Prop childAge: number = 0;
+  @PropRef childName: string = '';
+  @PropRef childAge: number = 0;
 
   build() {
     Row() {
@@ -2830,9 +2933,13 @@ struct ParentPage {
           this.nameValue = '李四';
           this.ageValue = 20;
         })
+        .margin(10)
     }
     .height('100%')
     .width('100%')
   }
 }
 ```
+示例效果图：
+
+![cannot-flash-in-component](figures/cannot-flash-in-component.gif)

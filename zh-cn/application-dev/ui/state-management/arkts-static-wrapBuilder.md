@@ -1,4 +1,4 @@
-# wrapBuilder：封装全局@Builder（ArkTS1.2）
+# wrapBuilder：封装全局@Builder（ArkTS-Sta）
 
   当在一个struct内使用多个全局@Builder函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用wrapBuilder封装全局@Builder。
 
@@ -6,16 +6,16 @@
 
 > **说明：**
 >
-> 从API version 20开始使用。
+> 从API version 22开始使用。
 
 > **说明：**
 >
-> 在ArkTS1.2中，可以将@Builder函数赋值给一个用@Builder装饰的函数类型的变量，参考[\@Builder: 用变量存储@Builder函数](./arkts-builder.md#用变量存储builder函数（arkts12）)
+> 在ArkTS-Sta中，可以将@Builder函数赋值给一个用@Builder装饰的函数类型的变量，参考[\@Builder: 用变量存储@Builder函数](./arkts-builder.md#用变量存储builder函数仅适用于arkts-sta上下文)
 
 ## 导入模块
 
 ```js
-import { WrappedBuilder, wrapBuilder } from '@ohos.arkui.component';
+import { WrappedBuilder, wrapBuilder } from '@kit.ArkUI';
 ```
 
 ## 接口说明
@@ -60,8 +60,7 @@ let builderArr: WrappedBuilder<@Builder (p1: string, p2: number) => void>[] = [w
 ```ts
 'use static'
 
-import { Builder, Component, Column, Entry, Row, Text, WrappedBuilder, wrapBuilder} from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Builder, Component, Column, Entry, Row, Text, WrappedBuilder, wrapBuilder, State } from '@kit.ArkUI';
 
 @Builder
 function MyBuilder(value: string, size: number) {
@@ -90,6 +89,10 @@ struct Index {
 }
 ```
 
+示例效果图：
+
+![arkts-sta-wrapbuilder.png](../figures/arkts-sta-wrapbuilder.png)
+
 ##  @Builder方法赋值给变量在UI语法中使用
 
 自定义组件Index使用`ForEach`进行不同`@Builder`函数的渲染，可以使用`builderArr`声明的`wrapBuilder`数组来实现不同的`@Builder`函数效果。整体代码会更加整洁。
@@ -97,9 +100,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Builder, Color, Column, Component, Entry, 
-         ForEach, Row, Text, WrappedBuilder, wrapBuilder } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Builder, Color, Column, Component, Entry, ForEach, Row, Text, WrappedBuilder, wrapBuilder, State } from '@kit.ArkUI';
 
 @Builder
 function MyBuilder(value: string, size: number) {
@@ -121,7 +122,8 @@ const builderArr: WrappedBuilder<@Builder (p1: string, p2: number) => void>[] = 
 @Entry
 @Component
 struct Index {
-  @Builder testBuilder() {
+  @Builder 
+  testBuilder() {
     // 使用ForEach展开WrappedBuilder列表
     ForEach(builderArr, (item: WrappedBuilder<@Builder (p1: string, p2: number) => void>) => {
       item.builder('Hello World', 30)
@@ -140,6 +142,10 @@ struct Index {
 }
 ```
 
+示例效果图：
+
+![arkts-sta-wrapbuilder-foreach.png](../figures/arkts-sta-wrapbuilder-foreach.png)
+
 ## 引用传递
 
 按引用传递参数时，传递的状态变量的改变会引起@Builder方法内的UI刷新。
@@ -147,35 +153,94 @@ struct Index {
 ```ts
 'use static'
 
-import { Builder, Button, ClickEvent, Column, Component,
-         Entry, Text, WrappedBuilder, wrapBuilder } from '@ohos.arkui.component';
-import { Observed, State } from '@ohos.arkui.stateManagement';
+import { Builder, Button, ClickEvent, Column, Component, Entry, Text, WrappedBuilder, wrapBuilder, Observed, State } from '@kit.ArkUI';
 
-@Observed
-class Tmp {
-  paramA2: string = 'hello';
+interface Tmp {
+  paramA2: string;
 }
 
-@Builder function overBuilder(param: () => Tmp) {
-  Column(){
-    Text(`wrapBuildervalue:${param().paramA2}`)
-  }
+@Builder 
+function overBuilder(param: Tmp) {
+  Column() {
+    Text(`wrapBuilder value: ${param.paramA2}`)
+  }.width('100%')
 }
 
-const wBuilder: WrappedBuilder<@Builder (param: () => Tmp) => void> = wrapBuilder(overBuilder);
+const wBuilder: WrappedBuilder<@Builder (param: Tmp) => void> = wrapBuilder(overBuilder);
 
 @Entry
 @Component
 struct Parent{
-  @State label: Tmp = new Tmp();
-  build(){
-    Column(){
-      // ArkTS1.2中，字面量声明需要以lambda函数传递
-      wBuilder.builder(() => { return {paramA2: this.label.paramA2};})
-      Button('Click me').onClick((e: ClickEvent) => {
-        this.label.paramA2 = 'ArkUI';
-      })
-    }
+  @State label: string = 'Hello';
+  build() {
+    Column() {
+      wBuilder.builder({ paramA2: this.label })
+      Button('Click me')
+        .onClick(() => {
+          this.label += '!';
+        })
+    }.width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-sta-wrapbuilder-reference.gif](../figures/arkts-sta-wrapbuilder-reference.gif)
+
+## 动态切换
+
+使用wrapBuilder封装全局@Builder，实现全局@Builder的动态切换。
+
+```ts
+'use static'
+
+import { Builder, Button, Column, ComponentV2, Entry, Text, WrappedBuilder, wrapBuilder, Local } from '@kit.ArkUI';
+
+class TextContent {
+  text: string = '';
+}
+
+@Builder
+function textBuilder(p: TextContent) {
+  Text(p.text)
+    .margin(31)
+}
+
+@Builder
+function buttonBuilder(p: TextContent) {
+  Button(p.text)
+    .margin(20)
+}
+
+let counter: number = 1;
+@Entry
+@ComponentV2
+struct MyApp {
+  @Local message: string = '';
+  @Local switchingBuilder: WrappedBuilder<@Builder (p: TextContent) => void> = wrapBuilder(textBuilder);
+  build() {
+    Column() {
+      Button('Click to change')
+        .onClick(() => {
+          counter++; // 每次点击按钮修改counter来动态改变全局@Builder
+          if(counter % 2 === 0) {
+            this.message += 'Hello';
+            this.switchingBuilder = wrapBuilder(buttonBuilder); // textBuilder--->buttonBuilder
+          } else {
+            this.message += 'World';
+            this.switchingBuilder = wrapBuilder(textBuilder); // buttonBuilder--->textBuilder
+          }
+        })
+        this.switchingBuilder.builder({ text: this.message })
+    }
+    .position({x: 120, y: 60})
+  }
+}
+```
+
+示例效果图：
+
+![dynamic-switch](../figures/dynamic-switch.gif)
+
+

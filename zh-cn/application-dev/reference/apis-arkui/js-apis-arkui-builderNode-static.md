@@ -72,7 +72,7 @@ build(builder: WrappedBuilder\<CustomBuilderT\<T>, arg: T): void
 
 | 参数名  | 类型                                                            | 必填 | 说明                                                                                   |
 | ------- | --------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-| builder | WrappedBuilder\<[CustomBuilderT\<T>](./arkui-ts/ts-types.md#custombuildertt20)> | 是   | 在构建节点树时所需的无状态UI方法[@Builder（ArkTS1.2）](../../ui/state-management/arkts-v1.2-builder.md)封装的[WrappedBuilder对象](../../ui/state-management/arkts-v1.2-wrapBuilder.md)。 |
+| builder | WrappedBuilder\<[CustomBuilderT\<T>](./arkui-ts/ts-types.md#custombuildertt20)> | 是   | 在构建节点树时所需的无状态UI方法[@Builder（ArkTS1.2）](../../ui/state-management/arkts-v1.2-builder.md)封装的[WrappedBuilder对象](../../ui/state-management/arkts-static-wrapBuilder.md)。 |
 | arg     |T                                                  |  是    | builder的入参。当前仅支持一个入参，且入参对象类型与@Builder定义的入参类型保持一致。                                          |
 
 ### build
@@ -96,7 +96,7 @@ build(builder: WrappedBuilder\<CustomBuilderT\<T>, arg: T , options: BuildOption
 
 | 参数名  | 类型                                                            | 必填 | 说明                                                                                    |
 | ------- | --------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-| builder | WrappedBuilder\<[CustomBuilderT\<T>](./arkui-ts/ts-types.md#custombuildertt20)> | 是   | 用于构建对应节点树的无状态UI方法[@Builder（ArkTS1.2）](../../ui/state-management/arkts-v1.2-builder.md)封装的[WrappedBuilder对象](../../ui/state-management/arkts-v1.2-wrapBuilder.md)。   |
+| builder | WrappedBuilder\<[CustomBuilderT\<T>](./arkui-ts/ts-types.md#custombuildertt20)> | 是   | 用于构建对应节点树的无状态UI方法[@Builder（ArkTS1.2）](../../ui/state-management/arkts-v1.2-builder.md)封装的[WrappedBuilder对象](../../ui/state-management/arkts-static-wrapBuilder.md)。   |
 | arg     |T                                           | 是   | builder的入参。                                                            |
 | options | [BuildOptions](./js-apis-arkui-builderNode.md#buildoptions12)  | 是   | 该值无效，默认支持@Builder参数不一致，且行为与@Builder的行为保持一致。                                        |
 
@@ -122,7 +122,7 @@ build(builder: WrappedBuilder\<CustomBuilderT\<T>, arg: T , options: BuildOption
 
 | 参数名  | 类型                                                            | 必填 | 说明                                                                                    |
 | ------- | --------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-| builder | WrappedBuilder\<[CustomBuilder](./arkui-ts/ts-types.md#custombuilder20)>  | 是   | 创建对应节点树的时候所需的无状态UI方法[@Builder（ArkTS1.2）](../../ui/state-management/arkts-v1.2-builder.md)封装的[WrappedBuilder对象](../../ui/state-management/arkts-v1.2-wrapBuilder.md)。   |
+| builder | WrappedBuilder\<[CustomBuilder](./arkui-ts/ts-types.md#custombuilder20)>  | 是   | 创建对应节点树的时候所需的无状态UI方法[@Builder（ArkTS1.2）](../../ui/state-management/arkts-v1.2-builder.md)封装的[WrappedBuilder对象](../../ui/state-management/arkts-static-wrapBuilder.md)。   |
 
 **示例：**
 

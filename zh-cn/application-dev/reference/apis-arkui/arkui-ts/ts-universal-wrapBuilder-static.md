@@ -1,6 +1,6 @@
 # wrapBuilder：封装全局@Builder
 
-当在一个struct内使用多个全局@Builder函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用wrapBuilder封装全局@Builder，帮助维护代码。开发指南见[wrapBuilder：封装全局@Builder](../../../ui/state-management/arkts-v1.2-wrapBuilder.md)。
+当在一个struct内使用多个全局@Builder函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用wrapBuilder封装全局@Builder，帮助维护代码。开发指南见[wrapBuilder：封装全局@Builder](../../../ui/state-management/arkts-static-wrapBuilder.md)。
 
 > **说明：**
 >
