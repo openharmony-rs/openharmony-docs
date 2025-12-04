@@ -266,40 +266,40 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 4. 发起HTTP流式请求，获取服务端数据
 
    <!-- @[request_in_stream_get_server_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-let streamInfo: http.HttpRequestOptions = {
-  method: http.RequestMethod.POST, // 可选，默认为http.RequestMethod.GET，用于向服务器获取数据，而POST方法用于向服务器上传数据。
-  // 开发者根据自身业务需要添加header字段。
-  header: {
-    'Content-Type': 'application/json'
-  },
-  // 当使用POST请求时此字段用于传递请求体内容，具体格式与服务端协商确定。
-  extraData: 'data to send', // 请求体内容
-  expectDataType: http.HttpDataType.STRING, // 可选，指定返回数据的类型。
-  usingCache: true,  // 可选，默认为true。
-  priority: 1, // 可选，默认为1。
-  connectTimeout: 60000, // 可选，默认为60000ms。
-  readTimeout: 60000, // 可选，默认为60000ms。若传输的数据较大，需要较长的时间，建议增大该参数以保证数据传输正常终止。
-  usingProtocol: http.HttpProtocol.HTTP1_1 // 可选，协议类型默认值由系统自动指定。
-};
-
-// 填写HTTP请求的URL地址，可以带参数也可以不带参数。URL地址需要开发者自定义。请求的参数可以在extraData中指定。
-httpRequest.requestInStream('EXAMPLE_URL', streamInfo)
-  .then((data: number) => {
-    // ···
-    hilog.info(0x0000, 'testTag', `requestInStream OK!`);
-    hilog.info(0x0000, 'testTag', `ResponseCode : ${JSON.stringify(data)}`);
-    // 取消订阅步骤3中订阅的事件，并调用destroy方法主动销毁。
-    this.destroyRequest(httpRequest);
-    // ···
-  }).catch((err: Error) => {
-    // ···
-    hilog.error(0x0000, 'testTag', `requestInStream ERROR : err = ${JSON.stringify(err)}`);
-    // 取消订阅步骤3中订阅的事件，并调用destroy方法主动销毁。
-    this.destroyRequest(httpRequest);
-  })
-```
+   
+   ``` TypeScript
+   let streamInfo: http.HttpRequestOptions = {
+     method: http.RequestMethod.POST, // 可选，默认为http.RequestMethod.GET，用于向服务器获取数据，而POST方法用于向服务器上传数据。
+     // 开发者根据自身业务需要添加header字段。
+     header: {
+       'Content-Type': 'application/json'
+     },
+     // 当使用POST请求时此字段用于传递请求体内容，具体格式与服务端协商确定。
+     extraData: 'data to send', // 请求体内容
+     expectDataType: http.HttpDataType.STRING, // 可选，指定返回数据的类型。
+     usingCache: true,  // 可选，默认为true。
+     priority: 1, // 可选，默认为1。
+     connectTimeout: 60000, // 可选，默认为60000ms。
+     readTimeout: 60000, // 可选，默认为60000ms。若传输的数据较大，需要较长的时间，建议增大该参数以保证数据传输正常终止。
+     usingProtocol: http.HttpProtocol.HTTP1_1 // 可选，协议类型默认值由系统自动指定。
+   };
+   
+   // 填写HTTP请求的URL地址，可以带参数也可以不带参数。URL地址需要开发者自定义。请求的参数可以在extraData中指定。
+   httpRequest.requestInStream('EXAMPLE_URL', streamInfo)
+     .then((data: number) => {
+       // ...
+       hilog.info(0x0000, 'testTag', `requestInStream OK!`);
+       hilog.info(0x0000, 'testTag', `ResponseCode : ${JSON.stringify(data)}`);
+       // 取消订阅步骤3中订阅的事件，并调用destroy方法主动销毁。
+       this.destroyRequest(httpRequest);
+       // ...
+     }).catch((err: Error) => {
+       // ...
+       hilog.error(0x0000, 'testTag', `requestInStream ERROR : err = ${JSON.stringify(err)}`);
+       // 取消订阅步骤3中订阅的事件，并调用destroy方法主动销毁。
+       this.destroyRequest(httpRequest);
+     })
+   ```
 
 
 5. 取消步骤3中订阅HTTP流式响应事件，并调用destroy()方法销毁流式HTTP请求
