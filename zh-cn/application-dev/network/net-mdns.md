@@ -30,7 +30,7 @@ MDNS管理的典型场景有：
 1. 设备连接WiFi。
 2. 从@kit.NetworkKit里导入mdns、错误码、以及common命名空间。
 
-<!-- @[MDNS_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[MDNS_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 从@kit.NetworkKit中导入mdns命名空间。
@@ -40,7 +40,7 @@ import { common } from '@kit.AbilityKit';
 ```
 3. 调用addLocalService方法，添加本地服务。
 
-<!-- @[MDNS_add_local_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[MDNS_add_local_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
   // 建立LocalService对象。
@@ -65,7 +65,7 @@ import { common } from '@kit.AbilityKit';
 
 4. 通过resolveLocalService方法，解析本地网络的IP地址（非必要，根据需求使用）。
    
-<!-- @[MDNS_resolve_local_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[MDNS_resolve_local_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // resolveLocalService解析本地服务对象（非必要，根据需求使用）。
@@ -77,7 +77,7 @@ mdns.resolveLocalService(context, this.localServiceInfo).then((data: mdns.LocalS
 
 5. 通过removeLocalService方法，移除本地服务。
 
-<!-- @[MDNS_remove_local_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[MDNS_remove_local_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // removeLocalService移除本地服务。
@@ -92,7 +92,7 @@ mdns.removeLocalService(context, this.localServiceInfo).then((data: mdns.LocalSe
 1. 设备连接WiFi。
 2. 从@kit.NetworkKit里导入mdns的命名空间。
 
-<!-- @[MDNS_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[MDNS_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 从@kit.NetworkKit中导入mdns命名空间。
@@ -102,7 +102,7 @@ import { common } from '@kit.AbilityKit';
 ```
 3. 创建DiscoveryService对象，用于发现指定服务类型的MDNS服务。
 
-<!-- @[create_discovery_service_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[create_discovery_service_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -115,7 +115,7 @@ let discoveryService = mdns.createDiscoveryService(context, serviceType);
   
 4. 订阅MDNS服务发现相关状态变化。
 
- <!-- @[discovery_service_on_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[discovery_service_on_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
  
  ``` TypeScript
  // 订阅MDNS服务发现相关状态变化。
@@ -137,7 +137,7 @@ let discoveryService = mdns.createDiscoveryService(context, serviceType);
 
 5. 启动搜索局域网内的MDNS服务。
 
-<!-- @[start_searching_MDNS_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[start_searching_MDNS_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 启动搜索局域网内的MDNS服务。
@@ -145,7 +145,7 @@ discoveryService.startSearchingMDNS();
 ```
 6. 停止搜索局域网内的MDNS服务。
 
-<!-- @[stop_searching_MDNS_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[stop_searching_MDNS_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 停止搜索局域网内的MDNS服务。
@@ -153,7 +153,7 @@ discoveryService.stopSearchingMDNS();
 ```
 7. 取消订阅的MDNS服务。
 
-<!-- @[discovery_service_off_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[discovery_service_off_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 取消订阅的MDNS服务。
