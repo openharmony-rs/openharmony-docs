@@ -322,24 +322,24 @@ multicast.addMembership(addr).then(() => {
 4. 开启消息message监听。
 
    <!-- @[multicast_worker_on_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
-
-``` TypeScript
-// 开启监听消息数据，将接收到的ArrayBuffer类型数据转换为String。
-class SocketInfo {
-  public message: ArrayBuffer = new ArrayBuffer(1);
-  public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
-}
-multicast.on('message', (data: SocketInfo) => {
-  hilog.info(0x0000, 'testTag', '接收的数据: ' + JSON.stringify(data))
-  const uintArray = new Uint8Array(data.message)
-  let str = ''
-  for (let i = 0; i < uintArray.length; ++i) {
-    str += String.fromCharCode(uintArray[i])
-  }
-  hilog.info(0x0000, 'testTag', str)
-  // ···
-});
-```
+   
+   ``` TypeScript
+   // 开启监听消息数据，将接收到的ArrayBuffer类型数据转换为String。
+   class SocketInfo {
+     public message: ArrayBuffer = new ArrayBuffer(1);
+     public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
+   }
+   multicast.on('message', (data: SocketInfo) => {
+     hilog.info(0x0000, 'testTag', '接收的数据: ' + JSON.stringify(data))
+     const uintArray = new Uint8Array(data.message)
+     let str = ''
+     for (let i = 0; i < uintArray.length; ++i) {
+       str += String.fromCharCode(uintArray[i])
+     }
+     hilog.info(0x0000, 'testTag', str)
+     // ...
+   });
+   ```
 
 5. 发送数据，数据以广播的形式传输，同一多播组中已经开启消息message监听的多播对象都会接收到数据。
 
