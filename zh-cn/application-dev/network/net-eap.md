@@ -181,14 +181,16 @@
 4. 当企业管理软件需要退出认证状态，调用[logOffEthEap](../reference/apis-network-kit/js-apis-net-eap.md#eaplogoffetheap)方法，即会发起802.1X取消认证流程。
 
    <!-- @[eap_case_log_off_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
-
-``` TypeScript
-  try{
-    eap.logOffEthEap(netId);
-    hilog.error(0x0000, 'testTag', 'logOffEthEap success');
-    // ···
-  } catch (err) {
-    // ···
-    hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ', errMessage: ' + err.message);
-  }
-```
+   
+   ``` TypeScript
+   const netId: number = 100;
+   // ...
+     try{
+       eap.logOffEthEap(netId);
+       hilog.error(0x0000, 'testTag', 'logOffEthEap success');
+       // ...
+     } catch (err) {
+       // ...
+       hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ', errMessage: ' + err.message);
+     }
+   ```
