@@ -62,7 +62,7 @@ static napi_value GetUkeyPinAuthState(napi_env env, napi_callback_info info)
         (uint8_t *)resourceId
     };
     struct OH_Huks_ExternalCryptoParamSet *pinStateParamSet = nullptr;
-    bool authState = true;
+    OH_Huks_ExternalPinAuthState authState = OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH;
     OH_Huks_Result ohResult;
     do {
         ohResult = InitParamSet(&pinStateParamSet, g_getPinStateParamsTest,
