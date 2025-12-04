@@ -825,7 +825,7 @@ reminderAgentManager.updateReminder(reminderId, timer).then(() => {
 
 cancelReminderOnDisplay(reminderId: number): Promise\<void>
 
-仅取消正在通知中心内显示的通知卡片，不取消代理提醒数据。例如：每天重复的提醒，该提醒正在通知中心内显示，该接口将通知从通知中心内取消，并且会按照设定的周期，在第二天再次提醒。
+取消当前通知中心内显示的通知卡片，不取消代理提醒数据。例如：每天重复的提醒，该提醒正在通知中心内显示，该接口将通知从通知中心内取消，并且会按照设定的周期，在第二天再次提醒。
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
