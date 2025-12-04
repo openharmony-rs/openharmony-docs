@@ -74,16 +74,89 @@ NavBar的内容区可以通过两种方式指定：
   <!-- @[NavigationDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExample.ets) -->
   
   ``` TypeScript
-      Navigation(this.stack) {
-        Stack({ alignContent: Alignment.Center }) {
-          // ...
+  @Entry
+  @Component
+  struct NavigationDemo {
+    @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
+    private listArray: Array<string> = ['WLAN', 'Bluetooth', 'Personal Hotspot', 'Connect & Share'];
+    context = this.getUIContext().getHostContext();
+    build() {
+      Column() {
+        Navigation(this.navPathStack) {
+          // $r('app.string.enterKeyWordsToSearch')需要替换为开发者所需的字符串资源文件
+          TextInput({ placeholder: $r('app.string.enterKeyWordsToSearch') })
+            .width('90%')
+            .height(40)
+            .margin({ bottom: 10 })
+  
+          // 通过List定义导航的一级界面
+          List({ space: 12, initialIndex: 0 }) {
+            ForEach(this.listArray, (item: string) => {
+              ListItem() {
+                Row() {
+                  Row() {
+                    Text(`${item.slice(0, 1)}`)
+                      .fontColor(Color.White)
+                      .fontSize(14)
+                      .fontWeight(FontWeight.Bold)
+                  }
+                  .width(30)
+                  .height(30)
+                  .backgroundColor('#a8a8a8')
+                  .margin({ right: 20 })
+                  .borderRadius(20)
+                  .justifyContent(FlexAlign.Center)
+  
+                  Column() {
+                    Text(item)
+                      .fontSize(16)
+                      .margin({ bottom: 5 })
+                  }
+                  .alignItems(HorizontalAlign.Start)
+  
+                  Blank()
+  
+                  Row()
+                    .width(12)
+                    .height(12)
+                    .margin({ right: 15 })
+                    .border({
+                      width: { top: 2, right: 2 },
+                      color: 0xcccccc
+                    })
+                    .rotate({ angle: 45 })
+                }
+                .borderRadius(15)
+                .shadow({ radius: 100, color: '#ededed' })
+                .width('90%')
+                .alignItems(VerticalAlign.Center)
+                .padding({ left: 15, top: 15, bottom: 15 })
+                .backgroundColor(Color.White)
+              }
+              .width('100%')
+              .onClick(() => {
+                // $r('app.string.detailsPageParameters')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“详情页面参数”
+                this.navPathStack.pushPathByName(`${item}`,
+                  // 将name指定的NaviDestination页面信息入栈,传递的参数为param
+                  this.context!.resourceManager.getStringSync($r('app.string.detailsPageParameters').id));
+              })
+            }, (item: string): string => item)
+          }
+          .listDirection(Axis.Vertical)
+          .edgeEffect(EdgeEffect.Spring)
+          .sticky(StickyStyle.Header)
+          .chainAnimation(false)
+          .width('100%')
         }
         .width('100%')
-        .height('100%')
+        .mode(NavigationMode.Auto)
+        // $r('app.string.settings')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“设置”
+        .title($r('app.string.settings')) // 设置标题文字
       }
-      .width('100%')
-      .height('100%')
-      .title('Navigation')
+      .size({ width: '100%', height: '100%' })
+      .backgroundColor(0xf4f4f5)
+    }
+  }
   ```
 
  - 方式二：从API version 20开始，使用[主页类型NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigation20)将某个NavDestination直接指定为导航栏内容，此方法需要配置路由表，配置方式请参考[路由表](./arkts-navigation-cross-package.md#路由表能力对比)。
@@ -216,10 +289,10 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
      'icon': 'ets/pages/navigation/template1/image/ic_public_highlights.svg',
      'action': () => {}
    };
-   let toolBar: ToolbarItem[] = [toolTmp,toolTmp,toolTmp];
+   let tooBar: ToolbarItem[] = [toolTmp,toolTmp,toolTmp];
    // ...
          Navigation(this.navPathStack) {
            // ...
          }
-         .toolbarConfiguration(toolBar)
+         .toolbarConfiguration(tooBar)
    ```

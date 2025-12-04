@@ -35,7 +35,7 @@ Navigation提供[系统路由表](#系统路由表)和[自定义路由表](#自�
     {
       "module": {
         // ...
-        "routerMap": "$profile:router_map",
+        "routerMap": "$profile:route_map",
         // ...
       }
     }
@@ -284,7 +284,7 @@ export struct pageOneTmp {
 {
   "module": {
     // ...
-    "routerMap": "$profile:router_map",
+    "routerMap": "$profile:route_map",
     // ...
   }
 }
