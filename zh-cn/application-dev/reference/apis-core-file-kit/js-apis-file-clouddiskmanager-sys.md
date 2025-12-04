@@ -47,7 +47,6 @@ SyncFolderAccessor的构造函数，用于获取SyncFolderAccessor类的实例�
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { cloudDiskManager } from '@kit.CoreFileKit';
 
   @Entry
   @Component
@@ -104,7 +103,6 @@ getAllSyncFolders(): Promise&lt;Array&lt;SyncFolder&gt;&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { cloudDiskManager } from '@kit.CoreFileKit';
 const TAG: string = '[cloudDiskManager]';
 
 try {
