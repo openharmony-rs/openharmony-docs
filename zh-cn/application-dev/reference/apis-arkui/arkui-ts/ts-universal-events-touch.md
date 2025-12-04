@@ -6,15 +6,15 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-由手指在组件上按下、滑动或抬起时触发。
+由手指、手写笔或鼠标左键在组件上按下、滑动或抬起时触发。
 
 > **说明：**
 >
-> 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 事件分发可参考[事件交互流程](../../../ui/arkts-interaction-basic-principles.md#事件交互流程)，手势事件处理流程可参考[多层级手势事件](../../../ui/arkts-gesture-events-multi-level-gesture.md)。
+> - 事件分发可参考[事件交互流程](../../../ui/arkts-interaction-basic-principles.md#事件交互流程)，手势事件处理流程可参考[多层级手势事件](../../../ui/arkts-gesture-events-multi-level-gesture.md)。
 >
-> 如需绑定手势事件可参考[绑定手势方法](./ts-gesture-settings.md)。
+> - 如需绑定手势事件可参考[绑定手势方法](./ts-gesture-settings.md)。
 
 ## onTouch
 
