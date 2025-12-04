@@ -704,11 +704,11 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 6.  调用apply()方法，将当前配置好的拦截器链附加到httpRequest中。
 
     <!-- @[HTTP_interceptor_case_apply](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
-```typescript
-// 将当前配置好的拦截器链附加到httpRequest中
-chain.apply(httpRequest);
-```
+    
+    ``` TypeScript
+    // 将当前配置好的拦截器链附加到httpRequest中
+    chain.apply(httpRequest);
+    ```
 
 7.  创建请求可选项。
 
