@@ -581,11 +581,11 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 3.  调用HttpInterceptorChain()方法，创建拦截器链对象。
 
     <!-- @[HTTP_interceptor_case_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
-```typescript
-// 创建拦截器链
-let chain: http.HttpInterceptorChain = new http.HttpInterceptorChain();
-```
+    
+    ``` TypeScript
+    // 创建拦截器链
+    let chain: http.HttpInterceptorChain = new http.HttpInterceptorChain();
+    ```
 
 4.  创建拦截器类实现http.HttpInterceptor接口。
 
