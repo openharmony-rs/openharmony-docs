@@ -138,7 +138,7 @@ UITest支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test
 <!-- @[findAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/Component/FindComAndOp.test.ets) -->    
 
 ``` TypeScript
-import { describe, it, Level, Size, TestType } from '@ohos/hypium';
+import { describe, it, TestType } from '@ohos/hypium';
 // 导入测试依赖kit
 import { Component, Driver, ON, On } from '@kit.TestKit';
 
@@ -387,7 +387,7 @@ export default function abilityTest() {
 <!-- @[eventObserver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/EventObserver.test.ets) -->    
 
 ``` TypeScript
-import { describe, it, Level, Size, TestType } from '@ohos/hypium';
+import { describe, it, TestType } from '@ohos/hypium';
 // 导入测试依赖kit
 import { Driver, UIElementInfo } from '@kit.TestKit';
 
@@ -464,7 +464,7 @@ import { describe, expect, it, TestType } from '@ohos/hypium';
 // 导入测试依赖kit
 import { Driver } from '@kit.TestKit';
 
-// Error code when the device is not supported.
+// 设备不支持时的错误代码
 const DeviceErrorCode = 17000005;
 
 export default function abilityTest() {
@@ -494,7 +494,7 @@ import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 // 导入测试依赖kit
 import { Driver, UiDirection } from '@kit.TestKit';
 
-// Error code when the device is not supported.
+// 设备不支持时的错误代码
 const DeviceErrorCode = 17000005;
 
 export default function abilityTest() {
@@ -503,7 +503,7 @@ export default function abilityTest() {
     it('touchPadOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let driver = Driver.create();
       try {
-        // 触摸板三指上滑返回桌面。
+        // 触摸板三指上滑返回桌面
         await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
         // 触摸板三指下滑恢复窗口
         await driver.touchPadMultiFingerSwipe(3, UiDirection.DOWN);
@@ -554,7 +554,7 @@ import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 // 导入测试依赖kit
 import { Driver } from '@kit.TestKit';
 
-// Error code when the device is not supported.
+// 设备不支持时的错误代码
 const CapabilityCode = 801;
 
 export default function abilityTest() {
