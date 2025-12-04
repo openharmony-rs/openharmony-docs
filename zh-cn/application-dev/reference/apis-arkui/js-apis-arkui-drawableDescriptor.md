@@ -382,6 +382,71 @@ struct Index {
 }
   ```
 
+### setBlendMode<sup>23+</sup>
+
+ArkTS-Dyn: setBlendMode(mode: drawing.BlendMode): void
+
+ArkTS-Sta: setBlendMode(mode: drawing.BlendMode | undefined): void
+
+设置LayeredDrawableDescriptor的混合模式。对同一LayeredDrawableDescriptor对象多次调用setBlendMode接口时，仅在绘制完成前的最后一次调用生效。该接口不支持动态切换。LayeredDrawableDescriptor的默认绘制顺序为背景、蒙版、前景。设置了混合模式后，绘制顺序变为背景、前景、蒙版。若设置的值无效，会按照未设置混合模式进行绘制。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型              | 必填  | 说明                                       |
+| --------- | ---------------- | ---- | ------------------------------------------ |
+| mode | ArkTS-Dyn: [drawing.BlendMode](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) <br> ArkTS-Sta: [drawing.BlendMode](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) \| undefined  | 是   | 混合模式。设置undefined，会按照未设置混合模式进行绘制。 |
+
+**示例：**
+
+```ts
+import { Entry, Component, Image, $r, RelativeContainer, State } from '@kit.ArkUI';
+import { DrawableDescriptor, LayeredDrawableDescriptor } from '@ohos.arkui.drawableDescriptor';
+import { drawing } from '@kit.ArkGraphics2D';
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct Index {
+  @State drawableDescriptor: DrawableDescriptor | undefined = undefined;
+
+  private setBlendMode(blendMode: drawing.BlendMode): DrawableDescriptor | undefined {
+    let resManager = this.getUIContext().getHostContext()?.resourceManager;
+    // $r('app.media.drawable')需要替换为开发者提供的分层图标文件。
+    let drawable: DrawableDescriptor | undefined = resManager?.getDrawableDescriptor($r('app.media.drawable').id);
+    if (!drawable) {
+      return undefined;
+    }
+    let layeredDrawableDescriptor = drawable as LayeredDrawableDescriptor;
+    layeredDrawableDescriptor.setBlendMode(blendMode);
+    return layeredDrawableDescriptor;
+  }
+
+  aboutToAppear(): void {
+    this.drawableDescriptor = this.setBlendMode(drawing.BlendMode.SRC_OVER);
+  }
+
+  build() {
+    RelativeContainer() {
+      if (this.drawableDescriptor) {
+        Image(this.drawableDescriptor)
+          .width(100)
+          .height(100)
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## AnimationOptions<sup>12+</sup>
 
 用于控制通过Image组件显示的PixelMap数组动画的播放行为。
