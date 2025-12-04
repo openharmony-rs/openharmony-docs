@@ -5150,3 +5150,15 @@
 **支持设备**：General
 
 **起始版本**：13
+
+## ohos.permission.SET_LAUNCH_REASON_MESSAGE
+
+允许系统应用拉起其他应用时设置拉起原因。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：18
