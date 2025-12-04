@@ -130,42 +130,29 @@
 
 2. 参考如下示例代码，进行业务功能开发。
    <!-- @[query_single_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_attr.ets) -->
-
-``` TypeScript
-import { asset } from '@kit.AssetStoreKit';
-import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function stringToArray(str: string): Uint8Array {
-  let textEncoder = new util.TextEncoder();
-  return textEncoder.encodeInto(str);
-}
-
-export async function queryAssetAttribute(): Promise<string> {
-  let result: string = '';
-  let query: asset.AssetMap = new Map();
-  query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // 指定了关键资产别名，最多查询到一条满足条件的关键资产
-  query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ATTRIBUTES); // 此处表示仅返回关键资产属性，不包含关键资产明文
-  try {
-    await asset.query(query).then((res: Array<asset.AssetMap>) => {
-      for (let i = 0; i < res.length; i++) {
-        // 解析属性。
-        let accessibility: number = res[i].get(asset.Tag.ACCESSIBILITY) as number;
-        console.info(`Succeeded in getting accessibility, which is: ${accessibility}.`);
-      }
-      result = 'Succeeded in querying Asset attribute';
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to query Asset attribute. Code is ${err.code}, message is ${err.message}`);
-      result = 'Failed to query Asset attribute';
-    });
-  } catch (error) {
-    let err = error as BusinessError;
-    console.error(`Failed to query Asset attribute. Code is ${err.code}, message is ${err.message}`);
-    result = 'Failed to query Asset attribute';
-  }
-  return result;
-}
-```
+   
+   ``` TypeScript
+   let query: asset.AssetMap = new Map();
+   query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // 指定了关键资产别名，最多查询到一条满足条件的关键资产
+   query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ATTRIBUTES); // 此处表示仅返回关键资产属性，不包含关键资产明文
+   try {
+     asset.query(query).then((res: Array<asset.AssetMap>) => {
+       for (let i = 0; i < res.length; i++) {
+         // 解析属性。
+         let accessibility: number = res[i].get(asset.Tag.ACCESSIBILITY) as number;
+         console.info(`Succeeded in getting accessibility, which is: ${accessibility}.`);
+       }
+       // ...
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to query Asset attribute. Code is ${err.code}, message is ${err.message}`);
+       // ...
+     });
+   } catch (error) {
+     let err = error as BusinessError;
+     console.error(`Failed to query Asset attribute. Code is ${err.code}, message is ${err.message}`);
+     // ...
+   }
+   ```
 
 
 ### 批量查询关键资产属性
