@@ -93,24 +93,17 @@ export async function addSyncAsset(): Promise<string> {
 
 2. 参考如下示例代码，进行业务功能开发。
    <!-- @[query_sync_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_sync_result.ets) -->
-
-``` TypeScript
-import { asset } from '@kit.AssetStoreKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export async function querySyncResult(): Promise<string> {
-  let result: string = '';
-  let query: asset.AssetMap = new Map();
-  await asset.querySyncResult(query).then((res: asset.SyncResult) => {
-    console.info(`Succeeded in querying sync result: ${JSON.stringify(res)}`);
-    result = 'Succeeded in querying sync result';
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query sync result of Asset. Code is ${err.code}, message is ${err.message}`);
-    result = 'Failed to query sync result of Asset';
-  });
-  return result;
-}
-```
+   
+   ``` TypeScript
+   let query: asset.AssetMap = new Map();
+   asset.querySyncResult(query).then((res: asset.SyncResult) => {
+     console.info(`Succeeded in querying sync result: ${JSON.stringify(res)}`);
+     // ...
+   }).catch((err: BusinessError) => {
+     console.error(`Failed to query sync result of Asset. Code is ${err.code}, message is ${err.message}`);
+     // ...
+   });
+   ```
 
 
 ## 约束和限制
