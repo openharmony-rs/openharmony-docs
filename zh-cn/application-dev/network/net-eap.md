@@ -103,34 +103,34 @@
 3. 若需取消定制化，可调用[unregCustomEapHandler](../reference/apis-network-kit/js-apis-net-eap.md#eapunregcustomeaphandler)方法。
 
    <!-- @[eap_case_unreg_custom_eapHandler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
-
-``` TypeScript
-let netType = 1;
-let eapCode= 1; // eap request
-let eapType= 25; // EAP_PEAP
-let result = 1;
-
-let eapData = (eapData:eap.EapData):void => {
-  hilog.info(0x0000, 'testTag', 'rsp result',JSON.stringify(eapData));
-  const newBuffer = new Uint8Array(eapData.bufferLen);
-  newBuffer.set(eapData.eapBuffer, 0);
-  let eapData2: eap.EapData = {
-    msgId: eapData.msgId,
-    eapBuffer: newBuffer,
-    bufferLen: newBuffer.length
-  }
-  // ...
-}
-// ...
-  try {
-    eap.unregCustomEapHandler(netType, eapCode, eapType, eapData);
-    hilog.info(0x0000, 'testTag', 'unregCustomEapHandler success');
-    // ...
-  } catch (err) {
-    hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ', errMessage: ' + err.message);
-    // ...
-  }
-```
+   
+   ``` TypeScript
+   let netType = 1;
+   let eapCode= 1; // eap request
+   let eapType= 25; // EAP_PEAP
+   let result = 1;
+   
+   let eapData = (eapData:eap.EapData):void => {
+     hilog.info(0x0000, 'testTag', 'rsp result',JSON.stringify(eapData));
+     const newBuffer = new Uint8Array(eapData.bufferLen);
+     newBuffer.set(eapData.eapBuffer, 0);
+     let eapData2: eap.EapData = {
+       msgId: eapData.msgId,
+       eapBuffer: newBuffer,
+       bufferLen: newBuffer.length
+     }
+     // ...
+   }
+   // ...
+     try {
+       eap.unregCustomEapHandler(netType, eapCode, eapType, eapData);
+       hilog.info(0x0000, 'testTag', 'unregCustomEapHandler success');
+       // ...
+     } catch (err) {
+       hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ', errMessage: ' + err.message);
+       // ...
+     }
+   ```
 ## 使用eth接口发起802.1X认证流程
 
 1. 设备通过硬件接口，插入网线。
