@@ -112,22 +112,22 @@ static napi_value NetId(napi_env env, napi_callback_info info)
 2. 将通过napi封装好的`napi_value`类型对象初始化导出，通过外部函数接口，将以上两个函数暴露给JavaScript使用。
 
    <!-- @[build_project2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports)
-{
-    // Information used to describe an exported attribute. Two properties are defined here: `GetDefaultNet` and `NetId`.
-    napi_property_descriptor desc[] = {
-        {"GetDefaultNet", nullptr, GetDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"NetId", nullptr, NetId, nullptr, nullptr, nullptr, napi_default, nullptr},
-        // ···
-    };
-    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-    return exports;
-}
-EXTERN_C_END
-```
+   
+   ``` C++
+   EXTERN_C_START
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       // Information used to describe an exported attribute. Two properties are defined here: `GetDefaultNet` and `NetId`.
+       napi_property_descriptor desc[] = {
+           {"GetDefaultNet", nullptr, GetDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
+           {"NetId", nullptr, NetId, nullptr, nullptr, nullptr, napi_default, nullptr},
+           // ...
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   EXTERN_C_END
+   ```
 3. 将上一步中初始化成功的对象通过`RegisterEntryModule`函数，使用`napi_module_register`函数将模块注册到Node.js中。
 
    <!-- @[build_project3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
