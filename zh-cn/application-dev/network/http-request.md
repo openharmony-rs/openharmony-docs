@@ -572,11 +572,11 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 2.  调用[createHttp()](../reference/apis-network-kit/js-apis-http.md#httpcreatehttp)方法，创建HttpRequest对象。
 
      <!-- @[HTTP_interceptor_case_creat_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
-```typescript
-// 创建http请求
-let httpRequest: http.HttpRequest = http.createHttp();
-```
+     
+     ``` TypeScript
+     // 创建http请求
+     let httpRequest: http.HttpRequest = http.createHttp();
+     ```
 
 3.  调用HttpInterceptorChain()方法，创建拦截器链对象。
 
