@@ -79,14 +79,14 @@ MDNS管理的典型场景有：
 5. 通过removeLocalService方法，移除本地服务。
 
    <!-- @[MDNS_remove_local_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// removeLocalService移除本地服务。
-mdns.removeLocalService(context, this.localServiceInfo).then((data: mdns.LocalServiceInfo) => {
-// ···
-  console.info(`Local Service Removed: ${JSON.stringify(data)}`);
-})
-```
+   
+   ``` TypeScript
+   // removeLocalService移除本地服务。
+   mdns.removeLocalService(context, this.localServiceInfo).then((data: mdns.LocalServiceInfo) => {
+     // ...
+     hilog.info(0x0000, 'testTag', `Local Service Removed: ${JSON.stringify(data)}`);
+   })
+   ```
 
 ## 发现本地服务
 
