@@ -16,26 +16,29 @@
 
 ## 前置条件
 
-在应用配置文件app.json5中，配置群组ID，如：demo_group_id。群组支持配置多个群组ID。
+1. 在应用配置文件app.json5中，配置群组ID，如：demo_group_id。群组支持配置多个群组ID。
 
-```json5
-{
-  "app": {
-    // 其他配置项此处省略。
-    "assetAccessGroups": [
-      "demo_group_id",
-      // "another_group_id",
-      // ...
-    ]
-  }
-}
-```
+   ```json5
+   {
+     "app": {
+       // 其他配置项此处省略。
+       "assetAccessGroups": [
+         "demo_group_id",
+         // "another_group_id",
+         // ...
+       ]
+     }
+   }
+   ```
+
+2. 引用头文件，定义工具函数。
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_group_plaintext.ets) -->
 
 ## 新增群组关键资产
 
 在群组中新增密码为demo_pwd、别名为demo_alias、附属信息为demo_label的关键资产。
 
-<!-- @[add_group_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add_group.ets) -->
+<!-- @[add_group_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add_group.ets) --> 
 
 ``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
@@ -76,7 +79,7 @@ export async function addGroupAsset(): Promise<string> {
 
 在群组中删除别名为demo_alias的关键资产。
 
-<!-- @[remove_group_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove_group.ets) -->
+<!-- @[remove_group_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove_group.ets) --> 
 
 ``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
@@ -114,7 +117,7 @@ export async function removeGroupAsset(): Promise<string> {
 
 在群组中更新别名为demo_alias的关键资产，明文更新为demo_pwd_new，附属属性更新为demo_label_new。
 
-<!-- @[update_group_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/update_group.ets) -->
+<!-- @[update_group_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/update_group.ets) --> 
 
 ``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
@@ -155,7 +158,7 @@ export async function updateGroupAsset(): Promise<string> {
 
 在群组中查询别名为demo_alias的关键资产明文。
 
-<!-- @[query_group_asset_plaintext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_group_plaintext.ets) -->
+<!-- @[query_group_asset_plaintext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_group_plaintext.ets) --> 
 
 ``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
@@ -205,7 +208,7 @@ export async function queryGroupAssetPlaintext(): Promise<string> {
 
 在群组中查询别名为demo_alias的关键资产属性。
 
-<!-- @[query_group_asset_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_group_attr.ets) -->
+<!-- @[query_group_asset_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_group_attr.ets) --> 
 
 ``` TypeScript
 import { asset } from '@kit.AssetStoreKit';

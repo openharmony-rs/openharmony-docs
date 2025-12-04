@@ -11,7 +11,11 @@
 
 新增密码demo_pwd（别名demo_alias），附属信息为demo_label，支持同步的关键资产。
 
-<!-- @[add_sync_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add_sync.ets) -->
+1. 引用头文件，定义工具函数。
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add_sync.ets) -->
+
+2. 参考如下示例代码，进行业务功能开发。
+   <!-- @[add_sync_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add_sync.ets) -->
 
 ``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
@@ -68,7 +72,11 @@ export async function addSyncAsset(): Promise<string> {
 
 ### 代码示例
 
-<!-- @[query_sync_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_sync_result.ets) -->
+1. 引用头文件，定义工具函数。
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_sync_result.ets) -->
+
+2. 参考如下示例代码，进行业务功能开发。
+   <!-- @[query_sync_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_sync_result.ets) -->
 
 ``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
