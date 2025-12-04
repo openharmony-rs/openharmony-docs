@@ -8283,7 +8283,7 @@ try {
 
 setParentWindow(windowId: number): Promise&lt;void&gt;
 
-更改子窗口的父窗口，该父窗口仅支持主窗口、子窗口或悬浮窗，使用Promise异步回调。
+更改子窗口的父窗口，该父窗口仅支持同进程下的主窗口、子窗口或悬浮窗，使用Promise异步回调。
 
 如果该子窗口处于获焦状态，且新的父窗口处于前台，则会抬升父窗口的层级。
 
