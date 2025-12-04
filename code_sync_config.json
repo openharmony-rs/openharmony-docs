@@ -1990,12 +1990,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":49,
 						"name":"pasteboard_usedata",
 						"start_line":17
 					},
 					{
-						"end_line":84,
+						"end_line":86,
 						"name":"pasteboard_useudc",
 						"start_line":18
 					}
@@ -26667,19 +26667,19 @@
 						"start_line":107
 					},
 					{
-						"end_line":138,
+						"end_line":135,
 						"name":"pasteboard_timelaps_PasteData4",
-						"start_line":121
+						"start_line":118
 					},
 					{
-						"end_line":147,
+						"end_line":144,
 						"name":"pasteboard_timelaps_PasteData5",
-						"start_line":139
+						"start_line":136
 					},
 					{
-						"end_line":156,
+						"end_line":153,
 						"name":"pasteboard_timelaps_PasteData6",
-						"start_line":148
+						"start_line":145
 					}
 				]
 			}
