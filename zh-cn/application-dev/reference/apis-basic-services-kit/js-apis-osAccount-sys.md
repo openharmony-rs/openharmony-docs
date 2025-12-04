@@ -3076,7 +3076,7 @@ onActivate(name: string, callback: Callback&lt;int&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('activate')](#on)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3128,7 +3128,7 @@ onActivating(name: string, callback: Callback&lt;int&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('activating')](#on)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3180,7 +3180,7 @@ offActivate(name: string, callback?: Callback&lt;int&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('activate')](#off)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3233,7 +3233,7 @@ offActivating(name: string, callback?: Callback&lt;int&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('activating')](#off)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3286,7 +3286,7 @@ onSwitching(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('switching')](#on12)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3337,7 +3337,7 @@ offSwitching(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('switching')](#off12)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3385,7 +3385,7 @@ onSwitched(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on12-1)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('switched')](#on12-1)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3436,7 +3436,7 @@ offSwitched(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off12-1)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('switched')](#off12-1)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4567,7 +4567,6 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid remoteNetworkId. |
 | 12300090 | Cross-device capability not supported. |
@@ -4666,7 +4665,6 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType or authTrustLevel. |
 | 12300013 | Network exception. |
@@ -4773,7 +4771,6 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType, authTrustLevel or options. |
 | 12300003 | Account not found. |
@@ -4889,7 +4886,6 @@ ArkTS-Sta: authUser(userId: int, challenge: Uint8Array, authType: AuthType, auth
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType or authTrustLevel. |
 | 12300003 | Account not found. |
@@ -8186,8 +8182,8 @@ getAuthInfo(callback: AsyncCallback&lt;Array&lt;EnrolledCredInfo&gt;&gt;): void
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -8262,9 +8258,9 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback&lt;Array&lt;EnrolledCred
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -8346,9 +8342,9 @@ getAuthInfo(authType?: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -8425,10 +8421,10 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise&lt;Array&lt;EnrolledCredInfo&
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid options. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -8516,10 +8512,10 @@ ArkTS-Sta: getEnrolledId(authType: AuthType, accountId?: int): Promise&lt;Uint8A
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 | 12300102 | The credential does not exist. |
 | 12300106 | The authentication type is not supported. |
 
