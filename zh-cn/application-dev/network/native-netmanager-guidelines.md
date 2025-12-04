@@ -59,12 +59,12 @@ libnet_connection.so
 **头文件**
 
    <!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-#include "napi/native_api.h"
-#include "network/netmanager/net_connection.h"
-#include "network/netmanager/net_connection_type.h"
-```
+   
+   ``` C++
+   #include "napi/native_api.h"
+   #include "network/netmanager/net_connection.h"
+   #include "network/netmanager/net_connection_type.h"
+   ```
 ### 构建工程
 
 1. 在源文件中编写调用该API的代码，并将结果封装成一个`napi_value`类型的值返回给Node.js环境。
