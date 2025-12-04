@@ -232,36 +232,36 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 	服务器响应的数据在dataReceive回调中返回，可通过订阅该信息获取服务器响应的数据，其他流式响应事件可按需进行订阅。
   
    <!-- @[request_in_stream_data_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    // 用于订阅HTTP流式响应数据接收事件。
-    let res = new ArrayBuffer(0);
-	// ···
-    // 订阅HTTP流式响应数据接收事件
-    httpRequest.on('dataReceive', (data: ArrayBuffer) => {
-      const newRes = new ArrayBuffer(res.byteLength + data.byteLength);
-      const resView = new Uint8Array(newRes);
-      resView.set(new Uint8Array(res));
-      resView.set(new Uint8Array(data), res.byteLength);
-      res = newRes;
-      console.info(`res length: ${res.byteLength}`);
-    });
-
-    // 用于订阅HTTP流式响应数据接收完毕事件。
-    httpRequest.on('dataEnd', () => {
-      console.info(`No more data in response, data receive end`);
-    });
-
-    // 订阅HTTP流式响应数据接收进度事件，下载服务器的数据时，可以通过该回调获取数据下载进度。
-    httpRequest.on('dataReceiveProgress', (data: http.DataReceiveProgressInfo) => {
-      console.info('dataReceiveProgress receiveSize:' + data.receiveSize + ', totalSize:' + data.totalSize);
-    });
-
-    // 订阅HTTP流式响应数据发送进度事件，向服务器上传数据时，可以通过该回调获取数据上传进度。
-    httpRequest.on('dataSendProgress', (data: http.DataSendProgressInfo) => {
-      console.info('dataSendProgress receiveSize:' + data.sendSize + ', totalSize:' + data.totalSize);
-    });
-```
+   
+   ``` TypeScript
+   // 用于订阅HTTP流式响应数据接收事件。
+   let res = new ArrayBuffer(0);
+   // ...
+   // 订阅HTTP流式响应数据接收事件
+   httpRequest.on('dataReceive', (data: ArrayBuffer) => {
+     const newRes = new ArrayBuffer(res.byteLength + data.byteLength);
+     const resView = new Uint8Array(newRes);
+     resView.set(new Uint8Array(res));
+     resView.set(new Uint8Array(data), res.byteLength);
+     res = newRes;
+     hilog.info(0x0000, 'testTag', `res length: ${res.byteLength}`);
+   });
+   
+   // 用于订阅HTTP流式响应数据接收完毕事件。
+   httpRequest.on('dataEnd', () => {
+     hilog.info(0x0000, 'testTag', `No more data in response, data receive end`);
+   });
+   
+   // 订阅HTTP流式响应数据接收进度事件，下载服务器的数据时，可以通过该回调获取数据下载进度。
+   httpRequest.on('dataReceiveProgress', (data: http.DataReceiveProgressInfo) => {
+     hilog.info(0x0000, 'testTag', 'dataReceiveProgress receiveSize:' + data.receiveSize + ', totalSize:' + data.totalSize);
+   });
+   
+   // 订阅HTTP流式响应数据发送进度事件，向服务器上传数据时，可以通过该回调获取数据上传进度。
+   httpRequest.on('dataSendProgress', (data: http.DataSendProgressInfo) => {
+     hilog.info(0x0000, 'testTag', 'dataSendProgress receiveSize:' + data.sendSize + ', totalSize:' + data.totalSize);
+   });
+   ```
 
 4. 发起HTTP流式请求，获取服务端数据
 
