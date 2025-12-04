@@ -44,7 +44,7 @@
 
 ### OH_InputMethodProxy_ShowKeyboard()
 
-```
+```c
 InputMethod_ErrorCode OH_InputMethodProxy_ShowKeyboard(InputMethod_InputMethodProxy *inputMethodProxy)
 ```
 
@@ -69,7 +69,7 @@ InputMethod_ErrorCode OH_InputMethodProxy_ShowKeyboard(InputMethod_InputMethodPr
 
 ### OH_InputMethodProxy_ShowTextInput()
 
-```
+```c
 InputMethod_ErrorCode OH_InputMethodProxy_ShowTextInput(InputMethod_InputMethodProxy *inputMethodProxy, InputMethod_AttachOptions *options)
 ```
 
@@ -95,7 +95,7 @@ InputMethod_ErrorCode OH_InputMethodProxy_ShowTextInput(InputMethod_InputMethodP
 
 ### OH_InputMethodProxy_HideKeyboard()
 
-```
+```c
 InputMethod_ErrorCode OH_InputMethodProxy_HideKeyboard(InputMethod_InputMethodProxy *inputMethodProxy)
 ```
 
@@ -120,7 +120,7 @@ InputMethod_ErrorCode OH_InputMethodProxy_HideKeyboard(InputMethod_InputMethodPr
 
 ### OH_InputMethodProxy_NotifySelectionChange()
 
-```
+```c
 InputMethod_ErrorCode OH_InputMethodProxy_NotifySelectionChange(InputMethod_InputMethodProxy *inputMethodProxy, char16_t text[], size_t length, int start, int end)
 ```
 
@@ -149,7 +149,7 @@ InputMethod_ErrorCode OH_InputMethodProxy_NotifySelectionChange(InputMethod_Inpu
 
 ### OH_InputMethodProxy_NotifyConfigurationChange()
 
-```
+```c
 InputMethod_ErrorCode OH_InputMethodProxy_NotifyConfigurationChange(InputMethod_InputMethodProxy *inputMethodProxy,InputMethod_EnterKeyType enterKey, InputMethod_TextInputType textType)
 ```
 
@@ -176,7 +176,7 @@ InputMethod_ErrorCode OH_InputMethodProxy_NotifyConfigurationChange(InputMethod_
 
 ### OH_InputMethodProxy_NotifyCursorUpdate()
 
-```
+```c
 InputMethod_ErrorCode OH_InputMethodProxy_NotifyCursorUpdate(InputMethod_InputMethodProxy *inputMethodProxy, InputMethod_CursorInfo *cursorInfo)
 ```
 
@@ -202,7 +202,7 @@ InputMethod_ErrorCode OH_InputMethodProxy_NotifyCursorUpdate(InputMethod_InputMe
 
 ### OH_InputMethodProxy_SendPrivateCommand()
 
-```
+```c
 InputMethod_ErrorCode OH_InputMethodProxy_SendPrivateCommand(InputMethod_InputMethodProxy *inputMethodProxy, InputMethod_PrivateCommand *privateCommand[], size_t size)
 ```
 
