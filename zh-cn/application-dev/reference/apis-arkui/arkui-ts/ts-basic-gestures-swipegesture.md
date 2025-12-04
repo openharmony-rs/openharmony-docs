@@ -1,7 +1,7 @@
 # SwipeGesture
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -48,6 +48,8 @@ SwipeGesture(options?: SwipeGestureHandlerOptions)
 | options | [SwipeGestureHandlerOptions](./ts-gesturehandler.md#swipegesturehandleroptions) | 否 | 快滑事件处理器配置参数。 |
 
 ## SwipeDirection枚举说明
+
+定义滑动手势的触发方向。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
