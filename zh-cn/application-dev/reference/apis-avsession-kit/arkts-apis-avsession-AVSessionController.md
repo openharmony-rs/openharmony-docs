@@ -1350,7 +1350,7 @@ struct Index {
 
 getExtras(callback: AsyncCallback\<Record\<string, Object>>): void
 
-获取媒体提供方设置的自定义媒体数据包。使用Promise异步回调。
+获取媒体提供方设置的自定义媒体数据包。使用Callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
