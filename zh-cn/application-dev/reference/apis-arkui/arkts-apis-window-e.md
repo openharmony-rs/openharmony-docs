@@ -312,7 +312,7 @@ WindowStage生命周期的状态类型枚举。
 
 ## RotationInfoType<sup>23+</sup>
 
-旋转信息类型
+旋转信息类型枚举。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
