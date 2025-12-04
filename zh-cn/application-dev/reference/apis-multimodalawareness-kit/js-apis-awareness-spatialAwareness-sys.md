@@ -110,7 +110,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 onDistanceMeasure(configParams: DistanceMeasurementConfigParams,
     callback: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
-订阅测距结果数据。表示订阅测距事件后的测距结果。订阅测距事件后，返回测距结果。
+订阅测距。表示订阅测距事件后返回测距结果的接口。订阅测距事件后，返回测距结果。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -159,7 +159,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 offDistanceMeasure(configParams: DistanceMeasurementConfigParams,
     callback?: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
-取消测距。表示取消订阅测距事件。取消订阅测距事件，不会发生测距。
+取消测距。表示取消订阅测距事件。取消订阅测距事件后，不会发生测距。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -257,7 +257,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
     callback？: Callback&lt;DoorPositionResponse&gt;): void;
 
-取消识别门内外订阅。
+取消识别门内外订阅。表示取消门内外识别的事件。不返回门内外信息。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
