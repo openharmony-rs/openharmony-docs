@@ -5208,3 +5208,15 @@ Allows an application to obtain and set the user authorization status of special
 **Device**: general devices
 
 **Since**: 23
+
+## ohos.permission.SET_LAUNCH_REASON_MESSAGE
+
+Allows a system application to set the launch reason when starting another application.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 18
