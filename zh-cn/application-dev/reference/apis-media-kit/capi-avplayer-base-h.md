@@ -77,7 +77,7 @@
 
 ### AVPlayerState
 
-```
+```c
 enum AVPlayerState
 ```
 
@@ -103,7 +103,7 @@ enum AVPlayerState
 
 ### AVPlayerSeekMode
 
-```
+```c
 enum AVPlayerSeekMode
 ```
 
@@ -123,7 +123,7 @@ enum AVPlayerSeekMode
 
 ### AVPlaybackSpeed
 
-```
+```c
 enum AVPlaybackSpeed
 ```
 
@@ -150,7 +150,7 @@ enum AVPlaybackSpeed
 
 ### AVPlayerOnInfoType
 
-```
+```c
 enum AVPlayerOnInfoType
 ```
 
@@ -186,7 +186,7 @@ OnInfo类型。<br>可用于OH_AVPlayerOnInfoCallback和OH_AVPlayerOnInfo(已废
 
 ### AVPlayerBufferingType
 
-```
+```c
 enum AVPlayerBufferingType
 ```
 
@@ -210,7 +210,7 @@ enum AVPlayerBufferingType
 
 ### OH_AVPlayerOnInfo()
 
-```
+```c
 typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, int32_t extra)
 ```
 
@@ -260,7 +260,7 @@ typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, 
 
 ### OH_AVPlayerOnInfoCallback()
 
-```
+```c
 typedef void (*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoType type, OH_AVFormat* infoBody,void *userData)
 ```
 
@@ -284,7 +284,7 @@ typedef void (*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoTyp
 
 ### OH_AVPlayerOnError()
 
-```
+```c
 typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg)
 ```
 
@@ -311,7 +311,7 @@ typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const
 
 ### OH_AVPlayerOnErrorCallback()
 
-```
+```c
 typedef void (*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg,void *userData)
 ```
 

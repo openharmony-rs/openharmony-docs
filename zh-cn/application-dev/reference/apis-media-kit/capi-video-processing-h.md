@@ -52,7 +52,7 @@
 
 ### OH_VideoProcessing_InitializeEnvironment()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_InitializeEnvironment(void)
 ```
 
@@ -78,7 +78,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_InitializeEnvironment(void)
 
 ### OH_VideoProcessing_DeinitializeEnvironment()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_DeinitializeEnvironment(void)
 ```
 
@@ -102,7 +102,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_DeinitializeEnvironment(void)
 
 ### OH_VideoProcessing_IsColorSpaceConversionSupported()
 
-```
+```c
 bool OH_VideoProcessing_IsColorSpaceConversionSupported(const VideoProcessing_ColorSpaceInfo* sourceVideoInfo,const VideoProcessing_ColorSpaceInfo* destinationVideoInfo)
 ```
 
@@ -128,7 +128,7 @@ bool OH_VideoProcessing_IsColorSpaceConversionSupported(const VideoProcessing_Co
 
 ### OH_VideoProcessing_IsMetadataGenerationSupported()
 
-```
+```c
 bool OH_VideoProcessing_IsMetadataGenerationSupported(const VideoProcessing_ColorSpaceInfo* sourceVideoInfo)
 ```
 
@@ -153,7 +153,7 @@ bool OH_VideoProcessing_IsMetadataGenerationSupported(const VideoProcessing_Colo
 
 ### OH_VideoProcessing_Create()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_Create(OH_VideoProcessing** videoProcessor, int type)
 ```
 
@@ -179,7 +179,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_Create(OH_VideoProcessing** videoPr
 
 ### OH_VideoProcessing_Destroy()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_Destroy(OH_VideoProcessing* videoProcessor)
 ```
 
@@ -206,7 +206,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_Destroy(OH_VideoProcessing* videoPr
 
 ### OH_VideoProcessing_RegisterCallback()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_RegisterCallback(OH_VideoProcessing* videoProcessor,const VideoProcessing_Callback* callback, void* userData)
 ```
 
@@ -235,7 +235,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_RegisterCallback(OH_VideoProcessing
 
 ### OH_VideoProcessing_SetSurface()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_SetSurface(OH_VideoProcessing* videoProcessor,const OHNativeWindow* window)
 ```
 
@@ -263,7 +263,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_SetSurface(OH_VideoProcessing* vide
 
 ### OH_VideoProcessing_GetSurface()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_GetSurface(OH_VideoProcessing* videoProcessor, OHNativeWindow** window)
 ```
 
@@ -291,7 +291,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_GetSurface(OH_VideoProcessing* vide
 
 ### OH_VideoProcessing_SetParameter()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_SetParameter(OH_VideoProcessing* videoProcessor,const OH_AVFormat* parameter)
 ```
 
@@ -317,7 +317,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_SetParameter(OH_VideoProcessing* vi
 
 ### OH_VideoProcessing_GetParameter()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_GetParameter(OH_VideoProcessing* videoProcessor, OH_AVFormat* parameter)
 ```
 
@@ -343,7 +343,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_GetParameter(OH_VideoProcessing* vi
 
 ### OH_VideoProcessing_Start()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_Start(OH_VideoProcessing* videoProcessor)
 ```
 
@@ -370,7 +370,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_Start(OH_VideoProcessing* videoProc
 
 ### OH_VideoProcessing_Stop()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_Stop(OH_VideoProcessing* videoProcessor)
 ```
 
@@ -397,7 +397,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_Stop(OH_VideoProcessing* videoProce
 
 ### OH_VideoProcessing_RenderOutputBuffer()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_RenderOutputBuffer(OH_VideoProcessing* videoProcessor, uint32_t index)
 ```
 
@@ -425,7 +425,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_RenderOutputBuffer(OH_VideoProcessi
 
 ### OH_VideoProcessingCallback_Create()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessingCallback_Create(VideoProcessing_Callback** callback)
 ```
 
@@ -450,7 +450,7 @@ VideoProcessing_ErrorCode OH_VideoProcessingCallback_Create(VideoProcessing_Call
 
 ### OH_VideoProcessingCallback_Destroy()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessingCallback_Destroy(VideoProcessing_Callback* callback)
 ```
 
@@ -475,7 +475,7 @@ VideoProcessing_ErrorCode OH_VideoProcessingCallback_Destroy(VideoProcessing_Cal
 
 ### OH_VideoProcessingCallback_BindOnError()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnError(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnError onError)
 ```
 
@@ -501,7 +501,7 @@ VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnError(VideoProcessing
 
 ### OH_VideoProcessingCallback_BindOnState()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnState(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnState onState)
 ```
 
@@ -527,7 +527,7 @@ VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnState(VideoProcessing
 
 ### OH_VideoProcessingCallback_BindOnNewOutputBuffer()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnNewOutputBuffer(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnNewOutputBuffer onNewOutputBuffer)
 ```
 
