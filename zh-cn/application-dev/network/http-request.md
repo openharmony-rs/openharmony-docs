@@ -221,11 +221,11 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
     调用createHttp()方法，创建HttpRequest对象。
 
     <!-- @[request_in_stream_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
+    
+    ``` TypeScript
     // 每一个httpRequest对应一个HTTP请求任务，不可复用。
     let httpRequest = http.createHttp();
-```
+    ```
 
 3. 按需订阅HTTP流式响应事件
 
