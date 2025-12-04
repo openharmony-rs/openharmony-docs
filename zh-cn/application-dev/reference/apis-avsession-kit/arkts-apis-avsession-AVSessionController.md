@@ -1329,9 +1329,6 @@ struct Index {
 
 getExtras(callback: AsyncCallback\<{[key: string]: Object}>): void
 
-<<<<<<< HEAD
-获取媒体提供方设置的自定义媒体数据包,结果通过callback异步回调方式返回。
-=======
 获取媒体提供方设置的自定义媒体数据包。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
