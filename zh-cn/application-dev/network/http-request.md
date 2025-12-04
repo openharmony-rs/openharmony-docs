@@ -307,21 +307,21 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
     调用该对象的off()方法，取消订阅步骤3中的事件，并且当该请求使用完毕时，调用destroy()方法销毁，该方法调用的时机，可以参考步骤4中的示例代码。
 
    <!-- @[request_in_stream_destroy_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-  public destroyRequest(httpRequest: http.HttpRequest) {
-    // 取消订阅HTTP流式响应数据接收事件。
-    httpRequest.off('dataReceive');
-    // 取消订阅HTTP流式响应数据发送进度事件。
-    httpRequest.off('dataSendProgress');
-    // 取消订阅HTTP流式响应数据接收进度事件。
-    httpRequest.off('dataReceiveProgress');
-    // 取消订阅HTTP流式响应数据接收完毕事件。
-    httpRequest.off('dataEnd');
-    // 当该请求使用完毕时，调用destroy方法主动销毁。
-    httpRequest.destroy();
-  }
-```
+   
+   ``` TypeScript
+   public destroyRequest(httpRequest: http.HttpRequest) {
+     // 取消订阅HTTP流式响应数据接收事件。
+     httpRequest.off('dataReceive');
+     // 取消订阅HTTP流式响应数据发送进度事件。
+     httpRequest.off('dataSendProgress');
+     // 取消订阅HTTP流式响应数据接收进度事件。
+     httpRequest.off('dataReceiveProgress');
+     // 取消订阅HTTP流式响应数据接收完毕事件。
+     httpRequest.off('dataEnd');
+     // 当该请求使用完毕时，调用destroy方法主动销毁。
+     httpRequest.destroy();
+   }
+   ```
 
 ## 配置证书校验
 
