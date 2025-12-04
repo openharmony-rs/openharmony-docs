@@ -8,7 +8,7 @@
 
 ## Overview
 
-Defines a native API struct of the post message. Before calling this API, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#macros) to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM.
+Defines a native API struct of the post message. Before calling this API, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#macros) to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM. The WebMessagePort APIs must be called on the UI thread through **OH_ArkWeb_GetNativeAPI**.
 
 **Since**: 12
 
@@ -95,4 +95,3 @@ Sets a callback for receiving HTML messages.
 | const char* webTag                                                                                     |  Name of the **Web** component.                    |
 | [ArkWeb_OnMessageEventHandler](capi-arkweb-type-h.md#arkweb_onmessageeventhandler) messageEventHandler | Callback used to handle messages.                    |
 | void* userData                                                                                         | User-defined data.                    |
-

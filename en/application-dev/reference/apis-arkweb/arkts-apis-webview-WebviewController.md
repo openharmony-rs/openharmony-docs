@@ -217,7 +217,7 @@ NOTE: Enabling web debugging allows users to check and modify the internal statu
 
 | Name             | Type   | Mandatory  |  Description|
 | ------------------ | ------- | ---- | ------------- |
-| webDebuggingAccess | boolean | Yes  | Sets whether to enable web debugging.<br>The value **true** indicates that web debugging is enabled, and **false** indicates the opposite .<br>Default value: **false**.|
+| webDebuggingAccess | boolean | Yes  | Sets whether to enable web debugging.<br>The value **true** means to enable web debugging, and **false** means the opposite.<br>Default value: **false**.|
 
 **Error codes**
 
@@ -4761,8 +4761,8 @@ Prefetches resources in the background for a page that is likely to be accessed 
 | Name            | Type                            | Mandatory | Description                     |
 | ------------------| --------------------------------| ---- | ------------- |
 | url               | string                          | Yes   | URL to be preloaded.|
-| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | No   | Additional HTTP headers of the URL.<br>Default value: **[]**.|
-| prefetchOptions | [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md) | No   | Options for customizing the prefetch behavior. <br>For details about the default value, see [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md)|
+| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | No   | Additional HTTP headers of the URL.<br>The default value is **[]**.|
+| prefetchOptions | [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md) | No   | Options for customizing the prefetch behavior.<br>The default value is as described in [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md).|
 
 **Error codes**
 
@@ -4771,7 +4771,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2*1024*1024.                      |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2*1024*1024.                   |
 
 **Example**
 
@@ -5087,7 +5087,7 @@ struct WebComponent {
 
 setDownloadDelegate(delegate: WebDownloadDelegate): void
 
-Sets a **WebDownloadDelegate** object to receive downloads and download progress triggered from a page.
+Sets a **WebDownloadDelegate** for the current **Web** component. The delegate is used to receive the download progress triggered within the page.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -6385,7 +6385,7 @@ Sets whether this web page is scrollable.
 | Name| Type| Mandatory| Description              |
 | ------ | -------- | ---- | ---------------------- |
 | enable     | boolean   | Yes  | Whether this web page is scrollable.<br>The value **true** indicates that this web page is scrollable, and **false** indicates the opposite.<br>Default value: **true**.|
-| type       | [ScrollType](./arkts-apis-webview-e.md#scrolltype12) |  No| Scrolling type supported by the web page. The default value is supported.<br> - If the value of **enable** is set to **false**, the specified **ScrollType** is disabled. If **ScrollType** is set to the default value, all scrolling types are disabled.<br> - If the value of **enable** is set to **true**, all scrolling types are enabled regardless of the value of **ScrollType**.|
+| type       | [ScrollType](./arkts-apis-webview-e.md#scrolltype12) |  No| Scrolling type supported by the web page. The default value is supported.<br> - If the value of **enable** is set to **false**, the specified **ScrollType** is disabled. If **ScrollType** is set to the default value, all scrolling types are disabled.<br> - If the value of **enable** is set to **true**, all scrolling types are enabled regardless of the value of **ScrollType**.<br>**NOTE**<br>If **undefined** is passed in, error code 401 will be thrown.|
 
 **Error codes**
 
@@ -9608,7 +9608,7 @@ Sets the bottom avoidance height of the visible viewport on the web page.
 
 | Name| Type| Mandatory| Description              |
 | ------ | -------- | ---- | ---------------------- |
-| avoidHeight   | number   | Yes  | Bottom avoidance height of the visible viewport on the web page.<br>Default value: 0<br>Unit: vp.<br>Value range: [0, height of the **Web** component]<br>If the value is less than 0, the value **0** is used. If the value is greater than the height of the **Web** component, the height of the **Web** component is used.|
+| avoidHeight   | number   | Yes  | Bottom avoidance height of the visible viewport on the web page.<br>Unit: vp.<br>Value range: [0, height of the **Web** component]<br>If the value is less than 0, the value **0** is used. If the value is greater than the height of the **Web** component, the height of the **Web** component is used.|
 
 **Error codes**
 
@@ -10096,7 +10096,7 @@ Sets the destroy mode of the **Web** component. The destroy mode of the **Web** 
 
 > **NOTE**
 >
-> [WebDestroyMode.FAST_MODE](./arkts-apis-webview-e.md#webdestroymode20) changes the time when the **Web** component is destroyed. When it is used, pay attention to the incorrect implementation that depends on the destroy time of the **Web** component. For example, when a **WebViewController** is called in fast mode rather than using [WebDestroyMode.NORMAL_MODE](./arkts-apis-webview-e.md#webdestroymode20), the unbinding exception is more likely to be triggered. In this case, the application needs to capture the exception, or use [getAttachState](#getattachstate20) to obtain the attach state to avoid stability problems.
+> [WebDestroyMode.FAST_MODE](./arkts-apis-webview-e.md#webdestroymode20) changes the time when the **Web** component is destroyed. When it is used, pay attention to the incorrect implementation that depends on the destroy time of the **Web** component. For example, when a **WebViewController** is called in fast mode rather than using [WebDestroyMode.NORMAL_MODE](./arkts-apis-webview-e.md#webdestroymode20), the unbinding exception (**17100001**) is more likely to be triggered. In this case, the application needs to capture the exception, or use [getAttachState](#getattachstate20) to obtain the attach state to avoid stability problems.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
