@@ -3183,7 +3183,7 @@ on\(type: 'callDetailsChange', callback: Callback\<CallAttributeOptions\>\): voi
 | 8300999  | Unknown error code.                          |
 
 **示例：**
-ArKTS-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 call.on('callDetailsChange', (data: call.CallAttributeOptions) => {
@@ -3191,7 +3191,7 @@ call.on('callDetailsChange', (data: call.CallAttributeOptions) => {
 });
 ```
 
-ArKTS-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 call.on('callDetailsChange', (data: call.CallAttributeOptions | undefined) => {
@@ -3237,7 +3237,7 @@ on\(type: 'callEventChange', callback: Callback\<CallEventOptions\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
-ArKTS-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 call.on('callEventChange', (data: call.CallEventOptions) => {
@@ -3245,7 +3245,7 @@ call.on('callEventChange', (data: call.CallEventOptions) => {
 });
 ```
 
-ArKTS-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 call.on('callEventChange', (data: call.CallEventOptions | undefined) => {
@@ -3381,7 +3381,7 @@ off\(type: 'callDetailsChange', callback?: Callback\<CallAttributeOptions\>\): v
 | 8300999  | Unknown error code.                          |
 
 **示例：**
-ArKTS-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 call.off('callDetailsChange', (data: call.CallAttributeOptions) => {
@@ -3389,7 +3389,7 @@ call.off('callDetailsChange', (data: call.CallAttributeOptions) => {
 });
 ```
 
-ArKTS-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 call.off('callDetailsChange', (data: call.CallAttributeOptions | undefined) => {
@@ -3435,7 +3435,7 @@ off\(type: 'callEventChange', callback?: Callback\<CallEventOptions\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
-ArKTS-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 call.off('callEventChange', (data: call.CallEventOptions) => {
@@ -3443,7 +3443,7 @@ call.off('callEventChange', (data: call.CallEventOptions) => {
 });
 ```
 
-ArKTS-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 call.off('callEventChange', (data: call.CallEventOptions | undefined) => {
@@ -3489,7 +3489,7 @@ off\(type: 'callDisconnectedCause', callback?: Callback\<DisconnectedDetails\>\)
 | 8300999  | Unknown error code.                          |
 
 **示例：**
-ArKTS-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 call.off('callDisconnectedCause', (data: call.DisconnectedDetails) => {
@@ -3497,7 +3497,7 @@ call.off('callDisconnectedCause', (data: call.DisconnectedDetails) => {
 });
 ```
 
-ArKTS-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 call.off('callDisconnectedCause', (data: call.DisconnectedDetails | undefined) => {
@@ -3544,7 +3544,7 @@ off\(type: 'mmiCodeResult', callback?: Callback\<MmiCodeResults\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
-ArKTS-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 call.off('mmiCodeResult', (data: call.MmiCodeResults) => {
@@ -3552,7 +3552,7 @@ call.off('mmiCodeResult', (data: call.MmiCodeResults) => {
 });
 ```
 
-ArKTS-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 call.off('mmiCodeResult', (data: call.MmiCodeResults | undefined) => {
@@ -3599,7 +3599,7 @@ on\(type: 'audioDeviceChange', callback: Callback\<AudioDeviceCallbackInfo\>\): 
 | 8300999  | Unknown error code.                          |
 
 **示例：**
-ArKTS-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 call.on('audioDeviceChange', (data: call.AudioDeviceCallbackInfo) => {
@@ -3607,7 +3607,7 @@ call.on('audioDeviceChange', (data: call.AudioDeviceCallbackInfo) => {
 });
 ```
 
-ArKTS-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 call.on('audioDeviceChange', (data: call.AudioDeviceCallbackInfo | undefined) => {
@@ -3653,7 +3653,7 @@ off\(type: 'audioDeviceChange', callback?: Callback\<AudioDeviceCallbackInfo\>\)
 | 8300999  | Unknown error code.                          |
 
 **示例：**
-ArKTS-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 call.off('audioDeviceChange', (data: call.AudioDeviceCallbackInfo) => {
@@ -3661,7 +3661,7 @@ call.off('audioDeviceChange', (data: call.AudioDeviceCallbackInfo) => {
 });
 ```
 
-ArKTS-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 call.off('audioDeviceChange', (data: call.AudioDeviceCallbackInfo | undefined) => {
@@ -3707,14 +3707,14 @@ on\(type: 'postDialDelay', callback: Callback\<string\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
-ArKTS-Dyn示例：
+ArkTS-Dyn示例：
 ```ts
 call.on('postDialDelay', (data: string) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
-ArKTS-Sta示例：
+ArkTS-Sta示例：
 ```ts
 call.on('postDialDelay', (data: string | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
@@ -3759,7 +3759,7 @@ off\(type: 'postDialDelay', callback?: Callback\<string\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
-ArKTS-Dyn示例：
+ArkTS-Dyn示例：
 
 ```ts
 call.off('postDialDelay', (data: string) => {
@@ -3767,7 +3767,7 @@ call.off('postDialDelay', (data: string) => {
 });
 ```
 
-ArKTS-Sta示例：
+ArkTS-Sta示例：
 
 ```ts
 call.off('postDialDelay', (data: string | undefined) => {
@@ -8768,11 +8768,11 @@ onCallDetailsChange(callback: Callback\<CallAttributeOptions>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是on('callDetailsChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('callDetailsChange')](#calloncallDetailsChange7)
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                       |必填 |说明                                                |
@@ -8828,11 +8828,11 @@ offCallDetailsChange(callback?: Callback\<CallAttributeOptions>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是off('callDetailsChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('callDetailsChange')](#calloffcallDetailsChange7)
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                       |必填 |说明                                           |
@@ -8889,11 +8889,11 @@ onCallEventChange(callback: Callback\<CallEventOptions>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是on('CallEventChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('CallEventChange')](#callonCallEventChange8)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                       |必填 |说明                                               |
@@ -8949,11 +8949,11 @@ offCallEventChange(callback?: Callback\<CallEventOptions>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是off('CallEventChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('CallEventChange')](#calloffCallEventChange8)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                               |必填 |说明                                            |
@@ -9009,11 +9009,11 @@ onCallDisconnectedCause(callback: Callback\<DisconnectedDetails>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是on('CallDisconnectedCause')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('CallDisconnectedCause')](#callonCallDisconnectedCause8)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                       |必填 |说明                                               |
@@ -9069,11 +9069,11 @@ offCallDisconnectedCause(callback?: Callback\<DisconnectedDetails>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是off('CallDisconnectedCause')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('CallDisconnectedCause')](#calloffCallDisconnectedCause8)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                       |必填 |说明                                           |
@@ -9129,11 +9129,11 @@ onMmiCodeResult(callback: Callback\<MmiCodeResults>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是on('MmiCodeResult')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('MmiCodeResult')](#callonMmiCodeResult9)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                           |必填 |说明                                            |
@@ -9189,11 +9189,11 @@ offMmiCodeResult(callback?: Callback\<MmiCodeResults>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是off('MmiCodeResult')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('MmiCodeResult')](#calloffMmiCodeResult9)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                               |必填 |说明                                           |
@@ -9249,11 +9249,11 @@ onAudioDeviceChange(callback: Callback\<AudioDeviceCallbackInfo>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是on('AudioDeviceChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('AudioDeviceChange')](#callonAudioDeviceChange10)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                              |必填 |说明                                             |
@@ -9309,11 +9309,11 @@ offAudioDeviceChange(callback?: Callback\<AudioDeviceCallbackInfo>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是off('AudioDeviceChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('AudioDeviceChange')](#calloffAudioDeviceChange10)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                               |必填 |说明                                           |
@@ -9370,11 +9370,11 @@ onPostDialDelay(callback: Callback\<string>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是on('PostDialDelay')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('PostDialDelay')](#callonPostDialDelay11)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                         |必填 |说明                                             |
@@ -9430,11 +9430,11 @@ offPostDialDelay(callback?: Callback\<string>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是off('PostDialDelay')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('PostDialDelay')](#calloffPostDialDelay11)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                         |必填 |说明                                           |
@@ -9490,11 +9490,11 @@ onCallEventChange(callback: Callback\<CallEventOptions>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是on('ImsCallModeChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('ImsCallModeChange')](#callonImsCallModeChange11)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                         |必填 |说明                                                |
@@ -9549,11 +9549,11 @@ offCallEventChange(callback?: Callback\<CallEventOptions>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是off('ImsCallModeChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('ImsCallModeChange')](#calloffImsCallModeChange11)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                         |必填 |说明                                           |
@@ -9608,11 +9608,11 @@ onCallSessionEvent(callback: Callback\<CallSessionEvent>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是on('CallSessionEvent')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('CallSessionEvent')](#callonCallSessionEvent11)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                |必填 |说明                                                |
@@ -9667,11 +9667,11 @@ offCallSessionEvent(callback?: Callback\<CallSessionEvent>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是off('CallSessionEvent')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('CallSessionEvent')](#calloffCallSessionEvent11)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                |必填 |说明                                            |
@@ -9727,11 +9727,11 @@ onPeerDimensionsChange(callback: Callback\<PeerDimensionsDetail>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是on('PeerDimensionsChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('PeerDimensionsChange')](#callonPeerDimensionsChange11)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                        |必填 |说明                                                   |
@@ -9786,11 +9786,11 @@ offPeerDimensionsChange(callback?: Callback\<PeerDimensionsDetail>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是off('PeerDimensionsChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('PeerDimensionsChange')](#calloffPeerDimensionsChange11)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                        |必填 |说明                                            |
@@ -9845,11 +9845,11 @@ onCameraCapabilitiesChange(callback: Callback\<CameraCapabilities>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是on('CameraCapabilitiesChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('CameraCapabilitiesChange')](#callonCameraCapabilitiesChange11)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                    |必填 |说明                                                   |
@@ -9904,11 +9904,11 @@ offCameraCapabilitiesChange(callback?: Callback\<CameraCapabilities>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是off('CameraCapabilitiesChange')。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('CameraCapabilitiesChange')](#calloffCameraCapabilitiesChange11)。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 |参数名    |类型                                                        |必填 |说明                                            |
