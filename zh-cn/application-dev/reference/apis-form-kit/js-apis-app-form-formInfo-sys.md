@@ -121,7 +121,7 @@ import { formInfo } from '@kit.FormKit';
 | FORM_CENTER_NEGATIVE_SCREEN  | 4    | 表示卡片位于负一屏的服务中心。   |
 | FORM_MANAGER_NEGATIVE_SCREEN | 5    | 表示卡片位于负一屏的卡片管理器。 |
 | SCREEN_LOCK                  | 6    | 表示卡片位于锁屏。               |
-| AI_SUGGESTION                | 7    | 表示卡片位于小艺建议推荐区。     |
+| AI_SUGGESTION                | 7    | 表示卡片位于AI智慧助手推荐区。     |
 
 ## PublishFormResult<sup>12+</sup>
 
