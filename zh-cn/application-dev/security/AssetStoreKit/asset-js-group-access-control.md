@@ -33,6 +33,23 @@
 
 2. 引用头文件，定义工具函数。
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_group_plaintext.ets) -->
+   
+   ``` TypeScript
+   import { asset } from '@kit.AssetStoreKit';
+   import { util } from '@kit.ArkTS';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   function stringToArray(str: string): Uint8Array {
+     let textEncoder = new util.TextEncoder();
+     return textEncoder.encodeInto(str);
+   }
+   
+   function arrayToString(arr: Uint8Array): string {
+     let textDecoder = util.TextDecoder.create('utf-8', { ignoreBOM: true });
+     let str = textDecoder.decodeToString(arr, { stream: false });
+     return str;
+   }
+   ```
 
 ## 新增群组关键资产
 
