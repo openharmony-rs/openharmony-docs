@@ -52,37 +52,37 @@
 3. 用户调用setNetFirewallPolicy方法，打开防火墙。
 
    <!-- @[net_firewall_set_net_firewall_policy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// IP类型
-interface IpType{
-  family:number;
-  type:number;
-  address?:string;
-  mask?:number;
-  startIp?:string;
-  endIp?:string;
-}
-// IP端口
-interface IpPort{
-  startPort:number;
-  endPort:number;
-}
-// ···
-    // 定义防火墙策略：打开，入站阻止，出站允许。
-    let policy: netFirewall.NetFirewallPolicy = {
-      isOpen: true,
-      inAction: netFirewall.FirewallRuleAction.RULE_DENY,
-      outAction: netFirewall.FirewallRuleAction.RULE_ALLOW
-    };
-
-    // 给用户100设置防火墙策略。
-    netFirewall.setNetFirewallPolicy(100, policy).then(() => {
-      console.info(`set firewall policy success.`);
-    }).catch((error : BusinessError) => {
-      console.error(`error: set firewall policy failed: ${JSON.stringify(error)}`);
-    });
-```
+   
+   ``` TypeScript
+   // IP类型
+   interface IpType{
+     family:number;
+     type:number;
+     address?:string;
+     mask?:number;
+     startIp?:string;
+     endIp?:string;
+   }
+   // IP端口
+   interface IpPort{
+     startPort:number;
+     endPort:number;
+   }
+   // ...
+       // 定义防火墙策略：打开，入站阻止，出站允许。
+       let policy: netFirewall.NetFirewallPolicy = {
+         isOpen: true,
+         inAction: netFirewall.FirewallRuleAction.RULE_DENY,
+         outAction: netFirewall.FirewallRuleAction.RULE_ALLOW
+       };
+   
+       // 给用户100设置防火墙策略。
+       netFirewall.setNetFirewallPolicy(100, policy).then(() => {
+         hilog.info(0x0000, 'testTag', `set firewall policy success.`);
+       }).catch((error : BusinessError) => {
+         hilog.error(0x0000, 'testTag', `error: set firewall policy failed: ${JSON.stringify(error)}`);
+       });
+   ```
 4. 用户通过addNetFirewallRule方法，添加防火墙规则。
 
    <!-- @[net_firewall_add_net_firewall_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
