@@ -691,15 +691,15 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 5.  调用addChain()方法，将需要的拦截器实例加入到拦截器链中。
 
     <!-- @[HTTP_interceptor_case_addChain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 创建所需要的拦截器对象,将拦截器对象加入拦截器链中
-chain.addChain([
-  new InitialHttpInterceptor(InterceptorType.INITIAL_REQUEST, true),
-  new NetworkHttpInterceptor(InterceptorType.NETWORK_CONNECT, true),
-  new FinalHttpInterceptor(InterceptorType.FINAL_RESPONSE, true)
-]);
-```
+    
+    ``` TypeScript
+    // 创建所需要的拦截器对象,将拦截器对象加入拦截器链中
+    chain.addChain([
+      new InitialHttpInterceptor(InterceptorType.INITIAL_REQUEST, true),
+      new NetworkHttpInterceptor(InterceptorType.NETWORK_CONNECT, true),
+      new FinalHttpInterceptor(InterceptorType.FINAL_RESPONSE, true)
+    ]);
+    ```
 
 6.  调用apply()方法，将当前配置好的拦截器链附加到httpRequest中。
 
