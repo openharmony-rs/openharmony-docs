@@ -83,14 +83,14 @@
     调用该对象的on()方法，订阅HTTP响应头事件，此接口会比request请求先返回。可以根据业务需要订阅此消息。
 
    <!-- @[HTTP_case_http_request_on_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    // 用于订阅HTTP响应头，此接口会比request请求先返回。可以根据业务需要订阅此消息。
-    // 从API 8开始，使用on('headersReceive', Callback)替代on('headerReceive', AsyncCallback)。
-    httpRequest.on('headersReceive', (header) => {
-      console.info(`header: ${JSON.stringify(header)}`);
-    });
-```
+   
+   ``` TypeScript
+   // 用于订阅HTTP响应头，此接口会比request请求先返回。可以根据业务需要订阅此消息。
+   // 从API 8开始，使用on('headersReceive', Callback)替代on('headerReceive', AsyncCallback)。
+   httpRequest.on('headersReceive', (header) => {
+    hilog.info(0x0000, 'testTag', `header: ${JSON.stringify(header)}`);
+   });
+   ```
 
 
 4. 发起HTTP请求，解析服务器响应事件
