@@ -5092,3 +5092,15 @@ Allows an application to simulate user operations.
 **Supported devices**: general devices
 
 **Valid since**: 20
+
+## ohos.permission.SET_LAUNCH_REASON_MESSAGE
+
+Allows a system application to set the launch reason when starting another application.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 18
