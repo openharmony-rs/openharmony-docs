@@ -1226,7 +1226,6 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 | 6600103  | The session controller does not exist.                       |
 
 **示例：**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
