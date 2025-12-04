@@ -26,7 +26,7 @@
 
 ### OsAccount_ErrCode
 
-```
+```c
 enum OsAccount_ErrCode
 ```
 
