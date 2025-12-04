@@ -71,7 +71,7 @@
 
 ### ArkWeb_WebMessageType
 
-```
+```c
 enum ArkWeb_WebMessageType
 ```
 
@@ -89,7 +89,7 @@ Post Message数据类型。
 
 ### ArkWeb_JavaScriptValueType
 
-```
+```c
 enum ArkWeb_JavaScriptValueType
 ```
 
@@ -110,7 +110,7 @@ JavaScript数据类型。
 
 ### ArkWeb_OnJavaScriptCallback()
 
-```
+```c
 typedef void (*ArkWeb_OnJavaScriptCallback)(const char* webTag, const ArkWeb_JavaScriptBridgeData* data, void* userData)
 ```
 
@@ -131,7 +131,7 @@ typedef void (*ArkWeb_OnJavaScriptCallback)(const char* webTag, const ArkWeb_Jav
 
 ### ArkWeb_OnJavaScriptProxyCallback()
 
-```
+```c
 typedef void (*ArkWeb_OnJavaScriptProxyCallback)(const char* webTag, const ArkWeb_JavaScriptBridgeData* dataArray, size_t arraySize, void* userData)
 ```
 
@@ -153,7 +153,7 @@ Proxy方法被执行的回调。
 
 ### ArkWeb_OnJavaScriptProxyCallbackWithResult()
 
-```
+```c
 typedef ArkWeb_JavaScriptValuePtr (*ArkWeb_OnJavaScriptProxyCallbackWithResult)(const char* webTag, const ArkWeb_JavaScriptBridgeData* dataArray, size_t arraySize, void* userData)
 ```
 
@@ -175,7 +175,7 @@ Proxy方法被执行的回调。
 
 ### ArkWeb_OnComponentCallback()
 
-```
+```c
 typedef void (*ArkWeb_OnComponentCallback)(const char* webTag, void* userData)
 ```
 
@@ -195,7 +195,7 @@ typedef void (*ArkWeb_OnComponentCallback)(const char* webTag, void* userData)
 
 ### ArkWeb_OnScrollCallback()
 
-```
+```c
 typedef void (*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, double x, double y)
 ```
 
@@ -217,7 +217,7 @@ typedef void (*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, doub
 
 ### ArkWeb_OnMessageEventHandler()
 
-```
+```c
 typedef void (*ArkWeb_OnMessageEventHandler)(const char* webTag, const ArkWeb_WebMessagePortPtr port, const ArkWeb_WebMessagePtr message, void* userData)
 ```
 
