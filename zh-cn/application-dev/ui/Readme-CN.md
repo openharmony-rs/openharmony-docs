@@ -107,7 +107,13 @@
     - [\@Env：环境变量](arkts-env-system-property.md)
   - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
     - [组件导航和页面路由概述](arkts-navigation-introduction.md)
-    - [组件导航(Navigation) (推荐)](arkts-navigation-navigation.md)
+    - 组件导航(Navigation) (推荐)<!--arkts-navigation-navigation-->
+      - [Navigation基础架构介绍](./arkts-navigation-architecture.md)
+      - [Navigation子页面](./arkts-navigation-navdestination.md)
+      - [Navigation页面路由](./arkts-navigation-jump.md)
+      - [Navigation转场动画](./arkts-navigation-animation.md)
+      - [Navigation跨包路由](./arkts-navigation-cross-package.md)
+      - [Navigation分栏开发](./arkts-navigation-split-mode.md)
     - [页面路由 (@ohos.router)(不推荐)](arkts-routing.md)
     - [Router切换Navigation](arkts-router-to-navigation.md)
   - 组件布局<!--arkts-layout-development-->
@@ -367,6 +373,7 @@
   - [UI调优](ui-inspector-profiler.md)
   - [UI高性能开发](ui-performance-overview.md)
   - UI开发常见问题<!--ui-development-faq-->
+    - [Navigation动画常见问题](arkts-navigation-animation-faq.md)
     - [自定义节点常见问题](arkts-user-defined-node-faq.md)
     - [按钮与选择组件常见问题](arkts-select-component-faq.md)
     - [使用文本常见问题](arkts-text-faq.md)
