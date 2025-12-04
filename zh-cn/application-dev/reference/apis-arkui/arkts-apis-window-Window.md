@@ -9964,9 +9964,9 @@ try {
 
 ## convertOrientationAndRotation<sup>23+</sup>
 
-convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, value: int): int
+convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, value: number): number
 
-提供窗口方向、屏幕方向、屏幕角度互相转换的能力。
+提供窗口方向、屏幕方向和屏幕角度互相转换的能力。
 
 窗口方向指窗口所在屏幕的方向，以窗口模块对横竖屏的定义方式表示，窗口的方向分别用0、1、2和3表示竖屏、反向横屏、反向竖屏和横屏四个方向，其对横竖屏的定义与[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)和枚举类[Orientation](arkts-apis-window-e.md#orientation9)中对横竖屏的定义一致，如Orientation设置为LANDSCAPE时，窗口方向为横屏。
 
@@ -9976,9 +9976,9 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 
 | 参数名   | 类型                          | 必填 | 说明                                                    |
 | -------- | ----------------------------- | ---- | ------------------------------------------------------ |
-| from     | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | 是   | 待转换的值的类型 |
-| to       | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | 是   | 目标值的类型 |
-| value    | int               | 是   | 待转换的值 |
+| from     | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | 是   | 待转换的值的类型。 |
+| to       | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | 是   | 目标值的类型。 |
+| value    | number               | 是   | 待转换的值。 |
 
 **错误码：**
 
@@ -9994,10 +9994,10 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 
 ```ts
 try {
-  let originalValue: int = 0;
+  let originalValue: number = 0;
   let fromType: Window.RotationInfoType = Window.RotationInfoType.WINDOW_ORIENTATION;
   let toType: Window.RotationInfoType = Window.RotationInfoType.DISPLAY_ORIENTATION;
-  let convertedValue: int = windowClass.convertOrientationAndRotation(fromType, toType, originalValue);
+  let convertedValue: number = windowClass.convertOrientationAndRotation(fromType, toType, originalValue);
   console.info(`Convert ${originalValue} of type: ${fromType} to ${convertedValue} of type: ${toType}`);
 } catch (exception) {
   console.error(`Failed to convert orientation and rotation between window and display. Cause code: ${exception.code}, message: ${exception.message}`);
