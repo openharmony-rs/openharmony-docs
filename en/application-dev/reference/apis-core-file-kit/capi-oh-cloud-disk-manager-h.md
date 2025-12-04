@@ -414,7 +414,7 @@ Updates the sync root alias.
 | Name| Description|
 | -- | -- |
 | const CloudDisk_SyncFolderPath syncFolderPath | Sync root path of the alias to be updated. For details, see {@link CloudDisk_SyncFolderPath}.|
-| const char *customAlias | Pointer to the new custom alias, which cannot contain the following characters: [\/:*?<>\|"]. Additionally, the full name cannot be composed solely of spaces, a single dot (.), or two consecutive dots (..).| |
+| const char *customAlias | Pointer to the custom alias, which cannot contain the following characters: \\\/\*\?\<\>\\:\". Additionally, the full name cannot be composed solely of spaces, a single dot (.), or two consecutive dots (..).| |
 | size_t customAliasLength | Length of the custom alias. Value range: [0, 255].|
 
 **Returns**

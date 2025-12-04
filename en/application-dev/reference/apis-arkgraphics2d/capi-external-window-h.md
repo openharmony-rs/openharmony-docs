@@ -1155,7 +1155,7 @@ This function is not thread-safe.
 | Name| Description|
 | -- | -- |
 | [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Pointer to the **OHNativeWindow** struct instance.|
-| uint32_t allocBufferCnt | Number of buffers to be requested in advance. If the value of **allBufferCnt** is greater than that of **bufferQueueSize**, only **bufferQueueSize** buffers can be requested in advance. **bufferQueueSize** can be obtained by calling [OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt).|
+| uint32_t allocBufferCnt | Number of buffers to be requested in advance. If the value of **allocBufferCnt** is greater than that of **bufferQueueSize**, only **bufferQueueSize** buffers can be requested in advance. **bufferQueueSize** can be obtained by calling [OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt).|
 
 **Returns**
 

@@ -7,6 +7,10 @@
 <!--Tester: @liuzhenshuo-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_WaterFlowSectionOption ArkUI_WaterFlowSectionOption
+```
+
 ## 概述
 
 定义FlowItem分组配置信息。

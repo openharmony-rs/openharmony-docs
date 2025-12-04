@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_Region OH_Drawing_Region
+```
+
 ## 概述
 
 定义一个区域，用于表示画布上的封闭区域，实现更精确的图形控制。

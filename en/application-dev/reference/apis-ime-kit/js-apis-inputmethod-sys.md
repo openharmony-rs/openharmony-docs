@@ -84,7 +84,7 @@ async function switchInputMethodWithSubtype() {
 switchInputMethodWithSubtype();
 ```
 
-## InputMethodSetting<sup>8+</sup>
+## InputMethodSetting<sup>
 
 In the following API examples, you must first use [getSetting](./js-apis-inputmethod.md#inputmethodgetsetting9) to obtain an **InputMethodSetting** instance, and then call the APIs using the obtained instance.
 

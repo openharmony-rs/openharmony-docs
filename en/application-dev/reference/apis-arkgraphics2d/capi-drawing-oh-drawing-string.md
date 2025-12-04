@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_Drawing_String
+```
+
 ## Overview
 
 This struct describes a string of characters encoded in UTF-16.

@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVScreenCapture_ContentFilter OH_AVScreenCapture_ContentFilter
+```
+
 ## 概述
 
 通过OH_AVScreenCapture_ContentFilter过滤音视频内容。

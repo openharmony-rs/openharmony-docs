@@ -6,6 +6,10 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} DisplaySoloist_ExpectedRateRange
+```
+
 ## 概述
 
 提供期望帧率范围结构体。

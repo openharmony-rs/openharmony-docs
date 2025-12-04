@@ -15,7 +15,7 @@ Required adaptation:
 - Saving the wakeup reason (for example, wakeup due to low battery level) to the kernel node.
 
 Configuration rule:
-The configuration path for power wakeup action source customization is subject to the [configuration policy](https://gitee.com/openharmony/customization_config_policy). In this development guide, `/vendor` is used as an example of the configuration path. During actual development, you need to modify the customization path based on the product configuration policy.
+The configuration path for power wakeup action source customization is subject to the [configuration policy](https://gitcode.com/openharmony/customization_config_policy). In this development guide, `/vendor` is used as an example of the configuration path. During actual development, you need to modify the customization path based on the product configuration policy.
 
 ## How to Develop
 
@@ -31,11 +31,11 @@ For details about the requirements on the Linux environment, see [Quick Start](.
 
 ### Getting Started with Development
 
-The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate post-wakeup system action customization.
+The following uses [DAYU200](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate post-wakeup system action customization.
 
-1. Create the `power_manager` folder in the product directory [/vendor/hihope/rk3568](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568).
+1. Create the `power_manager` folder in the product directory [/vendor/hihope/rk3568](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568).
 
-2. Create a target folder by referring to the [default folder of power wakeup action source configuration](https://gitee.com/openharmony/powermgr_power_manager/tree/master/services/native/profile), and install it in `/vendor/hihope/rk3568/power_manager`. The content is as follows:
+2. Create a target folder by referring to the [default folder of power wakeup action source configuration](https://gitcode.com/openharmony/powermgr_power_manager/tree/master/services/native/profile), and install it in `/vendor/hihope/rk3568/power_manager`. The content is as follows:
 
     ```text
     profile
@@ -77,7 +77,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     | ACTION_HIBERNATE | 1 | Hibernation|
     | ACTION_SHUTDOWN | 2 | Shutdown|
 
-4. Write the `BUILD.gn` file by referring to the [BUILD.gn](https://gitee.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/BUILD.gn) file in the default folder of power wakeup action source configuration to pack the `power_wakeup_action.json` file to the `/vendor/etc/power_wakeup_action` directory. The configuration is as follows:
+4. Write the `BUILD.gn` file by referring to the [BUILD.gn](https://gitcode.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/BUILD.gn) file in the default folder of power wakeup action source configuration to pack the `power_wakeup_action.json` file to the `/vendor/etc/power_wakeup_action` directory. The configuration is as follows:
 
     ```shell
     import("//build/ohos.gni")               # Reference build/ohos.gni.
@@ -90,7 +90,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     }
     ```
 
-5. Add the build target to `module_list` in [ohos.build](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build) in the `/vendor/hihope/rk3568` directory. For example:
+5. Add the build target to `module_list` in [ohos.build](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build) in the `/vendor/hihope/rk3568` directory. For example:
 
     ```json
     {
@@ -132,12 +132,12 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     }
     ```
 
-2. In the [powermgr.gni](https://gitee.com/openharmony/powermgr_power_manager/blob/master/powermgr.gni) file, set **power_manager_feature_wakeup_action** to **true** to enable the feature.
+2. In the [powermgr.gni](https://gitcode.com/openharmony/powermgr_power_manager/blob/master/powermgr.gni) file, set **power_manager_feature_wakeup_action** to **true** to enable the feature.
     ```
     power_manager_feature_wakeup_action = true
     ```
     
-3. Add the following configuration to the [battery_config.json](https://gitee.com/openharmony/powermgr_battery_manager/blob/master/services/native/profile/battery_config.json) file:
+3. Add the following configuration to the [battery_config.json](https://gitcode.com/openharmony/powermgr_battery_manager/blob/master/services/native/profile/battery_config.json) file:
     ```json
     "charge_scene": {
         "low_battery_thers": {
@@ -149,11 +149,11 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     ```
     In the preceding configuration, **path** indicates the path of the node that stores the low battery threshold.
 
-4. In the [batterymgr.gni](https://gitee.com/openharmony/powermgr_battery_manager/blob/master/batterymgr.gni) file, set **battery_manager_feature_set_low_capacity_threshold** to **true** to enable the feature.
+4. In the [batterymgr.gni](https://gitcode.com/openharmony/powermgr_battery_manager/blob/master/batterymgr.gni) file, set **battery_manager_feature_set_low_capacity_threshold** to **true** to enable the feature.
     ```
     battery_manager_feature_set_low_capacity_threshold = true
     ```    
-5. Add the following configuration to the [power_config.json](https://gitee.com/openharmony/drivers_peripheral/blob/master/power/interfaces/hdi_service/profile/power_config.json) file:
+5. Add the following configuration to the [power_config.json](https://gitcode.com/openharmony/drivers_peripheral/blob/master/power/interfaces/hdi_service/profile/power_config.json) file:
     ```json
     {
         "scene" :{
@@ -167,11 +167,11 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     ```
     In the preceding configuration, **get** indicates the path of the node that stores the low battery wakeup reason.
 
-5. In the [power.gni](https://gitee.com/openharmony/drivers_peripheral/blob/master/power/power.gni) file, set **drivers_peripheral_power_wakeup_cause_path** to **true** to enable the feature.
+5. In the [power.gni](https://gitcode.com/openharmony/drivers_peripheral/blob/master/power/power.gni) file, set **drivers_peripheral_power_wakeup_cause_path** to **true** to enable the feature.
     ```
     drivers_peripheral_power_wakeup_cause_path = true
     ```
-6. Change the node permission to **system** in the **pre-init** field of the [hdf_peripheral.cfg](https://gitee.com/openharmony/drivers_peripheral/blob/master/base/hdf_peripheral.cfg) file.
+6. Change the node permission to **system** in the **pre-init** field of the [hdf_peripheral.cfg](https://gitcode.com/openharmony/drivers_peripheral/blob/master/base/hdf_peripheral.cfg) file.
     ```
     "chown system system xxx",
     "chown system system yyy",

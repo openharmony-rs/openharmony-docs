@@ -215,7 +215,7 @@ getForegroundApplications(): Promise\<Array\<AppStateData>>
       console.info(`GetForegroundApplications success, data: ${JSON.stringify(data)}.`);
     })
     .catch((err: BusinessError) => {
-      console.error(`GetForegroundApplications faield, error code: ${err.code}, error msg: ${err.message}.`);
+      console.error(`GetForegroundApplications failed, error code: ${err.code}, error msg: ${err.message}.`);
     });
   ```
 
@@ -258,7 +258,7 @@ let bundleName = 'bundleName';
 let accountId = 0;
 appManager.killProcessWithAccount(bundleName, accountId)
   .then((data) => {
-    console.info(`KillProcessWithAccount succes, data: ${JSON.stringify(data)}.`);
+    console.info(`KillProcessWithAccount success, data: ${JSON.stringify(data)}.`);
   })
   .catch((err: BusinessError) => {
     console.error(`KillProcessWithAccount failed, error code: ${err.code}, error msg: ${err.message}.`);
@@ -419,7 +419,7 @@ clearUpApplicationData(bundleName: string, callback: AsyncCallback\<void>)
     if (err) {
       console.error(`ClearUpApplicationDataCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
     } else {
-      console.info(`ClearUpApplicationDataCallback success, dta: ${JSON.stringify(data)}.`);
+      console.info(`ClearUpApplicationDataCallback success, data: ${JSON.stringify(data)}.`);
     }
   }
 
@@ -459,7 +459,7 @@ clearUpApplicationData(bundleName: string): Promise\<void>
   let bundleName = 'bundleName';
   appManager.clearUpApplicationData(bundleName)
     .then((data) => {
-      console.info(`ClearUpApplicationData sucecss, data: ${JSON.stringify(data)}.`);
+      console.info(`ClearUpApplicationData success, data: ${JSON.stringify(data)}.`);
     })
     .catch((err: BusinessError) => {
       console.error(`ClearUpApplicationData failed, error code: ${err.code}, error msg: ${err.message}.`);

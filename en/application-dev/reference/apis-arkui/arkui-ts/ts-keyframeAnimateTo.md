@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 [UIContext](../arkts-apis-uicontext-uicontext.md) provides the **keyframeAnimateTo** API that allows you to define several keyframes to implement segment-based animations. In an animation that involves width and height changes, as in a property animation, a component's content (such as text and [canvas](ts-components-canvas-canvas.md) content) is changed straight to the final state. To enable the content to change with the width and height during the animation process, use the [renderFit](ts-universal-attributes-renderfit.md#renderfit) attribute.
 

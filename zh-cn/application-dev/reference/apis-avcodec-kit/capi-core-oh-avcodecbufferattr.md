@@ -7,6 +7,10 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVCodecBufferAttr {...} OH_AVCodecBufferAttr
+```
+
 ## 概述
 
 定义OH_AVCodec的缓冲区描述信息。

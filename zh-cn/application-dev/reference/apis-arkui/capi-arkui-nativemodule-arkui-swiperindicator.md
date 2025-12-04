@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_SwiperIndicator ArkUI_SwiperIndicator
+```
+
 ## 概述
 
 定义 Swiper 组件的导航指示器风格。

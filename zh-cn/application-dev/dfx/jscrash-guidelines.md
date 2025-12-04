@@ -57,11 +57,15 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 |---|---|---|---|---|
 | Device info | 设备信息 | 8 | 是 | - |
 | Build info | 版本信息 | 8 | 是 | - |
+| DeviceDebuggable | 设备是否可调试 | 23 | 是 | - |
 | Fingerprint | 故障特征，聚类同类问题的哈希值 | 8 | 是 | - |
 | Timestamp | 时间戳 | 8 | 是 | - |
 | Module name | 包名/进程名 | 8 | 是 | - |
+| ReleaseType | 标识应用打包时使用的SDK的发布类型，具体说明详见[ApplicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中的releaseType。 | 23 | 是 | - |
+| CpuAbi | 二进制接口类型 | 23 | 是 | - |
 | Version | hap版本 | 8 | 是 | - |
-| Version Code | 版本编码 | 8 | 是 | - |
+| VersionCode | 版本编码 | 8 | 是 | - |
+| IsSystemApp | 应用是否为系统应用 | 23 | 是 | - |
 | Pid | 故障进程号 | 8 | 是 | - |
 | Uid | 用户ID | 8 | 是 | - |
 | Process life time | 故障进程存活时间 | 22 | 是 | - |
@@ -80,11 +84,15 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 ```text
 Device info:XXX <- 设备信息
 Build info:XXX-XXXX X.X.X.XX(XXXXXXXX) <- 版本信息
+DeviceDebuggable:No <- 设备是否可调试
 Fingerprint:ed1811f3f5ae13c7262b51aab73ddd01df95b2c64466a204e0d70e6461cf1697 <- 故障特征
 Timestamp:XXXX-XX-XX XX:XX:XX.XXX <- 时间戳
 Module name:com.example.myapplication <- 包名/进程名
+ReleaseType:Release <- 标识应用打包时使用的SDK的发布类型
+CpuAbi:arm64-v8a <- 二进制接口类型
 Version:1.0.0 <- hap版本
 VersionCode:1000000 <- 版本编码
+IsSystemApp:No <- 应用是否为系统应用
 Pid:579 <- 故障进程号
 Uid:0 <- 用户ID
 Process life time:1s  <- 进程存活时间

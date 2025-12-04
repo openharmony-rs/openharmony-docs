@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_TypographyStyle OH_Drawing_TypographyStyle
+```
+
 ## 概述
 
 用于管理排版风格，如文字方向等。

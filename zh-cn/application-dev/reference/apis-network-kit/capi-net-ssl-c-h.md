@@ -33,6 +33,7 @@
 | [void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)](#oh_netstack_destroycertificatescontent) | 释放证书内容。 |
 | [int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)](#oh_netstack_iscleartextpermitted) | 整体明文HTTP是否允许。 |
 | [int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *isCleartextPermitted)](#oh_netstack_iscleartextpermittedbyhostname) | 按域名明文HTTP是否允许。 |
+| [int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg)](#oh_netstack_iscleartextcfgbycomponent) | 检查组件是否已配置开启明文HTTP拦截功能。 |
 
 
 ## 函数说明
@@ -196,4 +197,30 @@ int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *i
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 0 - 成功。<br>         201 - 权限被拒。<br>         401 - 参数错误。 |
+
+### OH_Netstack_IsCleartextCfgByComponent
+
+```
+int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg);
+```
+
+**描述**
+
+检查组件是否已配置开启明文HTTP拦截功能。
+
+**起始版本：** 20
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const char *component | 组件名称，当前支持的组件：Network Kit、ArkWeb。 |
+| bool *componentCfg | 输出参数，组件是否配置开启明文HTTP拦截功能，如果开启则为true，否则为false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 0 - 成功。<br>         2100001 - 无效的参数值。 |
 

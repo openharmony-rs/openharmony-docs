@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Hid_EmitItem {...} Hid_EmitItem
+```
+
 ## 概述
 
 事件信息。

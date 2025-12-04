@@ -28,6 +28,7 @@ This topic describes only how to implement the playback of a media asset. In pra
 - If the media asset being played involves audio, the playback may be interrupted by other applications based on the system audio management policy. (For details, see [Processing Audio Interruption Events](../audio/audio-playback-concurrency.md).) It is recommended that the player application proactively listen for audio interruption events and handle the events accordingly to avoid the inconsistency between the application status and the expected effect.
 - When a device is connected to multiple audio output devices, the application can listen for audio output device changes through [on('audioOutputDeviceChangeWithInfo')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onaudiooutputdevicechangewithinfo11) and perform the processing accordingly.
 - To access online media resources, you must request the ohos.permission.INTERNET permission.
+- To switch between the receiver and speaker, refer to the instructions provided in [Switching Audio Output Devices](../audio/audio-output-device-switcher.md).
 
 ## How to Develop
 
@@ -102,8 +103,6 @@ Read [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) for
    > - You can also use **ResourceManager.getRawFd** to obtain the FD of a file packed in the HAP file. For details, see [ResourceManager API Reference](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9).
    > 
    > - The [playback formats and protocols](media-kit-intro.md#supported-formats-and-protocols) in use must be those supported by the system.
-   > 
-   > In addition, the audio renderer information (if required) must be set only when the AVPlayer is in the initialized state, that is, before **prepare()** is called for the first time. If the media source contains videos, the default value of **usage** is **STREAM_USAGE_MOVIE**. Otherwise, the default value of **usage** is **STREAM_USAGE_MUSIC**. The default value of **rendererFlags** is 0. To ensure that the audio behavior meets the expectation, you are advised to proactively configure [audio.AudioRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8) and select a proper stream type (specified by [usage](../../media/audio/using-right-streamusage-and-sourcetype.md)) based on your service scenario and requirements.
 
     ```ts
     let url = 'https://xxx.xxx.xxx.mp3';
@@ -112,8 +111,19 @@ Read [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) for
     }
     avPlayer.url = url;
     ```
+4. (Optional) Set the audio renderer information. The information must be set when the AVPlayer is in the initialized state, that is, before **prepare()** is called for the first time. If the media source contains videos, the default value of **usage** is **STREAM_USAGE_MOVIE**. Otherwise, the default value of **usage** is **STREAM_USAGE_MUSIC**. The default value of **rendererFlags** is 0.
+    To ensure that the audio behavior meets the expectation, you are advised to proactively configure [audio.AudioRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8) and select a proper stream type (specified by [usage](../../media/audio/using-right-streamusage-and-sourcetype.md)) based on your service scenario and requirements.
+    
+    ```ts
+    import { audio } from '@kit.AudioKit';
 
-4. Call **prepare()** to switch the AVPlayer to the **prepared** state. In this state, you can obtain the duration of the media asset to play and set the volume.
+    avPlayer.audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_MOVIE,
+        rendererFlags: 0
+    }
+    ```
+
+5. Prepare for playback. Specifically, call **prepare()** to switch the AVPlayer to the prepared state. In this state, you can obtain the video duration and adjust the volume.
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -127,7 +137,7 @@ Read [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) for
     });
     ```
 
-5. Call **play()**, **pause()**, **seek()**, and **stop()** to perform audio playback control as required.
+6. Perform audio playback control. Specifically, call **play()**, **pause()**, **seek()**, and **stop()** as required.
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -159,7 +169,7 @@ Read [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) for
     });
     ```
 
-6. (Optional) Call **reset()** to reset the AVPlayer. The AVPlayer enters the **idle** state again and you can change the media asset URL.
+7. (Optional) Replace resources. Specifically, call **reset()** to reset the AVPlayer. The AVPlayer enters the **idle** state again and you can change the media asset URL.
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -180,7 +190,7 @@ Read [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) for
     avPlayer.url = url;
     ```
 
-7. Call **release()** to switch the AVPlayer to the **released** state. Now your application exits the playback.
+8. Call **release()** to switch the AVPlayer to the **released** state. Now your application exits the playback.
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';

@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct UsbEndpointDescriptor {...} __attribute__((packed)) UsbEndpointDescriptor
+```
+
 ## 概述
 
 标准端点描述符，对应USB协议中Standard Endpoint Descriptor。

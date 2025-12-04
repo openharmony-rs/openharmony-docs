@@ -8,6 +8,8 @@
 
 This topic describes how to create an ImageSource object, obtain the width and height of the PixelMap, and release the ImageSource object.
 
+Starting from API version 22, thumbnail decoding is provided for images in various professional camera formats. The formats supported are CR2, CR3, ARW, NEF, RAF, NRW, ORF, RW2, PEF, and SRW.
+
 ## How to Develop
 
 ### Adding a Link Library
@@ -128,7 +130,7 @@ static napi_value sourceTest(napi_env env, napi_callback_info info)
     OH_DecodingOptions_SetDesiredDynamicRange(ops, IMAGE_DYNAMIC_RANGE_AUTO);
     OH_PixelmapNative *resPixMap = nullptr;
 
-    // A null pointer cannot be passed in to ops. If ops does not need to be set, you do not need to create a PixelMap object.
+    // nullptr cannot be passed in to ops. If ops does not need to be set, you do not need to create a PixelMap object.
     errCode = OH_ImageSourceNative_CreatePixelmap(source, ops, &resPixMap);
     OH_DecodingOptions_Release(ops);
     if (errCode != IMAGE_SUCCESS) {

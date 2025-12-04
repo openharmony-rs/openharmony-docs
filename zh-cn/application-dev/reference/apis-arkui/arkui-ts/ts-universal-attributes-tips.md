@@ -48,10 +48,10 @@ bindTips(message: TipsMessageType, options?: TipsOptions): T
 
 | 名称                                  | 类型                                                         | 只读 | 可选 | 说明                                                      |
 | ------------------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| appearingTime         |           number   | 否    | 是  |设置悬浮气泡的显示时延。 <br/>默认值：700<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| disappearingTime                 |   number   | 否   | 是  | 设置悬浮气泡的隐藏时延。 <br/>默认值：300<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| appearingTimeWithContinuousOperation    |     number   | 否   | 是  | 多个组件连续弹出悬浮气泡时，悬浮气泡的显示时延。 <br/>默认值：300<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| disappearingTimeWithContinuousOperation |     number   | 否   | 是  | 多个组件连续弹出悬浮气泡时，悬浮气泡的隐藏时延。 <br/>默认值：0<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| appearingTime         |           number   | 否    | 是  |设置悬浮气泡的显示时延。显示时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。<br/>默认值：700<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| disappearingTime                 |   number   | 否   | 是  | 设置悬浮气泡的隐藏时延。隐藏时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。<br/>默认值：300<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| appearingTimeWithContinuousOperation    |     number   | 否   | 是  | 多个组件连续弹出悬浮气泡时，悬浮气泡的显示时延。显示时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。 <br/>默认值：300<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| disappearingTimeWithContinuousOperation |     number   | 否   | 是  | 多个组件连续弹出悬浮气泡时，悬浮气泡的隐藏时延。隐藏时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。 <br/>默认值：0<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | enableArrow        | boolean                                                      | 否   | 是  | 设置是否显示气泡箭头。值为true时，显示箭头；值为false时，不显示箭头。<br/>默认值：true<br/>**说明：** <br/>当页面可用空间无法让气泡完全避让时，气泡会覆盖到组件上并且不显示气泡箭头。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | arrowPointPosition     | [ArrowPointPosition](ts-appendix-enums.md#arrowpointposition11) | 否   | 是  | 气泡箭头相对于父组件显示位置，气泡箭头在垂直和水平方向上有 ”Start“、”Center“、”End“三个位置点可选。所有位置点均位于父组件区域范围内，不会超出父组件的边界范围，也不会覆盖圆角范围。<br/>默认值：ArrowPointPosition.CENTER<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | arrowWidth           | [Dimension](ts-types.md#dimension10)                  | 否   | 是  | 设置气泡箭头宽度。若所设置的宽度超过所在边的长度减去两倍的气泡圆角大小，则不绘制气泡箭头。<br/>默认值：16<br/>单位：vp<br/>**说明：**<br />不支持设置百分比。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |

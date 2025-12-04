@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdsPlainText OH_UdsPlainText
+```
+
 ## 概述
 
 描述纯文本类型数据的统一数据结构。

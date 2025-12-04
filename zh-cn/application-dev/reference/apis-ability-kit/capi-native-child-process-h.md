@@ -60,6 +60,7 @@
 | [Ability_NativeChildProcess_ErrCode OH_Ability_RegisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)](#oh_ability_registernativechildprocessexitcallback) | - | 注册子进程退出回调。重复注册同一个回调函数只会保留一个。 |
 | [Ability_NativeChildProcess_ErrCode OH_Ability_UnregisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)](#oh_ability_unregisternativechildprocessexitcallback) | - | 解注册子进程退出回调。 |
 | [Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUid(Ability_ChildProcessConfigs* configs, bool enableIsolationUid)](#oh_ability_childprocessconfigs_setisolationuid) | - | 设置子进程配置信息对象的uid是否隔离。该设置仅在NativeChildProcess_IsolationMode为NCP_ISOLATION_MODE_ISOLATED时生效。 |
+| [Ability_NativeChildProcess_ErrCode OH_Ability_KillChildProcess(int32_t pid))](#oh_ability_killchildprocess) | - | 杀死当前进程创建的子进程。 |
 
 ## 枚举类型说明
 
@@ -90,6 +91,7 @@ enum Ability_NativeChildProcess_ErrCode
 | NCP_ERR_LIB_LOADING_FAILED = 16010007 | 子进程加载动态库失败，文件不存在或者未实现对应的方法并导出。 |
 | NCP_ERR_CONNECTION_FAILED = 16010008 | 子进程调用动态库的OnConnect方法失败，可能返回了无效的IPC对象指针。 |
 | NCP_ERR_CALLBACK_NOT_EXIST = 16010009 | 父进程调用解注册Native子进程退出回调，未找到注册的回调函数。 |
+| NCP_ERR_INVALID_PID = 16010010 | 该进程pid不存在，或并非当前进程的子进程pid，或属于[childProcessManager.startChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartchildprocess)接口在SELF_FORK模式下启动的子进程。 |
 
 ### NativeChildProcess_IsolationMode
 
@@ -489,3 +491,32 @@ Ability_NativeChildProcess_ErrCode OH_Ability_UnregisterNativeChildProcessExitCa
 | 类型 | 说明 |
 | -- | -- |
 | [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 调用成功。<br>NCP_ERR_INVALID_PARAM - 参数不合法。<br>NCP_ERR_INTERNAL - 内部错误。<br>NCP_ERR_CALLBACK_NOT_EXIST - 未找到回调函数。<br>详见Ability_NativeChildProcess_ErrCode。 |
+
+### OH_Ability_KillChildProcess()
+
+```
+Ability_NativeChildProcess_ErrCode OH_Ability_KillChildProcess(int32_t pid)
+```
+
+**描述**
+
+杀死当前进程创建的子进程。
+
+> **说明：**
+>
+> 调用该接口无法杀死[childProcessManager.startChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartchildprocess)接口在SELF_FORK模式下启动的子进程。
+
+**起始版本：** 22
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| int32_t pid | 要杀死的子进程pid。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 调用成功。<br> NCP_ERR_SERVICE_ERROR - 服务端出错。<br>NCP_ERR_INVALID_PID - 所传入的子进程pid不合法。<br>详见Ability_NativeChildProcess_ErrCode。 |

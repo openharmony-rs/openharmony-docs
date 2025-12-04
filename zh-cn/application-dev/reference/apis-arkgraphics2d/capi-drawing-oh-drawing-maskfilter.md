@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_MaskFilter OH_Drawing_MaskFilter
+```
+
 ## 概述
 
 定义蒙版滤波器。

@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+struct OhosImageReceiverInfo {...}
+```
+
 ## 概述
 
 定义ImageReceiver的相关信息。

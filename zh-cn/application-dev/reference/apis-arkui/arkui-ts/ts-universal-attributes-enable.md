@@ -40,7 +40,7 @@ enabled(value: boolean): T
 
 ## 示例
 
-该示例通过enable设置按钮可交互性。
+该示例通过enabled设置按钮可交互性。
 
 ```ts
 // xxx.ets

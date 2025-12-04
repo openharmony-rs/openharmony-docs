@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_Rect OH_Drawing_Rect
+```
+
 ## 概述
 
 用于描述矩形。

@@ -7,6 +7,10 @@
 <!--Tester: @liuzhenshuo-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_ListItemSwipeActionItem ArkUI_ListItemSwipeActionItem
+```
+
 ## 概述
 
 定义ListItemSwipeActionOption方法内Item的配置信息。

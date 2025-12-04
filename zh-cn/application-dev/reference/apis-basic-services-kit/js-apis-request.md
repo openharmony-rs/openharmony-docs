@@ -2376,7 +2376,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 |------|--------|----|----|-------------------------------|
 | url | string | 否 | 否 | 资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](../../basic-services/request/app-file-upload-download.md#http拦截)功能。 |
 | header | Object | 否 | 是 | 添加要包含在下载请求中的HTTPS标志头。|
-| enableMetered | boolean | 否 | 是 | 表示设置是否允许在按流量计费的连接下下载任务的配置信息。true表示允许，false表示不允许。默认值为false。<br/>**说明：** Wi-Fi为非计费网络，数据流量为计费网络。 |
+| enableMetered | boolean | 否 | 是 | 表示设置是否允许在按流量计费的连接下下载任务的配置信息。true表示允许，false表示不允许。默认值为false。<br>**说明：**<br> Wi-Fi为非计费网络，数据流量为计费网络。 |
 | enableRoaming | boolean | 否 | 是 | 表示设置是否允许在漫游网络中下载任务的配置信息。true表示允许，false表示不允许。默认值为false。|
 | description | string | 否 | 是 | 设置下载会话的描述。默认值为空字符串。 |
 | filePath<sup>7+</sup> | string | 否 | 是 | 设置下载路径。默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。<br/>-&nbsp;FA模型下使用[context](../apis-ability-kit/js-apis-inner-app-context.md#contextgetcachedir)获取应用存储路径。<br/>-&nbsp;Stage模型下使用[AbilityContext](../apis-ability-kit/js-apis-inner-application-context.md)类获取文件路径。|
@@ -2406,9 +2406,9 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 
 ## request.agent
 
-### 常量<sup>21+</sup>
+### 常量
 
-**系统能力**：SystemCapability.MiscServices.Download
+**系统能力**：SystemCapability.Request.FileTransferAgent
 
 
 | 名称 | 类型 | 值 | 说明 |
@@ -2662,7 +2662,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 |------|--------|----|----|-------------------------------|
 | title   | string | 否 | 是 | 通知栏自定义标题。若不设置则使用默认显示方式。title长度上限为1024B。 |
 | text    | string | 否 | 是 | 通知栏自定义正文。若不设置则使用默认显示方式。text长度上限为3072B。  |
-| visibility<sup>21+</sup> | number | 否 | 是 | 设置任务的通知栏显示方式，通过[VISIBILITY常量](#常量21)的位运算方式决定显示方式，任务通知的显示方式，包括如下几种：<br/>- 仅显示完成通知，参数为VISIBILITY_COMPLETION或1，任务完成/失败后展示对应通知。<br/>- 仅显示进度通知，参数为VISIBILITY_PROGRESS或2，任务在进行中显示进度通知，当任务下载成功/失败后会直接退出进度通知，不会显示完成通知。<br/>- 显示进度通知/完成通知，参数为VISIBILITY_COMPLETION \| VISIBILITY_PROGRESS或3，任务在进行中显示进度通知，当任务下载成功/失败后会退出进度通知，并显示完成通知。<br/>若不设置该参数，则根据gauge字段来判断；若无gauge字段，则仅显示完成通知。|
+| visibility<sup>21+</sup> | number | 否 | 是 | 设置任务的通知栏显示方式，通过[VISIBILITY常量](#常量-1)的位运算方式决定显示方式，任务通知的显示方式，包括如下几种：<br/>- 仅显示完成通知，参数为VISIBILITY_COMPLETION或1，任务完成/失败后展示对应通知。<br/>- 仅显示进度通知，参数为VISIBILITY_PROGRESS或2，任务在进行中显示进度通知，当任务下载成功/失败后会直接退出进度通知，不会显示完成通知。<br/>- 显示进度通知/完成通知，参数为VISIBILITY_COMPLETION \| VISIBILITY_PROGRESS或3，任务在进行中显示进度通知，当任务下载成功/失败后会退出进度通知，并显示完成通知。<br/>若不设置该参数，则根据gauge字段来判断；若无gauge字段，则仅显示完成通知。|
 | wantAgent<sup>22+</sup> | [WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) | 否 | 是 | 通知参数，用于实现点击任务通知后跳转的功能。|
 
 

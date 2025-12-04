@@ -28,7 +28,7 @@ You can use the functions to create an audio routing manager, register and dereg
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) | OH_AudioRoutingManager | Describes an audio routing manager, which is used for routing and device-related functions.|
+| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) | OH_AudioRoutingManager | Describes an audio routing manager, which is used for audio routing management.|
 
 ### Functions
 
@@ -167,7 +167,7 @@ Obtains the output device with the highest priority based on the usage scenario 
 | Name| Description|
 | -- | -- |
 | [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | Handle to the audio routing manager, which is obtained by calling [OH_AudioManager_GetAudioRoutingManager](#oh_audiomanager_getaudioroutingmanager).|
-| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) streamUsage | Usage scenario of the audio input stream. For details about the available options, see [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).|
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) streamUsage | Usage scenario of the audio output stream. For details about the available options, see [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).|
 | [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) **audioDeviceDescriptorArray | Double pointer to the audio device descriptors in the array. Do not release the pointer to the audioDeviceDescriptorArray struct separately. Instead, call [OH_AudioRoutingManager_ReleaseDevices](#oh_audioroutingmanager_releasedevices) to release the DeviceDescriptor array.|
 
 **Returns**

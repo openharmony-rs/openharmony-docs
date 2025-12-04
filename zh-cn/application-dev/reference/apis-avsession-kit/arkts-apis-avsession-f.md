@@ -145,7 +145,7 @@ struct Index {
 }
 ```
 
-## avSession.getAVSession<sup>21+</sup>
+## avSession.getAVSession<sup>22+</sup>
 
 getAVSession(context: Context): Promise\<AVSession>
 

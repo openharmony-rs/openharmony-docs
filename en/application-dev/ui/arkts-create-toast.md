@@ -1,27 +1,41 @@
 # Using Toasts (Toast)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyi0309-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 A toast is a temporary window that provides brief feedback or status information to users. It typically appears at the bottom or top of the screen for a short duration before automatically disappearing. The main purpose of a toast is to provide concise and non-intrusive information, avoiding disruption to the user's current workflow.
 
 
-You can use the [getPromptAction](../reference/apis-arkui/js-apis-arkui-UIContext.md#getpromptaction) method in [UIContext](../reference/apis-arkui/js-apis-arkui-UIContext.md#uicontext) to obtain the [PromptAction](../reference/apis-arkui/js-apis-arkui-UIContext.md#promptaction) object associated with the current UI context, and then use the object to call [showToast](../reference/apis-arkui/js-apis-arkui-UIContext.md#showtoast) to create and display a toast.
+You can use the [getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) to obtain the [PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md) object associated with the current UI context, and then use the object to call [showToast](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showtoast) to create and display a toast.
+
+> **NOTE**
+>
+> For security reasons, toasts can only be displayed within the current UI instance. When the application exits, toasts will not remain visible as separate elements on the home screen.
 
 ## How to Use
 
- - Use toasts appropriately. Instead of constantly reminding users, use toasts for specific scenarios.
+ - Use toasts judiciously and avoid excessive user notifications.
 
-    For example, use toasts to indicate whether an action performed by the user is successful or fails, or to update users when the application's status changes.
+   Employ toasts for scenarios such as confirming user action results (success/failure) or notifying users about application status changes.
 
  - Manage text density. Because toasts are displayed for a limited time, avoid using long text.
 
    Ensure that the text is clear and readable, with font size and color consistent with the application's theme. In addition, toasts should not contain any interactive elements, such as buttons or links.
 
- - Avoid overlapping and frequent pop-ups.
+ - Avoid displaying overlapping or frequent toasts.
 
-   As a lightweight notification, toasts should not cover other screen elements or obscure important content. Frequent pop-ups without intervals can disrupt the user experience. Avoid replacing one toast with another in quick succession. Ensure that toasts display for no more than 3 seconds to prevent interference with user operations.
+   As lightweight feedback mechanisms, toasts should not obscure other screen elements or cover important content. Continuous popups without adequate intervals can significantly disrupt the user experience. Avoid replacing one toast with another in quick succession. Ensure toast displays do not exceed 3 seconds to prevent disruption of user interactions.
 
- - Conform with the default pop-up position.
+ - Follow the default toast positioning guidelines.
 
-   By default, toasts appear from the bottom of the screen with a safe distance. Ensure that they do not overlap with other pop-up components. In special scenarios, consider adjusting the content layout to avoid this issue.
+   By default, toasts appear from the bottom of the screen with appropriate safe area margins. Ensure they do not overlap with other popup components. In specific scenarios, consider adjusting content layout to prevent such conflicts.
+
+ - Adhere to the maximum font scale for toasts.
+
+   The maximum font size multiplier for toasts is 2x.
 
 ## Comparison of Toast Modes
 
@@ -37,12 +51,13 @@ Before displaying a TOP_MOST toast, a full-screen subwindow is created (the size
 | UIExtension layout| The toast is aligned with UIExtension as the main window, with alignment consistent with UIExtension.| The toast is aligned with the host window as the main window, with alignment consistent with the host window.|
 
 ```ts
-import {promptAction} from '@kit.ArkUI';
+import { promptAction } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct Index {
   build() {
-    Column({space: 10}) {
+    Column({ space: 10 }) {
       TextInput()
       Button() {
         Text("Toast of the DEFAULT type")
@@ -51,14 +66,15 @@ struct Index {
 
       }
       .width('100%')
-      .onClick(()=>{
-        promptAction.showToast({
+      .onClick(() => {
+        this.getUIContext().getPromptAction().showToast({
           message: "OK, I am DEFAULT toast.",
-          duration:2000,
+          duration: 2000,
           showMode: promptAction.ToastShowMode.DEFAULT,
-          bottom:80
-        })
+          bottom: 80
+        });
       })
+
       Button() {
         Text("Toast of the TOPMOST type")
           .fontSize(20)
@@ -66,13 +82,13 @@ struct Index {
 
       }
       .width('100%')
-      .onClick(()=>{
-        promptAction.showToast({
+      .onClick(() => {
+        this.getUIContext().getPromptAction().showToast({
           message: "OK, I am TOP_MOST toast.",
-          duration:2000,
+          duration: 2000,
           showMode: promptAction.ToastShowMode.TOP_MOST,
-          bottom:85
-        })
+          bottom: 85
+        });
       })
     }
   }
@@ -84,14 +100,14 @@ struct Index {
 This mode is suitable for scenarios where the toast automatically disappears within a short period of time.
 
 ```ts
-import { LengthMetrics, PromptAction } from '@kit.ArkUI'
-import { BusinessError } from '@kit.BasicServicesKit'
+import { PromptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct toastExample {
-  private uiContext: UIContext = this.getUIContext()
-  private promptAction: PromptAction = this.uiContext.getPromptAction()
+  private uiContext: UIContext = this.getUIContext();
+  private promptAction: PromptAction = this.uiContext.getPromptAction();
 
   build() {
     Column() {
@@ -101,10 +117,10 @@ struct toastExample {
             this.promptAction.showToast({
               message: 'Hello World',
               duration: 2000
-            });
+            })
           } catch (error) {
-            let message = (error as BusinessError).message
-            let code = (error as BusinessError).code
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
             console.error(`showToast args error code is ${code}, message is ${message}`);
           };
         })
@@ -120,15 +136,15 @@ struct toastExample {
 This mode is suitable for scenarios where the dialog box has a longer retention period and the user can close it manually.
 
 ```ts
-import { LengthMetrics, PromptAction } from '@kit.ArkUI'
-import { BusinessError } from '@kit.BasicServicesKit'
+import { LengthMetrics, PromptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct toastExample {
   @State toastId: number = 0;
-  private uiContext: UIContext = this.getUIContext()
-  private promptAction: PromptAction = this.uiContext.getPromptAction()
+  private uiContext: UIContext = this.getUIContext();
+  private promptAction: PromptAction = this.uiContext.getPromptAction();
 
   build() {
     Column() {
@@ -138,7 +154,7 @@ struct toastExample {
         .onClick(() => {
           try {
             this.promptAction.openToast({
-              message: 'Toast Massage',
+              message: 'Toast Message',
               duration: 10000,
             }).then((toastId: number) => {
               this.toastId = toastId;

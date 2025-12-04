@@ -6,6 +6,10 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_ProgressLinearStyleOption ArkUI_ProgressLinearStyleOption
+```
+
 ## 概述
 
 定义线性进度条样式。

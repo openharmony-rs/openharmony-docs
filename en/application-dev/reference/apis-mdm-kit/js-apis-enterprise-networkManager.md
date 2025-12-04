@@ -67,7 +67,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -123,7 +123,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -180,7 +180,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -237,7 +237,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -290,7 +290,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -342,7 +342,7 @@ import { connection } from '@kit.NetworkKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace with actual values.
@@ -406,7 +406,7 @@ import { connection } from '@kit.NetworkKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let httpProxy: connection.HttpProxy = {
@@ -470,7 +470,7 @@ import { connection } from '@kit.NetworkKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -529,7 +529,7 @@ import { connection } from '@kit.NetworkKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -545,7 +545,7 @@ try {
 
 addFirewallRule(admin: Want, firewallRule: FirewallRule): void
 
-Adds firewall rules for the device. IPv4 and IPv6 are supported since API version 22. In API version 22 and earlier versions, only IPv4 is supported.<br>
+Adds firewall rules for the device. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.<br>
 After a rule with [Action](#action) set to **ALLOW** is added, a rule with **Action** set to **DENY** is added by default to discard or intercept all network data packets that do not meet the **ALLOW** rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -581,7 +581,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let firewallRule: networkManager.FirewallRule = {
   // Replace with actual values.
@@ -608,7 +608,7 @@ try {
 
 removeFirewallRule(admin: Want, firewallRule?: FirewallRule): void
 
-Removes firewall rules of the device. IPv4 and IPv6 are supported since API version 22. In API version 22 and earlier versions, only IPv4 is supported.<br>
+Removes firewall rules of the device. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.<br>
 If there is no rule with [Action](#action) being **ALLOW** after the rule is removed, the **DENY** rules that are added by default with [addFirewallRule](#networkmanageraddfirewallrule) will be removed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -644,7 +644,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let firewallRule: networkManager.FirewallRule = {
@@ -681,7 +681,7 @@ try {
 
 getFirewallRules(admin: Want): Array\<FirewallRule>
 
-Checks firewall rules of the device. IPv4 and IPv6 are supported since API version 22. In API version 22 and earlier versions, only IPv4 is supported.
+Checks firewall rules of the device. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -721,7 +721,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let firewallRule: Array<networkManager.FirewallRule>;
 try {
@@ -736,7 +736,7 @@ try {
 
 addDomainFilterRule(admin: Want, domainFilterRule: DomainFilterRule): void
 
-Adds domain name filtering rules for the device. IPv4 and IPv6 are supported since API version 22. In API version 22 and earlier versions, only IPv4 is supported.<br>
+Adds domain name filtering rules for the device. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.<br>
 After a rule with [Action](#action) set to **ALLOW** is added, a rule with **Action** set to **DENY** is added by default to discard or intercept all packets for domain name resolution that do not meet the **ALLOW** rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -750,7 +750,7 @@ After a rule with [Action](#action) set to **ALLOW** is added, a rule with **Act
 | Name          | Type                                                   | Mandatory| Description              |
 | ---------------- | ------------------------------------------------------- | ---- | ------------------ |
 | admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.    |
-| domainFilterRule | [DomainFilterRule](#domainfilterrule)                   | Yes  | Domain name filtering rule to add. [Direction](#direction) in **DomainFilterRule** can only be set to an output chain. If it is set to an input chain, it will be processed as an output chain. If it is set to a forward chain, error code 401 will be returned.|
+| domainFilterRule | [DomainFilterRule](#domainfilterrule)                   | Yes  | Domain name filtering rule to add.|
 
 **Error codes**
 
@@ -772,7 +772,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let domainFilterRule: networkManager.DomainFilterRule = {
   // Replace with actual values.
@@ -794,7 +794,7 @@ try {
 
 removeDomainFilterRule(admin: Want, domainFilterRule?: DomainFilterRule): void
 
-Removes domain name filtering rules for the device. IPv4 and IPv6 are supported since API version 22. In API version 22 and earlier versions, only IPv4 is supported.<br>
+Removes domain name filtering rules for the device. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.<br>
 If there is no rule with [Action](#action) being **ALLOW** after the rule is removed, the **DENY** rules that are added by default with [addDomainFilterRule](#networkmanageradddomainfilterrule) will be removed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -830,7 +830,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let domainFilterRule: networkManager.DomainFilterRule = {
@@ -862,7 +862,7 @@ try {
 
 getDomainFilterRules(admin: Want): Array\<DomainFilterRule>
 
-Checks domain name filtering rules of the device. IPv4 and IPv6 are supported since API version 22. In API version 22 and earlier versions, only IPv4 is supported.
+Checks domain name filtering rules of the device. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -902,7 +902,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let domainFilterRule: Array<networkManager.DomainFilterRule>;
 try {
@@ -952,7 +952,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   networkManager.turnOnMobileData(wantTemp, true);
@@ -1000,7 +1000,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   networkManager.turnOffMobileData(wantTemp);
@@ -1048,7 +1048,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
   // Replace it as required.
@@ -1103,7 +1103,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility',
 };
 let apnId: string = "1"; // Replace it as required.
 try {
@@ -1153,7 +1153,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
   // Replace it as required.
@@ -1209,7 +1209,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility',
 };
 let apnId: string = "1"; // Replace it as required.
 try {
@@ -1264,7 +1264,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
   // Replace it as required.
@@ -1325,7 +1325,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility',
 };
 let apnId: string = "1"; // Replace it as required.
 try {
@@ -1338,7 +1338,7 @@ try {
 
 ## FirewallRule
 
-Represents a firewall rule. IPv4 and IPv6 are supported since API version 22. In API version 22 and earlier versions, only IPv4 is supported.<br>
+Represents a firewall rule. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.<br>
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1357,17 +1357,17 @@ Represents a firewall rule. IPv4 and IPv6 are supported since API version 22. In
 
 ## DomainFilterRule
 
-Represents a domain name filtering rule. IPv4 and IPv6 are supported since API version 22. In API version 22 and earlier versions, only IPv4 is supported.<br>
+Represents a domain name filtering rule. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.<br>
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 
 | Name      | Type             | Read-only| Optional| Description                                                        |
 | ---------- | ----------------- | ---- | ---- | ------------------------------------------------------------ |
-| domainName | string            | No  | Yes|Domain name. This parameter is mandatory when a domain name filtering rule is added.                              |
+| domainName | string            | No  | Yes|Domain name. This parameter is mandatory when a domain name filtering rule is added. Segment matching is supported. For example, if **domainName** is set to **example.com**, **example.com**, **www.example.com**, and **www.test.example.com** will be matched, while **linkexample.com** will not be matched.                              |
 | appUid     | string            | No  | Yes|UID of the application.                                                   |
 | action     | [Action](#action) | No  | Yes|Action to take, that is, receive or discard the data packets.<br>This parameter is mandatory when a domain name filtering rule is added.<br>This parameter is optional when a domain name filtering rule is removed. If this parameter is left empty, all [Action](#action) chains are cleared, and **domainName** and **appUid** must be also left empty.|
-| direction<sup>15+</sup> | [Direction](#direction) | No| Yes|Direction chains to which the rule applies.<br>This parameter is mandatory when a domain name filtering rule is added.<br>This parameter is optional when a domain name filtering rule is removed. If the value is empty, all [Direction](#direction) chains are cleared, and **domainName** and **appUid** must be empty.|
+| direction<sup>15+</sup> | [Direction](#direction) | No| Yes|Direction chains to which the rule applies.<br>This parameter is optional when a domain name filtering rule is added. If this parameter is set to output chain or input chain, the output chain takes effect. If this parameter is set to a forward chain, **appUid** must be empty. Otherwise, error code 401 will be returned.<br>This parameter is optional when a domain name filtering rule is removed. If the value is empty, all [Direction](#direction) chains are cleared, and **domainName** and **appUid** must be empty.|
 | family<sup>22+</sup>    | number| No  | Yes|IP protocol version. The value can be **1** (IPv4) or **2** (IPv6).|
 
 ## Direction

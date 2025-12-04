@@ -20,11 +20,13 @@
     - [@system.geolocation (Geolocation)](js-apis-system-location.md)
 - C APIs<!--location-c-->
   - Modules<!--location-module-->
-    - [Location](_location.md)
+    - [Location](capi-location.md)
   - Header Files<!--location-headerfile-->
-    - [oh_location.h](oh__location_8h.md)
-    - [oh_location_type.h](oh__location__type_8h.md)
+    - [oh_location.h](capi-oh-location-h.md)
+    - [oh_location_type.h](capi-oh-location-type-h.md)
   - Structs<!--location-struct-->
-    - [Location_BasicInfo](_location___basic_info.md)
+    - [Location_BasicInfo](capi-location-location-basicinfo.md)
+    - [Location_RequestConfig](capi-location-location-requestconfig.md)
+    - [Location_Info](capi-location-location-info.md)
 - Error Codes<!--location-arkts-errcode-->
   - [Location Kit Error Codes](errorcode-geoLocationManager.md)

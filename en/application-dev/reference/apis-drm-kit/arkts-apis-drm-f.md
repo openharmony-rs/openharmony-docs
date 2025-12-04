@@ -122,7 +122,7 @@ Checks whether the device supports the combination of the DRM solution and MIME 
 
 | Name    | Type                                            | Mandatory| Description                                                                                                         |
 | -------- | ----------------------------------------------- | ---- |-------------------------------------------------------------------------------------------------------------|
-| name  | string     | Yes  | DRM solution name. You are advised to call [isMediaKeySystemSupported](arkts-apis-drm-f.md#drmismediakeysystemsupported) to check whether the solution name is supported.|
+| name  | string     | Yes  | DRM solution name. Before calling this API, ensure that the DRM solution name is supported by calling [isMediaKeySystemSupported](arkts-apis-drm-f.md#drmismediakeysystemsupported).|
 | mimeType  | string     | Yes  | MIME type. The supported MIME types depend on the DRM solution. Example types are video/avc and video/hev.                                                              |
 
 **Return value**
@@ -170,8 +170,8 @@ Checks whether the device supports the combination of the DRM solution, MIME typ
 
 | Name    | Type                                            | Mandatory| Description                                                                                                                           |
 | -------- | ----------------------------------------------- | ---- |-------------------------------------------------------------------------------------------------------------------------------|
-| name  | string     | Yes  | DRM solution name. You are advised to call [isMediaKeySystemSupported](arkts-apis-drm-f.md#drmismediakeysystemsupported) to check whether the solution name is supported.         |
-| mimeType  | string     | Yes  | MIME type. The supported MIME types depend on the DRM solution. You are advised to call [isMediaKeySystemSupported](arkts-apis-drm-f.md#drmismediakeysystemsupported-1) to check whether the MIME type is supported.|
+| name  | string     | Yes  | DRM solution name. Before calling this API, ensure that the DRM solution name is supported by calling [isMediaKeySystemSupported](arkts-apis-drm-f.md#drmismediakeysystemsupported).         |
+| mimeType  | string     | Yes  | MIME type. The supported MIME types depend on the DRM solution. Before calling this API, ensure that the MIME type is supported by calling [isMediaKeySystemSupported](arkts-apis-drm-f.md#drmismediakeysystemsupported-1).|
 | level  | [ContentProtectionLevel](arkts-apis-drm-e.md#contentprotectionlevel)     | Yes  | Content protection level.                                                                                                                      |
 
 **Return value**
@@ -219,7 +219,7 @@ Obtains the UUID of the DRM content protection system supported by the specified
 
 | Name    | Type                                            | Mandatory| Description                          |
 | -------- | ----------------------------------------------- | ---- | ---------------------------- |
-| name  | string     | Yes  | DRM solution name. You can check the supported solution names by calling [isMediaKeySystemSupported](arkts-apis-drm-f.md#drmismediakeysystemsupported).                  |
+| name  | string     | Yes  | DRM solution name. You can check whether the solution name is supported by calling [isMediaKeySystemSupported](arkts-apis-drm-f.md#drmismediakeysystemsupported).                  |
 
 **Return value**
 
@@ -265,7 +265,7 @@ Obtains the list of plugins supported by the device.
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| [MediaKeySystemDescription[]](arkts-apis-drm-i.md#mediakeysystemdescription12)           | Array of the supported plugins.                  |
+| [MediaKeySystemDescription[]](arkts-apis-drm-i.md#mediakeysystemdescription12)           | Array of supported plugins.                  |
 
 **Error codes**
 

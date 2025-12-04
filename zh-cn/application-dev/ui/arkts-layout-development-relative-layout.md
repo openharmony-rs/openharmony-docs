@@ -76,7 +76,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   
   @Entry
   @Component
-  struct Index {
+  struct ParentRefRelativeContainer {
     build() {
       RelativeContainer() {
         Row() {
@@ -125,7 +125,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   
   @Entry
   @Component
-  struct Index {
+  struct SiblingRefRelativeContainer {
     build() {
       RelativeContainer() {
         Row() {
@@ -163,49 +163,64 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   ``` TypeScript
   @Entry
   @Component
-  struct Index {
+  struct ChildRefRelativeContainer {
     build() {
       Row() {
         RelativeContainer() {
-          Row(){Text('row1')}.justifyContent(FlexAlign.Center).width(100).height(100)
+          Row() {
+            Text('row1')
+          }
+          .justifyContent(FlexAlign.Center)
+          .width(100)
+          .height(100)
           .backgroundColor('#a3cf62')
           .alignRules({
-            top: {anchor: '__container__', align: VerticalAlign.Top},
-            left: {anchor: '__container__', align: HorizontalAlign.Start}
+            top: { anchor: '__container__', align: VerticalAlign.Top },
+            left: { anchor: '__container__', align: HorizontalAlign.Start }
           })
           .id('row1')
-  
-          Row(){Text('row2')}.justifyContent(FlexAlign.Center).width(100)
+
+          Row() {
+            Text('row2')
+          }
+          .justifyContent(FlexAlign.Center)
+          .width(100)
           .backgroundColor('#00ae9d')
           .alignRules({
-            top: {anchor: '__container__', align: VerticalAlign.Top},
-            right: {anchor: '__container__', align: HorizontalAlign.End},
-            bottom: {anchor: 'row1', align: VerticalAlign.Center},
+            top: { anchor: '__container__', align: VerticalAlign.Top },
+            right: { anchor: '__container__', align: HorizontalAlign.End },
+            bottom: { anchor: 'row1', align: VerticalAlign.Center },
           })
           .id('row2')
-  
-          Row(){Text('row3')}.justifyContent(FlexAlign.Center).height(100)
+
+          Row() {
+            Text('row3')
+          }
+          .justifyContent(FlexAlign.Center)
+          .height(100)
           .backgroundColor('#0a59f7')
           .alignRules({
-            top: {anchor: 'row1', align: VerticalAlign.Bottom},
-            left: {anchor: 'row1', align: HorizontalAlign.Start},
-            right: {anchor: 'row2', align: HorizontalAlign.Start}
+            top: { anchor: 'row1', align: VerticalAlign.Bottom },
+            left: { anchor: 'row1', align: HorizontalAlign.Start },
+            right: { anchor: 'row2', align: HorizontalAlign.Start }
           })
           .id('row3')
-  
-          Row(){Text('row4')}.justifyContent(FlexAlign.Center)
+
+          Row() {
+            Text('row4')
+          }.justifyContent(FlexAlign.Center)
           .backgroundColor('#2ca9e0')
           .alignRules({
-            top: {anchor: 'row3', align: VerticalAlign.Bottom},
-            left: {anchor: 'row1', align: HorizontalAlign.Center},
-            right: {anchor: 'row2', align: HorizontalAlign.End},
-            bottom: {anchor: '__container__', align: VerticalAlign.Bottom}
+            top: { anchor: 'row3', align: VerticalAlign.Bottom },
+            left: { anchor: 'row1', align: HorizontalAlign.Center },
+            right: { anchor: 'row2', align: HorizontalAlign.End },
+            bottom: { anchor: '__container__', align: VerticalAlign.Bottom }
           })
           .id('row4')
         }
         .width(300).height(300)
-        .margin({left: 50})
-        .border({width:2, color: '#6699FF'})
+        .margin({ left: 50 })
+        .border({ width: 2, color: '#6699FF' })
       }
       .height('100%')
     }
@@ -235,7 +250,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   ``` TypeScript
   @Entry
   @Component
-  struct Index {
+  struct ChildComponentOffsetExample {
     build() {
       Row() {
         RelativeContainer() {
@@ -359,12 +374,10 @@ Row、Column、Flex、Stack等多种布局组件，可按照RelativeContainer组
   ``` TypeScript
   @Entry
   @Component
-  struct Index {
-    @State value: number = 0
-  
+  struct RelativeContainerExample {
     build() {
       Row() {
-  
+
         RelativeContainer() {
           Row()
             .width(100)
@@ -375,7 +388,7 @@ Row、Column、Flex、Stack等多种布局组件，可按照RelativeContainer组
               left: { anchor: '__container__', align: HorizontalAlign.Start }
             })
             .id('row1')
-  
+
           Column()
             .width('50%')
             .height(30)
@@ -385,7 +398,7 @@ Row、Column、Flex、Stack等多种布局组件，可按照RelativeContainer组
               left: { anchor: '__container__', align: HorizontalAlign.Center }
             })
             .id('row2')
-  
+
           Flex({ direction: FlexDirection.Row }) {
             Text('1').width('20%').height(50).backgroundColor('#0a59f7')
             Text('2').width('20%').height(50).backgroundColor('#2ca9e0')
@@ -401,9 +414,13 @@ Row、Column、Flex、Stack等多种布局组件，可按照RelativeContainer组
             right: { anchor: 'row2', align: HorizontalAlign.Center }
           })
           .id('row3')
-  
+
           Stack({ alignContent: Alignment.Bottom }) {
-            Text('First child, show in bottom').width('90%').height('100%').backgroundColor('#a3cf62').align(Alignment.Top)
+            Text('First child, show in bottom')
+              .width('90%')
+              .height('100%')
+              .backgroundColor('#a3cf62')
+              .align(Alignment.Top)
             Text('Second child, show in top').width('70%').height('60%').backgroundColor('#00ae9d').align(Alignment.Top)
           }
           .margin({ top: 5 })
@@ -414,7 +431,7 @@ Row、Column、Flex、Stack等多种布局组件，可按照RelativeContainer组
             right: { anchor: 'row3', align: HorizontalAlign.End }
           })
           .id('row4')
-  
+
         }
         .width(300).height(300)
         .margin({ left: 50 })
@@ -440,7 +457,7 @@ Row、Column、Flex、Stack等多种布局组件，可按照RelativeContainer组
 ``` TypeScript
 @Entry
 @Component
-struct Index {
+struct RelativeAlignRulesExample {
   build() {
     Row() {
       RelativeContainer() {
@@ -540,13 +557,14 @@ struct Index {
 * 链的方向和格式在链头组件的[chainMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainmode12)接口中声明；链内元素的bias属性全部失效，链头元素的bias属性作为整个链的bias生效。链头是指在满足成链规则时链的第一个组件（在水平方向上，从左边开始，镜像语言中从右边开始；在垂直方向上，从上边开始）。
 * 如果链内所有元素的size超出链的锚点约束，超出部分将被均匀分配到链的两侧。在[PACKED](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainstyle12)链中，可以通过[Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias对象说明)设置超出部分的分布。
 
+在以下示例代码中，通过alignRules和chainMode将九个在容器内的Row组件分为三组水平链式排列。组件row1、组件row2和组件row3顶部对齐，水平方向成SPREAD链，链内组件在锚点间均匀分布。组件row4、组件row5、组件row6垂直方向基于容器居中，水平方向成SPREAD_INSIDE链，链内除首尾2个组件对齐锚点外，其他组件在链中均匀分布。组件row7、组件row8、组件row9底部对齐，水平方向组成PACKED链，链内组件无间隙。
 
 <!-- @[RelativeContainerMultipleComponentsChainMode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerMultipleComponentsChainMode.ets) -->
 
 ``` TypeScript
 @Entry
 @Component
-struct Index {
+struct RelativeChainModeExample {
   build() {
     Row() {
       RelativeContainer() {
@@ -705,7 +723,7 @@ struct Index {
 ``` TypeScript
 @Entry
 @Component
-struct Index {
+struct RelativeGuideLineExample {
   build() {
     Row() {
       RelativeContainer() {
@@ -757,10 +775,6 @@ struct Index {
         .width(100)
         .height(100)
         .backgroundColor('#a3cf62')
-        .alignRules({
-          top: { anchor: '__container__', align: VerticalAlign.Top },
-          left: { anchor: '__container__', align: HorizontalAlign.Start }
-        })
         .id('row1')
 
         Row() {
@@ -768,11 +782,11 @@ struct Index {
         }
         .justifyContent(FlexAlign.Center)
         .width(100)
+        .height(100)
         .backgroundColor('#00ae9d')
         .alignRules({
-          top: { anchor: '__container__', align: VerticalAlign.Top },
-          right: { anchor: '__container__', align: HorizontalAlign.End },
-          bottom: { anchor: 'row1', align: VerticalAlign.Center },
+          middle: { anchor: 'row1', align: HorizontalAlign.End },
+          top: { anchor: 'row1', align: VerticalAlign.Bottom }
         })
         .id('row2')
 
@@ -780,57 +794,34 @@ struct Index {
           Text('row3')
         }
         .justifyContent(FlexAlign.Center)
+        .width(100)
         .height(100)
         .backgroundColor('#0a59f7')
         .alignRules({
-          top: { anchor: 'row1', align: VerticalAlign.Bottom },
-          left: { anchor: 'row1', align: HorizontalAlign.End },
-          right: { anchor: 'row2', align: HorizontalAlign.Start }
+          left: { anchor: 'barrier1', align: HorizontalAlign.End },
+          top: { anchor: 'row1', align: VerticalAlign.Top }
         })
         .id('row3')
 
         Row() {
           Text('row4')
-        }.justifyContent(FlexAlign.Center)
-        .backgroundColor('#2ca9e0')
-        .alignRules({
-          top: { anchor: 'row3', align: VerticalAlign.Bottom },
-          bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
-          left: { anchor: '__container__', align: HorizontalAlign.Start },
-          right: { anchor: 'row1', align: HorizontalAlign.End }
-        })
-        .id('row4')
-
-        Row() {
-          Text('row5')
-        }.justifyContent(FlexAlign.Center)
-        .backgroundColor('#30c9f7')
-        .alignRules({
-          top: { anchor: 'row3', align: VerticalAlign.Bottom },
-          bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
-          left: { anchor: 'row2', align: HorizontalAlign.Start },
-          right: { anchor: 'row2', align: HorizontalAlign.End }
-        })
-        .id('row5')
-
-        Row() {
-          Text('row6')
         }
         .justifyContent(FlexAlign.Center)
-        .backgroundColor('#ff33ffb5')
+        .width(50)
+        .height(50)
+        .backgroundColor('#2ca9e0')
         .alignRules({
-          top: { anchor: 'row3', align: VerticalAlign.Bottom },
-          bottom: { anchor: 'row4', align: VerticalAlign.Bottom },
-          left: { anchor: 'row3', align: HorizontalAlign.Start },
-          right: { anchor: 'row3', align: HorizontalAlign.End }
+          left: { anchor: 'row1', align: HorizontalAlign.Start },
+          top: { anchor: 'barrier2', align: VerticalAlign.Bottom }
         })
-        .id('row6')
-        .backgroundImagePosition(Alignment.Bottom)
-        .backgroundImageSize(ImageSize.Cover)
+        .id('row4')
       }
-      .width(300).height(300)
+      .width(300)
+      .height(300)
       .margin({ left: 50 })
       .border({ width: 2, color: '#6699FF' })
+      .barrier([{ id: 'barrier1', direction: BarrierDirection.RIGHT, referencedId: ['row1', 'row2'] },
+        { id: 'barrier2', direction: BarrierDirection.BOTTOM, referencedId: ['row1', 'row2'] }])
     }
     .height('100%')
   }

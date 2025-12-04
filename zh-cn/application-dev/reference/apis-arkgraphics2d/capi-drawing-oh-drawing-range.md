@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_Range OH_Drawing_Range
+```
+
 ## 概述
 
 用于接收字体的起始位置和结束位置。

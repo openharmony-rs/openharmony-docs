@@ -240,6 +240,7 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
     windowStage.loadContent('pages/Index', (err: BusinessError) => {
       if (err.code) {
         console.error(`Failed to load content for main window. Cause code: ${err.code}, message: ${err.message}`);
@@ -252,13 +253,14 @@ export default class EntryAbility extends UIAbility {
           }
           subWindow.showWindow().then(() => {
             try {
-              window.getLastWindow(this.context, (err: BusinessError, topWindow) => {
+              window.getLastWindow(this.context, (err: BusinessError, data) => {
                 const errCode: number = err.code;
                 if (errCode) {
                   console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
                   return;
                 }
-                console.info(`Succeeded in obtaining the top window. Window id: ${topWindow.getWindowProperties().id}`);
+                windowClass = data;
+                console.info(`Succeeded in obtaining the top window. Window id: ${windowClass.getWindowProperties().id}`);
               });
             } catch (exception) {
               console.error(`Failed to obtain the top window. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -318,6 +320,7 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
     windowStage.loadContent('pages/Index', (err: BusinessError) => {
       if (err.code) {
         console.error(`Failed to load content for main window. Cause code: ${err.code}, message: ${err.message}`);
@@ -331,6 +334,7 @@ export default class EntryAbility extends UIAbility {
           subWindow.showWindow().then(() => {
             try {
               window.getLastWindow(this.context).then((topWindow) => {
+                windowClass = topWindow;
                 console.info(`Succeeded in obtaining the top window. Window id: ${topWindow.getWindowProperties().id}`);
               }).catch((err: BusinessError) => {
                 console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
@@ -432,8 +436,8 @@ export default class EntryAbility extends UIAbility {
           subWindow = data;
           subWindowId = subWindow.getWindowProperties().id;
           subWindow.resize(500, 500);
-          subWindow.showWindow();
           subWindow.setUIContent('pages/Index');
+          subWindow.showWindow();
 
           // 监听Window状态，确保已经就绪
           subWindow.on("windowEvent", (windowEvent) => {
@@ -487,7 +491,7 @@ shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Prom
 
 | 错误码ID | 错误信息                                      |
 | ------- | --------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Failed to convert parameter to sourceWindowId; 3. Failed to convert parameter to targetWindowId; 4. Invalid sourceWindowId or targetWindowId. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal.                |
 | 1300003 | This window manager service works abnormally. |
@@ -1028,7 +1032,7 @@ getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfi
 
 | 参数名    | 类型    | 必填 | 说明                                          |
 | --------- | ------- | ---- | --------------------------------------------- |
-| windowId | Array&lt;number&gt; | 是   | 需要获取截图的主窗口ID列表。可通过[window.getAllMainWindowInfo()](#windowgetallmainwindowinfo21)获取到主窗口windowId。|
+| windowId | Array&lt;number&gt; | 是   | 需要获取截图的主窗口ID列表。可通过[window.getAllMainWindowInfo()](#windowgetallmainwindowinfo21)获取到主窗口windowId。当windowId为null、undefined、小于0、存在重复值或数量超过512个时，返回错误码401；当windowId大于0但不存在对应窗口时，返回undefined。|
 | config | [WindowSnapshotConfiguration](arkts-apis-window-i.md#windowsnapshotconfiguration21) | 是 | 获取窗口截图时的配置信息。 |
 
 **返回值：**

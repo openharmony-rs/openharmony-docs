@@ -41,6 +41,7 @@
 | [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) | OH_ArkUI_SurfaceHolder | 提供封装的OH_ArkUI_SurfaceHolder实例。 |
 | [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md) | OH_ArkUI_SurfaceCallback | 定义Surface生命周期回调函数。 |
 | [OHNativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md) | OHNativeWindow | 提供封装的NativeWindow实例。 |
+| [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md) | ArkUI_XComponentSurfaceConfig | 定义XComponent组件持有的Surface选项，用于设置XComponent组件持有的Surface在渲染时是否被视为不透明。 |
 
 ### 枚举
 
@@ -129,6 +130,10 @@
 | [void OH_ArkUI_AccessibilityProvider_Dispose(ArkUI_AccessibilityProvider* provider)](#oh_arkui_accessibilityprovider_dispose) | 销毁由Native接口[OH_ArkUI_AccessibilityProvider_Create](capi-native-interface-xcomponent-h.md#oh_arkui_accessibilityprovider_create)创建的[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)实例。 |
 | [void OH_ArkUI_SurfaceCallback_SetSurfaceShowEvent(OH_ArkUI_SurfaceCallback* callback, void (\*onSurfaceShow)(OH_ArkUI_SurfaceHolder* surfaceHolder))](#oh_arkui_surfacecallback_setsurfaceshowevent) | 为此[OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)实例设置Surface显示回调，该回调在应用窗口已经从后台回到前台时触发。 |
 | [void OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent(OH_ArkUI_SurfaceCallback* callback, void (\*onSurfaceHide)(OH_ArkUI_SurfaceHolder* surfaceHolder))](#oh_arkui_surfacecallback_setsurfacehideevent) | 为此[OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)实例设置Surface隐藏回调，该回调在应用窗口已经从前台进入后台时触发。 |
+| [ArkUI_XComponentSurfaceConfig* OH_ArkUI_XComponentSurfaceConfig_Create()](#oh_arkui_xcomponentsurfaceconfig_create) | 创建XComponent组件的[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)对象。 |
+| [void OH_ArkUI_XComponentSurfaceConfig_Dispose(ArkUI_XComponentSurfaceConfig* config)](#oh_arkui_xcomponentsurfaceconfig_dispose) | 销毁[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)对象。 |
+| [void OH_ArkUI_XComponentSurfaceConfig_SetIsOpaque(ArkUI_XComponentSurfaceConfig* config, bool isOpaque)](#oh_arkui_xcomponentsurfaceconfig_setisopaque) | 设置XComponent组件持有的Surface在渲染时是否被视为不透明，无论该Surface是否存在半透明像素。 |
+| [int32_t OH_ArkUI_SurfaceHolder_SetSurfaceConfig(OH_ArkUI_SurfaceHolder* surfaceHolder, ArkUI_XComponentSurfaceConfig *config)](#oh_arkui_surfaceholder_setsurfaceconfig) | 为[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例设置Surface选项。 |
 
 ### 变量
 
@@ -195,10 +200,10 @@ enum OH_NativeXComponent_TouchEventType
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_NATIVEXCOMPONENT_DOWN = 0 | 手指按下时触发触摸事件。 |
-| OH_NATIVEXCOMPONENT_UP | 手指抬起时触发触摸事件。 |
-| OH_NATIVEXCOMPONENT_MOVE | 手指按下状态下在屏幕上移动时触发触摸事件。 |
-| OH_NATIVEXCOMPONENT_CANCEL | 触摸事件取消时触发事件。 |
-| OH_NATIVEXCOMPONENT_UNKNOWN | 无效的触摸类型。 |
+| OH_NATIVEXCOMPONENT_UP = 1 | 手指抬起时触发触摸事件。 |
+| OH_NATIVEXCOMPONENT_MOVE = 2 | 手指按下状态下在屏幕上移动时触发触摸事件。 |
+| OH_NATIVEXCOMPONENT_CANCEL = 3 | 触摸事件取消时触发事件。 |
+| OH_NATIVEXCOMPONENT_UNKNOWN = 4 | 无效的触摸类型。 |
 
 ### OH_NativeXComponent_TouchPointToolType
 
@@ -216,14 +221,14 @@ enum OH_NativeXComponent_TouchPointToolType
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_NATIVEXCOMPONENT_TOOL_TYPE_UNKNOWN = 0 | 未识别工具类型。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_FINGER | 表示用手指。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_PEN | 表示用触笔。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_RUBBER | 表示用橡皮擦。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_BRUSH | 表示用画笔。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_PENCIL | 表示用铅笔。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH | 表示用气笔。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_MOUSE | 表示用鼠标。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS | 表示用晶状体。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_FINGER = 1 | 表示用手指。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_PEN = 2 | 表示用触笔。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_RUBBER = 3 | 表示用橡皮擦。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_BRUSH = 4 | 表示用画笔。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_PENCIL = 5 | 表示用铅笔。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH = 6 | 表示用气笔。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_MOUSE = 7 | 表示用鼠标。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS = 8 | 表示用晶状体。 |
 
 ### OH_NativeXComponent_EventSourceType
 
@@ -241,11 +246,11 @@ enum OH_NativeXComponent_EventSourceType
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_NATIVEXCOMPONENT_SOURCE_TYPE_UNKNOWN = 0 | 未知的输入源类型。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_MOUSE | 表示输入源生成鼠标多点触摸事件。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHSCREEN | 表示输入源生成一个触摸屏多点触摸事件。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHPAD | 表示输入源生成一个触摸板多点触摸事件。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_JOYSTICK | 表示输入源生成一个操纵杆多点触摸事件。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_KEYBOARD | 表示输入源生成一个键盘事件。<br>**起始版本：** 10 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_MOUSE = 1 | 表示输入源生成鼠标多点触摸事件。 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHSCREEN = 2 | 表示输入源生成一个触摸屏多点触摸事件。 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHPAD = 3 | 表示输入源生成一个触摸板多点触摸事件。 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_JOYSTICK = 4 | 表示输入源生成一个操纵杆多点触摸事件。 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_KEYBOARD = 5 | 表示输入源生成一个键盘事件。<br>**起始版本：** 10 |
 
 ### OH_NativeXComponent_MouseEventAction
 
@@ -263,10 +268,10 @@ enum OH_NativeXComponent_MouseEventAction
 | 枚举项 | 描述                              |
 | -- |---------------------------------|
 | OH_NATIVEXCOMPONENT_MOUSE_NONE = 0 | 无效鼠标事件。                         |
-| OH_NATIVEXCOMPONENT_MOUSE_PRESS | 鼠标按键按下时触发鼠标事件。                  |
-| OH_NATIVEXCOMPONENT_MOUSE_RELEASE | 鼠标按键松开时触发鼠标事件。                  |
-| OH_NATIVEXCOMPONENT_MOUSE_MOVE | 鼠标在屏幕上移动时触发鼠标事件。                |
-| OH_NATIVEXCOMPONENT_MOUSE_CANCEL | 鼠标按键被取消时触发鼠标事件。<br>**起始版本：** 18 |
+| OH_NATIVEXCOMPONENT_MOUSE_PRESS = 1 | 鼠标按键按下时触发鼠标事件。                  |
+| OH_NATIVEXCOMPONENT_MOUSE_RELEASE = 2 | 鼠标按键松开时触发鼠标事件。                  |
+| OH_NATIVEXCOMPONENT_MOUSE_MOVE = 3 | 鼠标在屏幕上移动时触发鼠标事件。                |
+| OH_NATIVEXCOMPONENT_MOUSE_CANCEL = 4 | 鼠标按键被取消时触发鼠标事件。<br>**起始版本：** 18 |
 
 ### OH_NativeXComponent_MouseEventButton
 
@@ -1083,7 +1088,7 @@ int32_t OH_NativeXComponent_GetKeyEventNumLockState(OH_NativeXComponent_KeyEvent
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)* keyEvent | 表示指向按键事件的指针。 |
-| bool* isNumLockOn | 表示用于接收NumLock（小键盘锁定）键状态的bool类型变量的地址。 |
+| bool* isNumLockOn | 表示用于接收NumLock（小键盘锁定）键状态的bool类型变量的地址。true表示小键盘锁定，false表示小键盘解锁。 |
 
 **返回：**
 
@@ -1110,7 +1115,7 @@ int32_t OH_NativeXComponent_GetKeyEventCapsLockState(OH_NativeXComponent_KeyEven
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)* keyEvent | 表示指向按键事件的指针。 |
-| bool* isCapsLockOn | 表示用于接收CapsLock（大写锁定）键状态的bool类型变量的地址。 |
+| bool* isCapsLockOn | 表示用于接收CapsLock（大写锁定）键状态的bool类型变量的地址。true表示大写处于锁定，false表示大写处于解锁。 |
 
 **返回：**
 
@@ -1137,7 +1142,7 @@ int32_t OH_NativeXComponent_GetKeyEventScrollLockState(OH_NativeXComponent_KeyEv
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)* keyEvent | 表示指向按键事件的指针。 |
-| bool* isScrollLockOn | 表示用于接收ScrollLock（滚动锁定）键状态的bool类型变量的地址。 |
+| bool* isScrollLockOn | 表示用于接收ScrollLock（滚动锁定）键状态的bool类型变量的地址。true表示滚动处于锁定，false表示滚动处于解锁。 |
 
 **返回：**
 
@@ -1523,7 +1528,7 @@ int32_t OH_NativeXComponent_RegisterKeyEventCallbackWithResult(OH_NativeXCompone
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
-| bool (\*callback)(OH_NativeXComponent* component, void* window) | 表示指向按键事件回调的指针。- window: 表示NativeWindow句柄。 |
+| bool (\*callback)(OH_NativeXComponent* component, void* window) | 表示指向按键事件回调的指针。- window: 表示NativeWindow句柄。当回调返回值为true时，该事件将不会继续分发；当回调返回值为false时，该事件将按照事件处理流程继续分发。 |
 
 **返回：**
 
@@ -1885,7 +1890,7 @@ int32_t OH_ArkUI_XComponent_SetAutoInitialize(ArkUI_NodeHandle node, bool autoIn
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 表示指向XComponent组件实例的指针。 |
-| bool autoInitialize | 表示XComponent组件是否需要自动初始化Surface。如果autoInitialize值是true，OnSurfaceCreated回调会在挂树时被触发，OnSurfaceDestroyed回调会在下树时被触发。autoInitialize默认值是true。 |
+| bool autoInitialize | 表示XComponent组件是否需要自动初始化Surface。如果autoInitialize值是true，OnSurfaceCreated回调会在挂树时被触发，OnSurfaceDestroyed回调会在下树时被触发。false表示组件不需要自动初始化Surface。<br>autoInitialize默认值是true。 |
 
 **返回：**
 
@@ -1964,7 +1969,7 @@ int32_t OH_ArkUI_XComponent_IsInitialized(ArkUI_NodeHandle node, bool* isInitial
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 表示指向XComponent组件实例的指针。 |
-| bool* isInitialized | 表示XComponent组件是否已经初始化Surface。 |
+| bool* isInitialized | 表示XComponent组件是否已经初始化Surface。true表示组件已初始化Surface，false表示组件未初始化Surface。 |
 
 **返回：**
 
@@ -2167,4 +2172,90 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent(OH_ArkUI_SurfaceCallback* call
 | [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)* callback | 表示指向[OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)实例的指针。 |
 | onSurfaceHide | 表示Surface隐藏回调函数指针。- surfaceHolder: 表示指向[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例的指针。 |
 
+### OH_ArkUI_XComponentSurfaceConfig_Create()
 
+```
+ArkUI_XComponentSurfaceConfig* OH_ArkUI_XComponentSurfaceConfig_Create()
+```
+
+**描述：**
+
+
+创建XComponent组件的[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)对象。
+
+**起始版本：** 22
+
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)* | 返回创建的[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)对象的指针。 |
+
+### OH_ArkUI_XComponentSurfaceConfig_Dispose()
+
+```
+void OH_ArkUI_XComponentSurfaceConfig_Dispose(ArkUI_XComponentSurfaceConfig* config)
+```
+
+**描述：**
+
+
+销毁[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)对象。
+
+**起始版本：** 22
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)* config | 表示指向需要销毁的[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)对象的指针。 |
+
+### OH_ArkUI_XComponentSurfaceConfig_SetIsOpaque()
+
+```
+void OH_ArkUI_XComponentSurfaceConfig_SetIsOpaque(ArkUI_XComponentSurfaceConfig* config, bool isOpaque)
+```
+
+**描述：**
+
+
+设置XComponent组件持有的Surface在渲染时是否被视为不透明，无论该Surface是否存在半透明像素。
+
+**起始版本：** 22
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)* config | 表示指向[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)实例的指针。 |
+| bool isOpaque | 表示设置XComponent组件持有的Surface在渲染时是否需要被视为不透明。true表示需要被视为不透明，false表示不需要被视为不透明，默认值为false，即在渲染时会应用Surface中绘制内容像素的透明度。 |
+
+### OH_ArkUI_SurfaceHolder_SetSurfaceConfig()
+
+```
+int32_t OH_ArkUI_SurfaceHolder_SetSurfaceConfig(OH_ArkUI_SurfaceHolder* surfaceHolder, ArkUI_XComponentSurfaceConfig *config)
+```
+
+**描述：**
+
+
+为[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例设置Surface选项。
+
+**起始版本：** 22
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)* surfaceHolder | 表示指向[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例的指针。 |
+| [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md) *config | 表示指向[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)实例的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回执行结果。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |

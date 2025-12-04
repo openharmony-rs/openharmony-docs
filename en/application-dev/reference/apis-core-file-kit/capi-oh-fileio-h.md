@@ -9,7 +9,7 @@
 
 ## Overview
 
-Defines the native APIs for basic file operations.
+Defines the native APIs used to obtain the location of a file.
 
 **File to include**: <filemanagement/fileio/oh_fileio.h>
 

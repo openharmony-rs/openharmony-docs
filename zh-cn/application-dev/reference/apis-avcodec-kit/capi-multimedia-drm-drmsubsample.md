@@ -7,6 +7,10 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct DrmSubsample {...} DrmSubsample
+```
+
 ## 概述
 
 Subsample结构类型定义。

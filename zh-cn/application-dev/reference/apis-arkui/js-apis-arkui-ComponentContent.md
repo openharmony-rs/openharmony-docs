@@ -228,7 +228,7 @@ reuse(param?: Object): void
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| param  | Object | 否   | 用于复用WrappedBuilder对象封装的builder函数参数，与constructor传入的参数类型保持一致。 |
+| param  | Object | 否   | 用于复用ComponentContent的参数。该参数将直接用于ComponentContent中所有顶层自定义组件的复用，应该包含每个自定义组件的构造函数参数所需内容，否则，会导致未定义行为。调用此方法将同步触发内部自定义组件的[aboutToReuse](../../reference//apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)生命周期回调，并将该参数作为回调的入参。默认值为undefined，此时ComponentContent中的自定义组件将直接使用构造时的数据源。 |
 
 ### recycle
 
@@ -617,7 +617,7 @@ isDisposed(): boolean
 
 | 类型    | 说明               |
 | ------- | ------------------ |
-| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。
+| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。|
 
 **示例：**
 
@@ -697,6 +697,9 @@ inheritFreezeOptions(enabled: boolean): void
 
 查询当前ComponentContent对象是否设置为继承父组件中自定义组件的冻结策略。如果设置继承状态为false，则ComponentContent对象的冻结策略为false。在这种情况下，节点在不活跃状态下不会被冻结。
 
+> **说明：**
+>
+> ComponentContent设置inheritFreezeOptions为true，且父组件为自定义组件、BuilderNode、ComponentContent、ReactiveBuilderNode或ReactiveComponentContent时，会继承父组件的冻结策略。当子组件为自定义组件时，其冻结策略不会传递给子组件。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -924,6 +927,8 @@ ReactiveComponentContent的构造函数。
 
 **示例：**
 
+该示例展示了如何使用ReactiveComponentContent构造函数动态创建包含响应式内容的UI组件，实现了Builder函数的嵌套调用和函数参数的灵活传递。
+
 ``` ts
 import { ReactiveComponentContent, NodeContent, typeNode } from '@kit.ArkUI';
 
@@ -957,8 +962,10 @@ struct Index {
       Column({ space: 12 }) {
         Button('addComponentContent')
           .onClick(() => {
+            // 动态创建Column节点
             let column = typeNode.createNode(this.getUIContext(), 'Column');
             column.initialize();
+            // 创建ReactiveComponentContent并添加到Column节点
             column.addComponentContent(new ReactiveComponentContent<[string, Function]>(this.getUIContext(),
               wrapBuilder<[string, Function]>(buildText), { nestingBuilderSupported: true },
               this.message,
@@ -966,9 +973,10 @@ struct Index {
                 return 'FUNCTION'
               }
             ));
+            // 将构建好的节点添加到内容容器
             this.content.addFrameNode(column);
           })
-        ContentSlot(this.content)
+        ContentSlot(this.content) // 显示动态添加的内容
       }
       .id('column')
       .width('100%')
@@ -996,7 +1004,7 @@ ReactiveComponentContent通过reuse和[recycle](#recycle)接口完成其内外�
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| param  | Object | 否   | 用于复用WrappedBuilder对象封装的@builder函数参数，与[constructor](#constructor)传入的参数类型保持一致。<br>默认值：undefined |
+| param  | Object | 否   | 用于复用[ReactiveComponentContent](./js-apis-arkui-builderNode.md#reactivebuildernode22)的参数。该参数将直接用于ReactiveComponentContent中所有顶层自定义组件的复用，应该包含每个自定义组件的构造函数参数所需内容，否则，会导致未定义行为。调用此方法将同步触发内部自定义组件的[aboutToReuse](../../reference//apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)生命周期回调，并将该参数作为回调的入参。默认值为undefined，此时ReactiveComponentContent中的自定义组件将直接使用构造时的数据源。 |
 
 **示例：**
 
@@ -1204,6 +1212,8 @@ dispose(): void
 
 **示例：**
 
+该示例展示了如何使用dispose接口正确释放ReactiveComponentContent对象，管理节点生命周期。
+
 ```ts
 import {
   ReactiveComponentContent,
@@ -1247,7 +1257,9 @@ class MyNodeController extends NodeController {
   private contentNode: ReactiveComponentContent<[Binding<number>, Binding<string>]> | null = null;
 
   makeNode(context: UIContext): FrameNode | null {
+    // 创建FrameNode作为根容器
     this.rootNode = new FrameNode(context);
+    // 创建ReactiveComponentContent响应式内容
     this.contentNode = new ReactiveComponentContent <[Binding<number>, Binding<string>]>(context,
       wrapBuilder<[Binding<number>, Binding<string>]>(buildText),
       {},
@@ -1261,15 +1273,17 @@ class MyNodeController extends NodeController {
         console.info("NodeTest3 set after", params.message);
       }),
     );
+    // 将响应式内容添加到根节点
     if (this.rootNode !== null) {
       this.rootNode.addComponentContent(this.contentNode);
     }
     return this.rootNode;
   }
 
+  // 释放资源的方法
   dispose() {
     if (this.contentNode !== null) {
-      this.contentNode.dispose();
+      this.contentNode.dispose(); // 释放ReactiveComponentContent资源
     }
   }
 }
@@ -1282,13 +1296,15 @@ struct Index {
   build() {
     Row() {
       Column() {
+        // 显示自定义节点内容
         NodeContainer(this.myNodeController)
           .width('100%')
           .height(100)
           .backgroundColor('#FFF0F0F0')
+        // 触发资源释放
         Button('ReactiveComponentContent dispose')
           .onClick(() => {
-            this.myNodeController.dispose();
+            this.myNodeController.dispose(); // 调用dispose释放资源
           })
       }
       .width('100%')
@@ -1311,6 +1327,9 @@ updateConfiguration(): void
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例：**
+
+该示例展示了如何使用updateConfiguration接口响应系统环境配置变化，实现ReactiveComponentContent构建的UI节点的动态适配更新。
+
 ```ts
 import { NodeController, FrameNode, ReactiveComponentContent, UIContext, FrameCallback } from '@kit.ArkUI';
 import { AbilityConstant, Configuration, EnvironmentCallback, ConfigurationConstant } from '@kit.AbilityKit';
@@ -1427,6 +1446,8 @@ flushState(): void
 
 **示例：**
 
+该示例展示了flushState接口在ReactiveComponentContent中的使用场景，通过对比V1和V2装饰器的数据更新机制，演示了不同响应式方案下的状态更新策略。
+
 ```ts
 import {
   ReactiveComponentContent, NodeContent, Binding, UIUtils, typeNode
@@ -1541,6 +1562,10 @@ struct Index {
 inheritFreezeOptions(enabled: boolean): void
 
 查询当前ReactiveComponentContent对象是否设置为继承父组件中自定义组件的[冻结策略](./arkui-ts/ts-custom-component-parameter.md#componentoptions)。如果设置继承状态为false，则ReactiveComponentContent对象的冻结策略为false。在这种情况下，节点在不活跃状态下不会被冻结。
+
+> **说明：**
+>
+> ReactiveComponentContent设置inheritFreezeOptions为true，且父组件为自定义组件、BuilderNode、ComponentContent、ReactiveBuilderNode或ReactiveComponentContent时，会继承父组件的冻结策略。当子组件为自定义组件时，其冻结策略不会传递给子组件。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1756,6 +1781,9 @@ isDisposed(): boolean
 | boolean | 后端实体节点是否解除引用。<br/>true：节点已与后端实体节点解除引用；false：节点未与后端实体节点解除引用。 |
 
 **示例：**
+
+该示例展示了如何使用isDisposed接口检查ReactiveComponentContent对象是否已解除与后端实体节点的引用关系，提供了节点状态安全检测的完整实现方案。
+
 ```ts
 import {
   ReactiveComponentContent,

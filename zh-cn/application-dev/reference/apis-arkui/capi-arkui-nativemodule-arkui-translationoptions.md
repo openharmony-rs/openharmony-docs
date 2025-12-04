@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_TranslationOptions
+```
+
 ## 概述
 
 定义组件转场时的平移效果对象。

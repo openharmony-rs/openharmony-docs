@@ -6,6 +6,10 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_CustomSpanMeasureInfo ArkUI_CustomSpanMeasureInfo
+```
+
 ## 概述
 
 自定义段落组件的测量信息。

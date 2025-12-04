@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-通过WebCookie可以控制Web组件中的cookie的各种行为，其中每个应用中的所有Web组件共享一个WebCookieManager实例。
+通过WebCookie可以控制Web组件中的cookie的各种行为，其中每个应用中的所有Web组件共享一个WebCookieManager实例。cookie的格式遵循[RFC2965](https://www.rfc-editor.org/rfc/rfc2965)标准。
 
 > **说明：**
 >
@@ -1455,6 +1455,67 @@ struct WebComponent {
           webview.WebCookieManager.deleteSessionCookie();
         })
       Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## fetchAllCookies<sup>23+</sup>
+
+static fetchAllCookies(incognito: boolean): Promise\<Array\<WebHttpCookie\>\>
+
+获取所有cookie，使用Promise异步回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --------- | ------- | -- | -------------------------------------- |
+| incognito | boolean | 是 | true表示获取隐私模式下webview的所有cookie，false表示正常非隐私模式下的所有cookie。 |
+
+**返回值：**
+
+| 类型   | 说明                      |
+| ------ | ------------------------- |
+| Promise\<Array\<[WebHttpCookie](./arkts-apis-webview-i.md#webhttpcookie23)\>\> | Promise对象，用于获取所有cookie及其对应的字段值。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController()
+
+  build() {
+    Row() {
+      Column() {
+        Button('Config Cookie')
+        .onClick(() => {
+          try {
+            webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+
+        Button('Get All Cookies')
+        .onClick(() => {
+          webview.WebCookieManager.fetchAllCookies(false).then((cookies) => {
+            for (let i = 0; i < cookies.length; i++) {
+              console.info('fetchAllCookies cookie[' + i + '].name = ' + cookies[i].name);
+              console.info('fetchAllCookies cookie[' + i + '].value = ' + cookies[i].value);
+            }
+          })
+        })
+
+        Web({ src: 'https://www.example.com', controller: this.controller})
+      }
     }
   }
 }

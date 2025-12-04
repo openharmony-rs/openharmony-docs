@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_GestureEventTargetInfo ArkUI_GestureEventTargetInfo
+```
+
 ## 概述
 
 提供手势事件目标信息类型对象定义。

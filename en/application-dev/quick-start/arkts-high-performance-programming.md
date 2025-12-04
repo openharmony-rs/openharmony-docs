@@ -198,7 +198,7 @@ let arrString: string[] = ['hello', 'world'];
 
 ### Avoiding Frequent Exceptions
 
-Creating exceptions involves constructing the stack frame for the exception, which may performance overhead. In light of this, avoid frequently throwing exceptions in performance-sensitive scenarios, for example, in **for** loop statements.
+Creating exceptions involves constructing the stack frame for the exception, which may incur performance overhead. In light of this, avoid frequently throwing exceptions in performance-sensitive scenarios, for example, in **for** loop statements.
 
 Sample code before optimization:
 
@@ -236,6 +236,7 @@ function div(a: number, b: number): number {
 function sum(num: number): number {
   let sum = 0;
   for (let t = 1; t < 100; t++) {
+    // Intercept exceptions directly to avoid frequent exceptions.
     if (num <= 0) {
       console.info('Invalid numbers.');
     }

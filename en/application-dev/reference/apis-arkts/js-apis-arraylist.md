@@ -17,9 +17,9 @@ This topic uses the following to identify the use of generics:
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> Container classes, implemented in static languages, have restrictions on storage locations and properties, and do not support custom properties or methods.
+> - Container classes, implemented in static languages, have restrictions on storage locations and properties, and do not support custom properties or methods.
 
 
 ## Modules to Import
@@ -512,7 +512,7 @@ arrayList.forEach((value: number, index?: number) => {
 
 sort(comparator?: (firstValue: T, secondValue: T) => number): void
 
-Sorts elements in this ArrayList.
+Sorts elements in an ArrayList according to the order defined by the specified comparator.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

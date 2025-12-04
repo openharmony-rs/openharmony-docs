@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct NativeWindow OHNativeWindow
+```
+
 ## Overview
 
 Provides the capability of accessing the **OHNativeWindow**.

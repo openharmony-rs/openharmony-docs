@@ -59,7 +59,7 @@ Initializes a fiber. The initialized fiber instance can store contexts.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int (ffrt_fiber_t* fiber, void(*func) | If the initialization is successful, **ffrt_success** is returned. Otherwise, **ffrt_error** is returned.|
+| FFRT_C_API int | If the initialization is successful, **ffrt_success** is returned. Otherwise, **ffrt_error** is returned.|
 
 ### ffrt_fiber_switch()
 

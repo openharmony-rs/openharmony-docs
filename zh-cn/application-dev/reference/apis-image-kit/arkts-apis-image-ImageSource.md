@@ -24,7 +24,7 @@ import { image } from '@kit.ImageKit';
 
 | 名称             | 类型           | 只读 | 可选 | 说明                                                         |
 | ---------------- | -------------- | ---- | ---- | ------------------------------------------------------------ |
-| supportedFormats | Array\<string> | 是   | 否   | 支持的图片格式，包括：png，jpeg，bmp，gif，webp，dng，heic<sup>12+</sup>（不同硬件设备支持情况不同）。 |
+| supportedFormats | Array\<string> | 是   | 否   | 支持的图片格式，包括：png、jpeg、bmp、gif、webp、dng、heic<sup>12+</sup>、wbmp<sup>23+</sup>（不同硬件设备支持情况不同）。 |
 
 ## getImageInfo
 
@@ -140,6 +140,10 @@ getImageInfoSync(index?: number): ImageInfo
 
 获取指定序号的图片信息，使用同步形式返回图片信息。
 
+> **说明：**
+>
+> 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考[耗时任务并发场景简介](../../arkts-utils/time-consuming-task-overview.md)。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **参数：**
@@ -178,7 +182,7 @@ getImageProperty(key:PropertyKey, options?: ImagePropertyOptions): Promise\<stri
 
 获取图片中给定索引处图像的指定属性键的值。用Promise异步回调。
 
-该接口仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -207,7 +211,7 @@ getImageProperty(key:PropertyKey, options?: ImagePropertyOptions): Promise\<stri
 | 62980110 | The image source data is incorrect.      |
 | 62980111 | The image source data is incomplete. |
 | 62980112 | The image format does not match.       |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980115 | Invalid image parameter.      |
 | 62980118 | Failed to create the image plugin.   |
 | 62980122 | Failed to decode the image header.   |
@@ -236,7 +240,7 @@ getImageProperties(key: Array&#60;PropertyKey&#62;): Promise<Record<PropertyKey,
 
 批量获取图片中的指定属性键的值。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG和HEIF（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+该接口仅支持JPEG、PNG、HEIF和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -261,7 +265,7 @@ getImageProperties(key: Array&#60;PropertyKey&#62;): Promise<Record<PropertyKey,
 | 401  | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed;     |
 | 62980096| The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.             |
 | 62980110| The image source data is incorrect.            |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980116| Failed to decode the image.            |
 
 **示例：**
@@ -283,14 +287,15 @@ async function GetImageProperties(imageSourceObj : image.ImageSource) {
 
 getImagePropertySync(key:PropertyKey): string
 
-获取图片exif指定属性键的值，使用同步形式返回结果。
+获取图片Exif指定属性键的值，使用同步形式返回结果。
 
 >**说明：**
 >
-> 该方法仅支持JPEG、PNG和HEIF（不同硬件设备支持情况不同）文件，且需要包含exif信息。
+>- 该方法仅支持JPEG、PNG、HEIF和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 >
-> exif信息是图片的元数据，包含拍摄时间、相机型号、光圈、焦距、ISO等。
-
+>- Exif信息是图片的元数据，包含拍摄时间、相机型号、光圈、焦距、ISO等。
+>
+>- 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考[耗时任务并发场景简介](../../arkts-utils/time-consuming-task-overview.md)。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -304,7 +309,7 @@ getImagePropertySync(key:PropertyKey): string
 
 | 类型             | 说明                                                              |
 | ---------------- | ----------------------------------------------------------------- |
-| string | 返回图片exif中指定属性键的值（如获取失败则返回属性默认值），各个数据值作用请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)。 |
+| string | 返回图片Exif中指定属性键的值（如获取失败则返回属性默认值），各个数据值作用请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)。 |
 
 **错误码：**
 
@@ -338,7 +343,7 @@ modifyImageProperty(key: PropertyKey, value: string): Promise\<void>
 
 通过指定的键修改图片属性的值。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：**
 >
@@ -395,7 +400,7 @@ modifyImageProperties(records: Record<PropertyKey, string|null>): Promise\<void>
 
 批量通过指定的键修改图片属性的值。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG和HEIF（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+该接口仅支持JPEG、PNG、HEIF和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：**
 >
@@ -451,15 +456,15 @@ async function ModifyImageProperties(imageSourceObj : image.ImageSource) {
 
 ## modifyImagePropertiesEnhanced<sup>22+</sup>
 
-modifyImagePropertiesEnhanced(records: Record\<PropertyKey, string | null\>): Promise\<void\>
+modifyImagePropertiesEnhanced(records: Record\<string, string | null\>): Promise\<void\>
 
-批量修改图片属性。
+批量修改图片属性。使用Promise异步回调。
 
 > **说明：**
 >
 > - 调用该接口修改属性会改变属性字节长度，建议通过传入文件描述符来创建[ImageSource](arkts-apis-image-f.md#imagecreateimagesource7)实例或通过传入的uri创建[ImageSource](arkts-apis-image-f.md#imagecreateimagesource)实例。
 > - 该方法在内存中完成批量数据修改后会一次性写入文件，相比[modifyImageProperties](#modifyimageproperties12)更高效。
-> - 支持修改JPEG、PNG和HEIF文件类型的图片属性，图片需要包含exif信息。修改属性前，先通过supportedFormats属性查询设备是否支持HEIF格式的exif读写。
+> - 支持修改JPEG、PNG、HEIF和WEBP文件类型的图片属性，图片需要包含Exif信息。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -467,7 +472,7 @@ modifyImagePropertiesEnhanced(records: Record\<PropertyKey, string | null\>): Pr
 
 | 参数名  | 类型   | 必填 | 说明         |
 | ------- | ------ | ---- | ------------ |
-| records | Record<[PropertyKey](arkts-apis-image-e.md#propertykey7), string \| null>|是| 包含图片属性名和属性值的键值对集合。|
+| records | Record\<string, string \| null>|是| 包含图片属性名和属性值的键值对集合。|
 
 **返回值：**
 
@@ -491,9 +496,9 @@ import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ModifyImagePropertiesEnhanced(imageSourceObj : image.ImageSource) {
-  let keyValues: Record<PropertyKey, string|null> = {
-    [image.PropertyKey.IMAGE_WIDTH] : "1024",
-    [image.PropertyKey.IMAGE_LENGTH] : "1024"
+  let keyValues: Record<string, string|null> = {
+    "ImageWidth" : "1024",
+    "ImageLength" : "1024"
   };
   let checkKey = [image.PropertyKey.IMAGE_WIDTH, image.PropertyKey.IMAGE_LENGTH];
   imageSourceObj.modifyImagePropertiesEnhanced(keyValues).then(() => {
@@ -807,6 +812,10 @@ createPixelMapSync(options?: DecodingOptions): PixelMap
 
 从API version 15开始，推荐使用[createPixelMapUsingAllocatorSync](#createpixelmapusingallocatorsync15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
 
+> **说明：**
+>
+> 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考[耗时任务并发场景简介](../../arkts-utils/time-consuming-task-overview.md)。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **参数：**
@@ -1100,6 +1109,10 @@ createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: Allo
 
 根据指定的分配器同步创建一个基于图像解码参数的PixelMap对象。接口使用详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
 
+> **说明：**
+>
+> 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考[耗时任务并发场景简介](../../arkts-utils/time-consuming-task-overview.md)。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **参数：**
@@ -1267,7 +1280,7 @@ getFrameCount(callback: AsyncCallback\<number>): void
 | 62980096| The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.             |
 | 62980111| The image source data is incomplete. |
 | 62980112| The image format does not match. |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980115| Invalid image parameter. |
 | 62980116| Failed to decode the image. |
 | 62980118| Failed to create the image plugin. |
@@ -1313,7 +1326,7 @@ getFrameCount(): Promise\<number>
 | 62980096 | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.             |
 | 62980111 | The image source data is incomplete. |
 | 62980112 | The image format does not match.        |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980115 | Invalid image parameter.      |
 | 62980116 | Failed to decode the image.          |
 | 62980118 | Failed to create the image plugin.   |
@@ -1441,7 +1454,7 @@ getImageProperty(key:string, options?: GetImagePropertyOptions): Promise\<string
 
 获取图片中给定索引处图像的指定属性键的值。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：**
 >
@@ -1483,7 +1496,7 @@ getImageProperty(key:string, callback: AsyncCallback\<string>): void
 
 获取图片中给定索引处图像的指定属性键的值。使用callback异步回调。
 
-该接口仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：**
 >
@@ -1520,7 +1533,7 @@ getImageProperty(key:string, options: GetImagePropertyOptions, callback: AsyncCa
 
 获取图片指定属性键的值。使用callback异步回调。
 
-该接口仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：**
 >
@@ -1559,7 +1572,7 @@ modifyImageProperty(key: string, value: string): Promise\<void>
 
 通过指定的键修改图片属性的值。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：**
 >
@@ -1606,7 +1619,7 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback\<void>):
 
 通过指定的键修改图片属性的值。使用callback异步回调。
 
-仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：**
 >

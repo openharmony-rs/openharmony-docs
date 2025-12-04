@@ -6,22 +6,26 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
+应用级配置文件，包含应用的全局配置信息和特定设备类型的配置信息，用于向编译工具、操作系统和应用市场提供应用的基本信息。每个工程下必须包含一个app.json5配置文件，文件所在目录为`工程名称/AppScope/app.json5`。
+
+>
+> **说明：**
+>
+> 配置文件中的示例代码直接拷贝到工程中可能编译不通过，请开发者根据需求进行配置。例如：通过$符号引用的资源文件如果工程中不存在，需要开发者手动添加或替换为实际的资源文件。
+>
+> 配置文件中，字段可以重复，以最后一个配置为准。
+>
+
 ## 配置文件示例
 
 
-先通过一个示例，整体认识一下app.json5配置文件。
+先通过一个示例，了解app.json5配置文件的结构和内容。
 
 <!-- @[app_json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
 ``` JSON5
-// [Start app_json5_appEnvironments]
-// [Start app_json5_multiAppMode]
-// [Start app_json5_configuration]
 {
   "app": {
-    // [StartExclude app_json5_appEnvironments]
-    // [StartExclude app_json5_multiAppMode]
-    // [StartExclude app_json5_configuration]
     "bundleName": "com.application.myapplication",
     "vendor": "example",
     "versionCode": 1000000,
@@ -35,44 +39,31 @@
     "car": {
       "minAPIVersion": 8
     },
-    // [EndExclude app_json5_appEnvironments]
     "appEnvironments": [
       {
         "name":"name1",
         "value": "value1"
       }
     ],
-    // [StartExclude app_json5_appEnvironments]
     "maxChildProcess": 5,
-    // [EndExclude app_json5_multiAppMode]
     "multiAppMode": {
       "multiAppModeType": "appClone",
       "maxCount": 5
     },
-    // [StartExclude app_json5_multiAppMode]
     "hwasanEnabled": false,
     "ubsanEnabled": false,
     "cloudFileSyncEnabled": false,
     "cloudStructuredDataSyncEnabled": false,
-    // [EndExclude app_json5_configuration]
     "configuration": "$profile:configuration",
-    // [StartExclude app_json5_configuration]
     "assetAccessGroups": [
       "com.ohos.photos",
       "com.ohos.screenshot",
       "com.ohos.note"
     ],
     "startMode": "mainTask"
-    // [EndExclude app_json5_configuration]
-    // [EndExclude app_json5_appEnvironments]
-    // [EndExclude app_json5_multiAppMode]
   }
 }
-// [End app_json5_configuration]
-// [End app_json5_multiAppMode]
-// [End app_json5_appEnvironments]
 ```
-
 
 ## 配置文件标签
 
@@ -136,25 +127,19 @@ appEnvironments标签示例：
 <!-- @[app_json5_appEnvironments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
 ``` JSON5
-// [Start app_json5_multiAppMode]
-// [Start app_json5_configuration]
 {
   "app": {
-	// ···
+    // ...
     "appEnvironments": [
       {
         "name":"name1",
         "value": "value1"
       }
     ],
-	// ···
-    // [EndExclude app_json5_multiAppMode]
+    // ...
   }
 }
-// [End app_json5_configuration]
-// [End app_json5_multiAppMode]
 ```
-
 
 ## multiAppMode标签
 
@@ -172,21 +157,17 @@ multiAppMode标签示例：
 <!-- @[app_json5_multiAppMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
 ``` JSON5
-// [Start app_json5_configuration]
 {
   "app": {
-    // [StartExclude app_json5_appEnvironments]
-	// ···
+    // ...
     "multiAppMode": {
       "multiAppModeType": "appClone",
       "maxCount": 5
     },
-	// ···
+    // ...
   }
 }
-// [End app_json5_configuration]
 ```
-
 
 ## configuration标签
 
@@ -199,17 +180,12 @@ configuration标签示例：
 ``` JSON5
 {
   "app": {
-    // [StartExclude app_json5_appEnvironments]
-    // [StartExclude app_json5_multiAppMode]
-	// ···
+    // ...
     "configuration": "$profile:configuration",
-	// ···
-    // [EndExclude app_json5_appEnvironments]
-    // [EndExclude app_json5_multiAppMode]
+    // ...
   }
 }
 ```
-
 
 在开发视图的AppScope/resources/base/profile下面定义配置文件configuration.json，其中文件名"configuration"可自定义，需要和configuration标签指定的文件资源对应。配置文件中列举了设置当前应用字体大小跟随系统变化所需要的属性。
 
@@ -218,7 +194,7 @@ configuration标签示例：
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | fontSizeScale | 应用字体大小是否跟随系统，支持的取值如下：<br/>-&nbsp;followSystem：跟随系统。<br/>-&nbsp;nonFollowSystem：不跟随系统。| 字符串 | 该标签可缺省，缺省值为nonFollowSystem。 |
-| fontSizeMaxScale | 应用字体大小选择跟随系统后，配置的应用字体最大放大倍数，支持的取值为：1、1.15、1.3、1.45、1.75、2、3.2。	 <br/> 例如配置应用字体最大放大倍数为1.75，系统字体标准大小为10fp。<br/>（1）如果设置中调整系统字体放大倍数为1.5倍，应用会跟随系统一起调整为15fp。<br/>（2）如果设置中调整系统字体放大倍数为2倍，此时系统的字体大小为20fp，但由于应用配置的最大放大倍数为1.75，所以此时应用的字体大小为17.5fp。 <br/> **说明**<br/> fontSizeScale为nonFollowSystem时，该项不生效。 | 字符串 | 该标签可缺省，缺省值为3.2。 |
+| fontSizeMaxScale | 应用字体大小选择跟随系统后，配置的应用字体最大放大倍数，支持的取值为：1、1.15、1.3、1.45、1.75、2、3.2。 <br/> 例如配置应用字体最大放大倍数为1.75，系统字体标准大小为10fp。<br/>（1）如果设置中调整系统字体放大倍数为1.5倍，应用会跟随系统一起调整为15fp。<br/>（2）如果设置中调整系统字体放大倍数为2倍，此时系统的字体大小为20fp，但由于应用配置的最大放大倍数为1.75，所以此时应用的字体大小为17.5fp。 <br/> **说明**<br/> fontSizeScale为nonFollowSystem时，该项不生效。 | 字符串 | 该标签可缺省，缺省值为3.2。 |
 
 configuration标签示例：
 

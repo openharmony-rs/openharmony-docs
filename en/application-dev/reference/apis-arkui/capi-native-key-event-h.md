@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -19,6 +19,8 @@ Declares the APIs of **NativeKeyEvent**.
 **Since**: 14
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**Sample**: <!--RP1-->[NdkKeyEvent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkKeyEvent)<!--RP1End-->
 
 ## Summary
 
@@ -108,7 +110,7 @@ Enumerates the key codes for key events.
 | ARKUI_KEYCODE_N = 2030 | Key N                    |
 | ARKUI_KEYCODE_O = 2031 | Key O                    |
 | ARKUI_KEYCODE_P = 2032 | Key P                    |
-| ARKUI_KEYCODE_Q = 2033 | Key R                    |
+| ARKUI_KEYCODE_Q = 2033 | Key Q                    |
 | ARKUI_KEYCODE_R = 2034 | Key R                    |
 | ARKUI_KEYCODE_S = 2035 | Key S                    |
 | ARKUI_KEYCODE_T = 2036 | Key T                    |

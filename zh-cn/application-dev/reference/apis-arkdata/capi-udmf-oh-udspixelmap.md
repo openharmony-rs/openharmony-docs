@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdsPixelMap OH_UdsPixelMap
+```
+
 ## 概述
 
 描述像素图片类型的统一数据结构。

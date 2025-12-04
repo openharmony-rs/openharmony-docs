@@ -1,7 +1,11 @@
 # drawing_text_blob.h
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 ## Overview
-
 This file declares the functions related to the text blob in the drawing module.
 
 **File to include**: <native_drawing/drawing_text_blob.h>

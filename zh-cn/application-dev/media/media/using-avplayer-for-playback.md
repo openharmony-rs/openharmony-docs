@@ -27,6 +27,7 @@
 - 应用在播放过程中，若播放的媒体数据涉及音频，根据系统音频管理策略（参考[处理音频焦点事件](../audio/audio-playback-concurrency.md)），可能会被其他应用打断，建议应用主动监听音频打断事件，根据内容提示做出相应处理，避免出现应用状态与预期效果不一致的问题。
 - 面对设备同时连接多个音频输出设备的情况，应用可以通过[on('audioOutputDeviceChangeWithInfo')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onaudiooutputdevicechangewithinfo11)监听音频输出设备的变化，做出相应处理。
 - 若要访问在线媒体资源，需要申请 ohos.permission.INTERNET 权限。
+- 若要切换听筒/扬声器，应用可以参考[音频输出设备路由切换](../audio/audio-output-device-switcher.md)。
 
 ## 开发步骤及注意事项
 
@@ -101,8 +102,6 @@
    > - 如果使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法可参考[ResourceManager API参考](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
    > 
    > - 需要使用[支持的播放格式与协议](media-kit-intro.md#支持的格式与协议)。
-   > 
-   > 此外，如果需要设置音频渲染信息，则只允许在initialized状态下，第一次调用prepare()之前设置，以便音频渲染器信息在之后生效。若媒体源包含视频，则usage默认值为STREAM_USAGE_MOVIE，否则usage默认值为STREAM_USAGE_MUSIC。rendererFlags默认值为0。为了确保音频行为符合使用预期，建议根据具体业务场景和实际需求，主动配置[audio.AudioRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)，为音频选择恰当的流类型[usage](../../media/audio/using-right-streamusage-and-sourcetype.md)。
 
     ```ts
     let url = 'https://xxx.xxx.xxx.mp3';
@@ -111,8 +110,19 @@
     }
     avPlayer.url = url;
     ```
+4. （可选）设置音频渲染：只允许在initialized状态下，第一次调用prepare()之前设置，以便音频渲染器信息在之后生效。若媒体源包含视频，则usage默认值为STREAM_USAGE_MOVIE，否则usage默认值为STREAM_USAGE_MUSIC。rendererFlags默认值为0。
+    为了确保音频行为符合使用预期，建议根据具体业务场景和实际需求，主动配置[audio.AudioRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)，为音频选择恰当的流类型[usage](../../media/audio/using-right-streamusage-and-sourcetype.md)。
+    
+    ```ts
+    import { audio } from '@kit.AudioKit';
 
-4. 准备播放：调用prepare()，AVPlayer进入prepared状态，此时可以获取duration，设置音量。
+    avPlayer.audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_MOVIE,
+        rendererFlags: 0
+    }
+    ```
+
+5. 准备播放：调用 prepare()方法进入准备播放阶段，AVPlayer 将切换至 prepared 状态，此时可获取视频时长（duration）并调整音量参数。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -126,7 +136,7 @@
     });
     ```
 
-5. 音频播控：播放play()，暂停pause()，跳转seek()，停止stop() 等操作。
+6. 音频播控：播放play()、暂停pause()、跳转seek()、停止stop() 等操作。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -158,7 +168,7 @@
     });
     ```
 
-6. （可选）更换资源：调用reset()重置资源，AVPlayer重新进入idle状态，允许更换资源url。
+7. （可选）更换资源：调用reset()方法重置播放资源，AVPlayer重新进入idle状态，此时可重新设置资源url。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -179,7 +189,7 @@
     avPlayer.url = url;
     ```
 
-7. 退出播放：调用release()销毁实例，AVPlayer进入released状态，退出播放。
+8. 退出播放：调用release()销毁实例，AVPlayer进入released状态，退出播放。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';

@@ -155,7 +155,9 @@ The following table lists the APIs commonly used for registering and using theme
 
 The following uses the theme font to draw the text "Hello World. \nThis is the theme font." as an example to provide a complete example and effect diagram.
 
-```ts
+<!-- @[arkts_theme_font_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // /pages/Index.ets
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI';
 import { UIContext } from '@kit.ArkUI';
@@ -265,7 +267,7 @@ struct RenderTest {
       .height('90%')
       .backgroundColor(Color.White)
       Row(){
-        Button("Draw Text")
+        Button($r("app.string.Button_label"))
           .fontSize('16fp')
           .fontWeight(500)
           .margin({ bottom: 24, right: 12 })
@@ -285,27 +287,30 @@ struct RenderTest {
     }
   }
 }
-
-
 ```
 
-```ts
-// entry/src/main/ets/entryability/EntryAbility.ets
+<!-- @[arkts_theme_font_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, Configuration, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import { updateRenderNodeData } from '../pages/Index';
+
+// ···
+
 export default class EntryAbility extends UIAbility {
-    // ...  
-    preFontId ="";
-    onConfigurationUpdate(newConfig: Configuration):void{
-        let fontId = newConfig.fontId;
-        if(fontId && fontId !=this.preFontId){
-            this.preFontId = fontId;
-            updateRenderNodeData();
-        }
+  preFontId = "";
+// ···
+
+  onConfigurationUpdate(newConfig: Configuration): void {
+    let fontId = newConfig.fontId;
+    if (fontId && fontId !== this.preFontId) {
+      this.preFontId = fontId;
+      updateRenderNodeData();
+    // ···
     }
-    // ...
+  }
 }
 ```
 

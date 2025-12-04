@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```
+typedef struct {...} ArkWeb_AnyNativeAPI
+```
+
 ## 概述
 
 定义基础Native API类型。

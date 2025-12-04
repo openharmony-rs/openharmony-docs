@@ -827,9 +827,12 @@ export default class MyAbility extends UIAbility {
 
 clearUpApplicationData(): Promise\<void\>
 
-清理当前应用的数据，同时撤销应用向用户申请的权限。使用Promise异步回调。仅支持主线程调用。
+清理当前应用的应用文件路径下的所有数据，同时撤销应用向用户申请的权限。使用Promise异步回调。仅支持主线程调用。
+
 
 > **说明：**
+> 
+> 应用文件路径详见[应用文件目录信息](../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。图中仅标识了el1~el2目录下的应用文件路径，其他文件加密类型目录下的应用文件路径可以参考el1。
 >
 > 该接口会停止应用进程，应用进程停止后，后续的所有回调都不会再触发。
 
@@ -867,9 +870,12 @@ export default class MyAbility extends UIAbility {
 
 clearUpApplicationData(callback: AsyncCallback\<void\>): void
 
-清理当前应用的数据，同时撤销应用向用户申请的权限。使用callback异步回调。仅支持主线程调用。
+清理当前应用的应用文件路径下的所有数据，同时撤销应用向用户申请的权限。使用callback异步回调。仅支持主线程调用。
+
 
 > **说明：**
+> 
+> 应用文件路径详见[应用文件目录信息](../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。图中仅标识了el1~el2目录下的应用文件路径，其他文件加密类型目录下的应用文件路径可以参考el1。
 >
 > 该接口会停止应用进程，应用进程停止后，后续的所有回调都不会再触发。
 

@@ -111,7 +111,7 @@ rowsGap(value: LengthMetrics): T
 
 该示例通过WaterFlow和LazyVGridLayout实现懒加载网格布局。
 
-MyDataSource实现了LazyForEach数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给LazyVGridLayout提供子组件。 
+MyDataSource实现了[LazyForEach](ts-rendering-control-lazyforeach.md)数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给LazyVGridLayout提供子组件。 
 
 <!--code_no_check-->
 ```ts
@@ -127,21 +127,21 @@ struct LazyVGridLayoutSample1 {
       WaterFlow() {
         LazyVGridLayout() {
           LazyForEach(this.arr, (item:number)=>{
-            Text("item" + item.toString())
+            Text('item' + item.toString())
               .height(64)
-              .width("100%")
+              .width('100%')
               .borderRadius(5)
               .backgroundColor(Color.White)
               .textAlign(TextAlign.Center)
           })
         }
-        .columnsTemplate("1fr 1fr")
+        .columnsTemplate('1fr 1fr')
         .rowsGap(LengthMetrics.vp(10))
         .columnsGap(LengthMetrics.vp(10))
       }.padding(10)
     }
     .width('100%').height('100%')
-    .backgroundColor("#DCDCDC")
+    .backgroundColor('#DCDCDC')
   }
 
   aboutToAppear(): void {

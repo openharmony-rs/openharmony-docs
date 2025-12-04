@@ -58,7 +58,7 @@
    for (let i = 0; i < fontConfig.fontDir.length; i++) {
      console.info(fontConfig.fontDir[i]);
    }
-   console.info('ysFontMfg::generic-------------' + String(fontConfig.generic.length));
+   console.info('sysFontMfg::generic-------------' + String(fontConfig.generic.length));
    for (let i = 0; i < fontConfig.generic.length; i++) {
      console.info('sysFontMfg::family:' + fontConfig.generic[i].family);
      for (let j = 0; j < fontConfig.generic[i].alias.length; j++) {

@@ -93,11 +93,11 @@ export default class EntryAbility extends UIAbility {
       return;
     }
 
-    // 根据业务需求，选择一个安全单元来访问，比如选择eSE或SIM
+    // 根据业务需求，选择一个安全单元来访问，比如选择eSE或SIM或SIM2
     let reader: (omapi.Reader | undefined);
     for (let i = 0; i < seReaders.length; ++i) {
       let r = seReaders[i];
-      // 安全单元的Name来区分，比如是eSE或SIM
+      // 安全单元的Name来区分，比如是eSE或SIM或SIM2
       if (r.getName().includes("SIM")) {
         reader = r;
         break;

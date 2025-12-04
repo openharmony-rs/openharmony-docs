@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```
+typedef struct {...} ArkWeb_ProxyObject
+```
+
 ## 概述
 
 注入的Proxy对象通用结构体。

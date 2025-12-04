@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_PixelmapNative OH_PixelmapNative
+```
+
 ## 概述
 
 声明由图像框架定义的像素图对象。

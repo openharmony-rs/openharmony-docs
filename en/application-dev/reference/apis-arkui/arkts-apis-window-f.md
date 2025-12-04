@@ -240,6 +240,7 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
     windowStage.loadContent('pages/Index', (err: BusinessError) => {
       if (err.code) {
         console.error(`Failed to load content for main window. Cause code: ${err.code}, message: ${err.message}`);
@@ -252,13 +253,14 @@ export default class EntryAbility extends UIAbility {
           }
           subWindow.showWindow().then(() => {
             try {
-              window.getLastWindow(this.context, (err: BusinessError, topWindow) => {
+              window.getLastWindow(this.context, (err: BusinessError, data) => {
                 const errCode: number = err.code;
                 if (errCode) {
                   console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
                   return;
                 }
-                console.info(`Succeeded in obtaining the top window. Window id: ${topWindow.getWindowProperties().id}`);
+                windowClass = data;
+                console.info(`Succeeded in obtaining the top window. Window id: ${windowClass.getWindowProperties().id}`);
               });
             } catch (exception) {
               console.error(`Failed to obtain the top window. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -318,6 +320,7 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
     windowStage.loadContent('pages/Index', (err: BusinessError) => {
       if (err.code) {
         console.error(`Failed to load content for main window. Cause code: ${err.code}, message: ${err.message}`);
@@ -331,6 +334,7 @@ export default class EntryAbility extends UIAbility {
           subWindow.showWindow().then(() => {
             try {
               window.getLastWindow(this.context).then((topWindow) => {
+                windowClass = topWindow;
                 console.info(`Succeeded in obtaining the top window. Window id: ${topWindow.getWindowProperties().id}`);
               }).catch((err: BusinessError) => {
                 console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
@@ -431,8 +435,8 @@ export default class EntryAbility extends UIAbility {
           subWindow = data;
           subWindowId = subWindow.getWindowProperties().id;
           subWindow.resize(500, 500);
-          subWindow.showWindow();
           subWindow.setUIContent('pages/Index');
+          subWindow.showWindow();
 
           // Listen for the window status and ensure that the window is ready.
           subWindow.on("windowEvent", (windowEvent) => {
@@ -457,7 +461,7 @@ export default class EntryAbility extends UIAbility {
 ## window.shiftAppWindowPointerEvent<sup>15+</sup>
 shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
 
-Transfers a mouse input event from one window to another within the same application. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode and takes effect only for the main window and its child windows. This API uses a promise to return the result.
+Transfers a mouse input event from one window to another within the same application. This API takes effect only for the main window and its child windows. This API uses a promise to return the result.
 
 To transfer mouse input events, the source window must call this API within the callback of the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) event (the event type must be **TouchType.Down**). After a successful call, the system sends a **TouchType.Up** event to the source window and a **TouchType.Down** event to the target window.
 
@@ -465,7 +469,7 @@ To transfer mouse input events, the source window must call this API within the 
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -531,13 +535,13 @@ struct Index {
 ## window.shiftAppWindowTouchEvent<sup>20+</sup>
 shiftAppWindowTouchEvent(sourceWindowId: number, targetWindowId: number, fingerId: number): Promise&lt;void&gt;
 
-Transfers a touchscreen input event from one window to another within the same application. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode and takes effect only for the main window and its child windows. This API uses a promise to return the result.
+Transfers a touchscreen input event from one window to another within the same application. This API takes effect only for the main window and its child windows. This API uses a promise to return the result.
 
 To transfer touchscreen input events, the source window must call this API within the callback of the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) event (the event type must be **TouchType.Down**). After a successful call, the system sends a **TouchType.Up** event to the source window and a **TouchType.Down** event to the target window.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -1027,7 +1031,7 @@ Obtains the screenshots of one or more main windows specified by **windowId**. T
 
 | Name   | Type   | Mandatory| Description                                         |
 | --------- | ------- | ---- | --------------------------------------------- |
-| windowId | Array&lt;number&gt; | Yes  | Array of main window IDs. These IDs can be obtained using [window.getAllMainWindowInfo()](#windowgetallmainwindowinfo21).|
+| windowId | Array&lt;number&gt; | Yes  | Array of main window IDs. These IDs can be obtained using [window.getAllMainWindowInfo()](#windowgetallmainwindowinfo21). If the array is null or undefined, contains any negative number, includes duplicates, or has more than 512 entries, error code 401 is returned. If the array contains any positive ID that does not match an existing window, undefined is returned.|
 | config | [WindowSnapshotConfiguration](arkts-apis-window-i.md#windowsnapshotconfiguration21) | Yes| Configuration for obtaining the window screenshot.|
 
 **Return value**
@@ -1069,16 +1073,14 @@ export default class EntryAbility extends UIAbility {
         useCache: false
       }
       let windowInfoPromise = window.getAllMainWindowInfo();
-      windowInfoPromise.then((list: Array<window.MainWindowInfo>) => {
-        console.info('Get all main window info success.');
-        for (let i = 0; i < list.length; i++) {
-          windowIds[i] = list[i].windowId;
-          console.info('Get all main window info id: ' + windowIds[i]);
+      windowInfoPromise.then((mainWindowInfoList: Array<window.MainWindowInfo>) => {
+        for (let i = 0; i < mainWindowInfoList.length; i++) {
+          windowIds[i] = mainWindowInfoList[i].windowId;
         }
         let promise = window.getMainWindowSnapshot(windowIds, configs);
-        promise.then((list: Array<image.PixelMap>) => {
+        promise.then((list: Array<image.PixelMap | undefined>) => {
           for (let i = 0; i < list.length; i++) {
-            console.info(`Get main window snapshot, getBytesNumberPerRow: ${list[i].getBytesNumberPerRow()}`);
+            console.info(`Get main window snapshot, getBytesNumberPerRow: ${list[i]?.getBytesNumberPerRow()}`);
           }
         }).catch((err: BusinessError) => {
           console.error(`Get main window snapshot failed. Error info: ${JSON.stringify(err)}`);

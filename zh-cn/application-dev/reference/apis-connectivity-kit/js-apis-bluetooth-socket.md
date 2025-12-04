@@ -518,7 +518,7 @@ try {
 
 sppWriteAsync(clientSocket: number, data: ArrayBuffer): Promise&lt;void&gt;
 
-客户端和服务端均可使用，向对端设备发送数据。该接口支持断开连接时，会抛出错误码并返回。
+客户端和服务端均可使用，向对端设备发送数据。使用Promise异步回调。该接口支持断开连接时，会抛出错误码并返回。
 - 仅在双方成功建立连接后，调用本接口才有效。
 - 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
 - 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
@@ -571,7 +571,7 @@ try {
 
 sppReadAsync(clientSocket: number): Promise&lt;ArrayBuffer&gt;
 
-客户端和服务端均可使用，读取对端发送数据的异步接口。该接口支持断开连接时，会抛出错误码并返回。
+客户端和服务端均可使用，读取对端发送数据的异步接口。使用Promise异步回调。该接口支持断开连接时，会抛出错误码并返回。
 
 - 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
 - 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
@@ -628,6 +628,116 @@ async function readAsync(clientNumber: number) {
 }
 ```
 
+## socket.getMaxReceiveDataSize<sup>22+</sup>
+
+getMaxReceiveDataSize(clientSocket: number): number
+
+客户端和服务端均可使用，获取当前套接字链路类型下最大接收数据的大小。
+
+- 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
+- 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
+- 若套接字链路类型为[SPP_RFCOMM](#spptype)时，最大接收数据大小无限制且返回值为0。
+
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名          | 类型                          | 必填   | 说明                                       |
+| ------------ | --------------------------- | ---- | ---------------------------------------- |
+| clientSocket | number                      | 是    | 客户端套接字的ID。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。                            |
+
+**返回值：**
+
+| 类型                            | 说明         |
+| ----------------------------- | ---------- |
+| number | 返回最大接收数据的大小，单位：Byte。 |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 入参clientNumber由sppAccept或sppConnect接口获取。
+let clientSocket = 1; 
+try {
+    let result: number = socket.getMaxReceiveDataSize(clientSocket);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+## socket.getMaxTransmitDataSize<sup>22+</sup>
+
+getMaxTransmitDataSize(clientSocket: number): number
+
+客户端和服务端均可使用，获取套接字当前链路类型下最大发送数据的大小。
+
+- 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
+- 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
+- 若套接字链路类型为[SPP_RFCOMM](#spptype)时，最大发送数据大小无限制且返回值为0。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名          | 类型                          | 必填   | 说明                                       |
+| ------------ | --------------------------- | ---- | ---------------------------------------- |
+| clientSocket | number                      | 是    | 客户端套接字的ID。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。                            |
+
+**返回值：**
+
+| 类型                            | 说明         |
+| ----------------------------- | ---------- |
+| number | 返回最大发送数据的大小，单位：Byte。 |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 入参clientNumber由sppAccept或sppConnect接口获取。
+let clientSocket = 1; 
+try {
+    let result: number = socket.getMaxTransmitDataSize(clientSocket);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+## socket.isConnected<sup>22+</sup>
+
+isConnected(clientSocket: number): boolean
+
+客户端和服务端均可使用，检查当前链路是否已连接。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名          | 类型                          | 必填   | 说明                                       |
+| ------------ | --------------------------- | ---- | ---------------------------------------- |
+| clientSocket | number                      | 是    | 客户端套接字的ID。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。                            |
+
+**返回值：**
+
+| 类型                            | 说明         |
+| ----------------------------- | ---------- |
+| boolean | 套接字链路是否已连接，true表示已连接，false表示未连接。 |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 入参clientNumber由sppAccept或sppConnect接口获取。
+let clientSocket = 1; 
+try {
+    let result: boolean = socket.isConnected(clientSocket);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
 
 ## SppOptions
 

@@ -365,6 +365,20 @@ Allows an application to call the API for restoring factory settings.
 
 **Valid since**: 8
 
+## ohos.permission.FORCE_FACTORY_RESET
+
+Allows a system application to forcibly restore a device to its factory settings, which cannot be interrupted.
+
+**Permission level**：system_core
+
+**Authorization mode**：system_grant
+
+**Supported devices**：general devices
+
+**Enable via ACL**：true
+
+**Valid since**：23
+
 ## ohos.permission.ASSIST_DEVICE_UPDATE
 
 Allows an application to start the upgrade service to perform assisted or collaborative update for other devices.
@@ -652,6 +666,22 @@ Allows an application to install and uninstall other applications except enterpr
 **Enable via ACL**: true
 
 **Valid since**: 7
+
+## ohos.permission.INSTALL_ALLOW_DOWNGRADE
+
+Allows an application to downgrade and install other applications.
+
+With this permission, the application can overwrite an installed application with an earlier version, even if a later version is already present.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Supported devices**: general devices
+
+**Enable via ACL**: true
+
+**Valid since**: 23
 
 ## ohos.permission.MANAGE_SHORTCUTS
 
@@ -5135,4 +5165,46 @@ Allows a system application to invoke the data identification and anonymization 
 
 **Supported devices**: PCs/2-in-1 devices | phones | tablets | TVs | cars
 
-**Since**: 21
+**Since**: 22
+
+## ohos.permission.CAPTURE_SCREEN_ALL
+
+Allows an application to capture screenshots, including privacy windows.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 13
+
+## ohos.permission.GET_BACKGROUND_TASK_INFO
+
+Allows an application to obtain background task status.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Device**: general devices
+
+**Since**: 23
+
+## ohos.permission.SET_BACKGROUND_TASK_STATE
+
+Allows an application to obtain and set the user authorization status of special continous task.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Device**: general devices
+
+**Since**: 23

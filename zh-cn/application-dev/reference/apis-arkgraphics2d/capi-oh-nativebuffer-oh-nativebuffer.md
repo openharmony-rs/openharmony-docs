@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_NativeBuffer OH_NativeBuffer
+```
+
 ## 概述
 
 提供OH_NativeBuffer结构体声明。

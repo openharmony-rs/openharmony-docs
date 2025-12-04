@@ -13,10 +13,10 @@
 | [\@Prop](./arkts-prop.md)                   | [\@Param](./arkts-new-param.md)                   |
 | [\@Link](./arkts-link.md)                  | [\@Param](./arkts-new-param.md)[\@Event](./arkts-new-event.md)    |
 |  [\@ObjectLink](./arkts-observed-and-objectlink.md)           |[\@Param](./arkts-new-param.md)[\@Event](./arkts-new-event.md)                   |
-|  [\@Provide](./arkts-provide-and-consume.md)               |[\@Provider](./arkts-new-Provider-and-Consumer.md)                | 
-| [\@Consume](./arkts-provide-and-consume.md)               |[\@Consumer](./arkts-new-Provider-and-Consumer.md)                |
+|  [\@Provide](./arkts-provide-and-consume.md)               |[\@Provider](./arkts-new-provider-and-consumer.md)                | 
+| [\@Consume](./arkts-provide-and-consume.md)               |[\@Consumer](./arkts-new-provider-and-consumer.md)                |
 | [\@Watch](./arkts-watch.md)               |[\@Monitor](./arkts-new-monitor.md)                |
-| 无计算属性相关能力，需要重复计算 | [\@Computed](./arkts-new-Computed.md)                |
+| 无计算属性相关能力，需要重复计算 | [\@Computed](./arkts-new-computed.md)                |
 
 ## 各装饰器迁移示例
 
@@ -38,11 +38,15 @@
 
 V1：
 
-```ts
+<!-- @[Child1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV1.ets) -->
+
+``` TypeScript
+const INITIAL_VALUE = 10;
+
 @Entry
 @Component
 struct Child {
-  @State val: number = 10;
+  @State val: number = INITIAL_VALUE;
 
   build() {
     Text(this.val.toString())
@@ -52,11 +56,15 @@ struct Child {
 
 V2迁移策略：直接替换。
 
-```ts
+<!-- @[Child2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV2.ets) -->
+
+``` TypeScript
+const INITIAL_VALUE = 10;
+
 @Entry
 @ComponentV2
 struct Child {
-  @Local val: number = 10;
+  @Local val: number = INITIAL_VALUE;
 
   build() {
     Text(this.val.toString())
@@ -70,14 +78,18 @@ V1的\@State能够观察复杂对象的第一层属性变化，但V2的\@Local�
 
 V1：
 
-```ts
+<!-- @[example1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateComplexV1.ets) -->
+
+``` TypeScript
+const INITIAL_VALUE = 10;
+
 class Child {
-  value: number = 10;
+  public value: number = INITIAL_VALUE;
 }
 
 @Component
 @Entry
-struct example {
+struct Example {
   @State child: Child = new Child();
 
   build() {
@@ -95,15 +107,19 @@ struct example {
 
 V2迁移策略：使用\@ObservedV2和\@Trace。
 
-```ts
+<!-- @[example2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateComplexV2.ets) -->
+
+``` TypeScript
+const INITIAL_VALUE = 10;
+
 @ObservedV2
 class Child {
-  @Trace public value: number = 10;
+  @Trace public value: number = INITIAL_VALUE;
 }
 
 @ComponentV2
 @Entry
-struct example {
+struct Example {
   @Local child: Child = new Child();
 
   build() {
@@ -125,7 +141,9 @@ V1的\@State变量可以从外部初始化，V2的\@Local禁止外部初始化�
 
 V1实现：
 
-```ts
+<!-- @[Parent5_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateExternalInitializationV1.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   @State value: number = 0;
@@ -149,7 +167,9 @@ struct Parent {
 
 V2迁移策略：使用\@Param和\@Once。
 
-```ts
+<!-- @[Parent6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateExternalInitializationV2.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct Child {
   @Param @Once value: number = 0;
@@ -181,7 +201,11 @@ struct Parent {
 
 V1实现：
 
-```ts
+<!-- @[Parent7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/LinkMiigrationV1.ets) -->
+
+``` TypeScript
+const INITIAL_MYVAL = 10;
+
 @Component
 struct Child {
   // @Link可以双向同步数据
@@ -201,7 +225,7 @@ struct Child {
 @Entry
 @Component
 struct Parent {
-  @State myVal: number = 10;
+  @State myVal: number = INITIAL_MYVAL;
 
   build() {
     Column() {
@@ -214,7 +238,11 @@ struct Parent {
 
 V2迁移策略：使用\@Param和\@Event。
 
-```ts
+<!-- @[Parent8_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/LinkMiigrationV2.ets) -->
+
+``` TypeScript
+const INITIAL_MYVAL = 10;
+
 @ComponentV2
 struct Child {
   // @Param搭配@Event回调实现数据双向同步
@@ -235,7 +263,7 @@ struct Child {
 @Entry
 @ComponentV2
 struct Parent {
-  @Local myVal: number = 10
+  @Local myVal: number = INITIAL_MYVAL;
 
   build() {
     Column() {
@@ -264,7 +292,9 @@ struct Parent {
 
 V1实现：
 
-```ts
+<!-- @[Parent9_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropEasyV1.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   @Prop value: number;
@@ -287,7 +317,9 @@ struct Parent {
 
 V2迁移策略：直接替换。
 
-```ts
+<!-- @[Parent10_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropEasyV2.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct Child {
   @Param value: number = 0;
@@ -307,16 +339,22 @@ struct Parent {
   }
 }
 ```
+
 **复杂类型的单向数据传递**
 
 在V2中，传递复杂类型时，如果希望实现严格的单向数据绑定，防止子组件修改父组件的数据，需要在使用\@Param传递复杂对象时进行深拷贝以避免传递对象的引用。
 
 V1实现：
 
-```ts
+<!-- @[Parent11_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV1.ets) -->    
+
+``` TypeScript
+const APPLE_INITIAL_COUNT = 5;
+const ORANGE_INITIAL_COUNT = 10;
+
 class Fruit {
-  apple: number = 5;
-  orange: number = 10;
+  public apple: number = APPLE_INITIAL_COUNT;
+  public orange: number = ORANGE_INITIAL_COUNT;
 }
 
 @Component
@@ -357,11 +395,16 @@ struct Parent {
 
 V2迁移策略：使用深拷贝。
 
-```ts
+<!-- @[Parent12_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV2.ets) -->    
+
+``` TypeScript
+const APPLE_INITIAL_COUNT = 5;
+const ORANGE_INITIAL_COUNT = 10;
+
 @ObservedV2
 class Fruit {
-  @Trace apple: number = 5;
-  @Trace orange: number = 10;
+  @Trace public apple: number = APPLE_INITIAL_COUNT;
+  @Trace public orange: number = ORANGE_INITIAL_COUNT;
 
   // 实现深拷贝，子组件不会修改父组件的数据
   clone(): Fruit {
@@ -415,7 +458,9 @@ struct Parent {
 
 V1实现：
 
-```ts
+<!-- @[Parent13_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarV1.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   // @Prop可以直接修改变量值
@@ -445,7 +490,9 @@ struct Parent {
 
 V2迁移策略：使用\@Param和\@Once。
 
-```ts
+<!-- @[Parent14_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarV2.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct Child {
   // @Param搭配@Once使用，可以在本地修改@Param变量
@@ -479,7 +526,11 @@ V1：
 - 改变子组件`Child`的`localValue`，不会同步回父组件`Parent`。
 - 父组件更新`value`，通知子组件`Child`更新，并覆写本地子组件`localValue`的值。
 
-```ts
+<!-- @[Parent15_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV1.ets) -->
+
+``` TypeScript
+const PARENT_INITIAL_STATE_VALUE = 10;
+
 @Component
 struct Child {
   @Prop localValue: number = 0;
@@ -499,7 +550,7 @@ struct Child {
 @Entry
 @Component
 struct Parent {
-  @State value: number = 10;
+  @State value: number = PARENT_INITIAL_STATE_VALUE;
 
   build() {
     Column() {
@@ -513,6 +564,7 @@ struct Parent {
   }
 }
 ```
+
 V2中，\@Param本地不可写，与\@Once搭配使用时只同步一次。若要实现子组件本地可写，且父组件后续更新仍能通知子组件，可借助\@Monitor实现。
 
 V2实现：
@@ -520,7 +572,14 @@ V2实现：
 - 子组件`Child`改变`localValue`的值，不会同步给父组件`Parent`。
 - 父组件`Parent`中再次改变`value`，将会继续通知给子组件，并覆写子组件本地`localValue`的值。
 
-```ts
+<!-- @[Parent16_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV2.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xFF00;
+const TAG = '[Sample_StateMigration_App]';
+const PARENT_INITIAL_LOCAL_VALUE = 10;
+
 @ComponentV2
 struct Child {
   @Local localValue: number = 0;
@@ -528,7 +587,7 @@ struct Child {
 
   @Monitor('value')
   onValueChange(mon: IMonitor) {
-    console.info(`value has been changed from ${mon.value()?.before} to ${mon.value()?.now}`);
+    hilog.info(DOMAIN, TAG, `value has been changed from ${mon.value()?.before} to ${mon.value()?.now}`);
     // 父组件value变化时，通知子组件value更新，回调Monitor函数，将更新的值覆写给本地的localValue
     this.localValue = this.value;
   }
@@ -548,7 +607,7 @@ struct Child {
 @Entry
 @ComponentV2
 struct Parent {
-  @Local value: number = 10;
+  @Local value: number = PARENT_INITIAL_LOCAL_VALUE;
 
   build() {
     Column() {
@@ -583,7 +642,9 @@ V1的\@Provide和\@Consume与V2的\@Provider和\@Consumer定位和作用类似�
 
 V1实现：
 
-```ts
+<!-- @[Parent17_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAliasV1.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   // alias和属性名都为key，alias和属性名都可以匹配
@@ -613,7 +674,9 @@ struct Parent {
 
 V2迁移策略：确保alias一致，没有指定alias的情况下，依赖属性名进行匹配。
 
-```ts
+<!-- @[Parent18_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAliasV2.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct Child {
   // alias是唯一匹配的key，有alias情况下无法通过属性名匹配
@@ -647,7 +710,9 @@ V1中，API version 20之前，\@Consume不允许本地初始化变量，必须�
 
 V1实现：
 
-```ts
+<!-- @[Parent19_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideConsumeNoInitV1.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   // @Consume禁止本地初始化，当找不到对应的@Provide时抛出异常
@@ -673,7 +738,9 @@ struct Parent {
 
 V2迁移策略：\@Consumer可以本地初始化。
 
-```ts
+<!-- @[Parent20_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideConsumeInitV2.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct Child {
   // @Consumer允许本地初始化，当找不到@Provider的时候使用本地默认值
@@ -701,11 +768,15 @@ struct Parent {
 
 V1实现：
 
-```ts
+<!-- @[Parent21_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideParentInitV1.ets) -->
+
+``` TypeScript
+const STATE_INITIAL_PARENT_VALUE = 42;
+
 @Entry
 @Component
 struct Parent {
-  @State parentValue: number = 42;
+  @State parentValue: number = STATE_INITIAL_PARENT_VALUE;
 
   build() {
     Column() {
@@ -729,11 +800,15 @@ struct Child {
 
 V2迁移策略：使用\@Param接受初始值，再赋值给\@Provider。
 
-```ts
+<!-- @[Parent22_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideParentNoInitV2.ets) -->
+
+``` TypeScript
+const LOCAL_INITIAL_PARENT_VALUE = 42;
+
 @Entry
 @ComponentV2
 struct Parent {
-  @Local parentValue: number = 42;
+  @Local parentValue: number = LOCAL_INITIAL_PARENT_VALUE;
 
   build() {
     Column() {
@@ -762,11 +837,16 @@ struct Child {
 
 V1实现：
 
-```ts
+<!-- @[GrandParent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideNoAllowOverrideV1.ets) -->    
+
+``` TypeScript
+const GRANDPARENT_REVIEW_VOTES_INITIAL = 40;
+const PARENT_REVIEW_VOTES_INITIAL = 20;
+
 @Entry
 @Component
 struct GrandParent {
-  @Provide('reviewVotes') reviewVotes: number = 40;
+  @Provide('reviewVotes') reviewVotes: number = GRANDPARENT_REVIEW_VOTES_INITIAL;
 
   build() {
     Column() {
@@ -778,7 +858,7 @@ struct GrandParent {
 @Component
 struct Parent {
   // @Provide默认不支持重载，支持重载需设置allowOverride函数
-  @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = 20;
+  @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = PARENT_REVIEW_VOTES_INITIAL;
 
   build() {
     Child()
@@ -797,11 +877,16 @@ struct Child {
 
 V2迁移策略：去掉allowOverride。
 
-```ts
+<!-- @[GrandParent2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAllowOverrideV2.ets) -->
+
+``` TypeScript
+const GRANDPARENT_REVIEW_VOTES_INITIAL = 40;
+const PARENT_REVIEW_VOTES_INITIAL = 20;
+
 @Entry
 @ComponentV2
 struct GrandParent {
-  @Provider('reviewVotes') reviewVotes: number = 40;
+  @Provider('reviewVotes') reviewVotes: number = GRANDPARENT_REVIEW_VOTES_INITIAL;
 
   build() {
     Column() {
@@ -813,7 +898,7 @@ struct GrandParent {
 @ComponentV2
 struct Parent {
   // @Provider默认支持重载，@Consumer向上查找最近的@Provider
-  @Provider() reviewVotes: number = 20;
+  @Provider() reviewVotes: number = PARENT_REVIEW_VOTES_INITIAL;
 
   build() {
     Child()
@@ -837,6 +922,7 @@ struct Child {
 
 - 单变量监听：对于简单的场景，可以直接用\@Monitor替换\@Watch，效果一致。
 - 多变量监听：V1的\@Watch无法获取变化前的值。在V2中，\@Monitor支持同时监听多个变量，并可以访问变量变化前后的状态。
+
 **示例**
 
 **单变量监听**
@@ -845,14 +931,21 @@ struct Child {
 
 V1实现：
 
-```ts
+<!-- @[WatchExample1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchSingleVarV1.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0xFF00;
+const TAG = '[Sample_StateMigration_App]';
+
 @Entry
 @Component
-struct watchExample {
+struct WatchExample {
   @State @Watch('onAppleChange') apple: number = 0;
 
   onAppleChange(): void {
-    console.info('apple count changed to ' + this.apple);
+    hilog.info(DOMAIN, TAG, 'apple count changed to ' + this.apple);
   }
 
   build() {
@@ -869,15 +962,22 @@ struct watchExample {
 
 V2迁移策略：直接替换。
 
-```ts
+<!-- @[MonitorExample1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchSingleVarV2.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0xFF00;
+const TAG = '[Sample_StateMigration_App]';
+
 @Entry
 @ComponentV2
-struct monitorExample {
+struct MonitorExample {
   @Local apple: number = 0;
 
   @Monitor('apple')
   onFruitChange(monitor: IMonitor) {
-    console.info(`apple changed from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    hilog.info(DOMAIN, TAG, `apple changed from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
 
   build() {
@@ -898,20 +998,27 @@ struct monitorExample {
 
 V1实现：
 
-```ts
+<!-- @[WatchExample2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchMoreVarV1.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0xFF00;
+const TAG = '[Sample_StateMigration_App]';
+
 @Entry
 @Component
-struct watchExample {
+struct WatchExample {
   @State @Watch('onAppleChange') apple: number = 0;
   @State @Watch('onOrangeChange') orange: number = 0;
 
   // @Watch 回调，只能监听单个变量，不能获取变化前的值
   onAppleChange(): void {
-    console.info('apple count changed to ' + this.apple);
+    hilog.info(DOMAIN, TAG, 'apple count changed to ' + this.apple);
   }
 
   onOrangeChange(): void {
-    console.info('orange count changed to ' + this.orange);
+    hilog.info(DOMAIN, TAG, 'orange count changed to ' + this.orange);
   }
 
   build() {
@@ -933,10 +1040,17 @@ struct watchExample {
 
 V2迁移策略：同时监听多个变量，以及获取变化前的值。
 
-```ts
+<!-- @[MonitorExample2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchMoreVarV2.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0xFF00;
+const TAG = '[Sample_StateMigration_App]';
+
 @Entry
 @ComponentV2
-struct monitorExample {
+struct MonitorExample {
   @Local apple: number = 0;
   @Local orange: number = 0;
 
@@ -944,7 +1058,7 @@ struct monitorExample {
   @Monitor('apple','orange')
   onFruitChange(monitor: IMonitor) {
     monitor.dirty.forEach((name: string) => {
-      console.info(`${name} changed from ${monitor.value(name)?.before} to ${monitor.value(name)?.now}`);
+      hilog.info(DOMAIN, TAG, `${name} changed from ${monitor.value(name)?.before} to ${monitor.value(name)?.now}`);
     });
   }
 
@@ -964,6 +1078,7 @@ struct monitorExample {
   }
 }
 ```
+
 ### \@Computed
 **迁移规则**
 
@@ -973,7 +1088,9 @@ V1：
 
 在下面的示例中，每次改变`lastName`都会触发Text组件的刷新，每次Text组件的刷新，都需要重复计算`this.lastName + ' ' + this.firstName`。
 
-```ts
+<!-- @[ComputedV1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ComputedV1.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct Index {
@@ -997,7 +1114,9 @@ V2:
 
 使用V2中的\@Computed，每次改变`lastName`仅会触发一次计算。
 
-```ts
+<!-- @[ComputedV2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ComputedV2.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
@@ -1020,3 +1139,4 @@ struct Index {
   }
 }
 ```
+

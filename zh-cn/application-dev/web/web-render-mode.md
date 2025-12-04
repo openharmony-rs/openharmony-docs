@@ -15,7 +15,7 @@ Web组件提供了两种可配置的渲染模式，能够根据不同的容器�
 - Web组件的宽高不能超过7,680px（物理像素），超过会导致白屏。
 - 不支持动态切换模式。
 
-开发者预期Web组件作为主体显示应用页面，如图一所示。在此场景下，Web组件高度正好为一屏或接近一屏（内嵌在navigation中）。加载的H5页面高度大于Web组件高度，Web内部将产生滚动条，用户可以通过在Web内部滑动来浏览H5页面的信息。只需使用Web组件即可实现应用业务主体内容，建议采用异步渲染模式以提升性能。
+开发者预期Web组件作为主体显示应用页面，如图一所示，在此场景下，Web组件高度正好为一屏或接近一屏（内嵌在navigation中）。加载的H5页面高度大于Web组件高度，Web内部将产生滚动条，用户可以通过在Web内部滑动来浏览H5页面的信息。只需使用Web组件即可实现应用业务主体内容，建议采用异步渲染模式以提升性能。
 
 **图一 异步渲染模式场景**
 
@@ -23,7 +23,7 @@ Web组件提供了两种可配置的渲染模式，能够根据不同的容器�
 
 ## 同步渲染模式
 
-同步渲染模式下（ renderMode: [RenderMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#rendermode12).SYNC_RENDER），Web组件作为图形canvas节点, Web渲染跟随系统组件一起送显，可以渲染更长Web组件内容，但会增加性能消耗。
+同步渲染模式下（renderMode: [RenderMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#rendermode12).SYNC_RENDER），Web组件作为图形canvas节点，Web渲染跟随系统组件一起送显，可以渲染更长Web组件内容，但会增加性能消耗。
 
 - 不支持DSS合成。
 - 不支持动态切换模式。

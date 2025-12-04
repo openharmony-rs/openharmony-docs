@@ -32,7 +32,7 @@ The @AnimatableExtend decorator enables animation capabilities for normally non-
 
 - \@AnimatableExtend can be defined only globally.
 - The parameter of the \@AnimatableExtend decorated function must be of the number type or a custom type that implements the **AnimatableArithmetic\<T\>** API.
-- The function body of an @AnimatableExtend decorated function can only access property methods of the component type specified within the parentheses of @AnimatableExtend.
+- The function body of an \@AnimatableExtend decorated function can only access attribute methods of the component type specified within the parentheses of @AnimatableExtend.
 
 ### Available APIs
 The **AnimatableArithmetic\<T\>** API defines the animation operation rules for non-number data types. To animate non-number data (such as arrays, structs, and colors), implement the addition, subtraction, multiplication, and equality judgment functions in the **AnimatableArithmetic\<T\>** API.
@@ -44,12 +44,14 @@ In this way, the data can be involved in an interpolation operation of the anima
 | multiply | number | AnimatableArithmetic\<T\> | Defines the multiplication rule of the data type.|
 | equals | AnimatableArithmetic\<T\> | boolean | Defines the equality judgment rule of the data type.|
 
-## Example
+## When to Use
 
 The following example implements the frame-by-frame layout effects by changing the width of the **Text** component.
 
 
-```ts
+<!-- @[animatable_extend_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/AnimatableExtendDecorator/AnimatablePropertyText.ets) -->
+
+``` TypeScript
 @AnimatableExtend(Text)
 function animatableWidth(width: number) {
   .width(width)
@@ -57,37 +59,40 @@ function animatableWidth(width: number) {
 
 @Entry
 @Component
-struct AnimatablePropertyExample {
+struct AnimatablePropertyText {
   @State textWidth: number = 80;
 
   build() {
     Column() {
-      Text("AnimatableProperty")
+      Text('AnimatableProperty')
         .animatableWidth(this.textWidth)
         .animation({ duration: 2000, curve: Curve.Ease })
-      Button("Play")
+      Button('Play')
         .onClick(() => {
           this.textWidth = this.textWidth == 80 ? 160 : 80;
         })
-    }.width("100%")
+    }.width('100%')
     .padding(10)
   }
 }
 ```
+
 ![image](figures/AnimatableProperty.gif)
 
 
 The following example implements a polyline animation effect. 
 
 
-```ts
+<!-- @[animatable_extend_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/AnimatableExtendDecorator/AnimatablePropertyExample.ets) -->
+
+``` TypeScript
 class Point {
-  x: number
-  y: number
+  x: number;
+  y: number;
 
   constructor(x: number, y: number) {
-    this.x = x
-    this.y = y
+    this.x = x;
+    this.y = y;
   }
 
   plus(rhs: Point): Point {
@@ -166,7 +171,7 @@ function animatablePoints(points: PointVector) {
 
 @Entry
 @Component
-struct AnimatablePropertyExample {
+struct  AnimatablePropertyExample {
   @State points: PointVector = new PointVector([
     new Point(50, Math.random() * 200),
     new Point(100, Math.random() * 200),
@@ -184,7 +189,7 @@ struct AnimatablePropertyExample {
         .fill(Color.Green)
         .stroke(Color.Red)
         .backgroundColor('#eeaacc')
-      Button("Play")
+      Button('Play')
         .onClick(() => {
           // points is a data type that implements the animation protocol. During the animation, points can be changed from the previous PointVector data to the new one based on the defined operation rules and animation parameters to generate the PointVector data of each frame and then generate an animation.
           this.points = new PointVector([
@@ -195,9 +200,10 @@ struct AnimatablePropertyExample {
             new Point(250, Math.random() * 200),
           ]);
         })
-    }.width("100%")
+    }.width('100%')
     .padding(10)
   }
 }
 ```
+
 ![image](figures/animatable-points.gif)

@@ -41,10 +41,12 @@ ArkTS提供了渲染控制能力。条件渲染可根据应用状态，使用if�
 
 ### 使用if进行条件渲染
 
-```ts
+<!-- @[render_if](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/IfRendering.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct MyComponent {
+struct IfExample {
   @State count: number = 0;
 
   build() {
@@ -84,7 +86,9 @@ if语句的每个分支都包含一个构建函数。此类构建函数必须创
 
 以下示例包含if ... else ...语句与拥有[\@State](../state-management/arkts-state.md)装饰变量的子组件。
 
-```ts
+<!-- @[render_if_else](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/IfElseRendering.ets) -->
+
+``` TypeScript
 @Component
 struct CounterView {
   @State counter: number = 0;
@@ -112,9 +116,9 @@ struct MainView {
   build() {
     Column() {
       if (this.toggle) {
-        CounterView({ label: 'CounterView #positive' })
+        CounterView({ label: 'CounterView #positive' });
       } else {
-        CounterView({ label: 'CounterView #negative' })
+        CounterView({ label: 'CounterView #negative' });
       }
       Button(`toggle ${this.toggle}`)
         .onClick(() => {
@@ -141,9 +145,11 @@ struct MainView {
 
 以下示例展示了条件更改时，若需要保留counter值所做的修改。
 
-```ts
+<!-- @[render_keep_counter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/KeepCounter.ets) -->
+
+``` TypeScript
 @Component
-struct CounterView {
+struct KeepCounterView {
   @Link counter: number;
   label: string = 'unknown';
 
@@ -164,16 +170,16 @@ struct CounterView {
 
 @Entry
 @Component
-struct MainView {
+struct KeepMainView {
   @State toggle: boolean = true;
   @State counter: number = 0;
 
   build() {
     Column() {
       if (this.toggle) {
-        CounterView({ counter: $counter, label: 'CounterView #positive' })
+        KeepCounterView({ counter: $counter, label: 'CounterView #positive' });
       } else {
-        CounterView({ counter: $counter, label: 'CounterView #negative' })
+        KeepCounterView({ counter: $counter, label: 'CounterView #negative' });
       }
       Button(`toggle ${this.toggle}`)
         .onClick(() => {
@@ -186,16 +192,18 @@ struct MainView {
 }
 ```
 
-此处，\@State counter变量归父组件所有。因此，当CounterView组件实例被删除时，该变量不会被销毁。CounterView组件通过[\@Link](../state-management/arkts-link.md)装饰器引用状态。状态必须从子级移动到其父级（或父级的父级），以避免在条件内容或重复内容被销毁时丢失状态。
+此处，\@State counter变量归父组件所有。因此，当KeepCounterView组件实例被删除时，该变量不会被销毁。KeepCounterView组件通过[\@Link](../state-management/arkts-link.md)装饰器引用状态。状态必须从子级移动到其父级（或父级的父级），以避免在条件内容或重复内容被销毁时丢失状态。
 
 ### 嵌套if语句
 
 嵌套条件语句不会影响父组件的相关规则。
 
-```ts
+<!-- @[render_nested_if](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/NestedIf.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct MyComponent {
+struct NestedIf {
   @State toggle: boolean = false;
   @State toggleColor: boolean = false;
 
@@ -241,3 +249,4 @@ struct MyComponent {
   }
 }
 ```
+

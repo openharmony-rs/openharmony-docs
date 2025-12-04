@@ -32,6 +32,8 @@
 | -------- | -------- | -------- |
 | time | number | 事件触发时间，单位为ms。 |
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台；false表示应用处于后台。 |
+| release_type | string | 标识应用打包时使用的SDK的发布类型。具体说明详见[ApplicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中的releaseType。<br>**说明**：从API version 23开始支持 |
+| cpu_abi | string | 二进制接口类型。<br>**说明**：从API version 23开始支持。 |
 | bundle_version | string | 应用版本。 |
 | bundle_name | string | 应用名称。 |
 | process_name | string | 应用的进程名称。 |
@@ -39,7 +41,7 @@
 | uid | number | 应用的用户ID。 |
 | uuid | string | 根据故障信息生成的故障特征码，用于标识特征相同的崩溃故障。 |
 | exception | object | 异常信息，详见exception属性。 |
-| hilog | string[] | 日志信息。 |
+| hilog | string[] | 日志信息。当生成应用无响应事件日志时，从hilog缓冲区中获取最多100行故障进程日志信息。 |
 | event_handler | string[] | 主线程未处理消息。 |
 | event_handler_size_3s | string | [THREAD_BLOCK_6S事件](appfreeze-guidelines.md#thread_block_6s-应用主线程卡死超时)（仅在应用无响应事件生效）中3s时任务栈中任务数量。 |
 | event_handler_size_6s | string | [THREAD_BLOCK_6S事件](appfreeze-guidelines.md#thread_block_6s-应用主线程卡死超时)（仅在应用无响应事件生效）中6s时任务栈中任务数量。 |
@@ -67,17 +69,19 @@
 
 ### frame字段说明
 
-Native帧frame字段说明
+**Native帧frame字段说明**
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
 | symbol | string | 函数名称。**名称长度超过256字节时将被删除，防止超长字符串引起未知问题。** |
 | file | string | 文件名。 |
-| buildId | string | 文件唯一标识。**文件可能没有buildId，请参考[日志规格](cppcrash-guidelines.md#一般故障场景日志规格)**。 |
+| buildId | string | 文件唯一标识。**文件可能没有buildId**。 |
 | pc | string | 程序执行的指令在文件内的偏移十六进制字节数。 |
 | offset | number | 程序执行的指令在函数内偏移字节数。 |
 
-Js帧frame字段说明
+详细说明请参见[调用栈帧内容说明](cppcrash-guidelines.md#一般故障场景日志规格)。
+
+**Js帧frame字段说明**
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
@@ -86,6 +90,8 @@ Js帧frame字段说明
 | symbol | string | 函数名称 |
 | line | number | 代码行号 |
 | column | number | 代码列号 |
+
+详细说明请参见[JS混合栈帧内容说明](cppcrash-guidelines.md#一般故障场景日志规格)。
 
 ### memory字段说明
 

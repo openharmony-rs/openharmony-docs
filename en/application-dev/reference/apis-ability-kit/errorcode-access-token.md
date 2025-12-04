@@ -194,7 +194,10 @@ An internal service error occurs.
 
 **Possible Causes**
 
-An internal error occurs in the system service.
+1. An internal error occurs in the system service.
+2. A database error occurs.
+3. Failed to create the pop-up window or obtain the user selection result.
+4. Failed to query all applications of the user.
 
 **Solution**
 

@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -22,7 +22,7 @@ This error code is reported when the current component is not focusable.
 
 **Possible Causes**
 
-The component is not focusable by default or has been set to not focusable through attribute methods such as **focusable**.
+The component is not focusable by default or has been configured through attribute methods such as **focusable**.
 
 **Solution**
 
@@ -40,7 +40,7 @@ This error code is reported when an ancestor of the current component is not foc
 
 **Possible Causes**
 
-The ancestor component is not focusable by default or has been set to not focusable through attribute methods such as **focusable**.
+The ancestor component is not focusable by default or has been configured through attribute methods such as **focusable**.
 
 **Solution**
 

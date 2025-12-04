@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_NativeDialog* ArkUI_NativeDialogHandle
+```
+
 ## 概述
 
 定义ArkUI在Native侧的自定义弹窗控制器对象指针。

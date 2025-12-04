@@ -4,8 +4,12 @@
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
+<!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct TransientTask_TransientTaskInfo {...} TransientTask_TransientTaskInfo
+```
 
 ## 概述
 

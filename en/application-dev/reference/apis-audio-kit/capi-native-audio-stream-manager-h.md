@@ -28,7 +28,7 @@ You can call the functions to create an audio stream manager and set and manage 
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) | OH_AudioStreamManager | Describes an audio stream manager, which is used to manage audio streams.|
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) | OH_AudioStreamManager | Describes an audio stream manager, which is used for audio stream management.|
 
 ### Functions
 

@@ -37,6 +37,7 @@
 | [bool OH_Drawing_RegionSetRect(OH_Drawing_Region* region, const OH_Drawing_Rect* rect)](#oh_drawing_regionsetrect) | 用于尝试给区域对象设置矩形边界。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>region、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [bool OH_Drawing_RegionSetPath(OH_Drawing_Region* region, const OH_Drawing_Path* path, const OH_Drawing_Region* clip)](#oh_drawing_regionsetpath) | 给区域对象设置为指定区域内路径表示的范围。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>region、path、clip任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_RegionDestroy(OH_Drawing_Region* region)](#oh_drawing_regiondestroy) | 用于销毁区域对象并回收该对象占有的内存。 |
+| [OH_Drawing_ErrorCode OH_Drawing_RegionEmpty(OH_Drawing_Region* region)](#oh_drawing_regionempty) | 设置当前区域为空。 |
 
 ## 枚举类型说明
 
@@ -248,3 +249,28 @@ void OH_Drawing_RegionDestroy(OH_Drawing_Region* region)
 | [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | 指向区域对象[OH_Drawing_Region](capi-drawing-oh-drawing-region.md)的指针。 |
 
 
+### OH_Drawing_RegionEmpty()
+
+```
+OH_Drawing_ErrorCode OH_Drawing_RegionEmpty(OH_Drawing_Region* region)
+```
+
+**描述**
+
+设置当前区域为空。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | 指向区域对象[OH_Drawing_Region](capi-drawing-oh-drawing-region.md)的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数region为空。 |

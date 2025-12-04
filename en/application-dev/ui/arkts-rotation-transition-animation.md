@@ -1,9 +1,15 @@
 # Rotation Transition Animation
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Rotation transition animations are designed to create seamless visual transitions when the screen display orientation changes. There are two approaches to choose from:
 
 - [Rotation transition animation with layout switching](#rotation-transition-animation-with-layout-switching): This animation is your go-to solution for an out-of-the-box implementation experience. It can be achieved by simply configuring automatic rotation (or setting the window display orientation) in the **module.json5** file.
--  [Rotation transition animation with opacity changing](#rotation-transition-animation-with-opacity-changing): This animation adds a touch of sophistication with fade-in and fade-out effects for components during screen rotations. It requires additional setup beyond the **module.json5** configuration, including the preparation of two sets of visuals.
+- [Rotation transition animation with opacity changing](#rotation-transition-animation-with-opacity-changing): This animation adds a touch of sophistication with fade-in and fade-out effects for components during screen rotations. It requires additional setup beyond the **module.json5** configuration, including the preparation of two sets of visuals.
 
 ## Rotation Transition Animation with Layout Switching
 
@@ -13,8 +19,6 @@ This animation is activated once the user rotates the screen.
 
 ```ts
 // xx.ets
-import { display } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct rotation {
@@ -83,7 +87,7 @@ struct rotation {
 }
 ```
 
-Listen for the **windowSizeChange** event to manage the transitions. For example, you can add logic in the **onWindowStageCreate** API of the **EntryAbility.ets** file to obtain the screen display orientation.
+Listen for the **windowsSizeChange** event to manage the transitions. For example, you can add logic in the **onWindowStageCreate** API of the **EntryAbility.ets** file to obtain the screen display orientation.
 ```ts
 onWindowStageCreate(windowStage: window.WindowStage): void {
 
@@ -108,7 +112,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
         }
       })
     } catch {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'error');
+      hilog.error(0x0000, 'testTag', '%{public}s', 'error');
       return;
     }
 
@@ -122,7 +126,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 }
 ```
 
-To enable this animation, add **"orientation": "auto_rotation"** to the **abilities** list in the **module.json5** file of the project.
+Add **"orientation": "auto_rotation"** to the **abilities** list in the **module.json5** file of the project.
 ```json
 "orientation": "auto_rotation",
 ```

@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_FontCollection OH_Drawing_FontCollection
+```
+
 ## Overview
 
 Defines a struct used to load fonts.

@@ -2,7 +2,7 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @zhangyafei-echo-->
+<!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
@@ -33,13 +33,15 @@ An application (client) calls [startUIServiceExtensionAbility()](../reference/ap
 
 The following example uses the **startUIServiceExtensionAbility** API to start a UIServiceExtensionAbility. For details about how to obtain the context, see [Obtaining the Context of UIAbility](uiability-usage.md#obtaining-the-context-of-uiability).
 
-```ts
+<!-- @[service_ext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIServiceExtensionAbility/entry/src/main/ets/pages/Start.ets) -->
+
+``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct Index {
+struct Start {
   build() {
     Column() {
       Row() {
@@ -49,7 +51,7 @@ struct Index {
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
             let startWant: Want = {
-              bundleName: 'com.acts.uiserviceextensionability', // This is just an example. Replace it with the actual bundle name of your UIServiceExtensionAbility.
+              bundleName: 'com.samples.uiserviceextensionability', // This is just an example. Replace it with the actual bundle name of your UIServiceExtensionAbility.
               abilityName: 'UiServiceExtAbility', // This is just an example. Replace it with the actual name of your UIServiceExtensionAbility.
             };
             try {
@@ -71,19 +73,22 @@ struct Index {
 }
 ```
 
+
 ## Connecting to a UIServiceExtensionAbility
 
 The client connects to the server through [connectUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectuiserviceextensionability14) and obtains a [UIServiceProxy](../reference/apis-ability-kit/js-apis-inner-application-uiserviceproxy.md) object. The client calls [sendData()](../reference/apis-ability-kit/js-apis-inner-application-uiserviceproxy.md#uiserviceproxysenddata) of the proxy object to send data to the server. The server calls the system API **onData()** of the UIServiceExtensionAbility class to receive data from the client.
 
 The following example uses the **connectUIServiceExtensionAbility** API to connect to a UIServiceExtensionAbility. For details about how to obtain the context, see [Obtaining the Context of UIAbility](uiability-usage.md#obtaining-the-context-of-uiability).
 
-```ts
+<!-- @[connect_service_ext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIServiceExtensionAbility/entry/src/main/ets/pages/Connect.ets) -->
+
+``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct Index {
+struct Connect {
   comProxy: common.UIServiceProxy | null = null;
   connectCallback: common.UIServiceExtensionConnectCallback = {
     onData: (data: Record<string, Object>) => {

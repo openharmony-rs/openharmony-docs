@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_Vector2Property* ArkUI_Vector2PropertyHandle
+```
+
 ## 概述
 
 定义二维向量属性指针。

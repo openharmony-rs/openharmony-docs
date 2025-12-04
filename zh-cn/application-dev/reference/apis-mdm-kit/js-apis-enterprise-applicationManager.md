@@ -1332,7 +1332,7 @@ Kiosk模式的特征。
 
 ## applicationManager.addUserNonStopApps<sup>22+</sup>
 
-addUserNonStopApps(admin: Want, applicationInstances: Array&lt;ApplicationInstance&gt;): void
+addUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
 为指定用户添加不可关停应用名单，仅可对已安装应用设置该策略。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。
 若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。
@@ -1351,7 +1351,7 @@ addUserNonStopApps(admin: Want, applicationInstances: Array&lt;ApplicationInstan
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
-| applicationInstances | Array&lt;[ApplicationInstance](#applicationinstance22)&gt; | 是   | 不可关停应用名单数组。不可关停应用名单最多支持包含10个应用，该数量限制不区分用户，即所有用户下添加应用的总和的最大限制为10个。例如：若当前名单中已有3个应用，则最多还能通过本接口为指定用户添加7个应用。 |
+| applicationInstances | Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | 是   | 不可关停应用名单数组。不可关停应用名单最多支持包含10个应用，该数量限制不区分用户，即所有用户下添加应用的总和的最大限制为10个。例如：若当前名单中已有3个应用，则最多还能通过本接口为指定用户添加7个应用。 |
 
 **错误码**：
 
@@ -1395,7 +1395,7 @@ try {
 
 ## applicationManager.removeUserNonStopApps<sup>22+</sup>
 
-removeUserNonStopApps(admin: Want, applicationInstances: Array&lt;ApplicationInstance&gt;): void
+removeUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
 为指定用户删除不可关停应用名单。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执行；已安装的应用将被删除，未安装的应用不影响删除操作。
 
@@ -1412,7 +1412,7 @@ removeUserNonStopApps(admin: Want, applicationInstances: Array&lt;ApplicationIns
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
-| applicationInstances | Array&lt;[ApplicationInstance](#applicationinstance22)&gt; | 是   | 不可关停应用名单数组。 |
+| applicationInstances | Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | 是   | 不可关停应用名单数组。 |
 
 **错误码**：
 
@@ -1456,7 +1456,7 @@ try {
 
 ## applicationManager.getUserNonStopApps<sup>22+</sup>
 
-getUserNonStopApps(admin: Want): Array&lt;ApplicationInstance&gt;
+getUserNonStopApps(admin: Want): Array&lt;common.ApplicationInstance&gt;
 
 获取当前设备下所有用户不可关停应用名单。
 
@@ -1478,7 +1478,7 @@ getUserNonStopApps(admin: Want): Array&lt;ApplicationInstance&gt;
 
 | 类型                                                         | 说明                 |
 | ------------------------------------------------------------ | -------------------- |
-| Array&lt;[ApplicationInstance](#applicationinstance22)&gt; | 不可关停应用名单数组。|
+| Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | 不可关停应用名单数组。|
 
 **错误码**：
 
@@ -1512,7 +1512,7 @@ try {
 
 ## applicationManager.addFreezeExemptedApps<sup>22+</sup>
 
-addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;ApplicationInstance&gt;): void
+addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
 为指定用户添加后台防冻结应用名单，仅可对已安装应用设置该策略。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。
 若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。
@@ -1531,7 +1531,7 @@ addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;ApplicationIns
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
-| applicationInstances | Array&lt;[ApplicationInstance](#applicationinstance22)&gt; | 是   | 后台防冻结应用名单数组，后台防冻结应用名单最多支持包含10个应用，该数量限制不区分用户，即所有用户下添加应用的总和的最大限制为10个。例如：若当前名单中已有3个应用，则最多还能通过本接口为指定用户添加7个应用。 |
+| applicationInstances | Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | 是   | 后台防冻结应用名单数组，后台防冻结应用名单最多支持包含10个应用，该数量限制不区分用户，即所有用户下添加应用的总和的最大限制为10个。例如：若当前名单中已有3个应用，则最多还能通过本接口为指定用户添加7个应用。 |
 
 **错误码**：
 
@@ -1575,7 +1575,7 @@ try {
 
 ## applicationManager.removeFreezeExemptedApps<sup>22+</sup>
 
-removeFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;ApplicationInstance&gt;): void
+removeFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
 为指定用户删除后台防冻结应用名单。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执行；已安装的应用将被删除，未安装的应用不影响删除操作。
 
@@ -1592,7 +1592,7 @@ removeFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;Application
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
-| applicationInstances | Array&lt;[ApplicationInstance](#applicationinstance22)&gt; | 是   | 后台防冻结应用名单数组。 |
+| applicationInstances | Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | 是   | 后台防冻结应用名单数组。 |
 
 **错误码**：
 
@@ -1636,7 +1636,7 @@ try {
 
 ## applicationManager.getFreezeExemptedApps<sup>22+</sup>
 
-getFreezeExemptedApps(admin: Want): Array&lt;ApplicationInstance&gt;
+getFreezeExemptedApps(admin: Want): Array&lt;common.ApplicationInstance&gt;
 
 获取当前设备下所有用户后台防冻结应用名单。
 
@@ -1658,7 +1658,7 @@ getFreezeExemptedApps(admin: Want): Array&lt;ApplicationInstance&gt;
 
 | 类型                                                         | 说明                 |
 | ------------------------------------------------------------ | -------------------- |
-| Array&lt;[ApplicationInstance](#applicationinstance22)&gt; | 后台防冻结应用名单数组。|
+| Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | 后台防冻结应用名单数组。|
 
 **错误码**：
 
@@ -1689,17 +1689,3 @@ try {
   console.error(`Failed to get FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
-## ApplicationInstance<sup>22+</sup>
-
-应用的实例数据。
-该接口目前在[addUserNonStopApps](#applicationmanageraddusernonstopapps22)、[removeUserNonStopApps](#applicationmanagerremoveusernonstopapps22)、[addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22)、[removeFreezeExemptedApps](#applicationmanagerremovefreezeexemptedapps22)接口中作为入参使用。
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-| 名称          | 类型                             | 只读 | 可选 | 说明                                                        |
-| ------------- | --------------------------------| ---- | -----| ------------------------------------------------------ |
-| appIdentifier          | string       | 否   | 否 | 应用[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)，可以通过接口[bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2)获取bundleInfo.signatureInfo.appIdentifier。           |
-| accountId        | number       | 否   | 否 | 用户ID。取值范围：大于等于0的整数。<br> accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)接口获取。            |
-| appIndex        | number       | 否   | 否 | 应用分身索引。取值范围：大于等于0的整数。<br> appIndex可以通过[getAppCloneIdentity](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetappcloneidentity14)接口获取。           |
-

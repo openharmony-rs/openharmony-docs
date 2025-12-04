@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_FloatProperty* ArkUI_FloatPropertyHandle
+```
+
 ## 概述
 
 定义浮点数属性指针。

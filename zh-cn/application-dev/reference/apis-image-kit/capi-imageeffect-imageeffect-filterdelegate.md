@@ -1,4 +1,14 @@
 # ImageEffect_FilterDelegate
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct ImageEffect_FilterDelegate {...} ImageEffect_FilterDelegate
+```
 
 ## 概述
 

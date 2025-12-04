@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_AnimateCompleteCallback
+```
+
 ## 概述
 
 动画播放完成回调类型。

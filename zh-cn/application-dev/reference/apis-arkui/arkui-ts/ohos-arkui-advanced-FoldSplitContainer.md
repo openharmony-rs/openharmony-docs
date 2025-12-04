@@ -28,16 +28,7 @@ import { FoldSplitContainer } from '@kit.ArkUI';
 
 ## FoldSplitContainer
 
-FoldSplitContainer({
-  primary: Callback&lt;void&gt;,
-  secondary: Callback&lt;void&gt;,
-  extra?: Callback&lt;void&gt;,
-  expandedLayoutOptions: ExpandedRegionLayoutOptions,
-  hoverModeLayoutOptions: HoverModeRegionLayoutOptions,
-  foldedLayoutOptions: FoldedRegionLayoutOptions,
-  animationOptions?: AnimateParam | null,
-  onHoverStatusChange?: OnHoverStatusChangeHandler
-})
+FoldSplitContainer({primary: Callback&lt;void&gt;, secondary: Callback&lt;void&gt;, extra?: Callback&lt;void&gt;, expandedLayoutOptions: ExpandedRegionLayoutOptions, hoverModeLayoutOptions: HoverModeRegionLayoutOptions, foldedLayoutOptions: FoldedRegionLayoutOptions, animationOptions?: AnimateParam | null, onHoverStatusChange?: OnHoverStatusChangeHandler})
 
 实现折叠屏二分栏、三分栏在展开态、悬停态以及折叠态的区域控制的分栏布局。
 
@@ -89,8 +80,8 @@ FoldSplitContainer({
 
 > **说明：**
 >
-> 1.设备处于悬停态时，存在避让区域，布局计算需要考虑避让区域对布局的影响。
-> 2.在悬停模式下，屏幕上半部分用于显示，下半部分用于操作。
+> 1.在悬停状态下，设备存在避让区域，布局计算时需考虑该区域的影响。
+> 2.在悬停模式下，屏幕上半部分为显示区域，下半部分为操作区域。
 
 ## FoldedRegionLayoutOptions
 

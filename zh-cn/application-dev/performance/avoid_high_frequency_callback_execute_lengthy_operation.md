@@ -8,7 +8,7 @@
 <!--Adviser: @huipeizi-->
 
 ## 概述
-在滑动场景或者频繁创建和销毁组件等场景中，容易出现应用卡顿丢帧的问题。大多是由于场景中存在高频的接口调用，同时接口中执行了耗时操作，导致应用出现卡顿丢帧的现象，严重影响用户体验。为了帮助开发者优化应用性能，提升用户体验，本文将介绍以下四种需要避免处理耗时操作的高频场景：
+在滑动场景或者频繁创建和销毁组件等场景中，容易出现应用卡顿丢帧的问题。大多是由于场景中存在高频的接口调用，同时接口中执行了耗时操作，严重影响用户体验。为了帮助开发者优化应用性能，提升用户体验，本文将介绍以下四种需要避免处理耗时操作的高频场景：
 - **组件复用时避免在aboutToReuse中执行耗时操作。** 例如，在滑动场景中，使用组件复用通常需要用生命周期回调aboutToReuse去更新组件的状态变量。在滑动时，aboutToReuse会被频繁调用。如果在aboutToReuse中进行了耗时操作，将导致应用出现卡顿丢帧的问题。
 - **避免在aboutToAppear，aboutToDisappear中执行耗时操作。** 例如，在需要频繁创建和销毁组件的场景中，如果频繁在组件生命周期回调aboutToAppear，aboutToDisappear中执行耗时操作，会导致应用出现卡顿丢帧的问题。
 - **避免在LazyForEach的itemGenerator，keyGenerator，getData中执行耗时操作。** 例如，在懒加载滑动场景中，框架会根据滚动容器可视区域按需创建组件，所以在滑动时框架会频繁调用子组件生成函数itemGenerator，键值生成函数keyGenerator，获取索引数据函数getData。如果在itemGenerator，keyGenerator，getData中执行了耗时操作（比如传入耗时的函数作为入参），就会导致应用出现卡顿丢帧的问题。
@@ -28,7 +28,7 @@ aboutToReuse(params: Record<string, number>) {
 
 ![](./figures/avoid_high_frequency_callback_execute_lengthy_operation_01.png)
 
-如图1所示，从日志中可以看出，滑动时框架会频繁调用组件复用的aboutToReuse来更新节点。
+如图1所示，滑动时框架会频繁调用组件复用的aboutToReuse来更新节点。
 
 下面将基于这种组件复用时滑动会高频调用aboutToReuse的场景，在aboutToReuse中执行耗时操作和不执行耗时操作来分析正反例场景的性能差异。
 
@@ -505,7 +505,7 @@ struct Index {
 使用任务池taskpool处理耗时操作后返回结果给Row的高度rowHeight作为正例。
 
 ```ts
-import taskpool from '@ohos.taskpool'; // 任务池
+import { taskpool } from '@kit.ArkTS'; // 任务池
 
 @Concurrent
 function getHeight(): number {

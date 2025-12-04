@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_Drawing_Point3D
+```
+
 ## 概述
 
 定义一个三维的坐标点。

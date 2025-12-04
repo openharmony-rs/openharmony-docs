@@ -24,6 +24,8 @@
 
 详细的API说明请参考[Camera](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
+Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
 1. 需要导入相机框架、媒体库、图片等相关领域依赖。
 
    ```ts
@@ -31,6 +33,7 @@
    import { camera } from '@kit.CameraKit';
    import { media } from '@kit.MediaKit';
    import { fileIo } from '@kit.CoreFileKit';
+   import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
@@ -52,7 +55,7 @@
    }
    ```
 
-3. 获取对应的并发能力集。通过[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)获取相机的输出并发能力信息数组[CameraConcurrentInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraconcurrentinfo18)，数组内部包含相机在对应并发模式下支持的模式和输出能力。
+3. 获取对应的并发能力集。通过[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)获取相机的输出并发能力信息数组[CameraConcurrentInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraconcurrentinfo18)，数组内部包含相机在对应并发模式下支持的模式和输出能力。若[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)接口返回空数组，则表明当前设备不支持并发功能。
 
    ```ts
    function getSupportedOutputCapabilityFn(cameraManager: camera.CameraManager, curCameraDeviceFront: camera.CameraDevice, curCameraDeviceBack: camera.CameraDevice)
@@ -74,6 +77,10 @@
 
      // 获取并发能力集。
      let concurrentInfo: Array<camera.CameraConcurrentInfo> = cameraManager.getCameraConcurrentInfos(deviceArray);
+
+     if (concurrentInfo.length === 0) {
+      return;
+     }
 
      // 用并发能力集替换原始能力集。
      for (let i = 0; i < concurrentInfo.length; i++) {
@@ -166,16 +173,16 @@
      return avRecorder;
    }
 
-   function initFd(): number {
-     let filesDir = getContext().filesDir;
+   function initFd(context: common.Context): number {
+     let filesDir = context.filesDir;
      let filePath = filesDir + `/${Date.now()}.mp4`;
      AppStorage.setOrCreate<string>('filePath', filePath);
      let file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
      return file.fd;
    }
 
-   async function prepareAVRecorder(videoProfileObj: camera.VideoProfile, curCameraDevice: camera.CameraDevice, avRecorder: media.AVRecorder): Promise<void> {
-     let fd = initFd();
+   async function prepareAVRecorder(videoProfileObj: camera.VideoProfile, curCameraDevice: camera.CameraDevice, avRecorder: media.AVRecorder, context: common.Context): Promise<void> {
+     let fd = initFd(context);
      let videoConfig: media.AVRecorderConfig = {
        audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
        videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
@@ -199,7 +206,7 @@
      });
    }
 
-   async function getVideoOutputFn(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability, concurrentInfo: Array<camera.CameraConcurrentInfo>, curCameraDeviceFront: camera.CameraDevice)
+   async function getVideoOutputFn(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability, concurrentInfo: Array<camera.CameraConcurrentInfo>, curCameraDeviceFront: camera.CameraDevice, context: common.Context)
    {
     // 此处创建录像输出流以format：1003，size：1920*1080的videoProfile为例。
      let videoProfileObj: camera.VideoProfile = {
@@ -240,7 +247,7 @@
      if (avRecorder === undefined) {
        return;
      }
-     await prepareAVRecorder(videoProfileObj, curCameraDeviceFront, avRecorder);
+     await prepareAVRecorder(videoProfileObj, curCameraDeviceFront, avRecorder, context);
      let videoSurfaceId = await avRecorder.getInputSurface();
      let videoOutput = cameraManager.createVideoOutput(videoProfileObj, videoSurfaceId);
      if (videoOutput === undefined) {

@@ -253,8 +253,8 @@ Specifies custom properties passed during rendering. These custom properties are
         "rasterizationState": {
             "enableDepthClamp": false,
             "enableDepthBias": false,
-            "enableRasterizerDiscard": true,
-            "polygonMode": "line",
+            "enableRasterizerDiscard": false,
+            "polygonMode": "fill",
             "cullModeFlags": "back",
             "frontFace": "counter_clockwise"
         },
@@ -269,7 +269,7 @@ Specifies custom properties passed during rendering. These custom properties are
             "colorAttachments": [
                 {
                     "enableBlend": true,
-                    "colorWriteMask": "g_bit|b_bit",
+                    "colorWriteMask": "r_bit|g_bit|b_bit|a_bit",
                     "srcColorBlendFactor": "one",
                     "dstColorBlendFactor": "one_minus_src_alpha",
                     "colorBlendOp": "add",

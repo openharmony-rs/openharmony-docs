@@ -22,7 +22,7 @@ This is an updated long-term support \(LTS\) version of OpenHarmony. It supports
 
 Run the following commands to download the source code:
 
-repo init -u  [https://gitee.com/openharmony/manifest.git](https://gitee.com/openharmony/manifest.git)  -b refs/tags/OpenHarmony-v1.1.1-LTS  --no-repo-verify
+repo init -u  [https://gitcode.com/openharmony/manifest.git](https://gitcode.com/openharmony/manifest.git)  -b refs/tags/OpenHarmony-v1.1.1-LTS  --no-repo-verify
 
 ## What's New
 

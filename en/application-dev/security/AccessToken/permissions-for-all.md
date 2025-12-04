@@ -136,9 +136,9 @@ With this permission, the application can activate or deactivate a network, and 
 
 ## ohos.permission.GET_WIFI_INFO
 
-Allows an application to obtain Wi-Fi information.
+Allows an application to obtain Wi-Fi information and use the Wi-Fi P2P capability.
 
-The Wi-Fi information includes whether Wi-Fi is enabled, scan results, connection information, connection state, device capability, and peer-to-peer (P2P) state.
+With this permission, the application can obtain Wi-Fi information, including the Wi-Fi on/off state, scan results, connection information, connection state, device capability, and P2P state. In addition, the application can use the P2P capability.
 
 **Permission level**: normal
 
@@ -492,6 +492,8 @@ With this permission, the application can detect information such as the user's 
 
 **Authorization mode**: system_grant
 
+**Supported devices**: general devices
+
 **Valid since**: 20
 
 ## ohos.permission.kernel.NET_RAW
@@ -607,7 +609,7 @@ With this permission, the application prevents the device from locking by defaul
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 22
+**Since**: 22
 
 ## ohos.permission.LOCK_WINDOW_CURSOR
 
@@ -619,6 +621,48 @@ With this permission, the application can lock the mouse cursor within the windo
 
 **Authorization mode**: system_grant
 
-**Supported devices**: General
+**Supported devices**: general devices
 
 **Since**: 22
+
+## ohos.permission.CUSTOMIZE_MENU_ICON
+
+Allows an application to customize icons in the shortcut menu of Files.
+
+With this permission, the application can customize its icon in the shortcut menu of Files, helping users recognize and start it easily.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PC/2in1 | Tablet
+
+**Since**: 22
+
+## ohos.permission.kernel.EXEMPT_ANONYMOUS_EXECUTABLE_MEMORY
+
+Allows a program to declare anonymous executable memory.
+
+This permission applies only to binary programs.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 23
+
+## ohos.permission.INHERIT_PARENT_PERMISSION
+
+Allows a child process to inherit the permissions of its parent process.
+
+This permission applies only to binary programs.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 23

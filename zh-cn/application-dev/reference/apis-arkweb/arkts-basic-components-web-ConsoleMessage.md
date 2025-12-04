@@ -100,3 +100,17 @@ getSourceId(): string
 | 类型     | 说明            |
 | ------ | ------------- |
 | string | 返回网页源文件路径和名字。 |
+
+## getSource<sup>23+</sup>
+
+getSource(): ConsoleMessageSource
+
+获取ConsoleMessage的日志来源。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型     | 说明            |
+| ------ | ------------- |
+| [ConsoleMessageSource](./arkts-basic-components-web-e.md#consolemessagesource23) | 返回ConsoleMessage的日志来源。 |

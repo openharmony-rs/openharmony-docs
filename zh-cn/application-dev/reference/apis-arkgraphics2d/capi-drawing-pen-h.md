@@ -88,7 +88,7 @@ enum OH_Drawing_PenLineCapStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | LINE_FLAT_CAP | 没有笔帽样式，线条头尾端点处横切。 |
-| LINE_SQUARE_CAP | 笔帽的样式为方框，线条的头尾端点处多出一个方框，方框宽度和线段一样宽，高度时线段厚度的一半。 |
+| LINE_SQUARE_CAP | 笔帽的样式为方框，线条的头尾端点处多出一个方框，方框宽度和线段一样宽，高度是线段厚度的一半。 |
 | LINE_ROUND_CAP | 笔帽的样式为圆弧，线条的头尾端点处多出一个半圆弧，半圆的直径与线段厚度一致。 |
 
 ### OH_Drawing_PenLineJoinStyle

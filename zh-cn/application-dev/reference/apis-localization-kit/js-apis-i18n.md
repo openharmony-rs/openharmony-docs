@@ -1444,6 +1444,9 @@ getLocationName(phoneNumber: string, locale: string): string
 
 获取电话号码归属地。
 
+> **说明**
+> 从API version 23开始，支持对拨号中的电话号码实时获取归属地。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
@@ -1465,9 +1468,20 @@ getLocationName(phoneNumber: string, locale: string): string
   ```ts
   import { i18n } from '@kit.LocalizationKit';
 
+  // 完整电话号码的归属地获取
   let phonenumberFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN');
   let locationName: string = phonenumberFormat.getLocationName('158****2345', 'zh-CN'); // locationName = '广东省湛江市'
   let locName: string = phonenumberFormat.getLocationName('0039312****789', 'zh-CN'); // locName = '意大利'
+
+  // 拨号中的电话号码归属地获取
+  let option: i18n.PhoneNumberFormatOptions = { type: 'TYPING' };
+  let typingFormatter: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN', option);
+  let formatResult = typingFormatter.getLocationName('1', 'en'); // formatResult = ''
+  formatResult = typingFormatter.getLocationName('13', 'en'); // formatResult = 'China'
+  formatResult = typingFormatter.getLocationName('133', 'en'); // formatResult = 'China'
+  formatResult = typingFormatter.getLocationName('1334', 'en'); // formatResult = 'China'
+  formatResult = typingFormatter.getLocationName('13342', 'en'); // formatResult = 'China'
+  formatResult = typingFormatter.getLocationName('133426', 'en'); // formatResult = 'Dongguan, Guangdong'
   ```
 
 
@@ -1481,7 +1495,7 @@ getLocationName(phoneNumber: string, locale: string): string
 
 | 名称   | 类型     | 只读   | 可选   | 说明                                       |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| type | string | 否    | 是    | 表示对电话号码格式化的类型，取值包括：'E164',&nbsp;'INTERNATIONAL',&nbsp;'NATIONAL',&nbsp;'RFC3966',&nbsp;'TYPING'。<br>-在API version 8版本，type为必填项。 <br>-API version 9版本开始，type为选填项。<br>-API version 12版本开始支持TYPING，表示对拨号中的电话号码实时格式化。|
+| type | string | 否    | 是    | 表示对电话号码格式化的类型，取值包括：'E164',&nbsp;'INTERNATIONAL',&nbsp;'NATIONAL',&nbsp;'RFC3966',&nbsp;'TYPING'。<br>-在API version 8版本，type为必填项。 <br>-API version 9版本开始，type为选填项。<br>-API version 12版本开始支持TYPING，表示对拨号中的电话号码实时格式化。<br>-API version 23版本开始，TYPING支持实时获取拨号中的电话号码的归属地。|
 
 
 ## UnitInfo<sup>8+</sup>
@@ -3698,6 +3712,135 @@ format(date: Date): string
   }
   ```
 
+## StyledDateTimeFormat<sup>23+</sup>
+
+提供富文本时间日期格式化的能力。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+### constructor<sup>23+</sup>
+
+constructor(dateTimeFormat: Intl.DateTimeFormat | SimpleDateTimeFormat, options?: StyledDateTimeFormatOptions)
+
+创建需要富文本显示的时间日期格式化的对象。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**参数：**
+
+|   参数名  |      类型      | 必填 |     说明      |
+| --------- | ------------- | ---- | ------------- |
+| dateTimeFormat | [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) \| [SimpleDateTimeFormat](#simpledatetimeformat18) | 是   | 用于格式化时间日期的对象。  |
+| options | [StyledDateTimeFormatOptions](#styleddatetimeformatoptions23) | 否 | 指定时间日期格式化对象的配置项。默认值：默认的文本样式。  |
+
+**示例：**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let yearTextStyle: TextStyle = new TextStyle({ fontColor: Color.Red });
+  let monthTextStyle: TextStyle = new TextStyle({ fontColor: Color.Green });
+  let dayTextStyle: TextStyle = new TextStyle({ fontColor: Color.Blue });
+
+  // 通过Intl.DateTimeFormat创建StyledDateTimeFormat对象
+  let dateFormat: Intl.DateTimeFormat = new Intl.DateTimeFormat('zh-Hans-CN', { dateStyle: 'full' });
+  let styledDateFormat: i18n.StyledDateTimeFormat = new i18n.StyledDateTimeFormat(dateFormat, {
+    year: yearTextStyle,
+    month: monthTextStyle,
+    day: dayTextStyle
+  });
+
+  let hourTextStyle: TextStyle = new TextStyle({ fontColor: Color.Yellow });
+  let minuteTextStyle: TextStyle = new TextStyle({ fontColor: Color.Orange });
+  let secondTextStyle: TextStyle = new TextStyle({ fontColor: Color.Pink });
+
+  // 通过SimpleDateTimeFormat创建StyledDateTimeFormat对象
+  let locale: Intl.Locale = new Intl.Locale('zh-Hans-CN');
+  let simpleTimeFormat: i18n.SimpleDateTimeFormat = i18n.getSimpleDateTimeFormatBySkeleton('hhmmss', locale);
+  let styledTimeFormat: i18n.StyledDateTimeFormat = new i18n.StyledDateTimeFormat(simpleTimeFormat, {
+    hour: hourTextStyle,
+    minute: minuteTextStyle,
+    second: secondTextStyle
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call i18n.StyledDateTimeFormat failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```
+
+### format<sup>23+</sup>
+
+format(date: Date): StyledString
+
+使对时间日期进行格式化，返回富文本对象。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**参数：**
+
+|   参数名  |      类型      | 必填 |     说明      |
+| --------- | ------------- | ---- | ------------- |
+| date | Date | 是 | 需要格式化的时间日期。  |
+
+**返回值：**
+
+|       类型        |         说明          |
+| ----------------- | ----------------------|
+| [StyledString](../apis-arkui/arkui-ts/ts-universal-styled-string.md#styledstring) | 格式化后的富文本对象。 |
+
+**示例：**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let yearTextStyle: TextStyle = new TextStyle({ fontColor: Color.Red });
+  let monthTextStyle: TextStyle = new TextStyle({ fontColor: Color.Green });
+  let dayTextStyle: TextStyle = new TextStyle({ fontColor: Color.Blue });
+
+  // 通过Intl.DateTimeFormat创建StyledDateTimeFormat对象
+  let dateFormat: Intl.DateTimeFormat = new Intl.DateTimeFormat('zh-Hans-CN', { dateStyle: 'full' });
+  let styledDateFormat: i18n.StyledDateTimeFormat = new i18n.StyledDateTimeFormat(dateFormat, {
+    year: yearTextStyle,
+    month: monthTextStyle,
+    day: dayTextStyle
+  });
+  let date: Date = new Date(2025, 11, 1);
+  // formattedDate.getString() 为 '2025年12月1日星期一'。显示formattedDate时'2025'是红色，'12'是绿色，'1'是蓝色
+  let formattedDate: StyledString = styledDateFormat.format(date);
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call StyledNumberFormat.format failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```
+
+## StyledDateTimeFormatOptions<sup>23+</sup>
+
+创建富文本显示的时间日期格式化对象时的可选配置项。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+| 名称            | 类型             |  只读   |  可选   |  说明                                   |
+| --------------- | --------------- | ------  | ------  | --------------------------------------- |
+| year        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定年的文本样式。默认值：StyledString默认的文本样式。     |
+| month        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定月的文本样式。默认值：StyledString默认的文本样式。    |
+| day       | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定日的文本样式。默认值：StyledString默认的文本样式。     |
+| hour       | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定时的文本样式。默认值：StyledString默认的文本样式。     |
+| minute      | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定分的文本样式。默认值：StyledString默认的文本样式。     |
+| second        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定秒的文本样式。默认值：StyledString默认的文本样式。    |
+| dayPeriod       | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定时段的文本样式。默认值：StyledString默认的文本样式。     |
+| weekday        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定星期的文本样式。默认值：StyledString默认的文本样式。     |
+| era        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定纪元的文本样式。默认值：StyledString默认的文本样式。     |
+| timeZoneName   | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定时区名称的文本样式。默认值：StyledString默认的文本样式。  |
 
 ## i18n.getSimpleNumberFormatBySkeleton<sup>20+</sup>
 
@@ -3991,7 +4134,7 @@ format(value: number): StyledString
       fraction: fractionTextStyle,
       unit: unitTextStyle
     });
-    // formattedNumber.getString() 为 '1,234.568%'。显示formattedNumber时'1,234'是红色，'.'是棕色，'568'是蓝色，'%'是绿色。
+    // formattedNumber.getString() 为 '1,234.568%'。显示formattedNumber时'1,234'是红色，'.'是棕色，'568'是蓝色，'%'是绿色
     let formattedNumber: StyledString = styledNumFmt.format(1234.5678);
 
     // 通过SimpleNumberFormat创建StyledNumberFormat对象
@@ -4003,7 +4146,7 @@ format(value: number): StyledString
       fraction: fractionTextStyle,
       unit: unitTextStyle
     });
-    // formattedSimpleNumber.getString() 为 '1,234.5678%'。显示formattedSimpleNumber时'1,234'是红色，'.'是棕色，'5678'是蓝色，'%'是绿色。
+    // formattedSimpleNumber.getString() 为 '1,234.5678%'。显示formattedSimpleNumber时'1,234'是红色，'.'是棕色，'5678'是蓝色，'%'是绿色
     let formattedSimpleNumber: StyledString = styledSimpleNumFmt.format(1234.5678);
   } catch (error) {
     let err: BusinessError = error as BusinessError;
@@ -4021,10 +4164,10 @@ format(value: number): StyledString
 
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
-| integer        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定整数部分的文本样式。默认值：默认的文本样式。     |
-| decimal        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定小数点的文本样式。默认值：默认的文本样式。    |
-| fraction       | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定小数部分的文本样式。默认值：默认的文本样式。     |
-| unit           | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定单位部分的文本样式。默认值：默认的文本样式。     |
+| integer        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定整数部分的文本样式。默认值：StyledString默认的文本样式。     |
+| decimal        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定小数点的文本样式。默认值：StyledString默认的文本样式。    |
+| fraction       | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定小数部分的文本样式。默认值：StyledString默认的文本样式。     |
+| unit           | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定单位部分的文本样式。默认值：StyledString默认的文本样式。     |
 
 ## i18n.getDisplayCountry<sup>(deprecated)</sup>
 

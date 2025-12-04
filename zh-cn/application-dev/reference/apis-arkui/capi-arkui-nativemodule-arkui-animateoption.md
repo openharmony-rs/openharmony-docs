@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_AnimateOption ArkUI_AnimateOption
+```
+
 ## 概述
 
 设置动画效果相关参数。

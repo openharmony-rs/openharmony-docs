@@ -525,6 +525,71 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
+
+## onEnabledPriorityChanged<sup>23+</sup>
+
+onEnabledPriorityChanged?: (callbackData: EnabledPriorityNotificationCallbackData) => void
+
+Called when the enabling status of the priority notification changes.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                      |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------- |
+| onEnabledPriorityChanged | (callbackData: [EnabledPriorityNotificationCallbackData](#enabledprioritynotificationcallbackdata23)>) => void | No  | Callback used to return the result.|
+
+**Example**
+
+```ts
+import { notificationSubscribe } from '@kit.NotificationKit';
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onEnabledPriorityChanged: (callbackData: notificationSubscribe.EnabledPriorityNotificationCallbackData) => {
+    console.info(`onEnabledPriorityChanged: ${JSON.stringify(callbackData)}`);
+  }
+};
+try {
+  notificationSubscribe.subscribe(subscriber);
+} catch (error) {
+  console.error("subscribe failed");
+}
+```
+
+## onEnabledPriorityByBundleChanged<sup>23+</sup>
+
+onEnabledPriorityByBundleChanged?: (callbackData: EnabledPriorityNotificationByBundleCallbackData) => void
+
+Called when the enabling status of the application priority notification changes.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                      |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------- |
+| onEnabledPriorityByBundleChanged | (callbackData: [EnabledPriorityNotificationByBundleCallbackData](#enabledprioritynotificationbybundlecallbackdata23)>) => void | No  | Callback used to return the result.|
+
+**Example**
+
+```ts
+import { notificationSubscribe } from '@kit.NotificationKit';
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onEnabledPriorityByBundleChanged: (callbackData: notificationSubscribe.EnabledPriorityNotificationByBundleCallbackData) => {
+    console.info(`onEnabledPriorityByBundleChanged: ${JSON.stringify(callbackData)}`);
+  }
+};
+try {
+  notificationSubscribe.subscribe(subscriber);
+} catch (error) {
+  console.error("subscribe failed");
+}
+```
+
 ## SubscribeCallbackData
 
 **System capability**: SystemCapability.Notification.Notification
@@ -585,3 +650,25 @@ Defines a callback function to listen for the enabling status changes of the app
 | Name       | Type  | Mandatory| Description    |
 | --------- | ------ | ---- | ------------ |
 | data        | [EnabledNotificationCallbackData](#enablednotificationcallbackdata8) | Yes   |   Callback used to return the listened badge enabling state.|
+
+## EnabledPriorityNotificationCallbackData<sup>23+</sup>
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+| Name       | Type  | Read Only| Optional| Description        |
+| ----------- | ------ | ---- | ---- | ------------ |
+| enable | boolean | Yes | No | Whether the priority notification is enabled.<br> - **true**: The priority notification is enabled.<br> - **false**: The priority notification is disabled.|
+
+## EnabledPriorityNotificationByBundleCallbackData<sup>23+</sup>
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+| Name       | Type  | Read Only| Optional| Description        |
+| ----------- | ------ | ---- | ---- | ------------ |
+| bundle      | string | Yes  | No  | Bundle name of the application.|
+| uid         | number | Yes  | No  | UID of the application. |
+| enableStatus | [PriorityEnableStatus](js-apis-notificationManager-sys.md#priorityenablestatus23) | Yes | No | Whether the priority notification for an application is enabled.<br> - **DISABLE**: The priority notification is disabled.<br> - **ENABLE_BY_INTELLIGENT**: The priority notification can be enabled through intelligent recognition, user keyword matching, or application rule matching.<br> - **ENABLE**: The priority notification is enabled for all applications.|

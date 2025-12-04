@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_RenderContentModifier* ArkUI_RenderContentModifierHandle
+```
+
 ## 概述
 
 定义内容修改器指针。

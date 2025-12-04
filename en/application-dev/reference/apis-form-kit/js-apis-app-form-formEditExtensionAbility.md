@@ -1,12 +1,18 @@
 # @ohos.app.form.FormEditExtensionAbility (FormEditExtensionAbility)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 
 The **FormEditExtensionAbility** module, inherited from [UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md), provides the widget editing function.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 18. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 18. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs of this module can be used only in the stage model.
+> - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 

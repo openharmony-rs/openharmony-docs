@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_VisibleAreaEventOptions ArkUI_VisibleAreaEventOptions
+```
+
 ## 概述
 
 可见区域变化监听的参数。

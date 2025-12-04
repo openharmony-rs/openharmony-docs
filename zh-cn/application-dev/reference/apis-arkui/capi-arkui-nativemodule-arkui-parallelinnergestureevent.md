@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_ParallelInnerGestureEvent ArkUI_ParallelInnerGestureEvent
+```
+
 ## 概述
 
 提供并行内部手势事件类型对象定义。

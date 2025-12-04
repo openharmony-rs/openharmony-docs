@@ -7,6 +7,10 @@
 <!--Tester: @liuzhenshuo-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_ListChildrenMainSize ArkUI_ListChildrenMainSize
+```
+
 ## 概述
 
 定义List的ChildrenMainSize类信息。

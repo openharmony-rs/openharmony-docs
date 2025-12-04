@@ -538,7 +538,7 @@ getAllNets(callback: AsyncCallback&lt;Array&lt;NetHandle&gt;&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;Array&lt;[NetHandle](#nethandle)&gt;&gt; | 是 | 回调函数。当成功获取所有处于连接状态的网络列表时，error为undefined，data为处于激活状态的数据网络列表；否则为错误对象。|
+| callback | AsyncCallback&lt;Array&lt;[NetHandle](#nethandle)&gt;&gt; | 是 | 回调函数。当成功获取所有处于连接状态的网络列表时，error为undefined，data为处于激活状态的数据网络列表；否则为错误对象。在Wi-Fi和蜂窝数据开关均开启的情况下，若无应用指定使用蜂窝网络，则仅激活Wi-Fi网络，因此仅返回Wi-Fi的NetHandle。除非有特定应用启动蜂窝网络，才能同时获取Wi-Fi和蜂窝数据的NetHandle。|
 
 **错误码：**
 
@@ -2083,6 +2083,55 @@ if (netHandle.netId != 0) {
 }
 ```
 
+## connection.getIpNeighTable<sup>22+</sup>
+
+getIpNeighTable(): Promise\<Array\<NetIpMacInfo>>
+
+获取本地设备IP邻居表条目信息，包括IPv4和IPv6，每个条目信息包括IP地址、MAC地址、网卡名。使用Promise异步回调。
+
+> **说明：**
+>
+> 当开发者需要排查网络异常、解析IP地址与MAC地址映射时，可使用此接口。
+
+**需要权限**：ohos.permission.GET_NETWORK_INFO 和 ohos.permission.GET_IP_MAC_INFO
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ----------------------- |
+| Promise\<Array\<[NetIpMacInfo](#netipmacinfo22)>> | Promise对象，返回ip邻居表条目信息。|
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                          |
+| ------- | --------------------------------- |
+| 201     | Permission denied.                |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error.            |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
+  if (data.length !== 0) {
+    console.info(`ipAddress:${data[0].ipAddress}`);
+    console.info(`ifaceName:${data[0].iface}`);
+    console.info(`macAddress:${data[0].macAddress}`);
+  }
+}).catch((error: BusinessError) => {
+  console.error("error fetching ip neigh table:", Code:JSON.stringify(error));
+  console.error(`error fetching ip neigh table. Code:${error.code}, message:${error.message}`);
+});
+```
+
 ## NetConnection
 
 网络连接的句柄。
@@ -2635,7 +2684,7 @@ getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>\>\)
 
 | 参数名   | 类型                                              | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| host     | string                                            | 是   | 需要解析的主机名。                                           |
+| host     | string                                            | 是   | 需要解析的主机名。例如："www.example.com"。                                           |
 | callback | AsyncCallback\<Array\<[NetAddress](#netaddress)>> | 是   | 回调函数。当使用对应网络解析主机名成功获取所有IP地址，error为undefined，data为获取到的所有IP地址；否则为错误对象。 |
 
 **错误码：**
@@ -2661,7 +2710,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressesByName(host, (error: BusinessError, data: connection.NetAddress[]) => {
     if (error) {
       console.error(`Failed to get addresses. Code:${error.code}, message:${error.message}`);
@@ -2688,7 +2737,7 @@ getAddressesByName(host: string): Promise\<Array\<NetAddress>>
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| host   | string | 是   | 需要解析的主机名。 |
+| host   | string | 是   | 需要解析的主机名。例如："www.example.com"。 |
 
 **返回值：**
 
@@ -2718,7 +2767,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressesByName(host).then((data: connection.NetAddress[]) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   });
@@ -2739,7 +2788,7 @@ getAddressByName(host: string, callback: AsyncCallback\<NetAddress>): void
 
 | 参数名   | 类型                                      | 必填 | 说明                                                         |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| host     | string                                    | 是   | 需要解析的主机名。                                           |
+| host     | string                                    | 是   | 需要解析的主机名。例如："www.example.com"。                                           |
 | callback | AsyncCallback\<[NetAddress](#netaddress)> | 是   | 回调函数。当使用对应网络解析主机名获取第一个IP地址成功，error为undefined，data为获取的第一个IP地址；否则为错误对象。 |
 
 **错误码：**
@@ -2765,7 +2814,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressByName(host, (error: BusinessError, data: connection.NetAddress) => {
     if (error) {
       console.error(`Failed to get address. Code:${error.code}, message:${error.message}`);
@@ -2790,7 +2839,7 @@ getAddressByName(host: string): Promise\<NetAddress>
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| host   | string | 是   | 需要解析的主机名。 |
+| host   | string | 是   | 需要解析的主机名。例如："www.example.com"。 |
 
 **返回值：**
 
@@ -2820,7 +2869,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   });
@@ -2868,8 +2917,8 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 | host  | string | 否  | 否 |代理服务器主机名。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | port  | number | 否  |否  |主机端口。取值范围[0,65535]。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | exclusionList  | Array\<string\> | 否  |否 |不使用代理的主机名列表，主机名支持域名、IP地址以及通配符形式，详细匹配规则如下：<br/>1、域名匹配规则：<br/>（1）完全匹配：代理服务器主机名只要与列表中的任意一个主机名完全相同，就可以匹配。<br/>（2）包含匹配：代理服务器主机名只要包含列表中的任意一个主机名，就可以匹配。<br/>例如，如果在主机名列表中设置了 “ample.com”，则  “ample.com”、“www.ample.com”、“ample.com:80”都会被匹配，而 “www.example.com”、“ample.com.org”则不会被匹配。<br/>2、IP地址匹配规则：代理服务器主机名只要与列表中的任意一个IP地址完全相同，就可以匹配。<br/>3、域名跟IP地址可以同时添加到列表中进行匹配。<br/>4、单个“\*”是唯一有效的通配符，当列表中只有通配符时，将与所有代理服务器主机名匹配，表示禁用代理。通配符只能单独添加，不可以与其他域名、IP地址一起添加到列表中，否则通配符将不生效。<br/>5、匹配规则不区分主机名大小写。<br/>6、匹配主机名时，不考虑http和https等协议前缀。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| username<sup>12+</sup>  | string | 否 |是  |使用代理的用户名。|
-| password<sup>12+</sup>  | string | 否 | 是| 使用代理的用户密码。|
+| username<sup>12+</sup>  | string | 否 |是  |使用代理的用户名。<br>**说明:** 需同时设置password参数才会生效。|
+| password<sup>12+</sup>  | string | 否 | 是| 使用代理的用户密码。<br>**说明:** 需同时设置username参数才会生效。|
 
 ## NetSpecifier
 
@@ -3054,3 +3103,16 @@ type UDPSocket = socket.UDPSocket
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | socket.UDPSocket | 定义UDPSocket连接。     |
+
+
+## NetIpMacInfo<sup>22+</sup>
+
+IP邻居表条目信息。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| ipAddress | [NetAddress](#netaddress)     | 否 | 否 |IP地址相关信息。   |
+| iface       | string                              | 否 | 否 |网卡名。                                    |
+| macAddress | string | 否 | 否 |MAC地址。                                |

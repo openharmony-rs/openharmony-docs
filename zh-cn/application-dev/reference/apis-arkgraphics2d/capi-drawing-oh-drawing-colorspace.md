@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_ColorSpace OH_Drawing_ColorSpace
+```
+
 ## 概述
 
 定义色彩空间，用于解释颜色信息。

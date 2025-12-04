@@ -5,7 +5,7 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 卡片数据绑定模块提供卡片数据绑定的能力。包括FormBindingData对象的创建、相关信息的描述。
 
 > **说明：**
@@ -57,11 +57,13 @@ createFormBindingData(obj?: Object | string): FormBindingData
 import { formBindingData } from '@kit.FormKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
+
 @Entry
 @Component
 struct Index {
   content = this.getUIContext().getHostContext() as common.UIAbilityContext;
   pathDir: string = this.content.filesDir;
+
   createFormBindingData() {
     try {
       let filePath = this.pathDir + "/form.png";
@@ -79,9 +81,10 @@ struct Index {
       console.error(`catch error, error: ${JSON.stringify(error)}`);
     }
   }
+
   build() {
     Button('createFormBindingData')
-      .onClick((event: ClickEvent)=>{
+      .onClick((event: ClickEvent) => {
         this.createFormBindingData();
       })
   }

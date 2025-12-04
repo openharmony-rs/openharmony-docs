@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_Drawing_RectStyle_Info
+```
+
 ## 概述
 
 定义矩形框样式结构体。

@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_CommandPath ArkUI_CommandPathOption
+```
+
 ## 概述
 
 定义自定义路径配置项。

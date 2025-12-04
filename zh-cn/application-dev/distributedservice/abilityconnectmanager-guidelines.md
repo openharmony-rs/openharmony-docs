@@ -71,7 +71,7 @@
 
 1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
 2. 将public-SDK更新到API 18或以上<!--Del-->，更新SDK的具体操作可参见[更新指南]( ../tools/openharmony_sdk_upgrade_assistant.md)<!--DelEnd-->。
-3. 用USB线缆将两台调测设备（设备A和设备B）连接到PC。
+3. 用USB线缆将两台调试设备（设备A和设备B）连接到PC。
 4. 打开设备A和设备B的蓝牙，互相识别，实现组网。
 
 
@@ -225,49 +225,42 @@ function getRemoteDeviceId(): string | undefined {
 <!-- @[collab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-  }
+onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
+  hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
+  let param = wantParam['ohos.extra.param.key.supportCollaborateIndex'] as Record<string, Object>
+  this.onCollab(param);
+  return 0;
+}
 
-  onContinue(wantParam: Record<string, Object>): AbilityConstant.OnContinueResult {
-    return 1;
+onCollab(collabParam: Record<string, Object>) {
+  const sessionId = this.createSessionFromWant(collabParam);
+  if (sessionId == -1) {
+    return;
   }
-  onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
-    let param = wantParam['ohos.extra.param.key.supportCollaborateIndex'] as Record<string, Object>
-    this.onCollab(param);
-    return 0;
-  }
+  this.registerSessionEvent(sessionId);
+  const collabToken = collabParam['ohos.dms.collabToken'] as string;
+  abilityConnectionManager.acceptConnect(sessionId, collabToken).then(() => {
+    AppStorage.setOrCreate<number>('sessionId', sessionId);
+  }).catch(() => {
+    console.error(TAG + `acceptConnect failed` );
+  })
+}
 
-  onCollab(collabParam: Record<string, Object>) {
-    const sessionId = this.createSessionFromWant(collabParam);
-    if (sessionId == -1) {
-      return;
-    }
-    this.registerSessionEvent(sessionId);
-    const collabToken = collabParam['ohos.dms.collabToken'] as string;
-    abilityConnectionManager.acceptConnect(sessionId, collabToken).then(() => {
-      AppStorage.setOrCreate<number>('sessionId', sessionId);
-    }).catch(() => {
-      console.log(TAG + `acceptConnect failed` );
-    })
-  }
-
-  createSessionFromWant(collabParam: Record<string, Object>): number {
-    let sessionId = -1;
-    const peerInfo = collabParam['PeerInfo'] as abilityConnectionManager.PeerInfo;
-    if (peerInfo == undefined) {
-      return sessionId;
-    }
-    // 定义连接选项
-    const options = collabParam['ConnectOption'] as abilityConnectionManager.ConnectOptions;
-    try {
-      sessionId = abilityConnectionManager.createAbilityConnectionSession('collabTest', this.context, peerInfo, options);
-    } catch (error) {
-      console.error(error);
-    }
+createSessionFromWant(collabParam: Record<string, Object>): number {
+  let sessionId = -1;
+  const peerInfo = collabParam['PeerInfo'] as abilityConnectionManager.PeerInfo;
+  if (peerInfo == undefined) {
     return sessionId;
   }
+  // 定义连接选项
+  const options = collabParam['ConnectOption'] as abilityConnectionManager.ConnectOptions;
+  try {
+    sessionId = abilityConnectionManager.createAbilityConnectionSession('collabTest', this.context, peerInfo, options);
+  } catch (error) {
+    console.error(error);
+  }
+  return sessionId;
+}
 ```
 
 

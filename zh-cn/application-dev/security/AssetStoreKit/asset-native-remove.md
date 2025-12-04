@@ -42,6 +42,10 @@
 
 ## 代码示例
 
+> **说明：**
+>
+> 在删除前，需确保已有关键资产，可参考[指南文档](./asset-native-add.md)新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
+
 删除别名是demo_alias的关键资产。
 
 在指定群组中删除一条关键资产的示例代码详见[删除群组关键资产](asset-native-group-access-control.md#删除群组关键资产)。
@@ -53,31 +57,29 @@
 
 2. 引用头文件。
    <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-#include "napi/native_api.h"
-#include <string.h>
-#include "asset/asset_api.h"
-```
-
+   
+   ``` C++
+   #include "napi/native_api.h"
+   #include <string.h>
+   #include "asset/asset_api.h"
+   ```
 
 3. 参考如下示例代码，进行业务功能开发。
    <!-- @[remove_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_value RemoveAsset(napi_env env, napi_callback_info info)
-{
-    const char *aliasStr = "demo_alias";
-    
-    Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
-    Asset_Attr attr[] = {
-        {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // 此处指定别名删除单条关键资产，也可不指定别名删除多条关键资产。
-    };
-
-    int32_t removeResult = OH_Asset_Remove(attr, sizeof(attr) / sizeof(attr[0]));
-    napi_value ret;
-    napi_create_int32(env, removeResult, &ret);
-    return ret;
-}
-```
-
+   
+   ``` C++
+   static napi_value RemoveAsset(napi_env env, napi_callback_info info)
+   {
+       const char *aliasStr = "demo_alias";
+       
+       Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
+       Asset_Attr attr[] = {
+           {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // 此处指定别名删除单条关键资产，也可不指定别名删除多条关键资产。
+       };
+   
+       int32_t removeResult = OH_Asset_Remove(attr, sizeof(attr) / sizeof(attr[0]));
+       napi_value ret;
+       napi_create_int32(env, removeResult, &ret);
+       return ret;
+   }
+   ```

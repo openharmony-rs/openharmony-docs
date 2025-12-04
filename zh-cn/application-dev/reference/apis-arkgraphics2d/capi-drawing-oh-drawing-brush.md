@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_Brush OH_Drawing_Brush
+```
+
 ## 概述
 
 定义为画刷，画刷用于描述填充图形的样式和颜色。

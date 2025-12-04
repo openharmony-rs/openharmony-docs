@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements an **AdsBlockManager** instance to set custom ad blocking configurations in the **Web** components and disable the ad blocking feature for specific websites. Each application's **Web** components share an **AdsBlockManager** instance.
 
@@ -49,7 +49,7 @@ Sets a custom ad blocking rule file that conforms to the universal EasyList synt
 >
 > Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -122,7 +122,7 @@ Adds an array of domain names to the disallowed list of this **AdsBlockManager**
 >
 > Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -204,7 +204,7 @@ Removes an array of domain names from the disallowed list of this **AdsBlockMana
 >
 > Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -276,7 +276,7 @@ Clears the disallowed list of this **AdsBlockManager** object.
 >
 > Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -355,7 +355,7 @@ Adds an array of domain names to the allowed list of this **AdsBlockManager** ob
 >
 > Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -440,7 +440,7 @@ Removes an array of domain names from the allowed list of this **AdsBlockManager
 >
 > Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -512,7 +512,7 @@ Clears the allowed list of this **AdsBlockManager** object.
 >
 > Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |

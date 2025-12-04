@@ -7,6 +7,10 @@
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVMuxer OH_AVMuxer
+```
+
 ## 概述
 
 定义封装接口native层对象类型。

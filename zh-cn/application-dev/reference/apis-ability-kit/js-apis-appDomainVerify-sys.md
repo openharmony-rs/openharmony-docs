@@ -65,12 +65,13 @@ queryAssociatedDomains(bundleName: string): string[]
 
 ```ts
 import { appDomainVerify } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // 获取包名为"com.example.app1"的应用所关联的域名列表
 let bundleName = "com.example.app1";
 let domains = appDomainVerify.queryAssociatedDomains(bundleName);
 domains.forEach(domain => {
-  console.log(`app:${bundleName} associate with domain:${domain}`);
+  hilog.info(0x0000, 'testTag', `app:${bundleName} associate with domain:${domain}`);
 });
 ```
 
@@ -113,11 +114,12 @@ queryAssociatedBundleNames(domain: string): string[]
 
 ```ts
 import { appDomainVerify } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // 获取域名"example.com"应用所关联的包名列表
 let domain = "example.com";
 let bundleNames = appDomainVerify.queryAssociatedBundleNames(domain);
 bundleNames.forEach(bundleName => {
-  console.log(`domain:${domain} associate with app:${bundleName}`);
+  hilog.info(0x0000, 'testTag', `domain:${domain} associate with app:${bundleName}`);
 });
 ```

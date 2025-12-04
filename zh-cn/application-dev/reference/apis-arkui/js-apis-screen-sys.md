@@ -446,6 +446,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = { 
@@ -453,7 +454,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 screen.createVirtualScreen(option, (err: BusinessError, data: screen.Screen) => {
   const errCode: number = err.code;
@@ -513,6 +515,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = { 
@@ -520,7 +523,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1362,6 +1366,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 | height    | number   | 否   | 否   | 指定虚拟屏幕的高度，单位为px，该参数应为整数。 |
 | density   | number   | 否   | 否   | 指定虚拟屏幕的密度，单位为px，该参数为浮点数。 |
 | surfaceId | string   | 否   | 否   | 指定虚拟屏幕的surfaceId。        |
+| supportsFocus<sup>22+</sup> | boolean | 否 | 是  | 指定虚拟屏幕是否可获得焦点。true表示可获焦，false表示不可获焦，默认值为true。 |
 
 ## Screen
 
@@ -1425,6 +1430,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1432,7 +1438,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1494,6 +1501,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1501,7 +1509,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1556,6 +1565,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1563,7 +1573,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1626,6 +1637,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1633,7 +1645,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1690,6 +1703,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1697,7 +1711,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1760,6 +1775,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1767,7 +1783,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {

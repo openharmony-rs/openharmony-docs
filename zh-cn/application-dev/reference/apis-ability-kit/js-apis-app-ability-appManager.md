@@ -30,7 +30,7 @@ import { appManager } from '@kit.AbilityKit';
 | -------------------- | --- | --------------------------------- |
 | STATE_CREATE    | 0   |    进程创建完成。       |
 | STATE_FOREGROUND          | 1   |    进程处于前台。      |
-| STATE_ACTIVE  | 2   |     进程获焦。   |
+| STATE_ACTIVE  | 2   |     进程中至少有一个窗口获焦。   |
 | STATE_BACKGROUND        | 3   |    进程处于后台。           |
 | STATE_DESTROY        | 4   |    进程销毁完成。         |
 

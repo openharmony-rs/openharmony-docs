@@ -1088,7 +1088,7 @@ To implement this feature, register the **onDragSpringLoading** API on a compone
 
 The spring loading process has three distinct phases: hover detection -> callback notification -> completion. If the user continues dragging before completion, spring loading is automatically canceled, triggering a cancellation notification to the application. However, if dragging is resumed during the hover detection phase before the spring loading state is entered, no cancellation notification is sent.
 
-![drag spring loading phases](figures/drag_springloading-02.png)
+![Drag spring loading phases](figures/drag_springloading-02.png)
 
 Applications receive state updates through callbacks, enabling dynamic UI adjustments.
 

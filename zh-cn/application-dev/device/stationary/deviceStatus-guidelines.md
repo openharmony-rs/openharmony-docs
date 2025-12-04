@@ -6,7 +6,7 @@
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
-DeviceStatus（设备状态感知）模块提供设备状态感知能力，可以获取到设备的状态感知信息，例如：获取设备静止姿态感知状态（支架态）。
+DeviceStatus（设备状态感知）模块提供设备状态感知能力，可以获取到设备的信息，例如：获取设备静止姿态感知状态（支架态）。
 
 详细的接口介绍请参考[deviceStatus接口](../../reference/apis-multimodalawareness-kit/js-apis-awareness-deviceStatus.md)。
 
@@ -59,7 +59,7 @@ DeviceStatus（设备状态感知）模块提供设备状态感知能力，可�
    ```
    <!-- @[device_status_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) -->
 
-3. 取消订阅本客户端订阅的所有设备静止姿态（支架态）感知事件。
+3. 取消本客户端订阅的所有设备静止姿态（支架态）感知事件。
 
    ```ts
    try {

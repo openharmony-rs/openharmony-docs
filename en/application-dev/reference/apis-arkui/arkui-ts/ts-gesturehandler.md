@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Provides APIs for configuring gestures bound to a component. You can use the [UIGestureEvent](./ts-uigestureevent.md#uigestureevent) object to add or remove gestures.
 

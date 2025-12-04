@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_RectShape ArkUI_RectShapeOption
+```
+
 ## 概述
 
 定义范围形状结构体。

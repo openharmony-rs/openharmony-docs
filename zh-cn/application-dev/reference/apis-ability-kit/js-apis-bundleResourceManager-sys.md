@@ -582,6 +582,74 @@ try {
 }
 ```
 
+### bundleResourceManager.getLauncherAbilityResourceInfoList<sup>23+</sup>
+
+getLauncherAbilityResourceInfoList(optionsList: Array\<BundleOptions>, resourceFlags: number): Promise\<Array\<LauncherAbilityResourceInfo>>
+
+根据传入的optionsList获取列表中每个BundleOptions元素对应的应用的LauncherAbilityResourceInfo。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_INSTALLED_BUNDLE_LIST 和 ohos.permission.GET_BUNDLE_RESOURCES
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
+
+**参数：**
+
+| 参数名        | 类型                                                         | 必填 | 说明                                                         |
+| ------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| optionsList   | Array\<[BundleOptions](js-apis-bundleManager-BundleInfo-sys.md#bundleoptions)> | 是   | 要查询的应用的参数列表。其中bundleName、moduleName、abilityName为必传属性，appIndex不传时默认为0。 |
+| resourceFlags | number                                                       | 是   | 指定返回的LauncherAbilityResourceInfo所包含的信息，取值为[ResourceFlag](#resourceflag)枚举值，不支持取值[ResourceFlag](#resourceflag).GET_RESOURCE_INFO_WITH_SORTED_BY_LABEL和[ResourceFlag](#resourceflag).GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Promise\<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md#launcherabilityresourceinfo)>> | Promise对象，返回指定应用列表的LauncherAbilityResourceInfo。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission denied.                                   |
+| 202      | Permission denied, non-system app called system api. |
+| 17700001 | The specified bundleName is not found.               |
+| 17700002 | The specified moduleName is not existed.             |
+| 17700003 | The specified abilityName is not existed.            |
+| 17700061 | AppIndex not in valid range or not found.            |
+
+**示例：**
+
+```ts
+import { bundleManager, bundleResourceManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 请开发者替换为实际要查询的应用的信息
+let option: bundleManager.BundleOptions = {
+  bundleName: 'com.example.demo',
+  moduleName: 'entry',
+  abilityName: 'EntryAbility',
+  appIndex:0
+};
+
+let optionsList: Array<bundleManager.BundleOptions> = [];
+optionsList.push(option);
+let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+    bundleResourceManager.getLauncherAbilityResourceInfoList(optionsList, resourceFlag).then(data=> {
+        hilog.info(0x0000, 'testTag', 'getLauncherAbilityResourceInfoList successfully. Data length: %{public}s', JSON.stringify(data.length));
+    }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', 'getLauncherAbilityResourceInfoList failed. err: %{public}s', err.message);
+    })
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'getLauncherAbilityResourceInfoList failed: %{public}s', message);
+}
+```
+
 ## BundleResourceInfo
 
 type BundleResourceInfo = _BundleResourceInfo

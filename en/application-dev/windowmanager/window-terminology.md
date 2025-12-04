@@ -67,6 +67,7 @@ You can resize a freeform window by dragging its edges and move its position by 
 
 -  **2-in-1 devices**: Windows on 2-in-1 devices are freeform window by default.
 -  **Tablets**: Some tablets support enabling [free windows](#free-windows) mode by pulling down Control Panel and tapping the **Free windows** button. Once this mode is enabled, application windows default to freeform windows.
+-  **Phones**: Some phones support enabling [free windows](#free-windows) mode by pulling down Control Panel and tapping the **Free windows** button. Once this mode is enabled, application windows default to freeform windows.
 
 ### Free Windows
 
@@ -75,6 +76,8 @@ Free windows mode is an interaction method that enables multitasking on mobile d
 It allows multiple application windows to be displayed on a single screen simultaneously. These windows are known as [freeform window](#freeform-window).
 
 On some tablets, you can enable free windows mode by pulling down Control Panel and tapping the **Free windows** button.
+
+On some phones, you can enable free windows mode by pulling down Control Panel and tapping the **Free windows** button.
 
 ![freeWindows](figures/freeWindows.png)
 

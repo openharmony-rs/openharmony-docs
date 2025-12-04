@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_Font OH_Drawing_Font
+```
+
 ## 概述
 
 用于描述字体。

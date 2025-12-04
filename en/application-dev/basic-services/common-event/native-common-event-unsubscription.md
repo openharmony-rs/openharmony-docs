@@ -21,13 +21,16 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
 
 ## How to Develop
 
-1. Reference header files.
+1. Include header files.
 
-   ```c++
+   <!-- @[event_unsubscriber_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_unsubscribe.h) -->
+   
+   ``` C
    #include <cstdint>
    #include "hilog/log.h"
    #include "BasicServicesKit/oh_commonevent.h"
    ```
+
 
 2. Add dynamic link libraries to the CMake script.
 
@@ -44,8 +47,11 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
 
    After a subscriber subscribes to a common event and meets service requirements, the subscriber can use [OH_CommonEvent_UnSubscribe](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_unsubscribe) to unsubscribe from the event.
 
-   ```c++
-   void Unsubscribe(CommonEvent_Subscriber* subscriber) {
+   <!-- @[event_unsubscriber](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_unsubscribe.cpp) -->
+   
+   ``` C++
+   void Unsubscribe(CommonEvent_Subscriber *subscriber)
+   {
        // Unsubscribe from a common event by passing a subscriber.
        int32_t ret = OH_CommonEvent_UnSubscribe(subscriber);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_UnSubscribe ret <%{public}d>.", ret);

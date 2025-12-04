@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_AnimatorEvent ArkUI_AnimatorEvent
+```
+
 ## 概述
 
 定义animator回调事件对象。

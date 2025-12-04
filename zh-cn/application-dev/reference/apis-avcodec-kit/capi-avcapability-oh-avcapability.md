@@ -7,6 +7,10 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVCapability OH_AVCapability
+```
+
 ## 概述
 
 为OH_AVCapability接口定义native层对象。

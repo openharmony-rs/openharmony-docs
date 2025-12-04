@@ -371,7 +371,7 @@ getEncoding(): string
 
 getHeaderByName(name: string): string
 
-获取Response的字符集。
+按名称获取Response头部字段值。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

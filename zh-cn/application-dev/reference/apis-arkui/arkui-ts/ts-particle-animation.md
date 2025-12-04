@@ -261,7 +261,7 @@ interface ParticleColorPropertyOptions<UPDATER extends ParticleUpdater> {
 | -------- | -------- | ---- | ---- | -------- |
 |[ParticleUpdater.NONE]|void | 否 | 否 | 无变化。|
 | [ParticleUpdater.RANDOM] | [ParticleColorOptions](#particlecoloroptions18) | 否 | 否 | 表示变化方式为均匀变化的时候，在区间内随机生成一个差值。r、g、b、a四个颜色通道每秒分别使用差值叠加当前颜色值，生成目标颜色值。实现颜色随机变化的效果。 |
-[ParticleUpdater.CURVE]|Array<[ParticlePropertyAnimation](#particlepropertyanimation)\<[ResourceColor](ts-types.md#resourcecolor)\>> | 否 | 否 | 表示变化方式为曲线变化时，颜色变化的配置。数组类型表示当前属性可以设置多段动画，如0ms-3000ms，3000ms-5000ms，5000ms-8000ms分别设置动画。|
+| [ParticleUpdater.CURVE]|Array<[ParticlePropertyAnimation](#particlepropertyanimation)\<[ResourceColor](ts-types.md#resourcecolor)\>> | 否 | 否 | 表示变化方式为曲线变化时，颜色变化的配置。数组类型表示当前属性可以设置多段动画，如0ms-3000ms，3000ms-5000ms，5000ms-8000ms分别设置动画。|
 
 ## ParticlePropertyOptions
 ```typescript
@@ -279,7 +279,7 @@ interface ParticlePropertyOptions<TYPE, UPDATER extends ParticleUpdater> {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | -------- |
-| range | [ParticleTuple](#particletuple18)<[TYPE](#particleupdater), [TYPE](#particleupdater)> | 否 | 否 | 粒子初始属性值区间，粒子发射器生成粒子的属性值在range区间随机取值。<br/>**说明**<br/>各项属性的非法输入取默认值，当最大值小于最小值的时候取默认区间。TYPE为number。<br/>不同属性的默认值不同：<br>1、opacity属性：range:[1.0,1.0]，取值范围为[0, 1]，默认值为1.0。<br/>2、scale属性：range:[1.0,1.0]，取值范围为[0, 10000]，默认值为1.0。<br/>3、acceleration加速度speed属性：range:[0.0,0.0]，取值范围为[0, 10000]，默认值为0.0。<br/>4、acceleration加速度angle属性：range:[0.0,0.0]，取值范围为[-10000, 10000]，默认值为0.0。<br/>5、spin属性：range:[0.0,0.0]，取值范围为[-10000, 10000]，默认值为0.0。
+| range | [ParticleTuple](#particletuple18)<[TYPE](#particleupdater), [TYPE](#particleupdater)> | 否 | 否 | 粒子初始属性值区间，粒子发射器生成粒子的属性值在range区间随机取值。<br/>**说明**<br/>各项属性的非法输入取默认值，当最大值小于最小值的时候取默认区间。TYPE为number。<br/>不同属性的默认值不同：<br>1、opacity属性：range:[1.0,1.0]，取值范围为[0, 1]，默认值为1.0。<br/>2、scale属性：range:[1.0,1.0]，取值范围为[0, 10000]，默认值为1.0。<br/>3、acceleration加速度speed属性：range:[0.0,0.0]，取值范围为[0, 10000]，默认值为0.0。<br/>4、acceleration加速度angle属性：range:[0.0,0.0]，取值范围为[-10000, 10000]，默认值为0.0。<br/>5、spin属性：range:[0.0,0.0]，取值范围为[-10000, 10000]，默认值为0.0。|
 | updater | [ParticleUpdaterOptions](#particleupdateroptions18)<[TYPE](#particleupdater), [UPDATER](#particleupdater)> | 否 | 是 | 属性变化配置。属性变化类型type有三类：<br/>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.NONE]。<br>2、当type为ParticleUpdater.RANDOM，表示变化类型为随机变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.RANDOM]。<br>3、当type为ParticleUpdater.CURVE，表示变化类型为曲线变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.CURVE] <br>默认值：type默认为ParticleUpdater.NONE。 |
 
 
@@ -300,7 +300,7 @@ interface ParticlePropertyUpdaterConfigs<T> {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | -------- |
-[[ParticleUpdater.NONE]|void | 否 | 否 | 无变化。|
+| [ParticleUpdater.NONE]|void | 否 | 否 | 无变化。|
 | [ParticleUpdater.RANDOM] | [ParticleTuple](#particletuple18)<T, T> | 否 | 否 | 表示变化方式为匀速变化时，每秒的变化差值为设置区间随机生成的值。<br/>目标属性值为当前属性值叠加变化差值。如当前属性值为0.2，config取[0.1,1.0]:<br/>1、如果变化差值在区间[0.1,1.0]取随机值0.5，则目标属性值为0.2+0.5 = 0.7；<br/>2、变化差值也可以取负值。如当前属性值为0.2，config为 [-3.0,2.0],如果变化差值在区间[-3.0,2.0]取随机值-2.0，则目标属性值为0.2-2.0 = -1.8。<br>**说明：**<br>config配置的是变化差值的取值范围，差值的最大最小值没有约束。但是如果当前属性值叠加差值大于属性最大值，目标属性值取属性最大值；如果当前属性值叠加差值小于属性最小值，目标属性值取属性最小值。T为number。<br>例如：opacity的取值范围[0.0,1.0]则当当前属性值叠加差值超过1.0，则取1.0。|
 |[ParticleUpdater.CURVE]|Array<[ParticlePropertyAnimation](#particlepropertyanimation)\<T\>> | 否 | 否 | 表示变化方式为曲线变化时，属性变化的配置。数组类型表示当前属性可以设置多段动画，如0ms-3000ms，3000ms-5000ms，5000ms-8000ms分别设置动画。T为number。|
 
@@ -1238,10 +1238,12 @@ struct ParticleExample {
 
 该示例主要演示如何通过粒子扰动场的干扰下来实现运动轨迹发生变化的效果。
 
-```
+<!-- @[particle_example3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template3/Index.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct ParticleExample {
+struct ParticleExample3 {
   build() {
     Stack() {
       Text()
@@ -1354,10 +1356,9 @@ struct ParticleExample {
         noiseFrequency: 15,
         noiseAmplitude: 5
       }])
-    }.width("100%").height("100%").align(Alignment.Center)
+    }.width('100%').height('100%').align(Alignment.Center)
   }
 }
-
 ```
 ![particle](figures/disturbanceFields.gif)
 
@@ -1525,25 +1526,24 @@ struct ParticleExample5 {
 
 ### 示例6（环形发射器更新）
 描述粒子动画环形发射器更新的基础用法。
-```ts
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI'
+<!-- @[particle_example6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template6/Index.ets) -->
 
+``` TypeScript
 @Entry
 @Component
-struct ParticleExample {
+struct ParticleExample6 {
 
-  @State radius: number = 1
-  @State shape: ParticleEmitterShape = ParticleEmitterShape.ANNULUS
-  @State emitRate: number = 200
-  @State count: number = 2000
-  private timerID: number = -1
-  private centerX: LengthMetrics = LengthMetrics.percent(0.5)
-  private centerY: LengthMetrics = LengthMetrics.percent(0.5)
-  private inRadius: LengthMetrics = LengthMetrics.vp(120)
-  private outRadius: LengthMetrics = LengthMetrics.vp(120)
-  private startAngle: number = 0
-  private endAngle: number = 90
+  @State radius: number = 1;
+  @State shape: ParticleEmitterShape = ParticleEmitterShape.ANNULUS;
+  @State emitRate: number = 200;
+  @State count: number = 2000;
+  private timerID: number = -1;
+  private centerX: LengthMetrics = LengthMetrics.percent(0.5);
+  private centerY: LengthMetrics = LengthMetrics.percent(0.5);
+  private inRadius: LengthMetrics = LengthMetrics.vp(120);
+  private outRadius: LengthMetrics = LengthMetrics.vp(120);
+  private startAngle: number = 0;
+  private endAngle: number = 90;
   @State emitterProperties: Array<EmitterProperty> = [
     {
       index: 0,
@@ -1599,8 +1599,8 @@ struct ParticleExample {
               },
             },
           ]
-        }).width("100%")
-          .height("100%")
+        }).width('100%')
+          .height('100%')
           .emitter(this.emitterProperties)
           .onClick(()=>{
             // 清除已有定时器
@@ -1636,8 +1636,8 @@ struct ParticleExample {
 
           })
       }
-      .width("100%")
-      .height("100%")
+      .width('100%')
+      .height('100%')
       .align(Alignment.Center)
     }
   }

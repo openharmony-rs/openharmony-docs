@@ -78,7 +78,7 @@
   ``` TypeScript
   @Entry
   @Component
-  struct Index {
+  struct WindowRefGridLayout {
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -127,7 +127,7 @@ GridRow中通过columns设置栅格布局的总列数。
   // xxx.ets
   @Entry
   @Component
-  struct Index {
+  struct GridColumnsWithDefaults {
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)', 'rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)'];
@@ -164,7 +164,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
   // xxx.ets
   @Entry
   @Component
-  struct Index {
+  struct FixedFourColumnGrid {
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -195,7 +195,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
   // xxx.ets
   @Entry
   @Component
-  struct Index {
+  struct FixedEightColumnGrid {
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -229,7 +229,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
   ``` TypeScript
   @Entry
   @Component
-  struct Index {
+  struct GridRowColumnOptionLayout {
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -238,8 +238,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
       GridRow({
         columns: { sm: 4, md: 8 },
         breakpoints: {
-          value: ['320vp', '600vp', '840vp', '1440vp',
-            '1600vp'] // 表示在保留默认断点['320vp', '600vp', '840vp']的同时自定义增加'1440vp', '1600vp'的断点，实际开发中需要根据实际使用场景，合理设置断点值实现一次开发多端适配。
+          value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'] // 表示在保留默认断点['320vp', '600vp', '840vp']的同时自定义增加'1440vp', '1600vp'的断点，实际开发中需要根据实际使用场景，合理设置断点值实现一次开发多端适配。
         }
       }) {
         ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
@@ -269,7 +268,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
 
 ### 排列方向
 
-栅格布局中，可以通过设置GridRow的direction属性来指定栅格子组件在栅格容器中的排列方向。该属性可以设置为GridRowDirection.Row（从左往右排列）或GridRowDirection.RowReverse（从右往左排列），以满足不同的布局需求。通过合理的direction属性设置，可以使得页面布局更加灵活和符合设计要求。
+栅格布局中，可以通过设置GridRow的direction属性来指定栅格子组件在栅格容器中的排列方向。该属性可以设置为[GridRowDirection](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowdirection枚举说明).Row（从左往右排列）或[GridRowDirection](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowdirection枚举说明).RowReverse（从右往左排列），以满足不同的布局需求。通过合理的direction属性设置，可以使得页面布局更加灵活和符合设计要求。
 
 - 子组件默认从左往右排列。
 
@@ -309,7 +308,7 @@ GridRow中通过gutter属性设置子元素在水平和垂直方向的间距。
 
     ![zh-cn_image_0000001511740476](figures/zh-cn_image_0000001511740476.png)
 
-- 当gutter类型为GutterOption时，单独设置栅格子组件水平垂直边距，x属性为水平方向间距，y为垂直方向间距。
+- 当gutter类型为[GutterOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gutteroption)时，单独设置栅格子组件水平垂直边距，x属性为水平方向间距，y为垂直方向间距。
 
 
     <!-- @[GridLayoutGutterOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutGutterOption.ets) -->
@@ -393,7 +392,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     // xxx.ets
     @Entry
     @Component
-    struct Index {
+    struct SpanNumberExample {
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -423,7 +422,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     ``` TypeScript
     @Entry
     @Component
-    struct Index {
+    struct SpanColumnOptionExample {
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -431,14 +430,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
       build() {
         GridRow({ columns: 8 }) {
           ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
-            GridCol({
-              span: {
-                xs: 1,
-                sm: 2,
-                md: 3,
-                lg: 4
-              }
-            }) {
+            GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
               Row() {
                 Text(`${index}`)
               }.width('100%').height('50vp')
@@ -465,7 +457,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     ``` TypeScript
     @Entry
     @Component
-    struct Index {
+    struct OffsetNumberExample {
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -497,7 +489,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     ``` TypeScript
     @Entry
     @Component
-    struct Index {
+    struct OffsetColumnOptionExample {
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -505,15 +497,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
       build() {
         GridRow({ columns: 12 }) {
           ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
-            GridCol({
-              offset: {
-                xs: 1,
-                sm: 2,
-                md: 3,
-                lg: 4
-              },
-              span: 1
-            }) {
+            GridCol({ offset: { xs: 1, sm: 2, md: 3, lg: 4 }, span: 1 }) {
               Row() {
                 Text('' + index)
               }.width('100%').height('50vp')
@@ -579,7 +563,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     ``` TypeScript
     @Entry
     @Component
-    struct GridRowExample {
+    struct OrderColumnOptionExample {
       @State currentBp: string = 'unknown'
     
       build() {

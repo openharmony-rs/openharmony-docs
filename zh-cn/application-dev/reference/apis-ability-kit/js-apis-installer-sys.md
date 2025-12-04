@@ -24,7 +24,7 @@ import { installer } from '@kit.AbilityKit';
 
 getBundleInstaller(callback: AsyncCallback\<BundleInstaller>): void
 
-获取BundleInstaller对象，使用callback异步回调。
+获取BundleInstaller对象。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -69,7 +69,7 @@ try {
 
 getBundleInstaller(): Promise\<BundleInstaller>
 
-获取BundleInstaller对象，使用callback异步回调。
+获取BundleInstaller对象。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -147,12 +147,14 @@ try {
 ## BundleInstaller.install
 install(hapFilePaths: Array&lt;string&gt;, installParam: InstallParam, callback: AsyncCallback&lt;void&gt;): void
 
-安装应用，使用callback异步回调。
+安装应用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE<sup>10+</sup>
-> **说明：** 从API version 10起，可通过ohos.permission.INSTALL_ENTERPRISE_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限调用此接口。
+> **说明：**
+>
+> 从API version 10开始，申请ohos.permission.INSTALL_ENTERPRISE_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限，可以调用此接口。
 >
 > 安装企业应用需要ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
 >
@@ -242,12 +244,14 @@ try {
 ## BundleInstaller.install
 install(hapFilePaths: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-安装应用，使用callback异步回调。
+安装应用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE<sup>10+</sup>
-> **说明：** 从API version 10起，可通过ohos.permission.INSTALL_ENTERPRISE_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限调用此接口。
+> **说明：**
+>
+> 从API version 10开始，申请ohos.permission.INSTALL_ENTERPRISE_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限，可以调用此接口。
 >
 > 安装企业应用需要ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
 >
@@ -332,12 +336,14 @@ try {
 
 install(hapFilePaths: Array\<string\>, installParam?: InstallParam) : Promise\<void\>
 
-安装应用，使用Promise异步回调。
+安装应用。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE<sup>10+</sup>
-> **说明：** 从API version 10起，可通过ohos.permission.INSTALL_ENTERPRISE_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限调用此接口。
+> **说明：**
+>
+> 从API version 10开始，申请ohos.permission.INSTALL_ENTERPRISE_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限，可以调用此接口。
 >
 > 安装企业应用需要ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
 >
@@ -433,7 +439,7 @@ try {
 
 uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallback&lt;void&gt;): void
 
-卸载应用，使用callback异步回调。
+卸载应用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -502,7 +508,7 @@ try {
 
 uninstall(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
-卸载应用，使用callback异步回调。
+卸载应用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -562,7 +568,7 @@ try {
 
 uninstall(bundleName: string, installParam?: InstallParam) : Promise\<void\>
 
-卸载应用，使用Promise异步回调。
+卸载应用。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -635,7 +641,7 @@ try {
 
 recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback&lt;void&gt;): void
 
-回滚应用到初次安装时的状态，使用callback异步回调。
+回滚应用到初次安装时的状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -701,7 +707,7 @@ try {
 
 recover(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
-回滚应用到初次安装时的状态，使用callback异步回调。
+回滚应用到初次安装时的状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -759,7 +765,7 @@ try {
 
 recover(bundleName: string, installParam?: InstallParam) : Promise\<void\>
 
-回滚应用到初次安装时的状态，使用Promise异步回调。
+回滚应用到初次安装时的状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -827,7 +833,7 @@ try {
 
 uninstall(uninstallParam: UninstallParam, callback : AsyncCallback\<void\>) : void
 
-卸载一个共享包，使用callback异步回调。
+卸载一个共享包。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -887,7 +893,7 @@ try {
 
 uninstall(uninstallParam: UninstallParam) : Promise\<void>
 
-卸载一个共享包，使用Promise异步回调。
+卸载一个共享包。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -952,7 +958,7 @@ try {
 
 addExtResource(bundleName: string, filePaths: Array\<string>): Promise\<void>;
 
-根据给定的bundleName和hsp文件路径添加扩展资源，使用Promise异步回调。
+根据给定的bundleName和hsp文件路径添加扩展资源。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1014,7 +1020,7 @@ try {
 
 removeExtResource(bundleName: string, moduleNames: Array\<string>): Promise\<void>;
 
-根据给定的bundleName和moduleNames删除扩展资源，使用Promise异步回调。
+根据给定的bundleName和moduleNames删除扩展资源。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1076,7 +1082,7 @@ try {
 
 updateBundleForSelf(hapFilePaths: Array\<string\>, installParam: InstallParam, callback: AsyncCallback\<void\>): void
 
-更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用，使用callback异步回调。
+更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1155,7 +1161,7 @@ try {
 
 updateBundleForSelf(hapFilePaths: Array\<string\>, callback: AsyncCallback\<void\>): void
 
-更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用，使用callback异步回调。
+更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1227,7 +1233,7 @@ try {
 
 updateBundleForSelf(hapFilePaths: Array\<string\>, installParam?: InstallParam): Promise\<void\>
 
-更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用，使用Promise异步回调。
+更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1310,7 +1316,7 @@ try {
 
 uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise\<void\>;
 
-对预置应用进行卸载更新，恢复到初次安装时的状态，使用Promise异步回调。
+对预置应用进行卸载更新，恢复到初次安装时的状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1380,7 +1386,7 @@ try {
 
 createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): Promise\<number\>;
 
-创建应用分身，使用Promise异步回调。
+创建应用分身。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1447,7 +1453,7 @@ try {
 
 destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise\<void\>;
 
-删除应用分身，使用Promise异步回调。
+删除应用分身。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1512,7 +1518,7 @@ try {
 
 destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: DestroyAppCloneParam): Promise\<void\>;
 
-删除应用分身，使用Promise异步回调。
+删除应用分身。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1586,7 +1592,7 @@ try {
 
 installPreexistingApp(bundleName: string, userId?: number): Promise\<void\>;
 
-安装应用，使用Promise异步回调。
+在指定用户下安装指定bundleName的应用。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1650,7 +1656,7 @@ try {
 
 installPlugin(hostBundleName: string, pluginFilePaths: Array\<string\>, pluginParam?: PluginParam): Promise\<void\> 
 
-应用安装插件，使用Promise异步回调。
+应用安装插件。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1729,7 +1735,7 @@ try {
 
 uninstallPlugin(hostBundleName: string, pluginBundleName: string, pluginParam?: PluginParam): Promise\<void\>
 
-应用卸载插件，使用Promise异步回调。
+应用卸载插件。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1824,7 +1830,7 @@ try {
 | additionalInfo<sup>10+</sup> | string | 否 | 是|应用安装时的额外信息，默认值为空，最大长度为3000字节。该字段通常由操作系统运营方的应用市场在安装企业应用时指定，用于保存应用的额外信息。 |
 | verifyCodeParams<sup>deprecated<sup> | Array<[VerifyCodeParam](#verifycodeparamdeprecated)> | 否 | 是| 代码签名文件参数，默认值为空。         |
 | pgoParams<sup>11+</sup> | Array<[PGOParam](#pgoparam11)> | 否 | 是| PGO配置文件参数，默认值为空。         |
-| parameters<sup>15+</sup> | Array<[Parameters](#parameters15)> | 否 | 是| 扩展参数，Parameters类型的数组，默认值为空。Parameters.key取值支持：</br> - "ohos.bms.param.renameInstall"：若对应value值为“true”，表示安装时使用共享目录将安装包从应用沙箱移动到安装目录，否则使用常规目录将安装包从应用沙箱拷贝到安装目录。</br> - "ohos.bms.param.enterpriseForAllUser"：若对应value值为“true”，表示在安装企业应用时为所有用户安装。</br> - "ohos.bms.param.verifyUninstallRule"：若对应value值为“true”，表示设置卸载处置规则，用于拦截应用卸载。</br> - "ohos.bms.param.enterpriseManifest"：value值为json文件的沙箱路径，json文件用于存储应用的描述文件，包括应用包名等，该字段用于企业应用克隆场景。克隆时，若该json文件存在，则将旧机的应用安装包拷贝到新机进行安装。|
+| parameters<sup>15+</sup> | Array<[Parameters](#parameters15)> | 否 | 是| 扩展参数，Parameters类型的数组，默认值为空。Parameters.key取值支持：</br> - "ohos.bms.param.renameInstall"：若对应value值为“true”，表示安装时使用共享目录将安装包从应用沙箱移动到安装目录，否则使用常规目录将安装包从应用沙箱拷贝到安装目录。</br> - "ohos.bms.param.enterpriseForAllUser"：若对应value值为“true”，表示在安装企业应用时为所有用户安装。</br> - "ohos.bms.param.verifyUninstallRule"：若对应value值为“true”，表示设置卸载处置规则，用于拦截应用卸载。</br> - "ohos.bms.param.enterpriseManifest"：value值为json文件的沙箱路径，json文件用于存储应用的描述文件，包括应用包名等，该字段用于企业应用克隆场景。克隆时，若该json文件存在，则将旧机的应用安装包拷贝到新机进行安装。</br> - "ohos.bms.param.installBundleName"：value值为应用的包名，该字段用于应用安装场景（从API version 23开始支持）。如果安装时传入了该字段，则在应用安装过程中调用接口[getBundleInstallStatus](./js-apis-bundleManager-sys.md#bundlemanagergetbundleinstallstatus23)能够查询到应用正在安装的状态。|
 ## UninstallParam<sup>10+</sup>
 
 共享包卸载需指定的参数信息。

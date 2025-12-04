@@ -6,11 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+相机管理器类，使用前需要通过[getCameraManager](arkts-apis-camera-f.md#cameragetcameramanager)接口获取相机管理实例。
+
 > **说明：**
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
-相机管理器类，使用前需要通过[getCameraManager](arkts-apis-camera-f.md#cameragetcameramanager)接口获取相机管理实例。
 
 ## 导入模块
 
@@ -372,7 +372,7 @@ createPhotoOutput(profile?: Profile): PhotoOutput
 
 | 参数名     | 类型                                         | 必填 | 说明                                  |
 | -------- | ------------------------------------------- |----| ----------------------------------- |
-| profile  | [Profile](arkts-apis-camera-i.md#profile)                         | 否  | 支持的拍照配置信息，通过[getSupportedOutputCapability](#getsupportedoutputcapability11)接口获取。<br>API 11时，该参数必填；从API 12开始，如果使用[preconfig](arkts-apis-camera-PhotoSession.md#preconfig12)进行预配置，传入profile参数会覆盖preconfig的预配置参数。|
+| profile  | [Profile](arkts-apis-camera-i.md#profile)                         | 否  | 支持的拍照配置信息，通过[getSupportedOutputCapability](#getsupportedoutputcapability11)接口获取。<br>API version 11时，该参数必填；从API version 12开始，如果使用[preconfig](arkts-apis-camera-PhotoSession.md#preconfig12)进行预配置，传入profile参数会覆盖preconfig的预配置参数。|
 
 **返回值：**
 

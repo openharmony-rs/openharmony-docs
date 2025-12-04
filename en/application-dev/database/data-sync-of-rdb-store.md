@@ -71,10 +71,15 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
 >
 > The security level of the destination device (to which data is synced) cannot be higher than that of the source device. For details, see [Access Control Mechanism in Cross-Device Sync](access-control-by-device-and-data-level.md#access-control-mechanism-in-cross-device-sync).
 
-1. Import the module.
+1. Import the related modules.
+   <!--@[sync_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
    
-   ```ts
-   import { relationalStore } from '@kit.ArkData';
+   ``` TypeScript
+   import { relationalStore } from '@kit.ArkData'; // Import modules.
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   const DOMAIN = 0x0000;
    ```
 
 2. Request permissions.
@@ -83,40 +88,45 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
    2. Display a dialog box to ask for authorization from the user when the application is started for the first time. For details, see [Requesting User Authorization](../security/AccessToken/request-user-authorization.md).
 
 3. Create an RDB store and a data table, and set the data table that requires cross-device data sync as a distributed table.
+   <!--@[setDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
    
-   ```ts
-   import { UIAbility } from '@kit.AbilityKit';
-   import { window } from '@kit.ArkUI';
-   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-
-   const STORE_CONFIG: relationalStore.StoreConfig = {
-     name: 'RdbTest.db',
-     securityLevel: relationalStore.SecurityLevel.S3
-   };
-
-   export default class EntryAbility extends UIAbility {
-     async onWindowStageCreate(windowStage: window.WindowStage): Promise<void> {
-       let store: relationalStore.RdbStore | null = null;
-       try {
-         store = await relationalStore.getRdbStore(this.context, STORE_CONFIG);
-         await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
-         // Set the created table as a distributed table.
-         await store.setDistributedTables(['EMPLOYEE']);
-         // Perform related operations.
-       } catch (err) {
-         console.error(`Failed to set distributed tables. code: ${err.code}, message: ${err.message}`);
-       }
-     }
-   }
+   ``` TypeScript
+   let context = getContext();
+   let store: relationalStore.RdbStore | undefined = undefined;
+   // ···
+     const STORE_CONFIG: relationalStore.StoreConfig = {
+       name: 'RdbTest.db', // Database file name.
+       securityLevel: relationalStore.SecurityLevel.S3 // Database security level.
+     };
+     // Open the database and set the distributed table.
+     relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
+       store = rdbStore;
+       await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
+       // Set the created table as a distributed table.
+       await store.setDistributedTables(['EMPLOYEE']);
+     }).catch((err: BusinessError) => {
+       hilog.error(DOMAIN, 'rdbDataSync', `Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
+     });
    ```
 
 4. Subscribe to data changes of other devices in the network cluster.
    1. Call [on('dataChange')](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#ondatachange) to listen for data changes of other devices. This API is called when data changes and is synced to the current device. The input parameter is the list of device IDs whose data changes.
    2. Obtain the distributed table name corresponding to the device based on the device ID and query data in the distributed table.
-
-   ```ts
+   <!--@[on_data_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+   
+   ``` TypeScript
+   // Subscribe to data changes of other devices in the network cluster.
    if (store) {
      try {
+       // Query the device list in the network cluster.
+       const deviceManager = distributedDeviceManager.createDeviceManager('com.example.rdbDataSync');
+       const deviceList = deviceManager.getAvailableDeviceListSync();
+       const devices: string[] = [];
+       deviceList.forEach(item => {
+         if (item.networkId) {
+           devices.push(item.networkId);
+         }
+       });
        // Register an observer to listen for the changes of the distributed data.
        // When data in the RDB store changes, the registered callback will be invoked to return the data changes.
        store.on('dataChange', relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, async (devices) => {
@@ -125,17 +135,17 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
            if (!store) {
              return;
            }
-           console.info(`The data of device:${device} has been changed.`);
+           hilog.info(DOMAIN, 'rdbDataSync', `The data of device:${device} has been changed.`);
            // Obtain the distributed table name.
            const distributedTableName = await store.obtainDistributedTableName(device, 'EMPLOYEE');
            // Create a query predicate to query data in the distributed table.
            const predicates = new relationalStore.RdbPredicates(distributedTableName);
            const resultSet = await store.query(predicates);
-           console.info(`device ${device}, table EMPLOYEE rowCount is: ${resultSet.rowCount}`);
+           hilog.info(DOMAIN, 'rdbDataSync', `device ${device}, table EMPLOYEE rowCount is: ${resultSet.rowCount}`);
          }
        });
      } catch (err) {
-       console.error(`Failed to register observer. Code:${err.code},message:${err.message}`);
+       hilog.error(DOMAIN, 'rdbDataSync', `Failed to register observer. Code:${err.code},message:${err.message}`);
      }
    }
    ```
@@ -143,8 +153,11 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
 5. Sync data changes of the current device to other devices in the network cluster.
    1. After the data in the distributed table of the current device changes, the [sync](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#sync-1) API of **RdbStore** is called to pass the [SYNC_MODE_PUSH](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#syncmode) parameter to push data changes to other devices.
    2. Use the [inDevices](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbPredicates.md#indevices) method of the predicate to specify the target device for receiving data changes.
+  
+   <!--@[data_sync_push](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
    
-   ```ts
+   ``` TypeScript
+   // Sync data changes of the current device to other devices in the network cluster.
    if (store) {
      // Insert new data into the distributed data table of the current device.
      const ret = store.insertSync('EMPLOYEE', {
@@ -152,9 +165,9 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
        age: 18,
        salary: 666
      });
-     console.info('Insert to distributed table EMPLOYEE, result: ' + ret);
+     hilog.info(DOMAIN, 'rdbDataSync', 'Insert to distributed table EMPLOYEE, result: ' + ret);
      // Query the device list in the network cluster.
-     const deviceManager = distributedDeviceManager.createDeviceManager('com.example.appdatamgrverify');
+     const deviceManager = distributedDeviceManager.createDeviceManager('com.example.rdbDataSync');
      const deviceList = deviceManager.getAvailableDeviceListSync();
      const syncTarget: string[] = [];
      deviceList.forEach(item => {
@@ -163,7 +176,7 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
        }
      });
      if (syncTarget.length === 0) {
-       console.error('no device to sync');
+       hilog.error(DOMAIN, 'rdbDataSync', 'no device to sync');
      } else {
        // Construct the predicate object for synchronizing the distributed table.
        const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
@@ -172,19 +185,19 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
        try {
          // Call the sync API to push the data changes from the current device to other devices in the network cluster.
          const result = await store.sync(relationalStore.SyncMode.SYNC_MODE_PUSH, predicates);
-         console.info('Push data success.');
+         hilog.info(DOMAIN, 'rdbDataSync', 'Push data success.');
          // Obtain the sync result.
          for (let i = 0; i < result.length; i++) {
            const deviceId = result[i][0];
            const syncResult = result[i][1];
            if (syncResult === 0) {
-             console.info(`device:${deviceId} sync success`);
+             hilog.info(DOMAIN, 'rdbDataSync', `device:${deviceId} sync success`);
            } else {
-             console.error(`device:${deviceId} sync failed, status:${syncResult}`);
+             hilog.error(DOMAIN, 'rdbDataSync', `device:${deviceId} sync failed, status:${syncResult}`);
            }
          }
        } catch (e) {
-         console.error('Push data failed, code: ' + e.code + ', message: ' + e.message);
+         hilog.error(DOMAIN, 'rdbDataSync', 'Push data failed, code: ' + e.code + ', message: ' + e.message);
        }
      }
    }
@@ -193,11 +206,14 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
 6. Obtain the data changes of other devices in the network cluster.
    1. The current device can call the [sync](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#sync-1) API of **RdbStore** and pass the [SYNC_MODE_PULL](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#syncmode) parameter to pull data changes from other devices in the network cluster.
    2. Use the [inDevices](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbPredicates.md#indevices) method of the predicate to specify the target device.
-
-   ```ts
+   
+   <!--@[data_sync_pull](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+   
+   ``` TypeScript
+   // Obtain the data changes of other devices in the network cluster.
    if (store) {
      // Query the device list in the network cluster.
-     const deviceManager = distributedDeviceManager.createDeviceManager('com.example.appdatamgrverify');
+     const deviceManager = distributedDeviceManager.createDeviceManager('com.example.rdbDataSync');
      const deviceList = deviceManager.getAvailableDeviceListSync();
      const syncTarget: string[] = [];
      deviceList.forEach(item => {
@@ -206,7 +222,7 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
        }
      });
      if (syncTarget.length === 0) {
-       console.error('no device to pull data');
+       hilog.error(DOMAIN, 'rdbDataSync', 'no device to pull data');
      } else {
        // Construct the predicate object for synchronizing the distributed table.
        const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
@@ -215,30 +231,32 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
        try {
          // Call the sync API to pull data changes from other devices to the current device.
          const result = await store.sync(relationalStore.SyncMode.SYNC_MODE_PULL, predicates);
-         console.info('Pull data success.');
+         hilog.info(DOMAIN, 'rdbDataSync', 'Pull data success.');
          // Obtain the sync result.
          for (let i = 0; i < result.length; i++) {
            const deviceId = result[i][0];
            const syncResult = result[i][1];
            if (syncResult === 0) {
-             console.info(`device:${deviceId} sync success`);
+             hilog.info(DOMAIN, 'rdbDataSync', `device:${deviceId} sync success`);
            } else {
-             console.error(`device:${deviceId} sync failed, status:${syncResult}`);
+             hilog.error(DOMAIN, 'rdbDataSync', `device:${deviceId} sync failed, status:${syncResult}`);
            }
          }
        } catch (e) {
-         console.error('Pull data failed, code: ' + e.code + ', message: ' + e.message);
+         hilog.error(DOMAIN, 'rdbDataSync', 'Pull data failed, code: ' + e.code + ', message: ' + e.message);
        }
      }
    }
    ```
 
 7. If data sync is not complete or not triggered, use the [remoteQuery](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#remotequery-1) method of **RdbStore** to query the data in the distributed table on a specified device in the network cluster.
-
-   ```ts
+   <!--@[data_remote_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+   
+   ``` TypeScript
+   // Query data of the distributed table on a specified device in the network cluster.
    if (store) {
      // Query the device list in the network cluster.
-     const deviceManager = distributedDeviceManager.createDeviceManager('com.example.appdatamgrverify');
+     const deviceManager = distributedDeviceManager.createDeviceManager('com.example.rdbDataSync');
      const deviceList = deviceManager.getAvailableDeviceListSync();
      const devices: string[] = [];
      deviceList.forEach(item => {
@@ -247,17 +265,17 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
        }
      });
      if (devices.length === 0) {
-       console.error('no device to query data');
-     } else {
-       // Construct a predicate object for querying the distributed table.
-       const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
-       try {
-         // Query the distributed table on the specified device in the network cluster.
-         const resultSet = await store.remoteQuery(devices[0], 'EMPLOYEE', predicates, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES']);
-         console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
-       } catch (e) {
-         console.error('Remote query failed, code: ' + e.code + ', message: ' + e.message);
-       }
+       hilog.error(DOMAIN, 'rdbDataSync', 'no device to query data');
+       return;
+     }
+     // Construct a predicate object for querying the distributed table.
+     const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+     try {
+       // Query the distributed table on a specified device in the network cluster.
+       const resultSet = await store.remoteQuery(devices[0], 'EMPLOYEE', predicates, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES']);
+       hilog.info(DOMAIN, 'rdbDataSync', `ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+     } catch (e) {
+       hilog.error(DOMAIN, 'rdbDataSync', 'Remote query failed, code: ' + e.code + ', message: ' + e.message);
      }
    }
    ```

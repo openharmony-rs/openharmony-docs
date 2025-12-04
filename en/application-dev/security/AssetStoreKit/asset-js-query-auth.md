@@ -92,10 +92,12 @@ The following table describes the attributes of **AssetMap** used for querying a
 
 Query asset **demo_alias** with user authentication. For details about **@ohos.userIAM.userAuth** used in the example, see [@ohos.userIAM.userAuth (User Authentication)](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10).
 
-```typescript
+<!-- @[query_user_auth_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_auth.ets) -->
+
+``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import userAuth from '@ohos.userIAM.userAuth';
+import { userAuth } from '@kit.UserAuthenticationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
@@ -104,12 +106,12 @@ function stringToArray(str: string): Uint8Array {
 }
 
 function arrayToString(arr: Uint8Array): string {
-  let textDecoder = util.TextDecoder.create("utf-8", { ignoreBOM: true });
-  let str = textDecoder.decodeToString(arr, { stream: false })
+  let textDecoder = util.TextDecoder.create('utf-8', { ignoreBOM: true });
+  let str = textDecoder.decodeToString(arr, { stream: false });
   return str;
 }
 
-async function userAuthenticate(challenge: Uint8Array): Promise<Uint8Array> {
+export async function userAuthenticate(challenge: Uint8Array): Promise<Uint8Array> {
   return new Promise((resolve, reject) => {
     const authParam: userAuth.AuthParam = {
       challenge: challenge,
@@ -131,8 +133,9 @@ async function userAuthenticate(challenge: Uint8Array): Promise<Uint8Array> {
         }
       });
       userAuthInstance.start();
-    } catch (err) {
-      console.error(`User identity authentication failed. Code is ${err?.code}, message is ${err?.message}`);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`User identity authentication failed. Code is ${err.code}, message is ${err.message}`);
       reject();
     }
   })
@@ -142,14 +145,15 @@ function preQueryAsset(): Promise<Uint8Array> {
   return new Promise((resolve, reject) => {
     try {
       let query: asset.AssetMap = new Map();
-      query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
+      query.set(asset.Tag.ALIAS, stringToArray('user_auth_asset'));
       asset.preQuery(query).then((challenge: Uint8Array) => {
         resolve(challenge);
       }).catch(() => {
         reject();
       })
-    } catch (err) {
-      console.error(`Failed to pre-query Asset. Code is ${err?.code}, message is ${err?.message}`);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to pre-query Asset. Code is ${err.code}, message is ${err.message}`);
       reject();
     }
   });
@@ -161,24 +165,26 @@ async function postQueryAsset(challenge: Uint8Array) {
   try {
     await asset.postQuery(handle);
     console.info(`Succeeded in post-querying Asset.`);
-  } catch (err) {
-    console.error(`Failed to post-query Asset. Code is ${err?.code}, message is ${err?.message}`);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`Failed to post-query Asset. Code is ${err.code}, message is ${err.message}`);
   }
 }
 
-async function queryAsset() {
+export async function queryUserAuthAsset(): Promise<string> {
+  let result: string = '';
   // Step 1. Call asset.preQuery to obtain the challenge value.
-  preQueryAsset().then(async (challenge: Uint8Array) => {
+  await preQueryAsset().then(async (challenge: Uint8Array) => {
     try {
       // Step 2. Pass in the challenge value to start the user authentication dialog box.
       let authToken: Uint8Array = await userAuthenticate(challenge);
       // Step 3. After the user authentication is successful, pass in the challenge value and authorization token to query the plaintext of the asset.
       let query: asset.AssetMap = new Map();
-      query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
+      query.set(asset.Tag.ALIAS, stringToArray('user_auth_asset'));
       query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL);
       query.set(asset.Tag.AUTH_CHALLENGE, challenge);
       query.set(asset.Tag.AUTH_TOKEN, authToken);
-      let res: Array<asset.AssetMap> = await asset.query(query);
+      let res: asset.AssetMap[] = await asset.query(query);
       for (let i = 0; i < res.length; i++) {
         // Parse the secret.
         let secret: Uint8Array = res[i].get(asset.Tag.SECRET) as Uint8Array;
@@ -187,12 +193,16 @@ async function queryAsset() {
       }
       // Step 4. After the plaintext is obtained, call asset.postQuery to perform postprocessing.
       postQueryAsset(challenge);
+      result = 'Succeeded in querying user-auth Asset';
     } catch (error) {
       // Step 5. If the operation after preQuery() fails, call asset.postQuery to perform postprocessing.
       postQueryAsset(challenge);
+      result = 'Failed to query user-auth Asset';
     }
   }).catch((err: BusinessError) => {
     console.error(`Failed to pre-query Asset. Code is ${err.code}, message is ${err.message}`);
+    result = 'Failed to query user-auth Asset';
   })
+  return result;
 }
 ```

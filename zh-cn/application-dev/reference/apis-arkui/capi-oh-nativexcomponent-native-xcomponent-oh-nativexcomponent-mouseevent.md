@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} OH_NativeXComponent_MouseEvent
+```
+
 ## 概述
 
 鼠标事件。

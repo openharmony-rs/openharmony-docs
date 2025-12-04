@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_NodeAdapter* ArkUI_NodeAdapterHandle
+```
+
 ## 概述
 
 定义组件适配器对象，用于滚动类组件的元素懒加载。

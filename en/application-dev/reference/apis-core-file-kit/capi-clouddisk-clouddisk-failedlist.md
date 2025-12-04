@@ -6,6 +6,10 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct CloudDisk_FailedList {...} CloudDisk_FailedList
+```
+
 ## Overview
 
 A struct that encapsulates the list of files that failed to synchronize. It includes the file path information and the specific failure cause.

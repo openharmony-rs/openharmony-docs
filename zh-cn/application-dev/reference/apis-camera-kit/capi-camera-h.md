@@ -116,7 +116,7 @@ enum Camera_ErrorCode
 | CAMERA_DEVICE_DISABLED = 7400108 | 由于安全原因，相机已禁用。 |
 | CAMERA_DEVICE_PREEMPTED = 7400109 | 因被抢占而无法使用相机。 |
 | CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | 与当前配置存在冲突。<br>**起始版本：** 12 |
-| CAMERA_SERVICE_FATAL_ERROR = 7400201 | 相机服务致命错误。<br> 比如没有相机权限、相机服务重启、跨进程调用异常等。 |
+| CAMERA_SERVICE_FATAL_ERROR = 7400201 | 相机服务异常。<br> 比如没有相机权限、相机服务重启、跨进程调用异常等。 |
 
 ### Camera_Status
 
@@ -339,14 +339,14 @@ enum Camera_ImageRotation
 
 | 枚举项 | 描述 |
 | -- | -- |
-| IAMGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br> 从API 21开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_0](#camera_imagerotation)。 |
-| CAMERA_IMAGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br>**起始版本：** 21 |
-| IAMGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br> 从API 21开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_90](#camera_imagerotation)。 |
-| CAMERA_IMAGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br>**起始版本：** 21 |
-| IAMGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br> 从API 21开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_180](#camera_imagerotation)。 |
-| CAMERA_IMAGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br>**起始版本：** 21 |
-| IAMGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br> 从API 21开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_270](#camera_imagerotation)。 |
-| CAMERA_IMAGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br>**起始版本：** 21 |
+| IAMGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_0](#camera_imagerotation)。 |
+| CAMERA_IMAGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br>**起始版本：** 22 |
+| IAMGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_90](#camera_imagerotation)。 |
+| CAMERA_IMAGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br>**起始版本：** 22 |
+| IAMGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_180](#camera_imagerotation)。 |
+| CAMERA_IMAGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br>**起始版本：** 22 |
+| IAMGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_270](#camera_imagerotation)。 |
+| CAMERA_IMAGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br>**起始版本：** 22 |
 
 ### Camera_QualityLevel
 
@@ -396,12 +396,12 @@ enum Camera_TorchMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OFF = 0 | 设备手电筒常关。<br> 从API 21开始，推荐使用新枚举值[CAMERA_TORCH_MODE_OFF](#camera_torchmode)。 |
-| CAMERA_TORCH_MODE_OFF = 0 | 设备手电筒常关。<br>**起始版本：** 21 |
-| ON = 1 | 设备手电筒常开。<br> 从API 21开始，推荐使用新枚举值[CAMERA_TORCH_MODE_ON](#camera_torchmode)。 |
-| CAMERA_TORCH_MODE_ON = 1 | 设备手电筒常开。<br>**起始版本：** 21 |
-| AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br> 从API 21开始，推荐使用新枚举值[CAMERA_TORCH_MODE_AUTO](#camera_torchmode)。 |
-| CAMERA_TORCH_MODE_AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br>**起始版本：** 21 |
+| OFF = 0 | 设备手电筒常关。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_TORCH_MODE_OFF](#camera_torchmode)。 |
+| CAMERA_TORCH_MODE_OFF = 0 | 设备手电筒常关。<br>**起始版本：** 22 |
+| ON = 1 | 设备手电筒常开。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_TORCH_MODE_ON](#camera_torchmode)。 |
+| CAMERA_TORCH_MODE_ON = 1 | 设备手电筒常开。<br>**起始版本：** 22 |
+| AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_TORCH_MODE_AUTO](#camera_torchmode)。 |
+| CAMERA_TORCH_MODE_AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br>**起始版本：** 22 |
 
 ### Camera_SmoothZoomMode
 
@@ -417,8 +417,8 @@ enum Camera_SmoothZoomMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NORMAL = 0 | 贝塞尔曲线模式。<br> 从API 21开始，推荐使用新枚举值[CAMERA_SMOOTH_ZOOM_MODE_NORMAL](#camera_smoothzoommode)。 |
-| CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0 | 贝塞尔曲线模式。<br>**起始版本：** 21 |
+| NORMAL = 0 | 贝塞尔曲线模式。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_SMOOTH_ZOOM_MODE_NORMAL](#camera_smoothzoommode)。 |
+| CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0 | 贝塞尔曲线模式。<br>**起始版本：** 22 |
 
 ### Camera_SystemPressureLevel
 
@@ -509,12 +509,12 @@ enum Camera_FoldStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NON_FOLDABLE = 0 | 不可折叠状态。<br> 从API 21开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_NON_FOLDABLE](#camera_foldstatus)。 |
-| CAMERA_FOLD_STATUS_NON_FOLDABLE = 0 | 不可折叠状态。<br>**起始版本：** 21 |
-| EXPANDED = 1 | 展开状态。<br> 从API 21开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_EXPANDED](#camera_foldstatus)。 |
-| CAMERA_FOLD_STATUS_EXPANDED = 1 | 展开状态。<br>**起始版本：** 21 |
-| FOLDED = 2 | 折叠状态。<br> 从API 21开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_FOLDED](#camera_foldstatus)。 |
-| CAMERA_FOLD_STATUS_FOLDED = 2 | 折叠状态。<br>**起始版本：** 21 |
+| NON_FOLDABLE = 0 | 不可折叠状态。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_NON_FOLDABLE](#camera_foldstatus)。 |
+| CAMERA_FOLD_STATUS_NON_FOLDABLE = 0 | 不可折叠状态。<br>**起始版本：** 22 |
+| EXPANDED = 1 | 展开状态。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_EXPANDED](#camera_foldstatus)。 |
+| CAMERA_FOLD_STATUS_EXPANDED = 1 | 展开状态。<br>**起始版本：** 22 |
+| FOLDED = 2 | 折叠状态。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_FOLDED](#camera_foldstatus)。 |
+| CAMERA_FOLD_STATUS_FOLDED = 2 | 折叠状态。<br>**起始版本：** 22 |
 
 ### Camera_QualityPrioritization
 
@@ -631,7 +631,7 @@ Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务出现致命错误。 |
+| [Camera_ErrorCode](#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_Camera_DeleteCameraManager()
 
@@ -655,6 +655,6 @@ Camera_ErrorCode OH_Camera_DeleteCameraManager(Camera_Manager* cameraManager)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务出现致命错误。 |
+| [Camera_ErrorCode](#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 

@@ -4,29 +4,11 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-## 100001 Internal Error
-
-**Error Message**
-
-The builder is not a valid build function.
-
-**Symptom**
-
-This error code is reported when an error with the internal state occurs.
-
-**Possible Cause**
-
-The correct UI instance fails to be obtained. A null pointer exception is encountered. Internal state validation within the UI instance fails. The node cannot be queried because the component is not added to the component tree. The snapshot size exceeds the hardware limit (hardware limits may vary across different hardware platforms).
-
-**Solution**
-
-N/A
 
 ## 160001 Image Loading Error
 

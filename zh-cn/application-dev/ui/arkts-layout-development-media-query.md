@@ -23,36 +23,46 @@
 首先导入媒体查询模块。
 
 
-```ts
+<!-- @[obtain_mediaquery_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { mediaquery } from '@kit.ArkUI';
 ```
 
 通过matchMediaSync接口设置媒体查询条件，保存返回的条件监听句柄listener。例如监听横屏事件：
 
 
-```ts
-let listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
+<!-- @[obtain_mediaquery_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+listener:mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
 ```
 
 给条件监听句柄listener绑定回调函数onPortrait，当listener检测设备状态变化时执行回调函数。在回调函数内，根据不同设备状态更改页面布局或者实现业务逻辑。
 
 
-```ts
-onPortrait(mediaQueryResult: mediaquery.MediaQueryResult) {
-  if (mediaQueryResult.matches as boolean) {
-    // do something here
-  } else {
-    // do something here
-  }
-}
+<!-- @[obtain_mediaquery_Portrait](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
 
-listener.on('change', onPortrait);
+``` TypeScript
+  onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
+    if (mediaQueryResult.matches as boolean) { // 若设备为横屏状态，更改相应的页面布局
+    // ···
+    } else {
+    // ···
+    }
+  }
+
+// ···
+    this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
+    // ···
+    });
+    // ···
 ```
 
 
 ## 媒体查询条件
 
-媒体查询条件由媒体类型、逻辑操作符、媒体特征组成，其中媒体类型可省略，逻辑操作符用于连接不同媒体类型与媒体特征，其中，媒体特征要使用“()”包裹且可以有多个。
+媒体查询条件由媒体类型、逻辑操作符、媒体特征组成，其中媒体类型可省略，逻辑操作符用于连接不同媒体类型与媒体特征，媒体特征要使用()包裹且可以有多个。
 
 
 ### 语法规则
@@ -87,7 +97,7 @@ listener.on('change', onPortrait);
 
 ### 媒体逻辑操作（media-logic-operations）
 
-媒体逻辑操作符：and、or、not、only用于构成复杂媒体查询，也可以通过comma（, ）将其组合起来，详细解释说明如下表。
+媒体逻辑操作符包括and、or、not、only，用于构成复杂媒体查询，也可以通过逗号,将其组合，详细解释说明如下表。
 
   **表1** 媒体逻辑操作符
 
@@ -154,8 +164,11 @@ listener.on('change', onPortrait);
 Stage模型下的示例：
 
 <!--deprecated_code_no_check-->
-```ts
-import { mediaquery, window } from '@kit.ArkUI';
+<!-- @[obtain_mediaquery_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { mediaquery } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
 @Entry
@@ -168,7 +181,7 @@ struct MediaQueryExample {
 
   // 当满足媒体查询条件时，触发回调
   onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
-    if (mediaQueryResult.matches as boolean) { // 若设备为横屏状态，更改相应的文本内容与字体颜色
+    if (mediaQueryResult.matches as boolean) { // 若设备为横屏状态，更改相应的页面布局
       this.color = '#FFD700';
       this.text = 'Landscape';
     } else {
@@ -181,7 +194,7 @@ struct MediaQueryExample {
     // 绑定当前应用实例
     // 绑定回调函数
     this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
-      this.onPortrait(mediaQueryResult)
+      this.onPortrait(mediaQueryResult);
     });
   }
 
@@ -196,21 +209,21 @@ struct MediaQueryExample {
     let context:common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // 调用该接口手动改变设备横竖屏状态
     window.getLastWindow(context).then((lastWindow) => {
-      lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT)
+      lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT);
     });
   }
 
   build() {
     Column({ space: 50 }) {
-      Text(this.text).fontSize(50).fontColor(this.color)
+      Text(this.text).fontSize(50).fontColor(this.color);
       Text('Landscape').fontSize(50).fontColor(this.color).backgroundColor(Color.Orange)
         .onClick(() => {
           this.changeOrientation(true);
-        })
+        });
       Text('Portrait').fontSize(50).fontColor(this.color).backgroundColor(Color.Orange)
         .onClick(() => {
           this.changeOrientation(false);
-        })
+        });
     }
     .width('100%').height('100%')
   }

@@ -7,6 +7,10 @@
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVDataSource {...} OH_AVDataSource
+```
+
 ## 概述
 
 用户自定义数据源。

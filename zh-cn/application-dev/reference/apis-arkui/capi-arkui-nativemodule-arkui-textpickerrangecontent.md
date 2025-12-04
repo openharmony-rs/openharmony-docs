@@ -6,6 +6,10 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ARKUI_TextPickerRangeContent
+```
+
 ## 概述
 
 定义单列滑动数据选择器支持的图片资源结构体。

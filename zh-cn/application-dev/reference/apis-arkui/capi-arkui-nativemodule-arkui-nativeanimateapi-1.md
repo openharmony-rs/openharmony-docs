@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_NativeAnimateAPI_1
+```
+
 ## 概述
 
 ArkUI提供的Native侧动画接口集合。

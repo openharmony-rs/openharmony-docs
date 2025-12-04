@@ -22,7 +22,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
 
 开发自测试框架依赖于python运行环境，python版本为3.7.5及以上版本，在使用测试框架之前可参见以下方式进行配置。
 
-源码获取可[参考此链接](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/sourcecode-acquire.md)。
+源码获取可[参考此链接](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/sourcecode-acquire.md)。
 
 ### 自测试框架基础环境依赖
 

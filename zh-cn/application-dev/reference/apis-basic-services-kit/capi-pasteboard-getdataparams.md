@@ -6,6 +6,10 @@
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct Pasteboard_GetDataParams Pasteboard_GetDataParams
+```
+
 ## 概述
 
 表示从剪贴板获取粘贴数据和进度时需要写入的参数。

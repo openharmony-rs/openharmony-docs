@@ -10,7 +10,7 @@
 
 - 拉起系统软键盘输入文字：点击网页输入框时，屏幕下方将弹出系统默认的软键盘。开发者可以通过软键盘输入文字，输入的内容会显示在输入框中。
 - 自定义系统软键盘的回车键类型：设置不同的回车键类型，例如：确认、下一个和提交。
-- 软键盘避让：在移动设备上，由于输入法通常固定在屏幕下半段，应用可设置不同的Web页面软键盘避让模式，来避让软键盘。例如：平移、调整大小和不避让。
+- 软键盘避让：在移动设备上，由于输入法通常显示在屏幕下方区域，应用可设置不同的Web页面软键盘避让模式，来避让软键盘。例如：平移、调整大小和不避让。
 - 自定义软键盘输入：在移动设备上，可以使用自绘制输入法在Web页面输入，以此替代系统软键盘。
 
 
@@ -130,6 +130,27 @@ struct WebComponent {
 （1）设置UIContext的软键盘避让模式。
 
 <!-- @[soft_keyboard_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
+
+``` TypeScript
+import { KeyboardAvoidMode } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// ···
+onWindowStageCreate(windowStage: window.WindowStage) {
+  hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+  windowStage.loadContent('pages/Index', (err, data) => {
+    let keyboardAvoidMode = windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
+    // 设置虚拟键盘抬起时压缩页面大小为减去键盘的高度
+  windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
+    if (err.code) {
+      hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+      return;
+    }
+    hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+  });
+}
+```
 （2）在Web组件中调起软键盘。
 
 ```html
@@ -145,8 +166,25 @@ struct WebComponent {
   </body>
 </html>
 ```
-
 <!-- @[soft_keyboard_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+//Index.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct KeyboardAvoidExample {
+  controller: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Row().height("50%").width("100%").backgroundColor(Color.Gray)
+      Web({ src: $rawfile("index.html"),controller: this.controller})
+      Text("I can see the bottom of the page").width("100%").textAlign(TextAlign.Center).backgroundColor(Color.Pink).layoutWeight(1)
+    }.width('100%').height("100%")
+  }
+}
+```
 ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 
 **图1**  Web组件网页默认软键盘避让模式
@@ -161,7 +199,7 @@ ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 
 - RESIZE_VISUAL：仅调整可视视口的大小，而不调整布局视口的大小。
 - RESIZE_CONTENT：调整视觉视口和布局视口的大小。
-- OVERLAYS_CONTENT：不调整任何视口的大小，获焦input元素没有滚动到可识区域的行为。
+- OVERLAYS_CONTENT：不调整任何视口的大小，获焦input元素没有滚动到可视区域的行为。
 
 >**说明：** 
 >
@@ -172,6 +210,29 @@ ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 在应用代码中设置ArkWeb的软键盘避让模式。
 
 <!-- @[soft_keyboard_setmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
+
+``` TypeScript
+// Index.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct KeyboardAvoidExample {
+  controller: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Row().height('50%').width('100%').backgroundColor(Color.Gray)
+      Web({ src: $rawfile('index.html'),controller: this.controller})
+        .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) //此时ArkWeb组件不会调整任何视口的大小。
+      Text('I can see the bottom of the page')    
+        .width('100%')
+        .textAlign(TextAlign.Center)
+        .backgroundColor(Color.Pink)
+        .layoutWeight(1)
+    }.width('100%').height('100%')
+  }
+}
+```
 ArkWeb组件根据避让模式进行避让，效果见图3。
 
 **图3**  Web组件网页自身软键盘避让模式
@@ -205,7 +266,7 @@ ArkWeb组件根据避让模式进行避让，效果见图3。
 | 交叉场景         | 规格                                       |
 | ------------ | ---------------------------------------- |
 | 同层渲染         | 同层Web：软键盘避让方式与普通场景相同。<br></div>同层系统组件：由ArkUI负责软键盘避让模式。 |
-| 离屏创建组件       | 默认使用与非离屏创建一致的软键盘避让模式，在上组件树前设置其他避让模式可生效。   |
+| 离屏创建组件       | 默认使用与非离屏创建一致的软键盘避让模式，在添加至组件树前设置其他避让模式即可生效。   |
 | customDialog | customDialog自身避让。                        |
 | 折叠屏          | 软键盘避让行为与普通场景行为一致。屏幕软键盘将根据屏幕开合状态进行调整。    |
 | 软键盘托管        | 软键盘避让行为与普通场景行为一致。                        |
@@ -215,7 +276,7 @@ ArkWeb组件根据避让模式进行避让，效果见图3。
 
 ## 拦截系统软键盘与自定义软键盘输入
 
-应用可以通过调用[onInterceptKeyboardAttach](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptkeyboardattach12)标签即将触发软键盘显示时，[onInterceptKeyboardAttach](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptkeyboardattach12)被回调。应用可以使用此接口控制软键盘的显示，包括系统默认软键盘、带有特定Enter键的软键盘，或完全自定义软键盘。借助这一功能，开发者能够实现对软键盘的灵活管理。
+应用可以通过监听[onInterceptKeyboardAttach](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptkeyboardattach12)回调，在软键盘拉起前，控制软键盘的显示，包括系统默认软键盘、带有特定Enter键的软键盘，或完全自定义软键盘。借助这一功能，开发者能够实现对软键盘的灵活管理。
 
 - 使用系统默认软键盘
 - 使用带有定制Enter键的系统软键盘

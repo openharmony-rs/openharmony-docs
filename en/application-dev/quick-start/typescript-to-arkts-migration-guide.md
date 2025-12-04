@@ -693,7 +693,7 @@ type YI<Item, T extends Array<Item>> = Item
 
 **Error code: 10605025**
 
-ArkTS does not support declaring class fields in **constructor**. Declare class fields inside the **class** declaration instead.
+ArkTS does not support declaring class fields in **constructor**. Explicitly declare class fields inside the **class** scope instead.
 
 **TypeScript**
 
@@ -3080,11 +3080,9 @@ Properties and functions of the global object: **eval**
 
 ### Strict Type Checking Is Enforced
 
-**Rule:** arkts-strict-typing
-
 **Severity: error**
 
-**Error code: 10605145**
+**Error code: 10605999**
 
 During compilation, the TypeScript strict mode is used to check the following types:
 **noImplicitReturns**,

@@ -130,8 +130,8 @@ The possible causes are as follows:
 
 **Solution**
 
-1. Check that the specified user ID is valid.
-2. Check that caller's user ID is the same as the specified user ID. If the application is a device administrator application, policies cannot be set across users.
+1. Check whether the user ID specified for the API is valid.
+2. Check whether the caller user ID and the specified user ID are the same. If the application is a device administrator application, policies cannot be set across users.
 
 ## 9200007 System Ability Error
 

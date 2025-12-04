@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct {...} Region
+```
+
 ## 概述
 
 表示本地窗口OHNativeWindow需要更新内容的矩形区域（脏区）。

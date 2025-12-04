@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The **Web** component can be used to display web pages. It can be used with the [@ohos.web.webview](arkts-apis-webview.md) module, which provides APIs for web control.
 
@@ -144,6 +144,27 @@ Example of using the **Web** component to specify the shared rendering process.
   }
   ```
 
+Specify whether the **Web** component handles mouse events as touch events.
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller1: webview.WebviewController = new webview.WebviewController();
+    controller2: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller1, emulateTouchFromMouseEvent: false })
+        Web({ src: 'www.w3.org', controller: this.controller2, emulateTouchFromMouseEvent: true })
+      }
+    }
+  }
+  ```
+
 Example of loading local web pages using **$rawfile()**:
 
  
@@ -165,7 +186,7 @@ Example of loading local web pages using **$rawfile()**:
   }
   ```
 
-Example of loading a link with the hash (#) route through the resource protocol in WebView:
+Load the resource file through the resources protocol.
 
 When **$rawfile** is used to load a URL contains a number sign (#), the content following the number sign is treated as a fragment. To avoid this issue, you can use the **resource://rawfile/** protocol prefix instead.
   ```ts
@@ -280,7 +301,7 @@ To load the local resource file in the sandbox path, you need to configure the [
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
        // Data synchronization between the UIAbility component and UI can be implemented by binding filesDir to the GlobalContext object.
        GlobalContext.getContext().setObject("filesDir", this.context.filesDir);
-       console.log("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
+       console.info("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
      }
    }
    ```

@@ -144,7 +144,7 @@ InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_Atta
 
 **描述**
 
-从[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)中获取是否显示键盘的值。
+从[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)中获取请求键盘的原因。
 
 **起始版本：** 15
 

@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Hid_DeviceHandle Hid_DeviceHandle
+```
+
 ## 概述
 
 不透明的USB HID设备结构。

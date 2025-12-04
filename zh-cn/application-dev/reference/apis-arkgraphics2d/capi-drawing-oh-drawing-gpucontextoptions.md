@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_Drawing_GpuContextOptions
+```
+
 ## 概述
 
 定义有关图形处理器上下文的选项。

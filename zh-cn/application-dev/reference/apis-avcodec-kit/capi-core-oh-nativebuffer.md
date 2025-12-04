@@ -7,6 +7,10 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_NativeBuffer OH_NativeBuffer
+```
+
 ## 概述
 
 为图形内存接口定义native层对象。

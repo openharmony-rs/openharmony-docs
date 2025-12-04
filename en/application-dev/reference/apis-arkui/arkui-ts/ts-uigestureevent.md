@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can set the gestures that are bound to a component. Specifically, you can add or remove gestures by calling the APIs of the **UIGestureEvent** object.
 

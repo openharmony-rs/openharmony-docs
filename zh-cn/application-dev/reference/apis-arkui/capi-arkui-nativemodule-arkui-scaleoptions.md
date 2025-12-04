@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_ScaleOptions
+```
+
 ## 概述
 
 定义组件转场时的缩放效果对象。

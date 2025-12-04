@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_DragAction ArkUI_DragAction
+```
+
 ## 概述
 
 拖拽行为，用于主动发起拖拽。

@@ -7,6 +7,10 @@
 <!--Tester: @liuzhenshuo-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_GridItemRect
+```
+
 ## 概述
 
 定义Grid布局选项onGetRectByIndex回调返回值结构体。

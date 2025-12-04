@@ -25,7 +25,7 @@
 ### Column
 Column(options?: ColumnOptions)
 
-创建垂直方向线性布局容器，可以设置子组件的间距，间距类型为number或string类型。
+创建垂直方向线性布局容器，可以设置子组件的间距。
 
 >  **说明：**
 >
@@ -41,12 +41,12 @@ Column(options?: ColumnOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [ColumnOptions<sup>18+</sup>](#columnoptions18对象说明) | 否 | 纵向布局元素垂直方向间距。 |
+| options<sup>18+</sup> | [ColumnOptions](#columnoptions18对象说明) | 否 | 纵向布局元素垂直方向间距，支持设置number或string类型。 |
 
 ### Column<sup>18+</sup>
 Column(options?: ColumnOptions | ColumnOptionsV2)
 
-创建垂直方向线性布局容器，可以设置子组件的间距，间距类型为number、string或Resource类型。
+创建垂直方向线性布局容器，可以设置子组件的间距。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -58,7 +58,7 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [ColumnOptions](#columnoptions18对象说明) \| [ColumnOptionsV2](#columnoptionsv218对象说明) | 否 | 纵向布局元素垂直方向间距。 |
+| options | [ColumnOptions](#columnoptions18对象说明) \| [ColumnOptionsV2](#columnoptionsv218对象说明) | 否 | 纵向布局元素垂直方向间距，支持设置number、string或Resource类型。 |
 
 ## ColumnOptions<sup>18+</sup>对象说明
 
@@ -90,7 +90,7 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| space | [SpaceType](#spacetype18) | 否 | 是 | 纵向布局元素垂直方向间距。<br/>space为负数或者justifyContent设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时，space不生效。<br/>默认值：0，单位vp <br />非法值：按默认值处理。<br/>**说明：** <br/>space取值是大于等于0的数字，或者可以转换为数字的字符串，或者可以转换为数字的Resource类型数据。 |
+| space | [SpaceType](#spacetype18) | 否 | 是 | 纵向布局元素垂直方向间距。<br/>space为负数或者justifyContent设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时，space不生效。<br/>默认值：0 <br />单位：vp <br />非法值：按默认值处理。<br/>**说明：** <br/>space取值是大于等于0的数字，或者可以转换为数字的字符串，或者可以转换为数字的Resource类型数据。 |
 
 ## SpaceType<sup>18+</sup>
 
@@ -171,7 +171,7 @@ reverse(isReversed: Optional\<boolean\>)
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| isReversed  | Optional\<boolean\> | 是   | 子组件在垂直方向上的排列是否反转。<br/>默认值：true，设置true表示子组件在垂直方向上反转排列，设置false表示子组件在垂直方向上正序排列。 |
+| isReversed  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean\> | 是   | 子组件在垂直方向上的排列是否反转。<br/>默认值：true，设置true表示子组件在垂直方向上反转排列，设置false表示子组件在垂直方向上正序排列。 |
 
 >  **说明：**
 >
@@ -213,7 +213,7 @@ struct ColumnExample {
 
       // 通过资源引用方式设置子元素垂直方向间距
       Text('Resource space').width('90%')
-      Column({ space: $r("app.string.stringSpace") }) {
+      Column({ space: $r('app.string.stringSpace') }) {
         Column().width('100%').height(30).backgroundColor(0xAFEEEE)
         Column().width('100%').height(30).backgroundColor(0x00FFFF)
       }.width('90%').height(100).border({ width: 1 })

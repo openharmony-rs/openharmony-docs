@@ -6,6 +6,12 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
+## A
+
+### APP 
+
+当应用发布上架到应用市场时，需要将应用打包为一个.app后缀的文件用于上架，这个.app文件称为App Pack（Application Package）。
+
 ## E
 
 ### ExtensionAbility 

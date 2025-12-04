@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_Drawing_Font_Metrics
+```
+
 ## 概述
 
 定义字体度量信息的结构体。

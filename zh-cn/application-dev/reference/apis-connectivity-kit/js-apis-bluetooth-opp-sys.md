@@ -66,7 +66,7 @@ Profile类，使用opp方法之前需要创建该类的实例进行操作，通�
 
 sendFile(deviceId: string, fileHolds: Array&lt;FileHolder&lt;): Promise&lt;void&gt;
 
-使用蓝牙发送文件。
+使用蓝牙发送文件。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -135,7 +135,7 @@ try {
 
 setIncomingFileConfirmation(accept: boolean, fileFd: number): Promise&lt;void&gt;
 
-蓝牙接收文件。
+蓝牙接收文件。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -400,7 +400,7 @@ try {
 
 cancelTransfer(): Promise&lt;void&gt;
 
-取消文件传输。
+取消文件传输。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -443,7 +443,7 @@ try {
 
 getCurrentTransferInformation(): Promise&lt;[OppTransferInformation](#opptransferinformation)&gt;
 
-获取当前传输的文件信息。
+获取当前传输的文件信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -486,7 +486,7 @@ try {
 
 setLastReceivedFileUri(uri: string): Promise&lt;void&gt;
 
-设置最后一个接收文件的URI。
+设置最后一个接收文件的URI。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 

@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_Rect
+```
+
 ## 概述
 
 定义遮罩屏蔽区域的范围结构体。

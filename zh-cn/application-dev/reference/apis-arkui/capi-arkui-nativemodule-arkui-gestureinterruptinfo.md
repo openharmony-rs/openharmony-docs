@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_GestureInterruptInfo ArkUI_GestureInterruptInfo
+```
+
 ## 概述
 
 提供手势打断数据类型对象定义。

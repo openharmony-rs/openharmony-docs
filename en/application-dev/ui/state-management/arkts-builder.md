@@ -6,17 +6,17 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-ArkUI provides the \@Builder decorator that is a lightweight UI element reuse mechanism. This decorator has a fixed internal UI structure and passes the data only to the user. You can abstract reusable UI elements into functions and call the functions in the build function.
+ArkUI provides the \@Builder decorator as a lightweight mechanism for reusing UI elements. It encapsulates a fixed internal UI structure and only passes data to the caller. You can abstract reusable UI elements into functions and invoke these functions within the build method.
 
-Functions decorated with \@Builder are also called custom builder functions.
+Functions decorated with \@Builder are referred to as custom builder functions.
 
-Before reading this topic, you are advised to read [Basic Syntax Overview](./arkts-basic-syntax-overview.md), [Declarative UI Description](./arkts-declarative-ui-description.md), and [Creating a Custom Component](./arkts-create-custom-components.md).
+Before reading this topic, it is recommended to review [Basic Syntax Overview](./arkts-basic-syntax-overview.md), [Declarative UI Description](./arkts-declarative-ui-description.md), and [Creating a Custom Component](./arkts-create-custom-components.md).
 
-The main differences between the @Builder decorator and the @Component decorator in terms of functions and usage are as follows:
+The main differences between the @Builder decorator and the @Component decorator in terms of functionality and usage are as follows:
 
-1. The @Builder decorator is used to encapsulate reusable UI structures and improve development efficiency by extracting repeated layout code. This decorator strictly prohibits the definition of state variables or the use of lifecycle functions. Data interaction must be implemented through parameter transfer or access to the state variables of the component to which the decorator belongs.
+1. The @Builder decorator is used to encapsulate reusable UI structures, improving development efficiency by extracting repeated layout code. It strictly prohibits the definition of state variables or the use of lifecycle functions. Data interaction must be implemented through parameter passing or by accessing the state variables of the component to which the decorator belongs.
 
-2. In the ArkUI framework, the @Component decorator is the core mechanism for encapsulating complex UI components. It allows you to build reusable composite UIs by combining multiple basic components. This decorator not only supports the definition of internal state variables, but also manages the lifecycle of components.
+2. In the ArkUI framework, the @Component decorator is the core mechanism for encapsulating complex UI components. It enables the construction of reusable composite UIs by combining multiple basic components. This decorator supports the definition of internal state variables and manages the component lifecycle.
 
 > **NOTE**
 >
@@ -27,7 +27,7 @@ The main differences between the @Builder decorator and the @Component decorator
 
 ## How to Use
 
-The \@Builder decorator can be used in two ways: private custom builder function defined in a custom component (#Private Custom Builder Function) and global custom builder function defined globally (#Global Custom Builder Function).
+The \@Builder decorator can be used in two ways: as a private custom builder function defined within a custom component (#Private Custom Builder Function) and as a global custom builder function defined globally (#Global Custom Builder Function).
 
 ### Private Custom Builder Function
 
@@ -39,7 +39,7 @@ Example:
 struct BuilderDemo {
   @Builder
   showTextBuilder() {
-    // @Builder decorates this function so that it can configure and build the Text component in chain calling mode.
+    // The @Builder decorator enables this function to configure and build the Text component using a chain call syntax.
     Text('Hello World')
       .fontSize(30)
       .fontWeight(FontWeight.Bold)
@@ -54,7 +54,7 @@ struct BuilderDemo {
 
   build() {
     Column() {
-      // Without parameter.
+      // Without parameters.
       this.showTextBuilder()
       // With a parameter.
       this.showTextValueBuilder('Hello @Builder')
@@ -63,13 +63,13 @@ struct BuilderDemo {
 }
 ```
 
-Usage:
+Invocation pattern:
 
-- One or more @Builder functions can be defined in a custom component. These functions are treated as private and special member functions of the owning component.
+- One or more @Builder functions can be defined within a custom component. These functions are treated as private, special member functions of the owning component.
 
-- Private custom builder functions can be called in custom components, **build()**, and other custom builder functions.
+- Private custom builder functions can be called within the custom component's **build()** method and other custom builder functions.
 
-- In a custom component, this refers to the current component. The state variables of the component can be accessed in the custom build function. You are advised to use this to access the state variables of the component instead of passing the variables through parameters.
+- Within a custom component, **this** refers to the current component. The component's state variables can be accessed directly within the custom builder function. It is recommended to use **this** to access the component's state variables rather than passing them as parameters.
 
 ### Global Custom Builder Function
 
@@ -93,48 +93,74 @@ struct BuilderDemo {
 }
 ```
 
-- If the component state variable does not change, you are advised to use the global custom build function.
+- If the component's state variables do not change, it is recommended to use a global custom builder function.
 
-- Global custom build functions can be called in the build function and other custom build functions.
+- Global custom builder functions can be called within the build function and other custom builder functions.
 
 
 ## Parameter Passing Rules
 
-For custom builder functions, parameters can be passed [by value](#by-value-parameter-passing) and [by reference](#by-reference-parameter-passing). Both of them must comply with the following rules:
+Parameters for custom builder functions can be passed [by callback](#passing-parameters-by-callback), [by reference](#passing-parameters-by-reference), or [by value](#passing-parameters-by-value). The following rules must be followed:
 
-- The parameter type of the function decorated by \@Builder cannot be undefined or null, and the expression that returns undefined or null is not allowed.
+- The parameter types of a function decorated by \@Builder cannot be **undefined** or **null**. Expressions that return **undefined** or **null** are also not allowed.
 
-- All parameters must be immutable inside the \@Builder decorated function body.
+- All parameters must be treated as immutable within the body of the \@Builder decorated function.
 
-- The custom builder function body follows the same [syntax rules](arkts-create-custom-components.md#build) as **build()**.
+- The body of a custom builder function follows the same [syntax rules](arkts-create-custom-components.md#build) as the **build()** function.
 
-- The parameter is passed by reference only when one parameter is passed and the parameter is directly passed as an object literal. In other cases, the parameter is passed by value.
+- When parameters are passed by callback or by reference, UI components within the \@Builder function can be refreshed. Passing by reference only triggers UI refresh when a single parameter is passed directly as an object literal. If multiple parameters are passed, UI components within the \@Builder function will not be refreshed.
 
-### By-Value Parameter Passing
+- When passing by reference, you cannot modify the attributes of the parameter within the \@Builder function. However, if you use **UIUtils.makeBinding** and provide a write callback, you can modify the attributes within the \@Builder function and synchronize the changes back to the component that called the \@Builder function.
 
-By default, parameters in the \@Builder decorated functions are passed by value. In this case, when the passed parameter is a state variable, its change does not cause UI re-rendering in the \@Builder function. Therefore, for state variables, you are advised to use [by-reference parameter passing](#by-reference-parameter-passing) instead.
+### Passing Parameters by Callback
+
+Starting from API version 20, you can use the **UIUtils.makeBinding()** function, **Binding** class, and **MutableBinding** class to enable state variable refresh within the \@Builder function. For details, see [Refreshing State Variables in the \@Builder Function](#builder-supports-state-variable-refresh).
+
+Use **UIUtils.makeBinding()** to wrap the callback function for reading state variables and pass it as a parameter to the \@Builder function. This allows UI components within the \@Builder function to be refreshed. By also passing a write callback function to **UIUtils.makeBinding()**, you can modify the parameters within the \@Builder function and propagate the changes back to the calling component.
 
 ```ts
-@Builder function overBuilder(paramA1: string) {
+import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+
+@Builder
+function CustomButton(num1: Binding<number>, num2: MutableBinding<number>) {
   Row() {
-    Text(`UseStateVarByValue: ${paramA1} `)
+    Column() {
+      Text(`number1: ${num1.value}, number2: ${num2.value}`)
+      Button(`only change number2`)
+        .onClick(() => {
+          // Assigning a value to the MutableBinding type propagates the modification to the parent component.
+          num2.value += 1;
+        })
+    }
   }
 }
+
 @Entry
-@Component
-struct Parent {
-  @State label: string = 'Hello';
+@ComponentV2
+struct Single {
+  @Local number1: number = 5;
+  @Local number2: number = 12;
+
   build() {
     Column() {
-      overBuilder(this.label)
+      CustomButton(
+        // Use makeBinding to pass parameters. A read callback must be provided, returning the Binding type. This enables UI refresh within @Builder.
+        UIUtils.makeBinding<number>(() => this.number1),
+        // When makeBinding includes a write callback, it returns the MutableBinding type. This enables UI refresh and allows synchronized attribute modification within @Builder.
+        UIUtils.makeBinding<number>(
+          () => this.number2,
+          (val: number) => {
+            this.number2 = val;
+          })
+      )
     }
   }
 }
 ```
 
-### By-Reference Parameter Passing
+### Passing Parameters by Reference
 
-In by-reference parameter passing, state variables can be passed, and the change of these state variables causes the UI re-rendering in the \@Builder function.
+In by-reference parameter passing, state variables can be passed, and changes to these state variables will trigger UI re-rendering within the \@Builder function.
 
 ```ts
 class Tmp {
@@ -159,7 +185,7 @@ struct Parent {
       // pass this.label to the overBuilder component by reference.
       overBuilder({ paramA1: this.label })
       Button('Click me').onClick(() => {
-        // After you click "Click me", the UI text changes from "Hello" to "ArkUI".
+        // After "Click me" is clicked, the UI text changes from "Hello" to "ArkUI".
         this.label = 'ArkUI';
       })
     }
@@ -167,24 +193,46 @@ struct Parent {
 }
 ```
 
+### Passing Parameters by Value
+
+By default, parameters in \@Builder decorated functions are passed by value. In this case, if the passed parameter is a state variable, changes to it will not cause UI re-rendering within the \@Builder function. Therefore, when using state variables, it is recommended to use [passing by callback](#passing-parameters-by-callback) or [passing by reference](#passing-parameters-by-reference).
+
+```ts
+@Builder function overBuilder(paramA1: string) {
+  Row() {
+    Text(`UseStateVarByValue: ${paramA1} `)
+  }
+}
+@Entry
+@Component
+struct Parent {
+  @State label: string = 'Hello';
+  build() {
+    Column() {
+      overBuilder(this.label)
+    }
+  }
+}
+```
+
 ## Constraints
 
-1. If [MutableBinding](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20) is not used in the function decorated by \@Builder, the parameter value cannot be modified. If the parameter value is modified, UI refresh is not triggered. If [by-reference parameter passing](#by-reference-parameter-passing) is used and only one parameter is passed, a runtime error is thrown when the internal attributes of the parameter are modified. MutableBinding helps you modify parameter values in a function decorated with \@Builder. For details, see [Changing the Input Parameters in the \@Builder Decorated Function](#changing-the-input-parameters-in-the-builder-decorated-function).
+1. If [MutableBinding](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20) is not used in a function decorated by \@Builder, the parameter values cannot be modified. Modifying the parameter values will not trigger UI refresh. If [by-reference parameter passing](#passing-parameters-by-reference) is used and only one parameter is passed, modifying the internal attributes of the parameter will throw a runtime error. MutableBinding allows you to modify parameter values within a function decorated with \@Builder. For details, see [Changing the Input Parameters in the \@Builder Decorated Function](#changing-the-input-parameters-in-the-builder-decorated-function).
 
-2. \@Builder triggers dynamic UI rendering only when it is passed by reference and only one parameter is passed. For details, see [By-Reference Parameter Passing](#by-reference-parameter-passing).
+2. \@Builder triggers dynamic UI rendering only when parameters are passed by reference and only a single parameter is passed. For details, see [Passing Parameters by Reference](#passing-parameters-by-reference).
 
-3. If two or more parameters are passed to \@Builder, dynamic UI rendering is not triggered. For details, see [Multiple Parameters in @Builder](#multiple-parameters-in-builder).
+3. If two or more parameters are passed to \@Builder, dynamic UI rendering will not be triggered. For details, see [Multiple Parameters in @Builder](#multiple-parameters-in-builder).
 
-4. If the parameters passed to \@Builder contain both value-based and reference-based parameters, dynamic UI rendering is not triggered. For details, see [Multiple Parameters in @Builder](#multiple-parameters-in-builder)
+4. If the parameters passed to \@Builder include both value-based and reference-based parameters, dynamic UI rendering will not be triggered. For details, see [Multiple Parameters in @Builder](#multiple-parameters-in-builder).
 
-5. \@Builder triggers dynamic UI rendering only when its parameters are passed in the form of object literals. For details, see [Multiple Parameters in @Builder](#multiple-parameters-in-builder).
+5. \@Builder triggers dynamic UI rendering only when its parameters are passed as object literals. For details, see [Multiple Parameters in @Builder](#multiple-parameters-in-builder).
 
 
 ## Use Scenarios
 
-### Using Custom Builder Function in Custom Component
+### Using a Custom Builder Function in a Custom Component
 
-Create a private @Builder function and use this.builder() in Column. Update builder_value through the aboutToAppear lifecycle function and button click event to implement dynamic UI rendering.
+Create a private @Builder function and call it using **this.builder()** within a Column. Update **builder_value** through the **aboutToAppear** lifecycle function and a button click event to implement dynamic UI rendering.
 
 ```ts
 @Entry
@@ -238,7 +286,7 @@ Effect
 
 ### Global Custom Builder Function
 
-Create a global @Builder function and call it in the column using overBuilder(). When passing parameters, you can use the object literal format. Regardless of whether the type is simple or complex, any change in the value will trigger the refresh of the UI.
+Create a global @Builder function and call it within a column using **overBuilder()**. When passing parameters, use the object literal format. Regardless of whether the parameter type is simple or complex, any change in the value will trigger UI refresh.
 
 ```ts
 class ChildTmp {
@@ -329,9 +377,9 @@ Effect
 
 ![arkts-builder-usage-scenario2](figures/arkts-builder-usage-scenario2.gif)
 
-### Changing the Variables Decorated by the Decorator Triggers UI Re-rendering
+### Changing Decorator-Observed Variables Triggers UI Re-rendering
 
-In this scenario, @Builder defines the **Text** component layout but does not handle dynamic UI updates. UI re-rendering occurs when decorator-observed values change, not through @Builder's reactive capabilities.
+In this scenario, @Builder defines the **Text** component layout but does not handle dynamic UI updates. UI re-rendering occurs when the values observed by decorators change, not through @Builder's reactive capabilities.
 
 ```ts
 class Tmp {
@@ -387,8 +435,8 @@ Effect
 
 ### Using a Function Decorated with @Builder as CustomBuilder
 
-When the parameter type is CustomBuilder, you can pass the defined @Builder function. CustomBuilder is actually of the Function(() => any) or void type, and @Builder is also of the Function type. Therefore, you can pass @Builder to achieve a specific effect.
-When a global @Builder function is passed as CustomBuilder, the this context needs to be bound. You can directly call the global @Builder function, and the compilation toolchain automatically generates the code for binding the this context.
+When the parameter type is **CustomBuilder**, you can pass a defined @Builder function. **CustomBuilder** is essentially of type **Function(() => any)** or **void**, and @Builder is also of type **Function**. Therefore, you can pass @Builder to achieve specific effects.
+When a global @Builder function is passed as **CustomBuilder**, the **this** context needs to be bound. You can directly call the global @Builder function, and the compilation toolchain will automatically generate the code for binding the **this** context.
 
 ```ts
 @Builder
@@ -433,7 +481,7 @@ struct customBuilderDemo {
             },
             end: {
               builder: () => {
-                // When the local @Builder is called in the arrow function, the this context is automatically bound, without the need of the compilation toolchain.
+                // When the local @Builder is called within the arrow function, the this context is automatically bound without compiler intervention.
                 this.privateBuilder()
               }
             }
@@ -448,7 +496,7 @@ struct customBuilderDemo {
 
 ### Nested \@Builder Functions
 
-Invoke a custom component or other \@Builder functions in the \@Builder function to implement nested \@Builder functions. To implement the dynamic UI update function of the innermost \@Builder, the \@Builder function must be invoked by reference at each layer. $$ is not a mandatory parameter. You can change it to another name.
+Invoke a custom component or other \@Builder functions within an \@Builder function to implement nested \@Builder functions. To enable dynamic UI updates for the innermost \@Builder, the \@Builder function must be invoked by reference at each layer. **$$** is not a mandatory parameter name and can be changed.
 
 ```ts
 class Tmp {
@@ -585,7 +633,7 @@ Effect
 
 ### \@Builder Function Combined with the V2 Decorator
 
-The class object instance decorated by [@ObservedV2](./arkts-new-observedV2-and-trace.md) and [@Trace](./arkts-new-observedV2-and-trace.md) has the capability of deeply observing attribute changes. In a custom component decorated with @ComponentV2, when the global or local Builder is called and parameters are passed in value passing mode, modifying the object attribute decorated with @Trace can trigger UI refresh.
+Class object instances decorated by [@ObservedV2](./arkts-new-observedV2-and-trace.md) and [@Trace](./arkts-new-observedV2-and-trace.md) have the capability for deep observation of attribute changes. In a custom component decorated with @ComponentV2, when calling a global or local Builder and passing parameters by value, modifying an object attribute decorated with @Trace can trigger UI refresh.
 ```ts
 @ObservedV2
 class Info {
@@ -618,7 +666,7 @@ struct ChildPage {
 
   build() {
     Column() {
-      // The value passing mode must be used. If the reference passing mode is used, the ArkTS syntax will be intercepted.
+      // Value passing must be used. If reference passing is used, it will be intercepted by ArkTS syntax check.
       overBuilder(this.childInfo)
     }
   }
@@ -660,16 +708,16 @@ struct ParentPage {
 
       // Call the local @Builder.
       this.privateBuilder()
-      // Call the global @Builder. The value transfer mode must be used. If the reference transfer mode is used, the ArkTS syntax will be intercepted.
+      // Call the global @Builder. Value passing must be used. If reference passing is used, it will be intercepted by ArkTS syntax check.
       overBuilder(this.info2)
       ChildPage({ childInfo: this.info1 }) // Call the custom component.
       ChildPage({ childInfo: this.info2 }) // Call the custom component.
       Button('change info1&info2')
         .onClick(() => {
-          this.info1.name = 'Cat'; // Change the name value of info1 displayed in Text1.
-          this.info1.age = 18; // Change the age value of info1 displayed in Text1.
-          this.info2.name = 'Cat'; // Change the name value of info2 displayed in Text2.
-          this.info2.age = 18; // Change the value of age in info2 displayed by Text2.
+          this.info1.name = 'Cat'; // Changes the name value of info1 displayed in Text1.
+          this.info1.age = 18; // Changes the age value of info1 displayed in Text1.
+          this.info2.name = 'Cat'; // Changes the name value of info2 displayed in Text2.
+          this.info2.age = 18; // Changes the age value of info2 displayed in Text2.
         })
     }
     .height('100%')
@@ -679,7 +727,7 @@ struct ParentPage {
 ```
 
 
-When parameters are passed to @Builder by reference, if the parameters are objects decorated with @Local, the overall assignment of the objects will trigger UI refresh in @Builder.
+When parameters are passed to @Builder by reference, if the parameters are objects decorated with @Local, reassigning the entire object will trigger UI refresh within @Builder.
 
 ```ts
 class Info {
@@ -755,8 +803,8 @@ struct ParentPage {
       ChildPage({ childInfo: this.info2 }) // Call the custom component.
       Button('change info1&info2')
         .onClick(() => {
-          this.info1 = { name: 'Cat', age: 18}; // Text1 is not re-rendered because no decorator is used to listen for value changes.
-          this.info2 = { name: 'Cat', age: 18}; // Text2 is re-rendered because a decorator is used to listen for value changes.
+          this.info1 = { name: 'Cat', age: 18}; // Text1 is not re-rendered because no decorator observes value changes.
+          this.info2 = { name: 'Cat', age: 18}; // Text2 is re-rendered because a decorator observes value changes.
         })
     }
     .height('100%')
@@ -768,7 +816,7 @@ struct ParentPage {
 
 ### Global \@Builder Reused Across Components
 
-In cross-component scenarios, the global \@Builder is called to transfer parameters by reference, implementing dynamic UI refresh.
+In cross-component scenarios, the global \@Builder is called with parameters passed by reference, enabling dynamic UI refresh.
 
 ```ts
 class Tmp {
@@ -867,7 +915,7 @@ Effect
 
 ### \@Builder Supports State Variable Refresh
 
-From API version 20 onwards, you can use the UIUtils.makeBinding() function, Binding class, and MutableBinding class to refresh state variables in the \@Builder function. For details, see [State Management API Reference](../../reference/apis-arkui/js-apis-StateManagement.md#makebinding20).
+Starting from API version 20, you can use the **UIUtils.makeBinding()** function, **Binding** class, and **MutableBinding** class to enable state variable refresh within the \@Builder function. For details, see [State Management API Reference](../../reference/apis-arkui/js-apis-StateManagement.md#makebinding20).
 
 ```ts
 import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
@@ -1131,7 +1179,7 @@ function renderNumber(paramNum: number) {
 @ComponentV2
 struct PageBuilder {
   @Local class_value: ParamTmp = new ParamTmp();
-  // Using primitive data type cannot trigger UI re-rendering.
+  // Using a primitive data type cannot trigger UI re-rendering.
   @Local num_value: number = 0;
   private progressTimer: number = -1;
 
@@ -1306,7 +1354,7 @@ struct ParentPage {
 }
 ```
 
-Create the custom component HelloComponent in the parentBuilder function, pass the parameter as an object literal, and modify the value in the object. The UI triggers the refresh function.
+Create the custom component HelloComponent in the parentBuilder function, pass the parameters as an object literal, and modify the values in the object. The UI will then trigger the refresh function.
 
 **Correct Usage**
 
@@ -1323,7 +1371,7 @@ function parentBuilder(params: Tmp) {
       Text(`parentBuilder===${params.name}===${params.age}`)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
-      // Split the entire object into simple types. This is a reference transfer mode. Changing the attribute can trigger UI refresh.
+      // Split the entire object into simple types. This uses reference passing. Changing the attribute can trigger UI refresh.
       HelloComponent({ childName: params.name, childAge: params.age })
     }
   }
@@ -1365,9 +1413,9 @@ struct ParentPage {
 }
 ```
 
-### Calling the \@Builder Function or Method Outside the UI Statement Affects the Normal Refresh of Nodes
+### Calling the \@Builder Function or Method Outside the UI Statement Affects Normal Node Refresh
 
-After the \@Builder method is assigned to a variable or array, it cannot be used in the UI method, and the node display is abnormal during refresh.
+After an \@Builder method is assigned to a variable or array, it cannot be used correctly in the UI method, and node display may become abnormal during refresh.
 
 **Incorrect Usage**
 ```ts
@@ -1454,7 +1502,7 @@ struct BackGround {
   build() {
     Column({ space: 10 }) {
       Text('1').width(100).height(50)
-      Text('2').width(100).height(50).background(this.myImages) // Directly transfer the @Builder method.
+      Text('2').width(100).height(50).background(this.myImages) // Directly pass the @Builder method.
       Text('3').width(100).height(50).background(this.myImages()) // Directly call the @Builder method.
 
       Text('4-1').width(100).height(50).fontColor(this.bg_Color)
@@ -1484,7 +1532,7 @@ struct BackGround {
 
 ### MutableBinding Not Passed to the Set Accessor in the \@Builder Method
 
-MutableBinding is used when the \@Builder method is defined. During construction, the set accessor is not passed to the MutableBinding parameter. Triggering the set accessor will cause a runtime error.
+When MutableBinding is used in the \@Builder method definition, if the set accessor is not provided during construction, triggering the set accessor will cause a runtime error.
 
 **Incorrect Usage**
 ```ts
@@ -1515,7 +1563,7 @@ struct MakeBindingTest {
     Column() {
       Text(`${this.globalTmp.str_value}`)
       builderWithTwoParams(UIUtils.makeBinding(() => this.globalTmp),
-        UIUtils.makeBinding<number>(() => this.num)) // No SetterCallback is passed when MutableBinding parameters are constructed.
+        UIUtils.makeBinding<number>(() => this.num)) // No SetterCallback is passed when constructing MutableBinding parameters.
       Button('Update Values').onClick(() => {
         this.globalTmp.str_value = 'Hello World 2025';
         this.num = 1;
@@ -1571,7 +1619,7 @@ struct MakeBindingTest {
 
 ### Changing the Input Parameters in the \@Builder Decorated Function
 
-If [MutableBinding](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20) is not used, the parameter value modified in the function decorated by \@Builder does not take effect and may cause a runtime error.
+If [MutableBinding](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20) is not used, modifying the parameter value within the function decorated by \@Builder will not take effect and may cause a runtime error.
 
 **Incorrect Usage**
 ```ts
@@ -1581,7 +1629,7 @@ function MyGlobalBuilder(value: string) {
     Text(`MyGlobalBuilder: ${value} `)
       .fontSize(16)
       .onClick(() => {
-        // Modify the parameter in the @Builder function that transfers simple types by value. The UI does not refresh, but no crash occurs.
+        // Modify the parameter in the @Builder function that passes simple types by value. The UI does not refresh, but no crash occurs.
         value = 'value change';
       })
   }.borderWidth(1)
@@ -1638,7 +1686,7 @@ struct Parent {
   }
 }
 ```
-Proper use of [MutableBinding](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20) helps developers modify parameter values in the function decorated with \@Builder.
+Proper use of [MutableBinding](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20) allows developers to modify parameter values within the function decorated with \@Builder.
 
 **Correct Usage**
 ```ts
@@ -1694,12 +1742,12 @@ struct Parent {
 
   build() {
     Column() {
-      // When MutableBinding is used, object literals cannot be passed. You need to extract the literal object as a state variable first.
+      // When MutableBinding is used, object literals cannot be passed directly. You need to first extract the literal object as a state variable.
       overBuilderMod(
         UIUtils.makeBinding<Temp>(
           () => this.objectOne,
           value => {
-            this.objectOne = value; // SetterCallback must be passed. Otherwise, a runtime error occurs when the function is triggered.
+            this.objectOne = value; // SetterCallback must be provided. Otherwise, a runtime error occurs when the function is triggered.
           }
         )
       )
@@ -1713,7 +1761,7 @@ struct Parent {
         UIUtils.makeBinding<string>(
           () => this.message1,
           value => {
-            this.message1 = value; // SetterCallback must be passed. Otherwise, a runtime error occurs when the function is triggered.
+            this.message1 = value; // SetterCallback must be provided. Otherwise, a runtime error occurs when the function is triggered.
           }
         )
       );
@@ -1724,7 +1772,7 @@ struct Parent {
 
 ### Executing the @Builder Function in the @Watch Function
 
-Executing the @Builder function in the @Watch function will cause UI refresh exceptions.
+Executing the @Builder function within a @Watch function will cause UI refresh exceptions.
 
 **Incorrect Usage**
 ```ts

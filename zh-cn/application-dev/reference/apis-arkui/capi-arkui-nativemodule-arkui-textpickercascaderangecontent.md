@@ -6,6 +6,10 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ARKUI_TextPickerCascadeRangeContent
+```
+
 ## 概述
 
 定义多列联动滑动数据选择器的结构体。

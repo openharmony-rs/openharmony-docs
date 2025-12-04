@@ -12,7 +12,7 @@ You can use distributed audio playback to transfer all audio streams or the spec
 
 ## How to Develop
 
-Before continuing audio playback on another device in the same network, you must obtain the device list on the network and listen for device connection state changes. For details, see [Audio Output Device Management](audio-output-device-management.md).
+Before continuing audio playback on another device in the same network, you must obtain the device list on the network and listen for device connection state changes. For details, see [Querying and Listening for Audio Output Devices](audio-output-device-management.md).
 
 When obtaining the device list on the network, you can specify **DeviceFlag** to filter out the required devices.
 

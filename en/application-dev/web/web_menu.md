@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 Menus are key components for user interaction. They help build a clear navigation system and display feature entries in a structured layout, enabling users to quickly find target content or perform operations. As an important hub for human-machine interaction, menus significantly improve the accessibility and user experience of **Web** components and are an indispensable part of application design. The following table lists the menu types of **Web** components. You can select a menu type for your application as required.
 |Menu Type|Target Element|Response Conditions|Customization Support|
 |----|----|----|----|
@@ -20,6 +20,7 @@ The text selection menu of the **Web** component is a context interaction compon
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
+
   @Entry
   @Component
   struct WebComponent {
@@ -44,8 +45,8 @@ The text selection menu of the **Web** component is a context interaction compon
         id: TextMenuItemId.of('customItem2'),
         icon: $r('app.media.startIcon')
       };
-      items.push(customItem1);// Add an item to the end of the item list.
-      items.unshift(customItem2);// Add an item to the beginning of the item list.
+      items.push(customItem1); // Add an item to the end of the item list.
+      items.unshift(customItem2); // Add an item to the beginning of the item list.
       items.push(customItem1);
       items.push(customItem1);
       items.push(customItem1);
@@ -57,22 +58,22 @@ The text selection menu of the **Web** component is a context interaction compon
     onMenuItemClick(menuItem: TextMenuItem, textRange: TextRange): boolean {
       if (menuItem.id.equals(TextMenuItemId.CUT)) {
         // Custom behavior
-        console.log("Intercept ID: CUT")
+        console.info("Intercept ID: CUT")
         return true; // Return true to not execute the system callback.
       } else if (menuItem.id.equals(TextMenuItemId.COPY)) {
         // Custom behavior
-        console.log("Not intercept ID: COPY")
+        console.info("Not intercept ID: COPY")
         return false; // Return false to execute the system callback.
       } else if (menuItem.id.equals(TextMenuItemId.of('customItem1'))) {
         // Custom behavior
-        console.log("Intercept ID: customItem1")
-        return true;// Custom menu item. If true is returned, the menu is not closed after being clicked. If false is returned, the menu is closed.
-      } else if (menuItem.id.equals(TextMenuItemId.of('customItem2'))){
+        console.info("Intercept ID: customItem1")
+        return true; // Custom menu item. If true is returned, the menu is not closed after being clicked. If false is returned, the menu is closed.
+      } else if (menuItem.id.equals(TextMenuItemId.of('customItem2'))) {
         // Custom behavior
-        console.log("Intercept ID: customItem2")
+        console.info("Intercept ID: customItem2")
         return true;
       }
-      return false;// Return the default value false.
+      return false; // Return the default value false.
     }
 
     @State EditMenuOptions: EditMenuOptions = { onCreateMenu: this.onCreateMenu, onMenuItemClick: this.onMenuItemClick }
@@ -546,132 +547,132 @@ HTML example:
 3. Save images in the application sandbox to the gallery by using **photoAccessHelper**.
 
   ```ts
-import { webview } from '@kit.ArkWeb';
-import { common } from '@kit.AbilityKit';
-import { fileIo as fs} from '@kit.CoreFileKit';
-import { systemDateTime } from '@kit.BasicServicesKit';
-import { http } from '@kit.NetworkKit';
-import { photoAccessHelper } from '@kit.MediaLibraryKit';
+  import { webview } from '@kit.ArkWeb';
+  import { common } from '@kit.AbilityKit';
+  import { fileIo as fs} from '@kit.CoreFileKit';
+  import { systemDateTime } from '@kit.BasicServicesKit';
+  import { http } from '@kit.NetworkKit';
+  import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
-@Entry
-@Component
-struct WebComponent {
-  saveButtonOptions: SaveButtonOptions = {
-    icon: SaveIconStyle.FULL_FILLED,
-    text: SaveDescription.SAVE_IMAGE,
-    buttonType: ButtonType.Capsule
-  }
-  controller: webview.WebviewController = new webview.WebviewController();
-  @State showMenu: boolean = false;
-  @State imgUrl: string = '';
-  context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
-  copyLocalPicToDir(rawfilePath: string, newFileName: string): string {
-    let srcFileDes = this.context.resourceManager.getRawFdSync(rawfilePath);
-    let dstPath = this.context.filesDir + "/" +newFileName;
-    let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-    let bufsize = 4096;
-    let buf = new ArrayBuffer(bufsize);
-    let off = 0, len = 0, readedLen = 0;
-    while (len = fs.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) {
-      readedLen += len;
-      fs.writeSync(dest.fd, buf, { offset: off, length: len });
-      off = off + len;
-      if ((srcFileDes.length - readedLen) < bufsize) {
-        bufsize = srcFileDes.length - readedLen;
-      }
+  @Entry
+  @Component
+  struct WebComponent {
+    saveButtonOptions: SaveButtonOptions = {
+      icon: SaveIconStyle.FULL_FILLED,
+      text: SaveDescription.SAVE_IMAGE,
+      buttonType: ButtonType.Capsule
     }
-    fs.close(dest.fd);
-    return dest.path;
-  }
+    controller: webview.WebviewController = new webview.WebviewController();
+    @State showMenu: boolean = false;
+    @State imgUrl: string = '';
+    context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-  async copyUrlPicToDir(picUrl: string, newFileName: string): Promise<string> {
-    let uri = '';
-    let httpRequest = http.createHttp();
-    let data: http.HttpResponse = await(httpRequest.request(picUrl) as Promise<http.HttpResponse>);
-    if (data?.responseCode == http.ResponseCode.OK) {
-      let dstPath = this.context.filesDir + "/" + newFileName;
+    copyLocalPicToDir(rawfilePath: string, newFileName: string): string {
+      let srcFileDes = this.context.resourceManager.getRawFdSync(rawfilePath);
+      let dstPath = this.context.filesDir + "/" +newFileName;
       let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-      let writeLen: number = fs.writeSync(dest.fd, data.result as ArrayBuffer);
-      uri = dest.path;
-    }
-    return uri;
-  }
-
-  @Builder
-  MenuBuilder() {
-    Column() {
-      Row() {
-        SaveButton(this.saveButtonOptions)
-          .onClick(async (event, result: SaveButtonOnClickResult) => {
-            if (result == SaveButtonOnClickResult.SUCCESS) {
-              try {
-                let context = this.context;
-                let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
-                let uri = '';
-                if (this.imgUrl?.includes('rawfile')) {
-                  let rawFileName: string = this.imgUrl.substring(this.imgUrl.lastIndexOf('/') + 1);
-                  uri = this.copyLocalPicToDir(rawFileName, 'copyFile.png');
-                } else if (this.imgUrl?.includes('http') || this.imgUrl?.includes('https')) {
-                  uri = await this.copyUrlPicToDir(this.imgUrl, `onlinePic${systemDateTime.getTime()}.png`);
-                }
-                let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createImageAssetRequest(context, uri);
-                await phAccessHelper.applyChanges(assetChangeRequest);
-              }
-              catch (err) {
-                console.error(`create asset failed with error: ${err.code}, ${err.message}`);
-              }
-            } else {
-              console.error(`SaveButtonOnClickResult create asset failed`);
-            }
-            this.showMenu = false;
-          })
+      let bufsize = 4096;
+      let buf = new ArrayBuffer(bufsize);
+      let off = 0, len = 0, readedLen = 0;
+      while (len = fs.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) {
+        readedLen += len;
+        fs.writeSync(dest.fd, buf, { offset: off, length: len });
+        off = off + len;
+        if ((srcFileDes.length - readedLen) < bufsize) {
+          bufsize = srcFileDes.length - readedLen;
+        }
       }
-      .margin({ top: 20, bottom: 20 })
-      .justifyContent(FlexAlign.Center)
+      fs.close(dest.fd);
+      return dest.path;
     }
-    .width('80')
-    .backgroundColor(Color.White)
-    .borderRadius(10)
-  }
 
-  build() {
-    Column() {
-      Web({src: $rawfile("index.html"), controller: this.controller})
-        .onContextMenuShow((event) => {
-          if (event) {
-            let hitValue = this.controller.getLastHitTest();
-            this.imgUrl = hitValue.extra;
-          }
-          this.showMenu = true;
-          return true;
-        })
-        .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
-        .fileAccess(true)
-        .javaScriptAccess(true)
-        .domStorageAccess(true)
+    async copyUrlPicToDir(picUrl: string, newFileName: string): Promise<string> {
+      let uri = '';
+      let httpRequest = http.createHttp();
+      let data: http.HttpResponse = await(httpRequest.request(picUrl) as Promise<http.HttpResponse>);
+      if (data?.responseCode == http.ResponseCode.OK) {
+        let dstPath = this.context.filesDir + "/" + newFileName;
+        let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+        let writeLen: number = fs.writeSync(dest.fd, data.result as ArrayBuffer);
+        uri = dest.path;
+      }
+      return uri;
+    }
+
+    @Builder
+    MenuBuilder() {
+      Column() {
+        Row() {
+          SaveButton(this.saveButtonOptions)
+            .onClick(async (event, result: SaveButtonOnClickResult) => {
+              if (result == SaveButtonOnClickResult.SUCCESS) {
+                try {
+                  let context = this.context;
+                  let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+                  let uri = '';
+                  if (this.imgUrl?.includes('rawfile')) {
+                    let rawFileName: string = this.imgUrl.substring(this.imgUrl.lastIndexOf('/') + 1);
+                    uri = this.copyLocalPicToDir(rawFileName, 'copyFile.png');
+                  } else if (this.imgUrl?.includes('http') || this.imgUrl?.includes('https')) {
+                    uri = await this.copyUrlPicToDir(this.imgUrl, `onlinePic${systemDateTime.getTime()}.png`);
+                  }
+                  let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createImageAssetRequest(context,  uri);
+                  await phAccessHelper.applyChanges(assetChangeRequest);
+                }
+                catch (err) {
+                  console.error(`create asset failed with error: ${err.code}, ${err.message}`);
+                }
+              } else {
+                console.error(`SaveButtonOnClickResult create asset failed`);
+              }
+              this.showMenu = false;
+            })
+        }
+        .margin({ top: 20, bottom: 20 })
+        .justifyContent(FlexAlign.Center)
+      }
+      .width('80')
+      .backgroundColor(Color.White)
+      .borderRadius(10)
+    }
+
+    build() {
+      Column() {
+        Web({src: $rawfile("index.html"), controller: this.controller})
+          .onContextMenuShow((event) => {
+            if (event) {
+              let hitValue = this.controller.getLastHitTest();
+              this.imgUrl = hitValue.extra;
+            }
+            this.showMenu = true;
+            return true;
+          })
+          .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
+          .fileAccess(true)
+          .javaScriptAccess(true)
+          .domStorageAccess(true)
+      }
     }
   }
-}
   ```
   ```html
-<!--index.html-->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>SavePicture</title>
-</head>
-<body>
-<h1>SavePicture</h1>
-<br>
-<br>
-<br>
-<br>
-<br>
-<!--startIcon.png is an image in the same directory as the html file-->
-<img src="./startIcon.png">
-</body>
-</html>
+  <!--index.html-->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>SavePicture</title>
+  </head>
+  <body>
+  <h1>SavePicture</h1>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <!--startIcon.png is an image in the same directory as the html file-->
+  <img src="./startIcon.png">
+  </body>
+  </html>
   ```
 ![emptyEditMenuOption](./figures/web-menu-savePic.gif)
 
@@ -680,90 +681,90 @@ The [editMenuOptions](../reference/apis-arkweb/arkts-basic-components-web-attrib
 1. Create a **SelectClass** class and use [javaScriptProxy](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy) to register the **SelectClass** object with the **Web** component.
 2. Register a selection change listener on the HTML side. When the selection changes, use the **SelectClass** object to set the selection to the ArkTS side.
   ```ts
-import { webview } from '@kit.ArkWeb';
-let selectText = '';
+  import { webview } from '@kit.ArkWeb';
+  let selectText = '';
 
-class SelectClass {
-  constructor() {
-  }
+  class SelectClass {
+    constructor() {
+    }
 
-  setSelectText(param: String) {
-    selectText = param.toString();
-  }
-}
-
-@Entry
-@Component
-struct WebComponent {
-  webController: webview.WebviewController = new webview.WebviewController();
-  @State selectObj: SelectClass = new SelectClass();
-  @State textStr: string = '';
-
-  build() {
-    Column() {
-      Web({ src: $rawfile('index.html'), controller: this.webController})
-        .javaScriptProxy({
-          object: this.selectObj,
-          name: 'selectObjName',
-          methodList: ['setSelectText'],
-          controller: this.webController
-        })
-        .height('40%')
-      Text('Click here to get the selected text.')
-        .fontSize(20)
-        .onClick(() => {
-          this.textStr = selectText;
-        })
-        .height('10%')
-      Text('Selected text is ' + this.textStr)
-        .fontSize(20)
-        .height('10%')
+    setSelectText(param: String) {
+      selectText = param.toString();
     }
   }
-}
+
+  @Entry
+  @Component
+  struct WebComponent {
+    webController: webview.WebviewController = new webview.WebviewController();
+    @State selectObj: SelectClass = new SelectClass();
+    @State textStr: string = '';
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.webController})
+          .javaScriptProxy({
+            object: this.selectObj,
+            name: 'selectObjName',
+            methodList: ['setSelectText'],
+            controller: this.webController
+          })
+          .height('40%')
+        Text('Click here to get the selected text.')
+          .fontSize(20)
+          .onClick(() => {
+            this.textStr = selectText;
+          })
+          .height('10%')
+        Text('Selected text is ' + this.textStr)
+          .fontSize(20)
+          .height('10%')
+      }
+    }
+  }
   ```
   ```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Test Get Select</title>
-    <style>
-        body {
-          margin: 40px;
-          background-color: #f4f4f4;
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Test Get Select</title>
+      <style>
+          body {
+            margin: 40px;
+            background-color: #f4f4f4;
+          }
+          .edit-container {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: auto;
+          }
+          textarea {
+            width: 100%;
+            height: 400px;
+            font-size: 16px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+          }
+      </style>
+  </head>
+  <body>
+  <div class="edit-container">
+      <textarea placeholder="Enter the text here and select it by long pressing."></textarea>
+  </div>
+  <script>
+      document.addEventListener('selectionchange', () => {
+        var selection = window.getSelection();
+        if(selection.rangeCount > 0) {
+          var selectedText = selection.toString();
+          selectObjName.setSelectText(selectedText);
         }
-        .edit-container {
-          padding: 20px;
-          background-color: #fff;
-          border-radius: 8px;
-          box-shadow: 0 0 10px rgba(0,0,0,0.1);
-          margin: auto;
-        }
-        textarea {
-          width: 100%;
-          height: 400px;
-          font-size: 16px;
-          padding: 10px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-    </style>
-</head>
-<body>
-<div class="edit-container">
-    <textarea placeholder="Enter the text here and select it by long pressing."></textarea>
-</div>
-<script>
-    document.addEventListener('selectionchange', () => {
-      var selection = window.getSelection();
-      if(selection.rangeCount > 0) {
-        var selectedText = selection.toString();
-        selectObjName.setSelectText(selectedText);
-      }
-    })
-</script>
-</body>
-</html>
+      })
+  </script>
+  </body>
+  </html>
   ```
 ![web-menu-get-select](./figures/web-menu-get-select.gif)
 
@@ -773,136 +774,136 @@ In QR code redirection or payment scenarios, you can implement the context menu 
 2. Obtain the image URL in **onContextMenuShow** and save the image to the application sandbox by calling **copyLocalPicToDir** or **copyUrlPicToDir**.
 3. Use **detectBarcode.decode** to parse the image stored in the sandbox and obtain the result.
   ```ts
-import { webview } from '@kit.ArkWeb';
-import { common } from '@kit.AbilityKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
-import { systemDateTime } from '@kit.BasicServicesKit';
-import { http } from '@kit.NetworkKit';
-import { scanCore, scanBarcode, detectBarcode } from '@kit.ScanKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+  import { webview } from '@kit.ArkWeb';
+  import { common } from '@kit.AbilityKit';
+  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { systemDateTime } from '@kit.BasicServicesKit';
+  import { http } from '@kit.NetworkKit';
+  import { scanCore, scanBarcode, detectBarcode } from '@kit.ScanKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct WebComponent {
-  saveButtonOptions: SaveButtonOptions = {
-    icon: SaveIconStyle.FULL_FILLED,
-    text: SaveDescription.SAVE_IMAGE,
-    buttonType: ButtonType.Capsule
-  }
-  controller: webview.WebviewController = new webview.WebviewController();
-  private result: WebContextMenuResult | undefined = undefined;
-  @State showMenu: boolean = false;
-  @State imgUrl: string = '';
-  @State decodeResult: string = '';
-  context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  @Entry
+  @Component
+  struct WebComponent {
+    saveButtonOptions: SaveButtonOptions = {
+      icon: SaveIconStyle.FULL_FILLED,
+      text: SaveDescription.SAVE_IMAGE,
+      buttonType: ButtonType.Capsule
+    }
+    controller: webview.WebviewController = new webview.WebviewController();
+    private result: WebContextMenuResult | undefined = undefined;
+    @State showMenu: boolean = false;
+    @State imgUrl: string = '';
+    @State decodeResult: string = '';
+    context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-  copyLocalPicToDir(rawfilePath: string, newFileName: string): string {
-    let srcFileDes = this.context.resourceManager.getRawFdSync(rawfilePath);
-    let dstPath = this.context.filesDir + "/" +newFileName;
-    let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-    let bufsize = 4096;
-    let buf = new ArrayBuffer(bufsize);
-    let off = 0, len = 0, readedLen = 0;
-    while (len = fs.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) {
-      readedLen += len;
-      fs.writeSync(dest.fd, buf, { offset: off, length: len });
-      off = off + len;
-      if ((srcFileDes.length - readedLen) < bufsize) {
-        bufsize = srcFileDes.length - readedLen;
+    copyLocalPicToDir(rawfilePath: string, newFileName: string): string {
+      let srcFileDes = this.context.resourceManager.getRawFdSync(rawfilePath);
+      let dstPath = this.context.filesDir + "/" +newFileName;
+      let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+      let bufsize = 4096;
+      let buf = new ArrayBuffer(bufsize);
+      let off = 0, len = 0, readedLen = 0;
+      while (len = fs.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) {
+        readedLen += len;
+        fs.writeSync(dest.fd, buf, { offset: off, length: len });
+        off = off + len;
+        if ((srcFileDes.length - readedLen) < bufsize) {
+          bufsize = srcFileDes.length - readedLen;
+        }
+      }
+      fs.close(dest.fd);
+      return dest.path;
+    }
+
+    async copyUrlPicToDir(picUrl: string, newFileName: string): Promise<string> {
+      let uri = '';
+      let httpRequest = http.createHttp();
+      let data: http.HttpResponse = await(httpRequest.request(picUrl) as Promise<http.HttpResponse>);
+      if (data?.responseCode == http.ResponseCode.OK) {
+        let dstPath = this.context.filesDir + "/" + newFileName;
+        let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+        let writeLen: number = fs.writeSync(dest.fd, data.result as ArrayBuffer);
+        uri = dest.path;
+      }
+      return uri;
+    }
+
+    @Builder
+    MenuBuilder() {
+      Menu() {
+        MenuItem({
+          content: "Scan QR Code",
+        })
+          .width(200)
+          .height(50)
+          .onClick(async () => {
+            try {
+              let uri = '';
+              if (this.imgUrl?.includes('rawfile')) {
+                let rawFileName: string = this.imgUrl.substring(this.imgUrl.lastIndexOf('/') + 1);
+                uri = this.copyLocalPicToDir(rawFileName, 'copyFile.png');
+              } else if (this.imgUrl?.includes('http') || this.imgUrl?.includes('https')) {
+                uri = await this.copyUrlPicToDir(this.imgUrl, `onlinePic${systemDateTime.getTime()}.png`);
+              }
+              let options: scanBarcode.ScanOptions = { scanTypes: [scanCore.ScanType.ALL], enableMultiMode: true, enableAlbum: true }
+              let inputImage: detectBarcode.InputImage = { uri: uri };
+              try {
+                // Call the image recognition API.
+                detectBarcode.decode(inputImage, options, (error: BusinessError, result: Array<scanBarcode.ScanResult>) => {
+                  if (error && error.code) {
+                    console.error(`create asset failed with error: ${error.code}, ${error.message}`);
+                    return;
+                  }
+                this.decodeResult = JSON.stringify(result);
+                });
+              } catch (err) {
+                console.error(`Failed to detect Barcode. Code: ${err.code}, ${err.message}`);
+              }
+            }
+            catch (err) {
+              console.error(`create asset failed with error: ${err.code}, ${err.message}`);
+            }
+          })
       }
     }
-    fs.close(dest.fd);
-    return dest.path;
-  }
 
-  async copyUrlPicToDir(picUrl: string, newFileName: string): Promise<string> {
-    let uri = '';
-    let httpRequest = http.createHttp();
-    let data: http.HttpResponse = await(httpRequest.request(picUrl) as Promise<http.HttpResponse>);
-    if (data?.responseCode == http.ResponseCode.OK) {
-      let dstPath = this.context.filesDir + "/" + newFileName;
-      let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-      let writeLen: number = fs.writeSync(dest.fd, data.result as ArrayBuffer);
-      uri = dest.path;
-    }
-    return uri;
-  }
-
-  @Builder
-  MenuBuilder() {
-    Menu() {
-      MenuItem({
-        content: "Scan QR Code",
-      })
-        .width(200)
-        .height(50)
-        .onClick(async () => {
-          try {
-            let uri = '';
-            if (this.imgUrl?.includes('rawfile')) {
-              let rawFileName: string = this.imgUrl.substring(this.imgUrl.lastIndexOf('/') + 1);
-              uri = this.copyLocalPicToDir(rawFileName, 'copyFile.png');
-            } else if (this.imgUrl?.includes('http') || this.imgUrl?.includes('https')) {
-              uri = await this.copyUrlPicToDir(this.imgUrl, `onlinePic${systemDateTime.getTime()}.png`);
+    build() {
+      Column() {
+        Web({src: $rawfile("index.html"), controller: this.controller})
+          .onContextMenuShow((event) => {
+            if (event) {
+              let hitValue = this.controller.getLastHitTest();
+              this.imgUrl = hitValue.extra;
             }
-            let options: scanBarcode.ScanOptions = { scanTypes: [scanCore.ScanType.ALL], enableMultiMode: true, enableAlbum: true }
-            let inputImage: detectBarcode.InputImage = { uri: uri };
-            try {
-              // Call the image recognition API.
-              detectBarcode.decode(inputImage, options, (error: BusinessError, result: Array<scanBarcode.ScanResult>) => {
-                if (error && error.code) {
-                  console.error(`create asset failed with error: ${error.code}, ${error.message}`);
-                  return;
-                }
-              this.decodeResult = JSON.stringify(result);
-              });
-            } catch (err) {
-              console.error(`Failed to detect Barcode. Code: ${err.code}, ${err.message}`);
-            }
-          }
-          catch (err) {
-            console.error(`create asset failed with error: ${err.code}, ${err.message}`);
-          }
-        })
+            this.showMenu = true;
+            return true;
+          })
+          .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
+          .fileAccess(true)
+          .javaScriptAccess(true)
+          .domStorageAccess(true)
+          .height('40%')
+        Text('Decode result is ' + this.decodeResult)
+          .fontSize(20)
+          .height('10%')
+      }
     }
   }
-
-  build() {
-    Column() {
-      Web({src: $rawfile("index.html"), controller: this.controller})
-        .onContextMenuShow((event) => {
-          if (event) {
-            let hitValue = this.controller.getLastHitTest();
-            this.imgUrl = hitValue.extra;
-          }
-          this.showMenu = true;
-          return true;
-        })
-        .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
-        .fileAccess(true)
-        .javaScriptAccess(true)
-        .domStorageAccess(true)
-        .height('40%')
-      Text('Decode result is ' + this.decodeResult)
-        .fontSize(20)
-        .height('10%')
-    }
-  }
-}
   ```
   ```html
-<!--index.html-->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>test QR code</title>
-</head>
-<body>
-<h1>Long press and click to scan the QR code</h1>
-<!--img.png is a QR code image-->
-<img src="img.png" >
-</body>
-</html>
+  <!--index.html-->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>test QR code</title>
+  </head>
+  <body>
+  <h1>Long press and click to scan the QR code</h1>
+  <!--img.png is a QR code image-->
+  <img src="img.png" >
+  </body>
+  </html>
   ```
 ![web-menu-scan-qr-code](./figures/web-menu-scan-qrcode.gif)
 
@@ -910,47 +911,47 @@ struct WebComponent {
 ### How do I disable the menu triggered by a long press?
 You can use the [editMenuOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#editmenuoptions12) API to filter out all default menus. Then, default menus are not displayed if there is no menu item.
   ```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
 
-  onCreateMenu(menuItems: Array<TextMenuItem>): Array<TextMenuItem> {
-    let items = menuItems.filter((menuItem) => {
-      // Filter the menu items as required.
-      return false;
-    });
-    return items;
-  }
+    onCreateMenu(menuItems: Array<TextMenuItem>): Array<TextMenuItem> {
+      let items = menuItems.filter((menuItem) => {
+        // Filter the menu items as required.
+        return false;
+      });
+      return items;
+    }
 
-  onMenuItemClick(menuItem: TextMenuItem, textRange: TextRange): boolean {
-    return false;// Return the default value false.
-  }
+    onMenuItemClick(menuItem: TextMenuItem, textRange: TextRange): boolean {
+      return false;// Return the default value false.
+    }
 
-  @State EditMenuOptions: EditMenuOptions = { onCreateMenu: this.onCreateMenu, onMenuItemClick: this.onMenuItemClick }
+    @State EditMenuOptions: EditMenuOptions = { onCreateMenu: this.onCreateMenu, onMenuItemClick: this.onMenuItemClick }
 
-  build() {
-    Column() {
-      Web({ src: $rawfile("index.html"), controller: this.controller })
-        .editMenuOptions(this.EditMenuOptions)
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .editMenuOptions(this.EditMenuOptions)
+      }
     }
   }
-}
   ```
   ```html
-<!--index.html-->
-<!DOCTYPE html>
-<html>
-  <head>
-      <title>Test Web Page</title>
-  </head>
-  <body>
-    <h1>editMenuOptions Demo</h1>
-    <span>edit menu options</span>
-  </body>
-</html>
+  <!--index.html-->
+  <!DOCTYPE html>
+  <html>
+    <head>
+        <title>Test Web Page</title>
+    </head>
+    <body>
+      <h1>editMenuOptions Demo</h1>
+      <span>edit menu options</span>
+    </body>
+  </html>
   ```
 ![emptyEditMenuOption](./figures/emptyEditMenuOption.gif)
 

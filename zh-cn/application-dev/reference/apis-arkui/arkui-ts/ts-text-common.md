@@ -165,6 +165,7 @@ getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: Rect
 | address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 导航前往。对选中的地址提供跳转服务，拉起地图应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建日程。对选中的日期和时间提供跳转服务，拉起新建日程页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的文本提供AI问询能力。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| autoFill<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 自动填充。提供自动填充内容能力，仅支持[Search](ts-basic-components-search.md)/[TextInput](ts-basic-components-textinput.md)/[TextArea](ts-basic-components-textarea.md)/[RichEditor](ts-basic-components-richeditor.md)。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 ### of
 
 static of(id: ResourceStr): TextMenuItemId
@@ -438,18 +439,6 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 | decoration<sup>12+</sup>  | [DecorationStyleInterface](ts-universal-styled-string.md#decorationstyleinterface)| 否 | 是   | 设置文本识别成功后的实体装饰线样式。<br/>默认值：<br/>{<br/>&nbsp;type:&nbsp;TextDecorationType.Underline,<br/>&nbsp;color:&nbsp;与实体颜色一致,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>}<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | enablePreviewMenu<sup>20+</sup>   | boolean | 否 | 是   | 设置是否开启文本识别长按显示预览菜单。true表示开启，false表示未开启。<br/>默认值：false<br/>当[copyOptions](ts-basic-components-richeditor.md#copyoptions)设置为None时，若enablePreviewMenu设置为true，长按AI实体也不能显示预览菜单。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
-## SelectDataDetectorConfig<sup>22+</sup>对象说明
-
-文本选择分词识别配置项。
-
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称 | 类型  | 只读 | 可选 | 说明  |
-| ------ | -------- | ---- | ---- | ------------------------------------------- |
-| types   | [TextDataDetectorType](ts-text-common.md#textdatadetectortype11枚举说明)[] \| undefined | 否 | 否  | 设置文本识别的实体类型。设置types为undefined或者[]时，识别所有类型的实体，否则只识别指定类型的实体。 |
-
 ## PreviewText<sup>12+</sup>
 
 预上屏信息。
@@ -465,7 +454,7 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 ## FontSettingOptions<sup>12+</sup>对象说明
 
-字体配置项，比如通过设置应用内组件的字体粗细，进行可变字重调节。
+字体配置项。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -475,7 +464,7 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 | 名称     | 类型                                             | 只读 | 可选 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
-| enableVariableFontWeight | boolean | 否 | 是  | 是否支持可变字重调节。<br/>默认值：false<br/>值为true，表示支持字重调节，值为false，表示不支持字重调节。 |
+| enableVariableFontWeight | boolean | 否 | 是  | 是否启用可变字重调节。字体配置项作为[fontWeight](./ts-basic-components-text.md#fontweight12)接口的入参，fontWeight接口中weight取值为[100, 900]内非整百数值时，enableVariableFontWeight用于设置weight的值是否生效。<br/>默认值：false <br/>true：启用可变字重调节。此时如果weight取值为[100, 900]范围内任意整数，字重取值为weight。<br/>false：禁用可变字重调节。此时如果weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。|
 
 ## OnDidChangeCallback<sup>12+</sup>
 
@@ -532,8 +521,8 @@ type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => vo
 | 名称 | 值 | 说明 |
 | ------- | ---- | ------------------- |
 | NONE | 0 | 默认状态无效。|
-| WORDS | 1 | 按单词自动大小写。|
-| SENTENCES | 2 | 按句子自动大小写。|
+| WORDS | 1 | 按单词自动大小写，即输入单词的首个字符大写，其他字符小写。|
+| SENTENCES | 2 | 按句子自动大小写，即输入句子的首个字符大写，其他字符小写。|
 | ALL_CHARACTERS | 3 | 按全字符自动大小写。|
 
 ## TextBaseController<sup>12+</sup>
@@ -658,7 +647,7 @@ getCaretOffset(): number
 
 setCaretOffset(offset: number): boolean
 
-设置光标位置。
+设置光标偏移位置。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -995,6 +984,8 @@ constructor(color: ResourceColor)
 
 输入控件绑定输入法客户端类型。
 
+### 属性
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1002,6 +993,22 @@ constructor(color: ResourceColor)
 | 名称    | 类型                                                    | 只读 | 可选 | 说明                                                    |
 | ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | nodeId  | number | 否  | 否 | 当前输入控件的组件UniqueId。取值范围大于等于0。 |
+
+### setExtraConfig<sup>22+</sup>
+
+setExtraConfig(config: InputMethodExtraConfig): void
+
+设置输入法扩展信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明               |
+| ------ | ------------------------------------------------------------ | ---- | ------------------ |
+| config  | [InputMethodExtraConfig](#inputmethodextraconfig22) | 是   | 输入法扩展信息。 |
 
 ## MaxLinesOptions<sup>20+</sup>对象说明
 
@@ -1164,3 +1171,33 @@ constructor(options?: NumericTextTransitionOptions)
 | --------------------- | -------  | ------------------- |
 | LTR                   | 0  | 从左到右。 |
 | RTL                | 1  | 从右到左。 |
+
+## InputMethodExtraConfig<sup>22+</sup>
+
+type InputMethodExtraConfig = InputMethodExtraConfig
+
+输入法扩展信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型                              | 说明   |
+| --------------------------------- | --------------------------------- |
+| [InputMethodExtraConfig](../../apis-ime-kit/js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 输入法扩展信息。 |
+
+## AccessibilitySpanOptions<sup>23+</sup>对象说明
+
+Span的无障碍朗读功能属性。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | ---- | ------------------ | ------------------ |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍文本属性。组件无文本属性时，屏幕朗读选中此组件不会播报。设置该属性后可为此类组件设置无障碍文本，屏幕朗读时将播报该文本，帮助使用者明确选中了什么组件。<br>默认值：''<br>值为undefined时，按默认值处理。 |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍说明属性。此描述用于向用户详细解释当前组件，开发人员应提供详尽的文本说明，以协助用户理解即将执行的操作及其后果，尤其当这些后果无法仅从组件的属性和无障碍文本中直接获取时。<br>默认值：''<br>值为undefined时，按默认值处理。 |
+| accessibilityLevel | string | 否 | 是 | 无障碍重要性。用于设置组件是否可被无障碍辅助服务识别。<br>支持取值如下：<br>"auto"：当前组件由无障碍辅助服务和ArkUl进行综合判断组件是否可被无障碍辅助服务所识别。<br>"yes"：当前组件可被无障碍辅助服务识别。<br>"no"：当前组件不可被无障碍辅助服务识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"<br>值为undefined时，按默认值处理。<br/>**说明：**<br/>当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：<br/>1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。<br/>2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。<br/>3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。 |

@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioManager OH_AudioManager
+```
+
 ## 概述
 
 声明音频管理器。用于管理音频管理相关功能。

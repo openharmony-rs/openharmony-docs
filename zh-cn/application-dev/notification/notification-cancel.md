@@ -26,8 +26,10 @@
 本文以取消`文本类型通知`为例进行说明，其他类型通知取消操作与此类似。
 
 1. 导入模块。
+
+   <!-- @[cancel_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/CancelNotification.ets) -->
    
-   ```ts
+   ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -42,13 +44,16 @@
 
 3. 取消通知。
 
-   ```ts
-    // 当拉起应用到前台，查看消息后，调用该接口取消通知。
-    notificationManager.cancel(1, (err: BusinessError) => {
-      if (err) {
-        hilog.error(DOMAIN_NUMBER, TAG, `Failed to cancel notification. Code is ${err.code}, message is ${err.message}`);
-        return;
-      }
-      hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in canceling notification.');
-    });
+   <!-- @[cancel_notification_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/CancelNotification.ets) -->
+   
+   ``` TypeScript
+   // 当拉起应用到前台，查看消息后，调用该接口取消通知。
+   notificationManager.cancel(1, (err: BusinessError) => {
+     if (err) {
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Failed to cancel notification. Code is ${err.code}, message is ${err.message}`);
+       return;
+     }
+     hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in canceling notification.');
+   });
    ```

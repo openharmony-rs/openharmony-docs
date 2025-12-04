@@ -7,6 +7,10 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
+```
+typedef struct {...} NativeChildProcess_Args
+```
+
 ## 概述
 
 传递给子进程的参数。

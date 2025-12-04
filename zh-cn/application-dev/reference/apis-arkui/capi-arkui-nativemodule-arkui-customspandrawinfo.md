@@ -6,6 +6,10 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_CustomSpanDrawInfo ArkUI_CustomSpanDrawInfo
+```
+
 ## 概述
 
 自定义段落组件的绘制信息。

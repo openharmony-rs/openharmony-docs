@@ -1,4 +1,4 @@
-# Working with Class Using JSVM-API
+# Working with Classes Using JSVM-API
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou; @string_sz-->

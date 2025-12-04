@@ -267,7 +267,7 @@ export default class EntryAbility extends UIAbility {
 
 destroyWindow(callback: AsyncCallback&lt;void&gt;): void
 
-销毁当前窗口，使用callback异步回调，仅支持系统窗口及应用子窗口。
+销毁当前窗口，使用callback异步回调，支持系统窗口及应用子窗口，全局悬浮窗和模态窗。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -306,7 +306,7 @@ windowClass.destroyWindow((err) => {
 
 destroyWindow(): Promise&lt;void&gt;
 
-销毁当前窗口，使用Promise异步回调，仅支持系统窗口及应用子窗口。
+销毁当前窗口，使用Promise异步回调，支持系统窗口及应用子窗口，全局悬浮窗和模态窗。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -464,11 +464,11 @@ moveWindowToAsync(x: number, y: number): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）下支持该操作。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
 >
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于父窗口移动。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于主窗口移动。
 >
-> - 该方法对非自由窗口状态下的主窗口无效。
+> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -522,15 +522,15 @@ try {
 
 moveWindowToAsync(x: number, y: number, moveConfiguration?: MoveConfiguration): Promise&lt;void&gt;
 
-移动窗口位置，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
+移动窗口位置，支持配置moveConfiguration参数指定窗口移动的目标屏幕ID，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
 > **说明：**
 >
-> - 仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）下支持该操作。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
 >
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于父窗口移动。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于主窗口移动。
 >
-> - 该方法对非自由窗口状态下的主窗口无效。
+> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -593,9 +593,9 @@ moveWindowToGlobal(x: number, y: number): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）下支持该操作。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
 >
-> - 该方法对非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下的主窗口无效。
+> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
 
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -650,13 +650,13 @@ try {
 
 moveWindowToGlobal(x: number, y: number, moveConfiguration?: MoveConfiguration): Promise&lt;void&gt;
 
-基于屏幕坐标移动窗口位置，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
+基于屏幕坐标移动窗口位置，支持配置moveConfiguration参数指定窗口移动的目标屏幕ID，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
 > **说明：**
 >
-> - 仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）下支持该操作。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
 >
-> - 该方法对非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下的主窗口无效。
+> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -719,9 +719,9 @@ moveWindowToGlobalDisplay(x: number, y: number): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）下支持该操作。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
 >
-> - 该方法对非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下的主窗口无效。
+> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -861,19 +861,23 @@ try {
 
 resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
-改变当前窗口大小，使用callback异步回调。
+基于窗口左上角顶点改变当前窗口大小，使用callback异步回调。
+
+调用成功即返回，该接口返回后无法立即获取最终生效结果，如需立即获取，建议使用接口[resizeAsync()](#resizeasync12)。
 
 窗口存在大小限制[WindowLimits](arkts-apis-window-i.md#windowlimits11)，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
 
-调用该接口设置的宽度与高度受到此约束限制，规则：
-若所设置的窗口宽/高尺寸小于窗口最小宽/高限值，则窗口最小宽/高限值生效；
-若所设置的窗口宽/高尺寸大于窗口最大宽/高限值，则窗口最大宽/高限值生效。
+调用该接口设置的宽度与高度受到此限制约束，规则：
+
+若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效，系统窗口和全局悬浮窗设置最小值不受窗口最小宽/高限制值限制；
+
+若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
 > **说明：**
 >
-> - 仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）下支持该操作。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300002。
 >
-> - 该方法对非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下的主窗口无效。
+> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -883,8 +887,8 @@ resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | ------------------------ |
-| width    | number                    | 是 | 目标窗口的宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
-| height   | number                    | 是 | 目标窗口的高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
+| width    | number                    | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
+| height   | number                    | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。                |
 
 **错误码：**
@@ -920,19 +924,23 @@ try {
 
 resize(width: number, height: number): Promise&lt;void&gt;
 
-改变当前窗口大小，使用Promise异步回调。调用成功即返回，该接口返回后无法立即获取最终生效结果，如需立即获取，建议使用接口[resizeAsync()](#resizeasync12)。
+基于窗口左上角顶点改变当前窗口大小，使用Promise异步回调。
+
+调用成功即返回，该接口返回后无法立即获取最终生效结果，如需立即获取，建议使用接口[resizeAsync()](#resizeasync12)。
 
 窗口存在大小限制[WindowLimits](arkts-apis-window-i.md#windowlimits11)，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
 
-调用该接口设置的宽度与高度受到此约束限制，规则：
-若所设置的窗口宽/高尺寸小于窗口最小宽/高限值，则窗口最小宽/高限值生效；
-若所设置的窗口宽/高尺寸大于窗口最大宽/高限值，则窗口最大宽/高限值生效。
+调用该接口设置的宽度与高度受到此限制约束，规则：
+
+若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效，系统窗口和全局悬浮窗设置最小值不受窗口最小宽/高限制值限制；
+
+若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
 > **说明：**
 >
-> - 仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）下支持该操作。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300002。
 >
-> - 该方法对非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下的主窗口无效。
+> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -942,8 +950,8 @@ resize(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | -- | ------------------------ |
-| width  | number | 是 | 目标窗口的宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
-| height | number | 是 | 目标窗口的高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
+| width  | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
+| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
 
 **返回值：**
 
@@ -982,19 +990,23 @@ try {
 
 resizeAsync(width: number, height: number): Promise&lt;void&gt;
 
-改变当前窗口大小，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
+基于窗口左上角顶点改变当前窗口大小，使用Promise异步回调。
+
+调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
 窗口存在大小限制[WindowLimits](arkts-apis-window-i.md#windowlimits11)，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
 
-调用该接口设置的宽度与高度受到此约束限制，规则：
-若所设置的窗口宽/高尺寸小于窗口最小宽/高限值，则窗口最小宽/高限值生效；
-若所设置的窗口宽/高尺寸大于窗口最大宽/高限值，则窗口最大宽/高限值生效。
+调用该接口设置的宽度与高度受到此限制约束，规则：
+
+若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效，系统窗口和全局悬浮窗设置最小值不受窗口最小宽/高限制值限制；
+
+若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
 > **说明：**
 >
-> - 仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）下支持该操作。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
 >
-> - 该方法对非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下的主窗口无效。
+> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1004,8 +1016,8 @@ resizeAsync(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | -- | ------------------------ |
-| width  | number | 是 | 目标窗口的宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
-| height | number | 是 | 目标窗口的高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
+| width  | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
+| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
 
 **返回值：**
 
@@ -1048,7 +1060,7 @@ try {
 
 getWindowProperties(): WindowProperties
 
-获取当前窗口的属性，返回WindowProperties。
+获取当前窗口的属性。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1552,7 +1564,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 
+**设备行为差异：**
 
 API version 14之前，该接口在所有设备中可正常调用。
 
@@ -1625,7 +1637,7 @@ setImmersiveModeEnabledState(enabled: boolean): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 
+**设备行为差异：**
 
 API version 14之前，该接口在所有设备中可正常调用。
 
@@ -1700,7 +1712,7 @@ try {
 
 isImmersiveLayout(): boolean
 
-查询当前窗口是否处于沉浸式布局状态。 
+查询当前窗口是否处于沉浸式布局状态。
 
 **系统能力**：SystemCapability.Window.SessionManager
 
@@ -1757,7 +1769,7 @@ setWindowDelayRaiseOnDrag(isEnabled: boolean): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported.function setWindowDelayRaiseOnDrag can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -1854,7 +1866,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**设备行为差异：** 
+**设备行为差异：**
 
 API version 12之前，该接口在所有设备中可正常调用。
 
@@ -1930,7 +1942,7 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 
+**设备行为差异：**
 
 API version 12之前，该接口在所有设备中可正常调用。
 
@@ -2396,7 +2408,7 @@ export default class EntryAbility extends UIAbility {
 
 getPreferredOrientation(): Orientation
 
-主窗口调用，获取窗口的显示方向属性。
+获取窗口的显示方向属性。未指定方向时，返回window.Orientation.UNSPECIFIED。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -4209,6 +4221,87 @@ try {
 }
 ```
 
+## on('frameMetricsMeasured')<sup>22+</sup>
+
+on(type: 'frameMetricsMeasured', callback: Callback&lt;FrameMetrics&gt;): void
+
+开启窗口帧率指标变化事件的监听。该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+
+应用注册帧率变化监听后，只有当客户端UI内容发生重绘时（如页面切换、和可响应组件交互、设置背景色和透明度等），才会触发注册的回调。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| type     | string                         | 是   | 监听事件类型，固定为'frameMetricsMeasured'，即窗口帧率指标变化事件。 |
+| callback | Callback&lt;[FrameMetrics](arkts-apis-window-i.md#framemetrics22)&gt; | 是  | 窗口帧率指标变化时的回调函数。详情见[帧率指标](arkts-apis-window-i.md#framemetrics22)。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+
+**示例：**
+
+```ts
+try {
+  let callback: Callback<window.FrameMetrics> = (data: window.FrameMetrics) => {
+    console.info(`Window frame metrics changed: ${JSON.stringify(data)}`);
+  };
+  windowClass.on('frameMetricsMeasured', callback);
+} catch (exception) {
+  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## off('frameMetricsMeasured')<sup>22+</sup>
+
+off(type: 'frameMetricsMeasured', callback?: Callback&lt;FrameMetrics&gt;): void
+
+关闭窗口帧率指标变化事件的监听。该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| type     | string                         | 是   | 监听事件类型，固定为'frameMetricsMeasured'，即窗口帧率指标变化事件。 |
+| callback | Callback&lt;[FrameMetrics](arkts-apis-window-i.md#framemetrics22)&gt; | 否  | 若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口帧率指标变化的监听。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+
+**示例：**
+
+```ts
+try {
+  let callback: Callback<window.FrameMetrics> = (data: window.FrameMetrics) => {
+    console.info(`Window frame metrics changed: ${JSON.stringify(data)}`);
+  };
+  // 通过on接口开启监听
+  windowClass.on('frameMetricsMeasured', callback);
+  // 关闭指定callback的监听
+  windowClass.off('frameMetricsMeasured', callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.off('frameMetricsMeasured');
+} catch (exception) {
+  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## on('systemDensityChange')<sup>15+</sup>
 
 on(type: 'systemDensityChange', callback: Callback&lt;number&gt;): void
@@ -5847,6 +5940,8 @@ setWindowFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): v
 
 设置窗口是否具有获得焦点的能力，使用callback异步回调。
 
+从API version 22开始，调用[createVirtualScreen](js-apis-display.md#displaycreatevirtualscreen16)接口创建虚拟屏，并设置supportsFocus配置项为false时，位于该虚拟屏的窗口无法调用该接口修改窗口的可获焦能力，如果调用，会抛出1300002错误码。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -5893,6 +5988,8 @@ try {
 setWindowFocusable(isFocusable: boolean): Promise&lt;void&gt;
 
 设置窗口是否具有获得焦点的能力，使用Promise异步回调。
+
+从API version 22开始，调用[createVirtualScreen](js-apis-display.md#displaycreatevirtualscreen16)接口创建虚拟屏，并设置supportsFocus配置项为false时，位于该虚拟屏的窗口无法调用该接口修改窗口的可获焦能力，如果调用，会抛出1300002错误码。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6045,7 +6142,9 @@ setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;
 
 设置窗口是否为隐私模式，使用callback异步回调。
 
-设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。此接口可用于禁止截屏/录屏的场景。
+设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。
+
+隐私模式窗口退后台后在多任务卡片中显示为白色蒙层或隐私蒙层。
 
 未调用此接口时，窗口默认不开启隐私模式，可以被截屏或录屏。
 
@@ -6098,7 +6197,9 @@ setWindowPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 
 设置窗口是否为隐私模式，使用Promise异步回调。
 
-设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。此接口可用于禁止截屏/录屏的场景。
+设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。
+
+隐私模式窗口退后台后在多任务卡片中显示为白色蒙层或隐私蒙层。
 
 未调用此接口时，窗口默认不开启隐私模式，可以被截屏或录屏。
 
@@ -6172,7 +6273,7 @@ setWindowTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): v
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -6224,7 +6325,7 @@ setWindowTouchable(isTouchable: boolean): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -6889,6 +6990,67 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+## maximize<sup>22+</sup>
+
+maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&lt;void&gt;
+
+实现最大化功能。主窗口可调用此接口实现最大化功能；子窗口需在创建时设置子窗口参数maximizeSupported为true，再调用此接口可实现最大化功能。在具备折叠功能的2in1设备上，支持控制悬停态（参考[折叠屏悬停态最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-folded-hover)）下主窗口的瀑布流模式行为，即窗口在悬停态下最大化时是否跨上下两个半屏显示。使用Promise异步回调。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错。
+
+**参数：**
+
+| 参数名 | 类型  | 必填 | 说明 |
+| ----- | ---------------------------- | -- | --------------------------------- |
+| presentation | [MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12) | 否 | 主窗口或子窗口最大化时的布局枚举。默认值window.MaximizePresentation.ENTER_IMMERSIVE，即默认最大化时进入全屏模式。 |
+| acrossDisplay | boolean | 否 | 控制悬停态下主窗口在最大化时的瀑布流模式行为。仅主窗口可设置此参数，非主窗口调用时返回错误码`1300004`。<br>取值为`true`时：<br>- 悬停态下，窗口将直接进入瀑布流模式；<br>- 展开态下，窗口进入最大化，并在悬停态下保持瀑布流模式。<br>取值为`false`时：<br>- 悬停态下，窗口将退出瀑布流模式，进入单面最大化（即窗口最大化时只在上半屏或下半屏显示）；<br>- 展开态下，窗口进入最大化，并在悬停态下退出瀑布流模式。<br>取值为`undefined`或不传值时，不修改窗口瀑布流模式行为：<br>- 悬停态下，窗口进入单面最大化；<br>- 展开态下，窗口进入最大化，并在悬停态下默认保持瀑布流模式。<br>**设备行为差异：** 仅在具备折叠功能的2in1设备可正常调用；在其他设备上调用不生效。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Function maximize can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation.                       |
+
+**示例：**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      let mainWindow = windowStage.getMainWindowSync();
+      mainWindow.maximize(window.MaximizePresentation.ENTER_IMMERSIVE, true)
+        .then(() => {
+          console.info('Window maximized successfully.');
+        })
+        .catch((err: BusinessError) => {
+          console.error(`Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
+    });
+  }
+};
+```
+
 ## setResizeByDragEnabled<sup>14+</sup>
 setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -7104,7 +7266,7 @@ export default class EntryAbility extends UIAbility {
 
 getWindowLimits(): WindowLimits
 
-获取当前应用窗口的尺寸限制。
+获取当前应用窗口的尺寸限制，单位为物理像素px。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7135,12 +7297,50 @@ try {
 }
 ```
 
+## getWindowLimitsVP<sup>22+</sup>
+
+getWindowLimitsVP(): WindowLimits
+
+获取当前应用窗口的尺寸限制，单位为虚拟像素vp。
+
+对于系统窗口和全局悬浮窗，默认窗口宽高的系统限制最小值为1px，通过此接口获取到的1vp，是计算取整后的值。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**返回值：**
+
+| 类型                          | 说明           |
+| ----------------------------- | ------------------ |
+| [WindowLimits](arkts-apis-window-i.md#windowlimits11) | 当前窗口尺寸限制。 |
+
+**错误码：**
+
+错误码详情请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                       |
+| :------- | :----------------------------- |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002  | This window state is abnormal. |
+
+**示例：**
+
+```ts
+try {
+  let windowLimits: window.WindowLimits = windowClass.getWindowLimitsVP();
+} catch (exception) {
+  console.error(`Failed to obtain the window limits. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## setWindowLimits<sup>11+</sup>
 
 setWindowLimits(windowLimits: WindowLimits): Promise&lt;WindowLimits&gt;
 
 设置当前应用窗口的尺寸限制，使用Promise异步回调。
-默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)可获取系统限制。
+
+默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。
+
+未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)或[getWindowLimitsVP](#getwindowlimitsvp22)可获取系统限制。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7150,7 +7350,7 @@ setWindowLimits(windowLimits: WindowLimits): Promise&lt;WindowLimits&gt;
 
 | 参数名       | 类型                          | 必填 | 说明                           |
 | :----------- | :---------------------------- | :--- | :----------------------------- |
-| windowLimits | [WindowLimits](arkts-apis-window-i.md#windowlimits11) | 是   | 目标窗口的尺寸限制，单位为px。 |
+| windowLimits | [WindowLimits](arkts-apis-window-i.md#windowlimits11) | 是   | 目标窗口的尺寸限制，单位为px或vp。 |
 
 **返回值：**
 
@@ -7198,13 +7398,15 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 
 设置当前应用窗口的尺寸限制，使用Promise异步回调。
 
-默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)可获取系统限制。
+默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。
+
+未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)或[getWindowLimitsVP](#getwindowlimitsvp22)可获取系统限制。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 
+**设备行为差异：**
 
 API version 19之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
@@ -7214,8 +7416,8 @@ API version 19之前，该接口在2in1设备中可正常调用，在其他设�
 
 | 参数名       | 类型                          | 必填 | 说明                           |
 | :----------- | :---------------------------- | :--- | :----------------------------- |
-| windowLimits | [WindowLimits](arkts-apis-window-i.md#windowlimits11) | 是   | 目标窗口的尺寸限制，单位为px。 |
-| isForcible | boolean | 是   | 是否强制设置窗口的尺寸限制。<br>设置为true，表示窗口宽高最小值以系统限制值和40vp两者中的低数值为准，窗口宽高的最大值仍取决于系统限制。<br>设置为false，表示窗口宽高的最小值和最大值都取决于系统限制。|
+| windowLimits | [WindowLimits](arkts-apis-window-i.md#windowlimits11) | 是   | 目标窗口的尺寸限制，单位为px或vp。 |
+| isForcible | boolean | 是   | 是否强制设置窗口的尺寸限制。<br>当入参[windowLimits](arkts-apis-window-i.md#windowlimits11)的单位为vp时：无论设置true还是false，都按照false处理，窗口宽高的最小值和最大值都取决于系统限制。<br>当入参[windowLimits](arkts-apis-window-i.md#windowlimits11)的单位为px时：设置为true，表示窗口宽高最小值以系统限制值和40vp两者中的低数值为准，窗口宽高的最大值仍取决于系统限制；设置为false，表示窗口宽高的最小值和最大值都取决于系统限制。|
 
 **返回值：**
 
@@ -7379,7 +7581,7 @@ setWindowDecorVisible(isVisible: boolean): void
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -7429,7 +7631,7 @@ getWindowDecorVisible(): boolean
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -7476,7 +7678,7 @@ setWindowTitle(titleName: string): Promise&lt;void&gt;
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
 **示例：**
 
@@ -7521,7 +7723,7 @@ setWindowTitleMoveEnabled(enabled: boolean): void
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300004  | Unauthorized operation.        |
 
 **示例：**
@@ -7727,9 +7929,9 @@ setWindowDecorHeight(height: number): void
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible cause: Invalid parameter range. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -7755,7 +7957,7 @@ setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 
+**设备行为差异：**
 
 API version 18之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 从API version 18开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
@@ -7774,8 +7976,8 @@ API version 18之前，该接口在2in1设备中可正常调用，在其他设�
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-| 1300004  | Unauthorized operation. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and sub windows are supported. |
 
 **示例：**
 
@@ -7818,7 +8020,7 @@ getDecorButtonStyle(): DecorButtonStyle
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 
+**设备行为差异：**
 
 API version 18之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 从API version 18开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
@@ -7836,7 +8038,7 @@ API version 18之前，该接口在2in1设备中可正常调用，在其他设�
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally. |
 | 1300004  | Unauthorized operation. |
 
@@ -7876,7 +8078,7 @@ getWindowDecorHeight(): number
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
 **示例：**
 
@@ -7914,7 +8116,7 @@ getTitleButtonRect(): TitleButtonRect
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
 **示例：**
 
@@ -8007,7 +8209,7 @@ isFocused(): boolean
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -8093,7 +8295,11 @@ setParentWindow(windowId: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：**
+
+在API version 23之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
+从API version 23开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -8149,7 +8355,11 @@ getParentWindow(): Window
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：**
+
+在API version 23之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
+从API version 23开始，该接口在各设备均可正常调用。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -8211,7 +8421,7 @@ setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVi
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300004  | Unauthorized operation. |
 
 **示例：**
@@ -8286,8 +8496,8 @@ setWindowTopmost(isWindowTopmost: boolean): Promise&lt;void&gt;
 | 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-| 1300004  | Unauthorized operation. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
 
@@ -8730,7 +8940,7 @@ enableDrag(enable: boolean): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  windowClass.enableDrag(true).then(() => { 
+  windowClass.enableDrag(true).then(() => {
     console.info('succeeded in setting window draggable');
   }).catch((err: BusinessError) => {
     console.error(`Failed to set window draggable. Cause code: ${err.code}, message: ${err.message}`);
@@ -9195,12 +9405,13 @@ setWindowCornerRadius(cornerRadius: number): Promise&lt;void&gt;
 
 在调用此接口之前调用[getWindowCornerRadius()](#getwindowcornerradius17)接口可以获得窗口默认圆角半径值。
 
-> **说明：**
->
-> - 在API version 20之前，<!--RP6-->此接口仅可在2in1设备下使用。<!--RP6End-->
-> - 从API version 20开始，此接口支持在手机设备、2in1设备和平板设备下使用。
-
 **系统能力**：SystemCapability.Window.SessionManager
+
+**设备行为差异：**
+
+在<!--RP16-->OpenHarmony 6.0<!--RP16End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+从<!--RP16-->OpenHarmony 6.0<!--RP16End-->开始，该接口在Phone设备、Tablet设备和2in1设备下可正常调用。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -9250,11 +9461,15 @@ try{
 
 getWindowCornerRadius(): number
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，用于获取子窗或悬浮窗的圆角半径值，在未调用[setWindowCornerRadius()](#setwindowcornerradius17)接口设置窗口圆角半径值时，调用此接口可获取窗口默认圆角半径值。
+该接口用于获取子窗或悬浮窗的圆角半径值，在未调用[setWindowCornerRadius()](#setwindowcornerradius17)接口设置窗口圆角半径值时，调用此接口可获取窗口默认圆角半径值。
 
 **系统能力**：SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：**
+
+API version 23之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+从API version 23开始，该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -9290,7 +9505,7 @@ setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise&lt;void&gt;
 
 设置窗口独占激活态属性。独占激活态表示窗口获焦时，会导致当前父子窗口链中处于激活态的其他窗口失去激活态。使用Promise异步回调。
 
-此接口对主窗、模态窗、dialog窗口不生效。
+此接口对主窗、模态窗不生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -9316,7 +9531,7 @@ setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
-| 1300002  | This window state is abnormal.                                                                               |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally.                                                                |
 | 1300004  | Unauthorized operation.                                                                                |
 
@@ -9363,7 +9578,7 @@ isWindowHighlighted(): boolean
 | 错误码ID | 错误信息                                                                                                     |
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
-| 1300002  | This window state is abnormal.                                                                               |
+| 1300002  | This window state is abnormal  Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -9559,9 +9774,9 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 | 错误码ID | 错误信息                                                                                                     |
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 801      | Capability not supported.Function setRelativePositionToParentWindowEnabled can not work correctly due to limited device capabilities.|
-| 1300002  | This window state is abnormal.                                                                               |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.                    |
 | 1300003  | This window manager service works abnormally.                                                                |
-| 1300004  | Unauthorized operation.                                                                                |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only sub windows are supported.                                            |
 
 **示例：**
 
@@ -9783,9 +9998,9 @@ setSubWindowZLevel(zLevel: number): Promise&lt;void&gt;
 | ------- | --------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801     | Capability not supported. Function setSubWindowZLevel can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                       |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only sub windows are supported. |
 | 1300009 | The parent window is invalid.                 |
 
 **示例：**
@@ -10154,7 +10369,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 
+**设备行为差异：**
 
 API version 14之前，该接口在所有设备中可正常调用。
 
@@ -10423,16 +10638,18 @@ promise.then(() => {
 
 resetSize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
-改变当前窗口大小，使用callback异步回调。
+基于窗口左上角顶点改变当前窗口大小，使用callback异步回调。
 
 应用主窗口与子窗口存在大小限制，默认宽度范围：[320, 1920]，默认高度范围：[240, 1920]，单位为vp。
 应用主窗口与子窗口的最小宽度与最小高度可由产品端进行配置，配置后的最小宽度与最小高度以产品段配置值为准，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
 
 系统窗口存在大小限制，宽度范围：(0, 1920]，高度范围：(0, 1920]，单位为vp。
 
-设置的宽度与高度受到此约束限制，规则：
-若所设置的窗口宽/高尺寸小于窗口最小宽/高限值，则窗口最小宽/高限值生效；
-若所设置的窗口宽/高尺寸大于窗口最大宽/高限值，则窗口最大宽/高限值生效。
+设置的宽度与高度受到此限制约束，规则：
+
+若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效；
+
+若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
 全屏模式窗口不支持该操作。
 
@@ -10446,8 +10663,8 @@ resetSize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): v
 
 | 参数名   | 类型                      | 必填 | 说明                       |
 | -------- | ------------------------- | ---- | -------------------------- |
-| width    | number                    | 是   | 目标窗口的宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
-| height   | number                    | 是   | 目标窗口的高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
+| width    | number                    | 是   | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
+| height   | number                    | 是   | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。                 |
 
 **示例：**
@@ -10469,16 +10686,18 @@ windowClass.resetSize(500, 1000, (err: BusinessError) => {
 
 resetSize(width: number, height: number): Promise&lt;void&gt;
 
-改变当前窗口大小，使用Promise异步回调。
+基于窗口左上角顶点改变当前窗口大小，使用Promise异步回调。
 
 应用主窗口与子窗口存在大小限制，默认宽度范围：[320, 1920]，默认高度范围：[240, 1920]，单位为vp。
 应用主窗口与子窗口的最小宽度与最小高度可由产品端进行配置，配置后的最小宽度与最小高度以产品段配置值为准，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
 
 系统窗口存在大小限制，宽度范围：(0, 1920]，高度范围：(0, 1920]，单位为vp。
 
-设置的宽度与高度受到此约束限制，规则：
-若所设置的窗口宽/高尺寸小于窗口最小宽/高限值，则窗口最小宽/高限值生效；
-若所设置的窗口宽/高尺寸大于窗口最大宽/高限值，则窗口最大宽/高限值生效。
+设置的宽度与高度受到此限制约束，规则：
+
+若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效；
+
+若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
 全屏模式窗口不支持该操作。
 
@@ -10492,8 +10711,8 @@ resetSize(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| width  | number | 是   | 目标窗口的宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
-| height | number | 是   | 目标窗口的高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
+| width  | number | 是   | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
+| height | number | 是   | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
 
 **返回值：**
 

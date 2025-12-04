@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct UsbDdkInterface {...} UsbDdkInterface
+```
+
 ## 概述
 
 USB接口，是特定接口下备用设置的集合。

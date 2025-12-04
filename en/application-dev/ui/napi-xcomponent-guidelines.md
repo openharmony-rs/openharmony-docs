@@ -1498,7 +1498,7 @@ When constructing **XComponent** components, be sure to select the appropriate n
 
 - OnSurfaceCreated   	
 
-  Triggering time: This callback is triggered after the XComponent is created and the surface is created.
+  Triggered when the surface of the **XComponent** component is created and the surface is created.
 
   ArkTS-side sequence
 
@@ -2403,4 +2403,3 @@ The following uses the SURFACE type as an example to describe how to use the **X
     ```
 
 <!--RP1--><!--RP1End-->
-<!--no_check-->

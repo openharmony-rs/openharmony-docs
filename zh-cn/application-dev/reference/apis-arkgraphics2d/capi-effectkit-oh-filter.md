@@ -7,6 +7,10 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Filter OH_Filter
+```
+
 ## 概述
 
 滤镜结构体，用来生成滤镜位图。

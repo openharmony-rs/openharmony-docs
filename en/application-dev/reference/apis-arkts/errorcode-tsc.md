@@ -100,3 +100,47 @@ let a: number = 1;
 let b: number = 2;
 a = b;
 ```
+
+### API Export Exception in JS Files
+
+**Error Example Scenario**
+
+A JS file in the har1 package defines an exportable API:
+```
+// har1's src/main/ets/FileJs.js
+export let fileJs = 1;
+```
+The har2 package references this API from the har1 package as follows:
+```
+import { fileJs } from 'har1/src/main/ets/FileJs';
+```
+
+**Error Message**
+
+Cannot find module XXX or its corresponding type declarations.
+
+**Description**
+
+When a bytecode HAR file contains a JS file, no declaration file will be generated during compilation, preventing other modules from importing it.
+
+**Possible Causes**
+
+When the JS file is compiled, TSC does not generate a corresponding declaration file, which blocks imports from other modules.
+
+**Solution**
+
+If a JS file in a HAR package needs to expose exports, follow these steps:
+
+1. Manually create a corresponding .d.ts declaration file in the same directory as the JS file, and compile and release it alongside the HAR package. Example:
+```
+// har1's src/main/ets/FileJs.d.ts
+export declare let fileJs: number;
+```
+2. Add an export statement to the **Index.ets** file at the root of the har1 package. Example:
+```
+export { fileJs } from './src/main/ets/FileJs';
+```
+3. The har2 package can then import the API from har1 as follows:
+```
+import { fileJs } from 'har1/src/main/ets/FileJs';
+```

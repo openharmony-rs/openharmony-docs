@@ -8,7 +8,7 @@
 
 ## 简介
 
-网络连接管理提供管理网络一些基础能力，包括WiFi/蜂窝/Ethernet等多网络连接优先级管理、网络质量评估、订阅默认/指定网络连接状态变化、查询网络连接信息、DNS解析等功能。
+网络连接管理提供管理网络的一些基础能力，包括WiFi/蜂窝/Ethernet等多网络连接优先级管理、网络质量评估、订阅默认/指定网络连接状态变化、查询网络连接信息、DNS解析等功能。
 
 > **说明：**
 >
@@ -261,7 +261,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
    通过调用[getDefaultNet](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetdefaultnet)方法，获取默认的数据网络(NetHandle)；调用[getNetCapabilities](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilities)方法，获取该NetHandle对应网络的能力信息。能力信息包含了网络类型(蜂窝网络、Wi-Fi网络、以太网网络等)、网络具体能力等网络信息。也可以调用[getConnectionProperties](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetconnectionproperties)方法，获取该NetHandle对应网络的连接信息。
 
     <!-- @[get_default_network_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetworkBtn.ets) -->
-        
+    
     ``` TypeScript
     // 从@kit.NetworkKit中导入connection命名空间。
     import { connection } from '@kit.NetworkKit';
@@ -336,7 +336,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
    通过调用[getAllNets](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetallnets)方法，获取所有处于连接状态的网络列表(Array\<NetHandle>)。然后遍历获取到的NetHandle数组，分别调用[getNetCapabilities](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilities)方法，获取该NetHandle对应网络的能力信息，能力信息包含了网络类型(蜂窝网络、Wi-Fi网络、以太网网络等)、网络具体能力等网络信息。也可以调用[getConnectionProperties](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetconnectionproperties)方法，获取该NetHandle对应网络的连接信息。
 
  <!-- @[get_net_capabilities_and_get_connection_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/AllNetworksBtn.ets) -->
-  
+ 
  ``` TypeScript
  // 从@kit.NetworkKit中导入connection命名空间。
  import { connection } from '@kit.NetworkKit';
@@ -379,7 +379,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
    NET_CAPABILITY_CHECKING_CONNECTIVITY表示在进行连通性判断的过程中，当不处于连通性判断过程中，且networkCap数组中包含NET_CAPABILITY_VALIDATED表示网络连通性校验通过，可以访问互联网。
 
  <!-- @[NetConnection_manage_case_default_net_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetSyncBtn.ets) -->
-  
+ 
  ``` TypeScript
  // 从@kit.NetworkKit中导入connection命名空间。
  import { connection } from '@kit.NetworkKit';
@@ -424,7 +424,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
    调用[getAddressesByName](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetaddressesbyname)方法，使用默认网络解析主机名以获取所有IP地址。
 
  <!-- @[resolve_the_domain_name_and_get_all_ips](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetworkIPBtn.ets) -->
-  
+ 
  ``` TypeScript
  // 从@kit.NetworkKit中导入connection命名空间。
  import { connection } from '@kit.NetworkKit';

@@ -4,7 +4,11 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
+
+```
+typedef struct {...} ArkWeb_WebMessagePortAPI
+```
 
 ## Overview
 
@@ -74,6 +78,7 @@ Closes a message port.
 | Name| Description|
 | -- | -- |
 | const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) webMessagePort | Pointer to the message port.|
+| const char* webTag                                                                   |  Name of the **Web** component.             |
 
 ### setMessageEventHandler()
 
@@ -84,7 +89,7 @@ void (*setMessageEventHandler)(const ArkWeb_WebMessagePortPtr webMessagePort, co
 
 **Description**
 
-Closes a message port.
+Sets a callback for receiving HTML messages.
 
 **Parameters**
 

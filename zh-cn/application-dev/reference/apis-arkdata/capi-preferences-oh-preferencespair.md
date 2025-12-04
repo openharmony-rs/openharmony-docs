@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_PreferencesPair OH_PreferencesPair
+```
+
 ## 概述
 
 定义Preferences使用的KV数据对象类型。

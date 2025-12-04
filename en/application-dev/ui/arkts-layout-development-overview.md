@@ -1,17 +1,23 @@
 # Layout Overview
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
-In the declarative UI, page layout is the art of organizing custom components sequentially over a page. A well-designed layout can help you present information intuitively and effectively.
+Components are systematically arranged according to layout specifications to construct application pages. In declarative UI, all pages consist of custom components. You can select appropriate layout approaches for page development based on specific requirements.
 
 
-You design page layout by leveraging specific components or attributes to control the size and position of components on pages. The design process involves the following steps:
+Layout involves managing the size and position of UI components on user pages using dedicated components or attributes. In practical development, follow this process to ensure overall layout effectiveness:
 
 
-- Determine the layout structure of the page.
+- Define the layout structure of the page.
 
-- Analyze the elements on the page.
+- Analyze the composition of elements on the page.
 
-- Select container components and attributes to control the position and size of each element on the page.
+- Select appropriate container components and attributes to control the position and size of each element on the page.
 
 
 ## Layout Structure
@@ -53,8 +59,7 @@ The declarative UI provides the following common layouts. Choose a layout that b
 | [Flex layout](arkts-layout-development-flex-layout.md) (Flex) | The flex layout is similar to the linear layout. However, it empowers the container to adjust the size of its child components to best fill the available space. Use this layout when you need elements to stretch or shrink to fit into the container.|
 | [Relative layout](arkts-layout-development-relative-layout.md) (RelativeContainer)| The relative layout is a two-dimensional layout system. It does not need to comply with linear layout rules, and therefore exhibits more flexibility. By setting anchor rules (**AlignRules**) on a child component, you enable the component to position itself on the horizontal axis and vertical axis as relative to other child component in the container. Anchor rules support compression, stretching, stacking, and wrapping of child components. Use this layout when the distribution of elements is complex or when a linear layout may result in deeply nested components in the container.|
 | [Responsive grid layout](arkts-layout-development-grid-layout.md) (GridRow and GridCol)| The responsive grid is an auxiliary positioning tool for a multi-device application, with capability of dividing space into rows and columns. Unlike the regular grid, the responsive grid is not allocating fixed-size space. Instead, it allows a layout to dynamically change based on the screen size. In this way, the design and development costs for adapting to different screen sizes are significantly reduced, and the overall design and development process is more orderly and rhythmic. In addition, the responsive grid offers a consistent display experience across devices. Use this layout when you are presenting the same content on different screen sizes.|
-| [Media query](arkts-layout-development-media-query.md) (\@ohos.mediaquery)| You can use media queries to apply application styles based on the device type or device state. For example, you can apply specific layouts based on the attribute information of the target device and application, and update a page layout to reflect the dynamic screen changes.|
-| [Tabs](arkts-navigation-tabs.md)| The **Tabs** component can quickly switch between views on a page, improving information search efficiency and reducing the amount of information that users receive at a time.      |
+| [Tabs](arkts-navigation-tabs.md)                  | The **Tabs** component can quickly switch between views on a page, improving information search efficiency and reducing the amount of information that users receive at a time.|
 
 
 ## Layout Position
@@ -82,14 +87,14 @@ Attributes such as **position** and **offset** affect the position of the layout
 * Proportion: The width and height of child components to adjust dynamically in response to changes in the size of the container component, according to the preset proportion value.
 
   Two implementation modes are available with the universal attributes:
-  1. Set the width and height of the child components as percentages.
+  1. Set the width and height of child components using percentage values.
 
-      | Parent and Ancestor Component Setting| Child Component Percentage Reference|
+      | Parent and Ancestor Component Configuration| Child Component Reference Basis|
       |---|---|
-      | The parent component sets the width or height, and the ancestor component does not specify the parent's width or height.| Based on the parent component's width and height|
-      | The parent component sets the width or height, and the ancestor component specifies the parent's width or height.| Based on the parent component's width and height specified by the ancestor component|
-      | The parent component does not set the width or height, and the ancestor component specifies the parent's width or height| Based on the parent component's width and height specified by the ancestor component|
-      | The parent component does not set the width or height, and the ancestor component does not specify the parent's width or height| Based on the percentage reference inherited from the parent component. Since the parent component does not specify the width or height, this reference is passed down from the ancestor component.|
+      | The parent component sets the width or height, and the ancestor component does not specify the parent's width or height.| Parent component's actual width and height|
+      | The parent component sets the width or height, and the ancestor component specifies the parent's width or height.| Parent component's width and height specified by the ancestor component|
+      | The parent component does not set the width or height, and the ancestor component specifies the parent's width or height| Parent component's width and height specified by the ancestor component|
+      | The parent component does not set the width or height, and the ancestor component does not specify the parent's width or height| Percentage reference inherited from the parent component. Since the parent component does not specify the width or height, this reference is passed down from the ancestor component.|
   2. Use the [layoutWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight) attribute to enable the child components to adaptively occupy the remaining space.
 
 * Hiding: The child components in a container component are shown or hidden according to their preset display priority as the container component's size changes. Child components with the same display priority are shown or hidden at the same time.

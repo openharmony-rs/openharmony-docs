@@ -7,6 +7,10 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
+```
+typedef struct {...} NativeChildProcess_Fd
+```
+
 ## 概述
 
 传递给子进程的文件描述符信息。

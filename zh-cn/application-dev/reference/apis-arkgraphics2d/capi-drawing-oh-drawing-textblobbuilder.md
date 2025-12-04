@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_TextBlobBuilder OH_Drawing_TextBlobBuilder
+```
+
 ## 概述
 
 定义文本构建器，用于构建文本。

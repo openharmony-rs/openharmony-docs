@@ -34,7 +34,7 @@
   - [压力管控(ArkTS)](camera-system-pressure.md)
   - [相机控制器(ArkTS)](camera-control-center.md)
   - [微距能力设置(ArkTS)](camera-macro.md)
-  - [多摄同开(ArkTS)](camera-concurrent-open.md)
+  - [多摄同开(ArkTS)](camera-concurrent-open.md)<!--RP1--><!--RP1End-->
   <!--Del-->
   - [高性能拍照(仅对系统应用开放)(ArkTS)](camera-deferred-photo-sys.md)
   - [高性能拍照实践(仅对系统应用开放)(ArkTS)](camera-deferred-photo-case-sys.md)
@@ -57,4 +57,4 @@
   - [手电筒使用(C/C++)](native-camera-torch-use.md)
   - [压力管控(C/C++)](native-camera-system-pressure.md)
   - [微距能力设置(C/C++)](native-camera-macro.md)
-  - [多摄同开(C/C++)](native-camera-concurrent-open.md)
+  - [多摄同开(C/C++)](native-camera-concurrent-open.md)<!--RP2--><!--RP2End-->

@@ -6,6 +6,10 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} DisplaySoloist_ExpectedRateRange
+```
+
 ## Overview
 
 This struct describes the expected frame rate range.

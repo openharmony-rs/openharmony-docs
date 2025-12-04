@@ -15,49 +15,49 @@ This topic describes how to call the HiDebug ArkTS API to obtain the system CPU 
 
 1. Use DevEco Studio to create a project and select **Empty Ability**.
 
-2. In the **Project** window, click **entry** > **src** > **main** > **ets** > **pages** to open and edit the **Index.ets** file.
+2. In the **Project** window, click **entry** > **src** > **main** > **ets** > **pages** to open the **Index.ets** file.
 
-   ```typescript
-   import { hidebug } from '@kit.PerformanceAnalysisKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   Import the required dependencies.
+   <!-- @[TestHidebugArk_Import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
    
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';
+   ```
+   Define the test method.
+   <!-- @[TestHidebugArk_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    function testHiDebugArk () { // Implement the API as required.
      try {
-       let ret = hidebug.getSystemCpuUsage();
-       console.info(`TestTag getSystemCpuUsage: ${ret}`);
+       hilog.info(0x0000, 'testTag', `getSystemCpuUsage: ${hidebug.getSystemCpuUsage()}`);
      } catch (error) {
-       console.error(`error code: ${(error as BusinessError).code}, error msg: ${(error as BusinessError).message}`);
-     } 
-   }
-   
-   @Entry
-   @Component
-   struct Index {
-     build() {
-       Row() {
-         Column() {
-           Button("testHiDebugArk")
-             .type(ButtonType.Capsule)
-             .margin({
-               top: 20
-             })
-             .backgroundColor('#0D9FFB')
-             .width('60%')
-             .height('5%')
-             // Add a click event.
-             .onClick(testHiDebugArk);
-         }
-         .width('100%')
-       }
-       .height('100%')
+       hilog.info(0x0000, 'testTag', `error code: ${(error as BusinessError).code},
+         error msg: ${(error as BusinessError).message}`);
      }
    }
    ```
 
+   Add a button to trigger the API call.
+   <!-- @[TestHidebugArk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   Button('testHiDebugArk')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('60%')
+     .height('5%')
+     // Add a click event.
+     .onClick(testHiDebugArk);
+   ```
+
 3. Click **Run**, and then click the **testHiDebugArk** button on the device to trigger API calling.
 
-4. If any logs are generated while the API is being called, open the **Log** window at the bottom of DevEco Studio to view them.
+4. At the bottom of DevEco Studio, switch to the **Log** tab and set the filter criteria to **testTag** to view related logs.
 
    ```Text
-   06-02 16:53:22.538   31077-31077   A03D00/com.exa...ication/JSAPP  com.examp...lication  I     TestTag getSystemCpuUsage: 0.09963547995139732
+   10-22 15:46:04.587   19261-19261   A00000/com.sam...gtool/testTag  com.sampl...ebugtool  I     getSystemCpuUsage: 0.2878989952876323
    ```

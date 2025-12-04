@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明输出类型的音频流相关接口。
+声明音频渲染的相关接口。
 
 **引用文件：** <ohaudio/native_audiorenderer.h>
 

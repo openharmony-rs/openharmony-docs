@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_PositionEdges ArkUI_PositionEdges
+```
+
 ## 概述
 
 相对容器内容区边界的位置参数。

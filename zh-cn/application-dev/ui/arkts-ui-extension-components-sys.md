@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -14,16 +14,16 @@ UIExtension允许开发者创建可以嵌入到其他应用窗口上的界面扩
 
 - [UIExtensionComponent](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)组件
 	
-  在使用方应用定义使用，在是ArkUI提供的提供的组件，可以使用ArkTS的声明式范式在应用中使用。
+  在使用方应用中定义使用，是ArkUI提供的组件。支持开发者使用ArkTS的声明式开发范式，在应用中直接定义与使用。
 
 - [UIExtensionAbility](../application-models/uiextensionability-sys.md)组件
 
-  提供方应用中定义使用，用于运行提供方应用在一个独立进程中，在使用方应用中创建可以嵌入到其他应用窗口上的界面扩展，从而增强应用间的交互性和用户体验。
+  在提供方应用中定义的组件，运行于独立的进程中。该组件能够被使用方应用创建并嵌入其窗口，作为一种界面扩展，从而增强应用间的交互性与用户体验。
 
 
 ## 实现原理
 
-UIExtension提供的一种跨进程的应用共享能力，在使用方应用（系统应用）进程中使用UIExtensionComponent以组件方式嵌入集成到应用。当应用启动时，通过AMS（Application Management Service）调度拉起提供方应用进程。它主要负责应用程序的启动、退出、切换等管理任务。
+UIExtension提供了一种跨进程的应用组件共享机制。 使用方应用（如系统应用）可通过UIExtensionComponent组件，将提供方的界面嵌入自身。当该组件初始化时，系统内的AMS（Application Management Service）会负责调度并拉起提供方应用的独立进程，以完成界面渲染与交互。
 
 实现后能够在使用方应用页面中以组件方式展示提供方应用的页面：
 
@@ -53,7 +53,7 @@ UIExtension为了实现跨应用的能力共享，存在较开放的灵活性，
 
 **通用属性**
 
-当前组件可以通过属性影响其他组件或者使用方应用信息（应用上下文UIContext、应用窗口信息等）的能力，由于跨进程的机制问题，则UIExtension组件默认不支持。
+当前组件可以通过属性影响其他组件或者使用方应用信息（应用上下文UIContext、应用窗口信息等）的能力，但由于跨进程的机制问题，UIExtension组件默认不支持。
 
 组件支持的属性存在跨组件场景的情况下，不支持如下能力：
 
@@ -70,7 +70,6 @@ UIExtension为了实现跨应用的能力共享，存在较开放的灵活性，
 | [拖拽控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md) | 不支持   | 设置组件是否可以响应拖拽事件。                               | —                                                            |
 | [全屏模态转场](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md) | 部分支持 | 通过bindContentCover属性为组件绑定全屏模态页面，在组件插入和删除时可通过设置转场参数ModalTransition显示过渡动效。 | 在UIExtension内的提供方产生的页面无法超出UIExtension组件的范围，不能像其他组件一样直接达到效果，需要应用开发者设置UIExtension的全屏模式。 |
 | [半模态专场](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md) | 部分支持 | 通过bindSheet属性为组件绑定半模态页面，在组件插入时可通过设置自定义或默认的内置高度确定半模态大小。 | 在UIExtension内的提供方产生的页面无法超出UIExtension组件的范围，不能像其他组件一样直接达到效果，需要应用开发者设置UIExtension的全屏模式。 |
-|                                                              |          |                                                              |                                                              |
 
 **组件**
 

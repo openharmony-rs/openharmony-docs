@@ -1,4 +1,10 @@
 # Enter/Exit Transition
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 You can use [transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md), a basic component transition API, to animate the process in which a component enters or exits the view. You can even use it with [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10) to up your animation game.
@@ -32,9 +38,9 @@ You can use [transition](../reference/apis-arkui/arkui-ts/ts-transition-animatio
        // Apply a rotation transition effect, whose animation settings follow TransitionEffect above, that is, springMotion (0.6, 1.2).
        .combine(TransitionEffect.rotate({ angle: 90 }))
        // Apply a translation transition effect, whose animation settings follow TransitionEffect above, that is, springMotion (0.6, 1.2).
-       .combine(TransitionEffect.translate({ x: 150, y: 150 })
+       .combine(TransitionEffect.translate({ x: 150, y: 150 }))
        // Apply a move transition effect and specify springMotion as the curve.
-       .combine(TransitionEffect.move(TransitionEdge.END)).animation({curve: curves.springMotion()}))
+       .combine(TransitionEffect.move(TransitionEdge.END)).animation({curve: curves.springMotion()})
        // Apply an asymmetric transition effect. As the animation API is not called here, the animation settings follow TransitionEffect above, that is, springMotion.
        .combine(TransitionEffect.asymmetric(TransitionEffect.scale({ x: 0, y: 0 }), TransitionEffect.rotate({ angle: 90 })));
    ```
@@ -57,7 +63,7 @@ You can use [transition](../reference/apis-arkui/arkui-ts/ts-transition-animatio
    }
    // ...
    // Control the addition or deletion of the component.
-   // Method 1: Place the control variable in the animateTo closure. In this case, the transition effect for which the animation API is not call will follow the animation settings of animateTo.
+   // Method 1: Place the control variable in the animateTo closure. In this case, the transition effect for which the animation API is not called will follow the animation settings of animateTo.
    this.getUIContext()?.animateTo({ curve: curves.springMotion() }, () => {
      this.isPresent = false;
    })
@@ -89,7 +95,7 @@ struct TransitionEffectDemo {
       .combine(TransitionEffect.rotate({ angle: 90 }))// Apply a translation transition effect, whose animation settings are specified by animation, which is springMotion().
       .combine(TransitionEffect.translate({ y: 150 })
         .animation({ curve: curves.springMotion() }))// Apply a movement transition effect, whose animation settings follow TransitionEffect above, that is, springMotion().
-      .combine(TransitionEffect.move(TransitionEdge.END))
+      .combine(TransitionEffect.move(TransitionEdge.END));
 
   build() {
     Stack() {

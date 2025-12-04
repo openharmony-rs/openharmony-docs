@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdmfData OH_UdmfData
+```
+
 ## Overview
 
 Defines a struct for a unified data object.

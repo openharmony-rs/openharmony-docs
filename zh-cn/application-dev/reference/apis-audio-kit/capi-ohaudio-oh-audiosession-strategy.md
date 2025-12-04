@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioSession_Strategy {...} OH_AudioSession_Strategy
+```
+
 ## 概述
 
 音频会话策略。

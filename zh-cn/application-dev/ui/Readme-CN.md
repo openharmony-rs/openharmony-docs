@@ -16,10 +16,10 @@
       - [自定义组件生命周期](state-management/arkts-page-custom-components-lifecycle.md)
       - [自定义组件的自定义布局](state-management/arkts-page-custom-components-layout.md)
       - [自定义组件成员属性访问限定符使用限制](state-management/arkts-custom-components-access-restrictions.md)
-      - [自定义组件复用](state-management/arkts-component-reusable.md)   
-        - [自定义组件复用（V1）](state-management/arkts-reusable.md)   
-        - [自定义组件复用（V2）](state-management/arkts-new-reusableV2.md) 
-      - [自定义组件冻结](state-management/arkts-component-freeze-inactive.md)
+      - 自定义组件复用<!--arkts-component-reusable-->
+        - [\@Reusable装饰器：V1组件复用](state-management/arkts-reusable.md)   
+        - [\@ReusableV2装饰器：V2组件复用](state-management/arkts-new-reusableV2.md) 
+      - 自定义组件冻结<!--arkts-component-freeze-->
         - [自定义组件冻结（V1）](state-management/arkts-custom-components-freeze.md)
         - [自定义组件冻结（V2）](state-management/arkts-custom-components-freezeV2.md)
     - UI装饰器<!--arkts-ui-decorator-->
@@ -30,7 +30,7 @@
       - [\@LocalBuilder装饰器：维持组件关系](state-management/arkts-localBuilder.md)
       - [\@BuilderParam装饰器：引用\@Builder函数](state-management/arkts-builderparam.md)
       - [wrapBuilder：封装全局@Builder](state-management/arkts-wrapBuilder.md)
-      - [mutableBuilder: 动态全局@Builder封装](state-management/arkts-mutableBuilder.md) 
+      - [mutableBuilder: 实现全局@Builder动态更新](state-management/arkts-mutableBuilder.md) 
       - [\@Styles装饰器：定义组件重用样式](state-management/arkts-style.md)
       - [\@Extend装饰器：定义扩展组件样式](state-management/arkts-extend.md)
       - [stateStyles：多态样式](state-management/arkts-statestyles.md)
@@ -42,7 +42,7 @@
     - [状态管理原理介绍](state-management/arkts-state-management-introduce.md)
     - [状态管理V1和V2更新机制差异](state-management/arkts-v1-v2-update-difference.md)
     - [MVVM模式（V1）](state-management/arkts-mvvm.md)
-    - [MVVM模式（V2）](state-management/arkts-mvvm-V2.md)
+    - [MVVM模式（V2）](state-management/arkts-mvvm-v2.md)
     - 状态管理（V1）<!--arkts-state-management-v1-->
       - 管理组件拥有的状态<!--arkts-v1-component-state-management-->
         - [\@State装饰器：组件内状态](state-management/arkts-state.md)
@@ -60,17 +60,16 @@
         - [PersistentStorage：持久化存储UI状态](state-management/arkts-persiststorage.md)
         - [Environment：设备环境查询](state-management/arkts-environment.md)
     - 状态管理（V2）<!--arkts-state-management-v2-->
-      - [\@ComponentV2装饰器：自定义组件](state-management/arkts-new-componentV2.md)
       - 管理组件拥有的状态<!--arkts-v2-manage-component-state-->
         - [\@Local装饰器：组件内部状态](state-management/arkts-new-local.md)
         - [\@Param装饰器：组件外部输入](state-management/arkts-new-param.md)
         - [\@Once装饰器：初始化同步一次](state-management/arkts-new-once.md)
         - [\@Event装饰器：组件输出](state-management/arkts-new-event.md)
-        - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management/arkts-new-Provider-and-Consumer.md)
+        - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)
       - 管理数据对象的状态<!--arkts-v2-manage-data-object-state-->
         - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management/arkts-new-observedV2-and-trace.md)
         - [\@Monitor装饰器：状态变量修改监听](state-management/arkts-new-monitor.md)
-        - [\@Computed装饰器：计算属性](state-management/arkts-new-Computed.md)
+        - [\@Computed装饰器：计算属性](state-management/arkts-new-computed.md)
         - [\@Type装饰器: 标记类属性的类型](state-management/arkts-new-type.md)
       - 管理应用拥有的状态<!--arkts-v2-manage-application-state-->
         - [AppStorageV2: 应用全局UI状态存储](state-management/arkts-new-appstoragev2.md)
@@ -153,8 +152,8 @@
      - [弹窗概述](arkts-dialog-overview.md)
      - 弹出框 (Dialog)<!--arkts-use-dialogs-->
        - [弹出框概述](arkts-base-dialog-overview.md)
-       - [不依赖UI组件的全局自定义弹出框 (openCustomDialog) (推荐)](arkts-uicontext-custom-dialog.md)
-       - [基础自定义弹出框 (CustomDialog) (不推荐)](arkts-common-components-custom-dialog.md)
+       - [不依赖UI组件的全局自定义弹出框 (openCustomDialog)](arkts-uicontext-custom-dialog.md)
+       - [基础自定义弹出框 (CustomDialog)](arkts-common-components-custom-dialog.md)
        - [固定样式弹出框](arkts-fixes-style-dialog.md)
        - [页面级弹出框](arkts-embedded-dialog.md)
        - [弹出框层级管理](arkts-dialog-levelorder.md)
@@ -369,5 +368,7 @@
   - [UI高性能开发](ui-performance-overview.md)
   - UI开发常见问题<!--ui-development-faq-->
     - [自定义节点常见问题](arkts-user-defined-node-faq.md)
+    - [按钮与选择组件常见问题](arkts-select-component-faq.md)
+    - [使用文本常见问题](arkts-text-faq.md)
 - [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
 - [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->

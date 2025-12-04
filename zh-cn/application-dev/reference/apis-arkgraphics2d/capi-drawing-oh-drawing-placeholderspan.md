@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct {...} OH_Drawing_PlaceholderSpan
+```
+
 ## 概述
 
 用于描述占位符跨度的结构体。

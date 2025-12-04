@@ -45,40 +45,40 @@ const DOMAIN = 0x0000;
 @Entry
 @Component
 struct TestDemo14 {
+  @State text: string = "Default monitoring for Volume Up and Down keys has been added."
   private volumeUpCallBackFunc: (event: KeyEvent) => void = () => {
   }
   private volumeDownCallBackFunc: (event: KeyEvent) => void = () => {
   }
+  options1: inputConsumer.KeyPressedConfig = {
+    key: KeyCode.KEYCODE_VOLUME_UP,
+    action: 1, // 按下按键的行为
+    isRepeat: false, // 优先消费掉按键事件，不上报
+  }
+  options2: inputConsumer.KeyPressedConfig = {
+    key: KeyCode.KEYCODE_VOLUME_DOWN,
+    action: 1, // 按下按键的行为
+    isRepeat: false, // 优先消费掉按键事件，不上报
+  }
 
   aboutToAppear(): void {
     try {
-      let options1: inputConsumer.KeyPressedConfig = {
-        key: KeyCode.KEYCODE_VOLUME_UP,
-        action: 1, // 按下按键的行为
-        isRepeat: false, // 优先消费掉按键事件，不上报
-      }
-      let options2: inputConsumer.KeyPressedConfig = {
-        key: KeyCode.KEYCODE_VOLUME_DOWN,
-        action: 1, // 按下按键的行为
-        isRepeat: false, // 优先消费掉按键事件，不上报
-      }
-
       // 点击了音量按键上事件回调
       this.volumeUpCallBackFunc = (event: KeyEvent) => {
-        this.getUIContext().getPromptAction().showToast({ message: '点击了音量按键上' })
+        this.getUIContext().getPromptAction().showToast({ message: 'Volume Up key pressed' })
         // do something
       }
 
       // 点击了音量按键下事件回调
       this.volumeDownCallBackFunc = (event: KeyEvent) => {
-        this.getUIContext().getPromptAction().showToast({ message: '点击了音量按键下' })
+        this.getUIContext().getPromptAction().showToast({ message: 'Volume Down key pressed' })
         // do something
       }
       // 注册监听事件
-      inputConsumer.on('keyPressed', options1, this.volumeUpCallBackFunc);
-      inputConsumer.on('keyPressed', options2, this.volumeDownCallBackFunc);
+      inputConsumer.on('keyPressed', this.options1, this.volumeUpCallBackFunc);
+      inputConsumer.on('keyPressed', this.options2, this.volumeDownCallBackFunc);
     } catch (error) {
-      hilog.error(DOMAIN, 'InputMonitor', `Subscribe execute failed, error: %{public}s`,
+      hilog.error(DOMAIN, 'InputConsumer', `Subscribe execute failed, error: %{public}s`,
         JSON.stringify(error, ["code", "message"]));
     }
   }
@@ -86,15 +86,45 @@ struct TestDemo14 {
   build() {
     Column() {
       Row() {
-        Button('Cancel monitoring on the volume button')
+        Button('Add monitoring for Volume Up key')
+          .onClick(() => {
+            try {
+              // 添加指定回调函数
+              inputConsumer.on('keyPressed', this.options1, this.volumeUpCallBackFunc);
+              this.getUIContext()
+                .getPromptAction()
+                .showToast({ message: 'Successfully added monitoring for Volume Up key!' })
+              this.text = "Monitoring for Volume Up key has been added."
+            } catch (error) {
+              hilog.error(DOMAIN, 'InputConsumer', `Unsubscribe execute failed, error: %{public}s`,
+                JSON.stringify(error, ["code", "message"]));
+              this.getUIContext()
+                .getPromptAction()
+                .showToast({ message: 'Failed to add monitoring for Volume Up key!' })
+              this.text = `Failed to add monitoring for Volume Up key: ${JSON.stringify(error, ["code", "message"])}`
+            }
+          })
+      }.width('100%')
+      .justifyContent(FlexAlign.Center)
+      .margin({ top: 20, bottom: 50 })
+
+      Row() {
+        Button('Remove monitoring for Volume Up key')
           .onClick(() => {
             try {
               // 取消指定回调函数
               inputConsumer.off('keyPressed', this.volumeUpCallBackFunc);
-              this.getUIContext().getPromptAction().showToast({ message: '取消监听音量按键上的监听事件成功！' })
+              this.getUIContext()
+                .getPromptAction()
+                .showToast({ message: 'Successfully removed monitoring for Volume Up key!' })
+              this.text = "Monitoring for Volume Up key has been removed."
             } catch (error) {
-              hilog.error(DOMAIN, 'InputMonitor', `Unsubscribe execute failed, error: %{public}s`,
+              hilog.error(DOMAIN, 'InputConsumer', `Unsubscribe execute failed, error: %{public}s`,
                 JSON.stringify(error, ["code", "message"]));
+              this.getUIContext()
+                .getPromptAction()
+                .showToast({ message: 'Failed to remove monitoring for Volume Up key!' })
+              this.text = `Failed to remove monitoring for Volume Up key: ${JSON.stringify(error, ["code", "message"])}`
             }
           })
       }.width('100%')
@@ -102,15 +132,46 @@ struct TestDemo14 {
       .margin({ top: 20, bottom: 50 })
 
       Row() {
-        Button('Cancel monitoring under the volume button')
+        Button('Add monitoring for Volume Down key')
+          .onClick(() => {
+            try {
+              // 添加指定回调函数
+              inputConsumer.on('keyPressed', this.options2, this.volumeDownCallBackFunc);
+              this.getUIContext()
+                .getPromptAction()
+                .showToast({ message: 'Successfully added monitoring for Volume Down key!' })
+              this.text = "Monitoring for Volume Down key has been added."
+            } catch (error) {
+              hilog.error(DOMAIN, 'InputConsumer', `Unsubscribe execute failed, error: %{public}s`,
+                JSON.stringify(error, ["code", "message"]));
+              this.getUIContext()
+                .getPromptAction()
+                .showToast({ message: 'Failed to add monitoring for Volume Down key!' })
+              this.text = `Failed to add monitoring for Volume Down key: ${JSON.stringify(error, ["code", "message"])}`
+            }
+          })
+      }.width('100%')
+      .justifyContent(FlexAlign.Center)
+      .margin({ top: 20, bottom: 50 })
+
+      Row() {
+        Button('Remove monitoring for Volume Down key')
           .onClick(() => {
             try {
               // 取消指定回调函数
               inputConsumer.off('keyPressed', this.volumeDownCallBackFunc);
-              this.getUIContext().getPromptAction().showToast({ message: '取消监听音量按键下的监听事件成功！' })
+              this.getUIContext()
+                .getPromptAction()
+                .showToast({ message: 'Successfully removed monitoring for Volume Down key!' })
+              this.text = "Monitoring for Volume Down key has been removed."
             } catch (error) {
-              hilog.error(DOMAIN, 'InputMonitor', `Unsubscribe execute failed, error: %{public}s`,
+              hilog.error(DOMAIN, 'InputConsumer', `Unsubscribe execute failed, error: %{public}s`,
                 JSON.stringify(error, ["code", "message"]));
+              this.getUIContext()
+                .getPromptAction()
+                .showToast({ message: 'Failed to remove monitoring for Volume Down key!' })
+              this.text =
+                `Failed to remove monitoring for Volume Down key: ${JSON.stringify(error, ["code", "message"])}`
             }
           })
       }.width('100%')
@@ -118,7 +179,7 @@ struct TestDemo14 {
       .margin({ top: 20, bottom: 50 })
 
       Row() {
-        Text('已默认添加监听音量按键上和下的监听')
+        Text(this.text)
       }
       .width('100%')
       .justifyContent(FlexAlign.Center)

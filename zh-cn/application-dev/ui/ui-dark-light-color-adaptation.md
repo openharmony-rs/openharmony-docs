@@ -83,28 +83,30 @@
 
     自定义节点BuilderNode和ComponentContent需手动传递系统环境变化事件，触发节点的全量更新，详细请参考[builderNode系统环境变化更新](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)
 
-    ```ts
+    <!-- @[custom_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
+    
+    ``` TypeScript
     // 记录创建的自定义节点对象
-    const builderNodeMap: Array<BuilderNode<[Params]>> = new Array();
-
+    const builderNodeMap: BuilderNode<[Params]>[] = [];
+    
     class MyFrameCallback extends FrameCallback {
       onFrame() {
         updateColorMode();
       }
     }
-
+    
     function updateColorMode() {
       builderNodeMap.forEach((value, index) => {
         // 通知BuilderNode环境变量改变，触发深浅色切换
         value.updateConfiguration();
       })
     }
-    // ... other code ...
-    aboutToAppear() {
-    // ... other code ...
-      this.getUIContext()?.postFrameCallback(new MyFrameCallback());
-    // ... other code ...
-    }
+    // ···
+      aboutToAppear(): void {
+        // ···
+            this.getUIContext()?.postFrameCallback(new MyFrameCallback());
+        // ···
+      }
     ```
 
 5. 应用监听深浅色模式切换事件
@@ -113,16 +115,20 @@
 
     a. 在 AbilityStage 的 onCreate() 生命周期中获取APP当前的颜色模式并保存到 AppStorage。
 
-    ```ts
+    <!-- @[create_set_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
     onCreate(): void {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+      // ···
       AppStorage.setOrCreate('currentColorMode', this.context.config.colorMode);
     }
     ```
 
     b. 在 AbilityStage 的 onConfigurationUpdate() 生命周期中获取最新变更的颜色模式并刷新到 AppStorage。
 
-    ```ts
+    <!-- @[update_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
     onConfigurationUpdate(newConfig: Configuration): void {
       AppStorage.setOrCreate('currentColorMode', newConfig.colorMode);
       hilog.info(0x0000, 'testTag', 'the newConfig.colorMode is %{public}s', JSON.stringify(AppStorage.get('currentColorMode')) ?? '');
@@ -131,30 +137,42 @@
 
     c. 在Page中通过 @StorageProp + @Watch 方式获取当前最新颜色并监听设备深色模式变化。
 
-    ```ts
-    @StorageProp('currentColorMode') @Watch('onColorModeChange') currentMode: number = ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT;
+    <!-- @[prop_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
+    
+    ``` TypeScript
+    @StorageProp('currentColorMode') @Watch('onColorModeChange') currentMode: number =
+      ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT;
     ```
 
     d. 在 aboutToAppear 初始化函数中根据当前最新颜色模式刷新状态变量。
 
-    ```ts
+    <!-- @[color_mode_change_appear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
+    
+    ``` TypeScript
     aboutToAppear(): void {
+      // ···
       if (this.currentMode == ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT) {
-        //当前为浅色模式，资源初始化逻辑
-      }else {
-        //当前为深色模式，资源初始化逻辑
+        // 当前为浅色模式，资源初始化逻辑
+      // ···
+      } else {
+        // 当前为深色模式，资源初始化逻辑
+      // ···
       }
     }
     ```
 
     e. 在 @Watch 回调函数中执行同样的适配逻辑。
 
-    ```ts
+    <!-- @[color_mode_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
+    
+    ``` TypeScript
     onColorModeChange(): void {
       if (this.currentMode == ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT) {
-        //当前为浅色模式，资源初始化逻辑
+        // 当前为浅色模式，资源初始化逻辑
+      // ···
       } else {
-        //当前为深色模式，资源初始化逻辑
+        // 当前为深色模式，资源初始化逻辑
+      // ···
       }
     }
     ```
@@ -173,10 +191,17 @@
 > 
 > 应用未适配深色模式时，如遇到显示异常，可考虑使用该方法固定为浅色模式。
 
-```ts
-onCreate(): void {
-  hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-  this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT);
+<!-- @[create_app](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionApp/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  try {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT);
+  } catch (err) {
+    hilog.error(DOMAIN, 'testTag', 'Failed to set colorMode. Cause: %{public}s', JSON.stringify(err));
+  }
+  hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
 }
 ```
 
@@ -194,9 +219,12 @@ onCreate(): void {
 
 如果应用全部都是由系统组件/系统颜色开发，且想要跟随系统切换深浅色模式时，请参考以下示例修改代码来保证应用体验。
 
-```ts
+<!-- @[create_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 onCreate(): void {
   this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
+  AppStorage.setOrCreate('currentColorMode', this.context.config.colorMode);
 }
 ```
 

@@ -53,8 +53,8 @@ Provides the widget information.
 | module    | string                          | Yes  | Module name of the widget.                                                         |
 | dimension | [FormDimension](#formdimension) | No  | Dimensions of the widget. The 2 x 2, 4 x 4, 4 x 2, and more options are available.<br>Default value: **Dimension_2_2**|
 | temporary | boolean                         | No  | Whether the widget is a temporary widget. The value true indicates that the widget is a temporary widget, and the value false indicates that the widget is not a temporary widget.<br>Default value: **false**.|
-| renderingMode | [FormRenderingMode](#formrenderingmode11) | No  | Widget rendering mode. The options are as follows:<br>- **FULL_COLOR** (default): full color mode, where the widget framework does not change the widget effect, which means that the widget is displayed in the effect as you set it.<br>- **SINGLE_COLOR**: single color mode, where the widget framework sets the widget background to transparent. In this mode you need to set the widget style based on the best practices.<br>**NOTE**<br>If the system does not support unified rendering, the widget framework does not set the widget background to transparent in single color mode.|
-| exemptAppLock<sup>20+</sup> |boolean        | No  | Whether the widget is exempted from the app lock. If the value is true, the widget is not managed by the app lock and the app lock mask is not displayed when the app lock is added to the app to which the widget belongs. If the value is false, the widget is managed by the app lock and the app lock mask is displayed when the app lock is added to the app to which the widget belongs.<br>Default value: **false**.|
+| renderingMode | [FormRenderingMode](#formrenderingmode11) | No  | Widget rendering mode. Default value: **FULL_COLOR**. The options are as follows:<br>- **FULL_COLOR**: full color mode, where the widget framework does not change the widget effect, which means that the widget is displayed in the effect as you set it.<br>- **SINGLE_COLOR**: single color mode, where the widget framework sets the widget background to transparent. In this mode you need to set the widget style based on the best practices.<br>**NOTE**<br>If the system does not support unified rendering, the widget framework does not set the widget background to transparent in single color mode.|
+| exemptAppLock<sup>20+</sup> |boolean        | No  | Whether the widget is exempt from app lock. **true**: The widget is exempt from app lock management. No app lock overlay is displayed when an app lock is applied to the host application. **false**: The widget is managed by app lock. The app lock overlay is displayed when an app lock is applied to the host application.<br>Default value: **false**.|
 
 ## FormCallbackInfo<sup>12+</sup>
 
@@ -76,7 +76,7 @@ Widget size information.
 
 ## ErrorInformation<sup>18+</sup>
 
-Card error information.
+Widget error information.
 
 | Name   | Type                       | Mandatory| Description                                                               |
 | --------- | ------------------------------- | ---- | ----------------------------------------------------------------------- |
@@ -285,7 +285,6 @@ Triggered when the widget is updated.
 
 ## Example
 
- 
 
 This example creates a 2 x 2 widget and registers event callbacks.
 ```ts
@@ -312,7 +311,7 @@ struct CardExample {
         .size({width:360,height:360})
         .visibility(Visibility.Visible)
         .onAcquired((form: FormCallbackInfo)=>{
-          console.log(`form info : ${JSON.stringify(form)}`);
+          console.info(`form info : ${JSON.stringify(form)}`);
           // Invalid form id
           if (form.id == -1) {
             this.formId = form.idString;
@@ -321,10 +320,10 @@ struct CardExample {
           }
         })
         .onError((err)=>{
-          console.log(`fail to add form, err: ${JSON.stringify(err)}`);
+          console.error(`fail to add form, err: ${JSON.stringify(err)}`);
         })
         .onUninstall((form: FormCallbackInfo)=>{
-          console.log(`uninstall form success : ${JSON.stringify(form)}`);
+          console.info(`uninstall form success : ${JSON.stringify(form)}`);
           // Invalid form id
           if (form.id == -1) {
             this.formId = form.idString;
@@ -333,7 +332,7 @@ struct CardExample {
           }
         })
         .onUpdate((form: FormCallbackInfo)=>{
-          console.log(`form update done : ${JSON.stringify(form)}`);
+          console.info(`form update done : ${JSON.stringify(form)}`);
         })
     }
     .width('100%')

@@ -6,6 +6,10 @@
 <!--Tester: @mhy123456789-->
 <!--Adviser: @RayShih-->
 
+```c
+typedef struct Location_BasicInfo {...} Location_BasicInfo
+```
+
 ## 概述
 
 定义位置基本信息的结构体。
@@ -23,7 +27,7 @@
 | 名称 | 描述 |
 | -- | -- |
 | double latitude | 表示纬度信息，正值表示北纬，负值表示南纬。取值范围为-90到90。仅支持WGS84坐标系。 |
-| double longitude | 表示经度信息，正值表示东经，负值表是西经。取值范围为-180到180。仅支持WGS84坐标系。 |
+| double longitude | 表示经度信息，正值表示东经，负值表示西经。取值范围为-180到180。仅支持WGS84坐标系。 |
 | double altitude | 表示高度信息，单位米。 |
 | double accuracy | 表示精度信息，单位米。 |
 | double speed | 表示速度信息，单位米每秒。 |

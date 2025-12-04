@@ -6,6 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} WindowManager_Rect
+```
+
 ## 概述
 
 定义窗口矩形结构体，包含窗口位置和宽高信息。

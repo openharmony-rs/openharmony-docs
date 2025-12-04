@@ -7,6 +7,10 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
+```
+typedef struct AbilityRuntime_StartOptions AbilityRuntime_StartOptions
+```
+
 ## Overview
 
 The struct describes the startup options.

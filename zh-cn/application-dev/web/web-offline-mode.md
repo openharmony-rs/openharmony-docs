@@ -29,25 +29,20 @@ Web组件能够实现在不同窗口的组件树上进行挂载或移除操作�
 >
 > 创建Web组件将占用内存（每个Web组件大约200MB）和计算资源，建议避免一次性创建大量离线Web组件，以减少资源消耗。
 
-```ts
-// 载体Ability
-// EntryAbility.ets
-import { createNWeb } from '../pages/common'
+<!-- @[entry_ability_window_stage_created_after_specified_page_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 onWindowStageCreate(windowStage: window.WindowStage): void {
   windowStage.loadContent('pages/Index', (err, data) => {
-    let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
-    if (!windowClass) {
-      console.info('windowClass is null');
-      return;
-    }
     // 创建Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
-    createNWeb("https://www.example.com", windowClass.getUIContext());
-    if (err && err.code) {
+    createNWeb('www.example.com', windowStage.getMainWindowSync().getUIContext());
+    if (err.code) {
       return;
     }
   });
 }
 ```
+<!--  -->
 
 ```ts
 // 创建NodeController
@@ -135,10 +130,10 @@ export const getNWeb = (url: ResourceStr) : myNodeController | undefined => {
   return NodeMap.get(url);
 }
 ```
+<!--  -->
+<!-- @[nodeContainer_bind_controller_to_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-// 使用NodeController的Page页
-// Index.ets
+``` TypeScript
 import { getNWeb } from './common'
 @Entry
 @Component
@@ -148,9 +143,9 @@ struct Index {
       Column() {
         // NodeContainer用于与NodeController节点绑定，rebuild会触发makeNode
         // Page页通过NodeContainer接口绑定NodeController，实现动态组件页面显示
-        NodeContainer(getNWeb("https://www.example.com"))
-          .height("90%")
-          .width("100%")
+        NodeContainer(getNWeb('www.example.com'))
+          .height('90%')
+          .width('100%')
       }
       .width('100%')
     }
@@ -158,6 +153,7 @@ struct Index {
   }
 }
 ```
+<!--  -->
 
 ## 预启动渲染进程
 
@@ -170,25 +166,20 @@ struct Index {
 
 示例在onWindowStageCreate时预创建Web组件加载blank页面，提前启动Render进程，从index跳转到index2时，优化了Web渲染进程启动和初始化的耗时。
 
-```ts
-// 载体Ability
-// EntryAbility.ets
-import { createNWeb } from '../pages/common'
+<!-- @[entry_ability_window_stage_created_after_page_loaded](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/entry1ability/Entry1Ability.ets) -->
+
+``` TypeScript
 onWindowStageCreate(windowStage: window.WindowStage): void {
   windowStage.loadContent('pages/Index', (err, data) => {
-    let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
-    if (!windowClass) {
-      console.info('windowClass is null');
-      return;
-    }
     // 创建空的Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
-    createNWeb("about:blank", windowClass.getUIContext());
-    if (err && err.code) {
+    createNWeb('about：blank', windowStage.getMainWindowSync().getUIContext());
+    if (err.code) {
       return;
     }
   });
 }
 ```
+<!--  -->
 
 ```ts
 // 创建NodeController
@@ -276,21 +267,23 @@ export const getNWeb = (url: ResourceStr) : myNodeController | undefined => {
   return NodeMap.get(url);
 }
 ```
+<!--  -->
+<!-- @[navigate_to_web_page_pre_start_webview_load](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/Index.ets) -->
 
-```ts
-// index.ets
+``` TypeScript
+import router from '@ohos.router';
 import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
 struct Index1 {
-  webviewController: webview.WebviewController = new webview.WebviewController();
-  
+  WebviewController: webview.WebviewController = new webview.WebviewController();
+
   build() {
     Column() {
       //已经预启动Render进程 
-      Button("跳转到Web页面").onClick(()=>{
-        this.getUIContext().getRouter().pushUrl({url: "pages/index2"});
+      Button($r('app.string.Jump_to_Web_Page')).onClick(()=>{
+        router.pushUrl({url: 'pages/index2'});
       })
         .width('100%')
         .height('100%')
@@ -298,20 +291,22 @@ struct Index1 {
   }
 }
 ```
+<!--  -->
 
-```ts
-// index2.ets
-import { webview } from '@kit.ArkWeb';
+<!-- @[nodeContainer_bind_controller_show_dynamic_pages](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/index2.ets) -->
+
+``` TypeScript
+import web_webview from '@ohos.web.webview';
 
 @Entry
 @Component
 struct index2 {
-  webviewController: webview.WebviewController = new webview.WebviewController();
-  
+  webviewController: web_webview.WebviewController = new web_webview.WebviewController();
+
   build() {
     Row() {
       Column() {
-        Web({src: 'https://www.example.com', controller: this.webviewController})
+        Web({src: 'www.example.com', controller: this.webviewController})
           .width('100%')
           .height('100%')
       }
@@ -321,6 +316,7 @@ struct index2 {
   }
 }
 ```
+<!--  -->
 
 ## 预渲染Web页面
 
@@ -334,30 +330,20 @@ struct index2 {
 > 2. 由于该方案会将不可见的后台Web设置为Active状态，建议不要预渲染包含自动播放音视频的页面。应用开发者请自行检查和管理页面行为。
 > 3. 预渲染的网页会在后台不断进行渲染，建议在预渲染完成后立即停止渲染，以防止发热和功耗问题。可以参考以下示例，使用 [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12) 来确定停止时机，该接口适用于http和https网页。
 
-```ts
-// 载体Ability
-// EntryAbility.ets
-import {createNWeb} from '../pages/common';
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
+<!-- @[entry_ability_window_stage_created_after_specified_page_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    windowStage.loadContent('pages/Index', (err, data) => {
-      let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
-      if (!windowClass) {
-        console.info('windowClass is null');
-        return;
-      }
-      // 创建ArkWeb动态组件（需传入UIContext），loadContent之后的任意时机均可创建
-      createNWeb("https://www.example.com", windowClass.getUIContext());
-      if (err && err.code) {
-        return;
-      }
-    });
-  }
+``` TypeScript
+onWindowStageCreate(windowStage: window.WindowStage): void {
+  windowStage.loadContent('pages/Index', (err, data) => {
+    // 创建Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
+    createNWeb('www.example.com', windowStage.getMainWindowSync().getUIContext());
+    if (err.code) {
+      return;
+    }
+  });
 }
 ```
+<!--  -->
 
 ```ts
 // 创建NodeController
@@ -455,11 +441,11 @@ export const getNWeb = (url : string) : myNodeController | undefined => {
 }
 ```
 
-```ts
-// 使用NodeController的Page页
-// Index.ets
-import {createNWeb, getNWeb} from './common';
+<!--  -->
+<!-- @[nodeContainer_bind_controller_to_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { getNWeb } from './common'
 @Entry
 @Component
 struct Index {
@@ -468,9 +454,9 @@ struct Index {
       Column() {
         // NodeContainer用于与NodeController节点绑定，rebuild会触发makeNode
         // Page页通过NodeContainer接口绑定NodeController，实现动态组件页面显示
-        NodeContainer(getNWeb("https://www.example.com"))
-          .height("90%")
-          .width("100%")
+        NodeContainer(getNWeb('www.example.com'))
+          .height('90%')
+          .width('100%')
       }
       .width('100%')
     }
@@ -478,6 +464,7 @@ struct Index {
   }
 }
 ```
+<!--  -->
 
 ## 常见白屏问题排查
 
@@ -485,12 +472,14 @@ struct Index {
 
 检查是否已在module.json5中添加网络权限，添加方法请参考在[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-```ts
+<!-- @[add_network_permission](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/module.json5) -->
+
+``` JSON5
 "requestPermissions":[
-    {
-      "name" : "ohos.permission.INTERNET"
-    }
-  ]
+  {
+    "name" : "ohos.permission.INTERNET"
+  }
+],
 ```
 
 2.排查[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)与节点绑定的逻辑。

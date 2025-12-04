@@ -7,6 +7,10 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
+```
+typedef struct {...} Asset_SyncResult
+```
+
 ## 概述
 
 关键资产同步结果。

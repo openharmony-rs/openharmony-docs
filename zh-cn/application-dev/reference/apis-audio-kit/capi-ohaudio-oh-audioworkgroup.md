@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioWorkgroup OH_AudioWorkgroup
+```
+
 ## 概述
 
 声明音频工作组。将音频关键线程进行分组管理。

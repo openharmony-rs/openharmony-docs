@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdmfGetDataParams OH_UdmfGetDataParams
+```
+
 ## 概述
 
 定义异步获取UDMF数据的请求参数。

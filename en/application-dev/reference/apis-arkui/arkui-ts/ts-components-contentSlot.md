@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **ContentSlot** component is a component designed to render and manage components created on the native layer using C APIs.
 
@@ -49,7 +49,7 @@ Defines a base class for **ComponentContent** and **NodeContent**.
 The following example shows the basic usage of **ContentSlot**.
 
 ```ts
-import { nativeNode } from 'libNativeNode.so'; // .so file you implemented
+import { nativeNode } from 'libNativeNode.so'; // Developer-implemented .so file.
 import { NodeContent } from '@kit.ArkUI';
 
 @Entry

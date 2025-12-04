@@ -7,6 +7,10 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef void *OH_AI_ContextHandle
+```
+
 ## 概述
 
 MindSpore的上下文信息的指针，该指针会指向Context。

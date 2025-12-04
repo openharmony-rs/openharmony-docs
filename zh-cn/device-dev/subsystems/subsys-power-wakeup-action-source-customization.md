@@ -15,7 +15,7 @@ OpenHarmony支持系统睡眠时唤醒执行动作，如在睡眠中低电量情
 - 唤醒原因（如低电量唤醒）保存到内核节点。
 
 配置策略：
-产品定制的配置路径，需要根据[配置策略](https://gitee.com/openharmony/customization_config_policy)决定。本开发指导中的定制路径以`/vendor`进行举例，请开发者根据具体的产品配置策略，修改定制路径。
+产品定制的配置路径，需要根据[配置策略](https://gitcode.com/openharmony/customization_config_policy)决定。本开发指导中的定制路径以`/vendor`进行举例，请开发者根据具体的产品配置策略，修改定制路径。
 
 ## 开发指导
 
@@ -31,11 +31,11 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 ### 开发步骤 
 
-本文以[DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568)为例介绍唤醒源的定制方法。
+本文以[DAYU200](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568)为例介绍唤醒源的定制方法。
 
 1. 在产品目录`/vendor/hihope/rk3568`下创建power_manager文件夹。
 
-2. 参考[唤醒源文件夹](https://gitee.com/openharmony/powermgr_power_manager/tree/master/services/native/profile)创建目标文件夹，并安装到`/vendor/hihope/rk3568/power_manager`目录下，文件格式如下：
+2. 参考[唤醒源文件夹](https://gitcode.com/openharmony/powermgr_power_manager/tree/master/services/native/profile)创建目标文件夹，并安装到`/vendor/hihope/rk3568/power_manager`目录下，文件格式如下：
 
     ```text
     profile
@@ -77,7 +77,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     | ACTION_HIBERNATE | 1 | 进入休眠 |
     | ACTION_SHUTDOWN | 2 | 关机 |
 
-4. 参考[唤醒源的配置文件夹中的BUILD.gn](https://gitee.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/BUILD.gn)编写BUILD.gn文件，将power_wakeup_action.json打包到`/vendor/etc/power_wakeup_action`目录下，配置如下：
+4. 参考[唤醒源的配置文件夹中的BUILD.gn](https://gitcode.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/BUILD.gn)编写BUILD.gn文件，将power_wakeup_action.json打包到`/vendor/etc/power_wakeup_action`目录下，配置如下：
 
     ```shell
     import("//build/ohos.gni")               #引用build/ohos.gni
@@ -90,7 +90,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     }
     ```
 
-5. 将编译目标添加到`/vendor/hihope/rk3568`目录下[ohos.build](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build)的"module_list"中，例如：
+5. 将编译目标添加到`/vendor/hihope/rk3568`目录下[ohos.build](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build)的"module_list"中，例如：
 
     ```json
     {
@@ -132,12 +132,12 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     }
     ```
 
-2. 修改[powermgr.gni](https://gitee.com/openharmony/powermgr_power_manager/blob/master/powermgr.gni)，使能power_manager_feature_wakeup_action特性。
+2. 修改[powermgr.gni](https://gitcode.com/openharmony/powermgr_power_manager/blob/master/powermgr.gni)，使能power_manager_feature_wakeup_action特性。
     ```
     power_manager_feature_wakeup_action = true
     ```
     
-3. 参考[battery_config.json](https://gitee.com/openharmony/powermgr_battery_manager/blob/master/services/native/profile/battery_config.json)中添加如下配置。
+3. 参考[battery_config.json](https://gitcode.com/openharmony/powermgr_battery_manager/blob/master/services/native/profile/battery_config.json)中添加如下配置。
     ```json
     "charge_scene": {
         "low_battery_thers": {
@@ -149,11 +149,11 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     ```
     其中path为保存低电量阈值的节点路径。
 
-4. 修改[batterymgr.gni](https://gitee.com/openharmony/powermgr_battery_manager/blob/master/batterymgr.gni)，使能battery_manager_feature_set_low_capacity_threshold特性。
+4. 修改[batterymgr.gni](https://gitcode.com/openharmony/powermgr_battery_manager/blob/master/batterymgr.gni)，使能battery_manager_feature_set_low_capacity_threshold特性。
     ```
     battery_manager_feature_set_low_capacity_threshold = true
     ```    
-5. 在[power_config.json](https://gitee.com/openharmony/drivers_peripheral/blob/master/power/interfaces/hdi_service/profile/power_config.json)中添加如下部分。
+5. 在[power_config.json](https://gitcode.com/openharmony/drivers_peripheral/blob/master/power/interfaces/hdi_service/profile/power_config.json)中添加如下部分。
     ```json
     {
         "scene" :{
@@ -167,11 +167,11 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     ```
     其中get为保存低电量唤醒原因的节点路径。
 
-5. 修改[power.gni](https://gitee.com/openharmony/drivers_peripheral/blob/master/power/power.gni)，打开drivers_peripheral_power_wakeup_cause_path特性。
+5. 修改[power.gni](https://gitcode.com/openharmony/drivers_peripheral/blob/master/power/power.gni)，打开drivers_peripheral_power_wakeup_cause_path特性。
     ```
     drivers_peripheral_power_wakeup_cause_path = true
     ```
-6. 在[hdf_peripheral.cfg](https://gitee.com/openharmony/drivers_peripheral/blob/master/base/hdf_peripheral.cfg)的pre-init修改节点权限为system。
+6. 在[hdf_peripheral.cfg](https://gitcode.com/openharmony/drivers_peripheral/blob/master/base/hdf_peripheral.cfg)的pre-init修改节点权限为system。
     ```
     "chown system system xxx",
     "chown system system yyy",
