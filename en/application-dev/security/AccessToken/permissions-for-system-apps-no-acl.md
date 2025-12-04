@@ -209,18 +209,6 @@ Allows a system service to enable distributed hardware resources.
 
 **Valid since**: 11
 
-## ohos.permission.ACCESS_SUPER_HUB
-
-Allows an application to access Super Hub.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 12
-
 ## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
 
 Allows a UIExtensionAbility to be displayed on the locked screen.
