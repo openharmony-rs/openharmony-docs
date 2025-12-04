@@ -156,24 +156,24 @@ MDNS管理的典型场景有：
 7. 取消订阅的MDNS服务。
 
    <!-- @[discovery_service_off_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 取消订阅的MDNS服务。
-discoveryService.off('discoveryStart', (data: mdns.DiscoveryEventInfo) => {
-  hilog.info(0x0000, 'testTag', JSON.stringify(data));
-});
-discoveryService.off('discoveryStop', (data: mdns.DiscoveryEventInfo) => {
-  hilog.info(0x0000, 'testTag', JSON.stringify(data));
-});
-discoveryService.off('serviceFound', (data: mdns.LocalServiceInfo) => {
-  hilog.info(0x0000, 'testTag', JSON.stringify(data));
-  // ···
-});
-discoveryService.off('serviceLost', (data: mdns.LocalServiceInfo) => {
-  hilog.info(0x0000, 'testTag', JSON.stringify(data));
-  // ···
-});
-```
+   
+   ``` TypeScript
+   // 取消订阅的MDNS服务。
+   discoveryService.off('discoveryStart', (data: mdns.DiscoveryEventInfo) => {
+     hilog.info(0x0000, 'testTag', JSON.stringify(data));
+   });
+   discoveryService.off('discoveryStop', (data: mdns.DiscoveryEventInfo) => {
+     hilog.info(0x0000, 'testTag', JSON.stringify(data));
+   });
+   discoveryService.off('serviceFound', (data: mdns.LocalServiceInfo) => {
+     hilog.info(0x0000, 'testTag', JSON.stringify(data));
+     // ...
+   });
+   discoveryService.off('serviceLost', (data: mdns.LocalServiceInfo) => {
+     hilog.info(0x0000, 'testTag', JSON.stringify(data));
+     // ...
+   });
+   ```
 ## 相关实例
 
 针对MDNS管理，有以下相关实例可供参考：
