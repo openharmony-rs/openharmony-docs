@@ -952,6 +952,28 @@ ArkTS-Sta: enableAutoSpacing(enabled: boolean | undefined)
 | ------ | ------- | ---- | ---------------------------------- |
 | enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false |
 
+### compressLeadingPunctuation<sup>23+</sup>
+
+ArkTS-Dyn: compressLeadingPunctuation(enabled: Optional\<boolean>)
+
+ArkTS-Sta: compressLeadingPunctuation(enabled: boolean | undefined)
+
+设置是否启用行首标点符号压缩功能。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名           | 类型             | 必填 | 说明                                            |
+| ---------------- | ------- | ---- | ----------------------------------------------- |
+| enabled         |  ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> <br/>ArkTS-Sta: boolean \| undefined | 是   | 是否启用行首标点符号压缩功能。<br/>true表示启用，false表示禁用，undefined表示禁用。|
+
 ## IconOptions<sup>10+</sup>对象说明
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -2367,3 +2389,55 @@ struct SearchExample {
 ```
 
 ![searchEnableAutoSpacing](figures/searchEnableAutoSpacing.png)
+
+### 示例22（设置行首标点压缩）
+
+该示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点压缩，左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+
+从API version 23开始，支持compressLeadingPunctuation接口。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(){
+      Search({ value: "\u300C行首标点压缩打开" })
+        .compressLeadingPunctuation(true)
+        .margin(5)
+        .textFont({size:30})
+        .width("90%")
+      Search({ value: "\u300C行首标点压缩关闭" })
+        .compressLeadingPunctuation(false)
+        .textFont({size:30})
+        .width("90%")
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Component, Column, Search } from '@ohos.arkui.component';
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(){
+      Search({ value: "\u300C行首标点压缩打开" })
+        .compressLeadingPunctuation(true)
+        .margin(5)
+        .textFont({size:30})
+        .width("90%")
+      Search({ value: "\u300C行首标点压缩关闭" })
+        .compressLeadingPunctuation(false)
+        .textFont({size:30})
+        .width("90%")
+    }
+  }
+}
+```
+![searchCompressLeadingPunctuation](figures/searchCompressLeadingPunctuation.gif)
