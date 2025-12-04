@@ -46,7 +46,7 @@
 
 ### TransientTask_ErrorCode
 
-```
+```c
 enum TransientTask_ErrorCode
 ```
 
@@ -73,7 +73,7 @@ enum TransientTask_ErrorCode
 
 ### TransientTask_Callback()
 
-```
+```c
 typedef void (*TransientTask_Callback)(void)
 ```
 

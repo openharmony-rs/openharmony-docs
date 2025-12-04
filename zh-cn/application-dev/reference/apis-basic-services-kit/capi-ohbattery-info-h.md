@@ -46,7 +46,7 @@
 
 ### BatteryInfo_BatteryPluggedType
 
-```
+```c
 enum BatteryInfo_BatteryPluggedType
 ```
 
@@ -69,7 +69,7 @@ enum BatteryInfo_BatteryPluggedType
 
 ### OH_BatteryInfo_GetCapacity()
 
-```
+```c
 int32_t OH_BatteryInfo_GetCapacity()
 ```
 
@@ -89,7 +89,7 @@ int32_t OH_BatteryInfo_GetCapacity()
 
 ### OH_BatteryInfo_GetPluggedType()
 
-```
+```c
 BatteryInfo_BatteryPluggedType OH_BatteryInfo_GetPluggedType()
 ```
 

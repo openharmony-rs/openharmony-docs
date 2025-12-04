@@ -5,7 +5,7 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-```
+```c
 typedef struct {...} OH_OnFrameAvailableListener
 ```
 
@@ -39,7 +39,7 @@ typedef struct {...} OH_OnFrameAvailableListener
 
 ### OH_OnFrameAvailable()
 
-```
+```c
 typedef void (*OH_OnFrameAvailable)(void *context)
 ```
 

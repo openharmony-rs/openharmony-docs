@@ -47,7 +47,7 @@
 
 ### OH_NativeVSync_FrameCallback()
 
-```
+```c
 typedef void (*OH_NativeVSync_FrameCallback)(long long timestamp, void *data)
 ```
 
@@ -69,7 +69,7 @@ VSync回调函数类型。
 
 ### OH_NativeVSync_Create()
 
-```
+```c
 OH_NativeVSync* OH_NativeVSync_Create(const char* name, unsigned int length)
 ```
 
@@ -97,7 +97,7 @@ OH_NativeVSync* OH_NativeVSync_Create(const char* name, unsigned int length)
 
 ### OH_NativeVSync_Create_ForAssociatedWindow()
 
-```
+```c
 OH_NativeVSync* OH_NativeVSync_Create_ForAssociatedWindow(uint64_t windowID, const char* name, unsigned int length)
 ```
 
@@ -126,7 +126,7 @@ OH_NativeVSync* OH_NativeVSync_Create_ForAssociatedWindow(uint64_t windowID, con
 
 ### OH_NativeVSync_Destroy()
 
-```
+```c
 void OH_NativeVSync_Destroy(OH_NativeVSync* nativeVsync)
 ```
 
@@ -147,7 +147,7 @@ void OH_NativeVSync_Destroy(OH_NativeVSync* nativeVsync)
 
 ### OH_NativeVSync_RequestFrame()
 
-```
+```c
 int OH_NativeVSync_RequestFrame(OH_NativeVSync* nativeVsync, OH_NativeVSync_FrameCallback callback, void* data)
 ```
 
@@ -176,7 +176,7 @@ int OH_NativeVSync_RequestFrame(OH_NativeVSync* nativeVsync, OH_NativeVSync_Fram
 
 ### OH_NativeVSync_RequestFrameWithMultiCallback()
 
-```
+```c
 int OH_NativeVSync_RequestFrameWithMultiCallback(OH_NativeVSync* nativeVsync, OH_NativeVSync_FrameCallback callback, void* data)
 ```
 
@@ -205,7 +205,7 @@ int OH_NativeVSync_RequestFrameWithMultiCallback(OH_NativeVSync* nativeVsync, OH
 
 ### OH_NativeVSync_GetPeriod()
 
-```
+```c
 int OH_NativeVSync_GetPeriod(OH_NativeVSync* nativeVsync, long long* period)
 ```
 
@@ -233,7 +233,7 @@ int OH_NativeVSync_GetPeriod(OH_NativeVSync* nativeVsync, long long* period)
 
 ### OH_NativeVSync_DVSyncSwitch()
 
-```
+```c
 int OH_NativeVSync_DVSyncSwitch(OH_NativeVSync* nativeVsync, bool enable)
 ```
 
@@ -261,7 +261,7 @@ int OH_NativeVSync_DVSyncSwitch(OH_NativeVSync* nativeVsync, bool enable)
 
 ### OH_NativeVSync_SetExpectedFrameRateRange()
 
-```
+```c
 int OH_NativeVSync_SetExpectedFrameRateRange(OH_NativeVSync* nativeVsync, OH_NativeVSync_ExpectedRateRange* range)
 ```
 
