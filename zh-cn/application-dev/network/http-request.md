@@ -58,12 +58,13 @@
 1. 导入HTTP一般数据请求所需模块
 
    <!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->  
-
-``` TypeScript
-import { http } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-```
+   
+   ``` TypeScript
+   import { http } from '@kit.NetworkKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 2. 创建HttpRequest对象
 
