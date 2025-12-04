@@ -126,7 +126,7 @@ Provides APIs for managing data in an RDB store. The APIs not marked as supporti
 | [int OH_Rdb_Attach(OH_Rdb_Store *store, const OH_Rdb_ConfigV2 *config, const char *attachName, int64_t waitTime,size_t *attachedNumber)](#oh_rdb_attach) | - | Attaches a database file to the database that is currently connected.|
 | [int OH_Rdb_Detach(OH_Rdb_Store *store, const char *attachName, int64_t waitTime, size_t *attachedNumber)](#oh_rdb_detach) | - | Detaches a specified store from the current database.|
 | [int OH_Rdb_SetLocale(OH_Rdb_Store *store, const char *locale)](#oh_rdb_setlocale) | - | Sets locale.|
-| [int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enabled)](#oh_rdb_setsemanticindex) | - | Sets whether to enable knowledge processing based on semantic indexes.|
+| [int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enableSemanticIndex)](#oh_rdb_setsemanticindex) | - | Sets whether to enable knowledge processing based on semantic indexes.|
 
 ## Enum Description
 
@@ -254,7 +254,7 @@ Enumerates the subscription types.
 | -- | -- |
 | RDB_SUBSCRIBE_TYPE_CLOUD | Subscribe to cloud data changes.|
 | RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS | Subscribe to details of the cloud data change.|
-| RDB_SUBSCRIBE_TYPE_LOCAL_DETAILS | Subscribe to details of the local data change.|
+| RDB_SUBSCRIBE_TYPE_LOCAL_DETAILS | Subscribe to details of the local data change.<br>**Since**: 12|
 
 ### Rdb_SyncMode
 
@@ -312,7 +312,7 @@ enum Rdb_ProgressCode
 ### OH_Rdb_SetSemanticIndex()
 
 ```
-int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enabled)
+int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enableSemanticIndex)
 ```
 
 **Description**
@@ -326,7 +326,7 @@ Sets whether to enable knowledge processing based on semantic indexes.
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.|
-| bool enabled | Whether to enable knowledge processing based on semantic indexes.<br>The value **true** indicates that the function is enabled; the value **false** indicates the opposite.|
+| bool enableSemanticIndex | Whether to enable knowledge processing based on semantic indexes.<br>The value **true** indicates that the function is enabled; the value **false** indicates the opposite.|
 
 **Returns**
 
@@ -1062,6 +1062,12 @@ int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table,const OH_Data_VBuc
 **Description**
 
 Inserts data into a table in batches.
+
+A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code **RDB_E_INVALID_ARGS** is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
+
+For example, if the size of the union is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760).
+
+Ensure that you comply with this constraint when calling this API to avoid errors caused by excessive parameters.
 
 **Since**: 18
 
@@ -2110,4 +2116,4 @@ Sets locale.
 
 | Type| Description|
 | -- | -- |
-| int | Returns the execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_ERR** indicates that the execute function is abnormal.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.|
+| int | Returns the execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_ERR** indicates that the operation fails.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.|

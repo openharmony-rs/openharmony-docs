@@ -447,7 +447,7 @@
 
 ## FillMode
 
-用于设置当前播放方向下，动画开始前和结束后的状态。
+设置当前播放方向下，动画开始前和结束后的状态。动画结束后的状态由fillMode和reverse属性共同决定。例如，fillMode为Forwards表示停止时维持动画最后一个关键帧的状态，若reverse为false则维持正播的最后一帧，即最后一张图，若reverse为true则维持逆播的最后一帧，即第一张图。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -789,17 +789,19 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## LineJoinStyle
 
+线条连接样式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 说明         |
-| ----- | ---------- |
-| Bevel | 使用斜角连接路径段。 |
-| Miter | 使用尖角连接路径段。 |
-| Round | 使用圆角连接路径段。 |
+| 名称 | 值 | 说明 |
+| -------- | ---- | ------------- |
+| Miter | 0 | 使用尖角连接路径段。  |
+| Round | 1 | 使用圆角连接路径段。  |
+| Bevel | 2 | 使用斜角连接路径段。  |
 
 ## LocalizedAlignment<sup>20+</sup>
 
@@ -825,17 +827,19 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## LineCapStyle
 
+线条端点样式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明                            |
-| ------ | ----------------------------- |
-| Butt   | 线条两端为平行线，不额外扩展。               |
-| Round  | 在线条两端延伸半个圆，直径等于线宽。            |
-| Square | 在线条两端延伸一个矩形，宽度等于线宽的一半，高度等于线宽。 |
+| 名称 | 值 | 说明 |
+| ------ | ---- | ------------- |
+| Butt   | 0 | 线条两端为平行线，不额外扩展。    |
+| Round  | 1 | 在线条两端延伸半个圆，直径等于线宽。  |
+| Square | 2 | 在线条两端延伸一个矩形，宽度等于线宽的一半，高度等于线宽。   |
 
 ## LineBreakStrategy<sup>12+</sup>
 
@@ -874,7 +878,7 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | Release |   -   | 鼠标按键释放。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Move    |   -   | 鼠标移动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | Hover   |   -   | 鼠标悬浮。<br/>**说明：** 该枚举值无效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| CANCEL<sup>18+</sup>  |  13  | 鼠标按键取消。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| CANCEL<sup>18+</sup>  |  13  | 鼠标按键取消。通常在以下场景触发：<br/>1. 组件失去焦点：当前持有焦点的组件因系统事件（如弹窗打断、应用切换）失去焦点时，会触发该动作。<br/>2. 事件中断：鼠标操作过程中发生更高优先级事件（如系统级手势或强制回收事件流），导致当前鼠标操作被强制终止。<br/>3. 异常状态退出：如组件销毁、渲染环境异常等场景下，未完成的鼠标事件会被标记为取消。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## ModifierKey<sup>10+</sup>
 
