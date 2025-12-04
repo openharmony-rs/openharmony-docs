@@ -62,7 +62,7 @@ Neural Network Runtime定义的结构体和枚举值。
 
 ### OH_NN_PerformanceMode
 
-```
+```c
 enum OH_NN_PerformanceMode
 ```
 
@@ -82,7 +82,7 @@ enum OH_NN_PerformanceMode
 
 ### OH_NN_Priority
 
-```
+```c
 enum OH_NN_Priority
 ```
 
@@ -101,7 +101,7 @@ enum OH_NN_Priority
 
 ### OH_NN_ReturnCode
 
-```
+```c
 enum OH_NN_ReturnCode
 ```
 
@@ -131,7 +131,7 @@ Neural Network Runtime 定义的错误码类型。
 
 ### OH_NN_FuseType
 
-```
+```c
 enum OH_NN_FuseType
 ```
 
@@ -149,7 +149,7 @@ Neural Network Runtime 融合算子中激活函数的类型。
 
 ### OH_NN_Format
 
-```
+```c
 enum OH_NN_Format
 ```
 
@@ -168,7 +168,7 @@ enum OH_NN_Format
 
 ### OH_NN_DeviceType
 
-```
+```c
 enum OH_NN_DeviceType
 ```
 
@@ -187,7 +187,7 @@ Neural Network Runtime 支持的设备类型。
 
 ### OH_NN_DataType
 
-```
+```c
 enum OH_NN_DataType
 ```
 
@@ -215,7 +215,7 @@ Neural Network Runtime 支持的数据类型。
 
 ### OH_NN_OperationType
 
-```
+```c
 enum OH_NN_OperationType
 ```
 
@@ -338,7 +338,7 @@ Neural Network Runtime 支持算子的类型。
 
 ### OH_NN_TensorType
 
-```
+```c
 enum OH_NN_TensorType
 ```
 
@@ -519,7 +519,7 @@ enum OH_NN_TensorType
 
 ### NN_OnRunDone()
 
-```
+```c
 typedef void (*NN_OnRunDone)(void *userData, OH_NN_ReturnCode errCode, void *outputTensor[], int32_t outputCount)
 ```
 
@@ -543,7 +543,7 @@ typedef void (*NN_OnRunDone)(void *userData, OH_NN_ReturnCode errCode, void *out
 
 ### NN_OnServiceDied()
 
-```
+```c
 typedef void (*NN_OnServiceDied)(void *userData)
 ```
 
