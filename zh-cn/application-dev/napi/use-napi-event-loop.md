@@ -215,15 +215,15 @@
     ```
   
   <!-- @[napi_event_loop_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/ObjectUtils.ets) -->
-    ```ts
-    // ets/pages/ObjectUtils.ets
-    export function SetTimeout() : Promise<void> {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                console.info('set timer delay 1s');
-                // attempt to stop the event loop at napi terminal
-                resolve();
-            }, 1000)
-        })
-    }
-    ```
+  
+  ``` TypeScript
+  export function SetTimeout(): Promise<void> {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        console.info('set timer delay 1s');
+        // attempt to stop the event loop at napi terminal
+        resolve();
+      }, 1000)
+    })
+  }
+  ```
