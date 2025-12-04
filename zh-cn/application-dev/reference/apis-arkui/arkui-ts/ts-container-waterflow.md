@@ -402,7 +402,7 @@ enableScrollInteraction(value: boolean)
 
 nestedScroll(value: NestedScrollOptions)
 
-设置前后两个方向的嵌套滚动模式，实现与父组件的滚动联动。
+设置前后两个方向的嵌套滚动模式，实现与父组件的滚动联动。使用方法参考[嵌套滚动实现方式二](ts-container-scroll.md#示例3嵌套滚动实现方式二)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
