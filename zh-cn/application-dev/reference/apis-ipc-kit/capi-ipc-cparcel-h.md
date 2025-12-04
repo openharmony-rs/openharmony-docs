@@ -73,7 +73,7 @@
 ### OH_IPC_MemAllocator()
 
 ```C
-typedef void* (OH_IPC_MemAllocator)(int32_t len)
+typedef void* (*OH_IPC_MemAllocator)(int32_t len)
 ```
 
 **描述：**

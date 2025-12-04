@@ -40,7 +40,7 @@ IPC/RPC的订阅机制适用于以下场景：</br>
 
 ### 参考代码
 
-  在IPC场景中，创建变量want和connect。
+在IPC场景中，创建变量want和connect。
 
 ```ts
 import { Want, common } from '@kit.AbilityKit';
@@ -68,7 +68,7 @@ let connect: common.ConnectOptions = {
 };
 ```
 
-  在RPC场景中，创建变量want和connect。
+在RPC场景中，创建变量want和connect。
 
 ```ts
 import { Want, common } from '@kit.AbilityKit';
@@ -122,7 +122,7 @@ if (dmInstance != undefined) {
 }
 ```
 
-  FA模型使用[connectAbility](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilityconnectability7)接口连接Ability。
+FA模型使用[connectAbility](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilityconnectability7)接口连接Ability。
 
 <!--code_no_check_fa-->
 ```ts
@@ -132,7 +132,7 @@ import { featureAbility } from '@kit.AbilityKit';
 let connectId = featureAbility.connectAbility(want, connect);
 ```
 
-  Stage模型使用common.UIAbilityContext的[connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)接口连接Ability。
+Stage模型使用common.UIAbilityContext的[connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)接口连接Ability。
   在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 <!--code_no_check-->
@@ -142,7 +142,7 @@ let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // 
 let connectId = context.connectServiceExtensionAbility(want,connect);
 ```
 
-  成功连接服务后，onConnect回调函数中的Proxy对象会被赋值。此时，可以调用Proxy对象的[registerDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#registerdeathrecipient9-1)接口方法注册死亡回调，在Proxy不再使用的时候，调用[unregisterDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#unregisterdeathrecipient9-1)接口方法注销死亡回调。
+成功连接服务后，onConnect回调函数中的Proxy对象会被赋值。此时，可以调用Proxy对象的[registerDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#registerdeathrecipient9-1)接口方法注册死亡回调，在Proxy不再使用的时候，调用[unregisterDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#unregisterdeathrecipient9-1)接口方法注销死亡回调。
 
 ```ts
 import { rpc } from '@kit.IPCKit';

@@ -182,7 +182,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 
 **连接服务**
 
-  FA模型使用[connectAbility](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilityconnectability7)接口连接Ability。
+FA模型使用[connectAbility](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilityconnectability7)接口连接Ability。
 
 <!--code_no_check_fa-->
 ```ts
@@ -192,7 +192,7 @@ import { featureAbility } from '@kit.AbilityKit';
 let connectId = featureAbility.connectAbility(want, connect);
 ```
 
-  Stage模型使用common.UIAbilityContext的[connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)接口连接Ability。
+Stage模型使用common.UIAbilityContext的[connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)接口连接Ability。
   在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 <!--code_no_check-->
@@ -204,7 +204,7 @@ let connectId = context.connectServiceExtensionAbility(want,connect);
 
 ### 客户端发送信息给服务端
 
-  成功连接服务后，可以通过onConnect回调函数获取服务端的代理对象Proxy。然后，使用该Proxy调用[sendMessageRequest](../reference/apis-ipc-kit/js-apis-rpc.md#sendmessagerequest9-2)方法发起请求。当服务端处理请求并返回数据时，可在Promise契约（用于表示一个异步操作的成功/失败的结果值）中接收结果。
+成功连接服务后，可以通过onConnect回调函数获取服务端的代理对象Proxy。然后，使用该Proxy调用[sendMessageRequest](../reference/apis-ipc-kit/js-apis-rpc.md#sendmessagerequest9-2)方法发起请求。当服务端处理请求并返回数据时，可在Promise契约（用于表示一个异步操作的成功/失败的结果值）中接收结果。
 
 ```ts
 import { rpc } from '@kit.IPCKit';
@@ -243,7 +243,7 @@ if (proxy != undefined) {
 
 ### 服务端处理客户端请求
 
-  服务端在onConnect回调函数里返回继承自[rpc.RemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#remoteobject)的Stub对象，该对象需要实现[onRemoteMessageRequest](../reference/apis-ipc-kit/js-apis-rpc.md#onremotemessagerequest9)方法，处理客户端的请求。
+服务端在onConnect回调函数里返回继承自[rpc.RemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#remoteobject)的Stub对象，该对象需要实现[onRemoteMessageRequest](../reference/apis-ipc-kit/js-apis-rpc.md#onremotemessagerequest9)方法，处理客户端的请求。
 
 ```ts
 import { rpc } from '@kit.IPCKit';
@@ -272,7 +272,7 @@ class Stub extends rpc.RemoteObject {
 
 ### 断开连接
 
-  IPC通信结束后，FA模型使用[disconnectAbility](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilitydisconnectability7)接口断开连接，此处的connectId是在连接服务时保存的。
+IPC通信结束后，FA模型使用[disconnectAbility](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilitydisconnectability7)接口断开连接，此处的connectId是在连接服务时保存的。
 
 <!--code_no_check_fa-->
 ```ts
@@ -286,7 +286,7 @@ function disconnectCallback() {
 featureAbility.disconnectAbility(connectId, disconnectCallback);
 ```
 
-  Stage模型使用common.UIAbilityContext提供的[disconnectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectserviceextensionability-1)接口断开连接，此处的connectId是在连接服务时保存的。
+Stage模型使用common.UIAbilityContext提供的[disconnectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectserviceextensionability-1)接口断开连接，此处的connectId是在连接服务时保存的。
   在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 <!--code_no_check-->
