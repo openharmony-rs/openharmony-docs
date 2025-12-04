@@ -43,7 +43,6 @@ export struct ProductList {
         }
       }, (item: ProductDataModel) => item.id.toString())
     }
-    ...
   }
 }
 ```
@@ -146,20 +145,19 @@ export struct ProductList {
 @Entry
 @Component
 struct Direct {
-  ...
+ 
   // 初始化日历中一年的数据
   initCalenderData() {
-    ...
+    // ...
   }
 
   aboutToAppear() {
-	...
+	// ...
     this.initCalenderData();
   }
 
   build() {
     Column() {
-      ...
       List() {
         LazyForEach(this.contentData, (monthItem: Month) => {
           // 每个月的日期
@@ -174,14 +172,12 @@ struct Direct {
           }
         })
       }
-      ...
   }
 }
 @Reusable
 @Component
 struct ItemView {
   @State monthItem: Month = { month: '', num: 0, days: [], lunarDays: [] };
-  ...
 
   aboutToReuse(params: Record<string, Object>): void {
     hiTraceMeter.startTrace("reuse_" + (params.monthItem as Month).month, 1);
@@ -191,13 +187,11 @@ struct ItemView {
 
   build() {
     Flex({ wrap: FlexWrap.Wrap }) {
-      ...
       // 日期信息
       ForEach(this.monthItem.days, (day: number, index: number) => {
-        ...
+        // ...
       }, (index: number): string => index.toString())
     }
-    ...
   }
 }
 ```
@@ -230,7 +224,6 @@ struct ItemView {
 @Reusable
 @Component
 struct ItemView {
-  ...
   aboutToAppear(): void {
     // 创建DisplaySync对象
     this.displaySync = displaySync.create();
@@ -244,22 +237,20 @@ struct ItemView {
     this.displaySync.setExpectedFrameRateRange(range);
     // 设置帧回调监听
     this.displaySync.on("frame", () => {
-      ...
+      // ...
     });
     // 开启监听帧回调
-    this.displaySync.start();
-    ...  
+    this.displaySync.start(); 
   }
-  ...
 }
 ```
 
 然后，在监听中添加更新数据的代码。这里将每个月的数据更新拆分开来，第一步用来更新月份数据和计算总的执行步骤，最后一步将计数数据初始化，其余需要执行步骤的多少根据每次加载数据量会有所改变。
 
 ```ts
-...
+
 private temp: Month[] = [];
-...
+
 this.displaySync.on("frame", () => {
   // 数组中有数据时才开始执行
   if (this.temp.length > 0) {
@@ -294,7 +285,7 @@ this.displaySync.on("frame", () => {
     }
   }
 });
-...
+
 ```
 
 最后，在aboutToReuse接口中将数据放入数组中，用于帧回调中开始执行数据更新。

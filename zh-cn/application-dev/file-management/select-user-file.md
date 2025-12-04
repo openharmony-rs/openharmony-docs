@@ -49,7 +49,8 @@
    documentSelectOptions.multiAuthMode = false;
    //需要传入批量授权的uri数组（仅支持文件，文件夹不生效）。配合multiAuthMode使用。当multiAuthMode为false时，配置该参数不生效。该参数在Phone设备中可正常使用，在其他设备中无效果。
    documentSelectOptions.multiUriArray = ["file://docs/storage/Users/currentUser/test", "file://docs/storage/Users/currentUser/2test"];
-   //开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。当该参数置为非DEFAULT时，其他参数不生效。该参数在Phone设备中可正常使用，在其他设备中无效果。
+   //开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。当该参数置为非DEFAULT时，其他参数不生效。API version 22及之后的版本当该参数置为非DEFAULT时，仅fileSuffixFilters参数生效，其他参数不生效。
+   //该参数在Phone设备中可正常使用，在其他设备中无效果。
    documentSelectOptions.mergeMode = picker.MergeTypeMode.DEFAULT;
    //是否支持加密（仅支持文件，文件夹不生效），默认为false。该参数为true时，在Picker界面可以选择对文件进行加密。（说明：从API version 19开始支持该参数）。
    documentSelectOptions.isEncryptionSupported = false;
@@ -57,20 +58,20 @@
 
 3. 创建[文件选择器DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)实例。调用[select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3)接口拉起FilePicker应用界面进行文件选择。
 
-   <!--@[picker_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-      let uris: string[] = [];
-      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      const documentViewPicker = new picker.DocumentViewPicker(context);
-      documentViewPicker.select(documentSelectOptions).then((documentSelectResult: string[]) => {
-        uris = documentSelectResult;
-        Logger.info('documentViewPicker.select to file succeed and uris are:' + uris);
-		// ···
-      }).catch((err: BusinessError) => {
-        Logger.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
-      });
-```
+   <!--@[picker_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->        
+   
+   ``` TypeScript
+   let uris: string[] = [];
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   const documentViewPicker = new picker.DocumentViewPicker(context);
+   documentViewPicker.select(documentSelectOptions).then((documentSelectResult: string[]) => {
+     uris = documentSelectResult;
+     console.info('documentViewPicker.select to file succeed and uris are:' + uris);
+     // ...
+   }).catch((err: BusinessError) => {
+     console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
+   });
+   ```
 
 
    > **注意：**
@@ -124,18 +125,22 @@
 
 3. 创建[音频选择器AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)实例。调用[select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-5)接口拉起AudioPicker应用界面进行文件选择。
 
-   <!--@[audio_select_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-      let uris: string[] = [];
-      // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      const audioViewPicker = new picker.AudioViewPicker(context);
-      audioViewPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
-        //文件选择成功后，返回被选中音频的URI结果集。
-        uris = audioSelectResult;
-        console.info('audioViewPicker.select to file succeed and uri is:' + uris);
-```
+   <!--@[audio_select_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->        
+   
+   ``` TypeScript
+   let uris: string[] = [];
+   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   const audioViewPicker = new picker.AudioViewPicker(context);
+   audioViewPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
+     //文件选择成功后，返回被选中音频的URI结果集。
+     uris = audioSelectResult;
+     console.info('audioViewPicker.select to file succeed and uri is:' + uris);
+     // ...
+   }).catch((err: BusinessError) => {
+     console.error(`Invoke audioViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
+   })
+   ```
 
 
    > **注意：**

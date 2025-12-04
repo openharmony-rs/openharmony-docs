@@ -80,7 +80,7 @@ For details about the following APIs, see [selectionInput.SelectionManager](../.
     ```
     In the preceding code, the [onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md#onconnect) callback is triggered when the word selection extension is started. You can listen for word selection events in this callback to create the word selection panel, set the panel content, and move, display, or hide the panel. The [onDisconnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md#ondisconnect) callback is triggered when the word selection extension is disabled. You can destroy the panel in this callback. For details about some operations, see steps 3, 4, and 5.
 
-3. Listen for the word selection events using the **on** API when SelectionExtensionAbility is started, and you can obtain the selected text content using the [getSelectionContent](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager-sys.md#getselectioncontent) API.
+3. Listen for the word selection events using the **on** API when SelectionExtensionAbility is started, and you can obtain the selected text content using the [getSelectionContent](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager-sys.md#getselectioncontent22) API.
     ```ts
     selectionManager.on('selectionCompleted', async (info: selectionManager.SelectionInfo) => {
       try {
@@ -92,6 +92,7 @@ For details about the following APIs, see [selectionInput.SelectionManager](../.
     ```
 
 4. Create a word selection panel using the **createPanel** API when SelectionExtensionAbility is started.
+    <!--code_no_check-->
     ```ts
     let panelInfo: PanelInfo = {
       panelType: PanelType.MENU_PANEL,

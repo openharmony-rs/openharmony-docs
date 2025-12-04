@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+struct WebSocket_OpenResult {...}
+```
+
 ## 概述
 
 websocket客户端来自服务端连接成功的参数。

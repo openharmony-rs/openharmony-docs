@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 组件内转场主要通过transition属性配置转场参数，在组件插入和删除时显示过渡动效，主要用于容器组件中的子组件插入和删除时，提升用户体验。 
 
@@ -47,6 +47,10 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 
 组件插入显示和删除隐藏的过渡效果。同[transition](#transition)相比，增加了转场动画结束的回调。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -76,10 +80,10 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 
 | 名称     | 值 | 说明     |
 | ------ | ------ | ------ |
-| TOP    | - | 窗口的上边缘。 |
-| BOTTOM | - | 窗口的下边缘。 |
-| START  | - | 窗口的起始边缘，LTR时为左边缘，RTL时为右边缘。 |
-| END    | - | 窗口的终止边缘，LTR时为右边缘，RTL时为左边缘。 |
+| TOP    | 0 | 窗口的上边缘。 |
+| BOTTOM | 1 | 窗口的下边缘。 |
+| START  | 2 | 窗口的起始边缘，LTR时为左边缘，RTL时为右边缘。 |
+| END    | 3 | 窗口的终止边缘，LTR时为右边缘，RTL时为左边缘。 |
 
 ## TransitionEffect<sup>10+</sup>对象说明
 

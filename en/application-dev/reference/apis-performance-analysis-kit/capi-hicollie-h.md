@@ -1,5 +1,12 @@
 # hicollie.h
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @rr_cn-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 ## Overview
 
 HiCollie provides APIs for checking service thread stuck and jank events and reporting stuck events.
@@ -34,12 +41,12 @@ HiCollie provides APIs for checking service thread stuck and jank events and rep
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef void (\*OH_HiCollie_Task)(void)](#oh_hicollie_task) | OH_HiCollie_Task | Defines a function used to check whether a service thread is stuck.<br> This function is called by HiCollie every 3 seconds in an independent thread.<br> For example, this function can be used to send a message to a service thread and set a flag after the service thread receives the message. Then the flag is checked to determine whether the service thread is stuck.|
-| [typedef void (\*OH_HiCollie_BeginFunc)(const char* eventName)](#oh_hicollie_beginfunc) | OH_HiCollie_BeginFunc | Defines a function used to record the begin time when a service thread processes an event. This function is used in the jank event detection.<br> HiCollie checks the duration of each event. If the duration exceeds the preset threshold, a jank event is reported.<br> This function is inserted before each event is processed.|
-| [typedef void (\*OH_HiCollie_EndFunc)(const char* eventName)](#oh_hicollie_endfunc) | OH_HiCollie_EndFunc | Defines a function used to check whether a service thread is janky when processing an event. This function is used in the jank event detection.<br> HiCollie checks the duration of each event. If the duration exceeds the preset threshold, a jank event is reported.<br> This function is inserted after each event is processed.|
+| [typedef void (\*OH_HiCollie_Task)(void)](#oh_hicollie_task) | OH_HiCollie_Task | Checks whether a service thread is stuck.<br> This function is called by HiCollie every 3 seconds in an independent thread.<br> For example, this function can be used to send a message to a service thread and set a flag after the service thread receives the message. Then the flag is checked to determine whether the service thread is stuck.|
+| [typedef void (\*OH_HiCollie_BeginFunc)(const char* eventName)](#oh_hicollie_beginfunc) | OH_HiCollie_BeginFunc | Records the begin time when a service thread processes an event. This function is used in the jank event detection.<br> HiCollie checks the duration of each event. If the duration exceeds the preset threshold, a jank event is reported.<br> This function is inserted before each event is processed.|
+| [typedef void (\*OH_HiCollie_EndFunc)(const char* eventName)](#oh_hicollie_endfunc) | OH_HiCollie_EndFunc | Checks whether a service thread is janky when processing an event. This function is used in the jank event detection.<br> HiCollie checks the duration of each event. If the duration exceeds the preset threshold, a jank event is reported.<br> This function is inserted after each event is processed.|
 | [HiCollie_ErrorCode OH_HiCollie_Init_StuckDetection(OH_HiCollie_Task task)](#oh_hicollie_init_stuckdetection) | - | Registers a callback used to periodically detect service thread stuck events.  <br> By default, the **BUSSINESS_THREAD_BLOCK_3S** event is reported when the thread is blocked for 3s and the **BUSSINESS_THREAD_BLOCK_6S** event is reported when the thread is blocked for 6s.|
 | [HiCollie_ErrorCode OH_HiCollie_Init_StuckDetectionWithTimeout(OH_HiCollie_Task task, uint32_t stuckTimeout)](#oh_hicollie_init_stuckdetectionwithtimeout) | - | Registers a callback used to periodically detect service thread stuck events.  <br> You can set the interval for the stuck event detection. The value range is [3, 15], in seconds.|
-| [HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFunc,OH_HiCollie_EndFunc* endFunc, HiCollie_DetectionParam param)](#oh_hicollie_init_jankdetection) | - | Registers a callback used to detect service thread jank events.<br> To monitor service thread jank events, you can implement two callbacks as instrumentation functions, placing them before and after the service thread event.  |
+| [HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFunc, OH_HiCollie_EndFunc* endFunc, HiCollie_DetectionParam param)](#oh_hicollie_init_jankdetection) | - | Registers a callback used to detect service thread jank events.<br> To monitor service thread jank events, you can implement two callbacks as instrumentation functions, placing them before and after the service thread event.  |
 | [HiCollie_ErrorCode OH_HiCollie_Report(bool* isSixSecond)](#oh_hicollie_report) | - | Reports a service thread stuck event and generates logs to help locate application stuck issues.<br> Call **OH_HiCollie_Init_StuckDetection()** or **OH_HiCollie_Init_StuckDetectionWithTimeout()** to initialize the detection task.<br> If the task times out, call **OH_HiCollie_Report()** to report the stuck event based on the service logic.|
 | [typedef void (\*OH_HiCollie_Callback)(void*)](#oh_hicollie_callback) | OH_HiCollie_Callback | Triggered when [OH_HiCollie_CancelTimer](capi-hicollie-h.md#oh_hicollie_canceltimer) is not called within the custom task timeout period after [OH_HiCollie_SetTimer](capi-hicollie-h.md#oh_hicollie_settimer) is called.|
 | [HiCollie_ErrorCode OH_HiCollie_SetTimer(HiCollie_SetTimerParam param, int *id)](#oh_hicollie_settimer) | - | Registers a timer to check whether the execution time of a function or code block exceeds the custom time.<br> This API is used together with the **OH_HiCollie_CancelTimer** API.|
@@ -59,12 +66,12 @@ Enumerates the error codes used in the HiCollie module.
 
 **Since**: 12
 
-| Enum Item| Description                             |
-| -- |---------------------------------|
-| HICOLLIE_SUCCESS  = 0 | The operation is successful.                            |
-| HICOLLIE_INVALID_ARGUMENT  = 401 | The parameter is invalid.                          |
-| HICOLLIE_WRONG_THREAD_CONTEXT = 29800001 | The called thread is incorrect.                        |
-| HICOLLIE_REMOTE_FAILED = 29800002 | The remote call fails.                        |
+| Enum Item| Description|
+| -- | -- |
+| HICOLLIE_SUCCESS  = 0 | The operation is successful.|
+| HICOLLIE_INVALID_ARGUMENT  = 401 | The parameter is invalid.|
+| HICOLLIE_WRONG_THREAD_CONTEXT = 29800001 | The called thread is incorrect.|
+| HICOLLIE_REMOTE_FAILED = 29800002 | The remote call fails.|
 | HICOLLIE_INVALID_TIMER_NAME = 29800003 | The timer name is invalid.<br>**Since**: 18|
 | HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004 | The function execution timeout value is invalid.<br>**Since**: 18                 |
 | HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005 | The process to be accessed is incorrect.<br>**Since**: 18                |
@@ -84,10 +91,10 @@ Enumerates the actions to be performed when a function times out.
 
 | Enum Item| Description|
 | -- | -- |
-| HICOLLIE_FLAG_DEFAULT = (~0) | Generates logs and locates, kills, and recovers the process. This is the default value.|
+| HICOLLIE_FLAG_DEFAULT = (~0) | Generates logs and recovers the function. This is the default action.|
 | HICOLLIE_FLAG_NOOP = (0) | Executes only the callback.|
 | HICOLLIE_FLAG_LOG = (1 << 0) | Generates logs.|
-| HICOLLIE_FLAG_RECOVERY = (1 << 1) | Terminates the process and triggers recovery.|
+| HICOLLIE_FLAG_RECOVERY = (1 << 1) | Recovers the function.|
 
 
 ## Function Description
@@ -100,7 +107,7 @@ typedef void (*OH_HiCollie_Task)(void)
 
 **Description**
 
-Defines a function used to check whether a service thread is stuck.<br> This function is called by HiCollie every 3 seconds in an independent thread.<br> For example, this function can be used to send a message to a service thread and set a flag after the service thread receives the message. Then the flag is checked to determine whether the service thread is stuck.
+Checks whether a service thread is stuck.<br> This function is called by HiCollie every 3 seconds in an independent thread.<br> For example, this function can be used to send a message to a service thread and set a flag after the service thread receives the message. Then the flag is checked to determine whether the service thread is stuck.
 
 **Since**: 12
 
@@ -112,7 +119,7 @@ typedef void (*OH_HiCollie_BeginFunc)(const char* eventName)
 
 **Description**
 
-Defines a function used to record the begin time when a service thread processes an event. This function is used in the jank event detection.<br> HiCollie checks the duration of each event. If the duration exceeds the preset threshold, a jank event is reported.<br> This function is inserted before each event is processed.
+Records the begin time when a service thread processes an event. This function is used in the jank event detection.<br> HiCollie checks the duration of each event. If the duration exceeds the preset threshold, a jank event is reported.<br> This function is inserted before each event is processed.
 
 **Since**: 12
 
@@ -131,7 +138,7 @@ typedef void (*OH_HiCollie_EndFunc)(const char* eventName)
 
 **Description**
 
-Defines a function used to check whether a service thread is janky when processing an event. This function is used in the jank event detection.<br> HiCollie checks the duration of each event. If the duration exceeds the preset threshold, a jank event is reported.<br> This function is inserted after each event is processed.
+Checks whether a service thread is janky when processing an event. This function is used in the jank event detection.<br> HiCollie checks the duration of each event. If the duration exceeds the preset threshold, a jank event is reported.<br> This function is inserted after each event is processed.
 
 **Since**: 12
 
@@ -196,7 +203,7 @@ Registers a callback used to periodically detect service thread stuck events.  <
 ### OH_HiCollie_Init_JankDetection()
 
 ```
-HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFunc,OH_HiCollie_EndFunc* endFunc, HiCollie_DetectionParam param)
+HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFunc, OH_HiCollie_EndFunc* endFunc, HiCollie_DetectionParam param)
 ```
 
 **Description**

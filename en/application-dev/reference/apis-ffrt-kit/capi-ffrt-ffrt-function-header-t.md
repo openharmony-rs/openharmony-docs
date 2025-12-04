@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct {...} ffrt_function_header_t
+```
+
 ## Overview
 
 The **ffrt_function_header_t** struct describes a task execution function.

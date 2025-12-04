@@ -92,7 +92,7 @@ try {
 }
 ```
 
-## getSelectionContent()
+## getSelectionContent()<sup>22+</sup>
 
 getSelectionContent(): Promise\<string>
 

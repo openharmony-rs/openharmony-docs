@@ -7,7 +7,7 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
-从API 20开始，支持B帧视频编码。
+从API version 20开始，支持B帧视频编码。
 
 **双向预测帧**，又叫B帧（B frame），是视频编码标准中定义的主要帧类型之一。B帧与P帧的主要差别在于P帧仅支持前向预测，而B帧支持双向预测。
 

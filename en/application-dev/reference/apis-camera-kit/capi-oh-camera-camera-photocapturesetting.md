@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_PhotoCaptureSetting {...} Camera_PhotoCaptureSetting
+```
+
 ## Overview
 
 The struct describes the parameters related to photo capture.

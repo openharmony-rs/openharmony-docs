@@ -76,7 +76,7 @@ More system applications, including the Home Screen, System UI, Settings, Camera
 
 2. Register an SSH public key for access to Gitee.
 
-3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
+3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
   
    ```
    git config --global user.name "yourname"
@@ -87,7 +87,7 @@ More system applications, including the Home Screen, System UI, Settings, Camera
 4. Run the following commands to install the **repo** tool:
   
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download it to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download it to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -100,7 +100,7 @@ Use the **repo** tool to download the source code over SSH. (You must have an SS
 
 
 ```
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1-Release --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1-Release --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -111,7 +111,7 @@ Use the **repo** tool to download the source code over HTTPS.
 
 
 ```
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1-Release --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1-Release --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -194,7 +194,7 @@ For details, see the following:
 
 ### Chip and Development Board Adaptation
 
-For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
+For details about the adaptation status, see [SIG_DevBoard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
 
 ### Samples & Codelabs
 
@@ -204,25 +204,25 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Subsystem name| Sample Name| Introduction| Programming Language|
 | -------- | -------- | -------- | -------- |
-| Telephony| [SMS](https://gitee.com/openharmony/app_samples/tree/master/Telephony/Message)| This sample shows how to send SMS messages.| ArkTS |
-| Telephony| [Radio](https://gitee.com/openharmony/app_samples/tree/master/Telephony/RadioTech)| This sample shows how to use the radio function of the telephony service in ArkTS to obtain information, including the radio access technology, network status, network selection mode, ISO country code, signal strength list, and whether the radio function is enabled. | ArkTS |
-| Device management| [Power Management](https://gitee.com/openharmony/app_samples/tree/master/common/PowerManager)| This sample shows how to power off a device, restart the system, and check the screen status.| ArkTS |
-| Device management| [Sensor](https://gitee.com/openharmony/app_samples/tree/master/device/Sensor)| This sample uses the orientation sensor APIs to implement the compass effect.| ArkTS |
-| Device management| [Device Management](https://gitee.com/openharmony/app_samples/tree/master/device/DeviceManager)| This sample shows the use of the **DeviceManager** API in ArkTS, including obtaining the trusted device list, scanning for devices, authenticating devices, and subscribing to device status changes. | ArkTS |
-| Account management| [Application Account Management](https://gitee.com/openharmony/app_samples/tree/master/Account/AppAccountManager)| This sample shows how to register/log in to an application and set the account information to demonstrate application account management.| ArkTS |
-| ArkUI | [web](https://gitee.com/openharmony/app_samples/tree/master/ETSUI/Web)| This sample shows the function pages of the **\<Web>** component.| ArkTS |
-| ArkUI | [Drag](https://gitee.com/openharmony/app_samples/tree/master/ETSUI/Drag)| This sample shows the drag operation function.| ArkTS |
-| ArkUI | [Animation](https://gitee.com/openharmony/app_samples/tree/master/ETSUI/ArkUIAnimation)| This sample demonstrates the effect of the **AnimatorProperty** and **Explicit Animation**.| ArkTS |
-| Data management| [Querying the DDM Result Set](https://gitee.com/openharmony/app_samples/tree/master/data/DDMQuery)| This sample shows how to create a query object to query data in a key-value (KV) store and obtain the result set in distributed data management (DDM).| ArkTS |
-| Data management| [ArkTS RDB](https://gitee.com/openharmony/app_samples/tree/master/data/DistributedRdb) | This sample shows how to use a relational database (RDB) in ArkTS, including adding, deleting, modifying, and querying data. | ArkTS |
-| Common event and notification| [Reminder Agent](https://gitee.com/openharmony/app_samples/tree/master/Notification/AlarmClock)| This sample shows how to use the reminder agent by simulating an alarm clock.| ArkTS |
-| Common event and notification| [Event notification](https://gitee.com/openharmony/app_samples/tree/master/Notification/Emitter)| This sample shows the in-process event notification. After a user selects an offering and submits an order, the selected offering is displayed in the order list.| ArkTS |
-| Connectivity| [RPC](https://gitee.com/openharmony/app_samples/tree/master/Communication/RPC)| This sample shows the data exchange between the frontend and backend of a device. After the offering and quantity are selected at the frontend, the backend calculates the result and displays it at the frontend.| ArkTS |
-| Connectivity| [WLAN](https://gitee.com/openharmony/app_samples/tree/master/Communication/Wlan) | This sample shows how to use WLAN with ArkTS, including disabling and enabling the WLAN, scanning the WLAN and obtaining the scanning result, listening for WLAN status and Wi-Fi connection status, obtaining the IP address, country code, and checking whether the device supports WLAN features. | ArkTS |
-| Multimedia| [Recorder](https://gitee.com/openharmony/app_samples/tree/master/media/Recorder)| This sample shows how to use audio recording and playback of the media service.| ArkTS |
-| Multimedia| [Multimedia](https://gitee.com/openharmony/app_samples/tree/master/media/MultiMedia)| This demo shows how to invoke the camera to take photos in ArkTS and how to use the **MediaLibrary** APIs to add, delete, modify, and query media files. | ArkTS |
+| Telephony| [SMS](https://gitcode.com/openharmony/app_samples/tree/master/Telephony/Message)| This sample shows how to send SMS messages.| ArkTS |
+| Telephony| [Radio](https://gitcode.com/openharmony/app_samples/tree/master/Telephony/RadioTech)| This sample shows how to use the radio function of the telephony service in ArkTS to obtain information, including the radio access technology, network status, network selection mode, ISO country code, signal strength list, and whether the radio function is enabled. | ArkTS |
+| Device management| [Power Management](https://gitcode.com/openharmony/app_samples/tree/master/common/PowerManager)| This sample shows how to power off a device, restart the system, and check the screen status.| ArkTS |
+| Device management| [Sensor](https://gitcode.com/openharmony/app_samples/tree/master/device/Sensor)| This sample uses the orientation sensor APIs to implement the compass effect.| ArkTS |
+| Device management| [Device Management](https://gitcode.com/openharmony/app_samples/tree/master/device/DeviceManager)| This sample shows the use of the **DeviceManager** API in ArkTS, including obtaining the trusted device list, scanning for devices, authenticating devices, and subscribing to device status changes. | ArkTS |
+| Account management| [Application Account Management](https://gitcode.com/openharmony/app_samples/tree/master/Account/AppAccountManager)| This sample shows how to register/log in to an application and set the account information to demonstrate application account management.| ArkTS |
+| ArkUI | [web](https://gitcode.com/openharmony/app_samples/tree/master/ETSUI/Web)| This sample shows the function pages of the **\<Web>** component.| ArkTS |
+| ArkUI | [Drag](https://gitcode.com/openharmony/app_samples/tree/master/ETSUI/Drag)| This sample shows the drag operation function.| ArkTS |
+| ArkUI | [Animation](https://gitcode.com/openharmony/app_samples/tree/master/ETSUI/ArkUIAnimation)| This sample demonstrates the effect of the **AnimatorProperty** and **Explicit Animation**.| ArkTS |
+| Data management| [Querying the DDM Result Set](https://gitcode.com/openharmony/app_samples/tree/master/data/DDMQuery)| This sample shows how to create a query object to query data in a key-value (KV) store and obtain the result set in distributed data management (DDM).| ArkTS |
+| Data management| [ArkTS RDB](https://gitcode.com/openharmony/app_samples/tree/master/data/DistributedRdb) | This sample shows how to use a relational database (RDB) in ArkTS, including adding, deleting, modifying, and querying data. | ArkTS |
+| Common event and notification| [Reminder Agent](https://gitcode.com/openharmony/app_samples/tree/master/Notification/AlarmClock)| This sample shows how to use the reminder agent by simulating an alarm clock.| ArkTS |
+| Common event and notification| [Event notification](https://gitcode.com/openharmony/app_samples/tree/master/Notification/Emitter)| This sample shows the in-process event notification. After a user selects an offering and submits an order, the selected offering is displayed in the order list.| ArkTS |
+| Connectivity| [RPC](https://gitcode.com/openharmony/app_samples/tree/master/Communication/RPC)| This sample shows the data exchange between the frontend and backend of a device. After the offering and quantity are selected at the frontend, the backend calculates the result and displays it at the frontend.| ArkTS |
+| Connectivity| [WLAN](https://gitcode.com/openharmony/app_samples/tree/master/Communication/Wlan) | This sample shows how to use WLAN with ArkTS, including disabling and enabling the WLAN, scanning the WLAN and obtaining the scanning result, listening for WLAN status and Wi-Fi connection status, obtaining the IP address, country code, and checking whether the device supports WLAN features. | ArkTS |
+| Multimedia| [Recorder](https://gitcode.com/openharmony/app_samples/tree/master/media/Recorder)| This sample shows how to use audio recording and playback of the media service.| ArkTS |
+| Multimedia| [Multimedia](https://gitcode.com/openharmony/app_samples/tree/master/media/MultiMedia)| This demo shows how to invoke the camera to take photos in ArkTS and how to use the **MediaLibrary** APIs to add, delete, modify, and query media files. | ArkTS |
 
-For more information, visit [Samples](https://gitee.com/openharmony/app_samples).
+For more information, visit [Samples](https://gitcode.com/openharmony/app_samples).
 
 #### New Codelabs
 
@@ -230,13 +230,13 @@ For more information, visit [Samples](https://gitee.com/openharmony/app_samples)
 
 | Codelab Name                                                    | Introduction                                                        | Programming Language|
 | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- |
-| [Distributed Authentication](https://gitee.com/openharmony/codelabs/tree/master/Distributed/GameAuthOpenH)| This codelab shows how to develop a distributed game authentication application in JS and how to use the distributed startup, **DeviceManager** objects, and device attribute display interfaces.| JS       |
-| [Distributed Game Controller](https://gitee.com/openharmony/codelabs/tree/master/Distributed/HandleGameApplication)| This codelab shows how to develop a game controller in ArkTS. By leveraging the distributed capabilities, one development board is used as the game controller, and another development board is used as the game server. | ArkTS |
-| [Distributed Jigsaw Puzzle](https://gitee.com/openharmony/codelabs/tree/master/Distributed/OpenHarmonyPictureGame)| This codelab shows how to develop a jigsaw puzzle. In this development, the RPC is used for cross-device communication, and **CommonEvent** is used to implement communication between the Service ability and FA.| ArkTS |
-| [Distributed Control](https://gitee.com/openharmony/codelabs/tree/master/Distributed/RemoteControllerETS)| This codelab shows how to develop a distributed control in ArkTS. By leveraging the distributed capabilities, one development board is used as the TV, and another development board is used as the remote control. | ArkTS |
-| [Audio Recording](https://gitee.com/openharmony/codelabs/tree/master/Media/Audio_OH_ETS)| This codelab shows how to use **AudioRecorder** to record an audio file and use **AudioPlayer** to play the recorded audio.| ArkTS |
-| [Notepad](https://gitee.com/openharmony/codelabs/tree/master/Data/NotePad_OH_ETS)| This codelab shows how to develop a notepad in ArkTS. You can create, delete, and favorite notes, and use the lightweight database to store data persistently. | ArkTS |
-| [Distributed Mail Editing](https://gitee.com/openharmony/codelabs/tree/master/Distributed/OHMailETS)| This codelab shows how to develop the distributed email editing function. By leveraging the distributed capabilities, a remote device in the same LAN and with the same login account can be started, and email editing can be continued on the remote device.| ArkTS |
+| [Distributed Authentication](https://gitcode.com/openharmony/codelabs/tree/master/Distributed/GameAuthOpenH)| This codelab shows how to develop a distributed game authentication application in JS and how to use the distributed startup, **DeviceManager** objects, and device attribute display interfaces.| JS       |
+| [Distributed Game Controller](https://gitcode.com/openharmony/codelabs/tree/master/Distributed/HandleGameApplication)| This codelab shows how to develop a game controller in ArkTS. By leveraging the distributed capabilities, one development board is used as the game controller, and another development board is used as the game server. | ArkTS |
+| [Distributed Jigsaw Puzzle](https://gitcode.com/openharmony/codelabs/tree/master/Distributed/OpenHarmonyPictureGame)| This codelab shows how to develop a jigsaw puzzle. In this development, the RPC is used for cross-device communication, and **CommonEvent** is used to implement communication between the Service ability and FA.| ArkTS |
+| [Distributed Control](https://gitcode.com/openharmony/codelabs/tree/master/Distributed/RemoteControllerETS)| This codelab shows how to develop a distributed control in ArkTS. By leveraging the distributed capabilities, one development board is used as the TV, and another development board is used as the remote control. | ArkTS |
+| [Audio Recording](https://gitcode.com/openharmony/codelabs/tree/master/Media/Audio_OH_ETS)| This codelab shows how to use **AudioRecorder** to record an audio file and use **AudioPlayer** to play the recorded audio.| ArkTS |
+| [Notepad](https://gitcode.com/openharmony/codelabs/tree/master/Data/NotePad_OH_ETS)| This codelab shows how to develop a notepad in ArkTS. You can create, delete, and favorite notes, and use the lightweight database to store data persistently. | ArkTS |
+| [Distributed Mail Editing](https://gitcode.com/openharmony/codelabs/tree/master/Distributed/OHMailETS)| This codelab shows how to develop the distributed email editing function. By leveraging the distributed capabilities, a remote device in the same LAN and with the same login account can be started, and email editing can be continued on the remote device.| ArkTS |
 
 
 ## Resolved Issues
@@ -245,9 +245,9 @@ For more information, visit [Samples](https://gitee.com/openharmony/app_samples)
 
 | Issue No.| Description|
 | -------- | -------- |
-| [I4MGJM](https://gitee.com/openharmony/drivers_peripheral/issues/I4MGJM) | [HDF/Camera] The case fails when the RK3568 board runs the camera HDI tests.|
+| [I4MGJM](https://gitcode.com/openharmony/drivers_peripheral/issues/I4MGJM) | [HDF/Camera] The case fails when the RK3568 board runs the camera HDI tests.|
 | I4OECR | An Ark stack exception occurs during XTS running (low probability).|
-| [I4OBTW](https://gitee.com/openharmony/ability_ability_runtime/issues/I4OBTW) | After all XTS cases are executed and the application is installed, aa start failures occur, affecting the pipeline stability test.|
+| [I4OBTW](https://gitcode.com/openharmony/ability_ability_runtime/issues/I4OBTW) | After all XTS cases are executed and the application is installed, aa start failures occur, affecting the pipeline stability test.|
 | I4OLHF | [ArkUI subsystem] The test process is abnormal due to the com.amsst.amsMissionSnapshotTest process.|
 | I4OLUK | [ArkUI subsystem] The process stack is abnormal due to the com.ohos.systemui process.|
 
@@ -258,8 +258,8 @@ For more information, visit [Samples](https://gitee.com/openharmony/app_samples)
 
 | Issue No.| Description| Impact| To Be Resolved On|
 | -------- | -------- | -------- | -------- |
-| [I4NRS5](https://gitee.com/openharmony/kernel_linux_5.10/issues/I4NRS5) | [Kernel subsystem] A CVE vulnerability exists.| No patch has been released for the Linux kernel. The kernel will be updated after the patch is released in the community.| Depending on the patch release in the community|
-| [I4UUFR](https://gitee.com/openharmony/third_party_e2fsprogs/issues/I4UUFR) | Local image compilation and build may fail for the Hi3516 development board.| Compilation occasionally fails on the Hi3516 development board. This issue can be resolved by downloading the code.| 2022-04-30 |
-| [I4RJU8](https://e.gitee.com/open_harmony/issues/list?issue=I4RJU8) | A black screen occurs during camera preview on the Hi3516 development board of a standard-system device.| The preview function is affected.| 2022-05-30 |
-| [I4Z3G9](https://e.gitee.com/open_harmony/issues/list?issue=I4Z3G9) | [Graphics subsystem] [RK3568] Screen flickering occurs when the secondary window is opened in the immersive primary window.| User experience is adversely affected.| 2022-04-15 |
-| [I50EBB](https://gitee.com/openharmony/docs/issues/I50EBB?from=project-issue) | [Hi3516 burning] Images of the Hi3516 development board on a standard-system device cannot be burnt by using the IDE.| The burning fails only in the Ubuntu environment of the IDE.<br>**Workaround**: Use the remote mode to burn the image on Windows.<br>**Solution**:<br>The Windows + Ubuntu hybrid mode will be used. Remote Ubuntu development, compilation, and debugging are performed on Windows, and burning is automatically performed on Windows.| 2022-04-30 |
+| [I4NRS5](https://gitcode.com/openharmony/kernel_linux_5.10/issues/I4NRS5) | [Kernel subsystem] A CVE vulnerability exists.| No patch has been released for the Linux kernel. The kernel will be updated after the patch is released in the community.| Depending on the patch release in the community|
+| [I4UUFR](https://gitcode.com/openharmony/third_party_e2fsprogs/issues/I4UUFR) | Local image compilation and build may fail for the Hi3516 development board.| Compilation occasionally fails on the Hi3516 development board. This issue can be resolved by downloading the code.| 2022-04-30 |
+| [I4RJU8](https://e.gitcode.com/open_harmony/issues/list?issue=I4RJU8) | A black screen occurs during camera preview on the Hi3516 development board of a standard-system device.| The preview function is affected.| 2022-05-30 |
+| [I4Z3G9](https://e.gitcode.com/open_harmony/issues/list?issue=I4Z3G9) | [Graphics subsystem] [RK3568] Screen flickering occurs when the secondary window is opened in the immersive primary window.| User experience is adversely affected.| 2022-04-15 |
+| [I50EBB](https://gitcode.com/openharmony/docs/issues/I50EBB?from=project-issue) | [Hi3516 burning] Images of the Hi3516 development board on a standard-system device cannot be burnt by using the IDE.| The burning fails only in the Ubuntu environment of the IDE.<br>**Workaround**: Use the remote mode to burn the image on Windows.<br>**Solution**:<br>The Windows + Ubuntu hybrid mode will be used. Remote Ubuntu development, compilation, and debugging are performed on Windows, and burning is automatically performed on Windows.| 2022-04-30 |

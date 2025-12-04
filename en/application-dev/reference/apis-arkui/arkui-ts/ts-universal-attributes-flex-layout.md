@@ -4,7 +4,7 @@
 <!--Owner: @camlostshi-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The flex layout enables flexible arrangement, alignment, and space distribution among child components within a container. It allows elements to dynamically expand or shrink based on available space, meeting responsive layout requirements across different screen sizes.
 
@@ -53,7 +53,7 @@ Sets the percentage of the parent container's remaining space that is allocated 
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Percentage of the parent container's remaining space that is allocated to the component.<br>Value range: (0, +∞).<br>Default value: **0**.|
+| value  | number | Yes  | Percentage of the parent container's remaining space that is allocated to the component.<br>Value range: (0, +∞). Default value: **0**.|
 
 **Return value**
 

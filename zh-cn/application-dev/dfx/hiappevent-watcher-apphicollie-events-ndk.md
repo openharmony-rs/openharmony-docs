@@ -24,7 +24,7 @@
 
 以实现对用户点击按钮触发卡顿场景生成的卡顿事件订阅为例，说明开发步骤。
 
-1. 参考[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)README中**Using JsonCpp in your project**介绍的使用方法获取到jsoncpp.cpp、json.h和json-forwards.h三个文件。
+1. 获取该示例工程依赖的jsoncpp文件，从[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)下载源码的压缩包，并按照README的**Amalgamated source**中介绍的操作步骤得到jsoncpp.cpp、json.h和json-forwards.h三个文件。
 
 2. 新建Native C++工程，并将上述文件导入到新建工程内，目录结构如下：
 
@@ -282,82 +282,100 @@
 
 7. 将RegisterWatcher及TestHiCollieTimerNdk注册为ArkTS接口。
 
-   编辑“napi_init.cpp”文件，将RegisterWatcher及TestHiCollieTimerNdk注册为ArkTS接口：
+   编辑“napi_init.cpp”文件，在Init函数中的desc[]数组中将TestHiCollieTimerNdk、RegisterAppHicollieWatcherR及RegisterAppHicollieWatcherR方法注册为ArkTS接口。
+   <!-- @[test_hicollie_timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   // 将TestHiCollieTimerNdk注册为ArkTS接口
+   { "TestHiCollieTimerNdk", nullptr, TestHiCollieTimerNdk, nullptr, nullptr, nullptr, napi_default, nullptr },
+   ```
 
-   ```c++
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports)
-   {
-       napi_property_descriptor desc[] = {
-           { "RegisterWatcher", nullptr, RegisterWatcher, nullptr, nullptr, nullptr, napi_default, nullptr },
-           { "TestHiCollieTimerNdk", nullptr, TestHiCollieTimerNdk, nullptr, nullptr, nullptr, napi_default, nullptr },
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   static napi_module demoModule = {
-       .nm_version = 1,
-       .nm_flags = 0,
-       .nm_filename = nullptr,
-       .nm_register_func = Init,
-       .nm_modname = "entry",
-       .nm_priv = ((void*)0),
-       .reserved = { 0 },
-   };
-   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-   {
-       napi_module_register(&demoModule);
-   }
+   <!-- @[register_app_hicollie_watcherR](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   { "RegisterAppHicollieWatcherR", nullptr, RegisterAppHicollieWatcherR, nullptr, nullptr, nullptr,
+       napi_default, nullptr },
+   ```
+
+   <!-- @[register_app_hicollie_watcherT](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   { "RegisterAppHicollieWatcherT", nullptr, RegisterAppHicollieWatcherT, nullptr, nullptr, nullptr,
+       napi_default, nullptr },
    ```
 
    编辑“index.d.ts”文件，定义ArkTS接口：
-
-   ```typescript
-   export const RegisterWatcher: () => void;
+   <!-- @[test_hicollie_timer_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   
+   ``` TypeScript
    export const TestHiCollieTimerNdk: () => void;
+   ```
+
+   <!-- @[Register_AppHicollie_WatcherR.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   
+   ``` TypeScript
+   export const RegisterAppHicollieWatcherR: () => void;
+   ```
+
+   <!-- @[Register_AppHicollie_WatcherT.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   
+   ``` TypeScript
+   export const RegisterAppHicollieWatcherT: () => void;
    ```
 
 8. 编辑“EntryAbility.ets”文件，在onCreate()函数中新增接口调用。
 
-   ```typescript
-   // 导入依赖模块
-   import testNapi from 'libentry.so'
+   <!-- @[EventSub_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
-   // 在onCreate()函数中新增接口调用
-   // 启动时，注册系统事件观察者
-   testNapi.RegisterWatcher();
+   ``` TypeScript
+   import testNapi from 'libentry.so';
+   ```
+
+   <!-- @[Register_AppHicollie_WatcherR](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   // 在onCreate()函数中新增接口调用，启动时注册系统事件观察者R
+   testNapi.RegisterAppHicollieWatcherR();
+   ```
+
+   <!-- @[Register_AppHicollie_WatcherT](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   // 在onCreate()函数中新增接口调用，启动时注册系统事件观察者T
+   testNapi.RegisterAppHicollieWatcherT();
    ```
 
 9. 编辑“Index.ets”文件，新增按钮触发任务执行超时事件。
 
-   ```typescript
+   <!-- @[EventSub_Index_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import testNapi from 'libentry.so';
-   @Entry
-     @Component
-     struct Index {
-       @State message: string = 'Hello World';
-      
-       build() {
-         Row() {
-           Column() {
-             Button("TestHiCollieTimerNdk")
-               .fontSize(50)
-               .fontWeight(FontWeight.Bold)
-               .onClick(testNapi.TestHiCollieTimerNdk);  //添加点击事件，触发TestHiCollieTimerNdk方法。
-           }
-           .width('100%')
-         }
-         .height('100%')
-       }
-   }
+   ```
+
+   在Index页面新增触发TestHiCollieTimerNdk方法的按钮。
+   <!-- @[hicollie_timer_ndk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   //添加点击事件，触发TestHiCollieTimerNdk方法。
+   Button('TestHiCollieTimerNdk')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       testNapi.TestHiCollieTimerNdk();
+     })
    ```
 
 10. 点击DevEco Studio界面中的运行按钮，运行应用工程，然后在应用界面中点击按钮“testHiCollieTimerNdk”，触发任务执行超时事件。
 
 ### 验证观察者是否订阅到任务执行超时事件
 
-1. 应用工程崩溃退出后再次运行可以在Log窗口看到对系统事件数据的处理日志。
+应用工程崩溃退出后再次运行可以在Log窗口看到对系统事件数据的处理日志。
 
    ```text
    HiAppEvent eventInfo.domain=OS
@@ -382,21 +400,34 @@
 
 1. 移除事件观察者。
 
-   ```c++
-   static napi_value RemoveWatcher(napi_env env, napi_callback_info info) {
+   <!-- [APP_Hicollie_RemoveWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_value RemoveWatcher(napi_env env, napi_callback_info info)
+   {
        // 使观察者停止监听事件
-       OH_HiAppEvent_RemoveWatcher(systemEventWatcher);
+       // ···
+       OH_HiAppEvent_RemoveWatcher(appHicollieWatcherR);
+       OH_HiAppEvent_RemoveWatcher(appHicollieWatcherT);
+       // ···
        return {};
    }
    ```
 
 2. 销毁事件观察者。
 
-   ```c++
-   static napi_value DestroyWatcher(napi_env env, napi_callback_info info) {
-       // 销毁创建的观察者，并置systemEventWatcher为nullptr。
-       OH_HiAppEvent_DestroyWatcher(systemEventWatcher);
-       systemEventWatcher = nullptr;
+   <!-- [APP_Hicollie_DestroyWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_value DestroyWatcher(napi_env env, napi_callback_info info)
+   {
+       // 销毁创建的观察者，并置eventWatcher为nullptr。
+       // ···
+       OH_HiAppEvent_DestroyWatcher(appHicollieWatcherR);
+       OH_HiAppEvent_DestroyWatcher(appHicollieWatcherT);
+       appHicollieWatcherR = nullptr;
+       appHicollieWatcherT = nullptr;
+       // ···
        return {};
    }
    ```

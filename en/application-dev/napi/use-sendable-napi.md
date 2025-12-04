@@ -8,7 +8,7 @@
 
 ## When to Use
 
-You can use **napi_wrap_sendable** to wrap a C++ object in a Sendable ArkTS object, and use **napi_unwrap_sendable** to retrieve the C++ object previously wrapped in the Sendable ArkTS object for subsequent operations.
+You can call **napi_wrap_sendable** to bind an ArkTS [Sendable](../arkts-utils/arkts-sendable.md) object to a native C++ object. Then, call **napi_unwrap_sendable** to obtain the C++ object bound to the ArkTS object and perform operations on the C++ object.
 
 ## Example
 

@@ -144,7 +144,7 @@ The SM4 encryption and decryption can be implemented based a string parameter. W
 
 ## AES-WRAP
 
-The crypto algorithm library provides the AES-WRAP algorithm, which is an encryption algorithm based on [AES](crypto-sym-key-generation-conversion-spec.md#aes) and is used to securely store or transmit symmetric keys. This algorithm is used to protect keys by encrypting them, preventing keys from being disclosed or tampered with during storage or transmission.
+The Crypto framework provides the AES-WRAP algorithm, which is an encryption algorithm based on [AES](crypto-sym-key-generation-conversion-spec.md#aes) and is used to securely store or transmit symmetric keys. This algorithm is used to protect keys by encrypting them, preventing keys from being disclosed or tampered with during storage or transmission.
 
 | Algorithm| String Parameter| API Version| 
 | -------- | -------- | -------- |
@@ -163,3 +163,22 @@ The block cipher algorithm has a fixed block length. If the length of the last b
 - **PKCS7**: pads a block cipher with a block size from 1 to 255 bytes. The padding scheme is the same as that of PKCS#5. PKCS#5 is defined for 8-byte block sizes, while PKCS#7 can work with block size ranging from 1 to 255 bytes.
 
 For the modes that convert block ciphers into stream ciphers, such as CFB, OFB, CTR, GCM, and CCM, padding is not required. Therefore, **NoPadding** is used no matter whether the padding mode is specified.
+
+## ChaCha20
+
+The Crypto framework supports this algorithm since API version 22.
+
+The Crypto framework provides [ChaCha20](crypto-sym-key-generation-conversion-spec.md#chacha20) encryption and decryption, which requires the IV to be passed by default. Specifically, the [IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec) parameter is needed.
+
+The most commonly used encryption mode is Poly1305, which works with the [Poly1305ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#poly1305paramsspec22) parameter.
+
+ChaCha20 is a stream cipher, so no padding algorithm is required.
+
+ChaCha20 encryption and decryption can be implemented based on a string parameter. When creating a cipher instance, you need to specify the algorithm specifications in a string parameter, which consists of the symmetric key type and block mode separated by a vertical bar (|).
+
+In the following table, the options included in the square brackets ([]) are mutually exclusive. You can use only one of them in a string parameter.
+
+| Symmetric Algorithm Name| Key Length (Bit)| String Parameter| API Version| 
+| -------- | -------- | -------- | -------- |
+| ChaCha20 | 256 | ChaCha20 | 22+ | 
+| ChaCha20 | 256 | ChaCha20\|Poly1305 | 22+ | 

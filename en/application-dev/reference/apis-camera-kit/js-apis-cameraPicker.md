@@ -15,10 +15,10 @@ The module provides APIs for an application to use the system camera to take pho
 ## Modules to Import
 
 ```ts
-import { cameraPicker as picker } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
 ```
 
-## picker.pick
+## cameraPicker.pick
 
 pick(context: Context, mediaTypes: Array\<PickerMediaType\>, pickerProfile: PickerProfile): Promise\<PickerResult\>
 
@@ -49,17 +49,17 @@ Starts the camera picker and enters the corresponding mode based on the media ty
 **Example**
 
 ```ts
-import { cameraPicker as picker } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
 import { camera } from '@kit.CameraKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function demo(context: Context) {
   try {
-    let pickerProfile: picker.PickerProfile = {
+    let pickerProfile: cameraPicker.PickerProfile = {
       cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK
     };
-    let pickerResult: picker.PickerResult = await picker.pick(context,
-      [picker.PickerMediaType.PHOTO, picker.PickerMediaType.VIDEO], pickerProfile);
+    let pickerResult: cameraPicker.PickerResult = await cameraPicker.pick(context,
+      [cameraPicker.PickerMediaType.PHOTO, cameraPicker.PickerMediaType.VIDEO], pickerProfile);
     console.info("the pick pickerResult is:" + JSON.stringify(pickerResult));
   } catch (error) {
     let err = error as BusinessError;

@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Provides capabilities to control focus, including features such as clearing, moving, and activating focus.
 
@@ -27,6 +27,8 @@ Clears the focus and forcibly moves the focus to the root container node of the 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
+
+In this example, **button2** receives initial focus by default. After **clearFocus** is clicked, focus returns to the page's root container node **column1**. Pressing the **Tab** key then restores focus to **button2**. Clicking **button1** transfers focus to that button. Following another **clearFocus** click, focus again returns to **column1**, and pressing **Tab** subsequently moves focus to **button1**.
 
 ```ts
 @Entry
@@ -66,7 +68,9 @@ struct ClearFocusExample {
             this.getUIContext().getFocusController().clearFocus();
           })
       }
+      .id('column2')
     }
+    .id('column1')
     .width('100%')
     .height('100%')
   }
@@ -248,9 +252,9 @@ struct ClearFocusExample {
           .focusOnTouch(true)
           .backgroundColor(Color.Blue)
           .onClick(()=> {
-            console.log("button1 onClick");
+            console.info("button1 onClick");
             this.getUIContext().getFocusController().activate(true);
-            console.log("focus status " + this.getUIContext().getFocusController().isActive());
+            console.info("focus status " + this.getUIContext().getFocusController().isActive());
           })
         Button('button2')
           .width(200)
@@ -260,9 +264,9 @@ struct ClearFocusExample {
           .backgroundColor(this.btColor)
           .defaultFocus(true)
           .onClick(()=> {
-            console.log("button2 onClick");
+            console.info("button2 onClick");
             this.getUIContext().getFocusController().activate(false);
-            console.log("focus status " + this.getUIContext().getFocusController().isActive());
+            console.info("focus status " + this.getUIContext().getFocusController().isActive());
           })
           .onFocus(() => {
             this.btColor = Color.Red;
@@ -377,11 +381,11 @@ struct Index {
     Row() {
       Row() {
         Button('Button1').id('Button1').onKeyEvent((event) => {
-          console.log("Button1");
+          console.info("Button1");
           return true;
         })
         Button('Button2').id('Button2').onKeyEvent((event) => {
-          console.log("Button2");
+          console.info("Button2");
           return true;
         })
       }

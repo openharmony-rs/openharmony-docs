@@ -8,5 +8,5 @@
 <!--Adviser: @zhang_yixin13-->
 - ArkTS API<!--contacts-arkts-->
   - [@ohos.contact (Contacts)](js-apis-contact.md)
-- Error Codes
+- Error Codes<!--contacts-arkts-errcode-->
   - [Contact Error Codes](errorcode-contacts.md)

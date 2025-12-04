@@ -24,9 +24,9 @@ For details about the requirements on the Linux environment, see [Quick Start](.
 
 ### Getting Started with Development
 
-The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate development of the general framework for reading/writing the battery kernel node.
+The following uses [DAYU200](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate development of the general framework for reading/writing the battery kernel node.
 
-1. Modify the `battery_config.json` file in [default battery service configuration folder](https://gitee.com/openharmony/drivers_peripheral/tree/master/battery/interfaces/hdi_service/profile). The configuration is as follows:
+1. Modify the `battery_config.json` file in [default battery service configuration folder](https://gitcode.com/openharmony/drivers_peripheral/tree/master/battery/interfaces/hdi_service/profile). The configuration is as follows:
 
 ```text
 profile
@@ -79,7 +79,7 @@ Configuration description:
 
 - **set**: setter attribute of the charging scenario. **path** is the default attribute, which specifies the path of the kernel node that can be set in the charging scenario.
 
-2. Modify the API file `@ohos.batteryInfo.d.ts` in [interface_sdk-js/api](https://gitee.com/openharmony/interface_sdk-js/tree/master/api).
+2. Modify the API file `@ohos.batteryInfo.d.ts` in [interface_sdk-js/api](https://gitcode.com/openharmony/interface_sdk-js/tree/master/api).
 
 ```
 profile
@@ -169,4 +169,4 @@ Upon device restarting, check whether the return results of the getter and sette
 
 During development, you can refer to the default battery vibrator configuration:
 
-[Configuration file of the battery charging scenario](https://gitee.com/openharmony/drivers_peripheral/tree/master/battery/interfaces/hdi_service/profile)
+[Configuration file of the battery charging scenario](https://gitcode.com/openharmony/drivers_peripheral/tree/master/battery/interfaces/hdi_service/profile)

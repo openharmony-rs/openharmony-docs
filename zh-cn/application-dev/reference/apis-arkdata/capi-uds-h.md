@@ -34,6 +34,7 @@
 | [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)       | OH_UdsPixelMap    | 描述像素图片类型的统一数据结构。       |
 | [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) | OH_UdsArrayBuffer | 描述ArrayBuffer类型的统一数据结构。    |
 | [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) | OH_UdsContentForm | 描述内容卡片类型的统一数据结构。       |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md) | OH_UdsDetails | 描述字典类型的统一数据结构。 |
 
 ### 函数
 
@@ -106,12 +107,33 @@
 | [int OH_UdsContentForm_SetAppIcon(OH_UdsContentForm* pThis, const unsigned char* appIcon, unsigned int len)](#oh_udscontentform_setappicon) | 设置内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中的应用图标数据。 |
 | [int OH_UdsContentForm_SetAppName(OH_UdsContentForm* pThis, const char* appName)](#oh_udscontentform_setappname) | 设置内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中的应用名称数据。 |
 | [int OH_UdsContentForm_SetLinkUri(OH_UdsContentForm* pThis, const char* linkUri)](#oh_udscontentform_setlinkuri) | 设置内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中的超链接数据。 |
+| [int OH_UdsPlainText_GetDetails(OH_UdsPlainText* pThis, OH_UdsDetails* details)](#oh_udsplaintext_getdetails) | 从纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| [int OH_UdsPlainText_SetDetails(OH_UdsPlainText* pThis, const OH_UdsDetails* details)](#oh_udsplaintext_setdetails) | 设置纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)中的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
+| [int OH_UdsHyperlink_GetDetails(OH_UdsHyperlink* pThis, OH_UdsDetails* details)](#oh_udshyperlink_getdetails) | 从超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| [int OH_UdsHyperlink_SetDetails(OH_UdsHyperlink* pThis, const OH_UdsDetails* details)](#oh_udshyperlink_setdetails) | 设置超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)实例中的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
+| [int OH_UdsHtml_GetDetails(OH_UdsHtml* pThis, OH_UdsDetails* details)](#oh_udshtml_getdetails) | 从超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)对象中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| [int OH_UdsHtml_SetDetails(OH_UdsHtml* pThis, const OH_UdsDetails* details)](#oh_udshtml_setdetails) | 设置超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)中的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
+| [int OH_UdsAppItem_GetDetails(OH_UdsAppItem* pThis, OH_UdsDetails* details)](#oh_udsappitem_getdetails) | 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| [int OH_UdsAppItem_SetDetails(OH_UdsAppItem* pThis, const OH_UdsDetails* details)](#oh_udsappitem_setdetails) | 设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
+| [int OH_UdsFileUri_GetDetails(OH_UdsFileUri* pThis, OH_UdsDetails* details)](#oh_udsfileuri_getdetails) | 从文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)实例中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| [int OH_UdsFileUri_SetDetails(OH_UdsFileUri* pThis, const OH_UdsDetails* details)](#oh_udsfileuri_setdetails) | 设置文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)对象的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
+| [int OH_UdsPixelMap_GetDetails(OH_UdsPixelMap* pThis, OH_UdsDetails* details)](#oh_udspixelmap_getdetails) | 从像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| [int OH_UdsPixelMap_SetDetails(OH_UdsPixelMap* pThis, const OH_UdsDetails* details)](#oh_udspixelmap_setdetails) | 设置像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)对象的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
+| [OH_UdsDetails* OH_UdsDetails_Create()](#oh_udsdetails_create) | 创建字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)指针及实例对象。<br>当不再需要使用指针时，请使用[OH_UdsDetails_Destroy](capi-uds-h.md#oh_udsdetails_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [void OH_UdsDetails_Destroy(OH_UdsDetails* pThis)](#oh_udsdetails_destroy) | 销毁字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)指针指向的实例对象。 |
+| [bool OH_UdsDetails_HasKey(const OH_UdsDetails* pThis, const char* key)](#oh_udsdetails_haskey) | 检查字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中是否存在指定键。 |
+| [int OH_UdsDetails_Remove(OH_UdsDetails* pThis, const char* key)](#oh_udsdetails_remove) | 删除字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中指定键值对。 |
+| [int OH_UdsDetails_Clear(OH_UdsDetails* pThis)](#oh_udsdetails_clear) | 清除字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中所有数据。 |
+| [int OH_UdsDetails_SetValue(OH_UdsDetails* pThis, const char* key, const char* value)](#oh_udsdetails_setvalue) | 向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中添加键值对数据。 |
+| [const char* OH_UdsDetails_GetValue(const OH_UdsDetails* pThis, const char* key)](#oh_udsdetails_getvalue) | 获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中指定的键对应的值。 |
+| [char** OH_UdsDetails_GetAllKeys(OH_UdsDetails* pThis, unsigned int* count)](#oh_udsdetails_getallkeys) | 获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中所有键的结果集。 |
+
 
 ## 函数说明
 
 ### OH_UdsPlainText_Create()
 
-```
+```c
 OH_UdsPlainText* OH_UdsPlainText_Create()
 ```
 
@@ -129,7 +151,7 @@ OH_UdsPlainText* OH_UdsPlainText_Create()
 
 ### OH_UdsPlainText_Destroy()
 
-```
+```c
 void OH_UdsPlainText_Destroy(OH_UdsPlainText* pThis)
 ```
 
@@ -148,7 +170,7 @@ void OH_UdsPlainText_Destroy(OH_UdsPlainText* pThis)
 
 ### OH_UdsPlainText_GetType()
 
-```
+```c
 const char* OH_UdsPlainText_GetType(OH_UdsPlainText* pThis)
 ```
 
@@ -173,7 +195,7 @@ const char* OH_UdsPlainText_GetType(OH_UdsPlainText* pThis)
 
 ### OH_UdsPlainText_GetContent()
 
-```
+```c
 const char* OH_UdsPlainText_GetContent(OH_UdsPlainText* pThis)
 ```
 
@@ -198,7 +220,7 @@ const char* OH_UdsPlainText_GetContent(OH_UdsPlainText* pThis)
 
 ### OH_UdsPlainText_GetAbstract()
 
-```
+```c
 const char* OH_UdsPlainText_GetAbstract(OH_UdsPlainText* pThis)
 ```
 
@@ -225,7 +247,7 @@ OH_UdsPlainText
 
 ### OH_UdsPlainText_SetContent()
 
-```
+```c
 int OH_UdsPlainText_SetContent(OH_UdsPlainText* pThis, const char* content)
 ```
 
@@ -251,7 +273,7 @@ int OH_UdsPlainText_SetContent(OH_UdsPlainText* pThis, const char* content)
 
 ### OH_UdsPlainText_SetAbstract()
 
-```
+```c
 int OH_UdsPlainText_SetAbstract(OH_UdsPlainText* pThis, const char* abstract)
 ```
 
@@ -277,7 +299,7 @@ int OH_UdsPlainText_SetAbstract(OH_UdsPlainText* pThis, const char* abstract)
 
 ### OH_UdsHyperlink_Create()
 
-```
+```c
 OH_UdsHyperlink* OH_UdsHyperlink_Create()
 ```
 
@@ -291,11 +313,11 @@ OH_UdsHyperlink* OH_UdsHyperlink_Create()
 
 | 类型             | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ |
-| OH_UdsHyperlink* | 执行则成功返回一个指向超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)实例对象的指针，否则返回nullptr。 |
+| OH_UdsHyperlink* | 执行成功则返回一个指向超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)实例对象的指针，否则返回nullptr。 |
 
 ### OH_UdsHyperlink_Destroy()
 
-```
+```c
 void OH_UdsHyperlink_Destroy(OH_UdsHyperlink* pThis)
 ```
 
@@ -314,7 +336,7 @@ void OH_UdsHyperlink_Destroy(OH_UdsHyperlink* pThis)
 
 ### OH_UdsHyperlink_GetType()
 
-```
+```c
 const char* OH_UdsHyperlink_GetType(OH_UdsHyperlink* pThis)
 ```
 
@@ -339,7 +361,7 @@ const char* OH_UdsHyperlink_GetType(OH_UdsHyperlink* pThis)
 
 ### OH_UdsHyperlink_GetUrl()
 
-```
+```c
 const char* OH_UdsHyperlink_GetUrl(OH_UdsHyperlink* pThis)
 ```
 
@@ -364,7 +386,7 @@ const char* OH_UdsHyperlink_GetUrl(OH_UdsHyperlink* pThis)
 
 ### OH_UdsHyperlink_GetDescription()
 
-```
+```c
 const char* OH_UdsHyperlink_GetDescription(OH_UdsHyperlink* pThis)
 ```
 
@@ -389,7 +411,7 @@ const char* OH_UdsHyperlink_GetDescription(OH_UdsHyperlink* pThis)
 
 ### OH_UdsHyperlink_SetUrl()
 
-```
+```c
 int OH_UdsHyperlink_SetUrl(OH_UdsHyperlink* pThis, const char* url)
 ```
 
@@ -415,7 +437,7 @@ int OH_UdsHyperlink_SetUrl(OH_UdsHyperlink* pThis, const char* url)
 
 ### OH_UdsHyperlink_SetDescription()
 
-```
+```c
 int OH_UdsHyperlink_SetDescription(OH_UdsHyperlink* pThis, const char* description)
 ```
 
@@ -441,7 +463,7 @@ int OH_UdsHyperlink_SetDescription(OH_UdsHyperlink* pThis, const char* descripti
 
 ### OH_UdsHtml_Create()
 
-```
+```c
 OH_UdsHtml* OH_UdsHtml_Create()
 ```
 
@@ -459,7 +481,7 @@ OH_UdsHtml* OH_UdsHtml_Create()
 
 ### OH_UdsHtml_Destroy()
 
-```
+```c
 void OH_UdsHtml_Destroy(OH_UdsHtml* pThis)
 ```
 
@@ -478,7 +500,7 @@ void OH_UdsHtml_Destroy(OH_UdsHtml* pThis)
 
 ### OH_UdsHtml_GetType()
 
-```
+```c
 const char* OH_UdsHtml_GetType(OH_UdsHtml* pThis)
 ```
 
@@ -503,7 +525,7 @@ const char* OH_UdsHtml_GetType(OH_UdsHtml* pThis)
 
 ### OH_UdsHtml_GetContent()
 
-```
+```c
 const char* OH_UdsHtml_GetContent(OH_UdsHtml* pThis)
 ```
 
@@ -528,7 +550,7 @@ const char* OH_UdsHtml_GetContent(OH_UdsHtml* pThis)
 
 ### OH_UdsHtml_GetPlainContent()
 
-```
+```c
 const char* OH_UdsHtml_GetPlainContent(OH_UdsHtml* pThis)
 ```
 
@@ -553,7 +575,7 @@ const char* OH_UdsHtml_GetPlainContent(OH_UdsHtml* pThis)
 
 ### OH_UdsHtml_SetContent()
 
-```
+```c
 int OH_UdsHtml_SetContent(OH_UdsHtml* pThis, const char* content)
 ```
 
@@ -579,7 +601,7 @@ int OH_UdsHtml_SetContent(OH_UdsHtml* pThis, const char* content)
 
 ### OH_UdsHtml_SetPlainContent()
 
-```
+```c
 int OH_UdsHtml_SetPlainContent(OH_UdsHtml* pThis, const char* plainContent)
 ```
 
@@ -605,7 +627,7 @@ int OH_UdsHtml_SetPlainContent(OH_UdsHtml* pThis, const char* plainContent)
 
 ### OH_UdsAppItem_Create()
 
-```
+```c
 OH_UdsAppItem* OH_UdsAppItem_Create()
 ```
 
@@ -619,11 +641,11 @@ OH_UdsAppItem* OH_UdsAppItem_Create()
 
 | 类型                                    | 说明                                                         |
 | --------------------------------------- | ------------------------------------------------------------ |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* | 执行成功返则回一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例对象的指针，否则返回nullptr。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* | 执行成功则返回一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例对象的指针，否则返回nullptr。 |
 
 ### OH_UdsAppItem_Destroy()
 
-```
+```c
 void OH_UdsAppItem_Destroy(OH_UdsAppItem* pThis)
 ```
 
@@ -642,7 +664,7 @@ void OH_UdsAppItem_Destroy(OH_UdsAppItem* pThis)
 
 ### OH_UdsAppItem_GetType()
 
-```
+```c
 const char* OH_UdsAppItem_GetType(OH_UdsAppItem* pThis)
 ```
 
@@ -667,7 +689,7 @@ const char* OH_UdsAppItem_GetType(OH_UdsAppItem* pThis)
 
 ### OH_UdsAppItem_GetId()
 
-```
+```c
 const char* OH_UdsAppItem_GetId(OH_UdsAppItem* pThis)
 ```
 
@@ -692,7 +714,7 @@ const char* OH_UdsAppItem_GetId(OH_UdsAppItem* pThis)
 
 ### OH_UdsAppItem_GetName()
 
-```
+```c
 const char* OH_UdsAppItem_GetName(OH_UdsAppItem* pThis)
 ```
 
@@ -717,7 +739,7 @@ const char* OH_UdsAppItem_GetName(OH_UdsAppItem* pThis)
 
 ### OH_UdsAppItem_GetIconId()
 
-```
+```c
 const char* OH_UdsAppItem_GetIconId(OH_UdsAppItem* pThis)
 ```
 
@@ -742,7 +764,7 @@ const char* OH_UdsAppItem_GetIconId(OH_UdsAppItem* pThis)
 
 ### OH_UdsAppItem_GetLabelId()
 
-```
+```c
 const char* OH_UdsAppItem_GetLabelId(OH_UdsAppItem* pThis)
 ```
 
@@ -767,7 +789,7 @@ const char* OH_UdsAppItem_GetLabelId(OH_UdsAppItem* pThis)
 
 ### OH_UdsAppItem_GetBundleName()
 
-```
+```c
 const char* OH_UdsAppItem_GetBundleName(OH_UdsAppItem* pThis)
 ```
 
@@ -792,7 +814,7 @@ const char* OH_UdsAppItem_GetBundleName(OH_UdsAppItem* pThis)
 
 ### OH_UdsAppItem_GetAbilityName()
 
-```
+```c
 const char* OH_UdsAppItem_GetAbilityName(OH_UdsAppItem* pThis)
 ```
 
@@ -817,7 +839,7 @@ const char* OH_UdsAppItem_GetAbilityName(OH_UdsAppItem* pThis)
 
 ### OH_UdsAppItem_SetId()
 
-```
+```c
 int OH_UdsAppItem_SetId(OH_UdsAppItem* pThis, const char* appId)
 ```
 
@@ -843,7 +865,7 @@ int OH_UdsAppItem_SetId(OH_UdsAppItem* pThis, const char* appId)
 
 ### OH_UdsAppItem_SetName()
 
-```
+```c
 int OH_UdsAppItem_SetName(OH_UdsAppItem* pThis, const char* appName)
 ```
 
@@ -869,7 +891,7 @@ int OH_UdsAppItem_SetName(OH_UdsAppItem* pThis, const char* appName)
 
 ### OH_UdsAppItem_SetIconId()
 
-```
+```c
 int OH_UdsAppItem_SetIconId(OH_UdsAppItem* pThis, const char* appIconId)
 ```
 
@@ -895,7 +917,7 @@ int OH_UdsAppItem_SetIconId(OH_UdsAppItem* pThis, const char* appIconId)
 
 ### OH_UdsAppItem_SetLabelId()
 
-```
+```c
 int OH_UdsAppItem_SetLabelId(OH_UdsAppItem* pThis, const char* appLabelId)
 ```
 
@@ -921,7 +943,7 @@ int OH_UdsAppItem_SetLabelId(OH_UdsAppItem* pThis, const char* appLabelId)
 
 ### OH_UdsAppItem_SetBundleName()
 
-```
+```c
 int OH_UdsAppItem_SetBundleName(OH_UdsAppItem* pThis, const char* bundleName)
 ```
 
@@ -947,7 +969,7 @@ int OH_UdsAppItem_SetBundleName(OH_UdsAppItem* pThis, const char* bundleName)
 
 ### OH_UdsAppItem_SetAbilityName()
 
-```
+```c
 int OH_UdsAppItem_SetAbilityName(OH_UdsAppItem* pThis, const char* abilityName)
 ```
 
@@ -973,7 +995,7 @@ int OH_UdsAppItem_SetAbilityName(OH_UdsAppItem* pThis, const char* abilityName)
 
 ### OH_UdsFileUri_Create()
 
-```
+```c
 OH_UdsFileUri* OH_UdsFileUri_Create()
 ```
 
@@ -991,7 +1013,7 @@ OH_UdsFileUri* OH_UdsFileUri_Create()
 
 ### OH_UdsFileUri_Destroy()
 
-```
+```c
 void OH_UdsFileUri_Destroy(OH_UdsFileUri* pThis)
 ```
 
@@ -1010,7 +1032,7 @@ void OH_UdsFileUri_Destroy(OH_UdsFileUri* pThis)
 
 ### OH_UdsFileUri_GetType()
 
-```
+```c
 const char* OH_UdsFileUri_GetType(OH_UdsFileUri* pThis)
 ```
 
@@ -1035,7 +1057,7 @@ const char* OH_UdsFileUri_GetType(OH_UdsFileUri* pThis)
 
 ### OH_UdsFileUri_GetFileUri()
 
-```
+```c
 const char* OH_UdsFileUri_GetFileUri(OH_UdsFileUri* pThis)
 ```
 
@@ -1060,7 +1082,7 @@ const char* OH_UdsFileUri_GetFileUri(OH_UdsFileUri* pThis)
 
 ### OH_UdsFileUri_GetFileType()
 
-```
+```c
 const char* OH_UdsFileUri_GetFileType(OH_UdsFileUri* pThis)
 ```
 
@@ -1085,7 +1107,7 @@ const char* OH_UdsFileUri_GetFileType(OH_UdsFileUri* pThis)
 
 ### OH_UdsFileUri_SetFileUri()
 
-```
+```c
 int OH_UdsFileUri_SetFileUri(OH_UdsFileUri* pThis, const char* fileUri)
 ```
 
@@ -1111,7 +1133,7 @@ int OH_UdsFileUri_SetFileUri(OH_UdsFileUri* pThis, const char* fileUri)
 
 ### OH_UdsFileUri_SetFileType()
 
-```
+```c
 int OH_UdsFileUri_SetFileType(OH_UdsFileUri* pThis, const char* fileType)
 ```
 
@@ -1137,7 +1159,7 @@ int OH_UdsFileUri_SetFileType(OH_UdsFileUri* pThis, const char* fileType)
 
 ### OH_UdsPixelMap_Create()
 
-```
+```c
 OH_UdsPixelMap* OH_UdsPixelMap_Create()
 ```
 
@@ -1155,7 +1177,7 @@ OH_UdsPixelMap* OH_UdsPixelMap_Create()
 
 ### OH_UdsPixelMap_Destroy()
 
-```
+```c
 void OH_UdsPixelMap_Destroy(OH_UdsPixelMap* pThis)
 ```
 
@@ -1174,7 +1196,7 @@ void OH_UdsPixelMap_Destroy(OH_UdsPixelMap* pThis)
 
 ### OH_UdsPixelMap_GetType()
 
-```
+```c
 const char* OH_UdsPixelMap_GetType(OH_UdsPixelMap* pThis)
 ```
 
@@ -1199,7 +1221,7 @@ const char* OH_UdsPixelMap_GetType(OH_UdsPixelMap* pThis)
 
 ### OH_UdsPixelMap_GetPixelMap()
 
-```
+```c
 void OH_UdsPixelMap_GetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelmapNative)
 ```
 
@@ -1219,7 +1241,7 @@ void OH_UdsPixelMap_GetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelm
 
 ### OH_UdsPixelMap_SetPixelMap()
 
-```
+```c
 int OH_UdsPixelMap_SetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelmapNative)
 ```
 
@@ -1245,7 +1267,7 @@ int OH_UdsPixelMap_SetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelma
 
 ### OH_UdsArrayBuffer_Create()
 
-```
+```c
 OH_UdsArrayBuffer* OH_UdsArrayBuffer_Create()
 ```
 
@@ -1263,7 +1285,7 @@ OH_UdsArrayBuffer* OH_UdsArrayBuffer_Create()
 
 ### OH_UdsArrayBuffer_Destroy()
 
-```
+```c
 int OH_UdsArrayBuffer_Destroy(OH_UdsArrayBuffer* buffer)
 ```
 
@@ -1288,7 +1310,7 @@ int OH_UdsArrayBuffer_Destroy(OH_UdsArrayBuffer* buffer)
 
 ### OH_UdsArrayBuffer_SetData()
 
-```
+```c
 int OH_UdsArrayBuffer_SetData(OH_UdsArrayBuffer* buffer, unsigned char* data, unsigned int len)
 ```
 
@@ -1315,7 +1337,7 @@ int OH_UdsArrayBuffer_SetData(OH_UdsArrayBuffer* buffer, unsigned char* data, un
 
 ### OH_UdsArrayBuffer_GetData()
 
-```
+```c
 int OH_UdsArrayBuffer_GetData(OH_UdsArrayBuffer* buffer, unsigned char** data, unsigned int* len)
 ```
 
@@ -1342,7 +1364,7 @@ int OH_UdsArrayBuffer_GetData(OH_UdsArrayBuffer* buffer, unsigned char** data, u
 
 ### OH_UdsContentForm_Create()
 
-```
+```c
 OH_UdsContentForm* OH_UdsContentForm_Create()
 ```
 
@@ -1360,7 +1382,7 @@ OH_UdsContentForm* OH_UdsContentForm_Create()
 
 ### OH_UdsContentForm_Destroy()
 
-```
+```c
 void OH_UdsContentForm_Destroy(OH_UdsContentForm* pThis)
 ```
 
@@ -1379,7 +1401,7 @@ void OH_UdsContentForm_Destroy(OH_UdsContentForm* pThis)
 
 ### OH_UdsContentForm_GetType()
 
-```
+```c
 const char* OH_UdsContentForm_GetType(OH_UdsContentForm* pThis)
 ```
 
@@ -1404,7 +1426,7 @@ const char* OH_UdsContentForm_GetType(OH_UdsContentForm* pThis)
 
 ### OH_UdsContentForm_GetThumbData()
 
-```
+```c
 int OH_UdsContentForm_GetThumbData(OH_UdsContentForm* pThis, unsigned char** thumbData, unsigned int* len)
 ```
 
@@ -1431,7 +1453,7 @@ int OH_UdsContentForm_GetThumbData(OH_UdsContentForm* pThis, unsigned char** thu
 
 ### OH_UdsContentForm_GetDescription()
 
-```
+```c
 const char* OH_UdsContentForm_GetDescription(OH_UdsContentForm* pThis)
 ```
 
@@ -1456,7 +1478,7 @@ const char* OH_UdsContentForm_GetDescription(OH_UdsContentForm* pThis)
 
 ### OH_UdsContentForm_GetTitle()
 
-```
+```c
 const char* OH_UdsContentForm_GetTitle(OH_UdsContentForm* pThis)
 ```
 
@@ -1481,7 +1503,7 @@ const char* OH_UdsContentForm_GetTitle(OH_UdsContentForm* pThis)
 
 ### OH_UdsContentForm_GetAppIcon()
 
-```
+```c
 int OH_UdsContentForm_GetAppIcon(OH_UdsContentForm* pThis, unsigned char** appIcon, unsigned int* len)
 ```
 
@@ -1508,7 +1530,7 @@ int OH_UdsContentForm_GetAppIcon(OH_UdsContentForm* pThis, unsigned char** appIc
 
 ### OH_UdsContentForm_GetAppName()
 
-```
+```c
 const char* OH_UdsContentForm_GetAppName(OH_UdsContentForm* pThis)
 ```
 
@@ -1533,7 +1555,7 @@ const char* OH_UdsContentForm_GetAppName(OH_UdsContentForm* pThis)
 
 ### OH_UdsContentForm_GetLinkUri()
 
-```
+```c
 const char* OH_UdsContentForm_GetLinkUri(OH_UdsContentForm* pThis)
 ```
 
@@ -1558,7 +1580,7 @@ const char* OH_UdsContentForm_GetLinkUri(OH_UdsContentForm* pThis)
 
 ### OH_UdsContentForm_SetThumbData()
 
-```
+```c
 int OH_UdsContentForm_SetThumbData(OH_UdsContentForm* pThis, const unsigned char* thumbData, unsigned int len)
 ```
 
@@ -1585,7 +1607,7 @@ int OH_UdsContentForm_SetThumbData(OH_UdsContentForm* pThis, const unsigned char
 
 ### OH_UdsContentForm_SetDescription()
 
-```
+```c
 int OH_UdsContentForm_SetDescription(OH_UdsContentForm* pThis, const char* description)
 ```
 
@@ -1611,7 +1633,7 @@ int OH_UdsContentForm_SetDescription(OH_UdsContentForm* pThis, const char* descr
 
 ### OH_UdsContentForm_SetTitle()
 
-```
+```c
 int OH_UdsContentForm_SetTitle(OH_UdsContentForm* pThis, const char* title)
 ```
 
@@ -1637,7 +1659,7 @@ int OH_UdsContentForm_SetTitle(OH_UdsContentForm* pThis, const char* title)
 
 ### OH_UdsContentForm_SetAppIcon()
 
-```
+```c
 int OH_UdsContentForm_SetAppIcon(OH_UdsContentForm* pThis, const unsigned char* appIcon, unsigned int len)
 ```
 
@@ -1664,7 +1686,7 @@ int OH_UdsContentForm_SetAppIcon(OH_UdsContentForm* pThis, const unsigned char* 
 
 ### OH_UdsContentForm_SetAppName()
 
-```
+```c
 int OH_UdsContentForm_SetAppName(OH_UdsContentForm* pThis, const char* appName)
 ```
 
@@ -1690,7 +1712,7 @@ int OH_UdsContentForm_SetAppName(OH_UdsContentForm* pThis, const char* appName)
 
 ### OH_UdsContentForm_SetLinkUri()
 
-```
+```c
 int OH_UdsContentForm_SetLinkUri(OH_UdsContentForm* pThis, const char* linkUri)
 ```
 
@@ -1715,4 +1737,490 @@ int OH_UdsContentForm_SetLinkUri(OH_UdsContentForm* pThis, const char* linkUri)
 | int  | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效的参数。 |
 
 
+### OH_UdsPlainText_GetDetails()
 
+```c
+int OH_UdsPlainText_GetDetails(OH_UdsPlainText* pThis, OH_UdsDetails* details)
+```
+
+**描述**
+
+从纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)* pThis | 表示指向纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)实例的指针。 |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 该参数是输出参数，表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
+
+### OH_UdsPlainText_SetDetails()
+
+```c
+int OH_UdsPlainText_SetDetails(OH_UdsPlainText* pThis, const OH_UdsDetails* details)
+```
+
+**描述**
+
+设置纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)中的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)* pThis | 表示指向纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)实例的指针。 |
+| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
+
+### OH_UdsHyperlink_GetDetails()
+
+```c
+int OH_UdsHyperlink_GetDetails(OH_UdsHyperlink* pThis, OH_UdsDetails* details)
+```
+
+**描述**
+
+从超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)* pThis | 表示指向超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)实例的指针。 |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 该参数是输出参数，表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
+
+### OH_UdsHyperlink_SetDetails()
+
+```c
+int OH_UdsHyperlink_SetDetails(OH_UdsHyperlink* pThis, const OH_UdsDetails* details)
+```
+
+**描述**
+
+设置超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)实例中的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)* pThis | 表示指向超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)实例的指针。 |
+| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
+
+### OH_UdsHtml_GetDetails()
+
+```c
+int OH_UdsHtml_GetDetails(OH_UdsHtml* pThis, OH_UdsDetails* details)
+```
+
+**描述**
+
+从超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)对象中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsHtml](capi-udmf-oh-udshtml.md)* pThis | 表示指向超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)实例的指针。 |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 该参数是输出参数，表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
+
+### OH_UdsHtml_SetDetails()
+
+```c
+int OH_UdsHtml_SetDetails(OH_UdsHtml* pThis, const OH_UdsDetails* details)
+```
+
+**描述**
+
+设置超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)中的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsHtml](capi-udmf-oh-udshtml.md)* pThis | 表示指向超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)实例的指针。 |
+| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
+
+### OH_UdsAppItem_GetDetails()
+
+```c
+int OH_UdsAppItem_GetDetails(OH_UdsAppItem* pThis, OH_UdsDetails* details)
+```
+
+**描述**
+
+从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 该参数是输出参数，表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
+
+### OH_UdsAppItem_SetDetails()
+
+```c
+int OH_UdsAppItem_SetDetails(OH_UdsAppItem* pThis, const OH_UdsDetails* details)
+```
+
+**描述**
+
+设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
+| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
+
+### OH_UdsFileUri_GetDetails()
+
+```c
+int OH_UdsFileUri_GetDetails(OH_UdsFileUri* pThis, OH_UdsDetails* details)
+```
+
+**描述**
+
+从文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)实例中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)* pThis | 表示指向文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)实例的指针。 |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 该参数是输出参数，表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
+
+### OH_UdsFileUri_SetDetails()
+
+```c
+int OH_UdsFileUri_SetDetails(OH_UdsFileUri* pThis, const OH_UdsDetails* details)
+```
+
+**描述**
+
+设置文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)对象的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)* pThis | 表示指向文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)实例的指针。 |
+| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
+
+### OH_UdsPixelMap_GetDetails()
+
+```c
+int OH_UdsPixelMap_GetDetails(OH_UdsPixelMap* pThis, OH_UdsDetails* details)
+```
+
+**描述**
+
+从像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)* pThis | 表示指向像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例的指针。 |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 该参数是输出参数，表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
+
+### OH_UdsPixelMap_SetDetails()
+
+```c
+int OH_UdsPixelMap_SetDetails(OH_UdsPixelMap* pThis, const OH_UdsDetails* details)
+```
+
+**描述**
+
+设置像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)对象的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)* pThis | 表示指向像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例的指针。 |
+| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
+
+### OH_UdsDetails_Create()
+
+```c
+OH_UdsDetails* OH_UdsDetails_Create()
+```
+
+**描述**
+
+创建字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)指针及实例对象。
+
+当不再需要使用指针时，请使用[OH_UdsDetails_Destroy](capi-uds-h.md#oh_udsdetails_destroy)销毁实例对象，否则会导致内存泄漏。
+
+**起始版本：** 22
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_UdsDetails*](capi-udmf-oh-udsdetails.md) | 执行成功则返回一个指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例对象的指针，否则返回nullptr。 |
+
+### OH_UdsDetails_Destroy()
+
+```c
+void OH_UdsDetails_Destroy(OH_UdsDetails* pThis)
+```
+
+**描述**
+
+销毁字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)指针指向的实例对象。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+
+### OH_UdsDetails_HasKey()
+
+```c
+bool OH_UdsDetails_HasKey(const OH_UdsDetails* pThis, const char* key)
+```
+
+**描述**
+
+检查字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中是否存在指定键。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| const char* key | 表示字典类型中键值对的键。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 返回查找结果的状态。返回false表示不存在指定键，返回true表示存在指定键。 |
+
+### OH_UdsDetails_Remove()
+
+```c
+int OH_UdsDetails_Remove(OH_UdsDetails* pThis, const char* key)
+```
+
+**描述**
+
+删除字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中指定键值对。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| const char* key | 表示字典类型中键值对的键。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效的参数。 |
+
+### OH_UdsDetails_Clear()
+
+```c
+int OH_UdsDetails_Clear(OH_UdsDetails* pThis)
+```
+
+**描述**
+
+清除字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中所有数据。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效的参数。 |
+
+### OH_UdsDetails_SetValue()
+
+```c
+int OH_UdsDetails_SetValue(OH_UdsDetails* pThis, const char* key, const char* value)
+```
+
+**描述**
+
+向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中添加键值对数据。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| const char* key | 表示字典类型中键值对的键。 |
+| const char* value | 表示字典类型中键值对的值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效的参数。 |
+
+### OH_UdsDetails_GetValue()
+
+```c
+const char* OH_UdsDetails_GetValue(const OH_UdsDetails* pThis, const char* key)
+```
+
+**描述**
+
+获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中指定的键对应的值。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| const char* key | 表示字典类型中键值对的键。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| const char* | 当入参有效时返回指向字典类型中值的指针，否则返回nullptr。 |
+
+### OH_UdsDetails_GetAllKeys()
+
+```c
+char** OH_UdsDetails_GetAllKeys(OH_UdsDetails* pThis, unsigned int* count)
+```
+
+**描述**
+
+获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中所有键的结果集。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| unsigned int* count | 该参数是输出参数，表示结果集的长度。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| char** | 执行成功时返回字典类型中键的结果集，否则返回nullptr。<br>当使用[OH_UdsDetails_Destroy](capi-uds-h.md#oh_udsdetails_destroy)销毁字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)指针指向的实例对象，该返回值也会被释放。 |

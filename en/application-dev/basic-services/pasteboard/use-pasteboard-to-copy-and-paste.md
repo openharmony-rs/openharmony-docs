@@ -48,41 +48,36 @@ After obtaining URI data using the **getData** API, use the [fs.copy](../../refe
 | getDataSync(): PasteData | Reads a **PasteData** object from the pasteboard. This API returns the result synchronously and cannot be called in the same thread as **SetData**.|
 
 ### Example
-```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIAbility {
-  async onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): Promise<void> {
-    // Obtain the system pasteboard object.
-    let text = "test";
-    // Create a pasteboard content object of the plain text type.
-    let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, text);
-    // Write data to the system pasteboard.
-    let systemPasteboard = pasteboard.getSystemPasteboard();
+<!-- @[pasteboard_usedata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
+
+``` TypeScript
+import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
+// ···
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+
+// ···
+    let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, content);
     await systemPasteboard.setData(pasteData);
+    // ···
     // Read data from the system pasteboard.
-    systemPasteboard.getData().then((data) => {
-      let outputData = data;
-      // Obtain the number of records from the pasteboard.
-      let recordCount = outputData.getRecordCount();
-      // Obtain the corresponding record information from the pasteboard data.
-      for (let i = 0; i < recordCount; i++) {
-        let record = outputData.getRecord(i).toPlainText();
-        console.info('Get data success, record:' + record);
-      }
-    }).catch((error: BusinessError) => {
-      // Error case
-    })
-  }
-}
+    let data = await systemPasteboard.getData();
+    let recordCount = data.getRecordCount();
+    let result = '';
+    for (let i = 0; i < recordCount; i++) {
+      let record = data.getRecord(i).toPlainText();
+      hilog.info(0xFF00, '[Sample_pasteboard]', 'Get data success, record:' + record);
+      result = record;
+    }
 ```
+
 
 ## Using a Unified Data Object
 
 To facilitate data interactions between the pasteboard and other applications and reduce the workload of data type adaptation, the pasteboard supports a unified data object for copying and pasting. For details about the unified data object, see [Unified Data Channel](../../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md).
 
-Currently, the following basic data types are supported for copy and paste: text and HTML. The data types supported by ArkTS APIs are different from those supported by NDK APIs. You need to match the data types with the corresponding APIs during usage.
+Currently, the following basic data types are supported for copy and paste: text and HTML. The data types supported by ArkTS APIs are different from those supported by NDK APIs. You need to properly use the data types that correspond to the specific APIs.
 
 ### Available APIs
 
@@ -96,44 +91,50 @@ For details about the APIs, see [API Reference](../../reference/apis-basic-servi
 | getUnifiedDataSync(): udc.UnifiedData | Reads the data of a unified data object from the system pasteboard. This API returns the result synchronously. |
 
 ### Example
-```ts
-import {BusinessError, pasteboard} from '@kit.BasicServicesKit';
+
+<!-- @[pasteboard_useudc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
+
+``` TypeScript
+import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
 import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-// Construct a PlainText data object.
-let plainText : uniformDataStruct.PlainText = {
-    uniformDataType: uniformTypeDescriptor.UniformDataType.PLAIN_TEXT,
-    textContent : 'PLAINTEXT_CONTENT',
-    abstract : 'PLAINTEXT_ABSTRACT',
-}
-let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
-let data = new unifiedDataChannel.UnifiedData();
-data.addRecord(record);
-
-// Save a piece of PlainText data to the system pasteboard.
-const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
-systemPasteboard.setUnifiedData(data).then((data: void) => {
-    console.info('Succeeded in setting UnifiedData.');
-    // The data is successfully saved, which is a normal case.
-}).catch((err: BusinessError) => {
-    console.error('Failed to set UnifiedData. Cause: ' + err.message);
-    // Error case
-});
-
-// Read the text data from the system pasteboard.
-systemPasteboard.getUnifiedData().then((data) => {
-    let records: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
-    for (let j = 0; j < records.length; j++) {
-        if (records[j].getType() === uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-            let text = records[j].getValue() as uniformDataStruct.PlainText;
-            console.info(`${j + 1}.${text.textContent}`);
-        }
+// ···
+  // 1. Construct a PlainText data object.
+  export async function handleUniformData() {
+    let plainText: uniformDataStruct.PlainText = {
+      uniformDataType: uniformTypeDescriptor.UniformDataType.PLAIN_TEXT,
+      textContent: 'PLAINTEXT_CONTENT',
+      abstract: 'PLAINTEXT_ABSTRACT',
     }
-}).catch((err: BusinessError) => {
-    console.error('Failed to get UnifiedData. Cause: ' + err.message);
-    // Error case
-});
+
+    let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
+    let data = new unifiedDataChannel.UnifiedData();
+    data.addRecord(record);
+    // 2. Write a piece of PlainText data to the system pasteboard.
+    systemPasteboard.setUnifiedData(data).then((data: void) => {
+      hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in setting UnifiedData.');
+      // The data is successfully written, which is a normal case.
+    }).catch((err: BusinessError) => {
+      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to set UnifiedData. Cause: ' + err.message);
+      // Error case
+    });
+    // 3. Read the PlainText data from the system pasteboard.
+    systemPasteboard.getUnifiedData().then((data) => {
+      let records: unifiedDataChannel.UnifiedRecord[] = data.getRecords();
+      for (let j = 0; j < records.length; j++) {
+        if (records[j].getType() === uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
+          let text = records[j].getValue() as uniformDataStruct.PlainText;
+          hilog.info(0xFF00, '[Sample_pasteboard]', `${j + 1}.${text.textContent}`);
+        }
+      }
+    }).catch((err: BusinessError) => {
+      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get UnifiedData. Cause: ' + err.message);
+      // Error case
+    });
+  }
 ```
+
 
 <!--RP1-->
 <!--RP1End-->

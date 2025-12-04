@@ -63,7 +63,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -121,7 +121,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -182,7 +182,7 @@ import { BusinessError, osAccount } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace parameters with actual values.
@@ -236,7 +236,7 @@ async function setDomainAccountPolicy() {
   let wantTemp: Want = {
     // Replace with actual values.
     bundleName: 'com.example.myapplication',
-    abilityName: 'EntryAbility'
+    abilityName: 'EnterpriseAdminAbility'
   };
   let policy: accountManager.DomainAccountPolicy = {
     // Replace with actual values.
@@ -330,7 +330,7 @@ async function getDomainAccountPolicy() {
   let wantTemp: Want = {
     // Replace with actual values.
     bundleName: 'com.example.myapplication',
-    abilityName: 'EntryAbility'
+    abilityName: 'EnterpriseAdminAbility'
   };
   let domainAccountPolicy: accountManager.DomainAccountPolicy = {};
   // Query the global domain account policy.

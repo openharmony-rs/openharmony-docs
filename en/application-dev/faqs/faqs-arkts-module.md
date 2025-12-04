@@ -35,7 +35,6 @@ The application entry file is not found during application startup.
 
 (1) Open the application's project-level build file **module.json5** in the **entry/src/main** directory.
 
-
 The following is an example of some parameters in **module.json5**.
 ```
 {

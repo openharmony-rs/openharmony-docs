@@ -5,7 +5,7 @@
 <!--Owner: @piggyguy; @lushi871202; @CCFFWW-->
 <!--Designer: @piggyguy; @lushi871202; @CCFFWW-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供UI组件行为变化的无感监听能力。推荐使用[UIObserver](./arkts-apis-uicontext-uiobserver.md)进行组件监听。
 
@@ -57,7 +57,7 @@ NavDestination组件状态。
 
 ## RouterPageState
 
-routerPage生命周期触发时对应的状态。
+routerPage生命周期触发时对应的状态。RouterPageState用于[RouterPageInfo](#routerpageinfo)中，作为[routerPageUpdate](#uiobserveronrouterpageupdate11)无感监听的返回值。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -214,7 +214,7 @@ Navigation组件页面切换事件的监听选项。
 
 on(type: 'textChange', callback: Callback\<TextChangeEventInfo\>): void
 
-监听输入框的文本变化。
+全局监听输入框文本变化。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -227,11 +227,97 @@ on(type: 'textChange', callback: Callback\<TextChangeEventInfo\>): void
 | type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。|
 | callback | Callback\<[TextChangeEventInfo](#textchangeeventinfo22)\> | 是   | 回调函数，返回文本变化的信息。|
 
+**示例：**
+```ts
+import { UIObserver } from '@kit.ArkUI'
+
+@Entry
+@Component
+struct TextUiObserver {
+  observer: UIObserver = this.getUIContext().getUIObserver();
+  build() {
+    Column() {
+      TextArea({ text: "Hello World TextArea" })
+        .width(336)
+        .height(56)
+        .margin({bottom:5})
+        .backgroundColor('#FFFFFF')
+        .id("TestId1")
+      TextInput({ text: "Hello World TextInput" })
+        .width(336)
+        .height(56)
+        .margin({bottom:5})
+        .backgroundColor('#FFFFFF')
+        .id("TestId2")
+      Search({ value: "Hello World Search" })
+        .width(336)
+        .height(56)
+        .margin({bottom:5})
+        .backgroundColor('#FFFFFF')
+        .id("TestId3")
+      Row() {
+        // 开启全局监听
+        Button('UIObserver on')
+          .onClick(() => {
+            this.observer.on('textChange', (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+        // 关闭全局监听
+        Button('UIObserver off')
+          .onClick(() => {
+            this.observer.off('textChange');
+          })
+      }.margin({bottom:5})
+      // 开启和关闭指定ID的局部监听
+      Row() {
+        Button('UIObserver TestId1 on')
+          .onClick(() => {
+            this.observer.on('textChange', { id: "TestId1" }, (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+
+        Button('UIObserver TestId1 off')
+          .onClick(() => {
+            this.observer.off('textChange', { id: "TestId1" });
+          })
+      }.margin({bottom:5})
+      Row() {
+        Button('UIObserver TestId2 on')
+          .onClick(() => {
+            this.observer.on('textChange', { id: "TestId2" }, (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+
+        Button('UIObserver TestId2 off')
+          .onClick(() => {
+            this.observer.off('textChange', { id: "TestId2" });
+          })
+      }.margin({bottom:5})
+      Row() {
+        Button('UIObserver TestId3 on')
+          .onClick(() => {
+            this.observer.on('textChange', { id: "TestId3" }, (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+
+        Button('UIObserver TestId3 off')
+          .onClick(() => {
+            this.observer.off('textChange', { id: "TestId3" });
+          })
+      }.margin({bottom:5})
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
 ## uiObserver.off('textChange')<sup>22+</sup>
 
 off(type: 'textChange', callback?: Callback\<TextChangeEventInfo\>): void
 
-取消对输入框文本变化的监听。
+取消输入框文本变化的全局监听。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -242,13 +328,16 @@ off(type: 'textChange', callback?: Callback\<TextChangeEventInfo\>): void
 | 参数名   | 类型                                                  | 必填 | 说明                                                                     |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。|
-| callback | Callback\<[TextChangeEventInfo](#textchangeeventinfo22) | 否   | 回调函数。返回文本变化的信息。|
+| callback | Callback\<[TextChangeEventInfo](#textchangeeventinfo22) | 否   | 需要被注销的回调函数。不传参数时，取消输入框文本变化的所有全局监听。|
+
+**示例：**
+参考[uiObserver.on('textChange')](#uiobserverontextchange22)示例。
 
 ## uiObserver.on('textChange')<sup>22+</sup>
 
 on(type: 'textChange', identity: ObserverOptions, callback:Callback\<TextChangeEventInfo\>): void
 
-监听指定ID输入框的文本变化。
+指定ID输入框文本变化的局部监听。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -262,11 +351,15 @@ on(type: 'textChange', identity: ObserverOptions, callback:Callback\<TextChangeE
 | identity | [ObserverOptions](#observeroptions12) | 是   | 指定监听的文本输入组件的ID。                             |
 | callback | Callback\<[TextChangeEventInfo](#textchangeeventinfo22)\> | 是   | 回调函数。返回文本变化的信息。|
 
+**示例：**
+
+参考[uiObserver.on('textChange')](#uiobserverontextchange22)示例。
+
 ## uiObserver.off('textChange')<sup>22+</sup>
 
 off(type: 'textChange', identity: ObserverOptions, callback?: Callback\<TextChangeEventInfo\>): void
 
-取消对指定ID输入框的文本变化监听。
+取消指定ID输入框文本变化的局部监听。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -278,7 +371,11 @@ off(type: 'textChange', identity: ObserverOptions, callback?: Callback\<TextChan
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。|
 | identity | [ObserverOptions](#observeroptions12) | 是   | 指定监听的文本输入组件的ID。|
-| callback | Callback\<[TextChangeEventInfo](#textchangeeventinfo22)\> | 否   | 回调函数。返回文本变化的信息。|
+| callback | Callback\<[TextChangeEventInfo](#textchangeeventinfo22)\> | 否   | 需要被注销的回调函数。不传参数时，取消指定ID输入框文本变化的所有局部监听。|
+
+**示例：**
+
+参考[uiObserver.on('textChange')](#uiobserverontextchange22)示例。
 
 ## TabContentInfo<sup>12+</sup>
 
@@ -1320,7 +1417,7 @@ off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observe
 
 on(type: 'tabContentUpdate', callback: Callback\<TabContentInfo\>): void
 
-监听TabContent页面的切换事件。
+监听TabContent页面的切换事件。相比[uiObserver.on('tabChange')](#uiobserverontabchange22)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1407,7 +1504,7 @@ off(type: 'tabContentUpdate', callback?: Callback\<TabContentInfo\>): void
 
 on(type: 'tabContentUpdate', options: ObserverOptions, callback: Callback\<TabContentInfo\>): void
 
-监听指定Tabs组件id的TabContent页面切换事件。
+监听指定Tabs组件id的TabContent页面切换事件。相比[uiObserver.on('tabChange')](#uiobserverontabchange22-1)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1496,7 +1593,7 @@ off(type: 'tabContentUpdate', options: ObserverOptions, callback?: Callback\<Tab
 
 on(type: 'tabChange', callback: Callback\<TabContentInfo\>): void
 
-监听Tabs组件页签的切换事件，支持多个Tabs组件的监听。
+监听Tabs组件页签的切换事件，支持多个Tabs组件的监听。相比[uiObserver.on('tabContentUpdate')](#uiobserverontabcontentupdate12)，本接口支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1515,10 +1612,11 @@ on(type: 'tabChange', callback: Callback\<TabContentInfo\>): void
 // Index.ets
 // 演示监听Tabs组件页签的切换事件。
 // 此用例同时监听id为'tabsId1'、'tabsId2'的两个Tabs组件。
-// 两个Tabs组件初始化的时候，第0页id分别是'tabContentId0'、'tabContentId5'的页签页show。
-// 在id为'tabsId1'的Tabs组件上滑动一下，第0页的页签页hide，第1页id是'tabContentId1'的页签页show。
+// 两个Tabs组件初始化时，会监听到第0页页签的显示事件，页签对应id分别为'tabContentId0'、'tabContentId5'。
+// 在id为'tabsId1'的Tabs组件上滑动一下，会监听到第0页的页签隐藏、id为'tabContentId1'的第1页页签显示事件。
 import { uiObserver } from '@kit.ArkUI';
 
+// 定义监听回调函数
 function callbackFunc(info: uiObserver.TabContentInfo) {
   console.info('tabChange', JSON.stringify(info));
 }
@@ -1528,10 +1626,12 @@ function callbackFunc(info: uiObserver.TabContentInfo) {
 struct TabsExample {
 
   aboutToAppear(): void {
+    // 添加监听
     uiObserver.on('tabChange', callbackFunc);
   }
 
   aboutToDisappear(): void {
+    // 取消监听
     uiObserver.off('tabChange', callbackFunc);
   }
 
@@ -1600,7 +1700,7 @@ off(type: 'tabChange', callback?: Callback\<TabContentInfo\>): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即Tabs组件页签的切换事件。 |
-| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。 |
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销所有通过[uiObserver.on('tabChange')](#uiobserverontabchange22)接口注册的回调函数。<br/>默认值：undefined |
 
 **示例：**
 
@@ -1608,9 +1708,9 @@ off(type: 'tabChange', callback?: Callback\<TabContentInfo\>): void
 
 ## uiObserver.on('tabChange')<sup>22+</sup>
 
-on(type: 'tabChange', options: ObserverOptions, callback: Callback\<TabContentInfo\>): void
+on(type: 'tabChange', config: ObserverOptions, callback: Callback\<TabContentInfo\>): void
 
-监听指定Tabs组件的页签切换事件。
+监听指定Tabs组件的页签切换事件。相比[uiObserver.on('tabContentUpdate')](#uiobserverontabcontentupdate12-1)，本接口支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1621,7 +1721,7 @@ on(type: 'tabChange', options: ObserverOptions, callback: Callback\<TabContentIn
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即Tabs组件页签的切换事件。 |
-| options  | [ObserverOptions](#observeroptions12)                        | 是   | 指定监听的Tabs组件的id。 |
+| config  | [ObserverOptions](#observeroptions12)                        | 是   | 指定监听的Tabs组件的id。 |
 | callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 是   | 回调函数。携带TabContentInfo，返回Tabs组件页签的切换事件的信息。 |
 
 **示例：**
@@ -1629,9 +1729,10 @@ on(type: 'tabChange', options: ObserverOptions, callback: Callback\<TabContentIn
 ```ts
 // Index.ets
 // 演示监听id为'tabsId'的Tabs组件页签的切换事件。
-// Tabs组件页签初始化的时候，第0页id是'tabContentId0'的页签页show；滑动一下，第0页的页签页hide，第1页id是'tabContentId1'的页签页show。
+// Tabs组件页签初始化的时候，会监听到第0页页签的显示事件，页签对应id为'tabContentId0'；滑动一下，会监听到第0页的页签隐藏、id为'tabContentId1'的第1页页签显示事件。
 import { uiObserver } from '@kit.ArkUI';
 
+// 定义监听回调函数
 function callbackFunc(info: uiObserver.TabContentInfo) {
   console.info('tabChange', JSON.stringify(info));
 }
@@ -1641,10 +1742,12 @@ function callbackFunc(info: uiObserver.TabContentInfo) {
 struct TabsExample {
 
   aboutToAppear(): void {
+    // 添加监听，指定Tabs的id
     uiObserver.on('tabChange', { id: 'tabsId' }, callbackFunc);
   }
 
   aboutToDisappear(): void {
+    // 取消监听
     uiObserver.off('tabChange', { id: 'tabsId' }, callbackFunc);
   }
 
@@ -1699,7 +1802,7 @@ struct TabsExample {
 
 ## uiObserver.off('tabChange')<sup>22+</sup>
 
-off(type: 'tabChange', options: ObserverOptions, callback?: Callback\<TabContentInfo\>): void
+off(type: 'tabChange', config: ObserverOptions, callback?: Callback\<TabContentInfo\>): void
 
 取消监听指定Tabs组件页签的切换事件。
 
@@ -1712,8 +1815,8 @@ off(type: 'tabChange', options: ObserverOptions, callback?: Callback\<TabContent
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即Tabs组件页签的切换事件。 |
-| options  | [ObserverOptions](#observeroptions12)                        | 是   | 指定监听的Tabs组件的id。 |
-| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。 |
+| config  | [ObserverOptions](#observeroptions12)                        | 是   | 指定监听的Tabs组件的id。 |
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销config指定的[Tabs](arkui-ts/ts-container-tabs.md)组件下注册的所有的回调函数。<br/>默认值：undefined |
 
 **示例：**
 

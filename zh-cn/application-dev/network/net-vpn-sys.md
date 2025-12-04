@@ -41,92 +41,93 @@ VPN 即虚拟专网（VPN-Virtual Private Network）在公用网络上建立专�
 
 主要功能：实现业务逻辑，如：创建隧道、建立 VPN 网络、保护 VPN 网络、销毁 VPN 网络。
 
-```js
-import Want from '@ohos.app.ability.Want';
-import VpnExtensionAbility from '@ohos.app.ability.VpnExtensionAbility';
-import vpnExt from '@ohos.net.vpnExtension';
-import hilog from '@ohos.hilog';
-import common from '@ohos.app.ability.common';
+<!-- @[vpn_control_case_extention_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/VPNExtentionAbility.ets) -->
 
-// vpn_client是一个C语言便携的so，比如import vpn_client from 'libvpn_client.so';
+``` TypeScript
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
+import { Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-import socket from '@ohos.net.socket';
+// ···
 
-const TAG: string = "[MyVpnExtAbility]";
-let g_tunFd = -1;
-let g_tunnelFd = -1;
+const TAG: string = '[MyVpnExtAbility]';
+let gTunFd = -1;
+let gTunnelFd = -1;
 
 export default class MyVpnExtAbility extends VpnExtensionAbility {
-  private VpnConnection: vpnExt.VpnConnection = vpnExt.createVpnConnection(this.context);
-  private vpnServerIp: string = '192.168.85.185';
-  private tunIp: string = '10.0.0.8';
+  private vpnConnection: vpnExtension.VpnConnection = vpnExtension.createVpnConnection(this.context);
+  private vpnServerIp: string = '192.168.xxx.xxx';
+  // 统一使用第二段代码中的IP地址，可按需调整
+  private tunIp: string = '10.0.0.5'; // 示例地址，代表客户端设备在虚拟网络中的地址
   private blockedAppName: string = 'com.example.testvpn';
 
   onCreate(want: Want) {
-    console.info(TAG, `xdw onCreate, want: ${want.abilityName}`);
-    // this.context.stopVpnExtensionAbility(want);
-    this.VpnConnection = vpnExt.createVpnConnection(this.context);
-    console.info("wmw createVpnConnection success")
+    // ···
+    hilog.info(0x0000, 'testTag', `onCreate, want: ${want.abilityName}`);
+    this.vpnConnection = vpnExtension.createVpnConnection(this.context);
+    hilog.info(0x0000, 'testTag', 'createVpnConnection success');
     this.CreateTunnel();
     this.Protect();
-    console.info("xdw step4");
+    hilog.info(0x0000, 'testTag', 'step4');
   }
 
   onRequest(want: Want, startId: number) {
-    console.info(TAG, `xdw onRequest, want: ${want.abilityName}`);
+    hilog.info(0x0000, 'testTag', `onRequest, want: ${want.abilityName}`);
   }
 
   onConnect(want: Want) {
-    console.info(TAG, `xdw onConnect, want: ${want.abilityName}`);
+    hilog.info(0x0000, 'testTag', `onConnect, want: ${want.abilityName}`);
     // 返回ServiceExtImpl对象，客户端获取后便可以与ServiceExtensionAbility进行通信
-    let abilityName  = want.parameters?.abilityName.toString();
+    let abilityName = want.parameters?.abilityName.toString();
     let bundleName = want.parameters?.bundleName.toString();
     return null;
   }
 
   onDisconnect(want: Want) {
-    console.info(TAG, `xdw onDisconnect, want: ${want.abilityName}`);
+    hilog.info(0x0000, 'testTag', `onDisconnect, want: ${want.abilityName}`);
   }
 
   onDestroy() {
-    console.info(TAG, `xdw onDestroy`);
+    hilog.info(0x0000, 'testTag', `onDestroy`);
     this.Destroy();
   }
 
   Destroy() {
-    hilog.info(0x0000, 'developTag', '%{public}s', 'vpn Destroy');
-    //关闭VPN
-    this.VpnConnection.destroy().then(() => {
-      hilog.info(0x0000, 'developTag', '%{public}s', 'vpn Destroy Success');
+    hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn Destroy');
+    // 关闭VPN
+    this.vpnConnection.destroy().then(() => {
+      hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn Destroy Success');
     }).catch((err: Error) => {
-      hilog.error(0x0000, 'developTag', 'vpn Destroy Failed: %{public}s', JSON.stringify(err) ?? '');
-    })
+      hilog.error(0x0000, 'testTag', 'developTag', 'vpn Destroy Failed: %{public}s', JSON.stringify(err) ?? '');
+    });
   }
 
+  // 创建隧道的方法
   CreateTunnel() {
-    console.info("xdw step1")
+    hilog.info(0x0000, 'testTag', 'step1');
     // 连接VPN服务器
+    // ···
   }
 
+  // 保护隧道的方法
   Protect() {
-    console.info("xdw step2")
-    hilog.info(0x0000, 'developTag', '%{public}s', 'vpn Protect');
-    this.VpnConnection.protect(g_tunnelFd).then(() => {
-      hilog.info(0x0000, 'developTag', '%{public}s', 'vpn Protect Success');
+    hilog.info(0x0000, 'testTag', 'step2');
+    hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn Protect');
+    this.vpnConnection.protect(gTunnelFd).then(() => {
+      hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn Protect Success');
       this.SetupVpn();
     }).catch((err: Error) => {
-      hilog.error(0x0000, 'developTag', 'vpn Protect Failed %{public}s', JSON.stringify(err) ?? '');
+      hilog.error(0x0000, 'testTag', 'developTag', 'vpn Protect Failed %{public}s', JSON.stringify(err) ?? '');
     })
   }
 
+  // 设置VPN网络配置的方法
   SetupVpn() {
-    console.info("xdw step3")
-    hilog.info(0x0000, 'developTag', '%{public}s', 'vpn SetupVpn');
-
+    hilog.info(0x0000, 'testTag', 'step3');
+    hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn SetupVpn');
     class Address {
-      address: string;
-      family: number;
-
+      public address: string;
+      public family: number;
       constructor(address: string, family: number) {
         this.address = address;
         this.family = family;
@@ -134,9 +135,8 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
     }
 
     class AddressWithPrefix {
-      address: Address;
-      prefixLength: number;
-
+      public address: Address;
+      public prefixLength: number;
       constructor(address: Address, prefixLength: number) {
         this.address = address;
         this.prefixLength = prefixLength;
@@ -144,11 +144,10 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
     }
 
     class Config {
-      addresses: AddressWithPrefix[];
-      dnsAddresses: string[];
-      trustedApplications: string[];
-      blockedApplications: string[];
-
+      public addresses: AddressWithPrefix[];
+      public dnsAddresses: string[];
+      public trustedApplications: string[];
+      public blockedApplications: string[];
       constructor(
         tunIp: string,
         blockedAppName: string
@@ -156,7 +155,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
         this.addresses = [
           new AddressWithPrefix(new Address(tunIp, 1), 24)
         ];
-        this.dnsAddresses = ["114.114.114.114"];
+        this.dnsAddresses = ['114.114.114.114']; // 通用DNS地址
         this.trustedApplications = [];
         this.blockedApplications = [];
       }
@@ -165,9 +164,10 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
     let config = new Config(this.tunIp, this.blockedAppName);
 
     try {
-      this.VpnConnection.create(config);
+      this.vpnConnection.create(config)
+    // ···
     } catch (error) {
-      hilog.error(0x0000, 'developTag', 'vpn setUp fail: %{public}s', JSON.stringify(error) ?? '');
+      hilog.error(0x0000, 'testTag', 'developTag', 'vpn setUp fail: %{public}s', JSON.stringify(error) ?? '');
     }
   }
 }
@@ -177,10 +177,12 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 
 主要功能：具体业务的底层实现，如：UDP 隧道 Client 端的实现、虚拟网卡读写数据的实现。
 
-```c++
+<!-- @[vpn_control_case_c++](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "hilog/log.h"
-
+ 
 #include <cstring>
 #include <thread>
 #include <js_native_api.h>
@@ -190,13 +192,13 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 #include <sys/socket.h>
 #include <thread>
 #include <sys/time.h>
-
+ 
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-
+ 
 #define BUFFER_SIZE 2048
-
+ 
 #define VPN_LOG_TAG "NetMgrVpn"
 #define VPN_LOG_DOMAIN 0x15b0
 #define MAKE_FILE_NAME (strrchr(__FILE__, '/') + 1)
@@ -210,7 +212,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
                  __LINE__, ##__VA_ARGS__)
 
 #define NETMANAGER_VPN_LOGD(fmt, ...)                                                                                  \
-    OH_LOG_Print(LOG_APP, LOG_DEBUG, VPN_LOG_DOMAIN, VPN_LOG_TAG, "vpn [%{public}s %{public}d] " fmt, MAKE_FILE_NAME,   \
+    OH_LOG_Print(LOG_APP, LOG_DEBUG, VPN_LOG_DOMAIN, VPN_LOG_TAG, "vpn [%{public}s %{public}d] " fmt, MAKE_FILE_NAME,  \
                  __LINE__, ##__VA_ARGS__)
 
 struct FdInfo {
@@ -219,14 +221,15 @@ struct FdInfo {
     struct sockaddr_in serverAddr;
 };
 
-static FdInfo fdInfo;
-static bool threadRunF = false;
-static std::thread threadt1;
-static std::thread threadt2;
-
-//获取对应字符串数据, 用于获取udp server 的IP地址
+static FdInfo g_fdInfo;
+static bool g_threadRunF = false;
+static std::thread g_threadT1;
+static std::thread g_threadT2;
+// 获取对应字符串数据, 用于获取udp server 的IP地址
 static constexpr const int MAX_STRING_LENGTH = 1024;
-std::string GetStringFromValueUtf8(napi_env env, napi_value value) {
+
+std::string GetStringFromValueUtf8(napi_env env, napi_value value)
+{
     std::string result;
     char str[MAX_STRING_LENGTH] = {0};
     size_t length = 0;
@@ -237,37 +240,40 @@ std::string GetStringFromValueUtf8(napi_env env, napi_value value) {
     return result;
 }
 
-void HandleReadTunfd(FdInfo fdInfo) {
+void HandleReadTunfd(FdInfo fdInfo)
+{
     uint8_t buffer[BUFFER_SIZE] = {0};
-    while (threadRunF) {
-        int ret = read(fdInfo.tunFd, buffer, sizeof(buffer));
-        if (ret <= 0) {
-            if (errno != 11) {
+    while (g_threadRunF) {
+        int readResult = read(fdInfo.tunFd, buffer, sizeof(buffer));
+        if (readResult <= 0) {
+            if (errno != EAGAIN) {
                 NETMANAGER_VPN_LOGE("read tun device error: %{public}d, tunfd: %{public}d", errno, fdInfo.tunFd);
             }
             continue;
         }
 
         // 读取到虚拟网卡的数据，通过udp隧道，发送给服务器
-        NETMANAGER_VPN_LOGD("buffer: %{public}s, len: %{public}d", buffer, ret);
-        ret = sendto(fdInfo.tunnelFd, buffer, ret, 0, (struct sockaddr *)&fdInfo.serverAddr, sizeof(fdInfo.serverAddr));
-        if (ret <= 0) {
+        NETMANAGER_VPN_LOGD("buffer: %{public}s, len: %{public}d", buffer, readResult);
+        readResult = sendto(fdInfo.tunnelFd, buffer, readResult, 0,
+            reinterpret_cast<struct sockaddr*>(&fdInfo.serverAddr), sizeof(fdInfo.serverAddr));
+        if (readResult <= 0) {
             NETMANAGER_VPN_LOGE("send to server[%{public}s:%{public}d] failed, ret: %{public}d, error: %{public}s",
-                                inet_ntoa(fdInfo.serverAddr.sin_addr), ntohs(fdInfo.serverAddr.sin_port), ret,
+                                inet_ntoa(fdInfo.serverAddr.sin_addr), ntohs(fdInfo.serverAddr.sin_port), readResult,
                                 strerror(errno));
             continue;
         }
     }
 }
-
-void HandleTcpReceived(FdInfo fdInfo) {
+ 
+void HandleTcpReceived(FdInfo fdInfo)
+{
     int addrlen = sizeof(struct sockaddr_in);
     uint8_t buffer[BUFFER_SIZE] = {0};
-    while (threadRunF) {
-        int length = recvfrom(fdInfo.tunnelFd, buffer, sizeof(buffer), 0, (struct sockaddr *)&fdInfo.serverAddr,
-                              (socklen_t *)&addrlen);
+    while (g_threadRunF) {
+        int length = recvfrom(fdInfo.tunnelFd, buffer, sizeof(buffer),
+            0, reinterpret_cast<struct sockaddr *>(&fdInfo.serverAddr), reinterpret_cast<socklen_t *>(&addrlen));
         if (length < 0) {
-            if (errno != 11) {
+            if (errno != EAGAIN) {
                 NETMANAGER_VPN_LOGE("read tun device error: %{public}d，tunnelfd: %{public}d", errno, fdInfo.tunnelFd);
             }
             continue;
@@ -282,10 +288,11 @@ void HandleTcpReceived(FdInfo fdInfo) {
         }
     }
 }
-
-static napi_value UdpConnect(napi_env env, napi_callback_info info) {
+ 
+static napi_value UdpConnect(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     int32_t port = 0;
@@ -300,14 +307,14 @@ static napi_value UdpConnect(napi_env env, napi_callback_info info) {
         NETMANAGER_VPN_LOGE("socket() error");
         return 0;
     }
-
+ 
     struct timeval timeout = {1, 0};
-    setsockopt(sockFd, SOL_SOCKET, SO_RCVTIMEO, (char *)&timeout, sizeof(struct timeval));
+    setsockopt(sockFd, SOL_SOCKET, SO_RCVTIMEO, reinterpret_cast<const char*>(&timeout), sizeof(struct timeval));
 
-    memset(&fdInfo.serverAddr, 0, sizeof(fdInfo.serverAddr));
-    fdInfo.serverAddr.sin_family = AF_INET;
-    fdInfo.serverAddr.sin_addr.s_addr = inet_addr(ipAddr.c_str()); // server's IP addr
-    fdInfo.serverAddr.sin_port = htons(port);                      // port
+    memset(&g_fdInfo.serverAddr, 0, sizeof(g_fdInfo.serverAddr));
+    g_fdInfo.serverAddr.sin_family = AF_INET;
+    g_fdInfo.serverAddr.sin_addr.s_addr = inet_addr(ipAddr.c_str()); // server's IP addr
+    g_fdInfo.serverAddr.sin_port = htons(port);                      // port
 
     NETMANAGER_VPN_LOGI("Connection successful");
 
@@ -315,28 +322,29 @@ static napi_value UdpConnect(napi_env env, napi_callback_info info) {
     napi_create_int32(env, sockFd, &tunnelFd);
     return tunnelFd;
 }
-
-static napi_value StartVpn(napi_env env, napi_callback_info info) {
+ 
+static napi_value StartVpn(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
-    napi_get_value_int32(env, args[0], &fdInfo.tunFd);
-    napi_get_value_int32(env, args[1], &fdInfo.tunnelFd);
+    napi_get_value_int32(env, args[0], &g_fdInfo.tunFd);
+    napi_get_value_int32(env, args[1], &g_fdInfo.tunnelFd);
 
-    if (threadRunF) {
-        threadRunF = false;
-        threadt1.join();
-        threadt2.join();
+    if (g_threadRunF) {
+        g_threadRunF = false;
+        g_threadT1.join();
+        g_threadT2.join();
     }
-
+ 
     // 启动两个线程, 一个处理读取虚拟网卡的数据，另一个接收服务端的数据
-    threadRunF = true;
-    std::thread tt1(HandleReadTunfd, fdInfo);
-    std::thread tt2(HandleTcpReceived, fdInfo);
+    g_threadRunF = true;
+    std::thread tt1(HandleReadTunfd, g_fdInfo);
+    std::thread tt2(HandleTcpReceived, g_fdInfo);
 
-    threadt1 = std::move(tt1);
-    threadt2 = std::move(tt2);
+    g_threadT1 = std::move(tt1);
+    g_threadT2 = std::move(tt2);
 
     NETMANAGER_VPN_LOGI("StartVpn successful");
 
@@ -345,7 +353,8 @@ static napi_value StartVpn(napi_env env, napi_callback_info info) {
     return retValue;
 }
 
-static napi_value StopVpn(napi_env env, napi_callback_info info) {
+static napi_value StopVpn(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -356,23 +365,24 @@ static napi_value StopVpn(napi_env env, napi_callback_info info) {
         close(tunnelFd);
         tunnelFd = 0;
     }
-
+ 
     // 停止两个线程
-    if (threadRunF) {
-        threadRunF = false;
-        threadt1.join();
-        threadt2.join();
+    if (g_threadRunF) {
+        g_threadRunF = false;
+        g_threadT1.join();
+        g_threadT2.join();
     }
-
+ 
     NETMANAGER_VPN_LOGI("StopVpn successful");
-
+ 
     napi_value retValue;
     napi_create_int32(env, 0, &retValue);
     return retValue;
 }
-
+ 
 EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) {
+static napi_value Init(napi_env env, napi_value exports)
+{
     napi_property_descriptor desc[] = {
         {"udpConnect", nullptr, UdpConnect, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"startVpn", nullptr, StartVpn, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -382,7 +392,7 @@ static napi_value Init(napi_env env, napi_value exports) {
     return exports;
 }
 EXTERN_C_END
-
+ 
 static napi_module demoModule = {
     .nm_version = 1,
     .nm_flags = 0,
@@ -392,10 +402,8 @@ static napi_module demoModule = {
     .nm_priv = ((void *)0),
     .reserved = {0},
 };
-
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void) {
-    napi_module_register(&demoModule);
-}
+ 
+extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
 ```
 
 ## 相关实例

@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ScsiPeripheral_Device ScsiPeripheral_Device
+```
+
 ## 概述
 
 不透明的SCSI设备结构体。

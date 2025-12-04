@@ -2,13 +2,13 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **IsolatedComponent** is designed to support the embedding and display of UIs provided by independent .abc files within the current page, with the displayed content running in a restricted Worker thread.
 
-It is typically used in modular development scenarios where ABC hot update is required (ABC files loaded by IsolatedComponent can be dynamically replaced, and content update can be implemented without reinstalling the application).
+This component is primarily designed for modular development scenarios that require hot updates for .abc files. (The .abc files loaded by **IsolatedComponent** can be dynamically replaced, enabling content updates without reinstalling the application.)
 
 > **NOTE**
 >
@@ -110,7 +110,7 @@ This example demonstrates the basic usage of the **IsolatedComponent** component
 3. Open the application page and click the **verifyAbc** button to verify the .abc file, which logs "VerifyAbc successfully."
 4. Click the **showIsolatedComponent** button to display the **IsolatedComponent** with the content "Hello World."
 
-- Restricted Worker thread script **ets/workers/OhCardWorker.ets**:
+- The content of the restricted worker script **ets/workers/OhCardWorker.ets** is as follows:
   ```ts
   // OhCardWorker.ets
   import { worker, ThreadWorkerGlobalScope, MessageEvents, ErrorEvent } from '@kit.ArkTS';

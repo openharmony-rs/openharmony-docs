@@ -4,12 +4,12 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Native侧提供，如声明式UI语法，自定义struct组件，UI高级组件。
 
 
-针对需要使用ArkTS侧独立能力的场景，ArkUI开发框架提供了Native侧嵌入ArkTS组件的能力，该能力依赖[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)机制，通过ComponentContent完成对ArkTS组件的封装，然后将封装对象转递到Native侧，通过Native侧的[OH_ArkUI_GetNodeHandleFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodehandlefromnapivalue)接口转化为ArkUI_NodeHandle对象用于Native侧组件挂载使用。
+针对需要使用ArkTS侧独立能力的场景，ArkUI开发框架提供了Native侧嵌入ArkTS组件的能力，该能力依赖[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)机制，通过ComponentContent完成对ArkTS组件的封装，然后将封装对象传递到Native侧，通过Native侧的[OH_ArkUI_GetNodeHandleFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodehandlefromnapivalue)接口转化为ArkUI_NodeHandle对象用于Native侧组件挂载使用。
 
 
 > **说明：**
@@ -30,11 +30,16 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
 
 
 1. 注册ArkTS组件创建函数给Native侧，以便Native侧调用，创建函数使用ComponentContent能力进行封装。
-   ```ts
-   // MixedModule.ets
+   <!-- @[mixed_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/ets/pages/MixedModule.ets) -->
+   
+   ``` TypeScript
+   
    // 使用ComponentContent能力创建ArkTS组件
    
-   import { NodeContent,  UIContext, RefreshModifier, ComponentContent } from '@kit.ArkUI';
+   import { NodeContent, UIContext, RefreshModifier, ComponentContent } from '@kit.ArkUI';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const DOMAIN = 0x0000;
    
    // 定义Native侧和ArkTS进行交互的数据对象。
    interface NativeRefreshAttribute {
@@ -43,7 +48,7 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
      height?: number;
      backgroundColor?: number;
      refreshOffset?: number;
-     pullToRefresh?: boolean
+     pullToRefresh?: boolean;
      onRefreshing?: () => void;
      onOffsetChange?: (offset: number) => void;
    }
@@ -64,22 +69,22 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    function mixedRefresh(attribute: RefreshAttribute) {
      Refresh({ refreshing: attribute.isRefreshing }) {
        // Refresh作为容器组件，需要使用ContentSlot机制预留子组件占位
-       ContentSlot(attribute.slot)
+       ContentSlot(attribute.slot);
      }.attributeModifier(attribute.modifier)
      .onRefreshing(() => {
-       console.info("on onRefreshing");
+       hilog.info(DOMAIN, 'testTag', 'on onRefreshing');
        if (attribute.onRefreshing) {
-         console.info("on native onRefreshing");
+         hilog.info(DOMAIN, 'testTag', 'on native onRefreshing');
          attribute.onRefreshing();
        }
      })
      .onOffsetChange((value: number) => {
-       console.info("on offset change: " + value);
+       hilog.info(DOMAIN, 'testTag', 'on offset change: ' + value);
        if (attribute.onOffsetChange) {
-         console.info("on native onOffsetChange");
+         hilog.info(DOMAIN, 'testTag', 'on native onOffsetChange');
          attribute.onOffsetChange(value);
        }
-     })
+     });
    }
    
    // 定义创建函数的返回值，用于ArkTS侧和Native侧的交互。
@@ -92,24 +97,24 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    
    // 提供创建ArkTS组件的入口函数。
    export function createMixedRefresh(value: NativeRefreshAttribute): MixedModuleResult {
-     console.info("createMixedRefresh");
+     hilog.info(DOMAIN, 'testTag', 'createMixedRefresh');
      // 通过AppStorage对象在Ability启动的时候保持UI上下文对象。
-     let uiContent = AppStorage.get<UIContext>("context");
+     let uiContent = AppStorage.get<UIContext>('context');
      let modifier = new RefreshModifier();
      if (value.width) {
-       modifier.width(value.width)
+       modifier.width(value.width);
      }
      if (value.height) {
-       modifier.height(value.height)
+       modifier.height(value.height);
      }
      if (value.backgroundColor) {
-       modifier.backgroundColor(value.backgroundColor)
+       modifier.backgroundColor(value.backgroundColor);
      }
      if (value.pullToRefresh) {
-       modifier.pullToRefresh(value.pullToRefresh)
+       modifier.pullToRefresh(value.pullToRefresh);
      }
      if (value.refreshOffset) {
-       modifier.refreshOffset(value.refreshOffset)
+       modifier.refreshOffset(value.refreshOffset);
      }
      // 创建NodeContent插槽对象用于Refresh子组件挂载。
      let nodeSlot = new NodeContent();
@@ -132,19 +137,19 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
      value: NativeRefreshAttribute): void {
      let modifier = new RefreshModifier();
      if (value.width) {
-       modifier.width(value.width)
+       modifier.width(value.width);
      }
      if (value.height) {
-       modifier.height(value.height)
+       modifier.height(value.height);
      }
      if (value.backgroundColor) {
-       modifier.backgroundColor(value.backgroundColor)
+       modifier.backgroundColor(value.backgroundColor);
      }
      if (value.pullToRefresh) {
-       modifier.pullToRefresh(value.pullToRefresh)
+       modifier.pullToRefresh(value.pullToRefresh);
      }
      if (value.refreshOffset) {
-       modifier.refreshOffset(value.refreshOffset)
+       modifier.refreshOffset(value.refreshOffset);
      }
      // 调用ComponentContent的update接口进行更新。
      refresh.update({
@@ -153,17 +158,19 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
        slot: childSlot,
        onRefreshing: value.onRefreshing,
        onOffsetChange: value.onOffsetChange
-     })
+     });
    }
    
    ```
 
 2. 将创建和更新函数注册给Native侧。
-   ```ts
-   // Index.ets
+   <!-- @[page_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   //  Index.ets
    import nativeNode from 'libentry.so';
    import { NodeContent } from '@kit.ArkUI';
-   import { createMixedRefresh, updateMixedRefresh } from './MixedModule'
+   import { createMixedRefresh, updateMixedRefresh } from './MixedModule';
    
    @Entry
    @Component
@@ -173,7 +180,7 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    
      aboutToAppear(): void {
        // 设置uiContext;
-       AppStorage.setOrCreate<UIContext>("context", this.getUIContext());
+       AppStorage.setOrCreate<UIContext>('context', this.getUIContext());
        // 设置混合模式下的builder函数。
        nativeNode.registerCreateMixedRefreshNode(createMixedRefresh);
        nativeNode.registerUpdateMixedRefreshNode(updateMixedRefresh);
@@ -182,47 +189,48 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
      changeNativeFlag(): void {
        if (this.showNative) {
          // 创建NativeModule组件挂载
-         nativeNode.createNativeRoot(this.rootSlot)
+         nativeNode.createNativeRoot(this.rootSlot);
        } else {
          // 销毁NativeModule组件
-         nativeNode.destroyNativeRoot()
+         nativeNode.destroyNativeRoot();
        }
      }
    
      build() {
        Column() {
-         Button(this.showNative ? "HideNativeUI" : "ShowNativeUI").onClick(() => {
-           this.showNative = !this.showNative
-         })
+         Button(this.showNative ? 'HideNativeUI' : 'ShowNativeUI').onClick(() => {
+           this.showNative = !this.showNative;
+         });
          Row() {
            // ArkTS插入Native组件。
-           ContentSlot(this.rootSlot)
+           ContentSlot(this.rootSlot);
          }.layoutWeight(1)
+         .id('row_');
        }
        .width('100%')
-       .height('100%')
+       .height('100%');
      }
    }
+   
    ```
 
-   ```cpp
+   <!-- @[native_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/NapiInit.cpp) -->
+   
+   ``` C++
    // native_init.cpp
    #include "napi/native_api.h"
    #include "ArkUIMixedRefresh.h"
    #include "NativeEntry.h"
    
    EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports) {
+   static napi_value Init(napi_env env, napi_value exports)
+   {
        napi_property_descriptor desc[] = {
-           // 注册NDK根节点。 
            {"createNativeRoot", nullptr, NativeModule::CreateNativeRoot, nullptr, nullptr, nullptr, napi_default, nullptr},
-           // 注册混合模式创建方法。
            {"registerCreateMixedRefreshNode", nullptr, NativeModule::ArkUIMixedRefresh::RegisterCreateRefresh, nullptr,
             nullptr, nullptr, napi_default, nullptr},
-           // 注册混合模式更新方法。
            {"registerUpdateMixedRefreshNode", nullptr, NativeModule::ArkUIMixedRefresh::RegisterUpdateRefresh, nullptr,
             nullptr, nullptr, napi_default, nullptr},
-           // 销毁NDK根节点。 
            {"destroyNativeRoot", nullptr, NativeModule::DestroyNativeRoot, nullptr, nullptr, nullptr, napi_default,
             nullptr}};
        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
@@ -244,12 +252,14 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    ```
 
 3. Native侧通过Node-API保存创建和更新函数，用于后续调用。
-   ```c
-   // ArkUIMixedRefresh.h
+   <!-- @[arkui_mixed_refresh_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefreshTemplate.h) -->
+   
+   ``` C
+   
    // 混合模式交互类。
    
-   #ifndef MYAPPLICATION_ARKUIMIXEDREFRESH_H
-   #define MYAPPLICATION_ARKUIMIXEDREFRESH_H
+   #ifndef MYAPPLICATION_ARKUIMIXEDREFRESHTEMPLATE_H
+   #define MYAPPLICATION_ARKUIMIXEDREFRESHTEMPLATE_H
    
    #include "ArkUIMixedNode.h"
    
@@ -267,14 +277,18 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    
    } // namespace NativeModule
    
-   #endif // MYAPPLICATION_ARKUIMIXEDREFRESH_H
+   #endif // MYAPPLICATION_ARKUIMIXEDREFRESHTEMPLATE_H
    ```
 
-   ```cpp
-   // ArkUIMixedRefresh.cpp
+   相关实现类说明：
+
+   <!-- @[arkui_mixed_refresh_template_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefreshTemplate.cpp) -->
+   
+   ``` C++
+   
    // 混合模式交互类。
    
-   #include "ArkUIMixedRefresh.h"
+   #include "ArkUIMixedRefreshTemplate.h"
    
    namespace NativeModule {
    namespace {
@@ -283,7 +297,8 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    napi_ref g_updateRefresh;
    } // namespace
    
-   napi_value ArkUIMixedRefresh::RegisterCreateAndUpdateRefresh(napi_env env, napi_callback_info info) {
+   napi_value ArkUIMixedRefresh::RegisterCreateAndUpdateRefresh(napi_env env, napi_callback_info info)
+   {
        size_t argc = 1;
        napi_value args[1] = {nullptr};
    
@@ -301,9 +316,11 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    } // namespace NativeModule
    ```
 
+   相关的CMakeLists的配置：
+
    ```cpp
      # CMakeLists.txt
- 
+    
      # the minimum version of CMake.
      cmake_minimum_required(VERSION 3.4.1)
      project(testndk)
@@ -353,7 +370,9 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    ```
 
 4. 抽象混合模式下组件的基类，用于通用逻辑管理。
-   ```c
+   <!-- @[arkui_mixed_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedNode.h) -->
+   
+   ``` C
    // ArkUIMixedNode.h
    // 混合模式基类。
    
@@ -388,7 +407,9 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    ```
 
 5. 实现Refresh组件的混合模式封装对象。
-   ```c
+   <!-- @[arkui_mixed_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefresh.h) -->
+   
+   ``` C
    // ArkUIMixedRefresh.h
    // Refresh混合模式在Native侧的封装对象。
    
@@ -453,20 +474,20 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
        static napi_value RegisterUpdateRefresh(napi_env env, napi_callback_info info);
    
    protected:
-       void OnAddChild(const std::shared_ptr<ArkUIBaseNode> &child) override {
-           assert(contentHandle_);
+       void OnAddChild(const std::shared_ptr<ArkUIBaseNode> &child) override
+       {
            // 使用NodeContent挂载组件（可以使用ArkTS在Native侧通过ComponentContent的转化对象，也可以是纯Native组件）到ArkTS组件下面。
            OH_ArkUI_NodeContent_AddNode(contentHandle_, child->GetHandle());
        }
    
-       void OnRemoveChild(const std::shared_ptr<ArkUIBaseNode> &child) override {
-           assert(contentHandle_);
+       void OnRemoveChild(const std::shared_ptr<ArkUIBaseNode> &child) override
+       {
            // 使用NodeContent卸载组件。
            OH_ArkUI_NodeContent_RemoveNode(contentHandle_, child->GetHandle());
        }
    
-       void OnInsertChild(const std::shared_ptr<ArkUIBaseNode> &child, int32_t index) override {
-           assert(contentHandle_);
+       void OnInsertChild(const std::shared_ptr<ArkUIBaseNode> &child, int32_t index) override
+       {
            // 使用NodeContent插入组件。
            OH_ArkUI_NodeContent_InsertNode(contentHandle_, child->GetHandle(), index);
        }
@@ -474,6 +495,8 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    private:
        // 使用napi接口创建ArkTS侧的数据结构。
        static napi_value CreateRefreshAttribute(const NativeRefreshAttribute &attribute, void *userData);
+       
+       static void Attribute2Descriptor(const NativeRefreshAttribute &attribute, napi_property_descriptor *desc);
    
        ArkUI_NodeContentHandle contentHandle_;
        napi_ref nodeContent_;
@@ -487,9 +510,11 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
 
    相关实现类说明：
 
-   ```c
+   <!-- @[arkui_mixed_refresh_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefresh.cpp) -->
+   
+   ``` C++
    // ArkUIMixedRefresh.cpp
-
+   
    #include "ArkUIMixedRefresh.h"
    #include <hilog/log.h>
    
@@ -498,53 +523,51 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    napi_env g_env;
    napi_ref g_createRefresh;
    napi_ref g_updateRefresh;
+   const int REFRESH_OFFSET_INDEX0 = 0;
+   const int REFRESH_OFFSET_INDEX1 = 1;
+   const int REFRESH_OFFSET_INDEX2 = 2;
+   const int REFRESH_OFFSET_INDEX3 = 3;
+   const int REFRESH_OFFSET_INDEX4 = 4;
+   const int REFRESH_OFFSET_INDEX5 = 5;
+   const int REFRESH_OFFSET_INDEX6 = 6;
+   const int REFRESH_OFFSET_INDEX7 = 7;
    } // namespace
    
-   // 使用Napi接口创建与ArkTS侧交互的数据结构，用于Refresh组件的创建和更新。
-   napi_value ArkUIMixedRefresh::CreateRefreshAttribute(const NativeRefreshAttribute &attribute, void *userData) {
-       napi_property_descriptor desc[] = {
-           {"width", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
-           {"height", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
-           {"backgroundColor", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
-           {"pullToRefresh", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
-           {"isRefreshing", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
-           {"refreshOffset", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
-           {"onRefreshing", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
-           {"onOffsetChange", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
-       };
+   void ArkUIMixedRefresh::Attribute2Descriptor(const NativeRefreshAttribute &attribute, napi_property_descriptor *desc)
+   {
        if (attribute.width) {
            napi_value width;
            napi_create_double(g_env, attribute.width.value(), &width);
-           desc[0].value = width;
+           desc[REFRESH_OFFSET_INDEX0].value = width;
        }
        if (attribute.height) {
            napi_value height;
            napi_create_double(g_env, attribute.height.value(), &height);
-           desc[1].value = height;
+           desc[REFRESH_OFFSET_INDEX1].value = height;
        }
        if (attribute.backgroundColor) {
            napi_value backgroundColor;
            napi_create_uint32(g_env, attribute.backgroundColor.value(), &backgroundColor);
-           desc[2].value = backgroundColor;
+           desc[REFRESH_OFFSET_INDEX2].value = backgroundColor;
        }
        if (attribute.pullToRefresh) {
            napi_value pullToRefresh;
            napi_create_int32(g_env, attribute.pullToRefresh.value(), &pullToRefresh);
-           desc[3].value = pullToRefresh;
+           desc[REFRESH_OFFSET_INDEX3].value = pullToRefresh;
        }
        if (attribute.isRefreshing) {
            napi_value isRefreshing;
            napi_create_int32(g_env, attribute.isRefreshing.value(), &isRefreshing);
-           desc[4].value = isRefreshing;
+           desc[REFRESH_OFFSET_INDEX4].value = isRefreshing;
        }
        if (attribute.refreshOffset) {
            napi_value refreshOffset;
            napi_create_double(g_env, attribute.refreshOffset.value(), &refreshOffset);
-           desc[5].value = refreshOffset;
+           desc[REFRESH_OFFSET_INDEX5].value = refreshOffset;
        }
        if (attribute.onRefreshing) {
            OH_LOG_INFO(LOG_APP, "onRefreshing start");
-           desc[6].method = [](napi_env env, napi_callback_info info) -> napi_value {
+           desc[REFRESH_OFFSET_INDEX6].method = [](napi_env env, napi_callback_info info) -> napi_value {
                OH_LOG_INFO(LOG_APP, "onRefreshing callback");
                size_t argc = 0;
                napi_value args[0];
@@ -557,9 +580,25 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
                return nullptr;
            };
        }
+   }
+   
+   // 使用Napi接口创建与ArkTS侧交互的数据结构，用于Refresh组件的创建和更新。
+   napi_value ArkUIMixedRefresh::CreateRefreshAttribute(const NativeRefreshAttribute &attribute, void *userData)
+   {
+       napi_property_descriptor desc[] = {
+           {"width", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
+           {"height", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
+           {"backgroundColor", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
+           {"pullToRefresh", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
+           {"isRefreshing", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
+           {"refreshOffset", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
+           {"onRefreshing", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
+           {"onOffsetChange", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
+       };
+       Attribute2Descriptor(attribute, desc);
        if (attribute.onOffsetChange) {
            OH_LOG_INFO(LOG_APP, "onOffsetChange start");
-           desc[7].method = [](napi_env env, napi_callback_info info) -> napi_value {
+           desc[REFRESH_OFFSET_INDEX7].method = [](napi_env env, napi_callback_info info) -> napi_value {
                OH_LOG_INFO(LOG_APP, "onOffsetChange callback");
                size_t argc = 1;
                napi_value args[1] = {nullptr};
@@ -583,7 +622,8 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    }
    
    // 创建ArkTS侧的组件并保存在Native侧的封装对象中。
-   const std::shared_ptr<ArkUIMixedRefresh> ArkUIMixedRefresh::Create(const NativeRefreshAttribute &attribute) {
+   const std::shared_ptr<ArkUIMixedRefresh> ArkUIMixedRefresh::Create(const NativeRefreshAttribute &attribute)
+   {
        napi_handle_scope scope;
        napi_open_handle_scope(g_env, &scope);
        auto refresh = std::make_shared<ArkUIMixedRefresh>();
@@ -604,13 +644,11 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
        napi_get_named_property(g_env, result, "content", &componentContent);
        ArkUI_NodeHandle handle;
        OH_ArkUI_GetNodeHandleFromNapiValue(g_env, componentContent, &handle);
-       assert(handle);
        // 获取ArkTS的Refresh组件的子组件插槽。
        napi_value nodeContent = nullptr;
        napi_get_named_property(g_env, result, "childSlot", &nodeContent);
        ArkUI_NodeContentHandle contentHandle;
        OH_ArkUI_GetNodeContentFromNapiValue(g_env, nodeContent, &contentHandle);
-       assert(contentHandle);
        // 保存ArkTS的ComponentContent用于防止ArkTS侧对象释放以及后续的更新。
        napi_ref componentContentRef;
        napi_create_reference(g_env, componentContent, 1, &componentContentRef);
@@ -627,7 +665,8 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
        return refresh;
    }
    // 更新函数实现。
-   void ArkUIMixedRefresh::FlushMixedModeCmd() {
+   void ArkUIMixedRefresh::FlushMixedModeCmd()
+   {
        napi_handle_scope scope;
        napi_open_handle_scope(g_env, &scope);
        // 创建调用ArkTS接口入参。
@@ -647,43 +686,46 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
        napi_get_reference_value(g_env, g_updateRefresh, &updateRefresh);
        // 调用ArkTS的Update函数进行更新。
        napi_value result = nullptr;
-       napi_call_function(g_env, nullptr, updateRefresh, 3, argv, &result);
+       napi_call_function(g_env, nullptr, updateRefresh, sizeof(argv) / sizeof(argv[0]), argv, &result);
    }
-
-   napi_value ArkUIMixedRefresh::RegisterCreateRefresh(napi_env env, napi_callback_info info) {
-        size_t argc = 1;
-        napi_value args[1] = {nullptr};
-
-        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-        g_env = env;
-        napi_ref refer;
-        napi_create_reference(env, args[0], 1, &refer);
-
-        g_createRefresh = refer;
-        return nullptr;
-    }
    
-   napi_value ArkUIMixedRefresh::RegisterUpdateRefresh(napi_env env, napi_callback_info info) {
+   napi_value ArkUIMixedRefresh::RegisterCreateRefresh(napi_env env, napi_callback_info info)
+   {
        size_t argc = 1;
        napi_value args[1] = {nullptr};
-
+   
        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
+   
        g_env = env;
        napi_ref refer;
        napi_create_reference(env, args[0], 1, &refer);
-
+   
+       g_createRefresh = refer;
+       return nullptr;
+   }
+   
+   napi_value ArkUIMixedRefresh::RegisterUpdateRefresh(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+   
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       g_env = env;
+       napi_ref refer;
+       napi_create_reference(env, args[0], 1, &refer);
+   
        g_updateRefresh = refer;
        return nullptr;
    }
    
    } // namespace NativeModule
-   
    ```
 
 6. 定时器模块相关简单实现。
-   ```c
+   <!-- @[ui_timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/UITimer.h) -->
+   
+   ``` C
    // UITimer.h
    // 定时器模块。
    
@@ -710,7 +752,8 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    
    napi_threadsafe_function threadSafeFunction = nullptr;
    
-   void CreateNativeTimer(napi_env env, void *userData, int32_t totalCount, void (*func)(void *userData, int32_t count)) {
+   void CreateNativeTimer(napi_env env, void *userData, int32_t totalCount, void (*func)(void *userData, int32_t count))
+   {
        napi_value name;
        std::string str = "UICallback";
        napi_create_string_utf8(env, str.c_str(), str.size(), &name);
@@ -729,6 +772,8 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
            uv_timer_t *timer = new uv_timer_t();
            uv_timer_init(loop, timer);
            timer->data = new UIData{data, 0, totalCount, func};
+           uint64_t timeout = 4000;
+           uint64_t repeat = 4000;
            uv_timer_start(
                timer,
                [](uv_timer_t *handle) {
@@ -746,7 +791,7 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
                        delete customData;
                    }
                },
-               4000, 4000);
+               timeout, repeat);
            uv_run(loop, UV_RUN_DEFAULT);
            uv_loop_delete(loop);
        });
@@ -758,7 +803,9 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    ```
 
 7. 使用[接入ArkTS页面](ndk-access-the-arkts-page.md)章节的页面结构，并沿用[定时器模块相关简单实现](ndk-embed-arkts-components.md)，将Refresh组件作为文本列表的父组件。
-   ```c
+   <!-- @[mixed_refresh_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/MixedRefreshExample.h) -->
+   
+   ``` C
    // MixedRefreshExample.h
    // 混合模式示例代码。
    
@@ -774,7 +821,8 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    
    namespace NativeModule {
    
-   std::shared_ptr<ArkUIBaseNode> CreateMixedRefreshList(napi_env env) {
+   std::shared_ptr<ArkUIBaseNode> CreateMixedRefreshList(napi_env env)
+   {
        auto list = CreateTextListExample();
        // 混合模式创建Refresh组件并挂载List组件。
        NativeRefreshAttribute nativeRefreshAttribute{
@@ -808,9 +856,11 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
 
    替换入口组件创建为下拉刷新文本列表。
 
-   ```c
+   <!-- @[native_entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/NativeEntry.cpp) -->
+   
+   ``` C++
    // NativeEntry.cpp
-
+   
    #include "NativeEntry.h"
    
    #include "ArkUIMixedRefresh.h"
@@ -824,7 +874,8 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    
    namespace NativeModule {
    
-   napi_value CreateNativeRoot(napi_env env, napi_callback_info info) {
+   napi_value CreateNativeRoot(napi_env env, napi_callback_info info)
+   {
        size_t argc = 1;
        napi_value args[1] = {nullptr};
    
@@ -843,23 +894,23 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
        return nullptr;
    }
    
-   napi_value DestroyNativeRoot(napi_env env, napi_callback_info info) {
+   napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
+   {
        // 从管理类中释放Native侧对象。
        NativeEntry::GetInstance()->DisposeRootNode();
        return nullptr;
    }
    
    } // namespace NativeModule
-   
    ```
 
 8. 在Native侧提供Node-API的桥接方法，实现ArkTS侧的NativeNode模块接口。 
-   ```ts
-   // Index.d.ts
+   <!-- @[bridge_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/types/libentry/Index.d.ts) -->
    
+   ``` TypeScript
    export const createNativeRoot: (content: Object) => void;
    export const destroyNativeRoot: () => void;
-
+   
    export const registerCreateMixedRefreshNode: (content: Object) => void;
    export const registerUpdateMixedRefreshNode: (content: Object) => void;
    ```

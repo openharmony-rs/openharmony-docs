@@ -1,5 +1,5 @@
 # AVSession Management Error Codes
- <!--Kit: AVSession Kit-->
+<!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->

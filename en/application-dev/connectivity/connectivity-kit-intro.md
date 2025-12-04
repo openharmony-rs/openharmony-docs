@@ -83,3 +83,8 @@ Connectivity Kit provides basic communication services for applications. Before 
 
 Device capabilities can be used only after the related switch is enabled after user authorization. Otherwise, the system does not provide services for third-party applications.
 
+### Related Samples
+
+The following samples are provided to help you better understand how to develop Bluetooth-related services:
+
+- [bluetooth](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Bluetooth)

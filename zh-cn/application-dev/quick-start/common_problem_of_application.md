@@ -10,7 +10,7 @@
 
 * 通过调用接口获取。
 
-可以调用[bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含fingerprint指纹信息。
+可以调用[bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含指纹信息。
 
 <!-- @[get_fingerprint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetFingerprint.ets) -->
 
@@ -33,7 +33,7 @@ try {
 ```
 
 
-* 通过[bm工具](../tools/bm-tool.md)获取fingerprint指纹信息。
+* 通过[bm工具](../tools/bm-tool.md)获取指纹信息。
 
 ```shell
 hdc shell

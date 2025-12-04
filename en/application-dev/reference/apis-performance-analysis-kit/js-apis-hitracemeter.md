@@ -3,8 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @qq_437963121-->
-<!--SE: @MontSaintMichel-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @kutcherzhou1; @MontSaintMichel-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
 
 The **HiTraceMeter** module provides the functions of tracing service processes and monitoring the system performance. It provides the data needed for HiTraceMeter to carry out performance analysis.
 For details about the development process, see [Using HiTraceMeter](../../dfx/hitracemeter-guidelines-arkts.md).
@@ -13,9 +14,9 @@ For details about the development process, see [Using HiTraceMeter](../../dfx/hi
 >
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> You are advised to use the performance tracing APIs of API version 19. The [startTrace](#hitracemeterstarttrace), [finishTrace](#hitracemeterfinishtrace), and [traceByValue](#hitracemetertracebyvalue) APIs will be deprecated.
+> You are advised to use the performance tracing APIs of API version 19. The [startTrace()](#hitracemeterstarttrace), [finishTrace()](#hitracemeterfinishtrace), and [traceByValue()](#hitracemetertracebyvalue) APIs will be deprecated.
 >
-> The trace output level cannot be specified in the [startTrace](#hitracemeterstarttrace), [finishTrace](#hitracemeterfinishtrace) and [traceByValue](#hitracemetertracebyvalue) APIs. By default, the trace output level is **COMMERCIAL**.
+> The trace output level cannot be specified in the [startTrace()](#hitracemeterstarttrace), [finishTrace()](#hitracemeterfinishtrace) and [traceByValue()](#hitracemetertracebyvalue) APIs. By default, the trace output level is **COMMERCIAL**.
 >
 > The vertical bar (|) is used as the separator in [user-mode trace format](../../dfx/hitracemeter-view.md#user-mode-trace-format). Therefore, the string parameters passed by the performance tracing APIs must exclude this character to avoid trace parsing exceptions.
 >
@@ -35,9 +36,9 @@ Starts an asynchronous trace.
 
 If multiple trace tasks with the same name need to be performed at the same time or a trace needs to be performed multiple times concurrently, different task IDs must be specified in **startTrace**.
 
-If the trace tasks with the same name are not performed at the same time, the same taskId can be used. For a specific example, see [finishTrace](#hitracemeterfinishtrace).
+If the trace tasks with the same name are not performed at the same time, the same taskId can be used. For a specific example, see [finishTrace()](#hitracemeterfinishtrace).
 
-Since API version 19, you are advised to use [startAsyncTrace](#hitracemeterstartasynctrace19), which must be used together with [finishAsyncTrace](#hitracemeterfinishasynctrace19). In this way, you can specify the trace output level and category.
+Since API version 19, you are advised to use [startAsyncTrace()](#hitracemeterstartasynctrace19), which must be used together with [finishAsyncTrace()](#hitracemeterfinishasynctrace19). In this way, you can specify the trace output level and category.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -62,9 +63,9 @@ finishTrace(name: string, taskId: number): void
 
 Stops an asynchronous trace.
 
-To stop a trace, the values of name and task ID in **finishTrace** must be the same as those in [startTrace](#hitracemeterstarttrace).
+To stop a trace, the values of name and task ID in **finishTrace** must be the same as those in [startTrace()](#hitracemeterstarttrace).
 
-Since API version 19, you are advised to use [finishAsyncTrace](#hitracemeterfinishasynctrace19), which must be used together with [startAsyncTrace](#hitracemeterstartasynctrace19).
+Since API version 19, you are advised to use [finishAsyncTrace()](#hitracemeterfinishasynctrace19), which must be used together with [startAsyncTrace()](#hitracemeterstartasynctrace19).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -111,7 +112,7 @@ traceByValue(name: string, count: number): void
 
 Traces the value changes of an integer variable.
 
-Since API version 19, you are advised to use the [traceByValue<sup>19+</sup>](#hitracemetertracebyvalue19) API to specify the trace output level
+Since API version 19, you are advised to use the [traceByValue<sup>19+</sup>()](#hitracemetertracebyvalue19) API to specify the trace output level
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -160,7 +161,7 @@ Starts an asynchronous trace with the trace output level specified.
 
 If multiple trace tasks with the same name need to be performed at the same time or a trace needs to be performed multiple times concurrently, different task IDs must be specified in **startAsyncTrace**.
 
-If the trace tasks with the same name are not performed at the same time, the same taskId can be used. For details, see [finishAsyncTrace](#hitracemeterfinishasynctrace19).
+If the trace tasks with the same name are not performed at the same time, the same taskId can be used. For details, see [finishAsyncTrace()](#hitracemeterfinishasynctrace19).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -195,7 +196,7 @@ finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: number): void
 
 Stops an asynchronous trace with the trace output level specified.
 
-The **level**, **name**, and **taskId** used in **finishAsyncTrace** must be the same as those of [startAsyncTrace](#hitracemeterstartasynctrace19).
+The **level**, **name**, and **taskId** used in **finishAsyncTrace()** must be the same as those of [startAsyncTrace()](#hitracemeterstartasynctrace19).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -252,7 +253,7 @@ hiTraceMeter.finishAsyncTrace(COMMERCIAL, "myTestFunc", 1);
 
 startSyncTrace(level: HiTraceOutputLevel, name: string, customArgs?: string): void
 
-Starts a synchronous trace with the trace output level specified. For details, see [finishSyncTrace](#hitracemeterfinishsynctrace19).
+Starts a synchronous trace with the trace output level specified. For details, see [finishSyncTrace()](#hitracemeterfinishsynctrace19).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -284,7 +285,7 @@ finishSyncTrace(level: HiTraceOutputLevel): void
 
 Stops a synchronous trace with the trace output level specified.
 
-The **level** used in **finishSyncTrace** must be the same as that of [startSyncTrace](#hitracemeterstartsynctrace19).
+The **level** used in **finishSyncTrace** must be the same as that of [startSyncTrace()](#hitracemeterstartsynctrace19).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -354,8 +355,6 @@ isTraceEnabled(): boolean
 
 Checks whether application trace capture is enabled.
 
-You can use [HiTrace](../../dfx/hitrace.md) commands to enable or disable trace capture.
-
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
@@ -364,7 +363,7 @@ You can use [HiTrace](../../dfx/hitrace.md) commands to enable or disable trace 
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| boolean | Returns **true** if the application trace capture is enabled and the HiTraceMeter performance tracing takes effect;<br>returns **false** otherwise.|
+| boolean | **true** is returned when the trace capture is enabled using [hitrace](../../dfx/hitrace.md). **false** is returned when it is disabled or stopped. In this case, calling the HiTraceMeter API does not take effect.|
 
 **Example**
 
@@ -373,5 +372,106 @@ if (hiTraceMeter.isTraceEnabled()) {
     // Service flow...
 } else {
     // Service flow...
+}
+```
+
+## TraceEventListener<sup>22+</sup>
+
+type TraceEventListener = (traceStatus: boolean) => void
+
+Defines a callback to listen for whether the trace capture is enabled.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.HiviewDFX.HiTrace
+
+**Parameters**
+
+| Name     | Type   | Mandatory| Description                                                    |
+| ----------- | ------- | ---- | -------------------------------------------------------- |
+| traceStatus | boolean | Yes  | Whether the trace capture is enabled for the current application.<br>The value **true** indicates that the trace capture is enabled, and **false** indicates the opposite.|
+
+## hiTraceMeter.registerTraceListener<sup>22+</sup>
+
+registerTraceListener(callback: TraceEventListener): number
+
+Registers a callback to notify whether the application trace capture is enabled. This API uses a synchronous callback to return the result.
+
+After the registration is successful, the callback is executed immediately. Subsequent callbacks are executed when the application trace capture status changes.
+
+Callbacks are stored in the application process. A maximum of 10 callbacks can be registered in a process.
+
+> **NOTE**
+>
+> If the callback contains time-consuming operations, the registration or deregistration will be blocked (waiting for the callback execution to complete) when the callback is executed.
+>
+> Therefore, you are advised not to register or deregister callbacks containing time-consuming operations in the main thread of the application to avoid application freeze.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.HiviewDFX.HiTrace
+
+**Parameters**
+
+| Name  | Type                                       | Mandatory| Description            |
+| -------- | ------------------------------------------- | ---- | ---------------- |
+| callback | [TraceEventListener](#traceeventlistener22) | Yes  | Registered callback.|
+
+**Returns**
+
+| Type  | Description                                                        |
+| ------ | ------------------------------------------------------------ |
+| number | Callback registration status.<br>>= 0: The registration is successful. The callback index for deregistration is returned. The index ranges from 0 to 9.<br> **-1**: The maximum number of callbacks has been reached.<br> **-2**: Invalid parameter. The parameter is not of the **TraceEventListener** type.|
+
+**Example**
+
+```js
+// Define the registered callback.
+let callback: hiTraceMeter.TraceEventListener = (traceStatus: boolean) => {
+    if (traceStatus) {
+        // Trace capture is enabled for the current application. The service process is as follows:
+    } else {
+        // Trace capture is disabled for the current application. The service process is as follows:
+    }
+};
+
+// Register a callback to notify whether the application trace capture is enabled.
+let index = hiTraceMeter.registerTraceListener(callback);
+if (index < 0) {
+    // Handle exceptions.
+}
+```
+
+## hiTraceMeter.unregisterTraceListener<sup>22+</sup>
+
+unregisterTraceListener(index: number): number
+
+Deregisters the callback used to notify whether the application trace capture is enabled.
+
+Deregisters the callback associated with the callback index returned by [registerTraceListener()](#hitracemeterregistertracelistener22).
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.HiviewDFX.HiTrace
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                |
+| ------ | ------ | ---- | -------------------- |
+| index  | number | Yes  | Index of the registered callback.|
+
+**Returns**
+
+| Type  | Description                                                        |
+| ------ | ------------------------------------------------------------ |
+| number | Callback deregistration status.<br>**0**: Deregistration succeeded.<br>**-1**: The callback corresponding to the index is not registered.<br>**-2**: Invalid index. The index value is not within the range of 0 to 9.|
+
+**Example**
+
+```js
+// Deregister the callback used to notify whether the application trace capture is enabled. index is the callback index returned by hiTraceMeter.registerTraceListener.
+let ret = hiTraceMeter.unregisterTraceListener(index);
+if (ret < 0) {
+    // Handle exceptions.
 }
 ```

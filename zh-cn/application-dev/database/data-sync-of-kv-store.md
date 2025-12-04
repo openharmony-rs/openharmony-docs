@@ -107,10 +107,34 @@
 >
 > 数据只允许向数据安全标签不高于对端设备安全等级的设备同步数据，具体规则可见[跨设备同步访问控制机制](access-control-by-device-and-data-level.md#跨设备同步访问控制机制)。
 
-1. 导入模块。
-     
+1. 导入模块获取context。
+
    ```ts
+   // 导入模块
+   // 在pages目录下新建KvStoreInterface.ets
    import { distributedKVStore } from '@kit.ArkData';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+   import EntryAbility from '../entryability/EntryAbility';
+   // Logger为hilog封装后实现的打印功能
+   import Logger from '../common/Logger';
+
+   let kvManager: distributedKVStore.KVManager | undefined = undefined;
+   let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
+   let appId: string = 'com.example.kvstoresamples';
+   let storeId: string = 'storeId';
+   // Stage模型context从EntryAbility.ets中获取
+   const context = EntryAbility.getContext();
+
+   // FA模型获取context
+   import { featureAbility } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+
+   let context = featureAbility.getContext();
+
+   // 下面所有接口的代码都实现在KvInterface中
+   export class KvInterface {
+   }
    ```
 
 2. 请求权限。
@@ -123,45 +147,27 @@
    1. 根据应用上下文创建kvManagerConfig对象。
    2. 创建分布式数据库管理器实例。
 
-     
-   ```ts
-   // Stage模型获取context
-   import { window } from '@kit.ArkUI';
-   import { UIAbility } from '@kit.AbilityKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
-   let kvManager: distributedKVStore.KVManager | undefined = undefined;
-   
-   class EntryAbility extends UIAbility {
-     onWindowStageCreate(windowStage:window.WindowStage) {
-       let context = this.context;
+   ``` TypeScript
+   public CreateKvManager = (() => {
+     Logger.info('CreateKvManager start');
+     if (typeof (kvManager) === 'undefined') {
+       const kvManagerConfig: distributedKVStore.KVManagerConfig = {
+         bundleName: appId,
+         context: context
+       };
+       try {
+         // 创建KVManager实例
+         kvManager = distributedKVStore.createKVManager(kvManagerConfig);
+         Logger.info('Succeeded in creating KVManager.');
+       } catch (err) {
+         Logger.error(`Failed to create KVManager. Code:${err.code},message:${err.message}`);
+       }
+     } else {
+       Logger.info ('KVManager has created');
      }
-   }
-    
-    // FA模型获取context
-   import { featureAbility } from '@kit.AbilityKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-    
-   let context = featureAbility.getContext();
-   
-   // 获取context之后，构造分布式数据库管理类实例
-   try {
-     const kvManagerConfig: distributedKVStore.KVManagerConfig = {
-       bundleName: 'com.example.datamanagertest',
-       context: context
-     }
-     kvManager = distributedKVStore.createKVManager(kvManagerConfig);
-     console.info('Succeeded in creating KVManager.');
-     // 继续创建获取数据库
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`Failed to create KVManager. Code:${error.code},message:${error.message}`);
-   }
-   
-   if (kvManager !== undefined) {
-     // 进行后续创建数据库等相关操作
-     // ...
-   }
+   })
    ```
 
 4. 调用getKVStore()方法获取并得到指定类型的键值型数据库。
@@ -169,70 +175,84 @@
    1. 声明需要创建的分布式数据库ID描述（例如示例代码中的'storeId'）。
    2. 创建分布式数据库，建议关闭自动端端同步功能（autoSync:false），方便后续对端端同步功能进行验证，需要端端同步时主动调用sync接口。
 
-     
-   ```ts
-   let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
-   try {
-     let child1 = new distributedKVStore.FieldNode('id');
-     child1.type = distributedKVStore.ValueType.INTEGER;
-     child1.nullable = false;
-     child1.default = '1';
-     let child2 = new distributedKVStore.FieldNode('name');
-     child2.type = distributedKVStore.ValueType.STRING;
-     child2.nullable = false;
-     child2.default = 'zhangsan';
-
-     let schema = new distributedKVStore.Schema();
-     schema.root.appendChild(child1);
-     schema.root.appendChild(child2);
-     schema.indexes = ['$.id', '$.name'];
-     // 0表示COMPATIBLE模式，1表示STRICT模式。
-     schema.mode = 1;
-     // 支持在检查Value时，跳过skip指定的字节数，且取值范围为[0,4M-2]。
-     schema.skip = 0;
-
-     const options: distributedKVStore.Options = {
-       createIfMissing: true,
-       encrypt: false,
-       backup: false,
-       autoSync: false,
-       // kvStoreType不填时，默认创建多设备协同数据库
-       // 多设备协同数据库：kvStoreType: distributedKVStore.KVStoreType.DEVICE_COLLABORATION,
-       kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
-       // schema 可以不填，在需要使用schema功能时可以构造此参数，例如：使用谓词查询等。
-       schema: schema,
-       securityLevel: distributedKVStore.SecurityLevel.S3
-     };
-     kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options, (err, store: distributedKVStore.SingleKVStore) => {
-       if (err) {
-         console.error(`Failed to get KVStore: Code:${err.code},message:${err.message}`);
-         return;
-       }
-       console.info('Succeeded in getting KVStore.');
-       kvStore = store;
-       if (kvStore !== undefined) {
+   <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public GetKvStore = (() => {
+     Logger.info('GetKvStore start');
+     if (kvManager === undefined) {
+       Logger.info('KvManager not initialized');
+       return;
+     }
+     try {
+       let child1 = new distributedKVStore.FieldNode('id');
+       child1.type = distributedKVStore.ValueType.INTEGER;
+       child1.nullable = false;
+       child1.default = '1';
+       let child2 = new distributedKVStore.FieldNode('name');
+       child2.type = distributedKVStore.ValueType.STRING;
+       child2.nullable = false;
+       child2.default = 'zhangsan';
+   
+       let schema = new distributedKVStore.Schema();
+       schema.root.appendChild(child1);
+       schema.root.appendChild(child2);
+       schema.indexes = ['$.id', '$.name'];
+       // 0表示COMPATIBLE模式，1表示STRICT模式。
+       schema.mode = 1;
+       // 支持在检查Value时，跳过skip指定的字节数，且取值范围为[0,4M-2]。
+       schema.skip = 0;
+   
+       const options: distributedKVStore.Options = {
+         createIfMissing: true,
+         // 设置数据库加密
+         encrypt: true,
+         backup: false,
+         autoSync: false,
+         // kvStoreType不填时，默认创建多设备协同数据库
+         kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+         // 多设备协同数据库：kvStoreType: distributedKVStore.KVStoreType.DEVICE_COLLABORATION,
+         schema: schema,
+         // schema未定义可以不填，定义方法请参考上方schema示例。
+         securityLevel: distributedKVStore.SecurityLevel.S3
+       };
+       kvManager.getKVStore<distributedKVStore.SingleKVStore>(storeId, options,
+         (err, store: distributedKVStore.SingleKVStore) => {
+           if (err) {
+             Logger.error(`Failed to get KVStore: Code:${err.code},message:${err.message}`);
+             return;
+           }
+           Logger.info('Succeeded in getting KVStore.');
+           kvStore = store;
            // 请确保获取到键值数据库实例后，再进行相关数据操作
-           // 进行后续相关数据操作，包括数据的增、删、改、查、订阅数据变化等操作
-           // ...
-       }
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
+         });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
 5. 调用on()方法订阅分布式数据变化，如需关闭订阅分布式数据变化，调用[off('dataChange')](../reference/apis-arkdata/js-apis-distributedKVStore.md#offdatachange)关闭。
-     
-   ```ts
-   try {
-     kvStore.on('dataChange', distributedKVStore.SubscribeType.SUBSCRIBE_TYPE_ALL, (data) => {
-       console.info(`dataChange callback call data: ${data}`);
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. code:${error.code},message:${error.message}`);
-   }
+
+   <!-- @[kv_store12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public On = (() =>{
+     Logger.info('On start');
+     if(kvStore === undefined) {
+       Logger.info('On: kvStore not initialized');
+       return;
+     }
+     try {
+       kvStore.on('dataChange', distributedKVStore.SubscribeType.SUBSCRIBE_TYPE_ALL, (data) => {
+         Logger.info(`dataChange callback call data: ${data}`);
+       });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
 6. 调用put()方法将数据写入分布式数据库。
@@ -240,23 +260,31 @@
    1. 构造需要写入分布式数据库的Key（键）和Value（值）。
    2. 将键值数据写入分布式数据库。
 
-     
-   ```ts
-   const KEY_TEST_STRING_ELEMENT = 'key_test_string';
-   // 如果未定义Schema则Value可以传其他符合要求的值。
-   const VALUE_TEST_STRING_ELEMENT = '{"id":0, "name":"lisi"}';
-   try {
-     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err) => {
-       if (err !== undefined) {
-         console.error(`Failed to put data. Code:${err.code},message:${err.message}`);
-         return;
-       }
-       console.info('Succeeded in putting data.');
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
+   <!-- @[kv_store4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public Put = (() => {
+     Logger.info('Put start');
+     if (kvStore === undefined) {
+       Logger.info('Put: kvStore not initialized');
+       return;
+     }
+     const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+     // 如果未定义Schema则Value可以传其他符合要求的值。
+     const VALUE_TEST_STRING_ELEMENT = '{"id":0, "name":"lisi"}';
+     try {
+       kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err) => {
+         if (err !== undefined) {
+           Logger.error(`Failed to put data. Code:${err.code},message:${err.message}`);
+           return;
+         }
+         Logger.info('Succeeded in putting data.');
+       });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
 7. 调用get()方法查询分布式数据库数据。
@@ -264,28 +292,29 @@
    1. 构造需要从单版本分布式数据库中查询的Key（键）。
    2. 从单版本分布式数据库中获取数据。
 
-     
-   ```ts
-   try {
-     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err) => {
-       if (err !== undefined) {
-         console.error(`Failed to put data. Code:${err.code},message:${err.message}`);
-         return;
-       }
-       console.info('Succeeded in putting data.');
-       kvStore = kvStore as distributedKVStore.SingleKVStore;
+   <!-- @[kv_store5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public Get = (() => {
+     Logger.info('Get start');
+     if (kvStore === undefined) {
+       Logger.info('Get: kvStore not initialized');
+       return;
+     }
+     const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+     try {
        kvStore.get(KEY_TEST_STRING_ELEMENT, (err, data) => {
          if (err != undefined) {
-           console.error(`Failed to get data. Code:${err.code},message:${err.message}`);
+           Logger.error(`Failed to get data. Code:${err.code},message:${err.message}`);
            return;
          }
-         console.info(`Succeeded in getting data. Data:${data}`);
+         Logger.info(`Succeeded in getting data. Data:${data}`);
        });
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`Failed to get data. Code:${error.code},message:${error.message}`);
-   }
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`Failed to get data. Code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
 8. 调用sync()方法同步数据到其他设备。
@@ -296,33 +325,43 @@
    >
    > 在手动端端同步的方式下，其中的deviceIds通过调用[devManager.getAvailableDeviceListSync](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
 
-   ```ts
-   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-    
-   let devManager: distributedDeviceManager.DeviceManager;
-   try {
-     // create deviceManager
-     devManager = distributedDeviceManager.createDeviceManager(context.applicationInfo.name);
-     // deviceIds由deviceManager调用getAvailableDeviceListSync方法得到
-     let deviceIds: string[] = [];
-     if (devManager != null) {
-       let devices = devManager.getAvailableDeviceListSync();
-       for (let i = 0; i < devices.length; i++) {
-         deviceIds[i] = devices[i].networkId as string;
-       }
-     }
-     try {
-       // 1000表示最大延迟时间为1000ms
-       kvStore.sync(deviceIds, distributedKVStore.SyncMode.PUSH_ONLY, 1000);
-     } catch (e) {
-       let error = e as BusinessError;
-       console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-     }
+   <!-- @[kv_store13](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
-   } catch (err) {
-     let error = err as BusinessError;
-     console.error("createDeviceManager errCode:" + error.code + ",errMessage:" + error.message);
-   }
+   ``` TypeScript
+   public Sync = (() =>{
+     Logger.info('Sync start');
+     if(kvStore === undefined) {
+       Logger.info('Sync: kvStore not initialized');
+       return;
+     }
+     let devManager: distributedDeviceManager.DeviceManager;
+     try {
+       // create deviceManager
+       devManager = distributedDeviceManager.createDeviceManager(context.applicationInfo.name);
+       // deviceIds由deviceManager调用getAvailableDeviceListSync方法得到
+       let deviceIds: string[] = [];
+       if (devManager != null) {
+         let devices = devManager.getAvailableDeviceListSync();
+         for (let i = 0; i < devices.length; i++) {
+           deviceIds[i] = devices[i].networkId as string;
+         }
+       }
+       if (deviceIds.length === 0) {
+         Logger.info('Sync failed networkId is empty.');
+         return;
+       }
+       try {
+         // 1000表示最大延迟时间为1000ms
+         kvStore.sync(deviceIds, distributedKVStore.SyncMode.PUSH_PULL, 1000);
+       } catch (e) {
+         let error = e as BusinessError;
+         Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+       }
+     } catch (err) {
+       let error = err as BusinessError;
+       Logger.error('createDeviceManager errCode:' + error.code + ',errMessage:' + error.message);
+     }
+   })
    ```
 
 ## 相关实例

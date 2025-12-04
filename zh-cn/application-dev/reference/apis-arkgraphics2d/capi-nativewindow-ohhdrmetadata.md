@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```c
+typedef struct {...} OHHDRMetaData
+```
+
 ## 概述
 
 HDR元数据结构体定义。

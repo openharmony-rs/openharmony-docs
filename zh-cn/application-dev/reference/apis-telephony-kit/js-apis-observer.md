@@ -1071,11 +1071,11 @@ SIM卡类型和状态。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-|     名称            |                 类型                | 必填 | 说明                                                      |
-| ------------------- | ----------------------------------- | ---- | --------------------------------------------------------  |
-| type                | [CardType](js-apis-sim.md#cardtype7) | 是   | SIM卡类型。 |
-| state               | [SimState](js-apis-sim.md#simstate) | 是   | SIM卡状态。 |
-| reason<sup>8+</sup> | [LockReason](#lockreason8)          | 是   | SIM卡锁类型。                                             |
+|     名称            |                 类型                | 只读|可选 | 说明   |
+| ------------------- | -----------------------------------|---- | ---- | --------------------------------------------------------  |
+| type                | [CardType](js-apis-sim.md#cardtype7) | 否  |否 | SIM卡类型。 |
+| state               | [SimState](js-apis-sim.md#simstate) | 否 |  否| SIM卡状态。 |
+| reason<sup>8+</sup> | [LockReason](#lockreason8)          | 否  | 否| SIM卡锁类型。                                             |
 
 
 ## CallStateInfo<sup>11+</sup>

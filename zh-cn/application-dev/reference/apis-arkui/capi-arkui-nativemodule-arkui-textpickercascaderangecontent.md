@@ -4,7 +4,11 @@
 <!--Owner: @luoying_ace_admin-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct {...} ARKUI_TextPickerCascadeRangeContent
+```
 
 ## 概述
 

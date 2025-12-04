@@ -45,7 +45,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | permission denied. |
 | 801 | Capability not supported. |
 | 19110001 | Parameter error.Possible causes:1. Incorrect policy format. 2. Invalid parameter range. |
 | 19110002 | Sensitive file content identification timed out. |

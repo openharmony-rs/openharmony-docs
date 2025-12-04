@@ -35,7 +35,7 @@ OpenHarmony SDK 5.0.0.35
 
 | Interface file  |
 |---------|
-| [ohos.bundle.bundleResourceManager.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleResourceManager.d.ts) |
+| [ohos.bundle.bundleResourceManager.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleResourceManager.d.ts) |
 
 | API  |
 |---------|

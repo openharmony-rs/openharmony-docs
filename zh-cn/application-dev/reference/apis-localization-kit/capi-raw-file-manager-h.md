@@ -142,7 +142,7 @@ RawFile *OH_ResourceManager_OpenRawFile(const NativeResourceManager *mgr, const 
 
 | 类型 | 说明 |
 | -- | -- |
-| [RawDir](capi-rawfile-rawdir.md) * | 返回[RawDir](capi-rawfile-rawdir.md)指针。当使用完此指针，调用[OH_ResourceManager_CloseRawFile](capi-raw-file-h.md#oh_resourcemanager_closerawfile)释放。如果失败或者mgr和fileName为空时返回空指针。 |
+| [RawFile *](capi-rawfile-rawfile.md)  | 返回[RawFile](capi-rawfile-rawfile.md)指针。当使用完此指针，调用[OH_ResourceManager_CloseRawFile](capi-raw-file-h.md#oh_resourcemanager_closerawfile)释放。如果失败或者mgr和fileName为空时返回空指针。 |
 
 **参考：**
 

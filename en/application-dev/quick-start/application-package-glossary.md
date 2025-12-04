@@ -6,6 +6,12 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
+## A
+
+### APP 
+
+To release an application to AppGallery, the bundle must be packaged into an .app file, that is, an Application Package (App Pack).
+
 ## E
 
 ### ExtensionAbility 

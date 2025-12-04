@@ -1,4 +1,10 @@
 # picker-view
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @luoying_ace_admin-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
@@ -220,7 +226,7 @@ export default {
 }
 ```
 
-![picker-view1](figures/picker-view1.gif)
+![picker-view1](figures/picker-view1.png)
 
 ### Date Selector
 
@@ -302,7 +308,7 @@ export default {
     },
 }
 ```
-![picker-view3](figures/picker-view3.gif)
+
 
 ### Multi-Column Text Selector
 
@@ -348,4 +354,4 @@ export default {
     },
 }
 ```
-![picker-view4](figures/picker-view4.gif)
+![picker-view4](figures/picker-view4.png)

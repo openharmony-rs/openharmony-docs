@@ -1,4 +1,4 @@
-# Game Controller kit开发指南
+# Game Controller Kit开发指南
 <!--Kit: Game Controller Kit-->
 <!--Subsystem: Game-->
 <!--Owner: @zhaoshuhao123-->

@@ -61,7 +61,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace with actual values.
 let server: string = "ntpserver.com";
@@ -118,7 +118,7 @@ import { BusinessError } from '@ohos.base';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   systemManager.getNTPServer(wantTemp);
@@ -167,7 +167,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Default update policy.
 let otaUpdatePolicy1: systemManager.OtaUpdatePolicy = {
@@ -286,7 +286,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: systemManager.OtaUpdatePolicy= systemManager.getOtaUpdatePolicy(wantTemp);
@@ -313,7 +313,7 @@ Notifies the system of the update packages. In intranet updates, call this API t
 | Name| Type                               | Mandatory| Description          |
 | ------ | ----------------------------------- | ---- | -------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
-| packageInfo  | [UpdatePackageInfo](#updatepackageinfo) | Yes  | Information about the system update packages.|
+| packageInfo  | [UpdatePackageInfo](#updatepackageinfo) | Yes  | Information about the system update packages.<br>**Note**: The input **UpdatePackageInfo.packages.path** must be a .zip package starting with update. If a file in other formats is input, error code 9201004 will be reported.|
 
 **Return value**
 
@@ -339,11 +339,12 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 import { systemManager } from '@kit.MDMKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
+import { fileIo as fs } from '@kit.CoreFileKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let notify: systemManager.NotifyDescription = {
   // Replace with actual values.
@@ -354,12 +355,36 @@ let description: systemManager.PackageDescription = {
   // Replace with actual values.
   "notify": notify
 };
-let updatePackages: Array<systemManager.Package> = [{
+let updatePackages: Array<systemManager.Package> = [];
+// Replace the application sandbox path with the actual one.
+let fileDir = "/xxxx/xxxx/";
+let path1: string = "update_sd_base.zip";
+let path2: string = "update_sd_cust_xxxxx_all_cn.zip";
+let path3: string = "update_sd_preload_xxxxx_all_cn_R1.zip";
+let fd1: number = fs.openSync(fileDir + path1, fs.OpenMode.READ_ONLY).fd;
+let fd2: number = fs.openSync(fileDir + "xxxxx/" + path2, fs.OpenMode.READ_ONLY).fd;
+let fd3: number = fs.openSync(fileDir + "xxxxx/" + path3, fs.OpenMode.READ_ONLY).fd;
+let package1: systemManager.Package = {
   // Replace with actual values.
   "type": systemManager.PackageType.FIRMWARE,
-  "path": "path",
-  "fd": 60
-}];
+  "path": path1,
+  "fd": fd1
+};
+let package2: systemManager.Package = {
+  // Replace with actual values.
+  "type": systemManager.PackageType.FIRMWARE,
+  "path": path2,
+  "fd": fd2
+};
+let package3: systemManager.Package = {
+  // Replace with actual values.
+  "type": systemManager.PackageType.FIRMWARE,
+  "path": path3,
+  "fd": fd3
+};
+updatePackages.push(package1);
+updatePackages.push(package2);
+updatePackages.push(package3);
 let updatePackageInfo: systemManager.UpdatePackageInfo = {
   // Replace with actual values.
   "version" : "1.0",
@@ -419,7 +444,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 systemManager.getUpdateResult(wantTemp, "1.0").then((result:systemManager.UpdateResult) => {
     console.info(`Succeeded in getting update result: ${JSON.stringify(result)}`);
@@ -471,7 +496,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 systemManager.getUpdateAuthData(wantTemp).then((result: string) => {
     console.info(`Succeeded in getting update auth data: ${JSON.stringify(result)}`);
@@ -526,7 +551,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace with actual values.
@@ -588,7 +613,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace with actual values.
@@ -652,7 +677,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace with actual values.
@@ -708,7 +733,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace with actual values.
 let isEnable: boolean = true;
@@ -766,7 +791,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let isEnable: boolean = systemManager.getInstallLocalEnterpriseAppEnabled(wantTemp);
@@ -818,7 +843,7 @@ import { systemManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let isAllowed: boolean = true;
 try {
@@ -875,7 +900,7 @@ import { systemManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   systemManager.getAutoUnlockAfterReboot(wantTemp);

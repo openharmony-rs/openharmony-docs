@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_VBucket
+```
+
 ## Overview
 
 Defines a struct for the types of the key and value in a KV pair.

@@ -4,7 +4,11 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_NativeDialog* ArkUI_NativeDialogHandle
+```
 
 ## 概述
 

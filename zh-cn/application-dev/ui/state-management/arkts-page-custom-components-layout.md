@@ -4,7 +4,7 @@
 <!--Owner: @song-song-song-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 如果系统提供的布局组件（如[Flex](../../reference/apis-arkui/arkui-ts/ts-container-flex.md)，[Column](../../reference/apis-arkui/arkui-ts/ts-container-column.md)，[Row](../../reference/apis-arkui/arkui-ts/ts-container-row.md)等）无法满足复杂布局需求，或开发者希望自定义计算组件内子组件的大小和位置，建议在自定义组件中使用以下接口：
 
@@ -18,21 +18,23 @@
 
 **示例：**
 
-```
+<!-- @[CustomLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentsLayout/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // xxx.ets
 @Entry
 @Component
 struct Index {
   build() {
     Column() {
-      CustomLayout({ builder: ColumnChildren })
+      CustomLayout({ builder: columnChildren })
     }
   }
 }
 
 // 通过builder的方式传递多个组件，作为自定义组件的一级子组件（即不包含容器组件，如Column）
 @Builder
-function ColumnChildren() {
+function columnChildren() {
   ForEach([1, 2, 3], (index: number) => { // 暂不支持lazyForEach的写法
     Text('S' + index)
       .fontSize(30)

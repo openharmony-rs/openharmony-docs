@@ -136,12 +136,13 @@
 | [void OH_UdmfDataLoadInfo_SetType(OH_UdmfDataLoadInfo* dataLoadInfo, const char* type)](#oh_udmfdataloadinfo_settype) | - | 设置数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)中的数据类型。 |
 | [int OH_UdmfDataLoadInfo_GetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo)](#oh_udmfdataloadinfo_getrecordcount) | - | 获取数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)中的记录数量。 |
 | [void OH_UdmfDataLoadInfo_SetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int recordCount)](#oh_udmfdataloadinfo_setrecordcount) | - | 设置数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)中的记录数量。 |
+| [OH_UdmfData* OH_UDMF_GetDataElementAt(OH_UdmfData** dataArray, unsigned int index)](#oh_udmf_getdataelementat) | - | 从统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数组中获取指定下标的统一数据对象数据。 |
 
 ## 枚举类型说明
 
 ### Udmf_Intention
 
-```
+```c
 enum Udmf_Intention
 ```
 
@@ -162,7 +163,7 @@ enum Udmf_Intention
 
 ### Udmf_ShareOption
 
-```
+```c
 enum Udmf_ShareOption
 ```
 
@@ -180,7 +181,7 @@ UDMF支持的设备内使用范围类型枚举。
 
 ### Udmf_FileConflictOptions
 
-```
+```c
 enum Udmf_FileConflictOptions
 ```
 
@@ -197,7 +198,7 @@ enum Udmf_FileConflictOptions
 
 ### Udmf_ProgressIndicator
 
-```
+```c
 enum Udmf_ProgressIndicator
 ```
 
@@ -214,7 +215,7 @@ enum Udmf_ProgressIndicator
 
 ### Udmf_Visibility
 
-```
+```c
 enum Udmf_Visibility
 ```
 
@@ -233,7 +234,7 @@ enum Udmf_Visibility
 
 ### OH_UdmfGetDataParams_SetAcceptableInfo()
 
-```
+```c
 void OH_UdmfGetDataParams_SetAcceptableInfo(OH_UdmfGetDataParams* params, OH_UdmfDataLoadInfo* acceptableInfo)
 ```
 
@@ -253,7 +254,7 @@ void OH_UdmfGetDataParams_SetAcceptableInfo(OH_UdmfGetDataParams* params, OH_Udm
 
 ### OH_UdmfDataLoadParams_Create()
 
-```
+```c
 OH_UdmfDataLoadParams* OH_UdmfDataLoadParams_Create()
 ```
 
@@ -271,7 +272,7 @@ OH_UdmfDataLoadParams* OH_UdmfDataLoadParams_Create()
 
 ### OH_UdmfDataLoadParams_Destroy()
 
-```
+```c
 void OH_UdmfDataLoadParams_Destroy(OH_UdmfDataLoadParams* pThis)
 ```
 
@@ -289,7 +290,7 @@ void OH_UdmfDataLoadParams_Destroy(OH_UdmfDataLoadParams* pThis)
 
 ### OH_UdmfDataLoadParams_SetLoadHandler()
 
-```
+```c
 void OH_UdmfDataLoadParams_SetLoadHandler(OH_UdmfDataLoadParams* params, const OH_Udmf_DataLoadHandler dataLoadHandler)
 ```
 
@@ -308,7 +309,7 @@ void OH_UdmfDataLoadParams_SetLoadHandler(OH_UdmfDataLoadParams* params, const O
 
 ### OH_UdmfDataLoadParams_SetDataLoadInfo()
 
-```
+```c
 void OH_UdmfDataLoadParams_SetDataLoadInfo(OH_UdmfDataLoadParams* params, OH_UdmfDataLoadInfo* dataLoadInfo)
 ```
 
@@ -327,7 +328,7 @@ void OH_UdmfDataLoadParams_SetDataLoadInfo(OH_UdmfDataLoadParams* params, OH_Udm
 
 ### OH_UdmfDataLoadInfo_Create()
 
-```
+```c
 OH_UdmfDataLoadInfo* OH_UdmfDataLoadInfo_Create()
 ```
 
@@ -345,7 +346,7 @@ OH_UdmfDataLoadInfo* OH_UdmfDataLoadInfo_Create()
 
 ### OH_UdmfDataLoadInfo_Destroy()
 
-```
+```c
 void OH_UdmfDataLoadInfo_Destroy(OH_UdmfDataLoadInfo* dataLoadInfo)
 ```
 
@@ -363,7 +364,7 @@ void OH_UdmfDataLoadInfo_Destroy(OH_UdmfDataLoadInfo* dataLoadInfo)
 
 ### OH_UdmfDataLoadInfo_GetTypes()
 
-```
+```c
 char** OH_UdmfDataLoadInfo_GetTypes(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int* count)
 ```
 
@@ -388,7 +389,7 @@ char** OH_UdmfDataLoadInfo_GetTypes(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned 
 
 ### OH_UdmfDataLoadInfo_SetType()
 
-```
+```c
 void OH_UdmfDataLoadInfo_SetType(OH_UdmfDataLoadInfo* dataLoadInfo, const char* type)
 ```
 
@@ -407,7 +408,7 @@ void OH_UdmfDataLoadInfo_SetType(OH_UdmfDataLoadInfo* dataLoadInfo, const char* 
 
 ### OH_UdmfDataLoadInfo_GetRecordCount()
 
-```
+```c
 int OH_UdmfDataLoadInfo_GetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo)
 ```
 
@@ -431,7 +432,7 @@ int OH_UdmfDataLoadInfo_GetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo)
 
 ### OH_UdmfDataLoadInfo_SetRecordCount()
 
-```
+```c
 void OH_UdmfDataLoadInfo_SetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int recordCount)
 ```
 
@@ -450,7 +451,7 @@ void OH_UdmfDataLoadInfo_SetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo, unsig
 
 ### OH_Udmf_DataLoadHandler()
 
-```
+```c
 typedef OH_UdmfData* (*OH_Udmf_DataLoadHandler)(OH_UdmfDataLoadInfo* acceptableInfo)
 ```
 
@@ -474,7 +475,7 @@ typedef OH_UdmfData* (*OH_Udmf_DataLoadHandler)(OH_UdmfDataLoadInfo* acceptableI
 
 ### OH_UdmfOptions_GetVisibility()
 
-```
+```c
 Udmf_Visibility OH_UdmfOptions_GetVisibility(OH_UdmfOptions* pThis)
 ```
 
@@ -498,7 +499,7 @@ Udmf_Visibility OH_UdmfOptions_GetVisibility(OH_UdmfOptions* pThis)
 
 ### OH_UdmfOptions_SetVisibility()
 
-```
+```c
 int OH_UdmfOptions_SetVisibility(OH_UdmfOptions* pThis, Udmf_Visibility visibility)
 ```
 
@@ -523,7 +524,7 @@ int OH_UdmfOptions_SetVisibility(OH_UdmfOptions* pThis, Udmf_Visibility visibili
 
 ### UDMF_KEY_BUFFER_LEN()
 
-```
+```c
 UDMF_KEY_BUFFER_LEN (512)
 ```
 
@@ -535,7 +536,7 @@ UDMF_KEY_BUFFER_LEN (512)
 
 ### OH_Udmf_DataProgressListener()
 
-```
+```c
 typedef void (*OH_Udmf_DataProgressListener)(OH_Udmf_ProgressInfo* progressInfo, OH_UdmfData* data)
 ```
 
@@ -555,7 +556,7 @@ typedef void (*OH_Udmf_DataProgressListener)(OH_Udmf_ProgressInfo* progressInfo,
 
 ### OH_UdmfData_Create()
 
-```
+```c
 OH_UdmfData* OH_UdmfData_Create()
 ```
 
@@ -577,7 +578,7 @@ OH_UdmfData
 
 ### OH_UdmfData_Destroy()
 
-```
+```c
 void OH_UdmfData_Destroy(OH_UdmfData* pThis)
 ```
 
@@ -600,7 +601,7 @@ OH_UdmfData
 
 ### OH_UdmfData_AddRecord()
 
-```
+```c
 int OH_UdmfData_AddRecord(OH_UdmfData* pThis, OH_UdmfRecord* record)
 ```
 
@@ -626,7 +627,7 @@ int OH_UdmfData_AddRecord(OH_UdmfData* pThis, OH_UdmfRecord* record)
 
 ### OH_UdmfData_HasType()
 
-```
+```c
 bool OH_UdmfData_HasType(OH_UdmfData* pThis, const char* type)
 ```
 
@@ -652,7 +653,7 @@ bool OH_UdmfData_HasType(OH_UdmfData* pThis, const char* type)
 
 ### OH_UdmfData_GetTypes()
 
-```
+```c
 char** OH_UdmfData_GetTypes(OH_UdmfData* pThis, unsigned int* count)
 ```
 
@@ -678,7 +679,7 @@ char** OH_UdmfData_GetTypes(OH_UdmfData* pThis, unsigned int* count)
 
 ### OH_UdmfData_GetRecords()
 
-```
+```c
 OH_UdmfRecord** OH_UdmfData_GetRecords(OH_UdmfData* pThis, unsigned int* count)
 ```
 
@@ -704,7 +705,7 @@ OH_UdmfRecord** OH_UdmfData_GetRecords(OH_UdmfData* pThis, unsigned int* count)
 
 ### UdmfData_Finalize()
 
-```
+```c
 typedef void (*UdmfData_Finalize)(void* context)
 ```
 
@@ -722,7 +723,7 @@ typedef void (*UdmfData_Finalize)(void* context)
 
 ### OH_UdmfRecordProvider_Create()
 
-```
+```c
 OH_UdmfRecordProvider* OH_UdmfRecordProvider_Create()
 ```
 
@@ -740,7 +741,7 @@ OH_UdmfRecordProvider* OH_UdmfRecordProvider_Create()
 
 ### OH_UdmfRecordProvider_Destroy()
 
-```
+```c
 int OH_UdmfRecordProvider_Destroy(OH_UdmfRecordProvider* provider)
 ```
 
@@ -765,7 +766,7 @@ int OH_UdmfRecordProvider_Destroy(OH_UdmfRecordProvider* provider)
 
 ### OH_UdmfRecordProvider_GetData()
 
-```
+```c
 typedef void* (*OH_UdmfRecordProvider_GetData)(void* context, const char* type)
 ```
 
@@ -791,7 +792,7 @@ typedef void* (*OH_UdmfRecordProvider_GetData)(void* context, const char* type)
 
 ### OH_UdmfRecordProvider_SetData()
 
-```
+```c
 int OH_UdmfRecordProvider_SetData(OH_UdmfRecordProvider* provider, void* context, const OH_UdmfRecordProvider_GetData callback, const UdmfData_Finalize finalize)
 ```
 
@@ -819,7 +820,7 @@ int OH_UdmfRecordProvider_SetData(OH_UdmfRecordProvider* provider, void* context
 
 ### OH_UdmfRecord_Create()
 
-```
+```c
 OH_UdmfRecord* OH_UdmfRecord_Create()
 ```
 
@@ -837,7 +838,7 @@ OH_UdmfRecord* OH_UdmfRecord_Create()
 
 ### OH_UdmfRecord_Destroy()
 
-```
+```c
 void OH_UdmfRecord_Destroy(OH_UdmfRecord* pThis)
 ```
 
@@ -856,7 +857,7 @@ void OH_UdmfRecord_Destroy(OH_UdmfRecord* pThis)
 
 ### OH_UdmfRecord_AddGeneralEntry()
 
-```
+```c
 int OH_UdmfRecord_AddGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsigned char* entry, unsigned int count)
 ```
 
@@ -884,7 +885,7 @@ int OH_UdmfRecord_AddGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsi
 
 ### OH_UdmfRecord_AddPlainText()
 
-```
+```c
 int OH_UdmfRecord_AddPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)
 ```
 
@@ -910,7 +911,7 @@ int OH_UdmfRecord_AddPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)
 
 ### OH_UdmfRecord_AddHyperlink()
 
-```
+```c
 int OH_UdmfRecord_AddHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)
 ```
 
@@ -936,7 +937,7 @@ int OH_UdmfRecord_AddHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)
 
 ### OH_UdmfRecord_AddHtml()
 
-```
+```c
 int OH_UdmfRecord_AddHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)
 ```
 
@@ -962,7 +963,7 @@ int OH_UdmfRecord_AddHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)
 
 ### OH_UdmfRecord_AddAppItem()
 
-```
+```c
 int OH_UdmfRecord_AddAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)
 ```
 
@@ -988,7 +989,7 @@ int OH_UdmfRecord_AddAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)
 
 ### OH_UdmfRecord_AddFileUri()
 
-```
+```c
 int OH_UdmfRecord_AddFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)
 ```
 
@@ -1014,7 +1015,7 @@ int OH_UdmfRecord_AddFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)
 
 ### OH_UdmfRecord_AddPixelMap()
 
-```
+```c
 int OH_UdmfRecord_AddPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)
 ```
 
@@ -1040,7 +1041,7 @@ int OH_UdmfRecord_AddPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)
 
 ### OH_UdmfRecord_AddArrayBuffer()
 
-```
+```c
 int OH_UdmfRecord_AddArrayBuffer(OH_UdmfRecord* record, const char* type, OH_UdsArrayBuffer* buffer)
 ```
 
@@ -1067,7 +1068,7 @@ int OH_UdmfRecord_AddArrayBuffer(OH_UdmfRecord* record, const char* type, OH_Uds
 
 ### OH_UdmfRecord_AddContentForm()
 
-```
+```c
 int OH_UdmfRecord_AddContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* contentForm)
 ```
 
@@ -1093,7 +1094,7 @@ int OH_UdmfRecord_AddContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* conten
 
 ### OH_UdmfRecord_GetTypes()
 
-```
+```c
 char** OH_UdmfRecord_GetTypes(OH_UdmfRecord* pThis, unsigned int* count)
 ```
 
@@ -1119,7 +1120,7 @@ char** OH_UdmfRecord_GetTypes(OH_UdmfRecord* pThis, unsigned int* count)
 
 ### OH_UdmfRecord_GetGeneralEntry()
 
-```
+```c
 int OH_UdmfRecord_GetGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsigned char** entry, unsigned int* count)
 ```
 
@@ -1147,7 +1148,7 @@ int OH_UdmfRecord_GetGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsi
 
 ### OH_UdmfRecord_GetPlainText()
 
-```
+```c
 int OH_UdmfRecord_GetPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)
 ```
 
@@ -1173,7 +1174,7 @@ int OH_UdmfRecord_GetPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)
 
 ### OH_UdmfRecord_GetHyperlink()
 
-```
+```c
 int OH_UdmfRecord_GetHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)
 ```
 
@@ -1199,7 +1200,7 @@ int OH_UdmfRecord_GetHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)
 
 ### OH_UdmfRecord_GetHtml()
 
-```
+```c
 int OH_UdmfRecord_GetHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)
 ```
 
@@ -1225,7 +1226,7 @@ int OH_UdmfRecord_GetHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)
 
 ### OH_UdmfRecord_GetAppItem()
 
-```
+```c
 int OH_UdmfRecord_GetAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)
 ```
 
@@ -1251,7 +1252,7 @@ int OH_UdmfRecord_GetAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)
 
 ### OH_UdmfRecord_SetProvider()
 
-```
+```c
 int OH_UdmfRecord_SetProvider(OH_UdmfRecord* pThis, const char* const* types, unsigned int count, OH_UdmfRecordProvider* provider)
 ```
 
@@ -1279,7 +1280,7 @@ int OH_UdmfRecord_SetProvider(OH_UdmfRecord* pThis, const char* const* types, un
 
 ### OH_UdmfRecord_GetFileUri()
 
-```
+```c
 int OH_UdmfRecord_GetFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)
 ```
 
@@ -1305,7 +1306,7 @@ int OH_UdmfRecord_GetFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)
 
 ### OH_UdmfRecord_GetPixelMap()
 
-```
+```c
 int OH_UdmfRecord_GetPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)
 ```
 
@@ -1331,7 +1332,7 @@ int OH_UdmfRecord_GetPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)
 
 ### OH_UdmfRecord_GetArrayBuffer()
 
-```
+```c
 int OH_UdmfRecord_GetArrayBuffer(OH_UdmfRecord* record, const char* type, OH_UdsArrayBuffer* buffer)
 ```
 
@@ -1358,7 +1359,7 @@ int OH_UdmfRecord_GetArrayBuffer(OH_UdmfRecord* record, const char* type, OH_Uds
 
 ### OH_UdmfRecord_GetContentForm()
 
-```
+```c
 int OH_UdmfRecord_GetContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* contentForm)
 ```
 
@@ -1384,7 +1385,7 @@ int OH_UdmfRecord_GetContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* conten
 
 ### OH_UdmfData_GetPrimaryPlainText()
 
-```
+```c
 int OH_UdmfData_GetPrimaryPlainText(OH_UdmfData* data, OH_UdsPlainText* plainText)
 ```
 
@@ -1410,7 +1411,7 @@ int OH_UdmfData_GetPrimaryPlainText(OH_UdmfData* data, OH_UdsPlainText* plainTex
 
 ### OH_UdmfData_GetPrimaryHtml()
 
-```
+```c
 int OH_UdmfData_GetPrimaryHtml(OH_UdmfData* data, OH_UdsHtml* html)
 ```
 
@@ -1436,7 +1437,7 @@ int OH_UdmfData_GetPrimaryHtml(OH_UdmfData* data, OH_UdsHtml* html)
 
 ### OH_UdmfData_GetRecordCount()
 
-```
+```c
 int OH_UdmfData_GetRecordCount(OH_UdmfData* data)
 ```
 
@@ -1461,7 +1462,7 @@ int OH_UdmfData_GetRecordCount(OH_UdmfData* data)
 
 ### OH_UdmfData_GetRecord()
 
-```
+```c
 OH_UdmfRecord* OH_UdmfData_GetRecord(OH_UdmfData* data, unsigned int index)
 ```
 
@@ -1487,7 +1488,7 @@ OH_UdmfRecord* OH_UdmfData_GetRecord(OH_UdmfData* data, unsigned int index)
 
 ### OH_UdmfData_IsLocal()
 
-```
+```c
 bool OH_UdmfData_IsLocal(OH_UdmfData* data)
 ```
 
@@ -1512,7 +1513,7 @@ bool OH_UdmfData_IsLocal(OH_UdmfData* data)
 
 ### OH_UdmfProperty_Create()
 
-```
+```c
 OH_UdmfProperty* OH_UdmfProperty_Create(OH_UdmfData* unifiedData)
 ```
 
@@ -1537,7 +1538,7 @@ OH_UdmfProperty* OH_UdmfProperty_Create(OH_UdmfData* unifiedData)
 
 ### OH_UdmfProperty_Destroy()
 
-```
+```c
 void OH_UdmfProperty_Destroy(OH_UdmfProperty* pThis)
 ```
 
@@ -1556,7 +1557,7 @@ void OH_UdmfProperty_Destroy(OH_UdmfProperty* pThis)
 
 ### OH_UdmfProperty_GetTag()
 
-```
+```c
 const char* OH_UdmfProperty_GetTag(OH_UdmfProperty* pThis)
 ```
 
@@ -1581,7 +1582,7 @@ const char* OH_UdmfProperty_GetTag(OH_UdmfProperty* pThis)
 
 ### OH_UdmfProperty_GetTimestamp()
 
-```
+```c
 int64_t OH_UdmfProperty_GetTimestamp(OH_UdmfProperty* pThis)
 ```
 
@@ -1606,7 +1607,7 @@ int64_t OH_UdmfProperty_GetTimestamp(OH_UdmfProperty* pThis)
 
 ### OH_UdmfProperty_GetShareOption()
 
-```
+```c
 Udmf_ShareOption OH_UdmfProperty_GetShareOption(OH_UdmfProperty* pThis)
 ```
 
@@ -1631,7 +1632,7 @@ Udmf_ShareOption OH_UdmfProperty_GetShareOption(OH_UdmfProperty* pThis)
 
 ### OH_UdmfProperty_GetExtrasIntParam()
 
-```
+```c
 int OH_UdmfProperty_GetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, int defaultValue)
 ```
 
@@ -1658,7 +1659,7 @@ int OH_UdmfProperty_GetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, i
 
 ### OH_UdmfProperty_GetExtrasStringParam()
 
-```
+```c
 const char* OH_UdmfProperty_GetExtrasStringParam(OH_UdmfProperty* pThis, const char* key)
 ```
 
@@ -1684,7 +1685,7 @@ const char* OH_UdmfProperty_GetExtrasStringParam(OH_UdmfProperty* pThis, const c
 
 ### OH_UdmfProperty_SetTag()
 
-```
+```c
 int OH_UdmfProperty_SetTag(OH_UdmfProperty* pThis, const char* tag)
 ```
 
@@ -1710,7 +1711,7 @@ int OH_UdmfProperty_SetTag(OH_UdmfProperty* pThis, const char* tag)
 
 ### OH_UdmfProperty_SetShareOption()
 
-```
+```c
 int OH_UdmfProperty_SetShareOption(OH_UdmfProperty* pThis, Udmf_ShareOption option)
 ```
 
@@ -1736,7 +1737,7 @@ int OH_UdmfProperty_SetShareOption(OH_UdmfProperty* pThis, Udmf_ShareOption opti
 
 ### OH_UdmfProperty_SetExtrasIntParam()
 
-```
+```c
 int OH_UdmfProperty_SetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, int param)
 ```
 
@@ -1763,7 +1764,7 @@ int OH_UdmfProperty_SetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, i
 
 ### OH_UdmfProperty_SetExtrasStringParam()
 
-```
+```c
 int OH_UdmfProperty_SetExtrasStringParam(OH_UdmfProperty* pThis, const char* key, const char* param)
 ```
 
@@ -1790,7 +1791,7 @@ int OH_UdmfProperty_SetExtrasStringParam(OH_UdmfProperty* pThis, const char* key
 
 ### OH_UdmfOptions_Create()
 
-```
+```c
 OH_UdmfOptions* OH_UdmfOptions_Create()
 ```
 
@@ -1808,7 +1809,7 @@ OH_UdmfOptions* OH_UdmfOptions_Create()
 
 ### OH_UdmfOptions_Destroy()
 
-```
+```c
 void OH_UdmfOptions_Destroy(OH_UdmfOptions* pThis)
 ```
 
@@ -1827,7 +1828,7 @@ void OH_UdmfOptions_Destroy(OH_UdmfOptions* pThis)
 
 ### OH_UdmfOptions_GetKey()
 
-```
+```c
 const char* OH_UdmfOptions_GetKey(OH_UdmfOptions* pThis)
 ```
 
@@ -1852,7 +1853,7 @@ const char* OH_UdmfOptions_GetKey(OH_UdmfOptions* pThis)
 
 ### OH_UdmfOptions_SetKey()
 
-```
+```c
 int OH_UdmfOptions_SetKey(OH_UdmfOptions* pThis, const char* key)
 ```
 
@@ -1878,7 +1879,7 @@ int OH_UdmfOptions_SetKey(OH_UdmfOptions* pThis, const char* key)
 
 ### OH_UdmfOptions_GetIntention()
 
-```
+```c
 Udmf_Intention OH_UdmfOptions_GetIntention(OH_UdmfOptions* pThis)
 ```
 
@@ -1903,7 +1904,7 @@ Udmf_Intention OH_UdmfOptions_GetIntention(OH_UdmfOptions* pThis)
 
 ### OH_UdmfOptions_SetIntention()
 
-```
+```c
 int OH_UdmfOptions_SetIntention(OH_UdmfOptions* pThis, Udmf_Intention intention)
 ```
 
@@ -1929,7 +1930,7 @@ int OH_UdmfOptions_SetIntention(OH_UdmfOptions* pThis, Udmf_Intention intention)
 
 ### OH_UdmfOptions_Reset()
 
-```
+```c
 int OH_UdmfOptions_Reset(OH_UdmfOptions* pThis)
 ```
 
@@ -1954,7 +1955,7 @@ int OH_UdmfOptions_Reset(OH_UdmfOptions* pThis)
 
 ### OH_Udmf_GetUnifiedData()
 
-```
+```c
 int OH_Udmf_GetUnifiedData(const char* key, Udmf_Intention intention, OH_UdmfData* unifiedData)
 ```
 
@@ -1981,7 +1982,7 @@ int OH_Udmf_GetUnifiedData(const char* key, Udmf_Intention intention, OH_UdmfDat
 
 ### OH_Udmf_GetUnifiedDataByOptions()
 
-```
+```c
 int OH_Udmf_GetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData** dataArray, unsigned int* dataSize)
 ```
 
@@ -1997,7 +1998,7 @@ int OH_Udmf_GetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData** dataA
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)* options | 指向数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例的指针。 |
-| [OH_UdmfData](capi-udmf-oh-udmfdata.md)** dataArray | 该参数是输出参数，表示统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)列表，<br>此指针需要使用[OH_Udmf_DestroyDataArray](capi-udmf-h.md#oh_udmf_destroydataarray)函数释放。 |
+| [OH_UdmfData](capi-udmf-oh-udmfdata.md)** dataArray | 该参数是输出参数，表示统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)列表。<br>需要使用[OH_UDMF_GetDataElementAt](capi-udmf-h.md#oh_udmf_getdataelementat)函数通过下标访问每个元素。<br>此指针需要使用[OH_Udmf_DestroyDataArray](capi-udmf-h.md#oh_udmf_destroydataarray)函数释放。 |
 | unsigned int* dataSize | 该参数是输出参数，表示获取到的统一数据对象个数。 |
 
 **返回：**
@@ -2008,7 +2009,7 @@ int OH_Udmf_GetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData** dataA
 
 ### OH_Udmf_SetUnifiedData()
 
-```
+```c
 int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)
 ```
 
@@ -2036,7 +2037,7 @@ int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, c
 
 ### OH_Udmf_SetUnifiedDataByOptions()
 
-```
+```c
 int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData *unifiedData, char *key, unsigned int keyLen)
 ```
 
@@ -2064,7 +2065,7 @@ int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData *unifie
 
 ### OH_Udmf_UpdateUnifiedData()
 
-```
+```c
 int OH_Udmf_UpdateUnifiedData(OH_UdmfOptions* options, OH_UdmfData* unifiedData)
 ```
 
@@ -2090,7 +2091,7 @@ int OH_Udmf_UpdateUnifiedData(OH_UdmfOptions* options, OH_UdmfData* unifiedData)
 
 ### OH_Udmf_DeleteUnifiedData()
 
-```
+```c
 int OH_Udmf_DeleteUnifiedData(OH_UdmfOptions* options, OH_UdmfData** dataArray, unsigned int* dataSize)
 ```
 
@@ -2106,7 +2107,7 @@ int OH_Udmf_DeleteUnifiedData(OH_UdmfOptions* options, OH_UdmfData** dataArray, 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)* options | 指向数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例的指针。 |
-| [OH_UdmfData](capi-udmf-oh-udmfdata.md)** dataArray | 该参数是输出参数，统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)列表，<br>此指针需要使用[OH_Udmf_DestroyDataArray](capi-udmf-h.md#oh_udmf_destroydataarray)函数释放。 |
+| [OH_UdmfData](capi-udmf-oh-udmfdata.md)** dataArray | 该参数是输出参数，统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)列表，需要使用[OH_UDMF_GetDataElementAt](capi-udmf-h.md#oh_udmf_getdataelementat)函数通过下标访问每个元素。此指针需要使用[OH_Udmf_DestroyDataArray](capi-udmf-h.md#oh_udmf_destroydataarray)函数释放。 |
 | unsigned int* dataSize | 该参数是输出参数，表示获取到的统一数据对象个数。 |
 
 **返回：**
@@ -2117,7 +2118,7 @@ int OH_Udmf_DeleteUnifiedData(OH_UdmfOptions* options, OH_UdmfData** dataArray, 
 
 ### OH_Udmf_DestroyDataArray()
 
-```
+```c
 void OH_Udmf_DestroyDataArray(OH_UdmfData** dataArray, unsigned int dataSize)
 ```
 
@@ -2141,7 +2142,7 @@ OH_UdmfData
 
 ### OH_UdmfProgressInfo_GetProgress()
 
-```
+```c
 int OH_UdmfProgressInfo_GetProgress(OH_Udmf_ProgressInfo* progressInfo)
 ```
 
@@ -2166,7 +2167,7 @@ int OH_UdmfProgressInfo_GetProgress(OH_Udmf_ProgressInfo* progressInfo)
 
 ### OH_UdmfProgressInfo_GetStatus()
 
-```
+```c
 int OH_UdmfProgressInfo_GetStatus(OH_Udmf_ProgressInfo* progressInfo)
 ```
 
@@ -2191,7 +2192,7 @@ int OH_UdmfProgressInfo_GetStatus(OH_Udmf_ProgressInfo* progressInfo)
 
 ### OH_UdmfGetDataParams_Create()
 
-```
+```c
 OH_UdmfGetDataParams* OH_UdmfGetDataParams_Create()
 ```
 
@@ -2209,7 +2210,7 @@ OH_UdmfGetDataParams* OH_UdmfGetDataParams_Create()
 
 ### OH_UdmfGetDataParams_Destroy()
 
-```
+```c
 void OH_UdmfGetDataParams_Destroy(OH_UdmfGetDataParams* pThis)
 ```
 
@@ -2228,7 +2229,7 @@ void OH_UdmfGetDataParams_Destroy(OH_UdmfGetDataParams* pThis)
 
 ### OH_UdmfGetDataParams_SetDestUri()
 
-```
+```c
 void OH_UdmfGetDataParams_SetDestUri(OH_UdmfGetDataParams* params, const char* destUri)
 ```
 
@@ -2248,7 +2249,7 @@ void OH_UdmfGetDataParams_SetDestUri(OH_UdmfGetDataParams* params, const char* d
 
 ### OH_UdmfGetDataParams_SetFileConflictOptions()
 
-```
+```c
 void OH_UdmfGetDataParams_SetFileConflictOptions(OH_UdmfGetDataParams* params, const Udmf_FileConflictOptions options)
 ```
 
@@ -2268,7 +2269,7 @@ void OH_UdmfGetDataParams_SetFileConflictOptions(OH_UdmfGetDataParams* params, c
 
 ### OH_UdmfGetDataParams_SetProgressIndicator()
 
-```
+```c
 void OH_UdmfGetDataParams_SetProgressIndicator(OH_UdmfGetDataParams* params, const Udmf_ProgressIndicator progressIndicator)
 ```
 
@@ -2288,7 +2289,7 @@ void OH_UdmfGetDataParams_SetProgressIndicator(OH_UdmfGetDataParams* params, con
 
 ### OH_UdmfGetDataParams_SetDataProgressListener()
 
-```
+```c
 void OH_UdmfGetDataParams_SetDataProgressListener(OH_UdmfGetDataParams* params, const OH_Udmf_DataProgressListener dataProgressListener)
 ```
 
@@ -2305,3 +2306,28 @@ void OH_UdmfGetDataParams_SetDataProgressListener(OH_UdmfGetDataParams* params, 
 | -- | -- |
 | [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)* params | 表示指向异步请求参数[OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)实例的指针。 |
 | const [OH_Udmf_DataProgressListener](#oh_udmf_dataprogresslistener) dataProgressListener | 用户自定义的监听回调函数，可用于获取进度信息和数据。 |
+
+### OH_UDMF_GetDataElementAt()
+
+```c
+OH_UdmfData* OH_UDMF_GetDataElementAt(OH_UdmfData** dataArray, unsigned int index)
+```
+
+**描述**
+
+从统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数组中获取指定下标的统一数据对象数据。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdmfData](capi-udmf-oh-udmfdata.md)** dataArray | 指向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)的指针数组。<br>只接受从[OH_Udmf_GetUnifiedDataByOptions](capi-udmf-h.md#oh_udmf_getunifieddatabyoptions)和[OH_Udmf_DeleteUnifiedData](capi-udmf-h.md#oh_udmf_deleteunifieddata)接口中获得的指针数组。 |
+| unsigned int index | 表示要获取到的统一数据对象的下标。请确保该值不超出数组范围，否则会出现数组越界。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_UdmfData*](capi-udmf-oh-udmfdata.md) | 执行成功则返回一个指向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)实例对象的指针，如果输入数组为空，则返回空。 |

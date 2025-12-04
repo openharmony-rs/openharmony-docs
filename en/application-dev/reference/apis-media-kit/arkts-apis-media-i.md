@@ -74,7 +74,7 @@ Defines media information in key-value mode.
 
 | Name         | Type  | Read-Only| Optional | Description                                                        |
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [key: string] | Object | No | No | For details about the key range supported and the object type and range of each key, see [MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8).|
+| [key: string] | Object | No | Yes | For details about the key range supported and the object type and range of each key, see [MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8).|
 
 **Example**
 
@@ -116,7 +116,7 @@ Defines the playback information in key-value pairs.
 
 | Name         | Type  | Read-Only| Optional | Description                                                        |
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [key: string]| Object | No | No | For details about the value range of each key, see [PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12).<br>For details about the object type and range of each key, see [PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12).|
+| [key: string]| Object | No | Yes | For details about the value range of each key, see [PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12).<br>For details about the object type and range of each key, see [PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12).|
 
 ## AVRecorderConfig<sup>9+</sup>
 
@@ -149,6 +149,7 @@ Describes the audio and video recording profile.
 | audioBitrate     | number                                       | No  | Yes  | Audio encoding bit rate. This parameter is mandatory for audio recording.<br>Supported bit rate ranges:<br>- Range [32000, 500000] for the AAC encoding format.<br>- 64000 for the G.711 μ-law encoding format.<br>- Range [8000, 16000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000] for the MP3 encoding format.<br>When the MP3 encoding format is used, the mapping between the sample rate and bit rate is as follows:<br>- When the sample rate is lower than 16 kHZ, the bit rate range is [8000 - 64000].<br>- When the sample rate ranges from 16 kHz to 32 kHz, the bit rate range is [8000, 160000].<br>- When the sample rate is greater than 32 kHz, the bit rate range is [32000, 320000].<br>- Range [4750, 5150, 5900, 6700, 7400, 7950, 10200, 12200] for the AMR-NB encoding format.<br>- Range [6600, 8850, 12650, 14250, 15850, 18250, 19850, 23050, 23850] for the AMR-WB encoding format.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | audioChannels    | number                                       | No  | Yes  | Audio channel count. This parameter is mandatory for audio recording.<br>- Range [1, 8] for the AAC encoding format.<br>- 1 for the G.711 μ-law encoding format.<br>- Range [1, 2] for the MP3 encoding format.<br>- 1 for the AMR-NB and AMR-WB encoding formats.<br> **Atomic service API**: This API can be used in atomic services since API version 12.      |
 | audioCodec       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | No  | Yes  | Audio encoding format. This parameter is mandatory for audio recording.<br>Currently, AUDIO_AAC, AUDIO_MP3, AUDIO_G711MU, AUDIO_AMR_NB, and AUDIO_AMR_WB are supported.<br> **Atomic service API**: This API can be used in atomic services since API version 12.    |
+| aacProfile<sup>22+</sup>       | [AacProfile](arkts-apis-media-e.md#aacprofile22)             | No  | Yes  | Extended audio encoding format. The default value is **AAC_LC**.<br>Currently, the following formats are supported: **AAC_LC**, **AAC_HE**, and **AAC_HE_V2**.<br> **Atomic service API**: This API can be used in atomic services since API version 22.    |
 | audioSampleRate  | number                                       | No  | Yes  | Audio sample rate. This parameter is mandatory for audio recording.<br>Supported sample rate ranges:<br>- Range [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000] for the AAC encoding format.<br>- 8000 for the G.711 μ-law encoding format.<br>- Range [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000] for the MP3 encoding format.<br>- 8000 for the AMR-NB encoding format.<br>- 16000 for the AMR-WB encoding format.<br>Variable bit rate. The bit rate is for reference only.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | fileFormat       | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | No  | No  | Container format of a file. This parameter is mandatory. Currently, the MP4, M4A, MP3, WAV, AMR, and AAC container formats are supported. The default container format for AAC audio is ADTS frame format. The AUDIO_MP3 encoding format is not supported within the MP4 container format.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | videoBitrate     | number                                       | No  | Yes  | Video encoding bit rate. This parameter is mandatory for video recording. The value range is [10000, 100000000]. |
@@ -220,14 +221,14 @@ Describes the video transcoding parameters.
 
 | Name           | Type                                   | Read-Only| Optional| Description                                                        |
 | --------------- | ---------------------------------------- |---- | ---- | ------------------------------------------------------------ |
-| audioBitrate | number     | No| Yes| Bit rate of the output audio, in bit/s. The value range is [1 - 500000]. The default value is 48 kbit/s.|
-| audioCodec | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | No| Yes | Encoding format of the output audio. Currently, only AAC is supported. The default value is **AAC**.                  |
-| fileFormat         | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | No| No  | Container format of the output video file. Currently, only MP4 is supported.|
-| videoBitrate         | number | No|  Yes | Bit rate of the output video, in bit/s. The default bit rate depends on the resolution of the output video. The default bit rate is 1 Mbit/s for the resolution in the range [240p, 480P], 2 Mbit/s for the range (480P, 720P], 4 Mbit/s for the range (720P, 1080P], and 8 Mbit/s for 1080p or higher.|
-| videoCodec        | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | No| Yes  | Encoding format of the output video. Currently, only AVC and HEVC are supported. If the source video is in HEVC format, the default value is **HEVC**. Otherwise, the default value is **AVC**.|
-| videoFrameWidth        | number | No|  Yes  | Width of the output video frame, in px. The value range is [240 - 3840]. The default value is the width of the source video frame.|
-| videoFrameHeight        | number | No|  Yes  | Height of the output video frame, in px. The value range is [240 - 2160]. The default value is the height of the source video frame.|
-| enableBFrame<sup>20+</sup> | boolean | No|  Yes  | Whether B-frame encoding is enabled for transcoding. **true** if enabled, **false** otherwise.<br>For details about the restrictions on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints). If the current environment does not meet these constraints, B-frames will be skipped, and encoding will proceed as if B-frame video encoding were not enabled.|
+| audioBitrate | number     | No| Yes| Bit rate of the output audio, in bit/s. The value range is [1, 500000]. The default value is 48 kbit/s.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| audioCodec | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | No| Yes | Encoding format of the output audio. Currently, only AAC is supported. The default value is **AAC**.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| fileFormat         | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | No| No  | Container format of the output video file. Currently, only MP4 is supported.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| videoBitrate         | number | No|  Yes | Bit rate of the output video, in bit/s. The default bit rate depends on the resolution of the output video. The default bit rate is 1 Mbit/s for the resolution in the range [240p, 480P], 2 Mbit/s for the range (480P, 720P], 4 Mbit/s for the range (720P, 1080P], and 8 Mbit/s for 1080p or higher.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| videoCodec        | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | No| Yes  | Encoding format of the output video. Currently, only AVC and HEVC are supported. If the source video is in HEVC format, the default value is **HEVC**. Otherwise, the default value is **AVC**.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| videoFrameWidth        | number | No|  Yes  | Width of the output video frame, in px. The value range is [240, 3840]. The default value is the width of the source video frame.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| videoFrameHeight        | number | No|  Yes  | Height of the output video frame, in px. The value range is [240, 2160]. The default value is the height of the source video frame.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| enableBFrame<sup>20+</sup> | boolean | No|  Yes  | Whether B-frame encoding is enabled for transcoding. **true** if enabled, **false** otherwise.<br>For details about the restrictions on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints). If the current environment does not meet these constraints, B-frames will be skipped, and encoding will proceed as if B-frame video encoding were not enabled.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 
 
 ## AVMetadata<sup>11+</sup>
@@ -238,30 +239,31 @@ Defines the audio and video metadata.
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- |------------------------------------------------------------ |
-| album     | string | No| Yes| Title of the album. Currently, the AVRecorder does not support the setting of this property.    |
-| albumArtist | string | No| Yes| Artist of the album. Currently, the AVRecorder does not support the setting of this property.|
-| artist | string | No| Yes| Artist of the media asset. Currently, the AVRecorder does not support the setting of this property.|
-| author | string | No| Yes| Author of the media asset. Currently, the AVRecorder does not support the setting of this property.|
-| dateTime | string | No| Yes| Time when the media asset is created. Currently, the AVRecorder does not support the setting of this property.|
-| dateTimeFormat | string | No| Yes| Time when the media asset is created. The value is in the YYYY-MM-DD HH:mm:ss format. Currently, the AVRecorder does not support the setting of this property.|
-| composer | string | No| Yes| Composer of the media asset. Currently, the AVRecorder does not support the setting of this property.|
-| duration | string | No| Yes| Duration of the media asset. Currently, the AVRecorder does not support the setting of this property.|
+| album     | string | No| Yes| Title of the album. This property cannot be set for the AVRecorder.    |
+| albumArtist | string | No| Yes| Artist of the album. This property cannot be set for the AVRecorder.|
+| artist | string | No| Yes| Artist of the media asset. This property cannot be set for the AVRecorder.|
+| author | string | No| Yes| Author of the media asset. This property cannot be set for the AVRecorder.|
+| dateTime | string | No| Yes| Time when the media asset is created. This property cannot be set for the AVRecorder.|
+| dateTimeFormat | string | No| Yes| Time when the media asset is created. The value is in the YYYY-MM-DD HH:mm:ss format. This property cannot be set for the AVRecorder.|
+| composer | string | No| Yes| Composer of the media asset. This property cannot be set for the AVRecorder.|
+| duration | string | No| Yes| Duration of the media asset. This property cannot be set for the AVRecorder.|
 | genre | string | No| Yes| Type or genre of the media asset.|
-| hasAudio | string | No| Yes| Whether the media asset contains audio. Currently, the AVRecorder does not support the setting of this property.|
-| hasVideo | string | No| Yes| Whether the media asset contains a video. Currently, the AVRecorder does not support the setting of this property.|
-| mimeType | string | No| Yes| MIME type of the media asset. Currently, the AVRecorder does not support the setting of this property.|
-| trackCount | string | No| Yes| Number of tracks of the media asset. Currently, the AVRecorder does not support the setting of this property.|
-| sampleRate | string | No| Yes| Audio sample rate, in Hz. Currently, the AVRecorder does not support the setting of this property.|
-| title | string | No| Yes| Title of the media asset. This parameter is read-only in the current version. Currently, the AVRecorder does not support the setting of this property.|
-| videoHeight | string | No| Yes| Video height, in px. Currently, the AVRecorder does not support the setting of this property.|
-| videoWidth | string | No| Yes| Video width, in px. Currently, the AVRecorder does not support the setting of this property.|
+| hasAudio | string | No| Yes| Whether the media asset contains audio. This property cannot be set for the AVRecorder.|
+| hasVideo | string | No| Yes| Whether the media asset contains a video. This property cannot be set for the AVRecorder.|
+| mimeType | string | No| Yes| MIME type of the media asset. This property cannot be set for the AVRecorder.|
+| trackCount | string | No| Yes| Number of tracks of the media asset. This property cannot be set for the AVRecorder.|
+| sampleRate | string | No| Yes| Audio sample rate, in Hz. This property cannot be set for the AVRecorder.|
+| title | string | No| Yes| Title of the media asset. This parameter is read-only in the current version. This property cannot be set for the AVRecorder.|
+| description<sup>23+</sup> | string | No| Yes| Description of a media resource. This parameter is read-only in the current version. This property cannot be set for the AVRecorder.|
+| videoHeight | string | No| Yes| Video height, in px. This property cannot be set for the AVRecorder.|
+| videoWidth | string | No| Yes| Video width, in px. This property cannot be set for the AVRecorder.|
 | videoOrientation | string | No| Yes| Video rotation direction, in degrees.|
-| hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | No| Yes| HDR type of the media asset. Currently, the AVRecorder does not support the setting of this property.|
+| hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | No| Yes| HDR type of the media asset. This property cannot be set for the AVRecorder.|
 | location<sup>12+</sup> | [Location](#location) | No| Yes| Geographical location of the media asset.|
 | customInfo<sup>12+</sup> | Record<string, string> | No| Yes| Custom key-value mappings obtained from **moov.meta.list**.|
-| tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | No| Yes| Track information of the media asset. Currently, the AVRecorder does not support the setting of this property.|
+| tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | No| Yes| Track information of the media asset. This property cannot be set for the AVRecorder.|
 
-### Description of MediaDescriptionKey supported by AVMetadata.tracks
+### MediaDescriptionKey<sup>8+</sup> Values Supported by AVMetadata.tracks
 
 The following table lists the values of [MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8) supported by AVMetadata.tracks.
 
@@ -275,11 +277,11 @@ The following table lists the values of [MediaDescriptionKey](arkts-apis-media-e
 | MD_KEY_FRAME_RATE | 'frame_rate' | Video|
 | MD_KEY_AUD_CHANNEL_COUNT | 'channel_count' | Audio|
 | MD_KEY_AUD_SAMPLE_RATE | 'sample_rate' | Audio|
-| MD_KEY_HDR_TYPE | 'hdr_type' | Video|
-| MD_KEY_ORIGINAL_WIDTH | 'original_width' | Video|
-| MD_KEY_ORIGINAL_HEIGHT | 'original_height' | Video|
-| MD_KEY_BITRATE | 'bitrate' | Audio|
-| MD_KEY_AUD_SAMPLE_DEPTH | 'sample_depth' | Audio|
+| MD_KEY_HDR_TYPE<sup>12+</sup> | 'hdr_type' | Video|
+| MD_KEY_ORIGINAL_WIDTH<sup>21+</sup> | 'original_width' | Video|
+| MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup> | 'original_height' | Video|
+| MD_KEY_BITRATE | 'bitrate' | Audio and video (supported since API version 21)|
+| MD_KEY_AUD_SAMPLE_DEPTH<sup>12+</sup> | 'sample_depth' | Audio (supported since API version 21)|
 
 ## PixelMapParams<sup>12+</sup>
 
@@ -343,18 +345,18 @@ let uuid: number = 1;
 let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
 let mediaSourceLoader: media.MediaSourceLoader = {
   open: (request: media.MediaSourceLoadingRequest) => {
-    console.log(`Opening resource: ${request.url}`);
+    console.info(`Opening resource: ${request.url}`);
     // Open the resource and return a unique handle, ensuring the mapping between the UUID and request.
     uuid += 1;
     requests.set(uuid, request);
     return uuid;
   },
   read: (uuid: number, requestedOffset: number, requestedLength: number) => {
-    console.log(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
+    console.info(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
     // Check whether the UUID is valid and store the read request. Avoid blocking the request while pushing data and header information.
   },
   close: (uuid: number) => {
-    console.log(`Closing resource with handle ${uuid}`);
+    console.info(`Closing resource with handle ${uuid}`);
     // Clear resources related to the current UUID.
     requests.remove(uuid);
   }

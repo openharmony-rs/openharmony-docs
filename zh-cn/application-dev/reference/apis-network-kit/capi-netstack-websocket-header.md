@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+struct WebSocket_Header {...}
+```
+
 ## 概述
 
 websocket客户端增加header头的链表节点。

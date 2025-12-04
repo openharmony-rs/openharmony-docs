@@ -26,145 +26,241 @@
 
    (3) 创建kvStore。
 
-
    ```ts
-   import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
-   import { hilog } from '@kit.PerformanceAnalysisKit';
+   // 导入模块
+   // 在pages目录下新建KvStoreInterface.ets
    import { distributedKVStore } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
+   import EntryAbility from '../entryability/EntryAbility';
+   // Logger为hilog封装后实现的打印功能
+   import Logger from '../common/Logger';
 
-   export default class EntryAbility extends UIAbility {
-     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-       this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
-       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-       let kvManager: distributedKVStore.KVManager;
-       let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
-       let context = this.context;
-       const kvManagerConfig: distributedKVStore.KVManagerConfig = {
-         context: context,
-         bundleName: 'com.example.datamanagertest'
-       }
-       try {
-         kvManager = distributedKVStore.createKVManager(kvManagerConfig);
-         console.info('Succeeded in creating KVManager.');
-         try {
-           const options: distributedKVStore.Options = {
-             createIfMissing: true,
-             encrypt: true,
-             backup: false,
-             autoSync: false,
-             kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
-             securityLevel: distributedKVStore.SecurityLevel.S3
-           };
-           kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options, (err, store: distributedKVStore.SingleKVStore) => {
-             if (err) {
-               console.error(`Failed to get KVStore. Code:${err.code},message:${err.message}`);
-               return;
-             }
-             console.info('Succeeded in getting KVStore.');
-             kvStore = store;
-             if (kvStore !== undefined) {
-               // 进行后续操作
-               // ...
-             }
-           });
-         } catch (e) {
-           let error = e as BusinessError;
-           console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-         }
-       } catch (e) {
-         let error = e as BusinessError;
-         console.error(`Failed to create KVManager. Code:${error.code},message:${error.message}`);
-       }
-     }
+   let kvManager: distributedKVStore.KVManager | undefined = undefined;
+   let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
+   let appId: string = 'com.example.kvstoresamples';
+   let storeId: string = 'storeId';
+   const context = EntryAbility.getContext();
+
+   // 下面所有接口的代码都实现在KvInterface中
+   export class KvInterface {
    }
+   ```
+   <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public CreateKvManager = (() => {
+     Logger.info('CreateKvManager start');
+     if (typeof (kvManager) === 'undefined') {
+       const kvManagerConfig: distributedKVStore.KVManagerConfig = {
+         bundleName: appId,
+         context: context
+       };
+       try {
+         // 创建KVManager实例
+         kvManager = distributedKVStore.createKVManager(kvManagerConfig);
+         Logger.info('Succeeded in creating KVManager.');
+       } catch (err) {
+         Logger.error(`Failed to create KVManager. Code:${err.code},message:${err.message}`);
+       }
+     } else {
+       Logger.info ('KVManager has created');
+     }
+   })
+   ```
+   <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public GetKvStore = (() => {
+     Logger.info('GetKvStore start');
+     if (kvManager === undefined) {
+       Logger.info('KvManager not initialized');
+       return;
+     }
+     try {
+       let child1 = new distributedKVStore.FieldNode('id');
+       child1.type = distributedKVStore.ValueType.INTEGER;
+       child1.nullable = false;
+       child1.default = '1';
+       let child2 = new distributedKVStore.FieldNode('name');
+       child2.type = distributedKVStore.ValueType.STRING;
+       child2.nullable = false;
+       child2.default = 'zhangsan';
+   
+       let schema = new distributedKVStore.Schema();
+       schema.root.appendChild(child1);
+       schema.root.appendChild(child2);
+       schema.indexes = ['$.id', '$.name'];
+       // 0表示COMPATIBLE模式，1表示STRICT模式。
+       schema.mode = 1;
+       // 支持在检查Value时，跳过skip指定的字节数，且取值范围为[0,4M-2]。
+       schema.skip = 0;
+   
+       const options: distributedKVStore.Options = {
+         createIfMissing: true,
+         // 设置数据库加密
+         encrypt: true,
+         backup: false,
+         autoSync: false,
+         // kvStoreType不填时，默认创建多设备协同数据库
+         kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+         // 多设备协同数据库：kvStoreType: distributedKVStore.KVStoreType.DEVICE_COLLABORATION,
+         schema: schema,
+         // schema未定义可以不填，定义方法请参考上方schema示例。
+         securityLevel: distributedKVStore.SecurityLevel.S3
+       };
+       kvManager.getKVStore<distributedKVStore.SingleKVStore>(storeId, options,
+         (err, store: distributedKVStore.SingleKVStore) => {
+           if (err) {
+             Logger.error(`Failed to get KVStore: Code:${err.code},message:${err.message}`);
+             return;
+           }
+           Logger.info('Succeeded in getting KVStore.');
+           kvStore = store;
+           // 请确保获取到键值数据库实例后，再进行相关数据操作
+         });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
 2. 使用put()方法插入数据。
-     
-   ```ts
-   const KEY_TEST_STRING_ELEMENT = 'key_test_string';
-   const VALUE_TEST_STRING_ELEMENT = 'value_test_string';
-   try {
-     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err) => {
-       if (err !== undefined) {
-         console.error(`Fail to put data. Code:${err.code},message:${err.message}`);
-         return;
-       }
-       console.info('Succeeded in putting data.');
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
+
+   <!-- @[kv_store4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public Put = (() => {
+     Logger.info('Put start');
+     if (kvStore === undefined) {
+       Logger.info('Put: kvStore not initialized');
+       return;
+     }
+     const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+     // 如果未定义Schema则Value可以传其他符合要求的值。
+     const VALUE_TEST_STRING_ELEMENT = '{"id":0, "name":"lisi"}';
+     try {
+       kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err) => {
+         if (err !== undefined) {
+           Logger.error(`Failed to put data. Code:${err.code},message:${err.message}`);
+           return;
+         }
+         Logger.info('Succeeded in putting data.');
+       });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
 3. 使用backup()方法备份数据。
-     
-   ```ts
-   let backupFile = 'BK001';
-   try {
-     kvStore.backup(backupFile, (err) => {
-       if (err) {
-         console.error(`Fail to backup data.code:${err.code},message:${err.message}`);
-       } else {
-         console.info('Succeeded in backing up data.');
-       }
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
+
+   <!-- @[kv_store7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public Backup = (() => {
+     Logger.info('Backup start');
+     if (kvStore === undefined) {
+       Logger.info('Backup: kvStore not initialized');
+       return;
+     }
+     let backupFile = 'BK001';
+     try {
+       kvStore.backup(backupFile, (err) => {
+         if (err) {
+           Logger.error(`Fail to backup data.code:${err.code},message:${err.message}`);
+         } else {
+           Logger.info('Succeeded in backing up data.');
+         }
+       });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
 4. 使用delete()方法删除数据（模拟意外删除、篡改场景）。
-     
-   ```ts
-   try {
-     kvStore.delete(KEY_TEST_STRING_ELEMENT, (err) => {
-       if (err !== undefined) {
-         console.error(`Fail to delete data. Code:${err.code},message:${err.message}`);
-         return;
-       }
-       console.info('Succeeded in deleting data.');
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
+
+   <!-- @[kv_store6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public Delete = (() => {
+     Logger.info('DeleteData start');
+     if (kvStore === undefined) {
+       Logger.info('DeleteData: kvStore not initialized');
+       return;
+     }
+     const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+     try {
+       kvStore.delete(KEY_TEST_STRING_ELEMENT, (err) => {
+         if (err !== undefined) {
+           Logger.error(`Failed to delete data. Code:${err.code},message:${err.message}`);
+           return;
+         }
+         Logger.info('Succeeded in deleting data.');
+       });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
 5. 使用restore()方法恢复数据。
-     
-   ```ts
-   try {
-     kvStore.restore(backupFile, (err) => {
-       if (err) {
-         console.error(`Fail to restore data. Code:${err.code},message:${err.message}`);
-       } else {
-         console.info('Succeeded in restoring data.');
-       }
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
+
+   <!-- @[kv_store8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public Restore = (() => {
+     Logger.info('Restore start');
+     if (kvStore === undefined) {
+       Logger.info('Restore: kvStore not initialized');
+       return;
+     }
+     let backupFile = 'BK001';
+     try {
+       kvStore.restore(backupFile, (err) => {
+         if (err) {
+           Logger.error(`Fail to restore data. Code:${err.code},message:${err.message}`);
+         } else {
+           Logger.info('Succeeded in restoring data.');
+         }
+       });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
 6. 当本地设备存储空间有限或需要重新备份时，还可使用deleteBackup()方法删除备份，释放存储空间。
-     
-   ```ts
-   let files = [backupFile];
-   try {
-     kvStore.deleteBackup(files).then((data) => {
-       console.info(`Succeed in deleting Backup. Data:filename is ${data[0]},result is ${data[1]}.`);
-     }).catch((err: BusinessError) => {
-       console.error(`Fail to delete Backup. Code:${err.code},message:${err.message}`);
-     })
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
+
+   <!-- @[kv_store9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public DeleteBackup = (() => {
+     Logger.info('DeleteBackup start');
+     if (kvStore === undefined) {
+       Logger.info('DeleteBackup: kvStore not initialized');
+       return;
+     }
+     let backupFile = 'BK001';
+     let files = [backupFile];
+     try {
+       kvStore.deleteBackup(files, (err: BusinessError, data: [string, number][]) => {
+         if (err) {
+           Logger.error(`Failed to delete Backup.code is ${err.code},message is ${err.message}`);
+         } else {
+           Logger.info(`Succeed in deleting Backup.data=${data}`);
+         }
+       });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+     }
+   })
    ```
 
 ## 关系型数据库备份
@@ -177,46 +273,49 @@
 
 手动备份：通过调用[backup](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#backup)接口实现数据库手动备份。示例如下：
 
-```ts
-import { UIAbility } from '@kit.AbilityKit';
+<!-- @[backuprestore_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+
+``` TypeScript
 import { relationalStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { hilog } from '@kit.PerformanceAnalysisKit'
+```
 
-export default class EntryAbility extends UIAbility {
-  async onCreate(): Promise<void> {
-    let store: relationalStore.RdbStore | undefined = undefined;
-    let context = this.context;
 
-    const STORE_CONFIG: relationalStore.StoreConfig = {
-      name: 'RdbTest.db',
-      securityLevel: relationalStore.SecurityLevel.S3,
-      allowRebuild: true
-    };
-    try {
-      store = await relationalStore.getRdbStore(context, STORE_CONFIG);
-      await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
-      console.info('Succeeded in getting RdbStore.');
-    } catch (e) {
-      const err = e as BusinessError;
-      console.error(`Failed to get RdbStore. Code:${err.code},message:${err.message}`);
-    }
 
-    if (!store) {
-      return;
-    }
+<!-- @[backupManually](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
-    try {
-      /**
-       * "Backup.db"为备份数据库文件名，默认在RdbStore同路径下备份。
-       * 也可指定绝对路径："/data/storage/el2/database/Backup.db"，文件路径需要存在，不会自动创建目录。
-       */
-      await store.backup("Backup.db");
-      console.info(`Succeeded in backing up RdbStore.`);
-    } catch (e) {
-      const err = e as BusinessError;
-      console.error(`Failed to backup RdbStore. Code:${err.code}, message:${err.message}`);
-    }
-  }
+``` TypeScript
+let store: relationalStore.RdbStore | undefined = undefined;
+let context = getContext();
+const STORE_CONFIG: relationalStore.StoreConfig = {
+  name: 'RdbTest.db',
+  securityLevel: relationalStore.SecurityLevel.S3
+};
+try {
+  store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+  await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
+  hilog.info(DOMAIN, 'BackupAndRestore', 'Succeeded in getting RdbStore.');
+} catch (e) {
+  const err = e as BusinessError;
+  hilog.error(DOMAIN, 'BackupAndRestore', `Failed to get RdbStore. Code:${err.code},message:${err.message}`);
+}
+
+if (!store) {
+  return;
+}
+
+try {
+  /**
+   * "Backup.db"为备份数据库文件名，默认在RdbStore同路径下备份。
+   * 也可指定绝对路径："/data/storage/el2/database/Backup.db"，文件路径需要存在，不会自动创建目录。
+   */
+  await store.backup('Backup.db');
+  hilog.info(DOMAIN, 'BackupAndRestore', `Succeeded in backing up RdbStore.`);
+} catch (e) {
+  const err = e as BusinessError;
+  hilog.error(DOMAIN, 'BackupAndRestore', `Failed to backup RdbStore. Code:${err.code}, message:${err.message}`);
 }
 ```
 
@@ -267,31 +366,28 @@ export default class EntryAbility extends UIAbility {
 
 若数据库异常前未配置StoreConfig中的allowRebuild或allowRebuild配置为false，则需将其配置为true再次进行开库。具体示例如下：
 
-```ts
-import { UIAbility } from '@kit.AbilityKit';
-import { relationalStore } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
+<!-- @[rebuildingRelationalDatabaseAbnormally](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
-export default class EntryAbility extends UIAbility {
-  async onCreate(): Promise<void> {
-    let store: relationalStore.RdbStore | undefined = undefined;
-    let context = this.context;
-    try {
-      const STORE_CONFIG: relationalStore.StoreConfig = {
-        name: 'RdbTest.db',
-        securityLevel: relationalStore.SecurityLevel.S3,
-        allowRebuild: true
-      };
-      store = await relationalStore.getRdbStore(context, STORE_CONFIG);
-      await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
-      console.info('Succeeded in getting RdbStore.');
-    } catch (e) {
-      const err = e as BusinessError;
-      console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
-    }
-  }
+``` TypeScript
+let store: relationalStore.RdbStore | undefined = undefined;
+let context = getContext();
+try {
+  const STORE_CONFIG: relationalStore.StoreConfig = {
+    name: 'RdbTest.db',
+    securityLevel: relationalStore.SecurityLevel.S3,
+    allowRebuild: true
+  };
+  store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+  await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
+  hilog.info(DOMAIN, 'BackupAndRestore', 'Succeeded in getting RdbStore.');
+} catch (e) {
+  const err = e as BusinessError;
+  hilog.error(DOMAIN, 'BackupAndRestore', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
 }
 ```
+
+
+
 
 ## 关系型数据库数据恢复
 
@@ -307,98 +403,100 @@ export default class EntryAbility extends UIAbility {
 
 1. 抛出数据库异常错误码。
 
-   ```ts
-   let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
-   if (store != undefined) {
-     (store as relationalStore.RdbStore).query(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then((result: relationalStore.ResultSet) => {
-       let resultSet = result;
-       try {
-         /* ...
-            业务的增删改逻辑
-            ...
-         */
-         // 抛出异常
-         if (resultSet?.rowCount == -1) {
-           resultSet ?.isColumnNull(0);
-         }
-         // todo resultSet.goToFirstRow(), resultSet.count等其它接口也会抛异常
-         while (resultSet.goToNextRow()) {
-           console.info(JSON.stringify(resultSet.getRow()))
-         }
-         resultSet.close();
-       } catch (err) {
-           if (err.code === 14800011) {
+    <!-- @[databaseExceptionErrorCodeThrown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    
+    ``` TypeScript
+    let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+    if (store != undefined) {
+      (store as relationalStore.RdbStore).query(predicates, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES'])
+        .then((result: relationalStore.ResultSet) => {
+          let resultSet = result;
+          try {
+            /* ...
+               业务的增删改逻辑
+               ...
+            */
+            // 抛出异常
+            if (resultSet?.rowCount == -1) {
+              resultSet?.isColumnNull(0);
+            }
+            // todo resultSet.goToFirstRow()等其它接口也会抛异常
+            while (resultSet.goToNextRow()) {
+              hilog.info(DOMAIN, 'BackupAndRestore', JSON.stringify(resultSet.getRow()));
+            }
+            resultSet.close();
+          } catch (err) {
+            if (err.code === 14800011) {
               // 执行下文的步骤，即关闭结果集之后进行数据的恢复
-           }
-           console.error(JSON.stringify(err));
-       }
-     })
-   }
-   ```
+            }
+            hilog.info(DOMAIN, 'BackupAndRestore', JSON.stringify(err));
+          }
+        })
+    }
+    ```
+
+
 
 2. 关闭所有打开着的结果集。
 
-   ```ts
-   // 获取所有打开着的结果集
-   let resultSets: Array<relationalStore.ResultSet> = [];
-   // 使用resultSet.close()方法关闭所有打开着的结果集
-   for (let resultSet of resultSets) {
-     try {
-       resultSet.close();
-     } catch (e) {
-         if (e.code !== 14800014) {
-           console.error(`Code:${e.code}, message:${e.message}`);
-         }
-     }
-   }
-   ```
+    <!-- @[closeAllOpenResultSets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    
+    ``` TypeScript
+    let resultSets: relationalStore.ResultSet[] = []
+    // 使用resultSet.close()方法关闭所有打开着的结果集
+    for (let resultSet of resultSets) {
+      try {
+        resultSet.close();
+      } catch (e) {
+        if (e.code !== 14800014) {
+          hilog.info(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
+        }
+      }
+    }
+    ```
+
+
+
 
 3. 调用restore接口恢复数据。
 
-   ```ts
-   import { UIAbility } from '@kit.AbilityKit';
-   import { relationalStore } from '@kit.ArkData';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { fileIo } from '@kit.CoreFileKit';
-
-   export default class EntryAbility extends UIAbility {
-     async onCreate(): Promise<void> {
-       let store: relationalStore.RdbStore | undefined = undefined;
-       let context = this.context;
-       let STORE_CONFIG: relationalStore.StoreConfig = {
-         name: "RdbTest.db",
-         securityLevel: relationalStore.SecurityLevel.S3,
-         allowRebuild: true
-       }
-       try {
-         /**
-          * "Backup.db"为备份数据库文件名，默认在当前 store 所在路径下查找备份文件 Backup.db。
-          * 如在备份时指定了绝对路径："/data/storage/el2/database/Backup.db", 需要传入绝对路径。
-          */
-         let backupFilePath = context.databaseDir + '/rdb/Backup.db';
-         const backupExist = await fileIo.access(backupFilePath);
-         if (!backupExist) {
-           console.info("Backup is not exist.");
-           // todo 开库建表
-           // todo 自行生成数据
-           return;
-         }
-       } catch (e) {
-         console.error(`Code:${e.code}, message:${e.message}`);
-       }
-
-       try {
-         store = await relationalStore.getRdbStore(context, STORE_CONFIG);
-         // 调用restore接口恢复数据
-         await store.restore("Backup.db");
-         console.info("Restore from backup success.")
-       } catch (e) {
-         const err = e as BusinessError;
-         console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
-       }
-     }
-   }
-   ```
+    <!-- @[invokeTheRestoreInterfaceToRestoreData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    
+    ``` TypeScript
+    let store: relationalStore.RdbStore | undefined = undefined;
+    let context = getContext();
+    let STORE_CONFIG: relationalStore.StoreConfig = {
+      name: 'RdbTest.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      allowRebuild: true
+    }
+    try {
+      /**
+       * "Backup.db"为备份数据库文件名，默认在当前 store 所在路径下查找备份文件 Backup.db。
+       * 如在备份时指定了绝对路径："/data/storage/el2/database/Backup.db", 需要传入绝对路径。
+       */
+      let backupFilePath = context.databaseDir + '/rdb/Backup.db';
+      const backupExist: boolean = await fileIo.access(backupFilePath);
+      if (!backupExist) {
+        hilog.info(DOMAIN, 'BackupAndRestore', 'Backup is not exist.');
+        // todo 开库建表
+        // todo 自行生成数据
+        return;
+      }
+    } catch (e) {
+      hilog.info(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
+    }
+    
+    try {
+      store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+      // 调用restore接口恢复数据
+      await store.restore('Backup.db');
+      hilog.info(DOMAIN, 'BackupAndRestore', 'Restore from backup success.');
+    } catch (e) {
+      const err = e as BusinessError;
+      hilog.error(DOMAIN, 'BackupAndRestore', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
+    }
+    ```
 
 <!--Del-->
 

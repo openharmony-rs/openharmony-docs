@@ -30,10 +30,14 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 3. Obtain the [algorithm parameters](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) for encryption.
 
    The parameters to be configured vary with the algorithm used.
-   - If the AES algorithm, CBC block mode, and PKCS7 padding mode are used for encryption, the **IV** parameter must be set. For details, see [AES/CBC/PKCS7](#aescbcpkcs7).
-   - If the AES algorithm and GCM block mode are used for encryption, the **NONCE** parameter is mandatory and **AAD** is optional. For details, see [AES/GCM/NoPadding](#aesgcmnopadding).
+   - If the AES algorithm is used for encryption, the block mode is CBC, and the padding mode is PKCS7, the **IV** parameter is mandatory. For details, see [AES/CBC/PKCS7](#aescbcpkcs7).
+   - If the AES algorithm is used for encryption and the block mode is GCM, the **NONCE** and**AAD** parameters are optional. For details, see [AES/GCM/NoPadding](#aesgcmnopadding).
+   - If the AES algorithm is used for encryption and the block mode is CCM, the **NONCE** and **AAD** parameters are optional. For details, see [AES/CCM/NoPadding](#aesccmnopadding).
    - If the RSA algorithm is used for encryption, you need to select the corresponding block mode, padding mode, and digest algorithm. For details, see [RSA/ECB/PKCS1_V1_5](#rsaecbpkcs1_v1_5) and [RSA/ECB/OAEP/SHA256](#rsaecboaepsha256).
    - If the SM2 algorithm is used for encryption, the digest algorithm must be SM3. For details, see [SM2](#sm2).
+   <!--Del-->
+   - If the DES algorithm is used for encryption and the block mode is CBC, the **IV** parameter is mandatory. For details, see [DES/CBC/NoPadding](#descbcnopadding).
+   <!--DelEnd-->
    
    For details about the specifications, see [Encryption and Decryption Overview and Algorithm Specifications](huks-encryption-decryption-overview.md).
 
@@ -468,6 +472,239 @@ async function DecryptData() {
       handle = data.handle;
     }).catch((error: BusinessError) => {
       console.error(`promise: init DecryptDataGcm failed, errCode : ${error.code}, errMsg : ${error.message}`);
+    })
+  /*
+   * 5. Call finishSession to obtain the decrypted data.
+   */
+  await huks.finishSession(handle, options)
+    .then((data) => {
+      console.info(`promise: decrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+    }).catch((error: BusinessError) => {
+      console.error(`promise: decrypt data failed, errCode : ${error.code}, errMsg : ${error.message}`);
+    })
+}
+
+async function DeleteKey() {
+  /*
+   * Simulate the key deletion scenario.
+   * 1. Obtain the key alias.
+   */
+  let emptyOptions: huks.HuksOptions = {
+    properties: []
+  }
+  /*
+   * 2. Call deleteKeyItem to delete the key.
+   */
+  await huks.deleteKeyItem(aesKeyAlias, emptyOptions)
+    .then(() => {
+      console.info(`promise: delete data success`);
+    }).catch((error: BusinessError) => {
+      console.error(`promise: delete data failed, errCode : ${error.code}, errMsg : ${error.message}`);
+    })
+}
+
+async function TestEncryptDecrypt() {
+  await GenerateAesKey();
+  await EncryptData();
+  await DecryptData();
+  await DeleteKey();
+}
+```
+
+### AES/CCM/NoPadding
+
+```ts
+/*
+ * The following uses AES/CCM/NoPadding with promise-based APIs as an example.
+ */
+import { huks } from '@kit.UniversalKeystoreKit';
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from "@kit.BasicServicesKit";
+
+let aesKeyAlias = 'test_aesCcmKeyAlias';
+let handle: number;
+let plainText = '123456';
+let cipherData: Uint8Array;
+let AAD = '1234567890123456';
+let NONCE = cryptoFramework.createRandom().generateRandomSync(12).data;
+let aeadTagLen = 14;
+
+function StringToUint8Array(str: string) {
+  let arr: number[] = new Array();
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+function Uint8ArrayToString(fileData: Uint8Array) {
+  let dataString = '';
+  for (let i = 0; i < fileData.length; i++) {
+    dataString += String.fromCharCode(fileData[i]);
+  }
+  return dataString;
+}
+
+function GetAesGenerateProperties() {
+  let properties: Array<huks.HuksParam> = [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_AES
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT |
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+  }];
+  return properties;
+}
+
+function GetAesCcmEncryptProperties() {
+  let properties: Array<huks.HuksParam> = [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_AES
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_CCM
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_NONCE,
+    value: NONCE
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_ASSOCIATED_DATA,
+    value: StringToUint8Array(AAD)
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_AE_TAG_LEN,
+    value: aeadTagLen
+  }];
+  return properties;
+}
+
+function GetAesCcmDecryptProperties(cipherData: Uint8Array) {
+  let properties: Array<huks.HuksParam> = [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_AES
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_CCM
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_NONCE,
+    value: NONCE
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_ASSOCIATED_DATA,
+    value: StringToUint8Array(AAD)
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_AE_TAG,
+    value: cipherData.slice(cipherData.length - aeadTagLen)
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_AE_TAG_LEN,
+    value: aeadTagLen
+  }];
+  return properties;
+}
+
+async function GenerateAesKey() {
+  /*
+   * Simulate the key generation scenario.
+   * 1. Set the key alias.
+   */
+  /*
+   * 2. Obtain the parameters for key generation.
+   */
+  let genProperties = GetAesGenerateProperties();
+  let options: huks.HuksOptions = {
+    properties: genProperties
+  }
+  /*
+   * 3. Call generateKeyItem.
+   */
+  await huks.generateKeyItem(aesKeyAlias, options)
+    .then(() => {
+      console.info(`promise: generate AES Key success`);
+    }).catch((error: BusinessError) => {
+      console.error(`promise: generate AES Key failed, errCode : ${error.code}, errMsg : ${error.message}`);
+    })
+}
+
+async function EncryptData() {
+  /*
+   * Simulate the encryption scenario.
+   * 1. Obtain the key alias.
+   */
+  /*
+   * 2. Obtain the data to be encrypted.
+   */
+  /*
+   * 3. Obtain the algorithm parameters for encryption.
+   */
+  let encryptProperties = GetAesCcmEncryptProperties();
+  let options: huks.HuksOptions = {
+    properties: encryptProperties,
+    inData: StringToUint8Array(plainText)
+  }
+  /*
+   * 4. Call initSession to obtain a session handle.
+   */
+  await huks.initSession(aesKeyAlias, options)
+    .then((data) => {
+      handle = data.handle;
+    }).catch((error: BusinessError) => {
+      console.error(`promise: init EncryptDataCcm failed, errCode : ${error.code}, errMsg : ${error.message}`);
+    })
+  /*
+   * 5. Call finishSession to obtain the ciphertext.
+   */
+  await huks.finishSession(handle, options)
+    .then((data) => {
+      console.info(`promise: encrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+      cipherData = data.outData as Uint8Array;
+    }).catch((error: BusinessError) => {
+      console.error(`promise: encrypt data failed, errCode : ${error.code}, errMsg : ${error.message}`);
+    })
+}
+
+async function DecryptData() {
+  /*
+   * Simulate the decryption scenario.
+   * 1. Obtain the key alias.
+   */
+  /*
+   * 2. Obtain the ciphertext to be decrypted.
+   */
+  /*
+   * 3. Obtain the algorithm parameters for decryption.
+   */
+  let decryptOptions = GetAesCcmDecryptProperties(cipherData)
+  let options: huks.HuksOptions = {
+    properties: decryptOptions,
+    inData: cipherData.slice(0, cipherData.length - aeadTagLen)
+  }
+  /*
+   * 4. Call initSession to obtain a session handle.
+   */
+  await huks.initSession(aesKeyAlias, options)
+    .then((data) => {
+      handle = data.handle;
+    }).catch((error: BusinessError) => {
+      console.error(`promise: init DecryptDataCcm failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
   /*
    * 5. Call finishSession to obtain the decrypted data.

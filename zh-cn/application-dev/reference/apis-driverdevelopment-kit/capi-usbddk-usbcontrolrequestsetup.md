@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct UsbControlRequestSetup {...} __attribute__((aligned(8))) UsbControlRequestSetup
+```
+
 ## 概述
 
 控制传输setup包，对应USB协议中的Setup Data。

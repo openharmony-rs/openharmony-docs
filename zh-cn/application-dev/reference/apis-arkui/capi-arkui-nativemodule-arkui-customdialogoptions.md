@@ -4,7 +4,11 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_CustomDialogOptions ArkUI_CustomDialogOptions
+```
 
 ## 概述
 

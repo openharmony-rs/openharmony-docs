@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiDebug_ProcessSamplerConfig {...} HiDebug_ProcessSamplerConfig
+```
+
 ## 概述
 
 采样配置的结构定义

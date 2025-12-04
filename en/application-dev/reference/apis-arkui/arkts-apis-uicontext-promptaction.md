@@ -4,13 +4,13 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Provides APIs to create and display toasts, dialog boxes, action menus, and custom popups.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this class are supported since API version 10.
 >
@@ -20,7 +20,7 @@ Provides APIs to create and display toasts, dialog boxes, action menus, and cust
 
 showToast(options: promptAction.ShowToastOptions): void
 
-Shows a toast in the given settings.
+Creates and displays a toast.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -30,11 +30,11 @@ Shows a toast in the given settings.
 
 | Name    | Type                                      | Mandatory  | Description     |
 | ------- | ---------------------------------------- | ---- | ------- |
-| options | [promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions) | Yes   | Toast options.|
+| options | [promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions) | Yes   | Toast configuration options.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -78,7 +78,7 @@ struct Index {
 
 openToast(options: promptAction.ShowToastOptions): Promise&lt;number&gt;
 
-Shows a toast. This API uses a promise to return the toast ID.
+Displays a toast. This API uses a promise to return the toast ID for use with **closeToast**.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -88,17 +88,17 @@ Shows a toast. This API uses a promise to return the toast ID.
 
 | Name | Type                                                        | Mandatory| Description          |
 | ------- | ------------------------------------------------------------ | ---- | -------------- |
-| options | [promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions) | Yes  | Toast options.|
+| options | [promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions) | Yes  | Toast configuration options.|
 
 **Return value**
 
 | Type            | Description                                |
 | ---------------- | ------------------------------------ |
-| Promise&lt;number&gt; | ID of the toast, which is required in **closeToast**.|
+| Promise&lt;number&gt; | Promise that returns the toast ID for use with **closeToast**.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -155,7 +155,7 @@ struct Index {
 
 closeToast(toastId: number): void
 
-Closes a toast.
+Closes the specified toast.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -165,11 +165,11 @@ Closes a toast.
 
 | Name | Type  | Mandatory| Description                         |
 | ------- | ------ | ---- | ----------------------------- |
-| toastId | number | Yes  | ID of the toast to close, which is returned by **openToast**.|
+| toastId | number | Yes  | Toast ID returned from **openToast**.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Popup Window Error Codes](errorcode-promptAction.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -185,7 +185,7 @@ See the example for [openToast18](#opentoast18).
 
 showDialog(options: promptAction.ShowDialogOptions, callback: AsyncCallback&lt;promptAction.ShowDialogSuccessResponse&gt;): void
 
-Shows a dialog box in the given settings. This API uses an asynchronous callback to return the result.
+Creates and displays a dialog box. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -195,12 +195,12 @@ Shows a dialog box in the given settings. This API uses an asynchronous callback
 
 | Name     | Type                                      | Mandatory  | Description          |
 | -------- | ---------------------------------------- | ---- | ------------ |
-| options  | [promptAction.ShowDialogOptions](js-apis-promptAction.md#showdialogoptions) | Yes   | Dialog box options.|
-| callback | AsyncCallback&lt;[promptAction.ShowDialogSuccessResponse](js-apis-promptAction.md#showdialogsuccessresponse)&gt; | Yes   | Callback used to return the dialog box response result.  |
+| options  | [promptAction.ShowDialogOptions](js-apis-promptAction.md#showdialogoptions) | Yes   | Dialog box configuration options.|
+| callback | AsyncCallback&lt;[promptAction.ShowDialogSuccessResponse](js-apis-promptAction.md#showdialogsuccessresponse)&gt; | Yes   | Callback used to return the result. On success, **err** is **undefined** and **data** contains the dialog box response. On failure, **err** provides error details.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -270,17 +270,17 @@ Creates and displays a dialog box. This API uses a promise to return the result.
 
 | Name    | Type                                      | Mandatory  | Description    |
 | ------- | ---------------------------------------- | ---- | ------ |
-| options | [promptAction.ShowDialogOptions](js-apis-promptAction.md#showdialogoptions) | Yes   | Dialog box options.|
+| options | [promptAction.ShowDialogOptions](js-apis-promptAction.md#showdialogoptions) | Yes   | Dialog box configuration options.|
 
 **Return value**
 
 | Type                                      | Description      |
 | ---------------------------------------- | -------- |
-| Promise&lt;[promptAction.ShowDialogSuccessResponse](js-apis-promptAction.md#showdialogsuccessresponse)&gt; | Promise used to return the dialog box response result.|
+| Promise&lt;[promptAction.ShowDialogSuccessResponse](js-apis-promptAction.md#showdialogsuccessresponse)&gt; | Promise that returns the dialog box response.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -333,7 +333,7 @@ struct Index {
 
 showActionMenu(options: promptAction.ActionMenuOptions, callback: AsyncCallback&lt;[promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse)&gt;): void
 
-Shows an action menu in the given settings. This API uses an asynchronous callback to return the result.
+Creates and displays an action menu. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -344,11 +344,11 @@ Shows an action menu in the given settings. This API uses an asynchronous callba
 | Name  | Type                                                        | Mandatory| Description              |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
 | options  | [promptAction.ActionMenuOptions](js-apis-promptAction.md#actionmenuoptions) | Yes  | Action menu options.    |
-| callback | AsyncCallback&lt;[promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse)&gt; | Yes  | Callback used to return the action menu response result.|
+| callback | AsyncCallback&lt;[promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse)&gt; | Yes  | Callback used to return the result. On success, **err** is **undefined** and **data** contains the action menu response. On failure, **err** provides error details.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                          |
 | -------- | ---------------------------------- |
@@ -405,7 +405,7 @@ struct Index {
 
 showActionMenu(options: promptAction.ActionMenuOptions): Promise&lt;promptAction.ActionMenuSuccessResponse&gt;
 
-Shows an action menu. This API uses a promise to return the result.
+Creates and displays an action menu. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -421,11 +421,11 @@ Shows an action menu. This API uses a promise to return the result.
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise&lt;[promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse)&gt; | Promise used to return the action menu response result.|
+| Promise&lt;[promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse)&gt; | Promise that returns the action menu response.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -497,7 +497,7 @@ Opens a custom dialog box corresponding to **dialogContent**. This API uses a pr
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -632,7 +632,7 @@ Note that using **[isModal](js-apis-promptAction.md#basedialogoptions11) = true*
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -642,7 +642,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-This example demonstrates how to create a custom dialog box with an external controller binding using **openCustomDialogWithController**.
+This example demonstrates how to create a custom dialog box with an external controller binding using **openCustomDialog**.
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -730,7 +730,7 @@ Closes a custom dialog box corresponding to **dialogContent**. This API uses a p
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -828,7 +828,7 @@ Updates a custom dialog box corresponding to **dialogContent**. This API uses a 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -922,11 +922,11 @@ Creates and displays a custom dialog box. This API uses a promise to return the 
 
 | Type               | Description                                   |
 | ------------------- | --------------------------------------- |
-| Promise&lt;number&gt; | ID of the custom dialog box, which can be used with **closeCustomDialog**.|
+| Promise&lt;number&gt; | Promise that returns the dialog box ID for use with **closeCustomDialog**.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -959,11 +959,11 @@ The dialog box ID can be included in the dialog box content for related operatio
 
 | Type               | Description                                   |
 | ------------------- | --------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the custom dialog box ID.|
+| Promise&lt;number&gt; | Promise Promise used to return the custom dialog box ID.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1066,7 +1066,7 @@ Closes the specified custom dialog box.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1191,7 +1191,7 @@ struct Index {
   build() {
     Row() {
       Column({ space: 10 }) {
-        Button('Open Dialog Box')
+        Button('Open Custom Dialog Box')
           .fontSize(20)
           .onClick(() => {
             this.promptAction.openCustomDialog(this.contentNode, this.baseDialogOptions)
@@ -1269,7 +1269,7 @@ struct Index {
   build() {
     Row() {
       Column({ space: 10 }) {
-        Button('Open Dialog Box')
+        Button('Open Custom Dialog Box')
           .fontSize(20)
           .onClick(() => {
             this.promptAction.openCustomDialog(this.contentNode, this.baseDialogOptions)
@@ -1297,11 +1297,11 @@ Creates and displays a popup with the specified content. This API uses a promise
 
 > **NOTE**
 >
-> 1. If an invalid **target** is provided, the popup will not be displayed.
+> - If an invalid **target** is provided, the popup will not be displayed.
 >
-> 2. You must maintain the provided **content**, on which [updatePopup](#updatepopup18) and [closePopup](#closepopup18) rely to identify the target popup.
+> - You must maintain the provided **content**, on which [updatePopup](#updatepopup18) and [closePopup](#closepopup18) rely to identify the target popup.
 >
-> 3. If your **wrapBuilder** includes other components (such as [Popup](arkui-ts/ohos-arkui-advanced-Popup.md) or [Chip](arkui-ts/ohos-arkui-advanced-Chip.md)), the [ComponentContent](./js-apis-arkui-ComponentContent.md#componentcontent-1) constructor must include four parameters, and the **options** parameter must be **{ nestingBuilderSupported: true }**.
+> - If your **wrapBuilder** includes other components (such as [Popup](arkui-ts/ohos-arkui-advanced-Popup.md) or [Chip](arkui-ts/ohos-arkui-advanced-Chip.md)), the [ComponentContent](./js-apis-arkui-ComponentContent.md#componentcontent-1) constructor must include four parameters, and the **options** parameter must be **{ nestingBuilderSupported: true }**.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1323,7 +1323,7 @@ Creates and displays a popup with the specified content. This API uses a promise
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -1428,7 +1428,6 @@ Updates the style of the popup corresponding to the provided **content**. This A
 > **NOTE**
 >
 > Updating the following properties is not supported: **showInSubWindow**, **focusable**, **onStateChange**, **onWillDismiss**, and **transition**.
->
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1450,7 +1449,7 @@ Updates the style of the popup corresponding to the provided **content**. This A
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -1486,7 +1485,7 @@ Closes the popup corresponding to the provided **content**. This API uses a prom
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -1506,13 +1505,13 @@ Opens a menu with the specified content. This API uses a promise to return the r
 
 > **NOTE**
 >
-> 1. If an invalid **target** is provided, the menu will not be displayed.
+> - If an invalid **target** is provided, the menu will not be displayed.
 >
-> 2. You must maintain the provided **content**, on which [updateMenu](#updatemenu18) and [closeMenu](#closemenu18) rely to identify the target menu.
+> - You must maintain the provided **content**, on which [updateMenu](#updatemenu18) and [closeMenu](#closemenu18) rely to identify the target menu.
 >
-> 3. If your **wrapBuilder** includes other components (such as [Popup](arkui-ts/ohos-arkui-advanced-Popup.md) or [Chip](arkui-ts/ohos-arkui-advanced-Chip.md)), the [ComponentContent](./js-apis-arkui-ComponentContent.md#componentcontent-1) constructor must include four parameters, and the **options** parameter must be **{ nestingBuilderSupported: true }**.
+> - If your **wrapBuilder** includes other components (such as [Popup](arkui-ts/ohos-arkui-advanced-Popup.md) or [Chip](arkui-ts/ohos-arkui-advanced-Chip.md)), the [ComponentContent](./js-apis-arkui-ComponentContent.md#componentcontent-1) constructor must include four parameters, and the **options** parameter must be **{ nestingBuilderSupported: true }**.
 >
-> 4. Nested subwindow dialog boxes are not supported. For example, when [openMenu](#openmenu18) has **showInSubWindow** set to **true**, another dialog box with **showInSubWindow=true** cannot be displayed.
+> - Nested subwindow dialog boxes are not supported. For example, when [openMenu](#openmenu18) has **showInSubWindow** set to **true**, another dialog box with **showInSubWindow=true** cannot be displayed.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1534,7 +1533,7 @@ Opens a menu with the specified content. This API uses a promise to return the r
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -1605,10 +1604,9 @@ Updates the style of the menu corresponding to the provided **content**. This AP
 
 > **NOTE**
 >
-> Updating for the following is not supported: **showInSubWindow**, **preview**, **previewAnimationOptions**, **transition**, **onAppear**, **aboutToAppear**, **onDisappear**, **aboutToDisappear**, **onWillAppear**, **onDidAppear**, **onWillDisappear**, and **onDidDisappear**.
+> - Updating for the following is not supported: **showInSubWindow**, **preview**, **previewAnimationOptions**, **transition**, **onAppear**, **aboutToAppear**, **onDisappear**, **aboutToDisappear**, **onWillAppear**, **onDidAppear**, **onWillDisappear**, and **onDidDisappear**.
 >
-> The mask style can be updated by configuring [MenuMaskType](./arkui-ts/ts-universal-attributes-menu.md). However, this API does not support mask presence toggling (that is, switching the mask from non-existent to existent or vice versa) by setting a boolean value.
->
+> - The mask style can be updated by configuring [MenuMaskType](./arkui-ts/ts-universal-attributes-menu.md#menumasktype20). However, this API does not support mask presence toggling (that is, switching the mask from non-existent to existent or vice versa) by setting a boolean value.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1619,8 +1617,8 @@ Updates the style of the menu corresponding to the provided **content**. This AP
 | Name    | Type                                      | Mandatory  | Description     |
 | ------- | ---------------------------------------- | ---- | ------- |
 | content | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | Yes| Content displayed in the menu.|
-| options | [MenuOptions](./arkui-ts/ts-universal-attributes-menu.md#menuoptions10) | Yes| Style of the menu.<br>**NOTE**<br>1. Updating for the following is not supported: **showInSubWindow**, **preview**, **previewAnimationOptions**, **transition**, **onAppear**, **aboutToAppear**, **onDisappear**, **aboutToDisappear**, **onWillAppear**, **onDidAppear**, **onWillDisappear**, and **onDidDisappear**.<br>2. The mask style can be updated by configuring [MenuMaskType](./arkui-ts/ts-universal-attributes-menu.md). However, this API does not support mask presence toggling (that is, switching the mask from non-existent to existent or vice versa) by setting a boolean value.|
-| partialUpdate | boolean | No| Whether to update the menu in incremental mode.<br>Default value: **false**<br>**NOTE**<br>1. **true**: incremental update, where the specified properties in **options** are updated, and other properties stay at their current value.<br>2. **false**: full update, where all properties except those specified in **options** are restored to default values.|
+| options | [MenuOptions](./arkui-ts/ts-universal-attributes-menu.md#menuoptions10) | Yes| Style of the menu.<br>**NOTE**<br>1. Updating for the following is not supported: **showInSubWindow**, **preview**, **previewAnimationOptions**, **transition**, **onAppear**, **aboutToAppear**, **onDisappear**, **aboutToDisappear**, **onWillAppear**, **onDidAppear**, **onWillDisappear**, and **onDidDisappear**.<br>2. The mask style can be updated by configuring [MenuMaskType](./arkui-ts/ts-universal-attributes-menu.md#menumasktype20). However, this API does not support mask presence toggling (that is, switching the mask from non-existent to existent or vice versa) by setting a boolean value.|
+| partialUpdate | boolean | No| Whether to update the menu in incremental mode. Default value: **false**.<br>**NOTE**<br>1. **true**: incremental update, where the specified properties in **options** are updated, and other properties stay at their current value.<br>2. **false**: full update, where all properties except those specified in **options** are restored to default values.|
 
 **Return value**
 
@@ -1630,7 +1628,7 @@ Updates the style of the menu corresponding to the provided **content**. This AP
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -1720,7 +1718,7 @@ Closes the menu corresponding to the provided content. This API uses a promise t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -1787,7 +1785,7 @@ struct Index {
 
 showActionMenu(options: promptAction.ActionMenuOptions, callback: [promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse)): void
 
-Shows an action menu in the given settings. This API uses an asynchronous callback to return the result.
+Creates and displays an action menu. This API uses an asynchronous callback to return the result.
 
 This API is deprecated since API version 11. You are advised to use [showActionMenu](#showactionmenu11) instead.
 
@@ -1798,11 +1796,11 @@ This API is deprecated since API version 11. You are advised to use [showActionM
 | Name  | Type                                                        | Mandatory| Description              |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
 | options  | [promptAction.ActionMenuOptions](js-apis-promptAction.md#actionmenuoptions) | Yes  | Action menu options.    |
-| callback | [promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse) | Yes  | Callback used to return the action menu response result.|
+| callback | [promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse) | Yes  | Callback used to return the menu response.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |

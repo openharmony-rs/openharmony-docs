@@ -7,6 +7,10 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
+```
+typedef struct {...} NativeChildProcess_Options
+```
+
 ## Overview
 
 The struct describes the options used for starting a child process.

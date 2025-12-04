@@ -1,4 +1,4 @@
-# Creating Basic Data Types Using JSVM-API
+# Creating and Obtaining Values Using JSVM-API
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou; @string_sz-->

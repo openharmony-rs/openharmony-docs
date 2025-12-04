@@ -31,8 +31,8 @@ The AppServiceExtensionAbility takes effect only on 2-in-1 devices.
 
 You can launch an AppServiceExtensionAbility from a [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) by either [starting](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20) or [connecting to](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20) it.
 
-- **Starting**: To call [startAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20), the client must be the application to which the AppServiceExtensionAbility belongs, or an application listed in the AppServiceExtensionAbility's allow list (by configuring the **appIdentifierAllowList** property under the [extensionAbilities](../quick-start/module-configuration-file.md#extensionabilities) tag).
-- **Connecting**: To call [connectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20), the client must be the application to which the AppServiceExtensionAbility belongs, or an application listed in the AppServiceExtensionAbility's allow list (by configuring the **appIdentifierAllowList** property under the [extensionAbilities](../quick-start/module-configuration-file.md#extensionabilities) tag), if the [AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) instance is not started. If the instance is already started, there are no such restrictions.
+- **Starting**: To call [startAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20), the client must be the application to which the AppServiceExtensionAbility belongs, or an application listed in the AppServiceExtensionAbility's trustlist (by configuring the **appIdentifierAllowList** property under the [extensionAbilities](../quick-start/module-configuration-file.md#extensionabilities) tag).
+- **Connecting**: To call [connectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20), the client must be the application to which the AppServiceExtensionAbility belongs, or an application listed in the AppServiceExtensionAbility's trustlist (by configuring the **appIdentifierAllowList** property under the [extensionAbilities](../quick-start/module-configuration-file.md#extensionabilities) tag), if the [AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) instance is not started. If the instance is already started, there are no such restrictions.
 
 The table below illustrates several scenarios for starting and connecting.
 
@@ -44,11 +44,11 @@ The table below illustrates several scenarios for starting and connecting.
 | Client Action| Server Status| Is Client Trusted| Result Description|
 | --------- | --------- | -------------------------------------------- | ---- |
 | startAppServiceExtensionAbility | Not started    | Yes                                      | Success. The server is started via **start**, and its status changes to **Started**.|
-| startAppServiceExtensionAbility | Not started    | No                                      | Failure. The client is not in the allow list and cannot start the service.|
+| startAppServiceExtensionAbility | Not started    | No                                      | Failure. The client is not in the trustlist and cannot start the service.|
 | startAppServiceExtensionAbility | Started    | Yes                                      | Success. The server is already started; the **start** operation returns success directly.|
-| startAppServiceExtensionAbility | Started    | No                                      | Failure. The client is not in the allow list and cannot start the service.|
+| startAppServiceExtensionAbility | Started    | No                                      | Failure. The client is not in the trustlist and cannot start the service.|
 | connectAppServiceExtensionAbility | Not started    | Yes                                      | Success. The server is started via **connect**, and a connection is established.|
-| connectAppServiceExtensionAbility | Not started    | No                                      | Failure. The client is not in the allow list and cannot connect to the server.|
+| connectAppServiceExtensionAbility | Not started    | No                                      | Failure. The client is not in the trustlist and cannot connect to the server.|
 | connectAppServiceExtensionAbility | Started    | Yes                                      | Success. The server is already started; a connection is established directly.|
 | connectAppServiceExtensionAbility | Started    | No                                      | Success. The server is already started; a connection is established directly.|
 
@@ -57,35 +57,38 @@ The table below illustrates several scenarios for starting and connecting.
 
 To manually create an AppServiceExtensionAbility in the DevEco Studio project, perform the following steps:
 
-1. In the **ets** directory of a module in the project, right-click and choose **New > Directory** to create a directory named **MyAppServiceExtAbility**.
+1. In the **ets** directory of a module in the project, right-click and choose **New > Directory** to create a directory named **myappserviceextability**.
 
-2. Right-click the **MyAppServiceExtAbility** directory, and choose **New > ArkTS File** to create a file named **MyAppServiceExtAbility.ets**.
+2. Right-click the **myappserviceextability** directory, and choose **New > ArkTS File** to create a file named **MyAppServiceExtAbility.ets**.
 ![](figures/app-service-extension-ability-create-new-file.png)
 
     The directory structure is as follows:
 
     ```
     ├── ets
-    │ ├── MyAppServiceExtAbility
+    │ ├── myappserviceextability
     │ │   ├── MyAppServiceExtAbility.ets
     └
     ```
 
 3. In the **MyAppServiceExtAbility.ets** file, import the [AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) module. Customize a class that inherits from AppServiceExtensionAbility and implement the lifecycle callbacks.
 
-    ```ts
+    <!-- @[ability_app_service_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextability/MyAppServiceExtAbility.ets) -->
+    
+    ``` TypeScript
     import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
     import { rpc } from '@kit.IPCKit';
+    // ···
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
+    
     const TAG: string = '[MyAppServiceExtAbility]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     class StubTest extends rpc.RemoteObject {
       constructor(des: string) {
         super(des);
       }
-
+    
       onRemoteMessageRequest(code: number,
         data: rpc.MessageSequence,
         reply: rpc.MessageSequence,
@@ -94,26 +97,27 @@ To manually create an AppServiceExtensionAbility in the DevEco Studio project, p
         return true;
       }
     }
-
+    
     export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
       onCreate(want: Want): void {
         let appServiceExtensionContext = this.context;
         hilog.info(DOMAIN_NUMBER, TAG, `onCreate, want: ${want.abilityName}`);
+        // ···
       }
-
+    
       onRequest(want: Want, startId: number): void {
         hilog.info(DOMAIN_NUMBER, TAG, `onRequest, want: ${want.abilityName}`);
       }
-
+    
       onConnect(want: Want): rpc.RemoteObject {
         hilog.info(DOMAIN_NUMBER, TAG, `onConnect, want: ${want.abilityName}`);
-        return new StubTest("test");
+        return new StubTest('test');
       }
-
+    
       onDisconnect(want: Want): void {
         hilog.info(DOMAIN_NUMBER, TAG, `onDisconnect, want: ${want.abilityName}`);
       }
-
+    
       onDestroy(): void {
         hilog.info(DOMAIN_NUMBER, TAG, 'onDestroy');
       }
@@ -122,17 +126,20 @@ To manually create an AppServiceExtensionAbility in the DevEco Studio project, p
 
 4. Register the AppServiceExtensionAbility in the [module.json5 file](../quick-start/module-configuration-file.md) of the module in the project. Set **type** to **"appService"** and **srcEntry** to the code path of the AppServiceExtensionAbility component.
 
-    ```json
+    <!-- @[my_app_service_module_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/module.json5) -->
+
+    ``` JSON5
     {
       "module": {
-        // ...
+        // ···
         "extensionAbilities": [
+        // ···
           {
             "name": "MyAppServiceExtAbility",
             "description": "appService",
             "type": "appService",
             "exported": true,
-            "srcEntry": "./ets/MyAppServiceExtAbility/MyAppServiceExtAbility.ets",
+            "srcEntry": "./ets/myappserviceextability/MyAppServiceExtAbility.ets",
             "appIdentifierAllowList": [
               // Fill in the list of clients that are allowed to start this background service in appIdentifiers.
             ],
@@ -152,30 +159,33 @@ An application uses [startAppServiceExtensionAbility()](../reference/apis-abilit
 
 - Start a new [AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) in an application. For details about how to obtain the context, see [Obtaining the Context of UIAbility](uiability-usage.md#obtaining-the-context-of-uiability).
 
-  ```ts
+  <!-- @[app_ext_service_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/StartAppServiceExt.ets) -->
+
+  ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  const TAG: string = '[Page_AppServiceExtensionAbility]';
+  const TAG: string = '[StartAppServiceExt]';
   const DOMAIN_NUMBER: number = 0xFF00;
 
   @Entry
   @Component
-  struct Page_AppServiceExtensionAbility {
+  struct StartAppServiceExt {
     build() {
       Column() {
-        //...
+      // ···
         List({ initialIndex: 0 }) {
           ListItem() {
             Row() {
-              //...
+              // ···
             }
+          // ···
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
               let want: Want = {
                 deviceId: '',
-                bundleName: 'com.samples.stagemodelabilitydevelop',
+                bundleName: 'com.samples.appserviceextensionability',
                 abilityName: 'MyAppServiceExtAbility'
               };
               context.startAppServiceExtensionAbility(want).then(() => {
@@ -191,43 +201,46 @@ An application uses [startAppServiceExtensionAbility()](../reference/apis-abilit
             })
           }
 
-          //...
+          // ···
         }
-
-        //...
+      // ···
       }
 
-      //...
+      // ···
     }
   }
   ```
 
+
 - Stop the [AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) in the application.
 
-  ```ts
+  <!-- @[app_ext_service_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/StopAppServiceExt.ets) -->
+
+  ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  const TAG: string = '[Page_AppServiceExtensionAbility]';
+  const TAG: string = '[StopAppServiceExt]';
   const DOMAIN_NUMBER: number = 0xFF00;
 
   @Entry
   @Component
-  struct Page_AppServiceExtensionAbility {
+  struct StopAppServiceExt {
     build() {
       Column() {
-        //...
+      // ···
         List({ initialIndex: 0 }) {
           ListItem() {
             Row() {
-              //...
+              // ···
             }
+          // ···
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
               let want: Want = {
                 deviceId: '',
-                bundleName: 'com.samples.stagemodelabilitydevelop',
+                bundleName: 'com.samples.appserviceextensionability',
                 abilityName: 'MyAppServiceExtAbility'
               };
               context.stopAppServiceExtensionAbility(want).then(() => {
@@ -242,37 +255,45 @@ An application uses [startAppServiceExtensionAbility()](../reference/apis-abilit
             })
           }
 
-          //...
+          // ···
         }
 
-        //...
+      // ···
       }
 
-      //...
+      // ···
     }
   }
   ```
 
+
 - Enable the [AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) to stop itself.
 
-    ```ts
-    import { AppServiceExtensionAbility } from '@kit.AbilityKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-
-    const TAG: string = '[MyAppServiceExtAbility]';
-
-    export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
-      onCreate(want: Want) {
+  <!-- @[ability_app_service_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextability/MyAppServiceExtAbility.ets) -->
+  
+  ``` TypeScript
+  import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
+  // ···
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG: string = '[MyAppServiceExtAbility]';
+  // ···
+  
+  export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
+    onCreate(want: Want): void {
+      // ···
       // Execute the service logic.
-        this.context.terminateSelf().then(() => {
-          hilog.info(0x0000, TAG, '----------- terminateSelf succeed -----------');
-        }).catch((error: BusinessError) => {
-          hilog.error(0x0000, TAG, `terminateSelf failed, error.code: ${error.code}, error.message: $   {error.message}`);
-        });
-      }
+      this.context.terminateSelf().then(() => {
+        hilog.info(0x0000, TAG, '----------- terminateSelf succeed -----------');
+      }).catch((error: BusinessError) => {
+        hilog.error(0x0000, TAG, `terminateSelf failed, error.code: ${error.code}, error.message: $   {error.message}`);
+      });
     }
-    ```
+  
+  // ···
+  };
+  ```
 
 ## Connecting to a Background Service
 
@@ -283,19 +304,21 @@ The client can connect to a background service (specified in the Want object) th
 The AppServiceExtensionAbility returns an [IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#iremoteobject) object in [onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect). This object is then passed to the client's [onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect). Through this IRemoteObject, you can define communication interfaces for RPC interaction between the client and server. Multiple clients can simultaneously connect to the same background service. After a client finishes the interaction, it must call [disconnectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectappserviceextensionability20) to disconnect from the service. If all clients connected to a background service are disconnected, the system destroys the service.
 
 - Call [connectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20) to establish a connection to a background service. For details about how to obtain the context, see [Obtaining the Context of UIAbility](uiability-usage.md#obtaining-the-context-of-uiability).
-  
-  ```ts
+
+  <!-- @[app_ext_service_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/ConnectAppServiceExt.ets) -->
+
+  ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  const TAG: string = '[Page_AppServiceExtensionAbility]';
+  const TAG: string = '[ConnectAppServiceExt]';
   const DOMAIN_NUMBER: number = 0xFF00;
 
   let connectionId: number;
   let want: Want = {
     deviceId: '',
-    bundleName: 'com.samples.stagemodelabilitydevelop',
+    bundleName: 'com.samples.appserviceextensionability',
     abilityName: 'MyAppServiceExtAbility'
   };
 
@@ -318,15 +341,16 @@ The AppServiceExtensionAbility returns an [IRemoteObject](../reference/apis-ipc-
 
   @Entry
   @Component
-  struct Page_AppServiceExtensionAbility {
+  struct ConnectAppServiceExt {
     build() {
       Column() {
-        //...
+      // ···
         List({ initialIndex: 0 }) {
           ListItem() {
             Row() {
-              //...
+              // ···
             }
+          // ···
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
               // Save the connection ID, which will be used when the background service is disconnected.
@@ -339,40 +363,44 @@ The AppServiceExtensionAbility returns an [IRemoteObject](../reference/apis-ipc-
             })
           }
 
-          //...
+          // ···
         }
 
-        //...
+      // ···
       }
 
-      //...
+      // ···
     }
   }
   ```
 
+
 - Use [disconnectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectappserviceextensionability20) to disconnect from the background service.
-  
-  ```ts
+
+  <!-- @[app_ext_service_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/DisConnectAppServiceExt.ets) -->
+
+  ``` TypeScript
   import { common } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  const TAG: string = '[Page_AppServiceExtensionAbility]';
+  const TAG: string = '[DisConnectAppServiceExt]';
   const DOMAIN_NUMBER: number = 0xFF00;
 
   let connectionId: number;
 
   @Entry
   @Component
-  struct Page_AppServiceExtensionAbility {
+  struct DisConnectAppServiceExt {
     build() {
       Column() {
-        //...
+      // ···
         List({ initialIndex: 0 }) {
           ListItem() {
             Row() {
-              //...
+              // ···
             }
+          // ···
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
               // connectionId is returned when connectServiceExtensionAbility is called and needs to be manually maintained.
@@ -388,16 +416,17 @@ The AppServiceExtensionAbility returns an [IRemoteObject](../reference/apis-ipc-
             })
           }
 
-          //...
+          // ···
         }
 
-        //...
+      // ···
       }
 
-      //...
+      // ···
     }
   }
   ```
+
 
 ### Communication Between the Client and Server
 
@@ -405,19 +434,21 @@ After obtaining the [rpc.IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md
 
 **Client**: Call [sendMessageRequest](../reference/apis-ipc-kit/js-apis-rpc.md#sendmessagerequest9) to send messages to the server.
 
-```ts
-import { common } from '@kit.AbilityKit';
+<!-- @[app_ext_service_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/ClientServerExt.ets) -->
+
+``` TypeScript
+import { common, Want } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const TAG: string = '[Page_AppServiceExtensionAbility]';
+const TAG: string = '[ClientServerExt]';
 const DOMAIN_NUMBER: number = 0xFF00;
 const REQUEST_CODE = 1;
 let connectionId: number;
 let want: Want = {
   deviceId: '',
-  bundleName: 'com.samples.stagemodelabilitydevelop',
+  bundleName: 'com.samples.appserviceextensionability',
   abilityName: 'MyAppServiceExtAbility'
 };
 let options: common.ConnectOptions = {
@@ -456,19 +487,19 @@ let options: common.ConnectOptions = {
 };
 
 // Call the code related to connectAppServiceExtensionAbility.
-//...
 
 @Entry
 @Component
-struct Page_AppServiceExtensionAbility {
+struct ClientServerExt {
   build() {
     Column() {
-      //...
+    // ···
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            //...
+            // ···
           }
+        // ···
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
             connectionId = context.connectAppServiceExtensionAbility(want, options);
@@ -476,15 +507,18 @@ struct Page_AppServiceExtensionAbility {
           })
         }
       }
-      //...
+    // ···
     }
   }
 }
 ```
 
+
 **Server**: Call [onRemoteMessageRequest](../reference/apis-ipc-kit/js-apis-rpc.md#onremotemessagerequest9) to receive the messages sent by the client.
 
-```ts
+<!-- @[ability_app_service_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilitytwo/MyAppServiceExtAbility.ets) -->
+
+``` TypeScript
 import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -535,14 +569,20 @@ If your AppServiceExtensionAbility provides sensitive operations, verify the cli
 
 Call [getCallingUid()](../reference/apis-ipc-kit/js-apis-rpc.md#getcallinguid) to obtain the UID of the client, and then call [getBundleNameByUid()](../reference/apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagergetbundlenamebyuid14) to obtain the corresponding bundle name. In this way, the client identity is verified. Note that [getBundleNameByUid()](../reference/apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagergetbundlenamebyuid14) is asynchronous, and therefore the server cannot return the verification result to the client. This verification mode applies when the client sends an asynchronous task request to the server. The sample code is as follows:
 
-```ts
-import { AppServiceExtensionAbility } from '@kit.AbilityKit';
+<!-- @[ability_app_service_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilitythree/MyAppServiceExtAbility.ets) -->
+
+``` TypeScript
+import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
 import { bundleManager } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 import { osAccount, BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = '[MyAppServiceExtAbility]';
+const DOMAIN_NUMBER: number = 0xFF00;
 
 class Stub extends rpc.RemoteObject {
-  private validAppIdentifier: string = "your_valid_app_identifier_here";
+  private validAppIdentifier: string = 'your_valid_app_identifier_here';
 
   onRemoteMessageRequest(
     code: number,
@@ -551,12 +591,12 @@ class Stub extends rpc.RemoteObject {
     options: rpc.MessageOption): boolean | Promise<boolean> {
     this.verifyClientIdentity().then((isValid: boolean) => {
       if (isValid) {
-        console.info('Client authentication PASSED');
+        hilog.info(DOMAIN_NUMBER, TAG, 'Client authentication PASSED');
       } else {
-        console.error('Client authentication FAILED');
+        hilog.error(DOMAIN_NUMBER, TAG, 'Client authentication FAILED');
       }
     }).catch((err: BusinessError) => {
-      console.error(`Authentication error: ${err.code}, ${err.message}`);
+      hilog.error(DOMAIN_NUMBER, TAG, `Authentication error: ${err.code}, ${err.message}`);
     });
     return true;
   }
@@ -564,28 +604,28 @@ class Stub extends rpc.RemoteObject {
   private async verifyClientIdentity(): Promise<boolean> {
     try {
       const callerUid: number = rpc.IPCSkeleton.getCallingUid();
-      console.info(`Caller UID: ${callerUid}`);
+      hilog.info(DOMAIN_NUMBER, TAG, `Caller UID: ${callerUid}`);
 
       const userId: number = await this.getUserIdByUid(callerUid);
-      console.info(`User ID: ${userId}`);
+      hilog.info(DOMAIN_NUMBER, TAG, `User ID: ${userId}`);
 
       const bundleName: string = await bundleManager.getBundleNameByUid(callerUid);
-      console.info(`Bundle Name: ${bundleName}`);
+      hilog.info(DOMAIN_NUMBER, TAG, `Bundle Name: ${bundleName}`);
 
       const bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
       const bundleInfo: bundleManager.BundleInfo = await bundleManager.getBundleInfo(bundleName, bundleFlags, userId);
 
       if (bundleInfo.signatureInfo && bundleInfo.signatureInfo.appIdentifier) {
         const appIdentifier: string = bundleInfo.signatureInfo.appIdentifier;
-        console.info(`App Identifier: ${appIdentifier}`);
+        hilog.info(DOMAIN_NUMBER, TAG, `App Identifier: ${appIdentifier}`);
         return appIdentifier === this.validAppIdentifier;
       }
       return false;
     } catch (err) {
       if (err instanceof Error) {
-        console.error(`Verification failed: ${err.message}`);
+        hilog.error(DOMAIN_NUMBER, TAG, `Verification failed: ${err.message}`);
       } else {
-        console.error(`Verification failed: ${String(err)}`);
+        hilog.error(DOMAIN_NUMBER, TAG, `Verification failed: ${String(err)}`);
       }
       return false;
     }
@@ -598,11 +638,11 @@ class Stub extends rpc.RemoteObject {
       return userId;
     } catch (err) {
       if (err instanceof Error) {
-        console.error(`Get userId failed: ${err.message}`);
+        hilog.error(DOMAIN_NUMBER, TAG, `Get userId failed: ${err.message}`);
         throw err;
       } else {
         const error = new Error(String(err));
-        console.error(`Get userId failed: ${error.message}`);
+        hilog.error(DOMAIN_NUMBER, TAG, `Get userId failed: ${error.message}`);
         throw error;
       }
     }
@@ -622,8 +662,10 @@ export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
 
 Call [getCallingTokenId()](../reference/apis-ipc-kit/js-apis-rpc.md#getcallingtokenid8) to obtain the token ID of the client, and then call [verifyAccessTokenSync()](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#verifyaccesstokensync9) to check whether the client has the required permission. Currently, the system does not support permission customization. Therefore, only [system-defined permissions](../security/AccessToken/app-permissions.md) can be verified. The sample code is as follows:
 
-```ts
-import { AppServiceExtensionAbility } from '@kit.AbilityKit';
+<!-- @[ability_app_service_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilityfour/MyAppServiceExtAbility.ets) -->
+
+``` TypeScript
+import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
 import { abilityAccessCtrl, bundleManager } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -650,7 +692,7 @@ class Stub extends rpc.RemoteObject {
         hilog.info(DOMAIN_NUMBER, TAG, 'The caller bundle is not in trustlist, reject');
         return;
       }
-    // The verification is successful, and service logic is executed normally.
+      // The verification is successful, and service logic is executed normally.
     }).catch((err: BusinessError) => {
       hilog.error(DOMAIN_NUMBER, TAG, 'getBundleNameByUid failed: ' + err.message);
     });
@@ -670,7 +712,7 @@ class Stub extends rpc.RemoteObject {
 
 export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
   onConnect(want: Want): rpc.RemoteObject {
-      return new Stub('test');
+    return new Stub('test');
   }
   // Other lifecycle states.
 }

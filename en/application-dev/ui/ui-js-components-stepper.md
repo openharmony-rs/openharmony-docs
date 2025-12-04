@@ -1,10 +1,10 @@
-# \<stepper> Development
+# stepper Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 When multiple steps are required to complete a task, you can use the **\<stepper>** component to navigate your users through the whole process. For details, see [stepper](../reference/apis-arkui/arkui-js/js-components-container-stepper.md).
 

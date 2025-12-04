@@ -4,20 +4,20 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 A custom dialog box is a dialog box you customize by using APIs of the **CustomDialogController** class. It can be used for user interactions, showing ads, award announcements, alerts, software update notifications, and more. For details, see [Custom Dialog Box](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md).
 
 > **NOTE**
 > 
 > In ArkUI, dialog boxes do not close automatically when you switch pages unless you manually call **close**. To enable a dialog box to be dismissed during page navigation, consider using the [navigation page displayed in dialog mode](arkts-navigation-navigation.md#page-display-mode) or [page-level dialog box](arkts-embedded-dialog.md).
 
-By default, the dialog box is modal and has a mask. You cannot interact with the controls under the mask (click and gesture transparent transmission are not supported). You can specify the modality of a dialog box by setting the isModal attribute in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions). For details, see [Types of Popup Windows](arkts-dialog-overview.md#types-of-popup-windows).
+By default, dialog boxes are modal and include a mask. Interactions with underlying components are blocked (click and gesture events are not transmitted). You can configure dialog box modality by setting the **isModal** property in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions). For details, see [Types of Popup Windows](arkts-dialog-overview.md#types-of-popup-windows).
 
-When isModal is set to true, the dialog box is a modal dialog box, and the mask area around the dialog box does not support transparent transmission. When isModal is set to false, the dialog box is a non-modal dialog box, and the mask area around the dialog box supports transparent transmission. Therefore, if you need to allow the interaction of the dialog box and the page outside the dialog box at the same time, you need to set the dialog box to non-modal.
+When **isModal** is **true**, the dialog box is modal, and the mask area does not transmit events. When **isModal** is **false**, the dialog box is non-modal, and the mask area allows event transmission. To enable simultaneous interaction with both the dialog box and the page outside the dialog box, set the dialog box to non-modal.
 
 ## Lifecycle
 
-From API version 19, the CustomDialog provides lifecycle functions to notify users of the lifecycle of the dialog box. The order in which these lifecycle events are triggered is as follows: **onWillAppear**, **onDidAppear**, **onWillDisappear**, **onDidDisappear**.
+Since API version 19, the custom dialog box provides lifecycle callbacks to notify users of dialog box state changes. The order in which these lifecycle events are triggered is as follows: **onWillAppear**, **onDidAppear**, **onWillDisappear**, **onDidDisappear**.
 
 | Name           |Type| Description                      |
 | ----------------- | ------ | ---------------------------- |
@@ -77,9 +77,9 @@ From API version 19, the CustomDialog provides lifecycle functions to notify use
    
    ![en-us_image_0000001562700493](figures/en-us_image_0000001562700493.png)
 
-## Implementing Interaction with the Custom Dialog Box
+## Implementing Dialog Box Interaction
 
-Custom dialog boxes can be used for data interactions to complete a series of operations.
+Custom dialog boxes support data interactions to complete various operations.
 
 1. Add buttons and data functions to the \@CustomDialog decorator.
    
@@ -149,7 +149,7 @@ Custom dialog boxes can be used for data interactions to complete a series of op
    
    ![en-us_image_0000001511421320](figures/en-us_image_0000001511421320.png)
    
-   3. Use the button in the dialog box to implement route redirection and obtain the parameters passed in from the redirection target page.
+   3. Use dialog box buttons to implement navigation and obtain parameters from the target page.
    
    ```ts
    // Index.ets
@@ -336,9 +336,9 @@ struct CustomDialogUser {
 
 ![openAnimator](figures/openAnimator.gif)
 
-## Defining the Custom Dialog Box Style
+## Customizing the Dialog Box Style
 
-You can define the width, height, background color, and shadow of the dialog to control its style.
+Control the dialog box appearance by defining width, height, background color, and shadow.
 
 ```ts
 @CustomDialog
@@ -504,11 +504,11 @@ struct CustomDialogUser {
 
 ![nested_dialog](figures/nested_dialog.gif)
 
-If you define dialog 2 within dialog 1 instead, because of the parent-child relationship that exists between custom dialog boxes in terms of state management, you will not be able to create any component in dialog 2 once dialog 1 is destroyed (closed).
+Note: Defining dialog 2 within dialog 1 is not recommended, as components cannot be created in dialog 2 after dialog 1 is destroyed (closed) due to state management dependencies.
 
-## Implementing Physical Return Interception of Dialog Boxes
+## Implementing Physical Back Button Interception
 
-If the onWillDismiss callback function in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) is registered, the dialog box will not be closed immediately when you perform interaction operations such as closing the dialog box by clicking the mask layer, sliding from left to right, pressing the Back button, or pressing the ESC key on the keyboard. In the callback function, you can obtain the operation type of blocking the dialog box closure through the reason attribute in [DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12) and determine whether to close the dialog box based on the reason.
+When the **onWillDismiss** callback in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) is registered, the dialog box will not be dismissed immediately after the user touches the mask or the Back button, presses the Esc key, or swipes left or right on the screen. The callback provides the dismissal reason via **reason** in [DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12), allowing conditional dismissal.
 
 ```ts
 @CustomDialog
@@ -566,11 +566,11 @@ struct InterceptCustomDialog {
     }),
     onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
       console.info('dialog onWillDismiss reason: ' + dismissDialogAction.reason);
-      // 1. Press the back button, swipe left or right, or press ESC.
-      // 2. Touch the overlay layer.
-      // 3. Touch the close button.
+      // 1. PRESS_BACK: touching the Back button, swiping left or right on the screen, or pressing the Esc key.
+      // 2. TOUCH_OUTSIDE: touching the mask.
+      // 3. CLOSE_BUTTON: touching the Close button.
       if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
-        // Close the dialog box by calling dismiss.
+        // Proactively close the dialog box after handling the service logic.
         // dismissDialogAction.dismiss();
       }
       if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
@@ -605,7 +605,7 @@ struct InterceptCustomDialog {
 
 ## Setting the Distance Between the Dialog Box and the Soft Keyboard
 
-To ensure the independence of the dialog box, the dialog box is kept away from the surrounding elements, such as the status bar, navigation bar, and keyboard. When the soft keyboard is displayed, the dialog box automatically avoids the soft keyboard and keeps a distance of 16 vp from the soft keyboard by default. From API version 15, you can use keyboardAvoidMode and keyboardAvoidDistance in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) to set the behavior of the dialog box when the soft keyboard is displayed, including whether to avoid the soft keyboard and the distance between the dialog box and the soft keyboard.
+To maintain dialog box independence, dialog boxes automatically avoid surrounding elements like status bars, navigation bars, and keyboards. When the soft keyboard appears, dialog boxes maintain a default 16 vp distance. Since API version 15, use **keyboardAvoidMode** and **keyboardAvoidDistance** in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) to configure keyboard avoidance behavior.
 Note that the value of **keyboardAvoidMode** should be set to **KeyboardAvoidMode.DEFAULT**.
 
 ```ts
@@ -641,13 +641,13 @@ struct Index {
     cornerRadius: 30,
     alignment:DialogAlignment.Bottom,
     keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // The dialog box automatically avoids the soft keyboard.
-    keyboardAvoidDistance: LengthMetrics.vp(0) // The distance between the soft keyboard and the pop-up box is 0 vp.
+    keyboardAvoidDistance: LengthMetrics.vp(0) // The distance between the soft keyboard and the dialog box is 0 vp.
   })
 
   build() {
     Row() {
       Row({ space: 20 }) {
-        Text('Open the pop-up box')
+        Text('Open dialog box')
           .fontSize(30)
           .onClick(() => {
             if (this.dialogController != null) {
@@ -664,12 +664,12 @@ struct Index {
 
 
 
-## Obtaining the Status of a Pop-up Box
+## Obtaining the Dialog Box Status
 
-In the service module, multiple pop-up boxes may appear on the page at the same time. To avoid opening the same pop-up box repeatedly, you are advised to check the status of the pop-up box through the controller before displaying the pop-up box. If the pop-up box is already displayed, do not open it again.
-The getState API is added since API version 20 to obtain the current status of a pop-up box. For details about the pop-up box status, see the description of the [CommonState](../reference/apis-arkui/js-apis-promptAction.md#commonstate20) enumeration.
+In service modules, multiple dialog boxes may appear simultaneously. To prevent duplicate openings, check the dialog box status via the controller before display. If a dialog box is already displayed, do not open it again.
+The **getState** API, available since API version 20, obtains the current dialog box status. For details about the dialog box status, see [CommonState](../reference/apis-arkui/js-apis-promptAction.md#commonstate20).
 
-The following example uses the [getDialogController](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getdialogcontroller18) and [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller) methods to obtain the current status of a pop-up box.
+The following example uses [getDialogController](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getdialogcontroller18) and [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller) to obtain the dialog box status.
 
 ```ts
 // xxx.ets
@@ -679,7 +679,7 @@ struct CustomDialogExample {
 
   build() {
     Column() {
-      Button('Click me to query the pop-up window status: using the controller of the custom component')
+      Button('Check Status: Custom Component Controller')
         .onClick(() => {
           if (this.getDialogController() != undefined) {
             console.info('state:' + this.getDialogController().getState())
@@ -687,7 +687,7 @@ struct CustomDialogExample {
             console.info('state: no exist')
           }
         }).margin(20)
-      Button('Click me to query the pop-up window status: using CustomDialogController')
+      Button('Check Status: CustomDialogController')
         .onClick(() => {
           console.info('state:' + this.controller?.getState())
         }).margin(20)

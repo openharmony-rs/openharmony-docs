@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_PhotoCaptureSetting {...} Camera_PhotoCaptureSetting
+```
+
 ## 概述
 
 要设置的拍照捕获选项。

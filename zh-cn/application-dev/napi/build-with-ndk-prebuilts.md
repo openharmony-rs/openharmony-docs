@@ -37,7 +37,7 @@ target_link_libraries(library PUBLIC libace_napi.z.so avcodec_ffmpeg)
 
 ```cmake
 include_directories(
-    ...
+    # ...
     ${CMAKE_CURRENT_SOURCE_DIR}/third_party/FFmpeg/include
 )
 ```

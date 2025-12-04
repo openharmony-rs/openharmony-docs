@@ -1602,6 +1602,17 @@ Sets a URI for an alarm tone. This API uses a promise to return the result.
 | ------------------- |----------------------|
 | Promise&lt;void&gt; | Promise that returns no value.|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Media Error Codes](../apis-media-kit/errorcode-media.md), and [Ringtone Error Codes](./errorcode-ringtone.md).
+
+| ID| Error Message             |
+| ------- | --------------------- |
+| 202 | Caller is not a system application. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400103 | I/O error. |
+| 20700001 | Tone type mismatch, e.g. tone of input uri is not an alarm tone. |
+
 **Example**
 
 ```ts
@@ -1641,6 +1652,16 @@ Obtains the URI of the current alarm tone. This API uses a promise to return the
 | Type                   | Description                   |
 |-----------------------|-----------------------|
 | Promise&lt;string&gt; | Promise used to return the URI of the current alarm tone.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](../apis-media-kit/errorcode-media.md).
+
+| ID| Error Message             |
+| ------- | --------------------- |
+| 202 | Caller is not a system application. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400103 | I/O error. |
 
 **Example**
 
@@ -2250,7 +2271,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 5400102 | Operation is not allowed, e.g. ringtone to add is not customized. |
+| 5400102 | Operation not allowed. For example, the input URI is not one for haptics. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -2342,7 +2363,7 @@ Obtains an array of attributes of ringtones. This API uses a promise to return t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ring Error Codes](./errorcode-ringtone.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ringtone Error Codes](./errorcode-ringtone.md).
 
 | ID| Error Message             |
 | ------- | --------------------- |
@@ -2392,7 +2413,7 @@ Removes a list of custom tones in batch. This API uses a promise to return the r
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ring Error Codes](./errorcode-ringtone.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ringtone Error Codes](./errorcode-ringtone.md).
 
 | ID| Error Message             |
 | ------- | --------------------- |
@@ -2419,7 +2440,7 @@ systemSoundManagerInstance.removeCustomizedToneList([ringPath]).then((value: sys
 
 ## RingtonePlayer<sup>10+</sup>
 
-type RingtonePlayer = _RingtonePlayer;
+type RingtonePlayer = _RingtonePlayer
 
 Defines a ringtone player.
 
@@ -2429,11 +2450,11 @@ Defines a ringtone player.
 
 | Type             |Description    |
 |-----------------|-------|
-| _RingtonePlayer | Ringtone player.|
+| [_RingtonePlayer](js-apis-inner-multimedia-ringtonePlayer-sys.md#ringtoneplayer) | Ringtone player.|
 
 ## SystemTonePlayer<sup>11+</sup>
 
-type SystemTonePlayer = _SystemTonePlayer;
+type SystemTonePlayer = _SystemTonePlayer
 
 Defines a system tone player.
 
@@ -2443,11 +2464,11 @@ Defines a system tone player.
 
 | Type             | Description       |
 |-----------------|-----------|
-| _SystemTonePlayer | System tone player.|
+| [_SystemTonePlayer](js-apis-inner-multimedia-systemTonePlayer-sys.md#systemtoneplayer) | System tone player.|
 
 ## RingtoneOptions<sup>10+</sup>
 
-type RingtoneOptions = _RingtoneOptions;
+type RingtoneOptions = _RingtoneOptions
 
 Defines the configuration of a ringtone player.
 
@@ -2457,11 +2478,11 @@ Defines the configuration of a ringtone player.
 
 | Type             | Description         |
 |-----------------|-------------|
-| _RingtoneOptions | Configuration of a ringtone player.|
+| [_RingtoneOptions](js-apis-inner-multimedia-ringtonePlayer-sys.md#ringtoneoptions) | Configuration of a ringtone player.|
 
 ## SystemToneOptions<sup>11+</sup>
 
-type SystemToneOptions = _SystemToneOptions;
+type SystemToneOptions = _SystemToneOptions
 
 Defines the configuration of a system tone player.
 
@@ -2471,4 +2492,4 @@ Defines the configuration of a system tone player.
 
 | Type             | Description           |
 |-----------------|---------------|
-| _SystemToneOptions | Configuration of a system tone player.|
+| [_SystemToneOptions](js-apis-inner-multimedia-systemTonePlayer-sys.md#systemtoneoptions) | Configuration of a system tone player.|

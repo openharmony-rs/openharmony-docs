@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AudioRenderer_Callbacks_Struct {...} OH_AudioRenderer_Callbacks
+```
+
 ## 概述
 
 声明输出音频流的回调函数指针。
@@ -46,7 +50,7 @@
 
 ### OH_AudioRenderer_OnWriteData()
 
-```
+```c
 int32_t (*OH_AudioRenderer_OnWriteData)(OH_AudioRenderer* renderer, void* userData, void* buffer, int32_t length)
 ```
 
@@ -71,7 +75,7 @@ int32_t (*OH_AudioRenderer_OnWriteData)(OH_AudioRenderer* renderer, void* userDa
 
 ### OH_AudioRenderer_OnStreamEvent()
 
-```
+```c
 int32_t (*OH_AudioRenderer_OnStreamEvent)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_Event event)
 ```
 
@@ -79,7 +83,7 @@ int32_t (*OH_AudioRenderer_OnStreamEvent)(OH_AudioRenderer* renderer, void* user
 
 该函数指针将指向用于处理音频播放流事件的回调函数。
 
-OH_AudioRenderer_OnStreamEvent无触发回调场景，为预留接口。从API 11开始，开发者如果需要监听设备变化，可直接使用[OH_AudioRenderer_OutputDeviceChangeCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_outputdevicechangecallback)替代。
+OH_AudioRenderer_OnStreamEvent无触发回调场景，为预留接口。从API version 11开始，开发者如果需要监听设备变化，可直接使用[OH_AudioRenderer_OutputDeviceChangeCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_outputdevicechangecallback)替代。
 
 **起始版本：** 10
 
@@ -97,7 +101,7 @@ OH_AudioRenderer_OnStreamEvent无触发回调场景，为预留接口。从API 1
 
 ### OH_AudioRenderer_OnInterruptEvent()
 
-```
+```c
 int32_t (*OH_AudioRenderer_OnInterruptEvent)(OH_AudioRenderer* renderer, void* userData, OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint)
 ```
 
@@ -122,7 +126,7 @@ int32_t (*OH_AudioRenderer_OnInterruptEvent)(OH_AudioRenderer* renderer, void* u
 
 ### OH_AudioRenderer_OnError()
 
-```
+```c
 int32_t (*OH_AudioRenderer_OnError)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_Result error)
 ```
 

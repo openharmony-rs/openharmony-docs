@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -16,7 +16,9 @@
 
 ## 接口定义
 
-```ts
+<!-- @[att_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/Common.ets) -->
+
+``` TypeScript
 export declare class AttributeUpdater<T, C = Initializer<T>> implements AttributeModifier<T> {
 
   applyNormalAttribute?(instance: T): void;
@@ -25,7 +27,7 @@ export declare class AttributeUpdater<T, C = Initializer<T>> implements Attribut
 
   get attribute(): T | undefined;
 
-  updateConstructorParams: C;
+  public updateConstructorParams: C;
 }
 ```
 
@@ -44,7 +46,9 @@ export declare class AttributeUpdater<T, C = Initializer<T>> implements Attribut
 
 组件初始化完成之后，开发者可以通过`AttributeUpdater`实例的`attribute`属性方法，获取到属性对象。通过属性对象直接修改属性，会立即触发组件属性的更新。
 
-```ts
+<!-- @[att_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/AttModifier.ets) -->
+
+``` TypeScript
 import { AttributeUpdater } from '@kit.ArkUI';
 
 class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
@@ -64,7 +68,7 @@ struct updaterDemo {
   build() {
     Row() {
       Column() {
-        Button("Button")
+        Button('Button')
           .attributeModifier(this.modifier)
           .onClick(() => {
             // 通过attribute，直接修改组件属性，并立即触发组件属性更新
@@ -84,7 +88,9 @@ struct updaterDemo {
 
 可以通过`AttributeUpdater`实例的`updateConstructorParams`方法，直接更新组件的构造参数。
 
-```ts
+<!-- @[att_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/AttUpdate.ets) -->
+
+``` TypeScript
 import { AttributeUpdater } from '@kit.ArkUI';
 
 class MyTextModifier extends AttributeUpdater<TextAttribute, TextInterface> {
@@ -95,12 +101,12 @@ class MyTextModifier extends AttributeUpdater<TextAttribute, TextInterface> {
 @Entry
 @Component
 struct updaterDemo {
-  modifier: MyTextModifier = new MyTextModifier()
+  modifier: MyTextModifier = new MyTextModifier();
 
   build() {
     Row() {
       Column() {
-        Text("Text")
+        Text('Text')
           .attributeModifier(this.modifier)
           .fontColor(Color.White)
           .fontSize(14)

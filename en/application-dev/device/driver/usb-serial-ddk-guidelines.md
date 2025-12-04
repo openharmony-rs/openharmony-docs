@@ -28,7 +28,7 @@ Before developing the SCSI Peripheral DDK, you must understand the following bas
 
 - **DDK**
 
-    DDK is a tool package provided by OpenHarmony for developing drivers for non-standard USB serial port devices based on the peripheral framework.
+    A toolkit provided by OpenHarmony to develop drivers for non-standard USB serial port devices based on the peripheral framework.
 
 - **Non-standard peripherals**
 

@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct {...} ffrt_rwlock_t
+```
+
 ## Overview
 
 The **ffrt_rwlock_t** struct describes an FFRT read-write lock.
@@ -21,6 +25,6 @@ The **ffrt_rwlock_t** struct describes an FFRT read-write lock.
 
 ### Member Variables
 
-| Name| Description|	
-| -- | -- |	
+| Name| Description|
+| -- | -- |
 | uint32_t storage[(ffrt_rwlock_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Storage size of a read-write lock.|

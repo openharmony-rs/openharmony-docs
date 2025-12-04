@@ -9,7 +9,7 @@
 
 ## 概述
 
-音频编解码枚举的声明。
+音频编解码声道布局枚举的声明。
 
 **引用文件：** <multimedia/player_framework/avcodec_audio_channel_layout.h>
 
@@ -36,7 +36,7 @@
 
 ### AudioChannelSet
 
-```
+```c
 enum AudioChannelSet : uint64_t
 ```
 
@@ -107,7 +107,7 @@ enum AudioChannelSet : uint64_t
 
 ### AudioChannelLayout
 
-```
+```c
 enum AudioChannelLayout : uint64_t
 ```
 

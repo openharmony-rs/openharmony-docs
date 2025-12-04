@@ -26,7 +26,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 本文以RK3568开发板为例，介绍如何实现配置。
 
-1. 修改[drivers_peripheral/battery/interfaces/hdi_service/profile](https://gitee.com/openharmony/drivers_peripheral/tree/master/battery/interfaces/hdi_service/profile)路径下的电池配置文件battery_config.json。
+1. 修改[drivers_peripheral/battery/interfaces/hdi_service/profile](https://gitcode.com/openharmony/drivers_peripheral/tree/master/battery/interfaces/hdi_service/profile)路径下的电池配置文件battery_config.json。
 
 ```text
 profile
@@ -79,7 +79,7 @@ profile
 
 - set：充电场景的设置属性，path为其默认存在的属性，表示充电场景对应的设置内核节点路径。
 
-2. 修改[interface_sdk-js/api](https://gitee.com/openharmony/interface_sdk-js/tree/master/api)路径下的api文件@ohos.batteryInfo.d.ts。
+2. 修改[interface_sdk-js/api](https://gitcode.com/openharmony/interface_sdk-js/tree/master/api)路径下的api文件@ohos.batteryInfo.d.ts。
 
 ```
 profile
@@ -169,4 +169,4 @@ declare namespace chargeScene {
 
 开发过程中可参考的配置文件路径：
 
-[电池充电场景配置文件路径](https://gitee.com/openharmony/drivers_peripheral/tree/master/battery/interfaces/hdi_service/profile)
+[电池充电场景配置文件路径](https://gitcode.com/openharmony/drivers_peripheral/tree/master/battery/interfaces/hdi_service/profile)

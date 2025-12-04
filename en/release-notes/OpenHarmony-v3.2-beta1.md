@@ -64,7 +64,7 @@ Multiple sample apps, including GPU drawing, minesweeper game, and 2048 game, ar
 
 2. Register an SSH public key for access to Gitee.
 
-3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
+3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
    
    ```
    git config --global user.name "yourname"
@@ -75,7 +75,7 @@ Multiple sample apps, including GPU drawing, minesweeper game, and 2048 game, ar
 4. Run the following commands to install the **repo** tool:
    
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -88,14 +88,14 @@ Use the **repo** tool to download the source code over SSH. (You must have an SS
 
 - Obtain the source code from the version branch. You can obtain the latest source code of the version branch, which includes the code that has been incorporated into the branch up until the time you run the following commands:
   ```
-  repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-3.2-Beta1 --no-repo-verify
+  repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-3.2-Beta1 --no-repo-verify
   repo sync -c
   repo forall -c 'git lfs pull'
   ```
 
 - Obtain the source code from the version tag, which is the same as that released with the version.
   ```
-  repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2-Beta1 --no-repo-verify
+  repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2-Beta1 --no-repo-verify
   repo sync -c
   repo forall -c 'git lfs pull'
   ```
@@ -106,13 +106,13 @@ Use the **repo** tool to download the source code over HTTPS.
 
 - Obtain the source code from the version branch. You can obtain the latest source code of the version branch, which includes the code that has been incorporated into the branch up until the time you run the following commands:
   ```
-  repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-3.2-Beta1 --no-repo-verify
+  repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-3.2-Beta1 --no-repo-verify
   repo sync -c
   repo forall -c 'git lfs pull'
   ```
 - Obtain the source code from the version tag, which is the same as that released with the version.
   ```
-  repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2-Beta1 --no-repo-verify
+  repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2-Beta1 --no-repo-verify
   repo sync -c
   repo forall -c 'git lfs pull'
   ```
@@ -176,7 +176,7 @@ This version has the following updates to OpenHarmony 3.1 Release.
 
 ### Chip and Development Board Adaptation
 
-For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
+For details about the adaptation status, see [SIG_DevBoard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
 
 
 ### Samples
@@ -185,26 +185,26 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Subsystem| Sample| Introduction| Programming Language|
 | -------- | -------- | -------- | -------- |
-| ArkUI | [Vibrator](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DeviceManagement/Vibrator) | This sample simulates the countdown scenario to show the use of the vibrator APIs.| ArkTS |
-| DFX | [FaultLogger](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DFX/FaultLogger) | This sample illustrates how to obtain fault information of an application in ArkTS.| ArkTS |
-| ArkUI | [ComponentCollection](https://gitee.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentClollection/ComponentCollection) | This sample illustrates all the components, animations, and global methods of ArkUI.| ArkTS |
-| ArkUI | [ArkTSClock](https://gitee.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/ArkTSClock) | This sample exemplifies how to implement a simple clock application using the ArkTS UI capability. | ArkTS |
-| Network management| [Http](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Http) | This sample simulates Postman, which requires the input of an API address and outputs the data obtained, to show the use of the data request APIs.| ArkTS |
-| Network management| [Socket](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Socket) | This sample demonstrates the application of Socket in network communication, including connection authentication and chat communication between two devices.| ArkTS |
-| Distributed data management| [DistributedRdb](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/DistributedRdb) | This sample shows how to add, delete, modify, query, and synchronize data in the distributed relational database with ArkTS.| ArkTS |
-| Ability| [WorkScheduler](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/WorkScheduler) | This sample simulates the update process starting from downloading and saving an update package to sending a notification and installing the update package. Being processed by the background task management, the download task continues after the application exits. It stops until the download is complete.| ArkTS |
-| Ability| [AbilityStartMode](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/AbilityStartMode) | This sample shows how to implement the standard, singleton, and specified ability launch modes in the stage model.| ArkTS |
-| Multimedia| [MediaCollections](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/FileManagement/MediaCollections) | This sample illustrates media management in ArkTS, including network stream playback, audio and video playback control, and volume adjustment.| ArkTS |
-| Ability| [ArkTSDistributedCalc](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/ArkTSDistributedCalc) | This sample implements a simple calculator application using JS distributed features. The calculator can perform simple numerical calculations and start a remote calculator FA to perform collaborative calculation.| ArkTS |
-| Web | [Browser](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Web/Browser) | This sample uses the stage model and related APIs to show a simple browser.| ArkTS |
-| Ability| [DeviceUsageStatistics](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DeviceUsageStatistics/DeviceUsageStatistics) | This sample shows the device usage statistics.| ArkTS |
-| ArkUI | [AdaptiveCapabilities](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/AdaptiveCapabilities) | This sample shows multi-device adaptation in ArkTS, including resource qualifiers, atomic layouts, and responsive layouts.| ArkTS |
-| ArkUI | [Game2048](https://gitee.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/Game2048) | This sample shows how to develop a 2048 game using the **\<Grid>** component.| ArkTS |
-| Typical Setting Page of One-Time Development for Multi-Device Deployment| [Settings](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/Settings) | This sample shows a typical page for setting an application. The page has different display effects in the small window and large window, reflecting the capability of one-time development for multi-device deployment.| ArkTS |
-| Distributed data management| [Preference](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DataManagement/Preferences) | This sample shows the theme switching function of preferences.| ArkTS |
-| Globalization| [International](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Internationalnation/International) | This sample shows how to use APIs related to i18n, intl, and resourceManager in ArkTS to set the system language, region, time, and time zone. It also provides locale setting examples.| ArkTS |
+| ArkUI | [Vibrator](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DeviceManagement/Vibrator) | This sample simulates the countdown scenario to show the use of the vibrator APIs.| ArkTS |
+| DFX | [FaultLogger](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DFX/FaultLogger) | This sample illustrates how to obtain fault information of an application in ArkTS.| ArkTS |
+| ArkUI | [ComponentCollection](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentClollection/ComponentCollection) | This sample illustrates all the components, animations, and global methods of ArkUI.| ArkTS |
+| ArkUI | [ArkTSClock](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/ArkTSClock) | This sample exemplifies how to implement a simple clock application using the ArkTS UI capability. | ArkTS |
+| Network management| [Http](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Http) | This sample simulates Postman, which requires the input of an API address and outputs the data obtained, to show the use of the data request APIs.| ArkTS |
+| Network management| [Socket](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Socket) | This sample demonstrates the application of Socket in network communication, including connection authentication and chat communication between two devices.| ArkTS |
+| Distributed data management| [DistributedRdb](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/DistributedRdb) | This sample shows how to add, delete, modify, query, and synchronize data in the distributed relational database with ArkTS.| ArkTS |
+| Ability| [WorkScheduler](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/WorkScheduler) | This sample simulates the update process starting from downloading and saving an update package to sending a notification and installing the update package. Being processed by the background task management, the download task continues after the application exits. It stops until the download is complete.| ArkTS |
+| Ability| [AbilityStartMode](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/AbilityStartMode) | This sample shows how to implement the standard, singleton, and specified ability launch modes in the stage model.| ArkTS |
+| Multimedia| [MediaCollections](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/FileManagement/MediaCollections) | This sample illustrates media management in ArkTS, including network stream playback, audio and video playback control, and volume adjustment.| ArkTS |
+| Ability| [ArkTSDistributedCalc](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/ArkTSDistributedCalc) | This sample implements a simple calculator application using JS distributed features. The calculator can perform simple numerical calculations and start a remote calculator FA to perform collaborative calculation.| ArkTS |
+| Web | [Browser](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Web/Browser) | This sample uses the stage model and related APIs to show a simple browser.| ArkTS |
+| Ability| [DeviceUsageStatistics](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DeviceUsageStatistics/DeviceUsageStatistics) | This sample shows the device usage statistics.| ArkTS |
+| ArkUI | [AdaptiveCapabilities](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/AdaptiveCapabilities) | This sample shows multi-device adaptation in ArkTS, including resource qualifiers, atomic layouts, and responsive layouts.| ArkTS |
+| ArkUI | [Game2048](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/Game2048) | This sample shows how to develop a 2048 game using the **\<Grid>** component.| ArkTS |
+| Typical Setting Page of One-Time Development for Multi-Device Deployment| [Settings](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/Settings) | This sample shows a typical page for setting an application. The page has different display effects in the small window and large window, reflecting the capability of one-time development for multi-device deployment.| ArkTS |
+| Distributed data management| [Preference](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DataManagement/Preferences) | This sample shows the theme switching function of preferences.| ArkTS |
+| Globalization| [International](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Internationalnation/International) | This sample shows how to use APIs related to i18n, intl, and resourceManager in ArkTS to set the system language, region, time, and time zone. It also provides locale setting examples.| ArkTS |
 
-For more information, visit [Samples](https://gitee.com/openharmony/applications_app_samples).
+For more information, visit [Samples](https://gitcode.com/openharmony/applications_app_samples).
 
 ## Resolved Issues
 
@@ -212,7 +212,7 @@ For more information, visit [Samples](https://gitee.com/openharmony/applications
 
 | Issue No.                                                     | Description                                                    |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [I4NRS5](https://gitee.com/openharmony/kernel_linux_5.10/issues/I4NRS5) | [Kernel subsystem] A CVE vulnerability exists.                                   |
+| [I4NRS5](https://gitcode.com/openharmony/kernel_linux_5.10/issues/I4NRS5) | [Kernel subsystem] A CVE vulnerability exists.                                   |
 
 
 ## Known Issues
@@ -221,5 +221,5 @@ For more information, visit [Samples](https://gitee.com/openharmony/applications
 
 | Issue No.                                                       | Description                                                  | Impact                                                        | To Be Resolved By|
 | ------------------------------------------------------------ | ---------------------------------------------------------- | ------------------------------------------------------------ | ------------ |
-| [I4Z3G9](https://gitee.com/openharmony/graphic_graphic_2d/issues/I4Z3G9) | [RK3568] Screen flickering occurs when the secondary window is opened in the immersive primary window.| Developer experience is affected.                                              | 2022-06-15   |
-| [I59M4Q](https://gitee.com/openharmony/developtools_hdc/issues/I59M4Q) | There is a low probability that the device is disconnected when hdc_std of API version 9 is used to connect to the device.                      | This issue occurs at a low probability (less than 1/30). It can be resolved by restarting the IDE or hdc_std.| 2022-06-30   |
+| [I4Z3G9](https://gitcode.com/openharmony/graphic_graphic_2d/issues/I4Z3G9) | [RK3568] Screen flickering occurs when the secondary window is opened in the immersive primary window.| Developer experience is affected.                                              | 2022-06-15   |
+| [I59M4Q](https://gitcode.com/openharmony/developtools_hdc/issues/I59M4Q) | There is a low probability that the device is disconnected when hdc_std of API version 9 is used to connect to the device.                      | This issue occurs at a low probability (less than 1/30). It can be resolved by restarting the IDE or hdc_std.| 2022-06-30   |

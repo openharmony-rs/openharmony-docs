@@ -42,7 +42,7 @@ Module按照使用场景可以分为两种类型：
   | 共享包类型 | 编译和运行方式  | 发布和引用方式 | 
   | --------  | ---- | --- |
   | HAR | HAR中的代码和资源跟随使用方编译，如果有多个使用方，它们的编译产物中会存在多份相同拷贝。<br/>注意：[编译HAR](har-package.md#编译)时，建议开启混淆能力，保护代码资产。 | HAR除了支持应用内引用，还可以独立打包发布到[OHPM中心仓](https://ohpm.openharmony.cn/#/cn/home)或者[OHPM私仓](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-ohpm-repo)，供其他应用引用。 | 
-  | HSP  | HSP中的代码和资源可以独立编译，运行时在一个进程中代码也只会存在一份。 | HSP一般随应用进行打包，当前支持应用内和[集成态HSP](integrated-hsp.md)。应用内HSP只支持应用内引用，集成态HSP支持发布到OHPM私仓和跨应用引用。 |  
+  | HSP  | HSP中的代码和资源可以独立编译，运行时在一个进程中代码也只会存在一份。 | HSP一般随应用进行打包，当前支持应用内和[集成态HSP](integrated-hsp.md)。应用内HSP只支持应用内引用，集成态HSP支持发布到OHPM私仓和跨应用引用。<br/>**说明：**<br/> 集成态HSP只是应用内HSP的中间形态，只能参与编译构建过程，无法单独安装。在构建和发布OHPM私仓的过程中，集成态HSP不与特定的应用包名耦合。使用时，工具链支持自动将集成态HSP的包名替换成宿主应用包名，并且会重新签名生成一个新的HSP包，作为宿主应用的安装包，这个新的HSP也属于宿主应用HAP的应用内HSP。|
 
  
   **图1** HAR和HSP在APP包中的形态示意图
@@ -75,7 +75,7 @@ HAP、HSP、HAR支持的规格对比如下，其中“√”表示是，“×”
 
 > **说明：**
 >
-> - 如果HAR支持声明pages页面，那么当HAR被打包到HAP或HSP中时，其内部声明的pages页面可能会与HAP/HSP中的pages页面存在相对路径上的重复，这将导致无法根据相对路径识别特定的路由页面。因此，HAR不支持在配置文件中声明pages页面，但可以包含pages页面，并通过[Navigation跳转](../ui/arkts-navigation-navigation.md#路由操作)的方式进行跳转。
+> - 如果HAR支持声明pages页面，那么当HAR被打包到HAP或HSP中时，其内部声明的pages页面可能会与HAP/HSP中的pages页面存在相对路径上的重复，这将导致无法根据相对路径识别特定的路由页面。因此，HAR不支持在配置文件中声明pages页面，但可以包含pages页面，并通过[Navigation跳转](../ui/arkts-navigation-jump.md#路由操作)的方式进行跳转。
 > - 由于HSP仅支持应用内共享，如果HAR依赖了HSP，则该HAR文件仅支持应用内共享，不支持发布到二方仓或三方仓供其他应用使用，否则会导致编译失败。
 > - HAR和HSP均不支持循环依赖，也不支持依赖传递，详情说明可以参考[HAR](har-package.md#约束限制)或者[HSP](in-app-hsp.md#约束限制)中约束限制说明。
 

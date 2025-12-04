@@ -14,9 +14,9 @@ The method that uses an asynchronous lock must be marked as **async**, and the c
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This module can be imported only to ArkTS files (with the file name extension .ets).
+> - This module can be imported only to ArkTS files (with the file name extension .ets).
 
 ## Modules to Import
 
@@ -346,8 +346,8 @@ Enumerates the modes of an asynchronous lock.
 
 | Name     | Value | Description                                                    |
 | --------- | --- | -------------------------------------------------------- |
-| SHARED    | 1   | Shared lock mode, in which multiple threads can run at the same time.  |
-| EXCLUSIVE | 2   | Exclusive lock mode, in which a thread can run only when it exclusively acquires the lock.|
+| SHARED    | 1   | Shared lock mode. In this mode, multiple threads or concurrent tasks can acquire the lock and operate simultaneously. It is primarily used for read operations and parallel tasks without data contention.|
+| EXCLUSIVE | 2   | Exclusive lock mode. In this mode, only the task that holds the lock can execute. It is incompatible with any other lock, including other exclusive locks and shared locks. It is primarily used for write operations, data updates, and status modifications where contention may occur.|
 
 **Example**
 

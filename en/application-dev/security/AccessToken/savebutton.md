@@ -53,65 +53,64 @@ For example, to save the image in the dialog box shown above, the application on
    
    For details about saving images to the media library, see [Saving Media Library Resources](../../media/medialibrary/photoAccessHelper-savebutton.md).
 
-  <!-- [use_save_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityComponent/entry/src/main/ets/securitycomponent/pages/Save.ets) -->
+  <!-- @[use_save_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityComponent/entry/src/main/ets/securitycomponent/pages/Save.ets) -->
 
-   ```ts
-   import { photoAccessHelper } from '@kit.MediaLibraryKit';
-   import { fileIo } from '@kit.CoreFileKit';
-   import { common } from '@kit.AbilityKit';
-   import { promptAction } from '@kit.ArkUI';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   
-   async function savePhotoToGallery(context: common.UIAbilityContext) {
-     let helper = photoAccessHelper.getPhotoAccessHelper(context);
-     try {
-       // Call createAsset() within 1 minute after onClick is triggered to create an image file. After 1 minute have elapsed, the permission for calling createAsset is revoked.
-       let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg');
-       // Open the file based on its URI. The write process is not time bound.
-       let file = await fileIo.open(uri, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-       // Replace $r('app.media.startIcon') with the image resource file you use.
-       context.resourceManager.getMediaContent($r('app.media.startIcon').id, 0)
-         .then(async value => {
-           let media = value.buffer;
-           // Write data to the file in the media library.
-           await fileIo.write(file.fd, media);
-           await fileIo.close(file.fd);
-           promptAction.openToast({ message: 'Saved to album.'});
-         });
-     }
-     catch (error) {
-       const err: BusinessError = error as BusinessError;
-       console.error(`Failed to save photo. Code is ${err.code}, message is ${err.message}`);
-     }
-   }
-   
-   @Entry
-   @Component
-   struct Index {
-     build() {
-       Row() {
-         Column({ space: 10 }) {
-           // Replace $r('app.media.startIcon') with the image resource file you use.
-           Image($r('app.media.startIcon'))
-             .height(50)
-             .width(50)
-   
-           SaveButton()
-             .padding({top: 12, bottom: 12, left: 24, right: 24})
-             .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
-               if (result === SaveButtonOnClickResult.SUCCESS) {
-                 const context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-                 // Obtain temporary permission to save the image without requesting the related permission for the application.
-                 savePhotoToGallery(context);
-               } else {
-                 promptAction.openToast({ message: 'Failed to set the permission.' });
-               }
-             })
-         }
-         .width('100%')
-       }
-       .height('100%')
-       .backgroundColor(0xf1f3f5)
-     }
-   }
-   ```
+``` TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+import { promptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function savePhotoToGallery(context: common.UIAbilityContext) {
+  let helper = photoAccessHelper.getPhotoAccessHelper(context);
+  try {
+    // Call createAsset() within 1 minute after onClick is triggered to create an image file. After 1 minute have elapsed, the permission for calling createAsset is revoked.
+    let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg');
+    // Open the file based on its URI. The write process is not time bound.
+    let file = await fileIo.open(uri, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+    // Replace $r('app.media.startIcon') with the image resource file you use.
+    context.resourceManager.getMediaContent($r('app.media.startIcon').id, 0)
+      .then(async value => {
+        let media = value.buffer;
+        // Write data to the file in the media library.
+        await fileIo.write(file.fd, media);
+        await fileIo.close(file.fd);
+        promptAction.openToast({ message: 'Saved to album.'});
+      });
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to save photo. Code is ${err.code}, message is ${err.message}`);
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column({ space: 10 }) {
+        // Replace $r('app.media.startIcon') with the image resource file you use.
+        Image($r('app.media.startIcon'))
+          .height(50)
+          .width(50)
+
+        SaveButton()
+          .padding({top: 12, bottom: 12, left: 24, right: 24})
+          .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
+            if (result === SaveButtonOnClickResult.SUCCESS) {
+              const context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+              // Obtain temporary permission to save the image without requesting the related permission for the application.
+              savePhotoToGallery(context);
+            } else {
+              promptAction.openToast({ message: 'Failed to set the permission.' });
+            }
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+    .backgroundColor(0xf1f3f5)
+  }
+}
+```

@@ -4,7 +4,7 @@
 <!--Owner: @tzcurtain-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 软键盘是用户交互的重要途径，提供文本输入功能。本文介绍在使用系统输入框组件（[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)、[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)、[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)）时，如何控制软键盘的弹出和收起。
 
@@ -173,7 +173,7 @@ struct Index {
 
 以下示例展示了页面切换过程中，软键盘收起的场景。
 
-页面跳转写法请参考[组件导航(Navigation) (推荐)](./arkts-navigation-navigation.md)。
+页面跳转写法请参考[Navigation页面路由](./arkts-navigation-jump.md)。
 
 跳转前的页面
 

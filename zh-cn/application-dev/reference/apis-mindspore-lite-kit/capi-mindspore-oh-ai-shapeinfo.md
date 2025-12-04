@@ -7,6 +7,10 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_AI_ShapeInfo {...} OH_AI_ShapeInfo
+```
+
 ## 概述
 
 形状维度大小，预留最大维度是32，当前实际支持的最大维度是8。

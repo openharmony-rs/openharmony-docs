@@ -16,8 +16,8 @@
 
 ## 导入模块
 
-```
-import { rpc } from '@kit.IPCKit';
+```ts
+  import { rpc } from '@kit.IPCKit';
 ```
 
 ## ErrorCode<sup>9+</sup>
@@ -43,7 +43,6 @@ import { rpc } from '@kit.IPCKit';
   | CALL_JS_METHOD_ERROR                  | 1900012 | 执行JS回调方法失败。                          |
   | OS_DUP_ERROR                          | 1900013 | 执行系统调用dup失败。                         |
 
-
 ## TypeCode<sup>12+</sup>
 
 从API version 12起，IPC新增[writeArrayBuffer](#writearraybuffer12)和[readArrayBuffer](#readarraybuffer12)方法传递ArrayBuffer数据，传递数据时通过具体类型值来分辨业务是以哪一种TypedArray去进行数据的读写。类型码对应数值及含义如下。
@@ -62,7 +61,6 @@ import { rpc } from '@kit.IPCKit';
   | FLOAT64_ARRAY                | 7      | TypedArray类型为FLOAT64_ARRAY。               |
   | BIGINT64_ARRAY               | 8      | TypedArray类型为BIGINT64_ARRAY。              |
   | BIGUINT64_ARRAY              | 9      | TypedArray类型为BIGUINT64_ARRAY。             |
-
 
 ## MessageSequence<sup>9+</sup>
 
@@ -84,7 +82,7 @@ import { rpc } from '@kit.IPCKit';
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -100,7 +98,7 @@ import { rpc } from '@kit.IPCKit';
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### reclaim<sup>9+</sup>
 
@@ -112,7 +110,7 @@ reclaim(): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -125,11 +123,11 @@ reclaim(): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeRemoteObject<sup>9+</sup>
 
-writeRemoteObject(object: IRemoteObject): void
+writeRemoteObject(obj: IRemoteObject): void
 
 序列化远程对象并将其写入[MessageSequence](#messagesequence9)对象。
 
@@ -139,7 +137,7 @@ writeRemoteObject(object: IRemoteObject): void
 
   | 参数名 | 类型                            | 必填 | 说明                                      |
   | ------ | ------------------------------- | ---- | ----------------------------------------- |
-  | object | [IRemoteObject](#iremoteobject) | 是   | 要序列化并写入MessageSequence的远程对象。 |
+  | obj | [IRemoteObject](#iremoteobject) | 是   | 要序列化并写入MessageSequence的远程对象。 |
 
 **错误码：**
 
@@ -153,7 +151,7 @@ writeRemoteObject(object: IRemoteObject): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -162,7 +160,8 @@ writeRemoteObject(object: IRemoteObject): void
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
     }
@@ -177,7 +176,7 @@ writeRemoteObject(object: IRemoteObject): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readRemoteObject<sup>9+</sup>
 
@@ -204,7 +203,7 @@ readRemoteObject(): IRemoteObject
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -213,7 +212,8 @@ readRemoteObject(): IRemoteObject
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
     }
@@ -230,7 +230,7 @@ readRemoteObject(): IRemoteObject
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeInterfaceToken<sup>9+</sup>
 
@@ -257,7 +257,7 @@ writeInterfaceToken(token: string): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -270,7 +270,7 @@ writeInterfaceToken(token: string): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readInterfaceToken<sup>9+</sup>
 
@@ -329,7 +329,7 @@ getSize(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -343,7 +343,7 @@ getSize(): number
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### getCapacity<sup>9+</sup>
 
@@ -361,7 +361,7 @@ getCapacity(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -375,7 +375,7 @@ getCapacity(): number
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### setSize<sup>9+</sup>
 
@@ -402,7 +402,7 @@ setSize(size: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -416,7 +416,7 @@ setSize(size: number): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### setCapacity<sup>9+</sup>
 
@@ -444,7 +444,7 @@ setCapacity(size: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -457,7 +457,7 @@ setCapacity(size: number): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### getWritableBytes<sup>9+</sup>
 
@@ -541,7 +541,7 @@ getReadPosition(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -556,7 +556,7 @@ getReadPosition(): number
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### getWritePosition<sup>9+</sup>
 
@@ -574,7 +574,7 @@ getWritePosition(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -589,7 +589,7 @@ getWritePosition(): number
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### rewindRead<sup>9+</sup>
 
@@ -616,7 +616,7 @@ rewindRead(pos: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -635,7 +635,7 @@ rewindRead(pos: number): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### rewindWrite<sup>9+</sup>
 
@@ -662,7 +662,7 @@ rewindWrite(pos: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -679,7 +679,7 @@ rewindWrite(pos: number): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeByte<sup>9+</sup>
 
@@ -706,7 +706,7 @@ writeByte(val: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -719,13 +719,13 @@ writeByte(val: number): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readByte<sup>9+</sup>
 
 readByte(): number
 
-从MessageSequence实例读取字节值。
+从MessageSequence实例中读取字节值。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -745,7 +745,7 @@ readByte(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -760,7 +760,7 @@ readByte(): number
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeShort<sup>9+</sup>
 
@@ -787,7 +787,7 @@ writeShort(val: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -800,13 +800,13 @@ writeShort(val: number): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readShort<sup>9+</sup>
 
 readShort(): number
 
-从MessageSequence实例读取短整数值。
+从MessageSequence实例中读取短整数值。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -826,7 +826,7 @@ readShort(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -841,7 +841,7 @@ readShort(): number
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeInt<sup>9+</sup>
 
@@ -868,7 +868,7 @@ writeInt(val: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -881,13 +881,13 @@ writeInt(val: number): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readInt<sup>9+</sup>
 
 readInt(): number
 
-从MessageSequence实例读取整数值。
+从MessageSequence实例中读取整数值。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -907,7 +907,7 @@ readInt(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -922,7 +922,7 @@ readInt(): number
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeLong<sup>9+</sup>
 
@@ -949,7 +949,7 @@ writeLong(val: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -962,7 +962,7 @@ writeLong(val: number): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readLong<sup>9+</sup>
 
@@ -988,7 +988,7 @@ readLong(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1003,7 +1003,7 @@ readLong(): number
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeFloat<sup>9+</sup>
 
@@ -1030,7 +1030,7 @@ writeFloat(val: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1043,7 +1043,7 @@ writeFloat(val: number): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readFloat<sup>9+</sup>
 
@@ -1069,7 +1069,7 @@ readFloat(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1084,7 +1084,7 @@ readFloat(): number
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeDouble<sup>9+</sup>
 
@@ -1111,7 +1111,7 @@ writeDouble(val: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1124,13 +1124,13 @@ writeDouble(val: number): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readDouble<sup>9+</sup>
 
 readDouble(): number
 
-从MessageSequence实例读取双精度浮点值。
+从MessageSequence实例中读取双精度浮点值。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -1150,7 +1150,7 @@ readDouble(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1165,7 +1165,7 @@ readDouble(): number
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeBoolean<sup>9+</sup>
 
@@ -1192,7 +1192,7 @@ writeBoolean(val: boolean): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1205,13 +1205,13 @@ writeBoolean(val: boolean): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readBoolean<sup>9+</sup>
 
 readBoolean(): boolean
 
-从MessageSequence实例读取布尔值。
+从MessageSequence实例中读取布尔值。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -1231,7 +1231,7 @@ readBoolean(): boolean
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1246,7 +1246,7 @@ readBoolean(): boolean
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeChar<sup>9+</sup>
 
@@ -1273,7 +1273,7 @@ writeChar(val: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1286,7 +1286,7 @@ writeChar(val: number): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readChar<sup>9+</sup>
 
@@ -1312,7 +1312,7 @@ readChar(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1327,7 +1327,7 @@ readChar(): number
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeString<sup>9+</sup>
 
@@ -1354,7 +1354,7 @@ writeString(val: string): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1367,13 +1367,13 @@ writeString(val: string): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readString<sup>9+</sup>
 
 readString(): string
 
-从MessageSequence实例读取字符串值。
+从MessageSequence实例中读取字符串值。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -1393,7 +1393,7 @@ readString(): string
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1408,7 +1408,7 @@ readString(): string
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeParcelable<sup>9+</sup>
 
@@ -1435,7 +1435,7 @@ writeParcelable(val: Parcelable): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1468,7 +1468,7 @@ writeParcelable(val: Parcelable): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readParcelable<sup>9+</sup>
 
@@ -1496,7 +1496,7 @@ readParcelable(dataIn: Parcelable): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1531,7 +1531,7 @@ readParcelable(dataIn: Parcelable): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeByteArray<sup>9+</sup>
 
@@ -1558,7 +1558,7 @@ writeByteArray(byteArray: number[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1572,13 +1572,13 @@ writeByteArray(byteArray: number[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readByteArray<sup>9+</sup>
 
 readByteArray(dataIn: number[]): void
 
-从MessageSequence实例读取字节数组。
+从MessageSequence实例中读取字节数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -1599,7 +1599,7 @@ readByteArray(dataIn: number[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1616,7 +1616,7 @@ readByteArray(dataIn: number[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readByteArray<sup>9+</sup>
 
@@ -1642,7 +1642,7 @@ readByteArray(): number[]
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1658,7 +1658,7 @@ readByteArray(): number[]
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeShortArray<sup>9+</sup>
 
@@ -1685,7 +1685,7 @@ writeShortArray(shortArray: number[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1698,13 +1698,13 @@ writeShortArray(shortArray: number[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readShortArray<sup>9+</sup>
 
 readShortArray(dataIn: number[]): void
 
-从MessageSequence实例中读取短整数数组。
+从MessageSequence实例中读取短整数数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -1725,7 +1725,7 @@ readShortArray(dataIn: number[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1741,7 +1741,7 @@ readShortArray(dataIn: number[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readShortArray<sup>9+</sup>
 
@@ -1767,7 +1767,7 @@ readShortArray(): number[]
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1782,7 +1782,7 @@ readShortArray(): number[]
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeIntArray<sup>9+</sup>
 
@@ -1809,7 +1809,7 @@ writeIntArray(intArray: number[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1822,13 +1822,13 @@ writeIntArray(intArray: number[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readIntArray<sup>9+</sup>
 
 readIntArray(dataIn: number[]): void
 
-从MessageSequence实例中读取整数数组。
+从MessageSequence实例中读取整数数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -1849,7 +1849,7 @@ readIntArray(dataIn: number[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1865,7 +1865,7 @@ readIntArray(dataIn: number[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readIntArray<sup>9+</sup>
 
@@ -1891,7 +1891,7 @@ readIntArray(): number[]
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1906,7 +1906,7 @@ readIntArray(): number[]
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeLongArray<sup>9+</sup>
 
@@ -1933,7 +1933,7 @@ writeLongArray(longArray: number[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1946,13 +1946,13 @@ writeLongArray(longArray: number[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readLongArray<sup>9+</sup>
 
 readLongArray(dataIn: number[]): void
 
-从MessageSequence实例读取的长整数数组。
+从MessageSequence实例中读取的长整数数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -1973,7 +1973,7 @@ readLongArray(dataIn: number[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1989,7 +1989,7 @@ readLongArray(dataIn: number[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readLongArray<sup>9+</sup>
 
@@ -2015,7 +2015,7 @@ readLongArray(): number[]
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2030,7 +2030,7 @@ readLongArray(): number[]
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeFloatArray<sup>9+</sup>
 
@@ -2057,7 +2057,7 @@ writeFloatArray(floatArray: number[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2070,13 +2070,13 @@ writeFloatArray(floatArray: number[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readFloatArray<sup>9+</sup>
 
 readFloatArray(dataIn: number[]): void
 
-从MessageSequence实例中读取双精度浮点数组。
+从MessageSequence实例中读取双精度浮点数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2097,7 +2097,7 @@ readFloatArray(dataIn: number[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2113,7 +2113,7 @@ readFloatArray(dataIn: number[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readFloatArray<sup>9+</sup>
 
@@ -2139,7 +2139,7 @@ readFloatArray(): number[]
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2154,7 +2154,7 @@ readFloatArray(): number[]
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeDoubleArray<sup>9+</sup>
 
@@ -2181,7 +2181,7 @@ writeDoubleArray(doubleArray: number[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2194,13 +2194,13 @@ writeDoubleArray(doubleArray: number[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readDoubleArray<sup>9+</sup>
 
 readDoubleArray(dataIn: number[]): void
 
-从MessageSequence实例中读取双精度浮点数组。
+从MessageSequence实例中读取双精度浮点数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2221,7 +2221,7 @@ readDoubleArray(dataIn: number[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2237,13 +2237,13 @@ readDoubleArray(dataIn: number[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readDoubleArray<sup>9+</sup>
 
 readDoubleArray(): number[]
 
-从MessageSequence实例读取所有双精度浮点数组。
+从MessageSequence实例中读取所有双精度浮点数组。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2263,7 +2263,7 @@ readDoubleArray(): number[]
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2278,7 +2278,7 @@ readDoubleArray(): number[]
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeBooleanArray<sup>9+</sup>
 
@@ -2305,7 +2305,7 @@ writeBooleanArray(booleanArray: boolean[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2318,13 +2318,13 @@ writeBooleanArray(booleanArray: boolean[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readBooleanArray<sup>9+</sup>
 
 readBooleanArray(dataIn: boolean[]): void
 
-从MessageSequence实例中读取布尔数组。
+从MessageSequence实例中读取布尔数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2345,7 +2345,7 @@ readBooleanArray(dataIn: boolean[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2361,7 +2361,7 @@ readBooleanArray(dataIn: boolean[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readBooleanArray<sup>9+</sup>
 
@@ -2387,7 +2387,7 @@ readBooleanArray(): boolean[]
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2402,7 +2402,7 @@ readBooleanArray(): boolean[]
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeCharArray<sup>9+</sup>
 
@@ -2429,7 +2429,7 @@ writeCharArray(charArray: number[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2442,13 +2442,13 @@ writeCharArray(charArray: number[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readCharArray<sup>9+</sup>
 
 readCharArray(dataIn: number[]): void
 
-从MessageSequence实例中读取单个字符数组。
+从MessageSequence实例中读取单个字符数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2469,7 +2469,7 @@ readCharArray(dataIn: number[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2485,13 +2485,13 @@ readCharArray(dataIn: number[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readCharArray<sup>9+</sup>
 
 readCharArray(): number[]
 
-从MessageSequence实例读取单个字符数组。
+从MessageSequence实例中读取单个字符数组。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2511,7 +2511,7 @@ readCharArray(): number[]
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2526,7 +2526,7 @@ readCharArray(): number[]
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeStringArray<sup>9+</sup>
 
@@ -2553,7 +2553,7 @@ writeStringArray(stringArray: string[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2566,13 +2566,13 @@ writeStringArray(stringArray: string[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readStringArray<sup>9+</sup>
 
 readStringArray(dataIn: string[]): void
 
-从MessageSequence实例读取字符串数组。
+从MessageSequence实例中读取字符串数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2593,7 +2593,7 @@ readStringArray(dataIn: string[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2609,13 +2609,13 @@ readStringArray(dataIn: string[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readStringArray<sup>9+</sup>
 
 readStringArray(): string[]
 
-从MessageSequence实例读取字符串数组。
+从MessageSequence实例中读取字符串数组。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2635,7 +2635,7 @@ readStringArray(): string[]
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2650,7 +2650,7 @@ readStringArray(): string[]
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeNoException<sup>9+</sup>
 
@@ -2670,7 +2670,7 @@ writeNoException(): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2679,7 +2679,8 @@ writeNoException(): void
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       if (code === 1) {
         hilog.info(0x0000, 'testTag', 'RpcServer: onRemoteMessageRequest called');
         try {
@@ -2696,7 +2697,7 @@ writeNoException(): void
       }
     }
   }
-  ```
+```
 
 ### readException<sup>9+</sup>
 
@@ -2720,8 +2721,8 @@ readException(): void
 >
 >在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
-  ```ts
+<!--code_no_check-->
+```ts
   // FA模型需要从@kit.AbilityKit导入featureAbility
   // import { featureAbility } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
@@ -2753,11 +2754,11 @@ readException(): void
   let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
   // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
   let connectionId = context.connectServiceExtensionAbility(want, connect);
-  ```
+```
 
   上述onConnect回调函数中的proxy对象需要等ability异步连接成功后才会被赋值，然后才可调用proxy对象的sendMessageRequest接口方法发送消息
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -2792,7 +2793,7 @@ readException(): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeParcelableArray<sup>9+</sup>
 
@@ -2819,7 +2820,7 @@ writeParcelableArray(parcelableArray: Parcelable[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2855,13 +2856,13 @@ writeParcelableArray(parcelableArray: Parcelable[]): void
     hilog.error(0x0000, 'testTag', 'rpc write parcelable array fail, errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'rpc write parcelable array fail, errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readParcelableArray<sup>9+</sup>
 
 readParcelableArray(parcelableArray: Parcelable[]): void
 
-从MessageSequence实例读取可序列化对象数组。
+从MessageSequence实例中读取可序列化对象数组。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2883,7 +2884,7 @@ readParcelableArray(parcelableArray: Parcelable[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2921,7 +2922,7 @@ readParcelableArray(parcelableArray: Parcelable[]): void
     hilog.error(0x0000, 'testTag', 'rpc write parcelable array fail, errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'rpc write parcelable array fail, errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeRemoteObjectArray<sup>9+</sup>
 
@@ -2948,7 +2949,7 @@ writeRemoteObjectArray(objectArray: IRemoteObject[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2957,7 +2958,8 @@ writeRemoteObjectArray(objectArray: IRemoteObject[]): void
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
     }
@@ -2972,13 +2974,13 @@ writeRemoteObjectArray(objectArray: IRemoteObject[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readRemoteObjectArray<sup>9+</sup>
 
 readRemoteObjectArray(objects: IRemoteObject[]): void
 
-从MessageSequence读取IRemoteObject对象数组。
+从MessageSequence读取IRemoteObject对象数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2999,7 +3001,7 @@ readRemoteObjectArray(objects: IRemoteObject[]): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3008,7 +3010,8 @@ readRemoteObjectArray(objects: IRemoteObject[]): void
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
     }
@@ -3026,7 +3029,7 @@ readRemoteObjectArray(objects: IRemoteObject[]): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readRemoteObjectArray<sup>9+</sup>
 
@@ -3040,7 +3043,7 @@ readRemoteObjectArray(): IRemoteObject[]
 
 | 类型            | 说明                        |
 | --------------- | --------------------------- |
-| [IRemoteObject](#iremoteobject)[] | 返回IRemoteObject对象数组。 |
+| [IRemoteObject](#iremoteobject)[] | 返回IRemoteObject对象数组；当写入的是空数组时，返回的是null。 |
 
 **错误码：**
 
@@ -3052,7 +3055,7 @@ readRemoteObjectArray(): IRemoteObject[]
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3061,7 +3064,8 @@ readRemoteObjectArray(): IRemoteObject[]
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
     }
@@ -3077,7 +3081,7 @@ readRemoteObjectArray(): IRemoteObject[]
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### closeFileDescriptor<sup>9+</sup>
 
@@ -3103,7 +3107,7 @@ static closeFileDescriptor(fd: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { fileIo } from '@kit.CoreFileKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -3118,7 +3122,7 @@ static closeFileDescriptor(fd: number): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### dupFileDescriptor<sup>9+</sup>
 
@@ -3151,7 +3155,7 @@ static dupFileDescriptor(fd: number): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { fileIo } from '@kit.CoreFileKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -3166,7 +3170,7 @@ static dupFileDescriptor(fd: number): number
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### containFileDescriptors<sup>9+</sup>
 
@@ -3184,7 +3188,7 @@ containFileDescriptors(): boolean
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { fileIo } from '@kit.CoreFileKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -3201,7 +3205,7 @@ containFileDescriptors(): boolean
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeFileDescriptor<sup>9+</sup>
 
@@ -3228,7 +3232,7 @@ writeFileDescriptor(fd: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { fileIo } from '@kit.CoreFileKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -3244,7 +3248,7 @@ writeFileDescriptor(fd: number): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readFileDescriptor<sup>9+</sup>
 
@@ -3270,7 +3274,7 @@ readFileDescriptor(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { fileIo } from '@kit.CoreFileKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -3288,7 +3292,7 @@ readFileDescriptor(): number
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeAshmem<sup>9+</sup>
 
@@ -3315,7 +3319,7 @@ writeAshmem(ashmem: Ashmem): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3341,7 +3345,7 @@ writeAshmem(ashmem: Ashmem): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readAshmem<sup>9+</sup>
 
@@ -3367,7 +3371,7 @@ readAshmem(): Ashmem
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3403,7 +3407,7 @@ readAshmem(): Ashmem
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### getRawDataCapacity<sup>9+</sup>
 
@@ -3421,7 +3425,7 @@ getRawDataCapacity(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3435,7 +3439,7 @@ getRawDataCapacity(): number
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeRawData<sup>(deprecated)</sup>
 
@@ -3445,7 +3449,7 @@ writeRawData(rawData: number[], size: number): void
 
 > **说明：**
 >
-> 从API version 11 开始废弃，建议使用[writeRawDataBuffer](#writerawdatabuffer11)替代。
+> 从API version 9 开始支持，API version 11 开始废弃，建议使用[writeRawDataBuffer](#writerawdatabuffer11)替代。
 >
 > 该接口是一次性接口，不允许在一次parcel通信中多次调用该接口。
 > 该接口在传输数据时，当数据量较大时（超过32KB），会使用共享内存传输数据，此时需注意selinux配置。
@@ -3469,8 +3473,9 @@ writeRawData(rawData: number[], size: number): void
   | 1900009  | Failed to write data to the message sequence. |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3484,7 +3489,7 @@ writeRawData(rawData: number[], size: number): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeRawDataBuffer<sup>11+</sup>
 
@@ -3517,7 +3522,7 @@ writeRawDataBuffer(rawData: ArrayBuffer, size: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3536,7 +3541,7 @@ writeRawDataBuffer(rawData: ArrayBuffer, size: number): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readRawData<sup>(deprecated)</sup>
 
@@ -3546,7 +3551,7 @@ readRawData(size: number): number[]
 
 > **说明：**
 >
-> 从API version 11 开始废弃，建议使用[readRawDataBuffer](#readrawdatabuffer11)替代。
+> 从API version 9 开始支持，API version 11 开始废弃，建议使用[readRawDataBuffer](#readrawdatabuffer11)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -3572,8 +3577,9 @@ readRawData(size: number): number[]
   | 1900010  | Failed to read data from the message sequence. |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3590,7 +3596,7 @@ readRawData(size: number): number[]
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readRawDataBuffer<sup>11+</sup>
 
@@ -3623,7 +3629,7 @@ readRawDataBuffer(size: number): ArrayBuffer
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3645,7 +3651,7 @@ readRawDataBuffer(size: number): ArrayBuffer
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeArrayBuffer<sup>12+</sup>
 
@@ -3673,7 +3679,7 @@ writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void
 
 **示例：**
 
-  ```ts
+```ts
   // TypeCode 类型枚举较多，示例代码以Int16Array为例
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -3692,7 +3698,7 @@ writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readArrayBuffer<sup>12+</sup>
 
@@ -3725,7 +3731,7 @@ readArrayBuffer(typeCode: TypeCode): ArrayBuffer
 
 **示例：**
 
-  ```ts
+```ts
   // TypeCode 类型枚举较多，示例代码以Int16Array为例
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -3747,7 +3753,7 @@ readArrayBuffer(typeCode: TypeCode): ArrayBuffer
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ## MessageParcel<sup>(deprecated)</sup>
 
@@ -3755,13 +3761,17 @@ readArrayBuffer(typeCode: TypeCode): ArrayBuffer
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[MessageSequence](#messagesequence9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[MessageSequence](#messagesequence9)替代。
 
-### create
+### create<sup>(deprecated)</sup>
 
 static create(): MessageParcel
 
 静态方法，创建MessageParcel对象。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[create](#create9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -3772,8 +3782,9 @@ static create(): MessageParcel
   | [MessageParcel](#messageparceldeprecated) | 返回创建的MessageParcel对象。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -3786,19 +3797,24 @@ static create(): MessageParcel
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### reclaim
+### reclaim<sup>(deprecated)</sup>
 
 reclaim(): void
 
 释放不再使用的MessageParcel对象。
 
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[reclaim](#reclaim9)替代。
+
 **系统能力**：SystemCapability.Communication.IPC.Core
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -3808,13 +3824,17 @@ reclaim(): void
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeRemoteObject
+### writeRemoteObject<sup>(deprecated)</sup>
 
 writeRemoteObject(object: IRemoteObject): boolean
 
 序列化远程对象并将其写入MessageParcel对象。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeRemoteObject](#writeremoteobject9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -3831,8 +3851,9 @@ writeRemoteObject(object: IRemoteObject): boolean
   | boolean | true：操作成功，false：操作失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -3840,7 +3861,8 @@ writeRemoteObject(object: IRemoteObject): boolean
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
+    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel,
+      option: rpc.MessageOption): boolean {
       // 根据业务实际逻辑，进行相应处理
       return true;
     }
@@ -3853,13 +3875,17 @@ writeRemoteObject(object: IRemoteObject): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readRemoteObject
+### readRemoteObject<sup>(deprecated)</sup>
 
 readRemoteObject(): IRemoteObject
 
 从MessageParcel读取远程对象。此方法用于反序列化MessageParcel对象以生成IRemoteObject。远程对象按写入MessageParcel的顺序读取。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readRemoteObject](#readremoteobject9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -3870,8 +3896,9 @@ readRemoteObject(): IRemoteObject
   | [IRemoteObject](#iremoteobject) | 读取到的远程对象。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -3879,7 +3906,8 @@ readRemoteObject(): IRemoteObject
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
+    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel,
+      option: rpc.MessageOption): boolean {
       // 根据业务实际逻辑，进行相应处理
       return true;
     }
@@ -3894,13 +3922,17 @@ readRemoteObject(): IRemoteObject
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeInterfaceToken
+### writeInterfaceToken<sup>(deprecated)</sup>
 
 writeInterfaceToken(token: string): boolean
 
 将接口描述符写入MessageParcel对象，远端对象可使用该信息校验本次通信。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeInterfaceToken](#writeinterfacetoken9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -3917,8 +3949,9 @@ writeInterfaceToken(token: string): boolean
   | boolean | true：操作成功，false：操作失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -3929,13 +3962,17 @@ writeInterfaceToken(token: string): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readInterfaceToken
+### readInterfaceToken<sup>(deprecated)</sup>
 
 readInterfaceToken(): string
 
 从MessageParcel中读取接口描述符，接口描述符按写入MessageParcel的顺序读取，本地对象可使用该信息检验本次通信。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readInterfaceToken](#readinterfacetoken9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -3946,8 +3983,9 @@ readInterfaceToken(): string
   | string | 返回读取到的接口描述符。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -3959,13 +3997,17 @@ readInterfaceToken(): string
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### getSize
+### getSize<sup>(deprecated)</sup>
 
 getSize(): number
 
 获取当前MessageParcel的数据大小。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getSize](#getsize9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -3976,8 +4018,9 @@ getSize(): number
   | number | 获取的MessageParcel的数据大小。以字节为单位。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -3989,13 +4032,17 @@ getSize(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### getCapacity
+### getCapacity<sup>(deprecated)</sup>
 
 getCapacity(): number
 
 获取当前MessageParcel的容量。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getCapacity](#getcapacity9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4006,8 +4053,9 @@ getCapacity(): number
   | number | 获取的MessageParcel的容量大小。以字节为单位。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4019,13 +4067,17 @@ getCapacity(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### setSize
+### setSize<sup>(deprecated)</sup>
 
 setSize(size: number): boolean
 
 设置MessageParcel实例中包含的数据大小。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[setSize](#setsize9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4042,8 +4094,9 @@ setSize(size: number): boolean
   | boolean | true：设置成功，false：设置失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4054,13 +4107,17 @@ setSize(size: number): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### setCapacity
+### setCapacity<sup>(deprecated)</sup>
 
 setCapacity(size: number): boolean
 
 设置MessageParcel实例的存储容量。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[setCapacity](#setcapacity9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4077,8 +4134,9 @@ setCapacity(size: number): boolean
   | boolean | true：设置成功，false：设置失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4089,13 +4147,17 @@ setCapacity(size: number): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### getWritableBytes
+### getWritableBytes<sup>(deprecated)</sup>
 
 getWritableBytes(): number
 
 获取MessageParcel的可写字节空间。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getWritableBytes](#getwritablebytes9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4106,8 +4168,9 @@ getWritableBytes(): number
   | number | 获取到的MessageParcel的可写字节空间。以字节为单位。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4119,13 +4182,17 @@ getWritableBytes(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### getReadableBytes
+### getReadableBytes<sup>(deprecated)</sup>
 
 getReadableBytes(): number
 
 获取MessageParcel的可读字节空间。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getReadableBytes](#getreadablebytes9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4136,8 +4203,9 @@ getReadableBytes(): number
   | number | 获取到的MessageParcel的可读字节空间。以字节为单位。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4149,13 +4217,17 @@ getReadableBytes(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### getReadPosition
+### getReadPosition<sup>(deprecated)</sup>
 
 getReadPosition(): number
 
 获取MessageParcel的读位置。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getReadPosition](#getreadposition9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4166,8 +4238,9 @@ getReadPosition(): number
   | number | 返回MessageParcel实例中的当前读取位置。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4178,13 +4251,17 @@ getReadPosition(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### getWritePosition
+### getWritePosition<sup>(deprecated)</sup>
 
 getWritePosition(): number
 
 获取MessageParcel的写位置。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getWritePosition](#getwriteposition9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4195,8 +4272,9 @@ getWritePosition(): number
   | number | 返回MessageParcel实例中的当前写入位置。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4208,13 +4286,17 @@ getWritePosition(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### rewindRead
+### rewindRead<sup>(deprecated)</sup>
 
 rewindRead(pos: number): boolean
 
 重新偏移读取位置到指定的位置。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[rewindRead](#rewindread9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4231,8 +4313,9 @@ rewindRead(pos: number): boolean
   | boolean | true：读取位置发生更改，false：读取位置未发生更改。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4248,13 +4331,17 @@ rewindRead(pos: number): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### rewindWrite
+### rewindWrite<sup>(deprecated)</sup>
 
 rewindWrite(pos: number): boolean
 
 重新偏移写位置到指定的位置。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[reWindWrite](#rewindwrite9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4271,8 +4358,9 @@ rewindWrite(pos: number): boolean
   | boolean | true：写入位置发生更改，false：写入位置未发生更改。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4286,13 +4374,17 @@ rewindWrite(pos: number): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeByte
+### writeByte<sup>(deprecated)</sup>
 
 writeByte(val: number): boolean
 
 将字节值写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeByte](#writebyte9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4309,8 +4401,9 @@ writeByte(val: number): boolean
   | boolean | true：写入成功，false：写入失败。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4321,13 +4414,17 @@ writeByte(val: number): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readByte
+### readByte<sup>(deprecated)</sup>
 
 readByte(): number
 
-从MessageParcel实例读取字节值。
+从MessageParcel实例中读取字节值。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readByte](#readbyte9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4338,8 +4435,9 @@ readByte(): number
   | number | 返回字节值。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4352,13 +4450,17 @@ readByte(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeShort
+### writeShort<sup>(deprecated)</sup>
 
 writeShort(val: number): boolean
 
 将短整数值写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeShort](#writeshort9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4375,8 +4477,9 @@ writeShort(val: number): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4387,13 +4490,17 @@ writeShort(val: number): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readShort
+### readShort<sup>(deprecated)</sup>
 
 readShort(): number
 
-从MessageParcel实例读取短整数值。
+从MessageParcel实例中读取短整数值。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readShort](#readshort9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4404,8 +4511,9 @@ readShort(): number
   | number | 返回短整数值。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4418,13 +4526,17 @@ readShort(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeInt
+### writeInt<sup>(deprecated)</sup>
 
 writeInt(val: number): boolean
 
 将整数值写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeInt](#writeint9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4441,8 +4553,9 @@ writeInt(val: number): boolean
   | boolean | true：写入成功，false：写入失败。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4453,13 +4566,17 @@ writeInt(val: number): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readInt
+### readInt<sup>(deprecated)</sup>
 
 readInt(): number
 
-从MessageParcel实例读取整数值。
+从MessageParcel实例中读取整数值。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readInt](#readint9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4470,8 +4587,9 @@ readInt(): number
   | number | 返回整数值。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4484,13 +4602,17 @@ readInt(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeLong
+### writeLong<sup>(deprecated)</sup>
 
 writeLong(val: number): boolean
 
 将长整数值写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeLong](#writelong9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4507,8 +4629,9 @@ writeLong(val: number): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4519,13 +4642,17 @@ writeLong(val: number): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readLong
+### readLong<sup>(deprecated)</sup>
 
 readLong(): number
 
 从MessageParcel实例中读取长整数值。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readLong](#readlong9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4536,8 +4663,9 @@ readLong(): number
   | number | 返回长整数值。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4550,13 +4678,17 @@ readLong(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeFloat
+### writeFloat<sup>(deprecated)</sup>
 
 writeFloat(val: number): boolean
 
 将双精度浮点值写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeFloat](#writefloat9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4573,8 +4705,9 @@ writeFloat(val: number): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4585,13 +4718,17 @@ writeFloat(val: number): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readFloat
+### readFloat<sup>(deprecated)</sup>
 
 readFloat(): number
 
 从MessageParcel实例中读取双精度浮点值。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readFloat](#readfloat9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4602,8 +4739,9 @@ readFloat(): number
   | number | 返回双精度浮点值。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4616,13 +4754,17 @@ readFloat(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeDouble
+### writeDouble<sup>(deprecated)</sup>
 
 writeDouble(val: number): boolean
 
 将双精度浮点值写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeDouble](#writedouble9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4639,8 +4781,9 @@ writeDouble(val: number): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4651,13 +4794,17 @@ writeDouble(val: number): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readDouble
+### readDouble<sup>(deprecated)</sup>
 
 readDouble(): number
 
-从MessageParcel实例读取双精度浮点值。
+从MessageParcel实例中读取双精度浮点值。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readDouble](#readdouble9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4668,8 +4815,9 @@ readDouble(): number
   | number | 返回双精度浮点值。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4682,13 +4830,17 @@ readDouble(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeBoolean
+### writeBoolean<sup>(deprecated)</sup>
 
 writeBoolean(val: boolean): boolean
 
 将布尔值写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeBoolean](#writeboolean9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4705,8 +4857,9 @@ writeBoolean(val: boolean): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4717,13 +4870,17 @@ writeBoolean(val: boolean): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readBoolean
+### readBoolean<sup>(deprecated)</sup>
 
 readBoolean(): boolean
 
-从MessageParcel实例读取布尔值。
+从MessageParcel实例中读取布尔值。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readBoolean](#readboolean9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4734,8 +4891,9 @@ readBoolean(): boolean
   | boolean | 返回读取到的布尔值。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4748,13 +4906,17 @@ readBoolean(): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeChar
+### writeChar<sup>(deprecated)</sup>
 
 writeChar(val: number): boolean
 
 将单个字符值写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeChar](#writechar9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4771,8 +4933,9 @@ writeChar(val: number): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4783,13 +4946,17 @@ writeChar(val: number): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readChar
+### readChar<sup>(deprecated)</sup>
 
 readChar(): number
 
 从MessageParcel实例中读取单个字符值。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readChar](#readchar9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4800,8 +4967,9 @@ readChar(): number
   | number | 返回单个字符值。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4814,13 +4982,17 @@ readChar(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeString
+### writeString<sup>(deprecated)</sup>
 
 writeString(val: string): boolean
 
 将字符串值写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeString](#writestring9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4837,8 +5009,9 @@ writeString(val: string): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4849,13 +5022,17 @@ writeString(val: string): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readString
+### readString<sup>(deprecated)</sup>
 
 readString(): string
 
-从MessageParcel实例读取字符串值。
+从MessageParcel实例中读取字符串值。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readString](#readstring9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4866,8 +5043,9 @@ readString(): string
   | string | 返回字符串值。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4880,13 +5058,17 @@ readString(): string
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeSequenceable
+### writeSequenceable<sup>(deprecated)</sup>
 
 writeSequenceable(val: Sequenceable): boolean
 
 将自定义序列化对象写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeParcelable](#writeparcelable9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4903,8 +5085,9 @@ writeSequenceable(val: Sequenceable): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4935,13 +5118,17 @@ writeSequenceable(val: Sequenceable): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readSequenceable
+### readSequenceable<sup>(deprecated)</sup>
 
 readSequenceable(dataIn: Sequenceable): boolean
 
 从MessageParcel实例中读取成员变量到指定的对象（dataIn）。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readParcelable](#readparcelable9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4958,8 +5145,9 @@ readSequenceable(dataIn: Sequenceable): boolean
   | boolean | true：反序列化成功，false：反序列化失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4993,13 +5181,17 @@ readSequenceable(dataIn: Sequenceable): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeByteArray
+### writeByteArray<sup>(deprecated)</sup>
 
 writeByteArray(byteArray: number[]): boolean
 
 将字节数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeByteArray](#writebytearray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5016,8 +5208,9 @@ writeByteArray(byteArray: number[]): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5029,13 +5222,17 @@ writeByteArray(byteArray: number[]): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readByteArray
+### readByteArray<sup>(deprecated)</sup>
 
 readByteArray(dataIn: number[]): void
 
-从MessageParcel实例读取字节数组。
+从MessageParcel实例中读取字节数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readByteArray](#readbytearray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5046,8 +5243,9 @@ readByteArray(dataIn: number[]): void
   | dataIn | number[] | 是   | 要读取的字节数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5061,13 +5259,17 @@ readByteArray(dataIn: number[]): void
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readByteArray
+### readByteArray<sup>(deprecated)</sup>
 
 readByteArray(): number[]
 
 从MessageParcel实例中读取字节数组。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readByteArray](#readbytearray9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5078,8 +5280,9 @@ readByteArray(): number[]
   | number[] | 返回字节数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5093,13 +5296,17 @@ readByteArray(): number[]
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeShortArray
+### writeShortArray<sup>(deprecated)</sup>
 
 writeShortArray(shortArray: number[]): boolean
 
 将短整数数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeShortArray](#writeshortarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5116,8 +5323,9 @@ writeShortArray(shortArray: number[]): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5128,13 +5336,17 @@ writeShortArray(shortArray: number[]): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readShortArray
+### readShortArray<sup>(deprecated)</sup>
 
 readShortArray(dataIn: number[]): void
 
-从MessageParcel实例中读取短整数数组。
+从MessageParcel实例中读取短整数数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readShortArray](#readshortarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5145,8 +5357,9 @@ readShortArray(dataIn: number[]): void
   | dataIn | number[] | 是   | 要读取的短整数数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5160,13 +5373,17 @@ readShortArray(dataIn: number[]): void
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readShortArray
+### readShortArray<sup>(deprecated)</sup>
 
 readShortArray(): number[]
 
 从MessageParcel实例中读取短整数数组。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readShortArray](#readshortarray9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5177,8 +5394,9 @@ readShortArray(): number[]
   | number[] | 返回短整数数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5191,13 +5409,17 @@ readShortArray(): number[]
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeIntArray
+### writeIntArray<sup>(deprecated)</sup>
 
 writeIntArray(intArray: number[]): boolean
 
 将整数数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeIntArray](#writeintarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5214,8 +5436,9 @@ writeIntArray(intArray: number[]): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5226,13 +5449,17 @@ writeIntArray(intArray: number[]): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readIntArray
+### readIntArray<sup>(deprecated)</sup>
 
 readIntArray(dataIn: number[]): void
 
-从MessageParcel实例中读取整数数组。
+从MessageParcel实例中读取整数数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readIntArray](#readintarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5243,8 +5470,9 @@ readIntArray(dataIn: number[]): void
   | dataIn | number[] | 是   | 要读取的整数数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5258,13 +5486,17 @@ readIntArray(dataIn: number[]): void
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readIntArray
+### readIntArray<sup>(deprecated)</sup>
 
 readIntArray(): number[]
 
 从MessageParcel实例中读取整数数组。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readIntArray](#readintarray9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5275,8 +5507,9 @@ readIntArray(): number[]
   | number[] | 返回整数数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5289,13 +5522,17 @@ readIntArray(): number[]
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeLongArray
+### writeLongArray<sup>(deprecated)</sup>
 
 writeLongArray(longArray: number[]): boolean
 
 将长整数数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeLongArray](#writelongarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5312,8 +5549,9 @@ writeLongArray(longArray: number[]): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5324,13 +5562,17 @@ writeLongArray(longArray: number[]): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readLongArray
+### readLongArray<sup>(deprecated)</sup>
 
 readLongArray(dataIn: number[]): void
 
-从MessageParcel实例读取长整数数组。
+从MessageParcel实例中读取长整数数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readLongArray](#readlongarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5341,8 +5583,9 @@ readLongArray(dataIn: number[]): void
   | dataIn | number[] | 是   | 要读取的长整数数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5356,13 +5599,17 @@ readLongArray(dataIn: number[]): void
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readLongArray
+### readLongArray<sup>(deprecated)</sup>
 
 readLongArray(): number[]
 
 从MessageParcel实例中读取长整数数组。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readLongArray](#readlongarray9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5373,8 +5620,9 @@ readLongArray(): number[]
  | number[] | 返回长整数数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5387,13 +5635,17 @@ readLongArray(): number[]
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeFloatArray
+### writeFloatArray<sup>(deprecated)</sup>
 
 writeFloatArray(floatArray: number[]): boolean
 
 将双精度浮点数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeFloatArray](#writefloatarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5410,8 +5662,9 @@ writeFloatArray(floatArray: number[]): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5422,13 +5675,17 @@ writeFloatArray(floatArray: number[]): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readFloatArray
+### readFloatArray<sup>(deprecated)</sup>
 
 readFloatArray(dataIn: number[]): void
 
-从MessageParcel实例中读取双精度浮点数组。
+从MessageParcel实例中读取双精度浮点数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readFloatArray](#readfloatarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5439,8 +5696,9 @@ readFloatArray(dataIn: number[]): void
   | dataIn | number[] | 是   | 要读取的双精度浮点数组。由于系统内部对float类型的数据是按照double处理的，使用时对于数组所占的总字节数应按照double类型来计算。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5454,13 +5712,17 @@ readFloatArray(dataIn: number[]): void
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readFloatArray
+### readFloatArray<sup>(deprecated)</sup>
 
 readFloatArray(): number[]
 
 从MessageParcel实例中读取双精度浮点数组。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readFloatArray](#readfloatarray9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5471,8 +5733,9 @@ readFloatArray(): number[]
   | number[] | 返回双精度浮点数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5485,13 +5748,17 @@ readFloatArray(): number[]
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeDoubleArray
+### writeDoubleArray<sup>(deprecated)</sup>
 
 writeDoubleArray(doubleArray: number[]): boolean
 
 将双精度浮点数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeDoubleArray](#writedoublearray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5508,8 +5775,9 @@ writeDoubleArray(doubleArray: number[]): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5520,13 +5788,17 @@ writeDoubleArray(doubleArray: number[]): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readDoubleArray
+### readDoubleArray<sup>(deprecated)</sup>
 
 readDoubleArray(dataIn: number[]): void
 
-从MessageParcel实例中读取双精度浮点数组。
+从MessageParcel实例中读取双精度浮点数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readDoubleArray](#readdoublearray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5537,8 +5809,9 @@ readDoubleArray(dataIn: number[]): void
   | dataIn | number[] | 是   | 要读取的双精度浮点数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5552,13 +5825,17 @@ readDoubleArray(dataIn: number[]): void
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readDoubleArray
+### readDoubleArray<sup>(deprecated)</sup>
 
 readDoubleArray(): number[]
 
-从MessageParcel实例读取双精度浮点数组。
+从MessageParcel实例中读取双精度浮点数组。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readDoubleArray](#readdoublearray9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5569,8 +5846,9 @@ readDoubleArray(): number[]
   | number[] | 返回双精度浮点数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5583,13 +5861,17 @@ readDoubleArray(): number[]
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeBooleanArray
+### writeBooleanArray<sup>(deprecated)</sup>
 
 writeBooleanArray(booleanArray: boolean[]): boolean
 
 将布尔数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeBooleanArray](#writebooleanarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5606,8 +5888,9 @@ writeBooleanArray(booleanArray: boolean[]): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5618,13 +5901,17 @@ writeBooleanArray(booleanArray: boolean[]): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readBooleanArray
+### readBooleanArray<sup>(deprecated)</sup>
 
 readBooleanArray(dataIn: boolean[]): void
 
-从MessageParcel实例中读取布尔数组。
+从MessageParcel实例中读取布尔数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readBooleanArray](#readbooleanarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5635,8 +5922,9 @@ readBooleanArray(dataIn: boolean[]): void
   | dataIn | boolean[] | 是   | 要读取的布尔数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5650,13 +5938,17 @@ readBooleanArray(dataIn: boolean[]): void
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readBooleanArray
+### readBooleanArray<sup>(deprecated)</sup>
 
 readBooleanArray(): boolean[]
 
 从MessageParcel实例中读取布尔数组。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readBooleanArray](#readbooleanarray9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5667,8 +5959,9 @@ readBooleanArray(): boolean[]
   | boolean[] | 返回布尔数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5681,13 +5974,17 @@ readBooleanArray(): boolean[]
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeCharArray
+### writeCharArray<sup>(deprecated)</sup>
 
 writeCharArray(charArray: number[]): boolean
 
 将单个字符数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeCharArray](#writechararray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5704,8 +6001,9 @@ writeCharArray(charArray: number[]): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5716,13 +6014,17 @@ writeCharArray(charArray: number[]): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readCharArray
+### readCharArray<sup>(deprecated)</sup>
 
 readCharArray(dataIn: number[]): void
 
-从MessageParcel实例中读取单个字符数组。
+从MessageParcel实例中读取单个字符数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readCharArray](#readchararray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5733,8 +6035,9 @@ readCharArray(dataIn: number[]): void
   | dataIn | number[] | 是   | 要读取的单个字符数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5748,13 +6051,17 @@ readCharArray(dataIn: number[]): void
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readCharArray
+### readCharArray<sup>(deprecated)</sup>
 
 readCharArray(): number[]
 
-从MessageParcel实例读取单个字符数组。
+从MessageParcel实例中读取单个字符数组。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readCharArray](#readchararray9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5765,8 +6072,9 @@ readCharArray(): number[]
   | number[] | 返回单个字符数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5779,13 +6087,17 @@ readCharArray(): number[]
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeStringArray
+### writeStringArray<sup>(deprecated)</sup>
 
 writeStringArray(stringArray: string[]): boolean
 
 将字符串数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeStringArray](#writestringarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5802,8 +6114,9 @@ writeStringArray(stringArray: string[]): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5814,13 +6127,17 @@ writeStringArray(stringArray: string[]): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readStringArray
+### readStringArray<sup>(deprecated)</sup>
 
 readStringArray(dataIn: string[]): void
 
-从MessageParcel实例读取字符串数组。
+从MessageParcel实例中读取字符串数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readStringArray](#readstringarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5831,8 +6148,9 @@ readStringArray(dataIn: string[]): void
   | dataIn | string[] | 是   | 要读取的字符串数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5846,13 +6164,17 @@ readStringArray(dataIn: string[]): void
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readStringArray
+### readStringArray<sup>(deprecated)</sup>
 
 readStringArray(): string[]
 
-从MessageParcel实例读取字符串数组。
+从MessageParcel实例中读取字符串数组。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readStringArray](#readstringarray9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5863,8 +6185,9 @@ readStringArray(): string[]
   | string[] | 返回字符串数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5877,19 +6200,24 @@ readStringArray(): string[]
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeNoException<sup>8+</sup>
+### writeNoException<sup>(deprecated)</sup>
 
 writeNoException(): void
 
 向MessageParcel写入“指示未发生异常”的信息。
 
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeNoException](#writenoexception9)替代。
+
 **系统能力**：SystemCapability.Communication.IPC.Core
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5903,7 +6231,8 @@ writeNoException(): void
       super(descriptor);
     }
 
-    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
+    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel,
+      option: rpc.MessageOption): boolean {
       if (code === 1) {
         hilog.info(0x0000, 'testTag', 'RpcServer: onRemoteRequest called');
         reply.writeNoException();
@@ -5914,13 +6243,17 @@ writeNoException(): void
       }
     }
   }
-  ```
+```
 
-### readException<sup>8+</sup>
+### readException<sup>(deprecated)</sup>
 
 readException(): void
 
 从MessageParcel中读取异常。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[readException](#readexception9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5930,8 +6263,8 @@ readException(): void
 >
 >在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
-  ```ts
+<!--code_no_check-->
+```ts
   // FA模型需要从@kit.AbilityKit导入featureAbility
   // import { featureAbility } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
@@ -5963,11 +6296,11 @@ readException(): void
   let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
   // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
   let connectionId = context.connectServiceExtensionAbility(want, connect);
-  ```
+```
 
   上述onConnect回调函数中的proxy对象需要等ability异步连接成功后才会被赋值，然后才可调用proxy对象的sendRequest接口方法发送消息
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -6000,13 +6333,17 @@ readException(): void
   } catch (error) { 
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeSequenceableArray
+### writeSequenceableArray<sup>(deprecated)</sup>
 
 writeSequenceableArray(sequenceableArray: Sequenceable[]): boolean
 
 将可序列化对象数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeParcelableArray](#writeparcelablearray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6023,8 +6360,9 @@ writeSequenceableArray(sequenceableArray: Sequenceable[]): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -6058,13 +6396,17 @@ writeSequenceableArray(sequenceableArray: Sequenceable[]): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readSequenceableArray<sup>8+</sup>
+### readSequenceableArray<sup>(deprecated)</sup>
 
 readSequenceableArray(sequenceableArray: Sequenceable[]): void
 
-从MessageParcel实例读取可序列化对象数组。
+从MessageParcel实例中读取可序列化对象数组。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[readParcelableArray](#readparcelablearray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6075,8 +6417,9 @@ readSequenceableArray(sequenceableArray: Sequenceable[]): void
 | sequenceableArray | [Sequenceable](#sequenceabledeprecated)[] | 是   | 要读取的可序列化对象数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -6112,13 +6455,17 @@ readSequenceableArray(sequenceableArray: Sequenceable[]): void
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeRemoteObjectArray<sup>8+</sup>
+### writeRemoteObjectArray<sup>(deprecated)</sup>
 
 writeRemoteObjectArray(objectArray: IRemoteObject[]): boolean
 
 将IRemoteObject对象数组写入MessageParcel。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeRemoteObjectArray](#writeremoteobjectarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6135,8 +6482,9 @@ writeRemoteObjectArray(objectArray: IRemoteObject[]): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -6144,7 +6492,8 @@ writeRemoteObjectArray(objectArray: IRemoteObject[]): boolean
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
+    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel,
+      option: rpc.MessageOption): boolean {
       // 具体处理由业务决定
       return true;
     }
@@ -6158,13 +6507,17 @@ writeRemoteObjectArray(objectArray: IRemoteObject[]): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readRemoteObjectArray<sup>8+</sup>
+### readRemoteObjectArray<sup>(deprecated)</sup>
 
 readRemoteObjectArray(objects: IRemoteObject[]): void
 
-从MessageParcel读取IRemoteObject对象数组。
+从MessageParcel读取IRemoteObject对象数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[readRemoteObjectArray](#readremoteobjectarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6175,8 +6528,9 @@ readRemoteObjectArray(objects: IRemoteObject[]): void
   | objects | [IRemoteObject](#iremoteobject)[] | 是   | 从MessageParcel读取的IRemoteObject对象数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -6184,7 +6538,8 @@ readRemoteObjectArray(objects: IRemoteObject[]): void
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
+    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel,
+      option: rpc.MessageOption): boolean {
       // 具体处理由业务决定
       return true;
     }
@@ -6200,13 +6555,17 @@ readRemoteObjectArray(objects: IRemoteObject[]): void
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readRemoteObjectArray<sup>8+</sup>
+### readRemoteObjectArray<sup>(deprecated)</sup>
 
 readRemoteObjectArray(): IRemoteObject[]
 
 从MessageParcel读取IRemoteObject对象数组。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[readRemoteObjectArray](#readremoteobjectarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6217,8 +6576,9 @@ readRemoteObjectArray(): IRemoteObject[]
   | [IRemoteObject](#iremoteobject)[] | 返回IRemoteObject对象数组。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -6226,7 +6586,8 @@ readRemoteObjectArray(): IRemoteObject[]
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
+    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel,
+      option: rpc.MessageOption): boolean {
       // 具体处理由业务决定
       return true;
     }
@@ -6242,13 +6603,17 @@ readRemoteObjectArray(): IRemoteObject[]
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### closeFileDescriptor<sup>8+</sup>
+### closeFileDescriptor<sup>(deprecated)</sup>
 
 static closeFileDescriptor(fd: number): void
 
 静态方法，关闭给定的文件描述符。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[closeFileDescriptor](#closefiledescriptor9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6259,8 +6624,9 @@ static closeFileDescriptor(fd: number): void
   | fd     | number | 是   | 要关闭的文件描述符。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { fileIo } from '@kit.CoreFileKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -6272,13 +6638,17 @@ static closeFileDescriptor(fd: number): void
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### dupFileDescriptor<sup>8+</sup>
+### dupFileDescriptor<sup>(deprecated)</sup>
 
 static dupFileDescriptor(fd: number) :number
 
 静态方法，复制给定的文件描述符。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[dupFileDescriptor](#dupfiledescriptor9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6295,8 +6665,9 @@ static dupFileDescriptor(fd: number) :number
   | number | 返回新的文件描述符。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { fileIo } from '@kit.CoreFileKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -6308,13 +6679,17 @@ static dupFileDescriptor(fd: number) :number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### containFileDescriptors<sup>8+</sup>
+### containFileDescriptors<sup>(deprecated)</sup>
 
 containFileDescriptors(): boolean
 
 检查此MessageParcel对象是否包含文件描述符。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[containFileDescriptors](#containfiledescriptors9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6325,8 +6700,9 @@ containFileDescriptors(): boolean
   | boolean |true：包含文件描述符，false：未包含文件描述符。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { fileIo } from '@kit.CoreFileKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -6342,13 +6718,17 @@ containFileDescriptors(): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeFileDescriptor<sup>8+</sup>
+### writeFileDescriptor<sup>(deprecated)</sup>
 
 writeFileDescriptor(fd: number): boolean
 
 写入文件描述符到MessageParcel。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeFileDescriptor](#writefiledescriptor9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6365,8 +6745,9 @@ writeFileDescriptor(fd: number): boolean
   | boolean | true：操作成功，false：操作失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { fileIo } from '@kit.CoreFileKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -6380,13 +6761,17 @@ writeFileDescriptor(fd: number): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readFileDescriptor<sup>8+</sup>
+### readFileDescriptor<sup>(deprecated)</sup>
 
 readFileDescriptor(): number
 
 从MessageParcel中读取文件描述符。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[readFileDescriptor](#readfiledescriptor9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6397,8 +6782,9 @@ readFileDescriptor(): number
   | number | 返回文件描述符。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { fileIo } from '@kit.CoreFileKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -6413,13 +6799,17 @@ readFileDescriptor(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeAshmem<sup>8+</sup>
+### writeAshmem<sup>(deprecated)</sup>
 
 writeAshmem(ashmem: Ashmem): boolean
 
 将指定的匿名共享对象写入此MessageParcel。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeAshmem](#writeashmem9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6436,8 +6826,9 @@ writeAshmem(ashmem: Ashmem): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -6449,13 +6840,17 @@ writeAshmem(ashmem: Ashmem): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readAshmem<sup>8+</sup>
+### readAshmem<sup>(deprecated)</sup>
 
 readAshmem(): Ashmem
 
 从MessageParcel读取匿名共享对象。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[readAshmem](#readashmem9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6466,8 +6861,9 @@ readAshmem(): Ashmem
 | [Ashmem](#ashmem8) | 返回匿名共享对象。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -6481,13 +6877,17 @@ readAshmem(): Ashmem
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### getRawDataCapacity<sup>8+</sup>
+### getRawDataCapacity<sup>(deprecated)</sup>
 
 getRawDataCapacity(): number
 
 获取MessageParcel可以容纳的最大原始数据量。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[getRawDataCapacity](#getrawdatacapacity9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6498,8 +6898,9 @@ getRawDataCapacity(): number
   | number | 返回MessageParcel可以容纳的最大原始数据量，即128MB。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -6510,13 +6911,17 @@ getRawDataCapacity(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### writeRawData<sup>8+</sup>
+### writeRawData<sup>(deprecated)</sup>
 
 writeRawData(rawData: number[], size: number): boolean
 
 将原始数据写入MessageParcel对象。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeRawDataBffer](#writerawdatabuffer11)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6534,8 +6939,9 @@ writeRawData(rawData: number[], size: number): boolean
   | boolean | true：写入成功，false：写入失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -6547,13 +6953,17 @@ writeRawData(rawData: number[], size: number): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### readRawData<sup>8+</sup>
+### readRawData<sup>(deprecated)</sup>
 
 readRawData(size: number): number[]
 
 从MessageParcel读取原始数据。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[readRawDataBuffer](#readrawdatabuffer11)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6570,8 +6980,9 @@ readRawData(size: number): number[]
   | number[] | 返回原始数据（以字节为单位）。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -6585,7 +6996,7 @@ readRawData(size: number): number[]
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
 ## Parcelable<sup>9+</sup>
 
@@ -6613,7 +7024,7 @@ marshalling(dataOut: MessageSequence): boolean
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -6646,7 +7057,7 @@ marshalling(dataOut: MessageSequence): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
 ### unmarshalling<sup>9+</sup>
 
@@ -6670,7 +7081,7 @@ unmarshalling(dataIn: MessageSequence): boolean
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -6703,7 +7114,7 @@ unmarshalling(dataIn: MessageSequence): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
 ## Sequenceable<sup>(deprecated)</sup>
 
@@ -6711,13 +7122,17 @@ unmarshalling(dataIn: MessageSequence): boolean
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[Parcelable](#parcelable9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[Parcelable](#parcelable9)替代。
 
-### marshalling
+### marshalling<sup>(deprecated)</sup>
 
 marshalling(dataOut: MessageParcel): boolean
 
 将此可序列对象封送到MessageParcel中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[marshalling](#marshalling9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6734,8 +7149,9 @@ marshalling(dataOut: MessageParcel): boolean
   | boolean | true：封送成功，false：封送失败。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -6769,13 +7185,17 @@ marshalling(dataOut: MessageParcel): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
-### unmarshalling
+### unmarshalling<sup>(deprecated)</sup>
 
 unmarshalling(dataIn: MessageParcel): boolean
 
 从MessageParcel中解封此可序列对象。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[unmarshalling](#unmarshalling9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6792,8 +7212,9 @@ unmarshalling(dataIn: MessageParcel): boolean
   | boolean | true：反序列化成功，false：反序列化失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -6827,7 +7248,7 @@ unmarshalling(dataIn: MessageParcel): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
 ## IRemoteBroker
 
@@ -6849,7 +7270,7 @@ asObject(): IRemoteObject
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
 
   class TestAbility extends rpc.RemoteObject {
@@ -6858,7 +7279,7 @@ asObject(): IRemoteObject
     }
   }
   let remoteObject = new TestAbility("testObject").asObject();
-  ```
+```
 
 **示例：**
 
@@ -6866,8 +7287,8 @@ asObject(): IRemoteObject
 >
 >在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
-  ```ts
+<!--code_no_check-->
+```ts
   // FA模型需要从@kit.AbilityKit导入featureAbility
   // import { featureAbility } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
@@ -6899,11 +7320,11 @@ asObject(): IRemoteObject
   let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
   // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
   let connectionId = context.connectServiceExtensionAbility(want, connect);
-  ```
+```
 
   上述onConnect回调函数中的proxy对象需要等ability异步连接成功后才会被赋值，然后才可调用proxy对象的asObject接口方法获取代理或远端对象
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
 
   class TestProxy {
@@ -6918,7 +7339,7 @@ asObject(): IRemoteObject
   if (proxy != undefined) {
     let iRemoteObject = new TestProxy(proxy).asObject();
   }
-  ```
+```
 
 ## DeathRecipient
 
@@ -6934,7 +7355,7 @@ onRemoteDied(): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -6943,7 +7364,7 @@ onRemoteDied(): void
       hilog.info(0x0000, 'testTag', 'server died');
     }
   }
-  ```
+```
 
 ## RequestResult<sup>9+</sup>
 
@@ -7015,7 +7436,7 @@ queryLocalInterface(descriptor: string): IRemoteBroker
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[getLocalInterface](#getlocalinterface9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getLocalInterface](#getlocalinterface9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7039,7 +7460,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 > **说明：**
 >
-> 从API version 9开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7097,7 +7518,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7150,7 +7571,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-1)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7197,7 +7618,7 @@ addDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[registerDeathRecipient](#registerdeathrecipient9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[registerDeathRecipient](#registerdeathrecipient9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7247,7 +7668,7 @@ removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[unregisterDeathRecipient](#unregisterdeathrecipient9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[unregisterDeathRecipient](#unregisterdeathrecipient9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7294,7 +7715,7 @@ getInterfaceDescriptor(): string
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[getDescriptor](#getdescriptor9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getDescriptor](#getdescriptor9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7334,7 +7755,6 @@ isObjectDead(): boolean
   | MIN_TRANSACTION_ID    | number | 是    | 否   | 最小有效指令码。                          |
   | MAX_TRANSACTION_ID    | number | 是    | 否   | 最大有效指令码。                          |
 
-
 ### sendRequest<sup>(deprecated)</sup>
 
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): boolean
@@ -7343,7 +7763,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 > **说明：**
 >
-> 从API version 8 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-2)替代。
+> 从API version 7 开始支持，API version 8 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-2)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7368,8 +7788,8 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 >
 >在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
-  ```ts
+<!--code_no_check-->
+```ts
   // FA模型需要从@kit.AbilityKit导入featureAbility
   // import { featureAbility } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
@@ -7401,11 +7821,12 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
   let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
   // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
   let connectionId = context.connectServiceExtensionAbility(want, connect);
-  ```
+```
 
   上述onConnect回调函数中的proxy对象需要等ability异步连接成功后才会被赋值，然后才可调用proxy对象的sendRequest接口方法发送消息
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -7431,7 +7852,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error: ' + error);
   }
-  ```
+```
 
 ### sendMessageRequest<sup>9+</sup>
 
@@ -7456,7 +7877,6 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
   | ---------------------------- | ----------------------------------------- |
   | Promise&lt;[RequestResult](#requestresult9)&gt; | 返回一个期约，兑现值是requestResult实例。 |
 
-
 **错误码：**
 
 以下错误码的详细介绍请参见[ohos.rpc错误码](errorcode-rpc.md)
@@ -7471,8 +7891,8 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 >
 >在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
-  ```ts
+<!--code_no_check-->
+```ts
   // FA模型需要从@kit.AbilityKit导入featureAbility
   // import { featureAbility } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
@@ -7504,11 +7924,11 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
   let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
   // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
   let connectionId = context.connectServiceExtensionAbility(want, connect);
-  ```
+```
 
   上述onConnect回调函数中的proxy对象需要等ability异步连接成功后才会被赋值，然后才可调用proxy对象的sendMessageRequest接口方法发送消息
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -7541,7 +7961,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + error);
   }
-  ```
+```
 
 ### sendRequest<sup>(deprecated)</sup>
 
@@ -7551,7 +7971,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-2)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-2)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7576,8 +7996,8 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 >
 >在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
-  ```ts
+<!--code_no_check-->
+```ts
   // FA模型需要从@kit.AbilityKit导入featureAbility
   // import { featureAbility } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
@@ -7609,11 +8029,12 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
   let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
   // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
   let connectionId = context.connectServiceExtensionAbility(want, connect);
-  ```
+```
 
   上述onConnect回调函数中的proxy对象需要等ability异步连接成功后才会被赋值，然后才可调用proxy对象的sendRequest接口方法发送消息
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -7647,7 +8068,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'sendRequest failed, error: ' + error);
   }
-  ```
+```
 
 ### sendMessageRequest<sup>9+</sup>
 
@@ -7667,7 +8088,6 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
   | options  | [MessageOption](#messageoption)      | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
   | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | 是   | 接收发送结果的回调。                                                                   |
 
-
 **错误码：**
 
 以下错误码的详细介绍请参见[ohos.rpc错误码](errorcode-rpc.md)
@@ -7684,7 +8104,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-3)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-3)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7733,8 +8153,8 @@ getLocalInterface(interface: string): IRemoteBroker
 >
 >在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
-  ```ts
+<!--code_no_check-->
+```ts
   // FA模型需要从@kit.AbilityKit导入featureAbility
   // import { featureAbility } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
@@ -7766,11 +8186,12 @@ getLocalInterface(interface: string): IRemoteBroker
   let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
   // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
   let connectionId = context.connectServiceExtensionAbility(want, connect);
-  ```
+```
 
   上述onConnect回调函数中的proxy对象需要等ability异步连接成功后才会被赋值，然后才可调用proxy对象的getLocalInterface接口方法查询接口对象
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -7785,7 +8206,7 @@ getLocalInterface(interface: string): IRemoteBroker
       hilog.error(0x0000, 'testTag', 'rpc get local interface fail, errorMessage ' + e.message);
     }
   }
-  ```
+```
 
 ### queryLocalInterface<sup>(deprecated)</sup>
 
@@ -7795,7 +8216,7 @@ queryLocalInterface(interface: string): IRemoteBroker
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[getLocalInterface](#getlocalinterface9-1)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getLocalInterface](#getlocalinterface9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7817,8 +8238,8 @@ queryLocalInterface(interface: string): IRemoteBroker
 >
 >在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
-  ```ts
+<!--code_no_check-->
+```ts
   // FA模型需要从@kit.AbilityKit导入featureAbility
   // import { featureAbility } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
@@ -7850,11 +8271,12 @@ queryLocalInterface(interface: string): IRemoteBroker
   let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
   // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
   let connectionId = context.connectServiceExtensionAbility(want, connect);
-  ```
+```
 
   上述onConnect回调函数中的proxy对象需要等ability异步连接成功后才会被赋值，然后才可调用proxy对象的queryLocalInterface接口获取接口对象
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -7862,7 +8284,7 @@ queryLocalInterface(interface: string): IRemoteBroker
     let broker: rpc.IRemoteBroker = proxy.queryLocalInterface("testObject");
     hilog.info(0x0000, 'testTag', 'queryLocalInterface is ' + broker);
   }
-  ```
+```
 
 ### registerDeathRecipient<sup>9+</sup>
 
@@ -7894,8 +8316,8 @@ registerDeathRecipient(recipient: DeathRecipient, flags: number): void
 >
 >在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
-  ```ts
+<!--code_no_check-->
+```ts
   // FA模型需要从@kit.AbilityKit导入featureAbility
   // import { featureAbility } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
@@ -7927,11 +8349,11 @@ registerDeathRecipient(recipient: DeathRecipient, flags: number): void
   let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
   // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
   let connectionId = context.connectServiceExtensionAbility(want, connect);
-  ```
+```
 
   上述onConnect回调函数中的proxy对象需要等ability异步连接成功后才会被赋值，然后才可调用proxy对象的registerDeathRecipient接口注册死亡回调
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -7951,7 +8373,7 @@ registerDeathRecipient(recipient: DeathRecipient, flags: number): void
       hilog.error(0x0000, 'testTag', 'proxy register deathRecipient fail, errorMessage ' + e.message);
     }
   }
-  ```
+```
 
 ### addDeathRecipient<sup>(deprecated)</sup>
 
@@ -7961,7 +8383,7 @@ addDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[registerDeathRecipient](#registerdeathrecipient9-1)类替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[registerDeathRecipient](#registerdeathrecipient9-1)类替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7984,8 +8406,8 @@ addDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 >
 >在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
-  ```ts
+<!--code_no_check-->
+```ts
   // FA模型需要从@kit.AbilityKit导入featureAbility
   // import { featureAbility } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
@@ -8017,11 +8439,12 @@ addDeathRecipient(recipient: DeathRecipient, flags: number): boolean
   let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
   // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
   let connectionId = context.connectServiceExtensionAbility(want, connect);
-  ```
+```
 
   上述onConnect回调函数中的proxy对象需要等ability异步连接成功后才会被赋值，然后才可调用proxy对象的addDeathRecipient接口方法新增死亡回调
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -8034,7 +8457,7 @@ addDeathRecipient(recipient: DeathRecipient, flags: number): boolean
     let deathRecipient = new MyDeathRecipient();
     proxy.addDeathRecipient(deathRecipient, 0);
   }
-  ```
+```
 
 ### unregisterDeathRecipient<sup>9+</sup>
 
@@ -8066,8 +8489,8 @@ unregisterDeathRecipient(recipient: DeathRecipient, flags: number): void
 >
 >在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
-  ```ts
+<!--code_no_check-->
+```ts
   // FA模型需要从@kit.AbilityKit导入featureAbility
   // import { featureAbility } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
@@ -8099,11 +8522,11 @@ unregisterDeathRecipient(recipient: DeathRecipient, flags: number): void
   let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
   // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
   let connectionId = context.connectServiceExtensionAbility(want, connect);
-  ```
+```
 
   上述onConnect回调函数中的proxy对象需要等ability异步连接成功后才会被赋值，然后才可调用proxy对象的unregisterDeathRecipient接口方法注销死亡回调
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -8124,7 +8547,7 @@ unregisterDeathRecipient(recipient: DeathRecipient, flags: number): void
       hilog.error(0x0000, 'testTag', 'proxy unregister deathRecipient fail, errorMessage ' + e.message);
     }
   }
-  ```
+```
 
 ### removeDeathRecipient<sup>(deprecated)</sup>
 
@@ -8134,7 +8557,7 @@ removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[unregisterDeathRecipient](#unregisterdeathrecipient9-1)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[unregisterDeathRecipient](#unregisterdeathrecipient9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -8157,8 +8580,8 @@ removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 >
 >在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
-  ```ts
+<!--code_no_check-->
+```ts
   // FA模型需要从@kit.AbilityKit导入featureAbility
   // import { featureAbility } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
@@ -8190,11 +8613,12 @@ removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean
   let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
   // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
   let connectionId = context.connectServiceExtensionAbility(want, connect);
-  ```
+```
 
   上述onConnect回调函数中的proxy对象需要等ability异步连接成功后才会被赋值，然后才可调用proxy对象的removeDeathRecipient接口方法去注册死亡回调
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -8208,7 +8632,7 @@ removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean
     proxy.addDeathRecipient(deathRecipient, 0);
     proxy.removeDeathRecipient(deathRecipient, 0);
   }
-  ```
+```
 
 ### getDescriptor<sup>9+</sup>
 
@@ -8239,8 +8663,8 @@ getDescriptor(): string
 >
 >在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
-  ```ts
+<!--code_no_check-->
+```ts
   // FA模型需要从@kit.AbilityKit导入featureAbility
   // import { featureAbility } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
@@ -8272,10 +8696,11 @@ getDescriptor(): string
   let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
   // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
   let connectionId = context.connectServiceExtensionAbility(want, connect);
-  ```
+```
+
   上述onConnect回调函数中的proxy对象需要等ability异步连接成功后才会被赋值，然后才可调用proxy对象的getDescriptor接口方法获取对象的接口描述符
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -8290,7 +8715,7 @@ getDescriptor(): string
       hilog.error(0x0000, 'testTag', 'rpc get interface descriptor fail, errorMessage ' + e.message);
     }
   }
-  ```
+```
 
 ### getInterfaceDescriptor<sup>(deprecated)</sup>
 
@@ -8300,7 +8725,7 @@ getInterfaceDescriptor(): string
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[getDescriptor](#getdescriptor9-1)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getDescriptor](#getdescriptor9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -8316,8 +8741,8 @@ getInterfaceDescriptor(): string
 >
 >在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
-  ```ts
+<!--code_no_check-->
+```ts
   // FA模型需要从@kit.AbilityKit导入featureAbility
   // import { featureAbility } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
@@ -8349,11 +8774,12 @@ getInterfaceDescriptor(): string
   let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
   // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
   let connectionId = context.connectServiceExtensionAbility(want, connect);
-  ```
+```
 
   上述onConnect回调函数中的proxy对象需要等ability异步连接成功后才会被赋值，然后才可调用proxy对象的getInterfaceDescriptor接口方法查询当前代理对象接口的描述符
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -8361,7 +8787,7 @@ getInterfaceDescriptor(): string
     let descriptor: string = proxy.getInterfaceDescriptor();
     hilog.info(0x0000, 'testTag', 'descriptor is ' + descriptor);
   }
-  ```
+```
 
 ### isObjectDead
 
@@ -8383,8 +8809,8 @@ isObjectDead(): boolean
 >
 >在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
-  ```ts
+<!--code_no_check-->
+```ts
   // FA模型需要从@kit.AbilityKit导入featureAbility
   // import { featureAbility } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
@@ -8416,11 +8842,11 @@ isObjectDead(): boolean
   let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
   // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
   let connectionId = context.connectServiceExtensionAbility(want, connect);
-  ```
+```
 
   上述onConnect回调函数中的proxy对象需要等ability异步连接成功后才会被赋值，然后才可调用proxy对象的isObjectDead接口方法判断当前对象是否已经死亡
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -8428,7 +8854,7 @@ isObjectDead(): boolean
     let isDead: boolean = proxy.isObjectDead();
     hilog.info(0x0000, 'testTag', 'isObjectDead is ' + isDead);
   }
-  ```
+```
 
 ## MessageOption
 
@@ -8461,7 +8887,7 @@ MessageOption构造函数。
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
 
   class TestRemoteObject extends rpc.MessageOption {
@@ -8469,7 +8895,7 @@ MessageOption构造函数。
       super(async);
     }
   }
-  ```
+```
 
 ### constructor
 
@@ -8488,7 +8914,7 @@ MessageOption构造函数。
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
 
   class TestRemoteObject extends rpc.MessageOption {
@@ -8496,7 +8922,8 @@ MessageOption构造函数。
       super(syncFlags,waitTime);
     }
   }
-  ```
+```
+
 ### isAsync<sup>9+</sup>
 
 isAsync(): boolean
@@ -8513,7 +8940,7 @@ isAsync(): boolean
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -8523,11 +8950,11 @@ isAsync(): boolean
   } catch (error) {
     hilog.info(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
 ### setAsync<sup>9+</sup>
 
-setAsync(async: boolean): void
+setAsync(isAsync: boolean): void
 
 设置SendMessageRequest调用中确定同步或是异步的标志。
 
@@ -8537,11 +8964,11 @@ setAsync(async: boolean): void
 
 | 参数名 | 类型    | 必填 | 说明                                              |
 | ------ | ------- | ---- | ------------------------------------------------- |
-| async  | boolean | 是   | true：表示异步调用标志，false：表示同步调用标志。 |
+| isAsync | boolean | 是   | true：表示异步调用标志，false：表示同步调用标志。 |
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -8551,7 +8978,7 @@ setAsync(async: boolean): void
   } catch (error) {
     hilog.info(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
 ### getFlags
 
@@ -8569,7 +8996,7 @@ getFlags(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -8585,7 +9012,7 @@ getFlags(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
 ### setFlags
 
@@ -8603,7 +9030,7 @@ setFlags(flags: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -8616,7 +9043,7 @@ setFlags(flags: number): void
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
 ### getWaitTime
 
@@ -8634,7 +9061,7 @@ getWaitTime(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -8648,7 +9075,7 @@ getWaitTime(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
 ### setWaitTime
 
@@ -8666,7 +9093,7 @@ setWaitTime(waitTime: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -8678,7 +9105,7 @@ setWaitTime(waitTime: number): void
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
 ## IPCSkeleton
 
@@ -8700,7 +9127,7 @@ static getContextObject(): IRemoteObject
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -8710,7 +9137,7 @@ static getContextObject(): IRemoteObject
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
 ### getCallingPid
 
@@ -8728,12 +9155,13 @@ static getCallingPid(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   class Stub extends rpc.RemoteObject {
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       try {
         let callerPid = rpc.IPCSkeleton.getCallingPid();
         hilog.info(0x0000, 'testTag', 'RpcServer: getCallingPid result: ' + callerPid);
@@ -8742,8 +9170,8 @@ static getCallingPid(): number
       }
       return true;
     }
- }
-  ```
+  }
+```
 
 ### getCallingUid
 
@@ -8761,12 +9189,13 @@ static getCallingUid(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   class Stub extends rpc.RemoteObject {
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       try {
         let callerUid = rpc.IPCSkeleton.getCallingUid();
         hilog.info(0x0000, 'testTag', 'RpcServer: getCallingUid result: ' + callerUid);
@@ -8776,7 +9205,7 @@ static getCallingUid(): number
       return true;
     }
   }
-  ```
+```
 
 ### getCallingTokenId<sup>8+</sup>
 
@@ -8794,12 +9223,13 @@ static getCallingTokenId(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   class Stub extends rpc.RemoteObject {
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       try {
         let callerTokenId = rpc.IPCSkeleton.getCallingTokenId();
         hilog.info(0x0000, 'testTag', 'RpcServer: getCallingTokenId result: ' + callerTokenId);
@@ -8809,7 +9239,7 @@ static getCallingTokenId(): number
       return true;
     }
   }
-  ```
+```
 
 ### getCallingDeviceID
 
@@ -8827,12 +9257,13 @@ static getCallingDeviceID(): string
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   class Stub extends rpc.RemoteObject {
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       try {
         let callerDeviceID = rpc.IPCSkeleton.getCallingDeviceID();
         hilog.info(0x0000, 'testTag', 'RpcServer: callerDeviceID is ' + callerDeviceID);
@@ -8842,7 +9273,7 @@ static getCallingDeviceID(): string
       return true;
     }
   }
-  ```
+```
 
 ### getLocalDeviceID
 
@@ -8860,12 +9291,13 @@ static getLocalDeviceID(): string
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   class Stub extends rpc.RemoteObject {
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       try {
         let localDeviceID = rpc.IPCSkeleton.getLocalDeviceID();
         hilog.info(0x0000, 'testTag', 'RpcServer: localDeviceID is ' + localDeviceID);
@@ -8875,7 +9307,7 @@ static getLocalDeviceID(): string
       return true;
     }
   }
-  ```
+```
 
 ### isLocalCalling
 
@@ -8893,12 +9325,13 @@ static isLocalCalling(): boolean
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   class Stub extends rpc.RemoteObject {
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       try {
         let isLocalCalling = rpc.IPCSkeleton.isLocalCalling();
         hilog.info(0x0000, 'testTag', 'RpcServer: isLocalCalling is ' + isLocalCalling);
@@ -8908,7 +9341,7 @@ static isLocalCalling(): boolean
       return true;
     }
   }
-  ```
+```
 
 ### flushCmdBuffer<sup>9+</sup>
 
@@ -8934,7 +9367,7 @@ static flushCmdBuffer(object: IRemoteObject): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -8943,7 +9376,8 @@ static flushCmdBuffer(object: IRemoteObject): void
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
     }
@@ -8956,7 +9390,7 @@ static flushCmdBuffer(object: IRemoteObject): void
     hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, errorMessage ' + e.message);
   }
-  ```
+```
 
 ### flushCommands<sup>(deprecated)</sup>
 
@@ -8966,7 +9400,7 @@ static flushCommands(object: IRemoteObject): number
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[flushCmdBuffer](#flushcmdbuffer9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[flushCmdBuffer](#flushcmdbuffer9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -8983,8 +9417,9 @@ static flushCommands(object: IRemoteObject): number
   | number | 如果操作成功，返回0；如果输入对象为空或RemoteObject，或者操作失败，返回错误代码。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -8992,7 +9427,8 @@ static flushCommands(object: IRemoteObject): number
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
     }
@@ -9006,7 +9442,7 @@ static flushCommands(object: IRemoteObject): number
     hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, errorMessage ' + e.message);
   }
-  ```
+```
 
 ### resetCallingIdentity
 
@@ -9024,12 +9460,13 @@ static resetCallingIdentity(): string
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   class Stub extends rpc.RemoteObject {
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       try {
         let callingIdentity = rpc.IPCSkeleton.resetCallingIdentity();
         hilog.info(0x0000, 'testTag', 'RpcServer: callingIdentity is ' + callingIdentity);
@@ -9039,7 +9476,7 @@ static resetCallingIdentity(): string
       return true;
     }
   }
-  ```
+```
 
 ### restoreCallingIdentity<sup>9+</sup>
 
@@ -9065,12 +9502,13 @@ static restoreCallingIdentity(identity: string): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   class Stub extends rpc.RemoteObject {
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       try {
         let callingIdentity = rpc.IPCSkeleton.resetCallingIdentity();
         hilog.info(0x0000, 'testTag', 'RpcServer: callingIdentity is ' + callingIdentity);
@@ -9081,7 +9519,7 @@ static restoreCallingIdentity(identity: string): void
       return true;
     }
   }
-  ```
+```
 
 ### setCallingIdentity<sup>(deprecated)</sup>
 
@@ -9091,7 +9529,7 @@ static setCallingIdentity(identity: string): boolean
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[restoreCallingIdentity](#restorecallingidentity9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[restoreCallingIdentity](#restorecallingidentity9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -9108,13 +9546,15 @@ static setCallingIdentity(identity: string): boolean
   | boolean | true：设置成功，false：设置失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   class Stub extends rpc.RemoteObject {
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       try {
         let callingIdentity = rpc.IPCSkeleton.resetCallingIdentity();
         hilog.info(0x0000, 'testTag', 'RpcServer: callingIdentity is ' + callingIdentity);
@@ -9126,7 +9566,7 @@ static setCallingIdentity(identity: string): boolean
       return true;
     }
   }
-  ```
+```
 
 ## RemoteObject
 
@@ -9148,7 +9588,7 @@ RemoteObject构造函数。
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
 
   class TestRemoteObject extends rpc.RemoteObject {
@@ -9156,7 +9596,8 @@ RemoteObject构造函数。
       super(descriptor);
     }
   }
-  ```
+```
+
 ### sendRequest<sup>(deprecated)</sup>
 
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): boolean
@@ -9165,7 +9606,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 > **说明：**
 >
-> 从API version 8 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-4)替代。
+> 从API version 7 开始支持，API version 8 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-4)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -9185,13 +9626,15 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
   | boolean | true：发送成功，false：发送失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   class testRemoteObject extends rpc.RemoteObject {
-    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
+    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel,
+      option: rpc.MessageOption): boolean {
       // 根据业务实际逻辑，进行相应处理
       return true;
     }
@@ -9217,7 +9660,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
 ### sendMessageRequest<sup>9+</sup>
 
@@ -9252,7 +9695,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -9260,7 +9703,8 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
     }
@@ -9293,7 +9737,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + error);
   }
-  ```
+```
 
 ### sendRequest<sup>(deprecated)</sup>
 
@@ -9303,7 +9747,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-4)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-4)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -9323,8 +9767,9 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 | Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | 返回一个期约，兑现值是sendRequestResult实例。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -9332,7 +9777,8 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
+    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel,
+      option: rpc.MessageOption): boolean {
       // 根据业务实际逻辑，进行相应处理
       return true;
     }
@@ -9366,7 +9812,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error: ' + error);
   }
-  ```
+```
 
 ### sendMessageRequest<sup>9+</sup>
 
@@ -9402,7 +9848,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-5)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-5)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -9446,7 +9892,7 @@ sendMessageRequest请求的响应处理函数，服务端在该函数里同步�
 
 **重载onRemoteMessageRequest方法同步处理请求示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -9455,7 +9901,8 @@ sendMessageRequest请求的响应处理函数，服务端在该函数里同步�
       super(descriptor);
     }
 
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       if (code === 1) {
         hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
         return true;
@@ -9465,11 +9912,11 @@ sendMessageRequest请求的响应处理函数，服务端在该函数里同步�
       }
     }
   }
-  ```
+```
 
   **重载onRemoteMessageRequest方法异步处理请求示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -9478,7 +9925,8 @@ sendMessageRequest请求的响应处理函数，服务端在该函数里同步�
       super(descriptor);
     }
 
-    async onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): Promise<boolean> {
+    async onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): Promise<boolean> {
       if (code === 1) {
         hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
       } else {
@@ -9491,11 +9939,11 @@ sendMessageRequest请求的响应处理函数，服务端在该函数里同步�
       return true;
     }
   }
-  ```
+```
 
 **同时重载onRemoteMessageRequest和onRemoteRequest方法同步处理请求示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -9504,7 +9952,8 @@ sendMessageRequest请求的响应处理函数，服务端在该函数里同步�
       super(descriptor);
     }
 
-    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
+    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel,
+      option: rpc.MessageOption): boolean {
        if (code === 1) {
           hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
           return true;
@@ -9514,7 +9963,8 @@ sendMessageRequest请求的响应处理函数，服务端在该函数里同步�
        }
     }
       // 同时调用仅会执行onRemoteMessageRequest
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       if (code === 1) {
         hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
       } else {
@@ -9524,11 +9974,11 @@ sendMessageRequest请求的响应处理函数，服务端在该函数里同步�
       return true;
     }
   }
-  ```
+```
 
   **同时重载onRemoteMessageRequest和onRemoteRequest方法异步处理请求示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   class TestRemoteObject extends rpc.RemoteObject {
@@ -9536,7 +9986,8 @@ sendMessageRequest请求的响应处理函数，服务端在该函数里同步�
       super(descriptor);
     }
 
-    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
+    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel,
+      option: rpc.MessageOption): boolean {
       if (code === 1) {
         hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteRequest is called');
         return true;
@@ -9546,7 +9997,8 @@ sendMessageRequest请求的响应处理函数，服务端在该函数里同步�
       }
     }
     // 同时调用仅会执行onRemoteMessageRequest
-    async onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): Promise<boolean> {
+    async onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): Promise<boolean> {
       if (code === 1) {
         hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
       } else {
@@ -9559,7 +10011,7 @@ sendMessageRequest请求的响应处理函数，服务端在该函数里同步�
       return true;
     }
   }
-  ```
+```
 
 ### onRemoteRequest<sup>(deprecated)</sup>
 
@@ -9569,7 +10021,7 @@ sendRequest请求的响应处理函数，服务端在该函数里处理请求，
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[onRemoteMessageRequest](#onremotemessagerequest9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[onRemoteMessageRequest](#onremotemessagerequest9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -9589,8 +10041,9 @@ sendRequest请求的响应处理函数，服务端在该函数里处理请求，
   | boolean | true：操作成功，false：操作失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -9598,7 +10051,8 @@ sendRequest请求的响应处理函数，服务端在该函数里处理请求，
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
+    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel,
+      option: rpc.MessageOption): boolean {
       if (code === 1) {
         hilog.info(0x0000, 'testTag', 'RpcServer: onRemoteRequest called');
         return true;
@@ -9608,7 +10062,7 @@ sendRequest请求的响应处理函数，服务端在该函数里处理请求，
       }
     }
   }
-  ```
+```
 
 ### getCallingUid
 
@@ -9625,7 +10079,7 @@ getCallingUid(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -9633,7 +10087,8 @@ getCallingUid(): number
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
     }
@@ -9644,7 +10099,7 @@ getCallingUid(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error: ' + error);
   }
-  ```
+```
 
 ### getCallingPid
 
@@ -9662,7 +10117,7 @@ getCallingPid(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -9670,7 +10125,8 @@ getCallingPid(): number
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
     }
@@ -9681,7 +10137,7 @@ getCallingPid(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error: ' + error);
   }
-  ```
+```
 
 ### getLocalInterface<sup>9+</sup>
 
@@ -9713,7 +10169,7 @@ getLocalInterface(descriptor: string): IRemoteBroker
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -9722,7 +10178,8 @@ getLocalInterface(descriptor: string): IRemoteBroker
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
     }
@@ -9735,7 +10192,7 @@ getLocalInterface(descriptor: string): IRemoteBroker
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### queryLocalInterface<sup>(deprecated)</sup>
 
@@ -9745,7 +10202,7 @@ queryLocalInterface(descriptor: string): IRemoteBroker
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[getLocalInterface](#getlocalinterface9-2)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getLocalInterface](#getlocalinterface9-2)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -9762,8 +10219,9 @@ queryLocalInterface(descriptor: string): IRemoteBroker
   | [IRemoteBroker](#iremotebroker) | 如果接口描述符对应的远端对象存在，则返回该远端对象，否则返回Null。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -9771,7 +10229,8 @@ queryLocalInterface(descriptor: string): IRemoteBroker
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
     }
@@ -9782,7 +10241,7 @@ queryLocalInterface(descriptor: string): IRemoteBroker
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error: ' + error);
   }
-  ```
+```
 
 ### getDescriptor<sup>9+</sup>
 
@@ -9808,7 +10267,7 @@ getDescriptor(): string
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -9817,7 +10276,8 @@ getDescriptor(): string
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
     }
@@ -9831,7 +10291,7 @@ getDescriptor(): string
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### getInterfaceDescriptor<sup>(deprecated)</sup>
 
@@ -9841,7 +10301,7 @@ getInterfaceDescriptor(): string
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[getDescriptor](#getdescriptor9-2)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getDescriptor](#getdescriptor9-2)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -9852,8 +10312,9 @@ getInterfaceDescriptor(): string
   | string | 返回接口描述符。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -9861,7 +10322,8 @@ getInterfaceDescriptor(): string
     constructor(descriptor: string) {
       super(descriptor);
     }
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
     }
@@ -9874,7 +10336,7 @@ getInterfaceDescriptor(): string
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
 ### modifyLocalInterface<sup>9+</sup>
 
@@ -9901,7 +10363,7 @@ modifyLocalInterface(localInterface: IRemoteBroker, descriptor: string): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -9930,7 +10392,7 @@ modifyLocalInterface(localInterface: IRemoteBroker, descriptor: string): void
     }
   }
   let testRemoteObject = new TestRemoteObject("testObject");
-  ```
+```
 
 ### attachLocalInterface<sup>(deprecated)</sup>
 
@@ -9940,7 +10402,7 @@ attachLocalInterface(localInterface: IRemoteBroker, descriptor: string): void
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[modifyLocalInterface](#modifylocalinterface9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[modifyLocalInterface](#modifylocalinterface9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -9952,8 +10414,9 @@ attachLocalInterface(localInterface: IRemoteBroker, descriptor: string): void
 | descriptor     | string                          | 是   | 用于与IRemoteBroker对象绑定的描述符。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -9978,7 +10441,7 @@ attachLocalInterface(localInterface: IRemoteBroker, descriptor: string): void
 
   }
   let testRemoteObject = new TestRemoteObject("testObject");
-  ```
+```
 
 ## Ashmem<sup>8+</sup>
 
@@ -10027,7 +10490,7 @@ static create(name: string, size: number): Ashmem
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -10042,7 +10505,7 @@ static create(name: string, size: number): Ashmem
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### createAshmem<sup>(deprecated)</sup>
 
@@ -10052,7 +10515,7 @@ static createAshmem(name: string, size: number): Ashmem
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[create](#create9)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[create](#create9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10070,8 +10533,9 @@ static createAshmem(name: string, size: number): Ashmem
 | [Ashmem](#ashmem8) | 返回创建的Ashmem对象；如果创建失败，返回null。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -10083,8 +10547,7 @@ static createAshmem(name: string, size: number): Ashmem
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-
-  ```
+```
 
 ### create<sup>9+</sup>
 
@@ -10116,7 +10579,7 @@ static create(ashmem: Ashmem): Ashmem
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -10131,7 +10594,7 @@ static create(ashmem: Ashmem): Ashmem
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### createAshmemFromExisting<sup>(deprecated)</sup>
 
@@ -10141,7 +10604,7 @@ static createAshmemFromExisting(ashmem: Ashmem): Ashmem
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[create](#create9-1)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[create](#create9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10158,8 +10621,9 @@ static createAshmemFromExisting(ashmem: Ashmem): Ashmem
 | [Ashmem](#ashmem8) | 返回创建的Ashmem对象。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -10171,7 +10635,7 @@ static createAshmemFromExisting(ashmem: Ashmem): Ashmem
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error is ' + error);
   }
-  ```
+```
 
 ### closeAshmem<sup>8+</sup>
 
@@ -10187,7 +10651,7 @@ closeAshmem(): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -10197,7 +10661,7 @@ closeAshmem(): void
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error is ' + error);
   }
-  ```
+```
 
 ### unmapAshmem<sup>8+</sup>
 
@@ -10209,7 +10673,7 @@ unmapAshmem(): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -10219,7 +10683,7 @@ unmapAshmem(): void
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error is ' + error);
   }
-  ```
+```
 
 ### getAshmemSize<sup>8+</sup>
 
@@ -10237,7 +10701,7 @@ getAshmemSize(): number
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -10248,7 +10712,7 @@ getAshmemSize(): number
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error is ' + error);
   }
-  ```
+```
 
 ### mapTypedAshmem<sup>9+</sup>
 
@@ -10275,7 +10739,7 @@ mapTypedAshmem(mapType: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -10288,7 +10752,7 @@ mapTypedAshmem(mapType: number): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### mapAshmem<sup>(deprecated)</sup>
 
@@ -10298,7 +10762,7 @@ mapAshmem(mapType: number): boolean
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[mapTypedAshmem](#maptypedashmem9)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[mapTypedAshmem](#maptypedashmem9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10315,8 +10779,9 @@ mapAshmem(mapType: number): boolean
   | boolean | true：映射成功，false：映射失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -10327,7 +10792,7 @@ mapAshmem(mapType: number): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error is ' + error);
   }
-  ```
+```
 
 ### mapReadWriteAshmem<sup>9+</sup>
 
@@ -10347,7 +10812,7 @@ mapReadWriteAshmem(): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -10360,7 +10825,7 @@ mapReadWriteAshmem(): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### mapReadAndWriteAshmem<sup>(deprecated)</sup>
 
@@ -10370,7 +10835,7 @@ mapReadAndWriteAshmem(): boolean
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[mapReadWriteAshmem](#mapreadwriteashmem9)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[mapReadWriteAshmem](#mapreadwriteashmem9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10381,8 +10846,9 @@ mapReadAndWriteAshmem(): boolean
   | boolean | true：映射成功，false：映射失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -10393,7 +10859,7 @@ mapReadAndWriteAshmem(): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error is ' + error);
   }
-  ```
+```
 
 ### mapReadonlyAshmem<sup>9+</sup>
 
@@ -10413,7 +10879,7 @@ mapReadonlyAshmem(): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -10426,7 +10892,7 @@ mapReadonlyAshmem(): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### mapReadOnlyAshmem<sup>(deprecated)</sup>
 
@@ -10436,7 +10902,7 @@ mapReadOnlyAshmem(): boolean
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[mapReadonlyAshmem](#mapreadonlyashmem9)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[mapReadonlyAshmem](#mapreadonlyashmem9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10447,8 +10913,9 @@ mapReadOnlyAshmem(): boolean
   | boolean | true：映射成功，false：映射失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -10459,7 +10926,7 @@ mapReadOnlyAshmem(): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error is ' + error);
   }
-  ```
+```
 
 ### setProtectionType<sup>9+</sup>
 
@@ -10486,7 +10953,7 @@ setProtectionType(protectionType: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -10499,7 +10966,7 @@ setProtectionType(protectionType: number): void
     hilog.error(0x0000, 'testTag', 'Rpc set protection type fail, errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'Rpc set protection type fail, errorMessage ' + e.message);
   }
-  ```
+```
 
 ### setProtection<sup>(deprecated)</sup>
 
@@ -10509,7 +10976,7 @@ setProtection(protectionType: number): boolean
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[setProtectionType](#setprotectiontype9)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[setProtectionType](#setprotectiontype9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10526,8 +10993,9 @@ setProtection(protectionType: number): boolean
   | boolean | true：设置成功，false：设置失败。|
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -10539,7 +11007,7 @@ setProtection(protectionType: number): boolean
     let e: BusinessError = error as BusinessError;
     hilog.error(0x0000, 'testTag', 'error ' + error);
   }
-  ```
+```
 
 ### writeDataToAshmem<sup>11+</sup>
 
@@ -10572,7 +11040,7 @@ writeDataToAshmem(buf: ArrayBuffer, size: number, offset: number): void
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -10592,7 +11060,7 @@ writeDataToAshmem(buf: ArrayBuffer, size: number, offset: number): void
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeAshmem<sup>(deprecated)</sup>
 
@@ -10602,8 +11070,8 @@ writeAshmem(buf: number[], size: number, offset: number): void
 
 > **说明：**
 >
-> 从API version 9 开始支持，从API version 11 开始废弃，建议使用[writeDataToAshmem](#writedatatoashmem11)替代。
-> 
+> 从API version 9 开始支持，API version 11 开始废弃，建议使用[writeDataToAshmem](#writedatatoashmem11)替代。
+>
 > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem9)进行映射。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
@@ -10626,8 +11094,9 @@ writeAshmem(buf: number[], size: number, offset: number): void
   | 1900003  | Failed to write data to the shared memory. |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -10642,7 +11111,7 @@ writeAshmem(buf: number[], size: number, offset: number): void
     hilog.error(0x0000, 'testTag', 'Rpc write to ashmem fail, errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'Rpc write to ashmem fail, errorMessage ' + e.message);
   }
-  ```
+```
 
 ### writeToAshmem<sup>(deprecated)</sup>
 
@@ -10652,8 +11121,8 @@ writeToAshmem(buf: number[], size: number, offset: number): boolean
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[writeDataToAshmem](#writedatatoashmem11)替代。
-> 
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeDataToAshmem](#writedatatoashmem11)替代。
+>
 > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem9)进行映射。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
@@ -10673,8 +11142,9 @@ writeToAshmem(buf: number[], size: number, offset: number): boolean
   | boolean | true：如果数据写入成功，false：在其他情况下，如数据写入越界或未获得写入权限。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -10688,7 +11158,7 @@ writeToAshmem(buf: number[], size: number, offset: number): boolean
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error is ' + error);
   }
-  ```
+```
 
 ### readDataFromAshmem<sup>11+</sup>
 
@@ -10726,7 +11196,7 @@ readDataFromAshmem(size: number, offset: number): ArrayBuffer
 
 **示例：**
 
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -10749,7 +11219,7 @@ readDataFromAshmem(size: number, offset: number): ArrayBuffer
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readAshmem<sup>(deprecated)</sup>
 
@@ -10759,10 +11229,9 @@ readAshmem(size: number, offset: number): number[]
 
 > **说明：**
 >
-> 从API version 9 开始支持，从API version 11 开始废弃，建议使用[readDataFromAshmem](#readdatafromashmem11)替代。
-> 
+> 从API version 9 开始支持，API version 11 开始废弃，建议使用[readDataFromAshmem](#readdatafromashmem11)替代。
+>
 > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem9)进行映射。
-
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10789,8 +11258,9 @@ readAshmem(size: number, offset: number): number[]
   | 1900004  | Failed to read data from the shared memory. |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
-  ```ts
+```ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -10807,7 +11277,7 @@ readAshmem(size: number, offset: number): number[]
     hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
   }
-  ```
+```
 
 ### readFromAshmem<sup>(deprecated)</sup>
 
@@ -10817,8 +11287,8 @@ readFromAshmem(size: number, offset: number): number[]
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[readDataFromAshmem](#readdatafromashmem11)替代。
-> 
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[readDataFromAshmem](#readdatafromashmem11)替代。
+>
 > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem9)进行映射。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
@@ -10837,8 +11307,9 @@ readFromAshmem(size: number, offset: number): number[]
   | number[] | 返回读取的数据。 |
 
 **示例：**
+
 <!--deprecated_code_no_check-->
- ``` ts
+``` ts
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -10854,4 +11325,4 @@ readFromAshmem(size: number, offset: number): number[]
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'error is ' + error);
   }
- ```
+```

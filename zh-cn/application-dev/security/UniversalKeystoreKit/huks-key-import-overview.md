@@ -7,11 +7,14 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-如果业务在HUKS外部生成密钥（比如应用间协商生成、服务器端生成），业务可以将密钥导入到HUKS中由HUKS进行管理。密钥一旦导入到HUKS中，在密钥的生命周期内，其明文仅在安全环境中进行访问操作，不会传递出安全环境，保证任何人都无法获取到密钥的明文。
+如果业务在HUKS外部生成密钥（比如应用间协商生成、服务器端生成），业务可以将密钥导入到HUKS中由HUKS进行管理。密钥一旦导入到HUKS中，在密钥的生命周期内，其明文仅在安全环境中进行访问操作，不会传递出安全环境。
 
 密钥导入的方式包含明文导入和加密导入两种方式。
-> **注意：**
+> **说明：**
+>
 > 使用现有密钥别名作为导入的密钥别名会把现有密钥覆盖。
+
+从API 23开始支持[群组密钥](huks-group-key-overview.md)特性。
 
 ## 明文导入
 
@@ -21,6 +24,7 @@
 
 - 不推荐使用该方式导入的密钥类型：对称密钥、非对称密钥对。
   > **说明：**
+  >
   > <!--RP2-->轻量级设备<!--RP2End-->只支持明文导入，不支持加密导入。
 
 ## 加密导入
@@ -43,6 +47,7 @@
 导出密钥接口返回的[公钥明文材料是按照**X.509**格式封装](huks-concepts.md#公钥材料格式)，导入加密密钥接口中的密钥材料需满足**Length<sub>Data</sub>-Data**的格式封装，形如：[(Length<sub>part1</sub>Data<sub>part1</sub>)……(Length<sub>partn</sub>Data<sub>partn</sub>)]。
 
 > **说明：**
+>
 > 1. 加密导入密钥时，协商算法支持ECDH和X25519，协商后的Shared_Key使用AES-GCM算法加密Caller_Kek。对应算法套件定义见[HuksUnwrapSuite](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksunwrapsuite9)。
 > 2. 加密导入不支持X.509格式。
 > 3. <!--RP2-->轻量级设备<!--RP2End-->只支持明文导入，不支持加密导入。
@@ -55,16 +60,16 @@
 | 业务公钥Caller_Pk | L<sub>Caller_Pk</sub>字节 |
 | Shared_Key加密参数AAD2长度L<sub>AAD2</sub> | 4字节 |
 | Shared_Key加密参数AAD2 | L<sub>AAD2</sub>字节 |
-| Shared_Key加密参数Nonce2长度L<sub>Nonce2</sub> | 4字节 |
-| Shared_Key加密参数Nonce2 | L<sub>Nonce2</sub>字节 |
+| Shared_Key加密参数NONCE2长度L<sub>NONCE2</sub> | 4字节 |
+| Shared_Key加密参数NONCE2 | L<sub>NONCE2</sub>字节 |
 | Shared_Key加密参数TAG2长度L<sub>TAG2</sub> | 4字节 |
 | Shared_Key加密参数TAG2 | L<sub>TAG2</sub>字节 |
 | Caller_Kek密文长度L<sub>Caller_Kek_enc</sub> | 4字节 |
 | Caller_Kek密文Caller_Kek_enc | L<sub>Caller_Kek_enc</sub>字节 |
 | Caller_Kek加密参数AAD3长度L<sub>AAD3</sub> | 4字节 |
 | Caller_Kek加密参数AAD3 | L<sub>AAD3</sub>字节 |
-| Caller_Kek加密参数Nonce3长度L<sub>Nonce3</sub> | 4字节 |
-| Caller_Kek加密参数Nonce3 | L<sub>Nonce3</sub>字节 |
+| Caller_Kek加密参数NONCE3长度L<sub>NONCE3</sub> | 4字节 |
+| Caller_Kek加密参数NONCE3 | L<sub>NONCE3</sub>字节 |
 | Caller_Kek加密参数TAG3长度L<sub>TAG3</sub> | 4字节 |
 | Caller_Kek加密参数TAG3 | L<sub>TAG3</sub>字节 |
 | 密钥明文材料长度的长度L<sub>To_Import_Key_size</sub> | 4字节 |
@@ -82,6 +87,7 @@
 <!--DelEnd-->
 
 > **说明：**
+>
 > 导入RSA密钥时，公钥必须大于或者等于65537。
 
 **<!--RP1-->标准设备<!--RP1End-->规格**

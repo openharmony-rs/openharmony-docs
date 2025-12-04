@@ -7,6 +7,10 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct NNRTDeviceDesc NNRTDeviceDesc
+```
+
 ## 概述
 
 NNRt设备信息描述，包含设备ID，设备名称等信息。

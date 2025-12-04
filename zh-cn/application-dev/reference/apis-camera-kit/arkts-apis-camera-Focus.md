@@ -6,14 +6,14 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+Focus 继承自 [FocusQuery](arkts-apis-camera-FocusQuery.md)。
+
+对焦类，对设备对焦操作。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 11开始支持。
-
-Focus 继承自 [FocusQuery](arkts-apis-camera-FocusQuery.md)。
-
-对焦类，对设备对焦操作。
 
 ## 导入模块
 
@@ -77,7 +77,7 @@ getFocusMode(): FocusMode
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| [FocusMode](arkts-apis-camera-e.md#focusmode)   | 获取当前设备的焦距模式。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+| [FocusMode](arkts-apis-camera-e.md#focusmode)   | 获取当前设备的焦距模式。接口调用失败会抛出相应错误码并返回undefined，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
 
 **错误码：**
 

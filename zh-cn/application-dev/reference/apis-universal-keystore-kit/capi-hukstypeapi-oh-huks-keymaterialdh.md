@@ -7,6 +7,10 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+```c
+struct OH_Huks_KeyMaterialDh {...}
+```
+
 ## 概述
 
 定义Dh密钥的结构体类型。

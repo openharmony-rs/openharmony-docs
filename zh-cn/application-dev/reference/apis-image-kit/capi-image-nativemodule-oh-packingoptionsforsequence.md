@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_PackingOptionsForSequence OH_PackingOptionsForSequence
+```
+
 ## 概述
 
 图像序列编码选项。

@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVPlayer OH_AVPlayer
+```
+
 ## 概述
 
 初始化AVPlayer。

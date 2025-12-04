@@ -51,26 +51,29 @@ If the security component cannot be called to save images and videos in your dev
 
 3. Create a [DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#constructor12) instance, and call [save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save) to start the FilePicker page to save the document.
 
-   ```ts
-   let uris: string[] = [];
-   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-   let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
-   const documentViewPicker = new picker.DocumentViewPicker(context);
-   documentViewPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
-     uris = documentSaveResult;
-     console.info('documentViewPicker.save to file succeed and uris are:' + uris);
-   }).catch((err: BusinessError) => {
-     console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
-   })
-   ```
+   <!--@[save_file_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
+      let uris: string[] = [];
+      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const documentViewPicker = new picker.DocumentViewPicker(context);
+      documentViewPicker.save(documentSaveOptions).then((documentSaveResult: string[]) => {
+        uris = documentSaveResult;
+        console.info('documentViewPicker.save to file succeed and uris are:' + uris);
+		// ···
+      }).catch((err: BusinessError) => {
+        console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
+      });
+```
+
 
    > **NOTE**
    >
-   > 1. URI storage:
-   >	 - You should avoid directly using a URI in the Picker callback.
-   >	 - You are advised to define a global variable to save the URI for future use.
+   > - URI storage:
+   > 	- You should avoid directly using a URI in the Picker callback.
+   > 	- You are advised to define a global variable to save the URI for future use.
    >
-   > 2. Quick saving:
+   > - Quick saving:
    > 	- You can directly access the download directory in [DOWNLOAD mode](#saving-files-to-the-download-directory).
 
 4. After the application UI is returned from FilePicker, you can call [fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync) to open a document based on the URI. The FD is returned after the document is opened.
@@ -113,26 +116,29 @@ If the security component cannot be called to save images and videos in your dev
 
 3. Create an [AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker) instance and call [save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save-5) to start the FilePicker page to save the audio clip.
 
-   ```ts
-   let uris: string[] = [];
-   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;  
-   const audioViewPicker = new picker.AudioViewPicker(context);
-   audioViewPicker.save(audioSaveOptions).then((audioSelectResult: Array<string>) => {
-     uris = audioSelectResult;
-     console.info('audioViewPicker.save to file succeed and uri is:' + uris);
-   }).catch((err: BusinessError) => {
-     console.error(`Invoke audioViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
-   })
-   ```
+   <!--@[audio_save_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
+      let uris: string[] = [];
+      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const audioViewPicker = new picker.AudioViewPicker(context);
+      audioViewPicker.save(audioSaveOptions).then((audioSelectResult: string[]) => {
+        uris = audioSelectResult;
+        console.info('audioViewPicker.save to file succeed and uri is:' + uris);
+		// ···
+      }).catch((err: BusinessError) => {
+        console.error(`Invoke audioViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
+      });
+```
+
 
    > **NOTE**
    >
-   > 1. URI storage:
+   > - URI storage:
    > 	- You should avoid directly using a URI in the Picker callback.
    > 	- You are advised to define a global variable to save the URI for future use.
    >
-   > 2. Quick saving:
+   > - Quick saving:
    > 	- You can directly access the download directory in [DOWNLOAD mode](#saving-files-to-the-download-directory).
 
 4. After the application UI is returned from FilePicker, call [fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync) to open an audio clip based on the URI. The FD is returned after the audio clip is opened.

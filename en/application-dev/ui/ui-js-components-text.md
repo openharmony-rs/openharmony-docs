@@ -1,10 +1,10 @@
-# &lt;text&gt; Development
+# text Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **&lt;text&gt;** component is used to display a piece of textual information. For details, see [text](../reference/apis-arkui/arkui-js/js-components-basic-text.md).
 

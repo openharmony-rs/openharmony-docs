@@ -37,6 +37,10 @@ If the HiLog API is called in the service code, HiLog logs are generated during 
 
 ### Log Format
 
+```text
+04-19 17:02:14.735  5394  5394 I A03200/testTag: this is a info level hilog
+```
+
 | Column 1| Column 2| Column 3| Column 4|  Column 5| Column 6| Column 7|
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
 | Date| Timestamp| Process ID| Thread ID| Log level| **domainID**/Log tag:| Log content|
@@ -53,66 +57,66 @@ If the HiLog API is called in the service code, HiLog logs are generated during 
 ## Commands
 
 <!--RP18-->
-| Short Option| Long Option| Parameter| Description|
+| Short Option| Long Option| Parameter| Description| 
 | -------- | -------- | -------- | -------- |
-| -h | --help | - | Shows help information.|
-| Default| Default| - | Performs a blocking read on logs, with no exiting after the read finishes.|
-| -x | --exit | - | Performs a non-blocking read on logs, with exiting after the read finishes.|
-| -a | --head | &lt;n&gt; | Shows the first several lines of logs. The parameter **\<n>** indicates the number of first lines to show.|
-| -z | --tail | &lt;n&gt; | Shows the last several lines of logs. The parameter **\<n>** indicates the number of last lines to show.|
-| -t | --type | &lt;type&gt; | Views logs of a specified type.|
-|  |  | app | Views application logs.|
-|  |  | core | Views system logs.|
-|  |  | init | Views startup logs.|
-|  |  | kmsg | Views kernel logs.|
-|  |  | only_prerelease | Views logs that are printed before the system release version. Application developers do not need to pay attention to these logs.|
-| -L | --level | &lt;level&gt; | Sets the log level, for example, **-L D/I/W/E/F**.|
-| -D | --domain | &lt;domain&gt; | Sets the domain.|
-| -T | --tag | &lt;tag&gt; | Sets the tag.|
-| -P | --pid | &lt;pid&gt; | Identifies a process.|
+| -h | --help | - | Shows help information.| 
+| Default| Default| - | Performs a blocking read on logs, with no exiting after the read finishes.| 
+| -x | --exit | - | Performs a non-blocking read on logs, with exiting after the read finishes.| 
+| -a | --head | &lt;n&gt; | Shows the first several lines of logs. The parameter **\<n>** indicates the number of first lines to show.| 
+| -z | --tail | &lt;n&gt; | Shows the last several lines of logs. The parameter **\<n>** indicates the number of last lines to show.| 
+| -t | --type | &lt;type&gt; | Views logs of a specified type.| 
+|  |  | app | Views application logs.| 
+|  |  | core | Views system logs.| 
+|  |  | init | Views startup logs.| 
+|  |  | kmsg | Views kernel logs.| 
+|  |  | only_prerelease | Views logs that are printed before the system release version. Application developers do not need to pay attention to these logs.| 
+| -L | --level | &lt;level&gt; | Sets the log level, for example, **-L D/I/W/E/F**.| 
+| -D | --domain | &lt;domain&gt; | Sets the domain.| 
+| -T | --tag | &lt;tag&gt; | Sets the tag.| 
+| -P | --pid | &lt;pid&gt; | Identifies a process.| 
 | -e | --regex | &lt;expr&gt; | Prints only the lines of logs that match the regular expression specified through **\<expr>**.|
 | -v | --format | &lt;format&gt; | Sets the display format.|
-|  |  | color/colour | Displays logs in different colors. By default, logs are displayed in black and white.|
-|  |  | time | Displays the local time.|
-|  |  | epoch | Displays the amount of time elapsed since the epoch time.|
-|  |  | monotonic | Displays the amount of time elapsed since the system startup time.|
+|  |  | color/colour | Displays logs in different colors. By default, logs are displayed in black and white.|  
+|  |  | time | Displays the local time.| 
+|  |  | epoch | Displays the amount of time elapsed since the epoch time.| 
+|  |  | monotonic | Displays the amount of time elapsed since the system startup time.| 
 |  |  | msec | Displays the time in milliseconds.|
-|  |  | usec | Displays the time in microseconds.|
-|  |  | nsec | Displays the time in nanoseconds.|
-|  |  | year | Displays the time with the year portion.|
-|  |  | zone | Displays the time with the local time zone.|
+|  |  | usec | Displays the time in microseconds.| 
+|  |  | nsec | Displays the time in nanoseconds.| 
+|  |  | year | Displays the time with the year portion.| 
+|  |  | zone | Displays the time with the local time zone.| 
 |  |  | wrap | Displays logs in different lines without adding prefixes such as the timestamp to the new line.|
 |  |  | long | Displays all data fields separated by spaces.|
-| -r | - | - | Clears the buffer for logs of a specified type. This option is used together with **-t**, which specifies a log type. By default, the **app** or **core** types are used.|
-| -g | - | - | Checks the buffer size for logs of a specified type. This option is used together with **-t**, which specifies a log type. By default, the **app** or **core** types are used.|
-| -G | --buffer-size | &lt;size&gt; | Sets the size of the buffer for logs of a specified type. This option is used together with **-t**, which specifies a log type. By default, the **app** or **core** types are used. The unit can be B, KB, MB, or GB. The value ranges from 64 KB to 16 MB.|
-| -s | --statistics | - | Shows statistics. This option must be used together with **-t** or **-D**.|
-| -S | - | - | Clears statistics. This option must be used together with **-t** or **-D**.|
-| -w | --write | &lt;control&gt; | Controls a flushing task.|
-|  |  | query | Queries flushing tasks.|
-|  |  | start | Starts a flushing task. The command line parameters are the file name, size of a single file, flushing mode, and number of rotated files.|
+| -r | - | - | Clears the buffer for logs of a specified type. This option is used together with **-t**, which specifies a log type. By default, the **app** or **core** types are used.| 
+| -g | - | - | Checks the buffer size for logs of a specified type. This option is used together with **-t**, which specifies a log type. By default, the **app** or **core** types are used.| 
+| -G | --buffer-size | &lt;size&gt; | Sets the size of the buffer for logs of a specified type. This option is used together with **-t**, which specifies a log type. By default, the **app** or **core** types are used. The unit can be B, KB, MB, or GB. The value ranges from 64 KB to 16 MB.| 
+| -s | --statistics | - | Shows statistics. This option must be used together with **-t** or **-D**.| 
+| -S | - | - | Clears statistics. This option must be used together with **-t** or **-D**.| 
+| -w | --write | &lt;control&gt; | Controls a flushing task.| 
+|  |  | query | Queries flushing tasks.| 
+|  |  | start | Starts a flushing task. The command line parameters are the file name, size of a single file, flushing mode, and number of rotated files.| 
 |  |  | stop | Stops a flushing task.|
 |  |  | refresh | Refreshes the logs in the buffer to the flushed file.|
-|  |  | clear | Deletes log files that are flushed to disks.|
-| -f | --filename | &lt;filename&gt; | Sets the names of the files to be flushed to disk.|
-| -l | --length | &lt;length&gt; | Sets the size of the files to be flushed to disk. The value must be greater than or equal to 64 KB.|
-| -n | --number | &lt;number&gt; | Sets the number of files to be flushed to disk.|
-| -m | --stream | &lt;algorithm&gt; | Sets the flushing mode.|
-|  |  | none | Indicates that data is flushed to disks in non-compression mode.|
-|  |  | zlib | Indicates that data is flushed to disks using the zlib compression algorithm. The flushed file is in .gz format.|
-| -j | --jobid | &lt;jobid&gt; | Sets the ID of a flushing task.|
-| -p | --privacy | &lt;on/off&gt; | Specifies whether to enable privacy for logs during system debugging.|
-|  |  | on | Enables privacy so that parameters are displayed as **\<private>** in printed logs.|
-|  |  | off | Disables privacy so that parameters are displayed as they are in printed logs.|
-| -k | - | &lt;on/off&gt; | Specifies whether to enable kernel logging.|
-|  |  | on | Enables kernel logging.|
-|  |  | off | Disables kernel logging.|
-| -Q | - | &lt;control-type&gt; | Controls whether to enable the default quota when the threshold is exceeded.|
-|  |  | pidon | Enables the process flow control.|
-|  |  | pidoff | Disables the process flow control.|
-|  |  | domainon | Enables the domain flow control.|
-|  |  | domainoff | Disables the domain flow control.|
-| -b | --baselevel | &lt;loglevel&gt; | Sets the lowest level of logs that can be printed: D(DEBUG)/I(INFO)/W(WARN)/E(ERROR)/F(FATAL). This command can be used together with **-D** and **-T** to set the lowest log level.|
+|  |  | clear | Deletes log files that are flushed to disks.| 
+| -f | --filename | &lt;filename&gt; | Sets the names of the files to be flushed to disk.| 
+| -l | --length | &lt;length&gt; | Sets the size of the files to be flushed to disk. The value must be greater than or equal to 64 KB.| 
+| -n | --number | &lt;number&gt; | Sets the number of files to be flushed to disk.| 
+| -m | --stream | &lt;algorithm&gt; | Sets the flushing mode.| 
+|  |  | none | Indicates that data is flushed to disks in non-compression mode.| 
+|  |  | zlib | Indicates that data is flushed to disks using the zlib compression algorithm. The flushed file is in .gz format.| 
+| -j | --jobid | &lt;jobid&gt; | Sets the ID of a flushing task.| 
+| -p | --privacy | &lt;on/off&gt; | Specifies whether to enable privacy for logs during system debugging.| 
+|  |  | on | Enables privacy so that parameters are displayed as **\<private>** in printed logs.| 
+|  |  | off | Disables privacy so that parameters are displayed as they are in printed logs.| 
+| -k | - | &lt;on/off&gt; | Specifies whether to enable kernel logging.| 
+|  |  | on | Enables kernel logging.| 
+|  |  | off | Disables kernel logging.| 
+| -Q | - | &lt;control-type&gt; | Controls whether to enable the default quota when the threshold is exceeded.| 
+|  |  | pidon | Enables the process flow control.| 
+|  |  | pidoff | Disables the process flow control.| 
+|  |  | domainon | Enables the domain flow control.| 
+|  |  | domainoff | Disables the domain flow control.| 
+| -b | --baselevel | &lt;loglevel&gt; | Sets the lowest level of logs that can be printed: D(DEBUG)/I(INFO)/W(WARN)/E(ERROR)/F(FATAL). This command can be used together with **-D** and **-T** to set the lowest log level.| 
 | - | --persist| - |Persists the log level setting command. (The setting will not be lost after the system is restarted.)|
 <!--RP18End-->
 
@@ -338,7 +342,7 @@ hilog -v time/color/epoch/monotonic/usec/nsec/year/zone/wrap
 
 **Example**
 
-Display the local time in nanoseconds.
+Display the local time in milliseconds.
 
 <!--RP10-->
    ```shell
@@ -639,7 +643,7 @@ Set flow control by domain to disabled successfully
 
 ## HiLog Flow Control Mechanism
 
-When the number of logs exceeds the upper limit, the HiLog flow control mechanism is triggered to discard excess logs and display a warning log. By default, this mechanism is disabled for debug applications.
+When the number of logs exceeds the upper limit, the HiLog flow control mechanism is triggered. After this mechanism is triggered, excessive logs are discarded, and a warning log is generated. By default, this mechanism is disabled for debug applications.
 
 The flow control mechanism is as follows:
 
@@ -653,7 +657,7 @@ The flow control is performed by process. The application logs printed in the **
 ```
 <!--RP11End-->
 
-This log indicates that the number of logs printed by the **com.example.myapplication** process exceeds the threshold at **17:02:34**. In the previous second of **17:02:34.219**, 3091 lines of logs are discarded due to flow control and are not printed.
+This log indicates that the number of logs printed by the** com.example.myapplication** process exceeds the upper limit. Before 17:02:34.219, 3091 lines of logs are discarded due to the upper limit control.
 
 **Solution**: Disable the process control mechanism by referring to [Setting Process Flow Control](#setting-process-flow-control).
 
@@ -668,7 +672,7 @@ The flow control is performed by domain ID. The system logs printed in the **LOG
 ```
 <!--RP12End-->
 
-This log indicates that the number of logs printed by domain ID **02C02** exceeds the threshold at **17:02:34**. In the previous second of **17:02:34.219**, 108 lines of logs are discarded due to flow control and are not printed.
+This log indicates that the number of logs whose domain ID is **02C02** exceeds the upper limit. Before 17:02:34.219, 108 lines of logs are discarded due to the upper limit control.
 
 **Solution**: Disable the domain control mechanism by referring to [Setting Domain Flow Control](#setting-domain-flow-control).
 
@@ -719,7 +723,7 @@ You can use regular expressions to search for log lines containing the keywords 
 
 **Solution**
 
-- Run the **hilog -g** command to query the buffer size. (The default size of the HiLog buffer is 256 KB.)
+- Run the **hilog -g** command to query the current buffer size.
 
 - Run the **hilog -G** command to increase the HiLog buffer size. For example, run the following command to change the buffer size to 16 MB (the maximum size is 16 MB):
 

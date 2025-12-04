@@ -1,4 +1,10 @@
 # CPU Features
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @huang_huijin-->
+<!--Designer: @huang_huijin-->
+<!--Tester: @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 
 CPU features are hardware extensions provided by CPUs. You can call instructions and set special registers to use the CPU features, such as VFP-v32d32, Neon, IDIV, and AES on the ARMv7-A architecture. Many CPU features are optional, and different CPU vendors provide different CPU features.
@@ -12,7 +18,7 @@ Currently, OpenHarmony does not provide APIs for obtaining CPU features. You can
 
 ## How to Use
 
-1. Import the open source library to your OpenHarmony C++ project. Specifically, download the [cpu_features library](https://github.com/google/cpu_features), and decompress it to the **cpp** directory of the project. The following shows a sample application of the DevEco Studio C++ template.
+1. Introduce the open-source library to the OpenHarmony C++ project. Download the [cpu_features library](https://github.com/google/cpu_features), decompress it to the **cpp** directory of the project, and change the decompressed file name to **cpu_features**. The following shows a sample application of the DevEco Studio C++ template.
    - The directory structure after the decompression is as follows:
       ```
       MyApplication
@@ -27,7 +33,7 @@ Currently, OpenHarmony does not provide APIs for obtaining CPU features. You can
    - Add the path to the cpu_features library to the **CMakeLists.txt** file.
       ```makefile
       add_subdirectory(cpu_features) # Add a subdirectory to the project.
-      target_link_libraries(entry PUBLIC CpuFeature::cpu_features) # Add the library files that need to be linked.
+      target_link_libraries(entry PUBLIC cpu_features) # Add the library files that need to be linked.
       ```
 
 2. Add the statement for determining the support for the CPU features to the code. The following uses the ARM and AArch64 architectures as an example:

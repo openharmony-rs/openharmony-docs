@@ -4,7 +4,7 @@
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Indicator** component provides two types of navigation indicators: dot indicators and digit indicators.
 
@@ -24,6 +24,8 @@ Conversely, if an **Indicator** is bound to multiple **Swiper** components, only
 Not supported
 
 ## APIs
+
+### IndicatorComponent
 
 IndicatorComponent(controller?: IndicatorComponentController)
 
@@ -231,7 +233,7 @@ Navigates to the specified indicator.
 ## Example
 
 ### Example 1: Using a Dot Indicator with a Swiper Component
-This example shows how to bind a dot-style **Indicator** component to a **Swiper** component using **IndicatorComponentController**.
+This example binds the same [IndicatorComponentController](#indicatorcomponentcontroller) object to both the [Indicator](ts-container-swiper.md#indicator) API of the [Swiper](ts-container-swiper.md) component and the [IndicatorComponent](#indicatorcomponent) constructor, enabling interaction between the dot indicator and the **Swiper** component.
 ```
 @Entry
 @Component
@@ -294,7 +296,7 @@ struct DotIndicatorDemo {
 
 ### Example 2: Using a Digit Indicator with a Swiper Component
 
-This example shows how to bind a digit-style **Indicator** component to a **Swiper** component using **IndicatorComponentController**.
+This example binds the same [IndicatorComponentController](#indicatorcomponentcontroller) object to both the [Indicator](ts-container-swiper.md#indicator) API of the [Swiper](ts-container-swiper.md) component and the [IndicatorComponent](#indicatorcomponent) constructor, enabling interaction between the digit indicator and the **Swiper** component.
 
 ```
 @Entry

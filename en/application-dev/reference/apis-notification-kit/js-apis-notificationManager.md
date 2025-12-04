@@ -341,7 +341,7 @@ Cancels all notifications of this application. This API uses a promise to return
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -589,11 +589,11 @@ Obtains all notification slots of this application. This API uses a promise to r
 
 | Type                                                       | Description                                                        |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<Array\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\>\> | Promise used to return the **NotificationSlot** array.|
+| Promise\<Array\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\>\> | Promise used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -756,7 +756,7 @@ Removes all notification slots for this application. This API uses a promise to 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -788,7 +788,7 @@ Checks whether notification is enabled for the specified application. This API u
 
 | Name    | Type                 | Mandatory| Description                    |
 | -------- | --------------------- | ---- | ------------------------ |
-| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** means that the notification can be published; **false** means the opposite. If the call fails, an error object is returned.|
+| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** means that the notification can be published; **false** means the opposite. If this API call fails, an error object is returned.|
 
 **Error codes**
 
@@ -982,6 +982,42 @@ let badgeNumber: number = 10;
 notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
 ```
 
+## notificationManager.getBadgeNumber<sup>22+</sup>
+
+getBadgeNumber(): Promise\<long\>
+
+Obtains the badge number of this application. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Return value**
+
+| Type             | Description                                       |
+| ----------------- | ------------------------------------------- |
+| Promise\<long\> | Promise used to return the badge number. (The value is irrelevant to whether notifications and home-screen badges of this application are enabled.)|
+
+**Error codes**
+
+For details about the error codes, see [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getBadgeNumber().then((badgeNumber) => {
+  hilog.info(0x0000, 'testTag', `Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## notificationManager.getActiveNotificationCount
 
 getActiveNotificationCount(callback: AsyncCallback\<number\>): void
@@ -1039,7 +1075,7 @@ Obtains the number of active notifications of this application. This API uses a 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1115,7 +1151,7 @@ Obtains the active notifications of this application. This API uses a promise to
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1505,7 +1541,7 @@ Requests notification to be enabled for this application. This API uses a promis
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1541,7 +1577,7 @@ Checks whether the device supports cross-device notifications. This API uses an 
 
 | Name  | Type                    | Mandatory| Description                      |
 | -------- | ------------------------ | ---- | -------------------------- |
-| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** means that the cross-device notification is supported; **false** means the opposite. If the call fails, an error object is returned.|
+| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** means that the cross-device notification is supported; **false** means the opposite. If this API call fails, an error object is returned.|
 
 **Error codes**
 
@@ -1588,7 +1624,7 @@ Checks whether the device supports cross-device notifications. This API uses a p
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1970,3 +2006,17 @@ Describes the notification progress.
 | Type| Description|
 | --- | --- |
 | [_NotificationProgress](js-apis-inner-notification-notificationContent.md#notificationprogress11) | Notification progress.|
+
+## PriorityNotificationType<sup>23+</sup>
+
+Enumerates the priority notification types.
+
+**System capability**: SystemCapability.Notification.Notification
+
+| Name                | Value | Description                              |
+| --------------------| --- | --------------------------------- |
+| OTHER   | "OTHER"   | Default.           |
+| PRIMARY_CONTACT    | "PRIMARY_CONTACT"   | Primary contacts.                |
+| AT_ME  | "AT_ME"   | Message that mentions me.           |
+| URGENT_MESSAGE   | "URGENT_MESSAGE"   | Urgent message.                |
+| SCHEDULE_REMINDER   | "SCHEDULE_REMINDER"   | Schedule reminder.                |

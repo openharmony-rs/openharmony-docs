@@ -81,13 +81,13 @@
 | [void OH_Pasteboard_ProgressCancel(Pasteboard_GetDataParams* params)](#oh_pasteboard_progresscancel) | - | 定义取消函数，用于在获取粘贴数据时取消正在进行的粘贴动作。 |
 | [OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteboard_GetDataParams* params,int* status)](#oh_pasteboard_getdatawithprogress) | - | 获取剪贴板的数据以及粘贴进度，不支持对文件夹的拷贝。 |
 | [uint32_t OH_Pasteboard_GetChangeCount(OH_Pasteboard *pasteboard)](#oh_pasteboard_getchangecount) | - | 获取剪贴板内容的变化次数。 |
-| [void OH_Pasteboard_SyncDelayedDataAsync(OH_Pasteboard* pasteboard, void (*callback)(int errorCode))](#oh_pasteboard_syncdelayeddataasync) | - | 通知剪贴板从应用同步所有延迟数据，与延迟复制接口[OH_UdmfRecordProvider_SetData](../apis-arkdata/capi-udmf-h.md#oh_udmfrecordprovider_setdata)搭配使用。当应用使用延迟复制功能复制时，仅将应用支持的数据类型写入剪贴板。应用应在退出时，重新调用[OH_Pasteboard_SetData](#oh_pasteboard_setdata)接口主动提交所有复制数据或调用[OH_Pasteboard_SyncDelayedDataAsync](#oh_pasteboard_syncdelayeddataasync)接口通知剪贴板获取全量数据，等待数据同步完成再继续退出，否则可能导致其他应用粘贴获取不到数据。 |
+| [void OH_Pasteboard_SyncDelayedDataAsync(OH_Pasteboard* pasteboard, void (*callback)(int errorCode))](#oh_pasteboard_syncdelayeddataasync) | - | 通知剪贴板从应用同步所有延迟数据，与延迟复制接口[OH_UdmfRecordProvider_SetData](../apis-arkdata/capi-udmf-h.md#oh_udmfrecordprovider_setdata)搭配使用。当应用使用延迟复制功能复制时，仅将应用支持的数据类型写入剪贴板。应用应在退出时，重新调用[OH_Pasteboard_SetData](#oh_pasteboard_setdata)接口主动提交所有复制数据或调用此接口通知剪贴板获取全量数据，等待数据同步完成再继续退出，否则可能导致其他应用粘贴获取不到数据。 |
 
 ## 宏定义说明
 
 ### PASTEBOARD_MIMETYPE_TEXT_PLAIN
 
-```
+```c
 #define PASTEBOARD_MIMETYPE_TEXT_PLAIN "text/plain"
 ```
 
@@ -99,7 +99,7 @@
 
 ### PASTEBOARD_MIMETYPE_TEXT_URI
 
-```
+```c
 #define PASTEBOARD_MIMETYPE_TEXT_URI "text/uri"
 ```
 
@@ -111,7 +111,7 @@ URI类型。
 
 ### PASTEBOARD_MIMETYPE_TEXT_HTML
 
-```
+```c
 #define PASTEBOARD_MIMETYPE_TEXT_HTML "text/html"
 ```
 
@@ -123,7 +123,7 @@ HTML类型。
 
 ### PASTEBOARD_MIMETYPE_PIXELMAP
 
-```
+```c
 #define PASTEBOARD_MIMETYPE_PIXELMAP "pixelMap"
 ```
 
@@ -135,7 +135,7 @@ pixelMap类型。
 
 ### PASTEBOARD_MIMETYPE_TEXT_WANT
 
-```
+```c
 #define PASTEBOARD_MIMETYPE_TEXT_WANT "text/want"
 ```
 
@@ -149,7 +149,7 @@ want类型。
 
 ### Pasteboard_NotifyType
 
-```
+```c
 enum Pasteboard_NotifyType
 ```
 
@@ -166,7 +166,7 @@ enum Pasteboard_NotifyType
 
 ### Pasteboard_FileConflictOptions
 
-```
+```c
 enum Pasteboard_FileConflictOptions
 ```
 
@@ -183,7 +183,7 @@ enum Pasteboard_FileConflictOptions
 
 ### Pasteboard_ProgressIndicator
 
-```
+```c
 enum Pasteboard_ProgressIndicator
 ```
 
@@ -203,7 +203,7 @@ enum Pasteboard_ProgressIndicator
 
 ### OH_Pasteboard_ProgressListener()
 
-```
+```c
 typedef void (*OH_Pasteboard_ProgressListener)(Pasteboard_ProgressInfo* progressInfo)
 ```
 
@@ -222,7 +222,7 @@ typedef void (*OH_Pasteboard_ProgressListener)(Pasteboard_ProgressInfo* progress
 
 ### Pasteboard_Notify()
 
-```
+```c
 typedef void (*Pasteboard_Notify)(void* context, Pasteboard_NotifyType type)
 ```
 
@@ -242,7 +242,7 @@ typedef void (*Pasteboard_Notify)(void* context, Pasteboard_NotifyType type)
 
 ### Pasteboard_Finalize()
 
-```
+```c
 typedef void (*Pasteboard_Finalize)(void* context)
 ```
 
@@ -261,7 +261,7 @@ typedef void (*Pasteboard_Finalize)(void* context)
 
 ### OH_PasteboardObserver_Create()
 
-```
+```c
 OH_PasteboardObserver* OH_PasteboardObserver_Create()
 ```
 
@@ -279,7 +279,7 @@ OH_PasteboardObserver* OH_PasteboardObserver_Create()
 
 ### OH_PasteboardObserver_Destroy()
 
-```
+```c
 int OH_PasteboardObserver_Destroy(OH_PasteboardObserver* observer)
 ```
 
@@ -300,11 +300,11 @@ int OH_PasteboardObserver_Destroy(OH_PasteboardObserver* observer)
 
 | 类型 | 说明                                                                                                                                                                                                                                  |
 | -- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br>         若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br>         若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_PasteboardObserver_SetData()
 
-```
+```c
 int OH_PasteboardObserver_SetData(OH_PasteboardObserver* observer, void* context,const Pasteboard_Notify callback, const Pasteboard_Finalize finalize)
 ```
 
@@ -328,11 +328,11 @@ int OH_PasteboardObserver_SetData(OH_PasteboardObserver* observer, void* context
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br>         若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br>         若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_Pasteboard_Create()
 
-```
+```c
 OH_Pasteboard* OH_Pasteboard_Create()
 ```
 
@@ -346,11 +346,11 @@ OH_Pasteboard* OH_Pasteboard_Create()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* | 执行成功则返回一个指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例对象的指针，否则返回nulllptr。 |
+| [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* | 执行成功则返回一个指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例对象的指针，否则返回nullptr。 |
 
 ### OH_Pasteboard_Destroy()
 
-```
+```c
 void OH_Pasteboard_Destroy(OH_Pasteboard* pasteboard)
 ```
 
@@ -369,7 +369,7 @@ void OH_Pasteboard_Destroy(OH_Pasteboard* pasteboard)
 
 ### OH_Pasteboard_Subscribe()
 
-```
+```c
 int OH_Pasteboard_Subscribe(OH_Pasteboard* pasteboard, int type, const OH_PasteboardObserver* observer)
 ```
 
@@ -392,11 +392,11 @@ int OH_Pasteboard_Subscribe(OH_Pasteboard* pasteboard, int type, const OH_Pasteb
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br>         若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br>         若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_Pasteboard_Unsubscribe()
 
-```
+```c
 int OH_Pasteboard_Unsubscribe(OH_Pasteboard* pasteboard, int type, const OH_PasteboardObserver* observer)
 ```
 
@@ -419,11 +419,11 @@ int OH_Pasteboard_Unsubscribe(OH_Pasteboard* pasteboard, int type, const OH_Past
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br>         若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br>         若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_Pasteboard_IsRemoteData()
 
-```
+```c
 bool OH_Pasteboard_IsRemoteData(OH_Pasteboard* pasteboard)
 ```
 
@@ -448,7 +448,7 @@ bool OH_Pasteboard_IsRemoteData(OH_Pasteboard* pasteboard)
 
 ### OH_Pasteboard_GetDataSource()
 
-```
+```c
 int OH_Pasteboard_GetDataSource(OH_Pasteboard* pasteboard, char* source, unsigned int len)
 ```
 
@@ -464,18 +464,18 @@ int OH_Pasteboard_GetDataSource(OH_Pasteboard* pasteboard, char* source, unsigne
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* pasteboard | 表示指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例的指针。 |
-| char* source | 表示用于存放剪贴板数据数据源实例的指针，开发者需在调用接口前申请指针指向的内存。 |
+| char* source | 表示用于存放剪贴板数据源实例的指针，开发者需在调用接口前申请指针指向的内存。 |
 | unsigned int len | 表示source指针对应的内存长度，当内存长度不足时调用接口会失败，建议长度：128。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br>         若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br>         若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_Pasteboard_HasType()
 
-```
+```c
 bool OH_Pasteboard_HasType(OH_Pasteboard* pasteboard, const char* type)
 ```
 
@@ -501,7 +501,7 @@ bool OH_Pasteboard_HasType(OH_Pasteboard* pasteboard, const char* type)
 
 ### OH_Pasteboard_HasData()
 
-```
+```c
 bool OH_Pasteboard_HasData(OH_Pasteboard* pasteboard)
 ```
 
@@ -526,7 +526,7 @@ bool OH_Pasteboard_HasData(OH_Pasteboard* pasteboard)
 
 ### OH_Pasteboard_GetData()
 
-```
+```c
 OH_UdmfData* OH_Pasteboard_GetData(OH_Pasteboard* pasteboard, int* status)
 ```
 
@@ -554,7 +554,7 @@ OH_UdmfData* OH_Pasteboard_GetData(OH_Pasteboard* pasteboard, int* status)
 
 ### OH_Pasteboard_SetData()
 
-```
+```c
 int OH_Pasteboard_SetData(OH_Pasteboard* pasteboard, OH_UdmfData* data)
 ```
 
@@ -576,11 +576,11 @@ int OH_Pasteboard_SetData(OH_Pasteboard* pasteboard, OH_UdmfData* data)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br>         若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br>         若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_Pasteboard_ClearData()
 
-```
+```c
 int OH_Pasteboard_ClearData(OH_Pasteboard* pasteboard)
 ```
 
@@ -601,11 +601,11 @@ int OH_Pasteboard_ClearData(OH_Pasteboard* pasteboard)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br>         若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br>         若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_Pasteboard_GetMimeTypes()
 
-```
+```c
 char **OH_Pasteboard_GetMimeTypes(OH_Pasteboard *pasteboard, unsigned int *count)
 ```
 
@@ -631,7 +631,7 @@ char **OH_Pasteboard_GetMimeTypes(OH_Pasteboard *pasteboard, unsigned int *count
 
 ### OH_Pasteboard_GetDataParams_Create()
 
-```
+```c
 Pasteboard_GetDataParams *OH_Pasteboard_GetDataParams_Create(void)
 ```
 
@@ -645,11 +645,11 @@ Pasteboard_GetDataParams *OH_Pasteboard_GetDataParams_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md) | 执行成功时返回一个指向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)实例对象的指针，否则返回空指针。 当不再需要使用指针时，<br> 请使用[OH_Pasteboard_GetDataParams_Destroy](capi-oh-pasteboard-h.md#oh_pasteboard_getdataparams_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md) | 执行成功时返回一个指向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)实例对象的指针，否则返回空指针。<br> 当不再需要使用指针时，请使用[OH_Pasteboard_GetDataParams_Destroy](capi-oh-pasteboard-h.md#oh_pasteboard_getdataparams_destroy)销毁实例对象，否则会导致内存泄漏。 |
 
 ### OH_Pasteboard_GetDataParams_Destroy()
 
-```
+```c
 void OH_Pasteboard_GetDataParams_Destroy(Pasteboard_GetDataParams* params)
 ```
 
@@ -668,7 +668,7 @@ void OH_Pasteboard_GetDataParams_Destroy(Pasteboard_GetDataParams* params)
 
 ### OH_Pasteboard_GetDataParams_SetProgressIndicator()
 
-```
+```c
 void OH_Pasteboard_GetDataParams_SetProgressIndicator(Pasteboard_GetDataParams* params,Pasteboard_ProgressIndicator progressIndicator)
 ```
 
@@ -688,7 +688,7 @@ void OH_Pasteboard_GetDataParams_SetProgressIndicator(Pasteboard_GetDataParams* 
 
 ### OH_Pasteboard_GetDataParams_SetDestUri()
 
-```
+```c
 void OH_Pasteboard_GetDataParams_SetDestUri(Pasteboard_GetDataParams* params, const char* destUri, uint32_t destUriLen)
 ```
 
@@ -709,7 +709,7 @@ void OH_Pasteboard_GetDataParams_SetDestUri(Pasteboard_GetDataParams* params, co
 
 ### OH_Pasteboard_GetDataParams_SetFileConflictOptions()
 
-```
+```c
 void OH_Pasteboard_GetDataParams_SetFileConflictOptions(Pasteboard_GetDataParams* params,Pasteboard_FileConflictOptions option)
 ```
 
@@ -729,7 +729,7 @@ void OH_Pasteboard_GetDataParams_SetFileConflictOptions(Pasteboard_GetDataParams
 
 ### OH_Pasteboard_GetDataParams_SetProgressListener()
 
-```
+```c
 void OH_Pasteboard_GetDataParams_SetProgressListener(Pasteboard_GetDataParams* params,const OH_Pasteboard_ProgressListener listener)
 ```
 
@@ -749,7 +749,7 @@ void OH_Pasteboard_GetDataParams_SetProgressListener(Pasteboard_GetDataParams* p
 
 ### OH_Pasteboard_ProgressInfo_GetProgress()
 
-```
+```c
 int OH_Pasteboard_ProgressInfo_GetProgress(Pasteboard_ProgressInfo* progressInfo)
 ```
 
@@ -774,7 +774,7 @@ int OH_Pasteboard_ProgressInfo_GetProgress(Pasteboard_ProgressInfo* progressInfo
 
 ### OH_Pasteboard_ProgressCancel()
 
-```
+```c
 void OH_Pasteboard_ProgressCancel(Pasteboard_GetDataParams* params)
 ```
 
@@ -793,7 +793,7 @@ void OH_Pasteboard_ProgressCancel(Pasteboard_GetDataParams* params)
 
 ### OH_Pasteboard_GetDataWithProgress()
 
-```
+```c
 OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteboard_GetDataParams* params,int* status)
 ```
 
@@ -822,7 +822,7 @@ OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteb
 
 ### OH_Pasteboard_GetChangeCount()
 
-```
+```c
 uint32_t OH_Pasteboard_GetChangeCount(OH_Pasteboard *pasteboard)
 ```
 
@@ -847,17 +847,16 @@ uint32_t OH_Pasteboard_GetChangeCount(OH_Pasteboard *pasteboard)
 
 ### OH_Pasteboard_SyncDelayedDataAsync()
 
-```
+```c
 void OH_Pasteboard_SyncDelayedDataAsync(OH_Pasteboard* pasteboard, void (*callback)(int errorCode))
 ```
 
 **描述：**
 
-通知剪贴板从应用同步所有延迟数据，与延迟复制接口[OH_UdmfRecordProvider_SetData](../apis-arkdata/capi-udmf-h.md#oh_udmfrecordprovider_setdata)搭配使用。当应用使用延迟复制功能复制时，仅将应用支持的数据类型写入剪贴板。应用应在退出时，重新调用[OH_Pasteboard_SetData](#oh_pasteboard_setdata)接口主动提交所有复制数据或调用[OH_Pasteboard_SyncDelayedDataAsync](#oh_pasteboard_syncdelayeddataasync)接口通知剪贴板获取全量数据，等待数据同步完成再继续退出，否则可能导致其他应用粘贴获取不到数据。
+通知剪贴板从应用同步所有延迟数据，与延迟复制接口[OH_UdmfRecordProvider_SetData](../apis-arkdata/capi-udmf-h.md#oh_udmfrecordprovider_setdata)搭配使用。当应用使用延迟复制功能复制时，仅将应用支持的数据类型写入剪贴板。应用应在退出时，重新调用[OH_Pasteboard_SetData](#oh_pasteboard_setdata)接口主动提交所有复制数据或调用此接口通知剪贴板获取全量数据，等待数据同步完成再继续退出，否则可能导致其他应用粘贴获取不到数据。
 
-**注意：**
-
-调用此接口会延长退出过程，建议应用直接设置数据到剪贴板，而不是调用延迟复制接口[OH_UdmfRecordProvider_SetData](../apis-arkdata/capi-udmf-h.md#oh_udmfrecordprovider_setdata)和同步延迟数据接口[OH_Pasteboard_SyncDelayedDataAsync](#oh_pasteboard_syncdelayeddataasync)。
+> **注意：**
+> - 调用此接口会延长退出过程，建议应用直接设置数据到剪贴板，而不是调用延迟复制接口[OH_UdmfRecordProvider_SetData](../apis-arkdata/capi-udmf-h.md#oh_udmfrecordprovider_setdata)和此接口。
 
 **起始版本：** 21
 

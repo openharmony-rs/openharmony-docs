@@ -37,6 +37,7 @@ Enumerates the bundle flags, which indicate the type of bundle information to ob
 | GET_BUNDLE_INFO_WITH_MENU<sup>11+</sup>       | 0x00000100 | Used to obtain the bundle information with the file context menu configuration. It must be used together with **GET_BUNDLE_INFO_WITH_HAP_MODULE**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | GET_BUNDLE_INFO_WITH_ROUTER_MAP<sup>12+</sup> | 0x00000200 | Used to obtain the bundle information with the router map. It must be used together with **GET_BUNDLE_INFO_WITH_HAP_MODULE**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | GET_BUNDLE_INFO_WITH_SKILL<sup>12+</sup>      | 0x00000800 | Used to obtain the bundle information with the skills. It must be used together with **GET_BUNDLE_INFO_WITH_HAP_MODULE**, **GET_BUNDLE_INFO_WITH_ABILITY**, and **GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| GET_BUNDLE_INFO_WITH_ENTRY_MODULE<sup>22+</sup>      | 0x00010000 | Used to obtain the bundle information with the HAP module information. It is valid only for bundleInfo.hapModulesInfo corresponding to the entry module. If the entry module does not exist, the bundleInfo.hapModulesInfo list is empty. The obtained bundle information does not contain information about the signature, application, ability, ExtensionAbility, or permission.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
 ## ExtensionAbilityType
 
@@ -76,6 +77,7 @@ Enumerates the types of ExtensionAbility components.
 | LIVE_FORM<sup>20+</sup> | 30 | [LiveFormExtensionAbility](../apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md): provides extended capabilities for interactive widgets, and provides lifecycle callbacks for creating and destroying interactive widgets.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | WEB_NATIVE_MESSAGING<sup>21+</sup> | 32 | [WebNativeMessagingExtensionAbility](../apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md): provides extended capabilities for web native message communication.|
 | FAULT_LOG<sup>21+</sup> | 33 | [FaultLogExtensionAbility](../apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md): provides extended capabilities for delayed fault notifications.|
+| NOTIFICATION_SUBSCRIBER<sup>22+</sup> | 34 | [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md): provides extended capabilities for notification subscription.|
 | UNSPECIFIED      | 255 | The ability type is not specified. <!--Del-->It can be used in [queryExtensionAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryextensionabilityinfo) to obtain ExtensionAbility components of all types.<!--DelEnd-->|
 <!--RP2--><!--RP2End-->
 
@@ -233,7 +235,7 @@ Enumerates the ability flags, which indicate the type of ability information to 
 
 getBundleInfoForSelf(bundleFlags: number): Promise\<BundleInfo>
 
-Obtains the bundle information based on the given bundle flags. This API uses a promise to return the result.
+Obtains the bundle information of the current application based on the given bundle flags. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -285,7 +287,7 @@ try {
 
 getBundleInfoForSelf(bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
 
-Obtains the bundle information based on the given bundle flags. This API uses an asynchronous callback to return the result.
+Obtains the bundle information of the current application based on the given bundle flags. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -749,7 +751,7 @@ try {
 
 getBundleInfoForSelfSync(bundleFlags: number): BundleInfo
 
-Obtains the bundle information of this bundle based on the given bundle flags. This API returns the result synchronously.
+Obtains the bundle information of the current application based on the given bundle flags. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

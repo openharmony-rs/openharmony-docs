@@ -84,6 +84,8 @@ node_api_get_module_file_name | No|
 |napi_create_string_latin1 | No|
 |napi_create_string_utf8 | No|
 |napi_create_string_utf16 | No|
+|napi_create_external_string_ascii | No|
+|napi_create_external_string_utf16 | No|
 |napi_create_symbol | No|
 |napi_create_function | Yes|
 |napi_create_error | Yes|
@@ -215,9 +217,12 @@ node_api_get_module_file_name | No|
 |napi_run_event_loop | napi_invalid_arg |
 |napi_stop_event_loop | napi_invalid_arg |
 |napi_get_uv_event_loop | napi_invalid_arg |
+|napi_create_strong_sendable_reference | napi_invalid_arg |
+|napi_delete_strong_sendable_reference | napi_invalid_arg |
+|napi_get_strong_sendable_reference_value | napi_invalid_arg |
 
 ### Sample Code
-- Register the module.
+- Module registration
     ```c++
     // napi_init.cpp
     #include "napi/native_api.h"

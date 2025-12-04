@@ -10,7 +10,7 @@ Web组件打印html页面时可通过W3C标准协议接口和应用接口两种�
 
 使用打印功能前，请在module.json5中配置相关权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-  ```
+  ```json
   "requestPermissions":[
       {
         "name" : "ohos.permission.PRINT"
@@ -112,18 +112,20 @@ Web组件打印html页面时可通过W3C标准协议接口和应用接口两种�
 
 - 应用侧代码。
 
-  ```ts
+  <!-- @[w3c_print_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/InitiatePrintW3CAPI.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct Index {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Row() {
         Column() {
-          Web({ src: $rawfile("print.html"), controller: this.controller })
+          Web({ src: $rawfile('print.html'), controller: this.controller })
             .javaScriptAccess(true)
         }
         .width('100%')
@@ -135,9 +137,9 @@ Web组件打印html页面时可通过W3C标准协议接口和应用接口两种�
 
 ## 通过调用应用侧接口拉起打印
 应用侧通过调用[createWebPrintDocumentAdapter](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createwebprintdocumentadapter11)创建打印适配器，通过将适配器传入打印的print接口调起打印。
+<!-- @[create_web_print_document](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/InitiatePrintAppAPI.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError, print } from '@kit.BasicServicesKit';
 
@@ -157,7 +159,7 @@ struct WebComponent {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-      Web({ src: 'www.example.com', controller: this.controller })
+      Web({ src: 'www.example.com', controller: this.controller });
     }
   }
 }

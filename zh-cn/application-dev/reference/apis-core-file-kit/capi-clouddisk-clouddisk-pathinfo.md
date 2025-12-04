@@ -6,6 +6,10 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct {...} CloudDisk_PathInfo
+```
+
 ## 概述
 
 文件路径信息。

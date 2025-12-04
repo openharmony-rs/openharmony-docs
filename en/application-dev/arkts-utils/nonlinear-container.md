@@ -106,7 +106,7 @@ Common APIs for adding, removing, modifying, and accessing elements in TreeMap a
 
 Defined by generics, TreeSet stores values in an ordered manner. TreeSet is implemented using a red-black tree, enabling fast insertion and removal. The **value** type complies with the ECMA standard.
 
-TreeSet is implemented based on [TreeMap](../reference/apis-arkts/js-apis-treemap.md). It only processes value objects. It allows for ordered storage of a collection of values and can be sorted according to a custom sorting function. It allows for ordered storage of a collection of values and can be sorted according to a custom sorting function.
+TreeSet is implemented based on [TreeMap](../reference/apis-arkts/js-apis-treemap.md). It only processes value objects. It allows for ordered storage of a collection of values and can be sorted according to a custom sorting function.
 
 Compared with [HashSet](../reference/apis-arkts/js-apis-hashset.md), which stores data in an unordered manner, TreeSet stores data in an ordered manner. Both of them allow only unique elements. However, null values are allowed in HashSet, but not in TreeSet because null values may affect the order of elements in the container.
 

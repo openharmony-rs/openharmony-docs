@@ -159,8 +159,6 @@ getConnectedBLEDevices(profile: BleProfile): Array&lt;string&gt;
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
@@ -1566,6 +1564,109 @@ try {
 ```
 
 
+### getService<sup>22+</sup>
+
+getService(serviceUuid: string): GattService
+
+获取指定的server端服务能力。
+
+- 该服务已经通过[addService](#addservice)方法添加后才能返回有效值。
+- 一个应用可以通过[ble.createGattServer](#blecreategattserver)方法创建多个[GattServer](#gattserver)实例。本方法仅支持获取当前实例添加过的服务，无法获取当前应用创建的其他实例或由其他应用创建的实例添加过的服务。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名         | 类型     | 必填   | 说明                                       |
+| ----------- | ------ | ---- | ---------------------------------------- |
+| serviceUuid | string | 是    | 需要获取的服务的UUID。例如：00001810-0000-1000-8000-00805F9B34FB。 |
+
+**返回值：**
+
+| 类型                              | 说明              |
+| --------------------------------- | ---------------- |
+| [GattService](#gattservice) | 指定的GATT服务。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+|2901008 | Gatt service is not found.                        |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+let server: ble.GattServer = ble.createGattServer();
+try {
+    // 调用getService接口前需要先使用addService添加该服务。
+    let service: ble.GattService = server.getService('00001810-0000-1000-8000-00805F9B34FB');
+    console.info('characteristics size is: ' + service.characteristics.length);
+    for (let i = 0; i < service.characteristics.length; i++) {
+        console.info('characterUuid is: ' + service.characteristics[i].characteristicUuid);
+    }
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+### getServices<sup>22+</sup>
+
+getServices(): GattService[]
+
+server端获取本端已添加的服务能力。
+
+- 一个应用可以通过[ble.createGattServer](#blecreategattserver)方法创建多个[GattServer](#gattserver)实例。本方法仅支持获取当前实例添加过的服务，无法获取当前应用创建的其他实例或由其他应用创建的实例添加过的服务。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**返回值：**
+
+| 类型                              | 说明              |
+| --------------------------------- | ---------------- |
+| [GattService](#gattservice)[] | server端已添加的服务能力。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+let server: ble.GattServer = ble.createGattServer();
+try {
+    let services: ble.GattService[] = server.getServices();
+    console.info('services size is: ' + services.length);
+    for (let i = 0; i < services.length; i++) {
+        console.info('serviceUuid is: ' + services[i].serviceUuid);
+    }
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
 ### close
 
 close(): void
@@ -2357,6 +2458,52 @@ try {
 }
 ```
 
+### getConnectedState<sup>22+</sup>
+
+getConnectedState(deviceId: string): ProfileConnectionState
+
+获取当前与client端设备的连接状态。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| deviceId     | string | 是    | 要查询连接状态的对端蓝牙设备地址。例如："XX:XX:XX:XX:XX:XX"。 |
+
+**返回值：**
+
+| 类型                  | 说明                  |
+| ------------------- | ------------------- |
+| [ProfileConnectionState](#profileconnectionstate10) | 蓝牙设备的profile连接状态。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.               |
+|2900003 | Bluetooth disabled.            |
+|2900099 | Operation failed.              |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+let gattServer: ble.GattServer = ble.createGattServer();
+let deviceId: string = 'XX:XX:XX:XX:XX:XX';
+try {
+    let result: ble.ProfileConnectionState = gattServer.getConnectedState(deviceId);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
 
 ## GattClientDevice
 
@@ -4001,6 +4148,96 @@ try {
 }
 ```
 
+### getConnectedState<sup>22+</sup>
+
+getConnectedState(): ProfileConnectionState
+
+获取当前与server端设备的连接状态。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+
+**返回值：**
+
+| 类型                  | 说明                  |
+| ------------------- | ------------------- |
+| [ProfileConnectionState](#profileconnectionstate10) | 蓝牙设备的profile连接状态。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.               |
+|2900003 | Bluetooth disabled.            |
+|2900099 | Operation failed.              |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice("XX:XX:XX:XX:XX:XX");
+try {
+    let result: ble.ProfileConnectionState = gattServer.getConnectedState();
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+### updateConnectionParam<sup>22+</sup>
+
+updateConnectionParam(param: ConnectionParam): Promise&lt;void&gt;
+
+向对端设备发起连接参数更新请求，调用成功后可以切换与对端数据传输速度。
+- 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
+- 不调用该接口时，默认连接参数类型为[ble.ConnectionParam.BALANCED](#connectionparam22)。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| param     | [ConnectionParam](#connectionparam22) | 是    | 连接参数类型。 |
+
+**返回值：**
+
+| 类型                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.               |
+|2900003 | Bluetooth disabled.            |
+|2900099 | Operation failed.              |
+|2901003 | The connection is not established. |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice("11:22:33:44:55:66");
+try {
+    gattclient.updateConnectionParam(ble.ConnectionParam.LOW_POWER);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
 ## ble.createBleScanner<sup>15+</sup>
 
 createBleScanner(): BleScanner
@@ -4108,7 +4345,7 @@ try {
 
 stopScan(): Promise&lt;void&gt;
 
-停止正在进行的BLE扫描。<br>
+停止正在进行的BLE扫描。使用Promise异步回调。<br>
 - 停止的扫描是由[startScan](#startscan15)触发的。<br>
 - 当应用不再需要扫描BLE设备时，需主动调用该方法停止扫描。
 
@@ -4724,8 +4961,6 @@ BLE扫描的配置参数。
 
 枚举，指定当前设备的Profile协议类型。
 
-**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 | 名称      | 值    | 说明                           |
@@ -4746,3 +4981,15 @@ BLE扫描的配置参数。
 | BATCH<sup>19+</sup>  | 2    | 批量扫描上报模式。<br>- 该模式可通过降低蓝牙芯片上报扫描结果频率，使系统更长时间地保持在休眠状态，从而降低整机功耗。<br>- 该模式下，扫描到符合过滤条件的BLE广播报文后不会立刻上报，需要缓存一段时间（[ScanOptions](#scanoptions)中的interval字段）后上报。 <br>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。       |
 | FENCE_SENSITIVITY_LOW<sup>18+</sup>  | 10    | 低灵敏度围栏上报模式。<br>- 围栏模式表示只在广播进入或离开围栏时上报。<br>- 扫描到的广播信号强度高且广播数量多时，可进入低灵敏度围栏。<br>- 首次扫描到广播即进入围栏，触发一次上报。<br>- 一段时间内扫描不到广播即离开围栏，触发一次上报。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。    |
 | FENCE_SENSITIVITY_HIGH<sup>18+</sup>  | 11    | 高灵敏度围栏上报模式。<br>- 围栏模式表示只在广播进入或离开围栏时上报。<br>- 扫描到的广播信号强度低且广播数量少时，可进入高灵敏度围栏。<br>- 首次扫描到广播即进入围栏，触发一次上报。<br>- 一段时间内扫描不到广播即离开围栏，触发一次上报。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。    |
+
+## ConnectionParam<sup>22+</sup>
+
+枚举，连接参数类型。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+| 名称      | 值    | 说明                           |
+| --------  | ---- | ------------------------------ |
+| LOW_POWER  | 1    |  低功耗模式，传输数据速度慢，但功耗少。   |
+| BALANCED   | 2    |  均衡模式，平衡延迟和功耗，如果没有请求连接参数更新，这是默认值。 |
+| HIGH       | 3    |  高速率模式，传输数据速度快，但功耗多。<br>- 当需要快速传输大量数据时应采用该连接参数，传输完成后，应请求BALANCED连接参数，以减少功耗。  |

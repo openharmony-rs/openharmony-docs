@@ -3,8 +3,13 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @hello_harmony; @yu_haoqiaida-->
-<!--SE: @kutcherzhou1-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @kutcherzhou1-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
+```c
+typedef struct HiDebug_ThreadCpuUsage {...} HiDebug_ThreadCpuUsage
+```
 
 ## Overview
 
@@ -20,8 +25,8 @@ Defines the struct for the CPU usage of all threads of an application.
 
 ### Member Variables
 
-| Name                                     | Description|
-|-----------------------------------------| -- |
-| uint32_t threadId                       | Thread ID.|
-| double cpuUsage                         | Thread CPU usage, in percentage.|
+| Name| Description|
+| -- | -- |
+| uint32_t threadId | Thread ID.|
+| double cpuUsage | Thread CPU usage, in percentage.|
 | struct [HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md) *next | Pointer to the CPU usage of the next thread.|

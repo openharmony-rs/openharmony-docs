@@ -22,6 +22,9 @@ This topic describes how to use the AVScreenCapture APIs to carry out one-time s
 
 If microphone data collection is configured, configure the permission ohos.permission.MICROPHONE and request a continuous task. For details, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md) and [Continuous Task](../../task-management/continuous-task.md).
 
+Starting from API version 22, when you perform screen capture for an application on a PC/2-in-1 device, you can request the ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK permission to maintain capture even when the screen is off but not locked. For details about the configuration, [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
+
+Starting from API version 22, when you perform screen capture for an application on a PC/2-in-1 device, you can request the ohos.permission.CUSTOM_SCREEN_RECORDING permission to prevent the privacy protection pop-up from being displayed during screen capture. For details about how to request the permission, see [Requesting Restricted Permissions](../../security/AccessToken/restricted-permissions.md).
 ## How to Develop
 
 After an AVScreenCapture instance is created, different APIs can be called to switch the AVScreenCapture to different states and trigger the required behavior.
@@ -288,13 +291,13 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     // (Optional) Set a callback to handle user selection results on the manual confirmation UI. This operation must be performed before screen capture starts.
     OH_AVScreenCapture_SetSelectionCallback(capture, OnUserSelected, nullptr);
 
-    // (Optional) Set the cursor display switch. This operation must be performed before screen capture starts.
+    // (Optional) Set the cursor display switch. This operation can be performed before or after screen capture starts.
     OH_AVScreenCapture_ShowCursor(capture, false);
 
     // Initialize AVScreenCapture.
     int32_t retInit = OH_AVScreenCapture_Init(capture, config);
 
-    // Optional (supported since API version 20) Set the coordinates and size of the area to capture. For example, the following creates a rectangle area starting at (0, 0) with a length of 100 and a width of 100. This API can also be set after screen capture starts.
+    // Optional (supported since API version 20) Set the coordinates and size of the area to capture. The example below creates a 100 px * 100 px rectangle area starting at (0, 0). This API can also be set after screen capture starts.
     OH_Rect* region = new OH_Rect;
     region->x = 0;
     region->y = 0;

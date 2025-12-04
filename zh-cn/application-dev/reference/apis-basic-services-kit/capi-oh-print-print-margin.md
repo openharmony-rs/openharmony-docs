@@ -6,6 +6,10 @@
 <!--Tester: @Q-haosu-->	
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} Print_Margin
+```
+
 ## 概述
 
 打印边距。

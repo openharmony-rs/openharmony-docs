@@ -22,6 +22,18 @@ The **NotificationContent** module provides APIs for defining the notification c
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
 | liveView<sup>11+</sup>       | [NotificationLiveViewContent](#notificationliveviewcontent11)              | No | Yes | Common live view.<br>**System API**: This is a system API.|
 
+## NotificationBasicContent
+
+Describes the normal text notification.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+| Name          | Type                                                                       | Read-Only| Optional| Description              |
+| -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
+| structuredText<sup>21+</sup> | Map<string, string> |  No |  Yes | Structured notification. Currently, only service reminder messages can be displayed in structured format in the notification center. (The size of key or value cannot exceed 512 bytes; otherwise, the excess part will be truncated. Only a maximum of three pairs of structured data are supported.)  |
+
 ## NotificationLiveViewContent<sup>11+</sup>
 
 Describes the common live view.
@@ -36,9 +48,22 @@ Describes the common live view.
 | version        | number                                                             | No | Yes | If the version number stored in the database is not **0xffffffff**, the version number needs to be verified when the live view is updated or ended to ensure that the current version number is greater than the version number stored in the database. The default value is **0xffffffff**.|
 | extraInfo      | Record<string, Object\>                                               | No | Yes | Extra information of the live view.          |
 | pictureInfo    | Record<string, Array<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\>\> | No | Yes | Extra image information of the live view.|
-| isLocalUpdateOnly<sup>12+</sup> | boolean                                           | No | Yes | Whether the live view is updated only locally.  <br> - **true**: Yes.<br> - **false** (default): No.    |
-| liveViewType<sup>18+</sup>  | [LiveViewTypes](#liveviewtypes18)  | No| Yes | Live view types. |
-| cardButtons<sup>18+</sup> | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  No |  Yes | Live view buttons (a maximum of three buttons are supported).     |
+| isLocalUpdateOnly<sup>12+</sup> | boolean                                           | No | Yes | Whether the live view is updated only locally. The default value is **false**.<br> - **true**: Yes.<br> - **false**: No.    |
+| extensionWantAgent<sup>20+</sup> | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)    |  No |  Yes | Redirection by tapping in the auxiliary area.     |
+
+
+## NotificationSystemLiveViewContent<sup>18+</sup>
+
+Describes the system live view notification. A third-party application cannot directly create a notification of this type. After the system proxy creates a system live view, the third-party application releases a notification with the same ID to update the specified content. This API inherits from [NotificationBasicContent](./js-apis-inner-notification-notificationContent.md#notificationbasiccontent).
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+| Name                        | Type                                            | Read-Only| Optional| Description                              |
+| ---------------------------- | ----------------------------------------------- | --- | --- | -----------------------------------|
+| liveViewType | [LiveViewTypes](#liveviewtypes18)  | No| Yes | Live view types. |
+| cardButtons | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  No |  Yes | Live view buttons (a maximum of three buttons are supported).     |
 
 ## NotificationCapsule<sup>11+</sup>
 
@@ -82,7 +107,7 @@ Describes the information of a system notification button.
 | name         | string                  | No  |  No | Button ID, which is used to distinguish multiple buttons of the same notification.  |
 | iconResource | [IconType](#icontype18) | No  |  No | Background image of a button.                            |
 | text         | string                  | No  |  Yes | Text displayed on the button.                          |
-| hidePanel    | boolean                 | No  |  Yes | Whether to hide the notification panel when the button is tapped.  <br> - **true**: Yes.<br> - **false** (default): No.  |
+| hidePanel    | boolean                 | No  |  Yes | Whether to hide the notification panel when the button is tapped. The default value is **false**.<br> - **true**: Yes.<br> - **false**: No.  |
 
 ## IconType<sup>18+</sup>
 
@@ -117,4 +142,4 @@ Enumerates live view types.
 
 | Name          | Type   | Read-Only| Optional| Description                            |
 | -------------- | ------ | ---- | --- | -------------------------------- |
-| lineWantAgents<sup>20+</sup>       | Array<[wantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)> |  No | Yes | **wantAgent**s triggered when a line of text in the multi-line text is tapped. The text in different lines corresponds to different **wantAgent**s. The maximum number of lines configured for this field is equal to the value of [lines](./js-apis-inner-notification-notificationContent.md#notificationmultilinecontent).<br>**System API**: This is a system API.<br>**Required permissions**: ohos.permission.NOTIFICATION_AGENT_CONTROLLER|
+| lineWantAgents<sup>20+</sup>       | Array<[WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)> |  No | Yes | **wantAgent**s triggered when a line of text in the multi-line text is tapped. The text in different lines corresponds to different **wantAgent**s. The maximum number of lines configured for this field is equal to the value of [lines](./js-apis-inner-notification-notificationContent.md#notificationmultilinecontent).<br>**System API**: This is a system API.<br>**Required permissions**: ohos.permission.NOTIFICATION_AGENT_CONTROLLER|

@@ -232,21 +232,21 @@ uinput -M -c 0 -i 500 -c 0
 ### 查询鼠标光标信息
 查询当前鼠标光标信息。
 
-如果鼠标光标为显示状态，将输出其显示状态及其[鼠标光标样式](../reference/apis-input-kit/js-apis-pointer.md#pointerstyle)。如果传入filePath参数且鼠标光标样式为第三方自定义光标（其样式枚举值为-100），则会将其样式图以二进制形式保存到指定filePath文件中。用户需要自行创建filePath文件。如果未传入filePath参数，则不保存鼠标光标的样式图。如果鼠标光标为隐藏状态，则不输出其样式，也不保存其样式图。
+如果鼠标光标处于显示状态，将输出鼠标光标显示状态及[鼠标光标样式](../reference/apis-input-kit/js-apis-pointer.md#pointerstyle)。若传入`filePath`参数且鼠标光标为第三方自定义光标（样式枚举值为-100），会将鼠标光标样式图以二进制形式保存到指定文件中。需要自行创建`filePath`文件。若未传入`filePath`参数，将不会保存样式图。当鼠标光标处于隐藏状态时，不会输出样式信息，也不会保存样式图。
 
 **命令**
 ```bash
 uinput -M -q [filePath]
 
-# [filePath]为鼠标光标的样式图文件保存路径，可选参数，当前仅支持“/data/local/tmp/”目录下的文件保存路径，例如：/data/local/tmp/testfile。
+# [filePath] 鼠标光标的样式图文件保存路径，可选参数，当前版本仅支持“/data/local/tmp/”目录下的文件保存路径，例如：/data/local/tmp/testfile。
 ```
 
 **使用示例**
 ```bash
-# 查询当前鼠标光标的显示/隐藏状态和样式id。
+# 查询当前鼠标光标的显示/隐藏状态和样式ID。
 uinput -M -q
 
-# 查询当前鼠标光标的显示/隐藏状态和样式id，并将其样式图以二进制形式写入“/data/local/tmp/testfile”文件中。
+# 查询当前鼠标光标的显示/隐藏状态和样式ID，并将鼠标光标样式图以二进制形式写入“/data/local/tmp/testfile”文件中。
 touch /data/local/tmp/testfile
 uinput -M -q /data/local/tmp/testfile
 ```

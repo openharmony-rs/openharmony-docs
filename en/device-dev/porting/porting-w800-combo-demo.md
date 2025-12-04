@@ -1,7 +1,7 @@
 
 # Combo Solution – W800 Chip Porting Case
 
-The combo solution is developed based on the OpenHarmony LiteOS-M kernel. This document exemplifies how to port code of the [Neptune100 development board](https://gitee.com/openharmony-sig/device_board_hihope) powered by the W800 chip from Winner Micro. The porting architecture uses the solution where Board and SoC are separated. Compilation options can be graphically configured through KConfig. The porting of the `ck804ef` architecture is added to adapt subsystems and components such as `HDF` and `XTS`.
+The combo solution is developed based on the OpenHarmony LiteOS-M kernel. This document exemplifies how to port code of the [Neptune100 development board](https://gitcode.com/openharmony-sig/device_board_hihope) powered by the W800 chip from Winner Micro. The porting architecture uses the solution where Board and SoC are separated. Compilation options can be graphically configured through KConfig. The porting of the `ck804ef` architecture is added to adapt subsystems and components such as `HDF` and `XTS`.
 
 ## Adaptation Preparation
 
@@ -11,7 +11,7 @@ Prepare the ubuntu20.04 system environment and install the cross compilation too
 
 ### Directory Planning
 
-This solution designs the directory structure using the [board and SoC decoupling idea](https://gitee.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md). 
+This solution designs the directory structure using the [board and SoC decoupling idea](https://gitcode.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md). 
 
 The SoC adaptation directory is planned as follows:
    ```

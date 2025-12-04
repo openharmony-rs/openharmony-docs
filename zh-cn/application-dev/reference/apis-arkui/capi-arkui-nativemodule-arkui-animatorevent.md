@@ -4,7 +4,11 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_AnimatorEvent ArkUI_AnimatorEvent
+```
 
 ## 概述
 

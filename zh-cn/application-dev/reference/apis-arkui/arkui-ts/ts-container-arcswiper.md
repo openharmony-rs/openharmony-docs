@@ -4,7 +4,7 @@
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 弧形滑块视图容器，提供子组件滑动轮播显示的能力。 
 
@@ -14,10 +14,29 @@
 
 ## 导入模块
 
+> **说明：**
+>
+> - ArcSwiperAttribute是用于配置ArcSwiper组件属性的关键接口。API version 21及之前版本，导入ArcSwiper组件后需要开发者手动导入ArcSwiperAttribute，否则会编译报错。从API version 22开始，编译工具链识别到导入ArcSwiper组件后，会自动导入ArcSwiperAttribute，无需开发者手动导入ArcSwiperAttribute。
+>
+> - 如果开发者手动导入ArcSwiperAttribute，DevEco Studio会显示置灰，API version 21及之前版本删除会编译报错，从API version 22开始，删除对功能无影响。
+
+API version 21及之前版本：
+
 ```ts
 import {
   ArcSwiper,
   ArcSwiperAttribute,
+  ArcDotIndicator,
+  ArcDirection,
+  ArcSwiperController
+} from '@kit.ArkUI';
+```
+
+API version 22及之后版本：
+
+```ts
+import { 
+  ArcSwiper, 
   ArcDotIndicator,
   ArcDirection,
   ArcSwiperController
@@ -578,13 +597,9 @@ ArcSwiper自定义切换动画执行过程中，返回给开发者的proxy对象
 
 >**说明：** 
 >
->假设当前选中的子组件的索引为0，从第0页切换到第1页的动画过程中，每帧都会对视窗内所有页面触发回调，当视窗内有第0
->页和第1页两页时，每帧会触发两次回调。其中第一次回调的selectedIndex为0，index为0，position为当前帧第0页相对于动画开
->始前第0页的移动比例，mainAxisLength为主轴方向上第0页的长度；第二次回调的selectedIndex仍为0，index为1，position为当
->前帧第1页相对于动画开始前第0页的移动比例，mainAxisLength为主轴方向上第1页的长度。
+> - 假设当前选中的子组件的索引为0，从第0页切换到第1页的动画过程中，每帧都会对视窗内所有页面触发回调，当视窗内有第0页和第1页两页时，每帧会触发两次回调。其中第一次回调的selectedIndex为0，index为0，position为当前帧第0页相对于动画开始前第0页的移动比例，mainAxisLength为主轴方向上第0页的长度；第二次回调的selectedIndex仍为0，index为1，position为当前帧第1页相对于动画开始前第0页的移动比例，mainAxisLength为主轴方向上第1页的长度。
 >
->若动画曲线为弹簧插值曲线，从第0页切换到第1页的动画过程中，可能会因为离手时的位置和速度，先过滑到第2页，再回弹到
->第1页，该过程中每帧会对视窗内第1页和第2页触发回调。
+> - 若动画曲线为弹簧插值曲线，从第0页切换到第1页的动画过程中，可能会因为离手时的位置和速度，先过滑到第2页，再回弹到第1页，该过程中每帧会对视窗内第1页和第2页触发回调。
 
 
 ### finishTransition
@@ -606,11 +621,12 @@ finishTransition(): void
 import {
   CircleShape,
   ArcSwiper,
-  ArcSwiperAttribute, // ArcSwiper的属性依赖ArcSwiperAttribute对象导入，不建议删除该对象的引入。
+  ArcSwiperAttribute, 
   ArcDotIndicator,
   ArcDirection,
   ArcSwiperController
 } from '@kit.ArkUI';
+// 从API Version 22开始，无需手动导入ArcSwiperAttribute。具体请参考ArcSwiper的导入模块说明。
 
 class MyDataSource implements IDataSource {
   private list: Color[] = [];

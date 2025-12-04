@@ -127,11 +127,25 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 | FLAG_PREINSTALLED_APP<sup>15+</sup>|  0x00000020 | 表示应用的预置属性为预置应用。|
 | FLAG_PREINSTALLED_APP_UPDATE<sup>15+</sup>|  0x00000040 | 表示该预置应用的更新状态为已更新。|
 
+## BundleInstallStatus<sup>23+</sup>
+
+标识应用的安装状态。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+| 名称 | 值 | 说明 |
+|:----------------:|:---:|:---:|
+| BUNDLE_NOT_EXIST        | 1   | 应用未安装。 |
+| BUNDLE_INSTALLING         | 2   | 应用正在安装。 |
+| BUNDLE_INSTALLED        | 3   | 应用已安装完成。 |
+
 ## bundleManager.getBundleInfo<sup>14+</sup>
 
 getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback: AsyncCallback\<BundleInfo>): void
 
-根据给定的bundleName、bundleFlags和userId获取BundleInfo，使用callback异步回调。
+根据给定的bundleName、bundleFlags和userId获取BundleInfo。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -212,7 +226,7 @@ try {
 
 getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
 
-根据给定的bundleName和bundleFlags获取BundleInfo，使用callback异步回调。
+根据给定的bundleName和bundleFlags获取BundleInfo。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -267,7 +281,7 @@ try {
 
 getBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise\<BundleInfo>
 
-根据给定的bundleName、bundleFlags和userId获取BundleInfo，使用Promise异步回调。
+根据给定的bundleName、bundleFlags和userId获取BundleInfo。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -348,7 +362,7 @@ try {
 
 getApplicationInfo(bundleName: string, appFlags: number, userId: number, callback: AsyncCallback\<ApplicationInfo>): void
 
-根据给定的bundleName、appFlags和userId获取ApplicationInfo，使用callback异步回调。
+根据给定的bundleName、appFlags和userId获取ApplicationInfo。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -408,7 +422,7 @@ try {
 
 getApplicationInfo(bundleName: string, appFlags: number, callback: AsyncCallback\<ApplicationInfo>): void
 
-根据给定的bundleName和appFlags获取ApplicationInfo，使用callback异步回调。
+根据给定的bundleName和appFlags获取ApplicationInfo。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -465,7 +479,7 @@ try {
 
 getApplicationInfo(bundleName: string, appFlags: number, userId?: number): Promise\<ApplicationInfo>
 
-根据给定的bundleName、appFlags和userId获取ApplicationInfo，使用Promise异步回调。
+根据给定的bundleName、appFlags和userId获取ApplicationInfo。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -528,7 +542,7 @@ try {
 
 getAllBundleInfo(bundleFlags: number, userId: number, callback: AsyncCallback<Array\<BundleInfo>>): void
 
-根据给定的bundleFlags和userId获取系统中所有的BundleInfo，使用callback异步回调。
+根据给定的bundleFlags和userId获取系统中所有的BundleInfo。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -582,7 +596,7 @@ try {
 
 getAllBundleInfo(bundleFlags: number, callback: AsyncCallback<Array\<BundleInfo>>): void
 
-根据给定的bundleFlags获取系统中所有的BundleInfo，使用callback异步回调。
+根据给定的bundleFlags获取系统中所有的BundleInfo。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -633,7 +647,7 @@ try {
 
 getAllBundleInfo(bundleFlags: number, userId?: number): Promise<Array\<BundleInfo>>
 
-根据给定的bundleFlags和userId获取系统中所有的BundleInfo，使用Promise异步回调。
+根据给定的bundleFlags和userId获取系统中所有的BundleInfo。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -689,7 +703,7 @@ try {
 
 getAllApplicationInfo(appFlags: number, userId: number, callback: AsyncCallback<Array\<ApplicationInfo>>): void
 
-根据给定的appFlags和userId获取系统中所有的ApplicationInfo，使用callback异步回调。
+根据给定的appFlags和userId获取系统中所有的ApplicationInfo。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -743,7 +757,7 @@ try {
 
 getAllApplicationInfo(appFlags: number, callback: AsyncCallback<Array\<ApplicationInfo>>): void
 
-根据给定的appFlags获取系统中所有的ApplicationInfo，使用callback异步回调。
+根据给定的appFlags获取系统中所有的ApplicationInfo。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -794,7 +808,7 @@ try {
 
 getAllApplicationInfo(appFlags: number, userId?: number): Promise<Array\<ApplicationInfo>>
 
-根据给定的appFlags和userId获取系统中所有的ApplicationInfo，使用Promise异步回调。
+根据给定的appFlags和userId获取系统中所有的ApplicationInfo。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -851,7 +865,7 @@ try {
 
 queryAbilityInfo(want: Want, abilityFlags: number, userId: number, callback: AsyncCallback<Array\<AbilityInfo>>): void
 
-根据给定的want、abilityFlags和userId获取多个AbilityInfo，使用callback异步回调。
+根据给定的want、abilityFlags和userId获取多个AbilityInfo。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -917,7 +931,7 @@ try {
 
 queryAbilityInfo(want: Want, abilityFlags: number, callback: AsyncCallback<Array\<AbilityInfo>>): void
 
-根据给定的want和abilityFlags获取一个或多个AbilityInfo，使用callback异步回调。
+根据给定的want和abilityFlags获取一个或多个AbilityInfo。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -980,7 +994,7 @@ try {
 
 queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Promise<Array\<AbilityInfo>>
 
-根据给定的want、abilityFlags和userId获取一个或多个AbilityInfo，使用Promise异步回调。
+根据给定的want、abilityFlags和userId获取一个或多个AbilityInfo。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -1159,7 +1173,7 @@ try {
 
 queryAbilityInfo(wants: Array\<Want>, abilityFlags: number, userId?: number): Promise<Array\<AbilityInfo>>
 
-根据给定的want列表、abilityFlags和userId获取一个或多个AbilityInfo，使用Promise异步回调。
+根据给定的want列表、abilityFlags和userId获取一个或多个AbilityInfo。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -1232,7 +1246,7 @@ let wants: Array<Want> = [ want, want1 ];
 
 queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId: number, callback: AsyncCallback<Array\<ExtensionAbilityInfo>>): void
 
-根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取一个或多个ExtensionAbilityInfo，使用callback异步回调。
+根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取一个或多个ExtensionAbilityInfo。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -1299,7 +1313,7 @@ try {
 
 queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, callback: AsyncCallback<Array\<ExtensionAbilityInfo>>): void
 
-根据给定的want、extensionAbilityType和extensionAbilityFlags获取一个或多个ExtensionAbilityInfo，使用callback异步回调。
+根据给定的want、extensionAbilityType和extensionAbilityFlags获取一个或多个ExtensionAbilityInfo。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -1363,7 +1377,7 @@ try {
 
 queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId?: number): Promise<Array\<ExtensionAbilityInfo>>
 
-根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取ExtensionAbilityInfo，使用Promise异步回调。
+根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取ExtensionAbilityInfo。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -1547,7 +1561,7 @@ try {
 
 getBundleNameByUid(uid: number, callback: AsyncCallback\<string>): void
 
-根据给定的uid获取对应的bundleName，使用callback异步回调。
+根据给定的uid获取对应的bundleName。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
@@ -1595,7 +1609,7 @@ try {
 
 getBundleNameByUid(uid: number): Promise\<string>
 
-根据给定的uid获取对应的bundleName，使用Promise异步回调。
+根据给定的uid获取对应的bundleName。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
@@ -1694,7 +1708,7 @@ try {
 
 getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
 
-根据给定的hapFilePath和bundleFlags获取BundleInfo，使用callback异步回调。
+根据给定的hapFilePath和bundleFlags获取BundleInfo。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1748,7 +1762,7 @@ try {
 
 getBundleArchiveInfo(hapFilePath: string,  bundleFlags: number): Promise\<BundleInfo>
 
-根据给定的hapFilePath和bundleFlags获取BundleInfo，使用Promise异步回调。
+根据给定的hapFilePath和bundleFlags获取BundleInfo。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1859,7 +1873,7 @@ try {
 
 getAllBundleCacheSize(): Promise\<number>
 
-获取全局缓存大小，使用Promise异步回调。
+获取全局缓存大小。使用Promise异步回调。
 
 有程序运行时的应用的缓存、或者在[应用配置指南](../../../device-dev/subsystems/subsys-app-privilege-config-guide.md)中已配置“AllowAppDataNotCleared”特权的应用的缓存，无法被获取。
 
@@ -1907,7 +1921,7 @@ try {
 
 cleanAllBundleCache(): Promise\<void>
 
-清理全局缓存，使用Promise异步回调。
+清理全局缓存。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1953,7 +1967,7 @@ try {
 
 cleanBundleCacheFiles(bundleName: string, callback: AsyncCallback\<void>): void
 
-根据给定的bundleName清理BundleCache，使用callback异步回调。
+根据给定的bundleName清理BundleCache。使用callback异步回调。
 
 调用方清理自身缓存数据时不需要权限。
 
@@ -2008,7 +2022,7 @@ try {
 
 cleanBundleCacheFiles(bundleName: string): Promise\<void>
 
-根据给定的bundleName清理BundleCache，使用Promise异步回调。
+根据给定的bundleName清理BundleCache。使用Promise异步回调。
 
 调用方清理自身缓存数据时不需要权限。
 
@@ -2066,7 +2080,7 @@ try {
 
 cleanBundleCacheFiles(bundleName: string, appIndex: number): Promise\<void>
 
-根据给定的bundleName和appIndex清理BundleCache，使用Promise异步回调。
+根据给定的bundleName和appIndex清理BundleCache。使用Promise异步回调。
 
 调用方清理自身缓存数据时不需要权限。
 
@@ -2127,7 +2141,7 @@ try {
 
 setApplicationEnabled(bundleName: string, isEnabled: boolean, callback: AsyncCallback\<void>): void
 
-设置指定应用的禁用或使能状态，使用callback异步回调。
+设置指定应用的禁用或使能状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2180,7 +2194,7 @@ try {
 
 setApplicationEnabled(bundleName: string, isEnabled: boolean): Promise\<void>
 
-设置指定应用的禁用或使能状态，使用Promise异步回调。
+设置指定应用的禁用或使能状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2236,7 +2250,7 @@ try {
 
 setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: boolean): Promise\<void>
 
-设置指定应用或分身应用的禁用或使能状态，使用Promise异步回调。
+设置指定应用或分身应用的禁用或使能状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2341,7 +2355,7 @@ try {
 
 setAbilityEnabled(info: AbilityInfo, isEnabled: boolean, callback: AsyncCallback\<void>): void
 
-设置指定组件的禁用或使能状态，使用callback异步回调。
+设置指定组件的禁用或使能状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2408,7 +2422,7 @@ try {
 
 setAbilityEnabled(info: AbilityInfo, isEnabled: boolean): Promise\<void>
 
-设置指定组件的禁用或使能状态，使用Promise异步回调。
+设置指定组件的禁用或使能状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2478,7 +2492,7 @@ try {
 
 setAbilityEnabled(info: AbilityInfo, appIndex: number, isEnabled: boolean): Promise\<void>
 
-设置指定应用或分身应用组件的禁用或使能状态，使用Promise异步回调。
+设置指定应用或分身应用组件的禁用或使能状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2616,7 +2630,7 @@ try {
 
 isApplicationEnabled(bundleName: string, callback: AsyncCallback\<boolean>): void
 
-获取指定应用的禁用或使能状态，使用callback异步回调。
+获取指定应用的禁用或使能状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2665,7 +2679,7 @@ try {
 
 isApplicationEnabled(bundleName: string): Promise\<boolean>
 
-获取指定应用的禁用或使能状态，使用Promise异步回调。
+获取指定应用的禁用或使能状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2717,7 +2731,7 @@ try {
 
 isApplicationEnabled(bundleName: string, appIndex: number): Promise\<boolean>
 
-获取指定应用或分身应用的禁用或使能状态，使用Promise异步回调。
+获取指定应用或分身应用的禁用或使能状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2820,7 +2834,7 @@ try {
 
 isAbilityEnabled(info: AbilityInfo, callback: AsyncCallback\<boolean>): void
 
-获取指定组件的禁用或使能状态，使用callback异步回调。
+获取指定组件的禁用或使能状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2883,7 +2897,7 @@ try {
 
 isAbilityEnabled(info: AbilityInfo): Promise\<boolean>
 
-获取指定组件的禁用或使能状态，使用Promise异步回调。
+获取指定组件的禁用或使能状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2949,7 +2963,7 @@ try {
 
 isAbilityEnabled(info: AbilityInfo, appIndex: number): Promise\<boolean>
 
-获取应用或指定分身应用组件的禁用或使能状态，使用Promise异步回调。
+获取应用或指定分身应用组件的禁用或使能状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3085,7 +3099,7 @@ try {
 
 getLaunchWantForBundle(bundleName: string, userId: number, callback: AsyncCallback\<Want>): void
 
-根据给定的bundleName和userId获取用于启动应用程序的Want参数，使用callback异步回调。
+根据给定的bundleName和userId获取用于启动应用程序的Want参数。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3141,7 +3155,7 @@ try {
 
 getLaunchWantForBundle(bundleName: string, callback: AsyncCallback\<Want>): void
 
-根据给定的bundleName获取用于启动应用程序的Want参数，使用callback异步回调。
+根据给定的bundleName获取用于启动应用程序的Want参数。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3194,7 +3208,7 @@ try {
 
 getLaunchWantForBundle(bundleName: string, userId?: number): Promise\<Want>
 
-根据给定的bundleName和userId获取用于启动应用程序的Want参数，使用Promise异步回调。
+根据给定的bundleName和userId获取用于启动应用程序的Want参数。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3328,7 +3342,7 @@ try {
 
 getPermissionDef(permissionName: string, callback: AsyncCallback\<PermissionDef>): void
 
-根据给定的permissionName获取权限定义结构体PermissionDef信息，使用callback异步回调。
+根据给定的permissionName获取权限定义结构体PermissionDef信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3379,7 +3393,7 @@ try {
 
 getPermissionDef(permissionName: string): Promise\<PermissionDef>
 
-根据给定的permissionName获取权限定义结构体PermissionDef信息，使用Promise异步回调。
+根据给定的permissionName获取权限定义结构体PermissionDef信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3484,7 +3498,7 @@ try {
 
 getAbilityLabel(bundleName: string, moduleName: string, abilityName: string, callback: AsyncCallback\<string>): void
 
-获取指定bundleName、moduleName和abilityName的label，使用callback异步回调。
+获取指定bundleName、moduleName和abilityName的label。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -3547,7 +3561,7 @@ try {
 
 getAbilityLabel(bundleName: string, moduleName: string, abilityName: string): Promise\<string>
 
-获取指定bundleName、moduleName和abilityName的label，使用Promise异步回调。
+获取指定bundleName、moduleName和abilityName的label。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -3903,7 +3917,7 @@ try {
 
 getSharedBundleInfo(bundleName: string,  moduleName: string, callback: AsyncCallback\<Array\<SharedBundleInfo\>\>): void
 
-获取指定的共享包信息，使用callback异步回调。
+获取指定的共享包信息。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -3960,7 +3974,7 @@ try {
 
 getSharedBundleInfo(bundleName: string, moduleName: string): Promise\<Array\<SharedBundleInfo\>\>
 
-获取指定的共享包信息，使用Promise异步回调。
+获取指定的共享包信息。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -4020,7 +4034,7 @@ try {
 
 getAllSharedBundleInfo(callback: AsyncCallback\<Array\<SharedBundleInfo\>\>): void
 
-获取所有的共享包信息，使用callback异步回调。
+获取所有的共享包信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4068,7 +4082,7 @@ try {
 
 getAllSharedBundleInfo(): Promise\<Array\<SharedBundleInfo\>\>
 
-获取所有的共享包信息，使用Promise异步回调。
+获取所有的共享包信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口
 
@@ -4114,7 +4128,7 @@ try {
 
 getAppProvisionInfo(bundleName: string, callback: AsyncCallback\<AppProvisionInfo\>): void
 
-获取指定bundleName的provision配置文件信息，使用callback异步回调。
+获取指定bundleName的provision配置文件信息。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -4168,7 +4182,7 @@ try {
 
 getAppProvisionInfo(bundleName: string, userId: number, callback: AsyncCallback\<AppProvisionInfo\>): void
 
-获取指定bundleName和userId的provision配置文件信息，使用callback异步回调。
+获取指定bundleName和userId的provision配置文件信息。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -4226,7 +4240,7 @@ try {
 
 getAppProvisionInfo(bundleName: string, userId?: number): Promise\<AppProvisionInfo\>
 
-根据bundleName和userId获取应用的provision配置文件信息，使用Promise异步回调。
+根据bundleName和userId获取应用的provision配置文件信息。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -4357,6 +4371,76 @@ try {
 } catch (err) {
     let message = (err as BusinessError).message;
     hilog.error(0x0000, 'testTag', 'getAppProvisionInfoSync failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.getAllAppProvisionInfo<sup>23+</sup>
+
+getAllAppProvisionInfo(userId?: number): Promise\<Array\<AppProvisionInfo\>\>
+
+根据userId获取指定用户下所有应用的[Provision](js-apis-bundleManager-AppProvisionInfo-sys.md)配置文件信息。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 或 (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
+
+ - 获取当前用户下所有应用的provision配置文件信息时，需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED。
+
+ - 获取其他用户下所有应用的provision配置文件信息时，需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED和ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名   | 类型         | 必填 | 说明          |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br>默认值：调用方所在用户ID。<br>取值范围：大于等于0。 |
+
+
+**返回值：**
+
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| Promise\<Array\<[AppProvisionInfo](js-apis-bundleManager-AppProvisionInfo-sys.md#appprovisioninfo)\>\> | Promise对象，返回应用的provision配置文件信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | -------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 17700004 | The specified user ID is not found. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+let userId = 100;
+
+try {
+    bundleManager.getAllAppProvisionInfo().then((data) => {
+        hilog.info(0x0000, 'testTag', 'getAllAppProvisionInfo successfully. Data: %{public}s', JSON.stringify(data));
+    }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfo failed. Cause: %{public}s', err.message);
+    });
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfo failed. Cause: %{public}s', message);
+}
+
+try {
+    bundleManager.getAllAppProvisionInfo(userId).then((data) => {
+        hilog.info(0x0000, 'testTag', 'getAllAppProvisionInfo successfully. Data: %{public}s', JSON.stringify(data));
+    }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfo failed. Cause: %{public}s', err.message);
+    });
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfo failed. Cause: %{public}s', message);
 }
 ```
 
@@ -4623,7 +4707,7 @@ try {
 
 getRecoverableApplicationInfo(callback: AsyncCallback\<Array\<RecoverableApplicationInfo\>\>): void
 
-获取所有可恢复的预置应用信息，使用callback异步回调。
+获取所有可恢复的预置应用信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4671,7 +4755,7 @@ try {
 
 getRecoverableApplicationInfo(): Promise\<Array\<RecoverableApplicationInfo\>\>
 
-获取所有可恢复的预置应用信息，使用Promise异步回调。
+获取所有可恢复的预置应用信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4767,7 +4851,7 @@ try {
 
 getAllPreinstalledApplicationInfo(): Promise\<Array\<PreinstalledApplicationInfo\>\>
 
-获取所有预置应用信息，使用promise异步回调。
+获取所有预置应用信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -5043,7 +5127,7 @@ try {
 
 getAllPluginInfo(hostBundleName: string, userId?: number): Promise<Array\<PluginBundleInfo>>
 
-根据给定的hostBundleName和userId获取所有的PluginBundleInfo，使用Promise异步回调。
+根据给定的hostBundleName和userId获取所有的PluginBundleInfo。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6298,6 +6382,59 @@ try {
 } catch (err) {
     let message = (err as BusinessError).message;
     hilog.error(0x0000, 'testTag', 'removeBackupBundleData failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.getBundleInstallStatus<sup>23+</sup>
+
+getBundleInstallStatus(bundleName: string): BundleInstallStatus
+
+查询当前用户下指定应用的安装状态。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                       |
+| ----------- | ------ | ---- | ---------------------------- |
+| bundleName  | string | 是   | 指定应用的包名。 |
+
+**返回值：**
+
+| 类型                                                        | 说明                        |
+| ----------------------------------------------------------- | --------------------------- |
+| [BundleInstallStatus](#bundleinstallstatus23) | 应用的安装状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 请开发者替换为实际的包名
+let bundleName: string = 'com.ohos.demo';
+
+try {
+    let bundleInstallStatus = bundleManager.getBundleInstallStatus(bundleName);
+    hilog.info(0x0000, 'testTag', 'bundle install status:' + bundleInstallStatus);
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'getBundleInstallStatus failed. Cause: %{public}s', message);
 }
 ```
 

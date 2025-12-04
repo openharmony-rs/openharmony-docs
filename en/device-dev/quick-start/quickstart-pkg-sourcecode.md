@@ -86,7 +86,7 @@ In the Ubuntu environment, perform the following steps to obtain the OpenHarmony
 
   
   ```
-  repo init -u https://gitee.com/openharmony/manifest.git -b master --no-repo-verify
+  repo init -u https://gitcode.com/openharmony/manifest.git -b master --no-repo-verify
   repo sync -c
   repo forall -c 'git lfs pull'
   ```

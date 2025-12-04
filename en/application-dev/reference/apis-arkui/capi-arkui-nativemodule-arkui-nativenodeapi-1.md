@@ -4,7 +4,7 @@
 <!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -133,7 +133,7 @@ Attaches a component to a parent node.
 
 | Type| Description                                                                                                                                                                                                                                                                                                                                    |
 | -- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the following operations are not allowed on BuilderNode generated nodes: setting or resetting attributes, setting events, or adding or editing child nodes.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) if the following unsupported operations are performed on BuilderNode generated nodes: setting or resetting attributes, setting events, or adding or modifying child nodes.|
 
 ### removeChild()
 
@@ -157,7 +157,7 @@ Removes a component from its parent node.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the following operations are not allowed on BuilderNode generated nodes: setting or resetting attributes, setting events, or adding or editing child nodes.<br>             Returns **ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST** if the NodeAdapter already exists.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) if the following unsupported operations are performed on BuilderNode generated nodes: setting or resetting attributes, setting events, or adding or modifying child nodes.<br>             Returns **ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST** if the NodeAdapter already exists.|
 
 ### insertChildAfter()
 
@@ -182,7 +182,7 @@ Attaches a component to a parent node, with the position after the **sibling** n
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the following operations are not allowed on BuilderNode generated nodes: setting or resetting attributes, setting events, or adding or editing child nodes.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) if the following unsupported operations are performed on BuilderNode generated nodes: setting or resetting attributes, setting events, or adding or modifying child nodes.|
 
 ### insertChildBefore()
 
@@ -207,7 +207,7 @@ Attaches a component to a parent node, with the position before the **sibling** 
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the following operations are not allowed on BuilderNode generated nodes: setting or resetting attributes, setting events, or adding or editing child nodes.<br>             Returns **ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST** if the NodeAdapter already exists.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) if the following unsupported operations are performed on BuilderNode generated nodes: setting or resetting attributes, setting events, or adding or modifying child nodes.<br>             Returns **ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST** if the NodeAdapter already exists.|
 
 ### insertChildAt()
 
@@ -232,7 +232,7 @@ Attaches a component to a parent node, with the position specified by **position
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the following operations are not allowed on BuilderNode generated nodes: setting or resetting attributes, setting events, or adding or editing child nodes.<br>             Returns **ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST** if the NodeAdapter already exists.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) if the following unsupported operations are performed on BuilderNode generated nodes: setting or resetting attributes, setting events, or adding or modifying child nodes.<br>             Returns **ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST** if the NodeAdapter already exists.|
 
 ### setAttribute()
 
@@ -257,7 +257,7 @@ Sets an attribute.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the dynamic implementation library of the native API is not found.<br>             Returns [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the following operations are not allowed on BuilderNode generated nodes: setting or resetting attributes, setting events, or adding or editing child nodes.<br>             Returns **ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST** if the NodeAdapter already exists.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the dynamic implementation library of the native API is not found.<br>             Returns [ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) if the following unsupported operations are performed on BuilderNode generated nodes: setting or resetting attributes, setting events, or adding or modifying child nodes.<br>             Returns **ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST** if the NodeAdapter already exists.|
 
 ### getAttribute()
 
@@ -305,7 +305,7 @@ Resets an attribute.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the dynamic implementation library of the native API is not found.<br>             Returns [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the following operations are not allowed on BuilderNode generated nodes: setting or resetting attributes, setting events, or adding or editing child nodes.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the dynamic implementation library of the native API is not found.<br>             Returns [ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) if the following unsupported operations are performed on BuilderNode generated nodes: setting or resetting attributes, setting events, or adding or modifying child nodes.|
 
 ### registerNodeEvent()
 
@@ -331,7 +331,7 @@ Registers an event for the specified node.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the dynamic implementation library of the native API is not found.<br>             Returns [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the following operations are not allowed on BuilderNode generated nodes: setting or resetting attributes, setting events, or adding or editing child nodes.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the dynamic implementation library of the native API is not found.<br>             Returns [ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) if the following unsupported operations are performed on BuilderNode generated nodes: setting or resetting attributes, setting events, or adding or modifying child nodes.|
 
 ### unregisterNodeEvent()
 

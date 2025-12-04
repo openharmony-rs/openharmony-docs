@@ -4,7 +4,7 @@
 <!--Owner: @jiyujia926-->
 <!--Designer: @s10021109-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 状态变量监听模块提供了对状态变量变化的感知能力。
 
@@ -198,7 +198,7 @@ struct Index {
         .onClick(() => {
           this.info.name = 'Bob'; // 输出日志：path: name change from Tom to Bob
         })
-      Text(`info.age: ${this.info.age}, info.name: ${this.info.height}`)
+      Text(`info.age: ${this.info.age}, info.height: ${this.info.height}`)
         .onClick(() => {
           this.info.age++; // 输出日志：path: age change from 25 to 26
           this.info.height++; // 输出日志：path: height change from 175 to 176

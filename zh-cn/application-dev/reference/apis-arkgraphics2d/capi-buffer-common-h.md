@@ -9,7 +9,7 @@
 
 ## 概述
 
-提供NativeBuffer模块的公共类型定义。<br>从API version 12开始，部分类型定义从native_buffer.h移动至此头文件统一呈现，对于此类类型，API version 12之前即支持使用，各版本均可正常使用。
+提供NativeBuffer模块的公共类型定义。
 
 **引用文件：** <native_buffer/buffer_common.h>
 
@@ -36,21 +36,27 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_NativeBuffer_ColorSpace](#oh_nativebuffer_colorspace) | OH_NativeBuffer_ColorSpace | OH_NativeBuffer的颜色空间。由native_buffer.h移动至此头文件统一呈现。 |
+| [OH_NativeBuffer_ColorSpace](#oh_nativebuffer_colorspace) | OH_NativeBuffer_ColorSpace | OH_NativeBuffer的颜色空间。 |
 | [OH_NativeBuffer_MetadataType](#oh_nativebuffer_metadatatype) | OH_NativeBuffer_MetadataType | OH_NativeBuffer的图像标准。 |
-| [OH_NativeBuffer_MetadataKey](#oh_nativebuffer_metadatakey) | OH_NativeBuffer_MetadataKey | 表示OH_NativeBuffer的HDR元数据种类的键值。 |
+| [OH_NativeBuffer_MetadataKey](#oh_nativebuffer_metadatakey) | OH_NativeBuffer_MetadataKey | 表示OH_NativeBuffer的描述信息的键值，如HDR元数据，ROI元数据等。 |
+| [OH_NativeBuffer_Format](#oh_nativebuffer_format) | OH_NativeBuffer_Format | OH_NativeBuffer格式的枚举。 |
+| [OH_NativeBuffer_TransformType](#oh_nativebuffer_transformtype) | OH_NativeBuffer_TransformType | OH_NativeBuffer转换类型的枚举。 |
 
 ## 枚举类型说明
 
 ### OH_NativeBuffer_ColorSpace
 
-```
+```c
 enum OH_NativeBuffer_ColorSpace
 ```
 
 **描述**
 
-OH_NativeBuffer的颜色空间。由native_buffer.h移动至此头文件统一呈现。
+OH_NativeBuffer的颜色空间。
+
+从API version 12开始，此枚举由native_buffer.h移动至此头文件。
+
+API version 12之前，使用该枚举请引用native_buffer.h头文件；从API version 12开始，引用native_buffer.h或buffer_common.h均可正常使用该枚举。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
@@ -93,7 +99,7 @@ OH_NativeBuffer的颜色空间。由native_buffer.h移动至此头文件统一�
 
 ### OH_NativeBuffer_MetadataType
 
-```
+```c
 enum OH_NativeBuffer_MetadataType
 ```
 
@@ -112,17 +118,19 @@ OH_NativeBuffer的图像标准。
 | OH_VIDEO_HDR_VIVID | 视频HDR VIVID。 |
 | OH_IMAGE_HDR_VIVID_DUAL | 图片HDR VIVID DUAL。<br/>**起始版本：** 22 |
 | OH_IMAGE_HDR_VIVID_SINGLE | 图片HDR VIVID SINGLE。<br/>**起始版本：** 22 |
+| OH_IMAGE_HDR_ISO_DUAL | 图片HDR ISO DUAL。<br/>**起始版本：** 23 |
+| OH_IMAGE_HDR_ISO_SINGLE | 图片HDR ISO SINGLE。<br/>**起始版本：** 23|
 | OH_VIDEO_NONE = -1 |  无元数据。<br/>**起始版本：** 13 |
 
 ### OH_NativeBuffer_MetadataKey
 
-```
+```c
 enum OH_NativeBuffer_MetadataKey
 ```
 
 **描述**
 
-表示OH_NativeBuffer的HDR元数据种类的键值。
+表示OH_NativeBuffer的描述信息的键值，如HDR元数据，ROI元数据等。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
@@ -133,5 +141,102 @@ enum OH_NativeBuffer_MetadataKey
 | OH_HDR_METADATA_TYPE | 元数据类型，其值见[OH_NativeBuffer_MetadataType](capi-buffer-common-h.md#oh_nativebuffer_metadatatype)，size为OH_NativeBuffer_MetadataType大小。 |
 | OH_HDR_STATIC_METADATA | 静态元数据，其值见[OH_NativeBuffer_StaticMetadata](capi-oh-nativebuffer-oh-nativebuffer-staticmetadata.md)，size为OH_NativeBuffer_StaticMetadata大小。 |
 | OH_HDR_DYNAMIC_METADATA | 动态元数据，其值见视频流中SEI的字节流，size的取值范围为1-3000。 |
+| OH_REGION_OF_INTEREST_METADATA | 视频编解码感兴趣区域（ROI）元数据，配置格式示例：“Top1,Left1-Bottom1,Right1=QpOffset1;Top2,Left2-Bottom2,Right2=QpOffset2;”。<br>每个ROI框由位置信息（Top,Left-Bottom,Right），编码质量偏移信息（QpOffset）组成，到分号结束。<br>ROI框的编码质量偏移信息可以缺省，缺省值为-3，缺省时配置示例：“Top1,Left1-Bottom1,Right1;Top2,Left2-Bottom2,Right2;”。<br>每组ROI元数据最多支持同时配置6个ROI，且其累计面积不超过全图的1/5。<br>该枚举值仅支持通过[OH_NativeBuffer_SetMetadataValue()](capi-native-buffer-h.md#oh_nativebuffer_setmetadatavalue)接口调用。<br>**起始版本：** 22|
 
+### OH_NativeBuffer_Format
 
+```c
+enum OH_NativeBuffer_Format
+```
+
+**描述**
+
+OH_NativeBuffer格式的枚举。
+
+从API version 22开始，此枚举由native_buffer.h移动至此头文件。
+
+API version 22之前，使用该枚举请引用native_buffer.h头文件；从API version 22开始，引用native_buffer.h或buffer_common.h均可正常使用该枚举。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
+**起始版本：** 10
+
+| 枚举项 | 描述 |
+| -- | -- |
+| NATIVEBUFFER_PIXEL_FMT_CLUT8 = 0 | CLUT8格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_CLUT1 | CLUT1格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_CLUT4 | CLUT4格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_RGB_565 = 3 | RGB565格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGBA_5658 | RGBA5658格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGBX_4444 | RGBX4444格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGBA_4444 | RGBA4444格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGB_444 | RGB444格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGBX_5551 | RGBX5551格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGBA_5551 | RGBA5551格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGB_555 | RGB555格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGBX_8888 | RGBX8888格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGBA_8888 | RGBA8888格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGB_888 | RGB888格式。 |
+| NATIVEBUFFER_PIXEL_FMT_BGR_565 | BGR565格式。 |
+| NATIVEBUFFER_PIXEL_FMT_BGRX_4444 | BGRX4444格式。 |
+| NATIVEBUFFER_PIXEL_FMT_BGRA_4444 | BGRA4444格式。 |
+| NATIVEBUFFER_PIXEL_FMT_BGRX_5551 | BGRX5551格式。 |
+| NATIVEBUFFER_PIXEL_FMT_BGRA_5551 | BGRA5551格式。 |
+| NATIVEBUFFER_PIXEL_FMT_BGRX_8888 | BGRX8888格式。 |
+| NATIVEBUFFER_PIXEL_FMT_BGRA_8888 | BGRA8888格式。 |
+| NATIVEBUFFER_PIXEL_FMT_YUV_422_I | YUV422 interleaved 格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_422_SP | YCBCR422 semi-planar 格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_422_SP | YCRCB422 semi-planar 格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP | YCBCR420 semi-planar 格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_420_SP | YCRCB420 semi-planar 格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_422_P | YCBCR422 planar 格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_422_P | YCRCB422 planar 格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_420_P | YCBCR420 planar 格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_420_P | YCRCB420 planar 格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YUYV_422_PKG | YUYV422 packed 格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_UYVY_422_PKG | UYVY422 packed 格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YVYU_422_PKG | YVYU422 packed 格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_VYUY_422_PKG | VYUY422 packed 格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_RGBA_1010102 | RGBA_1010102 packed 格式。 |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_P010 | YCBCR420 semi-planar 10bit packed 格式。 |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_P010 | YCRCB420 semi-planar 10bit packed 格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RAW10 | Raw 10bit packed 格式。 |
+| NATIVEBUFFER_PIXEL_FMT_BLOB | BLOB格式。<br/>**起始版本：** 15 |
+| NATIVEBUFFER_PIXEL_FMT_RGBA16_FLOAT | RGBA16 float格式。<br/>**起始版本：** 15 |
+| NATIVEBUFFER_PIXEL_FMT_Y8 = 40 | Y8格式。<br/>**起始版本：** 20 |
+| NATIVEBUFFER_PIXEL_FMT_Y16 = 41 | Y16格式。<br/>**起始版本：** 20 |
+| NATIVEBUFFER_PIXEL_FMT_VENDER_MASK = 0X7FFF0000 | vender mask 格式。<br/>**起始版本：** 12|
+| NATIVEBUFFER_PIXEL_FMT_BUTT = 0X7FFFFFFF | 无效格式。 |
+
+### OH_NativeBuffer_TransformType
+
+```c
+enum OH_NativeBuffer_TransformType
+```
+
+**描述**
+
+OH_NativeBuffer转换类型的枚举。
+
+从API version 22开始，此枚举由native_buffer.h移动至此头文件。
+
+API version 22之前，使用该枚举请引用native_buffer.h头文件；从API version 22开始，引用native_buffer.h或buffer_common.h均可正常使用该枚举。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
+**起始版本：** 12
+
+| 枚举项 | 描述 |
+| -- | -- |
+| NATIVEBUFFER_ROTATE_NONE = 0 | 不旋转。 |
+| NATIVEBUFFER_ROTATE_90 | 旋转90度。 |
+| NATIVEBUFFER_ROTATE_180 | 旋转180度。 |
+| NATIVEBUFFER_ROTATE_270 | 旋转270度。 |
+| NATIVEBUFFER_FLIP_H | 水平翻转。 |
+| NATIVEBUFFER_FLIP_V | 垂直翻转。 |
+| NATIVEBUFFER_FLIP_H_ROT90 | 水平翻转并旋转90度。 |
+| NATIVEBUFFER_FLIP_V_ROT90 | 垂直翻转并旋转90度。 |
+| NATIVEBUFFER_FLIP_H_ROT180 | 水平翻转并旋转180度。 |
+| NATIVEBUFFER_FLIP_V_ROT180 | 垂直翻转并旋转180度。 |
+| NATIVEBUFFER_FLIP_H_ROT270 | 水平翻转并旋转270度。 |
+| NATIVEBUFFER_FLIP_V_ROT270 | 垂直翻转并旋转270度。 |

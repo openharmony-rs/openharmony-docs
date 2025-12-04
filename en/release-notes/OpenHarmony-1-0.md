@@ -23,15 +23,15 @@ This is the initial release for this product.
 Method 1 \(recommended\): Use the  **repo**  tool to download the source code.
 
 ```shell
-repo init -u https://gitee.com/openharmony/manifest.git -b master --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b master --no-repo-verify
 repo sync -c
 ```
 
 Method 2: Run the  **git clone**  command to clone a single code repository.
 
-Go to the  [code repository homepage](https://gitee.com/openharmony), select the code repository to be cloned, and run the following command:
+Go to the  [code repository homepage](https://gitcode.com/openharmony), select the code repository to be cloned, and run the following command:
 
 ```shell
-git clone https://gitee.com/openharmony/manifest.git -b master
+git clone https://gitcode.com/openharmony/manifest.git -b master
 ```
 

@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioCapturerStruct OH_AudioCapturer
+```
+
 ## Overview
 
 The struct describes an audio capturer, which is used to capture audio data.

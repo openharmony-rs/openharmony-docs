@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 自定义能力分层
   自定义能力是ArkUI开发框架提供的对UI界面进行开发和定制化的能力。ArkUI开发框架提供的不同控制层级的自定义能力用于实现不同场景的应用的开发。自定义能力的开放层次越低，表示越接近底层基础能力，开发的灵活程度越高，开发难度越高、对于开发者能力的要求也越高。

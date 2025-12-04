@@ -58,28 +58,32 @@ For better code readability, the operation result verification of each step is o
 
 1. Include header files.
    
-   ```c
+   <!-- @[pasteboard_timelapse_Record1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
    #include <database/pasteboard/oh_pasteboard.h>
    #include <database/udmf/udmf.h>
-   #include <database/udmf/udmf_meta.h>
    #include <database/udmf/uds.h>
+   #include <database/udmf/udmf_meta.h>
    ```
 
+
 2. Define a data providing function for **OH_UdmfRecordProvider** and a callback function for destroying this instance.
+
+   <!-- @[pasteboard_timelapse_Record2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
    
-   ```c
+   ``` C++
    // 1. Define a callback to be invoked to return the pasteboard data obtained.
-   void* GetDataCallback(void* context, const char* type) {
+   void* GetDataCallback(void* context, const char* type)
+   {
        // Plain text type.
-       if (strcmp(type, UDMF_META_PLAIN_TEXT) == 0) {
+       if (memcmp(type, UDMF_META_PLAIN_TEXT, sizeof(UDMF_META_PLAIN_TEXT) - 1) == 0) {
            // Create a Uds object of the plain text type.
            OH_UdsPlainText* udsText = OH_UdsPlainText_Create();
            // Set the plain text content.
            OH_UdsPlainText_SetContent(udsText, "hello world");
            return udsText;
-       }
-       // HTML type.
-       else if (strcmp(type, UDMF_META_HTML) == 0) {
+       } else if (strcmp(type, UDMF_META_HTML) == 0) {
            // Create a Uds object of the HTML type.
            OH_UdsHtml* udsHtml = OH_UdsHtml_Create();
            // Set the HTML content.
@@ -89,14 +93,18 @@ For better code readability, the operation result verification of each step is o
        return nullptr;
    }
    // 2. Define a callback to be invoked when OH_UdmfRecordProvider is destroyed.
-   void ProviderFinalizeCallback(void* context) {
-       printf("OH_UdmfRecordProvider finalize.");
+   void ProviderFinalizeCallback(void* context)
+   {
+       OH_LOG_INFO(LOG_APP, "OH_UdmfRecordProvider finalize.");
    }
    ```
 
+
 3. Define the **OH_Pasteboard_SyncDelayedDataAsync** callback.
 
-   ```c
+   <!-- @[pasteboard_timelapse_Record3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
    // 3. Define the callback triggered when the application exits and calls the delayed data sync API.
    void SyncCallback(int errorCode)
    {
@@ -104,108 +112,139 @@ For better code readability, the operation result verification of each step is o
    }
    ```
 
+
 4. Prepare the data for delayed copy in the pasteboard. The plain text and HTML data is not written to the pasteboard until the **GetDataCallback** function is triggered when the data consumer obtains **OH_UdsPlainText** or **OH_UdsHtml** from **OH_UdmfRecord**.
    
-   ```c
+   <!-- @[pasteboard_timelapse_Record4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
    // 4. Create an OH_UdmfRecord object.
    OH_UdmfRecord* record = OH_UdmfRecord_Create();
-
    // 5. Create an OH_UdmfRecordProvider object and set two callback functions used to provide and destruct data.
    OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
-   OH_UdmfRecordProvider_SetData(provider, (void*)record, GetDataCallback, ProviderFinalizeCallback);
-
+   OH_UdmfRecordProvider_SetData(provider, (void *)record, GetDataCallback, ProviderFinalizeCallback);
+   
    // 6. Bind the provider to the record and set the supported data type.
-   const char* types[2] = { UDMF_META_PLAIN_TEXT, UDMF_META_HTML };
-   OH_UdmfRecord_SetProvider(record, types, 2, provider);
-
+   #define TYPE_COUNT 2
+   const char* types[TYPE_COUNT] = {UDMF_META_PLAIN_TEXT, UDMF_META_HTML};
+   OH_UdmfRecord_SetProvider(record, types, TYPE_COUNT, provider);
+   
    // 7. Create an OH_UdmfData object and add OH_UdmfRecord to it.
    OH_UdmfData* setData = OH_UdmfData_Create();
-   OH_UdmfData_AddRecord(setData, record);
-
+   if (setData != nullptr) {
+       OH_UdmfData_AddRecord(setData, record);
+   }
+   
    // 8. Create an OH_Pasteboard object and write data to the pasteboard.
    OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-   OH_Pasteboard_SetData(pasteboard, setData);
-
-   // 9. Record the number of changes to pasteboard data.
-   uint32_t changeCount = OH_Pasteboard_GetChangeCount(pasteboard);
+   if (setData != nullptr) {
+       OH_Pasteboard_SetData(pasteboard, setData);
+   }
+   OH_UdmfRecordProvider_Destroy(provider);
+   OH_UdmfRecord_Destroy(record);
+   OH_UdmfData_Destroy(setData);
    ```
+
 
 5. Obtain the data for delayed copy from the pasteboard.
    
-   ```c
-   // 10. Obtain OH_UdmfData from the pasteboard.
-   int status = -1;
-   OH_UdmfData* getData = OH_Pasteboard_GetData(pasteboard, &status);
-
-   // 11. Obtain all OH_UdmfRecord objects from OH_UdmfData.
-   unsigned int recordCount = 0;
-   OH_UdmfRecord** getRecords = OH_UdmfData_GetRecords(getData, &recordCount);
-   OH_UdsPlainText* udsText = nullptr;
-   OH_UdsHtml* udsHtml = nullptr;
-
-   // 12. Traverse OH_UdmfRecord.
-   for (unsigned int recordIndex = 0; recordIndex < recordCount; ++recordIndex) {
-       OH_UdmfRecord* record = getRecords[recordIndex];
-
-       // 13. Query the data types in OH_UdmfRecord.
-       unsigned typeCount = 0;
-       char** recordTypes = OH_UdmfRecord_GetTypes(record, &typeCount);
-
-       // 14. Traverse data types.
-       for (unsigned int typeIndex = 0; typeIndex < typeCount; ++typeIndex) {
-           char* recordType = recordTypes[typeIndex];
-
-           // Plain text type.
-           if (strcmp(recordType, UDMF_META_PLAIN_TEXT) == 0) {
-               // Create a Uds object of the plain text type.
-               udsText = OH_UdsPlainText_Create();
-               if (udsText != nullptr) {
-                // Obtain the Uds object of the plain text type from record.
-                OH_UdmfRecord_GetPlainText(record, udsText);
-                // Obtain the content from the Uds object.
-                const char* content = OH_UdsPlainText_GetContent(udsText);
-               }
-           }
-           // HTML type.
-           else if (strcmp(recordType, UDMF_META_HTML) == 0) {
+   <!-- @[pasteboard_timelapse_Record5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   void ProcessRecordType(OH_UdmfRecord* record, const char* recordType)
+   {
+       OH_UdsPlainText* udsText = nullptr;
+       OH_UdsHtml* udsHtml = nullptr;
+       if (strcmp(recordType, UDMF_META_PLAIN_TEXT) == 0) {
+           // Create a Uds object of the plain text type.
+           udsText = OH_UdsPlainText_Create();
+           if (udsText != nullptr) {
+               // Obtain the Uds object of the plain text type from record.
+               OH_UdmfRecord_GetPlainText(record, udsText);
+               // Obtain the content from the Uds object.
+               const char* content = OH_UdsPlainText_GetContent(udsText);
+           } else if (strcmp(recordType, UDMF_META_HTML) == 0) {
                // Create a Uds object of the HTML type.
                udsHtml = OH_UdsHtml_Create();
                if (udsHtml != nullptr) {
-                // Obtain the Uds object of the HTML type from record.
-                OH_UdmfRecord_GetHtml(record, udsHtml);
-                // Obtain the content from the Uds object.
-                const char* content = OH_UdsHtml_GetContent(udsHtml);
+                   // Obtain the Uds object of the HTML type from record.
+                   OH_UdmfRecord_GetHtml(record, udsHtml);
+                   // Obtain the content from the Uds object.
+                   const char* content = OH_UdsHtml_GetContent(udsHtml);
                }
            }
        }
    }
+   void ProcessRecord(OH_UdmfRecord* record)
+   {
+       // 13. Query the data types in OH_UdmfRecord.
+       unsigned typeCount = 0;
+       char** recordTypes = OH_UdmfRecord_GetTypes(record, &typeCount);
+   
+       // 14. Traverse data types.
+       for (unsigned int typeIndex = 0; typeIndex < typeCount; ++typeIndex) {
+           const char* recordType = recordTypes[typeIndex];
+           ProcessRecordType(record, recordType);
+       }
+   }
+   // ...
+       // 9. Record the number of changes to pasteboard data.
+       uint32_t changeCount = OH_Pasteboard_GetChangeCount(pasteboard);
+   
+       // 10. Obtain OH_UdmfData from the pasteboard.
+       int status = -1;
+       bool hasPermission = OH_AT_CheckSelfPermission("ohos.permission.READ_PASTEBOARD");
+       if (!hasPermission) {
+           OH_LOG_ERROR(LOG_APP, "No Permission READ_PASTEBOARD");
+       };
+       OH_UdmfData* getData = OH_Pasteboard_GetData(pasteboard, &status);
+       if (getData == nullptr) {
+           // Handle the error case and clear resources.
+           OH_LOG_ERROR(LOG_APP, "Failed to get data from pasteboard, status: %d\n", status);
+       }
+   
+       // 11. Obtain all OH_UdmfRecord objects from OH_UdmfData.
+       unsigned int recordCount = 0;
+       OH_UdmfRecord** getRecords = OH_UdmfData_GetRecords(getData, &recordCount);
+       OH_UdsPlainText* udsText = nullptr;
+       OH_UdsHtml* udsHtml = nullptr;
+   
+       // 12. Traverse OH_UdmfRecord.
+       for (unsigned int recordIndex = 0; recordIndex < recordCount; ++recordIndex) {
+           OH_UdmfRecord* record = getRecords[recordIndex];
+           ProcessRecord(record);
+       }
    ```
+
 
 6. If the data in the pasteboard does not change, the application notifies the pasteboard to obtain all data before exiting and exits only after the callback is complete. Otherwise, other applications may fail to obtain data.
 
-   ```c
+   <!-- @[pasteboard_timelapse_Record6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
    // 15. Check whether the data in the pasteboard changes.
    uint32_t newChangeCount = OH_Pasteboard_GetChangeCount(pasteboard);
    if (newChangeCount == changeCount) {
        // 16. Notify the pasteboard to obtain all data.
        OH_Pasteboard_SyncDelayedDataAsync(pasteboard, SyncCallback);
-       // The application exits only after the SyncCallback is complete.
+       // The application exits only after SyncCallback is complete.
    } else {
        // Application exits.
+       OH_LOG_INFO(LOG_APP, "No newChangeCount in pasteboard.");
    }
    ```
 
 7. Release the memory after the objects are used.
    
-   ```c
+   <!-- @[pasteboard_timelapse_Record7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
    OH_UdsPlainText_Destroy(udsText);
    OH_UdsHtml_Destroy(udsHtml);
-   OH_UdmfRecordProvider_Destroy(provider);
-   OH_UdmfRecord_Destroy(record);
-   OH_UdmfData_Destroy(setData);
    OH_UdmfData_Destroy(getData);
    OH_Pasteboard_Destroy(pasteboard);
    ```
+
 
 
 ## Using Data-based Delayed Copy and Paste (Not Recommended)
@@ -219,7 +258,7 @@ You are not allowed to query data type before pasting.
 | setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise\<void> | Writes data of the unified data type to the system pasteboard. This API cannot be called in the same thread as **getUnifiedDataSync** when the delayed copy and paste function is used.|
 | setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void | Writes data of the unified data type to the system pasteboard. This API returns the result synchronously and cannot be called in the same thread as **getUnifiedDataSync** when the delayed copy and paste function is used.|
 | getUnifiedData(): Promise\<unifiedDataChannel.UnifiedData> | Reads data of the unified data type from the system pasteboard.|
-| getUnifiedDataSync(): unifiedDataChannel.UnifiedData | Reads data of the unified data type from the pasteboard. This API returns the result synchronously and cannot be called in the same thread as **setUnifiedData** and **setUnifiedDataSync** when the delayed copy and paste function is used.|
+| getUnifiedDataSync(): unifiedDataChannel.UnifiedData | Reads data of the unified data type from the system pasteboard. This API returns the result synchronously and cannot be called in the same thread as **setUnifiedData** and **setUnifiedDataSync** when the delayed copy and paste function is used.|
 | setAppShareOptions(shareOptions: ShareOption): void | Sets pasteable range of pasteboard data for an application.|
 | removeAppShareOptions(): void | Removes the pasteable range configuration set for the application.|
 
@@ -227,16 +266,22 @@ You are not allowed to query data type before pasting.
 
 1. Import the **pasteboard**, **unifiedDataChannel**, and **uniformTypeDescriptor** modules.
    
-   ```ts\
-   import {unifiedDataChannel, uniformTypeDescriptor} from '@kit.ArkData';
-   import {BusinessError, pasteboard} from '@kit.BasicServicesKit'
+   <!-- @[pasteboard_timelaps_PasteData1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
+   
+   ``` TypeScript
+   import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
+   import hilog from '@ohos.hilog';
+   import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
    ```
+
 
 2. Construct a piece of PlainText data and write the function for obtaining the delay data.
 
-   ```ts
+   <!-- @[pasteboard_timelaps_PasteData2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->   
+   
+   ``` TypeScript
    let plainTextData = new unifiedDataChannel.UnifiedData();
-   let GetDelayPlainText = ((dataType:string) => {
+   let getDelayPlainText = ((dataType: string) => {
      let plainText = new unifiedDataChannel.PlainText();
      plainText.details = {
        Key: 'delayPlaintext',
@@ -249,61 +294,76 @@ You are not allowed to query data type before pasting.
    });
    ```
 
+
 3. Save a piece of PlainText data to the system pasteboard.
 
-   ```ts
-   let SetDelayPlainText = () => {
+   <!-- @[pasteboard_timelaps_PasteData3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
+   
+   ``` TypeScript
+   let setDelayPlainText = () => {
      plainTextData.properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
      // For cross-application use, set this parameter to CROSS_APP. For intra-application use, set this parameter to IN_APP.
-     plainTextData.properties.getDelayData = GetDelayPlainText;
-     pasteboard.getSystemPasteboard().setUnifiedData(plainTextData).then(()=>{
+     plainTextData.properties.getDelayData = getDelayPlainText;
+     pasteboard.getSystemPasteboard().setUnifiedData(plainTextData).then(() => {
+       hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in set PlainText.');
        // The data is successfully saved, which is a normal case.
      }).catch((error: BusinessError) => {
+       hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to set PlainText. Cause: ' + error.message);
        // Error case
      });
    }
    ```
 
+
 4. Read the text data from the system pasteboard.
 
-   ```ts
-   let GetPlainTextUnifiedData = (() => {
+   <!-- @[pasteboard_timelaps_PasteData4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
+   
+   ``` TypeScript
+   let getPlainTextUnifiedData = (() => {
      pasteboard.getSystemPasteboard().getUnifiedData().then((data) => {
        let outputData = data;
        let records = outputData.getRecords();
        if (records[0].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
          let record = records[0] as unifiedDataChannel.PlainText;
-         console.info('GetPlainText success, type:' + records[0].getType() );
+         hilog.info(0xFF00, '[Sample_pasteboard]', 'GetPlainText success, type:' + records[0].getType());
          // Note: The data copied by users is sensitive information. Do not print the data obtained from the pasteboard in plaintext in logs.
        } else {
-         console.info('Get Plain Text Data No Success, Type is: ' + records[0].getType());
+         hilog.info(0xFF00, '[Sample_pasteboard]', 'Get Plain Text Data No Success, Type is: ' + records[0].getType());
        }
      }).catch((error: BusinessError) => {
+       hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get PlainTextUnifiedData. Cause: ' + error.message);
        // Error case
      })
    })
    ```
+
    
 5. Set pasteable range of pasteboard data for an application.
 
-   ```ts
-   const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+   <!-- @[pasteboard_timelaps_PasteData5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
+   
+   ``` TypeScript
    try {
-       systemPasteboard.setAppShareOptions(pasteboard.ShareOption.INAPP);
-       console.info('Set app share options success.');
+     systemPasteboard.setAppShareOptions(pasteboard.ShareOption.LOCALDEVICE);
+     hilog.info(0xFF00, '[Sample_pasteboard]', 'Set app share options success.');
    } catch (err) {
-       // Error case
+     hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to gSet app share options. Cause: ' + err.message);
+     // Error case
    }
    ```
+
    
 6. Remove the pasteable range configuration set for the application.
 
-   ```ts
-   const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+   <!-- @[pasteboard_timelaps_PasteData6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
+   
+   ``` TypeScript
    try {
-	   systemPasteboard.removeAppShareOptions();
-	   console.info('Remove app share options success.');
+     systemPasteboard.removeAppShareOptions();
+     hilog.info(0xFF00, '[Sample_pasteboard]', 'Remove app share options success.');
    } catch (err) {
-       // Error case
+     hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to Remove app share options. Cause: ' + err.message);
+     // Error case
    }
    ```

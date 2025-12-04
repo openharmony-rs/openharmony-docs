@@ -4,7 +4,11 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef ArkUI_TouchRecognizerHandle* ArkUI_TouchRecognizerHandleArray
+```
 
 ## 概述
 

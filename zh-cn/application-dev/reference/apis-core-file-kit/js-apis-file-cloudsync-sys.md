@@ -43,7 +43,7 @@ constructor()
 
 on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
-添加同步过程事件监听。
+云图同步对象添加同步过程事件监听。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -83,7 +83,7 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
 off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
-移除同步过程事件监听。
+云图同步对象移除'progress'类型中指定的callback回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -127,7 +127,7 @@ off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
 off(evt: 'progress'): void
 
-移除同步过程事件监听。
+云图同步对象移除'progress'类型的所有回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -168,7 +168,7 @@ off(evt: 'progress'): void
 
 start(): Promise&lt;void&gt;
 
-异步方法启动端云同步，以Promise形式返回结果。
+异步方法启动端云同步。使用Promise异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -199,6 +199,7 @@ start(): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let gallerySync = new cloudSync.GallerySync();
 
   gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
@@ -216,7 +217,7 @@ start(): Promise&lt;void&gt;
 
 start(callback: AsyncCallback&lt;void&gt;): void
 
-异步方法启动端云同步，以callback形式返回结果。
+异步方法启动端云同步。使用callback异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -247,6 +248,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let gallerySync = new cloudSync.GallerySync();
 
   gallerySync.start((err: BusinessError) => {
@@ -262,7 +264,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 stop(): Promise&lt;void&gt;
 
-异步方法停止端云同步，以Promise形式返回结果。
+异步方法停止端云同步。使用Promise异步回调。
 
 > **说明：**
 >
@@ -294,6 +296,7 @@ stop(): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let gallerySync = new cloudSync.GallerySync();
 
   gallerySync.stop().then(() => {
@@ -307,7 +310,7 @@ stop(): Promise&lt;void&gt;
 
 stop(callback: AsyncCallback&lt;void&gt;): void
 
-异步方法停止端云同步，以callback形式返回结果。
+异步方法停止端云同步。使用callback异步回调。
 
 > **说明：**
 >
@@ -339,6 +342,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let gallerySync = new cloudSync.GallerySync();
 
   gallerySync.stop((err: BusinessError) => {
@@ -414,7 +418,7 @@ on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
 off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
-移除云文件下载过程事件监听。
+云图下载对象移除'progress'类型中指定的callback回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -458,7 +462,7 @@ off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
 off(evt: 'progress'): void
 
-移除云文件下载过程事件监听。
+云图下载对象移除'progress'类型的所有回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -499,7 +503,7 @@ off(evt: 'progress'): void
 
 start(uri: string): Promise&lt;void&gt;
 
-异步方法启动云文件下载，以Promise形式返回结果。
+异步方法启动云文件下载。使用Promise异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -523,6 +527,7 @@ start(uri: string): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let download = new cloudSync.Download();
   let uri: string = "file:///media/Photo/1";
 
@@ -553,7 +558,7 @@ start(uri: string): Promise&lt;void&gt;
 
 start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法启动云文件下载，以callback形式返回结果。
+异步方法启动云文件下载。使用callback异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -584,6 +589,7 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let download = new cloudSync.Download();
   let uri: string = "file:///media/Photo/1";
 
@@ -600,7 +606,7 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 stop(uri: string): Promise&lt;void&gt;
 
-异步方法停止云文件下载，以Promise形式返回结果。
+异步方法停止云文件下载。使用Promise异步回调。
 
 > **说明：**
 >
@@ -638,6 +644,7 @@ stop(uri: string): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let download = new cloudSync.Download();
   let uri: string = "file:///media/Photo/1";
 
@@ -652,7 +659,7 @@ stop(uri: string): Promise&lt;void&gt;
 
 stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法停止云文件下载，以callback形式返回结果。
+异步方法停止云文件下载。使用callback异步回调。
 
 > **说明：**
 >
@@ -685,6 +692,7 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let download = new cloudSync.Download();
   let uri: string = "file:///media/Photo/1";
 
@@ -774,6 +782,7 @@ cleanCache(uri: string): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileUri } from '@kit.CoreFileKit';
+
   let fileCache = new cloudSync.CloudFileCache();
   let path = "/data/storage/el2/cloud/1.txt";
   let uri = fileUri.getUriFromPath(path);
@@ -791,7 +800,7 @@ cleanCache(uri: string): void
 
 getFileSyncState(uri: Array&lt;string&gt;): Promise&lt;Array&lt;FileSyncState&gt;&gt;
 
-异步方法获取文件同步状态，以promise形式返回结果。
+异步方法获取文件同步状态。使用Promise异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -844,7 +853,7 @@ getFileSyncState(uri: Array&lt;string&gt;): Promise&lt;Array&lt;FileSyncState&gt
 
 getFileSyncState(uri: Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;FileSyncState&gt;&gt;): void
 
-异步方法获取文件同步状态，以callback形式返回结果。
+异步方法获取文件同步状态。使用callback异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -932,6 +941,7 @@ getFileSyncState(uri: string): FileSyncState
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileUri } from '@kit.CoreFileKit';
+
   let path = "/data/storage/el2/cloud/1.txt";
   let uri = fileUri.getUriFromPath(path);
   try {
@@ -1045,6 +1055,7 @@ startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
   let callback = (data:cloudSync.OptimizeSpaceProgress) => {
     if (data.state == cloudSync.OptimizeState.FAILED) {
@@ -1089,6 +1100,7 @@ stopOptimizeSpace(): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
   let callback = (data:cloudSync.OptimizeSpaceProgress) => {
     if (data.state == cloudSync.OptimizeState.FAILED) {

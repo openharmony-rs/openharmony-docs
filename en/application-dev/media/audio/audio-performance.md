@@ -23,11 +23,11 @@ Different performance metrics often cannot be optimized simultaneously due to ha
 
 Therefore, the audio channel in the system is not static. To cater to different user scenarios, the system offers a variety of channel options with different focuses: some prioritize power saving, others focus on response speed, and some aim for a balanced approach.
 
-The choice of channels depends on the scenario, but the system cannot directly perceive the specific use case for the audio functionality developed by the application. Therefore, you need to accurately provide the corresponding scenario information through **StreamUsage** and **SourceType**. The system selects the default audio channel configuration based on the scenario for the output or input channel. If the default configuration is insufficient, you can also adjust it through separate settings APIs.
+The system cannot directly perceive the specific use case for the audio functionality developed by the application. Therefore, you should specify [StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage) and [SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) to provide the corresponding scenario information. The system selects the default audio channel configuration based on the scenario for the output or input channel. If the default configuration is insufficient, you can also adjust it through separate settings APIs.
 
 ### Low-Latency Audio Playback and Recording
 
-Latency refers to the time it takes for audio data to be processed and transmitted within the system. In playback scenarios, it is the time from when the system receives the data to when the data is output by the hardware. In recording scenarios, it is the time from when the hardware microphone captures the data to when the data is passed to the application through the system interface.
+Latency refers to the time it takes for audio data to be processed and transmitted within the system. In playback scenarios, it is the time from when the system receives the data until the data is output by the hardware. In recording scenarios, it is the time from when the hardware microphone captures the data until the application receives the captured data.
 
 To support low-latency audio scenarios, the system provides a dedicated low-latency audio channel. You need to explicitly set this through API parameters. For details, see [Audio Latency Management](audio-latency.md).
 

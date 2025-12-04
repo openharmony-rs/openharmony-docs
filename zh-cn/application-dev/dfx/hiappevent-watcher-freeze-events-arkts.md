@@ -115,7 +115,7 @@
 
    ```ts
     Button("appFreeze").onClick(()=>{
-      // 在按钮点击函数中构造一个freeze场景，触发应用应用冻屏事件
+      // 在按钮点击函数中构造一个freeze场景，触发应用冻屏事件
       setTimeout(() => {
         let t = Date.now();
         while (Date.now() - t <= 15000) {}

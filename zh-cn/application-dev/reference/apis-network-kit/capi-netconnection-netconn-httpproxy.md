@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct NetConn_HttpProxy {...} NetConn_HttpProxy
+```
+
 ## 概述
 
 代理配置信息。

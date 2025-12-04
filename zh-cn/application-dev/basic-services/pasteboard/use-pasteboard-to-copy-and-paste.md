@@ -52,23 +52,27 @@ ArkTS数据类型对应剪贴板类型，详见[ohos.pasteboard](../../reference
 <!-- @[pasteboard_usedata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
 
 ``` TypeScript
-// [Start pasteboard_useudc]
-import {BusinessError, pasteboard} from '@kit.BasicServicesKit';
-// ···
+import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// ...
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
-// ···
+// ...
+  export async function setPlainData(content: string): Promise<void> {
     let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, content);
     await systemPasteboard.setData(pasteData);
-	// ···
+  }
+  export async function getPlainData(type: string): Promise<string> {
     //从系统剪贴板中读取数据
     let data = await systemPasteboard.getData();
     let recordCount = data.getRecordCount();
     let result = '';
     for (let i = 0; i < recordCount; i++) {
       let record = data.getRecord(i).toPlainText();
-      console.info('Get data success, record:' + record);
+      hilog.info(0xFF00, '[Sample_pasteboard]', 'Get data success, record:' + record);
       result = record;
     }
+    return result;
+  }
 ```
 
 
@@ -76,35 +80,35 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 
 为了方便剪贴板与其他应用间进行数据交互，减少数据类型适配的工作量，剪贴板支持使用统一数据对象进行复制粘贴。详细的统一数据对象请见[标准化数据通路](../../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md)文档介绍。
 
-剪贴板支持使用基础数据类型进行复制粘贴，当前支持的基础数据类型有文本、HTML。ArkTS接口与NDK接口支持数据类型不完全一致，使用时须匹配接口支持类型。
+剪贴板支持使用基础数据类型进行复制粘贴，当前支持的基础数据类型有文本、HTML。ArkTS接口与NDK接口支持的数据类型不完全一致，使用时需匹配对应接口所支持的类型。
 
 ### 接口说明
 
 详细接口见[接口文档](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddata12)。
 
-| 名称 | 说明                                                                                                                                        |
-| -------- |----------------------------------------------------------------------------------------------------------------------------------------|
-| setUnifiedData(data: udc.UnifiedData): Promise\<void\> | 将统一数据对象的数据写入系统剪贴板。
-| setUnifiedDataSync(data: udc.UnifiedData): void | 将统一数据对象的数据写入系统剪贴板，此接口为同步接口。                                                                                                                          |
-| getUnifiedData(): Promise\<udc.UnifiedData\> | 从系统剪贴板中读取统一数据对象的数据。                                                                                                                          |
-| getUnifiedDataSync(): udc.UnifiedData | 从系统剪贴板中读取统一数据对象的数据，此接口为同步接口。
+| 名称 | 说明                                                                                                   |
+| -------- |---------------------------------------------------------------------------------------------------|
+| setUnifiedData(data: udc.UnifiedData): Promise\<void\> | 将统一数据对象的数据写入系统剪贴板。                   |
+| setUnifiedDataSync(data: udc.UnifiedData): void | 将统一数据对象的数据写入系统剪贴板，此接口为同步接口。          |
+| getUnifiedData(): Promise\<udc.UnifiedData\> | 从系统剪贴板中读取统一数据对象的数据。                           |
+| getUnifiedDataSync(): udc.UnifiedData | 从系统剪贴板中读取统一数据对象的数据，此接口为同步接口。                  |
 
 ### 示例代码
 
 <!-- @[pasteboard_useudc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
 
 ``` TypeScript
-import {BusinessError, pasteboard} from '@kit.BasicServicesKit';
-// [StartExclude pasteboard_usedata]
-import {unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-// [End pasteboard_timelaps_PasteData1]
-// ···
+import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+// ...
   // 1.构造一条PlainText数据
-  export async function handleUniformData () {
-    let plainText : uniformDataStruct.PlainText = {
+  export async function handleUniformData() {
+    let plainText: uniformDataStruct.PlainText = {
       uniformDataType: uniformTypeDescriptor.UniformDataType.PLAIN_TEXT,
-      textContent : 'PLAINTEXT_CONTENT',
-      abstract : 'PLAINTEXT_ABSTRACT',
+      textContent: 'PLAINTEXT_CONTENT',
+      abstract: 'PLAINTEXT_ABSTRACT',
     }
 
     let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
@@ -112,10 +116,10 @@ import {unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@ki
     data.addRecord(record);
     // 2.向系统剪贴板中存入一条PlainText数据
     systemPasteboard.setUnifiedData(data).then((data: void) => {
-      console.info('Succeeded in setting UnifiedData.');
+      hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in setting UnifiedData.');
       // 存入成功，处理正常场景
     }).catch((err: BusinessError) => {
-      console.error('Failed to set UnifiedData. Cause: ' + err.message);
+      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to set UnifiedData. Cause: ' + err.message);
       // 处理异常场景
     });
     // 3.从系统剪贴板中读取这条text数据
@@ -124,11 +128,11 @@ import {unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@ki
       for (let j = 0; j < records.length; j++) {
         if (records[j].getType() === uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
           let text = records[j].getValue() as uniformDataStruct.PlainText;
-          console.info(`${j + 1}.${text.textContent}`);
+          hilog.info(0xFF00, '[Sample_pasteboard]', `${j + 1}.${text.textContent}`);
         }
       }
     }).catch((err: BusinessError) => {
-      console.error('Failed to get UnifiedData. Cause: ' + err.message);
+      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get UnifiedData. Cause: ' + err.message);
       // 处理异常场景
     });
   }

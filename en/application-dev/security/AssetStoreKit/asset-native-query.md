@@ -26,22 +26,22 @@ The following table describes the attributes for querying an asset.
 | ASSET_TAG_AUTH_TYPE             | Type: uint32_t<br>Value range: see [Asset_AuthType](../../reference/apis-asset-store-kit/capi-asset-type-h.md#asset_authtype).| No    | Type of user authentication required for accessing the asset.                              |
 | ASSET_TAG_SYNC_TYPE             | Type: uint32_t<br>Value range: see [Asset_SyncType](../../reference/apis-asset-store-kit/capi-asset-type-h.md#asset_synctype).| No    | Type of sync supported by the asset.                                      |
 | ASSET_TAG_IS_PERSISTENT         | Type: bool                                                  | No    | Whether to retain the asset when the application is uninstalled. The value **true** means to retain the asset even after the application is uninstalled. The value **false** means the opposite.                           |
-| ASSET_TAG_DATA_LABEL_CRITICAL_1 | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| ASSET_TAG_DATA_LABEL_CRITICAL_2 | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| ASSET_TAG_DATA_LABEL_CRITICAL_3 | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| ASSET_TAG_DATA_LABEL_CRITICAL_4 | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| ASSET_TAG_DATA_LABEL_NORMAL_1   | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| ASSET_TAG_DATA_LABEL_NORMAL_2   | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| ASSET_TAG_DATA_LABEL_NORMAL_3   | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| ASSET_TAG_DATA_LABEL_NORMAL_4   | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
+| ASSET_TAG_DATA_LABEL_CRITICAL_1 | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service with integrity protection.<br>**Note**: The data length is 1 to 512 bytes before API version 12.|
+| ASSET_TAG_DATA_LABEL_CRITICAL_2 | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service with integrity protection.<br>**Note**: The data length is 1 to 512 bytes before API version 12.|
+| ASSET_TAG_DATA_LABEL_CRITICAL_3 | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service with integrity protection.<br>**Note**: The data length is 1 to 512 bytes before API version 12.|
+| ASSET_TAG_DATA_LABEL_CRITICAL_4 | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service with integrity protection.<br>**Note**: The data length is 1 to 512 bytes before API version 12.|
+| ASSET_TAG_DATA_LABEL_NORMAL_1   | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service without integrity protection.<br>**Note**: The data length is 1 to 512 bytes before API version 12.|
+| ASSET_TAG_DATA_LABEL_NORMAL_2   | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service without integrity protection.<br>**Note**: The data length is 1 to 512 bytes before API version 12.|
+| ASSET_TAG_DATA_LABEL_NORMAL_3   | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service without integrity protection.<br>**Note**: The data length is 1 to 512 bytes before API version 12.|
+| ASSET_TAG_DATA_LABEL_NORMAL_4   | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service without integrity protection.<br>**Note**: The data length is 1 to 512 bytes before API version 12.|
 | ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_1<sup>12+</sup> | Type: uint8[]<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
 | ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_2<sup>12+</sup> | Type: uint8[]<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
 | ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_3<sup>12+</sup> | Type: uint8[]<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
 | ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_4<sup>12+</sup> | Type: uint8[]<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
 | ASSET_TAG_RETURN_TYPE           | Type: uint32_t<br>Value range: see [Asset_ReturnType](../../reference/apis-asset-store-kit/capi-asset-type-h.md#asset_returntype).| No    | Type of the asset query result to return.                                        |
 | ASSET_TAG_RETURN_LIMIT          | Type: uint32_t                                              | No    | Maximum number of asset records returned.                                        |
-| ASSET_TAG_RETURN_OFFSET         | Type: uint32_t<br>Value range: 1-65536                           | No    | Offset of the asset query result.<br>**NOTE**: This parameter specifies the starting asset record to return in batch asset query.                 |
-| ASSET_TAG_RETURN_ORDERED_BY     | Type: uint32_t<br>Value: ASSET_TAG_DATA_LABEL_xxx          | No    | How the query results are sorted. Currently, the results can be sorted only by **ASSET_TAG_DATA_LABEL**.<br>**NOTE**: By default, assets are returned in the order in which they are added.|
+| ASSET_TAG_RETURN_OFFSET         | Type: uint32_t<br>Value range: 1-65536                           | No    | Offset of the asset query result.<br>**Note**: This parameter specifies the starting asset record to return in batch asset query.                 |
+| ASSET_TAG_RETURN_ORDERED_BY     | Type: uint32_t<br>Value: ASSET_TAG_DATA_LABEL_xxx          | No    | How the query results are sorted. Currently, the results can be sorted only by **ASSET_TAG_DATA_LABEL**.<br>**Note**: By default, assets are returned in the order in which they are added.|
 | ASSET_TAG_REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: bool| No| Whether to query the encrypted data of service customized supplementary information. The value **true** means to query the encrypted data of service customized supplementary information; the value **false** means to query the non-encrypted data of service customized supplementary information. Default value: **false**.|
 | ASSET_TAG_GROUP_ID<sup>18+</sup> | Type: Uint8[]<br>Length: 7-127 bytes| No| Group to which the asset to be queried belongs. By default, this parameter is not specified.|
 
@@ -62,37 +62,47 @@ For details about how to query the plaintext of an asset in a group, see [Queryi
    target_link_libraries(entry PUBLIC libasset_ndk.z.so)
    ```
 
-2. Query an asset.
-   ```c
-   #include <string.h>
+2. Include header files.
+   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
-   #include "asset/asset_api.h"
+``` C++
+#include "napi/native_api.h"
+#include <string.h>
+#include "asset/asset_api.h"
+```
 
-   static napi_value QueryAsset(napi_env env, napi_callback_info info) 
-   {
-       static const char *ALIAS = "demo_alias";
-       Asset_Blob alias = {(uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS};
-       Asset_Attr attr[] = {
-           {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // Specify the alias of the asset to query.
-           {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ALL}, // Return all asset information, including the attributes and asset plaintext. The plaintext needs to be decrypted, so the query takes a long time.
-       };
 
-       Asset_ResultSet resultSet = {0};
-       int32_t queryResult = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
-       if (queryResult == ASSET_SUCCESS) {
-           // Parse resultSet.
-           for (uint32_t i = 0; i < resultSet.count; i++) {
-               // Parse the secret attribute. The data corresponds to secret->blob.data, and the size corresponds to secret->blob.size.
-               Asset_Attr *secret = OH_Asset_ParseAttr(resultSet.results + i, ASSET_TAG_SECRET);
-           }
-       }
-       OH_Asset_FreeResultSet(&resultSet);
+3. Query an asset.
+   <!-- @[query_single_plaintext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+static napi_value QueryAssetPlaintext(napi_env env, napi_callback_info info)
+{
+    const char *aliasStr = "demo_alias";
     
-       napi_value ret;
-       napi_create_int32(env, queryResult, &ret);
-       return ret;
+    Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
+    Asset_Attr attr[] = {
+        {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // Specify the alias of the asset to query.
+        {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ALL}, // Return all asset information, including the attributes and asset plaintext. The plaintext needs to be decrypted, so the query takes a long time.
+    };
+
+    Asset_ResultSet resultSet = {0};
+    int32_t queryResult = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
+    if (queryResult == ASSET_SUCCESS) {
+        // Parse resultSet.
+        for (uint32_t i = 0; i < resultSet.count; i++) {
+            // Parse the secret attribute. The data corresponds to secret->blob.data, and the size corresponds to secret->blob.size.
+            Asset_Attr *secret = OH_Asset_ParseAttr(resultSet.results + i, ASSET_TAG_SECRET);
+        }
     }
-   ```
+    OH_Asset_FreeResultSet(&resultSet);
+ 
+    napi_value ret;
+    napi_create_int32(env, queryResult, &ret);
+    return ret;
+}
+```
+
 
 ### Querying Attributes of an Asset
 
@@ -105,37 +115,47 @@ For details about how to query the attributes of an asset in a group, see [Query
    target_link_libraries(entry PUBLIC libasset_ndk.z.so)
    ```
 
-2. Query an asset.
-   ```c
-   #include <string.h>
+2. Include header files.
+   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
-   #include "asset/asset_api.h"
+``` C++
+#include "napi/native_api.h"
+#include <string.h>
+#include "asset/asset_api.h"
+```
 
-   static napi_value QueryAttributes(napi_env env, napi_callback_info info) 
-   {
-       static const char *ALIAS = "demo_alias";
-       Asset_Blob alias = { (uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS };
-       Asset_Attr attr[] = {
-           {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // Specify the alias of the asset to query.
-           {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ATTRIBUTES}, // Return only the asset attributes, excluding the asset plaintext. The attributes do not need to be decrypted, so the query takes a short time.
-       };
 
-       Asset_ResultSet resultSet = {0};
-       int32_t queryResult = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
-       if (queryResult == ASSET_SUCCESS) {
-           // Parse the result
-           for (uint32_t i = 0; i < resultSet.count; i++) {
-               // Parse the data label. The data corresponds to label->blob.data, and the size corresponds to label->blob.size.
-               Asset_Attr *label = OH_Asset_ParseAttr(resultSet.results + i, ASSET_TAG_DATA_LABEL_NORMAL_1);
-           }
-       }
-       OH_Asset_FreeResultSet(&resultSet);
+3. Query an asset.
+   <!-- @[query_single_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+static napi_value QueryAssetAttribute(napi_env env, napi_callback_info info)
+{
+    const char *aliasStr = "demo_alias";
     
-       napi_value ret;
-       napi_create_int32(env, queryResult, &ret);
-       return ret;
-   }
-   ```
+    Asset_Blob alias = { (uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr };
+    Asset_Attr attr[] = {
+        {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // Specify the alias of the asset to query.
+        {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ATTRIBUTES}, // Return only the asset attributes. The attributes do not need to be decrypted, so the query takes a short time.
+    };
+
+    Asset_ResultSet resultSet = {0};
+    int32_t queryResult = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
+    if (queryResult == ASSET_SUCCESS) {
+        // Parse the result
+        for (uint32_t i = 0; i < resultSet.count; i++) {
+            // Parse the data label. The data corresponds to label->blob.data, and the size corresponds to label->blob.size.
+            Asset_Attr *label = OH_Asset_ParseAttr(resultSet.results + i, ASSET_TAG_DATA_LABEL_NORMAL_1);
+        }
+    }
+    OH_Asset_FreeResultSet(&resultSet);
+ 
+    napi_value ret;
+    napi_create_int32(env, queryResult, &ret);
+    return ret;
+}
+```
+
 
 ### Querying Attributes of Assets
 
@@ -146,37 +166,45 @@ Query attributes of assets with the tag of **demo_label** and return a total of 
    target_link_libraries(entry PUBLIC libasset_ndk.z.so)
    ```
 
-2. Query an asset.
-   ```c
-   #include <string.h>
+2. Include header files.
+   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
-   #include "asset/asset_api.h"
+``` C++
+#include "napi/native_api.h"
+#include <string.h>
+#include "asset/asset_api.h"
+```
 
-   static napi_value BatchQuery(napi_env env, napi_callback_info info) 
-   {
-       static const char *LABEL = "demo_label";
-       Asset_Blob label = {(uint32_t)(strlen(LABEL)), (uint8_t *)LABEL};
 
-       Asset_Attr attr[] = {
-           {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ATTRIBUTES},
-           {.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = label},
-           {.tag = ASSET_TAG_RETURN_LIMIT, .value.u32 = 10},
-           {.tag = ASSET_TAG_RETURN_ORDERED_BY, .value.u32 = ASSET_TAG_DATA_LABEL_NORMAL_1},
-       };
+3. Query an asset.
+   <!-- @[query_batch_attributes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
-       Asset_ResultSet resultSet = { 0 };
-       int32_t queryResult = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
-       if (queryResult == ASSET_SUCCESS) {
-           // Parse the result
-           for (uint32_t i = 0; i < resultSet.count; i++) {
-               // Parse the data alias. The alias corresponds to label->blob.data, and the size corresponds to label->blob.size.
-               Asset_Attr *alias = OH_Asset_ParseAttr(resultSet.results + i, ASSET_TAG_ALIAS);
-           }
-       }
-       OH_Asset_FreeResultSet(&resultSet);
+``` C++
+static napi_value QueryBatchAssetAttributes(napi_env env, napi_callback_info info)
+{
+    const char *labelStr = "demo_label";
     
-       napi_value ret;
-       napi_create_int32(env, queryResult, &ret);
-       return ret;
-   }
-   ```
+    Asset_Blob label = {(uint32_t)(strlen(labelStr)), (uint8_t *)labelStr};
+    Asset_Attr attr[] = {
+        {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ATTRIBUTES},
+        {.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = label},
+        {.tag = ASSET_TAG_RETURN_LIMIT, .value.u32 = 10},
+        {.tag = ASSET_TAG_RETURN_ORDERED_BY, .value.u32 = ASSET_TAG_DATA_LABEL_NORMAL_1},
+    };
+
+    Asset_ResultSet resultSet = { 0 };
+    int32_t queryResult = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
+    if (queryResult == ASSET_SUCCESS) {
+        // Parse the result
+        for (uint32_t i = 0; i < resultSet.count; i++) {
+            // Parse the data alias. The alias corresponds to label->blob.data, and the size corresponds to label->blob.size.
+            Asset_Attr *alias = OH_Asset_ParseAttr(resultSet.results + i, ASSET_TAG_ALIAS);
+        }
+    }
+    OH_Asset_FreeResultSet(&resultSet);
+ 
+    napi_value ret;
+    napi_create_int32(env, queryResult, &ret);
+    return ret;
+}
+```

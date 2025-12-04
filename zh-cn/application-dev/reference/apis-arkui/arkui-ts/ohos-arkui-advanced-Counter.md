@@ -4,7 +4,7 @@
 <!--Owner: @xieziang-->
 <!--Designer: @youzhi92-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Counter组件用于精确调节数值。
 
@@ -54,13 +54,13 @@ CounterOptions定义Counter类型及样式。
 | ----------- | ---------- | ---- | ------------------------------- | ------------------------------- |
 | type | [CounterType](#countertype) | 否  | 否  | 指定当前Counter的类型。 |
 | direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction) | 否 | 是 | 布局方向。<br/>默认值：Direction.Auto<br>值为undefined时，按默认值处理。 |
-| numberOptions | [NumberStyleOptions](#numberstyleoptions) | 否   | 是   | 列表型和紧凑型Counter的式样。<br>默认值：显示计数器为0的列表型或紧凑型Counter。<br>值为undefined时，按默认值处理。 |
-| inlineOptions | [InlineStyleOptions](#inlinestyleoptions) | 否 | 是 | 普通数字内联调节型Counter的式样。<br>默认值：显示计数器为0的普通数字内联调节型Counter。<br>值为undefined时，按默认值处理。 |
-| dateOptions | [DateStyleOptions](#datestyleoptions) | 否 | 是 | 日期型内联型Counter的式样。<br>默认值：显示0001/01/01的日期型内联型Counter。<br>值为undefined时，按默认值处理。 |
+| numberOptions | [NumberStyleOptions](#numberstyleoptions) | 否   | 是   | 列表型和紧凑型Counter的样式。<br>默认值：显示计数器为0的列表型或紧凑型Counter。<br>值为undefined时，按默认值处理。 |
+| inlineOptions | [InlineStyleOptions](#inlinestyleoptions) | 否 | 是 | 普通数字内联调节型Counter的样式。<br>默认值：显示计数器为0的普通数字内联调节型Counter。<br>值为undefined时，按默认值处理。 |
+| dateOptions | [DateStyleOptions](#datestyleoptions) | 否 | 是 | 日期型内联型Counter的样式。<br>默认值：显示0001/01/01的日期型内联型Counter。<br>值为undefined时，按默认值处理。 |
 
 选择不同的Counter类型，需要选择对应的Counter样式。
 
-| counter类型             | counter式样        |
+| counter类型             | counter样式        |
 | ----------------------- | ------------------ |
 | CounterType.LIST        | NumberStyleOptions |
 | CounterType.COMPACT     | NumberStyleOptions |
@@ -109,7 +109,7 @@ InlineStyleOptions定义了数值内联型Counter的属性和事件。
 
 | 名称      | 类型                   | 只读 | 可选 | 说明                                                   |
 | --------- | ---------------------- | ---- | ------------------------------------------------------ | ------------------------------------------------------ |
-| value     | number                 | 否  | 是  | 设置Counter的初始值。<br/>默认值：0<br>取值范围：[0, 999]<br>值为undefined时，按默认值处理。 |
+| value     | number                 | 否  | 是  | 设置Counter的初始值。<br/>默认值：0<br>取值范围：[min, max]，其中min和max分别对应下述Counter的最小值和最大值。<br>值为undefined时，按默认值处理。 |
 | min       | number                 | 否  | 是  | 设置Counter的最小值。<br/>默认值：0<br>取值范围：(-∞, +∞)<br>值为undefined时，按默认值处理。 |
 | max       | number                 | 否  | 是  | 设置Counter的最大值。<br/>默认值：999<br>取值范围：(-∞, +∞)<br>值为undefined时，按默认值处理。 |
 | textWidth | number                 | 否  | 是  | 设置数值文本的宽度。<br/>默认值：自适应文本宽度。<br/>取值范围：[0, +∞)<br/>单位：vp<br>值为undefined时，按默认值处理。 |

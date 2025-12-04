@@ -25,7 +25,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 static requestImage(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler&lt;image.ImageSource&gt;): Promise&lt;string&gt;
 
-根据不同的策略模式，请求图片资源。
+根据不同的策略模式，请求图片资源。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -106,7 +106,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static requestImageData(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler&lt;ArrayBuffer&gt;): Promise&lt;string&gt;
 
-根据不同的策略模式，请求图片资源数据。
+根据不同的策略模式，请求图片资源数据。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -186,7 +186,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static requestMovingPhoto(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler&lt;MovingPhoto&gt;): Promise&lt;string&gt;
 
-根据不同的策略模式，请求动态照片对象。动态照片对象可用于请求动态照片的资源数据。
+根据不同的策略模式，请求动态照片对象（动态照片对象可用于请求动态照片的资源数据）。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -266,7 +266,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static requestVideoFile(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, fileUri: string, dataHandler: MediaAssetDataHandler&lt;boolean&gt;): Promise&lt;string&gt;
 
-根据不同的策略模式，请求视频资源数据到沙箱路径。
+根据不同的策略模式，请求视频资源数据到沙箱路径。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -340,7 +340,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static cancelRequest(context: Context, requestId: string): Promise\<void>
 
-取消未触发回调的资产内容请求。
+取消未触发回调的资产内容请求。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -390,7 +390,7 @@ async function example(context: Context) {
 
 static loadMovingPhoto(context: Context, imageFileUri: string, videoFileUri: string): Promise\<MovingPhoto>
 
-加载应用沙箱的动态照片。
+加载应用沙箱的动态照片。使用Promise异步回调。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -438,7 +438,7 @@ async function example(context: Context) {
 
 static quickRequestImage(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: QuickImageDataHandler&lt;image.Picture&gt;): Promise&lt;string&gt;
 
-根据不同的策略模式，快速请求图片资源。
+根据不同的策略模式，快速请求图片资源。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 

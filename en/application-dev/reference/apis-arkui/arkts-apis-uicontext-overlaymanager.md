@@ -1,10 +1,16 @@
 # Class (OverlayManager)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Provides the capability to draw overlays.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this class are supported since API version 12.
 >
@@ -30,7 +36,7 @@ Adds a specified **ComponentContent** node to the **OverlayManager**.
 
 | Name    | Type                                      | Mandatory  | Description         |
 | ------- | ---------------------------------------- | ---- | ----------- |
-| content | [ComponentContent](js-apis-arkui-ComponentContent.md) | Yes   | Content to add to the new node on the **OverlayManager**.<br>**NOTE**<br> By default, the new node is centered on the page and stacked according to its stacking level.|
+| content | [ComponentContent](js-apis-arkui-ComponentContent.md) | Yes   | Content to add to the target node on the **OverlayManager**.<br>**NOTE**<br> By default, the new node is centered on the page and stacked according to its stacking level.|
 | index | number | No   | Stacking level of the new node on the **OverlayManager**.<br>**NOTE**<br> If the value is greater than or equal to 0, a larger value means a higher layer for the **ComponentContent** node. If multiple **ComponentContent** nodes have the same index, the later-added ones appear above earlier ones.<br> If the value is less than 0, **null**, or **undefined**, the **ComponentContent** node is added at the highest level by default.<br>If the same **ComponentContent** node is added multiple times, only the last added one is retained.
 
 **Example**
@@ -149,7 +155,7 @@ This API allows you to define the stacking order of the nodes when they are crea
 
 | Name    | Type                                      | Mandatory  | Description         |
 | ------- | ---------------------------------------- | ---- | ----------- |
-| content | [ComponentContent](js-apis-arkui-ComponentContent.md) | Yes   | Content to add to the new node on the **OverlayManager**.<br>**NOTE**<br> By default, the new node is centered on the page and stacked according to its stacking level.|
+| content | [ComponentContent](js-apis-arkui-ComponentContent.md) | Yes   | Content to add to the target node on the **OverlayManager**.<br>**NOTE**<br> By default, the new node is centered on the page and stacked according to its stacking level.|
 | levelOrder | [LevelOrder](js-apis-promptAction.md#levelorder18) | No   | Display order of the new floating layer node.<br>**NOTE**<br>- Default value: **LevelOrder.clamp(0)**|
 
 **Example**
@@ -237,7 +243,7 @@ struct Index {
 
 removeComponentContent(content: ComponentContent): void
 
-Removes a specified **ComponentContent** node from the **OverlayManager**.
+Removes a specified node from the **OverlayManager**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

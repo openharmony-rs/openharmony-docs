@@ -6,13 +6,13 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
+在设备上安装、升级和卸载应用。
+
 > **说明：**
 >
 > 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
-
-在设备上安装、升级和卸载应用。
 
 ## 导入模块
 
@@ -24,7 +24,7 @@ import { installer } from '@kit.AbilityKit';
 
 getBundleInstaller(callback: AsyncCallback\<BundleInstaller>): void
 
-获取BundleInstaller对象，使用callback异步回调。
+获取BundleInstaller对象。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -69,7 +69,7 @@ try {
 
 getBundleInstaller(): Promise\<BundleInstaller>
 
-获取BundleInstaller对象，使用callback异步回调。
+获取BundleInstaller对象。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -147,22 +147,19 @@ try {
 ## BundleInstaller.install
 install(hapFilePaths: Array&lt;string&gt;, installParam: InstallParam, callback: AsyncCallback&lt;void&gt;): void
 
-安装应用，使用callback异步回调。
+安装指定应用。使用callback异步回调。
+> **说明：**
+>
+> 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中的appDistributionType字段说明。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE<sup>10+</sup>
-> **说明：** 从API version 10起，可通过ohos.permission.INSTALL_ENTERPRISE_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限调用此接口。
->
-> 安装企业应用需要ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
->
-> 安装企业NORMAL应用需要ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
->
-> 安装企业MDM应用需要ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
->
-> 安装普通应用需要ohos.permission.INSTALL_BUNDLE权限。
->
-> 安装开发者内测构建应用需要ohos.permission.INSTALL_INTERNALTESTING_BUNDLE权限。
+**需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE 或（ohos.permission.INSTALL_BUNDLE 和 ohos.permission.INSTALL_ALLOW_DOWNGRADE）
+- 从API version 9开始，安装普通应用需要申请ohos.permission.INSTALL_BUNDLE权限。
+- 从API version 10开始，安装企业内部应用需要申请ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
+- 从API version 10开始，安装普通企业应用需要申请ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
+- 从API version 10开始，安装企业MDM应用需要申请ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
+- 从API version 23开始，降级安装应用需要同时申请ohos.permission.INSTALL_BUNDLE和ohos.permission.INSTALL_ALLOW_DOWNGRADE权限。仅三方应用支持降级安装，可以参考[InstallParam](#installparam)中parameters描述。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -180,7 +177,7 @@ install(hapFilePaths: Array&lt;string&gt;, installParam: InstallParam, callback:
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE'.   |
+| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE' or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE').   |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3000.   |
 | 17700004 | The specified user ID is not found.                          |
@@ -242,22 +239,19 @@ try {
 ## BundleInstaller.install
 install(hapFilePaths: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-安装应用，使用callback异步回调。
+安装指定应用。使用callback异步回调。
+> **说明：**
+>
+> 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中的appDistributionType字段说明。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE<sup>10+</sup>
-> **说明：** 从API version 10起，可通过ohos.permission.INSTALL_ENTERPRISE_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限调用此接口。
->
-> 安装企业应用需要ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
->
-> 安装企业NORMAL应用需要ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
->
-> 安装企业MDM应用需要ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
->
-> 安装普通应用需要ohos.permission.INSTALL_BUNDLE权限。
->
-> 安装开发者内测构建应用需要ohos.permission.INSTALL_INTERNALTESTING_BUNDLE权限。
+**需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE 或（ohos.permission.INSTALL_BUNDLE 和 ohos.permission.INSTALL_ALLOW_DOWNGRADE）
+- 从API version 9开始，安装普通应用需要申请ohos.permission.INSTALL_BUNDLE权限。
+- 从API version 10开始，安装企业内部应用需要申请ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
+- 从API version 10开始，安装普通企业应用需要申请ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
+- 从API version 10开始，安装企业MDM应用需要申请ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
+- 从API version 23开始，降级安装应用需要同时申请ohos.permission.INSTALL_BUNDLE和ohos.permission.INSTALL_ALLOW_DOWNGRADE权限。仅三方应用支持降级安装，可以参考[InstallParam](#installparam)中parameters描述。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -274,7 +268,7 @@ install(hapFilePaths: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;):
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE'.   |
+| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE' or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE').   |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700010 | Failed to install the HAP because the HAP fails to be parsed. |
@@ -332,22 +326,18 @@ try {
 
 install(hapFilePaths: Array\<string\>, installParam?: InstallParam) : Promise\<void\>
 
-安装应用，使用Promise异步回调。
-
+安装指定应用。使用Promise异步回调。
+> **说明：**
+>
+> 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中的appDistributionType字段说明。
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE<sup>10+</sup>
-> **说明：** 从API version 10起，可通过ohos.permission.INSTALL_ENTERPRISE_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限调用此接口。
->
-> 安装企业应用需要ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
->
-> 安装企业NORMAL应用需要ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
->
-> 安装企业MDM应用需要ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
->
-> 安装普通应用需要ohos.permission.INSTALL_BUNDLE权限。
->
-> 安装开发者内测构建应用需要ohos.permission.INSTALL_INTERNALTESTING_BUNDLE权限。
+**需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE 或（ohos.permission.INSTALL_BUNDLE 和 ohos.permission.INSTALL_ALLOW_DOWNGRADE）
+- 从API version 9开始，安装普通应用需要申请ohos.permission.INSTALL_BUNDLE权限。
+- 从API version 10开始，安装企业内部应用需要申请ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
+- 从API version 10开始，安装普通企业应用需要申请ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
+- 从API version 10开始，安装企业MDM应用需要申请ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
+- 从API version 23开始，降级安装应用需要同时申请ohos.permission.INSTALL_BUNDLE和ohos.permission.INSTALL_ALLOW_DOWNGRADE权限。仅三方应用支持降级安装，可以参考[InstallParam](#installparam)中parameters描述。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -370,7 +360,7 @@ install(hapFilePaths: Array\<string\>, installParam?: InstallParam) : Promise\<v
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE'.   |
+| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE' or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE').   |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3000.   |
 | 17700004 | The specified user ID is not found.                          |
@@ -433,7 +423,7 @@ try {
 
 uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallback&lt;void&gt;): void
 
-卸载应用，使用callback异步回调。
+卸载应用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -502,7 +492,7 @@ try {
 
 uninstall(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
-卸载应用，使用callback异步回调。
+卸载应用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -562,7 +552,7 @@ try {
 
 uninstall(bundleName: string, installParam?: InstallParam) : Promise\<void\>
 
-卸载应用，使用Promise异步回调。
+卸载应用。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -635,7 +625,7 @@ try {
 
 recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback&lt;void&gt;): void
 
-回滚应用到初次安装时的状态，使用callback异步回调。
+回滚应用到初次安装时的状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -701,7 +691,7 @@ try {
 
 recover(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
-回滚应用到初次安装时的状态，使用callback异步回调。
+回滚应用到初次安装时的状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -759,7 +749,7 @@ try {
 
 recover(bundleName: string, installParam?: InstallParam) : Promise\<void\>
 
-回滚应用到初次安装时的状态，使用Promise异步回调。
+回滚应用到初次安装时的状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -827,7 +817,7 @@ try {
 
 uninstall(uninstallParam: UninstallParam, callback : AsyncCallback\<void\>) : void
 
-卸载一个共享包，使用callback异步回调。
+卸载一个共享包。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -887,7 +877,7 @@ try {
 
 uninstall(uninstallParam: UninstallParam) : Promise\<void>
 
-卸载一个共享包，使用Promise异步回调。
+卸载一个共享包。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -952,7 +942,7 @@ try {
 
 addExtResource(bundleName: string, filePaths: Array\<string>): Promise\<void>;
 
-根据给定的bundleName和hsp文件路径添加扩展资源，使用Promise异步回调。
+根据给定的bundleName和hsp文件路径添加扩展资源。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1014,7 +1004,7 @@ try {
 
 removeExtResource(bundleName: string, moduleNames: Array\<string>): Promise\<void>;
 
-根据给定的bundleName和moduleNames删除扩展资源，使用Promise异步回调。
+根据给定的bundleName和moduleNames删除扩展资源。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1076,7 +1066,7 @@ try {
 
 updateBundleForSelf(hapFilePaths: Array\<string\>, installParam: InstallParam, callback: AsyncCallback\<void\>): void
 
-更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用，使用callback异步回调。
+更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1155,7 +1145,7 @@ try {
 
 updateBundleForSelf(hapFilePaths: Array\<string\>, callback: AsyncCallback\<void\>): void
 
-更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用，使用callback异步回调。
+更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1227,7 +1217,7 @@ try {
 
 updateBundleForSelf(hapFilePaths: Array\<string\>, installParam?: InstallParam): Promise\<void\>
 
-更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用，使用Promise异步回调。
+更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1310,7 +1300,7 @@ try {
 
 uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise\<void\>;
 
-对预置应用进行卸载更新，恢复到初次安装时的状态，使用Promise异步回调。
+对预置应用进行卸载更新，恢复到初次安装时的状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1380,7 +1370,7 @@ try {
 
 createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): Promise\<number\>;
 
-创建应用分身，使用Promise异步回调。
+创建应用分身。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1447,7 +1437,7 @@ try {
 
 destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise\<void\>;
 
-删除应用分身，使用Promise异步回调。
+删除应用分身。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1480,7 +1470,7 @@ destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise\
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
 | 17700004 | The userId is invalid. |
-| 17700061 | The appIndex is invalid. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 ```ts
@@ -1512,7 +1502,7 @@ try {
 
 destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: DestroyAppCloneParam): Promise\<void\>;
 
-删除应用分身，使用Promise异步回调。
+删除应用分身。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1545,7 +1535,7 @@ destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: Des
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 17700001 | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
 | 17700004 | The userId is invalid. |
-| 17700061 | The appIndex is invalid. |
+| 17700061 | AppIndex not in valid range. |
 | 17700062 | Failed to uninstall the app because the app is locked. |
 
 **示例：**
@@ -1586,7 +1576,7 @@ try {
 
 installPreexistingApp(bundleName: string, userId?: number): Promise\<void\>;
 
-安装应用，使用Promise异步回调。
+在指定用户下安装指定bundleName的应用。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1650,7 +1640,7 @@ try {
 
 installPlugin(hostBundleName: string, pluginFilePaths: Array\<string\>, pluginParam?: PluginParam): Promise\<void\> 
 
-应用安装插件，使用Promise异步回调。
+应用安装插件。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1729,7 +1719,7 @@ try {
 
 uninstallPlugin(hostBundleName: string, pluginBundleName: string, pluginParam?: PluginParam): Promise\<void\>
 
-应用卸载插件，使用Promise异步回调。
+应用卸载插件。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1822,9 +1812,9 @@ try {
 | sharedBundleDirPaths<sup>10+</sup> | Array\<string> | 否 | 是|共享包文件所在路径，默认值为空。 |
 | specifiedDistributionType<sup>10+</sup> | string | 否 | 是|应用安装时指定的[分发类型](../../security/app-provision-structure.md)，默认值为空，最大长度为128字节。该字段通常由操作系统运营方的应用市场指定。 |
 | additionalInfo<sup>10+</sup> | string | 否 | 是|应用安装时的额外信息，默认值为空，最大长度为3000字节。该字段通常由操作系统运营方的应用市场在安装企业应用时指定，用于保存应用的额外信息。 |
-| verifyCodeParams<sup>deprecated<sup> | Array<[VerifyCodeParam](#verifycodeparamdeprecated)> | 否 | 是| 代码签名文件参数，默认值为空。         |
+| verifyCodeParams<sup>(deprecated)<sup> | Array<[VerifyCodeParam](#verifycodeparamdeprecated)> | 否 | 是| 代码签名文件参数，默认值为空。<br/>**说明：**<br/> 从API version 10开始支持，从API version 11开始不再维护，应用的代码签名文件将集成到安装包中，不再需要通过本接口指定安装包的代码签名文件。  |
 | pgoParams<sup>11+</sup> | Array<[PGOParam](#pgoparam11)> | 否 | 是| PGO配置文件参数，默认值为空。         |
-| parameters<sup>15+</sup> | Array<[Parameters](#parameters15)> | 否 | 是| 扩展参数，Parameters类型的数组，默认值为空。Parameters.key取值支持：</br> - "ohos.bms.param.renameInstall"：若对应value值为“true”，表示安装时使用共享目录将安装包从应用沙箱移动到安装目录，否则使用常规目录将安装包从应用沙箱拷贝到安装目录。</br> - "ohos.bms.param.enterpriseForAllUser"：若对应value值为“true”，表示在安装企业应用时为所有用户安装。</br> - "ohos.bms.param.verifyUninstallRule"：若对应value值为“true”，表示设置卸载处置规则，用于拦截应用卸载。</br> - "ohos.bms.param.enterpriseManifest"：value值为json文件的沙箱路径，json文件用于存储应用的描述文件，包括应用包名等，该字段用于企业应用克隆场景。克隆时，若该json文件存在，则将旧机的应用安装包拷贝到新机进行安装。|
+| parameters<sup>15+</sup> | Array<[Parameters](#parameters15)> | 否 | 是| 扩展参数，Parameters类型的数组，默认值为空。Parameters.key取值支持：</br> - "ohos.bms.param.renameInstall"：若对应value值为“true”，表示安装时使用共享目录将安装包从应用沙箱移动到安装目录，否则使用常规目录将安装包从应用沙箱拷贝到安装目录。</br> - "ohos.bms.param.enterpriseForAllUser"：若对应value值为“true”，表示在安装企业应用时为所有用户安装。</br> - "ohos.bms.param.verifyUninstallRule"：若对应value值为“true”，表示设置卸载处置规则，用于拦截应用卸载。</br> - "ohos.bms.param.enterpriseManifest"：value值为json文件的沙箱路径，json文件用于存储应用的描述文件，包括应用包名等，该字段用于企业应用克隆场景。克隆时，若该json文件存在，则将旧机的应用安装包拷贝到新机进行安装。</br> - "ohos.bms.param.installBundleName"：value值为应用的包名，该字段用于应用安装场景（从API version 23开始支持）。如果安装时传入了该字段，则在应用安装过程中调用接口[getBundleInstallStatus](./js-apis-bundleManager-sys.md#bundlemanagergetbundleinstallstatus23)能够查询到应用正在安装的状态。</br> - "ohos.bms.param.installAllowDowngrade"：若对应value值为“true”，该字段表示支持应用降级安装（从API version 23开始支持），即设备已安装较高版本的应用，也可以覆盖安装较低版本的应用。仅支持三方应用降级安装。使用降级安装能力需要同时申请ohos.permission.INSTALL_BUNDLE和ohos.permission.INSTALL_ALLOW_DOWNGRADE权限。|
 ## UninstallParam<sup>10+</sup>
 
 共享包卸载需指定的参数信息。
@@ -1838,7 +1828,7 @@ try {
 | bundleName  | string | 否 | 否  | 共享包包名。                                                 |
 | versionCode | number | 否 | 是  | 指示共享包的版本号。默认值：如果不填写versionCode，则卸载该包名的所有共享包。 |
 
-## VerifyCodeParam<sup>deprecated<sup>
+## VerifyCodeParam<sup>(deprecated)<sup>
 
 > 从API version 11开始不再维护，应用的代码签名文件将集成到安装包中，不再需要该接口来指定安装包的代码签名文件。
 

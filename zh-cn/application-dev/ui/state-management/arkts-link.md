@@ -43,7 +43,7 @@
 
  **图1** 初始化规则示意图
 
-![zh-cn_image_0000001502092556](figures/zh-cn_image_0000001502092556.png)
+![link-initialization](figures/link-initialization.png)
 
 
 ## 观察变化和行为表现
@@ -52,15 +52,10 @@
 ### 观察变化
 
 - 当装饰的数据类型为boolean、string、number类型时，可以同步观察到数值的变化，示例请参考[简单类型和类对象类型的@Link](#简单类型和类对象类型的link)。
-
-- 当装饰的数据类型为class或者Object时，可以观察到赋值和属性赋值的变化，即`Object.keys(observedObject)`返回的所有属性，示例请参考[简单类型和类对象类型的@Link](#简单类型和类对象类型的link)。
-
+- 当装饰的数据类型为class或者Object时，可以观察到赋值和属性赋值的变化，即`Object.keys(observedObject)`返回的所有属性，示例请参考[简单类型和类对象类型的@Link](#简单类型和类对象类型的link)。@Link仅能观察对象本身及其一层属性的变化，无法观察嵌套场景（如嵌套对象、对象数组）内层数据的变化，该场景请参考[\@Observed装饰器与\@ObjectLink装饰器的使用场景](arkts-observed-and-objectlink.md#使用场景)。
 - 当装饰的对象是Array时，可以观察到数组添加、删除、更新数组单元的变化，示例请参考[数组类型的@Link](#数组类型的link)。
-
 - 当装饰的对象是Date时，可以观察到Date的整体赋值，以及通过调用`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`方法更新其属性，示例请参考[装饰Date类型变量](#装饰date类型变量)。
-
 - 当装饰的变量是Map时，可以观察到Map整体的赋值，以及可通过调用Map的`set`、`clear`、`delete`接口更新Map的值，示例请参考[装饰Map类型变量](#装饰map类型变量)。
-
 - 当装饰的变量是Set时，可以观察Set整体的赋值，以及通过调用Set的`add`、`clear`、`delete`接口更新其值，示例请参考[装饰Set类型变量](#装饰set类型变量)。
 ### 框架行为
 
@@ -90,12 +85,16 @@
     ```ts
     // 错误写法，编译报错
     @Link count: number = 10;
-  
+
     // 正确写法
     @Link count: number;
     ```
 
 3. \@Link装饰的变量的类型要和数据源类型保持一致，否则编译期会报错。同时，数据源必须是状态变量，否则框架会抛出运行时错误。
+
+    > **说明：**
+    >
+    > 从API version 23开始，添加对\@Link数据源错误的校验，运行时错误变为编译期报错。详情参见[UI相关应用崩溃常见问题](../arkts-stability-crash-issues.md)。
 
     【反例】
   
@@ -142,31 +141,33 @@
     ```
 
     【正例】
-  
-    ```ts
-    class Info {
-      value: string = 'Hello';
+
+    <!-- @[link_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/LinkUsage.ets) -->
+    
+    ``` TypeScript
+    class LinkInfo {
+      public value: string = 'Hello';
     }
-
+    
     @Component
-    struct Child {
-      // 在子组件中，使用@Link装饰Info类型的test变量
-      @Link test: Info;
-
+    struct LinkChild {
+      // 在子组件中，使用@Link装饰LinkInfo类型的test变量
+      @Link test: LinkInfo;
+    
       build() {
         Text(this.test.value)
       }
     }
-
+    
     @Entry
     @Component
     struct LinkExample {
-      @State info: Info = new Info();
-
+      @State info: LinkInfo = new LinkInfo();
+    
       build() {
         Column() {
-          // 在父组件中，使用@State装饰的info变量初始化Child组件的test变量
-          Child({test: this.info})
+          // 在父组件中，使用@State装饰的info变量初始化LinkChild组件的test变量
+          LinkChild({test: this.info})
         }
       }
     }
@@ -180,12 +181,12 @@
     class Info {
       info: string = 'Hello';
     }
-  
+
     @Component
     struct Child {
       @Link msg: string;
       @Link info: string;
-  
+
       build() {
         Text(this.msg + this.info)
       }
@@ -196,7 +197,7 @@
     struct LinkExample {
       @State message: string = 'Hello';
       @State info: Info = new Info();
-  
+
       build() {
         Column() {
           // 错误写法，常规变量不能初始化@Link
@@ -207,38 +208,42 @@
     ```
 
     【正例】
-  
-    ```ts
-    class Info {
-      info: string = 'Hello';
+
+    <!-- @[link_usage_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/LinkUsage2.ets) -->
+    
+    ``` TypeScript
+    class LinkInfo2 {
+      public info: string = 'Hello';
     }
-  
+    
     @Component
-    struct Child {
+    struct LinkChild2 {
       @Link msg: string;
-      @Link info: Info;
-  
+      @Link info: LinkInfo2;
+    
       build() {
         Text(this.msg + this.info.info)
       }
     }
-  
+    
     @Entry
     @Component
-    struct LinkExample {
+    struct LinkExample2 {
       @State message: string = 'Hello';
-      @State info: Info = new Info();
-  
+      @State info: LinkInfo2 = new LinkInfo2();
+    
       build() {
         Column() {
           // 正确写法
-          Child({msg: this.message, info: this.info})
+          LinkChild2({msg: this.message, info: this.info})
         }
       }
     }
     ```
 
-5. \@Link不支持装饰Function类型的变量，框架会抛出运行时错误。
+
+5. \@Link不支持装饰Function类型的变量，API version 23之前，框架会抛出运行时错误。
+从API version 23开始，添加对\@Link装饰Function类型变量的校验，编译期会报错。
 
 
 ## 使用场景
@@ -249,12 +254,14 @@
 以下示例中，点击父组件ShufflingContainer中的“Parent View: Set yellowButton”和“Parent View: Set GreenButton”，可以从父组件将变化同步给子组件。
 
   1.点击子组件GreenButton和YellowButton中的Button，子组件会发生相应变化，将变化同步给父组件。因为@Link是双向同步，会将变化同步给@State。
-  
+
   2.当点击父组件ShufflingContainer中的Button时，@State会发生变化，并同步给\@Link，子组件也会进行对应的刷新。
 
-```ts
+<!-- @[link_class_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UsingLinkwithPrimitiveandClassTypes.ets) -->
+
+``` TypeScript
 class GreenButtonState {
-  width: number = 0;
+  public width: number = 0;
 
   constructor(width: number) {
     this.width = width;
@@ -342,9 +349,11 @@ struct ShufflingContainer {
 ### 数组类型的\@Link
 
 
-```ts
+<!-- @[link_arry_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UsingLinkwithArrayTypes.ets) -->
+
+``` TypeScript
 @Component
-struct Child {
+struct ArrayTypesChild {
   @Link items: number[];
 
   build() {
@@ -371,12 +380,12 @@ struct Child {
 
 @Entry
 @Component
-struct Parent {
+struct ArrayTypes {
   @State arr: number[] = [1, 2, 3];
 
   build() {
     Column() {
-      Child({ items: $arr })
+      ArrayTypesChild({ items: $arr })
         .margin(12)
       ForEach(this.arr,
         (item: number) => {
@@ -394,9 +403,10 @@ struct Parent {
 }
 ```
 
+
 ![Video-link-UsageScenario-two](figures/Video-link-UsageScenario-two.gif)
 
-ArkUI框架可以观察到数组元素的添加、删除和替换。在该示例中，\@State和\@Link的类型均为number[]，不支持将\@Link定义成number类型（\@Link item : number），并用\@State数组中的每个数据项在父组件中创建子组件。如需使用这种场景，可以参考[\@Prop](arkts-prop.md)和[\@Observed](./arkts-observed-and-objectlink.md)。
+状态管理框架可以观察到数组元素的添加、删除和替换。在该示例中，\@State和\@Link的类型均为number[]，不支持将\@Link定义成number类型（\@Link item : number），并用\@State数组中的每个数据项在父组件中创建子组件。如需使用这种场景，可以参考[\@Prop](arkts-prop.md)和[\@Observed](./arkts-observed-and-objectlink.md)。
 
 ### 装饰Map类型变量
 
@@ -406,9 +416,11 @@ ArkUI框架可以观察到数组元素的添加、删除和替换。在该示例
 
 在下面的示例中，value类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 
-```ts
+<!-- @[link_map_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/DecoratingVariablesMapType.ets) -->
+
+``` TypeScript
 @Component
-struct Child {
+struct MapSampleChild {
   @Link value: Map<number, string>;
 
   build() {
@@ -446,7 +458,7 @@ struct MapSample {
   build() {
     Row() {
       Column() {
-        Child({ value: this.message })
+        MapSampleChild({ value: this.message })
       }
       .width('100%')
     }
@@ -463,9 +475,11 @@ struct MapSample {
 
 在下面的示例中，message类型为Set\<number\>，点击Button改变message的值，视图会随之刷新。
 
-```ts
+<!-- @[link_set_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/DecoratingVariablesSetType.ets) -->
+
+``` TypeScript
 @Component
-struct Child {
+struct SetSampleChild {
   @Link message: Set<number>;
 
   build() {
@@ -500,7 +514,7 @@ struct SetSample {
   build() {
     Row() {
       Column() {
-        Child({ message: this.message })
+        SetSampleChild({ message: this.message })
       }
       .width('100%')
     }
@@ -513,7 +527,9 @@ struct SetSample {
 
 在下面的示例中，selectedDate类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
 
-```ts
+<!-- @[link_data_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/DecoratingVariablesDateType.ets) -->
+
+``` TypeScript
 @Component
 struct DateComponent {
   @Link selectedDate: Date;
@@ -521,9 +537,9 @@ struct DateComponent {
   build() {
     Column() {
       Button(`child increase the year by 1`)
-      .onClick(() => {
-        this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
-      })
+        .onClick(() => {
+          this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
+        })
       Button('child update the new date')
         .margin(10)
         .onClick(() => {
@@ -573,17 +589,19 @@ struct ParentComponent {
 
 以下示例中，在\@Link的\@Watch里面修改了一个\@State装饰的变量memberMessage，实现父子组件间的变量同步。但是\@State装饰的变量memberMessage在本地修改不会影响到父组件中的变量改变。
 
-```ts
+<!-- @[link_watch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UseWatchToChangeLocalVariables.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct Parent {
+struct ChangeVariables {
   @State sourceNumber: number = 0;
 
   build() {
     Column() {
-      Text(`父组件的sourceNumber：` + this.sourceNumber)
-      Child({ sourceNumber: this.sourceNumber })
-      Button('父组件更改sourceNumber')
+      Text(`sourceNumber of the parent component:` + this.sourceNumber)
+      ChangeVariablesChild({ sourceNumber: this.sourceNumber })
+      Button('Change sourceNumber in Parent Component')
         .onClick(() => {
           this.sourceNumber++;
         })
@@ -594,7 +612,7 @@ struct Parent {
 }
 
 @Component
-struct Child {
+struct ChangeVariablesChild {
   @State memberMessage: string = 'Hello World';
   @Link @Watch('onSourceChange') sourceNumber: number;
 
@@ -605,8 +623,8 @@ struct Child {
   build() {
     Column() {
       Text(this.memberMessage)
-      Text(`子组件的sourceNumber：` + this.sourceNumber.toString())
-      Button('子组件更改memberMessage')
+      Text(`sourceNumber of the child component:` + this.sourceNumber.toString())
+      Button('Change memberMessage in Child Component')
         .onClick(() => {
           this.memberMessage = 'Hello memberMessage';
         })
@@ -617,11 +635,13 @@ struct Child {
 
 ### Link支持联合类型实例
 
-`@Link`支持联合类型、`undefined`和`null`。在以下示例中，`name`类型为`string | undefined`。点击父组件`Index`中的按钮可以改变`name`的属性或类型，`Child`组件也会相应刷新。
+`@Link`支持联合类型、`undefined`和`null`。在以下示例中，`name`类型为`string | undefined`。点击父组件`UnionTypes`中的按钮可以改变`name`的属性或类型，`UnionChild`组件也会相应刷新。
 
-```ts
+<!-- @[link_union_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UsingUnionTypes.ets) -->
+
+``` TypeScript
 @Component
-struct Child {
+struct UnionChild {
   @Link name: string | undefined;
 
   build() {
@@ -643,14 +663,14 @@ struct Child {
 
 @Entry
 @Component
-struct Index {
+struct UnionTypes {
   @State name: string | undefined = 'mary';
 
   build() {
     Column() {
       Text(`The name is  ${this.name}`).fontSize(30)
 
-      Child({ name: this.name })
+      UnionChild({ name: this.name })
 
       Button('Parents change name to Peter')
         .onClick(() => {
@@ -735,9 +755,11 @@ struct Child {
 
 【正例】
 
-```ts
+<!-- @[link_proxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/AddProxyToRerendertheUI.ets) -->
+
+``` TypeScript
 class Score {
-  value: number;
+  public value: number;
   constructor(value: number) {
     this.value = value;
   }
@@ -749,7 +771,7 @@ class Score {
 
 @Entry
 @Component
-struct Parent {
+struct AddProxyToRerendertheUI {
   @State score: Score = new Score(1);
 
   build() {
@@ -757,7 +779,7 @@ struct Parent {
       Text(`The value in Parent is ${this.score.value}.`)
         .fontSize(30)
         .fontColor(Color.Red)
-      Child({ score: this.score })
+      AddProxyChild({ score: this.score })
     }
     .width('100%')
     .height('100%')
@@ -765,7 +787,7 @@ struct Parent {
 }
 
 @Component
-struct Child {
+struct AddProxyChild {
   @Link score: Score;
 
   changeScore2(score:Score) {

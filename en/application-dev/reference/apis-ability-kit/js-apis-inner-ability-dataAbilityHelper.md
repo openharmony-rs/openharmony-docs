@@ -1346,4 +1346,4 @@ Defines the PacMap type used for data storage.
 
 | Name| Type| Read-Only| Optional| Description|
 | ----- | ---- | ---- | ---- | ---- |
-| [key: string]  | number \| string \| boolean \| Array\<string \| number \| boolean> \| null  | No| No| Data stored in key-value pairs.|
+| [key: string]  | number \| string \| boolean \| Array\<string \| number \| boolean> \| null  | No| Yes| Data stored in key-value pairs.|

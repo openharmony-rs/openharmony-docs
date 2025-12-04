@@ -22,39 +22,39 @@ Add the [bundleType](../../../application-dev/quick-start/app-configuration-file
 
 ## cl.bundlemanager.3 Deleted the split Field from the ApplicationInfo Struct
 
-The **split** field is deleted from the [ApplicationInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts) struct.
+The **split** field is deleted from the [ApplicationInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts) struct.
 
 **Change Impact**<br>
 If the **split** field is used in your code, the compilation fails.
 
 **Key API/Component Changes**<br>
-The **split** field is deleted from the [ApplicationInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts) struct.
+The **split** field is deleted from the [ApplicationInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts) struct.
 
 **Adaptation Guide**<br>
 Delete the **split** field from the **ApplicationInfo** struct of your code. The stage model always forcibly splits bundles.
 
 ## cl.bundlemanager.4 Deleted the atomicServiceModuleType Field from the HapModuleInfo Struct
 
-The **atomicServiceModuleType** field is deleted from the [HapModuleInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) struct.
+The **atomicServiceModuleType** field is deleted from the [HapModuleInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) struct.
 
 **Change Impact**<br>
 If the **atomicServiceModuleType** field is used in your code, the compilation fails.
 
 **Key API/Component Changes**<br>
-The **atomicServiceModuleType** field is deleted from the [HapModuleInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) struct.
+The **atomicServiceModuleType** field is deleted from the [HapModuleInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) struct.
 
 **Adaptation Guide**<br>
-Record the setting of the **atomicServiceModuleType** field, delete it from the [HapModuleInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) struct, and set the **moduleType** field in the [HapModuleInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) struct to the recorded value.
+Record the setting of the **atomicServiceModuleType** field, delete it from the [HapModuleInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) struct, and set the **moduleType** field in the [HapModuleInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) struct to the recorded value.
 
 ## cl.bundlemanager.5 Deleted the AtomicServiceModuleType Enumerated Value
 
-The **atomicServiceModuleType** field is deleted from the [HapModuleInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) struct.
+The **atomicServiceModuleType** field is deleted from the [HapModuleInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) struct.
 
 **Change Impact**<br>
 If the **atomicServiceModuleType** field is used in your code, the compilation fails.
 
 **Key API/Component Changes**<br>
-The **atomicServiceModuleType** field is deleted from the [HapModuleInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) struct.
+The **atomicServiceModuleType** field is deleted from the [HapModuleInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) struct.
 
 **Adaptation Guide**<br>
-Record the setting of the **atomicServiceModuleType** field, delete it from the [HapModuleInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) struct, and set the **moduleType** field in the [HapModuleInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) struct to the recorded value.
+Record the setting of the **atomicServiceModuleType** field, delete it from the [HapModuleInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) struct, and set the **moduleType** field in the [HapModuleInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) struct to the recorded value.

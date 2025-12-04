@@ -39,6 +39,8 @@ ArkTS的Number类型是一个双精度64位二进制格式IEEE 754值。只有�
 | [napi_create_string_utf8](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-string#napi_create_string_utf8) | 将Node-API模块中的utf8编码的字符串类型转换为ArkTS环境中string类型。 |
 | [napi_create_string_utf16](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-string#napi_create_string_utf16) | 将Node-API模块中的utf16编码的字符串类型转换为ArkTS环境中string类型。 |
 | [napi_create_string_latin1](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-string#napi_create_string_latin1) | 将Node-API模块中的ISO-8859-1编码的字符串类型转换为ArkTS环境中string类型。 |
+| [napi_create_external_string_ascii](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-string#napi_create_external_string_ascii) | 将Node-API模块中的ascii编码的字符串类型无拷贝的转换为ArkTS环境中string类型。 |
+| [napi_create_external_string_utf16](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-string#napi_create_external_string_utf16) | 将Node-API模块中的utf16编码的字符串类型无拷贝的转换为ArkTS环境中string类型。 |
 
 ## 使用示例
 

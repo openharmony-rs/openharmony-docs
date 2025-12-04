@@ -2,7 +2,7 @@
 
 ## Overview<a name="section11522349121115"></a>
 
-This document describes how to quickly set up a development environment \(using the Hi3516D V300 development board\) and develop a clock app running on OpenHarmony. You can click [here](https://gitee.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/JsClock) to obtain the sample code.
+This document describes how to quickly set up a development environment \(using the Hi3516D V300 development board\) and develop a clock app running on OpenHarmony. You can click [here](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/JsClock) to obtain the sample code.
 
 The clock app displays the current time, as shown in the following figure.
 
@@ -13,13 +13,13 @@ The clock app displays the current time, as shown in the following figure.
 
 ## Preparations<a name="section6592121861218"></a>
 
-Download and install DevEco Studio. For details, see the [DevEco Studio User Guide](../../application-dev/quick-start/deveco-studio-user-guide-for-openharmony.md). 
+Download and install DevEco Studio. For details, see DevEco Studio User Guide. 
 
 ## How to Develop<a name="section19901741111312"></a>
 
 The clock app displays the current time through a clock face and numbers.
 
-As shown in [Figure 1](#fig7763172132019), the UI consists of two parts:
+As shown in the figure above, the UI consists of two parts:
 
 -   Clock face area: displays a dynamic analog clock whose hands rotate accurately.
 -   Digital time area: displays the current time in numerals.

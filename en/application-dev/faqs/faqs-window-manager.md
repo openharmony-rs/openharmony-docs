@@ -113,7 +113,7 @@ Applicable to: stage model
 
 **Solution**
 
-In effect, the **isStatusBarLightIcon** and **isNavigationBarLightIcon** attributes turn the font white when set to **true**. If **statusBarContentColor** is also set in **setWindowSystemBarProperties**, the **isStatusBarLightIcon** attribute does not take effect. Similarly, if **navigationBarContentColor** is set, the **isNavigationBarLightIcon** attribute does not take effect.
+In effect, the **isStatusBarLightIcon** and **isNavigationBarLightIcon** attributes turn the icon white when set to **true**. If **statusBarContentColor** is also set in **setWindowSystemBarProperties**, the **isStatusBarLightIcon** attribute does not take effect. Similarly, if **navigationBarContentColor** is set, the **isNavigationBarLightIcon** attribute does not take effect.
 
 **References**
 
@@ -255,7 +255,7 @@ struct ScreenTest {
 
 [Subscribing to Display Changes](../reference/apis-arkui/js-apis-display.md#displayonaddremovechange)
 
-## Why a window instance cannot be used to obtain the updated window size in the display.on('change') callback? (API version 10)
+## Why can't a window instance be used to obtain the updated window size in the display.on('change') callback? (API version 10)
 
 **Solution**
 

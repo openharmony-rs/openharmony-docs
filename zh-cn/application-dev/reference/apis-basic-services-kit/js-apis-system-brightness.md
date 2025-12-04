@@ -11,8 +11,14 @@
 
 > **说明：**
 >
-> - 从API Version 7 开始不再维护<!--Del-->。建议使用[@ohos.brightness](js-apis-brightness-sys.md)替代<!--DelEnd-->，替代接口能力仅对系统应用开放。
-> - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>- 模块维护策略：
+>
+>    \- 对于Lite Wearable设备类型，该模块长期维护，正常使用。
+>
+>    \- 对于支持该模块的其他设备类型，该模块从API Version 7 开始不再维护<!--Del-->。建议使用[@ohos.brightness](js-apis-brightness-sys.md)替代<!--DelEnd-->，替代接口能力仅对系统应用开放。
+>
+>- 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
 
 
 ## 导入模块
@@ -140,7 +146,7 @@ setMode(options?: SetBrightnessModeOptions): void
 
 setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 
->从API version 7开始不再维护，建议使用[window.setWindowKeepScreenOn()](../apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9)替代。
+>除Lite Wearable外，从API version 7开始不再维护，建议使用[window.setWindowKeepScreenOn()](../apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9)替代。
 
 设置屏幕是否保持常亮状态，开启常亮模式推荐在onShow()阶段调用。
 

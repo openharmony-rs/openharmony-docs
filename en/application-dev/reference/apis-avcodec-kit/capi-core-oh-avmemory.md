@@ -7,6 +7,10 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVMemory OH_AVMemory
+```
+
 ## Overview
 
 The struct describes a native object for the audio and video memory interface.

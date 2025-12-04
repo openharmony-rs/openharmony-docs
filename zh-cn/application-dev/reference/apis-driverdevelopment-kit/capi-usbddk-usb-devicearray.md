@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Usb_DeviceArray {...} Usb_DeviceArray
+```
+
 ## 概述
 
 设备ID清单，用于存放OH_Usb_GetDevices接口获取到的设备ID列表和设备数量。

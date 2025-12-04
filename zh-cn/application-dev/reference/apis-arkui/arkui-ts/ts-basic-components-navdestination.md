@@ -4,7 +4,7 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 作为子页面的根容器，用于显示[Navigation](ts-basic-components-navigation.md)的内容区。
 
@@ -51,6 +51,10 @@ NavDestination()
 title(value: string | CustomBuilder | NavDestinationCommonTitle | NavDestinationCustomTitle | Resource, options?: NavigationTitleOptions)
 
 设置页面标题。字符串超长时，如果不设置副标题，先缩小再换行2行后以...截断。如果设置副标题，先缩小后以...截断。
+
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -102,6 +106,10 @@ toolbarConfiguration(toolbarParam: Array&lt;ToolbarItem&gt; | CustomBuilder, opt
 
 设置工具栏内容。未调用本接口时不显示工具栏。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -134,11 +142,15 @@ hideToolBar(hide: boolean, animated?: boolean)
 | hide  | boolean | 是   | 是否隐藏工具栏。<br/>默认值：false<br/>true：隐藏工具栏。<br/>false：显示工具栏。 |
 | animated  | boolean | 否   | 设置是否使用动画显隐工具栏。<br/>默认值：false<br/>true：使用动画显示隐藏工具栏。<br/>false：不使用动画显示隐藏工具栏。 |
 
-### mode <sup>11+</sup>
+### mode<sup>11+</sup>
 
 mode(value: NavDestinationMode)
 
 设置NavDestination类型，不支持动态修改。
+
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -155,6 +167,10 @@ mode(value: NavDestinationMode)
 backButtonIcon(value: ResourceStr | PixelMap | SymbolGlyphModifier)
 
 设置标题栏返回键图标。
+
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -175,6 +191,10 @@ backButtonIcon(value: ResourceStr | PixelMap | SymbolGlyphModifier)
 backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibilityText?: ResourceStr)
 
 设置标题栏返回键图标和无障碍播报内容。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -197,6 +217,10 @@ menus(value: Array&lt;NavigationMenuItem&gt; | CustomBuilder)
 
 设置页面右上角菜单。不设置时不显示菜单项。使用Array<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
 
+>**说明：**
+>
+> 从API version 14开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -216,6 +240,10 @@ menus(value: Array&lt;NavigationMenuItem&gt; | CustomBuilder)
 menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder, options?: NavigationMenuOptions)
 
 设置页面右上角菜单。不设置时不显示菜单项。与[menus](#menus12)相比，新增菜单选项。使用Array<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -261,6 +289,10 @@ ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;L
 systemBarStyle(style: Optional&lt;SystemBarStyle&gt;)
 
 当Navigation中显示当前NavDestination时，设置对应系统状态栏的样式。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -315,6 +347,10 @@ bindToScrollable(scrollers: Array&lt;Scroller&gt;)
 
 绑定NavDestination组件和可滚动容器组件（支持[List](./ts-container-list.md)、[Scroll](./ts-container-scroll.md)、[Grid](./ts-container-grid.md)、[WaterFlow](./ts-container-waterflow.md)），当滑动可滚动容器组件时，会触发所有与其绑定的NavDestination组件的标题栏和工具栏的显示和隐藏动效，上滑隐藏，下滑显示。一个NavDestination可与多个可滚动容器组件绑定，一个可滚动容器组件也可与多个NavDestination绑定。使用示例参见[示例1](#示例1标题栏工具栏与可滚动类组件联动)。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -334,6 +370,10 @@ bindToScrollable(scrollers: Array&lt;Scroller&gt;)
 bindToNestedScrollable(scrollInfos: Array&lt;NestedScrollInfo&gt;)
 
 绑定NavDestination组件和嵌套的可滚动容器组件（支持[List](./ts-container-list.md)、[Scroll](./ts-container-scroll.md)、[Grid](./ts-container-grid.md)、[WaterFlow](./ts-container-waterflow.md)），当滑动父组件或子组件时，会触发所有与其绑定的NavDestination组件的标题栏和工具栏的显示和隐藏动效，上滑隐藏，下滑显示。一个NavDestination可与多个嵌套的可滚动容器组件绑定，嵌套的可滚动容器组件也可与多个NavDestination绑定。使用示例参见[示例1](#示例1标题栏工具栏与可滚动类组件联动)。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -371,6 +411,10 @@ hideBackButton(hide: Optional&lt;boolean&gt;)
 customTransition(delegate: NavDestinationTransitionDelegate)
 
 设置NavDestination自定义转场动画。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -494,7 +538,7 @@ NavDestination类型。
 | SLIDE_RIGHT<sup>15+</sup> | 6 | 右侧平移类型的系统转场动画。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | SLIDE_BOTTOM<sup>15+</sup> | 7 | 底部平移类型的系统转场动画。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 
-**说明：**
+> **说明：**
 >
 > 设置系统转场动画，支持分别设置系统标题栏动画和内容动画。
 > 
@@ -546,6 +590,10 @@ onWillAppear(callback: Callback\<void>)
 
 当该Destination挂载之前触发此回调。在该回调中允许修改路由栈，当前帧生效。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -561,6 +609,10 @@ onWillAppear(callback: Callback\<void>)
 onWillShow(callback: Callback\<void>)
 
 当该Destination显示之前触发此回调。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -578,6 +630,10 @@ onWillHide(callback: Callback\<void>)
 
 当该Destination隐藏之前触发此回调。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -593,6 +649,10 @@ onWillHide(callback: Callback\<void>)
 onWillDisappear(callback: Callback\<void>)
 
 当该Destination卸载之前触发的生命周期(有转场动画时，在转场动画开始之前触发)。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -628,6 +688,10 @@ onReady(callback:&nbsp;[Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 当NavDestination即将构建子组件之前会触发此回调。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -644,6 +708,10 @@ onResult(callback:&nbsp;Optional\<Callback\<ESObject\>\>)
 
 NavDestination返回时触发该回调。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -657,7 +725,11 @@ NavDestination返回时触发该回调。
 
 onActive(callback:&nbsp;Optional\<Callback\<NavDestinationActiveReason\>\>)
 
-NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件遮挡）时，触发该回调。
+NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件遮挡）时，触发该回调。使用示例参见[示例5](#示例5navdestination的onactive与oninactive生命周期)。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -668,15 +740,15 @@ NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件
 | ------ | ------ | ---- | ---------------- |
 |callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt12)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[NavDestinationActiveReason](#navdestinationactivereason17)\>\>| 是 | NavDestination由非激活态变为激活态的原因。|
 
-> **说明：**
->
-> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
-
 ### onInactive<sup>17+</sup>
 
 onInactive(callback: &nbsp;Optional\<Callback\<NavDestinationActiveReason\>\>)
 
-NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶时上层有特殊组件遮挡）时，触发该回调。
+NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶时上层有特殊组件遮挡）时，触发该回调。使用示例参见[示例5](#示例5navdestination的onactive与oninactive生命周期)。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -687,15 +759,15 @@ NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶
 | ------ | ------ | ---- | ---------------- |
 |callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt12)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[NavDestinationActiveReason](#navdestinationactivereason17)\>\>| 是 | NavDestination由激活态变为非激活态的原因。|
 
-> **说明：**
->
-> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
-
 ### onNewParam<sup>19+</sup>
 
 onNewParam(callback: &nbsp;Optional\<Callback\<ESObject\>\>)
 
 当之前存在于栈中的NavDestination页面通过[launchMode.MOVE_TO_TOP_SINGLETON](./ts-basic-components-navigation.md#launchmode12枚举说明)或[launchMode.POP_TO_SINGLETON](./ts-basic-components-navigation.md#launchmode12枚举说明)移动到栈顶时，触发该回调。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -1063,7 +1135,17 @@ struct NavDest {
   @State name: string = 'NA';
   @State destWidth: string = '100%';
   stack: NavPathStack = new NavPathStack();
-  @State y: string = '0';
+  @State translateY: string = '0';
+
+  @Builder
+  titleBuilder() {
+    Text(this.name)
+      .fontSize(20)
+      .height(55)
+      .fontWeight(FontWeight.Bold)
+      .width('100%')
+      .padding({ left: 16, right: 16 })
+  }
 
   build() {
     NavDestination() {
@@ -1078,8 +1160,8 @@ struct NavDest {
       }
       .size({ width: '100%', height: '100%' })
     }
-    .title(this.name)
-    .translate({ y: this.y })
+    .title(this.titleBuilder)
+    .translate({ y: this.translateY })
     .onReady((context) => {
       this.name = context.pathInfo.name;
       this.stack = context.pathStack;
@@ -1096,38 +1178,36 @@ struct NavDest {
         if (op === NavigationOperation.PUSH) {
           if (isEnter) {
             // ENTER_PUSH
-            this.y = '100%';
+            this.translateY = '100%';
             transitionOneEvent = () => {
               console.info('[NavDestinationTransition]', 'transitionOne, push & isEnter');
-              this.y = '0';
+              this.translateY = '0';
             }
           } else {
             // EXIT_PUSH
-            this.y = '0';
+            this.translateY = '0';
             transitionOneEvent = () => {
               console.info('[NavDestinationTransition]', 'transitionOne, push & !isEnter');
-              this.y = '0';
+              this.translateY = '0';
             }
             transitionOneDuration = 450;
           }
         } else if (op === NavigationOperation.POP) {
           if (isEnter) {
             // ENTER_POP
-            this.y = '0';
+            this.translateY = '0';
             transitionOneEvent = () => {
               console.info('[NavDestinationTransition]', 'transitionOne, pop & isEnter');
-              this.y = '0';
+              this.translateY = '0';
             }
           } else {
             // EXIT_POP
-            this.y = '0';
+            this.translateY = '0';
             transitionOneEvent = () => {
               console.info('[NavDestinationTransition]', 'transitionOne, pop & !isEnter');
-              this.y = '100%';
+              this.translateY = '100%';
             }
           }
-        } else {
-          console.info('[NavDestinationTransition]', '----- NOT-IMPL BRANCH of NAV-DESTINATION CUSTOM TRANSITION -----');
         }
 
         let transitionOne: NavDestinationTransition = {
@@ -1494,5 +1574,221 @@ struct ExamplePage {
 }
 ```
 ![navdestination_orientation](figures/navdestination_orientation.gif)
+
+### 示例5（NavDestination的onActive与onInActive生命周期）
+
+从API version 17开始，NavDestination新增[onActive](#onactive17)、[onInactive](#oninactive17)属性。该示例演示onActive与onInactive生命周期的各种触发场景。
+
+```ts
+import { promptAction, ComponentContent, OverlayManager } from '@kit.ArkUI';
+
+class Params {
+  text: string = "";
+  offset: Position;
+
+  constructor(text: string, offset: Position) {
+    this.text = text;
+    this.offset = offset;
+  }
+}
+
+let overlayShownTag: boolean = false;
+
+@Builder
+function builderText(params: Params) {
+  Column() {
+    Text('I am ' + params.text)
+      .fontWeight(FontWeight.Bolder)
+      .align(Alignment.Center)
+      .fontSize(25)
+      .offset({ y: '10%' })
+  }
+  .backgroundColor(params.text === 'overlay' ? '#ffc' : '#ccf')
+  .width('100%')
+  .height('100%')
+  .offset(params.offset)
+}
+
+@Entry
+@Component
+struct Index {
+  stack: NavPathStack = new NavPathStack();
+
+  @Builder
+  pageMap(name: string) {
+    if (name === 'standard' || name === 'Home') {
+      NavDest({
+        name: name
+      })
+    }
+    else if (name === 'dialog') {
+      NavDest({
+        name: name,
+        mode: NavDestinationMode.DIALOG,
+        positionY: '40%'
+      })
+    }
+  }
+
+  aboutToAppear(): void {
+    this.stack.pushPath({name: 'Home'});
+  }
+
+  build() {
+    Navigation(this.stack) {
+
+    }
+    .hideNavBar(true)
+    .navDestination(this.pageMap)
+  }
+}
+
+@Component
+struct NavDest {
+  @State positionY: string = '0%';
+  name: string = 'NA';
+  mode: NavDestinationMode = NavDestinationMode.STANDARD;
+
+  build() {
+    NavDestination() {
+      NavBody()
+    }
+    .backgroundColor(this.mode === NavDestinationMode.DIALOG ? Color.Pink : undefined)
+    .height(this.mode === NavDestinationMode.DIALOG ? '65%' : '100%')
+    .mode(this.mode)
+    .title(this.name)
+    .position({ y: this.positionY })
+    .onActive((reason: NavDestinationActiveReason) => {
+      let onActiveMsg: string = `[activeTest] ${this.name} onActive, reason: ${reason}`;
+      console.info(onActiveMsg);
+      // API version 17版本，请替换为promptAction.showToast接口。从API version 18开始，请使用示例中的promptAction.openToast接口。
+      promptAction.openToast({ message: onActiveMsg }).catch(() => {
+        console.info('open toast failed');
+      });
+    })
+    .onInactive((reason: NavDestinationActiveReason) => {
+      let onInActiveMsg: string = `[activeTest] ${this.name} onInactive, reason: ${reason}`;
+      console.info(onInActiveMsg);
+      // API version 17版本，请替换为promptAction.showToast接口。从API version 18开始，请使用示例中的promptAction.openToast接口。
+      promptAction.openToast({ message: onInActiveMsg }).catch(() => {
+        console.info('open toast failed');
+      });
+    })
+    .onBackPressed(() => {
+      if (overlayShownTag) {
+        overlayShownTag = false;
+        this.getUIContext().getOverlayManager().hideAllComponentContents();
+        return true;
+      }
+      return false;
+    })
+  }
+}
+
+@Component
+struct NavBody {
+  @State isShow: boolean = false;
+  @State isBindSheetShow: boolean = false;
+  stack: NavPathStack = new NavPathStack();
+
+  aboutToAppear(): void {
+    this.stack = this.queryNavigationInfo()?.pathStack!;
+  }
+
+  @Builder
+  myBuilder(id: string) {
+    Column() {
+      Text('I am ' + id)
+        .fontWeight(FontWeight.Bolder)
+        .align(Alignment.Center)
+        .fontSize(25)
+        .offset({ y: '10%' })
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Button('pushPath standard')
+          .margin(5)
+          .onClick(() => {
+            this.stack.pushPath({name: 'standard'});
+          })
+        Button('pushPath dialog')
+          .margin(5)
+          .onClick(() => {
+            this.stack.pushPath({name: 'dialog'});
+          })
+      }
+      Column() {
+        Row() {
+          Button("open Modal")
+            .onClick(() => {
+              this.isShow = true;
+            })
+            .fontColor(Color.Black)
+            .backgroundColor('#ccc')
+            .margin(5)
+            .bindContentCover(
+              this.isShow,
+              this.myBuilder('modal'), {
+                backgroundColor: '#fcf',
+                onDisappear: () => {
+                  this.isShow = false;
+                }
+              })
+          Button("open BindSheet")
+            .onClick(() => {
+              this.isBindSheetShow = true;
+            })
+            .fontColor(Color.Black)
+            .backgroundColor('#ccc')
+            .margin(5)
+            .bindSheet($$this.isBindSheetShow, this.myBuilder('bindSheet'), {
+              height: '60%',
+              backgroundColor: '#cfc'
+            })
+        }
+        Row() {
+          Button("open Dialog")
+            .onClick(() => {
+              let componentContent = new ComponentContent(
+                this.getUIContext(), wrapBuilder<[Params]>(builderText),
+                new Params('dialog', {y: '10%'}));
+              this.getUIContext().getPromptAction().openCustomDialog(componentContent)
+                .then(() => {
+                  console.info('[activeTest] open custom dialog success');
+                })
+                .catch(() => {
+                  console.info('[activeTest] open custom dialog failed');
+                })
+            })
+            .fontColor(Color.Black)
+            .backgroundColor('#ccc')
+            .margin(5)
+          Button("open Overlay")
+            .onClick(() => {
+              let componentContent = new ComponentContent(
+                this.getUIContext(), wrapBuilder<[Params]>(builderText),
+                new Params('overlay', {y: '10%'}));
+              this.getUIContext().getOverlayManager().addComponentContent(componentContent);
+              this.getUIContext().getOverlayManager().showComponentContent(componentContent);
+              overlayShownTag = true;
+            })
+            .fontColor(Color.Black)
+            .backgroundColor('#ccc')
+            .margin(5)
+        }
+      }
+      .width('95%')
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+![navdestination_active_inactive_demo](figures/navdestination_active_inactive_demo.gif)
 
 NavDestination其他用法可参考[Navigation示例](ts-basic-components-navigation.md#示例)。

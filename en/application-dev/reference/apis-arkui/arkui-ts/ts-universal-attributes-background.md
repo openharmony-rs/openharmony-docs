@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can set the background for a component.
 
@@ -20,7 +20,9 @@ Sets the background of the component. Since API version 20, this API supports th
 
 >**NOTE**
 >
-> Events related to node mounting and unmounting, such as [onAppear](./ts-universal-events-show-hide.md#onappear) and [onDisappear](./ts-universal-events-show-hide.md#ondisappear), are not supported.
+> - Events related to node mounting and unmounting, such as [onAppear](./ts-universal-events-show-hide.md#onappear) and [onDisappear](./ts-universal-events-show-hide.md#ondisappear), are not supported.
+>
+> - This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20 only if the input parameter type of **content** is ResourceColor.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -41,8 +43,8 @@ Sets the background of the component. Since API version 20, this API supports th
 
 >  **NOTE**
 >
-> - The custom background takes some time to render, during which it cannot respond to events. This attribute cannot be nested.
-> - CustomBuilder backgrounds cannot be previewed in the previewer.
+> - The custom background takes some time to render and cannot respond to events during this rendering period. This attribute cannot be nested.
+> - CustomBuilder backgrounds cannot be previewed in the Previewer.
 > - Dynamic background update is supported since API version 20.
 > - If **background**, **backgroundColor**, and **backgroundImage** are set at the same time, all three will take effect, with the stacking order following the rules below:
 >   - If **background** is of the **ResourceColor** type or the **ignoresLayoutSafeAreaEdges** property is set, **background** is at the bottom layer.
@@ -170,6 +172,10 @@ backgroundImage(src: ResourceStr | PixelMap, options?: BackgroundImageOptions): 
 
 Sets the background image of the component. Compared with [backgroundImage](#backgroundimage), this API allows you to specify synchronous or asynchronous loading modes for images.
 
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
@@ -217,7 +223,7 @@ Sets the width and height of the background image for the component. If backgrou
 
 backgroundImagePosition(value: Position | Alignment): T
 
-Sets the position of the component background image. If backgroundImagePosition is not set, the component background image is positioned at the upper left corner of the component by default.
+Sets the position of the component background image. If **backgroundImagePosition** is not set, the component background image is positioned at the upper left corner of the component by default.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -524,10 +530,10 @@ Describes the background effect.
 | saturation   | number        |   No  |   Yes  |  Saturation.<br>Value range: [0, +∞)<br>Default value: **1** Recommended value range: [0, 50]<br> **Atomic service API**: This API can be used in atomic services since API version 12.   |
 | brightness   | number        |   No  |   Yes  |  Brightness.<br>Value range: [0, +∞)<br>Default value: **1** Recommended value range: [0, 2]<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | color        | [ResourceColor](ts-types.md#resourcecolor)         |   No  |  Yes  |   Color.<br>Default value: transparent<br> **Atomic service API**: This API can be used in atomic services since API version 12. |
-| adaptiveColor | [AdaptiveColor](ts-universal-attributes-foreground-blur-style.md#adaptivecolor10) |   No |  Yes | Adaptive color mode used for the background blur effect.<br>Default value: **DEFAULT** When set to **AVERAGE**, the adaptive color mode takes effect only when the color has transparency.<br> **Atomic service API**: This API can be used in atomic services since API version 12. |
+| adaptiveColor | [AdaptiveColor](ts-universal-attributes-foreground-blur-style.md#adaptivecolor) |   No |  Yes | Adaptive color mode used for the background blur effect. Default value: **DEFAULT** When set to **AVERAGE**, the adaptive color mode takes effect only when the color has transparency.<br> **Atomic service API**: This API can be used in atomic services since API version 12. |
 | blurOptions  | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) |   No  |  Yes  |   Grayscale blur.<br>Default value: **[0, 0]**<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | policy<sup>14+</sup>    | [BlurStyleActivePolicy](#blurstyleactivepolicy14) | No |  Yes | Blur activation policy.<br> Default value: **BlurStyleActivePolicy.ALWAYS_ACTIVE**<br> **Atomic service API**: This API can be used in atomic services since API version 14.|
-| inactiveColor<sup>14+</sup>  | [ResourceColor](ts-types.md#resourcecolor)  | No  |  Yes | Background color when the blur effect does not take effect. This parameter must be used together with the **policy** parameter. When **policy** is set to a value that disables the blur effect, the blur effect on the components is removed. If inactiveColor is set, inactiveColor is used as the background color of the components.<br> **Atomic service API**: This API can be used in atomic services since API version 14.|
+| inactiveColor<sup>14+</sup>  | [ResourceColor](ts-types.md#resourcecolor)  | No  |  Yes | Background color when the blur effect does not take effect. This parameter must be used together with the **policy** parameter. When **policy** is set to a value that disables the blur effect, the blur effect on the components is removed. If **inactiveColor** is specified, it is applied as the component background color.<br> **Atomic service API**: This API can be used in atomic services since API version 14.|
 
 ## backgroundImageResizable<sup>12+</sup>
 
@@ -566,7 +572,7 @@ Inherits from [BlurStyleOptions](ts-universal-attributes-foreground-blur-style.m
 | Name| Type                                                        | Read-Only| Optional| Description                                                |
 | ------ | ------------------------------------------------------------ | ---- | ---- |---------------------------------------------------- |
 | policy<sup>14+</sup>  | [BlurStyleActivePolicy](#blurstyleactivepolicy14) | No| Yes  | Blur activation policy.<br> Default value: **BlurStyleActivePolicy.ALWAYS_ACTIVE**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| inactiveColor<sup>14+</sup>  | [ResourceColor](ts-types.md#resourcecolor) | No| Yes   | Background color when the blur effect does not take effect. This parameter must be used together with the **policy** parameter. When **policy** is set to a value that disables the blur effect, the blur effect on the components is removed. If inactiveColor is set, inactiveColor is used as the background color of the components.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| inactiveColor<sup>14+</sup>  | [ResourceColor](ts-types.md#resourcecolor) | No| Yes   | Background color when the blur effect does not take effect. This parameter must be used together with the **policy** parameter. When **policy** is set to a value that disables the blur effect, the blur effect on the components is removed. If **inactiveColor** is specified, it is applied as the component background color.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 
 ## BlurStyleActivePolicy<sup>14+</sup>
 
@@ -1021,7 +1027,7 @@ struct BackGroundBlur {
 
 ### Example 8: Applying a P3 Color Gamut Background Effect
 
-This example demonstrates how to apply a P3 color gamut background effect using **backgroundColor**.
+This example demonstrates how to apply a P3 color gamut background effect using [backgroundColor](#backgroundcolor20), available since API version 20.
 
 ```ts
 // xxx.ets
@@ -1048,7 +1054,7 @@ struct P3BackgroundDemo {
 
 ### Example 9: Setting Component Background Extension
 
-This example shows how to extend the component's background to the parent component's safe area.
+This example shows how to use [background](#background10) to extend the component's background to the parent component's safe area, supported since API version 20.
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';

@@ -5,7 +5,11 @@
 <!--Owner: @fangyuhao-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_WaterFlowSectionOption ArkUI_WaterFlowSectionOption
+```
 
 ## 概述
 

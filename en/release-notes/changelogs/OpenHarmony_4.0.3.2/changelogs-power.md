@@ -62,7 +62,7 @@ For details, see the API reference of the [@ohos.batteryInfo](../../../applicati
 
 ## cl.powermgr.3 System Common Event Behavior Change
 
-The following common events are provided in the battery information through [@ohos.commonEventManager (common event module)](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-commonEventManager.md):
+The following common events are provided in the battery information through [@ohos.commonEventManager (common event module)](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-commonEventManager.md):
 
 - COMMON_EVENT_BATTERY_LOW: common event for low battery level. It includes the remaining battery in percentage.
 - COMMON_EVENT_BATTERY_OKAY: common event for normal battery level. It includes the remaining battery in percentage.
@@ -80,3 +80,4 @@ The application developed based on earlier versions needs to adapt the method fo
 #### Adaptation Guide
 
 For details, see the API reference of the [@ohos.commonEventManager (Common Event Manager)](../../../application-dev/reference/apis/js-apis-commonEventManager.md) API.
+<!--no_check-->

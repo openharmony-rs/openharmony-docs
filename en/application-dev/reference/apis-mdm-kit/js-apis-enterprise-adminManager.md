@@ -1,4 +1,4 @@
-# @ohos.enterprise.adminManager (Administrator Permission Management)
+# @ohos.enterprise.adminManager (Enterprise Device Management)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
@@ -26,7 +26,8 @@ disableAdmin(admin: Want, userId?: number): Promise\<void>
 
 Disables a device administrator application for the specified user. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN (available only for system applications) or ohos.permission.START_PROVISIONING_MESSAGE
+**Required permissions**: ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN (available only for system applications), ohos.permission.START_PROVISIONING_MESSAGE, or ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
+<br>- ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN is supported since API version 23. This permission can be requested only when the SDA or DA application is disabled.
 <br>- ohos.permission.START_PROVISIONING_MESSAGE is supported since API version 20. This permission can be requested only when the BYOD device administrator application is disabled.
 <br>- ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN is required for API version 19 and earlier. (This permission can be requested only by system applications.)
 
@@ -66,7 +67,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 adminManager.disableAdmin(wantTemp, 100).catch((err: BusinessError) => {
@@ -118,7 +119,7 @@ import { adminManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -168,7 +169,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
@@ -219,7 +220,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
@@ -272,7 +273,7 @@ import { Want } from '@kit.AbilityKit';
 let admin: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace with actual values.
 let policies: Array<string> = ["disabled_hdc"];
@@ -332,7 +333,7 @@ import { Want } from '@kit.AbilityKit';
 let admin: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -390,7 +391,7 @@ import { Want } from '@kit.AbilityKit';
 let admin: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -442,7 +443,7 @@ import { common, Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let recordParameters: Record<string, string> = {
   // Replace with actual values.
@@ -458,6 +459,119 @@ try {
 } catch (error) {
   console.error('startAdminProvision::errorCode: ' + error.code + ' errorMessage: ' + error.message);
 }
+```
+
+## adminManager.enableDeviceAdmin<sup>23+</sup>
+
+enableDeviceAdmin(admin: Want): Promise&lt;void&gt;
+
+Allows a [super device administrator application](../../mdm/mdm-kit-term.md#sda) to enable other [device administrator applications](../../mdm/mdm-kit-term.md#da). This API uses a promise to return the result. This API can be called only by super device administrator applications.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                                   | Mandatory| Description                  |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+
+**Return value**
+
+| Type          | Description                                                        |
+| -------------- | ------------------------------------------------------------ |
+| Promise\<void> | Promise that returns no value. If the operation fails, an error object will be thrown.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200003  | The administrator ability component is invalid.              |
+| 9200004  | Failed to activate the administrator application of the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { adminManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+adminManager.enableDeviceAdmin(wantTemp).catch((err: BusinessError) => {
+  console.error(`Failed to enable device admin. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## adminManager.disableDeviceAdmin<sup>23+</sup>
+
+disableDeviceAdmin(admin: Want): Promise&lt;void&gt;
+
+Allows a [super device administrator application](../../mdm/mdm-kit-term.md#sda) to disable other [device administrator applications](../../mdm/mdm-kit-term.md#da). This API uses a promise to return the result. This API can be called only by super device administrator applications.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                                   | Mandatory| Description                  |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+
+**Return value**
+
+| Type          | Description                                                        |
+| -------------- | ------------------------------------------------------------ |
+| Promise\<void> | Promise that returns no value. If the operation fails, an error object will be thrown.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200005  | Failed to deactivate the administrator application of the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { adminManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+adminManager.disableDeviceAdmin(wantTemp).catch((err: BusinessError) => {
+  console.error(`Failed to disable device admin. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## ManagedEvent
@@ -522,7 +636,7 @@ Defines the policy type for the trustlist or blocklist.
 |disabled_bluetooth|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **bluetooth** as the parameter to disable or enable the Bluetooth capability.<br>Accepts **bluetooth** as the parameter to query whether the Bluetooth capability is disabled.|
 |disallow_modify_datetime|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **modifyDateTime** as the parameter to disable or enable the system time setting capability.<br>Accepts **modifyDateTime** as the parameter to query whether the system time modification capability is disabled.|
 |disabled_printer|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **printer** as the parameter to disable or enable the printing capability.<br>Accepts **printer** as the parameter to query whether the printing capability is disabled.|
-|disabled_hdc|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **hdc** as the parameter to disable or enable the HDC capability.<br>Accepts **hdc** as the parameter to query whether the HDC capability is disabled.|
+|disabled_hdc|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **hdc** as the parameter to disable or enable the capability of connecting to and debugging the device through hdc.<br>Accepts **hdc** as the parameter to query whether the capability of connecting and debugging the device through hdc is disabled.|
 |disable_microphone|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **microphone** as the parameter to disable or enable the microphone capability.<br>Accepts **microphone** as the parameter to query whether the microphone is disabled.|
 |fingerprint_auth|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)<br>[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)<br>[restrictions.getDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicyforaccount14)|Accepts **fingerprint** as the parameter to disable or enable fingerprint authentication.<br>Accepts **fingerprint** as the parameter to query whether fingerprint authentication is disabled.<br>Accepts **fingerprint** as the parameter to disable or enable fingerprint authentication for a specified user.<br>Accepts **fingerprint** as the parameter to query whether fingerprint authentication is disabled for a specified user.|
 |disable_usb|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **usb** as the parameter to disable or enable the USB capability.<br>Accepts **usb** as the parameter to query whether the USB capability is disabled.|
@@ -545,3 +659,4 @@ Defines the policy type for the trustlist or blocklist.
 |installed_bundle_info_list|[bundleManager.getInstalledBundleList](js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20)|Obtains the applications installed by a specified user on a device.|
 |clear_up_application_data|[applicationManager.clearUpApplicationData](js-apis-enterprise-applicationManager.md#applicationmanagerclearupapplicationdata20)|Clears all application data.|
 |disallow_unmute_device|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **unmuteDevice** as the parameter to disable or enable audio playback of the device.<br>Accepts **unmuteDevice** as the parameter to check whether audio playback of the device is disabled.|
+|disabled_hdc_remote|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **hdcRemote** as the parameter to disable or enable the device's capability of debugging other devices through hdc.<br>Accepts **hdcRemote** as the parameter to check whether the device's capability of debugging other devices through hdc is disabled.|

@@ -13,7 +13,7 @@
 >
 > - 以下权限仅对APL等级为system_basic及以上的应用开放，不向APL等级为normal的应用开放。
 > - 以下权限的授权方式均为system_grant（系统授权）。
-> - 以下权限不可用通过访问控制列表（ACL）的方式跨级别申请。
+> - 以下权限不可以通过访问控制列表（ACL）的方式跨级别申请。
 
 申请流程可参考[选择申请权限的方式](determine-application-mode.md)。
 
@@ -236,18 +236,6 @@
 ## ohos.permission.USE_USER_ACCESS_MANAGER
 
 允许应用查询和配置用户身份认证策略、校验用户身份认证结果。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：false
-
-**起始版本**：18
-
-## ohos.permission.SET_LAUNCH_REASON_MESSAGE
-
-允许系统应用拉起其他应用时设置拉起原因。
 
 **权限级别**：system_basic
 

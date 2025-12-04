@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @shead-master-->
+<!--Owner: @xuxinao-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
@@ -17,8 +17,8 @@ For details about how to use the APIs (such as parameter usage restrictions and 
 
 | Name                                             | Description                                        |
 | --------------------------------------------------- | -------------------------------------------- |
-| addWatcher(watcher: Watcher): AppEventPackageHolder | Adds a watcher to listen for application events.|
-| removeWatcher(watcher: Watcher): void               | Removes a watcher for the specified application events.|
+| addWatcher(watcher: Watcher): AppEventPackageHolder | Adds a watcher to subscribe to the application event.|
+| removeWatcher(watcher: Watcher): void               | Removes a watcher to unsubscribe from the application event.|
 
 ## How to Develop
 
@@ -109,7 +109,7 @@ To ensure that the event callback can be successfully received in the developmen
    export const leak: () => void;
    ```
 
-6. In the **entry/src/main/ets/pages/Index.ets** file,  add the **OnClick** function under **build()** and call the **Leak** API.
+6. In the **entry/src/main/ets/pages/Index.ets** file, add the **OnClick** function under **build()** and call the **Leak** API.
 
    ```ts
    import { hilog } from '@kit.PerformanceAnalysisKit';

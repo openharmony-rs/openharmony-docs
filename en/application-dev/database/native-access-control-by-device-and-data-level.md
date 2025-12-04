@@ -21,7 +21,7 @@ A higher data security label and device security level indicate stricter encrypt
 
 ### Data Security Labels
 
-The data can be rated into four security levels as below.
+The data can be rated into four security levels as below. For details, see [OH_Rdb_SecurityLevel](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_securitylevel).
 
   | Risk Level| Security Level| Definition| Example| 
 | -------- | -------- | -------- | -------- |
@@ -68,13 +68,19 @@ When creating an RDB store, call the **OH_Rdb_SetSecurityLevel** API to specify 
 
 2. Include header files.
 
-    ```c
+    <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
     #include "database/rdb/relational_store.h"
     ```
 
+
+
 3. Call **OH_Rdb_SetSecurityLevel** to set the database security level.
 
-    ```ts
+    <!-- @[SetSecurityLevelForRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
     OH_Rdb_SetStoreName(config, "RdbTest.db");
@@ -84,8 +90,11 @@ When creating an RDB store, call the **OH_Rdb_SetSecurityLevel** API to specify 
     OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
     OH_Rdb_SetEncrypted(config, false);
     OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL2);
-    
+        
     int errCode = 0;
     OH_Rdb_Store *store_ = OH_Rdb_CreateOrOpen(config, &errCode);
     OH_Rdb_CloseStore(store_);
+    store_ = nullptr;
+    OH_Rdb_DestroyConfig(config);
+    config = nullptr;
     ```

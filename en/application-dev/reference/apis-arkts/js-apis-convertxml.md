@@ -29,7 +29,9 @@ Converts an XML text to an object of the object type.
 
 > **NOTE**
 >
-> In Windows, a newline is usually represented by the carriage return (CR) followed by the line feed (LF). However, the object obtained by calling this API uses only the LF to indicate a new line.
+> - This API cannot parse XML files with a large amount of data. If the text content of a single element exceeds 10 MB, an error message is displayed and an object that contains only the XML tag header will be returned.
+>
+> - In Windows, a newline is usually represented by the carriage return (CR) followed by the line feed (LF). However, the object obtained by calling this API uses only the LF to indicate a new line.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -203,24 +205,24 @@ Options for conversion.
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name             | Type| Mandatory| Description                                                       |
-| ----------------- | -------- | ---- | ----------------------------------------------------------- |
-| trim              | boolean  | Yes  | Whether to trim the whitespace characters before and after the text. The value **true** means to trim the whitespace characters before and after the text, and **false** means to keep them.  |
-| ignoreDeclaration | boolean  | No  | Whether to ignore the XML declaration. The value **true** means to ignore the XML declaration, and **false** means the opposite. The default value is **false**.                       |
-| ignoreInstruction | boolean  | No  | Whether to ignore the XML processing instruction. The value **true** means to ignore the XML processing instruction, and **false** means the opposite. The default value is **false**.                     |
-| ignoreAttributes  | boolean  | No  | Whether to ignore the element's attribute information. The value **true** means to ignore the element's attribute information, and **false** means the opposite. The default value is **false**.                  |
-| ignoreComment     | boolean  | No  | Whether to ignore element comments. The value **true** means to ignore element comments, and **false** means the opposite. The default value is **false**.                        |
-| ignoreCDATA       | boolean  | No  | Whether to ignore the element's CDATA information. The value **true** means to ignore the element's CDATA information, and **false** means the opposite. The default value is **false**.                       |
-| ignoreDoctype     | boolean  | No  | Whether to ignore the element's Doctype information. The value **true** means to ignore the element's Doctype information, and **false** means the opposite. The default value is **false**.                     |
-| ignoreText        | boolean  | No  | Whether to ignore the element's text information. The value **true** means to ignore the element's text information, and **false** means the opposite. The default value is **false**.                        |
-| declarationKey    | string   | Yes  | Name of the attribute key for **declaration** in the output object.|
-| instructionKey    | string   | Yes  | Name of the attribute key for **instruction** in the output object.|
-| attributesKey     | string   | Yes  | Name of the attribute key for **attributes** in the output object.  |
-| textKey           | string   | Yes  | Name of the attribute key for **text** in the output object.              |
-| cdataKey          | string   | Yes  | Name of the attribute key for **cdata** in the output object.            |
-| doctypeKey        | string   | Yes  | Name of the attribute key for **doctype** in the output object.        |
-| commentKey        | string   | Yes  | Name of the attribute key for **comment** in the output object.        |
-| parentKey         | string   | Yes  | Name of the attribute key for **parent** in the output object.          |
-| typeKey           | string   | Yes  | Name of the attribute key for **type** in the output object.              |
-| nameKey           | string   | Yes  | Name of the attribute key for **name** in the output object.              |
-| elementsKey       | string   | Yes  | Name of the attribute key for **elements** in the output object.      |
+| Name             | Type| Read-Only| Optional| Description                                                       |
+| ----------------- | -------- | ---- | ---- | ----------------------------------------------------------- |
+| trim              | boolean  | No  | No  | Whether to trim the whitespace characters before and after the text. The value **true** means to trim the whitespace characters before and after the text, and **false** means to keep them.  |
+| ignoreDeclaration | boolean  | No  | Yes  | Whether to ignore the XML declaration. The value **true** means to ignore the XML declaration, and **false** means the opposite. The default value is **false**.                       |
+| ignoreInstruction | boolean  | No  | Yes  | Whether to ignore the XML processing instruction. The value **true** means to ignore the XML processing instruction, and **false** means the opposite. The default value is **false**.                     |
+| ignoreAttributes  | boolean  | No  | Yes  | Whether to ignore the element's attribute information. The value **true** means to ignore the element's attribute information, and **false** means the opposite. The default value is **false**.                  |
+| ignoreComment     | boolean  | No  | Yes  | Whether to ignore element comments. The value **true** means to ignore element comments, and **false** means the opposite. The default value is **false**.                        |
+| ignoreCDATA       | boolean  | No  | Yes  | Whether to ignore the element's CDATA information. The value **true** means to ignore the element's CDATA information, and **false** means the opposite. The default value is **false**.                       |
+| ignoreDoctype     | boolean  | No  | Yes  | Whether to ignore the element's Doctype information. The value **true** means to ignore the element's Doctype information, and **false** means the opposite. The default value is **false**.                     |
+| ignoreText        | boolean  | No  | Yes  | Whether to ignore the element's text information. The value **true** means to ignore the element's text information, and **false** means the opposite. The default value is **false**.                        |
+| declarationKey    | string   | No  | No  | Name of the attribute key for **declaration** in the output object.|
+| instructionKey    | string   | No  | No  | Name of the attribute key for **instruction** in the output object.|
+| attributesKey     | string   | No  | No  | Name of the attribute key for **attributes** in the output object.  |
+| textKey           | string   | No  | No  | Name of the attribute key for **text** in the output object.              |
+| cdataKey          | string   | No  | No  | Name of the attribute key for **cdata** in the output object.            |
+| doctypeKey        | string   | No  | No  | Name of the attribute key for **doctype** in the output object.        |
+| commentKey        | string   | No  | No  | Name of the attribute key for **comment** in the output object.        |
+| parentKey         | string   | No  | No  | Name of the attribute key for **parent** in the output object.          |
+| typeKey           | string   | No  | No  | Name of the attribute key for **type** in the output object.              |
+| nameKey           | string   | No  | No  | Name of the attribute key for **name** in the output object.              |
+| elementsKey       | string   | No  | No  | Name of the attribute key for **elements** in the output object.      |

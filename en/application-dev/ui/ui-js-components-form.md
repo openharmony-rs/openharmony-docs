@@ -1,12 +1,12 @@
-# \<form> Development
+# form Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **\<form>** component allows the content in [\<Input>](../reference/apis-arkui/arkui-js/js-components-basic-input.md) components to be submitted and reset. For details, see [form](../reference/apis-arkui/arkui-js/js-components-container-form.md).
+The **\<form>** component allows the content in [\<input>](../reference/apis-arkui/arkui-js/js-components-basic-input.md) components to be submitted and reset. For details, see [form](../reference/apis-arkui/arkui-js/js-components-container-form.md).
 
 ## Creating a \<form> Component
 

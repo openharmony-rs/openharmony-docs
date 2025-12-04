@@ -58,7 +58,8 @@ libohpreferences.so
 
 ## Including Header Files
 
-```c
+<!--@[preferences_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+``` C++
 #include <database/preferences/oh_preferences.h>
 #include <database/preferences/oh_preferences_err_code.h>
 #include <database/preferences/oh_preferences_option.h>
@@ -69,46 +70,8 @@ libohpreferences.so
 The following example shows how to use **Preferences** APIs to modify and persist KV data.
 1. Create a **PreferencesOption** instance and set the name, application group ID, bundle name, and storage type. If the **PreferencesOption** object is no longer required, call **OH_PreferencesOption_Destroy** to destroy it.
 2. Call **OH_Preferences_Open** to open a **Preferences** instance. When the **Preferences** instance is not required, call **OH_Preferences_Close** to close it.
-3. Call **OH_Preferences_RegisterDataObserver** to register a **DataChangeObserverCallback** callback to observe data changes of three keys.
-4. Set KV data in the **Preferences** instance.
-5. Obtain data in the **Preferences** instance.
-6. Call **OH_Preferences_Close** to close the **Preferences** instance and set the instance pointer to null.
-
-```c
-// Callback used to return data changes.
-void DataChangeObserverCallback(void *context, const OH_PreferencesPair *pairs, uint32_t count) {
-    for (uint32_t i = 0; i < count; i++) {
-        // Obtain the value corresponding to index i.
-        const OH_PreferencesValue *pValue = OH_PreferencesPair_GetPreferencesValue(pairs, i);
-        // Obtain the data type of a value.
-        Preference_ValueType type = OH_PreferencesValue_GetValueType(pValue);
-        int ret = PREFERENCES_OK;
-        if (type == PREFERENCE_TYPE_INT) {
-            int intValue = 0;
-            ret = OH_PreferencesValue_GetInt(pValue, &intValue);
-            if (ret == PREFERENCES_OK) {
-                // Service logic.
-            }
-        } else if (type == PREFERENCE_TYPE_BOOL) {
-            bool boolValue = true;
-            ret = OH_PreferencesValue_GetBool(pValue, &boolValue);
-            if (ret == PREFERENCES_OK) {
-                // Service logic.
-            }
-        } else if (type == PREFERENCE_TYPE_STRING) {
-            char *stringValue = nullptr;
-            uint32_t valueLen = 0;
-            ret = OH_PreferencesValue_GetString(pValue, &stringValue, &valueLen);
-            if (ret == PREFERENCES_OK) {
-                // Service logic.
-                OH_Preferences_FreeString(stringValue);
-            }
-        } else {
-            // Invalid type.
-        }
-    }
-}
-
+<!--@[PreferencesOpen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+``` C++
 // 1. Create a PreferencesOption instance.
 OH_PreferencesOption *option = OH_PreferencesOption_Create();
 if (option == nullptr) {
@@ -163,7 +126,50 @@ option = nullptr;
 if (preference == nullptr || errCode != PREFERENCES_OK) {
     // Error handling.
 }
+```
+3. Call **OH_Preferences_RegisterDataObserver** to register a **DataChangeObserverCallback** callback to observe data changes of three keys.
+<!--@[DataChangeObserverCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
 
+``` C++
+// Callback used to return data changes.
+void DataChangeObserverCallback(void *context, const OH_PreferencesPair *pairs, uint32_t count)
+{
+    for (uint32_t i = 0; i < count; i++) {
+        // Obtain the value corresponding to index i.
+        const OH_PreferencesValue *pValue = OH_PreferencesPair_GetPreferencesValue(pairs, i);
+        // Obtain the data type of a value.
+        Preference_ValueType type = OH_PreferencesValue_GetValueType(pValue);
+        int ret = PREFERENCES_OK;
+        if (type == PREFERENCE_TYPE_INT) {
+            int intValue = 0;
+            ret = OH_PreferencesValue_GetInt(pValue, &intValue);
+            if (ret == PREFERENCES_OK) {
+                // Service logic.
+            }
+        } else if (type == PREFERENCE_TYPE_BOOL) {
+            bool boolValue = true;
+            ret = OH_PreferencesValue_GetBool(pValue, &boolValue);
+            if (ret == PREFERENCES_OK) {
+                // Service logic.
+            }
+        } else if (type == PREFERENCE_TYPE_STRING) {
+            char *stringValue = nullptr;
+            uint32_t valueLen = 0;
+            ret = OH_PreferencesValue_GetString(pValue, &stringValue, &valueLen);
+            if (ret == PREFERENCES_OK) {
+                // Service logic.
+                OH_Preferences_FreeString(stringValue);
+            }
+        } else {
+            // Invalid type.
+        }
+    }
+}
+```
+4. Set KV data in the **Preferences** instance.
+5. Obtain data in the **Preferences** instance.
+<!--@[PreferencesCrud](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+``` C++
 // 3. Subscribe to data changes of key_int, key_bool, and key_string.
 const char *keys[] = {"key_int", "key_bool", "key_string"};
 ret = OH_Preferences_RegisterDataObserver(preference, nullptr, DataChangeObserverCallback, keys, 3);
@@ -183,7 +189,8 @@ if (ret != PREFERENCES_OK) {
     (void)OH_Preferences_Close(preference);
     // Error handling.
 }
-ret = OH_Preferences_SetString(preference, keys[2], "string value");
+int32_t stringIndex = 2;
+ret = OH_Preferences_SetString(preference, keys[stringIndex], "string value");
 if (ret != PREFERENCES_OK) {
     (void)OH_Preferences_Close(preference);
     // Error handling.
@@ -204,14 +211,17 @@ if (ret == PREFERENCES_OK) {
 
 char *stringValue = nullptr;
 uint32_t valueLen = 0;
-ret = OH_Preferences_GetString(preference, keys[2], &stringValue, &valueLen);
+ret = OH_Preferences_GetString(preference, keys[stringIndex], &stringValue, &valueLen);
 if (ret == PREFERENCES_OK) {
     // Service logic.
     // Release the string obtained by OH_Preferences_GetString.
     OH_Preferences_FreeString(stringValue);
     stringValue = nullptr;
 }
-
+```
+6. Call **OH_Preferences_Close** to close the **Preferences** instance and set the instance pointer to null.
+<!--@[PreferencesClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+``` C++
 // 6. Close the Preferences instance and set the pointer to null.
 (void)OH_Preferences_Close(preference);
 preference = nullptr;

@@ -642,6 +642,7 @@ struct StackExample {
 正例代码如下：
 
 ```typescript
+@Component
 struct StackExample2 {
   @State isVisible: boolean = true;
   private data: number[] = [];
@@ -672,6 +673,7 @@ struct StackExample2 {
       }, (item: number) => item.toString())
     }
   }
+} 
 ```
 **减少不必要的参数层次传递**
 

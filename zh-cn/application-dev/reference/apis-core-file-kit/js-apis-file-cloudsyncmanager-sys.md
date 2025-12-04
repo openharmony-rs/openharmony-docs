@@ -23,7 +23,7 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 
 changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Promise&lt;void&gt;
 
-异步方法修改应用的端云文件同步开关，以Promise形式返回结果。
+异步方法修改应用的端云文件同步开关。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -57,6 +57,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Pr
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let bundleName: string = "com.example.bundle";
   cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true).then(() => {
@@ -70,7 +71,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Pr
 
 changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法修改应用的端云文件同步开关，以callback形式返回结果。
+异步方法修改应用的端云文件同步开关。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -99,6 +100,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, cal
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let bundleName: string = "com.example.bundle";
   cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: BusinessError) => {
@@ -114,7 +116,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, cal
 
 notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
-异步方法通知端云服务应用的云数据变更，以Promise形式返回结果。
+通知端云服务指定账号下的特定应用云数据已发生变更。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -147,6 +149,7 @@ notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let bundleName: string = "com.example.bundle";
   cloudSyncManager.notifyDataChange(accountId, bundleName).then(() => {
@@ -160,7 +163,7 @@ notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
 notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法通知端云服务应用的云数据变更，以callback形式返回结果。
+通知端云服务指定账号下的特定应用云数据已发生变更。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -188,6 +191,7 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let bundleName: string = "com.example.bundle";
   cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) => {
@@ -216,7 +220,7 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 
 notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
-异步方法通知端云服务应用的云数据变更，以Promise形式返回结果。
+通知端云服务应用指定用户的云数据变更信息。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -252,6 +256,7 @@ notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userId: number = 100;
   let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
   cloudSyncManager.notifyDataChange(userId, extraData).then(() => {
@@ -265,7 +270,7 @@ notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
 notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法通知端云服务应用的云数据变更，以callback形式返回结果。
+通知端云服务应用指定用户的云数据变更信息。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -296,6 +301,7 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userId: number = 100;
   let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
   cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError) => {
@@ -311,7 +317,7 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 
 enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;void&gt;
 
-异步方法使能端云协同能力，以Promise形式返回结果。
+异步方法使能端云协同能力。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -346,6 +352,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let switches: Record<string, boolean> = {
     'com.example.bundleName1': true,
@@ -362,7 +369,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
 
 enableCloud(accountId: string, switches: Record<string, boolean>, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法使能端云协同能力，以callback形式返回结果。
+异步方法使能端云协同能力。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -392,6 +399,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let switches: Record<string, boolean> = {
     'com.example.bundleName1': true,
@@ -410,7 +418,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
 
 disableCloud(accountId: string): Promise&lt;void&gt;
 
-异步方法去使能端云协同能力，以Promise形式返回结果。
+异步方法去使能端云协同能力。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -444,6 +452,7 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   cloudSyncManager.disableCloud(accountId).then(() => {
     console.info("disableCloud successfully");
@@ -456,7 +465,7 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 
 disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法去使能端云协同能力，以callback形式返回结果。
+异步方法去使能端云协同能力。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -485,6 +494,7 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   cloudSyncManager.disableCloud(accountId, (err: BusinessError) => {
     if (err) {
@@ -512,7 +522,7 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
 clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt;
 
-异步方法清理本地云相关数据，以Promise形式返回结果。
+异步方法清理本地云相关数据。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -547,6 +557,7 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let appActions: Record<string, cloudSyncManager.Action> = {
     'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,
@@ -563,7 +574,7 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 
 clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法清理本地云相关数据，以callback形式返回结果。
+异步方法清理本地云相关数据。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -593,6 +604,7 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
     let appActions: Record<string, cloudSyncManager.Action> = {
     'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,
@@ -818,4 +830,70 @@ stopDownload(): Promise&lt;void&gt;
       console.error(`Failed to stop downgrade, error message: ${err.message}, error code: ${err.code}`);
     });
   }
+  ```
+
+  ## LocalFilePresentStatus<sup>22+</sup>
+
+  检测结果对象，包含应用包名及其在云盘存储空间内是否存在未上云文件的状态信息。
+
+  **系统接口**：该接口为系统接口。
+
+  **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+
+  | 名称 | 类型 | 只读 | 可选 | 说明 |
+  | ---- | ---- | ---- | ---- | ---- |
+  | bundleName | string | 否 | 否 | 应用包名。 |
+  | isLocalFilePresent | boolean | 否 | 否 | 该应用在云盘存储空间内是否存在尚未同步至云端的本地文件。true 表示存在， false 表示不存在。 |
+
+  ## cloudSyncManager.getBundlesLocalFilePresentStatus<sup>22+</sup>
+
+  getBundlesLocalFilePresentStatus(bundleNames: Array&lt;string&gt;): Promise&lt;Array&lt;LocalFilePresentStatus&gt;&gt;
+
+  对接入云盘的应用，检测其在云盘存储空间内是否存在未上云文件，支持同时查询多个应用。使用Promise异步回调。
+
+  **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+  **系统接口**：该接口为系统接口。
+
+  **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+  **参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | ------ | ---- | ---- | ---- |
+  | bundleNames | Array&lt;string&gt; | 是 | 需要检测的应用包名数组。每个元素为应用的包名字符串。 |
+
+  **返回值：**
+
+  | 类型 | 说明 |
+  | ---- | ---- |
+  | Promise&lt;Array&lt;[LocalFilePresentStatus](#localfilepresentstatus22)&gt;&gt; | Promise 对象，返回对象数组，数组内每个对象包含指定检测的应用包名及其本地文件存在状态。 |
+
+  **错误码：**
+
+  以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+
+  | 错误码ID | 错误信息 |
+  | -------- | -------- |
+  | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
+  | 202 | Permission verification failed, application which is not a system application uses system API. |
+  | 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+  | 13900010 | Try again. Possible causes: 1. The operation timed out. 2. The operation needs to be retried. |
+  | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2. The length of the input parameter exceeds the upper limit. 3. The input parameter contains an invalid bundleName. |
+  | 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
+
+  **示例：**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let bundles: Array<string> = ['com.example.app1', 'com.example.app2'];
+  cloudSyncManager.getBundlesLocalFilePresentStatus(bundles).then((results: Array<cloudSyncManager.LocalFilePresentStatus>) => {
+    results.forEach((item) => {
+      console.info(`bundle: ${item.bundleName}, hasLocalUncloudedFiles: ${item.isLocalFilePresent}`);
+    });
+  }).catch((err: BusinessError) => {
+    console.error(`getBundlesLocalFilePresentStatus failed, code: ${err.code}, message: ${err.message}`);
+  });
   ```

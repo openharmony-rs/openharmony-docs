@@ -6,8 +6,16 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
 
+## SDA
+
+Super Device Admin，超级设备管理员。被激活为SDA的应用，可以对设备进行管控以及管理其他的DA应用（包括激活、解除激活DA应用），适用于企业设备办公。
+
+## DA
+
+Device Admin，普通设备管理员。被激活为DA的应用，可以对设备进行管控，适用于企业设备办公。
 
 ## BYOD
+
 Bring Your Own Device，自带设备办公。指一些企业允许员工携带自己的笔记本电脑、平板电脑、智能手机等移动终端设备到公司，并使用这些设备获取公司内部信息和企业特许应用的政策。
 
 ## MDM应用（设备管理应用）

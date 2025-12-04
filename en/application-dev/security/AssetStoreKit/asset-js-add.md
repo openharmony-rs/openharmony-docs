@@ -55,7 +55,6 @@ The following table describes the attributes of **AssetMap** for adding an asset
 
   ASSET protects the integrity of the attributes starting with **DATA_LABEL_CRITICAL**. These attributes cannot be changed once written.
 
-
 ## Example
 
 > **NOTE**
@@ -66,7 +65,9 @@ The following table describes the attributes of **AssetMap** for adding an asset
 
 Add an asset that is accessible when the user unlocks the device for the first time. The asset includes password **demo_pwd**, alias **demo_alias**, and additional information **demo_label**.
 
-```typescript
+<!-- @[add_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add.ets) -->
+
+``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -76,18 +77,26 @@ function stringToArray(str: string): Uint8Array {
   return textEncoder.encodeInto(str);
 }
 
-let attr: asset.AssetMap = new Map();
-attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
-attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
-attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
-try {
-  asset.add(attr).then(() => {
-    console.info(`Succeeded in adding Asset.`);
-  }).catch((err: BusinessError) => {
+export async function addAsset(): Promise<string> {
+  let result: string = '';
+  let attr: asset.AssetMap = new Map();
+  attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
+  attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
+  attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
+  attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
+  try {
+    await asset.add(attr).then(() => {
+      console.info(`Succeeded in adding Asset.`);
+      result = 'Succeeded in adding Asset';
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
+      result = 'Failed to add Asset';
+    })
+  } catch (error) {
+    let err = error as BusinessError;
     console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
-  })
-} catch (err) {
-  console.error(`Failed to add Asset. Code is ${err?.code}, message is ${err?.message}`);
+    result = 'Failed to add Asset';
+  }
+  return result;
 }
 ```

@@ -167,8 +167,8 @@ export default class EntryAbility extends UIAbility {
 
     windowStage.loadContent("pages/index", (err, data) => {
         if (err.code) {
-        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
-        return;
+            console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+            return;
         }
         console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data));
     })

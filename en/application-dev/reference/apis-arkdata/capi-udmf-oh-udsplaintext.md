@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdsPlainText OH_UdsPlainText
+```
+
 ## Overview
 
 Defines a struct for the unified data of the plaintext type.

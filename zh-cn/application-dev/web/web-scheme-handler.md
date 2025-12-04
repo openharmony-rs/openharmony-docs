@@ -8,9 +8,9 @@
 
 应用可以通过[onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9)拦截Web组件发起的网络请求，也可以通过SchemeHandler来拦截Web组件发起的网络请求。SchemeHandler提供了ArkTS与NDK两套接口。
 
-> **注意**
+> **注意：**
 >
-> onInterceptRequest接口中无法获取Post Data，如果想要获取Post Data需使用SchemeHandler机制来进行拦截。
+> - onInterceptRequest接口中无法获取Post Data，如果想要获取Post Data需使用SchemeHandler机制来进行拦截。
 
 ## 网络请求拦截处理 (onInterceptRequest接口)
 
@@ -34,7 +34,7 @@ ArkTS：[onRequestStart](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHa
 NDK：[ArkWeb_OnRequestStop](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststop)  
 ArkTS：[onRequestStop](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststop12)  
 
-> **注意**
+> **注意：**
 >
 > - 需要在Web组件初始化之后设置SchemeHandler，否则会设置失败。 
 > - 若想要拦截Web组件发出的第一个请求，可以通过[initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)方法提前进行Web组件初始化，再设置SchemeHandler实现拦截。详细代码请参考[完整示例](#完整示例)。
@@ -77,36 +77,38 @@ Web组件的创建会触发Web内核的初始化。另外ArkWeb还提供了initi
 
 在NDK中可以在ets侧先调用testNapi.registerCustomSchemes注册自定义协议，然后调用[initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)初始化Web内核，示例如下：
 
-  ```ts
-    export default class EntryAbility extends UIAbility {
-        onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-            // 注册scheme的配置。
-            testNapi.registerCustomSchemes();
-            // 初始化Web组件内核，该操作会初始化Browser进程以及创建BrowserContext。
-            webview.WebviewController.initializeWebEngine();
-            // 创建并设置ArkWeb_SchemeHandler。
-            testNapi.setSchemeHandler();
-        }
-        ...
-    };
-  ```
+<!-- @[register_init_scheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // 注册三方协议的配置。
+    testNapi.registerCustomSchemes();
+    // 初始化Web组件内核，该操作会初始化Browser进程以及创建BrowserContext。
+    webview.WebviewController.initializeWebEngine();
+    // 设置SchemeHandler。
+    testNapi.setSchemeHandler();
+  }
+```
 
 testNapi.registerCustomSchemes的C++实现：
 
-  ```c++
-    // 注册“custom“ scheme到Web组件，并指定该scheme需要遵循标准的scheme规则，允许该scheme发出跨域请求。
-    OH_ArkWeb_RegisterCustomSchemes("custom", ARKWEB_SCHEME_OPTION_STANDARD | ARKWEB_SCHEME_OPTION_CORS_ENABLED);
-    // 注册“custom-local” scheme到Web组件，并指定该scheme需要遵循与“file” scheme一样的规则。
-    OH_ArkWeb_RegisterCustomSchemes("custom-local", ARKWEB_SCHEME_OPTION_LOCAL);
-    // 注册“custom-csp-bypassing”到Web组件，并指定该scheme需要遵循标准的scheme规则，允许忽略CSP检查。
-    OH_ArkWeb_RegisterCustomSchemes("custom-csp-bypassing", ARKWEB_SCHEME_OPTION_CSP_BYPASSING | ARKWEB_SCHEME_OPTION_STANDARD);
-    // 注册“custom-isolated”到Web组件，并指定该scheme的请求必须从相同scheme加载的网页中发起。
-    OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED);
-  ```
+<!-- @[register_set_custom_schemes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+// 注册“custom“ scheme到Web组件，并指定该scheme需要遵循标准的scheme规则，允许该scheme发出跨域请求。
+OH_ArkWeb_RegisterCustomSchemes("custom", ARKWEB_SCHEME_OPTION_STANDARD | ARKWEB_SCHEME_OPTION_CORS_ENABLED);
+// 注册“custom-local” scheme到Web组件，并指定该scheme需要遵循与“file” scheme一样的规则。
+OH_ArkWeb_RegisterCustomSchemes("custom-local", ARKWEB_SCHEME_OPTION_LOCAL);
+// 注册“custom-csp-bypassing”到Web组件，并指定该scheme需要遵循标准的scheme规则，允许忽略CSP检查。
+OH_ArkWeb_RegisterCustomSchemes("custom-csp-bypassing", ARKWEB_SCHEME_OPTION_CSP_BYPASSING | ARKWEB_SCHEME_OPTION_STANDARD);
+// 注册“custom-isolated”到Web组件，并指定该scheme的请求必须从相同scheme加载的网页中发起。
+OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED);
+```
 
 在ArkTS中可以通过customizeSchemes注册自定义协议，示例如下：
 
- ``` ts
+  ``` ts
     // xxx.ets
     import { webview } from '@kit.ArkWeb';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -196,6 +198,7 @@ testNapi.registerCustomSchemes的C++实现：
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
+    return true;
   })
   ```
 
@@ -207,9 +210,9 @@ testNapi.registerCustomSchemes的C++实现：
 NDK：[网络错误码(arkweb_net_error_list.h)](../reference/apis-arkweb/capi-arkweb-net-error-list-h.md)。  
 ArkTS：[网络错误码(@ohos.web.netErrorList.d.ts)](../reference/apis-arkweb/arkts-apis-netErrorList.md)。  
 
-> **注意**
+> **注意：**
 >
-> ArkWeb不支持自定义错误码，请使用ArkWeb提供的错误码来结束请求。
+> - ArkWeb不支持自定义错误码，请使用ArkWeb提供的错误码来结束请求。
 
 在NDK中，为被拦截的请求提供自定义的响应信息：
 
@@ -270,6 +273,7 @@ ArkTS：[网络错误码(@ohos.web.netErrorList.d.ts)](../reference/apis-arkweb/
     } catch (error) {
       console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
+    return true;
   })
   ```
 
@@ -289,6 +293,7 @@ ArkTS示例：
   this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
     // 直接调用didFail(WebNetErrorList.ERR_CONNECTION_FAILED, true)，自动构造一个网络请求错误ERR_CONNECTION_FAILED。
     resourceHandler.didFail(WebNetErrorList.ERR_CONNECTION_FAILED, true);
+    return true;
   })
   ```
 
