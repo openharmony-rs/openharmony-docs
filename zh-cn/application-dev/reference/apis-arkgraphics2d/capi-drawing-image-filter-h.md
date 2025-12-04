@@ -36,7 +36,7 @@
 
 ### OH_Drawing_ImageFilterCreateBlur()
 
-```
+```c
 OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlur(float sigmaX, float sigmaY, OH_Drawing_TileMode tileMode,OH_Drawing_ImageFilter* imageFilter)
 ```
 
@@ -66,7 +66,7 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlur(float sigmaX, float sig
 
 ### OH_Drawing_ImageFilterCreateBlurWithCrop()
 
-```
+```c
 OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlurWithCrop(float sigmaX, float sigmaY, OH_Drawing_TileMode tileMode, OH_Drawing_ImageFilter* input, const OH_Drawing_Rect* rect)
 ```
 
@@ -98,7 +98,7 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlurWithCrop(float sigmaX, f
 
 ### OH_Drawing_ImageFilterCreateFromColorFilter()
 
-```
+```c
 OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromColorFilter(OH_Drawing_ColorFilter* colorFilter,OH_Drawing_ImageFilter* imageFilter)
 ```
 
@@ -125,7 +125,7 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromColorFilter(OH_Drawing_C
 
 ### OH_Drawing_ImageFilterCreateOffset()
 
-```
+```c
 OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateOffset(float x, float y, OH_Drawing_ImageFilter* imageFilter)
 ```
 
@@ -154,7 +154,7 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateOffset(float x, float y, OH_
 
 ### OH_Drawing_ImageFilterCreateFromShaderEffect()
 
-```
+```c
 OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromShaderEffect(OH_Drawing_ShaderEffect* shaderEffect)
 ```
 
@@ -181,7 +181,7 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromShaderEffect(OH_Drawing_
 
 ### OH_Drawing_ImageFilterDestroy()
 
-```
+```c
 void OH_Drawing_ImageFilterDestroy(OH_Drawing_ImageFilter* imageFilter)
 ```
 

@@ -6,7 +6,7 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef union {...} Rdb_SubscribeCallback
 ```
 
