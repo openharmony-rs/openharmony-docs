@@ -29355,5 +29355,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/file-management/app-fs-space-statistics.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":181,
+						"name":"storageStatistics_statfs_getFreeSize",
+						"start_line":171
+					},
+					{
+						"end_line":160,
+						"name":"storageStatistics_getCurrentBundleStats",
+						"start_line":152
+					},
+					{
+						"end_line":197,
+						"name":"storageStatistics_getTotalSize",
+						"start_line":191
+					},
+					{
+						"end_line":214,
+						"name":"storageStatistics_getTotalSizeSync",
+						"start_line":206
+					},
+					{
+						"end_line":226,
+						"name":"storageStatistics_getFreeSize",
+						"start_line":220
+					},
+					{
+						"end_line":243,
+						"name":"storageStatistics_getFreeSizeSync",
+						"start_line":235
+					}
+				]
+			}
+		]
 	}
 ]
