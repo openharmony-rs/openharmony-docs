@@ -186,37 +186,37 @@
 4. 通过addNetFirewallRule方法，添加防火墙规则。
 
    <!-- @[net_firewall_add_net_firewall_rule_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 初始化具体的防火墙域名类型规则。
-let domainRule: netFirewall.NetFirewallRule = {
-  name: 'rule2',
-  description: 'rule2 description',
-  direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-  action: netFirewall.FirewallRuleAction.RULE_DENY,
-  type: netFirewall.NetFirewallRuleType.RULE_DOMAIN,
-  isEnabled: true,
-  appUid: 20002,
-  domains: [
-    {
-      isWildcard: false,
-      domain: 'www.HarmonyOS.cn'
-    },{
-    isWildcard: true,
-    domain: '*.HarmonyOS.cn'
-  }] as domain[],
-  userId: 100
-};
-
-// 添加防火墙规则。
-netFirewall.addNetFirewallRule(domainRule).then((result: number) => {
-// ···
-  hilog.info(0x0000, 'testTag', `rule Id: ${result}`);
-}, (reason: BusinessError) => {
-// ···
-  hilog.error(0x0000, 'testTag', `error: add firewall rule failed:  ${JSON.stringify(reason)}`);
-});
-```
+   
+   ``` TypeScript
+   // 初始化具体的防火墙域名类型规则。
+   let domainRule: netFirewall.NetFirewallRule = {
+     name: 'rule2',
+     description: 'rule2 description',
+     direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
+     action: netFirewall.FirewallRuleAction.RULE_DENY,
+     type: netFirewall.NetFirewallRuleType.RULE_DOMAIN,
+     isEnabled: true,
+     appUid: 20002,
+     domains: [
+       {
+         isWildcard: false,
+         domain: 'www.HarmonyOS.cn'
+       },{
+       isWildcard: true,
+       domain: '*.HarmonyOS.cn'
+     }] as domain[],
+     userId: 100
+   };
+   
+   // 添加防火墙规则。
+   netFirewall.addNetFirewallRule(domainRule).then((result: number) => {
+     // ...
+     hilog.info(0x0000, 'testTag', `rule Id: ${result}`);
+   }, (reason: BusinessError) => {
+     // ...
+     hilog.error(0x0000, 'testTag', `error: add firewall rule failed:  ${JSON.stringify(reason)}`);
+   });
+   ```
 <!--Del-->
 ## 查询防火墙拦截记录
 
