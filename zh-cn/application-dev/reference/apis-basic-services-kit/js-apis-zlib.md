@@ -3863,15 +3863,15 @@ PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解�
 | -------- | ---- | ---------- |
 | DEFLATED | 8    | 压缩方法。 |
 
-## ReturnStatus
+## ReturnStatus<sup>12+</sup>
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
 | 名称       | 值   | 说明                                           |
 | ---------- | ---- | ---------------------------------------------- |
-| OK<sup>12+</sup>         | 0    | 函数调用成功。该接口支持在原子化服务中使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| STREAM_END<sup>12+</sup> | 1    | 函数调用成功，表示已处理了整个数据。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| NEED_DICT<sup>12+</sup>  | 2    | 函数调用成功，表示需要预设字典才能继续解压缩。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| OK         | 0    | 函数调用成功。该接口支持在原子化服务中使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| STREAM_END | 1    | 函数调用成功，表示已处理了整个数据。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| NEED_DICT  | 2    | 函数调用成功，表示需要预设字典才能继续解压缩。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | ERRNO<sup>22+</sup>| -1 | 函数调用失败，表示文件操作错误。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 | STREAM_ERROR<sup>22+</sup>| -2 | 函数调用失败，表示压缩或解压缩流错误。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 | DATA_ERROR<sup>22+</sup>| -3 | 函数调用失败，表示输入数据不正确。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
