@@ -50,18 +50,18 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   
   ```
   <!--@[storageStatistics_statfs_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
-
-   ``` TypeScript
-   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-   let path = context.filesDir;
-   statfs.getFreeSize(path, (err: BusinessError, number: number) => {
-     if (err) {
-       console.error(`Invoke getFreeSize failed, code is ${err.code}, message is ${err.message}`);
-     } else {
-       console.info(`Invoke getFreeSize succeeded, size is ${number}`);
-     }
-   });
-   ```
+  
+  ``` TypeScript
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let path = context.filesDir;
+  statfs.getFreeSize(path, (err: BusinessError, number: number) => {
+    if (err) {
+      console.error(`Invoke getFreeSize failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info(`Invoke getFreeSize succeeded, size is ${number}`);
+    }
+  });
+  ```
 
 
 - 获取当前应用的存储空间大小。
