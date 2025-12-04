@@ -172,14 +172,12 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
 - ArkTS代码示例
 
   <!-- @[napi_call_threadsafe_function_with_priority_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
-
-    ```ts
-    // index.ets
-    import testNapi from 'libentry.so';
-    
-    let callback = (a: number, b: number) : number => {
-        console.info('result is ' + (a + b));
-        return a + b;
-    }
-    testNapi.callThreadSafeWithPriority(callback); // 注意：如果底层 ThreadSafeFunction 被取消，则无法保证所有任务都会被执行
-    ```
+  
+  ``` TypeScript
+  // index.ets
+  let callback = (a: number, b: number): number => {
+    console.info('result is ' + (a + b))
+    return a + b;
+  }
+  testNapi.callThreadSafeWithPriority(callback);
+  ```
