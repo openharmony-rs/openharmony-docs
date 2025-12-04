@@ -157,7 +157,7 @@ try {
 
 ## backgroundTaskManager.setBackgroundTaskState<sup>22+</sup>
 
-setBackgroundTaskState(stateInfo: [BackgroundTaskStateInfo](#backgroundtaskstateinfo22)): void
+setBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): void
 
 设置长时任务授权信息。
 
@@ -171,7 +171,7 @@ setBackgroundTaskState(stateInfo: [BackgroundTaskStateInfo](#backgroundtaskstate
 
 | 参数名     | 类型      | 必填   | 说明                    |
 | ------- | ------- | ---- |-----------------------|
-| stateInfo | [BackgroundTaskStateInfo](#backgroundtaskstateinfo22) | 是    | 授权的必要信息，包括用户ID、应用包名等。 |
+| stateInfo | [BackgroundTaskStateInfo](#backgroundtaskstateinfo22) | 是    | 授权的必要信息，包括用户ID、应用包名、应用分身ID等。 |
 
 **错误码**：
 
@@ -191,6 +191,7 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+    // 请开发者根据实际情况更新参数
     let backgroundTaskStateInfo: backgroundTaskManager.BackgroundTaskStateInfo = {
         userId: 100,
         bundleName: 'com.example.continuoustask',
@@ -206,7 +207,7 @@ try {
 
 ## backgroundTaskManager.getBackgroundTaskState<sup>22+</sup>
 
-getBackgroundTaskState(stateInfo: [BackgroundTaskStateInfo](#backgroundtaskstateinfo22)): [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22)
+getBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): UserAuthResul
 
 获取长时任务授权信息。
 
@@ -220,13 +221,13 @@ getBackgroundTaskState(stateInfo: [BackgroundTaskStateInfo](#backgroundtaskstate
 
 | 参数名     | 类型      | 必填   | 说明                    |
 | ------- | ------- | ---- |-----------------------|
-| stateInfo | [BackgroundTaskStateInfo](#backgroundtaskstateinfo22) | 是    | 授权的必要信息，包括用户ID、应用包名等。 |
+| stateInfo | [BackgroundTaskStateInfo](#backgroundtaskstateinfo22) | 是    | 授权的必要信息，包括用户ID、应用包名、应用分身ID等。 |
 
 **返回值**：
 
 | 类型                                            | 说明          |
 |-----------------------------------------------|-------------|
-|  [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | 授权结果 |
+|  [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | 授权结果。 |
 
 **错误码**：
 
@@ -246,6 +247,7 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+    // 请开发者根据实际情况更新参数
     let backgroundTaskStateInfo: backgroundTaskManager.BackgroundTaskStateInfo = {
         userId: 100,
         bundleName: 'com.example.continuoustask',
@@ -260,9 +262,9 @@ try {
 
 ## backgroundTaskManager.obtainAllContinuousTasks<sup>23+</sup>
 
-obtainAllContinuousTasks(): Promise&lt;[ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20)[]&gt;
+obtainAllContinuousTasks(): Promise&lt;ContinuousTaskInfo[]&gt;
 
-获取所有长时任务信息，如长时任务ID、长时任务类型等。可选择是否获取暂停的长时任务信息，使用Promise异步回调。
+获取所有长时任务信息，如长时任务ID、长时任务类型等。使用Promise异步回调。
 
 **需要权限**: ohos.permission.GET_BACKGROUND_TASK_INFO
 
@@ -285,7 +287,6 @@ obtainAllContinuousTasks(): Promise&lt;[ContinuousTaskInfo](./js-apis-resourcesc
 | 201 | Permission denied. |
 | 202 | Not System App. |
 | 9800004 | System service operation failed. |
-| 9800005 | Continuous task verification failed. |
 
 **示例**：
 
@@ -307,7 +308,7 @@ try {
 
 ## backgroundTaskManager.subscribeContinuousTaskState<sup>23+</sup>
 
-subscribeContinuousTaskState(subscriber: [BackgroundTaskSubscriber](#backgroundtasksubscriber23)): void;
+subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void;
 
 注册长时任务变化回调。
 
@@ -316,6 +317,12 @@ subscribeContinuousTaskState(subscriber: [BackgroundTaskSubscriber](#backgroundt
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 **系统API**: 此接口为系统接口。
+
+**参数**：
+
+| 参数名     | 类型      | 必填   | 说明                    |
+| ------- | ------- | ---- |-----------------------|
+| subscriber | [BackgroundTaskSubscriber](#backgroundtasksubscriber23) | 是    | 后台任务监听对象，包含长时任务开始，长时任务更新，长时任务结束。 |
 
 **错误码**：
 
@@ -356,7 +363,7 @@ try {
 
 ## backgroundTaskManager.unsubscribeContinuousTaskState<sup>23+</sup>
 
-unsubscribeContinuousTaskState(subscriber: [BackgroundTaskSubscriber](#backgroundtasksubscriber23)): void;
+unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void;
 
 解注册长时任务变化回调。
 
@@ -365,6 +372,12 @@ unsubscribeContinuousTaskState(subscriber: [BackgroundTaskSubscriber](#backgroun
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 **系统API**: 此接口为系统接口。
+
+**参数**：
+
+| 参数名     | 类型      | 必填   | 说明                    |
+| ------- | ------- | ---- |-----------------------|
+| subscriber | [BackgroundTaskSubscriber](#backgroundtasksubscriber23) | 是    | 后台任务监听对象，包含长时任务开始，长时任务更新，长时任务结束。 |
 
 **错误码**：
 
@@ -497,13 +510,17 @@ try {
 
 ## BackgroundTaskSubscriber<sup>23+</sup>
 
-后台任务监听
+后台任务监听。
+
+**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**系统API**: 此接口为系统接口。
 
 ### onContinuousTaskStart<sup>23+</sup>
 
 onContinuousTaskStart(info: [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20)): void;
 
-长时任务开始回调接口
+长时任务开始回调接口。
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -537,7 +554,7 @@ private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscribe
 
 onContinuousTaskUpdate(info: [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20)): void;
 
-长时任务更新回调接口
+长时任务更新回调接口。
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -571,7 +588,7 @@ private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscribe
 
 onContinuousTaskStop(info: [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20)): void;
 
-长时任务结束回调接口
+长时任务结束回调接口。
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
