@@ -330,6 +330,7 @@ install(hapFilePaths: Array\<string\>, installParam?: InstallParam) : Promise\<v
 > **说明：**
 >
 > 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中的appDistributionType字段说明。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE 或（ohos.permission.INSTALL_BUNDLE 和 ohos.permission.INSTALL_ALLOW_DOWNGRADE）
