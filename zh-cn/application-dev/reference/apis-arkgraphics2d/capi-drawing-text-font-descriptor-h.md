@@ -326,7 +326,7 @@ const OH_Drawing_FontFullDescriptor* OH_Drawing_GetFontFullDescriptorByIndex(OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| const [OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)* | 返回指向指定索引处字体描述符对象{@link OH_Drawing_FontFullDescriptor}的指针。<br>如果索引超出范围或数组无效，则返回NULL。 |
+| const [OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)* | 返回指向指定索引处字体描述符对象[OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)的指针。<br>如果索引超出范围或数组无效，则返回NULL。 |
 
 ### OH_Drawing_DestroyFontFullDescriptors()
 
