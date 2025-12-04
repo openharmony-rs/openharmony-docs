@@ -7,7 +7,7 @@
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
 
-```
+```c
 typedef struct {...} OH_CM_Blob
 ```
 
