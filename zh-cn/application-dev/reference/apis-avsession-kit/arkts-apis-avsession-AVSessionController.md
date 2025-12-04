@@ -1748,6 +1748,7 @@ off(type: 'callStateChange', callback?: Callback\<AVCallState>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1865,7 +1866,7 @@ avsessionController.on('activeStateChange', (isActive: boolean) => {
 
 ## off('activeStateChange')<sup>10+</sup>
 
-off(type: 'activeStateChange', callback?: (isActive: boolean) => void)
+off(type: 'activeStateChange', callback?: (isActive: boolean) => void):void
 
 取消监听会话激活状态变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
