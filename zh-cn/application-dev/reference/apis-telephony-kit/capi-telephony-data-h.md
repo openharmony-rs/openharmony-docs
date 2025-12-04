@@ -34,7 +34,7 @@
 
 ### OH_Telephony_GetDefaultCellularDataSlotId()
 
-```
+```c
 int32_t OH_Telephony_GetDefaultCellularDataSlotId(void)
 ```
 

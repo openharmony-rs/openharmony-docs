@@ -95,7 +95,7 @@
 
 ### JSVM_PropertyAttributes
 
-```
+```c
 enum JSVM_PropertyAttributes
 ```
 
@@ -117,7 +117,7 @@ enum JSVM_PropertyAttributes
 
 ### JSVM_ValueType
 
-```
+```c
 enum JSVM_ValueType
 ```
 
@@ -142,7 +142,7 @@ enum JSVM_ValueType
 
 ### JSVM_TypedarrayType
 
-```
+```c
 enum JSVM_TypedarrayType
 ```
 
@@ -168,7 +168,7 @@ enum JSVM_TypedarrayType
 
 ### JSVM_Status
 
-```
+```c
 enum JSVM_Status
 ```
 
@@ -209,7 +209,7 @@ enum JSVM_Status
 
 ### JSVM_KeyCollectionMode
 
-```
+```c
 enum JSVM_KeyCollectionMode
 ```
 
@@ -226,7 +226,7 @@ enum JSVM_KeyCollectionMode
 
 ### JSVM_KeyFilter
 
-```
+```c
 enum JSVM_KeyFilter
 ```
 
@@ -247,7 +247,7 @@ enum JSVM_KeyFilter
 
 ### JSVM_KeyConversion
 
-```
+```c
 enum JSVM_KeyConversion
 ```
 
@@ -264,7 +264,7 @@ enum JSVM_KeyConversion
 
 ### JSVM_MemoryPressureLevel
 
-```
+```c
 enum JSVM_MemoryPressureLevel
 ```
 
@@ -282,7 +282,7 @@ enum JSVM_MemoryPressureLevel
 
 ### JSVM_RegExpFlags
 
-```
+```c
 enum JSVM_RegExpFlags
 ```
 
@@ -307,7 +307,7 @@ enum JSVM_RegExpFlags
 
 ### JSVM_InitializedFlag
 
-```
+```c
 enum JSVM_InitializedFlag
 ```
 
@@ -324,7 +324,7 @@ enum JSVM_InitializedFlag
 
 ### JSVM_WasmOptLevel
 
-```
+```c
 enum JSVM_WasmOptLevel
 ```
 
@@ -341,7 +341,7 @@ WebAssembly 函数优化等级。
 
 ### JSVM_CacheType
 
-```
+```c
 enum JSVM_CacheType
 ```
 
@@ -358,7 +358,7 @@ enum JSVM_CacheType
 
 ### JSVM_MicrotaskPolicy
 
-```
+```c
 enum JSVM_MicrotaskPolicy
 ```
 
@@ -375,7 +375,7 @@ JSVM 微任务执行策略。
 
 ### JSVM_TraceCategory
 
-```
+```c
 enum JSVM_TraceCategory
 ```
 
@@ -397,7 +397,7 @@ JSVM 内部 Trace 事件的类别。
 
 ### JSVM_CBTriggerTimeForGC
 
-```
+```c
 enum JSVM_CBTriggerTimeForGC
 ```
 
@@ -414,7 +414,7 @@ enum JSVM_CBTriggerTimeForGC
 
 ### JSVM_GCType
 
-```
+```c
 enum JSVM_GCType
 ```
 
@@ -435,7 +435,7 @@ GC类型。
 
 ### JSVM_GCCallbackFlags
 
-```
+```c
 enum JSVM_GCCallbackFlags
 ```
 
@@ -457,7 +457,7 @@ GC回调函数标记。
 
 ### JSVM_PromiseRejectEvent
 
-```
+```c
 enum JSVM_PromiseRejectEvent
 ```
 
@@ -477,7 +477,7 @@ promise-reject事件。
 
 ### JSVM_MessageErrorLevel
 
-```
+```c
 enum JSVM_MessageErrorLevel
 ```
 
@@ -498,7 +498,7 @@ message的报错级别。
 
 ### JSVM_DefineClassOptionsId
 
-```
+```c
 enum JSVM_DefineClassOptionsId
 ```
 
@@ -516,7 +516,7 @@ enum JSVM_DefineClassOptionsId
 
 ### JSVM_DebugOption
 
-```
+```c
 enum JSVM_DebugOption
 ```
 
@@ -535,7 +535,7 @@ enum JSVM_DebugOption
 
 ### JSVM_Finalize()
 
-```
+```c
 typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env,void* finalizeData,void* finalizeHint)
 ```
 
@@ -547,7 +547,7 @@ typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env,void* finalizeData,void* f
 
 ### JSVM_OutputStream()
 
-```
+```c
 typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data,int size,void* streamData)
 ```
 
@@ -565,7 +565,7 @@ ASCII输出流回调的函数指针类型。参数data是指输出的数据指�
 
 ### JSVM_HandlerForGC()
 
-```
+```c
 typedef void (JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSVM_GCCallbackFlags flags, void* data)
 ```
 
@@ -577,7 +577,7 @@ GC回调的函数指针类型。
 
 ### JSVM_HandlerForOOMError()
 
-```
+```c
 typedef void (JSVM_CDECL* JSVM_HandlerForOOMError)(const char* location,const char* detail,bool isHeapOOM)
 ```
 
@@ -589,7 +589,7 @@ OOM-Error回调的函数指针类型。
 
 ### JSVM_HandlerForFatalError()
 
-```
+```c
 typedef void (JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location,const char* message)
 ```
 
@@ -601,7 +601,7 @@ Fatal-Error回调的函数指针类型。
 
 ### JSVM_HandlerForPromiseReject()
 
-```
+```c
 typedef void (JSVM_CDECL* JSVM_HandlerForPromiseReject)(JSVM_Env env, JSVM_PromiseRejectEvent rejectEvent, JSVM_Value rejectInfo)
 ```
 
