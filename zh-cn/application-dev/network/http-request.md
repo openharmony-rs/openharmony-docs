@@ -713,15 +713,15 @@ chain.apply(httpRequest);
 7.  创建请求可选项。
 
     <!-- @[HTTP_interceptor_case_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
-```typescript
-// 创建请求可选项
-let options: http.HttpRequestOptions = {
-  method: http.RequestMethod.POST,
-  header: { 'content-type': 'text/html' } as Record<string, string>,
-  extraData: { 'context': 'BODY' } as Record<string, string>,
-};
-```
+    
+    ``` TypeScript
+    // 创建请求可选项
+    let options: http.HttpRequestOptions = {
+      method: http.RequestMethod.POST,
+      header: { 'content-type': 'text/html' } as Record<string, string>,
+      extraData: { 'context': 'BODY' } as Record<string, string>,
+    };
+    ```
 
 8.  调用该对象的request()方法，传入HTTP请求的URL地址和可选参数，发起网络请求，按照实际业务需要，解析服务器响应事件。
 
