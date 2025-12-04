@@ -41,7 +41,7 @@
 
 ### UsbSerial_DdkRetCode
 
-```
+```c
 enum UsbSerial_DdkRetCode
 ```
 
@@ -65,7 +65,7 @@ enum UsbSerial_DdkRetCode
 
 ### UsbSerial_FlowControl
 
-```
+```c
 enum UsbSerial_FlowControl
 ```
 
@@ -83,7 +83,7 @@ enum UsbSerial_FlowControl
 
 ### UsbSerial_Parity
 
-```
+```c
 enum UsbSerial_Parity
 ```
 
