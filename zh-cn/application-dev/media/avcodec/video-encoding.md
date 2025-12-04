@@ -992,8 +992,12 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     if (bufferInfo == nullptr || !bufferInfo->isValid) {
         // 异常处理。
     }
+    // 写入最后一帧图像数据，参考步骤-8。
+    int32_t frameSize = 0;
+    ......
+    // 配置buffer info信息，设置AVCODEC_BUFFER_FLAGS_EOS标识
     OH_AVCodecBufferAttr info;
-    info.size = 0;
+    info.size = frameSize;
     info.offset = 0;
     info.pts = 0;
     info.flags = AVCODEC_BUFFER_FLAGS_EOS;
