@@ -59,7 +59,7 @@ libnet_connection.so
 **头文件**
 
 <!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
-   
+
 ``` C++
 #include "napi/native_api.h"
 #include "network/netmanager/net_connection.h"
