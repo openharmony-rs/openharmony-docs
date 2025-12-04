@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## iconSize
@@ -34,7 +34,7 @@ ArkTS-Sta: iconSize(value: Dimension | undefined)
 
 | 参数名 | 类型 | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [Dimension](ts-types.md#dimension10) <br> ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined | 是 |安全控件上图标的尺寸。<br/>默认值：16vp。<br/>不支持设置百分比字符串。|
+| value | ArkTS-Dyn: [Dimension](ts-types.md#dimension10) <br> ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined | 是 |安全控件上图标的尺寸。<br/>默认值：16vp。<br/>不支持设置百分比字符串。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## layoutDirection
 
@@ -56,7 +56,7 @@ ArkTS-Sta: layoutDirection(value: SecurityComponentLayoutDirection | undefined)
 
 | 参数名 | 类型 | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [SecurityComponentLayoutDirection](#securitycomponentlayoutdirection) <br> ArkTS-Sta: [SecurityComponentLayoutDirection](#securitycomponentlayoutdirection) \| undefined |是 | 安全控件上图标和文字分布的方向。<br/>默认值：SecurityComponentLayoutDirection.HORIZONTAL。|
+| value | ArkTS-Dyn: [SecurityComponentLayoutDirection](#securitycomponentlayoutdirection) <br> ArkTS-Sta: [SecurityComponentLayoutDirection](#securitycomponentlayoutdirection) \| undefined |是 | 安全控件上图标和文字分布的方向。<br/>默认值：SecurityComponentLayoutDirection.HORIZONTAL。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## position
 
@@ -78,7 +78,7 @@ ArkTS-Sta: position(value: Position | undefined)
 
 | 参数名 | 类型 | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [Position](ts-types.md#position) <br> ArkTS-Sta: [Position](ts-types.md#position) \| undefined |是 |安全控件的左上角相对于父容器左上角的偏移位置。<br/>默认值：<br/>{<br/>x: 0,<br/>y: 0<br/>}。|
+| value | ArkTS-Dyn: [Position](ts-types.md#position) <br> ArkTS-Sta: [Position](ts-types.md#position) \| undefined |是 |安全控件的左上角相对于父容器左上角的偏移位置。<br/>默认值：<br/>{<br/>x: 0,<br/>y: 0<br/>}。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## markAnchor
 
@@ -100,7 +100,7 @@ ArkTS-Sta: markAnchor(value: Position | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [Position](ts-types.md#position) <br> ArkTS-Sta: [Position](ts-types.md#position) \| undefined |是 |安全控件在位置定位时的锚点，以控件左上角作为基准点进行偏移。通常配合position和offset属性使用，单独使用时，效果类似offset。<br/>默认值：<br/>{<br/>x: 0,<br/>y: 0<br/>}。|
+| value | ArkTS-Dyn: [Position](ts-types.md#position) <br> ArkTS-Sta: [Position](ts-types.md#position) \| undefined |是 |安全控件在位置定位时的锚点，以控件左上角作为基准点进行偏移。通常配合position和offset属性使用，单独使用时，效果类似offset。<br/>默认值：<br/>{<br/>x: 0,<br/>y: 0<br/>}。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## offset
 
@@ -122,7 +122,7 @@ ArkTS-Sta: offset(value: Position | Edges | LocalizedEdges | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) <br> ArkTS-Sta: [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) \| undefined |是 |安全控件相对于自身布局位置的坐标偏移。设置此属性不会影响父容器的布局，仅在绘制过程中调整位置。<br/>默认值：<br/>{<br/>x: 0,<br/>y: 0<br/>}。|
+| value | ArkTS-Dyn: [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) <br> ArkTS-Sta: [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) \| undefined |是 |安全控件相对于自身布局位置的坐标偏移。设置此属性不会影响父容器的布局，仅在绘制过程中调整位置。<br/>默认值：<br/>{<br/>x: 0,<br/>y: 0<br/>}。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## fontSize
 
@@ -144,7 +144,7 @@ ArkTS-Sta: fontSize(value: Dimension | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [Dimension](ts-types.md#dimension10) <br> ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined |是 |安全控件上文字的尺寸。<br/>默认值：16fp。<br/>不支持设置百分比字符串。|
+| value | ArkTS-Dyn: [Dimension](ts-types.md#dimension10) <br> ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined |是 |安全控件上文字的尺寸。<br/>默认值：16fp。<br/>不支持设置百分比字符串。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## fontStyle
 
@@ -166,7 +166,7 @@ ArkTS-Sta: fontStyle(value: FontStyle | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [FontStyle](ts-appendix-enums.md#fontstyle) <br> ArkTS-Sta: [FontStyle](ts-appendix-enums.md#fontstyle) \| undefined |是 |安全控件上文字的样式。<br/>默认值：FontStyle.Normal。|
+| value | ArkTS-Dyn: [FontStyle](ts-appendix-enums.md#fontstyle) <br> ArkTS-Sta: [FontStyle](ts-appendix-enums.md#fontstyle) \| undefined |是 |安全控件上文字的样式。<br/>默认值：FontStyle.Normal。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## fontWeight
 
@@ -188,7 +188,7 @@ ArkTS-Sta: fontWeight(value: int | FontWeight | string | Resource | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> <br> ArkTS-Sta: int \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> \| undefined |是 |安全控件上文字粗细。<br/>number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。<br/>string类型支持使用数字字符串（如'400'），以及FontWeight中的枚举值对应的字符串（如'bold'、'bolder'、'lighter'、'regular'、'medium'）。<br/>从API version 20开始，支持Resource类型。Resource类型仅支持'integer'和'string'，当类型为'integer'时，取值参考前述number类型；当类型为'string'时，取值参考前述string类型。<br/>如果控件未设置fontWeight，文字粗细将默认设置为FontWeight.Medium；如果value入参为非法值，文字粗细将被设置为FontWeight.Normal。|
+| value | ArkTS-Dyn: number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> <br> ArkTS-Sta: int \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> \| undefined |是 |安全控件上文字粗细。<br/>number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。<br/>string类型支持使用数字字符串（如'400'），以及FontWeight中的枚举值对应的字符串（如'bold'、'bolder'、'lighter'、'regular'、'medium'）。<br/>从API version 20开始，支持Resource类型。Resource类型仅支持'integer'和'string'，当类型为'integer'时，取值参考前述number类型；当类型为'string'时，取值参考前述string类型。<br/>如果控件未设置fontWeight，文字粗细将默认设置为FontWeight.Medium；如果value入参为非法值，文字粗细将被设置为FontWeight.Normal。<br/>ArkTS-Sta: 设定为undefined时使用FontWeight.Medium进行设置。|
 
 ## fontFamily
 
@@ -210,7 +210,7 @@ ArkTS-Sta: fontFamily(value: string | Resource | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | string \| ArkTS-Dyn: [Resource](ts-types.md#resource) <br> ArkTS-Sta: [Resource](ts-types.md#resource) \| undefined |是 |安全控件上文字的字体。<br/>默认字体：'HarmonyOS Sans'。|
+| value | string \| ArkTS-Dyn: [Resource](ts-types.md#resource) <br> ArkTS-Sta: [Resource](ts-types.md#resource) \| undefined |是 |安全控件上文字的字体。<br/>默认字体：'HarmonyOS Sans'。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## fontColor
 
@@ -232,7 +232,7 @@ ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br> ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined |是 |安全控件上文字的颜色。<br/>默认值：$r('sys.color.font_on_primary')。|
+| value | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br> ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined |是 |安全控件上文字的颜色。<br/>默认值：$r('sys.color.font_on_primary')。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## iconColor
 
@@ -254,7 +254,7 @@ ArkTS-Sta: iconColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br> ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined |是 |安全控件上图标的颜色。<br/>默认值：$r('sys.color.icon_on_primary')。|
+| value | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br> ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined |是 |安全控件上图标的颜色。<br/>默认值：$r('sys.color.icon_on_primary')。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## backgroundColor
 
@@ -276,7 +276,7 @@ ArkTS-Sta: backgroundColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br> ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined |是 |安全控件的背景颜色。安全控件按钮背景色高八位的α值低于0x1a（例如0x1800ff00）时，安全控件按钮背景色高八位的α值会被系统强制调整为0xff。<br/>默认值：$r('sys.color.icon_emphasize')。|
+| value | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br> ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined |是 |安全控件的背景颜色。安全控件按钮背景色高八位的α值低于0x1a（例如0x1800ff00）时，安全控件按钮背景色高八位的α值会被系统强制调整为0xff。<br/>默认值：$r('sys.color.icon_emphasize')。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## borderStyle
 
@@ -298,7 +298,7 @@ ArkTS-Sta: borderStyle(value: BorderStyle | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [BorderStyle](ts-appendix-enums.md#borderstyle) <br> ArkTS-Sta: [BorderStyle](ts-appendix-enums.md#borderstyle) \| undefined |是 |安全控件的边框的样式。<br/>默认不设置边框样式。|
+| value | ArkTS-Dyn: [BorderStyle](ts-appendix-enums.md#borderstyle) <br> ArkTS-Sta: [BorderStyle](ts-appendix-enums.md#borderstyle) \| undefined |是 |安全控件的边框的样式。<br/>默认不设置边框样式。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## borderWidth
 
@@ -320,7 +320,7 @@ ArkTS-Sta: borderWidth(value: Dimension | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [Dimension](ts-types.md#dimension10) <br> ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined |是 |安全控件的边框宽度。<br/>默认不设置边框宽度。|
+| value | ArkTS-Dyn: [Dimension](ts-types.md#dimension10) <br> ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined |是 |安全控件的边框宽度。<br/>默认不设置边框宽度。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## borderColor
 
@@ -342,7 +342,7 @@ ArkTS-Sta: borderColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br> ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined |是 |安全控件的边框颜色。<br/>默认不设置边框颜色。|
+| value | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br> ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined |是 |安全控件的边框颜色。<br/>默认值: 0xffffffff。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## borderRadius
 
@@ -364,7 +364,7 @@ ArkTS-Sta: borderRadius(radius: Dimension | BorderRadiuses | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9)<sup>15+</sup> <br> ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9)<sup>15+</sup> \| undefined |是 |安全控件的边框圆角半径。|
+| value | ArkTS-Dyn: [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9)<sup>15+</sup> <br> ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9)<sup>15+</sup> \| undefined |是 |安全控件的边框圆角半径。<br/>默认值: 0vp。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## padding
 
@@ -386,7 +386,7 @@ ArkTS-Sta: padding(value: Padding | Dimension | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) <br> ArkTS-Sta: [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) \| undefined |是 |安全控件的内边距。<br/>默认值：上下8vp，左右16vp。<br/>**说明**：本参数不支持设置百分比字符串数据类型。若设置百分比字符串，则对应内边距显示为0。|
+| value | ArkTS-Dyn: [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) <br> ArkTS-Sta: [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) \| undefined |是 |安全控件的内边距。<br/>默认值：上下8vp，左右16vp。<br/>**说明**：本参数不支持设置百分比字符串数据类型。若设置百分比字符串，则对应内边距显示为0。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## align<sup>15+</sup>
 
@@ -408,7 +408,7 @@ ArkTS-Sta: align(alignType: Alignment | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| alignType | ArkTS-Dyn: [Alignment](ts-appendix-enums.md#alignment) <br> ArkTS-Sta: [Alignment](ts-appendix-enums.md#alignment) \| undefined |是 |安全控件图标文本的对齐方式。图标文本作为整体在控件背托范围内进行对齐，UX显示受[padding](ts-securitycomponent-attributes.md#padding)影响，在padding生效的基础上进行指定方式对齐。<br/>默认值：Alignment.Center。|
+| alignType | ArkTS-Dyn: [Alignment](ts-appendix-enums.md#alignment) <br> ArkTS-Sta: [Alignment](ts-appendix-enums.md#alignment) \| undefined |是 |安全控件图标文本的对齐方式。图标文本作为整体在控件背托范围内进行对齐，UX显示受[padding](ts-securitycomponent-attributes.md#padding)影响，在padding生效的基础上进行指定方式对齐。<br/>默认值：Alignment.Center。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## textIconSpace
 
@@ -430,7 +430,7 @@ ArkTS-StaextIconSpace(value: Dimension | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [Dimension](ts-types.md#dimension10) <br> ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined |是 |安全控件中图标和文字的间距。不支持设置百分比字符串。从API 14开始，若设置值为负值，则使用默认值。<br/>默认值：4vp。|
+| value | ArkTS-Dyn: [Dimension](ts-types.md#dimension10) <br> ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined |是 |安全控件中图标和文字的间距。不支持设置百分比字符串。从API 14开始，若设置值为负值，则使用默认值。<br/>默认值：4vp。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## width<sup>11+</sup>
 
@@ -452,7 +452,7 @@ ArkTS-Sta: width(value: Length | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-|value | ArkTS-Dyn: [Length](ts-types.md#length) <br> ArkTS-Sta: [Length](ts-types.md#length) \| undefined |是 |安全控件自身的宽度，缺省时将根据元素内容自适配宽度。|
+|value | ArkTS-Dyn: [Length](ts-types.md#length) <br> ArkTS-Sta: [Length](ts-types.md#length) \| undefined |是 |安全控件自身的宽度，缺省时将根据元素内容自适配宽度。<br/>ArkTS-Sta: 设定为undefined时将根据元素内容自适配宽度。|
 
 ## height<sup>11+</sup>
 
@@ -474,7 +474,7 @@ ArkTS-Sta: height(value: Length | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [Length](ts-types.md#length) <br> ArkTS-Sta: [Length](ts-types.md#length) \| undefined |是|安全控件自身的高度，缺省时将根据元素内容自适配高度。|
+| value | ArkTS-Dyn: [Length](ts-types.md#length) <br> ArkTS-Sta: [Length](ts-types.md#length) \| undefined |是|安全控件自身的高度，缺省时将根据元素内容自适配高度。<br/>ArkTS-Sta: 设定为undefined时将根据元素内容自适配高度。|
 
 ## size<sup>11+</sup>
 
@@ -496,7 +496,7 @@ ArkTS-Sta: size(value: SizeOptions | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [SizeOptions](ts-types.md#sizeoptions) <br> ArkTS-Sta: [SizeOptions](ts-types.md#sizeoptions) \| undefined |是 |宽高尺寸，缺省时将根据元素内容自适配高宽尺寸。|
+| value | ArkTS-Dyn: [SizeOptions](ts-types.md#sizeoptions) <br> ArkTS-Sta: [SizeOptions](ts-types.md#sizeoptions) \| undefined |是 |宽高尺寸，缺省时将根据元素内容自适配高宽尺寸。<br/>ArkTS-Sta: 设定为undefined时将根据元素内容自适配高宽尺寸。|
 
 ## constraintSize<sup>11+</sup>
 
@@ -518,7 +518,7 @@ ArkTS-Sta: constraintSize(value: ConstraintSizeOptions | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) <br> ArkTS-Sta: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) \| undefined |是 |约束尺寸，组件布局时，进行尺寸范围限制。constraintSize的优先级高于Width和Height。取值结果参考[constraintSize取值对width/height影响](ts-universal-attributes-size.md#constraintsize)。<br>默认值：<br>{<br/>minWidth:&nbsp;0,<br/>maxWidth:&nbsp;Infinity,<br/>minHeight:&nbsp;0,<br/>maxHeight:&nbsp;Infinity<br/>}。|
+| value | ArkTS-Dyn: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) <br> ArkTS-Sta: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) \| undefined |是 |约束尺寸，组件布局时，进行尺寸范围限制。constraintSize的优先级高于Width和Height。取值结果参考[constraintSize取值对width/height影响](ts-universal-attributes-size.md#constraintsize)。<br>默认值：<br>{<br/>minWidth:&nbsp;0,<br/>maxWidth:&nbsp;Infinity,<br/>minHeight:&nbsp;0,<br/>maxHeight:&nbsp;Infinity<br/>}。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## alignRules<sup>15+</sup>
 
@@ -540,7 +540,7 @@ ArkTS-Sta: alignRules(alignRule: AlignRuleOption | LocalizedAlignRuleOptions | u
 
 | 参数名 | 类型                                        | 必填 | 说明                     |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| alignRule | ArkTS-Dyn: [AlignRuleOption](ts-universal-attributes-location.md#alignruleoption9对象说明) \| [LocalizedAlignRuleOptions](ts-universal-attributes-location.md#localizedalignruleoptions12对象说明) ArkTS-Sta: ArkTS-Dyn: [AlignRuleOption](ts-universal-attributes-location.md#alignruleoption9对象说明) \| [LocalizedAlignRuleOptions](ts-universal-attributes-location.md#localizedalignruleoptions12对象说明) \| undefined | 是 | 指定设置在相对容器中子组件的对齐规则。 |
+| alignRule | ArkTS-Dyn: [AlignRuleOption](ts-universal-attributes-location.md#alignruleoption9对象说明) \| [LocalizedAlignRuleOptions](ts-universal-attributes-location.md#localizedalignruleoptions12对象说明) ArkTS-Sta: ArkTS-Dyn: [AlignRuleOption](ts-universal-attributes-location.md#alignruleoption9对象说明) \| [LocalizedAlignRuleOptions](ts-universal-attributes-location.md#localizedalignruleoptions12对象说明) \| undefined | 是 | 指定设置在相对容器中子组件的对齐规则。 <br/>ArkTS-Sta: 设定为undefined时不生效。|
 
 ## id<sup>15+</sup>
 
@@ -562,7 +562,7 @@ ArkTS-Sta: id(description: string | undefined)
 
 | 参数名   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
-| description | ArkTS-Dyn: string <br> ArkTS-Sta: string \| undefined |  是  | 组件的唯一标识，唯一性由使用者保证。<br>默认值：''。<br/> |
+| description | ArkTS-Dyn: string <br> ArkTS-Sta: string \| undefined |  是  | 组件的唯一标识，唯一性由使用者保证。<br>默认值：''。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## chainMode<sup>15+</sup>
 
@@ -584,8 +584,8 @@ ArkTS-Sta: chainMode(direction: Axis | undefined, style: ChainStyle | undefined)
 
 | 参数名 | 类型                                        | 必填 | 说明                     |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| direction | ArkTS-Dyn: [Axis](ts-appendix-enums.md#axis) <br> ArkTS-Sta: [Axis](ts-appendix-enums.md#axis) \| undefined | 是 | 链的方向。 |
-| style | ArkTS-Dyn: [ChainStyle](ts-universal-attributes-location.md#chainstyle12) <br> ArkTS-Sta: [ChainStyle](ts-universal-attributes-location.md#chainstyle12) \| undefined | 是 | 链的样式。 |
+| direction | ArkTS-Dyn: [Axis](ts-appendix-enums.md#axis) <br> ArkTS-Sta: [Axis](ts-appendix-enums.md#axis) \| undefined | 是 | 链的方向。 <br/>ArkTS-Sta: 设定为undefined时不生效。|
+| style | ArkTS-Dyn: [ChainStyle](ts-universal-attributes-location.md#chainstyle12) <br> ArkTS-Sta: [ChainStyle](ts-universal-attributes-location.md#chainstyle12) \| undefined | 是 | 链的样式。 <br/>ArkTS-Sta: 设定为undefined时不生效。|
 
 ## minFontScale<sup>18+</sup>
 
@@ -607,7 +607,7 @@ ArkTS-Sta: minFontScale(scale: double | Resource | undefined)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是 | 文本最小的字体缩小倍数。<br/>取值范围：[0, 1]。<br/>**说明：** <br/>设置的值小于0时，按值为0处理，即缩小不受限制；设置的值大于1，按值为1处理，即缩小不生效；取值范围外为异常值，默认不生效。 |
+| scale  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是 | 文本最小的字体缩小倍数。<br/>取值范围：[0, 1]。<br/>**说明：** <br/>设置的值小于0时，按值为0处理，即缩小不受限制；设置的值大于1，按值为1处理，即缩小不生效；取值范围外为异常值，默认不生效。 <br/>ArkTS-Sta: 设定为undefined时不生效。|
 
 ## maxFontScale<sup>18+</sup>
 
@@ -629,7 +629,7 @@ ArkTS-Sta: maxFontScale(scale: double | Resource | undefined)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是 | 文本最大的字体放大倍数。<br/>取值范围：[1, +∞)。<br/>**说明：** <br/>设置的值小于1时，按值为1处理，异常值默认不生效。 |
+| scale  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是 | 文本最大的字体放大倍数。<br/>取值范围：[1, +∞)。<br/>**说明：** <br/>设置的值小于1时，按值为1处理，异常值默认不生效。 <br/>ArkTS-Sta: 设定为undefined时不生效。|
 
 ## minFontSize<sup>18+</sup>
 
@@ -654,7 +654,7 @@ ArkTS-Sta: minFontSize(minSize: double | string | Resource | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| minSize  | ArkTS-Dyn: number \| string \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: double \| string \| [Resource](ts-types.md#resource) \| undefined | 是 | 文本最小显示字号。 |
+| minSize  | ArkTS-Dyn: number \| string \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: double \| string \| [Resource](ts-types.md#resource) \| undefined | 是 | 文本最小显示字号。 <br/>ArkTS-Sta: 设定为undefined时自适应字号不生效。|
 
 ## maxFontSize<sup>18+</sup>
 
@@ -678,7 +678,7 @@ ArkTS-Sta: maxFontSize(maxSize: double | string | Resource | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| maxSize  | ArkTS-Dyn: number \| string \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: double \| string \| [Resource](ts-types.md#resource) \| undefined | 是 | 文本最大显示字号。 |
+| maxSize  | ArkTS-Dyn: number \| string \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: double \| string \| [Resource](ts-types.md#resource) \| undefined | 是 | 文本最大显示字号。<br/>ArkTS-Sta: 设定为undefined时自适应字号不生效。 |
 
 ## maxLines<sup>18+</sup>
 
@@ -700,7 +700,7 @@ ArkTS-Sta: maxLines(line: int | Resource | undefined)
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| line  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource)<sup>20+</sup> <br> ArkTS-Sta: int \| [Resource](ts-types.md#resource)<sup>20+</sup> \| undefined | 是 | 文本的最大行数。<br/>number类型入参的取值范围：[1, +∞)。从API version 20开始，支持Resource类型。Resource类型仅支持'integer'，取值范围为[1, +∞)。<br/>**说明：** <br/>设置的值小于1时，按默认值100000处理。 |
+| line  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource)<sup>20+</sup> <br> ArkTS-Sta: int \| [Resource](ts-types.md#resource)<sup>20+</sup> \| undefined | 是 | 文本的最大行数。<br/>number类型入参的取值范围：[1, +∞)。从API version 20开始，支持Resource类型。Resource类型仅支持'integer'，取值范围为[1, +∞)。<br/>**说明：** <br/>设置的值小于1时，按默认值100000处理。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。 |
 
 ## heightAdaptivePolicy<sup>18+</sup>
 
@@ -736,7 +736,7 @@ ArkTS-Sta: heightAdaptivePolicy(policyextHeightAdaptivePolicy | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| policy  | ArkTS-Dyn: [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) <br> ArkTS-Sta: [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) \| undefined | 是 | 文本自适应高度的方式。<br/>默认值：TextHeightAdaptivePolicy.MAX_LINES_FIRST。 |
+| policy  | ArkTS-Dyn: [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) <br> ArkTS-Sta: [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) \| undefined | 是 | 文本自适应高度的方式。<br/>默认值：TextHeightAdaptivePolicy.MAX_LINES_FIRST。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。 |
 
 ## enabled<sup>18+</sup>
 
@@ -758,7 +758,7 @@ ArkTS-Sta: enabled(respond: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| respond  | ArkTS-Dyn: boolean <br> ArkTS-Sta: boolean \| undefined | 是 | 值为true表示组件可交互，响应点击等操作。<br/>值为false表示组件不可交互，不响应点击等操作。<br/>默认值：true。 |
+| respond  | ArkTS-Dyn: boolean <br> ArkTS-Sta: boolean \| undefined | 是 | 值为true表示组件可交互，响应点击等操作。<br/>值为false表示组件不可交互，不响应点击等操作。<br/>默认值：true。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。 |
 
 ## focusBox<sup>22+</sup>
 
@@ -781,7 +781,7 @@ ArkTS-Sta: focusBox(style: FocusBoxStyle | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| style  | ArkTS-Dyn: [FocusBoxStyle](ts-universal-attributes-focus.md#focusboxstyle12对象说明) <br> ArkTS-Sta: [FocusBoxStyle](ts-universal-attributes-focus.md#focusboxstyle12对象说明) \| undefined | 是 | 设置安全控件系统焦点框样式。 |
+| style  | ArkTS-Dyn: [FocusBoxStyle](ts-universal-attributes-focus.md#focusboxstyle12对象说明) <br> ArkTS-Sta: [FocusBoxStyle](ts-universal-attributes-focus.md#focusboxstyle12对象说明) \| undefined | 是 | 设置安全控件系统焦点框样式。<br/>ArkTS-Sta: 设定为undefined时焦点框形状将与背托形状保持一致。 |
 
 ## SecurityComponentLayoutDirection
 
@@ -907,6 +907,7 @@ import {
   Alignment,
   SecurityComponentLayoutDirection,
   BorderStyle,
+  ColumnOptions,
 } from '@ohos.arkui.component'
 import hilog from '@ohos.hilog'
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -916,7 +917,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   build() {
     Row() {
-      Column() {
+      Column({ space: 5 } as ColumnOptions) {
         // 生成一个保存控件，并设置它的SecurityComponent属性。
         SaveButton()
           .fontSize(35)
@@ -1479,6 +1480,7 @@ import {
   FlexWrap,
   FontWeight,
   TextHeightAdaptivePolicy,
+  ColumnOptions,
 } from '@ohos.arkui.component'
 import hilog from '@ohos.hilog'
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1489,8 +1491,8 @@ struct Index {
   build() {
     Column() {
       Scroll() {
-        Column() {
-          Column() {
+        Column({ space: 10 } as ColumnOptions) {
+          Column({ space: 10 } as ColumnOptions) {
             Row() {
               Text('FontSize = 20，图例：').fontSize(20)
               Text('快速保存图片').fontSize(20).fontColor(Color.Blue)
@@ -1510,7 +1512,7 @@ struct Index {
             }.height(40)
 
             Column() {
-              Column() {
+              Column({ space: 10 } as ColumnOptions) {
                 Row() {
                   Text('无需自适应调节')
                 }.width('90%')
@@ -1531,7 +1533,7 @@ struct Index {
             }.width('50%').height(90).backgroundColor(0x10000000)
 
             Column() {
-              Column() {
+              Column({ space: 10 } as ColumnOptions) {
                 Row() {
                   Text('优先减少字号')
                 }.width('90%')
@@ -1552,7 +1554,7 @@ struct Index {
             }.width('50%').height(90).backgroundColor(0x30000000)
 
             Column() {
-              Column() {
+              Column({ space: 10 } as ColumnOptions) {
                 Row() {
                   Text('先减小字号，再换行')
                 }.width('90%')
@@ -1574,7 +1576,7 @@ struct Index {
             }.width('50%').height(90).backgroundColor(0x30000000)
 
             Column() {
-              Column() {
+              Column({ space: 10 } as ColumnOptions) {
                 Row() {
                   Text('减小字号+换行，文字被截断')
                 }.width('90%')
@@ -1605,7 +1607,7 @@ struct Index {
             }.height(40)
 
             Column() {
-              Column() {
+              Column({ space: 10 } as ColumnOptions) {
                 Row() {
                   Text('无需自适应调节')
                 }.width('90%')
@@ -1626,7 +1628,7 @@ struct Index {
             }.width('50%').height(90).backgroundColor(0x10000000)
 
             Column() {
-              Column() {
+              Column({ space: 10 } as ColumnOptions) {
                 Row() {
                   Text('优先换行')
                 }.width('90%')
@@ -1648,7 +1650,7 @@ struct Index {
             }.width('50%').height(90).backgroundColor(0x30000000)
 
             Column() {
-              Column() {
+              Column({ space: 10 } as ColumnOptions) {
                 Row() {
                   Text('先换行，再减小字号')
                 }.width('90%')
@@ -1670,7 +1672,7 @@ struct Index {
             }.width('50%').height(90).backgroundColor(0x30000000)
 
             Column() {
-              Column() {
+              Column({ space: 10 } as ColumnOptions) {
                 Row() {
                   Text('换行+减小字号，文字被截断')
                 }.width('90%')
@@ -1702,7 +1704,7 @@ struct Index {
             }.height(40)
 
             Column() {
-              Column() {
+              Column({ space: 10 } as ColumnOptions) {
                 Row() {
                   Text('无需自适应调节')
                 }.width('90%')
@@ -1723,7 +1725,7 @@ struct Index {
             }.width('50%').height(90).backgroundColor(0x10000000)
 
             Column() {
-              Column() {
+              Column({ space: 10 } as ColumnOptions) {
                 Row() {
                   Text('不改变布局约束，优先减小字号')
                 }.width('90%')
@@ -1744,7 +1746,7 @@ struct Index {
             }.width('50%').height(90).backgroundColor(0x30000000)
 
             Column() {
-              Column() {
+              Column({ space: 10 } as ColumnOptions) {
                 Row() {
                   Text('不改变布局约束，先减小字号再换行')
                 }.width('90%')
@@ -1766,7 +1768,7 @@ struct Index {
             }.width('50%').height(90).backgroundColor(0x30000000)
 
             Column() {
-              Column() {
+              Column({ space: 10 } as ColumnOptions) {
                 Row() {
                   Text(`Maxlines不够\n文字被截断`)
                 }.width('90%')
@@ -1788,7 +1790,7 @@ struct Index {
             }.width('25%').height(90).backgroundColor(0x10000000)
 
             Column() {
-              Column() {
+              Column({ space: 10 } as ColumnOptions) {
                 Row() {
                   Text(`高度不够\n文字被截断`)
                 }.width('90%')
@@ -1906,6 +1908,7 @@ import {
   TextHeightAdaptivePolicy,
   ColorMetrics,
   LengthMetrics,
+  ColumnOptions,
 } from '@ohos.arkui.component'
 import hilog from '@ohos.hilog'
 import { BusinessError } from '@ohos.base';
@@ -1915,13 +1918,13 @@ import { BusinessError } from '@ohos.base';
 struct Index {
   build() {
     Row() {
-      Column() {
-        Column() {
+      Column({ space: 30 } as ColumnOptions) {
+        Column({ space: 15 } as ColumnOptions) {
           Text('不设置focusBox属性的默认安全控件')
           SaveButton()
         }
 
-        Column() {
+        Column({ space: 15 } as ColumnOptions) {
           Text('紧贴安全控件的黑色焦点框')
           SaveButton()
             .focusBox({
@@ -1930,7 +1933,7 @@ struct Index {
             })
         }
 
-        Column() {
+        Column({ space: 15 } as ColumnOptions) {
           Text('较大的红色焦点框')
           SaveButton()
             .focusBox({
@@ -1940,7 +1943,7 @@ struct Index {
             })
         }
 
-        Column() {
+        Column({ space: 15 } as ColumnOptions) {
           Text('矩形安全控件')
           SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Normal })
             .focusBox({
@@ -1950,7 +1953,7 @@ struct Index {
             })
         }
 
-        Column() {
+        Column({ space: 15 } as ColumnOptions) {
           Text('圆形安全控件')
           SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Circle })
             .focusBox({
