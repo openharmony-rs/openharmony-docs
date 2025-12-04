@@ -137,11 +137,11 @@
 2. 从@kit.NetworkKit中导入eap命名空间。
 
    <!-- @[eap_case_eth_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
-
-``` TypeScript
-import { eap } from '@kit.NetworkKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+   
+   ``` TypeScript
+   import { eap } from '@kit.NetworkKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 3. 当企业管理软件需要进行认证，调用[startEthEap](../reference/apis-network-kit/js-apis-net-eap.md#eapstartetheap)方法时，会发起802.1X认证流程。
 
