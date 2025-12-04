@@ -93,7 +93,7 @@
 
 ### Camera_ErrorCode
 
-```
+```c
 enum Camera_ErrorCode
 ```
 
@@ -120,7 +120,7 @@ enum Camera_ErrorCode
 
 ### Camera_Status
 
-```
+```c
 enum Camera_Status
 ```
 
@@ -139,7 +139,7 @@ enum Camera_Status
 
 ### Camera_SceneMode
 
-```
+```c
 enum Camera_SceneMode
 ```
 
@@ -157,7 +157,7 @@ enum Camera_SceneMode
 
 ### Camera_Position
 
-```
+```c
 enum Camera_Position
 ```
 
@@ -175,7 +175,7 @@ enum Camera_Position
 
 ### Camera_Type
 
-```
+```c
 enum Camera_Type
 ```
 
@@ -195,7 +195,7 @@ enum Camera_Type
 
 ### Camera_Connection
 
-```
+```c
 enum Camera_Connection
 ```
 
@@ -213,7 +213,7 @@ enum Camera_Connection
 
 ### Camera_Format
 
-```
+```c
 enum Camera_Format
 ```
 
@@ -233,7 +233,7 @@ enum Camera_Format
 
 ### Camera_FlashMode
 
-```
+```c
 enum Camera_FlashMode
 ```
 
@@ -252,7 +252,7 @@ enum Camera_FlashMode
 
 ### Camera_ExposureMode
 
-```
+```c
 enum Camera_ExposureMode
 ```
 
@@ -270,7 +270,7 @@ enum Camera_ExposureMode
 
 ### Camera_FocusMode
 
-```
+```c
 enum Camera_FocusMode
 ```
 
@@ -289,7 +289,7 @@ enum Camera_FocusMode
 
 ### Camera_FocusState
 
-```
+```c
 enum Camera_FocusState
 ```
 
@@ -307,7 +307,7 @@ enum Camera_FocusState
 
 ### Camera_VideoStabilizationMode
 
-```
+```c
 enum Camera_VideoStabilizationMode
 ```
 
@@ -327,7 +327,7 @@ enum Camera_VideoStabilizationMode
 
 ### Camera_ImageRotation
 
-```
+```c
 enum Camera_ImageRotation
 ```
 
@@ -350,7 +350,7 @@ enum Camera_ImageRotation
 
 ### Camera_QualityLevel
 
-```
+```c
 enum Camera_QualityLevel
 ```
 
@@ -368,7 +368,7 @@ enum Camera_QualityLevel
 
 ### Camera_MetadataObjectType
 
-```
+```c
 enum Camera_MetadataObjectType
 ```
 
@@ -384,7 +384,7 @@ enum Camera_MetadataObjectType
 
 ### Camera_TorchMode
 
-```
+```c
 enum Camera_TorchMode
 ```
 
@@ -405,7 +405,7 @@ enum Camera_TorchMode
 
 ### Camera_SmoothZoomMode
 
-```
+```c
 enum Camera_SmoothZoomMode
 ```
 
@@ -422,7 +422,7 @@ enum Camera_SmoothZoomMode
 
 ### Camera_SystemPressureLevel
 
-```
+```c
 enum Camera_SystemPressureLevel
 ```
 
@@ -442,7 +442,7 @@ enum Camera_SystemPressureLevel
 
 ### Camera_PreconfigType
 
-```
+```c
 enum Camera_PreconfigType
 ```
 
@@ -461,7 +461,7 @@ enum Camera_PreconfigType
 
 ### Camera_PreconfigRatio
 
-```
+```c
 enum Camera_PreconfigRatio
 ```
 
@@ -479,7 +479,7 @@ enum Camera_PreconfigRatio
 
 ### Camera_HostDeviceType
 
-```
+```c
 enum Camera_HostDeviceType
 ```
 
@@ -497,7 +497,7 @@ enum Camera_HostDeviceType
 
 ### Camera_FoldStatus
 
-```
+```c
 enum Camera_FoldStatus
 ```
 
@@ -518,7 +518,7 @@ enum Camera_FoldStatus
 
 ### Camera_QualityPrioritization
 
-```
+```c
 enum Camera_QualityPrioritization
 ```
 
@@ -535,7 +535,7 @@ enum Camera_QualityPrioritization
 
 ### Camera_ConcurrentType
 
-```
+```c
 enum Camera_ConcurrentType
 ```
 
@@ -552,7 +552,7 @@ enum Camera_ConcurrentType
 
 ### Camera_WhiteBalanceMode
 
-```
+```c
 enum Camera_WhiteBalanceMode
 ```
 
@@ -574,7 +574,7 @@ enum Camera_WhiteBalanceMode
 
 ### Camera_ControlCenterEffectType
 
-```
+```c
 enum Camera_ControlCenterEffectType
 ```
 
@@ -591,7 +591,7 @@ enum Camera_ControlCenterEffectType
 
 ### Camera_PhotoQualityPrioritization
 
-```
+```c
 enum Camera_PhotoQualityPrioritization
 ```
 
@@ -611,7 +611,7 @@ enum Camera_PhotoQualityPrioritization
 
 ### OH_Camera_GetCameraManager()
 
-```
+```c
 Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)
 ```
 
@@ -635,7 +635,7 @@ Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)
 
 ### OH_Camera_DeleteCameraManager()
 
-```
+```c
 Camera_ErrorCode OH_Camera_DeleteCameraManager(Camera_Manager* cameraManager)
 ```
 

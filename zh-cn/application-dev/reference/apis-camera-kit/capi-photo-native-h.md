@@ -39,7 +39,7 @@
 
 ### OH_PhotoNative_GetMainImage()
 
-```
+```c
 Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNative** mainImage)
 ```
 
@@ -65,7 +65,7 @@ Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNati
 
 ### OH_PhotoNative_Release()
 
-```
+```c
 Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)
 ```
 
