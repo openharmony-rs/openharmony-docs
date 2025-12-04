@@ -304,7 +304,7 @@ onCreate(): void {
     >
     > 1.调用OH_ArkUI_SetForceDarkConfig前，需确保已加载过[OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_querymoduleinterfacebyname)。
     >
-    > 2.OH_ArkUI_SetForceDarkConfig接口一定要在节点创建前的UI线程中调用。
+    > 2.OH_ArkUI_SetForceDarkConfig接口一定要在节点创建前的UI线程中调用。**页面创建完成后，不支持通过该接口动态修改应用的反色能力生效状态。**
     >
     > 3.OH_ArkUI_SetForceDarkConfig接口仅支持进程级生效，暂不支持不同实例使用不同的反色算法。
     >
