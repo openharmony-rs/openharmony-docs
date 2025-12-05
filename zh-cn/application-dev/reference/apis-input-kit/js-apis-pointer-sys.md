@@ -20,7 +20,7 @@ import { pointer } from '@kit.InputKit';
 
 ArkTS-Dyn: setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
 
-ArkTS-Sta: setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Sta: setPointerSpeed(speed: int, callback: AsyncCallback&lt;void&gt;): void
 
 设置鼠标移动速度，使用AsyncCallback异步方式返回结果。
 
@@ -226,7 +226,9 @@ struct Index {
 
 ## pointer.getPointerSpeed
 
-getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getPointerSpeed(callback: AsyncCallback&lt;int&gt;): void
 
 获取鼠标移动速度，使用AsyncCallback异步方式返回结果。
 

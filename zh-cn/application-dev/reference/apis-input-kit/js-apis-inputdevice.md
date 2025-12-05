@@ -80,7 +80,9 @@ struct Index {
 ArkTS-Sta示例：
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -90,7 +92,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getDeviceList((error: BusinessError<void>, ids: Array<int>) => {
+            inputDevice.getDeviceList((error: BusinessError<void> | null, ids: Array<int> | undefined) => {
               if (error) {
                 console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -156,7 +158,9 @@ struct Index {
 ArkTS-Sta示例：
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -242,7 +246,9 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -305,8 +311,38 @@ ArkTS-Sta: getDeviceInfo(deviceId: int): Promise&lt;InputDeviceData&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { inputDevice } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 获取输入设备id为1的设备信息。
+          try {
+            inputDevice.getDeviceInfo(1).then((deviceData: inputDevice.InputDeviceData) => {
+              console.log(`Device info: ${JSON.stringify(deviceData)}`);
+            });
+          } catch (error) {
+            console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -365,6 +401,8 @@ ArkTS-Sta: getDeviceInfoSync(deviceId: int): InputDeviceData
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { inputDevice } from '@kit.InputKit';
 
@@ -386,6 +424,36 @@ struct Index {
     }
   }
 }
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputDevice, KeyCode } from '@kit.InputKit'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 查询id为1的输入设备对于17、22和2055按键的支持情况。
+          try {
+            let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_DOWN, KeyCode.KEYCODE_VOLUME_MUTE, KeyCode.KEYCODE_DEL];
+            inputDevice.supportKeys(1, keys, (error: BusinessError<void> | null, supportResult: Array<Boolean> | undefined) => {
+                console.log(`Query result: ${JSON.stringify(supportResult)}`);
+              });
+          } catch (error) {
+            console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+
 ```
 
 ## <span id="on_change">inputDevice.on<sup>9+</sup></span>
@@ -485,7 +553,9 @@ onChange(listener: Callback&lt;DeviceListener&gt;): void
 **示例：**
 
 ```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -494,22 +564,10 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          let isPhysicalKeyboardExist = true;
           try {
             inputDevice.onChange((data: inputDevice.DeviceListener) => {
               console.log(`Device event info: ${JSON.stringify(data)}`);
-              inputDevice.getKeyboardType(data.deviceId, (err: Error, type: inputDevice.KeyboardType) => {
-                console.log("The keyboard type is: " + type);
-                if (type == inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type == 'add') {
-                  // 监听物理键盘已连接。
-                  isPhysicalKeyboardExist = true;
-                } else if (type == inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type == 'remove') {
-                  // 监听物理键盘已断开。
-                  isPhysicalKeyboardExist = false;
-                }
-              });
             });
-            // 根据isPhysicalKeyboardExist的值决定软键盘是否弹出。
           } catch (error) {
             console.error(`Get device info failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -589,9 +647,9 @@ struct Index {
 }
 ```
 
-## <span id = "offChange22">inputDevice.off<sup>22+</sup></span>
+## <span id = "offChange22">inputDevice.offChange<sup>22+</sup></span>
 
-off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
+offChange(listener?: Callback&lt;DeviceListener&gt;): void
 
 取消监听输入设备的热插拔事件。在应用退出前调用，取消监听。
 
@@ -620,7 +678,9 @@ off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
 **示例：**
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -632,20 +692,17 @@ struct Index {
           let callback = (data: inputDevice.DeviceListener) => {
             console.log(`Report device event info: ${JSON.stringify(data, [`type`, `deviceId`])}`);
           };
-
           try {
             inputDevice.onChange(callback);
           } catch (error) {
             console.error(`Listen device event failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
-
           // 取消指定的监听。
           try {
             inputDevice.offChange(callback);
           } catch (error) {
             console.error(`Cancel listening device event failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
-
           // 取消所有监听。
           try {
             inputDevice.offChange();
@@ -882,12 +939,12 @@ struct Index {
 }
 ```
 
-**示例：**
-
-ArkTS-Dyn示例：
+ArkTS-Sta示例：
 
 ```ts
-import { inputDevice } from '@kit.InputKit';
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputDevice, KeyCode } from '@kit.InputKit'
 
 @Entry
 @Component
@@ -898,9 +955,10 @@ struct Index {
         .onClick(() => {
           // 查询id为1的输入设备对于17、22和2055按键的支持情况。
           try {
-            inputDevice.supportKeys(1, [17, 22, 2055], (error: BusinessError | null, supportResult: Array<Boolean> | undefined) => {
-              console.log(`Query result: ${JSON.stringify(supportResult)}`);
-            });
+            let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_DOWN, KeyCode.KEYCODE_VOLUME_MUTE, KeyCode.KEYCODE_DEL];
+            inputDevice.supportKeys(1, keys, (error: BusinessError<void> | null, supportResult: Array<Boolean> | undefined) => {
+                console.log(`Query result: ${JSON.stringify(supportResult)}`);
+              });
           } catch (error) {
             console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -947,6 +1005,8 @@ ArkTS-Sta: supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;): Promise&lt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { inputDevice } from '@kit.InputKit';
 
@@ -962,6 +1022,35 @@ struct Index {
             inputDevice.supportKeys(1, [17, 22, 2055]).then((supportResult: Array<Boolean>) => {
               console.log(`Query result: ${JSON.stringify(supportResult)}`);
             });
+          } catch (error) {
+            console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputDevice, KeyCode } from '@kit.InputKit'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 查询id为1的输入设备对于17、22和2055按键的支持情况。
+          try {
+            let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_DOWN, KeyCode.KEYCODE_VOLUME_MUTE, KeyCode.KEYCODE_DEL];
+            inputDevice.supportKeys(1, keys).then((supportResult: Array<Boolean>) => {
+                console.log(`Query result: ${JSON.stringify(supportResult)}`);
+              });
           } catch (error) {
             console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1008,6 +1097,8 @@ ArkTS-Sta: supportKeysSync(deviceId: int, keys: Array&lt;KeyCode&gt;): Array&lt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { inputDevice } from '@kit.InputKit';
 
@@ -1030,6 +1121,36 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { inputDevice, KeyCode } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 查询id为1的输入设备对于17、22和2055按键的支持情况。
+          try {
+            let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_DOWN, KeyCode.KEYCODE_VOLUME_MUTE, KeyCode.KEYCODE_DEL];
+            let supportResult: Array<Boolean> = inputDevice.supportKeysSync(1, keys);
+            console.log(`Query result: ${JSON.stringify(supportResult)}`)
+          } catch (error) {
+            console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`)
+          }
+        })
+    }
+  }
+}
+
+```
+
 
 ## inputDevice.getKeyboardType<sup>9+</sup>
 
@@ -1095,7 +1216,10 @@ struct Index {
 ArkTS-Sta示例：
 
 ```js
-import { inputDevice } from '@kit.InputKit';
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { inputDevice } from '@kit.InputKit';;
+import { BusinessError,AsyncCallback } from '@kit.BasicServicesKit';
+
 
 @Entry
 @Component
@@ -1106,13 +1230,16 @@ struct Index {
         .onClick(() => {
           // 查询id为1的输入设备的键盘类型。
           try {
-            inputDevice.getKeyboardType(1, (error: BusinessError | null, type: int | undefined) => {
+            let tempType : int = 1;
+            let funCallback :AsyncCallback<inputDevice.KeyboardType> = (error: BusinessError<void> | null, type: inputDevice.KeyboardType | undefined) => {
               if (error) {
                 console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Keyboard type: ${JSON.stringify(type)}`);
-            });
+              console.log(`Keyboard type: ${type}`);
+
+            }
+            inputDevice.getKeyboardType(tempType, funCallback)
           } catch (error) {
             console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1186,7 +1313,10 @@ struct Index {
 ArkTS-Sta示例：
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError,AsyncCallback } from '@kit.BasicServicesKit';
+
 
 @Entry
 @Component
@@ -1197,9 +1327,11 @@ struct Index {
         .onClick(() => {
           // 示例查询设备id为1的设备键盘类型。
           try {
-            inputDevice.getKeyboardType(1).then((type: int) => {
+            let id: int = 1;
+            let fun = (type: inputDevice.KeyboardType) => {
               console.log(`Keyboard type: ${JSON.stringify(type)}`);
-            });
+            };
+            inputDevice.getKeyboardType(id).then(fun);
           } catch (error) {
             console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1273,7 +1405,9 @@ struct Index {
 ArkTS-Sta示例：
 
 ```js
+mport { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError,AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1330,6 +1464,8 @@ isFunctionKeyEnabled(functionKey: FunctionKey): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { inputDevice } from '@kit.InputKit';
 
@@ -1351,6 +1487,34 @@ struct Index {
     }
   }
 }
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputDevice } from '@kit.InputKit'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.isFunctionKeyEnabled(inputDevice.FunctionKey.CAPS_LOCK).then((state: boolean) => {
+              console.log(`capslock state: ${JSON.stringify(state)}`);
+            });
+          } catch (error) {
+            console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+
 ```
 
 ## inputDevice.setFunctionKeyEnabled<sup>15+</sup>
@@ -1388,6 +1552,8 @@ setFunctionKeyEnabled(functionKey: FunctionKey, enabled: boolean): Promise&lt;vo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1407,6 +1573,33 @@ struct Index {
             });
           } catch (error) {
             console.error(`Set capslock enable error`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputDevice } from '@kit.InputKit'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.setFunctionKeyEnabled(inputDevice.FunctionKey.CAPS_LOCK, true).then(() => {
+              console.info(`Set capslock state success`);
+            })
+          } catch (error) {
+            console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -1460,7 +1653,9 @@ struct Index {
 ArkTS-Sta示例：
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component

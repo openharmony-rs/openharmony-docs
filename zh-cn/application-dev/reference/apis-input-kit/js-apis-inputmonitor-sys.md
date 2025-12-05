@@ -1843,7 +1843,7 @@ struct Index {
 }
 ```
 
-## <span id = "on_rotate_sta">inputMonitor.on('rotate')<sup>22+</sup></span>
+## <span id = "on_rotate_sta">inputMonitor.onRotate<sup>22+</sup></span>
 
 onRotate(fingers: int, receiver: Callback&lt;Rotate&gt;): void
 

@@ -85,7 +85,10 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 
 @Entry
 @Component
@@ -95,14 +98,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            let fnCallBack = (err: BusinessError<void>|null, data: undefined)  => {
+           inputDevice.setKeyboardRepeatDelay(350, (error: BusinessError<void>|null, data: undefined)  => {
               if (error) {
                 console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
               console.log(`Set keyboard repeat delay success`);
-            }
-            inputDevice.setKeyboardRepeatDelay(350, fnCallBack);
+            })
           } catch (error) {
             console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -151,6 +153,8 @@ ArkTS-Sta: setKeyboardRepeatDelay(delay: int): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { inputDevice } from '@kit.InputKit';
 
@@ -172,6 +176,34 @@ struct Index {
     }
   }
 }
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError,AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.setKeyboardRepeatDelay(350).then(() => {
+              console.log(`Set keyboard repeat delay success`);
+            });
+          } catch (error) {
+            console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+
 ```
 
 ## inputDevice.getKeyboardRepeatDelay<sup>10+</sup>
@@ -239,7 +271,10 @@ struct Index {
 ArkTS-Sta示例:
 
 ```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 
 @Entry
 @Component
@@ -249,14 +284,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            let fnCallBack = (err: BusinessError<void>|null, delay: int|undefined) => {
-               if (error) {
+            inputDevice.getKeyboardRepeatDelay((error: BusinessError<void>|null, delay: int|undefined) => {
+              if (error) {
                 console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
               console.log(`Get keyboard repeat delay success`);
-            };
-            inputDevice.getKeyboardRepeatDelay(fnCallBack);
+            });
           } catch (error) {
             console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -327,7 +361,9 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -415,7 +451,9 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -425,7 +463,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.setKeyboardRepeatRate(60, (error:  BusinessError<void>|null, undefined) => {
+            inputDevice.setKeyboardRepeatRate(60, (error:  BusinessError<void>|null, data: undefined) => {
               if (error) {
                 console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -438,7 +476,6 @@ struct Index {
         })
     }
   }
-}
 ```
 
 ## inputDevice.setKeyboardRepeatRate<sup>10+</sup>
@@ -480,8 +517,37 @@ ArkTS-Sta: setKeyboardRepeatRate(rate: int): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { inputDevice } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.setKeyboardRepeatRate(60).then(() => {
+              console.log(`Set keyboard repeat rate success`);
+            });
+          } catch (error) {
+            console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -569,6 +635,7 @@ ArkTS-Sta示例:
 
 ```ts
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -716,8 +783,37 @@ ArkTS-Sta: setInputDeviceEnabled(deviceId: int, enabled: boolean): Promise&lt;vo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { inputDevice } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.setInputDeviceEnabled(0, true).then(() => {
+              console.info(`Set input device enable success`);
+            });
+          } catch (error) {
+            console.error(`Set input device enable error`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component

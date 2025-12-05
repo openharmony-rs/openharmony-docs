@@ -266,9 +266,7 @@ struct Index {
 
 ## inputConsumer.setShieldStatus<sup>11+</sup>
 
-ArkTS-Dyn: setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
-
-ArkTS-Sta: setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
+setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 
 设置系统快捷键屏蔽类型。
 
