@@ -971,16 +971,16 @@ UDP与TCP流程大体类似，下面以TCP为例：
    }
    ```
    <!-- @[tlsServer_start_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
-
-``` TypeScript
-tlsServer.listen(tlsConnectOptions).then(() => {
-  hilog.info(0x0000, 'testTag', 'listen callback success');
-// ···
-}).catch((err: BusinessError) => {
-  hilog.error(0x0000, 'testTag', 'failed' + err);
-// ···
-});
-```
+   
+   ``` TypeScript
+   tlsServer.listen(tlsConnectOptions).then(() => {
+     hilog.info(0x0000, 'testTag', 'listen callback success');
+     // ...
+   }).catch((err: BusinessError) => {
+     hilog.error(0x0000, 'testTag', 'failed' + err);
+     // ...
+   });
+   ```
 
 4. 订阅TLSSocketServer的连接事件，收到客户端连接，通过回调得到TLSSocketConnection对象，通过该对象可以实现订阅TLSSocketConnection相关的事件、向客户端发送数的动作，TLSSocketConnection连接使用完毕后，需要主动断开连接，进行取消订阅回调的动作。
 
