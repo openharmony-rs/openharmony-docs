@@ -1335,8 +1335,8 @@ setDefaultDensityEnabled(enabled: boolean): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300005 | This window stage is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The main window is not created or destroyed. |
+| 1300005 | This window stage is abnormal. Possible cause: The window stage is not created or destroyed. |
 
 **示例：**
 
@@ -1447,8 +1447,8 @@ setCustomDensity(density: number, applyToSubWindow?: boolean): void
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300005 | This window stage is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The main window is not created or destroyed. |
+| 1300005 | This window stage is abnormal. Possible cause: The window stage is not created or destroyed. |
 
 **示例：**
 
@@ -1569,7 +1569,7 @@ removeStartingWindow(): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window stage is not created or destroyed; 2. The main window is not created or destroyed; 3. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
