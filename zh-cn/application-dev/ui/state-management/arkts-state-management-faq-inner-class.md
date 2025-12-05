@@ -1,18 +1,228 @@
-# 状态管理合理使用开发指导
+# 数据对象状态管理常见问题
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiyujia926-->
+<!--Owner: @zany_pink-->
 <!--Designer: @s10021109-->
-<!--Tester: @TerryTsao-->
+<!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
 
-由于对状态管理当前的特性并不了解，许多开发者在使用状态管理进行开发时会遇到UI不刷新、刷新性能差的情况。对此，本篇将从两个方向，对一共五个典型场景进行分析，同时提供相应的正例和反例，帮助开发者学习如何合理使用状态管理进行开发。
+大型应用中需要封装大量的数据对象，数据对象内部状态变量的使用极大地影响开发者的开发效率，本文将介绍数据对象状态管理的常见问题及解决方案。
 
-## 合理使用属性
+在状态管理中，类会被一层“代理”包装。当修改类的成员变量时，代理会拦截该操作并完成两项任务：
 
-### 将简单属性数组合并成对象数组
+- 同步更新数据源：确保原始数据被正确修改；
+- 触发UI刷新：通知所有依赖此变量的组件重新渲染。
 
-在开发过程中，我们经常会需要设置多个组件的同一种属性，比如Text组件的内容、组件的宽度、高度等样式信息等。将这些属性保存在一个数组中，配合ForEach进行使用是一种简单且方便的方法。
+开发者可以通过[getTarget接口](./arkts-new-getTarget.md)获取原始对象，并使用下面的方法可以判断对象是否被状态管理包装。当表达式结果为false时，表示value是状态管理包装过的对象；否则，表示value不是状态管理包装过的对象。
+
+``` ts
+UIUtils.getTarget(value) === value
+```
+
+## 类的构造函数中通过捕获this修改变量无法观察
+
+当在构造函数中初始化修改`success`的[箭头函数](../../quick-start/introduction-to-arkts.md#箭头函数又名lambda函数)时，`TestModel`实例尚未被代理封装，`this`指向`TestModel`实例本身。因此，后续触发`query`事件时，状态管理无法观测到变化。
+
+当开发者将修改`success`的箭头函数放在`query`中时，已完成`TestModel`对象初始化和代理封装。通过`this.viewModel.query()`调用`query`时，`query`函数中的`this`指向`viewModel`代理对象，对代理对象成员属性`isSuccess`的更改能够被观测到，因此触发`query`事件可以被状态管理观测到变化。
+
+【反例】
+<!-- @[state_problem_this_unable_observe_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObserveOpposite.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  @State viewModel: TestModel = new TestModel();
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.viewModel.isSuccess ? 'success' : 'failed')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            this.viewModel.query();
+          })
+      }.width('100%')
+    }.height('100%')
+  }
+}
+
+export class TestModel {
+  public isSuccess: boolean = false;
+  public model: Model
+
+  constructor() {
+    this.model = new Model(() => {
+      this.isSuccess = true;
+      hilog.info(DOMAIN, 'testTag', '%{public}s', `this.isSuccess: ${this.isSuccess}`);
+    })
+  }
+
+  query() {
+    this.model.query();
+  }
+}
+
+export class Model {
+  public callback: () => void
+
+  constructor(cb: () => void) {
+    this.callback = cb;
+  }
+
+  query() {
+    this.callback();
+  }
+}
+```
+
+上述示例代码中，状态变量的修改在构造函数内。界面刚开始时显示“failed”，点击后日志打印“this.isSuccess: true”，表明修改成功，但界面仍然显示“failed”，这说明UI未刷新。
+
+【正例】
+<!-- @[state_problem_this_unable_observe_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObservePositive.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  @State viewModel: TestModel = new TestModel();
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.viewModel.isSuccess ? 'success' : 'failed')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            this.viewModel.query();
+          })
+      }.width('100%')
+    }.height('100%')
+  }
+}
+
+export class TestModel {
+  public isSuccess: boolean = false;
+  public model: Model = new Model(() => {
+  })
+
+  query() {
+    this.model.callback = () => {
+      this.isSuccess = true;
+    }
+    this.model.query();
+  }
+}
+
+export class Model {
+  public callback: () => void
+
+  constructor(cb: () => void) {
+    this.callback = cb;
+  }
+
+  query() {
+    this.callback();
+  }
+}
+```
+
+上文示例代码将状态变量的修改放在类的普通方法中，界面开始时显示“failed”，点击后显示“success”。
+
+## 使用箭头函数改变状态变量未生效
+
+在箭头函数中改变状态变量不会触发UI刷新，这是因为箭头函数体内的`this`对象是定义该函数时所在的作用域指向的对象，而不是调用时所在的作用域指向的对象。所以在该场景下，`changeCoverUrl`的`this`指向`PlayDetailViewModel`，而不是状态变量本身。
+
+【反例】
+<!-- @[play_detail_opposite_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailViewModel.ets) -->
+
+``` TypeScript
+export default class PlayDetailViewModel {
+  public coverUrl: string = '#00ff00';
+  public changeCoverUrl = () => {
+    this.coverUrl = '#00F5FF';
+  }
+}
+```
+
+<!-- @[state_problem_arrow_function_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailPage.ets) -->
+
+``` TypeScript
+import PlayDetailViewModel from './PlayDetailViewModel';
+
+@Entry
+@Component
+struct PlayDetailPage {
+  @State vm: PlayDetailViewModel = new PlayDetailViewModel();
+
+  build() {
+    Stack() {
+      Text(this.vm.coverUrl).width(100).height(100).backgroundColor(this.vm.coverUrl)
+      Row() {
+        Button('Change Color')
+          .onClick(() => {
+            this.vm.changeCoverUrl();
+          })
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .alignContent(Alignment.Top)
+  }
+}
+```
+
+解决方案：将状态变量的代理对象传入箭头函数，调用代理的属性赋值。
+
+【正例】
+
+<!-- @[play_detail_positive_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPagePositive/PlayDetailViewModel.ets) -->
+
+``` TypeScript
+export default class PlayDetailViewModel {
+  public coverUrl: string = '#00ff00';
+  public changeCoverUrl = (model: PlayDetailViewModel) => {
+    model.coverUrl = '#00F5FF';
+  }
+}
+```
+
+<!-- @[state_problem_arrow_function_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPagePositive/PlayDetailPage.ets) -->
+
+``` TypeScript
+import PlayDetailViewModel from './PlayDetailViewModel';
+
+@Entry
+@Component
+struct PlayDetailPage {
+  @State vm: PlayDetailViewModel = new PlayDetailViewModel();
+
+  build() {
+    Stack() {
+      Text(this.vm.coverUrl).width(100).height(100).backgroundColor(this.vm.coverUrl)
+      Row() {
+        Button('Change Color')
+          .onClick(() => {
+            let self = this.vm;
+            this.vm.changeCoverUrl(self);
+          })
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .alignContent(Alignment.Top)
+  }
+}
+```
+
+## 冗余刷新
+
+### 使用简单属性数组导致冗余刷新
+
+在开发过程中，我们经常会需要设置多个组件的同一种属性，比如Text组件的内容、组件的宽度、高度等样式信息等。将这些属性保存在一个数组中，配合ForEach进行使用是一种简单且方便的方法。但这种使用方式会导致属性元素的冗余刷新，修改数组中一个属性元素，数组中所有元素绑定的组件都会被刷新。
+
+【反例】
 
 <!-- @[TextComponent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArray.ets) -->
 
@@ -107,7 +317,9 @@ struct Index {
 
 这个特性普遍的出现在简单类型数组的场景中，当数组中的元素够多时，会对UI的刷新性能有很大的负面影响。这种“不需要刷新的组件被刷新”的现象即是“冗余刷新”，当“冗余刷新”的节点过多时，UI的刷新效率会大幅度降低，因此需要减少“冗余刷新”，也就是做到**精准控制组件的更新范围**。
 
-为了减少由简单的属性相关的数组引起的“冗余刷新”，需要将属性数组转变为对象数组，配合自定义组件，实现精准控制更新范围。下面为修改后的代码。
+为了减少由简单的属性相关的数组引起的“冗余刷新”，需要将属性数组转变为对象数组，配合自定义组件，实现精准控制更新范围。
+
+【正例】
 
 <!-- @[Information_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayUpdate.ets) -->
 
@@ -217,21 +429,21 @@ struct Page {
 }
 ```
 
-
-
 上述代码的运行效果如下。
 
 ![properly-use-state-management-to-develope-2](figures/properly-use-state-management-to-develope-2.gif)
 
-修改后的代码使用对象数组代替了原有的多个属性数组，能够避免数组的“冗余刷新”的情况。这是因为对于数组来说，对象内的变化是无法感知的，数组只能观测数组项层级的变化，例如新增数据项，修改数据项（普通数组是直接修改数据项的值，在对象数组的场景下是整个对象被重新赋值，改变某个数据项对象中的属性不会被观测到）、删除数据项等。这意味着当改变对象内的某个属性时，对于数组来说，对象是没有变化的，也就不会去刷新。在当前状态管理的观测能力中，除了数组嵌套对象的场景外，对象嵌套对象的场景也是无法观测到变化的，这一部分内容将在[将复杂对象拆分成多个小对象的集合](#将复杂大对象拆分成多个小对象的集合)中讲到。同时修改代码时使用了自定义组件与ForEach的结合，这一部分内容将在[在ForEach中使用自定义组件搭配对象数组](#在foreach中使用自定义组件搭配对象数组)讲到。
+修改后的代码使用对象数组代替了原有的多个属性数组，能够避免数组的“冗余刷新”的情况。这是因为对于数组来说，对象内的变化是无法感知的，数组只能观测数组项层级的变化，例如新增数据项，修改数据项（普通数组是直接修改数据项的值，在对象数组的场景下是整个对象被重新赋值，改变某个数据项对象中的属性不会被观测到）、删除数据项等。这意味着当改变对象内的某个属性时，对于数组来说，对象是没有变化的，也就不会去刷新。在当前状态管理的观测能力中，除了数组嵌套对象的场景外，对象嵌套对象的场景也是无法观测到变化的，这一部分内容将在[使用多属性类对象导致冗余刷新](#使用多属性类对象导致冗余刷新)中讲到。同时修改代码时使用了自定义组件与ForEach的结合，这一部分内容将在[ForEach和对象数组结合使用导致UI不刷新](./arkts-state-management-faq-inner-component.md#foreach和对象数组结合使用导致ui不刷新)讲到。
 
-### 将复杂大对象拆分成多个小对象的集合
+### 使用多属性类对象导致冗余刷新
 
 > **说明：**
 >
 > 从API version 11开始，推荐优先使用[@Track装饰器](arkts-track.md)解决该场景的问题。
 
-在开发过程中，我们有时会定义一个大的对象，其中包含了很多样式相关的属性，并且在父子组件间传递这个对象，将其中的属性绑定在组件上。
+在开发过程中，我们有时会定义一个大的对象，其中包含了很多样式相关的属性，并且在父子组件间传递这个对象，将其中的属性绑定在组件上。这种使用方式会导致类属性的冗余刷新，修改一个类属性，类内所有属性绑定的组件都会被刷新。
+
+【反例】
 
 <!-- @[StateArrayBig_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayBig.ets) -->
 
@@ -420,6 +632,8 @@ struct Page {
 这是因为当前状态管理的一个刷新机制，假设定义了一个有20个属性的类，创建类的对象实例，将20个属性绑定到组件上，这时修改其中的某个属性，除了这个属性关联的组件会刷新之外，其他的19个属性关联的组件也都会刷新，即使这些属性本身并没有发生变化。
 
 这个机制会导致在使用一个复杂大对象与多个组件关联时，刷新性能的下降。对此，推荐将一个复杂大对象拆分成多个小对象的集合，在保留原有代码结构的基础上，减少“冗余刷新”，实现精准控制组件的更新范围。
+
+【正例】
 
 <!-- @[StateArrayPrecise_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayPrecise.ets) -->
 
@@ -850,9 +1064,11 @@ struct Page {
 
 
 
-### 使用@Observed装饰或被声明为状态变量的类对象绑定组件
+## 数据重置导致UI不刷新
 
 在开发过程中，会有“重置数据”的场景，将一个新创建的对象赋值给原有的状态变量，实现数据的刷新。如果不注意新创建对象的类型，可能会出现UI不刷新的现象。
+
+【反例】
 
 <!-- @[StateArrayObserve_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayObserved.ets) -->
 
@@ -1037,6 +1253,8 @@ public loadData() {
 
 因此，需要将具有观测能力的类对象绑定组件，来确保当改变这些类对象的内容时，UI能够正常的刷新。
 
+【正例】
+
 <!-- @[StateArrayNo_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayNo.ets) -->
 
 ``` TypeScript
@@ -1209,453 +1427,3 @@ public loadData() {
 
 
 ChildList类型在定义的时候使用了@Observed进行装饰，所以用new创建的对象tempList具有被观测的能力，因此在点击“X”按钮删除其中一条内容时，变量childList就能够观测到变化，所以触发了ForEach的刷新，最终UI渲染刷新。
-
-## 合理使用ForEach/LazyForEach
-
-### 减少使用LazyForEach的重建机制刷新UI
-
-开发过程中通常会将[LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md)和状态变量结合起来使用。
-
-<!-- @[StateArrayLazy_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLazy.ets) -->
-
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-const DOMAIN_NUMBER: number = 0XFF00;
-const TAG: string = '[Sample_StateManagement]';
-
-class BasicDataSource implements IDataSource {
-  private listeners: DataChangeListener[] = [];
-  private originDataArray: StringData[] = [];
-
-  public totalCount(): number {
-    return 0;
-  }
-
-  public getData(index: number): StringData {
-    return this.originDataArray[index];
-  }
-
-  registerDataChangeListener(listener: DataChangeListener): void {
-    if (this.listeners.indexOf(listener) < 0) {
-      hilog.info(DOMAIN_NUMBER, TAG, 'add listener');
-      this.listeners.push(listener);
-    }
-  }
-
-  unregisterDataChangeListener(listener: DataChangeListener): void {
-    const pos = this.listeners.indexOf(listener);
-    if (pos >= 0) {
-      hilog.info(DOMAIN_NUMBER, TAG, 'remove listener');
-      this.listeners.splice(pos, 1);
-    }
-  }
-
-  notifyDataReload(): void {
-    this.listeners.forEach(listener => {
-      listener.onDataReloaded();
-    })
-  }
-
-  notifyDataAdd(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataAdd(index);
-    })
-  }
-
-  notifyDataChange(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataChange(index);
-    })
-  }
-
-  notifyDataDelete(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataDelete(index);
-    })
-  }
-
-  notifyDataMove(from: number, to: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataMove(from, to);
-    })
-  }
-}
-
-class MyDataSource extends BasicDataSource {
-  private dataArray: StringData[] = [];
-
-  public totalCount(): number {
-    return this.dataArray.length;
-  }
-
-  public getData(index: number): StringData {
-    return this.dataArray[index];
-  }
-
-  public addData(index: number, data: StringData): void {
-    this.dataArray.splice(index, 0, data);
-    this.notifyDataAdd(index);
-  }
-
-  public pushData(data: StringData): void {
-    this.dataArray.push(data);
-    this.notifyDataAdd(this.dataArray.length - 1);
-  }
-
-  public reloadData(): void {
-    this.notifyDataReload();
-  }
-}
-
-class StringData {
-  public message: string;
-  public imgSrc: Resource;
-
-  constructor(message: string, imgSrc: Resource) {
-    this.message = message;
-    this.imgSrc = imgSrc;
-  }
-}
-
-@Entry
-@Component
-struct MyComponent {
-  private data: MyDataSource = new MyDataSource();
-
-  aboutToAppear() {
-    for (let i = 0; i <= 9; i++) {
-      // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-      this.data.pushData(new StringData(`Click to add ${i}`, $r('app.media.icon')));
-    }
-  }
-
-  build() {
-    List({ space: 3 }) {
-      LazyForEach(this.data, (item: StringData, index: number) => {
-        ListItem() {
-          Column() {
-            Text(item.message).fontSize(20)
-              .onAppear(() => {
-                hilog.info(DOMAIN_NUMBER, TAG, 'text appear:' + item.message);
-              })
-            Image(item.imgSrc)
-              .width(100)
-              .height(100)
-              .onAppear(() => {
-                hilog.info(DOMAIN_NUMBER, TAG, 'image appear');
-              })
-          }.margin({ left: 10, right: 10 })
-        }
-        .onClick(() => {
-          item.message += '0';
-          this.data.reloadData();
-        })
-      }, (item: StringData, index: number) => JSON.stringify(item))
-    }.cachedCount(5)
-  }
-}
-```
-
-
-
-上述代码运行效果如下。
-
-![properly-use-state-management-to-develope-7](figures/properly-use-state-management-to-develope-7.gif)
-
-可以观察到在点击更改message之后，图片“闪烁”了一下，同时输出了组件的onAppear日志，这说明组件进行了重建。这是因为在更改message之后，导致LazyForEach中这一项的key值发生了变化，使得LazyForEach在reloadData的时候将这一项ListItem进行了重建。Text组件仅仅更改显示的内容却发生了重建，而不是更新。而尽管Image组件没有需要重新绘制的内容，但是因为触发LazyForEach的重建，会使得同样位于ListItem下的Image组件重新创建。
-
-当前LazyForEach与状态变量都能触发UI的刷新，两者的性能开销是不一样的。使用LazyForEach刷新会对组件进行重建，如果包含了多个组件，则会产生比较大的性能开销。使用状态变量刷新会对组件进行刷新，具体到状态变量关联的组件上，相对于LazyForEach的重建来说，范围更小更精确。因此，推荐使用状态变量来触发LazyForEach中的组件刷新，这就需要使用自定义组件。
-
-<!-- @[StateArrayLazy2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLazy2.ets) -->
-
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-const DOMAIN_NUMBER: number = 0XFF00;
-const TAG: string = '[Sample_StateManagement]';
-
-class BasicDataSource implements IDataSource {
-  private listeners: DataChangeListener[] = [];
-  private originDataArray: StringData[] = [];
-
-  public totalCount(): number {
-    return 0;
-  }
-
-  public getData(index: number): StringData {
-    return this.originDataArray[index];
-  }
-
-  registerDataChangeListener(listener: DataChangeListener): void {
-    if (this.listeners.indexOf(listener) < 0) {
-      hilog.info(DOMAIN_NUMBER, TAG, 'add listener');
-      this.listeners.push(listener);
-    }
-  }
-
-  unregisterDataChangeListener(listener: DataChangeListener): void {
-    const pos = this.listeners.indexOf(listener);
-    if (pos >= 0) {
-      hilog.info(DOMAIN_NUMBER, TAG, 'remove listener');
-      this.listeners.splice(pos, 1);
-    }
-  }
-
-  notifyDataReload(): void {
-    this.listeners.forEach(listener => {
-      listener.onDataReloaded();
-    })
-  }
-
-  notifyDataAdd(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataAdd(index);
-    })
-  }
-
-  notifyDataChange(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataChange(index);
-    })
-  }
-
-  notifyDataDelete(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataDelete(index);
-    })
-  }
-
-  notifyDataMove(from: number, to: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataMove(from, to);
-    })
-  }
-}
-
-class MyDataSource extends BasicDataSource {
-  private dataArray: StringData[] = [];
-
-  public totalCount(): number {
-    return this.dataArray.length;
-  }
-
-  public getData(index: number): StringData {
-    return this.dataArray[index];
-  }
-
-  public addData(index: number, data: StringData): void {
-    this.dataArray.splice(index, 0, data);
-    this.notifyDataAdd(index);
-  }
-
-  public pushData(data: StringData): void {
-    this.dataArray.push(data);
-    this.notifyDataAdd(this.dataArray.length - 1);
-  }
-}
-
-@Observed
-class StringData {
-  @Track public message: string;
-  @Track public imgSrc: Resource;
-  constructor(message: string, imgSrc: Resource) {
-    this.message = message;
-    this.imgSrc = imgSrc;
-  }
-}
-
-@Entry
-@Component
-struct MyComponent {
-  @State data: MyDataSource = new MyDataSource();
-
-  aboutToAppear() {
-    for (let i = 0; i <= 9; i++) {
-      // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-      this.data.pushData(new StringData(`Click to add ${i}`, $r('app.media.icon')));
-    }
-  }
-
-  build() {
-    List({ space: 3 }) {
-      LazyForEach(this.data, (item: StringData, index: number) => {
-        ListItem() {
-          ChildComponent({ data: item })
-        }
-        .onClick(() => {
-          item.message += '0';
-        })
-      }, (item: StringData, index: number) => index.toString())
-    }.cachedCount(5)
-  }
-}
-
-@Component
-struct ChildComponent {
-  @ObjectLink data: StringData;
-
-  build() {
-    Column() {
-      Text(this.data.message).fontSize(20)
-        .onAppear(() => {
-          hilog.info(DOMAIN_NUMBER, TAG, 'text appear:' + this.data.message);
-        })
-      Image(this.data.imgSrc)
-        .width(100)
-        .height(100)
-    }.margin({ left: 10, right: 10 })
-  }
-}
-```
-
-
-
-上述代码运行效果如下。
-
-![properly-use-state-management-to-develope-8](figures/properly-use-state-management-to-develope-8.gif)
-
-可以观察到UI能够正常刷新，图片没有“闪烁”，且没有输出日志信息，说明没有对Text组件和Image组件进行重建。
-
-这是因为使用自定义组件之后，可以通过@Observed和@ObjectLink配合去直接更改自定义组件内的状态变量实现刷新，而不需要利用LazyForEach进行重建。使用[@Track装饰器](arkts-track.md)分别装饰StringData类型中的message和imgSrc属性可以使更新范围进一步缩小到指定的Text组件。
-
-### 在ForEach中使用自定义组件搭配对象数组
-
-开发过程中经常会使用对象数组和[ForEach](../rendering-control/arkts-rendering-control-foreach.md)结合起来使用，但是写法不当的话会出现UI不刷新的情况。
-
-<!-- @[StateArrayForeach_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach.ets) -->
-
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-const DOMAIN_NUMBER: number = 0XFF00;
-const TAG: string = '[Sample_StateManagement]';
-
-@Observed
-class StyleList extends Array<TextStyles> {
-}
-
-@Observed
-class TextStyles {
-  public fontSize: number;
-
-  constructor(fontSize: number) {
-    this.fontSize = fontSize;
-  }
-}
-
-@Entry
-@Component
-struct Page {
-  @State styleList: StyleList = new StyleList();
-
-  aboutToAppear() {
-    for (let i = 15; i < 50; i++) {
-      this.styleList.push(new TextStyles(i));
-    }
-  }
-
-  build() {
-    Column() {
-      Text('Font Size List')
-        .fontSize(50)
-        .onClick(() => {
-          for (let i = 0; i < this.styleList.length; i++) {
-            this.styleList[i].fontSize++;
-          }
-          hilog.info(DOMAIN_NUMBER, TAG, 'change font size');
-        })
-      List() {
-        ForEach(this.styleList, (item: TextStyles) => {
-          ListItem() {
-            Text('Hello World')
-              .fontSize(item.fontSize)
-          }
-        })
-      }
-    }
-  }
-}
-```
-
-
-
-上述代码运行效果如下。
-
-![properly-use-state-management-to-develope-9](figures/properly-use-state-management-to-develope-9.gif)
-
-由于ForEach中生成的item是一个常量，因此当点击改变item中的内容时，没有办法观测到UI刷新，尽管日志表面item中的值已经改变了(这体现在打印了“change font size”的日志)。因此，需要使用自定义组件，配合@ObjectLink来实现观测的能力。
-
-<!-- @[TextComponent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach2.ets) -->
-
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-const DOMAIN_NUMBER: number = 0XFF00;
-const TAG: string = '[Sample_StateManagement]';
-
-@Observed
-class StyleList extends Array<TextStyles> {
-}
-
-@Observed
-class TextStyles {
-  public fontSize: number;
-
-  constructor(fontSize: number) {
-    this.fontSize = fontSize;
-  }
-}
-
-@Component
-struct TextComponent {
-  @ObjectLink textStyle: TextStyles;
-
-  build() {
-    Text('Hello World')
-      .fontSize(this.textStyle.fontSize)
-  }
-}
-
-@Entry
-@Component
-struct Page {
-  @State styleList: StyleList = new StyleList();
-
-  aboutToAppear() {
-    for (let i = 15; i < 50; i++) {
-      this.styleList.push(new TextStyles(i));
-    }
-  }
-
-  build() {
-    Column() {
-      Text('Font Size List')
-        .fontSize(50)
-        .onClick(() => {
-          for (let i = 0; i < this.styleList.length; i++) {
-            this.styleList[i].fontSize++;
-          }
-          hilog.info(DOMAIN_NUMBER, TAG, 'change font size');
-        })
-      List() {
-        ForEach(this.styleList, (item: TextStyles) => {
-          ListItem() {
-            TextComponent({ textStyle: item })
-          }
-        })
-      }
-    }
-  }
-}
-```
-
-
-
-上述代码的运行效果如下。
-
-![properly-use-state-management-to-develope-10](figures/properly-use-state-management-to-develope-10.gif)
-
-使用@ObjectLink接受传入的item后，使得TextComponent组件内的textStyle变量具有了被观测的能力。在父组件更改styleList中的值时，由于@ObjectLink是引用传递，所以会观测到styleList每一个数据项的地址指向的对应item的fontSize的值被改变，因此触发UI的刷新。
-
-这是一个较为实用的使用状态管理进行刷新的开发方式。
-
-
-
-<!--no_check-->
