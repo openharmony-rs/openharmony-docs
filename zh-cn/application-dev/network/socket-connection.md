@@ -307,17 +307,17 @@ UDP与TCP流程大体类似，下面以TCP为例：
    }
    ```
    <!-- @[multicast_worker_multicastConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
-
-``` TypeScript
-// 加入多播组。
-multicast.addMembership(addr).then(() => {
-  // ···
-  hilog.info(0x0000, 'testTag', 'addMembership success');
-}).catch((err: BusinessError) => {
-  // ···
-  hilog.error(0x0000, 'testTag', 'addMembership fail');
-});
-```
+   
+   ``` TypeScript
+   // 加入多播组。
+   multicast.addMembership(addr).then(() => {
+     // ...
+     hilog.info(0x0000, 'testTag', 'addMembership success');
+   }).catch((err: BusinessError) => {
+     // ...
+     hilog.error(0x0000, 'testTag', 'addMembership fail');
+   });
+   ```
 
 4. 开启消息message监听。
 
