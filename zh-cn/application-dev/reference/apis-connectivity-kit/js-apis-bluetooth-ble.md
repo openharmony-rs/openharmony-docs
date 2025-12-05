@@ -4179,9 +4179,9 @@ getConnectedState(): ProfileConnectionState
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-let gattClient: ble.GattClientDevice = ble.createGattClientDevice("XX:XX:XX:XX:XX:XX");
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
 try {
-    let result: ble.ProfileConnectionState = gattServer.getConnectedState();
+    let result: ble.ProfileConnectionState = gattClient.getConnectedState();
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -4228,9 +4228,9 @@ updateConnectionParam(param: ConnectionParam): Promise&lt;void&gt;
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-let gattClient: ble.GattClientDevice = ble.createGattClientDevice("11:22:33:44:55:66");
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
 try {
-    gattclient.updateConnectionParam(ble.ConnectionParam.LOW_POWER);
+    gattClient.updateConnectionParam(ble.ConnectionParam.LOW_POWER);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
