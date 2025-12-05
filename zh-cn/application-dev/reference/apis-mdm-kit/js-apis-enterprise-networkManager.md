@@ -1340,7 +1340,7 @@ try {
 
 setEthernetConfig(admin: Want, networkInterface: string, config: InterfaceConfig): void
 
-设置以太网网络接口的IP地址。
+设置特定以太网网络接口的IP地址。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
