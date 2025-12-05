@@ -250,7 +250,7 @@
              return;
          }
          OH_LOG_INFO(LOG_APP, "BufferCb copyBuffer:%{public}p", copyBuffer);
-         // 使用 std::memcpy 复制 buffer 的内容到 copyBuffer。
+         // 使用std::memcpy复制buffer的内容到copyBuffer。
          std::memcpy(copyBuffer, buffer, size);
          napi_create_string_utf8(env_, "BufferCb", NAPI_AUTO_LENGTH, &asyncResourceName);
          napi_status status = napi_create_async_work(
