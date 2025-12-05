@@ -985,8 +985,8 @@ enum ArkUI_EdgeEffect
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_EDGE_EFFECT_SPRING = 0 | 弹性物理动效，滑动到边缘后可以根据初始速度或通过触摸事件继续滑动一段距离，松手后回弹。 |
-| ARKUI_EDGE_EFFECT_FADE | 阴影效果，滑动到边缘后会有圆弧状的阴影。 |
-| ARKUI_EDGE_EFFECT_NONE | 滑动到边缘后无效果。 |
+| ARKUI_EDGE_EFFECT_FADE = 1 | 阴影效果，滑动到边缘后会有圆弧状的阴影。 |
+| ARKUI_EDGE_EFFECT_NONE = 2 | 滑动到边缘后无效果。 |
 
 ### ArkUI_BarState
 
@@ -1041,7 +1041,7 @@ enum ArkUI_ScrollDirection
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SCROLL_DIRECTION_VERTICAL = 0 | 仅支持竖直方向滚动。 |
-| ARKUI_SCROLL_DIRECTION_HORIZONTAL | 仅支持水平方向滚动。 |
+| ARKUI_SCROLL_DIRECTION_HORIZONTAL = 1 | 仅支持水平方向滚动。 |
 | ARKUI_SCROLL_DIRECTION_NONE = 3 | 禁止滚动。 |
 | ARKUI_SCROLL_DIRECTION_FREE = 4 | 自由滚动。<br>**起始版本：** 20 |
 
@@ -1061,9 +1061,9 @@ enum ArkUI_ScrollSnapAlign
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SCROLL_SNAP_ALIGN_NONE = 0 | 默认无项目滚动对齐效果。 |
-| ARKUI_SCROLL_SNAP_ALIGN_START | 视图中的第一项将在列表的开头对齐。 |
-| ARKUI_SCROLL_SNAP_ALIGN_CENTER | 视图中的中间项将在列表中心对齐。 |
-| ARKUI_SCROLL_SNAP_ALIGN_END | 视图中的最后一项将在列表末尾对齐。 |
+| ARKUI_SCROLL_SNAP_ALIGN_START = 1 | 视图中的第一项将在列表的开头对齐。 |
+| ARKUI_SCROLL_SNAP_ALIGN_CENTER = 2 | 视图中的中间项将在列表中心对齐。 |
+| ARKUI_SCROLL_SNAP_ALIGN_END = 3 | 视图中的最后一项将在列表末尾对齐。 |
 
 ### ArkUI_ScrollBarDisplayMode
 
@@ -1081,8 +1081,8 @@ enum ArkUI_ScrollBarDisplayMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF = 0 | 不显示。 |
-| ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO | 按需显示(触摸时显示，2s后消失)。 |
-| ARKUI_SCROLL_BAR_DISPLAY_MODE_ON | 常驻显示。 |
+| ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO = 1 | 按需显示(触摸时显示，2s后消失)。 |
+| ARKUI_SCROLL_BAR_DISPLAY_MODE_ON = 2 | 常驻显示。 |
 
 ### ArkUI_Axis
 
@@ -1100,7 +1100,7 @@ enum ArkUI_Axis
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_AXIS_VERTICAL = 0 | 仅支持竖直方向滚动。 |
-| ARKUI_AXIS_HORIZONTAL | 仅支持水平方向滚动。 |
+| ARKUI_AXIS_HORIZONTAL = 1 | 仅支持水平方向滚动。 |
 
 ### ArkUI_StickyStyle
 
@@ -1138,8 +1138,8 @@ enum ArkUI_ContentClipMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_CONTENT_CLIP_MODE_CONTENT_ONLY = 0 | 按内容区裁剪。 |
-| ARKUI_CONTENT_CLIP_MODE_BOUNDARY | 按组件区域裁剪。 |
-| ARKUI_CONTENT_CLIP_MODE_SAFE_AREA | 按组件配置的SafeArea区域裁剪。 |
+| ARKUI_CONTENT_CLIP_MODE_BOUNDARY = 1 | 按组件区域裁剪。 |
+| ARKUI_CONTENT_CLIP_MODE_SAFE_AREA = 2 | 按组件配置的SafeArea区域裁剪。 |
 
 ### ArkUI_WaterFlowLayoutMode
 
@@ -1157,7 +1157,7 @@ enum ArkUI_WaterFlowLayoutMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_WATER_FLOW_LAYOUT_MODE_ALWAYS_TOP_DOWN = 0 | 从上到下布局。列数切换场景需要从第一个FlowItem开始布局到当前显示的FlowItem。 |
-| ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW | 移动窗口布局。列数切换场景只重新布局当前显示范围到FlowItem，手指向下滑动再布局从上方进入显示范围的FlowItem。 |
+| ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW = 1 | 移动窗口布局。列数切换场景只重新布局当前显示范围到FlowItem，手指向下滑动再布局从上方进入显示范围的FlowItem。 |
 
 ### ArkUI_BorderStyle
 
@@ -1400,9 +1400,9 @@ enum ArkUI_ScrollNestedMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SCROLL_NESTED_MODE_SELF_ONLY = 0 | 只自身滚动，不与父组件联动。 |
-| ARKUI_SCROLL_NESTED_MODE_SELF_FIRST | 自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后 |
-| ARKUI_SCROLL_NESTED_MODE_PARENT_FIRST | 父组件先滚动，父组件滚动到边缘以后自身滚动。 |
-| ARKUI_SCROLL_NESTED_MODE_PARALLEL | 自身和父组件同时滚动，自身和父组件都到达边缘以后 |
+| ARKUI_SCROLL_NESTED_MODE_SELF_FIRST = 1 | 自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后 |
+| ARKUI_SCROLL_NESTED_MODE_PARENT_FIRST = 2 | 父组件先滚动，父组件滚动到边缘以后自身滚动。 |
+| ARKUI_SCROLL_NESTED_MODE_PARALLEL = 3 | 自身和父组件同时滚动，自身和父组件都到达边缘以后 |
 
 ### ArkUI_ScrollEdge
 
@@ -1420,9 +1420,9 @@ enum ArkUI_ScrollEdge
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SCROLL_EDGE_TOP = 0 | 竖直方向上边缘。 |
-| ARKUI_SCROLL_EDGE_BOTTOM | 竖直方向下边缘。 |
-| ARKUI_SCROLL_EDGE_START | 水平方向起始位置。 |
-| ARKUI_SCROLL_EDGE_END | 水平方向末尾位置。 |
+| ARKUI_SCROLL_EDGE_BOTTOM = 1 | 竖直方向下边缘。 |
+| ARKUI_SCROLL_EDGE_START = 2 | 水平方向起始位置。 |
+| ARKUI_SCROLL_EDGE_END = 3 | 水平方向末尾位置。 |
 
 ### ArkUI_ScrollAlignment
 
@@ -1440,9 +1440,9 @@ enum ArkUI_ScrollAlignment
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SCROLL_ALIGNMENT_START = 0 | 首部对齐。指定item首部与容器首部对齐。 |
-| ARKUI_SCROLL_ALIGNMENT_CENTER | 居中对齐。指定item主轴方向居中对齐于容器。 |
-| ARKUI_SCROLL_ALIGNMENT_END | 尾部对齐。指定item尾部与容器尾部对齐。 |
-| ARKUI_SCROLL_ALIGNMENT_AUTO | 自动对齐。若指定item完全处于显示区，不做调整。否则依照滑动距离最短的原则，将指定item首部对齐或尾部对齐于容器,使指定item完全处于显示区。 |
+| ARKUI_SCROLL_ALIGNMENT_CENTER = 1 | 居中对齐。指定item主轴方向居中对齐于容器。 |
+| ARKUI_SCROLL_ALIGNMENT_END = 2 | 尾部对齐。指定item尾部与容器尾部对齐。 |
+| ARKUI_SCROLL_ALIGNMENT_AUTO = 3 | 自动对齐。若指定item完全处于显示区，不做调整。否则依照滑动距离最短的原则，将指定item首部对齐或尾部对齐于容器,使指定item完全处于显示区。 |
 
 ### ArkUI_ScrollState
 
@@ -1460,8 +1460,8 @@ enum ArkUI_ScrollState
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SCROLL_STATE_IDLE = 0 | 空闲状态。使用控制器提供的方法控制滚动时触发，拖动滚动条滚动时触发。 |
-| ARKUI_SCROLL_STATE_SCROLL | 滚动状态。使用手指拖动容器滚动时触发。 |
-| ARKUI_SCROLL_STATE_FLING | 惯性滚动状态。快速划动松手后进行惯性滚动和划动到边缘回弹时触发。 |
+| ARKUI_SCROLL_STATE_SCROLL = 1 | 滚动状态。使用手指拖动容器滚动时触发。 |
+| ARKUI_SCROLL_STATE_FLING = 2 | 惯性滚动状态。快速划动松手后进行惯性滚动和划动到边缘回弹时触发。 |
 
 ### ArkUI_SliderBlockStyle
 
@@ -2257,8 +2257,8 @@ enum ArkUI_ListItemAlignment
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_LIST_ITEM_ALIGNMENT_START = 0 | ListItem在List中，交叉轴方向首部对齐。 |
-| ARKUI_LIST_ITEM_ALIGNMENT_CENTER | ListItem在List中，交叉轴方向居中对齐。 |
-| ARKUI_LIST_ITEM_ALIGNMENT_END | ListItem在List中，交叉轴方向尾部对齐。 |
+| ARKUI_LIST_ITEM_ALIGNMENT_CENTER = 1 | ListItem在List中，交叉轴方向居中对齐。 |
+| ARKUI_LIST_ITEM_ALIGNMENT_END = 2 | ListItem在List中，交叉轴方向尾部对齐。 |
 
 ### ArkUI_BlendApplyType
 
@@ -2550,8 +2550,8 @@ enum ArkUI_ListItemSwipeActionState
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED = 0 | 收起状态，当ListItem与主轴方向相反滑动时操作项处于隐藏状态。 |
-| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_EXPANDED | 收起状态，当ListItem与主轴方向相反滑动时操作项处于显示状态。 |
-| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_ACTIONING | 长距离状态，当ListItem进入长距删除区后删除ListItem的状态。 |
+| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_EXPANDED = 1 | 收起状态，当ListItem与主轴方向相反滑动时操作项处于显示状态。 |
+| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_ACTIONING = 2 | 长距离状态，当ListItem进入长距删除区后删除ListItem的状态。 |
 
 ### ArkUI_ListItemSwipeEdgeEffect
 
@@ -2569,7 +2569,7 @@ enum ArkUI_ListItemSwipeEdgeEffect
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING = 0 | ListItem划动距离超过划出组件大小后可以继续划动。 |
-| ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_NONE | ListItem划动距离不能超过划出组件大小。 |
+| ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_NONE = 1 | ListItem划动距离不能超过划出组件大小。 |
 
 ### ArkUI_ListItemSwipeActionDirection
 
@@ -2709,13 +2709,13 @@ enum ArkUI_ScrollSource
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SCROLL_SOURCE_DRAG = 0 | 手指拖动。 |
-| ARKUI_SCROLL_SOURCE_FLING | 手指拖动后的惯性滚动。 |
-| ARKUI_SCROLL_SOURCE_EDGE_EFFECT | 在过界时执行EdgeEffect.Spring边缘特效。 |
-| ARKUI_SCROLL_SOURCE_OTHER_USER_INPUT | 除了拖动以外的其他用户输入，如鼠标滚轮、键盘事件等。 |
-| ARKUI_SCROLL_SOURCE_SCROLL_BAR | 拖动滚动条。 |
-| ARKUI_SCROLL_SOURCE_SCROLL_BAR_FLING | 拖动滚动条后的惯性滚动。 |
-| ARKUI_SCROLL_SOURCE_SCROLLER | 滚动控制器引起的无动画的滚动。 |
-| ARKUI_SCROLL_SOURCE_ANIMATION | 滚动控制器引起的带动画的滚动。 |
+| ARKUI_SCROLL_SOURCE_FLING = 1 | 手指拖动后的惯性滚动。 |
+| ARKUI_SCROLL_SOURCE_EDGE_EFFECT = 2 | 在过界时执行EdgeEffect.Spring边缘特效。 |
+| ARKUI_SCROLL_SOURCE_OTHER_USER_INPUT = 3 | 除了拖动以外的其他用户输入，如鼠标滚轮、键盘事件等。 |
+| ARKUI_SCROLL_SOURCE_SCROLL_BAR = 4 | 拖动滚动条。 |
+| ARKUI_SCROLL_SOURCE_SCROLL_BAR_FLING = 5 | 拖动滚动条后的惯性滚动。 |
+| ARKUI_SCROLL_SOURCE_SCROLLER = 6 | 滚动控制器引起的无动画的滚动。 |
+| ARKUI_SCROLL_SOURCE_ANIMATION = 7 | 滚动控制器引起的带动画的滚动。 |
 
 ### ArkUI_SafeAreaType
 
@@ -2794,10 +2794,10 @@ enum ArkUI_ListItemGroupArea
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE = 0 | ListItemGroup区域外。 |
-| ARKUI_LIST_ITEM_SWIPE_AREA_NONE | ListItemGroup没有header、footer和ListItem时的区域。 |
-| ARKUI_LIST_ITEM_SWIPE_AREA_ITEM | ListItemGroup的ListItem区域。 |
-| ARKUI_LIST_ITEM_SWIPE_AREA_HEADER | ListItemGroup的header区域。 |
-| ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER | ListItemGroup的footer区域。 |
+| ARKUI_LIST_ITEM_SWIPE_AREA_NONE = 1 | ListItemGroup没有header、footer和ListItem时的区域。 |
+| ARKUI_LIST_ITEM_SWIPE_AREA_ITEM = 2 | ListItemGroup的ListItem区域。 |
+| ARKUI_LIST_ITEM_SWIPE_AREA_HEADER = 3 | ListItemGroup的header区域。 |
+| ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER = 4 | ListItemGroup的footer区域。 |
 
 ### ArkUI_KeyboardAvoidMode
 
