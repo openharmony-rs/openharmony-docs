@@ -863,46 +863,46 @@ UDP与TCP流程大体类似，下面以TCP为例：
    tlsTwoWayConnectOption.ALPNProtocols = ["spdy/1", "http/1.1"];
    ```
    <!-- @[tcp_Upgrade_to_tls_server](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/Tcp2TwoWayTlsWorker.ets) -->
-
-``` TypeScript
-// 如果需要绑定特定的端口，可通过bind接口实现
-tcpSocket.connect(tcpConnect).then(() => {
-  hilog.info(0x0000, 'testTag', 'connect success');
-  // ···
-  // 确保TCPSocket已连接后，将其升级为TLSSocket连接。
-  tlsSocket = socket.constructTLSSocketInstance(tcpSocket);
-  // 订阅TLSSocket相关的订阅事件。
-  tlsSocket.on('message', (value: SocketInfo) => {
-    hilog.info(0x0000, 'testTag', 'tls on message');
-    let buffer = value.message;
-    let dataView = new DataView(buffer);
-    let str = '';
-    for (let i = 0; i < dataView.byteLength; ++i) {
-      str += String.fromCharCode(dataView.getUint8(i));
-    }
-    hilog.info(0x0000, 'testTag', 'tls on connect received:' + str);
-  });
-  tlsSocket.on('connect', () => {
-    hilog.info(0x0000, 'testTag', 'tls on connect');
-  });
-  tlsSocket!.on('close', () => {
-    hilog.info(0x0000, 'testTag', 'tls on close');
-  // ···
-  });
-  // ···
-  // 建立TLSSocket连接。
-  tlsSocket.connect(tlsTwoWayConnectOption).then(() => {
-    hilog.info(0x0000, 'testTag', 'tls connect success');
-  // ···
-  }).catch((e: BusinessError) => {
-    hilog.info(0x0000, 'testTag', 'tls connect fail');
-  // ···
-  });
-}).catch((e: BusinessError) => {
-  hilog.error(0x0000, 'testTag', 'connect fail');
-  // ···
-});
-```
+   
+   ``` TypeScript
+   // 如果需要绑定特定的端口，可通过bind接口实现
+   tcpSocket.connect(tcpConnect).then(() => {
+     hilog.info(0x0000, 'testTag', 'connect success');
+     // ...
+     // 确保TCPSocket已连接后，将其升级为TLSSocket连接。
+     tlsSocket = socket.constructTLSSocketInstance(tcpSocket);
+     // 订阅TLSSocket相关的订阅事件。
+     tlsSocket.on('message', (value: SocketInfo) => {
+       hilog.info(0x0000, 'testTag', 'tls on message');
+       let buffer = value.message;
+       let dataView = new DataView(buffer);
+       let str = '';
+       for (let i = 0; i < dataView.byteLength; ++i) {
+         str += String.fromCharCode(dataView.getUint8(i));
+       }
+       hilog.info(0x0000, 'testTag', 'tls on connect received:' + str);
+     });
+     tlsSocket.on('connect', () => {
+       hilog.info(0x0000, 'testTag', 'tls on connect');
+     });
+     tlsSocket!.on('close', () => {
+       hilog.info(0x0000, 'testTag', 'tls on close');
+       // ...
+     });
+     // ...
+     // 建立TLSSocket连接。
+     tlsSocket.connect(tlsTwoWayConnectOption).then(() => {
+       hilog.info(0x0000, 'testTag', 'tls connect success');
+       // ...
+     }).catch((e: BusinessError) => {
+       hilog.info(0x0000, 'testTag', 'tls connect fail');
+       // ...
+     });
+   }).catch((e: BusinessError) => {
+     hilog.error(0x0000, 'testTag', 'connect fail');
+     // ...
+   });
+   ```
 
 4. 连接使用完毕后，主动关闭。取消相关事件的订阅。。
 
