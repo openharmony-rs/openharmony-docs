@@ -252,7 +252,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ``` TypeScript
 let loopObserver: errorManager.LoopObserver = {
   onLoopTimeOut(timeout: number) {
-    hilog.info(0x0000, 'testTag','Duration timeout: ' + timeout);
+    console.error('testErrorManage','Duration timeout: ' + timeout);
   }
 };
 ```
