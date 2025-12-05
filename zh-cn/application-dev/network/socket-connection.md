@@ -521,52 +521,52 @@ server.listen(listenAddr).then(() => {
 4. 注册LocalSocket的客户端连接事件，以及一些其它事件(可选)，在客户端连接成功时，可以获取到客户端连接会话对象LocalSocketConnection，通过该会话对象可以订阅客户端收到消息(message)事件，以及一些其它事件(可选)，通过该会话对象也可发起主动向客户端发送数据，主动关闭与客户端的连接的动作，订阅事件不再需要时，可以取消LocalSocketConnection相关的事件订阅。
 
    <!-- @[local_socket_worker_server_connection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-
-``` TypeScript
-// 订阅LocalSocketServer的connect事件。
-server.on('connect', (connection: socket.LocalSocketConnection) => {
-  // 订阅LocalSocketConnection相关的事件。
-  connection.on('error', (err: Object) => {
-    hilog.info(0x0000, 'testTag', 'on error success');
-  });
-
-  connection.on('message', (value: socket.LocalSocketMessageInfo) => {
-    const uintArray = new Uint8Array(value.message);
-    let messageView = '';
-    for (let i = 0; i < uintArray.length; i++) {
-      messageView += String.fromCharCode(uintArray[i]);
-    }
-    hilog.info(0x0000, 'testTag', `Server received: ${messageView}`);
-  });
-
-  connection.on('error', (err: Object) => {
-    hilog.error(0x0000, 'testTag', 'err:' + JSON.stringify(err));
-  })
-
-  // 向客户端发送数据。
-  let sendOpt : socket.LocalSendOptions = {
-    data: 'Hello world!'
-  };
-  connection.send(sendOpt).then(() => {
-    hilog.info(0x0000, 'testTag', 'Server send success');
-  }).catch((err: object) => {
-    hilog.error(0x0000, 'testTag', `Server send failed: ${JSON.stringify(err)}`);
-  });
-
-  // ···
-    // 关闭与客户端的连接。
-    connection.close().then(() => {
-      hilog.info(0x0000, 'testTag', 'close success');
-    }).catch((err: Object) => {
-      hilog.error(0x0000, 'testTag', 'close failed: ' + JSON.stringify(err));
-    });
-
-    // 取消LocalSocketConnection相关的事件订阅。
-    connection.off('message');
-    connection.off('error');
-  // ···
-});
-```
+   
+   ``` TypeScript
+   // 订阅LocalSocketServer的connect事件。
+   server.on('connect', (connection: socket.LocalSocketConnection) => {
+     // 订阅LocalSocketConnection相关的事件。
+     connection.on('error', (err: Object) => {
+       hilog.info(0x0000, 'testTag', 'on error success');
+     });
+   
+     connection.on('message', (value: socket.LocalSocketMessageInfo) => {
+       const uintArray = new Uint8Array(value.message);
+       let messageView = '';
+       for (let i = 0; i < uintArray.length; i++) {
+         messageView += String.fromCharCode(uintArray[i]);
+       }
+       hilog.info(0x0000, 'testTag', `Server received: ${messageView}`);
+     });
+   
+     connection.on('error', (err: Object) => {
+       hilog.error(0x0000, 'testTag', 'err:' + JSON.stringify(err));
+     })
+   
+     // 向客户端发送数据。
+     let sendOpt : socket.LocalSendOptions = {
+       data: 'Hello world!'
+     };
+     connection.send(sendOpt).then(() => {
+       hilog.info(0x0000, 'testTag', 'Server send success');
+     }).catch((err: object) => {
+       hilog.error(0x0000, 'testTag', `Server send failed: ${JSON.stringify(err)}`);
+     });
+   
+     // ...
+       // 关闭与客户端的连接。
+       connection.close().then(() => {
+         hilog.info(0x0000, 'testTag', 'close success');
+       }).catch((err: Object) => {
+         hilog.error(0x0000, 'testTag', 'close failed: ' + JSON.stringify(err));
+       });
+   
+       // 取消LocalSocketConnection相关的事件订阅。
+       connection.off('message');
+       connection.off('error');
+       // ...
+   });
+   ```
 
 5.  取消LocalSocketServer相关事件的订阅。
 
