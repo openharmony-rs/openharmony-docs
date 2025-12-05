@@ -68,7 +68,7 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
    
-   ArkTs-Dyn示例：   
+   ArkTs-Sta示例：   
       ```ts
    // 导入usbManager模块。
    import usbManager from '@ohos.usbManager';
