@@ -794,22 +794,22 @@ class SocketInfo {
 4. TLSSocket连接使用完毕后，主动关闭。
 
    <!-- @[tls_worker_close_the_server](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/OneWayTlsWorker.ets) -->
-
-``` TypeScript
-// 连接使用完毕后，主动关闭，并取消相关事件的订阅。
-tlsOneWaySocket!.close((err: BusinessError) => {
-  if (err) {
-    hilog.error(0x0000, 'testTag', 'close callback error = ' + err);
-  // ···
-  } else {
-    hilog.info(0x0000, 'testTag', 'close success');
-  // ···
-  }
-  tlsOneWaySocket!.off('message');
-  tlsOneWaySocket!.off('connect');
-  tlsOneWaySocket!.off('close');
-});
-```
+   
+   ``` TypeScript
+   // 连接使用完毕后，主动关闭，并取消相关事件的订阅。
+   tlsOneWaySocket!.close((err: BusinessError) => {
+     if (err) {
+       hilog.error(0x0000, 'testTag', 'close callback error = ' + err);
+       // ...
+     } else {
+       hilog.info(0x0000, 'testTag', 'close success');
+       // ...
+     }
+     tlsOneWaySocket!.off('message');
+     tlsOneWaySocket!.off('connect');
+     tlsOneWaySocket!.off('close');
+   });
+   ```
 
 ## 应用通过将TCP Socket升级为TLS Socket进行加密数据传输
 
