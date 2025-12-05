@@ -458,20 +458,20 @@ client.connect(connectOpt).then(() => {
 5. Socket连接使用完毕后，取消事件的注册，并关闭套接字。
 
    <!-- @[local_socket_worker_close_server](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-
-``` TypeScript
-// 当不需要再连接服务端，需要断开且取消事件的监听时。
-client.off('message');
-client.off('connect');
-client.off('close');
-client.close().then(() => {
-  hilog.info(0x0000, 'testTag', 'close client success')
-  // ···
-}).catch((err: Object) => {
-  hilog.error(0x0000, 'testTag', 'close client err: ' + JSON.stringify(err))
-  // ···
-})
-```
+   
+   ``` TypeScript
+   // 当不需要再连接服务端，需要断开且取消事件的监听时。
+   client.off('message');
+   client.off('connect');
+   client.off('close');
+   client.close().then(() => {
+     hilog.info(0x0000, 'testTag', 'close client success')
+     // ...
+   }).catch((err: Object) => {
+     hilog.error(0x0000, 'testTag', 'close client err: ' + JSON.stringify(err))
+     // ...
+   })
+   ```
 
 ## 应用通过Local Socket Server进行数据传输
 
