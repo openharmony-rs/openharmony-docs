@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct {...} ArkUI_NativeDialogAPI_2
 ```
 
@@ -42,7 +42,7 @@ ArkUI提供的Native侧自定义弹窗接口集合。
 
 ### setKeyboardAvoidDistance()
 
-```
+```c
 int32_t (*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float distance, ArkUI_LengthMetricUnit unit)
 ```
 
@@ -72,7 +72,7 @@ int32_t (*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float dista
 
 ### setLevelMode()
 
-```
+```c
 int32_t (*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMode)
 ```
 
@@ -102,7 +102,7 @@ int32_t (*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMo
 
 ### setLevelUniqueId()
 
-```
+```c
 int32_t (*setLevelUniqueId)(ArkUI_NativeDialogHandle handle, int32_t uniqueId)
 ```
 
@@ -132,7 +132,7 @@ int32_t (*setLevelUniqueId)(ArkUI_NativeDialogHandle handle, int32_t uniqueId)
 
 ### setImmersiveMode()
 
-```
+```c
 int32_t (*setImmersiveMode)(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMode immersiveMode)
 ```
 
