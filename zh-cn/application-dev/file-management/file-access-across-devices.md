@@ -49,25 +49,25 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
    <!--@[access_A_write_distributed_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->      
-
-``` TypeScript
-  let pathDir: string = context.distributedFilesDir;
-  // 获取分布式目录的文件路径
-  let filePath: string = pathDir + '/test.txt';
-
-  try {
-    // 在分布式目录下创建文件
-    let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    console.info('Succeeded in creating.');
-    // 向文件中写入内容
-    fs.writeSync(file.fd, 'content');
-    // 关闭文件
-    fs.closeSync(file.fd);
-  } catch (error) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`Failed to openSync / writeSync / closeSync. Code: ${err.code}, message: ${err.message}`);
-  }
-```
+   
+   ``` TypeScript
+   let pathDir: string = context.distributedFilesDir;
+   // 获取分布式目录的文件路径
+   let filePath: string = pathDir + '/test.txt';
+   
+   try {
+     // 在分布式目录下创建文件
+     let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+     console.info('Succeeded in creating.');
+     // 向文件中写入内容
+     fs.writeSync(file.fd, 'content');
+     // 关闭文件
+     fs.closeSync(file.fd);
+   } catch (error) {
+     let err: BusinessError = error as BusinessError;
+     console.error(`Failed to openSync / writeSync / closeSync. Code: ${err.code}, message: ${err.message}`);
+   }
+   ```
 
 
    设备B主动向设备A发起建链，建链成功后设备B可在分布式目录下读取测试文件。
