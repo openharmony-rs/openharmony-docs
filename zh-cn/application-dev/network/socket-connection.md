@@ -490,11 +490,11 @@ client.connect(connectOpt).then(() => {
 2. 使用constructLocalSocketServerInstance接口，创建一个 LocalSocketServer 服务端对象。
 
    <!-- @[local_socket_server_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-
-``` TypeScript
-// 创建一个LocalSocketServer连接，返回一个LocalSocketServer对象。
-let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
-```
+   
+   ``` TypeScript
+   // 创建一个LocalSocketServer连接，返回一个LocalSocketServer对象。
+   let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+   ```
 
 3. 启动服务，绑定本地套接字路径，创建出本地套接字文件，监听客户端的连接请求。
 
