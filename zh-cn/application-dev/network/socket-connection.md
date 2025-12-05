@@ -941,10 +941,10 @@ tcpSocket.connect(tcpConnect).then(() => {
 2. 创建一个TLSSocketServer连接，返回一个TLSSocketServer对象。
 
    <!-- @[tls_server_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
-
-``` TypeScript
-let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
-```
+   
+   ``` TypeScript
+   let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
+   ```
 
 3. 启动服务，绑定 IP 和端口号，监听客户端连接，创建并初始化TLS会话，加载证书密钥并验证。
    ```ts
