@@ -1685,7 +1685,7 @@ avsessionController.off('callMetadataChange');
 
 ## on('callStateChange')<sup>11+</sup>
 
-on(type: 'callStateChange', filter: Array\<keyof AVCallState> | 'all', callback: Callback\<AVCallState>): void
+on(type: 'callStateChange', filter: Array\<string> | 'all', callback: Callback\<AVCallState>): void
 
 设置通话状态变化的监听事件。
 
