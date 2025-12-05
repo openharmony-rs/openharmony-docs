@@ -362,6 +362,28 @@ export function setFirstErrorHandler() {
  定义第二个错误处理器及注册方法，形成链式调用。
 <!-- @[second_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondErrorHandler.ets) --> 
 
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { process } from '@kit.ArkTS';
+
+let secondHandler: errorManager.ErrorHandler;
+const secondErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
+    // 自定义的第二个errorHandler实现逻辑
+    console.info('[SecondHandler] Second uncaught exception handler invoked.');
+    if (secondHandler) {
+        secondHandler(reason);
+    } else {
+        const processManager = new process.ProcessManager();
+        processManager.exit(0);
+    }
+};
+
+export function setSecondErrorHandler() {
+    secondHandler = errorManager.setDefaultErrorHandler(secondErrorHandler); 
+    console.info('Registered Second Error Handler');
+}
+```
+
  引入头文件。
 <!-- @[error_handler_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) --> 
 
