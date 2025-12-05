@@ -714,11 +714,11 @@ server.listen(listenAddr).then(() => {
 2. 创建一个单向认证TLSSocket连接，返回一个TLSSocket对象。
 
    <!-- @[create_tls_worker_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/OneWayTlsWorker.ets) -->
-
-``` TypeScript
-// 创建一个（单向认证）TLS Socket连接，返回一个TLS Socket对象。
-let tlsOneWaySocket: socket.TLSSocket = socket.constructTLSSocketInstance();  // One way authentication
-```
+   
+   ``` TypeScript
+   // 创建一个（单向认证）TLS Socket连接，返回一个TLS Socket对象。
+   let tlsOneWaySocket: socket.TLSSocket = socket.constructTLSSocketInstance();  // One way authentication
+   ```
 
 3. 绑定本地IP地址和端口，确保bind成功后，再订阅TLS Socket相关的订阅事件。上传客户端CA证书及数字证书，调用[connect](../reference/apis-network-kit/js-apis-socket.md#connect9)接口建立连接。连接成功后，可调用[send](../reference/apis-network-kit/js-apis-socket.md#send9)接口发送数据。
    ```ts
