@@ -570,13 +570,13 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 5.  取消LocalSocketServer相关事件的订阅。
 
-   <!-- @[local_socket_worker_server_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-   
-   ``` TypeScript
-   // 取消LocalSocketServer相关的事件订阅。
-   server.off('connect');
-   server.off('error');
-   ```
+    <!-- @[local_socket_worker_server_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
+    
+    ``` TypeScript
+    // 取消LocalSocketServer相关的事件订阅。
+    server.off('connect');
+    server.off('error');
+    ```
 
 ## 应用通过TLS Socket进行加密数据传输
 
