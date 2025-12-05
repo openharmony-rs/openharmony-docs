@@ -11662,7 +11662,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/NewGlobal.ets",
 				"functions":[
 					{
-						"end_line":42,
+						"end_line":43,
 						"name":"Main_NewGlobal",
 						"start_line":15
 					}
@@ -11672,7 +11672,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":136,
+						"end_line":137,
 						"name":"Common_UIContext",
 						"start_line":16
 					},
@@ -11682,12 +11682,12 @@
 						"start_line":37
 					},
 					{
-						"end_line":135,
+						"end_line":136,
 						"name":"Common_registerWindowCallback",
 						"start_line":17
 					},
 					{
-						"end_line":134,
+						"end_line":135,
 						"name":"Common_setContext",
 						"start_line":18
 					},
@@ -11697,7 +11697,7 @@
 						"start_line":45
 					},
 					{
-						"end_line":133,
+						"end_line":134,
 						"name":"Common_LocalStorage",
 						"start_line":19
 					}
@@ -11717,7 +11717,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/VpPage.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":44,
 						"name":"Main_VpPage",
 						"start_line":16
 					}
@@ -11747,7 +11747,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/CalendarPickerDialogPage.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":46,
 						"name":"Main_CalendarPickerDialogPage",
 						"start_line":15
 					}
@@ -11757,7 +11757,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/UIContext.ets",
 				"functions":[
 					{
-						"end_line":57,
+						"end_line":58,
 						"name":"Common_PixelUtils",
 						"start_line":15
 					}
@@ -11767,7 +11767,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/ContextUtils.ets",
 				"functions":[
 					{
-						"end_line":31,
+						"end_line":32,
 						"name":"Common_ContextUtils",
 						"start_line":15
 					}
@@ -11777,7 +11777,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/ContextPage.ets",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":39,
 						"name":"Main_Index",
 						"start_line":16
 					}
