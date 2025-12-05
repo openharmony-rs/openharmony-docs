@@ -385,7 +385,7 @@ struct Index {
             }.tabBar(new SubTabBarStyle('pink'))
           }
           .onAnimationStart((index: number, targetIndex: number) => {
-            console.info('ets onGestureRecognizerJudgeBegin child:' + targetIndex)
+            console.info(`ets onGestureRecognizerJudgeBegin child: ${targetIndex}`)
             this.innerSelectedIndex = targetIndex
           })
           .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
@@ -461,37 +461,37 @@ struct Index {
       others: Array<GestureRecognizer>) => {
       if (current) {
         // 判断是否为滑动手势
-        if (current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+        if (current.getType() === GestureControl.GestureType.PAN_GESTURE) {
           let target = current as PanRecognizer;
           this.message = 'PanGesture\ndistance:' + target.getPanGestureOptions().getDistance() + '\nfingers:' +
           target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
         }
         // 判断是否为长按手势
-        if (current.getType() == GestureControl.GestureType.LONG_PRESS_GESTURE) {
+        if (current.getType() === GestureControl.GestureType.LONG_PRESS_GESTURE) {
           let target = current as LongPressRecognizer;
           this.message = 'LongPressGesture\nfingers:' + target.getFingerCount() + '\nisFingerCountLimited:' +
           target.isFingerCountLimit() + '\nrepeat:' + target.isRepeat() + '\nduration:' + target.getDuration();
         }
         // 判断是否为捏合手势
-        if (current.getType() == GestureControl.GestureType.PINCH_GESTURE) {
+        if (current.getType() === GestureControl.GestureType.PINCH_GESTURE) {
           let target = current as PinchRecognizer;
           this.message = 'PinchGesture\ndistance:' + target.getDistance() + '\nfingers:' +
           target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
         }
         // 判断是否为点击手势
-        if (current.getType() == GestureControl.GestureType.TAP_GESTURE) {
+        if (current.getType() === GestureControl.GestureType.TAP_GESTURE) {
           let target = current as TapRecognizer;
           this.message = 'TapGesture\ncount:' + target.getTapCount() + '\nfingers:' +
           target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
         }
         // 判断是否为旋转手势
-        if (current.getType() == GestureControl.GestureType.ROTATION_GESTURE) {
+        if (current.getType() === GestureControl.GestureType.ROTATION_GESTURE) {
           let target = current as RotationRecognizer;
           this.message = 'RotationGesture\nangle:' + target.getAngle() + '\nfingers:' +
           target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
         }
         // 判断是否为快滑手势
-        if (current.getType() == GestureControl.GestureType.SWIPE_GESTURE) {
+        if (current.getType() === GestureControl.GestureType.SWIPE_GESTURE) {
           let target = current as SwipeRecognizer;
           this.message = 'SwipeGesture\ndirection:' + target.getDirection() + '\nfingers:' +
           target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit() + '\nspeed:' +
@@ -521,7 +521,6 @@ struct FatherControlChild {
   private childRecognizer: GestureRecognizer = new GestureRecognizer();
   private currentRecognizer: GestureRecognizer = new GestureRecognizer();
   private lastOffset: number = 0;
-
   @State outerState: string = "IDLE";
   @State innerState: string = "IDLE";
   @State willCancel: boolean = false;
@@ -677,6 +676,7 @@ struct FatherControlChild {
             this.lastOffset = event.offsetY
           })
       )
+
       Column() { // 外层状态显示
         Text(`outer: ${this.outerState}`)
           .fontSize(24)
@@ -693,7 +693,7 @@ struct FatherControlChild {
       .width('90%')
       .backgroundColor(Color.White)
       .border({ width: 1, color: Color.Gray })
-      .position({ x: '5%', y: '80%'})
+      .position({ x: '5%', y: '80%' })
       .padding(20)
     }
     .width('100%')
@@ -706,7 +706,7 @@ struct FatherControlChild {
 
  ### 示例5（自定义手势识别器是否参与手势处理）
 
-从API version 20开始，该示例通过配置[onTouchTestDone](#ontouchtestdone20)指定手势识别器不参与后续手势处理，触发回调时，调用[preventBegin](./ts-gesture-common.md#preventbegin20)阻止手势识别器参与后续处理。
+从API version 20开始，该示例通过配置[onTouchTestDone](#ontouchtestdone20)指定手势识别器不参与后续手势处理，触发回调时，调用[preventBegin](./ts-gesture-common.md#preventbegin20)阻止手势识别器参与后续处理。点击Tap2和Tap1的重合区域，不调用preventBegin时，触发Tap2对应的手势；调用preventBegin阻止Tap2时，触发Tap1对应的手势。
 
 ```ts
 // xxx.ets
@@ -762,10 +762,10 @@ struct TouchTestDoneExample {
       }))
       // 绑定onTouchTestDone，通过调用手势识别器的preventBegin()方法来自定义手势识别器是否参与后续手势处理
       .onTouchTestDone((event, recognizers) => {
-        console.info('event is ' + JSON.stringify(event));
+        console.info(`event is ${JSON.stringify(event)}`);
         for (let i = 0; i < recognizers.length; i++) {
           let recognizer = recognizers[i];
-          console.info('type is ' + JSON.stringify(recognizer.getType()))
+          console.info(`type is ${JSON.stringify(recognizer.getType())}`)
           // 根据tag的值屏蔽不同的手势识别器
           if (recognizer.getTag() == this.tagList[this.tagId]) {
             recognizer.preventBegin();
@@ -784,12 +784,9 @@ struct TouchTestDoneExample {
         })
       Text('Current prevent gesture tag: ' + this.tagList[this.tagId])
         .margin(5)
-
     }
     .width('100%')
     .height('100%')
-
-    // 示例gif中，点击Tap2和Tap1的重合区域，不调用preventBegin时，触发的为Tap2手势；调用preventBegin阻止Tap2时，触发的为Tap1手势
   }
 }
 ```
