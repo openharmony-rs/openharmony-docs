@@ -740,56 +740,56 @@ UDP与TCP流程大体类似，下面以TCP为例：
    tlsOneWayConnectOptions.secureOptions = tlsOneWaySecureOption;
    ```
    <!-- @[tls_worker_bind_the_server](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/OneWayTlsWorker.ets) -->
-
-``` TypeScript
-class SocketInfo {
-  public message: ArrayBuffer = new ArrayBuffer(1);
-  public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
-}
-// ···
-  // 绑定本地IP地址和端口。
-  tlsOneWaySocket!.bind(ipAddress).then(() => {
-    hilog.info(0x0000, 'testTag', 'bind success');
-    // ···
-    /// 订阅TLS Socket相关的订阅事件
-    tlsOneWaySocket!.on('message', (value: SocketInfo) => {
-      hilog.info(0x0000, 'testTag', 'on message');
-      let buffer = value.message;
-      let dataView = new DataView(buffer);
-      let str = '';
-      for (let i = 0; i < dataView.byteLength; ++i) {
-        str += String.fromCharCode(dataView.getUint8(i));
-      }
-      hilog.info(0x0000, 'testTag', 'on connect received:' + str);
-    });
-    tlsOneWaySocket!.on('connect', () => {
-      hilog.info(0x0000, 'testTag', 'on connect');
-    });
-    tlsOneWaySocket!.on('close', () => {
-      hilog.info(0x0000, 'testTag', 'on close');
-    // ···
-    });
-    tlsOneWaySocket!.connect({ address: serverAddress, secureOptions: opt }).then(() => {
-      hilog.info(0x0000, 'testTag', 'connect successfully');
-    // ···
-    }).catch((e: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `Failed to connect: ${e.message}`);
-    // ···
-    });
-  }).catch((e: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'bind fail');
-    // ···
-  });
-// ···
-  // 建立连接，连接建立成功后，可以发送数据。
-  tlsOneWaySocket.send(message + '\r\n').then(() => {
-    hilog.info(0x0000, 'testTag', 'send successfully');
-    // ···
-  }).catch((e: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'send failed ' + JSON.stringify(e));
-    // ···
-  });
-```
+   
+   ``` TypeScript
+   class SocketInfo {
+     public message: ArrayBuffer = new ArrayBuffer(1);
+     public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
+   }
+   // ...
+     // 绑定本地IP地址和端口。
+     tlsOneWaySocket!.bind(ipAddress).then(() => {
+       hilog.info(0x0000, 'testTag', 'bind success');
+       // ...
+       /// 订阅TLS Socket相关的订阅事件
+       tlsOneWaySocket!.on('message', (value: SocketInfo) => {
+         hilog.info(0x0000, 'testTag', 'on message');
+         let buffer = value.message;
+         let dataView = new DataView(buffer);
+         let str = '';
+         for (let i = 0; i < dataView.byteLength; ++i) {
+           str += String.fromCharCode(dataView.getUint8(i));
+         }
+         hilog.info(0x0000, 'testTag', 'on connect received:' + str);
+       });
+       tlsOneWaySocket!.on('connect', () => {
+         hilog.info(0x0000, 'testTag', 'on connect');
+       });
+       tlsOneWaySocket!.on('close', () => {
+         hilog.info(0x0000, 'testTag', 'on close');
+         // ...
+       });
+       tlsOneWaySocket!.connect({ address: serverAddress, secureOptions: opt }).then(() => {
+         hilog.info(0x0000, 'testTag', 'connect successfully');
+         // ...
+       }).catch((e: BusinessError) => {
+         hilog.error(0x0000, 'testTag', `Failed to connect: ${e.message}`);
+         // ...
+       });
+     }).catch((e: BusinessError) => {
+       hilog.error(0x0000, 'testTag', 'bind fail');
+       // ...
+     });
+     // ...
+     // 建立连接，连接建立成功后，可以发送数据。
+     tlsOneWaySocket.send(message + '\r\n').then(() => {
+       hilog.info(0x0000, 'testTag', 'send successfully');
+       // ...
+     }).catch((e: BusinessError) => {
+       hilog.error(0x0000, 'testTag', 'send failed ' + JSON.stringify(e));
+       // ...
+     });
+   ```
 
 4. TLSSocket连接使用完毕后，主动关闭。
 
