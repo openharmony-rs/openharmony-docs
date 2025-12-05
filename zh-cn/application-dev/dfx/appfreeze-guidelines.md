@@ -471,7 +471,13 @@ DisplayPowerInfo:powerState:AWAKE
 ...
 ```
 
-从API version 22开始，发生APP_INPUT_BLOCK故障时，日志中会输出Wait Event相关信息。Event为多模点击输入事件（如点击应用按钮），括号中为事件id。输入事件后超过xx毫秒（log版本时间阈值为8000毫秒，nolog版本为5000毫秒）还未响应完成就会被标记超时。事件输入后依次进行如下环节：分发（dispatch）、处理（process）、标记（marked）。上述为例，上次分发的事件是430，上次处理完成的事件是429，上次标记完成的事件是428，表明430事件还在处理环节，已超时8000毫秒。此日志可以用于APP_INPUT_BLOCK事件的简单定界，帮助问题分析。
+从API version 22开始，发生APP_INPUT_BLOCK故障时，日志中会同步输出多模点击输入（包含鼠标、键盘、触控板及触屏等输入方式）超时事件（Wait Event）。该事件信息中包含事件id，事件检测超时阈值，及前置事件id。
+
+事件检测超时阈值：log版本为8000毫秒，nolog版本为5000毫秒。
+
+前置事件中包含：lastDispatchEvent为上传分发的事件；lastProcessEvent为上次处理的事件；lastMarkedEvent为上次标记的事件。
+
+在上述示例中，上次分发的事件是430，上次处理的事件是429，上次标记的事件是428，表明430事件已分发完毕，在处理环节，已超时8000毫秒。此日志可以用于APP_INPUT_BLOCK事件的简单定界，帮助问题分析。
 
 ## AppFreeze（应用冻屏）增强日志信息
 
