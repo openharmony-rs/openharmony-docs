@@ -387,6 +387,11 @@ export function setSecondErrorHandler() {
  引入头文件。
 <!-- @[error_handler_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+import { setFirstErrorHandler } from './FirstErrorHandler';
+import { setSecondErrorHandler } from './SecondErrorHandler';
+```
+
  新增错误处理器责任链模式构造函数。
 <!-- @[test_error_handlers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) --> 
 
