@@ -79,13 +79,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ``` TypeScript
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
-    hilog.info(0x0000, 'testTag','onUnhandledException, errorMsg: ', errorMsg);
+    console.error('testErrorManage','onUnhandledException, errorMsg: ', errorMsg);
   },
   onException(errorObj) {
-    hilog.info(0x0000, 'testTag','onException, name: ', errorObj.name);
-    hilog.info(0x0000, 'testTag','onException, message: ', errorObj.message);
+    console.error('testErrorManage','onException, name: ', errorObj.name);
+    console.error('testErrorManage','onException, message: ', errorObj.message);
     if (typeof(errorObj.stack) === 'string') {
-      hilog.info(0x0000, 'testTag','onException, stack: ', errorObj.stack);
+      console.error('testErrorManage','onException, stack: ', errorObj.stack);
     }
   }
 };
