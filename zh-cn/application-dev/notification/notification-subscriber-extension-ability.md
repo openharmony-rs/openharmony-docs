@@ -9,7 +9,7 @@
 
 ### 功能简介
 
-[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)提供扩展能力，允许第三方应用接收系统通知并将其同步到穿戴设备。该能力主要用于支持手机与第三方穿戴设备之间的通知协同。一定时间内无通知发布[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)会被销毁。
+[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)提供扩展能力，允许第三方应用接收系统通知并将其同步到穿戴设备上。该能力主要用于支持手机与第三方穿戴设备之间的通知协同。一定时间内无通知发布[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)会被销毁。
 
 ### 前提条件
 - 用户已通过手机中与穿戴设备配套的应用程序连接穿戴设备。
@@ -25,7 +25,7 @@
 1. 本示例仅支持标准系统上运行，支持设备：手机和平板。
 2. 本示例为Stage模型，支持API22版本SDK，版本号：6.0.2.54；
 3. 本示例需要使用DevEco Studio 6.0.0 beta5 (Build Version: 6.0.0.848, built on September 12, 2025)才可编译运行；
-4. 三方穿戴应用需申请[ohos.permission.SUBSCRIBE_NOTIFICATION](../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，权限为system_core级别，需要配置高权限签名；
+4. 三方穿戴应用需申请[ohos.permission.SUBSCRIBE_NOTIFICATION](../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，权限为system_basic级别，需要配置高权限签名；
 
 ### 运作机制
 <img src="figures/notification_subscription_extension_ability.png" width="70%">
