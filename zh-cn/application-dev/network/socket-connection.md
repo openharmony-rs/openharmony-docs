@@ -907,22 +907,22 @@ tcpSocket.connect(tcpConnect).then(() => {
 4. 连接使用完毕后，主动关闭。取消相关事件的订阅。。
 
    <!-- @[tls_server_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/Tcp2TwoWayTlsWorker.ets) -->
-
-``` TypeScript
-// 连接使用完毕后，主动关闭。取消相关事件的订阅。
-tlsSocket!.close((err: BusinessError) => {
-  if (err) {
-  // ···
-    hilog.error(0x0000, 'testTag', 'tls close callback error = ' + err);
-  } else {
-    hilog.info(0x0000, 'testTag', 'tls close success');
-  // ···
-  }
-  tlsSocket!.off('message');
-  tlsSocket!.off('connect');
-  tlsSocket!.off('close');
-});
-```
+   
+   ``` TypeScript
+   // 连接使用完毕后，主动关闭。取消相关事件的订阅。
+   tlsSocket!.close((err: BusinessError) => {
+     if (err) {
+       // ...
+       hilog.error(0x0000, 'testTag', 'tls close callback error = ' + err);
+     } else {
+       hilog.info(0x0000, 'testTag', 'tls close success');
+       // ...
+     }
+     tlsSocket!.off('message');
+     tlsSocket!.off('connect');
+     tlsSocket!.off('close');
+   });
+   ```
 
 ## 应用通过TLS Socket Server进行加密数据传输
 
