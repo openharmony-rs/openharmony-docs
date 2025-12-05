@@ -400,28 +400,28 @@ multicast.addMembership(addr).then(() => {
 3. 注册LocalSocket的消息(message)事件，以及一些其它事件(可选)。
 
    <!-- @[local_socket_worker_on_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-
-``` TypeScript
-client.on('message', (value: socket.LocalSocketMessageInfo) => {
-  const uintArray = new Uint8Array(value.message);
-  let messageView = '';
-  for (let i = 0; i < uintArray.length; i++) {
-    messageView += String.fromCharCode(uintArray[i]);
-  }
-  hilog.info(0x0000, 'testTag', 'total receive: ' + JSON.stringify(value));
-  hilog.info(0x0000, 'testTag', 'message information: ' + messageView);
-});
-
-client.on('connect', () => {
-  // ···
-  hilog.info(0x0000, 'testTag', 'Client connected');
-});
-
-client.on('close', () => {
-  // ···
-  hilog.info(0x0000, 'testTag', 'Client closed');
-});
-```
+   
+   ``` TypeScript
+   client.on('message', (value: socket.LocalSocketMessageInfo) => {
+     const uintArray = new Uint8Array(value.message);
+     let messageView = '';
+     for (let i = 0; i < uintArray.length; i++) {
+       messageView += String.fromCharCode(uintArray[i]);
+     }
+     hilog.info(0x0000, 'testTag', 'total receive: ' + JSON.stringify(value));
+     hilog.info(0x0000, 'testTag', 'message information: ' + messageView);
+   });
+   
+   client.on('connect', () => {
+     // ...
+     hilog.info(0x0000, 'testTag', 'Client connected');
+   });
+   
+   client.on('close', () => {
+     // ...
+     hilog.info(0x0000, 'testTag', 'Client closed');
+   });
+   ```
 4. 连接到指定的本地套接字文件路径，连接成功之后可以发送数据。
 
    ```ts
