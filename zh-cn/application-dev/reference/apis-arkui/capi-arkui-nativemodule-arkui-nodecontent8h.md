@@ -1,6 +1,6 @@
 # ArkUI_NodeContent*
 
-```
+```c
 typedef struct ArkUI_NodeContent* ArkUI_NodeContentHandle
 ```
 

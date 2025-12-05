@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct ArkUI_RoundRectShape ArkUI_RoundRectShapeOption
 ```
 
