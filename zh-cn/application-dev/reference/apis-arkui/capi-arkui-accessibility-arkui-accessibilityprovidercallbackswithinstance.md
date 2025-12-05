@@ -6,7 +6,7 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct {...} ArkUI_AccessibilityProviderCallbacksWithInstance
 ```
 
@@ -38,7 +38,7 @@ typedef struct {...} ArkUI_AccessibilityProviderCallbacksWithInstance
 
 ### findAccessibilityNodeInfosById()
 
-```
+```c
 int32_t (*findAccessibilityNodeInfosById)(const char* instanceId, int64_t elementId,ArkUI_AccessibilitySearchMode mode, int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)
 ```
 
@@ -66,7 +66,7 @@ int32_t (*findAccessibilityNodeInfosById)(const char* instanceId, int64_t elemen
 
 ### findAccessibilityNodeInfosByText()
 
-```
+```c
 int32_t (*findAccessibilityNodeInfosByText)(const char* instanceId, int64_t elementId, const char* text,int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)
 ```
 
@@ -94,7 +94,7 @@ int32_t (*findAccessibilityNodeInfosByText)(const char* instanceId, int64_t elem
 
 ### findFocusedAccessibilityNode()
 
-```
+```c
 int32_t (*findFocusedAccessibilityNode)(const char* instanceId, int64_t elementId,ArkUI_AccessibilityFocusType focusType, int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)
 ```
 
@@ -122,7 +122,7 @@ int32_t (*findFocusedAccessibilityNode)(const char* instanceId, int64_t elementI
 
 ### findNextFocusAccessibilityNode()
 
-```
+```c
 int32_t (*findNextFocusAccessibilityNode)(const char* instanceId, int64_t elementId, ArkUI_AccessibilityFocusMoveDirection direction,int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)
 ```
 
@@ -150,7 +150,7 @@ int32_t (*findNextFocusAccessibilityNode)(const char* instanceId, int64_t elemen
 
 ### executeAccessibilityAction()
 
-```
+```c
 int32_t (*executeAccessibilityAction)(const char* instanceId, int64_t elementId,ArkUI_Accessibility_ActionType action, ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)
 ```
 
@@ -178,7 +178,7 @@ int32_t (*executeAccessibilityAction)(const char* instanceId, int64_t elementId,
 
 ### clearFocusedFocusAccessibilityNode()
 
-```
+```c
 int32_t (*clearFocusedFocusAccessibilityNode)(const char* instanceId)
 ```
 
@@ -202,7 +202,7 @@ int32_t (*clearFocusedFocusAccessibilityNode)(const char* instanceId)
 
 ### getAccessibilityNodeCursorPosition()
 
-```
+```c
 int32_t (*getAccessibilityNodeCursorPosition)(const char* instanceId, int64_t elementId,int32_t requestId, int32_t* index)
 ```
 

@@ -1,6 +1,6 @@
 # AbilityBase_Want
 
-```
+```c
 typedef struct AbilityBase_Want AbilityBase_Want
 ```
 
