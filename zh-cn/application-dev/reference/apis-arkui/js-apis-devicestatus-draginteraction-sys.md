@@ -1,4 +1,4 @@
-# @ohos.deviceStatus.dragInteraction（拖拽)(系统接口)
+# @ohos.deviceStatus.dragInteraction (拖拽)(系统接口)
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Msdp-->
