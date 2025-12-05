@@ -123,11 +123,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 ``` TypeScript
 function errorFunc(observer: errorManager.GlobalError) {
-  hilog.info(0x0000, 'testTag','result name :' + observer.name);
-  hilog.info(0x0000, 'testTag','result message :' + observer.message);
-  hilog.info(0x0000, 'testTag','result stack :' + observer.stack);
-  hilog.info(0x0000, 'testTag','result instanceName :' + observer.instanceName);
-  hilog.info(0x0000, 'testTag','result instanceType :' + observer.instanceType);
+  console.error('testErrorManage','result name :' + observer.name);
+  console.error('testErrorManage','result message :' + observer.message);
+  console.error('testErrorManage','result stack :' + observer.stack);
+  console.error('testErrorManage','result instanceName :' + observer.instanceName);
+  console.error('testErrorManage','result instanceType :' + observer.instanceType);
 };
 ```
 
