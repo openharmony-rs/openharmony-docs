@@ -25005,7 +25005,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/Page1.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":45,
 						"name":"arkts_custom_components_freeze1",
 						"start_line":15
 					}
