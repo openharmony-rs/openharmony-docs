@@ -111,6 +111,8 @@ onTouch(type: 'touch', receiver: TouchEventReceiver): void
 **示例：**
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
 import { TouchEvent } from '@kit.InputKit';
 
@@ -122,10 +124,10 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputMonitor.onTouch('touch', (touchEvent: TouchEvent) => {
+            inputMonitor.onTouch((touchEvent: TouchEvent): Boolean => {
               console.log(`Monitor on success ${JSON.stringify(touchEvent)}`);
               return false;
-            });
+            } );
           } catch (error) {
             console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -228,6 +230,8 @@ onMouse(receiver: Callback&lt;MouseEvent&gt;): void
 **示例：**
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
 import { MouseEvent } from '@kit.InputKit';
 
@@ -241,7 +245,6 @@ struct Index {
           try {
             inputMonitor.onMouse((mouseEvent: MouseEvent) => {
               console.log(`Monitor on success ${JSON.stringify(mouseEvent)}`);
-              return false;
             });
           } catch (error) {
             console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -373,9 +376,11 @@ onMouse(rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): void
 **示例：**
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
 import { inputMonitor } from '@kit.InputKit';
 import { MouseEvent } from '@kit.InputKit';
-import { display } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -384,31 +389,12 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          /**
-           * 鼠标在矩形区域内时，触发的回调任务。
-           */
-          let callback = (mouseEvent : MouseEvent) => {
-            this.getUIContext().getPromptAction().showToast({
-              message: `监听成功：${JSON.stringify(mouseEvent)}`
-            })
-            console.log(`Monitor on success ${JSON.stringify(mouseEvent)}`);
-            return false;
-          };
-
-          /**
-           * 触发回调事件矩形区域。
-           */
-          let rect: display.Rect[] = [{
-            left: 100,
-            top: 100,
-            width: 100,
-            height: 100
-          }, {
-            left: 600,
-            top: 100,
-            width: 100,
-            height: 100
+          let rect: Array<display.Rect> = [{ left: 100, top: 100, width: 100, height: 100 },
+            { left: 600, top: 100, width: 100, height: 100
           }];
+          let callback = (mouseEvent : MouseEvent) => {
+            console.log(`onMouse callback into`);
+          }
 
           try {
             inputMonitor.onMouse(rect, callback);
@@ -547,8 +533,9 @@ offTouch(receiver?: TouchEventReceiver): void
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -557,42 +544,19 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 取消监听单个回调函数
-          let callback = (touchEvent: TouchEvent) => {
+          let callback = (touchEvent: TouchEvent):Boolean => {
             console.log(`Monitor on success ${JSON.stringify(touchEvent)}`);
             return false;
           };
           try {
+            // 取消监听单个回调函数
             inputMonitor.onTouch(callback);
             inputMonitor.offTouch(callback);
-            console.log(`Monitor off success`);
-          } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
-        })
-    }
-  }
-}
-```
-
-```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          // 取消监听所有回调函数
-          let callback = (touchEvent: TouchEvent) => {
-            console.log(`Monitor on success ${JSON.stringify(touchEvent)}`);
-            return false;
-          };
-          try {
-            inputMonitor.onTouch(callback);
+            // 取消监听所有回调函数
+            inputMonitor.onTouch((touchEvent: TouchEvent):Boolean => {
+              console.log(`Monitor on success ${JSON.stringify(touchEvent)}`);
+              return false;
+            };
             inputMonitor.offTouch();
             console.log(`Monitor off success`);
           } catch (error) {
@@ -730,8 +694,9 @@ offMouse(receiver?: Callback&lt;MouseEvent&gt;): void
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -740,42 +705,17 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 取消监听单个回调函数
           let callback = (mouseEvent: MouseEvent) => {
             console.log(`Monitor on success ${JSON.stringify(mouseEvent)}`);
-            return false;
           };
           try {
+            // 取消监听单个回调函数
             inputMonitor.onMouse(callback);
             inputMonitor.offMouse(callback);
-            console.log(`Monitor off success`);
-          } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
-        })
-    }
-  }
-}
-```
-
-```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          // 取消监听所有回调函数
-          let callback = (mouseEvent: MouseEvent) => {
-            console.log(`Monitor on success ${JSON.stringify(mouseEvent)}`);
-            return false;
-          };
-          try {
-            inputMonitor.onMouse(callback);
+            // 取消监听所有回调函数
+            inputMonitor.onMouse((mouseEvent: MouseEvent) => {
+              console.log(`Monitor on success ${JSON.stringify(mouseEvent)}`);
+            });
             inputMonitor.offMouse();
             console.log(`Monitor off success`);
           } catch (error) {
@@ -847,6 +787,8 @@ struct Index {
 ArkTS-Sta示例
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
 import { TouchEvent } from '@kit.InputKit';
 
@@ -858,12 +800,10 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputMonitor.onTouch(touchEvent => {
-              if (touchEvent.touches.length == 3) { // 当前有三个手指按下
-                return true;
-              }
+            inputMonitor.onTouch((touchEvent: TouchEvent): Boolean => {
+              console.log(`Monitor on success ${JSON.stringify(touchEvent)}`);
               return false;
-            });
+            } );
           } catch (error) {
             console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -968,8 +908,9 @@ onPinch(receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pi
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -979,9 +920,8 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputMonitor.onPinch((pinchEvent) => {
+            inputMonitor.onPinch((pinchEvent: Pinch) => {
               console.log(`Monitor on success ${JSON.stringify(pinchEvent)}`);
-              return false;
             });
           } catch (error) {
             console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1121,8 +1061,9 @@ offPinch(receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1131,46 +1072,20 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 取消监听单个回调函数
-          let callback = (pinchEvent: Pinch) => {
-            console.log(`Monitor on success ${JSON.stringify(pinchEvent)}`);
-            return false;
-          };
           try {
-            inputMonitor.onPinch(callback);
-            inputMonitor.offPinch(callback);
-            console.log(`Monitor off success`);
-          } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
-        })
-    }
-  }
-}
-```
-
-```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          // 取消监听所有回调函数
-          let callback = (pinchEvent: Pinch) => {
-            console.log(`Monitor on success ${JSON.stringify(pinchEvent)}`);
-            return false;
-          };
-          try {
-            inputMonitor.onPinch(callback);
+            let funCallback = (pinchEvent: Pinch) => {
+              console.log(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+            };
+            inputMonitor.onPinch(funCallback);
+            // 取消监听单个回调函数
+            inputMonitor.offPinch(funCallback);
+            // 取消监听所有回调函数
+            inputMonitor.onPinch((pinchEvent: Pinch) => {
+              console.log(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+            });
             inputMonitor.offPinch();
-            console.log(`Monitor off success`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -1272,7 +1187,9 @@ onThreeFingersSwipe(receiver: Callback&lt;[ThreeFingersSwipe](js-apis-multimodal
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, ThreeFingersSwipe } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1282,10 +1199,10 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputMonitor.onThreeFingersSwipe((threeFingersSwipe) => {
+            let funCallback = (threeFingersSwipe: ThreeFingersSwipe) => {
               console.log(`Monitor on success ${JSON.stringify(threeFingersSwipe)}`);
-              return false;
-            });
+            };
+            inputMonitor.onThreeFingersSwipe(funCallback);
           } catch (error) {
             console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1423,8 +1340,9 @@ offThreeFingersSwipe(receiver?: Callback&lt;[ThreeFingersSwipe](js-apis-multimod
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersSwipe } from '@kit.InputKit';
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, ThreeFingersSwipe } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1433,46 +1351,20 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 取消监听单个回调函数
-          let callback = (threeFingersSwipe: ThreeFingersSwipe) => {
-            console.log(`Monitor on success ${JSON.stringify(threeFingersSwipe)}`);
-            return false;
-          };
           try {
-            inputMonitor.onThreeFingersSwipe(callback);
-            inputMonitor.offThreeFingersSwipe(callback);
-            console.log(`Monitor off success`);
-          } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
-        })
-    }
-  }
-}
-```
-
-```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersSwipe } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          // 取消监听所有回调函数
-          let callback = (threeFingersSwipe: ThreeFingersSwipe) => {
-            console.log(`Monitor on success ${JSON.stringify(threeFingersSwipe)}`);
-            return false;
-          };
-          try {
-            inputMonitor.onThreeFingersSwipe(callback);
+            let funCallback = (threeFingersSwipe: ThreeFingersSwipe) => {
+              console.log(`Monitor on success ${JSON.stringify(threeFingersSwipe)}`);
+            };
+            inputMonitor.onThreeFingersSwipe(funCallback);
+            // 取消监听单个回调函数
+            inputMonitor.offThreeFingersSwipe(funCallback);
+            inputMonitor.onThreeFingersSwipe((threeFingersSwipe: ThreeFingersSwipe) => {
+              console.log(`Monitor on success ${JSON.stringify(threeFingersSwipe)}`);
+            });
+            // 取消监听所有回调函数
             inputMonitor.offThreeFingersSwipe();
-            console.log(`Monitor off success`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -1574,7 +1466,9 @@ onFourFingersSwipe(receiver: Callback&lt;[FourFingersSwipe](js-apis-multimodalin
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, FourFingersSwipe } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1584,10 +1478,10 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputMonitor.onFourFingersSwipe((fourFingersSwipe) => {
+            let funCallback = (fourFingersSwipe: FourFingersSwipe) => {
               console.log(`Monitor on success ${JSON.stringify(fourFingersSwipe)}`);
-              return false;
-            });
+            };
+            inputMonitor.onFourFingersSwipe(funCallback);
           } catch (error) {
             console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1690,7 +1584,7 @@ struct Index {
 }
 ```
 
-## <span id = "off_fourFingersSwipe_sta">inputMonitor.off('fourFingersSwipe')<sup>22+</sup></span>
+## <span id = "off_fourFingersSwipe_sta">inputMonitor.offFourFingersSwipe<sup>22+</sup></span>
 
 offFourFingersSwipe(receiver?: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
 
@@ -1725,8 +1619,9 @@ offFourFingersSwipe(receiver?: Callback&lt;[FourFingersSwipe](js-apis-multimodal
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { FourFingersSwipe } from '@kit.InputKit';
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, FourFingersSwipe } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1735,46 +1630,20 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 取消监听单个回调函数
-          let callback = (fourFingersSwipe: FourFingersSwipe) => {
-            console.log(`Monitor on success ${JSON.stringify(fourFingersSwipe)}`);
-            return false;
-          };
           try {
-            inputMonitor.onFourFingersSwipe(callback);
-            inputMonitor.offFourFingersSwipe(callback);
-            console.log(`Monitor off success`);
-          } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
-        })
-    }
-  }
-}
-```
-
-```js
-import { inputMonitor } from '@kit.InputKit';
-import { FourFingersSwipe } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          // 取消监听所有回调函数
-          let callback = (fourFingersSwipe: FourFingersSwipe) => {
-            console.log(`Monitor on success ${JSON.stringify(fourFingersSwipe)}`);
-            return false;
-          };
-          try {
-            inputMonitor.onFourFingersSwipe(callback);
+            let funCallback = (fourFingersSwipe: FourFingersSwipe) => {
+              console.log(`Monitor on success ${JSON.stringify(fourFingersSwipe)}`);
+            };
+            inputMonitor.onFourFingersSwipe(funCallback);
+            // 取消监听单个回调函数
+            inputMonitor.offFourFingersSwipe(funCallback);
+            inputMonitor.onFourFingersSwipe((fourFingersSwipe: FourFingersSwipe) => {
+              console.log(`Monitor on success ${JSON.stringify(fourFingersSwipe)}`);
+            });
+            // 取消监听所有回调函数
             inputMonitor.offFourFingersSwipe();
-            console.log(`Monitor off success`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -2492,7 +2361,9 @@ onThreeFingersTap(receiver: Callback&lt;[ThreeFingersTap](js-apis-multimodalinpu
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, ThreeFingersTap } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -2502,10 +2373,10 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputMonitor.onThreeFingersTap((threeFingersTap) => {
+            let funCallback = (threeFingersTap: ThreeFingersTap) => {
               console.log(`Monitor on success ${JSON.stringify(threeFingersTap)}`);
-              return false;
-            });
+            };
+            inputMonitor.onThreeFingersTap(funCallback);
           } catch (error) {
             console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2643,8 +2514,9 @@ offThreeFingersTap(receiver?: Callback&lt;[ThreeFingersTap](js-apis-multimodalin
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersTap } from '@kit.InputKit';
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, ThreeFingersTap } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -2653,46 +2525,20 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 取消监听单个回调函数
-          let callback = (threeFingersTap: ThreeFingersTap) => {
-            console.log(`Monitor on success ${JSON.stringify(threeFingersTap)}`);
-            return false;
-          };
           try {
-            inputMonitor.onThreeFingersTap(callback);
-            inputMonitor.offThreeFingersTap(callback);
-            console.log(`Monitor off success`);
-          } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
-        })
-    }
-  }
-}
-```
-
-```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersTap } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          // 取消监听所有回调函数
-          let callback = (threeFingersTap: ThreeFingersTap) => {
-            console.log(`Monitor on success ${JSON.stringify(threeFingersTap)}`);
-            return false;
-          };
-          try {
-            inputMonitor.onThreeFingersTap', callback);
+            let funCallback = (threeFingersTap: ThreeFingersTap) => {
+              console.log(`Monitor on success ${JSON.stringify(threeFingersTap)}`);
+            };
+            inputMonitor.onThreeFingersTap(funCallback);
+            // 取消监听单个回调函数
+            inputMonitor.offThreeFingersTap(funCallback);
+            inputMonitor.onThreeFingersTap((threeFingersTap: ThreeFingersTap) => {
+              console.log(`Monitor on success ${JSON.stringify(threeFingersTap)}`);
+            });
+            // 取消监听所有回调函数
             inputMonitor.offThreeFingersTap();
-            console.log(`Monitor off success`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -2797,6 +2643,8 @@ onTouchscreenSwipe(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): v
 **示例：**
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
 
@@ -2807,13 +2655,14 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          let fingers: int = 4;
           try {
-            inputMonitor.onTouchscreenSwipe(fingers, (event: TouchGestureEvent) => {
+            let funCallback = (event: TouchGestureEvent) => {
               console.log(`Monitor on success ${JSON.stringify(event)}`);
-            });
+            };
+            let fingers: int = 4;
+            inputMonitor.onTouchscreenSwipe(fingers, funCallback);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -2948,6 +2797,8 @@ offTouchscreenSwipe(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;):
 **示例：**
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
 
@@ -2958,43 +2809,21 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 取消监听单个回调函数
-          let callback = (event: TouchGestureEvent) => {
-            console.log(`Monitor on success ${JSON.stringify(event)}`);
-          };
-          let fingers: int = 4;
           try {
-            inputMonitor.onTouchscreenSwipe(fingers, callback);
-            inputMonitor.offTouchscreenSwipe(fingers, callback);
-          } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
-        })
-    }
-  }
-}
-```
-
-```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          // 取消监听所有回调函数
-          let fingers: int = 4;
-          try {
+            let funCallback = (event: TouchGestureEvent) => {
+              console.log(`Monitor on success ${JSON.stringify(event)}`);
+            };
+            let fingers: int = 4;
+            inputMonitor.onTouchscreenSwipe(fingers, funCallback);
+            // 取消监听单个回调函数
+            inputMonitor.offTouchscreenSwipe(fingers, funCallback);
             inputMonitor.onTouchscreenSwipe(fingers, (event: TouchGestureEvent) => {
               console.log(`Monitor on success ${JSON.stringify(event)}`);
             });
+            // 取消监听所有回调函数
             inputMonitor.offTouchscreenSwipe(fingers);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -3099,6 +2928,8 @@ onTouchscreenPinch(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): v
 **示例：**
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
 
@@ -3109,13 +2940,14 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          let fingers: int = 4;
           try {
-            inputMonitor.onTouchscreenPinch(fingers, (event: TouchGestureEvent) => {
+            let funCallback = (event: TouchGestureEvent) => {
               console.log(`Monitor on success ${JSON.stringify(event)}`);
-            });
+            };
+            let fingers: int = 4;
+            inputMonitor.onTouchscreenPinch(fingers, funCallback);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -3250,6 +3082,8 @@ offTouchscreenPinch(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;):
 **示例：**
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
 
@@ -3260,43 +3094,21 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 取消监听单个回调函数
-          let callback = (event: TouchGestureEvent) => {
-            console.log(`Monitor on success ${JSON.stringify(event)}`);
-          };
-          let fingers: int = 4;
           try {
-            inputMonitor.onTouchscreenPinch(fingers, callback);
-            inputMonitor.offTouchscreenPinch(fingers, callback);
-          } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
-        })
-    }
-  }
-}
-```
-
-```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          // 取消监听所有回调函数
-          let fingers: int = 4;
-          try {
+            let funCallback = (event: TouchGestureEvent) => {
+              console.log(`Monitor on success ${JSON.stringify(event)}`);
+            };
+            let fingers: int = 4;
+            inputMonitor.onTouchscreenPinch(fingers, funCallback);
+            // 取消监听单个回调函数
+            inputMonitor.offTouchscreenPinch(fingers, funCallback);
             inputMonitor.onTouchscreenPinch(fingers, (event: TouchGestureEvent) => {
               console.log(`Monitor on success ${JSON.stringify(event)}`);
             });
+            // 取消监听所有回调函数
             inputMonitor.offTouchscreenPinch(fingers);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -3402,6 +3214,8 @@ onKeyPressed(keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEvent&gt;): vo
 **示例：**
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
 
 @Entry
@@ -3412,12 +3226,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
-            inputMonitor.onKeyPressed(keys, (event: KeyEvent ) => {
+            let funCallback = (event: KeyEvent) => {
               console.log(`Monitor on success ${JSON.stringify(event)}`);
-            });
+            };
+            let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
+            inputMonitor.onKeyPressed(keys, funCallback);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -3548,6 +3363,8 @@ offKeyPressed(receiver?: Callback&lt;KeyEvent&gt;): void
 **示例：**
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
 
 @Entry
@@ -3557,42 +3374,21 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 取消监听单个回调函数
           try {
-            let callback = (event: KeyEvent) => {
+            let funCallback = (event: KeyEvent) => {
               console.log(`Monitor on success ${JSON.stringify(event)}`);
             };
             let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
-            inputMonitor.onKeyPressed(keys, callback);
-            inputMonitor.offKeyPressed(callback);
-          } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
-        })
-    }
-  }
-}
-```
-
-```js
-import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          // 取消监听所有回调函数
-          try {
-            let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
+            inputMonitor.onKeyPressed(keys, funCallback);
+            // 取消监听单个回调函数
+            inputMonitor.offKeyPressed(funCallback);
             inputMonitor.onKeyPressed(keys, (event: KeyEvent) => {
               console.log(`Monitor on success ${JSON.stringify(event)}`);
             });
+            // 取消监听所有回调函数
             inputMonitor.offKeyPressed();
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -3639,6 +3435,8 @@ ArkTS-Sta: queryTouchEvents(count: int): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { inputMonitor, TouchEvent } from '@kit.InputKit'
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3655,5 +3453,32 @@ try {
   const code = (error as BusinessError).code;
   const message = (error as BusinessError).message;
   console.error(`queryTouchEvents failed, error code: ${code}, message: ${message}.`);
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, TouchEvent } from '@kit.InputKit'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+           inputMonitor.queryTouchEvents(10).then((events: Array<TouchEvent>) => {
+                console.info(`events ${events}`);
+            });
+            } catch(error: BusinessError) {
+            console.error('queryTouchEvents promise error: ' + JSON.stringify(error));
+          }
+        })
+    }
+  }
 }
 ```

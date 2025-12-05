@@ -430,8 +430,8 @@ ArkTS-Sta示例：
 
 ```js
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { inputDevice, KeyCode } from '@kit.InputKit'
 
 @Entry
 @Component
@@ -440,14 +440,12 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 查询id为1的输入设备对于17、22和2055按键的支持情况。
+          // 获取输入设备id为1的设备信息。
           try {
-            let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_DOWN, KeyCode.KEYCODE_VOLUME_MUTE, KeyCode.KEYCODE_DEL];
-            inputDevice.supportKeys(1, keys, (error: BusinessError<void> | null, supportResult: Array<Boolean> | undefined) => {
-                console.log(`Query result: ${JSON.stringify(supportResult)}`);
-              });
+            let deviceData: inputDevice.InputDeviceData = inputDevice.getDeviceInfoSync(1);
+            console.log(`Device info: ${JSON.stringify(deviceData)}`);
           } catch (error) {
-            console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
