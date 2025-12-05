@@ -29531,5 +29531,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-new-computed.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/CustomComponentUse.ets",
+				"functions":[
+					{
+						"end_line":54,
+						"name":"custom_component_use",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ObservedV2ClassUser.ets",
+				"functions":[
+					{
+						"end_line":51,
+						"name":"ObservedV2_Class_User",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
