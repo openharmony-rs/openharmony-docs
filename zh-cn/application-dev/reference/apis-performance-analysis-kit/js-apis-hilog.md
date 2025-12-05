@@ -399,12 +399,12 @@ hilog.info(0x0001, "jsHilogTest", "print boolean: %{public}s", isBol);
 **打印结果：**
 <!--RP8-->
 ```
-08-09 13:26:29.094  2266-2266 I A00001/jsHilogTest  com.example.hilogDemo  I  print object: {"name":"Jack","age":22}
-08-09 13:26:29.094  2266-2266 I A00001/jsHilogTest  com.example.hilogDemo  I  print object: {"name":"Jack","age":22}
-08-09 13:26:29.094  2266-2266 I A00001/jsHilogTest  com.example.hilogDemo  I  private flag: <private> <private>, print null: null
-08-09 13:26:29.094  2266-2266 I A00001/jsHilogTest  com.example.hilogDemo  I  print undefined: undefined
-08-09 13:26:29.094  2266-2266 I A00001/jsHilogTest  com.example.hilogDemo  I  print number: 123 456
-08-09 13:26:29.095  2266-2266 I A00001/jsHilogTest  com.example.hilogDemo  I  print bigNum: 1234567890123456768 1234567890123456768
-08-09 13:26:29.095  2266-2266 I A00001/jsHilogTest  com.example.hilogDemo  I  print boolean: true
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print object: {"name":"Jack","age":22}
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print object: {"name":"Jack","age":22}
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  private flag: <private> <private>, print null: null
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print undefined: undefined
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print number: 123 456
+08-09 13:26:29.095  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print bigNum: 1234567890123456768 1234567890123456768
+08-09 13:26:29.095  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print boolean: true
 ```
 <!--RP8End-->
