@@ -1358,7 +1358,7 @@ getExtras(callback: AsyncCallback\<Record\<string, Object>>): void
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | -------------------------- |
-| callback | AsyncCallback\<Record\<string, Object>> | 是   | 回调函数，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 <br>API version 20开始发生兼容变更，在API version 19及之前的版本其返回值类型为：Promise<{[key: string]: Object}>。 |
+| callback | AsyncCallback\<Record\<string, Object>> | 是   | 回调函数，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 <br>API version 20开始发生兼容变更，在API version 19及之前的版本参数类型为Record<string, Object>. |
 
 **错误码：**
 
@@ -1760,7 +1760,7 @@ avsessionController.off('callMetadataChange');
 
 ## on('sessionDestroy')<sup>10+</sup>
 
-on(type: 'sessionDestroy', callback: () => void):void
+on(type: 'sessionDestroy', callback: () => void): void
 
 会话销毁的监听事件。
 
@@ -1829,7 +1829,7 @@ avsessionController.off('sessionDestroy');
 
 ## on('activeStateChange')<sup>10+</sup>
 
-on(type: 'activeStateChange', callback: (isActive: boolean) => void):void
+on(type: 'activeStateChange', callback: (isActive: boolean) => void): void
 
 
 会话的激活状态的监听事件。
@@ -1898,7 +1898,7 @@ avsessionController.off('activeStateChange');
 
 ## on('validCommandChange')<sup>10+</sup>
 
-on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>) => void):void
+on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>) => void): void
 
 会话支持的有效命令变化监听事件。
 
@@ -1935,7 +1935,7 @@ avsessionController.on('validCommandChange', (validCommands: avSession.AVControl
 
 ## off('validCommandChange')<sup>10+</sup>
 
-off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandType>) => void):void
+off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandType>) => void): void
 
 取消监听会话有效命令变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
@@ -2052,7 +2052,7 @@ on(type: 'sessionEvent', callback: (sessionEvent: string, args: Record\<String, 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'sessionEvent'`：当会话事件变化时，触发该事件。 |
-| callback | (sessionEvent: string, args: Record\<String, Object>) => void         | 是   | 回调函数，sessionEvent为变化的会话事件名，args为事件的参数。<br>API version 20开始发生兼容变更，在API version 19及之前的版本其返回值类型为：Promise<{[key: string]: Object}>。          |
+| callback | (sessionEvent: string, args: Record\<String, Object>) => void         | 是   | 回调函数，sessionEvent为变化的会话事件名，args为事件的参数。<br>API version 20开始发生兼容变更，在API version 19及之前的版本args的参数类型为：Record\<String, Object>。          |
 
 **错误码：**
 
@@ -2102,7 +2102,7 @@ off(type: 'sessionEvent', callback?: (sessionEvent: string, args: Record\<String
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
 | type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'sessionEvent'`。    |
-| callback | sessionEvent: string, args: Record\<String, Object> => void       | 否   | 回调函数，参数sessionEvent是变化的事件名，args为事件的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对sessionEvent事件的监听。        <br>API version 20开始发生兼容变更，在API version 19及之前的版本其返回值类型为：Promise<{[key: string]: Object}>。              |
+| callback | sessionEvent: string, args: Record\<String, Object> => void       | 否   | 回调函数，参数sessionEvent是变化的事件名，args为事件的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对sessionEvent事件的监听。        <br>API version 20开始发生兼容变更，在API version 19及之前的版本args的参数类型为：Record\<String, Object>。             |
 
 **错误码：**
 
@@ -2272,7 +2272,7 @@ on(type: 'extrasChange', callback: (extras: Record\<string, Object>) => void): v
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'extrasChange'`：当媒体提供方设置自定义媒体数据包时，触发该事件。 |
-| callback | (extras: Record\<string, Object>) => void         | 是   | 回调函数，extras为媒体提供方新设置的自定义媒体数据包，该自定义媒体数据包与dispatchSessionEvent方法设置的数据包完全一致。     <br>API version 20开始发生兼容变更，在API version 19及之前的版本其返回值类型为：Promise<{[key: string]: Object}>。     |
+| callback | (extras: Record\<string, Object>) => void         | 是   | 回调函数，extras为媒体提供方新设置的自定义媒体数据包，该自定义媒体数据包与dispatchSessionEvent方法设置的数据包完全一致。 <br>API version 20开始发生兼容变更，在API version 19及之前的版本extras的参数类型为：Record\<String, Object>。    |
 
 **错误码：**
 
@@ -2322,7 +2322,7 @@ off(type: 'extrasChange', callback?: (extras: Record\<string, Object>) => void):
 | 参数名    | 类型                    | 必填 | 说明                                                                                                    |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------------------------------------------------- |
 | type     | string                  | 是   | 取消对应的监听事件，支持事件`'extrasChange'`。                                                         |
-|  callback | (extras: Record\<string, Object>) => void | 否   | 注册监听事件时的回调函数。<br>该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。<br>API version 20开始发生兼容变更，在API version 19及之前的版本其返回值类型为：Promise<{[key: string]: Object}>。 |
+|  callback | (extras: Record\<string, Object>) => void | 否   | 注册监听事件时的回调函数。<br>该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。 <br>API version 20开始发生兼容变更，在API version 19及之前的版本extras的参数类型为：Record\<String, Object>。 |
 
 **错误码：**
 
