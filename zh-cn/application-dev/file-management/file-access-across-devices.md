@@ -21,21 +21,21 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
    <!--@[distributed_Data_Permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->      
-
-``` TypeScript
-  let atManager = abilityAccessCtrl.createAtManager();
-  try {
-    //以动态弹窗的方式向用户申请授权
-    atManager.requestPermissionsFromUser(context, ['ohos.permission.DISTRIBUTED_DATASYNC']).then((result) => {
-      console.info(`request permission result: ${JSON.stringify(result)}`);
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to request permissions from user. Code: ${err.code}, message: ${err.message}`);
-    })
-  } catch (error) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`Catch err. Failed to request permissions from user. Code: ${err.code}, message: ${err.message}`);
-  }
-```
+   
+   ``` TypeScript
+   let atManager = abilityAccessCtrl.createAtManager();
+   try {
+     //以动态弹窗的方式向用户申请授权
+     atManager.requestPermissionsFromUser(context, ['ohos.permission.DISTRIBUTED_DATASYNC']).then((result) => {
+       console.info(`request permission result: ${JSON.stringify(result)}`);
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to request permissions from user. Code: ${err.code}, message: ${err.message}`);
+     })
+   } catch (error) {
+     let err: BusinessError = error as BusinessError;
+     console.error(`Catch err. Failed to request permissions from user. Code: ${err.code}, message: ${err.message}`);
+   }
+   ```
 
 
 3. 访问跨设备文件。
