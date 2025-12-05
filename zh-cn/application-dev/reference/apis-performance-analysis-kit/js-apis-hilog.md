@@ -133,7 +133,7 @@ hilog.info(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 
 <!--RP4-->
 ```
-08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  I  hello World <private>
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  I     hello World <private>
 ```
 <!--RP4End-->
 
@@ -168,7 +168,7 @@ hilog.warn(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 
 <!--RP5-->
 ```
-08-05 12:21:47.579  2695-2703 A00001/testTag  com.example.hilogDemo  W     hello World <private>
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  W     hello World <private>
 ```
 <!--RP5End-->
 
@@ -203,7 +203,7 @@ hilog.error(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 
 <!--RP6-->
 ```
-08-05 12:21:47.579  2695-2703 A00001/testTag  com.example.hilogDemo  E     hello World <private>
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  E     hello World <private>
 ```
 <!--RP6End-->
 
@@ -238,7 +238,7 @@ hilog.fatal(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 
 <!--RP7-->
 ```
-08-05 12:21:47.579  2695-2703 A00001/testTag  com.example.hilogDemo  F     hello World <private>
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  F     hello World <private>
 ```
 <!--RP7End-->
 
