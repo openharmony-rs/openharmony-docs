@@ -390,5 +390,13 @@ export function setSecondErrorHandler() {
  新增错误处理器责任链模式构造函数。
 <!-- @[test_error_handlers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+function testErrorHandlers() {
+  setFirstErrorHandler();
+  setSecondErrorHandler();
+  throw new Error('Test uncaught exception!');
+}
+```
+
  主组件通过按钮触发测试，注册两个处理器并抛错验证处理链。
 <!-- @[onclick_error_Handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) --> 
