@@ -91,9 +91,10 @@
     - 状态管理V1和V2混合使用<!--v1v2-mixing-->
       - [自定义组件混用场景指导](state-management/arkts-custom-component-mixed-scenarios.md)
       - [状态管理V1V2混用文档](state-management/arkts-v1-v2-mixusage.md)
-    - 状态管理优秀实践<!--arkts-state-management-best-practices-->
-      - [V1状态管理优秀实践](state-management/arkts-state-management-best-practices.md)
-      - [V1状态管理合理使用开发指导](state-management/properly-use-state-management-to-develope.md)
+    - [状态管理常见问题](state-management/arkts-state-management-faq.md)
+      - [组件内状态管理常见问题](state-management/arkts-state-management-faq-inner-component.md)
+      - [数据对象状态管理常见问题](state-management/arkts-state-management-faq-inner-class.md)
+      - [应用内状态管理和其他常见问题](state-management/arkts-state-management-faq-application-and-others.md)
       - [状态变量改变不触发组件刷新问题常用定位方法](state-management/troubleshooting-state-manage.md)
   - 学习UI范式渲染控制<!--arkts-rendering-control-->
     - [渲染控制概述](rendering-control/arkts-rendering-control-overview.md)
