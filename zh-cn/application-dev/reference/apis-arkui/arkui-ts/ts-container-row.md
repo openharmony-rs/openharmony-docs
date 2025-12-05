@@ -194,7 +194,7 @@ struct RowExample {
 
       // 通过资源引用方式设置子组件水平方向的间距
       Text('Resource space').width('90%')
-      Row({ space: $r("app.string.stringSpace") }) {
+      Row({ space: $r('app.string.stringSpace') }) {
         Row().width('30%').height(50).backgroundColor(0xAFEEEE)
         Row().width('30%').height(50).backgroundColor(0x00FFFF)
       }.width('90%').height(107).border({ width: 1 })
