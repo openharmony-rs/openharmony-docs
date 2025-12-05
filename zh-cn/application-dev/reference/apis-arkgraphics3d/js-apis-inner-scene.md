@@ -826,7 +826,7 @@ function registerResourcePath(): void {
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| shadowResolution<sup>23+</sup> | Vec2 | 否 | 是 | 表示全局阴影贴图分辨率。默认值为undefined，表示阴影贴图分辨率设置为1024 * 1024。输入的值需要大于0才能正确生效。
+| shadowResolution| [Vec2](js-apis-inner-scene-types.md#vec2) | 否 | 是 | 表示全局阴影贴图分辨率。默认值为undefined，表示阴影贴图分辨率设置为1024 * 1024。输入的值需要大于0才能正确生效。
 
 ## RenderParameters<sup>15+</sup>
 渲染参数接口。
