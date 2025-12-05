@@ -26,6 +26,6 @@ typedef const struct {...} JSVM_CompileProfile
 
 | 名称 | 描述 |
 | -- | -- |
-| profile | 编译采样文件的指针。 |
+| int *profile | 编译采样文件的指针。 |
 | length | 编译采样文件的大小。 |
 
