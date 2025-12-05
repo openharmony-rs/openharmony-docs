@@ -985,48 +985,48 @@ tlsServer.listen(tlsConnectOptions).then(() => {
 4. 订阅TLSSocketServer的连接事件，收到客户端连接，通过回调得到TLSSocketConnection对象，通过该对象可以实现订阅TLSSocketConnection相关的事件、向客户端发送数的动作，TLSSocketConnection连接使用完毕后，需要主动断开连接，进行取消订阅回调的动作。
 
    <!-- @[tlsServer_connection_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
-
-``` TypeScript
-class SocketInfo {
-  public message: ArrayBuffer = new ArrayBuffer(1);
-  public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
-}
-let callback = (value: SocketInfo) => {
-  let messageView = '';
-  for (let i: number = 0; i < value.message.byteLength; i++) {
-    let uint8Array = new Uint8Array(value.message)
-    let messages = uint8Array[i]
-    let message = String.fromCharCode(messages);
-    messageView += message;
-  }
-  hilog.info(0x0000, 'testTag', 'on message message: ' + JSON.stringify(messageView));
-  hilog.info(0x0000, 'testTag', 'remoteInfo: ' + JSON.stringify(value.remoteInfo));
-// ···
-}
-// ···
-  tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
-    client.on('message', callback);
-    // 发送数据。
-    client.send('Hello, client!').then(() => {
-      hilog.info(0x0000, 'testTag', 'send success');
-    // ···
-    }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', 'send fail');
-    // ···
-    });
-    // 断开连接。
-    client.close().then(() => {
-      hilog.info(0x0000, 'testTag', 'close success');
-    // ···
-    }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', 'close fail');
-    // ···
-    });
-
-    // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
-    client.off('message', callback);
-    client.off('message');
-```
+   
+   ``` TypeScript
+   class SocketInfo {
+     public message: ArrayBuffer = new ArrayBuffer(1);
+     public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
+   }
+   let callback = (value: SocketInfo) => {
+     let messageView = '';
+     for (let i: number = 0; i < value.message.byteLength; i++) {
+       let uint8Array = new Uint8Array(value.message)
+       let messages = uint8Array[i]
+       let message = String.fromCharCode(messages);
+       messageView += message;
+     }
+     hilog.info(0x0000, 'testTag', 'on message message: ' + JSON.stringify(messageView));
+     hilog.info(0x0000, 'testTag', 'remoteInfo: ' + JSON.stringify(value.remoteInfo));
+     // ...
+   }
+   // ...
+     tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
+       client.on('message', callback);
+       // 发送数据。
+       client.send('Hello, client!').then(() => {
+         hilog.info(0x0000, 'testTag', 'send success');
+         // ...
+       }).catch((err: BusinessError) => {
+         hilog.error(0x0000, 'testTag', 'send fail');
+         // ...
+       });
+       // 断开连接。
+       client.close().then(() => {
+         hilog.info(0x0000, 'testTag', 'close success');
+         // ...
+       }).catch((err: BusinessError) => {
+         hilog.error(0x0000, 'testTag', 'close fail');
+         // ...
+       });
+   
+       // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+       client.off('message', callback);
+       client.off('message');
+   ```
 
 5. 取消订阅TLSSocketServer的相关事件。
 
