@@ -125,7 +125,7 @@ IconCommonOptions定义图标的共通属性。
 | 名称      | 类型                                       | 只读 | 可选 | 说明                                                         |
 | --------- | ------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | src       | [ResourceStr](ts-types.md#resourcestr)     | 否  | 否  | 图标图片或图片地址引用。 |
-| size      | [SizeOptions](ts-types.md#sizeoptions)     | 否  | 是  | 图标大小，不支持百分比。<br/>默认值：{width: 16, height: 16}<br>值为undefined时，按默认值处理。 |
+| size      | [SizeOptions](ts-types.md#sizeoptions)     | 否  | 是  | 图标大小，不支持百分比。<br/>默认值：{width: 16, height: 16}<br>单位：vp<br>值为undefined时，按默认值处理。 |
 | fillColor | [ResourceColor](ts-types.md#resourcecolor) | 否  | 是  | 图标填充颜色。<br>默认值：$r('sys.color.chip_usually_icon_color')<br>值为undefined时，按默认值处理。 |
 | activatedFillColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | 否  | 是  | 操作块激活时图标填充颜色。<br>默认值：$r('sys.color.chip_active_icon_color')<br>值为undefined时，按默认值处理。 |
 
@@ -232,7 +232,7 @@ LabelOptions定义文本属性。
 | fontColor   | [ResourceColor](ts-types.md#resourcecolor) | 否  | 是  | 文字颜色。<br/>默认值：$r('sys.color.ohos_id_color_text_primary')<br>值为undefined时，按默认值处理。 |
 | activatedFontColor<sup>12+</sup>   | [ResourceColor](ts-types.md#resourcecolor) | 否  | 是  | 操作块激活时的文字颜色。<br/>默认值：$r('sys.color.ohos_id_color_text_primary_contrary')<br>值为undefined时，按默认值处理。 |
 | fontFamily  | string                                     | 否  | 是  | 文字字体。<br/>默认值："HarmonyOS Sans"<br>值为undefined时，按默认值处理。 |
-| labelMargin | [LabelMarginOptions](#labelmarginoptions)  | 否  | 是  | 文本与左右侧图标之间间距。<br>默认值：<br>size为ChipSize.SMALL时，默认值：{ left: 4, right: 4 }<br>size为ChipSize.NORMAL时，默认值：{ left: 6, right: 6 }<br>值为undefined时，按默认值处理。 |
+| labelMargin | [LabelMarginOptions](#labelmarginoptions)  | 否  | 是  | 文本与左右侧图标之间间距。<br>默认值：<br>size为ChipSize.SMALL时，默认值：{ left: 4, right: 4 }<br>size为ChipSize.NORMAL时，默认值：{ left: 6, right: 6 }<br>单位：vp<br>值为undefined时，按默认值处理。 |
 | localizedLabelMargin<sup>12+</sup> | [LocalizedLabelMarginOptions](#localizedlabelmarginoptions12) | 否 | 是 | 本地化文本与左右侧图标之间间距。<br/>默认值：<br>size为ChipSize.SMALL时，默认值：<br>`{  start: LengthMetrics.resource($r('sys.float.chip_small_text_margin')),  end: LengthMetrics.resource($r('sys.float.chip_small_text_margin')) }`<br>size为ChipSize.NORMAL时，默认值：<br>`{  start: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')),  end: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')) }`<br>值为undefined时，按默认值处理。 |
 
 ## CloseOptions<sup>14+</sup>
@@ -259,8 +259,8 @@ LabelMarginOptions用于定义文本与左右侧图标之间间距。
 
 | 名称  | 类型                                 | 只读 | 可选 | 说明                                                         |
 | ----- | ------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| left  | [Dimension](ts-types.md#dimension10) | 否   | 是   | 文本与左侧图标之间间距，不支持百分比。<br>默认值：<br>size为ChipSize.SMALL时，left默认值：4<br>size为ChipSize.NORMAL时，left默认值：6<br>值为undefined时，按默认值处理。<br>取值范围：[0, +∞)<br>单位：vp |
-| right | [Dimension](ts-types.md#dimension10) | 否   | 是   | 文本与右侧图标之间间距，不支持百分比。<br>默认值：<br>size为ChipSize.SMALL时，right默认值：4<br>size为ChipSize.NORMAL时，right默认值：6<br>值为undefined时，按默认值处理。<br>取值范围：[0, +∞)<br>单位：vp |
+| left  | [Dimension](ts-types.md#dimension10) | 否   | 是   | 文本与左侧图标之间间距，不支持百分比。<br>默认值：<br>size为ChipSize.SMALL时，left默认值：4<br>size为ChipSize.NORMAL时，left默认值：6<br>单位：vp<br>值为undefined时，按默认值处理。<br>取值范围：[0, +∞) |
+| right | [Dimension](ts-types.md#dimension10) | 否   | 是   | 文本与右侧图标之间间距，不支持百分比。<br>默认值：<br>size为ChipSize.SMALL时，right默认值：4<br>size为ChipSize.NORMAL时，right默认值：6<br>单位：vp<br>值为undefined时，按默认值处理。<br>取值范围：[0, +∞) |
 
 ## LocalizedLabelMarginOptions<sup>12+</sup>
 
