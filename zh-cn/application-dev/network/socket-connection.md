@@ -507,16 +507,16 @@ UDP与TCP流程大体类似，下面以TCP为例：
    }
    ```
    <!-- @[local_socket_worker_server_listen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-
-``` TypeScript
-server.listen(listenAddr).then(() => {
-  // ···
-  hilog.info(0x0000, 'testTag', `Server listening on ${address}`);
-}).catch((err: object) => {
-  // ···
-  hilog.error(0x0000, 'testTag', `Server listen error: ${JSON.stringify(err)}`);
-});
-```
+   
+   ``` TypeScript
+   server.listen(listenAddr).then(() => {
+     // ...
+     hilog.info(0x0000, 'testTag', `Server listening on ${address}`);
+   }).catch((err: object) => {
+     // ...
+     hilog.error(0x0000, 'testTag', `Server listen error: ${JSON.stringify(err)}`);
+   });
+   ```
 
 4. 注册LocalSocket的客户端连接事件，以及一些其它事件(可选)，在客户端连接成功时，可以获取到客户端连接会话对象LocalSocketConnection，通过该会话对象可以订阅客户端收到消息(message)事件，以及一些其它事件(可选)，通过该会话对象也可发起主动向客户端发送数据，主动关闭与客户端的连接的动作，订阅事件不再需要时，可以取消LocalSocketConnection相关的事件订阅。
 
