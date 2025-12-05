@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct ArkUI_Vector2AnimatableProperty* ArkUI_Vector2AnimatablePropertyHandle
 ```
 
