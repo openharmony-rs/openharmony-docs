@@ -381,12 +381,12 @@ multicast.addMembership(addr).then(() => {
 1. 导入所需的socket模块。
 
    <!-- @[local_socket_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-
-``` TypeScript
-import { socket } from '@kit.NetworkKit';
-import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+   
+   ``` TypeScript
+   import { socket } from '@kit.NetworkKit';
+   import { common } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 2. 使用constructLocalSocketInstance接口，创建一个LocalSocket客户端对象。
 
