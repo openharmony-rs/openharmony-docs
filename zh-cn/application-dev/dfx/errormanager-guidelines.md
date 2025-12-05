@@ -71,7 +71,6 @@
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 ```
 
  新增监听回调函数。
