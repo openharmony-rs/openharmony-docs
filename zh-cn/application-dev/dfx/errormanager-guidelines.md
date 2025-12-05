@@ -267,8 +267,12 @@ Button('主线程监听消息处理耗时').onClick(()=>{
   } catch (paramError) {
     let code = (paramError as BusinessError).code;
     let message = (paramError as BusinessError).message;
-    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
+    console.error('testErrorManage',`error: ${code}, ${message}`);
   }
+  // 构造场景故障
+  let date = Date.now();
+  while (Date.now() - date < 4000) {
+  };
 }).position({x:50, y:150});
 ```
 
