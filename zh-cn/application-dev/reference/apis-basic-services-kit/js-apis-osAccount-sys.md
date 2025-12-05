@@ -700,7 +700,7 @@ setOsAccountName(localId: number, localName: string, callback: AsyncCallback&lt;
 
 setOsAccountName(localId: number, localName: string): Promise&lt;void&gt;
 
-设置指定系统账号的账号名。使用Promise异步调用。
+设置指定系统账号的账号名。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2974,7 +2974,7 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;;
 
 auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array;
 
-认证当前用户。使用callback异步回调。
+认证当前用户。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3050,7 +3050,7 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 
 auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, options: AuthOptions, callback: IUserAuthCallback): Uint8Array
 
-基于指定的挑战值、认证类型（如口令、人脸、指纹等）、认证可信等级以及可选参数（如账号标识、认证意图等）进行身份认证。使用callback异步回调。
+基于指定的挑战值、认证类型（如口令、人脸、指纹等）、认证可信等级以及可选参数（如账号标识、认证意图等）进行身份认证。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3639,7 +3639,7 @@ authWithToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback:
 
 getAccountInfo(options: GetDomainAccountInfoPluginOptions, callback: AsyncCallback&lt;DomainAccountInfo&gt;): void
 
-查询指定域账号的信息。
+查询指定域账号的信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3908,7 +3908,7 @@ isAccountTokenValid(domainAccountInfo: DomainAccountInfo, token: Uint8Array, cal
 
 getAccessToken(options: GetDomainAccessTokenOptions, callback: AsyncCallback&lt;Uint8Array&gt;): void
 
-根据指定的选项获取域访问令牌。
+根据指定的选项获取域访问令牌。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
