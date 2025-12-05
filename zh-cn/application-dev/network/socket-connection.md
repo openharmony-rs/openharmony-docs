@@ -629,57 +629,57 @@ server.listen(listenAddr).then(() => {
    tlsTwoWayConnectOption.ALPNProtocols = ["spdy/1", "http/1.1"];
    ```
    <!-- @[two-way_bindTlsSocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
-  
-  ``` TypeScript
-    class SocketInfo {
-      public message: ArrayBuffer = new ArrayBuffer(1);
-      public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
-    }
-    // 绑定本地IP地址和端口。
-    tlsSocket!.bind(ipAddress).then(() => {
-      hilog.info(0x0000, 'testTag', 'bind success');
-      // ···
-      // 确保bind成功后，再订阅TLS Socket相关的订阅事件
-      tlsSocket!.on('message', (value: SocketInfo) => {
-        hilog.info(0x0000, 'testTag', 'on message');
-        let buffer = value.message;
-        let dataView = new DataView(buffer);
-        let str = '';
-        for (let i = 0; i < dataView.byteLength; ++i) {
-          str += String.fromCharCode(dataView.getUint8(i));
-        }
-        hilog.info(0x0000, 'testTag', 'on connect received:' + str);
-      });
-  
-      tlsSocket!.on('connect', () => {
-      // ···
-        hilog.info(0x0000, 'testTag', 'on connect');
-      });
-      // 监听连接关闭
-      tlsSocket!.on('close', () => { 
-        hilog.info(0x0000, 'testTag', 'on close');
-      // ···
-      });
-      tlsSocket!.connect({ address: serverAddress, secureOptions: opt }).then(() => {
-        hilog.info(0x0000, 'testTag', 'Connected successfully');
-      // ···
-      }).catch((e: BusinessError) => {
-        hilog.error(0x0000, 'testTag', `Failed to connect: ${e.message}`);
-      // ···
-      });
-    }).catch((e: BusinessError) => {
-      hilog.error(0x0000, 'testTag', 'bind fail');
-      // ···
-    });
-  // ···
-    tlsSocket!.send('message').then(() => {
-      hilog.info(0x0000, 'testTag', 'send successfully');
-      // ···
-    }).catch((e: BusinessError) => {
-      hilog.error(0x0000, 'testTag', 'send failed ' + JSON.stringify(e));
-      // ···
-    });
-  ```
+   
+   ``` TypeScript
+   class SocketInfo {
+     public message: ArrayBuffer = new ArrayBuffer(1);
+     public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
+   }
+   // 绑定本地IP地址和端口。
+   tlsSocket!.bind(ipAddress).then(() => {
+     hilog.info(0x0000, 'testTag', 'bind success');
+     // ...
+     // 确保bind成功后，再订阅TLS Socket相关的订阅事件
+     tlsSocket!.on('message', (value: SocketInfo) => {
+       hilog.info(0x0000, 'testTag', 'on message');
+       let buffer = value.message;
+       let dataView = new DataView(buffer);
+       let str = '';
+       for (let i = 0; i < dataView.byteLength; ++i) {
+         str += String.fromCharCode(dataView.getUint8(i));
+       }
+       hilog.info(0x0000, 'testTag', 'on connect received:' + str);
+     });
+   
+     tlsSocket!.on('connect', () => {
+       // ...
+       hilog.info(0x0000, 'testTag', 'on connect');
+     });
+     // 监听连接关闭
+     tlsSocket!.on('close', () => { 
+       hilog.info(0x0000, 'testTag', 'on close');
+       // ...
+     });
+     tlsSocket!.connect({ address: serverAddress, secureOptions: opt }).then(() => {
+       hilog.info(0x0000, 'testTag', 'Connected successfully');
+       // ...
+     }).catch((e: BusinessError) => {
+       hilog.error(0x0000, 'testTag', `Failed to connect: ${e.message}`);
+       // ...
+     });
+   }).catch((e: BusinessError) => {
+     hilog.error(0x0000, 'testTag', 'bind fail');
+     // ...
+   });
+   // ...
+   tlsSocket!.send('message').then(() => {
+     hilog.info(0x0000, 'testTag', 'send successfully');
+     // ...
+   }).catch((e: BusinessError) => {
+     hilog.error(0x0000, 'testTag', 'send failed ' + JSON.stringify(e));
+     // ...
+   });
+   ```
 
 5. TLSSocket连接使用完毕后，主动关闭。
 
