@@ -49,7 +49,7 @@ napi_value ExampleFunction(napi_env env, napi_callback_info info) {
     napi_value args[argc];
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
-    ...
+    // ...
 }
 ```
 **参数数量推断：**
@@ -133,8 +133,8 @@ if (type0 != napi_number) {
 Taihe工具根据接口IDL描述自动生成胶水代码。在开始迁移前，了解自动生成代码的分层结构，有助于理解后续操作。
 ### Taihe生成接口架构分层结构
 ![Taihe分层架构图](../figures/taihe_fwk.png)
-1. ArkTS-ST App：使用接口的应用。
-2. ArkTS-ST ets：根据IDL文件生成的ArkTS-ST代码，定义了各种接口。
+1. ArkTS-Sta App：使用接口的应用。
+2. ArkTS-Sta ets：根据IDL文件生成的ArkTS-Sta代码，定义了各种接口。
 3. ANI层：ets中native方法的实现层，同时将ANI类型转换为更易使用的C++数据。
 4. C++ User Wrapper：ANI与C ABI接口的转换层，将ANI中的C++数据结构转换成C ABI接口类型，是ABI接口的消费者。
 5. C ABI接口层：Taihe接口的C接口，通过这层接口来保证接口的二进制兼容性。
@@ -144,7 +144,7 @@ Taihe工具根据接口IDL描述自动生成胶水代码。在开始迁移前，
 下面通过一个Taihe中最简单的function接口来介绍生成代码的结构。
 
 **接口定义(ohos.batterInfo.d.ets)**
-此接口仅存在于ArkTS-ST中。
+此接口仅存在于ArkTS-Sta中。
 ```ts
 declare namespace batteryInfo {
     function setBatteryConfig(sceneName: string, sceneValue: string): int;
@@ -168,7 +168,7 @@ function setBatteryConfig(sceneName: String, sceneValue: String): i32;
 **Taihe生成的代码结构**
 1. Taihe生成的ets文件（generated/@ohos.batteryInfo.ets）
 
-按照ArkTS-ST规则，任何类型需在上层定义，因此Taihe会生成IDL接口的类型声明与定义。
+按照ArkTS-Sta规则，任何类型需在上层定义，因此Taihe会生成IDL接口的类型声明与定义。
 ```ts
 static {
     loadLibrary("battery_manager_taihe_native.z");

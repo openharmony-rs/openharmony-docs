@@ -122,7 +122,7 @@ static napi_value Init(napi_env env, napi_value exports) {
 ```
 
 ### 适配ANI胶水层（ANI_Glue.cpp）
-完成上述的接口分层后，要使Native模块能够在ArkTS-ST模式中运行，只需将胶水层从Node-API接口迁移到ANI接口，而业务逻辑层在两种环境中均可复用。
+完成上述的接口分层后，要使Native模块能够在ArkTS-Sta模式中运行，只需将胶水层从Node-API接口迁移到ANI接口，而业务逻辑层在两种环境中均可复用。
 
 Node-API与ANI的模块注册机制不同。Node-API可以在Native侧完整注册模块，而ANI需在ArkTS侧声明模块，并在函数前添加native关键字，表明函数实现在Native侧。
 image_processor.ets文件
@@ -146,7 +146,7 @@ void ANI_GrayScale(ani_env env, ani_arraybuffer data) {
 // 绑定native的grayScale函数
 ani_status ANI_Constructor(ani_vm *vm, uint32_t *result)
 {
-    ...
+    // ...
     static const char *className = "Limage_processor/ETSGLOBAL;";
     ani_class cls;
 
@@ -161,11 +161,11 @@ ani_status ANI_Constructor(ani_vm *vm, uint32_t *result)
     if (ANI_OK != ret) {
         return ANI_ERROR;
     }
-    ...
+    // ...
 }
 ```
 
-通过上述的解耦，重构，ArkTS-DT与ArkTS-ST两种接口可以复用逻辑业务，降低工作量，当中的胶水层后续可以通过工具自动生成。
+通过上述的解耦，重构，ArkTS-Dyn与ArkTS-Sta两种接口可以复用业务逻辑，降低工作量，当中的胶水层后续可以通过工具自动生成。
 
 
 ## 总结
