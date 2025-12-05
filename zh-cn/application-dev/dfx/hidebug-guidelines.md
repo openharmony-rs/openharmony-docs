@@ -248,7 +248,7 @@ HiDebug提供了线程栈Perf采样功能。该接口通过周期性地采集线
 
 Perf采样结果部分示例如下：
 
-```text	
+```text
 Tid: 52129, ThreadName: xample.perftest, Cputime: 3160ms, Count: 42	
 42 #00 pc 00000000001e01e4 /system/lib/ld-musl-aarch64.so.1(start+244)(de6b25d6d992bac030d72713568dfb59)	
   42 #01 pc 000000000003682c /system/lib64/module/libtaskpool.z.so(Commonlibrary::Concurrent::TaskPoolModule::TaskRunner::TaskInnerRunner::Run()+76)(40aaf52f6b737f011eed52936860111f)	
