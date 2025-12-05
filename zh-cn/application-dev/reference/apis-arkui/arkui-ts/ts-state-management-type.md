@@ -22,7 +22,7 @@
 
 | 参数名 | 类型               | 必填 | 说明               |
 | ------ | ------------------ | ---- | ------------------ |
-| type   | [TypeConstructor<T>](../js-apis-StateManagement.md#typeconstructort) | 是   | 标记类属性的类型。 |
+| type   | [TypeConstructor<T>](../js-apis-stateManagement.md#typeconstructort) | 是   | 标记类属性的类型。 |
 
 **示例：**
 

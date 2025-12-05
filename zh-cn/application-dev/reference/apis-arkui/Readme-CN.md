@@ -15,7 +15,7 @@
     - [@ohos.arkui.theme(主题换肤)](js-apis-arkui-theme.md)
     - [@ohos.arkui.UIContext (UIContext)](js-apis-arkui-UIContext.md)
     - [@ohos.arkui.uiExtension (uiExtension)](js-apis-arkui-uiExtension.md)
-    - [@ohos.arkui.StateManagement (状态管理)](js-apis-StateManagement.md)
+    - [@ohos.arkui.StateManagement (状态管理)](js-apis-stateManagement.md)
     - [@ohos.arkui.stateManagement (状态管理ArkTS1.2)](js-apis-stateManagement-static.md)
     - [@ohos.curves (插值计算)](js-apis-curve.md)
     - [@ohos.font (注册自定义字体)](js-apis-font.md)

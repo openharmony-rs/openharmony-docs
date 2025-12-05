@@ -43,7 +43,7 @@
   - 状态管理<!--arkts-state-management-->
     - [状态管理概述](state-management/arkts-state-management-overview.md)
       - [MVVM模式](state-management/arkts-mvvm.md)
-      - [MVVM模式（状态管理V2）](state-management/arkts-mvvm-V2.md)
+      - [MVVM模式（状态管理V2）](state-management/arkts-mvvm-v2.md)
     - 动态ArkTS的状态管理<!--arkts-state-management-v1-dynamic-->
       - 状态管理（V1）<!--arkts-state-management-v1-->
         - 管理组件拥有的状态<!--arkts-component-state-management-->
@@ -66,12 +66,12 @@
           - [\@Param装饰器：组件外部输入](state-management/arkts-new-param.md)
             - [\@Once装饰器：初始化同步一次](state-management/arkts-new-once.md)
           - [\@Event装饰器：规范组件输出](state-management/arkts-new-event.md)
-          - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management/arkts-new-Provider-and-Consumer.md)
+          - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)
         - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-v2-->
           - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management/arkts-new-observedV2-and-trace.md)
           - [\@Type装饰器: 标记类属性的类型](state-management/arkts-new-type.md)
           - [\@Monitor装饰器：状态变量修改监听](state-management/arkts-new-monitor.md)
-          - [\@Computed装饰器：计算属性](state-management/arkts-new-Computed.md)
+          - [\@Computed装饰器：计算属性](state-management/arkts-new-computed.md)
         - 管理应用拥有的状态<!--arkts-application-state-management-v2-->
           - [AppStorageV2: 应用全局UI状态存储](state-management/arkts-new-appstoragev2.md)
           - [PersistenceV2: 持久化存储UI状态](state-management/arkts-new-persistencev2.md)

@@ -92,7 +92,7 @@ this.parent.child.num = 5;
 
 \@ObjectLink接收对象时，如果对象被\@State或其他状态变量装饰器装饰，则可以观察第一层变化。示例请参考[对象类型](#对象类型)。
 
-\@ObjectLink接收嵌套对象时，内层对象支持为被\@Observed装饰的class类型。从API version 20开始，内层对象也支持为被[makeObserved](../../reference/apis-arkui/js-apis-StateManagement.md#makeobserved)处理的interface字面量类型和built-in类型，示例请参考[嵌套对象](#嵌套对象)。
+\@ObjectLink接收嵌套对象时，内层对象支持为被\@Observed装饰的class类型。从API version 20开始，内层对象也支持为被[makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)处理的interface字面量类型和built-in类型，示例请参考[嵌套对象](#嵌套对象)。
 
 \@ObjectLink推荐设计单独的自定义组件来渲染每一个数组或对象。此时，对象数组或嵌套对象需要两个自定义组件，一个自定义组件呈现外部数组/对象，另一个自定义组件呈现嵌套在数组/对象内的类对象。可以观察到：
 
