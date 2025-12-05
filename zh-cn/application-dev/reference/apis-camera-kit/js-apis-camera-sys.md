@@ -522,8 +522,8 @@ createDeferredPreviewOutput(profile?: Profile): PreviewOutput
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
-| 7400101 	      |  Parameter missing or parameter type incorrect. |
+| 202             |  Not System Application.       |
+| 7400101         |  Parameter missing or parameter type incorrect. |
 
 **示例：**
 
@@ -1588,7 +1588,7 @@ getThumbnail(): Promise<image.PixelMap>
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
+| 202             |  Not System Application.       |
 
 **示例：**
 
@@ -1624,7 +1624,7 @@ release(): Promise\<void\>
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
+| 202             |  Not System Application.       |
 
 **示例：**
 
@@ -1666,7 +1666,7 @@ burstCapture(setting: PhotoCaptureSetting): Promise\<void\>
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
+| 202             |  Not System Application.       |
 | 7400101         |  Parameter missing or parameter type incorrect.          |
 | 7400104         |  Session not running.          |
 | 7400201         |  Camera service fatal error.   |
@@ -1714,7 +1714,7 @@ confirmCapture(): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
+| 202             |  Not System Application.       |
 | 7400104         |  Session not running.          |
 | 7400201         |  Camera service fatal error.   |
 
@@ -1950,7 +1950,7 @@ on(type: 'deferredPhotoProxyAvailable', callback: AsyncCallback\<DeferredPhotoPr
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
+| 202             |  Not System Application.       |
 
 **示例：**
 
@@ -1996,7 +1996,7 @@ off(type: 'deferredPhotoProxyAvailable', callback?: AsyncCallback\<DeferredPhoto
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
+| 202             |  Not System Application.       |
 
 **示例：**
 
@@ -2043,7 +2043,7 @@ isQuickThumbnailSupported(): boolean
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202                	 |  Not System Application.        |
+| 202                    |  Not System Application.        |
 | 7400104                |  session is not running.        |
 
 **示例：**
@@ -2105,7 +2105,7 @@ enableQuickThumbnail(enabled: boolean): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202                	 |  Not System Application.        |
+| 202                    |  Not System Application.        |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400104                |  session is not running.        |
 | 7400201                |  Camera service fatal error.        |
@@ -2654,7 +2654,7 @@ setExposure(exposure: number): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202                	 |  Not System Application.  |
+| 202                    |  Not System Application.  |
 | 7400102                |  Operation not allowed.   |
 | 7400103                |  Session not config.      |
 
@@ -6251,7 +6251,11 @@ ManualIso extends [ManualIsoQuery](#manualisoquery12)
 ### setIso<sup>12+</sup>
 setIso(iso: number): void
 
-设置ISO值。**注意：当ISO值设置为0时，表示设置自动ISO**
+设置ISO值。
+
+> **注意：**
+>
+> 当ISO值设置为0时，表示设置自动ISO。
 
 **系统接口：** 此接口为系统接口。
 
