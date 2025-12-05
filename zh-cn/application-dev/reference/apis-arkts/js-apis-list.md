@@ -910,7 +910,7 @@ sort(comparator: ListComparatorFn\<T\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| comparator | [ListComparatorFn\<T\>](#listcomparatorfnt20) | 是 | 回调函数。 |
+| comparator | [ListComparatorFn\<T\>](#listcomparatorfnt20) | 是 | 回调函数。<br> API version22开始发生兼容性变更，在API version21及之前的版本其类型为：`(firstValue: T, secondValue: T) => number`。 |
 
 **错误码**
 
