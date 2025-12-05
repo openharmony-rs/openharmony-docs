@@ -5896,6 +5896,7 @@
         - [JSVM_Deferred__*](reference/common/capi-jsvm-jsvm-deferred--8h.md)
         - [JSVM_CallbackStruct*](reference/common/capi-jsvm-jsvm-callbackstruct8h.md)
         - [JSVM_PropertyHandlerConfigurationStruct*](reference/common/capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md)
+        - [JSVM_CompileProfile](reference/common/capi-jsvm-jsvm-compileprofile.md)
         - [PurgMem*](reference/common/capi-memory-purgmem.md)
   - 标准库<!--standard-library-->
     - [libc标准库](reference/native-lib/musl.md)
