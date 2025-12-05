@@ -1068,7 +1068,7 @@ contentSize(): SizeResult
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 100004   |The controller not bound to component.                              |
+| 100004   | Controller not bound to a component. |
 
 ## OffsetResult<sup>11+</sup>对象说明
 
