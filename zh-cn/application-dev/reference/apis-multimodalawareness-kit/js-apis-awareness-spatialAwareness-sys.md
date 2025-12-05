@@ -63,12 +63,12 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
-| 名称               | 值             | 说明                   |
-| -------------------| ---------------| -----------------------|
-| rank               | DistanceRank   | 表示距离档位。         |
-| distance           | float          | 表示距离。             |
-| confidence         | float          | 表示置信度。           |
-| deviceId           | string         | 表示设备Id号。         |
+| 名称               | 类型            | 只读   | 可选   | 说明     |
+| -------------------| ---------------| -------|------  |-------------|
+| rank               | DistanceRank   | 是     | 否     | 表示距离档位。|
+| distance           | float          | 是     | 否     | 表示距离。|
+| confidence         | float          | 是     | 否     | 表示置信度。|
+| deviceId           | string         | 是     | 否     | 表示设备Id号。|
 
 ## spatialAwareness.PositionRelativeToDoor
 
@@ -110,7 +110,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 onDistanceMeasure(configParams: DistanceMeasurementConfigParams,
     callback: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
-订阅测距。表示订阅测距事件后返回测距结果的接口。订阅测距事件后，返回测距结果。
+订阅测距事件后，返回测距结果。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -141,7 +141,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
-      ReportingMode: 0,
+      reportingMode: 0,
       reportFrequency: 340
    };
    console.info('calllOnDistanceMeasure start');
@@ -159,7 +159,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 offDistanceMeasure(configParams: DistanceMeasurementConfigParams,
     callback?: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
-取消测距。表示取消订阅测距事件。取消订阅测距事件后，不会发生测距。
+取消订阅测距事件。取消订阅测距事件后，不会发生测距。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -190,7 +190,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
-      ReportingMode: 0,
+      reportingMode: 0,
       reportFrequency: 340
    };
    console.info('calllOnDistanceMeasure start');
@@ -207,8 +207,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
     callback: Callback&lt;DoorPositionResponse&gt;): void;
-
-识别门内外。表示订阅门内外识别事件后返回结果的接口。订阅门内外识别事件后，返回设备在门内还是门外的信息。
+订阅门内外识别事件后返回结果。返回设备在门内还是门外的信息。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -239,7 +238,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
-      ReportingMode: 0,
+      reportingMode: 0,
       reportFrequency: 340
    };
    console.info('calllOnDistanceMeasure start');
@@ -255,9 +254,9 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 ## spatialAwareness.offIndoorOrOutdoorIdentify
 
 offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
-    callback？: Callback&lt;DoorPositionResponse&gt;): void;
+    callback?: Callback&lt;DoorPositionResponse&gt;): void;
 
-取消识别门内外订阅。表示取消门内外识别的事件。不返回门内外信息。
+取消识别门内外订阅事件。不返回门内外信息。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -288,7 +287,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
-      ReportingMode: 0,
+      reportingMode: 0,
       reportFrequency: 340
    };
    console.info('calllOnDistanceMeasure start');
