@@ -35,8 +35,8 @@
 
 | 接口名                                                                                                              | 描述                                                      |
 |------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------|
-| usbSubmitTransfer(transfer: UsbDataTransferParams): void                                                         | 异步传输接口（支持实时、批量、中断传输）。                                   |
-| usbCancelTransfer(transfer: UsbDataTransferParams): void                                                         | 取消已提交的异步传输。                                             |
+| usbSubmitTransfer                                                        | 异步传输接口（支持实时、批量、中断传输）。                                   |
+| usbCancelTransfer                                                        | 取消已提交的异步传输。                                             |
 
 更多关于设备管理和传输模式的详细接口介绍，请查阅[API参考文档](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md)。
 
@@ -50,10 +50,17 @@
 
 1. 导入模块。
 
-    ```ts
-    // 导入usbManager模块。
-    import { usbManager } from '@kit.BasicServicesKit';
-    ``` 
+   ArkTs-Dyn示例：
+   ```ts
+   // 导入usbManager模块。
+   import { usbManager } from '@kit.BasicServicesKit';
+   ```
+   
+   ArkTs-Sta示例：   
+      ```ts
+   // 导入usbManager模块。
+   import usbManager from '@ohos.usbManager';
+   ```
 
 2. 获取设备列表。
 
@@ -114,6 +121,7 @@
    
 5. 连接设备，注册通信接口。
 
+   ArkTs-Dyn示例：
     ```ts
     // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
     let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
@@ -131,7 +139,24 @@
       }
     }
     ```
+   ArkTs-Sta示例：
+    ```ts
+    // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
+    let claimInterfaceResult: int = usbManager.claimInterface(devicePipe, usbInterface, true);
+    if (claimInterfaceResult !== 0) {
+      console.error(`claimInterface error = ${claimInterfaceResult}`)
+      return;
+    }
 
+    // 传输类型类型为“实时传输”时，需设置设备接口。设置成功返回0，注册失败返回其他错误码。
+    if (usbEndpoint.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS) {
+      let setInterfaceResult = usbManager.setInterface(devicePipe, usbInterface);
+      if (setInterfaceResult !== 0) {
+        console.error(`setInterfaceResult error = ${setInterfaceResult}`)
+        return;
+      }
+    }
+    ```
 6. 传输数据。
 
    ```ts
