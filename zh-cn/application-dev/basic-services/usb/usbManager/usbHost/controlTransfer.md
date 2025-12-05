@@ -56,7 +56,7 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
    
-   ArkTs-Dyn示例：   
+   ArkTs-Sta示例：   
       ```ts
    // 导入usbManager模块。
    import usbManager from '@ohos.usbManager';
