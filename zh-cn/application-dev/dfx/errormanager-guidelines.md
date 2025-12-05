@@ -336,6 +336,29 @@ Button('进程promise监听注册被拒绝').onClick(()=>{
  定义第一个错误处理器及注册方法，无前置处理器时退出进程。
 <!-- @[first_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstErrorHandler.ets) --> 
 
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { process } from '@kit.ArkTS';
+
+let firstHandler: errorManager.ErrorHandler;
+const firstErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
+    // 自定义的第一个errorHandler实现逻辑
+    console.info('[FirstHandler] First uncaught exception handler invoked.');
+    if (firstHandler) {
+        firstHandler(reason);
+    } else {
+        // 建议增加判空操作，如果为空采用同步退出方式
+        const processManager = new process.ProcessManager();
+        processManager.exit(0);
+    }  
+};
+
+export function setFirstErrorHandler() {
+    firstHandler = errorManager.setDefaultErrorHandler(firstErrorHandler); 
+    console.info('Registered First Error Handler');
+}
+```
+
  定义第二个错误处理器及注册方法，形成链式调用。
 <!-- @[second_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondErrorHandler.ets) --> 
 
