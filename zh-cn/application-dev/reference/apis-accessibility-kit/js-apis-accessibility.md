@@ -25,7 +25,11 @@ type AbilityState = 'enable' | 'disable' | 'install'
 
 辅助应用状态类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型      | 说明       |
 | ------- | -------- |
@@ -39,7 +43,11 @@ type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all
 
 无障碍辅助应用类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型               | 说明        |
 | ---------------- | --------- |
@@ -54,7 +62,11 @@ type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all
 
 辅助应用信息。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
 
@@ -80,7 +92,11 @@ type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clea
 
 应用所支持的目标动作，需要配置参数的目标动作已在描述中标明。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型                      | 说明                 |
 | ----------------------- |--------------------|
@@ -114,7 +130,11 @@ type Capability = 'retrieve' | 'touchGuide' | 'keyEventObserver' | 'zoom' | 'ges
 
 辅助应用能力类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型               | 说明                    |
 | ---------------- |-----------------------|
@@ -130,7 +150,11 @@ type CaptionsFontEdgeType = 'none' | 'raised' | 'depressed' | 'uniform' | 'dropS
 
 字幕字体边缘类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Hearing
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
 | 类型         | 说明    |
 | ---------- | ----- |
@@ -147,7 +171,11 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 
 字幕字体。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Hearing
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
 | 类型                  | 说明                |
 | ------------------- | ----------------- |
@@ -164,7 +192,11 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 
 字幕风格。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Hearing
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
 | 名称              | 类型                                    | 只读   | 可选   | 说明          |
 | --------------- | ---------------------------------------- | ---- | ---- | ----------- |
@@ -179,7 +211,11 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 
 字幕配置管理，在调用CaptionsManager的方法前，需要先通过 [accessibility.getCaptionsManager() ](#accessibilitygetcaptionsmanagerdeprecated)获取 CaptionsManager实例。
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.BarrierFree.Accessibility.Hearing
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
 ### 属性
 
@@ -410,7 +446,11 @@ struct Index {
 
 界面变更事件。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
 
@@ -495,7 +535,11 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 
 无障碍事件类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型                      | 说明                     |
 | ----------------------- |------------------------|
@@ -512,9 +556,10 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 | 'scroll'                  | 表示滚动视图的事件。    |
 | 'requestFocusForAccessibility'     | 表示主动聚焦的事件。 |
 | 'announceForAccessibility'         | 表示主动播报的事件。 |
-| 'requestFocusForAccessibilityNotInterrupt'     | 表示主动聚焦不打断的事件。<br>此事件从API version 18开始支持。 |
-| 'announceForAccessibilityNotInterrupt'         | 表示主动播报不打断的事件。<br>此事件从API version 18开始支持。 |
-| 'scrolling'                  | 表示滚动视图中有item被滚出屏幕的事件。<br>此事件从API version 18开始支持。 |
+| 'requestFocusForAccessibilityNotInterrupt'<sup>18+</sup> | 表示主动聚焦不打断的事件。|
+| 'announceForAccessibilityNotInterrupt'<sup>18+</sup>  | 表示主动播报不打断的事件。|
+| 'scrolling'<sup>18+</sup>   | 表示滚动视图中有item被滚出屏幕的事件。|
+| 'pageActive'<sup>23+</sup> | 表示页面变化的事件，值固定为'pageActive'字符串。 |
 
 ## TextMoveUnit
 
@@ -522,7 +567,11 @@ type TextMoveUnit = 'char' | 'word' | 'line' | 'page' | 'paragraph'
 
 文本无障碍导航移动粒度。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型        | 说明              |
 | --------- | --------------- |
@@ -538,7 +587,11 @@ type WindowUpdateType = 'add' | 'remove' | 'bounds' | 'active' | 'focus'
 
 窗口变化类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型     | 说明                 |
 | ------ | ------------------ |
