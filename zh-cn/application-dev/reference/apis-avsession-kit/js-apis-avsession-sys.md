@@ -561,7 +561,7 @@ startAVPlayback(bundleName: string, assetId: string): Promise\<void>
 
 | 类型           | 说明                          |
 | -------------- | ----------------------------- |
-| Promise\<void> | Promise对象。当播放成功，无返回结果，否则返回错误对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -591,21 +591,21 @@ avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
 
 startAVPlayback(bundleName: string, assetId: string, info: CommandInfo): Promise\<void>
 
-启动媒体播放应用程序。结果通过Promise异步回调方式返回。
+启动媒体播放应用程序。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
-| 参数名        | 类型                                                   | 必填 | 说明       |	
-| ------------ |------------------------------------------------------|----|----------|	
-| bundleName   | string                                               | 是  | 指定应用包名。  |	
-| assetId      | string                                               | 是  | 指定媒体ID。  |
-| info      | [CommandInfo](js-apis-avsession-sys.md#CommandInfo22) | 否  | 命令信息。 |
+| 参数名        | 类型                                                   | 必填 | 说明         |	
+| ------------ |------------------------------------------------------|----|------------|	
+| bundleName   | string                                               | 是  | 指定启动的应用包名。 |	
+| assetId      | string                                               | 是  | 指定启动的媒体ID。 |
+| info      | [CommandInfo](js-apis-avsession-sys.md#CommandInfo22) | 是  | 指定相关的命令信息。 |
 
 **返回值：**
 
@@ -621,7 +621,6 @@ startAVPlayback(bundleName: string, assetId: string, info: CommandInfo): Promise
 | -------- | ---------------------------------------- |
 | 201 | permission denied. |
 | 202 | Not System App. Interface caller is not a system app. |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 6600101  | Session service exception. |
 
 **示例：**

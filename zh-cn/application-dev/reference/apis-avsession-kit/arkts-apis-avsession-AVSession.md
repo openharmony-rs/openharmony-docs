@@ -1765,7 +1765,7 @@ onPlay(callback: Callback\<CommandInfo>): void
 
 设置播放命令监听事件。注册该监听，说明应用支持播放指令。
 
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+应用将通过回调接受控制器发送的[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1781,7 +1781,6 @@ onPlay(callback: Callback\<CommandInfo>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -1910,7 +1909,7 @@ onPlayNext(callback: Callback\<CommandInfo>): void
 
 设置播放下一首命令监听事件。注册该监听，说明应用支持下一首指令。
 
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+应用将通过回调接受控制器发送的[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1926,7 +1925,6 @@ onPlayNext(callback: Callback\<CommandInfo>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -1981,7 +1979,7 @@ onPlayPrevious(callback: Callback\<CommandInfo>): void
 
 设置播放上一首命令监听事件。注册该监听，说明应用支持上一首指令。
 
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+应用将通过回调接受控制器发送的[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1997,7 +1995,6 @@ onPlayPrevious(callback: Callback\<CommandInfo>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -2052,7 +2049,7 @@ onFastForward(callback: TwoParamCallback\<long, CommandInfo>): void
 
 设置快进命令监听事件。注册该监听，说明应用支持快进指令。
 
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+应用将通过回调接受控制器发送的快进时间参数，以及对应的[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2068,7 +2065,6 @@ onFastForward(callback: TwoParamCallback\<long, CommandInfo>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -2123,7 +2119,7 @@ onRewind(callback: TwoParamCallback\<long, CommandInfo>): void
 
 设置快退命令监听事件。
 
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+应用将通过回调接受控制器发送的快退时间参数，以及对应的[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2139,7 +2135,6 @@ onRewind(callback: TwoParamCallback\<long, CommandInfo>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -2622,7 +2617,7 @@ currentAVSession.off('play');
 
 offPlay(callback?: Callback\<CommandInfo>): void
 
-取消会话播放事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消会话播放事件监听。使用callback异步回调。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2638,7 +2633,6 @@ offPlay(callback?: Callback\<CommandInfo>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -2751,7 +2745,7 @@ currentAVSession.off('playNext');
 
 offPlayNext(callback?: Callback\<CommandInfo>): void
 
-取消会话播放下一首事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消会话播放下一首事件监听。使用callback异步回调。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2767,7 +2761,6 @@ offPlayNext(callback?: Callback\<CommandInfo>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -2814,7 +2807,7 @@ currentAVSession.off('playPrevious');
 
 offPlayPrevious(callback?: Callback\<CommandInfo>): void
 
-取消会话播放上一首事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消会话播放上一首事件监听。使用callback异步回调。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2830,7 +2823,6 @@ offPlayPrevious(callback?: Callback\<CommandInfo>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -2877,7 +2869,7 @@ currentAVSession.off('fastForward');
 
 offFastForward(callback?: TwoParamCallback\<long, CommandInfo>): void
 
-取消会话快进事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消会话快进事件监听。使用callback异步回调。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2893,7 +2885,6 @@ offFastForward(callback?: TwoParamCallback\<long, CommandInfo>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -2940,9 +2931,7 @@ currentAVSession.off('rewind');
 
 offRewind(callback?: TwoParamCallback\<long, CommandInfo>): void
 
-取消会话快退事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+取消会话快退事件监听。使用callback异步回调。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2958,7 +2947,6 @@ offRewind(callback?: TwoParamCallback\<long, CommandInfo>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 

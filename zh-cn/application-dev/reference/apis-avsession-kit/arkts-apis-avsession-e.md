@@ -42,12 +42,12 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-| 名称             | 值           | 说明    |
-|----------------|-------------|-------|
-| TYPE_CAST      | "cast"      | 来自投播。 |
-| TYPE_BLUETOOTH | "bluetooth" | 来自蓝牙。 |
-| TYPE_APP       | "app"       | 来自应用。 |
-| TYPE_NEARLINK  | "nearlink"  | 来自星闪。 |
+| 名称             | 值           | 说明                                   |
+|----------------|-------------|--------------------------------------|
+| TYPE_CAST      | "cast"      | 调用方来自投播。                             |
+| TYPE_BLUETOOTH | "bluetooth" | 调用方来自蓝牙。                                |
+| TYPE_APP       | "app"       | 调用方来自应用。                                |
+| TYPE_NEARLINK  | "nearlink"  | 调用方来自星闪。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ConnectionState<sup>10+</sup>
 

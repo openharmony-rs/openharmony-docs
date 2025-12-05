@@ -126,7 +126,7 @@ type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevio
 
 ## TwoParamCallback<sup>22+</sup>
 
-type TwoParamCallback<T, G> = (data1: T, data2: G) => void
+type TwoParamCallback\<T, G> = (data1: T, data2: G) => void
 
 双参数的回调函数。
 
@@ -136,8 +136,8 @@ type TwoParamCallback<T, G> = (data1: T, data2: G) => void
 
 | 参数名   | 类型 | 必填 | 说明   |
 |-------|----| ---- |------|
-| data1 | 泛型 | 是   | 参数T。 |
-| data2 | 泛型 | 是   | 参数G。 |
+| data1 | T  | 是   | 参数1。 |
+| data2 | G  | 是   | 参数2。 |
 
 **示例：**
 <!--code_no_check-->

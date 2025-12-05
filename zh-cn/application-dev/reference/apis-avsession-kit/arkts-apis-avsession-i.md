@@ -212,15 +212,13 @@
 
 会话接受的命令的对象描述。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 | 名称      | 类型                                                                       | 只读| 可选 | 说明         |
 | --------- |--------------------------------------------------------------------------| ---- | ---- |------------|
-| command   | [AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10) | 否 | 否   | 命令（不同命令对应不同参数）。 |
-| parameter | [LoopMode](arkts-apis-avsession-e.md#loopmode10) \| string \|  number    | 否 | 是   | 命令对应的参数。   |
-| commandInfo | [CommandInfo](js-apis-avsession-sys.md#CommandInfo22) | 否 | 是   | 命令信息。      |
+| command   | [AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10) | 否 | 否   | 命令（不同命令对应不同参数）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| parameter | [LoopMode](arkts-apis-avsession-e.md#loopmode10) \| string \|  number    | 否 | 是   | 命令对应的参数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
+| commandInfo<sup>22+</sup> | [CommandInfo](js-apis-avsession-sys.md#CommandInfo22) | 否 | 是   | 命令信息。      |
 
 ## AVCastPickerOptions<sup>14+</sup>
 
