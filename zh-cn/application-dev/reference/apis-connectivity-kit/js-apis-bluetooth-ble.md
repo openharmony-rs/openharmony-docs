@@ -3479,7 +3479,6 @@ client端获取GATT连接链路信号强度 (Received Signal Strength Indication
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.         |
 |801 | Capability not supported.          |
-|2900011 | The operation is busy. The last operation is not complete.             |
 |2900099 | Operation failed.                        |
 |2901003 | The connection is not established.                |
 
@@ -3529,7 +3528,6 @@ client端获取GATT连接链路信号强度 (Received Signal Strength Indication
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.               |
 |801 | Capability not supported.          |
-|2900011 | The operation is busy. The last operation is not complete.             |
 |2900099 | Operation failed.                        |
 |2901003 | The connection is not established.                |
 
