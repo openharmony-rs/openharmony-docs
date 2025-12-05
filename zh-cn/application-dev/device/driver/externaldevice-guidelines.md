@@ -68,10 +68,10 @@
 
     ArkTs-Sta示例：
     ```ts
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { deviceManager } from '@kit.DriverDevelopmentKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { rpc } from '@kit.IPCKit';
+    import hilog from '@ohos.hilog'
+    import deviceManager from '@ohos.driver.deviceManager';
+    import { BusinessError } from '@ohos.base';
+    import type rpc from './@ohos.rpc';
 
     const REQUEST_CODE: number = 99; // 自定义通信Code，此处仅供参考
     const productId: int = 4258;  // 请声明连接的USB设备的productId
