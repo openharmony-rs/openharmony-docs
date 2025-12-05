@@ -296,13 +296,17 @@ let promise1 = new Promise<void>(() => {}).then(() => {
 
 let unhandledrejectionObserver: errorManager.UnhandledRejectionObserver = (reason: Error, promise: Promise<void>) => {
   if (promise === promise1) {
-    hilog.info(0x0000, 'testTag','promise1 is rejected');
+    console.error('testErrorManage','promise1 is rejected');
   }
-  hilog.info(0x0000, 'testTag','reason.name: ', reason.name);
-  hilog.info(0x0000, 'testTag','reason.message: ', reason.message);
+  console.error('testErrorManage','reason.name: ', reason.name);
+  console.error('testErrorManage','reason.message: ', reason.message);
   if (reason.stack) {
-    hilog.info(0x0000, 'testTag','reason.stack: ', reason.stack);
+    console.error('testErrorManage','reason.stack: ', reason.stack);
   }
+};
+
+async function promiseFuncTwo() {
+  throw new Error('process promise unhandled rejection exception');
 };
 ```
 
