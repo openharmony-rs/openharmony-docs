@@ -366,16 +366,16 @@ multicast.addMembership(addr).then(() => {
 7. 退出多播组。
 
    <!-- @[multicast_worker_dropMembership](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
-
-``` TypeScript
-// 退出多播组。
-multicast.dropMembership(addr).then(() => {
-// ···
-  hilog.info(0x0000, 'testTag', 'Multicast: Dropped membership successfully');
-}).catch((err: BusinessError) => {
-  hilog.error(0x0000, 'testTag', `Multicast: Failed to drop membership - ${JSON.stringify(err)}`);
-});
-```
+   
+   ``` TypeScript
+   // 退出多播组。
+   multicast.dropMembership(addr).then(() => {
+     // ...
+     hilog.info(0x0000, 'testTag', 'Multicast: Dropped membership successfully');
+   }).catch((err: BusinessError) => {
+     hilog.error(0x0000, 'testTag', `Multicast: Failed to drop membership - ${JSON.stringify(err)}`);
+   });
+   ```
 ## 应用通过LocalSocket进行数据传输
 
 1. 导入所需的socket模块。
