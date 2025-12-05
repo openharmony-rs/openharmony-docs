@@ -213,8 +213,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 ``` TypeScript
 function freezeCallback() {
-  hilog.info(0x0000, 'testTag','freezecallback');
-}
+  console.error('testErrorManage','freezecallback');
+};
 ```
 
  新增触发按钮。
