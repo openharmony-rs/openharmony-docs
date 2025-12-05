@@ -111,8 +111,8 @@ type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevio
 | 'stop'           | 停止。 无需传入参数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | 'playNext'       | 下一首。无需传入参数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | 'playPrevious'   | 上一首。无需传入参数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| 'fastForward'    | 快进。无需传入参数。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| 'rewind'         | 快退。无需传入参数。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| 'fastForward'    | 快进。对应参数请参考[SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| 'rewind'         | 快退。对应参数请参考[SkipIntervals](arkts-apis-avsession-e.md#skipintervals11) <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | 'seek'           | 跳转某一节点。对应参数使用number类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | 'setSpeed'       | 设置播放倍速。对应参数使用number类型。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | 'setLoopMode'    | 设置循环模式。对应参数使用[LoopMode](arkts-apis-avsession-e.md#loopmode10)。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
