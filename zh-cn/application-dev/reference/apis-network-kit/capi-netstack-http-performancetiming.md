@@ -11,7 +11,7 @@ typedef struct Http_PerformanceTiming {...} Http_PerformanceTiming
 
 ## 概述
 
-HTTP响应时间信息，会在[Http_Response.performanceTiming](capi-netstack-http-performancetiming.md)中收集。
+HTTP响应时间信息，会在{@link Http_Response.performanceTiming}中收集。
 
 **起始版本：** 20
 
