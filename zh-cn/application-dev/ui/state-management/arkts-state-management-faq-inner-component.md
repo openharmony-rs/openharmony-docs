@@ -24,23 +24,23 @@
    - 刷新过程中组件不会再标脏自己。
    - Text最终显示为2。
      <!-- @[state_problem_not_update_in_build_error_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError01.ets) -->
-
-``` TypeScript
-@Entry
-@Component
-struct Index {
-  @State count: number = 1;
-
-  build() {
-    Column() {
-      // 应避免直接在Text组件内改变count的值
-      Text(`${this.count++}`)
-        .width(50)
-        .height(50)
-    }
-  }
-}
-```
+     
+     ``` TypeScript
+     @Entry
+     @Component
+     struct Index {
+       @State count: number = 1;
+     
+       build() {
+         Column() {
+           // 应避免直接在Text组件内改变count的值
+           Text(`${this.count++}`)
+             .width(50)
+             .height(50)
+         }
+       }
+     }
+     ```
 
 在首次创建的过程中，Text组件被多渲染了一次，最终显示为2。
 
@@ -205,7 +205,7 @@ struct Index {
 【正例】
 <!-- @[state_problem_a_b_call_ui_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemABCallUiRefreshPositive.ets) -->
 
-```TypeScript
+``` TypeScript
 class Balloon {
   public volume: number;
 
@@ -259,6 +259,8 @@ struct Index {
 <!-- @[state_problem_complex_constant_repeat_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexConstantRepeatRefresh.ets) -->
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
 class DataObj {
   public name: string = 'default name';
 
@@ -288,11 +290,11 @@ struct ConsumerChild {
   @Link @Watch('onDataObjChange') dataObj: DataObj;
 
   onDataObjChange() {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'dataObj changed');
+    hilog.info(0xFF00, 'testTag', '%{public}s', 'dataObj changed');
   }
 
   getContent() {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', `this.dataObj.name change: ${this.dataObj.name}`);
+    hilog.info(0xFF00, 'testTag', '%{public}s', `this.dataObj.name change: ${this.dataObj.name}`);
     return this.dataObj.name;
   }
 
@@ -311,6 +313,8 @@ struct ConsumerChild {
 <!-- @[state_problem_complex_solution_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution01.ets) -->
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
 @Observed
 class DataObj {
   public name: string = 'default name';
@@ -341,7 +345,7 @@ struct ConsumerChild {
   @Link @Watch('onDataObjChange') dataObj: DataObj;
 
   onDataObjChange() {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'dataObj changed');
+    hilog.info(0xFF00, 'testTag', '%{public}s', 'dataObj changed');
   }
 
   build() {
@@ -360,8 +364,6 @@ struct ConsumerChild {
 ``` TypeScript
 import { UIUtils } from '@ohos.arkui.StateManagement';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const DOMAIN = 0x0000;
 
 class DataObj {
   public name: string = 'default name';
@@ -395,7 +397,7 @@ struct ConsumerChild {
   @Link @Watch('onDataObjChange') dataObj: DataObj;
 
   onDataObjChange() {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'dataObj changed');
+    hilog.info(0xFF00, 'testTag', '%{public}s', 'dataObj changed');
   }
 
   build() {
@@ -625,8 +627,8 @@ struct Page {
           this.getUIContext().animateTo({
             duration: 50
           },()=>{
-            this.translateObj.translateX = (this.translateObj.translateX + 50) % 150
-          })
+            this.translateObj.translateX = (this.translateObj.translateX + 50) % 150;
+          });
         })
     }
   }
@@ -675,8 +677,8 @@ struct Page1 {
           this.getUIContext().animateTo({
             duration: 50
           },()=>{
-            this.translateObj.translateX = (this.translateObj.translateX + 50) % 150
-          })
+            this.translateObj.translateX = (this.translateObj.translateX + 50) % 150;
+          });
         })
     }
     .translate({ // 子组件Stack和Button设置了同一个translate属性，可以统一到Column上设置。
