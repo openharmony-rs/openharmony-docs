@@ -310,15 +310,15 @@ JS帧格式如下：
 | -------- |----------|
 | OH_HiDebug_RequestThreadLiteSampling | 申请线程栈采样。<br/>**说明**：从API version 22开始，支持该接口。 |
 
-## 设置资源泄露检测阈值
+## 设置资源泄漏检测阈值
 
-HiDebug提供设置系统资源泄露检测阈值的接口，开发者可根据业务需求自定义资源泄露事件触发的阈值。此接口主要用于辅助内存泄漏检测和功能开发，详情请参考[资源泄漏检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)。
+HiDebug提供设置系统资源泄漏检测阈值的接口，开发者可根据业务需求自定义资源泄漏事件触发的阈值。此接口主要用于辅助内存泄漏检测和功能开发，详情请参考[资源泄漏检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)。
 
 ### 接口说明（ArkTS）
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| hidebug.setAppResourceLimit | 设置应用的fd数量、线程数量、js内存或者native内存等资源触发资源泄露检测事件的阈值。 |
+| hidebug.setAppResourceLimit | 设置应用的fd数量、线程数量、js内存或者native内存等资源触发资源泄漏检测事件的阈值。 |
 
 ## 管理GWP-ASan
 
