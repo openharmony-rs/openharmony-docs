@@ -175,15 +175,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs} from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
 // 创建fileHolders
+let file: fs.File | undefined = undefined;
 try {
     let oppProfile = opp.createOppServerProfile();
     let pathDir = "/test.jpg"; // 应用根据实际情况填写路径
-    let file = fs.openSync(pathDir, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    file = fs.openSync(pathDir, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
     oppProfile.setIncomingFileConfirmation(true, file.fd);
-    // 接收完成后关闭  
-    fs.close(file.fd);
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+} finally {
+  // 接收完成后关闭  
+  if (file) {
+    fs.close(file.fd);
+  }
 }
 ```
 
