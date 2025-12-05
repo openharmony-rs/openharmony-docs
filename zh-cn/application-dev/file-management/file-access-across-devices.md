@@ -82,7 +82,7 @@
    import { buffer } from '@kit.ArkTS';
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    ```
-   <!--@[access_ConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->
+   <!--@[access_ConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->			
 
    ``` TypeScript
    // 通过分布式设备管理的接口获取设备A的networkId信息
@@ -140,7 +140,7 @@
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    import { fileIo as fs } from '@kit.CoreFileKit';
    ```
-   <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->
+   <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->			
 
    ``` TypeScript
    // 获取设备A的networkId
