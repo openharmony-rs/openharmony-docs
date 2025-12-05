@@ -1066,9 +1066,9 @@ getVisibleWindowInfo(): Promise&lt;Array&lt;WindowInfo&gt;&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Dyn起始版本** 18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本** 22
+**ArkTS-Sta起始版本：** 22
 
 **需要权限：** ohos.permission.VISIBLE_WINDOW_INFO
 
@@ -1156,6 +1156,10 @@ ArkTS-Sta: getGlobalWindowMode(displayId?: long): Promise&lt;int&gt;
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 

@@ -5271,6 +5271,8 @@ setWindowType(type: WindowType, callback: AsyncCallback&lt;void&gt;): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 7
+
 > **说明：**
 >
 > 从API version 7开始支持，从API version 9开始废弃。
