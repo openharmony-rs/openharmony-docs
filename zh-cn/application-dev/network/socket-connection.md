@@ -1031,12 +1031,12 @@ tlsServer.listen(tlsConnectOptions).then(() => {
 5. 取消订阅TLSSocketServer的相关事件。
 
    <!-- @[tlsServer_off_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
-
-``` TypeScript
-tlsServer.close();
-// 取消订阅tlsServer的相关事件
-tlsServer.off('connect');
-```
+   
+   ``` TypeScript
+   tlsServer.close();
+   // 取消订阅tlsServer的相关事件
+   tlsServer.off('connect');
+   ```
 
 ## 相关实例
 
