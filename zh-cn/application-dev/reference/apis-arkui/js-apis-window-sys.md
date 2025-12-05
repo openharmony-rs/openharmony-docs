@@ -4274,8 +4274,7 @@ export default class RaiseMainWindowAbility extends UIAbility {
             ]
           }
         ]
-      }
-    ,
+      },
       {
         "name": "RaiseMainWindowAbility",
         "launchType": "multiton",
