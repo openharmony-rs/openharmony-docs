@@ -1106,7 +1106,7 @@ registerJavaScriptProxy提供了应用与Web组件加载的网页之间强大的
 
 | 参数名     | 类型       | 必填 | 说明                                        |
 | ---------- | -------------- | ---- | ------------------------------------------------------------ |
-| object     | object         | 是   | 参与注册的应用侧JavaScript对象。可以单独声明方法和属性，但无法同时进行注册与使用。对象只包含属性时，H5可以访问对象中的属性。对象只包含方法时，H5可以访问对象中的方法。<br>1. 方法的参数和返回类型可以为string，number，boolean。<br>2. 方法的参数和返回类型支持Dictionary，Array，最多嵌套10层，每层1w个数据。<br>3. 方法的参数和返回类型支持Object，需要在Object里添加属性methodNameListForJsProxy:[fun1, fun2]，fun1和fun2为可被调用的方法。<br>4. 方法的参数支持Function，Promise，它们的Callback不能有返回值。<br>5. 方法的返回类型支持Promise，Promise的Callback不能有返回值。 |
+| jsObject     | object         | 是   | 参与注册的应用侧JavaScript对象。可以单独声明方法和属性，但无法同时进行注册与使用。对象只包含属性时，H5可以访问对象中的属性。对象只包含方法时，H5可以访问对象中的方法。<br>1. 方法的参数和返回类型可以为string，number，boolean。<br>2. 方法的参数和返回类型支持Dictionary，Array，最多嵌套10层，每层1w个数据。<br>3. 方法的参数和返回类型支持Object，需要在Object里添加属性methodNameListForJsProxy:[fun1, fun2]，fun1和fun2为可被调用的方法。<br>4. 方法的参数支持Function，Promise，它们的Callback不能有返回值。<br>5. 方法的返回类型支持Promise，Promise的Callback不能有返回值。 |
 | name       | string         | 是   | 注册对象的名称，与window中调用的对象名一致。注册后window对象可以通过此名字访问应用侧JavaScript对象。 |
 | methodList | Array\<string> | 是   | 参与注册的应用侧JavaScript对象的同步方法。                       |
 | asyncMethodList<sup>12+</sup> | Array\<string> | 否   | 参与注册的应用侧JavaScript对象的异步方法，默认为空。异步方法无法获取返回值。  |
@@ -4913,7 +4913,6 @@ static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHead
 
 | 错误码ID  | 错误信息                                                      |
 | -------- | ------------------------------------------------------------ |
-| 401      | Invalid input parameter.Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
 | 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                                                 |
 
 **示例：**
