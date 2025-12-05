@@ -405,3 +405,9 @@ function testErrorHandlers() {
 
  主组件通过按钮触发测试，注册两个处理器并抛错验证处理链。
 <!-- @[onclick_error_Handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+Button('错误处理器责任链模式场景').onClick(()=>{
+  testErrorHandlers();
+}).position({x:50, y:350});
+```
