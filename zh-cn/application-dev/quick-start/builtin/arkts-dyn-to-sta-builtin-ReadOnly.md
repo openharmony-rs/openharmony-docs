@@ -50,6 +50,15 @@
 
 **示例：**  
   ```typescript
+  // 使用迭代器的方式
+  let arr: ReadonlyArray<string> = ["a"];
+  const iterator  = arr.$_iterator();
+  let result = iterator.next();
+  while (!result.done) {
+      console.info(result.value);
+      result = iterator.next();
+  }
+
   let arr: ReadonlyArray<string> = ["a"];
   // 不建议使用$_iterator()方法，应使用for...of替代
   for (let iter of arr) {
@@ -85,7 +94,8 @@
   ```
 
 **ArkTS-Sta版本签名：**  
-  不支持。
+`concat(...items: FixedArray<ConcatArray<T>>): Array<T>`
+  - 现参数只支持传入数组。
 
 **适配建议：** 
   手动转换后连接：

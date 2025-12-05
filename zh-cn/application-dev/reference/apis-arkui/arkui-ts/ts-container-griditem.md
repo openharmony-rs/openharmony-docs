@@ -198,7 +198,11 @@ ArkTS-Dyn: selected(value: boolean)
 
 ArkTS-Sta: selected(value: boolean | Bindable\<boolean> | undefined)
 
-设置当前GridItem选中状态。该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+设置当前GridItem选中状态。
+
+ArkTS-Dyn: 从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+
+ArkTS-Sta：从API version 22开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
 该属性需要在设置[选中态样式](./ts-universal-attributes-polymorphic-style.md#statestyles)前使用才能生效选中态样式。
 

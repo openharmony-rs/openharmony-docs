@@ -897,8 +897,9 @@ struct Index {
 
 使用ParallelizeUI执行并行构建的内容不会在当帧立即渲染，因此执行并行构建的内容一般为屏幕外的内容、可以延迟显示的内容或可以先用占位替代需要显示的内容。如下所示，推荐并行构建和串行构建结合使用。
 
-示例代码如下：
 ```ts
+// ArkTS-Sta示例
+import { Entry, Text, Column, Component } from '@ohos.arkui.component';
 import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 @Entry
@@ -906,7 +907,7 @@ import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 struct Index {
   build() {
     Column() {
-      ParallelizeUI() {
+      ParallelizeUI(undefined) {
         Text('Hello') // 并行构建内容通常为屏幕外的内容
       }
       Text('World') // 串行构建
@@ -928,6 +929,9 @@ ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于
 1. 需要依赖外部的状态变量更新UI，请使用[ParallelizeUI\<T\>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)通过状态变量或非状态变量来构造用于并行创建UI的参数。
 
     ```ts
+    // ArkTS-Sta示例
+    import { Entry, Text, Column, Component } from '@ohos.arkui.component';
+    import { State } from '@ohos.arkui.stateManagement';
     import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
     class Param {
@@ -951,13 +955,17 @@ ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于
           Text('World')
             .fontSize(50)
         }.height('100%')
-          .width('100%')
+        .width('100%')
       }
     }
     ```
 
 2. 普通变量可以在多线程中使用，但开发者需要确保变量在多线程中的读写安全。可以使用并发容器或者锁来保证多线程中的读写安全。例如[并发哈希表](../reference/native-lib/arkts1.2-concurrenthashmap.md)、[并发集合](../reference/native-lib/arkts1.2-concurrentset.md)、[异步锁](../reference/native-lib/arkts1.2-asynclock.md)和[阻塞队列](../reference/native-lib/arkts1.2-blockingqueue.md)等。如下示例展示了使用ConcurrentHashMap并发容器来确保多线程环境下的数据读写安全。
+
     ```ts
+    // ArkTS-Sta示例
+    import { Entry, Text, Column, Component } from '@ohos.arkui.component';
+    import { State } from '@ohos.arkui.stateManagement';
     import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
     @Entry
@@ -969,14 +977,14 @@ ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于
           let concurrentHashMap = new containers.ConcurrentHashMap<number, string>();
           concurrentHashMap.set(1, "one");
           concurrentHashMap.set(2, "two");
-          ParallelizeUI() {
+          ParallelizeUI(undefined) {
             let val_0 = concurrentHashMap.get(1); // "one"
             let val_1 = concurrentHashMap.get(2); // "two"
             Text(val_0)
-            .fontSize(50)
+              .fontSize(50)
           }
         }.height('100%')
-          .width('100%')
+        .width('100%')
       }
     }
     ```
@@ -987,6 +995,10 @@ ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于
 
 `BuilderNode.update()`方法并未新增`useParallel`参数。是否启用并行更新取决于构建阶段的`useParallel`参数决定。如果该[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)在创建时使用了并行方式构建，那么在调用`update()`时，只要该节点尚未挂载（即未显示在UI上），更新操作会将以并行方式执行。如下所示：
   ```ts
+  // ArkTS-Sta示例
+  import { UIContext, Column, Text, Button, Entry, Component, ClickEvent, Margin, NodeContainer, wrapBuilder, Color} from '@ohos.arkui.component'
+  import {BuilderNode, FrameNode, NodeController, NodeRenderType, RenderOptions, Size } from '@ohos.arkui.node'
+
   // 自定义参数
   class Params {
     text1: string;
@@ -1009,7 +1021,6 @@ ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于
   class MyNodeController extends NodeController {
     private rootNode ?: FrameNode;
     private builderNode ?: BuilderNode<Params>;
-    private content?: ComponentContent;
     private uiContext?: UIContext;
     private params: string = "update with Params";
 
@@ -1043,6 +1054,38 @@ ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于
       }
     }
   }
+
+  @Entry
+  @Component
+  struct MyStateSample {
+    private nodeController: MyNodeController = new MyNodeController();
+
+    build() {
+      Column() {
+        Column() {
+          Text('NodeContainer')
+          NodeContainer(this.nodeController)
+            .borderWidth(1)
+            .height("80%")
+            .width("100%")
+        }
+        .height("40%")
+        Button('addBuilderNode')
+          .onClick((e: ClickEvent) => {
+            this.nodeController.addBuilderNode();
+          })
+          .width(200)
+          .height(50)
+          .margin({ bottom: 10} as Margin)
+        Button("Update")
+          .onClick((e: ClickEvent) => {
+            this.nodeController?.updateNode();
+          })
+          .width(200)
+          .height(50)
+      }
+    }
+  }
   ```
 
 ## 声明式UI并行化循环创建接口ParallelizeUI<V,T>如何按需加载(API 22)
@@ -1051,14 +1094,18 @@ ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于
 
 [ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)主要用于并行化循环创建UI节点，提升创建批量节点的性能。仅在List和Grid中可以实现按需加载，与[LazyForEach](../ui/state-management/arkts-rendering-control-lazyforeach.md)类似，但是可以并行创建子组件。在非List和Grid中会创建数组中定义的所有UI节点。
 
-示例代码如下：
 ```ts
+// ArkTS-Sta示例
+import { Entry, Text, Column, Component, List, ListItem } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 class Info {
   str1: string
-  constructor(str1: string) {
+  str2: string
+  constructor(str1: string, str2:string) {
     this.str1 = str1
+    this.str2 = str2
   }
 }
 
@@ -1066,7 +1113,7 @@ class Info {
 @Component
 struct Index {
   @State stateVar: string = 'state var';
-  @State arr:Array= [1,2,3,4,5,6,7,8,9,10] // 数据源
+  @State arr:Array<Int>= [1,2,3,4,5,6,7,8,9,10] // 数据源
 
   build() {
     Column(undefined) {
@@ -1074,12 +1121,12 @@ struct Index {
         // 仅按需并行创建当前可见的子组件
         ParallelizeUI<Int, Info>(undefined, this.arr,
           (item:Int, index: Int) => {
-            return new Info(${item}, this.stateVar)
+            return new Info(`${item}`, this.stateVar)
           },
           (param: Info) =>{
             ListItem() {
               Column() {
-                Text(${param.str1}).fontSize(20)
+                Text(`${param.str1}`).fontSize(20)
               }
             }.height('200').width('100%').borderWidth(2)
           })
@@ -1088,3 +1135,11 @@ struct Index {
   }
 }
 ```
+
+## 如何解决List&Grid并行创建子组件显示时间延后的问题？(API 22)
+
+**解决措施**
+
+如果List&Grid的列表结构复杂、每个列表项包含组件较多，会因嵌套层级较深导致组件负载加重、绘制耗时增长。List&Grid并行化创建子组件的方案本质是基于分帧并行的实现，通过将主线程内原本要创建的全部组件拆分到子线程并行创建，解决在转场或列表滑动时，列表项需一次性创建全部组件的性能问题。
+
+List&Grid使用并行化加载子组件时，子组件在子线程创建完成后，需要在主线程完成挂载及显示。在此过程中应避免在主线程插入长时任务，否则会导致List&Grid的子组件显示时间延后，造成页面整体完成时间延迟。

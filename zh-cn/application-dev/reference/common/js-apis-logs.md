@@ -6,19 +6,21 @@
 >
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 
-> 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## console.debug
 
-debug(message: string, ...arguments: any[]): void
+static debug(message: string, ...arguments: any[]): void
 
 以格式化输出方式打印调试信息。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 3
+**ArkTS-Dyn起始版本：** 7
 
 **ArkTS-Sta起始版本：** 22
 
@@ -43,15 +45,17 @@ console.debug('count:'); // 仅打印message
 
 ## console.log
 
-log(message: string, ...arguments: any[]): void
+static log(message: string, ...arguments: any[]): void
 
 以格式化输出方式打印日志信息。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 3
+**ArkTS-Dyn起始版本：** 7
 
 **ArkTS-Sta起始版本：** 22
 
@@ -76,15 +80,17 @@ console.log('count:'); // 仅打印message
 
 ## console.info
 
-info(message: string, ...arguments: any[]): void
+static info(message: string, ...arguments: any[]): void
 
 以格式化输出方式打印日志信息。(console.log()的别名）。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 3
+**ArkTS-Dyn起始版本：** 7
 
 **ArkTS-Sta起始版本：** 22
 
@@ -109,15 +115,17 @@ console.info('count:'); // 仅打印message
 
 ## console.warn
 
-warn(message: string, ...arguments: any[]): void
+static warn(message: string, ...arguments: any[]): void
 
 以格式化输出方式打印警告信息。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 3
+**ArkTS-Dyn起始版本：** 7
 
 **ArkTS-Sta起始版本：** 22
 
@@ -142,15 +150,17 @@ console.warn('warn:'); // 仅打印message
 
 ## console.error
 
-error(message: string, ...arguments: any[]): void
+static error(message: string, ...arguments: any[]): void
 
 以格式化输出方式打印错误信息。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 3
+**ArkTS-Dyn起始版本：** 7
 
 **ArkTS-Sta起始版本：** 22
 
@@ -175,7 +185,7 @@ console.error('error:'); // 仅打印message
 
 ## console.assert<sup>10+</sup>
 
-assert(value?: Object, ...arguments: Object[]): void
+static assert(value?: Object, ...arguments: Object[]): void
 
 断言打印。
 
@@ -217,7 +227,7 @@ console.assert();
 
 ## console.count<sup>10+</sup>
 
-count(label?: string): void
+static count(label?: string): void
 
 维护一个内部计数器，调用时，打印此标签名以及对应的计数次数。
 
@@ -262,7 +272,7 @@ console.count()
 
 ## console.countReset<sup>10+</sup>
 
-countReset(label?: string): void
+static countReset(label?: string): void
 
 清除指定标签名的计数。
 
@@ -300,7 +310,7 @@ console.count('abc');
 
 ## console.dir<sup>10+</sup>
 
-dir(dir?: Object): void
+static dir(dir?: Object): void
 
 打印对象内容。
 
@@ -317,7 +327,6 @@ dir(dir?: Object): void
 | 参数名     | 类型     | 必填   | 说明          |
 | ------- | ------ | ---- | ----------- |
 | dir | Object | 否    | 需要打印内容的对象。省略则无任何打印。|
-
 
 **示例：**
 
@@ -340,10 +349,9 @@ console.dir(a);
 console.dir(); // 无打印
 ```
 
-
 ## console.dirxml<sup>10+</sup>
 
-dirxml(...arguments: Object[]): void 
+static dirxml(...arguments: Object[]): void 
 
 此方法通过内部调用console.log()实现。此方法不会产生任何 XML 格式。使用方法与console.log()一致。
 
@@ -359,7 +367,7 @@ dirxml(...arguments: Object[]): void
 
 | 参数名     | 类型     | 必填   | 说明          |
 | ------- | ------ | ---- | ----------- |
-| arguments | Object | 是    | 要打印的信息。 |
+| arguments | Object | 否    | 要打印的信息。省略则无任何打印。 |
 
 **示例：**
 
@@ -375,7 +383,7 @@ console.dirxml('count:');
 
 ## console.group<sup>10+</sup>
 
-group(...arguments: Object[]): void
+static group(...arguments: Object[]): void
 
 默认将后续行的缩进增加两个空格。
 如果提供需要打印的信息，则首先打印信息，没有额外的缩进。
@@ -392,7 +400,7 @@ group(...arguments: Object[]): void
 
 | 参数名     | 类型     | 必填   | 说明          |
 | ------- | ------ | ---- | ----------- |
-| arguments | Object | 否    | 要打印的信息。 |
+| arguments | Object | 否    | 要打印的信息。省略则仅打印两个空格。 |
 
 **示例：**
 
@@ -408,10 +416,9 @@ console.log("level 2");
 //     level 2
 ```
 
-
 ## console.groupCollapsed<sup>10+</sup>
 
-groupCollapsed(...arguments: Object[]): void
+static groupCollapsed(...arguments: Object[]): void
 
 使用与功能同console.group()一致。
 
@@ -427,8 +434,7 @@ groupCollapsed(...arguments: Object[]): void
 
 | 参数名     | 类型     | 必填   | 说明          |
 | ------- | ------ | ---- | ----------- |
-| arguments | Object | 否    | 要打印的信息。|
-
+| arguments | Object | 否    | 要打印的信息。省略则仅打印两个空格。 |
 
 **示例：**
 
@@ -446,7 +452,7 @@ console.log("level 2");
 
 ## console.groupEnd<sup>10+</sup>
 
-groupEnd(): void
+static groupEnd(): void
 
 将后续行的缩进减少两个空格。
 
@@ -457,7 +463,6 @@ groupEnd(): void
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
-
 
 **示例：**
 
@@ -472,10 +477,9 @@ console.log("outter");
 // outter
 ```
 
-
 ## console.table<sup>10+</sup>
 
-table(tableData?: Object): void
+static table(tableData?: Object): void
 
 以表格形式打印数据。
 
@@ -518,7 +522,7 @@ console.table({ a: [1, 2, 3, 4, 5], b: 5, c: { e: 5 } });
 
 ## console.time<sup>10+</sup>
 
-time(label?: string): void
+static time(label?: string): void
 
 启动可用于计算操作持续时间的计时器。可使用console.timeEnd()关闭计时器并打印经过的时间(单位：ms)。
 
@@ -552,7 +556,7 @@ console.time('abc');
 
 ## console.timeEnd<sup>10+</sup>
 
-timeEnd(label?: string): void
+static timeEnd(label?: string): void
 
 停止之前通过调用 console.time() 启动的计时器并将打印经过的时间(单位：ms)。
 
@@ -588,7 +592,7 @@ console.timeEnd('abc');
 
 ## console.timeLog<sup>10+</sup>
 
-timeLog(label?: string, ...arguments: Object[]): void
+static timeLog(label?: string, ...arguments: Object[]): void
 
 对于先前通过调用 console.time() 启动的计时器，打印经过时间和其他data参数。
 

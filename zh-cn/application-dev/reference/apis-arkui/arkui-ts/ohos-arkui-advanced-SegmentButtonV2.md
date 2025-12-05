@@ -158,7 +158,7 @@ TabSegmentButtonV2({
 | itemSymbolFontSize               | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)                                                                                                  | 否   | @Param             | 配置分段按钮选项中HM Symbol类型图标大小。<br>取值范围：[0, +∞)<br>默认值：`20fp`<br>**说明：**<br>不支持设置百分比类型，异常值按默认值处理。<br>items设置symbolModifier的fontSize属性值时，itemSymbolFontSize不生效。<br>该成员只读，不支持更改。                                                                                                           |
 | itemSymbolFontColor              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                                                                                    | 否   | @Param             | 配置分段按钮非选中选项HM Symbol类型图标的颜色。<br>默认值：`ColorMetrics.resourceColor($r('sys.color.font_secondary'))`<br>值为undefined时，按默认值处理。<br>**说明：**<br>items设置symbolModifier的fontColor属性值时，itemSymbolFontColor不生效。<br>该成员只读，不支持更改。                                                                                                       |
 | itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                                                                                    | 否   | @Param             | 配置分段按钮选中选项的HM Symbol类型图标颜色。<br>默认值：`ColorMetrics.resourceColor($r('sys.color.font_primary'))`<br>值为undefined时，按默认值处理。<br>**说明：**<br/>items设置symbolModifier的fontColor属性值时，itemSelectedSymbolFontColor不生效。<br>该成员只读，不支持更改。                                                                                                  |
-| languageDirection                | [Direction](ts-appendix-enums.md#direction)                                                                                                                    | 否   | @Param             | 配置分段按钮的布局方向。<br>默认值：Direction.Auto<br>值为undefined时，按默认值处理。<br>该成员只读，不支持更改。                                                                                                                                                                                                                                                 |
+| languageDirection                | [Direction](ts-appendix-enums.md#direction)                                                                                                                    | 否   | @Param             | 配置分段按钮的布局方向。<br>默认值：Direction.Auto<br>值为undefined时，按默认值处理。<br>该成员只读，不支持更改。                                                                                                                                                                                                                                                  |
 
 ## CapsuleSegmentButtonV2
 
@@ -409,6 +409,26 @@ MultiCapsuleSegmentButtonV2({
 继承自Array\<[SegmentButtonV2Item](#segmentbuttonv2item)>
 
 **装饰器类型：** @ObservedV2
+
+### constructor<sup>22+</sup>
+
+constructor(length: int)
+
+构造一个长度为length的数组。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**参数：**
+
+| 参数名 | 类型                                                        | 必填 | 说明                       |
+| ------ | ----------------------------------------------------------- | ---- | -------------------------- |
+| length  | int | 是   | 长度。 |
 
 ### constructor
 
@@ -743,8 +763,6 @@ export struct VCard {
 ArkTS-Sta: 
 
 ```ts
-'use static'
-
 import {
   SegmentButtonV2Items,
   TabSegmentButtonV2,
@@ -1026,7 +1044,6 @@ export struct VCard {
 ArkTS-Sta: 
 
 ```ts
-'use static'
 import {
   SegmentButtonV2Items,
   CapsuleSegmentButtonV2,
@@ -1309,7 +1326,6 @@ export struct VCard {
 ArkTS-Sta: 
 
 ```ts
-'use static'
 import {
   Entry,
   ComponentV2,
@@ -1329,7 +1345,10 @@ import {
   PropRef,
 } from '@kit.ArkUI';
 
-import { SegmentButtonV2Items, MultiCapsuleSegmentButtonV2 } from './SegmentButtonV2';
+import { 
+  SegmentButtonV2Items,
+  MultiCapsuleSegmentButtonV2
+} from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -1376,45 +1395,50 @@ struct MultiCapsuleSegmentButtonV2Example {
       Column({ space: 12 } as ColumnOptions) {
         VCard({ title: '纯文本选项' }) {
           MultiCapsuleSegmentButtonV2({
+            items: this.textItems,
             selectedIndexes: this.textSelectedIndexes,
             $selectedIndexes: (value: int[]) => {
-                this.textSelectedIndexes = value;
+              this.textSelectedIndexes = value;
             }
           })
         }
 
         VCard({ title: '纯图标选项（Image）' }) {
           MultiCapsuleSegmentButtonV2({
+            items: this.imageItems,
             selectedIndexes: this.imageSelectedIndexes,
             $selectedIndexes: (value: int[]) => {
-                this.imageSelectedIndexes = value;
+              this.imageSelectedIndexes = value;
             }
           })
         }
 
         VCard({ title: '纯图标选项（Symbol）' }) {
           MultiCapsuleSegmentButtonV2({
+            items: this.symbolItems,
             selectedIndexes: this.symbolSelectedIndexes,
             $selectedIndexes: (value: int[]) => {
-                this.symbolSelectedIndexes = value;
+              this.symbolSelectedIndexes = value;
             }
           })
         }
 
         VCard({ title: '图文混合选项' }) {
           MultiCapsuleSegmentButtonV2({
+            items: this.hybridItems,
             selectedIndexes: this.hybridSelectedIndexes,
             $selectedIndexes: (value: int[]) => {
-                this.hybridSelectedIndexes = value;
+              this.hybridSelectedIndexes = value;
             }
           })
         }
 
         VCard({ title: '自由选项' }) {
           MultiCapsuleSegmentButtonV2({
+            items: this.freeItems,
             selectedIndexes: this.freeSelectedIndexes,
             $selectedIndexes: (value: int[]) => {
-                this.freeSelectedIndexes = value;
+              this.freeSelectedIndexes = value;
             }
           })
         }
@@ -1479,13 +1503,11 @@ import {
 @ComponentV2
 struct SegmentButtonV2Example {
   @Local textItems: SegmentButtonV2Items = new SegmentButtonV2Items([
-    { text: '手机', textModifier: new TextModifier().fontSize(20) },
+    { text: '手机', textModifier: new TextModifier().fontSize(15) },
     { text: '平板' },
     { icon: $r('sys.media.ohos_ic_public_device_phone'), iconModifier: new ImageModifier().height(17).width(17) },
-    { icon: $r('sys.media.ohos_ic_public_device_pad') },
     { symbol: $r('sys.symbol.phone'), symbolModifier: new SymbolGlyphModifier().fontColor([Color.Pink]) },
-    { symbolModifier: new SymbolGlyphModifier($r('sys.symbol.pad')).fontColor([Color.Orange]) },
-    { symbol: $r('sys.symbol.matebook') },
+    { symbolModifier: new SymbolGlyphModifier($r('sys.symbol.pad')).fontColor([Color.Orange]) }
   ]);
   @Local textSelectedIndex: number = 0;
   @Local freeSelectedIndex: number[] = [0];
@@ -1553,7 +1575,6 @@ export struct VCard {
 ArkTS-Sta: 
 
 ```ts
-'use static'
 import {
   Entry,
   ComponentV2,
@@ -1586,13 +1607,11 @@ import {
 @ComponentV2
 struct SegmentButtonV2Example {
   @Local textItems: SegmentButtonV2Items = new SegmentButtonV2Items([
-    { text: '手机', textModifier: new TextModifier().fontSize(20) },
+    { text: '手机', textModifier: new TextModifier().fontSize(15) },
     { text: '平板' },
     { icon: $r('sys.media.ohos_ic_public_device_phone'), iconModifier: new ImageModifier().height(17).width(17) },
-    { icon: $r('sys.media.ohos_ic_public_device_pad') },
     { symbol: $r('sys.symbol.phone'), symbolModifier: new SymbolGlyphModifier().fontColor([Color.Pink]) },
-    { symbolModifier: new SymbolGlyphModifier($r('sys.symbol.pad')).fontColor([Color.Orange]) },
-    { symbol: $r('sys.symbol.matebook') },
+    { symbolModifier: new SymbolGlyphModifier($r('sys.symbol.pad')).fontColor([Color.Orange]) }
   ]);
   @Local textSelectedIndex: int = 0;
   @Local freeSelectedIndex: int[] = [0];
@@ -1663,5 +1682,4 @@ export struct VCard {
   }
 }
 ```
-
 ![TabSegmentButtonV2OrCapsuleSegmentButtonV2OrMultiCapsuleSegmentButtonV2](figures/TabSegmentButtonV2OrCapsuleSegmentButtonV2OrMultiCapsuleSegmentButtonV2.png)

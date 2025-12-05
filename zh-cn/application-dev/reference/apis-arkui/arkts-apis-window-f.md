@@ -61,6 +61,8 @@ createWindow(config: Configuration, callback: AsyncCallback&lt;Window&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
@@ -87,6 +89,38 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let windowClass: window.Window | undefined = undefined;
+    let config: window.Configuration = {
+      name: "test",
+      windowType: window.WindowType.TYPE_DIALOG,
+      ctx: this.context
+    };
+    try {
+      window.createWindow(config, (err: BusinessError<void> | null, data: window.Window | undefined): void => {
+        if (err?.code) {
+          console.error(`Failed to create the window. Cause code: ${err?.code}, message: ${err?.message}`);
+          return;
+        }
+        windowClass = data;
+        console.info('Succeeded in creating the window. Data: ' + JSON.stringify(data));
+        windowClass!.resize(500, 1000);
+      });
+    } catch (err: Error) {
+      console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -141,6 +175,8 @@ createWindow(config: Configuration): Promise&lt;Window&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
@@ -162,6 +198,34 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let config: window.Configuration = {
+      name: "test",
+      windowType: window.WindowType.TYPE_DIALOG,
+      ctx: this.context
+    };
+    try {
+      window.createWindow(config).then((value:window.Window) => {
+        console.info('Succeeded in creating the window. Data: ' + JSON.stringify(value));
+        value.resize(500, 1000);
+      }).catch((err: Error)=> {
+        console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (err: Error) {
+      console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -204,12 +268,25 @@ findWindow(name: string): Window
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let windowClass: window.Window | undefined = undefined;
 try {
   windowClass = window.findWindow('test');
 } catch (exception) {
   console.error(`Failed to find the Window. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+let windowClass: window.Window | undefined = undefined;
+try {
+  windowClass = window.findWindow('test');
+} catch (err: Error) {
+  console.error(`Failed to find the Window. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -224,6 +301,10 @@ getLastWindow(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -243,6 +324,8 @@ getLastWindow(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;): void
 | 1300006 | This window context is abnormal. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -285,6 +368,49 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import common from '@ohos.app.ability.common';
+import { LocalStorage } from '@ohos.arkui.stateManagement'
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err) => {
+        if (err?.code) {
+          console.error(`Failed to load content for main window. Cause code: ${err?.code}, message: ${err?.message}`);
+        }
+      // 创建子窗
+      windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
+        let storage: LocalStorage = new LocalStorage();
+        subWindow.loadContent('pages/Index', storage, (err: BusinessError): void => {
+          subWindow.showWindow().then(() => {
+            try{
+              window.getLastWindow(this.context as common.UIAbilityContext, (err: BusinessError<void>|null, topWindow: window.Window|undefined) => {
+                if (err?.code) {
+                  console.error(`Failed to obtain the top window. Cause code: ${err?.code}, message: ${err?.message}`);
+                } else {
+                  console.info(`Succeeded in obtaining the top window. Window id: ${topWindow?.getWindowProperties().id}`);
+                }
+              });
+            }catch(exception){
+              let err = exception as BusinessError;
+              console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
+            }
+          });
+        });
+      });
+    });
+  }
+}
+
+```
+
 ## window.getLastWindow<sup>9+</sup>
 
 getLastWindow(ctx: BaseContext): Promise&lt;Window&gt;
@@ -296,6 +422,10 @@ getLastWindow(ctx: BaseContext): Promise&lt;Window&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -321,6 +451,7 @@ getLastWindow(ctx: BaseContext): Promise&lt;Window&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -362,8 +493,53 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import common from '@ohos.app.ability.common';
+import { LocalStorage } from '@ohos.arkui.stateManagement'
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err) => {
+        if (err?.code) {
+          console.error(`Failed to load content for main window. Cause code: ${err?.code}, message: ${err?.message}`);
+        }
+      // 创建子窗
+      windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
+        let storage: LocalStorage = new LocalStorage();
+        subWindow.loadContent('pages/Index', storage, (err: BusinessError): void => {
+          subWindow.showWindow().then(() => {
+            try {
+              window.getLastWindow(this.context as common.UIAbilityContext ).then((topWindow :window.Window | undefined ) => {
+                let windowClass = topWindow;
+                console.info(`Succeeded in obtaining the top window. Window id: ${topWindow?.getWindowProperties().id}`);
+              }).catch((Err: Error) => {
+                let err = Err as BusinessError;
+                console.error(`Failed to obtain the top window. Cause code: ${err?.code}, message: ${err?.message}`);
+              });
+            } catch (exception) {
+              let err = exception as BusinessError;
+              console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
+            }
+          });
+        });
+      });
+    });
+  }
+}
+```
+
 ## window.shiftAppWindowFocus<sup>11+</sup>
-shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
+
+ArkTS-Dyn: shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: shiftAppWindowFocus(sourceWindowId: int, targetWindowId: int): Promise&lt;void&gt;
 
 在同应用内将窗口焦点从源窗口转移到目标窗口，仅支持应用主窗、子窗范围内的焦点转移。使用Promise异步回调。
 
@@ -378,12 +554,16 @@ shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名          | 类型   | 必填  | 说明                    |
 | -------------- | ------ | ----- | ----------------------- |
-| sourceWindowId | number | 是    | 源窗口id，必须是获焦状态。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
-| targetWindowId | number | 是    | 目标窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
+| sourceWindowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 源窗口id，必须是获焦状态。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
+| targetWindowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 目标窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
 
 **返回值：**
 
@@ -405,6 +585,7 @@ shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -466,6 +647,44 @@ export default class EntryAbility extends UIAbility {
     } catch (exception) {
       console.error(`Failed to shift app focus. Cause code: ${exception.code}, message: ${exception.message}`);
     }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import common from '@ohos.app.ability.common';
+import { LocalStorage } from '@ohos.arkui.stateManagement'
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+     windowStage.loadContent('pages/Index', (err) => {
+        if (err?.code) {
+          console.error(`Failed to load content for main window. Cause code: ${err?.code}, message: ${err?.message}`);
+        }
+      // 创建子窗
+      windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
+        let storage: LocalStorage = new LocalStorage();
+        subWindow.loadContent('pages/Index', storage, (err: BusinessError): void => {
+          subWindow.showWindow().then(() => {
+            let mainWindow = windowStage.getMainWindowSync();
+            let mainWindowId = mainWindow.getWindowProperties().id;
+            let subWindowId = subWindow.getWindowProperties().id;
+            // 切换焦点
+            window.shiftAppWindowFocus(subWindowId as int, mainWindowId as int).then((): void => {
+              console.info('Succeeded in shifting app window focus');
+            }).catch((err: BusinessError): void => {
+              console.error(`Failed to shift app window focus. Cause code: ${err.code}, message: ${err.message}`);
+            });
+          });
+        });
+      });
+    });
   }
 }
 ```

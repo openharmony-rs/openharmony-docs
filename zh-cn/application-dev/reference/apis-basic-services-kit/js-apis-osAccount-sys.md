@@ -3076,7 +3076,7 @@ onActivate(name: string, callback: Callback&lt;int&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('activate')](#on)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3128,7 +3128,7 @@ onActivating(name: string, callback: Callback&lt;int&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('activating')](#on)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3180,7 +3180,7 @@ offActivate(name: string, callback?: Callback&lt;int&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('activate')](#off)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3233,7 +3233,7 @@ offActivating(name: string, callback?: Callback&lt;int&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('activating')](#off)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3286,7 +3286,7 @@ onSwitching(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('switching')](#on12)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3337,7 +3337,7 @@ offSwitching(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('switching')](#off12)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3385,7 +3385,7 @@ onSwitched(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on12-1)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('switched')](#on12-1)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3436,7 +3436,7 @@ offSwitched(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off12-1)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('switched')](#off12-1)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4567,7 +4567,6 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid remoteNetworkId. |
 | 12300090 | Cross-device capability not supported. |
@@ -4666,7 +4665,6 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType or authTrustLevel. |
 | 12300013 | Network exception. |
@@ -4773,7 +4771,6 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType, authTrustLevel or options. |
 | 12300003 | Account not found. |
@@ -4889,7 +4886,6 @@ ArkTS-Sta: authUser(userId: int, challenge: Uint8Array, authType: AuthType, auth
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType or authTrustLevel. |
 | 12300003 | Account not found. |
@@ -8186,8 +8182,8 @@ getAuthInfo(callback: AsyncCallback&lt;Array&lt;EnrolledCredInfo&gt;&gt;): void
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -8262,9 +8258,9 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback&lt;Array&lt;EnrolledCred
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -8346,9 +8342,9 @@ getAuthInfo(authType?: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -8425,10 +8421,10 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise&lt;Array&lt;EnrolledCredInfo&
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid options. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -8516,10 +8512,10 @@ ArkTS-Sta: getEnrolledId(authType: AuthType, accountId?: int): Promise&lt;Uint8A
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 | 12300102 | The credential does not exist. |
 | 12300106 | The authentication type is not supported. |
 
@@ -8565,6 +8561,133 @@ ArkTS-Sta示例：
     console.error(`getEnrolledId exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+### onCredentialChanged<sup>23+</sup>
+onCredentialChanged(credentialTypes: AuthType[], callback: Callback&lt;CredentialChangeInfo&gt;): void
+
+订阅一种或多种类型的凭据变更事件，通过回调函数获取凭据变更信息。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**需要权限：** ohos.permission.USE_USER_IDM
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型                   | 必填 | 说明      |
+| --------  | ---------------------- | ---- | -------- |
+| credentialTypes  | [AuthType](#authtype8)\[\] | 是   | 表示订阅的凭据类型集合。 |
+| callback | Callback&lt;[CredentialChangeInfo](#credentialchangeinfo23)&gt;  | 是   | 回调函数。当凭据发生变更时，会返回变更信息。 |
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ------------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | One or more credential types are invalid. |
+| 12300106 | One or more credential types are not supported. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let identityMgr: osAccount.UserIdentityManager = new osAccount.UserIdentityManager();
+
+const callback: Callback<osAccount.CredentialChangeInfo> = (changeInfo: osAccount.CredentialChangeInfo): void => {
+  console.info('credentialType: ' + changeInfo.credentialType
+    + ', changeType: ' + changeInfo.changeType
+    + ', accountId: ' + changeInfo.accountId
+    + ', addedCredentialId: ' + changeInfo.addedCredentialId
+    + ', deletedCredentialId: ' + changeInfo.deletedCredentialId
+    + ', isSilent: ' + changeInfo.isSilent
+  )
+}
+
+try {
+  identityMgr.onCredentialChanged([osAccount.AuthType.PIN, osAccount.AuthType.FACE], callback);
+  console.info('Subscribe to the credential changes successfully');
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`Failed to subscribe to the credetial changes, code is ${err.code}, message is ${err.message}`)
+}
+```
+
+### offCredentialChanged<sup>23+</sup>
+offCredentialChanged(callback?: Callback&lt;CredentialChangeInfo&gt;): void
+
+取消与指定回调关联的订阅记录，若未指定回调，则取消所有订阅记录。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**需要权限：** ohos.permission.USE_USER_IDM
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型                   | 必填 | 说明      |
+| --------  | ---------------------- | ---- | -------- |
+| callback | Callback&lt;[CredentialChangeInfo](#credentialchangeinfo23)&gt;  | 否   | 表示订阅回调。不指定时，表示取消所有订阅记录。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ------------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let identityMgr: osAccount.UserIdentityManager = new osAccount.UserIdentityManager();
+
+const callback: Callback<osAccount.CredentialChangeInfo> = (changeInfo: osAccount.CredentialChangeInfo): void => {
+  console.info('credentialType: ' + changeInfo.credentialType
+    + ', changeType: ' + changeInfo.changeType
+    + ', accountId: ' + changeInfo.accountId
+    + ', addedCredentialId: ' + changeInfo.addedCredentialId
+    + ', deletedCredentialId: ' + changeInfo.deletedCredentialId
+    + ', isSilent: ' + changeInfo.isSilent
+  )
+}
+
+try {
+  identityMgr.onCredentialChanged([osAccount.AuthType.PIN, osAccount.AuthType.FACE], callback);
+  console.info('Subscribe to the credential changes successfully');
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`Failed to subscribe to the credetial changes, code is ${err.code}, message is ${err.message}`)
+}
+
+try {
+  identityMgr.offCredentialChanged(callback);
+  console.info('Unsubscribe from the credential changes successfully');
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`Failed to unsubscribe from the credetial changes, code is ${err.code}, message is ${err.message}`)
+}
+```
+
 
 ## IInputData<sup>8+</sup>
 
@@ -9493,3 +9616,43 @@ ArkTS-Sta示例：
 | 名称               | 类型    | 只读  | 可选 | 说明       |
 | ------------------ | ------ | ---- | ---- | ---------- |
 | challenge          | Uint8Array | 否 | 是  | 挑战值，默认为undefined。 |
+
+## CredentialChangeInfo<sup>23+</sup>
+
+表示凭据变更信息。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+
+| 名称      | 类型   | 只读  | 可选  | 说明       |
+| ----------- | ------ | ---- | ---- | ---------- |
+| changeType      | [CredentialChangeType](#credentialchangetype23) | 否 | 否  | 表示凭据变更的类型。     |
+| isSilent | boolean | 否 | 否  | 表示是否为静默变更，静默变更表示变更由系统在后台自动地发起。 |
+| credentialType      | [AuthType](#authtype8) | 否 | 否  | 表示凭据类型。     |
+| accountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否  | 表示系统账号标识。 |
+| addedCredentialId   | Uint8Array | 否 | 是  | 表示添加的凭据ID，添加凭据和更新凭据操作都会返回该ID。     |
+| deletedCredentialId | Uint8Array | 否 | 是  | 表示删除的凭据ID，删除凭据和更新凭据操作都会返回该ID。     |
+
+## CredentialChangeType<sup>23+</sup>
+
+表示凭据变更类型的枚举。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称     | 值   | 说明       |
+| -------- | --- | ---------- |
+| ADD_CREDENTIAL      | 1   | 表示添加凭据的变更类型。 |
+| UPDATE_CREDENTIAL   | 2   | 表示更新凭据的变更类型。 |
+| DEL_CREDENTIAL      | 3   | 表示删除凭据的变更类型。 |

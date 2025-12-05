@@ -2,6 +2,8 @@
 
 当前Webview的历史信息列表。
 
+支持使用[@ohos.transfer](../apis-arkts/js-apis-transfer.md)系统对象转换工具进行动静态类型转换。
+
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
@@ -131,3 +133,111 @@ struct WebComponent {
   }
 }
 ```
+
+## 使用@ohos.transfer进行BackForwardList类型转换
+
+ArkTS-Dyn中使用ArkTS-Sta的BackForwardList对象。
+
+- 在ArkTS-Sta模块中将ArkTS-Sta BackForwardList转换成ArkTS-Dyn BackForwardList，传入到ArkTS-Dyn子模块`library`中。
+
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  'use static'
+  import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { transfer } from '@kit.ArkTS';
+  import { BackforwardListStaticToDynamic } from 'library';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Button("BackForwardList")
+          .onClick(() => {
+            try {
+              let list = this.controller.getBackForwardEntries();
+              let dynamicHandler = transfer.transferDynamic(list, 'ArkWeb.BackForwardList');
+              BackforwardListStaticToDynamic(dynamicHandler);
+            } catch (e: Error) {
+              console.error('transferDynamic catch error：-----------' + e.message);
+            }
+          })
+        Web({ src: "www.baidu.com", controller: this.controller })
+      }
+    }
+  }
+  ```
+
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn BackForwardList的方法。
+
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+  import { webview } from '@kit.ArkWeb';
+  export function BackforwardListStaticToDynamic(handler_: any) {
+    try {
+      let handler: webview.BackForwardList = handler_ as webview.BackForwardList;
+      console.info('BackforwardListStaticToDynamic size=' + handler.size);
+    } catch (e) {
+      console.error('BackforwardListStaticToDynamic catch Error: ' + e.toString());
+    }
+  }
+  ```
+
+ArkTS-Sta中使用ArkTS-Dyn的BackForwardList对象。
+
+- 在ArkTS-Dyn模块创建得到ArkTS-Dyn BackForwardList对象，传给ArkTS-Sta子模块`library`中。
+
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { BackforwardListDynamicToStatic } from 'library';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Button("BackForwardList")
+          .onClick(() => {
+            try {
+              let list = this.controller.getBackForwardEntries();
+              BackforwardListDynamicToStatic(list);
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+        Web({ src: "www.baidu.com", controller: this.controller })
+      }
+    }
+  }
+  ```
+
+- 创建ArkTS-Sta子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn BackForwardList的方法。
+
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+  'use static'
+  import { webview } from '@kit.ArkWeb';
+  import { transfer } from '@kit.ArkTS';
+
+  export function BackforwardListDynamicToStatic(dynObject: Object | undefined | null) {
+    try {
+        let handler: webview.BackForwardList = transfer.transferStatic(dynObject, 'ArkWeb.BackForwardList') as webview.BackForwardList;
+        console.info('BackforwardListDynamicToStatic size=' + handler.size);
+    } catch (e: Error) {
+        console.error('BackforwardListDynamicToStatic catch error：-----------' + e.message);
+    }
+  }
+  ```

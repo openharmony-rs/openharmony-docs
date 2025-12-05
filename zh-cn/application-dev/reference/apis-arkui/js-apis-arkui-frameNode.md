@@ -3488,6 +3488,793 @@ createNode(context: UIContext, nodeType: 'ListItem'): ListItem
 typeNode.createNode(uiContext, 'ListItem');
 ```
 
+## ButtonFrameNode<sup>22+</sup>
+
+ButtonFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Button类型的FrameNode。
+
+### initialize<sup>22+</sup>
+abstract initialize(): ButtonAttribute
+
+初始化空的Button组件。推荐添加子组件，否则Button显示内容为空。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| ButtonAttribute | 返回Button组件的属性设置对象。 |
+
+**示例：** 
+
+```ts
+import { Entry, Column, Component, Color, NodeContainer, ItemAlign, FlexAlign } from '@ohos.arkui.component'
+import { NodeController, FrameNode, typeNode } from '@ohos.arkui.node'
+import { UIContext } from '@ohos.arkui.UIContext'
+
+class MyNodeController extends NodeController {
+  public uiContext: UIContext | null = null;
+  public rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.uiContext = uiContext;
+    this.rootNode = new FrameNode(uiContext);
+
+    let flexNode = typeNode.createNode(uiContext, "Flex");
+    flexNode.initialize({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center })
+      .size({ width: 100, height: 100 })
+      .backgroundColor(Color.Gray)
+
+    let button = typeNode.createButtonNode(uiContext);
+    button.initialize();
+    flexNode.appendChild(button);
+    this!.rootNode!.appendChild(flexNode);
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct MyStateSample {
+  private controller: MyNodeController = new MyNodeController()
+
+  build() {
+    Column(undefined) {
+      NodeContainer(this.controller)
+    }
+  }
+}
+```
+![image](figures/buttonInitialize1.png)
+
+
+### initialize<sup>22+</sup>
+abstract initialize(label: ResourceStr, options?: ButtonOptions): ButtonAttribute
+
+初始化Button组件的文本内容为label的值，并设置或更新ButtonOptions初始值，此时Button组件不需要添加子组件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| label  | [ResourceStr](./arkui-ts/ts-types.md#resourcestr) | 是 | 按钮文本内容。|
+| options | [ButtonOptions](./arkui-ts/ts-basic-components-button.md#buttonoptions对象说明) | 否   | Button组件参数。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| ButtonAttribute | 返回Button组件的属性设置对象。 |
+
+**示例：** 
+
+```ts
+import { Entry, Column, Component, Color, NodeContainer, ButtonType, ItemAlign, FlexAlign } from '@ohos.arkui.component'
+import { NodeController, FrameNode, typeNode } from '@ohos.arkui.node'
+import { UIContext } from '@ohos.arkui.UIContext'
+
+class MyNodeController extends NodeController {
+  public uiContext: UIContext | null = null;
+  public rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.uiContext = uiContext;
+    this.rootNode = new FrameNode(uiContext);
+
+    let flexNode = typeNode.createNode(uiContext, "Flex");
+    flexNode.initialize({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center })
+      .size({ width: 100, height: 100 })
+      .backgroundColor(Color.Gray)
+
+    let button = typeNode.createButtonNode(uiContext);
+    button.initialize('OK', { type: ButtonType.Normal })
+    flexNode.appendChild(button);
+    this!.rootNode!.appendChild(flexNode);
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct MyStateSample {
+  private controller: MyNodeController = new MyNodeController()
+
+  build() {
+    Column(undefined) {
+      NodeContainer(this.controller)
+    }
+  }
+}
+```
+![image](figures/buttonInitialize3.png)
+
+### initialize<sup>22+</sup>
+abstract initialize(value: ButtonOptions): ButtonAttribute
+
+设置或更新ButtonOptions初始值，此时Button组件的显示内容由子组件决定。推荐添加子组件，否则Button显示内容为空。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| value | [ButtonOptions](./arkui-ts/ts-basic-components-button.md#buttonoptions对象说明) | 是   | Button组件参数。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| ButtonAttribute | 返回Button组件的属性设置对象。 |
+
+**示例：** 
+
+```ts
+import { Entry, Column, Component, Color, NodeContainer, ButtonType, ItemAlign, FlexAlign } from '@ohos.arkui.component'
+import { NodeController, FrameNode, typeNode } from '@ohos.arkui.node'
+import { UIContext } from '@ohos.arkui.UIContext'
+
+class MyNodeController extends NodeController {
+  public uiContext: UIContext | null = null;
+  public rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.uiContext = uiContext;
+    this.rootNode = new FrameNode(uiContext);
+
+    let flexNode = typeNode.createNode(uiContext, "Flex");
+    flexNode.initialize({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center })
+      .size({ width: 100, height: 100 })
+      .backgroundColor(Color.Gray)
+
+    let button = typeNode.createButtonNode(uiContext);
+    button.initialize({ type: ButtonType.Normal });
+    button.appendChild(typeNode.createCheckboxNode(uiContext))
+    flexNode.appendChild(button);
+    this!.rootNode!.appendChild(flexNode);
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct MyStateSample {
+  private controller: MyNodeController = new MyNodeController()
+
+  build() {
+    Column(undefined) {
+      NodeContainer(this.controller)
+    }
+  }
+}
+```
+![image](figures/buttonInitialize2.png)
+
+### Button<sup>22+</sup>
+type Button = ButtonFrameNode
+
+Button类型的FrameNode节点。以子组件模式创建时允许添加一个子组件，以label模式创建不可以添加子组件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Button<sup>12+</sup>](#button12)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                                                   | 说明                                                         |
+| ------------------------------------------------------ | ------------------------------------------------------------ |
+| [ButtonFrameNode](#buttonframenode22) | 提供Button类型FrameNode节点。|
+
+### createButtonNode<sup>22+</sup>
+createButtonNode(context: UIContext): Button
+
+创建Button类型的FrameNode节点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Button')<sup>12+</sup>](#createnodebutton12)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [Button](#button22) | Button类型的FrameNode节点。 |
+
+**示例：** 
+
+<!--code_no_check-->
+
+```ts
+typeNode.createButtonNode(uiContext);
+```
+
+## CheckboxFrameNode<sup>22+</sup>
+
+CheckboxFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Checkbox类型的FrameNode。
+
+### initialize<sup>22+</sup>
+abstract initialize(options?: CheckboxOptions): CheckboxAttribute
+
+设置或更新CheckboxOptions初始值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| options | [CheckboxOptions](./arkui-ts/ts-basic-components-checkbox.md#checkboxoptions对象说明) | 否   | 组件参数。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| CheckboxAttribute | 返回Checkbox组件的属性设置对象。 |
+
+### Checkbox<sup>22+</sup>
+type Checkbox = CheckboxFrameNode
+
+Checkbox类型的FrameNode节点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Checkbox<sup>18+</sup>](#checkbox18)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                            | 说明                   |
+| ----------------------------- | -------------------- |
+| [CheckboxFrameNode](#checkboxframenode22) | 提供Checkbox类型FrameNode节点。|
+
+### createCheckboxNode<sup>22+</sup>
+createCheckboxNode(context: UIContext): Checkbox
+
+创建Checkbox类型的FrameNode节点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Checkbox')<sup>18+</sup>](#createnodecheckbox18)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [Checkbox](#checkbox22) | Checkbox类型的FrameNode节点。 |
+
+**示例：** 
+
+<!--code_no_check-->
+
+```ts
+typeNode.createCheckboxNode(uiContext);
+```
+
+## CheckboxGroupFrameNode<sup>22+</sup>
+
+CheckboxGroupFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明CheckboxGroup类型的FrameNode。
+
+### initialize<sup>22+</sup>
+abstract initialize(options?: CheckboxGroupOptions): CheckboxGroupAttribute
+
+设置或更新CheckboxGroupOptions初始值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| options | [CheckboxGroupOptions](./arkui-ts/ts-basic-components-checkboxgroup.md#checkboxgroupoptions对象说明) | 否   | 组件参数。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| CheckboxGroupAttribute | 返回CheckboxGroup组件的属性设置对象。 |
+
+### CheckboxGroup<sup>22+</sup>
+type CheckboxGroup = CheckboxGroupFrameNode
+
+CheckboxGroup类型的FrameNode节点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[CheckboxGroup<sup>18+</sup>](#checkboxgroup18)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                            | 说明                   |
+| ----------------------------- | -------------------- |
+| [CheckboxGroupFrameNode](#checkboxgroupframenode22) | 提供CheckboxGroup类型FrameNode节点。|
+
+### createCheckboxGroupNode<sup>22+</sup>
+createCheckboxGroupNode(context: UIContext): CheckboxGroup
+
+创建CheckboxGroup类型的FrameNode节点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('CheckboxGroup')<sup>18+</sup>](#createnodecheckboxgroup18)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [CheckboxGroup](#checkboxgroup22) | CheckboxGroup类型的FrameNode节点。 |
+
+**示例：** 
+
+<!--code_no_check-->
+
+```ts
+typeNode.createCheckboxGroupNode(uiContext);
+```
+
+## RadioFrameNode<sup>22+</sup>
+
+RadioFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Radio类型的FrameNode。
+
+### initialize<sup>22+</sup>
+abstract initialize(value: RadioOptions): RadioAttribute
+
+设置或更新RadioOptions初始值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| value | [RadioOptions](./arkui-ts/ts-basic-components-radio.md#radiooptions对象说明) | 是   | 组件参数。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| RadioAttribute | 返回Radio组件的属性设置对象。 |
+
+### Radio<sup>22+</sup>
+type Radio = RadioFrameNode
+
+Radio类型的FrameNode节点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Radio<sup>18+</sup>](#radio18)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                            | 说明                   |
+| ----------------------------- | -------------------- |
+| [RadioFrameNode](#radioframenode22) | 提供Radio类型FrameNode节点。|
+
+### createRadioNode<sup>22+</sup>
+createRadioNode(context: UIContext): Radio
+
+创建Radio类型的FrameNode节点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Radio')<sup>18+</sup>](#createnoderadio18)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [Radio](#radio22) | Radio类型的FrameNode节点。 |
+
+**示例：** 
+
+<!--code_no_check-->
+
+```ts
+typeNode.createRadioNode(uiContext);
+```
+
+## RatingFrameNode<sup>22+</sup>
+
+RatingFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Rating类型的FrameNode。
+
+### initialize<sup>22+</sup>
+abstract initialize(options?: RatingOptions): RatingAttribute
+
+设置或更新RatingOptions初始值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| options | [RatingOptions](./arkui-ts/ts-basic-components-rating.md#ratingoptions18对象说明) | 否   | 组件参数。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| RatingAttribute | 返回Rating组件的属性设置对象。 |
+
+### Rating<sup>22+</sup>
+type Rating = RatingFrameNode
+
+Rating类型的FrameNode节点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Rating<sup>18+</sup>](#rating18)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                            | 说明                   |
+| ----------------------------- | -------------------- |
+| [RatingFrameNode](#ratingframenode22) | 提供Rating类型FrameNode节点。|
+
+### createRatingNode<sup>22+</sup>
+createRatingNode(context: UIContext): Rating
+
+创建Rating类型的FrameNode节点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Rating')<sup>18+</sup>](#createnoderating18)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [Rating](#rating22) | Rating类型的FrameNode节点。 |
+
+**示例：** 
+
+<!--code_no_check-->
+
+```ts
+typeNode.createRatingNode(uiContext);
+```
+
+## SelectFrameNode<sup>22+</sup>
+
+SelectFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Select类型的FrameNode。
+
+### initialize<sup>22+</sup>
+abstract initialize(value: Array&lt;SelectOption&gt;): SelectAttribute
+
+设置或更新Array&lt;SelectOption&gt;初始值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| value | Array<[SelectOption](./arkui-ts/ts-basic-components-select.md#selectoption对象说明)> | 是   | 组件参数。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| SelectAttribute | 返回Select组件的属性设置对象。 |
+
+### Select<sup>22+</sup>
+type Select = SelectFrameNode
+
+Select类型的FrameNode节点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Select<sup>18+</sup>](#select18)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                            | 说明                   |
+| ----------------------------- | -------------------- |
+| [SelectFrameNode](#selectframenode22) | 提供Select类型FrameNode节点。|
+
+### createSelectNode<sup>22+</sup>
+createSelectNode(context: UIContext): Select
+
+创建Select类型的FrameNode节点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Select')<sup>18+</sup>](#createnodeselect18)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [Select](#select22) | Select类型的FrameNode节点。 |
+
+**示例：** 
+
+<!--code_no_check-->
+
+```ts
+typeNode.createSelectNode(uiContext);
+```
+
+## SliderFrameNode<sup>22+</sup>
+
+SliderFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Slider类型的FrameNode。
+
+### initialize<sup>22+</sup>
+abstract initialize(options?: SliderOptions): SliderAttribute;
+
+设置或更新SliderOptions初始值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| options | [SliderOptions](./arkui-ts/ts-basic-components-slider.md#slideroptions对象说明) | 否   | 组件参数。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| SliderAttribute | 返回Slider组件的属性设置对象。 |
+
+### Slider<sup>22+</sup>
+type Slider = SliderFrameNode
+
+Slider类型的FrameNode节点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Slider<sup>18+</sup>](#slider18)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                            | 说明                   |
+| ----------------------------- | -------------------- |
+| [SliderFrameNode](#sliderframenode22) | 提供Slider类型FrameNode节点。|
+
+### createSliderNode<sup>22+</sup>
+createSliderNode(context: UIContext): Slider
+
+创建Slider类型的FrameNode节点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Slider')<sup>18+</sup>](#createnodeslider18)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [Slider](#slider22) | Slider类型的FrameNode节点。 |
+
+**示例：** 
+
+<!--code_no_check-->
+
+```ts
+typeNode.createSliderNode(uiContext);
+```
+
+## ToggleFrameNode<sup>22+</sup>
+
+ToggleFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Toggle类型的FrameNode。
+
+### initialize<sup>22+</sup>
+abstract initialize(value: ToggleOptions): ToggleAttribute;
+
+设置或更新ToggleOptions初始值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| value | [ToggleOptions](./arkui-ts/ts-basic-components-toggle.md#toggleoptions18对象说明) | 是   | 组件参数。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| ToggleAttribute | 返回Toggle组件的属性设置对象。 |
+
+### Toggle<sup>22+</sup>
+type Toggle = ToggleFrameNode
+
+Toggle类型的FrameNode节点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Toggle<sup>18+</sup>](#toggle18)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                            | 说明                   |
+| ----------------------------- | -------------------- |
+| [ToggleFrameNode](#toggleframenode22) | 提供Toggle类型FrameNode节点。|
+
+### createToggleNode<sup>22+</sup>
+createToggleNode(context: UIContext, options?: ToggleOptions): Toggle
+
+创建Toggle类型的FrameNode节点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Toggle')<sup>18+</sup>](#createnodetoggle18)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+| options | [ToggleOptions](./arkui-ts/ts-basic-components-toggle.md#toggleoptions18对象说明) | 否 | 创建Toggle节点的接口参数，仅可通过ToggleOptions中的type属性设置开关样式。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [Toggle](#toggle22) | Toggle类型的FrameNode节点。 |
+
+**示例：** 
+
+<!--code_no_check-->
+
+```ts
+let toggleOptions: ToggleOptions = {type: ToggleType.Button, isOn: false};
+typeNode.createToggleNode(uiContext, toggleOptions);
+```
+
 ### TextInput<sup>12+</sup>
 type TextInput = TypedFrameNode&lt;TextInputInterface, TextInputAttribute&gt;
 
@@ -3536,22 +4323,34 @@ type Button = TypedFrameNode&lt;ButtonInterface, ButtonAttribute&gt;
 
 Button类型的FrameNode节点类型。以子组件模式创建允许添加一个子组件。以label模式创建不可以添加子组件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[Button<sup>22+</sup>](#button22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
 | 类型                                                   | 说明                                                         |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;ButtonInterface, ButtonAttribute&gt; | 提供Button类型FrameNode节点。<br/>**说明：**<br/> ButtonInterface用于[TypedFrameNode](#typedframenode12)的[initialize](#属性)接口的入参，入参为Button组件的构造函数类型。 <br/> ButtonAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Button组件的属性设置对象。<br/> 接口入参label不为空时，以label模式创建Button组件，以此模式创建无法包含子组件,并且不允许再设置子组件，否则会抛出异常。且label模式和子组件模式在第一次initialize创建之后无法在后续的initialize进行动态修改，如需要包含子组件，第一次initialize时不要设置label参数。<br/> 以子组件模式创建时，只能包含一个子组件，不能设置多个子组件，否则会抛出异常。 |
+| TypedFrameNode&lt;ButtonInterface, ButtonAttribute&gt; | 提供Button类型FrameNode节点。<br/>**说明：**<br/> ButtonInterface用于[TypedFrameNode](#typedframenode12)的[initialize](#属性)接口的入参，入参为Button组件的构造函数类型。 <br/> ButtonAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Button组件的属性设置对象。<br/> 接口入参label不为空时，以label模式创建Button组件，以此模式创建无法包含子组件，并且不允许再设置子组件，否则会抛出异常。且label模式和子组件模式在第一次initialize创建之后无法在后续的initialize进行动态修改。如果需要包含子组件，第一次initialize时不要设置label参数。<br/> 以子组件模式创建时，只能包含一个子组件，不能设置多个子组件，否则会抛出异常。 |
 
 ### createNode('Button')<sup>12+</sup>
 createNode(context: UIContext, nodeType: 'Button'): Button
 
 创建Button类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createButtonNode](#createbuttonnode22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -4268,9 +5067,15 @@ type Checkbox = TypedFrameNode&lt;CheckboxInterface, CheckboxAttribute&gt;
 
 Checkbox类型的FrameNode节点类型。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[Checkbox<sup>22+</sup>](#checkbox22)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 | 类型                            | 说明                   |
 | ----------------------------- | -------------------- |
@@ -4281,9 +5086,15 @@ createNode(context: UIContext, nodeType: 'Checkbox'): Checkbox
 
 创建Checkbox类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createCheckboxNode](#createcheckboxnode22)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -4311,9 +5122,15 @@ type CheckboxGroup = TypedFrameNode&lt;CheckboxGroupInterface, CheckboxGroupAttr
 
 CheckboxGroup类型的FrameNode节点类型。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[CheckboxGroup<sup>22+</sup>](#checkboxgroup22)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 | 类型                            | 说明                   |
 | ----------------------------- | -------------------- |
@@ -4324,9 +5141,15 @@ createNode(context: UIContext, nodeType: 'CheckboxGroup'): CheckboxGroup
 
 创建CheckboxGroup类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createCheckboxGroupNode](#createcheckboxgroupnode22)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -4354,9 +5177,15 @@ type Rating = TypedFrameNode&lt;RatingInterface, RatingAttribute&gt;
 
 Rating类型的FrameNode节点类型。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[Rating<sup>22+</sup>](#rating22)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 | 类型                            | 说明                   |
 | ----------------------------- | -------------------- |
@@ -4367,9 +5196,15 @@ createNode(context: UIContext, nodeType: 'Rating'): Rating
 
 创建Rating类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createRatingNode](#createratingnode22)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -4397,9 +5232,15 @@ type Radio = TypedFrameNode&lt;RadioInterface, RadioAttribute&gt;
 
 Radio类型的FrameNode节点类型。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[Radio<sup>22+</sup>](#radio22)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 | 类型                            | 说明                   |
 | ----------------------------- | -------------------- |
@@ -4410,9 +5251,15 @@ createNode(context: UIContext, nodeType: 'Radio'): Radio
 
 创建Radio类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createRadioNode](#createradionode22)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -4440,9 +5287,15 @@ type Slider = TypedFrameNode&lt;SliderInterface, SliderAttribute&gt;
 
 Slider类型的FrameNode节点类型。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[Slider<sup>22+</sup>](#slider22)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTs-Dyn起始版本：** 18
 
 | 类型                            | 说明                   |
 | ----------------------------- | -------------------- |
@@ -4453,9 +5306,15 @@ createNode(context: UIContext, nodeType: 'Slider'): Slider
 
 创建Slider类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createSliderNode](#createslidernode22)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -4483,9 +5342,15 @@ type Select = TypedFrameNode&lt;SelectInterface, SelectAttribute&gt;
 
 Select类型的FrameNode节点类型。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[Select<sup>22+</sup>](#select22)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 | 类型                            | 说明                   |
 | ----------------------------- | -------------------- |
@@ -4496,9 +5361,15 @@ createNode(context: UIContext, nodeType: 'Select'): Select
 
 创建Select类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createSelectNode](#createselectnode22)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -4526,9 +5397,15 @@ type Toggle = TypedFrameNode&lt;ToggleInterface, ToggleAttribute&gt;
 
 Toggle类型的FrameNode节点类型。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[Toggle<sup>22+</sup>](#toggle22)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 | 类型                            | 说明                   |
 | ----------------------------- | -------------------- |
@@ -4539,9 +5416,15 @@ createNode(context: UIContext, nodeType: 'Toggle', options?: ToggleOptions): Tog
 
 创建Toggle类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createToggleNode](#createtogglenode22)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 

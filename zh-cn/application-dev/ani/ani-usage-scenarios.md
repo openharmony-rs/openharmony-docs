@@ -354,7 +354,7 @@ Object_CallMethodByName_Int(obj, "toInt", "C{std.core.String}:i", &result);
 | `interface CustomIface`      | `C{example.CustomIface}`     | 同上                       |
 | `string`                     | `C{std.core.String}`         | 标准库类型                 |
 | `bigint`                     | `C{std.core.BigInt}`         | std.core 标准库类型        |
-| `Array`                      | `C{escompat.Array}`          | escompat 标准库类型        |
+| `Array`                      | `C{std.core.Array}`          | std.core 标准库类型        |
 | `Partial<T>`                 | `P{RuntimeName}`             | Partial 类型               |
 | `FixedArray<double>`         | `A{d}`                       | 固定数组，元素用类型编码表示 |
 | `()=>void`                   | `C{std.core.Function0}`      | 函数对象，数字为必需参数个数 |
@@ -362,10 +362,10 @@ Object_CallMethodByName_Int(obj, "toInt", "C{std.core.String}:i", &result);
 
 ### 2.3.1 数组类型
 
-据ArkTS 规范的`3.16.1 Resizeble Array Types`的描述，`T[]`和`Array<T>`表示的是相同的类型。因此，它们在底层都会被等价转换为`C{escompat.Array}`
+据ArkTS 规范的`3.16.1 Resizeble Array Types`的描述，`T[]`和`Array<T>`表示的是相同的类型。因此，它们在底层都会被等价转换为`C{std.core.Array}`
 
 ```ts
-function foo(a: string[], b: Array<Int>): void  // "C{escompat.Array}C{escompat.Array}:"
+function foo(a: string[], b: Array<Int>): void  // "C{std.core.Array}C{std.core.Array}:"
 ```
 
 ### 2.3.2 固定数组类型
@@ -411,7 +411,7 @@ function foo<T extends I1 | I2>(a0: T | FixedArray<T> | T[]): number | string | 
 // ANI mangled types
 const char *T1 = "X{C{app.C1}C{app.C2}C{app.I1}C{app.I2}}";
 const char *T2 = "X{C{std.core.Double}C{std.core.String}}";
-const char *T3 = "X{A{X{C{app.I1}C{app.I2}}}C{escompat.Array}C{app.I1}C{app.I2}}:X{C{std.core.Double}C{std.core.Null}C{std.core.String}}";
+const char *T3 = "X{A{X{C{app.I1}C{app.I2}}}C{std.core.Array}C{app.I1}C{app.I2}}:X{C{std.core.Double}C{std.core.Null}C{std.core.String}}";
 ```
 
 ---
@@ -463,8 +463,8 @@ function f(a: int): void // Mangling "i:"
 function f(a: int, b: int): void // Mangling "ii:"
 function f(a: number, b: double): int // Mangling "dd:i"
 
-function f(a: Array<string>): void // Mangling "C{escompat.Array}:"
-function f(a: string[]): void // Mangling "C{escompat.Array}:"
+function f(a: Array<string>): void // Mangling "C{std.core.Array}:"
+function f(a: string[]): void // Mangling "C{std.core.Array}:"
 
 // Mangling "zbC{std.core.String}C{hello_ani.A}C{std.core.Object}C{hello_ani.B}:"
 function f<T extends B>(a: boolean, b: byte, c: string, d: A, f: A | B, e: T): void
@@ -577,7 +577,7 @@ static void handleData_union(ani_env *env, ani_object obj, ani_object union_obj)
     env->FindClass("std.core.String", &stringClass);
 
     ani_class arrayBufferClass {};
-    env->FindClass("escompat.ArrayBuffer", &arrayBufferClass);
+    env->FindClass("std.core.ArrayBuffer", &arrayBufferClass);
 
     ani_class fixedArrayIntClass {};
     env->FindClass("A{i}", &fixedArrayIntClass);
@@ -707,7 +707,7 @@ void HandleDataImpl(ani_env *env, ani_object param)
 | ArkTS 类型 | 示例 | Mangling | 绑定/ANI 类型 | 补充说明 |
 | -------------------- | ----------------- | --------------------------------------- | -------------------- | ----------------------------------- |
 | `(a: T, b: R): void` | `f(1, "str")`     | `C{std.core.Object}C{std.core.Object}:` | `ani_object`         |                                     |
-| `Array<T>`           | `Array<int>`      | `C{escompat.Array}`                     | `ani_object`         |                                     |
+| `Array<T>`           | `Array<int>`      | `C{std.core.Array}`                     | `ani_object`         |                                     |
 | `FixedArray<T>`      | `FixedArray<int>` | `A{i}`                                  | `ani_fixedarray_int` | Reified (非擦除) 类型参数             |
 
 ### 4.3 联合类型
@@ -793,9 +793,9 @@ function foo(a: int, ...b: int[]): void
 
 ### 5.1 查询标准类的方法
 
-在 [stdlib](https://gitee.com/openharmony/arkcompiler_runtime_core/blob/OpenHarmony_feature_20250702/static_core/plugins/ets/stdlib/) 路径下查找所需的标准库函数。如果不确定要查询哪个类，可以反汇编 `etsstdlib.abc` 文件来确认类名和编译后的签名。
+在 [stdlib](https://gitcode.com/openharmony/arkcompiler_runtime_core/blob/OpenHarmony_feature_20250702/static_core/plugins/ets/stdlib/) 路径下查找所需的标准库函数。如果不确定要查询哪个类，可以反汇编 `etsstdlib.abc` 文件来确认类名和编译后的签名。
 
-在 [ArrayBuffer.ets](https://gitee.com/openharmony/arkcompiler_runtime_core/tree/OpenHarmony_feature_20250702/static_core/plugins/ets/stdlib/escompat/ArrayBuffer.ets) 中找到 “class ArrayBuffer” 与对应的`constructor`。
+在 [ArrayBuffer.ets](https://gitcode.com/openharmony/arkcompiler_runtime_core/tree/OpenHarmony_feature_20250702/static_core/plugins/ets/stdlib/std/core/ArrayBuffer.ets) 中找到 “class ArrayBuffer” 与对应的`constructor`。
 
 代码片段：
 ```ts
@@ -1331,7 +1331,7 @@ ani_status PromiseResolver_Reject(ani_env *env, ani_resolver resolver, ani_error
 
 ## 11 可变长度数组：Array<T> 和 T[]
 
-`Array<T>`和`T[]`在ArkTS中是相同类型，它们在编译后都对应为标准库中的`escompat.Array`类。
+`Array<T>`和`T[]`在ArkTS中是相同类型，它们在编译后都对应为标准库中的`std.core.Array`类。
 这些数组对象可以像普通对象一样通过类实例化、方法调用进行管理。
 同时也可以使用ANI层提供的专用函数进行操作：
 - `Array_New`：创建一个新数组

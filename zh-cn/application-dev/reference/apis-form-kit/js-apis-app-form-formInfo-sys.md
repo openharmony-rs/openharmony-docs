@@ -1,11 +1,20 @@
 # @ohos.app.form.formInfo (formInfo)(系统接口)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @chenmingze-->
+<!--Adviser: @HelloShuo-->
 
 formInfo模块提供了卡片信息和状态等相关类型和枚举。
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 当前页面仅包含本模块的系统接口，其他公共接口参见[@ohos.app.form.formInfo (formInfo)](./js-apis-app-form-formInfo.md)。
+> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 当前页面仅包含本模块的系统接口，其他公共接口参见[@ohos.app.form.formInfo (formInfo)](./js-apis-app-form-formInfo.md)。
 
 ## 导入模块
 
@@ -19,11 +28,13 @@ import { formInfo } from '@kit.FormKit';
 
 **系统能力：** SystemCapability.Ability.Form
 
-| 名称        | 类型                 | 可读    | 可写    | 说明                                                         |
+| 名称        | 类型                 | 只读    | 可选    | 说明                                                         |	
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
-| previewImages<sup>18+</sup> | Array&lt;number&gt; | 是 | 否 | 卡片预览图资源ID。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
-| enableBlurBackground<sup>18+</sup>  | boolean               | 是    | 否     | 卡片是否使用模糊背板。 |
-| renderingMode<sup>18+</sup>|[RenderingMode](./js-apis-app-form-formInfo-sys.md#renderingmode18)|是|否|卡片渲染模式。|
+| previewImages<sup>18+</sup> | ArkTS-Dyn: Array\<number\> <br> ArkTS-Sta: Array\<int\> | 是 | 是 | 卡片预览图资源ID。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTs-Dyn起始版本：** 18 <br/>**ArkTs-Sta起始版本：** 22|
+| enableBlurBackground<sup>18+</sup>  | boolean               | 是    | 是     | 卡片是否使用模糊背板。 <br/>**ArkTs-Dyn起始版本：** 18 <br/>**ArkTs-Sta起始版本：** 22|
+| renderingMode<sup>18+</sup>|[RenderingMode](./js-apis-app-form-formInfo-sys.md#renderingmode18)|是|是|卡片渲染模式。<br/>**ArkTs-Dyn起始版本：** 18 <br/>**ArkTs-Sta起始版本：** 22|
+| resizable<sup>20+</sup> | boolean  | 是    | 是     | 表示是否可以拖拽卡片调整大小。调整值必须在该卡片或者同groupId卡片的supportDimensions配置列表中。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTs-Dyn起始版本：** 20 <br/>**ArkTs-Sta起始版本：** 22|
+| groupId<sup>20+</sup> | string     | 是    | 是     | 表示一组卡片的共同id。多张卡片的groupId相同且resizable为true时，多张卡片的supportDimensions配置共享。例如，卡片A和B的groupId相同且resizable均为true，则卡片A可以调整为卡片A和B的supportDimensions配置中的任意尺寸。<br>推荐多张卡片功能相同且需要调整卡片尺寸时配置。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTs-Dyn起始版本：** 20 <br/>**ArkTs-Sta起始版本：** 22|
 
 
 ##  FormParam
@@ -32,11 +43,15 @@ import { formInfo } from '@kit.FormKit';
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTs-Dyn起始版本：** 9
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称        | 值   | 说明         |
 | ----------- | ---- | ------------ |
 | DEVICE_ID_KEY    | 'ohos.extra.param.key.device_id'   | 设备标识。 <br>**系统接口：** 此接口为系统接口。  |
 
-## FormUsageState
+## FormUsageState<sup>11+</sup>
 
 卡片当前使用状态枚举。
 
@@ -44,10 +59,14 @@ import { formInfo } from '@kit.FormKit';
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTs-Dyn起始版本：** 11
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称        |  值   | 说明         |
 | ----------- | ---- | ------------ |
-| USED<sup>11+</sup> | 0   | 表示卡片在使用中。 |
-| UNUSED<sup>11+</sup> | 1   | 表示卡片未被使用。 |
+| USED | 0   | 表示卡片在使用中。 |
+| UNUSED | 1   | 表示卡片未被使用。 |
 
 ## RunningFormInfo<sup>10+</sup>
 
@@ -57,19 +76,13 @@ import { formInfo } from '@kit.FormKit';
 
 **系统接口：** 此接口为系统接口。
 
-| 名称        | 类型                 | 可读    | 可写    | 说明                                                         |
+| 名称        | 类型                 | 只读    | 可选    | 说明                                                         |
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
-| formId  | string               | 是    | 否     | 卡片标识。                   |
-| bundleName<sup>10+</sup>  | string               | 是    | 否     | 提供方卡片所属包的Bundle名称。                   |
-| hostBundleName  | string               | 是    | 否     | 使用方卡片所属包的Bundle名称。                   |
-| visibilityType  | [VisibilityType](js-apis-app-form-formInfo.md#visibilitytype)               | 是    | 否     | 卡片当前可见类型枚举。                   |
-| moduleName<sup>10+</sup>  | string               | 是    | 否     | 卡片所属模块的模块名称。                      |
-| abilityName<sup>10+</sup> | string               | 是    | 否     | 卡片所属的Ability名称。                       |
-| formName<sup>10+</sup>        | string               | 是    | 否     | 卡片名称。                                 |
-| dimension | number               | 是    | 否     | 卡片规格。   |
-| formUsageState<sup>11+</sup> | [FormUsageState](#formusagestate)         | 是    | 否     | 卡片当前使用状态枚举。   |
-| formDescription<sup>11+</sup> | string         | 是    | 否     | 提供方卡片配置文件中的描述信息。   |
-| formLocation<sup>12+</sup> | [FormLocation](#formlocation12)| 是    | 否     | 卡片位置信息。   |
+| hostBundleName  | string               | 是    | 否     | 使用方卡片所属包的Bundle名称。 <br/>**ArkTs-Dyn起始版本：** 10 <br/>**ArkTs-Sta起始版本：** 22              |
+| visibilityType  | [VisibilityType](js-apis-app-form-formInfo.md#visibilitytype)               | 是    | 否     | 卡片当前可见类型枚举。 <br/>**ArkTs-Dyn起始版本：** 10 <br/>**ArkTs-Sta起始版本：** 22                  |
+| formUsageState<sup>11+</sup> | [FormUsageState](#formusagestate)         | 是    | 否     | 卡片当前使用状态枚举。 <br/>**ArkTs-Dyn起始版本：** 11 <br/>**ArkTs-Sta起始版本：** 22  |
+| formDescription<sup>11+</sup> | string         | 是    | 否     | 提供方卡片配置文件中的描述信息。 <br/>**ArkTs-Dyn起始版本：** 11 <br/>**ArkTs-Sta起始版本：** 22  |
+| extraData<sup>12+</sup> | string         | 是    | 是     | 提供方卡片的扩展数据。 <br/>**ArkTs-Dyn起始版本：** 12 <br/>**ArkTs-Sta起始版本：** 22  |
 
 ## formProviderFilter<sup>10+</sup>
 
@@ -81,13 +94,13 @@ import { formInfo } from '@kit.FormKit';
 
 **系统接口：** 此接口为系统接口。
 
-| 名称        | 类型                 | 可读    | 可写    | 说明                                                         |
+| 名称        | 类型                 | 只读    | 可选    | 说明                                                         |
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
-| bundleName  | string               | 是    | 是     | 提供方卡片所属包的Bundle名称。  |
-| formName    | string               | 是    | 是     | 卡片名称。                     |
-| moduleName  | string               | 是    | 是     | 卡片所属模块的模块名称。        |
-| abilityName | string               | 是    | 是     | 卡片所属的Ability名称。        |
-| isUnusedIncluded<sup>11+</sup> | boolean               | 是    | 是     | 是否包含未使用的卡片。<br/>-&nbsp;true：包含未使用的卡片。<br/>-&nbsp;false：不包含未使用的卡片。<br/>默认值：false。        |
+| bundleName  | string               | 否    | 否     | 提供方卡片所属包的Bundle名称。 <br/>**ArkTs-Dyn起始版本：** 10 <br/>**ArkTs-Sta起始版本：** 22 |
+| formName    | string               | 否    | 是     | 卡片名称。 <br/>**ArkTs-Dyn起始版本：** 10 <br/>**ArkTs-Sta起始版本：** 22                    |
+| moduleName  | string               | 否    | 是     | 卡片所属模块的模块名称。 <br/>**ArkTs-Dyn起始版本：** 10 <br/>**ArkTs-Sta起始版本：** 22       |
+| abilityName | string               | 否    | 是     | 卡片所属的Ability名称。 <br/>**ArkTs-Dyn起始版本：** 10 <br/>**ArkTs-Sta起始版本：** 22       |
+| isUnusedIncluded<sup>11+</sup> | boolean               | 否    | 是     | 是否包含未使用的卡片。<br/>-&nbsp;true：包含未使用的卡片。<br/>-&nbsp;false：不包含未使用的卡片。<br/>默认值：false。  <br/>**ArkTs-Dyn起始版本：** 11 <br/>**ArkTs-Sta起始版本：** 22      |
 
 
 ## FormInfoFilter
@@ -98,17 +111,25 @@ import { formInfo } from '@kit.FormKit';
 
 **系统能力：** SystemCapability.Ability.Form
 
-| 名称        | 类型   | 必填         |说明         |
-| ----------- | ---- | ------------ |------------ |
-| bundleName    | string    |否    | 选填，仅保留含bundleName与提供值相符的卡片信息，未填写时则不通过bundleName进行过滤。<br>**系统接口：** 此接口为系统接口。  |
-| supportedDimensions | Array\<number\> |否    | 选填，仅保留含supportedDimensions提供值相符的卡片信息，未填写时则不通过supportedDimensions进行过滤。<br>**系统接口：** 此接口为系统接口。  |
-| supportedShapes<sup>12+</sup>  | Array\<number\> |否    | 选填，仅保留含supportedShapes提供值相符的卡片信息，未填写时则不通过supportedShapes进行过滤。<br>**系统接口：** 此接口为系统接口。   |
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 22
+
+| 名称        | 类型                 | 只读    | 可选    | 说明                                                         |
+| ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
+| bundleName<sup>12+</sup>    | string    |否   | 是 | 选填，仅保留含bundleName与提供值相符的卡片信息，未填写时则不通过bundleName进行过滤。<br>**系统接口：** 此接口为系统接口。  |
+| supportedDimensions<sup>12+</sup> | ArkTS-Dyn: Array\<number\> <br> ArkTS-Sta: Array\<int\> |否    | 是 | 选填，仅保留含supportedDimensions提供值相符的卡片信息，未填写时则不通过supportedDimensions进行过滤。<br>**系统接口：** 此接口为系统接口。  |
+| supportedShapes<sup>12+</sup>  | ArkTS-Dyn: Array\<number\> <br> ArkTS-Sta: Array\<int\> |否   | 是  | 选填，仅保留含supportedShapes提供值相符的卡片信息，未填写时则不通过supportedShapes进行过滤。<br>**系统接口：** 此接口为系统接口。   |
 
 ## FormLocation<sup>12+</sup>
 
 卡片当前位置枚举。
 
 **系统能力**：SystemCapability.Ability.Form
+
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 22
 
 | 名称                         | 值   | 说明                             |
 | ---------------------------- | ---- | -------------------------------- |
@@ -128,16 +149,24 @@ import { formInfo } from '@kit.FormKit';
 
 **系统能力：** SystemCapability.Ability.Form
 
-| 名称    | 类型                                          | 可读 | 可写 | 说明                       |
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 22
+
+| 名称    | 类型                                          | 只读 | 可选 | 说明                       |
 | ------- | --------------------------------------------- | ---- | ---- | -------------------------- |
-| code    | [PublishFormErrorCode](#publishformerrorcode12) | 是   | 否   | 发布卡片加桌错误码。       |
-| message | string                                        | 是   | 否   | 设置卡片加桌结果返回信息。 |
+| code    | [PublishFormErrorCode](#publishformerrorcode12) | 否   | 否   | 发布卡片加桌错误码。       |
+| message | string                                        | 否   | 否   | 设置卡片加桌结果返回信息。 |
 
 ## PublishFormErrorCode<sup>12+</sup>
 
 发布卡片加桌错误码枚举。
 
 **系统能力**：SystemCapability.Ability.Form
+
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 22
 
 | 名称           | 值   | 说明                             |
 | -------------- | ---- | -------------------------------- |
@@ -154,6 +183,10 @@ import { formInfo } from '@kit.FormKit';
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTs-Dyn起始版本：** 18
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称        | 值   | 说明         |
 | ----------- | ---- | ------------ |
 | AUTO_COLOR    | 0    | 表示自动模式。   |
@@ -168,11 +201,15 @@ import { formInfo } from '@kit.FormKit';
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTs-Dyn起始版本：** 20
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |-----|-----|----|----|-----|
-| formId       | string  | 是  | 否  | 卡片id。|
-| isOverflow   | boolean | 是  | 否  | 动效请求类型标记，true 表示互动卡片请求触发动效，false 表示互动卡片请求取消动效。|
-| overflowInfo | [formInfo.OverflowInfo](js-apis-app-form-formInfo.md#overflowinfo20) | 是 | 是 | 动效请求参数信息，包括动效时长（单位：ms）和动效区域（动效区域范围以卡片左上角为原点，单位为vp），默认值为空。 |
+| formId       | string  | 否  | 否  | 卡片id。|
+| isOverflow   | boolean | 否  | 否  | 动效请求类型标记，true 表示互动卡片请求触发动效，false 表示互动卡片请求取消动效。|
+| overflowInfo | [formInfo.OverflowInfo](js-apis-app-form-formInfo.md#overflowinfo20) | 否 | 是 | 动效请求参数信息，包括动效时长（单位：ms）和动效区域（动效区域范围以卡片左上角为原点，单位为vp），默认值为空。 |
 
 ## ChangeSceneAnimationStateRequest<sup>20+</sup>
 
@@ -182,10 +219,14 @@ import { formInfo } from '@kit.FormKit';
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTs-Dyn起始版本：** 20
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |-----|-----|-----|-----|----------------------------------------|
-| formId | string | 是 | 否 | 卡片id。                                  |
-| state  | number | 是 | 否 | 状态切换请求类型标记：1 表示请求切换为激活态，0 表示请求切换为非激活态。 |
+| formId | string | 否 | 否 | 卡片id。                                  |
+| state  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 状态切换请求类型标记：1 表示请求切换为激活态，0 表示请求切换为非激活态。 |
 
 ## FunInteractionParams<sup>20+</sup>
 
@@ -195,12 +236,16 @@ import { formInfo } from '@kit.FormKit';
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTs-Dyn起始版本：** 20
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                                                                                   |
 |-----|-----|----|-----|--------------------------------------------------------------------------------------------------------------------------------------|
-| abilityName | string | 是  | 是   | 趣味交互场景 extensionAbility 名称，默认为空。 |
-| targetBundleName  | string | 是  | 否   | 趣味交互场景[主包包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。        |
-| subBundleName  | string | 是  | 否   | 趣味交互场景趣味交互场景[独立分包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。 |
-| keepStateDuration  | number | 是  | 是   | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为[0,10000]的整数，超过取值范围则取默认值10000。 |
+| abilityName | string | 否  | 是   | 趣味交互场景 extensionAbility 名称，默认为空。 |
+| targetBundleName  | string | 否  | 否   | 趣味交互场景[主包包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。        |
+| subBundleName  | string | 否  | 否   | 趣味交互场景趣味交互场景[独立分包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。 |
+| keepStateDuration  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是   | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为[0,10000]的整数，超过取值范围则取默认值10000。 |
 
 ## SceneAnimationParams<sup>20+</sup>
 
@@ -210,22 +255,28 @@ import { formInfo } from '@kit.FormKit';
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTs-Dyn起始版本：** 20
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                                                                                              |
 |-----|-----|------|----|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| abilityName | string | 是 | 否  | 场景动效 extensionAbility 名称，如卡片提供方LiveFormExtensionAbility名称。                                     |
-| disabledDesktopBehaviors | string | 是 | 是  | 支持的取值包括SWIPE_DESKTOP（滑动桌面）、PULL_DOWN_SEARCH（下拉全搜）、LONG_CLICK（长按）、DRAG（拖动）。可以取值一个或多个，不同行为通过 \| 拼接，例如SWIPE_DESKTOP\|PULL_DOWN_SEARCH。缺省表示不禁用任何行为。 |
+| abilityName | string | 否 | 否  | 场景动效 extensionAbility 名称，如卡片提供方LiveFormExtensionAbility名称。                                     |
+| disabledDesktopBehaviors | string | 否 | 是  | 支持的取值包括SWIPE_DESKTOP（滑动桌面）、PULL_DOWN_SEARCH（下拉全搜）、LONG_CLICK（长按）、DRAG（拖动）。可以取值一个或多个，不同行为通过 \| 拼接，例如SWIPE_DESKTOP\|PULL_DOWN_SEARCH。缺省表示不禁用任何行为。 |
 
 ## GetFormRectInfoCallback<sup>20+</sup>
 
-### (formId: string)
-
-(formId: string): Promise&lt;formInfo.Rect&gt;
+type GetFormRectInfoCallback = (formId: string) => Promise&lt;formInfo.Rect&gt;
 
 卡片位置、尺寸查询回调。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTs-Dyn起始版本：** 20
+
+**ArkTs-Sta起始版本：** 22
 
 **参数：**
 
@@ -249,6 +300,8 @@ import { formInfo } from '@kit.FormKit';
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formInfo } from '@kit.FormKit';
 
@@ -256,9 +309,26 @@ import { formInfo } from '@kit.FormKit';
 let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
   (formId: string): Promise<formInfo.Rect> => {
     return new Promise<formInfo.Rect>((resolve: Function) => {
-      console.log(`formId is ${formId}`);
+      console.info(`formId is ${formId}`);
       let formRect: formInfo.Rect = {left: 0, top: 0, width: 0, height: 0};
       resolve(formRect);
     })
   };
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { formInfo } from '@kit.FormKit';
+
+// 卡片使用方需要对查询请求进行处理，计算并返回卡片尺寸、位置信息
+let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
+  (formId: string): Promise<formInfo.Rect> => {
+    return new Promise<formInfo.Rect>((
+      resolve: (rect: formInfo.Rect) => void, reject: (rect: formInfo.Rect) => void): void => {
+      let formRect: formInfo.Rect = {left: 1.0, top: 1.0, width: 1.0, height: 1.0
+      }
+      resolve(formRect);
+    });
+  }
 ```

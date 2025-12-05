@@ -80,11 +80,11 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 | followTransformOfTarget<sup>13+</sup>          | boolean | 否   | 气泡绑定的宿主组件或其宿主组件的父容器添加了旋转、缩放等变换时，值为true表示气泡可以拿到变换后宿主的位置，显示到相应位置，值为false表示气泡拿不到宿主变换后的位置，可能显示异常。<br/>默认值：false <br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | keyboardAvoidMode<sup>15+</sup>          | [KeyboardAvoidMode](ts-types.md#keyboardavoidmode12枚举说明) | 否   | 气泡是否避让软键盘，默认不避让。设置为避让后，气泡显示空间不足时，由原先居中覆盖父组件的方式改为平移覆盖父组件，且气泡箭头不指向宿主时，不再显示箭头。<br/>默认值：KeyboardAvoidMode.NONE <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 |  enableHoverMode<sup>18+</sup>| boolean  | 否   | Popup组件是否响应悬停态变化。如果Popup的点击位置在悬停态折痕区域，Popup组件不会响应悬停态。<br/>**说明：**<br/>enableHoverMode主动设置为true时，Popup组件响应悬停态变化，其余情况（设置为false、未设置或者值为非法值）均不响应。<br/>从API version 20开始，在2in1设备上，在窗口的瀑布模式下，enableHoverMode主动设置为false时，Popup组件不会响应悬停态变化，其余情况（设置为true，未设置或者值为非法值）均响应。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| outlineWidth<sup>20+</sup>| [Dimension](ts-types.md#dimension10)  | 否   | 设置Popup组件外描边的宽度。<br />默认值：1 <br />单位：vp<br />**说明：** <br />1.不支持设置百分比。<br />2.在没有设置Popup组件外描边的情况下，该接口需要和outlineLinearGradient配合使用。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| borderWidth<sup>20+</sup>| [Dimension](ts-types.md#dimension10)  | 否   | 设置Popup组件内描边的宽度。<br />默认值：1 <br />单位：vp<br />**说明：** <br />1.不支持设置百分比。<br />2.在没有设置Popup组件内描边的情况下，该接口需要和borderLinearGradient配合使用。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| outlineLinearGradient<sup>20+</sup>| [PopupBorderLinearGradient](#popupborderlineargradient20类型说明)  | 否   | 设置Popup组件外描边线性渐变的颜色。<br />**说明：** <br />1.outlineLinearGradient不设置或者设置为null、undefined时，外描边没有线性渐变效果。<br />2.outlineLinearGradient设置时，direction默认值是：GradientDirection.Bottom。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| borderLinearGradient<sup>20+</sup>| [PopupBorderLinearGradient](#popupborderlineargradient20类型说明)  | 否   | 设置Popup组件内描边线性渐变的颜色。<br />**说明：** <br />1.borderLinearGradient不设置或者设置为null、undefined时，内描边没有线性渐变效果。<br />2.borderLinearGradient设置时，direction默认值是：GradientDirection.Bottom。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| avoidTarget<sup>20+</sup>          | [AvoidanceMode](ts-basic-components-select.md#avoidancemode19枚举说明) | 否   | 设置Popup避让时是否覆盖指向组件。<br/>默认值：AvoidanceMode.COVER_TARGET <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| outlineWidth<sup>20+</sup>| [Dimension](ts-types.md#dimension10)  | 否   | 设置Popup组件外描边的宽度。<br />默认值：1 <br />单位：vp<br />**说明：** <br />1.不支持设置百分比。<br />2.在没有设置Popup组件外描边的情况下，该接口需要和outlineLinearGradient配合使用。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23|
+| borderWidth<sup>20+</sup>| [Dimension](ts-types.md#dimension10)  | 否   | 设置Popup组件内描边的宽度。<br />默认值：1 <br />单位：vp<br />**说明：** <br />1.不支持设置百分比。<br />2.在没有设置Popup组件内描边的情况下，该接口需要和borderLinearGradient配合使用。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23|
+| outlineLinearGradient<sup>20+</sup>| [PopupBorderLinearGradient](#popupborderlineargradient20类型说明)  | 否   | 设置Popup组件外描边线性渐变的颜色。<br />**说明：** <br />1.outlineLinearGradient不设置或者设置为null、undefined时，外描边没有线性渐变效果。<br />2.outlineLinearGradient设置时，direction默认值是：GradientDirection.Bottom。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23|
+| borderLinearGradient<sup>20+</sup>| [PopupBorderLinearGradient](#popupborderlineargradient20类型说明)  | 否   | 设置Popup组件内描边线性渐变的颜色。<br />**说明：** <br />1.borderLinearGradient不设置或者设置为null、undefined时，内描边没有线性渐变效果。<br />2.borderLinearGradient设置时，direction默认值是：GradientDirection.Bottom。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23|
+| avoidTarget<sup>20+</sup>          | [AvoidanceMode](ts-basic-components-select.md#avoidancemode19枚举说明) | 否   | 设置Popup避让时是否覆盖指向组件。<br/>默认值：AvoidanceMode.COVER_TARGET <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23|
 
 ## PopupMessageOptions<sup>10+</sup>类型说明
 
@@ -249,10 +249,14 @@ type PopupStateChangeCallback = (event: PopupStateChangeParam) => void;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型                                       | 必填 | 说明                                                         |
 | --------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| direction | [GradientDirection](ts-appendix-enums.md#gradientdirection) | 否   | 线性渐变的方向。<br />默认值：GradientDirection.Bottom <br />**说明：** <br />当线性渐变的方向设置为GradientDirection.None时，显示默认值。                          |
-| colors | Array<[[ResourceColor](ts-types.md#resourcecolor), number]>  | 是   | 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。<br />**说明：** <br />颜色设置方式可参考：[ResourceColor](ts-types.md#resourcecolor)，非[ResourceColor](ts-types.md#resourcecolor)范围内的颜色值即为非法颜色。<br />数组内颜色设置为undefined或者null时，默认为黑色。<br />colors参数的约束：<br />[ResourceColor](ts-types.md#resourcecolor)表示填充的颜色，number表示指定颜色所处的位置，取值范围为[0,1.0]，0表示需要设置渐变色的容器的起始位置，1.0表示容器的结束位置。为实现多个颜色渐变效果，建议多个数组中number参数递增设置，如后一个数组number参数比前一个数组number小时，按照等于前一个数组number的值处理。 |
+| direction | [GradientDirection](ts-appendix-enums.md#gradientdirection) | 否   | 线性渐变的方向。<br />默认值：GradientDirection.Bottom <br />**说明：** <br />当线性渐变的方向设置为GradientDirection.None时，显示默认值。 |
+| colors | ArkTS-Dyn: Array<[[ResourceColor](ts-types.md#resourcecolor), number]> <br/>ArkTS-Sta: Array<[[ResourceColor](ts-types.md#resourcecolor), double]> | 是   | 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。<br />**说明：** <br />颜色设置方式可参考：[ResourceColor](ts-types.md#resourcecolor)，非[ResourceColor](ts-types.md#resourcecolor)范围内的颜色值即为非法颜色。<br />数组内颜色设置为undefined或者null时，默认为黑色。<br />colors参数的约束：<br />[ResourceColor](ts-types.md#resourcecolor)表示填充的颜色，number表示指定颜色所处的位置，取值范围为[0,1.0]，0表示需要设置渐变色的容器的起始位置，1.0表示容器的结束位置。为实现多个颜色渐变效果，建议多个数组中number参数递增设置，如后一个数组number参数比前一个数组number小时，按照等于前一个数组number的值处理。|
 
 ## 示例
 
@@ -989,6 +993,8 @@ struct PopupExample {
 
 该示例通过配置outlineWidth、borderWidth、outlineLinearGradient、borderLinearGradient，为气泡设置内外描边线性渐变的颜色和方向。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -1018,6 +1024,52 @@ struct PopupExample {
         })
         .position({ x: 100, y: 150 }) 
     }.width('100%').padding({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, ClickEvent, BusinessError, Column, Row, Button, Text, Color, PopupOptions, PopupStateChangeParam, Placement, PopupBorderLinearGradient, GradientDirection } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import hilog from '@ohos.hilog';
+
+@Entry
+@Component
+struct MyStateSample {
+  @State isShow: boolean = false
+
+  build() {
+    Column() {
+      Column() {
+        Button(`PopupOptions`)
+          .onClick(() => {
+            this.isShow = !this.isShow
+          })
+          .bindPopup(this.isShow, {
+            message: 'popupOptions',
+            placement: Placement.Bottom,
+            onStateChange: (event: PopupStateChangeParam) => {
+              if (!event.isVisible) {
+                this.isShow = false;
+              }
+            },
+            outlineWidth: 1,
+            outlineLinearGradient: {
+              direction: GradientDirection.Top,
+              colors: [[Color.Yellow, 0.0], [Color.Green, 1.0]]
+            },
+            borderWidth: 1,
+            borderLinearGradient: {
+              direction: GradientDirection.Bottom,
+              colors: [[Color.Red, 0.0], [Color.Blue, 1.0]]
+            }
+          } as PopupOptions)
+      }
+      .width("100%")
+    }
   }
 }
 ```

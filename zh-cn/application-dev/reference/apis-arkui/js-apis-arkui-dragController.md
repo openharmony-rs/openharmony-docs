@@ -711,6 +711,8 @@ on(type: 'statusChange', callback: Callback&lt;[DragAndDropInfo](#draganddropinf
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStatusChange](#onstatuschange22)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -795,6 +797,8 @@ onStatusChange(callback: Callback&lt;DragAndDropInfo&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('statusChange')](#onstatuschange11)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Sta起始版本：** 22
@@ -813,6 +817,8 @@ off(type: 'statusChange', callback?: Callback&lt;[DragAndDropInfo](#draganddropi
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStatusChange](#offstatuschange22)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -898,6 +904,8 @@ offStatusChange(callback?: Callback&lt;DragAndDropInfo&gt;): void
 取消注册监听拖拽状态改变事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('statusChange')](#offstatuschange11)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

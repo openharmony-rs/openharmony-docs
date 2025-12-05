@@ -471,3 +471,53 @@ AlphabetIndexer({ arrayValue: ['A', 'B'], selected: 0 })
         console.info(index + 'Selected!');
     })
 ```
+
+## ChipGroup
+
+### ChipGroupItemOptions.suffixIcon
+
+ArkTS-Dyn接口声明：[ChipGroupItemOptions.suffixIcon](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md#chipgroupitemoptions)
+
+替代的ArkTS-Sta接口声明：[ChipGroupItemOptions.suffixImageIcon](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md#chipgroupitemoptions)
+
+ArkTS-Dyn示例：
+
+```ts
+import { ChipGroup } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyComponent {
+  build() {
+    Column() {
+      ChipGroup({
+        items: [{
+          label: { text: '选项1' },
+          suffixIcon: { src: $r('sys.media.ohos_ic_public_cut') }
+        }]
+      })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, ChipGroup, $r, SuffixImageIconOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyComponent {
+  build() {
+    Column() {
+      ChipGroup({
+        items: [{
+          label: { text: '选项1' },
+          suffixImageIcon: { src: $r('sys.media.ohos_ic_public_cut') } as SuffixImageIconOptions
+        }]
+      })
+    }
+  }
+}
+```

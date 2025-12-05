@@ -674,13 +674,11 @@ predicate函数返回值说明：
           return arr.some((value: number, index: int, arr: Float32Array)=>{return value > this.base})
       }
   }
-  function main() {
-    let arr: Float32Array = new Float32Array([1, 2, 3]);
-    let a = new C(2)
-    let b = new C(3)
-    a.call(arr)
-    b.call(arr)
-  }
+  let arr: Float32Array = new Float32Array([1, 2, 3]);
+  let a = new C(2)
+  let b = new C(3)
+  a.call(arr)
+  b.call(arr)
   ```
 
 **适配建议：** 
@@ -772,13 +770,11 @@ mapfn函数返回值说明：
           return Array.from(arr, (value: number, index: number)=>{return value + this.base})
       }
   }
-  function main() {
-    let arr: Float32Array = new Float32Array([1, 2, 3]);
-    let a = new C(2)
-    let b = new C(3)
-    a.call(arr)
-    b.call(arr)
-  }
+  let arr: Float32Array = new Float32Array([1, 2, 3]);
+  let a = new C(2)
+  let b = new C(3)
+  a.call(arr)
+  b.call(arr)
   ```
 
 **适配建议：** 
@@ -870,13 +866,11 @@ mapfn函数返回值说明：
         return Array.from(arr, (value: number, index: number)=>{return value + this.base})
     }
   }
-  function main() {
-    let arr: Float32Array = new Float32Array([1, 2, 3]);
-    let a = new C(2)
-    let b = new C(3)
-    a.call(arr)
-    b.call(arr)
-  }
+  let arr: Float32Array = new Float32Array([1, 2, 3]);
+  let a = new C(2)
+  let b = new C(3)
+  a.call(arr)
+  b.call(arr)
   ```
 
 **适配建议：** 

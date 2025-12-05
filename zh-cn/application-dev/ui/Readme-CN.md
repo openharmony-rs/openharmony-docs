@@ -23,14 +23,14 @@
       - 组件扩展<!--arkts-extend-components-->
         - [组件扩展概述](../ui/state-management/arkts-extend-components-overview.md)
         - [\@Builder装饰器：自定义构建函数](../ui/state-management/arkts-builder.md)
-        - [\@LocalBuilder装饰器：维持组件关系（ArkTS-DT）](../ui/state-management/arkts-localBuilder.md)
+        - [\@LocalBuilder装饰器：维持组件关系（ArkTS-Dyn）](../ui/state-management/arkts-localBuilder.md)
         - [\@BuilderParam装饰器：引用\@Builder函数](../ui/state-management/arkts-builderparam.md)
-        - [wrapBuilder：封装全局@Builder（ArkTS1.1）](../ui/state-management/arkts-wrapBuilder.md)
-        - [wrapBuilder：封装全局@Builder（ArkTS1.2）](../ui/state-management/arkts-v1.2-wrapBuilder.md)
-      - [\@Styles装饰器：定义组件重用样式（ArkTS-DT）](../ui/state-management/arkts-style.md)
-      - [applyStyles：定义组件重用样式（ArkTS-ST）](../ui/state-management/arkts-apply-styles.md)
-      - [\@Extend装饰器：定义扩展组件样式（ArkTS-DT）](../ui/state-management/arkts-extend.md)
-      - [Function-with-Receiver：定义扩展组件样式（ArkTS-ST）](../ui/state-management/arkts-function-with-receiver.md)
+        - [wrapBuilder：封装全局@Builder（ArkTS-Dyn）](../ui/state-management/arkts-wrapBuilder.md)
+        - [wrapBuilder：封装全局@Builder（ArkTS-Sta）](../ui/state-management/arkts-static-wrapBuilder.md)
+      - [\@Styles装饰器：定义组件重用样式（ArkTS-Dyn）](../ui/state-management/arkts-style.md)
+      - [applyStyles：定义组件重用样式（ArkTS-Sta）](../ui/state-management/arkts-apply-styles.md)
+      - [\@Extend装饰器：定义扩展组件样式（ArkTS-Dyn）](../ui/state-management/arkts-extend.md)
+      - [Function-with-Receiver：定义扩展组件样式（ArkTS-Sta）](../ui/state-management/arkts-function-with-receiver.md)
       - [stateStyles：多态样式](../ui/state-management/arkts-statestyles.md)
       - [@AnimatableExtend装饰器：定义可动画属性](../ui/state-management/arkts-animatable-extend.md)
       - [@Require装饰器：校验构造传参](../ui/state-management/arkts-require.md)
@@ -118,7 +118,8 @@
         - 辅助接口<!--arkts-new-other-state-mgmt-->
           - [getTarget接口：获取状态管理框架代理前的原始对象](state-management-static/arkts-static-new-getTarget.md)
           - [makeObserved接口：将非观察数据变为可观察数据](state-management-static/arkts-static-new-makeObserved.md)
-          - addMonitor/clearMonitor接口：动态添加/取消监听
+          - [memorizeUpdatedState接口：并行化UI创建场景下的状态变量拷贝接口](state-management-static/arkts-static-memorizeUpdatedState.md)
+          - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management-static/arkts-static-new-addmonitor-clearmonitor.md)
       - 状态管理V1向V2迁移指导
       - 状态管理V1和V2混合使用
       - [状态管理优秀实践](state-management-static/arkts-static-state-management-best-practices.md)
@@ -253,7 +254,7 @@
       - [自定义组件节点 (FrameNode)](arkts-user-defined-arktsNode-frameNode.md)
       - [自定义渲染节点 (RenderNode)](arkts-user-defined-arktsNode-renderNode.md)
       - [自定义声明式节点 (BuilderNode)](arkts-user-defined-arktsNode-builderNode.md)
-      - [自定义声明式节点 (BuilderNode)(ArkTS1.2)](arkts-v1.2-user-defined-arktsNode-builderNode.md)
+      - [自定义声明式节点 (BuilderNode)(ArkTS-Sta)](arkts-v1.2-user-defined-arktsNode-builderNode.md)
     - 自定义绘制<!--arkts-draw-->
       - [使用画布绘制自定义图形 (Canvas)](arkts-drawing-customization-on-canvas.md)
       - [自定义绘制修改器 (DrawModifier)](arkts-user-defined-extension-drawModifier.md)
@@ -279,7 +280,7 @@
       - [同应用进程嵌入式组件 (EmbeddedComponent)](arkts-embedded-components.md)
     <!--Del-->
     - [跨进程应用能力扩展（UIExtension，仅对系统应用开放）](arkts-ui-extension-components.md)
-    - [跨线程嵌入式组件 (IsolatedComponent，仅对系统应用开放)(ArkTS1.1)](arkts-isolated-components.md)
+    - [跨线程嵌入式组件 (IsolatedComponent，仅对系统应用开放)(ArkTS-Dyn)](arkts-isolated-components.md)
     <!--DelEnd-->
   - 从ArkTS-Dyn到ArkTS-Sta的UI适配指导<!--ui-arkts-migration-guide-->
     - [从ArkTS-Dyn到ArkTS-Sta的UI语法规则适配](arkts-dyn-sta-ui-rules.md)
@@ -310,6 +311,7 @@
       - [在ArkTS-Sta中使用ArkTS-Dyn的组件导航（Navigation）](arkts-sta-interop-dyn-navigation.md)
       - [在ArkTS-Sta中使用ArkTS-Dyn的自定义节点对象](arkts-sta-interop-dyn-node.md)
       - [在ArkTS-Sta中使用ArkTS-Dyn的帧动画（Animator）](arkts-sta-interop-dyn-animator.md)
+      - [在ArkTS-Sta中使用ArkTS-Dyn的矩阵变换（matrix4）](arkts-sta-interop-dyn-matrix4.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的自定义组件](arkts-dyn-interop-sta-component.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的自定义构建函数（@Builder）](arkts-dyn-interop-sta-builder.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的wrapBuilder（封装全局@Builder）](arkts-dyn-interop-sta-wrappedbuilder.md)
@@ -317,6 +319,7 @@
       - [在ArkTS-Dyn中使用ArkTS-Sta的组件导航（Navigation）](arkts-dyn-interop-sta-navigation.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的自定义节点对象](arkts-dyn-interop-sta-node.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的帧动画（Animator）](arkts-dyn-interop-sta-animator.md)
+      - [在ArkTS-Dyn中使用ArkTS-Sta的矩阵变换（matrix4）](arkts-dyn-interop-sta-matrix4.md)
     - 状态管理（V1）互操作<!--ui-arkts-sta-interop-dyn-state-management-->
       - [在ArkTS-Sta中使用ArkTS-Dyn管理组件拥有的状态](arkts-sta-interop-dyn-statemanager-v1.md)
       - [在ArkTS-Sta中使用ArkTS-Dyn的@Observed和@ObjectLink（嵌套类对象属性变化）](arkts-sta-interop-dyn-observed.md)

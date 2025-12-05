@@ -46,7 +46,7 @@ export function process_teacher(a: Teacher): Teacher {
 
 对于以上的接口声明，如果不添加 @class 注解，那么在 ets 侧会默认投影成 `interface Teacher`。如果需要将其投影为 `class` 则需使用 @class 注解，使其在 ets 侧直接生成为 `class Teacher`。
 
-使用 @constructor 注解可以给对应的 class 添加构造函数，它仅对 @class interface 有效。
+使用 @constructor 注解可以给对应的 class 添加构造函数，@class struct 和 @class interface 均支持。
 
 注意，使用 @class 时通常需要提供构造函数，除非确认无需在 ets 层使用 new 实例化。
 

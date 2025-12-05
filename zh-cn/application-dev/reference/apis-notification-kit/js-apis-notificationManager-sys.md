@@ -47,16 +47,16 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int, callback: AsyncCal
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 1600001  | Internal error.                                      |
-| 1600002  | Marshalling or unmarshalling error.                  |
-| 1600003  | Failed to connect to the service.                    |
-| 1600004  | Notification disabled.                               |
-| 1600005  | Notification slot disabled.                    |
-| 1600007  | The notification does not exist.                       |
-| 1600008  | The user does not exist.                               |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. | 
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600004  | Notification disabled.  |
+| 1600005  | Notification slot disabled. |
+| 1600007  | The notification does not exist. |
+| 1600008  | The user does not exist. |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space. |
 | 1600014 | No permission. |
@@ -141,7 +141,7 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -162,23 +162,23 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int): Promise\<void\>
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 1600001  | Internal error.                                      |
-| 1600002  | Marshalling or unmarshalling error.                  |
-| 1600003  | Failed to connect to the service.                           |
-| 1600004  | Notification disabled.                         |
-| 1600005  | Notification slot disabled.                    |
-| 1600007  | The notification does not exist.                       |
-| 1600008  | The user does not exist.                               |
-| 1600009  | The notification sending frequency reaches the upper limit.            |
-| 1600012  | No memory space.                                     |
-| 1600014  | No permission.                                   |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. | 
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600004  | Notification disabled. |
+| 1600005  | Notification slot disabled. |
+| 1600007  | The notification does not exist. |
+| 1600008  | The user does not exist. |
+| 1600009  | The notification sending frequency reaches the upper limit. |
+| 1600012  | No memory space. |
+| 1600014  | No permission. |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 2300007  | Network unreachable.                              |
+| 2300007  | Network unreachable. |
 
 **示例：**
 
@@ -248,7 +248,7 @@ addSlot(slot: NotificationSlot, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -263,13 +263,13 @@ addSlot(slot: NotificationSlot, callback: AsyncCallback\<void\>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      | 
-| 1600001  | Internal error.                     |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. | 
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600012  | No memory space.                          |
+| 1600003  | Failed to connect to the service. |
+| 1600012  | No memory space. |
 
 **示例：**
 
@@ -325,7 +325,7 @@ addSlot(slot: NotificationSlot): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -345,13 +345,13 @@ addSlot(slot: NotificationSlot): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      | 
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.  | 
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600012  | No memory space.                          |
+| 1600003  | Failed to connect to the service. |
+| 1600012  | No memory space. |
 
 **示例：**
 
@@ -399,7 +399,7 @@ addSlots(slots: Array\<NotificationSlot\>, callback: AsyncCallback\<void\>): voi
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -414,13 +414,13 @@ addSlots(slots: Array\<NotificationSlot\>, callback: AsyncCallback\<void\>): voi
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      | 
-| 1600001  | Internal error.                     |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface.  |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. | 
+| 1600001  | Internal error.  |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600012  | No memory space.                          |
+| 1600003  | Failed to connect to the service. |
+| 1600012  | No memory space. |
 
 **示例：**
 
@@ -485,13 +485,13 @@ addSlots(slots: Array\<NotificationSlot\>): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
 | 参数名  | 类型                      | 必填 | 说明                     |
 | ----- | ------------------------- | ---- | ------------------------ |
-| slots | Array\<[NotificationSlot](js-apis-inner-notification-notificationSlot-sys.md)\> | 是   | 要创建的通知渠道对象数组。 |
+| slots | Array\<[NotificationSlot](js-apis-inner-notification-notificationSlot-sys.md)\> | 是   | 要创建的通知渠道对象数组。数组中的元素个数为0~5。 |
 
 **返回值：**
 
@@ -505,13 +505,13 @@ addSlots(slots: Array\<NotificationSlot\>): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 1600001  | Internal error.                     |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. | 
+| 1600001  | Internal error.  |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600012  | No memory space.                          |
+| 1600003  | Failed to connect to the service. |
+| 1600012  | No memory space. |
 
 **示例：**
 
@@ -568,7 +568,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean, callback: AsyncCall
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -585,10 +585,10 @@ setNotificationEnable(bundle: BundleOption, enable: boolean, callback: AsyncCall
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. | 
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
@@ -644,7 +644,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -666,10 +666,10 @@ setNotificationEnable(bundle: BundleOption, enable: boolean): Promise\<void\>
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
+| 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
@@ -715,7 +715,7 @@ getAllNotificationEnabledBundles(): Promise<Array<BundleOption\>>
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **返回值：**
 
@@ -729,11 +729,11 @@ getAllNotificationEnabledBundles(): Promise<Array<BundleOption\>>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 1600001  | Internal error.                     |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
+| 1600003  | Failed to connect to the service. |
 
 **示例：**
 
@@ -781,7 +781,7 @@ isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback\<boolean\>):
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -796,12 +796,12 @@ isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback\<boolean\>):
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. | 
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -860,7 +860,7 @@ isNotificationEnabled(bundle: BundleOption): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -880,12 +880,12 @@ isNotificationEnabled(bundle: BundleOption): Promise\<boolean\>
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. | 
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -936,7 +936,7 @@ ArkTS-Sta: isNotificationEnabled(userId: int, callback: AsyncCallback\<boolean\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -951,13 +951,13 @@ ArkTS-Sta: isNotificationEnabled(userId: int, callback: AsyncCallback\<boolean\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600008  | The user does not exist.              |
+| 1600003  | Failed to connect to the service. |
+| 1600008  | The user does not exist. |
 
 **示例：**
 
@@ -1013,7 +1013,7 @@ ArkTS-Sta: isNotificationEnabled(userId: int): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1034,12 +1034,12 @@ ArkTS-Sta: isNotificationEnabled(userId: int): Promise\<boolean\>
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
-| 1600008  | The user does not exist.                  |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600008  | The user does not exist. |
 
 **示例：**
 
@@ -1087,7 +1087,7 @@ displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<voi
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1104,12 +1104,12 @@ displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<voi
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
+| 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. | 
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -1166,7 +1166,7 @@ displayBadge(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1187,13 +1187,13 @@ displayBadge(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. | 
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -1244,7 +1244,7 @@ isBadgeDisplayed(bundle: BundleOption, callback: AsyncCallback\<boolean\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1260,12 +1260,12 @@ isBadgeDisplayed(bundle: BundleOption, callback: AsyncCallback\<boolean\>): void
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
+| 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -1322,7 +1322,7 @@ isBadgeDisplayed(bundle: BundleOption): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1343,12 +1343,12 @@ isBadgeDisplayed(bundle: BundleOption): Promise\<boolean\>
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
+| 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -1403,7 +1403,7 @@ ArkTS-Sta: setSlotFlagsByBundle(bundle: BundleOption, slotFlags: long): Promise\
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1424,13 +1424,13 @@ ArkTS-Sta: setSlotFlagsByBundle(bundle: BundleOption, slotFlags: long): Promise\
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -1489,7 +1489,7 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCal
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1505,13 +1505,13 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCal
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -1576,7 +1576,7 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1589,7 +1589,7 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise<void> | Promise对象，无返回结果。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
@@ -1597,13 +1597,13 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -1666,7 +1666,7 @@ ArkTS-Sta: getSlotFlagsByBundle(bundle: BundleOption): Promise\<long\>
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1686,13 +1686,13 @@ ArkTS-Sta: getSlotFlagsByBundle(bundle: BundleOption): Promise\<long\>
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |  
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -1743,7 +1743,7 @@ getSlotsByBundle(bundle: BundleOption, callback: AsyncCallback\<Array\<Notificat
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1758,13 +1758,13 @@ getSlotsByBundle(bundle: BundleOption, callback: AsyncCallback\<Array\<Notificat
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -1821,7 +1821,7 @@ getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1841,13 +1841,13 @@ getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -1902,7 +1902,7 @@ ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<lon
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -1917,13 +1917,13 @@ ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<lon
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -1986,7 +1986,7 @@ ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption): Promise\<long\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -2006,13 +2006,13 @@ ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption): Promise\<long\>
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -2063,7 +2063,7 @@ getAllActiveNotifications(callback: AsyncCallback\<Array\<NotificationRequest>>)
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -2078,9 +2078,9 @@ getAllActiveNotifications(callback: AsyncCallback\<Array\<NotificationRequest>>)
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
-| 1600001  | Internal error.                     |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
 
@@ -2130,7 +2130,7 @@ getAllActiveNotifications(): Promise\<Array\<NotificationRequest\>\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **返回值：**
 
@@ -2146,7 +2146,7 @@ getAllActiveNotifications(): Promise\<Array\<NotificationRequest\>\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
 
@@ -2190,7 +2190,7 @@ ArkTS-Sta: getActiveNotificationByFilter(filter: NotificationFilter, callback: A
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -2205,8 +2205,8 @@ ArkTS-Sta: getActiveNotificationByFilter(filter: NotificationFilter, callback: A
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- | 
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 1600007  | The notification does not exist.           |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 1600007  | The notification does not exist. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -2287,7 +2287,7 @@ ArkTS-Sta: getActiveNotificationByFilter(filter: NotificationFilter): Promise\<N
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -2307,8 +2307,8 @@ ArkTS-Sta: getActiveNotificationByFilter(filter: NotificationFilter): Promise\<N
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- | 
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 1600007  | The notification does not exist.         |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 1600007  | The notification does not exist. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -2381,7 +2381,7 @@ removeGroupByBundle(bundle: BundleOption, groupName: string, callback: AsyncCall
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -2398,11 +2398,11 @@ removeGroupByBundle(bundle: BundleOption, groupName: string, callback: AsyncCall
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
+| 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -2459,7 +2459,7 @@ removeGroupByBundle(bundle: BundleOption, groupName: string): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -2483,9 +2483,9 @@ removeGroupByBundle(bundle: BundleOption, groupName: string): Promise\<void\>
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -2538,7 +2538,7 @@ setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback\<void\>): vo
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -2554,13 +2554,13 @@ setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback\<void\>): vo
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
+| 202      | Not system application to call the interface. |  
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600012  | No memory space.                          |
+| 1600003  | Failed to connect to the service. |
+| 1600012  | No memory space. |
 
 **示例：**
 
@@ -2622,7 +2622,7 @@ setDoNotDisturbDate(date: DoNotDisturbDate): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -2643,14 +2643,14 @@ setDoNotDisturbDate(date: DoNotDisturbDate): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.|
+| 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600012  | No memory space.                          |
+| 1600003  | Failed to connect to the service. |
+| 1600012  | No memory space. |
 
 **示例：**
 
@@ -2704,7 +2704,7 @@ ArkTS-Sta: setDoNotDisturbDate(date: DoNotDisturbDate, userId: int, callback: As
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 
 **参数：**
@@ -2722,14 +2722,14 @@ ArkTS-Sta: setDoNotDisturbDate(date: DoNotDisturbDate, userId: int, callback: As
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
+| 202      | Not system application to call the interface. |  
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600008  | The user does not exist.              |
-| 1600012  | No memory space.                          |
+| 1600003  | Failed to connect to the service. |
+| 1600008  | The user does not exist. |
+| 1600012  | No memory space. |
 
 **示例：**
 
@@ -2799,7 +2799,7 @@ ArkTS-Sta: setDoNotDisturbDate(date: DoNotDisturbDate, userId: int): Promise\<vo
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -2821,14 +2821,14 @@ ArkTS-Sta: setDoNotDisturbDate(date: DoNotDisturbDate, userId: int): Promise\<vo
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600008  | The user does not exist.              |
-| 1600012  | No memory space.                          |
+| 1600003  | Failed to connect to the service. |
+| 1600008  | The user does not exist. |
+| 1600012  | No memory space. |
 
 **示例：**
 
@@ -2888,7 +2888,7 @@ getDoNotDisturbDate(callback: AsyncCallback\<DoNotDisturbDate\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -2904,7 +2904,7 @@ getDoNotDisturbDate(callback: AsyncCallback\<DoNotDisturbDate\>): void
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 1600001 | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -2959,7 +2959,7 @@ getDoNotDisturbDate(): Promise\<DoNotDisturbDate\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **返回值：**
 
@@ -2976,7 +2976,7 @@ getDoNotDisturbDate(): Promise\<DoNotDisturbDate\>
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
 | 1600012  | No memory space. |
@@ -3023,7 +3023,7 @@ ArkTS-Sta: getDoNotDisturbDate(userId: int, callback: AsyncCallback\<DoNotDistur
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -3039,14 +3039,14 @@ ArkTS-Sta: getDoNotDisturbDate(userId: int, callback: AsyncCallback\<DoNotDistur
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
+| 202      | Not system application to call the interface. |  
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600008  | The user does not exist.              |
-| 1600012  | No memory space.                          |
+| 1600003  | Failed to connect to the service. |
+| 1600008  | The user does not exist. |
+| 1600012  | No memory space. |
 
 **示例：**
 
@@ -3104,7 +3104,7 @@ ArkTS-Sta: getDoNotDisturbDate(userId: int): Promise\<DoNotDisturbDate\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -3124,15 +3124,15 @@ ArkTS-Sta: getDoNotDisturbDate(userId: int): Promise\<DoNotDisturbDate\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600008  | The user does not exist.              |
-| 1600012  | No memory space.                          |
+| 1600003  | Failed to connect to the service. |
+| 1600008  | The user does not exist. |
+| 1600012  | No memory space. |
 
 **示例：**
 
@@ -3180,7 +3180,7 @@ notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -3195,12 +3195,12 @@ notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.
 | 错误码ID | 错误信息                             |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 202      | Not system application to call the interface. |  
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
+| 1600003  | Failed to connect to the service. |
 
 **示例：**
 
@@ -3250,7 +3250,7 @@ isSupportDoNotDisturbMode(): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **返回值：**
 
@@ -3265,11 +3265,11 @@ isSupportDoNotDisturbMode(): Promise\<boolean\>
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
+| 202      | Not system application to call the interface. |  
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
+| 1600003  | Failed to connect to the service. |
 
 **示例：**
 
@@ -3311,7 +3311,7 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -3326,14 +3326,14 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600010  | Distributed operation failed.       |
+| 1600003  | Failed to connect to the service. |
+| 1600010  | Distributed operation failed. |
 
 **示例：**
 
@@ -3383,7 +3383,7 @@ setDistributedEnable(enable: boolean): Promise\<void>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -3404,13 +3404,13 @@ setDistributedEnable(enable: boolean): Promise\<void>
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
+| 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
-| 1600010  | Distributed operation failed.       |
+| 1600010  | Distributed operation failed.  |
 
 **示例：**
 
@@ -3454,7 +3454,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -3471,13 +3471,13 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
-| 1600010  | Distributed operation failed.            |
+| 1600010  | Distributed operation failed. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -3536,7 +3536,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -3557,14 +3557,14 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
-| 1600010  | Distributed operation failed.            |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600010  | Distributed operation failed. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -3617,7 +3617,7 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -3632,14 +3632,14 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied. |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
-| 1600010  | Distributed operation failed.            |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600010  | Distributed operation failed. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -3696,7 +3696,7 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -3717,13 +3717,13 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.  |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
-| 1600010  | Distributed operation failed.            |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600010  | Distributed operation failed. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -3774,7 +3774,7 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -3792,9 +3792,9 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 | 202      | Not system application to call the interface. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
+| 1600003  | Failed to connect to the service. |
 
 **示例：**
 
@@ -3842,7 +3842,7 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **返回值：**
 
@@ -3856,12 +3856,12 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
+| 1600003  | Failed to connect to the service. |
 
 **示例：**
 
@@ -3903,7 +3903,7 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -3920,18 +3920,18 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
-| 1600001  | Internal error.                           |
-| 1600002  | Marshalling or unmarshalling error.       |
-| 1600003  | Failed to connect to the service.                |
-| 1600004  | Notification disabled.              |
-| 1600005  | Notification slot disabled.         |
-| 1600007  | The notification does not exist.      |
-| 1600008  | The user does not exist.                    |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600004  | Notification disabled. |
+| 1600005  | Notification slot disabled. |
+| 1600007  | The notification does not exist. |
+| 1600008  | The user does not exist. |
 | 1600009  | The notification sending frequency reaches the upper limit. |
-| 1600012  | No memory space.                          |
+| 1600012  | No memory space. |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
@@ -4017,7 +4017,7 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -4040,22 +4040,22 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
-| 1600001  | Internal error.                           |
-| 1600002  | Marshalling or unmarshalling error.       |
-| 1600003  | Failed to connect to the service.                |
-| 1600004  | Notification disabled.                    |
-| 1600005  | Notification slot disabled.         |
-| 1600007  | The notification does not exist.      |
-| 1600008  | The user does not exist.                    |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600004  | Notification disabled. |
+| 1600005  | Notification slot disabled. |
+| 1600007  | The notification does not exist. |
+| 1600008  | The user does not exist. |
 | 1600009  | The notification sending frequency reaches the upper limit. |
-| 1600012  | No memory space.                          |
+| 1600012  | No memory space. |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 2300007  | Network unreachable.                              |
+| 2300007  | Network unreachable. |
 
 **示例：**
 
@@ -4127,7 +4127,7 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -4149,22 +4149,22 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
-| 1600001  | Internal error.                           |
-| 1600002  | Marshalling or unmarshalling error.       |
-| 1600003  | Failed to connect to the service.                |
-| 1600004  | Notification is not enabled.              |
-| 1600005  | Notification slot disabled.         |
-| 1600007  | The notification does not exist.      |
-| 1600008  | The user does not exist.                    |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600004  | Notification is not enabled. |
+| 1600005  | Notification slot disabled. |
+| 1600007  | The notification does not exist. |
+| 1600008  | The user does not exist. |
 | 1600009  | The notification sending frequency reaches the upper limit. |
-| 1600012  | No memory space.                          |
+| 1600012  | No memory space. |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 2300007  | Network unreachable.                              |
+| 2300007  | Network unreachable. |
 
 **示例：**
 
@@ -4238,7 +4238,7 @@ ArkTS-Sta: cancelAsBundle(id: int, representativeBundle: string, userId: int, ca
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -4255,14 +4255,14 @@ ArkTS-Sta: cancelAsBundle(id: int, representativeBundle: string, userId: int, ca
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 1600001  | Internal error.                     |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600007  | The notification does not exist.      |
-| 1600008  | The user does not exist.              |
+| 1600003  | Failed to connect to the service. |
+| 1600007  | The notification does not exist. |
+| 1600008  | The user does not exist. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -4320,13 +4320,13 @@ ArkTS-Sta: cancelAsBundle(id: int, representativeBundle: string, userId: int): P
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
 | 参数名               | 类型   | 必填 | 说明               |
 | -------------------- | ------ | ---- | ------------------ |
-| id                   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 通知ID。           |
+| id                   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 通知ID。 |
 | representativeBundle | string | 是   | 被代理应用的包名。 |
 | userId               | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 用户ID。 |
 
@@ -4343,13 +4343,13 @@ ArkTS-Sta: cancelAsBundle(id: int, representativeBundle: string, userId: int): P
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 1600001  | Internal error.                     |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600007  | The notification does not exist.      |
-| 1600008  | The user does not exist.              |
+| 1600003  | Failed to connect to the service. |
+| 1600007  | The notification does not exist. |
+| 1600008  | The user does not exist. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -4400,7 +4400,7 @@ ArkTS-Sta: cancelAsBundle(representativeBundle: BundleOption, id: int): Promise\
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -4423,14 +4423,14 @@ ArkTS-Sta: cancelAsBundle(representativeBundle: BundleOption, id: int): Promise\
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
-| 1600001  | Internal error.                           |
-| 1600002  | Marshalling or unmarshalling error.       |
-| 1600003  | Failed to connect to the service.                |
-| 1600007  | The notification does not exist.            |
-| 1600008  | The user does not exist.                    |
-| 1600012  | No memory space.                          |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600007  | The notification does not exist. |
+| 1600008  | The user does not exist. |
+| 1600012  | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -4481,7 +4481,7 @@ ArkTS-Sta: cancel(representativeBundle: BundleOption, id: int): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -4502,14 +4502,14 @@ ArkTS-Sta: cancel(representativeBundle: BundleOption, id: int): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |  
-| 202      | Not system application to call the interface.                                      |  
+| 202      | Not system application to call the interface. |  
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600007  | The notification does not exist.      |
-| 1600012  | No memory space.                    |
-| 1600017  | There is no corresponding agent relationship configuration.    |
+| 1600003  | Failed to connect to the service. |
+| 1600007  | The notification does not exist. |
+| 1600012  | No memory space. |
+| 1600017  | There is no corresponding agent relationship configuration. |
 
 **示例：**
 
@@ -4561,7 +4561,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -4578,14 +4578,14 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
-| 1600012  | No memory space.                         |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600012  | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -4646,7 +4646,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -4664,14 +4664,14 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
-| 1600012  | No memory space.                         |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600012  | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -4734,7 +4734,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -4756,14 +4756,14 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
-| 1600012  | No memory space.                         |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600012  | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -4815,7 +4815,7 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType, callback: AsyncC
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -4831,13 +4831,13 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType, callback: AsyncC
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -4897,7 +4897,7 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolea
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -4919,12 +4919,12 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolea
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -4972,7 +4972,7 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean, ca
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：** 
 
@@ -4992,10 +4992,10 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean, ca
 | 202      | Not system application to call the interface. |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600008  | The user does not exist.              |
+| 1600003  | Failed to connect to the service. |
+| 1600008  | The user does not exist. |
 
 **示例：**
 
@@ -5051,7 +5051,7 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean): P
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -5073,13 +5073,13 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean): P
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600008  | The user does not exist.              |
+| 1600003  | Failed to connect to the service. |
+| 1600008  | The user does not exist. |
 
 **示例：**
 
@@ -5127,7 +5127,7 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int, callback: AsyncCall
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -5143,12 +5143,12 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int, callback: AsyncCall
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 1600001  | Internal error.                     |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600008  | The user does not exist.              |
+| 1600003  | Failed to connect to the service. |
+| 1600008  | The user does not exist. |
 
 **示例：**
 
@@ -5200,7 +5200,7 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int): Promise\<boolean>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -5220,13 +5220,13 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int): Promise\<boolean>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
-| 1600008  | The user does not exist.              |
+| 1600008  | The user does not exist. |
 
 **示例：**
 
@@ -5291,9 +5291,9 @@ on(type: 'checkNotification', callback: (checkInfo: NotificationCheckInfo) => No
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- | 
-| 202      | Not system application.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
-| 1600001  | Internal error.                     |
+| 202      | Not system application. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 1600001  | Internal error. |
 
 **示例：**
 
@@ -5333,7 +5333,7 @@ on(type: 'checkNotification', checkRequest: NotificationCheckRequest, callback: 
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **相关接口**: 该接口对应的ArkTS-Sta接口是[onCheckNotification](#notificationmanageronchecknotification22-1)
 
@@ -5354,11 +5354,11 @@ on(type: 'checkNotification', checkRequest: NotificationCheckRequest, callback: 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application.                                      |  
+| 202      | Not system application. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 1600001  | Internal error.                     |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 
 **示例：**
 
@@ -5413,9 +5413,9 @@ onCheckNotification(callback: (checkInfo: NotificationCheckInfo) => Notification
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- | 
-| 202      | Not system application.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
-| 1600001  | Internal error.                     |
+| 202      | Not system application. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 1600001  | Internal error.  |
 
 **示例：**
 
@@ -5477,11 +5477,11 @@ onCheckNotification(checkRequest: NotificationCheckRequest,
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |  
-| 202      | Not system application.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
-| 1600001  | Internal error.                     |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 202      | Not system application. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 
 **示例：**
 
@@ -5538,10 +5538,10 @@ off(type: 'checkNotification', callback?: (checkInfo: NotificationCheckInfo) => 
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | The application does not have permission to call the interface.     |
-| 202      | Not system application.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
-| 1600001  | Internal error.                     |
+| 201      | The application does not have permission to call the interface. |
+| 202      | Not system application. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 1600001  | Internal error. |
 
 **示例：**
 
@@ -5588,10 +5588,10 @@ offCheckNotification(
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | The application does not have permission to call the interface.     |
-| 202      | Not system application.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
-| 1600001  | Internal error.                     |
+| 201      | The application does not have permission to call the interface. |
+| 202      | Not system application. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 1600001  | Internal error. |
 
 **示例：**
 
@@ -5624,7 +5624,7 @@ ArkTS-Sta: triggerSystemLiveView(bundle: BundleOption, notificationId: int, butt
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -5646,13 +5646,13 @@ ArkTS-Sta: triggerSystemLiveView(bundle: BundleOption, notificationId: int, butt
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
+| 1600003  | Failed to connect to the service. |
 | 1600007 | The notification does not exist. |
 | 17700001 | The specified bundle name was not found. |
 
@@ -5718,7 +5718,7 @@ subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise\<void>
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -5738,13 +5738,13 @@ subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise\<void>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600012  | No memory space.                    |
+| 1600003  | Failed to connect to the service. |
+| 1600012  | No memory space. |
 
 **示例：**
 
@@ -5798,7 +5798,7 @@ setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: 
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -5821,14 +5821,14 @@ setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
-| 1600010  | Distributed operation failed.            |
-| 1600012  | No memory space.                    |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600010  | Distributed operation failed. |
+| 1600012  | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -5885,7 +5885,7 @@ isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -5907,14 +5907,14 @@ isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
-| 1600010  | Distributed operation failed.            |
-| 1600012  | No memory space.                    |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600010  | Distributed operation failed. |
+| 1600012  | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -5969,7 +5969,7 @@ setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<void\>
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -5991,14 +5991,14 @@ setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<void\>
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
+| 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
-| 1600010  | Distributed operation failed.            |
-| 1600012  | No memory space.                    |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600010  | Distributed operation failed. |
+| 1600012  | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -6045,7 +6045,7 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -6066,11 +6066,11 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
 | 1600010  | Distributed operation failed.  |
 | 1600012  | No memory space. |
@@ -6118,7 +6118,7 @@ ArkTS-Sta: setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: int): Promi
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -6139,15 +6139,15 @@ ArkTS-Sta: setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: int): Promi
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600012  | No memory space.                    |
-| 1600017  | There is no corresponding agent relationship configuration.     |
-| 17700001 | The specified bundle name was not found.   |
+| 1600003  | Failed to connect to the service.  |
+| 1600012  | No memory space. |
+| 1600017  | There is no corresponding agent relationship configuration. |
+| 17700001 | The specified bundle name was not found. |
 
 **示例：**
 
@@ -6205,7 +6205,7 @@ ArkTS-Sta：getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -6227,13 +6227,13 @@ ArkTS-Sta：getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
-| 1600012  | No memory space.                         |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600012  | No memory space.  |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -6290,7 +6290,7 @@ addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -6311,12 +6311,12 @@ addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 1600001 | Internal error. |
-| 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
 | 1600012 | No memory space. |
 
 **示例：**
@@ -6399,7 +6399,7 @@ removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -6420,13 +6420,13 @@ removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600012  | No memory space.                    |
+| 1600003  | Failed to connect to the service. |
+| 1600012  | No memory space. |
 
 **示例：**
 
@@ -6482,7 +6482,7 @@ ArkTS-Sta: setAdditionalConfig(key: string, value: string): Promise\<int\>
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -6503,13 +6503,13 @@ ArkTS-Sta: setAdditionalConfig(key: string, value: string): Promise\<int\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 201      | Permission denied. |  
+| 202      | Not system application to call the interface. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
+| 1600003  | Failed to connect to the service. |
 
 **示例：**
 
@@ -6553,7 +6553,7 @@ ArkTS-Sta: getDoNotDisturbProfile(id: long): Promise\<DoNotDisturbProfile\>
 
 **ArkTS-Dyn起始版本**：13
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -6573,14 +6573,14 @@ ArkTS-Sta: getDoNotDisturbProfile(id: long): Promise\<DoNotDisturbProfile\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |
-| 202      | Not system application to call the interface.                                      |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600019  | The do-not-disturb profile does not exist.                    |
+| 1600003  | Failed to connect to the service. |
+| 1600019  | The do-not-disturb profile does not exist. |
 
 **示例：**
 
@@ -6622,7 +6622,7 @@ disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>): Prom
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -6647,7 +6647,7 @@ disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>): Prom
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. | 
-| 1600001      | Internal error.                     |
+| 1600001      | Internal error. |
 | 1600002      | Marshalling or unmarshalling error. |
 
 **示例：**
@@ -6705,7 +6705,7 @@ ArkTS-Sta: setTargetDeviceStatus(deviceType: string, status: long): Promise\<voi
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -6768,7 +6768,7 @@ setDistributedEnabledBySlot(slot: SlotType, deviceType: string, enabled: boolean
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -6842,7 +6842,7 @@ isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise\<boolean
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -6907,7 +6907,7 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 名称  | 类型                                  | 只读 | 可选 | 说明                   |
 | ----- | ------------------------------------- | ---- | ---- | ---------------------- |
@@ -6923,7 +6923,7 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 名称         | 值               | 说明                                       |
 | ------------ | ---------------- | ------------------------------------------ |
@@ -6941,7 +6941,7 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 名称                 | 值  | 说明                               |
 | -------------------- | --- | --------------------------------- |
@@ -6959,7 +6959,7 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 名称                 | 值  | 说明                  |
 | -------------------- | --- | -------------------- |
@@ -6977,13 +6977,13 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 | 名称                         | 类型                         | 只读 | 可选 | 说明            |
 | ---------------------------- | ---------------------------- | ---- | --- | --------------- |
-| bundleName                   | string                       | 否   | 否   | Bundle名称。<br/>**ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：20    |
-| notificationId               | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 通知ID。<br/>**ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：20        |
-| label<sup>11+</sup>          | string                       | 否   | 是   | 通知标签。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20      |
-| contentType                  | [ContentType](./js-apis-notificationManager.md#contenttype)  | 否   | 否   | 通知类型。<br/>**ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：20      |
-| creatorUserId<sup>11+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 通知的user ID。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20 |
-| slotType<sup>11+</sup>       | [SlotType](./js-apis-notificationManager.md#slottype)        | 否   | 否   | 渠道类型。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20      |
-| extraInfos<sup>11+</sup>     | ArkTS-Dyn: Record<string, Object\><br/>ArkTS-Sta: Record<string, RecordData>  | 否   | 是   | 实况通知的附加信息。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20 |
+| bundleName                   | string                       | 否   | 否   | Bundle名称。<br/>**ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：22    |
+| notificationId               | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 通知ID。<br/>**ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：22        |
+| label<sup>11+</sup>          | string                       | 否   | 是   | 通知标签。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22     |
+| contentType                  | [ContentType](./js-apis-notificationManager.md#contenttype)  | 否   | 否   | 通知类型。<br/>**ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：22      |
+| creatorUserId<sup>11+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 通知的user ID。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22 |
+| slotType<sup>11+</sup>       | [SlotType](./js-apis-notificationManager.md#slottype)        | 否   | 否   | 渠道类型。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22      |
+| extraInfos<sup>11+</sup>     | ArkTS-Dyn: Record<string, Object\><br/>ArkTS-Sta: Record<string, RecordData>  | 否   | 是   | 实况通知的附加信息。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22 |
 
 ## NotificationCheckResult<sup>10+</sup>
 
@@ -6995,7 +6995,7 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 名称    | 类型                                  | 只读 | 可选 | 说明                   |
 | ------- | ------------------------------------ | ---- |---- | ---------------------- |
@@ -7015,7 +7015,7 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 名称    | 类型                                  | 只读 | 可选 | 说明                   |
 | ------- | ------------------------------------ | ---- | ---- | ---------------------- |
@@ -7032,11 +7032,22 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
+
+### SystemLiveViewSubscriber.onResponse
+
+接收通知中新按钮选项的回调函数。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：22
 
 | 名称    | 类型                                  | 只读 | 可选 | 说明                   |
 | ------- | ------------------------------------ | ---- | ---- | ---------------------- |
-| onResponse    | (notificationId: ArkTS-Dyn: number<br/>ArkTS-Sta: int, <br/>buttonOptions: [ButtonOptions](#buttonoptions11)) => void                         | 否   | 是   | 点击按钮的回调。 |
+| notificationId    | <br/>ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/>    | 否   | 否   | 通知标识。 |
+| buttonOptions     | [ButtonOptions](#buttonoptions11)    | 否   | 否   | 按钮选项。 |
 
 ## SlotType
 
@@ -7044,7 +7055,7 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 名称                                | 值     | 说明                                                         |
 | ----------------------------------- | ------ | ------------------------------------------------------------ |
@@ -7060,16 +7071,16 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 名称                                 | 值   | 说明     |
 | ------------------------------------ | ---- | -------- |
 | NOTIFICATION_STATUS_CLOSE_SOUND      | 1<<0 | 关闭声音提示功能。 |
-| NOTIFICATION_STATUS_CLOSE_LOCKSCREEN |  1<<1    |     关闭锁屏提示功能。     |
-| NOTIFICATION_STATUS_CLOSE_BANNER     |    1<<2   |     关闭横幅提示功能。     |
-| NOTIFICATION_STATUS_CLOSE_LIGHT_SCREEN     |   1<<3   |     关闭亮屏提示功能。     |
-| NOTIFICATION_STATUS_CLOSE_VIBRATION     |   1<<4   |     关闭振动提示功能。     |
-| NOTIFICATION_STATUS_CLOSE_STATUSBAR_ICON     |  1<<5    |     关闭状态栏图标提示功能。     |
+| NOTIFICATION_STATUS_CLOSE_LOCKSCREEN | 1<<1 | 关闭锁屏提示功能。 |
+| NOTIFICATION_STATUS_CLOSE_BANNER | 1<<2 | 关闭横幅提示功能。 |
+| NOTIFICATION_STATUS_CLOSE_LIGHT_SCREEN | 1<<3 | 关闭亮屏提示功能。 |
+| NOTIFICATION_STATUS_CLOSE_VIBRATION | 1<<4 | 关闭振动提示功能。 |
+| NOTIFICATION_STATUS_CLOSE_STATUSBAR_ICON | 1<<5 | 关闭状态栏图标提示功能。 |
 
 ## DoNotDisturbProfile<sup>12+</sup>
 
@@ -7079,7 +7090,7 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 名称  | 类型                                  | 只读 | 可选 | 说明                   |
 | ----- | ------------------------------------- | ---- | ---- | ---------------------- |

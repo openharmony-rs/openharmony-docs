@@ -98,7 +98,7 @@ ArkTS1.2示例：
 
 ```ts
 import { EmitterProperty } from '@ohos.arkui.component';
-import { State } from 'ohos.arkui.stateManagement';
+import { State } from '@ohos.arkui.stateManagement';
 
 // ...
 @State emitterProperties: Array<EmitterProperty> = [

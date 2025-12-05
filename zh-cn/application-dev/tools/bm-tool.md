@@ -40,7 +40,7 @@ bm help
 ## 安装命令（install）
 
 ```bash
-bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath]
+bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-d]
 ```
 
   **安装命令参数列表**
@@ -53,6 +53,7 @@ bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath]
 | -r | 可选参数，覆盖安装一个HAP。默认值为覆盖安装。 |
 | -s | 根据场景判断，安装应用间HSP时为必选参数，其他场景为可选参数。安装应用间共享库， 每个路径目录下只能存在一个同包名的HSP。 |
 | -w | 可选参数，安装HAP时指定bm工具等待时间，最小的等待时长为5s，最大的等待时长为600s,&nbsp;默认缺省为5s。 |
+| -d | 可选参数，允许应用降级安装，即设备已安装较高版本的应用，也可以覆盖安装较低版本的应用。仅支持三方应用降级安装。从API version 23开始支持。 |
 
 
 示例：
@@ -69,6 +70,8 @@ bm install -p aaa.hap -s xxx.hsp yyy.hsp
 bm install -p /data/app/
 # 安装一个hap,等待时间为10s
 bm install -p /data/app/ohos.app.hap -w 10
+# 设备已安装了一个高版本的应用，覆盖安装一个同包名低版本的hap
+bm install -p /data/local/tmp/ohos.app.hap -d
 ```
 
 ## 卸载命令（uninstall）

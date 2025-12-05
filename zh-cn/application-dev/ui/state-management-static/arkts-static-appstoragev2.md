@@ -52,19 +52,17 @@ import { AppStorageV2 } from '@ohos.arkui.stateManagement';
 
 ## 使用限制
 
-1. 只支持class类型。
+1. 需要配合UI使用（UI线程），不能在其他线程使用，否则可能由于线程不同，导致数据不一致。
 
-2. 需要配合UI使用（UI线程），不能在其他线程使用。
+2. 不支持非built-in类型，如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型，使用会编译报错。
 
-3. 不支持非built-in类型，如PixelMap、NativePointer、ArrayList等Native类型。
-
-4. 不支持存储基本类型，如string、number、boolean等。注意：不支持存储基本类型意味着connect接口传入的类型不能是基本类型，但connect传入的class中可以包含基本类型。
+3. 不支持存储基本类型，如string、number、boolean等，使用会运行时报错。注意：不支持存储基本类型意味着connect接口传入的类型不能是基本类型，但connect传入的class中可以包含基本类型。
 
 ## 使用场景
 
 ### 使用AppStorageV2
 
-AppStorageV2使用connect接口即可实现对AppStorageV2中数据的修改和同步，如果修改的数据被@Trace装饰，该数据的修改会同步更新UI。需要注意的是，使用remove接口只会将数据从AppStorageV2中删除，不影响组件中已创建的数据，详见以下示例代码。
+AppStorageV2使用connect接口即可实现对AppStorageV2中数据的修改和同步，如果修改的数据被[\@Trace](./arkts-static-new-observedV2-and-trace.md)装饰，该数据的修改会同步更新UI。需要注意的是，使用remove接口只会将数据从AppStorageV2中删除，不影响组件中已创建的数据，详见以下示例代码。
 
 ```ts
 'use static'
@@ -85,7 +83,7 @@ class Message {
   }
 }
 
-const IMessageType = Type.of(new Message());
+const IMessageType = Type.from<Message>();
 
 @Entry
 @ComponentV2
@@ -175,7 +173,7 @@ export class Sample {
   p2: number = 10;
 }
 
-export const ISampleType = Type.of(new Sample());
+export const ISampleType = Type.from<Sample>();
 ```
 
 页面1（Page1.ets）。

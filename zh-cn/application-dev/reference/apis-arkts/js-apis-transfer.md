@@ -169,6 +169,17 @@ export function har1func(dynamic_obj: Any) {
 | "ArkWeb.WebContextMenuParam" | [WebContextMenuParam](../apis-arkweb/arkts-basic-components-web-WebContextMenuParam.md)|
 | "ArkWeb.WebContextMenuResult" | [WebContextMenuResult](../apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md)|
 | "ArkWeb.EventResult" | [EventResult](../apis-arkweb/arkts-basic-components-web-EventResult.md)|
+| "ArkWeb.HttpAuthHandler" | [HttpAuthHandler](../apis-arkweb/arkts-basic-components-web-HttpAuthHandler.md)|
+| "ArkWeb.WebResourceResponse" | [WebResourceResponse](../apis-arkweb/arkts-basic-components-web-WebResourceResponse.md)|
+| "ArkWeb.WebResourceRequest" | [WebResourceRequest](../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md)|
+| "ArkWeb.ConsoleMessage" | [ConsoleMessage](../apis-arkweb/arkts-basic-components-web-ConsoleMessage.md)|
+| "ArkWeb.DataResubmissionHandler" | [DataResubmissionHandler](../apis-arkweb/arkts-basic-components-web-DataResubmissionHandler.md)|
+| "ArkWeb.ClientAuthenticationHandler" | [ClientAuthenticationHandler](../apis-arkweb/arkts-basic-components-web-ClientAuthenticationHandler.md)|
+| "ArkWeb.SslErrorHanlder" | [SslErrorHanlder](../apis-arkweb/arkts-basic-components-web-SslErrorHanlder.md)|
+| "ArkWeb.BackForwardList" | [BackForwardList](../apis-arkweb/arkts-apis-webview-BackForwardList.md)|
+| "ArkWeb.WebMessagePort" | [WebMessagePort](../apis-arkweb/arkts-apis-webview-WebMessagePort.md)|
+| "ArkWeb.WebSchemeHandlerRequest" | [WebSchemeHandlerRequest](../apis-arkweb/arkts-apis-webview-WebSchemeHandlerRequest.md)|
+| "ArkWeb.WebResourceHandler" | [WebResourceHandler](../apis-arkweb/arkts-apis-webview-WebResourceHandler.md)|
 | "BasicServiceKit.IInputData" | [IInputData](../apis-basic-services-kit/js-apis-osAccount-sys.md#iinputdata8) |
 | "BasicServiceKit.AppAccountManager" | [AppAccountManager](../apis-basic-services-kit/js-apis-appAccount.md#appaccountmanager) |
 | "BasicServiceKit.AuthCallback" | [AuthCallback](../apis-basic-services-kit/js-apis-appAccount.md#authcallback9) |

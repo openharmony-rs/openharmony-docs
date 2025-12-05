@@ -123,7 +123,7 @@ struct PixelRoundExample {
 
   build() {
     Column() {
-      Button(""){
+      Button(){
         Text(this.curWidth.toString())
       }
       .onClick((): void => {

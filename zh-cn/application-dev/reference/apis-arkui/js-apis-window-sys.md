@@ -3688,6 +3688,10 @@ setHandwritingFlag(enable: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型     | 必填 | 说明                                            |
@@ -3714,6 +3718,8 @@ setHandwritingFlag(enable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3727,6 +3733,25 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to set handwriting flag of window. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let enable = true;
+  let promise = windowClass.setHandwritingFlag(enable);
+  promise.then(() => {
+    console.info('Succeeded in setting handwriting flag of window.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set handwriting flag of window. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set handwriting flag of window. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -4155,12 +4180,13 @@ ArkTS-Sta示例：
 // EntryAbility.ets
 import { UIAbility, Want, StartOptions, AbilityConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window , AppStorage } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    windowStage.loadContent('pages/Index', (err) => {
-      if (err.code) {
-        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}.`);
+    windowStage.loadContent('pages/Index', (err: BusinessError<void>|null) :void => {
+      if (err?.code) {
+        console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}.`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -4173,16 +4199,20 @@ export default class EntryAbility extends UIAbility {
           windowMode: AbilityConstant.WindowMode.WINDOW_MODE_FLOATING
         };
         this.context.startAbility(want, options);
-      } catch (err) {
-        console.error(`Failed to start the ability. Cause code: ${err.code}, message: ${err.message}.`);
+      } catch (exception) {
+        let err = exception as BusinessError;
+        console.error(`Failed to start the ability. Cause code: ${err?.code}, message: ${err?.message}.`);
       }
+
       setTimeout(async () => {
-        let mainWindow: window.Window | null | undefined = windowStage.getMainWindowSync();
-        let targetId: int | null | undefined = AppStorage.get('higher_window_id');
-        mainWindow.raiseMainWindowAboveTarget(targetId).then(() => {
+        let mainWindow = windowStage.getMainWindowSync();
+        //获取RaiseMainWindowAbility对应的主窗
+        let newMainWindow: window.Window = window.findWindow("myapplication1");
+        let targetId = newMainWindow.getWindowProperties().id;
+        mainWindow.raiseMainWindowAboveTarget(targetId).then((): void => {
           console.info('Succeeded in raising main window above target.');
-        }).catch((err: Error) => {
-          console.error(`Failed to raise main window above target. Cause code: ${err?.code}, message: ${err?.message}.`)
+        }).catch((err: BusinessError): void => {
+            console.error(`Failed to raise main window above target. Cause code: ${err?.code}, message: ${err?.message}.`)
         });
       }, 3000)
     });
@@ -4191,14 +4221,16 @@ export default class EntryAbility extends UIAbility {
 ```
 ```ts
 // 新建文件src/main/ets/raisemainwindowability/RaiseMainWindowAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
+// RaiseMainWindowAbility.ets
+import { UIAbility, Want, StartOptions, AbilityConstant } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window , AppStorage } from '@kit.ArkUI';
 
 export default class RaiseMainWindowAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    AppStorage.setOrCreate('higher_window_id', windowStage.getMainWindowSync().getWindowProperties().id);
-    windowStage.loadContent('pages/Index', (err) => {
-      if (err.code) {
-        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}.`);
+    windowStage.loadContent('pages/Index', (err: BusinessError<void>|null) :void => {
+      if (err?.code) {
+        console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}.`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -4246,7 +4278,7 @@ export default class RaiseMainWindowAbility extends UIAbility {
       {
         "name": "RaiseMainWindowAbility",
         "launchType": "multiton",
-        "srcEntry": "./ets/entryability/EntryAbility.ets",
+        "srcEntry": "./ets/raisemainwindowability/RaiseMainWindowAbility.ets",
         "description": "$string:EntryAbility_desc",
         "icon": "$media:layered_image",
         "label": "$string:EntryAbility_label",
@@ -4375,6 +4407,116 @@ export default class EntryAbility extends UIAbility {
           let err = exception as BusinessError;
           console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
         }
+      });
+    });
+  }
+}
+```
+
+### setMainWindowRaiseByClickEnabled<sup>23+</sup>
+
+setMainWindowRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
+
+禁止/使能主窗口点击抬升功能。使用Promise异步回调。
+
+点击主窗口时，默认会抬升主窗口及其子窗口。调用此接口禁止主窗口点击抬升后（即传入false），点击主窗口时不会将其及子窗口进行抬升，保持原有状态不变；点击子窗口时，主窗口会连同子窗口一起被抬升。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| enable   | boolean                   | 是   | 设置主窗口点击抬升功能是否使能，true表示使能，false表示禁止。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.getMainWindow().then((mainWindow: window.Window) => {
+      // 加载主窗口对应的页面
+      windowStage.loadContent('pages/Index', (err) => {
+        if (err.code) {
+          console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in loading the content.');
+        try {
+          let raiseEnabled: boolean = false;
+          let promise = mainWindow.setMainWindowRaiseByClickEnabled(raiseEnabled);
+          promise.then(() => {
+            console.info('Succeeded in disabling the raise-by-click function.');
+          })
+        } catch(err) {
+          console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+        };
+      });
+    });
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.getMainWindow().then((mainWindow: window.Window) => {
+      // 加载主窗口对应的页面
+      windowStage.loadContent('pages/Index', (err: BusinessError | null): void => {
+        const errCode = err?.code;
+        if (errCode) {
+          console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
+          return;
+        }
+        console.info('Succeeded in loading the content.');
+        try {
+          let raiseEnabled: boolean = false;
+          let promise = mainWindow.setMainWindowRaiseByClickEnabled(raiseEnabled);
+          promise.then(() => {
+            console.info('Succeeded in disabling the raise-by-click function.');
+          })
+        } catch (exception) {
+          let err = exception as BusinessError;
+          console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+        };
       });
     });
   }
@@ -5111,7 +5253,7 @@ export default class EntryAbility extends UIAbility {
           console.info('Succeeded in setTitleButtonVisible.');
         } catch (exception) {
           let err = exception as BusinessError;
-          console.error(Failed to setTitleButtonVisible. Cause code: ${err.code}, message: ${err.message});
+          console.error(`Failed to setTitleButtonVisible. Cause code: ${err.code}, message: ${err.message}`);
         }
       });
     });
@@ -5280,7 +5422,7 @@ promise.then(() => {
 
 | 名称      | 类型  | 只读 | 可选 | 说明         |
 | ---------- | ---- | ---- | ---- | ----------- |
-| isTopmost<sup>12+</sup>  | boolean | 否 | 是 | 子窗口是否启用置顶属性。true表示子窗口置顶，false表示子窗口不置顶。不设置，则默认为false。 <br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager |
+| isTopmost<sup>12+</sup>  | boolean | 否 | 是 | 子窗口是否启用置顶属性。true表示子窗口置顶，false表示子窗口不置顶。不设置，则默认为false。 <br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager <br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
 
 ## WindowStage<sup>9+</sup>
 
@@ -6062,6 +6204,10 @@ try {
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称      | 值 | 说明         |
 | ---------- | ----- | ----------- |
 | SYSTEM_WINDOW  | 0 | 系统窗口。|
@@ -6094,6 +6240,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型                      | 只读  |可选 | 说明       |
 | ------ | ------------------------- | ---- | ---- |---------- |

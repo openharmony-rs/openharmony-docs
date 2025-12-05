@@ -95,6 +95,7 @@ import {
  Image,
  $r,
  TextInput,
+ ColumnOptions,
 } from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement'
 import { BusinessError } from '@ohos.base'
@@ -107,7 +108,7 @@ struct Index {
 
   build() {
     Row() {
-      Column() {
+      Column({ space: 10 } as ColumnOptions) {
         TextInput({ placeholder: '请输入验证码', text: this.message })
         PasteButton()
           .padding({top: 12, bottom: 12, left: 24, right: 24})

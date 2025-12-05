@@ -759,7 +759,6 @@ ArkTS-Sta: getDisposedRule(appId: string, appIndex:? int): DisposedRule
 ```ts
 import { appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
 
@@ -805,7 +804,6 @@ getAllDisposedRules(): Array\<DisposedRuleConfiguration>
 ```ts
 import { appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 
 try {
   let data = appControl.getAllDisposedRules();

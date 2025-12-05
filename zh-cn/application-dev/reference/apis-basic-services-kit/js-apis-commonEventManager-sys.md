@@ -35,7 +35,7 @@ ArkTS-Sta: publishAsUser(event: string, userId: int, callback: AsyncCallback\<vo
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：21
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -51,12 +51,12 @@ ArkTS-Sta: publishAsUser(event: string, userId: int, callback: AsyncCallback\<vo
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |  
+| 202      | not system app. |  
 | 1500003  | The common event sending frequency too high. |
-| 1500006  | Invalid userId.                     |
+| 1500006  | Invalid userId. |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
-| 1500009  | Failed to obtain system parameters.  |
+| 1500009  | Failed to obtain system parameters. |
 
 **示例：**
 
@@ -118,7 +118,7 @@ ArkTS-Sta: publishAsUser(event: string, userId: int, options: CommonEventPublish
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：21
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -135,8 +135,9 @@ ArkTS-Sta: publishAsUser(event: string, userId: int, options: CommonEventPublish
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |  
+| 202      | not system app. |  
 | 1500003  | The common event sending frequency too high. |
+| 1500006  | Invalid userId. |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 | 1500009  | Failed to obtain system parameters.  |
@@ -211,7 +212,7 @@ removeStickyCommonEvent(event: string, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -226,12 +227,12 @@ removeStickyCommonEvent(event: string, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | The application dose not have permission to call the interface.     |  
-| 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |   
-| 1500004  | A third-party application cannot send system common events.                |
-| 1500007  | Failed to send the message to the common event service.             |
-| 1500008  | Failed to initialize the common event service.     |
+| 201      | The application does not have permission to call the interface. |  
+| 202      | not system app. |  
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |   
+| 1500004  | A third-party application cannot send system common events. |
+| 1500007  | Failed to send the message to the common event service. |
+| 1500008  | Failed to initialize the common event service. |
 
 **示例：**
 
@@ -275,7 +276,7 @@ removeStickyCommonEvent(event: string): Promise\<void>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -295,12 +296,12 @@ removeStickyCommonEvent(event: string): Promise\<void>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | The application does not have permission to call the interface.     |  
-| 202      | not system app.                     |  
+| 201      | The application does not have permission to call the interface. |  
+| 202      | not system app. |  
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
-| 1500004  | A third-party application cannot send system common events.                |
-| 1500007  | Failed to send the message to the common event service.             |
-| 1500008  | Failed to initialize the common event service.     |
+| 1500004  | A third-party application cannot send system common events. |
+| 1500007  | Failed to send the message to the common event service. |
+| 1500008  | Failed to initialize the common event service. |
 
 **示例：**
 
@@ -340,13 +341,13 @@ setStaticSubscriberState(enable: boolean, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| enable  | boolean | 是   | 表示静态订阅事件使能状态。 true：使能 false：去使能。 |
+| enable  | boolean | 是   | 表示静态订阅事件使能状态。 true：表示使能；false：表示去使能。 |
 | callback  | AsyncCallback\<void> | 是   | 表示设置静态订阅事件使能状态的回调方法。 |
 
 **错误码：**
@@ -357,8 +358,8 @@ setStaticSubscriberState(enable: boolean, callback: AsyncCallback\<void>): void
 | -------- | ----------------------------------- |
 | 202      | not system app.                     |  
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
-| 1500007  | Failed to send the message to the common event service.             |
-| 1500008  | Failed to initialize the common event service.     |
+| 1500007  | Failed to send the message to the common event service. |
+| 1500008  | Failed to initialize the common event service. |
 
 **示例：**
 
@@ -402,13 +403,13 @@ setStaticSubscriberState(enable: boolean): Promise\<void>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| enable  | boolean | 是   | 表示静态订阅事件使能状态。 true:使能 false：去使能。 |
+| enable  | boolean | 是   | 表示静态订阅事件使能状态。 true：表示使能；false：表示去使能。 |
 
 **返回值：**
 
@@ -422,10 +423,10 @@ setStaticSubscriberState(enable: boolean): Promise\<void>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |  
+| 202      | not system app. |  
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
-| 1500007  | Failed to send the message to the common event service.             |
-| 1500008  | Failed to initialize the common event service.     |
+| 1500007  | Failed to send the message to the common event service. |
+| 1500008  | Failed to initialize the common event service. |
 
 **示例：**
 
@@ -453,11 +454,9 @@ commonEventManager.setStaticSubscriberState(false).then(() => {
 
 ## commonEventManager.setStaticSubscriberState<sup>12+</sup>
 
-ArkTS-Dyn: setStaticSubscriberState(enable: boolean, events?: Array\<string>): Promise\<void>
+setStaticSubscriberState(enable: boolean, events?: Array\<string>): Promise\<void>
 
-ArkTS-Sta: setStaticSubscriberState(enable: boolean, events: Array\<string>): Promise\<void>
-
-为当前应用设置静态订阅事件的使能状态，并且记录事件名称。使用Promise异步回调。
+为当前应用设置动态订阅事件的使能状态，并且记录事件名称。使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -465,9 +464,11 @@ ArkTS-Sta: setStaticSubscriberState(enable: boolean, events: Array\<string>): Pr
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本**: 12
+**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本**: 22
+**相关接口**: 该接口对应的ArkTS-Sta接口是[setStaticSubscriberState](#commoneventmanagersetstaticsubscriberstate)
+
+**ArkTS-Dyn起始版本**: 12
 
 **参数：**
 
@@ -488,14 +489,13 @@ ArkTS-Sta: setStaticSubscriberState(enable: boolean, events: Array\<string>): Pr
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
-| 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
-| 1500007  | Failed to send the message to the common event service.        |
+| 202      | not system app. |  
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. | 
+| 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -507,7 +507,50 @@ commonEventManager.setStaticSubscriberState(true, evenName).then(() => {
 });
 ```
 
-ArkTS-Sta示例：
+## commonEventManager.setStaticSubscriberState
+
+setStaticSubscriberState(enable: boolean, events: Array\<string>): Promise\<void>
+
+为当前应用设置静态订阅事件的使能状态，并且记录事件名称。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.CommonEvent
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[setStaticSubscriberState](#commoneventmanagersetstaticsubscriberstate12)
+
+**ArkTS-Sta起始版本**: 22
+
+**参数：**
+
+| 参数名 | 类型          | 必填 | 说明                                                 |
+| ------ | ------------- | ---- | ---------------------------------------------------- |
+| enable | boolean       | 是   | 表示静态订阅事件使能状态。 true：表示使能；false：表示去使能。|
+| events | Array\<string> | 是   | 表示记录事件名称。                                   |
+
+**返回值：**
+
+| 类型           | 说明                                 |
+| -------------- | ------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[事件错误码](./errorcode-CommonEventService.md)。
+
+| 错误码ID | 错误信息                                               |
+| -------- | ------------------------------------------------------ |
+| 202      | not system app. |  
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 1500007  | Failed to send the message to the common event service. |
+| 1500008  | Failed to initialize the common event service. |
+
+**示例：**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 

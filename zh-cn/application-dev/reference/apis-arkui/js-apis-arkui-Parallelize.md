@@ -24,8 +24,7 @@ import { ParallelOption, ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 | 名称      | 类型     | 只读 | 可选 | 说明                |
 | -------- | -------- | --- |-----|--------------------- |
-| enable   | boolean  | 否   | 是| 是否开启UI创建并行化。<br/>true：开启并行化创建；false：不开启并行化创建。<br/>默认值：true  |
-
+| enable   | boolean  | 否   | 是| 是否开启UI创建并行化。<br/>true：开启并行化创建；false：不开启并行化创建。<br/>默认值：true<br/>取值为undefined时，按默认值true处理。  |
 
 
 ## ParallelizeUI
@@ -43,7 +42,7 @@ ParallelizeUI(options: ParallelOption | undefined, content_: () => void)
 
 | 参数名  | 类型     | 必填 | 说明                                                           |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数。|
+| options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数，当options参数为undefined时，默认开启并行化创建。 |
 | content_  | () => void | 是   | 定义要创建的UI内容，通过尾随闭包"{...}"的形式传入。 |
 
 > **说明：**
@@ -53,12 +52,13 @@ ParallelizeUI(options: ParallelOption | undefined, content_: () => void)
 
 **示例：**
 
-ArkTS-Sta示例：
-
 如下示例展示了ParallelizeUI并行创建组件的能力、多种组件的组合使用和不同的并行化配置方式。
 
 ```ts
-import { ParallelOption, ParallelizeUI } from '@ohos.arkui.Parallelize';
+// ArkTS-Sta示例
+import { Entry, Text, Column, Component, Button, List, ListItem, Row, Stack, ForEach, Grid, GridItem, Image, FontWeight, ButtonType, TextAlign, $r} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 @Entry
 @Component
@@ -179,7 +179,7 @@ ParallelizeUI\<T\>(options: ParallelOption | undefined, param: () => T, content_
 
 | 参数名  | 类型     | 必填 | 说明                                                           |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数。|
+| options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数，当options参数为undefined时，默认开启并行化创建。|
 | param  | () => T | 是   | 参数生成函数，用于生成content_调用时的参数。该函数会在UI线程调用，开发者可将并行创建需要用到的数据在此处进行拷贝。避免数据多线程读写引发的安全性问题。 |
 | content_  | (param: T) => void | 是   | 定义要创建的UI内容。|
 
@@ -187,7 +187,10 @@ ParallelizeUI\<T\>(options: ParallelOption | undefined, param: () => T, content_
 **示例：**
 
 ```ts
-import { ParallelOption, ParallelizeUI } from '@ohos.arkui.Parallelize';
+// ArkTS-Sta示例
+import { Entry, Text, Column, Component, Button } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 // 封装参数
 class Param {
@@ -267,7 +270,7 @@ ParallelizeUI<V, T>(
 
 | 参数名  | 类型     | 必填 | 说明                                                           |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数。|
+| options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数，当options参数为undefined时，默认开启并行化创建。|
 | arr  | Array\<V\> | 是   | 数据源，为Array类型的数组。 |
 | param  | (item: V, index: int) => T | 是   | 参数生成函数，用于生成content_调用时的参数。该函数会在UI线程调用，开发者可将并行创建需要用到的数据在此处进行拷贝。避免数据多线程读写引发的安全性问题。<br/>说明：<br/>- item是当前数据项，index是数据项索引值。 |
 | content_  | (param: T) => void | 是   | 定义要创建的UI内容。- param参数（必选）：param函数调用后返回的对象。 |
@@ -276,9 +279,9 @@ ParallelizeUI<V, T>(
 **示例：**
 
 ```ts
+// ArkTS-Sta示例
 import { Entry, Text, Column, Component, Button, ClickEvent, List, ListItem } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
-import hilog from '@ohos.hilog';
 import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 class Info {
@@ -295,7 +298,7 @@ class Info {
 struct Index {
   @State stateVar: string = 'state var';
   message: string = 'Modify State';
-  @State arr:Array= [1,2,3,4,5,6,7,8,9,10,11,12,13,14] // 数据源
+  @State arr:Array<Int>= [1,2,3,4,5,6,7,8,9,10,11,12,13,14] // 数据源
   changeValue() {
     this.stateVar += '~'
   }
@@ -313,12 +316,12 @@ struct Index {
         ParallelizeUI<Int, Info>(undefined, this.arr,
           // item是当前数据项，index是数据项索引值。
           (item:Int, index: Int) => {
-            return new Info(${item}, this.stateVar)
+            return new Info(`${item}`, this.stateVar)
           },
           (param: Info) =>{
             ListItem() {
               Column() {
-                Text(${param.str1}_${param.str2}).fontSize(20) // 状态变量刷新
+                Text(`${param.str1}_${param.str2}`).fontSize(20) // 状态变量刷新
               }
             }.height('200').width('100%').borderWidth(2)
           })

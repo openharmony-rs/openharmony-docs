@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>- 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 > **注意：**
 >
@@ -39,7 +41,7 @@ getTagInfo(): tag.TagInfo
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | TagInfo  | NFC服务所提供的Tag数据对象。 |
 
@@ -51,7 +53,7 @@ import { tag } from '@kit.ConnectivityKit';
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，tagInfo是nfc服务在分派标签时给出的对象
 // getXXX，可以是getIsoDep、getNdef、getMifareClassic...
 
-let tagInfo : TagInfo = tag.getIsoDep(tagInfo).getTagInfo();
+let tagInfo: TagInfo = tag.getIsoDep(tagInfo).getTagInfo();
 console.info("tag tagInfo: " + tagInfo);
 ```
 
@@ -70,7 +72,7 @@ connectTag(): boolean;
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | boolean  | 连接建立成功返回true，失败返回false。 |
 
@@ -82,7 +84,7 @@ import { tag } from '@kit.ConnectivityKit';
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，tagInfo是nfc服务在分派标签时给出的对象
 // getXXX，可以是getIsoDep、getNdef、getMifareClassic...
 
-let connectStatus : boolean = tag.getIsoDep(tagInfo).connectTag();
+let connectStatus: boolean = tag.getIsoDep(tagInfo).connectTag();
 console.info("connectStatus: " + connectStatus);
 ```
 
@@ -199,7 +201,7 @@ isTagConnected(): boolean
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | boolean  | 已建立连接返回 true，未建立连接返回false。 |
 
@@ -227,7 +229,7 @@ isConnected(): boolean
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | boolean  | 已建立连接返回 true，未建立连接返回false。 |
 
@@ -271,7 +273,7 @@ getMaxSendLength(): number
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | number  | 可以发送到标签的最大数据长度，非负数。 |
 
@@ -288,7 +290,9 @@ console.info("tag maxSendLen: " + maxSendLen);
 
 ### getMaxTransmitSize<sup>9+</sup>
 
-getMaxTransmitSize(): number
+ArkTS-Dyn: getMaxTransmitSize(): number
+
+ArkTS-Dyn: getMaxTransmitSize(): int
 
 查询可以发送到标签的最大数据长度。
 
@@ -296,13 +300,17 @@ getMaxTransmitSize(): number
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| number  | 可以发送到标签的最大数据长度，非负数。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int  | 可以发送到标签的最大数据长度，非负数。 |
 
 **错误码：**
 
@@ -315,6 +323,8 @@ getMaxTransmitSize(): number
 | 3100201 | The tag running state is abnormal in the service. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 
@@ -325,6 +335,22 @@ try {
     let maxTransmitSize = tag.getIsoDep(tagInfo).getMaxTransmitSize(); 
     console.info("tag maxTransmitSize = " + maxTransmitSize);
 } catch (businessError) {
+    console.error("tag getMaxTransmitSize businessError: " + businessError);
+}
+```
+
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，tagInfo是nfc服务在分派标签时给出的对象
+// getXXX，可以是getIsoDep、getNdef、getMifareClassic...
+
+try {
+    let maxTransmitSize: int = tag.getIsoDep(tagInfo).getMaxTransmitSize(); 
+    console.info("tag maxTransmitSize = " + maxTransmitSize);
+} catch (businessError: BusinessError) {
     console.error("tag getMaxTransmitSize businessError: " + businessError);
 }
 ```
@@ -344,7 +370,7 @@ getSendDataTimeout(): number
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | number  | 发送数据到Tag的等待超时时间，单位是毫秒，非负数。 |
 
@@ -362,7 +388,9 @@ console.info("tag sendDataTimeout: " + sendDataTimeout);
 
 ### getTimeout<sup>9+</sup>
 
-getTimeout(): number
+ArkTS-Dyn: getTimeout(): number
+
+ArkTS-Sta: getTimeout(): int
 
 查询发送数据到Tag的等待超时时间，单位是毫秒。
 
@@ -370,13 +398,17 @@ getTimeout(): number
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| number  | 发送数据到Tag的等待超时时间，单位是毫秒，非负数。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int  | 发送数据到Tag的等待超时时间，单位是毫秒，非负数。 |
 
 **错误码：**
 
@@ -390,6 +422,7 @@ getTimeout(): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 
@@ -400,6 +433,22 @@ try {
     let timeout = tag.getIsoDep(tagInfo).getTimeout(); 
     console.info("tag timeout = " + timeout);
 } catch (businessError) {
+    console.error("tag getTimeout businessError: " + businessError);
+}
+```
+
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，tagInfo是nfc服务在分派标签时给出的对象
+// getXXX，可以是getIsoDep、getNdef、getMifareClassic...
+
+try {
+    let timeout: int = tag.getIsoDep(tagInfo).getTimeout(); 
+    console.info("tag timeout = " + timeout);
+} catch (businessError: BusinessError) {
     console.error("tag getTimeout businessError: " + businessError);
 }
 ```
@@ -425,7 +474,7 @@ setSendDataTimeout(timeout: number): boolean
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | boolean  | 设置超时时间成功返回true，设置失败返回false。 |
 
@@ -444,7 +493,9 @@ console.info("tag setSendDataTimeout setStatus: " + setStatus);
 
 ### setTimeout<sup>9+</sup>
 
-setTimeout(timeout: number): void
+ArkTS-Dyn: setTimeout(timeout: number): void
+
+ArkTS-Sta: setTimeout(timeout: int): void
 
 设置发送数据到Tag的等待超时时间，单位是毫秒。
 
@@ -452,13 +503,17 @@ setTimeout(timeout: number): void
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| timeout | number | 是 | 超时时间，单位毫秒，非负值。 |
+| timeout | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 超时时间，单位毫秒，非负值。 |
 
 **错误码：**
 
@@ -473,6 +528,7 @@ setTimeout(timeout: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 
@@ -484,6 +540,23 @@ try {
     tag.getIsoDep(tagInfo).setTimeout(timeoutMs); 
     console.info("tag setTimeout success");
 } catch (businessError) {
+    console.error("tag setTimeout businessError: " + businessError);
+}
+```
+
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，tagInfo是nfc服务在分派标签时给出的对象
+// getXXX，可以是getIsoDep、getNdef、getMifareClassic...
+
+let timeoutMs: int = 700;  // 修改为预期的超时时间
+try {
+    tag.getIsoDep(tagInfo).setTimeout(timeoutMs); 
+    console.info("tag setTimeout success");
+} catch (businessError: BusinessError) {
     console.error("tag setTimeout businessError: " + businessError);
 }
 ```
@@ -509,7 +582,7 @@ sendData(data: number[]): Promise<number[]>
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | Promise<number[]> | 对端Tag对指令的响应数据。每个number十六进制表示，范围是0x00~0xFF。|
 
@@ -534,7 +607,7 @@ function tagSessionDemo() {
     let cmdData = [0x01, 0x02, 0x03, 0x04]; // 更改为正确的 data
     tag.getIsoDep(tagInfo).sendData(cmdData).then((response) => {
     console.info("tagSession sendData Promise response: " + response);
-    }).catch((err : BusinessError)=> {
+    }).catch((err: BusinessError)=> {
     console.error("tagSession sendData Promise err: " + err);
     });
 }
@@ -590,7 +663,9 @@ function tagSessionDemo() {
 
 ### transmit<sup>9+</sup>
 
-transmit(data: number[]): Promise<number[]>
+ArkTS-Dyn: transmit(data: number[]): Promise<number[]>
+
+ArkTS-Sta: transmit(data: int[]): Promise<int[]>
 
 发送指令到Tag上，使用Promise方式作为异步方法。
 
@@ -598,19 +673,23 @@ transmit(data: number[]): Promise<number[]>
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| data | number[] | 是 | 要发送的指令。每个number十六进制表示，范围是0x00~0xFF。 |
+| data | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 是 | 要发送的指令。每个int十六进制表示，范围是0x00~0xFF。 |
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| Promise<number[]> | 对端Tag对指令的响应数据。每个number十六进制表示，范围是0x00~0xFF。|
+| Promise<int[]> | 对端Tag对指令的响应数据。每个int十六进制表示，范围是0x00~0xFF。|
 
 **错误码：**
 
@@ -626,6 +705,7 @@ transmit(data: number[]): Promise<number[]>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -648,7 +728,7 @@ function tagSessionDemo() {
     try {
     tag.getIsoDep(tagInfo).transmit(cmdData).then((response) => {
         console.info("tagSession transmit Promise response: " + response);
-    }).catch((err : BusinessError)=> {
+    }).catch((err: BusinessError)=> {
         console.error("tagSession transmit Promise err: " + err);
     });
     } catch (businessError) {
@@ -658,9 +738,44 @@ function tagSessionDemo() {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，tagInfo是nfc服务在分派标签时给出的对象
+// getXXX，可以是getIsoDep、getNdef、getMifareClassic...
+
+function tagSessionDemo() {
+// 如果没有连接，请先连接tag
+    try {
+        if (!tag.getIsoDep(tagInfo).isConnected()) {
+            tag.getIsoDep(tagInfo).connect();
+        }
+    } catch (businessError: BusinessError) {
+        console.error("tag connect businessError: " + businessError);
+        return;
+    }
+
+    let cmdData: Array<int> = [0x01, 0x02, 0x03, 0x04]; // 更改为正确的 data
+    try {
+    tag.getIsoDep(tagInfo).transmit(cmdData).then((response) => {
+        console.info("tagSession transmit Promise response: " + response);
+    }).catch((err: BusinessError | null): void => {
+        console.error("tagSession transmit Promise err: " + err);
+    });
+    } catch (businessError: BusinessError) {
+        console.error("tag transmit businessError: " + businessError);
+        return;
+    }
+}
+```
+
 ### transmit<sup>9+</sup>
 
-transmit(data: number[], callback: AsyncCallback<number[]>): void
+ArkTS-Dyn: transmit(data: number[], callback: AsyncCallback<number[]>): void
+
+ArkTS-Sta: transmit(data: int[], callback: AsyncCallback<int[]>): void
 
 发送指令到Tag上，使用AsyncCallback方式作为异步方法。
 
@@ -668,14 +783,18 @@ transmit(data: number[], callback: AsyncCallback<number[]>): void
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| data | number[] | 是 | 要发送的指令。每个number十六进制表示，范围是0x00~0xFF。 |
-| callback | AsyncCallback<number[]> | 是 | 回调函数，返回响应数据。每个number十六进制表示，范围是0x00~0xFF。 |
+| data | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 是 | 要发送的指令。每个int十六进制表示，范围是0x00~0xFF。 |
+| callback | ArkTS-Dyn: AsyncCallback<number[]><br>ArkTS-Sta: AsyncCallback<int[]> | 是 | 回调函数，返回响应数据。每个int或number十六进制表示，范围是0x00~0xFF。 |
 
 **错误码：**
 
@@ -691,6 +810,7 @@ transmit(data: number[], callback: AsyncCallback<number[]>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 
@@ -722,5 +842,39 @@ function tagSessionDemo() {
         return;
     }
 }
+```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，tagInfo是nfc服务在分派标签时给出的对象
+// getXXX，可以是getIsoDep、getNdef、getMifareClassic...
+
+function tagSessionDemo() {
+    // 如果没有连接，请先连接tag
+    try {
+        if (!tag.getIsoDep(tagInfo).isConnected()) {
+            tag.getIsoDep(tagInfo).connect();
+        }
+    } catch (businessError: BusinessError) {
+        console.error("tag connect businessError: " + businessError);
+        return;
+    }
+
+    let cmdData: Array<int> = [0x01, 0x02, 0x03, 0x04]; // 更改为正确的 data
+    try {
+        tag.getIsoDep(tagInfo).transmit(cmdData, (err: BusinessError | null, response: Array<int> | undefined): void => {
+            if (err) {
+                console.error("tagSession transmit AsyncCallback err: " + err);
+            } else {
+                console.info("tagSession transmit AsyncCallback response: " + response);
+            }
+        });
+    } catch (businessError: BusinessError) {
+        console.error("tag transmit businessError: " + businessError);
+        return;
+    }
+}
 ```

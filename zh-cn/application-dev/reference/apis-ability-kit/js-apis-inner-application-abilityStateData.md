@@ -27,6 +27,7 @@ import { appManager } from '@kit.AbilityKit';
 | abilityType | number | 否   | 否   | [Ability类型](#ability类型)：页面或服务等。 |
 | isAtomicService | boolean   | 否  | 否  | 判断Ability所属的应用是否是原子化服务。<br>true:Ability所属的应用是原子化服务。<br>false:Ability所属的应用不是原子化服务。     |
 | appCloneIndex          | number   | 否   | 是   | 分身应用索引。                  |
+| callerBundleName<sup>23+</sup> | string | 否 | 是 | Ability创建时的拉起方Bundle名称。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ### Ability状态
 

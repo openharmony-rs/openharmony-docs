@@ -2247,7 +2247,7 @@ on(type: 'accountChange', owners: Array&lt;string&gt;, callback: Callback&lt;Arr
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS接口是[onAccountChange](#onaccountchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAccountChange](#onaccountchange22)。
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -2296,7 +2296,7 @@ onAccountChange(owners: Array&lt;string&gt;, callback: Callback&lt;Array&lt;AppA
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn对应的接口是[on('accountChange')](#onaccountchange9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('accountChange')](#onaccountchange9)。
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -2396,7 +2396,7 @@ offAccountChange(callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn对应的接口是[off('accountChange')](#offaccountchange9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('accountChange')](#offaccountchange9)。
 
 **系统能力：** SystemCapability.Account.AppAccount
 

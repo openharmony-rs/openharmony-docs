@@ -6,6 +6,8 @@
 >
 > 后续此接口不再新增功能，相关功能在接口[uiExtension](js-apis-arkui-uiExtension.md)中提供。
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 从API Version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > 本模块接口为系统接口。
@@ -18,6 +20,20 @@ import { uiExtensionHost } from '@kit.ArkUI';
 
 ## UIExtensionHostWindowProxy
 
+### 属性
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| properties          | [UIExtensionHostWindowProxyProperties](#uiextensionhostwindowproxyproperties) |  否  |  否  | UIExtensionComponent组件以及宿主窗口的信息。<br/>**约束：** 由于架构约束，不建议在[onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)阶段同步获取该值，建议在收到[on('windowSizeChange')](../apis-arkui/js-apis-uiExtensionHost-sys.md#onwindowsizechange)回调之后获取。|
+
 ### getWindowAvoidArea
 
 getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
@@ -26,7 +42,13 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**系统接口**：此接口为系统接口，三方应用不支持调用。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
@@ -47,7 +69,7 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
@@ -57,7 +79,7 @@ export default class EntryAbility extends UIExtensionAbility {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
     // 获取宿主应用窗口的避让信息
     const avoidArea = extensionHostWindow.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-    console.log(`avoidArea: ${JSON.stringify(avoidArea)}`);
+    console.info(`avoidArea: ${JSON.stringify(avoidArea)}`);
   }
 }
 ```
@@ -68,9 +90,17 @@ on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, are
 
 注册系统规避区变化的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAvoidAreaChange](#onavoidareachange22)。
+
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**系统接口**：此接口为系统接口，三方应用不支持调用。
+**ArkTS-Dyn起始版本：** 11
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
@@ -86,7 +116,7 @@ on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, are
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -100,15 +130,64 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
+### onAvoidAreaChange<sup>22+</sup>
+
+onAvoidAreaChange(callback: Callback<uiExtension.AvoidAreaInfo>): void
+
+注册系统规避区变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('avoidAreaChange')](#onavoidareachange)。
+
+**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                   |
+| -------- | ------ | ---- | ---------------------- |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[uiExtension.AvoidAreaInfo](./js-apis-arkui-uiExtension.md#avoidareainfo)> | 是 | 回调函数：入参用于接收当前规避区的信息。 |
+
+
+**示例：**
+
+```ts
+// ArkTS-Sta示例
+// ExtensionProvider.ets
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 注册避让区变化的监听
+    extensionHostWindow.onAvoidAreaChange((info) => {
+      console.info(`The avoid area of the host window is: ${JSON.stringify(info.area)}.`);
+    });
+  }
+}
+```
+
 ### off('avoidAreaChange')
 
 off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, area: window.AvoidArea }>): void
 
 注销系统规避区变化的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAvoidAreaChange](#offavoidareachange22)。
+
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**系统接口**：此接口为系统接口，三方应用不支持调用。
+**ArkTS-Dyn起始版本：** 11
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
@@ -124,7 +203,7 @@ off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, a
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession} from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -136,20 +215,69 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
+### offAvoidAreaChange<sup>22+</sup>
+
+offAvoidAreaChange(callback?: Callback<uiExtension.AvoidAreaInfo>): void
+
+注销系统规避区变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('avoidAreaChange')](#offavoidareachange)。
+
+**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                   |
+| -------- | ------ | ---- | ---------------------- |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[uiExtension.AvoidAreaInfo](./js-apis-arkui-uiExtension.md#avoidareainfo)> | 否 | 回调函数：如果传入该参数，则关闭该监听。如果未传入参数，则关闭所有系统规避区变化的监听。 |
+
+**示例：**
+
+```ts
+// ArkTS-Sta示例
+// ExtensionProvider.ets
+import { UIExtensionAbility, UIExtensionContentSession} from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionDestroy(session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    extensionHostWindow.onAvoidAreaChange((info) => {
+      console.info(`The avoid area of the host window is: ${JSON.stringify(info.area)}.`);
+    });
+    // 注销所有避让区变化的监听
+    extensionHostWindow.offAvoidAreaChange();
+  }
+}
+```
+
 ### on('windowSizeChange')
 
 on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 
-注册宿主应用窗口尺寸变化的监听。
+注册组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowSizeChange](#onwindowsizechange22)。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**系统接口**：此接口为系统接口，三方应用不支持调用。
+**ArkTS-Dyn起始版本：** 11
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
 
 | 参数名   | 类型                  | 必填 | 说明                   |
 | -------- | --------------------- | ---- | ---------------------- |
-| type     | string                | 是   | 监听的事件类型，固定为'windowSizeChange'，即窗口尺寸变化事件。 |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | 是   | 回调函数：入参用于接收当前窗口的尺寸。 |
+| type     | string                | 是   | 监听的事件类型，固定为'windowSizeChange'，即组件（EmbeddedComponent或UIExtensionComponent）尺寸变化事件。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | 是   | 回调函数：入参用于接收当前组件（EmbeddedComponent或UIExtensionComponent）的尺寸。 |
 
 **错误码：** 
 
@@ -160,15 +288,55 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
-    // 注册宿主应用窗口大小变化的监听
+    // 注册组件（EmbeddedComponent或UIExtensionComponent）大小变化的监听
     extensionHostWindow.on('windowSizeChange', (size) => {
-      console.info(`The avoid area of the host window is: ${JSON.stringify(size)}.`);
+      console.info(`The size of the component is: ${JSON.stringify(size)}.`);
+    });
+  }
+}
+```
+
+### onWindowSizeChange<sup>22+</sup>
+
+onWindowSizeChange(callback: Callback<window.Size>): void;
+
+注册组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowSizeChange')](#onwindowsizechange)。
+
+**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明                   |
+| -------- | --------------------- | ---- | ---------------------- |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | 是   | 回调函数：入参用于接收当前组件（EmbeddedComponent或UIExtensionComponent）的尺寸。 |
+
+**示例：**
+
+```ts
+// ArkTS-Sta示例
+// ExtensionProvider.ets
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 注册组件（EmbeddedComponent或UIExtensionComponent）大小变化的监听
+    extensionHostWindow.onWindowSizeChange((size) => {
+      console.info(`The size of the component is: ${JSON.stringify(size)}.`);
     });
   }
 }
@@ -178,15 +346,23 @@ export default class EntryAbility extends UIExtensionAbility {
 
 off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 
-注销宿主应用窗口尺寸变化的监听。
+注销组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowSizeChange](#offwindowsizechange22)。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**系统接口**：此接口为系统接口，三方应用不支持调用。
+**ArkTS-Dyn起始版本：** 11
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
 
 | 参数名   | 类型                  | 必填 | 说明                   |
 | -------- | --------------------- | ---- | ---------------------- |
-| type     | string                | 是   | 注销的事件类型，固定值：'windowSizeChange'，即窗口尺寸变化事件。 |
+| type     | string                | 是   | 注销的事件类型，固定值：'windowSizeChange'，即组件（EmbeddedComponent或UIExtensionComponent）尺寸变化事件。 |
 | callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | 否   | 回调函数。返回当前的组件（EmbeddedComponent或UIExtensionComponent）尺寸。如果传入该参数，则关闭该监听。如果未传入参数，则关闭组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。 |
 
 **错误码：** 
@@ -198,44 +374,55 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
-    // 注销宿主应用窗口大小变化的监听
+    // 注销组件（EmbeddedComponent或UIExtensionComponent）大小变化的监听
     extensionHostWindow.off('windowSizeChange');
   }
 }
 ```
 
-### properties
+### offWindowSizeChange<sup>22+</sup>
 
-properties: UIExtensionHostWindowProxyProperties
+offWindowSizeChange(callback?: Callback<window.Size>): void
 
-宿主应用窗口和UIExtensionComponent组件的信息。
+注销组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowSizeChange')](#offwindowsizechange)。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**系统接口**：此接口为系统接口，三方应用不支持调用。
+**ArkTS-Sta起始版本：** 22
 
-| 参数名     | 类型                                 | 说明                             |
-| ---------- | ------------------------------------ | -------------------------------- |
-| properties | [UIExtensionHostWindowProxyProperties](#uiextensionhostwindowproxyproperties) | UIExtensionComponent组件以及宿主窗口的信息。 |
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明                   |
+| -------- | --------------------- | ---- | ---------------------- |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | 否   | 回调函数。返回当前的组件（EmbeddedComponent或UIExtensionComponent）尺寸。如果传入该参数，则关闭该监听。如果未传入参数，则关闭组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。 |
 
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
-import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+// ArkTS-Sta示例
+// ExtensionProvider.ets
+import { UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
-  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+  onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
-    // 获取UIExtensionComponent位置和大小信息
-    const rect = extensionHostWindow.properties.uiExtensionHostWindowProxyRect;
-    console.log(`Rect Info: ${JSON.stringify(rect)}`);
+    extensionHostWindow.onWindowSizeChange((size) => {
+      console.info(`The size of the component is: ${JSON.stringify(size)}.`);
+    });
+    // 注销组件（EmbeddedComponent或UIExtensionComponent）大小变化的监听
+    extensionHostWindow.offWindowSizeChange();
   }
 }
 ```
@@ -244,14 +431,23 @@ export default class EntryAbility extends UIExtensionAbility {
 
 hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 
-设置是否隐藏不安全窗口。
+设置是否隐藏不安全窗口，使用Promise异步回调。
+
 > **说明：**
 >
-> 不安全窗口是指可能遮挡UIExtensionComponent的窗口类型，如全局悬浮窗、宿主子窗口和宿主创建的Dialog窗口（不包括系统应用创建的上述类型窗口）。当UIExtensionComponent组件被用来显示敏感操作提示内容时，可以选择隐藏不安全窗口，保护敏感操作提示内容不会被遮挡。当UIExtensionComponent不显示或销毁时需要让不安全窗口重新显示。使用CreateModalUIExtension接口创建的UIExtensionComponent会默认隐藏不安全窗口，若要取消隐藏，需要申请ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS权限，并调用本接口将shouldHide设为false。
+> - 不安全窗口是指可能遮挡[EmbeddedComponent](arkui-ts/ts-container-embedded-component.md)（或[UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md)）组件的窗口，如全局悬浮窗、宿主子窗口和宿主创建的Dialog窗口（不包括系统应用创建的上述类型窗口）。
+> - 当EmbeddedComponent（或UIExtensionComponent）组件被用来显示敏感操作提示内容时，可以选择隐藏不安全窗口，保护敏感操作提示内容不会被遮挡。当EmbeddedComponent（或UIExtensionComponent）组件不显示或销毁时，不安全窗口会重新显示。
+> - 针对PC/2in1设备，当调用hideNonSecureWindows(true)时，不安全窗口中的全局悬浮窗不会被隐藏。
+
+**需要权限**：ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**系统接口**：此接口为系统接口，三方应用不支持调用。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -276,8 +472,9 @@ hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -304,6 +501,36 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// ExtensionProvider.ets
+
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 隐藏非安全窗口
+    extensionHostWindow.hideNonSecureWindows(true).then(()=> {
+      console.info(`Succeeded in hiding the non-secure windows.`);
+    }).catch((err)=> {
+      console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
+    })
+  }
+  onSessionDestroy(session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 取消隐藏非安全窗口
+    extensionHostWindow.hideNonSecureWindows(false).then(()=> {
+      console.info(`Succeeded in showing the non-secure windows.`);
+    }).catch((err)=> {
+      console.error(`Failed to show the non-secure windows. Cause:${JSON.stringify(err)}`);
+    })
+  }
+}
+```
+
+
 ### createSubWindowWithOptions<sup>12+</sup>
 
 createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptions): Promise&lt;window.Window&gt;
@@ -312,9 +539,13 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**系统接口：** 此接口为系统接口，三方应用不支持调用。
+**ArkTS-Dyn起始版本：** 12
 
-**模型约束：** StageModelOnly
+**ArkTS-Sta起始版本：** 22
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -336,13 +567,14 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 401 | Parameter error. Possible causes: <br/> 1. Mandatory parameters are left unspecified.<br/> 2. Incorrect parameters types.<br/> 3. Parameter verification failed. |
-| 801 | Capability not supported on this device. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
@@ -386,18 +618,69 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// ExtensionProvider.ets
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    const subWindowOpts: window.SubWindowOptions = {
+      title: 'This is a subwindow',
+      decorEnabled: true
+    };
+    // 创建子窗口
+    extensionHostWindow.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
+      .then((subWindow: window.Window) => {
+        subWindow.setUIContent('pages/Index', (err, data) =>{
+          if (err && err.code != 0) {
+            return;
+          }
+          subWindow?.resize(300, 300, (err, data)=>{
+            if (err && err.code != 0) {
+              return;
+            }
+            subWindow?.moveWindowTo(100, 100, (err, data)=>{
+              if (err && err.code != 0) {
+                return;
+              }
+              subWindow?.showWindow((err, data) => {
+                if (err && err.code == 0) {
+                  console.info(`The subwindow has been shown!`);
+                } else {
+                  console.error(`Failed to show the subwindow!`);
+                }
+              });
+            });
+          });
+        });
+      }).catch((error) => {
+        console.error(`Create subwindow failed: ${JSON.stringify(error)}`);
+      })
+  }
+}
+```
+
 ### setWaterMarkFlag<sup>12+</sup>
 
 setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 为当前窗口添加或删除安全水印标志，使用Promise异步回调。
+
 > **说明：**
 >
 > 添加安全水印标志后，窗口在前台时会将当前全屏幕覆盖水印。全屏、悬浮窗、分屏等场景下只要有添加了安全水印标志的窗口在前台，就会显示全屏水印。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**系统接口**：此接口为系统接口，三方应用不支持调用。
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -415,14 +698,15 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ---------------------------------------------- |
-| 1300002 | This window state is abnormal.                 |
+| 1300002 | The UIExtension window proxy is abnormal.      |
 | 1300003 | This window manager service works abnormally.  |
-| 1300008 | The operation is on invalid display. |
+| 1300008 | The display device is abnormal. |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -447,19 +731,53 @@ export default class EntryAbility extends UIExtensionAbility {
   }
 }
 ```
+
+ArkTS-Sta示例：
+```ts
+// ExtensionProvider.ets
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 添加安全水印标志
+    extensionHostWindow.setWaterMarkFlag(true).then(() => {
+      console.info(`Succeeded in setting water mark flag of window.`);
+    }).catch((err) => {
+      console.error(`Failed to setting water mark flag of window. Cause:${JSON.stringify(err)}`);
+    })
+  }
+  onSessionDestroy(session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 删除安全水印标志
+    extensionHostWindow.setWaterMarkFlag(false).then(() => {
+      console.info(`Succeeded in deleting water mark flag of window.`);
+    }).catch((err) => {
+      console.error(`Failed to deleting water mark flag of window. Cause:${JSON.stringify(err)}`);
+    })
+  }
+}
+```
+
 ### hidePrivacyContentForHost<sup>13+</sup>
 
 hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 
 设置UIExtension组件在非系统截图时的隐私内容保护开关，使用Promise异步回调。
+
 > **说明：**
 >
-> 开启截图隐私内容保护后，使用窗口截图[window.snapshot](arkts-apis-window-Window.md#snapshot9)或者组件截图[UIContext.getComponentSnapshot](js-apis-arkui-UIContext.md#getcomponentsnapshot12)
+> 开启截图隐私内容保护后，使用窗口截图[window.snapshot](arkts-apis-window-Window.md#snapshot9)或者组件截图[UIContext.getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)
 将无法截取到当前组件的内容（不包括该组件下创建的子窗）。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**系统接口**：此接口为系统接口，三方应用不支持调用。
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -481,12 +799,13 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| 1300002  | The UIExtension window proxy is abnormal.                    |
+| 1300002  | Abnormal state. Possible causes: <br> 1. The UIExtension window proxy is abnormal. <br> 2. Not the UIExtensionAbility process calling.                    |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -503,17 +822,40 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// ExtensionProvider.ets
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 开启截图隐私内容保护
+    extensionHostWindow.hidePrivacyContentForHost(true).then(() => {
+      console.info(`Successfully enabled privacy protection for non-system screenshots.`);
+    }).catch((err) => {
+      console.error(`Failed enabled privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
+    })
+  }
+}
+```
+
 ## UIExtensionHostWindowProxyProperties
 
 用于表示宿主应用窗口和UIExtensionComponent组件的信息。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**系统接口**：此接口为系统接口
+**ArkTS-Dyn起始版本：** 11
 
-| 名称                         | 类型        | 必填      | 说明                             |
-| ------------------------------ | ----------- | -------------------------------- | -------------------------------- |
-| uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | 是 | UIExtensionComponent的位置和宽高。 |
+**ArkTS-Sta起始版本：** 22
+
+**系统接口**：此接口为系统接口。
+
+| 名称                         | 类型        | 只读  | 可选    | 说明                             |
+| ------------------------------ | ----------- | --------------- | ----------------- | -------------------------------- |
+| uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | 是 | 否 |UIExtensionComponent的位置和宽高。 |
 
 ## 完整示例
 
@@ -521,6 +863,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 - 示例应用中的EntryAbility(UIAbility)加载首页文件：`pages/Index.ets`，其中内容如下：
 
+  ArkTS-Dyn示例：
   ```ts
   // pages/Index.ets -- UIAbility启动时加载此页面
   import { Want } from '@kit.AbilityKit';
@@ -552,31 +895,101 @@ export default class EntryAbility extends UIExtensionAbility {
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // pages/Index.ets -- UIAbility启动时加载此页面
+  import { Entry, Component, Column, Row, Text, UIExtensionComponent} from '@ohos.arkui.component';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { Want } from '@kit.AbilityKit';
+  import { RecordData } from '@kit.BasicServicesKit';
+
+  @Entry
+  @Component
+  struct Index {
+    @State message: string = 'Message: ';
+    private want: Want = {
+      bundleName: "com.example.uiextensiondemo",
+      abilityName: "ExampleUIExtensionAbility",
+      parameters: {
+        "ability.want.params.uiExtensionType": "sys/commonUI"
+      } as Record<String, RecordData>
+    } as Want;
+
+    build() {
+      Row() {
+        Column() {
+          Text(this.message).fontSize(30)
+          UIExtensionComponent(this.want)
+            .width('100%')
+            .height('90%')
+        }
+        .width('100%')
+      }
+      .height('100%')
+    }
+  }
+  ```
+
 - UIExtensionComponent拉起的UIExtensionAbility在`ets/extensionAbility/ExampleUIExtensionAbility`文件中实现，内容如下：
 
+  ArkTS-Dyn示例：
   ```ts
   import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
   const TAG: string = '[ExampleUIExtensionAbility]';
   export default class ExampleUIExtensionAbility extends UIExtensionAbility {
     onCreate() {
-      console.log(TAG, `onCreate`);
+      console.info(TAG, `onCreate`);
     }
 
     onForeground() {
-      console.log(TAG, `onForeground`);
+      console.info(TAG, `onForeground`);
     }
 
     onBackground() {
-      console.log(TAG, `onBackground`);
+      console.info(TAG, `onBackground`);
     }
 
     onDestroy() {
-      console.log(TAG, `onDestroy`);
+      console.info(TAG, `onDestroy`);
     }
 
     onSessionCreate(want: Want, session: UIExtensionContentSession) {
-      console.log(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+      console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+      let param: Record<string, UIExtensionContentSession> = {
+        'session': session
+      };
+      let storage: LocalStorage = new LocalStorage(param);
+      session.loadContent('pages/extension', storage);
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+  import { LocalStorage } from '@ohos.arkui.stateManagement';
+
+  const TAG: string = '[ExampleUIExtensionAbility]';
+  export default class ExampleUIExtensionAbility extends UIExtensionAbility {
+    onCreate() {
+      console.info(TAG, `onCreate`);
+    }
+
+    onForeground() {
+      console.info(TAG, `onForeground`);
+    }
+
+    onBackground() {
+      console.info(TAG, `onBackground`);
+    }
+
+    async onDestroy() {
+      console.info(TAG, `onDestroy`);
+    }
+
+    onSessionCreate(want: Want, session: UIExtensionContentSession) {
+      console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
       let param: Record<string, UIExtensionContentSession> = {
         'session': session
       };
@@ -588,6 +1001,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 - UIExtensionAbility的入口页面文件`pages/extension.ets`内容如下：
 
+  ArkTS-Dyn示例：
   ```ts
   import { UIExtensionContentSession } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -597,7 +1011,7 @@ export default class EntryAbility extends UIExtensionAbility {
   @Component
   struct Extension {
     @State message: string = 'UIExtensionAbility Index';
-    private storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+    private storage: LocalStorage | undefined = this.getUIContext()?.getSharedLocalStorage();
     private session: UIExtensionContentSession | undefined = this.storage?.get<UIExtensionContentSession>('session');
     private extensionHostWindow: uiExtensionHost.UIExtensionHostWindowProxy | undefined = this.session?.getUIExtensionHostWindowProxy();
     private subWindow: window.Window | undefined = undefined;
@@ -611,14 +1025,14 @@ export default class EntryAbility extends UIExtensionAbility {
       });
       let promise = this.extensionHostWindow?.hideNonSecureWindows(true);
       promise?.then(()=> {
-        console.log(`Succeeded in hiding the non-secure windows.`);
+        console.info(`Succeeded in hiding the non-secure windows.`);
       }).catch((err: BusinessError)=> {
-        console.log(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
+        console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
       })
       this.extensionHostWindow?.hidePrivacyContentForHost(true)?.then(() => {
-        console.log(`Successfully enabled privacy protection for non-system screenshots.`);
+        console.info(`Successfully enabled privacy protection for non-system screenshots.`);
       }).catch((err: BusinessError) => {
-        console.log(`Failed enabled privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
+        console.error(`Failed enabled privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
       })
     }
 
@@ -627,9 +1041,9 @@ export default class EntryAbility extends UIExtensionAbility {
       this.extensionHostWindow?.off('avoidAreaChange');
       let promise = this.extensionHostWindow?.hideNonSecureWindows(false);
       promise?.then(()=> {
-        console.log(`Succeeded in showing the non-secure windows.`);
+        console.info(`Succeeded in showing the non-secure windows.`);
       }).catch((err: BusinessError)=> {
-        console.log(`Failed to show the non-secure windows. Cause:${JSON.stringify(err)}`);
+        console.error(`Failed to show the non-secure windows. Cause:${JSON.stringify(err)}`);
       })
     }
 
@@ -677,6 +1091,106 @@ export default class EntryAbility extends UIExtensionAbility {
                 });
               });
             }).catch((error: BusinessError) => {
+              console.error(`Create subwindow failed: ${JSON.stringify(error)}`);
+            })
+        })
+      }.width('100%').height('100%')
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  import { UIExtensionContentSession } from '@kit.AbilityKit';
+  import { Entry, Component, Column, Row, Text, Button, Margin, FontWeight} from '@ohos.arkui.component';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { uiExtensionHost, window } from '@kit.ArkUI';
+
+  @Entry()
+  @Component
+  struct Extension {
+    @State message: string = 'UIExtensionAbility Index';
+    private storage: LocalStorage | undefined = this.getUIContext()?.getSharedLocalStorage();
+    private session: UIExtensionContentSession | undefined = this.storage?.get<UIExtensionContentSession>('session');
+    private extensionHostWindow: uiExtensionHost.UIExtensionHostWindowProxy | undefined = this.session?.getUIExtensionHostWindowProxy();
+    private subWindow: window.Window | undefined = undefined;
+
+    aboutToAppear(): void {
+      this.extensionHostWindow?.onWindowSizeChange((size) => {
+          console.info(`size = ${JSON.stringify(size)}`);
+      });
+      this.extensionHostWindow?.onAvoidAreaChange((info) => {
+          console.info(`type = ${JSON.stringify(info.type)}, area = ${JSON.stringify(info.area)}`);
+      });
+      let promise = this.extensionHostWindow?.hideNonSecureWindows(true);
+      promise?.then(()=> {
+        console.info(`Succeeded in hiding the non-secure windows.`);
+      }).catch((err)=> {
+        console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
+      })
+      this.extensionHostWindow?.hidePrivacyContentForHost(true)?.then(() => {
+        console.info(`Successfully enabled privacy protection for non-system screenshots.`);
+      }).catch((err) => {
+        console.error(`Failed enabled privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
+      })
+    }
+
+    aboutToDisappear(): void {
+      this.extensionHostWindow?.offWindowSizeChange();
+      this.extensionHostWindow?.offAvoidAreaChange();
+      let promise = this.extensionHostWindow?.hideNonSecureWindows(false);
+      promise?.then(()=> {
+        console.info(`Succeeded in showing the non-secure windows.`);
+      }).catch((err)=> {
+        console.error(`Failed to show the non-secure windows. Cause:${JSON.stringify(err)}`);
+      })
+    }
+
+    build() {
+      Column() {
+        Text(this.message)
+          .fontSize(20)
+          .fontWeight(FontWeight.Bold)
+        Button("获取组件大小").width('90%').margin({top: 5, bottom: 5} as Margin).fontSize(16).onClick(() => {
+          let rect = this.extensionHostWindow?.properties.uiExtensionHostWindowProxyRect;
+          console.info(`UIExtensionComponent的宽高和位置信息: ${JSON.stringify(rect)}`);
+        })
+        Button("获取系统规避区信息").width('90%').margin({top: 5, bottom: 5} as Margin).fontSize(16).onClick(() => {
+          let avoidArea: window.AvoidArea | undefined = this.extensionHostWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
+          console.info(`系统规避区: ${JSON.stringify(avoidArea)}`);
+        })
+        Button("创建子窗口").width('90%').margin({top: 5, bottom: 5} as Margin).fontSize(16).onClick(() => {
+          let subWindowOpts: window.SubWindowOptions = {
+            'title': 'This is a subwindow',
+            decorEnabled: true
+          };
+          this.extensionHostWindow?.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
+            .then((subWindow: window.Window) => {
+              this.subWindow = subWindow;
+              this.subWindow?.setUIContent('pages/Index', (err, data) =>{
+                if (err && err.code != 0) {
+                  return;
+                }
+                this.subWindow?.resize(300, 300, (err, data)=>{
+                  if (err && err.code != 0) {
+                    return;
+                  }
+                  this.subWindow?.moveWindowTo(100, 100, (err, data)=>{
+                    if (err && err.code != 0) {
+                      return;
+                    }
+                    this.subWindow?.showWindow((err, data) => {
+                      if (err && err.code == 0) {
+                        console.info(`The subwindow has been shown!`);
+                      } else {
+                        console.error(`Failed to show the subwindow!`);
+                      }
+                    });
+                  });
+                });
+              });
+            }).catch((error) => {
               console.error(`Create subwindow failed: ${JSON.stringify(error)}`);
             })
         })

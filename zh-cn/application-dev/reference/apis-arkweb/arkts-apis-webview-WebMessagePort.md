@@ -2,6 +2,8 @@
 
 通过WebMessagePort可以进行消息的发送以及接收，发送[WebMessageType](./arkts-apis-webview-e.md#webmessagetype10)/[WebMessage](./arkts-apis-webview-t.md#webmessage)类型消息给HTML5侧。
 
+支持使用[@ohos.transfer](../apis-arkts/js-apis-transfer.md)系统对象转换工具进行动静态类型转换。
+
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
@@ -861,3 +863,113 @@ struct WebComponent {
   }
 }
 ```
+
+## 使用@ohos.transfer进行WebMessagePort类型转换
+
+ArkTS-Dyn中使用ArkTS-Sta的WebMessagePort对象。
+
+- 在ArkTS-Sta模块中将ArkTS-Sta WebMessagePort转换成ArkTS-Dyn WebMessagePort，传入到ArkTS-Dyn子模块`library`中。
+
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  'use static'
+  import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { transfer } from '@kit.ArkTS';
+  import { WebMessagePortStaticToDynamic } from 'library';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    ports: Array<webview.WebMessagePort> = new Array<webview.WebMessagePort>();
+
+    build() {
+      Column() {
+        Button("WebMessagePort")
+          .onClick(() => {
+            try {
+              this.ports = this.controller.createWebMessagePorts(true);
+              let dynamicHandler = transfer.transferDynamic(this.ports[0], 'ArkWeb.WebMessagePort');
+              WebMessagePortStaticToDynamic(dynamicHandler);
+            } catch (e: Error) {
+              console.error('transferDynamic catch error：-----------' + e.message);
+            }
+          })
+        Web({ src: "www.example.com", controller: this.controller })
+      }
+    }
+  }
+  ```
+
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn WebMessagePort的方法。
+
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+  import { webview } from '@kit.ArkWeb';
+  export function WebMessagePortStaticToDynamic(handler_: any) {
+    try {
+      let handler: webview.WebMessagePort = handler_ as webview.WebMessagePort;
+      console.info('WebMessagePortStaticToDynamic result=' + handler.isExtentionType);
+    } catch (e) {
+      console.error('WebMessagePortStaticToDynamic catch Error: ' + e.toString());
+    }
+  }
+  ```
+
+ArkTS-Sta中使用ArkTS-Dyn的WebMessagePort对象。
+
+- 在ArkTS-Dyn模块创建得到ArkTS-Dyn WebMessagePort对象，传给ArkTS-Sta子模块`library`中。
+
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { WebMessagePortDynamicToStatic } from 'library';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    ports: webview.WebMessagePort[] = [];
+
+    build() {
+      Column() {
+        Button("WebMessagePort")
+          .onClick(() => {
+            try {
+              this.ports = this.controller.createWebMessagePorts(true);
+              WebMessagePortDynamicToStatic(this.ports[0]);
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+        Web({ src: "www.example.com", controller: this.controller })
+      }
+    }
+  }
+  ```
+
+- 创建ArkTS-Sta子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn WebMessagePort的方法。
+
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+  'use static'
+  import { webview } from '@kit.ArkWeb';
+  import { transfer } from '@kit.ArkTS';
+
+  export function WebMessagePortDynamicToStatic(dynObject: Object | undefined | null) {
+    try {
+        let handler: webview.WebMessagePort = transfer.transferStatic(dynObject, 'ArkWeb.WebMessagePort') as webview.WebMessagePort;
+        console.info('WebMessagePortDynamicToStatic type=' + handler.isExtentionType);
+    } catch (e: Error) {
+        console.error('WebMessagePortDynamicToStatic catch error：-----------' + e.message);
+    }
+  }
+  ```
