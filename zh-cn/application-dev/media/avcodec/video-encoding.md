@@ -980,7 +980,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 9. 通知编码器结束。
 
-    在编码过程中，最后一帧数据送入编码输入队列时，需要设置bufferInfo的flag标识为AVCODEC_BUFFER_FLAGS_EOS，来通知编码器输入结束。
+    在编码过程中，最后一帧数据送入编码输入队列时，需要设置bufferInfo的flag标识为AVCODEC_BUFFER_FLAGS_EOS，通知编码器输入结束。
 
     以下示例中，bufferInfo的成员变量：
     - index：回调函数OnNeedInputBuffer传入的参数，与buffer唯一对应的标识；
