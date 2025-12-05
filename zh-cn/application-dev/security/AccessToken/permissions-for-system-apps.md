@@ -5140,3 +5140,15 @@
 **ACL使能**：true
 
 **起始版本**：12
+
+## ohos.permission.ACCESS_USER_ACCOUNT_INFO
+
+允许系统应用获取账号提供的数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：18
