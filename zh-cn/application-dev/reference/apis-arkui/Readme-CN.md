@@ -429,6 +429,7 @@
         - @ReusableV2：组件复用V2
         - [applyStyles：定义组件重用样式](arkui-ts/ts-universal-applyStyles.md)
         - [wrapBuilder：封装全局@Builder](arkui-ts/ts-universal-wrapBuilder-static.md)
+        - [rememberVariable：@Builder内部状态](arkui-ts/ts-universal-remembervariable-static.md)
   - 互操作
     - [compatibleComponent (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-component.md)
     - [compatibleState (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-state.md)

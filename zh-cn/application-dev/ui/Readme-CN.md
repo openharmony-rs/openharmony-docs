@@ -27,6 +27,7 @@
         - [\@BuilderParam装饰器：引用\@Builder函数](../ui/state-management/arkts-builderparam.md)
         - [wrapBuilder：封装全局@Builder（ArkTS-Dyn）](../ui/state-management/arkts-wrapBuilder.md)
         - [wrapBuilder：封装全局@Builder（ArkTS-Sta）](../ui/state-management/arkts-static-wrapBuilder.md)
+        - [rememberVariable: \@Builder内部状态（ArkTS-Sta）](../ui/state-management-static/arkts-static-remembervariable.md)
       - [\@Styles装饰器：定义组件重用样式（ArkTS-Dyn）](../ui/state-management/arkts-style.md)
       - [applyStyles：定义组件重用样式（ArkTS-Sta）](../ui/state-management/arkts-apply-styles.md)
       - [\@Extend装饰器：定义扩展组件样式（ArkTS-Dyn）](../ui/state-management/arkts-extend.md)
