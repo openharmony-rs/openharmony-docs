@@ -9421,13 +9421,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/AddProxyToRerendertheUI.ets",
-				"functions":[
-					{
-						"end_line":72,
-						"name":"link_proxy",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
@@ -20334,13 +20328,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/NotTriggerUIRefresh.ets",
-				"functions":[
-					{
-						"end_line":82,
-						"name":"Not_Trigger_UI_Refresh_Proxy",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
@@ -21073,173 +21061,71 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailViewModel.ets",
-				"functions":[
-					{
-						"end_line":24,
-						"name":"play_detail_opposite_model",
-						"start_line":17
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailPage.ets",
-				"functions":[
-					{
-						"end_line":39,
-						"name":"state_problem_arrow_function_opposite",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPagePositive/PlayDetailViewModel.ets",
-				"functions":[
-					{
-						"end_line":24,
-						"name":"play_detail_positive_model",
-						"start_line":17
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPagePositive/PlayDetailPage.ets",
-				"functions":[
-					{
-						"end_line":40,
-						"name":"state_problem_arrow_function_positive",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObserveOpposite.ets",
-				"functions":[
-					{
-						"end_line":64,
-						"name":"state_problem_this_unable_observe_opposite",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObservePositive.ets",
-				"functions":[
-					{
-						"end_line":60,
-						"name":"state_problem_this_unable_observe_positive",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemStateUiRefreshExample01.ets",
-				"functions":[
-					{
-						"end_line":42,
-						"name":"state_problem_state_ui_refresh_example_01",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemStateUiRefreshExample02.ets",
-				"functions":[
-					{
-						"end_line":50,
-						"name":"state_problem_state_ui_refresh_example_02",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemStateUiRefreshExample03.ets",
-				"functions":[
-					{
-						"end_line":51,
-						"name":"state_problem_state_ui_refresh_example_03",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexConstantRepeatRefresh.ets",
-				"functions":[
-					{
-						"end_line":61,
-						"name":"state_problem_complex_constant_repeat_refresh",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution01.ets",
-				"functions":[
-					{
-						"end_line":57,
-						"name":"state_problem_complex_solution_01",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution02.ets",
-				"functions":[
-					{
-						"end_line":61,
-						"name":"state_problem_complex_solution_02",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError01.ets",
-				"functions":[
-					{
-						"end_line":31,
-						"name":"state_problem_not_update_in_build_error_01",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError02.ets",
-				"functions":[
-					{
-						"end_line":32,
-						"name":"state_problem_not_update_in_build_error_02",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemABCallUiRefreshOpposite.ets",
-				"functions":[
-					{
-						"end_line":57,
-						"name":"state_problem_a_b_call_ui_refresh_opposite",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemABCallUiRefreshPositive.ets",
-				"functions":[
-					{
-						"end_line":59,
-						"name":"state_problem_a_b_call_ui_refresh_positive",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets",
-				"functions":[
-					{
-						"end_line":63,
-						"name":"state_problem_unregister_state_callback",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
@@ -21712,103 +21598,43 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/DeepCopyReverse.ets",
-				"functions":[
-					{
-						"end_line":52,
-						"name":"deep_copy_reverse",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/DeepCopyCorrect.ets",
-				"functions":[
-					{
-						"end_line":52,
-						"name":"deep_copy_correct",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/ForceUpdateCounterexample.ets",
-				"functions":[
-					{
-						"end_line":58,
-						"name":"force_update_counterexample",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/ForceUpdatePositiveCase.ets",
-				"functions":[
-					{
-						"end_line":42,
-						"name":"force_update_positive_case",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlCounterexamples.ets",
-				"functions":[
-					{
-						"end_line":73,
-						"name":"precise_control_counterexamples",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlPositiveCases.ets",
-				"functions":[
-					{
-						"end_line":61,
-						"name":"precise_control_positive_cases",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateInefficient.ets",
-				"functions":[
-					{
-						"end_line":46,
-						"name":"loop_state_inefficient",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateOptimized.ets",
-				"functions":[
-					{
-						"end_line":47,
-						"name":"loop_state_optimized",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/CalculationDirectState.ets",
-				"functions":[
-					{
-						"end_line":53,
-						"name":"calculation_directState",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/CalculationTempVariable.ets",
-				"functions":[
-					{
-						"end_line":55,
-						"name":"calculation_temp_variable",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
@@ -24328,13 +24154,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeThisObject.ets",
-				"functions":[
-					{
-						"end_line":108,
-						"name":"provide_consume_This_Object",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
@@ -24758,23 +24578,11 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionSparkUpdate.ets",
-				"functions":[
-					{
-						"end_line":38,
-						"name":"Local_Question_Spark_Update",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionUIUtils.ets",
-				"functions":[
-					{
-						"end_line":45,
-						"name":"Local_Question_UIUtils",
-						"start_line":17
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionV2animateTo.ets",
@@ -25398,23 +25206,11 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFourteen.ets",
-				"functions":[
-					{
-						"end_line":71,
-						"name":"prop_fourteen_start",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFifteen.ets",
-				"functions":[
-					{
-						"end_line":74,
-						"name":"prop_fifteen_start",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
@@ -29441,6 +29237,296 @@
 						"end_line":243,
 						"name":"storageStatistics_getFreeSizeSync",
 						"start_line":235
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-state-management-faq-inner-class.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObserveOpposite.ets",
+				"functions":[
+					{
+						"end_line":64,
+						"name":"state_problem_this_unable_observe_opposite",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObservePositive.ets",
+				"functions":[
+					{
+						"end_line":60,
+						"name":"state_problem_this_unable_observe_positive",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailViewModel.ets",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"play_detail_opposite_model",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailPage.ets",
+				"functions":[
+					{
+						"end_line":39,
+						"name":"state_problem_arrow_function_opposite",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPagePositive/PlayDetailViewModel.ets",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"play_detail_positive_model",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPagePositive/PlayDetailPage.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"state_problem_arrow_function_positive",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-state-management-faq-inner-component.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError01.ets",
+				"functions":[
+					{
+						"end_line":31,
+						"name":"state_problem_not_update_in_build_error_01",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError02.ets",
+				"functions":[
+					{
+						"end_line":32,
+						"name":"state_problem_not_update_in_build_error_02",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets",
+				"functions":[
+					{
+						"end_line":63,
+						"name":"state_problem_unregister_state_callback",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemABCallUiRefreshOpposite.ets",
+				"functions":[
+					{
+						"end_line":57,
+						"name":"state_problem_a_b_call_ui_refresh_opposite",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemABCallUiRefreshPositive.ets",
+				"functions":[
+					{
+						"end_line":59,
+						"name":"state_problem_a_b_call_ui_refresh_positive",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexConstantRepeatRefresh.ets",
+				"functions":[
+					{
+						"end_line":61,
+						"name":"state_problem_complex_constant_repeat_refresh",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution01.ets",
+				"functions":[
+					{
+						"end_line":57,
+						"name":"state_problem_complex_solution_01",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution02.ets",
+				"functions":[
+					{
+						"end_line":61,
+						"name":"state_problem_complex_solution_02",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionSparkUpdate.ets",
+				"functions":[
+					{
+						"end_line":38,
+						"name":"Local_Question_Spark_Update",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionUIUtils.ets",
+				"functions":[
+					{
+						"end_line":45,
+						"name":"Local_Question_UIUtils",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/DeepCopyReverse.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"deep_copy_reverse",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/DeepCopyCorrect.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"deep_copy_correct",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlCounterexamples.ets",
+				"functions":[
+					{
+						"end_line":73,
+						"name":"precise_control_counterexamples",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlPositiveCases.ets",
+				"functions":[
+					{
+						"end_line":61,
+						"name":"precise_control_positive_cases",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateInefficient.ets",
+				"functions":[
+					{
+						"end_line":46,
+						"name":"loop_state_inefficient",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateOptimized.ets",
+				"functions":[
+					{
+						"end_line":47,
+						"name":"loop_state_optimized",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/CalculationDirectState.ets",
+				"functions":[
+					{
+						"end_line":53,
+						"name":"calculation_directState",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/CalculationTempVariable.ets",
+				"functions":[
+					{
+						"end_line":55,
+						"name":"calculation_temp_variable",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLazy.ets",
+				"functions":[
+					{
+						"end_line":151,
+						"name":"StateArrayLazy_start",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLazy2.ets",
+				"functions":[
+					{
+						"end_line":152,
+						"name":"StateArrayLazy2_start",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach.ets",
+				"functions":[
+					{
+						"end_line":65,
+						"name":"StateArrayForeach_start",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach2.ets",
+				"functions":[
+					{
+						"end_line":74,
+						"name":"TextComponent_start",
+						"start_line":15
 					}
 				]
 			}
