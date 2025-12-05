@@ -108,7 +108,7 @@
    let srcPath = distributedPathDir + '/src.txt';
    // 获取源路径uri
    let srcUri: string = fileUri.getUriFromPath(srcPath);
-
+   
    // 定义拷贝回调
    let progressListener: fs.ProgressListener = (progress: fs.Progress) => {
      console.info(`progressSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
