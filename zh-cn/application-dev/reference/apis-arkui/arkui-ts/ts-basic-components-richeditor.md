@@ -57,6 +57,8 @@ RichEditor(options: RichEditorStyledStringOptions)
 >  align属性只支持上方、中间和下方位置的对齐方式。
 > 
 >  不支持[borderImage](ts-universal-attributes-border-image.md#borderimage)属性。
+>
+> 组件水平方向默认padding为16vp，竖直方向默认padding为8vp。
 
 ### customKeyboard
 
