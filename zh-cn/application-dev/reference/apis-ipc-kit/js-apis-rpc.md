@@ -64,6 +64,10 @@ import { rpc } from '@kit.IPCKit';
 
   在RPC或IPC过程中，发送方可以使用MessageSequence提供的写方法，将待发送的数据以特定格式写入该对象。接收方可以使用MessageSequence提供的读方法从该对象中读取特定格式的数据。数据格式包括：基础类型及数组、IPC对象、接口描述符和自定义序列化对象。
 
+**ArkTS-Dyn起始版本**: 9
+
+**ArkTS-Sta起始版本**: 22
+
 ### create
 
   static create(): MessageSequence
@@ -1146,7 +1150,9 @@ readFloat(): number
 
 ### writeDouble
 
-writeDouble(val: number): void
+ArkTS-Dyn: writeDouble(val: number): void
+
+ArkTS-Sta: writeDouble(val: double): void
 
 将双精度浮点值写入MessageSequence实例。
 
@@ -1156,7 +1162,7 @@ writeDouble(val: number): void
 
   | 参数名 | 类型   | 必填 | 说明                   |
   | ------ | ------ | ---- | ---------------------- |
-  | val    | number | 是   | 要写入的双精度浮点值。 |
+  | val    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 要写入的双精度浮点值。 |
 
 **错误码：**
 
@@ -1169,6 +1175,22 @@ writeDouble(val: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let data = rpc.MessageSequence.create();
+  try {
+    data.writeDouble(10.2);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc write double fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc write double fail, errorMessage ' + e.message);
+  }
+  ```
+
+ArkTS-Sta示例：
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1316,7 +1338,9 @@ readBoolean(): boolean
 
 ### writeChar
 
-writeChar(val: number): void
+ArkTS-Dyn: writeChar(val: number): void
+
+ArkTS-Sta: writeChar(val: int): void
 
 将单个字符值写入MessageSequence实例。
 
@@ -1326,7 +1350,7 @@ writeChar(val: number): void
 
   | 参数名 | 类型   | 必填 | 说明                 |
   | ------ | ------ | ---- | -------------------- |
-  | val    | number | 是   | 要写入的单个字符值。 |
+  | val    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要写入的单个字符值。 |
 
 **错误码：**
 
@@ -1339,6 +1363,22 @@ writeChar(val: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let data = rpc.MessageSequence.create();
+  try {
+    data.writeChar(97);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc write char fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc write char fail, errorMessage ' + e.message);
+  }
+  ```
+
+ArkTS-Sta示例：
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1759,7 +1799,9 @@ readByteArray(): number[]
 
 ### writeShortArray
 
-writeShortArray(shortArray: number[]): void
+ArkTS-Dyn: writeShortArray(shortArray: number[]): void
+
+ArkTS-Sta: writeShortArray(shortArray: int[]): void
 
 将短整数数组写入MessageSequence实例。
 
@@ -1769,7 +1811,7 @@ writeShortArray(shortArray: number[]): void
 
   | 参数名     | 类型     | 必填 | 说明                 |
   | ---------- | -------- | ---- | -------------------- |
-  | shortArray | number[] | 是   | 要写入的短整数数组。 |
+  | shortArray | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 是   | 要写入的短整数数组。 |
 
 **错误码：**
 
@@ -1782,6 +1824,22 @@ writeShortArray(shortArray: number[]): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let data = rpc.MessageSequence.create();
+  try {
+    data.writeShortArray([11, 12, 13]);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc write shortArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc write shortArray fail, errorMessage ' + e.message);
+  }
+  ```
+
+ArkTS-Sta示例：
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1798,7 +1856,9 @@ writeShortArray(shortArray: number[]): void
 
 ### readShortArray
 
-readShortArray(dataIn: number[]): void
+ArkTS-Dyn: readShortArray(dataIn: number[]): void
+
+ArkTS-Sta: readShortArray(dataIn: int[]): void
 
 从MessageSequence实例中读取短整数数组。
 
@@ -1808,7 +1868,7 @@ readShortArray(dataIn: number[]): void
 
   | 参数名 | 类型     | 必填 | 说明                 |
   | ------ | -------- | ---- | -------------------- |
-  | dataIn | number[] | 是   | 要读取的短整数数组。 |
+  | dataIn | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 是   | 要读取的短整数数组。 |
 
 **错误码：**
 
@@ -1821,6 +1881,7 @@ readShortArray(dataIn: number[]): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1843,9 +1904,34 @@ readShortArray(dataIn: number[]): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let data = rpc.MessageSequence.create();
+  try {
+    data.writeShortArray([11, 12, 13]);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc write shortArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc write shortArray fail, errorMessage ' + e.message);
+  }
+  try {
+    let array: Array<int> = new Array(3);
+    data.readShortArray(array);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc read shortArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc read shortArray fail, errorMessage ' + e.message);
+  }
+  ```
+
 ### readShortArray
 
-readShortArray(): number[]
+ArkTS-Dyn: readShortArray(): number[]
+
+ArkTS-Sta: readShortArray(): int[]
 
 从MessageSequence实例中读取短整数数组。
 
@@ -1855,7 +1941,7 @@ readShortArray(): number[]
 
   | 类型     | 说明             |
   | -------- | ---------------- |
-  | number[] | 返回短整数数组。 |
+  | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 返回短整数数组。 |
 
 **错误码：**
 
@@ -1867,6 +1953,30 @@ readShortArray(): number[]
 
 **示例：**
 
+ArkTS-Dyn示例：
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let data = rpc.MessageSequence.create();
+  try {
+    data.writeShortArray([11, 12, 13]);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc write shortArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc write shortArray fail, errorMessage ' + e.message);
+  }
+  try {
+    let array = data.readShortArray();
+    hilog.info(0x0000, 'testTag', 'RpcClient: readShortArray is ' + array);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc read shortArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc read shortArray fail, errorMessage ' + e.message);
+  }
+  ```
+
+ArkTS-Sta示例：
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2093,7 +2203,9 @@ ArkTS-Sta示例：
 
 ### writeLongArray
 
-writeLongArray(longArray: number[]): void
+ArkTS-Dyn: writeLongArray(longArray: number[]): void
+
+ArkTS-Sta: writeLongArray(longArray: long[]): void
 
 将长整数数组写入MessageSequence实例。
 
@@ -2103,7 +2215,7 @@ writeLongArray(longArray: number[]): void
 
   | 参数名    | 类型     | 必填 | 说明                 |
   | --------- | -------- | ---- | -------------------- |
-  | longArray | number[] | 是   | 要写入的长整数数组。 |
+  | longArray | ArkTS-Dyn: number[]<br>ArkTS-Sta: long[] | 是   | 要写入的长整数数组。 |
 
 **错误码：**
 
@@ -2116,6 +2228,22 @@ writeLongArray(longArray: number[]): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let data = rpc.MessageSequence.create();
+  try {
+    data.writeLongArray([1111, 1112, 1113]);
+  }catch (error){
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc write longArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc write longArray fail, errorMessage ' + e.message);
+  }
+  ```
+
+ArkTS-Sta示例：
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2132,7 +2260,9 @@ writeLongArray(longArray: number[]): void
 
 ### readLongArray
 
-readLongArray(dataIn: number[]): void
+ArkTS-Dyn: readLongArray(dataIn: number[]): void
+
+ArkTS-Dyn: readLongArray(dataIn: long[]): void
 
 从MessageSequence实例读取的长整数数组。
 
@@ -2142,7 +2272,7 @@ readLongArray(dataIn: number[]): void
 
   | 参数名 | 类型     | 必填 | 说明                 |
   | ------ | -------- | ---- | -------------------- |
-  | dataIn | number[] | 是   | 要读取的长整数数组。 |
+  | dataIn | ArkTS-Dyn: number[]<br>ArkTS-Sta: long[] | 是   | 要读取的长整数数组。 |
 
 **错误码：**
 
@@ -2155,6 +2285,7 @@ readLongArray(dataIn: number[]): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2177,9 +2308,34 @@ readLongArray(dataIn: number[]): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let data = rpc.MessageSequence.create();
+  try {
+    data.writeLongArray([1111, 1112, 1113]);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc write longArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc write longArray fail, errorMessage ' + e.message);
+  }
+  let array: Array<long> = new Array(3);
+  try {
+    data.readLongArray(array);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc read longArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc read longArray fail, errorMessage ' + e.message);
+  }
+  ```
+
 ### readLongArray
 
-readLongArray(): number[]
+ArkTS-Dyn: readLongArray(): number[]
+
+ArkTS-Sta: readLongArray(): long[]
 
 从MessageSequence实例中读取所有的长整数数组。
 
@@ -2189,7 +2345,7 @@ readLongArray(): number[]
 
   | 类型     | 说明             |
   | -------- | ---------------- |
-  | number[] | 返回长整数数组。 |
+  | ArkTS-Dyn: number[]<br>ArkTS-Sta: long[] | 返回长整数数组。 |
 
 **错误码：**
 
@@ -2201,6 +2357,7 @@ readLongArray(): number[]
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2223,9 +2380,35 @@ readLongArray(): number[]
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let data = rpc.MessageSequence.create();
+  try {
+    data.writeLongArray([1111, 1112, 1113]);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc write longArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc write longArray fail, errorMessage ' + e.message);
+  }
+  try {
+    let array = data.readLongArray();
+    hilog.info(0x0000, 'testTag', 'RpcClient: readLongArray is ' + array);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc read longArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc read longArray fail, errorMessage ' + e.message);
+  }
+  ```
+
+
 ### writeFloatArray
 
-writeFloatArray(floatArray: number[]): void
+ArkTS-Dyn: writeFloatArray(floatArray: number[]): void
+
+ArkTS-Sta: writeFloatArray(floatArray: double[]): void
 
 将浮点数组写入MessageSequence实例。
 
@@ -2235,7 +2418,7 @@ writeFloatArray(floatArray: number[]): void
 
   | 参数名     | 类型     | 必填 | 说明                                                                                                                    |
   | ---------- | -------- | ---- | ----------------------------------------------------------------------------------------------------------------------- |
-  | floatArray | number[] | 是   | 要写入的浮点数组。由于系统内部对float类型的数据是按照double处理的，使用时对于数组所占的总字节数应按照double类型来计算。 |
+  | floatArray | ArkTS-Dyn: number[]<br>ArkTS-Sta: double[] | 是   | 要写入的浮点数组。由于系统内部对float类型的数据是按照double处理的，使用时对于数组所占的总字节数应按照double类型来计算。 |
 
 **错误码：**
 
@@ -2248,6 +2431,22 @@ writeFloatArray(floatArray: number[]): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let data = rpc.MessageSequence.create();
+  try {
+    data.writeFloatArray([1.2, 1.3, 1.4]);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc write floatArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc write floatArray fail, errorMessage ' + e.message);
+  }
+  ```
+
+ArkTS-Sta示例：
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2264,7 +2463,9 @@ writeFloatArray(floatArray: number[]): void
 
 ### readFloatArray
 
-readFloatArray(dataIn: number[]): void
+ArkTS-Dyn: readFloatArray(dataIn: number[]): void
+
+ArkTS-Sta: readFloatArray(dataIn: double[]): void
 
 从MessageSequence实例中读取浮点数组。
 
@@ -2274,7 +2475,7 @@ readFloatArray(dataIn: number[]): void
 
   | 参数名 | 类型     | 必填 | 说明                                                                                                                    |
   | ------ | -------- | ---- | ----------------------------------------------------------------------------------------------------------------------- |
-  | dataIn | number[] | 是   | 要读取的浮点数组。由于系统内部对float类型的数据是按照double处理的，使用时对于数组所占的总字节数应按照double类型来计算。 |
+  | dataIn | ArkTS-Dyn: number[]<br>ArkTS-Sta: double[] | 是   | 要读取的浮点数组。由于系统内部对float类型的数据是按照double处理的，使用时对于数组所占的总字节数应按照double类型来计算。 |
 
 **错误码：**
 
@@ -2287,6 +2488,7 @@ readFloatArray(dataIn: number[]): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2309,9 +2511,34 @@ readFloatArray(dataIn: number[]): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let data = rpc.MessageSequence.create();
+  try {
+    data.writeFloatArray([1.2, 1.3, 1.4]);
+  }catch (error){
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc write floatArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc write floatArray fail, errorMessage ' + e.message);
+  }
+  let array: Array<double> = new Array(3);
+  try {
+    data.readFloatArray(array);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc read floatArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc read floatArray fail, errorMessage ' + e.message);
+  }
+  ```
+
 ### readFloatArray
 
-readFloatArray(): number[]
+ArkTS-Dyn: readFloatArray(): number[]
+
+ArkTS-Sta: readFloatArray(): double[]
 
 从MessageSequence实例中读取浮点数组。
 
@@ -2321,7 +2548,7 @@ readFloatArray(): number[]
 
   | 类型     | 说明           |
   | -------- | -------------- |
-  | number[] | 返回浮点数组。 |
+  | ArkTS-Dyn: number[]<br>ArkTS-Sta: double[] | 返回浮点数组。 |
 
 **错误码：**
 
@@ -2333,6 +2560,30 @@ readFloatArray(): number[]
 
 **示例：**
 
+ArkTS-Dyn示例：
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let data = rpc.MessageSequence.create();
+  try {
+    data.writeFloatArray([1.2, 1.3, 1.4]);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc write floatArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc write floatArray fail, errorMessage ' + e.message);
+  }
+  try {
+    let array = data.readFloatArray();
+    hilog.info(0x0000, 'testTag', 'RpcClient: readFloatArray is ' + array);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc read floatArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc read floatArray fail, errorMessage ' + e.message);
+  }
+  ```
+
+ArkTS-Sta示例：
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2691,7 +2942,9 @@ readBooleanArray(): boolean[]
 
 ### writeCharArray
 
-writeCharArray(charArray: number[]): void
+ArkTS-Dyn: writeCharArray(charArray: number[]): void
+
+ArkTS-Sta: writeCharArray(charArray: int[]): void
 
 将单个字符数组写入MessageSequence实例。
 
@@ -2701,7 +2954,7 @@ writeCharArray(charArray: number[]): void
 
   | 参数名    | 类型     | 必填 | 说明                   |
   | --------- | -------- | ---- | ---------------------- |
-  | charArray | number[] | 是   | 要写入的单个字符数组。 |
+  | charArray | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 是   | 要写入的单个字符数组。 |
 
 **错误码：**
 
@@ -2714,6 +2967,22 @@ writeCharArray(charArray: number[]): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let data = rpc.MessageSequence.create();
+  try {
+    data.writeCharArray([97, 98, 88]);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc write charArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc write charArray fail, errorMessage ' + e.message);
+  }
+  ```
+
+ArkTS-Sta示例：
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2730,7 +2999,9 @@ writeCharArray(charArray: number[]): void
 
 ### readCharArray
 
-readCharArray(dataIn: number[]): void
+ArkTS-Dyn: readCharArray(dataIn: number[]): void
+
+ArkTS-Sta: readCharArray(dataIn: int[]): void
 
 从MessageSequence实例中读取单个字符数组。
 
@@ -2740,7 +3011,7 @@ readCharArray(dataIn: number[]): void
 
   | 参数名 | 类型     | 必填 | 说明                   |
   | ------ | -------- | ---- | ---------------------- |
-  | dataIn | number[] | 是   | 要读取的单个字符数组。 |
+  | dataIn | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 是   | 要读取的单个字符数组。 |
 
 **错误码：**
 
@@ -2753,6 +3024,7 @@ readCharArray(dataIn: number[]): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2775,9 +3047,34 @@ readCharArray(dataIn: number[]): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let data = rpc.MessageSequence.create();
+  try {
+    data.writeCharArray([97, 98, 88]);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc write charArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc write charArray fail, errorMessage ' + e.message);
+  }
+  let array: Array<int> = new Array(3);
+  try {
+    data.readCharArray(array);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc read charArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc read charArray fail, errorMessage ' + e.message);
+  }
+  ```
+
 ### readCharArray
 
-readCharArray(): number[]
+ArkTS-Dyn: readCharArray(): number[]
+
+ArkTS-Sta: readCharArray(): int[]
 
 从MessageSequence实例读取单个字符数组。
 
@@ -2787,7 +3084,7 @@ readCharArray(): number[]
 
   | 类型     | 说明               |
   | -------- | ------------------ |
-  | number[] | 返回单个字符数组。 |
+  | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 返回单个字符数组。 |
 
 **错误码：**
 
@@ -2799,6 +3096,30 @@ readCharArray(): number[]
 
 **示例：**
 
+ArkTS-Dyn示例：
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let data = rpc.MessageSequence.create();
+  try {
+    data.writeCharArray([97, 98, 88]);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc write charArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc write charArray fail, errorMessage ' + e.message);
+  }
+  try {
+    let array = data.readCharArray();
+    hilog.info(0x0000, 'testTag', 'RpcClient: readCharArray is ' + array);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'rpc read charArray fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'rpc read charArray fail, errorMessage ' + e.message);
+  }
+  ```
+
+ArkTS-Sta示例：
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -10463,6 +10784,10 @@ closeAshmem(): void
 >
 > 关闭Ashmem对象前需要先解除地址映射。
 
+**ArkTS-Dyn起始版本**: 8
+
+**ArkTS-Sta起始版本**: 22
+
 **系统能力**：SystemCapability.Communication.IPC.Core
 
 **示例：**
@@ -10477,6 +10802,10 @@ closeAshmem(): void
 unmapAshmem(): void
 
 删除该Ashmem对象的地址映射。
+
+**ArkTS-Dyn起始版本**: 8
+
+**ArkTS-Sta起始版本**: 22
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10525,9 +10854,15 @@ ArkTS-Sta示例：
 
 ### mapTypedAshmem<sup>9+</sup>
 
-mapTypedAshmem(mapType: number): void
+ArkTS-Dyn: mapTypedAshmem(mapType: number): void
+
+ArkTS-Sta: mapTypedAshmem(mapType: int): void
 
 在此进程的虚拟地址空间上创建共享文件映射，映射区域大小由此Ashmem对象指定。
+
+**ArkTS-Dyn起始版本**: 9
+
+**ArkTS-Sta起始版本**: 22
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10535,7 +10870,7 @@ mapTypedAshmem(mapType: number): void
 
   | 参数名  | 类型   | 必填 | 说明                           |
   | ------- | ------ | ---- | ------------------------------ |
-  | mapType | number | 是   | 指定映射的内存区域的保护等级。 |
+  | mapType | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定映射的内存区域的保护等级。 |
 
 **错误码：**
 
@@ -10548,6 +10883,22 @@ mapTypedAshmem(mapType: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  try {
+    ashmem.mapTypedAshmem(rpc.Ashmem.PROT_READ | rpc.Ashmem.PROT_WRITE);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'Rpc map ashmem fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'Rpc map ashmem fail, errorMessage ' + e.message);
+  }
+  ```
+
+ArkTS-Sta示例：
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -10662,6 +11013,10 @@ mapReadonlyAshmem(): void
 
 在此进程虚拟地址空间上创建只读的共享文件映射。
 
+**ArkTS-Dyn起始版本**: 9
+
+**ArkTS-Sta起始版本**: 22
+
 **系统能力**：SystemCapability.Communication.IPC.Core
 
 **错误码：**
@@ -10718,9 +11073,15 @@ mapReadOnlyAshmem(): boolean
 
 ### setProtectionType<sup>9+</sup>
 
-setProtectionType(protectionType: number): void
+ArkTS-Dyn: setProtectionType(protectionType: number): void
+
+ArkTS-Sta: setProtectionType(protectionType: int): void
 
 设置映射内存区域的保护等级。
+
+**ArkTS-Dyn起始版本**: 9
+
+**ArkTS-Sta起始版本**: 22
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10728,7 +11089,7 @@ setProtectionType(protectionType: number): void
 
   | 参数名         | 类型   | 必填 | 说明               |
   | -------------- | ------ | ---- | ------------------ |
-  | protectionType | number | 是   | 要设置的保护类型。 |
+  | protectionType | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要设置的保护类型。 |
 
 **错误码：**
 
@@ -10741,7 +11102,24 @@ setProtectionType(protectionType: number): void
 
 **示例：**
 
+
+ArkTS-Dyn示例：
   ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  try {
+    ashmem.setProtectionType(rpc.Ashmem.PROT_READ);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'Rpc set protection type fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'Rpc set protection type fail, errorMessage ' + e.message);
+  }
+  ```
+
+ArkTS-Sta示例：
+```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -10791,13 +11169,19 @@ setProtection(protectionType: number): boolean
 
 ### writeDataToAshmem<sup>11+</sup>
 
-writeDataToAshmem(buf: ArrayBuffer, size: number, offset: number): void
+ArkTS-Dyn: writeDataToAshmem(buf: ArrayBuffer, size: number, offset: number): void
+
+ArkTS-Sta: writeDataToAshmem(buf: ArrayBuffer, size: int, offset: int): void
 
 将数据写入此Ashmem对象关联的共享文件。
 
 > **说明：**
 >
 > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem9)进行映射。
+
+**ArkTS-Dyn起始版本**: 11
+
+**ArkTS-Sta起始版本**: 22
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10806,8 +11190,8 @@ writeDataToAshmem(buf: ArrayBuffer, size: number, offset: number): void
   | 参数名 | 类型     | 必填 | 说明                                               |
   | ------ | -------- | ---- | -------------------------------------------------- |
   | buf    | ArrayBuffer | 是   | 写入Ashmem对象的数据。                             |
-  | size   | number   | 是   | 要写入的数据大小。                                 |
-  | offset | number   | 是   | 要写入的数据在此Ashmem对象关联的内存区间的起始位置。 |
+  | size   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要写入的数据大小。                                 |
+  | offset | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要写入的数据在此Ashmem对象关联的内存区间的起始位置。 |
 
 **错误码：**
 
@@ -10820,6 +11204,29 @@ writeDataToAshmem(buf: ArrayBuffer, size: number, offset: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let buffer = new ArrayBuffer(1024);
+  let int32View = new Int32Array(buffer);
+  for (let i = 0; i < int32View.length; i++) {
+    int32View[i] = i * 2 + 1;
+  }
+  let size = buffer.byteLength;
+  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  ashmem.mapReadWriteAshmem();
+  try {
+    ashmem.writeDataToAshmem(buffer, size, 0);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'Rpc write to ashmem fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'Rpc write to ashmem fail, errorMessage ' + e.message);
+  }
+  ```
+
+ArkTS-Sta示例：
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -10933,7 +11340,9 @@ writeToAshmem(buf: number[], size: number, offset: number): boolean
 
 ### readDataFromAshmem<sup>11+</sup>
 
-readDataFromAshmem(size: number, offset: number): ArrayBuffer
+ArkTS-Dyn: readDataFromAshmem(size: number, offset: number): ArrayBuffer
+
+ArkTS-Sta: readDataFromAshmem(size: int, offset: int): ArrayBuffer
 
 从此Ashmem对象关联的共享文件中读取数据。
 
@@ -10941,14 +11350,18 @@ readDataFromAshmem(size: number, offset: number): ArrayBuffer
 >
 > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem9)进行映射。
 
+**ArkTS-Dyn起始版本**: 11
+
+**ArkTS-Sta起始版本**: 22
+
 **系统能力**：SystemCapability.Communication.IPC.Core
 
 **参数：**
 
   | 参数名 | 类型   | 必填 | 说明                                               |
   | ------ | ------ | ---- | -------------------------------------------------- |
-  | size   | number | 是   | 要读取的数据的大小。                               |
-  | offset | number | 是   | 要读取的数据在此Ashmem对象关联的内存区间的起始位置。 |
+  | size   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要读取的数据的大小。                               |
+  | offset | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要读取的数据在此Ashmem对象关联的内存区间的起始位置。 |
 
 **返回值：**
 
@@ -10967,6 +11380,38 @@ readDataFromAshmem(size: number, offset: number): ArrayBuffer
 
 **示例：**
 
+ArkTS-Dyn示例：
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let buffer = new ArrayBuffer(1024);
+  let int32View = new Int32Array(buffer);
+  for (let i = 0; i < int32View.length; i++) {
+    int32View[i] = i * 2 + 1;
+  }
+  let size = buffer.byteLength;
+  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  ashmem.mapReadWriteAshmem();
+  try {
+    ashmem.writeDataToAshmem(buffer, size, 0);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'Rpc write to ashmem fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'Rpc write to ashmem fail, errorMessage ' + e.message);
+  }
+  try {
+    let readResult = ashmem.readDataFromAshmem(size, 0);
+    let readInt32View = new Int32Array(readResult);
+    hilog.info(0x0000, 'testTag', 'RpcTest: read from Ashmem result is ' + readInt32View);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'Rpc read from ashmem fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'Rpc read from ashmem fail, errorMessage ' + e.message);
+  }
+  ```
+
+ArkTS-Sta示例：
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
