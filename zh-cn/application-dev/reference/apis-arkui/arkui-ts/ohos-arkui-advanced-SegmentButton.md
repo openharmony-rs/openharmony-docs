@@ -855,7 +855,6 @@ SegmentButtonItemOptions的构造参数。
 ArkTS-Dyn示例：
 
 ```ts
-// xxx.ets
 import {
   ItemRestriction,
   SegmentButton,
@@ -870,16 +869,16 @@ struct Index {
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
     buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }] as SegmentButtonItemTuple,
     multiply: false,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State multiplySelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '多选按钮1' }, { text: '多选按钮2' }, { text: '多选按钮3' }] as SegmentButtonItemTuple,
     multiply: true
-  })
+  });
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
@@ -889,7 +888,7 @@ struct Index {
     ] as SegmentButtonItemTuple,
     multiply: false,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State iconTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { text: '图标1', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
@@ -899,28 +898,37 @@ struct Index {
       { text: '图标5', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') }
     ] as SegmentButtonItemTuple,
     multiply: true
-  })
-  @State tabSelectedIndexes: number[] = [1]
-  @State singleSelectCapsuleSelectedIndexes: number[] = [0]
-  @State multiplySelectCapsuleSelectedIndexes: number[] = [0, 1]
-  @State singleSelectIconCapsuleSelectedIndexes: number[] = [3]
-  @State multiplySelectIconTextCapsuleSelectedIndexes: number[] = [1, 2]
+  });
+  @State tabSelectedIndexes: number[] = [1];
+  @State singleSelectCapsuleSelectedIndexes: number[] = [0];
+  @State multiplySelectCapsuleSelectedIndexes: number[] = [0, 1];
+  @State singleSelectIconCapsuleSelectedIndexes: number[] = [3];
+  @State multiplySelectIconTextCapsuleSelectedIndexes: number[] = [1, 2];
 
   build() {
     Row() {
       Column() {
         Column({ space: 25 }) {
-          SegmentButton({ options: this.tabOptions,
-            selectedIndexes: $tabSelectedIndexes })
-          SegmentButton({ options: this.singleSelectCapsuleOptions,
-            selectedIndexes: $singleSelectCapsuleSelectedIndexes })
+          SegmentButton({
+            options: this.tabOptions,
+            selectedIndexes: $tabSelectedIndexes
+          })
+          SegmentButton({
+            options: this.singleSelectCapsuleOptions,
+            selectedIndexes: $singleSelectCapsuleSelectedIndexes
+          })
           SegmentButton({
             options: this.multiplySelectCapsuleOptions,
-            selectedIndexes: $multiplySelectCapsuleSelectedIndexes })
-          SegmentButton({ options: this.iconCapsuleOptions,
-            selectedIndexes: $singleSelectIconCapsuleSelectedIndexes })
-          SegmentButton({ options: this.iconTextCapsuleOptions,
-            selectedIndexes: $multiplySelectIconTextCapsuleSelectedIndexes })
+            selectedIndexes: $multiplySelectCapsuleSelectedIndexes
+          })
+          SegmentButton({
+            options: this.iconCapsuleOptions,
+            selectedIndexes: $singleSelectIconCapsuleSelectedIndexes
+          })
+          SegmentButton({
+            options: this.iconTextCapsuleOptions,
+            selectedIndexes: $multiplySelectIconTextCapsuleSelectedIndexes
+          })
         }.width('90%')
       }.width('100%')
     }.height('100%')
@@ -952,18 +960,21 @@ import {
 struct Index {
   @State selectedIndexes: int[] = new Array<int>(5).fill(0)
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
-    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' },
+      { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
-    buttons: [{ text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
+    buttons: [{ text: '单选按钮1' }, { text: '单选按钮2' },
+      { text: '单选按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
     multiply: false,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State multiplySelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
-    buttons: [{ text: '多选按钮1' }, { text: '多选按钮2' }, { text: '多选按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
+    buttons: [{ text: '多选按钮1' }, { text: '多选按钮2' },
+      { text: '多选按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
     multiply: true
-  })
+  });
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
@@ -973,7 +984,7 @@ struct Index {
     ] as ItemRestriction<SegmentButtonIconItem>,
     multiply: false,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State iconTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { text: '图标1', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
@@ -983,7 +994,7 @@ struct Index {
       { text: '图标5', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') }
     ] as ItemRestriction<SegmentButtonIconTextItem>,
     multiply: true
-  })
+  });
   @State tabSelectedIndexes: int[] = [1];
   @State singleSelectCapsuleSelectedIndexes: int[] = [0];
   @State multiplySelectCapsuleSelectedIndexes: int[] = [0, 1];
@@ -994,17 +1005,26 @@ struct Index {
     Row() {
       Column() {
         Column({ space: 25 } as ColumnOptions) {
-          SegmentButton({ options: this.tabOptions,
-            selectedIndexes: this.tabSelectedIndexes })
-          SegmentButton({ options: this.singleSelectCapsuleOptions,
-            selectedIndexes: this.singleSelectCapsuleSelectedIndexes })
+          SegmentButton({
+            options: this.tabOptions,
+            selectedIndexes: this.tabSelectedIndexes
+          })
+          SegmentButton({
+            options: this.singleSelectCapsuleOptions,
+            selectedIndexes: this.singleSelectCapsuleSelectedIndexes
+          })
           SegmentButton({
             options: this.multiplySelectCapsuleOptions,
-            selectedIndexes: this.multiplySelectCapsuleSelectedIndexes })
-          SegmentButton({ options: this.iconCapsuleOptions,
-            selectedIndexes: this.singleSelectIconCapsuleSelectedIndexes })
-          SegmentButton({ options: this.iconTextCapsuleOptions,
-            selectedIndexes: this.multiplySelectIconTextCapsuleSelectedIndexes })
+            selectedIndexes: this.multiplySelectCapsuleSelectedIndexes
+          })
+          SegmentButton({
+            options: this.iconCapsuleOptions,
+            selectedIndexes: this.singleSelectIconCapsuleSelectedIndexes
+          })
+          SegmentButton({
+            options: this.iconTextCapsuleOptions,
+            selectedIndexes: this.multiplySelectIconTextCapsuleSelectedIndexes
+          })
         }.width('90%')
       }.width('100%')
     }.height('100%')
@@ -1034,7 +1054,8 @@ import {
 @Component
 struct Index {
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
-    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' },
+      { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
     backgroundColor: 'rgb(213,213,213)',
     selectedBackgroundColor: 'rgb(112,112,112)',
     textPadding: {
@@ -1043,14 +1064,14 @@ struct Index {
       bottom: 10,
       left: 10
     },
-  })
+  });
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }] as SegmentButtonItemTuple,
     multiply: false,
     fontColor: 'rgb(0,74,175)',
     selectedFontColor: 'rgb(247,247,247)',
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State multiplySelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '多选按钮1' }, { text: '多选按钮2' }, { text: '多选按钮3' }] as SegmentButtonItemTuple,
     multiply: true,
@@ -1058,7 +1079,7 @@ struct Index {
     selectedFontSize: 18,
     fontWeight: FontWeight.Bolder,
     selectedFontWeight: FontWeight.Lighter,
-  })
+  });
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
@@ -1075,7 +1096,7 @@ struct Index {
       left: 10
     },
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State iconTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { text: '图标1', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
@@ -1086,7 +1107,7 @@ struct Index {
     ] as SegmentButtonItemTuple,
     multiply: true,
     imageSize: { width: 10, height: 10 },
-  })
+  });
   @State tabSelectedIndexes: number[] = [0];
   @State singleSelectCapsuleSelectedIndexes: number[] = [0];
   @State multiplySelectCapsuleSelectedIndexes: number[] = [0, 1];
@@ -1148,7 +1169,8 @@ import {
 @Component
 struct Index {
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
-    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, { text: '页签按钮3'}] as ItemRestriction<SegmentButtonTextItem>,
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' },
+      { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
     backgroundColor: 'rgb(213,213,213)',
     selectedBackgroundColor: 'rgb(112,112,112)',
     textPadding: {
@@ -1157,14 +1179,14 @@ struct Index {
       bottom: 10,
       left: 10
     },
-  })
+  });
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }] as SegmentButtonItemTuple,
     multiply: false,
     fontColor: 'rgb(0,74,175)',
     selectedFontColor: 'rgb(247,247,247)',
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State multiplySelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '多选按钮1' }, { text: '多选按钮2' }, { text: '多选按钮3' }] as SegmentButtonItemTuple,
     multiply: true,
@@ -1172,7 +1194,7 @@ struct Index {
     selectedFontSize: 18,
     fontWeight: FontWeight.Bolder,
     selectedFontWeight: FontWeight.Lighter,
-  })
+  });
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
@@ -1189,7 +1211,7 @@ struct Index {
       left: 10
     },
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State iconTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { text: '图标1', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
@@ -1200,7 +1222,7 @@ struct Index {
     ] as ItemRestriction<SegmentButtonIconTextItem>,
     multiply: true,
     imageSize: { width: 10, height: 10 },
-  })
+  });
   @State tabSelectedIndexes: int[] = [0];
   @State singleSelectCapsuleSelectedIndexes: int[] = [0];
   @State multiplySelectCapsuleSelectedIndexes: int[] = [0, 1];
@@ -1260,8 +1282,8 @@ struct Index {
       { text: '4' }, { text: '5' }] as SegmentButtonItemTuple,
     multiply: false,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
-  @State capsuleSelectedIndexes: number[] = [0]
+  });
+  @State capsuleSelectedIndexes: number[] = [0];
 
   build() {
     Row() {
@@ -1334,7 +1356,7 @@ struct Index {
       { text: '4' }, { text: '5' }] as SegmentButtonItemTuple,
     multiply: false,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State capsuleSelectedIndexes: int[] = [0];
 
   build() {
@@ -1396,7 +1418,8 @@ import { LengthMetrics, SegmentButton, SegmentButtonOptions, ItemRestriction, Se
 @Component
 struct Index {
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
-    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' },
+      { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
     direction: Direction.Rtl,
     backgroundColor: Color.Green,
     selectedBackgroundColor: Color.Orange,
@@ -1404,7 +1427,7 @@ struct Index {
       end: LengthMetrics.vp(10),
       start: LengthMetrics.vp(10)
     },
-  })
+  });
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }],
     multiply: false,
@@ -1412,7 +1435,7 @@ struct Index {
     fontColor: Color.Black,
     selectedFontColor: Color.Yellow,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State multiplySelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '多选按钮1' }, { text: '多选按钮2' }, { text: '多选按钮3' }],
     multiply: true,
@@ -1421,7 +1444,7 @@ struct Index {
     selectedFontSize: 18,
     fontWeight: FontWeight.Bolder,
     selectedFontWeight: FontWeight.Lighter,
-  })
+  });
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
@@ -1438,7 +1461,7 @@ struct Index {
       start: LengthMetrics.vp(10)
     },
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State iconTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { text: '图标1', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
@@ -1450,12 +1473,12 @@ struct Index {
     multiply: true,
     direction: Direction.Rtl,
     imageSize: { width: 10, height: 10 },
-  })
-  @State tabSelectedIndexes: number[] = [0]
-  @State singleSelectCapsuleSelectedIndexes: number[] = [0]
-  @State multiplySelectCapsuleSelectedIndexes: number[] = [0, 1]
-  @State singleSelectIconCapsuleSelectedIndexes: number[] = [3]
-  @State multiplySelectIconTextCapsuleSelectedIndexes: number[] = [1, 2]
+  });
+  @State tabSelectedIndexes: number[] = [0];
+  @State singleSelectCapsuleSelectedIndexes: number[] = [0];
+  @State multiplySelectCapsuleSelectedIndexes: number[] = [0, 1];
+  @State singleSelectIconCapsuleSelectedIndexes: number[] = [3];
+  @State multiplySelectIconTextCapsuleSelectedIndexes: number[] = [1, 2];
 
   build() {
     Row() {
@@ -1513,7 +1536,8 @@ import { LengthMetrics } from '@ohos.arkui.node';
 @Component
 struct Index {
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
-    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' },
+      { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
     direction: Direction.Rtl,
     backgroundColor: Color.Green,
     selectedBackgroundColor: Color.Orange,
@@ -1521,7 +1545,7 @@ struct Index {
       end: LengthMetrics.vp(10),
       start: LengthMetrics.vp(10)
     },
-  })
+  });
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }],
     multiply: false,
@@ -1529,7 +1553,7 @@ struct Index {
     fontColor: Color.Black,
     selectedFontColor: Color.Yellow,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State multiplySelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '多选按钮1' }, { text: '多选按钮2' }, { text: '多选按钮3' }],
     multiply: true,
@@ -1538,7 +1562,7 @@ struct Index {
     selectedFontSize: 18,
     fontWeight: FontWeight.Bolder,
     selectedFontWeight: FontWeight.Lighter,
-  })
+  });
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
@@ -1555,7 +1579,7 @@ struct Index {
       start: LengthMetrics.vp(10)
     },
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State iconTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { text: '图标1', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
@@ -1567,7 +1591,7 @@ struct Index {
     multiply: true,
     direction: Direction.Rtl,
     imageSize: { width: 10, height: 10 },
-  })
+  });
   @State tabSelectedIndexes: int[] = [0];
   @State singleSelectCapsuleSelectedIndexes: int[] = [0];
   @State multiplySelectCapsuleSelectedIndexes: int[] = [0, 1];
@@ -1630,7 +1654,7 @@ struct Index {
       { text: '页签按钮3', accessibilityLevel: 'yes', accessibilityDescription: '页签按钮3 新手提醒' }
     ] as ItemRestriction<SegmentButtonTextItem>,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       {
@@ -1668,7 +1692,7 @@ struct Index {
     ] as SegmentButtonItemTuple,
     multiply: false,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State iconTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       {
@@ -1709,10 +1733,10 @@ struct Index {
       }
     ] as SegmentButtonItemTuple,
     multiply: true
-  })
-  @State tabSelectedIndexes: number[] = [1]
-  @State singleSelectIconCapsuleSelectedIndexes: number[] = [3]
-  @State multiplySelectIconTextCapsuleSelectedIndexes: number[] = [1, 2]
+  });
+  @State tabSelectedIndexes: number[] = [1];
+  @State singleSelectIconCapsuleSelectedIndexes: number[] = [3];
+  @State multiplySelectIconTextCapsuleSelectedIndexes: number[] = [1, 2];
 
   build() {
     Row() {
@@ -1783,7 +1807,7 @@ struct Index {
       { text: '页签按钮3', accessibilityLevel: 'yes', accessibilityDescription: '页签按钮3 新手提醒' }
     ] as ItemRestriction<SegmentButtonTextItem>,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       {
@@ -1821,7 +1845,7 @@ struct Index {
     ] as ItemRestriction<SegmentButtonIconItem>,
     multiply: false,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
-  })
+  });
   @State iconTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       {
@@ -1862,7 +1886,7 @@ struct Index {
       }
     ] as ItemRestriction<SegmentButtonIconTextItem>,
     multiply: true
-  })
+  });
   @State tabSelectedIndexes: int[] = [1];
   @State singleSelectIconCapsuleSelectedIndexes: int[] = [3];
   @State multiplySelectIconTextCapsuleSelectedIndexes: int[] = [1, 2];
@@ -1923,13 +1947,14 @@ import {
 @Component
 struct Index {
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
-    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' },
+      { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK,
     borderRadiusMode: BorderRadiusMode.CUSTOM,
     backgroundBorderRadius: LengthMetrics.vp(8),
     itemBorderRadius: LengthMetrics.vp(6)
-  })
-  @State tabSelectedIndexes: number[] = [1]
+  });
+  @State tabSelectedIndexes: number[] = [1];
 
   build() {
     Row() {
