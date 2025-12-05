@@ -332,13 +332,13 @@
        if (records[0].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
          let record = records[0] as unifiedDataChannel.PlainText;
          hilog.info(0xFF00, '[Sample_pasteboard]', 'GetPlainText success, type:' + records[0].getType());
-         //注意：用户复制的数据内容属于敏感信息，禁止应用程序使用日志明文打印从剪贴板获取到的数据内容。
+         // 注意：用户复制的数据内容属于敏感信息，禁止应用程序使用日志明文打印从剪贴板获取到的数据内容。
        } else {
          hilog.info(0xFF00, '[Sample_pasteboard]', 'Get Plain Text Data No Success, Type is: ' + records[0].getType());
        }
      }).catch((error: BusinessError) => {
        hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get PlainTextUnifiedData. Cause: ' + error.message);
-       //处理异常场景
+       // 处理异常场景
      })
    })
    ```
@@ -353,8 +353,8 @@
      systemPasteboard.setAppShareOptions(pasteboard.ShareOption.LOCALDEVICE);
      hilog.info(0xFF00, '[Sample_pasteboard]', 'Set app share options success.');
    } catch (err) {
-     hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to gSet app share options. Cause: ' + err.message);
-     //处理异常场景
+     hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to Set app share options. Cause: ' + err.message);
+     // 处理异常场景
    }
    ```
 
@@ -369,6 +369,6 @@
      hilog.info(0xFF00, '[Sample_pasteboard]', 'Remove app share options success.');
    } catch (err) {
      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to Remove app share options. Cause: ' + err.message);
-     //处理异常场景
+     // 处理异常场景
    }
    ```
