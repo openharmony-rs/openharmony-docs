@@ -440,20 +440,20 @@ UDP与TCP流程大体类似，下面以TCP为例：
    }
    ```
    <!-- @[local_socket_worker_sendOpt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-
-``` TypeScript
-client.connect(connectOpt).then(() => {
-  hilog.info(0x0000, 'testTag', `connect success`);
-  // 发送数据。
-  client.send(sendOpt).then(() => {
-    hilog.info(0x0000, 'testTag', `send success`);
-  }).catch((err: Object) => {
-    hilog.info(0x0000, 'testTag', `send failed: ` + JSON.stringify(err));
-  });
-}).catch((err: Object) => {
-  hilog.info(0x0000, 'testTag', `connect fail: ` + JSON.stringify(err));
-});
-```
+   
+   ``` TypeScript
+   client.connect(connectOpt).then(() => {
+     hilog.info(0x0000, 'testTag', `connect success`);
+     // 发送数据。
+     client.send(sendOpt).then(() => {
+       hilog.info(0x0000, 'testTag', `send success`);
+     }).catch((err: Object) => {
+       hilog.info(0x0000, 'testTag', `send failed: ` + JSON.stringify(err));
+     });
+   }).catch((err: Object) => {
+     hilog.info(0x0000, 'testTag', `connect fail: ` + JSON.stringify(err));
+   });
+   ```
 
 5. Socket连接使用完毕后，取消事件的注册，并关闭套接字。
 
