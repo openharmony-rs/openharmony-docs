@@ -42,13 +42,13 @@
 
 1. 权限申请和声明。
 
-    使用安装和删除接口需要申请权限：ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT或ohos.permission.ACCESS_USER_TRUSTED_CERT
-    
-    使用获取列表和获取详情接口需要申请权限：ohos.permission.ACCESS_CERT_MANAGER
-    
-    申请流程请参考：[申请应用权限](../AccessToken/determine-application-mode.md)
-    
-    声明权限请参考：[声明权限](../AccessToken/declare-permissions.md)
+   使用安装和删除接口需要申请权限：ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT或ohos.permission.ACCESS_USER_TRUSTED_CERT
+
+   使用获取列表和获取详情接口需要申请权限：ohos.permission.ACCESS_CERT_MANAGER
+
+   申请流程请参考：[申请应用权限](../AccessToken/determine-application-mode.md)
+
+   声明权限请参考：[声明权限](../AccessToken/declare-permissions.md)
 
 2. 导入相关模块。
 
@@ -83,7 +83,7 @@
        0x18, 0x6E, 0x91, 0xA6, 0xB3, 0x5E, 0x2C, 0xF0, 0x68, 0x45, 0x11, 0x1D, 0xA0, 0xCB, 0x83, 0xEB,
        0xE6, 0x25,
      ]);
-   
+
      let certUri: string = '';
      let certScope = certificateManager.CertScope.CURRENT_USER;
      try {
@@ -94,7 +94,7 @@
      } catch (err) {
        console.error(`Failed to install user ca cert. Code: ${err.code}, message: ${err.message}`);
      }
-   
+
      try {
        /* 获取用户CA证书详情。 */
        let result = await certificateManager.getUserTrustedCertificate(certUri);
@@ -107,7 +107,7 @@
      } catch (err) {
        console.error(`Failed to get user ca certificate. Code: ${err.code}, message: ${err.message}`);
      }
-   
+
      try {
        /* 获取当前用户下的用户CA证书列表。 */
        let result = await certificateManager.getAllUserTrustedCertificates(certScope);
@@ -122,7 +122,7 @@
      } catch (err) {
        console.error(`Failed to get user ca certificate. Code: ${err.code}, message: ${err.message}`);
      }
-   
+
      try {
        /* 删除安装的用户CA证书。 */
        certificateManager.uninstallUserTrustedCertificateSync(certUri);
@@ -143,7 +143,7 @@
        }
        let systemCAPath = certificateManager.getCertificateStorePath(property1);
        console.info(`Success to get system ca path: ${systemCAPath}`);
-   
+
        /* 获取当前用户的用户CA存储位置。 */
        let property2: certificateManager.CertStoreProperty = {
          certType: certificateManager.CertType.CA_CERT_USER,
@@ -151,7 +151,7 @@
        }
        let userCACurrentPath = certificateManager.getCertificateStorePath(property2);
        console.info(`Success to get current user's user ca path: ${userCACurrentPath}`);
-   
+
        /* 获取设备公共的用户CA存储位置。 */
        let property3: certificateManager.CertStoreProperty = {
          certType: certificateManager.CertType.CA_CERT_USER,
