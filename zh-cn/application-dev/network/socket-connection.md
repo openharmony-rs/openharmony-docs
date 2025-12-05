@@ -684,20 +684,20 @@ server.listen(listenAddr).then(() => {
 5. TLSSocket连接使用完毕后，主动关闭。
 
    <!-- @[two-way_closeTlsSocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
-
-``` TypeScript
-// 连接使用完毕后，主动关闭，并取消相关事件的订阅。
-tlsSocket!.close((err: BusinessError) => {
-  if (err) {
-    hilog.error(0x0000, 'testTag', 'close callback error = ' + err);
-  } else {
-    hilog.info(0x0000, 'testTag', 'close success');
-  }
-  tlsSocket!.off('message');
-  tlsSocket!.off('connect');
-  tlsSocket!.off('close');
-});
-```
+   
+   ``` TypeScript
+   // 连接使用完毕后，主动关闭，并取消相关事件的订阅。
+   tlsSocket!.close((err: BusinessError) => {
+     if (err) {
+       hilog.error(0x0000, 'testTag', 'close callback error = ' + err);
+     } else {
+       hilog.info(0x0000, 'testTag', 'close success');
+     }
+     tlsSocket!.off('message');
+     tlsSocket!.off('connect');
+     tlsSocket!.off('close');
+   });
+   ```
 
 客户端TLS Socket流程（单向认证）包括：
 
