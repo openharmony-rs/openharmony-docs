@@ -56,6 +56,7 @@
 | appMessageId<sup>12+</sup>       | string                                                   |   否  | 是  | 应用发送通知携带的唯一标识字段, 用于通知去重。如果同一应用通过本地和云端等不同途径发布携带相同appMessageId的通知，设备只展示一条消息，之后收到的重复通知会被静默去重，不展示、不提醒。去重标识仅在通知发布的24小时内有效，超过24小时或者设备重启失效。|
 | sound<sup>12+</sup>            | string                                                   |   否  | 是  | 应用通知自定义铃声文件名。该文件必须放在resources/rawfile目录下，支持m4a、aac、mp3、ogg、wav、flac、amr等格式。                                                        |
 | priorityNotificationType<sup>23+</sup>  | PriorityNotificationType | 否 | 是 | 通知优先级类型，用于判断是否高亮通知背景并置顶。 |
+| overlayIcon<sup>23+</sup>      | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)             |   否  | 是  | 通知重叠图标。图像像素的总字节数不超过192KB。<br>此接口只在[notificationSlotType](#notificationrequest-1)类型设置为SOCIAL_COMMUNICATION时生效。 |
 
 ## DistributedOptions<sup>8+</sup>
 
