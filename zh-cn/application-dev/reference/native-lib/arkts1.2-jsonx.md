@@ -4,13 +4,7 @@
 >
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块仅适用于ArkTS1.2。
-
-## 导入模块
-
-```ts
-import { jsonx } from "std/core";
-```
+> 本模块仅适用于ArkTS-sta。
 
 ## JsonType
 
@@ -120,7 +114,7 @@ JsonElement的构造函数。
 **示例：**
 
 ```ts
-const original = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+const original = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 ```
 
 ### $_get
@@ -351,7 +345,7 @@ createObject(map: Map\<string, JsonElement\>): JsonElement
 **示例：**
 
 ```ts
-const map = new Map\<string, jsonx.JsonElement\>();
+const map = new Map<string, jsonx.JsonElement>();
 map.set("name", jsonx.JsonElement.createString("John Doe"));
 map.set("age", jsonx.JsonElement.createInteger(30));
 
@@ -381,7 +375,7 @@ $_get(key: string): JsonElement
 **示例：**
 
 ```ts
-const original = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+const original = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 original.setElement("name", jsonx.JsonElement.createString("John"));
 original.setElement("age", jsonx.JsonElement.createInteger(30));
 const result = original["name"].asString();
@@ -409,7 +403,7 @@ getElement(key: string): JsonElement
 **示例：**
 
 ```ts
-const original = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+const original = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 original.setElement("name", jsonx.JsonElement.createString("John"));
 original.setElement("age", jsonx.JsonElement.createInteger(30));
 const result = original.getElement("name").asString();
@@ -437,7 +431,7 @@ tryGetElement(key: string): JsonElement | undefined
 **示例：**
 
 ```ts
-const original = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+const original = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 original.setElement("name", jsonx.JsonElement.createString("John"));
 original.setElement("age", jsonx.JsonElement.createInteger(30));
 const nameString = original.tryGetElement("name");
@@ -461,7 +455,7 @@ $_iterator(): IterableIterator\<[string, JsonElement]\>
 
 ```ts
 let propertyCount = 0;
-const original = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+const original = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 original.setElement("name", jsonx.JsonElement.createString("John"));
 original.setElement("age", jsonx.JsonElement.createInteger(30));
 let it = original.$_iterator();
@@ -499,7 +493,7 @@ getArray(key: string): Array\<JsonElement\>
 **示例：**
 
 ```ts
-const userElem = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+const userElem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 const tagsArray = [
     jsonx.JsonElement.createString("developer"),
     jsonx.JsonElement.createString("javascript"),
@@ -532,7 +526,7 @@ tryGetArray(key: string): Array\<JsonElement\>
 **示例：**
 
 ```ts
-const userElem = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+const userElem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 const tagsArray = [
     jsonx.JsonElement.createString("developer"),
     jsonx.JsonElement.createString("javascript"),
@@ -565,7 +559,7 @@ removeElement(key: string): boolean
 **示例：**
 
 ```ts
-const objectElem = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+const objectElem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 objectElem.setElement("name", jsonx.JsonElement.createString("John Doe"));
 objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
@@ -589,7 +583,7 @@ setElement(key: string, value: JsonElement)
 **示例：**
 
 ```ts
-const objectElem = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+const objectElem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 objectElem.setElement("name", jsonx.JsonElement.createString("John Doe"));
 objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
@@ -619,7 +613,7 @@ getDouble(key: string): double
 **示例：**
 
 ```ts
-const objectElem = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+const objectElem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 objectElem.setElement("name", jsonx.JsonElement.createString("John Doe"));
 objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
@@ -650,7 +644,7 @@ tryGetDouble(key: string, fallback?: double): double | undefined
 **示例：**
 
 ```ts
-const objectElem = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+const objectElem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 objectElem.setElement("name", jsonx.JsonElement.createString("John Doe"));
 objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
@@ -679,7 +673,7 @@ getInteger(key: string): int
 **示例：**
 
 ```ts
-const objectElem = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+const objectElem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 objectElem.setElement("name", jsonx.JsonElement.createString("John Doe"));
 objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
@@ -710,7 +704,7 @@ tryGetInteger(key: string, fallback: int = 0): int
 **示例：**
 
 ```ts
-const objectElem = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+const objectElem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 objectElem.setElement("name", jsonx.JsonElement.createString("John Doe"));
 objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
@@ -740,7 +734,7 @@ getString(key: string): string
 **示例：**
 
 ```ts
-const objectElem = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+const objectElem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 objectElem.setElement("name", jsonx.JsonElement.createString("John Doe"));
 objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
@@ -771,7 +765,7 @@ tryGetString(key: string, fallback: string = ""): string
 **示例：**
 
 ```ts
-const objectElem = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+const objectElem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 objectElem.setElement("name", jsonx.JsonElement.createString("John Doe"));
 objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
@@ -801,7 +795,7 @@ getBoolean(key: string): boolean
 **示例：**
 
 ```ts
-const objectElem = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+const objectElem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 objectElem.setElement("name", jsonx.JsonElement.createString("John Doe"));
 objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
@@ -832,7 +826,7 @@ tryGetBoolean(key: string, fallback: boolean = false): boolean
 **示例：**
 
 ```ts
-const objectElem = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+const objectElem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 objectElem.setElement("name", jsonx.JsonElement.createString("John Doe"));
 objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
@@ -1214,21 +1208,21 @@ fromJson(jsonElem: JsonElement)
 **示例：**
 
 ```ts
-class User implements jsonx.JsonElementSerializable {
+class User implements jsonx.JsonElementDeserializable {
     name: string = "";
     age: int = 0;
 
-    fromJson(jsonElem: jsonx.JsonElement) {
+    fromJSON(jsonElem: jsonx.JsonElement) {
         this.name = jsonElem.getElement("name").asString();
         this.age = jsonElem.getElement("age").asInteger();
     }
 }
 
-const original = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+const original = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 original.setElement("name", jsonx.JsonElement.createString("John"));
 original.setElement("age", jsonx.JsonElement.createInteger(30));
 let user = new User();
-user.fromJson(original);
+user.fromJSON(original);
 console.info("name = " + user.name); // name = John
 console.info("age = " + user.age); // age = 30
 ```
@@ -1252,12 +1246,12 @@ toJson(): JsonElement
 **示例：**
 
 ```ts
-class User implements jsonx.JsonElementDeserializable {
+class User implements jsonx.JsonElementSerializable {
     name: string = "";
     age: int = 0;
 
-    toJson(): jsonx.JsonElement {
-        let elem = new jsonx.JsonElement({} as Record\<string, jsonx.JsonElement\>);
+    toJSON(): jsonx.JsonElement {
+        let elem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
         elem.setElement("name", jsonx.JsonElement.createString(this.name));
         elem.setElement("age", jsonx.JsonElement.createInteger(this.age));
         return elem;
@@ -1267,7 +1261,7 @@ class User implements jsonx.JsonElementDeserializable {
 let user = new User();
 user.name = "John";
 user.age = 30;
-const elem = user.toJson();
+const elem = user.toJSON();
 console.info("age = " + elem.getElement("name").asString()); // age = 30
 console.info("name = " + elem.getElement("age").asInteger()); // name = John
 ```
