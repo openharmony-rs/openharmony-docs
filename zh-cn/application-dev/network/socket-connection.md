@@ -391,11 +391,11 @@ multicast.addMembership(addr).then(() => {
 2. 使用constructLocalSocketInstance接口，创建一个LocalSocket客户端对象。
 
    <!-- @[local_socket_worker_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-
-``` TypeScript
-// 创建一个LocalSocket连接，返回一个LocalSocket对象。
-let client: socket.LocalSocket = socket.constructLocalSocketInstance();
-```
+   
+   ``` TypeScript
+   // 创建一个LocalSocket连接，返回一个LocalSocket对象。
+   let client: socket.LocalSocket = socket.constructLocalSocketInstance();
+   ```
 
 3. 注册LocalSocket的消息(message)事件，以及一些其它事件(可选)。
 
