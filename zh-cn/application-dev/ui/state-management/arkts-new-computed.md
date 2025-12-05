@@ -208,8 +208,8 @@ get varName(): T {
    - 点击第二个Button，age自增，UI无变化。因为age非状态变量，只有被观察到的变化才会触发\@Computed fullName重新计算。
 
    <!-- @[custom_component_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/CustomComponentUse.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
    const TAG = '[Sample_Textcomponent]';
@@ -260,8 +260,8 @@ get varName(): T {
    点击Button改变lastName，触发\@Computed fullName重新计算，且只被计算一次。
 
    <!-- @[ObservedV2_Class_User](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ObservedV2ClassUser.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
    const TAG = '[Sample_Textcomponent]';
