@@ -475,7 +475,7 @@ DisplayPowerInfo:powerState:AWAKE
 
 事件检测超时阈值：log版本为8000毫秒，nolog版本为5000毫秒。
 
-前置事件中包含：lastDispatchEvent为上传分发的事件；lastProcessEvent为上次处理的事件；lastMarkedEvent为上次标记的事件。
+前置事件中包含：lastDispatchEvent为上次分发的事件；lastProcessEvent为上次处理的事件；lastMarkedEvent为上次标记的事件。
 
 在上述示例中，上次分发的事件是430，上次处理的事件是429，上次标记的事件是428，表明430事件已分发完毕，在处理环节，已超时8000毫秒。此日志可以用于APP_INPUT_BLOCK事件的简单定界，帮助问题分析。
 
