@@ -1926,7 +1926,7 @@ struct ScrollExample1 {
 
 ### 示例13（设置滚动事件）
 
-该示例通过FrameNode中的[getEvent('Scroll')](../js-apis-arkui-frameNode.md#geteventscroll19)获取[UIScrollEvent](#uiscrollevent19)后给Scroll设置滚动事件回调，可以用于无法通过普通接口给Scroll设置滚动事件的场景。
+该示例通过FrameNode中的[getEvent('Scroll')](../js-apis-arkui-frameNode.md#geteventscroll19)获取[UIScrollEvent](#uiscrollevent19)后给Scroll设置滚动事件回调，可以用于无法通过声明式接口直接给Scroll设置滚动事件的场景。
 
 从API version 19开始，新增UIScrollEvent接口。
 
