@@ -184,11 +184,11 @@ struct ScrollExample {
             .height(200)
             .margin({ top: 50, bottom: 20 })
             .backgroundColor(Color.Green)
-              // 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调。
+            // 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调。
             .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-              console.info('Test Text isExpanding: ' + isExpanding + ', currentRatio:' + currentRatio)
+              console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`)
               if (isExpanding && currentRatio >= 1.0) {
-                console.info('Test Text is fully visible. currentRatio:' + currentRatio)
+                console.info(`Test Text is fully visible. currentRatio: ${currentRatio}`)
                 this.testTextStr = 'Test Text is fully visible'
               }
 
@@ -207,7 +207,7 @@ struct ScrollExample {
           .height(200)
           .backgroundColor(Color.Yellow)
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-            console.info('Test Row isExpanding:' + isExpanding + ', currentRatio:' + currentRatio)
+            console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`)
             if (isExpanding && currentRatio >= 1.0) {
               console.info('Test Row is fully visible.')
               this.testRowStr = 'Test Row is fully visible'
@@ -219,7 +219,7 @@ struct ScrollExample {
             }
           })
 
-          ForEach(this.arr, (item:number) => {
+          ForEach(this.arr, (item: number) => {
             Text(item.toString())
               .width('90%')
               .height(150)
@@ -228,7 +228,7 @@ struct ScrollExample {
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .margin({ top: 10 })
-          }, (item:number) => (item.toString()))
+          }, (item: number) => (item.toString()))
 
         }.width('100%')
       }
@@ -238,7 +238,7 @@ struct ScrollExample {
       .scrollBarColor(Color.Gray)
       .scrollBarWidth(10)
       .onWillScroll((xOffset: number, yOffset: number, scrollState: ScrollState) => {
-        console.info(xOffset + ' ' + yOffset)
+        console.info(`${xOffset} ${yOffset}`)
       })
       .onScrollEdge((side: Edge) => {
         console.info('To the edge')
@@ -286,19 +286,20 @@ struct ScrollExample {
             .height(200)
             .margin({ top: 50, bottom: 20 })
             .backgroundColor(Color.Green)
-              // 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调。
-            .onVisibleAreaApproximateChange({ratios: [0.0, 1.0], expectedUpdateInterval: 1000}, (isExpanding: boolean, currentRatio: number) => {
-              console.info('Test Text isExpanding: ' + isExpanding + ', currentRatio:' + currentRatio)
-              if (isExpanding && currentRatio >= 1.0) {
-                console.info('Test Text is fully visible. currentRatio:' + currentRatio)
-                this.testTextStr = 'Test Text is fully visible'
-              }
+            // 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调。
+            .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 1000 },
+              (isExpanding: boolean, currentRatio: number) => {
+                console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`)
+                if (isExpanding && currentRatio >= 1.0) {
+                  console.info(`Test Text is fully visible. currentRatio: ${currentRatio}`)
+                  this.testTextStr = 'Test Text is fully visible'
+                }
 
-              if (!isExpanding && currentRatio <= 0.0) {
-                console.info('Test Text is completely invisible.')
-                this.testTextStr = 'Test Text is completely invisible'
-              }
-            })
+                if (!isExpanding && currentRatio <= 0.0) {
+                  console.info('Test Text is completely invisible.')
+                  this.testTextStr = 'Test Text is completely invisible'
+                }
+              })
 
           Row() {
             Text('Test Row Visible  Change')
@@ -309,7 +310,7 @@ struct ScrollExample {
           .height(200)
           .backgroundColor(Color.Yellow)
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-            console.info('Test Row isExpanding:' + isExpanding + ', currentRatio:' + currentRatio)
+            console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`)
             if (isExpanding && currentRatio >= 1.0) {
               console.info('Test Row is fully visible.')
               this.testRowStr = 'Test Row is fully visible'
@@ -321,7 +322,7 @@ struct ScrollExample {
             }
           })
 
-          ForEach(this.arr, (item:number) => {
+          ForEach(this.arr, (item: number) => {
             Text(item.toString())
               .width('90%')
               .height(150)
@@ -330,7 +331,7 @@ struct ScrollExample {
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .margin({ top: 10 })
-          }, (item:number) => (item.toString()))
+          }, (item: number) => (item.toString()))
 
         }.width('100%')
       }
@@ -340,7 +341,7 @@ struct ScrollExample {
       .scrollBarColor(Color.Gray)
       .scrollBarWidth(10)
       .onWillScroll((xOffset: number, yOffset: number, scrollState: ScrollState) => {
-        console.info(xOffset + ' ' + yOffset)
+        console.info(`${xOffset} ${yOffset}`)
       })
       .onScrollEdge((side: Edge) => {
         console.info('To the edge')
@@ -380,8 +381,12 @@ struct OnVisibleAreaChangeSample {
           .width(120)
           .offset({ x: 0, y: 60 })
           // measureFromViewport设置为true，父组件未设置clip(true)，超出父组件的区域被视为可见区域。
-          .onVisibleAreaApproximateChange({ratios: [0.0, 1.0], expectedUpdateInterval: 500, measureFromViewport: true}, (isExpanding: boolean, currentRatio: number) => {
-            console.log(`onVisibleAreaApproximateChange1 isExpanding:${isExpanding} currentRatio:${currentRatio}`)
+          .onVisibleAreaApproximateChange({
+            ratios: [0.0, 1.0],
+            expectedUpdateInterval: 500,
+            measureFromViewport: true
+          }, (isExpanding: boolean, currentRatio: number) => {
+            console.log(`onVisibleAreaApproximateChange1 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
           })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
             this.ratio1 = currentRatio
@@ -407,9 +412,10 @@ struct OnVisibleAreaChangeSample {
           .width(120)
           .offset({ x: 0, y: 60 })
           // 不设置measureFromViewport，measureFromViewport默认为false，父组件未设置clip(true)，超出父组件的区域被视为不可见区域。
-          .onVisibleAreaApproximateChange({ratios: [0.0, 1.0], expectedUpdateInterval: 500}, (isExpanding: boolean, currentRatio: number) => {
-            console.log(`onVisibleAreaApproximateChange2 isExpanding:${isExpanding} currentRatio:${currentRatio}`)
-          })
+          .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 500 },
+            (isExpanding: boolean, currentRatio: number) => {
+              console.log(`onVisibleAreaApproximateChange2 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
+            })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
             this.ratio2 = currentRatio
           })
@@ -434,8 +440,12 @@ struct OnVisibleAreaChangeSample {
           .width(120)
           .offset({ x: 0, y: 60 })
           // measureFromViewport设置为true，父组件设置clip(true)，超出父组件的区域被视为不可见区域。
-          .onVisibleAreaApproximateChange({ratios: [0.0, 1.0], expectedUpdateInterval: 500, measureFromViewport: true}, (isExpanding: boolean, currentRatio: number) => {
-            console.log(`onVisibleAreaApproximateChange3 isExpanding:${isExpanding} currentRatio:${currentRatio}`)
+          .onVisibleAreaApproximateChange({
+            ratios: [0.0, 1.0],
+            expectedUpdateInterval: 500,
+            measureFromViewport: true
+          }, (isExpanding: boolean, currentRatio: number) => {
+            console.log(`onVisibleAreaApproximateChange3 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
           })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
             this.ratio3 = currentRatio
