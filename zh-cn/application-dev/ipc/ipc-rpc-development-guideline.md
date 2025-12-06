@@ -233,7 +233,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
   导入相关依赖，并定义所需的变量；
 
   <!-- @[rpc_front-end_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   import { BusinessError } from '@kit.BasicServicesKit';
   import rpc from '@ohos.rpc';
@@ -241,13 +241,13 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
   import { abilityAccessCtrl, PermissionRequestResult, common, Want} from '@kit.AbilityKit';
   import { JSON } from '@kit.ArkTS';
-
+  
   let proxy: rpc.IRemoteObject | undefined
   let connectId: number | undefined
   let dmInstance: distributedDeviceManager.DeviceManager
   let deviceList: Array<distributedDeviceManager.DeviceBasicInfo> | undefined;
   let deviceId: string| undefined;
-
+  
   // 死亡通知
   class MyDeathRecipient implements rpc.DeathRecipient{
     onRemoteDied() {
