@@ -43,6 +43,7 @@
 
 ```ts
 import { PromptAction } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct Index {

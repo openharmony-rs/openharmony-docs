@@ -52,6 +52,7 @@
 
 ```ts
 import { promptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -60,19 +61,25 @@ struct Index {
     Column({ space: 10 }) {
       TextInput()
       Button() {
-        Text("DEFAULT类型Toast")
+        Text('DEFAULT类型Toast')
           .fontSize(20)
           .fontWeight(FontWeight.Bold)
 
       }
       .width('100%')
       .onClick(() => {
-        this.getUIContext().getPromptAction().showToast({
-          message: "ok，我是DEFAULT toast",
-          duration: 2000,
-          showMode: promptAction.ToastShowMode.DEFAULT,
-          bottom: 80
-        });
+        try {
+          this.getUIContext().getPromptAction().showToast({
+            message: 'ok，我是DEFAULT toast',
+            duration: 2000,
+            showMode: promptAction.ToastShowMode.DEFAULT,
+            bottom: 80
+          });
+        } catch (error) {
+          let message = (error as BusinessError).message;
+          let code = (error as BusinessError).code;
+          console.error(`showToast args error code is ${code}, message is ${message}`);
+        }
       })
 
       Button() {
@@ -83,12 +90,18 @@ struct Index {
       }
       .width('100%')
       .onClick(() => {
-        this.getUIContext().getPromptAction().showToast({
-          message: "ok，我是TOP_MOST toast",
-          duration: 2000,
-          showMode: promptAction.ToastShowMode.TOP_MOST,
-          bottom: 85
-        });
+        try {
+          this.getUIContext().getPromptAction().showToast({
+            message: "ok，我是TOP_MOST toast",
+            duration: 2000,
+            showMode: promptAction.ToastShowMode.TOP_MOST,
+            bottom: 85
+          });
+        } catch (error) {
+          let message = (error as BusinessError).message;
+          let code = (error as BusinessError).code;
+          console.error(`showToast args error code is ${code}, message is ${message}`);
+        }
       })
     }
   }
