@@ -48,6 +48,7 @@ getDeviceList(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -57,7 +58,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getDeviceList((error: Error, ids: Array<Number>) => {
+            inputDevice.getDeviceList((error: BusinessError, ids: Array<Number>) => {
               if (error) {
                 console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -91,6 +92,7 @@ getDeviceList(): Promise&lt;Array&lt;number&gt;&gt;
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -102,6 +104,8 @@ struct Index {
           try {
             inputDevice.getDeviceList().then((ids: Array<Number>) => {
               console.info(`Device id list: ${JSON.stringify(ids)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
             });
           } catch (error) {
             console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -139,6 +143,7 @@ getDeviceInfo(deviceId: number, callback: AsyncCallback&lt;InputDeviceData&gt;):
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -149,7 +154,7 @@ struct Index {
         .onClick(() => {
           // 获取输入设备ID为1的设备信息。
           try {
-            inputDevice.getDeviceInfo(1, (error: Error, deviceData: inputDevice.InputDeviceData) => {
+            inputDevice.getDeviceInfo(1, (error: BusinessError, deviceData: inputDevice.InputDeviceData) => {
               if (error) {
                 console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -197,6 +202,7 @@ getDeviceInfo(deviceId: number): Promise&lt;InputDeviceData&gt;
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -209,6 +215,8 @@ struct Index {
           try {
             inputDevice.getDeviceInfo(1).then((deviceData: inputDevice.InputDeviceData) => {
               console.info(`Device info: ${JSON.stringify(deviceData)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get device info failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
             });
           } catch (error) {
             console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -617,6 +625,7 @@ supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;, callback: AsyncCallbac
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -627,7 +636,7 @@ struct Index {
         .onClick(() => {
           // 查询ID为1的输入设备对于17、22和2055按键的支持情况。
           try {
-            inputDevice.supportKeys(1, [17, 22, 2055], (error: Error, supportResult: Array<Boolean>) => {
+            inputDevice.supportKeys(1, [17, 22, 2055], (error: BusinessError, supportResult: Array<Boolean>) => {
               console.info(`Query result: ${JSON.stringify(supportResult)}`);
             });
           } catch (error) {
@@ -672,6 +681,7 @@ supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;): Promise&lt;Array&lt;b
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -684,6 +694,8 @@ struct Index {
           try {
             inputDevice.supportKeys(1, [17, 22, 2055]).then((supportResult: Array<Boolean>) => {
               console.info(`Query result: ${JSON.stringify(supportResult)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Query support Keys failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
             });
           } catch (error) {
             console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -775,6 +787,7 @@ getKeyboardType(deviceId: number, callback: AsyncCallback&lt;KeyboardType&gt;): 
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -785,7 +798,7 @@ struct Index {
         .onClick(() => {
           // 查询ID为1的输入设备的键盘类型。
           try {
-            inputDevice.getKeyboardType(1, (error: Error, type: Number) => {
+            inputDevice.getKeyboardType(1, (error: BusinessError, type: Number) => {
               if (error) {
                 console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -833,6 +846,7 @@ getKeyboardType(deviceId: number): Promise&lt;KeyboardType&gt;
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -845,7 +859,9 @@ struct Index {
           try {
             inputDevice.getKeyboardType(1).then((type: number) => {
               console.info(`Keyboard type: ${JSON.stringify(type)}`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get keyboard type failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -941,6 +957,7 @@ isFunctionKeyEnabled(functionKey: FunctionKey): Promise&lt;boolean&gt;
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -952,7 +969,9 @@ struct Index {
           try {
             inputDevice.isFunctionKeyEnabled(inputDevice.FunctionKey.CAPS_LOCK).then((state: boolean) => {
               console.info(`capslock state: ${JSON.stringify(state)}`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get capslock state failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Failed to get capslock state, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
