@@ -52,12 +52,12 @@ struct Index {
   @State message: string = "Click to obtain the device list and monitor device hot-plug events";
   keyBoards: Map<number, inputDevice.KeyboardType> = new Map();
 
-// ···
+  // ...
 
   build() {
     RelativeContainer() {
       Column() {
-        // ···
+        // ...
 
         Text(this.message)
           .onClick(() => {
@@ -100,9 +100,9 @@ struct Index {
                 ["code", "message"])}`
             }
           })
-        // ···
+          // ...
       }
-    // ···
+      // ...
     }
   }
 }

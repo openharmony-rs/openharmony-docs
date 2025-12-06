@@ -65,19 +65,19 @@ void OnKeyEventCallback(const Input_KeyEvent* keyEvent)
     event.action = OH_Input_GetKeyEventAction(keyEvent);
     event.keyCode = OH_Input_GetKeyEventKeyCode(keyEvent);
     event.actionTime = OH_Input_GetKeyEventActionTime(keyEvent);
-	// ···
+    // ...
 }
 
 static napi_value AddKeyEventInterceptor(napi_env env, napi_callback_info info)
 {
     Input_Result ret = OH_Input_AddKeyEventInterceptor(OnKeyEventCallback, nullptr);
-	// ···
+    // ...
 }
 
 static napi_value RemoveKeyEventInterceptor(napi_env env, napi_callback_info info)
 {
     Input_Result ret = OH_Input_RemoveKeyEventInterceptor();
-	// ···
+    // ...
 }
 ```
 
@@ -127,7 +127,7 @@ void OnMouseEventCallback(const Input_MouseEvent* mouseEvent)
     event.axisType = OH_Input_GetMouseEventAxisType(mouseEvent);
     event.axisValue = OH_Input_GetMouseEventAxisValue(mouseEvent);
     event.actionTime = OH_Input_GetMouseEventActionTime(mouseEvent);
-	// ···
+    // ...
 }
 
 //定义触摸事件回调函数
@@ -140,7 +140,7 @@ void OnTouchEventCallback(const Input_TouchEvent* touchEvent)
     event.displayX = OH_Input_GetTouchEventDisplayX(touchEvent);
     event.displayY = OH_Input_GetTouchEventDisplayY(touchEvent);
     event.actionTime = OH_Input_GetTouchEventActionTime(touchEvent);
-	// ···
+    // ...
 }
 
 //定义轴事件回调函数
@@ -174,7 +174,7 @@ void OnAxisEventCallback(const Input_AxisEvent* axisEvent)
         ret = OH_Input_GetAxisEventAxisValue(axisEvent, AXIS_TYPE_SCROLL_HORIZONTAL, &value);
         event.axisValues.insert(std::make_pair(AXIS_TYPE_SCROLL_HORIZONTAL, value));
     }
-	// ···
+    // ...
 }
 
 //输入事件回调函数结构体
@@ -189,13 +189,13 @@ static napi_value AddEventInterceptor(napi_env env, napi_callback_info info)
     //设置轴事件回调函数
     g_eventCallback.axisCallback = OnAxisEventCallback;
     Input_Result ret = OH_Input_AddInputEventInterceptor(&g_eventCallback, nullptr);
-	// ···
+    // ...
 }
 
 static napi_value RemoveEventInterceptor(napi_env env, napi_callback_info info)
 {
     Input_Result ret = OH_Input_RemoveInputEventInterceptor();
-	// ···
+    // ...
 }
 ```
 
