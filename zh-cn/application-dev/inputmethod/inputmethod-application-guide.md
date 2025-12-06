@@ -159,7 +159,7 @@ class KeyboardController {
     }
     let inputStyle = StyleConfiguration.getInputStyle(isLandscape, isRkDevice, deviceInfo.deviceType);
     AppStorage.setOrCreate('inputStyle', inputStyle);
-    InputMethodEngine.createPanel(this.mContext, panelInfo).then((panel: inputMethodEngine.Panel) => {
+    inputMethodAbility.createPanel(this.mContext, panelInfo).then((panel: inputMethodEngine.Panel) => {
       this.panel = panel;
       panel.resize(dWidth, keyHeight).then(() => {
         panel.moveTo(0, this.barPosition).then(() => {
@@ -174,7 +174,7 @@ class KeyboardController {
   private destroyPanel(): void {
     this.inputHandle.addLog('destroyPanel');
     if (this.panel) {
-      InputMethodEngine.destroyPanel(this.panel);
+      inputMethodAbility.destroyPanel(this.panel);
     }
   }
 
@@ -224,7 +224,7 @@ class KeyboardController {
           })
         }
       }).catch((err: BusinessError) => {
-        this.inputHandle.addLog('resizePanel-moveTo err' + JSON.stringify(err));
+        this.inputHandle.addLog(`resizePanel-moveTo err = ${err.code} ${err.message}`);
       })
     }
   }
