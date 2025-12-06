@@ -270,8 +270,8 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
       atManager.requestPermissionsFromUser(context, ['ohos.permission.DISTRIBUTED_DATASYNC'],
         (err: BusinessError, data: PermissionRequestResult) => {
         if (err) {
-          hilog.error(0x0000, 'testTag', 'RpcClient: requestPermissions failed, code is '
-            + err.code + ', message is ' + err.message);
+          hilog.error(0x0000, 'testTag', 'RpcClient: requestPermissions failed, code is ' +
+            err.code + ', message is ' + err.message);
         } else {
           hilog.info(0x0000, 'testTag','RpcClient: requestPermissions success, result is ' + JSON.stringify(data));
           hilog.info(0x0000, 'testTag','RpcClient: data permissions is ' + data.permissions);
@@ -285,7 +285,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
       hilog.error(0x0000, 'testTag', 'RpcClient: getPermission failed, code is  ' + code + ', message is ' + message);
     }
   }
-
+  
   // 获取对端设备信息
   function getDeviceId(){
     hilog.info(0x00000, 'testTag', 'RpcClient: begin to getDeviceId');
@@ -304,7 +304,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
       hilog.error(0x0000, 'testTag', 'RpcClient: getDeviceId failed, code is  ' + code + ', message is ' + message);
     }
   }
-
+  
   // 连接服务
   function connectAbility(context:common.UIAbilityContext) {
     hilog.info(0x00000, 'testTag', 'RpcClient: begin to connect Ability');
@@ -313,7 +313,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
       abilityName: 'ServiceAbility',
       deviceId: deviceId,
     }
-
+  
     let connect: common.ConnectOptions = {
       onConnect: (elementName, remoteProxy) => {
         hilog.info(0x00000, 'testTag', 'RpcClient: onConnect. elementName is :' +  JSON.stringify(elementName));
@@ -345,7 +345,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
         hilog.info(0x0000, 'testTag', 'RpcClient: onFailed. code is :' + code);
       },
     }
-
+  
     try {
       connectId = context.connectServiceExtensionAbility(want, connect);
     }catch (err) {
@@ -354,7 +354,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
       hilog.error(0x0000, 'testTag', 'RpcClient: connectService failed, code is ' + code + ', message is ' + message);
     }
   }
-
+  
   // 断开连接
   function disconnectAbility(context: common.UIAbilityContext) {
     hilog.info(0x00000, 'testTag', 'RpcClient: begin to disconnect Ability');
@@ -368,7 +368,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
       }
     }
   }
-
+  
   // 发送消息
   function sendString() {
     hilog.info(0x00000, 'testTag', 'RpcClient: begin to send string');
