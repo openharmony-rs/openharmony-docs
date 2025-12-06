@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_AnimateCompleteCallback
 
 ## 概述
 
-动画播放完成回调类型。
+动画播放结束回调类型。
 
 **起始版本：** 12
 
@@ -26,15 +26,15 @@ typedef struct {...} ArkUI_AnimateCompleteCallback
 
 | 名称                                                                              | 描述 |
 |---------------------------------------------------------------------------------| -- |
-| [ArkUI_FinishCallbackType](capi-native-type-h.md#arkui_finishcallbacktype) type | 在动画中定义onFinish回调的类型。 |
-| void* userData                                                                  | 自定义类型。 |
+| [ArkUI_FinishCallbackType](capi-native-type-h.md#arkui_finishcallbacktype) type | 在动画中定义结束回调的类型。 |
+| void* userData                                                                  | 用于动画结束回调，传递用户自定义数据。 |
 
 
 ### 成员函数
 
 | 名称 | 描述 |
 | -- | -- |
-| [void (\*callback)(void* userData)](#callback) | 动画播放完成回调。 |
+| [void (\*callback)(void* userData)](#callback) | 动画播放结束回调。 |
 
 ## 成员函数说明
 
@@ -47,6 +47,6 @@ void (*callback)(void* userData)
 **描述：**
 
 
-动画播放完成回调。
+动画播放结束回调。
 
 
