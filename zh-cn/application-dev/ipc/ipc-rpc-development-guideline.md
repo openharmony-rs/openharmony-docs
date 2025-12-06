@@ -37,12 +37,12 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 3. 在ServiceExtAbility.ets文件中，导入ServiceExtensionAbility的依赖包，自定义类继承ServiceExtensionAbility并实现生命周期回调。定义一个继承自[rpc.RemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#remoteobject)的stub类，实现[onRemoteMessageRequest](../reference/apis-ipc-kit/js-apis-rpc.md#onremotemessagerequest9)方法，用来处理客户端的请求。在onConnect生命周期回调函数里，创建之前定义的Stub对象并返回。
 
     <!-- @[service_impl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/IPC/IPC_sendMessage/IPC_Stub/entry/src/main/ets/ServiceExtAbility/ServiceExtAbility.ets) -->
-
+    
     ``` TypeScript
     import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
     import { rpc } from '@kit.IPCKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
+    
     // 定义服务端
     class Stub extends rpc.RemoteObject {
       constructor(descriptor: string) {
@@ -63,7 +63,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
         }
       }
     }
-
+    
     // 定义后台服务
     export default class ServiceAbility extends ServiceExtensionAbility {
       onCreate(want: Want): void {
@@ -73,13 +73,13 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
       onRequest(want: Want, startId: number): void {
         hilog.info(0x0000, 'testTag', 'IPCStub: onRequest');
       }
-
+    
       onConnect(want: Want): rpc.RemoteObject {
         hilog.info(0x0000, 'testTag', 'IPCStub: onConnect');
         // 返回Stub对象，客户端获取后便可以与ServiceExtensionAbility进行通信
         return new Stub('IPCStubTest');
       }
-
+    
       onDisconnect(want: Want): void {
         hilog.info(0x0000, 'testTag', 'IPCStub: onDisconnect');
       }
