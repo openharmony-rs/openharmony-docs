@@ -2093,6 +2093,8 @@ getIpNeighTable(): Promise\<Array\<NetIpMacInfo>>
 
 > **说明：**
 >
+> 该接口获取IP邻居表的缓存的数据，并非局域网内所有连接的数据。
+>
 > 当开发者需要排查网络异常、解析IP地址与MAC地址映射时，可使用此接口。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO 和 ohos.permission.GET_IP_MAC_INFO
