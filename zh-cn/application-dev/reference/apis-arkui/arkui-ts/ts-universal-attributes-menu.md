@@ -399,7 +399,7 @@ type BorderRadiusType = [Length](ts-types.md#length) | [BorderRadiuses](ts-types
 
 ### 示例1（弹出普通菜单）
 
-从API version 7开始，该示例为bindMenu通过配置MenuElement弹出普通菜单。
+该示例为bindMenu通过配置[MenuElement](#menuelement)弹出普通菜单。
 
 ```ts
 // xxx.ets
@@ -434,7 +434,7 @@ struct MenuExample {
 
 ### 示例2（弹出自定义菜单）
 
-该示例为bindMenu通过配置CustomBuilder弹出自定义菜单。同时，通过配置hapticFeedbackMode（从API version 18开始）实现弹出时的振动效果。
+该示例为bindMenu通过配置CustomBuilder弹出自定义菜单。同时，从API version 18开始支持通过配置[ContextMenuOptions](#contextmenuoptions10)中的hapticFeedbackMode属性实现菜单弹出时的振动效果。
 
 ```ts
 @Entry
@@ -485,7 +485,7 @@ struct MenuExample {
 
 ### 示例3（长按弹出菜单）
 
-该示例为bindContextMenu通过配置responseType.LongPress弹出菜单。
+该示例为bindContextMenu通过配置[responseType](ts-appendix-enums.md#responsetype8).LongPress弹出菜单。
 
 ```ts
 // xxx.ets
@@ -523,7 +523,7 @@ struct ContextMenuExample {
 
 ### 示例4（右键弹出指向型菜单）
 
-该示例为bindContextMenu通过配置responseType.RightClick、enableArrow弹出指向型菜单。同时，从API version 18开始通过配置hapticFeedbackMode属性实现弹出时的振动效果。
+该示例为bindContextMenu通过配置[responseType](ts-appendix-enums.md#responsetype8).RightClick和[ContextMenuOptions](#contextmenuoptions10)中的enableArrow属性弹出指向型菜单。同时，从API version 18开始支持通过配置[ContextMenuOptions](#contextmenuoptions10)中的hapticFeedbackMode属性实现菜单弹出时的振动效果。
 
 ```ts
 // xxx.ets
@@ -567,7 +567,7 @@ struct DirectiveMenuExample {
 
 ### 示例5（长按弹出菜单的截图预览样式）
 
-该示例为bindContextMenu通过配置responseType.LongPress、preview的MenuPreviewMode类型弹出菜单预览样式。
+该示例为bindContextMenu通过配置[responseType](ts-appendix-enums.md#responsetype8).LongPress和[ContextMenuOptions](#contextmenuoptions10)中preview属性的[MenuPreviewMode](#menupreviewmode11)类型弹出菜单预览样式。
 
 ```ts
 // xxx.ets
@@ -612,7 +612,7 @@ struct Index {
 
 ### 示例6（长按弹出菜单的自定义预览样式）
 
-该示例为bindContextMenu通过配置responseType.LongPress、preview的CustomBuilder类型弹出菜单自定义预览样式。
+该示例为bindContextMenu通过配置[responseType](ts-appendix-enums.md#responsetype8).LongPress和[ContextMenuOptions](#contextmenuoptions10)中preview属性的[CustomBuilder](ts-types.md#custombuilder8)类型弹出菜单自定义预览样式。
 
 ```ts
 // xxx.ets
@@ -665,7 +665,7 @@ struct Index {
 
 ### 示例7（设置状态变量弹出菜单）
 
-该示例为bindContextMenu通过配置isShown弹出菜单预览样式。
+该示例为[bindContextMenu](#bindcontextmenu12)通过配置isShown弹出菜单预览样式。
 
 ```ts
 // xxx.ets
@@ -726,7 +726,7 @@ struct Index {
 
 ### 示例8（设置菜单和预览的动效）
 
-该示例为bindContextMenu通过配置transition，实现自定义菜单以及菜单预览时的显示和退出动效。
+该示例为bindContextMenu通过配置[ContextMenuOptions](#contextmenuoptions10)中的transition属性，实现自定义菜单以及菜单预览时的显示和退出动效。
 
 ```ts
 // xxx.ets
@@ -760,18 +760,6 @@ struct MenuExample {
     }
   }
 
-  @State isShow: boolean = false;
-  private iconStr: ResourceStr = $r("app.media.startIcon");
-
-  @Builder
-  MyMenu() {
-    Menu() {
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
-    }
-  }
-
   build() {
     Column() {
       Button('LongPress bindContextMenu')
@@ -799,7 +787,7 @@ struct MenuExample {
 
 ### 示例9（设置symbol类型图标）
 
-该示例为bindMenu通过配置MenuElement的symbolIcon弹出菜单。
+该示例为bindMenu通过配置[MenuElement](#menuelement)的symbolIcon弹出菜单。
 
 ```ts
 // xxx.ets
@@ -839,7 +827,7 @@ struct MenuExample {
 
 ### 示例10（设置一镜到底动效）
 
-该示例为bindContextMenu通过配置preview中hoverScale，实现组件截图到自定义预览图的一镜到底过渡动效。
+该示例为bindContextMenu通过配置[ContextMenuOptions](#contextmenuoptions10)中previewAnimationOptions属性的hoverScale，实现组件截图到自定义预览图的一镜到底过渡动效。
 
 ```ts
 // xxx.ets
@@ -893,7 +881,9 @@ struct Index {
 
 ### 示例11（自定义背景模糊效果参数）
 
-从API version 18开始，该示例为bindMenu通过配置backgroundBlurStyleOptions，实现自定义菜单背景模糊效果。
+该示例为bindMenu通过配置[ContextMenuOptions](#contextmenuoptions10)中的backgroundBlurStyleOptions属性，实现了自定义菜单背景模糊效果。
+
+从API version 18开始，在ContextMenuOptions中新增了backgroundBlurStyleOptions属性。
 
 ```ts
 // xxx.ets
@@ -923,8 +913,8 @@ struct MenuExample {
             {
               backgroundBlurStyle: BlurStyle.BACKGROUND_THIN,
               backgroundBlurStyleOptions: {
-                colorMode:ThemeColorMode.LIGHT,
-                blurOptions:{grayscale:[20,20]},
+                colorMode: ThemeColorMode.LIGHT,
+                blurOptions: { grayscale: [20, 20] },
                 policy: BlurStyleActivePolicy.ALWAYS_ACTIVE,
                 adaptiveColor: AdaptiveColor.AVERAGE,
                 scale: 1
@@ -943,7 +933,9 @@ struct MenuExample {
 
 ### 示例12（自定义背景效果参数）
 
-从API version 18开始，该示例为bindMenu通过配置backgroundEffect，实现自定义菜单背景效果。
+该示例为bindMenu通过配置[ContextMenuOptions](#contextmenuoptions10)中的backgroundEffect属性，实现了自定义菜单背景效果。
+
+从API version 18开始，在ContextMenuOptions中新增了backgroundEffect属性。
 
 ```ts
 // xxx.ets
@@ -992,12 +984,14 @@ struct MenuExample {
 
 ![preview-builder](figures/zh-cn_image_backgroundEffect.png)
 
- ### 示例13（设置一镜到底动效支持抬手打断）
+### 示例13（设置一镜到底动效支持抬手打断）
 
-该示例为bindContextMenu通过配置preview中hoverScale实现一镜到底过渡动效的基础上, 再配置hoverScaleInterruption（从API version 20开始）控制是否允许长按抬手取消菜单弹出。
+该示例通过为bindContextMenu配置[ContextMenuOptions](#contextmenuoptions10)中的previewAnimationOptions属性实现了一镜到底过渡动效的同时，再配置hoverScaleInterruption控制是否允许长按抬手取消菜单弹出。
+
+从API version 20开始，在previewAnimationOptions的类型[ContextMenuAnimationOptions](#contextmenuanimationoptions11)中新增了hoverScaleInterruption属性。
 
 ```ts
- // xxx.ets
+// xxx.ets
 @Entry
 @Component
 struct Index {
@@ -1052,7 +1046,9 @@ struct Index {
 
 ### 示例14（设置预览图边框圆角半径）
 
-该示例为bindContextMenu通过配置responseType.LongPress、preview的MenuPreviewMode类型弹出菜单预览样式、previewBorderRadius（从API version 19开始）设置预览图边框圆角半径。
+该示例通过bindContextMenu配置[responseType](ts-appendix-enums.md#responsetype8).LongPress来实现功能。同时，在[ContextMenuOptions](#contextmenuoptions10)中配置preview属性的[MenuPreviewMode](#menupreviewmode11)类型来设置菜单预览样式。最后，通过设置previewBorderRadius来实现预览图边框的圆角半径。
+
+从API version 19开始，在[ContextMenuOptions](#contextmenuoptions10)中新增了previewBorderRadius属性。
 
 ```ts
 // xxx.ets
@@ -1098,7 +1094,9 @@ struct Index {
 
 ### 示例15（bindMenu配置生命周期回调）
 
-从API version 20开始，该示例为bindMenu配置生命周期回调。
+该示例为bindMenu配置生命周期回调。
+
+从API version 20开始，在[ContextMenuOptions](#contextmenuoptions10)中新增了onWillAppear、onDidAppear、onWillDisappear和onDidDisappear属性。
 
 ```ts
 // xxx.ets
@@ -1106,15 +1104,15 @@ struct Index {
 @Component
 struct Index {
   // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
-  private iconStr: ResourceStr = $r("app.media.startIcon")
-  @State isShown: boolean = false
-  @State textColor: Color = Color.Black
-  @State blueColor: Color = Color.Blue
+  private iconStr: ResourceStr = $r("app.media.startIcon");
+  @State isShown: boolean = false;
+  @State textColor: Color = Color.Black;
+  @State blueColor: Color = Color.Blue;
+  @State onWillAppear: boolean = false;
+  @State onDidAppear: boolean = false;
+  @State onWillDisappear: boolean = false;
+  @State onDidDisappear: boolean = false;
 
-  @State onWillAppear: boolean = false
-  @State onDidAppear: boolean = false
-  @State onWillDisappear: boolean = false
-  @State onDidDisappear: boolean = false
   @Builder
   MyMenu() {
     Menu() {
@@ -1125,46 +1123,46 @@ struct Index {
   }
 
   build() {
-      Column() {
-        Column({ space: 30 }) {
-          Text('onWillAppear').fontColor(this.onWillAppear ? this.blueColor : this.textColor)
-          Text('onDidAppear').fontColor(this.onDidAppear ? this.blueColor : this.textColor)
-          Text('onWillDisappear').fontColor(this.onWillDisappear ? this.blueColor : this.textColor)
-          Text('onDidDisappear').fontColor(this.onDidDisappear ? this.blueColor : this.textColor)
-          Button('click')
-            .onClick(() => {
-              this.isShown = true;
-            })
-            .width(100)
-            .height(50)
-          Text('callback')
-            .width(200)
-            .height(100)
-            .textAlign(TextAlign.Center)
-            .fontSize(20)
-            .fontColor(this.textColor)
-            .bindMenu(this.isShown, this.MyMenu,
+    Column() {
+      Column({ space: 30 }) {
+        Text('onWillAppear').fontColor(this.onWillAppear ? this.blueColor : this.textColor)
+        Text('onDidAppear').fontColor(this.onDidAppear ? this.blueColor : this.textColor)
+        Text('onWillDisappear').fontColor(this.onWillDisappear ? this.blueColor : this.textColor)
+        Text('onDidDisappear').fontColor(this.onDidDisappear ? this.blueColor : this.textColor)
+        Button('click')
+          .onClick(() => {
+            this.isShown = true;
+          })
+          .width(100)
+          .height(50)
+        Text('callback')
+          .width(200)
+          .height(100)
+          .textAlign(TextAlign.Center)
+          .fontSize(20)
+          .fontColor(this.textColor)
+          .bindMenu(this.isShown, this.MyMenu,
             {
-              onWillAppear:() => {
+              onWillAppear: () => {
                 console.info("menu cycle life onWillAppear");
-                  this.onWillAppear = true;
-                },
-                onDidAppear:() => {
-                  console.info("menu cycle life onDidAppear");
-                  this.onDidAppear = true;
-                },
-                onWillDisappear:() => {
-                  this.isShown = false;
-                  console.info("menu cycle life onWillDisappear");
-                  this.onWillDisappear = true;
-                },
-                onDidDisappear:() => {
-                  console.info("menu cycle life onDidDisappear");
-                  this.onDidDisappear = true;
-                }
+                this.onWillAppear = true;
+              },
+              onDidAppear: () => {
+                console.info("menu cycle life onDidAppear");
+                this.onDidAppear = true;
+              },
+              onWillDisappear: () => {
+                this.isShown = false;
+                console.info("menu cycle life onWillDisappear");
+                this.onWillDisappear = true;
+              },
+              onDidDisappear: () => {
+                console.info("menu cycle life onDidDisappear");
+                this.onDidDisappear = true;
+              }
             })
-        }
-      }.width('100%')
+      }
+    }.width('100%')
   }
 }
 ```
@@ -1173,7 +1171,9 @@ struct Index {
 
 ### 示例16（设置菜单蒙层）
 
-从API version 20开始，该示例为bindMenu通过配置mask属性设置菜单蒙层。
+该示例为bindMenu通过配置mask属性设置菜单蒙层。
+
+从API version 20开始，在[ContextMenuOptions](#contextmenuoptions10)中新增了mask属性。
 
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
@@ -1219,7 +1219,9 @@ struct Index {
 
 ### 示例17（bindMenu设置下拉菜单外描边样式）
 
-从API version 20开始，该示例为bindMenu通过配置outlineWidth和outlineColor属性设置下拉菜单外描边样式。
+该示例为bindMenu通过配置outlineWidth和outlineColor属性设置下拉菜单外描边样式。
+
+从API version 20开始，在[ContextMenuOptions](#contextmenuoptions10)中新增了outlineWidth和outlineColor属性。
 
 ```ts
 // xxx.ets
@@ -1263,7 +1265,7 @@ struct Index {
 
 ![menu-outline](figures/menuOutline.png)
 
-### 示例18 （bindMenu传入带参数的CustomBuilder）
+### 示例18（bindMenu传入带参数的CustomBuilder）
 
 该示例通过在bindMenu中传入带参数的CustomBuilder来配置菜单的具体属性。
 
