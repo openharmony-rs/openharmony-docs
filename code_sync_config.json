@@ -25306,6 +25306,21 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/KillChildProcess/entry/src/main/cpp/MainProcessFile.cpp",
+				"functions":[
+					{
+						"end_line":23,
+						"name":"kill_child_process_header",
+						"start_line":21
+					},
+					{
+						"end_line":37,
+						"name":"kill_child_process_main",
+						"start_line":20
+					}
+				]
 			}
 		]
 	},
