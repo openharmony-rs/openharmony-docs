@@ -51,6 +51,7 @@ setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&l
 
 ```js
 import { shortKey } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -60,7 +61,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            shortKey.setKeyDownDuration("businessId", 500, (error) => {
+            shortKey.setKeyDownDuration("businessId", 500, (error: BusinessError) => {
               if (error) {
                 console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -110,6 +111,7 @@ setKeyDownDuration(businessKey: string, delay: number): Promise&lt;void&gt;
 
 ```js
 import { shortKey } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -121,7 +123,9 @@ struct Index {
           try {
             shortKey.setKeyDownDuration("businessId", 500).then(() => {
               console.info(`Set key down duration success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set key down failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
