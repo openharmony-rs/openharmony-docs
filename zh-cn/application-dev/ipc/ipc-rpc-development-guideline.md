@@ -134,7 +134,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
   连接服务，获取代理对象，发送信息给服务端，通信结束后断开连接。
 
   <!-- @[funcation_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   // 连接服务
   function connectAbility(context:common.UIAbilityContext) {
@@ -183,7 +183,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
       hilog.error(0x0000, 'testTag', 'IPCClient: connectAbility failed, code is ' + code + ', message is ' + message);
     }
   }
-
+  
   // 发送消息
   function sendString() {
     hilog.info(0x00000, 'testTag', 'IPCClient: begin to send String');
@@ -212,7 +212,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
         })
     }
   }
-
+  
   // 断开连接
   function disconnectAbility(context: common.UIAbilityContext) {
     hilog.info(0x00000, 'testTag', 'IPCClient: begin to disconnect Ability');
