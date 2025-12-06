@@ -145,26 +145,21 @@ getAuthLockState(authType: UserAuthType): Promise\<AuthLockState>
 import { userAuth } from '@kit.UserAuthenticationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let queryType = user.UserAuthType.PIN;
-  let authLockState: userAuth.AuthLockState = {
-    isLocked : false,
-    remainingAuthAttempts : 0,
-    lockoutDuration : 0
-  };
-  userAuth.getAuthLockState(queryType).then((val) => {
-    authLockState.isLocked = val.isLocked;
-    authLockState.remainingAuthAttempts = val.remainingAuthAttempts;
-    authLockState.lockoutDuration = val.lockoutDuration;
-    console.info(`get auth lock state success, authLockState = ${JSON.stringify(authLockState)}`);
+let queryType = userAuth.UserAuthType.PIN;
+let authLockState : userAuth.AuthLockState = {
+  isLocked : false,
+  remainingAuthAttempts : 0,
+  lockoutDuration : 0
+}
+
+userAuth.getAuthLockState(queryType)
+  .then((result : userAuth.AuthLockState) => {
+    authLockState = result;
+    console.info(`get auth lock state success, authLockState is: ${JSON.stringify(authLockState)}`);
   })
-    .catch((e: BusinessError) => {
-      console.error(`getAuthLockState failed, Code is ${e?.code}, message is ${e?.message}`);
-    })
-  console.info('after get auth lock state.');
-} catch (err) {
-  console.error(`get auth lock state failed, Code is ${err?.code}, message is ${err?.message}`);
-};
+  .catch((err : BusinessError) => {
+    console.info(`get auth lock state failed, err code is : ${err?.code}, err message is : ${err?.message}`);
+  })
 ```
 
 ## userAuth.getEnrolledState<sup>12+</sup>
