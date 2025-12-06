@@ -112,16 +112,16 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
   导入相关依赖，并定义所需的变量；
 
   <!-- @[front-end_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   import { BusinessError } from '@kit.BasicServicesKit';
   import { Want, common } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-
+  
   let proxy: rpc.IRemoteObject | undefined;
   let connectId: number | undefined;
-
+  
   // 死亡通知
   class MyDeathRecipient implements rpc.DeathRecipient{
     onRemoteDied() {
