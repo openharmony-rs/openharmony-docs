@@ -21,6 +21,77 @@ import { convertxml } from '@kit.ArkTS';
 
 ## ConvertXML
 
+### largeConvertToJSObject<sup>23+</sup>
+
+largeConvertToJSObject(xml: string, options?: ConvertOptions): Object
+
+将XML文本转换为Object对象，此方法支持解析单个节点大小超过10M的大型XML文本。
+
+> **说明：**
+>
+> 在Windows环境中，通常以回车符（CR）和换行符（LF）一对字符来表示换行。fastConvertToJSObject接口转换后的对象以换行符（LF）表示换行。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名  | 类型                              | 必填 | 说明            |
+| ------- | --------------------------------- | ---- | --------------- |
+| xml     | string                            | 是   | xml文本，若包含“&”字符，请使用实体引用“\&amp;”替换。|
+| options | [ConvertOptions](#convertoptions) | 否   | 转换选项，默认值是ConvertOptions对象，由其中各个属性的默认值组成。|
+
+**返回值：**
+
+| 类型   | 说明                         |
+| ------ | ---------------------------- |
+| Object | 转换后的JavaScript对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 10200002 | Invalid xml string. |
+
+**示例：**
+
+```ts
+try {
+  let xmlstr =
+    '<?xml version="1.0" encoding="utf-8"?>' +
+    '<?custom-pi processing="example"?>' +
+    '<catalog id="books">' +
+      '<!-- Bestseller Example -->' +
+      '<book category="fiction" ref="B101">' +
+        '<title>Echoes &amp; Whispers</title>' +
+        '<price unit="USD">19.99</price>' +
+        '<descr>' +
+          '<![CDATA[<b>suspense</b>novel & Legendary Stories]]>' +
+        '</descr>' +
+        '<popular/>' +
+      '</book>' +
+    '</catalog>';
+  let conv = new convertxml.ConvertXML();
+  let options: convertxml.ConvertOptions = {
+    trim: false, declarationKey: "_declaration",
+    instructionKey: "_instruction", attributesKey: "_attributes",
+    textKey: "_text", cdataKey: "_cdata", doctypeKey: "_doctype",
+    commentKey: "_comment", parentKey: "_parent", typeKey: "_type",
+    nameKey: "_name", elementsKey: "_elements"
+  }
+  let result = JSON.stringify(conv.largeConvertToJSObject(xmlstr, options));
+  console.info(result);
+} catch (e) {
+  console.error((e as Object).toString());
+}
+// 输出(宽泛型)
+// {"_declaration":{"_attributes":{"version":"1.0","encoding":"utf-8"}},"_elements":[{"_type":"instruction","_name":"custom-pi","_instruction":"processing=\"example\""},{"_type":"element","_name":"catalog","_attributes":{"id":"books"},"_elements":[{"_type":"comment","_comment":" Bestseller Example "},{"_type":"element","_name":"book","_parent":"catalog","_attributes":{"category":"fiction","ref":"B101"},"_elements":[{"_type":"element","_name":"title","_parent":"book","_elements":[{"_type":"text","_text":"Echoes & Whispers"}]},{"_type":"element","_name":"price","_parent":"book","_attributes":{"unit":"USD"},"_elements":[{"_type":"text","_text":"19.99"}]},{"_type":"element","_name":"descr","_parent":"book","_elements":[{"_type":"cdata","_cdata":"<b>suspense</b>novel & Legendary Stories"}]},{"_type":"element","_name":"popular","_parent":"book"}]}]}]}
+```
+
 ### fastConvertToJSObject<sup>14+</sup>
 
 fastConvertToJSObject(xml: string, options?: ConvertOptions) : Object
