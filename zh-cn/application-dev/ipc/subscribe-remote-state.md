@@ -40,7 +40,7 @@ IPC/RPC的订阅机制适用于以下场景：</br>
 
 ### 参考代码
 
-在IPC场景中，示例代码如下：
+  在IPC（同设备的跨进程通信）场景中，示例代码如下：
 
 导入相关依赖，并定义所需的变量；
 
@@ -64,7 +64,7 @@ class MyDeathRecipient implements rpc.DeathRecipient{
 let deathRecipient = new MyDeathRecipient();
 ```
 
-连接服务，获取代理对象，然后注册死亡监听。
+连接服务，获取代理对象，然后注册死亡监听。在断开连接时，移除死亡监听。
 
 <!-- @[connect_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets) -->
 
@@ -118,7 +118,7 @@ function connectAbility(context:common.UIAbilityContext) {
 }
 ```
 
-在RPC场景中，示例代码如下：
+ 在RPC（跨设备的跨进程通信）场景中，示例代码如下：
 
 导入相关依赖，并定义所需的变量；
 
@@ -147,7 +147,7 @@ class MyDeathRecipient implements rpc.DeathRecipient{
 let deathRecipient = new MyDeathRecipient();
 ```
 
-获取多设备协同的权限，在组网的情况下获取到对端的设备Id后连接服务，获取代理对象并发送信息给服务端，当代理对象与服务端的通信结束后，进行断连。
+获取[允许多设备协同的权限](../security/AccessToken/permissions-for-all-user.md#ohospermissiondistributed_datasync)，在组网的情况下获取到对端的设备ID（组网场景下对应设备的唯一网络标识符，可以使用distributedDeviceManager获取目标设备的NetworkId）后连接服务，获取代理对象并注册死亡监听。当代理对象与服务端的通信结束后，在断开连接时，移除死亡监听。
 
 <!-- @[rpc_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
 
