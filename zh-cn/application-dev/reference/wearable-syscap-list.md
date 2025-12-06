@@ -21,7 +21,6 @@ SysCap，全称SystemCapability，即系统能力，指操作系统中每一个�
 - SystemCapability.Ability.AbilityRuntime.Core
 - SystemCapability.Ability.AbilityRuntime.FAModel
 - SystemCapability.Ability.AbilityRuntime.Mission
-- SystemCapability.Ability.AbilityTools.AbilityAssistant
 - SystemCapability.Ability.AppStartup
 - SystemCapability.Security.AccessToken
 - SystemCapability.BarrierFree.Accessibility.Core
