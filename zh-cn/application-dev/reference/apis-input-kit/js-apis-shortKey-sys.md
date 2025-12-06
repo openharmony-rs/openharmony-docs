@@ -80,6 +80,8 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { shortKey } from '@kit.InputKit';
 
 @Entry
@@ -91,14 +93,14 @@ struct Index {
         .onClick(() => {
           try {
             shortKey.setKeyDownDuration("businessId", 500, (error: BusinessError<void> | null, data: undefined) => {
-              if (error) {
-                console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-                return;
-              }
-              console.log(`Set key down duration success`);
-            });
+            if (error) {
+              console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              return;
+            }
+            console.log(`Set key down duration success`);
+          });
           } catch (error) {
-            console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+           console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -144,6 +146,8 @@ ArkTS-Sta：setKeyDownDuration(businessKey: string, delay: int): Promise&lt;void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { shortKey } from '@kit.InputKit';
 
@@ -160,6 +164,33 @@ struct Index {
             });
           } catch (error) {
             console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { shortKey } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            shortKey.setKeyDownDuration("businessId", 500).then(() => {
+              console.info(`Set key down duration success }`);
+            });
+          } catch (error) {
+           console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }

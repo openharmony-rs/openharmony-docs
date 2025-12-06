@@ -78,7 +78,31 @@ getAllSystemHotkeys(): Promise&lt;Array&lt;HotkeyOptions&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
+import { inputConsumer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
+            console.log(`List of system hotkeys : ${JSON.stringify(data)}`);
+          });
+        })
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { inputConsumer } from '@kit.InputKit';
 
 @Entry
@@ -197,6 +221,8 @@ onHotkeyChange(hotkeyOptions: HotkeyOptions, callback: Callback&lt;HotkeyOptions
 **示例：**
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { inputConsumer } from '@kit.InputKit';
 
 @Entry
@@ -323,6 +349,8 @@ offHotkeyChange(hotkeyOptions: HotkeyOptions, callback?: Callback&lt;HotkeyOptio
 **示例：**
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { inputConsumer } from '@kit.InputKit';
 
 @Entry
@@ -334,17 +362,22 @@ struct Index {
         .onClick(() => {
           let leftCtrlKey = 2072;
           let zKey = 2042;
-          // 取消订阅单个应用快捷键回调函数
+          let hotkeyOptions: inputConsumer.HotkeyOptions = {
+            preKeys: [ leftCtrlKey ],
+            finalKey: zKey,
+            isRepeat: true
+          };
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
             console.log(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
           }
-          let hotkeyOption: inputConsumer.HotkeyOptions = {preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true};
           try {
-            inputConsumer.onHotkeyChange(hotkeyOption, hotkeyCallback);
-            inputConsumer.offHotkeyChange(hotkeyOption, hotkeyCallback);
-            console.log(`Unsubscribe success`);
+            inputConsumer.onHotkeyChange(hotkeyOptions, hotkeyCallback);
+            // 取消监听单个回调函数
+            inputConsumer.offHotkeyChange(hotkeyOptions, hotkeyCallback);
+            // 取消监听所有回调函数
+            inputConsumer.offHotkeyChange(hotkeyOptions);
           } catch (error) {
-            console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -450,6 +483,8 @@ onKeyPressed(options: KeyPressedConfig, callback: Callback&lt;KeyEvent&gt;): voi
 **示例：**
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 @Entry
@@ -567,6 +602,8 @@ offKeyPressed(callback?: Callback&lt;KeyEvent&gt;): void
 **示例：**
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 @Entry
@@ -577,14 +614,21 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            let options: inputConsumer.KeyPressedConfig = {
+              key: 16,
+              action: 1,
+              isRepeat: false,
+            }
+            let callback = (event: KeyEvent) => {
+              console.log(`Subscribe success ${JSON.stringify(event)}`);
+            };
+            inputConsumer.onKeyPressed(options, callback);
             // 取消指定回调函数
-            inputConsumer.offKeyPressed((event: KeyEvent) => {
-              console.log(`Unsubscribe success ${JSON.stringify(event)}`);
-            });
+            inputConsumer.offKeyPressed(callback);
             // 取消当前已订阅的所有回调函数
             inputConsumer.offKeyPressed();
           } catch (error) {
-            console.error(`Unsubscribe execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Subscribe execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }

@@ -81,7 +81,10 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
 
 @Entry
 @Component
@@ -146,6 +149,8 @@ ArkTS-Sta: setPointerSpeed(speed: int): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { pointer } from '@kit.InputKit';
 
@@ -167,6 +172,35 @@ struct Index {
     }
   }
 }
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setPointerSpeed(5).then(() => {
+              console.log(`Set pointer speed success`);
+            });
+          } catch (error) {
+            console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+
 ```
 
 ## pointer.setPointerSpeedSync<sup>10+</sup>
@@ -202,6 +236,8 @@ ArkTS-Sta: setPointerSpeedSync(speed: int): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { pointer } from '@kit.InputKit';
 
@@ -214,6 +250,32 @@ struct Index {
         .onClick(() => {
           try {
             let speed = pointer.setPointerSpeedSync(5);
+            console.log(`Set pointer speed success`);
+          } catch (error) {
+            console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+           pointer.setPointerSpeedSync(5);
             console.log(`Set pointer speed success`);
           } catch (error) {
             console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -288,7 +350,10 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
 
 @Entry
 @Component
@@ -364,7 +429,10 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
 
 @Entry
 @Component
@@ -419,8 +487,36 @@ ArkTS-Sta: getPointerSpeedSync(): int
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```js
 import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let speed = pointer.getPointerSpeedSync();
+            console.log(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
+          } catch (error) {
+            console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -505,7 +601,10 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
 
 @Entry
 @Component
@@ -568,6 +667,8 @@ setHoverScrollState(state: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { pointer } from '@kit.InputKit';
 
@@ -591,6 +692,32 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setHoverScrollState(true).then(() => {
+              console.log(`Set the mouse hover scroll success`);
+            });
+          } catch (error) {
+            console.error(`Set the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
 ## pointer.getHoverScrollState<sup>10+</sup>
 
 getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
@@ -650,7 +777,9 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -703,8 +832,37 @@ getHoverScrollState(): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.getHoverScrollState().then((state: boolean) => {
+              console.log(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
+            });
+          } catch (error) {
+            console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -790,7 +948,9 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -853,6 +1013,8 @@ setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { pointer } from '@kit.InputKit';
 
@@ -874,6 +1036,34 @@ struct Index {
     }
   }
 }
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setMousePrimaryButton(pointer.PrimaryButton.RIGHT).then(() => {
+              console.log(`Set mouse primary button success`);
+            });
+          } catch (error) {
+            console.error(`Set mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+
 ```
 
 ## pointer.getMousePrimaryButton<sup>10+</sup>
@@ -935,7 +1125,9 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -988,8 +1180,38 @@ getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.getMousePrimaryButton().then((primary: pointer.PrimaryButton) => {
+              console.log(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
+            });
+          } catch (error) {
+            console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
 
 @Entry
 @Component
@@ -1031,7 +1253,7 @@ ArkTS-Sta: setMouseScrollRows(rows: int, callback: AsyncCallback&lt;void&gt;): v
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| rows     |  ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是    | 鼠标滚动行数，范围1-100，默认为3。   |
+| rows     |  ArkTS-Dyn: number<br/>ArkTS-Sta: int    | 是    | 鼠标滚动行数，范围1-100，默认为3。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
 
 **错误码**：
@@ -1077,7 +1299,9 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1140,8 +1364,37 @@ setMouseScrollRows(rows: number): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setMouseScrollRows(20).then(() => {
+              console.log(`setMouseScrollRows success`);
+            });
+          } catch (error) {
+            console.error(`setMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1224,6 +1477,8 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -1305,7 +1560,9 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1389,7 +1646,9 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1452,8 +1711,37 @@ setTouchpadScrollSwitch(state: boolean): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setTouchpadScrollSwitch(false).then(() => {
+              console.log(`setTouchpadScrollSwitch success`);
+            });
+          } catch (error) {
+            console.error(`setTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1532,7 +1820,9 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1611,7 +1901,9 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1695,7 +1987,9 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1758,8 +2052,37 @@ setTouchpadScrollDirection(state: boolean): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setTouchpadScrollDirection (false).then(() => {
+              console.log(`setTouchpadScrollDirection success`);
+            });
+          } catch (error) {
+            console.error(`setTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1835,9 +2158,11 @@ struct Index {
 }
 ```
 
-ArkTS-Dyn示例:
+ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -1891,7 +2216,36 @@ getTouchpadScrollDirection(): Promise\<boolean>
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```js
+import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.getTouchpadScrollDirection().then((state: boolean) => {
+              console.log(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
+            });
+          } catch (error) {
+            console.error(`getTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -1976,6 +2330,8 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -1988,13 +2344,13 @@ struct Index {
           try {
             pointer.setTouchpadTapSwitch(true, (error: BusinessError<void> | null, data: undefined) => {
               if (error) {
-                console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadTapSwitch success`);
+              console.log(`setTouchpadPinchSwitch success`);
             });
           } catch (error) {
-            console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -2039,7 +2395,36 @@ setTouchpadTapSwitch(state: boolean): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
+import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setTouchpadTapSwitch(false).then(() => {
+              console.log(`setTouchpadTapSwitch success`);
+            });
+          } catch (error) {
+            console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -2119,6 +2504,8 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -2172,7 +2559,36 @@ getTouchpadTapSwitch(): Promise\<boolean>
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```js
+import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.getTouchpadTapSwitch().then((state: boolean) => {
+              console.log(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
+            });
+          } catch (error) {
+            console.error(`getTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -2259,6 +2675,8 @@ struct Index {
 ArkTS-Dyn示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -2324,7 +2742,36 @@ ArkTS-Sta: setTouchpadPointerSpeed(speed: int): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
+import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setTouchpadPointerSpeed(10).then(() => {
+              console.log(`setTouchpadPointerSpeed success`);
+            });
+          } catch (error) {
+            console.error(`setTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -2403,9 +2850,11 @@ struct Index {
 }
 ```
 
-ArkTS-Dyn示例:
+ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -2416,7 +2865,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getTouchpadPointerSpeed((error: BusinessError<void> | null, speed: number | undefined) => {
+            pointer.getTouchpadPointerSpeed((error: BusinessError<void> | null, speed: int | undefined) => {
               console.log(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
             });
           } catch (error) {
@@ -2487,6 +2936,8 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -2571,6 +3022,8 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -2634,7 +3087,36 @@ setTouchpadPinchSwitch(state: boolean): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
+import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setTouchpadPinchSwitch(false).then(() => {
+              console.log(`setTouchpadPinchSwitch success`);
+            });
+          } catch (error) {
+            console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -2714,6 +3196,8 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -2767,7 +3251,36 @@ getTouchpadPinchSwitch(): Promise\<boolean>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
+import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.getTouchpadPinchSwitch().then((state: boolean) => {
+              console.log(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
+            });
+          } catch (error) {
+            console.error(`getTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -2853,6 +3366,8 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -2916,7 +3431,36 @@ setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
+import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setTouchpadSwipeSwitch(false).then(() => {
+              console.log(`setTouchpadSwipeSwitch success`);
+            });
+          } catch (error) {
+            console.error(`setTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -2997,6 +3541,8 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -3050,7 +3596,36 @@ getTouchpadSwipeSwitch(): Promise\<boolean>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
+import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.getTouchpadSwipeSwitch().then((state: boolean) => {
+              console.log(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
+            });
+          } catch (error) {
+            console.error(`getTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -3135,6 +3710,8 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -3198,7 +3775,36 @@ setTouchpadRightClickType(type: RightClickType): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
+import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON).then(() => {
+              console.log(`setTouchpadRightClickType success`);
+            });
+          } catch (error) {
+            console.error(`setTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -3279,6 +3885,8 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -3332,7 +3940,36 @@ getTouchpadRightClickType(): Promise\<RightClickType>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
+import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.getTouchpadRightClickType().then((type: pointer.RightClickType) => {
+              console.log(`getTouchpadRightClickType success, typeed: ${JSON.stringify(type)}`);
+            });
+          } catch (error) {
+            console.error(`getTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -3420,7 +4057,9 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3485,8 +4124,37 @@ ArkTS-Sta: setPointerSize(size: int): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setPointerSize(3).then(() => {
+              console.log(`setPointerSize success`);
+            });
+          } catch (error) {
+            console.error(`setPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3541,8 +4209,36 @@ ArkTS-Sta: setPointerSizeSync(size: int): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setPointerSizeSync(5);
+            console.log(`setPointerSizeSync success`);
+          } catch (error) {
+            console.error(`setPointerSizeSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3623,7 +4319,9 @@ struct Index {
 ArkTS-Dyn示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3701,11 +4399,12 @@ struct Index {
 }
 ```
 
-
-ArkTS-Dyn示例:
+ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3760,8 +4459,36 @@ ArkTS-Sta: getPointerSizeSync(): int
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```js
 import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let pointerSize = pointer.getPointerSizeSync();
+            console.log(`getPointerSizeSync success, pointerSize: ${JSON.stringify(pointerSize)}`);
+          } catch (error) {
+            console.error(`getPointerSizeSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3847,11 +4574,12 @@ struct Index {
 }
 ```
 
-
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3861,11 +4589,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setPointerColor(0xF6C800, (error: BusinessError<void> | null, data: undefined) => {
-              if (error) {
-                console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-                return;
-              }
+            pointer.setPointerColor(0xF6C800).then(() => {
               console.log(`setPointerColor success`);
             });
           } catch (error) {
@@ -3920,8 +4644,37 @@ ArkTS-Sta: setPointerColor(color: int): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```js
 import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setPointerColor(0xF6C800).then(() => {
+              console.log(`setPointerColor success`);
+            });
+          } catch (error) {
+            console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3980,8 +4733,36 @@ ArkTS-Sta: setPointerColorSync(color: int): void
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```js
 import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setPointerColorSync(0xF6C800);
+            console.log(`setPointerColorSync success`);
+          } catch (error) {
+            console.error(`setPointerColorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -4061,7 +4842,9 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -4071,7 +4854,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getPointerColor((error: BusinessError<void> | null, color:  | undefined) => {
+            pointer.getPointerColor((error: BusinessError<void> | null, color: int | undefined) => {
               console.log(`getPointerColor success, color: ${JSON.stringify(color)}`);
             });
           } catch (error) {
@@ -4142,7 +4925,9 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -4197,8 +4982,36 @@ ArkTS-Sta: getPointerColorSync(): int
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```js
 import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let pointerColor = pointer.getPointerColorSync();
+            console.log(`getPointerColorSync success, pointerColor: ${JSON.stringify(pointerColor)}`);
+          } catch (error) {
+            console.error(`getPointerColorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -4278,10 +5091,11 @@ struct Index {
 }
 ```
 
-
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -4345,7 +5159,36 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```js
+import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setTouchpadDoubleTapAndDragState(false).then(() => {
+              console.log(`setTouchpadDoubleTapAndDragState success`);
+            });
+          } catch (error) {
+            console.error(`setTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -4427,6 +5270,8 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -4508,6 +5353,8 @@ struct Index {
 ArkTS-Sta示例:
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { pointer } from '@kit.InputKit';
 
 @Entry
@@ -4524,7 +5371,7 @@ struct Index {
           } catch (error) {
             console.error(`getTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
-        })
+        });
     }
   }
 }

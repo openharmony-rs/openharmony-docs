@@ -107,7 +107,7 @@ injectEvent(keyEvent: KeyEventInfo): void
 
 **相关接口**: 对应最初版本[injectEvent](#injectevent8)
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本**：22
 
 **ArkTS-Dyn起始版本**：22
 
@@ -128,7 +128,9 @@ injectEvent(keyEvent: KeyEventInfo): void
 **示例：**
 
 ```js
-import { inputEventClient } from '@kit.InputKit';
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputEventClient, KeyCode } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -138,35 +140,18 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            let backKeyDown: inputEventClient.KeyEvent = {
-              isPressed: true,
-              keyCode: 2,
-              keyDownDuration: 0,
-              isIntercepted: false
-            }
-
-            class EventDown {
-              KeyEvent: inputEventClient.KeyEvent | null = null
-            }
-
-            let eventDown: EventDown = { KeyEvent: backKeyDown }
-            inputEventClient.injectEvent(eventDown);
-
-            let backKeyUp: inputEventClient.KeyEvent = {
-              isPressed: false,
-              keyCode: 2,
-              keyDownDuration: 0,
-              isIntercepted: false
-            };
-
-            class EventUp {
-              KeyEvent: inputEventClient.KeyEvent | null = null
-            }
-
-            let eventUp: EventUp = { KeyEvent: backKeyUp }
-            inputEventClient.injectEvent(eventUp);
+              let backKeyUp: inputEventClient.KeyEvent = {
+                isPressed: false,
+                keyCode: KeyCode.KEYCODE_BACK,
+                keyDownDuration: 0,
+                isIntercepted: false
+              };
+              let keyEventInfo: inputEventClient.KeyEventInfo = {
+                KeyEvent: backKeyUp
+              }
+              inputEventClient.injectEvent(keyEventInfo);
           } catch (error) {
-            console.error(`Failed to inject KeyEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -204,6 +189,8 @@ injectKeyEvent(keyEvent: KeyEventData): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
@@ -251,6 +238,41 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputEventClient, KeyCode } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let backKeyUp: inputEventClient.KeyEvent = {
+              isPressed: false,
+              keyCode: KeyCode.KEYCODE_BACK,
+              keyDownDuration: 0,
+              isIntercepted: false
+            };
+            let keyEventInfo: inputEventClient.KeyEventData = {
+              keyEvent: backKeyUp
+            }
+            inputEventClient.injectKeyEvent(keyEventInfo);
+          } catch (error) {
+            console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputEventClient.injectMouseEvent<sup>11+</sup>
 
 injectMouseEvent(mouseEvent: MouseEventData): void
@@ -281,6 +303,8 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
@@ -368,6 +392,61 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputEventClient, MouseAction, Button, MouseToolType, MouseEvent} from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let mouseButtonUpData: MouseEvent = {
+              id: 0,
+              deviceId: 1,
+              actionTime: 2,
+              screenId: 1,
+              windowId: 0,
+              action: MouseAction.BUTTON_UP,
+              screenX: 100,
+              screenY: 200,
+              windowX: 100,
+              windowY: 200,
+              rawDeltaX: 200,
+              rawDeltaY: 200,
+              button: Button.RIGHT,
+              pressedButtons: [],
+              axes: [],
+              pressedKeys: [],
+              ctrlKey: false,
+              altKey: false,
+              shiftKey: false,
+              logoKey: false,
+              fnKey: false,
+              capsLock: false,
+              numLock: false,
+              scrollLock: false,
+              toolType: MouseToolType.MOUSE
+            };
+            let mouseButtonUp: inputEventClient.MouseEventData = {
+              mouseEvent:  mouseButtonUpData
+            };
+            inputEventClient.injectMouseEvent(mouseButtonUp);
+          } catch (error) {
+            console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputEventClient.injectTouchEvent<sup>11+</sup>
 
 injectTouchEvent(touchEvent: TouchEventData): void
@@ -398,6 +477,8 @@ injectTouchEvent(touchEvent: TouchEventData): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
@@ -474,6 +555,68 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputEventClient } from '@kit.InputKit';
+import { Touch, TouchEvent, KeyAction, SourceType, ToolType } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let touchEvent: Touch = {
+              id: 1,
+              pressedTime: 1,
+              screenX: 0,
+              screenY: 0,
+              windowX: 0,
+              windowY: 0,
+              pressure: 0,
+              width: 0,
+              height: 0,
+              tiltX: 0,
+              tiltY: 0,
+              toolX: 0,
+              toolY: 0,
+              toolWidth: 0,
+              toolHeight: 0,
+              rawX: 0,
+              rawY: 0,
+              toolType: ToolType.FINGER,
+            }
+
+            let touchEventUpData: TouchEvent = {
+              action: KeyAction.UP,
+              sourceType: SourceType.TOUCH_SCREEN,
+              touch: touchEvent,
+              touches: [],
+              id: 0,
+              deviceId: 0,
+              actionTime: 0,
+              screenId: 0,
+              windowId: 0
+            }
+            ;
+            let touchEventUp: inputEventClient.TouchEventData = {
+              touchEvent: touchEventUpData
+            }
+            inputEventClient.injectTouchEvent(touchEventUp);
+          } catch (error) {
+            console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputEventClient.permitInjection<sup>12+</sup>
 
 permitInjection(result: boolean): void
@@ -505,6 +648,8 @@ permitInjection(result: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { inputEventClient } from '@kit.InputKit';
 
@@ -525,6 +670,33 @@ struct Index {
     }
   }
 }
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputEventClient } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let result = true;
+            inputEventClient.permitInjection(result);
+          }catch(error){
+            console.error("failed:" + JSON.stringify(error));
+          }
+        })
+    }
+  }
+}
+
 ```
 
 ## KeyEvent

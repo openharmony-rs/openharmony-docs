@@ -72,6 +72,31 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { infraredEmitter } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            infraredEmitter.transmitInfrared(38000, [100, 200, 300, 400]);
+          } catch (error) {
+            console.error(`transmitInfrared failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+
+```
+
 ## infraredEmitter.getInfraredFrequencies<sup>15+</sup>
 
 getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
@@ -129,6 +154,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
 import { infraredEmitter } from '@kit.InputKit';
 
 @Entry

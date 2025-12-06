@@ -100,7 +100,9 @@ onKey(callback: Callback&lt;KeyOptions&gt;): void
 **示例：**
 
 ```ts
-import { inputConsumer } from '@kit.InputKit';
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputConsumer, KeyCode } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -121,7 +123,7 @@ struct Index {
             console.log(`keyOptions: ${JSON.stringify(keyOptions)}`);
           }
           try {
-            inputConsumer.on("key", keyOptions, callback);
+            inputConsumer.onKey(keyOptions, callback);
           } catch (error) {
             console.error(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -235,7 +237,9 @@ offKey(keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 示例:
 
 ```ets
-import { inputConsumer } from '@kit.InputKit';
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputConsumer, KeyCode } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -246,17 +250,23 @@ struct Index {
         .onClick(() => {
           let leftAltKey = 2045;
           let tabKey = 2049;
-          // 取消订阅单个回调函数
+          let keyOptions: inputConsumer.KeyOptions = {
+            preKeys: [ leftAltKey ],
+            finalKey: tabKey,
+            isFinalKeyDown: true,
+            finalKeyDownDuration: 0
+          };
           let callback = (keyOptions: inputConsumer.KeyOptions) => {
             console.log(`keyOptions: ${JSON.stringify(keyOptions)}`);
           }
-          let keyOption: inputConsumer.KeyOptions = {preKeys: [leftAltKey], finalKey: tabKey, isFinalKeyDown: true, finalKeyDownDuration: 0};
           try {
-            inputConsumer.on("key", keyOption, callback);
-            inputConsumer.off("key", keyOption, callback);
-            console.log(`Unsubscribe success`);
+            // 取消订阅单个回调函数
+            inputConsumer.onKey(keyOptions, callback);
+            inputConsumer.offKey(keyOptions, callback);
+            // 取消监听所有回调函数
+            inputConsumer.offKey(keyOptions);
           } catch (error) {
-            console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -315,6 +325,8 @@ struct Index {
 ArkTS-Sta示例：
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { inputConsumer } from '@kit.InputKit';
 
 @Entry
@@ -324,9 +336,9 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          let FACTORY_MODE = 0;
+          let mode = inputConsumer.ShieldMode.FACTORY_MODE;
           try {
-            inputConsumer.setShieldStatus(FACTORY_MODE,true);
+            inputConsumer.setShieldStatus(mode, true);
             console.log(`set shield status success`);
           } catch (error) {
             console.error(`set shield status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -362,6 +374,8 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 ****示例：**** 
 
 ```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
 import { inputConsumer } from '@kit.InputKit';
 
 @Entry
@@ -371,12 +385,12 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
+          let mode = inputConsumer.ShieldMode.FACTORY_MODE;
           try {
-            let FACTORY_MODE = 0;
-            let shieldstatusResult:Boolean =  inputConsumer.getShieldStatus(FACTORY_MODE);
-            console.log(` get shield status result:${JSON.stringify(shieldstatusResult)}`);
+            let result: Boolean =  inputConsumer.getShieldStatus(mode);
+            console.log(` get shield status result:${JSON.stringify(result)}`);
           } catch (error) {
-            console.error(`Failed to get shield status, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`set shield status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
