@@ -234,85 +234,80 @@ class KeyboardController {
 <!-- @[input_case_input_KeyboardControler507](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
 
 ``` TypeScript
-  private registerListener(): void {
-    this.inputHandle.addLog('registerListener');
+private registerListener(): void {
+  this.inputHandle.addLog('registerListener');
 
-    display.on('change', () => {
-      this.inputHandle.addLog('screenChangeEvent');
-      this.resizePanel();
-    });
-    InputMethodEngine.on('inputStart', (kbController: inputMethodEngine.KeyboardController, textInputClient: inputMethodEngine.InputClient) => {
-      this.inputHandle.addLog('keyboard inputStart');
-      this.inputHandle.onInputStart(kbController, textInputClient);
-    })
+  display.on('change', () => {
+    this.inputHandle.addLog('screenChangeEvent');
+    this.resizePanel();
+  });
+  inputMethodAbility.on('inputStart', (kbController: inputMethodEngine.KeyboardController, textInputClient: inputMethodEngine.InputClient) => {
+    this.inputHandle.addLog('keyboard inputStart');
+    this.inputHandle.onInputStart(kbController, textInputClient);
+  })
 
-    // [Start input_case_input_KeyboardControllersetSubtype]
-    // 设置监听子类型事件，改变输入法应用界面
-    InputMethodEngine.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
-      this.inputHandle.addLog('GJ setSubtype inputMethodSubtype:' + inputMethodSubtype.id);
-      if(inputMethodSubtype.id == 'InputMethodExtAbility') {
-        AppStorage.setOrCreate('subtypeChange', 0);
-        this.inputHandle.addLog('GJ setSubtype subtypeChange:' + AppStorage.get('subtypeChange'));
-      }
-      if(inputMethodSubtype.id == 'InputMethodExtAbility1') {
-        AppStorage.setOrCreate('subtypeChange', 1);
-        this.inputHandle.addLog('GJ setSubtype subtypeChange:' + AppStorage.get('subtypeChange'));
-      }
-    });
-    // [End input_case_input_KeyboardControllersetSubtype]
-
-    InputMethodEngine.on('inputStop', () => {
-      this.inputHandle.addLog('keyboard inputStop');
-      this.onDestroy();
-      if (this.mContext) {
-        this.mContext.destroy();
-      }
-    });
-
-    this.inputHandle.addLog('pre on privateCommand');
-    try {
-      InputMethodEngine.on('privateCommand', (record : Record<string, inputMethodEngine.CommandDataType>) => {
-        this.inputHandle.addLog('keyboard privateCommand' + JSON.stringify(record));
-        Object.keys(record).forEach((key: string) => {
-          this.inputHandle.addLog(`onPageShow private command key: ${key}, value: ${record[key]}`);
-        })
-      });
-    } catch (err) {
-      let error = err as BusinessError;
-      this.inputHandle.addLog(`on privateCommand sendPrivateCommand catch error: ${error.code} ${error.message}`);
+  // 设置监听子类型事件，改变输入法应用界面
+  inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
+    if(inputMethodSubtype.id == 'InputMethodExtAbility') {
+      AppStorage.setOrCreate('subtypeChange', 0);
     }
-
-    this.mKeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
-
-    this.mKeyboardDelegate.on('keyDown', (keyEvent: inputMethodEngine.KeyEvent) => {
-      if (this.isKeyboardShow) {
-        this.inputHandle.hideKeyboardSelf();
-      }
-      this.inputHandle.addLog(`keyDown: code = ${keyEvent.keyCode}`);
-      let result = this.onKeyDown(keyEvent);
-      this.inputHandle.addLog(`keyDown: result = ${result}`);
-      return result;
-    });
-
-    this.mKeyboardDelegate.on('keyUp', (keyEvent: inputMethodEngine.KeyEvent) => {
-      this.inputHandle.addLog(`keyUp: code = ${keyEvent.keyCode}`);
-      let result = this.onKeyUp(keyEvent);
-      this.inputHandle.addLog(`keyUp: result = ${result}`);
-      return result;
-    });
-    this.mKeyboardDelegate.on('cursorContextChange', (x: number, y: number, height: number) => {
-      let cursorInfo: CursorInfo = { x: x, y: y, height: height };
-      this.inputHandle.setCursorInfo(cursorInfo);
-    });
-    if (isDebug) {
-      this.mKeyboardDelegate.on('selectionChange', (oldBegin: number, oldEnd: number, newBegin: number, newEnd: number) => {
-        this.inputHandle.setSelectInfo('selectInfo: from(' + oldBegin + ',' + oldEnd + ') to (' + newBegin + ',' + newEnd + ')');
-      });
-      this.mKeyboardDelegate.on('textChange', (text: string) => {
-        this.inputHandle.setTextInfo('textInfo: ' + text);
-      });
+    if(inputMethodSubtype.id == 'InputMethodExtAbility1') {
+      AppStorage.setOrCreate('subtypeChange', 1);
     }
+  });
+
+  inputMethodAbility.on('inputStop', () => {
+    this.inputHandle.addLog('keyboard inputStop');
+    this.onDestroy();
+    if (this.mContext) {
+      this.mContext.destroy();
+    }
+  });
+
+  this.inputHandle.addLog('pre on privateCommand');
+  try {
+    inputMethodAbility.on('privateCommand', (record : Record<string, inputMethodEngine.CommandDataType>) => {
+      this.inputHandle.addLog(`keyboard privateCommand : ${record}`);
+      Object.keys(record).forEach((key: string) => {
+        this.inputHandle.addLog(`onPageShow private command key: ${key}, value: ${record[key]}`);
+      })
+    });
+  } catch (err) {
+    let error = err as BusinessError;
+    this.inputHandle.addLog(`on privateCommand sendPrivateCommand catch error: ${error.code} ${error.message}`);
   }
+
+  this.mKeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
+
+  this.mKeyboardDelegate.on('keyDown', (keyEvent: inputMethodEngine.KeyEvent) => {
+    if (this.isKeyboardShow) {
+      this.inputHandle.hideKeyboardSelf();
+    }
+    this.inputHandle.addLog(`keyDown: code = ${keyEvent.keyCode}`);
+    let result = this.onKeyDown(keyEvent);
+    this.inputHandle.addLog(`keyDown: result = ${result}`);
+    return result;
+  });
+
+  this.mKeyboardDelegate.on('keyUp', (keyEvent: inputMethodEngine.KeyEvent) => {
+    this.inputHandle.addLog(`keyUp: code = ${keyEvent.keyCode}`);
+    let result = this.onKeyUp(keyEvent);
+    this.inputHandle.addLog(`keyUp: result = ${result}`);
+    return result;
+  });
+  this.mKeyboardDelegate.on('cursorContextChange', (x: number, y: number, height: number) => {
+    let cursorInfo: CursorInfo = { x: x, y: y, height: height };
+    this.inputHandle.setCursorInfo(cursorInfo);
+  });
+  if (isDebug) {
+    this.mKeyboardDelegate.on('selectionChange', (oldBegin: number, oldEnd: number, newBegin: number, newEnd: number) => {
+      this.inputHandle.setSelectInfo('selectInfo: from(' + oldBegin + ',' + oldEnd + ') to (' + newBegin + ',' + newEnd + ')');
+    });
+    this.mKeyboardDelegate.on('textChange', (text: string) => {
+      this.inputHandle.setTextInfo('textInfo: ' + text);
+    });
+  }
+}
 ```
 
 
