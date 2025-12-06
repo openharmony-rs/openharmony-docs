@@ -73,7 +73,7 @@ let isEnabled = false;
 
 try {
 
-overlay.setOverlayEnabledByBundleName(bundleName, moduleName, isEnabled)
+  overlay.setOverlayEnabledByBundleName(bundleName, moduleName, isEnabled)
     .then((data) => {
       console.info('setOverlayEnabledByBundleName successfully');
     }).catch((err: BusinessError) => {
