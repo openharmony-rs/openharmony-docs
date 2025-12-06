@@ -93,7 +93,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 
 ### 客户端实现
 
-1. 创建变量want，指定要连接的Ability所在应用的包名、组件名。在跨设备的场景下，还需要连接目标设备的NetworkId（组网场景下对应设备的唯一网络标识符，可以使用distributedDeviceManager获取目标设备的NetworkId）。
+1. 创建变量want，指定要连接的Ability所在应用的包名、组件名。
 
 2. 创建变量connect，指定连接成功、连接失败和断开连接时的回调函数。
 
@@ -107,7 +107,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 >
 > - 在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  在IPC场景中，客户端的示例如下：
+  在IPC（同设备的跨进程通信）场景中，客户端的示例如下：
 
   导入相关依赖，并定义所需的变量；
 
@@ -228,7 +228,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
   }
   ```
 
-  在RPC场景中，需要业务自己去获取允许多设备协同的权限，拿到对端设备信息Id，具体客户端的示例如下：
+  在RPC（跨设备的跨进程通信）场景中，具体客户端的示例如下：
 
   导入相关依赖，并定义所需的变量；
 
@@ -257,7 +257,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
   let deathRecipient = new MyDeathRecipient();
   ```
 
-  获取多设备协同的权限，在组网的情况下获取到对端的设备Id后连接服务，获取代理对象并发送信息给服务端，当代理对象与服务端的通信结束后，进行断连。
+获取[允许多设备协同的权限](../security/AccessToken/permissions-for-all-user.md#ohospermissiondistributed_datasync)，在组网的情况下获取到对端的设备ID（组网场景下对应设备的唯一网络标识符，可以使用distributedDeviceManager获取目标设备的NetworkId）后连接服务，获取代理对象并发送信息给服务端，当代理对象与服务端的通信结束后，进行断连。
 
   <!-- @[rpc_funcation_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
   
