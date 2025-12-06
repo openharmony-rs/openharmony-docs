@@ -2243,8 +2243,8 @@ class B {
   }
 }
 
-let a = new A<number>(42); // 需要显式指定类型
-let b = B.get<string>('param');  // 需要显式指定类型
+let a = new A<number>(42); // 创建泛型实例，需要显式指定类型
+let b = B.get('param');  // 调用泛型函数，可省略泛型类型
 ```
 
 ## 不支持[]访问对象属性
