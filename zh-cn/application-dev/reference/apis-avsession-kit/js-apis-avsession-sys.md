@@ -2558,18 +2558,3 @@ aVCastController.off('videoSizeChange');
 | --------------------------- | ---- | ----------- |
 | DEVICE_LOG_FULL       | 1    | 日志已满。    |
 | DEVICE_LOG_EXCEPTION       | 2    | 日志写入异常。 |
-
-## CommandInfo<sup>22+</sup>
-
-命令信息的相关属性。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**系统接口：** 该接口为系统接口。
-
-| 名称               | 类型                                                 | 只读 | 可选 | 说明        |
-|------------------|----------------------------------------------------|----|----|-----------|
-| callerBundleName | string                                             | 否  | 是  | 调用方应用包名。  |
-| callerModuleName | string                                             | 否  | 是  | 调用方应用模块名。 |
-| callerDeviceId   | string                                             | 否  | 是  | 调用方设备ID。  |
-| callerType       | [CallerType](arkts-apis-avsession-e.md#CallerType22) | 否  | 是  | 调用方来源。    |

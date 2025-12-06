@@ -243,3 +243,18 @@
 | 名称            | 类型                      | 只读 | 可选 | 说明               |
 | --------------- |-------------------------| ---- | ---- |---------------------------------------------------------------------|
 | streamInfos            | Array\<[audio.AudioStreamInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiostreaminfo8)>                  | 是    | 否    | 音频能力参数的列表。  |
+
+## CommandInfo<sup>22+</sup>
+
+命令信息的相关属性。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**系统接口：** 该接口为系统接口。
+
+| 名称               | 类型                                                 | 只读 | 可选 | 说明        |
+|------------------|----------------------------------------------------|----|----|-----------|
+| callerBundleName | string                                             | 否  | 是  | 调用方应用包名。  |
+| callerModuleName | string                                             | 否  | 是  | 调用方应用模块名。 |
+| callerDeviceId   | string                                             | 否  | 是  | 调用方设备ID。  |
+| callerType       | [CallerType](arkts-apis-avsession-e.md#CallerType22) | 否  | 是  | 调用方来源。    |
