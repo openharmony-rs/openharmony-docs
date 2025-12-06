@@ -36,8 +36,8 @@
         Web({ src: $rawfile('test.html'), controller: this.webviewController })
           .onAlert((event) => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
               this.uiContext.showAlertDialog({
                 title: "来自" + event.url + "的警告",
                 message: event.message,
@@ -129,8 +129,8 @@
         Web({ src: $rawfile('alert.html'), controller: this.webviewController })
           .onAlert((event) => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
               this.title = "来自" + event.url + "的警告";
               this.message = event.message;
               this.result = event.result;
@@ -202,8 +202,8 @@
         Web({ src: $rawfile('test.html'), controller: this.webviewController })
           .onConfirm((event) => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
               this.uiContext.showAlertDialog({
                 title: "来自" + event.url + "的消息",
                 message: event.message,
@@ -256,7 +256,7 @@
       function handleConfirm() {
           let message = document.getElementById("confirm-message").value;
           let result = window.confirm(message ? message : 'confirm');
-          console.log(result);
+          console.info(result);
           document.getElementById("confirmLabel").innerHTML=String(result);
       }
   </script>
@@ -321,8 +321,8 @@
               if (this.isChecked) {
                 event.result.handleCancel();
               } else {
-                console.log("event.url:" + event.url);
-                console.log("event.message:" + event.message);
+                console.info("event.url:" + event.url);
+                console.info("event.message:" + event.message);
                 this.title = "来自" + event.url + "的消息";
                 this.message = event.message;
                 this.result = event.result;
@@ -360,7 +360,7 @@
       function handleConfirm() {
           let message = document.getElementById("confirm-message").value;
           let result = window.confirm(message ? message : 'confirm');
-          console.log(result);
+          console.info(result);
           document.getElementById("confirmLabel").innerHTML=String(result);
       }
   </script>
@@ -445,9 +445,9 @@
         Web({ src: $rawfile('prompt.html'), controller: this.webviewController })
           .onPrompt((event) => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
-              console.log("event.value:" + event.value);
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
+              console.info("event.value:" + event.value);
               this.title = "来自" + event.url + "的消息";
               this.message = event.message;
               this.promptResult = event.value;
@@ -487,7 +487,7 @@
           let message = document.getElementById("prompt-message").value;
           let defaultValue = document.getElementById("prompt-value").value;
           let result = window.prompt(message ? message : 'prompt', defaultValue);
-          console.log(result);
+          console.info(result);
           document.getElementById("promptLabel").innerHTML=result;
       }
   </script>

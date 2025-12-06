@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供自绘制渲染节点RenderNode，支持开发者通过C API进行开发，完成自定义绘制需求。
 
@@ -13,7 +13,7 @@
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
 >
-> 不建议对[BuilderNode](./js-apis-arkui-builderNode.md)中的RenderNode进行修改操作。
+> 不建议对[BuilderNode](./js-apis-arkui-builderNode.md)中的RenderNode进行修改操作。BuilderNode中持有的[FrameNode](./js-apis-arkui-frameNode.md)仅用于将该BuilderNode作为子节点挂载到其他FrameNode上，对该FrameNode或对应的RenderNode进行属性设置与子节点操作可能会产生未定义行为，包括但不限于显示异常、事件异常、稳定性问题等。
 
 ## 导入模块
 
@@ -1875,6 +1875,7 @@ struct Index {
 draw(context: DrawContext): void
 
 绘制方法，需要开发者进行实现。该方法会在RenderNode进行绘制时被调用。
+该接口的[DrawContext](./js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../ui/arkts-user-defined-arktsNode-renderNode.md#调整自定义绘制canvas的变换矩阵)。
 
 > **说明：**
 >
@@ -2529,7 +2530,7 @@ get shapeClip(): ShapeClip
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.clip
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
@@ -2829,7 +2830,7 @@ get lengthMetricsUnit(): LengthMetricsUnit
 ```ts
 import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
-import { LengthMetricsUnit } from '@ohos.arkui.node';
+import { LengthMetricsUnit } from '@kit.ArkUI';
 
 // 继承RenderNode，设置RenderNode各个属性使用的单位
 class BaseRenderNode extends RenderNode {
@@ -2897,7 +2898,7 @@ isDisposed(): boolean
 
 | 类型    | 说明               |
 | ------- | ------------------ |
-| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。
+| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。 |
 
 **示例：**
 

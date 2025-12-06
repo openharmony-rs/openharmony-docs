@@ -13,6 +13,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 3. 在复杂布局场景中，排查渲染模式及组件约束条件的问题。
 4. 处理H5代码兼容性问题。
 5. 从日志中排查生命周期和网络加载相关关键字。
+6. 检查是否开启坚盾守护模式，坚盾守护模式开启后相关限制见：[坚盾守护模式](./web-secure-shield-mode.md#arkweb限制的html5特性)。
 
 ## 检查权限和网络状态
 如果应用未开启联网或文件访问权限或者设备网络状态不佳，将导致Web组件加载失败或页面元素缺失，进而引起白屏。
@@ -94,7 +95,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
    ![web-white-devtools](figures/web-white-devtools.PNG)
 
 2. 检查控制台，确认是否存在因MixedContent策略或CORS策略导致的异常，或JS错误等。可参考[解决Web组件本地资源跨域问题](web-cross-origin.md)。为了提高安全性，ArkWeb内核禁止file协议和resource协议访问跨域请求。因此，在使用Web组件加载本地离线资源的时候，Web组件会拦截file协议和resource协议的跨域访问。Web组件无法访问本地跨域资源时，DevTools控制台会显示报错信息：
-    ```
+    ```txt
     Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes:   http, arkweb, data, chrome-extension, chrome, https, chrome-untrusted.
     ```
     有如下两种解决方法：
@@ -168,12 +169,13 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 
     ```html
     <!-- main/resources/rawfile/index.html -->
+    <!DOCTYPE html>
     <html>
     <head>
   	  <meta name="viewport" content="width=device-width,initial-scale=1">
     </head>
     <body>
-    <script crossorigin src="./js/script.js"></script>
+      <script crossorigin src="./js/script.js"></script>
     </body>
     </html>
     ```
@@ -255,7 +257,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
     <head>
         <meta charset="utf-8">
         <title>Demo</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,   viewport-fit=cover">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
         <script>
   		  function getFile() {
   			  var file = "file:///data/storage/el1/bundle/entry/resources/resfile/js/script.js";
@@ -283,9 +285,9 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
     </head>
 
     <body>
-    <div class="page">
-        <button id="example" onclick="getFile()">loadFile</button>
-    </div>
+      <div class="page">
+          <button id="example" onclick="getFile()">loadFile</button>
+      </div>
     <div id="text"></div>
     </body>
 
@@ -323,7 +325,7 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 - 避免在FIT_CONTENT模式下启用键盘避让属性RESIZE_CONTENT，以免导致布局失效。
 - css样式`height：<number> vh`和Web组件大小自适应页面布局存在计算冲突，请检查`height：<number> vh`是否是由body节点而内的第一个高度css样式。如以下结构，id为2的dom节点高度将为0，导致白屏。
 
-  ```
+  ```html
   <body>
     <div id = "1">
       <div id = "2" style = "height: 100vh">子dom</div>
@@ -333,7 +335,7 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
   ```
   解决此白屏问题的参考方案如下：
   - 子dom使用具体高度样式撑开父元素。
-    ```
+    ```html
     <body>
       <div id = "1">
         <div id = "2"><div style = "height: 20px"><div/></div>
@@ -342,7 +344,7 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
     </body>
     ```
   - 父元素使用实际高度样式。
-    ```
+    ```html
     <body>
       <div id = "1">
         <div id = "2" style = "height: 20px">子dom</div>
@@ -375,7 +377,7 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 | StartRenderProcess failed | 渲染render进程启动失败。 |
 | MEMORY_PRESSURE_LEVEL_CRITICAL | 整机内存压力达到阈值，继续使用可能造成黑屏、闪屏白屏等问题。 |
 | crashpad SandboxedHandler::HandlerCrash, received signo = xxx | 渲染render进程crash，会造成白屏、Web组件卡死等问题。 |
-| SharedContextState context lost via Skia OOM | 共享内存不足，会导致应用闪退、花屏卡死等问题。
+| SharedContextState context lost via Skia OOM | 共享内存不足，会导致应用闪退、花屏卡死等问题。 |
 | CreateNativeViewGLSurfaceEGLOhos::normal surface | 创建egl surface成功，如果没有该日志打印则会造成白屏问题。|
 | INFO: request had no response within 5 seconds | 网络超时。 |
 | final url: ***, error_code xxx(net::ERR_XXX) | 主资源加载报错。|
@@ -388,7 +390,7 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 | NWebRenderMain start  | 子进程启动。 |
 | RendererMain startup 、<br> render thread init | 子进程初始化开始。 |
 | event_message: WillProcessNavigationResponse source_id xxx navigation_handle id: xxx| 收到主资源的response。 |
-| event_message: commit navigation in main frame, routing_id: 4, url: *** | Commit到子进程。
+| event_message: commit navigation in main frame, routing_id: 4, url: *** | Commit到子进程。 |
 | RenderFrameImpl::CommitNavigation、<br> event_message: page load start | 子进程收到commit。|
 | NWebHandlerDelegate::OnNavigationEntryCommitted、<br> event_message: Commit source_id xxx | 主进程收到DidCommitNavigation。|
 | event_message: load_timing_info errpr_code:0,...| 主资源加载完成，以及各阶段耗时。|
@@ -398,3 +400,19 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 | event_message: content load finished | 页面解析完成。|
 | event_message: page load finished、<br> NWebHandlerDelegate::OnLoadEnd、<br> NWebHandlerDelegate::MainFrame OnLoadEnd、<br> NWebHandlerDelegate::OnFirstMeaningfulPaint | 页面以及子资源加载完成。|
 
+## 设备的WebView默认加载进程不一致导致加载H5页面白屏
+
+**问题：**
+
+用WebView加载H5在Phone上表现正常，但是在Table/PC/2in1上白屏。
+
+**原因：**
+
+Table/PC/2in1的WebView默认采用多进程加载，iframe默认使用子进程加载。主进程加载完成后，若子进程尚未加载完成，会导致白屏现象。
+
+**解决方案：**
+
+通过setRenderProcessMode()设置WebView渲染模式为单进程加载。
+   ```
+   webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.SINGLE);
+   ```

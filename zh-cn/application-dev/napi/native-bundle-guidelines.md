@@ -12,6 +12,8 @@
 
 ## 接口说明
 
+常用接口如下表所示，具体API说明详见[Native_Bundle](../reference/apis-ability-kit/capi-native-bundle.md)。
+
 | 接口名                                                       | 描述                                     |
 | :----------------------------------------------------------- | :--------------------------------------- |
 | [OH_NativeBundle_GetCurrentApplicationInfo](../reference/apis-ability-kit/capi-native-interface-bundle-h.md#oh_nativebundle_getcurrentapplicationinfo) | 获取应用自身相关信息。          |
@@ -372,17 +374,12 @@
             }
             napi_set_named_property(env, infoObj, "abilityName", abilityNameValue);
 
-            // 7. 添加Icon
-            char *icon = nullptr;
-            OH_NativeBundle_GetIcon(temp, &icon);
-            napi_value iconValue;
-            if (icon) {
-                napi_create_string_utf8(env, icon, NAPI_AUTO_LENGTH, &iconValue);
-                free(icon);
-            } else {
-                napi_get_null(env, &iconValue);
+            // 7. 获取ArkUI_DrawableDescriptor对象
+            ArkUI_DrawableDescriptor *rawDrawable = nullptr;
+            OH_NativeBundle_GetDrawableDescriptor(temp, &rawDrawable);
+            if (rawDrawable) {
+                //使用ArkUI_DrawableDescriptor对象绘制图标
             }
-            napi_set_named_property(env, infoObj, "icon", iconValue);
 
             napi_set_element(env, result, i, infoObj);
         }

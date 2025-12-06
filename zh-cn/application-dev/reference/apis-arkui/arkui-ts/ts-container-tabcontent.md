@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 仅在Tabs中使用，对应一个切换页签的内容视图。
 
@@ -62,6 +62,12 @@ tabBar(value: SubTabBarStyle | BottomTabBarStyle)
 
 设置TabBar上显示内容。底部样式没有下划线效果。icon异常时显示灰色图块。
 
+>  **说明：**
+>
+>  - 子页签（[SubTabBarStyle](#subtabbarstyle9)）样式：通常为文字+下划线，文字+背板的页签风格，允许设置文本样式，建议放置在顶部或者底部使用。切换页签时默认支持动画跳转效果。适用于资讯类应用的顶部分类（如"关注、视频、数码"）、功能模块的二级导航场景。
+>  
+>  - 底部页签/侧边页签（[BottomTabBarStyle](#bottomtabbarstyle9)）样式：无下划线和背板效果，页签样式通常为图标+文字的组合方式。切换页签时默认无动画跳转效果。底部页签通常用于应用主导航（如首页、发现、推荐）。侧边页签适用于宽屏场景，可设置vertical(true)启用纵向布局，让页签在侧边显示，默认左侧显示。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -114,12 +120,10 @@ tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string |
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 名称 | 类型         | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| icon<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 页签内的图片内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| text<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 页签内的文字内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| 名称 | 类型         | 只读 | 可选 | 说明 |
+| -------- | -------- | --- | ----- | -------- |
+| icon<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 是 | 页签内的图片内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| text<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 是 | 页签内的文字内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## SubTabBarStyle<sup>9+</sup>
 
@@ -363,13 +367,13 @@ id(value: string): SubTabBarStyle
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------------------------------- |
-| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 下划线的颜色和背板颜色。<br/>默认值：#FF007DFF |
-| height | [Length](ts-types.md#length) | 否 | 下划线的高度（不支持百分比设置）。<br/>默认值：2.0<br/>单位：vp<br/>取值范围：(0, +∞)。 |
-| width | [Length](ts-types.md#length) | 否 | 下划线的宽度（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：(0, +∞)。 <br/>**说明：** <br/>宽度设置为0时，按页签文本宽度显示。|
-| borderRadius | [Length](ts-types.md#length) | 否 | 下划线的圆角半径（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
-| marginTop | [Length](ts-types.md#length) | 否 | 下划线与文字的间距（不支持百分比设置）。<br/>默认值：8.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | --------- | ----------------------- |
+| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 下划线的颜色和背板颜色。<br/>默认值：#FF007DFF |
+| height | [Length](ts-types.md#length) | 否 | 是 | 下划线的高度（不支持百分比设置）。<br/>默认值：2.0<br/>单位：vp<br/>取值范围：(0, +∞)。 |
+| width | [Length](ts-types.md#length) | 否 | 是 | 下划线的宽度（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：(0, +∞)。 <br/>**说明：** <br/>宽度设置为0时，按页签文本宽度显示。|
+| borderRadius | [Length](ts-types.md#length) | 否 | 是 | 下划线的圆角半径（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
+| marginTop | [Length](ts-types.md#length) | 否 | 是 | 下划线与文字的间距（不支持百分比设置）。<br/>默认值：8.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
 
 ## SelectedMode<sup>10+</sup>枚举说明
 
@@ -392,9 +396,9 @@ id(value: string): SubTabBarStyle
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | ------------------------------------ |
-| borderRadius | [Length](ts-types.md#length) | 否 | 背板的圆角半径（不支持百分比设置）。<br/>默认值：8.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | ------------ | ------------------------ |
+| borderRadius | [Length](ts-types.md#length) | 否 | 是 | 背板的圆角半径（不支持百分比设置）。<br/>默认值：8.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
 
 ## LabelStyle<sup>10+</sup>对象说明
 
@@ -402,16 +406,16 @@ label文本和字体的样式对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                 | 类型                                                     | 必填 | 说明                                                         |
-| -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | 否   | 设置Label文本超长时的显示方式。默认值是省略号截断。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| maxLines             | number                                                       | 否   | 设置Label文本的最大行数。如果指定此参数，则文本最多不会超过指定的行。如果有多余的文本，可以通过textOverflow来指定截断方式。默认值是1。<br/>取值范围：[1, +∞)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 设置Label文本最小显示字号（不支持百分比设置）。需配合maxFontSize以及maxLines或布局大小限制使用。自适应文本大小生效后，font.size不生效。默认值是0.0fp，即默认自适应文本大小不生效。<br/>取值范围：(0, +∞)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 设置Label文本最大显示字号（不支持百分比设置）。需配合minFontSize以及maxLines或布局大小限制使用。自适应文本大小生效后，font.size不生效。默认值是0.0fp，即默认自适应文本大小不生效。<br/>取值范围：[minFontSize, +∞)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | 否   | 设置Label文本自适应高度的方式。默认值是最大行数优先。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| font                 | [Font](ts-types.md#font)                                     | 否   | 设置Label文本字体样式。<br/>当页签为子页签时，默认值是字体大小16.0fp、字体类型'HarmonyOS Sans'，字体风格正常，选中时字重中等，未选中时字重正常。<br/>当页签为底部页签时，默认值是字体大小10.0fp、字体类型'HarmonyOS Sans'，字体风格正常，字重中等。<br/>从API version 12开始，底部页签内容左右排布时默认字体大小为12.0fp。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| unselectedColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | 否 | 设置Label文本字体未选中时的颜色。<br/>默认值：#99182431 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| selectedColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | 否 | 设置Label文本字体选中时的颜色。<br/>默认值：#FF007DFF <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| 名称                 | 类型                                                     | 只读 | 可选 | 说明                                                         |
+| -------------------- | ----------------------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
+| overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | 否 | 是   | 设置Label文本超长时的显示方式。默认值是省略号截断。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| maxLines             | number                                                       | 否 | 是   | 设置Label文本的最大行数。如果指定此参数，则文本最多不会超过指定的行。如果有多余的文本，可以通过textOverflow来指定截断方式。默认值是1。<br/>取值范围：[1, +∞)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否 | 是   | 设置Label文本最小显示字号（不支持百分比设置）。需配合maxFontSize以及maxLines或布局大小限制使用。自适应文本大小生效后，font.size不生效。默认值是0.0fp，即默认自适应文本大小不生效。<br/>取值范围：(0, +∞)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否 | 是   | 设置Label文本最大显示字号（不支持百分比设置）。需配合minFontSize以及maxLines或布局大小限制使用。自适应文本大小生效后，font.size不生效。默认值是0.0fp，即默认自适应文本大小不生效。<br/>取值范围：[minFontSize, +∞)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | 否 | 是   | 设置Label文本自适应高度的方式。默认值是最大行数优先。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| font                 | [Font](ts-types.md#font)                                     | 否 | 是  | 设置Label文本字体样式。<br/>当页签为子页签时，默认值是字体大小16.0fp、字体类型'HarmonyOS Sans'，字体风格正常，选中时字重中等，未选中时字重正常。<br/>当页签为底部页签时，默认值是字体大小10.0fp、字体类型'HarmonyOS Sans'，字体风格正常，字重中等。<br/>从API version 12开始，底部页签内容左右排布时默认字体大小为12.0fp。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| unselectedColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置Label文本字体未选中时的颜色。<br/>默认值：#99182431 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| selectedColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置Label文本字体选中时的颜色。<br/>默认值：#FF007DFF <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 
 ## BottomTabBarStyle<sup>9+</sup>
 
@@ -619,10 +623,10 @@ iconStyle(style: TabBarIconStyle): BottomTabBarStyle
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型         | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 是 | 页签内symbol图标普通态样式。<br/>默认值：<br/>fontColor：#66182431 <br/>renderingStrategy：SymbolRenderingStrategy.MULTIPLE_OPACITY <br/>fontSize：24vp |
-| selected | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 页签内symbol图标选中态样式。<br/>默认值：<br/>fontColor：#ff007dff <br/>renderingStrategy：SymbolRenderingStrategy.MULTIPLE_OPACITY <br/>fontSize：24vp |
+| 名称 | 类型         | 只读 | 可选 | 说明 |
+| -------- | -------- | --- | ----- | -------- |
+| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 否 | 页签内symbol图标普通态样式。<br/>默认值：<br/>fontColor：#66182431 <br/>renderingStrategy：SymbolRenderingStrategy.MULTIPLE_OPACITY <br/>fontSize：24vp |
+| selected | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 是 | 页签内symbol图标选中态样式。<br/>默认值：<br/>fontColor：#ff007dff <br/>renderingStrategy：SymbolRenderingStrategy.MULTIPLE_OPACITY <br/>fontSize：24vp |
 
 ## LayoutMode<sup>10+</sup>枚举说明
 
@@ -646,10 +650,10 @@ Label图标样式对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                 | 类型                                                     | 必填 | 说明                                                         |
-| -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 设置Label图标未选中时的颜色。<br/>默认值：#33182431 <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
-| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 设置Label图标选中时的颜色。<br/>默认值：#FF007DFF <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
+| 名称                 | 类型                                                     | 只读 | 可选 | 说明                                                         |
+| -------------------- | ------------------------------------------ | ------------------ | ---- | ------------------------------------------------------------ |
+| unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置Label图标未选中时的颜色。<br/>默认值：#33182431 <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
+| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置Label图标选中时的颜色。<br/>默认值：#FF007DFF <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
 
 ## 事件
 
@@ -660,6 +664,10 @@ Label图标样式对象。
 onWillShow(event: VoidCallback)
 
 逻辑回调，TabContent将要显示的时候触发该回调。场景包括TabContent首次显示，TabContent切换，页面切换，窗口前后台切换。
+
+>  **说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -676,6 +684,10 @@ onWillShow(event: VoidCallback)
 onWillHide(event: VoidCallback)
 
 逻辑回调，TabContent将要隐藏的时候触发该回调。场景包括TabContent切换，页面切换，窗口前后台切换。
+
+>  **说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2005,7 +2017,7 @@ struct TabsPreloadItems {
       Button('preload items: [1,2,3]')
         .margin(5)
         .onClick(() => {
-          // 预加载第0个子节点
+          // 预加载index为1~3的子节点
           this.tabsController.preloadItems([1, 2, 3])
             .then(() => {
               console.info('preloadItems success.');
@@ -2018,7 +2030,7 @@ struct TabsPreloadItems {
       Button('preload items: [1]')
         .margin(5)
         .onClick(() => {
-          // 预加载第0个子节点
+          // 预加载index为1的子节点
           this.tabsController.preloadItems([1])
             .then(() => {
               console.info('preloadItems success.');
@@ -2030,7 +2042,7 @@ struct TabsPreloadItems {
       Button('preload items: [3]')
         .margin(5)
         .onClick(() => {
-          // 预加载第0个子节点
+          // 预加载index为3的子节点
           this.tabsController.preloadItems([3])
             .then(() => {
               console.info('preloadItems success.');

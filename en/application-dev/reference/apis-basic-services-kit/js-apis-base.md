@@ -11,7 +11,7 @@ The **Base** module defines the public callback types of ArkTS APIs, including t
 ## Modules to Import
 
 ```
-import base from '@ohos.base';
+import { AsyncCallback, BusinessError, Callback, ErrorCallback } from '@kit.BasicServicesKit';
 ```
 
 ## Callback

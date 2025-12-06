@@ -1,4 +1,10 @@
 # @system.sensor (Sensor)
+<!--Kit: Sensor Service Kit-->
+<!--Subsystem: Sensors-->
+<!--Owner: @dilligencer-->
+<!--Designer: @butterls-->
+<!--Tester: @murphy84-->
+<!--Adviser: @hu-zhiqiong-->
 
 The **Sensor** module provides APIs for querying the sensor list, subscribing to or unsubscribing from sensor data, and executing control commands.
 
@@ -338,7 +344,7 @@ import { Sensor, HeartRateResponse, SubscribeHeartRateOptions } from '@kit.Senso
 
 let subscribeHeartRateOptions: SubscribeHeartRateOptions = {
   success: (ret: HeartRateResponse) => {
-    console.info('Succeeded in subscribing. Get heartrate value:' + ret.heartRate);
+    console.info('Succeeded in subscribing. Get heartRate value:' + ret.heartRate);
   },
   fail: (data: string, code: number) => {
     console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
@@ -556,9 +562,9 @@ Sensor.unsubscribeGyroscope();
 
 Defines the type of data to return for a subscription to data changes of the acceleration sensor.
 
-**Required permissions**: ohos.permission.ACCELEROMETER
-
 **System capability**: SystemCapability.Sensors.Sensor.Lite
+
+**Required permissions**: ohos.permission.ACCELEROMETER
 
 | Name    | Type                                           | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -570,9 +576,9 @@ Defines the type of data to return for a subscription to data changes of the acc
 
 Defines the callback invoked when the acceleration sensor data changes. 
 
-**Required permissions**: ohos.permission.ACCELEROMETER
-
 **System capability**: SystemCapability.Sensors.Sensor.Lite
+
+**Required permissions**: ohos.permission.ACCELEROMETER
 
 | Name| Type  | Mandatory| Description         |
 | ---- | ------ | ---- | ------------- |
@@ -699,7 +705,7 @@ Defines the type of data to return for a subscription to data changes of the hea
 
 | Name   | Type                                   | Mandatory| Description                                           |
 | ------- | --------------------------------------- | ---- | ----------------------------------------------- |
-| success | [HeartRateResponse](#heartrateresponse) | Yes  | Callback invoked when the heart rate sensor data changes. This callback is invoked every five seconds.|
+| success | [HeartRateResponse](#heartrateresponse) | Yes  | Callback invoked when the heart rate sensor data changes. This callback is invoked every 5 seconds.|
 | fail    | Function                                | No  | Callback invoked when an API call fails.                       |
 
 ## HeartRateResponse 
@@ -716,34 +722,34 @@ Defines a **HeartRateResponse** object.
 
 ## SubscribeOnBodyStateOptions
 
-Defines the callback invoked upon change in the wearing state of the device that accommodates the sensor.
+Defines the callback invoked upon change in the wearing state of the device that houses the sensor.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
 | Name   | Type                                       | Mandatory| Description                      |
 | ------- | ------------------------------------------- | ---- | -------------------------- |
-| success | [OnBodyStateResponse](#onbodystateresponse) | Yes  | Callback invoked when obtaining the wearing state change of the device that accommodates the sensor.|
+| success | [OnBodyStateResponse](#onbodystateresponse) | Yes  | Callback invoked when the wearing state of the device that houses the sensor is successfully obtained.|
 | fail    | Function                                    | No  | Callback invoked when an API call fails.  |
 
 ## OnBodyStateResponse 
 
-Whether the device where the sensor is located is worn.
+Specifies whether the device that houses the sensor is worn.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
 | Name | Type   | Mandatory| Description                                              |
 | ----- | ------- | ---- | -------------------------------------------------- |
-| value | boolean | Yes  | Boolean value indicating whether the device is worn. The value true indicates that the device is worn, and the value **false** indicates the opposite.|
+| value | boolean | Yes  | Boolean value indicating whether the device is worn. The value **true** indicates that the device is worn, and the value **false** indicates the opposite.|
 
 ## GetOnBodyStateOptions
 
- Defines the callback for obtaining the wearing state of the device that accommodates the sensor.
+ Defines the callback for obtaining the wearing state of the device that houses the sensor.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
 | Name    | Type                                       | Mandatory| Description                    |
 | -------- | ------------------------------------------- | ---- | ------------------------ |
-| success  | [OnBodyStateResponse](#onbodystateresponse) | Yes  | Callback upon a successful API call.|
+| success  | [OnBodyStateResponse](#onbodystateresponse) | Yes  | Callback invoked when an API call succeeds.|
 | fail     | Function                                    | No  | Callback invoked when an API call fails.|
 | complete | Function                                    | No  | Callback invoked when the API call is complete.|
 

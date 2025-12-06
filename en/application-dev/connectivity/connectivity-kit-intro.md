@@ -1,8 +1,15 @@
 # Connectivity Kit
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
 ## Introduction to Connectivity Kit
 
-Mobile devices have become an integral part of every life. For example, people listen to music with Bluetooth headphones, surf the Internet over Wi-Fi, and use their mobile phone as a transit pass or credit card.
+Mobile devices have become an integral part of everyday life. For example, people listen to music with Bluetooth headphones, surf the Internet over Wi-Fi, and use their mobile phone as a transit pass or credit card.
 In these applications, NFC implements short-range interactions like payments and access control, Bluetooth provides basic wireless connections for devices, such as headphones, wearables, and peripheral devices, and Wi-Fi provides high-speed Internet access.
 You can use Connectivity Kit to design mobile applications to meet diverse user needs in their daily lives.
 
@@ -10,7 +17,7 @@ You can use Connectivity Kit to design mobile applications to meet diverse user 
 
 Bluetooth is a wireless communication technology that implements short-range data transmission. The Bluetooth technical specifications are formulated by the Bluetooth Special Interest Group (SIG). It can be used to connect a variety of devices, including smartphones, headsets, speakers, keyboards, mouse devices, and printers. Bluetooth features low power consumption, low cost, and ease of use.
 
-Differfent Bluetooth modules provide APIs applicable to different scenarios, helping developers develop Bluetooth-related features.
+Different Bluetooth modules provide APIs applicable to different scenarios, helping developers develop Bluetooth-related features.
 
 - **ACCESS module**<br>
   Provides capabilities such as enabling and disabling Bluetooth and obtaining the Bluetooth status. You need to enable Bluetooth through this module before using other Bluetooth functions. For details, see [@ohos.bluetooth.access](../reference/apis-connectivity-kit/js-apis-bluetooth-access.md).
@@ -28,7 +35,7 @@ Differfent Bluetooth modules provide APIs applicable to different scenarios, hel
   Establishes Bluetooth connections between devices and transmits high-quality audio over Advanced Audio Distribution Profile (A2DP). For example, this module enables transmission of audio data streams between a phone and audio peripherals (such as headsets and speakers) for music streaming playback. For details, see [@ohos.bluetooth.a2dp](../reference/apis-connectivity-kit/js-apis-bluetooth-a2dp.md).
 
 - **HFP module**<br>
-  Establishes connections between Bluetooth devices and enables hands-free calls over the Hands-Free Profile (HFP), supporting functions such as two-way voice call and control. For details, see [@ohos.bluetooth.a2dp](../reference/apis-connectivity-kit/js-apis-bluetooth-a2dp.md).
+  Establishes connections between Bluetooth devices and enables hands-free calls over the Hands-Free Profile (HFP), supporting functions such as two-way voice call and control. For details, see [@ohos.bluetooth.hfp](../reference/apis-connectivity-kit/js-apis-bluetooth-hfp.md).
 
 - **HID module**<br>
   Implements communication, wireless control, and data transmission between Bluetooth devices over Human Interface Device Profile (HID). For example, this module enables low-latency bidirectional communication between devices such as keyboards, mouse devices, and gamepads and hosts (such as phones, tablets, and PCs). For details, see [@ohos.bluetooth.hid](../reference/apis-connectivity-kit/js-apis-bluetooth-hid.md).
@@ -60,10 +67,10 @@ The WLAN system provides users with WLAN access (STA mode), peer-to-peer data tr
 The Near Field Communication (NFC) service provides functionalities such as NFC switch control, NFC tag reading and writing, and NFC card emulation.
 
 - NFC control<br>
-  The **nfc. controller** module provides APIs for enabling and disabling NFC. To call the APIs provided by this module, the application must have the ohos.permission.MANAGE_SECURE_SETTINGS permission, which is available only for system applications. That is, only system applications can enable or disable NFC. For details, see [@ohos.nfc.controller](../reference/apis-connectivity-kit/js-apis-nfcController.md).
+  The **nfc.controller** module provides APIs for enabling and disabling NFC. To call the APIs provided by this module, the application must have the **ohos.permission.MANAGE_SECURE_SETTINGS** permission, which is available only for system applications. That is, only system applications can enable or disable NFC. For details, see [@ohos.nfc.controller](../reference/apis-connectivity-kit/js-apis-nfcController.md).
 
 - NFC tag reading and writing<br>
-  The **nfc. tag** module provides APIs for discovering NFC tags, dispatching NFC tags to applications, and enabling applications to read or write NFC tags. You need to declare the NFC tag read/write capability for your application in the specified format, so that the application can receive NFC tags dispatched. For details, see [@ohos.nfc.tag](../reference/apis-connectivity-kit/js-apis-nfcTag.md).
+  The **nfc.tag** module provides APIs for discovering NFC tags, dispatching NFC tags to applications, and enabling applications to read or write NFC tags. You need to declare the NFC tag read/write capability for your application in the specified format, so that the application can receive NFC tags dispatched. For details, see [@ohos.nfc.tag](../reference/apis-connectivity-kit/js-apis-nfcTag.md).
 
 - NFC card emulation<br>
   The **cardEmulation** module provides APIs for implementing payment card and access card solutions. You need to declare the NFC card emulation capability for your application in the specified format so that the application can implement NFC communications. For details, see [@ohos.nfc.cardEmulation](../reference/apis-connectivity-kit/js-apis-cardEmulation.md).

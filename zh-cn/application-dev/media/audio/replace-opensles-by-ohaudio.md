@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 由于OpenSL ES无法满足音频系统的能力拓展，建议开发者使用OHAudio替代OpenSL ES开发音频业务。本文将介绍如何从使用OpenSL ES接口开发音频业务，切换为使用OHAudio接口。
 
@@ -14,7 +14,7 @@
 
 具体差异如下表所示。
 
-| | OpenSL ES| OHAudio |
+| 功能 | OpenSL ES| OHAudio |
 | --- | --- | --- |
 | 音频流式播放 | √ | √ |
 | 音频流式录制 | √ | √ |

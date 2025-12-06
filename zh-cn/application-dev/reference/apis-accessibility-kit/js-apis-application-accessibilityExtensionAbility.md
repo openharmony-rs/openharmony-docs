@@ -111,7 +111,7 @@ let focusDirection: FocusDirection;
 
 ## ElementAttributeKeys<sup>10+</sup>
 
-type ElementAttributeKeys = keyof ElementAttributeValues;
+type ElementAttributeKeys = keyof ElementAttributeValues
 
 表示[ElementAttributeValues](js-apis-inner-application-accessibilityExtensionContext.md#elementattributevalues)的属性名称。
 
@@ -119,7 +119,7 @@ type ElementAttributeKeys = keyof ElementAttributeValues;
 
 | 类型      |         说明             |
 | ------- | -------------------------------------------------|
-| keyof ElementAttributeValues | 表示[ElementAttributeValues](js-apis-inner-application-accessibilityExtensionContext.md#elementattributevalues)中所有属性名组成的联合类型。 |
+| keyof [ElementAttributeValues](js-apis-inner-application-accessibilityExtensionContext.md#elementattributevalues) | 表示[ElementAttributeValues](js-apis-inner-application-accessibilityExtensionContext.md#elementattributevalues)中所有属性名组成的联合类型。 |
 
 **示例：**
 
@@ -308,7 +308,7 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onConnect(): void {
-    console.log('AxExtensionAbility onConnect');
+    console.info('AxExtensionAbility onConnect');
   }
 }
 ```
@@ -332,7 +332,7 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onDisconnect(): void {
-    console.log('AxExtensionAbility onDisconnect');
+    console.info('AxExtensionAbility onDisconnect');
   }
 }
 ```
@@ -362,9 +362,9 @@ import { AccessibilityExtensionAbility, AccessibilityEvent } from '@kit.Accessib
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onAccessibilityEvent(event: AccessibilityEvent): void {
-    console.log('AxExtensionAbility onAccessibilityEvent');
+    console.info('AxExtensionAbility onAccessibilityEvent');
     if (event.eventType === 'click') {
-      console.log('AxExtensionAbility onAccessibilityEvent: click');
+      console.info('AxExtensionAbility onAccessibilityEvent: click');
     }
   }
 }
@@ -401,9 +401,9 @@ import { KeyEvent } from '@kit.InputKit';
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onKeyEvent(keyEvent: KeyEvent): boolean {
-    console.log('AxExtensionAbility onKeyEvent');
+    console.info('AxExtensionAbility onKeyEvent');
     if (keyEvent.key.code === 16) {
-      console.log('AxExtensionAbility onKeyEvent: intercept 16');
+      console.info('AxExtensionAbility onKeyEvent: intercept 16');
       return true;
     }
     return false;

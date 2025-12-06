@@ -83,10 +83,10 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
       if (event.data == 'init_web_messageport') {
           const port = event.ports[0]; // 1. 保存从应用侧发送过来的端口。
           if (port) {
-              console.log("hwd In html got message");
+              console.info("hwd In html got message");
               h5Port = port;
               port.onmessage = function (event) {
-                  console.log("hwd In html got message");
+                  console.info("hwd In html got message");
                   // 2. 接收应用侧发送过来的消息.
                   var result = event.data;
                   var type_s = typeof (result)
@@ -106,7 +106,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
                       default:
                           break;
                   }
-                  console.log("H5 recv type: " + type_s + "\nH5 recv result: " + result)
+                  console.info("H5 recv type: " + type_s + "\nH5 recv result: " + result)
                   document.getElementById("msg").innerHTML = "recv type: " + type_s;
                   document.getElementById("msg2").innerHTML = "recv value: " + result;
               }
@@ -117,7 +117,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
       }
   })
   window.onerror = function(message, url, line, column, error) {
-    console.log("JavaScript Error: " + message + " on line " + line + " in " + url);
+    console.info("JavaScript Error: " + message + " on line " + line + " in " + url);
     document.getElementById("h1").innerHTML = "执行函数失败"
   };
 
@@ -172,12 +172,12 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
 
     myMethod() {
       // 实例方法
-      console.log(this.myProperty);
+      console.info(this.myProperty);
     }
 
     static myStaticMethod() {
       // 静态方法
-      console.log('This is a static method.');
+      console.info('This is a static method.');
     }
   }
   function postObjectToApp() {

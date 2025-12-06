@@ -182,7 +182,7 @@
    let netId = 100;    
    try{
      	   eap.logOffEthEap(netId);
-     	   console.error("logOffEthEap success");
+     	   console.info("logOffEthEap success");
    } catch (err) {
           console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
    }

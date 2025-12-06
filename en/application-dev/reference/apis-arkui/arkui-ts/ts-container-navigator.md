@@ -1,4 +1,10 @@
 # Navigator
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @mayaolll-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Navigator** component provides redirection.
 
@@ -16,6 +22,8 @@ Supported
 
 ## APIs
 
+### Navigator
+
 Navigator(value?: {target: string, type?: NavigationType})
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -28,6 +36,14 @@ Navigator(value?: {target: string, type?: NavigationType})
 | ------ | -------------- | ---- | ---------------------------------------------- |
 | target | string         | Yes  | Path of the target page to be redirected to.    |
 | type   | [NavigationType](#navigationtype) | No  | Navigation type.<br>Default value: **NavigationType.Push**|
+
+### Navigator
+
+Navigator()
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ## NavigationType
 
@@ -73,13 +89,13 @@ Sets the data that needs to be passed to the target page during redirection.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | object | Yes  | Data that needs to be passed to the target page during redirection. You can use [router.getParams()](../js-apis-router.md#routergetparams) to obtain the data on the target page.|
+| value  | object | Yes  | Data that needs to be passed to the target page during redirection. You can use [router.getParams()](../js-apis-router.md#routergetparamsdeprecated) to obtain the data on the target page.|
 
 ### target
 
 target(value: string)
 
-Path of the target page to be redirected to. The target page must be added to the **main_pages.json** file.
+Sets the path of the target page to be redirected to. The target page must be added to the **main_pages.json** file.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -148,13 +164,11 @@ class TextObject {
 
 ```ts
 // Detail.ets
-import { router } from '@kit.ArkUI'
-
 @Entry
 @Component
 struct DetailExample {
   // Receive the input parameters of Navigator.ets.
-  params: Record<string, NameObject> = router.getParams() as Record<string, NameObject>
+  params: Record<string, NameObject> = this.getUIContext().getRouter().getParams() as Record<string, NameObject>
   @State name: NameObject = this.params.text
 
   build() {

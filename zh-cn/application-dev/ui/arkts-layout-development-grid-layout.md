@@ -4,7 +4,7 @@
 <!--Owner: @zju_ljz-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 ## 概述
@@ -256,7 +256,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
 
 ### 排列方向
 
-栅格布局中，可以通过设置GridRow的direction属性来指定栅格子组件在栅格容器中的排列方向。该属性可以设置为GridRowDirection.Row（从左往右排列）或GridRowDirection.RowReverse（从右往左排列），以满足不同的布局需求。通过合理的direction属性设置，可以使得页面布局更加灵活和符合设计要求。
+栅格布局中，可以通过设置GridRow的direction属性来指定栅格子组件在栅格容器中的排列方向。该属性可以设置为[GridRowDirection](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowdirection枚举说明).Row（从左往右排列）或[GridRowDirection](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowdirection枚举说明).RowReverse（从右往左排列），以满足不同的布局需求。通过合理的direction属性设置，可以使得页面布局更加灵活和符合设计要求。
 
 - 子组件默认从左往右排列。
 
@@ -290,7 +290,7 @@ GridRow中通过gutter属性设置子元素在水平和垂直方向的间距。
 
     ![zh-cn_image_0000001511740476](figures/zh-cn_image_0000001511740476.png)
 
-- 当gutter类型为GutterOption时，单独设置栅格子组件水平垂直边距，x属性为水平方向间距，y为垂直方向间距。
+- 当gutter类型为[GutterOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gutteroption)时，单独设置栅格子组件水平垂直边距，x属性为水平方向间距，y为垂直方向间距。
 
 
     ```ts
@@ -500,27 +500,44 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 
 
     ```ts
-    GridRow({ columns: 12 }) {
-      GridCol({ order: { xs:1, sm:5, md:3, lg:7}, span: 1 }) {
-        Row() {
-          Text('1')
-        }.width('100%').height('50vp')
-      }.backgroundColor(Color.Red)
-      GridCol({ order: { xs:2, sm:2, md:6, lg:1}, span:1 }) {
-        Row() {
-          Text('2')
-        }.width('100%').height('50vp')
-      }.backgroundColor(Color.Orange)
-      GridCol({ order: { xs:3, sm:3, md:1, lg:6}, span:1 }) {
-        Row() {
-          Text('3')
-        }.width('100%').height('50vp')
-      }.backgroundColor(Color.Yellow)
-      GridCol({ order: { xs:4, sm:4, md:2, lg:5}, span:1 }) {
-        Row() {
-          Text('4')
-        }.width('100%').height('50vp')
-      }.backgroundColor(Color.Green)
+    @Entry
+    @Component
+    struct GridRowExample {
+      @State currentBp: string = "unknown"
+
+      build() {
+        Column({ space: 5 }) {
+          GridRow({ columns: 12 }) {
+            GridCol({ order: { xs:1, sm:5, md:3, lg:7}, span: 1 }) {
+              Row() {
+                Text('1')
+              }.width('100%').height('50vp')
+            }.backgroundColor('rgb(213,213,213)')
+
+            GridCol({ order: { xs:2, sm:2, md:6, lg:1}, span:1 }) {
+              Row() {
+                Text('2')
+              }.width('100%').height('50vp')
+            }.backgroundColor('rgb(150,150,150)')
+
+            GridCol({ order: { xs:3, sm:3, md:1, lg:6}, span:1 }) {
+              Row() {
+                Text('3')
+              }.width('100%').height('50vp')
+            }.backgroundColor('rgb(0,74,175)')
+
+            GridCol({ order: { xs:4, sm:4, md:2, lg:5}, span:1 }) {
+              Row() {
+                Text('4')
+              }.width('100%').height('50vp')
+            }.backgroundColor('rgb(39,135,217)')
+          }.border({ width: 1, color: 'rgb(39,135,217)' }).height('200vp').onBreakpointChange((breakpoint) => {
+            this.currentBp = breakpoint
+          })
+
+          Text(this.currentBp)
+        }
+      }
     }
     ```
 

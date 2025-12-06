@@ -6,13 +6,13 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
+在设备上安装、升级和卸载应用。
+
 > **说明：**
 >
 > 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
-
-在设备上安装、升级和卸载应用。
 
 ## 导入模块
 
@@ -24,7 +24,7 @@ import { installer } from '@kit.AbilityKit';
 
 getBundleInstaller(callback: AsyncCallback\<BundleInstaller>): void
 
-获取BundleInstaller对象，使用callback异步回调。
+获取BundleInstaller对象。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -49,7 +49,7 @@ getBundleInstaller(callback: AsyncCallback\<BundleInstaller>): void
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     installer.getBundleInstaller((err: BusinessError, data: installer.BundleInstaller) => {
@@ -69,7 +69,7 @@ try {
 
 getBundleInstaller(): Promise\<BundleInstaller>
 
-获取BundleInstaller对象，使用callback异步回调。
+获取BundleInstaller对象。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -92,7 +92,7 @@ getBundleInstaller(): Promise\<BundleInstaller>
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
@@ -133,7 +133,7 @@ getBundleInstallerSync(): BundleInstaller
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     installer.getBundleInstallerSync();
@@ -147,12 +147,14 @@ try {
 ## BundleInstaller.install
 install(hapFilePaths: Array&lt;string&gt;, installParam: InstallParam, callback: AsyncCallback&lt;void&gt;): void
 
-安装应用，使用callback异步回调。
+安装应用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE<sup>10+</sup>
-> **说明：** 从API version 10起，可通过ohos.permission.INSTALL_ENTERPRISE_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限调用此接口。
+> **说明：**
+>
+> 从API version 10开始，申请ohos.permission.INSTALL_ENTERPRISE_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限，可以调用此接口。
 >
 > 安装企业应用需要ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
 >
@@ -213,7 +215,7 @@ install(hapFilePaths: Array&lt;string&gt;, installParam: InstallParam, callback:
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 let installParam: installer.InstallParam = {
@@ -242,12 +244,14 @@ try {
 ## BundleInstaller.install
 install(hapFilePaths: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-安装应用，使用callback异步回调。
+安装应用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE<sup>10+</sup>
-> **说明：** 从API version 10起，可通过ohos.permission.INSTALL_ENTERPRISE_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限调用此接口。
+> **说明：**
+>
+> 从API version 10开始，申请ohos.permission.INSTALL_ENTERPRISE_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限，可以调用此接口。
 >
 > 安装企业应用需要ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
 >
@@ -306,7 +310,7 @@ install(hapFilePaths: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;):
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 
@@ -332,12 +336,14 @@ try {
 
 install(hapFilePaths: Array\<string\>, installParam?: InstallParam) : Promise\<void\>
 
-安装应用，使用Promise异步回调。
+安装应用。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE<sup>10+</sup> 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE<sup>10+</sup>
-> **说明：** 从API version 10起，可通过ohos.permission.INSTALL_ENTERPRISE_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE 或 ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限调用此接口。
+> **说明：**
+>
+> 从API version 10开始，申请ohos.permission.INSTALL_ENTERPRISE_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限，可以调用此接口。
 >
 > 安装企业应用需要ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
 >
@@ -403,7 +409,7 @@ install(hapFilePaths: Array\<string\>, installParam?: InstallParam) : Promise\<v
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 let installParam: installer.InstallParam = {
@@ -433,7 +439,7 @@ try {
 
 uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallback&lt;void&gt;): void
 
-卸载应用，使用callback异步回调。
+卸载应用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -471,7 +477,7 @@ uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallbac
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 let installParam: installer.InstallParam = {
@@ -502,7 +508,7 @@ try {
 
 uninstall(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
-卸载应用，使用callback异步回调。
+卸载应用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -537,7 +543,7 @@ uninstall(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 
@@ -562,7 +568,7 @@ try {
 
 uninstall(bundleName: string, installParam?: InstallParam) : Promise\<void\>
 
-卸载应用，使用Promise异步回调。
+卸载应用。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -605,7 +611,7 @@ uninstall(bundleName: string, installParam?: InstallParam) : Promise\<void\>
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 let installParam: installer.InstallParam = {
@@ -635,7 +641,7 @@ try {
 
 recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback&lt;void&gt;): void
 
-回滚应用到初次安装时的状态，使用callback异步回调。
+回滚应用到初次安装时的状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -669,7 +675,7 @@ recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback&
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 let installParam: installer.InstallParam = {
@@ -701,7 +707,7 @@ try {
 
 recover(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
-回滚应用到初次安装时的状态，使用callback异步回调。
+回滚应用到初次安装时的状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -733,7 +739,7 @@ recover(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 
@@ -759,7 +765,7 @@ try {
 
 recover(bundleName: string, installParam?: InstallParam) : Promise\<void\>
 
-回滚应用到初次安装时的状态，使用Promise异步回调。
+回滚应用到初次安装时的状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -797,7 +803,7 @@ recover(bundleName: string, installParam?: InstallParam) : Promise\<void\>
 **示例：**
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 let installParam: installer.InstallParam = {
@@ -827,7 +833,7 @@ try {
 
 uninstall(uninstallParam: UninstallParam, callback : AsyncCallback\<void\>) : void
 
-卸载一个共享包，使用callback异步回调。
+卸载一个共享包。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -859,7 +865,7 @@ uninstall(uninstallParam: UninstallParam, callback : AsyncCallback\<void\>) : vo
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let uninstallParam: installer.UninstallParam = {
     bundleName: "com.ohos.demo",
@@ -887,7 +893,7 @@ try {
 
 uninstall(uninstallParam: UninstallParam) : Promise\<void>
 
-卸载一个共享包，使用Promise异步回调。
+卸载一个共享包。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -924,7 +930,7 @@ uninstall(uninstallParam: UninstallParam) : Promise\<void>
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let uninstallParam: installer.UninstallParam = {
     bundleName: "com.ohos.demo",
@@ -952,7 +958,7 @@ try {
 
 addExtResource(bundleName: string, filePaths: Array\<string>): Promise\<void>;
 
-根据给定的bundleName和hsp文件路径添加扩展资源，使用Promise异步回调。
+根据给定的bundleName和hsp文件路径添加扩展资源。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -990,7 +996,7 @@ addExtResource(bundleName: string, filePaths: Array\<string>): Promise\<void>;
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName : string = 'com.ohos.demo';
 let filePaths : Array<string> = ['/data/storage/el2/base/a.hsp'];
@@ -1014,7 +1020,7 @@ try {
 
 removeExtResource(bundleName: string, moduleNames: Array\<string>): Promise\<void>;
 
-根据给定的bundleName和moduleNames删除扩展资源，使用Promise异步回调。
+根据给定的bundleName和moduleNames删除扩展资源。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1052,7 +1058,7 @@ removeExtResource(bundleName: string, moduleNames: Array\<string>): Promise\<voi
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName : string = 'com.ohos.demo';
 let moduleNames : Array<string> = ['moduleTest'];
@@ -1076,7 +1082,7 @@ try {
 
 updateBundleForSelf(hapFilePaths: Array\<string\>, installParam: InstallParam, callback: AsyncCallback\<void\>): void
 
-更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用，使用callback异步回调。
+更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1124,7 +1130,7 @@ updateBundleForSelf(hapFilePaths: Array\<string\>, installParam: InstallParam, c
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 let installParam: installer.InstallParam = {
@@ -1155,7 +1161,7 @@ try {
 
 updateBundleForSelf(hapFilePaths: Array\<string\>, callback: AsyncCallback\<void\>): void
 
-更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用，使用callback异步回调。
+更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1201,7 +1207,7 @@ updateBundleForSelf(hapFilePaths: Array\<string\>, callback: AsyncCallback\<void
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 
@@ -1227,7 +1233,7 @@ try {
 
 updateBundleForSelf(hapFilePaths: Array\<string\>, installParam?: InstallParam): Promise\<void\>
 
-更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用，使用Promise异步回调。
+更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1280,7 +1286,7 @@ updateBundleForSelf(hapFilePaths: Array\<string\>, installParam?: InstallParam):
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 let installParam: installer.InstallParam = {
@@ -1310,7 +1316,7 @@ try {
 
 uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise\<void\>;
 
-对预置应用进行卸载更新，恢复到初次安装时的状态，使用Promise异步回调。
+对预置应用进行卸载更新，恢复到初次安装时的状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1351,7 +1357,7 @@ uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise\<void
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let installParam: installer.InstallParam = {
@@ -1380,7 +1386,7 @@ try {
 
 createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): Promise\<number\>;
 
-创建应用分身，使用Promise异步回调。
+创建应用分身。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1418,7 +1424,7 @@ createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): P
 **示例：**
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let createAppCloneParam: installer.CreateAppCloneParam = {
@@ -1447,7 +1453,7 @@ try {
 
 destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise\<void\>;
 
-删除应用分身，使用Promise异步回调。
+删除应用分身。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1480,12 +1486,12 @@ destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise\
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
 | 17700004 | The userId is invalid. |
-| 17700061 | The appIndex is invalid. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let index = 1;
@@ -1512,7 +1518,7 @@ try {
 
 destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: DestroyAppCloneParam): Promise\<void\>;
 
-删除应用分身，使用Promise异步回调。
+删除应用分身。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1545,13 +1551,13 @@ destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: Des
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 17700001 | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
 | 17700004 | The userId is invalid. |
-| 17700061 | The appIndex is invalid. |
+| 17700061 | AppIndex not in valid range. |
 | 17700062 | Failed to uninstall the app because the app is locked. |
 
 **示例：**
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let index = 1;
@@ -1586,7 +1592,7 @@ try {
 
 installPreexistingApp(bundleName: string, userId?: number): Promise\<void\>;
 
-安装应用，使用Promise异步回调。
+在指定用户下安装指定bundleName的应用。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1624,7 +1630,7 @@ installPreexistingApp(bundleName: string, userId?: number): Promise\<void\>;
 **示例：**
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let userId = 100;
@@ -1650,7 +1656,7 @@ try {
 
 installPlugin(hostBundleName: string, pluginFilePaths: Array\<string\>, pluginParam?: PluginParam): Promise\<void\> 
 
-应用安装插件，使用Promise异步回调。
+应用安装插件。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1729,7 +1735,7 @@ try {
 
 uninstallPlugin(hostBundleName: string, pluginBundleName: string, pluginParam?: PluginParam): Promise\<void\>
 
-应用卸载插件，使用Promise异步回调。
+应用卸载插件。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1822,7 +1828,7 @@ try {
 | sharedBundleDirPaths<sup>10+</sup> | Array\<string> | 否 | 是|共享包文件所在路径，默认值为空。 |
 | specifiedDistributionType<sup>10+</sup> | string | 否 | 是|应用安装时指定的[分发类型](../../security/app-provision-structure.md)，默认值为空，最大长度为128字节。该字段通常由操作系统运营方的应用市场指定。 |
 | additionalInfo<sup>10+</sup> | string | 否 | 是|应用安装时的额外信息，默认值为空，最大长度为3000字节。该字段通常由操作系统运营方的应用市场在安装企业应用时指定，用于保存应用的额外信息。 |
-| verifyCodeParams<sup>deprecated<sup> | Array<[VerifyCodeParam](#verifycodeparamdeprecated)> | 否 | 是| 代码签名文件参数，默认值为空。         |
+| verifyCodeParams<sup>(deprecated)<sup> | Array<[VerifyCodeParam](#verifycodeparamdeprecated)> | 否 | 是| 代码签名文件参数，默认值为空。<br/>**说明：**<br/> 从API version 10开始支持，从API version 11开始不再维护，应用的代码签名文件将集成到安装包中，不再需要通过本接口指定安装包的代码签名文件。  |
 | pgoParams<sup>11+</sup> | Array<[PGOParam](#pgoparam11)> | 否 | 是| PGO配置文件参数，默认值为空。         |
 | parameters<sup>15+</sup> | Array<[Parameters](#parameters15)> | 否 | 是| 扩展参数，Parameters类型的数组，默认值为空。Parameters.key取值支持：</br> - "ohos.bms.param.renameInstall"：若对应value值为“true”，表示安装时使用共享目录将安装包从应用沙箱移动到安装目录，否则使用常规目录将安装包从应用沙箱拷贝到安装目录。</br> - "ohos.bms.param.enterpriseForAllUser"：若对应value值为“true”，表示在安装企业应用时为所有用户安装。</br> - "ohos.bms.param.verifyUninstallRule"：若对应value值为“true”，表示设置卸载处置规则，用于拦截应用卸载。</br> - "ohos.bms.param.enterpriseManifest"：value值为json文件的沙箱路径，json文件用于存储应用的描述文件，包括应用包名等，该字段用于企业应用克隆场景。克隆时，若该json文件存在，则将旧机的应用安装包拷贝到新机进行安装。|
 ## UninstallParam<sup>10+</sup>
@@ -1838,7 +1844,7 @@ try {
 | bundleName  | string | 否 | 否  | 共享包包名。                                                 |
 | versionCode | number | 否 | 是  | 指示共享包的版本号。默认值：如果不填写versionCode，则卸载该包名的所有共享包。 |
 
-## VerifyCodeParam<sup>deprecated<sup>
+## VerifyCodeParam<sup>(deprecated)<sup>
 
 > 从API version 11开始不再维护，应用的代码签名文件将集成到安装包中，不再需要该接口来指定安装包的代码签名文件。
 
@@ -1903,7 +1909,7 @@ PGO（Profile-guided Optimization）配置文件参数信息。
 | 名称        | 类型   | 只读  |  可选 | 说明                                                          |
 | ----------- | ------ | ----| ---- | ------------------------------------------------------------ |
 | userId      | number | 否 | 是  | 指定删除分身应用所在的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。            |
-| parameters  | Array<[Parameters](#parameters15)> | 否 | 是   | 指定删除分身应用扩展参数，默认值为空。            |
+| parameters  | Array<[Parameters](#parameters15)> | 否 | 是   | 指定删除分身应用扩展参数，默认值为空。Parameters.key取值支持：</br> - "ohos.bms.param.clone.isKeepData"：从API version 21开始支持，若对应value值为"true"，表示删除分身时会保留分身的用户数据，否则不会保留分身的用户数据。            |
 
 ## PluginParam<sup>19+</sup>
 

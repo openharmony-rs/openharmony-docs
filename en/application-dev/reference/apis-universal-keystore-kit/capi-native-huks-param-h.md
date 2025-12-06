@@ -29,17 +29,17 @@ The preceding system capability is available since API version 20. From API vers
 
 | Name| Description|
 | -- | -- |
-| [struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)](#oh_huks_initparamset) | Initializes a parameter set.|
-| [struct OH_Huks_Result OH_Huks_AddParams(struct OH_Huks_ParamSet *paramSet,const struct OH_Huks_Param *params, uint32_t paramCnt)](#oh_huks_addparams) | Adds parameters to a parameter set.|
-| [struct OH_Huks_Result OH_Huks_BuildParamSet(struct OH_Huks_ParamSet **paramSet)](#oh_huks_buildparamset) | Constructs a parameter set.|
+| [struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)](#oh_huks_initparamset) | Initializes a parameter set. No parameter information is required, and the default available memory space is allocated to the parameter set. The initialized parameter set needs to be freed by calling** OH_Huks_FreeParamSet**. To add parameters to a parameter set, you need to call **OH_Huks_AddParams** to add parameters and call **OH_Huks_BuildParamSet** to build the parameter set.|
+| [struct OH_Huks_Result OH_Huks_AddParams(struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Param *params, uint32_t paramCnt)](#oh_huks_addparams) | Adds parameters to a parameter set.|
+| [struct OH_Huks_Result OH_Huks_BuildParamSet(struct OH_Huks_ParamSet **paramSet)](#oh_huks_buildparamset) | Builds a parameter set. After the parameter set is initialized and parameters are added, the parameter set is serialized and the data of the BLOB type is copied to the adjacent memory area at the end of the **paramSet** struct.|
 | [void OH_Huks_FreeParamSet(struct OH_Huks_ParamSet **paramSet)](#oh_huks_freeparamset) | Frees a parameter set.|
-| [struct OH_Huks_Result OH_Huks_CopyParamSet(const struct OH_Huks_ParamSet *fromParamSet,uint32_t fromParamSetSize, struct OH_Huks_ParamSet **paramSet)](#oh_huks_copyparamset) | Copies a parameter set (deep copy).|
-| [struct OH_Huks_Result OH_Huks_GetParam(const struct OH_Huks_ParamSet *paramSet, uint32_t tag,struct OH_Huks_Param **param)](#oh_huks_getparam) | Obtains a parameter from a parameter set.|
+| [struct OH_Huks_Result OH_Huks_CopyParamSet(const struct OH_Huks_ParamSet *fromParamSet, uint32_t fromParamSetSize, struct OH_Huks_ParamSet **paramSet)](#oh_huks_copyparamset) | Copies a parameter set (deep copy).|
+| [struct OH_Huks_Result OH_Huks_GetParam(const struct OH_Huks_ParamSet *paramSet, uint32_t tag, struct OH_Huks_Param **param)](#oh_huks_getparam) | Obtains a parameter from a parameter set.|
 | [struct OH_Huks_Result OH_Huks_FreshParamSet(struct OH_Huks_ParamSet *paramSet, bool isCopy)](#oh_huks_freshparamset) | Refreshes the [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) data in the parameter set.|
 | [struct OH_Huks_Result OH_Huks_IsParamSetTagValid(const struct OH_Huks_ParamSet *paramSet)](#oh_huks_isparamsettagvalid) | Checks whether the parameters in a parameter set are valid.|
 | [struct OH_Huks_Result OH_Huks_IsParamSetValid(const struct OH_Huks_ParamSet *paramSet, uint32_t size)](#oh_huks_isparamsetvalid) | Checks whether a parameter set is of the valid size.|
 | [struct OH_Huks_Result OH_Huks_CheckParamMatch(const struct OH_Huks_Param *baseParam, const struct OH_Huks_Param *param)](#oh_huks_checkparammatch) | Checks whether two parameters are the same.|
-| [void OH_Huks_FreeKeyAliasSet(struct OH_Huks_KeyAliasSet *keyAliasSet)](#oh_huks_freekeyaliasset) | Frees a parameter set.|
+| [void OH_Huks_FreeKeyAliasSet(struct OH_Huks_KeyAliasSet *keyAliasSet)](#oh_huks_freekeyaliasset) | Destroys the parameter set of a key alias.|
 
 ## Function Description
 
@@ -51,7 +51,7 @@ struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)
 
 **Description**
 
-Initializes a parameter set.
+Initializes a parameter set. No parameter information is required, and the default available memory space is allocated to the parameter set. The initialized parameter set needs to be freed by calling** OH_Huks_FreeParamSet**. To add parameters to a parameter set, you need to call **OH_Huks_AddParams** to add parameters and call **OH_Huks_BuildParamSet** to build the parameter set.
 
 **Since**: 9
 
@@ -71,7 +71,7 @@ Initializes a parameter set.
 ### OH_Huks_AddParams()
 
 ```
-struct OH_Huks_Result OH_Huks_AddParams(struct OH_Huks_ParamSet *paramSet,const struct OH_Huks_Param *params, uint32_t paramCnt)
+struct OH_Huks_Result OH_Huks_AddParams(struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Param *params, uint32_t paramCnt)
 ```
 
 **Description**
@@ -103,7 +103,7 @@ struct OH_Huks_Result OH_Huks_BuildParamSet(struct OH_Huks_ParamSet **paramSet)
 
 **Description**
 
-Constructs a parameter set.
+Builds a parameter set. After the parameter set is initialized and parameters are added, the parameter set is serialized and the data of the BLOB type is copied to the adjacent memory area at the end of the **paramSet** struct.
 
 **Since**: 9
 
@@ -142,7 +142,7 @@ Frees a parameter set.
 ### OH_Huks_CopyParamSet()
 
 ```
-struct OH_Huks_Result OH_Huks_CopyParamSet(const struct OH_Huks_ParamSet *fromParamSet,uint32_t fromParamSetSize, struct OH_Huks_ParamSet **paramSet)
+struct OH_Huks_Result OH_Huks_CopyParamSet(const struct OH_Huks_ParamSet *fromParamSet, uint32_t fromParamSetSize, struct OH_Huks_ParamSet **paramSet)
 ```
 
 **Description**
@@ -169,7 +169,7 @@ Copies a parameter set (deep copy).
 ### OH_Huks_GetParam()
 
 ```
-struct OH_Huks_Result OH_Huks_GetParam(const struct OH_Huks_ParamSet *paramSet, uint32_t tag,struct OH_Huks_Param **param)
+struct OH_Huks_Result OH_Huks_GetParam(const struct OH_Huks_ParamSet *paramSet, uint32_t tag, struct OH_Huks_Param **param)
 ```
 
 **Description**
@@ -304,7 +304,7 @@ void OH_Huks_FreeKeyAliasSet(struct OH_Huks_KeyAliasSet *keyAliasSet)
 
 **Description**
 
-Frees a parameter set.
+Destroys the parameter set of a key alias.
 
 **Since**: 20
 
@@ -313,4 +313,4 @@ Frees a parameter set.
 
 | Name| Description|
 | -- | -- |
-| [struct OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md) *keyAliasSet | Pointer to the parameter set to free.|
+| [struct OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md) *keyAliasSet | Pointer to the parameter set of the key alias to destroy.|

@@ -4,7 +4,7 @@
 <!--Owner: @xiangyuan6-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 文本包含用户输入的信息、呈现的文本内容和小图标，这些元素共同构建了用户与系统间的交互界面，提升了操作的便捷性与信息展示的直观性。
 
@@ -33,3 +33,7 @@
 ## 图文混排
 
 当需要图片和文字混排的场景，可以使用Span和ImageSpan实现。若需要样式多样的混排效果，可以选择属性字符串实现。参考[图文混排](arkts-text-image-layout.md)章节。
+
+## 管理软键盘
+
+当需要控制文本输入组件的软键盘行为，包括弹出、收起键盘时，可以使用软键盘管理功能。参考[管理软键盘](arkts-manage-keyboard.md)章节。

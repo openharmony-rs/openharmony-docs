@@ -1,6 +1,12 @@
 # NodeContainer
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **NodeContainer** component is a basic component that accepts an instance of [NodeController](../js-apis-arkui-nodeController.md) and does not allow child nodes to be appended. It must be used together with **NodeController**.
+**NodeContainer** is a basic component for mounting custom nodes (such as [FrameNode](../js-apis-arkui-frameNode.md) or [BuilderNode](../js-apis-arkui-builderNode.md)) and dynamically managing node attachment and detachment through [NodeController](../js-apis-arkui-nodeController.md). This component does not support adding trailing child components and requires a [NodeController](../js-apis-arkui-nodeController.md) instance for operation. It must be used in combination with **NodeController**.
 
 > **NOTE**
 >
@@ -11,7 +17,10 @@ The **NodeContainer** component is a basic component that accepts an instance of
 >
 > This component does not work with the [attribute modifier](./ts-universal-attributes-attribute-modifier.md).
 >
-> During the construction of the node tree under this component, the UI instance UIContext](../js-apis-arkui-UIContext.md) is used. Switching between different UI instances might cause issues due to instance mismatches. As a result, this component currently does not support reusing nodes across multiple instances.
+> During the construction of the node tree under this component, the UI instance [UIContext](../arkts-apis-uicontext-uicontext.md) is used. Switching between different UI instances might cause issues due to instance mismatches. As a result, this component currently does not support reusing nodes across multiple instances.
+>
+> When this component is not destroyed, the unmounting of mounted nodes is not triggered.
+
 ## Child Components
 
 Not supported
@@ -91,7 +100,7 @@ struct Index {
       NodeContainer(this.baseNode)
         .borderWidth(1)
         .onClick(() => {
-          console.log("click event");
+          console.info("click event");
         })
     }
     .padding({ left: 35, right: 35, top: 35 })

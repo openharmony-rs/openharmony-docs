@@ -41,18 +41,18 @@ MetadataBinding（记忆链接）指由第三方应用提供[鸿蒙App Linking�
    import { Callback } from '@kit.BasicServicesKit';
    ```
 
-2. 定义记忆服务回调，函数接收回传编码的内容。
+2. 定义记忆服务回调及包名, 函数接收回传编码的内容。   
 
    ```
    let callback : Callback<number> = (event: number) => {};
+   let bundleName: string = '';
    ```
 
 3. 订阅记忆服务。
 
    ```
-   let bundleName: string = '';
    try {
-      metadataBinding.on('operationSubmitMetadata', bundleName, this.callback);  
+      metadataBinding.on('operationSubmitMetadata', bundleName, callback);  
       console.info("on succeeded");
    } catch (err) {
       let error = err as BusinessError;
@@ -76,7 +76,7 @@ MetadataBinding（记忆链接）指由第三方应用提供[鸿蒙App Linking�
 
    ```
    try {
-     metadataBinding.off('operationSubmitMetadata', bundleName, this.callback);
+     metadataBinding.off('operationSubmitMetadata', bundleName, callback);
      console.info("off succeeded");
    } catch (err) {
      let error = err as BusinessError;

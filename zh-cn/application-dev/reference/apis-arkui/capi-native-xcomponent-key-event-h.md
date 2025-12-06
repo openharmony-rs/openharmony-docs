@@ -1,5 +1,13 @@
 # native_xcomponent_key_event.h
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
+
+
 ## 概述
 
 声明用于访问Native XComponent键盘事件所使用到的枚举类型。
@@ -13,6 +21,8 @@
 **起始版本：** 10
 
 **相关模块：** [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)
+
+**相关示例：** <!--RP1-->[NativeXComponentSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)<!--RP1End-->
 
 ## 汇总
 
@@ -388,6 +398,6 @@ enum OH_NativeXComponent_KeyAction
 | -- | -- |
 | OH_NATIVEXCOMPONENT_KEY_ACTION_UNKNOWN = -1 | 未知的按键动作。 |
 | OH_NATIVEXCOMPONENT_KEY_ACTION_DOWN = 0 | 按键按下动作。 |
-| OH_NATIVEXCOMPONENT_KEY_ACTION_UP | 按键抬起动作。 |
+| OH_NATIVEXCOMPONENT_KEY_ACTION_UP = 1 | 按键抬起动作。 |
 
 

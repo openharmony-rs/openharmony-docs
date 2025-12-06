@@ -728,7 +728,7 @@ struct NavigationContentMsgStack {
 
 V1:
 
-AppStorage与应用进程绑定，支持跨Ability数据共享。
+AppStorage与应用进程绑定，支持跨[Ability](../../reference/apis-ability-kit/js-apis-app-ability-ability.md)数据共享。
 在下面的示例中，使用\@StorageLink，可以使得开发者本地的修改同步回AppStorage中。
 
 ```ts
@@ -1120,7 +1120,7 @@ V1中PersistentStorage提供了持久化UI数据的能力，而V2则提供了更
 
 对于PersistenceV2：
 - 与PersistenceV2关联的\@ObservedV2对象，其\@Trace属性的变化，会触发整个关联对象的自动持久化。
-- 开发者也可以调用[PersistenceV2.save](../../reference/apis-arkui/js-apis-StateManagement.md#save)和[PersistenceV2.globalConnect](./arkts-new-persistencev2.md#使用globalconnect存储数据)接口来手动触发持久化写入和读取。
+- 开发者也可以调用[PersistenceV2.save](../../reference/apis-arkui/js-apis-stateManagement.md#save)和[PersistenceV2.globalConnect](./arkts-new-persistencev2.md#使用globalconnect存储数据)接口来手动触发持久化写入和读取。
 
 V1:
 
@@ -1714,7 +1714,7 @@ V1：
 具体实例如下：
 
 ```ts
-import { CommonModifier } from '@ohos.arkui.modifier';
+import { CommonModifier } from '@kit.ArkUI';
 
 class MyModifier extends CommonModifier {
   applyNormalAttribute(instance: CommonAttribute): void {
@@ -1779,8 +1779,7 @@ V2：
 具体示例如下：
 
 ```ts
-import { UIUtils } from '@kit.ArkUI';
-import { CommonModifier } from '@ohos.arkui.modifier';
+import { UIUtils, CommonModifier } from '@kit.ArkUI';
 
 class MyModifier extends CommonModifier {
   applyNormalAttribute(instance: CommonAttribute): void {
@@ -1850,7 +1849,7 @@ V1：
 具体示例如下：
 
 ```ts
-import { TextModifier } from '@ohos.arkui.modifier';
+import { TextModifier } from '@kit.ArkUI';
 
 class MyModifier extends TextModifier {
   applyNormalAttribute(instance: TextModifier): void {
@@ -1923,8 +1922,7 @@ V2：
 具体示例如下：
 
 ```ts
-import { UIUtils } from '@kit.ArkUI';
-import { TextModifier } from '@ohos.arkui.modifier';
+import { UIUtils, TextModifier } from '@kit.ArkUI';
 
 class MyModifier extends TextModifier {
   applyNormalAttribute(instance: TextModifier): void {

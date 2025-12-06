@@ -1,6 +1,13 @@
 # @ohos.multimodalInput.touchEvent (Touch Event)
 
-The **touchEvent** module provides touchscreen events reported by a device. It is inherited from [InputEvent](./js-apis-inputevent.md).
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
+The **touchEvent** module provides touch events reported by a device. It is inherited from [InputEvent](./js-apis-inputevent.md).
 
 > **NOTE**
 >
@@ -14,16 +21,16 @@ import { Action,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 
 ## Action
 
-Enumerates touch event types.
+Enumerates the touch event types.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 | Name    | Value  | Description  |
 | ------ | ------ | ---- |
-| CANCEL | 0 | Cancellation of touch.|
-| DOWN   | 1 | Pressing of touch.|
-| MOVE   | 2 | Moving of touch.|
-| UP     | 3 | Lifting of touch.|
+| CANCEL | 0 | Touch cancellation.|
+| DOWN   | 1 | Touch press.|
+| MOVE   | 2 | Touch moving.|
+| UP     | 3 | Touch release.|
 
 ## ToolType
 
@@ -44,7 +51,7 @@ Enumerates touch tool types.
 
 ## SourceType 
 
-Enumerates touch source types.
+Enumerates touch sources. Currently, only the touchscreen and touchpad are supported.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -54,47 +61,34 @@ Enumerates touch source types.
 | PEN          | 1 | Stylus. |
 | TOUCH_PAD    | 2 | Touchpad. |
 
-<!--Del-->
-## FixedMode<sup>19+</sup>
-
-Enumerates coordinate correction modes. This API takes effect only for mobile phones.
-
-**System capability**: SystemCapability.MultimodalInput.Input.Core
-
-| Name         | Value | Description  |
-| ------------ | ------ | ---- |
-| NONE       |  0 | Normal mode.|
-| AUTO |  1 | One-handed mode.|
-<!--DelEnd-->
-
 ## Touch
 
 Defines the touch point information.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
-| Name         | Type  | Readable  | Writable  | Description                                 |
+| Name         | Type  | Read-Only  | Optional  | Description                                 |
 | ----------- | ------ | ---- | ---- | ----------------------------------- |
-| id          | number | Yes   | No   | Touch event ID.                               |
-| pressedTime | number | Yes   | No   | Press timestamp, in μs.                          |
-| screenX     | number | Yes   | No   | X coordinate of the touch position on the screen.                       |
-| screenY     | number | Yes   | No   | Y coordinate of the touch position on the screen.                       |
-| windowX     | number | Yes   | No   | X coordinate of the touch position in the window.                       |
-| windowY     | number | Yes   | No   | Y coordinate of the touch position in the window.                       |
-| pressure    | number | Yes   | No   | Pressure value. The value range is [0.0, 1.0]. The value **0.0** indicates that the pressure is not supported.      |
-| width       | number | Yes   | No   | Width of the touch area.                          |
-| height      | number | Yes   | No   | Height of the touch area.                          |
-| tiltX       | number | Yes   | No   | Angle relative to the YZ plane. The value range is [-90, 90]. A positive value indicates a rightward tilt.|
-| tiltY       | number | Yes   | No   | Angle relative to the XZ plane. The value range is [-90, 90]. A positive value indicates a downward tilt.|
-| toolX       | number | Yes   | No   | X coordinate of the center point of the tool area.                          |
-| toolY       | number | Yes   | No   | Y coordinate of the center point of the tool area.                          |
-| toolWidth   | number | Yes   | No   | Width of the tool area.                             |
-| toolHeight  | number | Yes   | No   | Height of the tool area.                             |
-| rawX        | number | Yes   | No   | X coordinate of the input device.                         |
-| rawY        | number | Yes   | No   | Y coordinate of the input device.                          |
-| toolType    | [ToolType](#tooltype) | Yes   | No   | Tool type.                               |
-| <!--DelRow-->fixedDisplayX<sup>19+</sup>| number| Yes   | No   | **screenX** correction value in one-hand mode.<br> **NOTE**: This API takes effect only for mobile phones.|
-| <!--DelRow-->fixedDisplayY<sup>19+</sup>| number| Yes   | No   | **screenY** correction value in one-hand mode.<br> This API takes effect only for mobile phones.   |
+| id          | number | No   | No   | Touch event ID.                               |
+| pressedTime | number | No   | No   | Press timestamp, in μs.                          |
+| screenX     | number | No   | No   | X coordinate of the touch event in the relative coordinate system with the upper-left corner of the specified screen as the origin. The value can only be an integer.   |
+| screenY     | number | No   | No   | Y coordinate of the touch event in the relative coordinate system with the upper-left corner of the specified screen as the origin. The value can only be an integer.   |
+| windowX     | number | No   | No   | X coordinate in the relative coordinate system with the upper-left corner of the window where the touch is located as the origin. The value can only be an integer.|
+| windowY     | number | No   | No   | Y coordinate in the relative coordinate system with the upper-left corner of the window where the touch is located as the origin. The value can only be an integer.|
+| pressure    | number | No   | No   | Pressure value. The value range is [0.0, 1.0]. The value **0.0** indicates that the pressure is not supported.      |
+| width       | number | No   | No   | Width of the touch area. The value can only be an integer.        |
+| height      | number | No   | No   | Height of the touch area. The value can only be an integer.        |
+| tiltX       | number | No   | No   | Angle relative to the YZ plane. The value range is [-90, 90]. A positive value indicates a rightward tilt.|
+| tiltY       | number | No   | No   | Angle relative to the XZ plane. The value range is [-90, 90]. A positive value indicates a downward tilt.|
+| toolX       | number | No   | No   | X coordinate of the tool area center in the relative coordinate system with the upper-left corner of the specified screen as the origin. The value can only be an integer. |
+| toolY       | number | No   | No   | Y coordinate of the tool area center in the relative coordinate system with the upper-left corner of the specified screen as the origin. The value can only be an integer. |
+| toolWidth   | number | No   | No   | Width of the tool area. The value can only be an integer. |
+| toolHeight  | number | No   | No   | Height of the tool area. The value can only be an integer. |
+| rawX        | number | No   | No   | X coordinate of the input device. The value can only be an integer.|
+| rawY        | number | No   | No   | Y coordinate of the input device. The value can only be an integer.|
+| toolType    | [ToolType](#tooltype) | No   | No   | Tool type.                               |
+| globalX<sup>20+</sup> | number | No   | Yes   | X coordinate of the touch event in the global coordinate system with the upper-left corner of the primary screen as the origin. <!--Del--> When being used as an input parameter, this parameter is mandatory if the value of [TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11) is **true**, and its value can only be an integer. Otherwise, you do not need to set this parameter. In this case, the X coordinate of the relative coordinate system with the upper left corner of the specified screen as the origin is used to calculate the injected event. <!--DelEnd-->When being used as an output parameter, its value is reported by the system.|
+| globalY<sup>20+</sup> | number | No   | Yes   | Y coordinate of the touch event in the global coordinate system with the upper-left corner of the primary screen as the origin. <!--Del--> When being used as an input parameter, this parameter is mandatory if the value of [TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11) is **true**, and its value can only be an integer. Otherwise, you do not need to set this parameter. In this case, the Y coordinate of the relative coordinate system with the upper left corner of the specified screen as the origin is used to calculate the injected event. <!--DelEnd-->When being used as an output parameter, its value is reported by the system.|
 
 ## TouchEvent
 
@@ -102,10 +96,9 @@ Defines a touch event.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
-| Name        | Type      | Readable  | Writable  | Description       |
+| Name        | Type      | Read-Only  | Optional  | Description       |
 | ---------- | ---------- | ---- | ---- | --------- |
-| action     | [Action](#action)     | Yes   | No   | Touch event type.    |
-| touch      | [Touch](#touch)      | Yes   | No   | Current touch point.  |
-| touches    | [Touch](#touch)[]    | Yes   | No   | All touch points.    |
-| sourceType | [SourceType](#sourcetype) | Yes   | No   | Enumerates touch source types.|
-| <!--DelRow-->fixedMode<sup>19+</sup>  | [FixedMode](#fixedmode19)   | Yes   | Yes   | Coordinate correction mode.<br> This API takes effect only for mobile phones.|
+| action     | [Action](#action)     | No   | No   | Event type.    |
+| touch      | [Touch](#touch)      | No   | No   | Current touch point.  |
+| touches    | [Touch](#touch)[]    | No   | No   | All touch points.    |
+| sourceType | [SourceType](#sourcetype) | No   | No   | Device type of the touch source.|

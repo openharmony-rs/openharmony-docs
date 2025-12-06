@@ -187,7 +187,7 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-// List files that meet the specified conditions.
+// View the file list.
 function getListFile(context: common.UIAbilityContext): void {
   let listFileOption: ListFileOptions = {
     recursion: false,

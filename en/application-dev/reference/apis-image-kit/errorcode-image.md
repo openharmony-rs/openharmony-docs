@@ -2,8 +2,9 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--SE: @liyang_bryan-->
-<!--TSE: @xchaosioda-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 
 > **NOTE**
@@ -431,7 +432,7 @@ Failed to decode the image header.
 
 Correct the image data or use another image.
 
-## 62980123 EXIF Decoding Not Supported
+## 62980123 Exif Decoding Not Supported
 
 **Error Message**
 
@@ -439,7 +440,7 @@ The image does not support EXIF decoding.
 
 **Possible Cause**
 
-The image does not support EXIF decoding.
+The image does not support Exif decoding.
 
 **Solution**
 

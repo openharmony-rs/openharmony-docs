@@ -4,7 +4,7 @@
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 TextInput、TextArea是输入框组件，用于响应用户输入，比如评论区的输入、聊天框的输入、表格的输入等，也可以结合其它组件构建功能页面，例如登录注册页面。具体用法请参考[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)。Search是特殊的输入框组件，称为搜索框，默认样式包含搜索图标。具体用法请参考[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)。
@@ -71,8 +71,7 @@ TextInput、TextArea和Search都支持设置输入框类型，通过type属性�
 
 TextInput有以下类型可选择：Normal基本输入模式、Password密码输入模式、Email邮箱地址输入模式、Number纯数字输入模式、PhoneNumber电话号码输入模式、USER_NAME用户名输入模式、NEW_PASSWORD新密码输入模式、NUMBER_PASSWORD纯数字密码输入模式、<!--Del-->SCREEN_LOCK_PASSWORD锁屏应用密码输入模式、<!--DelEnd-->NUMBER_DECIMAL带小数点的数字输入模式、带URL的输入模式。通过[type](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#type)属性进行设置：
 
-
-- 基本输入模式（默认类型）。
+### 基本输入模式（默认类型）
 
   ```ts
   TextInput()
@@ -81,8 +80,11 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 
   ![zh-cn_image_0000001562820765](figures/zh-cn_image_0000001562820765.png)
 
-- 密码输入模式。
+### 密码模式
 
+包括Password密码输入模式、NUMBER_PASSWORD纯数字密码模式、NEW_PASSWORD新密码输入模式。
+
+以下示例是Password密码输入模式的输入框。
   ```ts
   TextInput()
     .type(InputType.Password)
@@ -90,7 +92,9 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 
   ![zh-cn_image_0000001511580840](figures/zh-cn_image_0000001511580840.png)
 
-- 邮箱地址输入模式。
+### 邮箱地址输入模式
+
+邮箱地址输入模式的输入框，只能存在一个@符号。
 
   ```ts
   TextInput()
@@ -99,7 +103,8 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 
   ![text_input_type_email](figures/text_input_type_email.PNG)
 
-- 纯数字输入模式。
+### 纯数字输入模式
+纯数字输入模式的输入框，只能输入数字[0-9]。
 
   ```ts
   TextInput()
@@ -108,17 +113,20 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 
   ![text_input_type_number](figures/text_input_type_number.PNG)
 
-- 电话号码输入模式。
+### 电话号码输入模式
 
-  ```ts
-  TextInput()
-    .type(InputType.PhoneNumber)
-  ```
+电话号码输入模式的输入框，支持输入数字、空格、+ 、-、*、#、(、)，长度不限。
 
-  ![text_input_type_phone_number](figures/text_input_type_phone_number.PNG)
+```ts
+TextInput()
+  .type(InputType.PhoneNumber)
+```
 
-- 带小数点的数字输入模式。
+![text_input_type_phone_number](figures/text_input_type_phone_number.PNG)
 
+### 带小数点的数字输入模式
+
+带小数点的数字输入模式的输入框，只能输入数字[0-9]和小数点，只能存在一个小数点。
   ```ts
   TextInput()
     .type(InputType.NUMBER_DECIMAL)
@@ -126,14 +134,41 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 
   ![text_input_type_number_decimal](figures/text_input_type_number_decimal.PNG)
 
-- 带URL的输入模式。
+### 带URL的输入模式
 
+带URL的输入模式，无特殊限制。
   ```ts
   TextInput()
     .type(InputType.URL)
   ```
 
   ![text_input_type_url](figures/text_input_type_url.PNG)
+
+## 设置输入框多态样式
+
+TextInput、TextArea支持设置输入框多态样式，通过[style](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#style10)属性进行设置。下面以多行输入框TextArea为例进行说明。
+
+TextArea有以下2种类型可选择：默认风格，入参是TextContentStyle.DEFAULT；内联模式，也称内联输入风格，入参是TextContentStyle.INLINE。
+
+### 默认风格
+
+默认风格的输入框，在编辑态和非编辑态，样式没有区别。
+```ts
+TextArea()
+  .style(TextContentStyle.DEFAULT)
+```
+
+  ![textArea_style_default](figures/textArea_style_default.gif)
+
+### 内联模式
+
+内联模式，也称内联输入风格。内联模式的输入框在编辑态和非编辑态样式有明显区分。
+```ts
+TextArea()
+  .style(TextContentStyle.INLINE)
+```
+
+  ![textArea_style_default](figures/textArea_style_inline.gif)
 
 ## 自定义样式
 
@@ -266,7 +301,7 @@ struct Index {
 
 ## 选中菜单
 
-输入框中的文字被选中时会弹出包含剪切、复制、翻译、搜索的菜单。
+输入框中的文字被选中时会弹出包含剪切、复制、翻译、分享的菜单。
 
 TextInput:
 ```ts
@@ -531,3 +566,69 @@ struct Index {
 针对文本输入开发，有以下相关实例可供参考：
 
 - [聊天实例应用（ArkTS）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/IM/Chat#%E8%81%8A%E5%A4%A9%E5%AE%9E%E4%BE%8B%E5%BA%94%E7%94%A8)
+
+## 常见问题
+
+### 如何设置TextArea的文本最少展示行数并自适应高度
+
+**问题现象**
+
+设置TextArea的初始高度来控制最少文本展示行数，当输入文本超过初始高度时，TextArea的高度自适应。
+
+**解决措施**
+
+设置[minLines](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#minlines20)（从API version 20开始），或者设置height为"auto"，并使用[constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)自行计算高度。
+
+```ts
+import { MeasureUtils } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextExample {
+  private textAreaPadding = 12;
+  private setMaxLines = 3;
+  @State fullText: string = "我是TextArea";
+  @State originText: string = "我是TextArea";
+  @State uiContext: UIContext = this.getUIContext();
+  @State uiContextMeasure: MeasureUtils = this.uiContext.getMeasureUtils();
+  textSize: SizeOptions = this.uiContextMeasure.measureTextSize({
+    textContent: this.originText,
+    fontSize: 18
+  });
+
+  build() {
+    Column() {
+      TextArea({ text: "minLines: " + this.fullText })
+        .fontSize(18)
+        .width(300)
+        .minLines(3)
+
+      Blank(50)
+
+      TextArea({ text: "constraintSize: " + this.fullText })
+        .fontSize(18)
+        .padding({ top: this.textAreaPadding, bottom: this.textAreaPadding })
+        .width(300)
+        .height("auto")
+        .constraintSize({
+          // 结合padding计算，设置至少显示this.setMaxLines行文本
+          // 若涉及适老化字号缩放，需要监听并调整高度
+          minHeight: this.textAreaPadding * 2 +
+            this.setMaxLines * this.getUIContext().px2vp(Number(this.textSize.height))
+        })
+
+      Blank(50)
+
+      Button("增加输入")
+        .onClick(() => {
+          this.fullText += "我是TextArea";
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .padding({ top: 30 })
+  }
+}
+```
+
+![textinputkeyboardavoid](figures/textareaHeight.gif)

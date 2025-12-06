@@ -1,4 +1,12 @@
 # Developing Intents Using Decorators
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @zhangyafei-echo-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 ## When to Use
 Starting from API version 20, you can develop intents using decorators, allowing you to quickly integrate existing features into system entry points. The table below lists some typical scenarios.
 

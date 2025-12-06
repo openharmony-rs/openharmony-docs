@@ -46,7 +46,7 @@ For details about the APIs, see [RDB](../reference/apis-arkdata/capi-rdb.md).
 | OH_Rdb_Execute(OH_Rdb_Store *store, const char *sql) | Executes an SQL statement that contains specified arguments but returns no value.|
 | OH_Rdb_Insert(OH_Rdb_Store *store, const char *table, OH_VBucket *valuesBucket) | Inserts a row of data into a table.|
 | int OH_Rdb_InsertWithConflictResolution(OH_Rdb_Store *store, const char *table, OH_VBucket *row, Rdb_ConflictResolution resolution, int64_t *rowId) | Inserts a row of data into a table with conflict resolutions.|
-| int OH_Rdb_UpdateWithConflictResolution(OH_Rdb_Store *store, OH_VBucket *row, OH_Predicates *predicates, Rdb_ConflictResolution resolution, int64_t *changes) | Updates a row of data into a table with conflict resolutions.|
+| int OH_Rdb_UpdateWithConflictResolution(OH_Rdb_Store *store, OH_VBucket *row, OH_Predicates *predicates, Rdb_ConflictResolution resolution, int64_t *changes) | Updates a row of data in a table with conflict resolutions.|
 | OH_Rdb_Update(OH_Rdb_Store *store, OH_VBucket *valuesBucket, OH_Predicates *predicates) | Updates data in an RDB store.|
 | OH_Rdb_Delete(OH_Rdb_Store *store, OH_Predicates *predicates) | Deletes data from an RDB store.|
 | int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const char *pattern) | Sets an **OH_Predicates** object to match a string that is not similar to the specified value.|
@@ -57,7 +57,7 @@ For details about the APIs, see [RDB](../reference/apis-arkdata/capi-rdb.md).
 | OH_VBucket_PutAsset(OH_VBucket *bucket, const char *field, Rdb_Asset *value) | Puts an RDB asset into an **OH_VBucket** object.|
 | OH_VBucket_PutAssets(OH_VBucket *bucket, const char *field, Rdb_Asset *value, uint32_t count) | Puts RDB assets into an **OH_VBucket** object.|
 | OH_Rdb_FindModifyTime(OH_Rdb_Store *store, const char *tableName, const char *columnName, OH_VObject *values) | Obtains the last modification time of the data in the specified column of a table.|
-| OH_RDB_TransOptions *OH_RdbTrans_CreateOptions(void) | Creates an **OH_RDB_TransOptions** instance to configure the transaction object. |
+| OH_RDB_TransOptions *OH_RdbTrans_CreateOptions(void) | Creates an **OH_RDB_TransOptions** instance to configure the transaction object.|
 | OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char *columns[], int len) | Queries data in the database based on specified conditions.|
 | OH_Data_Values *OH_Values_Create(void) | Creates an **OH_Data_Values** instance.|
 | int OH_Data_Asset_SetName(Data_Asset *asset, const char *name) | Sets the name for a data asset.|
@@ -122,10 +122,12 @@ libnative_rdb_ndk.z.so
 
    ```c
    // Create an OH_Rdb_ConfigV2 object.
-   OH_Rdb_ConfigV2* config = OH_Rdb_CreateConfig();
+   OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
    // The path is the application sandbox path.
-   // The database file will be created in the sandbox path /data/storage/el2/database/rdb/RdbTest.db.
-   OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
+   // The database file will be created in the sandbox path: /data/storage/el3/database/rdb/RdbTest.db.
+   OH_Rdb_SetDatabaseDir(config, "/data/storage/el3/database");
+   // Secure path where database files are stored, which corresponds to the el path in the databaseDir parameter.
+   OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL3);
    // Database file name.
    OH_Rdb_SetStoreName(config, "RdbTest.db");
    // Application bundle name.
@@ -136,12 +138,21 @@ libnative_rdb_ndk.z.so
    OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
    // Whether the database is encrypted.
    OH_Rdb_SetEncrypted(config, false);
-   // Security level of the directory for storing the database file.
-   OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL2);
 
    int errCode = 0;
    // Obtain an OH_Rdb_Store instance.
    OH_Rdb_Store *store_ = OH_Rdb_CreateOrOpen(config, &errCode);
+   if (store_ == NULL) {
+       OH_LOG_ERROR(LOG_APP, "Create store failed, errCode: %{public}d", errCode);
+       OH_Rdb_DestroyConfig(config);
+       return;
+   }
+   if (errCode != OH_Rdb_ErrCode::RDB_OK) {
+       OH_LOG_ERROR(LOG_APP, "Create attachStore failed, errCode: %{public}d", errCode);
+       OH_Rdb_DestroyConfig(config);
+       OH_Rdb_CloseStore(store_);
+       return;
+   }
    ```
 
    ```c
@@ -189,10 +200,12 @@ libnative_rdb_ndk.z.so
    >
    > **RelationalStore** does not provide explicit flush operations for data persistence. The **insert()** API stores data persistently.
 
-3. Modify or delete data based on the conditions specified by **OH_Predicates**.<br>Call **OH_Rdb_Update** to modify data, and call **OH_Rdb_Delete** to delete data. <br>Example:
+3. Modify or delete data based on the conditions specified by **OH_Predicates**.
+
+   Call **OH_Rdb_Update** to modify data, and call **OH_Rdb_Delete** to delete data. <br>Example:
 
    ```c
-   // Modify data.
+   // Create a valueBucket object to store the new data to be updated.
    OH_VBucket *valueBucket = OH_Rdb_CreateValuesBucket();
    valueBucket->putText(valueBucket, "NAME", "Rose");
    valueBucket->putInt64(valueBucket, "AGE", 22);
@@ -200,8 +213,13 @@ libnative_rdb_ndk.z.so
    uint8_t arr[] = {1, 2, 3, 4, 5};
    int len = sizeof(arr) / sizeof(arr[0]);
    valueBucket->putBlob(valueBucket, "CODES", arr, len);
-   
+   // Create a predicates object and specify the update condition: NAME is Lisa and SALARY is 100.5.
    OH_Predicates *predicates = OH_Rdb_CreatePredicates("EMPLOYEE");
+   if (predicates == NULL) {
+      OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
+      valueBucket->destroy(valueBucket);
+      return;
+   }
    OH_VObject *valueObject = OH_Rdb_CreateValueObject();
    const char *name = "Lisa";
    valueObject->putText(valueObject, name);
@@ -210,10 +228,16 @@ libnative_rdb_ndk.z.so
    double salary = 100.5;
    valueObject->putDouble(valueObject, &salary, count);
    predicates->equalTo(predicates, "SALARY", valueObject);
-
+   // Update the data that meets the condition to the value in valueBucket.
    int changeRows = OH_Rdb_Update(store_, valueBucket, predicates);
    int rowId = OH_Rdb_Insert(store_, "EMPLOYEE", valueBucket);
    OH_Predicates *predicates2 = OH_Rdb_CreatePredicates("EMPLOYEE");
+   if (predicates2 == NULL) {
+      OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
+      valueObject->destroy(valueObject);
+      valueBucket->destroy(valueBucket);
+      return;
+   }
    OH_VObject *valueObject2 = OH_Rdb_CreateValueObject();
    valueObject2->putText(valueObject2, "Rose");
    predicates2->equalTo(predicates2, "NAME", valueObject2);
@@ -234,6 +258,10 @@ libnative_rdb_ndk.z.so
    ```c
    // Delete data.
    OH_Predicates *predicates = OH_Rdb_CreatePredicates("EMPLOYEE");
+   if (predicates == NULL) {
+      OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
+      return;
+   }
    OH_VObject *valueObject = OH_Rdb_CreateValueObject();
    const char *name = "Lisa";
    valueObject->putText(valueObject, name);
@@ -243,15 +271,24 @@ libnative_rdb_ndk.z.so
    predicates->destroy(predicates);
    ```
 
-4. Query data based on the conditions specified by **OH_Predicates**.<br>Call **OH_Rdb_Query** to query data. The data obtained is returned in an **OH_Cursor** object. <br>Example:
+4. Query data based on the conditions specified by **OH_Predicates**.
+
+   Call **OH_Rdb_Query** to query data. The data obtained is returned in an **OH_Cursor** object. <br>Example:
 
    ```c
    OH_Predicates *predicates = OH_Rdb_CreatePredicates("EMPLOYEE");
-   
+   if (predicates == NULL) {
+      OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
+      return;
+   }
    const char *columnNames[] = {"NAME", "AGE"};
    int len = sizeof(columnNames) / sizeof(columnNames[0]);
    OH_Cursor *cursor = OH_Rdb_Query(store_, predicates, columnNames, len);
-   
+   if (cursor == NULL) {
+      OH_LOG_ERROR(LOG_APP, "Query failed.");
+      predicates->destroy(predicates);
+      return;
+   }
    int columnCount = 0;
    cursor->getColumnCount(cursor, &columnCount);
    
@@ -272,10 +309,13 @@ libnative_rdb_ndk.z.so
    ```
    
    Configure predicates to match data in LIKE or NOT LIKE mode. <br>Example:
-   
+
    ```c
    OH_Predicates *likePredicates = OH_Rdb_CreatePredicates("EMPLOYEE");
-   
+   if (likePredicates == NULL) {
+      OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
+      return;
+   }
    OH_VObject *likePattern = OH_Rdb_CreateValueObject();
    likePattern->putText(likePattern, "zh%");
    // Configure predicates to match data in LIKE mode.
@@ -283,6 +323,12 @@ libnative_rdb_ndk.z.so
 
    char *colName[] = { "NAME", "AGE" };
    auto *likeQueryCursor = OH_Rdb_Query(store_, likePredicates, colName, 2);
+   if (likeQueryCursor == NULL) {
+      OH_LOG_ERROR(LOG_APP, "Query failed.");
+      likePredicates->destroy(likePredicates);
+      likePattern->destroy(likePattern);
+      return;
+   }
    likeQueryCursor->goToNextRow(likeQueryCursor);
    size_t dataLength = 0;
    int colIndex = -1;
@@ -297,10 +343,18 @@ libnative_rdb_ndk.z.so
    free(name);
    
    OH_Predicates *notLikePredicates = OH_Rdb_CreatePredicates("EMPLOYEE");
-   
+   if (notLikePredicates == NULL) {
+      OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
+      return;
+   }
    // Configure predicates to match data in NOT LIKE mode.
    OH_Predicates_NotLike(notLikePredicates, "NAME", "zh%");
    auto *notLikeQueryCursor = OH_Rdb_Query(store_, notLikePredicates, colName, 2);
+   if (notLikeQueryCursor == NULL) {
+      OH_LOG_ERROR(LOG_APP, "Query failed.");
+      notLikePredicates->destroy(notLikePredicates);
+      return;
+   }
    notLikeQueryCursor->goToNextRow(notLikeQueryCursor);
    dataLength = 0;
    colIndex = -1;
@@ -309,17 +363,27 @@ libnative_rdb_ndk.z.so
    char *name2 = (char*)malloc((dataLength + 1) * sizeof(char)); 
    notLikeQueryCursor->getText(notLikeQueryCursor, colIndex, name2, dataLength + 1);
    
+   notLikePredicates->destroy(notLikePredicates);
    notLikeQueryCursor->destroy(notLikeQueryCursor);
    free(name2);
    ```
    Configure predicates to match data in GLOB or NOT GLOB mode. <br>Example:
    ```c
    OH_Predicates *globPredicates = OH_Rdb_CreatePredicates("EMPLOYEE");
+   if (globPredicates == NULL) {
+      OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
+      return;
+   }
    // Configure predicates to match in GLOB mode.
    OH_Predicates_Glob(globPredicates, "NAME", "zh*");
    
    char *colName[] = { "NAME", "AGE" };
    auto *globQueryCursor = OH_Rdb_Query(store_, globPredicates, colName, 2);
+   if (globQueryCursor == NULL) {
+      OH_LOG_ERROR(LOG_APP, "Query failed.");
+      globPredicates->destroy(globPredicates);
+      return;
+   }
    globQueryCursor->goToNextRow(globQueryCursor);
    size_t dataLength = 0;
    int colIndex = -1;
@@ -333,9 +397,18 @@ libnative_rdb_ndk.z.so
    free(name);
    
    OH_Predicates *notGlobPredicates = OH_Rdb_CreatePredicates("EMPLOYEE");
+   if (notGlobPredicates == NULL) {
+      OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
+      return;
+   }
    // Configure predicates to match in NOT GLOB mode.
    OH_Predicates_NotGlob(notGlobPredicates, "NAME", "zh*");
    auto *notGlobQueryCursor = OH_Rdb_Query(store_, notGlobPredicates, colName, 2);
+   if (notGlobQueryCursor == NULL) {
+      OH_LOG_ERROR(LOG_APP, "Query failed.");
+      notGlobPredicates->destroy(notGlobPredicates);
+      return;
+   }
    notGlobQueryCursor->goToNextRow(notGlobQueryCursor);
    dataLength = 0;
    colIndex = -1;
@@ -352,11 +425,11 @@ libnative_rdb_ndk.z.so
     ```c
     OH_Rdb_SetLocale(store_, "zh_CN");
     ```
-   
-    To configure the full-text search (FTS) dynamic library, use **OH_Rdb_SetPlugins**.
 
-    For details about the constraints, see the **pluginLibs** configuration item in [StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig).
+    To configure the full-text search (FTS) dynamic library, use **OH_Rdb_SetPlugins**.
    
+    For details about the constraints, see the **pluginLibs** configuration item in [StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig).
+
     ```c
     const char *plugins[] = {
         "/data/storage/el1/bundle/libs/arm64/libtokenizer.so"
@@ -454,6 +527,11 @@ libnative_rdb_ndk.z.so
     transValueBucket3->putReal(transValueBucket3, "data3", 1.2);
 
     OH_Predicates *transUpdatePredicates = OH_Rdb_CreatePredicates("transaction_table");
+    if (transUpdatePredicates == NULL) {
+       OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
+       transValueBucket3->destroy(transValueBucket3);
+       return;
+    }
     auto targetValue = OH_Rdb_CreateValueObject();
     int64_t two = 2;
     targetValue->putInt64(targetValue, &two, 1);
@@ -468,9 +546,18 @@ libnative_rdb_ndk.z.so
     transUpdatePredicates->destroy(transUpdatePredicates);
 
     OH_Predicates *predicates = OH_Rdb_CreatePredicates("transaction_table");
+    if (predicates == NULL) {
+       OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
+       return;
+    }
     const char *columns[] = {"data1", "data2", "data3"};
     // Query data through the transaction object.
     OH_Cursor *cursor = OH_RdbTrans_Query(trans, predicates, columns, sizeof(columns) / sizeof(columns[0]));
+    if (cursor == NULL) {
+       OH_LOG_ERROR(LOG_APP, "Query failed.");
+       predicates->destroy(predicates);
+       return;
+    }
     int columnCount = 0;
     cursor->getColumnCount(cursor, &columnCount);
 
@@ -478,7 +565,16 @@ libnative_rdb_ndk.z.so
     cursor->destroy(cursor);
 
     OH_Predicates *predicates2 = OH_Rdb_CreatePredicates("transaction_table");
+    if (predicates2 == NULL) {
+       OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
+       return;
+    }
     OH_VObject *valueObject = OH_Rdb_CreateValueObject();
+    if (valueObject == NULL) {
+       OH_LOG_ERROR(LOG_APP, "CreateValueObject failed.");
+       predicates2->destroy(predicates2);
+       return;
+    }
     valueObject->putText(valueObject, "1");
     predicates2->equalTo(predicates2, "data4", valueObject);
     int64_t changes = -1;
@@ -519,50 +615,131 @@ libnative_rdb_ndk.z.so
     When the attached database is no longer used, call **OH_Rdb_Detach** to detach it.
 
     ```c
-    char attachStoreTableCreateSql[] = "CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, "
-                           "AGE INTEGER, SALARY REAL, CODES BLOB)";
-    OH_Rdb_ConfigV2* configAttach = OH_Rdb_CreateConfig();
-    OH_Rdb_SetModuleName(configAttach, "entry");
-    OH_Rdb_SetDatabaseDir(configAttach, "/data/storage/el2/database");
-    OH_Rdb_SetArea(configAttach, RDB_SECURITY_AREA_EL2);
-    OH_Rdb_SetStoreName(configAttach, "RdbAttach.db");
-    OH_Rdb_SetSecurityLevel(configAttach, OH_Rdb_SecurityLevel::S3);
-    OH_Rdb_SetBundleName(configAttach, "com.example.nativedemo");
+    char attachStoreTableCreateSql[] = "CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+        "NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)";
+    OH_Rdb_ConfigV2 *attachDbConfig = OH_Rdb_CreateConfig();
+    if (attachDbConfig == NULL) {
+        OH_LOG_ERROR(LOG_APP, "Create store config failed.");
+        return;
+    }
+    OH_Rdb_SetModuleName(attachDbConfig, "entry");
+    OH_Rdb_SetDatabaseDir(attachDbConfig, "/data/storage/el3/database");
+    OH_Rdb_SetArea(attachDbConfig, RDB_SECURITY_AREA_EL3);
+    OH_Rdb_SetStoreName(attachDbConfig, "RdbAttach.db");
+    OH_Rdb_SetSecurityLevel(attachDbConfig, OH_Rdb_SecurityLevel::S3);
+    OH_Rdb_SetBundleName(attachDbConfig, "com.example.nativedemo");
 
-    // Create an RdbAttach.db (example).
-    int attachStoreCreateErrCode = 0;
-    OH_Rdb_Store *attachStore = OH_Rdb_CreateOrOpen(configAttach, &attachStoreCreateErrCode);
-    OH_Rdb_Execute(attachStore, attachStoreTableCreateSql);
+    // Create the additional sample database RdbAttach.db.
+    OH_Rdb_Store *attachStore = OH_Rdb_CreateOrOpen(attachDbConfig, &errCode);
+
+    if (attachStore == NULL) {
+        OH_LOG_ERROR(LOG_APP, "Create attachStore failed, errCode: %{public}d", errCode);
+        OH_Rdb_DestroyConfig(attachDbConfig);
+        return;
+    }
+
+    if (errCode != OH_Rdb_ErrCode::RDB_OK) {
+        OH_LOG_ERROR(LOG_APP, "Create attachStore failed, errCode: %{public}d", errCode);
+        OH_Rdb_DestroyConfig(attachDbConfig);
+        OH_Rdb_CloseStore(attachStore);
+        return;
+    }
+    errCode = OH_Rdb_Execute(attachStore, attachStoreTableCreateSql);
+    if (errCode != OH_Rdb_ErrCode::RDB_OK) {
+        OH_LOG_ERROR(LOG_APP, "Create table failed, errCode: %{public}d", errCode);
+        OH_Rdb_DestroyConfig(attachDbConfig);
+        OH_Rdb_CloseStore(attachStore);
+        return;
+    }
     OH_VBucket *valueBucket = OH_Rdb_CreateValuesBucket();
-    valueBucket->putText(valueBucket, "NAME", "Lisa");
-    valueBucket->putInt64(valueBucket, "AGE", 18);
-    valueBucket->putReal(valueBucket, "SALARY", 100.5);
+    if (valueBucket == NULL) {
+        OH_LOG_ERROR(LOG_APP, "Create values bucket failed.");
+        OH_Rdb_DestroyConfig(attachDbConfig);
+        OH_Rdb_CloseStore(attachStore);
+        return;
+    }
+    errCode = valueBucket->putText(valueBucket, "NAME", "Lisa");
+    if (errCode != OH_Rdb_ErrCode::RDB_OK) {
+        OH_LOG_ERROR(LOG_APP, "Put text failed, errCode: %{public}d", errCode);
+        OH_Rdb_DestroyConfig(attachDbConfig);
+        OH_Rdb_CloseStore(attachStore);
+        valueBucket->destroy(valueBucket);
+        return;
+    }
+    errCode = valueBucket->putInt64(valueBucket, "AGE", 18);
+    if (errCode != OH_Rdb_ErrCode::RDB_OK) {
+        OH_LOG_ERROR(LOG_APP, "Put int64 failed, errCode: %{public}d", errCode);
+        OH_Rdb_DestroyConfig(attachDbConfig);
+        OH_Rdb_CloseStore(attachStore);
+        valueBucket->destroy(valueBucket);
+        return;
+    }
+    errCode = valueBucket->putReal(valueBucket, "SALARY", 100.5);
+    if (errCode != OH_Rdb_ErrCode::RDB_OK) {
+        OH_LOG_ERROR(LOG_APP, "Put real failed, errCode: %{public}d", errCode);
+        OH_Rdb_DestroyConfig(attachDbConfig);
+        OH_Rdb_CloseStore(attachStore);
+        valueBucket->destroy(valueBucket);
+        return;
+    }
     uint8_t arr[] = {1, 2, 3, 4, 5};
     int len = sizeof(arr) / sizeof(arr[0]);
-    valueBucket->putBlob(valueBucket, "CODES", arr, len);
+    errCode = valueBucket->putBlob(valueBucket, "CODES", arr, len);
+    if (errCode != OH_Rdb_ErrCode::RDB_OK) {
+        OH_LOG_ERROR(LOG_APP, "Put blob failed, errCode: %{public}d", errCode);
+        OH_Rdb_DestroyConfig(attachDbConfig);
+        OH_Rdb_CloseStore(attachStore);
+        valueBucket->destroy(valueBucket);
+        return;
+    }
     int rowId = OH_Rdb_Insert(attachStore, "EMPLOYEE", valueBucket);
+    OH_LOG_INFO(LOG_APP, "Insert data result: %{public}d", rowId);
     valueBucket->destroy(valueBucket);
     OH_Rdb_CloseStore(attachStore);
 
     // Attach databases.
-    size_t attachedCount = 0;
-    int result = OH_Rdb_Attach(store_, configAttach, "attach", 10, &attachedCount);
-    auto predicates = OH_Rdb_CreatePredicates("attach.EMPLOYEE");
+    size_t attachedNumber = 0;
+    errCode = OH_Rdb_Attach(store_, attachDbConfig, "attach", 10, &attachedNumber);
+    OH_Rdb_DestroyConfig(attachDbConfig);
+    if (errCode != OH_Rdb_ErrCode::RDB_OK) {
+        OH_LOG_ERROR(LOG_APP, "Attach store failed, errCode: %{public}d", errCode);
+        return;
+    }
+    OH_Predicates *predicates = OH_Rdb_CreatePredicates("attach.EMPLOYEE");
+    if (predicates == NULL) {
+       OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
+       errCode = OH_Rdb_Detach(store_, "attach", 10, &attachedNumber);
+       OH_LOG_INFO(LOG_APP, "Detach result: %{public}d", errCode);
+       return;
+    }
     char *colName[] = {};
-    auto cursor = OH_Rdb_Query(store_, predicates, colName, 0);
+    OH_Cursor *cursor = OH_Rdb_Query(store_, predicates, colName, 0);
+    if (cursor == NULL) {
+        OH_LOG_ERROR(LOG_APP, "Query failed.");
+        errCode = OH_Rdb_Detach(store_, "attach", 10, &attachedNumber);
+        OH_LOG_INFO(LOG_APP, "Detach result: %{public}d", errCode);
+        predicates->destroy(predicates);
+        return;
+    }
     int rowCount = -1;
-    result = cursor->getRowCount(cursor, &rowCount);
+    errCode = cursor->getRowCount(cursor, &rowCount);
+    if (errCode != OH_Rdb_ErrCode::RDB_OK) {
+        OH_LOG_ERROR(LOG_APP, "Get row count failed, errCode: %{public}d", errCode);
+    } else {
+        OH_LOG_INFO(LOG_APP, "Query success, row count: %{public}d", rowCount);
+    }
     cursor->destroy(cursor);
-    
+    predicates->destroy(predicates);
     // Detach databases.
-    result = OH_Rdb_Detach(store_, "attach", 10, &attachedCount);
+    errCode = OH_Rdb_Detach(store_, "attach", 10, &attachedNumber);
+    OH_LOG_INFO(LOG_APP, "Detach result: %{public}d", errCode);
     ```
 
 7. Insert data assets into a table.
 
    ```c
    // If the column attribute is a single asset, use asset in the SQL statements. If the column attribute is multiple assets, use assets in the SQL statements.
-   char createAssetTableSql[] = "CREATE TABLE IF NOT EXISTS asset_table (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 asset, data2 assets );";
+   char createAssetTableSql[] = "CREATE TABLE IF NOT EXISTS asset_table (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 ASSET, data2 ASSETS );";
    const char *table = "asset_table";
    int errCode = OH_Rdb_Execute(store_, createAssetTableSql);
    OH_VBucket *valueBucket = OH_Rdb_CreateValuesBucket();
@@ -594,7 +771,7 @@ libnative_rdb_ndk.z.so
    OH_Data_Asset_SetSize(assets[1], 1);
    OH_Data_Asset_SetStatus(assets[1], Data_AssetStatus::ASSET_NORMAL);
    
-   uint32_t assetsCount = 1;
+   uint32_t assetsCount = 2;
    errCode = OH_VBucket_PutAssets(valueBucket, "data2", assets, assetsCount);
    int rowID = OH_Rdb_Insert(store_, table, valueBucket);
    // Destroy Data_Asset* and Data_Asset**.
@@ -607,48 +784,55 @@ libnative_rdb_ndk.z.so
 
    ```c
    OH_Predicates *predicates = OH_Rdb_CreatePredicates("asset_table");
-   
-   OH_Cursor *cursor = OH_Rdb_Query(store_, predicates, NULL, 0);
-   cursor->goToNextRow(cursor);
-   
-   uint32_t assetCount = 0;
-   // assetCount is an output parameter that indicates the number of assets in this column.
-   int errCode = cursor->getAssets(cursor, 2, nullptr, &assetCount);
-   Data_Asset **assets = OH_Data_Asset_CreateMultiple(assetCount);
-   errCode = cursor->getAssets(cursor, 2, assets, &assetCount);
-   if (assetCount < 2) {
-       predicates->destroy(predicates);
-       cursor->destroy(cursor);
-       return;
+   if (predicates == NULL) {
+      OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
+      return;
    }
-   Data_Asset *asset = assets[1];
-   char name[10] = "";
-   size_t nameLength = 10;
-   errCode = OH_Data_Asset_GetName(asset, name, &nameLength);
-   
-   char uri[10] = "";
-   size_t uriLength = 10;
-   errCode = OH_Data_Asset_GetUri(asset, uri, &uriLength);
-   
-   char path[10] = "";
-   size_t pathLength = 10;
-   errCode = OH_Data_Asset_GetPath(asset, path, &pathLength);
-   
-   int64_t createTime = 0;
-   errCode = OH_Data_Asset_GetCreateTime(asset, &createTime);
-   
-   int64_t modifyTime = 0;
-   errCode = OH_Data_Asset_GetModifyTime(asset, &modifyTime);
-   
-   size_t size = 0;
-   errCode = OH_Data_Asset_GetSize(asset, &size);
-   
-   Data_AssetStatus status = Data_AssetStatus::ASSET_NULL;
-   errCode = OH_Data_Asset_GetStatus(asset, &status);
-   
-   predicates->destroy(predicates);
-   OH_Data_Asset_DestroyMultiple(assets, assetCount);
-   cursor->destroy(cursor);
+   OH_Cursor *cursor = OH_Rdb_Query(store_, predicates, NULL, 0);
+   if (cursor == NULL) {
+       predicates->destroy(predicates);
+   } else {
+       cursor->goToNextRow(cursor);
+       
+       uint32_t assetCount = 0;
+       // assetCount is an output parameter that indicates the number of assets in this column.
+       int errCode = cursor->getAssets(cursor, 2, nullptr, &assetCount);
+       Data_Asset **assets = OH_Data_Asset_CreateMultiple(assetCount);
+       errCode = cursor->getAssets(cursor, 2, assets, &assetCount);
+       if (assetCount < 2) {
+           predicates->destroy(predicates);
+           cursor->destroy(cursor);
+       } else {
+           Data_Asset *asset = assets[1];
+           char name[10] = "";
+           size_t nameLength = 10;
+           errCode = OH_Data_Asset_GetName(asset, name, &nameLength);
+           
+           char uri[10] = "";
+           size_t uriLength = 10;
+           errCode = OH_Data_Asset_GetUri(asset, uri, &uriLength);
+           
+           char path[10] = "";
+           size_t pathLength = 10;
+           errCode = OH_Data_Asset_GetPath(asset, path, &pathLength);
+           
+           int64_t createTime = 0;
+           errCode = OH_Data_Asset_GetCreateTime(asset, &createTime);
+           
+           int64_t modifyTime = 0;
+           errCode = OH_Data_Asset_GetModifyTime(asset, &modifyTime);
+           
+           size_t size = 0;
+           errCode = OH_Data_Asset_GetSize(asset, &size);
+           
+           Data_AssetStatus status = Data_AssetStatus::ASSET_NULL;
+           errCode = OH_Data_Asset_GetStatus(asset, &status);
+           
+           predicates->destroy(predicates);
+           OH_Data_Asset_DestroyMultiple(assets, assetCount);
+           cursor->destroy(cursor);
+       }
+   }
    ```
 
 9. Obtain the last modification time of data. <br>Call **OH_Rdb_FindModifyTime** to obtain the last modification time of data in the specified column of a table. This API returns an **OH_Cursor** object with two columns of data. The first column is the input primary key or row ID, and the second column is the last modification time. <br>Example:
@@ -661,7 +845,7 @@ libnative_rdb_ndk.z.so
    cursor = OH_Rdb_FindModifyTime(store_, "EMPLOYEE", "ROWID", values);
    ```
 
-10. Delete the database. Call **OH_Rdb_DeleteStore** to delete the RDB store and related database file. <br>Example:
+10. Delete the database. Call the **OH_Rdb_DeleteStoreV2** method to delete the RDB store and related database files. <br>Example:
     
     ```c
     // Close the database instance.

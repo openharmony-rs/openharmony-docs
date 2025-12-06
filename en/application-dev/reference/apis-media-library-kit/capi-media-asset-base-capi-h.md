@@ -5,7 +5,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -219,8 +219,8 @@ Enumerates the media content types.
 
 | Enum| Description|
 | -- | -- |
-| MEDIA_LIBRARY_COMPRESSED = 1 | Compressed media content.|
-| MEDIA_LIBRARY_PICTURE_OBJECT = 2 | Image object.|
+| MEDIA_LIBRARY_COMPRESSED = 1 | Common image formats, such as JPEG, HEIC, and GIF.|
+| MEDIA_LIBRARY_PICTURE_OBJECT = 2 | Object that encapsulates the PixelMap, GainMap, and image metadata after decoding, making it convenient for applications to perform editing and display operations. For detailed operations on this object, see [OH_PictureNative](../apis-image-kit/capi-image-nativemodule-oh-picturenative.md).|
 
 
 ## Function Description

@@ -48,7 +48,7 @@
     @ComponentV2
     struct Index {
       @Type(Sample)
-      sample: Sample = new Sample(); // 错误用法，不能用在自定义组件中
+      sample: Sample = new Sample(); // 错误用法，不能用在自定义组件中，编译时报错
       build() {
       }
     }
@@ -56,7 +56,7 @@
 
 2. 不支持collections.Set、collections.Map等类型。
 
-3. 不支持非built-in类型。如PixelMap、NativePointer、ArrayList等Native类型。
+3. 不支持非built-in类型。如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型。
 
 4. 不支持简单类型。如string、number、boolean等。
 

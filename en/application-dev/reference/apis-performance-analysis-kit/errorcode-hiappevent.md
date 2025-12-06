@@ -3,8 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--SE: @junjie_shi-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @junjie_shi-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
 
 > **NOTE**
 >
@@ -113,7 +114,7 @@ Invalid string length of the event parameter.
 
 **Possible Causes**
 
-- The length of the string of the event parameter value passed by the **write** API exceeds 8 x 1024 characters.
+- The length of the string of the event parameter value passed by the **write** API exceeds 8 × 1024.
 - The length of the custom event parameter value passed by the **setEventParam** API exceeds 1024 characters.
 
 **Solution**

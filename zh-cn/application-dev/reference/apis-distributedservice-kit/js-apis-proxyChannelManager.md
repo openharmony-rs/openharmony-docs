@@ -58,7 +58,7 @@ openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参考[代理通道管理错误码](errorcode_proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参考[代理通道管理错误码](errorcode-proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -73,8 +73,9 @@ openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;number&gt;
 **示例：**
 
 ```ts
-import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
-import { BusinessError } from '@ohos.base';
+import { proxyChannelManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -127,7 +128,7 @@ closeProxyChannel(channelId:&nbsp;number):&nbsp;void
 
 **错误码：**
 
-以下错误码的详细介绍请参考[代理通道管理错误码](errorcode_proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参考[代理通道管理错误码](errorcode-proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -140,8 +141,9 @@ closeProxyChannel(channelId:&nbsp;number):&nbsp;void
 **示例：**
 
 ```ts
-import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
-import { BusinessError } from '@ohos.base';
+import { proxyChannelManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -151,7 +153,7 @@ struct Index {
         .onClick(() => {
           // 以下为使用 try/catch 判断
           try {
-            proxyChannelManager.closeProxyChannel(1);  // 假设通道id为1
+            proxyChannelManager.closeProxyChannel(1); // 假设通道id为1
           } catch (err) {
             let error = err as BusinessError;
             console.error(`getErr: ${error.code} ${error.message}`);
@@ -190,7 +192,7 @@ sendData(channelId:number, data:ArrayBuffer):Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参考[代理通道管理错误码](errorcode_proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参考[代理通道管理错误码](errorcode-proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -205,8 +207,9 @@ sendData(channelId:number, data:ArrayBuffer):Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
-import { BusinessError } from '@ohos.base';
+import { proxyChannelManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -216,13 +219,13 @@ struct Index {
         .onClick(() => {
           const data = new ArrayBuffer(10); // 创建一个长度为 10 的 ArrayBuffer
           try {
-            proxyChannelManager.sendData(1, data)  // 假设通道id为1
+            proxyChannelManager.sendData(1, data)// 假设通道id为1
               .then(() => {
               })
               .catch((error: BusinessError) => {
                 console.error(`getErr: ${error.code} ${error.message}`);
               });
-          }catch (err) {
+          } catch (err) {
             let error = err as BusinessError;
             console.error(`getErr: ${error.code} ${error.message}`);
           }
@@ -254,7 +257,7 @@ on(type:&nbsp;'receiveData', channelId:&nbsp;number, callback:&nbsp;Callback&lt;
 
 **错误码：**
 
-以下错误码的详细介绍请参考[代理通道管理错误码](errorcode_proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参考[代理通道管理错误码](errorcode-proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -267,8 +270,9 @@ on(type:&nbsp;'receiveData', channelId:&nbsp;number, callback:&nbsp;Callback&lt;
 **示例：**
 
 ```ts
-import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
-import { BusinessError } from '@ohos.base';
+import { proxyChannelManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -278,9 +282,9 @@ struct Index {
         .onClick(() => {
           const receiveDataCallback = (dataInfo: proxyChannelManager.DataInfo) => {
           };
-          try{
-            proxyChannelManager.on('receiveData', 1, receiveDataCallback);  // 假设通道id为1
-          } catch(err) {
+          try {
+            proxyChannelManager.on('receiveData', 1, receiveDataCallback); // 假设通道id为1
+          } catch (err) {
             let error = err as BusinessError;
             console.error(`register receiveData error: ${error.code} ${error.message}`);
           }
@@ -312,7 +316,7 @@ off(type:&nbsp;'receiveData', channelId:&nbsp;number, callback?:&nbsp;Callback&l
 
 **错误码：**
 
-以下错误码的详细介绍请参考[代理通道管理错误码](errorcode_proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参考[代理通道管理错误码](errorcode-proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -325,8 +329,9 @@ off(type:&nbsp;'receiveData', channelId:&nbsp;number, callback?:&nbsp;Callback&l
 **示例：**
 
 ```ts
-import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
-import { BusinessError } from '@ohos.base';
+import { proxyChannelManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -334,9 +339,9 @@ struct Index {
     RelativeContainer() {
       Button("测试")
         .onClick(() => {
-          try{
-            proxyChannelManager.off('receiveData', 1);  // 假设通道id为1
-          } catch(err) {
+          try {
+            proxyChannelManager.off('receiveData', 1); // 假设通道id为1
+          } catch (err) {
             let error = err as BusinessError;
             console.error(`getErr: ${error.code} ${error.message}`);
           }
@@ -368,7 +373,7 @@ on(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback:&nbsp;Callb
 
 **错误码：**
 
-以下错误码的详细介绍请参考[代理通道管理错误码](errorcode_proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参考[代理通道管理错误码](errorcode-proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -381,8 +386,9 @@ on(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback:&nbsp;Callb
 **示例：**
 
 ```ts
-import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
-import { BusinessError } from '@ohos.base';
+import { proxyChannelManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -392,9 +398,9 @@ struct Index {
         .onClick(() => {
           const receiveStatusCallback = (channelStateInfo: proxyChannelManager.ChannelStateInfo) => {
           };
-          try{
-            proxyChannelManager.on('channelStateChange', 1, receiveStatusCallback);  // 假设打开的通道id为1
-          } catch(err) {
+          try {
+            proxyChannelManager.on('channelStateChange', 1, receiveStatusCallback); // 假设打开的通道id为1
+          } catch (err) {
             let error = err as BusinessError;
             console.error(`getErr: ${error.code} ${error.message}`);
           }
@@ -426,7 +432,7 @@ off(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback?:&nbsp;Cal
 
 **错误码：**
 
-以下错误码的详细介绍请参考[代理通道管理错误码](errorcode_proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参考[代理通道管理错误码](errorcode-proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -439,8 +445,9 @@ off(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback?:&nbsp;Cal
 **示例：**
 
 ```ts
-import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
-import { BusinessError } from '@ohos.base';
+import { proxyChannelManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -448,9 +455,9 @@ struct Index {
     RelativeContainer() {
       Button("测试")
         .onClick(() => {
-          try{
-            proxyChannelManager.off('channelStateChange', 1);  // 假设打开的通道id为1
-          } catch(err) {
+          try {
+            proxyChannelManager.off('channelStateChange', 1); // 假设打开的通道id为1
+          } catch (err) {
             let error = err as BusinessError;
             console.error(`getErr: ${error.code} ${error.message}`);
           }

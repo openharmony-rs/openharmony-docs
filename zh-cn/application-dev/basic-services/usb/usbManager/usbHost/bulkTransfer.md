@@ -156,40 +156,40 @@
 
 5. 数据传输。
 
-**说明：**
-
+> **说明：**
+>
 > 在数据传输前建议先获取interface所属endpointer的type，通过type判断interface是否支持所需的传输类型。
 >
 > 若调用传输接口失败，请先确认设备interface是否支持[模式切换](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md#usbinterface)。若alternateSetting支持切换设置，可在传输前调用[usbManager.setInterface](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md#usbmanagersetinterface)重新设置interface，使端点和传输类型匹配，保证端点正常通信。
 
-    ```ts
-    /*
-      读取数据，在device信息中选取对应数据接收的endpoint来做数据传输
-    （endpoint.direction == 0x80）；dataUint8Array是要读取的数据，类型为Uint8Array。
-    */
-    let inEndpoint : usbManager.USBEndpoint = interface1.endpoints[2];
-    let outEndpoint : usbManager.USBEndpoint = interface1.endpoints[1];
-    let dataUint8Array : Uint8Array = new Uint8Array(1024);
-    usbManager.bulkTransfer(pipe, inEndpoint, dataUint8Array, 15000).then((dataLength : number) => {
-    if (dataLength >= 0) {
-      console.info(`usb readData result Length : ${dataLength}`);
-    } else {
-      console.error("usb readData failed");
-    }
-    }).catch((error : BusinessError) => {
-    console.error(`usb readData error : ${error}`);
-    });
-    // 发送数据，在device信息中选取对应数据发送的endpoint来做数据传输。（endpoint.direction == 0）
-    usbManager.bulkTransfer(pipe, outEndpoint, dataUint8Array, 15000).then((dataLength : number) => {
-      if (dataLength >= 0) {
-        console.info(`usb writeData result write length : ${dataLength}`);
-      } else {
-        console.error("usb writeData failed");
-      }
-    }).catch((error : BusinessError) => {
-      console.error(`usb writeData error : ${error}`);
-    });
-    ```
+   ```ts
+   /*
+     读取数据，在device信息中选取对应数据接收的endpoint来做数据传输
+   （endpoint.direction == 0x80）；dataUint8Array是要读取的数据，类型为Uint8Array。
+   */
+   let inEndpoint : usbManager.USBEndpoint = interface1.endpoints[2];
+   let outEndpoint : usbManager.USBEndpoint = interface1.endpoints[1];
+   let dataUint8Array : Uint8Array = new Uint8Array(1024);
+   usbManager.bulkTransfer(pipe, inEndpoint, dataUint8Array, 15000).then((dataLength : number) => {
+   if (dataLength >= 0) {
+     console.info(`usb readData result Length : ${dataLength}`);
+   } else {
+     console.error("usb readData failed");
+   }
+   }).catch((error : BusinessError) => {
+   console.error(`usb readData error : ${error}`);
+   });
+   // 发送数据，在device信息中选取对应数据发送的endpoint来做数据传输。（endpoint.direction == 0）
+   usbManager.bulkTransfer(pipe, outEndpoint, dataUint8Array, 15000).then((dataLength : number) => {
+     if (dataLength >= 0) {
+       console.info(`usb writeData result write length : ${dataLength}`);
+     } else {
+       console.error("usb writeData failed");
+     }
+   }).catch((error : BusinessError) => {
+     console.error(`usb writeData error : ${error}`);
+   });
+   ```
 
 6. 释放接口，关闭设备。
 

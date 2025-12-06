@@ -5,29 +5,27 @@
 <!--Owner: @zhanghongran; @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+The capabilities for encoding and decoding audio and video, as well as for multiplexing and demultiplexing file formats, vary across different platforms in terms of functionality and specifications. You can obtain the supported capabilities and specifications by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
 
 ## Media Codec
 
 ### Video Decoding
 
 Currently, the following decoding capabilities are supported:
-
-| Video Hardware Decoding Type      | Video Software Decoding Type  |
+| Video Decoding Type      | MIME Type for Video Decoding Format  |
 | --------------------- | ---------------- |
-| AVC (H.264), HEVC (H.265)<!--RP14--><!--RP14End--> | MPEG2, MPEG4, H.263, AVC (H.264)<!--RP12--><!--RP12End--> |
+| MPEG2 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG2](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| MPEG4 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG4](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| H.263 | [OH_AVCODEC_MIMETYPE_VIDEO_H263](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+<!--RP14--><!--RP14End-->
 
-When you attempt to create a decoder using the MIME type, the system preferentially creates a hardware decoder instance. If the system platform does not support the hardware decoder or the hardware decoder resources are insufficient, the system creates a software decoder instance.
+When you attempt to create a decoder using the MIME type, if the system supports hardware decoding, the system preferentially creates a hardware decoder instance. If the system does not support hardware decoding or the hardware decoder resources are insufficient, the system creates a software decoder instance.
 
-The system supports the following software decoder formats:
-- MPEG2 (OH_AVCODEC_MIMETYPE_VIDEO_MPEG2)
-- MPEG4 (OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2)
-- H.263 (OH_AVCODEC_MIMETYPE_VIDEO_H263)
-- H.264 (OH_AVCODEC_MIMETYPE_VIDEO_AVC)
-<!--RP13--><!--RP13End-->
-
-The hardware decoding capability provided by the system is closely related to the platform hardware capability. You can obtain the hardware decoding capability and capability specifications of the system by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
-
+The decoding capability provided by the system is closely related to the device. You can obtain the supported capabilities and specifications by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
 For example, you can query the <!--RP16-->hardware decoding capabilities of H.264 and H.265<!--RP16End--> by using <!--RP15-->**OH_AVCODEC_MIMETYPE_VIDEO_AVC** and **OH_AVCODEC_MIMETYPE_VIDEO_HEVC**<!--RP15End-->.
 
 For details about the development guide, see [Video Decoding](video-decoding.md).
@@ -35,35 +33,57 @@ For details about the development guide, see [Video Decoding](video-decoding.md)
 ### Video Encoding
 
 Currently, the following encoding capabilities are supported:
+| Video Encoding Type      | MIME Type for Video Encoding Format   |
+| --------------------- | ---------------- |
+| HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
 
-| Video Encoding Type                |
-| ---------------------------- |
-| HEVC (H.265), AVC (H.264)|
+If the system does not support the required encoding capability, the encoder instance fails to be created.
 
-Only hardware encoding is supported. When an encoder is created based on the MIME type, H.264 (OH_AVCODEC_MIMETYPE_VIDEO_AVC) and H.265 (OH_AVCODEC_MIMETYPE_VIDEO_HEVC) are supported.
-
-For details about the range of each encoding capability, see [Obtaining Supported Codecs](obtain-supported-codecs.md).
+Supported MIME types for encoder creation include H.264 (OH_AVCODEC_MIMETYPE_VIDEO_AVC) and H.265 (OH_AVCODEC_MIMETYPE_VIDEO_HEVC).
+You can obtain the supported capabilities and specifications by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
 
 For details about the development guide, see [Video Encoding](video-encoding.md).
-
 
 ### Audio Decoding
 
 Currently, the following decoding capabilities are supported:
+| Audio Decoding Type        | MIME Type for Audio Decoding Format    |
+| --------------------- | ---------------- |
+| AAC | [OH_AVCODEC_MIMETYPE_AUDIO_AAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| MPEG(MP3) | [OH_AVCODEC_MIMETYPE_AUDIO_MPEG](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| Flac | [OH_AVCODEC_MIMETYPE_AUDIO_FLAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| Vorbis | [OH_AVCODEC_MIMETYPE_AUDIO_VORBIS](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| AMR (AMR-NB and AMR-WB)| [OH_AVCODEC_MIMETYPE_AUDIO_AMR_NB](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables) and [OH_AVCODEC_MIMETYPE_AUDIO_AMR_WB](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| G711mu | [OH_AVCODEC_MIMETYPE_AUDIO_G711MU](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| APE | [OH_AVCODEC_MIMETYPE_AUDIO_APE](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| G711a<sup>20+</sup> | [OH_AVCODEC_MIMETYPE_AUDIO_G711A](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+<!--RP1--> <!--RP1End-->
+<!--RP2--> <!--RP2End-->
 
-AAC, MPEG (MP3), FLAC, Vorbis, AMR (AMR-NB and AMR-WB), G711mu, APE, G711a<!--RP1--><!--RP1End-->
+If the system does not support the required decoding capability, the decoder instance fails to be created.
+
+The decoding capability provided by the system is closely related to the device. You can obtain the supported capabilities and specifications by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
 
 For details about the development guide, see [Audio Decoding](audio-decoding.md).
-
 
 ### Audio Encoding
 
 Currently, the following encoding capabilities are supported:
+| Audio Encoding Type        | MIME Type for Audio Encoding Format    |
+| --------------------- | ---------------- |
+| AAC | [OH_AVCODEC_MIMETYPE_AUDIO_AAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| Flac | [OH_AVCODEC_MIMETYPE_AUDIO_FLAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| MPEG(MP3) | [OH_AVCODEC_MIMETYPE_AUDIO_MPEG](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| G711mu | [OH_AVCODEC_MIMETYPE_AUDIO_G711MU](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+<!--RP3--> <!--RP3End-->
+<!--RP13--><!--RP13End-->
 
-AAC, FLAC, MP3, G711mu<!--RP3--><!--RP3End-->
+If the system does not support the required encoding capability, the encoder instance fails to be created.
+
+The encoding capability provided by the system is closely related to the device. You can obtain the supported capabilities and specifications by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
 
 For details about the development guide, see [Audio Encoding](audio-encoding.md).
-
 
 ## Media Data Multiplexing and Demultiplexing
 
@@ -115,7 +135,18 @@ Currently, the following muxer capabilities are supported:
 > - When the container format is mp4 and the audio codec type is MPEG (MP3), the sample rate must be greater than or equal to 16000 Hz. 
 > - When the container format is mp4 or m4a and the audio codec type is AAC, the number of audio channels ranges from 1 to 7.
 
-Key values of configuration options are described as follows: 
+The keys defined for file-level data are as follows:
+   |                key                 |                       Description                   |
+   | ---------------------------------- | :-------------------------------------------: |
+   | OH_MD_KEY_CREATION_TIME            | Media file creation time. The value type is string. This key is supported since API version 14.       |
+   | OH_MD_KEY_COMMENT                  | Comment in a media file. The value type is string. This key is supported since API version 20.              |
+   | OH_MD_KEY_ENABLE_MOOV_FRONT        | Whether the moov metadata should be at the front of a media file. The value type is int32_t. This key is supported since API version 20.|
+
+> **NOTE**
+>
+> Custom keys must start with **com.openharmony.**. The value type can be int32_t, float, or string. The value type uint8_t* is supported since API version 20.
+
+Key values of configuration options are described as follows:
 
 mp4 container format:
    |                key                 |         Description        |   aac  |   mp3  |  H.264  |  H.265  |  jpg   |  png   |  bmp   |

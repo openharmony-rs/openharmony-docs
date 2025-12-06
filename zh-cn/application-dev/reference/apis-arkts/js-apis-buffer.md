@@ -22,6 +22,8 @@ import { buffer } from '@kit.ArkTS';
 
 ## BufferEncoding
 
+type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'base64url' | 'latin1' | 'binary' | 'hex'
+
 表示支持的编码格式类型。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
@@ -270,7 +272,7 @@ concat(list: Buffer[] | Uint8Array[], totalLength?: number): Buffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| list | Buffer[]&nbsp;\|&nbsp;Uint8Array[] | 是 | 实例数组。 |
+| list | [Buffer](#buffer)[]&nbsp;\|&nbsp;Uint8Array[] | 是 | 实例数组。 |
 | totalLength | number | 否 | 需要复制的总字节长度，默认值为0。 |
 
 **返回值：**

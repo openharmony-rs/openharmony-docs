@@ -32,7 +32,7 @@
 1. DevEco Studio新建Native C++模板工程，编辑“entry > src > main > ets > entryability > EntryAbility.ets”文件，导入依赖模块。示例代码如下：
 
    ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { BusinessError, deviceInfo } from '@kit.BasicServicesKit';
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
    import testNapi from 'libentry.so';
    ```
@@ -42,7 +42,7 @@
    ```ts
     // 构建崩溃事件的自定义参数
     let params: Record<string, hiAppEvent.ParamType> = {
-      "test_data": 100,
+      "test_data": 100, //test_data为自定义数据，开发者可根据实际需求自定义params参数。
     };
     // 开发者可以设置崩溃事件的自定义参数
     hiAppEvent.setEventParam(params, hiAppEvent.domain.OS, hiAppEvent.event.APP_CRASH).then(() => {
@@ -51,19 +51,20 @@
       hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
     });
    
-    // 构建崩溃日志规格自定义参数
-    let configParams: Record<string, hiAppEvent.ParamType> = {
-      "extend_pc_lr_printing": true, // 使能扩展打印pc和lr寄存器附近的内存值
-      "log_file_cutoff_sz_bytes": 102400, // 截断崩溃日志到100KB
-      "simplify_vma_printing": true // 使能精简打印maps
-    };
-   
-    // 开发者可以设置崩溃日志配置参数
-    hiAppEvent.setEventConfig(hiAppEvent.event.APP_CRASH, configParams).then(() => {
-      hilog.info(0x0000, 'testTag', `HiAppEvent success to set event config.`);
-    }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
-    });
+    if (deviceInfo.sdkApiVersion >= 20) {  // API Version 20及以后版本，支持设置崩溃日志配置参数
+      // 构建崩溃日志规格自定义参数
+      let crashConfigParams: Record<string, hiAppEvent.ParamType> = {
+        "extend_pc_lr_printing": true, // 使能扩展打印pc和lr寄存器附近的内存值
+        "log_file_cutoff_sz_bytes": 1024000, // 截断崩溃日志到1000KB
+        "simplify_vma_printing": true // 使能精简打印maps
+      };
+      // 开发者可以设置崩溃日志配置参数
+      hiAppEvent.setEventConfig(hiAppEvent.event.APP_CRASH, crashConfigParams).then(() => {
+        hilog.info(0x0000, 'testTag', `HiAppEvent success to set event config.`);
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
+      });
+    }
    ```
 
 3. 编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，在 `onCreate` 函数中订阅系统事件。示例代码如下：
@@ -165,6 +166,8 @@
 
 若应用未主动捕获崩溃异常，系统处理崩溃后应用将退出。**应用下次启动时**，HiAppEvent将崩溃事件上报给已注册的监听，完成回调。
 
+若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。
+
 **应用主动捕获崩溃异常场景**
 
 若应用主动捕获崩溃异常，崩溃事件将在**应用退出前**回调，例如以下两种情况：
@@ -204,5 +207,37 @@ HiAppEvent eventInfo.params.test_data=100
 // 移除该应用事件观察者以取消订阅事件
 hiAppEvent.removeWatcher(watcher);
 ```
+
+## 从Faultlogger接口迁移崩溃事件
+
+[@ohos.faultLogger (故障日志获取)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md)接口从API version 18开始废弃使用, 不再维护。后续版本推荐使用[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)订阅崩溃事件。该章节指导开发者从Faultlogger接口迁移至hiAppEvent接口，来订阅崩溃事件。
+
+在Faultlogger的[FaultType](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)里定义的CPP_CRASH和JS_CRASH都属于崩溃故障类型。
+
+在hiAppEvent的hiAppEvent.addWatcher接口中设置事件名称为hiAppEvent.event.APP_CRASH、事件领域为hiAppEvent.domain.OS，可以订阅崩溃事件。
+
+通过[hiAppEvent.AppEventInfo.params](./hiappevent-watcher-crash-events.md#params字段说明)中的crash_type字段可以区分具体是哪种崩溃事件。
+
+两者对应关系如下：
+| Faultlogger.FaultType | hiAppEvent.AppEventInfo.params.crash_type |
+| --- | --- |
+| CPP_CRASH | NativeCrash |
+| JS_CRASH | JsError |
+
+[FaultLogInfo](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloginfo)与[hiAppEvent.AppEventInfo.params](./hiappevent-watcher-crash-events.md#params字段说明)的对应关系如下：
+| Faultlogger.FaultLogInfo | hiAppEvent.AppEventInfo.params | 说明 |
+| --- | --- | --- |
+| pid | pid | 无 |
+| uid | uid | 无 |
+| type | crash_type | 类型不同，Faultlogger中是故障类型枚举，hiAppEvent中是字符串类型。 |
+| timestamp | time | 无 |
+| module | bundle_name | 无 |
+| fullLog | external_log | fullLog为故障日志全文。external_log为故障日志文件应用沙箱路径，访问该路径的文件，可以得到故障日志全文。 |
+| reason | external_log文件内容中的Reason字段 | 无 |
+| summary | external_log文件内容中的一部分 | CPP_CRASH的summary对应external_log文件内容中的Fault thread info字段；JS_CRASH的summary对应external_log文件内容中的Error name、Error message、 Stacktrace、HybridStack字段。 |
+
+[FaultLogger.query(使用callback回调)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9)和[FaultLogger.query(使用Promise回调)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1)都可以使用[hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher)实现相同功能。
+
+查阅[开发步骤](#开发步骤)和[验证观察者是否订阅到崩溃事件](#验证观察者是否订阅到崩溃事件)，了解使用hiAppEvent订阅崩溃事件（ArkTS）的具体步骤。
 <!--RP1-->
 <!--RP1End-->

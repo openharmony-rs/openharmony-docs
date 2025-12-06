@@ -1,5 +1,12 @@
 # Implementing a Waterfall Flow Layout
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fangyuhao-->
+<!--Designer: @zcdqs-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @Brilliantry_Rui-->
+
 The ArkUI framework provides a waterfall flow container component through NDK APIs. This component arranges items of different sizes in a waterfall-like manner from top to bottom.
 
 ## Integrating with ArkTS Pages
@@ -255,10 +262,10 @@ private:
 Implement the **ArkUIWaterflowNode** class to manage **WaterFlow** components. This class supports configuration through **SetLazyAdapter** for assigning a **FlowItemAdapter** and **SetSection** for defining sections.
 
 ```c++
-//Waterflow.h
+//waterflow.h
 
-#ifndef MYAPPLICATION_WATERFLOWE_H
-#define MYAPPLICATION_WATERFLOWE_H
+#ifndef MYAPPLICATION_WATERFLOW_H
+#define MYAPPLICATION_WATERFLOW_H
 
 #include "FlowItemAdapter.h"
 #include "WaterflowSection.h"
@@ -352,8 +359,8 @@ std::shared_ptr<ArkUIWaterflowNode> CreateWaterflowExample() {
     
     // Set sections.
     auto sections = std::make_shared<WaterflowSection>();
-    SectionOption MARGIN_GAP_SECTION_1 = {10, 2, 10, 10, margin : {20, 30, 40, 50}, nullptr, nullptr};
-    SectionOption MARGIN_GAP_SECTION_2 = {10, 4, 10, 10, margin : {20, 30, 40, 50}, nullptr, nullptr};
+    SectionOption MARGIN_GAP_SECTION_1 = {10, 2, 10, 10, {20, 30, 40, 50}, nullptr, nullptr};
+    SectionOption MARGIN_GAP_SECTION_2 = {10, 4, 10, 10, {20, 30, 40, 50}, nullptr, nullptr};
     for (int i = 0; i < 10; i++) {
         sections->SetSection(sections->GetSectionOptions(), i, i % 2 ? MARGIN_GAP_SECTION_1 : MARGIN_GAP_SECTION_2);
     }

@@ -5,7 +5,7 @@
 <!--Owner: @peixu-->
 <!--Designer: @dongqingran; @wulong158-->
 <!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @fang-jinxu-->
 
 ## When to Use
 
@@ -49,9 +49,9 @@ For details about the APIs, see [@ohos.commonEventManager (Common Event)](../../
    ```ts
    // Used to save the created subscriber object for subsequent subscription and unsubscription.
    let subscriber: commonEventManager.CommonEventSubscriber | null = null;
-   //Subscriber information. Replace the event field with the actual event name.
+   // Subscriber information. Replace the event field with the actual event name.
    let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-       events: ['event'], // Subscribe to the common event screen-off.
+       events: [commonEventManager.Support.COMMON_EVENT_SCREEN_OFF], // Subscribe to the screen-off event.
    };
    ```
 

@@ -20,7 +20,7 @@ The widget host consists of the following modules:
 
 - Widget usage: provides operations such as creating, deleting, or updating a widget.
 
-- Communication adapter: provided by the SDK for communication with the Widget Manager. It sends widget-related operations to the Widget Manager.
+- Communication adapter: provided by the SDK for communication with the Widget Manager. It sends widget-related operation instructions to the Widget Manager.
 
 The Widget Manager consists of the following modules:
 
@@ -45,3 +45,4 @@ The widget provider consists of the following modules:
 > **NOTE**
 > 
 > You only need to develop the widget provider. The system automatically handles the work of the widget host and Widget Manager.
+

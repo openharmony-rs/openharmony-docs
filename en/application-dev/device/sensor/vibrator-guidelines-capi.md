@@ -10,7 +10,7 @@
 
 You can set different vibration effects as needed, for example, customizing the vibration intensity, frequency, and duration for button touches, alarm clocks, and incoming calls.
 
-For details about the APIs, see [Vibrator API Reference](../../reference/apis-sensor-service-kit/vibrator_8h.md).
+For details about the APIs, see [Vibrator](../../reference/apis-sensor-service-kit/capi-vibrator.md).
 
 
 ## Function Description
@@ -126,7 +126,7 @@ Custom vibration enables you to design desired vibration effects by customizing 
            };
            ret = OH_Vibrator_PlayVibrationCustom(fileDescription, vibrateAttribute); // Configure the vibrator to vibrate with the custom sequence.
            OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_RESMGR, TAG, "Vibratecustom successful");
-           bool isSuccess = ((ret != 0) || (ret == UNSUPPORTED));
+           bool isSuccess = ((ret == 0) || (ret == UNSUPPORTED));
            if (isSuccess == true) {
                close(fd);
                return nullptr;

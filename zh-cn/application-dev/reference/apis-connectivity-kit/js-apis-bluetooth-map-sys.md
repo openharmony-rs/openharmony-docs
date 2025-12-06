@@ -58,7 +58,7 @@ disconnect(deviceId: string): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let mapMseProfile = map.createMapMseProfile();
     mapMseProfile.disconnect('XX:XX:XX:XX:XX:XX');
@@ -110,7 +110,7 @@ setMessageAccessAuthorization(deviceId: string, authorization: AccessAuthorizati
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let mapMseProfile = map.createMapMseProfile();
     mapMseProfile.setMessageAccessAuthorization('XX:XX:XX:XX:XX:XX', 0).then(() => {
@@ -163,7 +163,7 @@ getMessageAccessAuthorization(deviceId: string): Promise&lt;AccessAuthorization&
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let mapMseProfile = map.createMapMseProfile();
     mapMseProfile.getMessageAccessAuthorization('XX:XX:XX:XX:XX:XX').then((authorization) => {

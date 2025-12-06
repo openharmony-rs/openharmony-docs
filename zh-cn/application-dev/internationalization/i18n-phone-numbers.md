@@ -15,31 +15,7 @@
 
 ## 开发步骤
 
-电话号码格式化通过[PhoneNumberFormat](../reference/apis-localization-kit/js-apis-i18n.md#phonenumberformat8)的[format](../reference/apis-localization-kit/js-apis-i18n.md#format8)接口实现，具体开发步骤如下：
-
-1. 导入模块。
-   ```ts
-   import { i18n } from '@kit.LocalizationKit';
-   ```
-
-2. 创建PhoneNumberFormat对象。
-
-   构造函数支持通过PhoneNumberFormatOptions设置不同的电话号码格式，具体请参考表1。
-
-   ```ts
-   let phoneNumberFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat(country: string, options?: PhoneNumberFormatOptions);
-   ```
-
-3. 电话号码格式化。
-   ```ts
-   let formattedPhoneNumber: string = phoneNumberFormat.format(phoneNumber: string);
-   ```
-
-4. 判断电话号码正确性和号码归属地。
-   ```ts
-   let isValidNumber: boolean = phoneNumberFormat.isValidNumber(phoneNumber: string); // 判断电话号码正确性
-   let locationName: string = phoneNumberFormat.getLocationName(phoneNumber: string, locale: string); // 获取号码归属地
-   ```
+电话号码格式化通过[PhoneNumberFormat](../reference/apis-localization-kit/js-apis-i18n.md#phonenumberformat8)的[format](../reference/apis-localization-kit/js-apis-i18n.md#format8)接口实现。
 
 **电话号码格式化选项**
 

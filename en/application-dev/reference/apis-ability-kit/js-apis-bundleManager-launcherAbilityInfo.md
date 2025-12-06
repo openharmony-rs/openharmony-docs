@@ -26,7 +26,7 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 | --------------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------ |
 | applicationInfo | [ApplicationInfo](js-apis-bundleManager-applicationInfo.md) | Yes  | No  | Application information of the launcher ability.|
 | elementName     | [ElementName](js-apis-bundleManager-elementName.md)         | Yes  | No  | Element name of the launcher ability.   |
-| labelId         | number                                                      | Yes  | No  | ID of the launcher ability label.     |
-| iconId          | number                                                      | Yes  | No  | ID of the launcher ability icon.     |
+| labelId         | number                                                      | Yes  | No  | Label ID of the launcher ability.     |
+| iconId          | number                                                      | Yes  | No  | Icon ID of the launcher ability.     |
 | userId          | number                                                      | Yes  | No  | User ID of the launcher ability.            |
 | installTime     | number                                                      | Yes  | No  | Timestamp when the launcher ability was installed, in milliseconds.|

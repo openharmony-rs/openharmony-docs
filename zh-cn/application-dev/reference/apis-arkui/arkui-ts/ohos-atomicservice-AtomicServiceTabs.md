@@ -30,7 +30,7 @@ import { AtomicServiceTabs, TabBarOptions, TabBarPosition, OnContentWillChangeCa
 ## AtomicServiceTabs
 
 ```
-AtomicServiceTabs ({
+AtomicServiceTabs({
    tabContents?: [ TabContentBuilder?,
                     TabContentBuilder?,
                   TabContentBuilder?,
@@ -70,7 +70,7 @@ AtomicServiceTabs ({
 | layoutMode<sup>18+</sup> | [LayoutMode](ts-container-tabcontent.md#layoutmode10) | 否   |@Prop | 设置底部页签的图片、文字排布的方式，默认值为LayoutMode.VERTICAL。|
 | barBackgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | @Prop | 设置TabBar的背景颜色，默认值为透明。|
 | index | number | 否 | @Prop | 设置当前显示页签的索引，索引值从0开始。|
-| barOverlap | boolean| 否 | @Prop | 设置TabBar是否背后变模糊并叠加在TabContent之上，默认值：true。|
+| barOverlap | boolean| 否 | @Prop | 设置TabBar是否背后变模糊并叠加在TabContent之上。true表示TabBar背后变模糊并叠加在TabContent之上。默认值：true。|
 | controller|[TabsController](ts-container-tabs.md#tabscontroller) | 否 | - |Tabs组件的控制器，用于控制Tabs组件进行页签切换。|
 | onChange | Callback\<number\> | 否 | - | Tabs页签切换后触发的事件。 |
 | onTabBarClick | Callback\<number\> | 否 | - |Tabs页签点击后触发的事件。|
@@ -158,12 +158,12 @@ struct Index {
   onContentWillChangeCallBack:  OnContentWillChangeCallback = (currentIndex: number, comingIndex: number): boolean => {
     this.currentIndex = currentIndex;
     this.comingIndex = comingIndex;
-    console.log('OnContentWillChangeCallback')
+    console.info('OnContentWillChangeCallback')
      return true;
   }
   onTabClick: Callback<number> = (index:number)=>{
     this.onClickNumber ++;
-    console.log('onTabClick');
+    console.info('onTabClick');
   }
   @Builder
   tabContent1() {
@@ -227,15 +227,15 @@ struct Index {
   @State onClickNumber: number = 0;
   @State currentIndex: number = 0;
   @State comingIndex: number = 0;
-  onContentWillChangeCallBack:  OnContentWillChangeCallback = (currentIndex: number, comingIndex: number): boolean => {
+  onContentWillChangeCallBack: OnContentWillChangeCallback = (currentIndex: number, comingIndex: number): boolean => {
     this.currentIndex = currentIndex;
     this.comingIndex = comingIndex;
-    console.log('OnContentWillChangeCallback')
-     return true;
+    console.info('OnContentWillChangeCallback');
+    return true;
   }
   onTabClick: Callback<number> = (index:number)=>{
     this.onClickNumber ++;
-    console.log('onTabClick');
+    console.info('onTabClick');
   }
   @Builder
   tabContent1() {
@@ -267,9 +267,9 @@ struct Index {
         }
       ],
       tabBarOptionsArray: [
-          new TabBarOptions($r('sys.media.ohos_ic_public_phone'), '', Color.Black, Color.Blue),
-          new TabBarOptions($r('sys.media.ohos_ic_public_location'), '', Color.Black, Color.Blue),
-          new TabBarOptions($r('sys.media.ohos_ic_public_more'), '', Color.Black, Color.Blue),
+        new TabBarOptions($r('sys.media.ohos_ic_public_phone'), '', Color.Black, Color.Blue),
+        new TabBarOptions($r('sys.media.ohos_ic_public_location'), '', Color.Black, Color.Blue),
+        new TabBarOptions($r('sys.media.ohos_ic_public_more'), '', Color.Black, Color.Blue),
       ],
       tabBarPosition: TabBarPosition.BOTTOM,
       barBackgroundColor: $r('sys.color.ohos_id_color_bottom_tab_bg'),
@@ -305,16 +305,16 @@ struct AtomicserviceTabs  {
   onContentWillChangeCallBack: OnContentWillChangeCallback = (currentIndex: number, comingIndex: number): boolean => {
     this.currentIndex = currentIndex;
     this.comingIndex = comingIndex;
-    console.log('OnContentWillChangeCallback')
+    console.info('OnContentWillChangeCallback');
     return true;
   }
   onTabClick: Callback<number> = (index: number) => {
     this.onClickNumber++;
-    console.log('onTabClick');
+    console.info('onTabClick');
   }
   onChange: Callback<number, void> = (Index: number) => {
-    console.log('onChange');
-    console.log('onChange2');
+    console.info('onChange');
+    console.info('onChange2');
   }
 
   @Builder

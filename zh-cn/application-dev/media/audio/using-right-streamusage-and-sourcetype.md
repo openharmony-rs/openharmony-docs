@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 [音频流](audio-kit-intro.md#音频流介绍)类型是定义音频数据播放和录制方式的关键属性。对于播放流，其类型由[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)确定；对于录制流，则由[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)决定。音频流类型对音量控制、音频焦点管理以及输入/输出设备的选择具有决定性影响。
 
@@ -69,7 +69,7 @@
 
 当应用启动音频播放或录制时，系统会根据音频流类型自动申请焦点，这可能会中断其他音频或降低其音量。音频焦点的具体介绍可参考[音频焦点和音频会话介绍](audio-playback-concurrency.md)。
 
-此处仅说明常见的音频流类型影响音频焦点的表现。
+此处仅说明常见的音频流类型影响音频焦点的表现，其他类型可参考[系统默认焦点策略表](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-audio-focus-management#section123975612118)。
 
 - 启动导航（Navigation）时，正在播放的音乐（Music）音量会自动调低，待导航（Navigation）结束后，音乐（Music）音量将自动恢复。
 

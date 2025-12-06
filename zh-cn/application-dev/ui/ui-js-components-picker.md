@@ -4,7 +4,7 @@
 <!--Owner: @luoying_ace_admin-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 picker是滑动选择器组件，类型支持普通选择器、日期选择器、时间选择器、时间日期选择器和多列文本选择器。具体用法请参考[picker](../reference/apis-arkui/arkui-js/js-components-basic-picker.md)。
 
@@ -16,7 +16,7 @@ picker是滑动选择器组件，类型支持普通选择器、日期选择器�
 ```html
 <!-- xxx.hml -->
 <div class="container">
-  <picker>    picker  </picker>
+  <picker>picker</picker>
 </div>
 ```
 
@@ -80,9 +80,9 @@ export default {
 > 普通选择器设置取值范围时，需要使用数据绑定的方式。
 
 
-## 设置时间展现格式
+## 设置时间显示格式
 
-picker的hours属性定义时间的展现格式，可选类型有12小时制和24小时制。
+picker组件的hours属性用于设置时间显示格式，支持12小时制和24小时制两种模式。
 
 ```html
 <!-- xxx.hml -->
@@ -119,7 +119,7 @@ picker的hours属性定义时间的展现格式，可选类型有12小时制和2
 
 ## 添加响应事件
 
-对picker添加change和cancel事件，来对选择的内容进行确定和取消。
+为picker组件添加change和cancel事件，可以处理用户的选择确定和取消操作。
 
 ```html
 <!-- xxx.hml -->

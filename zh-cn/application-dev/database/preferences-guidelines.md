@@ -59,7 +59,6 @@ libohpreferences.so
 ## 引用头文件
 
 ```c
-#include <cstring>
 #include <database/preferences/oh_preferences.h>
 #include <database/preferences/oh_preferences_err_code.h>
 #include <database/preferences/oh_preferences_option.h>

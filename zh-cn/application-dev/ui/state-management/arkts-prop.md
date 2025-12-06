@@ -46,7 +46,7 @@
 
  初始化规则图示：
 
-![zh-cn_image_0000001552972029](figures/zh-cn_image_0000001552972029.png)
+![prop-initialization](figures/prop-initialization.png)
 
 ## 观察变化和行为表现
 
@@ -54,7 +54,7 @@
 
 \@Prop装饰的数据可以观察到以下变化。
 
-- 当装饰支持类型，可以观察到赋值的变化。
+- 当装饰支持类型，可以观察到赋值的变化。简单类型完整示例请参考[父组件\@State到子组件\@Prop简单数据类型同步](#父组件state到子组件prop简单数据类型同步)。
 
   ```ts
   // 简单类型
@@ -67,7 +67,7 @@
   this.title = new Model('Hi');
   ```
 
-- 当装饰的类型是Object或者class复杂类型时，可以观察到自身的赋值和第一层的属性的变化，属性即object.keys(observedObject)返回的所有属性。
+- 当装饰的类型是Object或者class复杂类型时，可以观察到自身的赋值和第一层的属性的变化，属性即object.keys(observedObject)返回的所有属性。复杂类型完整示例请参考[从父组件中的\@State类对象属性到\@Prop简单类型的同步](#从父组件中的state类对象属性到prop简单类型的同步)。
 
 ```ts
 class Info {
@@ -94,10 +94,10 @@ this.title.info.value = 'ArkUI';
 
 对于嵌套场景，如果class是被\@Observed装饰的，可以观察到class属性的变化，示例请参考[@Prop嵌套场景](#prop嵌套场景)。
 
-- 当装饰的类型是数组的时候，可以观察到数组本身的赋值和数组项的添加、删除和更新。
+- 当装饰的类型是数组的时候，可以观察到数组本身的赋值和数组项的添加、删除和更新。数组类型完整示例请参考[父组件\@State数组项到子组件\@Prop简单数据类型同步](#父组件state数组项到子组件prop简单数据类型同步)。
 
 ```ts
-// @State装饰的对象为数组时
+// @Prop装饰的对象为数组时
 @Prop title: string[];
 // 数组自身的赋值可以观察到
 this.title = ['1'];
@@ -625,6 +625,7 @@ struct Person {
           .margin(12)
           .fontColor('#FFFFFF')
           .onClick(() => {
+            // person被@State装饰，@State无法观测到嵌套类型的变化，直接点击该按钮，此时title已经发生变化，但是无法被观测到。
             this.person.son.title = 'ArkUI';
           })
         Text(this.person.name)
@@ -637,6 +638,7 @@ struct Person {
           .textAlign(TextAlign.Center)
           .fontColor('#e6000000')
           .onClick(() => {
+            // 点击该按钮，此次变化会被观测到，同时能够观察到Button('change Son title')点击后的效果。
             this.person.name = 'Bye';
           })
         Text(this.person.son.title)

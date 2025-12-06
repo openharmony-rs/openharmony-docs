@@ -4,7 +4,7 @@
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 搜索框组件，适用于浏览器的搜索内容输入框等应用场景。
 
@@ -48,7 +48,7 @@ Search初始化参数。
 | ----------- | ------------- | ---- | ---- | ------------- |
 | value<sup>8+</sup>       | [ResourceStr](ts-types.md#resourcestr)   | 否   | 是 | 设置当前显示的搜索文本内容。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>从API version 20开始，支持Resource类型。|
 | placeholder<sup>8+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否   | 是 | 设置无输入时的提示文本。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| icon<sup>8+</sup>        | string                                               | 否   | 是 | 设置搜索图标路径，默认使用系统搜索图标。<br/>**说明：** <br/>icon的数据源支持本地图片和网络图片。<br/>-&nbsp;支持的图片格式包括png、jpg、bmp、svg、gif、pixelmap和heif。<br/>-&nbsp;支持Base64字符串。格式data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], 其中[base64 data]为Base64字符串数据。<br/>如果与属性searchIcon同时设置，则searchIcon优先。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| icon<sup>8+</sup>        | string                                               | 否   | 是 | 设置搜索图标路径，默认使用系统搜索图标。<br/>**说明：** <br/>icon的数据源支持[使用相对路径显示图片](./ts-basic-components-image.md#示例25使用相对路径显示图片)和网络图片。<br/>-&nbsp;支持的图片格式包括png、jpg、bmp、svg、gif、pixelmap和heif。<br/>-&nbsp;支持Base64字符串。格式data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], 其中[base64 data]为Base64字符串数据。<br/>如果与属性searchIcon同时设置，则searchIcon优先。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | controller<sup>8+</sup>  | [SearchController](#searchcontroller) | 否   | 是 | 设置Search组件控制器。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 
 ## 属性
@@ -74,7 +74,7 @@ Wearable设备上默认字体大小为18fp。
 | 参数名 | 类型                                                  | 必填 | 说明                         |
 | ------ | ----------------------------------------------------- | ---- | ---------------------------- |
 | value  | [ResourceStr](ts-types.md#resourcestr)                | 是   | 搜索框末尾搜索按钮文本内容。 <br>从API version 20开始，支持Resource类型。|
-| option | [SearchButtonOptions](#searchbuttonoptions10对象说明) | 否   | 配置搜索框文本样式。<br />默认值：<br />{<br />fontSize: '16fp',<br />fontColor: '#ff3f97e9'<br />}         |
+| option | [SearchButtonOptions](#searchbuttonoptions10对象说明) | 否   | 配置搜索框末尾搜索按钮文本样式。<br />默认值：<br />{<br />fontSize: '16fp',<br />fontColor: '#ff3f97e9'<br />}         |
 
 ### placeholderColor
 
@@ -96,9 +96,7 @@ placeholderColor(value: ResourceColor)
 
 placeholderFont(value?: Font)
 
-设置placeholder文本样式，包括字体大小，字体粗细，字体族，字体风格。当前支持'HarmonyOS Sans'字体和注册自定义字体[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)。
-
-Wearable设备上默认字体大小为18fp。
+设置placeholder文本样式，包括字体大小、字体粗细、字体族、字体风格。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -110,11 +108,15 @@ Wearable设备上默认字体大小为18fp。
 | ------ | ------------------------ | ---- | --------------------- |
 | value  | [Font](ts-types.md#font) | 否   | placeholder文本样式。 |
 
+> **说明：**
+>
+> 可以使用[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)注册自定义字体。
+
 ### textFont
 
 textFont(value?: Font)
 
-设置搜索框内输入文本样式，包括字体大小，字体粗细，字体族，字体风格。目前仅支持默认字体族。
+设置搜索框内输入文本样式，包括字体大小、字体粗细、字体族、字体风格。
 
 Wearable设备上默认字体大小为18fp。
 
@@ -132,7 +134,7 @@ Wearable设备上默认字体大小为18fp。
 
 textAlign(value: TextAlign)
 
-设置文本在搜索框中的对齐方式。目前支持的对齐方式有：Start、Center、End。
+设置文本在搜索框中的对齐方式。目前支持的对齐方式有：TextAlign.Start、TextAlign.Center、TextAlign.End。TextAlign.JUSTIFY的对齐方式按照TextAlign.Start处理。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -287,9 +289,11 @@ customKeyboard(value: CustomBuilder, options?: KeyboardOptions)
 
 默认在输入控件失去焦点时，关闭自定义键盘，开发者也可以通过[stopEditing](#stopediting10)方法控制键盘关闭。
 
-如果设备支持拍摄输入，设置自定义键盘后，该输入框会不支持拍摄输入。
-
 当设置自定义键盘时，可以通过绑定[onKeyPrelme](ts-universal-events-key.md#onkeypreime12)事件规避物理键盘的输入。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -307,6 +311,8 @@ customKeyboard(value: CustomBuilder, options?: KeyboardOptions)
 type(value: SearchType)
 
 设置输入框类型。
+
+不同的SearchType会拉起对应类型的键盘，同时限制输入。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -541,7 +547,7 @@ maxFontSize小于等于0或者maxFontSize小于minFontSize时，自适应字号�
 
 halfLeading(halfLeading: Optional\<boolean>)
 
-设置文本是否将行间距平分至行的顶部与底部。
+设置文本在行内垂直居中，将行间距平分至行的顶部与底部。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -551,7 +557,7 @@ halfLeading(halfLeading: Optional\<boolean>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| halfLeading | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是  | 文本是否将行间距平分至行的顶部与底部。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false |
+| halfLeading | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是  | 设置文本是否垂直居中。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false |
 
 ### minFontScale<sup>18+</sup>
 
@@ -609,7 +615,7 @@ enablePreviewText(enable: boolean)
 
 设置是否开启输入预上屏。
 
-预上屏内容定义为文字暂存态，目前不支持文字拦截功能，因此不触发[onWillInsert](#onwillinsert12)、[onDidInsert](#ondidinsert12)、[onWillDelete](#onwilldelete12)、[onDidDelete](#ondiddelete12)回调。
+预上屏内容定义为文字暂存态，目前不支持文字拦截功能。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -672,7 +678,7 @@ autoCapitalizationMode(mode: AutoCapitalizationMode)
 
 keyboardAppearance(appearance: Optional\<KeyboardAppearance>)
 
-设置输入框拉起的键盘样式。
+设置输入框拉起的键盘样式，需要输入法适配后生效。具体参考[输入法应用沉浸模式](../../../inputmethod/inputmethod-immersive-mode-guide.md)。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -720,7 +726,7 @@ strokeColor(color: Optional\<ResourceColor>)
 
 stopBackPress(isStopped: Optional\<boolean>)
 
-设置是否阻止返回键向其它组件或应用侧传递。
+设置是否阻止返回键传递。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -730,7 +736,7 @@ stopBackPress(isStopped: Optional\<boolean>)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| isStopped | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否阻止返回键。<br/>true表示阻止返回键向其它组件或应用侧传递，false表示不阻止。<br />默认值：true |
+| isStopped | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否阻止返回键。<br/>true表示阻止，false表示不阻止。<br/>默认值：true。异常值取默认值。|
 
 ### enableAutoSpacing<sup>20+</sup>
 
@@ -1061,6 +1067,10 @@ onWillAttachIME(callback: Callback\<IMEClient>)
 
 <!--Del-->
 在搜索框将要绑定输入法前，可以通过`UIContext`的系统接口[setKeyboardAppearanceConfig](../js-apis-arkui-UIContext-sys.md#setkeyboardappearanceconfig20)设置键盘的样式。<!--DelEnd-->
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1520,10 +1530,36 @@ struct SearchExample {
 
 ### 示例9（支持插入和删除回调）
 
-从API version 12开始，该示例通过[onWillInsert](#onwillinsert12)、[onDidInsert](#ondidinsert12)、[onWillDelete](#onwilldelete12)、[onDidDelete](#ondiddelete12)接口实现了插入和删除的效果。
+从API version 12开始，该示例通过[onWillInsert](#onwillinsert12)、[onDidInsert](#ondidinsert12)、[onWillDelete](#onwilldelete12)、[onDidDelete](#ondiddelete12)接口实现了插入和删除的效果。从API version 15开始，通过[onWillChange](#onwillchange15)接口展示了文本内容将要发生变化时的具体信息。
 
 ```ts
 // xxx.ets
+class ChangeState {
+  changeContent: string = "";
+  changePreviewOffset: number | undefined = 0;
+  changePreviewValue: string | undefined = "";
+  changeTextChangeRangeBeforeX: number | undefined = 0;
+  changeTextChangeRangeBeforeY: number | undefined = 0;
+  changeTextChangeRangeAfterX: number | undefined = 0;
+  changeTextChangeRangeAfterY: number | undefined = 0;
+  changeTextChangeOldContent: string | undefined = "";
+  changeTextChangechangePreviewOffset: number | undefined = 0;
+  changeTextChangechangePreviewValue: string | undefined = "";
+
+  SetInfo(info: EditableTextChangeValue) {
+    this.changeContent = info.content;
+    this.changePreviewOffset = info.previewText?.offset;
+    this.changePreviewValue = info.previewText?.value;
+    this.changeTextChangeRangeBeforeX = info.options?.rangeBefore.start;
+    this.changeTextChangeRangeBeforeY = info.options?.rangeBefore.end;
+    this.changeTextChangeRangeAfterX = info.options?.rangeAfter.start;
+    this.changeTextChangeRangeAfterY = info.options?.rangeAfter.end;
+    this.changeTextChangeOldContent = info.options?.oldContent;
+    this.changeTextChangechangePreviewOffset = info.options?.oldPreviewText.offset;
+    this.changeTextChangechangePreviewValue = info.options?.oldPreviewText.value;
+  }
+}
+
 @Entry
 @Component
 struct SearchExample {
@@ -1532,6 +1568,8 @@ struct SearchExample {
   @State insertOffset: number = 0;
   @State deleteOffset: number = 0;
   @State deleteDirection: number = 0;
+  @State changeState1: ChangeState = new ChangeState();
+  @State changeState2: ChangeState = new ChangeState();
 
   build() {
     Row() {
@@ -1542,11 +1580,28 @@ struct SearchExample {
             this.insertValue = info.insertValue;
             return true;
           })
+          .onWillChange((info: EditableTextChangeValue) => {
+            this.changeState1.SetInfo(info);
+            return true;
+          })
           .onDidInsert((info: InsertValue) => {
             this.insertOffset = info.insertOffset;
           })
 
-        Text("insertValue:" + this.insertValue + "  insertOffset:" + this.insertOffset).height(30)
+        Text("insertValue:" + this.insertValue + "  insertOffset:" + this.insertOffset).height(20)
+
+        Blank(30)
+
+        Text("context:" + this.changeState1.changeContent).height(20)
+        Text("previewText-offset:" + this.changeState1.changePreviewOffset).height(20)
+        Text("previewText-value:" + this.changeState1.changePreviewValue).height(20)
+        Text("options-rangeBefore-start:" + this.changeState1.changeTextChangeRangeBeforeX).height(20)
+        Text("options-rangeBefore-end:" + this.changeState1.changeTextChangeRangeBeforeY).height(20)
+        Text("options-rangeAfter-start:" + this.changeState1.changeTextChangeRangeAfterX).height(20)
+        Text("options-rangeAfter-end:" + this.changeState1.changeTextChangeRangeAfterY).height(20)
+        Text("options-oldContent:" + this.changeState1.changeTextChangeOldContent).height(20)
+        Text("options-oldPreviewText-offset:" + this.changeState1.changeTextChangechangePreviewOffset).height(20)
+        Text("options-oldPreviewText-value:" + this.changeState1.changeTextChangechangePreviewValue).height(20)
 
         Search({ value: "Search支持删除回调文本b" })
           .height(60)
@@ -1555,13 +1610,30 @@ struct SearchExample {
             this.deleteDirection = info.direction;
             return true;
           })
+          .onWillChange((info: EditableTextChangeValue) => {
+            this.changeState2.SetInfo(info);
+            return true;
+          })
           .onDidDelete((info: DeleteValue) => {
             this.deleteOffset = info.deleteOffset;
             this.deleteDirection = info.direction;
           })
 
-        Text("deleteValue:" + this.deleteValue + "  deleteOffset:" + this.deleteOffset).height(30)
-        Text("deleteDirection:" + (this.deleteDirection == 0 ? "BACKWARD" : "FORWARD")).height(30)
+        Text("deleteValue:" + this.deleteValue + "  deleteOffset:" + this.deleteOffset).height(20)
+        Text("deleteDirection:" + (this.deleteDirection == 0 ? "BACKWARD" : "FORWARD")).height(20)
+
+        Blank(30)
+
+        Text("context:" + this.changeState2.changeContent).height(20)
+        Text("previewText-offset:" + this.changeState2.changePreviewOffset).height(20)
+        Text("previewText-value:" + this.changeState2.changePreviewValue).height(20)
+        Text("options-rangeBefore-start:" + this.changeState2.changeTextChangeRangeBeforeX).height(20)
+        Text("options-rangeBefore-end:" + this.changeState2.changeTextChangeRangeBeforeY).height(20)
+        Text("options-rangeAfter-start:" + this.changeState2.changeTextChangeRangeAfterX).height(20)
+        Text("options-rangeAfter-end:" + this.changeState2.changeTextChangeRangeAfterY).height(20)
+        Text("options-oldContent:" + this.changeState2.changeTextChangeOldContent).height(20)
+        Text("options-oldPreviewText-offset:" + this.changeState2.changeTextChangechangePreviewOffset).height(20)
+        Text("options-oldPreviewText-value:" + this.changeState2.changeTextChangechangePreviewValue).height(20)
 
       }.width('100%')
     }
@@ -1570,11 +1642,11 @@ struct SearchExample {
 }
 ```
 
-![SearchInsertAndDelete](figures/SearchInsertAndDelete.PNG)
+![SearchInsertAndDelete](figures/SearchInsertAndDelete-2.PNG)
 
 ### 示例10（文本扩展自定义菜单）
 
-从API version 12开始，该示例通过[editMenuOptions](#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在[onPrepareMenu](ts-text-common.md#onpreparemenu20)（从API version 20开始）回调中，进行菜单数据的设置。
+从API version 12开始，该示例通过[editMenuOptions](#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在[onPrepareMenu](ts-text-common.md#属性-1)（从API version 20开始）回调中，进行菜单数据的设置。
 
 ```ts
 // xxx.ets
@@ -1597,6 +1669,10 @@ struct SearchExample {
     };
     menuItems.push(item1);
     menuItems.unshift(item2);
+    let targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.AI_WRITER));
+    if (targetIndex !== -1) {
+      menuItems.splice(targetIndex, 1); // 从目标索引删除1个元素
+    }
     return menuItems;
   }
   onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
@@ -1649,8 +1725,9 @@ struct SearchExample {
   }
 }
 ```
-
-![searchEditMenuOptions](figures/searchEditMenuOptions.gif)
+<!--RP2-->
+![searchEditMenuOptions](figures/searchEditMenuOptions-2.png)
+<!--RP2End-->
 
 ### 示例11（设置symbol类型清除按钮）
 
@@ -1951,7 +2028,7 @@ struct SearchExample {
 
 ### 示例19（设置最小字体范围与最大字体范围）
 
-从API version 18开始，该示例通过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置字体显示最小与最大范围。
+从API version 18开始，该示例通过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置字体显示最小与最大范围。调整系统字体大小后，文本字体大小不会超过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置的范围。如下示例展示了Search组件在不同的字体大小限制条件下，调整系统字体后的放大缩小效果。
 
 ```json
 // 开启应用缩放跟随系统
@@ -1986,23 +2063,40 @@ struct SearchExample {
 @Entry
 @Component
 struct SearchExample {
-  @State minFontScale: number = 0.85;
-  @State maxFontScale: number = 2;
+  @State minFontScale: number = 1.0;
+  @State maxFontScale: number = 1.0;
+  @State minFontScale2: number = 0.5;
+  @State maxFontScale2: number = 2.0;
 
   build() {
     Column() {
-      Column({ space: 30 }) {
+      Column() {
         Text("系统字体变大变小，变大变小aaaaaaaAAAAAA")
+        Blank(30)
+        Text("minFontScale = " + this.minFontScale)
+        Text("maxFontScale = " + this.maxFontScale)
         Search({
           placeholder: 'The text area can hold an unlimited amount of text. input your word...',
         })
-          .minFontScale(this.minFontScale)// 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
-          .maxFontScale(this.maxFontScale)// 设置最大字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
+          .minFontScale(this.minFontScale) // 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
+          .maxFontScale(this.maxFontScale) // 设置最大字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
+
+        Blank(30)
+
+        Text("minFontScale = " + this.minFontScale2)
+        Text("maxFontScale = " + this.maxFontScale2)
+        Search({
+          placeholder: 'The text area can hold an unlimited amount of text. input your word...',
+        })
+          .minFontScale(this.minFontScale2) // 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
+          .maxFontScale(this.maxFontScale2) // 设置最大字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
       }.width('100%')
     }
   }
 }
 ```
+
+![](figures/big-FontScale.png) ![](figures/small-FontScale.png) 
 
 ### 示例20（设置文本描边）
 

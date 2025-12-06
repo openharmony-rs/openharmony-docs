@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 
-The application data in the memory is persisted after being saved to a file or database on a device. The data in the memory is usually saved in the forms of data structs or data objects, and the data in storage media can be saved in the forms of text, binary file, or database file.
+The application data in memory is persisted after being saved to a file or database on a device. The data in the memory is usually saved in the forms of data structs or data objects, and the data in storage media can be saved in the forms of text, binary file, or database file.
 
 
 The OpenHarmony standard system supports typical data storage forms, including user preferences (**Preferences**), key-value databases (**KV-Store**), and relational databases (**RelationalStore**).

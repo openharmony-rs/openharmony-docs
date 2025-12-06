@@ -4,7 +4,7 @@
 <!--Owner: @tangye123456-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @tinygreyy-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 系统提供了MovingPhotoView组件，在一些社交类、图库类应用中，可用于播放动态照片文件。
 
@@ -66,19 +66,19 @@
             .objectFit(ImageFit.Cover)
             // 播放时触发。
             .onStart(() => {
-              console.log('onStart');
+              console.info('onStart');
             })
             // 播放结束触发。
             .onFinish(() => {
-              console.log('onFinish');
+              console.info('onFinish');
             })
             // 播放停止触发。
             .onStop(() => {
-              console.log('onStop')
+              console.info('onStop')
             })
             // 出现错误触发。
             .onError(() => {
-              console.log('onError');
+              console.error('onError');
             })
     
           Row() {

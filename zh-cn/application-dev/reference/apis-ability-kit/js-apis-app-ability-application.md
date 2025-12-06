@@ -2,8 +2,8 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @li-weifeng2-->
-<!--Designer: @li-weifeng2-->
+<!--Owner: @li-weifeng2024-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -25,6 +25,10 @@ import { application } from '@kit.AbilityKit';
 createModuleContext(context: Context, moduleName: string): Promise\<Context>
 
 创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包应用资源](../../quick-start/resource-categories-and-access.md#跨haphsp包应用资源)。使用Promise异步回调。
+
+> **说明：**
+>
+> 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContext接口创建多个Context实例，以免影响用户体验。
 
 **原子化服务API**：从API version 12开始，该接口支持在元服务中使用。
 
@@ -185,11 +189,16 @@ promoteCurrentToCandidateMasterProcess(insertToHead: boolean): Promise\<void>
 	- 对于UIAbility组件，系统将创建新的空进程作为主控进程。
 	- 对于UIExtensionAbility组件，系统会优先复用已有的UIExtensionAbility进程作为新的主控进程，无可用进程时则创建新的空进程作为主控进程。
 
-<!--Del-->
 > **说明：**
+> 
+> 如果当前进程已经是[主控进程](../../application-models/ability-terminology.md#masterprocess主控进程)，调用该接口无效并且不会抛出错误码。
 >
+> 当前进程只有运行了isolationProcess字段设为true的组件，或曾经成为过主控进程，开发者才可将其设置为备选主控进程。
+>
+> <!--Del-->
 > 当前仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](../../quick-start/module-configuration-file.md)中配置isolationProcess字段为true。
 <!--DelEnd-->
+
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -214,7 +223,7 @@ promoteCurrentToCandidateMasterProcess(insertToHead: boolean): Promise\<void>
 | 错误码ID | 错误信息        |
 | -------- | --------------- |
 | 801 | Capability not supported.|
-| 16000115 | The current process is not running a component configured with "isolationProcess" and cannot be set as a candidate master process. |
+| 16000115 | The current process cannot be set as a candidate master process. |
 
 
 **示例：**
@@ -317,7 +326,7 @@ exitMasterProcessRole(): Promise\<void>
 | -------- | --------------- |
 | 801 | Capability not supported.|
 | 16000118 | Not a master process. |
-| 16000119 | Cannot exit because there is an unfinished onNewProcessRequest. |
+| 16000119 | Cannot exit because there is an unfinished request. |
 
 **示例：**
 

@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -20,7 +20,7 @@ import { avSession } from '@kit.AVSessionKit';
 
 createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AVSession>
 
-Creates a media session. This API uses a promise to return the result. An application process can have only one session, and repeated calling of this API fails.
+Creates an AVSession. This API uses a promise to return the result. An application process can have only one AVSession, and repeated calling of this API fails.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -38,7 +38,7 @@ Creates a media session. This API uses a promise to return the result. An applic
 
 | Type                             | Description                                                        |
 | --------------------------------- | ------------------------------------------------------------ |
-| Promise<[AVSession](arkts-apis-avsession-AVSession.md)\> | Promise used to return the media session obtained, which can be used to obtain the session ID, set the metadata and playback state information, and send key events.|
+| Promise<[AVSession](arkts-apis-avsession-AVSession.md)\> | Promise used to return the AVSession obtained, which can be used to obtain the session ID, set the metadata and playback state information, and send key events.|
 
 **Error codes**
 
@@ -87,7 +87,7 @@ struct Index {
 
 createAVSession(context: Context, tag: string, type: AVSessionType, callback: AsyncCallback\<AVSession>): void
 
-Creates a media session. This API uses an asynchronous callback to return the result. An application process can have only one session, and repeated calling of this API fails.
+Creates an AVSession. This API uses an asynchronous callback to return the result. An application process can have only one AVSession, and repeated calling of this API fails.
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
@@ -98,7 +98,7 @@ Creates a media session. This API uses an asynchronous callback to return the re
 | context| [Context](../apis-ability-kit/js-apis-inner-app-context.md) | Yes| Context of the UIAbility, which is used to obtain information about the application component.    |
 | tag      | string                                  | Yes  | Custom session name.                                          |
 | type     | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10)         | Yes  | Session type.                              |
-| callback | AsyncCallback<[AVSession](arkts-apis-avsession-AVSession.md)\> | Yes  | Callback used to return the media session obtained, which can be used to obtain the session ID, set the metadata and playback state information, and send key events.|
+| callback | AsyncCallback<[AVSession](arkts-apis-avsession-AVSession.md)\> | Yes  | Callback used to return the AVSession obtained, which can be used to obtain the session ID, set the metadata and playback state information, and send key events.|
 
 **Error codes**
 
@@ -144,3 +144,4 @@ struct Index {
   }
 }
 ```
+

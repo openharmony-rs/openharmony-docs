@@ -90,7 +90,7 @@ ArkTS提供`number`类型，任何整数和浮点数都可以被赋给此类型�
 ```typescript
 let n1 = 3.14;
 let n2 = 3.141592;
-let n3 = .5;
+let n3 = 0.5;
 let n4 = 1e2;
 
 function factorial(n: number): number {
@@ -100,19 +100,17 @@ function factorial(n: number): number {
   return n * factorial(n - 1);
 }
 
-factorial(n1)  //  7.660344000000002 
-factorial(n2)  //  7.680640444893748 
-factorial(n3)  //  1 
-factorial(n4)  //  9.33262154439441e+157 
+factorial(n1)  //  7.660344000000002
+factorial(n2)  //  7.680640444893748
+factorial(n3)  //  1
+factorial(n4)  //  9.33262154439441e+157
 ```
 
-`number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`bigint`类型来确保精度：
+`number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`BigInt`类型来确保精度：
 
 ```typescript
-
 let bigInt: BigInt = BigInt('999999999999999999999999999999999999999999999999999999999999');
 console.info('bigInt:' + bigInt.toString());
-
 ```
 
 **`boolean`类型**
@@ -139,7 +137,7 @@ if (isDone) {
 
 ```typescript
 let s1 = 'Hello, world!\n';
-let s2 = "this is a string";
+let s2 = 'this is a string';
 let a = 'Success';
 let s3 = `The result is ${a}`;
 ```
@@ -153,16 +151,20 @@ let s3 = `The result is ${a}`;
 class Class<T> {
   //...
 }
-let instance: Class <void>
+let instance: Class<void>;
 ```
 
 **`Object`类型**
 
-`Object`类型是所有引用类型的基类型。任何值，包括基本类型的值，都可以直接被赋给`Object`类型的变量（基本类型值会被自动装箱）。`Object`类型用于表示除基本类型外的类型。
+`Object`类型是所有引用类型的基类型。任何值，包括基本类型的值，都可以直接被赋给`Object`类型的变量（基本类型值会被自动装箱）。
+
+`object`类型用于表示除基本类型外的类型。
+
 ```typescript
 let o1: Object = 'Alice';
-let o2: Object = ['a','b'];
+let o2: Object = ['a', 'b'];
 let o3: Object = 1;
+let o4: object = [1, 2, 3];
 ```
 
 **`array`类型**
@@ -233,7 +235,7 @@ class Frog { sleep () {}; leap () {} }
 type Animal = Cat | Dog | Frog;
 
 function foo(animal: Animal) {
-  if (animal instanceof Frog) {
+  if (animal instanceof Frog) {  // 判断animal是否是Frog类型
     animal.leap();  // animal在这里是Frog类型
   }
   animal.sleep(); // Animal具有sleep方法
@@ -245,10 +247,29 @@ function foo(animal: Animal) {
 `Aliases`类型为匿名类型（如数组、函数、对象字面量或联合类型）提供名称，或为已定义的类型提供替代名称。
 
 ```typescript
+// 二维数组类型
 type Matrix = number[][];
+const gameBoard: Matrix = [
+  [1, 0],
+  [0, 1]
+];
+
+// 函数类型
 type Handler = (s: string, no: number) => string;
-type Predicate <T> = (x: T) => boolean;
+const repeatString: Handler = (str, times) => {
+  return str.repeat(times);
+};
+console.info(repeatString('abc', 3)); // 'abcabcabc'
+
+// 泛型函数类型
+type Predicate<T> = (x: T) => boolean;
+const isEven: Predicate<number> = (num) => num % 2 === 0;
+
+// 可为空的对象类型
 type NullableObject = Object | null;
+class Cat {}
+let animalData: NullableObject = new Cat();
+let emptyData: NullableObject = null;
 ```
 
 ### 运算符
@@ -319,9 +340,39 @@ console.info(String(null === undefined)); // false
 | `a \|\| b` | 逻辑或 |
 | `! a`      | 逻辑非 |
 
+**`instanceof`运算符**
+
+`instanceof`运算符用于在运行时检查一个对象是否是指定类或其子类的实例。
+
+示例如下：
+
+```typescript
+obj instanceof className
+```
+
+返回值类型为`boolean`。
+如果`obj`是`className`类或其子类的实例，则返回值为`true`；否则，返回值为`false`。
+
+示例：
+
+```typescript
+class Person {}
+const person = new Person();
+if ((person instanceof Person)) {
+  console.info('true'); // true
+}
+
+class Animal {}
+class Bird extends Animal {}
+const bird = new Bird();
+if (bird instanceof Animal) {
+  console.info('true'); // true
+}
+```
+
 ### 语句
 
-**`If`语句**
+**`if`语句**
 
 `if`语句用于需要根据逻辑条件执行不同语句的场景。当逻辑条件为真时，执行对应的一组语句，否则执行另一组语句（如果有的话）。
 `else`部分也可以包含`if`语句。
@@ -352,7 +403,7 @@ if (s2.length != 0) {
 }
 ```
 
-**`Switch`语句**
+**`switch`语句**
 
 使用`switch`语句执行与`switch`表达式值匹配的代码块。
 
@@ -415,7 +466,7 @@ let message = Math.random() > 0.5 ? 'Valid' : 'Failed';
     console.info(undefined ? 'true' : 'false'); // false
 ```
 
-**`For`语句**
+**`for`语句**
 
 `for`语句会被重复执行，直到循环退出语句值为`false`。
 
@@ -444,7 +495,7 @@ for (let i = 0; i < 10; i += 2) {
 }
 ```
 
-**`For-of`语句**
+**`for-of`语句**
 
 使用`for-of`语句可遍历数组、Set、Map、字符串等可迭代的类型。示例如下：
 
@@ -462,7 +513,7 @@ for (let ch of 'a string object') {
 }
 ```
 
-**`While`语句**
+**`while`语句**
 
 只要`condition`为真值（转换后为`true`的值），`while`语句就会执行`statements`语句。示例如下：
 
@@ -483,7 +534,7 @@ while (n < 3) {
 }
 ```
 
-**`Do-while`语句**
+**`do-while`语句**
 
 如果`condition`的值为真值（转换后为`true`的值），那么`statements`语句会重复执行。示例如下：
 
@@ -502,7 +553,7 @@ do {
 } while (i < 10)
 ```
 
-**`Break`语句**
+**`break`语句**
 
 使用`break`语句可以终止循环语句或`switch`。
 
@@ -533,7 +584,7 @@ label: while (true) {
 }
 ```
 
-**`Continue`语句**
+**`continue`语句**
 
 `continue`语句会停止当前循环迭代的执行，并将控制传递给下一次迭代。
 
@@ -549,7 +600,7 @@ for (let x = 0; x < 100; x++) {
 }
 ```
 
-**`Throw`和`Try`语句**
+**`throw`和`try`语句**
 
 `throw`语句用于抛出异常或错误：
 
@@ -572,8 +623,10 @@ try {
 ```typescript
 class ZeroDivisor extends Error {}
 
-function divide (a: number, b: number): number{
-  if (b == 0) throw new ZeroDivisor();
+function divide (a: number, b: number): number {
+  if (b == 0) {
+    throw new ZeroDivisor();
+  }
   return a / b;
 }
 
@@ -657,15 +710,16 @@ multiply(2);  // 返回2*2
 multiply(2, 3); // 返回2*3
 ```
 
-### Rest参数
+### rest参数
 
-函数的最后一个参数可以是rest参数，格式为`...restArgs`。rest参数允许函数接收一个由剩余实参组成的数组，类型为任意指定类型，用于处理不定数量的参数输入。
+函数的最后一个参数可以是rest参数，格式为`...restName: Type[]`。rest参数允许函数接收一个不定长数组，用于处理不定数量的参数输入。
 
 ```typescript
 function sum(...numbers: number[]): number {
   let res = 0;
-  for (let n of numbers)
+  for (let n of numbers) {
     res += n;
+  }
   return res;
 }
 
@@ -897,7 +951,7 @@ ArkTS要求所有字段在声明时或构造函数中显式初始化，与标准
 class Person {
   name: string; // undefined
   
-  setName(n:string): void {
+  setName(n: string): void {
     this.name = n;
   }
   
@@ -919,7 +973,7 @@ jack.getName().length; // 运行时异常：name is undefined
 class Person {
   name: string = '';
   
-  setName(n:string): void {
+  setName(n: string): void {
     this.name = n;
   }
   
@@ -941,7 +995,7 @@ jack.getName().length; // 0, 没有运行时异常
 class Person {
   name?: string; // 可能为`undefined`
 
-  setName(n:string): void {
+  setName(n: string): void {
     this.name = n;
   }
 
@@ -966,7 +1020,7 @@ jack.getName()?.length; // 编译成功，没有运行时错误
 
 **getter和setter**
 
-setter和getter可用于提供对对象属性的受控访问。
+setter和getter可用于提供对类属性的受控访问。
 
 在以下示例中，setter用于禁止将`_age`属性设置为无效值：
 
@@ -1086,7 +1140,7 @@ class MyDate implements DateInterface {
 
 **父类访问**
 
-关键字`super`可用于访问父类的实例字段、实例方法和构造函数。在实现子类功能时，可以通过该关键字从父类中获取所需接口：
+关键字`super`可用于访问父类的方法和构造函数。在实现子类功能时，可以通过该关键字从父类中获取所需接口：
 
 ```typescript
 class RectangleSize {
@@ -1111,7 +1165,6 @@ class FilledRectangle extends RectangleSize {
 
   draw() {
     super.draw(); // 父类方法的调用
-    // super.height -可在此处使用
     /* 填充矩形 */
   }
 }
@@ -1309,13 +1362,13 @@ let cc: C[] = [{n: 1, s: 'a'}, {n: 2, s: 'b'}];
 ```typescript
 let map: Record<string, number> = {
   'John': 25,
-  'Mary': 21,
-}
+  'Mary': 21
+};
 
 map['John']; // 25
 ```
 
-类型`K`可以是字符串类型或数值类型(不包括bigint)，而`V`可以是任何类型。
+类型`K`可以是字符串类型或数值类型(不包括BigInt)，而`V`可以是任何类型。
 
 ```typescript
 interface PersonInfo {
@@ -1494,29 +1547,29 @@ class Bird extends Animal implements CanFly, CanSwim {
 ```typescript
 interface MyInterface {
     // 错误：接口中不能包含静态成员
-    static staticMethod(): void; 
+    static staticMethod(): void;
 
     // 错误：接口中不能包含静态代码块
-    static { console.info("static") }; 
-} 
+    static { console.info('static'); };
+}
 
 abstract class MyAbstractClass {
     // 正确：抽象类可以有静态方法
-    static staticMethod(): void { console.info("static");}
+    static staticMethod(): void { console.info('static'); }
 
     // 正确：抽象类可以有静态代码块
-    static { console.info("static initialization block");}
+    static { console.info('static initialization block'); }
 }
 ```
 * 抽象类里面可以有方法的实现，但是接口没有方法的实现，是完全抽象的；
 ```typescript
 abstract class MyAbstractClass {
    // 正确：抽象类里面可以有方法的实现
-   func(): void { console.info("func");}
+   func(): void { console.info('func'); }
 }
 interface MyInterface {
    // 错误：接口没有方法的实现，是完全抽象的
-   func(): void { console.info("func");}
+   func(): void { console.info('func'); }
 }
 ```
 * 抽象类可以有构造函数，而接口不能有构造函数。
@@ -1602,12 +1655,12 @@ function last<T>(x: T[]): T {
 
 ```typescript
 // 显式设置的类型实参
-let res: string = last<string>(['aa', 'bb']);
-let res: number = last<number>([1, 2, 3]);
+let res1: string = last<string>(['aa', 'bb']);
+let res2: number = last<number>([1, 2, 3]);
 
 // 隐式设置的类型实参
 // 编译器根据调用参数的类型来确定类型实参
-let res: number = last([1, 2, 3]);
+let res3: number = last([1, 2, 3]);
 ```
 
 ### 泛型默认值
@@ -1820,11 +1873,11 @@ export function add(a:number, b:number):number {
   return c;
 }
 
-// Index.ts
-import("./Calc").then((obj: ESObject) => {
-  console.info(obj.add(3, 5));  
+// Index.ets
+import('./Calc').then((obj: ESObject) => {
+  console.info(obj.add(3, 5));
 }).catch((err: Error) => {
-  console.error("Module dynamic import error: ", err);
+  console.error('Module dynamic import error: ', err);
 });
 ```
 
@@ -1969,7 +2022,7 @@ class MyClass {
 >**说明：**
 >
 > - 如果使用其他类型用作注解字段的类型，则会发生编译错误。
-> - 注解字段类型不支持bigint。
+> - 注解字段类型不支持BigInt。
 
 注解字段的默认值必须使用常量表达式来指定。<br>常量表达式的场景如下所示：
 * 数字字面量
@@ -2016,7 +2069,7 @@ class Position { // 编译错误：注解的名称不能与注解定义所在作
 }
 
 @interface ClassAuthor { // 编译错误：注解的名称不能与注解定义所在作用域内可见的其他实体名称相同
-  data: sting;
+  data: string;
 }
 ```
 注解不是类型，把注解当类型使用时会出现编译报错（例如：对注解使用类型别名）。
@@ -2030,16 +2083,16 @@ type Pos = Position; // 编译错误：注解不是类型
   authorName: string;
 }
 
-@ClassAuthor({authorName: "John Smith"})
+@ClassAuthor({authorName: 'John Smith'})
 class MyClass {
-  private _name: string = "Bob";
+  private _name: string = 'Bob';
 
-  @ClassAuthor({authorName: "John Smith"}) // 编译错误：注解不支持在类的getter和setter方法添加
+  @ClassAuthor({authorName: 'John Smith'}) // 编译错误：注解不支持在类的getter和setter方法添加
   get name() {
     return this._name;
   }
 
-  @ClassAuthor({authorName: "John Smith"}) // 编译错误：注解不支持在类的getter和setter方法添加
+  @ClassAuthor({authorName: 'John Smith'}) // 编译错误：注解不支持在类的getter和setter方法添加
   set name(authorName: string) {
     this._name = authorName;
   }
@@ -2157,14 +2210,13 @@ export @interface Anno {}
 
 export @interface ClassAuthor {}
 
-console.info("hello");
+console.info('hello');
 
 // b.ets
 import { Anno } from './a';
 import * as ns from './a';
 
-@MyAnno
-@ns.ClassAuthor // 仅引用了ns的注解，不会导致a.ets的console.info执行
+// 仅引用了Anno注解，不会导致a.ets的console.info执行
 class X {
   // ...
 }
@@ -2212,53 +2264,53 @@ class C {
 **编译器自动生成的.d.ets文件**<br>
 当编译器根据ets代码自动生成.d.ets文件时，存在以下2种情况。
 1. 当注解定义被导出时，源代码中的注解定义会在.d.ets文件中保留。
-```typescript
-// a.ets
-export @interface ClassAuthor {}
+   ```typescript
+   // a.ets
+   export @interface ClassAuthor {}
 
-@interface MethodAnno { // 没导出
-  data: number;
-}
+   @interface MethodAnno { // 没导出
+     data: number;
+   }
 
-// a.d.ets 编译器生成的声明文件
-export declare @interface ClassAuthor {}
-```
+   // a.d.ets 编译器生成的声明文件
+   export declare @interface ClassAuthor {}
+   ```
 2. 当下面所有条件成立时，源代码中实体的注解实例会在.d.ets文件中保留。<br>
-    2.1 注解的定义被导出（import的注解也算作被导出）。<br>
-    2.2 如果实体是类，则类被导出。<br>
-    2.3 如果实体是方法，则类被导出，并且方法不是私有方法。
-```typescript
-// a.ets
-import { ClassAuthor } from './author';
+  2.1 注解的定义被导出（import的注解也算作被导出）。<br>
+  2.2 如果实体是类，则类被导出。<br>
+  2.3 如果实体是方法，则类被导出，并且方法不是私有方法。
+   ```typescript
+   // a.ets
+   import { ClassAuthor } from './author';
 
-export @interface MethodAnno {
-  data: number = 0;
-}
+   export @interface MethodAnno {
+     data: number = 0;
+   }
 
-@ClassAuthor
-class MyClass {
-  @MethodAnno({data: 123})
-  foo() {}
+   @ClassAuthor
+   class MyClass {
+     @MethodAnno({data: 123})
+     foo() {}
 
-  @MethodAnno({data: 456})
-  private bar() {}
-}
+     @MethodAnno({data: 456})
+     private bar() {}
+   }
 
-// a.d.ets 编译器生成的声明文件
-import {ClassAuthor} from "./author";
+   // a.d.ets 编译器生成的声明文件
+   import {ClassAuthor} from "./author";
 
-export declare @interface MethodAnno {
-  data: number = 0;
-}
+   export declare @interface MethodAnno {
+     data: number = 0;
+   }
 
-@ClassAuthor
-export declare class MyClass {
-  @MethodAnno({data: 123})
-  foo(): void;
+   @ClassAuthor
+   export declare class MyClass {
+     @MethodAnno({data: 123})
+     foo(): void;
 
-  bar; // 私有方法不保留注解
-}
-```
+     bar; // 私有方法不保留注解
+   }
+   ```
 
 **开发者生成的.d.ets文件**<br>
 开发者生成的.d.ets文件中的注解信息不会自动应用到实现的源代码中。<br>

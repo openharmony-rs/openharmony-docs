@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 ArkWeb provides the capability of interacting with the system clipboard to cut, copy, and paste various types of data through the following methods: the [Menu](web_menu.md) component, keyboard shortcuts, and [W3C clipboard API and events](https://www.w3.org/TR/clipboard-apis/).
 
@@ -28,7 +28,7 @@ When a device has a physical keyboard, a user can also use keyboard shortcuts **
 
 ```javascript
 // Write text content to the clipboard.
-await navigator.clipboard.writeText ("Text content");
+await navigator.clipboard.writeText("Text content");
 ```
 
 - Use **write** to write content of any type to the system clipboard.
@@ -152,7 +152,7 @@ Loaded HTML:
                 return;
             }
         }
-        document.getElementById ('result').innerText = "No HTML content on the clipboard.";
+        document.getElementById('result').innerText = "No HTML content on the clipboard.";
     }
 
     function clearOutput() {
@@ -251,7 +251,7 @@ Loaded HTML:
     const inputArea = document.getElementById('inputArea');
     const resultText = document.getElementById('resultText');
 
-    // Listen to the copy event.
+    // Listen for the copy event.
     inputArea.addEventListener('copy', (event) => {
         const selection = document.getSelection();
         const copiedText = selection.toString() + "(Copied from ArkWeb)

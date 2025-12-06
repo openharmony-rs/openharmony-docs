@@ -4,7 +4,7 @@
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
+<!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
 本模块提供申请后台任务的接口。当应用退至后台时，开发者可以通过本模块接口为应用申请短时、长时任务，避免应用进程被终止或挂起。
@@ -219,3 +219,15 @@ try {
 | reason                         | string  | 否    | 否    | 申请资源原因。       |
 | uid                            | number  | 否    | 否    | 应用的UID。     |
 | pid                            | number  | 否    | 否    | 应用进程的PID。   |
+
+## BackgroundTaskMode<sup>21+</sup>
+
+长时任务主类型。
+
+**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**系统API**: 此接口为系统接口。
+
+| 名称                     | 值  | 说明                    |
+| ------------------------ | ---- | --------------------- |
+| MODE_ALLOW_WIFI_AWARE           | 7         | WLAN相关业务。            |

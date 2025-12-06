@@ -1,5 +1,12 @@
 # Crypto Architecture Kit (Crypto Architecture Kit)
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 - [Introduction to Crypto Architecture Kit](crypto-architecture-kit-intro.md)
 - Key Generation and Conversion<!--crypto-key-generation-conversion-->
   - [Key Generation and Conversion Overview](crypto-key-generation-conversion-overview.md)
@@ -44,8 +51,8 @@
     - [Encryption and Decryption by Segment with an AES Symmetric Key (GCM Mode) (C/C++)](crypto-aes-sym-encrypt-decrypt-gcm-by-segment-ndk.md)
     - [Encryption and Decryption with a DES Symmetric Key (ECB Mode) (ArkTS)](crypto-des-sym-encrypt-decrypt-ecb.md)
     - [Encryption and Decryption with a DES Symmetric Key (ECB Mode) (C/C++)](crypto-des-sym-encrypt-decrypt-ecb-ndk.md)
-    - [Encryption and Decryption with a 3DES Asymmetric Key Pair (ArkTS)](crypto-3des-sym-encrypt-decrypt-ecb.md)
-    - [Encryption and Decryption with a 3DES Asymmetric Key Pair (C/C++)](crypto-3des-sym-encrypt-decrypt-ecb-ndk.md)
+    - [Encryption and Decryption with a 3DES Symmetric Key Pair (ArkTS)](crypto-3des-sym-encrypt-decrypt-ecb.md)
+    - [Encryption and Decryption with a 3DES Symmetric Key Pair (C/C++)](crypto-3des-sym-encrypt-decrypt-ecb-ndk.md)
     - [Encryption and Decryption with an SM4 Symmetric Key (ECB Mode) (ArkTS)](crypto-sm4-sym-encrypt-decrypt-ecb.md)
     - [Encryption and Decryption with an SM4 Symmetric Key (ECB Mode) (C/C++)](crypto-sm4-sym-encrypt-decrypt-ecb-ndk.md)
     - [Encryption and Decryption with an SM4 Symmetric Key (CBC Mode) (ArkTS)](crypto-sm4-sym-encrypt-decrypt-cbc.md)
@@ -102,8 +109,11 @@
   - [Generating an HMAC (C/C++)](crypto-compute-hmac-ndk.md)
   - [Generating a CMAC (ArkTS)](crypto-compute-cmac.md)
   - [Generating a CMAC (C/C++)](crypto-compute-cmac-ndk.md)
-- [Generating Secure Random Numbers (ArkTS)](crypto-generate-random-number.md)
-- [Generating Secure Random Numbers (C/C++)](crypto-generate-random-number-ndk.md)
+- Random Numbers<!--crypto-compute-rand-->
+  - [Generating Secure Random Numbers (ArkTS)](crypto-generate-random-number.md)
+  - [Generating Secure Random Numbers (C/C++)](crypto-generate-random-number-ndk.md)
+  - [Generating Secure Random Numbers with Hardware Entropy Sources (ArkTS)](crypto-generate-random-number-hardware.md)
+  - [Generating Secure Random Numbers with Hardware Entropy Sources (C/C++)](crypto-generate-random-number-hardware-ndk.md)
 - Key Derivation<!--crypto-key-derivation-->
   - [Key Derivation Overview and Algorithm Specifications](crypto-key-derivation-overview.md)
   - [Key Derivation Using PBKDF2 (ArkTS)](crypto-key-derivation-using-pbkdf2.md)

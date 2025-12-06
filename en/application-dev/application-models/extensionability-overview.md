@@ -43,6 +43,8 @@ The table below lists the ExtensionAbility types defined in the system.
 | [DistributedExtensionAbility](../reference/apis-distributedservice-kit/js-apis-distributedExtensionAbility.md)|Provides extended capabilities and lifecycle callbacks for distributed ability creation, destruction, and connection.|Yes| No|
 | [AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) | Provides extended capabilities for the application background service, which provides lifecycle callbacks for creating, destroying, connecting to, and disconnecting from the application background service.| Yes| No|
 |<!--DelRow-->[SelectionExtensionAbility](../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md) | Provides extended capabilities for the word selection service, which provides lifecycle callbacks for connecting to and disconnecting from the system application background service. Third-party application cannot access this ExtensionAbility.| No| No|
+| [FaultLogExtensionAbility](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md) | Provides extended capabilities for delayed fault notification.| Yes| No|
+| [WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md) | Provides extended capabilities for web plugins to interface with native applications.| Yes| No|
 <!--RP2--><!--RP2End-->
 
 > **NOTE**
@@ -70,5 +72,4 @@ The following uses [FormExtensionAbility](../reference/apis-form-kit/js-apis-app
 You do not need to care when to add or delete a widget. The lifecycle of the FormExtensionAbility instance and the lifecycle of the [ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md) process where the FormExtensionAbility instance is located are scheduled and managed by FormManagerService.
 
 ![form_extension](figures/form_extension.png)
-
 <!--no_check-->

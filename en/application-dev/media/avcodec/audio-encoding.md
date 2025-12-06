@@ -5,7 +5,7 @@
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You can call native APIs to perform audio encoding, which compresses audio PCM data into a desired format.
 
@@ -23,11 +23,12 @@ For details about the supported encoding capabilities, see [AVCodec Supported Fo
   Export edited PCM data, encode it into the corresponding audio format, and then [multiplex](audio-video-muxer.md) it into a file.
 > **NOTE**
 >
-> AAC encoders adopt the VBR mode by default. This may result in differences from the configured parameters.
+> - AAC encoders adopt the VBR mode by default. This may result in differences from the configured parameters.
+> - By default, AAC encoders include an ADTS header in its output, which occupies the first 7 bytes of each frame.
 
 ## Development Guidelines
 
-Read [AudioCodec](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md) for the API reference.
+Read the [API reference](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md).
 
 Refer to the code snippet below to complete the entire audio encoding process, including creating an encoder, setting encoding parameters (such as the sample rate, bit rate, and audio channel count), and starting, refreshing, resetting, and destroying the encoder.
 
@@ -65,7 +66,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     #include <multimedia/player_framework/native_avbuffer.h>
     ```
 
-2. Create an encoder instance. In the code snippet below, **OH_AVCodec *** is the pointer to the encoder instance created.
+2. Create an encoder instance. In the code snippet below, OH_AVCodec * is the pointer to the encoder instance created.
 
    You can create an encoder by MIME type or codec name.
 
@@ -187,7 +188,6 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    | OH_MD_KEY_BITRATE             |       Bit rate.      |  Optional |  Mandatory|   Mandatory  |   -   |
    | OH_MD_KEY_CHANNEL_LAYOUT      |     Audio channel layout.    |  Optional |  Mandatory|    -     |   -   |
    | OH_MD_KEY_MAX_INPUT_SIZE      |   Maximum input size.   |  Optional |  Optional|   Optional  |  Optional |
-   | OH_MD_KEY_AAC_IS_ADTS         |     ADTS or not.    |  Optional |   -   |    -    |   -    |
    | OH_MD_KEY_COMPLIANCE_LEVEL    |    Compatibility level.    |  -    |  Optional|    -     |   -    |
    <!--RP2End-->
 
@@ -359,13 +359,13 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    ```
    In the preceding example, **attr.flags** indicates the type of the buffer flag.
 
-   To indicate the End of Stream (EOS), pass in the **AVCODEC_BUFFER_FLAGS_EOS** flag.
+   When finished, set the flags to **AVCODEC_BUFFER_FLAGS_EOS**.
 
-   | Value| Description|
+   | Value| Description| 
    | -------- | -------- |
-   | AVCODEC_BUFFER_FLAGS_NONE | Common frame.|
-   | AVCODEC_BUFFER_FLAGS_EOS | The buffer is an end-of-stream frame.|
-   | AVCODEC_BUFFER_FLAGS_CODEC_DATA | The buffer contains codec-specific data.|
+   | AVCODEC_BUFFER_FLAGS_NONE | Common frame.| 
+   | AVCODEC_BUFFER_FLAGS_EOS | The buffer is an end-of-stream frame.| 
+   | AVCODEC_BUFFER_FLAGS_CODEC_DATA | The buffer contains codec-specific data.| 
 
 8. Call **OH_AudioCodec_FreeOutputBuffer()** to release the encoded data.
 

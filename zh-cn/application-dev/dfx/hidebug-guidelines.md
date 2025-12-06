@@ -37,7 +37,6 @@ HiDebug可用于获取整机内存、应用进程内存占用、应用线程内�
 | hidebug.getAppNativeMemInfoWithCache | 获取应用进程内存信息（该接口存在缓存机制以提高接口性能）。<br/>**说明**：从API version 20开始，支持该接口。 |
 | hidebug.getSystemMemInfo | 获取系统内存信息。读取/proc/meminfo节点的数据。 |
 | hidebug.getAppMemoryLimit | 获取应用程序进程内存限制，其中rsslimit由getrlimit 接口获取到的RLIMIT_RSS资源值，vsslimit由getrlimit接口获取到的RLIMIT_AS资源值。 |
-| hidebug.setJsRawHeapTrimLevel | 设置当前进程转储虚拟机原始堆快照的裁剪级别。<br/>**说明**：从API version 20开始，支持该接口。 |
 
 ### 接口说明（C/C++）
 
@@ -179,9 +178,10 @@ HiDebug可用于获取VM内存数据、GC统计数据及VM堆转储。
 | hidebug.getVMRuntimeStats | 获取系统[GC](../arkts-utils/gc-introduction.md)统计信息。 |
 | hidebug.getVMRuntimeStat | 根据参数获取指定的系统[GC](../arkts-utils/gc-introduction.md)统计信息。 |
 | hidebug.dumpJsRawHeapData | 使用异步方式为当前线程转储虚拟机的原始堆快照，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。<br/>**说明**：从API version 18开始，支持该接口。 |
+| hidebug.setJsRawHeapTrimLevel | 设置当前进程转储虚拟机原始堆快照的裁剪级别。<br/>**说明**：从API version 20开始，支持该接口。 |
 | hidebug.dumpJsHeapData | 使用同步方式导出虚拟机堆，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。 |
 | hidebug.getAppMemoryLimit | 获取应用程序进程内存限制，其中vmHeapLimit为当前线程对应的虚拟机堆大小限制，vmTotalHeapSize为当前进程所有虚拟机堆总和大小的限制。 |
-| hidebug.getAppVMObjectUsed | 获取当前虚拟机中ArkTS对象所占用的内存大小。<br/>**说明**：从API version 21开始，支持该接口。 |
+| hidebug.getAppVMObjectUsedSize | 获取当前虚拟机中ArkTS对象所占用的内存大小。<br/>**说明**：从API version 21开始，支持该接口。 |
 
 ## 获取应用Trace记录信息
 
@@ -240,15 +240,15 @@ LR：保存函数返回的地址。
 | OH_HiDebug_BacktraceFromFp | 获取从给定的栈帧指针开始的回溯帧。<br/>**说明**：从API version 20开始，支持该接口。 |
 | OH_HiDebug_SymbolicAddress | 通过给定的程序计数器（PC）获取详细的符号信息。<br/>**说明**：从API version 20开始，支持该接口。 |
 
-## 设置资源泄露检测阈值
+## 设置资源泄漏检测阈值
 
-HiDebug提供设置系统资源泄露检测阈值的接口，开发者可根据业务需求自定义资源泄露事件触发的阈值。此接口主要用于辅助内存泄漏检测和功能开发，详情请参考[资源泄漏检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)。
+HiDebug提供设置系统资源泄漏检测阈值的接口，开发者可根据业务需求自定义资源泄漏事件触发的阈值。此接口主要用于辅助内存泄漏检测和功能开发，详情请参考[资源泄漏检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)。
 
 ### 接口说明（ArkTS）
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| hidebug.setAppResourceLimit | 设置应用的fd数量、线程数量、js内存或者native内存等资源触发资源泄露检测事件的阈值。 |
+| hidebug.setAppResourceLimit | 设置应用的fd数量、线程数量、js内存或者native内存等资源触发资源泄漏检测事件的阈值。 |
 
 ## 管理GWP-ASan
 
@@ -279,7 +279,7 @@ HiDebug提供了获取应用调试状态和启动系统进程DUMP信息采集等
 
 接口返回的路径为设备内的真实物理路径，如需要在应用内访问，请参考[应用沙箱路径和真实物理路径的对应关系](../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)，需将真实物理路径转化为沙箱路径。
 
-例如：/data/app/el2/100/log/com.example.myapplication/trace/com.example.myapplication_20250604_173158.trace -> /data/storage/el2/base/trace/com.example.myapplication_20250604_173158.trace
+例如：/data/app/el2/100/log/com.example.myapplication/trace/com.example.myapplication_20250604_173158.trace -> /data/storage/el2/log/trace/com.example.myapplication_20250604_173158.trace
 
 **在使用OH_HiDebug_GetAppThreadCpuUsage与getAppThreadCpuUsage接口获取线程CPU使用率时，新创建线程的使用率为0**
 

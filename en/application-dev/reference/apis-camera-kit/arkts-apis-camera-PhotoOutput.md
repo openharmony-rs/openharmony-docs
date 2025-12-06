@@ -4,13 +4,13 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+PhotoOutput implements output information used in a photo session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-PhotoOutput implements output information used in a photo session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
 ## Modules to Import
 
@@ -366,7 +366,7 @@ Checks whether taking moving photos is supported.
 
 | Type           | Description                    |
 | -------------- | ----------------------- |
-| boolean | Check result for the support of taking moving photos. **true** if supported, **false** otherwise.|
+| boolean | Check result for the support of taking moving photos. **true** if supported, **false** otherwise. If the API call fails, undefined is returned.|
 
 **Error codes**
 
@@ -518,7 +518,7 @@ Checks whether mirror photography is supported.
 
 | Type           | Description                    |
 | -------------- | ----------------------- |
-| boolean | Check result for the support of mirror photography. **true** if supported, **false** otherwise.|
+| boolean | Check result for the support of mirror photography. **true** if supported, **false** otherwise. If the API call fails, undefined is returned.|
 
 **Example**
 
@@ -533,9 +533,9 @@ function isMirrorSupported(photoOutput: camera.PhotoOutput): boolean {
 
 enableMirror(enabled: boolean): void
 
-Enables dynamic photo capture.
+Enables mirroring photo capture.
 
-Before calling this API, check whether dynamic photo capture is supported by calling [isMovingPhotoSupported](#ismovingphotosupported12) and whether mirroring is supported by calling [isMirrorSupported](#ismirrorsupported).
+Before calling this API, check whether moving photo capture is supported by calling [isMovingPhotoSupported](#ismovingphotosupported12) and whether mirroring is supported by calling [isMirrorSupported](#ismirrorsupported).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -545,7 +545,7 @@ Before calling this API, check whether dynamic photo capture is supported by cal
 
 | Name     | Type                   | Mandatory| Description                       |
 |----------| ---------------------- | ---- |---------------------------|
-| enabled | boolean                | Yes  | Whether to enable or disable dynamic photo capture. **true** to enable, **false** otherwise.|
+| enabled | boolean                | Yes  | Whether to enable or disable mirroring photo capture. **true** to enable, **false** otherwise.|
 
 **Error codes**
 
@@ -588,7 +588,7 @@ Obtains the supported video codec types of moving photos.
 
 | Type           | Description               |
 | -------------- |-------------------|
-| Array\<[VideoCodecType](arkts-apis-camera-e.md#videocodectype13)\> | Array holding the supported video codec types.|
+| Array\<[VideoCodecType](arkts-apis-camera-e.md#videocodectype13)\> | Array holding the supported video codec types. If the API call fails, undefined is returned.|
 
 **Error codes**
 
@@ -1083,7 +1083,7 @@ Obtains the photo rotation degree.
 
 |      Type     | Description       |
 | -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Photo rotation degree.|
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Photo rotation degree. If the API call fails, undefined is returned.|
 
 **Error codes**
 
@@ -1103,7 +1103,7 @@ function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : nu
   let photoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
   try {
     photoRotation = photoOutput.getPhotoRotation(deviceDegree);
-    console.log(`Photo rotation is: ${photoRotation}`);
+    console.info(`Photo rotation is: ${photoRotation}`);
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
@@ -1182,7 +1182,7 @@ function unregisterPhotoOutputCaptureStart(photoOutput: camera.PhotoOutput): voi
 
 ## isPhotoQualityPrioritizationSupported<sup>21+</sup>
 
-isPhotoQualityPrioritizationSupported(quality: PhotoQualityPrioritization): boolean
+isPhotoQualityPrioritizationSupported(qualityPrioritization: PhotoQualityPrioritization): boolean
 
 Checks whether the specified photo quality prioritization strategy is supported.
 
@@ -1194,7 +1194,7 @@ Checks whether the specified photo quality prioritization strategy is supported.
 
 | Name     | Type                   | Mandatory| Description                                      |
 | ----------- | ---------------------- | ---- | ------------------------------------------ |
-| quality | [PhotoQualityPrioritization](arkts-apis-camera-e.md#photoqualityprioritization21) | Yes | Photo quality prioritization strategy.|
+| qualityPrioritization | [PhotoQualityPrioritization](arkts-apis-camera-e.md#photoqualityprioritization21) | Yes | Photo quality prioritization strategy.|
 
 **Return value**
 
@@ -1208,19 +1208,19 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID     | Error Message    |
 | ------------- | --------------- |
-| 7400201 |  Camera service fatal error. |
+| 7400201 |  Camera service fatal error, reconfiguring streams is needed to recover from failure. |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import camera from '@ohos.multimedia.camera';
+import camera from '@kit.CameraKit';
 let photoOutput: camera.PhotoOutput;
 
-function isPhotoQualityPrioritizationSupported(quality: camera.PhotoQualityPrioritization): boolean {
+function isPhotoQualityPrioritizationSupported(qualityPrioritization: camera.PhotoQualityPrioritization): boolean {
   let isSupported: boolean = false;
   try {
-    isSupported = photoOutput.isPhotoQualityPrioritizationSupported(quality);
+    isSupported = photoOutput.isPhotoQualityPrioritizationSupported(qualityPrioritization);
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The isPhotoQualityPrioritizationSupported call failed. error code: ${err.code}`);
@@ -1231,13 +1231,11 @@ function isPhotoQualityPrioritizationSupported(quality: camera.PhotoQualityPrior
 
 ## setPhotoQualityPrioritization<sup>21+</sup>
 
-setPhotoQualityPrioritization(quality: PhotoQualityPrioritization): void
+setPhotoQualityPrioritization(qualityPrioritization: PhotoQualityPrioritization): void
 
 Sets the photo quality prioritization strategy.
 
-Before the setting, do the following checks:
-
-Call [isPhotoQualityPrioritizationSupported](#isphotoqualityprioritizationsupported21) to check whether the device supports the specified photo quality prioritization strategy.
+Before setting the strategy, you can call [isPhotoQualityPrioritizationSupported](#isphotoqualityprioritizationsupported21) to check whether the device supports the specified photo quality prioritization strategy.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
@@ -1247,7 +1245,7 @@ Call [isPhotoQualityPrioritizationSupported](#isphotoqualityprioritizationsuppor
 
 | Name     | Type                   | Mandatory| Description                                      |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| quality  | [PhotoQualityPrioritization](arkts-apis-camera-e.md#photoqualityprioritization21) | Yes | Photo quality prioritization strategy.|
+| qualityPrioritization  | [PhotoQualityPrioritization](arkts-apis-camera-e.md#photoqualityprioritization21) | Yes | Photo quality prioritization strategy.|
 
 **Error codes**
 
@@ -1256,18 +1254,18 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | ID   | Error Message                                          |
 | -------- |----------------------------------------------- |
 | 7400102  | Operation not allowed. |
-| 7400201  | Camera service fatal error. |
+| 7400201  | Camera service fatal error, reconfiguring streams is needed to recover from failure. |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import camera from '@ohos.multimedia.camera';
+import camera from '@kit.CameraKit';
 let photoOutput: camera.PhotoOutput;
 
-function setPhotoQualityPrioritization(quality: camera.PhotoQualityPrioritization): void {
+function setPhotoQualityPrioritization(qualityPrioritization: camera.PhotoQualityPrioritization): void {
   try {
-    photoOutput.setPhotoQualityPrioritization(quality);
+    photoOutput.setPhotoQualityPrioritization(qualityPrioritization);
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The setPhotoQualityPrioritization call failed. error code: ${err.code}`);

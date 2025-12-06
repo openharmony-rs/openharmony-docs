@@ -1,24 +1,28 @@
 # 绑定手势方法
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 为组件绑定不同类型的手势事件，并设置事件的响应方法。
 
 >  **说明：**
 >
-> 从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 可以通过gesture、priorityGesture和parallelGesture给组件绑定手势识别，手势识别成功后可以通过事件回调通知组件。可以通过[触摸热区](ts-universal-attributes-touch-target.md)指定可识别手势的区域。gesture、priorityGesture和parallelGesture当前不支持使用三目运算符（条件? 表达式1 : 表达式2）切换手势绑定。
+> - 可以通过gesture、priorityGesture和parallelGesture给组件绑定手势识别，手势识别成功后可以通过事件回调通知组件。可以通过[触摸热区](ts-universal-attributes-touch-target.md)指定可识别手势的区域。gesture、priorityGesture和parallelGesture当前不支持使用三目运算符（条件? 表达式1 : 表达式2）切换手势绑定。
 
 ## gesture
 
 gesture(gesture: GestureType, mask?: GestureMask): T
 
 绑定手势。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -28,8 +32,8 @@ gesture(gesture: GestureType, mask?: GestureMask): T
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| gesture  |  [GestureType](./ts-gesture-common.md#gesturetype11-1) | 是   | 绑定的手势类型。 |
-| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask11枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
+| gesture  |  [GestureType](./ts-gesture-common.md#gesturetype) | 是   | 绑定的手势类型。 |
+| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
 
 **返回值：**
 
@@ -47,6 +51,10 @@ priorityGesture(gesture: GestureType, mask?: GestureMask): T
 
 2. 绑定长按手势时，设置触发长按的最短时间小的组件会优先响应，会忽略priorityGesture设置。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -55,8 +63,8 @@ priorityGesture(gesture: GestureType, mask?: GestureMask): T
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| gesture  |  [GestureType](./ts-gesture-common.md#gesturetype11-1) | 是   | 绑定的手势对象。 |
-| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask11枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
+| gesture  |  [GestureType](./ts-gesture-common.md#gesturetype) | 是   | 绑定的手势对象。 |
+| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
 
 **返回值：**
 
@@ -70,6 +78,10 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 
 绑定可与子组件手势同时触发的手势。手势事件为非冒泡事件。父组件设置parallelGesture时，父子组件相同的手势事件都可以触发，实现类似冒泡效果。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -78,8 +90,8 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| gesture  |  [GestureType](./ts-gesture-common.md#gesturetype11-1) | 是   | 绑定的手势对象。 |
-| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask11枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
+| gesture  |  [GestureType](./ts-gesture-common.md#gesturetype) | 是   | 绑定的手势对象。 |
+| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
 
 **返回值：**
 
@@ -89,15 +101,13 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 
 ## SourceType枚举说明<sup>8+</sup>
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
 | ---- | --- | -------- |
-| Unknown | - | 未知设备。 |
-| Mouse | - | 鼠标。 |
-| TouchScreen | - | 触摸屏。 |
+| Unknown | - | 未知设备。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Mouse | - | 鼠标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| TouchScreen | - | 触摸屏。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## SourceTool枚举说明<sup>9+</sup>
 
@@ -114,7 +124,7 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 
 ## 示例
 
-### 示例1(父组件优先识别手势和父子组件同时触发手势)
+### 示例1（父组件优先识别手势和父子组件同时触发手势）
 
 该示例通过配置priorityGesture和parallelGesture分别实现了父组件优先识别手势和父子组件同时触发手势。
 
@@ -176,20 +186,18 @@ struct GestureSettingsExample {
 
 ### 示例2（实时监测参与滑动手势的有效触点数量）
 
-该示例通过配置fingerInfos实时监测参与滑动手势的有效触点数量
+该示例通过配置fingerInfos实时监测参与滑动手势的有效触点数量。
 
 ```ts
 // xxx.ets
 @Entry
 @Component
-
 struct PanGestureWithFingerCount {
   @State offsetX: number = 0
   @State offsetY: number = 0
   @State positionX: number = 0
   @State positionY: number = 0
-  @State fingerCount: number = 0  //用于记录参与手势的触点数量
-
+  @State fingerCount: number = 0 //用于记录参与手势的触点数量
   private panOption: PanGestureOptions = new PanGestureOptions({
     direction: PanDirection.All,
     fingers: 1
@@ -215,24 +223,24 @@ struct PanGestureWithFingerCount {
         PanGesture(this.panOption)
           .onActionStart((event: GestureEvent) => {
             console.info('Pan start')
-            this.fingerCount = event.fingerInfos?.length || 0  // 记录触点数量
+            this.fingerCount = event.fingerInfos?.length || 0 // 记录触点数量
           })
           .onActionUpdate((event: GestureEvent) => {
             if (event) {
-              console.info('fingerInfos',JSON.stringify(event.fingerInfos))
+              console.info('fingerInfos', JSON.stringify(event.fingerInfos))
               this.offsetX = this.positionX + event.offsetX
               this.offsetY = this.positionY + event.offsetY
-              this.fingerCount = event.fingerInfos?.length || 0  // 更新触点数量,记录下参与当前手势的有效触点的数量
+              this.fingerCount = event.fingerInfos?.length || 0 // 更新触点数量,记录下参与当前手势的有效触点的数量
             }
           })
           .onActionEnd((event: GestureEvent) => {
             this.positionX = this.offsetX
             this.positionY = this.offsetY
-            this.fingerCount = 0  // 触点离开触摸区域后归零
+            this.fingerCount = 0 // 触点离开触摸区域后归零
             console.info('Pan end')
           })
           .onActionCancel(() => {
-            this.fingerCount = 0  // 手势取消后归零
+            this.fingerCount = 0 // 手势取消后归零
           })
       )
 
@@ -244,3 +252,5 @@ struct PanGestureWithFingerCount {
   }
 }
 ```
+
+![zh-cn_image_0000001210195017](figures/zh-cn_image_0000001210195017.gif)

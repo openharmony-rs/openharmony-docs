@@ -1,10 +1,10 @@
 # 手势冲突处理
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 手势冲突是指多个手势识别器在同一组件或重叠区域同时识别时产生竞争，导致识别结果不符合预期。常见冲突场景包括：
 - 同一组件上的多手势（如按钮同时添加点击与长按手势）。
@@ -80,61 +80,68 @@
 4. 代码完整示例。
 
    ```ts
-   import { PromptAction } from '@kit.ArkUI';
-   
-   @Entry
-   @Component
-   struct Index {
-     scroller: Scroller = new Scroller();
-     promptAction: PromptAction = this.getUIContext().getPromptAction();
-   
-     build() {
-       Scroll(this.scroller) {
-         Column({ space: 8 }) {
-           Text("包括上下两层组件，上层组件绑定长按手势，下层组件绑定拖拽。其中上层组件下半区域绑定手势拦截，使该区域响应下层拖拽手势。").width('100%').fontSize(20).fontColor('0xffdd00')
-           Stack({ alignContent: Alignment.Center }) {
-             Column() {
-               // 模拟上半区和下半区
-               Stack().width('200vp').height('100vp').backgroundColor(Color.Red)
-               Stack().width('200vp').height('100vp').backgroundColor(Color.Blue)
-             }.width('200vp').height('200vp')
-             // Stack的下半区是绑定了滑动手势的图像区域。
-             Image($r('sys.media.ohos_app_icon'))
-               .draggable(true)
-               .onDragStart(()=>{
-                 this.promptAction.showToast({ message: "Drag 下半区蓝色区域，Image响应" });
-               })
-               .width('200vp').height('200vp')
-             // Stack的上半区是绑定了长按手势的浮动区域。
-             Stack() {
-             }
-             .width('200vp')
-             .height('200vp')
-             .hitTestBehavior(HitTestMode.Transparent)
-             .gesture(GestureGroup(GestureMode.Parallel,
-               LongPressGesture()
-                 .onAction((event: GestureEvent) => {
-                   this.promptAction.showToast({ message: "LongPressGesture 长按上半区 红色区域，红色区域响应" });
-                 })
-                 .tag("longpress")
-             ))
-             .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
-               // 如果是长按类型手势，判断点击的位置是否在上半区
-               if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
-                 if (event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
-                   return GestureJudgeResult.CONTINUE;
-                 } else {
-                   return GestureJudgeResult.REJECT;
-                 }
-               }
-               return GestureJudgeResult.CONTINUE;
-             })
-           }.width('100%')
-         }.width('100%')
-       }
-     }
-   }
+    import { PromptAction } from '@kit.ArkUI';
+
+    @Entry
+    @Component
+    struct Index {
+      scroller: Scroller = new Scroller();
+      promptAction: PromptAction = this.getUIContext().getPromptAction();
+
+      build() {
+        Scroll(this.scroller) {
+          Column({ space: 8 }) {
+            //  $r('app.string.Drag_instructions') 需要替换为开发者所需的资源文件
+            Text($r('app.string.Drag_instructions')).width('100%').fontSize(20).fontColor('0xffdd00')
+            Stack({ alignContent: Alignment.Center }) {
+              Column() {
+                // 模拟上半区和下半区
+                Stack().width('200vp').height('100vp').backgroundColor(Color.Gray)
+                Stack().width('200vp').height('100vp').backgroundColor(Color.Blue)
+              }.width('200vp').height('200vp')
+
+              // Stack的下半区是绑定了滑动手势的图像区域。
+              //  $r('sys.media.ohos_app_icon') 需要替换为开发者所需的资源文件
+              Image($r('sys.media.ohos_app_icon'))
+                .draggable(true)
+                .onDragStart(() => {
+                  //  $r('app.string.Allow_dragging_prompt') 需要替换为开发者所需的资源文件
+                  this.promptAction.showToast({ message: $r('app.string.Allow_dragging_prompt') });
+                })
+                .width('200vp').height('200vp')
+              // Stack的上半区是绑定了长按手势的浮动区域。
+              Stack() {
+              }
+              .width('200vp')
+              .height('200vp')
+              .hitTestBehavior(HitTestMode.Transparent)
+              .gesture(GestureGroup(GestureMode.Parallel,
+                LongPressGesture()
+                  .onAction((event: GestureEvent) => {
+                    //  $r('app.string.Stop_dragging_prompt') 需要替换为开发者所需的资源文件
+                    this.promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt') });
+                  })
+                  .tag('longpress')
+              ))
+              .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
+                // 如果是长按类型手势，判断点击的位置是否在上半区
+                if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
+                  if (event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
+                    return GestureJudgeResult.CONTINUE;
+                  } else {
+                    return GestureJudgeResult.REJECT;
+                  }
+                };
+                return GestureJudgeResult.CONTINUE;
+              })
+            }.width('100%')
+          }.width('100%')
+        }
+      }
+    }
    ```
+   
+   ![StackGesure20251119001](figures/StackGesure20251119001.jpg)
 
 ## 手势并行动态控制
 
@@ -151,7 +158,7 @@
 
 3. 设置手势并行：此步骤并非必需，典型场景是在嵌套滚动中，设置外部组件的滚动手势与内部的滚动手势并行。
 
-4. 动态开闭手势：指通过手势识别器的setEnable方法，控制手势是否响应用户回调。
+4. 动态开闭手势：指通过手势识别器的setEnabled方法，控制手势是否响应用户回调。
 
 手势并行动态控制涉及以下接口。
 
@@ -391,11 +398,9 @@
 
 ## 阻止手势参与识别
 
-手势识别基于[触摸测试](./arkts-interaction-basic-principles.md#触摸测试)的响应链结果进行，因此在用户按下时，通过控制响应链中手势识别器的参与状态，动态干预手势处理是高效的。
+手势识别基于[触摸测试](./arkts-interaction-basic-principles.md#触摸测试)的响应链结果进行，因此在用户按下时，通过控制响应链中手势识别器的参与状态，实现高效的动态干预手势处理。
 
-这需要结合[onTouchTestDone](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ontouchtestdone20)接口来实现：
-
-完成触摸测试后，系统通过该接口回调返回所有手势识别器对象。应用可根据类型、组件标识或关联组件信息筛选识别器，并通过调用[preventBegin](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#preventbegin20)接口主动禁用特定识别器。
+从API version 20开始，可以结合[onTouchTestDone](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ontouchtestdone20)接口来阻止手势参与识别。完成触摸测试后，系统通过该接口回调返回所有手势识别器对象。应用可根据类型、组件标识或关联组件信息筛选识别器，并通过调用[preventBegin](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#preventbegin20)接口主动禁用特定识别器。
 
 根据手势类型进行禁用：
 
@@ -468,134 +473,157 @@
 @Entry
 @ComponentV2
 struct Index {
-  @Local progress: number = 496000  // 初始进度，秒
-  @Local total: number = 27490000   // 总时长，秒
-  @Local currentWidth: string = '100%'
-  @Local currentHeight: string = '100%'
-  private currentPosX: number = 0
-  private currentPosY: number = 0
-  private currentFullScreenState: boolean = true
+  @Local progress: number = 496000; // 初始进度，秒
+  @Local total: number = 27490000; // 总时长，秒
+  @Local currentWidth: string = '100%';
+  @Local currentHeight: string = '100%';
+  private currentPosX: number = 0;
+  private currentPosY: number = 0;
+  private currentFullScreenState: boolean = true;
   private normalPlayTimer: number = -1;
   private isPlaying: boolean = true;
   private fastForwardTimer: number = -1;
+  private context = this.getUIContext().getHostContext()
 
   aboutToAppear(): void {
     // 启动一个周期性定时器每隔一秒刷新一次进度
-    this.startNormalPlayTimer()
-  }
+    this.startNormalPlayTimer();
+  };
 
   startNormalPlayTimer(): void {
     if (this.normalPlayTimer != -1) {
       this.stopNormalPlayTimer()
-    }
+    };
     this.normalPlayTimer = setInterval(() => {
       this.progress = this.progress + 1000
-    }, 1000)
-  }
+    }, 1000);
+  };
 
   stopNormalPlayTimer(): void {
     if (this.normalPlayTimer == -1) {
-      return
-    }
-    clearInterval(this.normalPlayTimer)
-    this.normalPlayTimer = -1
-  }
+      return;
+    };
+    clearInterval(this.normalPlayTimer);
+    this.normalPlayTimer = -1;
+  };
 
   startFastForwardTimer(): void {
     if (this.fastForwardTimer != -1) {
-      this.stopFastForwardTimer()
-    }
+      this.stopFastForwardTimer();
+    };
     this.fastForwardTimer = setInterval(() => {
-      this.progress = this.progress + 100000
-    }, 100)
-  }
+      this.progress = this.progress + 100000;
+    }, 100);
+  };
 
   stopFastForwardTimer(): void {
     if (this.fastForwardTimer == -1) {
-      return
-    }
-    clearInterval(this.fastForwardTimer)
-    this.fastForwardTimer = -1
-  }
+      return;
+    };
+    clearInterval(this.fastForwardTimer);
+    this.fastForwardTimer = -1;
+  };
 
   showMessage(message: string): void {
-    this.getUIContext().getPromptAction().showToast({ message: message, alignment: Alignment.Center })
-  }
+    this.getUIContext().getPromptAction().showToast({ message: message, alignment: Alignment.Center });
+  };
 
   resetPosInfo(): void {
-    this.currentPosX = 0
-    this.currentPosY = 0
-  }
+    this.currentPosX = 0;
+    this.currentPosY = 0;
+  };
 
   toggleFullScreenState(): void {
-    this.currentFullScreenState = !this.currentFullScreenState
+    this.currentFullScreenState = !this.currentFullScreenState;
     if (this.currentFullScreenState) {
-      this.currentWidth = '100%'
-      this.currentHeight = '100%'
+      this.currentWidth = '100%';
+      this.currentHeight = '100%';
     } else {
-      this.currentWidth = '100%'
-      this.currentHeight = '50%'
-    }
-    this.showMessage(this.currentFullScreenState ? '全屏播放' : '取消全屏播放')
-  }
+      this.currentWidth = '100%';
+      this.currentHeight = '50%';
+    };
+    //  $r('app.string.Play_full_screen') 需要替换为开发者所需的资源文件
+    //  $r('app.string.Exit_play_full_screen') 需要替换为开发者所需的资源文件
+    this.showMessage(this.currentFullScreenState
+      ? this.context!.resourceManager.getStringSync($r('app.string.Play_full_screen').id)
+      : this.context!.resourceManager.getStringSync($r('app.string.Exit_play_full_screen').id));
+  };
 
   togglePlayAndPause(): void {
-    this.isPlaying = !this.isPlaying
+    this.isPlaying = !this.isPlaying;
     if (!this.isPlaying) {
-      this.stopNormalPlayTimer()
+      this.stopNormalPlayTimer();
     } else {
       // 重新启动
-      this.startNormalPlayTimer()
-    }
-    this.showMessage(this.isPlaying ? '暂停播放' : '继续播放')
-  }
+      this.startNormalPlayTimer();
+    };
+    //  $r('app.string.stop_playing') 需要替换为开发者所需的资源文件
+    //  $r('app.string.Continue_playing') 需要替换为开发者所需的资源文件
+    this.showMessage(this.isPlaying
+      ? this.context!.resourceManager.getStringSync($r('app.string.stop_playing').id)
+      : this.context!.resourceManager.getStringSync($r('app.string.Continue_playing').id));
+  };
 
   doFastForward(start: boolean): void {
     if (!start) { // 停止快进，恢复正常播放
-      this.stopFastForwardTimer()
-      this.startNormalPlayTimer()
-      this.showMessage('取消快进')
-      return
-    }
+      this.stopFastForwardTimer();
+      this.startNormalPlayTimer();
+      //  $r('app.string.Cancel_FastForwarding') 需要替换为开发者所需的资源文件
+      this.showMessage(
+        this.context!.resourceManager.getStringSync($r('app.string.Cancel_FastForwarding').id));
+      return;
+    };
 
-    this.stopNormalPlayTimer()
-    this.startFastForwardTimer()
-    this.showMessage('开始快进')
-  }
+    this.stopNormalPlayTimer();
+    this.startFastForwardTimer();
+    //  $r('app.string.Start_FastForwarding') 需要替换为开发者所需的资源文件
+    this.showMessage(
+      this.context!.resourceManager.getStringSync($r('app.string.Start_FastForwarding').id));
+  };
 
   updateBrightness(start: boolean, event: BaseGestureEvent): void {
-    let newY = event.fingerList[0].localY
+    let newY = event.fingerList[0].localY;
     if (start) {
-      this.currentPosY = newY
-      this.showMessage('开始调整 亮度')
-      return
-    }
+      this.currentPosY = newY;
+      //  $r('app.string.Start_adjusting_brightness') 需要替换为开发者所需的资源文件
+      this.showMessage(this.context!.resourceManager
+        .getStringSync($r('app.string.Start_adjusting_brightness').id));
+      return;
+    };
     let offsetY = newY - this.currentPosY;
-    if (offsetY > 10) {
-      this.showMessage((offsetY > 0) ? '降低亮度' : '提高亮度')
-    }
-    this.currentPosY = newY
-  }
+    if (Math.abs(offsetY) > 10) {
+      //  $r('app.string.Reduce_brightness') 需要替换为开发者所需的资源文件
+      //  $r('app.string.Increase_brightness') 需要替换为开发者所需的资源文件
+      this.showMessage((offsetY > 0)
+        ? this.context!.resourceManager.getStringSync($r('app.string.Reduce_brightness').id)
+        : this.context!.resourceManager.getStringSync($r('app.string.Increase_brightness').id))
+      this.currentPosY = newY;
+    };
+  };
 
   updateProgress(start: boolean, event: BaseGestureEvent): void {
-    let newX = event.fingerList[0].localX
+    let newX = event.fingerList[0].localX;
     if (start) {
-      this.currentPosX = newX
-      this.showMessage('开始调整 进度')
-      return
-    }
+      this.currentPosX = newX;
+      //  $r('app.string.Adjust_schedule') 需要替换为开发者所需的资源文件
+      this.showMessage(this.context!.resourceManager
+        .getStringSync($r('app.string.Adjust_schedule').id));
+      return;
+    };
     let offsetX = newX - this.currentPosX;
-    this.progress = Math.floor(this.progress + offsetX * 10000)
-    this.currentPosX = newX
-  }
+    this.progress = Math.floor(this.progress + offsetX * 10000);
+    this.currentPosX = newX;
+  };
 
   build() {
     Stack({ alignContent: Alignment.Center }) {
       Column() {
         Column() {
-          Text("播放进度：" + this.progress)
+          //  $r('app.string.Playback_progress') 需要替换为开发者所需的资源文件
+          Text(this.context!.resourceManager.getStringSync($r('app.string.Playback_progress').id) + this.progress)
         }
-          .width("100%").height("90%")
+        .width('100%').height('90%')
+
         Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
           Slider({
             value: this.progress,
@@ -604,23 +632,23 @@ struct Index {
             style: SliderStyle.OutSet
           })
             .onChange((value: number, mode: SliderChangeMode) => {
-              this.progress = value
+              this.progress = value;
             })
-            .id("progress_layer")
+            .id('progress_layer')
             .onTouchTestDone((event, allRecognizers: Array<GestureRecognizer>) => {
               for (let i = 0; i < allRecognizers.length; i++) {
                 let recognizer = allRecognizers[i];
                 let inspectorInfo = recognizer.getEventTargetInfo().getId();
-                if (inspectorInfo !== "progress_layer") {
+                if (inspectorInfo !== 'progress_layer') {
                   // 用户操作到进度条区域时，禁用掉所有非progress_layer上的手势
                   recognizer.preventBegin();
-                }
-              }
+                };
+              };
             })
             .margin({ left: 5 })
-            .trackColor(Color.Red)
-            .blockColor(Color.Yellow)
-            .selectedColor(Color.Orange)
+            .trackColor(Color.Blue)
+            .blockColor(Color.Gray)
+            .selectedColor(Color.White)
             .trackThickness(2)
             .flexShrink(1)
             .flexGrow(1)
@@ -637,42 +665,42 @@ struct Index {
         PanGesture({ direction: PanDirection.Vertical, distance: 10 })
           .tag('pan_for_brightness_control')
           .onActionStart((event) => {
-            this.updateBrightness(true, event)
+            this.updateBrightness(true, event);
           })
           .onActionUpdate((event) => {
-            this.updateBrightness(false, event)
+            this.updateBrightness(false, event);
           }),
         PanGesture({ direction: PanDirection.Horizontal, distance: 10 })
           .tag('pan_for_play_progress_control')
           .onActionStart((event) => {
-            this.updateProgress(true, event)
+            this.updateProgress(true, event);
           })
           .onActionUpdate((event) => {
-            this.updateProgress(false, event)
+            this.updateProgress(false, event);
           }),
 
         LongPressGesture()
           .tag('long_press_for_fast_forward_control')
           .onAction(() => {
-            this.doFastForward(true) // 开始快进
+            this.doFastForward(true); // 开始快进
           })
           .onActionEnd(() => {
-            this.doFastForward(false) // 停止快进
+            this.doFastForward(false); // 停止快进
           })
           .onActionCancel(() => {
-            this.doFastForward(false)
+            this.doFastForward(false);
           }),
 
         TapGesture({ count: 2 })
           .tag('double_tap_on_video')
           .onAction(() => {
-            this.toggleFullScreenState()
+            this.toggleFullScreenState();
           }),
 
         TapGesture()
           .tag('single_tap_on_video')
           .onAction(() => {
-            this.togglePlayAndPause()
+            this.togglePlayAndPause();
           })
       )
     )
@@ -680,7 +708,7 @@ struct Index {
     .height(this.currentHeight)
   }
 }
+
 ```
 
-
-
+![Gesure20251119002](figures/Gesure20251119002.gif)

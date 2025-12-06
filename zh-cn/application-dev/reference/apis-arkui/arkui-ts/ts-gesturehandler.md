@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用于设置组件绑定的手势。可以通过[UIGestureEvent](./ts-uigestureevent.md#uigestureevent)对象调用其接口添加或删除手势。
 

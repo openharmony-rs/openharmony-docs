@@ -5,7 +5,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -219,8 +219,8 @@ enum MediaLibrary_MediaContentType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| MEDIA_LIBRARY_COMPRESSED = 1 | 压缩媒体内容类型。 |
-| MEDIA_LIBRARY_PICTURE_OBJECT = 2 | 图片对象媒体内容类型。 |
+| MEDIA_LIBRARY_COMPRESSED = 1 | 普通图片格式，如JPEG、HEIC、GIF。 |
+| MEDIA_LIBRARY_PICTURE_OBJECT = 2 | 图片解码后的PixelMap、GainMap和图片元数据信息一起封装的对象，方便应用进行编辑和显示。此对象的操作详见[OH_PictureNative](../apis-image-kit/capi-image-nativemodule-oh-picturenative.md)。 |
 
 
 ## 函数说明

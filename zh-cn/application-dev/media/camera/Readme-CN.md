@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 - [Camera Kit简介](camera-overview.md)
 - [申请相机开发的权限](camera-preparation.md)
@@ -33,11 +33,13 @@
   - [白平衡设置(ArkTS)](camera-whitebalance.md)
   - [压力管控(ArkTS)](camera-system-pressure.md)
   - [相机控制器(ArkTS)](camera-control-center.md)
+  - [微距能力设置(ArkTS)](camera-macro.md)
+  - [多摄同开(ArkTS)](camera-concurrent-open.md)
   <!--Del-->
-  - [高性能拍照(仅对系统应用开放)(ArkTS)](camera-deferred-photo.md)
-  - [高性能拍照实践(仅对系统应用开放)(ArkTS)](camera-deferred-photo-case.md)
-  - [深度信息(仅对系统应用开放)(ArkTS)](camera-depth-data.md)
-  - [性能提升实践(仅对系统应用开放)(ArkTS)](camera-performance-improvement.md)
+  - [高性能拍照(仅对系统应用开放)(ArkTS)](camera-deferred-photo-sys.md)
+  - [高性能拍照实践(仅对系统应用开放)(ArkTS)](camera-deferred-photo-case-sys.md)
+  - [深度信息(仅对系统应用开放)(ArkTS)](camera-depth-data-sys.md)
+  - [性能提升实践(仅对系统应用开放)(ArkTS)](camera-performance-improvement-sys.md)
   <!--DelEnd-->
 - 开发相机应用必选能力(C/C++)<!--camera-dev-native-mandatory-->
   - [相机管理(C/C++)](native-camera-device-management.md)
@@ -54,3 +56,5 @@
   - [元数据(C/C++)](native-camera-metadata.md)
   - [手电筒使用(C/C++)](native-camera-torch-use.md)
   - [压力管控(C/C++)](native-camera-system-pressure.md)
+  - [微距能力设置(C/C++)](native-camera-macro.md)
+  - [多摄同开(C/C++)](native-camera-concurrent-open.md)

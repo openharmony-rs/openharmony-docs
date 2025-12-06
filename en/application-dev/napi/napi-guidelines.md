@@ -66,7 +66,7 @@ static napi_value GetArgvDemo2(napi_env env, napi_callback_info info) {
 
 ## Lifecycle Management
 
-**[Rule]** Properly use **napi_open_handle_scope** and **napi_close_handle_scope** to minimize the lifecycle of **napi_value** and avoid memory leakage.
+**[Rule]** Properly use **napi_open_handle_scope** and **napi_close_handle_scope** to minimize the lifecycle of **napi_value** and avoid memory leaks.
 
 Each **napi_value** belongs to a specific **HandleScope**, which is opened and closed by **napi_open_handle_scope** and **napi_close_handle_scope**, respectively. After a **HandleScope** is closed, its **napi_value** is automatically released.
 
@@ -217,7 +217,7 @@ Generally, you can directly pass in **nullptr** for the last parameter **result*
 // Case 1: Pass in nullptr via the last parameter in napi_wrap. In this case, the created napi_ref is a weak reference, which is managed by the system and does not need manual release.
 napi_wrap(env, jsobject, nativeObject, cb, nullptr, nullptr);
 
-// Case 2: The last parameter in napi_wrap is not nullptr. In this case, the returned napi_ref is a strong reference and needs to be manually released. Otherwise, memory leakage may occur.
+// Case 2: The last parameter in napi_wrap is not nullptr. In this case, the returned napi_ref is a strong reference and needs to be manually released. Otherwise, memory leaks may occur.
 napi_ref result;
 napi_wrap(env, jsobject, nativeObject, cb, nullptr, &result);
 // When js_object and result are no longer used, call napi_remove_wrap to release result.
@@ -281,7 +281,7 @@ static napi_value ArrayBufferDemo(napi_env env, napi_callback_info info)
 }
 ```
 
-**napi_create_arraybuffer** is equivalent to **new ArrayBuffer(size)** in JS. The object generated cannot be directly read in TS/JS. It can be read or written only after being encapsulated into a TyppedArray or DataView object.
+**napi_create_arraybuffer** is equivalent to **new ArrayBuffer(size)** in JS. The object generated cannot be directly read in TS/JS. It can be read or written only after being encapsulated into a TypedArray or DataView object.
 
 **Benchmark performance test result**:
 
@@ -305,14 +305,14 @@ static napi_value ArrayBufferDemo(napi_env env, napi_callback_info info)
 ## Module Registration and Naming
 
 **[Rule]**
-Add "static" to the function corresponding to **nm_register_func** to prevent conflicts with symbols in other .so files.
+Add "static" to the function corresponding to **nm_register_func** to prevent conflicts with symbols in other binary .so files.
 
 The module registration entry, that is, the name of the function decorated by **__attribute__((constructor))** must be different from that of other modules.
 
-The **.nm_modname** field must completely match the module name and is case sensitive.
+The **.nm_modname** field must completely match the name of the binary .so file and is case sensitive.
 
 **Example (incorrect)**
-In the following example, the module name is **nativerender**.
+The following is an incorrect example when the name of the binary .so file is **nativerender**.
 
 ```cpp
 EXTERN_C_START
@@ -341,6 +341,13 @@ extern "C" __attribute__((constructor)) void RegisterModule()
     napi_module_register(&nativeModule);
 }
 ```
+Figure 1
+
+![demoModule](./figures/image.png)
+
+Figure 2
+
+![CMakeLists](./figures/image-1.png)
 
 **Example (correct)**
 In the following example, the module name is **nativerender**.
@@ -370,12 +377,12 @@ extern "C" __attribute__((constructor)) void RegisterNativeRenderModule()
 }
 ```
 
-## dlopen and module registration
+## dlopen and Module Registration
 
 **[Rule]**
-If the module to be registered has been opened by dlopen, register the module as follows:
+If **dlopen** has been called, register the module as follows:
 
-The module needs to export the function with the fixed name napi_onLoad and call the registration function in this function. The napi_onLoad function is proactively called only in the import statement of the ArkTS code to prevent module registration from being triggered in advance when dlopen is executed.
+The module must export the function named **napi_onLoad**, and call the registration function in the function. **napi_onLoad** is only called by the import statement of ArkTS code, so that module registration is not triggered in advance when **dlopen** is called.
 
 **Example**
 
@@ -406,7 +413,7 @@ extern "C" void napi_onLoad()
 
 ## Using JS Objects Created by napi_create_external APIs
 
-**[Rule]** The JS object created by **napi_create_external** APIs can be passed and used only in the calling thread. If it is passed across threads (for example, using **post_message** of the **worker** interface), the application may crash. If a JS object bound with a native object needs to be passed across threads, use **napi_coerce_to_native_binding_object** to bind the two objects.
+**[Rule]** The JS object created by **napi_create_external** APIs can be passed and used only in the calling thread. If it is passed across threads (for example, using **post_message** of the **worker** interface), the application may crash. If a JS object bound with a native object needs to be passed across threads, use **napi_coerce_to_native_binding_object** to bind the two objects. For details about the APIs, see [napi_create_external](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-object#napi_create_external).
 
 **Example (incorrect)**
 
@@ -428,7 +435,7 @@ export const createMyExternal: () => Object;
 
 // Application code.
 import testNapi from 'libentry.so';
-import worker from '@ohos.worker';
+import { worker } from '@kit.ArkTS';
 
 const mWorker = new worker.ThreadWorker('../workers/Worker');
 
@@ -493,6 +500,6 @@ If the semantics are violated in strict mode (default), an error will be thrown.
 
 [How do I directly call ArkTS APIs in a C++ subthread on the native side without triggering callbacks on the ArkTS side?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-ndk-8-V5)
 
-[Are napi_env and napi_value instances shared across worker threads?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-ndk-55-V5)
+[Are napi_env and napi_value instances shared across worker threads?] (https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-ndk-55-V5)
 
 [How do I create a subthread on the native side? What are the restrictions? How does the native subthread communicate with the main thread?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-ndk-68-V5)

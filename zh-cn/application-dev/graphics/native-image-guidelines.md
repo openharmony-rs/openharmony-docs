@@ -1,7 +1,7 @@
 # NativeImage开发指导 (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @li_hui180; @dingpy-->
+<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -22,7 +22,7 @@ NativeImage是提供**Surface关联OpenGL外部纹理**的模块，表示图形�
 | OH_NativeImage_DetachContext (OH_NativeImage \*image)        | 将OH_NativeImage实例从当前OpenGL ES上下文分离。              |
 | OH_NativeImage_UpdateSurfaceImage (OH_NativeImage \*image)   | 通过OH_NativeImage获取最新帧更新相关联的OpenGL ES纹理。      |
 | OH_NativeImage_GetTimestamp (OH_NativeImage \*image)         | 获取最近调用OH_NativeImage_UpdateSurfaceImage的纹理图像的相关时间戳。 |
-| OH_NativeImage_GetTransformMatrix (OH_NativeImage \*image, float matrix[16]) | 获取最近调用OH_NativeImage_UpdateSurfaceImage的纹理图像的变化矩阵。 |
+| OH_NativeImage_GetTransformMatrixV2 (OH_NativeImage \*image, float matrix[16]) | 获取最近调用OH_NativeImage_UpdateSurfaceImage的纹理图像的变化矩阵。 |
 | OH_NativeImage_Destroy (OH_NativeImage \*\*image)            | 销毁通过OH_NativeImage_Create创建的OH_NativeImage实例，销毁后该OH_NativeImage指针会被赋值为空。 |
 
 详细的接口说明请参考[native_image](../reference/apis-arkgraphics2d/capi-oh-nativeimage.md)。
@@ -248,12 +248,6 @@ libnative_buffer.so
       OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, buffer, fenceFd, region);
       ```
 
-   4. 用完需要销毁NativeWindow。
-
-      ```c++
-      OH_NativeWindow_DestroyNativeWindow(nativeWindow);
-      ```
-
 6. **更新内容到OpenGL纹理**。
 
    ```c++
@@ -265,9 +259,9 @@ libnative_buffer.so
    // 获取最近调用OH_NativeImage_UpdateSurfaceImage的纹理图像的时间戳和变化矩阵。
    int64_t timeStamp = OH_NativeImage_GetTimestamp(image);
    float matrix[16];
-   ret = OH_NativeImage_GetTransformMatrix(image, matrix);
+   ret = OH_NativeImage_GetTransformMatrixV2(image, matrix);
    if (ret != 0) {
-       std::cout << "OH_NativeImage_GetTransformMatrix failed" << std::endl;
+       std::cout << "OH_NativeImage_GetTransformMatrixV2 failed" << std::endl;
    }
    
    // 对update绑定到对应textureId的纹理做对应的opengl后处理后，将纹理上屏

@@ -8,11 +8,11 @@
 
 ## Introduction
 
-Use Node-APIs to obtain and set ArkTS object attributes to implement more complex functions and logic.
+Node-API provides APIs for obtaining and setting properties of ArkTS objects in C/C++ to implement more complex functionalities and logic.
 
 ## Basic Concepts
 
-Process ArkTS object attributes to ensure that attributes are correctly accessed, set, and deleted, and understand the inheritance relationship and enumeration features of attributes. the following concepts:
+Before working with ArkTS objects using Node-API, you need to understand the following concepts:
 
 - Object: a composite data type that allows values of different types in an independent entity in ArkTS. An object is a collection of properties and methods. A property is a value associated with the object, and a method is an operation that the object can perform.
 - Property: a feature, in the key-value format, of an object in ArkTS. Each property has a name (key or identifier) and a value. The property value can be of any data type, including the basic type, object, and function.
@@ -24,21 +24,21 @@ Process ArkTS object attributes to ensure that attributes are correctly accessed
 The following table lists the APIs for manipulating ArkTS object properties.  
 | API| Description|
 | -------- | -------- |
-| napi_get_property_names | Obtains the names of the enumerable properties of an object in an array of strings. This interface is used to extract the attribute name of an object to dynamically obtain the attribute information of the object.|
+| napi_get_property_names | Obtains the names of the enumerable properties of an object in an array of strings.  |
 | napi_set_property | Adds a property to an object or modifies a property value of an object.|
-| napi_get_property | Obtains the requested property of an object. This interface can be used to obtain attribute values and transfer them to other functions.|
-| napi_has_property | Checks whether an object has the specified property. This interface is used to check whether a specified attribute exists in an object to avoid exceptions caused by non-existing attributes.|
-| napi_delete_property | This function is used to delete an attribute from an ArkTS object.|
-| napi_has_own_property | This function is used to check whether an ArkTS object directly owns (rather than inherits from its prototype chain) a property.|
-| napi_set_named_property | This function is used to assign a value to a named attribute of an ArkTS object.|
-| napi_get_named_property | This function is used to obtain the value of a named attribute of an ArkTS object.|
-| napi_has_named_property | Checks whether an ArkTS object contains a named attribute.|
-| napi_define_properties | This function is used to customize properties in a specified object and access and operate these properties from ArkTS.|
-| napi_get_all_property_names | This interface is used to obtain all attribute names of an object and check whether a specific attribute name is contained.|
+| napi_get_property | Obtains the requested property of an object and passes it to another function for processing.|
+| napi_has_property | Checks whether an object has the specified property. This can prevent the exception or error caused by access to a property that does not exist.|
+| napi_delete_property | Deletes a property from an ArkTS object.|
+| napi_has_own_property | Checks whether an object has the specified own property.|
+| napi_set_named_property | Sets a property with the specified name for an ArkTS object.|
+| napi_get_named_property | Obtains the value of a property in an ArkTS object.|
+| napi_has_named_property | Checks whether an ArkTS object has the property with the specified name.|
+| napi_define_properties | Defines multiple properties for an ArkTS object.|
+| napi_get_all_property_names | Obtains the names of all properties of an ArkTS object.|
 
 ## Example
 
-For details about the Node-API development process, see [Using Node-APIs to Implement Cross-Language Interactive Development](use-napi-process.md). This document describes the C++ and ArkTS code of the APIs.
+If you are just starting out with Node-API, see [Node-API Development Process](use-napi-process.md). The following demonstrates only the C++ and ArkTS code involved in related APIs.
 
 ### napi_get_property_names
 
@@ -53,7 +53,7 @@ static napi_value GetPropertyNames(napi_env env, napi_callback_info info)
 {
     // Parse the ArkTS input parameters.
     size_t argc = 1;
-    napi_value args[1] = {nullptr};
+    napi_value args[1] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // Obtain the names of all the enumerable properties of the object in the form of a string array and output the string array in result.
     napi_value result;
@@ -78,14 +78,15 @@ export const getPropertyNames: (obj: Object) => Array<string> | undefined;
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   let propertyNames = testNapi.getPropertyNames(obj);
   if (Array.isArray(propertyNames) && propertyNames.length > 0) {
     hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_property_names: %{public}s', propertyNames[0]);
@@ -112,7 +113,7 @@ static napi_value SetProperty(napi_env env, napi_callback_info info)
 {
     // Obtain the parameters passed from ArkTS. The first parameter specifies the object, the second parameter specifies the property name, and the third parameter specifies the property value to set.
     size_t argc = 3;
-    napi_value args[3] = {nullptr};
+    napi_value args[3] = { nullptr };
     napi_status status = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     if (status != napi_ok) {
         napi_throw_error(env, nullptr, "Node-API napi_get_cb_info fail");
@@ -141,14 +142,15 @@ export const setProperty: (obj: Object, key: String, value: string) => Object | 
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   let result = testNapi.setProperty(obj, "code", "hi");
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_set_property: %{public}s', JSON.stringify(result));
 } catch (error) {
@@ -170,7 +172,7 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
 {
     // Obtain the two parameters passed from ArkTS.
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // The first parameter specifies the target object, and the second specifies the property name. Call napi_get_property to obtain the value of the property.
     napi_value result;
@@ -195,14 +197,15 @@ export const getProperty: (obj: Object, key: string) => string | undefined;
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_property: %{public}s', testNapi.getProperty(obj, "message"));
 } catch (error) {
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_property error: %{public}s', error.message);
@@ -212,7 +215,7 @@ try {
 
 ### napi_has_property
 
-Check whether the specified attribute exists in the object to avoid exceptions caused by access to the attribute that does not exist.
+Call **napi_has_property** to check whether an object has the specified property. This can prevent the exception or error caused by access to a property that does not exist.
 
 CPP code:
 
@@ -223,7 +226,7 @@ static napi_value HasProperty(napi_env env, napi_callback_info info)
 {
     // Pass in two parameters from ArkTS. The first parameter specifies the target object, and the second parameter specifies the property to check.
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     // Pass the parameters to napi_has_property. If the API is successfully called, convert the result to napi_value and return napi_value. Otherwise, throw an error.
@@ -253,14 +256,15 @@ export const hasProperty: (obj: Object, key: number | string) => boolean | undef
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   let resultFalse = testNapi.hasProperty(obj, 0);
   let resultTrue = testNapi.hasProperty(obj, "data");
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_property: %{public}s', JSON.stringify(resultFalse));
@@ -274,7 +278,7 @@ try {
 ### napi_delete_property
 
 Call **napi_delete_property** to delete the property specified by **key** from an object.
-If the object is not extensible or the attribute is not configurable, the attribute may not be deleted.
+If the object is non-extensible or the property is not configurable, the property cannot be deleted.
 
 CPP code:
 
@@ -286,7 +290,7 @@ static napi_value DeleteProperty(napi_env env, napi_callback_info info)
 {
     // Obtain the two parameters passed from ArkTS.
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     napi_valuetype valueType;
@@ -321,12 +325,13 @@ export const deleteProperty: (obj: Object, key:string) => boolean;
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 class Obj {
   first: number = 0;
 }
-let obj: Obj = { first: 1};
+let obj: Obj = { first: 1 };
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_delete_property first: %{public}s', testNapi.deleteProperty(obj, 'first'));
 // Set the new property to unconfigurable.
 // The Object.defineProperty method is not supported in DevEco Studio 4.1.0.400 or later. It must be used in TS.
@@ -351,7 +356,7 @@ static napi_value NapiHasOwnProperty(napi_env env, napi_callback_info info)
 {
     // Obtain the two parameters passed from ArkTS.
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // Check whether the first parameter is an object.
     napi_valuetype valueTypeObj;
@@ -393,7 +398,7 @@ export const napiHasOwnProperty: (obj: Object, key:string) => boolean | undefine
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 let myObj = { 'myProperty': 1 };
@@ -407,7 +412,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_own_property inherited: %{
 
 ### napi_set_named_property
 
-Adds a named attribute to the passed ArkTS object.
+Call **napi_set_named_property** to set a property for an ArkTS object.
 
 CPP code:
 
@@ -460,7 +465,7 @@ export const napiSetNamedProperty: (key: string) => Object | undefined;
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 let obj = testNapi.napiSetNamedProperty('myProperty');
@@ -482,7 +487,7 @@ static napi_value NapiGetNamedProperty(napi_env env, napi_callback_info info)
 {
     // Obtain the two parameters passed from ArkTS.
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     const int32_t strLength = 32;
     char strKey[strLength] = "";
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -513,7 +518,7 @@ export const napiGetNamedProperty: (obj: Object, key: string) => boolean | numbe
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 interface NestedObj {
@@ -540,7 +545,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_named_property : %{public}
 
 ### napi_has_named_property
 
-Checks whether the ArkTS object has the specified naming attribute.
+Call **napi_has_named_property** to check whether an ArkTS object contains the specified property.
 
 CPP code:
 
@@ -551,7 +556,7 @@ static napi_value NapiHasNamedProperty(napi_env env, napi_callback_info info)
 {
     // Obtain the two parameters passed from ArkTS.
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     const int32_t strLength = 32;
     char strKey[strLength] = "";
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -584,8 +589,9 @@ export const napiHasNamedProperty: (obj: Object, key:string) => boolean | undefi
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 interface NestedObj {
   nestedStr: string;
   nestedNum: number;
@@ -606,7 +612,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_named_property : %{public}
 
 ### napi_define_properties
 
-Sets the object property.
+Call **napi_define_properties** to set object properties.
 
 CPP code:
 
@@ -638,7 +644,7 @@ static napi_value SetterCallback(napi_env env, napi_callback_info info)
 {
     // Obtain the parameters passed to setter.
     size_t argc = 1;
-    napi_value argv[1] = {nullptr};
+    napi_value argv[1] = { nullptr };
     napi_value result;
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     size_t length = 0;
@@ -716,8 +722,9 @@ export const createStringWithGetterSetter: () => DefineGetterSetterObj;
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 // Define a property of the method type.
 hilog.info(0x0000, 'testTag', 'Test Node-API define_method_properties:%{public}d', testNapi.defineMethodProperties()
   .defineMethodPropertiesExample());
@@ -745,7 +752,7 @@ static napi_value GetAllPropertyNames(napi_env env, napi_callback_info info)
 {
     // obtain the parameter.
     size_t argc = 1;
-    napi_value args[1] = {nullptr};
+    napi_value args[1] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     // Obtain all property names of the given object.
@@ -774,14 +781,15 @@ export const getAllPropertyNames : (obj: Object) => Array<string> | undefined;
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   let propertyNames = testNapi.getAllPropertyNames(obj);
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_all_property_names: %{public}s', JSON.stringify(propertyNames));
 } catch (error) {

@@ -18,7 +18,7 @@ The bundle name is specified by the **bundleName** field under **app** in the **
 
 Icons and labels are usually configured together. There are four types: application icon, application label, entry icon, and entry label.
 
-The application icon and application label are used to identify an application, and they are usually displayed on a screen for identifying the application. Example scenarios are as follows:
+The application icon and application label are used to identify an application, and they are usually displayed on the application screen. Example scenarios are as follows:
 * Application list in Settings
 * Applications with permissions granted in the privacy management screen
 * Notification messages displayed in the status bar
@@ -29,11 +29,11 @@ The entry icon and entry label are displayed on the device's home screen after a
 * Applications displayed in the recent task list
 
 ### Configuring the Application Icon and Application Label
-The FA model does not support direct configuration of application icons and application labels. Instead, the icon and label of a PageAbility that meet the rules are used as the application icon and application label. If multiple PageAbilities address this condition, the icon and label of the first candidate PageAbility is used as the application icon and application label.
+The [FA model](ability-terminology.md#fa-model) does not support direct configuration of application icons and application labels. Instead, the icon and label of a PageAbility that meet the rules are used as the application icon and application label. If multiple PageAbilities address this condition, the icon and label of the first candidate PageAbility is used as the application icon and application label.
 
 ### Configuring the Entry Icon and Entry Label
 
-1. Configuration Methods
+#### Configuration Methods
 
 In the FA model, the entry icon and entry label are the values of **icon** and **label** configured for a PageAbility.
 
@@ -79,7 +79,7 @@ In the **skills** attribute of the PageAbility, if the **actions** value contain
 }
 ```
 
-2. Control Rules
+#### Control Rules
 
 The system strictly controls applications without icons to prevent malicious applications from deliberately configuring no icon to block uninstall attempts.
 
@@ -112,7 +112,7 @@ To declare the application version, set the **version** field under **app** in t
 
 ## Configuring Device Types Supported by the Module
 
-To configure the device types supported by the module, set the **deviceType** field in the **config.json** file. If a certain device type is added to **deviceTypes**, the module can run on that device. For details, see [deviceType Attribute](../quick-start/module-structure.md#devicetype-attribute).
+To configure the device types supported by the module, set the **deviceType** field in the **config.json** file. If a certain device type is added to **deviceType**, the module can run on that device. For details, see [deviceType Attribute](../quick-start/module-structure.md#devicetype-attribute).
 
 ## Configuring the Component Permission
 

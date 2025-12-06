@@ -44,7 +44,7 @@ Device connection status management helps to ensure that the application respond
 1. Import the **mechanicManager** module.
 
     ```ts
-    import mechanicManager from '@kit.MechanicKit';
+    import { mechanicManager } from '@kit.MechanicKit';
     ```
 
 2. Obtain the list of connected mechanic devices.

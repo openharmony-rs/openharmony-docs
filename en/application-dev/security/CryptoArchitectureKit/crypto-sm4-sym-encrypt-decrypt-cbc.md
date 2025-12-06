@@ -96,7 +96,7 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
         console.error('decrypt failed');
       }
     } catch (error) {
-      console.error(`SM4 "${error}", error code: ${error.code}`);
+      console.error(`SM4 ${error}, error code: ${error.code}`);
     }
   }
   ```
@@ -158,7 +158,7 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
         console.error('decrypt failed');
       }
     } catch (error) {
-      console.error(`SM4 "${error}", error code: ${error.code}`);
+      console.error(`SM4 ${error}, error code: ${error.code}`);
     }
   }
   ```

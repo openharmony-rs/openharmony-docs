@@ -3,7 +3,7 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zhangyafei-echo-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -402,7 +402,7 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
   }
 }
 ```
-### startUIAbilitiesInSplitWindowMode<sup>20+</sup>
+### startUIAbilitiesInSplitWindowMode<sup>21+</sup>
 
 startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want): Promise\<void>
 
@@ -471,12 +471,12 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
   onForeground() {
     // 启动第一个UIAbility的主窗ID，实际使用需替换为第一个UIAbility实际主窗ID
     let primaryWindowId = 123;
-    let secdonaryWant: Want = {
+    let secondaryWant: Want = {
       bundleName: 'com.example.myapplication1',
       abilityName: 'EntryAbility'
     };
     try {
-      this.context.startUIAbilitiesInSplitWindowMode(primaryWindowId, secdonaryWant).then(() => {
+      this.context.startUIAbilitiesInSplitWindowMode(primaryWindowId, secondaryWant).then(() => {
         console.info(`TestTag:: start succeeded.`);
       }).catch((error: BusinessError) => {
         console.error(`TestTag:: startUIAbilitiesInSplitWindowMode failed: ${JSON.stringify(error)}`);

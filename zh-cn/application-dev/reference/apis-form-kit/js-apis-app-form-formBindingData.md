@@ -29,10 +29,10 @@ import { formBindingData } from '@kit.FormKit';
 
 **系统能力：** SystemCapability.Ability.Form
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| key<sup>10+</sup> | string | 是 | 卡片代理刷新的订阅标识，与数据发布者保持一致。|
-| subscriberId<sup>10+</sup> | string | 否 | 卡片代理刷新的订阅条件，默认值为当前卡片的formId。|
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| key<sup>10+</sup> | string | 否 | 否 | 卡片代理刷新的订阅标识，与数据发布者保持一致。|
+| subscriberId<sup>10+</sup> | string | 否 | 是 | 卡片代理刷新的订阅条件，默认值为当前卡片的formId。|
 
 
 ## FormBindingData
@@ -43,10 +43,10 @@ FormBindingData相关描述。
 
 **系统能力：** SystemCapability.Ability.Form
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| data | Object | 是 | 卡片要展示的数据。可以是包含若干键值对的Object或者 json 格式的字符串。|
-| proxies<sup>10+</sup> | Array<[ProxyData](#proxydata10)> | 否 | 卡片代理刷新的订阅信息，默认为空数组。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>|
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- |-------- | -------- |
+| data | Object | 否 | 否 | 卡片要展示的数据。可以是包含若干键值对的Object或者 json 格式的字符串。|
+| proxies<sup>10+</sup> | Array<[ProxyData](#proxydata10)> | 否 | 是 | 卡片代理刷新的订阅信息，默认为空数组。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>|
 
 ## formBindingData.createFormBindingData
 
@@ -62,7 +62,7 @@ createFormBindingData(obj?: Object | string): FormBindingData
 
 | 参数名 | 类型           | 必填 | 说明                                                         |
 | ------ | -------------- | ---- | ------------------------------------------------------------ |
-| obj    | Object\|string | 否   | 卡片要展示的数据。可以是包含若干键值对的Object或者 json 格式的字符串。其中图片数据以'formImages'作为标识，内容为图片标识与图片文件描述符的键值对{'formImages': {'key1': fd1, 'key2': fd2}}。<br>**说明：** 在[卡片刷新](../../form/arkts-ui-widget-interaction-overview.md)过程中，卡片UI通过@LocalStorageProp接收卡片数据时，FormBindingData对象会序列化，即卡片数据会转换成string类型。从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张，API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。 |
+| obj    | Object \| string | 否   | 卡片要展示的数据。可以是包含若干键值对的Object或者 json 格式的字符串。其中图片数据以'formImages'作为标识，内容为图片标识与图片文件描述符的键值对{'formImages': {'key1': fd1, 'key2': fd2}}。<br>**说明：** 在[卡片刷新](../../form/arkts-ui-widget-interaction-overview.md)过程中，卡片UI通过@LocalStorageProp接收卡片数据时，FormBindingData对象会序列化，即卡片数据会转换成string类型。从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张，API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。 |
 
 
 **返回值：**
@@ -86,11 +86,13 @@ createFormBindingData(obj?: Object | string): FormBindingData
 import { formBindingData } from '@kit.FormKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
+
 @Entry
 @Component
 struct Index {
   content = this.getUIContext().getHostContext() as common.UIAbilityContext;
   pathDir: string = this.content.filesDir;
+
   createFormBindingData() {
     try {
       let filePath = this.pathDir + "/form.png";
@@ -108,9 +110,10 @@ struct Index {
       console.error(`catch error, error: ${JSON.stringify(error)}`);
     }
   }
+
   build() {
     Button('createFormBindingData')
-      .onClick((event: ClickEvent)=>{
+      .onClick((event: ClickEvent) => {
         this.createFormBindingData();
       })
   }

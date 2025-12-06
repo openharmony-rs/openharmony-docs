@@ -1,7 +1,14 @@
 # Quick Start<!--application-getting-started-->
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
+
 <!--Del-->
 - Getting Started<!--quick-start-->
-  - [Before You Start](start-overview.md)
+  - [Preparations for Development](start-overview.md)
   - [Building the First ArkTS Application in Stage Model](start-with-ets-stage.md)
 <!--DelEnd-->
 - Development Fundamentals<!--development-fundamentals-->
@@ -27,13 +34,14 @@
     - [Structure of the deviceConfig Tag](deviceconfig-structure.md)
     - [Structure of the module Tag](module-structure.md)
   - Typical Scenarios Development<!--application-typical-scenarios-->
-    - [Integrated HSP](integrated-hsp.md)
-    - [Converting HAR to HSP](har-to-hsp.md)
-    - [Converting HSP to HAR](hsp-to-har.md)
     - [Creating a Static Shortcut of the Application](typical-scenario-configuration.md)
     - [Creating an Application Clone](app-clone.md)
     - [Creating an Application Multi-Instance](multiInstance.md)
     - [Configuring an Application Icon and Label](layered-image.md)
+    - [Converting HAR to HSP](har-to-hsp.md)
+    - [Converting HSP to HAR](hsp-to-har.md)
+    - [Converting HAP to HAR](hap-to-har.md)
+    - [Integrated HSP](integrated-hsp.md)
   - [FAQs About Application Packages](common_problem_of_application.md)
   - [Application Package Glossary](application-package-glossary.md)
 - [Resource Categories and Access](resource-categories-and-access.md)
@@ -41,11 +49,11 @@
   - [Getting Started with ArkTS](arkts-get-started.md)
   - [Introduction to ArkTS](introduction-to-arkts.md)
   - [ArkTS Coding Style Guide](arkts-coding-style-guide.md)
-  - TypeScript to ArkTS Migration Guide<!--typescript-to-arkts-migration-->
+  - Migration from TypeScript to ArkTS<!--typescript-to-arkts-migration-->
     - [ArkTS Migration Background](arkts-migration-background.md)
     - [TypeScript to ArkTS Cookbook](typescript-to-arkts-migration-guide.md)
     - [Adaptation Cases](arkts-more-cases.md)
   - [ArkTS Performant Programming Practices](arkts-high-performance-programming.md)
-  - Migration Guide to ArkTS from Other Languages
+  - Migration from Other Languages to ArkTS<!--arkts-for-other-languages-->
     - [Migrating from Java to ArkTS](getting-started-with-arkts-for-java-programmers.md)
     - [Migrating from Swift to ArkTS](getting-started-with-arkts-for-swift-programmers.md)

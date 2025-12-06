@@ -6,7 +6,7 @@
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
-The **Environment** module provides APIs for obtaining the root directories of the storage and user files.
+The **Environment** module provides JS APIs for obtaining the root directories of the storage and user files.
 
 > **NOTE**
 >
@@ -22,9 +22,11 @@ import { Environment } from '@kit.CoreFileKit';
 
 getUserDownloadDir(): string
 
-Obtains the sandbox path of the pre-authorized **Download** directory. Currently, only 2-in-1 devices are supported.
+Obtains the sandbox path of the pre-authorized **Download** directory.
 
 **System capability**: SystemCapability.FileManagement.File.Environment.FolderObtain
+
+**Device behavior differences**: This API can be called on 2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **Return value**
 
@@ -59,9 +61,11 @@ function getUserDownloadDirExample() {
 
 getUserDesktopDir(): string
 
-Obtains the sandbox path of the pre-authorized **Desktop** directory. Currently, only 2-in-1 devices are supported.
+Obtains the sandbox path of the pre-authorized **Desktop** directory.
 
 **System capability**: SystemCapability.FileManagement.File.Environment.FolderObtain
+
+**Device behavior differences**: This API can be called on 2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **Return value**
 
@@ -96,9 +100,11 @@ function getUserDesktopDirExample() {
 
 getUserDocumentDir(): string
 
-Obtains the sandbox path of the pre-authorized **Document** directory. Currently, only 2-in-1 devices are supported.
+Obtains the sandbox path of the pre-authorized **Document** directory.
 
 **System capability**: SystemCapability.FileManagement.File.Environment.FolderObtain
+
+**Device behavior differences**: This API can be called on 2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **Return value**
 

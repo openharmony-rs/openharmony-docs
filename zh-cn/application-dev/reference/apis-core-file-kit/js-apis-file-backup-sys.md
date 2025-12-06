@@ -696,7 +696,7 @@ getBackupInfo(bundleToBackup: string): string
 
 updateTimer(bundleName: string, timeout: number): boolean
 
-调用时机为onBundleBegin之后，onBundleEnd之前。
+设置应用备份或恢复的时长，调用时机为onBundleBegin之后，onBundleEnd之前。
 
 **系统接口**：此接口为系统接口。
 
@@ -752,7 +752,7 @@ updateTimer(bundleName: string, timeout: number): boolean
 
 updateSendRate(bundleName: string, sendRate: number): boolean
 
-调用时机为onBundleBegin之后，onBundleEnd之前。
+更新备份应用发送fd的速率，调用时机为onBundleBegin之后，onBundleEnd之前。
 
 **系统接口**：此接口为系统接口。
 
@@ -849,7 +849,7 @@ constructor(callbacks: GeneralCallbacks)
 
 | 参数名   | 类型                                  | 必填 | 说明                 |
 | -------- | ------------------------------------- | ---- | -------------------- |
-| callback | [GeneralCallbacks](#generalcallbacks) | 是   | 备份流程所需的回调。 |
+| callbacks | [GeneralCallbacks](#generalcallbacks) | 是   | 备份流程所需的回调。 |
 
 **示例：**
 
@@ -1834,7 +1834,7 @@ constructor(callbacks: GeneralCallbacks)
 
 | 参数名   | 类型                                  | 必填 | 说明                 |
 | -------- | ------------------------------------- | ---- | -------------------- |
-| callback | [GeneralCallbacks](#generalcallbacks) | 是   | 恢复流程所需的回调。 |
+| callbacks | [GeneralCallbacks](#generalcallbacks) | 是   | 恢复流程所需的回调。 |
 
 **示例：**
 
@@ -3146,7 +3146,7 @@ constructor(callbacks: GeneralCallbacks)
 
 | 参数名   | 类型                                  | 必填 | 说明                     |
 | -------- | ------------------------------------- | ---- | ------------------------ |
-| callback | [GeneralCallbacks](#generalcallbacks) | 是   | 增量备份流程所需的回调。 |
+| callbacks | [GeneralCallbacks](#generalcallbacks) | 是   | 增量备份流程所需的回调。 |
 
 **错误码：**
 

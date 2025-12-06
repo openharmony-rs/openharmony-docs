@@ -1,4 +1,10 @@
 # svg
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
 基础容器，主要作为svg的根节点使用，也可以在svg中嵌套使用。
 
@@ -28,7 +34,7 @@
 | width   | &lt;length&gt;\|&lt;percentage&gt; | -    | 否    | 设置组件的宽度。                                 |
 | height  | &lt;length&gt;\|&lt;percentage&gt; | -    | 否    | 设置组件的高度。                                 |
 | x       | &lt;length&gt;\|&lt;percentage&gt; | -    | 否    | 设置当前svg的x轴坐标，根svg节点无效。                   |
-| y       | &lt;length&gt;\|&lt;percentage&gt; |      | 否    | 设置当前svg的y轴坐标，根svg节点无效。                   |
+| y       | &lt;length&gt;\|&lt;percentage&gt; | -    | 否    | 设置当前svg的y轴坐标，根svg节点无效。                   |
 | viewBox | string                             | -    | 否    | 设置当前svg的视口。支持的格式为&lt;number&nbsp;number&nbsp;number&nbsp;number&gt;，4个参数分别表示min-x,&nbsp;min-y,&nbsp;width&nbsp;and&nbsp;height，viewBox的宽高和svg的宽高不一致，会以中心对齐进行缩放。 |
 
 

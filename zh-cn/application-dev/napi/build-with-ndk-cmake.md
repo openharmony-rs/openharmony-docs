@@ -7,9 +7,9 @@
 <!--Adviser: @fang-jinxu-->
 
 在很多复杂应用工程中，C++代码工程是通过CMake等构建系统以命令行方式来编译构建的，接下来介绍如何把已有的CMake工程切换到OpenHarmony工具链中，从而使用命令行CMake构建该工程。
-
-
+<!--Del-->
 ## 下载NDK开发包
+<!--DelEnd-->
 <!--RP1-->
 1. 推荐使用OpenHarmony正式发布的SDK包。下载链接请从OpenHarmony正式发布版本的 **版本说明** 中获取。
 
@@ -19,7 +19,6 @@
 
 
 2. 从DevEco Studio的OpenHarmony SDK Manager中下载。
-<!--RP1End-->
 
 ## 解压NDK开发包
 
@@ -33,40 +32,41 @@ mac使用 SDK 包解压完成效果如下图所示：
 
 ![zh-cn_image_20-24-01-16-14-35](figures/zh-cn_image_20-24-01-16-14-35.png)
 
+<!--RP1End-->
 ### 配置环境变量
 如果只是在DevEco Studio中使用，跳过以下步骤：
 1. 将NDK自带的CMake编译工具添加到环境变量中。
-+ 配置 linux 系统下环境变量
+  + 配置 linux 系统下环境变量
 
-  ```
-  # 打开.bashrc文件
-  vim ~/.bashrc
-  # 在文件最后添加cmake路径，该路径是自己的放置文件的路径，之后保存退出
-  export PATH=${实际SDK路径}/native/build-tools/cmake/bin:$PATH
-  # 在命令行执行source ~/.bashrc使环境变量生效
-  source ~/.bashrc
-  ```
+    ```
+    # 打开.bashrc文件
+    vim ~/.bashrc
+    # 在文件最后添加cmake路径，该路径是自己的放置文件的路径，之后保存退出
+    export PATH=${实际SDK路径}/native/build-tools/cmake/bin:$PATH
+    # 在命令行执行source ~/.bashrc使环境变量生效
+    source ~/.bashrc
+    ```
 
-+ 配置 mac 系统下环境变量
+  + 配置 mac 系统下环境变量
 
-  ```
-  #在当前用户目录下，打开 .bash_profile 文件，文件如果不存在，创建即可
-  vim ~/.bash_profile
-  #在文件最后添加 cmake 路径，该路径是自己的放置文件的路径，之后保存退出
-  export PATH=${实际SDK路径}/native/build-tools/cmake/bin:$PATH
-  #在命令行执行 source ~/.bash_profile 使环境变量生效
-  source ~/.bash_profile
-  ```
+    ```
+    #在当前用户目录下，打开 .bash_profile 文件，文件如果不存在，创建即可
+    vim ~/.bash_profile
+    #在文件最后添加 cmake 路径，该路径是自己的放置文件的路径，之后保存退出
+    export PATH=${实际SDK路径}/native/build-tools/cmake/bin:$PATH
+    #在命令行执行 source ~/.bash_profile 使环境变量生效
+    source ~/.bash_profile
+    ```
 
-+ 配置 windows 下的环境变量
+  + 配置 windows 下的环境变量
 
-  右键点击我的电脑，在下拉框中选择我的电脑，点击高级系统设置，点击环境变量，点击Path后点编辑，点击新建，将路径添加进去，之后保存退出，打开cmd（若下一步不能够实现，请重启电脑尝试）。
-  
-  ![zh-cn_image_20-24-01-16-14-38](figures/zh-cn_image_20-24-01-16-14-38.png)
-  
-  打开命令框，输入{cmake实际安装路径}\cmake.exe -version，命令行正确回显cmake的版本号，说明环境变量配置完成。
+    右键点击我的电脑，在下拉框中选择【属性】，然后点击【高级系统设置】，进入【环境变量】，找到【Path】并点击【编辑】，接着点击【新建】添加路径，保存后退出。最后打开cmd（若下一步不能够实现，请重启电脑尝试）。
 
-  ![zh-cn_image_20-24-01-16-14-41](figures/zh-cn_image_20-24-01-16-14-41.png)
+    ![zh-cn_image_20-25-11-18-11-56](figures/zh-cn_image_20-25-11-18-11-56.PNG)
+
+    打开命令框，输入{cmake实际安装路径}\cmake.exe -version，命令行正确回显cmake的版本号，说明环境变量配置完成。
+
+    ![zh-cn_image_20-25-11-18-11-59](figures/zh-cn_image_20-25-11-18-11-59.PNG)
 
 
 2. 查看CMake默认路径。
@@ -89,7 +89,7 @@ mac使用 SDK 包解压完成效果如下图所示：
 
 ### demo工程内容
 
-下面是一个CMake的demo工程内容，此工程包含两个目录，include目录包含此库的头文件，src目录包含全部源码；src目录包含两个文件，sum.cpp的算法文件，以及main.cpp的调用算法的主入口文件，目标是编译成一个可执行程序，以及一个算法动态库。
+下面是一个CMake的demo工程内容，此工程包含两个目录，include目录包含此库的头文件，src目录包含全部源码；src目录包含两个文件，sum.cpp的算法文件，以及hello.cpp的调用算法的主入口文件，目标是编译成一个可执行程序，以及一个算法动态库。
 
 **demo目录图**
 
@@ -180,7 +180,7 @@ int sum(int a, int b)
 
 **linux 和 mac 系统环境下**
 
-在工程目录下，创建build目录，用来放置CMake构建时产生的中间文件。注意: ohos-sdk是下载下来的SDK的根目录，开发者需要自行替换成实际的下载目录。
+在工程目录的模块目录下，创建build目录，用来放置CMake构建时产生的中间文件。注意: ohos-sdk是下载下来的SDK的根目录，开发者需要自行替换成实际的下载目录。
 
 1. 采用OHOS_STL=c++_shared动态链接c++库方式构建工程，如不指定，默认采用c++_shared；DOHOS_ARCH参数可根据系统架构来决定具体值，例如当DOHOS_ARCH=armeabi-v7a会编译32位动态库，而当DOHOS_ARCH=arm64-v8a会编译64位动态库。
 
@@ -212,7 +212,7 @@ int sum(int a, int b)
 
 ![zh-cn_image_20-24-01-16-14-57](figures/zh-cn_image_20-24-01-16-14-57.png)
 
-Step 1. 同样在工程目录下创建 build 文件夹并执行以下指令：
+Step 1. 同样在工程目录的模块目录下创建 build 文件夹，进入build目录并执行以下指令：
 ```
  F:\windows\native\build-tools\cmake\bin\cmake.exe -G "Ninja" -D OHOS_STL=c++_shared -D OHOS_ARCH=arm64-v8a -D OHOS_PLATFORM=OHOS -D CMAKE_TOOLCHAIN_FILE=F:\windows\native\build\cmake\ohos.toolchain.cmake ..
 ```

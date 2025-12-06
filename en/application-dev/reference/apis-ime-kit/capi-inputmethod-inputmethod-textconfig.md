@@ -8,10 +8,11 @@
 
 ## Overview
 
-Input box configuration information.  
+Represents the text box configuration information.
 
 **Since**: 12
 
 **Related module**: [InputMethod](capi-inputmethod.md)
 
 **Header file**: [inputmethod_text_config_capi.h](capi-inputmethod-text-config-capi-h.md)
+

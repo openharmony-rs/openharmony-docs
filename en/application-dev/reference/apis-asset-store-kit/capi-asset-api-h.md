@@ -1,5 +1,12 @@
 # asset_api.h
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 ## Overview
 
 Defines the functions for accessing assets.
@@ -22,7 +29,7 @@ Defines the functions for accessing assets.
 | -- | -- |
 | [int32_t OH_Asset_Add(const Asset_Attr *attributes, uint32_t attrCnt)](#oh_asset_add) | Adds an asset.<br>To set the [Asset_Tag](capi-asset-type-h.md#asset_tag).**ASSET_TAG_IS_PERSISTENT** attribute, request the **ohos.permission.STORE_PERSISTENT_DATA** permission.|
 | [int32_t OH_Asset_Remove(const Asset_Attr *query, uint32_t queryCnt)](#oh_asset_remove) | Removes one or more assets.|
-| [int32_t OH_Asset_Update(const Asset_Attr *query, uint32_t queryCnt,const Asset_Attr *attributesToUpdate, uint32_t updateCnt)](#oh_asset_update) | Updates an asset.|
+| [int32_t OH_Asset_Update(const Asset_Attr *query, uint32_t queryCnt, const Asset_Attr *attributesToUpdate, uint32_t updateCnt)](#oh_asset_update) | Updates an asset.|
 | [int32_t OH_Asset_PreQuery(const Asset_Attr *query, uint32_t queryCnt, Asset_Blob *challenge)](#oh_asset_prequery) | Performs preprocessing for the asset query. This function is used when user authentication is required for the access to the asset.|
 | [int32_t OH_Asset_Query(const Asset_Attr *query, uint32_t queryCnt, Asset_ResultSet *resultSet)](#oh_asset_query) | Queries one or more assets.|
 | [int32_t OH_Asset_PostQuery(const Asset_Attr *handle, uint32_t handleCnt)](#oh_asset_postquery) | Performs postprocessing for the asset query. This function is used when user authentication is required for the access to the asset.|
@@ -134,7 +141,7 @@ Performs preprocessing for the asset query. This API is used when user authentic
 | -- | -- |
 | const [Asset_Attr](capi-assettype-asset-attr.md) *query | Attributes of the asset to query.|
 | uint32_t queryCnt | Number of attributes.|
-| [Asset_Blob](capi-assettype-asset-blob.md) *challenge | Challenge value, which is used when **OH_Asset_Query** is called.|
+| [Asset_Blob](capi-assettype-asset-blob.md) *challenge | Challenge value, which is used when [OH_Asset_Query](#oh_asset_query) is called.|
 
 **Return value**
 
@@ -186,7 +193,7 @@ Performs postprocessing for the asset query. This API is used when user authenti
 
 | Parameter| Description|
 | -- | -- |
-| const [Asset_Attr](capi-assettype-asset-attr.md) *handle | Handle of the query operation, including the challenge value returned by **OH_Asset_PreQuery**.|
+| const [Asset_Attr](capi-assettype-asset-attr.md) *handle | Handle of the query operation, including the challenge value returned by [OH_Asset_PreQuery](#oh_asset_prequery).|
 | uint32_t handleCnt | Number of elements in the handle attribute set.|
 
 **Return value**
@@ -239,7 +246,7 @@ Parses the query result and obtains the specified attribute.
 
 | Parameter| Description|
 | -- | -- |
-| const [Asset_Result](capi-assettype-asset-result.md) *result | Query result returned by **OH_Asset_Query**.|
+| const [Asset_Result](capi-assettype-asset-result.md) *result | Query result returned by [OH_Asset_Query](#oh_asset_query).|
 | [Asset_Tag](capi-asset-type-h.md#asset_tag) tag | Key of the attribute to obtain.|
 
 **Return value**
@@ -265,7 +272,7 @@ Releases the memory occupied by the challenge value.
 
 | Parameter| Description|
 | -- | -- |
-| [Asset_Blob](capi-assettype-asset-blob.md) *blob | Challenge value returned by **OH_Asset_PreQuery**.|
+| [Asset_Blob](capi-assettype-asset-blob.md) *blob | Challenge value returned by [OH_Asset_PreQuery](#oh_asset_prequery).|
 
 ### OH_Asset_FreeResultSet()
 
@@ -284,4 +291,4 @@ Releases the memory occupied by the query result.
 
 | Parameter| Description|
 | -- | -- |
-| [Asset_ResultSet](capi-assettype-asset-resultset.md) *resultSet | Query result returned by **OH_Asset_Query**.|
+| [Asset_ResultSet](capi-assettype-asset-resultset.md) *resultSet | Query result returned by [OH_Asset_Query](#oh_asset_query).|

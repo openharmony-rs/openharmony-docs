@@ -1,8 +1,15 @@
 # avcodec_audio_channel_layout.h
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
 ## Overview
 
-The file declares the enums used for audio encoding and decoding.
+The file declares the enums used for audio codec channel layouts.
 
 **File to include**: <multimedia/player_framework/avcodec_audio_channel_layout.h>
 
@@ -10,7 +17,7 @@ The file declares the enums used for audio encoding and decoding.
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
-**Since**: 9
+**Since**: 10
 
 **Deprecated from**: 11
 
@@ -22,8 +29,8 @@ The file declares the enums used for audio encoding and decoding.
 
 | Name| Description|
 | -- | -- |
-| [AudioChannelSet](#audiochannelset) | Enumerates the audio channels. Each channel is mapped to a variable of int64.|
-| [AudioChannelLayout](#audiochannellayout) | Enumerates the layouts of audio channels. The output format of the decoder is described using the channel layout of the codec.|
+| [AudioChannelSet](#audiochannelset) | Enumerates the audio channels. Each channel is mapped to a variable of int64. (It is deprecated from API version 11.)|
+| [AudioChannelLayout](#audiochannellayout) | Enumerates the layouts of audio channels. The output format of the decoder is described using the channel layout of the codec. (It is deprecated from API version 11.)|
 
 ## Enum Description
 
@@ -43,7 +50,7 @@ Enumerates the audio channels. Each channel is mapped to a variable of int64.
 
 **Deprecated from**: 11
 
-**Substitute**: [OH_AudioChannelSet](_core.md#oh_audiochannelset-1)
+**Substitute**: [OH_AudioChannelSet](capi-native-audio-channel-layout-h.md#oh_audiochannelset)
 
 | Value| Description|
 | -- | -- |
@@ -114,7 +121,7 @@ Enumerates the layouts of audio channels. The output format of the decoder is de
 
 **Deprecated from**: 11
 
-**Substitute**: [OH_AudioChannelLayout](_core.md#oh_audiochannellayout-1)
+**Substitute**: [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout)
 
 | Value| Description|
 | -- | -- |

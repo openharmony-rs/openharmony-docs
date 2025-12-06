@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -63,7 +63,7 @@ import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
 
 let avImageGenerator: media.AVImageGenerator | undefined = undefined;
-let pixel_map : image.PixelMap | undefined = undefined;
+let pixel_map: image.PixelMap | undefined = undefined;
 
 // Initialize input parameters.
 let timeUs: number = 0;
@@ -71,13 +71,13 @@ let timeUs: number = 0;
 let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
 
 let param: media.PixelMapParams = {
-  width : 300,
-  height : 300,
+  width: 300,
+  height: 300,
 };
 
 // Obtain the thumbnail.
 media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if(generator != null){
+  if (generator != null) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.fetchFrameByTime(timeUs, queryOption, param, (error: BusinessError, pixelMap) => {
@@ -88,8 +88,8 @@ media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenera
       pixel_map = pixelMap;
     });
   } else {
-    console.error(`Failed to creat AVImageGenerator, error message:${err.message}`);
-  };
+    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+  }
 });
 ```
 
@@ -132,7 +132,7 @@ import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
 
 let avImageGenerator: media.AVImageGenerator | undefined = undefined;
-let pixel_map : image.PixelMap | undefined = undefined;
+let pixel_map: image.PixelMap | undefined = undefined;
 
 // Initialize input parameters.
 let timeUs: number = 0;
@@ -140,13 +140,13 @@ let timeUs: number = 0;
 let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
 
 let param: media.PixelMapParams = {
-  width : 300,
-  height : 300,
+  width: 300,
+  height: 300,
 };
 
 // Obtain the thumbnail.
 media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if(generator != null){
+  if (generator != null) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
@@ -155,8 +155,8 @@ media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenera
       console.error(`Failed to fetch FrameByTime, error message:${error.message}`);
     });
   } else {
-    console.error(`Failed to creat AVImageGenerator, error message:${err.message}`);
-  };
+    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+  }
 });
 ```
 
@@ -197,18 +197,19 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
+
 let avImageGenerator: media.AVImageGenerator | undefined = undefined;
-let pixel_map : image.PixelMap | undefined = undefined;
+let pixel_map: image.PixelMap | undefined = undefined;
 // Initialize input parameters.
 let timeUs: number = 0;
 let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
 let outputSize: media.OutputSize = {
-  width : 300,
-  height : 300,
+  width: 300,
+  height: 300,
 };
 // Obtain the thumbnail.
 media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if(generator != null){
+  if (generator != null) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.fetchScaledFrameByTime(timeUs, queryOption, outputSize).then((pixelMap: image.PixelMap) => {
@@ -217,8 +218,8 @@ media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenera
       console.error(`Failed to fetch ScaledFrameByTime, error message:${error.message}`);
     });
   } else {
-    console.error(`Failed to creat AVImageGenerator, error message:${err.message}`);
-  };
+    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+  }
 });
 ```
 
@@ -254,7 +255,7 @@ let avImageGenerator: media.AVImageGenerator | undefined = undefined;
 
 // Release the resources.
 media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if(generator != null){
+  if (generator != null) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.release((error: BusinessError) => {
@@ -265,8 +266,8 @@ media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenera
       console.info(`Succeeded in releasing`);
     });
   } else {
-    console.error(`Failed to creat AVImageGenerator, error message:${err.message}`);
-  };
+    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+  }
 });
 ```
 
@@ -302,7 +303,7 @@ let avImageGenerator: media.AVImageGenerator | undefined = undefined;
 
 // Release the instance.
 media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if(generator != null){
+  if (generator != null) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.release().then(() => {
@@ -311,7 +312,7 @@ media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenera
       console.error(`Failed to release, error message:${error.message}`);
     });
   } else {
-    console.error(`Failed to creat AVImageGenerator, error message:${err.message}`);
-  };
+    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+  }
 });
 ```

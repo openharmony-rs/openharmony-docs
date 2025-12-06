@@ -11,10 +11,11 @@ Ability Kit（程序框架服务）提供了应用程序开发和运行的应用
 
 ## 使用场景
 
-- 应用的多Module开发：应用可通过不同类型的Module（HAP、HAR、HSP）来实现应用的功能开发。其中，HAP用于实现应用的功能和特性，HAR与HSP用于实现代码和资源的共享。
-- 应用内的交互：应用内的不同组件之间可以相互跳转。比如，在移动办公应用中，通过入口UIAbility组件启动视频会议的UIAbility组件。
-- 应用间的交互：当前应用可以启动其他应用，来完成某个任务或操作。比如，在购物类应用中购买商品时，可以跳转到支付应用完成支付。
-- 应用的跨设备流转：通过应用的跨端迁移和多端协同，获得更好的使用体验。比如，在平板上播放的视频，迁移到智慧屏继续播放。
+- 应用的多Module开发：应用可通过不同类型的Module（[HAP](../quick-start/hap-package.md)、[HAR](../quick-start/har-package.md)、[HSP](../quick-start/in-app-hsp.md)）来实现应用的功能开发。其中，HAP用于实现应用的功能和特性，HAR与HSP用于实现代码和资源的共享。
+- 应用内的交互：应用内的不同组件之间可以相互跳转。比如，在移动办公应用中，通过入口UIAbility组件启动视频会议的UIAbility组件。详见[启动应用内的UIAbility组件](uiability-intra-device-interaction.md)。
+- 应用间的交互：当前应用可以启动其他应用，来完成某个任务或操作。比如，在购物类应用中购买商品时，可以跳转到支付应用完成支付。详见[应用间跳转](link-between-apps-overview.md)。
+- 应用的跨设备流转：通过应用的跨端迁移和多端协同，获得更好的使用体验。比如，在平板上播放的视频，迁移到智慧屏继续播放。<!--RP2-->详见[跨端迁移](hop-cross-device-migration.md)和[多端协同](hop-multi-device-collaboration.md)。
+<!--RP2End-->
 
 ## 能力范围
 

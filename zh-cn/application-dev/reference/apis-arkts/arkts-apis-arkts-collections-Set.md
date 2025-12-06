@@ -5,13 +5,13 @@
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
+一种非线性数据结构。
+
 > **说明：**
 >
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
-
-一种非线性数据结构。
 
 文档中存在泛型的使用，涉及以下泛型标记符：
 
@@ -87,11 +87,47 @@ const mySet1: collections.Set<number|SharedClass> = new collections.Set<number|S
 let obj = new Object();
 const mySet2: collections.Set<number|SharedClass> = new collections.Set<number|Object>([1, obj]);
 ```
+## constructor
+
+constructor(iterable: Iterable\<T>)
+
+创建ArkTS Set对象的构造函数。
+
+**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                              |
+| ------ | ---- | ---- | ------------------------------- |
+| iterable | Iterable\<T> | 是 | 用于构造ArkTS Set的对象。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                                                |
+| -------- | ------------------------------------------------------- |
+| 401      | Parameter error.                                        |
+| 10200012 | The ArkTS Set's constructor cannot be directly invoked. |
+
+**示例：**
+
+```ts
+const mapper = new Map([
+  ['1', 'a'],
+  ['2', 'b'],
+]);
+let newSet = new collections.Set<string>(mapper.values());
+console.info(newSet.has('a').toString()); // 预期输出： true
+console.info(newSet.has('b').toString()); // 预期输出： true
+```
 
 ## entries
 entries(): IterableIterator<[T, T]>
 
-返回一个Set迭代器对象。
+返回一个Set迭代器对象，该对象包含了此Set中每个元素的键值对。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -101,7 +137,7 @@ entries(): IterableIterator<[T, T]>
 
 | 类型                           | 说明                    |
 | ------------------------------ | ----------------------- |
-| IterableIterator&lt;[T, T]&gt; | 返回一个Set迭代器对象。 |
+| IterableIterator&lt;[T, T]&gt; | 返回一个Set迭代器对象，该对象包含了此Set中每个元素的键值对。 |
 
 **错误码：**
 
@@ -127,7 +163,7 @@ console.info(iterator.next().value);
 ## keys
 keys(): IterableIterator\<T>
 
-返回一个Set迭代器对象，该对象包含了此Set中每个元素的值。
+返回一个Set迭代器对象，该对象包含了此Set中每个元素的键。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -137,7 +173,7 @@ keys(): IterableIterator\<T>
 
 | 类型                      | 说明                    |
 | ------------------------- | ----------------------- |
-| IterableIterator&lt;T&gt; | 返回一个Set迭代器对象。 |
+| IterableIterator&lt;T&gt; | 返回一个Set迭代器对象，该对象包含了此Set中每个元素的键。 |
 
 **错误码：**
 
@@ -173,7 +209,7 @@ values(): IterableIterator\<T>
 
 | 类型                      | 说明                    |
 | ------------------------- | ----------------------- |
-| IterableIterator&lt;T&gt; | 返回一个Set迭代器对象。 |
+| IterableIterator&lt;T&gt; | 返回一个Set迭代器对象，该对象包含了此Set中每个元素的值。 |
 
 **错误码：**
 

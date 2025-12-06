@@ -402,9 +402,7 @@ class AnimationProperties {
 ```ts
 // PostNode.ets
 // 跨容器迁移能力
-import { UIContext } from '@ohos.arkui.UIContext';
-import { NodeController, BuilderNode, FrameNode } from '@ohos.arkui.node';
-import { curves } from '@kit.ArkUI';
+import { UIContext, curves, NodeController, BuilderNode, FrameNode } from '@kit.ArkUI';
 
 class Data {
   item: string | null = null

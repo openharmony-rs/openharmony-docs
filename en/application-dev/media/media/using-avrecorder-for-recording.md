@@ -4,7 +4,7 @@
 <!--Owner: @shiwei75-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 In this topic, you will learn how to use the [AVRecorder](media-kit-intro.md#avrecorder) to develop audio recording functionalities including starting, pausing, resuming, and stopping recording.
 
@@ -113,7 +113,7 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
      profile: avProfile,
      url: 'fd://' + fileFd.toString(), // Obtain the file descriptor of the created audio file by referring to the sample code in Accessing Application Files.
    };
-    
+  
    try {
      await this.avRecorder?.prepare(avConfig);
      console.info('Succeeded in preparing avRecorder');
@@ -168,6 +168,8 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
 ## Complete Sample Code
 
 Refer to the sample code below to complete the process of starting, pausing, resuming, and stopping recording.
+
+Before using the sample code, you need to apply for the ohos.permission.MICROPHONE microphone permission. For details about how to request user authorization, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 
 ```ts
 import { common } from '@kit.AbilityKit';

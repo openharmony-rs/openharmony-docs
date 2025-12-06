@@ -8,13 +8,13 @@
 
 The KioskManager module provides APIs to manage kiosk mode, including entering/exiting kiosk mode and querying the kiosk mode status.
 
-This module applies only to enterprise applications. In kiosk mode, an enterprise application can lock a device to a single application, ensuring that the UI serves only specific interactive scenarios, such as bank ATM terminals, KTV song-selection systems, and restaurant ordering systems.
+Kiosk mode is a dedicated device lockdown mode that ensures the device UI serves only specific interaction scenarios. In this mode, device usage is confined to predetermined applications. A typical example is a bank ATM, where users can only interact with the ATM software and cannot exit it or access any other functions.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
->
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.ability.kioskManager (Kiosk Mode Management)](js-apis-app-ability-kioskManager.md).
+> - The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The APIs of this module can be used only in the stage model.
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.ability.kioskManager (Kiosk Mode Management)](js-apis-app-ability-kioskManager.md).
 
 ## Modules to Import
 
@@ -32,11 +32,13 @@ Obtains the Kiosk mode status information, including whether the system is in ki
 
 **System API**: This is a system API.
 
+**Device behavior differences**: This API can be properly called only on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+
 **Return value**
 
 | Type| Description|
 |------|------|
-| Promise&lt;[KioskStatus](./js-apis-app-ability-kioskManager.md#kioskstatus20)&gt; | Promise used to return the kiosk mode status information.|
+| Promise&lt;[KioskStatus](./js-apis-app-ability-kioskManager.md#kioskstatus)&gt; | Promise used to return the kiosk mode status information.|
 
 **Error codes**
 
@@ -46,7 +48,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |---------|---------|
 | 202 | Not system application. |
 | 801 | Capability not supported. |
-| 16000050 | Internal error. |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -60,7 +62,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   build() {
     Column() {
-      Button('getKioskinfo').margin({ top: 10 })
+      Button('getKioskInfo').margin({ top: 10 })
         .onClick(() => {
           kioskManager.getKioskStatus()
             .then((data: kioskManager.KioskStatus) => {

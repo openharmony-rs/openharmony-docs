@@ -36,7 +36,7 @@
   - [@ohos.convertxml (XML-to-JavaScript Conversion)](js-apis-convertxml.md)
   - [@ohos.fastbuffer (FastBuffer)](js-apis-fastbuffer.md)
   - [@ohos.process (Obtaining Process Information)](js-apis-process.md)
-  - [@ohos.taskpool (Using the Task Pool)](js-apis-taskpool.md)
+  - [@ohos.taskpool (Starting the Task Pool)](js-apis-taskpool.md)
   - [@ohos.uri (URI String Parsing)](js-apis-uri.md)
   - [@ohos.url (URL String Parsing)](js-apis-url.md)
   - [@ohos.util (util)](js-apis-util.md)
@@ -52,7 +52,7 @@
   - [@ohos.util.PlainArray (Nonlinear Container PlainArray)](js-apis-plainarray.md)
   - [@ohos.util.Queue (Linear Container Queue)](js-apis-queue.md)
   - [@ohos.util.Stack (Linear Container Stack)](js-apis-stack.md)
-  - [@ohos.util.stream (Data Stream Base Class)](js-apis-stream.md)
+  - [@ohos.util.stream (Stream Base Class)](js-apis-stream.md)
   - [@ohos.util.TreeMap (Nonlinear Container TreeMap)](js-apis-treemap.md)
   - [@ohos.util.TreeSet (Nonlinear Container TreeSet)](js-apis-treeset.md)
   - [@ohos.worker (Starting the Worker)](js-apis-worker.md)
@@ -63,7 +63,7 @@
   - APIs No Longer Maintained<!--arkts-arkts-dep--> 
     - [@ohos.util.Vector (Linear Container Vector)](js-apis-vector.md)
 - Error Codes<!--arkts-arkts-errcode-->
-  - [Common Library Error Codes](errorcode-utils.md)
+  - [Utils Error Codes](errorcode-utils.md)
   - [TypeScript Compiler Error Codes](errorcode-tsc.md)
   - [Compilation Toolchain Error Codes](errorcode-ets-loader.md)
   - [es2abc Compiler Error Codes](errorcode-es2abc.md)

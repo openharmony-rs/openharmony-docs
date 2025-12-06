@@ -1,4 +1,4 @@
-# @ohos.file.keyManager (用户秘钥管理)(系统接口)
+# @ohos.file.keyManager (用户密钥管理)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @wang_zhangjun; @zhuangzhuang-->
@@ -6,7 +6,7 @@
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
-该模块提供用户秘钥管理相关的常用功能：包括用户秘钥卸载等。
+该模块提供用户密钥管理相关的常用功能：包括用户密钥卸载等。
 
 > **说明：**
 >
@@ -23,7 +23,7 @@ import { keyManager } from "@kit.CoreFileKit";
 
 deactivateUserKey(userId: number):void
 
-用户锁屏时，同步卸载指定用户对应秘钥。**（该接口目前仅开放给锁屏应用）**
+用户锁屏时，同步卸载指定用户对应密钥。**（该接口目前仅开放给锁屏应用）**
 
 **需要权限**：ohos.permission.STORAGE_MANAGER_CRYPT
 
@@ -54,7 +54,7 @@ deactivateUserKey(userId: number):void
 
   ```ts
   import { keyManager } from "@kit.CoreFileKit";
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let userId: number = 100;
   try {
     keyManager.deactivateUserKey(userId);

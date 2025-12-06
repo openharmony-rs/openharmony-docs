@@ -1,5 +1,12 @@
 # Core
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
 ## Overview
 
 The Core module provides the basic backbone capabilities for the media system, including functions related to the memory, error code, and media data struct.

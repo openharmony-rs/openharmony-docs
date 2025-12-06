@@ -4,13 +4,14 @@
 <!--Owner: @xiangyuan6-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 Text是文本组件，用于展示用户视图，如显示文章的文字内容。该组件支持绑定自定义文本选择菜单，用户可根据需要选择不同功能。此外，还可以扩展自定义菜单，丰富可用选项，进一步提升用户体验。Span则用于展示行内文本。  
 
 具体用法请参考[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)和[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)组件的使用说明。
 
+常见问题请参考[文本显示（Text/Span）常见问题](./arkts-text-faq.md#文本显示textspan常见问题)。
 
 ## 创建文本
 
@@ -429,19 +430,28 @@ Text可通过以下两种方式来创建：
 - 从API version 20开始，支持通过[contentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#contenttransition20)属性设置数字翻牌效果。
 
   ```ts
-  @State number: number = 98;
-  @State numberTransition: NumericTextTransition = new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
+  @Entry
+  @Component
+  struct demo {
+    @State number: number = 98;
+    @State numberTransition: NumericTextTransition =
+      new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
 
-  Column() {
-    Text(this.number + "")
-      .borderWidth(1)
-      .fontSize(40)
-      .contentTransition(this.numberTransition)
-    Button("chang number")
-      .onClick(() => {
-        this.number++
-      })
-      .margin(10)
+    build() {
+      Column() {
+        Text(this.number + "")
+          .borderWidth(1)
+          .fontSize(40)
+          .contentTransition(this.numberTransition)
+        Button("chang number")
+          .onClick(() => {
+            this.number++
+          })
+          .margin(10)
+      }
+      .width('100%')
+      .height('100%')
+    }
   }
   ```
   ![Text_content_transition](figures/Text_content_transition.gif)
@@ -542,25 +552,33 @@ Text可通过以下两种方式来创建：
   ```
   ![Text_enable_auto_spacing](figures/Text_enable_auto_spacing.gif)
 
-- 从API version 20开始，支持通过[ShaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20)设置渐变色。
+- 从API version 20开始，支持通过[shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20)设置渐变色。
 
   ```ts
-  @State message: string = 'Hello World';
-  @State linearGradientOptions: LinearGradientOptions =
-    {
-      direction: GradientDirection.LeftTop,
-      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
-      repeating: true,
-    };
+  @Entry
+  @Component
+  struct demo {
+    @State message: string = 'Hello World';
+    @State linearGradientOptions: LinearGradientOptions =
+      {
+        direction: GradientDirection.LeftTop,
+        colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+        repeating: true,
+      };
 
-  Column({ space: 5 }) {
-    Text('direction为LeftTop的线性渐变').fontSize(18).width('90%').fontColor(0xCCCCCC)
-      .margin({ top: 40, left: 40 })
-    Text(this.message)
-      .fontSize(50)
-      .width('80%')
-      .height(50)
-      .shaderStyle(this.linearGradientOptions)
+    build() {
+      Column({ space: 5 }) {
+        Text('direction为LeftTop的线性渐变').fontSize(18).width('90%').fontColor(0xCCCCCC)
+          .margin({ top: 40, left: 40 })
+        Text(this.message)
+          .fontSize(50)
+          .width('80%')
+          .height(50)
+          .shaderStyle(this.linearGradientOptions)
+      }
+      .height('100%')
+      .width('100%')
+    }
   }
   ```
   ![Text_shader_style](figures/Text_shader_style.png)
@@ -714,15 +732,15 @@ struct Index {
     
     onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
       if (menuItem.id.equals(TextMenuItemId.of("customMenu2"))) {
-        console.log("拦截 id: customMenu2 start:" + textRange.start + "; end:" + textRange.end);
+        console.info("拦截 id: customMenu2 start:" + textRange.start + "; end:" + textRange.end);
         return true;
       }
       if (menuItem.id.equals(TextMenuItemId.COPY)) {
-        console.log("拦截 COPY start:" + textRange.start + "; end:" + textRange.end);
+        console.info("拦截 COPY start:" + textRange.start + "; end:" + textRange.end);
         return true;
       }
       if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
-        console.log("不拦截 SELECT_ALL start:" + textRange.start + "; end:" + textRange.end);
+        console.info("不拦截 SELECT_ALL start:" + textRange.start + "; end:" + textRange.end);
         return false;
       }
       return false;
@@ -868,7 +886,7 @@ struct Index {
 
 ### 默认菜单支持自定义刷新能力
 
-从API version 20开始，当文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#onpreparemenu20)回调，可在该回调中进行菜单数据设置。
+从API version 20开始，当文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)回调，可在该回调中进行菜单数据设置。
 
 ```ts
 // xxx.ets
@@ -895,19 +913,19 @@ struct TextExample12 {
   }
   onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
     if (menuItem.id.equals(TextMenuItemId.of("create2"))) {
-      console.log("拦截 id: create2 start:" + textRange.start + "; end:" + textRange.end);
+      console.info("拦截 id: create2 start:" + textRange.start + "; end:" + textRange.end);
       return true;
     }
     if (menuItem.id.equals(TextMenuItemId.of("prepare1"))) {
-      console.log("拦截 id: prepare1 start:" + textRange.start + "; end:" + textRange.end);
+      console.info("拦截 id: prepare1 start:" + textRange.start + "; end:" + textRange.end);
       return true;
     }
     if (menuItem.id.equals(TextMenuItemId.COPY)) {
-      console.log("拦截 COPY start:" + textRange.start + "; end:" + textRange.end);
+      console.info("拦截 COPY start:" + textRange.start + "; end:" + textRange.end);
       return true;
     }
     if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
-      console.log("不拦截 SELECT_ALL start:" + textRange.start + "; end:" + textRange.end);
+      console.info("不拦截 SELECT_ALL start:" + textRange.start + "; end:" + textRange.end);
       return false;
     }
     return false;
@@ -982,7 +1000,7 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
 - 如果需要调整菜单的位置，可以通过[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12)实现，具体可以参考示例[文本扩展自定义菜单](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#示例12文本扩展自定义菜单)。 
 <!--RP2--><!--RP2End-->
 
-## 场景示例
+## 实现热搜榜
 
 该示例通过maxLines、textOverflow、textAlign、constraintSize属性展示了热搜榜的效果。
 
@@ -1073,104 +1091,3 @@ struct TextExample {
 
 ![zh-cn_image_0000001562820805](figures/zh-cn_image_0000001562820805.png)
 <!--RP1--><!--RP1End-->
-
-## 常见问题
-
-### Text组件尾部省略号后为什么还有一段空白，没有占满组件宽度
-
-**问题现象**
-
-在Text组件上未设置宽度，当内容过长时，省略号与组件边缘之间会留有较大空白，且内容更新时省略号的位置会发生变化。
-
-![](figures/EllipsisDemo1.gif)
-
-**原因分析**
-
-当Text组件未设置宽度且内容超长时，组件宽度将采用父组件传递的布局约束的最大宽度。省略开始位置会根据不同的断词模式导致排版塑型结果有所不同，因此不同内容的省略开始位置也会不同。
-
-**解决措施**
-
-设置[wordBreak](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#wordbreak11)属性为`WordBreak.BREAK_ALL`，任意2个字符间断行使文本内容尽量占满组件区域。
-
-示例代码如下：
-```ts
-@Entry
-@Component
-struct Index {
-  @State message: string = '混合Hello World! honorificabilitudinitatibus!';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .id('HelloWorld')
-        .fontSize('25fp')
-        .maxLines(1)
-        .textOverflow({ overflow: TextOverflow.Ellipsis})
-        .onClick(() => {
-          this.message = 'Welcome try try try 1235628327434348';
-        })
-        .border({ width: 1})
-        .wordBreak(WordBreak.BREAK_ALL) // 修改断词模式
-    }
-    .width(300)
-    .border({ width: 1, color: Color.Blue})
-    .margin({left: 30, top: 50})
-  }
-}
-```
-
-### Text组件如何实现行末展开样式
-
-**解决措施**
-
-自行测算截断字符，并在行末添加`...展开`或者`...图标`作为组件内容。
-
-**参考链接**
-
-[属性字符串转Paragraph数组](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)
-<!--RP3--><!--RP3End-->
-
-### Text组件如何实现不设置maxLines在固定布局约束下内容超出仍显示省略样式
-
-**问题现象**
-
-在固定尺寸的组件区域内，不同字号的内容显示的最大行数会有所不同。期望实现内容超长时自动显示省略样式，则无需设置固定的`maxLines`值。
-
-**解决措施**
-
-设置[heightAdaptivePolicy](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#heightadaptivepolicy10)为TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST，该模式会删除超过布局约束的行，从而实现类似设置maxLines的效果。
-
-示例代码如下：
-```ts
-@Entry
-@Component
-struct Index {
-  @State message: string = '混合Hello World! 多行文本 中英文数字混合 1282378283 ~';
-  @State fontSize: number = 25;
-
-  build() {
-    Column({ space: 10 }) {
-      Text(this.message)
-        .id('HelloWorld')
-        .fontSize(this.fontSize)
-        .textOverflow({ overflow: TextOverflow.Ellipsis})
-        .border({ width: 1})
-        .heightAdaptivePolicy(TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST) // 调整自适应布局策略
-        .width(300)
-        .height(200)
-      Row(){
-        Button('fontSize+5')
-          .onClick(()=>{
-            this.fontSize += 5;
-          })
-        Button('fontSize-5')
-          .onClick(()=>{
-            this.fontSize -= 5;
-          })
-      }
-    }
-    .margin({left: 30, top: 50})
-  }
-}
-```
-![](figures/EllipsisDemo2.gif)

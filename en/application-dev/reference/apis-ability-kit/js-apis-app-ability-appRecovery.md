@@ -1,5 +1,12 @@
 # @ohos.app.ability.appRecovery (Application Recovery)
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @rr_cn-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 The appRecovery module provides APIs for recovering faulty applications.
 
 > **NOTE**

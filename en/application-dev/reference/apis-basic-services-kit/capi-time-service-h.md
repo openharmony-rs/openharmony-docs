@@ -1,4 +1,10 @@
 # time_service.h
+<!--Kit: Basic Services Kit-->	
+<!--Subsystem: Time-->	
+<!--Owner: @huaxin05-->	
+<!--Designer: @hu-kai45-->	
+<!--Tester: @murphy1984-->	
+<!--Adviser: @fang-jinxu-->
 
 ## Overview
 
@@ -43,7 +49,7 @@ Enumerates the error codes.
 | Enum Item| Description|
 | -- | -- |
 | TIMESERVICE_ERR_OK = 0 | Operation successful.|
-| TIMESERVICE_ERR_INTERNAL_ERROR = 13000001 | Failed to obtain system parameters. |
+| TIMESERVICE_ERR_INTERNAL_ERROR = 13000001 | Failed to obtain system parameters.|
 | TIMESERVICE_ERR_INVALID_PARAMETER = 13000002 | Invalid parameter.|
 
 

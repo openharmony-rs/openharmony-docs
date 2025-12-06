@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 In HTML, JavaScript can be used to create the following types of dialog boxes: **window.alert(message)**, **window.confirm(message)**, and **window.prompt(message, defaultValue)**. These dialog boxes can be used to convey information, confirm operations, or request input from users.
 
@@ -21,6 +21,7 @@ An application can listen for the **alert** method of a web page through the [on
 - Create a dialog box using [AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md).
 
   ```ts
+  // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
   @Entry
@@ -35,14 +36,14 @@ An application can listen for the **alert** method of a web page through the [on
         Web({ src: $rawfile('test.html'), controller: this.webviewController })
           .onAlert((event) => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
               this.uiContext.showAlertDialog({
                 title: "Alert from " + event.url + "",
                 message: event.message,
                 confirm:{
                   value: "OK",
-                  action: ()=>{
+                  action: () => {
                     console.info('Alert confirmed.');
                     event.result.handleConfirm();
                   }
@@ -60,7 +61,8 @@ An application can listen for the **alert** method of a web page through the [on
   ```
   Loaded HTML:
   ```html
-  <!doctype html>
+  <!-- test.html -->
+  <!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -90,7 +92,8 @@ An application can listen for the **alert** method of a web page through the [on
 - Create a dialog box using [CustomDialog-AlertDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog).
 
   ```ts
-  import { AlertDialog, router } from '@kit.ArkUI';
+  // xxx.ets
+  import { AlertDialog } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
   @Entry
@@ -115,7 +118,7 @@ An application can listen for the **alert** method of a web page through the [on
           }
         },
       }),
-      onWillDismiss: ()=>{
+      onWillDismiss: () => {
         this.result?.handleCancel();
         this.dialogControllerAlert.close();
       }
@@ -123,14 +126,11 @@ An application can listen for the **alert** method of a web page through the [on
 
     build() {
       Column() {
-        Button('back').onClick((event: ClickEvent) => {
-          this.getUIContext().getRouter().back();
-        })
         Web({ src: $rawfile('alert.html'), controller: this.webviewController })
           .onAlert((event) => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
               this.title = "Alert from " + event.url + "";
               this.message = event.message;
               this.result = event.result;
@@ -144,7 +144,8 @@ An application can listen for the **alert** method of a web page through the [on
   ```
   Loaded HTML:
   ```html
-  <!doctype html>
+  <!-- alert.html -->
+  <!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -186,6 +187,7 @@ An application can listen for the **confirm** method of a web page through the [
 - Create a dialog box using [AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md).
 
   ```ts
+  // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
   @Entry
@@ -200,8 +202,8 @@ An application can listen for the **confirm** method of a web page through the [
         Web({ src: $rawfile('test.html'), controller: this.webviewController })
           .onConfirm((event) => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
               this.uiContext.showAlertDialog({
                 title: "Message from " + event.url + "",
                 message: event.message,
@@ -231,7 +233,8 @@ An application can listen for the **confirm** method of a web page through the [
 
   Loaded HTML:
   ```html
-  <!doctype html>
+  <!-- test.html -->
+  <!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -253,7 +256,7 @@ An application can listen for the **confirm** method of a web page through the [
       function handleConfirm() {
           let message = document.getElementById("confirm-message").value;
           let result = window.confirm(message ? message : 'confirm');
-          console.log(result);
+          console.info(result);
           document.getElementById("confirmLabel").innerHTML=String(result);
       }
   </script>
@@ -264,6 +267,7 @@ An application can listen for the **confirm** method of a web page through the [
 - Create a dialog box using [CustomDialog-ConfirmDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#confirmdialog).
 
   ```ts
+  // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { ConfirmDialog } from '@kit.ArkUI';
 
@@ -282,7 +286,7 @@ An application can listen for the **confirm** method of a web page through the [
         // Selected state of the check box
         isChecked: this.isChecked,
         // Content of the check box
-        checkTips: 'Do not ask again after denying',
+        checkTips: 'Do not ask me again',
         primaryButton: {
           value: 'Disable',
           action: () => {
@@ -317,9 +321,9 @@ An application can listen for the **confirm** method of a web page through the [
               if (this.isChecked) {
                 event.result.handleCancel();
               } else {
-                console.log("event.url:" + event.url);
-                console.log("event.message:" + event.message);
-                this.title = "Message from " + event.url + "";
+                console.info("event.url:" + event.url);
+                console.info("event.message:" + event.message);
+                this.title = "Message from" + event.url + "";
                 this.message = event.message;
                 this.result = event.result;
                 this.dialogControllerCheckBox.open();
@@ -333,7 +337,8 @@ An application can listen for the **confirm** method of a web page through the [
   ```
   Loaded HTML:
   ```html
-  <!doctype html>
+  <!-- confirm.html -->
+  <!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -355,7 +360,7 @@ An application can listen for the **confirm** method of a web page through the [
       function handleConfirm() {
           let message = document.getElementById("confirm-message").value;
           let result = window.confirm(message ? message : 'confirm');
-          console.log(result);
+          console.info(result);
           document.getElementById("confirmLabel").innerHTML=String(result);
       }
   </script>
@@ -379,6 +384,7 @@ An application can listen for the **prompt** method of a web page through the [o
 - Create a dialog box using [CustomDialog-CustomContentDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#customcontentdialog12).
 
   ```ts
+  // xxx.ets
   import { CustomContentDialog } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -439,10 +445,10 @@ An application can listen for the **prompt** method of a web page through the [o
         Web({ src: $rawfile('prompt.html'), controller: this.webviewController })
           .onPrompt((event) => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
-              console.log("event.value:" + event.value);
-              this.title = "Message from " + event.url + "";
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
+              console.info("event.value:" + event.value);
+              this.title = "Message from" + event.url + "";
               this.message = event.message;
               this.promptResult = event.value;
               this.result = event.result;
@@ -456,7 +462,8 @@ An application can listen for the **prompt** method of a web page through the [o
   ```
   Loaded HTML:
   ```html
-  <!doctype html>
+  <!-- prompt.html -->
+  <!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -480,7 +487,7 @@ An application can listen for the **prompt** method of a web page through the [o
           let message = document.getElementById("prompt-message").value;
           let defaultValue = document.getElementById("prompt-value").value;
           let result = window.prompt(message ? message : 'prompt', defaultValue);
-          console.log(result);
+          console.info(result);
           document.getElementById("promptLabel").innerHTML=result;
       }
   </script>

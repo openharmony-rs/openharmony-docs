@@ -219,7 +219,7 @@ export default class MyAbility extends UIAbility {
 
 ## WindowMode<sup>12+</sup>
 
-启动UIAbility时窗口的创建模式，类型为枚举。可配合[startAbility](js-apis-inner-application-uiAbilityContext.md#startability)方法使用。
+启动UIAbility时窗口的创建模式，类型为枚举。可配合[startAbility](js-apis-inner-application-uiAbilityContext.md#startability-2)方法使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

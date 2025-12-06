@@ -111,7 +111,7 @@
    OH_Drawing_Typography* typography = OH_Drawing_CreateTypography(handler);
    ```
 
-7. 如果需要释放自定义字体，可以使用OH_Drawing_UnregisterFont接口。
+8. 如果需要释放自定义字体，可以使用OH_Drawing_UnregisterFont接口。
 
    ```c++
    // 释放自定义字体

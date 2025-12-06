@@ -46,7 +46,7 @@
     - [HMAC介绍及算法规格](huks-hmac-overview.md)
     - 开发指导<!--huks-hmac-dev-->
       - [HMAC(ArkTS)](huks-hmac-arkts.md)
-      - [HMAC(C/C++)](huks-hmac-ndk.md)
+      - [HMAC(C/C++)](huks-hmac-ndk.md)<!--RP1--><!--RP1End-->
 - 密钥删除<!--huks-delete-key-->
   - [密钥删除(ArkTS)](huks-delete-key-arkts.md)
   - [密钥删除(C/C++)](huks-delete-key-ndk.md)
@@ -56,8 +56,8 @@
     - [匿名密钥证明(ArkTS)](huks-key-anon-attestation-arkts.md)
     - [匿名密钥证明(C/C++)](huks-key-anon-attestation-ndk.md)
     <!--Del-->
-    - [非匿名密钥证明(ArkTS)](huks-key-attestation-arkts.md)
-    - [非匿名密钥证明(C/C++)](huks-key-attestation-ndk.md)
+    - [非匿名密钥证明(仅对系统应用开放)(ArkTS)](huks-key-attestation-arkts-sys.md)
+    - [非匿名密钥证明(仅对系统应用开放)(C/C++)](huks-key-attestation-ndk-sys.md)
     <!--DelEnd-->
 - 其他操作<!--huks-other-operations-->
   - 查询密钥是否存在<!--huks-check-key-->

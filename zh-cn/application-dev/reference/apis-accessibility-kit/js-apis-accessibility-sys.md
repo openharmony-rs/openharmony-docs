@@ -102,14 +102,16 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 ## AccessibilityAction
 
-无障碍节点元素可执行的操作，无障碍节点元素是指，UI界面上可执行无障碍操作的一些组件，例如：按钮、文本输入框等组件。
+表示无障碍节点元素可执行的操作枚举。
+
+无障碍节点元素是指，UI界面上可执行无障碍操作的一些组件，例如：按钮、文本输入框等组件。
 
 **系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                         | 值    | 说明                       |
 | -------------------------- | ---- | ------------------------ |
 | ACCESSIBILITY_FOCUS        | 0    | 表示获得无障碍焦点。               |
-| CLEAR_ACCESSIBILLITY_FOCUS | 1    | 表示清除无障碍焦点。               |
+| CLEAR_ACCESSIBILITY_FOCUS | 1    | 表示清除无障碍焦点。               |
 | FOCUS                      | 2    | 表示组件获得焦点。                |
 | CLEAR_FOCUS                | 3    | 表示清除组件焦点。                |
 | CLICK                      | 4    | 表示点击组件。                  |

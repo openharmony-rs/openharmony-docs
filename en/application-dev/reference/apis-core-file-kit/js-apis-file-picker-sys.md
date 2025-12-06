@@ -28,9 +28,13 @@ Defines the options for selecting documents.
 
 ### Properties
 
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.UserFileService
+
 | Name                   | Type                                        | Read-Only | Optional | Description                                    |
 | :---------------------- |---------------------------------------------| ---- | ---- |------------------------------------------|
-| themeColor<sup>18+</sup>     | [CustomColors](../apis-arkui/js-apis-arkui-theme.md#customcolors) |  No |  Yes|Theme color parameter. By default, it is left empty and follows the color settings of the **FilePicker**. When it is set to specific theme color properties, such as [brand, fontPrimary, compBackgroundEmphasize, and iconFourth](../apis-arkui/js-apis-arkui-theme.md#colors), the launched **FilePicker** will adapt to the theme color accordingly.<br> **System capability**: SystemCapability.FileManagement.UserFileService<br> **Device behavior differences**: This API can be called on mobile phones but has no effect on other devices.|
+| themeColor<sup>18+</sup>     | [CustomColors](../apis-arkui/js-apis-arkui-theme.md#customcolors) |  No |  Yes|Theme color parameter. By default, it is left empty and follows the color settings of the **FilePicker**. When it is set to specific theme color properties, such as [brand, fontPrimary, compBackgroundEmphasize, and iconFourth](../apis-arkui/js-apis-arkui-theme.md#colors), the launched **FilePicker** will adapt to the theme color accordingly.<br> **Device behavior differences**: This API can be called on smartphones but has no effect on other devices.|
 
 ## DocumentSaveOptions
 
@@ -42,6 +46,10 @@ Defines the options for saving documents.
 
 ### Properties
 
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.UserFileService
+
 | Name                   | Type                                         |  Read-Only | Optional |Description                                      |
 | :---------------------- |---------------------------------------------| ----- |--------| ------------------------------------------|
-| themeColor<sup>18+</sup>     | [CustomColors](../apis-arkui/js-apis-arkui-theme.md#customcolors) |  No  | Yes| Theme color parameter. By default, it is left empty and follows the color settings of the **FilePicker**. When it is set to specific theme color properties, such as [fontEmphasize and compBackgroundEmphasize](../apis-arkui/js-apis-arkui-theme.md#colors), the launched **FilePicker** will adapt to the theme color accordingly.<br> **System capability**: SystemCapability.FileManagement.UserFileService<br> **Device behavior differences**: This API can be called on mobile phones but has no effect on other devices.|
+| themeColor<sup>18+</sup>     | [CustomColors](../apis-arkui/js-apis-arkui-theme.md#customcolors) |  No  | Yes| Theme color parameter. By default, it is left empty and follows the color settings of the **FilePicker**. When it is set to specific theme color properties, such as [fontEmphasize and compBackgroundEmphasize](../apis-arkui/js-apis-arkui-theme.md#colors), the launched **FilePicker** will adapt to the theme color accordingly.<br> **Device behavior differences**: This API can be called on smartphones but has no effect on other devices.|

@@ -4,7 +4,7 @@
 <!--Owner: @carnivore233-->
 <!--Designer: @pssea-->
 <!--Tester: @mateng_Holtens-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 RichEditor是支持图文混排和文本交互式编辑的组件，通常用于响应用户对图文混合内容的输入操作，例如可以输入图文的评论区。具体用法参考[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)。
 
@@ -314,8 +314,6 @@ Button('getSpans', {
 
 ![alt text](figures/richeditor_image_getspan.gif)
 
-<!--RP1--><!--RP1End-->
-
 ### 设置无输入时的提示文本
 
 通过[placeholder](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#placeholder12)设置无输入时的提示文本。
@@ -397,7 +395,7 @@ RichEditor(this.options)
   })
   .onDidChange((rangeBefore: TextRange, rangeAfter: TextRange) => {
     this.infoShowController.addTextSpan('\n图文变化后，触发回调：\nrangeBefore:' + JSON.stringify(rangeBefore) +
-      '\nrangeAfter：' + JSON.stringify(rangeAfter), {
+      '\nrangeAfter: ' + JSON.stringify(rangeAfter), {
       style: {
         fontColor: Color.Gray,
         fontSize: 10
@@ -744,7 +742,7 @@ Button('setSelection(0,2)', {
 
 ### 管理选中菜单项
 
-当富文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#onpreparemenu20)回调，可在该回调中进行菜单数据设置。
+当富文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)回调，可在该回调中进行菜单数据设置。
 
 ```ts
 // xxx.ets
@@ -1222,3 +1220,5 @@ Column() {
 ```
 
 ![RichEditor_enable_auto_spacing](figures/RichEditor_enable_auto_spacinge.gif)
+
+<!--RP1--><!--RP1End-->

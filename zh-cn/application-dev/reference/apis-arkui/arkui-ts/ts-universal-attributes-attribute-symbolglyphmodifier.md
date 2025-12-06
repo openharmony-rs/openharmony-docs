@@ -5,7 +5,7 @@
 <!--Owner: @hddgzw-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 开发者可使用SymbolGlyphModifier构建组件并配置属性，通过此SymbolGlyphModifier可调用所封装组件的属性和样式接口。
 
@@ -35,7 +35,7 @@ SymbolGlyphModifier的构造函数。
 
 | 参数名  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| src | [Resource](../../apis-localization-kit/js-apis-resource.md#resource) | 否   | 资源信息。 |
+| src | [Resource](ts-types.md#resource) | 否   | 资源信息。 |
 
 ### applyNormalAttribute
 

@@ -79,7 +79,7 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
     let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaKeyPairSpec);
     // Both sign() and verify() support the RSA key with or without the length.
     let signer = cryptoFramework.createSign("RSA|PSS|SHA256|MGF1_SHA256");
-    let verifyer = cryptoFramework.createVerify("RSA2048|PSS|SHA256|MGF1_SHA256");
+    let verifier = cryptoFramework.createVerify("RSA2048|PSS|SHA256|MGF1_SHA256");
     let keyPair = await rsaGeneratorSpec.generateKeyPair();
     await signer.init(keyPair.priKey);
     // After the Sign instance is initialized, set and obtain the PSS parameters.
@@ -98,19 +98,19 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
     await signer.update(input1);
     let signMessageBlob = await signer.sign(input2);
     // Before the Verify instance is initialized, set and get PSS parameters.
-    verifyer.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-    saltLen = verifyer.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+    saltLen = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
     console.info("SaltLen == " + saltLen);
-    tf = verifyer.getVerifySpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
+    tf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
     console.info("trailer field == " + tf);
-    md = verifyer.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
+    md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
     console.info("md == " + md);
-    mgf = verifyer.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
+    mgf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
     console.info("mgf == " + mgf);
-    mgf1Md = verifyer.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
-    await verifyer.init(keyPair.pubKey);
-    await verifyer.update(input1);
-    let verifyResult = await verifyer.verify(input2, signMessageBlob);
+    mgf1Md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
+    await verifier.init(keyPair.pubKey);
+    await verifier.update(input1);
+    let verifyResult = await verifier.verify(input2, signMessageBlob);
     if (verifyResult === true) {
       console.info('verify success');
     } else {
@@ -160,7 +160,7 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
     let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaKeyPairSpec);
     // Both sign() and verify() support the RSA key with or without the length.
     let signer = cryptoFramework.createSign("RSA|PSS|SHA256|MGF1_SHA256");
-    let verifyer = cryptoFramework.createVerify("RSA2048|PSS|SHA256|MGF1_SHA256");
+    let verifier = cryptoFramework.createVerify("RSA2048|PSS|SHA256|MGF1_SHA256");
     let keyPair = rsaGeneratorSpec.generateKeyPairSync();
     signer.initSync(keyPair.priKey);
     // After the Sign instance is initialized, set and obtain the PSS parameters.
@@ -179,19 +179,19 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
     signer.updateSync(input1);
     let signMessageBlob = signer.signSync(input2);
     // Before the Verify instance is initialized, set and get PSS parameters.
-    verifyer.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-    saltLen = verifyer.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+    saltLen = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
     console.info("SaltLen == " + saltLen);
-    tf = verifyer.getVerifySpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
+    tf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
     console.info("trailer field == " + tf);
-    md = verifyer.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
+    md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
     console.info("md == " + md);
-    mgf = verifyer.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
+    mgf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
     console.info("mgf == " + mgf);
-    mgf1Md = verifyer.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
-    verifyer.initSync(keyPair.pubKey);
-    verifyer.updateSync(input1);
-    let verifyResult = verifyer.verifySync(input2, signMessageBlob);
+    mgf1Md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
+    verifier.initSync(keyPair.pubKey);
+    verifier.updateSync(input1);
+    let verifyResult = verifier.verifySync(input2, signMessageBlob);
     if (verifyResult === true) {
       console.info('verify success');
     } else {

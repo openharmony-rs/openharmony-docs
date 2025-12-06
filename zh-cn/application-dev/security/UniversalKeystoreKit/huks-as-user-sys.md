@@ -19,7 +19,7 @@
 
 ## 接口说明
 
-这部分增强接口，在现有的功能接口的基础上，增加支持参数`userId`用于指定用户ID。
+这部分增强接口在现有功能接口的基础上增加了参数`userId`用于指定用户ID。
 
 指定用户的接口额外支持以下功能和使用条件：
 
@@ -38,5 +38,5 @@
 | [getKeyItemPropertiesAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksgetkeyitempropertiesasuser)    |  获取密钥属性。     |  [getKeyItemProperties](huks-obtain-key-properties-arkts.md)             |
 | [hasKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#hukshaskeyitemasuser)                        |  查询密钥是否存在。    |  [hasKeyItem](huks-check-key-arkts.md)               |
 | [initSessionAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksinitsessionasuser)                      |  初始化密钥会话。       |  initSession   [加密解密](huks-encryption-decryption-arkts.md) [签名验签](huks-signing-signature-verification-arkts.md) [密钥协商](huks-key-agreement-arkts.md) [密钥派生](huks-key-derivation-arkts.md)           |
-| [attestKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksattestkeyitemasuser)                  |  非匿名密钥证明。    |  [attestKeyItem](huks-key-attestation-arkts.md)                |
+| [attestKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksattestkeyitemasuser)                  |  非匿名密钥证明。    |  [attestKeyItem](huks-key-attestation-arkts-sys.md)                |
 | [anonAttestKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksanonattestkeyitemasuser)          | 匿名密钥证明。     |  [anonAttestKeyItem](huks-key-anon-attestation-arkts.md)                |

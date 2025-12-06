@@ -1,10 +1,10 @@
 # 支持焦点处理
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 基础概念与规范
 
@@ -100,7 +100,7 @@ struct FocusActiveExample {
 
 焦点传递是指当用户首次激活应用焦点系统时，焦点如何从根节点逐级向下传递到具体组件的过程。
 
-在焦点链上的组件，都会处于获焦状态。同时，获焦状态会继续向下递归传递，每次传递给第一个子组件，直到叶子节点。
+在焦点链上的组件，都会处于获焦状态。同时组件在获焦时，会继续向下递归传递获焦状态，每次传递给第一个子组件，直到叶子节点。
 
 ```ts
 @Entry
@@ -115,7 +115,7 @@ struct Index {
     Column() {
       Row() {
         Column() {
-          Button("button 1")
+          Button("Button 1")
             .margin(20)
             .onClick(() => {
               this.logText = '获焦信息：\n';
@@ -126,7 +126,7 @@ struct Index {
 
       Column() {
         Row() {
-          Button("button 2")
+          Button("Button 2")
             .margin(20)
             .onFocus(() => {
               this.addText("Button 2 获得焦点");
@@ -163,7 +163,7 @@ struct Index {
 }
 ```
 
-点击Button1，请求焦点给Row组件，Row组件的第一个可获焦子节点Button2获焦。
+运行后点击Button1，请求焦点给Row组件，Row组件的第一个可获焦子节点Button2获焦。
 
 ![Liner_Focus_1](figures/Focus_transfer.gif)
 
@@ -343,7 +343,7 @@ struct ProjectAreaFocusExample2 {
 }
 ```
 
-Flex多行组件布局，组件大小不一且有纵向的交叠关系，无法Tab走焦至下方3、4、5按钮组件。
+Flex多行组件布局，组件大小不一且有纵向的交叠关系，无法Tab走焦至下方4、5按钮组件。
 
 ![Project_Area_Focus_2](figures/Project_Area_Focus_2.gif)
 
@@ -515,6 +515,14 @@ focusable(value: boolean)
 
 - 无获焦能力的组件，通常是无任何交互行为的展示类组件，例如Blank、Circle组件，此类组件即使使用focusable属性也无法使其可获焦。
 
+设置容器组件可获焦：
+
+获焦的主要目的是为了响应用户交互，如果组件不具备交互能力，则其也不会具有可获焦能力。容器组件通常不具备交互能力，因此如果一个容器组件（如Stack、Column）作为叶子节点，即使通过.focusable(true)也无法使其具备可获焦能力。需要注意的是通过动态方式创建的[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)节点也受限于这个规则。
+如果想让作为叶子节点的容器组件可获焦，可通过以下任一方式实现：
+
+- 在其内添加一个具备获焦能力的叶子节点组件(如button)。
+
+- 为其配置onClick、Tap手势等使其能响应点击交互。
 
 ```ts
 enabled(value: boolean)
@@ -743,7 +751,7 @@ defaultFocus(value: boolean)
 // xxx.ets
 @Entry
 @Component
-struct morenjiaodian {
+struct DefaultFocus {
   @State oneButtonColor: Color = Color.Gray;
   @State twoButtonColor: Color = Color.Gray;
   @State threeButtonColor: Color = Color.Gray;
@@ -900,7 +908,7 @@ struct RequestFocusExample {
 
 上述示例包含以下2步：
 
-- 进入[层级页面](#基础概念)，按下Tab键触发走焦，第一个Button获焦，焦点框样式为紧贴边缘的蓝色细框。
+- 进入[层级页面](#基础概念)，按下Tab键触发走焦，第一个Button获焦，焦点框样式为紧贴边缘的黑色细框。
 - 按下Tab键，走焦到第二个Button，焦点框样式为远离边缘的红色粗框。
 
 ## 主动获焦/失焦
@@ -1300,7 +1308,7 @@ struct FocusableExample {
 上述示例包含以下2步：
 
 - input方框内设置了焦点组，因此按下Tab键后焦点会快速从input中走出去，而按下方向键后可以在input内走焦。
-- 左上角的Column没有设置焦点组，因此只能通过Tab键一个一个地走焦。
+- 左侧的两个Column没有设置焦点组，因此只能通过Tab键一个一个地走焦。
 
 
 在API version 14，焦点组新增参数arrowStepOut，用于设置能否使用方向键走焦出当前焦点组。
@@ -1457,7 +1465,7 @@ struct FocusOnclickExample {
 | [SymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md) | 否       | false         |
 | [SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md) | 否       | false         |
 | [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) | 是       | false        |
-| [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md) | 否       | false         |
+| [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md) | 是       | true         |
 | [TextClock](../reference/apis-arkui/arkui-ts/ts-basic-components-textclock.md) | 否       | false        |
 | [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md) | 是       | true         |
 | [TextPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md) | 是       | true         |

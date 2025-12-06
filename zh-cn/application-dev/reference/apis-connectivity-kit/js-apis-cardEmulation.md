@@ -47,7 +47,7 @@ HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安�
     "requestPermissions": [
       {
         "name": "ohos.permission.NFC_CARD_EMULATION",
-        // 必须要添加reason: card_mulation_reason
+        // 必须要添加reason: card_emulation_reason
         "reason": "$string:card_emulation_reason"
       }
     ]
@@ -89,7 +89,7 @@ HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安�
     "reqPermissions": [
       {
         "name": "ohos.permission.NFC_CARD_EMULATION",
-        // 必须要添加reason: card_mulation_reason
+        // 必须要添加reason: card_emulation_reason
         "reason": "$string:card_emulation_reason",
         "usedScene":{
           "ability":[
@@ -100,7 +100,7 @@ HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安�
       },
       {
         "name": "ohos.permission.NFC_TAG",
-        // 必须要添加reason: card_mulation_reason
+        // 必须要添加reason: card_emulation_reason
         "reason": "$string:card_emulation_reason",
         "usedScene":{
           "ability":[
@@ -193,7 +193,7 @@ import { cardEmulation } from '@kit.ConnectivityKit';
 
 let isHceSupported: boolean = cardEmulation.isSupported(cardEmulation.FeatureType.HCE);
 if (!isHceSupported) {
-    console.log('this device is not supported for HCE, ignore it.');
+    console.info('this device is not supported for HCE, ignore it.');
 }
 ```
 <!--code_no_check_fa-->
@@ -203,7 +203,7 @@ import cardEmulation from '@ohos.nfc.cardEmulation';
 
 let isHceSupported = cardEmulation.isSupported(cardEmulation.FeatureType.HCE);
 if (!isHceSupported) {
-    console.log('this device is not supported for HCE, ignore it.');
+    console.error('this device is not supported for HCE, ignore it.');
 }
 ```
 
@@ -242,7 +242,7 @@ import { cardEmulation } from '@kit.ConnectivityKit';
 
 let hasHceCap: boolean = cardEmulation.hasHceCapability();
 if (!hasHceCap) {
-    console.log('this device hasHceCapability false, ignore it.');
+    console.error('this device hasHceCapability false, ignore it.');
 }
 ```
 
@@ -253,7 +253,7 @@ import cardEmulation from '@ohos.nfc.cardEmulation';
 
 let hasHceCap = cardEmulation.hasHceCapability();
 if (!hasHceCap) {
-    console.log('this device hasHceCapability false, ignore it.');
+    console.error('this device hasHceCapability false, ignore it.');
 }
 ```
 
@@ -433,7 +433,7 @@ stop(elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elemen
 
 on(type: 'hceCmd', callback: AsyncCallback\<number[]>): void
 
-订阅回调，用于接收对端读卡设备发送的APDU数据。应用程序需要在HCE卡模拟页面的onCreate函数里面调用该订阅函数。
+订阅回调，用于接收对端读卡设备发送的APDU数据，应用程序需要在HCE卡模拟页面的onCreate函数里面调用该订阅函数。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 
@@ -446,7 +446,7 @@ on(type: 'hceCmd', callback: AsyncCallback\<number[]>): void
 | 参数名   | 类型                    | 必填 | 说明                                         |
 | -------- | ----------------------- | ---- | -------------------------------------------- |
 | type     | string                  | 是   | 要订阅的回调类型，固定填"hceCmd"字符串。                         |
-| callback | AsyncCallback\<number[]> | 是   | 订阅的事件回调，入参是符合APDU协议的数据，每个number十六进制表示，范围是0x00~0xFF。 |
+| callback | AsyncCallback\<number[]> | 是   | 回调函数，返回的是符合APDU协议的数据，每个number十六进制表示，范围是0x00~0xFF。 |
 
 **错误码：**
 
@@ -480,7 +480,7 @@ export default class EntryAbility extends UIAbility {
     }
     const apduCallback: AsyncCallback<number[]> = (err, data) => {
       //处理数据和异常
-      console.log("got apdu data");
+      console.info("got apdu data");
     };
     hceService.on('hceCmd', apduCallback);
   }
@@ -519,13 +519,13 @@ export default {
 
     HceService.start(appName, this.paymentAid);
     HceService.on("hceCmd", (data) => {
-      console.log('data:' + data);
+      console.info('data:' + data);
       // 应用程序实际想要发送的数据， 此处仅做为示例
       let responseData = [0x1, 0x2];
       HceService.transmit(responseData, () => {
-        console.log('sendResponse start');
+        console.info('sendResponse start');
       });
-      console.log('sendResponse end');
+      console.info('sendResponse end');
     });
   },
   onDestroy() {
@@ -538,7 +538,7 @@ export default {
 
 off(type: 'hceCmd', callback?: AsyncCallback\<number[]>): void
 
-取消APDU数据接收的订阅。
+取消APDU数据接收的订阅。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 
@@ -551,7 +551,7 @@ off(type: 'hceCmd', callback?: AsyncCallback\<number[]>): void
 | 参数名   | 类型                    | 必填 | 说明                                         |
 | -------- | ----------------------- | ---- | -------------------------------------------- |
 | type     | string                  | 是   | 要取消订阅的事件类型，固定填"hceCmd"字符串。                         |
-| callback | AsyncCallback\<number[]> | 否   | 订阅的事件回调，每个number十六进制表示，范围是0x00~0xFF。 |
+| callback | AsyncCallback\<number[]> | 否   | 回调函数，返回的每个number十六进制表示，范围是0x00~0xFF。 |
 
 **错误码：**
 
@@ -575,7 +575,7 @@ let hceService: cardEmulation.HceService = new cardEmulation.HceService();
 let element: ElementName;
 const apduCallback: AsyncCallback<number[]> = (err, data) => {
   // 处理数据和异常
-  console.log("AsyncCallback got apdu data");
+  console.info("AsyncCallback got apdu data");
 };
 
 export default class EntryAbility extends UIAbility {
@@ -638,7 +638,7 @@ transmit(response: number[]): Promise\<void>
 
 | **类型**  | **说明**                                 |
 | ------- | -------------------------------------- |
-| Promise\<void> | 以Promise形式异步返回发送APDU数据的结果。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -663,7 +663,7 @@ let hceService: cardEmulation.HceService = new cardEmulation.HceService();
 const responseData = [0x1, 0x2];
 hceService.transmit(responseData).then(() => {
   // 处理 promise 的回调
-  console.log("transmit Promise success.");
+  console.info("transmit Promise success.");
 }).catch((err: BusinessError) => {
   console.error("transmit Promise error:", err);
 });
@@ -680,16 +680,16 @@ let hceService = new cardEmulation.HceService();
 let responseData = [0x1, 0x2];
 hceService.transmit(responseData).then(() => {
   // 处理 promise 的回调
-  console.log("transmit Promise success.");
+  console.info("transmit Promise success.");
 });
-console.log("transmit Promise end.");
+console.info("transmit Promise end.");
 ```
 
 ### transmit<sup>9+</sup>
 
 transmit(response: number[], callback: AsyncCallback\<void>): void
 
-发送APDU数据到对端读卡设备，使用Callback异步回调。应用程序必须在[on](#on8)收到读卡设备发送的APDU数据后，才调用该接口响应数据。
+发送APDU数据到对端读卡设备，应用程序必须在[on](#on8)收到读卡设备发送的APDU数据后，才调用该接口响应数据。使用Callback异步回调。
 
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 
@@ -731,7 +731,7 @@ try {
     if (err) {
       console.error(`transmit AsyncCallback err Code: ${err.code}, message: ${err.message}`);
     } else {
-      console.log("transmit AsyncCallback success.");
+      console.info("transmit AsyncCallback success.");
     }
   });
 } catch (error) {
@@ -750,8 +750,8 @@ let hceService = new cardEmulation.HceService();
 // 应用程序实际想要发送的数据， 此处仅做为示例
 let responseData = [0x1, 0x2];
 hceService.transmit(responseData, () => {
-  console.log("transmit Promise success.");
+  console.info("transmit Promise success.");
 });
-console.log("transmit Promise end.");
+console.info("transmit Promise end.");
 ```
 

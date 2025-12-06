@@ -1,5 +1,10 @@
 # FormMenu
-
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @chenmingze-->
+<!--Adviser: @Brilliantry_Rui-->
 The **FormMenu** component encapsulates an **Add to home screen** menu, which allows users to long-press a component in the application to add it to their home screen for direct access. During application usage, this component acts as a portal for retention and re-engagement, encouraging users to conveniently add features to their home screen.
 
 This component facilitates the quick addition of service widgets to the home screen through a long-press menu within the application:
@@ -65,11 +70,11 @@ AddFormMenuItem(
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-| Name            | Type               | Mandatory| Description                                                     |
-| --------------- | ---- | ---- | ---------------------------------------------------------------- |
-| formBindingData | [formBindingData.FormBindingData](../../apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdata) | No| Service widget data.|
-| callback        | AsyncCallback\<string>                                                                                                | No| Callback used to return the result. The value **0** means that the service widget is added successfully, and a non-zero value means that the service widget fails to be added. For details about the error codes, see [Form Error Codes](../../apis-form-kit/errorcode-form.md). |
-| style           | [FormMenuItemStyle](#formmenuitemstyle)                                                                              | No| Custom menu style.|
+| Name            | Type|Read-Only|Optional| Description                                                     |
+| --------------- | ---- | ---- | ---- | ---------------------------------------------------------------- |
+| formBindingData | [formBindingData.FormBindingData](../../apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdata) | No| Yes| Service widget data.|
+| callback        | AsyncCallback\<string>                                                                                                | No| Yes | Callback used to return the result. The value **0** means that the service widget is added successfully, and a non-zero value means that the service widget fails to be added. For details about the error codes, see [Form Error Codes](../../apis-form-kit/errorcode-form.md). |
+| style           | [FormMenuItemStyle](#formmenuitemstyle)                                                                              | No| Yes | Custom menu style.|
 
 
 ## FormMenuItemStyle
@@ -79,9 +84,9 @@ AddFormMenuItem(
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-| Name           | Type          | Mandatory| Description|
-| --------------- | ----------------- | ---- | ---- |
-| options | [MenuItemOptions](ts-basic-components-menuitem.md#menuitemoptions) | No  | Information about the menu item.|
+| Name           | Type          | Read-Only|Optional| Description  
+| --------------- | ----------------- | ---- | ---- | ---- |
+| options | [MenuItemOptions](ts-basic-components-menuitem.md#menuitemoptions) | No  | Yes | Information about the menu item.|
 
 > **NOTE**
 >
@@ -114,7 +119,7 @@ struct Index {
           bundleName: 'com.example.myapplication', // Bundle name
           abilityName: 'EntryFormAbility', // Module ability name.
           parameters: {
-            'ohos.extra.param.key.form_dimension': 2, // Widget size: 1 for 1 x 2, 2 for 2 x 2, 3 for 2 x 4, 4 for 4 x 4, 7 for 6 x 4, 6 for 1 x 1.
+            'ohos.extra.param.key.form_dimension': 2, // Widget size: 1 for 1 x 2, 2 for 2 x 2, 3 for 2 x 4, 4 for 4 x 4, 7 for 6 x 4.
             'ohos.extra.param.key.form_name': 'widget', // Widget name.
             'ohos.extra.param.key.module_name': 'entry' // Module name of the widget.
           },

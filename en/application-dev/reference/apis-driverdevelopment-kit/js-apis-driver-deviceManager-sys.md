@@ -1,4 +1,10 @@
 # @ohos.driver.deviceManager (Peripheral Management) (System API)
+<!--Kit: Driver Development Kit-->
+<!--Subsystem: Driver-->
+<!--Owner: @lixinsheng2-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
 
 The **deviceManager** module provides the functions of managing peripheral devices, including querying information about peripherals and their drivers.
 
@@ -38,6 +44,8 @@ Obtains the list of detailed information about peripherals. If the device has no
 | Array&lt;Readonly&lt;[DeviceInfo](#deviceinfo)&gt;&gt; | List of detailed information about peripherals.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Driver Error Codes](errorcode-deviceManager.md).
 
 | ID   | Error Message                                                                 |
 |----------|-----------------------------------------------------------------------|
@@ -89,6 +97,8 @@ Obtains the list of detailed information about peripheral drivers. If the device
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Driver Error Codes](errorcode-deviceManager.md).
+
 | ID   | Error Message                                                                 |
 |----------|-----------------------------------------------------------------------|
 | 201      | The permission check failed.                                          |
@@ -122,11 +132,11 @@ Defines the detailed information about a device.
 
 **System capability**: SystemCapability.Driver.ExternalDevice
 
-| Name             | Type     | Mandatory | Description         |
-|-----------------|---------|-----|-------------|
-| deviceId        | number  | Yes  | Device ID.      |
-| isDriverMatched | boolean | Yes  | Whether the device matches the driver. |
-| driverUid       | string  | No  | UID of the driver matching the device.|
+| Name             | Type     | Read-Only | Optional | Description         |
+|-----------------|---------|-----|-----|-------------|
+| deviceId        | number  | No  | No  | Device ID.      |
+| isDriverMatched | boolean | No  | No  | Whether the device matches the driver. The value `true` indicates the device matches the driver, and the value `false` indicates the opposite.|
+| driverUid       | string  | No  | Yes  | UID of the driver matching the device.|
 
 ## USBDeviceInfo
 
@@ -136,11 +146,11 @@ Defines detailed information about the USB device. It is inherited from [DeviceI
 
 **System capability**: SystemCapability.Driver.ExternalDevice
 
-| Name               | Type                                                                | Mandatory | Description              |
-|-------------------|--------------------------------------------------------------------|-----|------------------|
-| vendorId          | number                                                             | Yes  | Vendor ID of the USB device. |
-| productId         | number                                                             | Yes  | Product ID of the USB device.|
-| interfaceDescList | Array&lt;Readonly&lt;[USBInterfaceDesc](#usbinterfacedesc)&gt;&gt; | Yes  | List of interface descriptors of the USB device.   |
+| Name               | Type                                                                | Read-Only | Optional | Description              |
+|-------------------|--------------------------------------------------------------------|-----|-----|------------------|
+| vendorId          | number                                                             | No  | No  | Vendor ID of the USB device. |
+| productId         | number                                                             | No  | No  | Product ID of the USB device.|
+| interfaceDescList | Array&lt;Readonly&lt;[USBInterfaceDesc](#usbinterfacedesc)&gt;&gt; | Yes  | No  | List of interface descriptors of the USB device.   |
 
 ## USBInterfaceDesc
 
@@ -150,12 +160,12 @@ Defines the interface descriptor of a USB device.
 
 **System capability**: SystemCapability.Driver.ExternalDevice
 
-| Name              | Type    | Mandatory | Description    |
-|------------------|--------|-----|--------|
-| bInterfaceNumber | number | Yes  | Interface ID. |
-| bClass           | number | Yes  | Interface class. |
-| bSubClass        | number | Yes  | Interface subclass.|
-| bProtocol        | number | Yes  | Interface protocol. |
+| Name              | Type    | Read-Only | Optional | Description    |
+|------------------|--------|-----|-----|--------|
+| bInterfaceNumber | number | No  | No  | Interface ID. |
+| bClass           | number | No  | No  | Interface class. |
+| bSubClass        | number | No  | No  | Interface subclass.|
+| bProtocol        | number | No  | No  | Interface protocol. |
 
 ## DriverInfo
 
@@ -165,14 +175,14 @@ Defines detailed information about a driver.
 
 **System capability**: SystemCapability.Driver.ExternalDevice
 
-| Name           | Type                                                | Mandatory | Description            |
-|---------------|----------------------------------------------------|-----|----------------|
-| busType       | [BusType](js-apis-driver-deviceManager.md#bustype) | Yes  | Bus type.         |
-| driverUid     | string                                             | Yes  | Driver UID.        |
-| driverName    | string                                             | Yes  | Driver name.         |
-| driverVersion | string                                             | Yes  | Driver version.         |
-| driverSize    | string                                             | Yes  | Driver size, in bytes.|
-| description   | string                                             | Yes  | Driver description.         |
+| Name           | Type                                                | Read-Only | Optional | Description            |
+|---------------|----------------------------------------------------|-----|-----|----------------|
+| busType       | [BusType](js-apis-driver-deviceManager.md#bustype) | No  | No  | Bus type.         |
+| driverUid     | string                                             | No  | No  | Driver UID.        |
+| driverName    | string                                             | No  | No  | Driver name.         |
+| driverVersion | string                                             | No  | No  | Driver version.         |
+| driverSize    | string                                             | No  | No  | Driver size, in bytes.|
+| description   | string                                             | No  | No  | Driver description.         |
 
 ## USBDriverInfo
 
@@ -182,7 +192,7 @@ Defines detailed information about the USB device driver. It is inherited from [
 
 **System capability**: SystemCapability.Driver.ExternalDevice
 
-| Name           | Type                 | Mandatory | Description                     |
-|---------------|---------------------|-----|-------------------------|
-| productIdList | Array&lt;number&gt; | Yes  | Product ID list of the USB devices supported by the driver.|
-| vendorIdList  | Array&lt;number&gt; | Yes  | Vendor ID list of the USB devices supported by the driver. |
+| Name           | Type                 | Read-Only | Optional | Description                     |
+|---------------|---------------------|-----|-----|-------------------------|
+| productIdList | Array&lt;number&gt; | No  | No  | Product ID list of the USB devices supported by the driver.|
+| vendorIdList  | Array&lt;number&gt; | No  | No  | Vendor ID list of the USB devices supported by the driver. |

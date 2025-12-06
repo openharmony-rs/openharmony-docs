@@ -1,4 +1,11 @@
 # Component3D
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zzhao0-->
+<!--Designer: @zdustc-->
+<!--Tester: @zhangyue283-->
+<!--Adviser: @ge-yafang-->
+
 The **Component3D** component is used to load 3D model resources and create custom rendering. It is typically used to present 3D animations.
 
 >  **NOTE**
@@ -33,12 +40,14 @@ Provides the 3D scene configuration options.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
-| Name       | Type                              | Mandatory  | Description                                      |
-| --------- | -------------------------------- | ---- | ---------------------------------------- |
-| scene     | [ResourceStr](ts-types.md#resourcestr) \| [Scene](#scene12) | No   | 3D model resource file or scene object.<br>Default value: **undefined**<br>**NOTE**<br>Currently, only GLTF files are supported.|
-| modelType | [ModelType](#modeltype) | No   | Composition mode of the 3D scene.<br>Default value: **ModelType.SURFACE**<br>**NOTE**<br>**ModelType.TEXTURE**: The GPU is used for composition.<br>**ModelType.SURFACE**: Dedicated hardware is used for composition.<br>In general cases, leave this parameter at its default settings.|
+| Name       | Type                              | Read-Only| Optional  | Description                                      |
+| --------- | -------------------------------- | ---- | ---- | ---------------------------------------- |
+| scene     | [ResourceStr](ts-types.md#resourcestr) \| [Scene](#scene12) | No   | Yes   | 3D model resource file or scene object.<br>Default value: **undefined**<br>**NOTE**<br>Currently, only GLTF files are supported.|
+| modelType | [ModelType](#modeltype) | No   | Yes   | Composition mode of the 3D scene.<br>Default value: **ModelType.SURFACE**<br>**NOTE**<br>**ModelType.TEXTURE**: The GPU is used for composition.<br>**ModelType.SURFACE**: Dedicated hardware is used for composition.<br>In general cases, leave this parameter at its default settings.|
 
 ## ModelType
+
+Enumerates the rendering and composition modes, which specify the rendering output mode of a 3D scene.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -46,8 +55,8 @@ Provides the 3D scene configuration options.
 
 | Name   | Value  | Description                    |
 | ------- | ---- | ------------------------ |
-| TEXTURE | 0    | The GPU is used for composition of the 3D scene. |
-| SURFACE | 1    | Dedicated hardware is used for composition of the 3D scene.|
+| TEXTURE | 0 | The GPU is used for composition of the 3D scene.|
+| SURFACE | 1 | Dedicated hardware is used for composition of the 3D scene.|
 
 ## Scene<sup>12+</sup>
 
@@ -114,7 +123,7 @@ Sets the shader file for custom rendering. The shader file cannot be dynamically
 
 | Name| Type                                  | Mandatory| Description                        |
 | ------ | -------------------------------------- | ---- | ---------------------------- |
-| uri    | [ResourceStr](ts-types.md#resourcestr) | Yes  | Shader file for custom rendering.|
+| uri    | [ResourceStr](ts-types.md#resourcestr) | Yes  | Shader file for custom rendering. For details about the .shader file format, see [Requirements on the .shader File Format](../../../graphics3d/arkgraphics3D-shader-resource.md).|
 
 ### shaderImageTexture
 
@@ -166,7 +175,7 @@ The rendering resolution cannot be dynamically changed after the component is cr
 
 | Name| Type                                | Mandatory| Description                |
 | ------ | ------------------------------------ | ---- | -------------------- |
-| value  | [Dimension](ts-types.md#dimension10) | Yes  | Width of the 3D rendering resolution. Currently, only **Dimension.Percentage** can be set, with the value range of [0, 100%].|
+| value  | [Dimension](ts-types.md#dimension10) | Yes  | Width of the 3D rendering resolution. Currently, only Dimension.Percentage is supported. The value range is [0, 100%].|
 
 ### renderHeight
 
@@ -186,7 +195,7 @@ The rendering resolution cannot be dynamically changed after the component is cr
 
 | Name| Type                                | Mandatory| Description                |
 | ------ | ------------------------------------ | ---- | -------------------- |
-| value  | [Dimension](ts-types.md#dimension10) | Yes  | Height of the 3D rendering resolution. Currently, only **Dimension.Percentage** can be set, with the value range of [0, 100%].|
+| value  | [Dimension](ts-types.md#dimension10) | Yes  | Height of the 3D rendering resolution. Currently, only Dimension.Percentage is supported. The value range is [0, 100%].|
 
 ## Events
 
@@ -200,12 +209,14 @@ Example of loading a GLTF model:<br>
 @Entry
 @Component
 struct Index {
-  scene: SceneOptions = { scene: $rawfile('gltf/DamageHemlt/glTF/DamagedHelmet.gltf'), modelType: ModelType.SURFACE};
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  scene: SceneOptions = { scene: $rawfile('gltf/DamagedHelmet/glTF/DamagedHelmet.gltf'), modelType: ModelType.SURFACE};
   build() {
     Row() {
       Column() {
         Text('GLTF Example')
         Component3D( this.scene )
+        // Bind environment resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
           .environment($rawfile('gltf/Environment/glTF/Environment.gltf'))
           .renderWidth('90%').renderHeight('90%')
       }.width('100%')
@@ -217,7 +228,7 @@ struct Index {
 Example of custom rendering:<br>
 
 ```ts
-import { Animator as animator, AnimatorResult } from '@kit.ArkUI';
+import { AnimatorResult } from '@kit.ArkUI';
 
 class EngineTime {
   totalTimeUs = 0;
@@ -240,8 +251,9 @@ function TickFrame() {
 @Entry
 @Component
 struct Index {
-  scene: SceneOptions = { scene: $rawfile('gltf/DamageHemlt/glTF/DamagedHelmet.gltf'), modelType: ModelType.SURFACE};
-  backAnimator: AnimatorResult = animator.create({
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  scene: SceneOptions = { scene: $rawfile('gltf/DamagedHelmet/glTF/DamagedHelmet.gltf'), modelType: ModelType.SURFACE};
+  backAnimator: AnimatorResult = this.getUIContext().createAnimator({
     duration: 2000,
     easing: "ease",
     delay: 0,
@@ -253,10 +265,10 @@ struct Index {
   });
   @State timeDelta: number[] = [1.0, 2.0];
   create() {
-    this.backAnimator.onfinish = () => {
-      console.log('backAnimator onfinish');
+    this.backAnimator.onFinish = () => {
+      console.info('backAnimator onfinish');
     }
-    this.backAnimator.onframe = value => {
+    this.backAnimator.onFrame = (value: number) => {
       TickFrame();
       this.timeDelta[0] = engineTime.deltaTimeUs;
     }
@@ -267,9 +279,12 @@ struct Index {
       Column() {
         Text('custom rendering')
         Component3D()
+          // Bind the custom shader script. The path and file name can be customized based on the specific project resources.
           .shader($rawfile('assets/app/shaders/shader/London.shader'))
+          // Bind the texture resource as the shader input texture. The path and file name can be customized based on the specific project resources.
           .shaderImageTexture($rawfile('assets/London.jpg'))
           .shaderInputBuffer(this.timeDelta)
+          // Bind the custom rendering process file (.rng). The path and file name can be customized based on the specific project resources.
           .customRender($rawfile('assets/app/rendernodegraphs/London.rng'), true)
           .renderWidth('90%').renderHeight('90%')
           .onAppear(() => {

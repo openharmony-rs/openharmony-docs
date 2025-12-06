@@ -1,4 +1,10 @@
 # MDM Kit<!--mdm-api-->
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 - ArkTS APIs<!--mdm-arkts-->
   - [@ohos.enterprise.accountManager (Account Management)](js-apis-enterprise-accountManager.md)
@@ -27,9 +33,9 @@
   - [@ohos.enterprise.browser (Browser Management) (System API)](js-apis-enterprise-browser-sys.md)
   - [@ohos.enterprise.bundleManager (Bundle Management) (System API)](js-apis-enterprise-bundleManager-sys.md)
   - [@ohos.enterprise.dateTimeManager (System Time Management) (System API)](js-apis-enterprise-dateTimeManager-sys.md)
-  - [@ohos.enterprise.deviceControl (Device Control) (System API)](js-apis-enterprise-deviceControl-sys.md)
+  - [@ohos.enterprise.deviceControl (Device Control Management) (System API)](js-apis-enterprise-deviceControl-sys.md)
   - [@ohos.enterprise.deviceInfo (Device Information Management) (System API)](js-apis-enterprise-deviceInfo-sys.md)
-  - [@ohos.enterprise.deviceSettings (Device Settings) (System API)](js-apis-enterprise-deviceSettings-sys.md)
+  - [@ohos.enterprise.deviceSettings (Device Settings Management) (System API)](js-apis-enterprise-deviceSettings-sys.md)
   - [@ohos.enterprise.networkManager (Network Management) (System API)](js-apis-enterprise-networkManager-sys.md)
   - [@ohos.enterprise.restrictions (Restrictions) (System API)](js-apis-enterprise-restrictions-sys.md)
   - [@ohos.enterprise.securityManager (Security Management) (System API)](js-apis-enterprise-securityManager-sys.md)

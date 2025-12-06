@@ -10,7 +10,7 @@
 A ServiceAbility is started in the same way other abilities. You can start a ServiceAbility by calling **featureAbility.startAbility()** in the PageAbility or calling **particleAbility.startAbility()** in another ServiceAbility. For details about the startup rules, see [Component Startup Rules](component-startup-rules.md).
 
 
-The following example shows how to use **startAbility()** to start the ServiceAbility whose **bundleName** is **com.example.myapplication** and **abilityName** is **ServiceAbility** in a PageAbility. When starting the ServiceAbility, concatenate the **bundleName** string before **abilityName**.
+The following example shows how to use **startAbility()** to start the ServiceAbility whose **bundleName** is **com.example.myapplication** and **abilityName** is **ServiceAbility** in a PageAbility. When starting the ServiceAbility of the [FA model](ability-terminology.md#fa-model), concatenate the **bundleName** string before **abilityName**.
 
 ```ts
 import featureAbility from '@ohos.ability.featureAbility';

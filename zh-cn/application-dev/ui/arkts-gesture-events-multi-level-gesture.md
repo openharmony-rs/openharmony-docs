@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 多层级手势事件指父子组件嵌套时，父子组件均绑定了手势或事件。在该场景下，手势或者事件的响应受到多个因素的影响，相互之间发生传递和竞争，容易出现预期外的响应。
 
@@ -34,7 +34,7 @@ ComponentA() {
 因此，当触摸组件B时，会触发组件A和组件B的onTouch回调，不会触发组件C的onTouch回调。
 当触摸组件C时，会触发组件A和组件C的onTouch回调，不触发组件B的回调。
 
-特殊的容器组件，如Stack等组件，由于子组件之间存在着堆叠关系，子组件的布局也互相存在遮盖关系。
+特殊的容器组件，如Stack等组件，由于子组件之间存在着堆叠关系，子组件的布局也存在相互遮盖关系。
 所以，父子组件之间onTouch事件能够同时触发，兄弟组件之间onTouch事件会存在遮盖关系。
 
 ```ts
@@ -88,7 +88,7 @@ ComponentA()
 
 ### responseRegion对手势和事件的控制
 
-responseRegion属性可以实现组件的响应区域范围的变化。响应区域范围可以超出或者小于组件的布局范围。
+[responseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion)属性可以实现组件的响应区域范围的变化。响应区域范围可以超出或者小于组件的布局范围。
 
 ```ts
 ComponentA() {
@@ -111,7 +111,7 @@ ComponentA() {
 
 ### hitTestBehavior对手势和事件的控制
 
-hitTestBehavior属性可以实现在复杂的多层级场景下，一些组件能够响应手势和事件，而一些组件不能响应手势和事件。
+[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)属性可以实现在复杂的多层级场景下，一些组件能够响应手势和事件，而一些组件不能响应手势和事件。
 
 ```ts
 ComponentA() {
@@ -246,7 +246,7 @@ ComponentA() {
 }
 .priorityGesture(TapGesture({count: 1}))
 ```
-当父组件以.priorityGesture的形式绑定手势时，父组件所绑定的手势优先级高于子组件。
+当父组件以.[priorityGesture](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#prioritygesture)的形式绑定手势时，父组件所绑定的手势优先级高于子组件。
 此时，单击组件B区域范围，组件A的点击手势会触发，组件B的点击手势不会触发。
 
 如果需要父子组件所绑定的手势不发生冲突，均可响应，则可以使用并行的方式在父组件绑定手势。
@@ -258,11 +258,11 @@ ComponentA() {
 }
 .parallelGesture(TapGesture({count: 1}))
 ```
-当父组件以.parallelGesture的形式绑定手势时，父组件和子组件所绑定的手势均可触发。
+当父组件以.[parallelGesture](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#parallelgesture)的形式绑定手势时，父组件和子组件所绑定的手势均可触发。
 此时，单击组件B区域范围，组件A和组件B的点击手势均会触发。
 
 ### OverlayManager的事件透传
-OverlayManager事件机制，默认优先被WrappedBuilder内组件先接收，不会向下传递。
+OverlayManager事件机制，默认优先被[WrappedBuilder](../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)内组件先接收，不会向下传递。
 
 若希望OverlayManager下方的页面也能感应到事件，可采用hitTestBehavior(HitTestMode.Transparent)来传递事件，参考以下伪代码。
 

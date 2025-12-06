@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 通过页签进行内容视图切换的容器组件，每个页签对应一个内容视图。
 
@@ -50,12 +50,12 @@ Tabs组件参数，设置Tabs的页签位置，当前显示页签的索引，Tab
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称         | 类型                              | 必填   | 说明                                     |
-| ----------- | --------------------------------- | ---- | ---------------------------------------- |
-| barPosition<sup>7+</sup> | [BarPosition](#barposition枚举说明)| 否    | 设置Tabs的页签位置。<br/>默认值：BarPosition.Start。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| index<sup>7+</sup>       | number                            | 否    | 设置当前显示页签的索引。<br/>默认值：0<br/>**说明：** <br/>设置为小于0的值时按默认值显示。<br/>可选值为[0, TabContent子节点数量-1]。<br/>直接修改index跳页时，切换动效不生效。 使用TabController的changeIndex时，默认生效切换动效，可以设置animationDuration为0关闭动画。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>Tabs重建、系统资源切换（如系统字体切换、系统深浅色切换）或者组件属性变化时，会跳转到index对应的页面。若需要在上述情况下不跳转，建议使用双向绑定。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| controller<sup>7+</sup>  | [TabsController](#tabscontroller) | 否    | 设置Tabs控制器。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| barModifier<sup>15+</sup>  | [CommonModifier](#commonmodifier15) | 否    | 设置TabBar的[通用属性](ts-component-general-attributes.md)。<br/>**说明：** <br/>动态置为undefined时会保持当前状态不变，不会重置各通用属性。 <br/>由一个CommonModifier切换为另一个CommonModifier时，重复属性会进行覆盖，非重复属性会同时生效，不会重置前一个CommonModifier的通用属性。<br/>Tabs的[barWidth](#barwidth)、[barHeight](#barheight)、[barBackgroundColor](#barbackgroundcolor10)、[barBackgroundBlurStyle](#barbackgroundblurstyle18)、[barBackgroundEffect](#barbackgroundeffect18)属性会覆盖CommonModifier的[width](ts-universal-attributes-size.md#width)、[height](ts-universal-attributes-size.md#height)、[backgroundColor](ts-universal-attributes-background.md#backgroundcolor18)、[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle18)、[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect18)属性。<br/>[align](ts-universal-attributes-location.md#align)属性仅在[BarMode.Scrollable](#barmode10-1)模式下生效，且Tabs为横向时还需[nonScrollableLayoutStyle](#scrollablebarmodeoptions10对象说明)未设置或设置为异常值时才能生效。<br/>[TabContent](ts-container-tabcontent.md)组件的[tabBar](ts-container-tabcontent.md#tabbar18)属性为底部页签样式时不支持拖拽功能。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
+| 名称         | 类型                              | 只读 | 可选   | 说明                                     |
+| ----------- | --------------------------------- | ---- | --------- | ------------------------------- |
+| barPosition<sup>7+</sup> | [BarPosition](#barposition枚举说明)| 否 | 是    | 设置Tabs的页签位置。<br/>默认值：BarPosition.Start。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| index<sup>7+</sup>       | number                            | 否 | 是   | 设置当前显示页签的索引。<br/>默认值：0<br/>**说明：** <br/>设置为小于0的值时按默认值显示。<br/>可选值为[0, TabContent子节点数量-1]。<br/>直接修改index跳页时，切换动效不生效。 使用TabController的changeIndex时，默认生效切换动效，可以设置animationDuration为0关闭动画。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>Tabs重建、系统资源切换（如系统字体切换、系统深浅色切换）或者组件属性变化时，会跳转到index对应的页面。若需要在上述情况下不跳转，建议使用双向绑定。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| controller<sup>7+</sup>  | [TabsController](#tabscontroller) | 否 | 是    | 设置Tabs控制器。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
+| barModifier<sup>15+</sup>  | [CommonModifier](#commonmodifier15) | 否 | 是    | 设置TabBar的[通用属性](ts-component-general-attributes.md)。<br/>**说明：** <br/>动态置为undefined时会保持当前状态不变，不会重置各通用属性。 <br/>由一个CommonModifier切换为另一个CommonModifier时，重复属性会进行覆盖，非重复属性会同时生效，不会重置前一个CommonModifier的通用属性。<br/>Tabs的[barWidth](#barwidth)、[barHeight](#barheight)、[barBackgroundColor](#barbackgroundcolor10)、[barBackgroundBlurStyle](#barbackgroundblurstyle18)、[barBackgroundEffect](#barbackgroundeffect18)属性会覆盖CommonModifier的[width](ts-universal-attributes-size.md#width)、[height](ts-universal-attributes-size.md#height)、[backgroundColor](ts-universal-attributes-background.md#backgroundcolor18)、[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle18)、[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect18)属性。<br/>[align](ts-universal-attributes-location.md#align)属性仅在[BarMode.Scrollable](#barmode10-1)模式下生效，且Tabs为横向时还需[nonScrollableLayoutStyle](#scrollablebarmodeoptions10对象说明)未设置或设置为异常值时才能生效。<br/>[TabContent](ts-container-tabcontent.md)组件的[tabBar](ts-container-tabcontent.md#tabbar18)属性为底部页签样式时不支持拖拽功能。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 
 ## BarPosition枚举说明
 
@@ -250,6 +250,10 @@ animationMode(mode: Optional\<AnimationMode\>)
 
 设置点击TabBar页签或调用TabsController的changeIndex接口时切换TabContent的动画形式。
 
+>  **说明：**
+>
+> 此属性不支持在[attributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -346,6 +350,10 @@ barBackgroundBlurStyle(value: BlurStyle)
 
 设置TabBar的背景模糊材质。
 
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -371,7 +379,7 @@ barBackgroundBlurStyle(style: BlurStyle, options: BackgroundBlurStyleOptions)
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | style                 | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | 是   | 背景模糊样式。模糊样式中封装了模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度五个参数。 |
-| options | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 是   | 背景模糊选项。   
+| options | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 是   | 背景模糊选项。   |
 
 ### barGridAlign<sup>10+</sup>
 
@@ -394,6 +402,10 @@ barGridAlign(value: BarGridColumnOptions)
 edgeEffect(edgeEffect: Optional&lt;EdgeEffect&gt;)
 
 设置边缘回弹效果。
+
+>**说明：**
+>
+> 从API version 17开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -462,12 +474,12 @@ cachedMaxCount(count: number, mode: TabsCacheMode)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 类型                                     | 必填   | 说明                                       |
-| ----------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| strokeWidth | [Length](ts-types.md#length)             | 是    | 分割线的线宽（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。           |
-| color       | [ResourceColor](ts-types.md#resourcecolor) | 否    | 分割线的颜色。<br/>默认值：#33182431                |
-| startMargin | [Length](ts-types.md#length)             | 否    | 分割线与侧边栏顶端的距离（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
-| endMargin   | [Length](ts-types.md#length)             | 否    | 分割线与侧边栏底端的距离（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
+| 名称          | 类型                                     | 只读 | 可选   | 说明                                       |
+| ----------- | ---------------------------------------- | ---- | ------ | ---------------------------------- |
+| strokeWidth | [Length](ts-types.md#length)             | 否 | 否    | 分割线的线宽（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。           |
+| color       | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是    | 分割线的颜色。<br/>默认值：#33182431                |
+| startMargin | [Length](ts-types.md#length)             | 否 | 是    | 分割线与侧边栏顶端的距离（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
+| endMargin   | [Length](ts-types.md#length)             | 否 | 是    | 分割线与侧边栏底端的距离（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
 
 ## BarGridColumnOptions<sup>10+</sup>对象说明
 
@@ -477,13 +489,13 @@ TabBar栅格化方式设置的对象，包括栅格模式下的column边距和�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 类型                                     | 必填   | 说明                                       |
-| ----------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| margin | [Dimension](ts-types.md#dimension10)             | 否    | 栅格模式下的column边距（不支持百分比设置）。<br/>默认值：24.0<br/>单位：vp                        |
-| gutter      | [Dimension](ts-types.md#dimension10) | 否    | 栅格模式下的column间隔（不支持百分比设置）。<br/>默认值：24.0<br/>单位：vp                     |
-| sm | number            | 否    | 小屏下，页签占用的columns数量，必须是非负偶数。小屏为大于等于320vp但小于600vp。<br/>默认值为-1，代表页签占用TabBar全部宽度。 |
-| md   | number          | 否    | 中屏下，页签占用的columns数量，必须是非负偶数。中屏为大于等于600vp但小于800vp。<br/>默认值为-1，代表页签占用TabBar全部宽度。 |
-| lg   | number           | 否    | 大屏下，页签占用的columns数量，必须是非负偶数。大屏为大于等于840vp但小于1024vp。<br/>默认值为-1，代表页签占用TabBar全部宽度。 |
+| 名称          | 类型                                     | 只读 | 可选   | 说明                                       |
+| ----------- | ---------------------------------------- | ---- | ---- | ------------------------------------ |
+| margin | [Dimension](ts-types.md#dimension10)             | 否 | 是    | 栅格模式下的column边距（不支持百分比设置）。<br/>默认值：24.0<br/>单位：vp                        |
+| gutter      | [Dimension](ts-types.md#dimension10) | 否 | 是    | 栅格模式下的column间隔（不支持百分比设置）。<br/>默认值：24.0<br/>单位：vp                     |
+| sm | number            | 否 | 是    | 小屏下，页签占用的columns数量，必须是非负偶数。小屏为大于等于320vp但小于600vp。<br/>默认值为-1，代表页签占用TabBar全部宽度。 |
+| md   | number          | 否 | 是    | 中屏下，页签占用的columns数量，必须是非负偶数。中屏为大于等于600vp但小于800vp。<br/>默认值为-1，代表页签占用TabBar全部宽度。 |
+| lg   | number           | 否 | 是    | 大屏下，页签占用的columns数量，必须是非负偶数。大屏为大于等于840vp但小于1024vp。<br/>默认值为-1，代表页签占用TabBar全部宽度。 |
 
 ## ScrollableBarModeOptions<sup>10+</sup>对象说明
 
@@ -493,10 +505,10 @@ Scrollable模式下的TabBar的布局样式对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 类型                                     | 必填   | 说明                                       |
-| ----------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| margin | [Dimension](ts-types.md#dimension10)          | 否    | Scrollable模式下的TabBar的左右边距（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。|
-| nonScrollableLayoutStyle      | [LayoutStyle](#layoutstyle10枚举说明) | 否    | Scrollable模式下不滚动时的页签排布方式。<br/>默认值：LayoutStyle.ALWAYS_CENTER           |
+| 名称          | 类型                                     | 只读 | 可选   | 说明                                       |
+| ----------- | ---------------------------------------- | ---- | ------- | --------------------------------- |
+| margin | [Dimension](ts-types.md#dimension10)          | 否 | 是    | Scrollable模式下的TabBar的左右边距（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。|
+| nonScrollableLayoutStyle      | [LayoutStyle](#layoutstyle10枚举说明) | 否 | 是   | Scrollable模式下不滚动时的页签排布方式。<br/>默认值：LayoutStyle.ALWAYS_CENTER           |
 
 ## BarMode枚举说明
 
@@ -672,7 +684,18 @@ customContentTransition(delegate: TabsCustomContentTransitionCallback)
 
 使用说明：
 
-1、当使用自定义切换动画时，Tabs组件自带的默认切换动画会被禁用，同时，页面也无法跟手滑动。<br>2、当设置为undefined时，表示不使用自定义切换动画，仍然使用组件自带的默认切换动画。<br>3、当前自定义切换动画不支持打断。<br>4、目前自定义切换动画只支持两种场景触发：点击页签和调用TabsController.changeIndex()接口。<br>5、当使用自定义切换动画时，Tabs组件支持的事件中，除了onGestureSwipe，其他事件均支持。<br>6、onChange和onAnimationEnd事件的触发时机需要特殊说明：如果在第一次自定义动画执行过程中，触发了第二次自定义动画，那么在开始第二次自定义动画时，就会触发第一次自定义动画的onChange和onAnimationEnd事件。<br>7、当使用自定义动画时，参与动画的页面布局方式会改为Stack布局。如果开发者未主动设置相关页面的zIndex属性，那么所有页面的zIndex值是一样的，页面的渲染层级会按照在组件树上的顺序（即页面的index值顺序）确定。因此，开发者需要主动修改页面的zIndex属性，来控制页面的渲染层级。
+1. 当使用自定义切换动画时，Tabs组件自带的默认切换动画会被禁用，同时，页面也无法跟手滑动。
+2. 当设置为undefined时，表示不使用自定义切换动画，仍然使用组件自带的默认切换动画。
+3. 当前自定义切换动画不支持打断。
+4. 目前自定义切换动画只支持两种场景触发：点击页签和调用TabsController.changeIndex()接口。
+5. 当使用自定义切换动画时，Tabs组件支持的事件中，除了onGestureSwipe，其他事件均支持。
+6. onChange和onAnimationEnd事件的触发时机需要特殊说明：如果在第一次自定义动画执行过程中，触发了第二次自定义动画，那么在开始第二次自定义动画时，就会触发第一次自定义动画的onChange和onAnimationEnd事件。
+7. 当使用自定义动画时，参与动画的页面布局方式会改为Stack布局。如果开发者未主动设置相关页面的zIndex属性，那么所有页面的zIndex值是一样的，页面的渲染层级会按照在组件树上的顺序（即页面的index值顺序）确定。因此，开发者需要主动修改页面的zIndex属性，来控制页面的渲染层级。
+8. 此属性不支持在[attributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -702,6 +725,10 @@ onContentWillChange(handler: OnTabsContentWillChangeCallback)
 4、通过点击TabBar页签切换新页面时触发。
 
 5、TabBar页签获焦后，通过键盘左右方向键等切换新页面时触发。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -895,10 +922,10 @@ Tabs自定义切换动画相关信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称            | 类型         | 必填   | 说明                                       |
-| ------------- | ---------------------- | ---- |---------------------- |
-| timeout | number | 否 | Tabs自定义切换动画超时时间。从自定义动画开始切换计时，如果到达该时间后，开发者仍未调用[TabContentTransitionProxy](#tabcontenttransitionproxy11)的finishTransition接口通知Tabs组件自定义动画结束，那么组件就会认为此次自定义动画已结束，直接执行后续操作。<br/>默认值：1000<br/>单位：ms<br/>取值范围：[0, +∞)。|
-| transition | [Callback](./ts-types.md#callback12)\<[TabContentTransitionProxy](#tabcontenttransitionproxy11)> | 是 | 自定义切换动画具体内容。|
+| 名称            | 类型         | 只读 | 可选   | 说明                                       |
+| ------------- | ---------------- | ------ | ---- |---------------------- |
+| timeout | number | 否 | 是 | Tabs自定义切换动画超时时间。从自定义动画开始切换计时，如果到达该时间后，开发者仍未调用[TabContentTransitionProxy](#tabcontenttransitionproxy11)的finishTransition接口通知Tabs组件自定义动画结束，那么组件就会认为此次自定义动画已结束，直接执行后续操作。<br/>默认值：1000<br/>单位：ms<br/>取值范围：[0, +∞)。|
+| transition | [Callback](./ts-types.md#callback12)\<[TabContentTransitionProxy](#tabcontenttransitionproxy11)> | 否 | 否 | 自定义切换动画具体内容。|
 
 ## TabContentTransitionProxy<sup>11+</sup>
 
@@ -968,6 +995,12 @@ changeIndex(value: number): void
 preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
 控制Tabs预加载指定子节点。调用该接口后会一次性加载所有指定的子节点，因此为了性能考虑，建议分批加载子节点。
+
+> **说明：**
+>
+> - Tabs的preloadItems需要在Tabs创建之后去调用，首次预加载推荐在Tabs的[onAppear](./ts-universal-events-show-hide.md#onappear)生命周期中去控制。
+> 
+> - 如果TabsController对象未绑定任何Tabs组件，直接调用该接口，会抛出JS异常。因此使用该接口时，建议通过try-catch捕获异常。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2360,7 +2393,7 @@ struct TabsExample {
 
 ### 示例15（页签超出TabBar区域显示）
 
-本示例通过使用barModifier设置tabBar的clip属性实现页签超出tabBar区域显示效果。
+从API version 15开始，本示例通过使用[TabsOptions](#tabsoptions15)中的barModifier设置tabBar的clip属性实现页签超出tabBar区域显示效果。
 
 ```ts
 // xxx.ets
@@ -2450,7 +2483,7 @@ struct TabsBarModifierExample {
 
 ### 示例16（页签对齐布局）
 
-本示例通过使用barModifier设置tabBar的align属性实现页签对齐布局效果。
+从API version 15开始，本示例通过使用[TabsOptions](#tabsoptions15)中的barModifier设置tabBar的align属性实现页签对齐布局效果。
 
 ```ts
 // xxx.ets
@@ -2553,7 +2586,7 @@ struct TabsBarModifierExample {
 
 ### 示例17（Tabs与TabBar联动切换）
 
-该示例通过onSelected接口，实现了Tabs与TabBar联动切换。
+从API version 18开始，该示例通过[onSelected](#onselected18)接口，实现了Tabs与TabBar联动切换。
 
 ```ts
 // xxx.ets
@@ -2628,7 +2661,7 @@ struct TabsExample {
 
 ### 示例18（释放Tabs子组件）
 
-该示例通过设置cachedMaxCount属性，实现了Tabs子组件的释放。
+从API version 19开始，该示例通过设置[cachedMaxCount](#cachedmaxcount19)属性，实现了Tabs子组件的释放。
 
 ```ts
 @Entry
@@ -2682,7 +2715,7 @@ struct MyComponent {
 
 ### 示例19（设置TabBar背景模糊效果）
 
-该示例分别通过barBackgroundBlurStyle和barBackgroundEffect设置TabsBar页签栏的背景模糊效果。
+该示例分别通过barBackgroundBlurStyle和[barBackgroundEffect](#barbackgroundeffect18)（从API version 18开始）设置TabsBar页签栏的背景模糊效果。
 
 ```ts
 // xxx.ets
@@ -2807,12 +2840,15 @@ struct TabsExample {
 
 ### 示例21（Tabs设置翻页动画曲线）
 
-该示例展示了如何通过animationCurve接口设置Tabs翻页动画曲线，并结合animationDuration设置翻页动画的时长。
+该示例展示了如何通过[animationCurve](#animationcurve20)（从API version 20开始）接口设置Tabs翻页动画曲线，并结合animationDuration设置翻页动画的时长。
 
 ```ts
 import { curves } from '@kit.ArkUI';
 
-interface TabsItemType { text: string, backgroundColor: ResourceColor }
+interface TabsItemType {
+  text: string,
+  backgroundColor: ResourceColor
+}
 
 @Entry
 @Component
@@ -2822,6 +2858,11 @@ struct TabsExample {
     curves.interpolatingSpring(-1, 1, 328, 34),
     curves.springCurve(10, 1, 228, 30),
     curves.cubicBezierCurve(0.25, 0.1, 0.25, 1.0),
+  ];
+  private curveNames: string[] = [
+    'interpolatingSpring(-1, 1, 328, 34)',
+    'springCurve(10, 1, 228, 30)',
+    'cubicBezierCurve(0.25, 0.1, 0.25, 1.0)'
   ];
   @State curveIndex: number = 0;
   private datas: TabsItemType[] = [
@@ -2834,10 +2875,11 @@ struct TabsExample {
   @State duration: number = 0;
 
   build() {
-    Column({ space:2 }) {
+    Column({ space: 2 }) {
       Tabs({ controller: this.tabsController }) {
         ForEach(this.datas, (item: TabsItemType, index: number) => {
-          TabContent() {}
+          TabContent() {
+          }
           .tabBar(item.text)
           .backgroundColor(item.backgroundColor)
         })
@@ -2847,18 +2889,34 @@ struct TabsExample {
       .height(500)
       .animationCurve(this.curves[this.curveIndex])
       .animationDuration(this.duration)
-      Row({ space:2 }) {
-        Text('Curve:' + this.curveIndex)
-        Button('++').onClick(() => { this.curveIndex = (this.curveIndex + 1) % this.curves.length; })
-        Button('reset').onClick(() => { this.curveIndex = 0; })
+
+      Column({ space: 2 }) {
+        Text('Curve:' + this.curveNames[this.curveIndex])
+        Row({ space: 2 }) {
+          // 切换动效曲线
+          Button('++').onClick(() => {
+            this.curveIndex = (this.curveIndex + 1) % this.curves.length;
+          })
+          Button('reset').onClick(() => {
+            this.curveIndex = 0;
+          })
+        }
       }
       .margin({ left: '10vp' })
       .width('100%')
-      Row({ space:2 }) {
+
+      Row({ space: 2 }) {
         Text('Duration:' + this.duration)
-        Button('+100').onClick(() => { this.duration = (this.duration + 100) % 10000; })
-        Button('+1000').onClick(() => { this.duration = (this.duration + 1000) % 10000; })
-        Button('reset').onClick(() => { this.duration = 0; })
+        // 增加动效时长
+        Button('+100').onClick(() => {
+          this.duration = (this.duration + 100) % 10000;
+        })
+        Button('+1000').onClick(() => {
+          this.duration = (this.duration + 1000) % 10000;
+        })
+        Button('reset').onClick(() => {
+          this.duration = 0;
+        })
       }
       .margin({ left: '10vp' })
       .width('100%')

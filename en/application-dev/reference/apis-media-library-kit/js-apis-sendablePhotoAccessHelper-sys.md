@@ -1,4 +1,10 @@
 # @ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object) (System API)
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 The module provides APIs for album management, including creating an album and accessing and modifying media data in an album, based on a [Sendable](../../arkts-utils/arkts-sendable.md) object.
 
@@ -106,11 +112,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 201      | Permission denied.                                           |
-| 13900020 | Invalid argument.                                            |
-| 14000001 | Invalid display name.                                        |
 | 14000011 | Internal system error                                        |
 
 **Example**
@@ -133,7 +137,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 ### createAsset
 
-createAsset(displayName: string, options: PhotoCreateOptions): Promise&lt;PhotoAsset&gt;
+createAsset(displayName: string, options: photoAccessHelper.PhotoCreateOptions): Promise\<PhotoAsset\>
 
 Creates an asset with the specified file name and options. This API uses a promise to return the result.
 
@@ -153,7 +157,7 @@ The file name must meet the following requirements:
 | Name     | Type                                                        | Mandatory| Description                      |
 | ----------- | ------------------------------------------------------------ | ---- | -------------------------- |
 | displayName | string                                                       | Yes  | File name of the asset to create.|
-| options     | [PhotoCreateOptions](js-apis-photoAccessHelper-sys.md#photocreateoptions) | Yes  | Options for creating the asset.    |
+| options     | [photoAccessHelper.PhotoCreateOptions](js-apis-photoAccessHelper-sys.md#photocreateoptions) | Yes  | Options for creating the asset.    |
 
 **Return value**
 
@@ -167,11 +171,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 201      | Permission denied.                                           |
-| 13900020 | Invalid argument.                                            |
-| 14000001 | Invalid display name.                                        |
 | 14000011 | Internal system error                                        |
 
 **Example**
@@ -295,7 +297,7 @@ Provides APIs for encapsulating file asset attributes.
 
 requestSource(): Promise&lt;number&gt;
 
-Opens the source file to obtain the file descriptor (FD). This API uses a promise to return the result.
+Opens the source file and returns the FD. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -317,7 +319,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000011 | Internal system error                                        |
 
 **Example**
@@ -330,18 +331,22 @@ import { common } from '@kit.AbilityKit';
 
 async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
   try {
-    console.info('requsetSourcePromiseDemo')
+    console.info('requestSourcePromiseDemo')
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
     let fetchOptions: photoAccessHelper.FetchOptions = {
       fetchColumns: [],
       predicates: predicates
     };
     let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    if (fetchResult === undefined) {
+      console.error('requsetSourcePromise fetchResult is undefined');
+      return;
+    }
     let photoAsset: sendablePhotoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     let fd = await photoAsset.requestSource();
     console.info('Source fd is ' + fd);
   } catch (err) {
-    console.error(`requsetSourcePromiseDemo failed with error: ${err.code}, ${err.message}`);
+    console.error(`requestSourcePromiseDemo failed with error: ${err.code}, ${err.message}`);
   }
 }
 ```
@@ -419,7 +424,7 @@ Provides APIs to manage albums.
 
 getFaceId(): Promise\<string>
 
-Obtains the face identifier on the cover of a portrait album or group photo album.
+Obtains the face identifier on the cover of a portrait album or group photo album. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -492,16 +497,16 @@ Enumerate the album subtypes.
 
 | Name                 | Value  | Description                                                      |
 | --------------------- | ---- | ---------------------------------------------------------- |
-| HIDDEN                | 1027 | Hidden album. <br>**System API**: This is a system API.                |
-| TRASH                 | 1028 | Trash. <br>**System API**: This is a system API.                  |
-| SCREENSHOT            | 1029 | Album for screenshots and screen recording files. <br>**System API**: This is a system API.          |
-| CAMERA                | 1030 | Album for photos and videos taken by the camera. <br>**System API**: This is a system API.|
-| SOURCE\_GENERIC       | 2049 | Source album. <br>**System API**: This is a system API.                |
-| CLASSIFY              | 4097 | Classified album. <br>**System API**: This is a system API.                |
-| GEOGRAPHY\_LOCATION   | 4099 | Geographic location album. <br>**System API**: This is a system API.                |
-| GEOGRAPHY\_CITY       | 4100 | City album. <br>**System API**: This is a system API.                |
-| SHOOTING\_MODE        | 4101 | Shooting mode album. <br>**System API**: This is a system API.            |
-| PORTRAIT              | 4102 | Portrait album. <br>**System API**: This is a system API.                |
-| GROUP_PHOTO           | 4103 | Group photo album. <br>**System API**: This is a system API.                |
-| HIGHLIGHT             | 4104 | Highlights album. <br>**System API**: This is a system API.                |
-| HIGHLIGHT_SUGGESTIONS | 4105 | Highlights suggestion album. <br>**System API**: This is a system API.            |
+| HIDDEN                | 1027 | Hidden album. **System API**: This is a system API.                |
+| TRASH                 | 1028 | Trash. **System API**: This is a system API.                  |
+| SCREENSHOT            | 1029 | Album for screenshots and screen recording files. **System API**: This is a system API.          |
+| CAMERA                | 1030 | Album for photos and videos taken by the camera. **System API**: This is a system API.|
+| SOURCE\_GENERIC       | 2049 | Source album. **System API**: This is a system API.                |
+| CLASSIFY              | 4097 | Classified album. **System API**: This is a system API.                |
+| GEOGRAPHY\_LOCATION   | 4099 | Geographic location album. **System API**: This is a system API.                |
+| GEOGRAPHY\_CITY       | 4100 | City album. **System API**: This is a system API.                |
+| SHOOTING\_MODE        | 4101 | Shooting mode album. **System API**: This is a system API.            |
+| PORTRAIT              | 4102 | Portrait album. **System API**: This is a system API.                |
+| GROUP_PHOTO           | 4103 | Group photo album. **System API**: This is a system API.                |
+| HIGHLIGHT             | 4104 | Highlights album. **System API**: This is a system API.                |
+| HIGHLIGHT_SUGGESTIONS | 4105 | Highlights suggestion album. **System API**: This is a system API.            |

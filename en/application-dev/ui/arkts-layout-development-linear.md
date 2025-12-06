@@ -1,17 +1,27 @@
 # Linear Layout (Row/Column)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @camlostshi-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 ## Overview
 
-Linear layout is the most frequently used layout in development, built with the [Row](../reference/apis-arkui/arkui-ts/ts-container-row.md) or [Column](../reference/apis-arkui/arkui-ts/ts-container-column.md) linear containers. The linear layout is the basis of other layouts. Its child elements are arranged in sequence linearly in the horizontal direction, as in a **Row** container, or vertical direction, as in a **Column** container.  
+Linear layout is the most frequently used layout in development, implemented using the [Row](../reference/apis-arkui/arkui-ts/ts-container-row.md) or [Column](../reference/apis-arkui/arkui-ts/ts-container-column.md) linear containers. As the foundation for other layouts, linear layout arranges child elements sequentially along either the horizontal axis (in a **Row** container) or vertical axis (in a **Column** container). You can choose between **Row** and **Column** containers based on your desired arrangement direction.
+
+>  **NOTE**
+>
+>  Excessive component nesting (either too deep a hierarchy or too many nested components) incurs significant performance overhead. For performance purposes, you are advised to remove redundant nodes to simplify the component tree, use layout boundaries to reduce redundant layout calculations, properly apply rendering control syntax and layout component methods to minimize unnecessary re-renders and computations. For details about the best practices, see [Layout Optimization](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-improve-layout-performance).
 
 
-  **Figure 1** Child element arrangement in a Column container 
+  **Figure 1** Child element arrangement in a Column container
 
 ![arrangement-child-elements-column](figures/arrangement-child-elements-column.png)
 
 
-  **Figure 2** Child element arrangement in a Row container 
+  **Figure 2** Child element arrangement in a Row container
 
 ![arrangement-child-elements-row](figures/arrangement-child-elements-row.png)
 
@@ -22,21 +32,21 @@ Linear layout is the most frequently used layout in development, built with the 
 
 - Layout child element: element inside the layout container.
 
-- Main axis: axis along which child elements are laid out by default in the linear layout container. The main axis is horizontal for the **Row** container and vertical for the **Column** container.
+- Main axis: axis along which child elements are laid out by default in the linear layout container. The **Row** container's main axis is horizontal, while the **Column** container's main axis is vertical. (For details, see [Basic Concepts](./arkts-layout-development-flex-layout.md#basic-concepts).)
 
-- Cross axis: axis that runs perpendicular to the main axis. The cross axis is vertical for the **Row** container and horizontal for the **Column** container.
+- Cross axis: axis that runs perpendicular to the main axis. The **Row** container's cross axis is vertical, while the **Column** container's cross axis is horizontal. (For details, see [Basic Concepts](./arkts-layout-development-flex-layout.md#basic-concepts).)
 
 - Spacing: distance between child elements.
 
 
-## Spacing of Child Elements in Arrangement Direction
+## Spacing Child Elements Along the Arrangement Direction
 
-In the layout container, use the **space** attribute to equally space child elements in the arrangement direction.
+In the layout container, use the **space** attribute to equally distribute child elements along the arrangement direction.
 
 
-### In Column Container
+### In the Column Container
 
-  **Figure 3** Layout child element spacing in the arrangement direction in the Column container 
+  **Figure 3** Layout child element spacing in the arrangement direction in the Column container
 
 ![arrangement-direction-column](figures/arrangement-direction-column.png)
 
@@ -53,9 +63,9 @@ Column({ space: 20 }) {
 ![arrangement-direction-column-sample](figures/arrangement-direction-column-sample.png)
 
 
-### In Row Container
+### In the Row Container
 
-  **Figure 4** Layout child element spacing in the arrangement direction in the Row container 
+  **Figure 4** Layout child element spacing in the arrangement direction in the Row container
 
 ![arrangement-direction-row](figures/arrangement-direction-row.png)
 
@@ -71,138 +81,14 @@ Row({ space: 35 }) {
 
 ![en-us_image_0000001562700509](figures/en-us_image_0000001562700509.png)
 
-
-## Alignment of Child Elements Along Cross Axis
-
-In the layout container, use the **alignItems** attribute to set the alignment mode of child elements along the cross axis. The alignment performance is consistent across screens of various sizes. The value is of the [VerticalAlign Type](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#verticalalign) type when the cross axis is in the vertical direction and the [HorizontalAlign](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#horizontalalign) type when the cross axis is in the horizontal direction.
-
-The layout container also provides the **alignSelf** attribute to control the alignment mode of a single child element along the cross axis. This attribute has a higher priority than the **alignItems** attribute. This means that, if **alignSelf** is set, it will overwrite the **alignItems** setting on the corresponding child element.
-
-
-### Horizontal Alignment of Child Elements in Column Container
-
-  **Figure 5** Horizontal alignment of child elements in the Column container 
-
-![horizontal-arrangement-child-column](figures/horizontal-arrangement-child-column.png)
-
-- **HorizontalAlign.Start**: Child elements are left aligned horizontally.
-
-  ```ts
-  Column({}) {
-    Column() {
-    }.width('80%').height(50).backgroundColor(0xF5DEB3)
-
-    Column() {
-    }.width('80%').height(50).backgroundColor(0xD2B48C)
-
-    Column() {
-    }.width('80%').height(50).backgroundColor(0xF5DEB3)
-  }.width('100%').alignItems(HorizontalAlign.Start).backgroundColor('rgb(242,242,242)')
-  ```
-
-  ![en-us_image_0000001511580964](figures/en-us_image_0000001511580964.png)
-
-- **HorizontalAlign.Center**: Child elements are center-aligned horizontally.
-
-  ```ts
-  Column({}) {
-    Column() {
-    }.width('80%').height(50).backgroundColor(0xF5DEB3)
-
-    Column() {
-    }.width('80%').height(50).backgroundColor(0xD2B48C)
-
-    Column() {
-    }.width('80%').height(50).backgroundColor(0xF5DEB3)
-  }.width('100%').alignItems(HorizontalAlign.Center).backgroundColor('rgb(242,242,242)')
-  ```
-
-  ![en-us_image_0000001562820897](figures/en-us_image_0000001562820897.png)
-
-- **HorizontalAlign.End**: Child elements are right-aligned horizontally.
-
-  ```ts
-  Column({}) {
-    Column() {
-    }.width('80%').height(50).backgroundColor(0xF5DEB3)
-
-    Column() {
-    }.width('80%').height(50).backgroundColor(0xD2B48C)
-
-    Column() {
-    }.width('80%').height(50).backgroundColor(0xF5DEB3)
-  }.width('100%').alignItems(HorizontalAlign.End).backgroundColor('rgb(242,242,242)')
-  ```
-
-  ![en-us_image_0000001511421348](figures/en-us_image_0000001511421348.png)
-
-
-### Vertical Alignment of Child Elements in Row Container
-
-  **Figure 6** Vertical alignment of child elements in Row container 
-
-![horizontal-arrangement-child-row](figures/horizontal-arrangement-child-row.png)
-
-- **VerticalAlign.Top**: Child elements are top-aligned vertically.
-
-  ```ts
-  Row({}) {
-    Column() {
-    }.width('20%').height(30).backgroundColor(0xF5DEB3)
-
-    Column() {
-    }.width('20%').height(30).backgroundColor(0xD2B48C)
-
-    Column() {
-    }.width('20%').height(30).backgroundColor(0xF5DEB3)
-  }.width('100%').height(200).alignItems(VerticalAlign.Top).backgroundColor('rgb(242,242,242)')
-  ```
-
-  ![en-us_image_0000001563060765](figures/en-us_image_0000001563060765.png)
-
-- **VerticalAlign.Center**: Child elements are center-aligned vertically.
-
-  ```ts
-  Row({}) {
-    Column() {
-    }.width('20%').height(30).backgroundColor(0xF5DEB3)
-
-    Column() {
-    }.width('20%').height(30).backgroundColor(0xD2B48C)
-
-    Column() {
-    }.width('20%').height(30).backgroundColor(0xF5DEB3)
-  }.width('100%').height(200).alignItems(VerticalAlign.Center).backgroundColor('rgb(242,242,242)')
-  ```
-
-  ![en-us_image_0000001562700505](figures/en-us_image_0000001562700505.png)
-
-- **VerticalAlign.Bottom**: Child elements are bottom-aligned vertically.
-
-  ```ts
-  Row({}) {
-    Column() {
-    }.width('20%').height(30).backgroundColor(0xF5DEB3)
-
-    Column() {
-    }.width('20%').height(30).backgroundColor(0xD2B48C)
-
-    Column() {
-    }.width('20%').height(30).backgroundColor(0xF5DEB3)
-  }.width('100%').height(200).alignItems(VerticalAlign.Bottom).backgroundColor('rgb(242,242,242)')
-  ```
-
-  ![en-us_image_0000001563060781](figures/en-us_image_0000001563060781.png)
-
-
-## Arrangement of Child Elements Along Main Axis
+## Arranging Child Elements Along the Main Axis
 
 In the layout container, you can use the **justifyContent** attribute to set the arrangement mode of child elements along the main axis. The arrangement may begin from the start point or end point of the main axis, or the space of the main axis can be evenly divided.
 
 
-### Vertical Alignment of Child Elements in Column Container
+### Vertical Alignment of Child Elements in the Column Container
 
-  **Figure 7** Vertical alignment of child elements in the Column container
+  **Figure 5** Vertical alignment of child elements in the Column container
 
 ![vertial-arrangement-child-column](figures/vertial-arrangement-child-column.png)
 
@@ -309,9 +195,9 @@ In the layout container, you can use the **justifyContent** attribute to set the
   ![en-us_image_0000001563060785](figures/en-us_image_0000001563060785.png)
 
 
-### Horizontal Alignment of Child Elements in Row Container
+### Horizontal Alignment of Child Elements in the Row Container
 
-  **Figure 8** Horizontal alignment of child elements in the Row container 
+  **Figure 6** Horizontal alignment of child elements in the Row container 
 
 ![vertial-arrangement-child-row](figures/vertial-arrangement-child-row.png)
 
@@ -417,8 +303,129 @@ In the layout container, you can use the **justifyContent** attribute to set the
 
   ![en-us_image_0000001511421352](figures/en-us_image_0000001511421352.png)
 
+## Aligning Child Elements Along the Cross Axis
 
-## Adaptive Stretching
+You can use the **alignItems** attribute to configure the alignment of child elements along the cross axis (perpendicular to the arrangement direction) within the layout container. This alignment remains consistent across screens of different sizes. The value is of the [VerticalAlign Type](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#verticalalign) type when the cross axis is in the vertical direction and the [HorizontalAlign](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#horizontalalign) type when the cross axis is in the horizontal direction.
+
+The layout container also provides the **alignSelf** attribute to control the alignment mode of a single child element along the cross axis. This attribute has a higher priority than the **alignItems** attribute. This means that, if **alignSelf** is set, it will overwrite the **alignItems** setting on the corresponding child element.
+
+
+### Horizontal Alignment of Child Elements in the Column Container
+
+  **Figure 7** Horizontal alignment of child elements in the Column container 
+
+![horizontal-arrangement-child-column](figures/horizontal-arrangement-child-column.png)
+
+- **HorizontalAlign.Start**: Child elements are left aligned horizontally.
+
+  ```ts
+  Column({}) {
+    Column() {
+    }.width('80%').height(50).backgroundColor(0xF5DEB3)
+
+    Column() {
+    }.width('80%').height(50).backgroundColor(0xD2B48C)
+
+    Column() {
+    }.width('80%').height(50).backgroundColor(0xF5DEB3)
+  }.width('100%').alignItems(HorizontalAlign.Start).backgroundColor('rgb(242,242,242)')
+  ```
+
+  ![en-us_image_0000001511580964](figures/en-us_image_0000001511580964.png)
+
+- **HorizontalAlign.Center**: Child elements are center-aligned horizontally.
+
+  ```ts
+  Column({}) {
+    Column() {
+    }.width('80%').height(50).backgroundColor(0xF5DEB3)
+
+    Column() {
+    }.width('80%').height(50).backgroundColor(0xD2B48C)
+
+    Column() {
+    }.width('80%').height(50).backgroundColor(0xF5DEB3)
+  }.width('100%').alignItems(HorizontalAlign.Center).backgroundColor('rgb(242,242,242)')
+  ```
+
+  ![en-us_image_0000001562820897](figures/en-us_image_0000001562820897.png)
+
+- **HorizontalAlign.End**: Child elements are right-aligned horizontally.
+
+  ```ts
+  Column({}) {
+    Column() {
+    }.width('80%').height(50).backgroundColor(0xF5DEB3)
+
+    Column() {
+    }.width('80%').height(50).backgroundColor(0xD2B48C)
+
+    Column() {
+    }.width('80%').height(50).backgroundColor(0xF5DEB3)
+  }.width('100%').alignItems(HorizontalAlign.End).backgroundColor('rgb(242,242,242)')
+  ```
+
+  ![en-us_image_0000001511421348](figures/en-us_image_0000001511421348.png)
+
+
+### Vertical Alignment of Child Elements in the Row Container
+
+  **Figure 8** Vertical alignment of child elements in Row container 
+
+![horizontal-arrangement-child-row](figures/horizontal-arrangement-child-row.png)
+
+- **VerticalAlign.Top**: Child elements are top-aligned vertically.
+
+  ```ts
+  Row({}) {
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xF5DEB3)
+
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xD2B48C)
+
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xF5DEB3)
+  }.width('100%').height(200).alignItems(VerticalAlign.Top).backgroundColor('rgb(242,242,242)')
+  ```
+
+  ![en-us_image_0000001563060765](figures/en-us_image_0000001563060765.png)
+
+- **VerticalAlign.Center**: Child elements are center-aligned vertically.
+
+  ```ts
+  Row({}) {
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xF5DEB3)
+
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xD2B48C)
+
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xF5DEB3)
+  }.width('100%').height(200).alignItems(VerticalAlign.Center).backgroundColor('rgb(242,242,242)')
+  ```
+
+  ![en-us_image_0000001562700505](figures/en-us_image_0000001562700505.png)
+
+- **VerticalAlign.Bottom**: Child elements are bottom-aligned vertically.
+
+  ```ts
+  Row({}) {
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xF5DEB3)
+
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xD2B48C)
+
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xF5DEB3)
+  }.width('100%').height(200).alignItems(VerticalAlign.Bottom).backgroundColor('rgb(242,242,242)')
+  ```
+
+  ![en-us_image_0000001563060781](figures/en-us_image_0000001563060781.png)
+
+## Implementing Adaptive Stretching
 
 In linear layout, adaptive stretching is achieved by using the [Blank](../reference/apis-arkui/arkui-ts/ts-basic-components-blank.md) component, which automatically fills the empty spaces in the container – **Row** or **Column** – along the main axis. Just add the width and height as a percentage, and then adaptive scaling will take effect once the screen width and height change.
 
@@ -439,16 +446,16 @@ struct BlankExample {
 }
 ```
 
-  **Figure 9** Portrait mode 
+  **Figure 9** Portrait mode (adapts to the screen's narrow edge)
 
 ![en-us_image_0000001562820881](figures/en-us_image_0000001562820881.png)
 
-  **Figure 10** Landscape mode 
+  **Figure 10** Landscape mode (adapts to the screen's wide edge)
 
 ![en-us_image_0000001511421332](figures/en-us_image_0000001511421332.png)
 
 
-## Adaptive Scaling
+## Implementing Adaptive Scaling
 
 Adaptive scaling means that the size of a child element is automatically adjusted according to a preset ratio to fit into the container across devices of various screen sizes. In linear layout, adaptive scaling can be achieved using either of the following methods:
 
@@ -548,9 +555,9 @@ Adaptive scaling means that the size of a child element is automatically adjuste
   ![en-us_image_0000001511740564](figures/en-us_image_0000001511740564.png)
 
 
-## Adaptive Extension
+## Implementing Adaptive Extension
 
-Adaptive extension allows users to drag the scrollbar to display the page content outside the screen. It is applicable to the scenario where the content extends beyond the viewport in linear layout. Below are the methods to implement adaptive extension in linear layout:
+Adaptive extension allows users to drag the scrollbar to access content beyond the visible screen area. This feature is particularly useful when container content exceeds the available screen space. Below are the methods to implement adaptive extension in linear layout:
 
 - [Add a scrollbar to a List component](arkts-layout-development-create-list.md#adding-a-scrollbar): If the list items cannot be fully displayed on one screen, you can place the child elements in different components and employ a scrollbar to display them. Use the **scrollBar** attribute to set the scrollbar status and the **edgeEffect** attribute to set the rebound effect when the scrollbar has reached the edge.
 

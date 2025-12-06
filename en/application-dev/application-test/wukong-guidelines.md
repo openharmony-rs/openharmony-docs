@@ -1,5 +1,10 @@
 # wukong User Guide
-
+<!--Kit: Test Kit-->
+<!--Subsystem: Test-->
+<!--Owner: @qkfg-->
+<!--Designer: @qkfg-->
+<!--Tester: @caixincen-->
+<!--Adviser: @Brilliantry_Rui-->
 ## Introduction
 
 wukong is a built-in command line tool that implements application stability test capabilities such as random event injection, component injection, exception capture, report generation, and data traversal of abilities. This tool allows you to conduct stability tests on the system or applications by simulating user behavior. wukong provides three types of testing: random testing, special testing, and focus testing.
@@ -15,22 +20,20 @@ In focus testing, specific components are injected. Available features include s
 The following figure shows the wukong component architecture and the responsibilities of sub-modules. 
 ![Alternate text](figures/wukongRandomTestFlow.png)
 
-- Command line parsing: Obtain and parse parameters using commands.
-- Operating environment management: Initialize the overall operating environment of wukong using commands.
-- System API management: Check and obtain the specified mgr, and register the callback function of the Faultlogger for the controller and DFX.
-- Random event generation: Use the **random** function to generate a sequence of random numbers with the specified seed value to generate an event.
-- Event injection: Inject events of supported types to the system. This feature depends on the window, multi-mode, and security subsystems.
-- Exception capture and processing and report generation: Obtain exception information with the DFX subsystem during application running, record log, and generate reports.
+- Command line parsing: obtains and parses parameters using commands.
+- Operating environment management: initializes the overall operating environment of wukong using commands.
+- System API management: checks and obtains the specified mgr, and registers the callback function of Faultlogger for the controller and DFX.
+- Random event generation: generates a sequence of random numbers using a specified seed through a random function, and creates events based on this sequence.
+- Event injection: injects events of supported types to the system. This feature depends on the window, multimodal, and security subsystems.
+- Exception capture and processing and report generation: obtains exception information with the DFX subsystem during application running, record log, and generate reports.
 
 ## Constraints
 
 1. The wukong tool is built in the system since API version 9.
 
-2. When the PC is connected to one or more target devices, you can run test commands.
-
-3. Enter the shell mode before running any command.
+2. Before running any command, configure the <!--RP1-->[hdc environment](../dfx/hdc.md)<!--RP1End--> and enter the shell mode.
 <!--Del-->
-4. In API versions earlier than 9, you need to build the tool and push it to the target device. The procedure is as follows:
+3. In API versions earlier than 9, you need to build the tool and push it to the target device. The procedure is as follows:
 
    ```bash
    # Build code
@@ -47,7 +50,7 @@ The following figure shows the wukong component architecture and the responsibil
 
 | Command          | Description                                          |
 | -------------- | ---------------------------------------------- |
-| version | Obtains version information.                            |
+| -v/--version | Obtains version information.                            |
 | help    | Obtains help information.                            |
 | appinfo | Queries the bundle name and the name of the corresponding mainAbility of the app that can be started.|
 | special | Runs special testing.                                  |
@@ -62,7 +65,7 @@ The following figure shows the wukong component architecture and the responsibil
   #If you are testing one device, run **hdc shell**.
   C:\Users>hdc shell
   $
-  #If you are testing multiple devices, run **hdc list targets** to obtain the SNs, and then run **hdc -t** open the shell.
+  #If you are testing multiple devices, obtain the SNs first by running **hdc list targets**. Then, enter the shell.
   C:\Users>hdc list targets
   15xxx424axxxx345209d94xxxx8fxx900
   C:\Users>hdc -t 15xxx424axxxx345209d94xxxx8fxx900 shell
@@ -133,7 +136,7 @@ The following figure shows the wukong component architecture and the responsibil
     -k, --spec_insomnia        power on/off event
     -T, --time                 total time of test
     -C, --component            component event
-    -p, --screenshot           get screenshot(only in compoment input)
+    -p, --screenshot           get screenshot(only in component input)
     -r, --record               record user operation
     -R, --replay               replay user operation
     -u, --uitest               uitest dumpLayout
@@ -301,7 +304,7 @@ After the test commands are executed, the test result is automatically generated
 | wukong_report.csv                    | Stores the test report summary.      |
 | wukong.log                | Indicates the test operation history.      |
 
-### View operation logs
+### Viewing Operation Logs
 
 You can run the hdc command to obtain logs to the local host and view the operation history.
 
@@ -321,10 +324,10 @@ FileTransfer finish, Size:76492, File count = 1, time:16ms rate:4780.75kB/s
 ```
 
 ## FAQs
-### failed to connect to AAMS
+### What should I do if "failed to connect to AAMS" is displayed?
  **Symptom**
 
-failed to connect to AAMS.
+The error message "failed to connect to AAMS" is displayed.
 
  **Possible Cause**
 
@@ -333,10 +336,10 @@ AAMS is occupied by Hypium or the UIViewer of DevEco Testing. AAMS can be connec
  **Solution**
 
 Stop the process that occupies AAMS or restart the device.
-### Errorcode:(4005)
+### What should I do if "Errorcode:(4005)" is displayed?
  **Symptom**
 
-Errorcode:(4005).
+The error message "Errorcode:(4005)" is displayed.
 
  **Possible Cause**
 
@@ -345,10 +348,10 @@ The size of the screen display area changes. As a result, the page information f
  **Solution**
 
 This error does not affect the test process and does not need to be handled.
-### Errorcode:(4007)
+### What should I do if "Errorcode:(4007)" is displayed?
  **Symptom**
 
-Errorcode:(4007).
+The error message "Errorcode:(4007)" is displayed.
 
  **Possible Cause**
 

@@ -23,7 +23,7 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 
 changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Promise&lt;void&gt;
 
-异步方法修改应用的端云文件同步开关，以Promise形式返回结果。
+异步方法修改应用的端云文件同步开关。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -57,6 +57,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Pr
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let bundleName: string = "com.example.bundle";
   cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true).then(() => {
@@ -70,7 +71,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Pr
 
 changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法修改应用的端云文件同步开关，以callback形式返回结果。
+异步方法修改应用的端云文件同步开关。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -99,6 +100,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, cal
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let bundleName: string = "com.example.bundle";
   cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: BusinessError) => {
@@ -114,7 +116,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, cal
 
 notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
-异步方法通知端云服务应用的云数据变更，以Promise形式返回结果。
+通知端云服务指定账号下的特定应用云数据已发生变更。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -147,6 +149,7 @@ notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let bundleName: string = "com.example.bundle";
   cloudSyncManager.notifyDataChange(accountId, bundleName).then(() => {
@@ -160,7 +163,7 @@ notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
 notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法通知端云服务应用的云数据变更，以callback形式返回结果。
+通知端云服务指定账号下的特定应用云数据已发生变更。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -188,6 +191,7 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let bundleName: string = "com.example.bundle";
   cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) => {
@@ -216,7 +220,7 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 
 notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
-异步方法通知端云服务应用的云数据变更，以Promise形式返回结果。
+通知端云服务应用指定用户的云数据变更信息。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -252,6 +256,7 @@ notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userId: number = 100;
   let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
   cloudSyncManager.notifyDataChange(userId, extraData).then(() => {
@@ -265,7 +270,7 @@ notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
 notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法通知端云服务应用的云数据变更，以callback形式返回结果。
+通知端云服务应用指定用户的云数据变更信息。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -296,6 +301,7 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userId: number = 100;
   let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
   cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError) => {
@@ -311,7 +317,7 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 
 enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;void&gt;
 
-异步方法使能端云协同能力，以Promise形式返回结果。
+异步方法使能端云协同能力。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -346,6 +352,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let switches: Record<string, boolean> = {
     'com.example.bundleName1': true,
@@ -362,7 +369,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
 
 enableCloud(accountId: string, switches: Record<string, boolean>, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法使能端云协同能力，以callback形式返回结果。
+异步方法使能端云协同能力。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -392,6 +399,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let switches: Record<string, boolean> = {
     'com.example.bundleName1': true,
@@ -410,7 +418,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
 
 disableCloud(accountId: string): Promise&lt;void&gt;
 
-异步方法去使能端云协同能力，以Promise形式返回结果。
+异步方法去使能端云协同能力。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -444,6 +452,7 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   cloudSyncManager.disableCloud(accountId).then(() => {
     console.info("disableCloud successfully");
@@ -456,7 +465,7 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 
 disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法去使能端云协同能力，以callback形式返回结果。
+异步方法去使能端云协同能力。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -485,6 +494,7 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   cloudSyncManager.disableCloud(accountId, (err: BusinessError) => {
     if (err) {
@@ -512,7 +522,7 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
 clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt;
 
-异步方法清理本地云相关数据，以Promise形式返回结果。
+异步方法清理本地云相关数据。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -547,6 +557,7 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
   let appActions: Record<string, cloudSyncManager.Action> = {
     'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,
@@ -563,7 +574,7 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 
 clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法清理本地云相关数据，以callback形式返回结果。
+异步方法清理本地云相关数据。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -593,6 +604,7 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountId: string = "testAccount";
     let appActions: Record<string, cloudSyncManager.Action> = {
     'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,

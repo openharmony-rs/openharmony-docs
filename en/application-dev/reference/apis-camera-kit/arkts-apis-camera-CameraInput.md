@@ -4,15 +4,15 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
-
-> **NOTE**
->
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+<!--Adviser: @w_Machine_cc-->
 
 CameraInput defines the camera input object.
 
 It provides camera device information used in [Session](arkts-apis-camera-Session.md).
+
+> **NOTE**
+>
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -333,95 +333,5 @@ Unsubscribes from CameraInput error events.
 ```ts
 function unregisterCameraInputError(cameraInput: camera.CameraInput, camera: camera.CameraDevice): void {
   cameraInput.off('error', camera);
-}
-```
-
-## isPhysicalCameraOrientationVariable<sup>21+</sup>
-
-isPhysicalCameraOrientationVariable(): boolean
-
-Checks whether the physical camera orientation is adjustable in different fold states.
-
-**Atomic service API**: This API can be used in atomic services since API version 21.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Return value**
-
-| Type       | Description                                        |
-| ---------- | -------------------------------------------- |
-| boolean    | Check result for whether the physical camera orientation is adjustable. **true** if adjustable, **false** otherwise.|
-
-**Example**
-
-```ts
-function isPhysicalCameraOrientationVariable(cameraInput: camera.CameraInput): boolean {
-  let isVariable: boolean = cameraInput.isPhysicalCameraOrientationVariable();
-  return isVariable;
-}
-```
-
-## getPhysicalCameraOrientation<sup>21+</sup>
-
-getPhysicalCameraOrientation(): number
-
-Obtains the physical camera orientation in the current fold state.
-
-**Atomic service API**: This API can be used in atomic services since API version 21.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Return value**
-
-| Type       | Description                                        |
-| ---------- | -------------------------------------------- |
-| number    | Physical camera orientation.|
-
-**Example**
-
-```ts
-function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): number {
-  let physicalCameraOrientation: number = cameraInput.getPhysicalCameraOrientation();
-  return physicalCameraOrientation;
-}
-```
-
-## usePhysicalCameraOrientation<sup>21+</sup>
-
-usePhysicalCameraOrientation(isUsed: boolean): void
-
-Enables or disables the use of the physical camera orientation.
-
-**Atomic service API**: This API can be used in atomic services since API version 21.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name    | Type                                        | Mandatory| Description                                              |
-| -------- | ------------------------------------------- | ---- |--------------------------------------------------|
-| isUsed  | boolean         | Yes  | Whether to enable the use of the physical camera orientation. **true** to enable, **false** otherwise.|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
-
-| ID  | Error Message                                     |
-|---------|-------------------------------------------|
-| 7400102 | Operation not allowed.                    |
-| 7400201 | Camera service fatal error.               |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function usePhysicalCameraOrientation(cameraInput: camera.CameraInput, isUsed: boolean): void {
-  try {
-    cameraInput.usePhysicalCameraOrientation(isUsed);
-  } catch (error) {
-    let err = error as BusinessError;
-    console.error(`The usePhysicalCameraOrientation call failed. error code: ${err.code}`);
-  }
 }
 ```

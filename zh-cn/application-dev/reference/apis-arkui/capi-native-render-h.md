@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -19,6 +19,8 @@
 **起始版本：** 20
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**相关示例：** <!--RP1-->[native_render_node_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample)<!--RP1End-->
 
 ## 汇总
 
@@ -1053,7 +1055,7 @@ m30, m31, m32, m33]<br>
 | m30 | x轴的平移值（以 px 为单位）。单位矩阵的默认值为0。|
 | m31 | y轴的平移值（以 px 为单位）。单位矩阵的默认值为0。|
 | m32 | z轴的平移值（以 px 为单位）。单位矩阵的默认值为0。|
-| m33 | 在齐次坐标中有效，呈现透视投影效果。 | |
+| m33 | 在齐次坐标中有效，呈现透视投影效果。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1518,7 +1520,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup(ArkUI_RenderNodeHandle node, b
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| bool markNodeGroup | 布尔值，是否优先绘制该节点及其子节点。 |
+| bool markNodeGroup | 布尔值，是否优先绘制该节点及其子节点。<br/>true：优先绘制节点及其子节点；false：不优先绘制节点及其子节点。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1805,7 +1807,7 @@ ArkUI_FloatPropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatProperty(float val
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_FloatPropertyHandle](./capi-arkui-nativemodule-arkui-floatpropertyhandle.md) | 浮点属性。
+| [ArkUI_FloatPropertyHandle](./capi-arkui-nativemodule-arkui-floatpropertyhandle.md) | 浮点属性。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetFloatPropertyValue()
 
@@ -1887,7 +1889,7 @@ ArkUI_Vector2PropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2Property(float
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_Vector2PropertyHandle](./capi-arkui-nativemodule-arkui-vector2propertyhandle.md) | 二维向量属性。
+| [ArkUI_Vector2PropertyHandle](./capi-arkui-nativemodule-arkui-vector2propertyhandle.md) | 二维向量属性。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetVector2PropertyValue()
 
@@ -1970,7 +1972,7 @@ ArkUI_ColorPropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorProperty(uint32_t 
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ColorPropertyHandle](./capi-arkui-nativemodule-arkui-colorpropertyhandle.md) | 颜色属性。
+| [ArkUI_ColorPropertyHandle](./capi-arkui-nativemodule-arkui-colorpropertyhandle.md) | 颜色属性。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetColorPropertyValue()
 
@@ -2051,7 +2053,7 @@ ArkUI_FloatAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatAnimatab
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_FloatAnimatablePropertyHandle](./capi-arkui-nativemodule-arkui-floatanimatablepropertyhandle.md) | 可动画的浮点属性。
+| [ArkUI_FloatAnimatablePropertyHandle](./capi-arkui-nativemodule-arkui-floatanimatablepropertyhandle.md) | 可动画的浮点属性。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetFloatAnimatablePropertyValue()
 
@@ -2133,7 +2135,7 @@ ArkUI_Vector2AnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2Anim
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_Vector2AnimatablePropertyHandle](./capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md) | 可动画的二维向量属性。
+| [ArkUI_Vector2AnimatablePropertyHandle](./capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md) | 可动画的二维向量属性。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetVector2AnimatablePropertyValue()
 
@@ -2216,7 +2218,7 @@ ArkUI_ColorAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorAnimatab
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ColorAnimatablePropertyHandle](./capi-arkui-nativemodule-arkui-coloranimatablepropertyhandle.md) | 可动画的颜色属性。
+| [ArkUI_ColorAnimatablePropertyHandle](./capi-arkui-nativemodule-arkui-coloranimatablepropertyhandle.md) | 可动画的颜色属性。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetColorAnimatablePropertyValue()
 
@@ -2281,7 +2283,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeColorAnimatableProperty(ArkUI_ColorAnimatab
 ### OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw()
 
 ```
-int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentModifierHandle modifier, void* userData, void (*callback)(ArkUI_DrawContext context, void* userData))
+int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentModifierHandle modifier, void* userData, void (*callback)(ArkUI_DrawContext* context, void* userData))
 ```
 
 **描述：**
@@ -2294,7 +2296,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentMod
 | -- | -- |
 | [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) modifier | 目标内容修改器。 |
 | void* userData | 要传递给回调的自定义数据。 |
-| void (callback)(ArkUI_DrawContext context, void* userData) | 绘制事件接收回调。 |
+| void (callback)([ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md) context, void* userData) | 绘制事件接收回调。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -2315,7 +2317,7 @@ ArkUI_RectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRectShapeOption()
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_RectShapeOption](./capi-arkui-nativemodule-arkui-rectshapeoption.md)* | 指向矩形形状的指针。
+| [ArkUI_RectShapeOption](./capi-arkui-nativemodule-arkui-rectshapeoption.md)* | 指向矩形形状的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeRectShapeOption()
 
@@ -2365,7 +2367,7 @@ ArkUI_NodeBorderStyleOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderStyleOptio
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_NodeBorderStyleOption](./capi-arkui-nativemodule-arkui-nodeborderstyleoption.md)* | 指向节点边框样式的指针。
+| [ArkUI_NodeBorderStyleOption](./capi-arkui-nativemodule-arkui-nodeborderstyleoption.md)* | 指向节点边框样式的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption()
 
@@ -2415,7 +2417,7 @@ ArkUI_NodeBorderWidthOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderWidthOptio
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_NodeBorderWidthOption](./capi-arkui-nativemodule-arkui-nodeborderwidthoption.md)* | 指向节点边框宽度的指针。
+| [ArkUI_NodeBorderWidthOption](./capi-arkui-nativemodule-arkui-nodeborderwidthoption.md)* | 指向节点边框宽度的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeNodeBorderWidthOption()
 
@@ -2465,7 +2467,7 @@ ArkUI_NodeBorderColorOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderColorOptio
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_NodeBorderColorOption](./capi-arkui-nativemodule-arkui-nodebordercoloroption.md)* | 指向节点边框颜色的指针。
+| [ArkUI_NodeBorderColorOption](./capi-arkui-nativemodule-arkui-nodebordercoloroption.md)* | 指向节点边框颜色的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeNodeBorderColorOption()
 
@@ -2515,7 +2517,7 @@ ArkUI_NodeBorderRadiusOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderRadiusOpt
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_NodeBorderRadiusOption](./capi-arkui-nativemodule-arkui-nodeborderradiusoption.md)* | 指向节点边框半径的指针。
+| [ArkUI_NodeBorderRadiusOption](./capi-arkui-nativemodule-arkui-nodeborderradiusoption.md)* | 指向节点边框半径的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeNodeBorderRadiusOption()
 
@@ -2565,7 +2567,7 @@ ArkUI_CircleShapeOption* OH_ArkUI_RenderNodeUtils_CreateCircleShapeOption()
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CircleShapeOption](./capi-arkui-nativemodule-arkui-circleshapeoption.md)* | 指向圆形形状的指针。
+| [ArkUI_CircleShapeOption](./capi-arkui-nativemodule-arkui-circleshapeoption.md)* | 指向圆形形状的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeCircleShapeOption()
 
@@ -2648,7 +2650,7 @@ ArkUI_RoundRectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRoundRectShapeOption(
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_RoundRectShapeOption](./capi-arkui-nativemodule-arkui-roundrectshapeoption.md)* | 指向圆角矩形形状的指针。
+| [ArkUI_RoundRectShapeOption](./capi-arkui-nativemodule-arkui-roundrectshapeoption.md)* | 指向圆角矩形形状的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeRoundRectShapeOption()
 
@@ -2701,7 +2703,7 @@ void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY(ArkUI_RoundRectSha
 | [ArkUI_RoundRectShapeOption](./capi-arkui-nativemodule-arkui-roundrectshapeoption.md)* option | 指向圆角矩形形状的指针。 |
 | float x | 目标角的X坐标（以像素为单位）。 |
 | float y | 目标角的Y坐标（以像素为单位）。 |
-| ArkUI_CornerDirection direction | 角的方向。 |
+| [ArkUI_CornerDirection](capi-native-type-h.md#arkui_cornerdirection) direction | 角的方向。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateCommandPathOption()
 
@@ -2717,7 +2719,7 @@ ArkUI_CommandPathOption* OH_ArkUI_RenderNodeUtils_CreateCommandPathOption()
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CommandPathOption](./capi-arkui-nativemodule-arkui-commandpathoption.md)* | 指向自定义绘制路径的指针。
+| [ArkUI_CommandPathOption](./capi-arkui-nativemodule-arkui-commandpathoption.md)* | 指向自定义绘制路径的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeCommandPathOption()
 
@@ -2766,12 +2768,12 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_RectShapeOption](./capi-arkui-nativemodule-arkui-rectshapeoption.md) shape | 指向矩形形状的指针。 |
+| [ArkUI_RectShapeOption*](./capi-arkui-nativemodule-arkui-rectshapeoption.md) shape | 指向矩形形状的指针。 |
 
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) | 指向渲染节点遮罩的指针。
+| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) | 指向渲染节点遮罩的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromRoundRectShape()
 
@@ -2787,12 +2789,12 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_RoundRectShapeOption](./capi-arkui-nativemodule-arkui-roundrectshapeoption.md) shape | 指向圆角矩形形状的指针。 |
+| [ArkUI_RoundRectShapeOption*](./capi-arkui-nativemodule-arkui-roundrectshapeoption.md) shape | 指向圆角矩形形状的指针。 |
 
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) | 指向渲染节点遮罩的指针。
+| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) | 指向渲染节点遮罩的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromCircleShape()
 
@@ -2808,12 +2810,12 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_CircleShapeOption](./capi-arkui-nativemodule-arkui-circleshapeoption.md) shape | 指向圆形形状的指针。 |
+| [ArkUI_CircleShapeOption*](./capi-arkui-nativemodule-arkui-circleshapeoption.md) shape | 指向圆形形状的指针。 |
 
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) | 指向渲染节点遮罩的指针。
+| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) | 指向渲染节点遮罩的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromOvalShape()
 
@@ -2829,12 +2831,12 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_RectShapeOption](./capi-arkui-nativemodule-arkui-rectshapeoption.md) shape | 指向椭圆形形状的指针。 |
+| [ArkUI_RectShapeOption*](./capi-arkui-nativemodule-arkui-rectshapeoption.md) shape | 指向椭圆形形状的指针。 |
 
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) | 指向渲染节点遮罩的指针。
+| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) | 指向渲染节点遮罩的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromCommandPath()
 
@@ -2850,12 +2852,12 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_CommandPathOption](./capi-arkui-nativemodule-arkui-commandpathoption.md) path | 指向自定义绘制路径的指针。 |
+| [ArkUI_CommandPathOption*](./capi-arkui-nativemodule-arkui-commandpathoption.md) path | 指向自定义绘制路径的指针。 |
 
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) | 指向渲染节点遮罩的指针。
+| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) | 指向渲染节点遮罩的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption()
 
@@ -2871,7 +2873,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption(ArkUI_RenderNodeMaskOp
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) option | 指向渲染节点遮罩的指针。 |
+| [ArkUI_RenderNodeMaskOption*](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) option | 指向渲染节点遮罩的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionFillColor()
 
@@ -2958,7 +2960,7 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)* | 指向渲染节点裁剪的指针。
+| [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)* | 指向渲染节点裁剪的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromRoundRectShape()
 
@@ -2979,7 +2981,7 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)* | 指向渲染节点裁剪的指针。
+| [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)* | 指向渲染节点裁剪的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromCircleShape()
 
@@ -3000,7 +3002,7 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)* | 指向渲染节点裁剪的指针。
+| [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)* | 指向渲染节点裁剪的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromOvalShape()
 
@@ -3021,7 +3023,7 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)* | 指向渲染节点裁剪的指针。
+| [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)* | 指向渲染节点裁剪的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromCommandPath()
 
@@ -3042,7 +3044,7 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)* | 指向渲染节点裁剪的指针。
+| [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)* | 指向渲染节点裁剪的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption()
 

@@ -1,5 +1,12 @@
 # ArkUI_RotationOptions
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 概述
 
 定义组件转场时的旋转效果对象。

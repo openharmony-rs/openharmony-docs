@@ -4,10 +4,10 @@
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
+<!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本模块提供延迟任务注册、取消、查询的能力。在开发过程中，对于实时性要求不高的任务，可以调用本模块接口注册延迟任务，在系统空闲时根据性能、功耗、热等情况进行调度执行。
+本模块提供延迟任务注册、取消、查询的能力。在开发过程中，对于实时性要求不高的任务，可以调用本模块接口注册延迟任务，在系统空闲时根据性能、功耗、热等情况进行调度执行。开发指导请参考[延迟任务开发指南](../../task-management/work-scheduler.md)。
 
 >  **说明：**
 >
@@ -25,15 +25,14 @@ import { workScheduler } from '@kit.BackgroundTasksKit';
 
 startWork(work: WorkInfo): void
 
-申请延迟任务。
+申请延迟任务，成功后会把任务添加到执行队列，满足触发条件后由系统调度执行。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
 **参数**：
-
 | 参数名  | 类型                    | 必填   | 说明             |
 | ---- | --------------------- | ---- | -------------- |
-| work | [WorkInfo](#workinfo) | 是    | 要添加到执行队列的延迟任务。 |
+| work | [WorkInfo](#workinfo) | 是    | 指定延迟任务具体信息，比如延迟任务ID、触发条件等。 |
 
 **错误码**：
 
@@ -218,12 +217,15 @@ getWorkStatus(workId: number): Promise\<WorkInfo>
   })
 ```
 
-## workScheduler.obtainAllWorks<sup>(deprecated)<sup>
+## workScheduler.obtainAllWorks<sup>(deprecated)</sup>
 
 obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
-> 从API version 10开始不再维护，建议使用[workScheduler.obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10)替代
 
 获取当前应用所有的延迟任务，使用Callback异步回调。
+
+> **说明：**
+>
+> 从API version 10开始不再维护，建议使用[workScheduler.obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10)替代。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -487,32 +489,42 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 ## WorkInfo
 
-延迟任务的具体信息。
+延迟任务的具体信息, 用于设置延迟任务的触发条件等。
+
+>  **说明：**
+>
+>  WorkInfo参数设置时需遵循以下规则：
+>
+>  1. workId、bundleName、abilityName为必填项，bundleName需为本应用包名。
+>  2. 携带参数信息仅支持number、string、boolean三种类型。
+>  3. 至少设置一个满足的条件，包括网络类型、充电类型、存储状态、电池状态等。
+>  4. 对于循环任务，任务执行间隔至少2小时。设置了循环任务时间间隔时，须同时设置是否循环或循环次数中的一个。
+>  5. 对于可选参数，如果缺省表示延迟任务的触发不依赖该条件。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
-| 名称             | 类型                                | 必填   | 说明               |
-| --------------- | --------------------------------- | ---- | ---------------- |
-| workId          | number                            | 是    | 延迟任务ID。          |
-| bundleName      | string                            | 是    | 延迟任务所在应用的包名。           |
-| abilityName     | string                            | 是    | 包内ability名称。 |
-| networkType     | [NetworkType](#networktype)       | 否    | 网络类型。             |
-| isCharging      | boolean                           | 否    | 是否充电，默认为false。<br>- true表示充电触发延迟回调。<br>- false表示不充电触发延迟回调。|
-| chargerType     | [ChargingType](#chargingtype)     | 否    | 充电类型。             |
-| batteryLevel    | number                            | 否    | 电量。              |
-| batteryStatus   | [BatteryStatus](#batterystatus)   | 否    | 电池状态。             |
-| storageRequest  | [StorageRequest](#storagerequest) | 否    | 存储状态。             |
-| isRepeat        | boolean                           | 否    | 是否循环任务，默认为false。<br>- true表示循环任务。 <br>- false表示非循环任务。 |
-| repeatCycleTime | number                            | 否    | 循环间隔，单位为毫秒。             |
-| repeatCount     | number                            | 否    | 循环次数。             |
-| isPersisted     | boolean                           | 否    | 注册的延迟任务是否可保存在系统中，默认为false。<br>- true表示可保存，即系统重启后，任务可恢复。<br>- false表示不可保存。|
-| isDeepIdle      | boolean                           | 否    | 是否要求设备进入空闲状态，默认为false。<br>- true表示需要。<br>- false表示不需要。   |
-| idleWaitTime    | number                            | 否    | 空闲等待时间，单位为毫秒。           |
-| parameters      | Record<string, number \| string \| boolean>  | 否    | 携带参数信息。 |
+| 名称             | 类型                                | 只读   | 可选   | 说明               |
+| --------------- | --------------------------------- | ---- | ---- | ---------------- |
+| workId          | number                            | 否    | 否    |延迟任务ID。          |
+| bundleName      | string                            | 否    | 否    |延迟任务所在应用的包名。           |
+| abilityName     | string                            | 否    | 否    |包内ability名称。 |
+| networkType     | [NetworkType](#networktype)       | 否    | 是    |网络类型。             |
+| isCharging      | boolean                           | 否    | 是    |是否充电，默认为false。<br>- true表示充电触发延迟任务回调。<br>- false表示不充电触发延迟任务回调。|
+| chargerType     | [ChargingType](#chargingtype)     | 否    | 是    |充电类型。             |
+| batteryLevel    | number                            | 否    | 是    |电量。              |
+| batteryStatus   | [BatteryStatus](#batterystatus)   | 否    | 是    |电池状态。             |
+| storageRequest  | [StorageRequest](#storagerequest) | 否    | 是    |存储状态。             |
+| isRepeat        | boolean                           | 否    | 是    |是否循环任务，默认为false。<br>- true表示循环任务。 <br>- false表示非循环任务。 |
+| repeatCycleTime | number                            | 否    | 是    |循环间隔，单位为毫秒。             |
+| repeatCount     | number                            | 否    | 是    |循环次数。             |
+| isPersisted     | boolean                           | 否    | 是    |注册的延迟任务是否可保存在系统中，默认为false。<br>- true表示可保存，即系统重启后，任务可恢复。<br>- false表示不可保存。|
+| isDeepIdle      | boolean                           | 否    | 是    |是否要求设备进入空闲状态，默认为false。<br>- true表示需要。<br>- false表示不需要。   |
+| idleWaitTime    | number                            | 否    | 是    |空闲等待时间，单位为毫秒。           |
+| parameters      | Record<string, number \| string \| boolean>  | 否    | 是    |携带参数信息。 |
 
 ## NetworkType
 
-触发延迟回调的网络类型。
+触发延迟任务回调的网络类型。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -527,7 +539,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 ## ChargingType
 
-触发延迟回调的充电类型。
+触发延迟任务回调的充电类型。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -540,7 +552,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 ## BatteryStatus
 
-触发延迟回调的电池状态。
+触发延迟任务回调的电池状态。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -552,7 +564,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 ## StorageRequest
 
-触发延迟回调的存储状态。
+触发延迟任务回调的存储状态。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 

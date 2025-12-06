@@ -4,7 +4,7 @@
 <!--Owner: @yaozhupeng-->
 <!--Designer: @yaozhupeng-->
 <!--Tester: @zhaoxiaoguang2-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -31,8 +31,8 @@ import { image } from '@kit.ImageKit';
 
 | 名称              | 类型    | 只读 | 可选 | 说明                       |
 | -----------------| ------- | ---- | ---- | -------------------------- |
-| isEditable<sup>7+</sup>        | boolean | 是   | 否   | true表示图像像素可被编辑，false表示不可被编辑。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
-| isStrideAlignment<sup>11+</sup> | boolean | 是   | 否   | true表示图像内存为DMA内存，false表示非DMA内存。 |
+| isEditable<sup>7+</sup>        | boolean | 是   | 否   | 图像像素是否可被编辑。true表示可被编辑，false表示不可被编辑。为false时，图像的渲染和传输性能更好。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
+| isStrideAlignment<sup>11+</sup> | boolean | 是   | 否   | 图像的行数据是否已进行内存对齐。true表示已进行内存对齐，每行数据的末尾可能有空白字节填充以满足对齐要求；false表示未进行内存对齐，每行数据紧密排列，末尾无空白字节填充。 |
 
 ## readPixelsToBuffer<sup>7+</sup>
 
@@ -200,7 +200,7 @@ async function ReadPixelsRGBA(pixelMap : image.PixelMap) {
       console.info('Succeeded in reading the image data in the area.'); // 符合条件则进入。
       console.info('RGBA data is ', new Uint8Array(area.pixels));
     }).catch((error: BusinessError) => {
-      console.error(`Failed to read the image data in the area. code is ${error.code}, message is ${error.message}`);// 不符合条件则进入。
+      console.error("Failed to read the image data in the area. code is ", error);// 不符合条件则进入。
     })
   }
 }
@@ -217,7 +217,7 @@ async function ReadPixelsYUV(pixelMap : image.PixelMap) {
       console.info('Succeeded in reading the image data in the area.'); // 符合条件则进入。
       console.info('YUV data is ', new Uint8Array(area.pixels));
     }).catch((error: BusinessError) => {
-      console.error(`Failed to read the image data in the area. code is ${error.code}, message is ${error.message}`);// 不符合条件则进入。
+      console.error("Failed to read the image data in the area. code is ", error);// 不符合条件则进入。
     })
   }
 }
@@ -263,7 +263,7 @@ async function ReadPixelsRGBA(pixelMap : image.PixelMap) {
   if (pixelMap != undefined) {
     pixelMap.readPixels(area, (error: BusinessError) => {
       if (error) {
-        console.error(`Failed to read pixelmap from the specified area. code is ${error.code}, message is ${error.message}`);
+        console.error("Failed to read pixelmap from the specified area. code is ", error);
         return;
       } else {
         console.info('Succeeded in reading pixelmap from the specified area.');
@@ -283,7 +283,7 @@ async function ReadPixelsYUV(pixelMap : image.PixelMap) {
   if (pixelMap != undefined) {
     pixelMap.readPixels(area, (error: BusinessError) => {
       if (error) {
-        console.error(`Failed to read pixelmap from the specified area. code is ${error.code}, message is ${error.message}`);
+        console.error("Failed to read pixelmap from the specified area. code is ", error);
         return;
       } else {
         console.info('Succeeded in reading pixelmap from the specified area.');
@@ -1429,8 +1429,8 @@ clone(): Promise\<PixelMap>
 | 501 | Resource unavailable. |
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
-| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of createing empty pixelmap. |
-| 62980106 | The image data is to large. This status code is thrown when an error occurs during the process of checking size. |
+| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
+| 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 
 **示例：**
 
@@ -1471,8 +1471,8 @@ cloneSync(): PixelMap
 | 501 | Resource unavailable. |
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
-| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of createing empty pixelmap. |
-| 62980106 | The image data is to large. This status code is thrown when an error occurs during the process of checking size. |
+| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
+| 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 
 **示例：**
 
@@ -2378,6 +2378,7 @@ async function loadPixelMap(rawFileDescriptor: number): Promise<PixelMap> {
   return pixelMap;
 }
 
+@Entry
 @Component
 struct Demo {
   @State pixelMap: PixelMap | undefined = undefined;
@@ -2572,11 +2573,15 @@ async function Unmarshalling() {
 
 ## release<sup>7+</sup>
 
-release():Promise\<void>
+release(): Promise\<void\>
 
-释放PixelMap对象。使用Promise异步回调。
+释放PixelMap对象。释放后，任何访问该对象内部数据的方法调用将会失败。使用Promise异步回调。
 
 ArkTS有内存回收机制，PixelMap对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
+
+> **注意：**
+>
+> 释放指的是ArkTS对象释放与之关联的native对象的管理权。仅当所有管理该native对象的ArkTS对象都被释放时，native对象占用的内存才会被回收。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -2608,11 +2613,15 @@ async function Release(pixelMap:image.PixelMap) {
 
 ## release<sup>7+</sup>
 
-release(callback: AsyncCallback\<void>): void
+release(callback: AsyncCallback\<void\>): void
 
-释放PixelMap对象，使用callback形式返回释放结果。
+释放PixelMap对象。释放后，任何访问该对象内部数据的方法调用将会失败。使用callback形式返回释放结果。
 
 ArkTS有内存回收机制，PixelMap对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
+
+> **注意：**
+>
+> 释放指的是ArkTS对象释放与之关联的native对象的管理权。仅当所有管理该native对象的ArkTS对象都被释放时，native对象占用的内存才会被回收。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 

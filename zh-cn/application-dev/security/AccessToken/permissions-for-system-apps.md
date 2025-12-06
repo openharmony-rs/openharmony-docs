@@ -883,6 +883,30 @@
 
 **起始版本**：10
 
+## ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE
+
+允许在企业设备上安装企业MDM应用包。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：10
+
+## ohos.permission.INSTALL_SELF_BUNDLE
+
+允许企业MDM应用在企业设备上自升级。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：10
+
 ## ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE
 
 允许在企业设备上安装企业normal应用包。
@@ -1730,18 +1754,6 @@
 **ACL使能**：true
 
 **起始版本**：10
-
-## ohos.permission.sec.ACCESS_UDID
-
-允许系统应用获取UDID。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**起始版本**：7
 
 ## ohos.permission.securityguard.REQUEST_SECURITY_MODEL_RESULT
 
@@ -5077,11 +5089,37 @@
 
 **起始版本**：20
 
-## ohos.permission.MANAGE_SELF_SKILLS
+## ohos.permission.GET_SCREEN_CONTENT
 
-允许应用管理本应用的skills配置。
+允许应用获取屏幕上的内容。
 
-获取该权限后，应用可管理自身的skills配置，扩展隐式匹配能力，如支持打开特定类型文件等。
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：20
+
+## ohos.permission.SIMULATE_USER_INPUT
+
+允许应用模拟用户操作。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：20
+
+## ohos.permission.SET_LAUNCH_REASON_MESSAGE
+
+允许系统应用拉起其他应用时设置拉起原因。
 
 **权限级别**：system_basic
 
@@ -5089,13 +5127,11 @@
 
 **ACL使能**：true
 
-**支持设备**：PC/2in1
+**起始版本**：18
 
-**起始版本**：22
+## ohos.permission.ACCESS_SUPER_HUB
 
-## ohos.permission.DATA_IDENTIFY_ANONYMIZE
-
-允许系统应用调用数据识别脱敏能力。
+允许应用拉起"中转站"。
 
 **权限级别**：system_basic
 
@@ -5103,6 +5139,4 @@
 
 **ACL使能**：true
 
-**支持设备**：PC/2in1 | Phone | Tablet | TV | Car
-
-**起始版本**：21
+**起始版本**：12

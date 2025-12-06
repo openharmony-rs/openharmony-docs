@@ -67,13 +67,13 @@ Describes the size of the screen region to capture.
 
 save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
-Takes a screenshot. This API uses an asynchronous callback to return the result.
+Obtains a screenshot. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only to system applications)
+**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only for system applications)
 
 **Parameters**
 
@@ -115,7 +115,7 @@ let screenshotOptions: screenshot.ScreenshotOptions = {
 };
 screenshot.save(screenshotOptions, (err: BusinessError, pixelMap: image.PixelMap) => {
   if (err) {
-    console.error('Failed to save screenshot. Code: ' + JSON.stringify(err));
+    console.error(`Failed to save screenshot. Code: ${err.code} , message : ${err.message}`);
     return;
   }
   console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
@@ -127,13 +127,13 @@ screenshot.save(screenshotOptions, (err: BusinessError, pixelMap: image.PixelMap
 
 save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
-Takes a screenshot. This API uses an asynchronous callback to return the result.
+Obtains a screenshot. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only to system applications)
+**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only for system applications)
 
 **Parameters**
 
@@ -159,7 +159,7 @@ import { image } from '@kit.ImageKit';
 
 screenshot.save((err: BusinessError, pixelMap: image.PixelMap) => {
   if (err) {
-    console.error('Failed to save screenshot. Code: ' + JSON.stringify(err));
+    console.error(`Failed to save screenshot. Code: ${err.code} , message : ${err.message}`);
     return;
   }
   console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
@@ -171,13 +171,13 @@ screenshot.save((err: BusinessError, pixelMap: image.PixelMap) => {
 
 save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 
-Takes a screenshot. This API uses a promise to return the result.
+Obtains a screenshot. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only to system applications)
+**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only for system applications)
 
 **Parameters**
 
@@ -225,13 +225,14 @@ let screenshotOptions: screenshot.ScreenshotOptions = {
 try {
   let promise = screenshot.save(screenshotOptions);
   promise.then((pixelMap: image.PixelMap) => {
-    console.log('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
+    let pixelNumber = pixelMap.getPixelBytesNumber();
+    console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelNumber}`);
     pixelMap.release(); // Release the memory in time after the PixelMap is used.
   }).catch((err: BusinessError) => {
-    console.log('Failed to save screenshot. Code: ' + JSON.stringify(err));
+    console.error(`Failed to save screenshot. Code: ${err.code} , message : ${err.message}`);
   });
 } catch (exception) {
-  console.error('Failed to save screenshot. Code: ' + JSON.stringify(exception));
+  console.error(`Failed to save screenshot. Code: ${exception.code} , message : ${exception.message}`);
 };
 ```
 
@@ -239,7 +240,7 @@ try {
 
 saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelMap&gt;&gt;
 
-Takes a screenshot. This API uses a promise to return the result. SDR stands for Standard Dynamic Range, and HDR stands for High Dynamic Range.
+Obtains a screenshot. This API uses a promise to return the result. SDR stands for Standard Dynamic Range, and HDR stands for High Dynamic Range.
 - If the screen contains HDR resources (even if they are partially obscured), this API returns an array with both SDR and HDR PixelMaps, regardless of whether HDR is enabled.
 - If there are no HDR resources, it returns an array with a single SDR PixelMap. Unlike the [save](#screenshotsave) API, which returns a single SDR PixelMap, this API always returns an array. Additionally, this API does not support cropping, stretching, or rotating features available in the [save](#screenshotsave) API.
 <br><br>
@@ -248,7 +249,7 @@ Takes a screenshot. This API uses a promise to return the result. SDR stands for
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only to system applications)
+**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only for system applications)
 
 **Parameters**
 
@@ -295,9 +296,9 @@ try {
       pixelMap.release();
     }
   }).catch((err: BusinessError) => {
-    console.error('Failed to save SDR and HDR screenshot. Code: ' + JSON.stringify(err));
+    console.error(`Failed to save SDR and HDR screenshot. Code: ${err.code} , message : ${err.message}`);
   });
 } catch (exception) {
-  console.error('Failed to save SDR and HDR screenshot. Code: ' + JSON.stringify(exception));
+  console.error(`Failed to save SDR and HDR screenshot. Code: ${exception.code} , message : ${exception.message}`);
 };
 ```

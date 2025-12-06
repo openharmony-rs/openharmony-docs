@@ -20,6 +20,7 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 二维向量，通常用于表示2D空间中的点或方向，由x和y两个分量组成。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | x | number | 否 | 否 | x轴分量，取值范围是实数。 |
@@ -87,7 +88,19 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 | y | number | 否 | 否 | 矩形左下角y轴分量，单位为所属坐标系的单位长度，取值为任意实数，具体范围依赖场景坐标系设置。 |
 | width | number | 否 | 否 | 矩形宽度，单位为所属坐标系的单位长度，有效取值范围大于0。 |
 | height | number | 否 | 否 | 矩形高度，单位为所属坐标系的单位长度，有效取值范围大于0。 |
+## RenderingPipelineType<sup>21+</sup>
+
+渲染管线类型枚举。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 值 | 说明 |
+| ---- | ---- | ---- |
+| FORWARD_LIGHTWEIGHT | 0 | 轻量级前向渲染管线，直接渲染到后缓冲区。该管线只能在着色器中实现逐像素效果（例如色调映射），不支持复杂效果（例如光晕）。 |
+| FORWARD | 1 | 高质量前向渲染管线，用于复杂的视觉效果（例如光晕）。 |
+
 ## GeometryType<sup>18+</sup>
+
 几何类型枚举，用于指定不同的几何类型。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D

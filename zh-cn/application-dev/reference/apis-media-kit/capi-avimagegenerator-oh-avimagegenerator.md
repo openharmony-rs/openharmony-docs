@@ -4,8 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
-
+<!--Adviser: @w_Machine_cc-->
 ## 概述
 
 定义OH_AVImageGenerator类型，用于生成指定时间点视频帧。

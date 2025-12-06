@@ -4,7 +4,7 @@
 <!--Owner: @hddgzw-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 属性字符串StyledString/MutableStyledString（其中MutableStyledString继承自StyledString，下文统称为StyledString），可用于在字符或段落级别上设置文本样式。将StyledString应用到文本组件上，可以采用多种方式修改文本，包括调整字号、添加字体颜色、使文本具备可点击性，以及通过自定义方式绘制文本等。具体使用方法请参考[属性字符串](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md)的文档。
 
@@ -549,7 +549,7 @@
       // 使用二分查找
       while (low <= high) {
         let mid = (low + high) >> 1;
-        console.log("demo: get " + low + " " + high + " " + mid);
+        console.info("demo: get " + low + " " + high + " " + mid);
         let moreStyledString = new MutableStyledString("... 全文", [{
           start: 4,
           length: 2,
@@ -715,7 +715,7 @@
     // Bold样式
     boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
     // 创建含段落样式的对象paragraphStyledString1
-    paragraphStyledString1: MutableStyledString = new MutableStyledString("\n品牌相纸 高清冲印30张\n限时直降5.15元 限量增送", [
+    paragraphStyledString1: MutableStyledString = new MutableStyledString("\n品牌相纸 高清冲印30张\n限时直降5.15元 限量赠送", [
       {
         start: 0,
         length: 28,

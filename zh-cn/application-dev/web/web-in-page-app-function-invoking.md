@@ -44,6 +44,7 @@
           .onClick(() => {
             try {
               this.webviewController.deleteJavaScriptRegister("testObjName");
+              this.webviewController.refresh();
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
@@ -84,7 +85,7 @@
     }
 
     toString(): void {
-      console.log('Web Component toString');
+      console.info('Web Component toString');
     }
   }
 
@@ -137,7 +138,7 @@
 
   > **说明：**
   >
-  > - 使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)方法注册时，注册后需调用[refresh()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#refresh)方法生效。
+  > - 使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)方法注册后在下次加载或者重新加载后生效。
 
 - 可选参数permission是一个json字符串，示例如下：
   ```json
@@ -235,7 +236,7 @@
     }
 
     toString(param: string): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -317,7 +318,7 @@
     }
 
     toString(param: ESObject): void {
-      console.log('Web Component toString' + param["name"]);
+      console.info('Web Component toString' + param["name"]);
     }
   }
 
@@ -391,7 +392,7 @@
     }
 
     toString(param: String): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -465,7 +466,7 @@
     }
 
     toString(param: string): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -579,7 +580,7 @@
     }
 
     toString(param: string): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -652,7 +653,7 @@
     test(): Promise<string> {
       let p: Promise<string> = new Promise((resolve, reject) => {
         setTimeout(() => {
-          console.log('执行完成');
+          console.info('执行完成');
           reject('fail');
         }, 10000);
       });
@@ -660,7 +661,7 @@
     }
 
     toString(param: string): void {
-      console.log(" " + param);
+      console.info(" " + param);
     }
   }
 
@@ -732,7 +733,7 @@
     }
 
     toString(param:string): void {
-      console.log(" " + param);
+      console.info(" " + param);
     }
   }
 

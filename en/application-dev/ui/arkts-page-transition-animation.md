@@ -1,6 +1,12 @@
 # Page Transition Animation (Not Recommended)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
-To achieve a better transition effect, you are advised to use the [Navigation](arkts-navigation-navigation.md) component and [modal transition](arkts-modal-transition.md).
+To achieve a better transition effect, use [component navigation](arkts-navigation-navigation.md) component and [modal transition](arkts-modal-transition.md).
 
 During page redirection, one page enters and the other page exits. You can customize the [page transition effects](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md) for these pages through the **pageTransition** function. Specifically, [PageTransitionEnter](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#pagetransitionenter) defines the page entrance animation, while [PageTransitionExit](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#pagetransitionexit) defines the page exit animation.
 The **pageTransition** function is as follows:
@@ -30,7 +36,7 @@ PageTransitionExit({type?: RouteType,duration?: number,curve?: Curve | string,de
 Both **PageTransitionEnter** and **PageTransitionExit** contain the **slide**, **translate**, **scale**, and **opacity** attributes. For **PageTransitionEnter**, these attributes indicate the start values for page entrance. For **PageTransitionExit**, these attributes indicate the end values for page exit. In this sense, configuration of page transition is similar to that of component transition. **PageTransitionEnter** provides the **onEnter** callback, and **PageTransitionExit** provides the **onExit** callback.
 
 
-In the preceding APIs, the **type** parameter indicates the route type used in page navigation. Each page transition involves exit of one page and entrance of the other. If you switch from page A to page B through the **router.pushUrl** operation, page A exits, with the exit animation applied; and page B enters, with the entrance animation applied. If you switch from page B back to page A through the **router.back** operation, page B exits, , with the exit animation applied; and page A enters, with the entrance animation applied. That is, **PageTransitionEnter** of a page may be an entrance animation of a new page (pushed to the stack) or of an existing page (popped from the stack). To distinguish these two types of entrance animations, the **type** parameter is provided.
+In the preceding APIs, the **type** parameter indicates the route type used in page navigation. Each page transition involves exit of one page and entrance of the other. If you switch from page A to page B using [pushUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl), page A exits and plays the exit animation; and page B enters and plays the entrance animation. If you switch from page B back to page A using [back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back), page B exits and plays the exit animation; and page A enters and plays the entrance animation. That is, **PageTransitionEnter** of a page may be an entrance animation of a new page (pushed to the stack) or of an existing page (popped from the stack). To distinguish these two types of entrance animations, the **type** parameter is provided.
 
 
 ## Setting type to RouteType.None
@@ -68,10 +74,10 @@ Assume that the page navigation is in the multi-instance mode, which means that 
 
 | Route Operation                        | Page A Transition Effect                           | Page B Transition Effect                           |
 | ---------------------------- | ---------------------------------- | ---------------------------------- |
-| **router.pushUrl**, navigating from page A to a new instance of page B| The page exits. The animation defined by **PageTransitionExit** is applied. In the example, the page slides out from the left of the screen. | The page enters. The animation defined by **PageTransitionEnter** is applied. In the example, the page slides in from the right of the screen.|
-| **router.back**, returning from page B back to page A      | The page enters. The animation defined by **PageTransitionEnter** is applied. In the example, the page slides in from the left of the screen.| The page exits. The animation defined by **PageTransitionExit** is applied. In the example, the page slides out from the right of the screen. |
-| **router.pushUrl**, navigating from page B to a new instance of page A| The page enters. The animation defined by **PageTransitionEnter** is applied. In the example, the page slides in from the left of the screen.| The page exits. The animation defined by **PageTransitionExit** is applied. In the example, the page slides out from the right of the screen. |
-| **router.back**, returning from page A back to page B      | The page exits. The animation defined by **PageTransitionExit** is applied. In the example, the page slides out from the left of the screen. | The page enters. The animation defined by **PageTransitionEnter** is applied. In the example, the page slides in from the right of the screen.|
+| **pushUrl**, navigating from page A to a new instance of page B| The page exits. The animation defined by **PageTransitionExit** is applied. In the example, the page slides out from the left of the screen. | The page enters. The animation defined by **PageTransitionEnter** is applied. In the example, the page slides in from the right of the screen.|
+| **back**, returning from page B back to page A      | The page enters. The animation defined by **PageTransitionEnter** is applied. In the example, the page slides in from the left of the screen.| The page exits. The animation defined by **PageTransitionExit** is applied. In the example, the page slides out from the right of the screen. |
+| **pushUrl**, navigating from page B to a new instance of page A| The page enters. The animation defined by **PageTransitionEnter** is applied. In the example, the page slides in from the left of the screen.| The page exits. The animation defined by **PageTransitionExit** is applied. In the example, the page slides out from the right of the screen. |
+| **back**, returning from page A back to page B      | The page exits. The animation defined by **PageTransitionExit** is applied. In the example, the page slides out from the left of the screen. | The page enters. The animation defined by **PageTransitionEnter** is applied. In the example, the page slides in from the right of the screen.|
 
 
 If you want the page accessed by **router.pushUrl** to always slide in from the right and the page exited by **router.back** to always slide out from the right, the third and fourth cases in the preceding table do not meet the requirements. In this case, you need to define four page transition effects.
@@ -124,10 +130,10 @@ The preceding code defines page transition effects for all possibles scenarios. 
 
 | Route Operation                        | Page A Transition Effect                                 | Page B Transition Effect                                 |
 | ---------------------------- | ---------------------------------------- | ---------------------------------------- |
-| **router.pushUrl**, navigating from page A to a new instance of page B| The page exits. The transition style of **PageTransitionExit** whose **type** is **RouteType.Push** takes effect. The page slides out from the left of the screen.| The page enters. The transition style of **PageTransitionEnter** whose **type** is **RouteType.Push** takes effect. The page slides in from the right of the screen.|
-| **router.back**, returning from page B back to page A      | The page enters. The transition style of **PageTransitionEnter** whose **type** is **RouteType.Pop** takes effect. The page slides in from the left of the screen.| The page exits. The transition style of **PageTransitionExit** whose **type** is **RouteType.Pop** takes effect. The page slides out from the right of the screen.|
-| **router.pushUrl**, navigating from page B to a new instance of page A| The page enters. The transition style of **PageTransitionEnter** whose **type** is **RouteType.Push** takes effect. The page slides in from the right of the screen.| The page exits. The transition style of **PageTransitionExit** whose **type** is **RouteType.Push** takes effect. The page slides out from the left of the screen.|
-| **router.back**, returning from page A back to page B      | The page exits. The transition style of **PageTransitionExit** whose **type** is **RouteType.Pop** takes effect. The page slides out from the right of the screen.| The page enters. The transition style of **PageTransitionEnter** whose **type** is **RouteType.Pop** takes effect. The page slides in from the left of the screen.|
+| **pushUrl**, navigating from page A to a new instance of page B| The page exits. The transition style of **PageTransitionExit** whose **type** is **RouteType.Push** takes effect. The page slides out from the left of the screen.| The page enters. The transition style of **PageTransitionEnter** whose **type** is **RouteType.Push** takes effect. The page slides in from the right of the screen.|
+| **back**, returning from page B back to page A      | The page enters. The transition style of **PageTransitionEnter** whose **type** is **RouteType.Pop** takes effect. The page slides in from the left of the screen.| The page exits. The transition style of **PageTransitionExit** whose **type** is **RouteType.Pop** takes effect. The page slides out from the right of the screen.|
+| **pushUrl**, navigating from page B to a new instance of page A| The page enters. The transition style of **PageTransitionEnter** whose **type** is **RouteType.Push** takes effect. The page slides in from the right of the screen.| The page exits. The transition style of **PageTransitionExit** whose **type** is **RouteType.Push** takes effect. The page slides out from the left of the screen.|
+| **back**, returning from page A back to page B      | The page exits. The transition style of **PageTransitionExit** whose **type** is **RouteType.Pop** takes effect. The page slides out from the right of the screen.| The page enters. The transition style of **PageTransitionEnter** whose **type** is **RouteType.Pop** takes effect. The page slides in from the left of the screen.|
 
 
 >**NOTE**
@@ -153,7 +159,7 @@ You can disable the transition animation of a page by setting the page transitio
 
 ## Example
 
-In the following example, page transition animations are defined using [router.pushUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl) for all the page transition scenarios.
+In the following example, page transition animations are defined using [pushUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl) for all the page transition scenarios.
 
 ```ts
 // PageTransitionSrc1

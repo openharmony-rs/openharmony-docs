@@ -17,8 +17,16 @@ For details about how to use the APIs (such as parameter usage restrictions and 
 
 | API| Description|
 | -------- | -------- |
-| addWatcher(watcher: Watcher): AppEventPackageHolder | Adds a watcher to listen for application events.|
-| removeWatcher(watcher: Watcher): void | Removes a watcher to unsubscribe from application events.|
+| addWatcher(watcher: Watcher): AppEventPackageHolder | Adds an event watcher.|
+| removeWatcher(watcher: Watcher): void | Removes an event watcher.|
+
+> **NOTE**
+>
+> The **addWatcher** API involves I/O operations. In performance-sensitive service scenarios, you need to determine whether to call this API in the main thread or a child thread based on the actual service requirements.
+>
+> To call **addWatcher()** in a child thread, ensure that the child thread is not destroyed in the entire API usage period.
+>
+> For details about how to call an API in a child thread, see [Overview of Multithreaded Concurrency](../arkts-utils/multi-thread-concurrency-overview.md).
 
 **Event Logging APIs**
 
@@ -26,6 +34,12 @@ For details about how to use the APIs (such as parameter usage restrictions and 
 | -------- | -------- |
 | write(info: AppEventInfo, callback: AsyncCallback&lt;void>): void | Writes events to the event file through **AppEventInfo** objects. This API uses an asynchronous callback to return the result.|
 | write(info: AppEventInfo): Promise&lt;void> | Writes events to the event file through **AppEventInfo** objects. This API uses a promise to return the result.|
+
+> **NOTE**
+>
+> The **write** API involves I/O operations, and the execution time is usually at the millisecond level. Therefore, you need to determine whether to call this API in the main thread or a child thread based on the actual service requirements.
+>
+> For details about how to call an API in a child thread, see [Overview of Multithreaded Concurrency](../arkts-utils/multi-thread-concurrency-overview.md).
 
 ## How to Develop
 
@@ -130,7 +144,7 @@ The following describes how to subscribe to a crash event (system event) and a b
      Button("buttonClick")
        .onClick(()=>{
          // In onClick(), use hiAppEvent.write() to log an event when the button is clicked.
-         let eventParams: Record<string, number> = { 'click_time': 100 };
+         let eventParams: Record<string, number> = { "click_time": 100 };
          let eventInfo: hiAppEvent.AppEventInfo = {
            // Define the event domain.
            domain: "button",

@@ -1,8 +1,9 @@
 # AbilityRuntime_StartOptions
 
+
 ## Overview
 
-The describes the startup options.
+The struct describes the startup options.
 
 **Since**: 17
 

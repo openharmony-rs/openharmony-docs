@@ -8,7 +8,7 @@
 
 上文所述的装饰器（包括[\@State](./arkts-state.md)、[\@Prop](./arkts-prop.md)、[\@Link](./arkts-link.md)、[\@Provide和\@Consume](./arkts-provide-and-consume.md)装饰器）仅能观察到第一层的变化，但是在实际应用开发中，应用会根据开发需要，封装自己的数据模型。对于多层嵌套的情况，比如二维数组、对象数组、嵌套类场景，无法观察到第二层的属性变化。因此，为了实现对嵌套数据结构中深层属性变化的观察，引入了\@Observed和\@ObjectLink装饰器。
 
-\@Observed/\@ObjectLink适用于观察嵌套对象属性的变化，需要开发者对装饰器的基本观察能力有一定的了解，再来对比阅读该文档。建议提前阅读：[\@State](./arkts-state.md)的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
+\@Observed/\@ObjectLink适用于观察嵌套对象（对象的属性是对象）属性的变化，需要开发者对装饰器的基本观察能力有一定的了解，再来对比阅读该文档。建议提前阅读：[\@State](./arkts-state.md)的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
 
 > **说明：**
 >
@@ -18,13 +18,15 @@
 
 ## 概述
 
-\@ObjectLink和\@Observed类装饰器用于在涉及嵌套对象或数组的场景中进行双向数据同步：
+\@ObjectLink和\@Observed类装饰器配合使用，可实现嵌套对象或数组的双向数据同步，使用方式如下：
+ 
+- 将数组项或类属性声明为\@Observed装饰的类型，示例请参考[嵌套对象](#嵌套对象)。
 
-- 使用new创建被\@Observed装饰的类，可以观察到类中属性的变化。
+- 在子组件中使用\@ObjectLink装饰的状态变量，用于接收父组件\@Observed装饰的类实例，从而建立双向数据绑定。
 
-- 子组件中\@ObjectLink装饰器装饰的状态变量用于接收\@Observed装饰的类的实例，和父组件中对应的状态变量建立双向数据绑定。这个实例可以是数组中的被\@Observed装饰的项，或者是class、object中的属性，这个属性同样也需要被\@Observed装饰。
+- API version 19之前，\@ObjectLink只能接收\@Observed装饰的类实例；API version 19及以后，\@ObjectLink也可以接收复杂类型，无\@Observed装饰的限制。但需注意，如需观察嵌套类型场景，需要其接收\@Observed装饰的类实例或[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)的返回值。示例请参考[二维数组](#二维数组)。
 
-- \@Observed用于嵌套类场景中，观察对象类属性变化，要配合自定义组件使用，示例请参考[嵌套对象](#嵌套对象)，如果要做数据双/单向同步，需要搭配\@ObjectLink或者\@Prop使用，示例请参考[\@Prop与\@ObjectLink的差异](#prop与objectlink的差异)。
+开发者如需实现单向数据同步，需要搭配\@Prop使用，示例请参考[\@Prop与\@ObjectLink的差异](#prop与objectlink的差异)。
 
 
 ## 装饰器说明
@@ -37,7 +39,7 @@
 | \@ObjectLink变量装饰器 | 说明                                       |
 | ----------------- | ---------------------------------------- |
 | 装饰器参数             | 无。                                       |
-| 允许装饰的变量类型         | 支持继承Date、[Array](#二维数组)的class实例，API11及以上支持继承[Map](#继承map类)、[Set](#继承set类)的class实例。<br/>API11及以上支持\@Observed装饰类和undefined或null组成的联合类型，比如ClassA \| ClassB, ClassA \| undefined 或者 ClassA \| null, 示例请参考[@ObjectLink支持联合类型](#objectlink支持联合类型)。<br/>API version 19之前，必须为被\@Observed装饰的class实例。<br/>API version 19及以后，\@ObjectLink也可以被[makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)的返回值初始化。<br/>支持类型的场景请参考[观察变化](#观察变化)。<br/>**说明：**<br/>\@ObjectLink不支持简单类型，如果开发者需要使用简单类型，可以使用[\@Prop](arkts-prop.md)。 |
+| 允许装饰的变量类型         | 支持继承Date、[Array](#二维数组)的class实例。<br/>API version 11及以上支持继承[Map](#继承map类)、[Set](#继承set类)的class实例以及\@Observed装饰类和undefined或null组成的联合类型，比如ClassA \| ClassB、 ClassA \| undefined 或者 ClassA \| null, 示例请参考[@ObjectLink支持联合类型](#objectlink支持联合类型)。<br/>API version 19之前，必须为被\@Observed装饰的class实例。<br/>API version 19及以上，\@ObjectLink可以被复杂类型初始化，即class、object或built-in类型。如果需要观察变化，请参考[观察变化](#观察变化)。<br/>**说明：**<br/>\@ObjectLink不支持简单类型，如果开发者需要使用简单类型，可以使用[\@Prop](arkts-prop.md)。 |
 | 被装饰变量的初始值         | 禁止本地初始化。                                     |
 
 \@ObjectLink的属性可以被改变，但不允许整体赋值，即\@ObjectLink装饰的变量是只读的。
@@ -62,24 +64,21 @@ this.objLink= ...
 
 | \@ObjectLink传递/访问 | 说明                                       |
 | ----------------- | ---------------------------------------- |
-| 从父组件初始化           | 必须指定。<br/>初始化\@ObjectLink装饰的变量必须同时满足以下场景：<br/>-&nbsp;类型必须是\@Observed装饰的class。<br/>-&nbsp;初始化的数值需要是数组项，或者class的属性。<br/>-&nbsp;同步源的class或者数组必须是[\@State](./arkts-state.md)，[\@Link](./arkts-link.md)，[\@Provide](./arkts-provide-and-consume.md)，[\@Consume](./arkts-provide-and-consume.md)或者\@ObjectLink装饰的数据。<br/>同步源是数组项的示例请参考[对象数组](#对象数组)。初始化的class的示例请参考[嵌套对象](#嵌套对象)。 |
+| 从父组件初始化           | 必须指定。<br/>必须使用复杂类型初始化\@ObjectLink装饰的变量，如果需要观察变化需要满足以下场景：<br/>-&nbsp;类型必须是\@Observed装饰的class或[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)返回值。<br/>-&nbsp;初始化的数值需要是数组项，或者class的属性。<br/>-&nbsp;同步源的class或者数组必须是[\@State](./arkts-state.md)，[\@Link](./arkts-link.md)，[\@Provide](./arkts-provide-and-consume.md)，[\@Consume](./arkts-provide-and-consume.md)或者\@ObjectLink装饰的数据。<br/>同步源是数组项的示例请参考[对象数组](#对象数组)。初始化的class的示例请参考[嵌套对象](#嵌套对象)。 |
 | 与源对象同步            | 双向。                                      |
 | 可以初始化子组件          | 允许，可用于初始化常规变量、\@State、\@Link、\@Prop、\@Provide |
 
 
   **图1** 初始化规则图示  
 
-
-![zh-cn_image_0000001502255262](figures/zh-cn_image_0000001502255262.png)
+  ![zh-cn_image_0000001502255261](figures/zh-cn_image_0000001502255261.png)
 
 
 ## 观察变化和行为表现
 
-
 ### 观察变化
 
-\@Observed装饰的类，如果其属性为非简单类型，比如class、Object或者数组，那么这些属性也需要被\@Observed装饰，否则将观察不到这些属性的变化。
-
+API version 19之前，\@Observed装饰的类，如果其属性为非简单类型，如class、Object、Array、Map、Set和Date，那么这些属性也需要被\@Observed装饰，否则将观察不到这些属性的变化或内置类型的API调用。API version 19及以后，也可以通过使用[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)来观察嵌套类属性的变化。
 
 ```ts
 class Child {
@@ -116,7 +115,11 @@ this.parent.count = 5;
 this.parent.child.num = 5;
 ```
 
-\@ObjectLink：\@ObjectLink只能接收被\@Observed装饰class的实例，推荐设计单独的自定义组件来渲染每一个数组或对象。此时，对象数组或嵌套对象（属性是对象的对象称为嵌套对象）需要两个自定义组件，一个自定义组件呈现外部数组/对象，另一个自定义组件呈现嵌套在数组/对象内的类对象。可以观察到：
+\@ObjectLink接收对象时，如果对象被\@State或其他状态变量装饰器装饰，则可以观察第一层变化。示例请参考[对象类型](#对象类型)。
+
+\@ObjectLink接收嵌套对象时，内层对象需要为被\@Observed装饰的class类型。从API version 19开始，内层对象也支持被[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)处理的返回值。示例请参考[嵌套对象](#嵌套对象)。
+
+\@ObjectLink推荐设计单独的自定义组件来渲染每一个数组或对象。此时，对象数组或嵌套对象需要两个自定义组件，一个自定义组件呈现外部数组/对象，另一个自定义组件呈现嵌套在数组/对象内的类对象。可以观察到：
 
 - 其属性的数值的变化，其中属性是指Object.keys(observedObject)返回的所有属性，示例请参考[嵌套对象](#嵌套对象)。
 
@@ -174,7 +177,7 @@ struct Parent {
         .onClick(() => {
           this.newData.data = new DateClass('2023-07-07');
         })
-      Button('ViewB: this.newData = new NewDate(new DateClass('2023-08-20'))')
+      Button(`ViewB: this.newData = new NewDate(new DateClass('2023-08-20'))`)
         .onClick(() => {
           this.newData = new NewDate(new DateClass('2023-08-20'));
         })
@@ -203,12 +206,12 @@ struct Parent {
 
 1. 使用\@Observed装饰class会改变class原始的原型链，\@Observed和其他类装饰器装饰同一个class可能会带来问题。
 
-2. \@ObjectLink装饰器不能在\@Entry装饰的自定义组件中使用。
+2. \@ObjectLink装饰器不建议在[\@Entry](./arkts-create-custom-components.md#entry)装饰的自定义组件中使用，编译时会产生告警。
 
-3. \@ObjectLink装饰的类型必须是复杂类型，否则会有编译期报错。
+3. \@ObjectLink装饰的类型必须是复杂类型，否则会有编译时报错。
 
-4. API version 19前，\@ObjectLink装饰的变量类型必须是显式地由\@Observed装饰的类。如果未指定类型，或不是\@Observed装饰的class，编译期会报错。
-  API version 19及以后，\@ObjectLink也可以被[makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)的返回值初始化，否则会有运行时告警日志。
+4. API version 19前，\@ObjectLink装饰的变量类型必须是显式地由\@Observed装饰的类。如果未指定类型，或不是\@Observed装饰的class，编译时报错。
+  API version 19及以后，\@ObjectLink也可以被[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)的返回值初始化，若\@ObjectLink接收未使用\@Observed装饰的class或makeV1Observed返回值进行初始化，则会有运行时告警日志。
 
     ```ts
     @Observed
@@ -237,7 +240,7 @@ struct Parent {
     @ObjectLink count: Info;
     ```
   
-5. \@ObjectLink装饰的变量不能本地初始化，仅能通过构造参数从父组件传入初始值，否则编译期会报错。
+5. \@ObjectLink装饰的变量不能本地初始化，仅能通过构造参数从父组件传入初始值，否则编译时会报错。
 
     ```ts
     @Observed
@@ -348,93 +351,52 @@ struct Parent {
 
 ## 使用场景
 
-### 继承对象
+### 对象类型
+
+该场景包含built-in类型（Array、Map、Set和Date）和普通class。从API　version 19开始，\@ObjectLink接收\@State传递built-in类型和普通class对象，可以观察其API调用和第一层变化，无需额外添加\@Observed装饰。因为\@State等状态变量装饰器，会给对象（外层对象）添加一层“代理”包装，其功能等同于添加\@Observed装饰。
 
 ```ts
-@Observed
-class Animal {
+class Book {
   name: string;
-  age: number;
 
-  constructor(name: string, age: number) {
+  constructor(name: string) {
     this.name = name;
-    this.age = age;
   }
 }
 
-@Observed
-class Dog extends Animal {
-  kinds: string;
+@Component
+struct BookCard {
+  @ObjectLink book: Book;
 
-  constructor(name: string, age: number, kinds: string) {
-    super(name, age);
-    this.kinds = kinds;
+  build() {
+    Column() {
+      Text(`BookCard: ${this.book.name}`) // 可以观察到name的变化
+        .width(320)
+        .margin(10)
+        .textAlign(TextAlign.Center)
+
+      Button('change book.name')
+        .width(320)
+        .margin(10)
+        .onClick(() => {
+          this.book.name = 'C++';
+        })
+    }
   }
 }
 
 @Entry
 @Component
 struct Index {
-  @State dog: Dog = new Dog('Molly', 2, 'Husky');
-
-  @Styles
-  pressedStyles() {
-    .backgroundColor('#ffd5d5d5')
-  }
-
-  @Styles
-  normalStyles() {
-    .backgroundColor('#ffffff')
-  }
+  @State book: Book = new Book('JS');
 
   build() {
     Column() {
-      Text(`${this.dog.name}`)
-        .width(320)
-        .margin(10)
-        .fontSize(30)
-        .textAlign(TextAlign.Center)
-        .stateStyles({
-          pressed: this.pressedStyles,
-          normal: this.normalStyles
-        })
-        .onClick(() => {
-          this.dog.name = 'DouDou';
-        })
-
-      Text(`${this.dog.age}`)
-        .width(320)
-        .margin(10)
-        .fontSize(30)
-        .textAlign(TextAlign.Center)
-        .stateStyles({
-          pressed: this.pressedStyles,
-          normal: this.normalStyles
-        })
-        .onClick(() => {
-          this.dog.age = 3;
-        })
-
-      Text(`${this.dog.kinds}`)
-        .width(320)
-        .margin(10)
-        .fontSize(30)
-        .textAlign(TextAlign.Center)
-        .stateStyles({
-          pressed: this.pressedStyles,
-          normal: this.normalStyles
-        })
-        .onClick(() => {
-          this.dog.kinds = 'Samoyed';
-        })
+      BookCard({ book: this.book })
     }
   }
 }
 ```
-
-![Observed_ObjectLink_inheritance_object](figures/Observed_ObjectLink_inheritance_object.gif)
-
-上述示例中，Dog类中的部分属性（name、age）继承自Animal类，直接修改\@State装饰的变量dog中的属性name和age可以正常触发UI刷新。
 
 ### 嵌套对象
 
@@ -594,7 +556,11 @@ struct Parent {
         .width(320)
         .margin(10)
         .onClick(() => {
-          this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
+          if (this.arrA[Math.floor(this.arrA.length / 2)]) {
+            this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
+          } else {
+            console.info('middle element does not exist');
+          }
         })
       Button('ViewParent: item property in middle')
         .width(320)
@@ -696,7 +662,7 @@ struct IndexPage {
 }
 ```
 
-API version 19及以后，\@ObjectLink也可以被[makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)的返回值初始化。所以开发者如果不想额外声明继承Array的类，也可以使用makeV1Observed来达到同样的效果。
+API version 19及以后，\@ObjectLink也可以被[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)的返回值初始化。所以开发者如果不想额外声明继承Array的类，也可以使用makeV1Observed来达到同样的效果。
 
 完整例子如下。
 
@@ -1104,7 +1070,7 @@ class Cousin extends Parent {
   }
 
   setChild(childId: number): void {
-    return this.child.setChildId(childId);
+    this.child.setChildId(childId);
   }
 }
 
@@ -1206,7 +1172,7 @@ class Cousin extends Parent {
   }
 
   setChild(childId: number): void {
-    return this.child.setChildId(childId);
+    this.child.setChildId(childId);
   }
 }
 

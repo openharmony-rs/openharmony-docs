@@ -3,8 +3,9 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @xia-bubai-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 Before requesting permissions for your application, read and understand the [permission request paths](determine-application-mode.md) and this topic to determine the permissions required.
 
@@ -12,7 +13,7 @@ Before requesting permissions for your application, read and understand the [per
 >
 > - The permissions listed in this topic are available to system_basic or system_core applications, but not to normal applications.
 > - The authorization mode of these permissions is system_grant.
-> - These permissions cannot be requested via access control list (ACL).
+> - The following permissions cannot be requested across application levels via ACL.
 
 For details about the process for requesting the permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 
@@ -208,18 +209,6 @@ Allows a system service to enable distributed hardware resources.
 
 **Valid since**: 11
 
-## ohos.permission.ACCESS_SUPER_HUB
-
-Allows an application to access Super Hub.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 12
-
 ## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
 
 Allows a UIExtensionAbility to be displayed on the locked screen.
@@ -235,18 +224,6 @@ Allows a UIExtensionAbility to be displayed on the locked screen.
 ## ohos.permission.USE_USER_ACCESS_MANAGER
 
 Allows an application to query and configure user identity authentication policies, and verify the authentication result.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 18
-
-## ohos.permission.SET_LAUNCH_REASON_MESSAGE
-
-Allows a system application to set the launch reason when starting another application.
 
 **Permission level**: system_basic
 

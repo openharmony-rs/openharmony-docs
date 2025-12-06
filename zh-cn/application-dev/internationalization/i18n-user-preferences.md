@@ -15,14 +15,11 @@
 
 接口具体使用方法和说明请参考[System](../reference/apis-localization-kit/js-apis-i18n.md#system9)的API接口文档。
 
-1. 导入模块。
+1. 获取用户偏好。
    ```ts
    import { i18n } from '@kit.LocalizationKit';
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
-   ```
 
-2. 获取用户偏好。
-   ```ts
    // 判断系统当前是否使用本地数字
    let usingLocalDigit: boolean = i18n.System.getUsingLocalDigit();
 
@@ -56,8 +53,11 @@
    ```
 
 <!--Del-->
-3. 设置使用本地数字。
+2. 设置使用本地数字。
    ```ts
+   import { i18n } from '@kit.LocalizationKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+
    try {
      i18n.System.setUsingLocalDigit(true); // 使用本地数字
    } catch (error) {
@@ -66,8 +66,11 @@
    }
    ```
 
-4. 设置时间显示格式为24小时制。
+3. 设置时间显示格式为24小时制。
    ```ts
+   import { i18n } from '@kit.LocalizationKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+
    try {
      i18n.System.set24HourClock(true); // 设置系统时制为24小时制
    } catch (error) {

@@ -4,7 +4,7 @@
 <!--Owner: @weixin_41848015-->
 <!--Designer: @libing23232323-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 ## Overview
 
@@ -32,7 +32,7 @@ If the [aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-l
 
 - [onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9): triggered before the **Web** component loads a URL, which is used to intercept the URL and return response data.
 
-- [onPageBegin](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagebegin): triggered when a web page starts loading and only in the main frame (an HTML element used to display the HTML page). This callback is not triggered when the content of an **iframe** or **frameset** (an HTML tag used to include frames) is loaded. Multiple-frame pages may be loaded at the same time. When the main frame is loaded, subframes may still be loaded. This callback will not be triggered for the navigation to the same page or the failed navigation.
+- [onPageBegin](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagebegin): triggered only in the main frame (an element used to display the HTML page) when a web page starts loading. This callback is not triggered when the content of an **iframe** or **frameset** (an HTML tag used to include frames) is loaded. Multiple-frame pages may be loaded at the same time. When the main frame is loaded, subframes may still be loaded. This callback will not be triggered for the navigation to the same page or the failed navigation.
 
 - [onProgressChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onprogresschange): triggered to notify the page loading progress. The multi-frame page or subframes may continue to be loaded while the main frame has been loaded. Therefore, this event may be received after the [onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend) event.
 
@@ -83,15 +83,15 @@ Codes on the application side:
         Web({ src: 'www.example.com', controller: this.controller })
           .onControllerAttached(() => {
             // You are advised to use **loadUrl**, set a custom user agent, and inject a JS object.
-            console.log('onControllerAttached execute')
+            console.info('onControllerAttached execute')
           })
           .onLoadIntercept((event) => {
             if (event) {
-              console.log('onLoadIntercept url:' + event.data.getRequestUrl())
-              console.log('url:' + event.data.getRequestUrl())
-              console.log('isMainFrame:' + event.data.isMainFrame())
-              console.log('isRedirect:' + event.data.isRedirect())
-              console.log('isRequestGesture:' + event.data.isRequestGesture())
+              console.info('onLoadIntercept url:' + event.data.getRequestUrl())
+              console.info('url:' + event.data.getRequestUrl())
+              console.info('isMainFrame:' + event.data.isMainFrame())
+              console.info('isRedirect:' + event.data.isRedirect())
+              console.info('isRequestGesture:' + event.data.isRequestGesture())
             }
             // If true is returned, the loading is blocked. Otherwise, the loading is allowed.
             return false;
@@ -104,7 +104,7 @@ Codes on the application side:
           })
           .onInterceptRequest((event) => {
             if (event) {
-              console.log('url:' + event.request.getRequestUrl());
+              console.info('url:' + event.request.getRequestUrl());
             }
             let head1: Header = {
               headerKey: "Connection",
@@ -117,7 +117,7 @@ Codes on the application side:
             // Add a new element to the end of the array and return the length of the new array.
             let length = this.heads.push(head1);
             length = this.heads.push(head2);
-            console.log('The response header result length is :' + length);
+            console.info('The response header result length is :' + length);
             this.responseWeb.setResponseHeader(this.heads);
             this.responseWeb.setResponseData(this.webData);
             this.responseWeb.setResponseEncoding('utf-8');
@@ -129,33 +129,33 @@ Codes on the application side:
           })
           .onPageBegin((event) => {
             if (event) {
-              console.log('onPageBegin url:' + event.url);
+              console.info('onPageBegin url:' + event.url);
             }
           })
           .onFirstContentfulPaint(event => {
             if (event) {
-              console.log("onFirstContentfulPaint:" + "[navigationStartTick]:" +
+              console.info("onFirstContentfulPaint:" + "[navigationStartTick]:" +
               event.navigationStartTick + ", [firstContentfulPaintMs]:" +
               event.firstContentfulPaintMs);
             }
           })
           .onProgressChange((event) => {
             if (event) {
-              console.log('newProgress:' + event.newProgress);
+              console.info('newProgress:' + event.newProgress);
             }
           })
           .onPageEnd((event) => {
             // You are advised to execute the JavaScript script in this event.
             if (event) {
-              console.log('onPageEnd url:' + event.url);
+              console.info('onPageEnd url:' + event.url);
             }
           })
           .onPageVisible((event) => {
-            console.log('onPageVisible url:' + event.url);
+            console.info('onPageVisible url:' + event.url);
           })
           .onRenderExited((event) => {
             if (event) {
-              console.log('onRenderExited reason:' + event.renderExitReason);
+              console.info('onRenderExited reason:' + event.renderExitReason);
             }
           })
           .onDisAppear(() => {
@@ -227,14 +227,14 @@ struct WebComponent {
               // Set the maximum number of reload times to prevent the page from being cyclically loaded.
               return;
             }
-            console.log('renderReloadCountForCrashed: ' + this.renderReloadCountForCrashed);
+            console.info('renderReloadCountForCrashed: ' + this.renderReloadCountForCrashed);
             this.renderReloadCountForCrashed++;
           } else {
             if (this.renderReloadCountForOthers >= this.renderReloadMaxForOthers) {
               // Set the maximum number of reload times to prevent the page from being cyclically loaded.
               return;
             }
-            console.log('renderReloadCountForOthers: ' + this.renderReloadCountForOthers);
+            console.info('renderReloadCountForOthers: ' + this.renderReloadCountForOthers);
             this.renderReloadCountForOthers++;
           }
           if (this.webIsVisible) {

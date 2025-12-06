@@ -195,7 +195,8 @@ metadata对象示例：
 | 智能手表 | wearable | 系统能力较丰富的手表，具备电话功能。 |
 | 运动表 | litewearable | - |
 | 车机 | car | - |
-| 默认设备 | default | 能够使用全部系统能力的设备。 |
+| 默认设备 | default | 默认设备类型，详情参考[标准系统开发板](../../device-dev/dev-board-on-the-master.md#标准系统开发板)。 |
+| 2in1 | 2in1 | 即PC设备，主要交互方式以多窗口、多任务及键盘鼠标操作为主，充分发挥设备的生产力属性。|
 <!--RP2End-->
 
 ## abilities对象的内部结构
@@ -240,7 +241,7 @@ metadata对象示例：
 系统对无图标应用实施严格管控，防止一些恶意应用故意配置无入口图标，导致用户找不到软件所在的位置，无法操作卸载应用，在一定程度上保证用户终端设备的安全。
 
 **入口图标的设置:** 需要在配置文件（config.json）中abilities配置下设置icon，label以及skills，而且skills的配置下必须同时包含“action.system.home” 和 “entity.system.home”。
-```
+```json
 {
   "module":{
 

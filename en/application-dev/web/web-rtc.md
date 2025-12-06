@@ -4,7 +4,7 @@
 <!--Owner: @qq_42700029-->
 <!--Designer: @qiu-gongkai-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Web Real-Time Communications (WebRTC) is a real-time communication technology that allows network applications or sites to establish peer-to-peer (P2P) connections between browsers without an intermediary, implementing the transmission of video streams, audio streams, or other data. It enables users to create peer-to-peer (P2P) data sharing and conference calls without installing any plug-in or third-party software. WebRTC is applicable to all modern browsers and native clients on major platforms. The underlying technology is implemented as an open web standard and provided as a common JavaScript API in all major browsers.
 

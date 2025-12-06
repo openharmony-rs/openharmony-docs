@@ -4,7 +4,7 @@
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 FoldSplitContainer分栏布局，实现折叠屏二分栏、三分栏在展开态、悬停态以及折叠态的区域控制。
@@ -28,16 +28,7 @@ import { FoldSplitContainer } from '@kit.ArkUI';
 
 ## FoldSplitContainer
 
-FoldSplitContainer({
-  primary: Callback&lt;void&gt;,
-  secondary: Callback&lt;void&gt;,
-  extra?: Callback&lt;void&gt;,
-  expandedLayoutOptions: ExpandedRegionLayoutOptions,
-  hoverModeLayoutOptions: HoverModeRegionLayoutOptions,
-  foldedLayoutOptions: FoldedRegionLayoutOptions,
-  animationOptions?: AnimateParam | null,
-  onHoverStatusChange?: OnHoverStatusChangeHandler
-})
+FoldSplitContainer({primary: Callback&lt;void&gt;, secondary: Callback&lt;void&gt;, extra?: Callback&lt;void&gt;, expandedLayoutOptions: ExpandedRegionLayoutOptions, hoverModeLayoutOptions: HoverModeRegionLayoutOptions, foldedLayoutOptions: FoldedRegionLayoutOptions, animationOptions?: AnimateParam | null, onHoverStatusChange?: OnHoverStatusChangeHandler})
 
 实现折叠屏二分栏、三分栏在展开态、悬停态以及折叠态的区域控制的分栏布局。
 
@@ -66,12 +57,12 @@ FoldSplitContainer({
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| isExtraRegionPerpendicular | boolean | 否 | 设置为true时，扩展区域从上到下贯穿整个组件；设置为false时，扩展区域不贯穿整个组件。此字段仅在extra有效时生效。<br/>默认值：true |
-| verticalSplitRatio | number | 否 | 主要区域与次要区域之间的高度比例。<br/>默认值：[PresetSplitRatio](#presetsplitratio).LAYOUT_1V1 |
-| horizontalSplitRatio | number | 否 | 主要区域与扩展区域之间的宽度比例。此字段在extra有效时生效。<br/>默认值：[PresetSplitRatio](#presetsplitratio).LAYOUT_3V2 |
-| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | 否 | 扩展区域的位置信息。当isExtraRegionPerpendicular设置为false时，此字段生效。<br/>默认值：ExtraRegionPosition.top |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| isExtraRegionPerpendicular | boolean | 否 | 是 | 设置为true时，扩展区域从上到下贯穿整个组件；设置为false时，扩展区域不贯穿整个组件。此字段仅在extra有效时生效。<br/>默认值：true |
+| verticalSplitRatio | number | 否 | 是 | 主要区域与次要区域之间的高度比例。<br/>默认值：[PresetSplitRatio](#presetsplitratio).LAYOUT_1V1 |
+| horizontalSplitRatio | number | 否 | 是 | 主要区域与扩展区域之间的宽度比例。此字段在extra有效时生效。<br/>默认值：[PresetSplitRatio](#presetsplitratio).LAYOUT_3V2 |
+| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | 否 | 是 | 扩展区域的位置信息。当isExtraRegionPerpendicular设置为false时，此字段生效。<br/>默认值：ExtraRegionPosition.top |
 
 ## HoverModeRegionLayoutOptions
 
@@ -81,16 +72,16 @@ FoldSplitContainer({
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| showExtraRegion | boolean | 否 | 可折叠屏幕在半折叠状态下是否显示扩展区域。设置为true时表示显示扩展区域，设置为false时表示不显示扩展区域。<br/>默认值：false |
-| horizontalSplitRatio | number | 否 | 主要区域与扩展区域之间的宽度比例，当且仅当extra有效时此字段才生效。<br/>默认值：[PresetSplitRatio](#presetsplitratio).LAYOUT_3V2 |
-| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | 否 | 扩展区域的位置信息，当且仅当showExtraRegion设置为true时此字段才生效。<br/>默认值：ExtraRegionPosition.top |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| showExtraRegion | boolean | 否 | 是 | 可折叠屏幕在半折叠状态下是否显示扩展区域。设置为true时表示显示扩展区域，设置为false时表示不显示扩展区域。<br/>默认值：false |
+| horizontalSplitRatio | number | 否 | 是 | 主要区域与扩展区域之间的宽度比例，当且仅当extra有效时此字段才生效。<br/>默认值：[PresetSplitRatio](#presetsplitratio).LAYOUT_3V2 |
+| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | 否 | 是 | 扩展区域的位置信息，当且仅当showExtraRegion设置为true时此字段才生效。<br/>默认值：ExtraRegionPosition.top |
 
 > **说明：**
 >
-> 1.设备处于悬停态时，存在避让区域，布局计算需要考虑避让区域对布局的影响。
-> 2.在悬停模式下，屏幕上半部分用于显示，下半部分用于操作。
+> 1.在悬停状态下，设备存在避让区域，布局计算时需考虑该区域的影响。
+> 2.在悬停模式下，屏幕上半部分为显示区域，下半部分为操作区域。
 
 ## FoldedRegionLayoutOptions
 
@@ -100,9 +91,9 @@ FoldSplitContainer({
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| verticalSplitRatio | number | 否 | 主要区域与次要区域之间的高度比例。默认值：[PresetSplitRatio](#presetsplitratio).LAYOUT_1V1 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| verticalSplitRatio | number | 否 | 是 | 主要区域与次要区域之间的高度比例。默认值：[PresetSplitRatio](#presetsplitratio).LAYOUT_1V1 |
 
 ## OnHoverStatusChangeHandler
 
@@ -128,12 +119,12 @@ onHoverStatusChange事件处理。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| foldStatus | [display.FoldStatus](../js-apis-display.md#foldstatus10) | 是 | 设备的折叠状态。 |
-| isHoverMode | boolean | 是 | app当前是否处于悬停态。设置为true时表示当前为悬停态，设置为false时表示当前为非悬停态。 |
-| appRotation | number | 是 | 应用旋转角度。 |
-| windowStatusType | [window.WindowStatusType](../arkts-apis-window-e.md#windowstatustype11) | 是 | 窗口模式。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| foldStatus | [display.FoldStatus](../js-apis-display.md#foldstatus10) | 否 | 否 | 设备的折叠状态。 |
+| isHoverMode | boolean | 否 | 否 | app当前是否处于悬停态。设置为true时表示当前为悬停态，设置为false时表示当前为非悬停态。 |
+| appRotation | number | 否 | 否 | 应用旋转角度。 |
+| windowStatusType | [window.WindowStatusType](../arkts-apis-window-e.md#windowstatustype11) | 否 | 否 | 窗口模式。 |
 
 ## ExtraRegionPosition
 
@@ -412,7 +403,7 @@ struct Index {
     }) {
       Column({ space: 4 }) {
         RadioOption({
-          label: "折叠态垂直高度度比",
+          label: "折叠态垂直高度比",
           value: this.foldedRegionLayoutOptions.verticalSplitRatio,
           options: [
             {
@@ -577,7 +568,7 @@ struct Index {
         })
 
         RadioOption({
-          label: "展开态垂直高度度比",
+          label: "展开态垂直高度比",
           value: this.expandedRegionLayoutOptions.verticalSplitRatio,
           options: [
             {

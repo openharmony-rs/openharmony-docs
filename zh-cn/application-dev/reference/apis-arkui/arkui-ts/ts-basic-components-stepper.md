@@ -4,7 +4,7 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 步骤导航器组件，适用于引导用户按照步骤完成任务的导航场景。
 
@@ -46,7 +46,7 @@ Stepper(value?: { index?: number })
 
 onFinish(callback: () => void)
 
-步骤导航器最后一个StepperItem的nextLabel被点击时，并且ItemState属性为Normal时，触发该回调。
+步骤导航器最后一个[StepperItem](ts-basic-components-stepperitem.md)的[nextLabel](ts-basic-components-stepperitem.md#nextlabel)被点击时，并且[ItemState](ts-basic-components-stepperitem.md#itemstate枚举说明)属性为Normal时，触发该回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -62,7 +62,7 @@ onFinish(callback: () => void)
 
 onSkip(callback:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
-当前显示的StepperItem状态为ItemState.Skip时，nextLabel被点击时触发该回调。
+当前显示的[StepperItem](ts-basic-components-stepperitem.md)状态为ItemState.Skip时，[nextLabel](ts-basic-components-stepperitem.md#nextlabel)被点击时触发该回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -78,7 +78,7 @@ onSkip(callback:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 onChange(callback:&nbsp;(prevIndex:&nbsp;number,&nbsp;index:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
-点击当前StepperItem的prevLabel进行步骤切换时触发该回调；或点击当前StepperItem的nextLabel，当前页面不为步骤导航器最后一个StepperItem且ItemState属性为Normal时，触发该回调。
+点击当前StepperItem的[prevLabel](ts-basic-components-stepperitem.md#prevlabel)进行步骤切换时触发该回调；或点击当前StepperItem的[nextLabel](ts-basic-components-stepperitem.md#nextlabel)，当前页面不为步骤导航器最后一个StepperItem且[ItemState](ts-basic-components-stepperitem.md#itemstate枚举说明)属性为Normal时，触发该回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -95,7 +95,7 @@ onChange(callback:&nbsp;(prevIndex:&nbsp;number,&nbsp;index:&nbsp;number)&nbsp;=
 
 onNext(callback:&nbsp;(index:&nbsp;number,&nbsp;pendingIndex:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
-点击StepperItem的nextLabel切换下一步骤时，当前页面不为步骤导航器最后一个StepperItem且ItemState属性为Normal时，触发该回调。
+点击StepperItem的[nextLabel](ts-basic-components-stepperitem.md#nextlabel)切换下一步骤时，当前页面不为步骤导航器最后一个StepperItem且[ItemState](ts-basic-components-stepperitem.md#itemstate枚举说明)属性为Normal时，触发该回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -112,7 +112,7 @@ onNext(callback:&nbsp;(index:&nbsp;number,&nbsp;pendingIndex:&nbsp;number)&nbsp;
 
 onPrevious(callback:&nbsp;(index:&nbsp;number,&nbsp;pendingIndex:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
-点击StepperItem的prevLabel切换上一步骤时触发该回调。
+点击StepperItem的[prevLabel](ts-basic-components-stepperitem.md#prevlabel)切换上一步骤时触发该回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

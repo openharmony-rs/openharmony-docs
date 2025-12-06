@@ -1,12 +1,18 @@
 # @ohos.bundleState (Device Usage Statistics)
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @leetestnady-->
+<!--Adviser: @Brilliantry_Rui-->
 
 This module provides APIs for collecting statistics on device usage.
 
 > **NOTE**
 >
-> The APIs of this module are deprecated since API version 9. The substitute APIs are open only to system applications.
+> - The APIs of this module are deprecated since API version 9. The substitute APIs are open only to system applications.
 >
-> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 
 ## Modules to Import
@@ -40,7 +46,7 @@ bundleState.isIdleState("com.ohos.camera", (err: BusinessError, res: boolean) =>
   if (err) {
     console.error('BUNDLE_ACTIVE isIdleState callback failed, because: ' + err.code);
   } else {
-    console.log('BUNDLE_ACTIVE isIdleState callback succeeded, result: ' + JSON.stringify(res));
+    console.info('BUNDLE_ACTIVE isIdleState callback succeeded, result: ' + JSON.stringify(res));
   }
 });
 ```
@@ -72,7 +78,7 @@ Checks whether the application specified by **bundleName** is in the idle state.
 import { BusinessError } from '@ohos.base';
 // When a third-party application uses the sample code, change bundleName to its own bundle name.
 bundleState.isIdleState("com.ohos.camera").then((res: boolean) => {
-  console.log('BUNDLE_ACTIVE isIdleState promise succeeded, result: ' + JSON.stringify(res));
+  console.info('BUNDLE_ACTIVE isIdleState promise succeeded, result: ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE isIdleState promise failed, because: ' + err.code);
 });

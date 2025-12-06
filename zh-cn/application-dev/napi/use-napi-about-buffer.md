@@ -12,8 +12,7 @@
 
 ## 基本概念
 
-使用Node-API接口进行buffer相关开发时，使用Buffer对象与ArkTS代码之间进行二进制数据的有效交互，以便在Node-API模块创建、操纵和传递Buffer对象到ArkTS，从而处理和传递二进制数据，比如文件I/O、网络传输等。
-
+使用Node-API接口进行buffer相关开发时，可以通过Buffer对象实现ArkTS代码与Node-API模块之间的二进制数据交互，包括创建、操作Buffer对象，以处理I/O、网络传输等场景中的二进制数据。
 - **Buffer对象**：用于表示一段二进制数据的对象。
 - **外部Buffer**：在Node-API模块中创建的Buffer，可以与现有的数据关联起来而不需要复制数据到新的Buffer中。
 

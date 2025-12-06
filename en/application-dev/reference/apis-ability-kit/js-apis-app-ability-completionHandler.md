@@ -6,7 +6,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-**CompletionHandler** is an optional parameter of [StartOptions](js-apis-app-ability-startOptions.md) and is used to handle the result of an application launch request.
+**CompletionHandler** is an optional parameter of [StartOptions](js-apis-app-ability-startOptions.md#startoptions) and [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md#openlinkoptions). It is used to process the result of an application launch request.
 
 
 > **NOTE**
@@ -28,7 +28,7 @@ Currently, this module can be used in the following APIs:
 - [startRecentAbility](js-apis-inner-application-uiAbilityContext-sys.md#startrecentability-2)
 - [startAbilityAsCaller](js-apis-inner-application-uiAbilityContext-sys.md#startabilityascaller10-2)
 <!--DelEnd-->
-
+- [openLink](js-apis-inner-application-uiAbilityContext.md#openlink12)
 ## Modules to Import
 
 ```ts

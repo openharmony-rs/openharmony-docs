@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 通过ImageReceiver创建预览输出，获取预览流实时数据，以供后续进行图像二次处理，比如应用可以对其添加滤镜算法等。
 
@@ -200,9 +200,9 @@
        if (errCode != IMAGE_SUCCESS) {
            OH_LOG_ERROR(LOG_APP, "OH_ImageNative_Release call failed.");
        }
-	   delete[] types;
+       delete[] types;
    }
-   
+
    void OnImageReceiver() {
        // 注册图像回调事件，监听每帧上报的图像。
        Image_ErrorCode errCode = OH_ImageReceiverNative_On(receiver, OnCallback);

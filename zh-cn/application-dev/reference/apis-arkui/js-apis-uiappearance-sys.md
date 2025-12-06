@@ -1,4 +1,10 @@
 # @ohos.uiAppearance (用户界面外观)(系统接口)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lushi871202-->
+<!--Designer: @lushi871202-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用户界面外观提供管理系统外观的一些基础能力，目前仅包括深浅色模式配置。
 
@@ -20,7 +26,7 @@ import { uiAppearance } from '@kit.ArkUI';
 
 setDarkMode(mode: DarkMode, callback: AsyncCallback\<void>): void
 
-设置系统深色模式。
+设置系统深色模式。使用callback异步回调。
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
@@ -45,29 +51,30 @@ setDarkMode(mode: DarkMode, callback: AsyncCallback\<void>): void
 
 **示例：** 
 
-  ```ts
+```ts
 import { uiAppearance } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-    uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK, (error) => {
-      if (error) {
-        console.error('Set dark-mode failed, ' + error.message);
-      } else {
-        console.info('Set dark-mode successfully.');
-      }
-    })
+  uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK, (error) => {
+    if (error) {
+      console.error('Set dark-mode failed, ' + error.message);
+    } else {
+      console.info('Set dark-mode successfully.');
+    }
+  })
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('Set dark-mode failed, ' + message);
+  let message = (error as BusinessError).message;
+  console.error('Set dark-mode failed, ' + message);
 }
-  ```
+```
 
 
 ## uiAppearance.setDarkMode
 
 setDarkMode(mode: DarkMode): Promise\<void>;
 
-设置系统深色模式。
+设置系统深色模式。使用Promise异步回调。
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
@@ -97,23 +104,24 @@ setDarkMode(mode: DarkMode): Promise\<void>;
 
 **示例：** 
 
-  ```ts
+```ts
 import { uiAppearance } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-    uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK).then(() => {
-      console.info('Set dark-mode successfully.');
-    }).catch((error:Error) => {
-      console.error('Set dark-mode failed, ' + error.message);
-    });
+  uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK).then(() => {
+    console.info('Set dark-mode successfully.');
+  }).catch((error: Error) => {
+    console.error('Set dark-mode failed, ' + error.message);
+  });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('Set dark-mode failed, ' + message);
+  let message = (error as BusinessError).message;
+  console.error('Set dark-mode failed, ' + message);
 }
-  ```
+```
 
 
-## uiAppearance.setFontScale<sup>12+<sup>
+## uiAppearance.setFontScale<sup>12+</sup>
 
 setFontScale(fontScale: number): Promise\<void>
 
@@ -140,6 +148,10 @@ setFontScale(fontScale: number): Promise\<void>
 **错误码：**
 
 错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[errcode-uiappearance](errorcode-uiappearance.md)。
+
+> **说明：**
+>
+> 在未申请`ohos.permission.UPDATE_CONFIGURATION`权限时，应用安装将失败，不会返回202错误码。
 
 | 错误码ID | 错误信息 |
 | -- | -- |
@@ -169,7 +181,7 @@ try {
   ```
 
 
-## uiAppearance.setFontWeightScale<sup>12+<sup>
+## uiAppearance.setFontWeightScale<sup>12+</sup>
 
 setFontWeightScale(fontWeightScale: number): Promise\<void>
 
@@ -196,6 +208,10 @@ setFontWeightScale(fontWeightScale: number): Promise\<void>
 **错误码：**
 
 错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[errcode-uiappearance](errorcode-uiappearance.md)。
+
+> **说明：**
+>
+> 在未申请`ohos.permission.UPDATE_CONFIGURATION`权限时，应用安装将失败，不会返回202错误码。
 
 | 错误码ID | 错误信息 |
 | -- | -- |

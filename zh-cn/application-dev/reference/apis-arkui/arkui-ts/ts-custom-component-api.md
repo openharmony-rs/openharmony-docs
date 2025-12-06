@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 自定义组件内置方法是由ArkUI开发框架提供给应用开发者的，定义在自定义组件基类上的API。应用开发者可以在自定义组件的实例上调用对应的API以获取当前自定义组件实例相关的信息。例如，查询当前自定义组件上下文的UIContext信息。
 
@@ -128,7 +128,7 @@ struct MyComponent {
   aboutToAppear() {
     // this指代MyComponent自定义节点，并从该节点向上查找其最近的一个类型为NavDestination的父亲节点
     this.navDesInfo = this.queryNavDestinationInfo();
-    console.log('get navDestinationInfo: ' + JSON.stringify(this.navDesInfo));
+    console.info('get navDestinationInfo: ' + JSON.stringify(this.navDesInfo));
   }
 
   build() {
@@ -321,7 +321,7 @@ export struct PageOne {
   aboutToAppear() {
     // this指代PageOne自定义节点，并从该节点向上查找其最近的一个类型为Navigation的父亲节点
     let navigationInfo: uiObserver.NavigationInfo | undefined = this.queryNavigationInfo();
-    console.log('get navigationInfo: ' + JSON.stringify(navigationInfo));
+    console.info('get navigationInfo: ' + JSON.stringify(navigationInfo));
     if (navigationInfo !== undefined) {
       this.pathStack = navigationInfo.pathStack;
     }

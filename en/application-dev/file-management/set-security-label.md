@@ -21,9 +21,9 @@ Table 1 Security level APIs
 
 > **NOTE**
 >
-> 1. In distributed networking, a device can view the files that have a higher security level but cannot access them.
+> - In distributed networking, a device can view the files that have a higher security level but cannot access them.
 >
-> 2. The default security level of the distributed file system data is S3. Applications can set the security level of files.
+> - The default security level of the distributed file system data is S3. Applications can set the security level of files.
 
 ## Development Example
 

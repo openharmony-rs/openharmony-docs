@@ -4,9 +4,9 @@ The **formInfo** module provides types and enums related to the widget informati
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> This module is deprecated since API version 9. You are advised to use [formInfo](js-apis-app-form-formInfo.md) instead.
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.application.formInfo (FormInfo)](js-apis-application-formInfo.md).
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - This module is deprecated since API version 9. You are advised to use [formInfo](js-apis-app-form-formInfo.md) instead.
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.application.formInfo (FormInfo)](js-apis-application-formInfo.md).
 
 
 ## Modules to Import
@@ -26,3 +26,5 @@ Enumerates the widget parameters.
 | Name       | Value  | Description        |
 | ----------- | ---- | ------------ |
 | IDENTITY_KEY     | 'ohos.extra.param.key.form_identity'    | Widget ID.<br>**System API**: This is a system API.  |
+
+

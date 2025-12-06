@@ -1,5 +1,12 @@
 # ArcAlphabetIndexer
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
 弧形索引条是一种弧形的、可按字母顺序排序进行快速定位的组件，可以与容器组件联动，按逻辑结构快速定位至容器显示区域。
 
 >  **说明：**
@@ -285,12 +292,10 @@ onSelect(handler: Optional&lt;OnSelectCallback&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
-**参数：**
-
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| arrayValue | string[] | 是 | 字母索引字符串数组，不可设置为空。 |
-| selected   | number              | 是 | 初始选中项索引值，若超出索引值范围，则取默认值0。<br />该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。|
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | ---- | ---- | -------- |
+| arrayValue | string[] | 否 | 否 | 字母索引字符串数组，不可设置为空。 |
+| selected   | number              | 否 | 否 | 初始选中项索引值，若超出索引值范围，则取默认值0。<br />该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。|
 
 ## OnSelectCallback
 

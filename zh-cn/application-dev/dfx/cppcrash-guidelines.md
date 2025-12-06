@@ -188,7 +188,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 | Enabled app log configs | 使能的配置参数列表 | 20 | 否 | 仅用户配置时打印，详见[应用通过HiAppEvent设置崩溃日志配置参数场景日志规格](#应用通过hiappevent设置崩溃日志配置参数场景日志规格)。 |
 | Module name | 模块名 | 8 | 是 | - |
 | Version | 应用版本号(点分格式) | 8 | 否 | 仅在应用进程提供。 |
-| Version Code | 应用版本号(整数格式) | 8 | 否 | 仅在应用进程提供。 |
+| VersionCode | 应用版本号(整数格式) | 8 | 否 | 仅在应用进程提供。 |
 | PreInstalled | 是否预制应用 | 8 | 否 | 仅在应用进程提供。 |
 | Foreground | 前后台状态 | 8 | 否 | 仅在应用进程提供。 |
 | Page switch history | 页面切换轨迹 | 20 | 否 | 如果维测服务进程出现故障或未缓存切换轨迹，则不包含此字段，详见[实现原理](#实现原理)。 |
@@ -329,7 +329,7 @@ pc(/system/lib/ld-musl-arm.so.1):
     f7bb0404 e59f1024
     ...
 FaultStack: <- 崩溃线程的栈地址空间
-    ffc09810 00000001 
+    ffc09810 00000001
     ffc09814 00000001
     ...
 sp0:ffc09850 7467a186 <- #00层栈帧顶部位置
@@ -400,7 +400,7 @@ HiLog: <- 故障之前进程打印的流水日志
 
 HiTraceId：HiTraceChain提供的唯一跟踪标识，参考[HiTraceId](../reference/apis-performance-analysis-kit/capi-trace-h.md)。
 
-**栈帧内容说明**
+**调用栈帧内容说明**
 
 以三层调用栈为例，详细解释调用栈帧内容：
 
@@ -424,6 +424,8 @@ HiTraceId：HiTraceChain提供的唯一跟踪标识，参考[HiTraceId](../refer
 >   1. 二进制文件中没有保存该函数名信息。
 >
 >   2. 二进制文件中保存的函数名长度超过256字节。
+>
+> - 函数名是通过解析二进制符号表和[MiniDebugInfo](https://sourceware.org/gdb/current/onlinedocs/gdb.html/MiniDebugInfo.html)得来，**可能会随版本函数名变更、编译优化等原因而改变**。
 >
 > - 如果没打印BuildID，可以通过readelf -n xxx.so确认二进制是否有BuildID。如果没有则尝试在编译选项里增加编译参数--enable-linker-build-id，同时注意编译选项中不要加编译参数--build-id=none。
 
@@ -646,7 +648,7 @@ pc(/system/lib/ld-musl-arm.so.1): <- pc寄存器地址附近的内存值
     f7f19938 e3a03008 <- extend_pc_lr_printing设置为false时，向前打印内存值到此
     f7f1993c ef000000
     f7f19940 e51b0014 <- pc寄存器地址（f7f19940）的内存值（e51b0014）
-    ... 
+    ...
     f7f199b4 e2b52000 <- extend_pc_lr_printing设置为false时，向后打印内存值到此
     f7f199b8 03530000
     f7f199bc 0a000003

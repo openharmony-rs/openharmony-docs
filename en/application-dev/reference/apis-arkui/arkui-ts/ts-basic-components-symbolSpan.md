@@ -1,4 +1,10 @@
 # SymbolSpan
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiangyuan6-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 As a child component of the **Text** component, the **SymbolSpan** component is used to display small icons.
 
@@ -36,13 +42,17 @@ SymbolSpan(value: Resource)
 
 ## Attributes
 
-The [universal attributes](ts-universal-attributes-size.md) are not supported. Only the following attributes are supported.
+The [universal attributes](ts-component-general-attributes.md) are not supported. Only the following attributes are supported.
 
 ### fontColor
 
 fontColor(value: Array&lt;ResourceColor&gt;)
 
 Sets the color of the symbol span.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -60,7 +70,11 @@ Sets the color of the symbol span.
 
 fontSize(value: number | string | Resource)
 
-Sets the size of the symbol span.
+Sets the size of the symbol span. When using the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -72,7 +86,7 @@ Sets the size of the symbol span.
 
 | Name| Type                                                        | Mandatory| Description                                         |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------- |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Size of the symbol span.<br>Default value: system default value|
+| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Size of the symbol span.<br>Default value: **16fp**<br>Unit: [fp](ts-pixel-units.md)|
 
 ### fontWeight
 
@@ -81,6 +95,10 @@ fontWeight(value: number | FontWeight | string)
 Sets the weight of the symbol span. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**. For the string type, only strings of the number type are supported, for example, **"400"**, **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**, which correspond to the enumerated values in **FontWeight**.
 
 The **sys.symbol.ohos_lungs** icon does not support font weight setting.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -99,6 +117,10 @@ The **sys.symbol.ohos_lungs** icon does not support font weight setting.
 renderingStrategy(value: SymbolRenderingStrategy)
 
 Sets the rendering strategy of the symbol span.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -121,6 +143,10 @@ The figure below shows the effects of different rendering strategies.
 effectStrategy(value: SymbolEffectStrategy)
 
 Sets the symbol effect of the symbol span.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -152,11 +178,12 @@ Creates an attribute modifier.
 
 ## Events
 
-The [universal events](ts-universal-events-click.md) are not supported.
+The [universal events](ts-component-general-events.md) are not supported.
 
 ## Example
 
-This example demonstrates different rendering and effect strategies using **renderingStrategy** and **effectStrategy**.
+### Example 1: Setting Rendering and Animation Strategies
+This example demonstrates different rendering and effect strategies using [renderingStrategy](#renderingstrategy) and [effectStrategy](#effectstrategy), available since API version 11.
 
 ```ts
 // xxx.ets
@@ -241,7 +268,7 @@ struct Index {
           Text() {
             SymbolSpan($r('sys.symbol.ohos_wifi'))
               .fontSize(96)
-              .effectStrategy(1)
+              .effectStrategy(SymbolEffectStrategy.SCALE)
           }
         }
 
@@ -250,7 +277,7 @@ struct Index {
           Text() {
             SymbolSpan($r('sys.symbol.ohos_wifi'))
               .fontSize(96)
-              .effectStrategy(2)
+              .effectStrategy(SymbolEffectStrategy.HIERARCHICAL)
           }
         }
       }
@@ -259,3 +286,35 @@ struct Index {
 }
 ```
 ![SymbolSpan](figures/symbolSpan.gif)
+
+### Example 2: Configuring Dynamic Attributes
+This example demonstrates how to create icons of a specified style using the [attributeModifier](#attributemodifier12) attribute, available since API version 12.
+
+```ts
+import { SymbolSpanModifier } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State modifier: SymbolSpanModifier =
+    new SymbolSpanModifier($r("sys.symbol.ohos_wifi")).fontColor([Color.Blue]).fontSize(100);
+
+  build() {
+    Row() {
+      Column() {
+        Text() {
+          SymbolSpan(undefined).attributeModifier(this.modifier)
+        }
+
+        Button('Change SymbolSpanModifier')
+          .onClick(() => {
+            this.modifier = new SymbolSpanModifier($r("sys.symbol.ohos_trash")).fontColor([Color.Red]).fontSize(100);
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+![SymbolSpanModifier](figures/symbolSpanModifier.gif)

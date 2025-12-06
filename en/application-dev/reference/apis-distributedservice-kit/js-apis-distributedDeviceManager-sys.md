@@ -1,4 +1,10 @@
 # @ohos.distributedDeviceManager (Device Management) (System API)
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedHardware-->
+<!--Owner: @hwzhangchuang-->
+<!--Designer: @hwzhangchuang-->
+<!--Tester: @zhaodengqi-->
+<!--Adviser: @hu-zhiqiong-->
 
 The **distributedDeviceManager** module provides APIs for distributed device management.
 
@@ -55,7 +61,7 @@ Defines the service profile information. It is populated based on the data retur
 
 **System API**: This is a system API.
 
-| Name          | Type | Read Only| Optional             |  Description   |
+| Name          | Type | Read-Only| Optional             |  Description   |
 | -------------- | ---- | --------| ------- | --------|
 | deviceId       | string  | No| No  |  Device ID.         |
 | serviceId       | string  | No|No  | Service ID.          |
@@ -114,7 +120,7 @@ Defines the device icon information filter options.
 |  productId      | string  | No| No  |  Product ID.         |
 |  subProductId   | string  | No| Yes  |  Sub-product ID. This parameter is left unspecified by default.     |
 |  imageType      | string  | No| No  |  Image type. This parameter has a fixed value of **ID**, indicating the product's physical image.|
-|  specName       | string  | No| No  |  Image specification name. Value:<br>- **lg**: large image (size: 1016064 pixels)<br>- **sm**: small image (size: 65536 pixels)        |
+|  specName       | string  | No| No  |  Image specification name. Value:<br>- **lg**: large image (size: 1016064 px)<br>- **sm**: small image (size: 65536 px)        |
 |  internalModel  | string  | No| Yes  |  Internal product model. This parameter is left unspecified by default.       |
 
 ## DeviceIconInfo<sup>18+</sup>
@@ -130,7 +136,7 @@ Defines the device icon information.
 |  productId      | string  | No| No  |  Product ID.         |
 |  subProductId   | string  | No| Yes  |  Sub-product ID. This parameter is left unspecified by default.    |
 |  imageType      | string  | No| No  |  Image type. This parameter has a fixed value of **ID**, indicating the product's physical image.       |
-|  specName       | string  | No| No  |  Image specification name. Value:<br>- **lg**: large image (size: 1016 x 64 pixels)<br>- **sm**: small image (size: 655 x 36 pixels)        |
+|  specName       | string  | No| No  |  Image specification name. Value:<br>- **lg**: large image (size: 1016064 px)<br>- **sm**: small image (size: 65536 px)        |
 |  url            | string  | No| No  |  URL.         |
 |  icon           | ArrayBuffer | No| No| Icon.        |
 |  internalModel  | string  | No| Yes  |  Internal product model. This parameter is left unspecified by default.        |
@@ -210,7 +216,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
 
-Subscribes to the reply to the UI operation result.
+Subscribes to the reply to the UI operation result. This API returns the result asynchronously through a callback.
 
 **Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 
@@ -267,7 +273,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 off(type: 'replyResult', callback?: Callback&lt;{ param: string;}&gt;): void
 
-Unsubscribes from the reply to the UI operation result.
+Unsubscribes from the reply to the UI operation result. This API returns the result asynchronously through a callback.
 
 **Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 
@@ -661,7 +667,7 @@ Sets the remote device name. This API uses a promise to return the result.
 
   | Name      | Type           | Mandatory | Description               |
   | ------------- | --------------- | ---- | ------------------- |
-  |  deviceId       | string         | Yes   | UDID of the  remote device. If the device does not have a UDID, the MAC address or SN of the device is used as the device ID. The SN is used preferentially.    |
+  |  deviceId       | string         | Yes   | UDID of the remote device. If the device does not have a UDID, the MAC address or SN of the device is used as the device ID. The SN is used preferentially.    |
   |  deviceName       | string         | Yes   | Device name to set. The value is a string of 1 to 255 characters.   |
 
 **Returns**
@@ -746,7 +752,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt;string&gt;&gt;
 
-Obtains the list of network devices according to the specified filter options.
+Obtains the list of network devices according to the specified filter options. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 

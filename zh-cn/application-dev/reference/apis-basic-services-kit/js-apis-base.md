@@ -11,7 +11,7 @@
 ## 导入模块
 
 ```
-import base from '@ohos.base';
+import { AsyncCallback, BusinessError, Callback, ErrorCallback } from '@kit.BasicServicesKit';
 ```
 
 ## Callback

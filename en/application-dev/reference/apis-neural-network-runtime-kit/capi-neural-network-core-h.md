@@ -679,7 +679,7 @@ If <b>tensorDesc</b> or <b>dataType</b> is a null pointer, an error is returned.
 | Name| Description|
 | -- | -- |
 | [const NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) *tensorDesc | Pointer to the [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance.|
-| [OH_NN_DataType](capi-neural-network-runtime-type-h.md#oh_nn_datatype) *dataType | Tensor data type.|
+| [OH_NN_DataType](capi-neural-network-runtime-type-h.md#oh_nn_datatype) *dataType | Pointer to the returned tensor data type, which is used as the output parameter.|
 
 **Returns**
 

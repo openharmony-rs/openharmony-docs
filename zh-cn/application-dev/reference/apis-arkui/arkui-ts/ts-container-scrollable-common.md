@@ -5,7 +5,7 @@
 <!--Owner: @yylong; @zcdqs-->
 <!--Designer: @yylong; @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 滚动组件通用属性和事件目前只支持[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)组件。
 
@@ -430,6 +430,10 @@ onWillScroll(handler: Optional&lt;OnWillScrollCallback&gt;): T
 
 回调当前帧将要滚动的偏移量和当前滚动状态和滚动操作来源，其中回调的偏移量为计算得到的将要滚动的偏移量值，并非最终实际滚动偏移。可以通过该回调返回值指定滚动组件将要滚动的偏移。[Scroll](./ts-container-scroll.md)组件的[onWillScroll](./ts-container-scroll.md#onwillscroll12)接口的参数类型是[ScrollOnWillScrollCallback](./ts-container-scroll.md#scrollonwillscrollcallback12)。
 
+>**说明：**
+>
+> 从API version 14开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -456,6 +460,10 @@ onWillScroll(handler: Optional&lt;OnWillScrollCallback&gt;): T
 onDidScroll(handler: OnScrollCallback): T
 
 滚动组件滑动时触发，返回当前帧滑动的偏移量和当前滑动状态。
+
+>**说明：**
+>
+> 从API version 14开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -493,7 +501,7 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| event  | (scrollOffset: number, scrollState: [ScrollState](ts-container-list.md#scrollstate枚举说明)) => void | 是 | 滚动组件滑动时的回调。<br/>scrollOffset：每帧滚动的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。单位vp。<br/>scrollState：当前滑动状态。|
+| event  | (scrollOffset: number, scrollState: [ScrollState](ts-container-list.md#scrollstate枚举说明)) => void | 是 | 滚动组件滑动时的回调。<br/>scrollOffset：相对于上一帧的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。单位vp。<br/>scrollState：当前滑动状态。|
 
 **返回值：**
 
@@ -501,6 +509,29 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): T
 | --- | -------------- |
 | T | 返回当前滚动组件。 |
 
+### onWillStartDragging<sup>21+</sup>
+
+onWillStartDragging(handler: VoidCallback): T
+
+滚动组件开始拖动时触发。
+
+**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                        | 必填 | 说明                         |
+| ------- | ------------------------------------------ | ---- | ---------------------------- |
+| handler | [VoidCallback](ts-types.md#voidcallback12) | 是   | 滚动组件开始拖动时触发的回调。 |
+
+**返回值：**
+
+| 类型 | 说明               |
+| ---- | ------------------ |
+| T    | 返回当前滚动组件。 |
 
 ### onWillStopDragging<sup>20+</sup>
 
@@ -526,6 +557,77 @@ onWillStopDragging(handler: OnWillStopDraggingCallback): T
 | ---- | ------------------ |
 | T    | 返回当前滚动组件。 |
 
+### onDidStopDragging<sup>21+</sup>
+
+onDidStopDragging(handler: OnDidStopDraggingCallback): T
+
+滚动组件结束拖拽时触发。
+
+**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                                       | 必填 | 说明                         |
+| ------- | --------------------------------------------------------- | ---- | --------------------------- |
+| handler | [OnDidStopDraggingCallback](#ondidstopdraggingcallback21) | 是   | 滚动组件结束拖动时触发的回调。 |
+
+**返回值：**
+
+| 类型 | 说明               |
+| ---- | ------------------ |
+| T    | 返回当前滚动组件。 |
+
+### onWillStartFling<sup>21+</sup>
+
+onWillStartFling(handler: VoidCallback): T
+
+滚动组件将要开始Fling动效时触发。
+
+**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                        | 必填 | 说明                         |
+| ------- | ------------------------------------------ | ---- | ---------------------------- |
+| handler | [VoidCallback](ts-types.md#voidcallback12) | 是   | 滚动组件将要开始Fling动效时触发的回调。 |
+
+**返回值：**
+
+| 类型 | 说明               |
+| ---- | ------------------ |
+| T    | 返回当前滚动组件。 |
+
+### onDidStopFling<sup>21+</sup>
+
+onDidStopFling(handler: VoidCallback): T
+
+滚动组件结束Fling动效后触发，进行中的Fling动效被新的滑动事件打断时不触发。
+
+**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                        | 必填 | 说明                         |
+| ------- | ------------------------------------------ | ---- | ---------------------------- |
+| handler | [VoidCallback](ts-types.md#voidcallback12) | 是   | 滚动组件结束Fling动效后触发的回调。 |
+
+**返回值：**
+
+| 类型 | 说明               |
+| ---- | ------------------ |
+| T    | 返回当前滚动组件。 |
 
 ## ItemDragInfo对象说明
 
@@ -621,7 +723,7 @@ type OnWillScrollCallback = (scrollOffset: number, scrollState: ScrollState, scr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| scrollOffset | number | 是 | 每帧滑动的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
+| scrollOffset | number | 是 | 相对于上一帧的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
 | scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是 | 当前滑动状态。 |
 | scrollSource | [ScrollSource](ts-appendix-enums.md#scrollsource12) | 是 | 当前滑动操作的来源。 |
 
@@ -629,7 +731,7 @@ type OnWillScrollCallback = (scrollOffset: number, scrollState: ScrollState, scr
 
 | 类型                          | 说明                                  |
 | ----------------------------- | ------------------------------------ |
-| void \| [ScrollResult](#scrollresult12对象说明) |  返回ScrollResult时按照开发者指定的偏移量滑动；不返回时按回调参数scrollOffset滑动。  <br/>取值范围：(-∞, +∞)|
+| void \| [ScrollResult](#scrollresult12对象说明) |  返回ScrollResult时按照开发者指定的相对上一帧的偏移量滑动；不返回时按回调参数scrollOffset滑动。  <br/>取值范围：(-∞, +∞)|
 
 ## OnScrollCallback<sup>12+</sup>
 
@@ -647,7 +749,7 @@ type OnScrollCallback = (scrollOffset: number, scrollState: ScrollState) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| scrollOffset | number | 是 | 每帧滚动的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
+| scrollOffset | number | 是 | 相对于上一帧的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
 | scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是 | 当前滑动状态。 |
 
 ## ScrollResult<sup>12+</sup>对象说明
@@ -666,7 +768,7 @@ type OnScrollCallback = (scrollOffset: number, scrollState: ScrollState) => void
 
 维护List组件或ListItemGroup组件的子组件在主轴方向的大小信息，仅支持一对一绑定到List组件或ListItemGroup组件。
 
-**说明：**
+> **说明：**
 >
 > - 提供的主轴方向大小信息必须与子组件实际在主轴方向的大小一致，子组件在主轴方向大小变化或者增删子组件时都必须通过ChildrenMainSize对象方法通知List组件或ListItemGroup组件。
 
@@ -910,6 +1012,24 @@ type OnWillStopDraggingCallback = (velocity: number) => void
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | velocity | number | 是   | 划动离手速度，滚动组件的内容向上滚动时速度为正，向下滚动时速度为负。<br/>单位vp/s。 |
 
+## OnDidStopDraggingCallback<sup>21+</sup>
+
+type OnDidStopDraggingCallback = (willFling: boolean) => void
+
+滚动组件在结束拖拽时触发的回调。
+
+**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名     | 类型    | 必填 | 说明                                                                              |
+| --------  | ------- | ---- | -------------------------------------------------------------------------------- |
+| willFling | boolean | 是   | 结束拖拽后是否会有Fling动效。返回true代表拖拽结束后有Fling动效，返回false代表没有Fling动效。 |
+
 ## 示例
 
 ### 示例1（支持滚动手势）
@@ -1088,7 +1208,7 @@ struct ScrollExample {
 ![clipContent_scroll](figures/clipContent_scroll.gif)
 
 ### 示例4（设置滚动条边距）
-该示例通过设置scrollBarMargin属性，调整滚动组件的滚动条边距。
+从API version 20开始，该示例通过设置[scrollBarMargin](#scrollbarmargin20)属性，调整滚动组件的滚动条边距。
 
 ListDataSource说明及完整代码参考[示例1添加滚动事件](./ts-container-list.md#示例1添加滚动事件)。
 

@@ -35,7 +35,7 @@ Enumerates the options for using **UnifiedData** in a device.
 
 type GetDelayData = (type: string) => UnifiedData
 
-A type that defines a function used to obtain a deferred **UnifiedData** object. Currently, it can be used only in the pasteboard application of the same device.
+Defines a function used to obtain a deferred **UnifiedData** object. Currently, it can be used only in the pasteboard application of the same device.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -110,11 +110,11 @@ Defines the properties of the data records in the unified data object, including
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| extras<sup>12+</sup> | Record<string, object> | No| Yes| Object of the dictionary type used to set other properties. The default value is an empty dictionary object.|
-| tag<sup>12+</sup> | string | No| Yes| Customized tag. The default value is an empty string.|
-| timestamp<sup>12+</sup> | Date | Yes| Yes| Timestamp when [UnifiedData](#unifieddata) is generated. The default value is January 1, 1970 (UTC).|
-| shareOptions<sup>12+</sup> | [ShareOptions](#shareoptions12) | No| Yes| Range, in which [UnifiedData](#unifieddata) can be used. The default value is **CROSS_APP**.|
-| getDelayData<sup>12+</sup> | [GetDelayData](#getdelaydata12) | No| Yes| Callback for obtaining the deferred data. Currently, it can be used only in the pasteboard application of the same device. The default value is **undefined**.|
+| extras | Record<string, object> | No| Yes| Object of the dictionary type used to set other properties. The default value is an empty dictionary object.|
+| tag | string | No| Yes| Customized tag. The default value is an empty string.|
+| timestamp | Date | Yes| Yes| Timestamp when [UnifiedData](#unifieddata) is generated. The default value is January 1, 1970 (UTC).|
+| shareOptions | [ShareOptions](#shareoptions12) | No| Yes| Range, in which [UnifiedData](#unifieddata) can be used. The default value is **CROSS_APP**.|
+| getDelayData | [GetDelayData](#getdelaydata12) | No| Yes| Callback for obtaining the deferred data. Currently, it can be used only in the pasteboard application of the same device. The default value is **undefined**.|
 
 **Example**
 
@@ -166,7 +166,7 @@ Provides APIs for encapsulating a set of data records.
 
 constructor()
 
-A constructor used to create a **UnifiedData** object.
+Defines a constructor used to create a **UnifiedData** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -182,7 +182,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData();
 
 constructor(record: UnifiedRecord)
 
-A constructor used to create a **UnifiedData** object with a data record.
+Defines a constructor used to create a **UnifiedData** object with a data record.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -451,7 +451,7 @@ An abstract definition of the data content supported by the UDMF. A **UnifiedRec
 
 constructor()
 
-A constructor used to create a **UnfiedRecord** object.
+Defines a constructor used to create a **UnfiedRecord** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -467,7 +467,7 @@ let unifiedRecord = new unifiedDataChannel.UnifiedRecord();
 
 constructor(type: string, value: ValueType)
 
-A constructor used to create a data record with the specified type and value.<br>If **value** is of the [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) type, **type** must be the value of **OPENHARMONY_PIXEL_MAP** in [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).<br>If **value** is of the [Want](../apis-ability-kit/js-apis-app-ability-want.md) type, **type** must be the value of **OPENHARMONY_WANT** in [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).
+Defines a constructor used to create a data record with the specified type and value.<br>If **value** is of the [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) type, **type** must be the value of **OPENHARMONY_PIXEL_MAP** in [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).<br>If **value** is of the [Want](../apis-ability-kit/js-apis-app-ability-want.md) type, **type** must be the value of **OPENHARMONY_WANT** in [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -871,7 +871,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 ## PlainText
 
-Represents the plaintext data. It is a child class of [Text](#text) and is used to describe plaintext data.
+Represents the plain text data. It is a child class of [Text](#text).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -892,7 +892,7 @@ text.abstract = 'This is abstract';
 
 ## Hyperlink
 
-Represents hyperlink data. It is a child class of [Text](#text) and is used to describe data of the hyperlink type.
+Represents the hyperlink data. It is a child class of [Text](#text).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -913,7 +913,7 @@ link.description = 'This is description';
 
 ## HTML
 
-Represents the HTML data. It is a child class of [Text](#text) and is used to describe HTML data.
+Represents the HTML data. It is a child class of [Text](#text).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1356,7 +1356,7 @@ Represents the progress information.
 
 | Name    | Type                                 | Read-Only| Optional| Description                                                            |
 | -------- |-------------------------------------| ---- | ---- |----------------------------------------------------------------|
-| progress | number                              | No  | No  | Progress of the drag task, in percentage. <br>The value is an integer ranging from -1 to 100. The value **-1** indicates a failure to obtain data, and the value **100** indicates data is obtained.|
+| progress | number                              | No  | No  | Progress of the drag task, in percentage.<br>The value is an integer ranging from -1 to 100. The value **-1** indicates a failure to obtain data, and the value **100** indicates data is obtained.|
 | status | [ListenerStatus](#listenerstatus15) | No  | No  | Status code of the drag task reported by the system.                                                 |
 
 ## DataProgressListener<sup>15+</sup>
@@ -1801,7 +1801,7 @@ Queries data in the UDMF public data channel. This API uses a promise to return 
 
 | Type                                                     | Description                                                                                                                                 |
 |---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Promise&lt;Array&lt;[UnifiedData](#unifieddata)&gt;&gt; | Promise used to return the result.<br>If only the **key** is specified in **options**, the data corresponding to the key is returned.<br>If only the **intention** is specified in **options**, all data in the **intention** is returned.<br>If both **intention** and **key** are specified, the intersection of the two is returned, which is the result obtained when only **key** is specified. If there is no intersection between the specified **intention** and **key**, an error object is returned.|
+| Promise&lt;Array&lt;[UnifiedData](#unifieddata)&gt;&gt; | Promise used to return the result queried.<br>If only the **key** is specified in **options**, the data corresponding to the key is returned.<br>If only the **intention** is specified in **options**, all data in the **intention** is returned.<br>If both **intention** and **key** are specified, the intersection of the two is returned, which is the result obtained when only **key** is specified. If there is no intersection between the specified **intention** and **key**, an error object is returned.|
 
 **Error codes**
 

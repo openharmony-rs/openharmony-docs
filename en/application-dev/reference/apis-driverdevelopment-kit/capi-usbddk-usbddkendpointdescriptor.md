@@ -23,5 +23,5 @@ Defines endpoint descriptors.
 | Name| Description|
 | -- | -- |
 | struct UsbEndpointDescriptor endpointDescriptor | Standard endpoint descriptor.|
-| uint8_t* extra | Unresolved descriptor, including class- or vendor-specific descriptors.|
+| const uint8_t* extra | Unresolved descriptor, including class- or vendor-specific descriptors.|
 | uint32_t extraLength | Length of the unresolved descriptor.|

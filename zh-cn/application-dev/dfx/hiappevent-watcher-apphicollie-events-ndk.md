@@ -24,7 +24,7 @@
 
 以实现对用户点击按钮触发卡顿场景生成的卡顿事件订阅为例，说明开发步骤。
 
-1. 参考[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)README中**Using JsonCpp in your project**介绍的使用方法获取到jsoncpp.cpp、json.h和json-forwards.h三个文件。
+1. 获取该示例工程依赖的jsoncpp文件，从[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)下载源码的压缩包，并按照README的**Amalgamated source**中介绍的操作步骤得到jsoncpp.cpp、json.h和json-forwards.h三个文件。
 
 2. 新建Native C++工程，并将上述文件导入到新建工程内，目录结构如下：
 
@@ -318,7 +318,7 @@
 
 ### 验证观察者是否订阅到任务执行超时事件
 
-1. 应用工程崩溃退出后再次运行可以在Log窗口看到对系统事件数据的处理日志。
+应用工程崩溃退出后再次运行可以在Log窗口看到对系统事件数据的处理日志。
 
    ```text
    HiAppEvent eventInfo.domain=OS

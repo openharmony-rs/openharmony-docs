@@ -1,16 +1,20 @@
-# Key Press Event Listening Development
+# Preferential Response of System Function Keys
+
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## When to Use
 
-Key press event listening allows an application to listen for physical key press events when running in the foreground. Currently, this function applies only to the volume up and volume down keys. It enables applications to subscribe to key press events and override default system responses to those events, such as volume adjustments.
+Each system function key has a default function, which is fixedly implemented by the system. For example, the volume keys are used to adjust the device volume. However, some applications expect to customize the functions of these keys in specific scenarios. This guide is intended to support such applications in fulfilling these requirements.<br>Typical use cases: Reading applications expect to turn pages via volume keys, camera applications expect to take photos via volume keys, etc.<br>Supported function keys: Volume up and volume down keys are supported since API version 16. The multimedia-specific **Play/Pause**, **Next**, and **Previous** keys are supported since API version 21.
 
-You can enhance user experience by leveraging volume key listeners to implement context-specific actions, such as binding page-turning functionality in reading apps or triggering the camera shutter in photography apps. Currently, this function is available only for mobile phones and tablets.
+## Constraints
 
-## Modules to Import
-
-```js
-import { inputConsumer, KeyEvent } from '@kit.InputKit';
-```
+- The preferential response takes effect only when the application is in focus.
+- After an application selects specific system function keys to take precedence over the system's default response, the keys' default behavior is disabled. Therefore, the application must ensure the custom function is activated only when it intends to respond.
 
 ## Available APIs
 

@@ -1,4 +1,12 @@
 # 概述
+
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 本地化表示是指将语言、地区、脚本、时区、历法和日期等区域性元素按照本地的语言习惯显示。
 
 本模块提供以下三种方式进行本地化表示：

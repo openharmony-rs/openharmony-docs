@@ -36,7 +36,7 @@ isSharingSupported(callback: AsyncCallback\<boolean>): void
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<boolean> | 是   | 回调函数，返回 true 代表支持网络共享。 |
+| callback | AsyncCallback\<boolean> | 是   | 回调函数，返回 true 表示支持网络共享,返回false表示不支持网络共享。 |
 
 **错误码：**
 
@@ -76,7 +76,7 @@ isSharingSupported(): Promise\<boolean>
 
 | 类型              | 说明                                  |
 | ----------------- | ------------------------------------- |
-| Promise\<boolean> | 以 Promise 形式返回是否支持共享结果。 |
+| Promise\<boolean> | Promise 对象。返回true表示支持网络共享，返回false表示不支持网络共享。 |
 
 **错误码：**
 
@@ -120,7 +120,7 @@ isSharing(callback: AsyncCallback\<boolean>): void
 
 | 参数名   | 类型                    | 必填 | 说明                                 |
 | -------- | ----------------------- | ---- | ------------------------------------ |
-| callback | AsyncCallback\<boolean> | 是   | 回调函数，返回 true 代表网络共享中。 |
+| callback | AsyncCallback\<boolean> | 是   | 回调函数，返回 true 表示网络共享中；返回false表示不在网络共享中。 |
 
 **错误码：**
 
@@ -160,7 +160,7 @@ isSharing(): Promise\<boolean>
 
 | 类型              | 说明                                                            |
 | ----------------- | --------------------------------------------------------------- |
-| Promise\<boolean> | 以 Promise 形式返回网络共享状态结果，返回 true 代表网络共享中。 |
+| Promise\<boolean> | 以 Promise 形式返回网络共享状态结果，返回 true 表示网络共享中；返回false表示不在网络共享中。 |
 
 **错误码：**
 
@@ -948,7 +948,7 @@ on(type: 'sharingStateChange', callback: Callback\<boolean>): void
 | 参数名   | 类型                    | 必填 | 说明                         |
 | -------- | ----------------------- | ---- | ---------------------------- |
 | type     | string                  | 是   | 订阅的事件类型。'sharingStateChange'：注册网络共享状态变化事件。                   |
-| callback | AsyncCallback\<boolean> | 是   | 回调函数，返回网络共享状态。 |
+| callback | AsyncCallback\<boolean> | 是   | 回调函数，返回true表示网络处于共享状态；返回false表示网络不处于共享状态。 |
 
 **错误码：**
 
@@ -985,7 +985,7 @@ off(type: 'sharingStateChange', callback?: Callback\<boolean>): void
 | 参数名   | 类型                    | 必填 | 说明                         |
 | -------- | ----------------------- | ---- | ---------------------------- |
 | type     | string                  | 是   | 注销的事件类型。'sharingStateChange'：注销网络共享状态变化事件。                   |
-| callback | AsyncCallback\<boolean> | 否   | 回调函数，返回网络共享状态。 |
+| callback | AsyncCallback\<boolean> | 否   | 回调函数，返回true表示网络处于共享状态；返回false表示网络不处于共享状态。 |
 
 **错误码：**
 
@@ -1161,11 +1161,11 @@ sharing.off('sharingUpstreamChange', (data: object) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
 
-| 名称     | 类型                                              | 必填 | 说明                 |
-| -------- | ------------------------------------------------- | ---- | ------------------- |
-| type     | [SharingIfaceType](#sharingifacetype)             | 是   | 网络共享类型。       |
-| iface    | string                                            | 是   | 指定的共享网络名称。 |
-| state    | [SharingIfaceState](#sharingifacestate)           | 是   | 网卡共享状态。       |
+| 名称     | 类型                                              | 只读 |可选| 说明                 |
+| -------- | ------------------------------------------------- | ---- | ----|--------------- |
+| type     | [SharingIfaceType](#sharingifacetype)             | 否  |否 |网络共享类型。       |
+| iface    | string                                            | 否   |否 |指定的共享网络名称。 |
+| state    | [SharingIfaceState](#sharingifacestate)           | 否  |否 |网卡共享状态。       |
 
 ## SharingIfaceState
 

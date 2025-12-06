@@ -311,8 +311,8 @@ try {
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
-| 名称      | 类型   | 必填 | 说明           |
-| --------- | ------ | --- | -------------- |
-| appSize   | number | 是 | 应用安装文件大小（单位为Byte）。    |
-| cacheSize | number | 是 | 应用缓存文件大小（单位为Byte）。   |
-| dataSize  | number | 是 | 应用文件存储大小（除应用安装文件）（单位为Byte）。 |
+| 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
+| :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| appSize   | number  | 否 | 否 | 应用安装文件大小（单位为Byte）。    |
+| cacheSize | number  | 否 | 否  | 应用缓存文件大小（单位为Byte）。   |
+| dataSize  | number  | 否 | 否  | 应用文件存储大小（除应用安装文件）（单位为Byte）。 |

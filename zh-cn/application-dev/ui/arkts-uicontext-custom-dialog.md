@@ -1,12 +1,12 @@
-# 不依赖UI组件的全局自定义弹出框 (openCustomDialog)（推荐）
+# 不依赖UI组件的全局自定义弹出框 (openCustomDialog)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-推荐使用UIContext中获取到的PromptAction对象提供的[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口在相对应用复杂的场景来实现自定义弹出框，相较于[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)优势点在于页面解耦，支持[动态刷新](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#update)。
+在广告、中奖、警告、软件更新等与用户交互响应操作的场景下，可以使用UIContext中获取到的PromptAction对象提供的[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口来实现自定义弹出框。相较于[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)优势点在于页面解耦，支持[动态刷新](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#update)。
 
 > **说明：**
 > 
@@ -26,8 +26,8 @@
 
 | 名称            |类型| 说明                       |
 | ----------------- | ------ | ---------------------------- |
-| onDidAppear    | () => void  | 弹出框弹出时的事件回调。    |
-| onDidDisappear |() => void  | 弹出框消失时的事件回调。    |
+| onDidAppear    | () => void  | 弹出框弹出后的事件回调。    |
+| onDidDisappear |() => void  | 弹出框消失后的事件回调。    |
 | onWillAppear    | () => void | 弹出框显示动效前的事件回调。 |
 | onWillDisappear | () => void | 弹出框退出动效前的事件回调。 |
 

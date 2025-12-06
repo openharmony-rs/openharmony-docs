@@ -90,7 +90,7 @@ napi_release_threadsafe_function(napi_threadsafe_function func,
                                  napi_threadsafe_function_release_mode mode);
 ```
 
-- mode值为napi_tsfn_release时：表示将tsfn中持有的线程数减一，当线程数减到0是，线程安全函数tsfn将被销毁。
+- mode值为napi_tsfn_release时：表示将tsfn中持有的线程数减一，当线程数减到0时，线程安全函数tsfn将被销毁。
 
 - mode值为napi_tsfn_abort时：该tsfn关闭，不能再调用此tsfn。
   如果设置为napi_tsfn_abort，利用napi_call_threadsafe_function接口调用此tsfn时，该行为可能导致UAF问题————当napi_tsfn_abort被设置时，tsfn立刻关闭，不能再被调用。如果此时调用napi_call_threadsafe_function，系统可能会返回napi_closing状态，表示tsfn正在关闭，但是传递给tsfn的data并未被放入队列中，这意味着data可能未被正确处理。如果data指向的内存已经被释放（例如，tsfn的资源被释放），但调用者仍然尝试访问或使用data，就会出现UAF(Use-After-Free)问题。
@@ -128,7 +128,7 @@ napi_handle_scope数据类型是用来管理ArkTS/JS对象的生命周期的。�
 
 - 用于napi_escape_handle接口，将ArkTS/JS对象逃逸到父scope，以便在外部作用域使用。
 
-**napi_ref **
+**napi_ref**
 
 指向napi_value，允许用户管理ArkTS/JS值的生命周期。
 
@@ -152,6 +152,18 @@ typedef struct {
 **napi_async_cleanup_hook_handle**
 
 napi_async_cleanup_hook_handle是Node-API中用于管理异步资源生命周期的一种机制。它允许注册一个清理钩子（cleanup hook），该钩子仅在当前napi_env环境生命周期结束时被调用。通过使用 napi_async_cleanup_hook_handle，可以确保某些异步资源在环境销毁前得到妥善释放，从而避免资源泄漏。此外，在Node-API实现中，只要该结构未被释放，会延迟整个 napi_env 环境的销毁。在OpenHarmony中，该接口的行为基本等同于env生命周期相关的清理钩子，除了支持重复注册相同的上下文数据（data）外，其余行为与标准的env清理钩子一致。
+
+**napi_critical_scope（扩展能力）**
+
+napi_critical_scope是Node-API中，用于创建临界接口执行环境的机制。它由napi_open_critical_scope接口创建，由napi_close_critical_scope接口关闭。
+
+临界接口：需要在临界区作用域内执行的接口，通常接口名中含有`critical`关键字。
+
+**napi_strong_ref（扩展能力）**
+
+指向napi_value，允许用户管理ArkTS对象的生命周期。
+
+**提示：** `napi_strong_ref`与`napi_ref`相比，具有更高的创建效率，但支持的功能受限（如：不支持强弱引用转换等）。
 
 ### 回调类型
 
@@ -523,29 +535,35 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_create_object_with_properties | 使用给定的napi_property_descriptor创建js Object。descriptor的键名必须为string，且不可转为number。 |
 | napi_create_object_with_named_properties | 使用给定的napi_value和键名创建js Object。键名必须为string，且不可转为number。 |
 | napi_coerce_to_native_binding_object | 强制将js Object和Native对象绑定。 |
-| napi_create_ark_runtime|创建基础运行时环境。|
-| napi_destroy_ark_runtime|销毁基础运行时环境。|
-| napi_run_event_loop | 启动底层的事件循环。|
-| napi_stop_event_loop | 停止底层的事件循环。|
-| napi_serialize | 将ArkTS对象序列化为native数据。|
-| napi_deserialize | 将native数据反序列化为ArkTS对象。|
-| napi_delete_serialization_data | 删除序列化数据。|
-| napi_call_threadsafe_function_with_priority| 按照指定的优先级和入队策略，将任务投递到ArkTS主线程中。|
-| napi_is_sendable| 判断给定的JS value是否是Sendable的。|
-| napi_define_sendable_class| 创建一个Sendable类。|
-| napi_create_sendable_object_with_properties | 使用给定的napi_property_descriptor创建一个Sendable对象。|
-| napi_create_sendable_array | 创建一个Sendable数组。|
-| napi_create_sendable_array_with_length | 创建一个指定长度的Sendable数组。|
-| napi_create_sendable_arraybuffer | 创建一个Sendable ArrayBuffer。|
-| napi_create_sendable_typedarray | 创建一个Sendable TypedArray。|
-| napi_wrap_sendable | 包裹一个native实例到ArkTS对象中。|
-| napi_wrap_sendable_with_size | 包裹一个native实例到ArkTS对象中并指定大小。|
-| napi_unwrap_sendable | 获取ArkTS对象包裹的native实例。|
-| napi_remove_wrap_sendable | 移除并获取ArkTS对象包裹的native实例，移除后回调将不再触发，需手动delete释放内存。|
+| napi_create_ark_runtime|创建基础运行时环境。 |
+| napi_destroy_ark_runtime|销毁基础运行时环境。 |
+| napi_run_event_loop | 启动底层的事件循环。 |
+| napi_stop_event_loop | 停止底层的事件循环。 |
+| napi_serialize | 将ArkTS对象序列化为native数据。 |
+| napi_deserialize | 将native数据反序列化为ArkTS对象。 |
+| napi_delete_serialization_data | 删除序列化数据。 |
+| napi_call_threadsafe_function_with_priority| 按照指定的优先级和入队策略，将任务投递到ArkTS主线程中。 |
+| napi_is_sendable| 判断给定的JS value是否是Sendable的。 |
+| napi_define_sendable_class| 创建一个Sendable类。 |
+| napi_create_sendable_object_with_properties | 使用给定的napi_property_descriptor创建一个Sendable对象。 |
+| napi_create_sendable_array | 创建一个Sendable数组。 |
+| napi_create_sendable_array_with_length | 创建一个指定长度的Sendable数组。 |
+| napi_create_sendable_arraybuffer | 创建一个Sendable ArrayBuffer。 |
+| napi_create_sendable_typedarray | 创建一个Sendable TypedArray。 |
+| napi_wrap_sendable | 包裹一个native实例到ArkTS对象中。 |
+| napi_wrap_sendable_with_size | 包裹一个native实例到ArkTS对象中并指定大小。 |
+| napi_unwrap_sendable | 获取ArkTS对象包裹的native实例。 |
+| napi_remove_wrap_sendable | 移除并获取ArkTS对象包裹的native实例，移除后回调将不再触发，需手动delete释放内存。 |
 | napi_wrap_enhance | 在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行，如果异步执行，则回调函数必须是线程安全的。 |
-|napi_create_ark_context| 创建一个新的上下文环境。|
-|napi_switch_ark_context| 切换到指定的运行时上下文环境。|
-|napi_destroy_ark_context| 销毁通过napi_create_ark_context创建的上下文环境。|
+| napi_create_ark_context| 创建一个新的上下文环境。 |
+| napi_switch_ark_context| 切换到指定的运行时上下文环境。 |
+| napi_destroy_ark_context| 销毁通过napi_create_ark_context创建的上下文环境。 |
+| napi_open_critical_scope | 打开临界区作用域。 |
+| napi_close_critical_scope | 关闭临界区作用域。 |
+| napi_get_buffer_string_utf16_in_critical_scope | 获取ArkTS String的UTF-16编码内存缓冲区数据。 |
+| napi_create_strong_reference | 创建指向ArkTS对象的强引用。 |
+| napi_delete_strong_reference | 删除强引用。|
+| napi_get_strong_reference_value | 根据强引用对象获取其关联的ArkTS对象值。 |
 
 **napi_queue_async_work_with_qos**
 
@@ -780,6 +798,45 @@ napi_status napi_switch_ark_context(napi_env env);
 **napi_destroy_ark_context**
 ```c
 napi_status napi_destroy_ark_context(napi_env env);
+```
+
+**napi_open_critical_scope**
+
+```c
+napi_status napi_open_critical_scope(napi_env env, napi_critical_scope* scope);
+```
+
+**napi_close_critical_scope**
+
+```c
+napi_status napi_close_critical_scope(napi_env env, napi_critical_scope scope);
+```
+
+**napi_get_buffer_string_utf16_in_critical_scope**
+
+```c
+napi_status napi_get_buffer_string_utf16_in_critical_scope(napi_env env,
+                                                           napi_value value,
+                                                           const char16_t** buffer,
+                                                           size_t* length);
+```
+
+**napi_create_strong_reference**
+
+```c
+napi_status napi_create_strong_reference(napi_env env, napi_value value, napi_strong_ref* result);
+```
+
+**napi_delete_strong_reference**
+
+```c
+napi_status napi_delete_strong_reference(napi_env env, napi_strong_ref ref)
+```
+
+**napi_get_strong_reference_value**
+
+```c
+napi_status napi_get_strong_reference_value(napi_env env, napi_strong_ref ref, napi_value* result)
 ```
 
 ### 其他实用工具

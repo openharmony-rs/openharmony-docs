@@ -307,3 +307,8 @@ int Demo(void)
     return 0;
 }
 ```
+> **说明：**
+> 
+> 在demo代码中，使用了第三方库nlohmann/json来简化JSON数据的解析与构造。nlohmann/json是一个现代C++的JSON库，提供了直观、简洁的方式来处理JSON数据。
+> 它的设计理念是让JSON操作像使用STL容器一样自然。
+> 开发者可以下载json.hpp文件并放入项目的include目录即可使用，无需额外链接库文件。

@@ -177,6 +177,90 @@ index.html页面在深色模式关闭、深色模式开启及强制深色模式�
 
 ![web-dark-mode](figures/arkweb_dark_mode.png)
 
+## Web组件背景色适配
+
+Web组件发生旋转或大小改变等事件时，Web网页尺寸改变，变化过程中可能会漏出Web组件的背景色。深色模式下，建议将Web组件背景色置为黑色，与网页背景保持一致，以提升用户体验。
+
+Web组件背景色可通过[backgroundColor()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)设置。未设置背景色时，Web组件默认背景色为白色。仅当强制深色模式下，默认背景色变为黑色。未开启强制深色模式时，可通过以下方法进行适配。
+
+- 应用侧设置[WebDarkMode.On](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)和[WebDarkMode.Off](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)控制深色模式开启和关闭时，背景色跟随深色模式开启和关闭状态改变。
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    @State isDark: boolean = false;
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .darkMode(this.isDark ? WebDarkMode.On : WebDarkMode.Off)
+          .backgroundColor(this.isDark ? Color.Black : Color.White)
+      }
+    }
+  }
+  ```
+
+- 应用侧设置[WebDarkMode.Auto](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)跟随系统深色模式时，监听系统设置，背景色跟随系统改变。
+
+  ```ts
+  // EntryAbility.ets
+  export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+      // 将当前colorMode放在AppStorage中
+      AppStorage.setOrCreate<ConfigurationConstant.ColorMode>('currentColorMode', this.context.config.colorMode);
+      hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    }
+
+    // ...
+
+    onConfigurationUpdate(newConfig: Configuration): void {
+      // 动态更新深浅色状态
+      const currentColorMode: ConfigurationConstant.ColorMode | undefined = AppStorage.get('currentColorMode');
+      if (currentColorMode !== newConfig.colorMode) {
+        AppStorage.setOrCreate<ConfigurationConstant.ColorMode>('currentColorMode', newConfig.colorMode);
+      }
+    }
+  }
+  ```
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { ConfigurationConstant } from '@kit.AbilityKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    @State bgColor: Color = Color.White;
+    @StorageProp('currentColorMode') @Watch('onCurrentColorModeChange')
+    currentColorMode: ConfigurationConstant.ColorMode = ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET;
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .darkMode(WebDarkMode.Auto)
+          .backgroundColor(this.bgColor)
+      }
+    }
+
+    onCurrentColorModeChange(): void {
+      // 根据系统设置切换背景色
+      if (this.currentColorMode === ConfigurationConstant.ColorMode.COLOR_MODE_DARK) {
+        this.bgColor = Color.Black;
+      } else {
+        this.bgColor = Color.White;
+      }
+    }
+  }
+  ```
+
+
 ## 常见问题
 
 ### 网页未切换为深色样式

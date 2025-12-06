@@ -1,5 +1,12 @@
 # Managing Assets in a Group (ArkTS)
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 Before managing assets in a group, ensure that you are familiar with the following operations:
 
 - [Adding an Asset (ArkTS)](asset-js-add.md)
@@ -9,14 +16,16 @@ Before managing assets in a group, ensure that you are familiar with the followi
 
 ## Prerequisites
 
-Set the group ID **demo_group_id** in the **app.json5** file.
+Set the group ID, such as **demo_group_id**, in the **app.json5** file. You can set multiple group IDs for a group.
 
-```json
+```json5
 {
   "app": {
     // Other configuration items are omitted here.
     "assetAccessGroups": [
-      "demo_group_id"
+      "demo_group_id",
+      // "another_group_id",
+      // ...
     ]
   }
 }
@@ -24,7 +33,7 @@ Set the group ID **demo_group_id** in the **app.json5** file.
 
 ## Adding an Asset to a Group
 
-Add an asset to the group, with the password **demo_pwd**, alias **demo_alias**, and additional attribute **demo_label**. The asset can be accessed after the user unlocks the device for the first time.
+Add an asset to the group, with the password **demo_pwd**, alias **demo_alias**, and additional attribute **demo_label**.
 
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
@@ -39,18 +48,16 @@ function stringToArray(str: string): Uint8Array {
 let attr: asset.AssetMap = new Map();
 attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
 attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
 attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
 attr.set(asset.Tag.GROUP_ID, stringToArray('demo_group_id'));
 try {
   asset.add(attr).then(() => {
-    console.info(`Asset added to the group successfully.`);
+    console.info(`Succeeded in adding Asset to the group.`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to add Asset to the group. Code is ${err.code}, message is ${err.message}`);
   })
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to add Asset to the group. Code is ${err.code}, message is ${err.message}`);
+} catch (err) {
+  console.error(`Failed to add Asset to the group. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -73,13 +80,12 @@ query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the asset al
 query.set(asset.Tag.GROUP_ID, stringToArray('demo_group_id'));
 try {
   asset.remove(query).then(() => {
-    console.info(`Asset removed from the group successfully.`);
+    console.info(`Succeeded removing in Asset from the group.`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to remove Asset from the group. Code is ${err.code}, message is ${err.message}`);
   });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to remove Asset from the group. Code is ${err.code}, message is ${err.message}`);
+} catch (err) {
+  console.error(`Failed to remove Asset from the group. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -105,13 +111,12 @@ attrsToUpdate.set(asset.Tag.SECRET, stringToArray('demo_pwd_new'));
 attrsToUpdate.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label_new'));
 try {
   asset.update(query, attrsToUpdate).then(() => {
-    console.info(`Asset in the group updated successfully.`);
+    console.info(`Succeeded in updating Asset in the group.`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to update Asset in the group. Code is ${err.code}, message is ${err.message}`);
   });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to update Asset in the group. Code is ${err.code}, message is ${err.message}`);
+} catch (err) {
+  console.error(`Failed to update Asset in the group. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -142,17 +147,16 @@ query.set(asset.Tag.GROUP_ID, stringToArray('demo_group_id'));
 try {
   asset.query(query).then((res: Array<asset.AssetMap>) => {
     for (let i = 0; i < res.length; i++) {
-      // parse the secret.
+      // Parse the secret.
       let secret: Uint8Array = res[i].get(asset.Tag.SECRET) as Uint8Array;
-      // parse uint8array to string
+      // Convert Uint8Array into the string type.
       let secretStr: string = arrayToString(secret);
     }
-  }).catch ((err: BusinessError) => {
+  }).catch((err: BusinessError) => {
     console.error(`Failed to query Asset. Code is ${err.code}, message is ${err.message}`);
   });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to query Asset. Code is ${err.code}, message is ${err.message}`);
+} catch (err) {
+  console.error(`Failed to query Asset. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -171,20 +175,20 @@ function stringToArray(str: string): Uint8Array {
 }
 
 let query: asset.AssetMap = new Map();
-query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));       // Specify the alias of the asset to query.
+query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the alias of the asset to query.
 query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ATTRIBUTES); // Return only the attributes of the asset, that is, the result does not include the asset plaintext.
 query.set(asset.Tag.GROUP_ID, stringToArray('demo_group_id'));
 try {
   asset.query(query).then((res: Array<asset.AssetMap>) => {
     for (let i = 0; i < res.length; i++) {
-      // Parse the attribute.
+      // Parse the attributes.
       let accessibility: number = res[i].get(asset.Tag.ACCESSIBILITY) as number;
+      console.info(`Succeeded in getting accessibility, which is: ${accessibility}.`);
     }
-  }).catch ((err: BusinessError) => {
+  }).catch((err: BusinessError) => {
     console.error(`Failed to query Asset from the group. Code is ${err.code}, message is ${err.message}`);
   });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to query Asset from the group. Code is ${err.code}, message is ${err.message}`);
+} catch (err) {
+  console.error(`Failed to query Asset from the group. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```

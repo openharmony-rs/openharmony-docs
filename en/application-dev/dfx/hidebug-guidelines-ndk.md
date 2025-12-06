@@ -20,7 +20,7 @@ Step 1: Create a project
 2. In the **CMakeLists.txt** file, add the dependencies.
 
    ```cmake
-   # Add **libhiappevent_ndk.z.so** and **libhilog_ndk.z.so** (log output).
+   # Add libohhidebug.so and libhilog_ndk.z.so (log output).
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libohhidebug.so)
    ```
 
@@ -104,7 +104,7 @@ The data returned by the **OH_HiDebug_GetAppThreadCpuUsage** API is in the linke
         if (cpuUsage != nullptr) {
             do {
                 OH_LOG_INFO(LogType::LOG_APP, 
-                            "GetAppThreadCpuUsage: threadId %{public}d, vssLimit: %{public}f", cpuUsage->threadId, cpuUsage->cpuUsage);
+                            "GetAppThreadCpuUsage: threadId %{public}d, cpuUsage: %{public}f", cpuUsage->threadId, cpuUsage->cpuUsage);
                 cpuUsage = cpuUsage->next; // Obtain the CPU usage object pointer of the next thread.
             } while(cpuUsage != nullptr);
             OH_HiDebug_FreeThreadCpuUsage(&cpuUsage); // Release the memory to prevent memory leaks.
@@ -115,23 +115,23 @@ The data returned by the **OH_HiDebug_GetAppThreadCpuUsage** API is in the linke
 
 2. Trigger the API call and view the console output. The following is an example of the log output:
    ```Text
-    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15025, vssLimit: 0.000762
-    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15143, vssLimit: 0.000000
-    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15144, vssLimit: 0.000055
-    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15152, vssLimit: 0.000000
-    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15154, vssLimit: 0.000000
-    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15155, vssLimit: 0.000000
-    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15156, vssLimit: 0.000000
-    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15157, vssLimit: 0.000000
-    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15158, vssLimit: 0.000000
-    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15159, vssLimit: 0.000000
-    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15160, vssLimit: 0.000033
-    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15161, vssLimit: 0.000077
-    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15162, vssLimit: 0.000000
-    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15163, vssLimit: 0.000033
-    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15171, vssLimit: 0.000000
-    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15175, vssLimit: 0.000011
-    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15176, vssLimit: 0.000033
+    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15025, cpuUsage: 0.000762
+    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15143, cpuUsage: 0.000000
+    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15144, cpuUsage: 0.000055
+    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15152, cpuUsage: 0.000000
+    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15154, cpuUsage: 0.000000
+    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15155, cpuUsage: 0.000000
+    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15156, cpuUsage: 0.000000
+    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15157, cpuUsage: 0.000000
+    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15158, cpuUsage: 0.000000
+    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15159, cpuUsage: 0.000000
+    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15160, cpuUsage: 0.000033
+    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15161, cpuUsage: 0.000077
+    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15162, cpuUsage: 0.000000
+    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15163, cpuUsage: 0.000033
+    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15171, cpuUsage: 0.000000
+    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15175, cpuUsage: 0.000011
+    06-04 15:18:27.585   15025-15025   A00000/com.exa...ation/testTag  com.examp...lication  I     GetAppThreadCpuUsage: threadId 15176, cpuUsage: 0.000033
    ```
 
 ### Obtaining Stack Information
@@ -344,8 +344,6 @@ Step 1: Create a project
 5. In the **napi_init.cpp** file, import the dependency files and define the test method.
 
    ```c++
-   #include "napi/native_api.h"
-   #include "test_backtrace.h"
    #include <thread>
    
    #include "napi/native_api.h"
@@ -364,7 +362,7 @@ Step 1: Create a project
        std::thread([]{
            std::this_thread::sleep_for(std::chrono::seconds(1));
            BacktraceFrames();
-       }).detach (); // Start the second thread to capture the stack of the main thread.
+       }).detach(); // Start the second thread to capture the stack of the main thread.
        TestNativeFrames(1); 
        return nullptr;
    }
@@ -428,11 +426,11 @@ Step 2: Run the project
 
    ```Text
    ...
-   05-10 17:26:24.229 8324-8865 A0FF00/com.exa...ation/TestTag com.examp...lication I native stack frame info for pc: 0x5b3e193d24 is relativePc: 0xd3d24 funcOffset: 0x60 mapName: 0x5b3e831880 functionName: std::__n1::this_thread::sleep_for(std::__n1::chrono::duration<long long, std::__n1::ratio<1l, 1000000000l>> const&) buildId: 459a4d9b28503b85a67ca37bda676b03da86e7d6 reserved: (null).
-   05-10 17:26:24.229 8324-8865 A0FF00/com.exa...ation/TestTag com.examp...lication I native stack frame info for pc: 0x5b3e208524 is relativePc: 0x8524 funcOffset: 0xbc mapName: 0x5b3e822e30 functionName: void std::__n1::this_thread::sleep_for<long long, std::__n1::ratio<1l, 1l>>(std::n1::chrono::duration<long long, std::n1::ratio<1l, 1l>> const&) buildId: 18a155ee0e687664c5f2c552762efb5ff9ee3724 reserved: (null).
-   05-10 17:26:24.229 8324-8865 A0FF00/com.exa...ation/TestTag com.examp...lication I native stack frame info for pc: 0x5b3e208434 is relativePc: 0x8434 funcOffset: 0x68 mapName: 0x5b3e822d10 functionName: TestNativeFrames(int) buildId: 18a155ee0e687664c5f2c552762efb5ff9ee3724 reserved: (null).
-   05-10 17:26:24.229 8324-8865 A0FF00/com.exa...ation/TestTag com.examp...lication I native stack frame info for pc: 0x5b3e20840c is relativePc: 0x840c funcOffset: 0x40 mapName: 0x5b3e822ec0 functionName: TestNativeFrames(int) buildId: 18a155ee0e687664c5f2c552762efb5ff9ee3724 reserved: (null).
-   05-10 17:26:24.229 8324-8865 A0FF00/com.exa...ation/TestTag com.examp...lication I native stack frame info for pc: 0x5b3e208654 is relativePc: 0x8654 funcOffset: 0xd4 mapName: 0x5b3e822f50 functionName: Add(napi_env*, napi_callback_info*) buildId: 18a155ee0e687664c5f2c552762efb5ff9ee3724 reserved: (null).
+   05-10 17:26:24.229 8324-8865 A0FF00/com.exa...ation/TestTag com.examp...lication I native stack frame info for pc: 0x5b3e193d24 is relativePc: 0xd3d24 funcOffset: 0x60 mapName: /data/storage/el1/bundle/libs/arm64/libc++_shared.so functionName: std::__n1::this_thread::sleep_for(std::__n1::chrono::duration<long long, std::__n1::ratio<1l, 1000000000l>> const&) buildId: 459a4d9b28503b85a67ca37bda676b03da86e7d6 reserved: (null).
+   05-10 17:26:24.229 8324-8865 A0FF00/com.exa...ation/TestTag com.examp...lication I native stack frame info for pc: 0x5b3e208524 is relativePc: 0x8524 funcOffset: 0xbc mapName: /data/storage/el1/bundle/libs/arm64/libentry.so functionName: void std::__n1::this_thread::sleep_for<long long, std::__n1::ratio<1l, 1l>>(std::n1::chrono::duration<long long, std::n1::ratio<1l, 1l>> const&) buildId: 18a155ee0e687664c5f2c552762efb5ff9ee3724 reserved: (null).
+   05-10 17:26:24.229 8324-8865 A0FF00/com.exa...ation/TestTag com.examp...lication I native stack frame info for pc: 0x5b3e208434 is relativePc: 0x8434 funcOffset: 0x68 mapName: /data/storage/el1/bundle/libs/arm64/libentry.so functionName: TestNativeFrames(int) buildId: 18a155ee0e687664c5f2c552762efb5ff9ee3724 reserved: (null).
+   05-10 17:26:24.229 8324-8865 A0FF00/com.exa...ation/TestTag com.examp...lication I native stack frame info for pc: 0x5b3e20840c is relativePc: 0x840c funcOffset: 0x40 mapName: /data/storage/el1/bundle/libs/arm64/libentry.so functionName: TestNativeFrames(int) buildId: 18a155ee0e687664c5f2c552762efb5ff9ee3724 reserved: (null).
+   05-10 17:26:24.229 8324-8865 A0FF00/com.exa...ation/TestTag com.examp...lication I native stack frame info for pc: 0x5b3e208654 is relativePc: 0x8654 funcOffset: 0xd4 mapName: /data/storage/el1/bundle/libs/arm64/libentry.so functionName: TestHiDebugNdk(napi_env*, napi_callback_info*) buildId: 18a155ee0e687664c5f2c552762efb5ff9ee3724 reserved: (null).
    ...
    05-10 17:26:24.234 8324-8865 A0FF00/com.exa...ation/TestTag com.examp...lication I js stack frame info for pc: 0x5a3d773f92 is relativePc: 0x2f92 line: 17 column: 16 mapName: /data/storage/el1/bundle/entry.hap functionName: testJsFrame url: entry|entry|1.0.0|src/main/ets/pages/Index.ts packageName: .
    05-10 17:26:24.235 8324-8865 A0FF00/com.exa...ation/TestTag com.examp...lication I js stack frame info for pc: 0x5a3d773f6c is relativePc: 0x2f6c line: 13 column: 16 mapName: /data/storage/el1/bundle/entry.hap functionName: testJsFrame url: entry|entry|1.0.0|src/main/ets/pages/Index.ts packageName: .

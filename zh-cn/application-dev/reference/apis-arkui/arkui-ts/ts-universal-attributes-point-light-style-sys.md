@@ -1,10 +1,10 @@
 # 点光源设置 (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 设置点光源样式。
 
@@ -22,11 +22,11 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        | 参数类型                                                    | 必填 | 描述                                                         |
-| ----------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| lightSource | [LightSource](#lightsource对象说明)                         | 否   | 设置光源属性，光源会影响到周围标记为可以被照亮的组件，并在组件上产生光效。<br/>默认值：无光源 |
-| illuminated | [IlluminatedType](ts-appendix-enums-sys.md#illuminatedtype) | 否   | 设置当前组件是否可以被光源照亮，以及被照亮的类型。<br/>默认值：IlluminatedType.NONE |
-| bloom       | number                                                      | 否   | 设置组件的发光强度，建议取值范围为0-1。<br/>默认值：0        |
+| 名称        | 类型                                                    | 只读 | 可选 | 说明                                                         |
+| ----------- | ----------------------------------------------------------- | ---- |  ---- | ------------------------------------------------------------ |
+| lightSource | [LightSource](#lightsource对象说明)                         | 否   |  是   | 设置光源属性，光源会影响到周围标记为可以被照亮的组件，并在组件上产生光效。<br/>默认值：无光源 |
+| illuminated | [IlluminatedType](ts-appendix-enums-sys.md#illuminatedtype) | 否   |  是  | 设置当前组件是否可以被光源照亮，以及被照亮的类型。<br/>默认值：IlluminatedType.NONE |
+| bloom       | number                                                      | 否   |  是   | 设置组件的发光强度，建议取值范围为0-1。<br/>默认值：0        |
 
 ## LightSource对象说明
 
@@ -36,13 +36,13 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                | 参数类型                                   | 必填 | 描述                                                     |
-| ------------------- | ------------------------------------------ | ---- | -------------------------------------------------------- |
-| positionX           | [Dimension](ts-types.md#dimension10)       | 是   | 光源相对于当前组件的X坐标。                              |
-| positionY           | [Dimension](ts-types.md#dimension10)       | 是   | 光源相对于当前组件的Y坐标。                              |
-| positionZ           | [Dimension](ts-types.md#dimension10)       | 是   | 光源高度。光源越高，照射范围越大。                       |
-| intensity           | number                                     | 是   | 光源强度，建议取值范围0-1。当光源强度为0时，光源不发光。 |
-| color<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | 否   | 光源颜色。<br/>默认值：Color.White                       |
+| 名称                | 类型                                   | 只读 | 可选 | 说明                                                     |
+| ------------------- | ------------------------------------------ | ---- | ---- | -------------------------------------------------- |
+| positionX           | [Dimension](ts-types.md#dimension10)       | 否 | 否   | 光源相对于当前组件的X坐标。                              |
+| positionY           | [Dimension](ts-types.md#dimension10)       | 否 | 否   | 光源相对于当前组件的Y坐标。                              |
+| positionZ           | [Dimension](ts-types.md#dimension10)       | 否 | 否   | 光源高度。光源越高，照射范围越大。                       |
+| intensity           | number                                     | 否 | 否   | 光源强度，建议取值范围0-1。当光源强度为0时，光源不发光。 |
+| color<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 光源颜色。<br/>默认值：Color.White                       |
 
 ## 示例
 
@@ -64,7 +64,12 @@ struct Index {
 
       Flex()
         .pointLight({
-          lightSource: { intensity: this.lightIntensity, positionX: "50%", positionY: "50%", positionZ: 80 },
+          lightSource: {
+            intensity: this.lightIntensity,
+            positionX: "50%",
+            positionY: "50%",
+            positionZ: 80
+          },
           bloom: this.bloomValue
         })
         .animation({ duration: 333 })

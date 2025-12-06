@@ -772,7 +772,7 @@ async function ExampleFunction() {
 
 getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void
 
-查询指定应用的保留沙箱信息列表。使用callback方式异步返回结果。
+查询指定应用的保留沙箱信息列表。使用callback异步回调。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -817,7 +817,7 @@ try {
 
 getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void
 
-查询指定应用的保留沙箱信息列表。使用callback方式异步返回结果。
+查询当前应用的保留沙箱信息列表。使用callback异步回调。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1205,22 +1205,22 @@ interface Policy {
 try {
   let attributeValues: Array<string> = [ '1' ];
   let attribute: Attribute = {
-    attributeId: 'DeviceHealthyStatus';
-    attributeValues: attributeValues;
-    valueType: 0;
-    opt: 2;
+    attributeId: 'DeviceHealthyStatus',
+    attributeValues: attributeValues,
+    valueType: 0,
+    opt: 2
   }; // 属性信息。
   let rule: Rule = {
-    ruleId: 'ruleId';
-    attributes: [ attribute ];
+    ruleId: 'ruleId',
+    attributes: [ attribute ]
   }; // 规则。
   let policy: Policy = {
-    rules: [ rule ];
-    policyId: 'policyId';
-    ruleConflictAlg: 0;
+    rules: [ rule ],
+    policyId: 'policyId',
+    ruleConflictAlg: 0
   }; // 策略。
   let enterprisePolicy: dlpPermission.EnterprisePolicy = {
-    policyString: JSON.stringify(policy);
+    policyString: JSON.stringify(policy)
   };
   dlpPermission.setEnterprisePolicy(enterprisePolicy);
   console.info('set enterprise policy success');
@@ -1321,14 +1321,14 @@ DLP文件授权类型的枚举。
 
 ## dlpPermission.generateDlpFileForEnterprise<sup>21+</sup>
 
-generateDLPFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPProperty, customProperty: CustomProperty): Promise&lt;void&gt;
+generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPProperty, customProperty: CustomProperty): Promise&lt;void&gt;
 
 获取DLPFile管理对象。使用Promise异步回调。
 >**说明：**
 >
 > 使用该接口可以将明文文件加密生成权限受控文件，仅拥有完全控制权限的用户可以打开。
 
-**需要权限：** ohos.permission.ENTERPEISE_ACCESS_DLP_FILE
+**需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1412,7 +1412,7 @@ decryptDlpFile(dlpFd: number, plaintextFd: number): Promise&lt;void&gt;
 >
 > 仅拥有完全控制权限的用户可以解密DLP文件。
 
-**需要权限：** ohos.permission.ENTERPEISE_ACCESS_DLP_FILE
+**需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1480,7 +1480,7 @@ queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
 
 在DLP文件中解析文件头，获取DLP明文策略。使用Promise异步回调。
 
-**需要权限：** ohos.permission.ENTERPEISE_ACCESS_DLP_FILE
+**需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1621,7 +1621,7 @@ connectServer(requestId: string, requestData: string, callback: Callback\<string
 >
 > connectServer接口代表系统能力侧向前端通信的一次调用。
 
-**需要权限：** ohos.permission.ENTERPEISE_ACCESS_DLP_FILE
+**需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
   
@@ -1657,7 +1657,7 @@ constructor()
 
 [DlpConnManager](#dlpconnmanager21) 实例化时的构造函数。
  
-**需要权限：** ohos.permission.ENTERPEISE_ACCESS_DLP_FILE
+**需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
  
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1678,7 +1678,7 @@ static registerPlugin(plugin: DlpConnPlugin): number
 >
 > registerPlugin将plugin注册到SA（System Ability）侧，待SA（System Ability）调用。
 
-**需要权限：** ohos.permission.ENTERPEISE_ACCESS_DLP_FILE
+**需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1715,7 +1715,7 @@ static unregisterPlugin(): void
 >
 > unregisterPlugin将plugin从SA（System Ability）侧注销注册。
   
-**需要权限：** ohos.permission.ENTERPEISE_ACCESS_DLP_FILE
+**需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 

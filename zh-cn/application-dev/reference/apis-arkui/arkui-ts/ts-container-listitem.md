@@ -5,7 +5,7 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用来展示列表具体item，必须配合List来使用。
 
@@ -13,7 +13,7 @@
 >
 > - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > - 该组件的父组件只能是[List](ts-container-list.md)或者[ListItemGroup](ts-container-listitemgroup.md)。
-> - 当ListItem配合LazyForEach使用时，ListItem子组件在ListItem创建时创建。配合if/else、ForEach使用时，或父组件为List/ListItemGroup时，ListItem子组件在ListItem布局时创建。
+> - 当ListItem配合[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)使用时，ListItem子组件在ListItem创建时创建。配合[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)使用时，或父组件为List/ListItemGroup时，ListItem子组件在ListItem布局时创建。
 
 ## 子组件
 
@@ -37,7 +37,7 @@ ListItem(value?: ListItemOptions)
 
 | 参数名 | 类型                                      | 必填 | 说明                                                     |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ListItemOptions](#listitemoptions10对象说明) | 否   | 为ListItem提供可选参数，该对象内含有ListItemStyle枚举类型的style参数。<br/>默认值：{ style: ListItemStyle.NONE } |
+| value  | [ListItemOptions](#listitemoptions10对象说明) | 否   | 为ListItem提供可选参数，该对象内含有[ListItemStyle](#listitemstyle10枚举说明)枚举类型的style参数。<br/>默认值：{ style: ListItemStyle.NONE } |
 
 ### ListItem<sup>(deprecated)</sup>
 
@@ -281,7 +281,7 @@ ListItem元素被鼠标框选的状态改变时触发回调。
 ListItem划出菜单的管理器。
 
 ### expand<sup>21+</sup>
-expand(node: FrameNode, direction: ListItemSwipeActionDirection)
+expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 
 展开指定ListItem的划出菜单。
 
@@ -303,14 +303,14 @@ expand(node: FrameNode, direction: ListItemSwipeActionDirection)
 | 错误码ID    | 错误信息                                                                                             |
 |----------|--------------------------------------------------------------------------------------------------|
 | 100023   | The component type of the node is incorrect. |
-| 106203   | The node is not mounted to the component tree. |
+| 106203   | The node not mounted to component tree. |
 
 > **说明：**
 >
 > - 如果List组件cachedCount属性isShow参数设置为true，List显示区域外已预加载完成的ListItem支持展开，否则List显示区域外节点不支持展开。
 
 ### collapse<sup>21+</sup>
-collapse(node: FrameNode)
+collapse(node: FrameNode): void
 
 收起指定ListItem的划出菜单。
 
@@ -331,7 +331,7 @@ collapse(node: FrameNode)
 | 错误码ID    | 错误信息                                                                                             |
 |----------|--------------------------------------------------------------------------------------------------|
 | 100023   | The component type of the node is incorrect. |
-| 106203   | The node is not mounted to the component tree. |
+| 106203   | The node not mounted to component tree. |
 
 ## ListItemSwipeActionDirection<sup>21+</sup>枚举说明
 
@@ -493,6 +493,7 @@ struct ListItemExample3 {
             }
           })
         }
+
         ForEach([ListItemStyle.CARD, ListItemStyle.CARD, ListItemStyle.NONE], (itemStyle: number, index?: number) => {
           ListItem({ style: itemStyle }) {
             Text('' + index)
@@ -514,7 +515,7 @@ struct ListItemExample3 {
 
 ### 示例4（通过ComponentContent设置划出组件）
 
-该示例通过ComponentContent设置ListItem中的划出组件操作时显示的操作项。
+该示例通过[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)设置ListItem中的划出组件操作时显示的操作项。
 
 ```ts
 // xxx.ets
@@ -623,7 +624,7 @@ struct ListItemExample {
 ![ListItemStyle](figures/deleteListItem_example04.gif)
 
 ### 示例5（通过ListItemSwipeActionManager管理划出菜单）
-该示例通过ListItemSwipeActionManager管理ListItem的划出菜单。
+从API version 21开始，该示例通过[ListItemSwipeActionManager](#listitemswipeactionmanager21)管理ListItem的划出菜单。
 
 ```ts
 // xxx.ets
@@ -642,31 +643,31 @@ struct ListItemExample5 {
   build() {
     Flex({ wrap: FlexWrap.Wrap }) {
       Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.SpaceBetween }) {
-        Button("expand start")
+        Button('expand start')
           .onClick(() => {
             try {
               let node: FrameNode | null = this.getUIContext().getAttachedFrameNodeById('listItem');
               ListItemSwipeActionManager.expand(node, ListItemSwipeActionDirection.START)
             } catch (error) {
-              console.error("Error expand item:", (error as BusinessError).code, (error as BusinessError).message);
+              console.error('Error expand item:', (error as BusinessError).code, (error as BusinessError).message);
             }
           })
-        Button("expand end")
+        Button('expand end')
           .onClick(() => {
             try {
               let node: FrameNode | null = this.getUIContext().getAttachedFrameNodeById('listItem');
               ListItemSwipeActionManager.expand(node, ListItemSwipeActionDirection.END)
             } catch (error) {
-              console.error("Error expand item:", (error as BusinessError).code, (error as BusinessError).message);
+              console.error('Error expand item:', (error as BusinessError).code, (error as BusinessError).message);
             }
           })
-        Button("collapse")
+        Button('collapse')
           .onClick(() => {
             try {
               let node: FrameNode | null = this.getUIContext().getAttachedFrameNodeById('listItem');
               ListItemSwipeActionManager.collapse(node)
             } catch (error) {
-              console.error("Error collapse item:", (error as BusinessError).code, (error as BusinessError).message);
+              console.error('Error collapse item:', (error as BusinessError).code, (error as BusinessError).message);
             }
           })
       }
@@ -674,7 +675,7 @@ struct ListItemExample5 {
 
       List({ space: 10 }) {
         ListItem() {
-          Text("item")
+          Text('item')
             .width('100%')
             .height(100)
             .fontSize(16)

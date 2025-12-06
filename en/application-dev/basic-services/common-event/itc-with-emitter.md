@@ -5,7 +5,7 @@
 <!--Owner: @peixu-->
 <!--Designer: @dongqingran; @wulong158-->
 <!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @fang-jinxu-->
 
 Emitter is an event processing mechanism used in a process. It provides the capabilities of subscribing to, publishing, and unsubscribing from events for applications.
 
@@ -25,7 +25,7 @@ For details, see [@ohos.events.emitter (Emitter)](../../reference/apis-basic-ser
 | on | Event subscription| Continuously subscribes to an event until the event is unsubscribed from.|
 | once | Event subscription| Subscribes to an event once.|
 | emit | Event publishing| Publishes an event once.|
-| off | Event unsubscription.| Unsubscribes from the event and subsequent notifications of this event will not be received.|
+| off | Event unsubscription| Unsubscribes from the event and subsequent notifications of this event will not be received.|
 
 ## How to Develop
 
@@ -62,10 +62,10 @@ To enable Emitter's capabilities mentioned above, perform the following steps:
 
 3. Emit the event.
 
-   Use **emit()** to send events and set the events to send and the parameters to pass.
+   Use **emit()** to emit events and set the events to send and the parameters to pass.
     > **NOTE**
     >
-    > This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
+    > This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
    ```ts
    // Define an event with eventId 1 and priority Low.
    let event: emitter.InnerEvent = {

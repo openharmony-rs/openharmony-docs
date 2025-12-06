@@ -4,7 +4,7 @@
 <!--Owner: @fengluochenai-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 文本下载按钮，可显示具体的下载进度。
@@ -16,6 +16,7 @@
 >
 > - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 如果ProgressButtonV2设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ProgressButtonV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ProgressButtonV2设置通用属性和通用事件。
 
 
 ## 导入模块
@@ -77,12 +78,12 @@ type ClickCallback = () => void
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
-| 名称              | 类型           | 只读 | 可选 | 装饰器类型   | 说明                         |
-|-----------------|--------------|---|----|---------|----------------------------|
-| progressColor   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | \@Trace | 进度条颜色。<br/>默认值：#330A59F7  |
-| borderColor     | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | \@Trace | 按钮描边颜色。<br/>默认值：#330A59F7 |
-| textColor       | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | \@Trace | 按钮文本颜色。<br/>默认值：系统默认值，#CE000000 |
-| backgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | \@Trace | 按钮背景颜色。<br/>默认值：\$r('sys.color.ohos_id_color_foreground_contrary') |
+| 名称              | 类型           | 只读 | 可选 | 说明                         |
+|-----------------|--------------|---|----|----------------------------|
+| progressColor   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 进度条颜色。<br/>默认值：#330A59F7<br/>装饰器类型：@Trace  |
+| borderColor     | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 按钮描边颜色。<br/>默认值：#330A59F7<br/>装饰器类型：@Trace |
+| textColor       | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 按钮文本颜色。<br/>默认值：系统默认值，#CE000000<br/>装饰器类型：@Trace |
+| backgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 按钮背景颜色。<br/>默认值：\$r('sys.color.ohos_id_color_foreground_contrary')<br/>装饰器类型：@Trace |
 
 ### constructor
 constructor(options: ProgressButtonV2ColorOptions);

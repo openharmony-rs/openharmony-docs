@@ -3,8 +3,9 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @xia-bubai-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 The **abilityAccessCtrl** module provides APIs for application permission management, including authentication, authorization, and revocation.
 
@@ -74,9 +75,9 @@ let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager()
 let tokenID: number = 0; // Use bundleManager.getApplicationInfo() to obtain the token ID for a system application, and use bundleManager.getBundleInfoForSelf() to obtain the token ID for a non-system application.
 let permissionFlags: number = 1;
 atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
-  console.log('grantUserGrantedPermission success');
+  console.info('grantUserGrantedPermission success');
 }).catch((err: BusinessError) => {
-  console.error(`grantUserGrantedPermission fail, err->${JSON.stringify(err)}`);
+  console.error(`grantUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -127,9 +128,9 @@ let tokenID: number = 0; // Use bundleManager.getApplicationInfo() to obtain the
 let permissionFlags: number = 1;
 atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError, data: void) => {
   if (err) {
-    console.error(`grantUserGrantedPermission fail, err->${JSON.stringify(err)}`);
+    console.error(`grantUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
   } else {
-    console.log('grantUserGrantedPermission success');
+    console.info('grantUserGrantedPermission success');
   }
 });
 ```
@@ -185,9 +186,9 @@ let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager()
 let tokenID: number = 0; // Use bundleManager.getApplicationInfo() to obtain the token ID for a system application, and use bundleManager.getBundleInfoForSelf() to obtain the token ID for a non-system application.
 let permissionFlags: number = 1;
 atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
-  console.log('revokeUserGrantedPermission success');
+  console.info('revokeUserGrantedPermission success');
 }).catch((err: BusinessError) => {
-  console.error(`revokeUserGrantedPermission fail, err->${JSON.stringify(err)}`);
+  console.error(`revokeUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -238,9 +239,9 @@ let tokenID: number = 0; // Use bundleManager.getApplicationInfo() to obtain the
 let permissionFlags: number = 1;
 atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError, data: void) => {
   if (err) {
-    console.error(`revokeUserGrantedPermission fail, err->${JSON.stringify(err)}`);
+    console.error(`revokeUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
   } else {
-    console.log('revokeUserGrantedPermission success');
+    console.info('revokeUserGrantedPermission success');
   }
 });
 ```
@@ -294,9 +295,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let tokenID: number = 0; // Use bundleManager.getApplicationInfo() to obtain the token ID for a system application, and use bundleManager.getBundleInfoForSelf() to obtain the token ID for a non-system application.
 atManager.getPermissionFlags(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS').then((data: number) => {
-  console.log(`getPermissionFlags success, data->${JSON.stringify(data)}`);
+  console.info(`getPermissionFlags success, result: ${data}`);
 }).catch((err: BusinessError) => {
-  console.error(`getPermissionFlags fail, err->${JSON.stringify(err)}`);
+  console.error(`getPermissionFlags fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -348,9 +349,9 @@ let atManager = abilityAccessCtrl.createAtManager();
 let permission: Permissions = 'ohos.permission.CAMERA';
 
 atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.PermissionRequestToggleStatus.CLOSED).then((err) => {
-  console.info('toggle_status: Set closed successful');
+  console.info('setPermissionRequestToggleStatus: set closed successful');
 }).catch((err: BusinessError) => {
-  console.error(`toggle_status: Code is ${err.code}, message is ${err.message}`);
+  console.error(`setPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -402,12 +403,12 @@ let permission: Permissions = 'ohos.permission.CAMERA';
 
 atManager.getPermissionRequestToggleStatus(permission).then((res) => {
   if (res == abilityAccessCtrl.PermissionRequestToggleStatus.CLOSED) {
-    console.info('toggle_status: The toggle status is close');
+    console.info('getPermissionRequestToggleStatus: The toggle status is close');
   } else {
-    console.info('toggle_status: The toggle status is open');
+    console.info('getPermissionRequestToggleStatus: The toggle status is open');
   }
 }).catch((err: BusinessError) => {
-console.error(`toggle_status: Code is ${err.code}, message is ${err.message}`);
+console.error(`getPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -439,7 +440,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let promise = atManager.getVersion();
 promise.then((data: number) => {
-    console.log(`promise: data->${JSON.stringify(data)}`);
+    console.info(`getVersion promise: data->${data}`);
 });
 ```
 
@@ -490,9 +491,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let tokenID: number = 0; // Use bundleManager.getApplicationInfo() to obtain the token ID for a system application, and use bundleManager.getBundleInfoForSelf() to obtain the token ID for a non-system application.
 atManager.getPermissionsStatus(tokenID, ['ohos.permission.CAMERA']).then((data: Array<abilityAccessCtrl.PermissionStatus>) => {
-  console.log(`getPermissionsStatus success, data->${JSON.stringify(data)}`);
+  console.info(`getPermissionsStatus success, result: ${data}`);
 }).catch((err: BusinessError) => {
-  console.error(`getPermissionsStatus fail, err->${JSON.stringify(err)}`);
+  console.error(`getPermissionsStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -547,10 +548,10 @@ let tokenIDList: Array<number> = [appInfo.accessTokenId];
 let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
 try {
     atManager.on('permissionStateChange', tokenIDList, permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
-        console.debug('receive permission state change, data:' + JSON.stringify(data));
+        console.debug(`receive permission state change, data: ${data}`);
     });
 } catch(err) {
-    console.error(`catch err->${JSON.stringify(err)}`);
+    console.error(`catch errcode: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -603,7 +604,7 @@ let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'
 try {
     atManager.off('permissionStateChange', tokenIDList, permissionList);
 } catch(err) {
-    console.error(`catch err->${JSON.stringify(err)}`);
+    console.error(`catch errcode: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -648,11 +649,127 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // System applications can obtain the token ID using bundleManager.getApplicationInfo.
+let tokenID: number = 0; // Use bundleManager.getApplicationInfo() to obtain the token ID for a system application, and use bundleManager.getBundleInfoForSelf() to obtain the token ID for a non-system application.
 atManager.requestPermissionOnApplicationSetting(tokenID).then(() => {
-  console.log('requestPermissionOnApplicationSetting success');
+  console.info('requestPermissionOnApplicationSetting success');
 }).catch((err: BusinessError) => {
-  console.error(`requestPermissionOnApplicationSetting fail, err->${JSON.stringify(err)}`);
+  console.error(`requestPermissionOnApplicationSetting fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### grantPermission<sup>21+</sup>
+
+grantPermission(tokenID: number, permissionName: Permissions, permissionFlags: number): Promise&lt;void&gt;
+
+Grants the application permission. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.GRANT_SENSITIVE_PERMISSIONS (available only to system applications)
+
+**System capability**: SystemCapability.Security.AccessToken
+
+**Parameters**
+
+| Name   | Type               | Mandatory| Description                                                        |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| tokenID      | number              | Yes  | Identifier of the target application, which is the value of **accessTokenId** contained in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
+| permissionName | Permissions              | Yes  | Permission to grant. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| permissionFlags  | number | Yes  | Permission flag.<br>- **1**: A dialog box for user authorization will be displayed the next time if the user denies authorization for the permission.<br>- **2**: No dialog box will be displayed the next time if the user denies authorization for the permission. The permission must be granted by the user in **Settings**.<br>- **64**: The permission is given just once if the user allows the permission only this time. The authorization is canceled after the application is switched to the background or exits.|
+
+**Return value**
+
+| Type         | Description                               |
+| :------------ | :---------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
+| 12100002 | The specified tokenID does not exist. |
+| 12100003 | The specified permission does not exist. |
+| 12100006 | The application specified by the tokenID is not allowed to be granted with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
+| 12100007 | The service is abnormal. |
+| 12100014 | Unexpected permission. The specified permission is not a user_grant or manual_settings permission. |
+
+**Example**
+
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let tokenID: number = 0; // System applications can obtain the token ID using bundleManager.getApplicationInfo.
+let permissionFlags: number = 2;
+atManager.grantPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
+  console.info('grantPermission success');
+}).catch((err: BusinessError) => {
+  console.error(`grantPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### revokePermission<sup>21+</sup>
+
+revokePermission(tokenID: number, permissionName: Permissions, permissionFlags: number): Promise&lt;void&gt;
+
+Revokes the application permission. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.REVOKE_SENSITIVE_PERMISSIONS (available only to system applications)
+
+**System capability**: SystemCapability.Security.AccessToken
+
+**Parameters**
+
+| Name   | Type               | Mandatory| Description                                                        |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| tokenID      | number              | Yes  | Identifier of the target application, which is the value of **accessTokenId** contained in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
+| permissionName | Permissions              | Yes  | Permission to revoke. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| permissionFlags  | number | Yes  | Permission flag.<br>- **1**: A dialog box for user authorization will be displayed the next time if the user denies authorization for the permission.<br>- **2**: No dialog box will be displayed the next time if the user denies authorization for the permission. The permission must be granted by the user in **Settings**.<br>- **64**: The permission is given just once if the user allows the permission only this time. The authorization is canceled after the application is switched to the background or exits.|
+
+**Return value**
+
+| Type         | Description                               |
+| :------------ | :---------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
+| 12100002 | The specified tokenID does not exist. |
+| 12100003 | The specified permission does not exist. |
+| 12100006 | The application specified by the tokenID is not allowed to be revoked with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
+| 12100007 | The service is abnormal. |
+| 12100014 | Unexpected permission. The specified permission is not a user_grant or manual_settings permission. |
+
+**Example**
+
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let tokenID: number = 0; // System applications can obtain the token ID using bundleManager.getApplicationInfo.
+let permissionFlags: number = 2;
+atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
+  console.info('revokePermission success');
+}).catch((err: BusinessError) => {
+  console.error(`revokePermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 

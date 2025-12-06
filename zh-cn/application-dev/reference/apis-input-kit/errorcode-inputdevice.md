@@ -24,12 +24,12 @@ The specified device does not exist.
 
 **可能原因**
 
-1. 输入设备的设备id变更。
+1. 输入设备的设备ID变更。
 2. 输入设备的物理连接断开。
 
 **处理步骤**
 
-1. 通过[inputDevice.getDeviceList](js-apis-inputdevice.md#inputdevicegetdevicelist9)查询设备id，并传入正确的设备id。
+1. 通过[inputDevice.getDeviceList](js-apis-inputdevice.md#inputdevicegetdevicelist9)查询设备ID，并传入正确的设备ID。
 2. 检查设备的物理连接是否断开。<!--DelEnd-->
 
 ## 3900002 键盘设备没有连接

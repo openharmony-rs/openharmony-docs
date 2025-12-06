@@ -1,4 +1,10 @@
 # @ohos.distributedDeviceManager (设备管理)
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedHardware-->
+<!--Owner: @hwzhangchuang-->
+<!--Designer: @hwzhangchuang-->
+<!--Tester: @zhaodengqi-->
+<!--Adviser: @hu-zhiqiong-->
 
 本模块提供分布式设备管理能力。
 
@@ -106,12 +112,12 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.DistributedHardware.DeviceManager
 
-| 名称                     | 类型                        | 必填   | 说明       |
-| ---------------------- | ------------------------- | ---- | -------- |
-| deviceId               | string                    | 是    | 设备标识符。实际值为udid-hash与appid和盐值基于sha256方式进行混淆后的值。|
-| deviceName             | string                    | 是    | 设备名称。    |
-| deviceType             | string                    | 是    | [设备类型](#getdevicetype)。    |
-| networkId              | string                    | 否    | 设备网络标识。  |
+| 名称           | 类型  | 只读| 可选              |  说明    |
+| ---------------------- | ------------------------- | --- | ---- | -------- |
+| deviceId               | string                    | 否 | 否  | 设备标识符。实际值为udid-hash与appid和盐值基于sha256方式进行混淆后的值。|
+| deviceName             | string                    | 否 | 否  | 设备名称。    |
+| deviceType             | string                    | 否 | 否  | [设备类型](#getdevicetype)。    |
+| networkId              | string                    | 否 | 是  | 设备网络标识。  |
 
 ## DeviceStateChange
 
@@ -207,7 +213,7 @@ getAvailableDeviceList(callback:AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt
         console.error('getAvailableDeviceList errCode:' + err.code + ',errMessage:' + err.message);
         return;
       }
-      console.log('get available device info: ' + JSON.stringify(data));
+      console.info('get available device info: ' + JSON.stringify(data));
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
@@ -247,7 +253,7 @@ getAvailableDeviceList(): Promise&lt;Array&lt;DeviceBasicInfo&gt;&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
   dmInstance.getAvailableDeviceList().then((data: Array<distributedDeviceManager.DeviceBasicInfo>) => {
-    console.log('get available device info: ' + JSON.stringify(data));
+    console.info('get available device info: ' + JSON.stringify(data));
     }).catch((err: BusinessError) => {
       console.error('getAvailableDeviceList errCode:' + err.code + ',errMessage:' + err.message);
   });
@@ -287,7 +293,7 @@ getLocalDeviceNetworkId(): string
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let deviceNetworkId: string = dmInstance.getLocalDeviceNetworkId();
-    console.log('local device networkId: ' + JSON.stringify(deviceNetworkId));
+    console.info('local device networkId: ' + JSON.stringify(deviceNetworkId));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getLocalDeviceNetworkId errCode:' + e.code + ',errMessage:' + e.message);
@@ -328,7 +334,7 @@ getLocalDeviceName(): string
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let deviceName: string = dmInstance.getLocalDeviceName();
-    console.log('local device name: ' + JSON.stringify(deviceName));
+    console.info('local device name: ' + JSON.stringify(deviceName));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
@@ -369,7 +375,7 @@ getLocalDeviceType(): number
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let deviceType: number = dmInstance.getLocalDeviceType();
-    console.log('local device type: ' + JSON.stringify(deviceType));
+    console.info('local device type: ' + JSON.stringify(deviceType));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getLocalDeviceType errCode:' + e.code + ',errMessage:' + e.message);
@@ -410,7 +416,7 @@ getLocalDeviceId(): string
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let deviceId: string = dmInstance.getLocalDeviceId();
-    console.log('local device id: ' + JSON.stringify(deviceId));
+    console.info('local device id: ' + JSON.stringify(deviceId));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getLocalDeviceId errCode:' + e.code + ',errMessage:' + e.message);
@@ -460,7 +466,7 @@ getDeviceName(networkId: string): string
     let networkId = 'xxxxxxx';
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let deviceName: string = dmInstance.getDeviceName(networkId);
-    console.log('device name: ' + JSON.stringify(deviceName)); 
+    console.info('device name: ' + JSON.stringify(deviceName)); 
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getDeviceName errCode:' + e.code + ',errMessage:' + e.message);
@@ -510,7 +516,7 @@ getDeviceType(networkId: string): number
     let networkId = 'xxxxxxx';
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let deviceType: number = dmInstance.getDeviceType(networkId);
-    console.log('device type: ' + JSON.stringify(deviceType)); 
+    console.info('device type: ' + JSON.stringify(deviceType)); 
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getDeviceType errCode:' + e.code + ',errMessage:' + e.message);
@@ -616,7 +622,7 @@ stopDiscovering(): void
 
 bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , callback: AsyncCallback&lt;{deviceId: string;}>): void
 
-认证设备。
+认证设备。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -722,7 +728,7 @@ unbindTarget(deviceId: string): void
 
 on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;): void
 
-注册设备状态回调，以便在设备状态发生变化时根据应用捆绑包名通知应用。
+注册设备状态回调，以便在设备状态发生变化时根据应用捆绑包名通知应用。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -775,7 +781,7 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
 
 off(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;): void
 
-取消注册设备状态回调。
+取消注册设备状态回调。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -828,7 +834,7 @@ off(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChang
 
 on(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&gt;): void
 
-注册发现设备成功回调监听。
+注册发现设备成功回调监听。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -880,7 +886,7 @@ on(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&g
 
 off(type: 'discoverSuccess', callback?: Callback&lt;{ device: DeviceBasicInfo; }&gt;): void
 
-取消注册设备发现成功回调。
+取消注册设备发现成功回调。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -932,7 +938,7 @@ off(type: 'discoverSuccess', callback?: Callback&lt;{ device: DeviceBasicInfo; }
 
 on(type: 'deviceNameChange', callback: Callback&lt;{ deviceName: string; }&gt;): void
 
-注册设备名称变更回调，以便在设备名称改变时通知应用程序。
+注册设备名称变更回调，以便在设备名称改变时通知应用程序。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -979,7 +985,7 @@ on(type: 'deviceNameChange', callback: Callback&lt;{ deviceName: string; }&gt;):
 
 off(type: 'deviceNameChange', callback?: Callback&lt;{ deviceName: string; }&gt;): void
 
-取消注册设备名称变更回调监听。
+取消注册设备名称变更回调监听。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1026,7 +1032,7 @@ off(type: 'deviceNameChange', callback?: Callback&lt;{ deviceName: string; }&gt;
 
 on(type: 'discoverFailure', callback: Callback&lt;{ reason: number; }&gt;): void
 
-注册设备发现失败回调监听。
+注册设备发现失败回调监听。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1073,7 +1079,7 @@ on(type: 'discoverFailure', callback: Callback&lt;{ reason: number; }&gt;): void
 
 off(type: 'discoverFailure', callback?: Callback&lt;{ reason: number; }&gt;): void
 
-取消注册设备发现失败回调。
+取消注册设备发现失败回调。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1120,7 +1126,7 @@ off(type: 'discoverFailure', callback?: Callback&lt;{ reason: number; }&gt;): vo
 
 on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 
-注册设备管理服务死亡回调，以便在服务死亡时通知应用程序。
+注册设备管理服务死亡回调，以便在服务死亡时通知应用程序。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1163,7 +1169,7 @@ on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 
 off(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 
-取消注册设备管理服务死亡回调。
+取消注册设备管理服务死亡回调。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 

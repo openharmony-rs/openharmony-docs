@@ -1,6 +1,12 @@
 # UI相关应用崩溃常见问题
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @caoruihong-->
+<!--Designer: @dutie123-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
 
-本文档收集整理了一些常见的会导致应用崩溃的ArkUI API错误用法，旨在帮助开发者了解一些常见的会导致应用崩溃问题的错误用法，从而避免在实际应用开发过程中犯类似错误。
+本文档收集整理了一些常见的会导致应用崩溃的ArkUI API错误用法，旨在帮助开发者了解这些会导致应用崩溃问题的错误用法，从而避免在实际应用开发过程中犯类似错误。
 
 ## OH_NativeXComponent注册的回调函数对象被提前释放
 
@@ -81,7 +87,7 @@ Reason:Signal:SIGSEGV(SEGV_ACCERR)@0x0000005c5f09a280
 
 **参考链接**
 
-[跨组件层级双向同步](state-management/arkts-new-Provider-and-Consumer.md)。
+[跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)。
 
 
 ## @Link数据源类型错误
@@ -127,4 +133,4 @@ Reason:Signal:SIGSEGV(SEGV_ACCERR)@0x0000005c5f09a280
 
 **参考链接**
 
-[跨组件层级双向同步](state-management/arkts-new-Provider-and-Consumer.md)。
+[跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)。

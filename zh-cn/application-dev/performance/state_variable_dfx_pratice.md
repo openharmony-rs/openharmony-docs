@@ -45,16 +45,19 @@ const translateYChangeValue: number = 180; // translateY每次变化的值
 const translateYChangeRange: number = 250; // translateY变化的范围
 const scaleXChangeValue: number = 0.6; // scaleX每次变化的值
 const scaleXChangeRange: number = 0.8; // scaleX每次变化的值
+
 // 样式属性类  
 class UIStyle {  
   public translateX: number = 0;  
   public translateY: number = 0;  
   public scaleX: number = 0.3;  
   public scaleY: number = 0.3;  
-}  
+}
+
 @Component  
 struct ComponentA {  
-  @Link uiStyle: UIStyle; // uiStyle的属性被多个组件使用  
+  @Link uiStyle: UIStyle; // uiStyle的属性被多个组件使用
+    
   build() {  
     Column() {  
       // 使用状态变量的组件  
@@ -67,6 +70,7 @@ struct ComponentA {
               y: this.uiStyle.scaleY  
             })  
         }  
+        
         Stack() {  
           Text('Hello World')  
         }  
@@ -90,17 +94,20 @@ struct ComponentA {
           })  
       }  
     }  
-  }  
-}  
+  }
+}
+
 @Component  
 struct SpecialImage {  
   @Link specialImageUiStyle: UIStyle;  
   private opacityNum: number = 0.5; // 默认透明度  
+    
   private isRenderSpecialImage(): number {  
     // Image每次渲染时透明度增加0.1, 在0-1之间循环  
     this.opacityNum = (this.opacityNum + opacityChangeValue) % opacityChangeRange;  
     return this.opacityNum;  
   }  
+  
   build() {  
     Column() {  
       Image($r('app.media.icon'))  
@@ -118,7 +125,7 @@ struct SpecialImage {
 
 运行上述示例并分别点击按钮，可以看到点击Move按钮和Scale按钮时组件SpecialImage都出现了刷新，运行效果图如下。
 
-![](./figures/state_viariable_dfx_pratice_pic1.gif) 
+![](./figures/state_variable_dfx_pratice_pic1.gif) 
 
 下面以自定义组件ComponentA和其中的状态变量uiStyle为例介绍工具的使用过程。
 
@@ -128,7 +135,7 @@ struct SpecialImage {
 ```shell
 hdc shell "hidumper -s WindowManagerService -a '-a'"
 ```
-![](./figures/state_viariable_dfx_pratice_pic2.png) 
+![](./figures/state_variable_dfx_pratice_pic2.png) 
 
 3、基于上一步获取的窗口Id 11，使用-viewHierarchy命令携带-r 参数递归打印应用的自定义组件树。从结果中找到目标组件ComponentA，后面括号中的内容即为组件ComponentA的节点Id 70。
 ```shell
@@ -172,7 +179,7 @@ hdc shell "hidumper -s WindowManagerService -a '-w 11 -jsdump -stateVariables -v
 
 所以当uiStyle变化时，影响的组件范围为自定义组件SpecialImage以及系统组件Stack[79]和Image[81]。
 
-![](./figures/state_viariable_dfx_pratice_pic3.png) 
+![](./figures/state_variable_dfx_pratice_pic3.png) 
 
 示例中组件SpecialImage仅使用了uiStyle传递到specialImageUiStyle中的属性scaleX、scaleY，但是点击Move按钮修改uiStyle中的属性translateY时引起的uiStyle变化也会导致组件SpecialImage的刷新，所以可以将uiStyle中的属性scaleX、scaleY提取到状态变量scaleStyle中，属性translateX和translateY提取到状态变量translateStyle中，仅传递scaleStyle给组件SpecialImage，避免不必要的刷新。
 
@@ -188,18 +195,21 @@ class UIStyle {
   translateStyle: TranslateStyle = new TranslateStyle();  
   scaleStyle: ScaleStyle = new ScaleStyle();  
 }  
+
 // 缩放属性类  
 @Observed  
 class ScaleStyle {  
   public scaleX: number = 0.3;  
   public scaleY: number = 0.3;  
 }  
+
 // 位移属性类  
 @Observed  
 class TranslateStyle {  
   public translateX: number = 0;  
   public translateY: number = 0;  
 }  
+
 @Component  
 struct ComponentA {  
   @ObjectLink scaleStyle: ScaleStyle;  
@@ -218,6 +228,7 @@ struct ComponentA {
 @Component  
 struct SpecialImage {  
   @Link specialImageScaleStyle: ScaleStyle;  
+  
   // isRenderSpecialImage函数  
   build() {  
     Column() {  
@@ -236,7 +247,7 @@ struct SpecialImage {
 
 修改后的示例运行效果图如下，只有点击Scale按钮时SpecialImage产生刷新现象，点击Move按钮时SpecialImage不会刷新。
 
-![](./figures/state_viariable_dfx_pratice_pic4.gif) 
+![](./figures/state_variable_dfx_pratice_pic4.gif) 
 
 可以使用上文步骤再次获取ComponentA组件的状态变量信息如下，可以看到ComponentA中状态变量scaleStyle影响组件SpecialImage[74]和Image[78]，状态变量translateStyle影响组件Stack[76]，translateStyle的变化不会再导致SpecialImage的刷新。
 ```shell
@@ -263,6 +274,7 @@ struct SpecialImage {
 @Component  
 struct Index {  
   @State indexMessage: string = 'Hello World';  
+  
   build() {  
     Row() {  
       Column() {  
@@ -274,18 +286,22 @@ struct Index {
     .height('100%')  
   }  
 }  
+
 @Component  
 struct ComponentA {  
   @Link componentAMessage: string;  
+  
   build() {  
     Column() {  
       ComponentB({ componentBMessage: this.componentAMessage })  
     }  
   }  
 }  
+
 @Component  
 struct ComponentB {  
   @Link componentBMessage: string;  
+  
   build() {  
     Column() {  
       Text(this.componentBMessage)  
@@ -293,11 +309,11 @@ struct ComponentB {
   }  
 }
 ```
-1、查看应用窗口Id。可以通过窗口列表中应用的WindowName（示例应用的包名为dfxdemo，默认的WindowName为dfxdemo0）找到其WinId，即应用窗口Id。结果中的Focus window为当前界面展示的窗口Id。当应用处于前台运行时，Focus window的值即为应用窗口Id。
+1、查看应用窗口 Id。可以通过窗口列表中应用的WindowName（示例应用的包名为dfxdemo，默认的WindowName为dfxdemo0）找到其WinId，即应用窗口 Id。结果中的Focus window为当前界面展示的窗口 Id。当应用处于前台运行时，Focus window的值即为应用窗口 Id。
 ```shell
 hdc shell "hidumper -s WindowManagerService -a '-a'"
 ```
-![](./figures/state_viariable_dfx_pratice_pic5.png) 
+![](./figures/state_variable_dfx_pratice_pic5.png) 
 
 2、打印自定义组件树。
 
@@ -362,7 +378,7 @@ hdc shell "hidumper -s WindowManagerService -a '-w 11 -jsdump -dumpAll'"
 ```
 输出结果如下图：
 
-![](./figures/state_viariable_dfx_pratice_pic6.png) 
+![](./figures/state_variable_dfx_pratice_pic6.png) 
 
 1、自定义组件树，对应命令-viewHierarchy。
 

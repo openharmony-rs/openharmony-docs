@@ -30,7 +30,7 @@ Adds the device access permission for the application. System applications are g
 
 **NOTE**
 
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [addDeviceAccessRight](#adddeviceaccessright12).
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [addDeviceAccessRight](#adddeviceaccessright12) instead.
 
 **System API**: This is a system API.
 
@@ -51,7 +51,7 @@ Adds the device access permission for the application. System applications are g
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -64,7 +64,7 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 let devicesName: string = "1-1";
 let bundleName: string = "com.example.hello";
 if (usbManager.addRight(bundleName, devicesName)) {
-  console.log(`Succeed in adding right`);
+  console.info(`Succeed in adding right`);
 }
 ```
 
@@ -76,7 +76,7 @@ Converts the USB function list in the string format to a numeric mask in Device 
 
 **NOTE**
 
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getFunctionsFromString](#getfunctionsfromstring12).
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getFunctionsFromString](#getfunctionsfromstring12) instead.
 
 **System API**: This is a system API.
 
@@ -96,7 +96,7 @@ Converts the USB function list in the string format to a numeric mask in Device 
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -118,7 +118,7 @@ Converts the USB function list in the numeric mask format to a string in Device 
 
 **NOTE**
 
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getStringFromFunctions](#getstringfromfunctions12).
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getStringFromFunctions](#getstringfromfunctions12) instead.
 
 **System API**: This is a system API.
 
@@ -138,7 +138,7 @@ Converts the USB function list in the numeric mask format to a string in Device 
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -156,11 +156,11 @@ let ret: string = usbManager.usbFunctionsToString(funcs);
 
 setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
-Sets the current USB function list in Device mode.
+Sets the current USB function list in Device mode. This API uses a promise to return the result.
 
 **NOTE**
 
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [setDeviceFunctions](#setdevicefunctions12).
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [setDeviceFunctions](#setdevicefunctions12) instead.
 
 **System API**: This is a system API.
 
@@ -180,7 +180,7 @@ Sets the current USB function list in Device mode.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -207,7 +207,7 @@ Obtains the numeric mask combination for the USB function list in Device mode. W
 
 **NOTE**
 
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getDeviceFunctions](#getdevicefunctions12).
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getDeviceFunctions](#getdevicefunctions12) instead.
 
 **System API**: This is a system API.
 
@@ -221,7 +221,7 @@ Obtains the numeric mask combination for the USB function list in Device mode. W
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                       |
 | -------- | ------------------------------------------------------------------------------- |
@@ -242,7 +242,7 @@ Obtains the list of all physical USB ports. When the developer mode is disabled,
 
 **NOTE**
 
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getPortList](#getportlist12).
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getPortList](#getportlist12) instead.
 
 **System API**: This is a system API.
 
@@ -256,7 +256,7 @@ Obtains the list of all physical USB ports. When the developer mode is disabled,
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                       |
 | -------- | ------------------------------------------------------------------------------- |
@@ -297,7 +297,7 @@ Obtains the mask combination for the supported mode list of a given USB port.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -314,11 +314,11 @@ let ret: number = usbManager.getSupportedModes(0);
 
 setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
 
-Sets the role types supported by a specified port, which can be **powerRole** (for charging) and **dataRole** (for data transfer).
+Sets the role types supported by a specified port, which can be **powerRole** (for charging) and **dataRole** (for data transfer). This API uses a promise to return the result.
 
 **NOTE**
 
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [setPortRoleTypes](#setportroletypes12).
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [setPortRoleTypes](#setportroletypes12) instead.
 
 **System API**: This is a system API.
 
@@ -340,7 +340,7 @@ Sets the role types supported by a specified port, which can be **powerRole** (f
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -391,7 +391,7 @@ Adds the device access permission for the application. System applications are g
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -415,7 +415,7 @@ let tokenId: string = "";
       let token = bundleInfo.appInfo.accessTokenId;
       tokenId = token.toString();
       if (usbManager.addDeviceAccessRight(tokenId, devicesName)) {
-        console.log(`Succeed in adding right`);
+        console.info(`Succeed in adding right`);
       }
     }).catch((err : BusinessError) => {
       console.error('testTag getBundleInfoForSelf failed' );
@@ -455,7 +455,7 @@ Converts the USB function list in the string format to a numeric mask in Device 
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                       |
 | -------- | ------------------------------------------------------------------------------- |
@@ -501,7 +501,7 @@ Converts the USB function list in the numeric mask format to a string in Device 
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -521,7 +521,7 @@ let ret: string = usbManager.getStringFromFunctions(funcs);
 
 setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
-Sets the current USB function list in Device mode.
+Sets the current USB function list in Device mode. This API uses a promise to return the result.
 
 **NOTE**
 
@@ -547,7 +547,7 @@ Sets the current USB function list in Device mode.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -594,7 +594,7 @@ Obtains the numeric mask combination for the USB function list in Device mode. W
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                       |
 | -------- | ------------------------------------------------------------------------------- |
@@ -633,7 +633,7 @@ Obtains the list of all physical USB ports. When the developer mode is disabled,
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -674,7 +674,7 @@ Obtains the mask combination for the supported mode list of a given USB port.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -682,7 +682,6 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api.                         |
 | 801      | Capability not supported.                                    |
-| 14400003 | Unsupported operation. The current device does not support port role switching.                         |
 
 **Example**
 
@@ -694,7 +693,7 @@ let ret: number = usbManager.getPortSupportModes(0);
 
 setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
 
-Sets the role types supported by a specified port, which can be **powerRole** (for charging) and **dataRole** (for data transfer).
+Sets the role types supported by a specified port, which can be **powerRole** (for charging) and **dataRole** (for data transfer). This API uses a promise to return the result.
 
 **NOTE**
 
@@ -722,7 +721,7 @@ Sets the role types supported by a specified port, which can be **powerRole** (f
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -736,6 +735,7 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let portId: number = 1;
 usbManager.setPortRoleTypes(portId, usbManager.PowerRoleType.SOURCE, usbManager.DataRoleType.HOST).then(() => {
   console.info('usb setPortRoleTypes successfully.');
@@ -767,7 +767,7 @@ Adds the permission to applications for accessing USB accessories.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |

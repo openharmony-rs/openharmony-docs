@@ -1,4 +1,11 @@
 # Application Preloading
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @SKY2001-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+ 
 
 ## Overview
 
@@ -54,29 +61,20 @@ When system resources are sufficient, the system preloads the application to a s
 
     For example, for an EntryAbility, in the [module.json5](../quick-start/module-configuration-file.md) file of the entry module, set **mainElement** to **EntryAbility**, and add **"entity.system.home"** to **entities** and **"ohos.want.action.home"** to **actions** in the **skills** tag of **EntryAbility**.
 
+    If [appPreloadPhase](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) in the [app.json5](../quick-start/app-configuration-file.md) file is set to **windowStageCreated**, set **launchType** of the EntryAbility in the entry module's [module.json5](../quick-start/module-configuration-file.md) file to [singleton](uiability-launch-type.md#singleton) or [specified](uiability-launch-type.md#specified).
+
     ```json
     {
       "module": {
         "name": "entry",
         "type": "entry",
-        "description": "$string:module_desc",
         "mainElement": "EntryAbility",
-        "deviceTypes": [
-          "2in1"
-        ],
-        "deliveryWithInstall": true,
-        "installationFree": false,
-        "pages": "$profile:main_pages",
+        // ...
         "abilities": [
           {
             "name": "EntryAbility",
             "srcEntry": "./ets/entryability/EntryAbility.ets",
-            "description": "$string:EntryAbility_desc",
-            "icon": "$media:layered_image",
-            "label": "$string:EntryAbility_label",
-            "startWindowIcon": "$media:startIcon",
-            "startWindowBackground": "$color:start_window_background",
-            "exported": true,
+            "launchType": "singleton",
             "skills": [
               {
                 "entities": [
@@ -87,6 +85,7 @@ When system resources are sufficient, the system preloads the application to a s
                 ]
               }
             ]
+            // ...
           }
         ]
       }

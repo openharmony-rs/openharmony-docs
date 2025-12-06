@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester:@chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The AVSession module provides APIs for media playback control so that applications can access the system's Media Controller.
 
@@ -86,8 +86,8 @@ Obtains the descriptors of all sessions that have set media information and regi
 
 **Parameters**
 
-| Name  | Type                                                        | Mandatory| Description                                      |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
+| Name  | Type                                                        | Mandatory| Description                                      |	
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |	
 | callback | AsyncCallback<Array<Readonly<[AVSessionDescriptor](#avsessiondescriptor)\>\>\> | Yes  | Callback used to return an array of AVSessionDescriptor objects, each of which is read only.|
 
 **Error codes**
@@ -133,8 +133,8 @@ Obtains the descriptors of all historical sessions. This API uses a promise to r
 
 **Parameters**
 
-| Name  | Type   | Mandatory| Description                                                            |
-| -------- | ------ | ---- | -----------------------------------------------------------------|
+| Name  | Type   | Mandatory| Description                                                            |	
+| -------- | ------ | ---- | -----------------------------------------------------------------|	
 | maxSize  | number | No  | Maximum number of descriptors to obtain. The value ranges from 0 to 10. If this parameter is left blank, the default value **3** is used.|
 
 **Return value**
@@ -187,9 +187,9 @@ Obtains the descriptors of all historical sessions. This API uses an asynchronou
 
 **Parameters**
 
-| Name  | Type                                                                           | Mandatory| Description                                                            |
-| -------- | ------------------------------------------------------------------------------ | ---- | -----------------------------------------------------------------|
-| maxSize  | number                                                                         | Yes | Maximum number of descriptors to obtain. The value ranges from 0 to 10.|
+| Name  | Type                                                                           | Mandatory| Description                                                            |	
+| -------- | ------------------------------------------------------------------------------ | ---- | -----------------------------------------------------------------|	
+| maxSize  | number                                                                         | Yes | Maximum number of descriptors to obtain. The value ranges from 0 to 10.|	
 | callback | AsyncCallback<Array<Readonly<[AVSessionDescriptor](#avsessiondescriptor)\>\>\> | Yes  | Callback used to return an array of AVSessionDescriptor objects, each of which is read only.                             |
 
 **Error codes**
@@ -238,9 +238,9 @@ Obtains all the historical playlists. This API uses a promise to return the resu
 
 **Parameters**
 
-| Name  | Type   | Mandatory| Description                                                            |
-| -------- | ------ | ---- | ---------------------------------------------------------------|
-| maxSize  | number | Yes  | Maximum number of playlists that can be obtained. Currently, the maximum number is restricted by the system.                    |
+| Name  | Type   | Mandatory| Description                                                            |	
+| -------- | ------ | ---- | ---------------------------------------------------------------|	
+| maxSize  | number | Yes  | Maximum number of playlists that can be obtained. Currently, the maximum number is restricted by the system.                    |	
 | maxAppSize | number | Yes  | Maximum number of applications to which the playlists to be obtained belong. Currently, the maximum number is restricted by the system.            |
 
 **Return value**
@@ -284,10 +284,10 @@ Obtains all the historical playlists. This API uses an asynchronous callback to 
 
 **Parameters**
 
-| Name  | Type                                                                           | Mandatory| Description                                                            |
-| -------- | ----------------------------------------------------------------------------- | ---- | ---------------------------------------------------------------|
-| maxSize  | number                                                                        | Yes  | Maximum number of playlists that can be obtained. Currently, the maximum number is restricted by the system.                     |
-| maxAppSize | number                                                                      | Yes  | Maximum number of applications to which the playlists to be obtained belong. Currently, the maximum number is restricted by the system.              |
+| Name  | Type                                                                           | Mandatory| Description                                                            |	
+| -------- | ----------------------------------------------------------------------------- | ---- | ---------------------------------------------------------------|	
+| maxSize  | number                                                                        | Yes  | Maximum number of playlists that can be obtained. Currently, the maximum number is restricted by the system.                     |	
+| maxAppSize | number                                                                      | Yes  | Maximum number of applications to which the playlists to be obtained belong. Currently, the maximum number is restricted by the system.              |	
 | callback | AsyncCallback<Array<Readonly<[AVQueueInfo](#avqueueinfo11)\>\>\> | Yes  | Callback used to return all the read-only historical playlists.                             |
 
 **Error codes**
@@ -329,8 +329,8 @@ Creates a session controller based on the session ID. Multiple session controlle
 
 **Parameters**
 
-| Name   | Type  | Mandatory| Description    |
-| --------- | ------ | ---- | -------- |
+| Name   | Type  | Mandatory| Description    |	
+| --------- | ------ | ---- | -------- |	
 | sessionId | string | Yes  | Session ID. If the value is set to **'default'**, the system creates a default controller to control the system default session.|
 
 **Return value**
@@ -379,9 +379,9 @@ Creates a session controller based on the session ID. Multiple session controlle
 
 **Parameters**
 
-| Name   | Type                                                       | Mandatory| Description                                                        |
-| --------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| sessionId | string                                                      | Yes  | Session ID. If the value is set to **'default'**, the system creates a default controller to control the system default session.                                                    |
+| Name   | Type                                                       | Mandatory| Description                                                        |	
+| --------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |	
+| sessionId | string                                                      | Yes  | Session ID. If the value is set to **'default'**, the system creates a default controller to control the system default session.                                                    |	
 | callback  | AsyncCallback<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\> | Yes  | Callback used to return the session controller created, which can be used to obtain the session ID,<br>send commands and events to sessions, and obtain metadata and playback state information.|
 
 **Error codes**
@@ -428,9 +428,9 @@ Before calling this API, import the **ohos.multimedia.audio** module to obtain t
 
 **Parameters**
 
-| Name       | Type          | Mandatory| Description|
-| ------------ | -------------- |------|------|
-| session      | [SessionToken](#sessiontoken) &#124; 'all' | Yes  | Session token. **SessionToken** indicates a specific token, and **'all'** indicates all tokens.|
+| Name       | Type          | Mandatory| Description|	
+| ------------ | -------------- |------|------|	
+| session      | [SessionToken](#sessiontoken) &#124; 'all' | Yes  | Session token. **SessionToken** indicates a specific token, and **'all'** indicates all tokens.|	
 | audioDevices | Array\<[audio.AudioDeviceDescriptor](../apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)\> | Yes  | Audio devices. |
 
 **Return value**
@@ -493,10 +493,10 @@ Before calling this API, import the **ohos.multimedia.audio** module to obtain t
 
 **Parameters**
 
-| Name      | Type                                        | Mandatory| Description                                                        |
-| ------------ |--------------------------------------------| ---- | ------------------------------------------------------------ |
-| session      | [SessionToken](#sessiontoken) &#124; 'all' | Yes  | Session token. **SessionToken** indicates a specific token, and **'all'** indicates all tokens.|
-| audioDevices | Array\<[audio.AudioDeviceDescriptor](../apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)\>   | Yes  | Audio devices.|
+| Name      | Type                                        | Mandatory| Description                                                        |	
+| ------------ |--------------------------------------------| ---- | ------------------------------------------------------------ |	
+| session      | [SessionToken](#sessiontoken) &#124; 'all' | Yes  | Session token. **SessionToken** indicates a specific token, and **'all'** indicates all tokens.|	
+| audioDevices | Array\<[audio.AudioDeviceDescriptor](../apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)\>   | Yes  | Audio devices.|	
 | callback     | AsyncCallback\<void>     | Yes  | Callback used to return the result. If casting is successful, **err** is **undefined**; otherwise, **err** is an error object.     |
 
 **Error codes**
@@ -524,19 +524,18 @@ let audioDevices: audio.AudioDeviceDescriptors | undefined = undefined;
 audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data) => {
   audioDevices = data;
   console.info('Promise returned to indicate that the device list is obtained.');
+  if (audioDevices !== undefined) {
+    avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors, (err: BusinessError) => {
+      if (err) {
+        console.error(`CastAudio BusinessError: code: ${err.code}, message: ${err.message}`);
+      } else {
+        console.info('CastAudio : SUCCESS ');
+      }
+    });
+  }
 }).catch((err: BusinessError) => {
   console.error(`GetDevices BusinessError: code: ${err.code}, message: ${err.message}`);
 });
-
-if (audioDevices !== undefined) {
-  avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors, (err: BusinessError) => {
-    if (err) {
-      console.error(`CastAudio BusinessError: code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info('CastAudio : SUCCESS ');
-    }
-  });
-}
 ```
 
 ## avSession.startAVPlayback<sup>11+</sup>
@@ -553,9 +552,9 @@ Starts an application to play a media asset. This API uses a promise to return t
 
 **Parameters**
 
-| Name       | Type          | Mandatory| Description|
-| ------------ | -------------- |------|------|
-| bundleName   | string         | Yes  | Bundle name of the application.|
+| Name       | Type          | Mandatory| Description|	
+| ------------ | -------------- |------|------|	
+| bundleName   | string         | Yes  | Bundle name of the application.|	
 | assetId      |string           | Yes  | ID of the media asset. |
 
 **Return value**
@@ -602,9 +601,9 @@ Obtains remote distributed session controllers based on the remote session type.
 
 **Parameters**
 
-| Name   | Type                                                                     | Mandatory| Description     |
-| --------- |-------------------------------------------------------------------------| ---- |---------|
-| distributedSessionType | [DistributedSessionType](#distributedsessiontype18) | Yes  | Remote session type.|
+| Name   | Type                                                                     | Mandatory| Description     |	
+| --------- |-------------------------------------------------------------------------| ---- |---------|	
+| distributedSessionType | [DistributedSessionType](#distributedsessiontype18) | Yes  | Remote session type.|	
 
 **Return value**
 
@@ -647,11 +646,11 @@ Describes the information about a session token.
 
 **System API**: This is a system API.
 
-| Name     | Type  | Mandatory| Description        |
-| :-------- | :----- | :--- | :----------- |
-| sessionId | string | Yes  | Session ID.      |
-| pid       | number | No  | Process ID of the session.|
-| uid       | number | No  | User ID.      |
+| Name     | Type  | Read-Only| Optional| Description        |
+| :-------- | :----- | :--- |:--- | :----------- |
+| sessionId | string | No| No  | Session ID.      |
+| pid       | number | No | Yes| Process ID of the session.|
+| uid       | number | No  | Yes| User ID.      |
 
 ## avSession.on('sessionCreate')
 
@@ -667,9 +666,9 @@ Subscribes to session creation events.
 
 **Parameters**
 
-| Name   | Type                  | Mandatory| Description                                                        |
-| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                 | Yes  | Event type. The event **'sessionCreate'** is triggered when a session is created.|
+| Name   | Type                  | Mandatory| Description                                                        |	
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |	
+| type     | string                 | Yes  | Event type. The event **'sessionCreate'** is triggered when a session is created.|	
 | callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | Yes  | Callback used to report the session descriptor.|
 
 **Error codes**
@@ -707,9 +706,9 @@ Subscribes to session destruction events.
 
 **Parameters**
 
-| Name  | Type           | Mandatory| Description                                                        |
-| -------- | ---------------| ---- | ------------------------------------------------------------ |
-| type     | string         | Yes  | Event type. The event **'sessionDestroy'** is triggered when a session is destroyed.|
+| Name  | Type           | Mandatory| Description                                                        |	
+| -------- | ---------------| ---- | ------------------------------------------------------------ |	
+| type     | string         | Yes  | Event type. The event **'sessionDestroy'** is triggered when a session is destroyed.|	
 | callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | Yes  | Callback used to report the session descriptor.|
 
 **Error codes**
@@ -746,10 +745,10 @@ Subscribes to top session change events.
 
 **Parameters**
 
-| Name  | Type                | Mandatory| Description                                                        |
-| -------- | --------------------| ---- | ------------------------------------------------------------ |
-| type     | string      | Yes  | Event type. The event **'topSessionChange'** is triggered when the top session is changed.|
-| callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | Yes  | Callback used to report the session descriptor.|
+| Name  | Type                | Mandatory| Description                                                        |	
+| -------- | --------------------| ---- | ------------------------------------------------------------ |	
+| type     | string      | Yes  | Event type. The event **'topSessionChange'** is triggered when the top session is changed.|	
+| callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | Yes  | Callback used to report the session descriptor.|	
 
 **Error codes**
 
@@ -785,9 +784,9 @@ Unsubscribes from session creation events.
 
 **Parameters**
 
-| Name  | Type      | Mandatory| Description      |
-| -------- | ----------| ---- | ----------|
-| type     | string    | Yes  | Event type, which is **'sessionCreate'** in this case.|
+| Name  | Type      | Mandatory| Description      |	
+| -------- | ----------| ---- | ----------|	
+| type     | string    | Yes  | Event type, which is **'sessionCreate'** in this case.|	
 | callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **session** parameter in the callback describes a media session. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                              |
 
 **Error codes**
@@ -820,9 +819,9 @@ Unsubscribes from session destruction events.
 
 **Parameters**
 
-| Name  | Type       | Mandatory| Description                     |
-| -------- | -----------| ---- | -------------------------|
-| type     | string     | Yes  | Event type, which is **'sessionDestroy'** in this case.|
+| Name  | Type       | Mandatory| Description                     |	
+| -------- | -----------| ---- | -------------------------|	
+| type     | string     | Yes  | Event type, which is **'sessionDestroy'** in this case.|	
 | callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **session** parameter in the callback describes a media session. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
@@ -855,9 +854,9 @@ Unsubscribes from top session change events.
 
 **Parameters**
 
-| Name  | Type             | Mandatory| Description                       |
-| -------- | -----------------| ---- | ---------------------------- |
-| type     | string           | Yes  | Event type, which is **'topSessionChange'** in this case.|
+| Name  | Type             | Mandatory| Description                       |	
+| -------- | -----------------| ---- | ---------------------------- |	
+| type     | string           | Yes  | Event type, which is **'topSessionChange'** in this case.|	
 | callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **session** parameter in the callback describes a media session. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
@@ -888,9 +887,9 @@ Subscribes to session service death events. Upon receiving this event, the appli
 
 **Parameters**
 
-| Name  | Type                | Mandatory| Description                                                        |
-| -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| type     | string               | Yes  | Event type. The event **'sessionServiceDie'** is triggered when the session service dies.|
+| Name  | Type                | Mandatory| Description                                                        |	
+| -------- | -------------------- | ---- | ------------------------------------------------------------ |	
+| type     | string               | Yes  | Event type. The event **'sessionServiceDie'** is triggered when the session service dies.|	
 | callback | callback: () => void | Yes  | Callback used for subscription. If the subscription is successful, **err** is **undefined**; otherwise, **err** is an error object.                               |
 
 **Error codes**
@@ -923,9 +922,9 @@ Unsubscribes from session service death events.
 
 **Parameters**
 
-| Name   | Type                   | Mandatory |      Description                                              |
-| ------   | ---------------------- | ---- | ------------------------------------------------------- |
-| type     | string                 | Yes   | Event type. The event **'sessionServiceDie'** is triggered when the session service dies.|
+| Name   | Type                   | Mandatory |      Description                                              |	
+| ------   | ---------------------- | ---- | ------------------------------------------------------- |	
+| type     | string                 | Yes   | Event type. The event **'sessionServiceDie'** is triggered when the session service dies.|	
 | callback | callback: () => void   | No   | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.           |
 
 **Error codes**
@@ -959,10 +958,10 @@ Subscribes to the latest distributed remote session change events.
 
 **Parameters**
 
-| Name  | Type                                                                                 | Mandatory| Description                                                                      |
-| -------- |-------------------------------------------------------------------------------------| ---- |--------------------------------------------------------------------------|
-| type     | string                                                                              | Yes  | Event type. The event **'distributedSessionChange'** is triggered when the latest distributed session is changed.|
-| distributedSessionType     | [DistributedSessionType](#distributedsessiontype18)             | Yes  | Remote session type.                                                                 |
+| Name  | Type                                                                                 | Mandatory| Description                                                                      |	
+| -------- |-------------------------------------------------------------------------------------| ---- |--------------------------------------------------------------------------|	
+| type     | string                                                                              | Yes  | Event type. The event **'distributedSessionChange'** is triggered when the latest distributed session is changed.|	
+| distributedSessionType     | [DistributedSessionType](#distributedsessiontype18)             | Yes  | Remote session type.                                                                 |	
 | callback | Callback<Array<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\>> | Yes  | Callback used to return an array of session controller instances of the corresponding type. You can view the session ID, send commands and events to the session, and obtain metadata and playback status information.           |
 
 **Error codes**
@@ -997,10 +996,10 @@ Unsubscribes from the latest distributed remote session change events.
 
 **Parameters**
 
-| Name  | Type                                                                                 | Mandatory| Description                                                           |
-| -------- |-------------------------------------------------------------------------------------|----|---------------------------------------------------------------|
-| type     | string                                                                              | Yes | Event type. The event **'distributedSessionChange'** is triggered when the latest distributed session is changed.                   |
-| distributedSessionType     | [DistributedSessionType](#distributedsessiontype18)             | Yes | Remote session type.                                                      |
+| Name  | Type                                                                                 | Mandatory| Description                                                           |	
+| -------- |-------------------------------------------------------------------------------------|----|---------------------------------------------------------------|	
+| type     | string                                                                              | Yes | Event type. The event **'distributedSessionChange'** is triggered when the latest distributed session is changed.                   |	
+| distributedSessionType     | [DistributedSessionType](#distributedsessiontype18)             | Yes | Remote session type.                                                      |	
 | callback | Callback<Array<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\>> | No | Callback used to return an array of session controller instances of the corresponding type. You can view the session ID, send commands and events to the session, and obtain metadata and playback status information.|
 
 **Error codes**
@@ -1032,9 +1031,9 @@ Sends a system key event to the top session. This API uses an asynchronous callb
 
 **Parameters**
 
-| Name  | Type                                                        | Mandatory| Description                                 |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------- |
-| event    | [KeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent) | Yes  | Key event.                           |
+| Name  | Type                                                        | Mandatory| Description                                 |	
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------- |	
+| event    | [KeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent) | Yes  | Key event.                           |	
 | callback | AsyncCallback\<void>                                         | Yes  | Callback used to return the result. If the event is sent, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1055,8 +1054,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { KeyEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let keyItem: keyEvent.Key = {code:0x49, pressedTime:2, deviceId:0};
-let event: keyEvent.KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
+let keyItem: KeyEvent.Key = {code:0x49, pressedTime:2, deviceId:0};
+let event: KeyEvent.KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
 
 avSession.sendSystemAVKeyEvent(event, (err: BusinessError) => {
   if (err) {
@@ -1081,9 +1080,10 @@ Sends a system key event to the top session. This API uses a promise to return t
 
 **Parameters**
 
-| Name| Type                           | Mandatory| Description      |
-| ------ | ------------------------------- | ---- | ---------- |
-| event  | [KeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent) | Yes  | Key event.|
+| Name| Type                           | Mandatory| Description      |	
+| ------ | ------------------------------- | ---- | ---------- |	
+| event  | [KeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent) | Yes  | Key event.|	
+
 
 **Return value**
 
@@ -1109,8 +1109,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { KeyEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let keyItem: keyEvent.Key = {code:0x49, pressedTime:2, deviceId:0};
-let event: keyEvent.KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
+let keyItem: KeyEvent.Key = {code:0x49, pressedTime:2, deviceId:0};
+let event: KeyEvent.KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
 
 avSession.sendSystemAVKeyEvent(event).then(() => {
   console.info('SendSystemAVKeyEvent Successfully');
@@ -1133,9 +1133,9 @@ Sends a system control command to the top session. This API uses an asynchronous
 
 **Parameters**
 
-| Name  | Type                                 | Mandatory| Description                                 |
-| -------- | ------------------------------------- | ---- | ------------------------------------- |
-| command  | [AVControlCommand](arkts-apis-avsession-i.md#avcontrolcommand10) | Yes  | Command to send.  |
+| Name  | Type                                 | Mandatory| Description                                 |	
+| -------- | ------------------------------------- | ---- | ------------------------------------- |	
+| command  | [AVControlCommand](arkts-apis-avsession-i.md#avcontrolcommand10) | Yes  | Command to send.  |	
 | callback | AsyncCallback\<void>                  | Yes  | Callback used to return the result. If the command is sent, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1193,8 +1193,8 @@ Sends a system control command to the top session. This API uses a promise to re
 
 **Parameters**
 
-| Name | Type                                 | Mandatory| Description                               |
-| ------- | ------------------------------------- | ---- | ----------------------------------- |
+| Name | Type                                 | Mandatory| Description                               |	
+| ------- | ------------------------------------- | ---- | ----------------------------------- |	
 | command | [AVControlCommand](arkts-apis-avsession-i.md#avcontrolcommand10) | Yes  | Command to send.|
 
 **Return value**
@@ -1266,8 +1266,8 @@ Starts cast-enabled device discovery. This API uses an asynchronous callback to 
 
 **Parameters**
 
-| Name  | Type                                 | Mandatory| Description                                 |
-| -------- | ------------------------------------- | ---- | ------------------------------------- |
+| Name  | Type                                 | Mandatory| Description                                 |	
+| -------- | ------------------------------------- | ---- | ------------------------------------- |	
 | callback | AsyncCallback\<void>                  | Yes  | Callback used to return the result. If the command is sent and device discovery starts, **err** is **undefined**; otherwise, **err** is an error object.|
 
 
@@ -1311,9 +1311,9 @@ Starts cast-enabled device discovery with filter criteria specified. This API us
 
 **Parameters**
 
-| Name  | Type                                 | Mandatory| Description                                 |
-| -------- | ------------------------------------- | ---- | ------------------------------------- |
-| filter | number | Yes| Filter criteria for device discovery. The value consists of **ProtocolType**s.|
+| Name  | Type                                 | Mandatory| Description                                 |	
+| -------- | ------------------------------------- | ---- | ------------------------------------- |	
+| filter | number | Yes| Filter criteria for device discovery. The value consists of **ProtocolType**s.|	
 | callback | AsyncCallback\<void>                  | Yes  | Callback used to return the result. If the command is sent and device discovery starts, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1352,9 +1352,9 @@ Starts cast-enabled device discovery. This API uses a promise to return the resu
 
 **Parameters**
 
-| Name  | Type                                 | Mandatory| Description                                 |
-| -------- | ------------------------------------- | ---- | ------------------------------------- |
-| filter | number | No| Filter criteria for device discovery. The value consists of **ProtocolType**s.|
+| Name  | Type                                 | Mandatory| Description                                 |	
+| -------- | ------------------------------------- | ---- | ------------------------------------- |	
+| filter | number | No| Filter criteria for device discovery. The value consists of **ProtocolType**s.|	
 | drmSchemes | Array\<string> | No| Filter criteria for discovering devices that support DRM resource playback. The value consists of DRM UUIDs.<br>This parameter is supported since API version 12.|
 
 **Return value**
@@ -1398,8 +1398,8 @@ Stops cast-enabled device discovery. This API uses an asynchronous callback to r
 
 **Parameters**
 
-| Name  | Type                                 | Mandatory| Description                                 |
-| -------- | ------------------------------------- | ---- | ------------------------------------- |
+| Name  | Type                                 | Mandatory| Description                                 |	
+| -------- | ------------------------------------- | ---- | ------------------------------------- |	
 | callback | AsyncCallback\<void>                  | Yes  | Callback used to return the result. If device discovery stops, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1472,9 +1472,9 @@ Sets whether to allow the device discoverable. A discoverable device can be used
 
 **Parameters**
 
-| Name  | Type                                 | Mandatory| Description                                 |
-| -------- | ------------------------------------- | ---- | ------------------------------------- |
-| enable | boolean | Yes| Whether to allow the device discoverable. **true** if discoverable, **false** otherwise.|
+| Name  | Type                                 | Mandatory| Description                                 |	
+| -------- | ------------------------------------- | ---- | ------------------------------------- |	
+| enable | boolean | Yes| Whether to allow the device discoverable. **true** if discoverable, **false** otherwise.|	
 | callback | AsyncCallback\<void>                  | Yes  | Callback used to return the result. If the setting is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1512,9 +1512,15 @@ Sets whether to allow the device discoverable. A discoverable device can be used
 
 **Parameters**
 
-| Name  | Type                                 | Mandatory| Description                                 |
-| -------- | ------------------------------------- | ---- | ------------------------------------- |
-| enable | boolean | Yes| Whether to allow the device discoverable. **true** if discoverable, **false** otherwise.|
+| Name  | Type                                 | Mandatory| Description                                 |	
+| -------- | ------------------------------------- | ---- | ------------------------------------- |	
+| enable | boolean | Yes| Whether to allow the device discoverable. **true** if discoverable, **false** otherwise.|	
+
+**Return value**
+
+| Type          | Description                         |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -1524,12 +1530,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-
-**Return value**
-
-| Type          | Description                         |
-| -------------- | ----------------------------- |
-| Promise\<void> | Promise used to return the result. If the setting is successful, no value is returned; otherwise, an error object is returned.|
 
 **Example**
 
@@ -1555,9 +1555,9 @@ Subscribes to device discovery events.
 
 **Parameters**
 
-| Name  | Type                | Mandatory| Description                                                        |
-| -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| type     | string               | Yes  | Event type. The event **'deviceAvailable'** is triggered when a device is discovered.|
+| Name  | Type                | Mandatory| Description                                                        |	
+| -------- | -------------------- | ---- | ------------------------------------------------------------ |	
+| type     | string               | Yes  | Event type. The event **'deviceAvailable'** is triggered when a device is discovered.|	
 | callback | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | Yes  | Callback used for subscription. If the subscription is successful, **err** is **undefined**; otherwise, **err** is an error object.                               |
 
 **Error codes**
@@ -1591,11 +1591,10 @@ Unsubscribes from device discovery events.
 
 **Parameters**
 
-| Name   | Type                   | Mandatory |      Description                                              |
-| ------   | ---------------------- | ---- | ------------------------------------------------------- |
-| type     | string                 | Yes   | Event type. The event **'deviceAvailable'** is triggered when a device is discovered.|
+| Name   | Type                   | Mandatory |      Description                                              |	
+| ------   | ---------------------- | ---- | ------------------------------------------------------- |	
+| type     | string                 | Yes   | Event type. The event **'deviceAvailable'** is triggered when a device is discovered.|	
 | callback     | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void                 | No   | Callback used to return the device information.|
-
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -1623,9 +1622,9 @@ Subscribes to device offline events.
 
 **Parameters**
 
-| Name  | Type                | Mandatory| Description                                                        |
-| -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| type     | string               | Yes  | Event type. The event **'deviceOffline'** is triggered when a device gets offline.|
+| Name  | Type                | Mandatory| Description                                                        |	
+| -------- | -------------------- | ---- | ------------------------------------------------------------ |	
+| type     | string               | Yes  | Event type. The event **'deviceOffline'** is triggered when a device gets offline.|	
 | callback | (deviceId: string) => void | Yes  | Callback used to return the result. The **deviceId** parameter in the callback indicates the device ID. If the subscription is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
@@ -1661,9 +1660,9 @@ Unsubscribes from device offline events.
 
 **Parameters**
 
-| Name   | Type                   | Mandatory |      Description                                              |
-| ------   | ---------------------- | ---- | ------------------------------------------------------- |
-| type     | string                 | Yes   | Event type, which is **'deviceOffline'** in this case.|
+| Name   | Type                   | Mandatory |      Description                                              |	
+| ------   | ---------------------- | ---- | ------------------------------------------------------- |	
+| type     | string                 | Yes   | Event type, which is **'deviceOffline'** in this case.|	
 | callback | (deviceId: string) => void | No  | Callback used to return the result. The **deviceId** parameter in the callback indicates the device ID. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
@@ -1697,9 +1696,9 @@ This API can be called on both the local and remote devices. You can use the API
 
 **Parameters**
 
-| Name   | Type                                                       | Mandatory| Description                                                        |
-| --------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| sessionId | string                    | Yes  |Session ID.|
+| Name   | Type                                                       | Mandatory| Description                                                        |	
+| --------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |	
+| sessionId | string                    | Yes  |Session ID.|	
 | callback  | AsyncCallback<[AVCastController](#avcastcontroller10)\> | Yes  | Callback used to return the cast controller.|
 
 **Error codes**
@@ -1719,31 +1718,32 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
   @State message: string = 'hello world';
 
-  build() { 
+  build() {
     Column() {
-        Text(this.message)
-          .onClick(()=>{
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context = this.getUIContext().getHostContext() as Context;
-            let sessionId: string = "";  // Used as an input parameter of subsequent functions.
+      Text(this.message)
+        .onClick(() => {
+          let currentAVSession: avSession.AVSession | undefined = undefined;
+          let tag = "createNewSession";
+          let context = this.getUIContext().getHostContext() as Context;
+          let sessionId: string = ""; // Used as an input parameter of subsequent functions.
 
-            let aVCastController: avSession.AVCastController;
-            avSession.getAVCastController(sessionId , (err: BusinessError, avcontroller: avSession.AVCastController) => {
+          let aVCastController: avSession.AVCastController;
+          avSession.getAVCastController(sessionId, (err: BusinessError, avcontroller: avSession.AVCastController) => {
             if (err) {
-                console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
+              console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
             } else {
-                aVCastController = avcontroller;
-                console.info('getAVCastController : SUCCESS ');
+              aVCastController = avcontroller;
+              console.info('getAVCastController : SUCCESS ');
             }
-            });
-          })
-      }
+          });
+        })
+    }
     .width('100%')
     .height('100%')
   }
@@ -1766,8 +1766,8 @@ This API can be called on both the local and remote devices. You can use the API
 
 **Parameters**
 
-| Name   | Type                      | Mandatory| Description                                                        |
-| --------- | ------------------------- | ---- | ------------------------------------------------------------ |
+| Name   | Type                      | Mandatory| Description                                                        |	
+| --------- | ------------------------- | ---- | ------------------------------------------------------------ |	
 | sessionId | string                    | Yes  |Session ID.|
 
 **Return value**
@@ -1793,29 +1793,30 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
   @State message: string = 'hello world';
 
-  build() { 
+  build() {
     Column() {
-        Text(this.message)
-          .onClick(()=>{
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context = this.getUIContext().getHostContext() as Context;
-            let sessionId: string = "";  // Used as an input parameter of subsequent functions.
+      Text(this.message)
+        .onClick(() => {
+          let currentAVSession: avSession.AVSession | undefined = undefined;
+          let tag = "createNewSession";
+          let context = this.getUIContext().getHostContext() as Context;
+          let sessionId: string = ""; // Used as an input parameter of subsequent functions.
 
-            let aVCastController: avSession.AVCastController;
-            avSession.getAVCastController(sessionId).then((avcontroller: avSession.AVCastController) => {
+          let aVCastController: avSession.AVCastController;
+          avSession.getAVCastController(sessionId).then((avcontroller: avSession.AVCastController) => {
             aVCastController = avcontroller;
             console.info('getAVCastController : SUCCESS');
-            }).catch((err: BusinessError) => {
+          }).catch((err: BusinessError) => {
             console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
-            });
-          })
-      }
+          });
+        })
+    }
     .width('100%')
     .height('100%')
   }
@@ -1836,10 +1837,10 @@ Starts casting. This API uses an asynchronous callback to return the result.
 
 **Parameters**
 
-| Name  | Type                                 | Mandatory| Description                                 |
-| -------- | ------------------------------------- | ---- | ------------------------------------- |
-| session      | [SessionToken](#sessiontoken) | Yes  | Session token.  |
-| device | [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)                        | Yes  | Device-related information.|
+| Name  | Type                                 | Mandatory| Description                                 |	
+| -------- | ------------------------------------- | ---- | ------------------------------------- |	
+| session      | [SessionToken](#sessiontoken) | Yes  | Session token.  |	
+| device | [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)                        | Yes  | Device-related information.|	
 | callback | AsyncCallback\<void>                  | Yes  | Callback used to return the result. If the command is sent and casting starts, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1866,16 +1867,16 @@ let castDevice: avSession.OutputDeviceInfo | undefined = undefined;
 avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
   castDevice = device;
   console.info(`on deviceAvailable  : ${device} `);
+  if (castDevice !== undefined) {
+    avSession.startCasting(myToken, castDevice, (err: BusinessError) => {
+      if (err) {
+        console.error(`startCasting BusinessError: code: ${err.code}, message: ${err.message}`);
+      } else {
+        console.info('startCasting successfully');
+      }
+    });
+  }
 });
-if (castDevice !== undefined) {
-  avSession.startCasting(myToken, castDevice, (err: BusinessError) => {
-    if (err) {
-      console.error(`startCasting BusinessError: code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info('startCasting successfully');
-    }
-  });
-}
 ```
 
 
@@ -1893,9 +1894,9 @@ Starts casting. This API uses a promise to return the result.
 
 **Parameters**
 
-| Name  | Type                                 | Mandatory| Description                                 |
-| -------- | ------------------------------------- | ---- | ------------------------------------- |
-| session      | [SessionToken](#sessiontoken) | Yes  | Session token.  |
+| Name  | Type                                 | Mandatory| Description                                 |	
+| -------- | ------------------------------------- | ---- | ------------------------------------- |	
+| session      | [SessionToken](#sessiontoken) | Yes  | Session token.  |	
 | device | [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)                        | Yes  | Device-related information.|
 
 **Return value**
@@ -1928,14 +1929,14 @@ let castDevice: avSession.OutputDeviceInfo | undefined = undefined;
 avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
   castDevice = device;
   console.info(`on deviceAvailable  : ${device} `);
+  if (castDevice !== undefined) {
+    avSession.startCasting(myToken, castDevice).then(() => {
+      console.info('startCasting successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`startCasting BusinessError: code: ${err.code}, message: ${err.message}`);
+    });
+  }
 });
-if (castDevice !== undefined) {
-  avSession.startCasting(myToken, castDevice).then(() => {
-    console.info('startCasting successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`startCasting BusinessError: code: ${err.code}, message: ${err.message}`);
-  });
-}
 ```
 
 ## avSession.stopCasting<sup>10+</sup>
@@ -1950,9 +1951,9 @@ Stops castings. This API uses an asynchronous callback to return the result.
 
 **Parameters**
 
-| Name  | Type                                 | Mandatory| Description                                 |
-| -------- | ------------------------------------- | ---- | ------------------------------------- |
-| session      | [SessionToken](#sessiontoken) | Yes  | Session token.  | 
+| Name  | Type                                 | Mandatory| Description                                 |	
+| -------- | ------------------------------------- | ---- | ------------------------------------- |	
+| session      | [SessionToken](#sessiontoken) | Yes  | Session token.  | 	
 | callback | AsyncCallback\<void>                  | Yes  | Callback used to return the result. If casting stops, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1994,9 +1995,9 @@ Stops castings. This API uses a promise to return the result.
 
 **Parameters**
 
-| Name  | Type                                 | Mandatory| Description                                 |
-| -------- | ------------------------------------- | ---- | ------------------------------------- |
-| session      | [SessionToken](#sessiontoken) | Yes  | Session token.  |
+| Name  | Type                                 | Mandatory| Description                                 |	
+| -------- | ------------------------------------- | ---- | ------------------------------------- |	
+| session      | [SessionToken](#sessiontoken) | Yes  | Session token.  |	
 
 **Return value**
 
@@ -2041,9 +2042,9 @@ Starts to write device logs to a file. This API uses a promise to return the res
 
 **Parameters**
 
-| Name  | Type                                 | Mandatory| Description                                 |
-| -------- | ------------------------------------- | ---- | ------------------------------------- |
-| url | string                   | Yes  | Target file descriptor (unique identifier used to open a file).|
+| Name  | Type                                 | Mandatory| Description                                 |	
+| -------- | ------------------------------------- | ---- | ------------------------------------- |	
+| url | string                   | Yes  | Target file descriptor (unique identifier used to open a file).|	
 | maxSize | number                   | No  | Maximum size of the log file, in KB.|
 
 **Return value**
@@ -2128,9 +2129,9 @@ Subscribes to device log events.
 
 **Parameters**
 
-| Name  | Type                                                        | Mandatory| Description                                                        |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type, which is **'deviceLogEvent'** in this case.|
+| Name  | Type                                                        | Mandatory| Description                                                        |	
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |	
+| type     | string                                                       | Yes  | Event type, which is **'deviceLogEvent'** in this case.|	
 | callback | (callback: [DeviceLogEventCode](#devicelogeventcode13)) => void        | Yes  | Callback function, in which **DeviceLogEventCode** is the return value of the current device log event.                     |
 
 **Error codes**
@@ -2164,9 +2165,9 @@ Unsubscribes from device log events.
 
 **Parameters**
 
-| Name  | Type                                                        | Mandatory| Description                                                        |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type, which is **'deviceLogEvent'** in this case.|
+| Name  | Type                                                        | Mandatory| Description                                                        |	
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |	
+| type     | string                                                       | Yes  | Event type, which is **'deviceLogEvent'** in this case.|	
 | callback | (callback: [DeviceLogEventCode](#devicelogeventcode13)) => void        | No | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.           |
 
 **Error codes**
@@ -2215,9 +2216,9 @@ Subscribes to casting device connection state events.
 
 **Parameters**
 
-| Name  | Type                                                         | Mandatory | Description                                                        |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type, which is **'deviceStateChanged'** in this case. This event is triggered when the connection state of the casting device changes.|
+| Name  | Type                                                         | Mandatory | Description                                                        |	
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |	
+| type     | string                                                       | Yes  | Event type, which is **'deviceStateChanged'** in this case. This event is triggered when the connection state of the casting device changes.|	
 | callback | (callback: [DeviceState](#devicestate20)) => void            | Yes  | Callback function, in which **DeviceState** contains the casting device ID, connection status code, connection error code, and system radar error code.|
 
 **Error codes**
@@ -2252,9 +2253,9 @@ Unsubscribes from casting device connection state events.
 
 **Parameters**
 
-| Name  | Type                                                         | Mandatory | Description                                                        |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type, which is **'deviceStateChanged'** in this case. This event is triggered when the connection state of the casting device changes.|
+| Name  | Type                                                         | Mandatory | Description                                                        |	
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |	
+| type     | string                                                       | Yes  | Event type, which is **'deviceStateChanged'** in this case. This event is triggered when the connection state of the casting device changes.|	
 | callback | (callback: [DeviceState](#devicestate20)) => void            | No  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
@@ -2288,8 +2289,8 @@ Sets the surface ID for playback, which is used at the cast receiver (sink). Thi
 
 **Parameters**
 
-| Name  | Type                                               | Mandatory| Description                        |
-| -------- | --------------------------------------------------- | ---- | ---------------------------- |
+| Name  | Type                                               | Mandatory| Description                        |	
+| -------- | --------------------------------------------------- | ---- | ---------------------------- |	
 | surfaceId | string | Yes  | Surface ID.|
 
 **Return value**
@@ -2318,14 +2319,16 @@ media.createAVRecorder().then((avRecorder) => {
     if (err == null) {
       console.info('getInputSurface success');
       surfaceID = surfaceId;
+      if (surfaceID) {
+        aVCastController.setDisplaySurface(surfaceID).then(() => {
+          console.info('setDisplaySurface : SUCCESS');
+        });
+      }
     } else {
       console.error('getInputSurface failed and error is ' + err.message);
     }
   });
 })
-aVCastController.setDisplaySurface(surfaceID).then(() => {
-  console.info('setDisplaySurface : SUCCESS');
-});
 ```
 
 ### setDisplaySurface<sup>10+</sup>
@@ -2340,11 +2343,10 @@ Sets the surface ID for playback, which is used at the cast receiver (sink). Thi
 
 **Parameters**
 
-| Name  | Type                                               | Mandatory| Description                        |
-| -------- | --------------------------------------------------- | ---- | ---------------------------- |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|
-| surfaceId | string | Yes  | Surface ID.|
-
+| Name  | Type                                               | Mandatory| Description                        |	
+| -------- | --------------------------------------------------- | ---- | ---------------------------- |	
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|	
+| surfaceId | string | Yes  | Surface ID.|	
 
 **Error codes**
 
@@ -2367,18 +2369,20 @@ media.createAVRecorder().then((avRecorder) => {
     if (err == null) {
       console.info('getInputSurface success');
       surfaceID = surfaceId;
+      if (surfaceID) {
+        aVCastController.setDisplaySurface(surfaceID, (err: BusinessError) => {
+          if (err) {
+            console.error(`setDisplaySurface BusinessError: code: ${err.code}, message: ${err.message}`);
+          } else {
+            console.info('setDisplaySurface : SUCCESS');
+          }
+        });
+      }
     } else {
       console.error('getInputSurface failed and error is ' + err.message);
     }
   });
 })
-aVCastController.setDisplaySurface(surfaceID, (err: BusinessError) => {
-  if (err) {
-    console.error(`setDisplaySurface BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('setDisplaySurface : SUCCESS');
-  }
-});
 ```
 
 ### on('videoSizeChange')<sup>12+</sup>
@@ -2447,16 +2451,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 aVCastController.off('videoSizeChange');
 ```
 
-## AVMetadata<sup>10+</sup>
-
-Describes the media metadata.
-
-**System capability**: SystemCapability.Multimedia.AVSession.Core
-
-| Name           | Type                     | Mandatory| Description                                                                 |
-| --------------- |-------------------------| ---- |---------------------------------------------------------------------|
-| avQueueName<sup>12+</sup>     | string                  | No  | Playlist name.<br>This is a system API.|
-
 ## AVQueueInfo<sup>11+</sup>
 
 Defines the attributes of a playlist.
@@ -2465,25 +2459,26 @@ Defines the attributes of a playlist.
 
 **System API**: This is a system API.
 
-| Name           | Type                     | Mandatory| Description                                                                 |
-| --------------- |-------------------------| ---- |--------------------------------------------------------------------- |
-| bundleName      | string                  | Yes  | Bundle name of the application to which the playlist belongs.                                                       |
-| avQueueName     | string                  | Yes  | Playlist name.                                                   |
-| avQueueId       | string                  | Yes  | Unique ID of the playlist.                                              |
-| avQueueImage    | image.PixelMap &#124; string |Yes  | Cover image of the playlist, which can be pixel data of an image or an image path (local path or Internet path).    |
-| lastPlayedTime  | number                  | No  | Last time when the playlist is played.                                                       |
+| Name           | Type                     | Read-Only| Optional| Description                                                                 |
+| --------------- |-------------------------| ---- |-------|-------------------------------------------------------------- |
+| bundleName      | string                  | No| No  | Bundle name of the application to which the playlist belongs.                                                       |
+| avQueueName     | string                  | No| No  | Playlist name.                                                   |
+| avQueueId       | string                  | No| No  | Unique ID of the playlist.                                              |
+| avQueueImage    | image.PixelMap &#124; string |No| No  | Cover image of the playlist, which can be pixel data of an image or an image path (local path or Internet path).    |
+| lastPlayedTime  | number                  | No|Yes | Last time when the playlist is played.                                                       |
 
 ## DeviceInfo<sup>10+</sup>
 
 Describes the information related to the output device.
 
-| Name      | Type          | Mandatory| Description                  |
-| ---------- | -------------- | ---- | ---------------------- |
-| ipAddress | string | No  | IP address of the output device.<br>This is a system API.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast    |
-| providerId | number | No  | Vendor of the output device.<br>This is a system API.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast   |
-| authenticationStatus<sup>11+</sup> | number | No  | Whether the output device is trusted. The default value is **0**, indicating that the device is untrusted. The value **1** means that the device is trusted.<br>This is a system API.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast   |
-| networkId<sup>13+</sup> | string | No  | Network ID of the output device.<br>This is a system API.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast|
-
+| Name      | Type          | Read-Only| Optional| Description                  |
+| ---------- | -------------- | ---- | ----|------------------ |
+| ipAddress | string | No| Yes | IP address of the output device.<br>**System API**: This is a system API.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast    |
+| providerId | number | No   | Yes| Vendor of the output device.<br>**System API**: This is a system API.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast   |
+| authenticationStatus<sup>11+</sup> | number | No | Yes| Whether the output device is trusted. The default value is **0**, indicating that the device is untrusted. The value **1** means that the device is trusted.<br>**System API**: This is a system API.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast   |
+| networkId<sup>13+</sup> | string | No |Yes| Network ID of the output device.<br>**System API**: This is a system API.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast|
+|isLegacy<sup>13+</sup> | boolean | No| Yes| Whether the current device is a legacy device. **true** if it is a legacy device., **false** otherwise.<br>**System API**: This is a system API.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast    |
+|mediumTypes<sup>13+</sup>| number | No | Yes |Medium types used for device discovery.<br>1: Bluetooth Low Energy (BLE), which is used to discover and connect to Bluetooth devices.<br> 2: Constrained Application Protocol (CoAP), which is used to discover devices in a Local Area Network (LAN).<br>**System API**: This is a system API.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast       |
 ## AVSessionDescriptor
 
 Declares the session descriptor.

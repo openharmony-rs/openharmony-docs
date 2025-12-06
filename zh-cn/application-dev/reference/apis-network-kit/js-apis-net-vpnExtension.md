@@ -10,7 +10,16 @@
 三方VPN管理模块，支持三方VPN的启动和停止功能。三方VPN是指由第三方提供的VPN服务，它们通常提供更多的功能和更广泛的网络连接选项，包括更多的安全和隐私功能，以及更全面的定制选项。当前提供三方VPN能力主要用于创建虚拟网卡及配置VPN路由信息，连接隧道过程及内部连接的协议需要应用内部自行实现。
 
 > **说明：**
-> 本模块首批接口从 API version 11 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 本模块首批接口从 API version 11 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。<br>
+> 如下模块不支持在VpnExtensionAbility引用，可能会导致程序异常退出。<br>
+> - [@ohos.contact(联系人)](../apis-contacts-kit/js-apis-contact.md)<br>
+> - [@ohos.geolocation](../apis-location-kit/js-apis-geolocation.md)、[@ohos.geoLocationManager(位置服务)](../apis-location-kit/js-apis-geoLocationManager.md)<br>
+> - [@ohos.multimedia.audio(音频管理)](../apis-audio-kit/arkts-apis-audio.md)<br>
+> - [@ohos.multimedia.camera(相机管理)](../apis-camera-kit/arkts-apis-camera.md)<br>
+> - [@ohos.telephony.call(拨打电话)](../apis-telephony-kit/js-apis-call.md)<br>
+> - [@ohos.telephony.sim(SIM卡管理)](../apis-telephony-kit/js-apis-sim.md)<br>
+> - [@ohos.telephony.sms(短信服务)](../apis-telephony-kit/js-apis-sms.md)<br>
 
 ## 导入模块
 
@@ -71,7 +80,7 @@ startVpnExtensionAbility(want: Want): Promise\<void>
 
 | 类型           | 说明                    |
 | -------------- | ----------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -142,7 +151,7 @@ stopVpnExtensionAbility(want: Want): Promise\<void>
 
 | 类型           | 说明                    |
 | -------------- | ----------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -374,7 +383,7 @@ protect(socketFd: number): Promise\<void\>
 
 | 类型            | 说明                                                  |
 | --------------- | ----------------------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -432,7 +441,7 @@ destroy(): Promise\<void\>
 
 | 类型            | 说明                                                  |
 | --------------- | ----------------------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -483,7 +492,7 @@ destroy(vpnId: string): Promise\<void\>
 
 | 类型            | 说明                                                  |
 | --------------- | ----------------------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -509,7 +518,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
     vpnConnection.destroy(vpnId).then(() => {
       console.info("destroy success");
     }).catch((error: BusinessError) => {
-      console.error(`destroy fail, Code is ${err.code}, message is ${err.message}`);
+      console.error(`destroy fail, Code is ${error.code}, message is ${error.message}`);
     });
   }
 }
@@ -554,7 +563,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
         console.info("generateVpnId success, vpnId = " + JSON.stringify(data));
       }
     }).catch((error: BusinessError) => {
-      console.error(`generateVpnId fail, Code is ${err.code}, message is ${err.message}`);
+      console.error(`generateVpnId fail, Code is ${error.code}, message is ${error.message}`);
     });
   }
 }
@@ -568,7 +577,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 
 | 名称             | 类型                                      | 只读 | 可选 | 说明                                       |
 | ---------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------ |
-| addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | 否  | 否 | VPN虚拟网卡的IP地址。                                  |
+| addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | 否  | 否 | VPN虚拟网卡的IP地址。最多支持64个IP地址。                                  |
 | vpnId<sup>20+</sup>           | string | 否 | 是 | VPN唯一标识。 | 
 | routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>      | 否  | 是 | VPN虚拟网卡的路由信息（目前最多可配置1024条路由）。                  |
 | dnsAddresses        | Array\<string\>                                                 | 否  | 是 | DNS服务器地址信息。当配置DNS服务器地址后，VPN启动状态下被代理的应用上网时，使用配置的DNS服务器做DNS查询。                                    |

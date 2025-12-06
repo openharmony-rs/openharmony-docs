@@ -1,8 +1,16 @@
 # Inspecting Page Layouts
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @pengzhiwen3-->
+<!--Designer: @lmleon-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
 
-You can use the Inspector to examine page layouts. Its bidirectional positioning feature helps quickly locate components, modify attributes, and debug components in DevEco Studio, thereby improving development efficiency.
+You can use the Inspector tool in DevEco Studio to inspect page layouts. Its bidirectional positioning feature enables quick component location, attribute modification, and component debugging, significantly improving development efficiency.
 
-ArkUI obtains information about all components in the currently displayed page, including the parent-child structure of the component tree, size, position, styles, attributes, and states. After obtaining the component tree information, it generates and displays it as an Inspector component tree. For details about the usage in DevEco Studio, see [Using ArkUI Inspector](ui-inspector-profiler.md#using-arkui-inspector).
+ArkUI obtains comprehensive information about all components on the currently displayed page, including the component tree's parent-child hierarchy, size, position, styles, attributes, and states. After collecting this component tree data, the Inspector generates and displays it as a visual component tree. For details about how to use DevEco Studio, see [Inspector Debugging Capability](ui-inspector-profiler.md#inspector-debugging-capability).
+
+Inspector also provides C APIs for registering and unregistering listeners for UI component layout or drawing display events. For more details, see [Listening for Component Layout and Drawing Events](ndk-inspector-component-observer.md).
 
 ## Constraints
 
@@ -20,11 +28,12 @@ The following example demonstrates the basic usage of **getFilteredInspectorTree
 
 ```ts
 import { UIContext } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct ComponentPage {
   loopConsole(inspectorStr: string, i: string) {
-    console.log(`InsTree ${i}| type: ${JSON.parse(inspectorStr).$type}, ID: ${JSON.parse(inspectorStr).$ID}`);
+    console.info(`InsTree ${i}| type: ${JSON.parse(inspectorStr).$type}, ID: ${JSON.parse(inspectorStr).$ID}`);
     if (JSON.parse(inspectorStr).$children) {
       i += '-';
       for (let index = 0; index < JSON.parse(inspectorStr).$children.length; index++) {
@@ -41,14 +50,14 @@ struct ComponentPage {
       Button('content').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
         let inspectorStr = uiContext.getFilteredInspectorTree(['content']);
-        console.log(`InsTree : ${inspectorStr}`);
+        console.info(`InsTree : ${inspectorStr}`);
         inspectorStr = JSON.stringify(JSON.parse(inspectorStr));
         this.loopConsole(inspectorStr, '-');
       })
       Button('isLayoutInspector').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
         let inspectorStr = uiContext.getFilteredInspectorTree(['isLayoutInspector']);
-        console.log(`InsTree : ${inspectorStr}`);
+        console.info(`InsTree : ${inspectorStr}`);
         inspectorStr = JSON.stringify(JSON.parse(inspectorStr).content);
         this.loopConsole(inspectorStr, '-');
       })
@@ -63,7 +72,7 @@ struct ComponentPage {
           inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
           console.info(`result3: ${inspectorStr}`);
         } catch(e) {
-          console.info(`getFilteredInspectorTreeById error: ${e}`);
+          console.error(`getFilteredInspectorTreeById error: ${e}`);
         }
       })
 
@@ -90,7 +99,8 @@ struct ImageExample {
     Column() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
         Row({ space: 5 }) {
-          Image($r('app.media.app_icon'))
+          // Replace the image with a locally available image file.
+          Image($r('app.media.startIcon'))
             .width(110)
             .height(110)
             .border({ width: 1 })
@@ -169,4 +179,3 @@ struct ComponentPage {
   }
 }
 ```
-<!--no_check-->

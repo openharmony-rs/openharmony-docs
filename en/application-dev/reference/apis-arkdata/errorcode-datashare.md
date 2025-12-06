@@ -56,7 +56,7 @@ The **DataShareHelper** class fails to be created.
 1. Obtain the correct URI.
 2. Check that the context of the stage model is used.
 3. Check whether the client has the read or write permission on data. Perform the following steps:<br>
-    (1) Obtain the data provider bundle name from the URI. For example, the bundle name in uri "datashareproxy://com.acts.ohos.data.datasharetest/test" is **com.acts.ohos.data.datasharetest**.<br>
+    (1) Obtain the data provider bundle name from the URI. For example, the bundle name in **uri = "datashareproxy://com.acts.ohos.data.datasharetest/test"** is **com.acts.ohos.data.datasharetest**.<br>
     (2) Obtain the configuration based on the bundle name. For example, run **bm dump --bundle-name com.acts.ohos.data.datasharetest** to obtain the **DataShareExtension** configuration, and check whether the data consumer has **readPermission** or **writePermission**.
 
 ## 15700011 URI Not Exist

@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @CCFFWW-->
-<!--Designer: @yangfan229-->
+<!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 You can set the interpolator to implement the animation effect.
@@ -163,7 +163,8 @@ export default {
     translateVal:0,
     animation: null
   },
-  onInit() {
+  onInit() {},
+  onShow() {
     var options = {
       duration: 3000,
       fill: 'forwards',
@@ -171,8 +172,6 @@ export default {
       end: 270
     };
     this.animation = this.getUIContext().createAnimator(options);
-  },
-  onShow() {
     var _this= this;
     // Add an animation repeat event.
     this.animation.onrepeat = function() {

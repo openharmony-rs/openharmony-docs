@@ -4,7 +4,7 @@
 <!--Owner: @wangchensu1-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
@@ -88,6 +88,8 @@ The corresponding operation does not support nodes created by ArkTS.
 
 **错误信息**
 
+The node not mounted to component tree.
+
 **错误描述**
 
 传入的节点未挂载到组件树上。
@@ -99,25 +101,3 @@ The corresponding operation does not support nodes created by ArkTS.
 **处理步骤**
 
 调整函数调用时机，确保传入的节点已挂载到组件树上。
-
-## 106204 不支持在非UI线程操作传入的节点
-
-**错误信息**
-
-Operation on passed in nodes in non UI threads is not supported.
-
-**错误描述**
-
-不支持在非UI线程操作传入的节点。
-
-**可能原因**
-
-1. 接口只支持在UI线程调用。
-2. 接口支持多线程调用，但是传入的节点已挂载到UI主树上。
-3. 接口支持多线程调用，但是传入的节点不是通过支持多线程的[createNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建的。
-
-**处理步骤**
-
-1. 调整函数调用时机，确保接口在UI线程调用。
-2. 将传入的节点从UI主树上卸载后再调用接口。
-3. 使用支持多线程调用[createNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建节点后再调用接口。

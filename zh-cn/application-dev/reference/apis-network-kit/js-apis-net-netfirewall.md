@@ -1,5 +1,12 @@
 # @ohos.net.netFirewall (网络防火墙)
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 本模块为应用程序提供网络防火墙能力。应用程序可以对机器进行防火墙拦截记录的查询。
 
 
@@ -18,7 +25,7 @@ import { netFirewall } from '@kit.NetworkKit';
 
 getNetFirewallPolicy(userId: number): Promise\<NetFirewallPolicy>
 
-查询防火墙状态。
+查询防火墙状态。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_NET_FIREWALL
 
@@ -68,7 +75,7 @@ netFirewall.getNetFirewallPolicy(100).then((result: netFirewall.NetFirewallPolic
 
 updateNetFirewallRule(rule: NetFirewallRule): Promise\<void>
 
-更新防火墙规则。
+更新防火墙规则。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_NET_FIREWALL
 
@@ -145,7 +152,7 @@ netFirewall.updateNetFirewallRule(ipRuleUpd).then(() => {
 
 removeNetFirewallRule(userId: number, ruleId: number): Promise\<void>
 
-删除防火墙规则。
+删除防火墙规则。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_NET_FIREWALL
 
@@ -195,7 +202,7 @@ netFirewall.removeNetFirewallRule(100, 1).then(() => {
 
 getNetFirewallRules(userId: number, requestParam: RequestParam): Promise\<FirewallRulePage>
 
-按userId获取防火墙规则，需要指定分页查询参数。
+按userId获取防火墙规则，需要指定分页查询参数。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_NET_FIREWALL
 
@@ -250,7 +257,7 @@ netFirewall.getNetFirewallRules(100, ruleParam).then((result: netFirewall.Firewa
 
 getNetFirewallRule(userId: number, ruleId: number): Promise\<NetFirewallRule>
 
-通过userId和ruleId获取指定的防火墙规则。
+通过userId和ruleId获取指定的防火墙规则。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_NET_FIREWALL
 
@@ -300,7 +307,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 setNetFirewallPolicy(userId: number, policy: NetFirewallPolicy): Promise\<void>
 
-设置防火墙状态。
+设置防火墙状态。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_NET_FIREWALL
 
@@ -354,7 +361,7 @@ netFirewall.setNetFirewallPolicy(100, policy).then(() => {
 
 addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
-添加防火墙规则。
+添加防火墙规则。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_NET_FIREWALL
 
@@ -502,24 +509,24 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
-| 名称        | 类型                                                        |必填| 说明                                                           |
-| ------------|-------------------------------------------------------------|----|--------------------------------------------------------------  |
-| userId      | number                                                      | 是 | 系统中的多用户用户ID，只能是存在的用户ID。                   |
-| name        | string                                                      | 是 | 规则名称，必填，最多128个字符。                                |
-| direction   | [NetFirewallRuleDirection](#netfirewallruledirection)       | 是 | 规则方向，入站或出站。                                         |
-| action      | [FirewallRuleAction](#firewallruleaction)                   | 是 | 行为。                                                         |
-| type        | [NetFirewallRuleType](#netfirewallruletype)                 | 是 | 规则类型。                                                     |
-| isEnabled   | boolean                                                     | 是 | 是否启用。true:启用；false：不启用。                                                     |
-| id          | number                                                      | 否 | 规则ID。                                                       |
-| description | string                                                      | 否 | 规则描述，可选，最多256个字符。                                |
-| appUid      | number                                                      | 否 | 应用程序或服务UID。                                            |
-| localIps    | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | 否 | 本地IP地址：ruleType=RULE_IP有效，否则忽略，最多10个。         |
-| remoteIps   | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | 否 | 远端IP地址：当ruleType=RULE_IP时有效，否则将被忽略，最多10个。 |
-| protocol    | number                                                      | 否 | 协议，TCP:6，UDP:17，当ruleType=RULE_IP时有效，否则将被忽略。  |
-| localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 | 本地端口：当ruleType=RULE_IP时有效，否则将被忽略，最多10个。   |
-| remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 | 远端端口：当ruleType=RULE_IP时有效，否则将被忽略，最多10个。   |
-| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 | 域名列表：当ruleType=RULE_DOMAIN时有效，否则将被忽略。         |
-| dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | 否 | DNS:当ruleType=RULE_DNS时有效，否则将被忽略。                  |
+| 名称        | 类型                                                        |只读| 可选|说明                                                           |
+| ------------|-------------------------------------------------------------|----|---|-----------------------------------------------------------  |
+| userId      | number                                                      | 否 |否 |系统中的多用户用户ID，只能是存在的用户ID。                   |
+| name        | string                                                      | 否 |否 |规则名称，必填，最多128个字符。                                |
+| direction   | [NetFirewallRuleDirection](#netfirewallruledirection)       | 否 |否 |规则方向，入站或出站。                                         |
+| action      | [FirewallRuleAction](#firewallruleaction)                   | 否 |否 |行为。                                                         |
+| type        | [NetFirewallRuleType](#netfirewallruletype)                 | 否 |否 |规则类型。                                                     |
+| isEnabled   | boolean                                                     | 否 |否 |是否启用。true:启用；false：不启用。                                                     |
+| id          | number                                                      | 否 |是| 规则ID。                                                       |
+| description | string                                                      | 否 |是 |规则描述，可选，最多256个字符。                                |
+| appUid      | number                                                      | 否 |是 |应用程序或服务UID。                                            |
+| localIps    | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | 否 |是 |本地IP地址：ruleType=RULE_IP有效，否则忽略，最多10个。         |
+| remoteIps   | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | 否 |是 |远端IP地址：当ruleType=RULE_IP时有效，否则将被忽略，最多10个。 |
+| protocol    | number                                                      | 否 | 是|协议，TCP:6，UDP:17，当ruleType=RULE_IP时有效，否则将被忽略。  |
+| localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 | 是|本地端口：当ruleType=RULE_IP时有效，否则将被忽略，最多10个。   |
+| remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 |是 |远端端口：当ruleType=RULE_IP时有效，否则将被忽略，最多10个。   |
+| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表：当ruleType=RULE_DOMAIN时有效，否则将被忽略。         |
+| dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | 否 |是 |DNS:当ruleType=RULE_DNS时有效，否则将被忽略。                  |
 
 ## RequestParam
 
@@ -527,12 +534,12 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
-| 名称       | 类型                                             | 必填 | 说明                        |
-|------------|--------------------------------------------------|------|---------------------------- |
-| page       | number                                           | 是   | 页码，值范围：[1,1000]。    |
-| pageSize   | number                                           | 是   | 页面大小，值范围：[1,50]。  |
-| orderField | [NetFirewallOrderField](#netfirewallorderfield)  | 是   | 排序字段。                  |
-| orderType  | [NetFirewallOrderType](#netfirewallordertype)    | 是   | 排序顺序。                  |
+| 名称       | 类型                                             | 只读 |可选| 说明                        |
+|------------|--------------------------------------------------|------|-----|----------------------- |
+| page       | number                                           | 否   |否 |页码，值范围：[1,1000]。    |
+| pageSize   | number                                           | 否  |否 |页面大小，值范围：[1,50]。  |
+| orderField | [NetFirewallOrderField](#netfirewallorderfield)  | 否   |否 |排序字段。                  |
+| orderType  | [NetFirewallOrderType](#netfirewallordertype)    | 否   |否 |排序顺序。                  |
 
 
 ## FirewallRulePage
@@ -541,12 +548,12 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
-| 名称       | 类型                                        | 必填 | 说明          |
-|------------|-------------------------------------------- |------|---------------|
-| page       | number                                      | 是   | 当前页码，值范围：[1,1000]。    |
-| pageSize   | number                                      | 是   | 页大小，值范围：[1,50]。      |
-| totalPage  | number                                      | 是   | 总页数，值范围：[1,1000]。      |
-| data       | Array\<[NetFirewallRule](#netfirewallrule)> | 是   | 页面数据。    |
+| 名称       | 类型                                        | 只读 |可选| 说明          |
+|------------|-------------------------------------------- |------|----|-----------|
+| page       | number                                      | 否  |否 |当前页码，值范围：[1,1000]。    |
+| pageSize   | number                                      | 否  |否 |页大小，值范围：[1,50]。      |
+| totalPage  | number                                      | 否   |否 |总页数，值范围：[1,1000]。      |
+| data       | Array\<[NetFirewallRule](#netfirewallrule)> | 否   |否 |页面数据。    |
 
 ## NetFirewallPolicy
 
@@ -554,11 +561,11 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
-| 名称       | 类型                                       | 必填 | 说明          |
-| -----------| -------------------------------------------|------|-------------- |
-| isOpen     | boolean                                    | 是   | 防火墙开/关。true:防火墙开启；false：防火墙关闭。 |
-| inAction   | [FirewallRuleAction](#firewallruleaction)  | 是   | 入站行动。    |
-| outAction  | [FirewallRuleAction](#firewallruleaction)  | 是   | 出站行动。    |
+| 名称       | 类型                                       | 只读 |可选| 说明          |
+| -----------| -------------------------------------------|------|----|---------- |
+| isOpen     | boolean                                    | 否   |否 |防火墙开/关。true:防火墙开启；false：防火墙关闭。 |
+| inAction   | [FirewallRuleAction](#firewallruleaction)  | 否   |否 |入站行动。    |
+| outAction  | [FirewallRuleAction](#firewallruleaction)  | 否  | 否|出站行动。    |
 
 
 ## NetFirewallRuleDirection
@@ -623,14 +630,14 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
-| 名称        | 类型   |必填| 说明                                             |
-| ----------- | -------|----|------------------------------------------------|
-| type        | number | 是 | 1：IP地址或子网，当使用单个IP时，掩码为32。 <br />2：IP段。  <br /> |
-| family      | number | 否 | 1：表示family设置为IPv4。<br />2：表示family设置为IPv6。  <br />默认IPv4，其他当前不支持。      |
-| address     | string | 否 | IP地址。当type等于1时需要设置，并且仅在type等于1时有效，否则将被忽略。                   |
-| mask        | number | 否 | IPv4：子网掩码。<br />IPv6：前缀。<br />当type等于1时需要设置，并且仅在type等于1时有效，否则将被忽略。       |
-| startIp     | string | 否 | 起始IP。当type等于2时需要设置，并且仅在type等于2时有效，否则将被忽略。                         |
-| endIp       | string | 否 | 结束IP。当type等于2时需要设置，并且仅在type等于2时有效，否则将被忽略。                        |
+| 名称        | 类型   |只读|可选| 说明                                             |
+| ----------- | -------|----|------|------------------------------------------|
+| type        | number | 否 |否 |1：IP地址或子网，当使用单个IP时，掩码为32。 <br />2：IP段。  <br /> |
+| family      | number | 否 | 是|1：表示family设置为IPv4。<br />2：表示family设置为IPv6。  <br />默认IPv4，其他当前不支持。      |
+| address     | string | 否 | 是|IP地址。当type等于1时需要设置，并且仅在type等于1时有效，否则将被忽略。                   |
+| mask        | number | 否 |是 |IPv4：子网掩码。<br />IPv6：前缀。<br />当type等于1时需要设置，并且仅在type等于1时有效，否则将被忽略。       |
+| startIp     | string | 否 |是 |起始IP。当type等于2时需要设置，并且仅在type等于2时有效，否则将被忽略。                         |
+| endIp       | string | 否 |是 |结束IP。当type等于2时需要设置，并且仅在type等于2时有效，否则将被忽略。                        |
 
 ## NetFirewallPortParams
 
@@ -638,10 +645,10 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
-| 名称         | 类型   | 必填 | 说明       |
-| ------------ | -------|------|----------- |
-| startPort    | number | 是   | 开始端口。 |
-| endPort      | number | 是   | 结束端口。 |
+| 名称         | 类型   | 只读 |可选| 说明       |
+| ------------ | -------|------|-----|------ |
+| startPort    | number | 否   |否 |开始端口。 |
+| endPort      | number | 否   |否 |结束端口。 |
 
 ## NetFirewallDomainParams
 
@@ -649,10 +656,10 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
-| 名称         | 类型    | 必填 | 说明                                      |
-| ------------ | --------|------|------------------------------------------ |
-| isWildcard   | boolean | 是   | 是否包含通配符。true:包含通配符；false：不包含通配符。                          |
-| domain       | string  | 是   | 当isWildcard为false时，需要确定的完整域。 |
+| 名称         | 类型    | 只读 | 可选|说明                                      |
+| ------------ | --------|------|-----|------------------------------------- |
+| isWildcard   | boolean | 否  | 否|是否包含通配符。true:包含通配符；false：不包含通配符。                          |
+| domain       | string  | 否  |否 |当isWildcard为false时，需要确定的完整域。 |
 
 ## NetFirewallDnsParams
 
@@ -660,7 +667,7 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
-| 名称         | 类型    | 必填 | 说明           |
-| ------------ | --------|------|--------------- |
-| primaryDns   | string  | 是   | 主域名服务器。 |
-| standbyDns   | string  | 否   | 备份DNS。      |
+| 名称         | 类型    | 只读 | 可选|说明           |
+| ------------ | --------|------|---|------------ |
+| primaryDns   | string  | 否   |否| 主域名服务器。 |
+| standbyDns   | string  | 否   | 是|备份DNS。      |

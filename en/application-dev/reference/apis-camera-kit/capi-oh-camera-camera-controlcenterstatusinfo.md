@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -23,4 +23,4 @@ The struct describes the effect status information of a camera controller.
 | Name| Description|
 | -- | -- |
 | [Camera_ControlCenterEffectType](capi-camera-h.md#camera_controlcentereffecttype) effectType | Effect type of the camera controller.|
-| bool isActive | Whether the controller is activated.|
+| bool isActive | Whether the controller is activated. **true** if activated, **false** otherwise.|
