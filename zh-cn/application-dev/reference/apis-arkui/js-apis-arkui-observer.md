@@ -214,19 +214,17 @@ Navigation组件页面切换事件的监听选项。
 
 TabContent页面的切换信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称         | 类型                                         | 只读  | 可选 | 说明                                          |
 | ------------ | -------------------------------------------- | ---- | ---- | -------------------------------------------- |
-| tabContentId | string                                       | 否   | 否   | TabContent组件的id。                          |
-| tabContentUniqueId | number                                 | 否   | 否   | TabContent组件的uniqueId。                    |
-| state        | [TabContentState](#tabcontentstate12)        | 否   | 否   | TabContent组件的状态。                        |
-| index        | number                                       | 否   | 否   | TabContent组件的下标索引。索引从0开始。        |
-| id           | string                                       | 否   | 否   | Tabs组件的id。                                |
-| uniqueId     | number                                       | 否   | 否   | Tabs组件的uniqueId。                          |
-| lastIndex<sup>22+</sup>    | number                                       | 否   | 是   | 最近一次聚焦的TabsContent组件的下标索引。索引从0开始。仅在[tabChange](#uiobserverontabchange22)的回调函数中存在。     |
+| tabContentId | string                                       | 否   | 否   | TabContent组件的id。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
+| tabContentUniqueId | number                                 | 否   | 否   | TabContent组件的uniqueId。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                |
+| state        | [TabContentState](#tabcontentstate12)        | 否   | 否   | TabContent组件的状态。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                    |
+| index        | number                                       | 否   | 否   | TabContent组件的下标索引。索引从0开始。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
+| id           | string                                       | 否   | 否   | Tabs组件的id。       <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
+| uniqueId     | number                                       | 否   | 否   | Tabs组件的uniqueId。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                      |
+| lastIndex<sup>22+</sup>    | number                                       | 否   | 是   | 最近一次聚焦的TabsContent组件的下标索引。索引从0开始。仅在[tabChange](#uiobserverontabchange22)的回调函数中存在。  <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。   |
 
 ## WindowSizeLayoutBreakpointInfo<sup>22+</sup>
 
