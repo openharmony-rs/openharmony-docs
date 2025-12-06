@@ -350,7 +350,7 @@
 
 - 编译配置
 1. CMakeLists.txt文件需要按照如下配置
-    ```text
+    ```txt
     // CMakeLists.txt
     # the minimum version of CMake.
     cmake_minimum_required(VERSION 3.5.0)
