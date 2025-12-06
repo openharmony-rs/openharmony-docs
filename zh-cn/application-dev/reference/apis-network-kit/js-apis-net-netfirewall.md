@@ -366,8 +366,8 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 > **说明**
 > 
 > 1、防火墙规则描述如下：<br>
-> （1）当调用setNetFirePolicy设置防火墙规则为默认阻止时，调用addNetFirewallRule下发的显式允许规则优先级高于默认阻止规则，显式阻止规则优先级高于任何冲突的允许规则<br>
-> （2）当调用setNetFirePolicy设置防火墙规则为默认允许时，调用addNetFirewallRule下发的显式阻止规则优先级高于默认允许规则，显式允许规则优先级高于任何冲突的阻止规则<br>
+> （1）当调用setNetFirePolicy设置防火墙规则为默认阻止时，调用addNetFirewallRule下发的显式允许规则优先级高于默认阻止规则，显式阻止规则优先级高于任何冲突的允许规则。<br>
+> （2）当调用setNetFirePolicy设置防火墙规则为默认允许时，调用addNetFirewallRule下发的显式阻止规则优先级高于默认允许规则，显式允许规则优先级高于任何冲突的阻止规则。<br>
 > 2、规则类型补充说明：<br>
 > （1） 当addNetFirewallRule的参数rule.type配置为RULE_IP，rule.action配置为RULE_ALLOW，rule.localIps和rule.remoteIps不配置时，支持全IP段允许通行；当rule.action配置为RULE_DENY，rule.localIps和rule.remoteIps不配置时，支持全IP段拦截。<br>
 > （2）当addNetFirewallRule的参数rule.type配置为RULE_DOMAIN，rule.domains不配置时，该条规则不生效。
