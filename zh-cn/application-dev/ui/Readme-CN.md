@@ -14,6 +14,7 @@
     - 自定义组件<!--arkts-custom-components-->
       - [创建自定义组件](state-management/arkts-create-custom-components.md)
       - [自定义组件生命周期](state-management/arkts-page-custom-components-lifecycle.md)
+      - [自定义组件生命周期（推荐）](state-management/arkts-custom-components-new-lifecycle.md)
       - [自定义组件的自定义布局](state-management/arkts-page-custom-components-layout.md)
       - [自定义组件成员属性访问限定符使用限制](state-management/arkts-custom-components-access-restrictions.md)
       - 自定义组件复用<!--arkts-component-reusable-->
