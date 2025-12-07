@@ -190,7 +190,7 @@ fadingEdge(enable: Optional&lt;boolean&gt;)
 
 | 参数名  | 类型                                              | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enable | Optional&lt;boolean&gt;                           | 是   | fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的clip属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false |
+| enable | Optional&lt;boolean&gt;                           | 是   | fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的[clip](ts-universal-attributes-sharp-clipping.md#clip12)属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false |
 
 ### friction
 
@@ -441,7 +441,7 @@ import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute } from '@k
 @Builder
 function buildText() {
   Column() {
-    Text("header")
+    Text('header')
       .fontSize('60px')
       .fontWeight(FontWeight.Bold)
   }.margin(0)

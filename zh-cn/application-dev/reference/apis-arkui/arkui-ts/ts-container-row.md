@@ -25,7 +25,7 @@
 
 Row(options?: RowOptions)
 
-创建水平方向线性布局容器，可以设置子组件的间距，间距类型为number或string类型。
+创建水平方向线性布局容器，可以设置子组件的间距。
 
 >  **说明：**
 >
@@ -41,12 +41,12 @@ Row(options?: RowOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [RowOptions<sup>18+</sup>](#rowoptions18对象说明) | 否 | 横向布局元素间距。 |
+| options<sup>18+</sup> | [RowOptions](#rowoptions18对象说明) | 否 | 横向布局元素间距，支持设置number或string类型。 |
 
 ### Row<sup>18+</sup>
 Row(options?: RowOptions | RowOptionsV2)
 
-创建水平方向线性布局容器，可以设置子组件的间距，间距类型为number、string或Resource类型。
+创建水平方向线性布局容器，可以设置子组件的间距。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -58,7 +58,7 @@ Row(options?: RowOptions | RowOptionsV2)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [RowOptions](#rowoptions18对象说明)  \| [RowOptionsV2](#rowoptionsv218对象说明) | 否 | 横向布局元素间距。 |
+| options | [RowOptions](#rowoptions18对象说明)  \| [RowOptionsV2](#rowoptionsv218对象说明) | 否 | 横向布局元素间距，支持设置number、string或Resource类型。 |
 
 ## RowOptions<sup>18+</sup>对象说明
 
@@ -152,7 +152,7 @@ reverse(isReversed: Optional\<boolean\>)
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| isReversed  | Optional\<boolean\> | 是   | 子组件在水平方向上的排列是否反转。<br/>默认值：true，设置true表示子组件在水平方向上反转排列，设置false表示子组件在水平方向上正序排列。 |
+| isReversed  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean\> | 是   | 子组件在水平方向上的排列是否反转。<br/>默认值：true，设置true表示子组件在水平方向上反转排列，设置false表示子组件在水平方向上正序排列。 |
 
 >  **说明：**
 >
@@ -194,7 +194,7 @@ struct RowExample {
 
       // 通过资源引用方式设置子组件水平方向的间距
       Text('Resource space').width('90%')
-      Row({ space: $r("app.string.stringSpace") }) {
+      Row({ space: $r('app.string.stringSpace') }) {
         Row().width('30%').height(50).backgroundColor(0xAFEEEE)
         Row().width('30%').height(50).backgroundColor(0x00FFFF)
       }.width('90%').height(107).border({ width: 1 })

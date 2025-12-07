@@ -946,7 +946,7 @@ enum ArkUI_AccessibilityCheckedState
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_ACCESSIBILITY_UNCHECKED = 0 | 复选框未被选中。 |
-| ARKUI_ACCESSIBILITY_CHECKED | 复选框被选中。 |
+| ARKUI_ACCESSIBILITY_CHECKED = 1 | 复选框被选中。 |
 
 ### ArkUI_AccessibilityActionType
 
@@ -1267,8 +1267,8 @@ Swiper导航点箭头枚举值。
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SWIPER_ARROW_HIDE = 0 | 不显示swiper中导航点箭头。 |
-| ARKUI_SWIPER_ARROW_SHOW | 显示swiper中导航点箭头。 |
-| ARKUI_SWIPER_ARROW_SHOW_ON_HOVER | 在hover状态下显示swiper中导航点箭头。 |
+| ARKUI_SWIPER_ARROW_SHOW = 1 | 显示swiper中导航点箭头。 |
+| ARKUI_SWIPER_ARROW_SHOW_ON_HOVER = 2 | 在hover状态下显示swiper中导航点箭头。 |
 
 ### ArkUI_SwiperNestedScrollMode
 
@@ -1286,7 +1286,7 @@ Swiper组件和父组件的嵌套滚动模式。
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0 | Swiper只自身滚动，不与父组件联动。 |
-| ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST | Swiper自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则Swiper触发边缘效果。 |
+| ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST = 1 | Swiper自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则Swiper触发边缘效果。 |
 
 ### ArkUI_PageFlipMode
 
@@ -1304,7 +1304,7 @@ Swiper组件鼠标滚轮翻页模式。
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0 | 鼠标滚轮连续滚动时翻多页，根据鼠标事件上报次数确定。 |
-| ARKUI_PAGE_FLIP_MODE_SINGLE | 一次翻页动画结束前不响应其他鼠标滚轮事件。 |
+| ARKUI_PAGE_FLIP_MODE_SINGLE = 1 | 一次翻页动画结束前不响应其他鼠标滚轮事件。 |
 
 ### ArkUI_SwiperAnimationMode
 
@@ -1341,9 +1341,9 @@ enum ArkUI_AccessibilityMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_ACCESSIBILITY_MODE_AUTO = 0 | 根据组件不同会转换为“enabled”或者“disabled”。 |
-| ARKUI_ACCESSIBILITY_MODE_ENABLED | 当前组件可被无障碍辅助服务所识别。 |
-| ARKUI_ACCESSIBILITY_MODE_DISABLED | 当前组件不可被无障碍辅助服务所识别。 |
-| ARKUI_ACCESSIBILITY_MODE_DISABLED_FOR_DESCENDANTS | 当前组件及其所有子组件不可被无障碍辅助服务所识别。 |
+| ARKUI_ACCESSIBILITY_MODE_ENABLED = 1 | 当前组件可被无障碍辅助服务所识别。 |
+| ARKUI_ACCESSIBILITY_MODE_DISABLED = 2 | 当前组件不可被无障碍辅助服务所识别。 |
+| ARKUI_ACCESSIBILITY_MODE_DISABLED_FOR_DESCENDANTS = 3 | 当前组件及其所有子组件不可被无障碍辅助服务所识别。 |
 
 ### ArkUI_TextCopyOptions
 
@@ -2511,8 +2511,8 @@ enum ArkUI_SwiperIndicatorType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SWIPER_INDICATOR_TYPE_DOT | 圆点指示器类型。 |
-| ARKUI_SWIPER_INDICATOR_TYPE_DIGIT | 数字指示器类型。 |
+| ARKUI_SWIPER_INDICATOR_TYPE_DOT = 0 | 圆点指示器类型。 |
+| ARKUI_SWIPER_INDICATOR_TYPE_DIGIT = 1 | 数字指示器类型。 |
 
 ### ArkUI_AnimationDirection
 
@@ -2650,7 +2650,7 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_PARAM_ERROR = 100023 |  参数错误。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md)。<br>**起始版本：** 21 |
 | ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID = 103501 |  当前XComponent状态异常，方法调用失败。错误码的详细介绍请参见[XComponent组件错误码](../apis-arkui/errorcode-xcomponent.md)。<br>**起始版本：** 19 |
 | ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED = 106102 | 组件不支持特定的属性或者事件。错误码的详细介绍请参见[交互事件错误码](../apis-arkui/errorcode-event.md)。 |
-| ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE = 106103 | 对应的操作不支持ArkTS创建的节点。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md)。 |
+| ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED = 106103 | 对应的操作不支持ArkTS创建的节点。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md)。 |
 | ARKUI_ERROR_CODE_ADAPTER_NOT_BOUND = 106104 | 懒加载适配器未绑定到组件上。错误码的详细介绍请参见[106104-适配器未绑定](../apis-arkui/errorcode-nodeadapter.md#106104-适配器未绑定)。 |
 | ARKUI_ERROR_CODE_ADAPTER_EXIST = 106105 | 适配器已存在。错误码的详细介绍请参见[106105-适配器已存在](../apis-arkui/errorcode-nodeadapter.md#106105-适配器已存在)。 |
 | ARKUI_ERROR_CODE_CHILD_NODE_EXIST = 106106 | 对应节点已存在子节点，无法添加适配器。错误码的详细介绍请参见[106106-子节点已存在](../apis-arkui/errorcode-nodeadapter.md#106106-子节点已存在)。 |
@@ -2661,7 +2661,7 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_NODE_INDEX_INVALID = 106200 | 传入的索引值非法。<br/>错误码的详细介绍请参见[导航错误码](../apis-arkui/errorcode-router.md#106200-传入的索引值非法)。 |
 | ARKUI_ERROR_CODE_GET_INFO_FAILED = 106201 | 查询路由导航信息失败。<br/>错误码的详细介绍请参见[导航错误码](../apis-arkui/errorcode-router.md#106201-查询路由导航信息失败)。 |
 | ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | 传入的buffer size异常。<br/>错误码的详细介绍请参见[导航错误码](../apis-arkui/errorcode-router.md#106202-传入的buffer-size异常)。 |
-| ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 |  传入的节点未挂载到组件树上。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md)。<br>**起始版本：** 16 |
+| ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 |  传入的节点未挂载到组件树上。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md)。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD = 106204 |  不支持在非UI线程操作传入的节点。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md#106204-不支持在非ui线程操作传入的节点)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID = 106205 |  反色能力入参错误。错误码的详细介绍请参见[反色能力错误码](../apis-arkui/errorcode-force-dark.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_NODE_IS_ADOPTED = 106206 |  节点已被接纳为附属节点。错误码的详细介绍请参见[附属节点错误码](../apis-arkui/errorcode-adopt.md#106206-节点已被接纳为附属节点)。<br>**起始版本：** 23 |

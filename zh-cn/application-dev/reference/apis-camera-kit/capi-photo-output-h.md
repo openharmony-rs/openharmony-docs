@@ -957,8 +957,6 @@ Camera_ErrorCode OH_PhotoOutput_EnableMovingPhoto(Camera_PhotoOutput* photoOutpu
 
 是否启用动态照片。
 
-**需要权限：** ohos.permission.MICROPHONE
-
 **起始版本：** 12
 
 

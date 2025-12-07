@@ -3479,7 +3479,6 @@ client端获取GATT连接链路信号强度 (Received Signal Strength Indication
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.         |
 |801 | Capability not supported.          |
-|2900011 | The operation is busy. The last operation is not complete.             |
 |2900099 | Operation failed.                        |
 |2901003 | The connection is not established.                |
 
@@ -3529,7 +3528,6 @@ client端获取GATT连接链路信号强度 (Received Signal Strength Indication
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.               |
 |801 | Capability not supported.          |
-|2900011 | The operation is busy. The last operation is not complete.             |
 |2900099 | Operation failed.                        |
 |2901003 | The connection is not established.                |
 
@@ -4181,9 +4179,9 @@ getConnectedState(): ProfileConnectionState
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-let gattClient: ble.GattClientDevice = ble.createGattClientDevice("XX:XX:XX:XX:XX:XX");
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
 try {
-    let result: ble.ProfileConnectionState = gattServer.getConnectedState();
+    let result: ble.ProfileConnectionState = gattClient.getConnectedState();
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -4230,9 +4228,9 @@ updateConnectionParam(param: ConnectionParam): Promise&lt;void&gt;
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-let gattClient: ble.GattClientDevice = ble.createGattClientDevice("11:22:33:44:55:66");
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
 try {
-    gattclient.updateConnectionParam(ble.ConnectionParam.LOW_POWER);
+    gattClient.updateConnectionParam(ble.ConnectionParam.LOW_POWER);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }

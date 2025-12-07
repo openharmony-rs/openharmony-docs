@@ -8,7 +8,7 @@
 
 为了实现对\@ComponentV2装饰的自定义组件中变量变化的观测，开发者可以使用\@Local装饰器装饰变量。
 
-在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)。
+在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)。常见问题请参考[组件内状态变量常见问题](./arkts-state-management-faq-inner-component.md)。
 
 >**说明：**
 >
@@ -325,7 +325,7 @@ struct Index {
 
 \@Local与\@State的用法、功能对比如下：
 
-|                    | \@State                      | \@Local                         |
+| 用法 | \@State                      | \@Local                         |
 | ------------------ | ---------------------------- | --------------------------------- |
 | 参数               | 无。                          | 无。                       |
 | 从父组件初始化         | 可选。                  | 不允许外部初始化。           |
@@ -567,73 +567,6 @@ struct Index {
 ```
 
 ## 常见问题
-
-### 复杂类型常量重复赋值给状态变量触发刷新
-
-<!-- @[Local_Question_Spark_Update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionSparkUpdate.ets) -->
-
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-@Entry
-@ComponentV2
-struct Index {
-  list: string[][] = [['a'], ['b'], ['c']];
-  @Local dataObjFromList: string[] = this.list[0];
-
-  @Monitor('dataObjFromList')
-  onStrChange(monitor: IMonitor) {
-    hilog.info(0xFF00, 'testTag', '%{public}s', 'dataObjFromList has changed');
-  }
-
-  build() {
-    Column() {
-      Button('change to self').onClick(() => {
-        // 新值和本地初始化的值相同
-        this.dataObjFromList = this.list[0];
-      })
-    }
-  }
-}
-```
-
-以上示例每次点击Button('change to self')，把相同的Array类型常量赋值给一个Array类型的状态变量，都会触发刷新。原因是在状态管理V2中，会给使用状态变量装饰器如@Trace、@Local装饰的Date、Map、Set、Array添加一层代理用于观测API调用产生的变化。  
-当再次赋值`list[0]`时，`dataObjFromList`已经是Proxy类型，而`list[0]`是Array类型。由于类型不相等，会触发赋值和刷新。
-为了避免这种不必要的赋值和刷新，可以使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象提前进行新旧值的判断，当两者相同时不执行赋值。
-
-使用UIUtils.getTarget()方法示例。
-
-<!-- @[Local_Question_UIUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionUIUtils.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const DOMAIN = 0x0000;
-
-@Entry
-@ComponentV2
-struct Index {
-  list: string[][] = [['a'], ['b'], ['c']];
-  @Local dataObjFromList: string[] = this.list[0];
-
-  @Monitor('dataObjFromList')
-  onStrChange(monitor: IMonitor) {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'dataObjFromList has changed');
-  }
-
-  build() {
-    Column() {
-      Button('change to self').onClick(() => {
-        // 获取原始对象来和新值做对比
-        if (UIUtils.getTarget(this.dataObjFromList) !== this.list[0]) {
-          this.dataObjFromList = this.list[0];
-        }
-      })
-    }
-  }
-}
-```
 
 ### 在状态管理V2中使用animateTo动画效果异常
 

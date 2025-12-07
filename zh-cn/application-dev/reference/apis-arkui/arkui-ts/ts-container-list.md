@@ -92,7 +92,7 @@ List(options?: [ListOptions](#listoptions18对象说明))
 
 | 名称       | 类型                                    | 只读 | 可选 | 说明                                                     |
 | ------------ | ------------------------------------------- | ---- | -- | ------------------------------------------------------------ |
-| initialIndex<sup>7+</sup> | number | 否 | 是 | 设置当前List初次加载时显示区域起始位置的item索引值。<br/>默认值：0<br/>**说明：** <br/>设置为负数或超过了当前List最后一个item的索引值时视为无效取值，无效取值按默认值显示。<br/>从API version 14开始，如果在List组件创建完成后首次布局前（如List的onAttach事件中），调用Scroller滚动控制器中不带动画的scrollToIndex或scrollEdge方法，会覆盖initialIndex设置的值。<br/>设置了initialIndex后，List从initialIndex对应的子组件开始布局，在这之前的子组件未参与布局，无法计算准确大小，因此通过[currentOffset](ts-container-scroll.md#currentoffset)接口获取到的List的滚动总偏移量通过估算得出，可能会有误差。可通过设置[childrenMainSize](#childrenmainsize12)确保List的滚动总偏移量的准确性。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| initialIndex<sup>7+</sup> | number | 否 | 是 | 设置当前List初次加载时显示区域起始位置的item索引值。<br/>默认值：0<br/>**说明：** <br/>设置为负数或超过了当前List最后一个item的索引值时视为无效取值，无效取值按默认值显示。<br/>从API version 14开始，如果在List组件创建完成后首次布局前（如List的[onAttach](ts-universal-events-show-hide.md#onattach12)事件中），调用Scroller滚动控制器中不带动画的scrollToIndex或scrollEdge方法，会覆盖initialIndex设置的值。<br/>设置了initialIndex后，List从initialIndex对应的子组件开始布局，在这之前的子组件未参与布局，无法计算准确大小，因此通过[currentOffset](ts-container-scroll.md#currentoffset)接口获取到的List的滚动总偏移量通过估算得出，可能会有误差。可通过设置[childrenMainSize](#childrenmainsize12)确保List的滚动总偏移量的准确性。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | space<sup>7+</sup>        | number&nbsp;\|&nbsp;string                  | 否   | 是 | 子组件主轴方向的间隔。<br/>默认值：0<br/>参数类型为number时单位为vp。<br/>**说明：** <br/>设置为负数或者大于等于List内容区长度时，按默认值显示。<br/>space参数值小于List分割线宽度时，子组件主轴方向的间隔取分割线宽度。<br/> List子组件的visibility属性设置为None时不显示，但该子组件上下的space还是会生效。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | scroller<sup>7+</sup>      | [Scroller](ts-container-scroll.md#scroller) | 否   | 是 | 可滚动组件的控制器。与List绑定后，可以通过它控制List的滚动。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
@@ -403,7 +403,7 @@ scrollSnapAlign(value: ScrollSnapAlign)
 
 设置列表项滚动结束对齐效果。
 
-只支持item等高场景限位，不等高场景可能存在不准确的情况。对齐动画期间onWillScroll事件上报的滚动操作来源类型为ScrollSource.FLING。
+只支持item等高场景限位，不等高场景可能存在不准确的情况。对齐动画期间[onWillScroll](ts-container-scrollable-common.md#onwillscroll12)事件上报的滚动操作来源类型为ScrollSource.FLING。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -596,7 +596,7 @@ maintainVisibleContentPosition(enabled: boolean)
 > **说明：** 
 > - 只有使用LazyForEach在显示区域外插入或删除数据时，属性设置为true才能保持可见内容位置不变。使用ForEach插入或删除数据、使用LazyForEach重新加载数据时，即使maintainVisibleContentPosition属性设置为true，可见区内容位置也会跟随变化。
 > - 从API version 20开始，使用[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)在懒加载场景下，显示区域外插入或删除数据时，属性设置为true也能保持可见内容位置不变。
-> - maintainVisibleContentPosition属性设置为true后，在显示区域上方插入或删除数据，会触发onDidScroll、onScrollIndex事件。
+> - maintainVisibleContentPosition属性设置为true后，在显示区域上方插入或删除数据，会触发[onDidScroll](ts-container-scrollable-common.md#ondidscroll12)、onScrollIndex事件。
 > - maintainVisibleContentPosition属性设置为true后，在多列场景下，一次插入或删除整行数据，可以保持可见内容位置不变，如果不是插入或删除整行数据，可见内容位置还是会发生变化。
 
 ### stackFromEnd<sup>19+</sup>
@@ -1703,7 +1703,7 @@ struct ListExample {
 ![list](figures/list4.gif)
 
 ### 示例5（跳转准确）
-该示例通过设置childrenMainSize属性，实现了List在子组件高度不一致时调用scrollTo接口也可以跳转准确。
+该示例通过设置[childrenMainSize](#childrenmainsize12)属性，实现了List在子组件高度不一致时调用scrollTo接口也可以跳转准确。
 
 如果配合状态管理V2使用，详情见：[List与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md#滚动组件)。
 
@@ -1847,7 +1847,7 @@ struct ListItemGroupExample {
 ];
   private scroller: ListScroller = new ListScroller();
   @State listIndexInfo: VisibleListContentInfo = { index: -1 };
-  @State mess:string = "null";
+  @State mess:string = 'null';
   @State itemBackgroundColorArr: boolean[] = [false];
   @Builder
   itemHead(text: string) {
@@ -1860,7 +1860,7 @@ struct ListItemGroupExample {
 
   @Builder
   itemFoot(num: number) {
-    Text('共' + num + "节课")
+    Text('共' + num + '节课')
       .fontSize(16)
       .backgroundColor(0xAABBCC)
       .width('100%')
