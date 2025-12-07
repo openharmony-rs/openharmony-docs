@@ -38,6 +38,41 @@ import { relationalStore } from '@kit.ArkData';
 | isStarted | boolean | 是 | 否 | 检查指针是否移动过，true表示指针已移动过，false表示指针未移动过。 |
 | isClosed | boolean | 是 | 否 | 检查当前结果集是否关闭，true表示结果集已关闭，false表示结果集未关闭。 |
 
+## getColumnNames<sup>23+</sup>
+
+getColumnNames(): Array<string>
+
+获取结果集中所有列的名称。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------ | ------------------ |
+| Array&lt;string&gt; | 返回结果集中所有列的名称。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800011  | Failed to open the database because it is corrupted. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800019  | The SQL must be a query statement. |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800026  | SQLite: The database is out of memory. |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. |
+| 14800030  | SQLite: Unable to open the database file. |
+
+```ts
+if (resultSet != undefined) {
+  const names = resultSet.getColumnNames();
+}
+```
+
 ## getColumnIndex
 
 getColumnIndex(columnName: string): number
@@ -1094,6 +1129,112 @@ async function proccessRows(resultSet: relationalStore.ResultSet) {
     // 从结果集的当前行（默认首次获取数据时为当前结果集的第一行，后续为上次获取数据结束位置的下一行）开始获取数据
     // getRows会自动移动结果集当前行到上次getRows获取结束位置的下一行，无需使用goToFirstRow、goToNextRow等接口移动
     while ((rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount)).length != 0) {
+      console.info(JSON.stringify(rows[0]));
+    }
+  }
+
+  // 示例2：指定maxCount和起始的position
+  if (resultSet != undefined) {
+    let rows: Array<relationalStore.ValuesBucket>;
+    let maxCount: number = 50;
+    let position: number = 50;
+    while ((rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount, position)).length != 0) {
+      console.info(JSON.stringify(rows[0]));
+      position += rows.length;
+    }
+  }
+}
+```
+
+## getCurrentRowData<sup>23+</sup>
+
+getCurrentRowData(): RowData
+
+按查询结果顺序获取当前行所有数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**返回值：**
+
+| 类型              | 说明                           |
+| ---------------- | ---------------------------- |
+| [RowData](arkts-apis-data-relationalStore-t.md#RowData) | 返回指定行的值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800011  | Failed to open the database because it is corrupted. |
+| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800019  | The SQL must be a query statement. |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800026  | SQLite: The database is out of memory. |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. |
+| 14800030  | SQLite: Unable to open the database file. |
+
+**示例：**
+
+```ts
+if (resultSet != undefined) {
+  const row = (resultSet as relationalStore.ResultSet).getCurrentRowData();
+}
+```
+
+## getRowsData<sup>23+</sup>
+
+getRowsData(maxCount: number, position?: number): Promise<RowsData>
+
+从结果集中获取指定数量的数据，使用Promise异步回调。禁止与[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)的其他接口并发调用，否则获取的数据可能非预期。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名      | 类型   | 必填 | 说明                    |
+| ----------- | ------ | ---- | ----------------------- |
+| maxCount | number | 是   | 正整数，指定要从结果集中获取数据的条数。不为正整数则参数非法，抛出错误码401。 |
+| position | number | 否   | 非负整数，指定从结果集中获取数据的起始位置，不填则从结果集的当前行（默认首次获取数据时为当前结果集的第一行）开始获取数据。不为非负整数则参数非法，抛出错误码14800001。 |
+
+
+**返回值：**
+
+| 类型              | 说明                           |
+| ---------------- | ---------------------------- |
+| Promise<[RowsData](arkts-apis-data-relationalStore-t.md#RowsData)> | 返回maxCount条数据，剩余数据不足maxCount条则返回剩余数据，返回空数组时代表已经遍历到结果集的末尾。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800011  | Failed to open the database because it is corrupted. |
+| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800019  | The SQL must be a query statement. |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800026  | SQLite: The database is out of memory. |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. |
+| 14800030  | SQLite: Unable to open the database file. |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
+
+**示例：**
+
+```ts
+// 以查到100条数据为例
+async function proccessRows(resultSet: relationalStore.ResultSet) {
+  // 示例1：仅指定maxCount
+  if (resultSet != undefined) {
+    let rows: RowsData;
+    let maxCount: number = 50;
+    // 从结果集的当前行（默认首次获取数据时为当前结果集的第一行，后续为上次获取数据结束位置的下一行）开始获取数据
+    // getRows会自动移动结果集当前行到上次getRows获取结束位置的下一行，无需使用goToFirstRow、goToNextRow等接口移动
+    while ((rows = await (resultSet as relationalStore.ResultSet).getRowsData(maxCount)).length != 0) {
       console.info(JSON.stringify(rows[0]));
     }
   }
