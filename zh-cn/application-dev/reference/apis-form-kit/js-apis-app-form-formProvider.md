@@ -460,6 +460,66 @@ struct Page {
 }
 ```
 
+## formProvider.closeFormEditAbility<sup>23+</sup>
+
+closeFormEditAbility(isMainPage?: boolean): void
+
+打开卡片编辑页。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                 |
+| ------ | ------ |----|----------------------------------------------------|
+| isMainPage | boolean | 否  | 是否为主编辑页，true表示是主编辑页，false表示不是主编辑页。<br/>默认值：true。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID    | 错误信息 |
+|----------| -------- |
+| 801      | Capability not supported.function closeFormEditAbility can not work correctly due to limited device capabilities. |
+| 16500050 | IPC connection error. |
+
+**示例：**
+
+```ts
+import { router } from '@kit.ArkUI';
+
+const TAG: string = 'FormEditDemo-Page] -->';
+
+@Entry
+@Component
+struct Page {
+  @State message: string = 'Hello World';
+
+  aboutToAppear(): void {
+    console.log(`${TAG} aboutToAppear.....`);
+  }
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('PageHelloWorld')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Top },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          console.log(`${TAG} onClick.....`);
+          formProvider.closeFormEditAbility();
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## formProvider.openFormManager<sup>18+</sup>
 
 openFormManager(want: Want): void
