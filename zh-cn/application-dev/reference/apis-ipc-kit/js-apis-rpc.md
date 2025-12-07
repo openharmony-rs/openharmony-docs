@@ -7022,6 +7022,21 @@ onRemoteDied(): void
   | data    | [MessageParcel](#messageparceldeprecated) | 是   | 否   | 发送给对端进程的MessageParcel对象。 |
   | reply   | [MessageParcel](#messageparceldeprecated) | 是   | 否   | 对端进程返回的MessageParcel对象。   |
 
+## CallingInfo<sup>23+</sup>
+
+IPC上下文信息，包括PID和UID、本端和对端设备ID、检查接口调用是否在同一设备上。
+
+**系统能力**：以下各项对应的系统能力均为SystemCapability.Communication.IPC.Core。
+
+| 名称    | 类型            | 只读 | 可选 | 说明                                  |
+| ------- | --------------- | ---- | ---- |-------------------------------------- |
+| callerPid | int          | 是   | 否   | 调用者的PID。                              |
+| callerUid    | int          | 是   | 否   | 调用者的UID。                            |
+| callerTokenId | long | 是   | 否   | 调用者的TokenId。 |
+| remoteDeviceId   | string | 是   | 否   | 对端设备的设备ID，仅RPC场景有效。   |
+| localDeviceId   | string | 是   | 否   | 本端设备的设备ID，仅RPC场景有效。   |
+| isLocalCalling   | boolean | 是   | 否   | 当前通信对端是否为本设备进程。   |
+
 ## IRemoteObject
 
 该接口可用于查询或获取接口描述符、添加或删除死亡通知、转储对象状态到特定文件、发送消息。
@@ -9508,6 +9523,97 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 | reply         | [MessageParcel](#messageparceldeprecated)                    | 是   | 接收应答数据的MessageParcel对象。                            |
 | options       | [MessageOption](#messageoption)                              | 是   | 本次请求的同异步模式，默认同步调用。                         |
 | callback      | AsyncCallback&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | 是   | 接收发送结果的回调。                                         |
+
+### onRemoteMessageRequest<sup>23+</sup>
+
+ArkTS-Dyn: onRemoteMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption, callingInfo?: CallingInfo): boolean | Promise\<boolean>
+
+ArkTS-Sta: onRemoteMessageRequest(code: int, data: MessageSequence, reply: MessageSequence, options: MessageOption, callingInfo: CallingInfo): boolean
+
+sendMessageRequest请求的响应处理函数，服务端在该函数里同步或异步地处理请求，回复结果，该接口可从入参callingInfo中获取IPC上下文信息。
+
+> **说明：**
+>
+> 开发者应优先选择重载带有CallingInfo参数的onRemoteMessageRequest方法，其中可以自由实现同步和异步的消息处理。
+> 开发者同时重载带有和不带CallingInfo参数的onRemoteMessageRequest方法时，仅前者生效。
+
+**系统能力**：SystemCapability.Communication.IPC.Core
+
+**参数：**
+
+  | 参数名 | 类型                                 | 必填 | 说明                                      |
+  | ------ | ------------------------------------ | ---- | ----------------------------------------- |
+  | code   | int                               | 是   | 对端发送的服务请求码。                    |
+  | data   | [MessageSequence](#messagesequence9) | 是   | 携带客户端调用参数的MessageSequence对象。 |
+  | reply  | [MessageSequence](#messagesequence9) | 是   | 写入结果的MessageSequence对象。           |
+  | options | [MessageOption](#messageoption)      | 是   | 指示操作是同步还是异步。                  |
+  | callingInfo | [CallingInfo](#callinginfo23)      | 是   | 获取调用方PID、UID等IPC上下文信息。                  |
+
+**返回值：**
+
+  | 类型              | 说明                                                                                            |
+  | ----------------- | ----------------------------------------------------------------------------------------------- |
+  | boolean \| Promise\<boolean>  | - 若在onRemoteMessageRequest中同步处理请求，则返回一个布尔值。返回true表示操作成功，返回false表示操作失败。</br>- 若在onRemoteMessageRequest中异步处理请求，则返回一个Promise对象。返回true表示操作成功，返回false表示操作失败。|
+
+**重载onRemoteMessageRequest方法同步处理请求示例：**
+
+```ts
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class TestRemoteObject extends rpc.RemoteObject {
+  constructor(descriptor: string) {
+    super(descriptor);
+  }
+
+  onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption, callingInfo: CallingInfo): boolean {
+    if (code === 1) {
+      hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
+      let pid = callingInfo.callerPid;
+      return true;
+    } else {
+      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
+      return false;
+    }
+  }
+}
+```
+
+**同时重载带有CallingInfo和不带CallingInfo的onRemoteMessageRequest方法同步处理请求示例：**
+
+```ts
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class TestRemoteObject extends rpc.RemoteObject {
+  constructor(descriptor: string) {
+    super(descriptor);
+  }
+
+  onRemoteMessageRequest(code: int, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
+     if (code === 1) {
+        hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
+        return true;
+     } else {
+        hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
+        return false;
+     }
+  }
+    // 同时调用仅会执行该onRemoteMessageRequest
+  onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption, callingInfo: CallingInfo): boolean {
+    if (code === 1) {
+      hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
+      let pid = callingInfo.callerPid;
+    } else {
+      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
+      return false;
+    }
+    return true;
+  }
+}
+```
 
 ### onRemoteMessageRequest<sup>9+</sup>
 
