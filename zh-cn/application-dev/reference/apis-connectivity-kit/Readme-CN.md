@@ -31,6 +31,7 @@
   - [@ohos.bluetooth.a2dp(蓝牙a2dp模块)(推荐)(系统接口)](js-apis-bluetooth-a2dp-sys.md)
   - [@ohos.bluetooth.access(蓝牙access模块)(推荐)(系统接口)](js-apis-bluetooth-access-sys.md)
   - [@ohos.bluetooth.baseProfile(蓝牙baseProfile模块)(推荐)(系统接口)](js-apis-bluetooth-baseProfile-sys.md)
+  - [@ohos.bluetooth.ble(蓝牙ble模块)(推荐)(系统接口)](js-apis-bluetooth-ble-sys.md)
   - [@ohos.bluetooth.connection(蓝牙connection模块)(推荐)(系统接口)](js-apis-bluetooth-connection-sys.md)
   - [@ohos.bluetooth.constant(蓝牙constant模块)(推荐)(系统接口)](js-apis-bluetooth-constant-sys.md)
   - [@ohos.bluetooth.hfp(蓝牙hfp模块)(推荐)(系统接口)](js-apis-bluetooth-hfp-sys.md)

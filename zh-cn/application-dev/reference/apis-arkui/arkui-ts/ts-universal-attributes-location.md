@@ -341,7 +341,7 @@ chainWeight(chainWeight: ChainWeightOptions): T
 
 > **说明：**
 >
-> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> 从API version 23开始，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -375,7 +375,7 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
 **返回值：**
 
-| 类型                      | 说明                     	                                  |
+| 类型                                            | 说明                                     |
 | ------------------------- | ----------------------------------------------------------- |
 | Promise\<number>          | 以Promise形式返回防火墙规则ID，防火墙规则ID由系统自动生成。 |
 

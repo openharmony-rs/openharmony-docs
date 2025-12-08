@@ -230,6 +230,8 @@ focusScopePriority(scopeId: string, priority?: FocusPriority): T
 
 ### FocusPriority<sup>12+</sup>
 
+设置组件焦点的优先级。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

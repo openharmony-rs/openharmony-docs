@@ -49,7 +49,7 @@
 
 ### OH_AVMuxer_Create()
 
-```
+```c
 OH_AVMuxer *OH_AVMuxer_Create(int32_t fd, OH_AVOutputFormat format)
 ```
 
@@ -77,7 +77,7 @@ OH_AVMuxer *OH_AVMuxer_Create(int32_t fd, OH_AVOutputFormat format)
 
 ### OH_AVMuxer_SetRotation()
 
-```
+```c
 OH_AVErrCode OH_AVMuxer_SetRotation(OH_AVMuxer *muxer, int32_t rotation)
 ```
 
@@ -105,7 +105,7 @@ OH_AVErrCode OH_AVMuxer_SetRotation(OH_AVMuxer *muxer, int32_t rotation)
 
 ### OH_AVMuxer_SetFormat()
 
-```
+```c
 OH_AVErrCode OH_AVMuxer_SetFormat(OH_AVMuxer *muxer, OH_AVFormat *format)
 ```
 
@@ -135,7 +135,7 @@ OH_AVErrCode OH_AVMuxer_SetFormat(OH_AVMuxer *muxer, OH_AVFormat *format)
 
 ### OH_AVMuxer_AddTrack()
 
-```
+```c
 OH_AVErrCode OH_AVMuxer_AddTrack(OH_AVMuxer *muxer, int32_t *trackIndex, OH_AVFormat *trackFormat)
 ```
 
@@ -164,7 +164,7 @@ OH_AVErrCode OH_AVMuxer_AddTrack(OH_AVMuxer *muxer, int32_t *trackIndex, OH_AVFo
 
 ### OH_AVMuxer_Start()
 
-```
+```c
 OH_AVErrCode OH_AVMuxer_Start(OH_AVMuxer *muxer)
 ```
 
@@ -191,7 +191,7 @@ OH_AVErrCode OH_AVMuxer_Start(OH_AVMuxer *muxer)
 
 ### OH_AVMuxer_WriteSample()
 
-```
+```c
 OH_AVErrCode OH_AVMuxer_WriteSample(OH_AVMuxer *muxer, uint32_t trackIndex, OH_AVMemory *sample, OH_AVCodecBufferAttr info)
 ```
 
@@ -225,7 +225,7 @@ OH_AVErrCode OH_AVMuxer_WriteSample(OH_AVMuxer *muxer, uint32_t trackIndex, OH_A
 
 ### OH_AVMuxer_WriteSampleBuffer()
 
-```
+```c
 OH_AVErrCode OH_AVMuxer_WriteSampleBuffer(OH_AVMuxer *muxer, uint32_t trackIndex, const OH_AVBuffer *sample)
 ```
 
@@ -254,7 +254,7 @@ OH_AVErrCode OH_AVMuxer_WriteSampleBuffer(OH_AVMuxer *muxer, uint32_t trackIndex
 
 ### OH_AVMuxer_Stop()
 
-```
+```c
 OH_AVErrCode OH_AVMuxer_Stop(OH_AVMuxer *muxer)
 ```
 
@@ -281,7 +281,7 @@ OH_AVErrCode OH_AVMuxer_Stop(OH_AVMuxer *muxer)
 
 ### OH_AVMuxer_Destroy()
 
-```
+```c
 OH_AVErrCode OH_AVMuxer_Destroy(OH_AVMuxer *muxer)
 ```
 

@@ -394,7 +394,7 @@ int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 | 参数项 | 描述 |
 | -- | -- |
-| 指向自定义DNS解析器的指针。 |  |
+|[OH_NetConn_CustomDnsResolver](capi-net-connection-type-h.md#oh_netconn_customdnsresolver) resolver   | 指向自定义DNS解析器的指针。  |
 
 **返回：**
 
