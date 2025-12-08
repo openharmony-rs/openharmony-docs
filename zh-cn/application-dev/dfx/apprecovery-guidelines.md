@@ -146,7 +146,7 @@ import { window } from '@kit.ArkUI';
 let registerId = -1;
 let callback: errorManager.ErrorObserver = {
     onUnhandledException(errMsg) {
-    console.log(errMsg);
+    console.error(errMsg);
     appRecovery.saveAppState();
     appRecovery.restartApp();
     }
@@ -155,7 +155,7 @@ let callback: errorManager.ErrorObserver = {
 export default class EntryAbility extends UIAbility {
     onWindowStageCreate(windowStage: window.WindowStage) {
     // 为已创建的主窗口设置主页面
-    console.log("[Demo] EntryAbility onWindowStageCreate");
+    console.info("[Demo] EntryAbility onWindowStageCreate");
     registerId = errorManager.on('error', callback);
 
     windowStage.loadContent("pages/index", (err, data) => {
@@ -179,7 +179,7 @@ import { AbilityConstant, UIAbility } from '@kit.AbilityKit';
 export default class EntryAbility extends UIAbility {
     onSaveState(state:AbilityConstant.StateType, wantParams: Record<string, Object>) {
         // UIAbility已调用以保存应用程序数据
-        console.log("[Demo] EntryAbility onSaveState");
+        console.info("[Demo] EntryAbility onSaveState");
         wantParams["myData"] = "my1234567";
         return AbilityConstant.OnSaveResult.ALL_AGREE;
     }
@@ -199,7 +199,7 @@ export default class EntryAbility extends UIAbility {
     storage: LocalStorage | undefined = undefined;
 
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        console.log("[Demo] EntryAbility onCreate");
+        console.info("[Demo] EntryAbility onCreate");
         abilityWant = want;
         if (launchParam.launchReason == AbilityConstant.LaunchReason.APP_RECOVERY) {
             this.storage = new LocalStorage();
@@ -223,7 +223,7 @@ let registerId = -1;
 export default class EntryAbility extends UIAbility {
     onWindowStageDestroy() {
         // 销毁主窗口，释放相关UI资源
-        console.log("[Demo] EntryAbility onWindowStageDestroy");
+        console.info("[Demo] EntryAbility onWindowStageDestroy");
 
         errorManager.off('error', registerId, (err) => {
             console.error("[Demo] err:", err);
@@ -244,7 +244,7 @@ let abilityWant: Want;
 export default class EntryAbility extends UIAbility {
     storage: LocalStorage | undefined = undefined
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.log("[Demo] EntryAbility onCreate");
+    console.info("[Demo] EntryAbility onCreate");
         abilityWant = want;
         if (launchParam.launchReason == AbilityConstant.LaunchReason.APP_RECOVERY) {
             this.storage = new LocalStorage();
@@ -258,7 +258,7 @@ export default class EntryAbility extends UIAbility {
 
     onSaveState(state:AbilityConstant.StateType, wantParams: Record<string, Object>) {
         // UIAbility已调用以保存应用程序数据
-        console.log("[Demo] EntryAbility onSaveState");
+        console.info("[Demo] EntryAbility onSaveState");
         wantParams["myData"] = "my1234567";
         return AbilityConstant.OnSaveResult.ALL_AGREE;
     }
@@ -279,7 +279,7 @@ export default class EntryAbility extends UIAbility {
         }
         if (want.parameters[wantConstant.Params.ABILITY_RECOVERY_RESTART] != undefined &&
             want.parameters[wantConstant.Params.ABILITY_RECOVERY_RESTART] == true) {
-            console.log("This ability need to recovery");
+            console.info("This ability need to recovery");
         }
     }
 }
