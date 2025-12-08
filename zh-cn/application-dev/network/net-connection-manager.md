@@ -236,22 +236,22 @@ function socketTest() {
 2. 示例代码
 
    <!-- @[get_all_registered_networks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/GetAllNets.ets) -->
-
-``` TypeScript
-// 从@kit.NetworkKit中导入connection命名空间。
-import { connection } from '@kit.NetworkKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-// ···
-    // 调用getAllNets,获取所有处于连接状态的网络列表(Array<NetHandle>)
-    connection.getAllNets().then((data: connection.NetHandle[]) => {
-      hilog.info(0x0000, 'testTag', 'getAllNets get data: ' + JSON.stringify(data));
-      if (data) {
-        // ···
-        GlobalContext.getContext().netList = data;
-        // ···
-      }
-    });
-```
+   
+   ``` TypeScript
+   // 从@kit.NetworkKit中导入connection命名空间。
+   import { connection } from '@kit.NetworkKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   // ...
+       // 调用getAllNets,获取所有处于连接状态的网络列表(Array<NetHandle>)
+       connection.getAllNets().then((data: connection.NetHandle[]) => {
+         hilog.info(0x0000, 'testTag', 'getAllNets get data: ' + JSON.stringify(data));
+         if (data) {
+           // ...
+           GlobalContext.getContext().netList = data;
+           // ...
+         }
+       });
+   ```
 ## 查询默认网络或者指定网络的连接信息
 
 1. 声明接口调用所需要的权限：ohos.permission.GET_NETWORK_INFO。
