@@ -6,6 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_VideoOutput Camera_VideoOutput
+```
+
+
 ## Overview
 
 The struct describes the video output object.

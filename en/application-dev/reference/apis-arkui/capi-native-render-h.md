@@ -20,6 +20,8 @@ Declares the APIs of **NativeRender**.
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
+**Sample**: <!--RP1-->[native_render_node_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample)<!--RP1End-->
+
 ## Summary
 
 ### Structs
@@ -1518,7 +1520,7 @@ Marks whether to prioritize drawing the node and its child nodes.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Target render node.|
-| bool markNodeGroup | Whether to prioritize drawing the node and its child nodes.|
+| bool markNodeGroup | Whether to prioritize drawing the node and its child nodes.<br>**true**: Enable drawing priority. **false**: Disable drawing priority.|
 
 **Return value**
 | Type| Description|
@@ -2294,7 +2296,7 @@ Sets the **onDraw** callback function for the content modifier.
 | -- | -- |
 | [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) modifier | Target content modifier.|
 | void* userData | Custom data to be passed to the callback.|
-| void (callback)(ArkUI_DrawContext context, void* userData) | Callback for receiving drawing events.|
+| void (callback)([ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md) context, void* userData) | Callback for receiving drawing events.|
 
 **Return value**
 | Type| Description|
@@ -2701,7 +2703,7 @@ Sets the coordinates for the target corner.
 | [ArkUI_RoundRectShapeOption](./capi-arkui-nativemodule-arkui-roundrectshapeoption.md)* option | Pointer to the rounded rectangle shape option.|
 | float x | X-coordinate of the target corner, in pixels.|
 | float y | Y-coordinate of the target corner, in pixels.|
-| ArkUI_CornerDirection direction | Direction of the target corner.|
+| [ArkUI_CornerDirection](capi-native-type-h.md#arkui_cornerdirection) direction | Direction of the target corner.|
 
 ### OH_ArkUI_RenderNodeUtils_CreateCommandPathOption()
 
@@ -2766,7 +2768,7 @@ Creates a mask from a rectangle shape.
 **Parameters**
 | Name| Description|
 | -- | -- |
-| [ArkUI_RectShapeOption](./capi-arkui-nativemodule-arkui-rectshapeoption.md) shape | Pointer to the rectangle shape option.|
+| [ArkUI_RectShapeOption*](./capi-arkui-nativemodule-arkui-rectshapeoption.md) shape | Pointer to the rectangle shape option.|
 
 **Return value**
 | Type| Description|
@@ -2787,7 +2789,7 @@ Creates a mask from a rounded rectangle shape.
 **Parameters**
 | Name| Description|
 | -- | -- |
-| [ArkUI_RoundRectShapeOption](./capi-arkui-nativemodule-arkui-roundrectshapeoption.md) shape | Pointer to the rounded rectangle shape option.|
+| [ArkUI_RoundRectShapeOption*](./capi-arkui-nativemodule-arkui-roundrectshapeoption.md) shape | Pointer to the rounded rectangle shape option.|
 
 **Return value**
 | Type| Description|
@@ -2808,7 +2810,7 @@ Creates a mask from a circle shape.
 **Parameters**
 | Name| Description|
 | -- | -- |
-| [ArkUI_CircleShapeOption](./capi-arkui-nativemodule-arkui-circleshapeoption.md) shape | Pointer to the circle shape option.|
+| [ArkUI_CircleShapeOption*](./capi-arkui-nativemodule-arkui-circleshapeoption.md) shape | Pointer to the circle shape option.|
 
 **Return value**
 | Type| Description|
@@ -2829,7 +2831,7 @@ Creates a mask from an oval shape.
 **Parameters**
 | Name| Description|
 | -- | -- |
-| [ArkUI_RectShapeOption](./capi-arkui-nativemodule-arkui-rectshapeoption.md) shape | Pointer to the oval shape option.|
+| [ArkUI_RectShapeOption*](./capi-arkui-nativemodule-arkui-rectshapeoption.md) shape | Pointer to the oval shape option.|
 
 **Return value**
 | Type| Description|
@@ -2850,7 +2852,7 @@ Creates a mask from a custom drawing path.
 **Parameters**
 | Name| Description|
 | -- | -- |
-| [ArkUI_CommandPathOption](./capi-arkui-nativemodule-arkui-commandpathoption.md) path | Pointer to the custom drawing path option.|
+| [ArkUI_CommandPathOption*](./capi-arkui-nativemodule-arkui-commandpathoption.md) path | Pointer to the custom drawing path option.|
 
 **Return value**
 | Type| Description|
@@ -2871,7 +2873,7 @@ Disposes the render node mask option.
 **Parameters**
 | Name| Description|
 | -- | -- |
-| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) option | Pointer to the render node mask.|
+| [ArkUI_RenderNodeMaskOption*](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) option | Pointer to the render node mask.|
 
 ### OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionFillColor()
 

@@ -77,7 +77,7 @@ addContact(context: Context, contact: Contact, callback: AsyncCallback&lt;number
   });
 ```
 
-## contact.addContact<sup>(deprecated)7+</sup>
+## contact.addContact<sup>(deprecated)</sup>
 
 addContact(contact: Contact, callback: AsyncCallback&lt;number&gt;): void
 
@@ -184,7 +184,7 @@ addContact(context: Context, contact: Contact): Promise<number&gt;
   });
 ```
 
-## contact.addContact<sup>(deprecated)7+</sup>
+## contact.addContact<sup>(deprecated)</sup>
 
 addContact(contact: Contact): Promise&lt;number&gt;
 
@@ -283,7 +283,7 @@ deleteContact(context: Context, key: string, callback: AsyncCallback&lt;void&gt;
   });
 ```
 
-## contact.deleteContact<sup>(deprecated)7+</sup>
+## contact.deleteContact<sup>(deprecated)</sup>
 
 deleteContact(key: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -383,7 +383,7 @@ deleteContact(context: Context,  key: string): Promise&lt;void&gt;
   });
   ```
 
-## contact.deleteContact<sup>(deprecated)7+</sup>
+## contact.deleteContact<sup>(deprecated)</sup>
 
 deleteContact(key: string): Promise&lt;void&gt;
 
@@ -488,7 +488,7 @@ updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;voi
   });
   ```
 
-## contact.updateContact<sup>(deprecated)7+</sup>
+## contact.updateContact<sup>(deprecated)</sup>
 
 updateContact(contact: Contact, callback: AsyncCallback&lt;void&gt;): void
 
@@ -601,7 +601,7 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
   });
   ```
 
-## contact.updateContact<sup>(deprecated)7+</sup>
+## contact.updateContact<sup>(deprecated)</sup>
 
 updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallback&lt;void&gt;): void
 
@@ -719,7 +719,7 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
   });
 ```
 
-## contact.updateContact<sup>(deprecated)7+</sup>
+## contact.updateContact<sup>(deprecated)</sup>
 
 updateContact(contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
 
@@ -823,7 +823,7 @@ isLocalContact(context: Context,  id: number, callback: AsyncCallback&lt;boolean
   });
   ```
 
-## contact.isLocalContact<sup>(deprecated)7+</sup>
+## contact.isLocalContact<sup>(deprecated)</sup>
 
 isLocalContact(id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
@@ -911,7 +911,7 @@ isLocalContact(context: Context,  id: number): Promise&lt;boolean&gt;
   });
 ```
 
-## contact.isLocalContact<sup>(deprecated)7+</sup>
+## contact.isLocalContact<sup>(deprecated)</sup>
 
 isLocalContact(id: number): Promise&lt;boolean&gt;
 
@@ -999,7 +999,7 @@ isMyCard(context: Context,  id: number, callback: AsyncCallback&lt;boolean&gt;):
   });
 ```
 
-## contact.isMyCard<sup>(deprecated)7+</sup>
+## contact.isMyCard<sup>(deprecated)</sup>
 
 isMyCard(id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
@@ -1087,7 +1087,7 @@ isMyCard(context: Context,  id: number): Promise&lt;boolean&gt;
   });
 ```
 
-## contact.isMyCard<sup>(deprecated)7+</sup>
+## contact.isMyCard<sup>(deprecated)</sup>
 
 isMyCard(id: number): Promise&lt;boolean&gt;
 
@@ -1174,7 +1174,7 @@ queryMyCard(context: Context,  callback: AsyncCallback&lt;Contact&gt;): void
   });
 ```
 
-## contact.queryMyCard<sup>(deprecated)7+</sup>
+## contact.queryMyCard<sup>(deprecated)</sup>
 
 queryMyCard(callback: AsyncCallback&lt;Contact&gt;): void
 
@@ -1259,7 +1259,7 @@ queryMyCard(context: Context,  attrs: ContactAttributes, callback: AsyncCallback
   });
 ```
 
-## contact.queryMyCard<sup>(deprecated)7+</sup>
+## contact.queryMyCard<sup>(deprecated)</sup>
 
 queryMyCard(attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
@@ -1351,7 +1351,7 @@ queryMyCard(context: Context,  attrs?: ContactAttributes): Promise&lt;Contact&gt
   });
 ```
 
-## contact.queryMyCard<sup>(deprecated)7+</sup>
+## contact.queryMyCard<sup>(deprecated)</sup>
 
 queryMyCard(attrs?: ContactAttributes): Promise&lt;Contact&gt;
 
@@ -1392,7 +1392,7 @@ queryMyCard(attrs?: ContactAttributes): Promise&lt;Contact&gt;
   });
   ```
 
-## contact.selectContact<sup>(deprecated)7+</sup>
+## contact.selectContact<sup>(deprecated)</sup>
 
 selectContact(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -1424,7 +1424,7 @@ selectContact(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
   });
   ```
 
-## contact.selectContact<sup>(deprecated)7+</sup>
+## contact.selectContact<sup>(deprecated)</sup>
 
 selectContact(): Promise&lt;Array&lt;Contact&gt;&gt;
 
@@ -1656,7 +1656,7 @@ queryContact(context: Context,  key: string,  callback: AsyncCallback&lt;Contact
   });
   ```
 
-## contact.queryContact<sup>(deprecated)7+</sup>
+## contact.queryContact<sup>(deprecated)</sup>
 
 queryContact(key: string,  callback: AsyncCallback&lt;Contact&gt;): void
 
@@ -1745,7 +1745,7 @@ queryContact(context: Context,  key: string, holder: Holder, callback: AsyncCall
   });
   ```
 
-## contact.queryContact<sup>(deprecated)7+</sup>
+## contact.queryContact<sup>(deprecated)</sup>
 
 queryContact(key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;): void
 
@@ -1837,7 +1837,7 @@ queryContact(context: Context,  key: string,  attrs: ContactAttributes, callback
   });
   ```
 
-## contact.queryContact<sup>(deprecated)7+</sup>
+## contact.queryContact<sup>(deprecated)</sup>
 
 queryContact(key: string,  attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
@@ -1932,7 +1932,7 @@ queryContact(context: Context,  key: string, holder: Holder, attrs: ContactAttri
   });
 ```
 
-## contact.queryContact<sup>(deprecated)7+</sup>
+## contact.queryContact<sup>(deprecated)</sup>
 
 queryContact(key: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
@@ -2036,7 +2036,7 @@ queryContact(context: Context,  key: string, holder?: Holder, attrs?: ContactAtt
   });
   ```
 
-## contact.queryContact<sup>(deprecated)7+</sup>
+## contact.queryContact<sup>(deprecated)</sup>
 
 queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Contact&gt;
 
@@ -2131,7 +2131,7 @@ queryContacts(context: Context,  callback: AsyncCallback&lt;Array&lt;Contact&gt;
   });
   ```
 
-## contact.queryContacts<sup>(deprecated)7+</sup>
+## contact.queryContacts<sup>(deprecated)</sup>
 
 queryContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -2218,7 +2218,7 @@ queryContacts(context: Context,  holder: Holder, callback: AsyncCallback&lt;Arra
   });
   ```
 
-## contact.queryContacts<sup>(deprecated)7+</sup>
+## contact.queryContacts<sup>(deprecated)</sup>
 
 queryContacts(holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -2308,7 +2308,7 @@ queryContacts(context: Context,  attrs: ContactAttributes, callback: AsyncCallba
   });
   ```
 
-## contact.queryContacts<sup>(deprecated)7+</sup>
+## contact.queryContacts<sup>(deprecated)</sup>
 
 queryContacts(attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -2401,7 +2401,7 @@ queryContacts(context: Context,  holder: Holder, attrs: ContactAttributes, callb
   });
   ```
 
-## contact.queryContacts<sup>(deprecated)7+</sup>
+## contact.queryContacts<sup>(deprecated)</sup>
 
 queryContacts(holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -2503,7 +2503,7 @@ queryContacts(context: Context,  holder?: Holder, attrs?: ContactAttributes): Pr
   });
   ```
 
-## contact.queryContacts<sup>(deprecated)7+</sup>
+## contact.queryContacts<sup>(deprecated)</sup>
 
 queryContacts(holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
@@ -2598,7 +2598,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, callback: Asy
   });
   ```
 
-## contact.queryContactsByPhoneNumber<sup>(deprecated)7+</sup>
+## contact.queryContactsByPhoneNumber<sup>(deprecated)</sup>
 
 queryContactsByPhoneNumber(phoneNumber: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -2687,7 +2687,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
   });
   ```
 
-## contact.queryContactsByPhoneNumber<sup>(deprecated)7+</sup>
+## contact.queryContactsByPhoneNumber<sup>(deprecated)</sup>
 
 queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -2779,7 +2779,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: Contac
   });
   ```
 
-## contact.queryContactsByPhoneNumber<sup>(deprecated)7+</sup>
+## contact.queryContactsByPhoneNumber<sup>(deprecated)</sup>
 
 queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -2874,7 +2874,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
   });
   ```
 
-## contact.queryContactsByPhoneNumber<sup>(deprecated)7+</sup>
+## contact.queryContactsByPhoneNumber<sup>(deprecated)</sup>
 
 queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -2978,7 +2978,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Hold
   });
   ```
 
-## contact.queryContactsByPhoneNumber<sup>(deprecated)7+</sup>
+## contact.queryContactsByPhoneNumber<sup>(deprecated)</sup>
 
 queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
@@ -3074,7 +3074,7 @@ queryContactsByEmail(context: Context,  email: string, callback: AsyncCallback&l
   });
   ```
 
-## contact.queryContactsByEmail<sup>(deprecated)7+</sup>
+## contact.queryContactsByEmail<sup>(deprecated)</sup>
 
 queryContactsByEmail(email: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -3163,7 +3163,7 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, callback:
   });
   ```
 
-## contact.queryContactsByEmail<sup>(deprecated)7+</sup>
+## contact.queryContactsByEmail<sup>(deprecated)</sup>
 
 queryContactsByEmail(email: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -3255,7 +3255,7 @@ queryContactsByEmail(context: Context,  email: string, attrs: ContactAttributes,
   });
   ```
 
-## contact.queryContactsByEmail<sup>(deprecated)7+</sup>
+## contact.queryContactsByEmail<sup>(deprecated)</sup>
 
 queryContactsByEmail(email: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -3350,7 +3350,7 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, attrs: Co
   });
   ```
 
-## contact.queryContactsByEmail<sup>(deprecated)7+</sup>
+## contact.queryContactsByEmail<sup>(deprecated)</sup>
 
 queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -3454,7 +3454,7 @@ queryContactsByEmail(context: Context,  email: string, holder?: Holder, attrs?: 
   });
   ```
 
-## contact.queryContactsByEmail<sup>(deprecated)7+</sup>
+## contact.queryContactsByEmail<sup>(deprecated)</sup>
 
 queryContactsByEmail(email: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
@@ -3547,7 +3547,7 @@ queryGroups(context: Context,  callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;
   });
   ```
 
-## contact.queryGroups<sup>(deprecated)7+</sup>
+## contact.queryGroups<sup>(deprecated)</sup>
 
 queryGroups(callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
 
@@ -3634,7 +3634,7 @@ queryGroups(context: Context,  holder: Holder, callback: AsyncCallback&lt;Array&
   });
   ```
 
-## contact.queryGroups<sup>(deprecated)7+</sup>
+## contact.queryGroups<sup>(deprecated)</sup>
 
 queryGroups(holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
 
@@ -3730,7 +3730,7 @@ queryGroups(context: Context,  holder?: Holder): Promise&lt;Array&lt;Group&gt;&g
   });
   ```
 
-## contact.queryGroups<sup>(deprecated)7+</sup>
+## contact.queryGroups<sup>(deprecated)</sup>
 
 queryGroups(holder?: Holder): Promise&lt;Array&lt;Group&gt;&gt;
 
@@ -3821,7 +3821,7 @@ queryHolders(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt
   });
   ```
 
-## contact.queryHolders<sup>(deprecated)7+</sup>
+## contact.queryHolders<sup>(deprecated)</sup>
 
 queryHolders(callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;): void
 
@@ -3907,7 +3907,7 @@ queryHolders(context: Context): Promise&lt;Array&lt;Holder&gt;&gt;
   });
   ```
 
-## contact.queryHolders<sup>(deprecated)7+</sup>
+## contact.queryHolders<sup>(deprecated)</sup>
 
 queryHolders(): Promise&lt;Array&lt;Holder&gt;&gt;
 
@@ -3989,7 +3989,7 @@ queryKey(context: Context,  id: number, callback: AsyncCallback&lt;string&gt;): 
   });
   ```
 
-## contact.queryKey<sup>(deprecated)7+</sup>
+## contact.queryKey<sup>(deprecated)</sup>
 
 queryKey(id: number, callback: AsyncCallback&lt;string&gt;): void
 
@@ -4078,7 +4078,7 @@ queryKey(context: Context,  id: number, holder: Holder, callback: AsyncCallback&
   });
   ```
 
-## contact.queryKey<sup>(deprecated)7+</sup>
+## contact.queryKey<sup>(deprecated)</sup>
 
 queryKey(id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;): void
 
@@ -4176,7 +4176,7 @@ queryKey(context: Context,  id: number, holder?: Holder): Promise&lt;string&gt;
   });
   ```
 
-## contact.queryKey<sup>(deprecated)7+</sup>
+## contact.queryKey<sup>(deprecated)</sup>
 
 queryKey(id: number, holder?: Holder): Promise&lt;string&gt;
 
@@ -4391,8 +4391,6 @@ promise.then((data) => {
 ## ContactSelectionOptions<sup>10+</sup>
 
 选择联系人条件。
-
-**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Applications.Contacts
 
@@ -5008,26 +5006,42 @@ phoneNumber.phoneNumber = "138xxxxxxxx";
 
 联系人的头像类。
 
+> **说明：**
+>
+>  从API version 22开始，支持通过uri和[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)格式设置联系人头像资源(暂不支持通过[addContactViaUI](#contactaddcontactviaui15)、[saveToExistingContactViaUI](#contactsavetoexistingcontactviaui15)接口设置)。<br/>
+uri为可访问的联系人头像文件地址，[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)为通过联系人头像资源生成的[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)对象。<br/>
+>  读取联系人头像资源仅支持uri格式，该格式仅支持以[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)方式打开，无法直接在Image组件内显示，需读取后转换为[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)格式显示。
+
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Applications.ContactsData
 
 | 名称 |   类型   | 只读 | 可选 | 说明           |
 | ---- | -------- | ---- | ---- | -------------- |
-| uri  | string   | 否   | 否   | 联系人的头像。 |
+| uri  | string   | 否   | 否   | uri格式联系人头像。 |
+| photo<sup>22+</sup>  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)   | 否   | 是   | pixelMap格式的联系人头像。 |
 
 **对象创建示例：**
 
   使用JSON格式创建数据。
 
 ```js
-let portrait: contact.Portrait = {
-    uri: "uri"
-};
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+async function SetPortraitUri(uri: string) {
+  let portrait: contact.Portrait = {
+    uri: uri
+  };
+}
+
+async function SetPortraitPixelMap(photo: image.PixelMap) {
+  let portrait: contact.Portrait = {
+    uri: "",
+    photo: photo
+  };
+}
 ```
-> **说明：**
->
->  从API version 22开始，支持通过uri读取联系人头像资源，仅支持以[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)方式打开，且无法直接通过uri在Image组件内显示，需读取资源后按照[PixelMap格式](../../ui/arkts-graphics-display.md#多媒体像素图)显示。
 
 ## PostalAddress
 

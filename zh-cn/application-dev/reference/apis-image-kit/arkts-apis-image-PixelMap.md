@@ -31,8 +31,8 @@ import { image } from '@kit.ImageKit';
 
 | 名称              | 类型    | 只读 | 可选 | 说明                       |
 | -----------------| ------- | ---- | ---- | -------------------------- |
-| isEditable<sup>7+</sup>        | boolean | 是   | 否   | true表示图像像素可被编辑，false表示不可被编辑。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
-| isStrideAlignment<sup>11+</sup> | boolean | 是   | 否   | true表示图像内存为DMA内存，false表示非DMA内存。 |
+| isEditable<sup>7+</sup>        | boolean | 是   | 否   | 图像像素是否可被编辑。true表示可被编辑，false表示不可被编辑。为false时，图像的渲染和传输性能更好。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
+| isStrideAlignment<sup>11+</sup> | boolean | 是   | 否   | 图像的行数据是否已进行内存对齐。true表示已进行内存对齐，每行数据的末尾可能有空白字节填充以满足对齐要求；false表示未进行内存对齐，每行数据紧密排列，末尾无空白字节填充。 |
 
 ## readPixelsToBuffer<sup>7+</sup>
 

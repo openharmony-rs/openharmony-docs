@@ -19,10 +19,6 @@ The **Emitter** module provides the capabilities of sending and processing inter
 import { emitter } from '@kit.BasicServicesKit';
 ```
 
-## Required Permissions
-
-None.
-
 ## emitter.on
 
 on(event: InnerEvent, callback: Callback\<EventData\>): void
@@ -964,7 +960,7 @@ emitter1.off("eventId", callback);
 
 emit(eventId: string, data?: EventData): void
 
-Emits a specified event to the Emitter instance.
+Emits a specified event to the Emitter class instance.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
 
@@ -997,7 +993,7 @@ emitter1.emit("eventId", eventData);
 
 emit<T\>(eventId: string, data?: GenericEventData<T\>): void
 
-Emits a specified event to the current Emitter class instance.
+Emits a specified event to the Emitter class instance.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
 

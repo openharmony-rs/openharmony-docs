@@ -22,10 +22,6 @@
 1. 选择语音识别模型。
 2. 在端侧使用MindSpore Lite推理模型，实现对语音文件的语音识别。
 
-## 环境准备
-
-安装DevEco Studio，要求版本 >= 5.0.2，并更新SDK到API 14或以上。
-
 ## 开发步骤
 
 本文以对语音识别模型进行推理为例，提供使用MindSpore Lite实现语音识别应用的开发指导。
@@ -690,7 +686,7 @@ export default class AVPlayerDemo {
 
 1. 在 entry/src/main/cpp/types/libentry/Index.d.ts，定义ArkTS接口`runDemo()` 。内容如下：
 
-   <!-- @[index_asr_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/types/libentry/index.d.ts) -->
+   <!-- @[index_asr_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
    ```ts
    export const runDemo: (a: Object) => string;
@@ -844,8 +840,6 @@ struct Index {
    ......
    05-16 14:53:55.272   1679-1679     A00000/[MSLiteNapi]             com.sampl...cdemoasr  I     MS_LITE_LOG: run decoder loop 16 ok!
                                                                                                    token = 50257
-   05-16 14:53:55.307   1679-1679     A00000/[MSLiteNapi]             com.sampl...cdemoasr  I     MS_LITE_LOG: result is -> 我認為跑步最重要的就是給我帶來了身體健康
-   05-16 14:53:55.334   1679-1679     A03d00/JSAPP                    com.sampl...cdemoasr  I     MS_LITE_LOG: output length =  20 ;value =  我認為跑步最重要的就是給我帶來了身體健康
    05-16 14:53:55.334   1679-1679     A03d00/JSAPP                    com.sampl...cdemoasr  I     MS_LITE_LOG: *** Finished MSLite Demo ***
    ```
 

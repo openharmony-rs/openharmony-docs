@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+struct OhosImageComponent {...}
+```
+
 ## Overview
 
 The struct describes the information about an image component.

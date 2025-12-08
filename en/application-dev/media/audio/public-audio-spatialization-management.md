@@ -1,4 +1,4 @@
-# Spatial Audio Management
+# Spatial Audio Capability Query and Status Subscription
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-Spatial audio management is supported since API version 18.
+Starting from API version 18, you can query the spatial audio capabilities and  subscribe to their status changes.
 
 Spatial audio is an advanced audio technology that transforms traditional stereo sound into a three-dimensional experience. It enhances monaural, stereo, and surround sound by adding a sense of height, delivering an all-encompassing audio experience. Spatial audio immerses users in an interactive, spatially aware soundscape, making them feel as though they are truly present in the audio environment.
 

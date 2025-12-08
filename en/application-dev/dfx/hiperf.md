@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @leiguangyu-->
-<!--Designer: @Maplestroy-->
+<!--Designer: @Maplestroy91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
@@ -264,7 +264,7 @@ Supported events for hardware:
 
 ## record
 
-Collects the performance data of a specified process or application, including the CPU cycle, number of instructions, and function calls, and saves the sampling data to a specified file.
+Collects the performance data of a specified process or application, including the CPU cycle, number of instructions, and function calls, and saves the sampling data to a specified file. (For the default path, run the **hiperf record -h/--help** command to view the description of the **-o** parameter.)
 
 **Parameters of the record command**
 
@@ -299,7 +299,7 @@ Collects the performance data of a specified process or application, including t
 | --app | Sets the application names to collect. Use commas (,) to separate them. The application must already be running. If it has not started, the command waits up to 20s and then exits automatically. This parameter cannot be used together with **-a**.| 
 | --chkms | Sets the query interval, in milliseconds. The value ranges from 1 to 200. The default value is **10**.| 
 | --data-limit | Sets the limit of the output data size. When this limit is reached, the collection stops. By default, there is no limit.| 
-| -o | Sets the output file path. For the default path, run the **hiperf record -h/--help** command to view the description of the **-o** parameter. You can customize the file name.| 
+| -o | Sets the output file path. You can customize the file name.| 
 | -z | Outputs the data in a .gz file.| 
 | --restart | Collects performance metrics about application startup. If the process is not started within 30 seconds, the collection stops.| 
 | --verbose | Outputs a more detailed report.| 
@@ -313,6 +313,8 @@ Collects the performance data of a specified process or application, including t
 | -a | Collects the device performance data.| 
 | --exclude-hiperf | Excludes the performance data of the hiperf process. This parameter must be used together with **-a**.| 
 | --exclude-process | Specifies the process name not to collect. This parameter must be used together with **-a**.|
+| --pipe_input | Establishes a command input pipe when the client process calls hiperf. For details about how to use this capability, see [hiperf](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-toolchain-hiperf.md). This parameter serves no practical purpose in application development and can be safely ignored.|
+| --pipe_output | Establishes an output pipe when the client process calls hiperf. For details about how to use this capability, see [hiperf](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-toolchain-hiperf.md). This parameter serves no practical purpose in application development and can be safely ignored.|
 <!--RP1End-->
 
 **Example**
@@ -354,7 +356,7 @@ Monitors the specified application and periodically prints the values of perform
 | --verbose | Outputs detailed information.| 
 | --dumpoptions | Displays details about all options in the list.| 
 | --control [command] | Controls the collection operation. The commands include **prepare**, **start**, and **stop**. This parameter cannot be used together with **-d**.<br>**NOTE**: This parameter is supported since API version 20.| 
-| -o | Sets the output file path. For the default path, run the **hiperf stat -h/--help** command to view the description of the **-o** parameter. You can customize the file name. This parameter must be used with **--control prepare**, and cannot be used with **--control**.<br>**NOTE**: This parameter is supported since API version 20.| 
+| -o | Sets the output file path. You can customize the file name.<br>For the default path, run the **hiperf stat -h/--help** command to view the description of the **-o** parameter.<br>This parameter must be used with **--control prepare**, and cannot be used with **--control**.<br>**NOTE**: This parameter is supported since API version 20.| 
 | -a | Collects the device performance data.|
 
 **Example**

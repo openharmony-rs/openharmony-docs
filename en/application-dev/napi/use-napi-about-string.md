@@ -31,6 +31,8 @@ The following table lists the APIs provided by the Node-API module for creating 
 | napi_create_string_utf16 | Creates an ArkTS string from a UTF16-encoded C string.|
 | napi_get_value_string_latin1 | Obtains an ISO-8859-1-encoded string from an ArkTS value.|
 | napi_create_string_latin1 | Creates an ArkTS string from an ISO-8859-1-encoded string.|
+| napi_create_external_string_utf16 | Creates an ArkTS string from an external UTF-16 encoded string buffer, without performing memory copy operations.|
+| napi_create_external_string_ascii | Creates an ArkTS string from an external ASCII encoded string buffer, without performing memory copy operations.|
 
 ## Example
 
@@ -338,6 +340,130 @@ import testNapi from 'libentry.so';
 hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public}s', testNapi.createStringLatin1());
 ```
 <!-- @[ark_napi_create_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+
+### napi_create_external_string_utf16
+
+Use **napi_create_external_string_utf16** to create an ArkTS UTF-16 string that references external resources.
+
+CPP code:
+
+<!-- @[napi_create_external_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+// Define the destruction callback function of the string to release external resources.
+// The hint parameter can be used to pass some additional information, such as the reference count. You can also ignore this parameter and pass nullptr.
+static void StringFinalizerUTF16(void* data, void* hint)
+{
+    // Release external resources.
+    delete[] static_cast<char16_t*>(data);
+}
+
+static napi_value CreateExternalStringUtf16(napi_env env, napi_callback_info info)
+{
+    const char16_t source[] = u"Hello, World!, successes to create UTF-16 string! 111";
+    napi_value result = nullptr;
+    int char16tLength = sizeof(source) / sizeof(char16_t);
+    // Allocate memory dynamically on the heap and copy the string content.
+    char16_t* str = new char16_t[char16tLength];
+    std::copy(source, source + char16tLength, str);
+    // When the created string is reclaimed by GC at the end of its lifecycle in ArkTS, the StringFinalizerUTF16(str, finalize_hint) function is called.
+    // If finalize_callback is set to nullptr, no callback function is called. You need to manage the lifecycle of the external resource str.
+    napi_status status = napi_create_external_string_utf16(
+        env,
+        str,                    // External string buffer.
+        NAPI_AUTO_LENGTH,       // String length. If NAPI_AUTO_LENGTH is passed in, the string ends with '\0'.
+        StringFinalizerUTF16,   // Destruction callback function of the string.
+        nullptr,                // The hint parameter passed to the destruction callback function. This parameter is not required in this example.
+        &result                 // Accept the created ArkTS string value.
+    );
+    if (status != napi_ok) {
+        // Error handling.
+        napi_throw_error(env, nullptr, "Failed to create utf16 string");
+        return nullptr;
+    }
+    return result;
+}
+```
+
+API declaration:
+
+<!-- @[napi_create_external_string_utf16_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const CreateExternalStringUtf16: () => string | void;
+```
+
+ArkTS code:
+
+<!-- @[ark_napi_create_external_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public}s',
+  testNapi.CreateExternalStringUtf16());
+```
+The ArkTS string object created by **napi_create_external_string_utf16** is managed by GC. When the lifecycle of the ArkTS string object ends, GC reclaims the object and triggers the **StringFinalizerUTF16** function to reclaim the native resources referenced by it.
+
+### napi_create_external_string_ascii
+
+Use **napi_create_external_string_ascii** to create an ASCII-encoded ArkTS string that references an external resource.
+
+CPP code:
+
+<!-- @[napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+// Define the destruction callback function of the string to release external resources.
+// The hint parameter can be used to pass some additional information, such as the reference count. You can also ignore this parameter and pass nullptr.
+static void StringFinalizerASCII(void* data, void* hint)
+{
+    // Release external resources.
+    delete[] static_cast<char*>(data);
+}
+
+static napi_value CreateExternalStringAscii(napi_env env, napi_callback_info info)
+{
+    const char source[] = "hello, World!, successes to create ASCII string! 111";
+    napi_value result = nullptr;
+    int charLength = sizeof(source) / sizeof(char);
+    // Allocate memory dynamically on the heap and copy the string content.
+    char* str = new char[charLength];
+    std::copy(source, source + charLength, str);
+    // When the created string is reclaimed by GC at the end of its lifecycle in ArkTS, the StringFinalizerASCII(str, finalize_hint) function is called.
+    // If finalize_callback is set to nullptr, no callback function is called. You need to manage the lifecycle of the external resource str.
+    napi_status status = napi_create_external_string_ascii(
+        env,
+        str,                    // External string buffer.
+        NAPI_AUTO_LENGTH,       // String length. If NAPI_AUTO_LENGTH is passed in, the string ends with '\0'.
+        StringFinalizerASCII,   // Destruction callback function of the string.
+        nullptr,                // The hint parameter passed to the destruction callback function. This parameter is not required in this example.
+        &result                 // Accept the created ArkTS string value.
+    );
+    if (status != napi_ok) {
+        // Error handling.
+        napi_throw_error(env, nullptr, "Failed to create ascii string");
+        return nullptr;
+    }
+    return result;
+}
+```
+
+API declaration:
+
+<!-- @[napi_create_external_string_ascii_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const CreateExternalStringAscii: () => string | void;
+```
+
+ArkTS code:
+
+<!-- @[ark_napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public}s',
+  testNapi.CreateExternalStringAscii());
+```
+The ArkTS string object created by **napi_create_external_string_ascii** is managed by GC. When the lifecycle of the ArkTS string object ends, GC reclaims the object and triggers the **StringFinalizerASCII** function to reclaim the native resources referenced by it.
 
 To print logs in the native CPP, add the following information to the **CMakeLists.txt** file and add the header file by using **#include "hilog/log.h"**.
 

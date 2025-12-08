@@ -224,7 +224,7 @@ Checks the persistent permissions on files or directories.
 | -- | -- |
 | [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | Pointer to a **FileShare_PolicyInfo** instance.|
 | unsigned int policyNum | Number of policies in the **FileShare_PolicyInfo** array.|
-| bool **result | Double pointer to the check result obtained. You also need to include **malloc.h** and use **free()** to release the memory allocated.|
+| bool **result | Double pointer to the check result obtained. The value **true** means the permission is persistent; the value **false** means the opposite. You also need to include **malloc.h** and use **free()** to release the memory allocated.|
 | unsigned int *resultNum | Pointer to the size of the check result array.|
 
 **Returns**

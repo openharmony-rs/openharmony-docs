@@ -7,6 +7,10 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
+```
+typedef struct AbilityBase_Want AbilityBase_Want
+```
+
 ## Overview
 
 The struct describes the Want.
@@ -15,4 +19,4 @@ The struct describes the Want.
 
 **Related module**: [AbilityBase](capi-abilitybase.md)
 
-**Header File**: [want.h](capi-want-h.md)
+**Header file**: [want.h](capi-want-h.md)

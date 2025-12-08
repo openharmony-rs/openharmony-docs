@@ -19,6 +19,8 @@
 
 本章节提供了以上常用密钥操作的示例，这部分示例均没有设置二次身份访问控制，如设置了密钥访问控制请参考[密钥访问控制](huks-identity-authentication-overview.md)用法。
 
+从API 23开始支持[群组密钥](huks-group-key-overview.md)特性。
+
 ## 通用开发流程
 
 HUKS基于密钥会话来操作数据，使用密钥时基于以下流程：

@@ -4,7 +4,7 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @yangyuecheng-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 
 FormExtensionContext模块是[FormExtensionAbility](js-apis-app-form-formExtensionAbility.md)的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
@@ -42,7 +42,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 | -------- | -------- |
 | 202 | The application is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16500050 | IPC connection error. |
+| 16500050 | An IPC connection error happened. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
 
@@ -63,7 +63,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // 当触发卡片message事件时，执行startAbility
-    console.log(`FormExtensionAbility onFormEvent, formId: ${formId}, message:${message}`);
+    console.info(`FormExtensionAbility onFormEvent, formId: ${formId}, message:${message}`);
     let want: Want = {
       deviceId: '',
       bundleName: 'com.example.formstartability',
@@ -76,7 +76,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
       if (error) {
         console.error(`FormExtensionContext startAbility, error:${JSON.stringify(error)}`);
       } else {
-        console.log('FormExtensionContext startAbility success');
+        console.info('FormExtensionContext startAbility success');
       }
     });
   }
@@ -113,7 +113,7 @@ startAbility(want: Want): Promise&lt;void&gt;
 | -------- | -------- |
 | 202 | The application is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16500050 | IPC connection error. |
+| 16500050 | An IPC connection error happened. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
 
@@ -127,7 +127,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // 当触发卡片message事件时，执行startAbility
-    console.log(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
+    console.info(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
     let want: Want = {
       deviceId: '',
       bundleName: 'com.example.formstartability',
@@ -174,18 +174,18 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permissions denied.             |
+| 201      | The application does not have permission to call the interface. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Can not start invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
+| 16000011 | The context does not exist. |
+| 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000011 | The context does not exist.        |
-| 16000050 | Internal error. |
 
 **示例：**
 
@@ -200,7 +200,7 @@ let commRemote: rpc.IRemoteObject | null = null;
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // 当触发卡片message事件时，执行connectServiceExtensionAbility
-    console.log(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
+    console.info(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
     let want: Want = {
       deviceId: '',
       bundleName: 'com.example.formstartability',
@@ -212,10 +212,10 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     let options: common.ConnectOptions = {
       onConnect(elementName, remote) {
         commRemote = remote; // remote 用于与ServiceExtensionAbility进行通信
-        console.log('----------- onConnect -----------');
+        console.info('----------- onConnect -----------');
       },
       onDisconnect(elementName) {
-        console.log('----------- onDisconnect -----------')
+        console.info('----------- onDisconnect -----------')
       },
       onFailed(code) {
         console.error('----------- onFailed -----------')
@@ -257,7 +257,7 @@ disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16000011 | The context does not exist.        |
+| 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -283,7 +283,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
           return;
         }
         // 执行正常业务
-        console.log('disconnectServiceExtensionAbility succeed');
+        console.info('disconnectServiceExtensionAbility succeed');
       });
     } catch (paramError) {
       commRemote = null;
@@ -345,7 +345,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
         .then(() => {
           commRemote = null;
           // 执行正常业务
-          console.log('disconnectServiceExtensionAbility succeed');
+          console.info('disconnectServiceExtensionAbility succeed');
         })
         .catch((error: BusinessError) => {
           commRemote = null;

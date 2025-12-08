@@ -109,7 +109,7 @@ let KeyboardDelegate: inputMethodEngine.KeyboardDelegate = inputMethodEngine.get
 
 getInputMethodEngine(): InputMethodEngine
 
-获取输入法应用客户端实例[InputMethodEngine](#inputmethodengine)。<br/>输入法应用获取该实例后，可订阅软键盘显示/隐藏请求事件等。
+获取输入法应用客户端实例[InputMethodEngine](#inputmethodenginedeprecated)。<br/>输入法应用获取该实例后，可订阅软键盘显示/隐藏请求事件等。
 
 > **说明：**
 >
@@ -121,7 +121,7 @@ getInputMethodEngine(): InputMethodEngine
 
 | 类型                                      | 说明               |
 | ----------------------------------------- | ------------------ |
-| [InputMethodEngine](#inputmethodengine) | 输入法应用客户端。 |
+| [InputMethodEngine](#inputmethodenginedeprecated) | 输入法应用客户端。 |
 
 **示例：**
 
@@ -182,15 +182,23 @@ type SizeChangeCallback = (size: window.Size, keyboardArea?: KeyboardArea) => vo
 | size         | [window.Size](../apis-arkui/arkts-apis-window-i.md#size7) | 是   | 当前面板大小。                   |
 | keyboardArea | [KeyboardArea](#keyboardarea15)                      | 否   | 当前面板中可作为键盘区域的大小。 |
 
-## InputMethodEngine
+## InputMethodEngine<sup>(deprecated)</sup>
+
+> **说明：**
+>
+> 从API version9开始支持，API version 23开始废弃，建议使用[InputMethodAbility](#inputmethodability)替代。
 
 下列API均需使用[getInputMethodEngine](#inputmethodenginegetinputmethodenginedeprecated)获取到InputMethodEngine实例后，通过实例调用。
 
-### on('inputStart')
+### on('inputStart')<sup>(deprecated)</sup>
 
 on(type: 'inputStart', callback: (kbController: KeyboardController, textInputClient: TextInputClient) => void): void
 
 订阅输入法绑定成功事件。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，API version 23开始废弃，建议使用[on('inputStart')](#oninputstart9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -212,11 +220,15 @@ inputMethodEngine.getInputMethodEngine()
     });
 ```
 
-### off('inputStart')
+### off('inputStart')<sup>(deprecated)</sup>
 
 off(type: 'inputStart', callback?: (kbController: KeyboardController, textInputClient: TextInputClient) => void): void
 
 取消订阅输入法绑定成功事件。
+
+> **说明：**
+>
+> 从API version 9开始支持，API version 23开始废弃，建议使用[off('inputStart')](#offinputstart9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -237,11 +249,15 @@ inputMethodEngine.getInputMethodEngine()
     });
 ```
 
-### on('keyboardShow'|'keyboardHide')
+### on('keyboardShow'|'keyboardHide')<sup>(deprecated)</sup>
 
 on(type: 'keyboardShow'|'keyboardHide', callback: () => void): void
 
 订阅输入法软键盘显示或隐藏事件。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，API version 23开始废弃，建议使用[on('keyboardShow'|'keyboardHide')](#onkeyboardshowkeyboardhide9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -263,11 +279,15 @@ inputMethodEngine.getInputMethodEngine().on('keyboardHide', () => {
 });
 ```
 
-### off('keyboardShow'|'keyboardHide')
+### off('keyboardShow'|'keyboardHide')<sup>(deprecated)</sup>
 
 off(type: 'keyboardShow'|'keyboardHide', callback?: () => void): void
 
 取消订阅输入法软键盘显示或隐藏事件。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，API version 23开始废弃，建议使用[off('keyboardShow'|'keyboardHide')](#offkeyboardshowkeyboardhide9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1478,6 +1498,8 @@ resize(width: number, height: number, callback: AsyncCallback\<void>): void
 > **说明**
 >
 > 面板宽度不超出屏幕宽度，面板高度不高于屏幕高度的0.7倍。
+>
+> 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1520,6 +1542,8 @@ resize(width: number, height: number): Promise\<void>
 > **说明**
 >
 > 面板宽度不超出屏幕宽度，面板高度不高于屏幕高度的0.7倍。
+>
+> 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1809,6 +1833,14 @@ adjustPanelRect(flag: PanelFlag, rect: PanelRect): void
 
 预设置输入法应用横竖屏大小。接口调用完毕表示adjust请求已提交到输入法框架，不表示执行完毕。
 
+> **说明:**
+>
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。
+>
+> 此接口为同步接口，接口返回仅代表系统侧收到设置的请求，不代表已完成设置。
+>
+> 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
+
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **参数：**
@@ -1865,6 +1897,8 @@ adjustPanelRect(flag: PanelFlag, rect: EnhancedPanelRect): void
 > 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。此接口兼容[adjustPanelRect](#adjustpanelrect12)的调用方法，若入参rect仅填写属性landscapeRect和portraitRect，则默认调用[adjustPanelRect](#adjustpanelrect12)。
 >
 > 此接口为同步接口，接口返回仅代表系统侧收到设置的请求，不代表已完成设置。
+>
+> 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4023,6 +4057,8 @@ sendExtendAction(action: ExtendAction, callback: AsyncCallback&lt;void&gt;): voi
 > **说明**
 >
 > 输入法应用调用该接口向编辑框发送扩展编辑操作，编辑框监听相应事件[on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10)，从而进一步做出处理。
+>
+> 编辑框响应[ExtendAction](#extendaction10)的PASTE命令时，需要编辑框应用申请[ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard)权限。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4066,6 +4102,8 @@ sendExtendAction(action: ExtendAction): Promise&lt;void&gt;
 >**说明**
 >
 > 输入法应用调用该接口向编辑框发送扩展编辑操作，编辑框监听相应事件[on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10)，从而进一步做出处理。
+>
+> 编辑框响应[ExtendAction](#extendaction10)的PASTE命令时，需要编辑框应用申请[ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard)权限。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4737,7 +4775,7 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 >
 > 从API version 8开始支持，API version 9开始废弃，建议使用[InputClient](#inputclient9)替代。
 
-下列API示例中都需使用[on('inputStart')](#oninputstart)回调获取到TextInputClient实例，再通过此实例调用对应方法。
+下列API示例中都需使用[on('inputStart')](#oninputstartdeprecated)回调获取到TextInputClient实例，再通过此实例调用对应方法。
 
 ### getForward<sup>(deprecated)</sup>
 

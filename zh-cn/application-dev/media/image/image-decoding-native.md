@@ -12,7 +12,7 @@
 > 开发者可使用[Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md)模块下的C API，不仅提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考[图片开发指导(C/C++)](image-source-c.md)节点下的内容。这部分API从API version 12开始支持，并将持续演进，**推荐开发者使用**。<br>
 > 两套C API不建议同时使用，在部分场景下存在不兼容的问题。
 
-将所支持格式的图片文件解码成PixelMap，以便在应用或系统中进行图片显示或[图片处理](image-transformation.md)。当前支持的图片文件格式包括JPEG、PNG、GIF、WebP、BMP、SVG、ICO、DNG、HEIF（不同硬件设备支持情况不同）。
+将所支持格式的图片文件解码成PixelMap，以便在应用或系统中进行图片显示或[图片处理](image-transformation.md)。当前支持的图片文件格式包括JPEG、PNG、GIF、WebP、BMP、SVG、ICO、DNG、HEIC、WBMP<sup>23+</sup>（不同硬件设备支持情况不同）。
 
 ## 开发步骤
 

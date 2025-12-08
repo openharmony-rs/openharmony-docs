@@ -1,10 +1,10 @@
 # Gauge
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
+<!--Owner: @Zhang-Dong-Hui-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Gauge** component represents a gauge that displays data in a circular format.
 
@@ -216,6 +216,10 @@ Sets the indicator style of the gauge.
 privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 Sets whether to enable privacy mode.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 

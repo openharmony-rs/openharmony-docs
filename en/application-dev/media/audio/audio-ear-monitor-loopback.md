@@ -252,7 +252,7 @@ async function setReverbPreset(preset: audio.AudioLoopbackReverbPreset) {
   }
 }
 
-// Set the reverb mode for audio loopback.
+// Set the equalizer type for audio loopback.
 async function setEqualizerPreset(preset: audio.AudioLoopbackEqualizerPreset) {
   if (audioLoopback !== undefined) {
     try {

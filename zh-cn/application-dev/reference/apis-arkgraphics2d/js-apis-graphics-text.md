@@ -935,6 +935,162 @@ struct RenderTest {
 }
 ```
 
+### loadFontSyncWithCheck<sup>23+</sup>
+
+loadFontSyncWithCheck(name: string, path: string | Resource, index?: number): void
+
+同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf、ttc。
+
+**卡片能力：** 该接口支持在ArkTS卡片中使用。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名 | 类型               | 必填 | 说明                              |
+| ----- | ------------------ | ---- | --------------------------------------------------------------------------------- |
+| name  | string             | 是   | 加载字体成功后，该字体对应的名称，可填写任意字符串，可使用该名称指定并使用该字体。 |
+| path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是   | 需要加载的字体文件的路径，支持两种格式： "file:// + 字体文件绝对路径" 或 $rawfile("字体文件路径")。 |
+|   index  | number | 否   | 字体文件格式为ttc时，指定加载的字体索引。默认为0：表示加载ttc的第一个字体。<br>非ttc格式文件索引值无意义，若指定索引，只能为0。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. |
+| 25900002 | File not found. |
+| 25900003 | Failed to open the file. |
+| 25900004 | File seek failed. |
+| 25900005 | Failed to get the file size. |
+| 25900006 | Failed to read the file. |
+| 25900007 | Empty file. |
+| 25900008 | Corrupt file. |
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+let fc: text.FontCollection = text.FontCollection.getGlobalInstance();
+
+@Entry
+@Component
+struct Index {
+  message: string = 'Hello World';
+  fontFamily: string = 'family';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontFamily(this.fontFamily)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          fc.loadFontSyncWithCheck(this.fontFamily, 'file:///system/fonts/NotoSansCJK-Regular.ttc', 1);
+          try {
+            fc.loadFontSyncWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1);
+          } catch (e) {
+            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(e)} message: ${e.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### loadFontWithCheck<sup>23+</sup>
+
+loadFontWithCheck(name: string, path: string | Resource, index?: number): Promise\<void>
+
+加载自定义字体，使用Promise异步回调。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含：ttf、otf、ttc。
+
+**卡片能力：** 该接口支持在ArkTS卡片中使用。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：该接口支持在原子化服务中使用。
+
+**参数：**
+
+|   参数名 | 类型               | 必填 | 说明                              |
+|   -----  | ------------------ | ---- | --------------------------------------------------------------------------------- |
+|   name   | string             | 是   | 加载字体成功后，该字体对应的名称，可填写任意字符串，可使用该名称指定并使用该字体。 |
+|   path   | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是   | 需要加载的字体文件的路径，支持两种格式： "file:// + 字体文件绝对路径" 或 $rawfile("字体文件路径")。 |
+|   index  | number | 否   | 字体文件格式为ttc时，指定加载的字体索引。默认为0：表示加载ttc的第一个字体。<br>非ttc格式文件索引值无意义，若指定索引，只能为0。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. |
+| 25900002 | File not found. |
+| 25900003 | Failed to open the file. |
+| 25900004 | File seek failed. |
+| 25900005 | Failed to get the file size. |
+| 25900006 | Failed to read the file. |
+| 25900007 | Empty file. |
+| 25900008 | Corrupt file. |
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+let fc: text.FontCollection = text.FontCollection.getGlobalInstance();
+
+@Entry
+@Component
+struct Index {
+  message: string = 'Hello World';
+  fontFamily: string = 'family';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontFamily(this.fontFamily)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          fc.loadFontWithCheck(this.fontFamily, 'file:///system/fonts/NotoSansCJK-Regular.ttc', 1).then((data) => {
+            console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
+          }).catch((error: Error) => {
+            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
+          });
+          fc.loadFontWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1).then((data) => {
+            console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
+          }).catch((error: Error) => {
+            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ### unloadFontSync<sup>20+</sup>
 unloadFontSync(name: string): void
 
@@ -1108,6 +1264,24 @@ struct Index {
 | autoSpace<sup>20+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能自动间距。true表示使能自动间距，则会在文本排版时自动调整CJK（中文字符、日文字符、韩文字符）与西文（拉丁字母、西里尔字母、希腊字母）、CJK与数字、CJK与版权符号、版权符号与数字、版权符号与西文之间的间距。false表示不使能自动间距，默认值为false。|
 | verticalAlign<sup>20+</sup>   | [TextVerticalAlign](#textverticalalign20) | 否   | 是   | 文本垂直对齐方式，开启行高缩放（即设置[TextStyle](#textstyle)的heightScale）或行内不同字号（即设置[TextStyle](#textstyle)的fontSize）文本混排时生效。若行内有上下标文本（即设置[TextStyle](#textstyle)的badgeType属性文本），上下标文本将与普通文本一样参与垂直对齐。 |
 | lineSpacing<sup>21+</sup>   | number | 否   | 是   | 行间距，默认值为0。lineSpacing不受[TextStyle](#textstyle)中lineHeightMaximum和lineHeightMinimum限制。尾行默认添加行间距，可通过设置[TextStyle](#textstyle).textHeightBehavior为DISABLE_ALL或DISABLE_LAST_ASCENT禁用尾行行间距。 |
+| compressHeadPunctuation<sup>23+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能行首标点压缩。true表示使能行首标点压缩，false表示不使能行首标点压缩，默认值为false。<br/>**说明：**<br/>1. 需要字体文件支持[FontFeature](#fontfeature)中的"ss08"特性，否则无法压缩。<br/>2. 在行首标点压缩范围内的标点才在本特性作用范围内。 |
+
+行首压缩的标点范围:
+| 标点 | Unicode码位 | Unicode名称 |
+|---------|---------|-------------|
+| 「 | U+300C | LEFT CORNER BRACKET |
+| 『 | U+300E | LEFT WHITE CORNER BRACKET |
+| " | U+201C | LEFT DOUBLE QUOTATION MARK |
+| ' | U+2018 | LEFT SINGLE QUOTATION MARK |
+| （ | U+FF08 | FULLWIDTH LEFT PARENTHESIS |
+| 《 | U+300A | LEFT DOUBLE ANGLE BRACKET |
+| 〈 | U+3008 | LEFT ANGLE BRACKET |
+| 【 | U+3010 | LEFT BLACK LENTICULAR BRACKET |
+| 〖 | U+3016 | LEFT WHITE LENTICULAR BRACKET |
+| 〔 | U+3014 | LEFT TORTOISE SHELL BRACKET |
+| ［ | U+FF3B | FULLWIDTH LEFT SQUARE BRACKET |
+| ｛ | U+FF5B | FULLWIDTH LEFT CURLY BRACKET |
+
 
 ## PlaceholderAlignment
 

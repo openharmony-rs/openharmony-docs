@@ -15,16 +15,18 @@
 ## 导入模块
 
 ```
-import { Available } from '@ohos.annotation';
+import { Available } from '@kit.BasicServicesKit';
 ```
 
-## Available<sup>22+</sup>
+## Available
 
 @interface Available {
-  minApiVersion: string
+  minApiVersion: string = ''
 }
 
 系统提供的API注解能力，可用于标记API支持的最低可用版本。此注解可以标注在类、接口、变量、类型、模块、枚举等API上。在源码定义处添加注解后，编译工具会在使用处检查潜在的兼容性问题。当minApiVersion大于build-profile.json5中指定的compatibleSDKVersion字段，会生成兼容性警告。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -37,7 +39,7 @@ import { Available } from '@ohos.annotation';
 **示例：**
 
   ```ts
-  import { Available } from '@ohos.annotation';
+  import { Available } from '@kit.BasicServicesKit';
 
   @Available({minApiVersion: 'OpenHarmony 22'})
   function myFunc() {}

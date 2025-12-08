@@ -424,14 +424,6 @@ struct Index {
           } else {
             console.error('byteBuffer is null');
           }
-          // Release the resource when the pixelMap is not in use.
-          if (pixelMap != undefined) {
-            await pixelMap.release().then(() => {
-              console.info('Succeeded in releasing pixelMap object.');
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to release pixelMap object. code is ${error.code}, message is ${error.message}`);
-            })
-          }
           // Release the resource when the buffer is not in use.
           // If an asynchronous operation is performed on the buffer, call nextImage.release() to release the resource after the asynchronous operation is complete.
           nextImage.release();

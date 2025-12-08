@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_ColorFilter OH_Drawing_ColorFilter
+```
+
 ## Overview
 
 Defines a struct for a color filter, which is used to convert a color into a new one.

@@ -104,6 +104,17 @@ This error code is reported when continuous task verification fails.
 2. The application repeatedly cancels a continuous task.
 3. The value of **bgMode** is invalid because no continuous task type is configured for **backgroundModes** in the application's configuration file.
 4. Only <!--RP1-->specific devices<!--RP1End--> can request continuous tasks of the **TASK_KEEPING** type.
+5. The main type or subtype of the continuous task is not configured.
+6. The main type and subtype of the continuous task are not of the same length or type.
+7. The main type or subtype of the continuous task is not defined.
+8. The input **continuousTaskId** is invalid.
+9. The data transmission type does not support notification combination.
+10. The continuous task notification does not exist and cannot be combined.
+11. Neither the current continuous task nor the target continuous task supports notification combination.
+12. The continuous task types of the combined notifications are inconsistent.
+13. The application has not obtained ACL authorization when requesting the **TASK_KEEPING** continuous task.
+14. The data transmission type does not support updating the continuous task type via the update API.
+15. A new continuous task type (other than audio playback) is requested in the background.
 
 **Solution**
 
@@ -111,6 +122,17 @@ This error code is reported when continuous task verification fails.
 2. Check whether the application has the system permissions.
 3. Check the type of the device where the application is located.
 4. Check the value of **backgroundModes**.
+5. Check whether the main type and subtype of the continuous task are configured.
+6. Check whether the main type and subtype of the continuous task are of the same length or whether their types match.
+7. Check whether the main type and subtype of the continuous task are out of range.
+8. Check whether the input **continuousTaskId** parameter is valid.
+9. During notification combination, check whether the requested continuous task type includes the data transmission type.
+10. During notification combination, check whether the continuous task notification exists.
+11. During notification combination, confirm whether the current continuous task or the target continuous task supports notification combination.
+12. During notification combination, check whether the continuous task types are consistent.
+13. When applying for the **TASK_KEEPING** continuous task, verify whether the ACL authorization for [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system) has been obtained.
+14. When updating the continuous task, check whether either the original type or the new type includes the data transmission type.
+15. Check if any background continuous tasks are being requested, other than audio playback or continuous tasks that have already been requested in the foreground.
 
 ## 9800006 Notification Verification Failure for a Continuous Task
 

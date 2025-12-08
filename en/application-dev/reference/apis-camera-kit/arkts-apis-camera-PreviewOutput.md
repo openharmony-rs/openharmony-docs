@@ -6,11 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+PreviewOutput implements preview output. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
+
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-PreviewOutput implements preview output. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
 ## Modules to Import
 
@@ -581,5 +581,82 @@ function stopPreviewOutput(previewOutput: camera.PreviewOutput): void {
   }).catch((error: BusinessError) => {
     console.error(`Failed to preview output stop, error code: ${error.code}.`);
   });
+}
+```
+
+## isBandwidthCompressionSupported<sup>23+</sup>
+
+isBandwidthCompressionSupported(): boolean
+
+Checks whether preview bandwidth compression is supported. This involves reducing data volume through encoding to minimize bandwidth usage during transmission.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Return value**
+
+| Type           | Description                    |
+| -------------- | ----------------------- |
+| boolean | Check result for the support of preview bandwidth compression. **true** if supported, **false** otherwise.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isBandwidthCompressionSupported(previewOutput: camera.PreviewOutput): boolean {
+  let supported: boolean = false;
+  try {
+    supported = previewOutput.isBandwidthCompressionSupported();
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The previewOutput.isBandwidthCompressionSupported call failed. error code: ${err.code}`);
+  }
+  return supported;
+}
+```
+
+## enableBandwidthCompression<sup>23+</sup>
+
+enableBandwidthCompression(enabled: boolean): void
+
+Enables preview bandwidth compression.
+
+Before enabling this feature, you can call [isBandwidthCompressionSupported](#isbandwidthcompressionsupported23) to check whether the device supports preview bandwidth compression.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name     | Type                   | Mandatory| Description                                      |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| enabled  | boolean | Yes | Whether to enable preview bandwidth compression. **true** to enable, **false** otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID   | Error Message                                          |
+| -------- |----------------------------------------------- |
+| 7400103  | Session not config. |
+| 7400201  | Camera service fatal error. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function enableBandwidthCompression(previewOutput: camera.PreviewOutput, enabled: boolean): void {
+  try {
+    previewOutput.enableBandwidthCompression(enabled);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The previewOutput.enableBandwidthCompression call failed. error code: ${err.code}`);
+  }
 }
 ```

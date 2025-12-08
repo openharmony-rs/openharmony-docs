@@ -145,7 +145,7 @@ export struct ToggleSample {
   pathStack: NavPathStack = new NavPathStack();
 
   build() {
-    // ···
+    NavDestination() {
       Column({ space: 8 }) {
         Column({ space: 8 }) {
           Text('Bluetooth Mode: ' + this.message)
@@ -175,7 +175,7 @@ export struct ToggleSample {
       .width('100%')
       .height('100%')
       .padding({ left: 12, right: 12 })
-    // ···
+    }
     .backgroundColor('#f1f2f3')
     // $r('app.string.xxx')需要替换为开发者所需的字符串资源文件
     .title($r('app.string.ToggleCaseExample_title'))

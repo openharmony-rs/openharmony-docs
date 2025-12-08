@@ -1,0 +1,253 @@
+# @ohos.security.huksExternalCrypto（外部密钥管理）
+
+<!--Kit: Universal Keystore Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @wutiantian-gitee-->
+<!--Designer: @HighLowWorld-->
+<!--Tester: @wxy1234564846-->
+<!--Adviser: @zengyawen-->
+
+模块提供外部密钥管理扩展功能的注册与注销，PIN码认证与认证状态获取等。
+
+> **说明**
+>
+> 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+
+## 导入模块
+
+```ts
+import { huks } from '@kit.UniversalKeystoreKit';
+```
+
+## HuksExternalCryptoTagType
+
+表示外部加密数据类型的枚举。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+| 名称  | 值   | 说明    |
+| ----- | ---- | -------- |
+| HUKS_EXT_CRYPTO_TAG_TYPE_INT | 1 << 28   | 表示TAG的值为整数类型。 |
+| HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 5 << 28  | 表示TAG的值为字节数组。 |
+
+## HuksExternalCryptoTag
+
+表示指定参数tag类型的枚举。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+| 名称    | 值   | 说明   |
+| ------- | ---- | -------- |
+| HUKS_EXT_CRYPTO_TAG_UKEY_PIN | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200001    | 表示PIN码的TAG。 |
+| HUKS_EXT_CRYPTO_TAG_ABILITY_NAME | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200002    | 表示[CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md)的名称。 |
+| HUKS_EXT_CRYPTO_TAG_EXTRA_DATA | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200003    | 外部数据，在通用查询场景，表示返回的数据。 |
+| HUKS_EXT_CRYPTO_TAG_UID | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200004    | 表示调用方的uid。 |
+| HUKS_EXT_CRYPTO_TAG_PURPOSE | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200005    | 表示证书链对应密钥的使用类型，具体类型详见[CertificatePurpose定义](../apis-device-certificate-kit/js-apis-certManager.md#certificatepurpose22)。 |
+
+## HuksExternalCryptoParam
+
+表示传入的参数类型定义。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+| 名称 | 类型        | 只读 | 可选 | 说明         |
+| ------ | ----------------------------------- | ---- | ---- | ------------ |
+| tag    | [HuksExternalCryptoTag](#huksexternalcryptotag)  | 否   | 否   | 参数标签，用于区分参数。 |
+| value  | boolean\|number\|bigint\|Uint8Array | 否   | 否   | 标签对应值。 |
+
+## HuksExternalPinAuthState
+
+表示Ukey PIN码管理的状态值的枚举。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+| 名称    | 值   | 说明   |
+| ------- | ---- | -------- |
+| HUKS_EXT_CRYPTO_PIN_NO_AUTH | 0 | Ukey PIN未认证。 |
+| HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED | 1 | Ukey PIN认证成功。 |
+| HUKS_EXT_CRYPTO_PIN_LOCKED  | 2 | Ukey PIN已锁定。 |
+
+
+## huksExternalCrypto.registerProvider
+
+registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>): Promise\<void>
+
+注册指定外部provider。使用Promise异步回调。
+
+**需要权限**：ohos.permission.CRYPTO_EXTENSION_REGISTER
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**参数：**
+
+| 参数名   | 类型  | 必填 | 说明  |
+| -------- | ------- | ---- | -------|
+| providerName | string | 是   | provider名称，最大长度为128。建议包含厂商信息，全局唯一，不要包含个人联系方式等敏感数据。<br>最多支持注册10个provider。 |
+| params  | Array<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 是  | 操作时需传入的参数，必选TAG：[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](#huksexternalcryptotag)，表示ability的名字，根据业务自己内部定义按照实际填写。 |
+
+**返回值：**
+
+| 类型  | 说明  |
+| ------------- | --------|
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HUKS错误码](errorcode-huks.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 201 | check permission failed. |
+| 801 | api is not supported. |
+| 12000002 | the ability name param is missing. |
+| 12000005 | IPC communication failed. |
+| 12000014 | memory is insufficient. |
+| 12000018 | the input parameter is invalid. |
+| 12000019 | the provider is already registered. |
+| 12000020 | an error occured in the dependent module. |
+| 12000025 | the number of providers exceeds the limit. |
+
+**示例：**
+
+```ts
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+
+function StringToUint8Array(str: string) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+const providerName = "testProviderName";
+const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
+  {
+    tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
+    value: StringToUint8Array("CryptoExtension")
+  }
+];
+huksExternalCrypto.registerProvider(providerName, extProperties)
+    .then((data) => {
+        console.info(`promise: registerProvider success`);
+    });
+```
+
+## huksExternalCrypto.unregisterProvider
+
+unregisterProvider(providerName: string, params?: Array\<HuksExternalCryptoParam>): Promise\<void>
+
+注销provider。使用Promise异步回调。
+
+**需要权限**：ohos.permission.CRYPTO_EXTENSION_REGISTER
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**参数：**
+
+| 参数名   | 类型 | 必填 | 说明  |
+| -------- | ------| ---- | -----|
+| providerName | string | 是   | provider名称，最大长度为128。建议包含厂商信息，全局唯一，不要包含个人联系方式等敏感数据。如果provider注册了多个扩展能力，则该provider下的扩展能力都会被注销。 |
+| params  | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否 | 操作时需传入的参数。<br>可以在param参数中指定[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](#huksexternalcryptotag)，将根据“包名 + providerName + abilityName”注销对应的cryptoExtensionAbility。<br>如果未在params参数中指定[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](#huksexternalcryptotag)，或者未传入params参数，则注销对应的providerName下的所有Provider。|
+
+**返回值：**
+
+| 类型   | 说明   |
+| -------| ------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HUKS错误码](errorcode-huks.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 201 | check permission failed. |
+| 801 | api is not supported. |
+| 12000005 | IPC communication failed. |
+| 12000011 | the provider is not found. |
+| 12000014 | memory is insufficient. |
+| 12000018 | the input parameter is invalid. |
+| 12000020 | an error occured in the dependent module. |
+
+**示例：**
+
+```ts
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+
+function StringToUint8Array(str: string) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+const providerName = "testProviderName";
+const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
+  {
+    tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
+    value: StringToUint8Array("CryptoExtension")
+  }
+];
+huksExternalCrypto.unregisterProvider(providerName, extProperties)
+    .then((data) => {
+        console.info(`promise: unregisterProvider success`);
+    });
+```
+
+## huksExternalCrypto.getUkeyPinAuthState
+
+getUkeyPinAuthState(resourceId: string, params?: Array\<HuksExternalCryptoParam>): Promise\<HuksExternalPinAuthState>;
+
+获取PIN码认证状态。使用Promise异步回调。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**参数：**
+
+| 参数名   | 类型  | 必填 | 说明  |
+| -------- | ------- | ---- | ----------|
+| resourceId | string | 是   | 资源ID，可通过[导出证书的接口](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取，其结果中附带资源ID。 |
+| params  | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否   | 操作的属性。 |
+
+**返回值：**
+
+| 类型   | 说明   |
+| -------- | ------- |
+| Promise\<HuksExternalPinAuthState> | Promise对象，返回认证结果。<br>HUKS_EXT_CRYPTO_PIN_NO_AUTH 表示未认证；HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED 表示认证成功；HUKS_EXT_CRYPTO_PIN_LOCKED 表示PIN被锁定。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HUKS错误码](errorcode-huks.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 801 | api is not supported. |
+| 12000005 | IPC communication failed. |
+| 12000006 | the Ukey driver operation failed. |
+| 12000014 | memory is insufficient. |
+| 12000018 | the input parameter is invalid. |
+| 12000020 | the provider operation failed. |
+| 12000024 | the provider or Ukey is busy. |
+
+**示例：**
+
+```ts
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+
+function StringToUint8Array(str: string) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\",\"index\":{\"key\":\"testKey\"}}";
+const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
+huksExternalCrypto.getUkeyPinAuthState(testResourceId, extProperties)
+    .then((data) => {
+      console.info(`promise: getUkeyPinAuthState success, data: ${data}`);
+    });
+```

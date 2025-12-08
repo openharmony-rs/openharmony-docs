@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Video** component is used to play a video and control its playback.
 
@@ -46,30 +46,33 @@ Defines the options of the **Video** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name             | Type                                                    | Mandatory| Description                                                    |
-| ------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| src                 | string \| [Resource](ts-types.md#resource)                            | No  | Video source, which can be either a local or a network video.<br>The Resource type allows cross-package and cross-module access to resource files and is commonly used for accessing local videos.<br>- Only resources in the rawfile folder are supported, which means that you can reference video files only with **$rawfile**.<br>The string type is used for loading local videos and, more frequently, network videos.<br>- Network video URLs are supported.<br>- Strings with the **file://** prefix, that is, [application sandbox URIs](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10): **file://\<bundleName>/\<sandboxPath>**, are supported. They are used to access resources in the application sandbox path. Ensure that the application has the read permission to the files in the specified path.<br>The default value is an empty string.<br>If an invalid value is passed, the default value will be used.<br>**NOTE**<br>The supported video formats are MP4, MKV, and TS.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| currentProgressRate | number \| string \| [PlaybackSpeed<sup>8+</sup>](#playbackspeed8) | No  | Video playback speed.<br>**NOTE**<br>The value of the number type can only be **0.75**, **1.0**, **1.25**, **1.75**, or **2.0**.<br>For the string type, numeric string values, for example **0.75**, **1.0**, **1.25**, **1.75**, and **2.0**, are supported.<br>Default value: 1.0 \| PlaybackSpeed.Speed_Forward_1_00_X<br>If an invalid value is passed, the default value will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| previewUri          | string \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [Resource](ts-types.md#resource)  | No  | Path of the preview image displayed before the video playback starts. By default, no preview image is displayed.<br>The string type can be used to load online images and local images.<br>- URLs are supported for loading online images.<br>- Relative paths are supported for loading local images, for example, **previewUri: "common/test.jpg"**. When using an image referenced using a relative path, the component cannot be called across bundles or modules.<br>- Strings with the **file://** prefix, that is, [application sandbox URIs](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10): **file://\<bundleName>/\<sandboxPath>**, are supported. They are used to access resources in the application sandbox path. Ensure that the application has the read permission to the files in the specified path.<br>The Resource type allows cross-package and cross-module access to resource files.<br>- Resources in the rawfile folder are supported, which means that you can reference image files with **$rawfile**.<br>- \$r can be used to reference images in system resources or application resources.<br>The default value is an empty string.<br>If an invalid value is passed, the default value will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                |
-| controller          | [VideoController](#videocontroller)                          | No  | Video controller to control the video playback status.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                    |
-| imageAIOptions<sup>12+</sup>  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | No  | AI image analysis options. You can configure the analysis type or bind an analyzer controller through this parameter.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| posterOptions<sup>18+</sup>  | [PosterOptions](#posteroptions18) | No  | Display options for the first frame of the video.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| Name      | Type   | Read-Only| Optional| Description                        |
+| ------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| src                 | string \| [Resource](ts-types.md#resource)                            | No  | Yes| Video source, which can be either a local or a network video.<br>The Resource type allows cross-package and cross-module access to resource files and is commonly used for accessing local videos.<br>- Only resources in the rawfile folder are supported, which means that you can reference video files only with **$rawfile**.<br>The string type is used for loading local videos and, more frequently, network videos.<br>- Network video URLs are supported.<br>- Strings with the **file://** prefix, that is, [application sandbox URIs](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10): **file://\<bundleName>/\<sandboxPath>**, are supported. They are used to access resources in the application sandbox path. Ensure that the application has the read permission to the files in the specified path.<br>The default value is an empty string.<br>If an invalid value is passed, the default value will be used.<br>**NOTE**<br>The supported video formats are MP4, MKV, and TS.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| currentProgressRate | number \| string \| [PlaybackSpeed<sup>8+</sup>](#playbackspeed8) | No  | Yes| Video playback speed.<br>**NOTE**<br>The value of the number type can only be **0.75**, **1.0**, **1.25**, **1.75**, or **2.0**. Values 0.5, 1.5, 3, 0.25, and 0.125 are supported since API version 22.<br>For the string type, numeric string values, for example **0.75**, **1.0**, **1.25**, **1.75**, and **2.0**, are supported. Values "0.5", "1.5", "3", "0.25", and "0.125" are supported since API version 22.<br>Other values, for example, **"abc"** or **"1.5+1.5"**, are considered as invalid values.<br>Default value: 1.0 \| PlaybackSpeed.Speed_Forward_1_00_X<br>If an invalid value is passed, the default value will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| previewUri          | string \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [Resource](ts-types.md#resource)  | No | Yes | Path of the preview image displayed before the video playback starts. By default, no preview image is displayed.<br>The string type can be used to load online images and local images.<br>- URLs are supported for loading online images.<br>- Relative paths are supported for loading local images, for example, **previewUri: "common/test.jpg"**. When using an image referenced using a relative path, the component cannot be called across bundles or modules.<br>- Strings with the **file://** prefix, that is, [application sandbox URIs](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10): **file://\<bundleName>/\<sandboxPath>**, are supported. They are used to access resources in the application sandbox path. Ensure that the application has the read permission to the files in the specified path.<br>The Resource type allows cross-package and cross-module access to resource files.<br>- Resources in the rawfile folder are supported, which means that you can reference image files with **$rawfile**.<br>- \$r can be used to reference images in system resources or application resources.<br>The default value is an empty string.<br>If an invalid value is passed, the default value will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                |
+| controller          | [VideoController](#videocontroller)                          | No| Yes  | Video controller to control the video playback status.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                    |
+| imageAIOptions<sup>12+</sup>  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | No| Yes  | AI image analysis options. You can configure the analysis type or bind an analyzer controller through this parameter.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| posterOptions<sup>18+</sup>  | [PosterOptions](#posteroptions18) | No| Yes  | Display options for the first frame of the video.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## PlaybackSpeed<sup>8+</sup>
 
 Enumerates video playback speed options.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                | Description          |
-| -------------------- | -------------- |
-| Speed_Forward_0_75_X | 0.75x playback speed.|
-| Speed_Forward_1_00_X | 1x playback speed.   |
-| Speed_Forward_1_25_X | 1.25x playback speed.|
-| Speed_Forward_1_75_X | 1.75x playback speed.|
-| Speed_Forward_2_00_X | 2x playback speed.   |
+| Name                 | Value        | Description          |
+| -------------------- | ---------- | -------------- |
+| Speed_Forward_0_75_X | 0.75 | 0.75x playback speed.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| Speed_Forward_1_00_X | 1 | 1x playback speed.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| Speed_Forward_1_25_X | 1.25 | 1.25x playback speed.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| Speed_Forward_1_75_X | 1.75 | 1.75x playback speed.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| Speed_Forward_2_00_X | 2 | 2x playback speed.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| SPEED_FORWARD_0_50_X<sup>22+</sup> | 0.5 | 0.5x playback speed.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| SPEED_FORWARD_1_50_X<sup>22+</sup> | 1.5 | 1.5x playback speed.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| SPEED_FORWARD_3_00_X<sup>22+</sup> | 3 | 3x playback speed.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| SPEED_FORWARD_0_25_X<sup>22+</sup> | 0.25 | 0.25x playback speed.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| SPEED_FORWARD_0_125_X<sup>22+</sup> | 0.125 | 0.125x playback speed.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 
 ## Attributes
 
@@ -175,6 +178,10 @@ Sets whether to enable the AI image analyzer, which supports subject recognition
 After this feature is enabled, the video automatically enters an analysis state to process the current frame when playback is paused, and exits the analysis state when playback is resumed.
 Note that if this attribute and the [overlay](ts-universal-attributes-overlay.md) attribute are both set, [CustomBuilder](ts-types.md#custombuilder8) specified in [overlay](ts-universal-attributes-overlay.md) has no effect.
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -195,6 +202,10 @@ Note that if this attribute and the [overlay](ts-universal-attributes-overlay.md
 analyzerConfig(config: ImageAnalyzerConfig)
 
 Sets the AI image analysis types, including subject recognition, text recognition, and object lookup. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -281,6 +292,10 @@ Triggered when video playback is finished. Dynamic property modification using [
 onError(event: VoidCallback | ErrorCallback)
 
 Triggered when video playback fails. Dynamic property modification using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) is supported.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -400,7 +415,7 @@ Describes whether the video is in full-screen playback mode.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type   | Read Only| Optional| Description                        |
+| Name      | Type   | Read-Only| Optional| Description                        |
 | ----------- | ------- | ---- | ----  | ---------------------------- |
 | fullscreen<sup>10+</sup>  | boolean | No| No | Callback that indicates whether the video playback is in full-screen mode.<br>**true**: The video playback is in full-screen mode.<br>**false**: The video playback is not in full-screen mode.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
 
@@ -416,7 +431,7 @@ Describes the duration of the video.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type   | Read Only| Optional| Description                        |
+| Name      | Type   | Read-Only| Optional| Description                        |
 | ----------- | ------- | ---- | ----  | ---------------------------- |
 | duration<sup>10+</sup> | number  | No| No | Duration of the video.<br>Unit: second<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
@@ -432,7 +447,7 @@ Describes the current progress of video playback.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type   | Read Only| Optional| Description                        |
+| Name      | Type   | Read-Only| Optional| Description                        |
 | ----------- | ------- | ---- | ---- | ---------------------------- |
 | time<sup>10+</sup> | number  | No| No | Callback that provides the current playback progress.<br>Unit: second<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
@@ -442,9 +457,9 @@ Defines display options for the first frame of the video.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type   | Read Only| Optional| Description                        |
+| Name      | Type   | Read-Only| Optional| Description                        |
 | ----------- | ------- | ---- | ---- | ---------------------------- |
-| showFirstFrame   | boolean | No| Yes| Whether the first frame display is enabled for the current video. If first frame display is enabled, the previewUri field in the [VideoOptions](#videooptions) does not take effect.<br>**true**: Enable first frame display.<br>**false**: Disable first frame display.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.     |
+| showFirstFrame   | boolean | No| Yes| Whether to enable first frame display, showing the first frame of the video as a preview. When first frame display is enabled, the previewUri field in [VideoOptions](#videooptions) has no effect.<br>**true**: Enable first frame display.<br>**false**: Disable first frame display.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.     |
 | contentTransitionEffect<sup>21+</sup>   | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | No| Yes| Transition effect when the preview image of the current video changes. This field does not take effect if showFirstFrame is set to true (that is, the first frame display is enabled) or previewUri of the valid [VideoOptions](#videooptions) object is not set.<br>Default value: **ContentTransitionEffect.IDENTITY**.<br>If this parameter is set to undefined or null, the value is ContentTransitionEffect.IDENTITY.<br>**Atomic service API**: This API can be used in atomic services since API version 21.     |
 
 ## VideoController
@@ -597,7 +612,7 @@ Enumerates video seek modes.
 
 ### Example 1: Implementing Basic Video Playback Features
 
-This example covers the basic features of video playback, including how to manage the control bar, use preview images, handle autoplay, adjust the playback speed, respond to keyboard shortcuts (since API version 15, [enableShortcutKey](#enableshortcutkey15) can be used for enabling keyboard shortcut response), and operate the controller for playback control. Additionally, it demonstrates how to implement first frame display (since API version 18, [posterOptions](#posteroptions18) can be used for setting first frame display options) and the callbacks for various playback states.
+This example covers the basic features of video playback, including how to manage the control bar, use preview images, handle autoplay, adjust the playback speed, respond to keyboard shortcuts (since API version 15, [enableShortcutKey](#enableshortcutkey15) can be used for enabling keyboard shortcut response), and operate the controller for playback control. Additionally, it demonstrates how to implement first frame display (since API version 18, [posterOptions](#posteroptions18) can be used for setting first frame display options). Since API version 21, **posterOptions** supports configuring transition animation effects for video preview image content changes through the **contentTransitionEffect** parameter of [PosterOptions](#posteroptions18), along with related state callback methods.
 
 ```ts
 // xxx.ets

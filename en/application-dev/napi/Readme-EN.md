@@ -59,6 +59,7 @@
       - [Creating and Destroying a Critical Scope and Accessing String Content Using Node-API Extension APIs](use-napi-about-critical.md)
       - [Analyzing Exceptions and Crashes Triggered by Using Node-API](use-napi-about-crash.md)
       - [Calling an ArkTS Method with Return Value of a Promise Using Node-API](use-napi-method-promise.md)
+      - [Creating a Sendable Strong Reference to an ArkTS Object Using Node-API Extension APIs](use-napi-about-sendable-reference.md)
     - Node-API FAQs<!--napi-questions-->
       - [Node-API FAQs](use-napi-faqs.md)
       - [FAQs About Stability](napi-faq-about-stability.md)

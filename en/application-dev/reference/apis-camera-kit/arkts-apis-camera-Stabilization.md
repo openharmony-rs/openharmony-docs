@@ -6,19 +6,18 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-> **NOTE**
->
-> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The initial APIs of this interface are supported since API version 11.
-
 Stabilization inherits from [StabilizationQuery](arkts-apis-camera-StabilizationQuery.md).
 
 It provides APIs to set video stabilization.
 
- > **NOTE**
- >
- > You can set video stabilization only when a [VideoOutput](arkts-apis-camera-VideoOutput.md) stream exists in the session.
- > The enumerated value **HIGH** of [VideoStabilizationMode](arkts-apis-camera-e.md#videostabilizationmode) takes effect only when the resolution of [Profile](arkts-apis-camera-i.md#profile) is 1920 x 1080.
+You can set video stabilization only when a [VideoOutput](arkts-apis-camera-VideoOutput.md) stream exists in the session.
+
+The enumerated value **HIGH** of [VideoStabilizationMode](arkts-apis-camera-e.md#videostabilizationmode) takes effect only when the resolution of [Profile](arkts-apis-camera-i.md#profile) is 1920 x 1080.
+
+> **NOTE**
+>
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this interface are supported since API version 11.
 
 ## Modules to Import
 

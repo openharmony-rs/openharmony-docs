@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct CameraInput_Callbacks {...} CameraInput_Callbacks
+```
+
 ## 概述
 
 相机输入错误事件的回调。

@@ -165,6 +165,12 @@ napi_critical_scope是Node-API中，用于创建临界接口执行环境的机�
 
 **提示：** `napi_strong_ref`与`napi_ref`相比，具有更高的创建效率，但支持的功能受限（如：不支持强弱引用转换等）。
 
+**napi_sendable_ref（扩展能力）**
+
+指向`napi_value`，允许调用者管理Sendable ArkTS对象的生命周期，并支持跨ArkTS线程操作`napi_sendable_ref`。
+
+**提示：** 与`napi_ref`相比，`napi_sendable_ref`支持跨ArkTS线程操作（例如，在A线程创建`napi_sendable_ref`，B线程通过`napi_sendable_ref`获取`napi_value`，C线程删除`napi_sendable_ref`。调用者需保证调用时序。），但功能上有以下限制：被引用`napi_value`必须是Sendable的，不支持强弱引用转换。
+
 ### 回调类型
 
 Node-API包含以下回调类型：
@@ -306,6 +312,8 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_create_string_utf8 | 通过UTF8编码的C字符串数据创建ArkTS String。 |
 | napi_get_value_string_latin1 | 获取给定ArkTS value对应的ISO-8859-1编码的字符串。 |
 | napi_get_value_string_utf8 | 获取给定ArkTS value对应的UTF8编码的字符串。 |
+| napi_create_external_string_utf16 | 通过给定的UTF-16编码的字符串缓冲区来创建ArkTS字符串，该方法能避免字符串的内存拷贝。 |
+| napi_create_external_string_ascii | 通过给定的ASCII编码的字符串缓冲区来创建ArkTS字符串，该方法能避免字符串的内存拷贝。 |
 
 ### date相关
 
@@ -564,7 +572,10 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_create_strong_reference | 创建指向ArkTS对象的强引用。 |
 | napi_delete_strong_reference | 删除强引用。|
 | napi_get_strong_reference_value | 根据强引用对象获取其关联的ArkTS对象值。 |
-
+| napi_create_strong_sendable_reference | 创建指向Sendable ArkTS对象的Sendable强引用。 |
+| napi_delete_strong_sendable_reference | 删除Sendable强引用。 |
+| napi_get_strong_sendable_reference_value | 根据Sendable强引用获取其关联的ArkTS对象值。 |
+ 
 **napi_queue_async_work_with_qos**
 
 ```c
@@ -837,6 +848,28 @@ napi_status napi_delete_strong_reference(napi_env env, napi_strong_ref ref)
 
 ```c
 napi_status napi_get_strong_reference_value(napi_env env, napi_strong_ref ref, napi_value* result)
+```
+
+**napi_create_strong_sendable_reference**
+
+```c
+napi_status napi_create_strong_sendable_reference(napi_env env,
+                                                  napi_value value,
+                                                  napi_sendable_ref* result);
+```
+
+**napi_delete_strong_sendable_reference**
+
+```c
+napi_status napi_delete_strong_sendable_reference(napi_env env, napi_sendable_ref ref);
+```
+
+**napi_get_strong_sendable_reference_value**
+
+```c
+napi_status napi_get_strong_sendable_reference_value(napi_env env,
+                                                     napi_sendable_ref ref,
+                                                     napi_value* result);
 ```
 
 ### 其他实用工具

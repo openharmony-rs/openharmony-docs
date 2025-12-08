@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+
+```
+typedef struct {...} OH_NativeBuffer_Planes
+```
 ## Overview
 
 This struct describes the plane information of images in an **OH_NativeBuffer** instance.

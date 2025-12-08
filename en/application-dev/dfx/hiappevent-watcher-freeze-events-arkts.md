@@ -103,7 +103,7 @@ The following describes how to subscribe to the application freeze event trigger
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
             // Obtain the custom test_data of the application freeze event.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.test_data=${eventInfo.params['test_data']}`);
-            // Obtain the life time of the faulty process when the application freezes.
+            // Obtain the lifetime of the faulty process when the application freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_life_time=${eventInfo.params['process_life_time']}`);
           }
         }

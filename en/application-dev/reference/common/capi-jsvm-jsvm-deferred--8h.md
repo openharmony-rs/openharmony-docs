@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct JSVM_Deferred__* JSVM_Deferred
+```
+
 ## Overview
 
 Defines the deferred object.

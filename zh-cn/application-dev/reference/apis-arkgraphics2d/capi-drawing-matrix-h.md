@@ -67,7 +67,7 @@
 
 ### OH_Drawing_ScaleToFit
 
-```
+```c
 enum OH_Drawing_ScaleToFit
 ```
 
@@ -89,7 +89,7 @@ enum OH_Drawing_ScaleToFit
 
 ### OH_Drawing_MatrixCreate()
 
-```
+```c
 OH_Drawing_Matrix* OH_Drawing_MatrixCreate(void)
 ```
 
@@ -109,7 +109,7 @@ OH_Drawing_Matrix* OH_Drawing_MatrixCreate(void)
 
 ### OH_Drawing_MatrixCopy()
 
-```
+```c
 OH_Drawing_Matrix* OH_Drawing_MatrixCopy(const OH_Drawing_Matrix* matrix)
 ```
 
@@ -136,7 +136,7 @@ OH_Drawing_Matrix* OH_Drawing_MatrixCopy(const OH_Drawing_Matrix* matrix)
 
 ### OH_Drawing_MatrixCreateRotation()
 
-```
+```c
 OH_Drawing_Matrix* OH_Drawing_MatrixCreateRotation(float deg, float x, float y)
 ```
 
@@ -154,8 +154,8 @@ OH_Drawing_Matrix* OH_Drawing_MatrixCreateRotation(float deg, float x, float y)
 | 参数项 | 描述 |
 | -- | -- |
 | float deg | 旋转的角度，单位为度。正数表示按顺时针旋转，负数表示按逆时针旋转。 |
-| float x | 轴上坐标点。 |
-| float y | 轴上坐标点。 |
+| float x | x轴上坐标点。 |
+| float y | y轴上坐标点。 |
 
 **返回：**
 
@@ -165,7 +165,7 @@ OH_Drawing_Matrix* OH_Drawing_MatrixCreateRotation(float deg, float x, float y)
 
 ### OH_Drawing_MatrixCreateScale()
 
-```
+```c
 OH_Drawing_Matrix* OH_Drawing_MatrixCreateScale(float sx, float sy, float px, float py)
 ```
 
@@ -184,8 +184,8 @@ OH_Drawing_Matrix* OH_Drawing_MatrixCreateScale(float sx, float sy, float px, fl
 | -- | -- |
 | float sx | 水平缩放因子，为负数时可看作是先关于y = px作镜像翻转后再进行缩放，该参数为浮点数。 |
 | float sy | 垂直缩放因子，为负数时可看作是先关于x = py作镜像翻转后再进行缩放，该参数为浮点数。 |
-| float px | 轴上坐标点。 |
-| float py | 轴上坐标点。 |
+| float px | x轴上坐标点。 |
+| float py | y轴上坐标点。 |
 
 **返回：**
 
@@ -195,7 +195,7 @@ OH_Drawing_Matrix* OH_Drawing_MatrixCreateScale(float sx, float sy, float px, fl
 
 ### OH_Drawing_MatrixCreateTranslation()
 
-```
+```c
 OH_Drawing_Matrix* OH_Drawing_MatrixCreateTranslation(float dx, float dy)
 ```
 
@@ -223,7 +223,7 @@ OH_Drawing_Matrix* OH_Drawing_MatrixCreateTranslation(float dx, float dy)
 
 ### OH_Drawing_MatrixSetMatrix()
 
-```
+```c
 void OH_Drawing_MatrixSetMatrix(OH_Drawing_Matrix* matrix, float scaleX, float skewX, float transX,float skewY, float scaleY, float transY, float persp0, float persp1, float persp2)
 ```
 
@@ -253,7 +253,7 @@ void OH_Drawing_MatrixSetMatrix(OH_Drawing_Matrix* matrix, float scaleX, float s
 
 ### OH_Drawing_MatrixSetRectToRect()
 
-```
+```c
 bool OH_Drawing_MatrixSetRectToRect(OH_Drawing_Matrix* matrix, const OH_Drawing_Rect* src,const OH_Drawing_Rect* dst, OH_Drawing_ScaleToFit stf)
 ```
 
@@ -283,7 +283,7 @@ bool OH_Drawing_MatrixSetRectToRect(OH_Drawing_Matrix* matrix, const OH_Drawing_
 
 ### OH_Drawing_MatrixPreRotate()
 
-```
+```c
 void OH_Drawing_MatrixPreRotate(OH_Drawing_Matrix* matrix, float degree, float px, float py)
 ```
 
@@ -307,7 +307,7 @@ void OH_Drawing_MatrixPreRotate(OH_Drawing_Matrix* matrix, float degree, float p
 
 ### OH_Drawing_MatrixPreScale()
 
-```
+```c
 void OH_Drawing_MatrixPreScale(OH_Drawing_Matrix* matrix, float sx, float sy, float px, float py)
 ```
 
@@ -327,14 +327,14 @@ void OH_Drawing_MatrixPreScale(OH_Drawing_Matrix* matrix, float sx, float sy, fl
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。 |
-| float sx | 轴方向的缩放比例因子，为负数时可看作是先关于y = px作镜像翻转后再进行缩放，该参数为浮点数。 |
-| float sy | 轴方向的缩放比例因子，为负数时可看作是先关于x = py作镜像翻转后再进行缩放，该参数为浮点数。 |
+| float sx | x轴方向的缩放比例因子，为负数时可看作是先关于y = px作镜像翻转后再进行缩放，该参数为浮点数。 |
+| float sy | y轴方向的缩放比例因子，为负数时可看作是先关于x = py作镜像翻转后再进行缩放，该参数为浮点数。 |
 | float px | 缩放中心点的横坐标。 |
 | float py | 缩放中心点的纵坐标。 |
 
 ### OH_Drawing_MatrixPreTranslate()
 
-```
+```c
 void OH_Drawing_MatrixPreTranslate(OH_Drawing_Matrix* matrix, float dx, float dy)
 ```
 
@@ -357,7 +357,7 @@ void OH_Drawing_MatrixPreTranslate(OH_Drawing_Matrix* matrix, float dx, float dy
 
 ### OH_Drawing_MatrixPostRotate()
 
-```
+```c
 void OH_Drawing_MatrixPostRotate(OH_Drawing_Matrix* matrix, float degree, float px, float py)
 ```
 
@@ -381,7 +381,7 @@ void OH_Drawing_MatrixPostRotate(OH_Drawing_Matrix* matrix, float degree, float 
 
 ### OH_Drawing_MatrixPostScale()
 
-```
+```c
 void OH_Drawing_MatrixPostScale(OH_Drawing_Matrix* matrix, float sx, float sy, float px, float py)
 ```
 
@@ -399,14 +399,14 @@ void OH_Drawing_MatrixPostScale(OH_Drawing_Matrix* matrix, float sx, float sy, f
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。 |
-| float sx | 轴方向的缩放比例因子，为负数时可看作是先关于y = px作镜像翻转后再进行缩放，该参数为浮点数。 |
-| float sy | 轴方向的缩放比例因子，为负数时可看作是先关于x = py作镜像翻转后再进行缩放，该参数为浮点数。 |
+| float sx | x轴方向的缩放比例因子，为负数时可看作是先关于y = px作镜像翻转后再进行缩放，该参数为浮点数。 |
+| float sy | y轴方向的缩放比例因子，为负数时可看作是先关于x = py作镜像翻转后再进行缩放，该参数为浮点数。 |
 | float px | 缩放中心点的横坐标。 |
 | float py | 缩放中心点的纵坐标。 |
 
 ### OH_Drawing_MatrixPostTranslate()
 
-```
+```c
 void OH_Drawing_MatrixPostTranslate(OH_Drawing_Matrix* matrix, float dx, float dy)
 ```
 
@@ -429,7 +429,7 @@ void OH_Drawing_MatrixPostTranslate(OH_Drawing_Matrix* matrix, float dx, float d
 
 ### OH_Drawing_MatrixReset()
 
-```
+```c
 void OH_Drawing_MatrixReset(OH_Drawing_Matrix* matrix)
 ```
 
@@ -450,7 +450,7 @@ void OH_Drawing_MatrixReset(OH_Drawing_Matrix* matrix)
 
 ### OH_Drawing_MatrixConcat()
 
-```
+```c
 void OH_Drawing_MatrixConcat(OH_Drawing_Matrix* total, const OH_Drawing_Matrix* a,const OH_Drawing_Matrix* b)
 ```
 
@@ -473,7 +473,7 @@ void OH_Drawing_MatrixConcat(OH_Drawing_Matrix* total, const OH_Drawing_Matrix* 
 
 ### OH_Drawing_MatrixGetAll()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_MatrixGetAll(OH_Drawing_Matrix* matrix, float value[9])
 ```
 
@@ -501,7 +501,7 @@ OH_Drawing_ErrorCode OH_Drawing_MatrixGetAll(OH_Drawing_Matrix* matrix, float va
 
 ### OH_Drawing_MatrixGetValue()
 
-```
+```c
 float OH_Drawing_MatrixGetValue(OH_Drawing_Matrix* matrix, int index)
 ```
 
@@ -529,7 +529,7 @@ float OH_Drawing_MatrixGetValue(OH_Drawing_Matrix* matrix, int index)
 
 ### OH_Drawing_MatrixRotate()
 
-```
+```c
 void OH_Drawing_MatrixRotate(OH_Drawing_Matrix* matrix, float degree, float px, float py)
 ```
 
@@ -548,12 +548,12 @@ void OH_Drawing_MatrixRotate(OH_Drawing_Matrix* matrix, float degree, float px, 
 | -- | -- |
 | [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。 |
 | float degree | 角度，单位为度。正数表示顺时针旋转，负数表示逆时针旋转。 |
-| float px | 轴上坐标点。 |
-| float py | 轴上坐标点。 |
+| float px | x轴上坐标点。 |
+| float py | y轴上坐标点。 |
 
 ### OH_Drawing_MatrixTranslate()
 
-```
+```c
 void OH_Drawing_MatrixTranslate(OH_Drawing_Matrix* matrix, float dx, float dy)
 ```
 
@@ -576,7 +576,7 @@ void OH_Drawing_MatrixTranslate(OH_Drawing_Matrix* matrix, float dx, float dy)
 
 ### OH_Drawing_MatrixScale()
 
-```
+```c
 void OH_Drawing_MatrixScale(OH_Drawing_Matrix* matrix, float sx, float sy, float px, float py)
 ```
 
@@ -596,12 +596,12 @@ void OH_Drawing_MatrixScale(OH_Drawing_Matrix* matrix, float sx, float sy, float
 | [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。 |
 | float sx | 水平缩放因子，为负数时可看作是先关于y = px作镜像翻转后再进行缩放，该参数为浮点数。 |
 | float sy | 垂直缩放因子，为负数时可看作是先关于x = py作镜像翻转后再进行缩放，该参数为浮点数。 |
-| float px | 轴上坐标点。 |
-| float py | 轴上坐标点。 |
+| float px | x轴上坐标点。 |
+| float py | y轴上坐标点。 |
 
 ### OH_Drawing_MatrixInvert()
 
-```
+```c
 bool OH_Drawing_MatrixInvert(OH_Drawing_Matrix* matrix, OH_Drawing_Matrix* inverse)
 ```
 
@@ -629,7 +629,7 @@ bool OH_Drawing_MatrixInvert(OH_Drawing_Matrix* matrix, OH_Drawing_Matrix* inver
 
 ### OH_Drawing_MatrixSetPolyToPoly()
 
-```
+```c
 bool OH_Drawing_MatrixSetPolyToPoly(OH_Drawing_Matrix* matrix, const OH_Drawing_Point2D* src,const OH_Drawing_Point2D* dst, uint32_t count)
 ```
 
@@ -659,7 +659,7 @@ bool OH_Drawing_MatrixSetPolyToPoly(OH_Drawing_Matrix* matrix, const OH_Drawing_
 
 ### OH_Drawing_MatrixMapPoints()
 
-```
+```c
 void OH_Drawing_MatrixMapPoints(const OH_Drawing_Matrix* matrix, const OH_Drawing_Point2D* src,OH_Drawing_Point2D* dst, int count)
 ```
 
@@ -683,7 +683,7 @@ void OH_Drawing_MatrixMapPoints(const OH_Drawing_Matrix* matrix, const OH_Drawin
 
 ### OH_Drawing_MatrixMapRect()
 
-```
+```c
 bool OH_Drawing_MatrixMapRect(const OH_Drawing_Matrix* matrix, const OH_Drawing_Rect* src, OH_Drawing_Rect* dst)
 ```
 
@@ -712,7 +712,7 @@ bool OH_Drawing_MatrixMapRect(const OH_Drawing_Matrix* matrix, const OH_Drawing_
 
 ### OH_Drawing_MatrixIsEqual()
 
-```
+```c
 bool OH_Drawing_MatrixIsEqual(OH_Drawing_Matrix* matrix, OH_Drawing_Matrix* other)
 ```
 
@@ -740,7 +740,7 @@ bool OH_Drawing_MatrixIsEqual(OH_Drawing_Matrix* matrix, OH_Drawing_Matrix* othe
 
 ### OH_Drawing_MatrixIsIdentity()
 
-```
+```c
 bool OH_Drawing_MatrixIsIdentity(OH_Drawing_Matrix* matrix)
 ```
 
@@ -767,7 +767,7 @@ bool OH_Drawing_MatrixIsIdentity(OH_Drawing_Matrix* matrix)
 
 ### OH_Drawing_MatrixDestroy()
 
-```
+```c
 void OH_Drawing_MatrixDestroy(OH_Drawing_Matrix* matrix)
 ```
 
@@ -784,12 +784,12 @@ void OH_Drawing_MatrixDestroy(OH_Drawing_Matrix* matrix)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向字体对象的指针。 |
+| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向矩阵对象的指针。 |
 
 
 ### OH_Drawing_MatrixPreConcat()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_MatrixPreConcat(OH_Drawing_Matrix* a, OH_Drawing_Matrix* b)
 ```
 

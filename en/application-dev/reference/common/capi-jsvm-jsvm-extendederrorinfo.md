@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} JSVM_ExtendedErrorInfo
+```
+
 ## Overview
 
 Defines extended error information.

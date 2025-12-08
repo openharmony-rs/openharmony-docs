@@ -53,7 +53,7 @@
 - 音频通话<!--audio-call-->
   - [音频通话开发概述](audio-call-overview.md)
   - [开发音频通话功能](audio-call-development.md)
-- 不再推荐使用<!--not-recommended-->
+- OpenSL ES开发指导(不再推荐)<!--not-recommended-->
   - [从OpenSL ES切换OHAudio(C/C++)](replace-opensles-by-ohaudio.md)
   - [使用OpenSL ES开发音频播放功能(C/C++)](using-opensl-es-for-playback.md)
   - [使用OpenSL ES开发音频录制功能(C/C++)](using-opensl-es-for-recording.md)

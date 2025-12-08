@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef union {...} Rdb_SubscribeCallback
+```
+
 ## Overview
 
 Defines a callback used to return the subscribed event.

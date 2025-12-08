@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_Font OH_Drawing_Font
+```
+
 ## Overview
 
 Defines a struct for a font.

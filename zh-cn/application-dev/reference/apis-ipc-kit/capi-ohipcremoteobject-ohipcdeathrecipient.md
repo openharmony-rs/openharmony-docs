@@ -6,6 +6,10 @@
 <!--Tester: @maxiaorong-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct OHIPCDeathRecipient OHIPCDeathRecipient
+```
+
 ## 概述
 
 死亡通知对象。

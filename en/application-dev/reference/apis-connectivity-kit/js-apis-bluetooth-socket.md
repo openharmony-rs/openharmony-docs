@@ -246,7 +246,7 @@ try {
 
 getDeviceId(clientSocket: number): string
 
-Obtains the address of the peer device over a client socket. This API is applicable both to the server and client. However, the API call fails if an invalid **clientSocket** is passed.
+Obtains the Bluetooth address of the peer end in the socket connection. This API can be used on both the client and server.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -254,13 +254,13 @@ Obtains the address of the peer device over a client socket. This API is applica
 
 | Name     | Type                         | Mandatory  | Description                            |
 | -------- | ------------------------------- | ---- | ------------------------------ |
-| clientSocket | number                      | Yes   | Client socket ID, which is obtained by **sppAccept()** or **sppConnect()**.<br>You can obtain the value from the asynchronous callback returned after [sppAccept](#socketsppaccept) or [sppConnect](#socketsppconnect) is called.|
+| clientSocket | number                      | Yes   | ID of the client socket.<br>You can obtain the value from the asynchronous callback returned after [socket.sppAccept](#socketsppaccept) or [socket.sppConnect](#socketsppconnect) is called.|
 
 **Return value**
 
 | Type                                      | Description                        |
 | ---------------------------------------- | -------------------------- |
-| string | IP address of the peer device.|
+| string | IP address of the peer device.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual address of a paired Bluetooth device will not change.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.|
 
 **Error codes**
 
@@ -297,7 +297,10 @@ try {
 
 sppCloseServerSocket(socket: number): void
 
-Closes a listening socket of the server.
+Deletes the specified server socket. This API can only be used on the server.
+- You need to call [socket.sppListen](#socketspplisten) first to obtain the valid ID of the server socket.
+- If listening is no longer required for the server socket, you can call this API to close the socket. The Bluetooth subsystem then deletes the corresponding service registered earlier. If the client initiates a connection at this time, the connection fails.
+- If the server socket is connected to other clients, the connection will be disconnected after this API is called.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -305,7 +308,7 @@ Closes a listening socket of the server.
 
 | Name   | Type    | Mandatory  | Description             |
 | ------ | ------ | ---- | --------------- |
-| socket | number | Yes   | Server socket ID, which is obtained by **sppListen()**.<br>You can obtain the value from the asynchronous callback returned after [sppListen](#socketspplisten) is called.|
+| socket | number | Yes   | ID of the server socket.<br>You can obtain the value from the asynchronous callback returned after [socket.sppListen](#socketspplisten) is called.|
 
 **Error codes**
 
@@ -336,7 +339,10 @@ try {
 
 sppCloseClientSocket(socket: number): void
 
-Closes a client socket.
+Closes the specified client socket and disconnects the client from the server. This API can be used on both the client and server.
+- To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
+- To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
+- If a socket connection is no longer needed, the application must disconnect the connection between the client and server by calling this API.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -344,7 +350,7 @@ Closes a client socket.
 
 | Name   | Type    | Mandatory  | Description      |
 | ------ | ------ | ---- | ------------- |
-| socket | number | Yes   | Client socket ID, which is obtained by **sppAccept()** or **sppConnect()**.<br>You can obtain the value from the asynchronous callback returned after [sppAccept](#socketsppaccept) or [sppConnect](#socketsppconnect) is called.|
+| socket | number | Yes   | ID of the client socket.<br>You can obtain the value from the asynchronous callback returned after [socket.sppAccept](#socketsppaccept) or [socket.sppConnect](#socketsppconnect) is called.|
 
 **Error codes**
 
@@ -375,7 +381,12 @@ try {
 
 sppWrite(clientSocket: number, data: ArrayBuffer): void
 
-Writes data to the remote device through a socket.
+Sends data to the peer end. This API can be used on both the client and server.
+- This API is valid only after the connection between the client and server is successfully established.
+- To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
+- To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
+- If you need to detect errors such as abnormal disconnection during data transmission, you are advised to use [socket.sppWriteAsync](#socketsppwriteasync18).
+<!--RP1--><!--RP1End-->
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -383,7 +394,7 @@ Writes data to the remote device through a socket.
 
 | Name         | Type         | Mandatory  | Description           |
 | ------------ | ----------- | ---- | ------------- |
-| clientSocket | number      | Yes   | Client socket ID, which is obtained by **sppAccept()** or **sppConnect()**.<br>You can obtain the value from the asynchronous callback returned after [sppAccept](#socketsppaccept) or [sppConnect](#socketsppconnect) is called.|
+| clientSocket | number      | Yes   | ID of the client socket.<br>You can obtain the value from the asynchronous callback returned after [socket.sppAccept](#socketsppaccept) or [socket.sppConnect](#socketsppconnect) is called.|
 | data         | ArrayBuffer | Yes   | Data to write.       |
 
 **Error codes**
@@ -417,9 +428,13 @@ try {
 ## socket.on('sppRead')
 
 on(type: 'sppRead', clientSocket: number, callback: Callback&lt;ArrayBuffer&gt;): void
+Subscribes to socket read request events. This API can be used on both the client and server. After this API is called, the subscribed callback is invoked when data sent by the peer end is received.
 
-Subscribes to the SPP read request events. This API uses an asynchronous callback to return the result.
-- This API cannot be used with the [socket.sppReadAsync](#socketsppreadasync18) API supported since API version 18. For the same socket, only the socket.on('sppRead') or [socket.sppReadAsync](#socketsppreadasync18) API can be used.
+- To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
+- To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
+- This API cannot be used with [socket.sppReadAsync](#socketsppreadasync18), which is supported since API version 18. For the same socket connection, only the socket.on('sppRead') or [socket.sppReadAsync](#socketsppreadasync18) API can be used.
+- If you need to detect errors such as abnormal disconnection during data transmission, you are advised to use [socket.sppReadAsync](#socketsppreadasync18).
+<!--RP2--><!--RP2End-->
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -428,7 +443,7 @@ Subscribes to the SPP read request events. This API uses an asynchronous callbac
 | Name         | Type                         | Mandatory  | Description                        |
 | ------------ | --------------------------- | ---- | -------------------------- |
 | type         | string                      | Yes   | Event type. The value **sppRead** indicates the SPP read request event.<br>This event is triggered when data sent by the peer device is received.|
-| clientSocket | number                      | Yes   | Client socket ID, which is obtained by **sppAccept()** or **sppConnect()**.<br>You can obtain the value from the asynchronous callback returned after [sppAccept](#socketsppaccept) or [sppConnect](#socketsppconnect) is called.             |
+| clientSocket | number                      | Yes   | ID of the client socket.<br>You can obtain the value from the asynchronous callback returned after [socket.sppAccept](#socketsppaccept) or [socket.sppConnect](#socketsppconnect) is called.             |
 | callback     | Callback&lt;ArrayBuffer&gt; | Yes   | Callback used to return the read data.      |
 
 **Error codes**
@@ -464,7 +479,7 @@ try {
 
 off(type: 'sppRead', clientSocket: number, callback?: Callback&lt;ArrayBuffer&gt;): void
 
-Unsubscribes from the SPP read request events.
+Unsubscribes from socket read request events.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -473,7 +488,7 @@ Unsubscribes from the SPP read request events.
 | Name         | Type                         | Mandatory  | Description                                      |
 | ------------ | --------------------------- | ---- | ---------------------------------------- |
 | type         | string                      | Yes   | Event type. The value **sppRead** indicates the SPP read request event.              |
-| clientSocket | number                      | Yes   | Client socket ID, which is obtained by **sppAccept()** or **sppConnect()**.<br>You can obtain the value from the asynchronous callback returned after [sppAccept](#socketsppaccept) or [sppConnect](#socketsppconnect) is called.                           |
+| clientSocket | number                      | Yes   | ID of the client socket.<br>You can obtain the value from the asynchronous callback returned after [socket.sppAccept](#socketsppaccept) or [socket.sppConnect](#socketsppconnect) is called.                           |
 | callback     | Callback&lt;ArrayBuffer&gt; | No   | Callback to unregister.<br>If this parameter is specified, it must be the same as the callback in [socket.on('sppRead')](#socketonsppread). If this parameter is not specified, all callbacks corresponding to the event type are unregistered.|
 
 **Error codes**
@@ -503,7 +518,11 @@ try {
 
 sppWriteAsync(clientSocket: number, data: ArrayBuffer): Promise&lt;void&gt;
 
-Writes data to the remote device through the socket. This API uses a promise to return the result. It supports returning of SPP operation errors, if any, when the connection is disconnected.
+Sends data to the peer end. This API can be used on both the client and server. This API uses a promise to return the result. If the connection is disconnected, this API will throw and return an error code.
+- This API is valid only after the connection between the client and server is successfully established.
+- To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
+- To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
+<!--RP3--><!--RP3End-->
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -511,7 +530,7 @@ Writes data to the remote device through the socket. This API uses a promise to 
 
 | Name         | Type                         | Mandatory  | Description                                      |
 | ------------ | --------------------------- | ---- | ---------------------------------------- |
-| clientSocket | number                      | Yes   | Client socket ID, which is obtained by **sppAccept()** or **sppConnect()**.<br>You can obtain the value from the asynchronous callback returned after [sppAccept](#socketsppaccept) or [sppConnect](#socketsppconnect) is called.                           |
+| clientSocket | number                      | Yes   | ID of the client socket.<br>You can obtain the value from the asynchronous callback returned after [sppAccept](#socketsppaccept) or [sppConnect](#socketsppconnect) is called.                           |
 | data         | ArrayBuffer                 | Yes   | Data to write.|
 
 **Return value**
@@ -552,10 +571,14 @@ try {
 
 sppReadAsync(clientSocket: number): Promise&lt;ArrayBuffer&gt;
 
-Reads data sent from the remote device through the socket. This API uses a promise to return the result. It supports returning of SPP operation errors, if any, when the connection is disconnected.
+Reads data sent by the peer end. This API can be used on both the client and server. This API uses a promise to return the result. If the connection is disconnected, this API will throw and return an error code.
+
+- To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
+- To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
 - This API cannot be used with the [socket.on('sppRead')](#socketonsppread) API supported since API version 10. For the same socket, only the [socket.on('sppRead')](#socketonsppread) or **socket.sppReadAsync** API can be used.
 - This API returns the read data using a promise. You are advised to call this API cyclically after successful connection to obtain the received data. If this API is not called in a timely manner, the received data will be lost.
 - This API works in asynchronous mode. The next call is allowed only after the asynchronous callback is returned.
+<!--RP4--><!--RP4End-->
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -563,7 +586,7 @@ Reads data sent from the remote device through the socket. This API uses a promi
 
 | Name         | Type                         | Mandatory  | Description                                      |
 | ------------ | --------------------------- | ---- | ---------------------------------------- |
-| clientSocket | number                      | Yes   | Client socket ID, which is obtained by **sppAccept()** or **sppConnect()**.<br>You can obtain the value from the asynchronous callback returned after [sppAccept](#socketsppaccept) or [sppConnect](#socketsppconnect) is called.                           |
+| clientSocket | number                      | Yes   | ID of the client socket.<br>You can obtain the value from the asynchronous callback returned after [sppAccept](#socketsppaccept) or [sppConnect](#socketsppconnect) is called.                           |
 
 **Return value**
 
@@ -605,6 +628,116 @@ async function readAsync(clientNumber: number) {
 }
 ```
 
+## socket.getMaxReceiveDataSize<sup>22+</sup>
+
+getMaxReceiveDataSize(clientSocket: number): number
+
+Obtains the maximum size of data that can be received on the current socket link type. This API can be used by both the client and server.
+
+- To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
+- To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
+- The returned value is **0** if the socket link type is [SPP_RFCOMM](#spptype), indicating that the maximum size of received data is unlimited.
+
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Parameters**
+
+| Name         | Type                         | Mandatory  | Description                                      |
+| ------------ | --------------------------- | ---- | ---------------------------------------- |
+| clientSocket | number                      | Yes   | ID of the client socket.<br>You can obtain the value from the asynchronous callback returned after [sppAccept](#socketsppaccept) or [sppConnect](#socketsppconnect) is called.                           |
+
+**Return value**
+
+| Type                           | Description        |
+| ----------------------------- | ---------- |
+| number | Maximum size of the received data, in bytes.|
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// clientNumber is obtained via sppAccept or sppConnect.
+let clientSocket = 1; 
+try {
+    let result: number = socket.getMaxReceiveDataSize(clientSocket);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+## socket.getMaxTransmitDataSize<sup>22+</sup>
+
+getMaxTransmitDataSize(clientSocket: number): number
+
+Obtains the maximum size of data that can be sent on the current socket link type. This API can be used by both the client and server.
+
+- To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
+- To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
+- The returned value is **0** if the socket link type is [SPP_RFCOMM](#spptype), indicating that the maximum size of data to be sent is unlimited.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Parameters**
+
+| Name         | Type                         | Mandatory  | Description                                      |
+| ------------ | --------------------------- | ---- | ---------------------------------------- |
+| clientSocket | number                      | Yes   | ID of the client socket.<br>You can obtain the value from the asynchronous callback returned after [sppAccept](#socketsppaccept) or [sppConnect](#socketsppconnect) is called.                           |
+
+**Return value**
+
+| Type                           | Description        |
+| ----------------------------- | ---------- |
+| number | Maximum size of the sent data, in bytes.|
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// clientNumber is obtained via sppAccept or sppConnect.
+let clientSocket = 1; 
+try {
+    let result: number = socket.getMaxTransmitDataSize(clientSocket);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+## socket.isConnected<sup>22+</sup>
+
+isConnected(clientSocket: number): boolean
+
+Checks whether the current link is connected. This API can be used by both the client and server.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Parameters**
+
+| Name         | Type                         | Mandatory  | Description                                      |
+| ------------ | --------------------------- | ---- | ---------------------------------------- |
+| clientSocket | number                      | Yes   | ID of the client socket.<br>You can obtain the value from the asynchronous callback returned after [sppAccept](#socketsppaccept) or [sppConnect](#socketsppconnect) is called.                           |
+
+**Return value**
+
+| Type                           | Description        |
+| ----------------------------- | ---------- |
+| boolean | Whether the socket link is connected. The value **true** indicates that the socket link is connected, and **false** indicates the opposite.|
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// clientNumber is obtained via sppAccept or sppConnect.
+let clientSocket = 1; 
+try {
+    let result: boolean = socket.isConnected(clientSocket);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
 
 ## SppOptions
 

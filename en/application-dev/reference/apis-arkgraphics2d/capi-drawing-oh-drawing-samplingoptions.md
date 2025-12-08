@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_SamplingOptions OH_Drawing_SamplingOptions
+```
+
 ## Overview
 
 Defines a struct for sampling options, which describe the sampling methods for images and bitmaps.

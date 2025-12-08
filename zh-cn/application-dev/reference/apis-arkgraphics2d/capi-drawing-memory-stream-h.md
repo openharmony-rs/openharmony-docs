@@ -32,7 +32,7 @@
 
 ### OH_Drawing_MemoryStreamCreate()
 
-```
+```c
 OH_Drawing_MemoryStream* OH_Drawing_MemoryStreamCreate(const void* data, size_t length, bool copyData)
 ```
 
@@ -61,7 +61,7 @@ OH_Drawing_MemoryStream* OH_Drawing_MemoryStreamCreate(const void* data, size_t 
 
 ### OH_Drawing_MemoryStreamDestroy()
 
-```
+```c
 void OH_Drawing_MemoryStreamDestroy(OH_Drawing_MemoryStream* memoryStream)
 ```
 

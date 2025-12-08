@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ScsiPeripheral_IORequest {...} ScsiPeripheral_IORequest
+```
+
 ## 概述
 
 读/写操作的请求参数。

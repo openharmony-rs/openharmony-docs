@@ -29,13 +29,26 @@
 
 1. 引用头文件。
 
-   ```c++
+   <!-- @[event_publisher_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_publish.h) -->
+   
+   ``` C
    #include <cstdint>
    #include <cstdio>
    #include <cwchar>
-   #include <string.h>
+   #include <cstring>
    #include "hilog/log.h"
    #include "BasicServicesKit/oh_commonevent.h"
+   
+   const long PARAM_LONG_VALUE1 = 2147483646;
+   const long PARAM_LONG_VALUE2 = 2147483645;
+   const long PARAM_LONG_VALUE3 = 555;
+   const double PARAM_DOUBLE_VALUE1 = 11.22;
+   const double PARAM_DOUBLE_VALUE2 = 33.44;
+   const double PARAM_DOUBLE_VALUE3 = 55.66;
+   const int PARAM_INT_VALUE1 = 10;
+   const int PARAM_INT_VALUE2 = 123;
+   const int PARAM_INT_VALUE3 = 234;
+   const int PARAM_INT_VALUE4 = 567;
    ```
 
 2. 在CMake脚本中添加动态链接库。
@@ -52,57 +65,59 @@
 
    发布携带数据的公共事件时，需要通过[OH_CommonEvent_CreatePublishInfo](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createpublishinfo)创建公共事件属性对象，并通过以下接口设置公共事件属性。
 
-   ```c++
+   <!-- @[event_publisher_create_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_publish.cpp) -->
+   
+   ``` C++
    // 创建并添加公共事件属性附加信息
-   CommonEvent_Parameters* CreateParameters()
+   CommonEvent_Parameters *CreateParameters()
    {
        int32_t ret = -1;
        // 创建公共事件附加信息
-       CommonEvent_Parameters* param = OH_CommonEvent_CreateParameters();
-       
+       CommonEvent_Parameters *param = OH_CommonEvent_CreateParameters();
+   
        // 设置int类型附加信息和key
-       ret = OH_CommonEvent_SetIntToParameters(param, "intKey", 10);
+       ret = OH_CommonEvent_SetIntToParameters(param, "intKey", PARAM_INT_VALUE1);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetIntToParameters ret <%{public}d>.", ret);
-
+   
        // 设置int数组类型附加信息和key
-       int intArray[] = {123, 234, 567};
-       size_t arraySize = 3;
+       int intArray[] = {PARAM_INT_VALUE2, PARAM_INT_VALUE3, PARAM_INT_VALUE4};
+       size_t arraySize = sizeof(intArray) / sizeof(intArray[0]);
        ret = OH_CommonEvent_SetIntArrayToParameters(param, "intArrayKey", intArray, arraySize);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetIntArrayToParameters ret <%{public}d>.", ret);
-       
+   
        // 设置long类型附加信息和key
-       ret = OH_CommonEvent_SetLongToParameters(param, "longKey", 2147483646);
+       ret = OH_CommonEvent_SetLongToParameters(param, "longKey", PARAM_LONG_VALUE1);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetLongToParameters ret <%{public}d>.", ret);
-
+   
        // 设置long数组类型附加信息和key
-       long longArray[] = {2147483646, 555, 2147483645};
+       long longArray[] = {PARAM_LONG_VALUE1, PARAM_LONG_VALUE3, PARAM_LONG_VALUE2};
        ret = OH_CommonEvent_SetLongArrayToParameters(param, "longArrayKey", longArray, arraySize);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetLongArrayToParameters ret <%{public}d>.", ret);
-       
+   
        // 设置double类型附加信息和key
-       ret = OH_CommonEvent_SetDoubleToParameters(param, "doubleKey", 11.22);
+       ret = OH_CommonEvent_SetDoubleToParameters(param, "doubleKey", PARAM_DOUBLE_VALUE1);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetDoubleToParameters ret <%{public}d>.", ret);
-
+   
        // 设置double数组类型附加信息和key
-       double doubleArray[] = {11.22, 33.44, 55.66};
+       double doubleArray[] = {PARAM_DOUBLE_VALUE1, PARAM_DOUBLE_VALUE2, PARAM_DOUBLE_VALUE3};
        ret = OH_CommonEvent_SetDoubleArrayToParameters(param, "doubleArrayKey", doubleArray, arraySize);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetDoubleArrayToParameters ret <%{public}d>.", ret);
-       
+   
        // 设置boolean类型附加信息和key
        ret = OH_CommonEvent_SetBoolToParameters(param, "boolKey", true);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetBoolToParameters ret <%{public}d>.", ret);
-
+   
        // 设置boolean数组类型附加信息和key
        bool boolArray[] = {true, false, true};
        ret = OH_CommonEvent_SetBoolArrayToParameters(param, "boolArrayKey", boolArray, arraySize);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetBoolArrayToParameters ret <%{public}d>.", ret);
-       
+   
        // 设置char类型附加信息和key
        ret = OH_CommonEvent_SetCharToParameters(param, "charKey", 'A');
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetCharToParameters ret <%{public}d>.", ret);
-
+   
        // 设置char数组类型附加信息和key
-       const char* value= "Char Array";
+       const char *value = "Char Array";
        size_t valueLength = strlen(value);
        ret = OH_CommonEvent_SetCharArrayToParameters(param, "charArrayKey", value, valueLength);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetCharArrayToParameters ret <%{public}d>.", ret);
@@ -110,31 +125,32 @@
    }
    
    // 设置公共事件属性
-   void SetPublishInfo(const char* bundleName, const char* permissions[], int32_t num, const int32_t code, const char* data)
+   void SetPublishInfo(const char *bundleName, const char *permissions[], int32_t num, const int32_t code,
+                       const char *data)
    {
        int32_t ret = -1;
        // 创建publishInfo，设置是否为有序公共事件，取值为true，表示有序公共事件；取值为false，表示无序公共事件
-       CommonEvent_PublishInfo* info = OH_CommonEvent_CreatePublishInfo(true);
-
+       CommonEvent_PublishInfo *info = OH_CommonEvent_CreatePublishInfo(true);
+   
        // 设置公共事件包名称
        ret = OH_CommonEvent_SetPublishInfoBundleName(info, bundleName);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetPublishInfoBundleName ret <%{public}d>.", ret);
-
+   
        // 设置公共事件权限，参数为权限数组和权限的数量
        ret = OH_CommonEvent_SetPublishInfoPermissions(info, permissions, num);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetPublishInfoPermissions ret <%{public}d>.", ret);
-
+   
        // 设置公共事件结果码
        ret = OH_CommonEvent_SetPublishInfoCode(info, code);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetPublishInfoCode ret <%{public}d>.", ret);
-
+   
        // 设置公共事件结果数据
        size_t dataLength = strlen(data);
        ret = OH_CommonEvent_SetPublishInfoData(info, data, dataLength);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetPublishInfoData ret <%{public}d>.", ret);
-
+   
        // 设置公共事件附加信息
-       CommonEvent_Parameters* param = CreateParameters();
+       CommonEvent_Parameters *param = CreateParameters();
        ret = OH_CommonEvent_SetPublishInfoParameters(info, param);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetPublishInfoParameters ret <%{public}d>.", ret);
    }
@@ -148,8 +164,10 @@
      >
      > 不携带信息的公共事件，只能发布为无序公共事件。
 
-     ```c++
-     void Publish(const char* event)
+     <!-- @[event_publisher_publish](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_publish.cpp) -->
+     
+     ``` C++
+     void Publish(const char *event)
      {
          int32_t ret = OH_CommonEvent_Publish(event);
          OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_Publish ret <%{public}d>.", ret);
@@ -158,21 +176,26 @@
 
    - 通过[OH_CommonEvent_PublishWithInfo](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_publishwithinfo)发布携带信息的公共事件。
 
-     ```c++
-     void PublishWithInfo(const char* event, CommonEvent_PublishInfo* info)
+     <!-- @[event_publisher_publish_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_publish.cpp) -->
+     
+     ``` C++
+     void PublishWithInfo(const char *event, CommonEvent_PublishInfo *info)
      {
          // 创建时带入公共事件属性对象
          int32_t ret = OH_CommonEvent_PublishWithInfo(event, info);
          OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_PublishWithInfo ret <%{public}d>.", ret);
      }
      ```
+    
 
 5. 销毁公共事件对象。
 
    如果后续无需使用已创建的公共事件对象来发布公共事件，需要先通过[OH_CommonEvent_DestroyParameters](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_destroyparameters)销毁`CommonEvent_Parameters`对象，然后再通过[OH_CommonEvent_DestroyPublishInfo](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_destroypublishinfo)销毁公共事件对象。
    
-   ```c++
-   void DestroyPublishInfo(CommonEvent_Parameters* param, CommonEvent_PublishInfo* info)
+   <!-- @[event_publisher_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_publish.cpp) -->
+   
+   ``` C++
+   void DestroyPublishInfo(CommonEvent_Parameters *param, CommonEvent_PublishInfo *info)
    {
        // 先销毁Parameters
        OH_CommonEvent_DestroyParameters(param);

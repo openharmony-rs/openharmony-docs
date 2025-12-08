@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiAppEvent_Processor HiAppEvent_Processor
+```
+
 ## 概述
 
 应用事件上报的处理者。

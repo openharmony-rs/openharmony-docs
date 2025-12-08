@@ -6,6 +6,10 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct InputMethod_AttachOptions InputMethod_AttachOptions
+```
+
 ## 概述
 
 输入法绑定选项。绑定输入法时携带的选项。

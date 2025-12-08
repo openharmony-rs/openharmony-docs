@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供管理通知扩展的功能，包括打开设置界面、订阅和取消订阅通知、获取和设置通知授权状态。
+本模块提供管理通知扩展的能力，具体包括：打开通知扩展订阅设置界面、订阅和取消订阅通知扩展、获取和设置通知授权状态。
 
 > **说明：**
 >
@@ -25,7 +25,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 getAllSubscriptionBundles(): Promise\<BundleOption[]\>
 
-获取所有已被用户授权的订阅应用列表。使用Promise异步回调。
+获取所有具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限并且实现了[NotificationSubscriberExtensionAbility](./js-apis-notificationSubscriberExtensionAbility.md)的应用列表。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -37,7 +37,7 @@ getAllSubscriptionBundles(): Promise\<BundleOption[]\>
 
 | 类型     | 说明        | 
 | ------- |-----------|
-| Promise\<[BundleOption[]](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>   | Promise对象，返回所有启用了通知扩展订阅的应用包信息。        |
+| Promise\<[BundleOption[]](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>   | Promise对象，返回所有具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限并且实现了[NotificationSubscriberExtensionAbility](./js-apis-notificationSubscriberExtensionAbility.md)的应用列表。        |
 
 **错误码：**
 
@@ -64,7 +64,7 @@ notificationExtensionSubscription.getAllSubscriptionBundles().then((data) => {
 
 getUserGrantedState(targetBundle: BundleOption): Promise\<boolean\>
 
-查询指定应用的通知扩展订阅功能是否已启用。使用Promise异步回调。
+查询指定应用的"允许获取本机通知"状态是否已启用。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -76,13 +76,13 @@ getUserGrantedState(targetBundle: BundleOption): Promise\<boolean\>
 
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
-| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要查询的目标应用信息。该参数需要有ohos.permission.SUBSCRIBE_NOTIFICATION权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码。|
+| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要查询的目标应用信息。应用需要具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md),否则返回1600022错误码。|
 
 **返回值：**
 
 | 类型     | 说明        | 
 | ------- |-----------|
-| Promise\<boolean\> | Promise对象，返回true表示目标应用的订阅功能已启用；返回false表示目标应用的订阅功能未启用。 | 
+| Promise\<boolean\> | Promise对象，返回true表示目标应用的"允许获取本机通知"状态已启用；返回false表示目标应用的"允许获取本机通知"状态未启用。 | 
 
 **错误码：**
 
@@ -119,7 +119,7 @@ notificationExtensionSubscription.getUserGrantedState(targetBundle).then((isOpen
 
 setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Promise\<void\>
 
-设置指定应用的通知扩展订阅状态（启用或禁用）。使用Promise异步回调。
+设置指定应用的"允许获取本机通知"开关。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -131,8 +131,8 @@ setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Promise\<void
 
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
-| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要设置的目标应用信息。该参数需要有ohos.permission.SUBSCRIBE_NOTIFICATION权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码|
-| enable   | boolean | 是   | 表示是否启用通知扩展订阅，true表示已启用，false表示未启用。 |
+| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要设置的目标应用信息。应用需要具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码|
+| enable   | boolean | 是   | 表示应用的"允许获取本机通知"是否启用，true表示启用，false表示未启用。 |
 
 **返回值：**
 
@@ -171,7 +171,7 @@ notificationExtensionSubscription.setUserGrantedState(targetBundle, true).then((
 
 getUserGrantedEnabledBundles(targetBundle: BundleOption): Promise\<BundleOption[]\>
 
-查询指定应用（targetBundle）的通知扩展订阅功能，获取其授权接收的消息来源。使用Promise异步回调。
+获取指定应用（targetBundle）用户已授权"已获取的本机通知"通知开关的应用列表。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -183,11 +183,11 @@ getUserGrantedEnabledBundles(targetBundle: BundleOption): Promise\<BundleOption[
 
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
-| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要查询的目标应用信息。该参数需要有ohos.permission.SUBSCRIBE_NOTIFICATION权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码。|
+| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要查询的目标应用信息。应用需要具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码。|
 
 **返回值：**
 
-| 类型     | 说明        | 
+| 类型     | 说明        |
 | ------- |-----------|
 | Promise\<[BundleOption[]](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>   | Promise对象，返回包含被授权可接收哪些应用通知消息的应用列表。        |
 
@@ -197,11 +197,11 @@ getUserGrantedEnabledBundles(targetBundle: BundleOption): Promise\<BundleOption[
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 1600001  | Internal error.                     |
-| 1600003  | Failed to connect to the service.          |
-| 1600022  | The specified bundle is invalid.                          |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error. |
+| 1600003  | Failed to connect to the service. |
+| 1600022  | The specified bundle is invalid. |
 
 **示例：**
 
@@ -222,7 +222,7 @@ notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).the
 
 setUserGrantedBundleState(targetBundle: BundleOption, enabledBundles: BundleOption[], enabled:boolean): Promise\<void\>
 
-设置指定应用（targetBundle）通知扩展订阅功能的授权应用列表。使用Promise异步回调。
+设置指定应用（targetBundle）中"已获取的本机通知"的应用授权状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -234,9 +234,9 @@ setUserGrantedBundleState(targetBundle: BundleOption, enabledBundles: BundleOpti
 
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
-| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要设置的目标应用信息。该参数需要有ohos.permission.SUBSCRIBE_NOTIFICATION权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码。|
+| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要设置的目标应用信息。应用需要具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码。|
 | enabledBundles    | [BundleOption[]](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 被授权的应用信息列表。 |
-| enabled    | boolean       | 是   | 表示是否启用，true表示启用，false表示未启用。 |
+| enabled    | boolean       | 是   | 表示"已获取的本机通知"的应用授权状态是否启用，true表示已启用，false表示未启用。 |
 
 **返回值：**
 
@@ -251,10 +251,10 @@ setUserGrantedBundleState(targetBundle: BundleOption, enabledBundles: BundleOpti
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 1600001  | Internal error.                     |
-| 1600003  | Failed to connect to the service.          |
-| 1600022  | The specified bundle is invalid.                          |
+| 202      | Not system application to call the interface. 
+| 1600001  | Internal error. |
+| 1600003  | Failed to connect to the service. |
+| 1600022  | The specified bundle is invalid. |
 
 **示例：**
 

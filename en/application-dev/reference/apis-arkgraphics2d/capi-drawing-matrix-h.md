@@ -61,6 +61,7 @@ This file declares the functions related to the matrix in the drawing module.
 | [bool OH_Drawing_MatrixIsEqual(OH_Drawing_Matrix* matrix, OH_Drawing_Matrix* other)](#oh_drawing_matrixisequal) | Checks whether two **OH_Drawing_Matrix** objects are equal.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **matrix** or **other** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
 | [bool OH_Drawing_MatrixIsIdentity(OH_Drawing_Matrix* matrix)](#oh_drawing_matrixisidentity) | Checks whether an **OH_Drawing_Matrix** object is an identity matrix. |
 | [void OH_Drawing_MatrixDestroy(OH_Drawing_Matrix* matrix)](#oh_drawing_matrixdestroy) | Destroys an **OH_Drawing_Matrix** object and reclaims the memory occupied by the object.|
+| [OH_Drawing_ErrorCode OH_Drawing_MatrixPreConcat(OH_Drawing_Matrix* a, OH_Drawing_Matrix* b)](#oh_drawing_matrixpreconcat) | Left-multiplies matrix a by matrix b.|
 
 ## Enum Description
 
@@ -784,3 +785,31 @@ Destroys an **OH_Drawing_Matrix** object and reclaims the memory occupied by the
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | Pointer to an **OH_Drawing_Font** object.|
+
+
+### OH_Drawing_MatrixPreConcat()
+
+```
+OH_Drawing_ErrorCode OH_Drawing_MatrixPreConcat(OH_Drawing_Matrix* a, OH_Drawing_Matrix* b)
+```
+
+**Description**
+
+Left-multiplies matrix a by matrix b.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* a | Pointer to the [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md) object.|
+| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* b | Pointer to the [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md) object.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns an execution result.<br>**OH_DRAWING_SUCCESS**: Left multiplication successful.<br>OH_DRAWING_ERROR_INCORRECT_PARAMETER: Incorrect input parameter, that is **rect** or **other** is empty.|

@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -99,3 +99,59 @@ The provided parameter exceeds the boundary limits defined for the API being cal
 **Solution**
 
 Check the valid parameter range for the API being called.
+
+## 106406 Current Render Node Is Obtained from FrameNode
+
+**Error Message**
+
+The RenderNode is obtained from a FrameNode.
+
+**Description**
+
+This error code is reported when an attempt is made to perform unsupported operations on a RenderNode obtained from a FrameNode.
+
+**Possible Causes**
+
+The RenderNode is obtained from a FrameNode. Such nodes only support mounting and unmounting as child nodes; other operations are prohibited.
+
+**Solution**
+
+Skip the node during execution if operations other than mounting and unmounting are attempted.
+
+## 106407 Current Render Node Is Obtained from FrameNode and the FrameNode Is Disposed or No Longer Adopted
+
+**Error Message**
+
+The RenderNode is obtained from a FrameNode, and its corresponding FrameNode is no longer in the adopted state.
+
+**Description**
+
+This error code is reported when the RenderNode is obtained from a FrameNode and its corresponding FrameNode has been unadopted or disposed.
+Adoption: establishes a parent-child-like relationship where the parent node provides lifecycle callbacks to the child without actually adding it as a regular child node. The adopted node does not receive events from the parent or respond to events like normal child nodes.
+
+**Possible Causes**
+
+The FrameNode from which the RenderNode is obtained has been unadopted or disposed, making all operations except release invalid.
+
+**Solution**
+
+Release the RenderNode when its source FrameNode is unadopted.
+
+## 106408 Current Node Is Not in Adopted State
+
+**Error Message**
+
+The node is not adopted.
+
+**Description**
+
+This error code is reported when an attempt is made to obtain a RenderNode from a node that is not in the adopted state.
+Adoption: establishes a parent-child-like relationship where the parent node provides lifecycle callbacks to the child without actually adding it as a regular child node. The adopted node does not receive events from the parent or respond to events like normal child nodes.
+
+**Possible Causes**
+
+The node is not adopted, making its RenderNode inaccessible.
+
+**Solution**
+
+Use the **adoptChild** API to have the node adopted by another node before obtaining its RenderNode.

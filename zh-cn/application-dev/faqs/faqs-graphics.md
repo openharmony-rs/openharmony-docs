@@ -1,5 +1,10 @@
 # 图形图像开发常见问题
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @oh_wangxk; @goumiao; @hangmengxin-->
+<!--Designer: @liumingxiang; @wangyanglan-->
+<!--Tester: @yhl0101; @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
 ## 如何获取设备的dpi值(API 9)
 
@@ -157,7 +162,7 @@ UIAbility不能用来组合应用内界面，用应用内导航组件Navigation�
 
 **参考链接：**
 
-[Navigation的使用](../ui/arkts-navigation-navigation.md)
+[Navigation的使用](../ui/arkts-navigation-architecture.md)
 
 
 

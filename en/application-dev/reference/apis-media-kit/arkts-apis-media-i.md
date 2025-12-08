@@ -239,30 +239,31 @@ Defines the audio and video metadata.
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- |------------------------------------------------------------ |
-| album     | string | No| Yes| Title of the album. Currently, the AVRecorder does not support the setting of this property.    |
-| albumArtist | string | No| Yes| Artist of the album. Currently, the AVRecorder does not support the setting of this property.|
-| artist | string | No| Yes| Artist of the media asset. Currently, the AVRecorder does not support the setting of this property.|
-| author | string | No| Yes| Author of the media asset. Currently, the AVRecorder does not support the setting of this property.|
-| dateTime | string | No| Yes| Time when the media asset is created. Currently, the AVRecorder does not support the setting of this property.|
-| dateTimeFormat | string | No| Yes| Time when the media asset is created. The value is in the YYYY-MM-DD HH:mm:ss format. Currently, the AVRecorder does not support the setting of this property.|
-| composer | string | No| Yes| Composer of the media asset. Currently, the AVRecorder does not support the setting of this property.|
-| duration | string | No| Yes| Duration of the media asset. Currently, the AVRecorder does not support the setting of this property.|
+| album     | string | No| Yes| Title of the album. This property cannot be set for the AVRecorder.    |
+| albumArtist | string | No| Yes| Artist of the album. This property cannot be set for the AVRecorder.|
+| artist | string | No| Yes| Artist of the media asset. This property cannot be set for the AVRecorder.|
+| author | string | No| Yes| Author of the media asset. This property cannot be set for the AVRecorder.|
+| dateTime | string | No| Yes| Time when the media asset is created. This property cannot be set for the AVRecorder.|
+| dateTimeFormat | string | No| Yes| Time when the media asset is created. The value is in the YYYY-MM-DD HH:mm:ss format. This property cannot be set for the AVRecorder.|
+| composer | string | No| Yes| Composer of the media asset. This property cannot be set for the AVRecorder.|
+| duration | string | No| Yes| Duration of the media asset. This property cannot be set for the AVRecorder.|
 | genre | string | No| Yes| Type or genre of the media asset.|
-| hasAudio | string | No| Yes| Whether the media asset contains audio. Currently, the AVRecorder does not support the setting of this property.|
-| hasVideo | string | No| Yes| Whether the media asset contains a video. Currently, the AVRecorder does not support the setting of this property.|
-| mimeType | string | No| Yes| MIME type of the media asset. Currently, the AVRecorder does not support the setting of this property.|
-| trackCount | string | No| Yes| Number of tracks of the media asset. Currently, the AVRecorder does not support the setting of this property.|
-| sampleRate | string | No| Yes| Audio sample rate, in Hz. Currently, the AVRecorder does not support the setting of this property.|
-| title | string | No| Yes| Title of the media asset. This parameter is read-only in the current version. Currently, the AVRecorder does not support the setting of this property.|
-| videoHeight | string | No| Yes| Video height, in px. Currently, the AVRecorder does not support the setting of this property.|
-| videoWidth | string | No| Yes| Video width, in px. Currently, the AVRecorder does not support the setting of this property.|
+| hasAudio | string | No| Yes| Whether the media asset contains audio. This property cannot be set for the AVRecorder.|
+| hasVideo | string | No| Yes| Whether the media asset contains a video. This property cannot be set for the AVRecorder.|
+| mimeType | string | No| Yes| MIME type of the media asset. This property cannot be set for the AVRecorder.|
+| trackCount | string | No| Yes| Number of tracks of the media asset. This property cannot be set for the AVRecorder.|
+| sampleRate | string | No| Yes| Audio sample rate, in Hz. This property cannot be set for the AVRecorder.|
+| title | string | No| Yes| Title of the media asset. This parameter is read-only in the current version. This property cannot be set for the AVRecorder.|
+| description<sup>23+</sup> | string | No| Yes| Description of a media resource. This parameter is read-only in the current version. This property cannot be set for the AVRecorder.|
+| videoHeight | string | No| Yes| Video height, in px. This property cannot be set for the AVRecorder.|
+| videoWidth | string | No| Yes| Video width, in px. This property cannot be set for the AVRecorder.|
 | videoOrientation | string | No| Yes| Video rotation direction, in degrees.|
-| hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | No| Yes| HDR type of the media asset. Currently, the AVRecorder does not support the setting of this property.|
+| hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | No| Yes| HDR type of the media asset. This property cannot be set for the AVRecorder.|
 | location<sup>12+</sup> | [Location](#location) | No| Yes| Geographical location of the media asset.|
 | customInfo<sup>12+</sup> | Record<string, string> | No| Yes| Custom key-value mappings obtained from **moov.meta.list**.|
-| tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | No| Yes| Track information of the media asset. Currently, the AVRecorder does not support the setting of this property.|
+| tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | No| Yes| Track information of the media asset. This property cannot be set for the AVRecorder.|
 
-### Description of MediaDescriptionKey supported by AVMetadata.tracks
+### MediaDescriptionKey<sup>8+</sup> Values Supported by AVMetadata.tracks
 
 The following table lists the values of [MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8) supported by AVMetadata.tracks.
 
@@ -276,11 +277,11 @@ The following table lists the values of [MediaDescriptionKey](arkts-apis-media-e
 | MD_KEY_FRAME_RATE | 'frame_rate' | Video|
 | MD_KEY_AUD_CHANNEL_COUNT | 'channel_count' | Audio|
 | MD_KEY_AUD_SAMPLE_RATE | 'sample_rate' | Audio|
-| MD_KEY_HDR_TYPE | 'hdr_type' | Video|
-| MD_KEY_ORIGINAL_WIDTH | 'original_width' | Video|
-| MD_KEY_ORIGINAL_HEIGHT | 'original_height' | Video|
-| MD_KEY_BITRATE | 'bitrate' | Audio|
-| MD_KEY_AUD_SAMPLE_DEPTH | 'sample_depth' | Audio|
+| MD_KEY_HDR_TYPE<sup>12+</sup> | 'hdr_type' | Video|
+| MD_KEY_ORIGINAL_WIDTH<sup>21+</sup> | 'original_width' | Video|
+| MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup> | 'original_height' | Video|
+| MD_KEY_BITRATE | 'bitrate' | Audio and video (supported since API version 21)|
+| MD_KEY_AUD_SAMPLE_DEPTH<sup>12+</sup> | 'sample_depth' | Audio (supported since API version 21)|
 
 ## PixelMapParams<sup>12+</sup>
 

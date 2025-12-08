@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_PathEffect OH_Drawing_PathEffect
+```
+
 ## Overview
 
 Defines a struct for a path effect that affects the stroke.

@@ -512,7 +512,7 @@ arrayList.forEach((value: number, index?: number) => {
 
 sort(comparator?: (firstValue: T, secondValue: T) => number): void
 
-Sorts elements in this ArrayList.
+Sorts elements in an ArrayList according to the order defined by the specified comparator.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

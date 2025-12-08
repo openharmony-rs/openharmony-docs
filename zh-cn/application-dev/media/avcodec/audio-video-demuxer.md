@@ -359,6 +359,9 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
       int32_t ret;
 
       while (!isEnd.load()) {
+         // 在调用OH_AVDemuxer_ReadSampleBuffer接口获取数据前，需要先调用OH_AVDemuxer_SelectTrackByID选中需要获取数据的轨道。
+         // 注意：
+         // 在avi、mpg、wmv格式下，由于容器标准不支持封装时间戳信息，所以demuxer解出的帧中不含pts信息，需要调用方根据帧率及解码出帧后的显示顺序自行计算显示时间戳信息。
          ret = OH_AVDemuxer_ReadSampleBuffer(demuxer, trackIndex, buffer);
          if (ret == AV_ERR_OK) {
                OH_AVBuffer_GetBufferAttr(buffer, &info);

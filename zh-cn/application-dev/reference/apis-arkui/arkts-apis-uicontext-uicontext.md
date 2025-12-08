@@ -14,15 +14,15 @@ UIContext实例对象。
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 >
-> - 以下API需先使用ohos.window中的[getUIContext()](arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，再通过此实例调用对应方法。或者可以通过自定义组件内置方法[getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext)获取。本文中UIContext对象以uiContext表示。
+> - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的[getUIContext()](arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定义组件内置方法[getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](#getcallingscopeuicontext23)获取UIContext实例。本文中UIContext对象以uiContext表示。
 
 **示例：**
 
-以下示例展示了两种获取UIContext实例的方法。
+以下示例展示了三种获取UIContext实例的方法。
 
 ```ts
-//两种方法获取到的UIContext没有差异
-//index.ets
+// 三种方法获取到的UIContext没有差异
+// index.ets
 import { UIContext } from '@kit.ArkUI';
 
 @Entry
@@ -32,15 +32,17 @@ struct Index {
     Column() {
       Button("Button")
           .onClick(()=>{
-            //通过自定义组件内置方法获取
+            // 通过自定义组件内置方法获取
             this.getUIContext()
-            //其他运行逻辑
+            // 通过UIContext类的静态方法获取
+            let uiContext = UIContext.getCallingScopeUIContext();
+            // 其他运行逻辑
           })
     }  
   }
 }
 
-//EntryAbility.ets
+// EntryAbility.ets
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -49,9 +51,335 @@ const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    //通过ohos.window获取
+    // 通过ohos.window获取
     windowStage.getMainWindowSync().getUIContext()
-    //其他运行逻辑
+    // 其他运行逻辑
+  }
+}
+```
+
+## constructor<sup>23+</sup>
+
+constructor()
+
+构造UIContext对象。
+
+> **说明：**
+>
+> 通过构造函数创建的UIContext对象指向不明确的UI上下文，即不指向任何UI实例。该UIContext对应实例的唯一标识ID为-1。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例：**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+function GetUIContextByAtomicInterface(): UIContext {
+  let callingScopeUIContext = UIContext.getCallingScopeUIContext();
+  if (callingScopeUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of calling scope.`)
+    return callingScopeUIContext;
+  }
+  let allContexts = UIContext.getAllUIContexts();
+  let length = allContexts.length;
+  if (length === 1) {
+    hilog.info(0x00, 'testTag', `Get UIContext of unique UI instance.`)
+    return allContexts[0];
+  }
+  let lastFocusedUIContext = UIContext.getLastFocusedUIContext();
+  if (lastFocusedUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of last focused instance.`)
+    return lastFocusedUIContext;
+  }
+  let lastForegroundUIContext = UIContext.getLastForegroundUIContext();
+  if (lastForegroundUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of last foregrounded instance.`)
+    return lastForegroundUIContext;
+  }
+  if (length !== 0) {
+    hilog.info(0x00, 'testTag', `Get UIContext with maximum instanceId.`)
+    return allContexts[length - 1];
+  }
+  hilog.info(0x00, 'testTag', `Get UIContext of undefined calling scope.`)
+  return new UIContext();
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  aboutToAppear() {
+    let uiContext = this.getUIContext();
+    hilog.info(0x00, 'testTag', `aboutToAppear UIContext: ${uiContext.getId()}`)
+  }
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let resolvedUIContext = UIContext.resolveUIContext();
+          let contextByAtomicInterface = GetUIContextByAtomicInterface();
+          hilog.info(0x00, 'testTag',
+            `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}}, contextByAtomicInterface: ${contextByAtomicInterface.getId()}`);
+          this.message = 'Welcome';
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## getCallingScopeUIContext<sup>23+</sup>
+
+static getCallingScopeUIContext(): UIContext | undefined
+
+获取当前[调用作用域](../../ui/arkts-global-interface.md#基本概念)的UIContext，调用作用域不明确时返回undefined。
+
+> **说明：**
+>
+> 返回的UIContext对象可能指向一个已销毁的UI实例，通常在由已销毁的实例抛出异步任务时出现。建议通过[isAvailable](#isavailable20)接口判断其有效性。
+
+**原子化服务API:：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+| UIContext \| undefined | 当前[调用作用域](../../ui/arkts-global-interface.md#基本概念)的UIContext，调用作用域不明确时返回undefined。 |
+
+**示例：**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getCallingScopeUIContext();
+          hilog.info(0x00, 'testTag', 'Current calling UIContext is : ' + uiContext?.isAvailable());
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## getLastFocusedUIContext<sup>23+</sup>
+
+static getLastFocusedUIContext(): UIContext | undefined
+
+获取最近一次切换到获焦状态的UI实例的UIContext。
+
+**原子化服务API:：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+| UIContext \| undefined | 返回最近一次切换到获焦状态的UI实例的UIContext。如果最近一次切换到获焦状态的实例已被销毁或无实例曾经处于获焦状态，返回undefined。|
+
+**示例：**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getLastFocusedUIContext();
+          hilog.info(0x00, 'testTag', 'Current calling UIContext is : ' + uiContext?.isAvailable());
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## getLastForegroundUIContext<sup>23+</sup>
+
+static getLastForegroundUIContext(): UIContext | undefined
+
+获取最近一次切换到前台状态的UI实例的UIContext。
+
+**原子化服务API:：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+| UIContext \| undefined | 返回最近一次切换到前台状态的UI实例的UIContext。如果最近一次切换到前台状态的UI实例已被销毁或无UI实例曾经处于前台状态，则返回undefined。 |
+
+**示例：**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getLastForegroundUIContext();
+          hilog.info(0x00, 'testTag', 'Current calling UIContext is : ' + uiContext?.isAvailable());
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## getAllUIContexts<sup>23+</sup>
+
+static getAllUIContexts(): UIContext[]
+
+获取所有当前有效的UIContext实例。
+
+**原子化服务API:：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+| UIContext[] | 返回所有当前有效UIContext实例的数组。如果没有有效的UIContext实例，则返回空数组。 |
+
+**示例：**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContexts = UIContext.getAllUIContexts();
+          hilog.info(0x00, 'testTag', `There are ${uiContexts.length} UIContext(s)`);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## resolveUIContext<sup>23+</sup>
+
+static resolveUIContext(): ResolvedUIContext
+
+使用优先级策略获取UIContext对象和UIContext的解析策略。
+
+>**说明：**
+>
+> 按照预定义的优先级顺序解析并返回UIContext实例和UIContext的解析策略。
+>
+> 解析规则按顺序如下：
+> 1. 当前调用作用域中的UIContext。
+> 2. 如果只存在一个UI实例，则返回其UIContext。
+> 3. 如果存在UI实例切换到获焦状态，且最近一次切换到获焦状态的UI实例未销毁，则返回最近一次获焦UI实例的UIContext。
+> 4. 如果存在UI实例切换到前台状态，且最近一次切换到前台状态的UI实例未销毁，则返回最近一次切换到前台状态的UI实例的UIContext。
+> 5. 如果存在多个UI实例，则返回实例唯一标识的ID最大的UIContext。
+> 6. 如果以上条件均不满足，则返回一个无效的UIContext实例。
+
+**原子化服务API:：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+| [ResolvedUIContext](./arkts-apis-uicontext-resolveduicontext.md) | 返回UIContext实例对象和UIContext的解析策略。 |
+
+**示例：**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('click').onClick(() => {
+        let resolvedUIContext = UIContext.resolveUIContext();
+        hilog.info(0x00, 'testTag', `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}}`);
+      })
+    }
+    .width(UIContext.resolveUIContext().px2vp(100))
+    .height('100%')
   }
 }
 ```
@@ -414,6 +742,85 @@ getOverlayManagerOptions(): OverlayManagerOptions
 **示例：**
 
 完整示例请参考[OverlayManager](arkts-apis-uicontext-overlaymanager.md)中的示例。
+
+## animateToImmediately<sup>22+</sup>
+
+animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
+
+通过UIContext对象指定明确的动画主实例上下文，并触发显式动画立即下发。避免由于找不到实例或实例不对，导致的动画不执行或动画结束回调不执行问题。使用callback异步回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填   | 说明                                    |
+| ----- | ---------------------------------------- | ---- | ------------------------------------- |
+| param | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam对象说明) | 是    | 设置动画效果相关参数。                           |
+| processor | Callback&lt;void&gt;                              | 是    | 回调函数。指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+
+**示例：**
+
+该示例通过UIContext对象获取显式立即动画，并调用animateToImmediately接口实现参数定义的动画效果。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct AnimateToImmediatelyExample {
+  @State widthSize: number = 250
+  @State heightSize: number = 100
+  @State opacitySize: number = 0
+  private flag: boolean = true
+  uiContext: UIContext | null | undefined = this.getUIContext();
+
+  build() {
+    Column() {
+      Column()
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .backgroundColor(Color.Green)
+        .opacity(this.opacitySize)
+      Button('change size')
+        .margin(30)
+        .onClick(() => {
+          if (this.flag) {
+            this.uiContext?.animateToImmediately({
+              delay: 0,
+              duration: 1000
+            }, () => {
+              this.opacitySize = 1
+            })
+            this.uiContext?.animateTo({
+              delay: 1000,
+              duration: 1000
+            }, () => {
+              this.widthSize = 150
+              this.heightSize = 60
+            })
+          } else {
+            this.uiContext?.animateToImmediately({
+              delay: 0,
+              duration: 1000
+            }, () => {
+              this.widthSize = 250
+              this.heightSize = 100
+            })
+            this.uiContext?.animateTo({
+              delay: 1000,
+              duration: 1000
+            }, () => {
+              this.opacitySize = 0
+            })
+          }
+          this.flag = !this.flag
+        })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+![animateToImmediately](figures/animateToImmediately.gif)
 
 ## animateTo
 
@@ -2268,6 +2675,55 @@ struct Index {
   }
 }
 ```
+## getWindowId<sup>23+</sup>
+
+getWindowId(): number | undefiend
+
+获取当前应用实例所属的窗口ID。
+
+> **说明：**
+>
+>  若UIContext位于主应用程序进程中的[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)内，则返回主应用程序的顶层窗口ID。
+>
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：** 
+
+| 类型   | 说明                                         |
+| ------ | -------------------------------------------- |
+|  number \| undefined |  当前应用实例所属的窗口ID。若窗口不存在，则返回undefined。 |
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  aboutToAppear() {
+    const windowId = this.getUIContext().getWindowId();
+    hilog.info(0x0000, 'testTag', 'current window id: %{public}s', windowId);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ## getWindowWidthBreakpoint<sup>13+</sup>
 
@@ -2562,7 +3018,7 @@ openBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOp
 | ------- | ---------------------------------------- | ---- | ------- |
 | bindSheetContent | [ComponentContent\<T>](js-apis-arkui-ComponentContent.md) | 是 | 半模态页面中显示的组件内容。 |
 | sheetOptions | [SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions) | 否    |   半模态页面样式。<br/>**说明：** <br/>1. 不支持设置SheetOptions.uiContext，该属性的值固定为当前实例的UIContext。<br/>2. 若不传递targetId，则不支持设置SheetOptions.preferType为POPUP样式，若设置了POPUP样式则使用CENTER样式替代。<br/>3. 若不传递targetId，则不支持设置SheetOptions.mode为EMBEDDED模式，默认为OVERLAY模式。<br/>4. 其余属性的默认值参考[SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)文档。 |
-| targetId | number | 否    |   需要绑定组件的ID，若不指定则不绑定任何组件。id不存在时返回错误码120004。 |
+| targetId | number | 否    |   需要绑定组件的ID，若不指定则不绑定任何组件。id不存在时返回错误码120004。在传入undefined时返回错误码401。 |
 
 **返回值：**
 
@@ -3183,7 +3639,7 @@ enableSwipeBack(enabled: Optional\<boolean\>): void
 
 设置是否支持应用内横向滑动返回上一级。
 
-**原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
+**原子化服务API:：** 从API version 18 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -3220,7 +3676,7 @@ getTextMenuController(): TextMenuController
 
 获取[TextMenuController](arkts-apis-uicontext-textmenucontroller.md)对象，可通过该对象控制文本选择菜单。
 
-**原子化服务API:** 从API version 16 开始，该接口支持在原子化服务中使用。
+**原子化服务API:：** 从API version 16 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3244,7 +3700,7 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 >
 > 返回的UI上下文只可用于创建[自定义节点](../../ui/arkts-user-defined-node.md)，不能执行其他UI操作。
 
-**原子化服务API:** 从API version 17 开始，该接口支持在原子化服务中使用。
+**原子化服务API:：** 从API version 17 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3294,7 +3750,7 @@ static destroyUIContextWithoutWindow(): void
 
 销毁[createUIContextWithoutWindow](#createuicontextwithoutwindow17)创建的UI实例。
 
-**原子化服务API:** 从API version 17 开始，该接口支持在原子化服务中使用。
+**原子化服务API:：** 从API version 17 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

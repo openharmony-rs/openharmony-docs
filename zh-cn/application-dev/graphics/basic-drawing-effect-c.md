@@ -38,7 +38,7 @@
 1. 使用OH_Drawing_BrushCreate()接口创建画刷Brush对象。
 
    <!-- @[ndk_graphics_draw_create_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
-
+   
    ``` C++
    // 创建画刷
    OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();

@@ -39,7 +39,7 @@
 | ---- | ------------- | ---- |
 | [typedef int (\*OH_OnRemoteRequestCallback)(uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, void *userData)](#oh_onremoterequestcallback) | OH_OnRemoteRequestCallback | Stub端用于处理远端数据请求的回调函数。 |
 | [typedef void (\*OH_OnRemoteDestroyCallback)(void *userData)](#oh_onremotedestroycallback) | OH_OnRemoteDestroyCallback | 用于监听对象销毁的回调函数。 |
-| [OHIPCRemoteStub* OH_IPCRemoteStub_Create(const char *descriptor, OH_OnRemoteRequestCallback requestCallback, OH_OnRemoteDestroyCallbac destroyCallback, void *userData)](#oh_ipcremotestub_create) | - | 创建OHIPCRemoteStub对象。 |
+| [OHIPCRemoteStub* OH_IPCRemoteStub_Create(const char *descriptor, OH_OnRemoteRequestCallback requestCallback, OH_OnRemoteDestroyCallback destroyCallback, void *userData)](#oh_ipcremotestub_create) | - | 创建OHIPCRemoteStub对象。 |
 | [void OH_IPCRemoteStub_Destroy(OHIPCRemoteStub *stub)](#oh_ipcremotestub_destroy) | - | 销毁OHIPCRemoteStub对象。 |
 | [void OH_IPCRemoteProxy_Destroy(OHIPCRemoteProxy *proxy)](#oh_ipcremoteproxy_destroy) | - | 销毁OHIPCRemoteProxy对象。 |
 | [int OH_IPCRemoteProxy_SendRequest(const OHIPCRemoteProxy *proxy, uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, const OH_IPC_MessageOption *option)](#oh_ipcremoteproxy_sendrequest) | - | IPC消息发送函数。 |
@@ -253,7 +253,7 @@ int OH_IPCRemoteProxy_GetInterfaceDescriptor(OHIPCRemoteProxy *proxy, char **des
 ### OH_OnDeathRecipientCallback()
 
 ```C
-typedef void(*OH_OnDeathRecipientCallback)(void *userData)
+typedef void (*OH_OnDeathRecipientCallback)(void *userData)
 ```
 
 **描述：**
@@ -273,7 +273,7 @@ typedef void(*OH_OnDeathRecipientCallback)(void *userData)
 ### OH_OnDeathRecipientDestroyCallback()
 
 ```C
-typedef void(*OH_OnDeathRecipientDestroyCallback)(void *userData)
+typedef void (*OH_OnDeathRecipientDestroyCallback)(void *userData)
 ```
 
 **描述：**

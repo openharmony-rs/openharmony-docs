@@ -393,7 +393,7 @@ struct Child {
 ## 限制条件
 
 \@Param装饰器存在以下使用限制：
-- \@Param装饰器只能在[\@ComponentV2](arkts-new-componentV2.md)装饰器的自定义组件中使用。
+- \@Param装饰器只能在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰器的自定义组件中使用。
 
   ```ts
   @ComponentV2

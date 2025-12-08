@@ -22,10 +22,6 @@ Speech recognition can convert an audio file into text, which is widely used in 
 1. Select a speech recognition model.
 2. Use the MindSpore Lite inference model on the device to implement speech recognition.
 
-## Environment Setup
-
-Install DevEco Studio 5.0.2 or later, and update the SDK to API version 14 or later.
-
 ## Development Procedure
 
 This section uses the inference of a speech recognition model as an example to demonstrate how to implement a speech recognition application using MindSpore Lite.
@@ -690,7 +686,7 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
 
 1. In **entry/src/main/cpp/types/libentry/Index.d.ts**, define the ArkTS API `runDemo()` by adding the following content:
 
-   <!-- @[index_asr_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/types/libentry/index.d.ts) -->
+   <!-- @[index_asr_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
    ```ts
    export const runDemo: (a: Object) => string;
@@ -844,8 +840,6 @@ struct Index {
    ......
    05-16 14:53:55.272   1679-1679     A00000/[MSLiteNapi]             com.sampl...cdemoasr  I     MS_LITE_LOG: run decoder loop 16 ok!
                                                                                                    token = 50257
-   05-16 14:53:55.307   1679-1679     A00000/[MSLiteNapi]             com.sampl...cdemoasr  I     MS_LITE_LOG: result is -> I think the most important thing about running is that it brings me physical health.
-   05-16 14:53:55.334   1679-1679     A03d00/JSAPP                    com.sampl...cdemoasr  I     MS_LITE_LOG: output length =  20 ;value =  I think the most important thing about running is that it brings me physical health.
    05-16 14:53:55.334   1679-1679     A03d00/JSAPP                    com.sampl...cdemoasr  I     MS_LITE_LOG: *** Finished MSLite Demo ***
    ```
 
@@ -858,3 +852,9 @@ After you tap the **Play Audio** button on the device screen, the sample audio f
 | :-----------------------: | :-----------------------: |
 | ![asr1](figures/asr1.png) | ![asr2](figures/asr2.png) |
 
+
+## Related Samples
+
+The following sample is provided to help you better understand how to develop speech recognition applications using MindSpore Lite:
+
+- [MindSpore Lite ASR Application Development Based on Native APIs (C/C++) (API 14)] (https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR)

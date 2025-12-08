@@ -2175,8 +2175,9 @@ struct ListNodeTest {
 
 ```ts
  //index.ets
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
- @Entry
+@Entry
 @Component
 struct Index {
   @State message: string = 'is on render tree';
@@ -2191,9 +2192,9 @@ struct Index {
     }
     let isOnRenderTree = buttonNode!.isInRenderState();
     if (isOnRenderTree) {
-      console.log('is on render tree')
+      hilog.info(1,'frameNode', 'is on render tree');
     } else {
-      console.log('is not no render tree')
+      hilog.info(1,'frameNode', 'is not no render tree');
     }
   }
 
@@ -2222,13 +2223,13 @@ struct Index {
         let textNode8 = this.getUIContext().getFrameNodeById("hello8");
         if (textNode8 != null) {
           let isOnRenderTree = textNode8!.isInRenderState();
-          console.log('is hello8 on RenderTree:' + isOnRenderTree);
+          hilog.info(1,'frameNode', 'is hello8 on RenderTree: %{public}s', isOnRenderTree);
         }
         let textNode1 = this.getUIContext().getFrameNodeById("hello1");
         if (textNode1 != null) {
           let isOnRenderTree = textNode1!.isInRenderState();
           isOnRenderTree ? this.message = 'is on render tree' : 'is not no render tree'
-          console.log('is hello1 on RenderTree:' + isOnRenderTree);
+          hilog.info(1,'frameNode', 'is hello1 on RenderTree: %{public}s', isOnRenderTree);
         }
       })
     }

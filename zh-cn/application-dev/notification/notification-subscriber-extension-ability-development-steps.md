@@ -21,11 +21,10 @@
 
 1. 在entry/src/main/ets/创建目录notificationsubscriberextability。
 
-2. 在entry/src/main/ets/notificationsubscriberextability创建NotificationSubscriberExtAbility.ets，其内容如下。
+2. 在entry/src/main/ets/notificationsubscriberextability目录下创建NotificationSubscriberExtAbility.ets，其内容如下。
 ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  import NotificationSubscriberExtensionAbility from '@ohos.application.NotificationSubscriberExtensionAbility'
-  import extensionSubscription from '@ohos.notificationExtensionSubscription';
+  import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
 
   const DOMAIN = 0x0000;
   const TAG = 'NotificationSubscriberExtAbility';
@@ -35,7 +34,7 @@
       hilog.info(DOMAIN, 'testTag', `${TAG} onDestroy`);
     }
 
-    onReceiveMessage(notificationInfo: extensionSubscription.NotificationInfo): void {
+    onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
       hilog.info(DOMAIN, 'testTag', `${TAG} onReceiveMessage. notificationInfo: ${JSON.stringify(notificationInfo)}`);
     }
 
@@ -49,28 +48,28 @@
 4. 实现[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)后，还需要在合适的时机调用[OpenSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings)接口，打开通知扩展订阅设置页面，引导用户授予获取本机通知的权限，该页面以半模态弹窗显示。建议在设备管理页面提供一个通知授权的按钮，用户点击按钮则调用[OpenSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings)接口。
 
 5. 在应用的module.json5文件中配置extensionAbilities。
-```ts
-  {
-    "name": "NotificationSubscriberExtAbility",
-    "srcEntry": "./ets/notificationsubscriberextability/NotificationSubscriberExtAbility.ets",
-    "type": "notificationSubscriber",
-    "description": "$string:NotificationSubscriberExtAbility_desc",
-    "icon": "$media:layered_image",
-    "label": "$string:NotificationSubscriberExtAbility_label",
-    "exported": true
-  }
-```
+   ```ts
+     {
+       "name": "NotificationSubscriberExtAbility",
+       "srcEntry": "./ets/notificationsubscriberextability/NotificationSubscriberExtAbility.ets",
+       "type": "notificationSubscriber",
+       "description": "$string:NotificationSubscriberExtAbility_desc",
+       "icon": "$media:layered_image",
+       "label": "$string:NotificationSubscriberExtAbility_label",
+       "exported": true
+     }
+   ```
 6. 在应用的string.json文件中添加
-```
-  {
-    "name": "NotificationSubscriberExtAbility_desc",
-    "value": "description"
-  },
-  {
-    "name": "NotificationSubscriberExtAbility_label",
-    "value": "ThirdPartyWearableApp"
-  }
-```
+   ```
+     {
+       "name": "NotificationSubscriberExtAbility_desc",
+       "value": "description"
+     },
+     {
+       "name": "NotificationSubscriberExtAbility_label",
+       "value": "ThirdPartyWearableApp"
+     }
+   ```
 
 ## 传统蓝牙连接示例
 

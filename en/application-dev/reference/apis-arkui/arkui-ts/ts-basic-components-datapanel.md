@@ -1,10 +1,10 @@
 # DataPanel
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Owner: @Zhang-Dong-Hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester:@jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **DataPanel** component is used to display proportions in a chart.
 
@@ -36,7 +36,7 @@ DataPanel(options: DataPanelOptions)
 
 ## DataPanelOptions
 
-Data panel options.
+Defines data panel configuration options.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -47,13 +47,13 @@ Data panel options.
 | Name           | Type  | Read-Only| Optional| Description|
 | ----------------- | -------- | ----- | -------- | -------- |
 | values            | number[]   | No  | No | Data value list. A maximum of nine values are supported. If more than nine values are set, only the first nine ones are used. A value less than 0 evaluates to the value **0**.|
-| max               | number     | No  | Yes  |   - When set to a value greater than 0, this parameter indicates the maximum value in the **values** list.<br>- When set to a value equal to or smaller than 0, this parameter indicates the sum of values in the **values** list. The values are displayed in proportion.<br>Default value: **100**|
+| max               | number     | No  | Yes  |   - When set to a value greater than 0, this parameter indicates the maximum value in the **values** list.<br>- When set to a value equal to or smaller than 0, this parameter indicates the sum of values in the **values** list, and the values are displayed proportionally based on their relative sizes.<br>Default value: **100**|
 | type<sup>8+</sup> | [DataPanelType](#datapaneltype8) | No| Yes| Type of the data panel (dynamic modification is not supported).<br>Default value: **DataPanelType.Circle**|
 
 
 ## DataPanelType<sup>8+</sup>
 
-Type of the data panel.
+Enumerates data panel types.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -75,7 +75,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 closeEffect(value: boolean)
 
-Sets whether to disable the rotation and shadow effects for the component. If the [trackShadow](#trackshadow10) property is not set, this property controls the projection effect. If the projection effect is enabled, the default projection effect is used. If the trackShadow property is set, the trackShadow property value controls the projection effect.
+Sets whether to disable the rotation and shadow effects for the component. When the [trackShadow](#trackshadow10) attribute is not configured, this attribute controls the shadow effect. If the shadow effect is enabled, the default shadow style is applied. When **trackShadow** is explicitly set, the **trackShadow** configuration takes precedence.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -87,7 +87,7 @@ Sets whether to disable the rotation and shadow effects for the component. If th
 
 | Name| Type   | Mandatory| Description                                                  |
 | ------ | ------- | ---- | ------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to disable the rotation and shadow effects for the component.<br>Default value: **false**<br>**false**: Disable the rotation and shadow effects.<b>**true**: Enable the rotation and shadow effects.|
+| value  | boolean | Yes  | Whether to disable the rotation and shadow effects for the component.<br>Default value: **false**. **true**: Disable the rotation and shadow effects. **false**: Enable the rotation and shadow effects.|
 
 ### valueColors<sup>10+</sup>
 
@@ -119,7 +119,7 @@ Sets the background color.
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color.<br>The value is in hexadecimal ARGB notation. The first two digits indicate opacity.<br>Default value: **'#08182431'**|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color.<br>The value is in hexadecimal ARGB notation. The first two digits indicate transparency. Default value: **'#08182431'**|
 
 ### strokeWidth<sup>10+</sup>
 
@@ -135,7 +135,7 @@ Sets the stroke width of the border. This attribute does not take effect when th
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value | [Length](ts-types.md#length) | Yes| Stroke width of the border.<br>Default value: **24**<br>Unit: vp<br>If you do not specify a unit when setting a parameter of the string type, the default unit px is used. For example, '10' is equivalent to '10px'.<br>**NOTE**<br>If a value less than 0 is set, the default value is used.<br>If the value exceeds the radius of the ring, the thickness will automatically be adjusted to 12% of the ring's radius to prevent visual issues. If the value is too large, the circle may disappear.|
+| value | [Length](ts-types.md#length) | Yes| Stroke width of the border.<br>Default value: **24**<br>Unit: vp<br>When string values are provided without explicit units, the default unit px will be applied. For example, '10' is equivalent to '10px'.<br>**NOTE**<br>If a value less than 0 is set, the default value is used.<br>If the value exceeds the radius of the ring, the thickness will automatically be adjusted to 12% of the ring's radius to prevent visual issues. Excessively large values may cause the ring to become invisible.|
 
 ### trackShadow<sup>10+</sup>
 
@@ -151,7 +151,7 @@ Sets the shadow style.
 
 | Name| Type                                                       | Mandatory| Description                                                 |
 | ------ | ----------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| value  | [DataPanelShadowOptions](#datapanelshadowoptions10) | Yes  | Shadow style.<br>**NOTE**<br>If this attribute is set to **null**, the shadow effect is disabled.|
+| value  | [DataPanelShadowOptions](#datapanelshadowoptions10) | Yes  | Shadow style.<br>**NOTE**<br>If this parameter is set to **null**, the shadow effect is disabled.|
 
 ### contentModifier<sup>12+</sup>
 
@@ -172,7 +172,7 @@ Creates a content modifier.
 
 ## DataPanelShadowOptions<sup>10+</sup>
 
-Inherits from [MultiShadowOptions](ts-information-display-common.md#multishadowoptions) and has all attributes of MultiShadowOptions.
+Inherits from [MultiShadowOptions](ts-information-display-common.md#multishadowoptions) and has all properties of **MultiShadowOptions**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -400,7 +400,7 @@ struct LinearGradientDataPanelExample {
 
 ### Example 4: Setting the Custom Content Area
 
-This example uses the [contentModifier](#contentmodifier12) interface to customize the content area of the data panel.
+This example shows how to customize the content area of the data panel using the [contentModifier](#contentmodifier12) API.
 
 ```ts
 // xxx.ets

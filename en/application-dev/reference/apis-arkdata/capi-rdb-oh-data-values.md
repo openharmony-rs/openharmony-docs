@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Data_Values OH_Data_Values
+```
+
 ## Overview
 
 Defines the **OH_Data_Values** struct to store multiple data values.

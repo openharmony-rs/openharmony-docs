@@ -5,7 +5,7 @@
 <!--Owner: @piggyguy; @jiyujia926; @yangfan229-->
 <!--Designer: @piggyguy; @s10021109; @yangfan229-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >**NOTE**
 >
@@ -46,15 +46,15 @@
 | Auto      | 3  | The image or video is scaled appropriately based on its own dimensions and the component's size to fill the view while maintaining the aspect ratio, aligned horizontally in the center.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>![ImageFit-Examples03](figures/image_fit_auto.png) |
 | None      | 5  | The image is displayed at its original size, aligned horizontally in the center.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>![ImageFit-Examples06](figures/image_fit_none.png) |
 | ScaleDown | 6  | The image or video is displayed while maintaining the aspect ratio, only scaling down or keeping the original size, aligned horizontally in the center.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>![ImageFit-Examples05](figures/image_fit_scaleDown.png) |
-| TOP_START<sup>12+</sup> | 7  | The image or video is displayed at the top start of the component in the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>![ImageFit-Examples07](figures/image_fit_top_start.png) |
-| TOP<sup>12+</sup>       | 8  | The image or video is displayed horizontally in the middle of the component and retains the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>![ImageFit-Examples08](figures/image_fit_top.png)  |
-| TOP_END<sup>12+</sup>   | 9  | The image or video is displayed at the end of the component and retains the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>![ImageFit-Examples09](figures/image_fit_top_end.png) |
-| START<sup>12+</sup>     | 10  | The image or video is displayed vertically in the middle of the component and retains the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>![ImageFit-Examples10](figures/image_fit_start.png) |
-| CENTER<sup>12+</sup>    | 11  | The image or video is displayed in the middle of the component and retains the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>![ImageFit-Examples11](figures/image_fit_center.png) |
-| END<sup>12+</sup>       | 12  | The image or video is displayed vertically in the middle of the component and retains the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>![ImageFit-Examples12](figures/image_fit_end.png) |
-| BOTTOM_START<sup>12+</sup> | 13  | The image or video is displayed at the start of the bottom of the component and retains the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>![ImageFit-Examples13](figures/image_fit_bottom_start.png) |
-| BOTTOM<sup>12+</sup>    | 14  | The image or video is displayed horizontally in the middle of the bottom of the component and retains the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>![ImageFit-Examples14](figures/image_fit_bottom.png) |
-| BOTTOM_END<sup>12+</sup>| 15  | The image or video is displayed at the end of the bottom of the component and retains the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>![ImageFit-Examples15](figures/image_fit_bottom_end.png) |
+| TOP_START<sup>12+</sup> | 7  | The image or video is displayed at the top start position of the component in the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>![ImageFit-Examples07](figures/image_fit_top_start.png) |
+| TOP<sup>12+</sup>       | 8  | The image or video is displayed at the top center position of the component in the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>![ImageFit-Examples08](figures/image_fit_top.png)  |
+| TOP_END<sup>12+</sup>   | 9  | The image or video is displayed at the top end position of the component in the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>![ImageFit-Examples09](figures/image_fit_top_end.png) |
+| START<sup>12+</sup>     | 10  | The image or video is displayed at the start position (vertically centered) of the component in the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>![ImageFit-Examples10](figures/image_fit_start.png) |
+| CENTER<sup>12+</sup>    | 11  | The image or video is displayed at the center position of the component in the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>![ImageFit-Examples11](figures/image_fit_center.png) |
+| END<sup>12+</sup>       | 12  | The image or video is displayed at the end position (vertically centered) of the component in the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>![ImageFit-Examples12](figures/image_fit_end.png) |
+| BOTTOM_START<sup>12+</sup> | 13  | The image or video is displayed at the bottom start position of the component in the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>![ImageFit-Examples13](figures/image_fit_bottom_start.png) |
+| BOTTOM<sup>12+</sup>    | 14  | The image or video is displayed at the bottom center position of the component in the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>![ImageFit-Examples14](figures/image_fit_bottom.png) |
+| BOTTOM_END<sup>12+</sup>| 15  | The image or video is displayed at the bottom end position of the component in the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>![ImageFit-Examples15](figures/image_fit_bottom_end.png) |
 | MATRIX<sup>15+</sup>| 16  | The image, with the use of [imageMatrix](ts-basic-components-image.md#imagematrix15), is displayed in the specified position of the **Image component**, keeping its original size. SVG images are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 
 ## BorderStyle
@@ -580,15 +580,15 @@ Enumerated type that supports the align and [layoutGravity](ts-universal-attribu
 
 | Name         | Description   |
 | ----------- | ----- |
-| Left        | The gradient direction is from right to left.|
-| Top         | The gradient direction is from bottom to top.|
-| Right       | The gradient direction is from left to right.|
-| Bottom      | The gradient direction is from top to bottom.|
-| LeftTop     | The gradient direction is upper left.  |
-| LeftBottom  | The gradient direction is lower left.  |
-| RightTop    | The gradient direction is upper right.  |
-| RightBottom | The gradient direction is lower right.  |
-| None        | No gradient.   |
+| Left        | From right to left.|
+| Top         | From bottom to top.|
+| Right       | From left to right.|
+| Bottom      | From top to bottom.|
+| LeftTop     | From upper left to lower right.  |
+| LeftBottom  | From lower left to upper right.  |
+| RightTop    | From upper right to lower left.  |
+| RightBottom | From lower right to upper left.  |
+| None        | None.   |
 
 ## SharedTransitionEffectType
 
@@ -869,7 +869,7 @@ Enumerates the coloring strategies.
 
 type Nullable\<T> = T | undefined
 
-The object of this type can be of a custom type or **undefined**.
+This type allows for an object of a custom type or **undefined**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -877,7 +877,8 @@ The object of this type can be of a custom type or **undefined**.
 
 | Type| Description                      |
 | ---- | -------------------------- |
-| T \| undefined | The object of this type can be of a custom type or **undefined**.|
+|  T   | The object can be of any custom type.|
+| undefined | The object can be **undefined**.|
 
 ## WordBreak<sup>11+</sup>
 
@@ -1302,8 +1303,8 @@ Enumerates anchor types of the tooltip.
 
 | Name   |  Description                  |
 | ------  | -------------------- |
-| TARGET | The tips follow the target object.|
-| CURSOR | The tips follow the mouse.|
+| TARGET | The tooltip follows the target component.|
+| CURSOR | The tooltip follows the cursor position.|
 
 ## AnimationPropertyType<sup>20+</sup>
 
@@ -1344,7 +1345,7 @@ Enumerates focus wrapping modes for cross-axis directional navigation.
 | Name           | Value  | Description                                                        |
 | --------------- | ---- | ------------------------------------------------------------ |
 | DEFAULT         | 0    | Cross-axis directional navigation does not wrap focus.                                      |
-| WRAP_WITH_ARROW | 1    | Cross-axis directional navigation wraps focus.<br>In irregular grid layouts, when moving focus along the cross-axis, the system prioritizes focusable items within the same row.|
+| WRAP_WITH_ARROW | 1    | Cross-axis directional navigation wraps focus.<br>In irregular grid layouts, when moving focus along the cross axis, the system prioritizes focusable items within the same row.|
 
 ## DividerMode<sup>19+</sup>
 
@@ -1361,7 +1362,7 @@ Enumerates divider modes.
 
 ## PresetFillType<sup>22+</sup>
 
-Enumerates preset column layouts for different responsive breakpoints.
+Enumerates column count policies for different [responsive breakpoints](../../../ui/arkts-layout-development-grid-layout.md#breakpoints).
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1369,6 +1370,22 @@ Enumerates preset column layouts for different responsive breakpoints.
 
 | Name           | Value  | Description                                                        |
 | --------------- | ---- | ------------------------------------------------------------ |
-| BREAKPOINT_DEFAULT         | 0    | Default responsive layout: **List** or **Swiper**: 1 column (SM), 2 columns (MD), 3 columns (LG or larger).<br> **Grid** or **WaterFlow**: 2 columns (SM), 3 columns (MD), 5 columns (LG or larger).                                      |
-| BREAKPOINT_SM1MD2LG3 | 1    | 1 column (SM), 2 columns (MD), 3 columns (LG or larger).|
-| BREAKPOINT_SM2MD3LG5 | 2    | 2 columns (SM), 3 columns (MD), 5 columns (LG or larger).|
+| ARKUI_ITEMFILLPOLICY_NONE | -1    | No responsive breakpoint policy is set.|
+| BREAKPOINT_DEFAULT         | 0    | **List** or **Swiper** component: 1 column (SM or smaller), 2 columns (MD), 3 columns (LG or larger).<br> **Grid** or **WaterFlow** component: 2 columns (SM or smaller), 3 columns (MD), 5 columns (LG or larger).                                      |
+| BREAKPOINT_SM1MD2LG3 | 1    | 1 column (SM or smaller), 2 columns (MD), 3 columns (LG or larger).|
+| BREAKPOINT_SM2MD3LG5 | 2    | 2 columns (SM or smaller), 3 columns (MD), 5 columns (LG or larger).|
+
+## RenderStrategy<sup>22+</sup>
+
+Enumerates rendering strategies for drawing rounded corners.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name                                | Value| Description                                      |
+| ---------------------------------- | --- | ---------------------------------------- |
+| FAST | 0 | Online rendering mode: The current node and its child nodes are directly rendered to the main canvas with rounded corner clipping applied.<br> Note: Online rendering may cause display anomalies in certain scenarios. For example, when blur effects are applied within rounded corner components, background colors may interact and create gradient overlay effects. For detailed behavior, see [Example 3: Configuring Offscreen Rounded Corners](./ts-universal-attributes-border.md#example-3-configuring-offscreen-rounded-corners).|
+| OFFSCREEN | 1 | Offscreen rendering mode: The current node and its child nodes are first rendered to an offscreen canvas, and then undergo rounded corner clipping before being composited to the main canvas.<br> **NOTE**<br>1. Offscreen rendering provides superior visual quality and resolves display issues present in online rendering, but requires additional performance overhead.<br>2. Use offscreen rendering primarily for multi-layer components requiring rounded corners. For single components, it has effect only when the [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute, [background color](./ts-universal-attributes-background.md), or [foreground color](./ts-universal-attributes-foreground-color.md) is configured. |

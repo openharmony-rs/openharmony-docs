@@ -1,0 +1,7 @@
+| 操作 | 旧版本 | 新版本 | d.ts文件 |
+| ---- | ------ | ------ | -------- |
+|新增错误码|类名：tag；<br>API声明：function registerForegroundDispatch(elementName: ElementName, discTech: number[], callback: AsyncCallback\<TagInfo>): void;<br>差异内容：NA|类名：tag；<br>API声明：function registerForegroundDispatch(elementName: ElementName, discTech: number[], callback: AsyncCallback\<TagInfo>): void;<br>差异内容：3100201|api/@ohos.nfc.tag.d.ts|
+|新增错误码|类名：tag；<br>API声明：function unregisterForegroundDispatch(elementName: ElementName): void;<br>差异内容：NA|类名：tag；<br>API声明：function unregisterForegroundDispatch(elementName: ElementName): void;<br>差异内容：3100201|api/@ohos.nfc.tag.d.ts|
+|新增错误码|类名：tag；<br>API声明：function on(type: 'readerMode', elementName: ElementName, discTech: number[], callback: AsyncCallback\<TagInfo>): void;<br>差异内容：NA|类名：tag；<br>API声明：function on(type: 'readerMode', elementName: ElementName, discTech: number[], callback: AsyncCallback\<TagInfo>): void;<br>差异内容：3100201|api/@ohos.nfc.tag.d.ts|
+|新增错误码|类名：tag；<br>API声明：function off(type: 'readerMode', elementName: ElementName, callback?: AsyncCallback\<TagInfo>): void;<br>差异内容：NA|类名：tag；<br>API声明：function off(type: 'readerMode', elementName: ElementName, callback?: AsyncCallback\<TagInfo>): void;<br>差异内容：3100201|api/@ohos.nfc.tag.d.ts|
+|权限变更|类名：tag；<br>API声明：export interface TagInfo<br>差异内容：ohos.permission.NFC_TAG|类名：tag；<br>API声明：export interface TagInfo<br>差异内容：NA|api/@ohos.nfc.tag.d.ts|

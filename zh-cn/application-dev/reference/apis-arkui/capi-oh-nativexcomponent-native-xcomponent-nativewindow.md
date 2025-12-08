@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```
-typedef struct OHNativeWindow OHNativeWindow
+typedef struct NativeWindow OHNativeWindow
 ```
 
 ## 概述

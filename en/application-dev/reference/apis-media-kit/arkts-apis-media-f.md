@@ -330,7 +330,7 @@ Creates a SoundPool instance. This API uses an asynchronous callback to return t
 > **NOTE**
 >
 > - In versions earlier than API version 18, the bottom layer of the created SoundPool object is in singleton mode. Therefore, an application process can create only one SoundPool instance.
-> - In API version 18 and later versions, the bottom layer of the created SoundPool object is in multiton mode. Therefore, an application process can create a maximum of 128 SoundPool instances.
+> - In API version 18 and later, the bottom layer of the created SoundPool object is in multiton mode. Therefore, an application process can create a maximum of 128 SoundPool instances.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -381,7 +381,7 @@ Creates a SoundPool instance. This API uses a promise to return the result.
 > **NOTE**
 >
 > - In versions earlier than API version 18, the bottom layer of the created SoundPool object is in singleton mode. Therefore, an application process can create only one SoundPool instance.
-> - In API version 18 and later versions, the bottom layer of the created SoundPool object is in multiton mode. Therefore, an application process can create a maximum of 128 SoundPool instances.
+> - In API version 18 and later, the bottom layer of the created SoundPool object is in multiton mode. Therefore, an application process can create a maximum of 128 SoundPool instances.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -501,7 +501,7 @@ media.createAVImageGenerator((error: BusinessError, generator: media.AVImageGene
     avImageGenerator = generator;
     console.info('Succeeded in creating AVImageGenerator');
   } else {
-    console.error(`Failed to creat AVImageGenerator, error message:${error.message}`);
+    console.error(`Failed to create AVImageGenerator, error message:${error.message}`);
   }
 });
 ```
@@ -539,10 +539,10 @@ media.createAVImageGenerator().then((generator: media.AVImageGenerator) => {
     avImageGenerator = generator;
     console.info('Succeeded in creating AVImageGenerator');
   } else {
-    console.error('Failed to creat AVImageGenerator');
+    console.error('Failed to create AVImageGenerator');
   }
 }).catch((error: BusinessError) => {
-  console.error(`Failed to creat AVImageGenerator, error message:${error.message}`);
+  console.error(`Failed to create AVImageGenerator, error message:${error.message}`);
 });
 ```
 

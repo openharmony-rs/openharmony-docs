@@ -4,9 +4,9 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-You can enable or disable a component to control whether it responds to user interactions. When a component is enabled, it can respond to the following events: [click event](ts-universal-events-click.md), [touch event](ts-universal-events-touch.md), [drag and drop event](ts-universal-events-drag-drop.md), [key event](ts-universal-events-key.md), [focus event](ts-universal-focus-event.md), [mouse event](ts-universal-mouse-key.md), [axis event](ts-universal-events-axis.md), [hover event](ts-universal-events-hover.md), [accessibility hover event](ts-universal-accessibility-hover-event.md), [gesture event](ts-gesture-settings.md), [focus axis event](ts-universal-events-focus_axis.md), and [crown event](ts-universal-events-crown.md).
+You can enable or disable a component to control whether it responds to user interactions. When a component is enabled, it can respond to the following events: [click event](ts-universal-events-click.md), [touch event](ts-universal-events-touch.md), [drag event](ts-universal-events-drag-drop.md), [key event](ts-universal-events-key.md), [focus event](ts-universal-focus-event.md), [mouse event](ts-universal-mouse-key.md), [axis event](ts-universal-events-axis.md), [hover event](ts-universal-events-hover.md), [accessibility hover event](ts-universal-accessibility-hover-event.md), [gesture event](ts-gesture-settings.md), [focus axis event](ts-universal-events-focus_axis.md), and [crown event](ts-universal-events-crown.md).
 
 >  **NOTE**
 >
@@ -40,7 +40,7 @@ Sets whether the component responds to user interactions. If **enabled** is not 
 
 ## Example
 
-This example demonstrates how to use **enable** to set whether a button responds to user interactions.
+This example demonstrates how to use **enabled** to set whether a button responds to user interactions.
 
 ```ts
 // xxx.ets

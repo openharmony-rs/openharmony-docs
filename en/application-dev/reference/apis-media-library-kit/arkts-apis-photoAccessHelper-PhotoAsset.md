@@ -582,7 +582,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 clone(title: string): Promise&lt;PhotoAsset&gt;
 
-Clones a media asset. The file name can be set, but the file type cannot be changed.
+Clones a media asset. The file name can be set, but the file type cannot be changed. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE\_IMAGEVIDEO
 

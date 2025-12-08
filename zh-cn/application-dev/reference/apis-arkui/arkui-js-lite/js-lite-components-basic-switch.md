@@ -92,7 +92,7 @@ export default {
       title: 'on'
   },
   switchChange(e){
-      console.log(e.checked);
+      console.info(e.checked);
       if(e.checked){
           this.title="on"
       }else{

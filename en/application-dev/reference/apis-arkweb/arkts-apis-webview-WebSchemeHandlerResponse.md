@@ -371,7 +371,7 @@ For details about the sample code, see [constructor](#constructor12).
 
 getHeaderByName(name: string): string
 
-Obtains the character set of this response.
+Obtains the value of a response header field by name.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_ControlCenterStatusInfo {...} Camera_ControlCenterStatusInfo
+```
+
 ## 概述
 
 控制器效果激活状态信息。

@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVRecorder_Profile {...} OH_AVRecorder_Profile
+```
+
 ## 概述
 
 定义音视频录制的详细参数。

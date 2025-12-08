@@ -1,4 +1,4 @@
-# @ohos.reminderAgentManager (Agent-Powered Reminders)
+# @ohos.reminderAgentManager (Agent-powered Reminder)
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: Resourceschedule-->

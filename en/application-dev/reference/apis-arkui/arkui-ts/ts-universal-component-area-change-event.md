@@ -1,10 +1,16 @@
 # Component Area Change Event
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The area change event is triggered when the component's size, position, or any other attribute that may affect its display area changes.
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > The **onAreaChange** callback is specific to the current component only. There is no strict execution order or guarantee of constraints for the **onAreaChange** callbacks on ancestor or descendant components.
 
@@ -14,7 +20,7 @@ onAreaChange(event: (oldValue: Area, newValue: Area) => void): T
 
 Triggered when the component area changes in size or position due to layout updates.
 
-This event is not triggered for changes in render attributes caused by re-rendering, such as changes in [translate](ts-universal-attributes-transformation.md#translate) and [offset](ts-types.md#offset). In addition, if the component position is altered due to drawing changes, for example, through [bindSheet](ts-universal-attributes-sheet-transition.md#bindsheet), this event is also not triggered.
+This event is not triggered for render attribute changes caused by re-rendering, such as changes to [translate](ts-universal-attributes-transformation.md#translate), [offset](ts-universal-attributes-location.md#offset), [markAnchor](ts-universal-attributes-location.md#markanchor), [scale](ts-universal-attributes-transformation.md#scale), or [transform](ts-universal-attributes-transformation.md#transform). In addition, if the component position is altered due to drawing changes, for example, through [bindSheet](ts-universal-attributes-sheet-transition.md#bindsheet), this event is also not triggered.
 
 >  **NOTE**
 >
@@ -28,8 +34,7 @@ This event is not triggered for changes in render attributes caused by re-render
 
 | Name  | Type                     | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| oldValue | [Area](ts-types.md#area8) | Yes  | Width and height of the target element as well as its coordinates relative to the parent element and the upper left corner of the page before the change.|
-| newValue | [Area](ts-types.md#area8) | Yes  | Width and height of the target element as well as its coordinates relative to the parent element and the upper left corner of the page after the change.|
+| event | (oldValue: [Area](ts-types.md#area8), newValue: [Area](ts-types.md#area8)) => void  | Yes  | Position information of the target element. **oldValue** indicates the width and height of the target element as well as its coordinates relative to the parent element and the upper left corner of the page before the change. **newValue** indicates these dimensions and coordinates after the change.|
 
 **Return value**
 

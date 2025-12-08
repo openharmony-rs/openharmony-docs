@@ -6,12 +6,12 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+AutoDeviceSwitchQuery is used to check whether a device supports automatic camera switch.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 13.
-
-AutoDeviceSwitchQuery is used to check whether a device supports automatic camera switch.
 
 ## Modules to Import
 

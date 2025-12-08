@@ -6,6 +6,10 @@
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct {...} Telephony_NetworkState
+```
+
 ## 概述
 
 网络状态信息。

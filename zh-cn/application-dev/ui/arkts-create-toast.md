@@ -31,7 +31,7 @@
 
  - 遵从系统默认弹出位置。
 
-   即时反馈在系统中默认从界面底部弹出，距离底部有一定的安全间距，作为系统性的应用内提示反馈，请遵守系统默认效果，避免与其他弹出类组件内容重叠。特殊场景下可对内容布局进行规避。
+   即时反馈在系统中默认从界面底部弹出，距离底部有一定的安全间距，作为系统性的应用内提示反馈，请遵从系统默认效果，避免与其他弹出类组件内容重叠。特殊场景下可对内容布局进行规避。
 
  - 弹框字体最大放大倍数限制。
 
@@ -43,7 +43,7 @@
 
 在TOP_MOST类型的Toast显示前，会创建一个全屏大小的子窗（手机上子窗大小和主窗大小一致），然后在该子窗上计算Toast的布局位置，最后显示在该子窗上。具体和DEFAULT模式Toast的差异如下：
 
-| 差异点| DEFAULT | TOP_MOST |
+|差异点|DEFAULT|TOP_MOST|
 | --- | --- | --- |
 | 是否创建子窗	 | 否 | 是 |
 | 层级 | 显示在主窗内，层级和主窗一致，一般比较低 | 显示在子窗中，一般比主窗层级高，比其他弹窗类组件层级高，比软键盘和权限弹窗层级低 |
@@ -53,13 +53,18 @@
 <!-- @[toast_showDefaultAndTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/DefaultAndTopToast.ets) -->
 
 ``` TypeScript
-import {promptAction} from '@kit.ArkUI';
+import { promptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = '[Sample_dialogproject]';
+const DOMAIN: number = 0xFF00;
 
 @Entry
 @Component
 export struct DefaultAndTopToastExample {
   build() {
-    // ···
+    // ...
       Column({ space: 10 }) {
         TextInput()
         Button() {
@@ -70,12 +75,18 @@ export struct DefaultAndTopToastExample {
         .height('100')
         .width('100%')
         .onClick(() => {
-          this.getUIContext().getPromptAction().showToast({
-            message: 'ok, I am DEFAULT toast',
-            duration: 2000,
-            showMode: promptAction.ToastShowMode.DEFAULT,
-            bottom: 80
-          });
+          try {
+            this.getUIContext().getPromptAction().showToast({
+              message: 'ok, I am DEFAULT toast',
+              duration: 2000,
+              showMode: promptAction.ToastShowMode.DEFAULT,
+              bottom: 80
+            });
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            hilog.error(DOMAIN, TAG, '%{public}s', 'showToast args error code is $\{code}, message is $\{message}');
+          }
         })
 
         Blank().height(200);
@@ -87,15 +98,21 @@ export struct DefaultAndTopToastExample {
         .height('100')
         .width('100%')
         .onClick(() => {
-          this.getUIContext().getPromptAction().showToast({
-            message: 'ok, I am TOP_MOST toast',
-            duration: 2000,
-            showMode: promptAction.ToastShowMode.TOP_MOST,
-            bottom: 85
-          });
+          try {
+            this.getUIContext().getPromptAction().showToast({
+              message: 'ok, I am TOP_MOST toast',
+              duration: 2000,
+              showMode: promptAction.ToastShowMode.TOP_MOST,
+              bottom: 85
+            });
+          }  catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            hilog.error(DOMAIN, TAG, '%{public}s', 'showToast args error code is $\{code}, message is $\{message}');
+          }
         })
       }
-    // ···
+      // ...
   }
 }
 ```
@@ -143,7 +160,7 @@ export struct CreateToastExample {
 
 ![image](figures/UIToast1.gif)
 
-## 显示关闭即时反馈
+## 显示和关闭即时反馈
 
 适用于提示框停留时间较长，用户操作可以提前关闭提示框的场景。
 

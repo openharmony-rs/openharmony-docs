@@ -4,7 +4,7 @@
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can bind a floating tooltip to a component. The tooltip automatically appears when a pointer hovers over the component and disappears when the pointer moves away.
 
@@ -48,10 +48,10 @@ Defines the parameters of the tooltip.
 
 | Name                                 | Type                                                        | Read-Only| Optional| Description                                                     |
 | ------------------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| appearingTime         |           number   | No   | Yes |Delay before the tooltip appears.<br>Default value: **700**.<br>Unit: ms.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| disappearingTime                 |   number   | No  | Yes | Delay before the tooltip disappears.<br>Default value: **300**.<br>Unit: ms.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| appearingTimeWithContinuousOperation    |     number   | No  | Yes | Delay before the tooltip disappears when multiple tooltips are displayed consecutively.<br>Default value: **300**.<br>Unit: ms.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| disappearingTimeWithContinuousOperation |     number   | No  | Yes | Delay before the tooltip disappears when multiple tooltips are displayed consecutively.<br>Default value: **0**.<br>Unit: ms.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| appearingTime         |           number   | No   | Yes |Delay before the tooltip appears. The maximum delay is 4000 ms. Values exceeding 4000 ms are capped at 4000 ms.<br>Default value: **700**.<br>Unit: ms.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| disappearingTime                 |   number   | No  | Yes | Delay before the tooltip disappears. The maximum delay is 4000 ms. Values exceeding 4000 ms are capped at 4000 ms.<br>Default value: **300**.<br>Unit: ms.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| appearingTimeWithContinuousOperation    |     number   | No  | Yes | Delay before the tooltip appears when multiple tooltips are displayed consecutively. The maximum delay is 4000 ms. Values exceeding 4000 ms are capped at 4000 ms.<br>Default value: **300**.<br>Unit: ms.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| disappearingTimeWithContinuousOperation |     number   | No  | Yes | Delay before the tooltip disappears when multiple tooltips are displayed consecutively. The maximum delay is 4000 ms. Values exceeding 4000 ms are capped at 4000 ms.<br>Default value: **0**.<br>Unit: ms.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | enableArrow        | boolean                                                      | No  | Yes | Whether to display the tooltip arrow. The value **true** means to display the tooltip arrow, and **false** means the opposite.<br>Default value: **true**.<br>**NOTE**<br>If the available space on the screen is insufficient, the tooltip will cover part of the component and the arrow will not be displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | arrowPointPosition     | [ArrowPointPosition](ts-appendix-enums.md#arrowpointposition11) | No  | Yes | Position of the tooltip arrow relative to its parent component. Available positions are **Start**, **Center**, and **End**, in both vertical and horizontal directions. These positions are within the parent component area and do not exceed its boundaries or cover rounded corners.<br>Default value: **ArrowPointPosition.CENTER**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | arrowWidth           | [Dimension](ts-types.md#dimension10)                  | No  | Yes | Width of the tooltip arrow. If the set width exceeds the length of the edge minus twice the tooltip's corner radius, the arrow is not drawn.<br>Default value: **16**.<br>Unit: vp.<br>**NOTE**<br>Percentage values are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
@@ -77,7 +77,7 @@ Provides information about the tooltip.
 You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 ### Example 1: Binding a Tooltip
 
-This example shows how to bind a tooltip to a button using **bindTooltip**.
+This example shows how to bind a tooltip to a button using **bindTips**.
 
 ```ts
 // xxx.ets

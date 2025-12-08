@@ -1,4 +1,10 @@
 # toolbar-item
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @mayaolll-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -60,13 +66,13 @@ Not supported
 
 ```html
 <!-- xxx.hml -->
-<toolbar style="position:fixed; bottom:0px;">
-    <toolbar-item icon='common/Icon/location.png' value='Option 1'></toolbar-item>
-    <toolbar-item icon='common/Icon/heart.png' value='Option 2'></toolbar-item>
-    <toolbar-item icon='common/Icon/diamond.png' value='Option 3'></toolbar-item>
-    <toolbar-item icon='common/Icon/heart.png' value='Option 4'></toolbar-item>
-    <toolbar-item icon='common/Icon/heart.png' value='Option 5'></toolbar-item>
-    <toolbar-item icon='common/Icon/heart.png' value='Option 6'></toolbar-item>
+<toolbar style="position: fixed; bottom: 0px;">
+    <toolbar-item icon="common/Icon/location.png" value='Option 1'></toolbar-item>
+    <toolbar-item icon="common/Icon/heart.png" value='Option 2'></toolbar-item>
+    <toolbar-item icon="common/Icon/diamond.png" value='Option 3'></toolbar-item>
+    <toolbar-item icon="common/Icon/heart.png" value='Option 4'></toolbar-item>
+    <toolbar-item icon="common/Icon/heart.png" value='Option 5'></toolbar-item>
+    <toolbar-item icon="common/Icon/heart.png" value='Option 6'></toolbar-item>
 </toolbar>
 ```
 

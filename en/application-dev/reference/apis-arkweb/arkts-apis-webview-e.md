@@ -342,6 +342,17 @@ Enumerates the destroy modes of the **Web** component. When the Web component is
 | NORMAL_MODE | 0 | Normal mode. The system determines the destroy time of **Web** component resources.|
 | FAST_MODE   | 1 | Quick mode. When the **Web** component is destroyed, the related internal resources are destroyed immediately.|
 
+## ScrollbarMode<sup>23+</sup>
+
+Enumerates the global scrollbar modes in the web page.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name| Value| Description|
+| ------------------------------- | - | ---------- |
+| OVERLAY_LAYOUT_SCROLLBAR  | 0 | The scrollbar is not always displayed.|
+| FORCE_DISPLAY_SCROLLBAR    | 1 | The scrollbar is always displayed.|
+
 ## WebBlanklessErrorCode<sup>20+</sup>
 
 Enumerates the error codes of the blankless loading.
@@ -372,7 +383,7 @@ For details about the ArkWeb kernel version, see [Adaptation Guide for the M114 
 >**Table 1** Description of evergreen kernel and legacy kernel
 >| **Kernel Type** | **Name** | **Description** |
 >| ----------- | -------- | -------- |
->| Evergreen kernel     | EVERGREEN WebCore | Latest Web kernel of the system, based on which the complete functionalities are implemented. This kernel is recommended for applications. |
+>| Evergreen kernel     | EVERGREEN WebCore | Latest Web kernel of the system, based on which the complete functionalities are implemented. This kernel is recommended for applications.|
 >| Legacy kernel     | LEGACY WebCore | A previous-release kernel that receives only security and PR-related fixes, used solely for compatibility rollback, and is supported for a fixed duration only. |
 
 
@@ -398,3 +409,15 @@ Enumerates the behavior modes of the web soft keyboard.
 | ------------------------------- | - | ---------- |
 | DEFAULT | 0 | When the **Web** component is focused or unfocused, or its status changes to inactive or active, the system attempts to hide or display the soft keyboard. This value is used by default.|
 | DISABLE_AUTO_KEYBOARD_ON_ACTIVE | 1 | When the **Web** component's status changes between inactive and active, the system does not hide or start the soft keyboard.|
+
+## WebHttpCookieSameSitePolicy<sup>23+</sup>
+
+Enumerates the policies for sending cookies in cross-site requests.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name| Value| Description|
+| ---- | -- |----------------------------------------- |
+| NONE | 0 | Cookies can be carried in cross-site requests, but the **secure** attribute must be set.|
+| LAX | 1 | Cookies can be carried in specific cross-site requests, such as navigation scenarios of some GET requests.|
+| STRICT | 2 | Cookies cannot be carried in cross-site requests.|

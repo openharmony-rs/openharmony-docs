@@ -32,6 +32,8 @@
     - [指定PEM格式字符串数据转换非对称密钥对(C/C++)](crypto-convert-string-data-to-asym-key-pair-ndk.md)
     - [使用RSA私钥进行编码解码(ArkTS)](crypto-rsa-encoded-decoded.md)
     - [使用RSA私钥进行编码解码(C/C++)](crypto-rsa-encoded-decoded-ndk.md)
+    - [使用私钥对象获取公钥对象(ArkTS)](crypto-prikey-to-get-pubkey.md)
+    - [使用私钥对象获取公钥对象(C/C++)](crypto-prikey-to-get-pubkey-ndk.md)
 - 加解密<!--crypto-encryption-decryption-->
   - [加解密介绍](crypto-encryption-decryption-overview.md)
   - 加解密算法规格<!--crypto-encrypt-decrypt-spec-->

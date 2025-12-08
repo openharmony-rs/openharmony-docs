@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} JSVM_CreateVMOptions
+```
+
 ## 概述
 
 创建JavaScript虚拟机的选项。
@@ -28,6 +32,6 @@
 | size_t initialYoungGenerationSize | 年轻代内存大小初始值。 |
 | const char* snapshotBlobData | 启动快照数据。 |
 | size_t snapshotBlobSize | 启动快照数据的大小。 |
-| bool isForSnapshotting | 虚拟机是否用于创建快照。 |
+| bool isForSnapshotting | 虚拟机是否用于创建快照，为true，则虚拟机用于创建快照，为false，则虚拟机不用于创建快照。 |
 
 

@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct {...} ffrt_condattr_t
+```
+
 ## Overview
 
 The **ffrt_condattr_t** struct describes a condition variable attribute.

@@ -32,7 +32,7 @@ This topic describes only how to implement the playback of a media asset. In pra
 
 - Pay attention to the timing of API calls. Make reasonable calls according to the state diagram and detailed API documentation. After the program execution, call the corresponding `OH_***_Destroy` API to release resources.
 
-- When registering a callback, you can configure custom data in the last parameter **void *userData** to perform certain settings (such as state changes) in the callback functions.<br>
+- When registering a callback, you can configure custom data in the last parameter `void *userData` to perform certain settings (such as state changes) in the callback functions.<br>
   Other callback functions:<br>
   [OH_LowPowerAudioSinkCallback_SetPositionUpdateListener](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosinkcallback_setpositionupdatelistener): called when the playback progress updates.<br>[OH_LowPowerAudioSinkCallback_SetEosListener](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosinkcallback_seteoslistener) or [OH_LowPowerVideoSinkCallback_SetEosListener](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosinkcallback_seteoslistener): called when the playback is completed.<br>
   [OH_LowPowerVideoSinkCallback_SetRenderStartListener](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosinkcallback_setrenderstartlistener): called when video rendering starts.<br>

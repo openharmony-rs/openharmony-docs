@@ -6,7 +6,7 @@
 <!--Tester: @Q-haosu-->	
 <!--Adviser: @fang-jinxu-->
 
-```
+```c
 typedef struct {...} Print_PrintDocCallback
 ```
 
