@@ -77,18 +77,6 @@ Allows an SA to register the executor.
 
 **Valid since**: 9
 
-## ohos.permission.READ_ACCESSIBILITY_CONFIG
-
-Allows an application to read the accessibility configuration.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 9
-
 ## ohos.permission.WRITE_APP_PUSH_DATA
 
 Allows the push service to write data to an application.
@@ -178,18 +166,6 @@ Allows a system service to access the IMS SA.
 Allows an SA to delete the IAM user information without a token.
 
 **Permission level**: system_core
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 9
-
-## ohos.permission.WRITE_ACCESSIBILITY_CONFIG
-
-Allows an application to set the accessibility configuration.
-
-**Permission level**: system_basic
 
 **Authorization mode**: system_grant
 

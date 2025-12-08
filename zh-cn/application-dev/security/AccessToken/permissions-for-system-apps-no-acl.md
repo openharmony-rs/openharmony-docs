@@ -77,18 +77,6 @@
 
 **起始版本**：9
 
-## ohos.permission.READ_ACCESSIBILITY_CONFIG
-
-允许应用读取无障碍配置信息。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：false
-
-**起始版本**：9
-
 ## ohos.permission.WRITE_APP_PUSH_DATA
 
 允许推送服务往应用中写入数据。
@@ -178,18 +166,6 @@
 允许SA无token删除IAM用户信息。
 
 **权限级别**：system_core
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：false
-
-**起始版本**：9
-
-## ohos.permission.WRITE_ACCESSIBILITY_CONFIG
-
-允许应用设置无障碍配置信息。
-
-**权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
