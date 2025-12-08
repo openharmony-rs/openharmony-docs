@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -18,14 +20,18 @@ import { pasteboard } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
-| 名称 | 类型 | 值            | 说明                                                                                                                                        |
-| -------- | -------- |--------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称 | 类型 | 值  | 说明  |
+| -------- | -------- |--------------|--------------------------------|
 | MAX_RECORD_NUM<sup>7+</sup> | number | -            | API version 10之前，此常量值为512，表示单个PasteData中所能包含的最大条目数为512。当剪贴板内容中添加的条目达到数量上限512后，后续的添加操作无效。<br>从API version 10开始，不再限制单个PasteData中所能包含的最大条目数。 |
-| MIMETYPE_TEXT_HTML<sup>7+</sup> | string | 'text/html'  | HTML内容的MIME类型定义。                                                                                                                          |
-| MIMETYPE_TEXT_WANT<sup>7+</sup> | string | 'text/want'  | Want内容的MIME类型定义。                                                                                                                          |
-| MIMETYPE_TEXT_PLAIN<sup>7+</sup> | string | 'text/plain' | 纯文本内容的MIME类型定义。                                                                                                                           |
-| MIMETYPE_TEXT_URI<sup>7+</sup> | string | 'text/uri'   | URI内容的MIME类型定义。                                                                                                                           |
-| MIMETYPE_PIXELMAP<sup>9+</sup> | string | 'pixelMap'   | PixelMap内容的MIME类型定义。                                                                                                                      |
+| MIMETYPE_TEXT_HTML<sup>7+</sup> | string | 'text/html'  | HTML内容的MIME类型定义。       |
+| MIMETYPE_TEXT_WANT<sup>7+</sup> | string | 'text/want'  | Want内容的MIME类型定义。       |
+| MIMETYPE_TEXT_PLAIN<sup>7+</sup> | string | 'text/plain' | 纯文本内容的MIME类型定义。    |
+| MIMETYPE_TEXT_URI<sup>7+</sup> | string | 'text/uri'   | URI内容的MIME类型定义。          |
+| MIMETYPE_PIXELMAP<sup>9+</sup> | string | 'pixelMap'   | PixelMap内容的MIME类型定义。                         |
 
 ## ValueType<sup>9+</sup>
 
@@ -36,6 +42,10 @@ type ValueType = string | image.PixelMap | Want | ArrayBuffer
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -53,6 +63,10 @@ createData(mimeType: string, value: ValueType): PasteData
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -96,6 +110,10 @@ createData(data: Record&lt;string, ValueType&gt;): PasteData
 构建一个包含多个类型数据的剪贴板内容对象。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -145,6 +163,10 @@ createRecord(mimeType: string, value: ValueType): PasteDataRecord
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                |
@@ -191,6 +213,10 @@ getSystemPasteboard(): SystemPasteboard
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -209,13 +235,17 @@ let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboa
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
 | 名称                               | 值  | 说明                                                                                  |
 | ---------------------------------- | --- | ------------------------------------------------------------------------------------- |
-| INAPP                              | 0   | 表示仅允许同应用内粘贴。                                                              |
-| LOCALDEVICE                        | 1   | 表示允许在任何应用内粘贴。<!--RP1--><!--RP1End-->  |
-| CROSSDEVICE<sup>(deprecated)</sup> | 2   | 表示允许跨设备在任何应用内粘贴。<br/>从API version 12开始废弃，无替代接口和替代方法<!--RP2--><!--RP2End-->。 |
+| INAPP                              | 0   | 表示仅允许同应用内粘贴。 </br> ArkTS-Dyn起始版本: 11 </br> ArkTS-Sta起始版本: 22   |
+| LOCALDEVICE                        | 1   | 表示允许在任何应用内粘贴。<!--RP1--><!--RP1End--> </br> ArkTS-Dyn起始版本: 11 </br> ArkTS-Sta起始版本: 22 |
+| CROSSDEVICE<sup>(deprecated)</sup> | 2   | 表示允许跨设备在任何应用内粘贴。<br/>从API version 12开始废弃，无替代接口和替代方法<!--RP2--><!--RP2End-->。</br> ArkTS-Dyn起始版本: 11  |
 
 ## pasteboard.createHtmlData<sup>(deprecated)</sup>
 
@@ -227,6 +257,8 @@ createHtmlData(htmlText: string): PasteData
 > 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[pasteboard.createData](#pasteboardcreatedata9)替代。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -257,6 +289,8 @@ createWantData(want: Want): PasteData
 > 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[pasteboard.createData](#pasteboardcreatedata9)替代。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -293,6 +327,8 @@ createPlainTextData(text: string): PasteData
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 6
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -322,6 +358,8 @@ createUriData(uri: string): PasteData
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -349,6 +387,8 @@ createHtmlTextRecord(htmlText: string): PasteDataRecord
 > 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[pasteboard.createRecord](#pasteboardcreaterecord9)替代。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -379,6 +419,8 @@ createWantRecord(want: Want): PasteDataRecord
 > 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[pasteboard.createRecord](#pasteboardcreaterecord9)替代。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -415,6 +457,8 @@ createPlainTextRecord(text: string): PasteDataRecord
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -444,6 +488,8 @@ createUriRecord(uri: string): PasteDataRecord
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -471,14 +517,18 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------------------------------|
-| additions<sup>7+</sup> | {[key:string]:object} | 否 | 是 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty。 |
-| mimeTypes<sup>7+</sup> | Array&lt;string&gt; | 是 | 否 | 剪贴板内容条目的数据类型，非重复的类型列表。 |
-| tag<sup>7+</sup> | string | 否 | 是 | 用户自定义标签。 |
-| timestamp<sup>7+</sup> | number | 是 | 否 | 剪贴板数据的写入时间戳（单位：ms）。 |
-| localOnly<sup>7+</sup> | boolean | 否 | 是 | 配置剪贴板内容是否为“仅在本地”，默认值为false。其值会被shareOption属性覆盖，推荐使用[ShareOption](#shareoption9)属性。 |
-| shareOption<sup>9+</sup> | [ShareOption](#shareoption9) | 否 | 是 | 指示剪贴板数据可以粘贴到的范围。 |
+| additions<sup>7+</sup> | ArkTS-Dyn:{[key:string]:object} </br> ArkTS-Sta: Record<string, RecordData> | 否 | 是 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty。 </br> ArkTS-Dyn起始版本: 11 </br> ArkTS-Sta起始版本: 22  |
+| mimeTypes<sup>7+</sup> | Array&lt;string&gt; | 是 | 否 | 剪贴板内容条目的数据类型，非重复的类型列表。</br> ArkTS-Dyn起始版本: 11 </br> ArkTS-Sta起始版本: 22  |
+| tag<sup>7+</sup> | string | 否 | 是 | 用户自定义标签。</br> ArkTS-Dyn起始版本: 11 </br> ArkTS-Sta起始版本: 22 |
+| timestamp<sup>7+</sup> | number | 是 | 否 | 剪贴板数据的写入时间戳（单位：ms）。</br> ArkTS-Dyn起始版本: 11 </br> ArkTS-Sta起始版本: 22 |
+| localOnly<sup>7+</sup> | boolean | 否 | 是 | 配置剪贴板内容是否为“仅在本地”，默认值为false。其值会被shareOption属性覆盖，推荐使用[ShareOption](#shareoption9)属性。</br> ArkTS-Dyn起始版本: 11 </br> ArkTS-Sta起始版本: 22 |
+| shareOption<sup>9+</sup> | [ShareOption](#shareoption9) | 否 | 是 | 指示剪贴板数据可以粘贴到的范围。</br> ArkTS-Dyn起始版本: 11 </br> ArkTS-Sta起始版本: 22 |
 
 ## FileConflictOptions<sup>15+</sup>
 
@@ -487,6 +537,10 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 值   | 说明                                                         |
 | --------- | ---- | ------------------------------------------------------------ |
@@ -501,6 +555,10 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称    | 值   | 说明                     |
 | ------- | ---- | ------------------------ |
 | NONE    | 0    | 不采用系统默认进度显示。 |
@@ -513,6 +571,10 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称     | 类型   | 只读 | 可选 | 说明                                                       |
 | -------- | ------ | ---- | ---- | ---------------------------------------------------------- |
@@ -528,6 +590,10 @@ type ProgressListener = (progress: ProgressInfo) => void
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 | 参数名   | 类型                            | 必填 | 说明                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | progress | [ProgressInfo](#progressinfo15) | 是   | 定义进度上报的数据结构，且仅当进度指示选项[ProgressIndicator](#progressindicator15)设置为NONE时才会上报此信息。 |
@@ -538,6 +604,10 @@ type ProgressListener = (progress: ProgressInfo) => void
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 ### cancel
 
 cancel(): void
@@ -547,6 +617,10 @@ cancel(): void
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 **示例：**
 
@@ -597,6 +671,10 @@ struct PasteboardTest {
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                | 类型                                          | 必填 | 说明                                                         |
 | ------------------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
 | destUri             | string                                        | 否   | 拷贝文件时目标路径。若不支持文件处理，则不需要设置此参数；若应用涉及复杂文件处理策略或需要区分文件多路径存储，建议不设置此参数，由应用自行完成文件copy处理。 |
@@ -617,13 +695,13 @@ struct PasteboardTest {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| htmlText<sup>7+</sup> | string | 是 | 否 | HTML内容。 |
-| want<sup>7+</sup> | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 否 | Want内容。 |
-| mimeType<sup>7+</sup> | string | 是 | 否 | 默认数据类型。 |
-| plainText<sup>7+</sup> | string | 是 | 否 | 纯文本内容。 |
-| uri<sup>7+</sup> | string | 是 | 否 | URI内容。 |
-| pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 否 | PixelMap内容。 |
-| data<sup>9+</sup> | {[mimeType:&nbsp;string]:&nbsp;ArrayBuffer} | 是 | 否 | 自定义数据内容。 |
+| htmlText<sup>7+</sup> | string | 是 | 否 | HTML内容。</br> ArkTS-Dyn起始版本: 11 </br> ArkTS-Sta起始版本: 22 |
+| want<sup>7+</sup> | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 否 | Want内容。</br> ArkTS-Dyn起始版本: 11 </br> ArkTS-Sta起始版本: 22 |
+| mimeType<sup>7+</sup> | string | 是 | 否 | 默认数据类型。</br> ArkTS-Dyn起始版本: 11 </br> ArkTS-Sta起始版本: 22 |
+| plainText<sup>7+</sup> | string | 是 | 否 | 纯文本内容。</br> ArkTS-Dyn起始版本: 11 </br> ArkTS-Sta起始版本: 22 |
+| uri<sup>7+</sup> | string | 是 | 否 | URI内容。</br> ArkTS-Dyn起始版本: 11 </br> ArkTS-Sta起始版本: 22 |
+| pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 否 | PixelMap内容。</br> ArkTS-Dyn起始版本: 11 </br> ArkTS-Sta起始版本: 22 |
+| data<sup>9+</sup> | {[mimeType:&nbsp;string]:&nbsp;ArrayBuffer} | 是 | 否 | 自定义数据内容。</br> ArkTS-Dyn起始版本: 20 </br> ArkTS-Sta起始版本: 22 |
 
 ### toPlainText<sup>9+</sup>
 
@@ -634,6 +712,10 @@ toPlainText(): string
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -656,6 +738,10 @@ addEntry(type: string, value: ValueType): void
 往一个PasteDataRecord中额外添加一种样式的自定义数据。此方式添加的MIME类型都不是Record的默认类型，粘贴时只能使用[getData](#getdata14)接口读取对应数据。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -688,6 +774,10 @@ getValidTypes(types: Array&lt;string&gt;): Array&lt;string&gt;
 根据传入的MIME类型，返回传入的MIME类型和剪贴板中数据的MIME类型的交集。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -732,6 +822,10 @@ getData(type: string): Promise&lt;ValueType&gt;
 从PasteDataRecord中获取指定MIME类型的自定义数据。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -787,6 +881,8 @@ convertToText(callback: AsyncCallback&lt;string&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -827,6 +923,8 @@ convertToText(): Promise&lt;string&gt;
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 7
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -854,6 +952,10 @@ record.convertToText().then((data: string) => {
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 ### getPrimaryText
 
 getPrimaryText(): string
@@ -863,6 +965,10 @@ getPrimaryText(): string
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -893,6 +999,10 @@ getPrimaryHtml(): string
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -921,6 +1031,10 @@ getPrimaryWant(): Want
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -952,6 +1066,10 @@ getPrimaryUri(): string
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -980,6 +1098,10 @@ getPrimaryPixelMap(): image.PixelMap
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1017,6 +1139,10 @@ addRecord(record: PasteDataRecord): void
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1042,6 +1168,10 @@ addRecord(mimeType: string, value: ValueType): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1076,6 +1206,10 @@ getMimeTypes(): Array&lt;string&gt;
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -1098,6 +1232,10 @@ getPrimaryMimeType(): string
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1122,6 +1260,10 @@ getProperty(): PasteDataProperty
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -1144,6 +1286,10 @@ setProperty(property: PasteDataProperty): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1214,6 +1360,10 @@ getRecord(index: number): PasteDataRecord
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1252,6 +1402,10 @@ getRecordCount(): number
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -1275,6 +1429,10 @@ getTag(): string
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -1297,6 +1455,10 @@ hasType(mimeType: string): boolean
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1335,6 +1497,10 @@ removeRecord(index: number): void
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1366,6 +1532,10 @@ replaceRecord(index: number, record: PasteDataRecord): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1399,6 +1569,10 @@ pasteStart(): void
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **示例：**
 
 ```ts
@@ -1423,6 +1597,10 @@ pasteComplete(): void
 通知剪贴板服务数据使用已完成。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **示例：**
 
@@ -1453,6 +1631,8 @@ addHtmlRecord(htmlText: string): void
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1478,6 +1658,8 @@ addWantRecord(want: Want): void
 > 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[addRecord](#addrecord9)替代。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1510,6 +1692,8 @@ addTextRecord(text: string): void
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1535,6 +1719,8 @@ addUriRecord(uri: string): void
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1557,6 +1743,8 @@ getRecordAt(index: number): PasteDataRecord
 > 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[getRecord](#getrecord9)替代。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1596,6 +1784,8 @@ hasMimeType(mimeType: string): boolean
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1633,6 +1823,8 @@ removeRecordAt(index: number): boolean
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1669,6 +1861,8 @@ replaceRecordAt(index: number, record: PasteDataRecord): boolean
 > 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[replaceRecord](#replacerecord9)替代。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1709,6 +1903,8 @@ on(type: 'update', callback: () =&gt;void): void
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1741,6 +1937,8 @@ off(type: 'update', callback?: () =&gt;void): void
 取消订阅系统剪贴板内容变化事件。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1776,6 +1974,10 @@ clearData(callback: AsyncCallback&lt;void&gt;): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1814,6 +2016,10 @@ clearData(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -1842,6 +2048,10 @@ setData(data: PasteData, callback: AsyncCallback&lt;void&gt;): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1883,6 +2093,10 @@ setData(data: PasteData): Promise&lt;void&gt;
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1932,6 +2146,10 @@ getData(callback: AsyncCallback&lt;PasteData&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1975,6 +2193,10 @@ getData(): Promise&lt;PasteData&gt;
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -2012,6 +2234,10 @@ hasData(callback:  AsyncCallback&lt;boolean&gt;): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2052,6 +2278,10 @@ hasData(): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -2081,6 +2311,8 @@ clear(callback: AsyncCallback&lt;void&gt;): void
 > 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[pasteboard.clearData](#cleardata9)替代。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2120,6 +2352,8 @@ clear(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 7
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -2149,6 +2383,8 @@ getPasteData(callback: AsyncCallback&lt;PasteData&gt;): void
 > 从 API version 6 开始支持，从 API version 9 开始废弃，建议使用[getData](#getdata9)替代。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -2190,6 +2426,8 @@ getPasteData(): Promise&lt;PasteData&gt;
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 6
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -2211,7 +2449,7 @@ systemPasteboard.getPasteData().then((pasteData: pasteboard.PasteData) => {
 
 ### hasPasteData<sup>(deprecated)</sup>
 
-hasPasteData(callback:  AsyncCallback&lt;boolean&gt;): void
+hasPasteData(callback: AsyncCallback&lt;boolean&gt;): void
 
 判断系统剪贴板中是否有内容，使用callback异步回调。
 > **说明：**
@@ -2219,6 +2457,8 @@ hasPasteData(callback:  AsyncCallback&lt;boolean&gt;): void
 > 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[hasData](#hasdata9)替代。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2260,6 +2500,8 @@ hasPasteData(): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 7
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -2289,6 +2531,8 @@ setPasteData(data: PasteData, callback: AsyncCallback&lt;void&gt;): void
 > 从 API version 6 开始支持，从 API version 9 开始废弃，建议使用[setData](#setdata9)替代。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -2329,6 +2573,9 @@ setPasteData(data: PasteData): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 6
+
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2363,6 +2610,10 @@ isRemoteData(): boolean
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -2400,6 +2651,10 @@ getDataSource(): string
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型   | 说明   |
@@ -2435,6 +2690,10 @@ hasDataType(mimeType: string): boolean
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2479,6 +2738,10 @@ clearDataSync(): void
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **错误码：**
 
 以下错误码的详细介绍请参见[剪贴板错误码](errorcode-pasteboard.md)。
@@ -2510,6 +2773,10 @@ getDataSync(): PasteData
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -2547,6 +2814,10 @@ setDataSync(data: PasteData): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2586,6 +2857,10 @@ hasDataSync(): boolean
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型    | 说明                                                                    |
@@ -2623,6 +2898,10 @@ getUnifiedData(): Promise&lt;unifiedDataChannel.UnifiedData&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -2671,6 +2950,10 @@ getUnifiedDataSync(): unifiedDataChannel.UnifiedData
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                 | 说明                 |
@@ -2709,6 +2992,10 @@ setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise&lt;void&gt;
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2765,6 +3052,10 @@ setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型        | 必填 | 说明             |
@@ -2814,6 +3105,10 @@ setAppShareOptions(shareOptions: ShareOption): void
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2855,6 +3150,10 @@ removeAppShareOptions(): void
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 **错误码：**
 
 以下错误码的详细介绍请参见[剪贴板错误码](errorcode-pasteboard.md)。
@@ -2883,6 +3182,10 @@ try {
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                               | 值  | 说明                                                                                  |
 | ---------------------------------- | --- | ------------------------------------------------------------------------------------- |
 | URL                              | 0   | URL类型。                                                              |
@@ -2896,6 +3199,10 @@ detectPatterns(patterns: Array&lt;Pattern&gt;): Promise&lt;Array&lt;Pattern&gt;&
 检测**本地**剪贴板中存在的模式，使用Promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2950,6 +3257,10 @@ getMimeTypes(): Promise&lt;Array&lt;string&gt;&gt;
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -2980,6 +3291,10 @@ getDataWithProgress(params: GetDataParams): Promise&lt;PasteData&gt;
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3061,6 +3376,10 @@ getChangeCount(): number
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
