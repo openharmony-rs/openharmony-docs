@@ -580,6 +580,9 @@ bundleManager.uninstall(wantTemp, 'bundleName', 100, true).then(() => {
 install(admin: Want, hapFilePaths: Array\<string>, installParam?: InstallParam): Promise\<void>
 
 安装指定路径下的应用包。使用promise异步回调。</br>此接口只能安装分发类型为enterprise_mdm（MDM应用）和enterprise_normal（普通企业应用）类型的应用，可以通过[getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口查询应用自身的[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。
+> **说明：**
+> 
+> 该接口比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -697,7 +700,7 @@ getInstalledBundleList(admin: Want, accountId: number): Promise\<Array\<BundleIn
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |                          |
+| 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
@@ -868,7 +871,7 @@ getInstallationAllowedAppDistributionTypes(admin: Want): Array&lt;AppDistributio
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |                     |
+| 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**

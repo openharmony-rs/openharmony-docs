@@ -46,6 +46,15 @@ zh-cn/application-dev/quick-start/multiInstance.md @Brilliantry_Rui  @hanfeng6  
 zh-cn/application-dev/quick-start/layered-image.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
 zh-cn/application-dev/quick-start/hap-to-har.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
 zh-cn/application-dev/quick-start/application-package-glossary.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
+zh-cn/application-dev/quick-start/application-package-structure-fa.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
+zh-cn/application-dev/quick-start/application-package-structure-stage.md @Brilliantry_Rui  @hanfeng6  @kongjing2
+zh-cn/application-dev/quick-start/application-package-overview.md @Brilliantry_Rui  @hanfeng6  @kongjing2
+zh-cn/application-dev/quick-start/application-package-install-uninstall.md @Brilliantry_Rui  @hanfeng6  @kongjing2
+zh-cn/application-dev/quick-start/app-configuration-file.md @Brilliantry_Rui  @hanfeng6  @kongjing2
+zh-cn/application-dev/quick-start/module-configuration-file.md @Brilliantry_Rui  @hanfeng6  @kongjing2
+zh-cn/application-dev/quick-start/application-configuration-file-overview-fa.md @Brilliantry_Rui  @hanfeng6  @kongjing2
+zh-cn/application-dev/quick-start/app-structure.md @Brilliantry_Rui  @hanfeng6  @kongjing2
+zh-cn/application-dev/quick-start/module-structure.md @Brilliantry_Rui  @hanfeng6  @kongjing2
 
 [入门-资源分类与访问]
 zh-cn/application-dev/quick-start/resource-categories-and-access.md @ningningW @lliule21 @lpw_work @budda-wang
@@ -931,9 +940,12 @@ zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-loopO
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-installer-sys.md  @Brilliantry_Rui  @hanfeng6  @kongjing2  
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-appControl*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-appDomainVerify-sys.md @Brilliantry_Rui @sl_sunshineGirl @xuchuanqi87
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-defaultAppManager.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-defaultAppManager-sys.md @Brilliantry_Rui  @hanfeng6  @kongjing2
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-distributedBundleManager.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-freeInstall.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-freeInstall.md @Brilliantry_Rui  @hanfeng6  @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-freeInstall-sys.md @Brilliantry_Rui  @hanfeng6  @kongjing2
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-installer.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-launcherBundleManager*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-overlay*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
@@ -947,7 +959,9 @@ zh-cn/application-dev/reference/apis-ability-kit/capi-native-interface-bundle-h.
 zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-applicationinfo.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
 zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-elementname.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
 zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-metadata.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
-zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-modulemetadata.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
+zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-modulemetadata.md @Brilliantry_Rui  @hanfeng6  @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/capi-bundle-manager-common-h.md @Brilliantry_Rui  @hanfeng6  @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-abilityresourceinfo.md @Brilliantry_Rui  @hanfeng6  @kongjing2
 
 [API参考-Ability Kit-分布式]
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-distributedMissionManager.md @chenmingJay @nan-xiansen @iceice1001

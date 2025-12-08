@@ -1714,8 +1714,11 @@ runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
           "if (typeof(Storage) !== 'undefined') {" +
           "   localStorage.setItem('color', 'Red');" +
           "}";
+      private localStorage2: string =
+          "console.info('runJavaScriptOnDocumentStart urlRegexRules Matching succeeded.')";
       @State scripts: Array<ScriptItem> = [
-          { script: this.localStorage, scriptRules: ["*"] }
+          { script: this.localStorage, scriptRules: ["*"] },
+          { script: this.localStorage2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
       ];
 
       build() {
@@ -1792,8 +1795,10 @@ struct Index {
   controller: webview.WebviewController = new webview.WebviewController();
   private jsStr: string =
     "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnDocumentEnd'";
+  private jsStr2: string = "console.info('runJavaScriptOnDocumentEnd urlRegexRules Matching succeeded.')";
   @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] }
+    { script: this.jsStr, scriptRules: ["*"] },
+    { script: this.jsStr2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
   ];
 
   build() {
@@ -1856,8 +1861,10 @@ struct Index {
   controller: webview.WebviewController = new webview.WebviewController();
   private jsStr: string =
     "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnHeadEnd'";
+  private jsStr2: string = "console.info('runJavaScriptOnHeadEnd urlRegexRules Matching succeeded.')";
   @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] }
+    { script: this.jsStr, scriptRules: ["*"] },
+    { script: this.jsStr2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
   ];
 
   build() {
@@ -2411,7 +2418,7 @@ metaViewport(enabled: boolean)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -2427,7 +2434,7 @@ struct WebComponent {
     }
   }
 }
-  ```
+```
 加载的html文件。
 ```html
 <!--index.html-->

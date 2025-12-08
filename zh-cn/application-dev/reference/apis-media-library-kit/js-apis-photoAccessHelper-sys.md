@@ -5467,7 +5467,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 | 名称           | 类型    | 只读   | 可选  | 说明   |
 | ------------ | ------ | ---- | ---- | ------- |
-| lpath<sup>18+</sup>    | string | 是    | 是   | 相册虚拟路径。<br>**系统接口**：此接口为系统接口。|
 | dateAdded<sup>18+</sup>    | number | 是    | 是   | 相册添加时间。<br>**系统接口**：此接口为系统接口。|
 | dateModified<sup>18+</sup>    | number | 是    | 是   | 相册修改时间。<br>**系统接口**：此接口为系统接口。|
 | coverUriSource<sup>20+</sup>    | number | 是    | 是   | 相册封面来源。<br>**系统接口**：此接口为系统接口。|
@@ -11062,7 +11061,6 @@ async function example(context: Context) {
 
 | 名称                  | 值    | 说明                        |
 | ------------------- | ---- | ------------------------- |
-| SOURCE<sup>18+</sup> | 2048 | 来源相册。<br>**系统接口**：此接口为系统接口。 |
 | SMART<sup>11+</sup> | 4096 | 智慧分析相册。<br>**系统接口**：此接口为系统接口。 |
 
 ## AlbumSubtype
@@ -11077,7 +11075,6 @@ async function example(context: Context) {
 | TRASH                             | 1028       | 回收站。**系统接口**：此接口为系统接口。          |
 | SCREENSHOT                        | 1029       | 截屏和录屏相册。**系统接口**：此接口为系统接口。      |
 | CAMERA                            | 1030       | 相机拍摄的照片和视频相册。**系统接口**：此接口为系统接口。 |
-| SOURCE\_GENERIC<sup>11+</sup>     | 2049       | 来源相册。**系统接口**：此接口为系统接口。         |
 | CLASSIFY<sup>11+</sup>            | 4097       | 分类相册。**系统接口**：此接口为系统接口。         |
 | GEOGRAPHY\_LOCATION<sup>11+</sup> | 4099       | 地图相册。**系统接口**：此接口为系统接口。         |
 | GEOGRAPHY\_CITY<sup>11+</sup>     | 4100       | 城市相册。**系统接口**：此接口为系统接口。         |
@@ -11145,7 +11142,6 @@ async function example(context: Context) {
 
 | 名称                              | 值                    | 说明                                                       |
 | --------------------------------- | -------------------- | ----------------------------------------------------- |
-| ALBUM_LPATH<sup>18+</sup>          | 'lpath'                 | 相册的虚拟路径。<br>**系统接口**：此接口为系统接口。            |
 | BUNDLE_NAME<sup>18+</sup>          | 'bundle_name'                 | 相册的包名。<br>**系统接口**：此接口为系统接口。            |
 | DATE_MODIFIED<sup>18+</sup>        | 'date_modified'         | 相册修改的时间戳（单位：毫秒）。<br>**系统接口**：此接口为系统接口。            |
 | COVER_URI_SOURCE<sup>20+</sup>     | 'cover_uri_source'      | 相册封面的来源。<br>**系统接口**：此接口为系统接口。            |
@@ -11813,19 +11809,6 @@ type ValuesBucket = Record&lt;string, ValueType&gt;
 提供通过查询数据库生成的数据库结果集的访问方法。
 
 下列API示例中，需先使用[query](#query22)方法获取ResultSet实例，再调用对应方法。
-
-## VideoMode<sup>22+</sup>
-
-枚举，视频文件的log模式。
-
-​**系统接口**​：此接口为系统接口。
-
-**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-| 名称  |  值 |  说明 |
-| ----- |  ---- |  ---- |
-| DEFAULT |  0 |  默认类型。<br>取值为0表示当前视频非log模式或未判断类型，后续部分视频判断后字段会更新为1，因此不建议使用此字段进行查询。|
-| LOG_VIDEO |  1 |  log模式视频的文件类型。  |
 
 ### 属性
 

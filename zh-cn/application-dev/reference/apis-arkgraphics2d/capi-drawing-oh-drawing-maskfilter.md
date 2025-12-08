@@ -6,7 +6,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct OH_Drawing_MaskFilter OH_Drawing_MaskFilter
 ```
 

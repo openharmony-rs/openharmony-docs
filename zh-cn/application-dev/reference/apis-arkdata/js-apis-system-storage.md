@@ -8,7 +8,9 @@
 
 >  **说明：**
 >
->  - 从API Version 6开始，该模块不再维护，可以使用模块[`@ohos.data.storage`](js-apis-data-storage.md)。在API Version 9后，推荐使用新模块[`@ohos.data.preferences`](js-apis-data-preferences.md)。
+>  - 模块维护策略：
+>    - 对于Lite Wearable设备类型，该模块长期维护，可正常使用。
+>    - 对于支持该模块的其他设备类型，该模块从API version 6开始不再维护，可以使用模块[`@ohos.data.storage`](js-apis-data-storage.md)。在API version 9后，推荐使用新模块[`@ohos.data.preferences`](js-apis-data-preferences.md)。
 >
 >  - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >  

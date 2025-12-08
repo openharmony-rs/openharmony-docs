@@ -46,7 +46,7 @@
 
 ### OH_NativeBuffer_ColorSpace
 
-```
+```c
 enum OH_NativeBuffer_ColorSpace
 ```
 
@@ -99,7 +99,7 @@ API version 12之前，使用该枚举请引用native_buffer.h头文件；从API
 
 ### OH_NativeBuffer_MetadataType
 
-```
+```c
 enum OH_NativeBuffer_MetadataType
 ```
 
@@ -118,11 +118,13 @@ OH_NativeBuffer的图像标准。
 | OH_VIDEO_HDR_VIVID | 视频HDR VIVID。 |
 | OH_IMAGE_HDR_VIVID_DUAL | 图片HDR VIVID DUAL。<br/>**起始版本：** 22 |
 | OH_IMAGE_HDR_VIVID_SINGLE | 图片HDR VIVID SINGLE。<br/>**起始版本：** 22 |
+| OH_IMAGE_HDR_ISO_DUAL | 图片HDR ISO DUAL。<br/>**起始版本：** 23 |
+| OH_IMAGE_HDR_ISO_SINGLE | 图片HDR ISO SINGLE。<br/>**起始版本：** 23|
 | OH_VIDEO_NONE = -1 |  无元数据。<br/>**起始版本：** 13 |
 
 ### OH_NativeBuffer_MetadataKey
 
-```
+```c
 enum OH_NativeBuffer_MetadataKey
 ```
 
@@ -143,7 +145,7 @@ enum OH_NativeBuffer_MetadataKey
 
 ### OH_NativeBuffer_Format
 
-```
+```c
 enum OH_NativeBuffer_Format
 ```
 
@@ -208,7 +210,7 @@ API version 22之前，使用该枚举请引用native_buffer.h头文件；从API
 
 ### OH_NativeBuffer_TransformType
 
-```
+```c
 enum OH_NativeBuffer_TransformType
 ```
 

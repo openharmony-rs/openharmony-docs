@@ -371,13 +371,14 @@ static napi_value CreateExternalStringUtf16(napi_env env, napi_callback_info inf
     napi_status status = napi_create_external_string_utf16(
         env,
         str,                    // 外部字符串缓冲区
-        NAPI_AUTO_LENGTH,       // 字符串长度，传入NAPI_AUTO_LENGTH表示字符串以'\0'结尾
+        NAPI_AUTO_LENGTH,       // 字符串长度，如果传入NAPI_AUTO_LENGTH，则字符串需要以'\0'结尾
         StringFinalizerUTF16,   // 字符串的析构回调函数
         nullptr,                // 传递给析构回调函数的hint参数，本例不需要
         &result                 // 接受创建的ArkTS字符串值
     );
     if (status != napi_ok) {
         // 处理错误
+        delete[] str;
         napi_throw_error(env, nullptr, "Failed to create utf16 string");
         return nullptr;
     }
@@ -430,16 +431,18 @@ static napi_value CreateExternalStringAscii(napi_env env, napi_callback_info inf
     std::copy(source, source + charLength, str);
     // 当创建出来的字符串在ArkTS侧生命周期结束被GC回收时，会调用StringFinalizerASCII函数，调用方式为StringFinalizerASCII(str, finalize_hint);
     // 如果finalize_callback传入nullptr，则不会调用任何回调函数。开发者需要自行管理外部资源str的生命周期。
+    // napi_create_external_string_ascii 接口要求传入的字符串在指定的长度范围内不得包含'\0'字符，否则可能导致异常行为。
     napi_status status = napi_create_external_string_ascii(
         env,
         str,                    // 外部字符串缓冲区
-        NAPI_AUTO_LENGTH,       // 字符串长度，传入NAPI_AUTO_LENGTH表示字符串以'\0'结尾
+        NAPI_AUTO_LENGTH,       // 字符串长度，如果传入NAPI_AUTO_LENGTH，则字符串需要以'\0'结尾
         StringFinalizerASCII,   // 字符串的析构回调函数
         nullptr,                // 传递给析构回调函数的hint参数，本例不需要
         &result                 // 接受创建的ArkTS字符串值
     );
     if (status != napi_ok) {
         // 处理错误
+        delete[] str;
         napi_throw_error(env, nullptr, "Failed to create ascii string");
         return nullptr;
     }

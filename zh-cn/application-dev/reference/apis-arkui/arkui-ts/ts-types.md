@@ -593,6 +593,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 长度类型，用于描述尺寸单位。
 
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -735,8 +737,8 @@ Callback<T,V = void> = (data: T) => V;
 
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | --------- | ------ | ---- | ---- | ---------- |
-| horizontal | number | 否 | 是 | 组件在竖直方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0  |
-| vertical     | number | 否 | 是 | 组件在水平方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0 |
+| horizontal | number | 否 | 是 | 组件在水平方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0  |
+| vertical     | number | 否 | 是 | 组件在竖直方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0 |
 
 ## Configuration
 

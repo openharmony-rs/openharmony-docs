@@ -700,7 +700,7 @@ setOsAccountName(localId: number, localName: string, callback: AsyncCallback&lt;
 
 setOsAccountName(localId: number, localName: string): Promise&lt;void&gt;
 
-设置指定系统账号的账号名。使用Promise异步调用。
+设置指定系统账号的账号名。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2974,7 +2974,7 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;;
 
 auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array;
 
-认证当前用户。使用callback异步回调。
+认证当前用户。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3050,7 +3050,7 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 
 auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, options: AuthOptions, callback: IUserAuthCallback): Uint8Array
 
-基于指定的挑战值、认证类型（如口令、人脸、指纹等）、认证可信等级以及可选参数（如账号标识、认证意图等）进行身份认证。使用callback异步回调。
+基于指定的挑战值、认证类型（如口令、人脸、指纹等）、认证可信等级以及可选参数（如账号标识、认证意图等）进行身份认证。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3639,7 +3639,7 @@ authWithToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback:
 
 getAccountInfo(options: GetDomainAccountInfoPluginOptions, callback: AsyncCallback&lt;DomainAccountInfo&gt;): void
 
-查询指定域账号的信息。
+查询指定域账号的信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3908,7 +3908,7 @@ isAccountTokenValid(domainAccountInfo: DomainAccountInfo, token: Uint8Array, cal
 
 getAccessToken(options: GetDomainAccessTokenOptions, callback: AsyncCallback&lt;Uint8Array&gt;): void
 
-根据指定的选项获取域访问令牌。
+根据指定的选项获取域访问令牌。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -5489,6 +5489,124 @@ getEnrolledId(authType: AuthType, accountId?: number): Promise&lt;Uint8Array&gt;
   }
   ```
 
+### onCredentialChanged<sup>23+</sup>
+onCredentialChanged(credentialTypes: AuthType[], callback: Callback&lt;CredentialChangeInfo&gt;): void
+
+订阅一种或多种类型的凭据变更事件，通过回调函数获取凭据变更信息。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**需要权限：** ohos.permission.USE_USER_IDM
+
+**参数：**
+
+| 参数名     | 类型                   | 必填 | 说明      |
+| --------  | ---------------------- | ---- | -------- |
+| credentialTypes  | [AuthType](#authtype8)\[\] | 是   | 表示订阅的凭据类型集合。 |
+| callback | Callback&lt;[CredentialChangeInfo](#credentialchangeinfo23)&gt;  | 是   | 回调函数。当凭据发生变更时，会返回变更信息。 |
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ------------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | One or more credential types are invalid. |
+| 12300106 | One or more credential types are not supported. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let identityMgr: osAccount.UserIdentityManager = new osAccount.UserIdentityManager();
+
+const callback: Callback<osAccount.CredentialChangeInfo> = (changeInfo: osAccount.CredentialChangeInfo): void => {
+  console.info('credentialType: ' + changeInfo.credentialType
+    + ', changeType: ' + changeInfo.changeType
+    + ', accountId: ' + changeInfo.accountId
+    + ', addedCredentialId: ' + changeInfo.addedCredentialId
+    + ', deletedCredentialId: ' + changeInfo.deletedCredentialId
+    + ', isSilent: ' + changeInfo.isSilent
+  )
+}
+
+try {
+  identityMgr.onCredentialChanged([osAccount.AuthType.PIN, osAccount.AuthType.FACE], callback);
+  console.info('Subscribe to the credential changes successfully');
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`Failed to subscribe to the credetial changes, code is ${err.code}, message is ${err.message}`)
+}
+```
+
+### offCredentialChanged<sup>23+</sup>
+offCredentialChanged(callback?: Callback&lt;CredentialChangeInfo&gt;): void
+
+取消与指定回调关联的订阅记录，若未指定回调，则取消所有订阅记录。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**需要权限：** ohos.permission.USE_USER_IDM
+
+**参数：**
+
+| 参数名     | 类型                   | 必填 | 说明      |
+| --------  | ---------------------- | ---- | -------- |
+| callback | Callback&lt;[CredentialChangeInfo](#credentialchangeinfo23)&gt;  | 否   | 表示订阅回调。不指定时，表示取消所有订阅记录。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ------------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let identityMgr: osAccount.UserIdentityManager = new osAccount.UserIdentityManager();
+
+const callback: Callback<osAccount.CredentialChangeInfo> = (changeInfo: osAccount.CredentialChangeInfo): void => {
+  console.info('credentialType: ' + changeInfo.credentialType
+    + ', changeType: ' + changeInfo.changeType
+    + ', accountId: ' + changeInfo.accountId
+    + ', addedCredentialId: ' + changeInfo.addedCredentialId
+    + ', deletedCredentialId: ' + changeInfo.deletedCredentialId
+    + ', isSilent: ' + changeInfo.isSilent
+  )
+}
+
+try {
+  identityMgr.onCredentialChanged([osAccount.AuthType.PIN, osAccount.AuthType.FACE], callback);
+  console.info('Subscribe to the credential changes successfully');
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`Failed to subscribe to the credetial changes, code is ${err.code}, message is ${err.message}`)
+}
+
+try {
+  identityMgr.offCredentialChanged(callback);
+  console.info('Unsubscribe from the credential changes successfully');
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`Failed to unsubscribe from the credetial changes, code is ${err.code}, message is ${err.message}`)
+}
+```
+
 ## IInputData<sup>8+</sup>
 
 密码数据回调。
@@ -6207,3 +6325,34 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | 名称               | 类型    | 只读  | 可选 | 说明       |
 | ------------------ | ------ | ---- | ---- | ---------- |
 | challenge          | Uint8Array | 否 | 是  | 挑战值，默认为undefined。 |
+
+## CredentialChangeInfo<sup>23+</sup>
+
+表示凭据变更信息。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+| 名称      | 类型   | 只读  | 可选  | 说明       |
+| ----------- | ------ | ---- | ---- | ---------- |
+| changeType      | [CredentialChangeType](#credentialchangetype23) | 否 | 否  | 表示凭据变更的类型。     |
+| isSilent | boolean | 否 | 否  | 表示是否为静默变更，静默变更表示变更由系统在后台自动地发起。 |
+| credentialType      | [AuthType](#authtype8) | 否 | 否  | 表示凭据类型。     |
+| accountId | int | 否 | 否  | 表示系统账号标识。 |
+| addedCredentialId   | Uint8Array | 否 | 是  | 表示添加的凭据ID，添加凭据和更新凭据操作都会返回该ID。     |
+| deletedCredentialId | Uint8Array | 否 | 是  | 表示删除的凭据ID，删除凭据和更新凭据操作都会返回该ID。     |
+
+## CredentialChangeType<sup>23+</sup>
+
+表示凭据变更类型的枚举。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+| 名称     | 值   | 说明       |
+| -------- | --- | ---------- |
+| ADD_CREDENTIAL      | 1   | 表示添加凭据的变更类型。 |
+| UPDATE_CREDENTIAL   | 2   | 表示更新凭据的变更类型。 |
+| DEL_CREDENTIAL      | 3   | 表示删除凭据的变更类型。 |

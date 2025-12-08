@@ -35,7 +35,7 @@
 
 ### OH_AudioChannelSet
 
-```
+```c
 enum OH_AudioChannelSet
 ```
 
@@ -82,7 +82,7 @@ enum OH_AudioChannelSet
 
 ### OH_AmbAttributeSet
 
-```
+```c
 enum OH_AmbAttributeSet
 ```
 
@@ -107,7 +107,7 @@ enum OH_AmbAttributeSet
 
 ### OH_AudioChannelLayout
 
-```
+```c
 enum OH_AudioChannelLayout
 ```
 

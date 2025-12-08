@@ -10,9 +10,9 @@
 
 >  **说明：**
 >
->  从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 应用本身预置的资源文件（即应用在安装前的HAP包中已经存在的资源文件）仅支持本地应用内拖拽。
+> - 应用本身预置的资源文件（即应用在安装前的HAP包中已经存在的资源文件）仅支持本地应用内拖拽。
 
 ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖出或拖入响应。开发者也可以通过实现通用拖拽事件来自定义拖拽能力。
 
@@ -31,17 +31,13 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo): T
 
-第一次拖拽此事件绑定的组件时，长按时间 >= 500ms，然后手指移动距离 >= 10vp，触发回调。
+在手势拖拽场景中，在可拖拽的组件上长按时间超过500ms，然后手指移动距离大于10vp时触发此回调；在鼠标拖拽场景中，鼠标左键在可拖拽的组件上按下并移动超过1vp时，即可触发此回调。
 
 针对默认支持拖拽能力的组件，如果开发者设置了onDragStart，优先执行onDragStart，并根据执行情况决定是否使用系统默认的拖拽能力，具体规则为：
 - 如果开发者返回了自定义预览图，则不再使用系统默认的拖拽预览图；
 - 如果开发者设置了拖拽数据，则不再使用系统默认填充的拖拽数据。
 
 文本类组件[Text](ts-basic-components-text.md)、[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)、[RichEditor](ts-basic-components-richeditor.md)对选中的文本内容进行拖拽时，不支持自定义预览图。当onDragStart与菜单预览一起使用或使用了默认支持拖拽能力的组件时，预览及菜单项上的自定义内容不支持拖拽。
-
-> **说明：**
->
-> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -895,6 +891,7 @@ struct Index {
   @Builder
   pixelMapBuilder() {
     Column() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件
       Image($r('app.media.icon'))
         .width(120)
         .height(120)
@@ -902,6 +899,7 @@ struct Index {
     }
   }
 
+  // 获取Udmf数据
   getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
     try {
       let data: UnifiedData = event.getData();
@@ -915,11 +913,12 @@ struct Index {
       callback(event);
       return true;
     } catch (e) {
-      console.error("getData failed, code = " + (e as BusinessError).code + ", message = " + (e as BusinessError).message);
+      console.error(`getData failed, code = ${(e as BusinessError).code}, message = ${(e as BusinessError).message}`);
       return false;
     }
   }
 
+  // 首次获取Udmf数据失败后自动重试
   getDataFromUdmf(event: DragEvent, callback: (data: DragEvent) => void) {
     if (this.getDataFromUdmfRetry(event, callback)) {
       return;
@@ -929,6 +928,7 @@ struct Index {
     }, 1500);
   }
 
+  // 根据拖拽发起前的不同阶段更改背景色
   private PreDragChange(preDragStatus: PreDragStatus): void {
     if (preDragStatus == PreDragStatus.READY_TO_TRIGGER_DRAG_ACTION) {
       this.backGroundColor = Color.Red;
@@ -947,6 +947,7 @@ struct Index {
           .height(40)
           .margin(10)
           .backgroundColor('#008888')
+        // $r('app.media.icon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.icon'))
           .width(100)
           .height(100)
@@ -982,7 +983,8 @@ struct Index {
           Text('this is abstract')
             .fontSize(20)
             .width('100%')
-        }.margin({ left: 40, top: 20 })
+        }
+        .margin({ left: 40, top: 20 })
         .width('100%')
         .height(100)
         .onDragStart((event) => {
@@ -1087,7 +1089,6 @@ struct DropAnimationExample {
   @State videoSrc: string = 'resource://RAWFILE/02.mp4';
   @State abstractContent: string = "abstract";
   @State textContent: string = "";
-
   customDropAnimation =
     () => {
       this.getUIContext().animateTo({ duration: 1000, curve: Curve.EaseOut, playMode: PlayMode.Normal }, () => {
@@ -1100,11 +1101,12 @@ struct DropAnimationExample {
   build() {
     Row() {
       Column() {
+        // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.app_icon'))
           .width(100)
           .height(100)
           .draggable(true)
-          .margin({ left: 15 ,top: 40})
+          .margin({ left: 15, top: 40 })
           .visibility(this.imgState)
           .onDragStart((event) => {
           })
@@ -1117,6 +1119,7 @@ struct DropAnimationExample {
           })
       }.width('45%')
       .height('100%')
+
       Column() {
         Text('Drag Target Area')
           .fontSize(20)
@@ -1177,14 +1180,15 @@ struct ImageExample {
       Text('Image拖拽')
         .fontSize('30dp')
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
+        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.startIcon'))
           .width(100)
           .height(100)
           .border({ width: 1 })
           .draggable(true)
-          .onDragStart((event:DragEvent) => {
-            const context: Context|undefined = this.uiContext.getHostContext();
-            if(context) {
+          .onDragStart((event: DragEvent) => {
+            const context: Context | undefined = this.uiContext.getHostContext();
+            if (context) {
               let data = context.resourceManager.getMediaContentSync($r('app.media.startIcon').id, 120);
               const arrayBuffer: ArrayBuffer = data.buffer.slice(data.byteOffset, data.byteLength + data.byteOffset);
               let filePath = context.filesDir + '/test.png';
@@ -1200,23 +1204,24 @@ struct ImageExample {
           })
       }
       .margin({ bottom: 20 })
+
       Row() {
-        Column(){
+        Column() {
           Text('可释放区域')
             .fontSize('15dp')
             .height('10%')
-          List(){
-            ForEach(this.blockArr, (item:string, index) => {
+          List() {
+            ForEach(this.blockArr, (item: string, index) => {
               ListItem() {
                 Image(item)
                   .width(100)
                   .height(100)
-                  .border({width: 1})
+                  .border({ width: 1 })
               }
-              .margin({ left: 30 , top : 30})
-            }, (item:string) => item)
+              .margin({ left: 30, top: 30 })
+            }, (item: string) => item)
           }
-          .border({width: 1})
+          .border({ width: 1 })
           .height('90%')
           .width('100%')
           .onDrop((event?: DragEvent, extraParams?: string) => {
@@ -1224,23 +1229,29 @@ struct ImageExample {
             let context = this.uiContext.getHostContext() as common.UIAbilityContext;
             let pathDir: string = context.distributedFilesDir;
             let destUri = fileUri.getUriFromPath(pathDir);
-            let progressListener: unifiedDataChannel.DataProgressListener = (progress: unifiedDataChannel.ProgressInfo, dragData: UnifiedData|null) => {
-              if(dragData != null) {
-                let arr:Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
-                if(arr.length > 0) {
-                  if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.IMAGE) {
-                    let image = arr[0] as unifiedDataChannel.Image;
-                    this.uri = image.imageUri;
-                    this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
+            // 创建DataProgressListener监听数据传输进度
+            let progressListener: unifiedDataChannel.DataProgressListener =
+              (progress: unifiedDataChannel.ProgressInfo, dragData: UnifiedData | null) => {
+                if (dragData != null) {
+                  // 获取数据记录数组
+                  let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
+                  if (arr.length > 0) {
+                    // 检查首记录类型是否为IMAGE
+                    if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.IMAGE) {
+                      // 类型匹配成功，记录数据Uri
+                      let image = arr[0] as unifiedDataChannel.Image;
+                      this.uri = image.imageUri;
+                      this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
+                    }
+                  } else {
+                    console.info('dragData arr is null');
                   }
                 } else {
-                  console.info('dragData arr is null');
+                  console.info('dragData is undefined');
                 }
-              } else {
-                console.info('dragData is undefined');
-              }
-              console.info(`percentage: ${progress.progress}`);
-            };
+                console.info(`percentage: ${progress.progress}`);
+              };
+            // 设置异步数据加载参数项
             let options: DataSyncOptions = {
               destUri: destUri,
               fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE,
@@ -1248,17 +1259,19 @@ struct ImageExample {
               dataProgressListener: progressListener,
             }
             try {
+              // 启动数据传输
               this.udKey = (event as DragEvent).startDataLoading(options);
-              console.info('udKey: ', this.udKey);
-            } catch(e) {
+              console.info(`udKey: ${this.udKey}`);
+            } catch (e) {
               console.error(`startDataLoading errorCode: ${e.code}, errorMessage: ${e.message}`);
             }
-          }, {disableDataPrefetch: true})
+          }, { disableDataPrefetch: true })
         }
         .height("50%")
         .width("90%")
         .border({ width: 1 })
       }
+
       Button('取消数据传输')
         .onClick(() => {
           try {
@@ -1267,7 +1280,7 @@ struct ImageExample {
             console.error(`cancelDataLoading errorCode: ${e.code}, errorMessage: ${e.message}`);
           }
         })
-        .margin({top: 10})
+        .margin({ top: 10 })
     }.width('100%')
   }
 }
@@ -1297,6 +1310,7 @@ struct Index {
   @Builder
   pixelMapBuilder() {
     Column() {
+      // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
       Image($r('app.media.app_icon'))
         .width(120)
         .height(120)
@@ -1317,7 +1331,7 @@ struct Index {
       callback(event);
       return true;
     } catch (e) {
-      console.error("getData failed, code = " + (e as BusinessError).code + ", message = " + (e as BusinessError).message);
+      console.error(`getData failed, code = ${(e as BusinessError).code}, message = ${(e as BusinessError).message}`);
       return false;
     }
   }
@@ -1349,6 +1363,7 @@ struct Index {
           .height(40)
           .margin(10)
           .backgroundColor('#008888')
+        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.startIcon'))
           .width(100)
           .height(100)
@@ -1473,6 +1488,7 @@ struct Index {
             .height(40)
             .margin(10)
             .backgroundColor('#008888')
+          // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
           Image($r('app.media.startIcon'))
             .onDragStart((event) => {
               this.startDragSource = (event as DragEvent).getDragSource();
@@ -1504,7 +1520,8 @@ struct Index {
               this.enterDragSource = (event as DragEvent).getDragSource();
               this.enterIsRemote = (event as DragEvent).isRemote();
             })
-            .onDrop(()=>{})
+            .onDrop(() => {
+            })
         }
         .border({ color: Color.Black, width: 1 })
         .width('45%')
@@ -1557,6 +1574,7 @@ struct Index {
           .height(40)
           .margin(10)
           .backgroundColor('#008888')
+        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.startIcon'))
           .id("ori_image")
           .width(100)
@@ -1634,6 +1652,7 @@ struct VideoExample {
       Text('video拖拽')
         .fontSize('30dp')
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
+        // $rawfile('test1.mp4')需要替换为开发者所需的资源文件
         Video({ src: $rawfile('test1.mp4'), controller: new VideoController() })
           .width(200)
           .height(200)
@@ -1643,9 +1662,9 @@ struct VideoExample {
             const context: Context | undefined = this.uiContext.getHostContext();
             if (context) {
               let loadHandler: unifiedDataChannel.DataLoadHandler = (acceptableInfo) => {
-                console.info('acceptableInfo recordCount', acceptableInfo?.recordCount);
+                console.info(`acceptableInfo recordCount ${acceptableInfo?.recordCount}`);
                 if (acceptableInfo?.types) {
-                  console.info('acceptableInfo types', Array.from(acceptableInfo.types));
+                  console.info(`acceptableInfo types ${Array.from(acceptableInfo.types)}`);
                 } else {
                   console.error('acceptableInfo types is undefined');
                 }
@@ -1735,7 +1754,7 @@ struct VideoExample {
             }
             try {
               this.udKey = (event as DragEvent).startDataLoading(options);
-              console.info('udKey: ', this.udKey);
+              console.info(`udKey: ${this.udKey}`);
             } catch (e) {
               console.error(`startDataLoading errorCode: ${e.code}, errorMessage: ${e.message}`);
             }

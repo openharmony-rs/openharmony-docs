@@ -77,7 +77,8 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 
 | 名称         | 类型       | 只读 | 可选 | 说明                |
 |------------|----------|----|----|-------------------|
-| dnsServers | string[] | 是  | 否  | 下载资源时使用的DNS服务器列表。 |
+| dnsServers | string[] | 是  | 否  | 下载资源时使用的dns服务器列表。 |
+| ip<sup>23+</sup> | string | 是  | 是  | 下载资源时url的ip地址。当dns解析失败时，ip为undefined。 |
 
 ## PerformanceInfo<sup>20+</sup>
 

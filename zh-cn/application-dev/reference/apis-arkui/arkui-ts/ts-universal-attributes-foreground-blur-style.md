@@ -122,9 +122,9 @@ foregroundBlurStyle(style: Optional\<BlurStyle>, options?: ForegroundBlurStyleOp
 
 | 名称     | 值 | 说明       |
 | ------ | --- | ------- |
-| SYSTEM | - | 跟随系统深浅色模式。 |
-| LIGHT  | - | 固定使用浅色模式。  |
-| DARK   | - | 固定使用深色模式。  |
+| SYSTEM | 0 | 跟随系统深浅色模式。 |
+| LIGHT  | 1 | 固定使用浅色模式。  |
+| DARK   | 2 | 固定使用深色模式。  |
 
 ## AdaptiveColor枚举说明
 
@@ -136,8 +136,8 @@ foregroundBlurStyle(style: Optional\<BlurStyle>, options?: ForegroundBlurStyleOp
 
 | 名称      | 值 | 说明                        |
 | ------- | ---- | --------------------- |
-| DEFAULT | - | 不使用取色模糊。使用默认的颜色作为蒙版颜色。采用非DEFAULT方式较耗时。    |
-| AVERAGE | - | 使用取色模糊。将取色区域的颜色平均值作为蒙版颜色。 |
+| DEFAULT | 0 | 不使用取色模糊。使用默认的颜色作为蒙版颜色。采用非DEFAULT方式较耗时。    |
+| AVERAGE | 1 | 使用取色模糊。将取色区域的颜色平均值作为蒙版颜色。 |
 
 ## BlurOptions<sup>11+</sup>
 灰阶模糊参数。

@@ -124,6 +124,7 @@ struct Index {
 <!-- @[Main_NewGlobal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/NewGlobal.ets) --> 
 
 ``` TypeScript
+// pages/NewGlobal.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -200,6 +201,7 @@ export default class EntryAbility extends UIAbility {
 <!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) --> 
 
 ``` TypeScript
+// entryability/EntryAbility.ets
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -211,7 +213,7 @@ import { PixelUtil } from '../Common/Utils';
 const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
-// ···
+  // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     let localStorage = new LocalStorage();
@@ -227,6 +229,7 @@ export default class EntryAbility extends UIAbility {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
+      hilog.info(DOMAIN, 'testTag', `loadContent success.`);
       // 需要在回调中调用。
       try {
         let uiContext = window.getUIContext();
@@ -243,11 +246,10 @@ export default class EntryAbility extends UIAbility {
         hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
       }
       // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
-      hilog.info(DOMAIN, 'testTag', `loadContent success.`);
     });
   }
 
-// ···
+  // ...
 
   onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
@@ -256,7 +258,7 @@ export default class EntryAbility extends UIAbility {
     PixelUtil.removeUIContext();
   }
 
-// ···
+  // ...
 }
 
 ```
@@ -522,6 +524,7 @@ export class PixelUtil {
 <!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
+// entryability/EntryAbility.ets
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -533,7 +536,7 @@ import { PixelUtil } from '../Common/Utils';
 const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
-// ···
+  // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     let localStorage = new LocalStorage();
@@ -549,6 +552,7 @@ export default class EntryAbility extends UIAbility {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
+      hilog.info(DOMAIN, 'testTag', `loadContent success.`);
       // 需要在回调中调用。
       try {
         let uiContext = window.getUIContext();
@@ -565,11 +569,10 @@ export default class EntryAbility extends UIAbility {
         hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
       }
       // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
-      hilog.info(DOMAIN, 'testTag', `loadContent success.`);
     });
   }
 
-// ···
+  // ...
 
   onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
@@ -578,7 +581,7 @@ export default class EntryAbility extends UIAbility {
     PixelUtil.removeUIContext();
   }
 
-// ···
+  // ...
 }
 
 ```
@@ -588,6 +591,7 @@ export default class EntryAbility extends UIAbility {
 <!-- @[Main_VpPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/VpPage.ets) -->
 
 ``` TypeScript
+// pages/VpPage.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { PixelUtil } from '../Common/Utils';
 
@@ -598,7 +602,7 @@ const DOMAIN = 0x0000;
 struct Index {
   build() {
     RelativeContainer() {
-      Text('Calculate 20vp to px')
+      Text('Caculate 20vp to px')
         .fontWeight(FontWeight.Bold)
         .alignRules({
           center: { anchor: '__container__', align: VerticalAlign.Center },
@@ -687,6 +691,7 @@ export class WindowUIContextUtils {
 <!-- @[Common_registerWindowCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
+// entryability/EntryAbility.ets
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -698,7 +703,7 @@ import { PixelUtil } from '../Common/Utils';
 const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
-// ···
+  // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     let localStorage = new LocalStorage();
@@ -714,6 +719,7 @@ export default class EntryAbility extends UIAbility {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
+      hilog.info(DOMAIN, 'testTag', `loadContent success.`);
       // 需要在回调中调用。
       try {
         let uiContext = window.getUIContext();
@@ -730,7 +736,6 @@ export default class EntryAbility extends UIAbility {
         hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
       }
       // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
-      hilog.info(DOMAIN, 'testTag', `loadContent success.`);
     });
   }
 
@@ -741,7 +746,7 @@ export default class EntryAbility extends UIAbility {
     WindowUIContextUtils.unregisterWindowCallback(window);
   }
 
-// ···
+  // ...
 }
 
 ```
@@ -817,6 +822,7 @@ struct Index {
 <!-- @[Main_CalendarPickerDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/CalendarPickerDialogPage.ets) -->
 
 ``` TypeScript
+// pages/CalendarPickerDialogPage.ets
 @Entry
 @Component
 struct CalendarPickerDialogPage {
@@ -889,6 +895,7 @@ export class PixelUtils {
 <!-- @[Common_PixelUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/UIContext.ets) -->
 
 ``` TypeScript
+// Common/UIContext.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { display } from '@kit.ArkUI';
 
@@ -987,6 +994,7 @@ struct GetContextPage {
 <!-- @[Common_ContextUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/ContextUtils.ets) -->
 
 ``` TypeScript
+// Common/ContextUtils.ets
 export class ContextUtils {
   public static context: Context | undefined;
 
@@ -1009,6 +1017,7 @@ export class ContextUtils {
 <!-- @[Common_setContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
+// entryability/EntryAbility.ets
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -1021,16 +1030,16 @@ const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    // ···
+    // ...
     ContextUtils.setContext(this.context);
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'setContext success');
-    // ···
+    // ...
   }
 
   onDestroy(): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
   }
-// ···
+  // ...
 }
 
 ```
@@ -1040,6 +1049,7 @@ export default class EntryAbility extends UIAbility {
 <!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/ContextPage.ets) -->
 
 ``` TypeScript
+// pages/ContextPage.ets
 import { ContextUtils } from '../Common/ContextUtils';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -1148,6 +1158,7 @@ struct LocalStoragePage {
 <!-- @[Common_LocalStorage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
+// entryability/EntryAbility.ets
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -1159,42 +1170,23 @@ import { PixelUtil } from '../Common/Utils';
 const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
-// ···
+  // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     let localStorage = new LocalStorage();
     localStorage.setOrCreate('message', 'Message from Storage')
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'success localStorage');
-    let window = windowStage.getMainWindowSync();
-    // 注册主窗的回调。
-    WindowUIContextUtils.registerWindowCallback(window);
-    // 在loadContent前调用getUIContext时，UI实例未创建，存在异常。
+  // ...
     windowStage.loadContent('pages/Index', localStorage, (err) => {
       // 需要在loadContent完成后获取UIContext。
       if (err.code) {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
-      // 需要在回调中调用。
-      try {
-        let uiContext = window.getUIContext();
-        PixelUtils.setUIContext(uiContext);
-        // 主窗获焦可能早于loadContent完成，需要在成功后设置保证有效。
-        WindowUIContextUtils.setActiveUIContext(uiContext)
-        if (!uiContext) {
-          hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
-          return;
-        }
-        let pxValue = uiContext.vp2px(20);
-        hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
-      } catch (e) {
-        hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
-      }
-      // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
       hilog.info(DOMAIN, 'testTag', `loadContent success.`);
+      // ...
     });
   }
 
-// ···
+  // ...
 }
 ```

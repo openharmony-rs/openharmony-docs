@@ -51,7 +51,7 @@
 
 ### OH_AudioEncoder_CreateByMime()
 
-```
+```c
 OH_AVCodec *OH_AudioEncoder_CreateByMime(const char *mime)
 ```
 
@@ -81,7 +81,7 @@ OH_AVCodec *OH_AudioEncoder_CreateByMime(const char *mime)
 
 ### OH_AudioEncoder_CreateByName()
 
-```
+```c
 OH_AVCodec *OH_AudioEncoder_CreateByName(const char *name)
 ```
 
@@ -112,7 +112,7 @@ OH_AVCodec *OH_AudioEncoder_CreateByName(const char *name)
 
 ### OH_AudioEncoder_Destroy()
 
-```
+```c
 OH_AVErrCode OH_AudioEncoder_Destroy(OH_AVCodec *codec)
 ```
 
@@ -142,7 +142,7 @@ OH_AVErrCode OH_AudioEncoder_Destroy(OH_AVCodec *codec)
 
 ### OH_AudioEncoder_SetCallback()
 
-```
+```c
 OH_AVErrCode OH_AudioEncoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallback callback, void *userData)
 ```
 
@@ -174,7 +174,7 @@ OH_AVErrCode OH_AudioEncoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallb
 
 ### OH_AudioEncoder_Configure()
 
-```
+```c
 OH_AVErrCode OH_AudioEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 ```
 
@@ -205,7 +205,7 @@ OH_AVErrCode OH_AudioEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 
 ### OH_AudioEncoder_Prepare()
 
-```
+```c
 OH_AVErrCode OH_AudioEncoder_Prepare(OH_AVCodec *codec)
 ```
 
@@ -235,7 +235,7 @@ OH_AVErrCode OH_AudioEncoder_Prepare(OH_AVCodec *codec)
 
 ### OH_AudioEncoder_Start()
 
-```
+```c
 OH_AVErrCode OH_AudioEncoder_Start(OH_AVCodec *codec)
 ```
 
@@ -265,7 +265,7 @@ OH_AVErrCode OH_AudioEncoder_Start(OH_AVCodec *codec)
 
 ### OH_AudioEncoder_Stop()
 
-```
+```c
 OH_AVErrCode OH_AudioEncoder_Stop(OH_AVCodec *codec)
 ```
 
@@ -295,7 +295,7 @@ OH_AVErrCode OH_AudioEncoder_Stop(OH_AVCodec *codec)
 
 ### OH_AudioEncoder_Flush()
 
-```
+```c
 OH_AVErrCode OH_AudioEncoder_Flush(OH_AVCodec *codec)
 ```
 
@@ -325,7 +325,7 @@ OH_AVErrCode OH_AudioEncoder_Flush(OH_AVCodec *codec)
 
 ### OH_AudioEncoder_Reset()
 
-```
+```c
 OH_AVErrCode OH_AudioEncoder_Reset(OH_AVCodec *codec)
 ```
 
@@ -355,7 +355,7 @@ OH_AVErrCode OH_AudioEncoder_Reset(OH_AVCodec *codec)
 
 ### OH_AudioEncoder_GetOutputDescription()
 
-```
+```c
 OH_AVFormat *OH_AudioEncoder_GetOutputDescription(OH_AVCodec *codec)
 ```
 
@@ -385,7 +385,7 @@ OH_AVFormat *OH_AudioEncoder_GetOutputDescription(OH_AVCodec *codec)
 
 ### OH_AudioEncoder_SetParameter()
 
-```
+```c
 OH_AVErrCode OH_AudioEncoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format)
 ```
 
@@ -416,7 +416,7 @@ OH_AVErrCode OH_AudioEncoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format
 
 ### OH_AudioEncoder_PushInputData()
 
-```
+```c
 OH_AVErrCode OH_AudioEncoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH_AVCodecBufferAttr attr)
 ```
 
@@ -448,7 +448,7 @@ OH_AVErrCode OH_AudioEncoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH
 
 ### OH_AudioEncoder_FreeOutputData()
 
-```
+```c
 OH_AVErrCode OH_AudioEncoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -479,7 +479,7 @@ OH_AVErrCode OH_AudioEncoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)
 
 ### OH_AudioEncoder_IsValid()
 
-```
+```c
 OH_AVErrCode OH_AudioEncoder_IsValid(OH_AVCodec *codec, bool *isValid)
 ```
 

@@ -111,7 +111,7 @@ viewport-fit用于设置网页在可视窗口中的布局方式，是`<meta name
 
 网页元素的避让适配依赖CSS函数`env()`，该函数用于获取浏览器或系统提供的环境变量。使用`env()`函数可以获取`safe-area-inset-*`的值。网页开发者无需关注设备非安全区域的具体位置和尺寸，在CSS样式中应用`env(safe-area-inset-*)`即可定义网页需要避让的距离，实现跨设备的避让。语法如下：
 
-```
+```css
 /* 分别表示上、右、下、左，四个方向上的避让值 */
 env(safe-area-inset-top);
 env(safe-area-inset-right);
@@ -202,7 +202,7 @@ Web组件启用沉浸式效果时，渲染内容可能与非安全区域重叠�
 
 网页开发者可利用`env(safe-area-inset-*)`定义CSS样式，确保文字、图片和交互组件避让非安全区域。在以下示例中，通过`env(safe-area-inset-*)`更新了index.html的CSS样式，使网页主要内容避让非安全区域，效果见图3。
 
-```
+```css
 .title-bar {
     align-items: center;
     justify-content: center;

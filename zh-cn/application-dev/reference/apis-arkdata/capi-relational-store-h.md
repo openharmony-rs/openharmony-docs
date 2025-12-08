@@ -126,7 +126,7 @@
 | [int OH_Rdb_Attach(OH_Rdb_Store *store, const OH_Rdb_ConfigV2 *config, const char *attachName, int64_t waitTime,size_t *attachedNumber)](#oh_rdb_attach) | - | 将数据库文件附加到当前连接的数据库。 |
 | [int OH_Rdb_Detach(OH_Rdb_Store *store, const char *attachName, int64_t waitTime, size_t *attachedNumber)](#oh_rdb_detach) | - | 从当前数据库中分离指定的数据库。 |
 | [int OH_Rdb_SetLocale(OH_Rdb_Store *store, const char *locale)](#oh_rdb_setlocale) | - | 支持不同语言的排序规则。 |
-| [int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enabled)](#oh_rdb_setsemanticindex) | - | 开启或关闭基于语义索引的知识加工。 |
+| [int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enableSemanticIndex)](#oh_rdb_setsemanticindex) | - | 开启或关闭基于语义索引的知识加工。 |
 | [int OH_Rdb_RekeyEx(OH_Rdb_Store *store, OH_Rdb_CryptoParam *param)](#oh_rdb_rekeyex) | - | 更改加密数据库密钥。<br>不支持对非WAL模式的数据库进行密钥更新。<br>手动更新时需要独占访问数据库，此时若存在任何未释放的结果集、事务或其他进程打开的数据库均会导致更新失败。<br>支持加密数据库的参数更新，以及加密数据库与非加密数据库之间的相互转换。<br>数据库越大，执行更新所需的时间越长。<br>加密参数变更需谨慎，调用OH_Rdb_CreateOrOpen时需要传入正确的加密参数，否则可能打开数据库失败。 |
 | [typedef void (\*Rdb_CorruptedHandler)(void *context, OH_Rdb_ConfigV2 *config, OH_Rdb_Store *store)](#rdb_corruptedhandler) | Rdb_CorruptedHandler | 数据库异常处理的回调函数。 |
 | [int OH_Rdb_RegisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)](#oh_rdb_registercorruptedhandler) | - | 注册数据库异常处理。当数据库发生异常时，将调用异常处理的回调函数。<br>异常处理逻辑为用户自定义，回调时触发的业务需要用户自行保障。<br>每个路径只允许注册一次。 |
@@ -136,7 +136,7 @@
 
 ### OH_Rdb_SecurityLevel
 
-```
+```c
 enum OH_Rdb_SecurityLevel
 ```
 
@@ -155,7 +155,7 @@ enum OH_Rdb_SecurityLevel
 
 ### Rdb_SecurityArea
 
-```
+```c
 enum Rdb_SecurityArea
 ```
 
@@ -175,7 +175,7 @@ enum Rdb_SecurityArea
 
 ### Rdb_DBType
 
-```
+```c
 enum Rdb_DBType
 ```
 
@@ -193,7 +193,7 @@ enum Rdb_DBType
 
 ### Rdb_Tokenizer
 
-```
+```c
 enum Rdb_Tokenizer
 ```
 
@@ -211,7 +211,7 @@ enum Rdb_Tokenizer
 
 ### Rdb_DistributedType
 
-```
+```c
 enum Rdb_DistributedType
 ```
 
@@ -227,7 +227,7 @@ enum Rdb_DistributedType
 
 ### Rdb_ChangeType
 
-```
+```c
 enum Rdb_ChangeType
 ```
 
@@ -244,7 +244,7 @@ enum Rdb_ChangeType
 
 ### Rdb_SubscribeType
 
-```
+```c
 enum Rdb_SubscribeType
 ```
 
@@ -258,11 +258,11 @@ enum Rdb_SubscribeType
 | -- | -- |
 | RDB_SUBSCRIBE_TYPE_CLOUD | 订阅云端数据更改。 |
 | RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS | 订阅云端数据更改详情。 |
-| RDB_SUBSCRIBE_TYPE_LOCAL_DETAILS | 订阅本地数据更改详情。 |
+| RDB_SUBSCRIBE_TYPE_LOCAL_DETAILS | 订阅本地数据更改详情。<br>**起始版本：** 12 |
 
 ### Rdb_SyncMode
 
-```
+```c
 enum Rdb_SyncMode
 ```
 
@@ -280,7 +280,7 @@ enum Rdb_SyncMode
 
 ### Rdb_Progress
 
-```
+```c
 enum Rdb_Progress
 ```
 
@@ -294,7 +294,7 @@ enum Rdb_Progress
 
 ### Rdb_ProgressCode
 
-```
+```c
 enum Rdb_ProgressCode
 ```
 
@@ -315,8 +315,8 @@ enum Rdb_ProgressCode
 
 ### OH_Rdb_SetSemanticIndex()
 
-```
-int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enabled)
+```c
+int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enableSemanticIndex)
 ```
 
 **描述**
@@ -330,7 +330,7 @@ int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enabled)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | 表示指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)实例的指针。 |
-| bool enabled | 开启或关闭基于语义索引的知识加工能力标志。<br>true表示开启。false表示关闭。 |
+| bool enableSemanticIndex | 开启或关闭基于语义索引的知识加工能力标志。<br>true表示开启。false表示关闭。 |
 
 **返回：**
 
@@ -340,7 +340,7 @@ int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enabled)
 
 ### OH_Rdb_CreateConfig()
 
-```
+```c
 OH_Rdb_ConfigV2 *OH_Rdb_CreateConfig()
 ```
 
@@ -362,7 +362,7 @@ OH_Rdb_ConfigV2
 
 ### OH_Rdb_DestroyConfig()
 
-```
+```c
 int OH_Rdb_DestroyConfig(OH_Rdb_ConfigV2 *config)
 ```
 
@@ -387,7 +387,7 @@ int OH_Rdb_DestroyConfig(OH_Rdb_ConfigV2 *config)
 
 ### OH_Rdb_SetDatabaseDir()
 
-```
+```c
 int OH_Rdb_SetDatabaseDir(OH_Rdb_ConfigV2 *config, const char *databaseDir)
 ```
 
@@ -413,7 +413,7 @@ int OH_Rdb_SetDatabaseDir(OH_Rdb_ConfigV2 *config, const char *databaseDir)
 
 ### OH_Rdb_SetStoreName()
 
-```
+```c
 int OH_Rdb_SetStoreName(OH_Rdb_ConfigV2 *config, const char *storeName)
 ```
 
@@ -439,7 +439,7 @@ int OH_Rdb_SetStoreName(OH_Rdb_ConfigV2 *config, const char *storeName)
 
 ### OH_Rdb_SetBundleName()
 
-```
+```c
 int OH_Rdb_SetBundleName(OH_Rdb_ConfigV2 *config, const char *bundleName)
 ```
 
@@ -465,7 +465,7 @@ int OH_Rdb_SetBundleName(OH_Rdb_ConfigV2 *config, const char *bundleName)
 
 ### OH_Rdb_SetModuleName()
 
-```
+```c
 int OH_Rdb_SetModuleName(OH_Rdb_ConfigV2 *config, const char *moduleName)
 ```
 
@@ -491,7 +491,7 @@ int OH_Rdb_SetModuleName(OH_Rdb_ConfigV2 *config, const char *moduleName)
 
 ### OH_Rdb_SetEncrypted()
 
-```
+```c
 int OH_Rdb_SetEncrypted(OH_Rdb_ConfigV2 *config, bool isEncrypted)
 ```
 
@@ -517,7 +517,7 @@ int OH_Rdb_SetEncrypted(OH_Rdb_ConfigV2 *config, bool isEncrypted)
 
 ### OH_Rdb_SetSecurityLevel()
 
-```
+```c
 int OH_Rdb_SetSecurityLevel(OH_Rdb_ConfigV2 *config, int securityLevel)
 ```
 
@@ -543,7 +543,7 @@ int OH_Rdb_SetSecurityLevel(OH_Rdb_ConfigV2 *config, int securityLevel)
 
 ### OH_Rdb_SetArea()
 
-```
+```c
 int OH_Rdb_SetArea(OH_Rdb_ConfigV2 *config, int area)
 ```
 
@@ -569,7 +569,7 @@ int OH_Rdb_SetArea(OH_Rdb_ConfigV2 *config, int area)
 
 ### OH_Rdb_SetDbType()
 
-```
+```c
 int OH_Rdb_SetDbType(OH_Rdb_ConfigV2 *config, int dbType)
 ```
 
@@ -595,7 +595,7 @@ int OH_Rdb_SetDbType(OH_Rdb_ConfigV2 *config, int dbType)
 
 ### OH_Rdb_SetCustomDir()
 
-```
+```c
 int OH_Rdb_SetCustomDir(OH_Rdb_ConfigV2 *config, const char *customDir)
 ```
 
@@ -621,7 +621,7 @@ int OH_Rdb_SetCustomDir(OH_Rdb_ConfigV2 *config, const char *customDir)
 
 ### OH_Rdb_SetReadOnly()
 
-```
+```c
 int OH_Rdb_SetReadOnly(OH_Rdb_ConfigV2 *config, bool readOnly)
 ```
 
@@ -647,7 +647,7 @@ int OH_Rdb_SetReadOnly(OH_Rdb_ConfigV2 *config, bool readOnly)
 
 ### OH_Rdb_SetPlugins()
 
-```
+```c
 int OH_Rdb_SetPlugins(OH_Rdb_ConfigV2 *config, const char **plugins, int32_t length)
 ```
 
@@ -674,7 +674,7 @@ int OH_Rdb_SetPlugins(OH_Rdb_ConfigV2 *config, const char **plugins, int32_t len
 
 ### OH_Rdb_SetCryptoParam()
 
-```
+```c
 int OH_Rdb_SetCryptoParam(OH_Rdb_ConfigV2 *config, const OH_Rdb_CryptoParam *cryptoParam)
 ```
 
@@ -700,7 +700,7 @@ int OH_Rdb_SetCryptoParam(OH_Rdb_ConfigV2 *config, const OH_Rdb_CryptoParam *cry
 
 ### OH_Rdb_IsTokenizerSupported()
 
-```
+```c
 int OH_Rdb_IsTokenizerSupported(Rdb_Tokenizer tokenizer, bool *isSupported)
 ```
 
@@ -726,7 +726,7 @@ int OH_Rdb_IsTokenizerSupported(Rdb_Tokenizer tokenizer, bool *isSupported)
 
 ### OH_Rdb_SetTokenizer()
 
-```
+```c
 int OH_Rdb_SetTokenizer(OH_Rdb_ConfigV2 *config, Rdb_Tokenizer tokenizer)
 ```
 
@@ -752,7 +752,7 @@ int OH_Rdb_SetTokenizer(OH_Rdb_ConfigV2 *config, Rdb_Tokenizer tokenizer)
 
 ### OH_Rdb_SetPersistent()
 
-```
+```c
 int OH_Rdb_SetPersistent(OH_Rdb_ConfigV2 *config, bool isPersistent)
 ```
 
@@ -778,7 +778,7 @@ int OH_Rdb_SetPersistent(OH_Rdb_ConfigV2 *config, bool isPersistent)
 
 ### OH_Rdb_GetSupportedDbType()
 
-```
+```c
 const int *OH_Rdb_GetSupportedDbType(int *typeCount)
 ```
 
@@ -803,7 +803,7 @@ const int *OH_Rdb_GetSupportedDbType(int *typeCount)
 
 ### OH_Rdb_CreateValueObject()
 
-```
+```c
 OH_VObject *OH_Rdb_CreateValueObject()
 ```
 
@@ -825,7 +825,7 @@ OH_VObject
 
 ### OH_Rdb_CreateValuesBucket()
 
-```
+```c
 OH_VBucket *OH_Rdb_CreateValuesBucket()
 ```
 
@@ -847,7 +847,7 @@ OH_VBucket
 
 ### OH_Rdb_CreatePredicates()
 
-```
+```c
 OH_Predicates *OH_Rdb_CreatePredicates(const char *table)
 ```
 
@@ -876,7 +876,7 @@ OH_Predicates
 
 ### OH_Rdb_GetOrOpen()
 
-```
+```c
 OH_Rdb_Store *OH_Rdb_GetOrOpen(const OH_Rdb_Config *config, int *errCode)
 ```
 
@@ -902,7 +902,7 @@ OH_Rdb_Store *OH_Rdb_GetOrOpen(const OH_Rdb_Config *config, int *errCode)
 
 ### OH_Rdb_CreateOrOpen()
 
-```
+```c
 OH_Rdb_Store *OH_Rdb_CreateOrOpen(const OH_Rdb_ConfigV2 *config, int *errCode)
 ```
 
@@ -928,7 +928,7 @@ OH_Rdb_Store *OH_Rdb_CreateOrOpen(const OH_Rdb_ConfigV2 *config, int *errCode)
 
 ### OH_Rdb_CloseStore()
 
-```
+```c
 int OH_Rdb_CloseStore(OH_Rdb_Store *store)
 ```
 
@@ -953,7 +953,7 @@ int OH_Rdb_CloseStore(OH_Rdb_Store *store)
 
 ### OH_Rdb_DeleteStore()
 
-```
+```c
 int OH_Rdb_DeleteStore(const OH_Rdb_Config *config)
 ```
 
@@ -978,7 +978,7 @@ int OH_Rdb_DeleteStore(const OH_Rdb_Config *config)
 
 ### OH_Rdb_DeleteStoreV2()
 
-```
+```c
 int OH_Rdb_DeleteStoreV2(const OH_Rdb_ConfigV2 *config)
 ```
 
@@ -1003,7 +1003,7 @@ int OH_Rdb_DeleteStoreV2(const OH_Rdb_ConfigV2 *config)
 
 ### OH_Rdb_Insert()
 
-```
+```c
 int OH_Rdb_Insert(OH_Rdb_Store *store, const char *table, OH_VBucket *valuesBucket)
 ```
 
@@ -1030,7 +1030,7 @@ int OH_Rdb_Insert(OH_Rdb_Store *store, const char *table, OH_VBucket *valuesBuck
 
 ### OH_Rdb_InsertWithConflictResolution()
 
-```
+```c
 int OH_Rdb_InsertWithConflictResolution(OH_Rdb_Store *store, const char *table, OH_VBucket *row,Rdb_ConflictResolution resolution, int64_t *rowId)
 ```
 
@@ -1059,7 +1059,7 @@ int OH_Rdb_InsertWithConflictResolution(OH_Rdb_Store *store, const char *table, 
 
 ### OH_Rdb_BatchInsert()
 
-```
+```c
 int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table,const OH_Data_VBuckets *rows, Rdb_ConflictResolution resolution, int64_t *changes)
 ```
 
@@ -1094,7 +1094,7 @@ int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table,const OH_Data_VBuc
 
 ### OH_Rdb_Update()
 
-```
+```c
 int OH_Rdb_Update(OH_Rdb_Store *store, OH_VBucket *valuesBucket, OH_Predicates *predicates)
 ```
 
@@ -1121,7 +1121,7 @@ int OH_Rdb_Update(OH_Rdb_Store *store, OH_VBucket *valuesBucket, OH_Predicates *
 
 ### OH_Rdb_UpdateWithConflictResolution()
 
-```
+```c
 int OH_Rdb_UpdateWithConflictResolution(OH_Rdb_Store *store, OH_VBucket *row, OH_Predicates *predicates,Rdb_ConflictResolution resolution, int64_t *changes)
 ```
 
@@ -1150,7 +1150,7 @@ int OH_Rdb_UpdateWithConflictResolution(OH_Rdb_Store *store, OH_VBucket *row, OH
 
 ### OH_Rdb_Delete()
 
-```
+```c
 int OH_Rdb_Delete(OH_Rdb_Store *store, OH_Predicates *predicates)
 ```
 
@@ -1176,7 +1176,7 @@ int OH_Rdb_Delete(OH_Rdb_Store *store, OH_Predicates *predicates)
 
 ### OH_Rdb_Query()
 
-```
+```c
 OH_Cursor *OH_Rdb_Query(OH_Rdb_Store *store, OH_Predicates *predicates, const char *const *columnNames, int length)
 ```
 
@@ -1204,7 +1204,7 @@ OH_Cursor *OH_Rdb_Query(OH_Rdb_Store *store, OH_Predicates *predicates, const ch
 
 ### OH_Rdb_Execute()
 
-```
+```c
 int OH_Rdb_Execute(OH_Rdb_Store *store, const char *sql)
 ```
 
@@ -1234,7 +1234,7 @@ OH_Rdb_Store
 
 ### OH_Rdb_ExecuteV2()
 
-```
+```c
 int OH_Rdb_ExecuteV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values *args, OH_Data_Value **result)
 ```
 
@@ -1266,7 +1266,7 @@ OH_Value_Destroy
 
 ### OH_Rdb_ExecuteByTrxId()
 
-```
+```c
 int OH_Rdb_ExecuteByTrxId(OH_Rdb_Store *store, int64_t trxId, const char *sql)
 ```
 
@@ -1297,7 +1297,7 @@ OH_Rdb_Store
 
 ### OH_Rdb_ExecuteQuery()
 
-```
+```c
 OH_Cursor *OH_Rdb_ExecuteQuery(OH_Rdb_Store *store, const char *sql)
 ```
 
@@ -1327,7 +1327,7 @@ OH_Rdb_Store
 
 ### OH_Rdb_ExecuteQueryV2()
 
-```
+```c
 OH_Cursor *OH_Rdb_ExecuteQueryV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values *args)
 ```
 
@@ -1358,7 +1358,7 @@ OH_Rdb_Store
 
 ### OH_Rdb_BeginTransaction()
 
-```
+```c
 int OH_Rdb_BeginTransaction(OH_Rdb_Store *store)
 ```
 
@@ -1383,7 +1383,7 @@ int OH_Rdb_BeginTransaction(OH_Rdb_Store *store)
 
 ### OH_Rdb_RollBack()
 
-```
+```c
 int OH_Rdb_RollBack(OH_Rdb_Store *store)
 ```
 
@@ -1408,7 +1408,7 @@ int OH_Rdb_RollBack(OH_Rdb_Store *store)
 
 ### OH_Rdb_Commit()
 
-```
+```c
 int OH_Rdb_Commit(OH_Rdb_Store *store)
 ```
 
@@ -1433,7 +1433,7 @@ int OH_Rdb_Commit(OH_Rdb_Store *store)
 
 ### OH_Rdb_BeginTransWithTrxId()
 
-```
+```c
 int OH_Rdb_BeginTransWithTrxId(OH_Rdb_Store *store, int64_t *trxId)
 ```
 
@@ -1459,7 +1459,7 @@ int OH_Rdb_BeginTransWithTrxId(OH_Rdb_Store *store, int64_t *trxId)
 
 ### OH_Rdb_RollBackByTrxId()
 
-```
+```c
 int OH_Rdb_RollBackByTrxId(OH_Rdb_Store *store, int64_t trxId)
 ```
 
@@ -1485,7 +1485,7 @@ int OH_Rdb_RollBackByTrxId(OH_Rdb_Store *store, int64_t trxId)
 
 ### OH_Rdb_CommitByTrxId()
 
-```
+```c
 int OH_Rdb_CommitByTrxId(OH_Rdb_Store *store, int64_t trxId)
 ```
 
@@ -1515,7 +1515,7 @@ OH_Rdb_Store
 
 ### OH_Rdb_Backup()
 
-```
+```c
 int OH_Rdb_Backup(OH_Rdb_Store *store, const char *databasePath)
 ```
 
@@ -1545,7 +1545,7 @@ OH_Rdb_Store
 
 ### OH_Rdb_Restore()
 
-```
+```c
 int OH_Rdb_Restore(OH_Rdb_Store *store, const char *databasePath)
 ```
 
@@ -1571,7 +1571,7 @@ int OH_Rdb_Restore(OH_Rdb_Store *store, const char *databasePath)
 
 ### OH_Rdb_GetVersion()
 
-```
+```c
 int OH_Rdb_GetVersion(OH_Rdb_Store *store, int *version)
 ```
 
@@ -1597,7 +1597,7 @@ int OH_Rdb_GetVersion(OH_Rdb_Store *store, int *version)
 
 ### OH_Rdb_SetVersion()
 
-```
+```c
 int OH_Rdb_SetVersion(OH_Rdb_Store *store, int version)
 ```
 
@@ -1627,7 +1627,7 @@ OH_Rdb_Store
 
 ### OH_Rdb_SetDistributedTables()
 
-```
+```c
 int OH_Rdb_SetDistributedTables(OH_Rdb_Store *store, const char *tables[], uint32_t count, Rdb_DistributedType type,const Rdb_DistributedConfig *config)
 ```
 
@@ -1660,7 +1660,7 @@ OH_Rdb_Store
 
 ### OH_Rdb_FindModifyTime()
 
-```
+```c
 OH_Cursor *OH_Rdb_FindModifyTime(OH_Rdb_Store *store, const char *tableName, const char *columnName,OH_VObject *values)
 ```
 
@@ -1688,7 +1688,7 @@ OH_Cursor *OH_Rdb_FindModifyTime(OH_Rdb_Store *store, const char *tableName, con
 
 ### Rdb_BriefObserver()
 
-```
+```c
 typedef void (*Rdb_BriefObserver)(void *context, const char *values[], uint32_t count)
 ```
 
@@ -1709,7 +1709,7 @@ typedef void (*Rdb_BriefObserver)(void *context, const char *values[], uint32_t 
 
 ### Rdb_DetailsObserver()
 
-```
+```c
 typedef void (*Rdb_DetailsObserver)(void *context, const Rdb_ChangeInfo **changeInfo, uint32_t count)
 ```
 
@@ -1730,7 +1730,7 @@ typedef void (*Rdb_DetailsObserver)(void *context, const Rdb_ChangeInfo **change
 
 ### OH_Rdb_Subscribe()
 
-```
+```c
 int OH_Rdb_Subscribe(OH_Rdb_Store *store, Rdb_SubscribeType type, const Rdb_DataObserver *observer)
 ```
 
@@ -1757,7 +1757,7 @@ int OH_Rdb_Subscribe(OH_Rdb_Store *store, Rdb_SubscribeType type, const Rdb_Data
 
 ### OH_Rdb_Unsubscribe()
 
-```
+```c
 int OH_Rdb_Unsubscribe(OH_Rdb_Store *store, Rdb_SubscribeType type, const Rdb_DataObserver *observer)
 ```
 
@@ -1784,7 +1784,7 @@ int OH_Rdb_Unsubscribe(OH_Rdb_Store *store, Rdb_SubscribeType type, const Rdb_Da
 
 ### OH_Rdb_GetTableDetails()
 
-```
+```c
 Rdb_TableDetails *OH_Rdb_GetTableDetails(Rdb_ProgressDetails *progress, int32_t version)
 ```
 
@@ -1814,7 +1814,7 @@ Rdb_TableDetails
 
 ### Rdb_ProgressCallback()
 
-```
+```c
 typedef void (*Rdb_ProgressCallback)(void *context, Rdb_ProgressDetails *progressDetails)
 ```
 
@@ -1834,7 +1834,7 @@ typedef void (*Rdb_ProgressCallback)(void *context, Rdb_ProgressDetails *progres
 
 ### Rdb_SyncCallback()
 
-```
+```c
 typedef void (*Rdb_SyncCallback)(Rdb_ProgressDetails *progressDetails)
 ```
 
@@ -1853,7 +1853,7 @@ typedef void (*Rdb_SyncCallback)(Rdb_ProgressDetails *progressDetails)
 
 ### OH_Rdb_CloudSync()
 
-```
+```c
 int OH_Rdb_CloudSync(OH_Rdb_Store *store, Rdb_SyncMode mode, const char *tables[], uint32_t count,const Rdb_ProgressObserver *observer)
 ```
 
@@ -1882,7 +1882,7 @@ int OH_Rdb_CloudSync(OH_Rdb_Store *store, Rdb_SyncMode mode, const char *tables[
 
 ### OH_Rdb_SubscribeAutoSyncProgress()
 
-```
+```c
 int OH_Rdb_SubscribeAutoSyncProgress(OH_Rdb_Store *store, const Rdb_ProgressObserver *observer)
 ```
 
@@ -1908,7 +1908,7 @@ int OH_Rdb_SubscribeAutoSyncProgress(OH_Rdb_Store *store, const Rdb_ProgressObse
 
 ### OH_Rdb_UnsubscribeAutoSyncProgress()
 
-```
+```c
 int OH_Rdb_UnsubscribeAutoSyncProgress(OH_Rdb_Store *store, const Rdb_ProgressObserver *observer)
 ```
 
@@ -1934,7 +1934,7 @@ int OH_Rdb_UnsubscribeAutoSyncProgress(OH_Rdb_Store *store, const Rdb_ProgressOb
 
 ### OH_Rdb_LockRow()
 
-```
+```c
 int OH_Rdb_LockRow(OH_Rdb_Store *store, OH_Predicates *predicates)
 ```
 
@@ -1960,7 +1960,7 @@ int OH_Rdb_LockRow(OH_Rdb_Store *store, OH_Predicates *predicates)
 
 ### OH_Rdb_UnlockRow()
 
-```
+```c
 int OH_Rdb_UnlockRow(OH_Rdb_Store *store, OH_Predicates *predicates)
 ```
 
@@ -1986,7 +1986,7 @@ int OH_Rdb_UnlockRow(OH_Rdb_Store *store, OH_Predicates *predicates)
 
 ### OH_Rdb_QueryLockedRow()
 
-```
+```c
 OH_Cursor *OH_Rdb_QueryLockedRow(OH_Rdb_Store *store, OH_Predicates *predicates, const char *const *columnNames, int length)
 ```
 
@@ -2014,7 +2014,7 @@ OH_Cursor *OH_Rdb_QueryLockedRow(OH_Rdb_Store *store, OH_Predicates *predicates,
 
 ### OH_Rdb_CreateTransaction()
 
-```
+```c
 int OH_Rdb_CreateTransaction(OH_Rdb_Store *store, const OH_RDB_TransOptions *options, OH_Rdb_Transaction **trans)
 ```
 
@@ -2041,7 +2041,7 @@ int OH_Rdb_CreateTransaction(OH_Rdb_Store *store, const OH_RDB_TransOptions *opt
 
 ### OH_Rdb_Attach()
 
-```
+```c
 int OH_Rdb_Attach(OH_Rdb_Store *store, const OH_Rdb_ConfigV2 *config, const char *attachName, int64_t waitTime,size_t *attachedNumber)
 ```
 
@@ -2070,7 +2070,7 @@ int OH_Rdb_Attach(OH_Rdb_Store *store, const OH_Rdb_ConfigV2 *config, const char
 
 ### OH_Rdb_Detach()
 
-```
+```c
 int OH_Rdb_Detach(OH_Rdb_Store *store, const char *attachName, int64_t waitTime, size_t *attachedNumber)
 ```
 
@@ -2098,7 +2098,7 @@ int OH_Rdb_Detach(OH_Rdb_Store *store, const char *attachName, int64_t waitTime,
 
 ### OH_Rdb_SetLocale()
 
-```
+```c
 int OH_Rdb_SetLocale(OH_Rdb_Store *store, const char *locale)
 ```
 
@@ -2124,7 +2124,7 @@ int OH_Rdb_SetLocale(OH_Rdb_Store *store, const char *locale)
 
 ### OH_Rdb_RekeyEx()
 
-```
+```c
 int OH_Rdb_RekeyEx(OH_Rdb_Store *store, OH_Rdb_CryptoParam *param)
 ```
 
@@ -2159,7 +2159,7 @@ int OH_Rdb_RekeyEx(OH_Rdb_Store *store, OH_Rdb_CryptoParam *param)
 
 ### Rdb_CorruptedHandler()
 
-```
+```c
 typedef void (*Rdb_CorruptedHandler)(void *context, OH_Rdb_ConfigV2 *config, OH_Rdb_Store *store)
 ```
 
@@ -2179,7 +2179,7 @@ typedef void (*Rdb_CorruptedHandler)(void *context, OH_Rdb_ConfigV2 *config, OH_
 
 ### OH_Rdb_RegisterCorruptedHandler()
 
-```
+```c
 int OH_Rdb_RegisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)
 ```
 
@@ -2209,7 +2209,7 @@ int OH_Rdb_RegisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context
 
 ### OH_Rdb_UnregisterCorruptedHandler()
 
-```
+```c
 int OH_Rdb_UnregisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)
 ```
 

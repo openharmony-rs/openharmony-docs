@@ -1475,7 +1475,7 @@ hdc shell "hidumper -s WindowManagerService -a '-w 5 -inspector'"
 
 > **说明：**
 >
-> 仅支持通过[Navigation](../ui/arkts-navigation-navigation.md)组件实现页面路由的应用。
+> 仅支持通过[Navigation](../ui/arkts-navigation-architecture.md)组件实现页面路由的应用。
 
 命令：
 

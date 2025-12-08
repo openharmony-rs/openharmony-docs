@@ -503,7 +503,7 @@ struct Son {
   ```
 
 
-- 不允许直接改变状态变量，反例如下。详细分析见[\@State常见问题：不允许在渲染过程中改变状态变量](./arkts-state.md#不允许在渲染过程中改变状态变量)。
+- 不允许直接改变状态变量，反例如下。
 
   ```ts
   @Component
@@ -603,7 +603,7 @@ struct MyComponent {
 ### V1自定义组件不支持静态代码块
 
 静态代码块用于初始化静态属性。
-- 在\@Component或\@CustomDialog装饰的自定义组件中编写静态代码块时，该代码不会被执行。
+- 在\@Component或\@CustomDialog装饰的自定义组件中编写静态代码块时，该代码不会被执行。从API version 22开始，添加对静态代码块的校验，编译期告警提示静态代码块不生效。
 
   <!-- @[Static_code_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV1.ets) -->
   

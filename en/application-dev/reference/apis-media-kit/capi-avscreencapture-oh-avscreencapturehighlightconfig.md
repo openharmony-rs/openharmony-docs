@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVScreenCaptureHighlightConfig {...} OH_AVScreenCaptureHighlightConfig
+```
+
 ## Overview
 
 The struct describes the style of the highlight border shown during screen capture, including its shape, thickness, and color.

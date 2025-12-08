@@ -8534,7 +8534,7 @@ setUrlTrustList(urlTrustList: string): void
 
 setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
-设置一个路径列表，当file协议访问该路径列表中的资源时，允许跨域访问本地文件。此外，当设置了路径列表时，file协议仅允许访问路径列表中的资源（[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为将会被此接口行为覆盖）。路径列表中的路径必须满足以下路径格式之一：
+设置一个路径列表，当file协议访问该路径列表中的资源时，允许跨域访问本地文件，也允许跨域访问其他在线资源。此外，当设置了路径列表时，file协议仅允许访问路径列表中的资源（[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为将会被此接口行为覆盖）。路径列表中的路径必须满足以下路径格式之一：
 
 1.应用文件目录的子目录（应用文件目录通过Ability Kit中的[Context.filesDir](../apis-ability-kit/js-apis-inner-application-context.md#context)获取），例如：
 
