@@ -1116,8 +1116,8 @@ try {
 
 | 名称                           | 值        | 说明                                                         |
 | --------------------------    | ---------- | ------------------------------------------------------------ |
-| DEFAULT                       | 0 | 用户获取默认包信息，不包含applicationInfo、signatureInfo的信息。 |
+| DEFAULT                       | 0 | 用于获取默认包信息，不包含applicationInfo、signatureInfo的信息。 |
 | WITH_APPLICATION_INFO         | 1 << 0 | 用于获取默认包信息和applicationInfo的信息，获取的applicationInfo中不包含iconData的信息。 |
 | WITH_SIGNATURE_INFO           | 1 << 1 | 用于获取默认包信息和signatureInfo的信息。 |
-| WITH_APPLICATION_ICON_INFO    | 1 << 2 | 用户获取默认包信息和applicationInfo的iconData信息。 |
+| WITH_APPLICATION_ICON_INFO    | 1 << 2 | 用于获取默认包信息和applicationInfo的iconData信息。 |
 
