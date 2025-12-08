@@ -38,6 +38,7 @@
 - C API<!--audio-c-->
   - 模块<!--audio-module-->
     - [OHAudio](capi-ohaudio.md)
+    - [OHAudioSuite](capi-ohaudiosuite.md)
   - 头文件<!--audio-headerfile-->
     - [native_audiocapturer.h](capi-native-audiocapturer-h.md)
     - [native_audio_manager.h](capi-native-audio-manager-h.md)
@@ -46,6 +47,8 @@
     - [native_audio_stream_manager.h](capi-native-audio-stream-manager-h.md)
     - [native_audio_volume_manager.h](capi-native-audio-volume-manager-h.md)
     - [native_audiorenderer.h](capi-native-audiorenderer-h.md)
+    - [native_audio_suite_base.h](capi-native-audio-suite-base-h.md)
+    - [native_audio_suite_engine.h](capi-native-audio-suite-engine-h.md)
     - [native_audio_common.h](capi-native-audio-common-h.md)
     - [native_audio_device_base.h](capi-native-audio-device-base-h.md)
     - [native_audio_resource_manager.h](capi-native-audio-resource-manager-h.md)
@@ -53,6 +56,8 @@
     - [native_audiostreambuilder.h](capi-native-audiostreambuilder-h.md)
   - 结构体<!--audio-struct-->
     - [OH_AudioManager](capi-ohaudio-oh-audiomanager.md)
+    - [OH_AudioResourceManager](capi-ohaudio-oh-audioresourcemanager.md)
+    - [OH_AudioWorkgroup](capi-ohaudio-oh-audioworkgroup.md)
     - [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md)
     - [OH_AudioSession_Strategy](capi-ohaudio-oh-audiosession-strategy.md)
     - [OH_AudioSession_DeactivatedEvent](capi-ohaudio-oh-audiosession-deactivatedevent.md)
@@ -60,10 +65,15 @@
     - [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md)
     - [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md)
     - [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md)
+    - [OH_AudioFormat](capi-ohaudiosuite-oh-audioformat.md)
+    - [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md)
+    - [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md)
+    - [OH_AudioSuiteEngineStruct](capi-ohaudiosuite-oh-audiosuiteenginestruct.md)
+    - [OH_AudioSuitePipelineStruct](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)
+    - [OH_AudioNodeStruct](capi-ohaudiosuite-oh-audionodestruct.md)
+    - [OH_AudioNodeBuilderStruct](capi-ohaudiosuite-oh-audionodebuilderstruct.md)
     - [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md)
     - [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md)
-    - [OH_AudioResourceManager](capi-ohaudio-oh-audioresourcemanager.md)
-    - [OH_AudioWorkgroup](capi-ohaudio-oh-audioworkgroup.md)
     - [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md)
     - [OH_AudioRenderer_Callbacks_Struct](capi-ohaudio-oh-audiorenderer-callbacks-struct.md)
     - [OH_AudioCapturer_Callbacks_Struct](capi-ohaudio-oh-audiocapturer-callbacks-struct.md)

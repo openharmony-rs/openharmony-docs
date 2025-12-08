@@ -12,7 +12,7 @@ typedef struct OH_AudioStreamBuilderStruct OH_AudioStreamBuilder
 
 ## 概述
 
-声明音频流的构造器。用于构建OH_AudioNode，配置输入输出节点数据格式，配置输入节点回调接口。
+声明音频流的构造器。构造器实例通常被用来设置音频流属性和创建音频流。
 
 **起始版本：** 10
 
