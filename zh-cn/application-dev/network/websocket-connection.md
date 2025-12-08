@@ -203,24 +203,24 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 5. 服务端监听所有客户端连接状态（可选）。
 
    <!-- @[WebSocket_server_connections](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
-        
-    ``` TypeScript
-    let connections: webSocket.WebSocketConnection[] = [];
-    
-    // ···
-      try {
-        connections = await localServer.listAllConnections();
-        if (connections.length === 0) {
-          hilog.info(0x0000, 'testTag', 'client list is empty');
-        // ···
-        } else {
-          hilog.info(0x0000, 'testTag', `client list cnt: ${connections.length}, client connections list is: ${connections}`);
-        }
-      } catch (error) {
-        hilog.error(0x0000, 'testTag', `Failed to listAllConnections. Code: ${error.code}, message: ${error.message}`);
-        // ···
-      }
-    ```
+   
+   ``` TypeScript
+   let connections: webSocket.WebSocketConnection[] = [];
+   
+   // ...
+     try {
+       connections = await localServer.listAllConnections();
+       if (connections.length === 0) {
+         hilog.info(0x0000, 'testTag', 'client list is empty');
+         // ...
+       } else {
+         hilog.info(0x0000, 'testTag', `client list cnt: ${connections.length}, client connections list is: ${connections}`);
+       }
+     } catch (error) {
+       hilog.error(0x0000, 'testTag', `Failed to listAllConnections. Code: ${error.code}, message: ${error.message}`);
+       // ...
+     }
+   ```
 
 6. 需要关闭WebSocketServer端服务器时，可以通过stop()停止服务。
 
