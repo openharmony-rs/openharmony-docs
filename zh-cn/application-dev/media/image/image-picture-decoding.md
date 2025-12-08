@@ -164,3 +164,9 @@
    确认picture的异步方法已经执行完成，不再使用该变量后，可按需手动调用下面方法释放。
    
    <!-- @[release_pictureDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   
+   ``` TypeScript
+   async release(picture: image.Picture) {
+     picture?.release();
+   }
+   ```
