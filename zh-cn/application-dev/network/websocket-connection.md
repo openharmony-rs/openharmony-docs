@@ -98,18 +98,18 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 5. 收到on('open')的回调事件后，可通过send()方法向服务器发送数据。
 
    <!-- @[webSocket_case_send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-ws.send('Hello, server!', (err: BusinessError, value: boolean) => {
-  if (!err) {
-    // ···
-    hilog.info(0x0000, 'testTag', 'Message sent successfully');
-  } else {
-    // ···
-    hilog.error(0x0000, 'testTag', `Message sending failed: ` + JSON.stringify(err));
-  }
-});
-```
+   
+   ``` TypeScript
+   ws.send('Hello, server!', (err: BusinessError, value: boolean) => {
+     if (!err) {
+       // ...
+       hilog.info(0x0000, 'testTag', 'Message sent successfully');
+     } else {
+       // ...
+       hilog.error(0x0000, 'testTag', `Message sending failed: ` + JSON.stringify(err));
+     }
+   });
+   ```
 
 ## server端开发步骤
 
