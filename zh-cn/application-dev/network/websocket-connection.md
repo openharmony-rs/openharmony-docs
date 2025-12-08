@@ -44,41 +44,41 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 3. 订阅WebSocket的打开、消息接收、关闭、Error事件（可选），当收到on('open')事件时，可以通过send()方法与服务器进行通信，当收到服务器的`bye`消息时（此消息字段仅为示意，具体字段需要与服务器协商），主动断开连接。
 
    <!-- @[websocket_open_message_close_error_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-ws.on('open', (err: BusinessError, value: Object) => {
-  hilog.info(0x0000, 'testTag', 'on open, status:' + JSON.stringify(value));
-  // 当收到on('open')事件时，可以通过send()方法与服务器进行通信。
-// ···
-});
-
-ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
-// ···
-  hilog.info(0x0000, 'testTag', 'on message, message:' + value);
-  // 当收到服务器的`bye`消息时（此消息字段仅为示意，具体字段需要与服务器协商），主动断开连接。
-  if (value === 'bye') {
-    ws!.close((err: BusinessError) => {
-      if (!err) {
-        // ···
-        hilog.info(0x0000, 'testTag', `WebSocket closed successfully`);
-      } else {
-        // ···
-        hilog.error(0x0000, 'testTag', `WebSocket closing failed: ` + JSON.stringify(err));
-      }
-    });
-  }
-})
-
-ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
- hilog.info(0x0000, 'testTag', 'on close, code is ' + value.code + ', reason is ' + value.reason);
-// ···
-});
-
-ws.on('error', (err: BusinessError) => {
-// ···
-  hilog.error(0x0000, 'testTag', 'WebSocket error: ' + JSON.stringify(err));
-});
-```
+   
+   ``` TypeScript
+   ws.on('open', (err: BusinessError, value: Object) => {
+     hilog.info(0x0000, 'testTag', 'on open, status:' + JSON.stringify(value));
+     // 当收到on('open')事件时，可以通过send()方法与服务器进行通信。
+     // ...
+   });
+   
+   ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
+     // ...
+     hilog.info(0x0000, 'testTag', 'on message, message:' + value);
+     // 当收到服务器的`bye`消息时（此消息字段仅为示意，具体字段需要与服务器协商），主动断开连接。
+     if (value === 'bye') {
+       ws!.close((err: BusinessError) => {
+         if (!err) {
+           // ...
+           hilog.info(0x0000, 'testTag', `WebSocket closed successfully`);
+         } else {
+           // ...
+           hilog.error(0x0000, 'testTag', `WebSocket closing failed: ` + JSON.stringify(err));
+         }
+       });
+     }
+   })
+   
+   ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
+    hilog.info(0x0000, 'testTag', 'on close, code is ' + value.code + ', reason is ' + value.reason);
+     // ...
+   });
+   
+   ws.on('error', (err: BusinessError) => {
+     // ...
+     hilog.error(0x0000, 'testTag', 'WebSocket error: ' + JSON.stringify(err));
+   });
+   ```
 
 4. 根据URL地址，发起WebSocket连接。
 
