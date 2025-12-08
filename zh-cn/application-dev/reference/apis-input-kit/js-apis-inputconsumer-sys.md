@@ -236,7 +236,7 @@ offKey(keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 | keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。             |
 | callback   | Callback&lt;KeyOptions&gt; | 否    | 需要取消订阅的回调函数。若不填，则取消当前应用组合键选项已订阅的所有回调函数。 |
 
-示例:
+**示例：**
 
 ```ets
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
