@@ -493,13 +493,13 @@ SQL语句中的函数，如下所示：
     调用deleteRdbStore方法，删除数据库及数据库相关文件。示例代码如下：
 
     <!--@[vector_TS_deleteStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-
-   ``` TypeScript
-   try {
-     // 删除数据库前，需要先将store对象关闭，否则会导致下一次调用getRdbStore接口创建数据库失败
-     await store!.close();
-     await relationalStore.deleteRdbStore(context, STORE_CONFIG);
-   } catch (err) {
-     console.error(`delete rdbStore failed, code is ${err.code},message is ${err.message}`);
-   }
-   ```
+    
+    ``` TypeScript
+    try {
+      // 删除数据库前，需要先将store对象关闭，否则会导致下一次调用getRdbStore接口创建数据库失败
+      await store!.close();
+      await relationalStore.deleteRdbStore(context, STORE_CONFIG);
+    } catch (err) {
+      console.error(`delete rdbStore failed, code is ${err.code},message is ${err.message}`);
+    }
+    ```
