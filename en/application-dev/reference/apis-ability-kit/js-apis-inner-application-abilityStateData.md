@@ -29,7 +29,7 @@ import { appManager } from '@kit.AbilityKit';
 | bundleName              | string   | No  | No | Bundle name.         |
 | abilityName            | string   | No  | No  | Ability name.              |
 | uid                    | number   | No  | No  | UID of the application.                 |
-| state                   | number   | No  | No  | Ability state.<br>- [Stage model](../../application-models/ability-terminology.md#stage-model): For the [UIAbility](js-apis-app-ability-uiAbility.md), see [UIAbility States](#uiability-states). For the [ExtensionAbility](js-apis-app-ability-extensionAbility.md), see [ExtensionAbility States](#extensionability-states).<br>- [FA model](../../application-models/ability-terminology.md#fa-model): For the ability, see [Ability States](#ability-states).               |
+| state                   | number   | No  | No  | Ability state.<br>- [Stage model](../../application-models/ability-terminology.md#stage-model): For the [UIAbility](js-apis-app-ability-uiAbility.md), see [UIAbility States](#uiability-states). For the [ExtensionAbility](js-apis-app-ability-extensionAbility.md), see [ExtensionAbility States](#extensionability-states). For the [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md), see [UIExtensionAbility States](#uiextensionability-states).<br>- [FA model](../../application-models/ability-terminology.md#fa-model): For the ability, see [Ability States](#ability-states).               |
 | moduleName | string   | No  | No  | Module name to which the ability belongs.   |
 | abilityType | number | No  | No  | [Ability type](#ability-types), which can be [UIAbility](js-apis-app-ability-uiAbility.md) or [ExtensionAbility](js-apis-app-ability-extensionAbility.md).|
 | isAtomicService | boolean | No| No| Whether the ability belongs to an atomic service.<br>**true**: The ability belongs to an atomic service.<br>**false**: The ability does not belong to an atomic service.|
@@ -54,6 +54,16 @@ import { appManager } from '@kit.AbilityKit';
 | 2    | EXTENSION_STATE_CONNECTED  | The ExtensionAbility is connected to the client.|
 | 3    | EXTENSION_STATE_DISCONNECTED | The ExtensionAbility is disconnected from the client.|
 | 4    | EXTENSION_STATE_TERMINATED  | The ExtensionAbility is terminated. |
+
+### UIExtensionAbility States
+
+| Value  | State                      | Description                  |
+| ---- | -------------------------- | ---------------------- |
+| 0    | ABILITY_STATE_CREATE       | The UIExtensionAbility is being created.     |
+| 1    | ABILITY_STATE_READY        | The UIExtensionAbility has been created.     |
+| 2    | ABILITY_STATE_FOREGROUND   | The UIExtensionAbility is running in the foreground.       |
+| 4    | ABILITY_STATE_BACKGROUND   | The UIExtensionAbility is running in the background.       |
+| 5    | ABILITY_STATE_TERMINATED   | The UIExtensionAbility is terminated.       |
 
 ### Ability States
 

@@ -31,7 +31,7 @@ registerThermalLevelCallback(callback: Callback&lt;ThermalLevel&gt;): void
 
 | Name  | Type                        | Mandatory| Description                          |
 | -------- | ---------------------------- | ---- | ------------------------------ |
-| callback | Callback&lt;ThermalLevel&gt; | Yes  | Callback used to return thermal level. This parameter is of the function type.|
+| callback | Callback&lt;[ThermalLevel](#thermallevel)&gt; | Yes  | Callback used to return thermal level. This parameter is of the function type.|
 
 **Error codes**
 
@@ -97,13 +97,12 @@ getLevel(): ThermalLevel
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 
-**Parameters**: none
 
 **Return value**
 
 | Type        | Description        |
 | ------------ | ------------ |
-| ThermalLevel | Thermal level.|
+| [ThermalLevel](#thermallevel) | Thermal level.|
 
 **Example**
 
@@ -126,7 +125,7 @@ subscribeThermalLevel(callback: AsyncCallback&lt;ThermalLevel&gt;): void
 
 | Name  | Type                             | Mandatory| Description                                                        |
 | -------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;ThermalLevel&gt; | Yes  | Callback used to return the result. The return value contains only one parameter, that is, thermal level.|
+| callback | AsyncCallback&lt;[ThermalLevel](#thermallevel)&gt; | Yes  | Callback used to return the result. The return value contains only one parameter, that is, thermal level.|
 
 **Example**
 
@@ -170,13 +169,11 @@ getThermalLevel(): ThermalLevel
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 
-**Parameters**: none
-
 **Return value**
 
 | Type          | Description    |
 | ------------ | ------ |
-| ThermalLevel | Thermal level.|
+| [ThermalLevel](#thermallevel) | Thermal level.|
 
 **Example**
 

@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} Rdb_DistributedConfig
+```
+
 ## Overview
 
 Defines a struct for distributed configuration of a table.
@@ -23,4 +27,4 @@ Defines a struct for distributed configuration of a table.
 | Name           | Description                                         |
 | --------------- | --------------------------------------------- |
 | int version     | Version of the **Rdb_DistributedConfig** struct.|
-| bool isAutoSync | Whether the table supports auto sync.                   |
+| bool isAutoSync | Whether the table supports auto sync. The value **true** indicates that both auto sync and manual sync are supported, and the value **false** indicates that only manual sync is supported.|

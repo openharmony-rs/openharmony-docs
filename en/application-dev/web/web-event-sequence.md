@@ -174,7 +174,7 @@ Codes on the application side:
 
 Pay attention to some important performance indicators during web page loading. Such as First Contentful Paint (FCP), First Meaningful Paint (FMP), and Largest Contentful Paint (LCP). The **Web** component provides the following APIs for notifying you these indicators of online non-PDF web pages. Local web pages and PDF web pages are not supported.
 
-- [onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10): triggered to notify the time when the web page content such as a text, image, non-blank Canvas, or SVG is drawn for the first time.
+- [onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10): triggered when the web page content such as a text, image, non-blank Canvas, or SVG is drawn for the first time.
 
 - [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12): triggered when the first meaningful paint is drawn.
 

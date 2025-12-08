@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct VideoOutput_Callbacks {...} VideoOutput_Callbacks
+```
+
 ## Overview
 
 The struct describes the callbacks related to video output.

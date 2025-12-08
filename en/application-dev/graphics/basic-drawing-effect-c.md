@@ -37,57 +37,64 @@ The following table lists the common APIs for using the brush to set the drawing
 
 1. Create a brush object by calling OH_Drawing_BrushCreate().
 
-   ```c++
-   // sample_graphics.cpp
-   OH_Drawing_Brush* brush = OH_Drawing_BrushCreate(); 
+   <!-- @[ndk_graphics_draw_create_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+   ``` C++
+   // Create a brush.
+   OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
    ```
-<!-- [ndk_graphics_draw_create_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 2. (Optional) Set the basic drawing effect using the brush. You can select one or more of the following effects:
 
    - Call OH_Drawing_BrushSetColor() to set the fill color.
 
-      ```c++
-      // sample_graphics.cpp
+      <!-- @[ndk_graphics_draw_brush_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
+      // Set the fill color to red.
       uint32_t color = 0xffff0000;
-      OH_Drawing_BrushSetColor(brush, color); 
+      OH_Drawing_BrushSetColor(brush, color);
       ```
-      <!-- [ndk_graphics_draw_brush_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
       color is a 32-bit (ARGB) variable, for example, 0xffff0000.
    
    - Call OH_Drawing_BrushSetAntiAlias() to enable the anti-aliasing effect to make the edges of the graphics smoother.
-      ```c++
-      // sample_graphics.cpp
+
+      <!-- @[ndk_graphics_draw_brush_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
+      // Enable anti-aliasing.
       OH_Drawing_BrushSetAntiAlias(brush, true);
       ```
-      <!-- [ndk_graphics_draw_brush_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 3. Call OH_Drawing_CanvasAttachBrush() to set the brush for the canvas. This API accepts two parameters. One is the canvas object. Ensure that the canvas has been created or obtained. For details, see [Obtaining a Canvas and Displaying the Drawing Result (C/C++)](canvas-get-result-draw-c.md). The other is the brush object to be set. The canvas uses the set brush style and color to fill the graphics.
 
-   ```c++
-   // sample_graphics.cpp
-   OH_Drawing_CanvasAttachBrush(canvas, brush); 
+   <!-- @[ndk_graphics_draw_canvas_attach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // Set the brush of the canvas.
+   OH_Drawing_CanvasAttachBrush(canvas, brush);
    ```
-   <!-- [ndk_graphics_draw_canvas_attach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 4. Draw primitives as required. For details, see [Drawing Primitives](primitive-drawing-overview.md).
 
 5. When the filling effect is not required, you can call OH_Drawing_CanvasDetachBrush() to remove the brush. The input parameter is the canvas object.
 
-   ```c++
-   // sample_graphics.cpp
+   <!-- @[ndk_graphics_draw_canvas_detach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // Remove the brush from the canvas.
    OH_Drawing_CanvasDetachBrush(canvas);
    ```
-   <!-- [ndk_graphics_draw_canvas_detach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 6. When the brush is no longer needed, use the OH_Drawing_BrushDestroy() API to destroy the brush object in a timely manner.
 
-   ```c++
-   // sample_graphics.cpp
+   <!-- @[ndk_graphics_draw_brush_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // Destroy objects.
    OH_Drawing_BrushDestroy(brush);
    ```
-   <!-- [ndk_graphics_draw_brush_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 
 ## Stroke Effect
@@ -116,59 +123,65 @@ The following table lists the common APIs for setting the drawing effect by usin
 
 1. Use the OH_Drawing_PenCreate() API to create a pen object.
 
-   ```c++
-   // sample_graphics.cpp
-   OH_Drawing_Pen* pen = OH_Drawing_PenCreate(); 
+   <!-- @[ndk_graphics_draw_create_drawing_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // Create a pen.
+   OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
    ```
-   <!-- [ndk_graphics_draw_create_drawing_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 2. Use the OH_Drawing_CanvasAttachPen() API to set the pen for the canvas. The API accepts two parameters. One is the canvas object. Ensure that the canvas has been created or obtained. For details, see [Obtaining a Canvas and Displaying the Drawing Result (C/C++)](canvas-get-result-draw-c.md). The other is the pen object to be set. The canvas uses the configured pen style and color to draw the outline of the shape.
 
-   ```c++
-   // sample_graphics.cpp
-   OH_Drawing_CanvasAttachPen(canvas, pen); 
+   <!-- @[ndk_graphics_draw_canvas_attach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // Set the pen for the canvas.
+   OH_Drawing_CanvasAttachPen(canvas, pen);
    ```
-   <!-- [ndk_graphics_draw_canvas_attach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 3. (Optional) Use the pen to set the specific stroke effect (one or more of the following effects).
 
    - Use the OH_Drawing_PenSetColor() API to set the pen color, which is the color used for drawing the outline of the shape.
-      ```c++
-      // sample_graphics.cpp
+  
+      <!-- @[ndk_graphics_draw_pen_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
+      // Set the stroke color to red.
       uint32_t color = 0xffff0000;
-      OH_Drawing_PenSetColor(pen, color); 
+      OH_Drawing_PenSetColor(pen, color);
       ```
-      <!-- [ndk_graphics_draw_pen_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
       color is a 32-bit (ARGB) variable, for example, 0xffff0000.
 
    - Use the OH_Drawing_PenSetWidth() API to set the pen width.
 
-      ```c++
-      // sample_graphics.cpp
+      <!-- @[ndk_graphics_draw_pen_set_stroke_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
       // Set the pen width to 50 pixels.
       float width = 50.0;
       OH_Drawing_PenSetWidth(pen, width);
       ```
-      <!-- [ndk_graphics_draw_pen_set_stroke_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
       width indicates the pixel value of the line width.
 
    - Use the OH_Drawing_PenSetAntiAlias() API to set anti-aliasing for the pen to make the edges of the drawn shape smoother.
 
-      ```c++
-      // sample_graphics.cpp
+      <!-- @[ndk_graphics_draw_pen_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
+      // Enable anti-aliasing for the pen.
       OH_Drawing_PenSetAntiAlias(pen, true);
       ```
-      <!-- [ndk_graphics_draw_pen_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
    - Use the OH_Drawing_PenSetCap() API to set the pen line cap style.
 
-      ```c++
-      // sample_graphics.cpp
+      <!-- @[ndk_graphics_draw_pen_set_cap_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
+      // Set the cap style for the pen.
       OH_Drawing_PenSetCap(pen, OH_Drawing_PenLineCapStyle::LINE_ROUND_CAP);
       ```
-      <!-- [ndk_graphics_draw_pen_set_cap_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
       The line cap styles of OH_Drawing_PenLineCapStyle are as follows:
 
@@ -180,11 +193,12 @@ The following table lists the common APIs for setting the drawing effect by usin
 
    - You can use the OH_Drawing_PenSetJoin() API to set the pen corner style.
 
-      ```c++
-      // sample_graphics.cpp
+      <!-- @[ndk_graphics_draw_pen_set_join_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
+      // Set the join style for the pen.
       OH_Drawing_PenSetJoin(pen, OH_Drawing_PenLineJoinStyle::LINE_BEVEL_JOIN);
       ```
-      <!-- [ndk_graphics_draw_pen_set_join_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
       The corner styles of OH_Drawing_PenLineJoinStyle are as follows:
       | Corner Style| Description| Diagram|
@@ -197,24 +211,26 @@ The following table lists the common APIs for setting the drawing effect by usin
 
 5. If the stroke effect is not required, you can use OH_Drawing_CanvasDetachPen() to remove it. The input parameter is the canvas object. Ensure that the canvas has been created or obtained. For details, see Obtaining a Canvas and Displaying the Drawing Result (C/C++).
 
-   ```c++
-   // sample_graphics.cpp
-   OH_Drawing_CanvasDetachPen(canvas); 
+   <!-- @[ndk_graphics_draw_canvas_detach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // Remove the pen from the canvas.
+   OH_Drawing_CanvasDetachPen(canvas);
    ```
-   <!-- [ndk_graphics_draw_canvas_detach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 6. When the pen is no longer needed, use the OH_Drawing_PenDestroy() API to destroy the pen object in a timely manner.
 
-   ```c++
-   // sample_graphics.cpp
-   OH_Drawing_PenDestroy(pen); 
+   <!-- @[ndk_graphics_draw_pen_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // Destroy objects.
+   OH_Drawing_PenDestroy(pen);
    ```
-   <!-- [ndk_graphics_draw_pen_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 <!--RP1-->
 ## Samples
 
 The following samples are available for Drawing (C/C++):
 
-- [NDKGraphicsDraw (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKGraphicsDraw)
+- [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
 <!--RP1End-->

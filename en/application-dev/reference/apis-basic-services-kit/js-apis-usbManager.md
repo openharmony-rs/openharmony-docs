@@ -159,16 +159,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function connectDevice() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-console.info(`devicepipe = ${devicepipe}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  console.info(`devicepipe = ${devicepipe}`);
+}
 ```
 
 ## usbManager.hasRight
@@ -205,16 +207,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function hasRight(): boolean {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return false;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let right: boolean = usbManager.hasRight(device.name);
-console.info(`${right}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let right: boolean = usbManager.hasRight(device.name);
+  console.info(`${right}`);
+  return right;
+}
 ```
 
 ## usbManager.requestRight
@@ -249,16 +254,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  return;
-  console.info(`device list is empty`);
-}
+function requestRight() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name).then(ret => {
-  console.info(`requestRight = ${ret}`);
-});
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name).then(ret => {
+    console.info(`requestRight = ${ret}`);
+  });
+}
 ```
 
 ## usbManager.removeRight
@@ -293,15 +300,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function removeRight(): boolean {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return false;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-if (usbManager.removeRight(device.name)) {
-  console.info(`Succeed in removing right`);
+  let device: usbManager.USBDevice = devicesList[0];
+  if (usbManager.removeRight(device.name)) {
+    console.info(`Succeed in removing right`);
+    return true;
+  }
+  return false;
 }
 ```
 
@@ -344,18 +355,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function claimInterface() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
-let ret: number= usbManager.claimInterface(devicepipe, interfaces);
-console.info(`claimInterface = ${ret}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let ret: number= usbManager.claimInterface(devicepipe, interfaces);
+  console.info(`claimInterface = ${ret}`);
+}
 ```
 
 ## usbManager.releaseInterface
@@ -395,19 +408,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function releaseInterface() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
-let ret: number = usbManager.claimInterface(devicepipe, interfaces);
-ret = usbManager.releaseInterface(devicepipe, interfaces);
-console.info(`releaseInterface = ${ret}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+  ret = usbManager.releaseInterface(devicepipe, interfaces);
+  console.info(`releaseInterface = ${ret}`);
+}
 ```
 
 ## usbManager.setConfiguration
@@ -443,18 +458,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function setConfiguration() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-let config: usbManager.USBConfiguration = device.configs[0];
-let ret: number= usbManager.setConfiguration(devicepipe, config);
-console.info(`setConfiguration = ${ret}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  let config: usbManager.USBConfiguration = device.configs[0];
+  let ret: number= usbManager.setConfiguration(devicepipe, config);
+  console.info(`setConfiguration = ${ret}`);
+}
 ```
 
 ## usbManager.setInterface
@@ -496,19 +513,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function setInterface() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
-let ret: number = usbManager.claimInterface(devicepipe, interfaces);
-ret = usbManager.setInterface(devicepipe, interfaces);
-console.info(`setInterface = ${ret}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+  ret = usbManager.setInterface(devicepipe, interfaces);
+  console.info(`setInterface = ${ret}`);
+}
 ```
 
 ## usbManager.getRawDescriptor
@@ -543,15 +562,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function getRawDescriptor() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-usbManager.requestRight(devicesList[0].name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-let ret: Uint8Array = usbManager.getRawDescriptor(devicepipe);
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  let ret: Uint8Array = usbManager.getRawDescriptor(devicepipe);
+}
 ```
 
 ## usbManager.getFileDescriptor
@@ -586,18 +607,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function getFileDescriptor() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-usbManager.requestRight(devicesList[0].name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-let ret: number = usbManager.getFileDescriptor(devicepipe);
-console.info(`getFileDescriptor = ${ret}`);
-let closeRet: number = usbManager.closePipe(devicepipe);
-console.info(`closePipe = ${closeRet}`);
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  let ret: number = usbManager.getFileDescriptor(devicepipe);
+  console.info(`getFileDescriptor = ${ret}`);
+  let closeRet: number = usbManager.closePipe(devicepipe);
+  console.info(`closePipe = ${closeRet}`);
+}
 ```
 
 ## usbManager.controlTransfer<sup>(deprecated)</sup>
@@ -721,17 +744,19 @@ let param: PARA = {
   data: new Uint8Array(18)
 };
 
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function controlTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-usbManager.requestRight(devicesList[0].name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-usbManager.usbControlTransfer(devicepipe, param).then((ret: number) => {
-console.info(`usbControlTransfer = ${ret}`);
-})
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.usbControlTransfer(devicepipe, param).then((ret: number) => {
+  console.info(`usbControlTransfer = ${ret}`);
+  })
+}
 ```
 
 ## usbManager.bulkTransfer
@@ -782,25 +807,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // Call usbManager.getDevices to obtain a data set. Then, obtain a USB device and its access permission.
 // Pass the obtained USB device as a parameter to usbManager.connectDevice. Then, call usbManager.connectDevice to connect the USB device.
 // Call usbManager.claimInterface to claim a USB interface. After that, call usbManager.bulkTransfer to start bulk transfer.
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function bulkTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
 
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-for (let i = 0; i < device.configs[0].interfaces.length; i++) {
-  if (device.configs[0].interfaces[i].endpoints[0].attributes == 2) {
-    let endpoint: usbManager.USBEndpoint = device.configs[0].interfaces[i].endpoints[0];
-    let interfaces: usbManager.USBInterface = device.configs[0].interfaces[i];
-    let ret: number = usbManager.claimInterface(devicepipe, interfaces);
-    let buffer =  new Uint8Array(128);
-    usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: number) => {
-      console.info(`bulkTransfer = ${ret}`);
-    });
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  for (let i = 0; i < device.configs[0].interfaces.length; i++) {
+    if (device.configs[0].interfaces[i].endpoints[0].attributes == 2) {
+      let endpoint: usbManager.USBEndpoint = device.configs[0].interfaces[i].endpoints[0];
+      let interfaces: usbManager.USBInterface = device.configs[0].interfaces[i];
+      let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+      let buffer =  new Uint8Array(128);
+      usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: number) => {
+        console.info(`bulkTransfer = ${ret}`);
+      });
+    }
   }
 }
 ```
@@ -1005,16 +1032,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function closePipe() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-usbManager.requestRight(devicesList[0].name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-let ret: number = usbManager.closePipe(devicepipe);
-console.info(`closePipe = ${ret}`);
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  let ret: number = usbManager.closePipe(devicepipe);
+  console.info(`closePipe = ${ret}`);
+}
 ```
 
 ## usbManager.hasAccessoryRight<sup>14+</sup>
@@ -1323,19 +1352,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.error(`device list is empty`);
-  return;
-}
+function resetUsbDevice() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.error(`device list is empty`);
+    return;
+  }
 
-usbManager.requestRight(devicesList[0].name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-try {
-  let ret: boolean = usbManager.resetUsbDevice(devicepipe);
-  console.info(`resetUsbDevice  = ${ret}`);
-} catch (err) {
-  console.error(`resetUsbDevice failed: ` + err);
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  try {
+    let ret: boolean = usbManager.resetUsbDevice(devicepipe);
+    console.info(`resetUsbDevice  = ${ret}`);
+  } catch (err) {
+    console.error(`resetUsbDevice failed: ` + err);
+  }
 }
 ```
 
@@ -1390,8 +1421,8 @@ Represents the USB configuration. One [USBDevice](#usbdevice) can contain multip
 | attributes     | number                                           | No| No|Configuration attributes.         |
 | maxPower       | number                                           | No| No|Maximum power consumption, in mA.   |
 | name           | string                                           | No| No|Configuration name, which can be left empty.    |
-| isRemoteWakeup | boolean                                          | No| No|Support for remote wakeup.|
-| isSelfPowered  | boolean                                          | No| No| Support for independent power supplies.|
+| isRemoteWakeup | boolean                                          | No| No|Whether remote wakeup is supported. The value **true** indicates that the remote wakeup is supported, and **false** indicates the opposite.|
+| isSelfPowered  | boolean                                          | No| No|Whether independent power supplies are supported. The value **true** indicates that independent power supplies are supported, and **false** indicates the opposite.|
 | interfaces     | Array&nbsp;&lt;[USBInterface](#usbinterface)&gt; | No| No|Supported interface attributes.     |
 
 ## USBDevice

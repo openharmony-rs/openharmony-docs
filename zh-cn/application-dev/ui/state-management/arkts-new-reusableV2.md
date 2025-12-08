@@ -1,4 +1,4 @@
-# \@ReusableV2装饰器：组件复用
+# \@ReusableV2装饰器：V2组件复用
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@ReusableV2装饰[\@ComponentV2](./arkts-new-componentV2.md)装饰的自定义组件，达成组件复用的效果。
+为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@ReusableV2装饰[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件，达成组件复用的效果。
 
 在阅读本文前，建议提前阅读：[\@Reusable装饰器：组件复用](./arkts-reusable.md)。
 
@@ -24,7 +24,7 @@
 - \@ReusableV2同样提供了[aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)和[aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse18)的生命周期，在组件被回收时调用aboutToRecycle，在组件被复用时调用aboutToReuse，但与\@Reusable不同的是，aboutToReuse没有入参。
 - 在回收阶段，会递归地调用所有子组件的aboutToRecycle回调（即使子组件未被标记可复用）；在复用阶段，会递归地调用所有子组件的aboutToReuse回调（即使子组件未被标记可复用）。
 - \@ReusableV2装饰的自定义组件会在被回收期间保持冻结状态，即无法触发UI刷新、无法触发[\@Monitor](./arkts-new-monitor.md)回调，与[freezeWhenInactive](./arkts-custom-components-freezeV2.md)标记位不同的是，在解除冻结状态后，不会触发延后的刷新。
-- \@ReusableV2装饰的自定义组件会在复用时自动重置组件内状态变量的值、重新计算组件内[\@Computed](./arkts-new-Computed.md)以及与之相关的\@Monitor。不建议开发者在aboutToRecycle中更改组件内状态变量，详见[复用前的组件内状态变量重置](#复用前的组件内状态变量重置)。
+- \@ReusableV2装饰的自定义组件会在复用时自动重置组件内状态变量的值、重新计算组件内[\@Computed](./arkts-new-computed.md)以及与之相关的\@Monitor。不建议开发者在aboutToRecycle中更改组件内状态变量，详见[复用前的组件内状态变量重置](#复用前的组件内状态变量重置)。
 - V1和V2的复用组件可在一定规则下混用，详见[使用限制](#使用限制)第二点。
 - 不建议开发者嵌套滥用\@ReusableV2装饰器，这可能会导致复用效率降低以及内存开销变大。
 
@@ -132,12 +132,12 @@ struct ReusableV2Component {
 
   以第一行V1普通组件为例，可以将V1普通组件、V2普通组件以及V1复用组件作为子组件，但无法将V2复用组件作为子组件。
 
-  |            | V1普通组件 | V2普通组件 |               V1复用组件               |    V2复用组件    |
-  | ---------- | :--------: | :--------: | :------------------------------------: | :--------------: |
-  | V1普通组件 |    支持    |    支持    |                  支持                  | 不支持，编译报错 |
-  | V2普通组件 |    支持    |    支持    | 不支持，编译告警，实际使用子组件不创建 |       支持       |
-  | V1复用组件 |    支持    |    支持    |                  支持                  | 不支持，编译报错 |
-  | V2复用组件 |    支持    |    支持    |            不支持，编译报错            |       支持       |
+  | 混用支持关系 | V1普通组件 | V2普通组件 |               V1复用组件               |    V2复用组件    |
+  | ------------ | :--------: | :--------: | :------------------------------------: | :--------------: |
+  | V1普通组件   |    支持    |    支持    |                  支持                  | 不支持，编译报错 |
+  | V2普通组件   |    支持    |    支持    | 不支持，编译告警，实际使用子组件不创建 |       支持       |
+  | V1复用组件   |    支持    |    支持    |                  支持                  | 不支持，编译报错 |
+  | V2复用组件   |    支持    |    支持    |            不支持，编译报错            |       支持       |
 
   根据上表，仅支持12种可能的父子关系，不推荐开发者高度嵌套可复用组件，这会造成复用效率降低。
 
@@ -369,8 +369,8 @@ struct ReusableV2Component {
 | [\@Local](./arkts-new-local.md)    | 直接使用定义时的初始值重新赋值。                             |
 | [\@Param](./arkts-new-param.md)    | 如果有外部传入则使用外部传入值重新赋值，否则用本地初始值重新赋值。注意：\@Once装饰的变量同样会被重置初始化一次。 |
 | [\@Event](./arkts-new-event.md)    | 如果有外部传入则使用外部传入值重新赋值，否则用本地初始值重新赋值。如果本地没有初始值，则生成默认的空实现。 |
-| [\@Provider](./arkts-new-Provider-and-Consumer.md) | 直接使用定义时的初始值重新赋值。                             |
-| [\@Consumer](./arkts-new-Provider-and-Consumer.md) | 如果有对应的\@Provider则直接使用\@Provider对应的值，否则使用本地初始值重新赋值。 |
+| [\@Provider](./arkts-new-provider-and-consumer.md) | 直接使用定义时的初始值重新赋值。                             |
+| [\@Consumer](./arkts-new-provider-and-consumer.md) | 如果有对应的\@Provider则直接使用\@Provider对应的值，否则使用本地初始值重新赋值。 |
 | \@Computed | 使用当前最新的值重新计算一次，如果使用到的变量还未被重置，将会使用重置前的值，因此推荐开发者将\@Computed定义在所使用的变量之后。 |
 | \@Monitor  | 在上述所有变量重置完成之后触发。重置过程中产生的变量变化不会触发\@Monitor回调，仅更新IMonitorValue中的before值。重置过程中不产生变化的赋值不会触发\@Monitor的重置。 |
 | 常量       | 包括readonly的常量，不重置。                                 |

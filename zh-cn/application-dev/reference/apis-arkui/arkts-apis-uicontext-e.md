@@ -92,3 +92,20 @@
 | PINCH | 3 | 捏合手势。 |
 | SWIPE | 4| 滑动手势。 |
 | ROTATION| 5 | 旋转手势。 |
+
+## ResolveStrategy<sup>23+</sup>
+
+UIContext对象的解析策略。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称   | 值   | 说明       |
+| ------ | ---- | ---------- |
+| CALLING_SCOPE | 0 | 获取调用作用域的UIContext。 |
+| LAST_FOCUS | 1 | 获取最近切换到获焦状态的UIContext。 |
+| MAX_INSTANCE_ID  | 2 | 获取实例ID最大的UIContext。 |
+| UNIQUE | 3 | 获取唯一UI实例的UIContext。 |
+| LAST_FOREGROUND | 4| 获取最近切换到前台状态的UIContext。 |
+| UNDEFINED | 5 | 获取未定义调用作用域的UIContext。 |

@@ -7,7 +7,7 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-```
+```c
 typedef struct {...} Asset_Attr
 ```
 

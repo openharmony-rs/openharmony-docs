@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} JSVM_HeapStatistics
+```
+
 ## 概述
 
 用于保存有关JavaScript堆内存使用情况的统计信息。

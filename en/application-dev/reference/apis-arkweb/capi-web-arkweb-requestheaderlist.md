@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```
+typedef struct ArkWeb_RequestHeaderList_ ArkWeb_RequestHeaderList
+```
+
 ## Overview
 
 Defines a request header list.

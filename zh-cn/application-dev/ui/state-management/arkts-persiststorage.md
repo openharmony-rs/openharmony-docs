@@ -44,8 +44,7 @@ PersistentStorage不允许的类型和值有：
 
 - 持久化经常变化的变量。
 
-PersistentStorage的持久化变量最好是小于2kb的数据，不要大量的数据持久化，因为PersistentStorage写入磁盘的操作是同步的，大量的数据本地化读写会同步在UI线程中执行，影响UI渲染性能。如果开发者需要存储大量的数据，建议使用数据库api。
-
+PersistentStorage的持久化变量最好是小于2kb的数据，不要大量的数据持久化，因为PersistentStorage写入磁盘是在UI线程同步执行的，大量数据本地读写会影响UI渲染性能。如果开发者需要存储大量的数据，建议使用[数据库api](../../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
 PersistentStorage和UI实例相关联，持久化操作需要在UI实例初始化成功后（即[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)传入的回调被调用时）才可以被调用，早于该时机调用会导致持久化失败。
 
 ```ts
@@ -158,7 +157,7 @@ PersistentStorage.persistProp('aProp', 48)：在PersistentStorage中查找到“
 <!-- @[Persistent_page_first](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) -->
 
 ``` TypeScript
-const MAX_NUM: number = 50; // 大字体尺寸
+const MAX_NUM: number = 50;
 ```
 <!-- @[Persistent_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) -->
 
@@ -166,7 +165,7 @@ const MAX_NUM: number = 50; // 大字体尺寸
 PersistentStorage.persistProp('aProp', 48);
 if ((AppStorage.get<number>('aProp') ?? 0) > MAX_NUM) {
   // 如果PersistentStorage存储的值超过50，设置为47
-  AppStorage.setOrCreate('aProp',47);
+  AppStorage.setOrCreate('aProp', 47);
 }
 ```
 
@@ -200,7 +199,7 @@ struct TestCase6 {
           .fontSize(FONT_SIZE_LARGE)
           .fontWeight(FontWeight.Bold)
         Button('changeToNumber').onClick(() => {
-          this.p = DEFAULT_NUMBER; // 引用常量，避免直接写10
+          this.p = DEFAULT_NUMBER;
         })
         Button('changeTo undefined').onClick(() => {
           this.p = undefined;

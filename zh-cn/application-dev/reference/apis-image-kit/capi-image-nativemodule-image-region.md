@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+struct Image_Region {...}
+```
+
 ## 概述
 
 待解码的图像源区域结构体。

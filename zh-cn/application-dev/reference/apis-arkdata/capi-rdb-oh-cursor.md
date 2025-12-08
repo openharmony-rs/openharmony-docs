@@ -6,7 +6,7 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct {...} OH_Cursor
 ```
 
@@ -45,14 +45,14 @@ typedef struct {...} OH_Cursor
 | [int (*isNull)(OH_Cursor *cursor, int32_t columnIndex, bool *isNull)](#isnull) | 函数指针，检查当前行中指定列的值是否为null。                 |
 | [int (*destroy)(OH_Cursor *cursor)](#destroy)                | 函数指针，关闭结果集。                                       |
 | [int (*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)](#getasset) | 函数指针，以资产的形式获取当前行中指定列的值。               |
-| [int (*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uint32_t length)](#getassets) | 函数指针，以资产数组的形式获取当前行中指定列的值。           |
+| [int (*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uint32_t *length)](#getassets) | 函数指针，以资产数组的形式获取当前行中指定列的值。           |
 
 
 ## 成员函数说明
 
 ### getColumnCount()
 
-```
+```c
 int (*getColumnCount)(OH_Cursor *cursor, int *count)
 ```
 
@@ -78,7 +78,7 @@ int (*getColumnCount)(OH_Cursor *cursor, int *count)
 
 ### getColumnType()
 
-```
+```c
 int (*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *columnType)
 ```
 
@@ -105,7 +105,7 @@ int (*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *colu
 
 ### getColumnIndex()
 
-```
+```c
 int (*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)
 ```
 
@@ -132,7 +132,7 @@ int (*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)
 
 ### getColumnName()
 
-```
+```c
  int (*getColumnName)(OH_Cursor *cursor, int32_t columnIndex, char *name, int length)
 ```
 
@@ -160,7 +160,7 @@ int (*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)
 
 ### getRowCount()
 
-```
+```c
 int (*getRowCount)(OH_Cursor *cursor, int *count)
 ```
 
@@ -186,7 +186,7 @@ int (*getRowCount)(OH_Cursor *cursor, int *count)
 
 ### goToNextRow()
 
-```
+```c
  int (*goToNextRow)(OH_Cursor *cursor)
 ```
 
@@ -211,7 +211,7 @@ int (*getRowCount)(OH_Cursor *cursor, int *count)
 
 ### getSize()
 
-```
+```c
 int (*getSize)(OH_Cursor *cursor, int32_t columnIndex, size_t *size)
 ```
 
@@ -238,7 +238,7 @@ int (*getSize)(OH_Cursor *cursor, int32_t columnIndex, size_t *size)
 
 ### getText()
 
-```
+```c
 int (*getText)(OH_Cursor *cursor, int32_t columnIndex, char *value, int length)
 ```
 
@@ -266,7 +266,7 @@ int (*getText)(OH_Cursor *cursor, int32_t columnIndex, char *value, int length)
 
 ### getInt64()
 
-```
+```c
 int (*getInt64)(OH_Cursor *cursor, int32_t columnIndex, int64_t *value)
 ```
 
@@ -293,7 +293,7 @@ int (*getInt64)(OH_Cursor *cursor, int32_t columnIndex, int64_t *value)
 
 ### getReal()
 
-```
+```c
 int (*getReal)(OH_Cursor *cursor, int32_t columnIndex, double *value)
 ```
 
@@ -320,7 +320,7 @@ int (*getReal)(OH_Cursor *cursor, int32_t columnIndex, double *value)
 
 ### getBlob()
 
-```
+```c
 int (*getBlob)(OH_Cursor *cursor, int32_t columnIndex, unsigned char *value, int length)
 ```
 
@@ -348,7 +348,7 @@ int (*getBlob)(OH_Cursor *cursor, int32_t columnIndex, unsigned char *value, int
 
 ### isNull()
 
-```
+```c
 int (*isNull)(OH_Cursor *cursor, int32_t columnIndex, bool *isNull)
 ```
 
@@ -375,7 +375,7 @@ int (*isNull)(OH_Cursor *cursor, int32_t columnIndex, bool *isNull)
 
 ### destroy()
 
-```
+```c
 int (*destroy)(OH_Cursor *cursor)
 ```
 
@@ -400,7 +400,7 @@ int (*destroy)(OH_Cursor *cursor)
 
 ### getAsset()
 
-```
+```c
 int (*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)
 ```
 
@@ -408,7 +408,7 @@ int (*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)
 
 函数指针，以资产的形式获取当前行中指定列的值。
 
-**起始版本：** 10
+**起始版本：** 11
 
 
 **参数：**
@@ -427,15 +427,15 @@ int (*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)
 
 ### getAssets()
 
-```
-int (*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uint32_t length)
+```c
+int (*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uint32_t *length)
 ```
 
 **描述**
 
 函数指针，以资产数组的形式获取当前行中指定列的值。
 
-**起始版本：** 10
+**起始版本：** 11
 
 
 **参数：**
@@ -445,7 +445,7 @@ int (*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uin
 | OH_Cursor *cursor   | 表示指向OH_Cursor实例的指针                                  |
 | int32_t columnIndex | 表示结果集中指定列的索引，索引值从0开始。                    |
 | Data_Asset **value  | 该参数是输出参数，结果集中指定列的值会以资产数组形式写入该变量。 |
-| uint32_t length     | 既是入参又是出参：作为入参，需要开发者传入一个uint32_t类型的变量，表示输入缓冲区的大小；作为出参，表示函数执行后，length指向的变量会被更新为实际返回的资产数组的长度。 |
+| uint32_t *length    | 既是入参又是出参：作为入参，需要开发者传入一个uint32_t类型的变量，表示输入缓冲区的大小；作为出参，表示函数执行后，length指向的变量会被更新为实际返回的资产数组的长度。 |
 
 
 **返回：**

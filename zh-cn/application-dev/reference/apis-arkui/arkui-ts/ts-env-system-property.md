@@ -38,7 +38,7 @@ struct Index {
 ```
 
 ## EnvDecorator
-type EnvDecorator = (value: string) => PropertyDecorator
+declare type EnvDecorator = (value: SystemProperties) => PropertyDecorator
 
 定义@Env装饰器类型。
 
@@ -50,7 +50,7 @@ type EnvDecorator = (value: string) => PropertyDecorator
 
 | 参数名   | 类型                  | 必填 | 说明          |
 | -------- | -------------------- | ---- | --------- |
-| value    |      string          | 是   |      环境变量属性名。    |
+| value    |      [SystemProperties](./ts-env-system-property.md#systemproperties)          | 是   |      环境变量属性名。    |
 
 **返回值：**
 
@@ -75,4 +75,4 @@ type EnvDecorator = (value: string) => PropertyDecorator
 
 | 名称        | 值   | 说明                                       |
 | ----------- | ---- | ------------------------------------------------------------ |
-|BREAK_POINT|'system.arkui.breakpoint'|[@Env](#env)变量参数，通过\@Env(SystemProperties.BREAK_POINT)可获取[`WindowSizeLayoutBreakpointInfo`](../js-apis-arkui-observer.md#windowsizelayoutbreakpointinfo22)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-new-componentV2.md)中时，用于获取当前自定义组件所在窗口的尺寸布局断点信息。|
+|BREAK_POINT|'system.arkui.breakpoint'|[@Env](#env)变量参数，通过\@Env(SystemProperties.BREAK_POINT)可获取[`WindowSizeLayoutBreakpointInfo`](../js-apis-arkui-observer.md#windowsizelayoutbreakpointinfo22)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口的尺寸布局断点信息。|

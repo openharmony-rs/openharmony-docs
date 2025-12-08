@@ -565,3 +565,51 @@ try {
   console.error(`Failed to get incoming call policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## telephonyManager.hangupCalling<sup>23+</sup>
+hangupCalling(admin: Want): void
+
+Ends the current call. Only carrier calls are supported, excluding MeeTime calls.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name      | Type                                                   | Mandatory| Description                                                        |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+
+**Error codes**
+
+For details, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |                      |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { telephonyManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+  telephonyManager.hangupCalling(wantTemp);
+} catch (err) {
+  console.error(`Failed to hang up calling. Code: ${err.code}, message: ${err.message}`);
+}
+```

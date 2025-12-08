@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct NativeWindow OHNativeWindow
+```
+
 ## 概述
 
 定义NativeWindow对象。

@@ -23,5 +23,6 @@
 | content | [NotificationExtensionContent](js-apis-inner-notification-notificationExtensionContent.md) | 是 | 否 | 通知内容。 |
 | bundleName | string | 是 | 否 | 创建通知的包名。|
 | appName | string | 是 | 是 | 创建通知的应用程序名称。|
-| deliveryTime | number | 是 | 是 | 通知发布的时间戳（毫秒数）。|
+| deliveryTime | long | 是 | 是 | 通知发布的时间戳（毫秒数）。|
 | groupName | string | 是 | 是 | 通知组名称。默认情况下此参数为空。|
+| appIndex | int | 是 | 否 | 创建通知的应用包的分身索引标识，仅在分身应用中生效。|

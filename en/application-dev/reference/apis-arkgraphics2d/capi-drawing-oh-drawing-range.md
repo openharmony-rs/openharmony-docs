@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_Range OH_Drawing_Range
+```
+
 ## Overview
 
 Defines a struct used to receive the start position and end position of a glyph.

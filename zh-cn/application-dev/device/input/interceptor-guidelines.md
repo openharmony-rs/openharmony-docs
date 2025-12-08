@@ -199,3 +199,6 @@ static napi_value RemoveEventInterceptor(napi_env env, napi_callback_info info)
 }
 ```
 
+## 完整示例
+
+- [输入事件拦截（C/C++）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/input/NDKInputEventInterceptor)

@@ -1,10 +1,10 @@
 # Interaction Event Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -22,7 +22,7 @@ This error code is reported when an attempt is made to call **preventDefault** o
 
 **Possible Causes**
 
-The target component does not support the **preventDefault()** functionality.
+The target component does not support the **preventDefault** functionality.
 
 **Solution**
 
@@ -92,11 +92,15 @@ The input event pointer is not a cloned event pointer.
 
 This error code is reported when the input event is not a cloned event.
 
+**Possible Causes**
+
+A non-cloned event pointer is passed to the clone event API.
+
 **Solution**
 
 N/A
 
-## 180004 Abnormal Component Status
+## 180004 Abnormal Component State
 
 **Error Message**
 
@@ -104,7 +108,11 @@ The component status is abnormal.
 
 **Description**
 
-This error code is reported when the component status is abnormal.
+This error code is reported when the component state is abnormal.
+
+**Possible Causes**
+
+The component state is abnormal when the clone event is dispatched to the component.
 
 **Solution**
 
@@ -120,6 +128,10 @@ No component hit to response to the event.
 
 This error code is reported when no component is found to handle the event.
 
+**Possible Causes**
+
+No component is available to handle the event when the clone event is dispatched.
+
 **Solution**
 
 N/A
@@ -133,6 +145,10 @@ The gesture recognizer type is not supported.
 **Description**
 
 This error code is reported when the gesture recognizer type is not supported.
+
+**Possible Causes**
+
+The gesture recognizer type specified in the gesture API is not supported.
 
 **Solution**
 

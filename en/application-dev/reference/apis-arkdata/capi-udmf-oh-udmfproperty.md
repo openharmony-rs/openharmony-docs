@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdmfProperty OH_UdmfProperty
+```
+
 ## Overview
 
 Defines a struct for a data record property in a unified data object.

@@ -21,6 +21,10 @@ reuse(options: ReuseOptions): T
 
 Sets the reuse options for custom components decorated with @ReusableV2.
 
+>  **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full

@@ -1,4 +1,10 @@
 # span
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiangyuan6-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The **\<span>** component is a child component of [\<text>](js-service-widget-basic-text.md) and is used as a text modifier.

@@ -1,4 +1,4 @@
-# @ohos.enterprise.deviceSettings (Device Settings)
+# @ohos.enterprise.deviceSettings (Device Settings Management)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->

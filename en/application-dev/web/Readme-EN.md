@@ -72,4 +72,4 @@
 - Web Debugging<!--web-debugging-->
   - [Debugging Frontend Pages by Using DevTools](web-debugging-with-devtools.md)
   - [Using Crashpad to Collect Web Component Crash Information](web-crashpad.md)
-  - [Troubleshooting White Screen Issues on Web Pages](web-white-screen.md)
+  - [Troubleshooting White Screen Issues on Web Pages](web-white-screen.md)<!--RP1--><!--RP1End-->

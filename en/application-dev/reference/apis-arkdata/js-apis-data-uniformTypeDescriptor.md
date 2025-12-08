@@ -21,7 +21,7 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 ## UniformDataType
 
 Enumerates the uniform data types. Some data types are related. For example, the JPEG type belongs to the IMAGE type. For more preset data types, see [Preset UTD List](../../database/uniform-data-type-list.md).
- 
+The following table lists the common uniform data types.
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -216,13 +216,13 @@ Represents a class for defining a uniform data type. It provides properties and 
 
 | Name   | Type                   | Read-Only| Optional| Description                                                      |
 | ------- | ----------------------- | ---- | ---- |----------------------------------------------------------|
-| typeId<sup>11+</sup>     | string | Yes  | No  | ID of the uniform data type (that is, the enum value in [UTD list](#uniformdatatype)), or a custom UTD.|
-| belongingToTypes<sup>11+</sup>  | Array\<string>          | Yes  | No  | Data types to which the uniform data type belongs.                                  |
-| description<sup>11+</sup>     | string                  | Yes  | No  | Brief description of the uniform data type.                                           |
-| referenceURL<sup>11+</sup>     | string                  | Yes  | No  | URL of the link to the reference (detailed information) of the uniform data type.                           |
-| iconFile<sup>11+</sup>     | string                  | Yes  | No  | File path of the default icon for the uniform data type. An empty string means the uniform data type has no default icon. The application can determine whether to use the default icon.                                  |
-| filenameExtensions<sup>12+</sup>  | Array\<string>          | Yes  | No  | List of file name extensions associated with the uniform data type.                                  |
-| mimeTypes<sup>12+</sup>  | Array\<string>          | Yes  | No  | List of MIME types associated with the uniform data type.                                  |
+| typeId<sup>11+</sup>     | string | No  | No  | ID of the uniform data type (that is, the enum value in [UTD list](#uniformdatatype)), or a custom UTD.|
+| belongingToTypes<sup>11+</sup>  | Array\<string>          | No  | No  | Data types to which the uniform data type belongs.                                  |
+| description<sup>11+</sup>     | string                  | No  | No  | Brief description of the uniform data type.                                           |
+| referenceURL<sup>11+</sup>     | string                  | No  | No  | URL of the link to the reference (detailed information) of the uniform data type.                           |
+| iconFile<sup>11+</sup>     | string                  | No  | No  | File path of the default icon for the uniform data type. An empty string means the uniform data type has no default icon. The application can determine whether to use the default icon.                                  |
+| filenameExtensions<sup>12+</sup>  | Array\<string>          | No  | No  | List of file name extensions associated with the uniform data type.                                  |
+| mimeTypes<sup>12+</sup>  | Array\<string>          | No  | No  | List of MIME types associated with the uniform data type.                                  |
 
 ### belongsTo<sup>11+</sup> 
 

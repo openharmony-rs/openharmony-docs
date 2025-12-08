@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct JSVM_VM__* JSVM_VM
+```
+
 ## Overview
 
 Defines the JavaScript VM instance.

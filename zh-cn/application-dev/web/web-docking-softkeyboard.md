@@ -199,7 +199,7 @@ ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 
 - RESIZE_VISUAL：仅调整可视视口的大小，而不调整布局视口的大小。
 - RESIZE_CONTENT：调整视觉视口和布局视口的大小。
-- OVERLAYS_CONTENT：不调整任何视口的大小，获焦input元素没有滚动到可识区域的行为。
+- OVERLAYS_CONTENT：不调整任何视口的大小，获焦input元素没有滚动到可视区域的行为。
 
 >**说明：** 
 >

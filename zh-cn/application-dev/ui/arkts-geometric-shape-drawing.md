@@ -404,7 +404,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     build() {
       Column() {
         Image(this.pixelMap)
-          .backgroundColor(Color.Blue)
+          .backgroundColor('#86C5E3')
           .width(150)
           .height(150)
           .onClick(() => {
@@ -523,7 +523,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   绘制一个直径为150的圆，和一个直径为150、线条为红色虚线的圆环（宽高设置不一致时以短边为直径）。
 
-  <!-- [circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
+  <!-- @[circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
   
   ``` TypeScript
   @Entry
@@ -541,7 +541,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
           .strokeWidth(3)
           .stroke(Color.Red)
           .strokeDashArray([1, 2])
-      // ···
+        // ...
       }.width('100%')
     }
   }
@@ -556,7 +556,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 > [backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md)、[linearGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md)等通用属性作用于组件的背景区域，而不会在组件具体的内容区域生效。
 
 
-  <!-- [circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
+  <!-- @[circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
   
   ``` TypeScript
   @Entry
@@ -564,7 +564,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   struct CircleExample {
     build() {
       Column({ space: 10 }) {
-      // ···
+        // ...
         //绘制一个直径为150的圆
         Circle()
           .width(150)

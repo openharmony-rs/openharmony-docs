@@ -1,34 +1,50 @@
-# Enhanced SVG Parsing Capabilities
+# Enhanced SVG Tag Parsing
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-From API version 21, when the [supportSvg2](./ts-basic-components-image.md#supportsvg221) attribute of the Image component is set to true, the new parsing capability is enabled, which involves the following aspects:
+In API version 21 and later, when the [supportSvg2](./ts-basic-components-image.md#supportsvg221) attribute of the **Image** component is set to **true**, enhanced SVG tag parsing is enabled. This feature implements the following capabilities defined in the SVG 1.1 specification:
 
-- Improved usability: The default parsing format of the SVG image source color is changed from #ARGB to #RGBA, which complies with the SVG standard. The referenced URL type is strictly verified. The [colorFilter](./ts-basic-components-image.md#colorfilter9) attribute of the Image component takes effect for the entire SVG image source. The [fillColor](./ts-basic-components-image.md#fillcolor20) attribute of the Image component does not fill the color for elements with fill = 'none' in the SVG image source.
+- Usability enhancements: (1) The default parsing format for SVG image source colors is changed from #ARGB to #RGBA, complying with the SVG standard. (2) Strict URL type validation is conducted for referenced resources. (3) The **Image** component's [colorFilter](./ts-basic-components-image.md#colorfilter9) attribute takes effect for the entire SVG image source. (4) The **Image** component's [fillColor](./ts-basic-components-image.md#fillcolor20) attribute respects **fill='none'** declarations in the SVG source.
 
-- Extended affine transformation capability: The global center point can be configured. The local center point of rotate is supported. The matrix transformation mode is supported. Invalid values can be verified. Affine transformation is supported in the clipping path. Affine transformation is supported in the combination scenario.
+- Advanced affine transformation support: configurable global pivot points, local rotation centers for **rotate** transformations, matrix transformation modes, invalid value detection and handling, affine transformations in clipping paths, and combined transformation scenarios.
 
-- Extended parsing capability: The viewBox attribute supports the configuration of alignment and scaling rules. The parsing of the clipping path unit, gradient unit, mask unit, mask content unit, pattern unit, pattern content unit, filter unit, and primitive unit is supported.
+- Extended parsing features: (1) The **viewBox** attribute supports configuration of alignment and scaling rules. (2) Unit parsing is available for clipping paths, gradients, masks, mask content, patterns, pattern content, filters, and primitives.
 
-- Extended display effect: The opacity attribute of the g element in a group takes effect for multiple layers of subelements in the group. The processing of the clip-path clipping path rule in the g tag is added. The tiling effect and offset value processing are added for the pattern. The translation and scaling effects are added for the linear gradient and radial gradient. The default effect changes when the mask and filter parameters are abnormal.
+- Enhanced display effects: (1) The opacity attribute of the **\<g>** (group) element takes effect for all nested child elements in the group. (2) The following features are enhanced: processing for the **clip-path** rule in **\<g>** tags, tiling effects and offset value processing for pattern elements, and translation and scaling effects for linear and radial gradients; (3) The default behavior for abnormal mask and filter parameters is updated.
 
-## Improved SVG usability
+## Impact of Enhanced SVG Tag Parsing on Elements and Attributes
 
-The color parsing format is changed, the IRI type is strictly verified, and the effective scope of the [colorFilter](./ts-basic-components-image.md#colorfilter9) and [fillColor](./ts-basic-components-image.md#fillcolor20) attributes of the Image component is adjusted.
+The following table describes the SVG elements and attributes affected when enhanced parsing is enabled.
 
-### Changing the Color Parsing Format
+| Element          | Attribute                                                        | Description                                                        |
+| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| clipPath       | clipPathUnits                                                | **clipPathUnits**: defines the coordinate system reference for the clipping path.<br>Values:<br>**userSpaceOnUse** (absolute coordinate system) and **objectBoundingBox** (coordinate system relative to the bounding box of the applied element).|
+| filter         | filterUnits<br>primitiveUnits<br>x<br>y<br>width<br>height | **filterUnits**: coordinate and size reference for the filter effect area.<br>**primitiveUnits**: coordinate and size reference for filter primitive elements.<br>Values of **filterUnits** and **primitiveUnits**:<br>**userSpaceOnUse** (absolute coordinate system) and **objectBoundingBox** (coordinate system relative to the bounding box of the applied element).<br>**x**: x-axis offset component of the filter area. The default value is **-10%**.<br>**y**: y-axis offset component of the filter area. The default value is **-10%**.<br>**width**: width of the filter area. The default value is **120%**.<br>**height**: height of the filter area. The default value is **120%**.|
+| mask           | maskUnits<br>maskContentUnits<br>x<br>y<br>width<br>height | **maskUnits**: coordinate system and rendering mode for the mask.<br>**maskContentUnits**: coordinate system and rendering mode for elements within the mask.<br>Values of **maskUnits** and **maskContentUnits**:<br>**userSpaceOnUse** (absolute coordinate system) and **objectBoundingBox** (coordinate system relative to the bounding box of the applied element).<br>**x**: x-axis offset component of the mask area. The default value is **-10%**.<br>**y**: y-axis offset component of the mask area. The default value is **-10%**.<br>**width**: width of the mask area. The default value is **120%**.<br>**height**: height of the mask area. The default value is **120%**.|
+| radialGradient | gradientUnits                                                | **gradientUnits**: coordinate reference system for the gradient.<br>Values:<br>**userSpaceOnUse** (absolute coordinate system) and **objectBoundingBox** (coordinate system relative to the bounding box of the applied element).|
+| linearGradient | gradientUnits                                                | **gradientUnits**: coordinate reference system for the gradient.<br>Values:<br>**userSpaceOnUse** (absolute coordinate system) and **objectBoundingBox** (coordinate system relative to the bounding box of the applied element).|
+| pattern        | patternUnits<br>patternContentUnits                        | **patternUnits**: coordinate system and scaling for the **\<pattern>** element.<br>**patternContentUnits**: coordinate system and scaling for elements within the pattern.<br>Values of **patternUnits** and **patternContentUnits**:<br>**userSpaceOnUse** (absolute coordinate system) and **objectBoundingBox** (coordinate system relative to the bounding box of the applied element).|
+| g              | opacity<br>clip-path                                       | **opacity**: applies to all child elements within the group.<br>**clip-path**: applies to all child elements within the group.|
+| General          | transform                                                    | Performs 2D transformations (such as translation, rotation, scaling, and skewing) on SVG elements.<br>translate(x, y): translates an element along the x- or y-axis. ‌<br>rotate(angle, [cx], [cy]): rotates an element. (The optional parameters specify the rotation center.)<br> scale(sx, [sy]): scales an element. (When there is only one parameter, the element is scaled proportionally on the x- or y-axis.)<br> skewX(angle)/skewY(angle): skews an element along the x- or y-axis. ‌<br>matrix(a, b, c, d, e, f): defines complex transformations through a matrix.|
+| General          | transform-origin                                             | Defines the transformation reference point. Must be used together with the **transform** attribute.<br>When **transform-origin** is configured, the specified (x, y) offset serves as the center point for affine transformations.|
 
-When the SVG source of the Image component uses a hexadecimal color, the default color parsing format is changed from #ARGB to #RGBA that complies with the SVG standard. The involved SVG attributes include fill, stroke, stopColor, and stop-color.
+## Improved SVG Usability
+
+The default color parsing format for SVG image sources has been updated from #ARGB to the SVG-standard #RGBA. IRI type validation is now strictly enforced. The scope of the **Image** component's [colorFilter](./ts-basic-components-image.md#colorfilter9) and [fillColor](./ts-basic-components-image.md#fillcolor20) attributes has been adjusted for better compliance.
+
+### Updated Color Parsing Format
+
+When SVG image sources use hexadecimal color formats, the default parsing has changed from #ARGB to the SVG-standard #RGBA. Affected attributes include **fill**, **stroke**, **stopColor**, and **stop-color**.
 
 >**NOTE**
 >
->The final display effect of the SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly configure objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-When the SVG source attribute is set to a color in 8-digit hexadecimal format, the following figure shows the source and effect.
+8-digit hexadecimal color example:
 
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -36,11 +52,11 @@ When the SVG source attribute is set to a color in 8-digit hexadecimal format, t
 </svg>
 ```
 
-| Before                                               | After                                               |
+| Before Enhancement                                               | After Enhancement                                               |
 | :------------------------------------------------------------: | :------------------------------------------------------------: |
-| The system parses and displays the 8-digit hexadecimal color in #ARGB format.<br>For example, the display effect of the rectangle with fill="#ff000030" is as follows:<br> !Before (figures/8hex_color_before.PNG)| The system parses and displays the 8-digit hexadecimal color in #RGBA format.<br>For example, the display effect of the rectangle with fill="#ff000030" is as follows:<br>![After improvement](figures/8hex_color_after.PNG)|
+| Parsed as #ARGB.<br>Display effect of the rectangle with **fill="#ff000030"**<br> ![Before](figures/8hex_color_before.PNG)| Parsed as #RGBA.<br>Display effect of the rectangle with fill="#ff000030"<br>![After](figures/8hex_color_after.PNG)|
 
-When the SVG source attribute is set to a color in 7-digit hexadecimal format, the following figure shows the source and effect.
+7-digit hexadecimal color example:
 
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -48,11 +64,11 @@ When the SVG source attribute is set to a color in 7-digit hexadecimal format, t
 </svg>
 ```
 
-| Before                                               | After                                               |
+| Before Enhancement                                               | After Enhancement                                               |
 | :------------------------------------------------------------: | :------------------------------------------------------------: |
-| The system parses and displays the 7-digit hexadecimal color as the #ARGB format.<br>For example, the display effect of the rectangle with fill="#BB88990" is as follows.<br> ![Before improvement](figures/7hex_color_before.png)| The system parses and displays the 7-digit hexadecimal color as the default black color.<br>For example, the display effect of the rectangle with fill="#BB88990" is as follows.<br> ![After improvement](figures/7hex_color_after.png)|
+| Parsed as #ARGB.<br>Display effect of the rectangle with **fill="#BB88990"**<br> ![Before](figures/7hex_color_before.png)| Renders as default black.<br>Display effect of the rectangle with **fill="#BB88990"**<br> ![After](figures/7hex_color_after.png)|
 
-When the SVG image source attribute is set to a 4-digit hexadecimal color, the example image source and effect are as follows.
+4-digit hexadecimal color example:
 
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -60,23 +76,23 @@ When the SVG image source attribute is set to a 4-digit hexadecimal color, the e
 </svg>
 ```
 
-| Before                                               | After                                               |
+| Before Enhancement                                               | After Enhancement                                               |
 | :------------------------------------------------------------: | :------------------------------------------------------------: |
-| The system parses and displays the 4-digit hexadecimal color as the #ARGB format.<br>For example, the display effect of the rectangle with fill="#8888" is as follows.<br> ![Before improvement](figures/4hex_color_before.png)| The system parses and displays the 4-digit hexadecimal color as the #RGBA format.<br>For example, the display effect of the rectangle with fill="#8888" (fully transparent) is as follows.<br> ![After improvement](figures/4hex_color_after.png)|
+| Parsed as #ARGB.<br>Display effect of the rectangle with **fill="#8888"**<br> ! [Before](figures/4hex_color_before.png)| Parsed as #RGBA.<br>Display effect of the rectangle with **fill="#8888"** (fully transparent)<br> ! [After](figures/4hex_color_after.png)|
 
-### Strict Verification of the IRI Type
+### Strict IRI Type Validation
 
-The URL type referenced by the filter, clip-path, and mask is strictly verified to avoid reference type mismatch.
+URL references for **filter**, **clip-path**, and **mask** now undergo strict type validation to prevent reference mismatches.
 
 >**NOTE**
 >
->The final display effect of the SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly configure objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-| Before                                            | After                                    |
+| Before Enhancement                                            | After Enhancement                                    |
 | :---------------------------------------------------------: | :-------------------------------------------------: |
-| The URL type referenced by the filter, clip-path, and mask does not match, resulting in incorrect display effect.| When the URL type referenced by the filter, clip-path, and mask does not match, the corresponding effect is not displayed.<br> For example, the mask, clippath, filter, pattern, and gradient tags have their own IDs. When the filter, clip-path, and mask attributes are bound to the IDs of other types of tags, the corresponding effect does not take effect. The effect takes effect only when the mask attribute is bound to the mask tag ID, the clip-path attribute is bound to the clipPath tag ID, and the filter attribute is bound to the filter tag ID.|
+| Mismatched URL types for **filter**, **clip-path**, and **mask** references caused incorrect display effects.| When URL types for **filter**, **clip-path**, and **mask** references do not match, the corresponding effects are not applied.<br> For example, **mask**, **clipPath**, **filter**, **pattern**, and **gradient** tags each have unique IDs. Effects only apply when: **mask** attributes reference mask tag IDs; **clip-path** attributes reference **clipPath** tag IDs; **filter** attributes reference filter tag IDs.|
 
-The following figure shows the source image. If the URL type does not match, the effect does not take effect.
+For example, if the URL types do not match, the mask effect does not take effect.
 ```xml
 <svg width="200" height="100" xmlns="http://www.w3.org/2000/svg">
   <!-- Define a mask. -->
@@ -94,23 +110,23 @@ The following figure shows the source image. If the URL type does not match, the
 </svg>
 ```
 
-### Adjusting the Effect Scope of colorFilter
+### Updated colorFilter Effect Scope
 
-The [colorFilter](./ts-basic-components-image.md#colorfilter9) attribute of the Image component takes effect on the entire SVG image source instead of only the stroke border.
+The **Image** component's [colorFilter](./ts-basic-components-image.md#colorfilter9) attribute now applies to the entire SVG image source instead of only the stroke border.
 
 >**NOTE**
 >
->The final display effect of the SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly configure objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-| Original image source                                               | Before                                               | After                                               |
+| Original Source                                               | Before Enhancement                                               | After Enhancement                                               |
 | :------------------------------------------------------------: | :------------------------------------------------------------: | :------------------------------------------------------------: |
-| ![Original image source](figures/color_filter_origin.PNG)| The colorFilter attribute of the Image component takes effect only on the stroke border of the image source.<br> ![Before](figures/color_filter_before.PNG)| The colorFilter attribute of the Image component takes effect on the entire SVG image source.<br> ![After](figures/color_filter_after.PNG)|
+| ![Original source](figures/color_filter_origin.PNG)| **colorFilter** only applies to the stroke border.<br> ![Before](figures/color_filter_before.PNG)| **colorFilter** applies to the entire SVG image source.<br> ![After](figures/color_filter_after.PNG)|
 
-The following figure shows the source image and demo.
+The sample image and sample code are as follows:
 
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-    <!--Rectangle-->
+    <!-- Rectangle -->
     <rect x="10" y="10" width="180" height="80" stroke="gray" stroke-width='16' fill="orange"/>
 </svg>
 ```
@@ -143,22 +159,22 @@ struct Index {
 }
 ```
 
-### Adjusting the Effective Range of fillColor
+### Updated fillColor Effect Scope
 
-When the fill attribute of an element in the SVG image source is none, the [fillColor](./ts-basic-components-image.md#fillcolor20) attribute of the Image component changes from a fill color to no fill color.
+When the **fill** attribute of an element in the SVG image source is set to **none**, the [fillColor](./ts-basic-components-image.md#fillcolor20) attribute of the **Image** component will no longer apply color filling to that element.
 
 >**NOTE**
 >
->The final display effect of the SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly configure objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-| Before                                               | After                                               |
+| Before Enhancement                                               | After Enhancement                                               |
 | :------------------------------------------------------------: | :------------------------------------------------------------: |
-| The fillColor attribute of the Image component still fills the color for elements whose fill is none in the SVG image source.<br> !Before(figures/fill_none_before.PNG)| The fillColor attribute of the Image component does not fill the color for elements whose fill is none in the SVG image source.<br> !After(figures/fill_none_after.PNG)|
+| **fillColor** applied to the element with **fill="none"**<br> ![Before](figures/fill_none_before.PNG) | **fillColor** not applied to the element with **fill="none"**<br> ![After](figures/fill_none_after.PNG) |
 
-The following figure shows the example image source and demo.
+The sample image and sample code are as follows:
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-  <!--Rectangle-->
+  <!-- Rectangle -->
   <rect x="10" y="10" width="180" height="80" stroke="blue" stroke-width='2' fill="none"/>
 </svg>
 ```
@@ -188,102 +204,102 @@ struct Index {
 
 ## Extended Affine Transformation Capabilities
 
-The transform attribute supports the configuration of the global center point for transformation, the local center point for rotation, and the matrix transformation mode. It also supports invalid value verification and affine transformation in the clipping path. In addition, affine transformation is supported in the combination scenario.
+The **transform** attribute now supports the following: configurable global pivot points, local rotation centers, matrix transformation modes, invalid value verification, affine transformations in clipping paths, and combined transformation scenarios.
 
-### Configuring the Global Center Point for Transformation
+### Configurable Global Transformation Center
 
-SVG supports the transform-origin attribute to configure the global center point. The following table describes the effect before and after the extension.
+SVG now parses the **transform-origin** attribute to define global transformation centers.
 
 >**NOTE**
 >
->The final display effect of an SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly configure objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-|                           SVG scenario                           |                        Before Extension                        |                        After Extension                        |
+|                           SVG Scenario                           |                        Before Enhancement                        |                        After Enhancement                        |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|        Configure the transform function and the transform-origin attribute for basic SVG graphics.       | The (0,0) coordinate point in the upper left corner of the SVG viewport is used as the center point for affine transformation.| The coordinate offset (x, y) specified by the transform-origin attribute is used as the center point for affine transformation.|
-| Set the rotate function for the transform attribute and configure the transform-origin attribute.<br>The global center point is the lower right corner of the graphic element, for example, 'transform="rotate(30)" transform-origin="150 150"'.|  ![](figures/base_rotate_before.PNG)  |  ![](figures/base_rotate_after.PNG)   |
-| The transform attribute is used to set the scale function, and the transform-origin attribute is configured.<br>The global center point is the lower right corner of the graphic element, for example, 'transform="scale(0.77)" transform-origin="150 150"'.|  ![](figures/base_scale_before.PNG)   |   ![](figures/base_scale_after.PNG)   |
-| The transform attribute is used to set the skewX function, and the transform-origin attribute is configured.<br>The global center point is the lower right corner of the graphic element, for example, 'transform="skewX(30)" transform-origin="150 150"'.|  ![](figures/base_skewX_before.PNG)   |   ![](figures/base_skewX_after.PNG)   |
-| The transform attribute is used to set the skewY function, and the transform-origin attribute is configured.<br>The global center point is the lower right corner of the graphic element, for example, 'transform="skewY(30)" transform-origin="150 150"'.|  ![](figures/base_skewY_before.PNG)   |   ![](figures/base_skewY_after.PNG)   |
-| The transform attribute is used to set the translate function, and the transform-origin attribute is configured.<br>The global center point is the lower right corner of the graphic element, for example, 'transform="translate(30,30)" transform-origin="150 150"'.| ![](figures/base_translate_before.PNG) | ![](figures/base_translate_after.PNG) |
-| The transform attribute is used to call multiple functions in chain mode, and the transform-origin attribute is configured.<br>The global center point is the lower right corner of the graphic element, for example, transform='"translate(10,10) rotate(10) scale(0.5) skewX(10)" transform-origin="150 150"'.|   ![](figures/base_list_before.PNG)   |   ![](figures/base_list_after.PNG)    |
+|        Basic SVG graphics with the transform functionality and **transform-origin** attribute       | The (0,0) coordinate in the upper left corner of the SVG viewport served as the transformation center.| The (x, y) coordinate offset specified by **transform-origin** is used as the transformation center.|
+| **transform** attribute configured with the rotate functionality and **transform-origin**<br>Example: 'transform="rotate(30)" transform-origin="150 150"' (global center in the lower right corner)|  ![](figures/base_rotate_before.PNG)  |  ![](figures/base_rotate_after.PNG)   |
+| **transform** attribute configured with the scale functionality and **transform-origin**<br>Example: 'transform="scale(0.77)" transform-origin="150 150"' (global center in the lower right corner)|  ![](figures/base_scale_before.PNG)   |   ![](figures/base_scale_after.PNG)   |
+| **transform** attribute configured with **skewX** and **transform-origin**<br>Example: 'transform="skewX(30)" transform-origin="150 150"' (global center in the lower right corner)|  ![](figures/base_skewX_before.PNG)   |   ![](figures/base_skewX_after.PNG)   |
+| **transform** attribute configured with **skewY** and **transform-origin**<br>Example: 'transform="skewY(30)" transform-origin="150 150"' (global center in the lower right corner)|  ![](figures/base_skewY_before.PNG)   |   ![](figures/base_skewY_after.PNG)   |
+| **transform** attribute configured with the translate functionality and **transform-origin**<br>Example: 'transform="translate(30,30)" transform-origin="150 150"' (global center in the lower right corner)| ![](figures/base_translate_before.PNG) | ![](figures/base_translate_after.PNG) |
+| **transform** attribute calling multiple functions in chain mode with the **transform-origin** attribute configured<br>Example: transform='"translate(10,10) rotate(10) scale(0.5) skewX(10)" transform-origin="150 150"' (global center in the lower right corner)|   ![](figures/base_list_before.PNG)   |   ![](figures/base_list_after.PNG)    |
 
-### Partial Center Point Configuration for rotate
+### Local Center Point for rotate
 
-SVG supports the partial center point configuration for rotate. For example, in rotate(30, -10, -10), 30 indicates the rotation angle, and the last two parameters -10 and -10 indicate the coordinates of the partial center point. The following table describes the effect comparison before and after the partial center point configuration for rotate.
-
->**NOTE**
->
->The final display effect of the SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly configure objectFit based on the actual display effect.
-
-| SVG                                                        | Before Extension                                               | After Extension                                               |
-| :------------------------------------------------------------: | :------------------------------------------------------------: | :------------------------------------------------------------: |
-| Two attributes are configured for the basic SVG graphic:<br>Partial center point and transform-origin, for example, transform="rotate(30, -10, -10)" transform-origin="150 150".| Rotates the graphic based on the coordinates (x, y) specified by the last two parameters of the rotate function as the transformation center point.<br> ![](figures/base_rotate_loc_global_before.PNG) | Rotates the graphic based on the sum of the coordinate offset (x, y) specified by the transform-origin attribute of the global center point and the coordinate offset of the partial center point as the transformation center point.<br> ![](figures/base_rotate_loc_global_after.PNG) |
-
-### Matrix (matrix) Conversion
-
-SVG supports the matrix conversion capability of the transform attribute. matrix allows complex linear transformations on elements, including translation, rotation, scaling, and skewing, for example, matrix(a, b, c, d, e, f). The functions of each field are as follows: a: controls the scaling of the element in the x direction. b: controls the skewing of the element in the x direction. c: controls the skewing of the element in the y direction. d: controls the scaling of the element in the y direction. e: controls the translation of the element in the x direction. f: controls the translation of the element in the y direction.
+SVG now supports local center point specification in the **rotate** function, for example, **rotate(30, -10, -10)**, where **-10, -10** defines the local rotation center. The following table compares the rendering effects before and after configuring the local center point for **rotate**.
 
 >**NOTE**
 >
->The final display effect of an SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly configure objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-| SVG                                                        | Before                                               | After                                               |
+| SVG Scenario                                                        | Before Enhancement                                               | After Enhancement                                               |
 | :------------------------------------------------------------: | :------------------------------------------------------------: | :------------------------------------------------------------: |
-| Set the transform attribute to matrix and set the transform-origin attribute.<br>The global center point is the lower right corner of the graphic element, for example, transform="matrix(0.812,0.278,0.139,0.763,5.000,5.000" transform-origin="150 150").|  ![](figures/base_matrix_before.PNG)  |  ![](figures/base_matrix_after.PNG)   |
+| Basic SVG graphic with both local center point (**rotate**) and **transform-origin** configured<br>Example: 'transform="rotate(30, -10, -10)" transform-origin="150 150"'| Rotation uses only the coordinates (x, y) specified by the last two parameters of the **rotate** function as the transformation center.<br> ![](figures/base_rotate_loc_global_before.PNG) | Rotation uses the combined offset of the sum of the global **transform-origin** coordinates (x, y) and the local center point coordinates as the transformation center.<br> ![](figures/base_rotate_loc_global_after.PNG) |
+
+### Matrix Transformation Support
+
+SVG supports the matrix transformations via the **transform** attribute using the matrix function. This enables complex linear transformations combining translation, rotation, scaling, and skewing operations. In the matrix(a, b, c, d, e, f) function, the parameters are as follows: **a** controls scaling in the X direction, **b** controls skewing in the X direction, **c** controls skewing in the Y direction, **d** controls scaling in the Y direction, **e** controls translation in the X direction, and **f** controls translation in the Y direction.
+
+>**NOTE**
+>
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
+
+| SVG Scenario                                                        | Before Enhancement                                               | After Enhancement                                               |
+| :------------------------------------------------------------: | :------------------------------------------------------------: | :------------------------------------------------------------: |
+| Matrix transformation with **transform-origin** configured<br>Example: 'transform="matrix(0.812,0.278,0.139,0.763,5.000,5.000" transform-origin="150 150"') (global center in the lower right corner)|  ![](figures/base_matrix_before.PNG)  |  ![](figures/base_matrix_after.PNG)   |
 
 ### Invalid Value Verification
 
-SVG supports the verification of invalid values of the transform attribute. If the value of the transform attribute is invalid or the number of parameters is invalid, the parameters are processed according to the following table.
+SVG now properly handles invalid **transform** attribute values. The following table describes how invalid parameter values or incorrect parameter counts are handled.
 
 >**NOTE**
 >
->The final display effect of an SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly configure objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-| SVG                                                        | Before                                               | After                                               |
+| SVG Scenario                                                        | Before Enhancement                                               | After Enhancement                                               |
 | :------------------------------------------------------------: | :------------------------------------------------------------: | :------------------------------------------------------------: |
-| If the value of the transform attribute is invalid, for example, the angle parameter of the rotate function is invalid: 'transform="rotate(30deg)"'.| The value (30) parsed from the first parameter is used as the rotation angle.<br> ![](figures/except_angel_invalid_before.PNG) | No rotation is performed.<br>  ![](figures/except_angel_invalid_after.PNG) |
-| If the value of the transform attribute is invalid, for example, the local center point parameter of the rotate function is invalid: 'transform="rotate(30,abc,abc)"'.| The coordinate (0,0) in the upper left corner of the SVG viewport is used as the transformation center point, and the image is rotated by 30 degrees.<br>  ![](figures/except_rotate_x_y_invalid_before.PNG) | No rotation is performed.<br>  ![](figures/except_rotate_x_y_invalid_after.PNG) |
-| If the number of parameters of the transformation function is invalid, for example, the number of parameters of the scale function is invalid: 'transform="scale(0.5, 0.5, 0.5)"',| the first two valid parameters are used as the scaling ratios of the x-axis and y-axis (0.5,0.5).<br>  ![](figures/except_para_amount_invalid_before.PNG) | No transformation is performed.<br>  ![](figures/except_para_amount_invalid_after.PNG) |
-| When multiple transformation functions are called in chain mode, if the parameter of a function is invalid, for example, 'transform="rotate(30) skewX(abc) scale(0.5, 0.5)"',| the invalid transformation function skewX is not processed, and the valid transformation functions rotate and scale are processed.<br>  ![](figures/except_list_invalid_before.PNG) | None of the transformation functions is processed.<br>  ![](figures/except_list_invalid_after.PNG) |
+| Invalid transform value, for example, invalid parameter value in the **rotate** function, 'transform="rotate(30deg)"'| The first parameter value (30) is used as the rotation angle.<br> ![](figures/except_angel_invalid_before.PNG) | No rotation is performed.<br>  ![](figures/except_angel_invalid_after.PNG) |
+| Invalid local center point parameters, for example, invalid local center point parameter in the **rotate** function, 'transform="rotate(30,abc,abc)"'| The coordinate (0,0) in the upper left corner of the SVG viewport is used as the transformation center point, and the image is rotated by 30 degrees.<br>  ![](figures/except_rotate_x_y_invalid_before.PNG) | No rotation is performed.<br>  ![](figures/except_rotate_x_y_invalid_after.PNG) |
+| Incorrect parameter count, for example, incorrect parameter count in the **scale** function, 'transform="scale(0.5, 0.5, 0.5)"'| The first two valid parameters (0.5,0.5) are used as the scale factor along the x-axis and y-axis.<br>  ![](figures/except_para_amount_invalid_before.PNG) | No transformation is performed.<br>  ![](figures/except_para_amount_invalid_after.PNG) |
+| Invalid parameter in chained functions, for example, 'transform="rotate(30) skewX(abc) scale (0.5, 0.5)"'| Only valid transformation functions **rotate** and **scale** are applied. The invalid transformation function **skewX** is not applied.<br>  ![](figures/except_list_invalid_before.PNG) | No transformations are applied.<br>  ![](figures/except_list_invalid_after.PNG) |
 
-### Affine Transformation in the Clip Path
+### Affine Transformations in Clipping Paths
 
-The transform affine transformation operation in the clip-path is supported.
+Affine transformations are now supported within clipping paths with **clip-path**.
 
 >**NOTE**
 >
->The final display effect of the SVG image is affected by the value of the objectFit parameter of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly configure the objectFit parameter based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
 ```xml
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-  <!--Define a clipPath whose ID is circleClip and use the objectBoundingBox unit.-->
+  <!-- Define a clipPath with ID "circleClip" using objectBoundingBox units. -->
   <defs>
     <clipPath id="circleClip" clipPathUnits="objectBoundingBox">
-      <!--The center of the circle is in the center of the object, and the radius is 0.5, that is, the circle covers the entire object.-->
+      <!-- The circle is centered on the object, with a radius of 0.5, which clips the object into a circle that covers its entire area. -->
       <circle cx="50" cy="50" r="40" transform="translate(50 50)" />
     </clipPath>
   </defs>
 
-  <!--Apply clipPath to a rectangle.-->
+  <!-- Apply clipPath to a rectangle. -->
   <rect x="10" y="10" width="250" height="250" fill="blue"
         clip-path="url(#circleClip)" />
 </svg>
 ```
 
-| Before extension                                               | After extension                                               |
+| Before Enhancement                                               | After Enhancement                                               |
 | :------------------------------------------------------------: | :------------------------------------------------------------: |
 | ![](figures/clippath-translate-before.PNG) | ![](figures/clippath-translate-after.PNG) |
 
-### Affine Transformation in Combination Scenarios
+### Affine Transformations in Combined Scenarios
 
-Affine transformation is supported in combination scenarios of multiple elements.
+Affine transformations are now supported in complex scenarios involving multiple elements.
 
 >**NOTE**
 >
->The final display effect of an SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for the example images in this document. You need to correctly configure objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-The transform operation is in use, and the use object is also in the same mask element.
+The transform operation is applied within a **\<use>** element that references an object in the same **\<mask>** element.
 
 ```xml
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -298,11 +314,11 @@ The transform operation is in use, and the use object is also in the same mask e
 </svg> 
 ```
 
-| Before                                               | After                                               |
+| Before Enhancement                                               | After Enhancement                                               |
 | :------------------------------------------------------------: | :------------------------------------------------------------: |
 | ![](figures/mask_use_translate_scale_before.PNG) | ![](figures/mask_use_translate_scale_after.PNG) |
 
-The transform operation is in the g tag and does not contain the scale operation.
+The transform operation is applied within a **\<g>** element without scaling.
 
 ```xml
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -318,23 +334,23 @@ The transform operation is in the g tag and does not contain the scale operation
 </svg> 
 ```
 
-| Before                                               | After                                               |
+| Before Enhancement                                               | After Enhancement                                               |
 | :------------------------------------------------------------: | :------------------------------------------------------------: |
 | ![](figures/mask_g_translate_before.PNG) | ![](figures/mask_g_translate_after.PNG) |
 
-## SVG parsing capability extension
+## Extended SVG Parsing Capabilities
 
-The viewBox attribute supports configurable alignment and scaling rules. The following units can be parsed: clip-path, linearGradient, radialGradient, mask, pattern, filter, and primitive.
+The **viewBox** attribute now supports configuration of alignment and scaling rules. Unit parsing is available for clipping paths, gradients, masks, mask content, patterns, pattern content, filters, and primitives.
 
-### The viewBox attribute supports configurable alignment and scaling rules.
+### Configurable Alignment and Scaling Rules for viewBox
 
-The viewBox attribute is used to control the dynamic stretching effect of SVG. The preserveAspectRatio parameter can be used to control the alignment and scaling rules of the content area.
+The **viewBox** attribute controls SVG dynamic stretching, with the **preserveAspectRatio** parameter governing content alignment and scaling rules.
 
 >**NOTE**
 >
->The final display effect of the SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly configure objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-If the SVG image contains the preserveAspectRatio attribute and the value is none, the example image source and behavior changes are as follows:
+Example with **preserveAspectRatio** set to **"none"**:
 
 ```xml
 <svg width="200" height="100" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -344,47 +360,47 @@ If the SVG image contains the preserveAspectRatio attribute and the value is non
 </svg>
 ```
 
-| Value| Before Extension                                               | After Extension                                               |
+| Value| Before Enhancement                                               | After Enhancement                                               |
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| none   | The SVG image is uniformly scaled based on the minimum value of the aspect ratio.<br>The midpoint value of X in the viewBox attribute of the SVG element is aligned with the midpoint value of X in the view.<br>The midpoint value of Y in the viewBox attribute of the SVG element is aligned with the midpoint value of Y in the view.<br>![](figures/circle_none_before.png) | The graphic content of the element is scaled so that the boundary of the element completely matches the view rectangle.<br><br><br>![](figures/circle_none.png) |
+| none   | Uniform scaling based on the minimum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_none_before.png) | Graphic content scaled to completely match view rectangle boundaries<br><br><br>![](figures/circle_none.png) |
 
-If the SVG file contains the preserveAspectRatio attribute and the value is \<align> [\<meetOrSlice>], the source image, alignment mode, and zoom ratio are changed as follows:
+Example with **preserveAspectRatio** set to **&lt;align&gt; [&lt;meetOrSlice&gt;]**:
 
 ```xml
 <svg width="200" height="100" viewBox="0 0 100 100" preserveAspectRatio="xMinYMin meet" xmlns="http://www.w3.org/2000/svg">
   <circle cx="50" cy="20" r="20" fill="red"/>
-  <line x1="0" y1="0" x2="0" y2="500" stroke="black" stroke-width="2" /> <!-- x axis
-  <line x1="0" y1="0" x2="500" y2="0" stroke="black" stroke-width="2" /> <!-- y axis
+  <line x1="0" y1="0" x2="0" y2="500" stroke="black" stroke-width="2" /> <!-- x-axis -->
+  <line x1="0" y1="0" x2="500" y2="0" stroke="black" stroke-width="2" /> <!-- y-axis -->
 </svg>
 ```
 
-| Value        | Before Extension                                               | After Extension                                               |
+| Value        | Before Enhancement                                               | After Enhancement                                               |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| xMinYMin meet  | Zoom in or out based on the minimum aspect ratio.<br>Align the midpoint of the X value of the viewBox attribute of the SVG element with the midpoint of the X value of the view.<br>Align the midpoint of the Y value of the viewBox attribute of the SVG element with the midpoint of the Y value of the view.<br>![](figures/circle_xminymin_meet_before.png) | Zoom in or out based on the minimum aspect ratio.<br>Align the minimum value of the X value of the viewBox attribute of the SVG element with the minimum value of the X value of the view.<br>Align the minimum value of the Y value of the viewBox attribute of the SVG element with the minimum value of the Y value of the view.<br>![](figures/circle_xminymin_meet.png) |
-| xMaxYMin meet  | Zoom in or out based on the minimum aspect ratio.<br>Align the midpoint of the X value of the viewBox attribute of the SVG element with the midpoint of the X value of the view.<br>Align the midpoint of the Y value of the viewBox attribute of the SVG element with the midpoint of the Y value of the view.<br>![](figures/circle_xmaxymin_meet_before.png) | Zoom in or out based on the minimum aspect ratio.<br>Align the minimum value of the X value of the viewBox attribute of the SVG element plus the element width with the maximum value of the X value of the view.<br>Align the minimum value of the Y value of the viewBox attribute of the SVG element with the minimum value of the Y value of the view.<br>![](figures/circle_xmaxymin_meet.png) |
-| xMinYMid meet  | Scales the SVG element proportionally with the minimum width or height.<br>Aligns the midpoint of the X value of the viewBox attribute of the SVG element with the midpoint of the X value of the view.<br>Aligns the midpoint of the Y value of the viewBox attribute of the SVG element with the midpoint of the Y value of the view.<br>![](figures/circle_xminymid_meet_before.png) | Scales the SVG element proportionally with the minimum width or height.<br>Aligns the minimum X value of the viewBox attribute of the SVG element with the minimum X value of the view.<br>Aligns the midpoint of the Y value of the viewBox attribute of the SVG element with the midpoint of the Y value of the view.<br>![](figures/circle_xminymid_meet.png) |
-| xMaxYMid meet  | Scales the SVG element proportionally with the minimum width or height.<br>Aligns the midpoint of the X value of the viewBox attribute of the SVG element with the midpoint of the X value of the view.<br>Aligns the midpoint of the Y value of the viewBox attribute of the SVG element with the midpoint of the Y value of the view.<br>![](figures/circle_xmaxymid_meet_before.png) | Scales the SVG element proportionally with the minimum width or height.<br>Aligns the minimum X value plus the width of the viewBox attribute of the SVG element with the maximum X value of the view.<br>Aligns the midpoint of the Y value of the viewBox attribute of the SVG element with the midpoint of the Y value of the view.<br>![](figures/circle_xmaxymid_meet.png) |
-| xMinYMax meet  | Scales the SVG element proportionally with the minimum width or height.<br>Aligns the midpoint of the X value of the viewBox attribute of the SVG element with the midpoint of the X value of the view.<br>Aligns the midpoint of the Y value of the viewBox attribute of the SVG element with the midpoint of the Y value of the view.<br>![](figures/circle_xminymax_meet_before.png) | Scales the SVG element proportionally with the minimum width or height.<br>Aligns the minimum X value of the viewBox attribute of the SVG element with the minimum X value of the view.<br>Aligns the minimum Y value plus the height of the viewBox attribute of the SVG element with the maximum Y value of the view.<br>![](figures/circle_xminymax_meet.png) |
-| xMaxYMax meet  | Scales the SVG element proportionally with the minimum width or height.<br>Aligns the midpoint of the X value of the viewBox attribute of the SVG element with the midpoint of the X value of the view.<br>Aligns the midpoint of the Y value of the viewBox attribute of the SVG element with the midpoint of the Y value of the view.<br>![](figures/circle_xmaxymax_meet_before.png) | Scales the SVG element uniformly by the minimum aspect ratio.<br>Aligns the minimum X value of the viewBox attribute of the SVG element with the maximum X value of the view, and<br>aligns the minimum Y value of the viewBox attribute of the SVG element with the maximum Y value of the view.<br>![](figures/circle_xmaxymax_meet.png) |
-| xMinYMin slice | Scales the SVG element uniformly by the minimum aspect ratio.<br>Aligns the middle X value of the viewBox attribute of the SVG element with the middle X value of the view, and<br>aligns the middle Y value of the viewBox attribute of the SVG element with the middle Y value of the view.<br>![](figures/circle_xminymin_slice_before.png) | Scales the SVG element uniformly by the maximum aspect ratio.<br>Aligns the minimum X value of the viewBox attribute of the SVG element with the minimum X value of the view, and<br>aligns the minimum Y value of the viewBox attribute of the SVG element with the minimum Y value of the view.<br>![](figures/circle_xminymin_slice.png) |
-| xMidYMin slice | Scales the SVG element uniformly by the minimum aspect ratio.<br>Aligns the middle X value of the viewBox attribute of the SVG element with the middle X value of the view, and<br>aligns the middle Y value of the viewBox attribute of the SVG element with the middle Y value of the view.<br>![](figures/circle_xmidymin_slice_before.png) | Scales the SVG element uniformly by the maximum aspect ratio.<br>Aligns the middle X value of the viewBox attribute of the SVG element with the middle X value of the view, and<br>aligns the minimum Y value of the viewBox attribute of the SVG element with the minimum Y value of the view.<br>![](figures/circle_xmidymin_slice.png) |
-| xMaxYMin slice | Scales the SVG element uniformly by the minimum aspect ratio.<br>Aligns the middle X value of the viewBox attribute of the SVG element with the middle X value of the view, and<br>aligns the middle Y value of the viewBox attribute of the SVG element with the middle Y value of the view.<br>![](figures/circle_xmaxymin_slice_before.png) | Scales the SVG element uniformly by the maximum aspect ratio.<br>Aligns the minimum X value of the viewBox attribute of the SVG element with the maximum X value of the view, and<br>aligns the minimum Y value of the viewBox attribute of the SVG element with the minimum Y value of the view.<br>![](figures/circle_xmaxymin_slice.png) |
-| xMinYMid slice | Scales the SVG element uniformly by the minimum aspect ratio.<br>The midpoint value of X in the viewBox attribute of the SVG element is aligned with the midpoint value of X in the view.<br>The midpoint value of Y in the viewBox attribute of the SVG element is aligned with the midpoint value of Y in the view.<br>![](figures/circle_xmaxymid_slice_before.png) | Scale up or down according to the maximum aspect ratio.<br>The minimum value of X in the viewBox attribute of the SVG element is aligned with the minimum value of X in the view.<br>The midpoint value of Y in the viewBox attribute of the SVG element is aligned with the midpoint value of Y in the view.<br>![](figures/circle_xminymid_slice.png) |
-| xMidYMid slice | Scale up or down according to the minimum aspect ratio.<br>The midpoint value of X in the viewBox attribute of the SVG element is aligned with the midpoint value of X in the view.<br>The midpoint value of Y in the viewBox attribute of the SVG element is aligned with the midpoint value of Y in the view.<br>![](figures/circle_xmidymid_slice_before.png) | Scale up or down according to the maximum aspect ratio.<br>The midpoint value of X in the viewBox attribute of the SVG element is aligned with the midpoint value of X in the view.<br>The midpoint value of Y in the viewBox attribute of the SVG element is aligned with the midpoint value of Y in the view.<br>![](figures/circle_xmidymid_slice.png) |
-| xMaxYMid slice | Scale up or down according to the minimum aspect ratio.<br>The midpoint value of X in the viewBox attribute of the SVG element is aligned with the midpoint value of X in the view.<br>The midpoint value of Y in the viewBox attribute of the SVG element is aligned with the midpoint value of Y in the view.<br>![](figures/circle_xmaxymid_slice_before.png) | Scale up or down according to the maximum aspect ratio.<br>The minimum value of X in the viewBox attribute of the SVG element plus the element width is aligned with the maximum value of X in the view.<br>The midpoint value of Y in the viewBox attribute of the SVG element is aligned with the midpoint value of Y in the view.<br>![](figures/circle_xmaxymid_slice.png) |
-| xMinYMax slice | Scale up or down according to the minimum aspect ratio.<br>The midpoint value of X in the viewBox attribute of the SVG element is aligned with the midpoint value of X in the view.<br>The midpoint value of Y in the viewBox attribute of the SVG element is aligned with the midpoint value of Y in the view.<br>![](figures/circle_xminymax_slice_before.png) | Scale up or down according to the maximum aspect ratio.<br>The minimum value of X in the viewBox attribute of the SVG element is aligned with the minimum value of X in the view.<br>Aligns the minimum value of Y in the viewBox attribute of the SVG element with the maximum value of Y in the view.<br>![](figures/circle_xminymax_slice.png) |
-| xMidYMax slice | Resizes the SVG element based on the minimum aspect ratio.<br>Aligns the midpoint value of X in the viewBox attribute of the SVG element with the midpoint value of X in the view.<br>Aligns the midpoint value of Y in the viewBox attribute of the SVG element with the midpoint value of Y in the view.<br>![](figures/circle_xmidymax_slice_before.png) | Resizes the SVG element based on the maximum aspect ratio.<br>Aligns the midpoint value of X in the viewBox attribute of the SVG element with the midpoint value of X in the view.<br>Aligns the minimum value of Y in the viewBox attribute of the SVG element with the maximum value of Y in the view.<br>![](figures/circle_xmidymax_slice.png) |
-| xMaxYMax slice | Resizes the SVG element based on the minimum aspect ratio.<br>Aligns the midpoint value of X in the viewBox attribute of the SVG element with the midpoint value of X in the view.<br>Aligns the midpoint value of Y in the viewBox attribute of the SVG element with the midpoint value of Y in the view.<br>![](figures/circle_xmaxymax_slice_before.png) | Resizes the SVG element based on the maximum aspect ratio.<br>Aligns the minimum value of X in the viewBox attribute of the SVG element with the maximum value of X in the view.<br>Aligns the minimum value of Y in the viewBox attribute of the SVG element with the maximum value of Y in the view.<br>![](figures/circle_xmaxymax_slice.png) |
+| xMinYMin meet  | Uniform scaling based on the minimum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xminymin_meet_before.png) | Uniform scaling based on the minimum aspect ratio<br>The minimum **X** value of the SVG element's **viewBox** is aligned with the minimum **X** value of the viewport.<br>The minimum **Y** value of the SVG element's **viewBox** is aligned with the minimum **Y** value of the viewport.<br>![](figures/circle_xminymin_meet.png) |
+| xMaxYMin meet  | Uniform scaling based on the minimum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xmaxymin_meet_before.png) | Uniform scaling based on the minimum aspect ratio<br>The minimum **X** value of the SVG element's **viewBox** plus the element width is aligned with the maximum **X** value of the viewport.<br>The minimum **Y** value of the SVG element's **viewBox** is aligned with the minimum **Y** value of the viewport.<br>![](figures/circle_xmaxymin_meet.png) |
+| xMinYMid meet  | Uniform scaling based on the minimum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xminymid_meet_before.png) | Uniform scaling based on the minimum aspect ratio<br>The minimum **X** value of the SVG element's **viewBox** is aligned with the minimum **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xminymid_meet.png) |
+| xMaxYMid meet  | Uniform scaling based on the minimum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xmaxymid_meet_before.png) | Uniform scaling based on the minimum aspect ratio<br>The minimum **X** value of the SVG element's **viewBox** plus the element width is aligned with the maximum **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xmaxymid_meet.png) |
+| xMinYMax meet  | Uniform scaling based on the minimum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xminymax_meet_before.png) | Uniform scaling based on the minimum aspect ratio<br>The minimum **X** value of the SVG element's **viewBox** is aligned with the minimum **X** value of the viewport.<br>The minimum **Y** value of the SVG element's **viewBox** plus the element height is aligned with the maximum **Y** value of the viewport.<br>![](figures/circle_xminymax_meet.png) |
+| xMaxYMax meet  | Uniform scaling based on the minimum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xmaxymax_meet_before.png) | Uniform scaling based on the minimum aspect ratio<br>The minimum **X** value of the SVG element's **viewBox** plus the element width is aligned with the maximum **X** value of the viewport.<br>The minimum **Y** value of the SVG element's **viewBox** plus the element height is aligned with the maximum **Y** value of the viewport.<br>![](figures/circle_xmaxymax_meet.png) |
+| xMinYMin slice | Uniform scaling based on the minimum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xminymin_slice_before.png) | Uniform scaling based on the maximum aspect ratio<br>The minimum **X** value of the SVG element's **viewBox** is aligned with the minimum **X** value of the viewport.<br>The minimum **Y** value of the SVG element's **viewBox** is aligned with the minimum **Y** value of the viewport.<br>![](figures/circle_xminymin_slice.png) |
+| xMidYMin slice | Uniform scaling based on the minimum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xmidymin_slice_before.png) | Uniform scaling based on the maximum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The minimum **Y** value of the SVG element's **viewBox** is aligned with the minimum **Y** value of the viewport.<br>![](figures/circle_xmidymin_slice.png) |
+| xMaxYMin slice | Uniform scaling based on the minimum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xmaxymin_slice_before.png) | Uniform scaling based on the maximum aspect ratio<br>The minimum **X** value of the SVG element's **viewBox** plus the element width is aligned with the maximum **X** value of the viewport.<br>The minimum **Y** value of the SVG element's **viewBox** is aligned with the minimum **Y** value of the viewport.<br>![](figures/circle_xmaxymin_slice.png) |
+| xMinYMid slice | Uniform scaling based on the minimum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xmaxymid_slice_before.png) | Uniform scaling based on the maximum aspect ratio<br>The minimum **X** value of the SVG element's **viewBox** is aligned with the minimum **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xminymid_slice.png) |
+| xMidYMid slice | Uniform scaling based on the minimum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xmidymid_slice_before.png) | Uniform scaling based on the maximum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xmidymid_slice.png) |
+| xMaxYMid slice | Uniform scaling based on the minimum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xmaxymid_slice_before.png) | Uniform scaling based on the maximum aspect ratio<br>The minimum **X** value of the SVG element's **viewBox** plus the element width is aligned with the maximum **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xmaxymid_slice.png) |
+| xMinYMax slice | Uniform scaling based on the minimum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xminymax_slice_before.png) | Uniform scaling based on the maximum aspect ratio<br>The minimum **X** value of the SVG element's **viewBox** is aligned with the minimum **X** value of the viewport.<br>The minimum **Y** value of the SVG element's **viewBox** plus the element height is aligned with the maximum **Y** value of the viewport.<br>![](figures/circle_xminymax_slice.png) |
+| xMidYMax slice | Uniform scaling based on the minimum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xmidymax_slice_before.png) | Uniform scaling based on the maximum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The minimum **Y** value of the SVG element's **viewBox** plus the element height is aligned with the maximum **Y** value of the viewport.<br>![](figures/circle_xmidymax_slice.png) |
+| xMaxYMax slice | Uniform scaling based on the minimum aspect ratio<br>The midpoint **X** value of the SVG element's **viewBox** is aligned with the midpoint **X** value of the viewport.<br>The midpoint **Y** value of the SVG element's **viewBox** is aligned with the midpoint **Y** value of the viewport.<br>![](figures/circle_xmaxymax_slice_before.png) | Uniform scaling based on the maximum aspect ratio<br>The minimum **X** value of the SVG element's **viewBox** plus the element width is aligned with the maximum **X** value of the viewport.<br>The minimum **Y** value of the SVG element's **viewBox** plus the element height is aligned with the maximum **Y** value of the viewport.<br>![](figures/circle_xmaxymax_slice.png) |
 
-### Parsing of the clipPathUnits Unit
+### Clipping Path Unit Parsing
 
-The clipPathUnits unit value of the clip path unit can be parsed. The scenario where clipPathUnits is set to objectBoundingBox (coordinate system based on the border of the applied element) is added.
+The **clipPathUnits** attribute value for clipping path units is now properly parsed. Support has been added for the scenario where **clipPathUnits** is set to **objectBoundingBox**, which uses a coordinate system based on the bounding box of the applied element.
 
 >**NOTE**
 >
->The final display effect of the SVG image is affected by the objectFit parameter of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly set the objectFit parameter based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-In the following figure, when the clip path unit is objectBoundingBox, the rectangular clip path is located at the upper left corner of the rectangle applied to the clip path. The x and y coordinates are multiplied by the width and height of the bounding box. The width is multiplied by the width of the bounding box, and the height is multiplied by the height of the bounding box.
+In the example below, when the clipping path unit is set to **objectBoundingBox**, the rectangular clipping path is positioned relative to the upper left corner of the element to which it is applied. The x and y coordinates are interpreted as fractions of the element's bounding box width and height, respectively. Similarly, the width and height values are multiplied by the bounding box width and height to determine the actual clipping size.
 
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -397,19 +413,19 @@ In the following figure, when the clip path unit is objectBoundingBox, the recta
 </svg>
 ```
 
-| Before                                          | After                                         |
+| Before Enhancement                                          | After Enhancement                                         |
 | ------------------------------------------------------- | ------------------------------------------------------ |
 | ![](figures/clippath-before.png) | ![](figures/clippath-after.PNG) |
 
-### Parsing of gradientUnits
+### Gradient Unit Parsing
 
-Parsing of gradientUnits is supported. Processing of gradientUnits objectBoundingBox (coordinate system based on the bounding box of the applied element) is added.
+The **gradientUnits** attribute value for gradient units is now properly parsed. Support has been added for the scenario where **gradientUnits** is set to **objectBoundingBox**, which uses a coordinate system based on the bounding box of the applied element.
 
 >**NOTE**
 >
->The final display effect of an SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all the example images in this document. You need to correctly configure objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-The figure shows a linear gradient from the absolute coordinates (10, 10) to (180, 180) in a rectangle.
+This example illustrates a linear gradient defined with absolute coordinates from (10, 10) to (180, 180) within a rectangle.
 
 ```xml
  <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -423,11 +439,11 @@ The figure shows a linear gradient from the absolute coordinates (10, 10) to (18
 </svg>
 ```
 
-| Before                                               | After                                              |
+| Before Enhancement                                               | After Enhancement                                              |
 | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | ![](figures/line_gradient_before.PNG) | ![](figures/line_gradient_after.PNG) |
 
-The figure shows a radial gradient starting from the absolute coordinate center (100, 90) with a radius of 90.
+This example illustrates a radial gradient originating from the absolute coordinate center (100, 90) with a radius of 90.
 
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -441,19 +457,19 @@ The figure shows a radial gradient starting from the absolute coordinate center 
 </svg>
 ```
 
-| Before                                               | After                                               |
+| Before Enhancement                                               | After Enhancement                                               |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ![](figures/radial_gradient_before.PNG) | ![](figures/radial_gradient_after.PNG) |
 
-### Parsing of maskUnits and maskContentUnits
+### Mask Unit and Mask Content Unit Parsing
 
-maskUnits and maskContentUnits can be parsed. maskContentUnits and maskUnits are processed as objectBoundingBox (coordinate system based on the border of the applied element).
+The **maskUnits** and **maskContentUnits** attribute values for mask units and mask content units are now properly parsed. Support has been added for the scenario where **maskUnits** or **maskContentUnits** is set to **objectBoundingBox**, which uses a coordinate system based on the bounding box of the applied element.
 
 >**NOTE**
 >
->The final display effect of an SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly configure objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-The figure shows that the mask range of a five-pointed star is from the absolute coordinates (10, 10) to (200, 200). The mask content is relative to the upper left corner of the application rectangle. The horizontal size is multiplied by the width of the graphic bounding box, and the vertical size is multiplied by the height of the graphic bounding box.
+This example demonstrates a five-pointed star mask defined within absolute coordinates from (10, 10) to (200, 200). The mask content is positioned relative to the upper left corner of the target rectangle, with horizontal dimensions multiplied by the graphic's bounding box width and vertical dimensions multiplied by the bounding box height.
 
 ```xml
 <svg width="220" height="220" xmlns="http://www.w3.org/2000/svg">
@@ -466,19 +482,19 @@ The figure shows that the mask range of a five-pointed star is from the absolute
 </svg>
 ```
 
-| Before extension                                      | After extension                                     |
+| Before Enhancement                                      | After Enhancement                                     |
 | --------------------------------------------------- | -------------------------------------------------- |
 | ![](figures/mask_before.PNG) | ![](figures/mask_after.PNG) |
 
-### Parsing of pattern units and pattern content units
+### Pattern Unit and Pattern Content Unit Parsing
 
-Pattern units patternUnits and pattern content units patternContentUnits can be parsed. The processing of patternUnits and patternContentUnits is added as objectBoundingBox (coordinate system based on the border of the applied element).
+The **patternUnits** and **patternContentUnits** attribute values for pattern units and pattern content units are now properly parsed. Support has been added for the scenario where **patternUnits** or **patternContentUnits** is set to **objectBoundingBox**, which uses a coordinate system based on the bounding box of the applied element.
 
 >**NOTE**
 >
->The final display effect of an SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly configure objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-The unit position and size of the source pattern in the example image are in absolute coordinates. The pattern content position and size are relative to the pattern. The horizontal axis is multiplied by the width of the bounding box, and the vertical axis is multiplied by the height of the bounding box.
+In this example, the source pattern's position and size are defined in absolute coordinates, while the pattern content's position and size are relative to the pattern itself. The horizontal coordinates are multiplied by the bounding box width, and the vertical coordinates are multiplied by the bounding box height.
 
 ```xml
 <svg width="220" height="220" xmlns="http://www.w3.org/2000/svg">
@@ -492,20 +508,20 @@ The unit position and size of the source pattern in the example image are in abs
 </svg>
 ```
 
-| Before extension                                         | After extension                                        |
+| Before Enhancement                                         | After Enhancement                                        |
 | ------------------------------------------------------ | ----------------------------------------------------- |
 | ![](figures/pattern_before.PNG) | ![](figures/pattern_after.PNG) |
 
 ### Filter Unit and Primitive Unit Parsing
 
-filterUnits and primitiveUnits of filter units and primitive units can be parsed. filterUnits and primitiveUnits are processed as objectBoundingBox (coordinate system based on the border of the applied element). Currently, the following primitives are supported: feFlood, feOffset, feGaussianBlur, feBlood, feColorMatrix, and feComposite.
+The **filterUnits** and **primitiveUnits** attribute values for filter units and primitive units are now properly parsed. Support has been added for the scenario where **filterUnits** or **primitiveUnits** is set to **objectBoundingBox**, which uses a coordinate system based on the bounding box of the applied element. Currently, the following primitives are supported: **feFlood**, **feOffset**, **feGaussianBlur**, **feBlood**, **feColorMatrix**, and **feComposite**.
 
 >**NOTE**
 >
->The final display effect of the SVG image is affected by the objectFit parameter of the Image component. To ensure that the SVG image is completely and correctly displayed, objectFit (ImageFit.Contain) is configured for all test case images in this document, you need to correctly set the objectFit parameter based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-Graph source example: When the primitive value is objectBoundingBox, the fuzzy standard deviation X of feGaussianBlur and the stdDeviation value of the Y axis need to be multiplied.
-Width and height of the bounding box of the filter. The x and y coordinates of the filter primitive subregion are multiplied by the width and height of the bounding box relative to the upper left corner of the graph, and the width and height parameters of the filter primitive subregion are multiplied by the width and height of the bounding box.
+Example: When **primitiveUnits** is set to **objectBoundingBox**, the **stdDeviation** values for both x-axis and y-axis in **feGaussianBlur** are multiplied by
+the width and height of the applied element's bounding box respectively. The x- and y- coordinates of filter primitive subregions are multiplied by the bounding box width and height relative to the upper left corner of the graphic, while the width and height parameters of filter primitive subregions are multiplied by the bounding box width and height respectively.
 
 ```xml
  <svg width="400" height="400" xmlns="http://www.w3.org/2000/svg"> 
@@ -524,24 +540,24 @@ Width and height of the bounding box of the filter. The x and y coordinates of t
  </svg>
 ```
 
-| Before expansion                                               | After expansion                                               |
+| Before Enhancement                                               | After Enhancement                                               |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ![](figures/filter_primitive_before.PNG) | ![](figures/filter_primitive_after.PNG) |
 
 
-## Extended Display Effects
+## Enhanced Display Effects
 
-The opacity attribute of the g element takes effect on multiple layers of subelements in the group. The clip-path attribute is added to process the clipping path rule in the g element. The pattern attribute is added to process the tiling effect and offset value. The linear gradient and radial gradient attributes are added to process the translation and scaling effects. The default effect is changed when the mask and filter parameters are abnormal.
+The opacity attribute of the **\<g>** (group) element takes effect for all nested child elements in the group. In addition, the following features are enhanced: processing for the **clip-path** rule in **\<g>** tags, tiling effects and offset value processing for pattern elements, and translation and scaling effects for linear and radial gradients. The default behavior for abnormal mask and filter parameters is updated.
 
-### Opacity in the Group Tag
+### Group Element Opacity
 
-The opacity attribute of the g element takes effect on multiple layers of subelements in the group.
+The **opacity** attribute applied to a **\<g>** (group) element now affects all nested child elements within the group hierarchy.
 
 >**NOTE**
 >
->The final display effect of the SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly configure objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-The source image in the example contains two layers of nested group tags, and the transparency of the semicircle cut by the clipping path is 0.4.
+The example source image contains two layers of nested group elements, with the semicircle created by the clipping path rendered at 40% opacity (0.4).
 
 ```xml
 <svg  width="200" height="200" viewBox = "0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -558,50 +574,50 @@ The source image in the example contains two layers of nested group tags, and th
 </svg>
 ```
 
-| Before extension                                             | After extension                                            |
+| Before Enhancement                                             | After Enhancement                                            |
 | ---------------------------------------------------------- | --------------------------------------------------------- |
 | ![](figures/g_g_opacity_before.PNG) | ![](figures/g_g_opacity_after.PNG) |
 
-### Reference to the Clipping Path Rule in the Group Tag
+### Clipping Path Rule Processing in Group Elements
 
-The clip-path attribute is added to process the clipping path rule in the g element.
+The processing of **clip-path** clipping rules within **\<g>** elements has been enhanced.
 
 >**NOTE**
 >
->The final display effect of an SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly set objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-The source image is cropped according to the path in the g tag. The default cropping path rule is nonezero, and the filling rule in the path tag is evenodd.
-The filling rule of the left image is evenodd, and that of the right image is nonezero, which is the default cropping path rule.
+In this example, the source image is cropped using the path defined within the **\<g>** element. The default clipping rule is **nonezero**, while the fill rule specified in the path element is **evenodd**.
+In the resulting image, the left section demonstrates the **evenodd** fill rule, and the right section shows the default **nonezero** clipping rule.
 
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-  <!--Define the cropping path of the five-pointed star.-->
+  <!-- Define the clipping path of the five-pointed star.- -->
   <defs>
     <clipPath id="heartClipPath" >
    <path d="M 100,10 L 40,198 L 190,78 L 10,78 L 160,198 Z" fill-rule="evenodd" /> 
     </clipPath>
   </defs>
 
-  <!--Apply the cropping path to the rectangle.-->
+  <!-- Apply the clipping path to the rectangle. -->
   <g opacity="0.4" clip-path="url(#heartClipPath)" >
   <rect x="0" y="0" width="200" height="200" fill="red"  />
   </g>
 </svg>
 ```
 
-| Before extension                                               | After extension                                               |
+| Before Enhancement                                               | After Enhancement                                               |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ![](figures/fill_rule_clip_rule_before.PNG) | ![](figures/fill_rule_clip_rule_after.PNG) |
 
-### Pattern
+### Pattern Tiling Enhancement
 
-The pattern supports the repeated tiling effect.
+Patterns now support proper tiling effects.
 
 >**NOTE**
 >
->The final display effect of an SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly set objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-The following figure shows the source image.
+Example:
 
 ```xml
   <svg width="210" height="210" xmlns="http://www.w3.org/2000/svg">
@@ -615,17 +631,17 @@ The following figure shows the source image.
 </svg>
 ```
 
-| Before                                               | After                                               |
+| Before Enhancement                                               | After Enhancement                                               |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| The pattern cannot be tiled repeatedly.<br> !Before (figures/pattern_tile_before.PNG)| The pattern can be tiled repeatedly.<br> ![After improvement](figures/pattern_tile_after.PNG)|
+| No tiling<br> ![Before](figures/pattern_tile_before.PNG) | Proper tiling<br> ![After](figures/pattern_tile_after.PNG) |
 
-### Pattern offset
+### Pattern Offset Handling
 
-When the x and y parameters of the pattern are not set to 0, the entire pattern is displayed, instead of only the part that is translated.
+When pattern **x** and **y** parameters are non-zero, the entire pattern is now displayed instead of only the translated portion.
 
 >**NOTE**
 >
->The final display effect of the SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for the example images in this document. You need to correctly set objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
 ```xml
 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -639,17 +655,17 @@ When the x and y parameters of the pattern are not set to 0, the entire pattern 
 </svg>
 ```
 
-| Before                                           | After                                          |
+| Before Enhancement                                           | After Enhancement                                          |
 | :--------------------------------------------------------: | :-------------------------------------------------------: |
 | ![](figures/pattern_x_before.PNG) | ![](figures/pattern_x_after.PNG) |
 
-### Linear gradient
+### Linear Gradient
 
-The linear gradient can be translated and scaled.
+Linear gradients now support proper translation and scaling effects.
 
 >**NOTE**
 >
->The final display effect of the SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for the example images in this document. You need to correctly configure objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -664,17 +680,17 @@ The linear gradient can be translated and scaled.
 </svg>
 ```
 
-| Before                                               | After                                               |
+| Before Enhancement                                               | After Enhancement                                               |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ![](figures/line-gradient-corner-before.PNG) | ![](figures/line-gradient-corner-after.PNG) |
 
-### Radial gradient
+### Radial Gradient
 
-The radial gradient can be translated and scaled.
+Radial gradients now support proper translation and scaling effects.
 
 >**NOTE**
 >
->The final display effect of an SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly configure objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -689,17 +705,17 @@ The radial gradient can be translated and scaled.
 </svg>
 ```
 
-| Before extension                                               | After extension                                               |
+| Before Enhancement                                               | After Enhancement                                               |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ![](figures/radial-gradient-obb-before.PNG) | ![](figures/radial-gradient-obb-after.PNG) |
 
-### Default effect change when the mask parameter is abnormal
+### Default Mask Behavior for Invalid Parameters
 
-The x, y, width, and height parameters of the mask can be numbers, percentages, or decimals. If the parameter is set to an incorrect type, the parameter value changes from 0 to the default value {-10%, -10%, 120%, 120%}.
+When mask **x**, **y**, **width**, or **height** parameters accept numeric values, percentages, and decimal numbers. When these parameters are assigned incorrect types, their values now default to **{-10%, -10%, 120%, 120%}** instead of **0**.
 
 >**NOTE**
 >
->The final display effect of an SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly configure objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -713,17 +729,17 @@ The x, y, width, and height parameters of the mask can be numbers, percentages, 
 
 ```
 
-| Before                                            | After                                           |
+| Before Enhancement                                            | After Enhancement                                           |
 | :---------------------------------------------------------: | :--------------------------------------------------------: |
 | ![](figures/mask_error_before.PNG) | ![](figures/mask_error_after.PNG) |
 
-### Default effect when the filter parameter is abnormal
+### Default Filter Behavior for Invalid Parameters
 
-The x, y, width, and height parameters of the filter can be numbers, percentages, or decimals. If the parameter type is incorrect, the parameter value changes from 0 to the default value {-10%, -10%, 120%, 120%}.
+When filter **x**, **y**, **width**, or **height** parameters accept numeric values, percentages, and decimal numbers. When these parameters are assigned incorrect types, their values now default to **{-10%, -10%, 120%, 120%}** instead of **0**.
 
 >**NOTE**
 >
->The final display effect of the SVG image is affected by the value of objectFit of the Image component. To ensure that the SVG image is completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for all example images in this document. You need to correctly configure objectFit based on the actual display effect.
+>The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
 ```xml
 <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" width="300" height="300">
@@ -736,6 +752,6 @@ The x, y, width, and height parameters of the filter can be numbers, percentages
 </svg>
 ```
 
-| Before                                              | After                                             |
+| Before Enhancement                                              | After Enhancement                                             |
 | :-----------------------------------------------------------: | :----------------------------------------------------------: |
 | ![](figures/filter_error_before.PNG) | ![](figures/filter_error_after.PNG) |

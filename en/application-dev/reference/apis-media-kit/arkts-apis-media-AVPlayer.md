@@ -227,7 +227,7 @@ async function test(){
 
 setMediaSource(src:MediaSource, strategy?: PlaybackStrategy): Promise\<void>
 
-Sets a source of streaming media that can be pre-downloaded, downloads the media data, and temporarily stores the data in the memory. For details about how to use the API, see [Video Playback](../../media/media/video-playback.md) This API uses a promise to return the result.
+Sets a source of streaming media that can be pre-downloaded, downloads the media data, and temporarily stores the data in the memory. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -468,7 +468,7 @@ setMediaMuted(mediaType: MediaType,  muted: boolean ): Promise\<void>
 
 Mutes or unmutes the audio. This API uses a promise to return the result.
 
-Starting from API version 20, this API can be used to mute or unmute the video display.
+Starting from API version 20, this API can be used to disable or enable the video display.
 
 This API can be called only when the AVPlayer is in the prepared, playing, paused, or completed state.
 
@@ -481,7 +481,7 @@ This API can be called only when the AVPlayer is in the prepared, playing, pause
 | Name  | Type    | Mandatory| Description                |
 | -------- | -------- | ---- | -------------------- |
 | mediaType | [MediaType](arkts-apis-media-e.md#mediatype8) | Yes  | Media type.|
-| muted | boolean | Yes  | For API version 12 to 19, only audio formats are supported. This parameter specifies whether to mute or unmute the audio. **true** to mute, **false** otherwise.<br>Starting from API version 20, video formats are also supported. This parameter specifies whether to mute or unmute the video display. **true** to mute, **false** otherwise.|
+| muted | boolean | Yes  | For API version 12 to 19, only audio playback strategies are supported. This parameter specifies whether to mute or unmute the audio. **true** to mute, **false** otherwise.<br>Starting from API version 20, video playback strategies are also supported. This parameter specifies whether to disable or enable the video image. **true** to disable, false otherwise.|
 
 **Return value**
 
@@ -1166,23 +1166,25 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let avPlayer: media.AVPlayer = await media.createAVPlayer();
-let audioTrackIndex: Object = 0;
-avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
-  if (arrList != null) {
-    for (let i = 0; i < arrList.length; i++) {
-      if (i != 0) {
-        // Obtain the audio track list.
-        audioTrackIndex = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
+async function  test(){
+  let avPlayer: media.AVPlayer = await media.createAVPlayer();
+  let audioTrackIndex: Object = 0;
+  avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
+    if (arrList != null) {
+      for (let i = 0; i < arrList.length; i++) {
+        if (i != 0) {
+          // Obtain the audio track list.
+          audioTrackIndex = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
+        }
       }
+    } else {
+      console.error(`Failed to get TrackDescription, error:${error}`);
     }
-  } else {
-    console.error(`Failed to get TrackDescription, error:${error}`);
-  }
-});
+  });
 
-// Select an audio track.
-avPlayer.selectTrack(parseInt(audioTrackIndex.toString()));
+  // Select an audio track.
+  avPlayer.selectTrack(parseInt(audioTrackIndex.toString()));
+}
 ```
 
 ## deselectTrack<sup>12+</sup>

@@ -1,4 +1,4 @@
-# @ohos.file.fileExtensionInfo (User File Extension Information) (System API)
+# @ohos.file.fileExtensionInfo (User File Access and Management Attribute Information) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @wang_zhangjun; @gzhuangzhuang-->

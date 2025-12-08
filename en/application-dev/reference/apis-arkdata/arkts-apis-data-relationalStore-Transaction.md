@@ -6,12 +6,6 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-> **NOTE**
-> 
-> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
->
-> - The initial APIs of this module are supported since API version 14.
-
 Provides APIs for managing databases in transaction mode. A transaction object is created by using [createTransaction](arkts-apis-data-relationalStore-RdbStore.md#createtransaction14). Operations on different transaction objects are isolated. For details about the transaction types, see [TransactionType](arkts-apis-data-relationalStore-e.md#transactiontype14).
 
 Currently, an RDB store supports only one write transaction at a time. If the current [RdbStore](arkts-apis-data-relationalStore-RdbStore.md) has a write transaction that is not released, creating an **IMMEDIATE** or **EXCLUSIVE** transaction object will return error 14800024. If a **DEFERRED** transaction object is created, error 14800024 may be returned when it is used to invoke a write operation for the first time. After a write transaction is created using **IMMEDIATE** or **EXCLUSIVE**, or a **DEFERRED** transaction is upgraded to a write transaction, write operations in the [RdbStore](arkts-apis-data-relationalStore-RdbStore.md) will also return error 14800024.
@@ -20,9 +14,17 @@ When the number of concurrent transactions is large and the write transaction du
 
 Before using the following APIs, you should obtain a **Transaction** instance by calling the [createTransaction](./arkts-apis-data-relationalStore-RdbStore.md#createtransaction14) method and then call the corresponding method through the instance.
 
+> **NOTE**
+> 
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The initial APIs of this module are supported since API version 14.
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Example**:
+
+For details about the definition of **this.context** in the sample code, see the application [context](../apis-ability-kit/js-apis-inner-application-context.md) of the stage model.
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -325,7 +327,7 @@ if (store != undefined) {
 
 batchInsert(table: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number&gt;
 
-Batch inserts data into a table. This API uses a promise to return the result.
+Inserts data into a table in batches. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -410,7 +412,7 @@ if (store != undefined) {
 
 batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;): number
 
-Batch inserts data into a table. This API returns the result synchronously.
+Inserts data into a table in batches. This API returns the result synchronously.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -495,7 +497,13 @@ if (store != undefined) {
 
 batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): Promise&lt;number&gt;
 
-Batch inserts data into a table with conflict resolutions. This API uses a promise to return the result.
+Inserts data into a table with conflict resolutions in batches. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses a promise to return the result.
+
+A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code 14800000 is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
+
+For example, if the size of the union is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760).
+
+Ensure that you comply with this constraint when calling this API to avoid errors caused by excessive parameters.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -589,7 +597,13 @@ if (store != undefined) {
 
 batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): number
 
-Batch inserts data into a table with conflict resolutions. This API returns the result synchronously.
+Inserts data into a table with conflict resolutions in batches. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10).
+
+A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code 14800000 is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
+
+For example, if the size of the union is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760).
+
+Ensure that you comply with this constraint when calling this API to avoid errors caused by excessive parameters.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 

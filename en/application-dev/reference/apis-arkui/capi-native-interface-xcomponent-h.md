@@ -1088,7 +1088,7 @@ Obtains the state of the NumLock key from a key event.
 | Name| Description|
 | -- | -- |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)* keyEvent | Pointer to the key event.|
-| bool* isNumLockOn | Address of a boolean variable to receive the state of the NumLock key.|
+| bool* isNumLockOn | Pointer to a boolean variable to receive the state of the NumLock key. **true**: NumLock is enabled. **false**: NumLock is disabled.|
 
 **Returns**
 
@@ -1115,7 +1115,7 @@ Obtains the state of the CapsLock key from a key event.
 | Name| Description|
 | -- | -- |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)* keyEvent | Pointer to the key event.|
-| bool* isCapsLockOn | Address of a boolean variable to receive the state of the CapsLock key.|
+| bool* isCapsLockOn | Pointer to a boolean variable to receive the state of the CapsLock key. **true**: CapsLock is enabled. **false**: CapsLock is disabled.|
 
 **Returns**
 
@@ -1142,7 +1142,7 @@ Obtains the state of the ScrollLock key from a key event.
 | Name| Description|
 | -- | -- |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)* keyEvent | Pointer to the key event.|
-| bool* isScrollLockOn | Address of a boolean variable to receive the state of the ScrollLock key.|
+| bool* isScrollLockOn | Pointer to a boolean variable to receive the state of the ScrollLock key. **true**: ScrollLock is enabled. **false**: ScrollLock is disabled.|
 
 **Returns**
 
@@ -1528,7 +1528,7 @@ Registers a key event callback with a return value for this [OH_NativeXComponent
 | Name| Description|
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | Pointer to an [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) instance.|
-| bool (\*callback)(OH_NativeXComponent* component, void* window) | Pointer to the key event callback. - **window**: handle to the **NativeWindow** instance.|
+| bool (\*callback)(OH_NativeXComponent* component, void* window) | Pointer to the key event callback. - **window**: handle to the **NativeWindow** instance. If the callback returns **true**, the event will not be further propagated. If it returns **false**, the event will continue to be processed according to the normal event handling flow.|
 
 **Returns**
 
@@ -1890,7 +1890,7 @@ Sets whether the **XComponent** component needs to automatically initialize the 
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the **XComponent** component instance.|
-| bool autoInitialize | Whether the XComponent needs to automatically initialize the surface. If **autoInitialize** is **true**, the **OnSurfaceCreated** callback will be triggered when the component is attached to the tree, and the **OnSurfaceDestroyed** callback will be triggered when the component is detached from the tree. The default value of **autoInitialize** is **true**.|
+| bool autoInitialize | Whether the **XComponent** component needs to automatically initialize the surface. If **autoInitialize** is **true**, the **OnSurfaceCreated** callback will be triggered when the component is attached to the tree, and the **OnSurfaceDestroyed** callback will be triggered when the component is detached from the tree. If the value is **false**, the component does not need to automatically initialize the surface.<br>The default value of **autoInitialize** is **true**.|
 
 **Returns**
 
@@ -1969,7 +1969,7 @@ Checks whether the surface held by the **XComponent** component is initialized.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the **XComponent** component instance.|
-| bool* isInitialized | Whether the surface held by the **XComponent** component is initialized.|
+| bool* isInitialized | Whether the surface held by the **XComponent** component is initialized. **true**: The surface is initialized. **false**: The surface is not initialized.|
 
 **Returns**
 

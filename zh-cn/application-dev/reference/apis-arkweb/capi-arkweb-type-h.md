@@ -10,6 +10,8 @@
 
 提供ArkWeb在Native侧的公共类型定义。
 
+**引用文件：** <web/arkweb_type.h>
+
 **库：** libohweb.so
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -33,11 +35,11 @@
 | [ArkWeb_ProxyMethodWithResult](capi-web-arkweb-proxymethodwithresult.md) | ArkWeb_ProxyMethodWithResult | 注入的Proxy方法通用结构体。 |
 | [ArkWeb_ProxyObject](capi-web-arkweb-proxyobject.md) | ArkWeb_ProxyObject | 注入的Proxy对象通用结构体。 |
 | [ArkWeb_ProxyObjectWithResult](capi-web-arkweb-proxyobjectwithresult.md) | ArkWeb_ProxyObjectWithResult | 注入的Proxy对象通用结构体。 |
-| [ArkWeb_ControllerAPI](capi-web-arkweb-controllerapi.md) | ArkWeb_ControllerAPI | Controller相关的Native API结构体。在调用接口前建议通过ARKWEB_MEMBER_MISSING校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。 |
+| [ArkWeb_ControllerAPI](capi-web-arkweb-controllerapi.md) | ArkWeb_ControllerAPI | Controller相关的Native API结构体。在调用接口前建议通过ARKWEB_MEMBER_MISSING校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。Controller相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取。 |
 | [ArkWeb_ComponentAPI](capi-web-arkweb-componentapi.md) | ArkWeb_ComponentAPI | Component相关的Native API结构体。 |
-| [ArkWeb_WebMessagePortAPI](capi-web-arkweb-webmessageportapi.md) | ArkWeb_WebMessagePortAPI | Post Message相关的Native API结构体。在调用接口前建议通过ARKWEB_MEMBER_MISSING校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。 |
-| [ArkWeb_WebMessageAPI](capi-web-arkweb-webmessageapi.md) | ArkWeb_WebMessageAPI | Post Message数据相关的Native API结构体。在调用接口前建议通过ARKWEB_MEMBER_MISSING校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。 |
-| [ArkWeb_CookieManagerAPI](capi-web-arkweb-cookiemanagerapi.md) | ArkWeb_CookieManagerAPI | 定义了ArkWeb的CookieManager接口。在调用接口之前，建议使用ARKWEB_MEMBER_MISSING检查函数结构体是否有对应的函数指针，避免SDK与设备ROM不匹配导致崩溃。 |
+| [ArkWeb_WebMessagePortAPI](capi-web-arkweb-webmessageportapi.md) | ArkWeb_WebMessagePortAPI | Post Message相关的Native API结构体。在调用接口前建议通过ARKWEB_MEMBER_MISSING校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。WebMessagePort相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取。 |
+| [ArkWeb_WebMessageAPI](capi-web-arkweb-webmessageapi.md) | ArkWeb_WebMessageAPI | Post Message数据相关的Native API结构体。在调用接口前建议通过ARKWEB_MEMBER_MISSING校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。WebMessage相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取。 |
+| [ArkWeb_CookieManagerAPI](capi-web-arkweb-cookiemanagerapi.md) | ArkWeb_CookieManagerAPI | 定义了ArkWeb的CookieManager接口。在调用接口之前，建议使用ARKWEB_MEMBER_MISSING检查函数结构体是否有对应的函数指针，避免SDK与设备ROM不匹配导致崩溃。CookieManager相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取。 |
 | [ArkWeb_JavaScriptValueAPI](capi-web-arkweb-javascriptvalueapi.md) | ArkWeb_JavaScriptValueAPI | 定义了ArkWeb的JavaScriptValue接口。在调用接口之前，建议使用ARKWEB_MEMBER_MISSING检查函数结构体是否有对应的函数指针，避免SDK与设备ROM不匹配导致崩溃。 |
 
 ### 枚举
@@ -69,7 +71,7 @@
 
 ### ArkWeb_WebMessageType
 
-```
+```c
 enum ArkWeb_WebMessageType
 ```
 
@@ -87,7 +89,7 @@ Post Message数据类型。
 
 ### ArkWeb_JavaScriptValueType
 
-```
+```c
 enum ArkWeb_JavaScriptValueType
 ```
 
@@ -108,7 +110,7 @@ JavaScript数据类型。
 
 ### ArkWeb_OnJavaScriptCallback()
 
-```
+```c
 typedef void (*ArkWeb_OnJavaScriptCallback)(const char* webTag, const ArkWeb_JavaScriptBridgeData* data, void* userData)
 ```
 
@@ -129,7 +131,7 @@ typedef void (*ArkWeb_OnJavaScriptCallback)(const char* webTag, const ArkWeb_Jav
 
 ### ArkWeb_OnJavaScriptProxyCallback()
 
-```
+```c
 typedef void (*ArkWeb_OnJavaScriptProxyCallback)(const char* webTag, const ArkWeb_JavaScriptBridgeData* dataArray, size_t arraySize, void* userData)
 ```
 
@@ -151,7 +153,7 @@ Proxy方法被执行的回调。
 
 ### ArkWeb_OnJavaScriptProxyCallbackWithResult()
 
-```
+```c
 typedef ArkWeb_JavaScriptValuePtr (*ArkWeb_OnJavaScriptProxyCallbackWithResult)(const char* webTag, const ArkWeb_JavaScriptBridgeData* dataArray, size_t arraySize, void* userData)
 ```
 
@@ -173,7 +175,7 @@ Proxy方法被执行的回调。
 
 ### ArkWeb_OnComponentCallback()
 
-```
+```c
 typedef void (*ArkWeb_OnComponentCallback)(const char* webTag, void* userData)
 ```
 
@@ -193,7 +195,7 @@ typedef void (*ArkWeb_OnComponentCallback)(const char* webTag, void* userData)
 
 ### ArkWeb_OnScrollCallback()
 
-```
+```c
 typedef void (*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, double x, double y)
 ```
 
@@ -215,7 +217,7 @@ typedef void (*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, doub
 
 ### ArkWeb_OnMessageEventHandler()
 
-```
+```c
 typedef void (*ArkWeb_OnMessageEventHandler)(const char* webTag, const ArkWeb_WebMessagePortPtr port, const ArkWeb_WebMessagePtr message, void* userData)
 ```
 

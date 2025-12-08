@@ -1,7 +1,7 @@
 # 截图错误码
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -26,7 +26,7 @@ An image component in builder is not ready for taking a snapshot. The check for 
 
 **处理步骤**
 
-NA
+设置相应截图接口的delay延时参数，以确保图像加载成功。
 
 ## 160002 截图超时
 
@@ -44,4 +44,4 @@ Timeout.
 
 **处理步骤**
 
-NA
+改用当前截图接口对应的异步接口。

@@ -102,6 +102,8 @@ The following table lists the common information predefined in the crash event.
 | time | number | Event triggering time, in ms.|
 | crash_type | string | Crash type, which can be **NativeCrash** (native exception) or **JsError** (JS exception). For details about the detection method, see [C++ Crash (Process Crash) Detection](cppcrash-guidelines.md) and [JS Crash (Process Crash) Detection](jscrash-guidelines.md).|
 | foreground | boolean | Whether the application is running in the foreground. The value **true** indicates that the application is in the foreground, and the value **false** indicates the opposite.|
+| release_type | string | Release type of the SDK used for application packing. For details, see **releaseType** in [ApplicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).<br>Note: This field is supported since API version 23.|
+| cpu_abi | string | ABI type.<br>Note: This field is supported since API version 23.|
 | bundle_version | string | Application version.|
 | bundle_name | string | Application name.|
 | pid | number | Process ID of an application.|
@@ -163,9 +165,11 @@ Native **frame**
 | -------- | -------- | -------- |
 | file | string | File name.|
 | symbol | string | Function name. The symbol may be empty due to the following reasons:<br>1. The function name is not saved in the binary file.<br>2. The function name is deleted because it contains more than 256 bytes.|
-| buildId | string | Unique file ID. The file may not contain **buildId**. For details, see [C++ Crash (Process Crash) Log Specifications](cppcrash-guidelines.md#common-faults).|
+| buildId | string | Unique file ID. The file may not contain **buildId**.|
 | pc | string | Hexadecimal byte offset of the executed instruction within the file.|
 | offset | number | Byte offset of the executed instruction within the function.|
+
+For details, see [Call stack frame](cppcrash-guidelines.md#common-faults).
 
 Js **frame**
 
@@ -176,6 +180,8 @@ Js **frame**
 | symbol | string | Function name.|
 | line | number | Code line number.|
 | column | number | Code column number.|
+
+For details, see [JS hybrid stack frame](cppcrash-guidelines.md#common-faults).
 
 ### memory
 

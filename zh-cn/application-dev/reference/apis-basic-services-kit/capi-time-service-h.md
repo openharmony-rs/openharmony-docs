@@ -36,7 +36,7 @@
 
 ### TimeService_ErrCode
 
-```
+```c
 enum TimeService_ErrCode
 ```
 
@@ -57,7 +57,7 @@ enum TimeService_ErrCode
 
 ### OH_TimeService_GetTimeZone()
 
-```
+```c
 TimeService_ErrCode OH_TimeService_GetTimeZone(char *timeZone, uint32_t len)
 ```
 

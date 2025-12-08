@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Implements the API for setting the task that needs to be executed during the next frame rendering.
 
@@ -91,7 +91,7 @@ Called after the rendering of the subsequent frame has finished and there is mor
 **Example**
 
 ```ts
-import { FrameCallback } from '@ohos.arkui.UIContext';
+import { FrameCallback } from '@kit.ArkUI';
 
 class MyIdleCallback extends FrameCallback {
   private tag: string;

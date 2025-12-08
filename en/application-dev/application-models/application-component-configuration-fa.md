@@ -33,7 +33,7 @@ The [FA model](ability-terminology.md#fa-model) does not support direct configur
 
 ### Configuring the Entry Icon and Entry Label
 
-1. Configuration Methods
+#### Configuration Methods
 
 In the FA model, the entry icon and entry label are the values of **icon** and **label** configured for a PageAbility.
 
@@ -79,7 +79,7 @@ In the **skills** attribute of the PageAbility, if the **actions** value contain
 }
 ```
 
-2. Control Rules
+#### Control Rules
 
 The system strictly controls applications without icons to prevent malicious applications from deliberately configuring no icon to block uninstall attempts.
 
@@ -112,7 +112,7 @@ To declare the application version, set the **version** field under **app** in t
 
 ## Configuring Device Types Supported by the Module
 
-To configure the device types supported by the module, set the **deviceType** field in the **config.json** file. If a certain device type is added to **deviceTypes**, the module can run on that device. For details, see [deviceType Attribute](../quick-start/module-structure.md#devicetype-attribute).
+To configure the device types supported by the module, set the **deviceType** field in the **config.json** file. If a certain device type is added to **deviceType**, the module can run on that device. For details, see [deviceType Attribute](../quick-start/module-structure.md#devicetype-attribute).
 
 ## Configuring the Component Permission
 

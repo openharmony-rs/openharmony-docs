@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_TorchStatusInfo {...} Camera_TorchStatusInfo
+```
+
 ## 概述
 
 手电筒状态信息。

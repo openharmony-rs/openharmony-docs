@@ -7,6 +7,10 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct CommonEvent_SubscribeInfo CommonEvent_SubscribeInfo
+```
+
 ## Overview
 
 Defines a struct for the subscriber information.

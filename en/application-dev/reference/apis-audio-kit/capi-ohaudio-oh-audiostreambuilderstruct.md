@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioStreamBuilderStruct OH_AudioStreamBuilder
+```
+
 ## Overview
 
 The struct describes an audio stream builder, which is often used to create an audio stream and set its attributes.

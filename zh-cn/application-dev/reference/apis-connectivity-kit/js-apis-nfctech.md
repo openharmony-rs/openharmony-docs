@@ -223,7 +223,7 @@ NfcVTag获取方式请参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag
 
 getResponseFlags(): number
 
-从标签实例实例获取响应标志。
+从标签实例获取响应标志。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
@@ -249,7 +249,7 @@ console.info("nfcV responseFlags: " + responseFlags);
 
 getDsfId(): number
 
-从标签实例实例获取数据存储格式标识符（DSFID）。
+从标签实例获取数据存储格式标识符（DSFID）。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 

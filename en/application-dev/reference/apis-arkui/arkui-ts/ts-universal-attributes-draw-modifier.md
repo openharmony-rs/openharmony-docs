@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 If the drawn content of some components does not meet the requirements, you can use the custom drawing features to draw part or all of the components to achieve the expected effect. For example, you can create buttons in special shapes or icons that mix text and imagery. The drawing modifier offers higher flexibility in your custom drawing.
 
@@ -17,6 +17,10 @@ If the drawn content of some components does not meet the requirements, you can 
 drawModifier(modifier: DrawModifier | undefined): T
 
 Creates a drawing modifier.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -286,7 +290,7 @@ struct DrawModifierExample {
       end: 2
     });
     this.drawAnimator.onFrame = (value: number) => {
-      console.log('frame value =', value);
+      console.info('frame value =', value);
       const tempModifier = self.modifier as MyFullDrawModifier | MyFrontDrawModifier;
       tempModifier.scaleX = Math.abs(value - 1);
       tempModifier.scaleY = Math.abs(value - 1);
@@ -335,10 +339,10 @@ struct DrawModifierExample {
           .onClick(() => {
             this.count += 1;
             if (this.count % 2 === 1) {
-              console.log('change to full modifier');
+              console.info('change to full modifier');
               this.modifier = this.fullModifier;
             } else {
-              console.log('change to front modifier');
+              console.info('change to front modifier');
               this.modifier = this.frontModifier;
             }
           })

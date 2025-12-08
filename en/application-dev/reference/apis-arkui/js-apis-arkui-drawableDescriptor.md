@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 This module provides capabilities for layered icon composition (foreground, background, mask), animated image control, and basic image processing.
 
@@ -41,13 +41,13 @@ Represents the result of loading an image resource or URI.
 **Example**
 
 ```ts
-import { AnimatedDrawableDescriptor, DrawableDescriptor, DrawableDescriptorLoadedResult } from '@kit.ArkUI';
+import { AnimatedDrawableDescriptor, AnimationOptions, DrawableDescriptor, DrawableDescriptorLoadedResult } from '@kit.ArkUI';
 
 let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options)
+let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
 try {
     // You can preload animated image resources into the memory.
-    let result: DrawableDescriptorLoadedResult = this.drawable.loadSync()
+    let result: DrawableDescriptorLoadedResult = drawable.loadSync()
     console.info(`load result = ${JSON.stringify(result)}`)
 } catch(e) {
     console.error("load failed")
@@ -75,15 +75,16 @@ Obtains this **pixelMap** object.
 
 **Example**
 
-  ```ts
+```ts
 import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI'
 import { image } from '@kit.ImageKit'
+
 let resManager = this.getUIContext().getHostContext()?.resourceManager;
 // Replace $r('app.media.app_icon') with the image resource file you use.
 let pixmap: DrawableDescriptor = (resManager?.getDrawableDescriptor($r('app.media.icon')
-    .id)) as DrawableDescriptor; // When the passed resource ID or name is a regular image, a DrawableDescriptor object is generated.
+  .id)) as DrawableDescriptor; // When the passed resource ID or name is a regular image, a DrawableDescriptor object is generated.
 let pixmapNew: image.PixelMap | undefined = pixmap?.getPixelMap();
-  ```
+```
 
 ### loadSync<sup>21+</sup>
 
@@ -137,7 +138,7 @@ Asynchronously loads the image resource and returns the loading result. This API
 
 | Type                                                        | Description                |
 | ------------------------------------------------------------ | -------------------- |
-| [Promise\<DrawableDescriptorLoadedResult>](#drawabledescriptorloadedresult21) | Image resource loading result.|
+| Promise\<[DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21)> | Image resource loading result.|
 
 **Error codes**
 

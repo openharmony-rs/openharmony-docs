@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_NativeBuffer OH_NativeBuffer
+```
+
 ## Overview
 
 The struct describes the native video stream class for screen capture.

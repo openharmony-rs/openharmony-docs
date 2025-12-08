@@ -178,9 +178,10 @@ Example of loading local page files in the sandbox:
    
      build() {
        Column() {
-         Text('loading success');
+       // ···
          // Load the files in the sandbox.
-         Web({ src: url, controller: this.controller });
+         Web({ src: url, controller: this.controller })
+         .fileAccess(true);
        }
      }
    }
@@ -279,8 +280,9 @@ struct WebComponent {
 ## Loading Local Resources Using the Resource Protocol
 
 The resource protocol allows access to files in the application resource directory.
+<!-- @[resource_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/ResourceLoadPage.ets) -->
 
-```ts
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -290,10 +292,10 @@ struct ResourceWebComponent {
 
   build() {
     Column() {
-      Button('Load resources')
+      Button('LoadResource')
         .onClick(() => {
           try {
-            // Load the index1.html file in resources/rawfile through using the resource protocol.
+            // Load the index1.html file in resources/rawfile using the resource protocol.
             this.controller.loadUrl('resource://rawfile/index1.html');
           } catch (error) {
             console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
@@ -301,8 +303,7 @@ struct ResourceWebComponent {
         })
 
       // When the component is created, use the resource protocol to load resources.
-      Web({
-        src: 'resource://rawfile/index.html', controller: this.controller})
+      Web({ src: 'resource://rawfile/index.html', controller: this.controller });
     }
   }
 }

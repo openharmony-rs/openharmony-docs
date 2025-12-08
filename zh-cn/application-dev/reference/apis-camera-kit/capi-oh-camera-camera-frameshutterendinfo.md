@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_FrameShutterEndInfo {...} Camera_FrameShutterEndInfo
+```
+
 ## 概述
 
 拍照曝光结束信息。

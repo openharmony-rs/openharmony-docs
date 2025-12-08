@@ -16,6 +16,8 @@
  
  ``` TypeScript
  import { hilog } from '@kit.PerformanceAnalysisKit';
+ import { resourceManager } from '@kit.LocalizationKit';
+ 
  const DOMAIN = 0x0000;
  // xxx.ets
  class MyCheckboxStyle implements ContentModifier<CheckBoxConfiguration> {
@@ -33,7 +35,10 @@
  @Builder
  function buildCheckbox(config: CheckBoxConfiguration) {
    Column({ space: 10 }) {
-     Text(config.name + (config.selected ? $r('app.string.checked_context') : $r('app.string.unchecked_context')))
+     Text() {
+       Span(config.name)
+       Span(config.selected ? $r('app.string.checked_context') : $r('app.string.unchecked_context'))
+     }
      Shape() {
        // 五边形复选框样式
        Path()
@@ -77,11 +82,12 @@
  @Entry
  @Component
  struct Index {
+   private resmg: resourceManager.ResourceManager | undefined = this.getUIContext().getHostContext()?.resourceManager
    build() {
      Row() {
        Column() {
          //选中和不选中按钮
-         Checkbox({ name: (getContext(this)).resourceManager.getStringSync($r('app.string.checkbox_status').id), group: 'checkboxGroup' })
+         Checkbox({ name: this.resmg?.getStringSync($r('app.string.checkbox_status').id), group: 'checkboxGroup' })
            .select(true)
            .contentModifier(new MyCheckboxStyle(Color.Red))
            .onChange((value: boolean) => {

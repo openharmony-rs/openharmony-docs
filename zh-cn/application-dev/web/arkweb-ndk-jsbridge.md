@@ -132,7 +132,7 @@
 
 ### 前端页面调用应用侧函数
 
-通过[registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex)将应用侧函数注册至前端页面，推荐在[onControllerAttached](../reference/apis-arkweb/capi-web-arkweb-componentapi.md#oncontrollerattached)回调中注册应用侧函数，如果在其它时机注册，需要手动调用[refresh](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#refresh)才能生效。
+通过[registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex)将应用侧函数注册至前端页面，注册后在下次加载或者重新加载后生效。
 
   <!-- @[the_front_end_page_calls_application_side_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp) -->
   
@@ -853,7 +853,7 @@ ArkWeb Native侧得先获取API结构体，才能调用结构体里的Native API
 
 ### 前端页面调用应用侧函数
 
-通过[registerJavaScriptProxy](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxy)将应用侧函数注册至前端页面，推荐在[onControllerAttached](../reference/apis-arkweb/capi-web-arkweb-componentapi.md#oncontrollerattached)回调中注册，其它时机注册需要手动调用[refresh](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#refresh)才能生效。
+通过[registerJavaScriptProxy](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxy)将应用侧函数注册至前端页面，注册后在下次加载或者重新加载后生效。
 
   ```c++
   // 注册对象

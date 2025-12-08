@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+struct Image_String {...}
+```
+
 ## 概述
 
 字符串结构。

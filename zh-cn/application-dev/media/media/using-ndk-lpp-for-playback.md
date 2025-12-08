@@ -92,7 +92,7 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
     int32_t ret = GetTrackInfo(sourceFormat, info);
     ```
 
-2.  根据视频元信息信息，调用  [OH_LowPowerAudioSink_CreateByMime](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_createbymime)或[OH_LowPowerVideoSink_CreateByMime](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_createbymime)来创建播放器。
+2.  根据视频元信息，调用  [OH_LowPowerAudioSink_CreateByMime](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_createbymime)或[OH_LowPowerVideoSink_CreateByMime](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_createbymime)来创建播放器。
 
     ```
     lppVideoStreamer_ = OH_LowPowerVideoSink_CreateByMime(codecMime.c_str());
@@ -162,7 +162,7 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
 ## 运行完整示例
 
-1. 新建工程。下载[示例工程](https://gitee.com/harmonyos_samples/guide-snippets/tree/master/MediaKit/LowPowerAVSInk/lowPowerAVSinkSample)，并将示例工程的以下资源复制到对应目录。
+1. 新建工程。下载[示例工程](https://gitcode.com/HarmonyOS_Samples/guide-snippets/tree/master/MediaKit/LowPowerAVSInk/lowPowerAVSinkSample)，并将示例工程的以下资源复制到对应目录。
 
    ```
    lpp_demo-sample/entry/src/main/          

@@ -111,10 +111,11 @@ You can create shader materials using the **MaterialType.SHADER** type when you 
 
      Import the core types provided by ArkGraphics 3D in the page script to create shader materials and bind shader resources.
 
-     <!-- @[model_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
+     <!-- @[resource_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
      
      ``` TypeScript
-     import { Camera, Scene, SceneResourceFactory } from '@kit.ArkGraphics3D';
+     import { Camera, Environment, Geometry, Image, Material, MaterialType, Scene, SceneResourceFactory,
+       SceneResourceParameters, Shader, ShaderMaterial, EnvironmentBackgroundType } from '@kit.ArkGraphics3D';
      ```
 
   2. Load the scene and configure rendering parameters.

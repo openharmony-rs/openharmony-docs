@@ -156,7 +156,8 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
     @StorageLink('propA') storageLink: number = 2;
     ```
 
-2. \@StorageProp与\@StorageLink不支持装饰Function类型的变量，框架会抛出运行时错误。
+2. \@StorageProp与\@StorageLink不支持装饰Function类型的变量，API version 23之前，框架会抛出运行时错误。
+从API version 23开始，添加对\@StorageProp与\@StorageLink装饰Function类型变量的校验，编译期会报错。
 
 3. AppStorage与[PersistentStorage](arkts-persiststorage.md)以及[Environment](arkts-environment.md)配合使用时，需要注意以下几点：
 
@@ -207,6 +208,7 @@ prop.get() // == 49
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0x0001;
 const TAG: string = '[SampleAppStorage]';
 
@@ -488,6 +490,7 @@ struct SetSample {
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0x0001;
 const TAG: string = '[SampleAppStorage]';
 
@@ -506,7 +509,9 @@ class ViewData {
 @Component
 struct Gallery {
   // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
-  dataList: Array<ViewData> = [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon'))];
+  dataList: Array<ViewData> =
+    [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')),
+      new ViewData('OMG', $r('app.media.startIcon'))];
   scroller: Scroller = new Scroller();
 
   build() {
@@ -577,6 +582,7 @@ export struct TapImage {
 ``` TypeScript
 import { emitter } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0x0001;
 const TAG: string = '[SampleAppStorage]';
 
@@ -599,7 +605,9 @@ class ViewData {
 @Component
 struct Gallery {
   // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
-  dataList: Array<ViewData> = [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon'))];
+  dataList: Array<ViewData> =
+    [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')),
+      new ViewData('OMG', $r('app.media.startIcon'))];
   scroller: Scroller = new Scroller();
   private preIndex: number = -1;
 
@@ -703,7 +711,9 @@ class ViewData {
 @Component
 struct Gallery {
   // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
-  dataList: Array<ViewData> = [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon'))];
+  dataList: Array<ViewData> =
+    [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')),
+      new ViewData('OMG', $r('app.media.startIcon'))];
   scroller: Scroller = new Scroller();
 
   build() {
@@ -763,6 +773,7 @@ export struct TapImage {
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0x0001;
 const TAG: string = '[SampleAppStorage]';
 AppStorage.setOrCreate('propA', false);

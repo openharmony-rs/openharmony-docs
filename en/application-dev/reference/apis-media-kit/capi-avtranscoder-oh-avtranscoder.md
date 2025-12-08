@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVTranscoder OH_AVTranscoder
+```
+
 ## Overview
 
 The struct initializes an AVTranscoder.

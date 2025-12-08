@@ -15,7 +15,7 @@ In asynchronous rendering mode (renderMode: [RenderMode](../reference/apis-arkwe
 - The width and height of a **Web** component cannot exceed 7,680 pixels (physical pixels). Otherwise, a white screen is displayed.
 - Dynamic mode switching is not supported.
 
-The **Web** component is expected to display the application page as the main body, as shown in Figure 1. In this scenario, the height of the **Web** component is the same as or close to the height of a screen (embedded in the navigation). The height of the HTML 5 page to be loaded is greater than the height of the **Web** component, and a scroll bar is generated inside the **Web** component. Users can scroll the scroll bar to view information on the HTML 5 page. Only **Web** components are required to implement the main content of application services. The asynchronous rendering mode is recommended to improve performance.
+The **Web** component is expected to display the application page as a main body. As shown in figure 1, in this scenario, the height of the **Web** component is the same as or close to the height of a screen (embedded in the navigation). The height of the HTML 5 page to be loaded is greater than the height of the **Web** component, and a scroll bar is generated inside the **Web** component. Users can scroll the scroll bar to view information on the HTML 5 page. Only **Web** components are required to implement the main content of application services. The asynchronous rendering mode is recommended to improve performance.
 
 **Figure 1 Asynchronous rendering mode**
 
@@ -23,7 +23,7 @@ The **Web** component is expected to display the application page as the main bo
 
 ## Synchronous Rendering Mode
 
-In synchronous rendering mode (renderMode: [RenderMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#rendermode12).SYNC_RENDER), the Web component is treated as the graphics canvas node and is displayed together with the system component. In this case, longer **Web** component content can be rendered, but the performance consumption increases.
+In synchronous rendering mode (renderMode: [RenderMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#rendermode12).SYNC_RENDER), the **Web** component is treated as the graphics canvas node and is displayed together with the system component. In this case, longer **Web** component content can be rendered, but the performance consumption increases.
 
 - Direct Digital Synthesis (DSS) is not supported.
 - Dynamic mode switching is not supported.

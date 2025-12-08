@@ -19,7 +19,7 @@ The **esim** module provides basic eSIM management capabilities, including check
 import { eSIM } from '@kit.TelephonyKit';
 ```
 
-## eSIM.isSupported<sup>18+</sup>
+## eSIM.isSupported
 
 isSupported\(slotId: number\): boolean
 
@@ -58,7 +58,7 @@ let isSupported: boolean = eSIM.isSupported(1);
 console.info(`the esim is Supported:` + isSupported);
 ```
 
-## eSIM.addProfile<sup>18+</sup>
+## eSIM.addProfile
 
 addProfile\(profile: DownloadableProfile\): Promise\<boolean\>
 
@@ -72,7 +72,7 @@ Launches the download page for the user to add a single profile. This API uses a
 
 | Name| Type                                           | Mandatory| Description                                  |
 | ------ |-----------------------------------------------| ---- | -------------------------------------- |
-| profile | [DownloadableProfile](#downloadableprofile18) | Yes  | Profile that can be downloaded.|
+| profile | [DownloadableProfile](#downloadableprofile) | Yes  | Profile that can be downloaded.|
 
 **Returns**
 
@@ -116,7 +116,7 @@ eSIM.addProfile(profile).then(() => {
 });
 ```
 
-## DownloadableProfile<sup>18+</sup>
+## DownloadableProfile
 
 Defines a downloadable profile.
 

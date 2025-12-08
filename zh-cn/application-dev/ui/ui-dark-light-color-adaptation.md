@@ -282,7 +282,147 @@ onCreate(): void {
 
 2. 应用的自定义行为需要正确适配。
 
-   优化深浅色模式切换开销后，深浅色切换不会全量重新执行前端代码和属性设置，仅会更新、重绘必要的属性，如果开发者之前在属性设置中通过函数适配深浅色变更将不会生效，这种情况需要开启优化流程前进行正确适配，可参考[深浅色模式的使用建议与注意事项](#深浅色模式的使用建议与注意事项)进行适配。
+   开启深浅色切换优化选项后，深浅色切换不会全量重新执行前端代码和属性设置，仅会更新、重绘必要的属性，如果开发者之前在属性设置中通过函数适配深浅色变更将不会生效，这种情况需要开启优化流程前进行正确适配，可参考[深浅色模式的使用建议与注意事项](#深浅色模式的使用建议与注意事项)进行适配。以下是三个典型的适配场景：
+
+  - 根据实时读取的深浅色模式返回不同资源值。
+
+    开启深浅色切换优化选项后，可以采用[AbilityStage的监听回调](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)或[Ability的监听回调](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)方式，主动监听系统深浅色模式变化，更新对应文本的文字颜色，示例代码如下：
+
+      ```ts
+      // EntryAbility.ets
+      import { Configuration, UIAbility } from '@kit.AbilityKit';
+
+      export default class EntryAbility extends UIAbility {
+
+        onConfigurationUpdate(newConfig: Configuration): void {
+          AppStorage.setOrCreate('colorMode', newConfig.colorMode);
+        }
+      }
+      ```
+      ```ts
+      // Index.ets
+      import { ConfigurationConstant } from '@kit.AbilityKit';
+
+      @Entry
+      @Component
+      struct MainPage {
+        @StorageLink('colorMode') @Watch('colorModeChange') colorMode: ConfigurationConstant.ColorMode = ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET;
+        @State textColor: Resource = $r("app.color.color_light");
+
+        colorModeChange() {
+          if (this.colorMode === ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT) {
+            this.textColor = $r("app.color.color_light")
+          } else {
+            this.textColor = $r("app.color.color_night")
+          }
+        }
+
+        build() {
+          Column() {
+            Text('fontColor')
+              .fontColor(this.textColor)
+          }
+        }
+      }
+      ```
+
+  - 根据判断自定义主题模式返回不同资源值。
+
+    开启深浅色切换优化选项后，需要将Text中文本内容和文本颜色与状态变量进行绑定，在接收到深浅色切换事件后通过状态变量变更实现组件属性的变更，示例代码如下：
+
+      ```ts
+      // ResourceTheme.ets
+      export enum ThemeMode {
+        mode1 = 0,
+        mode2
+      }
+
+      export class ResourceTheme {
+        fontColor: ResourceColor = this.getColor();
+        themeMode: ThemeMode = ThemeMode.mode1;
+
+        setThemeMode(mode: ThemeMode) {
+          this.themeMode = mode
+        }
+        getThemeMode(): ThemeMode {
+          return this.themeMode
+        }
+        getColor(): ResourceColor {
+          if (this.themeMode === ThemeMode.mode1) {
+            return $r("app.color.color_light")
+          } else {
+            return $r("app.color.color_night")
+          }
+        }
+      }
+      ```
+      ```ts
+      // Index.ets
+      import { ConfigurationConstant } from '@kit.AbilityKit';
+      import { ResourceTheme, ThemeMode } from './ResourceTheme';
+
+      @Entry
+      @Component
+      struct MainPage {
+        @StorageLink('colorMode') @Watch('colorModeChange') colorMode: ConfigurationConstant.ColorMode = ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET;
+        resourceTheme = new ResourceTheme();
+        @State textColor: ResourceColor = this.resourceTheme.getColor();
+        @State textContent: string = this.resourceTheme.getThemeMode().toString();
+
+        colorModeChange() {
+          if (this.colorMode === ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT) {
+            this.resourceTheme.setThemeMode(ThemeMode.mode1)
+          } else {
+            this.resourceTheme.setThemeMode(ThemeMode.mode2)
+          }
+          this.textContent = this.resourceTheme.getThemeMode().toString()
+          this.textColor = this.resourceTheme.getColor()
+        }
+
+        build() {
+          Column() {
+            Text('ThemeMode is ' + this.textContent)
+              .fontColor(this.textColor)
+          }
+        }
+      }
+      ```
+
+  - 根据读取的成员变量值返回不同资源值。
+
+    开启深浅色切换优化选项后，需要将文本文字颜色属性与状态变量绑定。在深浅色切换时通过回调函数更新状态变量，从而实现仅在下一次深浅色切换时发生属性变更的效果，示例代码如下：
+
+      ```ts
+      // Index.ets
+      import { ConfigurationConstant } from '@kit.AbilityKit';
+
+      @Entry
+      @Component
+      struct MainPage {
+        mode: number = 0;
+        @StorageLink('colorMode') @Watch('colorModeChange') colorMode: ConfigurationConstant.ColorMode = ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET;
+        @State textColor: Resource = $r("app.color.color_light");
+
+        colorModeChange() {
+          if (this.mode % 2 === 0) {
+            return $r("app.color.color_light")
+          } else {
+            return $r("app.color.color_night")
+          }
+        }
+
+        build() {
+          Column() {
+            Button('change mode')
+              .onClick((event: ClickEvent) => {
+                this.mode++
+              })
+            Text('fontColor')
+              .fontColor(this.textColor)
+          }
+        }
+      }
+      ```
 
 ## 利用反色能力快速适配深色模式
 
@@ -304,7 +444,7 @@ onCreate(): void {
     >
     > 1.调用OH_ArkUI_SetForceDarkConfig前，需确保已加载过[OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_querymoduleinterfacebyname)。
     >
-    > 2.OH_ArkUI_SetForceDarkConfig接口一定要在节点创建前的UI线程中调用。
+    > 2.OH_ArkUI_SetForceDarkConfig接口一定要在节点创建前的UI线程中调用。**页面创建完成后，不支持通过该接口动态修改应用的反色能力生效状态。**
     >
     > 3.OH_ArkUI_SetForceDarkConfig接口仅支持进程级生效，暂不支持不同实例使用不同的反色算法。
     >

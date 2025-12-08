@@ -100,10 +100,10 @@ onClick(event: (event: ClickEvent) => void): T
 
 | 名称            | 类型                         | 只读 | 可选        | 说明                                                     |
 | ------------------- | ------------------------- | ------ | -------- | -------------------------------------------------------- |
-| x                   | number                               | 否 | 否 | 点击位置相对于被点击元素左边缘的X坐标。<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
-| y                   | number                               | 否 | 否 | 点击位置相对于被点击元素原始区域左上角的Y坐标。<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。          |
-| windowX<sup>10+</sup> | number                             | 否 | 否 | 点击位置相对于应用窗口左上角的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| windowY<sup>10+</sup> | number                             | 否 | 否 | 点击位置相对于应用窗口左上角的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| x                   | number                               | 否 | 否 | 点击位置相对于被点击元素左边缘的X坐标，onClick的[distanceThreshold](ts-universal-events-click.md#onclick12)设置后，点击位置为抬手点。触发事件的是键盘或手柄时，点击位置为被点击元素的中心点。<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
+| y                   | number                               | 否 | 否 | 点击位置相对于被点击元素原始区域左上角的Y坐标，onClick的distanceThreshold设置后，点击位置为抬手点。触发事件的是键盘或手柄时，点击位置为被点击元素的中心点。<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。          |
+| windowX<sup>10+</sup> | number                             | 否 | 否 | 点击位置相对于应用窗口左上角的X坐标，onClick的distanceThreshold设置后，点击位置为抬手点。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| windowY<sup>10+</sup> | number                             | 否 | 否 | 点击位置相对于应用窗口左上角的Y坐标，onClick的distanceThreshold设置后，点击位置为抬手点。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | displayX<sup>10+</sup> | number                            | 否 | 否 | 点击位置相对于应用屏幕左上角的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | displayY<sup>10+</sup> | number                            | 否 | 否 | 点击位置相对于应用屏幕左上角的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | screenX<sup>(deprecated)</sup> | number                    | 否 | 否 | 点击位置相对于应用窗口左上角的X坐标。<br>单位：vp<br/>从API version 10开始不再维护，建议使用windowX代替。 |
@@ -148,26 +148,18 @@ struct ClickExample {
   build() {
     Column() {
       Row({ space: 20 }) {
-        Button('Click').width(100).height(40).id('click1')
+        Button('Click1').width(100).height(40).id('click1')
           .onClick((event?: ClickEvent) => {
-            if(event){
-              this.text = 'Click Point:' + '\n  windowX:' + event.windowX + '\n  windowY:' + event.windowY
-                + '\n  x:' + event.x + '\n  y:' + event.y + '\ntarget:' + '\n  component globalPos:('
-                + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + ')\n  width:'
-                + event.target.area.width + '\n  height:' + event.target.area.height + '\n  id:'+ event.target.id
-                + '\ntargetDisplayId:' + event.targetDisplayId + '\ntimestamp' + event.timestamp;
-              console.info('sourceType:' + event.source);
+            if (event) {
+              this.text =
+                `Click Point:\n  windowX:${event.windowX}\n  windowY:${event.windowY}\n  x:${event.x}\n  y:${event.y}\n target:\n  component globalPos:(${event.target.area.globalPosition.x},${event.target.area.globalPosition.y})\n  width:${event.target.area.width}\n  height:${event.target.area.height}\n  id:${event.target.id}\ntargetDisplayId:${event.targetDisplayId}\ntimestamp${event.timestamp}`
             }
           }, 20)
-        Button('Click').width(200).height(50).id('click2')
+        Button('Click2').width(200).height(50).id('click2')
           .onClick((event?: ClickEvent) => {
-            if(event){
-              this.text = 'Click Point:' + '\n  windowX:' + event.windowX + '\n  windowY:' + event.windowY
-                + '\n  x:' + event.x + '\n  y:' + event.y + '\ntarget:' + '\n  component globalPos:('
-                + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + ')\n  width:'
-                + event.target.area.width + '\n  height:' + event.target.area.height + '\n  id:'+ event.target.id
-                + '\ntargetDisplayId:' + event.targetDisplayId + '\ntimestamp' + event.timestamp;
-              console.info('sourceType:' + event.source);
+            if (event) {
+              this.text =
+                `Click Point:\n  windowX:${event.windowX}\n  windowY:${event.windowY}\n  x:${event.x}\n  y:${event.y}\n target:\n  component globalPos:(${event.target.area.globalPosition.x},${event.target.area.globalPosition.y})\n  width:${event.target.area.width}\n  height:${event.target.area.height}\n  id:${event.target.id}\ntargetDisplayId:${event.targetDisplayId}\ntimestamp${event.timestamp}`
             }
           }, 20)
       }.margin(20)
@@ -177,4 +169,5 @@ struct ClickExample {
   }
 }
 ```
+
 ![click](figures/click.gif)

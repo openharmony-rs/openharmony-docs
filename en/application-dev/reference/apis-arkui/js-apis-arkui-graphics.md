@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Graphics** module provides APIs for defining attributes of a custom node.
 
@@ -26,7 +26,7 @@ Returns the width and height of the component. The default unit is vp, but APIs 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Read Only| Optional| Description                  |
+| Name  | Type  | Read-Only| Optional| Description                  |
 | ------ | ------ | ---- | ---- | ---------------------- |
 | width  | number | No  | No  | Width of the component.<br>Unit: vp.<br>Value range: [0, +∞).|
 | height | number | No  | No  | Height of the component.<br>Unit: vp.<br>Value range: [0, +∞).|
@@ -67,7 +67,7 @@ Sets or returns the layout size and position of the component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Read Only| Optional| Description                       |
+| Name  | Type  | Read-Only| Optional| Description                       |
 | ------ | ------ | ---- | ---- | --------------------------- |
 | x      | number | No  | No  | Horizontal position.<br>Unit: vp.<br>Value range: (-∞, +∞).|
 | y      | number | No  | No  | Vertical position.<br>Unit: vp.<br>Value range: (-∞, +∞).|
@@ -176,7 +176,7 @@ Defines a vector that contains the x and y coordinate values.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type  | Read Only| Optional| Description             |
+| Name| Type  | Read-Only| Optional| Description             |
 | ---- | ------ | ---- | ---- | ----------------- |
 | x    | number | No  | No  | X coordinate value of the vector.<br>Value range: (-∞, +∞).|
 | y    | number | No  | No  | Y coordinate value of the vector.<br>Value range: (-∞, +∞).|
@@ -189,7 +189,7 @@ Represents a vector including three values: x, y, and z.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type  | Read Only| Optional| Description               |
+| Name| Type  | Read-Only| Optional| Description               |
 | ---- | ------ | ---- | ---- | ------------------- |
 | x    | number | No  | No  | Rotation angle along the x-axis.<br>Value range: (-∞, +∞).|
 | y    | number | No  | No  | Rotation angle along the y-axis.<br>Value range: (-∞, +∞).|
@@ -203,7 +203,7 @@ Represents a vector of the T type that contains two values: x and y.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type  | Read Only| Optional| Description             |
+| Name| Type  | Read-Only| Optional| Description             |
 | ---- | ------ | ---- | ---- | ----------------- |
 | x    | T | No | No | X coordinate value of the vector.|
 | y    | T | No | No | Y coordinate value of the vector.|
@@ -315,7 +315,7 @@ Describes the edges.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type| Read Only| Optional| Description            |
+| Name  | Type| Read-Only| Optional| Description            |
 | ------ | ---- | ---- | ---- | ---------------- |
 | left   | T    | No  | No  | Left edge.|
 | top    | T    | No  | No  | Top edge.|
@@ -346,7 +346,7 @@ Sets the width and height attributes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type| Read Only| Optional| Description            |
+| Name  | Type| Read-Only| Optional| Description            |
 | ------ | ---- | ---- | ---- | ---------------- |
 | width   | T    | No  | No  | Width.|
 | height    | T    | No  | No  | Height.|
@@ -374,7 +374,7 @@ Defines the length properties. When the length unit is PERCENT, the value **1** 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type| Read Only| Optional| Description            |
+| Name  | Type| Read-Only| Optional| Description            |
 | ------------ | ---------------------------------------- | ---- | ---- | ------ |
 | value       | number | No  | No  | Value of the length property.  |
 | unit | [LengthUnit](#lengthunit12)                                   | No  | No  | Unit of the length property. The default value is VP.|
@@ -393,7 +393,7 @@ A constructor used to create a **LengthMetrics** instance. If the **unit** param
 
 | Name| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | Yes  | Value of the length property.<br>Value range: [0, +∞).|
+| value   | number | Yes  | Value of the length property.<br>Value range: (-∞, +∞).|
 | unit   | [LengthUnit](#lengthunit12) | No  | Unit of the length property.|
 
 ### px<sup>12+</sup>
@@ -689,7 +689,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 blendColor(overlayColor: ColorMetrics): ColorMetrics
 
-Adds a specified color (overlayColor) to the top of the current color and returns the new color after blending.
+Blends a specified color (**overlayColor**) with the current color and returns the resulting color.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -699,17 +699,17 @@ Adds a specified color (overlayColor) to the top of the current color and return
 
 | Name| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| overlayColor | [ColorMetrics](#colormetrics12) | Yes| Color object to be overlaid. The alpha attribute determines the overlay strength. 1.0 indicates that the color is completely covered, and 0.0 indicates that the color is completely transparent. The blending result is the original color.|
+| overlayColor | [ColorMetrics](#colormetrics12) | Yes| Color to overlay. The alpha value determines the blending strength: **1.0** indicates complete opacity (fully covers the base color), and **0.0** indicates complete transparency (returns the original color).|
 
 **Return value**
 
 | Type         | Description            |
 | ------------- | ---------------- |
-| [ColorMetrics](#colormetrics12) |  New color object. The red, green, blue, and alpha channels of the new color object are the result values after blending the current color and overlay color.|
+| [ColorMetrics](#colormetrics12) |  New color object with red, green, blue, and alpha channels representing the blended result of the current color and overlay color.|
 
-Blending formula:
+**Blending formula**:
 
-The transparency after blending is completely opaque. The RGB values are calculated as follows:
+The resulting alpha is fully opaque. The RGB values are calculated using the following formula:
 
 result_rgb = overlay_rgb*(overlay_alpha) + (1 - overlay_alpha) * base_rgb
 
@@ -868,7 +868,7 @@ Describes the four corners.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       | Type| Read Only| Optional| Description                  |
+| Name       | Type| Read-Only| Optional| Description                  |
 | ----------- | ---- | ---- | ---- | ---------------------- |
 | topLeft     | T    | No  | No  | Radius of the upper left corner.  |
 | topRight    | T    | No  | No  | Radius of the upper right corner.|
@@ -925,7 +925,7 @@ Describes a rectangle with rounded corners.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                         | Read Only| Optional| Description            |
+| Name   | Type                         | Read-Only| Optional| Description            |
 | ------- | ----------------------------- | ---- | ---- | ---------------- |
 | rect    | [Rect](#rect12)                 | No  | No  | Attributes of the rectangle.|
 | corners | [CornerRadius](#cornerradius12) | No  | No  | Attributes of rounded corners.|
@@ -938,10 +938,10 @@ Describes a circle.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type  | Read Only| Optional| Description                     |
+| Name   | Type  | Read-Only| Optional| Description                     |
 | ------- | ------ | ---- | ---- | ------------------------- |
-| centerX | number | No  | No  | X coordinate of the center of the circle, in px.|
-| centerY | number | No  | No  | Y coordinate of the center of the circle, in px.|
+| centerX | number | No  | No  | X-coordinate of the center of the circle, in px.|
+| centerY | number | No  | No  | Y-coordinate of the center of the circle, in px.|
 | radius  | number | No  | No  | Radius of the circle, in px.<br> Value range: [0, +∞).  |
 
 ## CommandPath<sup>12+</sup>
@@ -952,9 +952,9 @@ Describes the command for drawing a path.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                                                        | Type  | Read Only| Optional| Description                                                        |
+| Name                                                        | Type  | Read-Only| Optional| Description                                                        |
 | ------------------------------------------------------------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [commands](./arkui-ts/ts-drawing-components-path.md#commands) | string | No  | No  | Commands for drawing a path. For details about how to convert the pixel unit, see [Pixel Unit Conversion](./arkui-ts/ts-pixel-units.md#pixel-unit-conversion).<br>Unit: px|
+| [commands](./arkui-ts/ts-drawing-components-path.md#commands) | string | No  | No  | Commands for drawing a path. For details about how to convert pixel units, see [Pixel Units](./arkui-ts/ts-pixel-units.md).<br>Unit: px|
 
 ## ShapeMask<sup>12+</sup>
 
@@ -966,7 +966,7 @@ Describes the shape mask.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name           | Type   | Read Only| Optional| Description                                               |
+| Name           | Type   | Read-Only| Optional| Description                                               |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
 | fillColor       | number | No  | No  | Describes the fill color of the mask, in ARGB format. The default value is **0XFF000000**.<br> Blended using [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode). |
 | strokeColor     | number | No  | No  | Sets the stroke color for the mask, in ARGB format. The default value is **0XFF000000**.<br> Blended using [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode).|

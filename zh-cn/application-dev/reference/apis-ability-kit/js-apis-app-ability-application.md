@@ -39,6 +39,10 @@ createModuleContext(context: Context, moduleName: string): Promise\<Context>
 
 创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包应用资源](../../quick-start/resource-categories-and-access.md#跨haphsp包应用资源)。使用Promise异步回调。
 
+> **说明：**
+>
+> 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContext接口创建多个Context实例，以免影响用户体验。
+
 **原子化服务API**：从API version 12开始，该接口支持在元服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -417,7 +421,7 @@ getAppPreloadType(): AppPreloadType
 
 > **说明：**
 >
-> - 只有当进程创建完成并首次执行[AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate)时，调用该接口，才可以返回真实的预加载类型。
+> - 只有在进程首次执行[AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate)完成之前调用该接口，才可以返回真实的预加载类型。
 > - AbilityStage创建完成后，应用的预加载数据将被清除，调用该接口将返回UNSPECIFIED，无法获取到真实的预加载类型。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -431,10 +435,10 @@ getAppPreloadType(): AppPreloadType
 **示例：**
 
 ```ts
-import { AbilityConstant, UIAbility, application, Want } from '@kit.AbilityKit';
+import { AbilityStage, application } from '@kit.AbilityKit';
 
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+export default class MyAbilityStage extends AbilityStage{
+  onCreate() {
     let appPreloadType = application.getAppPreloadType();
   }
 }

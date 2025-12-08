@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} Rdb_ChangeInfo
+```
+
 ## Overview
 
 Defines a struct for the details about the device-cloud sync process.

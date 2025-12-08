@@ -6,7 +6,7 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct {...} Rdb_DistributedConfig
 ```
 
@@ -27,5 +27,5 @@ typedef struct {...} Rdb_DistributedConfig
 | 名称            | 描述                                          |
 | --------------- | --------------------------------------------- |
 | int version     | 用于唯一标识Rdb_DistributedConfig结构的版本。 |
-| bool isAutoSync | 表示该表是否支持自动同步。                    |
+| bool isAutoSync | 表示该表是否支持自动同步。true表示该表支持自动同步和手动同步，false表示该表只支持手动同步，不支持自动同步。 |
 

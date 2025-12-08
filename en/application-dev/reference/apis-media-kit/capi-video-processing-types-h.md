@@ -100,8 +100,8 @@ Enumerates the style modes available for video metadata generation. For details 
 
 | Enum Item| Description|
 | -- | -- |
-| VIDEO_METADATA_GENERATOR_BRIGHT_MODE = 0 | Prioritizes brightness optimization in the generated metadata.|
-| VIDEO_METADATA_GENERATOR_CONTRAST_MODE = 1 | Prioritizes contrast optimization in the generated metadata.|
+| VIDEO_METADATA_GENERATOR_CONTRAST_MODE = 0 | Prioritizes contrast optimization in the generated metadata.|
+| VIDEO_METADATA_GENERATOR_BRIGHT_MODE = 1 | Prioritizes brightness optimization in the generated metadata.|
 
 **See also**
 

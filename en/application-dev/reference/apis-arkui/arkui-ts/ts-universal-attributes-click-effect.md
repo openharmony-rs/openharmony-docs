@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can set the click feedback effect for a component to define its visual response when it is clicked.
 
@@ -83,7 +83,7 @@ struct ToggleExample {
       Text('type: Switch').fontSize(12).fontColor(0xcccccc).width('90%')
       Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
         Toggle({ type: ToggleType.Switch, isOn: false })
-          .clickEffect({level:ClickEffectLevel.LIGHT})
+          .clickEffect({ level: ClickEffectLevel.LIGHT })
           .selectedColor('#007DFF')
           .switchPointColor('#FFFFFF')
           .onChange((isOn: boolean) => {
@@ -91,7 +91,7 @@ struct ToggleExample {
           })
 
         Toggle({ type: ToggleType.Switch, isOn: true })
-          .clickEffect({level:ClickEffectLevel.LIGHT, scale: 0.5})
+          .clickEffect({ level: ClickEffectLevel.LIGHT, scale: 0.5 })
           .selectedColor('#007DFF')
           .switchPointColor('#FFFFFF')
           .onChange((isOn: boolean) => {
@@ -102,7 +102,7 @@ struct ToggleExample {
       Text('type: Checkbox').fontSize(12).fontColor(0xcccccc).width('90%')
       Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
         Toggle({ type: ToggleType.Checkbox, isOn: false })
-          .clickEffect({level:ClickEffectLevel.MIDDLE})
+          .clickEffect({ level: ClickEffectLevel.MIDDLE })
           .size({ width: 20, height: 20 })
           .selectedColor('#007DFF')
           .onChange((isOn: boolean) => {
@@ -110,7 +110,7 @@ struct ToggleExample {
           })
 
         Toggle({ type: ToggleType.Checkbox, isOn: true })
-          .clickEffect({level:ClickEffectLevel.MIDDLE, scale: 0.5})
+          .clickEffect({ level: ClickEffectLevel.MIDDLE, scale: 0.5 })
           .size({ width: 20, height: 20 })
           .selectedColor('#007DFF')
           .onChange((isOn: boolean) => {
@@ -123,7 +123,7 @@ struct ToggleExample {
         Toggle({ type: ToggleType.Button, isOn: false }) {
           Text('status button').fontColor('#182431').fontSize(12)
         }.width(106)
-        .clickEffect({level:ClickEffectLevel.HEAVY})
+        .clickEffect({ level: ClickEffectLevel.HEAVY })
         .selectedColor('rgba(0,125,255,0.20)')
         .onChange((isOn: boolean) => {
           console.info('Component status:' + isOn);
@@ -132,7 +132,7 @@ struct ToggleExample {
         Toggle({ type: ToggleType.Button, isOn: true }) {
           Text('status button').fontColor('#182431').fontSize(12)
         }.width(106)
-        .clickEffect({level:ClickEffectLevel.HEAVY, scale: 0.5})
+        .clickEffect({ level: ClickEffectLevel.HEAVY, scale: 0.5 })
         .selectedColor('rgba(0,125,255,0.20)')
         .onChange((isOn: boolean) => {
           console.info('Component status:' + isOn);

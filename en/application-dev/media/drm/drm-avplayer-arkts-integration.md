@@ -1,11 +1,11 @@
-# Using AVPlayer to Play DRM Content (ArkTS)
+# DRM Playback with AVPlayer (ArkTS)
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qin_wei_jie-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
-You can call the ArkTS APIs of DRM Kit and Media Kit to implement the playback of DRM-protected content using the AVPlayer.
+To play DRM-protected content using AVPlayer, you can use the ArkTS APIs provided by DRM Kit and Media Kit.
 
 ## How to Develop
 
@@ -16,7 +16,7 @@ You can call the ArkTS APIs of DRM Kit and Media Kit to implement the playback o
    import { media } from '@kit.MediaKit'
    ```
 
-2. Import the BusinessError module to capture error codes from the DRM Kit APIs.
+2. Import the BusinessError module to handle error codes from DRM Kit APIs.
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit'
@@ -71,7 +71,7 @@ You can call the ArkTS APIs of DRM Kit and Media Kit to implement the playback o
    }]
    mediaKeySession.generateMediaKeyRequest("video/mp4", initData, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionsData).then(async (licenseRequest) => {
      console.info("generateMediaKeyRequest success", licenseRequest.mediaKeyRequestType, licenseRequest.data, licenseRequest.defaultURL);
-     // Send licenseRequest.data returned by the media key request to the DRM service through a network request to obtain a media key response and process the response.
+     // Send licenseRequest.data returned by the media key request to the DRM service through a network request and process the response.
      let licenseResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
      mediaKeySession.processMediaKeyResponse(licenseResponse).then((mediaKeyId: Uint8Array) => {
        console.info("processMediaKeyResponse success");

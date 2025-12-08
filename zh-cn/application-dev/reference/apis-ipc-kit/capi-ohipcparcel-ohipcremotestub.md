@@ -6,6 +6,10 @@
 <!--Tester: @maxiaorong-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct OHIPCRemoteStub OHIPCRemoteStub
+```
+
 ## 概述
 
 IPC远端服务对象。

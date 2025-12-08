@@ -100,7 +100,7 @@
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_G711MU | G711MU音频编解码器的MIME类型。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_ALAC | ALAC（Apple Lossless Audio Codec）音频解码器的MIME类型。<br>**起始版本：** 22 |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_AC3 | AC3（Dolby Audio Coding 3）音频解码器的MIME类型。<br>**起始版本：** 22 |
-| const char * OH_AVCODEC_MIMETYPE_AUDIO_EAC3 | EAC（Enhanced AC-3）3音频解码器的MIME类型。<br>**起始版本：** 22 |
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_EAC3 | EAC3（Enhanced AC-3）音频解码器的MIME类型。<br>**起始版本：** 22 |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_WMAV1 | WMA（Windows Media Audio）V1音频解码器的MIME类型。<br>**起始版本：** 22 |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_WMAV2 | WMA（Windows Media Audio）V2音频解码器的MIME类型。<br>**起始版本：** 22 |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO | WMA（Windows Media Audio）Pro音频解码器的MIME类型。<br>**起始版本：** 22 |
@@ -208,13 +208,13 @@
 | const char * OH_MD_KEY_TRACK_DESCRIPTION | 媒体文件辅助轨描述信息，值类型为string。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_ENABLE_SYNC_MODE | 使能音视频编解码同步模式的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。该键是可选。<br>如果使能，需要注意：<br> 1. 编解码器不可设置回调函数。<br> 2. 必须使用缓冲区查询接口替代回调。<br> 3. 只能在Configure阶段使用。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_DECODER_BLANK_FRAME_ON_SHUTDOWN | 用于指定视频解码器关闭时是否输出空白帧的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。该键是可选的且仅用于视频解码Surface模式。<br> 使能后，视频解码器在停止或释放时将输出空白帧（通常为黑色），以确保显示设备平滑过渡到无信号状态。该机制可避免因解码器突然终止导致的显示残留或画面闪烁问题。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_VIDEO_NATIVE_BUFFER_FORMAT | 用于查询视频编解码中native buffer像素格式的键，值类型为int32_t。<br> 具体取值请参见[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_format)中定义的像素格式。该键主要用于以下两种场景：<br> 1. 视频解码：调用[OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription)接口或[OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged)，从返回的OH_AVFormat对象中获取当前输出格式。<br> 2. 视频编码：调用[OH_VideoEncoder_GetInputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription)接口，从返回的OH_AVFormat对象中获取当前输入格式。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_VIDEO_NATIVE_BUFFER_FORMAT | 用于查询视频编解码中native buffer像素格式的键，值类型为int32_t。<br> 具体取值请参见[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)中定义的像素格式。该键主要用于以下两种场景：<br> 1. 视频解码：调用[OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription)接口或[OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged)，从返回的OH_AVFormat对象中获取当前输出格式。<br> 2. 视频编码：调用[OH_VideoEncoder_GetInputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription)接口，从返回的OH_AVFormat对象中获取当前输入格式。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 
 ## 枚举类型说明
 
 ### OH_MediaType
 
-```
+```c
 enum OH_MediaType
 ```
 
@@ -236,7 +236,7 @@ enum OH_MediaType
 
 ### OH_AACProfile
 
-```
+```c
 enum OH_AACProfile
 ```
 
@@ -256,7 +256,7 @@ AAC档次。<!--Del--><br/>（AAC_PROFILE_HE、AAC_PROFILE_HE_V2暂未开放）<
 
 ### OH_AVCProfile
 
-```
+```c
 enum OH_AVCProfile
 ```
 
@@ -276,7 +276,7 @@ AVC档次。
 
 ### OH_HEVCProfile
 
-```
+```c
 enum OH_HEVCProfile
 ```
 
@@ -298,7 +298,7 @@ HEVC档次。
 
 ### OH_VVCProfile
 
-```
+```c
 enum OH_VVCProfile
 ```
 
@@ -330,7 +330,7 @@ VVC档次。
 
 ### OH_MPEG2Profile
 
-```
+```c
 enum OH_MPEG2Profile
 ```
 
@@ -353,7 +353,7 @@ MPEG2档次。
 
 ### OH_MPEG4Profile
 
-```
+```c
 enum OH_MPEG4Profile
 ```
 
@@ -385,7 +385,7 @@ MPEG4档次。
 
 ### OH_H263Profile
 
-```
+```c
 enum OH_H263Profile
 ```
 
@@ -404,7 +404,7 @@ H.263档次。
 
 ### OH_AVOutputFormat
 
-```
+```c
 enum OH_AVOutputFormat
 ```
 
@@ -429,7 +429,7 @@ enum OH_AVOutputFormat
 
 ### OH_AVSeekMode
 
-```
+```c
 enum OH_AVSeekMode
 ```
 
@@ -449,7 +449,7 @@ enum OH_AVSeekMode
 
 ### OH_ScalingMode
 
-```
+```c
 enum OH_ScalingMode
 ```
 
@@ -472,7 +472,7 @@ enum OH_ScalingMode
 
 ### OH_BitsPerSample
 
-```
+```c
 enum OH_BitsPerSample
 ```
 
@@ -500,7 +500,7 @@ enum OH_BitsPerSample
 
 ### OH_ColorPrimary
 
-```
+```c
 enum OH_ColorPrimary
 ```
 
@@ -528,7 +528,7 @@ enum OH_ColorPrimary
 
 ### OH_TransferCharacteristic
 
-```
+```c
 enum OH_TransferCharacteristic
 ```
 
@@ -562,7 +562,7 @@ enum OH_TransferCharacteristic
 
 ### OH_MatrixCoefficient
 
-```
+```c
 enum OH_MatrixCoefficient
 ```
 
@@ -593,7 +593,7 @@ enum OH_MatrixCoefficient
 
 ### OH_AVCLevel
 
-```
+```c
 enum OH_AVCLevel
 ```
 
@@ -630,7 +630,7 @@ AVC级别。
 
 ### OH_HEVCLevel
 
-```
+```c
 enum OH_HEVCLevel
 ```
 
@@ -660,7 +660,7 @@ HEVC级别。
 
 ### OH_VVCLevel
 
-```
+```c
 enum OH_VVCLevel
 ```
 
@@ -692,7 +692,7 @@ VVC级别。
 
 ### OH_MPEG2Level
 
-```
+```c
 enum OH_MPEG2Level
 ```
 
@@ -713,7 +713,7 @@ MPEG2级别。
 
 ### OH_MPEG4Level
 
-```
+```c
 enum OH_MPEG4Level
 ```
 
@@ -740,7 +740,7 @@ MPEG4级别。
 
 ### OH_H263Level
 
-```
+```c
 enum OH_H263Level
 ```
 
@@ -765,7 +765,7 @@ H.263级别。
 
 ### OH_TemporalGopReferenceMode
 
-```
+```c
 enum OH_TemporalGopReferenceMode
 ```
 
@@ -785,7 +785,7 @@ enum OH_TemporalGopReferenceMode
 
 ### OH_BitrateMode
 
-```
+```c
 enum OH_BitrateMode
 ```
 
@@ -809,7 +809,7 @@ enum OH_BitrateMode
 
 ### OH_AVCodecOnError()
 
-```
+```c
 typedef void (*OH_AVCodecOnError)(OH_AVCodec *codec, int32_t errorCode, void *userData)
 ```
 
@@ -838,7 +838,7 @@ typedef void (*OH_AVCodecOnError)(OH_AVCodec *codec, int32_t errorCode, void *us
 
 ### OH_AVCodecOnStreamChanged()
 
-```
+```c
 typedef void (*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
 ```
 
@@ -860,7 +860,7 @@ typedef void (*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format
 
 ### OH_AVCodecOnNeedInputData()
 
-```
+```c
 typedef void (*OH_AVCodecOnNeedInputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, void *userData)
 ```
 
@@ -887,7 +887,7 @@ typedef void (*OH_AVCodecOnNeedInputData)(OH_AVCodec *codec, uint32_t index, OH_
 
 ### OH_AVCodecOnNewOutputData()
 
-```
+```c
 typedef void (*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, OH_AVCodecBufferAttr *attr, void *userData)
 ```
 
@@ -915,7 +915,7 @@ typedef void (*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_
 
 ### OH_AVCodecOnNeedInputBuffer()
 
-```
+```c
 typedef void (*OH_AVCodecOnNeedInputBuffer)(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
 ```
 
@@ -938,7 +938,7 @@ typedef void (*OH_AVCodecOnNeedInputBuffer)(OH_AVCodec *codec, uint32_t index, O
 
 ### OH_AVCodecOnNewOutputBuffer()
 
-```
+```c
 typedef void (*OH_AVCodecOnNewOutputBuffer)(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
 ```
 
@@ -961,7 +961,7 @@ typedef void (*OH_AVCodecOnNewOutputBuffer)(OH_AVCodec *codec, uint32_t index, O
 
 ### OH_AVDataSourceReadAt()
 
-```
+```c
 typedef int32_t (*OH_AVDataSourceReadAt)(OH_AVBuffer *data, int32_t length, int64_t pos)
 ```
 
@@ -989,7 +989,7 @@ typedef int32_t (*OH_AVDataSourceReadAt)(OH_AVBuffer *data, int32_t length, int6
 
 ### OH_AVDataSourceReadAtExt()
 
-```
+```c
 typedef int32_t (*OH_AVDataSourceReadAtExt)(OH_AVBuffer *data, int32_t length, int64_t pos, void *userData)
 ```
 

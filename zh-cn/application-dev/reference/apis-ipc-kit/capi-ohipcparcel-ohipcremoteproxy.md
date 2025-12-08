@@ -6,6 +6,10 @@
 <!--Tester: @maxiaorong-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct OHIPCRemoteProxy OHIPCRemoteProxy
+```
+
 ## 概述
 
 IPC远端代理对象。

@@ -6,6 +6,10 @@
 <!--Tester: @Q-haosu-->	
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct {...} Print_PrintAttributes
+```
+
 ## Overview
 
 Defines the print attributes.

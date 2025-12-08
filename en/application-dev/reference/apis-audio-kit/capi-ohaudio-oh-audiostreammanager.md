@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioStreamManager OH_AudioStreamManager
+```
+
 ## Overview
 
 The struct describes an audio stream manager, which is used to manage audio streams.

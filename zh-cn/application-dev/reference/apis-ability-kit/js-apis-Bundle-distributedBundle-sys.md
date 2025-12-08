@@ -18,7 +18,7 @@
 
 ## 导入模块
 
-```
+```ts
 import distributedBundle from '@ohos.distributedBundle';
 ```
 

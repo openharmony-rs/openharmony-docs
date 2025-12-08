@@ -7,7 +7,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-```
+```c
 typedef struct AbilityBase_Want AbilityBase_Want
 ```
 

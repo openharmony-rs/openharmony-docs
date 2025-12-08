@@ -26,7 +26,7 @@ LocalStorage还提供了API接口，可以让开发者通过接口在自定义�
 
 LocalStorage是ArkTS为构建页面级别状态变量提供存储的内存内的“数据库”。
 
-- 应用程序可以创建多个LocalStorage实例，LocalStorage实例可以在页面内共享，也可以通过getSharedLocalStorage接口，实现跨页面、跨UIAbility实例共享。
+- 应用程序可以创建多个LocalStorage实例，LocalStorage实例可以在页面内共享，也可以通过[getSharedLocalStorage](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)接口，实现跨页面、跨[UIAbility](../../application-models/uiability-overview.md)实例共享。
 
 - 组件树的根节点，即被[\@Entry](../../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entry)装饰的[\@Component](./arkts-create-custom-components.md#component)，可以被分配一个LocalStorage实例，此组件的所有子组件实例将自动获得对该LocalStorage实例的访问权限。
 
@@ -199,7 +199,8 @@ LocalStorage根据与\@Component装饰的组件的同步类型不同，提供了
     @LocalStorageLink('PropA') localStorageLink: number = 2;
     ```
 
-2. \@LocalStorageProp与\@LocalStorageLink不支持装饰Function类型的变量，框架会抛出运行时错误。
+2. \@LocalStorageProp与\@LocalStorageLink不支持装饰Function类型的变量，API version 23之前，框架会抛出运行时错误。
+从API version 23开始，添加对\@LocalStorageProp与\@LocalStorageLink装饰Function类型变量的校验，编译期会报错。
 
 3. LocalStorage创建后，命名属性的类型不可更改。后续调用Set时必须使用相同类型的值。
 
@@ -317,6 +318,7 @@ struct Parent {
 // 创建新实例并使用给定对象初始化
 let paraOneLocal: Record<string, number> = { 'PropA': 47 };
 let storageOneLocal: LocalStorage = new LocalStorage(paraOneLocal);
+
 // 使LocalStorage可从@Component组件访问
 @Entry(storageOneLocal)
 @Component
@@ -366,7 +368,6 @@ let linkToPropA: SubscribedAbstractProperty<object> = storageOne.link('PropA');
 @Entry(storageOne)
 @Component
 struct ParentTwo {
-
   // @LocalStorageLink('PropA')在Parent自定义组件中创建'PropA'的双向同步数据，初始值为47，因为在构造LocalStorage已经给“PropA”设置47
   @LocalStorageLink('PropA') storageLink: number = 1;
 
@@ -777,7 +778,7 @@ struct ChildSix {
 
 ### Navigation组件和LocalStorage联合使用
 
-可以通过传递不同的LocalStorage实例给自定义组件，从而实现在navigation跳转到不同的页面时，绑定不同的LocalStorage实例，显示对应绑定的值。
+可以通过传递不同的LocalStorage实例给自定义组件，从而实现在[Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)跳转到不同的页面时，绑定不同的LocalStorage实例，显示对应绑定的值。
 
 本示例以\@LocalStorageLink为例，展示了：
 

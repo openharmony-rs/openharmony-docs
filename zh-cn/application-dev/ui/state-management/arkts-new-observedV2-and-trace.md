@@ -442,6 +442,11 @@ struct Index {
 <!-- @[Nested_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/NestedClass.ets) -->
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'ArktsObservedV2AndTrace';
+
 @ObservedV2
 class Pencil {
   @Trace public length: number = 21; // 当length变化时，会刷新关联的组件
@@ -504,6 +509,11 @@ struct Page {
 <!-- @[Inheritance_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/InheritanceClass.ets) -->
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'ArktsObservedV2AndTrace';
+
 @ObservedV2
 class GrandFather {
   @Trace public age: number = 0;
@@ -1175,7 +1185,7 @@ struct Detail {
 
 <!-- @[Router_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/RouterIndex.ets) -->
 
-```ts
+``` TypeScript
 @ObservedV2
 export class RouterModel {
   @Trace public id: number = -1;
@@ -1211,12 +1221,11 @@ struct RouterIndex {
     }
   }
 }
-
 ```
 
 <!-- @[Child_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/ChildPage.ets) -->
 
-```ts
+``` TypeScript
 import { RouterModel } from './RouterIndex';
 import { plainToInstance } from 'class-transformer'; // 导入三方库
 
@@ -1234,7 +1243,6 @@ struct Detail {
     }
   }
 }
-
 ```
 
 ![observedv2_router_deserialize.gif](./figures/observedv2_router_deserialize.gif)

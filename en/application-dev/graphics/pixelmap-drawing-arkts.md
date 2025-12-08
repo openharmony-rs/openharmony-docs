@@ -17,10 +17,9 @@ Currently, bitmap drawing in Drawing (ArkTS) depends on PixelMap, which can be u
 
    You can use multiple APIs to create a PixelMap. The following uses createPixelMapSync() as an example. For details about more creation modes and APIs, see @ohos.multimedia.image (Image Processing).
 
-   The createPixelMapSync() function accepts two parameters. The first parameter is the buffer of image pixel data, which is used to initialize the pixels of the PixelMap. The second parameter is the attribute of the created pixel, including the transparency, size, thumbnail value, pixel format, and whether the pixel is editable.
-
-   ```ts
-   // PixelMapDrawing.ets
+   <!-- @[arkts_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
+   
+   ``` TypeScript
    // Image width and height
    let width = 600;
    let height = 400;
@@ -49,14 +48,14 @@ Currently, bitmap drawing in Drawing (ArkTS) depends on PixelMap, which can be u
    // Create a PixelMap instance.
    pixelMap = image.createPixelMapSync(color, opts);
    ```
-<!-- [arkts_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
 
 2. (Optional) Edit pixels in the PixelMap. If no pixel needs to be edited, skip this step.
 
    Several APIs are available to edit pixels in a PixelMap. The following uses writePixelsSync() as an example. For details about other methods and APIs, please refer to [PixelMap](../reference/apis-image-kit/arkts-apis-image-PixelMap.md).
 
-   ```ts
-   // PixelMapDrawing.ets
+   <!-- @[arkts_graphics_draw_edit_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
+   
+   ``` TypeScript
    // Set the width and height of the editing area.
    let innerWidth = 400;
    let innerHeight = 200;
@@ -90,7 +89,6 @@ Currently, bitmap drawing in Drawing (ArkTS) depends on PixelMap, which can be u
    //To display the entire image, change the start point of the drawing to (0, 0).
    canvas.drawImage(pixelMap, 0, 0);
    ```
-<!-- [arkts_graphics_draw_edit_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
 
 3. Draw the PixelMap.
 
@@ -98,11 +96,12 @@ Currently, bitmap drawing in Drawing (ArkTS) depends on PixelMap, which can be u
 
    The drawImage() function accepts four parameters. The first parameter is the PixelMap created above, the second parameter is the x-coordinate of the upper left corner of the image to be drawn, the third parameter is the y-coordinate of the upper left corner, and the fourth parameter is the sampling option object. By default, the original sampling option object constructed without any parameter is used.
 
-   ```ts
-   // PixelMapDrawing.ets
+   <!-- @[arkts_graphics_draw_image_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
+   
+   ``` TypeScript
+   //To display the entire image, change the start point of the drawing to (0, 0).
    canvas.drawImage(pixelMap, 0, 0);
    ```
-   <!-- [arkts_graphics_draw_image_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
 
    The drawing effect is as follows:
 
@@ -113,5 +112,5 @@ Currently, bitmap drawing in Drawing (ArkTS) depends on PixelMap, which can be u
 
 The following samples can be used for reference when developing Drawing (ArkTS):
 
-- [ArkTSGraphicsDraw (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/ArkTSGraphicsDraw)
+- [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
 <!--RP1End-->

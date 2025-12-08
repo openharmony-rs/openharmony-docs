@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+
+```
+typedef struct {...} OH_NativeBuffer_Smpte2086
+```
 ## Overview
 
 This struct describes the SMPTE ST 2086 static metadata.
