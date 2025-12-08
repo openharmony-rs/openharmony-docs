@@ -16,7 +16,7 @@ The Network Connection Management module provides basic network management capab
 
 ## Basic Concepts
 
-- Producer: a provider of data networks,  such as Wi-Fi, cellular, and Ethernet.
+- Producer: a provider of data networks, such as Wi-Fi, cellular, and Ethernet.
 - Consumer: a user of data networks, for example, an application or a system service.
 - Network probe: a mechanism used to detect the network availability to prevent the switch from an available network to an unavailable network. The probe type can be binding network detection, DNS detection, HTTP detection, or HTTPS detection.
 - Network selection: a mechanism used to select the optimal network when multiple networks coexist. It is triggered when the network status, network information, or network quality evaluation score changes.
@@ -203,7 +203,6 @@ This permission is of the **normal** level. Before applying for the permission, 
     ```ts
     // Import the connection namespace from @kit.NetworkKit.
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
 
     /// Call getAllNets to obtain the list of all connected networks.
     connection.getAllNets().then((data: connection.NetHandle[]) => {
@@ -226,7 +225,6 @@ This permission is of the **normal** level. Before applying for the permission, 
     ```ts
     // Import the connection namespace from @kit.NetworkKit.
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
     
     function getDefaultNetsInfo() {
       let netHandleInfo:connection.NetHandle|null = null;
@@ -297,7 +295,6 @@ This permission is of the **normal** level. Before applying for the permission, 
     ```ts
     // Import the connection namespace from @kit.NetworkKit.
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
 
     function getAllNetsInfo() {
       // Call getAllNets to obtain the list of all connected networks specified by Array<NetHandle>.
@@ -337,7 +334,6 @@ This permission is of the **normal** level. Before applying for the permission, 
     ```ts
     // Import the connection namespace from @kit.NetworkKit.
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
 
     // Obtain the default active data network.
     let netHandle = connection.getDefaultNetSync();
@@ -376,10 +372,14 @@ This permission is of the **normal** level. Before applying for the permission, 
     ```ts
     // Import the connection namespace from @kit.NetworkKit.
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
     // Use the default network to resolve the host name to obtain the list of all IP addresses.
     connection.getAddressesByName("xxxx").then((data: connection.NetAddress[]) => {
       console.info("Succeeded to get data: " + JSON.stringify(data));
     });
     ```
 
+## Samples
+
+The following samples are provided to help you better understand how to develop network connection features:
+
+- [NetConnection_Manage_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case)

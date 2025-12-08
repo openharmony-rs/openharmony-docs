@@ -59,7 +59,7 @@ Binds the IP address and port number. The port number can be customized or rando
 
 | Name  | Type                              | Mandatory| Description                                                  |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [NetAddress](#netaddress) | Yes  | Destination address. For details, see [NetAddress](#netaddress).|
+| address  | [NetAddress](#netaddress) | Yes  | Local address. For details, see [NetAddress](#netaddress).|
 | callback | AsyncCallback\<void\>              | Yes  | Callback used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.       |
 
 **Error codes**
@@ -105,7 +105,7 @@ Binds the IP address and port number. The port number can be customized or rando
 
 | Name | Type                              | Mandatory| Description                                                  |
 | ------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address | [NetAddress](#netaddress) | Yes  | Destination address. For details, see [NetAddress](#netaddress).|
+| address | [NetAddress](#netaddress) | Yes  | Local address. For details, see [NetAddress](#netaddress).|
 
 **Error codes**
 
@@ -763,11 +763,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
 
-let messageView = '';
 udp.on('message', (value: socket.SocketMessageInfo) => {
+  let messageView = '';
+  let uint8Array = new Uint8Array(value.message);
   for (let i: number = 0; i < value.message.byteLength; i++) {
-    let uint8Array = new Uint8Array(value.message) 
-    let messages = uint8Array[i]
+    let messages = uint8Array[i];
     let message = String.fromCharCode(messages);
     messageView += message;
   }
@@ -1677,7 +1677,7 @@ Binds an IP address and a port number. The port number can be customized or rand
 
 | Name  | Type                              | Mandatory| Description                                                  |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [NetAddress](#netaddress) | Yes  | Destination address. For details, see [NetAddress](#netaddress).|
+| address  | [NetAddress](#netaddress) | Yes  | Local address. For details, see [NetAddress](#netaddress).|
 | callback | AsyncCallback\<void\>              | Yes  | Callback used to return the result. If the operation fails, an error message is returned.                  |
 
 **Error codes**
@@ -1728,7 +1728,7 @@ Binds an IP address and a port number. The port number can be customized or rand
 
 | Name | Type                              | Mandatory| Description                                                  |
 | ------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address | [NetAddress](#netaddress) | Yes  | Destination address. For details, see [NetAddress](#netaddress).|
+| address | [NetAddress](#netaddress) | Yes  | Local address. For details, see [NetAddress](#netaddress).|
 
 **Return value**
 
@@ -2398,7 +2398,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0'
+  address: '192.168.xx.xxx',
+  // Bind the specified network API.
 }
 tcp.bind(bindAddr)
 let netAddress: socket.NetAddress = {
@@ -2440,7 +2441,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0'
+    address: '192.168.xx.xxx',
+  // Bind the specified network API.
 }
 tcp.bind(bindAddr)
 let netAddress: socket.NetAddress = {
@@ -2676,11 +2678,11 @@ import { socket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
-let messageView = '';
 tcp.on('message', (value: socket.SocketMessageInfo) => {
+  let messageView = '';
+  let uint8Array = new Uint8Array(value.message) ;
   for (let i: number = 0; i < value.message.byteLength; i++) {
-    let uint8Array = new Uint8Array(value.message) 
-    let messages = uint8Array[i]
+    let messages = uint8Array[i];
     let message = String.fromCharCode(messages);
     messageView += message;
   }
@@ -3997,9 +3999,9 @@ let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance(
 tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
   client.on('message', (value: socket.SocketMessageInfo) => {
     let messageView = '';
+    let uint8Array = new Uint8Array(value.message);
     for (let i: number = 0; i < value.message.byteLength; i++) {
-      let uint8Array = new Uint8Array(value.message) 
-      let messages = uint8Array[i]
+      let messages = uint8Array[i];
       let message = String.fromCharCode(messages);
       messageView += message;
     }
@@ -4260,7 +4262,7 @@ Binds the address of a local socket file. This API uses a promise to return the 
 
 | Name  | Type                              | Mandatory| Description                                                  |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [LocalAddress](#localaddress11) | Yes  | Destination address. For details, see [LocalAddress](#localaddress11).|
+| address  | [LocalAddress](#localaddress11) | Yes  | Local address. For details, see [LocalAddress](#localaddress11).|
 
 **Return value**
 
@@ -6164,7 +6166,7 @@ Binds the IP address and port number. This API uses an asynchronous callback to 
 
 | Name  | Type                              | Mandatory| Description                                                  |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [NetAddress](#netaddress) | Yes  | Destination address. For details, see [NetAddress](#netaddress).|
+| address  | [NetAddress](#netaddress) | Yes  | Local address. For details, see [NetAddress](#netaddress).|
 | callback | AsyncCallback\<void\>              | Yes  | Callback used to return the result. If the operation is successful, the result of binding the local IP address and port number is returned. If the operation fails, an error message is returned.|
 
 **Error codes**
@@ -6215,7 +6217,7 @@ Binds the IP address and port number. This API uses a promise to return the resu
 
 | Name | Type                              | Mandatory| Description                                                  |
 | ------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address | [NetAddress](#netaddress)          | Yes  | Destination address. For details, see [NetAddress](#netaddress).|
+| address | [NetAddress](#netaddress)          | Yes  | Local address. For details, see [NetAddress](#netaddress).|
 
 **Return value**
 
@@ -6523,7 +6525,6 @@ import { socket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
-let messageView = '';
 let bindAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
   port: 8080
@@ -6535,9 +6536,10 @@ tls.bind(bindAddr, (err: BusinessError) => {
   }
   console.info('bind success');
   tls.on('message', (value: socket.SocketMessageInfo) => {
+    let messageView = '';
+    let uint8Array = new Uint8Array(value.message); 
     for (let i: number = 0; i < value.message.byteLength; i++) {
-      let uint8Array = new Uint8Array(value.message) 
-      let messages = uint8Array[i]
+      let messages = uint8Array[i];
       let message = String.fromCharCode(messages);
       messageView += message;
     }
@@ -6819,7 +6821,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tlsTwoWay: socket.TLSSocket = socket.constructTLSSocketInstance();  // Two way authentication
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0',
+    address: '192.168.xx.xxx',
+  // Bind the specified network API.
 }
 tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
   if (err) {
@@ -6885,7 +6888,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tlsTwoWay: socket.TLSSocket = socket.constructTLSSocketInstance(); // Two-way authentication
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0',
+   address: '192.168.xx.xxx',
+  // Bind the specified network API.
 }
 tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
   if (err) {
@@ -7017,7 +7021,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tlsTwoWay: socket.TLSSocket = socket.constructTLSSocketInstance();  // Two way authentication
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0',
+   address: '192.168.xx.xxx',
+  // Bind the specified network API.
 }
 tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
   if (err) {
@@ -7087,7 +7092,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tlsTwoWay: socket.TLSSocket = socket.constructTLSSocketInstance(); // Two-way authentication
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0',
+   address: '192.168.xx.xxx',
+  // Bind the specified network API.
 }
 tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
   if (err) {
@@ -9917,9 +9923,9 @@ tlsServer.listen(tlsConnectOptions).then(() => {
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.on('message', (value: socket.SocketMessageInfo) => {
     let messageView = '';
+    let uint8Array = new Uint8Array(value.message);
     for (let i: number = 0; i < value.message.byteLength; i++) {
-      let uint8Array = new Uint8Array(value.message) 
-      let messages = uint8Array[i]
+      let messages = uint8Array[i];
       let message = String.fromCharCode(messages);
       messageView += message;
     }
