@@ -289,7 +289,7 @@ function sendMessageToNative() {
    }
    ```
 
-6.在shared_config.json添加[extension配置](#datashare存放应用extension配置信息)
+6.在shared_config.json添加[extension配置](#datashare存放应用extension配置信息)。
 
 ```json
   {
