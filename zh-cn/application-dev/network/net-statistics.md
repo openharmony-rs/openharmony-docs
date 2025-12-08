@@ -85,21 +85,21 @@
     调用getAllRxBytes接口获取所有网卡实时上下行流量数据。
 
    <!-- @[flow_management_getAllRxBytes_and_getAllTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 获取所有网卡实时下行流量数据。
-statistics.getAllRxBytes().then((stats: number) => {
-  console.info(JSON.stringify(stats));
-// ···
-})
-// ···
-// 获取所有网卡实时上行流量数据。
-statistics.getAllTxBytes().then((stats: number) => {
-  console.info(JSON.stringify(stats));
-// ···
-})
-// ···
-```
+   
+   ``` TypeScript
+   // 获取所有网卡实时下行流量数据。
+   statistics.getAllRxBytes().then((stats: number) => {
+     hilog.info(0x0000, 'testTag', JSON.stringify(stats));
+     // ...
+   })
+   // ...
+   // 获取所有网卡实时上行流量数据。
+   statistics.getAllTxBytes().then((stats: number) => {
+     hilog.info(0x0000, 'testTag', JSON.stringify(stats));
+     // ...
+   })
+   // ...
+   ```
 5. 获取指定应用实时流量数据
 
     调用getUidRxBytes接口，传入UID获取指定应用实时上下行流量数据。
