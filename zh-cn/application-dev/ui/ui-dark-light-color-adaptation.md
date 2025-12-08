@@ -189,7 +189,7 @@
 
 > **说明：**
 > 
-> 应用未适配深色模式时，如遇到文字显示等异常，可考虑使用该方法固定为浅色模式。
+> 应用未专门适配深色模式，直接跟随系统切换可能遇到深色模式下的显示异常，也可考虑使用该方法将本应用固定为浅色模式。
 
 <!-- @[create_app](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionApp/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
