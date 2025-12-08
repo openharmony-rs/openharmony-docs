@@ -57,21 +57,21 @@ statistics.getIfaceTxBytes('wlan0').then((stats: number) => {
     调用getCellularRxBytes接口获取蜂窝实时上下行流量数据。
 
    <!-- @[flow_management_getCellularRxBytes_and_getCellularTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 获取蜂窝实时下行流量数据。
-statistics.getCellularRxBytes().then((stats: number) => {
-  console.info(JSON.stringify(stats));
-// ···
-})
-// ···
-// 获取蜂窝实时上行流量数据。
-statistics.getCellularTxBytes().then((stats: number) => {
-  console.info(JSON.stringify(stats));
-// ···
-})
-// ···
-```
+   
+   ``` TypeScript
+   // 获取蜂窝实时下行流量数据。
+   statistics.getCellularRxBytes().then((stats: number) => {
+     hilog.info(0x0000, 'testTag', JSON.stringify(stats));
+     // ...
+   })
+   // ...
+   // 获取蜂窝实时上行流量数据。
+   statistics.getCellularTxBytes().then((stats: number) => {
+     hilog.info(0x0000, 'testTag', JSON.stringify(stats));
+     // ...
+   })
+   // ...
+   ```
 4. 获取所有网卡实时流量数据
 
     调用getAllRxBytes接口获取所有网卡实时上下行流量数据。
