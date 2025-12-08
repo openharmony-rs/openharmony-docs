@@ -33,6 +33,17 @@ ImageReceiver信息相关API的详细介绍请参见[API参考](../../reference/
 2. 创建ImageReceiver对象，通过ImageReceiver对象可获取预览流SurfaceId。
    
    <!-- @[init_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->   
+   
+   ``` TypeScript
+   async function initImageReceiver(): Promise<void> {
+     // 创建ImageReceiver对象。createImageReceiver的参数不会对接收到的数据产生实际影响。
+     let size: image.Size = { width: imageWidth, height: imageHeight };
+     let imageReceiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
+     // 获取预览流SurfaceId。
+     let imageReceiverSurfaceId = await imageReceiver.getReceivingSurfaceId();
+     console.info(`initImageReceiver imageReceiverSurfaceId:${imageReceiverSurfaceId}`);
+   }
+   ```
 
 3. 注册监听处理预览流每帧图像数据：通过ImageReceiver中imageArrival事件监听获取底层返回的图像数据。详细的API说明请参考[ImageReceiver](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md)。
 
