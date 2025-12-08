@@ -136,6 +136,7 @@
 | -- | -- |
 | const uint32_t OH_XCOMPONENT_ID_LEN_MAX = 128 | ArkUI XComponent的id最大长度。<br>**起始版本：** 8 |
 | const uint32_t OH_MAX_TOUCH_POINTS_NUMBER = 10 | 触摸事件中的可识别的触摸点个数最大值。<br>**起始版本：** 8 |
+| OH_NATIVE_XCOMPONENT_MAX_TOUCH_POINTS_NUMBER 10 | 最大支持10个触摸点。<br>**起始版本：** 8 |
 
 ## 枚举类型说明
 
