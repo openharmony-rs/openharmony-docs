@@ -34,6 +34,10 @@
 2. 创建图像编码ImagePacker对象。
 
    <!-- @[create_packer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   
+   ``` TypeScript
+   const imagePackerApi = image.createImagePacker();
+   ```
 
 3. 设置编码输出流和编码参数。
 
