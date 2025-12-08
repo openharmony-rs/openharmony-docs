@@ -99,7 +99,7 @@
 
 - 在CMakeLists.txt文件中配置CMake打包参数。
 
-  ```text
+  ```txt
   # entry/src/main/cpp/CMakeLists.txt
   cmake_minimum_required(VERSION 3.4.1)
   project(MyApplication2)
