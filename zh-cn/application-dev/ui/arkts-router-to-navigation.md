@@ -479,7 +479,16 @@ Router可以通过命名路由的方式实现跨包跳转。
    }
    ```
 
-2. 配置成功后需要在跳转的页面中引入命名路由的页面并跳转。
+2. 使用命名路由方式跳转时，需要在当前应用包的oh-package.json5文件中配置依赖。例如：
+
+   ```ts
+   "dependencies": {
+       "library": "file:../library",
+       // ...
+   }
+   ```
+
+3. 配置成功后需要在跳转的页面中引入命名路由的页面并跳转。
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -545,7 +554,16 @@ Navigation作为路由组件，默认支持跨包跳转。
    export { PageInHSP } from "./src/main/ets/pages/PageInHSP"
    ```
 
-3. 配置好HSP（HAR）的项目依赖后，在mainPage中导入自定义组件，并添加到pageMap中，即可正常调用。
+3. 使用跨包路由方式跳转时，需要在当前应用包的oh-package.json5文件中配置依赖。例如：
+
+   ```ts
+   "dependencies": {
+       "library": "file:../library",
+       // ...
+   }
+   ```
+
+4. 配置好HSP（HAR）的项目依赖后，在mainPage中导入自定义组件，并添加到pageMap中，即可正常调用。
 
    ```
    // 1.导入跨包的路由页面
