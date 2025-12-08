@@ -126,11 +126,11 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 2. 创建WebSocketServer对象。
 
    <!-- @[WebSocket_server_creat_websocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
-        
-    ``` TypeScript
-    let localServer: webSocket.WebSocketServer;
-    localServer = webSocket.createWebSocketServer();
-    ```
+   
+   ``` TypeScript
+   let localServer: webSocket.WebSocketServer;
+   localServer = webSocket.createWebSocketServer();
+   ```
 
 3. 订阅WebSocketServer的客户端连接事件、消息接收事件、关闭事件、Error事件（可选），在收到客户端连接事件后，服务端可以通过send()方法与客户端进行通信，当收到客户端的"bye"消息时（此消息字段仅为示意，具体字段需要与客户端协商），主动断开连接。
 
