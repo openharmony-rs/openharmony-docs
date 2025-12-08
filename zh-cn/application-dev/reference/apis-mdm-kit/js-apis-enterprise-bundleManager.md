@@ -1075,7 +1075,7 @@ try {
 | label                      | string                                                       | 是   | 否   | 标识应用的名称。 |
 | labelId                    | number                                                       | 是   | 否   | 标识应用名称的资源id，是编译构建时根据应用配置的label自动生成的资源id。 |
 | icon                       | string                                                       | 是   | 否   | 应用程序的图标，对应[app.json5](../../quick-start/app-configuration-file.md)中配置的icon字段。关于icon的详细信息详见本表中的iconResource字段说明。 |
-| iconData<sup>23+</sup>     | string                                                       | 是   | 否   | 应用程序的图标，取值为base64编码的格式。 |
+| iconData<sup>23+</sup>     | string                                                       | 是   | 否   | 应用程序的图标，为base64编码格式。 |
 | iconId                     | number                                                       | 是   | 否   | 应用程序图标的资源id，是编译构建时根据应用配置的icon自动生成的资源id。 |
 | process                    | string                                                       | 是   | 否   | 应用程序的进程名称。 |
 | codePath                   | string                                                       | 是   | 否   | 应用程序的安装目录。 |
