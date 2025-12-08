@@ -171,7 +171,6 @@ function builderOverlay(params: Params) {
 @Entry
 @Component
 struct OverlayExample {
-  @State message: string = 'ComponentContent';
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
   private overlayContent:ComponentContent<Params>[] = [];
