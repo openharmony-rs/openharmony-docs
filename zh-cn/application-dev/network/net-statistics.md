@@ -26,11 +26,12 @@
 1. 导入statistics、socket以及错误码模块。
 
    <!-- @[flow_management_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import { socket, statistics } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-```
+   
+   ``` TypeScript
+   import { socket, statistics } from '@kit.NetworkKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 2. 获取指定网卡实时流量数据
 
     调用getIfaceRxBytes接口传入网卡名获取实时下行流量数据。
