@@ -64,3 +64,35 @@ Exif信息的读取与编辑相关API的详细介绍请参见[API参考](../../r
 3. 修改指定key的Exif信息的接口示例。
 
    <!-- @[modify_exif](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ExifUtility.ets) -->   
+   
+   ``` TypeScript
+   // 修改指定key的Exif信息的接口示例
+   async modifyExif(imageSourceApi: image.ImageSource | undefined, key: image.PropertyKey, value: string)
+     : Promise<string> {
+     let info: string = '';
+     if (imageSourceApi) {
+       // 编辑EXIF信息
+       try {
+         await imageSourceApi.modifyImageProperty(key, value);
+         try {
+           let modifyValue = await imageSourceApi.getImageProperty(key)
+           info = `The ${key}'s value is modified to ${modifyValue}.`
+           console.info(info);
+           return info; // 获取key值成功时返回修改成功信息
+         } catch (error) {
+           console.error(`Failed to get the the ${key}'s value with ${error}`);
+           console.error(info);
+           return info; // 获取key值失败时返回错误信息
+         }
+       } catch (error) {
+         info = `Failed to modify the ${key}'s value with ${error}`;
+         console.error(info);
+         return info; // 修改key值失败时返回错误信息
+       }
+     } else {
+       info = 'modifyExif: The imageSourceApi is undefined.';
+       console.info(info);
+       return info; // 如果 imageSourceApi 是 undefined，直接返回信息
+     }
+   }
+   ```
