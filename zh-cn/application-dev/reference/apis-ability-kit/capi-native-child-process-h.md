@@ -222,11 +222,11 @@ typedef void (*OH_Ability_OnNativeChildProcessStarted)(int errCode, OHIPCRemoteP
 | 参数项 | 描述 |
 | -- | -- |
 | int errCode | 回调函数返回的错误码，可用的值如下：<br>[NCP_NO_ERROR](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 创建子进程成功。<br>[NCP_ERR_LIB_LOADING_FAILED](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 加载动态库文件失败或动态库中未实现必要的导出函数。<br>[NCP_ERR_CONNECTION_FAILED](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 动态库中实现的OnConnect方法未返回有效的IPC Stub指针。<br>详见[Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode)定义。 |
-| [OHIPCRemoteProxy *remoteProxy](../apis-ipc-kit/capi-ohipcparcel-ohipcremoteproxy.md) | 子进程的IPC对象指针，出现异常时可能为nullptr：使用完毕后需要调用[OH_IPCRemoteProxy_Destory](../apis-ipc-kit/capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_destroy)方法释放。 |
+| [OHIPCRemoteProxy *remoteProxy](../apis-ipc-kit/capi-ohipcparcel-ohipcremoteproxy.md) | 子进程的IPC对象指针，出现异常时可能为nullptr：使用完毕后需要调用[OH_IPCRemoteProxy_Destroy](../apis-ipc-kit/capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_destroy)方法释放。 |
 
 **参考：**
 
-[OH_IPCRemoteProxy_Destory](../apis-ipc-kit/capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_destroy)
+[OH_IPCRemoteProxy_Destroy](../apis-ipc-kit/capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_destroy)
 
 ### OH_Ability_CreateNativeChildProcess()
 
