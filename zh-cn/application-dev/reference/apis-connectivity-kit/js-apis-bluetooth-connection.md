@@ -271,6 +271,8 @@ getRemoteDeviceName(deviceId: string): string
 
 获取对端蓝牙设备的名称。
 
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取设备名称。
+
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
@@ -320,6 +322,8 @@ getRemoteDeviceName(deviceId: string, alias?: boolean): string
 
 获取对端蓝牙设备的名称，其中alias为可选参数。
 
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取设备名称。
+
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 16开始，该接口支持在原子化服务中使用。
@@ -368,7 +372,10 @@ try {
 
 getRemoteDeviceClass(deviceId: string): DeviceClass
 
-获取对端蓝牙设备的类别。从API18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
+获取对端蓝牙设备的类别。
+
+- 从API version 18开始，此接口不再校验ohos.permission.ACCESS_BLUETOOTH权限。
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取设备类别信息。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -413,6 +420,8 @@ getRemoteDeviceTransport(deviceId: string): BluetoothTransport
 
 获取对端蓝牙设备的传输类型。
 
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取设备的传输类型。
+
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
@@ -455,6 +464,7 @@ getRemoteProfileUuids(deviceId: string, callback: AsyncCallback&lt;Array&lt;Prof
 
 获取对端蓝牙设备的Profile协议能力，通过UUID区分。使用Callback异步回调。
 - 建议仅对已配对的设备调用该方法。
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取Profile协议能力。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -501,6 +511,7 @@ getRemoteProfileUuids(deviceId: string): Promise&lt;Array&lt;ProfileUuids&gt;&gt
 
 获取对端蓝牙设备的Profile协议能力，通过UUID区分。使用Promise异步回调。
 - 建议仅对已配对的设备调用该方法。
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取Profile协议能力。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -633,6 +644,8 @@ try {
 getPairState(deviceId: string): BondState
 
 获取对端蓝牙设备的配对状态信息。
+
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取配对状态信息。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -1131,6 +1144,7 @@ setRemoteDeviceName(deviceId: string, name: string): Promise&lt;void&gt;
 
 设置对端蓝牙设备的名称，不能设置为空字符串。如果设为空字符串会失败。使用Promise异步回调。
 - 建议仅对已配对的设备调用该方法。
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址进行名称设置。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -1185,6 +1199,7 @@ getRemoteDeviceBatteryInfo(deviceId: string): Promise&lt;BatteryInfo&gt;
 
 获取对端蓝牙设备的电量信息。使用Promise异步回调。
 - 对端蓝牙设备的电量信息变更通过[on('batteryChange')](#connectiononbatterychange12)的回调结果获取。
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取电量信息。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -1672,6 +1687,8 @@ getLastConnectionTime(deviceId: string): Promise&lt;number&gt;
 
 获取对端蓝牙设备最近一次连接的时间点。使用Promise异步回调。
 
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取最近一次连接时间。
+
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
@@ -1719,6 +1736,7 @@ connectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;): v
 连接对端设备支持的profile（只包括A2DP、HFP和HID）。使用Callback异步回调。
 - 需先调用[connection.pairDevice](#connectionpairdevice)发起配对，且仅允许在每次发起配对后30s内调用此接口一次。
 - 当配对成功后，建议先调用[getRemoteProfileUuids](#connectiongetremoteprofileuuids12)主动查询目标设备支持的profile能力。若存在应用需要的能力，才调用此接口。
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址进行profile连接。
 
 **需要权限：**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -1769,6 +1787,7 @@ connectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 连接对端设备支持的profile（只包括A2DP、HFP和HID）。使用Promise异步回调。
 - 需先调用[connection.pairDevice](#connectionpairdevice)发起配对，且仅允许在每次发起配对后30s内调用此接口一次。
 - 当配对成功后，建议先调用[getRemoteProfileUuids](#connectiongetremoteprofileuuids12)主动查询目标设备支持的profile能力。若存在应用需要的能力，才调用此接口。
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址进行profile连接。
 
 **需要权限：**: ohos.permission.ACCESS_BLUETOOTH
 

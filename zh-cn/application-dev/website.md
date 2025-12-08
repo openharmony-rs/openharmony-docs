@@ -1626,12 +1626,12 @@
         - [共享音频输入](media/audio/audio-recording-concurrency.md)
         - [实现音频耳返](media/audio/audio-ear-monitor.md)
         - [实现音频低时延耳返](media/audio/audio-ear-monitor-loopback.md)
-	  - 音频设备路由管理<!--audio-device-->
-	    - [查询和监听音频输入设备](media/audio/audio-input-device-management.md)
-		- [查询和监听音频输出设备](media/audio/audio-output-device-management.md)
-		- [实现音频输入设备路由切换](media/audio/audio-input-device-switcher.md)
-		- [实现音频输出设备路由切换](media/audio/audio-output-device-switcher.md)
-	    - [响应输出设备变更时合理暂停](media/audio/audio-output-device-change.md)
+      - 音频设备路由管理<!--audio-device-->
+        - [查询和监听音频输入设备](media/audio/audio-input-device-management.md)
+        - [查询和监听音频输出设备](media/audio/audio-output-device-management.md)
+        - [实现音频输入设备路由切换](media/audio/audio-input-device-switcher.md)
+        - [实现音频输出设备路由切换](media/audio/audio-output-device-switcher.md)
+        - [响应输出设备变更时合理暂停](media/audio/audio-output-device-change.md)
       - 音频通话<!--audio-call-->
         - [音频通话开发概述](media/audio/audio-call-overview.md)
         - [开发音频通话功能](media/audio/audio-call-development.md)
@@ -2054,9 +2054,9 @@
             - [使用JSVM-API判断给定的两个JS value是否严格相等](napi/use-jsvm-strict-equals.md)
             - [使用JSVM-API进行异常的定制化处理](napi/use-jsvm-trigger-exceptions.md)
             - [使用JSVM-API感知JSVM引擎生命周期管理](napi/use-jsvm-trigger-gc.md)
-            - [使用JSVM-API接口进行 private 属性相关开发](napi/use-jsvm-about-private.md)
+            - [使用JSVM-API接口进行private相关开发](napi/use-jsvm-about-private.md)
             - [使用JSVM-API接创建 external string](napi/use-jsvm-about-external-string.md)
-            - [使用JSVM-API接口进行Proxy相关开发](napi/use-jsvm-about-proxy.md)
+            - [使用JSVM-API提供的proxy接口](napi/use-jsvm-about-proxy.md)
             - [使用JSVM-API接口进行well-known symbols相关开发](napi/use-jsvm-about-well-known-symbols.md)
             - [使用JSVM-API接口进行装箱类型判断相关开发](napi/use-jsvm-about-wrapper-object.md)
             - [使用JSVM-API接口创建和获取数值](napi/use-jsvm-basic-data-types.md)
@@ -3856,7 +3856,7 @@
           - [LiveFormExtensionContext](reference/apis-form-kit/js-apis-application-LiveFormExtensionContext.md)
           <!--Del-->
           - [FormExtensionContext(系统接口)](reference/apis-form-kit/js-apis-inner-application-formExtensionContext-sys.md)
-          - [LiveFormExtensionContext（仅对系统应用开放）](reference/apis-form-kit/js-apis-application-LiveFormExtensionContext-sys.md)
+          - [LiveFormExtensionContext (系统接口)](reference/apis-form-kit/js-apis-application-LiveFormExtensionContext-sys.md)
           <!--DelEnd-->
       - 已停止维护的接口<!--form-arkts-dep-->
         - [@ohos.application.formBindingData (卡片数据绑定类)](reference/apis-form-kit/js-apis-application-formBindingData.md)
@@ -5812,6 +5812,7 @@
         - [JSVM_Deferred__*](reference/common/capi-jsvm-jsvm-deferred--8h.md)
         - [JSVM_CallbackStruct*](reference/common/capi-jsvm-jsvm-callbackstruct8h.md)
         - [JSVM_PropertyHandlerConfigurationStruct*](reference/common/capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md)
+        - [JSVM_CompileProfile](reference/common/capi-jsvm-jsvm-compileprofile.md)
         - [PurgMem*](reference/common/capi-memory-purgmem.md)
   - 标准库<!--standard-library-->
     - [libc标准库](reference/native-lib/musl.md)

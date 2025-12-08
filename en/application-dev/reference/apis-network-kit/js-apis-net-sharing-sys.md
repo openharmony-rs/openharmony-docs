@@ -948,7 +948,7 @@ Subscribes to network sharing state changes. This API uses an asynchronous callb
 | Name  | Type                   | Mandatory| Description                        |
 | -------- | ----------------------- | ---- | ---------------------------- |
 | type     | string                  | Yes  | Event type.<br/> The value **sharingStateChange** indicates a network sharing status change event.                  |
-| callback | AsyncCallback\<boolean> | Yes  | Callback invoked when the network sharing state changes.|
+| callback | AsyncCallback\<boolean> | Yes  | Callback used to return the result. The value **true** means that network is in the sharing state, and the value **false** means the opposite.|
 
 **Error codes**
 
@@ -985,7 +985,7 @@ Unsubscribes from network sharing state changes. This API uses an asynchronous c
 | Name  | Type                   | Mandatory| Description                        |
 | -------- | ----------------------- | ---- | ---------------------------- |
 | type     | string                  | Yes  | Event type. The value **sharingStateChange** indicates a network sharing status change event.                  |
-| callback | AsyncCallback\<boolean> | No  | Callback invoked when the network sharing state changes.|
+| callback | AsyncCallback\<boolean> | No  | Callback used to return the result. The value **true** means that network is in the sharing state, and the value **false** means the opposite.|
 
 **Error codes**
 

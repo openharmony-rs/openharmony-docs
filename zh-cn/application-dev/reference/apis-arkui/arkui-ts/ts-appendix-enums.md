@@ -151,17 +151,19 @@
 
 ## BarState
 
+用于设置滚动条的状态。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 说明                 |
-| ---- | ------------------ |
-| Off  | 不显示。               |
-| On   | 常驻显示。              |
-| Auto | 按需显示(触摸时显示，2s后消失)。 |
+| 名称   | 值 | 说明                 |
+| ---- | --- | ------------------ |
+| Off  | 0 | 不显示。               |
+| On   | 2 | 常驻显示。              |
+| Auto | 1 | 按需显示(触摸时显示，2s后消失)。 |
 
 ## BorderStyle
 
@@ -178,6 +180,8 @@
 | Solid  | 显示为一条实线。                      |
 
 ## ClickEffectLevel<sup>10+</sup>
+
+定义点击效果的级别及对应动效参数。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -357,19 +361,23 @@
 
 ## Edge
 
+用于控制滚动组件在布局中的对齐位置。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                             | 说明                                                         |
-| -------------------------------- | ------------------------------------------------------------ |
-| Top                              | 竖直方向上边缘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Center<sup>(deprecated) </sup>   | 竖直方向居中位置。<br/> 从API version 9开始废弃。            |
-| Bottom                           | 竖直方向下边缘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Baseline<sup>(deprecated) </sup> | 交叉轴方向文本基线位置。<br/> 从API version 9开始废弃。      |
-| Start                            | 水平方向起始位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Middle<sup>(deprecated) </sup>   | 水平方向居中位置。<br/> 从API version 9开始废弃。            |
-| End                              | 水平方向末尾位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| 名称                             | 值 | 说明                                                         |
+| -------------------------------- | --- | ------------------------------------------------------------ |
+| Top                              | 0 | 竖直方向上边缘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Center<sup>(deprecated) </sup>   | 1 | 竖直方向居中位置。<br/> 从API version 9开始废弃。            |
+| Bottom                           | 2 | 竖直方向下边缘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Baseline<sup>(deprecated) </sup> | 3 | 交叉轴方向文本基线位置。<br/> 从API version 9开始废弃。      |
+| Start                            | 4 | 水平方向起始位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Middle<sup>(deprecated) </sup>   | 5 | 水平方向居中位置。<br/> 从API version 9开始废弃。            |
+| End                              | 6 | 水平方向末尾位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## EdgeEffect
+
+定义滚动容器的滑动效果。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -377,11 +385,11 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明                                       |
-| ------ | ---------------------------------------- |
-| Spring | 弹性物理动效，滑动到边缘后可以根据初始速度或通过触摸事件继续滑动一段距离，松手后回弹。 |
-| Fade   | 阴影效果，滑动到边缘后会有圆弧状的阴影。                     |
-| None   | 滑动到边缘后无效果。                               |
+| 名称     | 值 | 说明                                       |
+| ------ | --- | ---------------------------------------- |
+| Spring | 0 | 弹性物理动效，滑动到边缘后可以根据初始速度或通过触摸事件继续滑动一段距离，松手后回弹。 |
+| Fade   | 1 | 阴影效果，滑动到边缘后会有圆弧状的阴影。                     |
+| None   | 2 | 滑动到边缘后无效果。                               |
 
 ## EllipsisMode<sup>11+</sup>
 
@@ -424,26 +432,26 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 说明           |
-| ---- | ------------ |
-| ESC  | 表示键盘上ESC功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| F1   | 表示键盘上F1功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| F2   | 表示键盘上F2功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| F3   | 表示键盘上F3功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| F4   | 表示键盘上F4功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| F5   | 表示键盘上F5功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| F6   | 表示键盘上F6功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| F7   | 表示键盘上F7功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| F8   | 表示键盘上F8功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| F9   | 表示键盘上F9功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| F10  | 表示键盘上F10功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| F11  | 表示键盘上F11功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| F12  | 表示键盘上F12功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| TAB<sup>12+</sup>  | 表示键盘上TAB功能键。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| DPAD_UP<sup>12+</sup>   | 表示键盘上UP方向键。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| DPAD_DOWN<sup>12+</sup> | 表示键盘上DOWN方向键。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| DPAD_LEFT<sup>12+</sup> | 表示键盘上LEFT方向键。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| DPAD_RIGHT<sup>12+</sup> | 表示键盘上RIGHT方向键。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| 名称   | 值 | 说明           |
+| ---- | ------------ | ------------ |
+| ESC  | 0 | 表示键盘上ESC功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| F1   | 1 | 表示键盘上F1功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| F2   | 2 | 表示键盘上F2功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| F3   | 3 | 表示键盘上F3功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| F4   | 4 | 表示键盘上F4功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| F5   | 5 | 表示键盘上F5功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| F6   | 6 | 表示键盘上F6功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| F7   | 7 | 表示键盘上F7功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| F8   | 8 | 表示键盘上F8功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| F9   | 9 | 表示键盘上F9功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| F10  | 10 | 表示键盘上F10功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| F11  | 11 | 表示键盘上F11功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| F12  | 12 | 表示键盘上F12功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| TAB<sup>12+</sup>  | 13 | 表示键盘上TAB功能键。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| DPAD_UP<sup>12+</sup>   | 14 | 表示键盘上UP方向键。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| DPAD_DOWN<sup>12+</sup> | 15 | 表示键盘上DOWN方向键。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| DPAD_LEFT<sup>12+</sup> | 16 | 表示键盘上LEFT方向键。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| DPAD_RIGHT<sup>12+</sup> | 17 | 表示键盘上RIGHT方向键。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 
 ## FillMode
 
@@ -626,6 +634,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## HoverEffect<sup>8+</sup>
 
+定义组件悬浮效果的类型。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -638,6 +648,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | None      | 不设置效果。         |
 
 ## HitTestMode<sup>9+</sup>
+
+定义触摸测试的响应逻辑及节点阻塞规则。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -766,26 +778,30 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## KeySource
 
+定义触发按键事件的设备类型。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称       | 说明         |
-| -------- | ---------- |
-| Unknown  | 输入设备类型未知。  |
-| Keyboard | 输入设备类型为键盘。 |
-| JOYSTICK<sup>15+</sup> | 输入设备类型为游戏手柄。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
+| 名称       | 值 | 说明         |
+| -------- | ---------- | ---------- |
+| Unknown  | 0 | 输入设备类型未知。  |
+| Keyboard | 4 | 输入设备类型为键盘。 |
+| JOYSTICK<sup>15+</sup> | 5 | 输入设备类型为游戏手柄。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 
 ## KeyType
 
+定义按键操作的状态类型。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 说明    |
-| ---- | ----- |
-| Down | 按键按下。 |
-| Up   | 按键松开。 |
+| 名称   | 值 | 说明    |
+| ---- | ----- | ----- |
+| Down | 0 | 按键按下。 |
+| Up   | 1 | 按键松开。 |
 
 ## LineJoinStyle
 
@@ -859,16 +875,18 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 说明       |
-| ------- | -------- |
-| Left    | 鼠标左键。    |
-| Right   | 鼠标右键。    |
-| Middle  | 鼠标中键。    |
-| Back    | 鼠标左侧后退键。 |
-| Forward | 鼠标左侧前进键。 |
-| None    | 无按键。     |
+| 名称      | 值 | 说明       |
+| ------- | -------- | -------- |
+| Left    | 1 | 鼠标左键。    |
+| Right   | 2 | 鼠标右键。    |
+| Middle  | 4 | 鼠标中键。    |
+| Back    | 8 | 鼠标左侧后退键。 |
+| Forward | 16 | 鼠标左侧前进键。 |
+| None    | 0 | 无按键。     |
 
 ## MouseAction<sup>8+</sup>
+
+定义鼠标操作的动作类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -888,11 +906,11 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 说明           |
-| ----- | ------------ |
-| CTRL  | 表示键盘上Ctrl键。  |
-| SHIFT | 表示键盘上Shift键。 |
-| ALT   | 表示键盘上Alt键。   |
+| 名称    | 值 | 说明           |
+| ----- | ------------ | ------------ |
+| CTRL  | 0 | 表示键盘上Ctrl键。  |
+| SHIFT | 1 | 表示键盘上Shift键。 |
+| ALT   | 2 | 表示键盘上Alt键。   |
 
 ## MarqueeUpdateStrategy<sup>12+</sup>
 
@@ -907,16 +925,18 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## NestedScrollMode<sup>10+</sup>
 
+定义嵌套滚动组件中的嵌套模式。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明                             |
-| ------ | ------------------------------ |
-| SELF_ONLY   | 只自身滚动，不与父组件联动。  |
-| SELF_FIRST | 自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则子组件触发边缘效果。        |
-| PARENT_FIRST  | 父组件先滚动，父组件滚动到边缘以后自身滚动。自身滚动到边缘后，如果有边缘效果，会触发自身的边缘效果，否则触发父组件的边缘效果。 |
-| PARALLEL  | 自身和父组件同时滚动，自身和父组件都到达边缘以后，如果自身有边缘效果，则自身触发边缘效果，否则父组件触发边缘效果。|
+| 名称     | 值 | 说明                             |
+| ------ | --- | ------------------------------ |
+| SELF_ONLY   | 0 | 只自身滚动，不与父组件联动。  |
+| SELF_FIRST | 1 | 自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则子组件触发边缘效果。        |
+| PARENT_FIRST  | 2 | 父组件先滚动，父组件滚动到边缘以后自身滚动。自身滚动到边缘后，如果有边缘效果，会触发自身的边缘效果，否则触发父组件的边缘效果。 |
+| PARALLEL  | 3 | 自身和父组件同时滚动，自身和父组件都到达边缘以后，如果自身有边缘效果，则自身触发边缘效果，否则父组件触发边缘效果。|
 
 ## Nullable\<T><sup>11+</sup>
 
@@ -1125,6 +1145,8 @@ type Nullable\<T> = T | undefined
 
 ## TouchType
 
+定义触摸操作的触发状态类型。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 值   | 说明                               |
@@ -1298,17 +1320,19 @@ type Nullable\<T> = T | undefined
 
 ## Visibility
 
+定义组件的可见性及布局占位状态。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 说明               |
-| ------- | ---------------- |
-| Hidden  | 隐藏，但参与布局进行占位。    |
-| Visible | 显示。              |
-| None    | 隐藏，但不参与布局，不进行占位。 |
+| 名称      | 值 | 说明               |
+| ------- | ---------------- | ---------------- |
+| Hidden  | 1 | 隐藏，但参与布局进行占位。    |
+| Visible | 0 | 显示。              |
+| None    | 2 | 隐藏，但不参与布局，不进行占位。 |
 
 ## Week
 
