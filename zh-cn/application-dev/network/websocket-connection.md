@@ -225,18 +225,18 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 6. 需要关闭WebSocketServer端服务器时，可以通过stop()停止服务。
 
    <!-- @[WebSocket_server_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
-        
-    ``` TypeScript
-    localServer.stop().then((success: boolean) => {
-      if (success) {
-        hilog.info(0x0000, 'testTag', 'server stop service successfully');
-        // ···
-      } else {
-        hilog.error(0x0000, 'testTag', 'server stop service failed');
-        // ···
-      }
-    });
-    ```
+   
+   ``` TypeScript
+   localServer.stop().then((success: boolean) => {
+     if (success) {
+       hilog.info(0x0000, 'testTag', 'server stop service successfully');
+       // ...
+     } else {
+       hilog.error(0x0000, 'testTag', 'server stop service failed');
+       // ...
+     }
+   });
+   ```
 
 ## 相关实例
 
