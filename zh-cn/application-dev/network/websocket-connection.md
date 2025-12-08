@@ -181,24 +181,24 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 4. 配置config参数启动server端服务。
 
    <!-- @[websocket_server_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
-        
-    ``` TypeScript
-    let config: webSocket.WebSocketServerConfig = {
-      // 监听端口。
-      serverPort: 8080,
-      maxConcurrentClientsNumber: 10,
-      maxConnectionsForOneClient: 10,
-    }
-    localServer.start(config).then((success: boolean) => {
-      if (success) {
-        hilog.info(0x0000, 'testTag', 'WebSocket server started successfully');
-      } else {
-        hilog.error(0x0000, 'testTag', 'Failed to start WebSocket server');
-      }
-    }).catch((error: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `Failed to start. Code: ${error.code}, message: ${error.message}`);
-    });
-    ```
+   
+   ``` TypeScript
+   let config: webSocket.WebSocketServerConfig = {
+     // 监听端口。
+     serverPort: 8080,
+     maxConcurrentClientsNumber: 10,
+     maxConnectionsForOneClient: 10,
+   }
+   localServer.start(config).then((success: boolean) => {
+     if (success) {
+       hilog.info(0x0000, 'testTag', 'WebSocket server started successfully');
+     } else {
+       hilog.error(0x0000, 'testTag', 'Failed to start WebSocket server');
+     }
+   }).catch((error: BusinessError) => {
+     hilog.error(0x0000, 'testTag', `Failed to start. Code: ${error.code}, message: ${error.message}`);
+   });
+   ```
 
 5. 服务端监听所有客户端连接状态（可选）。
 
