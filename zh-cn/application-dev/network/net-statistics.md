@@ -37,21 +37,29 @@
     调用getIfaceRxBytes接口传入网卡名获取实时下行流量数据。
 
    <!-- @[flow_management_getIfaceRxBytes_and_getIfaceTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// wlan0为主WiFi网卡名，获取主WiFi实时下行流量数据。
-statistics.getIfaceRxBytes('wlan0').then((stats: number) => {
-  console.info(JSON.stringify(stats));
-// ···
-})
-// ···
-// wlan0为主WiFi网卡名，获取主WiFi实时上行流量数据。
-statistics.getIfaceTxBytes('wlan0').then((stats: number) => {
-  console.info(JSON.stringify(stats));
-// ···
-})
-// ···
-```
+   
+   ``` TypeScript
+     // wlan0为主WiFi网卡名，获取主WiFi实时下行流量数据。
+     statistics.getIfaceRxBytes('wlan0').then((stats: number) => {
+       hilog.info(0x0000, 'testTag', JSON.stringify(stats));
+       // ...
+     })
+     .catch((err: BusinessError) => {
+       hilog.error(0x0000, 'testTag', JSON.stringify(err));
+       // ...
+     });
+     // ...
+     // wlan0为主WiFi网卡名，获取主WiFi实时上行流量数据。
+     statistics.getIfaceTxBytes('wlan0').then((stats: number) => {
+       hilog.info(0x0000, 'testTag', JSON.stringify(stats));
+       // ...
+     })
+     .catch((err: BusinessError) => {
+       hilog.error(0x0000, 'testTag', JSON.stringify(err));
+       // ...
+     });
+   // ...
+   ```
 3. 获取蜂窝实时流量数据
 
     调用getCellularRxBytes接口获取蜂窝实时上下行流量数据。
