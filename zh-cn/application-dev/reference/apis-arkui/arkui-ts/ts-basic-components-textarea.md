@@ -1093,6 +1093,22 @@ scrollBarColor(thumbColor: ColorMetrics | undefined)
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
 | thumbColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&nbsp;\|&nbsp;undefined | 是 | 滚动条的颜色。<br />默认值：'#66182431'，显示为灰色。|
+
+### compressLeadingPunctuation<sup>23+</sup>
+
+compressLeadingPunctuation(enabled: Optional\<boolean>)
+
+设置是否启用行首标点符号压缩功能。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名           | 类型             | 必填 | 说明                                            |
+| ---------------- | ------- | ---- | ----------------------------------------------- |
+| enabled         | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否启用行首标点符号压缩功能。<br/>true表示启用，false表示禁用。|
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
@@ -2753,3 +2769,31 @@ struct TextAreaExample {
   }
 }
 ```
+
+### 示例27（设置行首标点压缩）
+
+该示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点压缩，左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+
+从API version 23开始，支持compressLeadingPunctuation接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(){
+      TextArea({ text: "\u300C行首标点压缩打开" })
+        .compressLeadingPunctuation(true)
+        .margin(5)
+        .fontSize(30)
+        .width("90%")
+      TextArea({ text: "\u300C行首标点压缩关闭" })
+        .compressLeadingPunctuation(false)
+        .fontSize(30)
+        .width("90%")
+    }
+  }
+}
+```
+![textAreaCompressLeadingPunctuation](figures/textAreaCompressLeadingPunctuation.gif)

@@ -1254,6 +1254,22 @@ enableAutoSpacing(enabled: Optional\<boolean>)
 | ------ | ------- | ---- | ---------------------------------- |
 | enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false |
 
+### compressLeadingPunctuation<sup>23+</sup>
+
+compressLeadingPunctuation(enabled: Optional\<boolean>)
+
+设置是否启用行首标点符号压缩功能。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名           | 类型             | 必填 | 说明                                            |
+| ---------------- | ------- | ---- | ----------------------------------------------- |
+| enabled         | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否启用行首标点符号压缩功能。<br/>true表示启用，false表示禁用。|
+
 ## InputType枚举说明
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -3288,3 +3304,33 @@ struct demo {
 ```
 
 ![textInput_barState](figures/textInput_barState.gif)
+
+### 示例26（设置行首标点压缩）
+
+该示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点压缩，左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+
+从API version 23开始，支持compressLeadingPunctuation接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(){
+      TextInput({ text: "\u300C行首标点压缩打开" })
+        .compressLeadingPunctuation(true)
+        .margin(5)
+        .style(TextInputStyle.Inline)
+        .fontSize(30)
+        .width("90%")
+      TextInput({ text: "\u300C行首标点压缩关闭" })
+        .compressLeadingPunctuation(false)
+        .style(TextInputStyle.Inline)
+        .fontSize(30)
+        .width("90%")
+    }
+  }
+}
+```
+![textInputCompressLeadingPunctuation](figures/textInputCompressLeadingPunctuation.gif)
