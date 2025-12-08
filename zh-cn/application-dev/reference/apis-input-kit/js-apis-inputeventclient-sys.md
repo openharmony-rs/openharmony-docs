@@ -109,7 +109,7 @@ injectEvent(keyEvent: KeyEventInfo): void
 
 **ArkTS-Dyn起始版本**：22
 
-**ArkTS-Dyn起始版本**：22
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 

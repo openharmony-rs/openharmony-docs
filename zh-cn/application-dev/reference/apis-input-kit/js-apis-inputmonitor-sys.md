@@ -729,7 +729,7 @@ struct Index {
 
 ## TouchEventReceiver
 
-type TouchEventReceiver = (touchEvent: TouchEvent) => boolean;
+type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
 
 触屏输入事件的回调函数。
 
