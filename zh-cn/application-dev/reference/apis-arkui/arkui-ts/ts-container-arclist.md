@@ -444,6 +444,7 @@ function buildText() {
     Text('header')
       .fontSize('60px')
       .fontWeight(FontWeight.Bold)
+      .fontColor(Color.Black)
   }.margin(0)
 }
 
