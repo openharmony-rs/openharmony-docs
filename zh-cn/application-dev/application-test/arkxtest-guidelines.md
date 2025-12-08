@@ -934,3 +934,17 @@ UI测试用例执行失败，查看hilog日志发现日志中有“does not exis
 **解决方法**
 
 重新执行UI测试用例。
+
+**4. 失败日志有“Start server-daemon failed:InvalidCoroutineOperationError: Cannot launch coroutines in the current context!”错误信息（ArkTS-Sta）**
+
+**问题描述**
+
+UI测试的ArkTS-Sta用例执行失败，查看hilog日志发现日志中有“Start server-daemon failed:InvalidCoroutineOperationError: Cannot launch coroutines in the current context!”错误信息。
+
+**可能原因**
+
+根据ArkTS-Sta规格，[不支持在全局空间直接或间接调用async函数](../quick-start/arkts-dyn-to-sta-concurrency-rules.md#不支持在全局空间直接或间接调用async函数)。
+
+**解决方法**
+
+修改用例，不在全局初始化阶段调用UiTest的接口函数。
