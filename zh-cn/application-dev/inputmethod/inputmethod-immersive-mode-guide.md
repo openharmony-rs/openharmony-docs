@@ -35,7 +35,14 @@
 <!-- @[input_case_input_immersiveMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
 
 ``` TypeScript
-    inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
+// 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
+inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
+  console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
+  if (attr.immersiveMode == 1) {
+    this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
+    console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
+  }
+})
 ```
 
 
