@@ -49,25 +49,17 @@
 
 <!-- @[input_case_input_KeyboardControllersetSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
 
-   ```ts
-   import { InputMethodSubtype, inputMethodEngine, inputMethod } from '@kit.IMEKit';
-   
-   export class KeyboardController {
-     async switchCurrentInputMethodSubtype() {
-       let panel: inputMethodEngine.Panel; // 此处panel需要在createPanel接口创建panel实例后使用
-       let inputMethodAbility: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
-       // 设置监听子类型事件，改变输入法应用界面
-       inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
-         if(inputMethodSubtype.id == 'InputMethodExtAbility') {
-           panel.setUiContent('pages/Index'); // 假设在输入法应用中此时Panel已经在onCreate流程中创建
-         }
-         if(inputMethodSubtype.id == 'InputMethodExtAbility1') {
-           panel.setUiContent('pages/Index1'); // 假设在输入法应用中此时Panel已经在onCreate流程中创建
-         }
-       });
-     }
-   }
-   ```
+``` TypeScript
+// 设置监听子类型事件，改变输入法应用界面
+inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
+  if(inputMethodSubtype.id == 'InputMethodExtAbility') {
+    AppStorage.setOrCreate('subtypeChange', 0);
+  }
+  if(inputMethodSubtype.id == 'InputMethodExtAbility1') {
+    AppStorage.setOrCreate('subtypeChange', 1);
+  }
+});
+```
 
 ## 切换输入法应用
 
