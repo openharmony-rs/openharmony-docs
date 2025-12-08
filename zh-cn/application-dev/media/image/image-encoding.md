@@ -114,6 +114,20 @@
 - 方法二：通过imageSource编码进文件。
 
   <!-- @[packToFile_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+  
+  ``` TypeScript
+  async function packToFileFromImageSource(context : Context, imageSource : image.ImageSource) {
+    const imagePackerApi = image.createImagePacker();
+    let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
+    const filePath : string = context.cacheDir + '/image_source.jpg';
+    let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    try {
+      await imagePackerApi.packToFile(imageSource, file.fd, packOpts);
+    } catch (error) {
+      console.error('Failed to pack the imageSource to file. And the error is: ' + error);
+    }
+  }
+  ```
 
 ### 图片编码保存进图库
 
