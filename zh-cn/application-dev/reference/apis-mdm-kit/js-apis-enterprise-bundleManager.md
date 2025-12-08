@@ -726,7 +726,7 @@ bundleManager.getInstalledBundleList(wantTemp, accountId).then((result) => {
 
 ## bundleManager.getInstalledBundleList<sup>23+</sup>
 
-getInstalledBundleList(admin: Want, accountId: int, bundleInfoGetFlag: int): Promise\<Array\<BundleInfo>>
+getInstalledBundleList(admin: Want, accountId: number, bundleInfoGetFlag: number): Promise\<Array\<BundleInfo>>
 
 根据给定的bundleInfoGetFlag获取设备指定用户下已安装应用列表。使用Promise异步回调。
 
@@ -741,8 +741,8 @@ getInstalledBundleList(admin: Want, accountId: int, bundleInfoGetFlag: int): Pro
 | 参数名       | 类型                                                    | 必填 | 说明                   |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。         |
-| accountId    | int                                                  | 是   | 用户ID，取值为正整数，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
-| [bundleInfoGetFlag](js-apis-enterprise-bundleManager.md#bundleinfogetflag23)    | int              | 是   | 指定返回的BundleInfo所包含的信息。 |
+| accountId    | number                                                  | 是   | 用户ID，取值为正整数，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+| [bundleInfoGetFlag](js-apis-enterprise-bundleManager.md#bundleinfogetflag23)    | number              | 是   | 指定返回的BundleInfo所包含的信息。 |
 
 **返回值：**
 
@@ -1116,8 +1116,8 @@ try {
 
 | 名称                           | 值        | 说明                                                         |
 | --------------------------    | ---------- | ------------------------------------------------------------ |
-| DEFAULT                       | 0x00000000 | 用户获取默认包信息，不包含applicationInfo、signatureInfo的信息。 |
-| WITH_APPLICATION_INFO         | 0x00000001 | 用于获取默认包信息和applicationInfo的信息，获取的applicationInfo中不包含iconData的信息。 |
-| WITH_SIGNATURE_INFO           | 0x00000002 | 用于获取默认包信息和signatureInfo的信息。 |
-| WITH_APPLICATION_ICON_INFO    | 0x00000004 | 用户获取默认包信息和applicationInfo的iconData信息。 |
+| DEFAULT                       | 0 | 用户获取默认包信息，不包含applicationInfo、signatureInfo的信息。 |
+| WITH_APPLICATION_INFO         | 1 << 0 | 用于获取默认包信息和applicationInfo的信息，获取的applicationInfo中不包含iconData的信息。 |
+| WITH_SIGNATURE_INFO           | 1 << 1 | 用于获取默认包信息和signatureInfo的信息。 |
+| WITH_APPLICATION_ICON_INFO    | 1 << 2 | 用户获取默认包信息和applicationInfo的iconData信息。 |
 
