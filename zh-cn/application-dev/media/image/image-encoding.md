@@ -110,6 +110,20 @@
 - 方法一：通过PixelMap编码进文件。
 
   <!-- @[packToFile_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+  
+  ``` TypeScript
+  async function packToFileFromPixelMap(context : Context, pixelMap : image.PixelMap) {
+    const imagePackerApi = image.createImagePacker();
+    let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
+    const path : string = context.cacheDir + '/pixel_map.jpg';
+    let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    try {
+      await imagePackerApi.packToFile(pixelMap, file.fd, packOpts);
+    } catch (error) {
+      console.error('Failed to pack the pixelMap to file. And the error is: ' + error);
+    }
+  }
+  ```
 
 - 方法二：通过imageSource编码进文件。
 
