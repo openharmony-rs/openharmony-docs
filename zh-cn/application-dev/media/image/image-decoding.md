@@ -96,6 +96,11 @@
    - 方法一：通过沙箱路径创建ImageSource。沙箱路径可以通过步骤2的方法一获取。
 
      <!-- @[createImageSource_filePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
+     ``` TypeScript
+     // path为已获得的沙箱路径。
+     const imageSource : image.ImageSource = image.createImageSource(filePath);
+     ```
 
    - 方法二：通过文件描述符fd创建ImageSource。文件描述符可以通过步骤2的方法二获取。
 
