@@ -46,6 +46,23 @@
    - 方法三：通过资源管理器获取资源文件的ArrayBuffer。具体请参考[资源管理器API参考文档](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfilecontent9-1)。该方法需要导入\@kit.LocalizationKit模块。
    
      <!-- @[get_fileBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
+     ``` TypeScript
+     async function getFileBuffer(context: Context, fileName: string): Promise<ArrayBuffer | undefined> {
+       try {
+         const resourceMgr: resourceManager.ResourceManager = context.resourceManager;
+         // 获取资源文件内容，返回Uint8Array。
+         const fileData: Uint8Array = await resourceMgr.getRawFileContent(fileName);
+         console.info('Successfully get the RawFileContent.');
+         // 转为ArrayBuffer并返回。
+         const buffer: ArrayBuffer = fileData.buffer.slice(0);
+         return buffer;
+       } catch (error) {
+         console.error(`Failed to get the RawFileContent with error: ${error}.`);
+         return undefined;
+       }
+     }
+     ```
    
    - 方法四：通过资源管理器获取资源文件的RawFileDescriptor。具体请参考[资源管理器API参考文档](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9-1)。该方法需要导入\@kit.LocalizationKit模块。
      
