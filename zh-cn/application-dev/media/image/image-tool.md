@@ -26,7 +26,34 @@ Exif信息的读取与编辑相关API的详细介绍请参见[API参考](../../r
    
    ``` TypeScript
    // 导入相关模块包。
-   import { image } from '@kit.ImageKit';
+   <!-- @[get_exif](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ExifUtility.ets) -->   
+   
+   ``` TypeScript
+   // 获取指定key的Exif信息接口示例
+   async getExif(imageSourceApi: image.ImageSource | undefined, key: image.PropertyKey): Promise<string> {
+     let info: string = '';
+     if (imageSourceApi) {
+       console.info('getExif: The imageSourceApi is not undefined.');
+       // 根据传入的key获取其Exif信息
+       let options: image.ImagePropertyOptions = { index: 0, defaultValue: 'This key has no value!' };
+       try {
+         let data = await imageSourceApi.getImageProperty(key, options);
+         info = `Succeeded in getting the ${key}'s value: ${data}.`;
+         console.info(info);
+         return info; // 获取key值成功时返回获取到的key值
+       } catch (error) {
+         info =
+           `Failed to get the value of the ${key} with error: ${error}.`;
+         console.error(info);
+         return info; // 获取key值失败时返回错误信息
+       }
+     } else {
+       info = 'getExif: The imageSourceApi is undefined.';
+       console.info(info);
+       return info; // 如果 imageSourceApi 是 undefined，则直接返回信息
+     }
+   }
+   ```
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
