@@ -42,6 +42,15 @@
    - 方法二：通过沙箱路径获取图片的文件描述符。具体请参考[file.fs API参考文档](../../reference/apis-core-file-kit/js-apis-file-fs.md)。该方法需要导入\@kit.CoreFileKit模块。
    
      <!-- @[get_fileFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
+     ``` TypeScript
+     function getFileFd(context: Context, fileName: string): number | undefined {
+       const filePath: string = context.cacheDir + '/' + fileName;
+       const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+       const fd: number = file?.fd;
+       return fd;
+     }
+     ```
       
    - 方法三：通过资源管理器获取资源文件的ArrayBuffer。具体请参考[资源管理器API参考文档](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfilecontent9-1)。该方法需要导入\@kit.LocalizationKit模块。
 
