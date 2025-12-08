@@ -134,20 +134,29 @@
 
 定义焦点轴事件的轴类型。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
-
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 值   | 说明                               |
 | ------- | ---- | ---------------------------------- |
-| ABS_X  | 0    | 游戏手柄X轴。 |
-| ABS_Y  | 1    | 游戏手柄Y轴。 |
-| ABS_Z  | 2    | 游戏手柄Z轴。 |
-| ABS_RZ | 3    | 游戏手柄RZ轴。 |
-| ABS_GAS | 4    | 游戏手柄GAS轴。 |
-| ABS_BRAKE | 5    | 游戏手柄BRAKE轴。 |
-| ABS_HAT0X | 6    | 游戏手柄HAT0X轴。 |
-| ABS_HAT0Y | 7    | 游戏手柄HAT0Y轴。 |
+| ABS_X  | 0    | 游戏手柄X轴。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| ABS_Y  | 1    | 游戏手柄Y轴。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| ABS_Z  | 2    | 游戏手柄Z轴。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| ABS_RZ | 3    | 游戏手柄RZ轴。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| ABS_GAS | 4    | 游戏手柄GAS轴。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| ABS_BRAKE | 5    | 游戏手柄BRAKE轴。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| ABS_HAT0X | 6    | 游戏手柄HAT0X轴。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| ABS_HAT0Y | 7    | 游戏手柄HAT0Y轴。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| ABS_RX<sup>23+</sup> | 8 | 游戏手柄RX轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_RY<sup>23+</sup> | 9 | 游戏手柄RY轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_THROTTLE<sup>23+</sup> | 10 | 游戏手柄THROTTLE轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_RUDDER<sup>23+</sup> | 11 | 游戏手柄RUDDER轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_WHEEL<sup>23+</sup> | 12 | 游戏手柄WHEEL轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_HAT1X<sup>23+</sup> | 13 | 游戏手柄HAT1X轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_HAT1Y<sup>23+</sup> | 14 | 游戏手柄HAT1Y轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_HAT2X<sup>23+</sup> | 15 | 游戏手柄HAT2X轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_HAT2Y<sup>23+</sup> | 16 | 游戏手柄HAT2Y轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_HAT3X<sup>23+</sup> | 17 | 游戏手柄HAT3X轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_HAT3Y<sup>23+</sup> | 18 | 游戏手柄HAT3Y轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## AxisType<sup>22+</sup>
 
