@@ -224,6 +224,8 @@
 | [ArkUI_LayoutSafeAreaEdge](#arkui_layoutsafeareaedge)               | ArkUI_LayoutSafeAreaEdge         | 定义扩展安全区域的方向的枚举值。                         |
 | [ArkUI_LocalizedAlignment](#arkui_localizedalignment)               | ArkUI_LocalizedAlignment         | 定义Stack容器中子组件的对齐规则。                         |
 | [ArkUI_RenderStrategy](#arkui_renderstrategy)                       | ArkUI_RenderStrategy             | 定义组件绘制圆角的模式。                |
+| [ArkUI_MarqueeStartPolicy](#arkui_marqueestartpolicy)| ArkUI_MarqueeStartPolicy| 定义跑马灯启动策略枚举。 |
+| [ArkUI_MarqueeUpdatePolicy](#arkui_marqueeupdatepolicy)| ArkUI_MarqueeUpdatePolicy| 定义跑马灯更新策略枚举。 |
 
 ### 函数
 
@@ -563,6 +565,26 @@
 | [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetResponseType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextResponseType* responseType)](#oh_arkui_textselectionmenuoptions_getresponsetype) | - | 获取自定义文本选择菜单的响应类型。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuShowCallback(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, void* userData, void (\*callback)(int32_t start, int32_t end, void* userData))](#oh_arkui_textselectionmenuoptions_registeronmenushowcallback) | - | 注册自定义文本选择菜单显示事件回调。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, void* userData, void (\*callback)(int32_t start, int32_t end, void* userData))](#oh_arkui_textselectionmenuoptions_registeronmenuhidecallback) | - | 注册自定义文本选择菜单隐藏事件回调。 |
+| [ArkUI_TextMarqueeOptions* OH_ArkUI_TextMarqueeOptions_Create()](#oh_arkui_textmarqueeoptions_create) | - | 创建文本跑马灯模式配置项。 |
+| [void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_dispose) | - | 销毁文本跑马灯模式配置项指针。 |
+| [void OH_ArkUI_TextMarqueeOptions_SetStart(ArkUI_TextMarqueeOptions* option, bool start)](#oh_arkui_textmarqueeoptions_setstart) | - | 设置文本跑马灯模式配置项是否播放。|
+| [bool OH_ArkUI_TextMarqueeOptions_GetStart(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstart) | - | 获取文本跑马灯模式配置项是否播放。|
+| [void OH_ArkUI_TextMarqueeOptions_SetStep(ArkUI_TextMarqueeOptions* option, float step)](#oh_arkui_textmarqueeoptions_setstep) | - | 设置文本跑马灯模式配置项的步长。 |
+| [float OH_ArkUI_TextMarqueeOptions_GetStep(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstep) | - | 获取文本跑马灯模式配置项的步长。|
+| [void OH_ArkUI_TextMarqueeOptions_SetSpacing(ArkUI_TextMarqueeOptions* option, float spacing)](#oh_arkui_textmarqueeoptions_setspacing) | - | 设置文本跑马灯模式配置项的首尾间距。 |
+| [float OH_ArkUI_TextMarqueeOptions_GetSpacing(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getspacing) | - | 获取文本跑马灯模式配置项的首尾间距。 |
+| [void OH_ArkUI_TextMarqueeOptions_SetLoop(ArkUI_TextMarqueeOptions* option, int32_t loop)](#oh_arkui_textmarqueeoptions_setloop) | - | 设置文本跑马灯模式配置项的重复滚动的次数，小于等于零时无限循环。 |
+| [int32_t OH_ArkUI_TextMarqueeOptions_GetLoop(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getloop) | - | 获取文本跑马灯模式配置项的重复滚动的次数。 |
+| [void OH_ArkUI_TextMarqueeOptions_SetFromStart(ArkUI_TextMarqueeOptions* option, bool fromStart)](#oh_arkui_textmarqueeoptions_setfromstart) | - | 设置文本跑马灯模式配置项的运行方向。 |
+| [bool OH_ArkUI_TextMarqueeOptions_GetFromStart(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getfromstart) | - | 获取文本跑马灯模式配置项的运行方向。 |
+| [void OH_ArkUI_TextMarqueeOptions_SetDelay(ArkUI_TextMarqueeOptions* option, int32_t delay)](#oh_arkui_textmarqueeoptions_setdelay) | - | 设置文本跑马灯模式配置项的每轮滚动延迟时间。|
+| [int32_t OH_ArkUI_TextMarqueeOptions_GetDelay(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getdelay) | - | 获取文本跑马灯模式配置项的每轮滚动延迟时间。 |
+| [void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bool fadeout)](#oh_arkui_textmarqueeoptions_setfadeout) | - | 设置文本跑马灯模式配置项是否支持文字超长时的渐隐效果。当Text内容超出显示范围时，未完全展现的文字边缘将应用渐隐效果。若两端均有文字未完全显示，则两端同时应用渐隐效果。在渐隐效果开启状态下，[NODE_CLIP](./capi-native-node-h.md#arkui_nodeattributetype)属性将自动锁定为true，不允许设置为false。 |
+| [bool OH_ArkUI_TextMarqueeOptions_GetFadeout(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getfadeout) | - | 获取文本跑马灯模式配置项是否支持文字超长时的渐隐效果。 |
+| [void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeStartPolicy startPolicy)](#oh_arkui_textmarqueeoptions_setstartpolicy) | - | 设置文本跑马灯模式配置项的启动策略。 |
+| [ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstartpolicy) | - | 获取文本跑马灯模式配置项的启动策略。 |
+| [void OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeUpdatePolicy updatePolicy)](#oh_arkui_textmarqueeoptions_setupdatepolicy) | - | 设置文本跑马灯模式配置项的更新策略。 |
+| [ArkUI_MarqueeUpdatePolicy OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getupdatepolicy) | - | 获取文本跑马灯模式配置项的更新策略。|
 
 ## 枚举类型说明
 
@@ -3292,6 +3314,38 @@ enum ArkUI_TextResponseType
 | ARKUI_TEXT_RESPONSE_TYPE_LONG_PRESS = 1 | 通过长按触发菜单弹出。 |
 | ARKUI_TEXT_RESPONSE_TYPE_SELECT = 2 | 通过鼠标选中触发菜单弹出。 |
 | ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3 | 如果设置为此类型且设置了其他类型时，触发其他类型的操作会显示对应类型的菜单。如果设置为此类型但其他类型未设置时，触发其他类型的操作会显示此类型对应的菜单。例如，同时设置了响应类型为ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK、ARKUI_TEXT_RESPONSE_TYPE_DEFAULT的两个菜单，此时通过鼠标右键会触发ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK对应的菜单弹出，长按则会触发ARKUI_TEXT_RESPONSE_TYPE_DEFAULT对应的菜单弹出。 |
+
+### ArkUI_MarqueeStartPolicy
+```
+enum ArkUI_MarqueeStartPolicy
+```
+
+**描述：**
+
+定义跑马灯启动策略枚举。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_MARQUEESTARTPOLICY_DEFAULT = 0 | 默认持续滚动。 |
+| ARKUI_MARQUEESTARTPOLICY_ONFOCUS = 1 | 获焦以及鼠标悬浮时开始滚动。|
+
+### ArkUI_MarqueeUpdatePolicy
+```
+enum ArkUI_MarqueeUpdatePolicy
+```
+
+**描述：**
+
+定义跑马灯更新策略枚举。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_MARQUEEUPDATEPOLICY_DEFAULT = 0 | 跑马灯组件属性更新后，从开始位置，运行跑马灯效果。 |
+| ARKUI_MARQUEEUPDATEPOLICY_PRESERVEPOSITION = 1 | 跑马灯组件属性更新后，保持当前位置，运行跑马灯效果。|
 
 ### ArkUI_LayoutSafeAreaType
 
@@ -11318,3 +11372,419 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback(Ark
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_TextMarqueeOptions_Create
+``` c
+ArkUI_TextMarqueeOptions* OH_ArkUI_TextMarqueeOptions_Create()
+```
+
+**描述：**
+
+创建文本跑马灯模式配置项。
+
+**起始版本：** 23
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)*| 创建文本跑马灯模式配置项的对象指针。|
+
+### OH_ArkUI_TextMarqueeOptions_Dispose
+``` c
+void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)
+```
+
+**描述：**
+
+销毁文本跑马灯模式配置项指针。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 需要销毁的文本跑马灯模式配置项对象指针。 |
+
+
+### OH_ArkUI_TextMarqueeOptions_SetStart
+``` c
+void OH_ArkUI_TextMarqueeOptions_SetStart(ArkUI_TextMarqueeOptions* option, bool start)
+```
+
+**描述：**
+
+设置文本跑马灯模式配置项是否播放。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 文本跑马灯模式配置项。 |
+| bool start | 是否播放。true表示播放，false表示不播放。 |
+
+### OH_ArkUI_TextMarqueeOptions_GetStart
+``` c
+bool OH_ArkUI_TextMarqueeOptions_GetStart(ArkUI_TextMarqueeOptions* option)
+```
+
+**描述：**
+
+获取文本跑马灯模式配置项是否播放。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 文本跑马灯模式配置项。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 是否播放。true表示播放，false表示不播放。|
+
+
+### OH_ArkUI_TextMarqueeOptions_SetStep
+``` c
+void OH_ArkUI_TextMarqueeOptions_SetStep(ArkUI_TextMarqueeOptions* option, float step)
+```
+
+**描述：**
+
+设置文本跑马灯模式配置项的步长。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 文本跑马灯模式配置项。 |
+| float step | 步长。单位：vp。 |
+
+### OH_ArkUI_TextMarqueeOptions_GetStep
+``` c
+float OH_ArkUI_TextMarqueeOptions_GetStep(ArkUI_TextMarqueeOptions* option)
+```
+
+**描述：**
+
+获取文本跑马灯模式配置项的步长。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 文本跑马灯模式配置项。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 步长。单位：vp。|
+
+
+### OH_ArkUI_TextMarqueeOptions_SetSpacing
+``` c
+void OH_ArkUI_TextMarqueeOptions_SetSpacing(ArkUI_TextMarqueeOptions* option, float spacing)
+```
+
+**描述：**
+
+设置文本跑马灯模式配置项的首尾间距。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 文本跑马灯模式配置项。 |
+| float spacing | 首尾间距。单位：vp。|
+
+### OH_ArkUI_TextMarqueeOptions_GetSpacing
+``` c
+float OH_ArkUI_TextMarqueeOptions_GetSpacing(ArkUI_TextMarqueeOptions* option)
+```
+
+**描述：**
+
+获取文本跑马灯模式配置项的首尾间距。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 文本跑马灯模式配置项。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 首尾间距。单位：vp。|
+
+
+
+### OH_ArkUI_TextMarqueeOptions_SetLoop
+``` c
+void OH_ArkUI_TextMarqueeOptions_SetLoop(ArkUI_TextMarqueeOptions* option, int32_t loop)
+```
+
+**描述：**
+
+设置文本跑马灯模式配置项的重复滚动的次数，小于等于零时无限循环。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 文本跑马灯模式配置项。 |
+| int32_t loop | 设置的重复滚动的次数。 |
+
+### OH_ArkUI_TextMarqueeOptions_GetLoop
+``` c
+int32_t OH_ArkUI_TextMarqueeOptions_GetLoop(ArkUI_TextMarqueeOptions* option)
+```
+
+**描述：**
+
+获取文本跑马灯模式配置项的重复滚动的次数。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 文本跑马灯模式配置项。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 重复滚动的次数。|
+
+
+
+### OH_ArkUI_TextMarqueeOptions_SetFromStart
+``` c
+void OH_ArkUI_TextMarqueeOptions_SetFromStart(ArkUI_TextMarqueeOptions* option, bool fromStart)
+```
+
+**描述：**
+
+设置文本跑马灯模式配置项的运行方向。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 文本跑马灯模式配置项。 |
+| bool fromStart | 跑马灯运行方向。true表示从头开始滚动，false表示反向滚动。|
+
+### OH_ArkUI_TextMarqueeOptions_GetFromStart
+``` c
+bool OH_ArkUI_TextMarqueeOptions_GetFromStart(ArkUI_TextMarqueeOptions* option)
+```
+
+**描述：**
+
+获取文本跑马灯模式配置项的运行方向。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 文本跑马灯模式配置项。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 跑马灯运行方向。true表示从头开始滚动，false表示反向滚动。|
+
+
+### OH_ArkUI_TextMarqueeOptions_SetDelay
+``` c
+void OH_ArkUI_TextMarqueeOptions_SetDelay(ArkUI_TextMarqueeOptions* option, int32_t delay)
+```
+
+**描述：**
+
+设置文本跑马灯模式配置项的每轮滚动延迟时间。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 文本跑马灯模式配置项。 |
+| int32_t delay| 每轮滚动延迟时间，单位为毫秒。 |
+
+### OH_ArkUI_TextMarqueeOptions_GetDelay
+``` c
+int32_t OH_ArkUI_TextMarqueeOptions_GetDelay(ArkUI_TextMarqueeOptions* option)
+```
+
+**描述：**
+
+获取文本跑马灯模式配置项的每轮滚动延迟时间。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 文本跑马灯模式配置项。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回每轮滚动延迟时间，单位为毫秒。|
+
+### OH_ArkUI_TextMarqueeOptions_SetFadeout
+``` c
+void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bool fadeout)
+```
+
+**描述：**
+
+设置文本跑马灯模式配置项是否支持文字超长时的渐隐效果。当Text内容超出显示范围时，未完全展现的文字边缘将应用渐隐效果。<br> 若两端均有文字未完全显示，则两端同时应用渐隐效果。<br> 在渐隐效果开启状态下，[NODE_CLIP](./capi-native-node-h.md#arkui_nodeattributetype)属性将自动锁定为true，不允许设置为false。
+
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 文本跑马灯模式配置项。 |
+| bool fadeout| 跑马灯是否支持文字超长时的渐隐效果。<br/>true表示支持渐隐效果，false表示不支持渐隐效果。 |
+
+### OH_ArkUI_TextMarqueeOptions_GetFadeout
+``` c
+bool OH_ArkUI_TextMarqueeOptions_GetFadeout(ArkUI_TextMarqueeOptions* option)
+```
+
+**描述：**
+
+获取文本跑马灯模式配置项是否支持文字超长时的渐隐效果。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 文本跑马灯模式配置项。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 是否支持文字超长时的渐隐效果。|
+
+
+### OH_ArkUI_TextMarqueeOptions_SetStartPolicy
+``` c
+void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeStartPolicy startPolicy)
+
+```
+
+**描述：**
+
+设置文本跑马灯模式配置项的启动策略。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 文本跑马灯模式配置项。 |
+| [ArkUI_MarqueeStartPolicy](#arkui_marqueestartpolicy) startPolicy| 启动策略。 |
+
+### OH_ArkUI_TextMarqueeOptions_GetStartPolicy
+``` c
+ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMarqueeOptions* option)
+```
+
+**描述：**
+
+获取文本跑马灯模式配置项的启动策略。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 文本跑马灯模式配置项。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_MarqueeStartPolicy | 启动策略。|
+
+
+### OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy
+``` c
+void OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy(ArkUI_TextMarqueeOptions* option,
+    ArkUI_MarqueeUpdatePolicy updatePolicy)
+```
+
+**描述：**
+
+设置文本跑马灯模式配置项的更新策略。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 文本跑马灯模式配置项。 |
+| [ArkUI_MarqueeUpdatePolicy](#arkui_marqueeupdatepolicy) updatePolicy| 更新策略。 |
+
+### OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy
+``` c
+ArkUI_MarqueeUpdatePolicy OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy(ArkUI_TextMarqueeOptions* option)
+```
+
+**描述：**
+
+获取文本跑马灯模式配置项的更新策略。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)* option | 文本跑马灯模式配置项。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_MarqueeUpdatePolicy](#arkui_marqueeupdatepolicy) | 更新策略。|
