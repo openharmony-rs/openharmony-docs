@@ -1425,7 +1425,6 @@ convertRelativeToGlobalCoordinate(relativePosition: RelativePosition): Position
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
 | 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
 
@@ -1479,7 +1478,6 @@ convertGlobalToRelativeCoordinate(position: Position, displayId?: number): Relat
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
 | 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
 
