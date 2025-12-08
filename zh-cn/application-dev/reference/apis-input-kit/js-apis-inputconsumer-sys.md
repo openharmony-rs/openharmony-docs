@@ -29,7 +29,7 @@ on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): v
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onKey](#on_key_sta)
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onKey](#on_key_sta)。
 
 **ArkTS-Dyn起始版本**：8
 
@@ -85,7 +85,7 @@ onKey(callback: Callback&lt;KeyOptions&gt;): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#on_key_dyn)
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#on_key_dyn)。
 
 **ArkTS-Sta起始版本**：22
 
@@ -143,7 +143,7 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offKey](#off_key_sta)
+**相关接口**: 该接口对应的ArkTS-Sta接口是[offKey](#off_key_sta)。
 
 **参数：** 
 
@@ -224,7 +224,7 @@ offKey(keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#off_key_dyn)
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#off_key_dyn)。
 
 **参数：** 
 
