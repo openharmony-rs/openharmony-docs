@@ -67,24 +67,13 @@ inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => 
 
 <!-- @[input_case_input_switchInputMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/components/Submenu.ets) -->
 
-```ts
-import { inputMethod } from '@kit.IMEKit';
-
-export class KeyboardController {
-  async switchInputMethod(){
-    try {
-      let inputMethods: Array<inputMethod.InputMethodProperty> =
-        await inputMethod.getSetting().getInputMethods(true); // 获取已使能的输入法列表
-      let currentInputMethod: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(); // 获取当前输入法
-      for (let i = 0; i < inputMethods.length; i++) {
-        if (inputMethods[i].name != currentInputMethod.name) { // 判断不是当前输入法时，切换到该输入法，实际开发中可以切换到固定输入法
-          await inputMethod.switchInputMethod(inputMethods[i]);
-          return;
-        }
-      }
-    } catch (err) {
-      let error: BusinessError = err as BusinessError;
-      console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
+``` TypeScript
+async switchInputMethod(item: string) {
+  this.inputMethods = await inputMethod.getSetting().getInputMethods(true); // 获取已使能的输入法列表
+  let currentInputMethod = inputMethod.getCurrentInputMethod(); // 获取当前输入法
+  for (let i = 0; i < this.inputMethods.length; i++) {
+    if (item != currentInputMethod.name) { // 判断不是当前输入法时，切换到该输入法，实际开发中可以切换到固定输入法
+      await inputMethod.switchInputMethod(this.inputMethods[i]);
     }
   }
 }
