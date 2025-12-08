@@ -51,23 +51,23 @@
 3. 调用[createNetConnection](../reference/apis-network-kit/js-apis-net-connection.md#connectioncreatenetconnection)方法，指定网络能力、网络类型和超时时间(可选，如不传入代表默认网络；创建不同于默认网络时可通过指定这些参数完成)，创建一个NetConnection对象。
 
    <!-- @[notification_network_create_NetConnection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
-
-``` TypeScript
-let netSpecifier: connection.NetSpecifier = {
-  netCapabilities: {
-    // 假设当前默认网络是蜂窝网络连接，需要创建WIFI网络连接，可指定网络类型为WIFI
-    bearerTypes: [connection.NetBearType.BEARER_WIFI],
-    // 指定网络能力为Internet
-    networkCap: [connection.NetCap.NET_CAPABILITY_INTERNET],
-  }
-};
-
-// 指定超时时间为10s(默认值为0)
-let TIMEOUT = 10 * NETWORK_CONNECTION_TIMEOUT;
-
-// 创建NetConnection对象
-let conn = connection.createNetConnection(netSpecifier, TIMEOUT);
-```
+   
+   ``` TypeScript
+   let netSpecifier: connection.NetSpecifier = {
+     netCapabilities: {
+       // 假设当前默认网络是蜂窝网络连接，需要创建WIFI网络连接，可指定网络类型为WIFI
+       bearerTypes: [connection.NetBearType.BEARER_WIFI],
+       // 指定网络能力为Internet
+       networkCap: [connection.NetCap.NET_CAPABILITY_INTERNET],
+     }
+   };
+   
+   // 指定超时时间为10s(默认值为0)
+   let TIMEOUT = 10 * NETWORK_CONNECTION_TIMEOUT;
+   
+   // 创建NetConnection对象
+   let conn = connection.createNetConnection(netSpecifier, TIMEOUT);
+   ```
 
 4. 调用该对象的[on()](../reference/apis-network-kit/js-apis-net-connection.md#onnetavailable)方法，传入type和callback，订阅关心的事件。
 
