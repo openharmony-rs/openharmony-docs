@@ -57,15 +57,13 @@ inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inp
 <!-- @[input_case_input_immersiveMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
 
 ``` TypeScript
-    // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
-    // [Start input_case_input_immersiveModeeditorAttributeChanged]
-    inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
-      // [End input_case_input_immersiveModeeditorAttributeChanged]
-      console.log('recv editorAttributeChanged, immersiveMode: ', JSON.stringify(attr.immersiveMode));
-      if (attr.immersiveMode == 1) {
-        this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
-        console.log('recv editorAttributeChanged, panel:', JSON.stringify(this.panel?.getImmersiveMode()));
-      }
-    })
+// 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
+inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
+  console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
+  if (attr.immersiveMode == 1) {
+    this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
+    console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
+  }
+})
 ```
 
