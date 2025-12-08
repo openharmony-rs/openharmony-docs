@@ -87,6 +87,21 @@
    方法二：通过imageSource进行编码。
    
    <!-- @[packToData_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->  
+   
+   ``` TypeScript
+   async function packToDataFromImageSource(imageSource : image.ImageSource) {
+     const imagePackerApi = image.createImagePacker();
+     let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
+     try {
+       let data = await imagePackerApi.packToData(imageSource, packOpts);
+       // data 为编码获取到的文件流，写入文件保存即可得到一张图片。
+       copyData = new ArrayBuffer(0);
+       copyData = data;
+     } catch (error) {
+       console.error('Failed to pack the imageSource to data. And the error is: ' + error);
+     }
+   }
+   ```
 
 ### 图片编码进文件
 
