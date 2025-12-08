@@ -2120,9 +2120,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 open(mode: string, callback: AsyncCallback&lt;number&gt;): void
 
-打开当前文件，使用callback方式返回异步结果。
+打开当前文件。使用callback异步回调。
 
-> **注意**：
+> **注意：**
 >
 > 当前写操作是互斥的操作，写操作完成后需要调用close进行释放。
 
@@ -2163,7 +2163,7 @@ open(mode: string): Promise&lt;number&gt;
 
 打开当前文件。使用Promise异步回调。
 
-> **注意**：
+> **注意：**
 >
 > 当前写操作是互斥的操作，写操作完成后需要调用close进行释放。
 
@@ -2650,7 +2650,7 @@ getExif(): Promise&lt;string&gt;
 
 读取jpg格式图片的Exif标签，并返回json格式的字符串。使用Promise异步回调。
 
-> **注意**：
+> **注意：**
 >
 > 此接口返回的是Exif标签组成的json格式的字符串，完整Exif信息由all_exif与[ImageVideoKey](#imagevideokey).USER_COMMENT组成，fetchColumns需要传入这两个字段。
 
@@ -2742,9 +2742,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getExif(callback: AsyncCallback&lt;string&gt;): void
 
-返回jpg格式图片Exif标签组成的json格式的字符串，该方法使用callback方式返回结果。
+读取jpg格式图片的Exif标签，并返回json格式的字符串。使用callback异步回调。
 
-> **注意**：
+> **注意：**
 >
 > 此接口返回的是Exif标签组成的json格式的字符串，完整Exif信息由all_exif与[ImageVideoKey](#imagevideokey).USER_COMMENT组成，fetchColumns需要传入这两个字段。
 
@@ -2848,7 +2848,7 @@ setUserComment(userComment: string): Promise&lt;void&gt;
 
 修改图片或者视频的备注信息。使用Promise异步回调。
 
-> **注意**：
+> **注意：**
 >
 > 此接口只可修改图片或者视频的备注信息。
 
@@ -2908,9 +2908,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 setUserComment(userComment: string, callback: AsyncCallback&lt;void&gt;): void
 
-修改图片或者视频的备注信息，该方法使用callback形式来返回结果。
+修改图片或者视频的备注信息。使用callback异步回调。
 
-> **注意**：
+> **注意：**
 >
 > 此接口只可修改图片或者视频的备注信息。
 
@@ -3488,11 +3488,11 @@ async function example(mgr: userFileManager.UserFileManager) {
 | ------------ | ------ | ---- | ---- | ------- |
 | albumType<sup>10+</sup> | [AlbumType]( #albumtype10) | 是    | 否    | 相册类型。    |
 | albumSubType<sup>10+</sup> | [AlbumSubType]( #albumsubtype10) | 是    | 否   | 相册子类型。    |
-| albumName | string | 否    | 否   | 相册名称。<br>**说明：** 用户相册可写，预置相册不可写。    |
+| albumName | string | 否    | 否   | 相册名称。<br/>**说明：**<br/>用户相册可写，预置相册不可写。    |
 | albumUri | string | 是    | 否    | 相册Uri。   |
 | dateModified  | number | 是    | 否    |  相册的修改时间。 |
 | count | number | 是    | 否    |  相册中文件数量。 |
-| coverUri | string | 否    | 否	    | 封面文件Uri。<br>**说明：** 用户相册可写，预置相册不可写。 |
+| coverUri | string | 否    | 否     | 封面文件Uri。<br>**说明：**<br/>用户相册可写，预置相册不可写。 |
 
 ### getPhotoAssets
 
@@ -4053,9 +4053,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 deletePhotoAssets(assets: Array&lt;FileAsset&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-从回收站中彻底删除图片或者视频，需要先在回收站中预置文件资源。该方法使用callback形式来返回结果。
+从回收站中彻底删除图片或者视频，需要先在回收站中预置文件资源。使用callback异步回调。
 
-> **注意**：
+> **注意：**
 >
 > 此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
 
@@ -4116,7 +4116,7 @@ deletePhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
 从回收站中彻底删除图片或者视频，需要先在回收站中预置文件资源。使用Promise异步回调。
 
-> **注意**：
+> **注意：**
 >
 > 此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
 
