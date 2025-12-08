@@ -130,7 +130,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
-  ![2023032401632](figures/2023032401632.jpg)
+  ![2023032401632](figures/2023032401632.png)
 
 - 创建一个宽高都为300的shape组件，背景色为黄色，创建一个宽高都为300的viewPort。用一个蓝色的矩形来填充viewPort，在viewPort中绘制一个半径为75的圆。
 
@@ -517,7 +517,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
-  ![场景1](figures/场景1.jpg)
+  ![场景1](figures/场景1.png)
 
 ### 绘制圆和圆环
 
