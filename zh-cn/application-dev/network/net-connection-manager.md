@@ -90,15 +90,15 @@
 5. 调用该对象的[register()](../reference/apis-network-kit/js-apis-net-connection.md#register)方法，订阅指定网络状态变化的通知。当网络可用时，会收到netAvailable事件的回调；当网络不可用时，会收到netUnavailable事件的回调。
 
    <!-- @[notification_network_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
-
-``` TypeScript
-// 订阅连接状态变化
-conn.register((err: BusinessError, data: void) => {
-// ···
-    hilog.error(0x0000, 'testTag', 'Error occurred during connection:', JSON.stringify(err));
-    // ···
-});
-```
+   
+   ``` TypeScript
+   // 订阅连接状态变化
+   conn.register((err: BusinessError, data: void) => {
+     // ...
+       hilog.error(0x0000, 'testTag', 'Error occurred during connection:', JSON.stringify(err));
+       // ...
+   });
+   ```
 
 6. 当不使用该网络时，可以调用该对象的[unregister()](../reference/apis-network-kit/js-apis-net-connection.md#unregister)方法，取消订阅。
 
