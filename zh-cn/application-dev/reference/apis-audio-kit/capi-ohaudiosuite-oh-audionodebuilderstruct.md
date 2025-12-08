@@ -12,7 +12,7 @@ typedef struct OH_AudioNodeBuilderStruct OH_AudioNodeBuilder
 
 ## 概述
 
-声明音频编创节点的构造器。<br> 构造器实例通常用来设置音频流属性和创建音频流。
+声明音频编创节点的构造器。用于构建OH_AudioNode，配置输入输出节点数据格式，配置输入节点回调接口。
 
 **起始版本：** 22
 
