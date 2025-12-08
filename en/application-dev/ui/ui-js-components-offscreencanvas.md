@@ -4,11 +4,11 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-**OffscreenCanvasRenderingContext2D** allows you to draw rectangles, text, images, and other objects on an offscreen canvas, which is a new buffer created by the GPU outside of the current buffer. For details, see [OffscreenCanvasRenderingContext2D](../reference/apis-arkui/arkui-js/js-offscreencanvasrenderingcontext2d.md).
+**OffscreenCanvas** enables rendering of rectangles, text, images, and other graphical objects onto an offscreen canvas, a separate GPU-allocated buffer isolated from the current display buffer. For details, see [OffscreenCanvasRenderingContext2D](../reference/apis-arkui/arkui-js/js-offscreencanvasrenderingcontext2d.md).
 
-In the following example, you first create an offscreen canvas, and then create a **getContext2d** object on the canvas, which is an image, and finally set the **filter** attribute for the image.
+The following example creates an **OffscreenCanvas** object, obtains its rendering context using **getContext('2d')**, and sets the **filter** attribute to modify the image style.
 
 ```html
 <!-- xxx.hml -->
@@ -103,7 +103,7 @@ Use **isPointInPath** to determine whether a coordinate is within the path area 
 <!-- xxx.hml -->
 <div class="container">
   <div class="content">
-    <text>Coordinate: {{X}}, {{Y}}</text>
+    <text>Coordinates: {{X}}, {{Y}}</text>
     <text>In path:{{textValue}}</text>
     <text>In stroke:{{textValue1}}</text>
   </div>
