@@ -29,6 +29,15 @@
 
    <!-- @[create_picturePackOpts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    
+   ``` TypeScript
+   let packOpts: image.PackingOption = {
+     format: 'image/jpeg',
+     quality: 95,
+     desiredDynamicRange: image.PackingDynamicRange.AUTO,
+     needsPackProperties: true
+   };
+   ```
+   
 ### 图片编码进文件流
 进行图片编码，并保存编码后的data。在进行编码前，需要先通过解码获取picture，可参考[使用ImageSource完成多图对象解码](./image-picture-decoding.md)。
 
