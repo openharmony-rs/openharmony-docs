@@ -199,7 +199,7 @@ try {
         authResult: backgroundTaskManager.UserAuthResult.DENIED
     };
     backgroundTaskManager.setBackgroundTaskState(backgroundTaskStateInfo);
-    console.info("Operation setBackgroundTaskState succeeded.");
+    console.info('Operation setBackgroundTaskState succeeded.');
 } catch (error) {
     console.error(`Operation setBackgroundTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
