@@ -1217,7 +1217,7 @@ try {
     console.error(`Failed to obtain global window mode. Cause code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
-  let error = exception as BusinesError;
+  let error = exception as BusinessError;
   console.error(`Failed to obtain global window mode. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
