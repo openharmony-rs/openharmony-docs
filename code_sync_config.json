@@ -29621,5 +29621,65 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/file-management/file-access-across-devices.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"distributed_Data_Permission",
+						"start_line":55
+					},
+					{
+						"end_line":50,
+						"name":"access_A_write_distributed_file",
+						"start_line":33
+					},
+					{
+						"end_line":121,
+						"name":"access_ConnectDfs",
+						"start_line":73
+					},
+					{
+						"end_line":145,
+						"name":"access_DisConnectDfs",
+						"start_line":128
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/file-management/file-copy-across-devices.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"distributed_Data_Permission",
+						"start_line":55
+					},
+					{
+						"end_line":180,
+						"name":"copy_sand_to_distributed",
+						"start_line":150
+					},
+					{
+						"end_line":240,
+						"name":"copy_distributed_to_sand",
+						"start_line":185
+					},
+					{
+						"end_line":145,
+						"name":"access_DisConnectDfs",
+						"start_line":128
+					}
+				]
+			}
+		]
 	}
 ]
