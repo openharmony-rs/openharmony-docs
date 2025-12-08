@@ -424,19 +424,19 @@ function socketTest() {
    调用[getAddressesByName](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetaddressesbyname)方法，使用默认网络解析主机名以获取所有IP地址。
 
     <!-- @[resolve_the_domain_name_and_get_all_ips](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetworkIPBtn.ets) -->
- 
- ``` TypeScript
- // 从@kit.NetworkKit中导入connection命名空间。
- import { connection } from '@kit.NetworkKit';
- import { BusinessError } from '@kit.BasicServicesKit';
- import { hilog } from '@kit.PerformanceAnalysisKit';
- // ···
-       // 使用默认网络解析主机名以获取所有IP地址
-       connection.getAddressesByName('xxxx').then((data: connection.NetAddress[]) => {
-         hilog.info(0x0000, 'testTag', 'Successfully retrieved default network IP address: ' + JSON.stringify(data));
-         // ···
-       })
- ```
+    
+    ``` TypeScript
+    // 从@kit.NetworkKit中导入connection命名空间。
+    import { connection } from '@kit.NetworkKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    // ...
+          // 使用默认网络解析主机名以获取所有IP地址
+          connection.getAddressesByName('xxxx').then((data: connection.NetAddress[]) => {
+            hilog.info(0x0000, 'testTag', 'Successfully retrieved default network IP address: ' + JSON.stringify(data));
+            // ...
+          })
+    ```
      
 ## 相关实例
 
