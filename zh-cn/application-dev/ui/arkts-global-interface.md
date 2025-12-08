@@ -412,6 +412,7 @@ export default class EntryAbility extends UIAbility {
 <!-- @[Common_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
+// pages/Index.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { UIContext } from '@kit.ArkUI';
 
@@ -430,6 +431,7 @@ struct Index {
         })
         .onClick(() => {
           // 在有UI实例且上下文明确时调用，此时会根据此时UI上下文对应的实例的像素密度返回计算结果。
+          // 此时UIContext对象的解析策略ResolveStrategy为CALLING_SCOPE。
           let resolvedUIContext = UIContext.resolveUIContext();
           let pxValue = resolvedUIContext.vp2px(20);
         })
