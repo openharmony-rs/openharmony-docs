@@ -127,10 +127,10 @@ let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
 // ···
 tcp.getSocketFd().then((sockfd: number) => {
   statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
-    console.info(JSON.stringify(stats));
+    hilog.info(0x0000, 'testTag', JSON.stringify(stats));
     // ···
   }).catch((err: BusinessError) => {
-    console.error(JSON.stringify(err));
+    hilog.error(0x0000, 'testTag', JSON.stringify(err));
     // ···
   });
 })
@@ -138,10 +138,10 @@ tcp.getSocketFd().then((sockfd: number) => {
 // Obtain the real-time uplink data traffic of the specified socket. 
 tcp.getSocketFd().then((sockfd: number) => {
   statistics.getSockfdTxBytes(sockfd).then((stats: number) => {
-    console.info(JSON.stringify(stats));
+    hilog.info(0x0000, 'testTag', JSON.stringify(stats));
     // ···
   }).catch((err: BusinessError) => {
-    console.error(JSON.stringify(err));
+    hilog.error(0x0000, 'testTag', JSON.stringify(err));
     // ···
   });
 })
@@ -155,7 +155,6 @@ tcp.getSocketFd().then((sockfd: number) => {
 
 ```ts
 import { statistics } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 class IfaceInfo {
   iface: string = "wlan0"
@@ -164,19 +163,19 @@ class IfaceInfo {
 }
 // Obtain the historical data traffic of the specified NIC. 
 statistics.getTrafficStatsByIface(new IfaceInfo()).then((statsInfo: statistics.NetStatsInfo) => {
-  console.log(
+  console.info(
     "getTrafficStatsByIface bytes of received = " +
     JSON.stringify(statsInfo.rxBytes)
   );
-  console.log(
+  console.info(
     "getTrafficStatsByIface bytes of sent = " +
     JSON.stringify(statsInfo.txBytes)
   );
-  console.log(
+  console.info(
     "getTrafficStatsByIface packets of received = " +
     JSON.stringify(statsInfo.rxPackets)
   );
-  console.log(
+  console.info(
     "getTrafficStatsByIface packets of sent = " +
     JSON.stringify(statsInfo.txPackets)
   );
@@ -191,10 +190,10 @@ let uidInfo = new UidInfo()
 
 // Obtain the historical data traffic of the specified application. 
 statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInfo) => {
-  console.log("getTrafficStatsByUid bytes of received = " + JSON.stringify(statsInfo.rxBytes));
-  console.log("getTrafficStatsByUid bytes of sent = " + JSON.stringify(statsInfo.txBytes));
-  console.log("getTrafficStatsByUid packets of received = " + JSON.stringify(statsInfo.rxPackets));
-  console.log("getTrafficStatsByUid packets of sent = " + JSON.stringify(statsInfo.txPackets));
+  console.info("getTrafficStatsByUid bytes of received = " + JSON.stringify(statsInfo.rxBytes));
+  console.info("getTrafficStatsByUid bytes of sent = " + JSON.stringify(statsInfo.txBytes));
+  console.info("getTrafficStatsByUid packets of received = " + JSON.stringify(statsInfo.rxPackets));
+  console.info("getTrafficStatsByUid packets of sent = " + JSON.stringify(statsInfo.txPackets));
 })
 ```
 
@@ -223,4 +222,8 @@ statistics.off('netStatsChange');
 ```
 <!--DelEnd-->
 
+## Samples
 
+The following samples are provided to help you better understand how to develop traffic management features:
+
+- [Traffic Management] (https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case)
