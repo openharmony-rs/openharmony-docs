@@ -478,15 +478,15 @@ SQL语句中的函数，如下所示：
     示例代码如下：
 
     <!--@[vector_TS_execute_dataAging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-
-   ``` TypeScript
-   try {
-     // content列配置了数据压缩，并且配置了数据老化。
-     await store!.execute("CREATE TABLE IF NOT EXISTS test3 (time integer not null, content text) with (time_col = 'time', interval = '5 minute', compress_col = 'content');");
-   } catch (err) {
-     console.error(`configure data compress failed, code is ${err.code}, message is ${err.message}`);
-   }
-   ```
+    
+    ``` TypeScript
+    try {
+      // content列配置了数据压缩，并且配置了数据老化。
+      await store!.execute("CREATE TABLE IF NOT EXISTS test3 (time integer not null, content text) with (time_col = 'time', interval = '5 minute', compress_col = 'content');");
+    } catch (err) {
+      console.error(`configure data compress failed, code is ${err.code}, message is ${err.message}`);
+    }
+    ```
 
 11. 删除数据库。
 
