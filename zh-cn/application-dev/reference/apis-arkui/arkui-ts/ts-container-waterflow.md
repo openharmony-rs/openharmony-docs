@@ -2040,7 +2040,7 @@ struct WaterFlowContentSizeDemo {
 
 ### 示例11（设置滚动事件）
 
-该示例通过FrameNode中的[getEvent('WaterFlow')](../js-apis-arkui-frameNode.md#geteventwaterflow19)获取[UIWaterFlowEvent](#uiwaterflowevent19)后给WaterFlow设置滚动事件回调，可以用于无法通过声明式接口直接给WaterFlow设置滚动事件的场景。
+该示例通过FrameNode中的[getEvent('WaterFlow')](../js-apis-arkui-frameNode.md#geteventwaterflow19)获取[UIWaterFlowEvent](#uiwaterflowevent19)，并为WaterFlow设置滚动事件回调，用于事件监听方无法直接修改页面的场景。
 
 从API version 19开始，新增UIWaterFlowEvent接口。
 
