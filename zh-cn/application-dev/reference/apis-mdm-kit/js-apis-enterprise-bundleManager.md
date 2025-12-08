@@ -740,7 +740,7 @@ getInstalledBundleList(admin: Want, accountId: int, bundleInfoGetFlag: int): Pro
 
 | 参数名       | 类型                                                    | 必填 | 说明                   |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。         |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。         |
 | accountId    | int                                                  | 是   | 用户ID，取值为正整数，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 | [bundleInfoGetFlag](js-apis-enterprise-bundleManager.md#bundleinfogetflag23)    | int              | 是   | 指定返回的BundleInfo所包含的信息。 |
 
