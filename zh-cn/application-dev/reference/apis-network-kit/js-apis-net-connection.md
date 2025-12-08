@@ -27,7 +27,9 @@ createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnectio
 
 创建一个NetConnection对象，[netSpecifier](#netspecifier)指定关注的网络的各项特征；timeout是超时时间(单位是毫秒)；netSpecifier是timeout的必要条件，两者都没有则表示关注默认网络。
 
-**注意：** createNetConnection注册回调函数的数量不能超过2000（个），否则无法继续注册网络监听。
+>**注意：**
+>
+>createNetConnection注册回调函数的数量不能超过2000（个），否则无法继续注册网络监听。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2152,7 +2154,9 @@ register(callback: AsyncCallback\<void>): void
 
 订阅指定网络状态变化的通知。如需监听特定事件，确保调用on监听事件后再调用register进行注册。
 
-**注意：** 使用完register接口后需要及时调用unregister取消注册。
+>**注意：**
+>
+>使用完register接口后需要及时调用unregister取消注册。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
