@@ -7,7 +7,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
-The network connection management module provides basic network management capabilities. You can obtain the default active data network or the list of all active data networks, enable or disable the airplane mode, and obtain network capability information.
+The network connection management module provides basic network capabilities. You can obtain the default active data network or the list of all active data networks, enable or disable the airplane mode, and obtain network capability information.
 
 > **NOTE**
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -396,7 +396,7 @@ connection.factoryReset().then(() => {
 
 ## ProxyMode<sup>20+</sup>
 
-Enumerates the proxy modes.
+Enumerates the proxy modes. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -411,7 +411,7 @@ Enumerates the proxy modes.
 
 setProxyMode(mode: ProxyMode): Promise\<void\>
 
-Sets the proxy mode.
+Sets the proxy mode. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -445,11 +445,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { connection, ProxyMode } from '@kit.NetworkKit';
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.setProxyMode(ProxyMode.AUTO).then(() => {
+connection.setProxyMode(connection.ProxyMode.PROXY_MODE_AUTO).then(() => {
     console.info("Proxy mode set successfully.");
-}).catch(error => {
+}).catch((error: BusinessError) => {
     console.error("Error setting proxy mode:", error);
 });
 ```
@@ -458,7 +459,7 @@ connection.setProxyMode(ProxyMode.AUTO).then(() => {
 
 getProxyMode(): Promise\<ProxyMode\>
 
-Obtains the current proxy mode.
+Obtains the current proxy mode. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -470,17 +471,18 @@ Obtains the current proxy mode.
 
 | Type                       | Description                         |
 |---------------------------| ------------------------ |
-| Promise\<[ProxyMode](#proxymode20)\> | Promise used to return the result.|
+| Promise\<[ProxyMode](#proxymode20)\> | Promise used to return the current proxy mode.|
 
 
 **Example**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getProxyMode().then(mode => {
     console.info("Current proxy mode:", mode);
-}).catch(error => {
+}).catch((error: BusinessError) => {
     console.error("Error getting proxy mode:", error);
 });
 ```
