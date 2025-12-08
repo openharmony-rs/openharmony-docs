@@ -27,7 +27,7 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确指�
 
 下图展示了Stage模型下ArkTS引擎和UI上下文的对应关系，一个ArkTS引擎中存在两个[Ability](../application-models/abilitykit-overview.md)，这些Ability对应了三个窗口，三个窗口各自对应一个ArkUI实例。
 
-**图1** 多实例关系图。
+**图1** 多实例关系图
 
 ![multi-instance](figures/multi-instance.png)
 
