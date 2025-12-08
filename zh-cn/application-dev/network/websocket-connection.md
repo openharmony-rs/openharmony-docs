@@ -116,12 +116,12 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 1. 导入webSocket以及错误码模块。
 
    <!-- @[WebSocket_server_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
-        
-    ``` TypeScript
-    import { webSocket } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    ```
+   
+   ``` TypeScript
+   import { webSocket } from '@kit.NetworkKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 2. 创建WebSocketServer对象。
 
