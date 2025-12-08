@@ -2045,7 +2045,7 @@ currentAVSession.on('fastForward', (time?: number) => {
 
 ## onFastForward<sup>22+</sup>
 
-onFastForward(callback: TwoParamCallback\<long, CommandInfo>): void
+onFastForward(callback: TwoParamCallback\<number, CommandInfo>): void
 
 设置快进命令监听事件。使用callback异步回调。
 
@@ -2057,7 +2057,7 @@ onFastForward(callback: TwoParamCallback\<long, CommandInfo>): void
 
 | 参数名   | 类型                                                                              | 必填 | 说明     |
 | -------- |---------------------------------------------------------------------------------| ---- | --------- |
-| callback | TwoParamCallback\<long, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。参数time是时间节点，单位为秒。    |
+| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。参数time是时间节点，单位为秒。    |
 
 **错误码：**
 
@@ -2115,7 +2115,7 @@ currentAVSession.on('rewind', (time?: number) => {
 
 ## onRewind<sup>22+</sup>
 
-onRewind(callback: TwoParamCallback\<long, CommandInfo>): void
+onRewind(callback: TwoParamCallback\<number, CommandInfo>): void
 
 设置快退命令监听事件。使用callback异步回调。
 
@@ -2127,7 +2127,7 @@ onRewind(callback: TwoParamCallback\<long, CommandInfo>): void
 
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
-| callback | TwoParamCallback\<long, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。参数time是时间节点，单位为秒。      |
+| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。参数time是时间节点，单位为秒。      |
 
 **错误码：**
 
@@ -2141,7 +2141,7 @@ onRewind(callback: TwoParamCallback\<long, CommandInfo>): void
 **示例：**
 
 ```ts
-currentAVSession.onRewind((time: long, info: CommandInfo) => {
+currentAVSession.onRewind((time: number, info: CommandInfo) => {
   console.info('on rewind entry');
 });
 ```
@@ -2873,7 +2873,7 @@ currentAVSession.off('fastForward');
 
 ## offFastForward<sup>22+</sup>
 
-offFastForward(callback?: TwoParamCallback\<long, CommandInfo>): void
+offFastForward(callback?: TwoParamCallback\<number, CommandInfo>): void
 
 取消会话快进事件监听。使用callback异步回调。
 
@@ -2885,7 +2885,7 @@ offFastForward(callback?: TwoParamCallback\<long, CommandInfo>): void
 
 | 参数名    | 类型                                   | 必填 | 说明                   |
 | -------- |--------------------------------------| ---- | ---------------------- |
-| callback | TwoParamCallback\<long, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
 
 **错误码：**
 
@@ -2937,7 +2937,7 @@ currentAVSession.off('rewind');
 
 ## offRewind<sup>22+</sup>
 
-offRewind(callback?: TwoParamCallback\<long, CommandInfo>): void
+offRewind(callback?: TwoParamCallback\<number, CommandInfo>): void
 
 取消会话快退事件监听。使用callback异步回调。
 
@@ -2949,7 +2949,7 @@ offRewind(callback?: TwoParamCallback\<long, CommandInfo>): void
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| callback | TwoParamCallback\<long, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
 
 **错误码：**
 
