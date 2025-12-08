@@ -105,6 +105,59 @@
    配置解码选项参数进行解码：
 
    <!-- @[create_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   
+   ``` TypeScript
+   async createPicture(imageSource : image.ImageSource | undefined, isReturnAux: Boolean)
+     : Promise<image.PixelMap | undefined | image.Picture> {
+     // 配置解码选项参数。
+     let options: image.DecodingOptionsForPicture = {
+       desiredAuxiliaryPictures: [image.AuxiliaryPictureType.GAINMAP] // GAINMAP为需要解码的辅助图类型。
+     };
+     let returnPixelMap: image.PixelMap | undefined = undefined;
+     // 创建picture。
+     try {
+       let picture = await imageSource?.createPicture(options);
+       if (picture) {
+         // 返回解码后获取到的辅助图
+         if (isReturnAux) {
+           // type为解码参数中包含的辅助图类型
+           let type: image.AuxiliaryPictureType = image.AuxiliaryPictureType.GAINMAP;
+           let auxPicture: image.AuxiliaryPicture | null = picture.getAuxiliaryPicture(type);
+           // 获取辅助图信息。
+           if (auxPicture != null) {
+             let auxInfo: image.AuxiliaryPictureInfo = auxPicture.getAuxiliaryPictureInfo();
+             console.info('GetAuxiliaryPictureInfo type: ' + auxInfo.auxiliaryPictureType +
+               ' height: ' + auxInfo.size.height + ' width: ' + auxInfo.size.width +
+               ' rowStride: ' + auxInfo.rowStride + ' pixelFormat: ' + auxInfo.pixelFormat +
+               ' colorSpace: ' + auxInfo.colorSpace);
+             // 将辅助图数据读到ArrayBuffer。
+             try {
+               let pixelsBuffer = await auxPicture.readPixelsToBuffer();
+               let opts: image.InitializationOptions = { size: auxInfo.size };
+               try {
+                 returnPixelMap = image.createPixelMapSync(pixelsBuffer, opts) as image.PixelMap;
+                 console.info(`Create PixelMap with buffer successfully.`);
+               } catch (error) {
+                 console.error(`Create PixelMap failed with ${error}.`);
+               }
+             } catch (error) {
+               console.error(`Read pixels to buffer failed, error.code: ${error.code},
+                 error.message: ${error.message}`);
+             }
+             auxPicture.release();
+           }
+           return returnPixelMap;
+         } else {
+           return picture; // 返回解码后获取到的picture
+         }
+       }
+       return returnPixelMap;
+     } catch (error) {
+       console.error(`Create picture failed: ${error}.`);
+     }
+     return returnPixelMap;
+   }
+   ```
 
 5. 释放picture。
 
