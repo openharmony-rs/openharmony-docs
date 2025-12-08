@@ -213,7 +213,7 @@ getNetFirewallRules(userId: number, requestParam: RequestParam): Promise\<Firewa
 | 参数名          | 类型                          | 必填 | 说明                                         |
 | --------------- | ----------------------------- | ---- | -------------------------------------------- |
 | userId          | number                        | 是   | 系统中的多用户用户ID，只能是存在的用户ID。     |
-| requestParam    | [RequestParam](#requestparam) | 是   | 分页查询参数。                               |
+| requestParam    | [RequestParam](#requestparam) | 是   | 分页查询参数，其中orderField字段仅支持根据防火墙规则名排序。                               |
 
 **返回值：**
 
@@ -362,6 +362,23 @@ netFirewall.setNetFirewallPolicy(100, policy).then(() => {
 addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
 添加防火墙规则。使用Promise异步回调。
+
+> **说明**
+> 
+> 1、防火墙规则优先级说明（[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)和[addNetFirewallRule](#netfirewalladdnetfirewallrule)无调用顺序要求）：<br>
+> （1）调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为阻止，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：<br>
+> 	 $\quad$◦  显式阻止规则<br>
+>	 $\quad$◦  显式允许规则<br>
+>	 $\quad$◦  默认阻止策略<br>
+> （2）调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为允许，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：<br>
+>	$\quad$◦  显式允许规则<br>
+>	$\quad$◦  显式阻止规则<br>
+>	$\quad$◦  默认允许策略<br>
+> 2、规则类型补充说明：<br>
+>（1）当addNetFirewallRule的入参rule.type配置为RULE_IP时：<br>
+>	$\quad$◦  若rule.action为RULE_ALLOW，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段允许通行；<br>
+>	$\quad$◦  若rule.action 为RULE_DENY，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段拦截。<br>
+>（2）当adNetFirewallRule的入参rule.type配置为RULE_DOMAIN时，若rule.domains未配置， 该规则不生效。<br>
 
 **需要权限**：ohos.permission.MANAGE_NET_FIREWALL
 
@@ -636,8 +653,8 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 | family      | number | 否 | 是|1：表示family设置为IPv4。<br />2：表示family设置为IPv6。  <br />默认IPv4，其他当前不支持。      |
 | address     | string | 否 | 是|IP地址。当type等于1时需要设置，并且仅在type等于1时有效，否则将被忽略。                   |
 | mask        | number | 否 |是 |IPv4：子网掩码。<br />IPv6：前缀。<br />当type等于1时需要设置，并且仅在type等于1时有效，否则将被忽略。       |
-| startIp     | string | 否 |是 |起始IP。当type等于2时需要设置，并且仅在type等于2时有效，否则将被忽略。                         |
-| endIp       | string | 否 |是 |结束IP。当type等于2时需要设置，并且仅在type等于2时有效，否则将被忽略。                        |
+| startIp     | string | 否 |是 |起始IP。当type等于2时需要设置，并且仅在type等于2时有效，范围从0.0.0.1到255.255.255.254，否则将被忽略。                         |
+| endIp       | string | 否 |是 |结束IP。当type等于2时需要设置，并且仅在type等于2时有效，范围从0.0.0.1到255.255.255.254，否则将被忽略。                        |
 
 ## NetFirewallPortParams
 
