@@ -14,7 +14,7 @@ UIContext实例对象。
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 >
-> - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的[getUIContext()](arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定义组件内置方法[getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](#getcallingscopeuicontext23)获取UIContext实例。本文中UIContext对象以uiContext表示。
+> - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的[getUIContext()](arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定义组件内置方法[getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](#getcallingscopeuicontext22)获取UIContext实例。本文中UIContext对象以uiContext表示。
 
 **示例：**
 
@@ -58,7 +58,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## constructor<sup>23+</sup>
+## constructor<sup>22+</sup>
 
 constructor()
 
@@ -68,7 +68,7 @@ constructor()
 >
 > 通过构造函数创建的UIContext对象指向不明确的UI上下文，即不指向任何UI实例。该UIContext对应实例的唯一标识ID为-1。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,7 +142,7 @@ struct Index {
 }
 ```
 
-## getCallingScopeUIContext<sup>23+</sup>
+## getCallingScopeUIContext<sup>22+</sup>
 
 static getCallingScopeUIContext(): UIContext | undefined
 
@@ -152,7 +152,7 @@ static getCallingScopeUIContext(): UIContext | undefined
 >
 > 返回的UIContext对象可能指向一个已销毁的UI实例，通常在由已销毁的实例抛出异步任务时出现。建议通过[isAvailable](#isavailable20)接口判断其有效性。
 
-**原子化服务API:：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -193,13 +193,13 @@ struct Index {
 }
 ```
 
-## getLastFocusedUIContext<sup>23+</sup>
+## getLastFocusedUIContext<sup>22+</sup>
 
 static getLastFocusedUIContext(): UIContext | undefined
 
 获取最近一次切换到获焦状态的UI实例的UIContext。
 
-**原子化服务API:：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -240,13 +240,13 @@ struct Index {
 }
 ```
 
-## getLastForegroundUIContext<sup>23+</sup>
+## getLastForegroundUIContext<sup>22+</sup>
 
 static getLastForegroundUIContext(): UIContext | undefined
 
 获取最近一次切换到前台状态的UI实例的UIContext。
 
-**原子化服务API:：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -287,13 +287,13 @@ struct Index {
 }
 ```
 
-## getAllUIContexts<sup>23+</sup>
+## getAllUIContexts<sup>22+</sup>
 
 static getAllUIContexts(): UIContext[]
 
 获取所有当前有效的UIContext实例。
 
-**原子化服务API:：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -334,7 +334,7 @@ struct Index {
 }
 ```
 
-## resolveUIContext<sup>23+</sup>
+## resolveUIContext<sup>22+</sup>
 
 static resolveUIContext(): ResolvedUIContext
 
@@ -352,7 +352,7 @@ static resolveUIContext(): ResolvedUIContext
 > 5. 如果存在多个UI实例，则返回实例唯一标识的ID最大的UIContext。
 > 6. 如果以上条件均不满足，则返回一个无效的UIContext实例。
 
-**原子化服务API:：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -742,6 +742,85 @@ getOverlayManagerOptions(): OverlayManagerOptions
 **示例：**
 
 完整示例请参考[OverlayManager](arkts-apis-uicontext-overlaymanager.md)中的示例。
+
+## animateToImmediately<sup>22+</sup>
+
+animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
+
+通过UIContext对象指定明确的动画主实例上下文，并触发显式动画立即下发。避免由于找不到实例或实例不对，导致的动画不执行或动画结束回调不执行问题。使用callback异步回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填   | 说明                                    |
+| ----- | ---------------------------------------- | ---- | ------------------------------------- |
+| param | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam对象说明) | 是    | 设置动画效果相关参数。                           |
+| processor | Callback&lt;void&gt;                              | 是    | 回调函数。指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+
+**示例：**
+
+该示例通过UIContext对象获取显式立即动画，并调用animateToImmediately接口实现参数定义的动画效果。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct AnimateToImmediatelyExample {
+  @State widthSize: number = 250
+  @State heightSize: number = 100
+  @State opacitySize: number = 0
+  private flag: boolean = true
+  uiContext: UIContext | null | undefined = this.getUIContext();
+
+  build() {
+    Column() {
+      Column()
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .backgroundColor(Color.Green)
+        .opacity(this.opacitySize)
+      Button('change size')
+        .margin(30)
+        .onClick(() => {
+          if (this.flag) {
+            this.uiContext?.animateToImmediately({
+              delay: 0,
+              duration: 1000
+            }, () => {
+              this.opacitySize = 1
+            })
+            this.uiContext?.animateTo({
+              delay: 1000,
+              duration: 1000
+            }, () => {
+              this.widthSize = 150
+              this.heightSize = 60
+            })
+          } else {
+            this.uiContext?.animateToImmediately({
+              delay: 0,
+              duration: 1000
+            }, () => {
+              this.widthSize = 250
+              this.heightSize = 100
+            })
+            this.uiContext?.animateTo({
+              delay: 1000,
+              duration: 1000
+            }, () => {
+              this.opacitySize = 0
+            })
+          }
+          this.flag = !this.flag
+        })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+![animateToImmediately](figures/animateToImmediately.gif)
 
 ## animateTo
 
@@ -2581,6 +2660,55 @@ struct Index {
     const currWindow = window.findWindow(windowName);
     const windowProperties = currWindow.getWindowProperties();
     console.info(`Window width ${windowProperties.windowRect.width}, height ${windowProperties.windowRect.height}`);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+## getWindowId<sup>23+</sup>
+
+getWindowId(): number | undefiend
+
+获取当前应用实例所属的窗口ID。
+
+> **说明：**
+>
+>  若UIContext位于主应用程序进程中的[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)内，则返回主应用程序的顶层窗口ID。
+>
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：** 
+
+| 类型   | 说明                                         |
+| ------ | -------------------------------------------- |
+|  number \| undefined |  当前应用实例所属的窗口ID。若窗口不存在，则返回undefined。 |
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  aboutToAppear() {
+    const windowId = this.getUIContext().getWindowId();
+    hilog.info(0x0000, 'testTag', 'current window id: %{public}s', windowId);
   }
 
   build() {

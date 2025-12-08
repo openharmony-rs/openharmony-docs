@@ -7,7 +7,7 @@
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct NativeWindow OHNativeWindow
 ```
 

@@ -1,5 +1,11 @@
 # list
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **\<list>** component provides a list container that presents a series of list items arranged in a column with the same width. It supports presentations of the same type of data in a multiple and coherent row style, for example, images or text.
 
@@ -65,7 +71,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
 ```html
 <!-- index.hml -->
 <div class="container">
-  <list class="todo-wraper">
+  <list class="todo-wrapper">
     <list-item for="{{todolist}}" class="todo-item">
       <text class="todo-title">{{$item.title}}</text>
       <text class="todo-title">{{$item.date}}</text>
@@ -101,7 +107,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
   width: 454px;
   height: 454px;
 }
-.todo-wraper {
+.todo-wrapper {
   width: 454px;
   height: 300px;
 }

@@ -41,180 +41,182 @@
 1. 设备通过硬件接口，插入网线。
 2. 从@kit.NetworkKit中导入netfirewall命名空间。
 
-<!-- @[net_firewall_case_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 从@kit.NetworkKit中导入netFirewall命名空间。
-import { netFirewall } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-```
+   <!-- @[net_firewall_case_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 从@kit.NetworkKit中导入netFirewall命名空间。
+   import { netFirewall } from '@kit.NetworkKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 3. 用户调用setNetFirewallPolicy方法，打开防火墙。
 
-<!-- @[net_firewall_set_net_firewall_policy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// IP类型
-interface IpType{
-  family:number;
-  type:number;
-  address?:string;
-  mask?:number;
-  startIp?:string;
-  endIp?:string;
-}
-// IP端口
-interface IpPort{
-  startPort:number;
-  endPort:number;
-}
-// ···
-    // 定义防火墙策略：打开，入站阻止，出站允许。
-    let policy: netFirewall.NetFirewallPolicy = {
-      isOpen: true,
-      inAction: netFirewall.FirewallRuleAction.RULE_DENY,
-      outAction: netFirewall.FirewallRuleAction.RULE_ALLOW
-    };
-
-    // 给用户100设置防火墙策略。
-    netFirewall.setNetFirewallPolicy(100, policy).then(() => {
-      console.info(`set firewall policy success.`);
-    }).catch((error : BusinessError) => {
-      console.error(`error: set firewall policy failed: ${JSON.stringify(error)}`);
-    });
-```
+   <!-- @[net_firewall_set_net_firewall_policy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // IP类型
+   interface IpType{
+     family:number;
+     type:number;
+     address?:string;
+     mask?:number;
+     startIp?:string;
+     endIp?:string;
+   }
+   // IP端口
+   interface IpPort{
+     startPort:number;
+     endPort:number;
+   }
+   // ...
+       // 定义防火墙策略：打开，入站阻止，出站允许。
+       let policy: netFirewall.NetFirewallPolicy = {
+         isOpen: true,
+         inAction: netFirewall.FirewallRuleAction.RULE_DENY,
+         outAction: netFirewall.FirewallRuleAction.RULE_ALLOW
+       };
+   
+       // 给用户100设置防火墙策略。
+       netFirewall.setNetFirewallPolicy(100, policy).then(() => {
+         hilog.info(0x0000, 'testTag', `set firewall policy success.`);
+       }).catch((error : BusinessError) => {
+         hilog.error(0x0000, 'testTag', `error: set firewall policy failed: ${JSON.stringify(error)}`);
+       });
+   ```
 4. 用户通过addNetFirewallRule方法，添加防火墙规则。
 
-<!-- @[net_firewall_add_net_firewall_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 初始化具体的防火墙ip类型规则。
-let ipRule: netFirewall.NetFirewallRule = {
-  name: 'rule1',
-  description: 'rule1 description',
-  direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-  action: netFirewall.FirewallRuleAction.RULE_DENY,
-  type: netFirewall.NetFirewallRuleType.RULE_IP,
-  isEnabled: true,
-  appUid: 20001,
-  localIps: [
-    {
-      family: 1,
-      type: 1,
-      address: '10.10.1.1',
-      mask: 24
-    },{
-    family: 1,
-    type: 2,
-    startIp: '10.20.1.1',
-    endIp: '10.20.1.10'
-  }] as IpType[],
-  remoteIps:[
-    {
-      family: 1,
-      type: 1,
-      address: '20.10.1.1',
-      mask: 24
-    },{
-    family: 1,
-    type: 2,
-    startIp: '20.20.1.1',
-    endIp: '20.20.1.10'
-  }] as IpType[],
-  protocol: 6,
-  localPorts: [
-    {
-      startPort: 1000,
-      endPort: 1000
-    },{
-    startPort: 2000,
-    endPort: 2001
-  }] as IpPort[],
-  remotePorts: [
-    {
-      startPort: 443,
-      endPort: 443
-    }] as IpPort[],
-  userId: 100
-};
-// 添加防火墙规则。
-netFirewall.addNetFirewallRule(ipRule).then((result: number) => {
-// ···
-  console.info(`rule Id: ${result}`);
-}, (reason: BusinessError) => {
-// ···
-  console.error(`error: add firewall rule failed:  ${JSON.stringify(reason)}`);
-});
-```
+   <!-- @[net_firewall_add_net_firewall_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 初始化具体的防火墙ip类型规则。
+   let ipRule: netFirewall.NetFirewallRule = {
+     name: 'rule1',
+     description: 'rule1 description',
+     direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
+     action: netFirewall.FirewallRuleAction.RULE_DENY,
+     type: netFirewall.NetFirewallRuleType.RULE_IP,
+     isEnabled: true,
+     appUid: 20001,
+     localIps: [
+       {
+         family: 1,
+         type: 1,
+         address: '10.10.1.1',
+         mask: 24
+       },{
+       family: 1,
+       type: 2,
+       startIp: '10.20.1.1',
+       endIp: '10.20.1.10'
+     }] as IpType[],
+     remoteIps:[
+       {
+         family: 1,
+         type: 1,
+         address: '20.10.1.1',
+         mask: 24
+       },{
+       family: 1,
+       type: 2,
+       startIp: '20.20.1.1',
+       endIp: '20.20.1.10'
+     }] as IpType[],
+     protocol: 6,
+     localPorts: [
+       {
+         startPort: 1000,
+         endPort: 1000
+       },{
+       startPort: 2000,
+       endPort: 2001
+     }] as IpPort[],
+     remotePorts: [
+       {
+         startPort: 443,
+         endPort: 443
+       }] as IpPort[],
+     userId: 100
+   };
+   // 添加防火墙规则。
+   netFirewall.addNetFirewallRule(ipRule).then((result: number) => {
+     // ...
+     hilog.info(0x0000, 'testTag', `rule Id: ${result}`);
+   }, (reason: BusinessError) => {
+     // ...
+     hilog.error(0x0000, 'testTag', `error: add firewall rule failed:  ${JSON.stringify(reason)}`);
+   });
+   ```
 ## 针对域名联网访问控制支持拦截
 
 1. 设备通过硬件接口，插入网线。
 2. 从@kit.NetworkKit中导入netFirewall命名空间。
 
-<!-- @[net_firewall_case_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 从@kit.NetworkKit中导入netFirewall命名空间。
-import { netFirewall } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-```
+   <!-- @[net_firewall_case_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 从@kit.NetworkKit中导入netFirewall命名空间。
+   import { netFirewall } from '@kit.NetworkKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 3. 调用setNetFirewallPolicy方法，打开防火墙。
 
-<!-- @[net_firewall_set_net_firewall_policy_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-interface domain{
-  isWildcard: boolean;
-  domain: string;
-}
-// ···
-    // 定义防火墙策略：打开，入站阻止，出站允许。
-    let policy: netFirewall.NetFirewallPolicy = {
-      isOpen: true,
-      inAction: netFirewall.FirewallRuleAction.RULE_DENY,
-      outAction: netFirewall.FirewallRuleAction.RULE_ALLOW
-    };
-
-    // 给用户100设置防火墙策略
-    netFirewall.setNetFirewallPolicy(100, policy).then(() => {
-      console.info(`set firewall policy success.`);
-    }).catch((error : BusinessError) => {
-      console.error(`error: set firewall policy failed: ${JSON.stringify(error)}`);
-    });
-```
+   <!-- @[net_firewall_set_net_firewall_policy_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   interface domain{
+     isWildcard: boolean;
+     domain: string;
+   }
+   // ...
+       // 定义防火墙策略：打开，入站阻止，出站允许。
+       let policy: netFirewall.NetFirewallPolicy = {
+         isOpen: true,
+         inAction: netFirewall.FirewallRuleAction.RULE_DENY,
+         outAction: netFirewall.FirewallRuleAction.RULE_ALLOW
+       };
+   
+       // 给用户100设置防火墙策略
+       netFirewall.setNetFirewallPolicy(100, policy).then(() => {
+         hilog.info(0x0000, 'testTag', `set firewall policy success.`);
+       }).catch((error : BusinessError) => {
+         hilog.error(0x0000, 'testTag', `error: set firewall policy failed: ${JSON.stringify(error)}`);
+       });
+   ```
 4. 通过addNetFirewallRule方法，添加防火墙规则。
 
-<!-- @[net_firewall_add_net_firewall_rule_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 初始化具体的防火墙域名类型规则。
-let domainRule: netFirewall.NetFirewallRule = {
-  name: 'rule2',
-  description: 'rule2 description',
-  direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-  action: netFirewall.FirewallRuleAction.RULE_DENY,
-  type: netFirewall.NetFirewallRuleType.RULE_DOMAIN,
-  isEnabled: true,
-  appUid: 20002,
-  domains: [
-    {
-      isWildcard: false,
-      domain: 'www.HarmonyOS.cn'
-    },{
-    isWildcard: true,
-    domain: '*.HarmonyOS.cn'
-  }] as domain[],
-  userId: 100
-};
-
-// 添加防火墙规则。
-netFirewall.addNetFirewallRule(domainRule).then((result: number) => {
-// ···
-  hilog.info(0x0000, 'testTag', `rule Id: ${result}`);
-}, (reason: BusinessError) => {
-// ···
-  hilog.error(0x0000, 'testTag', `error: add firewall rule failed:  ${JSON.stringify(reason)}`);
-});
-```
+   <!-- @[net_firewall_add_net_firewall_rule_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 初始化具体的防火墙域名类型规则。
+   let domainRule: netFirewall.NetFirewallRule = {
+     name: 'rule2',
+     description: 'rule2 description',
+     direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
+     action: netFirewall.FirewallRuleAction.RULE_DENY,
+     type: netFirewall.NetFirewallRuleType.RULE_DOMAIN,
+     isEnabled: true,
+     appUid: 20002,
+     domains: [
+       {
+         isWildcard: false,
+         domain: 'www.HarmonyOS.cn'
+       },{
+       isWildcard: true,
+       domain: '*.HarmonyOS.cn'
+     }] as domain[],
+     userId: 100
+   };
+   
+   // 添加防火墙规则。
+   netFirewall.addNetFirewallRule(domainRule).then((result: number) => {
+     // ...
+     hilog.info(0x0000, 'testTag', `rule Id: ${result}`);
+   }, (reason: BusinessError) => {
+     // ...
+     hilog.error(0x0000, 'testTag', `error: add firewall rule failed:  ${JSON.stringify(reason)}`);
+   });
+   ```
 <!--Del-->
 ## 查询防火墙拦截记录
 

@@ -4169,6 +4169,120 @@ format(value: number): StyledString
 | fraction       | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定小数部分的文本样式。默认值：StyledString默认的文本样式。     |
 | unit           | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定单位部分的文本样式。默认值：StyledString默认的文本样式。     |
 
+## AdvancedMeasureFormat<sup>23+</sup>
+
+提供数字格式化能力。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+### constructor<sup>23+</sup>
+
+constructor(numberFormat: Intl.NumberFormat, options?: AdvancedMeasureFormatOptions)
+
+创建数字格式化对象。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**参数：**
+
+|   参数名  |      类型      | 必填 |     说明      |
+| --------- | ------------- | ---- | ------------- |
+| numberFormat | [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) | 是   | 用于格式化数字的对象。  |
+| options | [AdvancedMeasureFormatOptions](#advancedmeasureformatoptions23) | 否 | 指定数字格式化对象的配置项。  |
+
+**示例：**
+  ```ts
+  import { i18n } from '@kit.LocalizationKit';
+  
+  let numFmt: Intl.NumberFormat = new Intl.NumberFormat('zh-Hans-CN', { style: 'unit', unit: 'fahrenheit' });
+  let advancedMeasureFormat: i18n.AdvancedMeasureFormat = new i18n.AdvancedMeasureFormat(numFmt, {
+    unitUsage: i18n.UnitUsage.TEMPERATURE_PERSON
+  });
+  ```
+
+### format<sup>23+</sup>
+
+format(num: number): string
+
+对数字进行格式化。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**参数：**
+
+|   参数名  |      类型      | 必填 |     说明      |
+| --------- | ------------- | ---- | ------------- |
+| num | number | 是 | 需要格式化的数字。  |
+
+**返回值：**
+
+|       类型        |         说明          |
+| ----------------- | ----------------------|
+| string | 格式化后的文本。 |
+
+**示例：**
+  ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
+  let numFmt: Intl.NumberFormat = new Intl.NumberFormat('zh-Hans-CN', { style: 'unit', unit: 'fahrenheit' });
+  let advancedMeasureFormat: i18n.AdvancedMeasureFormat = new i18n.AdvancedMeasureFormat(numFmt, {
+    unitUsage: i18n.UnitUsage.TEMPERATURE_PERSON
+  });
+  let result = advancedMeasureFormat.format(100); // result = '37.778°C'
+  ```
+
+## AdvancedMeasureFormatOptions<sup>23+</sup>
+
+创建数字格式化对象时的可选配置项。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+| 名称            | 类型             |  只读   |  可选   |  说明                                   |
+| --------------- | --------------- | ------  | ------  | --------------------------------------- |
+| unitUsage        | [UnitUsage](#unitusage23) |   否    |   是    |  单位格式化使用场景的枚举。     |
+
+## UnitUsage<sup>23+</sup>
+
+单位格式化使用场景的枚举。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| AREA_LAND_AGRICULT | 1 | 农业土地面积。 |
+| AREA_LAND_COMMERCL | 2 | 商业土地面积。 |
+| AREA_LAND_RESIDNTL | 3 | 居住土地面积。 |
+| LENGTH_PERSON | 4 | 身高。 |
+| LENGTH_PERSON_SMALL | 5 | 高精度的身高。 |
+| LENGTH_RAINFALL | 6 | 降雨量。 |
+| LENGTH_ROAD | 7 | 道路长度。 |
+| LENGTH_ROAD_SMALL | 8 | 高精度的道路长度。 |
+| LENGTH_SNOWFALL | 9 | 降雪量。 |
+| LENGTH_VEHICLE | 10 | 交通工具长度。 |
+| LENGTH_VISIBLTY | 11 | 能见度。 |
+| LENGTH_VISIBLTY_SMALL | 12 | 高精度的能见度。 |
+| LENGTH_PERSON_INFORMAL | 13 | 口语化身高。 |
+| LENGTH_PERSON_SMALL_INFORMAL | 14 | 高精度的口语化身高。 |
+| LENGTH_ROAD_INFORMAL | 15 | 口语化道路长度。 |
+| SPEED_ROAD_TRAVEL | 16 | 车速。 |
+| SPEED_WIND | 17 | 风速。 |
+| TEMPERATURE_PERSON | 18 | 体温。 |
+| TEMPERATURE_WEATHER | 19 | 气温。 |
+| VOLUME_VEHICLE_FUEL | 20 | 交通工具燃料容积。 |
+| ELAPSED_TIME_SECOND | 21 | 过去的时间。 |
+| SIZE_FILE_BYTE | 22 | 文件大小。 |
+| SIZE_SHORTFILE_BYTE | 23 | 简短的文件大小。 |
+
 ## i18n.getDisplayCountry<sup>(deprecated)</sup>
 
 getDisplayCountry(country: string, locale: string, sentenceCase?: boolean): string

@@ -245,7 +245,7 @@ import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 // 请开发者替换为实际的进程号
 let pid = 33333;
 try {
-    backgroundProcessManager.getPowerSaveMode(pid).then((result: PowerSaveMode) => {
+    backgroundProcessManager.getPowerSaveMode(pid).then((result: backgroundProcessManager.PowerSaveMode) => {
         console.info("getPowerSaveMode: " + result.toString());
     });
 } catch (error) {

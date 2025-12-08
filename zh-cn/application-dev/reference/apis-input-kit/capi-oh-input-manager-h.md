@@ -3755,7 +3755,7 @@ Input_Result OH_Input_GetFunctionKeyState(int32_t keyCode, int32_t *state)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_GetFunctionKeyState的执行结果。<br>         [INPUT_SUCCESS](#input_result) 表示获取状态成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>         {@link INPUT_DEVICE_NOT_EXIST } 表示键盘设备不存在。 |
+| [Input_Result](#input_result) | OH_Input_GetFunctionKeyState的执行结果。<br>  [INPUT_SUCCESS](#input_result) 表示获取状态成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>  [INPUT_KEYBOARD_DEVICE_NOT_EXIST](#input_result) 表示键盘设备不存在。 |
 
 ### OH_Input_InjectTouchEvent()
 
@@ -4606,7 +4606,7 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_SetCustomCursor的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br> [INPUT_INVALID_WINDOWID](#input_result) 表示窗口ID无效。<br>   [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示设备不支持。<br> [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
+| [Input_Result](#input_result) | OH_Input_SetCustomCursor的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br> [INPUT_INVALID_WINDOWID](#input_result) 表示窗口ID无效。<br>   [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示设备不支持。<br> [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常。可能的原因：1.自定义鼠标光标焦点的横坐标或纵坐标大于自定义鼠标光标像素图的宽度或高度。2.系统服务异常，请重试。 |
 
 ### OH_Input_CursorInfo_Create()
 
@@ -4673,7 +4673,7 @@ Input_Result OH_Input_CursorInfo_IsVisible(Input_CursorInfo* cursorInfo, bool* v
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_CursorInfo_IsVisible的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。
+| [Input_Result](#input_result) | OH_Input_CursorInfo_IsVisible的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
 
 ### OH_Input_CursorInfo_GetStyle()
 

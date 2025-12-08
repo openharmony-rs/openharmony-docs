@@ -60,7 +60,7 @@
 
 ### OH_NativeBuffer_Usage
 
-```
+```c
 enum OH_NativeBuffer_Usage
 ```
 
@@ -85,7 +85,7 @@ OH_NativeBuffer的用途。
 
 ### OH_NativeBuffer_ColorGamut
 
-```
+```c
 enum OH_NativeBuffer_ColorGamut
 ```
 
@@ -116,7 +116,7 @@ OH_NativeBuffer的色域。
 
 ### OH_NativeBuffer_Alloc()
 
-```
+```c
 OH_NativeBuffer* OH_NativeBuffer_Alloc(const OH_NativeBuffer_Config* config)
 ```
 
@@ -143,7 +143,7 @@ OH_NativeBuffer* OH_NativeBuffer_Alloc(const OH_NativeBuffer_Config* config)
 
 ### OH_NativeBuffer_Reference()
 
-```
+```c
 int32_t OH_NativeBuffer_Reference(OH_NativeBuffer *buffer)
 ```
 
@@ -170,7 +170,7 @@ int32_t OH_NativeBuffer_Reference(OH_NativeBuffer *buffer)
 
 ### OH_NativeBuffer_Unreference()
 
-```
+```c
 int32_t OH_NativeBuffer_Unreference(OH_NativeBuffer *buffer)
 ```
 
@@ -197,7 +197,7 @@ int32_t OH_NativeBuffer_Unreference(OH_NativeBuffer *buffer)
 
 ### OH_NativeBuffer_GetConfig()
 
-```
+```c
 void OH_NativeBuffer_GetConfig(OH_NativeBuffer *buffer, OH_NativeBuffer_Config* config)
 ```
 
@@ -219,7 +219,7 @@ void OH_NativeBuffer_GetConfig(OH_NativeBuffer *buffer, OH_NativeBuffer_Config* 
 
 ### OH_NativeBuffer_Map()
 
-```
+```c
 int32_t OH_NativeBuffer_Map(OH_NativeBuffer *buffer, void **virAddr)
 ```
 
@@ -247,7 +247,7 @@ int32_t OH_NativeBuffer_Map(OH_NativeBuffer *buffer, void **virAddr)
 
 ### OH_NativeBuffer_Unmap()
 
-```
+```c
 int32_t OH_NativeBuffer_Unmap(OH_NativeBuffer *buffer)
 ```
 
@@ -274,7 +274,7 @@ int32_t OH_NativeBuffer_Unmap(OH_NativeBuffer *buffer)
 
 ### OH_NativeBuffer_GetSeqNum()
 
-```
+```c
 uint32_t OH_NativeBuffer_GetSeqNum(OH_NativeBuffer *buffer)
 ```
 
@@ -301,7 +301,7 @@ uint32_t OH_NativeBuffer_GetSeqNum(OH_NativeBuffer *buffer)
 
 ### OH_NativeBuffer_SetColorSpace()
 
-```
+```c
 int32_t OH_NativeBuffer_SetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_ColorSpace colorSpace)
 ```
 
@@ -329,7 +329,7 @@ int32_t OH_NativeBuffer_SetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_C
 
 ### OH_NativeBuffer_MapPlanes()
 
-```
+```c
 int32_t OH_NativeBuffer_MapPlanes(OH_NativeBuffer *buffer, void **virAddr, OH_NativeBuffer_Planes *outPlanes)
 ```
 
@@ -358,7 +358,7 @@ int32_t OH_NativeBuffer_MapPlanes(OH_NativeBuffer *buffer, void **virAddr, OH_Na
 
 ### OH_NativeBuffer_FromNativeWindowBuffer()
 
-```
+```c
 int32_t OH_NativeBuffer_FromNativeWindowBuffer(OHNativeWindowBuffer *nativeWindowBuffer, OH_NativeBuffer **buffer)
 ```
 
@@ -386,7 +386,7 @@ int32_t OH_NativeBuffer_FromNativeWindowBuffer(OHNativeWindowBuffer *nativeWindo
 
 ### OH_NativeBuffer_GetColorSpace()
 
-```
+```c
 int32_t OH_NativeBuffer_GetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_ColorSpace *colorSpace)
 ```
 
@@ -414,7 +414,7 @@ int32_t OH_NativeBuffer_GetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_C
 
 ### OH_NativeBuffer_SetMetadataValue()
 
-```
+```c
 int32_t OH_NativeBuffer_SetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t size, uint8_t *metadata)
 ```
 
@@ -444,7 +444,7 @@ int32_t OH_NativeBuffer_SetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffe
 
 ### OH_NativeBuffer_GetMetadataValue()
 
-```
+```c
 int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t *size, uint8_t **metadata)
 ```
 
@@ -473,7 +473,7 @@ int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffe
 
 ### OH_NativeBuffer_MapWaitFence()
 
-```
+```c
 int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, void **virAddr)
 ```
 

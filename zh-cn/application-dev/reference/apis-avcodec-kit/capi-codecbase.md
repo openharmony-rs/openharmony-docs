@@ -48,6 +48,9 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO | WMA（Windows Media Audio）Pro音频解码器的MIME类型。 |
 | OH_AVCODEC_MIMETYPE_AUDIO_GSM | GSM（Global System for Mobile Communications）音频解码器的MIME类型。 |
 | OH_AVCODEC_MIMETYPE_AUDIO_GSM_MS | GSM MS（Microsoft variant）音频解码器的MIME类型。 |
+| OH_AVCODEC_MIMETYPE_AUDIO_TWINVQ | TWINVQ（Transform-domain Weighted Interleave Vector Quantization）音频解码器的MIME类型。<br>从API version 23开始支持。 |
+| OH_AVCODEC_MIMETYPE_AUDIO_ILBC | ILBC（Internet Low Bitrate Codec） 音频解码器的MIME类型。<br>从API version 23开始支持。 |
+| OH_AVCODEC_MIMETYPE_AUDIO_TRUEHD | TRUEHD（True High Definition）音频解码器的MIME类型。<br>从API version 23开始支持。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_VVC | VVC(H.266)视频编解码器的MIME类型。                    |
 | OH_AVCODEC_MIMETYPE_VIDEO_HEVC | HEVC(H.265)视频编解码器的MIME类型。                    |
 | OH_AVCODEC_MIMETYPE_VIDEO_AVC | AVC(H.264)视频编解码器的MIME类型。                     |

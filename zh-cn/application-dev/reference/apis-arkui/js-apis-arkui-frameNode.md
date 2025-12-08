@@ -1336,7 +1336,7 @@ isDisposed(): boolean
 
 | 类型    | 说明               |
 | ------- | ------------------ |
-| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。
+| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。 |
 
 **示例：**
 
@@ -2265,10 +2265,10 @@ invalidateAttributes(): void
 
 **示例：** 
 
-  从API version 21开始，通过if else动态切换两个节点，并且在节点创建时调用invalidateAttributes即时触发节点属性更新，避免组件切换过程中出现闪烁。
+从API version 21开始，通过if else动态切换两个节点，并且在节点创建时调用invalidateAttributes即时触发节点属性更新，避免组件切换过程中出现闪烁。
  
  ```ts
- //index.ets
+// index.ets
 import { FrameNode, NodeController, typeNode, NodeContent } from '@kit.ArkUI';
 
 // 继承NodeController实现自定义NodeAdapter控制器
@@ -2378,7 +2378,7 @@ adoptChild(child: FrameNode): void
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The current FrameNode is not modifiable. |
 | 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be disposed." |
 | 100026   | The current FrameNode has been disposed. |
 
@@ -2408,14 +2408,14 @@ removeAdoptedChild(child: FrameNode): void
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The current FrameNode is not modifiable. |
 | 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be null." |
 | 100026   | The current FrameNode has been disposed. |
 
 **示例：**
 
 完整示例请参考[接纳为附属节点示例](#接纳为附属节点示例)。
- 	
+
 ### convertPosition<sup>22+</sup>
 
 convertPosition(position: Position, targetNode: FrameNode): Position
@@ -8253,7 +8253,7 @@ isDisposed(): boolean
 
 | 类型    | 说明               |
 | ------- | ------------------ |
-| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。
+| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。 |
 
 **示例：**
 

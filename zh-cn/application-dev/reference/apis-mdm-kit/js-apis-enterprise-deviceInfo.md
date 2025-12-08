@@ -45,7 +45,7 @@ getDeviceInfo(admin: Want, label: string): string
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| string | 返回label对应的参数值。<br/>当label为simInfo时，返回值为表示SIM卡信息的JSON字符串。例如：[{"slotId": 0, "MEID": "", "IMSI": "", "ICCID": "", "IMEI": ""}, {"slotId": 1, "MEID": "", "IMSI": "", "ICCID": "", "IMEI": ""}]，其中：slotId:0表示卡槽1，slotId:1表示卡槽2。 |
+| string | 返回label对应的参数值。<br/>当label为simInfo时，返回值为表示SIM卡信息的JSON字符串。例如：[{"slotId": 0, "MEID": "", "IMSI": "", "ICCID": "", "IMEI": "", "NUMBER": ""}, {"slotId": 1, "MEID": "", "IMSI": "", "ICCID": "", "IMEI": "", "NUMBER": ""}]，其中：slotId:0表示卡槽1，slotId:1表示卡槽2。 NUMBER：从API version 23开始支持，表示手机号码，格式为包含国家码的E.164国际标准格式（如 +8612345678901）。|
 
 **错误码**：
 

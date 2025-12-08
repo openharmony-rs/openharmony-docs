@@ -2761,7 +2761,7 @@ setPointerColor(color: number, callback: AsyncCallback&lt;void&gt;): void
 
 设置鼠标光标颜色，使用AsyncCallback异步方式返回结果。
 
-**说明**
+> **说明**：
 >
 > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
 
@@ -2820,7 +2820,7 @@ setPointerColor(color: number): Promise&lt;void&gt;
 
 设置鼠标光标颜色，使用Promise异步回调。
 
-**说明**
+> **说明**：
 >
 > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
 
@@ -2880,7 +2880,7 @@ setPointerColorSync(color: number): void
 
 设置鼠标光标颜色，使用同步方式进行设置。
 
-**说明**
+> **说明**：
 >
 > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
 

@@ -9,7 +9,7 @@
 
 子组件中被\@Link装饰的变量与其父组件中对应的数据源建立双向数据绑定。
 
-在阅读\@Link文档前，建议先熟悉[\@State](./arkts-state.md)的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
+在阅读\@Link文档前，建议先熟悉[\@State](./arkts-state.md)的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考[状态管理常见问题](./arkts-state-management-faq.md)。
 
 > **说明：**
 >
@@ -680,135 +680,6 @@ struct UnionTypes {
       Button('Parents change name to undefined')
         .onClick(() => {
           this.name = undefined;
-        })
-    }
-  }
-}
-```
-
-## 常见问题
-
-
-### 使用a.b(this.object)形式调用，不会触发UI刷新
-
-在build方法内，当\@Link装饰的变量是Object类型且通过a.b(this.object)形式调用时，b方法内传入的是this.object的原始对象，修改其属性无法触发UI刷新。以下示例中，通过静态方法Score.changeScore1或this.changeScore2修改Child组件中的this.score.value时，UI不会刷新。
-
-【反例】
-
-```ts
-class Score {
-  value: number;
-  constructor(value: number) {
-    this.value = value;
-  }
-
-  static changeScore1(score:Score) {
-    score.value += 1;
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State score: Score = new Score(1);
-
-  build() {
-    Column({space:8}) {
-      Text(`The value in Parent is ${this.score.value}.`)
-        .fontSize(30)
-        .fontColor(Color.Red)
-      Child({ score: this.score })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-@Component
-struct Child {
-  @Link score: Score;
-
-  changeScore2(score:Score) {
-    score.value += 2;
-  }
-
-  build() {
-    Column({space:8}) {
-      Text(`The value in Child is ${this.score.value}.`)
-        .fontSize(30)
-      Button(`changeScore1`)
-        .onClick(()=>{
-          // 通过静态方法调用，无法触发UI刷新
-          Score.changeScore1(this.score);
-        })
-      Button(`changeScore2`)
-        .onClick(()=>{
-          // 使用this通过自定义组件内部方法调用，无法触发UI刷新
-          this.changeScore2(this.score);
-        })
-    }
-  }
-}
-```
-
-可以通过如下先赋值、再调用新赋值的变量的方式为this.score加上Proxy代理，实现UI刷新。
-
-【正例】
-
-<!-- @[link_proxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/AddProxyToRerendertheUI.ets) -->
-
-``` TypeScript
-class Score {
-  public value: number;
-  constructor(value: number) {
-    this.value = value;
-  }
-
-  static changeScore1(score:Score) {
-    score.value += 1;
-  }
-}
-
-@Entry
-@Component
-struct AddProxyToRerendertheUI {
-  @State score: Score = new Score(1);
-
-  build() {
-    Column({space:8}) {
-      Text(`The value in Parent is ${this.score.value}.`)
-        .fontSize(30)
-        .fontColor(Color.Red)
-      AddProxyChild({ score: this.score })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-@Component
-struct AddProxyChild {
-  @Link score: Score;
-
-  changeScore2(score:Score) {
-    score.value += 2;
-  }
-
-  build() {
-    Column({space:8}) {
-      Text(`The value in Child is ${this.score.value}.`)
-        .fontSize(30)
-      Button(`changeScore1`)
-        .onClick(()=>{
-          // 通过赋值添加 Proxy 代理
-          let score1 = this.score;
-          Score.changeScore1(score1);
-        })
-      Button(`changeScore2`)
-        .onClick(()=>{
-          // 通过赋值添加 Proxy 代理
-          let score2 = this.score;
-          this.changeScore2(score2);
         })
     }
   }

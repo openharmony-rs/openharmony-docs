@@ -121,7 +121,7 @@ try {
 ```
 
 
-## uiAppearance.setFontScale<sup>12+<sup>
+## uiAppearance.setFontScale<sup>12+</sup>
 
 setFontScale(fontScale: number): Promise\<void>
 
@@ -137,7 +137,7 @@ setFontScale(fontScale: number): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| fontScale | number | 是 | 需要设置的字体大小。 |
+| fontScale | number | 是 | 需要设置的字体大小。<br/> 取值范围：(0, 5.0]，超出范围会抛出异常401。 |
 
 **返回值：** 
 
@@ -181,7 +181,7 @@ try {
   ```
 
 
-## uiAppearance.setFontWeightScale<sup>12+<sup>
+## uiAppearance.setFontWeightScale<sup>12+</sup>
 
 setFontWeightScale(fontWeightScale: number): Promise\<void>
 
@@ -197,7 +197,7 @@ setFontWeightScale(fontWeightScale: number): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| fontWeightScale | number | 是 | 需要设置的字体粗细。 |
+| fontWeightScale | number | 是 | 需要设置的字体粗细。<br/> 取值范围：(0, 5.0]，超出范围会抛出异常401。 |
 
 **返回值：** 
 

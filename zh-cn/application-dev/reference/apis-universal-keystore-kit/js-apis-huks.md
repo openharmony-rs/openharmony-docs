@@ -1874,12 +1874,16 @@ initSession操作密钥接口，使用Callback回调异步返回结果。huks.in
 | 12000003 | algorithm param is invalid. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
-| 12000006 | error occurred in crypto engine. |
+| 12000006 | error occurred in crypto engine or Ukey driver. |
 | 12000010 | the number of sessions has reached limit. |
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 | 12000018 | the input parameter is invalid. |
+| 12000020 | the provider operation failed. |
+| 12000021 | the Ukey PIN is locked. |
+| 12000023 | the Ukey PIN not authenticated. |
+| 12000024 | the provider or Ukey is busy. |
 
 ## huks.initSession<sup>9+</sup>
 
@@ -1917,12 +1921,16 @@ initSession操作密钥接口，使用Promise方式异步返回结果。huks.ini
 | 12000003 | algorithm param is invalid. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
-| 12000006 | error occurred in crypto engine. |
+| 12000006 | error occurred in crypto engine or Ukey driver. |
 | 12000010 | the number of sessions has reached limit. |
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 | 12000018 | the input parameter is invalid. |
+| 12000020 | the provider operation failed. |
+| 12000021 | the Ukey PIN is locked. |
+| 12000023 | the Ukey PIN not authenticated. |
+| 12000024 | the provider or Ukey is busy. |
 
 ## huks.updateSession<sup>9+</sup>
 
@@ -1964,6 +1972,10 @@ huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
+| 12000020 | the provider operation failed. |
+| 12000021 | the Ukey PIN is locked. |
+| 12000023 | the Ukey PIN not authenticated. |
+| 12000024 | the provider or Ukey is busy. |
 
 ## huks.updateSession<sup>9+</sup>
 
@@ -1999,7 +2011,7 @@ huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需
 | 12000003 | algorithm param is invalid. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
-| 12000006 | error occurred in crypto engine. |
+| 12000006 | error occurred in crypto engine or Ukey driver. |
 | 12000007 | this credential is already invalidated permanently. |
 | 12000008 | verify auth token failed. |
 | 12000009 | auth token is already timeout. |
@@ -2046,13 +2058,17 @@ huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需
 | 12000003 | algorithm param is invalid. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
-| 12000006 | error occurred in crypto engine. |
+| 12000006 | error occurred in crypto engine or Ukey driver. |
 | 12000007 | this credential is already invalidated permanently. |
 | 12000008 | verify auth token failed. |
 | 12000009 | auth token is already timeout. |
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
+| 12000020 | the provider operation failed. |
+| 12000021 | the Ukey PIN is locked. |
+| 12000023 | the Ukey PIN not authenticated. |
+| 12000024 | the provider or Ukey is busy. |
 
 ## huks.finishSession<sup>9+</sup>
 
@@ -2095,6 +2111,10 @@ huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 | 12000017 | The key with same alias is already exist. |
+| 12000020 | the provider operation failed. |
+| 12000021 | the Ukey PIN is locked. |
+| 12000023 | the Ukey PIN not authenticated. |
+| 12000024 | the provider or Ukey is busy. |
 
 ## huks.finishSession<sup>9+</sup>
 
@@ -2186,6 +2206,10 @@ huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 | 12000017 | The key with same alias is already exist. |
+| 12000020 | the provider operation failed. |
+| 12000021 | the Ukey PIN is locked. |
+| 12000023 | the Ukey PIN not authenticated. |
+| 12000024 | the provider or Ukey is busy. |
 
 ## huks.abortSession<sup>9+</sup>
 
@@ -2215,9 +2239,11 @@ abortSession操作密钥接口，使用Callback回调异步返回结果。
 | 801 | api is not supported. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
-| 12000006 | error occurred in crypto engine. |
+| 12000006 | error occurred in crypto engine or Ukey driver. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
+| 12000020 | the provider operation failed. |
+| 12000024 | the provider or Ukey is busy. |
 
 **示例：**
 
@@ -2319,9 +2345,11 @@ abortSession操作密钥接口，使用Promise方式异步返回结果。
 | 801 | api is not supported. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
-| 12000006 | error occurred in crypto engine. |
+| 12000006 | error occurred in crypto engine or Ukey driver. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
+| 12000020 | the provider operation failed. |
+| 12000024 | the provider or Ukey is busy. |
 
 **示例：**
 
@@ -2510,6 +2538,13 @@ async function testListAliases() {
 | HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET<sup>11+</sup>  | 12000016 | 需要锁屏密码但未设置。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension     |
 | HUKS_ERR_CODE_KEY_ALREADY_EXIST<sup>20+</sup>  | 12000017 | 同名密钥已存在。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core     |
 | HUKS_ERR_CODE_INVALID_ARGUMENT<sup>20+</sup>  | 12000018 | 输入参数非法。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core     |
+| HUKS_ERR_CODE_ITEM_EXISTS<sup>22+</sup>  | 12000019 | 同名provider已注册。<br> **系统能力**: SystemCapability.Security.Huks.Extension    |
+| HUKS_ERR_CODE_EXTERNAL_MODULE<sup>22+</sup>  | 12000020 | 依赖的模块报错。<br> **系统能力**: SystemCapability.Security.Huks.Extension    |
+| HUKS_ERR_CODE_PIN_LOCKED<sup>22+</sup>  | 12000021 | Ukey PIN码被锁。<br> **系统能力**: SystemCapability.Security.Huks.Extension    |
+| HUKS_ERR_CODE_PIN_INCORRECT<sup>22+</sup>  | 12000022 | Ukey PIN码错误。<br> **系统能力**: SystemCapability.Security.Huks.Extension    |
+| HUKS_ERR_CODE_PIN_NO_AUTH<sup>22+</sup>  | 12000023 | Ukey PIN码未认证。<br> **系统能力**: SystemCapability.Security.Huks.Extension    |
+| HUKS_ERR_CODE_BUSY<sup>22+</sup>  | 12000024 | 设备或资源繁忙。<br> **系统能力**: SystemCapability.Security.Huks.Extension    |
+| HUKS_ERR_CODE_EXCEED_LIMIT<sup>22+</sup>  | 12000025 | 资源超过限制。<br> **系统能力**: SystemCapability.Security.Huks.Extension    |
 
 ## HuksKeyPurpose
 
@@ -2701,6 +2736,17 @@ API version 8-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | -------------------- | ---- | ----------------- |
 | HUKS_SEND_TYPE_ASYNC | 0    | 表示异步发送TAG。 |
 | HUKS_SEND_TYPE_SYNC  | 1    | 表示同步发送TAG。 |
+
+## HuksKeyClassType<sup>22+</sup>
+
+表示密钥的来源。
+
+**系统能力：** SystemCapability.Security.Huks.Extension
+
+| 名称                 | 值   | 说明              |
+| -------------------- | ---- | ----------------- |
+| HUKS_KEY_CLASS_DEFAULT | 0    | 表示HUKS本地管理的密钥。 |
+| HUKS_KEY_CLASS_EXTENSION | 1    | 表示外部密钥管理扩展管理的密钥。 |
 
 ## HuksUnwrapSuite<sup>9+</sup>
 
@@ -2945,6 +2991,7 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 | HUKS_TAG_ATTESTATION_ID_VERSION_INFO                        | HuksTagType.HUKS_TAG_TYPE_BYTES \| 515   | 表示attestation时的版本号。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_KEY_OVERRIDE<sup>20+</sup>                         | HuksTagType.HUKS_TAG_TYPE_BOOL \| 520   | 表示是否覆写同名密钥。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_AE_TAG_LEN<sup>22+</sup>                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 521   | 表示指定的AEAD标签长度。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_KEY_CLASS<sup>22+</sup>                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 522   | 表示密钥来源。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_KEY_ACCESS_GROUP<sup>23+</sup>                     | HuksTagType.HUKS_TAG_TYPE_BYTES \| 523   | 表示指定的分组信息。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_IS_KEY_ALIAS                                       | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1001   | 表示是否使用生成key时传入的别名的Tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_KEY_STORAGE_FLAG                                   | HuksTagType.HUKS_TAG_TYPE_UINT \| 1002   | 表示密钥存储方式的Tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |

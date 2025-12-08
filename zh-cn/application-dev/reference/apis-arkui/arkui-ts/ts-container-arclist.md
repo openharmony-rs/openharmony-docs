@@ -190,7 +190,7 @@ fadingEdge(enable: Optional&lt;boolean&gt;)
 
 | 参数名  | 类型                                              | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enable | Optional&lt;boolean&gt;                           | 是   | fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的clip属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false |
+| enable | Optional&lt;boolean&gt;                           | 是   | fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的[clip](ts-universal-attributes-sharp-clipping.md#clip12)属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false |
 
 ### friction
 
@@ -364,7 +364,7 @@ onScrollStop(handler: Optional\<VoidCallback>)
 
 onWillScroll(handler: Optional\<OnWillScrollCallback>)
 
-列表划动时每帧开始前触发，返回当前帧将要滑动的偏移量和当前滑动状态。返回的偏移量为计算得到的将要滑动的偏移量值，并非最终实际滑动偏移。
+列表滑动时每帧开始前触发，返回当前帧将要滑动的偏移量和当前滑动状态。返回的偏移量为计算得到的将要滑动的偏移量值，并非最终实际滑动偏移。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -374,7 +374,7 @@ onWillScroll(handler: Optional\<OnWillScrollCallback>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| handler | [Optional\<OnWillScrollCallback>](ts-container-scrollable-common.md#onwillscrollcallback12) | 是 | 列表划动时每帧开始前触发的回调。 |
+| handler | [Optional\<OnWillScrollCallback>](ts-container-scrollable-common.md#onwillscrollcallback12) | 是 | 列表滑动时每帧开始前触发的回调。 |
 
 > **说明：** 
 > 
@@ -444,6 +444,7 @@ function buildText() {
     Text('header')
       .fontSize('60px')
       .fontWeight(FontWeight.Bold)
+      .fontColor(Color.Black)
   }.margin(0)
 }
 

@@ -46,7 +46,7 @@
 
 ### OH_NativeBuffer_ColorSpace
 
-```
+```c
 enum OH_NativeBuffer_ColorSpace
 ```
 
@@ -99,7 +99,7 @@ API version 12之前，使用该枚举请引用native_buffer.h头文件；从API
 
 ### OH_NativeBuffer_MetadataType
 
-```
+```c
 enum OH_NativeBuffer_MetadataType
 ```
 
@@ -124,7 +124,7 @@ OH_NativeBuffer的图像标准。
 
 ### OH_NativeBuffer_MetadataKey
 
-```
+```c
 enum OH_NativeBuffer_MetadataKey
 ```
 
@@ -145,7 +145,7 @@ enum OH_NativeBuffer_MetadataKey
 
 ### OH_NativeBuffer_Format
 
-```
+```c
 enum OH_NativeBuffer_Format
 ```
 
@@ -210,7 +210,7 @@ API version 22之前，使用该枚举请引用native_buffer.h头文件；从API
 
 ### OH_NativeBuffer_TransformType
 
-```
+```c
 enum OH_NativeBuffer_TransformType
 ```
 

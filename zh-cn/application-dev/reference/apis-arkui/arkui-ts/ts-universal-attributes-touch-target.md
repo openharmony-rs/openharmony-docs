@@ -11,7 +11,8 @@
 
 >  **说明：**
 >
->  从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 设置触摸热区属性时，手指需在热区内按下，随后抬起时若满足事件响应条件，事件将被触发。此外，在当前手势结束前，若条件满足，可持续触发的事件也会被激活。
 
 ## responseRegion
 
@@ -59,13 +60,13 @@ mouseResponseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 | -------- | -------- |
 | T | 返回当前组件。 |
 
-## responseRegionList<sup>23+</sup>
+## responseRegionList<sup>22+</sup>
 
 responseRegionList(regions: Array&lt;ResponseRegion&gt;): T
 
 设置组件的触摸热区列表。调用该接口时，[responseRegion](#responseregion)与[mouseResponseRegion](#mouseresponseregion10)接口不再生效。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,7 +74,7 @@ responseRegionList(regions: Array&lt;ResponseRegion&gt;): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| regions  | Array&lt;[ResponseRegion](#responseregion23对象说明)&gt;&nbsp; | 是   | 组件的触摸热区数组。<br/>每个触摸热区均包括输入工具类型、位置和大小。<br/>默认值：<br/>[{<br/>tool：ResponseRegionSupportedTool.ALL,<br/>x：LengthMetrics.vp(0),<br/>y：LengthMetrics.vp(0),<br/>width：LengthMetrics.percent(1),<br/>height：LengthMetrics.percent(1)<br/>}] |
+| regions  | Array&lt;[ResponseRegion](#responseregion22对象说明)&gt;&nbsp; | 是   | 组件的触摸热区数组。<br/>每个触摸热区均包括输入工具类型、位置和大小。<br/>默认值：<br/>[{<br/>tool：ResponseRegionSupportedTool.ALL,<br/>x：LengthMetrics.vp(0),<br/>y：LengthMetrics.vp(0),<br/>width：LengthMetrics.percent(1),<br/>height：LengthMetrics.percent(1)<br/>}] |
 
 **返回值：**
 
@@ -108,7 +109,7 @@ responseRegionList(regions: Array&lt;ResponseRegion&gt;): T
   >
   >  width和height不支持calc()的动态计算。
 
-## ResponseRegion<sup>23+</sup>对象说明
+## ResponseRegion<sup>22+</sup>对象说明
 
 由输入工具类型、触摸位置和大小组成的触摸热区。
 
@@ -122,33 +123,17 @@ responseRegionList(regions: Array&lt;ResponseRegion&gt;): T
   >
   > - width和height采用string类型时，string需采用小写字符否则不生效，支持calc()的动态计算。指定calc()的入参字符串格式为'宽高缩放比例 ± 宽高增量'，宽高缩放比例为百分比，宽高增量单位为px或vp。例如'calc(80% + 10vp)'中，80%为宽高缩放比例、10vp为宽高增量。width和height采用LengthMetrics类型且单位为percent时，相对于组件自身宽高进行计算，percent(1)代表100%。当计算结果为负值时，采用默认值。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称        | 类型                        | 只读    |  可选   |  说明                             |
 | ------ | ----------------------------- | -----| -----|-------------------------------- |
-| tool   | [ResponseRegionSupportedTool](#responseregionsupportedtool23)  | 否   | 是   |触摸热区适用的输入工具类型。<br/>默认值：ResponseRegionSupportedTool.ALL |
+| tool   | [ResponseRegionSupportedTool](./ts-appendix-enums.md#responseregionsupportedtool22)  | 否   | 是   |触摸热区适用的输入工具类型。<br/>默认值：ResponseRegionSupportedTool.ALL |
 | x      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否   | 是   |触摸点相对于组件左上角的x轴坐标。<br/>默认值：LengthMetrics.vp(0) |
 | y      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否   | 是   |触摸点相对于组件左上角的y轴坐标。<br/>默认值：LengthMetrics.vp(0) |
 | width  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| string | 否   | 是   |触摸热区的宽度。<br/>默认值：LengthMetrics.percent(1) |
 | height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| string | 否   | 是   |触摸热区的高度。<br/>默认值：LengthMetrics.percent(1) |
-
-## ResponseRegionSupportedTool<sup>23+</sup>
-
-触摸热区适用的输入工具类型。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称   | 值 | 说明                             |
-| ------ | -----|------------------------------- |
-| ALL    | 0 | 所有输入工具类型。   |
-| FINGER | 1 | 手指。   |
-| PEN    | 2 | 手写笔。 |
-| MOUSE  | 3 | 鼠标。   |
-
 
 ## 示例
 

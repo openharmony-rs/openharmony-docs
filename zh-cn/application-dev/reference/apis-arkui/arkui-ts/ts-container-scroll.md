@@ -1068,7 +1068,7 @@ contentSize(): SizeResult
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 100004   |The controller not bound to component.                              |
+| 100004   | Controller not bound to a component. |
 
 ## OffsetResult<sup>11+</sup>对象说明
 
@@ -1105,12 +1105,12 @@ contentSize(): SizeResult
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明                           |
-| ------ | ------------------------------ |
-| START   | 首部对齐。指定item首部与滚动容器组件首部对齐。  |
-| CENTER | 居中对齐。指定item主轴方向居中对齐于滚动容器组件。        |
-| END  | 尾部对齐。指定item尾部与滚动容器组件尾部对齐。 |
-| AUTO  | 自动对齐。<br/>若指定item完全处于显示区，不做调整。否则依照滑动距离最短的原则，将指定item首部对齐或尾部对齐于滚动容器组件，使指定item完全处于显示区。|
+| 名称     | 值 | 说明                           |
+| ------ | --- | ------------------------------ |
+| START   | 0 | 首部对齐。指定item首部与滚动容器组件首部对齐。  |
+| CENTER | 1 | 居中对齐。指定item主轴方向居中对齐于滚动容器组件。        |
+| END  | 2 | 尾部对齐。指定item尾部与滚动容器组件尾部对齐。 |
+| AUTO  | 3 | 自动对齐。<br/>若指定item完全处于显示区，不做调整。否则依照滑动距离最短的原则，将指定item首部对齐或尾部对齐于滚动容器组件，使指定item完全处于显示区。|
 
 ## ScrollToIndexOptions<sup>12+</sup>对象说明
 
