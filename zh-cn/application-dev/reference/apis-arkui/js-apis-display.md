@@ -851,7 +851,7 @@ on(type: 'brightnessInfoChange', callback: [BrightnessCallback](#brightnesscallb
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
 | type     | string                                   | 是   | 监听事件，固定为'brightnessInfoChange'，表示屏幕亮度信息状态发生变化。 |
-| callback | [BrightnessCallback](#brightnesscallback22)&lt;number， [BrightnessInfo](#brightnessinfo22)&gt; | 是   | 回调函数。返回屏幕亮度信息改变的displayId(参数1)及对应的屏幕亮度信息(参数2)。 |
+| callback | [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)&gt; | 是   | 回调函数。返回屏幕亮度信息改变的displayId(参数1)及对应的屏幕亮度信息(参数2)。 |
 
 **错误码：**
 
