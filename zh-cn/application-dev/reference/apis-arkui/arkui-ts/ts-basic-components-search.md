@@ -1710,6 +1710,11 @@ struct SearchExample {
     if (targetIndex !== -1) {
       menuItems.splice(targetIndex, 1); // 从目标索引删除1个元素
     }
+    // 从API version 23开始支持TextMenuItemId.autoFill
+    targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.autoFill));
+    if (targetIndex !== -1) {
+      menuItems.splice(targetIndex, 1); // 从目标索引删除1个元素
+    }
     return menuItems;
   }
   onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {

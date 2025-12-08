@@ -1336,7 +1336,7 @@ isDisposed(): boolean
 
 | 类型    | 说明               |
 | ------- | ------------------ |
-| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。
+| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。 |
 
 **示例：**
 
@@ -2265,10 +2265,10 @@ invalidateAttributes(): void
 
 **示例：** 
 
-  从API version 21开始，通过if else动态切换两个节点，并且在节点创建时调用invalidateAttributes即时触发节点属性更新，避免组件切换过程中出现闪烁。
+从API version 21开始，通过if else动态切换两个节点，并且在节点创建时调用invalidateAttributes即时触发节点属性更新，避免组件切换过程中出现闪烁。
  
  ```ts
- //index.ets
+// index.ets
 import { FrameNode, NodeController, typeNode, NodeContent } from '@kit.ArkUI';
 
 // 继承NodeController实现自定义NodeAdapter控制器
@@ -2378,7 +2378,7 @@ adoptChild(child: FrameNode): void
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The current FrameNode is not modifiable. |
 | 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be disposed." |
 | 100026   | The current FrameNode has been disposed. |
 
@@ -2408,14 +2408,14 @@ removeAdoptedChild(child: FrameNode): void
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The current FrameNode is not modifiable. |
 | 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be null." |
 | 100026   | The current FrameNode has been disposed. |
 
 **示例：**
 
 完整示例请参考[接纳为附属节点示例](#接纳为附属节点示例)。
- 	
+
 ### convertPosition<sup>22+</sup>
 
 convertPosition(position: Position, targetNode: FrameNode): Position
@@ -2597,6 +2597,545 @@ struct Index {
   }
 }
 
+```
+
+### isOnMainTree<sup>23+</sup>
+
+isOnMainTree(): boolean
+
+查询节点是否被挂载到主节点树上。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                                                           | 说明                                                                  |
+| -------------------------------------------------------------- | --------------------------------------------------------------------- |
+| boolean | 节点是否被挂载到主节点树上。<br/>true表示节点被挂载到主节点树上，false表示节点没有被挂载到主节点树上。 |
+
+**示例：**
+
+```ts
+import { NodeController, FrameNode, UIContext, typeNode } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const TEST_TAG: string = 'FrameNode '
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  public frameNode: FrameNode | null = null;
+  public childList: Array<FrameNode> = new Array<FrameNode>();
+  private rootNode: FrameNode | null = null;
+  private uiContext: UIContext | null = null;
+  private childrenCount: number = 0;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.uiContext = uiContext;
+
+    this.frameNode = new FrameNode(uiContext);
+    this.frameNode.commonAttribute.backgroundColor(Color.Pink);
+    this.frameNode.commonAttribute.size({ width: 100, height: 100 });
+    this.addCommonEvent(this.frameNode)
+    this.rootNode.appendChild(this.frameNode);
+    this.childrenCount = this.childrenCount + 1;
+    for (let i = 0; i < 10; i++) {
+      let childNode = new FrameNode(uiContext);
+      this.childList.push(childNode);
+      this.frameNode.appendChild(childNode);
+    }
+    let stackNode = typeNode.createNode(uiContext, 'Stack');
+    this.frameNode.appendChild(stackNode);
+    return this.rootNode;
+  }
+
+  addCommonEvent(frameNode: FrameNode) {
+    frameNode.commonEvent.setOnClick((event: ClickEvent) => {
+      console.info(`Click FrameNode: ${JSON.stringify(event)}`)
+    })
+  }
+
+  createFrameNode() {
+    let frameNode = new FrameNode(this.uiContext!);
+    frameNode.commonAttribute.backgroundColor(Color.Pink);
+    frameNode.commonAttribute.size({ width: 100, height: 100 });
+    frameNode.commonAttribute.position({ x: this.childrenCount * 120, y: 0 });
+
+    return frameNode;
+  }
+
+  appendChild() {
+    const childNode = this.createFrameNode();
+    this.rootNode!.appendChild(childNode);
+    this.childrenCount = this.childrenCount + 1;
+  }
+
+  insertChildAfter(index: number) {
+    let insertNode = this.createFrameNode();
+    let childNode = this.rootNode!.getChild(index);
+    this.rootNode!.insertChildAfter(insertNode, childNode);
+    this.childrenCount = this.childrenCount + 1;
+  }
+
+  removeChild(index: number) {
+    let childNode = this.rootNode!.getChild(index);
+    if (childNode == null) {
+      console.info(`${TEST_TAG} getchild at index {${index}} : fail`);
+      return;
+    }
+    this.rootNode!.removeChild(childNode);
+    this.childrenCount = this.childrenCount - 1;
+  }
+
+  getChildNumber() {
+    console.info(TEST_TAG + ' getChildNumber ' + this.rootNode!.getChildrenCount())
+    console.info(TEST_TAG + ' children count is ' + this.childrenCount);
+  }
+
+  clearChildren() {
+    this.rootNode!.clearChildren();
+  }
+
+  searchFrameNode() {
+    if (this.rootNode!.getFirstChild() === null) {
+      console.info(TEST_TAG + ' the rootNode does not have child node.')
+    }
+    if (this.rootNode!.getFirstChild() === this.frameNode) {
+      console.info(TEST_TAG +
+        ' getFirstChild  result: success. The first child of the rootNode is equals to frameNode.');
+    } else {
+      console.info(TEST_TAG +
+        ' getFirstChild  result: fail. The first child of the rootNode is not equals to frameNode.');
+    }
+    if (this.frameNode!.getChild(5) === this.frameNode!.getChild(4)!.getNextSibling()) {
+      console.info(TEST_TAG + ' getNextSibling  result: success.');
+    } else {
+      console.info(TEST_TAG + ' getNextSibling  result: fail.');
+    }
+    if (this.frameNode!.getChild(3) === this.frameNode!.getChild(4)!.getPreviousSibling()) {
+      console.info(TEST_TAG + ' getPreviousSibling  result: success.');
+    } else {
+      console.info(TEST_TAG + ' getPreviousSibling  result: fail.');
+    }
+    if (this.rootNode!.getFirstChild() !== null && this.rootNode!.getFirstChild()!.getParent() === this.rootNode) {
+      console.info(TEST_TAG + ' getParent  result: success.');
+    } else {
+      console.info(TEST_TAG + ' getParent  result: fail.');
+    }
+    if (this.rootNode!.getParent() !== undefined || this.rootNode!.getParent() !== null) {
+      console.info(TEST_TAG + ' get ArkTsNode success.')
+      console.info(TEST_TAG + ' check rootNode whether is modifiable ' + this.rootNode!.isModifiable())
+      console.info(TEST_TAG + ' check getParent whether is modifiable ' + this.rootNode!.getParent()!.isModifiable())
+    } else {
+      console.info(TEST_TAG + ' get ArkTsNode fail.');
+    }
+  }
+
+  moveFrameNode() {
+    const currentNode = this.frameNode!.getChild(10);
+    try {
+      currentNode!.moveTo(this.rootNode, 0);
+      if (this.rootNode!.getChild(0) === currentNode) {
+        console.info(TEST_TAG + ' moveTo  result: success.');
+      } else {
+        console.info(TEST_TAG + ' moveTo  result: fail.');
+      }
+    } catch (err) {
+      console.info(TEST_TAG + ' ' + (err as BusinessError).code + ' : ' + (err as BusinessError).message);
+      console.info(TEST_TAG + ' moveTo  result: fail.');
+    }
+  }
+
+  getPositionToWindow() {
+    let positionToWindow = this.rootNode?.getPositionToWindow();
+    console.info(TEST_TAG + JSON.stringify(positionToWindow));
+  }
+
+  getPositionToParent() {
+    let positionToParent = this.rootNode?.getPositionToParent();
+    console.info(TEST_TAG + JSON.stringify(positionToParent));
+  }
+
+  getPositionToScreen() {
+    let positionToScreen = this.rootNode?.getPositionToScreen();
+    console.info(TEST_TAG + JSON.stringify(positionToScreen));
+  }
+
+  getGlobalPositionOnDisplay() {
+    let positionOnGlobalDisplay = this.rootNode?.getGlobalPositionOnDisplay();
+    console.info(TEST_TAG + JSON.stringify(positionOnGlobalDisplay));
+  }
+
+  getPositionToWindowWithTransform() {
+    let positionToWindowWithTransform = this.rootNode?.getPositionToWindowWithTransform();
+    console.info(TEST_TAG + JSON.stringify(positionToWindowWithTransform));
+  }
+
+  getPositionToParentWithTransform() {
+    let positionToParentWithTransform = this.rootNode?.getPositionToParentWithTransform();
+    console.info(TEST_TAG + JSON.stringify(positionToParentWithTransform));
+  }
+
+  getPositionToScreenWithTransform() {
+    let positionToScreenWithTransform = this.rootNode?.getPositionToScreenWithTransform();
+    console.info(TEST_TAG + JSON.stringify(positionToScreenWithTransform));
+  }
+
+  getMeasuredSize() {
+    let measuredSize = this.frameNode?.getMeasuredSize();
+    console.info(TEST_TAG + JSON.stringify(measuredSize));
+  }
+
+  getLayoutPosition() {
+    let layoutPosition = this.frameNode?.getLayoutPosition();
+    console.info(TEST_TAG + JSON.stringify(layoutPosition));
+  }
+
+  getUserConfigBorderWidth() {
+    let userConfigBorderWidth = this.frameNode?.getUserConfigBorderWidth();
+    console.info(TEST_TAG + JSON.stringify(userConfigBorderWidth));
+  }
+
+  getUserConfigPadding() {
+    let userConfigPadding = this.frameNode?.getUserConfigPadding();
+    console.info(TEST_TAG + JSON.stringify(userConfigPadding));
+  }
+
+  getUserConfigMargin() {
+    let userConfigMargin = this.frameNode?.getUserConfigMargin();
+    console.info(TEST_TAG + JSON.stringify(userConfigMargin));
+  }
+
+  getUserConfigSize() {
+    let userConfigSize = this.frameNode?.getUserConfigSize();
+    console.info(TEST_TAG + JSON.stringify(userConfigSize));
+  }
+
+  getId() {
+    let id = this.frameNode?.getId();
+    console.info(TEST_TAG + id);
+  }
+
+  getUniqueId() {
+    let uniqueId = this.frameNode?.getUniqueId();
+    console.info(TEST_TAG + uniqueId);
+  }
+
+  getNodeType() {
+    let nodeType = this.frameNode?.getNodeType();
+    console.info(TEST_TAG + nodeType);
+  }
+
+  getOpacity() {
+    let opacity = this.frameNode?.getOpacity();
+    console.info(TEST_TAG + JSON.stringify(opacity));
+  }
+
+  isVisible() {
+    let visible = this.frameNode?.isVisible();
+    console.info(TEST_TAG + JSON.stringify(visible));
+  }
+
+  isClipToFrame() {
+    let clipToFrame = this.frameNode?.isClipToFrame();
+    console.info(TEST_TAG + JSON.stringify(clipToFrame));
+  }
+
+  isAttached() {
+    let attached = this.frameNode?.isAttached();
+    console.info(TEST_TAG + JSON.stringify(attached));
+  }
+
+  isOnMainTree() {
+    let attached = this.frameNode?.isOnMainTree();
+    console.info(TEST_TAG + JSON.stringify(attached));
+  }
+
+  getInspectorInfo() {
+    let inspectorInfo = this.frameNode?.getInspectorInfo();
+    console.info(TEST_TAG + JSON.stringify(inspectorInfo));
+  }
+
+  setCrossLanguageOptions() {
+    console.info(TEST_TAG + ' getCrossLanguageOptions ' + JSON.stringify(this.frameNode?.getCrossLanguageOptions()));
+    try {
+      this.frameNode?.setCrossLanguageOptions({
+        attributeSetting: true
+      });
+      console.info(TEST_TAG + ' setCrossLanguageOptions success.');
+    } catch (err) {
+      console.error(TEST_TAG + ' ' + (err as BusinessError).code + ' : ' + (err as BusinessError).message);
+      console.error(TEST_TAG + ' setCrossLanguageOptions fail.');
+    }
+    console.info(TEST_TAG + ' getCrossLanguageOptions ' + JSON.stringify(this.frameNode?.getCrossLanguageOptions()));
+  }
+
+  getInteractionEventBindingInfo() {
+    let bindingInfo = this.frameNode?.getInteractionEventBindingInfo(EventQueryType.ON_CLICK);
+    console.info(TEST_TAG + bindingInfo?.baseEventRegistered);
+    console.info(TEST_TAG + bindingInfo?.nodeEventRegistered);
+    console.info(TEST_TAG + bindingInfo?.nativeEventRegistered);
+    console.info(TEST_TAG + bindingInfo?.builtInEventRegistered);
+    console.info(TEST_TAG + JSON.stringify(bindingInfo));
+  }
+
+  throwError() {
+    try {
+      this.rootNode!.getParent()!.clearChildren();
+    } catch (err) {
+      console.error(TEST_TAG + ' ' + (err as BusinessError).code + ' : ' + (err as BusinessError).message);
+    }
+    try {
+      this.rootNode!.getParent()!.appendChild(new FrameNode(this.uiContext));
+    } catch (err) {
+      console.error(TEST_TAG + ' ' + (err as BusinessError).code + ' : ' + (err as BusinessError).message);
+    }
+    try {
+      this.rootNode!.getParent()!.removeChild(this.rootNode!.getParent()!.getChild(0));
+    } catch (err) {
+      console.error(TEST_TAG + ' ' + (err as BusinessError).code + ' : ' + (err as BusinessError).message);
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+  private scroller: Scroller = new Scroller();
+  @State index: number = 0;
+
+  build() {
+    Scroll(this.scroller) {
+      Column({ space: 8 }) {
+        Column() {
+          Row() {
+            Button('ADD')
+              .onClick(() => {
+                this.index++;
+              })
+            Button('DEC')
+              .onClick(() => {
+                this.index--;
+              })
+          }
+
+          Text('Current index is ' + this.index)
+            .textAlign(TextAlign.Center)
+            .borderRadius(10)
+            .backgroundColor(0xFFFFFF)
+            .width('100%')
+            .fontSize(16)
+        }
+
+        Column() {
+          Text('This is a NodeContainer.')
+            .textAlign(TextAlign.Center)
+            .borderRadius(10)
+            .backgroundColor(0xFFFFFF)
+            .width('100%')
+            .fontSize(16)
+          NodeContainer(this.myNodeController)
+            .borderWidth(1)
+            .width(300)
+            .height(100)
+        }
+
+        Button('appendChild')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.appendChild();
+          })
+        Button('insertChildAfter')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.insertChildAfter(this.index);
+          })
+        Button('removeChild')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.removeChild(this.index);
+          })
+        Button('clearChildren')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.clearChildren();
+          })
+        Button('getChildNumber')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getChildNumber();
+          })
+        Button('searchFrameNode')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.searchFrameNode();
+          })
+        Button('moveFrameNode')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.moveFrameNode();
+          })
+        Button('getPositionToWindow')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getPositionToWindow();
+          })
+        Button('getPositionToParent')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getPositionToParent();
+          })
+        Button('getPositionToScreen')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getPositionToScreen();
+          })
+        Button('getGlobalPositionOnDisplay')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getGlobalPositionOnDisplay();
+          })
+        Button('getPositionToParentWithTransform')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getPositionToParentWithTransform();
+          })
+        Button('getPositionToWindowWithTransform')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getPositionToWindowWithTransform();
+          })
+        Button('getPositionToScreenWithTransform')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getPositionToScreenWithTransform();
+          })
+        Button('getMeasuredSize')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getMeasuredSize();
+          })
+        Button('getLayoutPosition')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getLayoutPosition();
+          })
+        Button('getUserConfigBorderWidth')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getUserConfigBorderWidth();
+          })
+        Button('getUserConfigPadding')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getUserConfigPadding();
+          })
+        Button('getUserConfigMargin')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getUserConfigMargin();
+          })
+        Button('getUserConfigSize')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getUserConfigSize();
+          })
+        Button('getId')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getId();
+          })
+        Button('getUniqueId')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getUniqueId();
+          })
+        Button('getNodeType')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getNodeType();
+          })
+        Button('getOpacity')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getOpacity();
+          })
+        Button('isVisible')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.isVisible();
+          })
+        Button('isClipToFrame')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.isClipToFrame();
+          })
+        Button('isAttached')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.isAttached();
+          })
+        Button('isOnMainTree')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.isOnMainTree();
+          })
+        Button('getInspectorInfo')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getInspectorInfo();
+          })
+        Button('getCustomProperty')
+          .width(300)
+          .onClick(() => {
+            const uiContext: UIContext = this.getUIContext();
+            if (uiContext) {
+              const node: FrameNode | null = uiContext.getFrameNodeById('Test_Button') || null;
+              if (node) {
+                for (let i = 1; i < 4; i++) {
+                  const key = 'customProperty' + i;
+                  const property = node.getCustomProperty(key);
+                  console.info(TEST_TAG + key, JSON.stringify(property));
+                }
+              }
+            }
+          })
+          .id('Test_Button')
+          .customProperty('customProperty1', {
+            'number': 10,
+            'string': 'this is a string',
+            'bool': true,
+            'object': {
+              'name': 'name',
+              'value': 100
+            }
+          })
+          .customProperty('customProperty2', {})
+          .customProperty('customProperty2', undefined)
+        Button('setCrossLanguageOptions')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.setCrossLanguageOptions();
+          })
+        Button('getInteractionEventBindingInfo')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getInteractionEventBindingInfo();
+          })
+        Button('throwError')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.throwError();
+          })
+      }
+      .width('100%')
+    }
+    .scrollable(ScrollDirection.Vertical) // 滚动方向为纵向
+  }
+}
 ```
 
 ## TypedFrameNode<sup>12+</sup>
@@ -7714,7 +8253,7 @@ isDisposed(): boolean
 
 | 类型    | 说明               |
 | ------- | ------------------ |
-| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。
+| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。 |
 
 **示例：**
 

@@ -61,6 +61,7 @@
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { buffer } from '@kit.ArkTS';
 
   function kdfPromise() {
     let keyData = new Uint8Array(buffer.from("012345678901234567890123456789", "utf-8").buffer);
@@ -85,6 +86,7 @@
 
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { buffer } from '@kit.ArkTS';
 
   function kdfSync() {
     let keyData = new Uint8Array(buffer.from("012345678901234567890123456789", "utf-8").buffer);

@@ -48,102 +48,102 @@ target_link_libraries(sample PUBLIC libohfileshare.so)
 #include <iostream>
 ```
 1. 创建FileShare_PolicyInfo实例,调用OH_FileShare_PersistPermission接口，设置uri的持久化授权，接口入参policyNum最大上限为500。
-<!-- @[persist_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-    static const uint32_t policyNum = 2;
-    char strTestPath1[] = "file://com.example.fileshare/data/storage/el2/base/files/test1.txt";
-    char strTestPath2[] = "file://com.example.fileshare/data/storage/el2/base/files/test2.txt";
-    FileShare_PolicyInfo policy[policyNum] = {
-        {strTestPath1, static_cast<unsigned int>(strlen(strTestPath1)), FileShare_OperationMode::READ_MODE},
-        {strTestPath2, static_cast<unsigned int>(strlen(strTestPath2)), FileShare_OperationMode::WRITE_MODE}};
-    FileShare_PolicyErrorResult* result = nullptr;
-    uint32_t resultNum = 0;
-    napi_value napiResult;
-    std::string resultStr;
-    auto ret = OH_FileShare_PersistPermission(policy, policyNum, &result, &resultNum);
-    if (ret != ERR_OK) {
-        if (ret == ERR_EPERM && result != nullptr) {
-            for (uint32_t i = 0; i < resultNum; i++) {
-                std::cout << "error uri: " <<  result[i].uri << std::endl;
-                std::cout << "error code: " <<  result[i].code << std::endl;
-                std::cout << "error message: " << result[i].message << std::endl;
-				// ···
-            }
-        }
-    }
-    OH_FileShare_ReleasePolicyErrorResult(result, resultNum);
-```
+   <!-- @[persist_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   static const uint32_t policyNum = 2;
+   char strTestPath1[] = "file://com.example.fileshare/data/storage/el2/base/files/test1.txt";
+   char strTestPath2[] = "file://com.example.fileshare/data/storage/el2/base/files/test2.txt";
+   FileShare_PolicyInfo policy[policyNum] = {
+       {strTestPath1, static_cast<unsigned int>(strlen(strTestPath1)), FileShare_OperationMode::READ_MODE},
+       {strTestPath2, static_cast<unsigned int>(strlen(strTestPath2)), FileShare_OperationMode::WRITE_MODE}};
+   FileShare_PolicyErrorResult* result = nullptr;
+   uint32_t resultNum = 0;
+   napi_value napiResult;
+   std::string resultStr;
+   auto ret = OH_FileShare_PersistPermission(policy, policyNum, &result, &resultNum);
+   if (ret != ERR_OK) {
+       if (ret == ERR_EPERM && result != nullptr) {
+           for (uint32_t i = 0; i < resultNum; i++) {
+               std::cout << "error uri: " <<  result[i].uri << std::endl;
+               std::cout << "error code: " <<  result[i].code << std::endl;
+               std::cout << "error message: " << result[i].message << std::endl;
+               // ...
+           }
+       }
+   }
+   OH_FileShare_ReleasePolicyErrorResult(result, resultNum);
+   ```
 
 2. 调用OH_FileShare_ActivatePermission接口，激活已授权过的uri，接口入参policyNum最大上限为500。
-<!-- @[activate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-    auto ret = OH_FileShare_ActivatePermission(policy, policyNum, &result, &resultNum);
-    if (ret != ERR_OK) {
-        if (ret == ERR_EPERM && result != nullptr) {
-            for (uint32_t i = 0; i < resultNum; i++) {
-                std::cout << "error uri: " <<  result[i].uri << std::endl;
-                std::cout << "error code: " <<  result[i].code << std::endl;
-                std::cout << "error message: " << result[i].message << std::endl;
-				// ···
-            }
-        }
-    }
-    OH_FileShare_ReleasePolicyErrorResult(result, resultNum);
-```
+   <!-- @[activate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   auto ret = OH_FileShare_ActivatePermission(policy, policyNum, &result, &resultNum);
+   if (ret != ERR_OK) {
+       if (ret == ERR_EPERM && result != nullptr) {
+           for (uint32_t i = 0; i < resultNum; i++) {
+               std::cout << "error uri: " <<  result[i].uri << std::endl;
+               std::cout << "error code: " <<  result[i].code << std::endl;
+               std::cout << "error message: " << result[i].message << std::endl;
+               // ...
+           }
+       }
+   }
+   OH_FileShare_ReleasePolicyErrorResult(result, resultNum);
+   ```
 
 3. 调用OH_FileShare_DeactivatePermission接口，停止已启用授权过uri的访问权限，接口入参policyNum最大上限为500。
-<!-- @[deactivate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-    auto ret = OH_FileShare_DeactivatePermission(policy, policyNum, &result, &resultNum);
-    if (ret != ERR_OK) {
-        if (ret == ERR_EPERM && result != nullptr) {
-            for (uint32_t i = 0; i < resultNum; i++) {
-                std::cout << "error uri: " <<  result[i].uri << std::endl;
-                std::cout << "error code: " <<  result[i].code << std::endl;
-                std::cout << "error message: " << result[i].message << std::endl;
-				// ···
-            }
-        }
-    }
-    OH_FileShare_ReleasePolicyErrorResult(result, resultNum);
-```
+   <!-- @[deactivate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   auto ret = OH_FileShare_DeactivatePermission(policy, policyNum, &result, &resultNum);
+   if (ret != ERR_OK) {
+       if (ret == ERR_EPERM && result != nullptr) {
+           for (uint32_t i = 0; i < resultNum; i++) {
+               std::cout << "error uri: " <<  result[i].uri << std::endl;
+               std::cout << "error code: " <<  result[i].code << std::endl;
+               std::cout << "error message: " << result[i].message << std::endl;
+               // ...
+           }
+       }
+   }
+   OH_FileShare_ReleasePolicyErrorResult(result, resultNum);
+   ```
 
 4. 调用OH_FileShare_RevokePermission接口，撤销已经授权的uri持久化权限，接口入参policyNum最大上限为500。
-<!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-    auto ret = OH_FileShare_RevokePermission(policy, policyNum, &result, &resultNum);
-    if (ret != ERR_OK) {
-        if (ret == ERR_EPERM && result != nullptr) {
-            for (uint32_t i = 0; i < resultNum; i++) {
-                std::cout << "error uri: " <<  result[i].uri << std::endl;
-                std::cout << "error code: " <<  result[i].code << std::endl;
-                std::cout << "error message: " << result[i].message << std::endl;
-				// ···
-            }
-        }
-    }
-    OH_FileShare_ReleasePolicyErrorResult(result, resultNum);
-```
+   <!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   auto ret = OH_FileShare_RevokePermission(policy, policyNum, &result, &resultNum);
+   if (ret != ERR_OK) {
+       if (ret == ERR_EPERM && result != nullptr) {
+           for (uint32_t i = 0; i < resultNum; i++) {
+               std::cout << "error uri: " <<  result[i].uri << std::endl;
+               std::cout << "error code: " <<  result[i].code << std::endl;
+               std::cout << "error message: " << result[i].message << std::endl;
+               // ...
+           }
+       }
+   }
+   OH_FileShare_ReleasePolicyErrorResult(result, resultNum);
+   ```
 
 5. 调用OH_FileShare_CheckPersistentPermission接口，检查uri持久化权限，接口入参policyNum最大上限为500。
-<!-- @[check_persistent_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-    bool *result = nullptr;
-    auto ret = OH_FileShare_CheckPersistentPermission(policy, policyNum, &result, &resultNum);
-    if (ret != ERR_OK) {
-        if (ret == ERR_EPERM && result != nullptr) {
-            for (uint32_t i = 0; i < resultNum && resultNum <= policyNum; i++) {
-                std::cout << "uri: " <<  policy[i].uri << std::endl;
-                std::cout << "result: " <<  result[i] << std::endl;
-				// ···
-            }
-        }
-    }
-    std::cout << "retCode: " <<  ret << std::endl;
-    free(result);
-```
+   <!-- @[check_persistent_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   bool *result = nullptr;
+   auto ret = OH_FileShare_CheckPersistentPermission(policy, policyNum, &result, &resultNum);
+   if (ret != ERR_OK) {
+       if (ret == ERR_EPERM && result != nullptr) {
+           for (uint32_t i = 0; i < resultNum && resultNum <= policyNum; i++) {
+               std::cout << "uri: " <<  policy[i].uri << std::endl;
+               std::cout << "result: " <<  result[i] << std::endl;
+               // ...
+           }
+       }
+   }
+   std::cout << "retCode: " <<  ret << std::endl;
+   free(result);
+   ```

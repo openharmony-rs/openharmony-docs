@@ -636,7 +636,7 @@ passwordRules(value: string)
 
 cancelButton(options: CancelButtonOptions)
 
-设置右侧清除按钮样式，仅支持图片类型的图标。不支持[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)。
+设置右侧清除按钮样式，仅支持图片类型的图标。不支持[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)。示例请参考[示例4（设置右侧清除按钮样式）](#示例4设置右侧清除按钮样式)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1192,7 +1192,7 @@ maxFontScale(scale: Optional\<number | Resource>)
 
 cancelButton(symbolOptions: CancelButtonSymbolOptions)
 
-设置右侧清除按钮样式，仅支持symbol图标。不支持[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)。
+设置右侧清除按钮样式，仅支持symbol图标。不支持[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)。示例请参考[示例15（设置symbol类型清除按钮)](#示例15设置symbol类型清除按钮)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -2645,6 +2645,11 @@ struct TextInputExample {
   @State endIndex: number = 0;
   onCreateMenu = (menuItems: Array<TextMenuItem>) => {
     // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+    // 从API version 23开始支持TextMenuItemId.autoFill
+    const idsToFilter: TextMenuItemId[] = [
+      TextMenuItemId.autoFill
+    ]
+    const items = menuItems.filter(item => !idsToFilter.some(id => id.equals(item.id)))
     let item1: TextMenuItem = {
       content: 'create1',
       icon: $r('app.media.startIcon'),
@@ -2655,9 +2660,9 @@ struct TextInputExample {
       id: TextMenuItemId.of('create2'),
       icon: $r('app.media.startIcon'),
     };
-    menuItems.push(item1);
-    menuItems.unshift(item2);
-    return menuItems;
+    items.push(item1);
+    items.unshift(item2);
+    return items;
   }
   onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
     if (menuItem.id.equals(TextMenuItemId.of("create2"))) {

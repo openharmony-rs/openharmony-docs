@@ -338,6 +338,8 @@ API version 23 新增支持如下option中的成员：
 
 `startIn`对应接口[getDefaultPath](../reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getdefaultpath23)。
 
+`types`对应接口[getAcceptableFileTypes](../reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getacceptablefiletypes23)。
+
 index.html代码。
 ```html
 <!DOCTYPE html>
@@ -353,15 +355,16 @@ index.html代码。
     async function saveFile() {
         const options = {
             startIn: 'documents',
-            suggestedName: 'example',
+            suggestedName: 'example.txt',
             types: [
                 {
                     description: '文本文件',
-                    accept: {'text/plain': ['.txt']}
+                    accept: {'text/plain': ['.txt','.text','.doc','.docx'],
+                             'video/mp4': ['.mp4','.avi','.av1','.vp9']}
                 },
                 {
                     description: '视频',
-                    accept: {'video/mp4': ['.mp4']}
+                    accept: {'video/mp4': ['.mp4','.avi','.av1','.vp9']}
                 }
             ],
             excludeAcceptAllOption: true
@@ -405,6 +408,16 @@ function getUri(path : string) {
   }
   return defaultBasePath + path;
 }
+
+function getFileName(name : string) {
+  let fileName = name;
+  let lastDotIndex = name.lastIndexOf('.');
+  if (lastDotIndex !== -1) {
+    fileName = name.substring(0, lastDotIndex);
+  }
+  return fileName;
+}
+
 @Entry
 @Component
 struct WebComponent {
@@ -420,12 +433,21 @@ struct WebComponent {
           console.info('onShowFileSelector AcceptAllOptionExcluded is ' + event.fileSelector.isAcceptAllOptionExcluded());
           const documentSaveOptions = new picker.DocumentSaveOptions();
           documentSaveOptions.newFileNames = new Array<string>();
-          documentSaveOptions.newFileName.push(event.fileSelector.getSuggestedName());
+          documentSaveOptions.newFileNames.push(getFileName(event.fileSelector.getSuggestedName()));
           documentSaveOptions.defaultFilePathUri = getUri(event.fileSelector.getDefaultPath());
+          let accepts : Array<Array<AcceptableFileType>> = event.fileSelector.getAcceptableFileTypes();
           let descriptions : Array<string> = event.fileSelector.getDescriptions();
           documentSaveOptions.fileSuffixChoices = new Array<string>();
-          for (let i = 0; i < descriptions.length; i++) {
-            documentSaveOptions.fileSuffixChoices.push(descriptions[i] + '(.mp3,.mp4)' + '|' + '.mp3,.mp4');
+          let n = accepts.length;
+          for (let i = 0; i < n; i++) {
+            let m = accepts[i].length;
+            let extList = Array<string>();
+            for (let j = 0; j < m; j++) {
+              extList.push(accepts[i][j].acceptableType.join(','));
+            }
+            let ext = extList.join(',');
+            let desc = descriptions[i] + '(' + ext + ')' + '|';
+            documentSaveOptions.fileSuffixChoices.push(desc + ext);
           }
           if (!event.fileSelector.isAcceptAllOptionExcluded()) {
             documentSaveOptions.fileSuffixChoices.push('所有文件(*.*)' + '|' + '*.*');

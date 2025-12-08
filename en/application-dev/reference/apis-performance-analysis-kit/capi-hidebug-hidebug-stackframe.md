@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiDebug_StackFrame {...} HiDebug_StackFrame
+```
+
 ## Overview
 
 Defines the stack frame content.

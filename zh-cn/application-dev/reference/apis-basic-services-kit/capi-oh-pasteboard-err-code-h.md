@@ -32,7 +32,7 @@
 
 ### PASTEBOARD_ErrCode
 
-```
+```c
 enum PASTEBOARD_ErrCode
 ```
 

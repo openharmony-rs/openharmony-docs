@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Implements a **WebCookieManager** instance to manage behavior of cookies in **Web** components. All **Web** components in an application share a **WebCookieManager** instance.
+Implements a **WebCookieManager** instance to manage behavior of cookies in **Web** components. All **Web** components in an application share a **WebCookieManager** instance. The cookie format complies with the [RFC2965](https://www.rfc-editor.org/rfc/rfc2965) standard.
 
 > **NOTE**
 >
@@ -1455,6 +1455,67 @@ struct WebComponent {
           webview.WebCookieManager.deleteSessionCookie();
         })
       Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## fetchAllCookies<sup>23+</sup>
+
+static fetchAllCookies(incognito: boolean): Promise\<Array\<WebHttpCookie\>\>
+
+Obtains all cookies. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| --------- | ------- | -- | -------------------------------------- |
+| incognito | boolean | Yes| Whether to obtain all webview cookies in incognito mode. The value **true** indicates to obtain all webview cookies in incognito mode, and the value **false** indicates the opposite.|
+
+**Return value**
+
+| Type  | Description                     |
+| ------ | ------------------------- |
+| Promise\<Array\<[WebHttpCookie](./arkts-apis-webview-i.md#webhttpcookie23)\>\> | Promise object used to obtain all cookies and their corresponding field values.|
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController()
+
+  build() {
+    Row() {
+      Column() {
+        Button('Config Cookie')
+        .onClick(() => {
+          try {
+            webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+
+        Button('Get All Cookies')
+        .onClick(() => {
+          webview.WebCookieManager.fetchAllCookies(false).then((cookies) => {
+            for (let i = 0; i < cookies.length; i++) {
+              console.info('fetchAllCookies cookie[' + i + '].name = ' + cookies[i].name);
+              console.info('fetchAllCookies cookie[' + i + '].value = ' + cookies[i].value);
+            }
+          })
+        })
+
+        Web({ src: 'https://www.example.com', controller: this.controller})
+      }
     }
   }
 }

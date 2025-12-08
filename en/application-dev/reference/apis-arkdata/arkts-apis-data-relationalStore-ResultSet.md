@@ -6,15 +6,15 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-> **NOTE**
-> 
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
 Provides APIs to access the result set obtained by querying the RDB store. returned by **query()**.
 
 The **ResultSet** instance is not refreshed in real time. After using the result set, if the data in the database is changed (by being added, deleted, or modified), you need to query the result set again to obtain the latest data.
 
 For the following APIs, you should use either [query](arkts-apis-data-relationalStore-RdbStore.md#query), [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql), [remoteQuery](arkts-apis-data-relationalStore-RdbStore.md#remotequery-1), or [queryLockedRow](arkts-apis-data-relationalStore-RdbStore.md#querylockedrow12) to obtain the **ResultSet** instance first, and then use this instance to call the corresponding method.
+
+> **NOTE**
+> 
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Module to Import
 

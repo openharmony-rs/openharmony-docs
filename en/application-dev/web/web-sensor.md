@@ -27,7 +27,7 @@ To access the motion and orientation sensors, invoke the following W3C standards
 To use the preceding APIs, you need to declare the corresponding sensor permissions in the **module.json5** file. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
 
 
-```
+```json
     "requestPermissions":[
       {
         "name": "ohos.permission.ACCELEROMETER" // Accelerometer permission

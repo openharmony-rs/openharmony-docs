@@ -3166,7 +3166,7 @@ writeCharacteristicValue(characteristic: BLECharacteristic, writeType: GattWrite
 client端向指定的server端特征值写入数据。使用Callback异步回调。<br>
 - 需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参特征值UUID；否则会写入失败。<br>
 - 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。<br>
-- 应用单次可写入的特征值数据长度默认限制为（MTU-3）字节，MTU大小可由[setBLEMtuSize](#setblemtusize)接口指定。
+- 应用单次可写入的特征值数据长度限制为（MTU-3）字节。调用方可根据实际需要通过[setBLEMtuSize](#setblemtusize)接口指定MTU大小，进而修改单次可写入的特征值数据长度。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -3242,7 +3242,7 @@ writeCharacteristicValue(characteristic: BLECharacteristic, writeType: GattWrite
 client端向指定的server端特征值写入数据。使用Promise异步回调。<br>
 - 需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参特征值UUID；否则会写入失败。<br>
 - 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。<br>
-- 应用单次可写入的特征值数据长度默认限制为（MTU-3）字节，MTU大小可由[setBLEMtuSize](#setblemtusize)接口指定。
+- 应用单次可写入的特征值数据长度限制为（MTU-3）字节。调用方可根据实际需要通过[setBLEMtuSize](#setblemtusize)接口指定MTU大小，进而修改单次可写入的特征值数据长度。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -3317,7 +3317,7 @@ writeDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback&lt;void&
 client端向指定的server端描述符写入数据。使用Callback异步回调。<br>
 - 需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参描述符UUID；否则会写入失败。<br>
 - 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。<br>
-- 应用单次可写入的描述符数据长度默认限制为（MTU-3）字节，MTU大小可由[setBLEMtuSize](#setblemtusize)接口指定。<br>
+- 应用单次可写入的描述符数据长度限制为（MTU-3）字节。调用方可根据实际需要通过[setBLEMtuSize](#setblemtusize)接口指定MTU大小，进而修改单次可写入的描述符数据长度。<br>
 - Client Characteristic Configuration描述符（UUID：00002902-0000-1000-8000-00805f9b34fb）和 Server Characteristic Configuration描述符（UUID：00002903-0000-1000-8000-00805f9b34fb）较为特殊，蓝牙标准协议规定内容长度为2字节，写入内容长度应设置为2字节。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -3387,7 +3387,7 @@ writeDescriptorValue(descriptor: BLEDescriptor): Promise&lt;void&gt;
 client端向指定的server端描述符写入数据。使用Promise异步回调。<br>
 - 需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参描述符UUID；否则会写入失败。<br>
 - 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](#readcharacteristicvalue)、[readDescriptorValue](#readdescriptorvalue)、[writeCharacteristicValue](#writecharacteristicvalue)、[writeDescriptorValue](#writedescriptorvalue)、[setCharacteristicChangeNotification](#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](#setcharacteristicchangeindication)。<br>
-- 应用单次可写入的描述符数据长度默认限制为（MTU-3）字节，MTU大小可由[setBLEMtuSize](#setblemtusize)接口指定。<br>
+- 应用单次可写入的描述符数据长度限制为（MTU-3）字节。调用方可根据实际需要通过[setBLEMtuSize](#setblemtusize)接口指定MTU大小，进而修改单次可写入的描述符数据长度。<br>
 - Client Characteristic Configuration描述符（UUID：00002902-0000-1000-8000-00805f9b34fb）和 Server Characteristic Configuration描述符（UUID：00002903-0000-1000-8000-00805f9b34fb）较为特殊，蓝牙标准协议规定内容长度为2字节，写入内容长度应设置为2字节。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -3479,7 +3479,6 @@ client端获取GATT连接链路信号强度 (Received Signal Strength Indication
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.         |
 |801 | Capability not supported.          |
-|2900011 | The operation is busy. The last operation is not complete.             |
 |2900099 | Operation failed.                        |
 |2901003 | The connection is not established.                |
 
@@ -3529,7 +3528,6 @@ client端获取GATT连接链路信号强度 (Received Signal Strength Indication
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.               |
 |801 | Capability not supported.          |
-|2900011 | The operation is busy. The last operation is not complete.             |
 |2900099 | Operation failed.                        |
 |2901003 | The connection is not established.                |
 
@@ -4181,9 +4179,9 @@ getConnectedState(): ProfileConnectionState
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-let gattClient: ble.GattClientDevice = ble.createGattClientDevice("XX:XX:XX:XX:XX:XX");
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
 try {
-    let result: ble.ProfileConnectionState = gattServer.getConnectedState();
+    let result: ble.ProfileConnectionState = gattClient.getConnectedState();
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -4230,9 +4228,9 @@ updateConnectionParam(param: ConnectionParam): Promise&lt;void&gt;
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-let gattClient: ble.GattClientDevice = ble.createGattClientDevice("11:22:33:44:55:66");
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
 try {
-    gattclient.updateConnectionParam(ble.ConnectionParam.LOW_POWER);
+    gattClient.updateConnectionParam(ble.ConnectionParam.LOW_POWER);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }

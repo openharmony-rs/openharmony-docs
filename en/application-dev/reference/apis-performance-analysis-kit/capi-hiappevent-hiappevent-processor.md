@@ -7,9 +7,13 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiAppEvent_Processor HiAppEvent_Processor
+```
+
 ## Overview
 
-Defines the processor for application events.
+Defines a processor for application events.
 
 **Since**: 18
 

@@ -24,7 +24,7 @@
 | d.ts的标签 | 含义 | 文档字段 |
 | ---------- | ---- | ------- |
 | @since | 版本说明 | 1. 每个模块要有起始版本说明，使用引用语法“>”对接口的起始版本进行说明。接口没有标记的，默认与模块同一个起始版本。<br/>2. 已有模块新增接口使用\<sup>标签标记对应版本号。写法：`<sup>版本号+</sup>`<br/> 例如`<sup>7+</sup>`<br/> 示例：API 6已有的模块，在API 7新增了一个属性字段，则在属性后加标记，即newAttribute<sup>7+</sup>。<br/>如果新增了一个方法，则在方法标题后增加标记，即 sim.getSimIccId<sup>7+</sup>，interface、class、枚举等同理。<br/>**需要注意的特殊情况**：因匿名对象整改，导致部分接口出现外层元素版本号高于内层元素版本号情况。为避免开发者困惑，需要在此类“接口描述”处统一增加说明：为规范匿名对象的定义，API XX版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
-| @deprecated | 废弃说明 | 废弃内容不能直接删去，上标标注(deprecated)，起始版本和废弃版本均使用引用语法“>”说明。<br/>示例：abandonmentMethod<sup>(deprecated) </sup><br/>> 从API version 4 开始支持，从API version 7 开始废弃，建议使用[newMethod]\(#newmethod)替代。|
+| @deprecated | 废弃说明 | 废弃内容不能直接删去，上标标注(deprecated)，起始版本和废弃版本均使用引用语法“>”说明。<br/>示例：abandonmentMethod<sup>(deprecated) </sup><br/>> **说明：**<br/>> 从API version 4 开始支持，从API version 7 开始废弃，建议使用[newMethod]\(#newmethod)替代。<br/>如果是表格中的内容废弃，无需引用语法，直接使用正文说明。示例：<br/> **说明：** 从API version 4 开始支持，从API version 7 开始废弃，建议使用[newMethod]\(#newmethod)替代。|
 | @FAModelOnly / @StageModelOnly | 模型约束 | **模型约束**：此接口仅可在FA模型下使用。 <br/> **模型约束**：此接口仅可在Stage模型下使用。 |
 | @form | 卡片能力 | **卡片能力**：从API version x开始，该接口支持在ArkTS卡片中使用。 |
 | @atomicservice | 原子化服务是否可用 | **原子化服务API**：从API version x开始，该接口支持在原子化服务中使用。 |
@@ -467,6 +467,7 @@ getStringSync(resId: number, ...args: Array<string | number>): string
 
 | 变更说明                                                                 | 日期         |
 | ----------------------------------------------------------------------- | ------------ |
+| @deprecated标签说明细化，补充表格中的写法。 | 2025/12/03 |
 | 新增被装饰器修饰的Class/Interface/属性写法。 | 2025/09/19|
 | 新增“API参考写作FAQ”章节，提供特殊场景的API参考写法及常见问题说明。 | 2025/07/22|
 | 精简Promise\<void>固定句式。新写作内容使用新句式；存量内容无需主动整改，表意无问题。 | 2025/06/10 |

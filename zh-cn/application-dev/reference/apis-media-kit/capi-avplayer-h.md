@@ -940,6 +940,10 @@ OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback
 
 **起始版本：** 11
 
+**废弃版本：** 12
+
+**替代接口：** [OH_AVPlayer_SetOnInfoCallback](#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback](#oh_avplayer_setonerrorcallback)
+
 **参数：**
 
 | 参数项 | 描述 |

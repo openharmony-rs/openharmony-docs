@@ -375,7 +375,7 @@ The following describes how to subscribe to the freeze event triggered by a butt
 
 ### Verifying the Subscription
 
-1. The application crashes. After restarting the application, you can view the following event information in the **Log** window.
+The application crashes. After restarting the application, you can view the following event information in the **Log** window.
 
    ```text
    HiAppEvent eventInfo.domain=OS
