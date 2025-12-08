@@ -1763,9 +1763,9 @@ currentAVSession.on('play', () => {
 
 onPlay(callback: Callback\<CommandInfo>): void
 
-设置播放命令监听事件。注册该监听，说明应用支持播放指令。
+设置播放命令监听事件。使用callback异步回调。
 
-应用将通过回调接收控制器发送的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
+注册该监听，说明应用支持播放指令。应用将通过回调接收控制器发送的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1907,9 +1907,9 @@ currentAVSession.on('playNext', () => {
 
 onPlayNext(callback: Callback\<CommandInfo>): void
 
-设置播放下一首命令监听事件。注册该监听，说明应用支持下一首指令。
+设置播放下一首命令监听事件。使用callback异步回调。
 
-应用将通过回调接收控制器发送的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
+注册该监听，说明应用支持下一首指令。应用将通过回调接收控制器发送的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1977,9 +1977,9 @@ currentAVSession.on('playPrevious', () => {
 
 onPlayPrevious(callback: Callback\<CommandInfo>): void
 
-设置播放上一首命令监听事件。注册该监听，说明应用支持上一首指令。
+设置播放上一首命令监听事件。使用callback异步回调。
 
-应用将通过回调接收控制器发送的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
+注册该监听，说明应用支持上一首指令。应用将通过回调接收控制器发送的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2047,9 +2047,9 @@ currentAVSession.on('fastForward', (time?: number) => {
 
 onFastForward(callback: TwoParamCallback\<long, CommandInfo>): void
 
-设置快进命令监听事件。注册该监听，说明应用支持快进指令。
+设置快进命令监听事件。使用callback异步回调。
 
-应用将通过回调接收控制器发送的快进时间参数，以及对应的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
+注册该监听，说明应用支持快进指令。应用将通过回调接收控制器发送的快进时间参数，以及对应的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2117,9 +2117,9 @@ currentAVSession.on('rewind', (time?: number) => {
 
 onRewind(callback: TwoParamCallback\<long, CommandInfo>): void
 
-设置快退命令监听事件。
+设置快退命令监听事件。使用callback异步回调。
 
-应用将通过回调接收控制器发送的快退时间参数，以及对应的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
+注册该监听，说明应用支持快退指令。应用将通过回调接收控制器发送的快退时间参数，以及对应的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 

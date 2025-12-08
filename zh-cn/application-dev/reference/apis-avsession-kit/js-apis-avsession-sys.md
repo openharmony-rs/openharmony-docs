@@ -561,7 +561,7 @@ startAVPlayback(bundleName: string, assetId: string): Promise\<void>
 
 | 类型           | 说明                          |
 | -------------- | ----------------------------- |
-| Promise\<void> | Promise对象，无返回结果。 |
+| Promise\<void> | Promise对象。当播放成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -611,7 +611,7 @@ startAVPlayback(bundleName: string, assetId: string, info: CommandInfo): Promise
 
 | 类型           | 说明                          |
 | -------------- | ----------------------------- |
-| Promise\<void> | Promise对象。当播放成功，无返回结果，否则返回错误对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
