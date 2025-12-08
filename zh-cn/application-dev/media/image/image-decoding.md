@@ -127,6 +127,40 @@
    配置解码选项参数进行解码：
 
    <!-- @[create_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   
+   ``` TypeScript
+   async createPixelMap(imageSource: image.ImageSource | undefined): Promise<image.PixelMap | undefined> {
+     if (!imageSource) {
+       console.error('imageSource is undefined.');
+       return undefined;
+     }
+     // 配置解码选项参数。
+     let decodingOptions: image.DecodingOptions = {
+       editable: true,
+       desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
+       //设置为AUTO会根据图片资源格式和设备支持情况进行解码，如果图片资源为HDR资源且设备支持HDR解码则会解码为HDR的pixelMap。
+       desiredDynamicRange: image.DecodingDynamicRange.HDR,
+     };
+   
+     try {
+       // 生成 pixelMap 并返回
+       const pixelMap = await imageSource.createPixelMap(decodingOptions);
+       if (pixelMap) {
+         console.info('Create PixelMap successfully.');
+         // 判断pixelMap是否为hdr内容。
+         let imageInfo = await pixelMap.getImageInfo();
+         console.info(`Create PixelMap successfully with imageInfo.isHdr: ${imageInfo.isHdr}.`);
+         return pixelMap;
+       } else {
+         console.info('Create PixelMap failed.');
+         return undefined;
+       }
+     } catch (error) {
+       console.error(`Failed to create PixelMap: ${error}.`);
+       return undefined;
+     }
+   }
+   ```
       
    解码完成，获取到pixelMap对象后，可以进行后续[图片处理](image-transformation.md)。
    
