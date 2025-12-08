@@ -681,11 +681,11 @@ enum ArkUI_EnterKeyType
 | -- | -- |
 | ARKUI_ENTER_KEY_TYPE_GO = 2 | 显示为开始样式。 |
 | ARKUI_ENTER_KEY_TYPE_SEARCH = 3 | 显示为搜索样式。 |
-| ARKUI_ENTER_KEY_TYPE_SEND | 显示为发送样式。 |
-| ARKUI_ENTER_KEY_TYPE_NEXT | 显示为下一个样式。 |
-| ARKUI_ENTER_KEY_TYPE_DONE | 显示为完成样式。 |
-| ARKUI_ENTER_KEY_TYPE_PREVIOUS | 显示为上一个样式。 |
-| ARKUI_ENTER_KEY_TYPE_NEW_LINE | 显示为换行样式。 |
+| ARKUI_ENTER_KEY_TYPE_SEND = 4 | 显示为发送样式。 |
+| ARKUI_ENTER_KEY_TYPE_NEXT = 5 | 显示为下一个样式。 |
+| ARKUI_ENTER_KEY_TYPE_DONE = 6 | 显示为完成样式。 |
+| ARKUI_ENTER_KEY_TYPE_PREVIOUS = 7 | 显示为上一个样式。 |
+| ARKUI_ENTER_KEY_TYPE_NEW_LINE = 8 | 显示为换行样式。 |
 
 ### ArkUI_TextInputType
 
@@ -1194,11 +1194,11 @@ enum ArkUI_HitTestMode
 | 枚举项 | 描述                                                     |
 | -- |--------------------------------------------------------|
 | ARKUI_HIT_TEST_MODE_DEFAULT = 0 | 默认触摸测试效果。                                              |
-| ARKUI_HIT_TEST_MODE_BLOCK | 自身响应触摸测试。                                              |
-| ARKUI_HIT_TEST_MODE_TRANSPARENT | 自身和子节点都响应触摸测试。                                         |
-| ARKUI_HIT_TEST_MODE_NONE | 自身不响应触摸测试。                                             |
-| ARKUI_HIT_TEST_MODE_BLOCK_HIERARCHY | 阻止所有优先级较低的兄弟节点和父节点参与触摸测试，自身和子节点响应触摸测试。<br>**起始版本：** 20 |
-| ARKUI_HIT_TEST_MODE_BLOCK_DESCENDANTS | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试。<br>**起始版本：** 20                     |
+| ARKUI_HIT_TEST_MODE_BLOCK = 1 | 自身响应触摸测试。                                              |
+| ARKUI_HIT_TEST_MODE_TRANSPARENT = 2 | 自身和子节点都响应触摸测试。                                         |
+| ARKUI_HIT_TEST_MODE_NONE = 3 | 自身不响应触摸测试。                                             |
+| ARKUI_HIT_TEST_MODE_BLOCK_HIERARCHY = 4 | 阻止所有优先级较低的兄弟节点和父节点参与触摸测试，自身和子节点响应触摸测试。<br>**起始版本：** 20 |
+| ARKUI_HIT_TEST_MODE_BLOCK_DESCENDANTS = 5 | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试。<br>**起始版本：** 20                     |
 
 ### ArkUI_ShadowStyle
 
@@ -2037,8 +2037,8 @@ enum ArkUI_Visibility
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_VISIBILITY_VISIBLE = 0 | 显示。 |
-| ARKUI_VISIBILITY_HIDDEN | 隐藏，但参与布局进行占位。 |
-| ARKUI_VISIBILITY_NONE | 隐藏，但不参与布局，不进行占位。 |
+| ARKUI_VISIBILITY_HIDDEN = 1 | 隐藏，但参与布局进行占位。 |
+| ARKUI_VISIBILITY_NONE = 2 | 隐藏，但不参与布局，不进行占位。 |
 
 ### ArkUI_CalendarAlignment
 
@@ -2075,10 +2075,10 @@ enum ArkUI_MaskType
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_MASK_TYPE_RECTANGLE = 0 | 矩形类型。 |
-| ARKUI_MASK_TYPE_CIRCLE | 圆形类型。 |
-| ARKUI_MASK_TYPE_ELLIPSE | 椭圆形类型。 |
-| ARKUI_MASK_TYPE_PATH | 路径类型。 |
-| ARKUI_MASK_TYPE_PROGRESS | 进度类型。 |
+| ARKUI_MASK_TYPE_CIRCLE = 1 | 圆形类型。 |
+| ARKUI_MASK_TYPE_ELLIPSE = 2 | 椭圆形类型。 |
+| ARKUI_MASK_TYPE_PATH = 3 | 路径类型。 |
+| ARKUI_MASK_TYPE_PROGRESS = 4 | 进度类型。 |
 
 ### ArkUI_ClipType
 
@@ -2772,11 +2772,11 @@ enum ArkUI_FocusMove
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_FOCUS_MOVE_FORWARD = 0 | 向前移动焦点。 |
-| ARKUI_FOCUS_MOVE_BACKWARD | 向后移动焦点。 |
-| ARKUI_FOCUS_MOVE_UP | 向上移动焦点。 |
-| ARKUI_FOCUS_MOVE_DOWN | 向下移动焦点。 |
-| ARKUI_FOCUS_MOVE_LEFT | 向左移动焦点。 |
-| ARKUI_FOCUS_MOVE_RIGHT | 向右移动焦点。 |
+| ARKUI_FOCUS_MOVE_BACKWARD = 1 | 向后移动焦点。 |
+| ARKUI_FOCUS_MOVE_UP = 2 | 向上移动焦点。 |
+| ARKUI_FOCUS_MOVE_DOWN = 3 | 向下移动焦点。 |
+| ARKUI_FOCUS_MOVE_LEFT = 4 | 向左移动焦点。 |
+| ARKUI_FOCUS_MOVE_RIGHT = 5 | 向右移动焦点。 |
 
 ### ArkUI_ListItemGroupArea
 
@@ -2815,7 +2815,7 @@ enum ArkUI_KeyboardAvoidMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_KEYBOARD_AVOID_MODE_DEFAULT = 0 | 默认避让软键盘并在到达极限高度之后进行高度压缩。 |
-| ARKUI_KEYBOARD_AVOID_MODE_NONE | 不避让键盘。 |
+| ARKUI_KEYBOARD_AVOID_MODE_NONE = 1 | 不避让键盘。 |
 
 ### ArkUI_HoverModeAreaType
 
@@ -2833,7 +2833,7 @@ enum ArkUI_HoverModeAreaType
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_HOVER_MODE_AREA_TYPE_TOP = 0 | 上半屏。 |
-| ARKUI_HOVER_MODE_AREA_TYPE_BOTTOM | 下半屏。 |
+| ARKUI_HOVER_MODE_AREA_TYPE_BOTTOM = 1 | 下半屏。 |
 
 ### ArkUI_ExpandMode
 

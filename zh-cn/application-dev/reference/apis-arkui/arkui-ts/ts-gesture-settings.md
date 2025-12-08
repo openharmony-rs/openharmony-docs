@@ -101,6 +101,8 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 
 ## SourceType枚举说明<sup>8+</sup>
 
+定义输入源对应的设备类型。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
@@ -113,16 +115,18 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 
 ## SourceTool枚举说明<sup>9+</sup>
 
+定义输入源对应的工具类型。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
 | -------- | - | --------- |
-| Unknown | - | 未知输入源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Finger | - | 手指输入。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Pen | - | 手写笔输入。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| MOUSE<sup>12+</sup> | - | 鼠标输入。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| TOUCHPAD<sup>12+</sup> | - | 触控板输入。触控板单指输入被视为鼠标输入操作。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| JOYSTICK<sup>12+</sup> | - | 手柄输入。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| Unknown | 0 | 未知输入源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Finger | 1 | 手指输入。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Pen | 2 | 手写笔输入。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| MOUSE<sup>12+</sup> | 7 | 鼠标输入。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| TOUCHPAD<sup>12+</sup> | 9 | 触控板输入。触控板单指输入被视为鼠标输入操作。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| JOYSTICK<sup>12+</sup> | 10 | 手柄输入。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## 示例
 
