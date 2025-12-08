@@ -518,7 +518,7 @@ try {
 
 ### onContinuousTaskStart<sup>23+</sup>
 
-onContinuousTaskStart(info: [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20)): void
+onContinuousTaskStart(info: ContinuousTaskInfo): void
 
 长时任务开始回调接口。
 
@@ -552,7 +552,7 @@ private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscribe
 
 ### onContinuousTaskUpdate<sup>23+</sup>
 
-onContinuousTaskUpdate(info: [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20)): void
+onContinuousTaskUpdate(info: ContinuousTaskInfo): void
 
 长时任务更新回调接口。
 
@@ -586,7 +586,7 @@ private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscribe
 
 ### onContinuousTaskStop<sup>23+</sup>
 
-onContinuousTaskStop(info: [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20)): void
+onContinuousTaskStop(info: ContinuousTaskInfo): void
 
 长时任务结束回调接口。
 
