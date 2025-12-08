@@ -33,7 +33,7 @@
 
 2. 导入头文件。
 
-    <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     #include "database/rdb/relational_store.h"
@@ -45,7 +45,7 @@
 
     * 场景1：不配置自定义加密/解密参数，此时会使用默认的配置进行数据库的加密/解密。
 
-    <!-- @[DefaultConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[DefaultConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
@@ -71,7 +71,7 @@
     
       如果开发者不关心加密算法及参数，使用默认加密配置即可，无需创建和配置自定义加密参数。
 
-    <!-- @[CustomizedConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[CustomizedConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
