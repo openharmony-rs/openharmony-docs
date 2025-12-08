@@ -1972,6 +1972,10 @@ huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
+| 12000020 | the provider operation failed. |
+| 12000021 | the Ukey PIN is locked. |
+| 12000023 | the Ukey PIN not authenticated. |
+| 12000024 | the provider or Ukey is busy. |
 
 ## huks.updateSession<sup>9+</sup>
 
@@ -2014,10 +2018,6 @@ huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the Ukey PIN is locked. |
-| 12000023 | the Ukey PIN not authenticated. |
-| 12000024 | the provider or Ukey is busy. |
 
 ## huks.updateSession<sup>9+</sup>
 

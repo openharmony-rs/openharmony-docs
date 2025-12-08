@@ -8,7 +8,7 @@
 <!--Adviser: @zengyawen-->
 
 ## 打开资源
-应用密钥操作之前（密钥操作、通用操作、PIN码认证等），需要先调用[OH_Huks_OpenResource](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_openresource)打开资源。打开资源需要获取resourceId，resourceId通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取。
+从API 22开始，huksExternalCrypto提供打开/关闭资源功能接口。应用密钥操作之前（密钥操作、通用操作、PIN码认证等），需要先调用[OH_Huks_OpenResource](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_openresource)打开资源。打开资源需要获取resourceId，resourceId通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取。
 
 ### 在CMake脚本中链接相关动态库
 ```txt

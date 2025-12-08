@@ -116,6 +116,7 @@
   - 通用操作<!--huks-ukey-general-operation-->
     - [通用查询介绍及规格](huks-ukey-general-query-overview.md)
     - 开发指导<!--huks-ukey-general-query-dev-->
+      - [通用查询(ArkTS)](huks-ukey-general-query-arkts.md)
       - [通用查询(C/C++)](huks-ukey-general-query-ndk.md)
   - 驱动HAP ExtensionAbility适配指导<!--huks-extension-ability-support-->
     - [CryptoExtensionAbility扩展能力介绍](huks-extension-ability-support-overview.md)
