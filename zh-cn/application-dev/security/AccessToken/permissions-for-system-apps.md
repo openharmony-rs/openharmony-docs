@@ -293,6 +293,30 @@
 
 **起始版本**：11
 
+## ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+允许应用读取无障碍配置信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：9
+
+## ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+允许应用设置无障碍配置信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：9
+
 ## ohos.permission.QUERY_ACCESSIBILITY_ELEMENT
 
 允许批量查询无障碍节点。
