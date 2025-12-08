@@ -76,6 +76,20 @@
    - 方法四：通过资源管理器获取资源文件的RawFileDescriptor。具体请参考[资源管理器API参考文档](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9-1)。该方法需要导入\@kit.LocalizationKit模块。
    
      <!-- @[get_RawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
+     ``` TypeScript
+     async function getRawFd(context: Context, fileName: string): Promise<resourceManager.RawFileDescriptor | undefined> {
+       try {
+         const resourceMgr: resourceManager.ResourceManager = context.resourceManager;
+         const rawFileDescriptor: resourceManager.RawFileDescriptor = await resourceMgr.getRawFd(fileName);
+         console.info('Successfully get the RawFileDescriptor.');
+         return rawFileDescriptor;
+       } catch (error) {
+         console.error(`Failed to get the RawFileDescriptor with error: ${error}.`);
+         return undefined;
+       }
+     }
+     ```
    
 3. 创建ImageSource实例。
 
