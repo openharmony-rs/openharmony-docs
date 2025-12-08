@@ -26,6 +26,8 @@
 
 - 上下文恢复：异步任务执行时恢复其关联的UI实例标识。
 
+下图展示了多线程下的异步任务执行场景。以Task 1为例，最初在Thread-1执行，执行途中向Thread-2抛出Task 1.2，抛出Task的同时携带了UI上下文标识，Task 1.2执行完成后又再次向Thread-3抛出Task 1.3，Task 1.3执行后重新向Thread-1抛出Task 1.4。同一Thread可能先后执行来自不同窗口的Task，执行Task时，根据Task的UI上下文标识确认当前Task属于哪一个窗口，确保异步操作能够关联到正确的UI实例。
+
 **图1** 调用作用域原理图
 
 ![calling_scope](figures/calling_scope.png)
@@ -38,6 +40,8 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确指�
 在Stage模型中，一个ArkTS引擎中可运行多个ArkUI实例。全局接口通过分析调用链中的上下文信息来确定当前UI上下文，异步接口和非UI接口可能导致UI上下文跟踪失败。
 
 为了保证全局接口的相关功能正常，开发者应当使用UIContext的接口替换全局接口。
+
+下图展示了Stage模型下ArkTS引擎和UI上下文的对应关系，一个ArkTS引擎中存在两个[Ability](../application-models/abilitykit-overview.md)，这些Ability对应了三个窗口，三个窗口各自对应一个ArkUI实例。
 
 **图2** 多实例关系图
 
@@ -94,6 +98,7 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确指�
 <!--deprecated_code_no_check-->
 
 ```ts
+// pages/NewGlobal.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -165,6 +170,7 @@ struct Index {
 <!--deprecated_code_no_check-->
 
 ```ts
+// entryability/EntryAbility.ets
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -275,6 +281,7 @@ export default class EntryAbility extends UIAbility {
 <!--deprecated_code_no_check-->
 
 ``` TypeScript
+// entryability/EntryAbility.ets
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -309,6 +316,7 @@ export default class EntryAbility extends UIAbility {
 
 <!--deprecated_code_no_check-->
 ``` TypeScript
+// pages/Index.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -337,7 +345,7 @@ struct Index {
 
 使用静态方法替换：
 
-<!-- @[Common_Entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_Entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 
 ``` TypeScript
@@ -375,7 +383,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<!-- @[Common_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[Common_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -457,6 +465,7 @@ function GetUIContextByAtomicInterface(): UIContext {
 <!--deprecated_code_no_check-->
 
 ```ts
+// common/Utils.ets
 class PixelUtils {
   static vp2px(vpValue: number) : number {
     return vp2px(vpValue);
@@ -875,6 +884,7 @@ struct CalendarPickerDialogPage {
 <!--deprecated_code_no_check-->
 
 ```ts
+// Common/UIContext.ets
 export class PixelUtils {
   static vp2px(vpValue: number) : number {
     return vp2px(vpValue);
@@ -958,6 +968,7 @@ export class PixelUtils {
 <!--deprecated_code_no_check-->
 
 ```ts
+// Common/ContextUtils.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
