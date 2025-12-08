@@ -11041,6 +11041,7 @@ async function example(context: Context) {
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | SCREENSHOT |  1 |  截屏录屏文件类型。<br>**系统接口**：此接口为系统接口。 |
+| SLOW_MOTION_VIDEO<sup>22+</sup> |  6 |  慢动作视频文件类型。<br>**系统接口**：此接口为系统接口。 |
 | SPATIAL_3DGS<sup>22+</sup> |  7 |  3DGS（3D高斯点渲染）视频文件类型。<br>**系统接口**：此接口为系统接口。 |
 
 ## NotifyChangeType<sup>20+</sup>
@@ -11133,6 +11134,7 @@ async function example(context: Context) {
 | CLOUD_ID<sup>22+</sup>  | 'cloud_id' | 文件在云端的唯一标识。**系统接口**：此接口为系统接口。 |
 | COMPOSITE_DISPLAY_STATUS<sup>22+</sup> | 'composite_display_status' | 复合图资产显示状态。**系统接口**：此接口为系统接口。 |
 | VIDEO_MODE<sup>22+</sup>  | 'video_mode' | 视频文件的log模式。**系统接口**：此接口为系统接口。 |
+| EDIT_DATA_EXIST<sup>22+</sup>  | 'edit_data_exist' | 资产的编辑数据已存在。**系统接口**：此接口为系统接口。 |
 
 ## AlbumKeys
 
