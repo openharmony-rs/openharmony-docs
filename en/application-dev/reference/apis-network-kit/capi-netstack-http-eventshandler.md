@@ -5,6 +5,10 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+```c
+typedef struct {...} Http_EventsHandler
+```
+
 ## Overview
 
 Defines the callback for various HTTP events.

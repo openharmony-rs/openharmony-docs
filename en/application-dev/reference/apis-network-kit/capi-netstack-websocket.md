@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+struct WebSocket {...}
+```
+
 ## Overview
 
 Defines the WebSocket client structure.

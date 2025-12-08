@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 - [Bluetooth Overview](bluetooth-overview.md)
-- [Bluetooth Setting Development](br-development-guide.md)
+- [Bluetooth Setting](br-development-guide.md)
 - Classic Bluetooth
   - [Device Discovery](br-discovery-development-guide.md)
   - [Device Pairing](br-pair-device-development-guide.md)
