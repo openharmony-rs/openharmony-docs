@@ -331,7 +331,6 @@ private registerListener(): void {
     } else {
       this.inputHandle.addLog(`keyCode down is intercepted: ${keyCode}}`);
     }
-    this.inputHandle.addLog(`onKeyDown: this.keyCodes =  ${JSON.stringify(this.keyCodes)}}`);
     if (this.isShiftKeyHold() && this.keyCodes.length === 2 && !this.isKeyCodeAZ(keyCode)) {
       this.isSpecialKeyPress = true;
       return false;
@@ -357,7 +356,6 @@ private registerListener(): void {
     } else {
       this.inputHandle.addLog(`keyCode KeyUp is intercepted: ${keyCode}`);
     }
-    this.inputHandle.addLog(`OnKeyUp: this.keyCodes = ${JSON.stringify(this.keyCodes)}`);
 
     // For KEYCODE_DEL/KEYCODE_FORWARD_DEL, processed in OnKeyDown, so just intercept it
     if (keyCode === 2055 || keyCode === 2071 || (keyCode >= 2012 && keyCode <= 2016)) {
@@ -439,7 +437,7 @@ private registerListener(): void {
   private unRegisterListener(): void {
     this.inputHandle.addLog('unRegisterListener');
 
-    InputMethodEngine.off('inputStop', () => {
+    inputMethodAbility.off('inputStop', () => {
       this.inputHandle.addLog('inputStop off');
     });
     if (this.mKeyboardDelegate) {
