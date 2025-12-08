@@ -41,7 +41,7 @@ on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): v
 | keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。                 |
 | callback   | Callback&lt;KeyOptions&gt; | 是    | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合按键数据。 |
 
-****示例：**** 
+**示例：**
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
@@ -373,7 +373,7 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 | ---------- |  ---------------------------------------- |
 | boolean                    | 屏蔽类型生效状态，true代表屏蔽类型生效，flase代表不生效。                       |
 
-****示例：**** 
+**示例：**
 
 ```js
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
