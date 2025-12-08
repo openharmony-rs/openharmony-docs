@@ -379,40 +379,40 @@ function socketTest() {
    NET_CAPABILITY_CHECKING_CONNECTIVITY表示在进行连通性判断的过程中，当不处于连通性判断过程中，且networkCap数组中包含NET_CAPABILITY_VALIDATED表示网络连通性校验通过，可以访问互联网。
 
     <!-- @[NetConnection_manage_case_default_net_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetSyncBtn.ets) -->
- 
- ``` TypeScript
- // 从@kit.NetworkKit中导入connection命名空间。
- import { connection } from '@kit.NetworkKit';
- import { hilog } from '@kit.PerformanceAnalysisKit';
- // ···
-     // 获取默认激活的数据网络。
-     let netHandle = connection.getDefaultNetSync();
-     if (!netHandle || netHandle.netId === 0) {
-       hilog.error(0x0000, 'testTag', 'getDefaultNetSync fail');
-     // ···
-     } else {
-       hilog.info(0x0000, 'testTag', 'default network: ' + JSON.stringify(netHandle));
-       // 获取netHandle对应网络的能力信息。
-       let netCapabilities = connection.getNetCapabilitiesSync(netHandle);
-       let cap = netCapabilities.networkCap;
-       hilog.info(0x0000, 'testTag', 'network capabilities: ' + JSON.stringify(netCapabilities));
-       // 判断网络是否可以访问互联网。
-       if (cap?.includes(connection.NetCap.NET_CAPABILITY_CHECKING_CONNECTIVITY)) {
-         // 正在验证网络连通性，请稍后重试。
-         hilog.info(0x0000, 'testTag', 'default network is checking, please try again later');
-       } else {
-         if (cap?.includes(connection.NetCap.NET_CAPABILITY_VALIDATED)) {
-           // 网络连通性验证成功，当前默认网络可以访问互联网。
-           hilog.info(0x0000, 'testTag', 'default network is validated');
-         // ···
-         } else {
-           // 网络连通性验证失败，当前默认网络不可以访问互联网。
-           hilog.info(0x0000, 'testTag', 'default network is not validated');
-         // ···
-         }
-       }
-     }
- ```
+    
+    ``` TypeScript
+    // 从@kit.NetworkKit中导入connection命名空间。
+    import { connection } from '@kit.NetworkKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    // ...
+        // 获取默认激活的数据网络。
+        let netHandle = connection.getDefaultNetSync();
+        if (!netHandle || netHandle.netId === 0) {
+          hilog.error(0x0000, 'testTag', 'getDefaultNetSync fail');
+          // ...
+        } else {
+          hilog.info(0x0000, 'testTag', 'default network: ' + JSON.stringify(netHandle));
+          // 获取netHandle对应网络的能力信息。
+          let netCapabilities = connection.getNetCapabilitiesSync(netHandle);
+          let cap = netCapabilities.networkCap;
+          hilog.info(0x0000, 'testTag', 'network capabilities: ' + JSON.stringify(netCapabilities));
+          // 判断网络是否可以访问互联网。
+          if (cap?.includes(connection.NetCap.NET_CAPABILITY_CHECKING_CONNECTIVITY)) {
+            // 正在验证网络连通性，请稍后重试。
+            hilog.info(0x0000, 'testTag', 'default network is checking, please try again later');
+          } else {
+            if (cap?.includes(connection.NetCap.NET_CAPABILITY_VALIDATED)) {
+              // 网络连通性验证成功，当前默认网络可以访问互联网。
+              hilog.info(0x0000, 'testTag', 'default network is validated');
+              // ...
+            } else {
+              // 网络连通性验证失败，当前默认网络不可以访问互联网。
+              hilog.info(0x0000, 'testTag', 'default network is not validated');
+              // ...
+            }
+          }
+        }
+    ```
 
 ## 使用默认网络解析域名，获取所有IP
 
