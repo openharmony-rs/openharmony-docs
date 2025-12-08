@@ -83,17 +83,17 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 4. 根据URL地址，发起WebSocket连接。
 
    <!-- @[webSocket_case_object_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-ws.connect(defaultIpAddress, (err: BusinessError, value: boolean) => {
-  if (!err) {
-    hilog.info(0x0000, 'testTag', 'Connected successfully');
-  } else {
-    // ···
-    hilog.error(0x0000, 'testTag', `WebSocket connection failed: ` + JSON.stringify(err));
-  }
-});
-```
+   
+   ``` TypeScript
+   ws.connect(defaultIpAddress, (err: BusinessError, value: boolean) => {
+     if (!err) {
+       hilog.info(0x0000, 'testTag', 'Connected successfully');
+     } else {
+       // ...
+       hilog.error(0x0000, 'testTag', `WebSocket connection failed: ` + JSON.stringify(err));
+     }
+   });
+   ```
 
 5. 收到on('open')的回调事件后，可通过send()方法向服务器发送数据。
 
