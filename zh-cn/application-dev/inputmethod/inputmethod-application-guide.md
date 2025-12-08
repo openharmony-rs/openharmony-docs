@@ -817,8 +817,8 @@ export let symbolSourceListData: sourceListType[] = [
 
 ``` TypeScript
 import deviceInfo from '@ohos.deviceInfo';
-import Log from '../model/Log';
-import { EditView } from '../components/EditView';
+import Log from '../../model/Log';
+import { EditView } from '../../components/EditView';
 import { InputHandler } from '../model/KeyboardController';
 import {
   MenuType,
@@ -828,13 +828,13 @@ import {
   symbolSourceListData,
   keySourceListType,
   sourceListType
-} from '../model/KeyboardKeyData';
-import { KeyMenu } from '../components/KeyMenu';
-import { NumberMenu } from '../components/NumberMenu';
-import { StyleConfiguration, KeyStyle } from '../common/StyleConfiguration';
-import { SymbolMenu } from '../components/SymbolMenu';
-import { Submenu } from '../components/Submenu';
-import { TopMenu } from '../components/TopMenu';
+} from '../../model/KeyboardKeyData';
+import { KeyMenu } from '../../components/KeyMenu';
+import { NumberMenu } from '../../components/NumberMenu';
+import { StyleConfiguration, KeyStyle } from '../../common/StyleConfiguration';
+import { SymbolMenu } from '../../components/SymbolMenu';
+import { Submenu } from '../../components/Submenu';
+import { TopMenu } from '../../components/TopMenu';
 import { inputMethodEngine } from '@kit.IMEKit';
 
 
@@ -855,21 +855,14 @@ struct Index {
 
 
   aboutToAppear(): void {
-    console.log('aabb',JSON.stringify(this.submenuType));
-
-    console.log('diaoqijianpan');    
-    // [Start input_case_input_immersiveMode]
     // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
-    // [Start input_case_input_immersiveModeeditorAttributeChanged]
     inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
-      // [End input_case_input_immersiveModeeditorAttributeChanged]
-      console.log('recv editorAttributeChanged, immersiveMode: ', JSON.stringify(attr.immersiveMode));
+      console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
       if (attr.immersiveMode == 1) {
         this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
-        console.log('recv editorAttributeChanged, panel:', JSON.stringify(this.panel?.getImmersiveMode()));
+        console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
       }
     })
-    // [End input_case_input_immersiveMode]
   }
 
   onBackPress(): boolean {
