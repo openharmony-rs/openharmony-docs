@@ -17,6 +17,15 @@
 1. 全局导入Image模块。
    
    <!-- @[decodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
+   
+   ``` TypeScript
+   // 导入相关模块包。
+   import { image } from '@kit.ImageKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
+   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { resourceManager } from '@kit.LocalizationKit';
+   ```
 
 2. 获取图片。
    - 方法一：通过沙箱路径直接获取。该方法仅适用于应用沙箱中的图片。更多细节请参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
