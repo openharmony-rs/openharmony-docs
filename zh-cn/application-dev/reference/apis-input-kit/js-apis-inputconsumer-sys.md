@@ -145,6 +145,8 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 
 **相关接口**: 该接口对应的ArkTS-Sta接口是[offKey](#off_key_sta)。
 
+**ArkTS-Sta起始版本**：22
+
 **参数：** 
 
 | 参数名         | 类型                         | 必填   | 说明                              |
