@@ -135,48 +135,48 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 3. 订阅WebSocketServer的客户端连接事件、消息接收事件、关闭事件、Error事件（可选），在收到客户端连接事件后，服务端可以通过send()方法与客户端进行通信，当收到客户端的"bye"消息时（此消息字段仅为示意，具体字段需要与客户端协商），主动断开连接。
 
    <!-- @[websocket_server_open_message_close_error_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
-      
-    ``` TypeScript
-    localServer.on('connect', async (connection: webSocket.WebSocketConnection) => {
-      hilog.info(0x0000, 'testTag', `New client connected! Client ip: ${connection.clientIP}, Client port: ${connection.clientPort}`);
-      // 当收到on('connect')事件时，可以通过send()方法与客户端进行通信。
-      localServer.send("Hello, I'm server!", connection).then((success: boolean) => {
-        if (success) {
-          hilog.info(0x0000, 'testTag', 'message send successfully');
-        } else {
-          hilog.error(0x0000, 'testTag', 'message send failed');
-        }
-      }).catch((error: BusinessError) => {
-        hilog.error(0x0000, 'testTag', `message send failed, Code: ${error.code}, message: ${error.message}`);
-      });
-    });
-    
-    localServer.on('messageReceive', (message: webSocket.WebSocketMessage) => {
-      try {
-        hilog.info(0x0000, 'testTag', `on message received, client: ${message.clientConnection}, data: ${message.data}`);
-        // 当收到客户端的"bye"消息时（此消息字段仅为示意，具体字段需要与客户端协商），主动断开连接。
-        if (message.data === 'bye') {
-          localServer.close(message.clientConnection).then((success: boolean) => {
-            if (success) {
-              hilog.info(0x0000, 'testTag', 'close client successfully');
-            } else {
-              hilog.error(0x0000, 'testTag', 'close client failed');
-            }
-          });
-        }
-      } catch (error) {
-        hilog.error(0x0000, 'testTag', `on messageReceive failed. Code: ${error.code}, message: ${error.message}`);
-      }
-    });
-    
-    localServer.on('close', (clientConnection: webSocket.WebSocketConnection, closeReason: webSocket.CloseResult) => {
-      hilog.info(0x0000, 'testTag', `client close, client: ${clientConnection}, closeReason: Code: ${closeReason.code}, reason: ${closeReason.reason}`);
-    });
-    
-    localServer.on('error', (error: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `error. Code: ${error.code}, message: ${error.message}`);
-    });
-    ```
+   
+   ``` TypeScript
+   localServer.on('connect', async (connection: webSocket.WebSocketConnection) => {
+     hilog.info(0x0000, 'testTag', `New client connected! Client ip: ${connection.clientIP}, Client port: ${connection.clientPort}`);
+     // 当收到on('connect')事件时，可以通过send()方法与客户端进行通信。
+     localServer.send("Hello, I'm server!", connection).then((success: boolean) => {
+       if (success) {
+         hilog.info(0x0000, 'testTag', 'message send successfully');
+       } else {
+         hilog.error(0x0000, 'testTag', 'message send failed');
+       }
+     }).catch((error: BusinessError) => {
+       hilog.error(0x0000, 'testTag', `message send failed, Code: ${error.code}, message: ${error.message}`);
+     });
+   });
+   
+   localServer.on('messageReceive', (message: webSocket.WebSocketMessage) => {
+     try {
+       hilog.info(0x0000, 'testTag', `on message received, client: ${message.clientConnection}, data: ${message.data}`);
+       // 当收到客户端的"bye"消息时（此消息字段仅为示意，具体字段需要与客户端协商），主动断开连接。
+       if (message.data === 'bye') {
+         localServer.close(message.clientConnection).then((success: boolean) => {
+           if (success) {
+             hilog.info(0x0000, 'testTag', 'close client successfully');
+           } else {
+             hilog.error(0x0000, 'testTag', 'close client failed');
+           }
+         });
+       }
+     } catch (error) {
+       hilog.error(0x0000, 'testTag', `on messageReceive failed. Code: ${error.code}, message: ${error.message}`);
+     }
+   });
+   
+   localServer.on('close', (clientConnection: webSocket.WebSocketConnection, closeReason: webSocket.CloseResult) => {
+     hilog.info(0x0000, 'testTag', `client close, client: ${clientConnection}, closeReason: Code: ${closeReason.code}, reason: ${closeReason.reason}`);
+   });
+   
+   localServer.on('error', (error: BusinessError) => {
+     hilog.error(0x0000, 'testTag', `error. Code: ${error.code}, message: ${error.message}`);
+   });
+   ```
 
 4. 配置config参数启动server端服务。
 
