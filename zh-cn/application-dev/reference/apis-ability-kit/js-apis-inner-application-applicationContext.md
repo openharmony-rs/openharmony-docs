@@ -1133,7 +1133,7 @@ setSupportedProcessCache(isSupported : boolean): void
 import { AbilityStage, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class MyAbilityStage extends AbilityStage {
+export default class MyAbilityStage extends AbilityStage {
   onCreate() {
     let applicationContext = this.context.getApplicationContext();
     try {
@@ -1215,7 +1215,7 @@ getCurrentInstanceKey(): string
 import { AbilityStage } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class MyAbilityStage extends AbilityStage {
+export default class MyAbilityStage extends AbilityStage {
   onCreate() {
     let applicationContext = this.context.getApplicationContext();
     let currentInstanceKey = '';
@@ -1261,7 +1261,7 @@ getAllRunningInstanceKeys(): Promise\<Array\<string>>;
 import { AbilityStage } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class MyAbilityStage extends AbilityStage {
+export default class MyAbilityStage extends AbilityStage {
   onCreate() {
     let applicationContext = this.context.getApplicationContext();
     try {
