@@ -54,6 +54,23 @@
 
    <!-- @[packToData_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    
+   ``` TypeScript
+   async function packToDataFromPixelMap(pixelMap : image.PixelMap) {
+     const imagePackerApi = image.createImagePacker();
+     let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
+     // 资源本身为hdr且设备支持HDR编码则会编码为hdr内容(需要资源本身为hdr且设备支持HDR编码，支持jpeg格式)。
+     packOpts.desiredDynamicRange = image.PackingDynamicRange.AUTO;
+     try{
+       let data = await imagePackerApi.packToData(pixelMap, packOpts);
+       // data 为编码获取到的文件流，写入文件保存即可得到一张图片。
+       copyData = new ArrayBuffer(0);
+       copyData = data;
+     } catch (error) {
+       console.error('Failed to pack the pixelMap to data. And the error is: ' + error);
+     }
+   }
+   ```
+   
    方法二：通过imageSource进行编码。
    
    <!-- @[packToData_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->  
