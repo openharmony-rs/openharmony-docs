@@ -161,15 +161,15 @@ export { nativeMulti } from './src/main/ets/utils/nativeTest';
 <!-- @[in_app_hsp_007](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-        // library/src/main/ets/pages/Index.ets
-        // 正确用例
-        Image($r('app.media.example'))
-          .id('example')
-          .borderRadius('48px')
-        // // 错误用例
-        Image("../../resources/base/media/example.png")
-          .id('example')
-          .borderRadius('48px')
+// library/src/main/ets/pages/Index.ets
+// 正确用例
+Image($r('app.media.example'))
+  .id('example')
+  .borderRadius('48px')
+// // 错误用例
+Image("../../resources/base/media/example.png")
+  .id('example')
+  .borderRadius('48px')
 ```
 
 
