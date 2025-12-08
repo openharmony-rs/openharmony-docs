@@ -833,7 +833,7 @@ SmartPerf Device是一款基于系统开发的性能功耗测试工具，操作�
   
 - 启停采集整机CPU大中小核频率、各核使用率
 
-   ```
+   ```shell
    # 开始采集
    $ SP_daemon -start -c
    SP_daemon Collection begins
