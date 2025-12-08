@@ -72,20 +72,20 @@
 4. 调用该对象的[on()](../reference/apis-network-kit/js-apis-net-connection.md#onnetavailable)方法，传入type和callback，订阅关心的事件。
 
    <!-- @[notification_network_netAvailable_netUnavailable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
-
-``` TypeScript
-// 订阅事件，如果当前指定网络可用，通过on_netAvailable通知用户
-conn.on('netAvailable', (data: connection.NetHandle) => {
-  hilog.info(0x0000, 'testTag', 'Network available, NetId is ' + data.netId);
-// ···
-});
-
-// 订阅事件，如果当前指定网络不可用，通过on_netUnavailable通知用户
-conn.on('netUnavailable', (data: void) => {
-  hilog.info(0x0000, 'testTag', 'Network unavailable, data is ' + JSON.stringify(data));
-// ···
-});
-```
+   
+   ``` TypeScript
+   // 订阅事件，如果当前指定网络可用，通过on_netAvailable通知用户
+   conn.on('netAvailable', (data: connection.NetHandle) => {
+     hilog.info(0x0000, 'testTag', 'Network available, NetId is ' + data.netId);
+     // ...
+   });
+   
+   // 订阅事件，如果当前指定网络不可用，通过on_netUnavailable通知用户
+   conn.on('netUnavailable', (data: void) => {
+     hilog.info(0x0000, 'testTag', 'Network unavailable, data is ' + JSON.stringify(data));
+     // ...
+   });
+   ```
 
 5. 调用该对象的[register()](../reference/apis-network-kit/js-apis-net-connection.md#register)方法，订阅指定网络状态变化的通知。当网络可用时，会收到netAvailable事件的回调；当网络不可用时，会收到netUnavailable事件的回调。
 
