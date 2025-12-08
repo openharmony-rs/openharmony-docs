@@ -406,10 +406,10 @@
    static napi_value RemoveWatcher(napi_env env, napi_callback_info info)
    {
        // 使观察者停止监听事件
-       // ···
+       // ...
        OH_HiAppEvent_RemoveWatcher(appHicollieWatcherR);
        OH_HiAppEvent_RemoveWatcher(appHicollieWatcherT);
-       // ···
+       // ...
        return {};
    }
    ```
@@ -422,12 +422,12 @@
    static napi_value DestroyWatcher(napi_env env, napi_callback_info info)
    {
        // 销毁创建的观察者，并置eventWatcher为nullptr。
-       // ···
+       // ...
        OH_HiAppEvent_DestroyWatcher(appHicollieWatcherR);
        OH_HiAppEvent_DestroyWatcher(appHicollieWatcherT);
        appHicollieWatcherR = nullptr;
        appHicollieWatcherT = nullptr;
-       // ···
+       // ...
        return {};
    }
    ```
