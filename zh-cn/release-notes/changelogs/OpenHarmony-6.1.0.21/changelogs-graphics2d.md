@@ -1,0 +1,37 @@
+#  图形图像子系统ChangeLog
+
+## cl.graphics2d.1 ArkTS WordBreak.BREAK_HYPHEN NDK WORD_BREAK_TYPE_BREAK_HYPHEN 接口效果变更
+
+**访问级别**
+
+公开接口
+
+**变更原因**
+
+Hyphen库部分语种暂不支持连字符“-”断词换行。
+
+**变更影响**
+
+该变更为非兼容变更，ArkTS WordBreak.BREAK_HYPHEN 接口支持语种范围变更。
+
+**API Level**
+
+<18>
+
+**变更发生版本**
+
+从OpenHarmony SDK 6.1.0.23开始。
+
+**WordBreak.BREAK_HYPHEN / WORD_BREAK_TYPE_BREAK_HYPHEN**
+
+变更前：
+
+捷克语、印度尼西亚语、拉脱维亚语、马其顿语、斯洛伐克语、塞尔维亚语，此类语言环境下Hyphen断词模式下会有连字符“-”断词换行效果。
+
+变更后：
+
+捷克语、印度尼西亚语、拉脱维亚语、马其顿语、斯洛伐克语、塞尔维亚语，此类语言环境下Hyphen断词模式下有连字符“-”断词换行效果失效，换行效果自动回落到按单词为单位换行。
+
+**适配指导**
+
+默认效果变更：接口默认效果变更，但开发者需审视此变更是否对自身相关业务展示效果产生影响，若有影响需根据自身业务代码进行对应适配。
