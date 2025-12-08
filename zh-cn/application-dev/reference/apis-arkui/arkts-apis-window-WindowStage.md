@@ -635,7 +635,7 @@ export default class EntryAbility extends UIAbility {
 
 loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
-根据当前工程中指定的页面路径为WindowStage的主窗口加载具体页面内容，使用callback异步回调。 
+根据当前工程中指定的页面路径为WindowStage的主窗口加载具体页面内容，使用callback异步回调。
 
 建议在UIAbility启动过程中调用该接口，重复调用将首先销毁旧的页面内容（即UIContent）再加载新页面内容，请谨慎使用。当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
 
