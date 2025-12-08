@@ -30,6 +30,60 @@ ImageReceiver信息相关API的详细介绍请参见[API参考](../../reference/
 3. 注册监听处理预览流每帧图像数据：通过ImageReceiver中imageArrival事件监听获取底层返回的图像数据。详细的API说明请参考[ImageReceiver](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md)。
 
    <!-- @[On_imageArrival](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->  
+   
+   ``` TypeScript
+   function onImageArrival(receiver: image.ImageReceiver) {
+     // 注册imageArrival监听。
+     receiver.on('imageArrival', () => {
+       // 获取图像。
+       receiver.readNextImage((err: BusinessError, nextImage: image.Image) => {
+         if (err || nextImage === undefined) {
+           console.error('readNextImage failed');
+           return;
+         }
+         // 解析图像内容。
+         nextImage.getComponent(image.ComponentType.JPEG, async (err: BusinessError,
+           imgComponent: image.Component) => {
+           if (err || imgComponent === undefined) {
+             console.error('getComponent failed');
+           }
+           if (imgComponent.byteBuffer) {
+             // 详情见下方解析图片buffer数据参考，本示例以方式一为例。
+             let width = nextImage.size.width; // 获取图片的宽。
+             let height = nextImage.size.height; // 获取图片的高。
+             let stride = imgComponent.rowStride; // 获取图片的stride。
+             console.debug(`getComponent with width:${width} height:${height} stride:${stride}`);
+             // stride与width一致。
+             if (stride == width) {
+               let pixelMap = await image.createPixelMap(imgComponent.byteBuffer, {
+                 size: { height: height, width: width },
+                 srcPixelFormat: 8,
+               })
+             } else {
+               // stride与width不一致。
+               const dstBufferSize = width * height * 1.5;
+               const dstArr = new Uint8Array(dstBufferSize);
+               for (let j = 0; j < height * 1.5; j++) {
+                 // 不同设备内存不同，若内存太小，则无法全部写完。
+                 const srcBuf = new Uint8Array(imgComponent.byteBuffer, j * stride, width);
+                 dstArr.set(srcBuf, j * width);
+               }
+               let pixelMap = await image.createPixelMap(dstArr.buffer, {
+                 size: { height: height, width: width },
+                 srcPixelFormat: 8,
+               })
+             }
+           } else {
+             console.error('byteBuffer is null');
+           }
+           // 确保当前buffer没有在使用的情况下，可进行资源释放。
+           // 如果对buffer进行异步操作，需要在异步操作结束后再释放该资源（nextImage.release()）。
+           nextImage.release();
+         })
+       })
+     })
+   }
+   ```
 
 通过[image.Component](../../reference/apis-image-kit/arkts-apis-image-i.md#component9)解析图片的buffer数据。
 
