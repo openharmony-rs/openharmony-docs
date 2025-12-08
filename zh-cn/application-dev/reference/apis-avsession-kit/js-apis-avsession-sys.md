@@ -605,7 +605,7 @@ startAVPlayback(bundleName: string, assetId: string, info: CommandInfo): Promise
 | ------------ |------------------------------------------------------|----|------------|	
 | bundleName   | string                                               | 是  | 指定启动的应用包名。 |	
 | assetId      | string                                               | 是  | 指定启动的媒体ID。 |
-| info      | [CommandInfo](js-apis-avsession-sys.md#CommandInfo22) | 是  | 指定相关的命令信息。 |
+| info      | [CommandInfo](arkts-apis-avsession-i.md#commandinfo22) | 是  | 指定相关的命令信息。 |
 
 **返回值：**
 

@@ -1765,7 +1765,7 @@ onPlay(callback: Callback\<CommandInfo>): void
 
 设置播放命令监听事件。注册该监听，说明应用支持播放指令。
 
-应用将通过回调接受控制器发送的[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)信息。
+应用将通过回调接收控制器发送的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1773,7 +1773,7 @@ onPlay(callback: Callback\<CommandInfo>): void
 
 | 参数名   | 类型                                                               | 必填 | 说明     |
 | -------- |------------------------------------------------------------------| ---- | --------- |
-| callback | Callback\<[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)> | 是   | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。                                        |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。                                        |
 
 **错误码：**
 
@@ -1909,7 +1909,7 @@ onPlayNext(callback: Callback\<CommandInfo>): void
 
 设置播放下一首命令监听事件。注册该监听，说明应用支持下一首指令。
 
-应用将通过回调接受控制器发送的[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)信息。
+应用将通过回调接收控制器发送的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1917,7 +1917,7 @@ onPlayNext(callback: Callback\<CommandInfo>): void
 
 | 参数名   | 类型       | 必填 | 说明     |
 | -------- | ---------- | ---- | --------- |
-| callback | Callback\<[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)> | 是   | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。     |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。     |
 
 **错误码：**
 
@@ -1979,7 +1979,7 @@ onPlayPrevious(callback: Callback\<CommandInfo>): void
 
 设置播放上一首命令监听事件。注册该监听，说明应用支持上一首指令。
 
-应用将通过回调接受控制器发送的[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)信息。
+应用将通过回调接收控制器发送的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1987,7 +1987,7 @@ onPlayPrevious(callback: Callback\<CommandInfo>): void
 
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
-| callback | Callback\<[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)> | 是   | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。       |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。       |
 
 **错误码：**
 
@@ -2049,15 +2049,15 @@ onFastForward(callback: TwoParamCallback\<long, CommandInfo>): void
 
 设置快进命令监听事件。注册该监听，说明应用支持快进指令。
 
-应用将通过回调接受控制器发送的快进时间参数，以及对应的[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)信息。
+应用将通过回调接收控制器发送的快进时间参数，以及对应的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明     |
-| -------- | -------------------- | ---- | --------- |
-| callback | TwoParamCallback\<long, [CommandInfo](js-apis-avsession-sys.md#CommandInfo22)> | 是   | 回调函数。参数time是时间节点，单位为秒。    |
+| 参数名   | 类型                                                                              | 必填 | 说明     |
+| -------- |---------------------------------------------------------------------------------| ---- | --------- |
+| callback | TwoParamCallback\<long, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。参数time是时间节点，单位为秒。    |
 
 **错误码：**
 
@@ -2119,7 +2119,7 @@ onRewind(callback: TwoParamCallback\<long, CommandInfo>): void
 
 设置快退命令监听事件。
 
-应用将通过回调接受控制器发送的快退时间参数，以及对应的[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)信息。
+应用将通过回调接收控制器发送的快退时间参数，以及对应的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2127,7 +2127,7 @@ onRewind(callback: TwoParamCallback\<long, CommandInfo>): void
 
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
-| callback | TwoParamCallback\<long, [CommandInfo](js-apis-avsession-sys.md#CommandInfo22)> | 是   | 回调函数。参数time是时间节点，单位为秒。      |
+| callback | TwoParamCallback\<long, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。参数time是时间节点，单位为秒。      |
 
 **错误码：**
 
@@ -2617,7 +2617,9 @@ currentAVSession.off('play');
 
 offPlay(callback?: Callback\<CommandInfo>): void
 
-取消会话播放事件监听。使用callback异步回调。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消会话播放事件监听。使用callback异步回调。
+
+指定callback，取消对应监听；未指定callback，则取消所有事件监听。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2625,7 +2627,7 @@ offPlay(callback?: Callback\<CommandInfo>): void
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| callback | Callback\<[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
 
 **错误码：**
 
@@ -2745,7 +2747,9 @@ currentAVSession.off('playNext');
 
 offPlayNext(callback?: Callback\<CommandInfo>): void
 
-取消会话播放下一首事件监听。使用callback异步回调。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消会话播放下一首事件监听。使用callback异步回调。
+
+指定callback，取消对应监听；未指定callback，则取消所有事件监听。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2753,7 +2757,7 @@ offPlayNext(callback?: Callback\<CommandInfo>): void
 
 | 参数名    | 类型        | 必填 | 说明                   |
 | -------- | ---------- | ---- | ---------------------- |
-| callback | Callback\<[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
 
 **错误码：**
 
@@ -2807,7 +2811,9 @@ currentAVSession.off('playPrevious');
 
 offPlayPrevious(callback?: Callback\<CommandInfo>): void
 
-取消会话播放上一首事件监听。使用callback异步回调。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消会话播放上一首事件监听。使用callback异步回调。
+
+指定callback，取消对应监听；未指定callback，则取消所有事件监听。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2815,7 +2821,7 @@ offPlayPrevious(callback?: Callback\<CommandInfo>): void
 
 | 参数名    | 类型     | 必填 | 说明                   |
 | -------- |--------| ---- | ---------------------- |
-| callback | Callback\<[CommandInfo](js-apis-avsession-sys.md#CommandInfo22)>  | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)>  | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
 
 **错误码：**
 
@@ -2869,7 +2875,9 @@ currentAVSession.off('fastForward');
 
 offFastForward(callback?: TwoParamCallback\<long, CommandInfo>): void
 
-取消会话快进事件监听。使用callback异步回调。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消会话快进事件监听。使用callback异步回调。
+
+指定callback，取消对应监听；未指定callback，则取消所有事件监听。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2877,7 +2885,7 @@ offFastForward(callback?: TwoParamCallback\<long, CommandInfo>): void
 
 | 参数名    | 类型                                   | 必填 | 说明                   |
 | -------- |--------------------------------------| ---- | ---------------------- |
-| callback | TwoParamCallback\<long, [CommandInfo](js-apis-avsession-sys.md#CommandInfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+| callback | TwoParamCallback\<long, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
 
 **错误码：**
 
@@ -2931,7 +2939,9 @@ currentAVSession.off('rewind');
 
 offRewind(callback?: TwoParamCallback\<long, CommandInfo>): void
 
-取消会话快退事件监听。使用callback异步回调。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消会话快退事件监听。使用callback异步回调。
+
+指定callback，取消对应监听；未指定callback，则取消所有事件监听。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2939,7 +2949,7 @@ offRewind(callback?: TwoParamCallback\<long, CommandInfo>): void
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| callback | TwoParamCallback\<long, [CommandInfo](js-apis-avsession-sys.md#CommandInfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+| callback | TwoParamCallback\<long, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
 
 **错误码：**
 

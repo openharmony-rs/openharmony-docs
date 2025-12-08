@@ -218,7 +218,7 @@
 | --------- |--------------------------------------------------------------------------| ---- | ---- |------------|
 | command   | [AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10) | 否 | 否   | 命令（不同命令对应不同参数）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | parameter | [LoopMode](arkts-apis-avsession-e.md#loopmode10) \| string \|  number    | 否 | 是   | 命令对应的参数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
-| commandInfo<sup>22+</sup> | [CommandInfo](js-apis-avsession-sys.md#CommandInfo22) | 否 | 是   | 命令信息。      |
+| commandInfo<sup>22+</sup> | [CommandInfo](#commandinfo22)                                            | 否 | 是   | 命令信息。      |
 
 ## AVCastPickerOptions<sup>14+</sup>
 
