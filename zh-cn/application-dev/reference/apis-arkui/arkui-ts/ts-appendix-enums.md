@@ -1104,11 +1104,11 @@ type Nullable\<T> = T | undefined
 | FILL | 缩放当前子组件以填充满父组件。 |
 | FIT  | 缩放当前子组件以自适应父组件。 |
 
-## ResponseRegionSupportedTool<sup>23+</sup>
+## ResponseRegionSupportedTool<sup>22+</sup>
 
 触摸热区适用的输入工具类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
