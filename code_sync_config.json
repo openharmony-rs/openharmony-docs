@@ -269,6 +269,11 @@
 						"end_line":175,
 						"name":"get_user_document_dir_path_example",
 						"start_line":163
+					},
+					{
+						"end_line":202,
+						"name":"get_user_download_dir_size_example",
+						"start_line":183
 					}
 				]
 			}
