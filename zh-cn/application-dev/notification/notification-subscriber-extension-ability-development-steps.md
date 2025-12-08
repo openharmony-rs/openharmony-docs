@@ -79,85 +79,85 @@
 3. 假如蓝牙连接已经存在,则直接使用这个连接发送消息。
 4. 如果使用该连接发送消息失败,则重新建立连接,如果连接能建立成功则发送消息。
    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
-import SppClientManager from '../utils/SppClientManager'
-
-const DOMAIN = 0x0000;
-
-export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
-  private sppClientManager: SppClientManager | undefined;
-
-  onDestroy(): void {
-    hilog.info(DOMAIN, 'testTag', 'onDestroy');
-    this.sppClientManager!.stopConnect();
-  }
-
-  //Called back when a notification is published.
-  onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
-    hilog.info(DOMAIN, 'testTag', `on receive message ${JSON.stringify(notificationInfo)}`)
-    notificationExtensionSubscription.getSubscribeInfo()
-      .then(info => {
-        if (this.sppClientManager == undefined) {
-          this.sppClientManager = new SppClientManager(info[0].addr);
-        }
-        if (this.sppClientManager.isConnect()) {
-          this.sendPublishWithRetry(notificationInfo);
-        } else {
-          this.sppClientManager.startConnect()
-          setTimeout(() => {
-            this.sendPublishWithRetry(notificationInfo);
-          }, 3000)
-        }
-      })
-  }
-
-  // Sends a publish notification and retries once upon failure.
-  private sendPublishWithRetry(notificationInfo: notificationExtensionSubscription.NotificationInfo) {
-    try {
-      this.sppClientManager!.sendNotificationData(notificationInfo);
-    } catch (err) {
-      hilog.error(DOMAIN, 'testTag', `send failed, errCode ${err.code}, errorMessage ${err.message}, and retry one times`);
-      this.sppClientManager!.startConnect();
-      setTimeout(() => {
-        this.sppClientManager!.sendNotificationData(notificationInfo);
-      }, 3000);
-    }
-  }
-
-  //Called back when notifications is cancelled.
-  onCancelMessages(hashCodes: Array<string>): void {
-    hilog.info(DOMAIN, 'testTag', `on cancel message ${JSON.stringify(hashCodes)}`)
-    notificationExtensionSubscription.getSubscribeInfo()
-      .then(info => {
-        if (this.sppClientManager == undefined) {
-          this.sppClientManager = new SppClientManager(info[0].addr);
-        }
-        if (this.sppClientManager.isConnect()) {
-          this.sendCancelWithRetry(hashCodes);
-        } else {
-          this.sppClientManager.startConnect()
-          setTimeout(() => {
-            this.sendCancelWithRetry(hashCodes);
-          }, 3000)
-        }
-      })
-  }
-
-  // Retries a cancel operation if it fails.
-  private sendCancelWithRetry(hashCodes: string[]) {
-    this.sppClientManager!.sendCancelNotificationData(hashCodes);
-    try {
-      this.sppClientManager!.sendCancelNotificationData(hashCodes);
-    } catch (err) {
-      hilog.error(DOMAIN, 'testTag', `send failed, errCode ${err.code}, errorMessage ${err.message}, and retry one times`);
-      this.sppClientManager!.startConnect();
-      setTimeout(() => {
-        this.sppClientManager!.sendCancelNotificationData(hashCodes);
-      }, 3000);
-    }
-  }
-}
-```
+   
+   ``` TypeScript
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
+   import SppClientManager from '../utils/SppClientManager'
+   
+   const DOMAIN = 0x0000;
+   
+   export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
+     private sppClientManager: SppClientManager | undefined;
+   
+     onDestroy(): void {
+       hilog.info(DOMAIN, 'testTag', 'onDestroy');
+       this.sppClientManager!.stopConnect();
+     }
+   
+     //Called back when a notification is published.
+     onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
+       hilog.info(DOMAIN, 'testTag', `on receive message ${JSON.stringify(notificationInfo)}`)
+       notificationExtensionSubscription.getSubscribeInfo()
+         .then(info => {
+           if (this.sppClientManager == undefined) {
+             this.sppClientManager = new SppClientManager(info[0].addr);
+           }
+           if (this.sppClientManager.isConnect()) {
+             this.sendPublishWithRetry(notificationInfo);
+           } else {
+             this.sppClientManager.startConnect()
+             setTimeout(() => {
+               this.sendPublishWithRetry(notificationInfo);
+             }, 3000)
+           }
+         })
+     }
+   
+     // Sends a publish notification and retries once upon failure.
+     private sendPublishWithRetry(notificationInfo: notificationExtensionSubscription.NotificationInfo) {
+       try {
+         this.sppClientManager!.sendNotificationData(notificationInfo);
+       } catch (err) {
+         hilog.error(DOMAIN, 'testTag', `send failed, errCode ${err.code}, errorMessage ${err.message}, and retry one times`);
+         this.sppClientManager!.startConnect();
+         setTimeout(() => {
+           this.sppClientManager!.sendNotificationData(notificationInfo);
+         }, 3000);
+       }
+     }
+   
+     //Called back when notifications is cancelled.
+     onCancelMessages(hashCodes: Array<string>): void {
+       hilog.info(DOMAIN, 'testTag', `on cancel message ${JSON.stringify(hashCodes)}`)
+       notificationExtensionSubscription.getSubscribeInfo()
+         .then(info => {
+           if (this.sppClientManager == undefined) {
+             this.sppClientManager = new SppClientManager(info[0].addr);
+           }
+           if (this.sppClientManager.isConnect()) {
+             this.sendCancelWithRetry(hashCodes);
+           } else {
+             this.sppClientManager.startConnect()
+             setTimeout(() => {
+               this.sendCancelWithRetry(hashCodes);
+             }, 3000)
+           }
+         })
+     }
+   
+     // Retries a cancel operation if it fails.
+     private sendCancelWithRetry(hashCodes: string[]) {
+       try {
+         this.sppClientManager!.sendCancelNotificationData(hashCodes);
+       } catch (err) {
+         hilog.error(DOMAIN, 'testTag', `send failed, errCode ${err.code}, errorMessage ${err.message}, and retry one times`);
+         this.sppClientManager!.startConnect();
+         setTimeout(() => {
+           this.sppClientManager!.sendCancelNotificationData(hashCodes);
+         }, 3000);
+       }
+     }
+   }
+   ```
 注意：请勿频繁建立链接，可能会影响功能。
